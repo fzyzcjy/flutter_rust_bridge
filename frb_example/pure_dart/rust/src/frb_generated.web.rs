@@ -190,7 +190,7 @@ impl
         StreamSink<
             std::collections::HashMap<
                 u8,
-                crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode,
+                crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode,
             >,
             flutter_rust_bridge::for_generated::DcoCodec,
         >,
@@ -200,10 +200,7 @@ impl
     fn cst_decode(
         self,
     ) -> StreamSink<
-        std::collections::HashMap<
-            u8,
-            crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode,
-        >,
+        std::collections::HashMap<u8, crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode>,
         flutter_rust_bridge::for_generated::DcoCodec,
     > {
         StreamSink::deserialize(self)
@@ -212,9 +209,7 @@ impl
 impl
     CstDecode<
         StreamSink<
-            std::collections::HashSet<
-                crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode,
-            >,
+            std::collections::HashSet<crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode>,
             flutter_rust_bridge::for_generated::DcoCodec,
         >,
     > for String
@@ -223,7 +218,7 @@ impl
     fn cst_decode(
         self,
     ) -> StreamSink<
-        std::collections::HashSet<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>,
+        std::collections::HashSet<crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode>,
         flutter_rust_bridge::for_generated::DcoCodec,
     > {
         StreamSink::deserialize(self)
@@ -238,7 +233,7 @@ impl CstDecode<StreamSink<String, flutter_rust_bridge::for_generated::DcoCodec>>
 impl
     CstDecode<
         StreamSink<
-            crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode,
+            crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode,
             flutter_rust_bridge::for_generated::DcoCodec,
         >,
     > for String
@@ -247,7 +242,7 @@ impl
     fn cst_decode(
         self,
     ) -> StreamSink<
-        crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode,
+        crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode,
         flutter_rust_bridge::for_generated::DcoCodec,
     > {
         StreamSink::deserialize(self)
@@ -256,7 +251,7 @@ impl
 impl
     CstDecode<
         StreamSink<
-            [crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode; 2],
+            [crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode; 2],
             flutter_rust_bridge::for_generated::DcoCodec,
         >,
     > for String
@@ -265,7 +260,7 @@ impl
     fn cst_decode(
         self,
     ) -> StreamSink<
-        [crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode; 2],
+        [crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode; 2],
         flutter_rust_bridge::for_generated::DcoCodec,
     > {
         StreamSink::deserialize(self)
@@ -334,7 +329,7 @@ impl CstDecode<StreamSink<i32, flutter_rust_bridge::for_generated::DcoCodec>> fo
 impl
     CstDecode<
         StreamSink<
-            Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>,
+            Vec<crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode>,
             flutter_rust_bridge::for_generated::DcoCodec,
         >,
     > for String
@@ -343,7 +338,7 @@ impl
     fn cst_decode(
         self,
     ) -> StreamSink<
-        Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>,
+        Vec<crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode>,
         flutter_rust_bridge::for_generated::DcoCodec,
     > {
         StreamSink::deserialize(self)
@@ -543,7 +538,7 @@ impl
 impl
     CstDecode<
         StreamSink<
-            Option<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>,
+            Option<crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode>,
             flutter_rust_bridge::for_generated::DcoCodec,
         >,
     > for String
@@ -552,7 +547,7 @@ impl
     fn cst_decode(
         self,
     ) -> StreamSink<
-        Option<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>,
+        Option<crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode>,
         flutter_rust_bridge::for_generated::DcoCodec,
     > {
         StreamSink::deserialize(self)
@@ -563,7 +558,7 @@ impl
         StreamSink<
             (
                 crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings,
-                crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored,
+                crate::api::pseudo_manual::mirror_twin_rust_async::RawStringEnumMirrored,
             ),
             flutter_rust_bridge::for_generated::DcoCodec,
         >,
@@ -575,7 +570,7 @@ impl
     ) -> StreamSink<
         (
             crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings,
-            crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored,
+            crate::api::pseudo_manual::mirror_twin_rust_async::RawStringEnumMirrored,
         ),
         flutter_rust_bridge::for_generated::DcoCodec,
     > {
@@ -812,11 +807,11 @@ impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync::AnotherTwinSync>
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationEnv>
+impl CstDecode<crate::api::pseudo_manual::mirror_twin_rust_async_sse::ApplicationEnv>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationEnv {
+    fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_rust_async_sse::ApplicationEnv {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap();
@@ -826,16 +821,16 @@ impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationEnv>
             "Expected 1 elements, got {}",
             self_.length()
         );
-        crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationEnv {
+        crate::api::pseudo_manual::mirror_twin_rust_async_sse::ApplicationEnv {
             vars: self_.get(0).cst_decode(),
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationEnvVar>
+impl CstDecode<crate::api::pseudo_manual::mirror_twin_rust_async::ApplicationEnvVar>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationEnvVar {
+    fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_rust_async::ApplicationEnvVar {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap();
@@ -845,29 +840,27 @@ impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationEnvVa
             "Expected 2 elements, got {}",
             self_.length()
         );
-        crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationEnvVar(
+        crate::api::pseudo_manual::mirror_twin_rust_async::ApplicationEnvVar(
             self_.get(0).cst_decode(),
             self_.get(1).cst_decode(),
         )
     }
 }
-impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMessage>
+impl CstDecode<crate::api::pseudo_manual::mirror_twin_sse::ApplicationMessage>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMessage {
+    fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sse::ApplicationMessage {
         let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
         match self_.get(0).unchecked_into_f64() as _ {
-            0 => {
-                crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMessage::DisplayMessage(
-                    self_.get(1).cst_decode(),
-                )
-            }
-            1 => crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMessage::RenderPixel {
+            0 => crate::api::pseudo_manual::mirror_twin_sse::ApplicationMessage::DisplayMessage(
+                self_.get(1).cst_decode(),
+            ),
+            1 => crate::api::pseudo_manual::mirror_twin_sse::ApplicationMessage::RenderPixel {
                 x: self_.get(1).cst_decode(),
                 y: self_.get(2).cst_decode(),
             },
-            2 => crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMessage::Exit,
+            2 => crate::api::pseudo_manual::mirror_twin_sse::ApplicationMessage::Exit,
             _ => unreachable!(),
         }
     }
@@ -3189,11 +3182,11 @@ impl CstDecode<crate::api::pseudo_manual::array_twin_sync::FeedIdTwinSync>
         crate::api::pseudo_manual::array_twin_sync::FeedIdTwinSync(self_.get(0).cst_decode())
     }
 }
-impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::HashMapValue>
+impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync::HashMapValue>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync_sse::HashMapValue {
+    fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync::HashMapValue {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap();
@@ -3203,7 +3196,7 @@ impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::HashMapValue>
             "Expected 1 elements, got {}",
             self_.length()
         );
-        crate::api::pseudo_manual::mirror_twin_sync_sse::HashMapValue {
+        crate::api::pseudo_manual::mirror_twin_sync::HashMapValue {
             inner: self_.get(0).cst_decode(),
         }
     }
@@ -3562,11 +3555,13 @@ impl CstDecode<Vec<uuid::Uuid>> for flutter_rust_bridge::for_generated::wasm_bin
             .collect()
     }
 }
-impl CstDecode<Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationEnvVar>>
+impl CstDecode<Vec<crate::api::pseudo_manual::mirror_twin_rust_async::ApplicationEnvVar>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationEnvVar> {
+    fn cst_decode(
+        self,
+    ) -> Vec<crate::api::pseudo_manual::mirror_twin_rust_async::ApplicationEnvVar> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
             .iter()
@@ -3574,11 +3569,11 @@ impl CstDecode<Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationE
             .collect()
     }
 }
-impl CstDecode<Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>>
+impl CstDecode<Vec<crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode> {
+    fn cst_decode(self) -> Vec<crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
             .iter()
@@ -3965,13 +3960,13 @@ impl CstDecode<Vec<crate::api::pseudo_manual::misc_example_twin_sync::MyTreeNode
             .collect()
     }
 }
-impl CstDecode<Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::NestedRawStringMirrored>>
+impl CstDecode<Vec<crate::api::pseudo_manual::mirror_twin_rust_async_sse::NestedRawStringMirrored>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
-    ) -> Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::NestedRawStringMirrored> {
+    ) -> Vec<crate::api::pseudo_manual::mirror_twin_rust_async_sse::NestedRawStringMirrored> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
             .iter()
@@ -4216,13 +4211,13 @@ impl CstDecode<Vec<u8>> for Box<[u8]> {
         self.into_vec()
     }
 }
-impl CstDecode<Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored>>
+impl CstDecode<Vec<crate::api::pseudo_manual::mirror_twin_rust_async::RawStringEnumMirrored>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
-    ) -> Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored> {
+    ) -> Vec<crate::api::pseudo_manual::mirror_twin_rust_async::RawStringEnumMirrored> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
             .iter()
@@ -4230,11 +4225,11 @@ impl CstDecode<Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnu
             .collect()
     }
 }
-impl CstDecode<Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringMirrored>>
+impl CstDecode<Vec<crate::api::mirror::RawStringMirrored>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringMirrored> {
+    fn cst_decode(self) -> Vec<crate::api::mirror::RawStringMirrored> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
             .iter()
@@ -4660,7 +4655,7 @@ impl
     CstDecode<
         Vec<(
             String,
-            crate::api::pseudo_manual::mirror_twin_sync_sse::HashMapValue,
+            crate::api::pseudo_manual::mirror_twin_sync::HashMapValue,
         )>,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
@@ -4669,7 +4664,7 @@ impl
         self,
     ) -> Vec<(
         String,
-        crate::api::pseudo_manual::mirror_twin_sync_sse::HashMapValue,
+        crate::api::pseudo_manual::mirror_twin_sync::HashMapValue,
     )> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
@@ -4784,7 +4779,7 @@ impl
     CstDecode<
         Vec<(
             u8,
-            crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode,
+            crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode,
         )>,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
@@ -4793,7 +4788,7 @@ impl
         self,
     ) -> Vec<(
         u8,
-        crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode,
+        crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode,
     )> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
@@ -5598,13 +5593,13 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync::MyTreeNodeTwin
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::NestedRawStringMirrored>
+impl CstDecode<crate::api::pseudo_manual::mirror_twin_rust_async_sse::NestedRawStringMirrored>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
-    ) -> crate::api::pseudo_manual::mirror_twin_sync_sse::NestedRawStringMirrored {
+    ) -> crate::api::pseudo_manual::mirror_twin_rust_async_sse::NestedRawStringMirrored {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap();
@@ -5614,7 +5609,7 @@ impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::NestedRawStringM
             "Expected 1 elements, got {}",
             self_.length()
         );
-        crate::api::pseudo_manual::mirror_twin_sync_sse::NestedRawStringMirrored {
+        crate::api::pseudo_manual::mirror_twin_rust_async_sse::NestedRawStringMirrored {
             raw: self_.get(0).cst_decode(),
         }
     }
@@ -6100,26 +6095,20 @@ impl CstDecode<crate::api::pseudo_manual::array_twin_sync::PointTwinSync>
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored>
+impl CstDecode<crate::api::pseudo_manual::mirror_twin_rust_async::RawStringEnumMirrored>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored {
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::mirror_twin_rust_async::RawStringEnumMirrored {
         let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
         match self_.get(0).unchecked_into_f64() as _ {
-            0 => crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored::Raw(
-                self_.get(1).cst_decode(),
-            ),
-            1 => crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored::Nested(
-                self_.get(1).cst_decode(),
-            ),
-            2 => {
-                crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored::ListOfNested(
-                    self_.get(1).cst_decode(),
-                )
-            }
-            _ => unreachable!(),
-        }
+                    0 => { crate::api::pseudo_manual::mirror_twin_rust_async::RawStringEnumMirrored::Raw( self_.get(1).cst_decode()) },
+1 => { crate::api::pseudo_manual::mirror_twin_rust_async::RawStringEnumMirrored::Nested( self_.get(1).cst_decode()) },
+2 => { crate::api::pseudo_manual::mirror_twin_rust_async::RawStringEnumMirrored::ListOfNested( self_.get(1).cst_decode()) },
+                    _ => unreachable!(),
+                }
     }
 }
 impl CstDecode<crate::api::raw_string::RawStringItemStructTwinNormal>
@@ -6186,11 +6175,11 @@ impl CstDecode<crate::api::pseudo_manual::raw_string_twin_sync::RawStringItemStr
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringMirrored>
+impl CstDecode<crate::api::mirror::RawStringMirrored>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringMirrored {
+    fn cst_decode(self) -> crate::api::mirror::RawStringMirrored {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap();
@@ -6200,7 +6189,7 @@ impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringMirrore
             "Expected 1 elements, got {}",
             self_.length()
         );
-        crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringMirrored {
+        crate::api::mirror::RawStringMirrored {
             value: self_.get(0).cst_decode(),
         }
     }
@@ -6208,7 +6197,7 @@ impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringMirrore
 impl
     CstDecode<(
         crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings,
-        crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored,
+        crate::api::pseudo_manual::mirror_twin_rust_async::RawStringEnumMirrored,
     )> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
@@ -6216,7 +6205,7 @@ impl
         self,
     ) -> (
         crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings,
-        crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored,
+        crate::api::pseudo_manual::mirror_twin_rust_async::RawStringEnumMirrored,
     ) {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -6874,7 +6863,7 @@ impl
 impl
     CstDecode<(
         String,
-        crate::api::pseudo_manual::mirror_twin_sync_sse::HashMapValue,
+        crate::api::pseudo_manual::mirror_twin_sync::HashMapValue,
     )> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
@@ -6882,7 +6871,7 @@ impl
         self,
     ) -> (
         String,
-        crate::api::pseudo_manual::mirror_twin_sync_sse::HashMapValue,
+        crate::api::pseudo_manual::mirror_twin_sync::HashMapValue,
     ) {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -7028,7 +7017,7 @@ impl CstDecode<(String, String)> for flutter_rust_bridge::for_generated::wasm_bi
 impl
     CstDecode<(
         u8,
-        crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode,
+        crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode,
     )> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
@@ -7036,7 +7025,7 @@ impl
         self,
     ) -> (
         u8,
-        crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode,
+        crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode,
     ) {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -7050,11 +7039,11 @@ impl
         (self_.get(0).cst_decode(), self_.get(1).cst_decode())
     }
 }
-impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::Sequences>
+impl CstDecode<crate::api::pseudo_manual::mirror_twin_rust_async_sse::Sequences>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync_sse::Sequences {
+    fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_rust_async_sse::Sequences {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap();
@@ -7064,7 +7053,7 @@ impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::Sequences>
             "Expected 1 elements, got {}",
             self_.length()
         );
-        crate::api::pseudo_manual::mirror_twin_sync_sse::Sequences(self_.get(0).cst_decode())
+        crate::api::pseudo_manual::mirror_twin_rust_async_sse::Sequences(self_.get(0).cst_decode())
     }
 }
 impl CstDecode<crate::api::method::SimpleEnumTwinNormal>
@@ -7760,11 +7749,11 @@ impl CstDecode<crate::api::pseudo_manual::rust_auto_opaque_twin_sync_moi::Struct
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync_moi::StructWithGoodAndOpaqueFieldTwinSyncMoi{good:  self_.get(0).cst_decode(),opaque:  self_.get(1).cst_decode(),option_opaque:  self_.get(2).cst_decode()}
             }
         }
-impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::StructWithHashMap>
+impl CstDecode<crate::api::mirror::StructWithHashMap>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync_sse::StructWithHashMap {
+    fn cst_decode(self) -> crate::api::mirror::StructWithHashMap {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap();
@@ -7774,7 +7763,7 @@ impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::StructWithHashMa
             "Expected 1 elements, got {}",
             self_.length()
         );
-        crate::api::pseudo_manual::mirror_twin_sync_sse::StructWithHashMap {
+        crate::api::mirror::StructWithHashMap {
             map: self_.get(0).cst_decode(),
         }
     }
@@ -10140,20 +10129,18 @@ impl
     CstDecode<
         std::collections::HashMap<
             String,
-            crate::api::pseudo_manual::mirror_twin_sync_sse::HashMapValue,
+            crate::api::pseudo_manual::mirror_twin_sync::HashMapValue,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
-    ) -> std::collections::HashMap<
-        String,
-        crate::api::pseudo_manual::mirror_twin_sync_sse::HashMapValue,
-    > {
+    ) -> std::collections::HashMap<String, crate::api::pseudo_manual::mirror_twin_sync::HashMapValue>
+    {
         let vec: Vec<(
             String,
-            crate::api::pseudo_manual::mirror_twin_sync_sse::HashMapValue,
+            crate::api::pseudo_manual::mirror_twin_sync::HashMapValue,
         )> = self.cst_decode();
         vec.into_iter().collect()
     }
@@ -10577,22 +10564,17 @@ impl CstDecode<std::collections::HashMap<i32, usize>>
 }
 impl
     CstDecode<
-        std::collections::HashMap<
-            u8,
-            crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode,
-        >,
+        std::collections::HashMap<u8, crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode>,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
-    ) -> std::collections::HashMap<
-        u8,
-        crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode,
-    > {
+    ) -> std::collections::HashMap<u8, crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode>
+    {
         let vec: Vec<(
             u8,
-            crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode,
+            crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode,
         )> = self.cst_decode();
         vec.into_iter().collect()
     }
@@ -12968,15 +12950,15 @@ impl CstDecode<std::collections::HashSet<String>>
 }
 impl
     CstDecode<
-        std::collections::HashSet<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>,
+        std::collections::HashSet<crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode>,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
-    ) -> std::collections::HashSet<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>
+    ) -> std::collections::HashSet<crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode>
     {
-        let vec: Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode> =
+        let vec: Vec<crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode> =
             self.cst_decode();
         vec.into_iter().collect()
     }
@@ -13059,7 +13041,7 @@ impl
         StreamSink<
             std::collections::HashMap<
                 u8,
-                crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode,
+                crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode,
             >,
             flutter_rust_bridge::for_generated::DcoCodec,
         >,
@@ -13069,10 +13051,7 @@ impl
     fn cst_decode(
         self,
     ) -> StreamSink<
-        std::collections::HashMap<
-            u8,
-            crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode,
-        >,
+        std::collections::HashMap<u8, crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode>,
         flutter_rust_bridge::for_generated::DcoCodec,
     > {
         StreamSink::deserialize(self.as_string().expect("should be a string"))
@@ -13081,9 +13060,7 @@ impl
 impl
     CstDecode<
         StreamSink<
-            std::collections::HashSet<
-                crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode,
-            >,
+            std::collections::HashSet<crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode>,
             flutter_rust_bridge::for_generated::DcoCodec,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
@@ -13092,7 +13069,7 @@ impl
     fn cst_decode(
         self,
     ) -> StreamSink<
-        std::collections::HashSet<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>,
+        std::collections::HashSet<crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode>,
         flutter_rust_bridge::for_generated::DcoCodec,
     > {
         StreamSink::deserialize(self.as_string().expect("should be a string"))
@@ -13109,7 +13086,7 @@ impl CstDecode<StreamSink<String, flutter_rust_bridge::for_generated::DcoCodec>>
 impl
     CstDecode<
         StreamSink<
-            crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode,
+            crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode,
             flutter_rust_bridge::for_generated::DcoCodec,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
@@ -13118,7 +13095,7 @@ impl
     fn cst_decode(
         self,
     ) -> StreamSink<
-        crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode,
+        crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode,
         flutter_rust_bridge::for_generated::DcoCodec,
     > {
         StreamSink::deserialize(self.as_string().expect("should be a string"))
@@ -13127,7 +13104,7 @@ impl
 impl
     CstDecode<
         StreamSink<
-            [crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode; 2],
+            [crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode; 2],
             flutter_rust_bridge::for_generated::DcoCodec,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
@@ -13136,7 +13113,7 @@ impl
     fn cst_decode(
         self,
     ) -> StreamSink<
-        [crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode; 2],
+        [crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode; 2],
         flutter_rust_bridge::for_generated::DcoCodec,
     > {
         StreamSink::deserialize(self.as_string().expect("should be a string"))
@@ -13207,7 +13184,7 @@ impl CstDecode<StreamSink<i32, flutter_rust_bridge::for_generated::DcoCodec>>
 impl
     CstDecode<
         StreamSink<
-            Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>,
+            Vec<crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode>,
             flutter_rust_bridge::for_generated::DcoCodec,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
@@ -13216,7 +13193,7 @@ impl
     fn cst_decode(
         self,
     ) -> StreamSink<
-        Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>,
+        Vec<crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode>,
         flutter_rust_bridge::for_generated::DcoCodec,
     > {
         StreamSink::deserialize(self.as_string().expect("should be a string"))
@@ -13416,7 +13393,7 @@ impl
 impl
     CstDecode<
         StreamSink<
-            Option<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>,
+            Option<crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode>,
             flutter_rust_bridge::for_generated::DcoCodec,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
@@ -13425,7 +13402,7 @@ impl
     fn cst_decode(
         self,
     ) -> StreamSink<
-        Option<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>,
+        Option<crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode>,
         flutter_rust_bridge::for_generated::DcoCodec,
     > {
         StreamSink::deserialize(self.as_string().expect("should be a string"))
@@ -13436,7 +13413,7 @@ impl
         StreamSink<
             (
                 crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings,
-                crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored,
+                crate::api::pseudo_manual::mirror_twin_rust_async::RawStringEnumMirrored,
             ),
             flutter_rust_bridge::for_generated::DcoCodec,
         >,
@@ -13448,7 +13425,7 @@ impl
     ) -> StreamSink<
         (
             crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings,
-            crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored,
+            crate::api::pseudo_manual::mirror_twin_rust_async::RawStringEnumMirrored,
         ),
         flutter_rust_bridge::for_generated::DcoCodec,
     > {
@@ -13492,20 +13469,20 @@ impl CstDecode<uuid::Uuid> for flutter_rust_bridge::for_generated::wasm_bindgen:
             .cst_decode()
     }
 }
-impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>
+impl CstDecode<crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode {
+    fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode {
         (self.unchecked_into_f64() as i32).cst_decode()
     }
 }
-impl CstDecode<[crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode; 2]>
+impl CstDecode<[crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode; 2]>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> [crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode; 2] {
-        let vec: Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode> =
+    fn cst_decode(self) -> [crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode; 2] {
+        let vec: Vec<crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode> =
             self.cst_decode();
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
@@ -13542,11 +13519,13 @@ impl CstDecode<bool> for flutter_rust_bridge::for_generated::wasm_bindgen::JsVal
         self.is_truthy()
     }
 }
-impl CstDecode<Box<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationEnv>>
+impl CstDecode<Box<crate::api::pseudo_manual::mirror_twin_rust_async_sse::ApplicationEnv>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> Box<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationEnv> {
+    fn cst_decode(
+        self,
+    ) -> Box<crate::api::pseudo_manual::mirror_twin_rust_async_sse::ApplicationEnv> {
         Box::new(self.cst_decode())
     }
 }

@@ -7,6 +7,10 @@ import '../auxiliary/sample_types.dart';
 import '../frb_generated.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
+import 'pseudo_manual/mirror_twin_rust_async.dart';
+import 'pseudo_manual/mirror_twin_rust_async_sse.dart';
+import 'pseudo_manual/mirror_twin_sse.dart';
+import 'pseudo_manual/mirror_twin_sync.dart';
 import 'pseudo_manual/mirror_twin_sync_sse.dart';
 
 Future<ApplicationSettings> getAppSettingsTwinNormal() =>
@@ -179,4 +183,40 @@ class MirrorStructTwinNormal {
           b == other.b &&
           c == other.c &&
           d == other.d;
+}
+
+class RawStringMirrored {
+  final String value;
+
+  const RawStringMirrored({
+    required this.value,
+  });
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is RawStringMirrored &&
+          runtimeType == other.runtimeType &&
+          value == other.value;
+}
+
+class StructWithHashMap {
+  final Map<String, HashMapValue> map;
+
+  const StructWithHashMap({
+    required this.map,
+  });
+
+  @override
+  int get hashCode => map.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is StructWithHashMap &&
+          runtimeType == other.runtimeType &&
+          map == other.map;
 }

@@ -6,8 +6,13 @@
 import '../../auxiliary/sample_types.dart';
 import '../../frb_generated.dart';
 import '../mirror.dart';
+import 'mirror_twin_rust_async_sse.dart';
+import 'mirror_twin_sse.dart';
+import 'mirror_twin_sync.dart';
 import 'mirror_twin_sync_sse.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
+import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
+part 'mirror_twin_rust_async.freezed.dart';
 
 Future<ApplicationSettings> getAppSettingsTwinRustAsync() =>
     RustLib.instance.api
@@ -139,6 +144,27 @@ class AnotherTwinRustAsync {
           a == other.a;
 }
 
+class ApplicationEnvVar {
+  final String field0;
+  final bool field1;
+
+  const ApplicationEnvVar({
+    required this.field0,
+    required this.field1,
+  });
+
+  @override
+  int get hashCode => field0.hashCode ^ field1.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ApplicationEnvVar &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0 &&
+          field1 == other.field1;
+}
+
 class ContainsMirroredSubStructTwinRustAsync {
   final RawStringMirrored test;
   final AnotherTwinRustAsync test2;
@@ -185,4 +211,19 @@ class MirrorStructTwinRustAsync {
           b == other.b &&
           c == other.c &&
           d == other.d;
+}
+
+@freezed
+sealed class RawStringEnumMirrored with _$RawStringEnumMirrored {
+  const RawStringEnumMirrored._();
+
+  const factory RawStringEnumMirrored.raw(
+    RawStringMirrored field0,
+  ) = RawStringEnumMirrored_Raw;
+  const factory RawStringEnumMirrored.nested(
+    NestedRawStringMirrored field0,
+  ) = RawStringEnumMirrored_Nested;
+  const factory RawStringEnumMirrored.listOfNested(
+    ListOfNestedRawStringMirrored field0,
+  ) = RawStringEnumMirrored_ListOfNested;
 }

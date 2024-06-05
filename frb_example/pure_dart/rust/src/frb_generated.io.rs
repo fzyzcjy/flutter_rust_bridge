@@ -1357,20 +1357,18 @@ impl
     CstDecode<
         std::collections::HashMap<
             String,
-            crate::api::pseudo_manual::mirror_twin_sync_sse::HashMapValue,
+            crate::api::pseudo_manual::mirror_twin_sync::HashMapValue,
         >,
     > for *mut wire_cst_list_record_string_hash_map_value
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
-    ) -> std::collections::HashMap<
-        String,
-        crate::api::pseudo_manual::mirror_twin_sync_sse::HashMapValue,
-    > {
+    ) -> std::collections::HashMap<String, crate::api::pseudo_manual::mirror_twin_sync::HashMapValue>
+    {
         let vec: Vec<(
             String,
-            crate::api::pseudo_manual::mirror_twin_sync_sse::HashMapValue,
+            crate::api::pseudo_manual::mirror_twin_sync::HashMapValue,
         )> = self.cst_decode();
         vec.into_iter().collect()
     }
@@ -1762,22 +1760,17 @@ impl CstDecode<std::collections::HashMap<i32, usize>> for *mut wire_cst_list_rec
 }
 impl
     CstDecode<
-        std::collections::HashMap<
-            u8,
-            crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode,
-        >,
+        std::collections::HashMap<u8, crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode>,
     > for *mut wire_cst_list_record_u_8_application_mode
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
-    ) -> std::collections::HashMap<
-        u8,
-        crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode,
-    > {
+    ) -> std::collections::HashMap<u8, crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode>
+    {
         let vec: Vec<(
             u8,
-            crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode,
+            crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode,
         )> = self.cst_decode();
         vec.into_iter().collect()
     }
@@ -3563,15 +3556,15 @@ impl CstDecode<std::collections::HashSet<String>> for *mut wire_cst_list_String 
 }
 impl
     CstDecode<
-        std::collections::HashSet<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>,
+        std::collections::HashSet<crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode>,
     > for *mut wire_cst_list_application_mode
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
-    ) -> std::collections::HashSet<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>
+    ) -> std::collections::HashSet<crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode>
     {
-        let vec: Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode> =
+        let vec: Vec<crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode> =
             self.cst_decode();
         vec.into_iter().collect()
     }
@@ -3658,7 +3651,7 @@ impl
         StreamSink<
             std::collections::HashMap<
                 u8,
-                crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode,
+                crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode,
             >,
             flutter_rust_bridge::for_generated::DcoCodec,
         >,
@@ -3668,10 +3661,7 @@ impl
     fn cst_decode(
         self,
     ) -> StreamSink<
-        std::collections::HashMap<
-            u8,
-            crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode,
-        >,
+        std::collections::HashMap<u8, crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode>,
         flutter_rust_bridge::for_generated::DcoCodec,
     > {
         let raw: String = self.cst_decode();
@@ -3681,9 +3671,7 @@ impl
 impl
     CstDecode<
         StreamSink<
-            std::collections::HashSet<
-                crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode,
-            >,
+            std::collections::HashSet<crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode>,
             flutter_rust_bridge::for_generated::DcoCodec,
         >,
     > for *mut wire_cst_list_prim_u_8_strict
@@ -3692,7 +3680,7 @@ impl
     fn cst_decode(
         self,
     ) -> StreamSink<
-        std::collections::HashSet<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>,
+        std::collections::HashSet<crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode>,
         flutter_rust_bridge::for_generated::DcoCodec,
     > {
         let raw: String = self.cst_decode();
@@ -3711,7 +3699,7 @@ impl CstDecode<StreamSink<String, flutter_rust_bridge::for_generated::DcoCodec>>
 impl
     CstDecode<
         StreamSink<
-            crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode,
+            crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode,
             flutter_rust_bridge::for_generated::DcoCodec,
         >,
     > for *mut wire_cst_list_prim_u_8_strict
@@ -3720,7 +3708,7 @@ impl
     fn cst_decode(
         self,
     ) -> StreamSink<
-        crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode,
+        crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode,
         flutter_rust_bridge::for_generated::DcoCodec,
     > {
         let raw: String = self.cst_decode();
@@ -3730,7 +3718,7 @@ impl
 impl
     CstDecode<
         StreamSink<
-            [crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode; 2],
+            [crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode; 2],
             flutter_rust_bridge::for_generated::DcoCodec,
         >,
     > for *mut wire_cst_list_prim_u_8_strict
@@ -3739,7 +3727,7 @@ impl
     fn cst_decode(
         self,
     ) -> StreamSink<
-        [crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode; 2],
+        [crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode; 2],
         flutter_rust_bridge::for_generated::DcoCodec,
     > {
         let raw: String = self.cst_decode();
@@ -3815,7 +3803,7 @@ impl CstDecode<StreamSink<i32, flutter_rust_bridge::for_generated::DcoCodec>>
 impl
     CstDecode<
         StreamSink<
-            Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>,
+            Vec<crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode>,
             flutter_rust_bridge::for_generated::DcoCodec,
         >,
     > for *mut wire_cst_list_prim_u_8_strict
@@ -3824,7 +3812,7 @@ impl
     fn cst_decode(
         self,
     ) -> StreamSink<
-        Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>,
+        Vec<crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode>,
         flutter_rust_bridge::for_generated::DcoCodec,
     > {
         let raw: String = self.cst_decode();
@@ -4036,7 +4024,7 @@ impl
 impl
     CstDecode<
         StreamSink<
-            Option<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>,
+            Option<crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode>,
             flutter_rust_bridge::for_generated::DcoCodec,
         >,
     > for *mut wire_cst_list_prim_u_8_strict
@@ -4045,7 +4033,7 @@ impl
     fn cst_decode(
         self,
     ) -> StreamSink<
-        Option<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>,
+        Option<crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode>,
         flutter_rust_bridge::for_generated::DcoCodec,
     > {
         let raw: String = self.cst_decode();
@@ -4057,7 +4045,7 @@ impl
         StreamSink<
             (
                 crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings,
-                crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored,
+                crate::api::pseudo_manual::mirror_twin_rust_async::RawStringEnumMirrored,
             ),
             flutter_rust_bridge::for_generated::DcoCodec,
         >,
@@ -4069,7 +4057,7 @@ impl
     ) -> StreamSink<
         (
             crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings,
-            crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored,
+            crate::api::pseudo_manual::mirror_twin_rust_async::RawStringEnumMirrored,
         ),
         flutter_rust_bridge::for_generated::DcoCodec,
     > {
@@ -4276,57 +4264,57 @@ impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync::AnotherTwinSync>
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationEnv>
+impl CstDecode<crate::api::pseudo_manual::mirror_twin_rust_async_sse::ApplicationEnv>
     for wire_cst_application_env
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationEnv {
-        crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationEnv {
+    fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_rust_async_sse::ApplicationEnv {
+        crate::api::pseudo_manual::mirror_twin_rust_async_sse::ApplicationEnv {
             vars: self.vars.cst_decode(),
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationEnvVar>
+impl CstDecode<crate::api::pseudo_manual::mirror_twin_rust_async::ApplicationEnvVar>
     for wire_cst_application_env_var
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationEnvVar {
-        crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationEnvVar(
+    fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_rust_async::ApplicationEnvVar {
+        crate::api::pseudo_manual::mirror_twin_rust_async::ApplicationEnvVar(
             self.field0.cst_decode(),
             self.field1.cst_decode(),
         )
     }
 }
-impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMessage>
+impl CstDecode<crate::api::pseudo_manual::mirror_twin_sse::ApplicationMessage>
     for wire_cst_application_message
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMessage {
+    fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sse::ApplicationMessage {
         match self.tag {
             0 => {
                 let ans = unsafe { self.kind.DisplayMessage };
-                crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMessage::DisplayMessage(
+                crate::api::pseudo_manual::mirror_twin_sse::ApplicationMessage::DisplayMessage(
                     ans.field0.cst_decode(),
                 )
             }
             1 => {
                 let ans = unsafe { self.kind.RenderPixel };
-                crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMessage::RenderPixel {
+                crate::api::pseudo_manual::mirror_twin_sse::ApplicationMessage::RenderPixel {
                     x: ans.x.cst_decode(),
                     y: ans.y.cst_decode(),
                 }
             }
-            2 => crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMessage::Exit,
+            2 => crate::api::pseudo_manual::mirror_twin_sse::ApplicationMessage::Exit,
             _ => unreachable!(),
         }
     }
 }
-impl CstDecode<[crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode; 2]>
+impl CstDecode<[crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode; 2]>
     for *mut wire_cst_list_application_mode
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> [crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode; 2] {
-        let vec: Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode> =
+    fn cst_decode(self) -> [crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode; 2] {
+        let vec: Vec<crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode> =
             self.cst_decode();
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
@@ -4634,16 +4622,15 @@ impl CstDecode<crate::api::pseudo_manual::array_twin_sync::BlobTwinSync>
         crate::api::pseudo_manual::array_twin_sync::BlobTwinSync(self.field0.cst_decode())
     }
 }
-impl CstDecode<Box<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationEnv>>
+impl CstDecode<Box<crate::api::pseudo_manual::mirror_twin_rust_async_sse::ApplicationEnv>>
     for *mut wire_cst_application_env
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> Box<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationEnv> {
+    fn cst_decode(
+        self,
+    ) -> Box<crate::api::pseudo_manual::mirror_twin_rust_async_sse::ApplicationEnv> {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
-        CstDecode::<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationEnv>::cst_decode(
-            *wrap,
-        )
-        .into()
+        CstDecode::<crate::api::pseudo_manual::mirror_twin_rust_async_sse::ApplicationEnv>::cst_decode(*wrap).into()
     }
 }
 impl CstDecode<NonCloneSimpleTwinMoi> for *mut usize {
@@ -4828,26 +4815,21 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync::AbcTwinSync>
         .into()
     }
 }
-impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationEnv>
+impl CstDecode<crate::api::pseudo_manual::mirror_twin_rust_async_sse::ApplicationEnv>
     for *mut wire_cst_application_env
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationEnv {
+    fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_rust_async_sse::ApplicationEnv {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
-        CstDecode::<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationEnv>::cst_decode(
-            *wrap,
-        )
-        .into()
+        CstDecode::<crate::api::pseudo_manual::mirror_twin_rust_async_sse::ApplicationEnv>::cst_decode(*wrap).into()
     }
 }
-impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode> for *mut i32 {
+impl CstDecode<crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode> for *mut i32 {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode {
+    fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
-        CstDecode::<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>::cst_decode(
-            *wrap,
-        )
-        .into()
+        CstDecode::<crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode>::cst_decode(*wrap)
+            .into()
     }
 }
 impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings>
@@ -6133,15 +6115,15 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync::MyTreeNodeTwin
         CstDecode::<crate::api::pseudo_manual::misc_example_twin_sync::MyTreeNodeTwinSync>::cst_decode(*wrap).into()
     }
 }
-impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::NestedRawStringMirrored>
+impl CstDecode<crate::api::pseudo_manual::mirror_twin_rust_async_sse::NestedRawStringMirrored>
     for *mut wire_cst_nested_raw_string_mirrored
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
-    ) -> crate::api::pseudo_manual::mirror_twin_sync_sse::NestedRawStringMirrored {
+    ) -> crate::api::pseudo_manual::mirror_twin_rust_async_sse::NestedRawStringMirrored {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
-        CstDecode::<crate::api::pseudo_manual::mirror_twin_sync_sse::NestedRawStringMirrored>::cst_decode(*wrap).into()
+        CstDecode::<crate::api::pseudo_manual::mirror_twin_rust_async_sse::NestedRawStringMirrored>::cst_decode(*wrap).into()
     }
 }
 impl CstDecode<crate::api::newtype_pattern::NewTypeIntTwinNormal>
@@ -6309,16 +6291,11 @@ impl CstDecode<crate::api::pseudo_manual::optional_twin_sync::OptVecsTwinSync>
         .into()
     }
 }
-impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringMirrored>
-    for *mut wire_cst_raw_string_mirrored
-{
+impl CstDecode<crate::api::mirror::RawStringMirrored> for *mut wire_cst_raw_string_mirrored {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringMirrored {
+    fn cst_decode(self) -> crate::api::mirror::RawStringMirrored {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
-        CstDecode::<crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringMirrored>::cst_decode(
-            *wrap,
-        )
-        .into()
+        CstDecode::<crate::api::mirror::RawStringMirrored>::cst_decode(*wrap).into()
     }
 }
 impl CstDecode<(String, i32)> for *mut wire_cst_record_string_i_32 {
@@ -6328,14 +6305,16 @@ impl CstDecode<(String, i32)> for *mut wire_cst_record_string_i_32 {
         CstDecode::<(String, i32)>::cst_decode(*wrap).into()
     }
 }
-impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::Sequences>
+impl CstDecode<crate::api::pseudo_manual::mirror_twin_rust_async_sse::Sequences>
     for *mut wire_cst_sequences
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync_sse::Sequences {
+    fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_rust_async_sse::Sequences {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
-        CstDecode::<crate::api::pseudo_manual::mirror_twin_sync_sse::Sequences>::cst_decode(*wrap)
-            .into()
+        CstDecode::<crate::api::pseudo_manual::mirror_twin_rust_async_sse::Sequences>::cst_decode(
+            *wrap,
+        )
+        .into()
     }
 }
 impl CstDecode<crate::api::method::SimpleEnumTwinNormal> for *mut wire_cst_simple_enum_twin_normal {
@@ -8999,12 +8978,12 @@ impl CstDecode<crate::api::pseudo_manual::array_twin_sync::FeedIdTwinSync>
         crate::api::pseudo_manual::array_twin_sync::FeedIdTwinSync(self.field0.cst_decode())
     }
 }
-impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::HashMapValue>
+impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync::HashMapValue>
     for wire_cst_hash_map_value
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync_sse::HashMapValue {
-        crate::api::pseudo_manual::mirror_twin_sync_sse::HashMapValue {
+    fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync::HashMapValue {
+        crate::api::pseudo_manual::mirror_twin_sync::HashMapValue {
             inner: self.inner.cst_decode(),
         }
     }
@@ -9370,11 +9349,13 @@ impl CstDecode<Vec<uuid::Uuid>> for *mut wire_cst_list_Uuid {
         vec.into_iter().map(CstDecode::cst_decode).collect()
     }
 }
-impl CstDecode<Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationEnvVar>>
+impl CstDecode<Vec<crate::api::pseudo_manual::mirror_twin_rust_async::ApplicationEnvVar>>
     for *mut wire_cst_list_application_env_var
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationEnvVar> {
+    fn cst_decode(
+        self,
+    ) -> Vec<crate::api::pseudo_manual::mirror_twin_rust_async::ApplicationEnvVar> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
             flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
@@ -9382,11 +9363,11 @@ impl CstDecode<Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationE
         vec.into_iter().map(CstDecode::cst_decode).collect()
     }
 }
-impl CstDecode<Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>>
+impl CstDecode<Vec<crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode>>
     for *mut wire_cst_list_application_mode
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode> {
+    fn cst_decode(self) -> Vec<crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
             flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
@@ -9769,13 +9750,13 @@ impl CstDecode<Vec<crate::api::pseudo_manual::misc_example_twin_sync::MyTreeNode
         vec.into_iter().map(CstDecode::cst_decode).collect()
     }
 }
-impl CstDecode<Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::NestedRawStringMirrored>>
+impl CstDecode<Vec<crate::api::pseudo_manual::mirror_twin_rust_async_sse::NestedRawStringMirrored>>
     for *mut wire_cst_list_nested_raw_string_mirrored
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
-    ) -> Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::NestedRawStringMirrored> {
+    ) -> Vec<crate::api::pseudo_manual::mirror_twin_rust_async_sse::NestedRawStringMirrored> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
             flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
@@ -10109,13 +10090,13 @@ impl CstDecode<Vec<u8>> for *mut wire_cst_list_prim_u_8_strict {
         }
     }
 }
-impl CstDecode<Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored>>
+impl CstDecode<Vec<crate::api::pseudo_manual::mirror_twin_rust_async::RawStringEnumMirrored>>
     for *mut wire_cst_list_raw_string_enum_mirrored
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
-    ) -> Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored> {
+    ) -> Vec<crate::api::pseudo_manual::mirror_twin_rust_async::RawStringEnumMirrored> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
             flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
@@ -10123,11 +10104,11 @@ impl CstDecode<Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnu
         vec.into_iter().map(CstDecode::cst_decode).collect()
     }
 }
-impl CstDecode<Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringMirrored>>
+impl CstDecode<Vec<crate::api::mirror::RawStringMirrored>>
     for *mut wire_cst_list_raw_string_mirrored
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringMirrored> {
+    fn cst_decode(self) -> Vec<crate::api::mirror::RawStringMirrored> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
             flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
@@ -10553,7 +10534,7 @@ impl
     CstDecode<
         Vec<(
             String,
-            crate::api::pseudo_manual::mirror_twin_sync_sse::HashMapValue,
+            crate::api::pseudo_manual::mirror_twin_sync::HashMapValue,
         )>,
     > for *mut wire_cst_list_record_string_hash_map_value
 {
@@ -10562,7 +10543,7 @@ impl
         self,
     ) -> Vec<(
         String,
-        crate::api::pseudo_manual::mirror_twin_sync_sse::HashMapValue,
+        crate::api::pseudo_manual::mirror_twin_sync::HashMapValue,
     )> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -10673,7 +10654,7 @@ impl
     CstDecode<
         Vec<(
             u8,
-            crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode,
+            crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode,
         )>,
     > for *mut wire_cst_list_record_u_8_application_mode
 {
@@ -10682,7 +10663,7 @@ impl
         self,
     ) -> Vec<(
         u8,
-        crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode,
+        crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode,
     )> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -11230,14 +11211,14 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync::MyTreeNodeTwin
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::NestedRawStringMirrored>
+impl CstDecode<crate::api::pseudo_manual::mirror_twin_rust_async_sse::NestedRawStringMirrored>
     for wire_cst_nested_raw_string_mirrored
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
-    ) -> crate::api::pseudo_manual::mirror_twin_sync_sse::NestedRawStringMirrored {
-        crate::api::pseudo_manual::mirror_twin_sync_sse::NestedRawStringMirrored {
+    ) -> crate::api::pseudo_manual::mirror_twin_rust_async_sse::NestedRawStringMirrored {
+        crate::api::pseudo_manual::mirror_twin_rust_async_sse::NestedRawStringMirrored {
             raw: self.raw.cst_decode(),
         }
     }
@@ -11506,29 +11487,29 @@ impl CstDecode<[crate::api::pseudo_manual::array_twin_sync::PointTwinSync; 2]>
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
 }
-impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored>
+impl CstDecode<crate::api::pseudo_manual::mirror_twin_rust_async::RawStringEnumMirrored>
     for wire_cst_raw_string_enum_mirrored
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored {
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::mirror_twin_rust_async::RawStringEnumMirrored {
         match self.tag {
             0 => {
                 let ans = unsafe { self.kind.Raw };
-                crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored::Raw(
+                crate::api::pseudo_manual::mirror_twin_rust_async::RawStringEnumMirrored::Raw(
                     ans.field0.cst_decode(),
                 )
             }
             1 => {
                 let ans = unsafe { self.kind.Nested };
-                crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored::Nested(
+                crate::api::pseudo_manual::mirror_twin_rust_async::RawStringEnumMirrored::Nested(
                     ans.field0.cst_decode(),
                 )
             }
             2 => {
                 let ans = unsafe { self.kind.ListOfNested };
-                crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored::ListOfNested(
-                    ans.field0.cst_decode(),
-                )
+                crate::api::pseudo_manual::mirror_twin_rust_async::RawStringEnumMirrored::ListOfNested( ans.field0.cst_decode())
             }
             _ => unreachable!(),
         }
@@ -11571,12 +11552,10 @@ impl CstDecode<crate::api::pseudo_manual::raw_string_twin_sync::RawStringItemStr
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringMirrored>
-    for wire_cst_raw_string_mirrored
-{
+impl CstDecode<crate::api::mirror::RawStringMirrored> for wire_cst_raw_string_mirrored {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringMirrored {
-        crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringMirrored {
+    fn cst_decode(self) -> crate::api::mirror::RawStringMirrored {
+        crate::api::mirror::RawStringMirrored {
             value: self.value.cst_decode(),
         }
     }
@@ -11584,7 +11563,7 @@ impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringMirrore
 impl
     CstDecode<(
         crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings,
-        crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored,
+        crate::api::pseudo_manual::mirror_twin_rust_async::RawStringEnumMirrored,
     )> for wire_cst_record_application_settings_raw_string_enum_mirrored
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
@@ -11592,7 +11571,7 @@ impl
         self,
     ) -> (
         crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings,
-        crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored,
+        crate::api::pseudo_manual::mirror_twin_rust_async::RawStringEnumMirrored,
     ) {
         (self.field0.cst_decode(), self.field1.cst_decode())
     }
@@ -11914,7 +11893,7 @@ impl
 impl
     CstDecode<(
         String,
-        crate::api::pseudo_manual::mirror_twin_sync_sse::HashMapValue,
+        crate::api::pseudo_manual::mirror_twin_sync::HashMapValue,
     )> for wire_cst_record_string_hash_map_value
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
@@ -11922,7 +11901,7 @@ impl
         self,
     ) -> (
         String,
-        crate::api::pseudo_manual::mirror_twin_sync_sse::HashMapValue,
+        crate::api::pseudo_manual::mirror_twin_sync::HashMapValue,
     ) {
         (self.field0.cst_decode(), self.field1.cst_decode())
     }
@@ -11996,7 +11975,7 @@ impl CstDecode<(String, String)> for wire_cst_record_string_string {
 impl
     CstDecode<(
         u8,
-        crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode,
+        crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode,
     )> for wire_cst_record_u_8_application_mode
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
@@ -12004,15 +11983,17 @@ impl
         self,
     ) -> (
         u8,
-        crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode,
+        crate::api::pseudo_manual::mirror_twin_sse::ApplicationMode,
     ) {
         (self.field0.cst_decode(), self.field1.cst_decode())
     }
 }
-impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::Sequences> for wire_cst_sequences {
+impl CstDecode<crate::api::pseudo_manual::mirror_twin_rust_async_sse::Sequences>
+    for wire_cst_sequences
+{
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync_sse::Sequences {
-        crate::api::pseudo_manual::mirror_twin_sync_sse::Sequences(self.field0.cst_decode())
+    fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_rust_async_sse::Sequences {
+        crate::api::pseudo_manual::mirror_twin_rust_async_sse::Sequences(self.field0.cst_decode())
     }
 }
 impl CstDecode<crate::api::method::SimpleEnumTwinNormal> for wire_cst_simple_enum_twin_normal {
@@ -12458,12 +12439,10 @@ impl CstDecode<crate::api::pseudo_manual::rust_auto_opaque_twin_sync_moi::Struct
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync_moi::StructWithGoodAndOpaqueFieldTwinSyncMoi{good:  self.good.cst_decode(),opaque:  self.opaque.cst_decode(),option_opaque:  self.option_opaque.cst_decode()}
             }
         }
-impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::StructWithHashMap>
-    for wire_cst_struct_with_hash_map
-{
+impl CstDecode<crate::api::mirror::StructWithHashMap> for wire_cst_struct_with_hash_map {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync_sse::StructWithHashMap {
-        crate::api::pseudo_manual::mirror_twin_sync_sse::StructWithHashMap {
+    fn cst_decode(self) -> crate::api::mirror::StructWithHashMap {
+        crate::api::mirror::StructWithHashMap {
             map: self.map.cst_decode(),
         }
     }

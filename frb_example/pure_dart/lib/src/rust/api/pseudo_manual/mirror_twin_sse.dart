@@ -6,8 +6,13 @@
 import '../../auxiliary/sample_types.dart';
 import '../../frb_generated.dart';
 import '../mirror.dart';
+import 'mirror_twin_rust_async.dart';
+import 'mirror_twin_rust_async_sse.dart';
+import 'mirror_twin_sync.dart';
 import 'mirror_twin_sync_sse.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
+import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
+part 'mirror_twin_sse.freezed.dart';
 
 Future<ApplicationSettings> getAppSettingsTwinSse() => RustLib.instance.api
     .crateApiPseudoManualMirrorTwinSseGetAppSettingsTwinSse();
@@ -127,6 +132,26 @@ class AnotherTwinSse {
       other is AnotherTwinSse &&
           runtimeType == other.runtimeType &&
           a == other.a;
+}
+
+@freezed
+sealed class ApplicationMessage with _$ApplicationMessage {
+  const ApplicationMessage._();
+
+  const factory ApplicationMessage.displayMessage(
+    String field0,
+  ) = ApplicationMessage_DisplayMessage;
+  const factory ApplicationMessage.renderPixel({
+    required int x,
+    required int y,
+  }) = ApplicationMessage_RenderPixel;
+  const factory ApplicationMessage.exit() = ApplicationMessage_Exit;
+}
+
+enum ApplicationMode {
+  standalone,
+  embedded,
+  ;
 }
 
 class ContainsMirroredSubStructTwinSse {

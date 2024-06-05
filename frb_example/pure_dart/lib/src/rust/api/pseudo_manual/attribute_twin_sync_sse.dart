@@ -9,8 +9,9 @@ import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'package:meta/meta.dart' as meta;
 part 'attribute_twin_sync_sse.freezed.dart';
 
-// These types are ignored because they are not used by any `pub` functions: `IgnoredStructTwinSyncSse`
-// These functions are ignored: `func_should_not_exist_in_dart_twin_sync_sse`, `method_should_not_exist_in_dart_twin_sync_sse`, `method_should_not_exist_in_dart_twin_sync_sse`
+// These types are ignored because they are not used by any `pub` functions: `IgnoredStructTwinSyncSse`, `StructWithOnlyIgnoredMethodTwinSyncSse`
+// These functions are ignored: `func_should_not_exist_in_dart_twin_sync_sse`, `method_should_not_exist_in_dart_twin_sync_sse`
+// These functions have error during generation (see debug logs for more details): `method_should_not_exist_in_dart_twin_sync_sse`
 
 void handleCustomizedStructTwinSyncSse({required CustomizedTwinSyncSse val}) =>
     RustLib.instance.api
