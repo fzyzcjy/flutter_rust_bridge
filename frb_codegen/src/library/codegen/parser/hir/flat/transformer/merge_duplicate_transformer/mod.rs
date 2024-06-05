@@ -33,16 +33,16 @@ pub(crate) fn transform(mut pack: HirFlatPack) -> anyhow::Result<HirFlatPack> {
     Ok(pack)
 }
 
-fn transform_component<T: Debug, K: Eq + Hash>(
+fn transform_component<T: Debug + Clone, K: Eq + Hash>(
     items: &mut Vec<T>,
     key: impl Fn(&T) -> K,
     merge: impl Fn(&dyn BaseMerger, &T, &T) -> Option<T>,
 ) {
-    *items = transform_component_raw(items, key, merge);
+    *items = transform_component_raw(items.drain(..).collect_vec(), key, merge);
 }
 
-fn transform_component_raw<T: Debug, K: Eq + Hash>(
-    items: &Vec<T>,
+fn transform_component_raw<T: Debug + Clone, K: Eq + Hash>(
+    items: Vec<T>,
     key: impl Fn(&T) -> K,
     merge: impl Fn(&dyn BaseMerger, &T, &T) -> Option<T>,
 ) -> Vec<T> {
@@ -51,7 +51,7 @@ fn transform_component_raw<T: Debug, K: Eq + Hash>(
         Box::new(ThirdPartyOverrideMerger),
     ];
 
-    (items.iter())
+    (items.into_iter())
         .group_by(|x| key(x))
         .into_iter()
         .map(|(_key, items_of_key)| {
@@ -69,7 +69,7 @@ fn transform_component_raw<T: Debug, K: Eq + Hash>(
                 );
             }
 
-            items_of_key[0]
+            items_of_key[0].to_owned()
         })
         .collect_vec()
 }
@@ -83,7 +83,7 @@ fn merge_vec_by_pair<T>(mut vec: Vec<T>, merger: impl Fn(&T, &T) -> Option<T>) -
                     continue;
                 }
 
-                if let Some(merged) = merger(vec[i], vec[j]) {
+                if let Some(merged) = merger(&vec[i], &vec[j]) {
                     // super slow but seems not like a bottleneck so ok
                     vec = (vec.into_iter().enumerate())
                         .filter(|(item_index, _)| *item_index != i && *item_index != j)
