@@ -1,4 +1,4 @@
-use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirStruct;
+use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirFlatStruct;
 use crate::utils::namespace::Namespace;
 use syn::{ItemImpl, ItemStruct};
 

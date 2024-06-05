@@ -1,5 +1,5 @@
 use crate::codegen::ir::hir::hierarchical::module::HirVisibility;
-use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirStructOrEnum;
+use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirFlatStructOrEnum;
 use crate::codegen::ir::hir::hierarchical::syn_item_struct_or_enum::SynItemStructOrEnum;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::mir::attribute_parser::FrbAttributes;
@@ -101,7 +101,7 @@ where
     fn parse_opaque(
         &mut self,
         namespaced_name: &NamespacedName,
-        src_object: &HirStructOrEnum<Item>,
+        src_object: &HirFlatStructOrEnum<Item>,
     ) -> anyhow::Result<MirType> {
         self.parse_type_rust_auto_opaque_implicit(
             Some(namespaced_name.namespace.clone()),
@@ -115,14 +115,14 @@ where
 
     fn parse_inner_impl(
         &mut self,
-        src_object: &HirStructOrEnum<Item>,
+        src_object: &HirFlatStructOrEnum<Item>,
         name: NamespacedName,
         wrapper_name: Option<String>,
     ) -> anyhow::Result<Obj>;
 
     fn construct_output(&self, ident: Id) -> anyhow::Result<MirType>;
 
-    fn src_objects(&self) -> &HashMap<String, &HirStructOrEnum<Item>>;
+    fn src_objects(&self) -> &HashMap<String, &HirFlatStructOrEnum<Item>>;
 
     fn parser_info(&mut self) -> &mut EnumOrStructParserInfo<Id, Obj>;
 
@@ -168,7 +168,7 @@ fn compute_name_and_wrapper_name(
 }
 
 pub(crate) fn parse_struct_or_enum_should_ignore<Item: SynItemStructOrEnum>(
-    src_object: &HirStructOrEnum<Item>,
+    src_object: &HirFlatStructOrEnum<Item>,
     crate_name: &CrateName,
 ) -> bool {
     let attrs = FrbAttributes::parse(src_object.src.attrs()).unwrap();

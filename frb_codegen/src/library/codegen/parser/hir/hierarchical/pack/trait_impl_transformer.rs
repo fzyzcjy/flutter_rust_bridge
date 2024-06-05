@@ -1,5 +1,5 @@
 use crate::codegen::ir::hir::hierarchical::function::{
-    GeneralizedItemFn, HirFunction, HirFunctionOwner,
+    GeneralizedItemFn, HirFlatFunction, HirFlatFunctionOwner,
 };
 use crate::codegen::ir::hir::hierarchical::module::HirModule;
 use crate::codegen::ir::hir::hierarchical::pack::HirPack;
@@ -24,7 +24,7 @@ pub(super) fn transform(mut pack: HirPack) -> anyhow::Result<HirPack> {
     Ok(pack)
 }
 
-fn compute_methods(module: &HirModule, trait_map: &HashMap<String, HirTrait>) -> Vec<HirFunction> {
+fn compute_methods(module: &HirModule, trait_map: &HashMap<String, HirTrait>) -> Vec<HirFlatFunction> {
     (module.content.trait_impls.iter())
         .flat_map(|trait_impl| {
             let namespace = &trait_impl.namespace;
@@ -69,14 +69,14 @@ fn parse_trait_def_functions(
     item_impl: &ItemImpl,
     namespace: &Namespace,
     trait_def_name: &NamespacedName,
-) -> Vec<HirFunction> {
+) -> Vec<HirFlatFunction> {
     (trait_def.item_trait.items.iter())
         .filter_map(
             |item| if_then_some!(let TraitItem::Fn(ref trait_item_fn) = item, trait_item_fn),
         )
-        .map(|trait_item_fn| HirFunction {
+        .map(|trait_item_fn| HirFlatFunction {
             namespace: namespace.clone(),
-            owner: HirFunctionOwner::Method {
+            owner: HirFlatFunctionOwner::Method {
                 item_impl: item_impl.to_owned(),
                 trait_def_name: Some(trait_def_name.to_owned()),
             },

@@ -10,8 +10,8 @@ pub(crate) mod sanity_checker;
 pub(crate) mod type_parser;
 
 use crate::codegen::ir::hir::flat::HirFlatCrate;
-use crate::codegen::ir::hir::hierarchical::function::HirFunction;
-use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirStruct;
+use crate::codegen::ir::hir::hierarchical::function::HirFlatFunction;
+use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirFlatStruct;
 use crate::codegen::ir::mir::func::MirFunc;
 use crate::codegen::ir::mir::pack::MirPack;
 use crate::codegen::ir::mir::skip::MirSkip;
@@ -73,9 +73,9 @@ pub(crate) fn parse(
 
 fn parse_mir_funcs(
     config: &ParserMirInternalConfig,
-    src_fns: &[&HirFunction],
+    src_fns: &[&HirFlatFunction],
     type_parser: &mut TypeParser,
-    src_structs: &HashMap<String, &HirStruct>,
+    src_structs: &HashMap<String, &HirFlatStruct>,
 ) -> anyhow::Result<(Vec<MirFunc>, Vec<MirSkip>)> {
     let mut function_parser = FunctionParser::new(type_parser);
 

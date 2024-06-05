@@ -1,8 +1,8 @@
-use crate::codegen::ir::hir::hierarchical::function::HirFunction;
-use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirEnum;
-use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirStruct;
+use crate::codegen::ir::hir::hierarchical::function::HirFlatFunction;
+use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirFlatEnum;
+use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirFlatStruct;
 use crate::codegen::ir::hir::hierarchical::traits::{HirTrait, HirTraitImpl};
-use crate::codegen::ir::hir::hierarchical::type_alias::HirTypeAlias;
+use crate::codegen::ir::hir::hierarchical::type_alias::HirFlatTypeAlias;
 use crate::utils::namespace::Namespace;
 use derivative::Derivative;
 use itertools::concat;
@@ -53,10 +53,10 @@ impl HirModuleMeta {
 #[derive(Debug, Clone, Serialize, Default)]
 pub struct HirModuleContent {
     pub modules: Vec<HirModule>,
-    pub type_alias: Vec<HirTypeAlias>,
-    pub enums: Vec<HirEnum>,
-    pub structs: Vec<HirStruct>,
-    pub functions: Vec<HirFunction>,
+    pub type_alias: Vec<HirFlatTypeAlias>,
+    pub enums: Vec<HirFlatEnum>,
+    pub structs: Vec<HirFlatStruct>,
+    pub functions: Vec<HirFlatFunction>,
     pub traits: Vec<HirTrait>,
     pub trait_impls: Vec<HirTraitImpl>,
 }

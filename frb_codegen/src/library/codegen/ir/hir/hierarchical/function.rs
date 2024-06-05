@@ -7,14 +7,14 @@ use syn::spanned::Spanned;
 use syn::{Attribute, ImplItemFn, ItemFn, ItemImpl, Signature, TraitItemFn, Visibility};
 
 #[derive(Debug, Clone, Serialize)]
-pub(crate) struct HirFunction {
+pub(crate) struct HirFlatFunction {
     pub(crate) namespace: Namespace,
-    pub(crate) owner: HirFunctionOwner,
+    pub(crate) owner: HirFlatFunctionOwner,
     #[serde(serialize_with = "serialize_generalized_item_fn")]
     pub(crate) item_fn: GeneralizedItemFn,
 }
 
-impl HirCommon for HirFunction {
+impl HirCommon for HirFlatFunction {
     fn with_namespace(&self, namespace: Namespace) -> Self {
         Self {
             namespace,
@@ -24,25 +24,25 @@ impl HirCommon for HirFunction {
 
     fn name_for_use_stmt(&self) -> String {
         match &self.owner {
-            HirFunctionOwner::Function => self.item_fn.sig().ident.to_string(),
-            HirFunctionOwner::Method { item_impl, .. } => ty_to_string(&item_impl.self_ty),
+            HirFlatFunctionOwner::Function => self.item_fn.sig().ident.to_string(),
+            HirFlatFunctionOwner::Method { item_impl, .. } => ty_to_string(&item_impl.self_ty),
         }
     }
 }
 
-impl HirFunction {
+impl HirFlatFunction {
     pub(crate) fn owner_and_name(&self) -> SimpleOwnerAndName {
         (self.owner.simple_name(), self.item_fn.name())
     }
 
     pub(crate) fn is_public(&self) -> Option<bool> {
         match self.owner {
-            HirFunctionOwner::Function
-            | HirFunctionOwner::Method {
+            HirFlatFunctionOwner::Function
+            | HirFlatFunctionOwner::Method {
                 trait_def_name: None,
                 ..
             } => (self.item_fn.vis()).map(|vis| matches!(vis, Visibility::Public(_))),
-            HirFunctionOwner::Method {
+            HirFlatFunctionOwner::Method {
                 trait_def_name: Some(_),
                 ..
             } => None,
@@ -51,7 +51,7 @@ impl HirFunction {
 }
 
 #[derive(Debug, Clone, Serialize)]
-pub(crate) enum HirFunctionOwner {
+pub(crate) enum HirFlatFunctionOwner {
     Function,
     Method {
         #[serde(serialize_with = "serialize_item_impl")]
@@ -60,7 +60,7 @@ pub(crate) enum HirFunctionOwner {
     },
 }
 
-impl HirFunctionOwner {
+impl HirFlatFunctionOwner {
     pub(crate) fn simple_name(&self) -> Option<String> {
         match self {
             Self::Function => None,

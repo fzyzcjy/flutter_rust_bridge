@@ -1,4 +1,4 @@
-use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirStruct;
+use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirFlatStruct;
 use crate::codegen::ir::mir::field::{MirField, MirFieldSettings};
 use crate::codegen::ir::mir::ident::MirIdent;
 use crate::codegen::ir::mir::ty::structure::{MirStruct, MirStructIdent, MirTypeStructRef};
@@ -28,7 +28,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
     fn parse_struct(
         &mut self,
-        src_struct: &HirStruct,
+        src_struct: &HirFlatStruct,
         name: NamespacedName,
         wrapper_name: Option<String>,
     ) -> anyhow::Result<MirStruct> {
@@ -93,7 +93,7 @@ impl EnumOrStructParser<MirStructIdent, MirStruct, ItemStruct>
 {
     fn parse_inner_impl(
         &mut self,
-        src_object: &HirStruct,
+        src_object: &HirFlatStruct,
         name: NamespacedName,
         wrapper_name: Option<String>,
     ) -> anyhow::Result<MirStruct> {
@@ -107,7 +107,7 @@ impl EnumOrStructParser<MirStructIdent, MirStruct, ItemStruct>
         }))
     }
 
-    fn src_objects(&self) -> &HashMap<String, &HirStruct> {
+    fn src_objects(&self) -> &HashMap<String, &HirFlatStruct> {
         &self.0.inner.src_structs
     }
 

@@ -1,4 +1,4 @@
-use crate::codegen::ir::hir::hierarchical::struct_or_enum::{HirEnum, HirStruct};
+use crate::codegen::ir::hir::hierarchical::struct_or_enum::{HirFlatEnum, HirFlatStruct};
 use crate::codegen::ir::mir::pack::MirPack;
 use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
 use crate::codegen::ir::mir::ty::MirType;
@@ -12,8 +12,8 @@ use syn::Type;
 
 pub(crate) fn get_unused_types(
     pack: &MirPack,
-    src_structs: &HashMap<String, &HirStruct>,
-    src_enums: &HashMap<String, &HirEnum>,
+    src_structs: &HashMap<String, &HirFlatStruct>,
+    src_enums: &HashMap<String, &HirFlatEnum>,
     rust_input_namespace_pack: &RustInputNamespacePack,
 ) -> anyhow::Result<Vec<NamespacedName>> {
     let all_types = [

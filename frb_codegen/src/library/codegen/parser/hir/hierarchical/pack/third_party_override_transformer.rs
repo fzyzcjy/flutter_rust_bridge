@@ -1,7 +1,7 @@
-use crate::codegen::ir::hir::hierarchical::function::HirFunction;
+use crate::codegen::ir::hir::hierarchical::function::HirFlatFunction;
 use crate::codegen::ir::hir::hierarchical::module::HirModule;
 use crate::codegen::ir::hir::hierarchical::pack::HirPack;
-use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirStructOrEnum;
+use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirFlatStructOrEnum;
 use crate::codegen::ir::hir::hierarchical::syn_item_struct_or_enum::SynItemStructOrEnum;
 use crate::codegen::misc::THIRD_PARTY_DIR_NAME;
 use crate::utils::crate_name::CrateName;
@@ -48,8 +48,8 @@ fn transform_module(target: &mut HirModule, src: HirModule) -> anyhow::Result<()
 }
 
 fn transform_module_content_functions(
-    target: &mut [HirFunction],
-    src_content_functions: Vec<HirFunction>,
+    target: &mut [HirFlatFunction],
+    src_content_functions: Vec<HirFlatFunction>,
 ) -> anyhow::Result<()> {
     transform_module_content_general_vec(
         target,
@@ -62,8 +62,8 @@ fn transform_module_content_functions(
 }
 
 fn transform_module_content_struct_or_enums<Item: SynItemStructOrEnum>(
-    target: &mut [HirStructOrEnum<Item>],
-    src_content_struct_or_enums: Vec<HirStructOrEnum<Item>>,
+    target: &mut [HirFlatStructOrEnum<Item>],
+    src_content_struct_or_enums: Vec<HirFlatStructOrEnum<Item>>,
 ) -> anyhow::Result<()> {
     transform_module_content_general_vec(
         target,

@@ -10,7 +10,7 @@ use syn::{ItemEnum, ItemStruct};
 
 #[derive(Clone, Derivative, Serialize)]
 #[derivative(Debug)]
-pub struct HirStructOrEnum<Item: SynItemStructOrEnum> {
+pub struct HirFlatStructOrEnum<Item: SynItemStructOrEnum> {
     pub(crate) name: NamespacedName,
     pub(crate) visibility: HirVisibility,
     pub(crate) mirror: bool,
@@ -19,10 +19,10 @@ pub struct HirStructOrEnum<Item: SynItemStructOrEnum> {
     pub(crate) src: Item,
 }
 
-pub type HirStruct = HirStructOrEnum<ItemStruct>;
-pub type HirEnum = HirStructOrEnum<ItemEnum>;
+pub type HirFlatStruct = HirFlatStructOrEnum<ItemStruct>;
+pub type HirFlatEnum = HirFlatStructOrEnum<ItemEnum>;
 
-impl<Item: SynItemStructOrEnum> HirCommon for HirStructOrEnum<Item> {
+impl<Item: SynItemStructOrEnum> HirCommon for HirFlatStructOrEnum<Item> {
     fn with_namespace(&self, namespace: Namespace) -> Self {
         Self {
             name: NamespacedName::new(namespace, self.name.name.clone()),

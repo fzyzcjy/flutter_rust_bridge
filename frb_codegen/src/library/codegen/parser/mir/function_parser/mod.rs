@@ -1,5 +1,5 @@
 use crate::codegen::generator::codec::structs::{CodecMode, CodecModePack};
-use crate::codegen::ir::hir::hierarchical::function::{HirFunction, HirFunctionOwner};
+use crate::codegen::ir::hir::hierarchical::function::{HirFlatFunction, HirFlatFunctionOwner};
 use crate::codegen::ir::mir::func::{
     MirFunc, MirFuncArgMode, MirFuncInput, MirFuncMode, MirFuncOutput, MirFuncOverridePriority,
     MirFuncOwnerInfo, MirFuncOwnerInfoMethod, MirFuncOwnerInfoMethodMode,
@@ -40,7 +40,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
     #[allow(clippy::too_many_arguments)]
     pub(crate) fn parse_function(
         &mut self,
-        func: &HirFunction,
+        func: &HirFlatFunction,
         force_codec_mode_pack: &Option<CodecModePack>,
         default_stream_sink_codec: CodecMode,
         default_rust_opaque_codec: RustOpaqueCodecMode,
@@ -64,7 +64,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
     #[allow(clippy::too_many_arguments)]
     fn parse_function_inner(
         &mut self,
-        func: &HirFunction,
+        func: &HirFlatFunction,
         force_codec_mode_pack: &Option<CodecModePack>,
         default_stream_sink_codec: CodecMode,
         default_rust_opaque_codec: RustOpaqueCodecMode,
@@ -155,13 +155,13 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
     fn parse_owner(
         &mut self,
-        func: &HirFunction,
+        func: &HirFlatFunction,
         context: &TypeParserParsingContext,
         actual_method_dart_name: Option<String>,
     ) -> anyhow::Result<Option<MirFuncOwnerInfo>> {
         Ok(Some(match &func.owner {
-            HirFunctionOwner::Function => MirFuncOwnerInfo::Function,
-            HirFunctionOwner::Method {
+            HirFlatFunctionOwner::Function => MirFuncOwnerInfo::Function,
+            HirFlatFunctionOwner::Method {
                 item_impl,
                 trait_def_name,
             } => {
@@ -215,7 +215,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
     }
 }
 
-fn create_output_skip(func: &HirFunction, reason: MirSkipReason) -> ParseFunctionOutput {
+fn create_output_skip(func: &HirFlatFunction, reason: MirSkipReason) -> ParseFunctionOutput {
     ParseFunctionOutput::Skip(MirSkip {
         name: NamespacedName::new(func.namespace.clone(), func.item_fn.name().to_string()),
         reason,
@@ -307,7 +307,7 @@ fn refine_namespace(owner: &MirFuncOwnerInfo) -> Option<Namespace> {
 fn parse_frb_override_marker(
     dart_name_raw: Option<String>,
     override_priority_raw: MirFuncOverridePriority,
-    func: &HirFunction,
+    func: &HirFlatFunction,
 ) -> (Option<String>, MirFuncOverridePriority) {
     const FRB_OVERRIDE_PREFIX: &str = "frb_override_";
     if let Some(func_name_stripped) = func.item_fn.name().strip_prefix(FRB_OVERRIDE_PREFIX) {

@@ -1,4 +1,4 @@
-use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirEnum;
+use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirFlatEnum;
 use crate::codegen::ir::mir::field::{MirField, MirFieldSettings};
 use crate::codegen::ir::mir::ident::MirIdent;
 use crate::codegen::ir::mir::ty::boxed::MirTypeBoxed;
@@ -33,7 +33,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
     fn parse_enum(
         &mut self,
-        src_enum: &HirEnum,
+        src_enum: &HirFlatEnum,
         name: NamespacedName,
         wrapper_name: Option<String>,
     ) -> anyhow::Result<MirEnum> {
@@ -61,7 +61,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
     fn parse_variant(
         &mut self,
-        src_enum: &HirEnum,
+        src_enum: &HirFlatEnum,
         variant: &Variant,
     ) -> anyhow::Result<MirVariant> {
         Ok(MirVariant {
@@ -81,7 +81,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
     fn parse_variant_kind_struct(
         &mut self,
-        src_enum: &HirEnum,
+        src_enum: &HirFlatEnum,
         variant: &Variant,
         attrs: &[Attribute],
         field_ident: &Option<Ident>,
@@ -134,7 +134,7 @@ impl EnumOrStructParser<MirEnumIdent, MirEnum, ItemEnum>
 {
     fn parse_inner_impl(
         &mut self,
-        src_object: &HirEnum,
+        src_object: &HirFlatEnum,
         name: NamespacedName,
         wrapper_name: Option<String>,
     ) -> anyhow::Result<MirEnum> {
@@ -163,7 +163,7 @@ impl EnumOrStructParser<MirEnumIdent, MirEnum, ItemEnum>
         )
     }
 
-    fn src_objects(&self) -> &HashMap<String, &HirEnum> {
+    fn src_objects(&self) -> &HashMap<String, &HirFlatEnum> {
         &self.0.inner.src_enums
     }
 
