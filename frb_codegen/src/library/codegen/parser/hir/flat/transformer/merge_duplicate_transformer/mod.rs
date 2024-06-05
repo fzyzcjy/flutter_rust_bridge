@@ -4,7 +4,7 @@ use itertools::Itertools;
 use crate::codegen::ir::hir::flat::function::HirFlatFunction;
 use crate::codegen::ir::hir::flat::pack::HirFlatPack;
 use crate::codegen::ir::hir::flat::struct_or_enum::HirFlatStructOrEnum;
-use crate::codegen::parser::hir::flat::transformer::merge_duplicate_transformer::base::{BaseMerger, CombinedMerger};
+use crate::codegen::parser::hir::flat::transformer::merge_duplicate_transformer::base::BaseMerger;
 use crate::codegen::parser::hir::flat::transformer::merge_duplicate_transformer::third_party_override_merger::ThirdPartyOverrideMerger;
 use crate::codegen::parser::hir::flat::transformer::merge_duplicate_transformer::trait_def_default_impl_merger::TraitDefDefaultImplMerger;
 
@@ -65,7 +65,7 @@ fn transform_component_raw<T, K: Eq + Hash>(
                 );
             }
 
-            merged_items_of_key[0]
+            items_of_key[0]
         })
         .collect_vec()
 }
