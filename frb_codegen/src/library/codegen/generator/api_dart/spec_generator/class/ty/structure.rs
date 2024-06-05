@@ -1,5 +1,5 @@
 use crate::codegen::generator::api_dart::spec_generator::class::method::{
-    dart_constructor_postfix, generate_api_methods, GenerateApiMethodMode,
+    dart_constructor_postfix, generate_api_methods, GenerateApiMethodConfig, GenerateApiMethodMode,
 };
 use crate::codegen::generator::api_dart::spec_generator::class::misc::generate_class_extra_body;
 use crate::codegen::generator::api_dart::spec_generator::class::ty::ApiDartGeneratorClassTrait;
@@ -16,7 +16,7 @@ impl<'a> ApiDartGeneratorClassTrait for StructRefApiDartGenerator<'a> {
         let metadata = generate_dart_metadata(&src.dart_metadata);
 
         let methods =
-            generate_api_methods(&src.name, self.context, GenerateApiMethodMode::Combined);
+            generate_api_methods(&src.name, self.context, &GenerateApiMethodConfig::COMBINED);
         let extra_body =
             generate_class_extra_body(self.mir_type(), &self.context.mir_pack.dart_code_of_type);
 
