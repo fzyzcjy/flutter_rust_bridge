@@ -1,10 +1,23 @@
 use crate::codegen::ir::hir::flat::pack::HirFlatPack;
+use crate::codegen::ir::hir::flat::struct_or_enum::HirFlatStruct;
 use log::debug;
 use std::collections::HashMap;
 use std::fmt::Debug;
 use std::hash::Hash;
 
-impl HirFlatPack {}
+impl HirFlatPack {
+    pub(crate) fn structs_map(&self) -> HashMap<String, &HirFlatStruct> {
+        vec_to_map_with_warn(&self.structs, |x| (x.name.name.clone(), x))
+    }
+
+    pub(crate) fn enums_map(&self) -> HashMap<String, &HirFlatStruct> {
+        vec_to_map_with_warn(&self.enums, |x| (x.name.name.clone(), x))
+    }
+
+    pub(crate) fn types_map(&self) -> HashMap<String, &HirFlatStruct> {
+        vec_to_map_with_warn(&self.types, |x| (x.ident.clone(), x.target.clone()))
+    }
+}
 
 fn vec_to_map_with_warn<T, K: Eq + Hash, V>(
     items: &[T],
