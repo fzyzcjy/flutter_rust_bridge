@@ -14,12 +14,12 @@ use syn::{ItemEnum, ItemStruct};
 #[derive(Clone, Derivative, Serialize)]
 #[derivative(Debug)]
 pub struct HirStructOrEnum<Item: SynItemStructOrEnum> {
+    pub(crate) name: NamespacedName,
+    pub(crate) visibility: HirVisibility,
+    pub(crate) mirror: bool,
     #[derivative(Debug = "ignore")]
     #[serde(skip_serializing)]
     pub(crate) src: Item,
-    pub(crate) visibility: HirVisibility,
-    pub(crate) name: NamespacedName,
-    pub(crate) mirror: bool,
 }
 // frb-coverage:ignore-end
 
