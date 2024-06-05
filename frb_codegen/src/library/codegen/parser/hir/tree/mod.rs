@@ -1,4 +1,5 @@
-mod pack;
+mod parser;
+mod transformer;
 
 use crate::codegen::ir::hir::raw::pack::HirRawPack;
 use crate::codegen::ir::hir::tree::pack::HirTreePack;
@@ -8,5 +9,5 @@ pub(crate) fn parse(
     config: &ParserHirInternalConfig,
     hir_raw: &HirRawPack,
 ) -> anyhow::Result<HirTreePack> {
-    pack::parse_pack(config, hir_raw)
+    parser::pack::parse_pack(config, hir_raw)
 }
