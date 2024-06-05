@@ -14,20 +14,3 @@ pub(crate) fn parse_syn_item_fn(item_fn: &ItemFn, meta: &HirTreeModuleMeta) -> H
     }
 }
 
-pub(crate) fn parse_syn_item_impl(
-    item_impl: &ItemImpl,
-    namespace: &Namespace,
-    trait_def_name: Option<NamespacedName>,
-) -> Vec<HirFlatFunction> {
-    (item_impl.items.iter())
-        .filter_map(|item| if_then_some!(let ImplItem::Fn(ref impl_item_fn) = item, impl_item_fn))
-        .map(|impl_item_fn| HirFlatFunction {
-            namespace: namespace.clone(),
-            owner: HirFlatFunctionOwner::Method {
-                item_impl: item_impl.to_owned(),
-                trait_def_name: trait_def_name.clone(),
-            },
-            item_fn: GeneralizedItemFn::ImplItemFn(impl_item_fn.clone()),
-        })
-        .collect_vec()
-}
