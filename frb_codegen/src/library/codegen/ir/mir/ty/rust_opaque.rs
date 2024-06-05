@@ -1,4 +1,4 @@
-use crate::codegen::ir::mir::ty::delegate::MirTypeDelegateDynTrait;
+use crate::codegen::ir::mir::ty::delegate::{MirTypeDelegate, MirTypeDelegateDynTrait};
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
 use crate::codegen::ir::mir::ty::{MirContext, MirType, MirTypeTrait};
 use crate::utils::namespace::Namespace;
@@ -74,7 +74,10 @@ impl MirTypeTrait for MirTypeRustOpaque {
         f: &mut F,
         mir_context: &impl MirContext,
     ) {
-        self.get_delegate().visit_types(f, mir_context)
+        self.get_delegate().visit_types(f, mir_context);
+        for t in &self.impl_traits {
+            MirTypeDelegate::DynTrait(t).visit_types(f, mir_context)
+        }
     }
 
     fn safe_ident(&self) -> String {
