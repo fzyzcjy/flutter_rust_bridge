@@ -5,12 +5,10 @@ use crate::codegen::parser::hir::tree::parser::crates::parse_crate;
 
 pub(crate) fn parse_pack(
     config: &ParserHirInternalConfig,
-    hir_raw: &HirRawPack,
+    hir_raw: HirRawPack,
 ) -> anyhow::Result<HirTreePack> {
-    let crates = hir_raw
-        .crates
-        .iter()
-        .map(|c| parse_crate(config, &c.syn_file, &c.name))
+    let crates = (hir_raw.crates.into_iter())
+        .map(|c| parse_crate(config, c.syn_file, &c.name))
         .collect::<anyhow::Result<Vec<_>>>()?
         .into_iter()
         .collect();

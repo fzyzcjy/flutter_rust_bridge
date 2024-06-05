@@ -7,7 +7,7 @@ use crate::utils::crate_name::CrateName;
 
 pub(crate) fn parse_crate(
     config: &ParserHirInternalConfig,
-    file: &syn::File,
+    file: syn::File,
     crate_name: &CrateName,
 ) -> anyhow::Result<HirTreeCrate> {
     let info = HirTreeModuleMeta {
@@ -15,7 +15,7 @@ pub(crate) fn parse_crate(
         vis: HirVisibility::Public,
         namespace: crate_name.namespace(),
     };
-    let root_module = parse_module(&file.items, info, config)?;
+    let root_module = parse_module(file.items, info, config)?;
     Ok(HirTreeCrate {
         name: crate_name.to_owned(),
         root_module,
