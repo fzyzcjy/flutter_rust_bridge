@@ -12,15 +12,18 @@ use crate::library::codegen::generator::api_dart::spec_generator::base::*;
 use crate::utils::namespace::NamespacedName;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
+use std::os::unix::raw::mode_t;
 
 #[derive(Debug, Clone)]
 pub(crate) struct GenerateApiMethodConfig {
     generate_static: bool,
+    generate_non_static: bool,
 }
 
 impl GenerateApiMethodConfig {
     pub(crate) const COMBINED: GenerateApiMethodConfig = GenerateApiMethodConfig {
         generate_static: true,
+        generate_non_static: true,
     };
 }
 
@@ -101,8 +104,8 @@ fn generate_api_method(
         dart_class_name,
     );
 
-    let maybe_implementation =
-        generate_maybe_implementation(func, context, method_info, &params, config);
+    let maybe_implementation = should_generate_implementation(method_info.mode, config)
+        .then(|| generate_implementation(func, context, method_info, &params, config));
     let maybe_implementation = (maybe_implementation.map(|x| format!("=>{x}"))).unwrap_or_default();
 
     Some(format!("{comments}{signature}{maybe_implementation};\n\n"))
@@ -185,24 +188,17 @@ fn generate_method_name(
     }
 }
 
-fn generate_maybe_implementation(
-    func: &MirFunc,
-    context: ApiDartGeneratorContext,
-    method_info: &MirFuncOwnerInfoMethod,
-    params: &[ApiDartGeneratedFunctionParam],
+fn should_generate_implementation(
+    mode: MirFuncOwnerInfoMethodMode,
     config: &GenerateApiMethodConfig,
-) -> Option<String> {
-    match (config, method_info.mode.to_owned()) {
-        (GenerateApiMethodMode::Combined, _)
-        | (GenerateApiMethodMode::SeparatedDecl, MirFuncOwnerInfoMethodMode::Static)
-        | (GenerateApiMethodMode::SeparatedImpl, MirFuncOwnerInfoMethodMode::Instance) => Some(
-            generate_implementation_call_impl(func, context, method_info, params),
-        ),
-        _ => None,
+) -> bool {
+    match method_info.mode.to_owned() {
+        MirFuncOwnerInfoMethodMode::Static => config.generate_static,
+        MirFuncOwnerInfoMethodMode::Instance => config.generate_non_static,
     }
 }
 
-fn generate_implementation_call_impl(
+fn generate_implementation(
     func: &MirFunc,
     context: ApiDartGeneratorContext,
     method_info: &MirFuncOwnerInfoMethod,
