@@ -51,12 +51,12 @@ fn transform_component_raw<T, K: Eq + Hash>(
     ];
 
     (items.iter())
-        .group_by(key)
+        .group_by(|x| key(x))
         .into_iter()
         .map(|(_key, items_of_key)| {
             let mut items_of_key = items_of_key.collect_vec();
             for merger in &mergers {
-                *items_of_key = merge_vec_by_pair(items_of_key, |a, b| merge(merger, a, b));
+                *items_of_key = merge_vec_by_pair(items_of_key, |a, b| merge(&*merger, a, b));
             }
             assert!(!items_of_key.is_empty());
 
