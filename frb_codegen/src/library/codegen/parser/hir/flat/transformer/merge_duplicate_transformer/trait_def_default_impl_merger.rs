@@ -1,4 +1,6 @@
-use crate::codegen::ir::hir::flat::function::{HirFlatFunction, HirFlatFunctionOwner};
+use crate::codegen::ir::hir::flat::function::{
+    HirFlatFunction, HirFlatFunctionOwner, HirFlatFunctionSource,
+};
 use crate::codegen::ir::hir::flat::struct_or_enum::{HirFlatEnum, HirFlatStruct};
 use crate::codegen::parser::hir::flat::transformer::merge_duplicate_transformer::base::BaseMerger;
 

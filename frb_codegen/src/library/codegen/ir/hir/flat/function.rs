@@ -10,6 +10,7 @@ use syn::Visibility;
 pub(crate) struct HirFlatFunction {
     pub(crate) namespace: Namespace,
     pub(crate) owner: HirFlatFunctionOwner,
+    pub(crate) source: HirFlatFunctionSource,
     #[serde(serialize_with = "serialize_generalized_item_fn")]
     pub(crate) item_fn: GeneralizedItemFn,
 }
@@ -59,3 +60,9 @@ impl HirFlatFunctionOwner {
 }
 
 pub(crate) type SimpleOwnerAndName = (Option<String>, String);
+
+#[derive(Debug, Clone, Copy, Serialize)]
+pub(crate) enum HirFlatFunctionSource {
+    Normal,
+    CopyFromTraitDef,
+}
