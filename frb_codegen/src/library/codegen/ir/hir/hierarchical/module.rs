@@ -62,15 +62,6 @@ pub struct HirModuleContent {
     pub trait_impls: Vec<HirTraitImpl>,
 }
 
-/// Mirrors syn::Visibility, but can be created without a token
-#[derive(Debug, Clone, Copy, Serialize, PartialEq, Eq)]
-pub enum HirVisibility {
-    Public,
-    Restricted,
-    // Not supported
-    Inherited, // Usually means private
-}
-
 impl HirModuleContent {
     pub(crate) fn get_module_index_by_name(&self, mod_name: &str) -> Option<usize> {
         self.modules
