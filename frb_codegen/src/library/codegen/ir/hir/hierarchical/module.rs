@@ -53,10 +53,10 @@ impl HirModuleMeta {
 #[derive(Debug, Clone, Serialize, Default)]
 pub struct HirModuleContent {
     pub modules: Vec<HirModule>,
-    pub type_alias: Vec<HirFlatTypeAlias>,
-    pub enums: Vec<HirFlatEnum>,
-    pub structs: Vec<HirFlatStruct>,
-    pub functions: Vec<HirFlatFunction>,
+    // pub type_alias: Vec<HirFlatTypeAlias>,
+    // pub enums: Vec<HirFlatEnum>,
+    // pub structs: Vec<HirFlatStruct>,
+    // pub functions: Vec<HirFlatFunction>,
     pub traits: Vec<HirTrait>,
     pub trait_impls: Vec<HirTraitImpl>,
 }
