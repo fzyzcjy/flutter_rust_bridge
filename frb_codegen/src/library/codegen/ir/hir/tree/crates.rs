@@ -3,7 +3,7 @@
 use crate::codegen::ir::hir::tree::module::HirTreeModule;
 use crate::utils::crate_name::CrateName;
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, serde::Serialize)]
 pub struct HirTreeCrate {
     pub(crate) name: CrateName,
     pub(crate) root_module: HirTreeModule,
