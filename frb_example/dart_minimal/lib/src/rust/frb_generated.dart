@@ -56,7 +56,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.0.0-dev.37';
 
   @override
-  int get rustContentHash => 2047558242;
+  int get rustContentHash => -994426164;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -67,24 +67,31 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 }
 
 abstract class RustLibApi extends BaseApi {
-  Future<int> crateApiMinimalMyStructF(
-      {required MyStruct that, required int a});
-
-  Future<int> crateApiMinimalMyStructMyStaticMethod();
-
-  MyStruct crateApiMinimalMyStructNew();
-
   Future<void> crateApiMinimalInitApp();
 
   Future<int> crateApiMinimalMinimalAdder({required int a, required int b});
 
-  RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_MyStruct;
+  Future<int>
+      crateApiMinimalStructOneWithTraitTwinNormalSimpleTraitFnReceiverBorrowTwinNormal(
+          {required StructOneWithTraitTwinNormal that});
 
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_MyStruct;
+  Future<StructOneWithTraitTwinNormal>
+      crateApiMinimalStructOneWithTraitTwinNormalSimpleTraitFnTwinNormal(
+          {required int value});
 
-  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_MyStructPtr;
+  Future<int>
+      crateApiMinimalStructOneWithTraitTwinNormalSimpleTraitFnWithDefaultImplTwinNormal();
+
+  Future<int>
+      crateApiMinimalStructTwoWithTraitTwinNormalSimpleTraitFnReceiverBorrowTwinNormal(
+          {required StructTwoWithTraitTwinNormal that});
+
+  Future<StructTwoWithTraitTwinNormal>
+      crateApiMinimalStructTwoWithTraitTwinNormalSimpleTraitFnTwinNormal(
+          {required int value});
+
+  Future<int>
+      crateApiMinimalStructTwoWithTraitTwinNormalSimpleTraitFnWithDefaultImplTwinNormal();
 }
 
 class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
@@ -96,86 +103,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   });
 
   @override
-  Future<int> crateApiMinimalMyStructF(
-      {required MyStruct that, required int a}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
-            that, serializer);
-        sse_encode_i_32(a, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1, port: port_);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_i_32,
-        decodeErrorData: null,
-      ),
-      constMeta: kCrateApiMinimalMyStructFConstMeta,
-      argValues: [that, a],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta get kCrateApiMinimalMyStructFConstMeta => const TaskConstMeta(
-        debugName: "MyStruct_f",
-        argNames: ["that", "a"],
-      );
-
-  @override
-  Future<int> crateApiMinimalMyStructMyStaticMethod() {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 2, port: port_);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_i_32,
-        decodeErrorData: null,
-      ),
-      constMeta: kCrateApiMinimalMyStructMyStaticMethodConstMeta,
-      argValues: [],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta get kCrateApiMinimalMyStructMyStaticMethodConstMeta =>
-      const TaskConstMeta(
-        debugName: "MyStruct_my_static_method",
-        argNames: [],
-      );
-
-  @override
-  MyStruct crateApiMinimalMyStructNew() {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 3)!;
-      },
-      codec: SseCodec(
-        decodeSuccessData:
-            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct,
-        decodeErrorData: null,
-      ),
-      constMeta: kCrateApiMinimalMyStructNewConstMeta,
-      argValues: [],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta get kCrateApiMinimalMyStructNewConstMeta => const TaskConstMeta(
-        debugName: "MyStruct_new",
-        argNames: [],
-      );
-
-  @override
   Future<void> crateApiMinimalInitApp() {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 4, port: port_);
+            funcId: 1, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -200,7 +133,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_i_32(a, serializer);
         sse_encode_i_32(b, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 5, port: port_);
+            funcId: 2, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_i_32,
@@ -218,36 +151,196 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         argNames: ["a", "b"],
       );
 
-  RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_MyStruct => wire
-          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct;
+  @override
+  Future<int>
+      crateApiMinimalStructOneWithTraitTwinNormalSimpleTraitFnReceiverBorrowTwinNormal(
+          {required StructOneWithTraitTwinNormal that}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_box_autoadd_struct_one_with_trait_twin_normal(
+            that, serializer);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 3, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiMinimalStructOneWithTraitTwinNormalSimpleTraitFnReceiverBorrowTwinNormalConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
 
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_MyStruct => wire
-          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct;
+  TaskConstMeta
+      get kCrateApiMinimalStructOneWithTraitTwinNormalSimpleTraitFnReceiverBorrowTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "struct_one_with_trait_twin_normal_simple_trait_fn_receiver_borrow_twin_normal",
+            argNames: ["that"],
+          );
+
+  @override
+  Future<StructOneWithTraitTwinNormal>
+      crateApiMinimalStructOneWithTraitTwinNormalSimpleTraitFnTwinNormal(
+          {required int value}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_i_32(value, serializer);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 4, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_struct_one_with_trait_twin_normal,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiMinimalStructOneWithTraitTwinNormalSimpleTraitFnTwinNormalConstMeta,
+      argValues: [value],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiMinimalStructOneWithTraitTwinNormalSimpleTraitFnTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "struct_one_with_trait_twin_normal_simple_trait_fn_twin_normal",
+            argNames: ["value"],
+          );
+
+  @override
+  Future<int>
+      crateApiMinimalStructOneWithTraitTwinNormalSimpleTraitFnWithDefaultImplTwinNormal() {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 5, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiMinimalStructOneWithTraitTwinNormalSimpleTraitFnWithDefaultImplTwinNormalConstMeta,
+      argValues: [],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiMinimalStructOneWithTraitTwinNormalSimpleTraitFnWithDefaultImplTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "struct_one_with_trait_twin_normal_simple_trait_fn_with_default_impl_twin_normal",
+            argNames: [],
+          );
+
+  @override
+  Future<int>
+      crateApiMinimalStructTwoWithTraitTwinNormalSimpleTraitFnReceiverBorrowTwinNormal(
+          {required StructTwoWithTraitTwinNormal that}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_box_autoadd_struct_two_with_trait_twin_normal(
+            that, serializer);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 6, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiMinimalStructTwoWithTraitTwinNormalSimpleTraitFnReceiverBorrowTwinNormalConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiMinimalStructTwoWithTraitTwinNormalSimpleTraitFnReceiverBorrowTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "struct_two_with_trait_twin_normal_simple_trait_fn_receiver_borrow_twin_normal",
+            argNames: ["that"],
+          );
+
+  @override
+  Future<StructTwoWithTraitTwinNormal>
+      crateApiMinimalStructTwoWithTraitTwinNormalSimpleTraitFnTwinNormal(
+          {required int value}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_i_32(value, serializer);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 7, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_struct_two_with_trait_twin_normal,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiMinimalStructTwoWithTraitTwinNormalSimpleTraitFnTwinNormalConstMeta,
+      argValues: [value],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiMinimalStructTwoWithTraitTwinNormalSimpleTraitFnTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "struct_two_with_trait_twin_normal_simple_trait_fn_twin_normal",
+            argNames: ["value"],
+          );
+
+  @override
+  Future<int>
+      crateApiMinimalStructTwoWithTraitTwinNormalSimpleTraitFnWithDefaultImplTwinNormal() {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 8, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiMinimalStructTwoWithTraitTwinNormalSimpleTraitFnWithDefaultImplTwinNormalConstMeta,
+      argValues: [],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiMinimalStructTwoWithTraitTwinNormalSimpleTraitFnWithDefaultImplTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "struct_two_with_trait_twin_normal_simple_trait_fn_with_default_impl_twin_normal",
+            argNames: [],
+          );
 
   @protected
-  MyStruct
-      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
-          dynamic raw) {
+  StructOneWithTraitTwinNormal
+      dco_decode_box_autoadd_struct_one_with_trait_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return MyStructImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return dco_decode_struct_one_with_trait_twin_normal(raw);
   }
 
   @protected
-  MyStruct
-      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
-          dynamic raw) {
+  StructTwoWithTraitTwinNormal
+      dco_decode_box_autoadd_struct_two_with_trait_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return MyStructImpl.frbInternalDcoDecode(raw as List<dynamic>);
-  }
-
-  @protected
-  MyStruct
-      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
-          dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return MyStructImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return dco_decode_struct_two_with_trait_twin_normal(raw);
   }
 
   @protected
@@ -257,42 +350,49 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  StructOneWithTraitTwinNormal dco_decode_struct_one_with_trait_twin_normal(
+      dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return StructOneWithTraitTwinNormal(
+      value: dco_decode_i_32(arr[0]),
+    );
+  }
+
+  @protected
+  StructTwoWithTraitTwinNormal dco_decode_struct_two_with_trait_twin_normal(
+      dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return StructTwoWithTraitTwinNormal(
+      value: dco_decode_i_32(arr[0]),
+    );
+  }
+
+  @protected
   void dco_decode_unit(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return;
   }
 
   @protected
-  BigInt dco_decode_usize(dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return dcoDecodeU64(raw);
+  StructOneWithTraitTwinNormal
+      sse_decode_box_autoadd_struct_one_with_trait_twin_normal(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return (sse_decode_struct_one_with_trait_twin_normal(deserializer));
   }
 
   @protected
-  MyStruct
-      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
+  StructTwoWithTraitTwinNormal
+      sse_decode_box_autoadd_struct_two_with_trait_twin_normal(
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    return MyStructImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
-  }
-
-  @protected
-  MyStruct
-      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
-          SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return MyStructImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
-  }
-
-  @protected
-  MyStruct
-      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
-          SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return MyStructImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+    return (sse_decode_struct_two_with_trait_twin_normal(deserializer));
   }
 
   @protected
@@ -302,14 +402,24 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_decode_unit(SseDeserializer deserializer) {
+  StructOneWithTraitTwinNormal sse_decode_struct_one_with_trait_twin_normal(
+      SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
+    var var_value = sse_decode_i_32(deserializer);
+    return StructOneWithTraitTwinNormal(value: var_value);
   }
 
   @protected
-  BigInt sse_decode_usize(SseDeserializer deserializer) {
+  StructTwoWithTraitTwinNormal sse_decode_struct_two_with_trait_twin_normal(
+      SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    return deserializer.buffer.getBigUint64();
+    var var_value = sse_decode_i_32(deserializer);
+    return StructTwoWithTraitTwinNormal(value: var_value);
+  }
+
+  @protected
+  void sse_decode_unit(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
   }
 
   @protected
@@ -319,30 +429,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void
-      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
-          MyStruct self, SseSerializer serializer) {
+  void sse_encode_box_autoadd_struct_one_with_trait_twin_normal(
+      StructOneWithTraitTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_usize(
-        (self as MyStructImpl).frbInternalSseEncode(move: true), serializer);
+    sse_encode_struct_one_with_trait_twin_normal(self, serializer);
   }
 
   @protected
-  void
-      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
-          MyStruct self, SseSerializer serializer) {
+  void sse_encode_box_autoadd_struct_two_with_trait_twin_normal(
+      StructTwoWithTraitTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_usize(
-        (self as MyStructImpl).frbInternalSseEncode(move: false), serializer);
-  }
-
-  @protected
-  void
-      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
-          MyStruct self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_usize(
-        (self as MyStructImpl).frbInternalSseEncode(move: null), serializer);
+    sse_encode_struct_two_with_trait_twin_normal(self, serializer);
   }
 
   @protected
@@ -352,14 +449,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_unit(void self, SseSerializer serializer) {
+  void sse_encode_struct_one_with_trait_twin_normal(
+      StructOneWithTraitTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_i_32(self.value, serializer);
   }
 
   @protected
-  void sse_encode_usize(BigInt self, SseSerializer serializer) {
+  void sse_encode_struct_two_with_trait_twin_normal(
+      StructTwoWithTraitTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    serializer.buffer.putBigUint64(self);
+    sse_encode_i_32(self.value, serializer);
+  }
+
+  @protected
+  void sse_encode_unit(void self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
   }
 
   @protected
@@ -367,29 +472,4 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     serializer.buffer.putUint8(self ? 1 : 0);
   }
-}
-
-// Section: boilerplate
-
-@sealed
-class MyStructImpl extends RustOpaque implements MyStruct {
-  // Not to be used by end users
-  MyStructImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  MyStructImpl.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount:
-        RustLib.instance.api.rust_arc_increment_strong_count_MyStruct,
-    rustArcDecrementStrongCount:
-        RustLib.instance.api.rust_arc_decrement_strong_count_MyStruct,
-    rustArcDecrementStrongCountPtr:
-        RustLib.instance.api.rust_arc_decrement_strong_count_MyStructPtr,
-  );
-
-  Future<int> f({required int a}) =>
-      RustLib.instance.api.crateApiMinimalMyStructF(that: this, a: a);
 }
