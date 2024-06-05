@@ -55,6 +55,7 @@ impl HirFlatFunctionOwner {
         match self {
             Self::Function => None,
             Self::StructOrEnum { impl_ty, .. } => Some(ty_to_string(impl_ty)),
+            Self::TraitDef { trait_def_name } => Some(trait_def_name.name.clone()),
         }
     }
 }
