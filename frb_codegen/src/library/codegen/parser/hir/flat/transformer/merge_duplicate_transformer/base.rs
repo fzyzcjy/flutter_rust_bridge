@@ -1,8 +1,5 @@
 use crate::codegen::ir::hir::flat::function::HirFlatFunction;
-use crate::codegen::ir::hir::flat::struct_or_enum::{
-    HirFlatEnum, HirFlatStruct, HirFlatStructOrEnum,
-};
-use crate::codegen::ir::hir::misc::syn_item_struct_or_enum::SynItemStructOrEnum;
+use crate::codegen::ir::hir::flat::struct_or_enum::{HirFlatEnum, HirFlatStruct};
 
 pub(crate) trait BaseMerger {
     fn merge_functions(

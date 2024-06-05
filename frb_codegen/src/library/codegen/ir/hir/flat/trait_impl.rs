@@ -1,5 +1,4 @@
 use crate::codegen::ir::hir::misc::serializers::serialize_syn;
-use crate::utils::namespace::NamespacedName;
 
 #[derive(Clone, serde::Serialize, Debug)]
 pub struct HirFlatTraitImpl {

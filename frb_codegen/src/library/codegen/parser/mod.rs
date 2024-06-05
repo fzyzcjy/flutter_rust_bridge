@@ -1,10 +1,9 @@
 use crate::codegen::dumper::Dumper;
+use crate::codegen::ir::hir::flat::pack::HirFlatPack;
 use crate::codegen::ir::mir::pack::MirPack;
 use crate::codegen::misc::GeneratorProgressBarPack;
 use crate::codegen::parser::internal_config::ParserInternalConfig;
 use crate::codegen::ConfigDumpContent;
-use crate::codegen::ir::hir::flat::pack::HirFlatPack;
-use crate::codegen::ir::hir::tree::pack::HirTreePack;
 
 pub(crate) mod hir;
 pub(crate) mod internal_config;

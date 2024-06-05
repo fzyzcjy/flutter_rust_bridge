@@ -1,5 +1,4 @@
 use proc_macro2::Span;
-use serde::Serializer;
 use syn::spanned::Spanned;
 use syn::{Attribute, ImplItemFn, ItemFn, Signature, TraitItemFn, Visibility};
 
@@ -56,4 +55,3 @@ impl GeneralizedItemFn {
         }
     }
 }
-

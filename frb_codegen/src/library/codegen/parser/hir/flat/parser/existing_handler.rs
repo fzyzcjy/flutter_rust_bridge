@@ -1,6 +1,4 @@
-use crate::codegen::ir::hir::tree::module::HirTreeModule;
 use crate::codegen::parser::hir::flat::parser::flattener::SynItemWithMeta;
-use crate::codegen::parser::mir::internal_config::RustInputNamespacePack;
 use crate::library::misc::consts::HANDLER_NAME;
 use crate::utils::namespace::NamespacedName;
 use anyhow::ensure;

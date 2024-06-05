@@ -4,9 +4,8 @@ use crate::codegen::ir::hir::flat::trait_impl::HirFlatTraitImpl;
 use crate::codegen::ir::hir::misc::item_fn::GeneralizedItemFn;
 use crate::codegen::ir::hir::tree::module::HirTreeModuleMeta;
 use crate::if_then_some;
-use crate::utils::namespace::{Namespace, NamespacedName};
 use itertools::Itertools;
-use syn::{ImplItem, ItemImpl, ItemStruct};
+use syn::{ImplItem, ItemImpl};
 
 pub(crate) fn parse_syn_item_impl(
     target: &mut HirFlatPack,
@@ -22,8 +21,7 @@ pub(crate) fn parse_syn_item_impl(
 }
 
 fn parse_trait_name(item_impl: &ItemImpl) -> Option<String> {
-    (item_impl.trait_.as_ref())
-        .map(|t| t.1.segments.last().unwrap().ident.to_string())
+    (item_impl.trait_.as_ref()).map(|t| t.1.segments.last().unwrap().ident.to_string())
 }
 
 fn parse_functions(

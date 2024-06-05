@@ -1,10 +1,8 @@
-use crate::codegen::ir::hir::misc::visibility::HirVisibility;
 use crate::codegen::ir::hir::misc::syn_item_struct_or_enum::SynItemStructOrEnum;
-use crate::utils::namespace::{Namespace, NamespacedName};
+use crate::codegen::ir::hir::misc::visibility::HirVisibility;
+use crate::utils::namespace::NamespacedName;
 use derivative::Derivative;
-use proc_macro2::Ident;
-use quote::ToTokens;
-use serde::{Serialize, Serializer};
+use serde::Serialize;
 use syn::{ItemEnum, ItemStruct};
 
 #[derive(Clone, Derivative, Serialize)]

@@ -3,10 +3,8 @@ use crate::codegen::ir::hir::misc::serializers::serialize_generalized_item_fn;
 use crate::codegen::ir::hir::misc::serializers::serialize_syn;
 use crate::utils::namespace::{Namespace, NamespacedName};
 use crate::utils::syn_utils::ty_to_string;
-use proc_macro2::Span;
-use serde::{Serialize, Serializer};
-use syn::spanned::Spanned;
-use syn::{Attribute, ImplItemFn, ItemFn, ItemImpl, Signature, TraitItemFn, Visibility};
+use serde::Serialize;
+use syn::Visibility;
 
 #[derive(Debug, Clone, Serialize)]
 pub(crate) struct HirFlatFunction {
