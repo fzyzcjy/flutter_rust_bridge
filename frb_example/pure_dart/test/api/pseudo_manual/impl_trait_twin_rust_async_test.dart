@@ -9,12 +9,23 @@ import 'package:test/test.dart';
 Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
-  test('StructWithTraitTwinRustAsync', () async {
+  test('impl class should extend trait class', () async {
+    final one =
+        await StructOneWithTraitTwinRustAsync.simpleTraitFnTwinRustAsync(
+            value: 10);
+    expect(one, isA<SimpleTraitTwinRustAsync>());
+  });
+
+  test('call methods', () async {
+    final one =
+        await StructOneWithTraitTwinRustAsync.simpleTraitFnTwinRustAsync(
+            value: 10);
+    expect(one.simpleTraitFnReceiverBorrowTwinRustAsync(), 10);
+  });
+
+  test('trait default impl', () async {
     expect(
-        (await StructWithTraitTwinRustAsync.simpleTraitFnTwinRustAsync()).value,
-        42);
-    expect(
-        await StructWithTraitTwinRustAsync
+        await StructOneWithTraitTwinRustAsync
             .simpleTraitFnWithDefaultImplTwinRustAsync(),
         42);
   });

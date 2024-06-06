@@ -6,30 +6,52 @@
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// These functions are ignored: `simple_trait_fn_twin_sync`, `simple_trait_fn_with_default_impl_twin_sync`
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructOneWithTraitTwinSync>>
+abstract class StructOneWithTraitTwinSync implements SimpleTraitTwinSync {
+  int get one;
 
-class StructWithTraitTwinSync {
-  final int value;
+  void set one(int one);
 
-  const StructWithTraitTwinSync({
-    required this.value,
-  });
+  Future<int> simpleTraitFnReceiverBorrowTwinSync();
 
-  static Future<StructWithTraitTwinSync> simpleTraitFnTwinSync() => RustLib
-      .instance.api
-      .crateApiPseudoManualImplTraitTwinSyncStructWithTraitTwinSyncSimpleTraitFnTwinSync();
+  static Future<StructOneWithTraitTwinSync> simpleTraitFnTwinSync(
+          {required int value}) =>
+      RustLib.instance.api
+          .crateApiPseudoManualImplTraitTwinSyncStructOneWithTraitTwinSyncSimpleTraitFnTwinSync(
+              value: value);
 
   static Future<int> simpleTraitFnWithDefaultImplTwinSync() => RustLib
       .instance.api
-      .crateApiPseudoManualImplTraitTwinSyncStructWithTraitTwinSyncSimpleTraitFnWithDefaultImplTwinSync();
+      .crateApiPseudoManualImplTraitTwinSyncStructOneWithTraitTwinSyncSimpleTraitFnWithDefaultImplTwinSync();
 
-  @override
-  int get hashCode => value.hashCode;
+  void dispose();
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is StructWithTraitTwinSync &&
-          runtimeType == other.runtimeType &&
-          value == other.value;
+  bool get isDisposed;
+}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructTwoWithTraitTwinSync>>
+abstract class StructTwoWithTraitTwinSync implements SimpleTraitTwinSync {
+  int get two;
+
+  void set two(int two);
+
+  Future<int> simpleTraitFnReceiverBorrowTwinSync();
+
+  static Future<StructTwoWithTraitTwinSync> simpleTraitFnTwinSync(
+          {required int value}) =>
+      RustLib.instance.api
+          .crateApiPseudoManualImplTraitTwinSyncStructTwoWithTraitTwinSyncSimpleTraitFnTwinSync(
+              value: value);
+
+  static Future<int> simpleTraitFnWithDefaultImplTwinSync() => RustLib
+      .instance.api
+      .crateApiPseudoManualImplTraitTwinSyncStructTwoWithTraitTwinSyncSimpleTraitFnWithDefaultImplTwinSync();
+
+  void dispose();
+
+  bool get isDisposed;
+}
+
+abstract class SimpleTraitTwinSync {
+  Future<int> simpleTraitFnReceiverBorrowTwinSync();
 }

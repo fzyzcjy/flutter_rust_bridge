@@ -6,30 +6,54 @@
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-abstract class SimpleTraitTwinRustAsync {}
+// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructOneWithTraitTwinRustAsync>>
+abstract class StructOneWithTraitTwinRustAsync
+    implements SimpleTraitTwinRustAsync {
+  int get one;
 
-class StructWithTraitTwinRustAsync {
-  final int value;
+  void set one(int one);
 
-  const StructWithTraitTwinRustAsync({
-    required this.value,
-  });
+  Future<int> simpleTraitFnReceiverBorrowTwinRustAsync();
 
-  static Future<StructWithTraitTwinRustAsync> simpleTraitFnTwinRustAsync() =>
+  static Future<StructOneWithTraitTwinRustAsync> simpleTraitFnTwinRustAsync(
+          {required int value}) =>
       RustLib.instance.api
-          .crateApiPseudoManualImplTraitTwinRustAsyncStructWithTraitTwinRustAsyncSimpleTraitFnTwinRustAsync();
+          .crateApiPseudoManualImplTraitTwinRustAsyncStructOneWithTraitTwinRustAsyncSimpleTraitFnTwinRustAsync(
+              value: value);
 
   static Future<int> simpleTraitFnWithDefaultImplTwinRustAsync() => RustLib
       .instance.api
-      .crateApiPseudoManualImplTraitTwinRustAsyncStructWithTraitTwinRustAsyncSimpleTraitFnWithDefaultImplTwinRustAsync();
+      .crateApiPseudoManualImplTraitTwinRustAsyncStructOneWithTraitTwinRustAsyncSimpleTraitFnWithDefaultImplTwinRustAsync();
 
-  @override
-  int get hashCode => value.hashCode;
+  void dispose();
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is StructWithTraitTwinRustAsync &&
-          runtimeType == other.runtimeType &&
-          value == other.value;
+  bool get isDisposed;
+}
+
+// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructTwoWithTraitTwinRustAsync>>
+abstract class StructTwoWithTraitTwinRustAsync
+    implements SimpleTraitTwinRustAsync {
+  int get two;
+
+  void set two(int two);
+
+  Future<int> simpleTraitFnReceiverBorrowTwinRustAsync();
+
+  static Future<StructTwoWithTraitTwinRustAsync> simpleTraitFnTwinRustAsync(
+          {required int value}) =>
+      RustLib.instance.api
+          .crateApiPseudoManualImplTraitTwinRustAsyncStructTwoWithTraitTwinRustAsyncSimpleTraitFnTwinRustAsync(
+              value: value);
+
+  static Future<int> simpleTraitFnWithDefaultImplTwinRustAsync() => RustLib
+      .instance.api
+      .crateApiPseudoManualImplTraitTwinRustAsyncStructTwoWithTraitTwinRustAsyncSimpleTraitFnWithDefaultImplTwinRustAsync();
+
+  void dispose();
+
+  bool get isDisposed;
+}
+
+abstract class SimpleTraitTwinRustAsync {
+  Future<int> simpleTraitFnReceiverBorrowTwinRustAsync();
 }
