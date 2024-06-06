@@ -54,7 +54,7 @@ pub(crate) fn parse(
     let (struct_pool, enum_pool, dart_code_of_type) = type_parser.consume();
 
     let mut ans = MirPack {
-        funcs: mir_funcs,
+        funcs_all: mir_funcs,
         struct_pool,
         enum_pool,
         dart_code_of_type,
