@@ -34,7 +34,7 @@ pub(super) fn parse_auto_accessor_of_field(
         actual_method_name: rust_method_name,
         actual_method_dart_name: Some(field.name.raw.clone()),
         mode: MirFuncOwnerInfoMethodMode::Instance,
-        trait_def_name: None,
+        trait_def: None,
     };
 
     let mut inputs = vec![compute_self_arg(

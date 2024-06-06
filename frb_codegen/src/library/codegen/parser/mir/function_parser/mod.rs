@@ -214,7 +214,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                     actual_method_name,
                     actual_method_dart_name,
                     mode,
-                    trait_def_name: trait_def_namespaced_name,
+                    trait_def: trait_def_namespaced_name,
                 })
             }
         }))

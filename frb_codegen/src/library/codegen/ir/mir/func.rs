@@ -8,6 +8,7 @@ use crate::if_then_some;
 use crate::utils::namespace::NamespacedName;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
+use crate::codegen::ir::mir::ty::trait_def::MirTypeTraitDef;
 
 crate::mir! {
 pub struct MirFunc {
@@ -63,7 +64,7 @@ pub struct MirFuncOwnerInfoMethod {
     pub(crate) actual_method_name: String,
     pub(crate) actual_method_dart_name: Option<String>,
     pub(crate) mode: MirFuncOwnerInfoMethodMode,
-    pub(crate) trait_def_name: Option<NamespacedName>,
+    pub(crate) trait_def: Option<MirTypeTraitDef>,
 }
 
 pub enum MirFuncOwnerInfoMethodMode {

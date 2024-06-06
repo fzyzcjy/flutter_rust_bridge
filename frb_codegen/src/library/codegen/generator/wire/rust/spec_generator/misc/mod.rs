@@ -104,7 +104,7 @@ fn generate_imports(
         .filter_map(
             |func| if_then_some!(let MirFuncOwnerInfo::Method(method) = &func.owner, method),
         )
-        .filter_map(|method| method.trait_def_name.clone())
+        .filter_map(|method| method.trait_def.clone())
         .map(|name| format!("use {};\n", name.rust_style()))
         .unique()
         .join("");
