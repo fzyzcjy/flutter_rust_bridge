@@ -30,8 +30,12 @@ pub(super) fn parse(
     Ok((hir_trait_impls.iter())
         .map(|x| {
             let trait_ty = parse_type_trait(&x.trait_name, type_parser);
-            let impl_ty = type_parser.parse_type(&x.impl_ty, &context)?;
-            Ok(trait_ty.map(|trait_ty| MirTraitImpl { trait_ty, impl_ty }))
+            let impl_ty = type_parser.parse_type(&x.impl_ty, &context).ok();
+            Ok(if let (Some(trait_ty), Some(impl_ty)) = (trait_ty, impl_ty) {
+                Some(MirTraitImpl { trait_ty, impl_ty })
+            } else {
+                None
+            })
         })
         .collect::<anyhow::Result<Vec<_>>>()?
         .into_iter()
