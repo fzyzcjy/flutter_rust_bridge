@@ -30,5 +30,5 @@ impl HirFlatPack {
 }
 
 pub(crate) trait HirFlatPackComponentVisitor {
-    fn visit<SK: Eq + Hash, T: HirFlatComponent<SK>>(&self, items: &mut Vec<T>);
+    fn visit<SK: Ord, T: HirFlatComponent<SK>>(&self, items: &mut Vec<T>);
 }
