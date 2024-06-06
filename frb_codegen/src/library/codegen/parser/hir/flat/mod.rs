@@ -31,6 +31,9 @@ pub(crate) fn parse(
     let pack = transformer::resolve_type_alias_transformer::transform(pack)?;
     dump(dumper, "6_resolve_type_alias_transformer", &pack)?;
 
+    let pack = transformer::sort_transformer::transform(pack)?;
+    dump(dumper, "7_sort_transformer", &pack)?;
+
     Ok(pack)
 }
 
