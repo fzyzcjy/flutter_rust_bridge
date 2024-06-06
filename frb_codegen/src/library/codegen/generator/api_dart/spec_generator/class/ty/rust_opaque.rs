@@ -162,13 +162,13 @@ fn generate_maybe_impls(
     let code = format!(" implements {}", combined_impls);
 
     let header = generate_imports_which_types_and_funcs_use(
-        self_type.namespace.clone(),
-        Some(
+        &self_type.namespace,
+        &Some(
             (interest_trait_impls.iter())
                 .map(|x| MirType::TraitDef(x.trait_ty.clone()))
                 .collect(),
         ),
-        None,
+        &None,
         context,
     ).unwrap();
 
