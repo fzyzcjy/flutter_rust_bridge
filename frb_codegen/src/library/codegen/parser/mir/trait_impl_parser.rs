@@ -9,9 +9,11 @@ pub(super) fn parse(
     type_parser: &mut TypeParser,
 ) -> anyhow::Result<Vec<MirTraitImpl>> {
     (hir_trait_impls.iter())
-        .map(|x| MirTraitImpl {
-            trait_ty: x.trait_name.clone(),
-            impl_ty: ty_to_string(&x.impl_ty),
+        .map(|x| {
+            Ok(MirTraitImpl {
+                trait_ty: type_parser.parse_type(syn::parse_str(&x.trait_name)?)?,
+                impl_ty: type_parser.parse_type(&x.impl_ty)?,
+            })
         })
-        .collect_vec()
+        .collect()
 }
