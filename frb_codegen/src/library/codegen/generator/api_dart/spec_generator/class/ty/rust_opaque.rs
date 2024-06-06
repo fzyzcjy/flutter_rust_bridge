@@ -1,6 +1,4 @@
-use crate::codegen::generator::api_dart::spec_generator::class::method::{
-    generate_api_methods, GenerateApiMethodConfig, GeneratedApiMethods,
-};
+use crate::codegen::generator::api_dart::spec_generator::class::method::{generate_api_methods, GenerateApiMethodConfig, GenerateApiMethodMode, GeneratedApiMethods};
 use crate::codegen::generator::api_dart::spec_generator::class::misc::generate_class_extra_body;
 use crate::codegen::generator::api_dart::spec_generator::class::ty::ApiDartGeneratorClassTrait;
 use crate::codegen::generator::api_dart::spec_generator::class::ApiDartGeneratedClass;
@@ -22,9 +20,8 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
             methods,
         } = self.compute_info(
             &GenerateApiMethodConfig {
-                generate_static: true,
-                generate_non_static: false,
-                generate_impl: true,
+                mode_static: GenerateApiMethodMode::DeclAndImpl,
+                mode_non_static: GenerateApiMethodMode::DeclOnly,
             },
             "",
         );
@@ -69,9 +66,8 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
             methods,
         } = self.compute_info(
             &GenerateApiMethodConfig {
-                generate_static: false,
-                generate_non_static: true,
-                generate_impl: true,
+                mode_static: GenerateApiMethodMode::Nothing,
+                mode_non_static: GenerateApiMethodMode::DeclAndImpl,
             },
             "Impl",
         );

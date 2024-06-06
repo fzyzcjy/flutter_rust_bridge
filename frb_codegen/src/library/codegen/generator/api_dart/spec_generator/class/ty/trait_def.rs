@@ -1,6 +1,4 @@
-use crate::codegen::generator::api_dart::spec_generator::class::method::{
-    generate_api_methods, GenerateApiMethodConfig,
-};
+use crate::codegen::generator::api_dart::spec_generator::class::method::{generate_api_methods, GenerateApiMethodConfig, GenerateApiMethodMode};
 use crate::codegen::generator::api_dart::spec_generator::class::ty::ApiDartGeneratorClassTrait;
 use crate::codegen::generator::api_dart::spec_generator::class::ApiDartGeneratedClass;
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
@@ -12,9 +10,8 @@ impl<'a> ApiDartGeneratorClassTrait for TraitDefApiDartGenerator<'a> {
             &self.mir.name,
             self.context,
             &GenerateApiMethodConfig {
-                generate_static: false,
-                generate_non_static: true,
-                generate_impl: false,
+                mode_static: GenerateApiMethodMode::Nothing,
+                mode_non_static: GenerateApiMethodMode::DeclOnly,
             },
             dart_api_type,
         );
