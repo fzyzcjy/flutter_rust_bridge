@@ -9,7 +9,7 @@ pub struct HirFlatTraitImpl {
     pub(crate) impl_ty: syn::Type,
 }
 
-impl HirFlatComponent for HirFlatTraitImpl<String> {
+impl HirFlatComponent<String> for HirFlatTraitImpl {
     fn sort_key(&self) -> String {
         self.trait_name.clone()
     }
