@@ -6,12 +6,12 @@ use itertools::Itertools;
 
 pub(crate) fn transform(mut pack: HirNaiveFlatPack) -> anyhow::Result<HirNaiveFlatPack> {
     pack.items = (pack.items.drain(..))
-        .filter(|item| is_interest_mod(item))
+        .filter(|item| is_interest(item))
         .collect_vec();
     Ok(pack)
 }
 
-fn is_interest_mod(item: &HirNaiveFlatItem) -> bool {
+fn is_interest(item: &HirNaiveFlatItem) -> bool {
     // If it is third party crate, then we only scan the `pub` mods,
     // since for non-pub modes, it is impossible to use them even if we scanned them.
     item.meta.namespace.path()[0] == CrateName::SELF_CRATE
