@@ -19,8 +19,3 @@ fn flatten_module(module: HirTreeModule, target: &mut Vec<SynItemWithMeta>) {
         flatten_module(child_module, target);
     }
 }
-
-pub(crate) struct SynItemWithMeta {
-    pub meta: HirTreeModuleMeta,
-    pub item: syn::Item,
-}
