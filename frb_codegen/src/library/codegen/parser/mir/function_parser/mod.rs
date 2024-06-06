@@ -56,6 +56,10 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             Ok(output) => Ok(output),
             Err(err) => {
                 if stop_on_error {
+                    log::info!(
+                        "parse_function halt since stop_on_error=true and see error (function={:?})",
+                        func.item_fn.name(),
+                    );
                     Err(err)
                 } else {
                     log::debug!(
