@@ -8,11 +8,12 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         &mut self,
         last_segment: &SplayedSegment,
     ) -> anyhow::Result<Option<MirType>> {
-        if let Some(trait_info) = self.inner.src_traits.get(last_segment.0) {
-            return Ok(Some(MirType::TraitDef(MirTypeTraitDef {
-                name: trait_info.name.clone(),
-            })));
-        }
-        Ok(None)
+        Ok(self.parse_trait(last_segment.0).map(MirType::TraitDef))
+    }
+
+    pub(crate) fn parse_trait(&self, name: &str) -> Option<MirTypeTraitDef> {
+        (self.inner.src_traits.get(name)).map(|trait_info| MirTypeTraitDef {
+            name: trait_info.name.clone(),
+        })
     }
 }
