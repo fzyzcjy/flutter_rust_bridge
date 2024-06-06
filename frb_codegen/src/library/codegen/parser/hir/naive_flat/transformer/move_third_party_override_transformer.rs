@@ -27,6 +27,6 @@ pub(crate) fn transform(mut pack: HirNaiveFlatPack) -> anyhow::Result<HirNaiveFl
     Ok(pack)
 }
 
-fn compute_moved_namespace(original_namespace: &Namespace) -> Namespace {
-    TODO
+fn compute_moved_namespace(original: &Namespace) -> Namespace {
+    original.strip_prefix(&SELF_CRATE_THIRD_PARTY_NAMESPACE)
 }
