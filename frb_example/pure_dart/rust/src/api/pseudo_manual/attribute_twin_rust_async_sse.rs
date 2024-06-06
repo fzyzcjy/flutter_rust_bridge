@@ -17,7 +17,7 @@ pub struct CustomizedTwinRustAsyncSse {
 #[flutter_rust_bridge::frb(serialize)]
 pub async fn func_should_not_exist_in_dart_twin_rust_async_sse() {}
 
-pub struct StructWithOnlyIgnoredMethodTwinRustAsyncSse;
+pub struct StructWithOnlyIgnoredMethodTwinRustAsyncSse {}
 
 impl StructWithOnlyIgnoredMethodTwinRustAsyncSse {
     #[frb(ignore)]

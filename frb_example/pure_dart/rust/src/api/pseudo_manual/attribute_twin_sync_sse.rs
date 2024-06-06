@@ -18,7 +18,7 @@ pub struct CustomizedTwinSyncSse {
 #[flutter_rust_bridge::frb(sync)]
 pub fn func_should_not_exist_in_dart_twin_sync_sse() {}
 
-pub struct StructWithOnlyIgnoredMethodTwinSyncSse;
+pub struct StructWithOnlyIgnoredMethodTwinSyncSse {}
 
 impl StructWithOnlyIgnoredMethodTwinSyncSse {
     #[frb(ignore)]
