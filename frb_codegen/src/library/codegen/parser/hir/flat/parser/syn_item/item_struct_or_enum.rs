@@ -1,7 +1,7 @@
-use crate::codegen::ir::hir::flat::source::HirFlatGenerationSource;
 use crate::codegen::ir::hir::flat::struct_or_enum::{
     HirFlatEnum, HirFlatStruct, HirFlatStructOrEnum,
 };
+use crate::codegen::ir::hir::misc::generation_source::HirGenerationSource;
 use crate::codegen::ir::hir::misc::syn_item_struct_or_enum::SynItemStructOrEnum;
 use crate::codegen::ir::hir::naive_flat::item::HirNaiveFlatItemMeta;
 use crate::codegen::parser::hir::flat::parser::mirror_ident::{
@@ -47,7 +47,7 @@ fn parse_syn_item_struct_or_enum<I: SynItemStructOrEnum>(
             name: NamespacedName::new(meta.namespace.to_owned(), ident.to_string()),
             visibility: item_vis.into(),
             mirror: mirror_by_ident || !meta.namespace.crate_name().is_self_crate(),
-            source: HirFlatGenerationSource::Normal,
+            source: HirGenerationSource::Normal,
             src: item.to_owned(),
         })
         .collect_vec())

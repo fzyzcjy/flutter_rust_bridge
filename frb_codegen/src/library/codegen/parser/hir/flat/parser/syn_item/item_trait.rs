@@ -1,7 +1,7 @@
 use crate::codegen::ir::hir::flat::function::{HirFlatFunction, HirFlatFunctionOwner};
 use crate::codegen::ir::hir::flat::pack::HirFlatPack;
-use crate::codegen::ir::hir::flat::source::HirFlatGenerationSource;
 use crate::codegen::ir::hir::flat::traits::HirFlatTrait;
+use crate::codegen::ir::hir::misc::generation_source::HirGenerationSource;
 use crate::codegen::ir::hir::misc::item_fn::GeneralizedItemFn;
 use crate::codegen::ir::hir::naive_flat::item::HirNaiveFlatItemMeta;
 use crate::if_then_some;
@@ -35,7 +35,7 @@ fn parse_functions(
                 trait_def_name: trait_def_name.to_owned(),
             },
             item_fn: GeneralizedItemFn::TraitItemFn(trait_item_fn),
-            source: HirFlatGenerationSource::Normal,
+            source: HirGenerationSource::Normal,
         })
         .collect_vec()
 }

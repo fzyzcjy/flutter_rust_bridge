@@ -1,4 +1,4 @@
-use crate::codegen::ir::hir::flat::source::HirFlatGenerationSource;
+use crate::codegen::ir::hir::misc::generation_source::HirGenerationSource;
 use crate::utils::namespace::Namespace;
 use derivative::Derivative;
 use serde::Serialize;
@@ -13,6 +13,6 @@ pub(crate) struct HirNaiveFlatItem {
 #[derive(Clone, Debug, Derivative, Serialize)]
 pub(crate) struct HirNaiveFlatItemMeta {
     pub namespace: Namespace,
-    pub source: HirFlatGenerationSource,
+    pub source: HirGenerationSource,
     pub is_public: bool,
 }

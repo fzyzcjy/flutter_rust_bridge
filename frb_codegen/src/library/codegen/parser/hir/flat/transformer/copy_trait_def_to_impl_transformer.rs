@@ -1,7 +1,7 @@
 use crate::codegen::ir::hir::flat::function::{HirFlatFunction, HirFlatFunctionOwner};
 use crate::codegen::ir::hir::flat::pack::HirFlatPack;
-use crate::codegen::ir::hir::flat::source::HirFlatGenerationSource;
 use crate::codegen::ir::hir::flat::trait_impl::HirFlatTraitImpl;
+use crate::codegen::ir::hir::misc::generation_source::HirGenerationSource;
 use itertools::Itertools;
 
 pub(crate) fn transform(mut pack: HirFlatPack) -> anyhow::Result<HirFlatPack> {
@@ -26,7 +26,7 @@ fn compute_functions(trait_impl: &HirFlatTraitImpl, pack: &HirFlatPack) -> Vec<H
                 impl_ty: trait_impl.impl_ty.clone(),
                 trait_def_name: Some(trait_impl.trait_name.clone()),
             },
-            source: HirFlatGenerationSource::CopyFromTraitDef,
+            source: HirGenerationSource::CopyFromTraitDef,
             item_fn: f.item_fn.clone(),
         })
         .collect_vec()

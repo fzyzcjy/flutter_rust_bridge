@@ -1,6 +1,6 @@
 use crate::codegen::ir::hir::flat::function::HirFlatFunction;
-use crate::codegen::ir::hir::flat::source::HirFlatGenerationSource;
 use crate::codegen::ir::hir::flat::struct_or_enum::{HirFlatEnum, HirFlatStruct};
+use crate::codegen::ir::hir::misc::generation_source::HirGenerationSource;
 use crate::codegen::ir::hir::misc::syn_item_struct_or_enum::SynItemStructOrEnum;
 use crate::codegen::parser::hir::flat::transformer::merge_duplicate_transformer::base::BaseMerger;
 
@@ -36,10 +36,10 @@ impl BaseMerger for ThirdPartyOverrideMerger {
 
 fn merge_core<T: Clone>(
     base: &T,
-    overrider_source: &HirFlatGenerationSource,
+    overrider_source: &HirGenerationSource,
     writer: impl Fn(&mut T),
 ) -> Option<T> {
-    (*overrider_source == HirFlatGenerationSource::MoveFromCrateThirdPartyFolder).then(|| {
+    (*overrider_source == HirGenerationSource::MoveFromCrateThirdPartyFolder).then(|| {
         let mut ans = base.to_owned();
         writer(&mut ans);
         ans
