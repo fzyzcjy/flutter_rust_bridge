@@ -177,6 +177,12 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                 impl_ty,
                 trait_def_name,
             } => {
+                let owner_ty = if let Some(x) = self.parse_method_owner_ty(impl_ty, context)? {
+                    x
+                } else {
+                    return Ok(None);
+                };
+
                 let trait_def = if let Some(trait_def_name) = trait_def_name {
                     if let Some(ans) = parse_type_trait(trait_def_name, self.type_parser) {
                         Some(ans)
@@ -190,10 +196,9 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
                 self.parse_method_owner_inner(
                     func,
-                    context,
                     actual_method_dart_name,
                     attributes,
-                    impl_ty,
+                    owner_ty,
                     trait_def,
                 )
             }
@@ -204,10 +209,9 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
                 self.parse_method_owner_inner(
                     func,
-                    context,
                     actual_method_dart_name,
                     attributes,
-                    impl_ty,
+                    owner_ty,
                     Some(trait_def),
                 )
             }
@@ -217,10 +221,9 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
     fn parse_method_owner_inner(
         &mut self,
         func: &HirFlatFunction,
-        context: &TypeParserParsingContext,
         actual_method_dart_name: Option<String>,
         attributes: &FrbAttributes,
-        impl_ty: &Type,
+        owner_ty: MirType,
         trait_def: Option<MirTypeTraitDef>,
     ) -> anyhow::Result<Option<MirFuncOwnerInfo>> {
         let sig = func.item_fn.sig();
@@ -228,12 +231,6 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             MirFuncOwnerInfoMethodMode::Instance
         } else {
             MirFuncOwnerInfoMethodMode::Static
-        };
-
-        let owner_ty = if let Some(x) = self.parse_method_owner_ty(impl_ty, context)? {
-            x
-        } else {
-            return Ok(None);
         };
 
         if owner_ty.should_ignore(self.type_parser) {
