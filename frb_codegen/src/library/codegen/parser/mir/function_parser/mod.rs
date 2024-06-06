@@ -46,20 +46,22 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         default_stream_sink_codec: CodecMode,
         default_rust_opaque_codec: RustOpaqueCodecMode,
     ) -> ParseFunctionOutput {
-        self.parse_function_inner(
+        match self.parse_function_inner(
             func,
             force_codec_mode_pack,
             default_stream_sink_codec,
             default_rust_opaque_codec,
-        )
-        .unwrap_or_else(|err| {
-            log::debug!(
-                "parse_function see error and skip function: function={:?} error={:?}",
-                func.item_fn.name(),
-                err
-            );
-            create_output_skip(func, MirSkipReason::Err)
-        })
+        ) {
+            Ok(output) => Ok(output),
+            Err(err) => {
+                log::debug!(
+                    "parse_function see error and skip function: function={:?} error={:?}",
+                    func.item_fn.name(),
+                    err
+                );
+                Ok(create_output_skip(func, MirSkipReason::Err))
+            }
+        }
     }
 
     #[allow(clippy::too_many_arguments)]
