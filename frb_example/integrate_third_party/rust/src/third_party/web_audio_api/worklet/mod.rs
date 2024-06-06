@@ -18,9 +18,3 @@ impl AudioWorkletNode {
     #[frb(ignore)]
     pub fn disconnect_dest_from_output_to_input() {}
 }
-
-#[frb(external)]
-pub trait AudioWorkletProcessor {
-    #[frb(ignore)]
-    fn constructor();
-}
