@@ -369,7 +369,8 @@ fn is_allowed_owner(owner_ty: &MirType, attributes: &FrbAttributes) -> bool {
     match owner_ty {
         MirType::StructRef(_)
         | MirType::EnumRef(_)
-        | MirType::Delegate(MirTypeDelegate::PrimitiveEnum(_)) => true,
+        | MirType::Delegate(MirTypeDelegate::PrimitiveEnum(_))
+        | MirType::TraitDef(_) => true,
         MirType::RustAutoOpaqueImplicit(ty) => {
             ty.reason == Some(MirTypeRustAutoOpaqueImplicitReason::StructOrEnumRequireOpaque)
         }
