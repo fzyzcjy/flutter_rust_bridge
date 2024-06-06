@@ -27,8 +27,8 @@ pub struct MirPack {
 }
 
 impl MirPack {
-    pub(crate) fn funcs_with_impl(&self) -> impl Iterator<Item = &MirFunc> {
-        (self.funcs.iter()).filter(|f| f.has_impl)
+    pub(crate) fn funcs_with_impl(&self) -> Vec<MirFunc> {
+        (self.funcs.iter()).filter(|f| f.has_impl).cloned().collect()
     }
 
     #[allow(clippy::type_complexity)]
