@@ -19,6 +19,7 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
     fn generate_class(&self) -> Option<ApiDartGeneratedClass> {
         let Info {
             dart_api_type,
+            type_query_name,
             methods,
         } = self.compute_info(
             &GenerateApiMethodConfig {
@@ -34,7 +35,8 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
         let extra_body =
             generate_class_extra_body(self.mir_type(), &self.context.mir_pack.dart_code_of_type);
 
-        let maybe_impls = generate_maybe_impls(&self.context.mir_pack.trait_impls);
+        let maybe_impls =
+            generate_maybe_impls(&self.context.mir_pack.trait_impls, &type_query_name);
 
         Some(ApiDartGeneratedClass {
             namespace: self.mir.namespace.clone(),
@@ -62,6 +64,7 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
         let Info {
             dart_api_type,
             methods,
+            ..
         } = self.compute_info(
             &GenerateApiMethodConfig {
                 generate_static: false,
@@ -138,10 +141,10 @@ fn compute_query_name(mir: &MirTypeRustOpaque) -> String {
     FILTER.replace_all(&mir.inner.0, "$1").to_string()
 }
 
-fn generate_maybe_impls(all_trait_impls: &[MirTraitImpl]) -> String {
+fn generate_maybe_impls(all_trait_impls: &[MirTraitImpl], type_query_name: &str) -> String {
     let interest_trait_impls = all_trait_impls
         .iter()
-        .filter(|x| x.impl_ty == TODO)
+        .filter(|x| x.impl_ty == type_query_name)
         .collect_vec();
 
     if interest_trait_impls.is_empty() {
