@@ -20,11 +20,13 @@ pub(super) struct RustInputInfo {
 pub(super) fn compute_rust_path_info(
     migrated_rust_input: &ConfigRustRootAndRustInput,
     base_dir: &Path,
+    config_rust_output: &Option<String>,
 ) -> anyhow::Result<RustInputInfo> {
     let rust_input_namespace_prefixes_raw =
         compute_rust_input_namespace_prefixes_raw(&migrated_rust_input.rust_input);
     let rust_crate_dir = compute_rust_crate_dir(base_dir, &migrated_rust_input.rust_root)?;
-    let rust_output_path = compute_rust_output_path(config, &base_dir, &rust_crate_dir)?;
+    let rust_output_path =
+        compute_rust_output_path(config_rust_output, &base_dir, &rust_crate_dir)?;
 
     Ok(RustInputInfo {
         rust_crate_dir,
@@ -59,12 +61,12 @@ fn compute_rust_crate_dir(base_dir: &Path, rust_root: &str) -> anyhow::Result<Pa
 }
 
 fn compute_rust_output_path(
-    config: &Config,
+    config_rust_output: &Option<String>,
     base_dir: &Path,
     rust_crate_dir: &Path,
 ) -> anyhow::Result<TargetOrCommonMap<PathBuf>> {
     let path_common = base_dir.join(
-        (config.rust_output.clone().map(PathBuf::from))
+        (config_rust_output.clone().map(PathBuf::from))
             .unwrap_or_else(|| fallback_rust_output_path(rust_crate_dir)),
     );
     compute_path_map(&path_common).context("rust_output: is wrong: ")
