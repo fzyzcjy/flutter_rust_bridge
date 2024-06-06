@@ -12,7 +12,7 @@ Future<int> minimalAdder({required int a, required int b}) =>
     RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b);
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructOneWithTraitTwinNormal>>
-abstract class StructOneWithTraitTwinNormal {
+abstract class StructOneWithTraitTwinNormal implements SimpleTraitTwinNormal {
   int get one;
 
   void set one(int one);
@@ -35,7 +35,7 @@ abstract class StructOneWithTraitTwinNormal {
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructTwoWithTraitTwinNormal>>
-abstract class StructTwoWithTraitTwinNormal {
+abstract class StructTwoWithTraitTwinNormal implements SimpleTraitTwinNormal {
   int get two;
 
   void set two(int two);
