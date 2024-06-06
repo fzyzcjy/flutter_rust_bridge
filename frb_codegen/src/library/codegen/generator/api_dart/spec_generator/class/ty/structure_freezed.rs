@@ -1,12 +1,12 @@
 use crate::codegen::generator::api_dart::spec_generator::class::field::{
     generate_field_default, generate_field_required_modifier,
 };
+use crate::codegen::generator::api_dart::spec_generator::class::method::GeneratedApiMethods;
 use crate::codegen::generator::api_dart::spec_generator::misc::generate_dart_maybe_implements_exception;
 use crate::codegen::ir::mir::ty::structure::MirStruct;
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use itertools::Itertools;
-use crate::codegen::generator::api_dart::spec_generator::class::method::GeneratedApiMethods;
 
 impl<'a> StructRefApiDartGenerator<'a> {
     #[allow(clippy::too_many_arguments)]

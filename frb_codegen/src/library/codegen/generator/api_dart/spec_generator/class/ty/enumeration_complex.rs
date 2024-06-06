@@ -10,8 +10,8 @@ use crate::codegen::ir::mir::ty::enumeration::{MirEnum, MirVariant, MirVariantKi
 use crate::codegen::ir::mir::ty::structure::MirStruct;
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
-use itertools::Itertools;
 use crate::utils::basic_code::DartBasicHeaderCode;
+use itertools::Itertools;
 
 const BACKTRACE_IDENT: &str = "backtrace";
 
