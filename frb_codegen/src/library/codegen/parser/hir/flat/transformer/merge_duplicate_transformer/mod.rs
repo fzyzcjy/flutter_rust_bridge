@@ -6,11 +6,11 @@ use std::hash::Hash;
 use crate::codegen::ir::hir::flat::pack::HirFlatPack;
 
 use crate::codegen::parser::hir::flat::transformer::merge_duplicate_transformer::base::BaseMerger;
-use crate::codegen::parser::hir::flat::transformer::merge_duplicate_transformer::override_merger::OverrideMerger;
+use crate::codegen::parser::hir::flat::transformer::merge_duplicate_transformer::third_party_override_merger::ThirdPartyOverrideMerger;
 use crate::codegen::parser::hir::flat::transformer::merge_duplicate_transformer::trait_def_default_impl_merger::TraitDefDefaultImplMerger;
 
 pub(crate) mod base;
-pub(crate) mod override_merger;
+pub(crate) mod third_party_override_merger;
 pub(crate) mod trait_def_default_impl_merger;
 
 pub(crate) fn transform(mut pack: HirFlatPack) -> anyhow::Result<HirFlatPack> {
@@ -48,7 +48,7 @@ fn transform_component_raw<T: Debug + Clone + Serialize, K: Eq + Hash + Debug>(
 ) -> Vec<T> {
     let mergers: Vec<Box<dyn BaseMerger>> = vec![
         Box::new(TraitDefDefaultImplMerger),
-        Box::new(OverrideMerger),
+        Box::new(ThirdPartyOverrideMerger),
     ];
 
     (items.into_iter())
