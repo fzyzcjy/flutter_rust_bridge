@@ -2,7 +2,7 @@
   "dart_code_of_type": {},
   "enum_pool": {},
   "existing_handler": null,
-  "funcs": [],
+  "funcs_all": [],
   "skipped_functions": [],
   "struct_pool": {
     "crate::api/UnusedStruct": {
@@ -33,6 +33,7 @@
       "wrapper_name": null
     }
   },
+  "trait_impls": [],
   "unused_types": [
     "crate::api/UnusedStruct",
     "crate::api/UnusedEnum"

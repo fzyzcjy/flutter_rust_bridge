@@ -18,7 +18,7 @@
     }
   },
   "existing_handler": null,
-  "funcs": [
+  "funcs_all": [
     {
       "accessor": null,
       "arg_mode": "Named",
@@ -28,6 +28,7 @@
       },
       "comments": [],
       "dart_name": null,
+      "has_impl": true,
       "id": 1,
       "initializer": false,
       "inputs": [
@@ -132,5 +133,6 @@
       "wrapper_name": null
     }
   },
+  "trait_impls": [],
   "unused_types": []
 }
