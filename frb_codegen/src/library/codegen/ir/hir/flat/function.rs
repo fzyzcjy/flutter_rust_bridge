@@ -25,7 +25,7 @@ impl HirFlatComponent<SimpleOwnerAndName> for HirFlatFunction {
 
 impl HirFlatFunction {
     pub(crate) fn owner_and_name_for_dedup(&self) -> SimpleOwnerAndName {
-        (self.owner_for_dedup(), self.item_fn.name())
+        (self.owner_for_dedup(), self.name_for_dedup())
     }
 
     pub(crate) fn owner_for_dedup(&self) -> String {
@@ -34,6 +34,10 @@ impl HirFlatFunction {
             HirFlatFunctionOwner::StructOrEnum { impl_ty, .. } => ty_to_string(impl_ty),
             HirFlatFunctionOwner::TraitDef { trait_def_name } => trait_def_name.name.clone(),
         }
+    }
+
+    pub(crate) fn name_for_dedup(&self) -> String {
+        TODO.unwrap_or_else(|| self.item_fn.name())
     }
 
     pub(crate) fn is_public(&self) -> Option<bool> {
