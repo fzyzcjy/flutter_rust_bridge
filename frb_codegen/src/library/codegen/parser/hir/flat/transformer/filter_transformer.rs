@@ -16,7 +16,10 @@ pub(crate) fn transform(
 
 fn filter_function(pack: &mut HirFlatPack, config: &ParserHirInternalConfig) {
     pack.functions = (pack.functions.drain(..))
-        .filter(|f| is_interest_module(&f.namespace, config) && is_function_public(f))
+        .filter(|f| {
+            is_interest_module(&f.namespace, config)
+                && (f.namespace.crate_name().is_self_crate() || is_function_public(f))
+        })
         .collect_vec();
 }
 
