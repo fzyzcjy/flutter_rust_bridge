@@ -83,7 +83,7 @@ abstract class AudioListener {
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioParam>>
-abstract class AudioParam {
+abstract class AudioParam implements AudioNode {
   /// Current value of the automation rate of the AudioParam
   Future<AutomationRate> automationRate();
 

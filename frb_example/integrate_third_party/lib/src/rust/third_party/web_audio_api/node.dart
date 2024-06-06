@@ -10,10 +10,10 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 // These functions are ignored because they are not marked as `pub`: `new`, `precomputed_sine_table`
 // These functions are ignored because they have generic arguments: `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `set_onended`, `set_onended`, `set_onended`, `set_onended`
 // These types are ignored because they are not used by any `pub` functions: `AnalyserOptions`, `AudioBufferSourceOptions`, `AudioNodeOptions`, `BiquadFilterOptions`, `ChannelConfig`, `ChannelMergerOptions`, `ChannelSplitterOptions`, `ConstantSourceOptions`, `ConvolverOptions`, `DelayOptions`, `DynamicsCompressorOptions`, `GainOptions`, `IIRFilterOptions`, `MediaElementAudioSourceOptions`, `MediaStreamAudioSourceOptions`, `MediaStreamRenderer`, `MediaStreamTrackAudioSourceOptions`, `OscillatorOptions`, `PannerOptions`, `ScriptProcessorOptions`, `StereoPannerOptions`, `WaveShaperOptions`
-// These functions are ignored: `channel_config`, `channel_count_mode`, `channel_count_mode`, `channel_count`, `channel_count`, `channel_interpretation`, `channel_interpretation`, `clear_onended`, `clear_onprocessorerror`, `clear_onprocessorerror`, `context`, `context`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_output`, `disconnect_output`, `disconnect`, `disconnect`, `number_of_inputs`, `number_of_outputs`, `registration`, `set_channel_count_mode`, `set_channel_count`, `set_channel_interpretation`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `start_at`, `start`, `stop_at`, `stop`
+// These functions are ignored: `channel_count_mode`, `channel_count`, `channel_interpretation`, `clear_onprocessorerror`, `context`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_output`, `disconnect`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AnalyserNode>>
-abstract class AnalyserNode {
+abstract class AnalyserNode implements AudioNode {
   Future<void> channelConfig();
 
   /// Represents an integer used to determine how many channels are used when up-mixing and
@@ -136,7 +136,8 @@ abstract class AnalyserNode {
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioBufferSourceNode>>
-abstract class AudioBufferSourceNode {
+abstract class AudioBufferSourceNode
+    implements AudioNode, AudioScheduledSourceNode {
   Future<void> channelConfig();
 
   /// Represents an integer used to determine how many channels are used when up-mixing and
@@ -250,7 +251,7 @@ abstract class AudioBufferSourceNode {
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioDestinationNode>>
-abstract class AudioDestinationNode {
+abstract class AudioDestinationNode implements AudioNode {
   Future<void> channelConfig();
 
   /// Represents an integer used to determine how many channels are used when up-mixing and
@@ -306,8 +307,46 @@ abstract class AudioDestinationNode {
   bool get isDisposed;
 }
 
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioScheduledSourceNode>>
+abstract class AudioScheduledSourceNode {
+  /// Unset the callback to run when the source node has stopped playing
+  Future<void> clearOnended();
+
+  /// Play immediately
+  ///
+  /// # Panics
+  ///
+  /// Panics if the source was already started
+  Future<void> start();
+
+  /// Schedule playback start at given timestamp
+  ///
+  /// # Panics
+  ///
+  /// Panics if the source was already started
+  Future<void> startAt({required double when});
+
+  /// Stop immediately
+  ///
+  /// # Panics
+  ///
+  /// Panics if the source was already stopped
+  Future<void> stop();
+
+  /// Schedule playback stop at given timestamp
+  ///
+  /// # Panics
+  ///
+  /// Panics if the source was already stopped
+  Future<void> stopAt({required double when});
+
+  void dispose();
+
+  bool get isDisposed;
+}
+
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<BiquadFilterNode>>
-abstract class BiquadFilterNode {
+abstract class BiquadFilterNode implements AudioNode {
   Future<void> channelConfig();
 
   /// Represents an integer used to determine how many channels are used when up-mixing and
@@ -370,8 +409,15 @@ abstract class BiquadFilterNode {
   bool get isDisposed;
 }
 
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box < dyn FnOnce (ErrorEvent) + Send + 'static >>>
+abstract class BoxFnOnceErrorEvent {
+  void dispose();
+
+  bool get isDisposed;
+}
+
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ChannelMergerNode>>
-abstract class ChannelMergerNode {
+abstract class ChannelMergerNode implements AudioNode {
   Future<void> channelConfig();
 
   /// Represents an integer used to determine how many channels are used when up-mixing and
@@ -423,7 +469,7 @@ abstract class ChannelMergerNode {
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ChannelSplitterNode>>
-abstract class ChannelSplitterNode {
+abstract class ChannelSplitterNode implements AudioNode {
   Future<void> channelConfig();
 
   /// Represents an integer used to determine how many channels are used when up-mixing and
@@ -475,7 +521,8 @@ abstract class ChannelSplitterNode {
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ConstantSourceNode>>
-abstract class ConstantSourceNode {
+abstract class ConstantSourceNode
+    implements AudioNode, AudioScheduledSourceNode {
   Future<void> channelConfig();
 
   /// Represents an integer used to determine how many channels are used when up-mixing and
@@ -540,7 +587,7 @@ abstract class ConstantSourceNode {
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ConvolverNode>>
-abstract class ConvolverNode {
+abstract class ConvolverNode implements AudioNode {
   Future<void> channelConfig();
 
   /// Represents an integer used to determine how many channels are used when up-mixing and
@@ -608,7 +655,7 @@ abstract class ConvolverNode {
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<DelayNode>>
-abstract class DelayNode {
+abstract class DelayNode implements AudioNode {
   Future<void> channelConfig();
 
   /// Represents an integer used to determine how many channels are used when up-mixing and
@@ -662,7 +709,7 @@ abstract class DelayNode {
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<DynamicsCompressorNode>>
-abstract class DynamicsCompressorNode {
+abstract class DynamicsCompressorNode implements AudioNode {
   Future<void> channelConfig();
 
   /// Represents an integer used to determine how many channels are used when up-mixing and
@@ -716,7 +763,7 @@ abstract class DynamicsCompressorNode {
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<GainNode>>
-abstract class GainNode {
+abstract class GainNode implements AudioNode {
   Future<void> channelConfig();
 
   /// Represents an integer used to determine how many channels are used when up-mixing and
@@ -770,7 +817,7 @@ abstract class GainNode {
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<IIRFilterNode>>
-abstract class IirFilterNode {
+abstract class IirFilterNode implements AudioNode {
   Future<void> channelConfig();
 
   /// Represents an integer used to determine how many channels are used when up-mixing and
@@ -824,7 +871,7 @@ abstract class IirFilterNode {
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaElementAudioSourceNode>>
-abstract class MediaElementAudioSourceNode {
+abstract class MediaElementAudioSourceNode implements AudioNode {
   Future<void> channelConfig();
 
   /// Represents an integer used to determine how many channels are used when up-mixing and
@@ -878,7 +925,7 @@ abstract class MediaElementAudioSourceNode {
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaStreamAudioDestinationNode>>
-abstract class MediaStreamAudioDestinationNode {
+abstract class MediaStreamAudioDestinationNode implements AudioNode {
   Future<void> channelConfig();
 
   /// Represents an integer used to determine how many channels are used when up-mixing and
@@ -936,7 +983,7 @@ abstract class MediaStreamAudioDestinationNode {
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaStreamAudioSourceNode>>
-abstract class MediaStreamAudioSourceNode {
+abstract class MediaStreamAudioSourceNode implements AudioNode {
   Future<void> channelConfig();
 
   /// Represents an integer used to determine how many channels are used when up-mixing and
@@ -990,7 +1037,7 @@ abstract class MediaStreamAudioSourceNode {
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaStreamTrackAudioSourceNode>>
-abstract class MediaStreamTrackAudioSourceNode {
+abstract class MediaStreamTrackAudioSourceNode implements AudioNode {
   Future<void> channelConfig();
 
   /// Represents an integer used to determine how many channels are used when up-mixing and
@@ -1044,7 +1091,7 @@ abstract class MediaStreamTrackAudioSourceNode {
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OscillatorNode>>
-abstract class OscillatorNode {
+abstract class OscillatorNode implements AudioNode, AudioScheduledSourceNode {
   Future<void> channelConfig();
 
   /// Represents an integer used to determine how many channels are used when up-mixing and
@@ -1131,7 +1178,7 @@ abstract class OscillatorNode {
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<PannerNode>>
-abstract class PannerNode {
+abstract class PannerNode implements AudioNode {
   Future<void> channelConfig();
 
   /// Represents an integer used to determine how many channels are used when up-mixing and
@@ -1241,7 +1288,7 @@ abstract class PannerNode {
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ScriptProcessorNode>>
-abstract class ScriptProcessorNode {
+abstract class ScriptProcessorNode implements AudioNode {
   Future<BigInt> bufferSize();
 
   Future<void> channelConfig();
@@ -1298,7 +1345,7 @@ abstract class ScriptProcessorNode {
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StereoPannerNode>>
-abstract class StereoPannerNode {
+abstract class StereoPannerNode implements AudioNode {
   Future<void> channelConfig();
 
   /// Represents an integer used to determine how many channels are used when up-mixing and
@@ -1350,7 +1397,7 @@ abstract class StereoPannerNode {
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<WaveShaperNode>>
-abstract class WaveShaperNode {
+abstract class WaveShaperNode implements AudioNode {
   Future<void> channelConfig();
 
   /// Represents an integer used to determine how many channels are used when up-mixing and
@@ -1423,6 +1470,144 @@ abstract class WaveShaperNode {
   void dispose();
 
   bool get isDisposed;
+}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<dyn AudioNode>>
+abstract class AudioNode {
+  void dispose();
+
+  bool get isDisposed;
+}
+
+abstract class AudioNode {
+  /// Config for up/down-mixing of input channels for this node.
+  ///
+  /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
+  Future<void> channelConfig();
+
+  /// Represents an integer used to determine how many channels are used when up-mixing and
+  /// down-mixing connections to any inputs to the node.
+  Future<BigInt> channelCount();
+
+  /// Represents an enumerated value describing the way channels must be matched between the
+  /// node's inputs and outputs.
+  Future<ChannelCountMode> channelCountMode();
+
+  /// Represents an enumerated value describing the meaning of the channels. This interpretation
+  /// will define how audio up-mixing and down-mixing will happen.
+  Future<ChannelInterpretation> channelInterpretation();
+
+  /// Unset the callback to run when an unhandled exception occurs in the audio processor.
+  Future<void> clearOnprocessorerror();
+
+  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
+  /// AudioNode.
+  Future<void> context();
+
+  /// Disconnects all outgoing connections from the AudioNode.
+  Future<void> disconnect();
+
+  /// Disconnects all outputs of the AudioNode that go to a specific destination AudioNode.
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - the AudioContext of the source and destination does not match
+  /// - the source node was not connected to the destination node
+  Future<void> disconnectDest({required AudioNode dest});
+
+  /// Disconnects a specific output of the AudioNode to a specific destination AudioNode
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - the AudioContext of the source and destination does not match
+  /// - if the output port is out of bounds for the source node
+  /// - the source node was not connected to the destination node
+  Future<void> disconnectDestFromOutput(
+      {required AudioNode dest, required BigInt output});
+
+  /// Disconnects a specific output of the AudioNode to a specific input of some destination
+  /// AudioNode
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - the AudioContext of the source and destination does not match
+  /// - if the input port is out of bounds for the destination node
+  /// - if the output port is out of bounds for the source node
+  /// - the source node was not connected to the destination node
+  Future<void> disconnectDestFromOutputToInput(
+      {required AudioNode dest, required BigInt output, required BigInt input});
+
+  /// Disconnects all outgoing connections at the given output port from the AudioNode.
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - if the output port is out of bounds for this node
+  Future<void> disconnectOutput({required BigInt output});
+
+  /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
+  Future<BigInt> numberOfInputs();
+
+  /// The number of outputs coming out of the AudioNode.
+  Future<BigInt> numberOfOutputs();
+
+  /// Handle of the associated [`BaseAudioContext`](crate::context::BaseAudioContext).
+  ///
+  /// Only when implementing the AudioNode trait manually, this struct is of any concern.
+  Future<void> registration();
+
+  /// Update the `channel_count` attribute
+  Future<void> setChannelCount({required BigInt v});
+
+  /// Update the `channel_count_mode` attribute
+  Future<void> setChannelCountMode({required ChannelCountMode v});
+
+  /// Update the `channel_interpretation` attribute
+  Future<void> setChannelInterpretation({required ChannelInterpretation v});
+
+  /// Register callback to run when an unhandled exception occurs in the audio processor.
+  ///
+  /// Note that once a unhandled exception is thrown, the processor will output silence throughout its lifetime.
+  ///
+  /// Only a single event handler is active at any time. Calling this method multiple times will
+  /// override the previous event handler.
+  Future<void> setOnprocessorerror({required BoxFnOnceErrorEvent callback});
+}
+
+abstract class AudioScheduledSourceNode {
+  /// Unset the callback to run when the source node has stopped playing
+  Future<void> clearOnended();
+
+  /// Play immediately
+  ///
+  /// # Panics
+  ///
+  /// Panics if the source was already started
+  Future<void> start();
+
+  /// Schedule playback start at given timestamp
+  ///
+  /// # Panics
+  ///
+  /// Panics if the source was already started
+  Future<void> startAt({required double when});
+
+  /// Stop immediately
+  ///
+  /// # Panics
+  ///
+  /// Panics if the source was already stopped
+  Future<void> stop();
+
+  /// Schedule playback stop at given timestamp
+  ///
+  /// # Panics
+  ///
+  /// Panics if the source was already stopped
+  Future<void> stopAt({required double when});
 }
 
 /// Biquad filter types
