@@ -5,12 +5,17 @@ import 'package:test/test.dart';
 Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
-  test('StructWithTraitTwinNormal', () async {
-    expect(
-        (await StructWithTraitTwinNormal.simpleTraitFnTwinNormal()).value, 42);
-    expect(
-        await StructWithTraitTwinNormal
-            .simpleTraitFnWithDefaultImplTwinNormal(),
-        42);
+  test('impl class should extend trait class', () async {
+    final one = await StructOneWithTraitTwinNormal.simpleTraitFnTwinNormal(value: 10);
+    expect(one is SimpleTraitTwinNormal, true);
+  });
+
+  test('call methods', () async {
+    final one = await StructOneWithTraitTwinNormal.simpleTraitFnTwinNormal(value: 10);
+    expect(one.simpleTraitFnReceiverBorrowTwinNormal(), 10);
+  });
+
+  test('trait default impl', () async {
+    expect(await StructOneWithTraitTwinNormal.simpleTraitFnWithDefaultImplTwinNormal(), 42);
   });
 }
