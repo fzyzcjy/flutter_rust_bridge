@@ -1,7 +1,7 @@
+use crate::codegen::ir::hir::flat::source::HirFlatGenerationSource;
 use crate::utils::namespace::Namespace;
 use derivative::Derivative;
 use serde::Serialize;
-use crate::codegen::ir::hir::flat::source::HirFlatGenerationSource;
 
 #[derive(Debug, Clone, serde::Serialize)]
 pub(crate) struct HirNaiveFlatItem {
