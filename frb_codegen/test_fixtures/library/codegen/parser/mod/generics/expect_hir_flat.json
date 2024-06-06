@@ -1,0 +1,52 @@
+{
+  "enums": [
+    {
+      "mirror": false,
+      "name": "crate::api/MyGenericEnum",
+      "visibility": "Public"
+    }
+  ],
+  "existing_handler": null,
+  "functions": [
+    {
+      "item_fn": "GeneralizedItemFn(name=func_enum_bool)",
+      "namespace": "crate::api",
+      "owner": "Function",
+      "source": "Normal"
+    },
+    {
+      "item_fn": "GeneralizedItemFn(name=func_enum_string)",
+      "namespace": "crate::api",
+      "owner": "Function",
+      "source": "Normal"
+    },
+    {
+      "item_fn": "GeneralizedItemFn(name=func_struct_bool)",
+      "namespace": "crate::api",
+      "owner": "Function",
+      "source": "Normal"
+    },
+    {
+      "item_fn": "GeneralizedItemFn(name=func_struct_string)",
+      "namespace": "crate::api",
+      "owner": "Function",
+      "source": "Normal"
+    },
+    {
+      "item_fn": "GeneralizedItemFn(name=func_struct_string_repeated)",
+      "namespace": "crate::api",
+      "owner": "Function",
+      "source": "Normal"
+    }
+  ],
+  "structs": [
+    {
+      "mirror": false,
+      "name": "crate::api/MyGenericStruct",
+      "visibility": "Public"
+    }
+  ],
+  "trait_impls": [],
+  "traits": [],
+  "types": []
+}

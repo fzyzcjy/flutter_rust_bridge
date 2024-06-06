@@ -1,0 +1,22 @@
+{
+  "enums": [],
+  "existing_handler": null,
+  "functions": [
+    {
+      "item_fn": "GeneralizedItemFn(name=func_1)",
+      "namespace": "crate::api",
+      "owner": "Function",
+      "source": "Normal"
+    },
+    {
+      "item_fn": "GeneralizedItemFn(name=func_anyhow_result)",
+      "namespace": "crate::api",
+      "owner": "Function",
+      "source": "Normal"
+    }
+  ],
+  "structs": [],
+  "trait_impls": [],
+  "traits": [],
+  "types": []
+}

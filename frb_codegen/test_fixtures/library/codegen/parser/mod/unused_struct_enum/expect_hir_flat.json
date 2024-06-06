@@ -1,0 +1,21 @@
+{
+  "enums": [
+    {
+      "mirror": false,
+      "name": "crate::api/UnusedEnum",
+      "visibility": "Public"
+    }
+  ],
+  "existing_handler": null,
+  "functions": [],
+  "structs": [
+    {
+      "mirror": false,
+      "name": "crate::api/UnusedStruct",
+      "visibility": "Public"
+    }
+  ],
+  "trait_impls": [],
+  "traits": [],
+  "types": []
+}

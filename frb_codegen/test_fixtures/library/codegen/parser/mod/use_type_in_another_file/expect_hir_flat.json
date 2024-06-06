@@ -1,0 +1,28 @@
+{
+  "enums": [
+    {
+      "mirror": false,
+      "name": "crate::another_file/EnumInAnotherFile",
+      "visibility": "Public"
+    }
+  ],
+  "existing_handler": null,
+  "functions": [
+    {
+      "item_fn": "GeneralizedItemFn(name=func_one)",
+      "namespace": "crate::api",
+      "owner": "Function",
+      "source": "Normal"
+    }
+  ],
+  "structs": [
+    {
+      "mirror": false,
+      "name": "crate::another_file/StructInAnotherFile",
+      "visibility": "Public"
+    }
+  ],
+  "trait_impls": [],
+  "traits": [],
+  "types": []
+}
