@@ -1,4 +1,5 @@
 use crate::codegen::ir::hir::flat::component::HirFlatComponent;
+use crate::codegen::ir::hir::flat::source::HirFlatGenerationSource;
 use crate::codegen::ir::hir::misc::syn_item_struct_or_enum::SynItemStructOrEnum;
 use crate::codegen::ir::hir::misc::visibility::HirVisibility;
 use crate::utils::namespace::NamespacedName;
@@ -11,6 +12,7 @@ use syn::{ItemEnum, ItemStruct};
 pub struct HirFlatStructOrEnum<Item: SynItemStructOrEnum> {
     pub(crate) name: NamespacedName,
     pub(crate) visibility: HirVisibility,
+    pub(crate) source: HirFlatGenerationSource,
     pub(crate) mirror: bool,
     #[derivative(Debug = "ignore")]
     #[serde(skip_serializing)]
