@@ -120,7 +120,7 @@ fn name_for_use_stmt(item: &syn::Item) -> Option<String> {
         syn::Item::Type(x) => &x.ident,
         syn::Item::Fn(x) => &x.sig.ident,
         syn::Item::Trait(x) => &x.ident,
-        syn::Item::Impl(_) | _ => return None,
+        _ => return None,
     };
     Some(ident.to_string())
 }
@@ -132,7 +132,7 @@ fn is_public_enough(item: &syn::Item) -> Option<bool> {
         syn::Item::Type(x) => &x.vis,
         syn::Item::Fn(x) => &x.vis,
         syn::Item::Trait(x) => &x.vis,
-        syn::Item::Impl(_) | _ => return None,
+        _ => return None,
     };
     Some(matches!(vis, syn::Visibility::Public(_)))
 }
