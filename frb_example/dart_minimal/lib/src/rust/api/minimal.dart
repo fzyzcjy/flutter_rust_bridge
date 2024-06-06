@@ -6,14 +6,16 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
+// These functions are ignored: `simple_trait_fn_receiver_borrow_twin_normal`, `simple_trait_fn_twin_normal`, `simple_trait_fn_with_default_impl_twin_normal`
+
 Future<int> minimalAdder({required int a, required int b}) =>
     RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b);
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructOneWithTraitTwinNormal>>
-abstract class StructOneWithTraitTwinNormal {
-  int get value;
+abstract class StructOneWithTraitTwinNormalTODO {
+  int get one;
 
-  void set value(int value);
+  void set one(int one);
 
   Future<int> simpleTraitFnReceiverBorrowTwinNormal();
 
@@ -33,10 +35,10 @@ abstract class StructOneWithTraitTwinNormal {
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructTwoWithTraitTwinNormal>>
-abstract class StructTwoWithTraitTwinNormal {
-  int get value;
+abstract class StructTwoWithTraitTwinNormalTODO {
+  int get two;
 
-  void set value(int value);
+  void set two(int two);
 
   Future<int> simpleTraitFnReceiverBorrowTwinNormal();
 

@@ -56,7 +56,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.0.0-dev.37';
 
   @override
-  int get rustContentHash => -35521349;
+  int get rustContentHash => -1342678134;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -67,11 +67,11 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 }
 
 abstract class RustLibApi extends BaseApi {
-  int crateApiMinimalStructOneWithTraitTwinNormalGetValue(
+  int crateApiMinimalStructOneWithTraitTwinNormalGetOne(
       {required StructOneWithTraitTwinNormal that});
 
-  void crateApiMinimalStructOneWithTraitTwinNormalSetValue(
-      {required StructOneWithTraitTwinNormal that, required int value});
+  void crateApiMinimalStructOneWithTraitTwinNormalSetOne(
+      {required StructOneWithTraitTwinNormal that, required int one});
 
   Future<int>
       crateApiMinimalStructOneWithTraitTwinNormalSimpleTraitFnReceiverBorrowTwinNormal(
@@ -84,11 +84,11 @@ abstract class RustLibApi extends BaseApi {
   Future<int>
       crateApiMinimalStructOneWithTraitTwinNormalSimpleTraitFnWithDefaultImplTwinNormal();
 
-  int crateApiMinimalStructTwoWithTraitTwinNormalGetValue(
+  int crateApiMinimalStructTwoWithTraitTwinNormalGetTwo(
       {required StructTwoWithTraitTwinNormal that});
 
-  void crateApiMinimalStructTwoWithTraitTwinNormalSetValue(
-      {required StructTwoWithTraitTwinNormal that, required int value});
+  void crateApiMinimalStructTwoWithTraitTwinNormalSetTwo(
+      {required StructTwoWithTraitTwinNormal that, required int two});
 
   Future<int>
       crateApiMinimalStructTwoWithTraitTwinNormalSimpleTraitFnReceiverBorrowTwinNormal(
@@ -133,7 +133,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   });
 
   @override
-  int crateApiMinimalStructOneWithTraitTwinNormalGetValue(
+  int crateApiMinimalStructOneWithTraitTwinNormalGetOne(
       {required StructOneWithTraitTwinNormal that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
@@ -146,45 +146,45 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_i_32,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiMinimalStructOneWithTraitTwinNormalGetValueConstMeta,
+      constMeta: kCrateApiMinimalStructOneWithTraitTwinNormalGetOneConstMeta,
       argValues: [that],
       apiImpl: this,
     ));
   }
 
   TaskConstMeta
-      get kCrateApiMinimalStructOneWithTraitTwinNormalGetValueConstMeta =>
+      get kCrateApiMinimalStructOneWithTraitTwinNormalGetOneConstMeta =>
           const TaskConstMeta(
-            debugName: "StructOneWithTraitTwinNormal_get_value",
+            debugName: "StructOneWithTraitTwinNormal_get_one",
             argNames: ["that"],
           );
 
   @override
-  void crateApiMinimalStructOneWithTraitTwinNormalSetValue(
-      {required StructOneWithTraitTwinNormal that, required int value}) {
+  void crateApiMinimalStructOneWithTraitTwinNormalSetOne(
+      {required StructOneWithTraitTwinNormal that, required int one}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinNormal(
             that, serializer);
-        sse_encode_i_32(value, serializer);
+        sse_encode_i_32(one, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 2)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiMinimalStructOneWithTraitTwinNormalSetValueConstMeta,
-      argValues: [that, value],
+      constMeta: kCrateApiMinimalStructOneWithTraitTwinNormalSetOneConstMeta,
+      argValues: [that, one],
       apiImpl: this,
     ));
   }
 
   TaskConstMeta
-      get kCrateApiMinimalStructOneWithTraitTwinNormalSetValueConstMeta =>
+      get kCrateApiMinimalStructOneWithTraitTwinNormalSetOneConstMeta =>
           const TaskConstMeta(
-            debugName: "StructOneWithTraitTwinNormal_set_value",
-            argNames: ["that", "value"],
+            debugName: "StructOneWithTraitTwinNormal_set_one",
+            argNames: ["that", "one"],
           );
 
   @override
@@ -278,7 +278,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
-  int crateApiMinimalStructTwoWithTraitTwinNormalGetValue(
+  int crateApiMinimalStructTwoWithTraitTwinNormalGetTwo(
       {required StructTwoWithTraitTwinNormal that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
@@ -291,45 +291,45 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_i_32,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiMinimalStructTwoWithTraitTwinNormalGetValueConstMeta,
+      constMeta: kCrateApiMinimalStructTwoWithTraitTwinNormalGetTwoConstMeta,
       argValues: [that],
       apiImpl: this,
     ));
   }
 
   TaskConstMeta
-      get kCrateApiMinimalStructTwoWithTraitTwinNormalGetValueConstMeta =>
+      get kCrateApiMinimalStructTwoWithTraitTwinNormalGetTwoConstMeta =>
           const TaskConstMeta(
-            debugName: "StructTwoWithTraitTwinNormal_get_value",
+            debugName: "StructTwoWithTraitTwinNormal_get_two",
             argNames: ["that"],
           );
 
   @override
-  void crateApiMinimalStructTwoWithTraitTwinNormalSetValue(
-      {required StructTwoWithTraitTwinNormal that, required int value}) {
+  void crateApiMinimalStructTwoWithTraitTwinNormalSetTwo(
+      {required StructTwoWithTraitTwinNormal that, required int two}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinNormal(
             that, serializer);
-        sse_encode_i_32(value, serializer);
+        sse_encode_i_32(two, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 7)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiMinimalStructTwoWithTraitTwinNormalSetValueConstMeta,
-      argValues: [that, value],
+      constMeta: kCrateApiMinimalStructTwoWithTraitTwinNormalSetTwoConstMeta,
+      argValues: [that, two],
       apiImpl: this,
     ));
   }
 
   TaskConstMeta
-      get kCrateApiMinimalStructTwoWithTraitTwinNormalSetValueConstMeta =>
+      get kCrateApiMinimalStructTwoWithTraitTwinNormalSetTwoConstMeta =>
           const TaskConstMeta(
-            debugName: "StructTwoWithTraitTwinNormal_set_value",
-            argNames: ["that", "value"],
+            debugName: "StructTwoWithTraitTwinNormal_set_two",
+            argNames: ["that", "two"],
           );
 
   @override
@@ -807,14 +807,13 @@ class StructOneWithTraitTwinNormalImpl extends RustOpaque
         .rust_arc_decrement_strong_count_StructOneWithTraitTwinNormalPtr,
   );
 
-  int get value =>
-      RustLib.instance.api.crateApiMinimalStructOneWithTraitTwinNormalGetValue(
+  int get one =>
+      RustLib.instance.api.crateApiMinimalStructOneWithTraitTwinNormalGetOne(
         that: this,
       );
 
-  void set value(int value) =>
-      RustLib.instance.api.crateApiMinimalStructOneWithTraitTwinNormalSetValue(
-          that: this, value: value);
+  void set one(int one) => RustLib.instance.api
+      .crateApiMinimalStructOneWithTraitTwinNormalSetOne(that: this, one: one);
 
   Future<int> simpleTraitFnReceiverBorrowTwinNormal() => RustLib.instance.api
           .crateApiMinimalStructOneWithTraitTwinNormalSimpleTraitFnReceiverBorrowTwinNormal(
@@ -843,14 +842,13 @@ class StructTwoWithTraitTwinNormalImpl extends RustOpaque
         .rust_arc_decrement_strong_count_StructTwoWithTraitTwinNormalPtr,
   );
 
-  int get value =>
-      RustLib.instance.api.crateApiMinimalStructTwoWithTraitTwinNormalGetValue(
+  int get two =>
+      RustLib.instance.api.crateApiMinimalStructTwoWithTraitTwinNormalGetTwo(
         that: this,
       );
 
-  void set value(int value) =>
-      RustLib.instance.api.crateApiMinimalStructTwoWithTraitTwinNormalSetValue(
-          that: this, value: value);
+  void set two(int two) => RustLib.instance.api
+      .crateApiMinimalStructTwoWithTraitTwinNormalSetTwo(that: this, two: two);
 
   Future<int> simpleTraitFnReceiverBorrowTwinNormal() => RustLib.instance.api
           .crateApiMinimalStructTwoWithTraitTwinNormalSimpleTraitFnReceiverBorrowTwinNormal(
