@@ -66,6 +66,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             None,
             &syn::Type::Path(type_path.to_owned()),
             None,
+            None,
         )
     }
 }

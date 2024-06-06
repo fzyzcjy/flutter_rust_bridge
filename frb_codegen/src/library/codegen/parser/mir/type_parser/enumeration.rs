@@ -7,6 +7,7 @@ use crate::codegen::ir::mir::ty::enumeration::{
     MirEnum, MirEnumIdent, MirEnumMode, MirTypeEnumRef, MirVariant, MirVariantKind,
 };
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
+use crate::codegen::ir::mir::ty::rust_auto_opaque_implicit::MirTypeRustAutoOpaqueImplicitReason;
 use crate::codegen::ir::mir::ty::structure::MirStruct;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::ir::mir::ty::MirType::{Delegate, EnumRef};
@@ -179,10 +180,11 @@ impl EnumOrStructParser<MirEnumIdent, MirEnum, ItemEnum>
         &mut self,
         namespace: Option<Namespace>,
         ty: &Type,
+        reason: Option<MirTypeRustAutoOpaqueImplicitReason>,
         override_ignore: Option<bool>,
     ) -> anyhow::Result<MirType> {
         self.0
-            .parse_type_rust_auto_opaque_implicit(namespace, ty, override_ignore)
+            .parse_type_rust_auto_opaque_implicit(namespace, ty, reason, override_ignore)
     }
 
     fn compute_default_opaque(obj: &MirEnum) -> bool {

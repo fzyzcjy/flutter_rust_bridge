@@ -1,6 +1,7 @@
 use crate::codegen::ir::hir::flat::struct_or_enum::HirFlatStruct;
 use crate::codegen::ir::mir::field::{MirField, MirFieldSettings};
 use crate::codegen::ir::mir::ident::MirIdent;
+use crate::codegen::ir::mir::ty::rust_auto_opaque_implicit::MirTypeRustAutoOpaqueImplicitReason;
 use crate::codegen::ir::mir::ty::structure::{MirStruct, MirStructIdent, MirTypeStructRef};
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::ir::mir::ty::MirType::StructRef;
@@ -123,10 +124,11 @@ impl EnumOrStructParser<MirStructIdent, MirStruct, ItemStruct>
         &mut self,
         namespace: Option<Namespace>,
         ty: &Type,
+        reason: Option<MirTypeRustAutoOpaqueImplicitReason>,
         override_ignore: Option<bool>,
     ) -> anyhow::Result<MirType> {
         self.0
-            .parse_type_rust_auto_opaque_implicit(namespace, ty, override_ignore)
+            .parse_type_rust_auto_opaque_implicit(namespace, ty, reason, override_ignore)
     }
 
     fn compute_default_opaque(obj: &MirStruct) -> bool {
