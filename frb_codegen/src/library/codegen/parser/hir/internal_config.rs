@@ -1,5 +1,6 @@
 use crate::codegen::parser::mir::internal_config::RustInputNamespacePack;
 use crate::utils::crate_name::CrateName;
+use crate::utils::namespace::Namespace;
 use serde::{Deserialize, Serialize};
 use std::path::PathBuf;
 
