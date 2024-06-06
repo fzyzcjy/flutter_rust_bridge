@@ -11,21 +11,16 @@ impl<'a> ApiDartGeneratorClassTrait for EnumRefApiDartGenerator<'a> {
     fn generate_class(&self) -> Option<ApiDartGeneratedClass> {
         let src = self.mir.get(self.context.mir_pack);
 
-        let methods_str = generate_api_methods(
-            &src.name,
-            self.context,
-            &GenerateApiMethodConfig::COMBINED,
-            &src.name.name,
-        )
-        .join("\n");
+        let methods =
+            generate_api_methods(&src.name, self.context, GenerateApiMethodMode::Combined, &src.name.name);
         let extra_body =
             generate_class_extra_body(self.mir_type(), &self.context.mir_pack.dart_code_of_type);
 
-        let body = methods_str + &extra_body;
+        let body = methods.code + &extra_body;
 
         match src.mode {
-            MirEnumMode::Simple => self.generate_mode_simple(src, &body),
-            MirEnumMode::Complex => self.generate_mode_complex(src, &body),
+            MirEnumMode::Simple => self.generate_mode_simple(src, &body, methods.header),
+            MirEnumMode::Complex => self.generate_mode_complex(src, &body, methods.header),
         }
     }
 }

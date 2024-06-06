@@ -11,17 +11,13 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'context.freezed.dart';
 
-// These functions are ignored because they are not marked as `pub`: `address`, `calculate_suspend_frame`, `clear_event_handler`, `connect_listener_to_panner`, `connect`, `context`, `current_time`, `destination_channel_config`, `disconnect`, `ensure_audio_listener_present`, `get`, `id`, `is_valid_sink_id`, `listener`, `lock_control_msg_sender`, `mark_node_dropped`, `max_channel_count`, `new`, `new`, `offline`, `post_message`, `queue_audio_param_connect`, `register`, `resolve_queued_control_msgs`, `sample_rate`, `send_control_msg`, `send_event`, `set_event_handler`, `set_state`, `state`
-// These functions are ignored because they have generic arguments: `decode_audio_data_sync`, `decode_audio_data_sync`, `decode_audio_data_sync`, `run_diagnostics`, `set_oncomplete`, `set_onsinkchange`, `set_onstatechange`, `set_onstatechange`, `set_onstatechange`, `suspend_sync`
-// These types are ignored because they are not used by any `pub` functions: `AudioNodeIdProvider`, `AudioNodeId`, `ConcreteBaseAudioContextInner`, `OfflineAudioContextRenderer`
-// These functions are ignored: `create_media_element_source`, `resume`, `set_sink_id_sync`
+// These functions are ignored because they are not marked as `pub`: `context`, `id`, `post_message`
+// These functions are ignored because they have generic arguments: `decode_audio_data_sync`, `decode_audio_data_sync`, `decode_audio_data_sync`, `set_onstatechange`, `set_onstatechange`, `set_onstatechange`, `set_onstatechange`
+// These types are ignored because they are not used by any `pub` functions: `AudioNodeId`
+// These functions are ignored: `base`, `clear_onstatechange`, `create_analyser`, `create_audio_param`, `create_biquad_filter`, `create_buffer_source`, `create_buffer`, `create_channel_merger`, `create_channel_splitter`, `create_constant_source`, `create_convolver`, `create_delay`, `create_dynamics_compressor`, `create_gain`, `create_iir_filter`, `create_oscillator`, `create_panner`, `create_periodic_wave`, `create_script_processor`, `create_stereo_panner`, `create_wave_shaper`, `current_time`, `destination`, `listener`, `sample_rate`, `state`
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioContext>>
 abstract class AudioContext {
-  Future<AudioBuffer> decodeAudioDataSync({required String inputPath});
-
-  Future<String> outputLatency();
-
   Future<void> base();
 
   /// This represents the number of seconds of processing latency incurred by
@@ -171,6 +167,10 @@ abstract class AudioContext {
   /// context. It can be thought of as the audio-rendering device.
   Future<AudioDestinationNode> destination();
 
+  Future<AudioBuffer> decodeAudioDataSync({required String inputPath});
+
+  Future<String> outputLatency();
+
   /// Returns the `AudioListener` which is used for 3D spatialization
   Future<AudioListener> listener();
 
@@ -259,6 +259,13 @@ abstract class AudioContext {
   /// * For a `BackendSpecificError`
   Future<void> suspendSync();
 
+  void dispose();
+
+  bool get isDisposed;
+}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioContextRegistration>>
+abstract class AudioContextRegistration {
   void dispose();
 
   bool get isDisposed;
@@ -370,25 +377,12 @@ abstract class ConcreteBaseAudioContext {
   /// Creates a `WaveShaperNode`
   Future<WaveShaperNode> createWaveShaper();
 
-  /// This is the time in seconds of the sample frame immediately following the last sample-frame
-  /// in the block of audio most recently processed by the context’s rendering graph.
-  Future<double> currentTime();
-
   /// Returns an `AudioDestinationNode` representing the final destination of all audio in the
   /// context. It can be thought of as the audio-rendering device.
   Future<AudioDestinationNode> destination();
 
-  /// Returns the `AudioListener` which is used for 3D spatialization
-  Future<AudioListener> listener();
-
   /// Inform render thread that this node can act as a cycle breaker
   Future<void> markCycleBreaker({required AudioContextRegistration reg});
-
-  /// The sample rate (in sample-frames per second) at which the `AudioContext` handles audio.
-  Future<double> sampleRate();
-
-  /// Returns state of current context
-  Future<AudioContextState> state();
 
   void dispose();
 

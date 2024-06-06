@@ -1,4 +1,7 @@
 use crate::utils::console::SimpleProgressBar;
+use crate::utils::crate_name::CrateName;
+use crate::utils::namespace::Namespace;
+use lazy_static::lazy_static;
 
 pub(crate) struct GeneratorProgressBarPack {
     pub parse: SimpleProgressBar,
@@ -35,3 +38,10 @@ impl GeneratorProgressBarPack {
 }
 
 pub(crate) const THIRD_PARTY_DIR_NAME: &str = "third_party";
+
+lazy_static! {
+    pub(crate) static ref SELF_CRATE_THIRD_PARTY_NAMESPACE: Namespace = Namespace::new(vec![
+        CrateName::SELF_CRATE.to_owned(),
+        THIRD_PARTY_DIR_NAME.to_owned(),
+    ]);
+}

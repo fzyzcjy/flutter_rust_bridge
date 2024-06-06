@@ -9,6 +9,7 @@ use crate::codegen::ir::mir::func::{
 };
 use crate::if_then_some;
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
+use crate::utils::basic_code::DartBasicHeaderCode;
 use crate::utils::namespace::NamespacedName;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
@@ -27,16 +28,32 @@ impl GenerateApiMethodConfig {
     };
 }
 
+pub(crate) struct GeneratedApiMethods {
+    pub(crate) num_methods: usize,
+    pub(crate) code: String,
+    pub(crate) header: DartBasicHeaderCode,
+}
+
+struct GeneratedApiMethod {
+    code: String,
+    header: DartBasicHeaderCode,
+}
+
 pub(crate) fn generate_api_methods(
     generalized_class_name: &NamespacedName,
     context: ApiDartGeneratorContext,
     config: &GenerateApiMethodConfig,
     dart_class_name: &str,
-) -> Vec<String> {
-    get_methods_of_enum_or_struct(generalized_class_name, &context.mir_pack.funcs)
+) -> GeneratedApiMethods {
+    let methods = get_methods_of_enum_or_struct(generalized_class_name, &context.mir_pack.funcs)
         .iter()
-        .filter_map(|func| generate_api_method(func, context, config, dart_class_name))
-        .collect_vec()
+        .filter_map(|func| generate_api_method(func, context, mode))
+        .collect_vec();
+    GeneratedApiMethods {
+        num_methods: methods.len(),
+        code: methods.iter().map(|x| x.code.clone()).join("\n"),
+        header: (methods.iter().map(|x| x.header.clone())).fold(Default::default(), |a, b| a + b),
+    }
 }
 
 // TODO move
@@ -73,7 +90,7 @@ fn generate_api_method(
     context: ApiDartGeneratorContext,
     config: &GenerateApiMethodConfig,
     dart_class_name: &str,
-) -> Option<String> {
+) -> Option<GeneratedApiMethod> {
     let api_dart_func = api_dart::spec_generator::function::generate(func, context).unwrap();
 
     let method_info =
@@ -108,7 +125,12 @@ fn generate_api_method(
         .then(|| generate_implementation(func, context, method_info, &params));
     let maybe_implementation = (maybe_implementation.map(|x| format!("=>{x}"))).unwrap_or_default();
 
-    Some(format!("{comments}{signature}{maybe_implementation};\n\n"))
+    let code = format!("{comments}{signature}{maybe_implementation};\n\n");
+
+    Some(GeneratedApiMethod {
+        code,
+        header: api_dart_func.header,
+    })
 }
 
 fn compute_skip_names(method_info: &MirFuncOwnerInfoMethod) -> Vec<&'static str> {

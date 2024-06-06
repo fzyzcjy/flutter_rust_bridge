@@ -1,11 +1,10 @@
-// FRB_INTERNAL_GENERATOR: {"removeCode":["import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/mirror_twin_sync_sse_twin_rust_async_sse.dart';\n","import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/mirror_twin_sync_sse_twin_rust_async.dart';\n","import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/mirror_twin_sync_sse_twin_sse.dart';\n","import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/mirror_twin_sync_sse_twin_sync_sse.dart';\n","import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/mirror_twin_sync_sse_twin_sync.dart';\n"],"addCode":"import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/mirror_twin_sync_sse.dart';"}
+// FRB_INTERNAL_GENERATOR: {"addCode":"import 'package:frb_example_pure_dart/src/rust/api/mirror.dart';"}
 
 // ignore_for_file: duplicate_import
 
 import 'dart:typed_data';
 
 import 'package:frb_example_pure_dart/src/rust/api/mirror.dart';
-import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/mirror_twin_sync_sse.dart';
 import 'package:frb_example_pure_dart/src/rust/auxiliary/sample_types.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:test/test.dart';

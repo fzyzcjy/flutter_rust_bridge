@@ -87,7 +87,6 @@ pub(super) fn parse_auto_accessor_of_field(
         ),
         rust_call_code: Some(rust_call_code),
         src_lineno_pseudo: compute_src_lineno_pseudo(struct_name, field),
-        override_priority: Default::default(),
     };
 
     Ok(MirFuncAndSanityCheckInfo {

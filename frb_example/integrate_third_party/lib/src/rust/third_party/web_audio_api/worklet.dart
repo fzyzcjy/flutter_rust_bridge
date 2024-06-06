@@ -8,9 +8,9 @@ import 'node.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 // These functions are ignored because they are not marked as `pub`: `load`, `new`
-// These functions are ignored because they have generic arguments: `connect_from_output_to_input`, `connect`, `new`
+// These functions are ignored because they have generic arguments: `new`, `process`
 // These types are ignored because they are not used by any `pub` functions: `AudioParamValues`, `AudioWorkletNodeOptions`, `AudioWorkletRenderer`, `Processor`
-// These functions are ignored: `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output`, `disconnect_dest`, `get`, `port`, `set_onprocessorerror`
+// These functions are ignored: `constructor`, `onmessage`, `parameter_descriptors`, `port`
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioWorkletNode>>
 abstract class AudioWorkletNode {

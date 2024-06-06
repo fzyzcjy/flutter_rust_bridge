@@ -1,5 +1,5 @@
 use crate::codegen::generator::api_dart::spec_generator::class::method::{
-    generate_api_methods, GenerateApiMethodConfig,
+    generate_api_methods, GenerateApiMethodMode, GeneratedApiMethods,
 };
 use crate::codegen::generator::api_dart::spec_generator::class::misc::generate_class_extra_body;
 use crate::codegen::generator::api_dart::spec_generator::class::ty::ApiDartGeneratorClassTrait;
@@ -19,13 +19,8 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
         let Info {
             dart_api_type,
             methods,
-        } = self.compute_info(
-            &GenerateApiMethodConfig {
-                generate_static: true,
-                generate_non_static: false,
-            },
-            "",
-        );
+        } = self.compute_info(GenerateApiMethodMode::SeparatedDecl, "");
+        let methods_str = &methods.code;
 
         let rust_api_type = self.mir.rust_api_type();
 
@@ -41,7 +36,7 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
                 "
                 // Rust type: {rust_api_type}
                 abstract class {dart_api_type}{maybe_impls} {{
-                    {methods}
+                    {methods_str}
 
                     void dispose();
 
@@ -52,7 +47,7 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
                 "
             ),
             needs_freezed: false,
-            header: Default::default(),
+            header: methods.header,
         })
     }
 
@@ -60,13 +55,8 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
         let Info {
             dart_api_type,
             methods,
-        } = self.compute_info(
-            &GenerateApiMethodConfig {
-                generate_static: false,
-                generate_non_static: true,
-            },
-            "Impl",
-        );
+        } = self.compute_info(GenerateApiMethodMode::SeparatedImpl, "Impl");
+        let methods_str = &methods.code;
 
         let dart_api_type_impl = format!("{dart_api_type}Impl");
 
@@ -90,7 +80,7 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
                     rustArcDecrementStrongCountPtr: {dart_api_instance}.rust_arc_decrement_strong_count_{dart_api_type}Ptr,
                 );
 
-                {methods}
+                {methods_str}
             }}"
         ))
     }
@@ -110,10 +100,9 @@ impl RustOpaqueApiDartGenerator<'_> {
                 compute_api_method_query_name(&self.mir, self.context),
             ),
             self.context,
-            config,
+            mode,
             &format!("{dart_api_type}{dart_class_name_postfix}"),
-        )
-        .join("\n");
+        );
 
         Info {
             dart_api_type,
@@ -124,7 +113,7 @@ impl RustOpaqueApiDartGenerator<'_> {
 
 struct Info {
     dart_api_type: String,
-    methods: String,
+    methods: GeneratedApiMethods,
 }
 
 fn compute_api_method_query_name(

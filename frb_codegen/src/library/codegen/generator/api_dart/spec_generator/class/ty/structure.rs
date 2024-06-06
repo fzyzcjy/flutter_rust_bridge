@@ -52,7 +52,7 @@ impl<'a> ApiDartGeneratorClassTrait for StructRefApiDartGenerator<'a> {
                 )
             },
             needs_freezed: src.using_freezed(),
-            header: Default::default(),
+            header: methods.header,
         })
     }
 }
