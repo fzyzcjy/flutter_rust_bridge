@@ -13,7 +13,7 @@ impl BaseMerger for ThirdPartyOverrideMerger {
         base: &HirFlatFunction,
         overrider: &HirFlatFunction,
     ) -> Option<HirFlatFunction> {
-        merge_core(base, &overrider.namespace, |ans| {
+        merge_core(base, &overrider.source, |ans| {
             (ans.item_fn.attrs_mut()).extend(overrider.item_fn.attrs().to_owned())
         })
     }
@@ -23,13 +23,13 @@ impl BaseMerger for ThirdPartyOverrideMerger {
         base: &HirFlatStruct,
         overrider: &HirFlatStruct,
     ) -> Option<HirFlatStruct> {
-        merge_core(base, &overrider.name.namespace, |ans| {
+        merge_core(base, &overrider.source, |ans| {
             ans.src.attrs_mut().extend(overrider.src.attrs().to_owned());
         })
     }
 
     fn merge_enums(&self, base: &HirFlatEnum, overrider: &HirFlatEnum) -> Option<HirFlatEnum> {
-        merge_core(base, &overrider.name.namespace, |ans| {
+        merge_core(base, &overrider.source, |ans| {
             ans.src.attrs_mut().extend(overrider.src.attrs().to_owned());
         })
     }
