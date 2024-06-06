@@ -40,6 +40,7 @@ pub(crate) mod trait_object;
 pub(crate) mod tuple;
 pub(crate) mod ty;
 pub(crate) mod unencodable;
+mod trait_def;
 
 pub(crate) struct TypeParser<'a> {
     src_structs: HashMap<String, &'a HirFlatStruct>,
