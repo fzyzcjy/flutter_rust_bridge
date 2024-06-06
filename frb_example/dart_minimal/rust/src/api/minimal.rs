@@ -23,30 +23,30 @@ pub trait SimpleTraitTwinNormal {
 
 #[frb(opaque)]
 pub struct StructOneWithTraitTwinNormal {
-    pub value: i32,
+    pub one: i32,
 }
 
 impl SimpleTraitTwinNormal for StructOneWithTraitTwinNormal {
     fn simple_trait_fn_twin_normal(value: i32) -> Self {
-        StructOneWithTraitTwinNormal { value }
+        StructOneWithTraitTwinNormal { one: value }
     }
 
     fn simple_trait_fn_receiver_borrow_twin_normal(&self) -> i32 {
-        self.value
+        self.one
     }
 }
 
 #[frb(opaque)]
 pub struct StructTwoWithTraitTwinNormal {
-    pub value: i32,
+    pub two: i32,
 }
 
 impl SimpleTraitTwinNormal for StructTwoWithTraitTwinNormal {
     fn simple_trait_fn_twin_normal(value: i32) -> Self {
-        StructTwoWithTraitTwinNormal { value: value * 2 }
+        StructTwoWithTraitTwinNormal { two: value * 2 }
     }
 
     fn simple_trait_fn_receiver_borrow_twin_normal(&self) -> i32 {
-        self.value * 2
+        self.two * 2
     }
 }
