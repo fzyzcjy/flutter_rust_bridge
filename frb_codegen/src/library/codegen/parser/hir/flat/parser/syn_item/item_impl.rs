@@ -1,4 +1,6 @@
-use crate::codegen::ir::hir::flat::function::{HirFlatFunction, HirFlatFunctionOwner, HirFlatFunctionSource};
+use crate::codegen::ir::hir::flat::function::{
+    HirFlatFunction, HirFlatFunctionOwner, HirFlatFunctionSource,
+};
 use crate::codegen::ir::hir::flat::pack::HirFlatPack;
 use crate::codegen::ir::hir::flat::trait_impl::HirFlatTraitImpl;
 use crate::codegen::ir::hir::misc::item_fn::GeneralizedItemFn;

@@ -1,5 +1,4 @@
 use crate::codegen::ir::hir::flat::component::HirFlatComponent;
-use crate::codegen::ir::hir::flat::type_alias::HirFlatTypeAlias;
 use crate::utils::namespace::NamespacedName;
 
 #[derive(Clone, serde::Serialize, Debug)]

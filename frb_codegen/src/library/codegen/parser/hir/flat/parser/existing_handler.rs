@@ -10,7 +10,11 @@ pub(super) fn parse_existing_handler(
     config: &ParserHirInternalConfig,
 ) -> anyhow::Result<Option<NamespacedName>> {
     let existing_handlers = (items.iter())
-        .filter(|module| config.rust_input_namespace_pack.is_interest(&module.meta.namespace))
+        .filter(|module| {
+            config
+                .rust_input_namespace_pack
+                .is_interest(&module.meta.namespace)
+        })
         .filter(|item| parse_has_executor(&item.item))
         .map(|item| NamespacedName::new(item.meta.namespace.to_owned(), HANDLER_NAME.to_owned()))
         .collect_vec();

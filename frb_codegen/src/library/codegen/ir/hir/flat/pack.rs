@@ -5,7 +5,6 @@ use crate::codegen::ir::hir::flat::trait_impl::HirFlatTraitImpl;
 use crate::codegen::ir::hir::flat::traits::HirFlatTrait;
 use crate::codegen::ir::hir::flat::type_alias::HirFlatTypeAlias;
 use crate::utils::namespace::NamespacedName;
-use std::hash::Hash;
 
 #[derive(Debug, Clone, Default, serde::Serialize)]
 pub(crate) struct HirFlatPack {

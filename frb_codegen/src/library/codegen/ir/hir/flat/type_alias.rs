@@ -1,5 +1,4 @@
 use crate::codegen::ir::hir::flat::component::HirFlatComponent;
-use crate::codegen::ir::hir::flat::trait_impl::HirFlatTraitImpl;
 use crate::codegen::ir::hir::misc::serializers::serialize_syn;
 use serde::Serialize;
 use syn::Type;

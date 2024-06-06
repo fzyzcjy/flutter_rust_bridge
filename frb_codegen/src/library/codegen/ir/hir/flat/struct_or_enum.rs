@@ -1,5 +1,4 @@
 use crate::codegen::ir::hir::flat::component::HirFlatComponent;
-use crate::codegen::ir::hir::flat::function::HirFlatFunction;
 use crate::codegen::ir::hir::misc::syn_item_struct_or_enum::SynItemStructOrEnum;
 use crate::codegen::ir::hir::misc::visibility::HirVisibility;
 use crate::utils::namespace::NamespacedName;

@@ -1,4 +1,6 @@
-use crate::codegen::ir::hir::flat::function::{HirFlatFunction, HirFlatFunctionOwner, HirFlatFunctionSource};
+use crate::codegen::ir::hir::flat::function::{
+    HirFlatFunction, HirFlatFunctionOwner, HirFlatFunctionSource,
+};
 use crate::codegen::ir::hir::misc::item_fn::GeneralizedItemFn;
 use crate::codegen::ir::hir::tree::module::HirTreeModuleMeta;
 use syn::ItemFn;

@@ -1,4 +1,3 @@
-use std::hash::Hash;
 use crate::codegen::ir::hir::flat::component::HirFlatComponent;
 use crate::codegen::ir::hir::flat::pack::{HirFlatPack, HirFlatPackComponentVisitor};
 
