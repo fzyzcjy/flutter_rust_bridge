@@ -17,11 +17,11 @@ pub(crate) fn transform(
 }
 
 fn is_interest(item: &HirNaiveFlatItem, config: &ParserHirInternalConfig) -> bool {
-    (is_public_mod_or_self_crate(item) || !is_localized_definition(&item.item))
+    (is_public_or_self_crate(item) || !is_localized_definition(&item.item))
         && !is_early_skip_namespace(&item.meta.namespace, config)
 }
 
-fn is_public_mod_or_self_crate(item: &HirNaiveFlatItem) -> bool {
+fn is_public_or_self_crate(item: &HirNaiveFlatItem) -> bool {
     // If it is third party crate, then we only scan the `pub` mods,
     // since for non-pub modes, it is impossible to use them even if we scanned them.
     is_self_crate(item) || item.meta.is_module_public
