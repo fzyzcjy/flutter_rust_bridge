@@ -8,7 +8,7 @@ pub(crate) fn parse_pack(
     hir_tree: HirTreePack,
 ) -> anyhow::Result<HirFlatPack> {
     let items = super::flattener::flatten(hir_tree)?;
-    let items = super::module_visibility_filter::filter_visible_modules(items);
+    let items = super::module_visibility_filter_transformer::filter_visible_modules(items);
 
     let mut pack = HirFlatPack {
         existing_handler: super::existing_handler::parse_existing_handler(&items, config)?,
