@@ -16,7 +16,7 @@ pub type MirEnumPool = HashMap<MirEnumIdent, MirEnum>;
 
 #[derive(Debug, Clone, serde::Serialize)]
 pub struct MirPack {
-    funcs: Vec<MirFunc>,
+    funcs: Vec<MirFunc>, // Do not direct use, but use things like `funcs_with_impl`
     pub struct_pool: MirStructPool,
     pub enum_pool: MirEnumPool,
     pub dart_code_of_type: HashMap<String, String>,
@@ -28,7 +28,10 @@ pub struct MirPack {
 
 impl MirPack {
     pub(crate) fn funcs_with_impl(&self) -> Vec<MirFunc> {
-        (self.funcs.iter()).filter(|f| f.has_impl).cloned().collect()
+        (self.funcs.iter())
+            .filter(|f| f.has_impl)
+            .cloned()
+            .collect()
     }
 
     #[allow(clippy::type_complexity)]
