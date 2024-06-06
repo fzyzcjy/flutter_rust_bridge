@@ -307,44 +307,6 @@ abstract class AudioDestinationNode implements AudioNode {
   bool get isDisposed;
 }
 
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioScheduledSourceNode>>
-abstract class AudioScheduledSourceNode {
-  /// Unset the callback to run when the source node has stopped playing
-  Future<void> clearOnended();
-
-  /// Play immediately
-  ///
-  /// # Panics
-  ///
-  /// Panics if the source was already started
-  Future<void> start();
-
-  /// Schedule playback start at given timestamp
-  ///
-  /// # Panics
-  ///
-  /// Panics if the source was already started
-  Future<void> startAt({required double when});
-
-  /// Stop immediately
-  ///
-  /// # Panics
-  ///
-  /// Panics if the source was already stopped
-  Future<void> stop();
-
-  /// Schedule playback stop at given timestamp
-  ///
-  /// # Panics
-  ///
-  /// Panics if the source was already stopped
-  Future<void> stopAt({required double when});
-
-  void dispose();
-
-  bool get isDisposed;
-}
-
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<BiquadFilterNode>>
 abstract class BiquadFilterNode implements AudioNode {
   Future<void> channelConfig();

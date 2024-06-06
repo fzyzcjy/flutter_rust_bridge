@@ -1941,15 +1941,6 @@ abstract class RustLibApi extends BaseApi {
       get rust_arc_decrement_strong_count_AudioRenderCapacityEventPtr;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_AudioScheduledSourceNode;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_AudioScheduledSourceNode;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_AudioScheduledSourceNodePtr;
-
-  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_AudioWorkletNode;
 
   RustArcDecrementStrongCountFnType
@@ -1957,15 +1948,6 @@ abstract class RustLibApi extends BaseApi {
 
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_AudioWorkletNodePtr;
-
-  RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_AudioWorkletProcessor;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_AudioWorkletProcessor;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_AudioWorkletProcessorPtr;
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_BiquadFilterNode;
@@ -18053,28 +18035,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacityEvent;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_AudioScheduledSourceNode => wire
-          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioScheduledSourceNode;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_AudioScheduledSourceNode => wire
-          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioScheduledSourceNode;
-
-  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_AudioWorkletNode => wire
           .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioWorkletNode;
 
   RustArcDecrementStrongCountFnType
       get rust_arc_decrement_strong_count_AudioWorkletNode => wire
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioWorkletNode;
-
-  RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_AudioWorkletProcessor => wire
-          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioWorkletProcessor;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_AudioWorkletProcessor => wire
-          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioWorkletProcessor;
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_BiquadFilterNode => wire
@@ -18737,23 +18703,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  AudioScheduledSourceNode
-      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioScheduledSourceNode(
-          dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return AudioScheduledSourceNodeImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
-  }
-
-  @protected
-  AudioWorkletProcessor
-      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioWorkletProcessor(
-          dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return AudioWorkletProcessorImpl.frbInternalDcoDecode(raw as List<dynamic>);
-  }
-
-  @protected
   BiquadFilterNode
       dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode(
           dynamic raw) {
@@ -19237,28 +19186,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  AudioScheduledSourceNode
-      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioScheduledSourceNode(
-          dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return AudioScheduledSourceNodeImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
-  }
-
-  @protected
   AudioWorkletNode
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioWorkletNode(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return AudioWorkletNodeImpl.frbInternalDcoDecode(raw as List<dynamic>);
-  }
-
-  @protected
-  AudioWorkletProcessor
-      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioWorkletProcessor(
-          dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return AudioWorkletProcessorImpl.frbInternalDcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -20334,24 +20266,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  AudioScheduledSourceNode
-      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioScheduledSourceNode(
-          SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return AudioScheduledSourceNodeImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
-  }
-
-  @protected
-  AudioWorkletProcessor
-      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioWorkletProcessor(
-          SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return AudioWorkletProcessorImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
-  }
-
-  @protected
   BiquadFilterNode
       sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode(
           SseDeserializer deserializer) {
@@ -20882,29 +20796,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  AudioScheduledSourceNode
-      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioScheduledSourceNode(
-          SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return AudioScheduledSourceNodeImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
-  }
-
-  @protected
   AudioWorkletNode
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioWorkletNode(
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return AudioWorkletNodeImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
-  }
-
-  @protected
-  AudioWorkletProcessor
-      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioWorkletProcessor(
-          SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return AudioWorkletProcessorImpl.frbInternalSseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -22067,27 +21963,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioScheduledSourceNode(
-          AudioScheduledSourceNode self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_usize(
-        (self as AudioScheduledSourceNodeImpl)
-            .frbInternalSseEncode(move: false),
-        serializer);
-  }
-
-  @protected
-  void
-      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioWorkletProcessor(
-          AudioWorkletProcessor self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_usize(
-        (self as AudioWorkletProcessorImpl).frbInternalSseEncode(move: false),
-        serializer);
-  }
-
-  @protected
-  void
       sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode(
           BiquadFilterNode self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -22676,31 +22551,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioScheduledSourceNode(
-          AudioScheduledSourceNode self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_usize(
-        (self as AudioScheduledSourceNodeImpl).frbInternalSseEncode(move: null),
-        serializer);
-  }
-
-  @protected
-  void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioWorkletNode(
           AudioWorkletNode self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as AudioWorkletNodeImpl).frbInternalSseEncode(move: null),
-        serializer);
-  }
-
-  @protected
-  void
-      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioWorkletProcessor(
-          AudioWorkletProcessor self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_usize(
-        (self as AudioWorkletProcessorImpl).frbInternalSseEncode(move: null),
         serializer);
   }
 
@@ -24784,72 +24639,6 @@ class AudioRenderCapacityImpl extends RustOpaque
 }
 
 @sealed
-class AudioScheduledSourceNodeImpl extends RustOpaque
-    implements AudioScheduledSourceNode {
-  // Not to be used by end users
-  AudioScheduledSourceNodeImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  AudioScheduledSourceNodeImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_AudioScheduledSourceNode,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_AudioScheduledSourceNode,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_AudioScheduledSourceNodePtr,
-  );
-
-  /// Unset the callback to run when the source node has stopped playing
-  Future<void> clearOnended() => RustLib.instance.api
-          .webAudioApiNodeTraitDefAudioScheduledSourceNodeClearOnended(
-        that: this,
-      );
-
-  /// Play immediately
-  ///
-  /// # Panics
-  ///
-  /// Panics if the source was already started
-  Future<void> start() =>
-      RustLib.instance.api.webAudioApiNodeTraitDefAudioScheduledSourceNodeStart(
-        that: this,
-      );
-
-  /// Schedule playback start at given timestamp
-  ///
-  /// # Panics
-  ///
-  /// Panics if the source was already started
-  Future<void> startAt({required double when}) => RustLib.instance.api
-      .webAudioApiNodeTraitDefAudioScheduledSourceNodeStartAt(
-          that: this, when: when);
-
-  /// Stop immediately
-  ///
-  /// # Panics
-  ///
-  /// Panics if the source was already stopped
-  Future<void> stop() =>
-      RustLib.instance.api.webAudioApiNodeTraitDefAudioScheduledSourceNodeStop(
-        that: this,
-      );
-
-  /// Schedule playback stop at given timestamp
-  ///
-  /// # Panics
-  ///
-  /// Panics if the source was already stopped
-  Future<void> stopAt({required double when}) => RustLib.instance.api
-      .webAudioApiNodeTraitDefAudioScheduledSourceNodeStopAt(
-          that: this, when: when);
-}
-
-@sealed
 class AudioWorkletNodeImpl extends RustOpaque implements AudioWorkletNode {
   // Not to be used by end users
   AudioWorkletNodeImpl.frbInternalDcoDecode(List<dynamic> wire)
@@ -24962,44 +24751,6 @@ class AudioWorkletNodeImpl extends RustOpaque implements AudioWorkletNode {
       RustLib.instance.api
           .webAudioApiWorkletAudioWorkletNodeSetChannelInterpretation(
               that: this, v: v);
-}
-
-@sealed
-class AudioWorkletProcessorImpl extends RustOpaque
-    implements AudioWorkletProcessor {
-  // Not to be used by end users
-  AudioWorkletProcessorImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  AudioWorkletProcessorImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_AudioWorkletProcessor,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_AudioWorkletProcessor,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_AudioWorkletProcessorPtr,
-  );
-
-  /// Handle incoming messages from the linked AudioNode
-  ///
-  /// By overriding this method you can add a handler for messages sent from the control thread
-  /// via the AudioWorkletNode MessagePort.
-  ///
-  /// Receivers are supposed to consume the content of `msg`. The content of `msg` might
-  /// also be replaced by cruft that needs to be deallocated outside of the render thread
-  /// afterwards, e.g. when replacing an internal buffer.
-  ///
-  /// This method is just a shim of the full
-  /// [`MessagePort`](https://webaudio.github.io/web-audio-api/#dom-audioworkletprocessor-port)
-  /// `onmessage` functionality of the AudioWorkletProcessor.
-  Future<void> onmessage({required Any msg}) => RustLib.instance.api
-      .webAudioApiWorkletTraitDefAudioWorkletProcessorOnmessage(
-          that: this, msg: msg);
 }
 
 @sealed
