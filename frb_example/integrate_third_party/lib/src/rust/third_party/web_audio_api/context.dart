@@ -12,7 +12,7 @@ import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'context.freezed.dart';
 
 // These functions are ignored because they are not marked as `pub`: `context`, `id`, `post_message`
-// These functions are ignored because they have generic arguments: `decode_audio_data_sync`, `decode_audio_data_sync`, `decode_audio_data_sync`, `decode_audio_data_sync`, `set_onstatechange`, `set_onstatechange`, `set_onstatechange`, `set_onstatechange`
+// These functions are ignored because they have generic arguments: `decode_audio_data_sync`, `decode_audio_data_sync`, `decode_audio_data_sync`, `set_onstatechange`, `set_onstatechange`, `set_onstatechange`, `set_onstatechange`
 // These types are ignored because they are not used by any `pub` functions: `AudioNodeId`
 // These functions are ignored: `base`, `clear_onstatechange`, `create_analyser`, `create_audio_param`, `create_biquad_filter`, `create_buffer_source`, `create_buffer`, `create_channel_merger`, `create_channel_splitter`, `create_constant_source`, `create_convolver`, `create_delay`, `create_dynamics_compressor`, `create_gain`, `create_iir_filter`, `create_oscillator`, `create_panner`, `create_periodic_wave`, `create_script_processor`, `create_stereo_panner`, `create_wave_shaper`, `current_time`, `destination`, `listener`, `sample_rate`, `state`
 
