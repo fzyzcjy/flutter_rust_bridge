@@ -15,3 +15,18 @@ pub(crate) struct HirFlatPack {
     pub types: Vec<HirFlatTypeAlias>,
     pub existing_handler: Option<NamespacedName>,
 }
+
+impl HirFlatPack {
+    pub(crate) fn visit_components_mut(&self, visitor: impl HirFlatPackComponentVisitor) {
+        visitor.visit(&mut self.functions);
+        visitor.visit(&mut self.enums);
+        visitor.visit(&mut self.structs);
+        visitor.visit(&mut self.traits);
+        visitor.visit(&mut self.trait_impls);
+        visitor.visit(&mut self.types);
+    }
+}
+
+pub(crate) trait HirFlatPackComponentVisitor {
+    fn visit<T>(&self, items: &mut Vec<T>);
+}
