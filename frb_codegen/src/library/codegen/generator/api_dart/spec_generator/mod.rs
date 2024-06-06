@@ -83,6 +83,11 @@ pub(crate) fn generate(
                 )?,
             ))
         })
+        .collect::<Result<Vec<_>>>()?
+        .into_iter()
+        .filter(|(_, x)| {
+            !x.funcs.is_empty() || !x.classes.is_empty() || !x.extra_impl_code.is_empty()
+        })
         .collect::<Result<HashMap<_, _>>>()?;
 
     Ok(ApiDartOutputSpec { namespaced_items })
