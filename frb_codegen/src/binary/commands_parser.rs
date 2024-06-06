@@ -67,6 +67,7 @@ fn compute_codegen_config_from_naive_command_args(
         local: Some(args.local),
         default_external_library_loader_web_prefix: args.default_external_library_loader_web_prefix,
         dart_type_rename: None, // complex type, not supported on command line yet
+        stop_on_error: Some(args.stop_on_error),
         dump: args.dump,
         dump_all: Some(args.dump_all),
     })
