@@ -211,7 +211,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                     func,
                     actual_method_dart_name,
                     attributes,
-                    owner_ty,
+                    MirType::TraitDef(trait_def.clone()),
                     Some(trait_def),
                 )
             }
