@@ -1,6 +1,7 @@
 use crate::codegen::generator::codec::structs::CodecMode;
 use crate::codegen::ir::mir::func::MirFunc;
 use crate::codegen::ir::mir::skip::MirSkip;
+use crate::codegen::ir::mir::trait_impl::MirTraitImpl;
 use crate::codegen::ir::mir::ty::enumeration::{MirEnum, MirEnumIdent};
 use crate::codegen::ir::mir::ty::structure::{MirStruct, MirStructIdent};
 use crate::codegen::ir::mir::ty::MirType;
@@ -9,7 +10,6 @@ use crate::utils::namespace::NamespacedName;
 use itertools::Itertools;
 use std::collections::{HashMap, HashSet};
 use strum::IntoEnumIterator;
-use crate::codegen::ir::mir::trait_impl::MirTraitImpl;
 
 pub type MirStructPool = HashMap<MirStructIdent, MirStruct>;
 pub type MirEnumPool = HashMap<MirEnumIdent, MirEnum>;
@@ -27,6 +27,10 @@ pub struct MirPack {
 }
 
 impl MirPack {
+    pub(crate) fn funcs_with_impl(&self) -> impl Iterator<Item = &MirFunc> {
+        (self.funcs.iter()).filter(|f| f.has_impl)
+    }
+
     #[allow(clippy::type_complexity)]
     pub fn distinct_types(
         &self,
