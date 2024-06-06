@@ -147,7 +147,10 @@ fn generate_maybe_impls(
 ) -> String {
     let interest_trait_impls = all_trait_impls
         .iter()
-        .filter(|x| x.impl_ty.safe_ident() == self_type.safe_ident())
+        .filter(|x| {
+            (get_candidate_safe_idents_for_matching(&x.impl_ty).iter())
+                .any(|x| x == &self_type.safe_ident())
+        })
         .collect_vec();
 
     if interest_trait_impls.is_empty() {
@@ -158,4 +161,13 @@ fn generate_maybe_impls(
         .map(|t| ApiDartGenerator::new(t.trait_ty.clone(), context).dart_api_type())
         .join(", ");
     format!(" implements {}", combined_impls)
+}
+
+fn get_candidate_safe_idents_for_matching(ty: &MirType) -> Vec<String> {
+    let mut ans = vec![ty.safe_ident()];
+    match ty {
+        MirType::RustAutoOpaqueImplicit(ty) => ans.push(ty.inner.safe_ident()),
+        _ => {}
+    }
+    ans
 }
