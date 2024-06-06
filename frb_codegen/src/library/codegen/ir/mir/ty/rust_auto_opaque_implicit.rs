@@ -10,6 +10,7 @@ pub struct MirTypeRustAutoOpaqueImplicit {
     pub ownership_mode: OwnershipMode,
     pub inner: MirTypeRustOpaque,
     pub raw: MirRustAutoOpaqueRaw,
+    pub reason: Option<MirTypeRustAutoOpaqueImplicitReason>,
     pub ignore: bool,
 }
 
@@ -17,6 +18,11 @@ pub struct MirTypeRustAutoOpaqueImplicit {
 pub struct MirRustAutoOpaqueRaw {
     pub string: String,
     pub segments: Vec<NameComponent>,
+}
+
+#[derive(Copy)]
+pub enum MirTypeRustAutoOpaqueImplicitReason {
+    StructOrEnumRequireOpaque,
 }
 }
 

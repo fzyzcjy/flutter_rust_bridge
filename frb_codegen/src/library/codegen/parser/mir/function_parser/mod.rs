@@ -9,6 +9,7 @@ use crate::codegen::ir::mir::func::{
 use crate::codegen::ir::mir::skip::MirSkipReason::IgnoredFunctionGeneric;
 use crate::codegen::ir::mir::skip::{MirSkip, MirSkipReason};
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
+use crate::codegen::ir::mir::ty::rust_auto_opaque_implicit::MirTypeRustAutoOpaqueImplicitReason;
 use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::mir::attribute_parser::FrbAttributes;
@@ -351,8 +352,7 @@ fn is_allowed_owner_type(owner_ty: &MirType) -> bool {
     match owner_ty {
         MirType::StructRef(_) | MirType::EnumRef(_) => true,
         MirType::RustAutoOpaqueImplicit(ty) => {
-            TODO;
-            TODO
+            ty.reason == Some(MirTypeRustAutoOpaqueImplicitReason::StructOrEnumRequireOpaque)
         }
         _ => false,
     }
