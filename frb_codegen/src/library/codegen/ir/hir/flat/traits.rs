@@ -7,4 +7,8 @@ pub struct HirFlatTrait {
     pub(crate) name: NamespacedName,
 }
 
-impl HirFlatComponent for HirFlatTrait {}
+impl HirFlatComponent<NamespacedName> for HirFlatTrait {
+    fn sort_key(&self) -> NamespacedName {
+        self.name.clone()
+    }
+}

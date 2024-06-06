@@ -16,7 +16,11 @@ pub(crate) struct HirFlatFunction {
     pub(crate) item_fn: GeneralizedItemFn,
 }
 
-impl HirFlatComponent for HirFlatFunction {}
+impl HirFlatComponent<SimpleOwnerAndName> for HirFlatFunction {
+    fn sort_key(&self) -> SimpleOwnerAndName {
+        self.owner_and_name_for_dedup()
+    }
+}
 
 impl HirFlatFunction {
     pub(crate) fn owner_and_name_for_dedup(&self) -> SimpleOwnerAndName {

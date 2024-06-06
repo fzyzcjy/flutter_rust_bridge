@@ -1,8 +1,8 @@
+use crate::codegen::ir::hir::flat::component::HirFlatComponent;
+use crate::codegen::ir::hir::flat::trait_impl::HirFlatTraitImpl;
 use crate::codegen::ir::hir::misc::serializers::serialize_syn;
 use serde::Serialize;
 use syn::Type;
-use crate::codegen::ir::hir::flat::component::HirFlatComponent;
-use crate::codegen::ir::hir::flat::trait_impl::HirFlatTraitImpl;
 
 #[derive(Clone, Debug, Serialize)]
 pub struct HirFlatTypeAlias {
@@ -11,4 +11,8 @@ pub struct HirFlatTypeAlias {
     pub(crate) target: Type,
 }
 
-impl HirFlatComponent for HirFlatTypeAlias {}
+impl HirFlatComponent<String> for HirFlatTypeAlias {
+    fn sort_key(&self) -> String {
+        self.ident.to_string()
+    }
+}

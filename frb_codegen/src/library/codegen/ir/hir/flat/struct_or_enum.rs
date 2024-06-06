@@ -18,7 +18,11 @@ pub struct HirFlatStructOrEnum<Item: SynItemStructOrEnum> {
     pub(crate) src: Item,
 }
 
-impl<Item: SynItemStructOrEnum> HirFlatComponent for HirFlatStructOrEnum<Item> {}
+impl<Item: SynItemStructOrEnum> HirFlatComponent<NamespacedName> for HirFlatStructOrEnum<Item> {
+    fn sort_key(&self) -> NamespacedName {
+        self.name.clone()
+    }
+}
 
 pub type HirFlatStruct = HirFlatStructOrEnum<ItemStruct>;
 pub type HirFlatEnum = HirFlatStructOrEnum<ItemEnum>;
