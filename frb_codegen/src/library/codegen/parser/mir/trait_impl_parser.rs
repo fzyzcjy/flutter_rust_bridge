@@ -5,6 +5,7 @@ use crate::codegen::ir::mir::trait_impl::MirTraitImpl;
 use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::mir::attribute_parser::FrbAttributes;
+use crate::codegen::parser::mir::type_parser::trait_def::parse_type_trait;
 use crate::codegen::parser::mir::type_parser::{TypeParser, TypeParserParsingContext};
 use crate::if_then_some;
 use crate::utils::crate_name::CrateName;
@@ -28,13 +29,9 @@ pub(super) fn parse(
 
     Ok((hir_trait_impls.iter())
         .map(|x| {
-            let trait_ty_raw = type_parser.parse_type(&syn::parse_str(&x.trait_name)?, &context)?;
+            let trait_ty = parse_type_trait(&x.trait_name, type_parser);
             let impl_ty = type_parser.parse_type(&x.impl_ty, &context)?;
-
-            Ok(
-                if_then_some!(let MirType::TraitDef(trait_ty) = trait_ty_raw, trait_ty)
-                    .map(|trait_ty| MirTraitImpl { trait_ty, impl_ty }),
-            )
+            Ok(trait_ty.map(|trait_ty| MirTraitImpl { trait_ty, impl_ty }))
         })
         .collect::<anyhow::Result<Vec<_>>>()?
         .into_iter()
