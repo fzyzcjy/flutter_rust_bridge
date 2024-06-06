@@ -16,7 +16,7 @@ pub type MirEnumPool = HashMap<MirEnumIdent, MirEnum>;
 
 #[derive(Debug, Clone, serde::Serialize)]
 pub struct MirPack {
-    pub funcs: Vec<MirFunc>,
+    funcs: Vec<MirFunc>,
     pub struct_pool: MirStructPool,
     pub enum_pool: MirEnumPool,
     pub dart_code_of_type: HashMap<String, String>,
