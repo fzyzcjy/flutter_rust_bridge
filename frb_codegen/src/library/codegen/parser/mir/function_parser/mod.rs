@@ -11,6 +11,7 @@ use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
 use crate::codegen::ir::mir::ty::rust_auto_opaque_implicit::MirTypeRustAutoOpaqueImplicitReason;
 use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
+use crate::codegen::ir::mir::ty::trait_def::MirTypeTraitDef;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::mir::attribute_parser::FrbAttributes;
 use crate::codegen::parser::mir::function_parser::structs::ParseFunctionOutput;
@@ -171,19 +172,45 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         attributes: &FrbAttributes,
     ) -> anyhow::Result<Option<MirFuncOwnerInfo>> {
         match &func.owner {
-            HirFlatFunctionOwner::TraitDef { .. } => return Ok(None), // TODO not yet implemented
             HirFlatFunctionOwner::Function => Ok(Some(MirFuncOwnerInfo::Function)),
             HirFlatFunctionOwner::StructOrEnum {
                 impl_ty,
                 trait_def_name,
-            } => self.parse_method_owner(
-                func,
-                context,
-                actual_method_dart_name,
-                attributes,
-                impl_ty,
-                trait_def_name,
-            ),
+            } => {
+                let trait_def = if let Some(trait_def_name) = trait_def_name {
+                    if let Some(ans) = parse_type_trait(trait_def_name, self.type_parser) {
+                        Some(ans)
+                    } else {
+                        // If cannot find the trait, we directly skip the function currently
+                        return Ok(None);
+                    }
+                } else {
+                    None
+                };
+
+                self.parse_method_owner(
+                    func,
+                    context,
+                    actual_method_dart_name,
+                    attributes,
+                    impl_ty,
+                    trait_def,
+                )
+            }
+            HirFlatFunctionOwner::TraitDef { trait_def_name } => {
+                let trait_def = MirTypeTraitDef {
+                    name: trait_def_name.to_owned(),
+                };
+
+                self.parse_method_owner(
+                    func,
+                    context,
+                    actual_method_dart_name,
+                    attributes,
+                    impl_ty,
+                    Some(trait_def),
+                )
+            }
         }
     }
 
@@ -194,7 +221,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         actual_method_dart_name: Option<String>,
         attributes: &FrbAttributes,
         impl_ty: &Type,
-        trait_def_name: &Option<String>,
+        trait_def: Option<MirTypeTraitDef>,
     ) -> anyhow::Result<Option<MirFuncOwnerInfo>> {
         let sig = func.item_fn.sig();
         let mode = if matches!(sig.inputs.first(), Some(FnArg::Receiver(..))) {
@@ -218,17 +245,6 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         }
 
         let actual_method_name = sig.ident.to_string();
-
-        let trait_def = if let Some(trait_def_name) = trait_def_name {
-            if let Some(ans) = parse_type_trait(trait_def_name, self.type_parser) {
-                Some(ans)
-            } else {
-                // If cannot find the trait, we directly skip the function currently
-                return Ok(None);
-            }
-        } else {
-            None
-        };
 
         MirFuncOwnerInfo::Method(MirFuncOwnerInfoMethod {
             owner_ty,
