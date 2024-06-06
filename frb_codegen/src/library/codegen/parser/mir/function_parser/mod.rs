@@ -170,56 +170,73 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         actual_method_dart_name: Option<String>,
         attributes: &FrbAttributes,
     ) -> anyhow::Result<Option<MirFuncOwnerInfo>> {
-        Ok(Some(match &func.owner {
+        match &func.owner {
             HirFlatFunctionOwner::TraitDef { .. } => return Ok(None), // TODO not yet implemented
-            HirFlatFunctionOwner::Function => MirFuncOwnerInfo::Function,
+            HirFlatFunctionOwner::Function => Ok(Some(MirFuncOwnerInfo::Function)),
             HirFlatFunctionOwner::StructOrEnum {
                 impl_ty,
                 trait_def_name,
-            } => {
-                let sig = func.item_fn.sig();
-                let mode = if matches!(sig.inputs.first(), Some(FnArg::Receiver(..))) {
-                    MirFuncOwnerInfoMethodMode::Instance
-                } else {
-                    MirFuncOwnerInfoMethodMode::Static
-                };
+            } => self.parse_method_owner(
+                func,
+                context,
+                actual_method_dart_name,
+                attributes,
+                impl_ty,
+                trait_def_name,
+            ),
+        }
+    }
 
-                let owner_ty = if let Some(x) = self.parse_method_owner_ty(impl_ty, context)? {
-                    x
-                } else {
-                    return Ok(None);
-                };
+    fn parse_method_owner(
+        &mut self,
+        func: &HirFlatFunction,
+        context: &TypeParserParsingContext,
+        actual_method_dart_name: Option<String>,
+        attributes: &FrbAttributes,
+        impl_ty: &Type,
+        trait_def_name: &Option<String>,
+    ) -> anyhow::Result<Option<MirFuncOwnerInfo>> {
+        let sig = func.item_fn.sig();
+        let mode = if matches!(sig.inputs.first(), Some(FnArg::Receiver(..))) {
+            MirFuncOwnerInfoMethodMode::Instance
+        } else {
+            MirFuncOwnerInfoMethodMode::Static
+        };
 
-                if owner_ty.should_ignore(self.type_parser) {
-                    return Ok(None);
-                }
+        let owner_ty = if let Some(x) = self.parse_method_owner_ty(impl_ty, context)? {
+            x
+        } else {
+            return Ok(None);
+        };
 
-                if !is_allowed_owner(&owner_ty, attributes) {
-                    return Ok(None);
-                }
+        if owner_ty.should_ignore(self.type_parser) {
+            return Ok(None);
+        }
 
-                let actual_method_name = sig.ident.to_string();
+        if !is_allowed_owner(&owner_ty, attributes) {
+            return Ok(None);
+        }
 
-                let trait_def = if let Some(trait_def_name) = trait_def_name {
-                    if let Some(ans) = parse_type_trait(trait_def_name, self.type_parser) {
-                        Some(ans)
-                    } else {
-                        // If cannot find the trait, we directly skip the function currently
-                        return Ok(None);
-                    }
-                } else {
-                    None
-                };
+        let actual_method_name = sig.ident.to_string();
 
-                MirFuncOwnerInfo::Method(MirFuncOwnerInfoMethod {
-                    owner_ty,
-                    actual_method_name,
-                    actual_method_dart_name,
-                    mode,
-                    trait_def,
-                })
+        let trait_def = if let Some(trait_def_name) = trait_def_name {
+            if let Some(ans) = parse_type_trait(trait_def_name, self.type_parser) {
+                Some(ans)
+            } else {
+                // If cannot find the trait, we directly skip the function currently
+                return Ok(None);
             }
-        }))
+        } else {
+            None
+        };
+
+        MirFuncOwnerInfo::Method(MirFuncOwnerInfoMethod {
+            owner_ty,
+            actual_method_name,
+            actual_method_dart_name,
+            mode,
+            trait_def,
+        })
     }
 
     fn parse_method_owner_ty(
