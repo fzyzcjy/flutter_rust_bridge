@@ -34,7 +34,7 @@ flutter_rust_bridge::frb_generated_boilerplate!(
     default_rust_auto_opaque = RustAutoOpaqueMoi,
 );
 pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "2.0.0-dev.37";
-pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = 50513239;
+pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = 2047558242;
 
 // Section: executor
 
@@ -123,37 +123,6 @@ fn wire__crate__api__minimal__MyStruct_new_impl(
             transform_result_sse((move || {
                 Result::<_, ()>::Ok(crate::api::minimal::MyStruct::new())
             })())
-        },
-    )
-}
-fn wire__crate__api__minimal__func_using_enum_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "func_using_enum",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
-        },
-        move || {
-            let message = unsafe {
-                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
-                    ptr_,
-                    rust_vec_len_,
-                    data_len_,
-                )
-            };
-            let mut deserializer =
-                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            deserializer.end();
-            move |context| {
-                transform_result_sse((move || {
-                    Result::<_, ()>::Ok(crate::api::minimal::func_using_enum())
-                })())
-            }
         },
     )
 }
@@ -252,18 +221,6 @@ impl SseDecode
     }
 }
 
-impl SseDecode for crate::api::minimal::HiEnum {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <i32>::sse_decode(deserializer);
-        return match inner {
-            0 => crate::api::minimal::HiEnum::A,
-            1 => crate::api::minimal::HiEnum::B,
-            _ => unreachable!("Invalid variant for HiEnum: {}", inner),
-        };
-    }
-}
-
 impl SseDecode for i32 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -306,9 +263,8 @@ fn pde_ffi_dispatcher_primary_impl(
             rust_vec_len,
             data_len,
         ),
-        4 => wire__crate__api__minimal__func_using_enum_impl(port, ptr, rust_vec_len, data_len),
-        5 => wire__crate__api__minimal__init_app_impl(port, ptr, rust_vec_len, data_len),
-        6 => wire__crate__api__minimal__minimal_adder_impl(port, ptr, rust_vec_len, data_len),
+        4 => wire__crate__api__minimal__init_app_impl(port, ptr, rust_vec_len, data_len),
+        5 => wire__crate__api__minimal__minimal_adder_impl(port, ptr, rust_vec_len, data_len),
         _ => unreachable!(),
     }
 }
@@ -343,25 +299,6 @@ impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<MyStruct>> for MyStruct {
     }
 }
 
-// Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for crate::api::minimal::HiEnum {
-    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-        match self {
-            Self::A => 0.into_dart(),
-            Self::B => 1.into_dart(),
-            _ => unreachable!(),
-        }
-    }
-}
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for crate::api::minimal::HiEnum {}
-impl flutter_rust_bridge::IntoIntoDart<crate::api::minimal::HiEnum>
-    for crate::api::minimal::HiEnum
-{
-    fn into_into_dart(self) -> crate::api::minimal::HiEnum {
-        self
-    }
-}
-
 impl SseEncode for MyStruct {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -377,22 +314,6 @@ impl SseEncode
         let (ptr, size) = self.sse_encode_raw();
         <usize>::sse_encode(ptr, serializer);
         <i32>::sse_encode(size, serializer);
-    }
-}
-
-impl SseEncode for crate::api::minimal::HiEnum {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <i32>::sse_encode(
-            match self {
-                crate::api::minimal::HiEnum::A => 0,
-                crate::api::minimal::HiEnum::B => 1,
-                _ => {
-                    unimplemented!("");
-                }
-            },
-            serializer,
-        );
     }
 }
 
