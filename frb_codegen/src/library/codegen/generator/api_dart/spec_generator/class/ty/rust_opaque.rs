@@ -37,7 +37,7 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
             generate_class_extra_body(self.mir_type(), &self.context.mir_pack.dart_code_of_type);
 
         let (maybe_impls, maybe_impls_header) =
-            generate_maybe_impls(&self.context.mir_pack.trait_impls, &self.mir, self.context)?;
+            generate_maybe_impls(&self.context.mir_pack.trait_impls, &self.mir, self.context);
 
         Some(ApiDartGeneratedClass {
             namespace: self.mir.namespace.clone(),
@@ -143,7 +143,7 @@ fn generate_maybe_impls(
     all_trait_impls: &[MirTraitImpl],
     self_type: &MirTypeRustOpaque,
     context: ApiDartGeneratorContext,
-) -> anyhow::Result<(String, DartBasicHeaderCode)> {
+) -> (String, DartBasicHeaderCode) {
     let interest_trait_impls = all_trait_impls
         .iter()
         .filter(|x| {
@@ -153,7 +153,7 @@ fn generate_maybe_impls(
         .collect_vec();
 
     if interest_trait_impls.is_empty() {
-        return Ok(("".to_owned(), Default::default()));
+        return ("".to_owned(), Default::default());
     }
 
     let combined_impls = (interest_trait_impls.iter())
@@ -170,9 +170,9 @@ fn generate_maybe_impls(
         ),
         None,
         context,
-    )?;
+    ).unwrap();
 
-    Ok((code, header))
+    (code, header)
 }
 
 fn get_candidate_safe_idents_for_matching(ty: &MirType) -> Vec<String> {
