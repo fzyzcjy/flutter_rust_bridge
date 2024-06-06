@@ -243,13 +243,13 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
         let actual_method_name = sig.ident.to_string();
 
-        MirFuncOwnerInfo::Method(MirFuncOwnerInfoMethod {
+        Ok(Some(MirFuncOwnerInfo::Method(MirFuncOwnerInfoMethod {
             owner_ty,
             actual_method_name,
             actual_method_dart_name,
             mode,
             trait_def,
-        })
+        })))
     }
 
     fn parse_method_owner_ty(
