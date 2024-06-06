@@ -9,10 +9,14 @@ pub(crate) struct FunctionFrbOverrideMerger;
 impl BaseMerger for FunctionFrbOverrideMerger {
     fn merge_functions(
         &self,
-        base: &HirFlatFunction,
+        _base: &HirFlatFunction,
         overrider: &HirFlatFunction,
     ) -> Option<HirFlatFunction> {
-        TODO
+        if overrider.source == HirGenerationSource::FromFrbOverride {
+            Some(overrider.to_owned())
+        } else {
+            None
+        }
     }
 
     fn merge_structs(
