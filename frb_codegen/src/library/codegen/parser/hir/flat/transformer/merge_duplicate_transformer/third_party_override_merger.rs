@@ -2,9 +2,7 @@ use crate::codegen::ir::hir::flat::function::HirFlatFunction;
 use crate::codegen::ir::hir::flat::source::HirFlatGenerationSource;
 use crate::codegen::ir::hir::flat::struct_or_enum::{HirFlatEnum, HirFlatStruct};
 use crate::codegen::ir::hir::misc::syn_item_struct_or_enum::SynItemStructOrEnum;
-use crate::codegen::misc::SELF_CRATE_THIRD_PARTY_NAMESPACE;
 use crate::codegen::parser::hir::flat::transformer::merge_duplicate_transformer::base::BaseMerger;
-use crate::utils::namespace::Namespace;
 
 pub(crate) struct ThirdPartyOverrideMerger;
 
