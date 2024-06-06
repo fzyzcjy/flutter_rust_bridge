@@ -161,18 +161,24 @@ fn generate_maybe_impls(
         .join(", ");
     let code = format!(" implements {}", combined_impls);
 
-    let header = generate_imports_which_types_and_funcs_use(
+    let interest_trait_types = (interest_trait_impls.iter())
+        .map(|x| MirType::TraitDef(x.trait_ty.clone()))
+        .collect_vec();
+    let import = generate_imports_which_types_and_funcs_use(
         &self_type.namespace,
-        &Some(
-            (interest_trait_impls.iter())
-                .map(|x| MirType::TraitDef(x.trait_ty.clone()))
-                .collect(),
-        ),
+        &Some(&interest_trait_types.iter().collect()),
         &None,
         context,
-    ).unwrap();
+    )
+    .unwrap();
 
-    (code, header)
+    (
+        code,
+        DartBasicHeaderCode {
+            import,
+            ..Default::default()
+        },
+    )
 }
 
 fn get_candidate_safe_idents_for_matching(ty: &MirType) -> Vec<String> {
