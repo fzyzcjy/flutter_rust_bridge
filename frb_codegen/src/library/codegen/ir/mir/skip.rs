@@ -30,7 +30,7 @@ impl MirSkipReason {
             }
             Self::IgnoredMisc => "These functions are ignored",
             Self::Err => {
-                "These functions have error during generation (see debug logs for more details)"
+                "These functions have error during generation (see debug logs or enable `stop_on_error: true` for more details)"
             }
         }
     }

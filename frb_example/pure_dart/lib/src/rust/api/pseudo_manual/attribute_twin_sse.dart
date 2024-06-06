@@ -9,7 +9,7 @@ import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'package:meta/meta.dart' as meta;
 part 'attribute_twin_sse.freezed.dart';
 
-// These types are ignored because they are not used by any `pub` functions: `IgnoredStructTwinSse`
+// These types are ignored because they are not used by any `pub` functions: `IgnoredStructTwinSse`, `StructWithOnlyIgnoredMethodTwinSse`
 // These functions are ignored: `func_should_not_exist_in_dart_twin_sse`, `method_should_not_exist_in_dart_twin_sse`, `method_should_not_exist_in_dart_twin_sse`
 
 Future<void> handleCustomizedStructTwinSse({required CustomizedTwinSse val}) =>

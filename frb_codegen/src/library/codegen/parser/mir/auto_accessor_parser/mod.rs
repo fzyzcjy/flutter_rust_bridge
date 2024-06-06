@@ -1,7 +1,7 @@
 mod field;
 
 use crate::codegen::generator::codec::structs::CodecMode;
-use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirStruct;
+use crate::codegen::ir::hir::flat::struct_or_enum::HirFlatStruct;
 use crate::codegen::ir::mir::func::{MirFunc, MirFuncAccessorMode, OwnershipMode};
 use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::ir::mir::ty::{MirContext, MirType};
@@ -20,7 +20,7 @@ use std::collections::HashMap;
 
 pub(crate) fn parse_auto_accessors(
     config: &ParserMirInternalConfig,
-    src_structs: &HashMap<String, &HirStruct>,
+    src_structs: &HashMap<String, &HirFlatStruct>,
     type_parser: &mut TypeParser,
 ) -> anyhow::Result<Vec<MirFunc>> {
     let src_structs_in_paths =

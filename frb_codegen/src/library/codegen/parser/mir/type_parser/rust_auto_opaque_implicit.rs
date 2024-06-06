@@ -1,6 +1,6 @@
 use crate::codegen::ir::mir::func::OwnershipMode;
 use crate::codegen::ir::mir::ty::rust_auto_opaque_implicit::{
-    MirRustAutoOpaqueRaw, MirTypeRustAutoOpaqueImplicit,
+    MirRustAutoOpaqueRaw, MirTypeRustAutoOpaqueImplicit, MirTypeRustAutoOpaqueImplicitReason,
 };
 use crate::codegen::ir::mir::ty::rust_opaque::{
     MirRustOpaqueInner, MirTypeRustOpaque, RustOpaqueCodecMode,
@@ -22,6 +22,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         &mut self,
         namespace: Option<Namespace>,
         ty: &Type,
+        reason: Option<MirTypeRustAutoOpaqueImplicitReason>,
         override_ignore: Option<bool>,
     ) -> Result<MirType> {
         let (inner, ownership_mode) = split_ownership_from_ty(ty);
@@ -32,6 +33,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             raw: ans_raw,
             inner: ans_inner,
             ignore: override_ignore.unwrap_or(false),
+            reason,
         }))
     }
 
@@ -94,6 +96,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         self.parse_type_rust_auto_opaque_implicit(
             ty_raw.self_namespace(),
             &syn::parse_str(&transform(&ty_raw.raw.string))?,
+            None,
             None,
         )
     }

@@ -1,6 +1,7 @@
 use crate::codegen::generator::api_dart::spec_generator::class::field::{
     generate_field_default, generate_field_required_modifier,
 };
+use crate::codegen::generator::api_dart::spec_generator::class::method::GeneratedApiMethods;
 use crate::codegen::generator::api_dart::spec_generator::misc::generate_dart_maybe_implements_exception;
 use crate::codegen::ir::mir::ty::structure::MirStruct;
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
@@ -14,21 +15,21 @@ impl<'a> StructRefApiDartGenerator<'a> {
         src: &MirStruct,
         comments: &str,
         metadata: &str,
-        methods: &[String],
+        methods: &GeneratedApiMethods,
         constructor_postfix: &str,
         extra_body: &str,
         class_name: &str,
     ) -> String {
-        let private_constructor = if !methods.is_empty() {
+        let private_constructor = if methods.num_methods > 0 {
             format!("const {}._();", self.mir.ident.0.name)
         } else {
             "".to_owned()
         };
 
         let constructor_params =
-            self.generate_mode_freezed_constructor_params(src, !methods.is_empty());
+            self.generate_mode_freezed_constructor_params(src, methods.num_methods > 0);
         let implements_exception = generate_dart_maybe_implements_exception(self.mir.is_exception);
-        let methods_str = methods.join("\n");
+        let methods_str = &methods.code;
 
         format!(
             "{comments}{metadata}class {class_name} with _${class_name} {implements_exception} {{

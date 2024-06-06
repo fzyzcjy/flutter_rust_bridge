@@ -10,19 +10,16 @@ pub fn minimal_adder(a: i32, b: i32) -> i32 {
 }
 
 // TODO temp demo
-#[frb(opaque)]
-pub struct MyStruct {}
-impl MyStruct {
-    pub fn f(&mut self, a: i32) -> i32 {
-        a
-    }
+pub enum SimplePrimitiveEnumTwinNormal {
+    First,
+    Second,
+}
 
-    pub fn my_static_method() -> i32 {
-        42
-    }
-
-    #[frb(sync)]
-    pub fn new() -> Self {
-        Self {}
+impl SimplePrimitiveEnumTwinNormal {
+    pub fn simple_method_twin_normal(&self) -> i32 {
+        match self {
+            SimplePrimitiveEnumTwinNormal::First => 100,
+            SimplePrimitiveEnumTwinNormal::Second => 200,
+        }
     }
 }

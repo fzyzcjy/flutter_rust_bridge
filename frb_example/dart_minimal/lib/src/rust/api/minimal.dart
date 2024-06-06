@@ -9,16 +9,13 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 Future<int> minimalAdder({required int a, required int b}) =>
     RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b);
 
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyStruct>>
-abstract class MyStruct {
-  Future<int> f({required int a});
+enum SimplePrimitiveEnumTwinNormal {
+  first,
+  second,
+  ;
 
-  static Future<int> myStaticMethod() =>
-      RustLib.instance.api.crateApiMinimalMyStructMyStaticMethod();
-
-  factory MyStruct() => RustLib.instance.api.crateApiMinimalMyStructNew();
-
-  void dispose();
-
-  bool get isDisposed;
+  Future<int> simpleMethodTwinNormal() => RustLib.instance.api
+          .crateApiMinimalSimplePrimitiveEnumTwinNormalSimpleMethodTwinNormal(
+        that: this,
+      );
 }

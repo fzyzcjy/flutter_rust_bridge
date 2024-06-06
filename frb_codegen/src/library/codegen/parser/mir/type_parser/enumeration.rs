@@ -1,4 +1,4 @@
-use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirEnum;
+use crate::codegen::ir::hir::flat::struct_or_enum::HirFlatEnum;
 use crate::codegen::ir::mir::field::{MirField, MirFieldSettings};
 use crate::codegen::ir::mir::ident::MirIdent;
 use crate::codegen::ir::mir::ty::boxed::MirTypeBoxed;
@@ -7,6 +7,7 @@ use crate::codegen::ir::mir::ty::enumeration::{
     MirEnum, MirEnumIdent, MirEnumMode, MirTypeEnumRef, MirVariant, MirVariantKind,
 };
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
+use crate::codegen::ir::mir::ty::rust_auto_opaque_implicit::MirTypeRustAutoOpaqueImplicitReason;
 use crate::codegen::ir::mir::ty::structure::MirStruct;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::ir::mir::ty::MirType::{Delegate, EnumRef};
@@ -33,7 +34,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
     fn parse_enum(
         &mut self,
-        src_enum: &HirEnum,
+        src_enum: &HirFlatEnum,
         name: NamespacedName,
         wrapper_name: Option<String>,
     ) -> anyhow::Result<MirEnum> {
@@ -61,12 +62,12 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
     fn parse_variant(
         &mut self,
-        src_enum: &HirEnum,
+        src_enum: &HirFlatEnum,
         variant: &Variant,
     ) -> anyhow::Result<MirVariant> {
         Ok(MirVariant {
             name: MirIdent::new(variant.ident.to_string()),
-            wrapper_name: MirIdent::new(format!("{}_{}", src_enum.ident, variant.ident)),
+            wrapper_name: MirIdent::new(format!("{}_{}", src_enum.name.name, variant.ident)),
             comments: parse_comments(&variant.attrs),
             kind: match variant.fields.iter().next() {
                 None => MirVariantKind::Value,
@@ -81,13 +82,13 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
     fn parse_variant_kind_struct(
         &mut self,
-        src_enum: &HirEnum,
+        src_enum: &HirFlatEnum,
         variant: &Variant,
         attrs: &[Attribute],
         field_ident: &Option<Ident>,
     ) -> anyhow::Result<MirVariantKind> {
         let variant_ident = variant.ident.to_string();
-        let enum_name = &src_enum.namespaced_name;
+        let enum_name = &src_enum.name;
         let variant_namespace = enum_name.namespace.join(&enum_name.name);
         let attributes = FrbAttributes::parse(attrs)?;
         Ok(MirVariantKind::Struct(MirStruct {
@@ -134,7 +135,7 @@ impl EnumOrStructParser<MirEnumIdent, MirEnum, ItemEnum>
 {
     fn parse_inner_impl(
         &mut self,
-        src_object: &HirEnum,
+        src_object: &HirFlatEnum,
         name: NamespacedName,
         wrapper_name: Option<String>,
     ) -> anyhow::Result<MirEnum> {
@@ -163,7 +164,7 @@ impl EnumOrStructParser<MirEnumIdent, MirEnum, ItemEnum>
         )
     }
 
-    fn src_objects(&self) -> &HashMap<String, &HirEnum> {
+    fn src_objects(&self) -> &HashMap<String, &HirFlatEnum> {
         &self.0.inner.src_enums
     }
 
@@ -179,10 +180,11 @@ impl EnumOrStructParser<MirEnumIdent, MirEnum, ItemEnum>
         &mut self,
         namespace: Option<Namespace>,
         ty: &Type,
+        reason: Option<MirTypeRustAutoOpaqueImplicitReason>,
         override_ignore: Option<bool>,
     ) -> anyhow::Result<MirType> {
         self.0
-            .parse_type_rust_auto_opaque_implicit(namespace, ty, override_ignore)
+            .parse_type_rust_auto_opaque_implicit(namespace, ty, reason, override_ignore)
     }
 
     fn compute_default_opaque(obj: &MirEnum) -> bool {

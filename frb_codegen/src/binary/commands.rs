@@ -144,6 +144,10 @@ pub(crate) struct GenerateCommandArgsPrimary {
     #[arg(long, hide = true)]
     pub local: bool,
 
+    /// If having error when, for example, parsing a function, directly stop instead of continue and skip it
+    #[arg(long)]
+    pub stop_on_error: bool,
+
     /// A list of data to be dumped. If specified without a value, defaults to all.
     #[arg(long, value_enum, num_args = 0.., default_missing_values = ["config", "ir"])]
     pub dump: Option<Vec<ConfigDumpContent>>,

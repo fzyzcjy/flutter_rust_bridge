@@ -1,6 +1,7 @@
-use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirStruct;
+use crate::codegen::ir::hir::flat::struct_or_enum::HirFlatStruct;
 use crate::codegen::ir::mir::field::{MirField, MirFieldSettings};
 use crate::codegen::ir::mir::ident::MirIdent;
+use crate::codegen::ir::mir::ty::rust_auto_opaque_implicit::MirTypeRustAutoOpaqueImplicitReason;
 use crate::codegen::ir::mir::ty::structure::{MirStruct, MirStructIdent, MirTypeStructRef};
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::ir::mir::ty::MirType::StructRef;
@@ -28,7 +29,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
     fn parse_struct(
         &mut self,
-        src_struct: &HirStruct,
+        src_struct: &HirFlatStruct,
         name: NamespacedName,
         wrapper_name: Option<String>,
     ) -> anyhow::Result<MirStruct> {
@@ -37,7 +38,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             Fields::Unnamed(FieldsUnnamed { unnamed, .. }) => (false, unnamed),
             // This will stop the whole generator and tell the users, so we do not care about testing it
             // frb-coverage:ignore-start
-            Fields::Unit => bail!("struct with unit fields are not supported yet, what about using `struct {} {{}}` instead", src_struct.ident),
+            Fields::Unit => bail!("struct with unit fields are not supported yet, what about using `struct {} {{}}` instead", src_struct.name.name),
             // frb-coverage:ignore-end
         };
 
@@ -93,7 +94,7 @@ impl EnumOrStructParser<MirStructIdent, MirStruct, ItemStruct>
 {
     fn parse_inner_impl(
         &mut self,
-        src_object: &HirStruct,
+        src_object: &HirFlatStruct,
         name: NamespacedName,
         wrapper_name: Option<String>,
     ) -> anyhow::Result<MirStruct> {
@@ -107,7 +108,7 @@ impl EnumOrStructParser<MirStructIdent, MirStruct, ItemStruct>
         }))
     }
 
-    fn src_objects(&self) -> &HashMap<String, &HirStruct> {
+    fn src_objects(&self) -> &HashMap<String, &HirFlatStruct> {
         &self.0.inner.src_structs
     }
 
@@ -123,10 +124,11 @@ impl EnumOrStructParser<MirStructIdent, MirStruct, ItemStruct>
         &mut self,
         namespace: Option<Namespace>,
         ty: &Type,
+        reason: Option<MirTypeRustAutoOpaqueImplicitReason>,
         override_ignore: Option<bool>,
     ) -> anyhow::Result<MirType> {
         self.0
-            .parse_type_rust_auto_opaque_implicit(namespace, ty, override_ignore)
+            .parse_type_rust_auto_opaque_implicit(namespace, ty, reason, override_ignore)
     }
 
     fn compute_default_opaque(obj: &MirStruct) -> bool {
