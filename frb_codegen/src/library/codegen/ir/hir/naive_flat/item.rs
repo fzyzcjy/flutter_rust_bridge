@@ -14,5 +14,5 @@ pub(crate) struct HirNaiveFlatItem {
 pub(crate) struct HirNaiveFlatItemMeta {
     pub namespace: Namespace,
     pub source: HirGenerationSource,
-    pub is_public: bool,
+    pub is_module_public: bool,
 }

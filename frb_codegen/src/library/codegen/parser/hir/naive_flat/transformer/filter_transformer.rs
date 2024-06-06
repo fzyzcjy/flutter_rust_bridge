@@ -24,7 +24,7 @@ fn is_interest(item: &HirNaiveFlatItem, config: &ParserHirInternalConfig) -> boo
 fn is_public_mod_or_self_crate(item: &HirNaiveFlatItem) -> bool {
     // If it is third party crate, then we only scan the `pub` mods,
     // since for non-pub modes, it is impossible to use them even if we scanned them.
-    item.meta.namespace.path()[0] == CrateName::SELF_CRATE || item.meta.is_public
+    item.meta.namespace.path()[0] == CrateName::SELF_CRATE || item.meta.is_module_public
 }
 
 fn is_early_skip_namespace(namespace: &Namespace, config: &ParserHirInternalConfig) -> bool {
