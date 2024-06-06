@@ -18,6 +18,7 @@ impl<'a> ApiDartGeneratorClassTrait for TraitDefApiDartGenerator<'a> {
             },
             dart_api_type,
         );
+        let methods_str = &methods.code;
 
         Some(ApiDartGeneratedClass {
             namespace: self.mir.name.namespace.clone(),
@@ -25,7 +26,7 @@ impl<'a> ApiDartGeneratorClassTrait for TraitDefApiDartGenerator<'a> {
             code: format!(
                 "
                 abstract class {dart_api_type} {{
-                    {methods}
+                    {methods_str}
                 }}
                 "
             ),
