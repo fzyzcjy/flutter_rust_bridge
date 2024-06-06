@@ -10,9 +10,11 @@ pub(crate) fn transform(mut pack: HirNaiveFlatPack) -> anyhow::Result<HirNaiveFl
 }
 
 fn is_interest(item: &HirNaiveFlatItem) -> bool {
+    is_public_mod_or_self_crate(item) || !is_localized_definition(&item.item)
+}
+
+fn is_public_mod_or_self_crate(item: &HirNaiveFlatItem) -> bool {
     // If it is third party crate, then we only scan the `pub` mods,
     // since for non-pub modes, it is impossible to use them even if we scanned them.
-    item.meta.namespace.path()[0] == CrateName::SELF_CRATE
-        || item.meta.is_public
-        || !is_localized_definition(&item.item)
+    item.meta.namespace.path()[0] == CrateName::SELF_CRATE || item.meta.is_public
 }
