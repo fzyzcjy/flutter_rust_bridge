@@ -132,11 +132,11 @@ fn generate_api_method(
 
     let maybe_implementation = match config.get(&method_info.mode) {
         GenerateApiMethodMode::Nothing => return None,
-        GenerateApiMethodMode::DeclOnly => None,
-        GenerateApiMethodMode::DeclAndImpl => Some(format!(
+        GenerateApiMethodMode::DeclOnly => "".to_owned(),
+        GenerateApiMethodMode::DeclAndImpl => format!(
             "=>{}",
             generate_implementation(func, context, method_info, &params)
-        )),
+        ),
     };
 
     let code = format!("{comments}{signature}{maybe_implementation};\n\n");
