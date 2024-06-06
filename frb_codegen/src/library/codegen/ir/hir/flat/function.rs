@@ -3,6 +3,7 @@ use crate::codegen::ir::hir::misc::generation_source::HirGenerationSource;
 use crate::codegen::ir::hir::misc::item_fn::GeneralizedItemFn;
 use crate::codegen::ir::hir::misc::serializers::serialize_generalized_item_fn;
 use crate::codegen::ir::hir::misc::serializers::serialize_syn;
+use crate::codegen::parser::mir::attribute_parser::FrbAttributes;
 use crate::utils::namespace::{Namespace, NamespacedName};
 use crate::utils::syn_utils::ty_to_string;
 use serde::Serialize;
@@ -37,7 +38,8 @@ impl HirFlatFunction {
     }
 
     pub(crate) fn name_for_dedup(&self) -> String {
-        TODO.unwrap_or_else(|| self.item_fn.name())
+        let attributes = FrbAttributes::parse(self.item_fn.attrs()).unwrap();
+        attributes.name().unwrap_or_else(|| self.item_fn.name())
     }
 
     pub(crate) fn is_public(&self) -> Option<bool> {
