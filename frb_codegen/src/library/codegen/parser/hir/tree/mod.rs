@@ -1,5 +1,5 @@
 mod parser;
-mod transformer;
+pub(crate) mod transformer;
 
 use crate::codegen::dumper::Dumper;
 use crate::codegen::ir::hir::raw::pack::HirRawPack;

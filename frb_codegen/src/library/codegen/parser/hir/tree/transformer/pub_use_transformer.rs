@@ -98,7 +98,7 @@ fn transform_module_by_pub_use_single(
                 let is_interest_name = pub_use_info.is_interest_name(&name_for_use_stmt);
                 let is_public_enough = is_public_enough(x).unwrap_or(true);
 
-                is_interest_name && is_public_enough && should_be_affected_by_pub_use(x)
+                is_interest_name && is_public_enough && is_localized_definition(x)
             })
             .cloned()
             .collect_vec();
@@ -137,7 +137,7 @@ fn is_public_enough(item: &syn::Item) -> Option<bool> {
     Some(matches!(vis, syn::Visibility::Public(_)))
 }
 
-fn should_be_affected_by_pub_use(item: &syn::Item) -> bool {
+pub(crate) fn is_localized_definition(item: &syn::Item) -> bool {
     match item {
         syn::Item::Struct(_)
         | syn::Item::Enum(_)
