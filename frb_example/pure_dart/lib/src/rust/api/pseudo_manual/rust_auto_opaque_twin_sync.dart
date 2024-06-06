@@ -9,8 +9,7 @@ import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'rust_auto_opaque_twin_moi.dart';
 part 'rust_auto_opaque_twin_sync.freezed.dart';
 
-// These types are ignored because they are not used by any `pub` functions: `HelloTwoEnumTwinSync`
-// These functions are ignored: `f`, `func_hello`, `func_hello`
+// These functions are ignored: `f`, `func_hello`
 
 void rustAutoOpaqueArgOwnTwinSync(
         {required NonCloneSimpleTwinSync arg, required int expect}) =>
@@ -337,6 +336,17 @@ sealed class EnumWithGoodAndOpaqueTwinSync
   const factory EnumWithGoodAndOpaqueTwinSync.opaque(
     NonCloneSimpleTwinSync field0,
   ) = EnumWithGoodAndOpaqueTwinSync_Opaque;
+}
+
+enum HelloTwoEnumTwinSync {
+  a,
+  b,
+  ;
+
+  Future<void> funcHello() => RustLib.instance.api
+          .crateApiPseudoManualRustAutoOpaqueTwinSyncHelloTwoEnumTwinSyncFuncHello(
+        that: this,
+      );
 }
 
 class StructWithExplicitAutoOpaqueFieldTwinSync {

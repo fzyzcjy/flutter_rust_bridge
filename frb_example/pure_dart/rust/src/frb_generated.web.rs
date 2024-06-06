@@ -13822,6 +13822,118 @@ impl CstDecode<[f64; 16]> for flutter_rust_bridge::for_generated::wasm_bindgen::
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
 }
+impl CstDecode<crate::api::pseudo_manual::rust_auto_opaque_twin_moi::HelloTwoEnumTwinMoi>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::rust_auto_opaque_twin_moi::HelloTwoEnumTwinMoi {
+        (self.unchecked_into_f64() as i32).cst_decode()
+    }
+}
+impl CstDecode<crate::api::rust_auto_opaque::HelloTwoEnumTwinNormal>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> crate::api::rust_auto_opaque::HelloTwoEnumTwinNormal {
+        (self.unchecked_into_f64() as i32).cst_decode()
+    }
+}
+impl
+    CstDecode<
+        crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::HelloTwoEnumTwinRustAsync,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::HelloTwoEnumTwinRustAsync
+    {
+        (self.unchecked_into_f64() as i32).cst_decode()
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_moi::HelloTwoEnumTwinRustAsyncMoi> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+            // Codec=Cst (C-struct based), see doc to use other codecs
+            fn cst_decode(self) -> crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_moi::HelloTwoEnumTwinRustAsyncMoi {
+                (self.unchecked_into_f64() as i32).cst_decode()
+            }
+        }
+impl CstDecode<crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::HelloTwoEnumTwinRustAsyncSse> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+            // Codec=Cst (C-struct based), see doc to use other codecs
+            fn cst_decode(self) -> crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::HelloTwoEnumTwinRustAsyncSse {
+                (self.unchecked_into_f64() as i32).cst_decode()
+            }
+        }
+impl CstDecode<crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse_moi::HelloTwoEnumTwinRustAsyncSseMoi> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+            // Codec=Cst (C-struct based), see doc to use other codecs
+            fn cst_decode(self) -> crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse_moi::HelloTwoEnumTwinRustAsyncSseMoi {
+                (self.unchecked_into_f64() as i32).cst_decode()
+            }
+        }
+impl CstDecode<crate::api::pseudo_manual::rust_auto_opaque_twin_sse::HelloTwoEnumTwinSse>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::rust_auto_opaque_twin_sse::HelloTwoEnumTwinSse {
+        (self.unchecked_into_f64() as i32).cst_decode()
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::rust_auto_opaque_twin_sse_moi::HelloTwoEnumTwinSseMoi>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::rust_auto_opaque_twin_sse_moi::HelloTwoEnumTwinSseMoi {
+        (self.unchecked_into_f64() as i32).cst_decode()
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::rust_auto_opaque_twin_sync::HelloTwoEnumTwinSync>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::rust_auto_opaque_twin_sync::HelloTwoEnumTwinSync {
+        (self.unchecked_into_f64() as i32).cst_decode()
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::rust_auto_opaque_twin_sync_moi::HelloTwoEnumTwinSyncMoi>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::rust_auto_opaque_twin_sync_moi::HelloTwoEnumTwinSyncMoi {
+        (self.unchecked_into_f64() as i32).cst_decode()
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse::HelloTwoEnumTwinSyncSse>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse::HelloTwoEnumTwinSyncSse {
+        (self.unchecked_into_f64() as i32).cst_decode()
+    }
+}
+impl
+    CstDecode<
+        crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse_moi::HelloTwoEnumTwinSyncSseMoi,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse_moi::HelloTwoEnumTwinSyncSseMoi
+    {
+        (self.unchecked_into_f64() as i32).cst_decode()
+    }
+}
 impl CstDecode<i16> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> i16 {
@@ -13979,6 +14091,34 @@ impl CstDecode<[crate::api::pseudo_manual::array_twin_sync::PointTwinSync; 2]>
     fn cst_decode(self) -> [crate::api::pseudo_manual::array_twin_sync::PointTwinSync; 2] {
         let vec: Vec<crate::api::pseudo_manual::array_twin_sync::PointTwinSync> = self.cst_decode();
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
+    }
+}
+impl CstDecode<crate::api::method::SimplePrimitiveEnumTwinNormal>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> crate::api::method::SimplePrimitiveEnumTwinNormal {
+        (self.unchecked_into_f64() as i32).cst_decode()
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::method_twin_rust_async::SimplePrimitiveEnumTwinRustAsync>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::method_twin_rust_async::SimplePrimitiveEnumTwinRustAsync {
+        (self.unchecked_into_f64() as i32).cst_decode()
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::method_twin_sync::SimplePrimitiveEnumTwinSync>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::method_twin_sync::SimplePrimitiveEnumTwinSync {
+        (self.unchecked_into_f64() as i32).cst_decode()
     }
 }
 impl CstDecode<[crate::api::method::SumWithTwinNormal; 3]>
@@ -15454,6 +15594,16 @@ pub fn wire__crate__api__method__simple_enum_twin_normal_simple_method_twin_norm
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__method__simple_enum_twin_normal_simple_method_twin_normal_impl(port_, that)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__method__simple_primitive_enum_twin_normal_simple_method_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    that: i32,
+) {
+    wire__crate__api__method__simple_primitive_enum_twin_normal_simple_method_twin_normal_impl(
+        port_, that,
+    )
 }
 
 #[wasm_bindgen]
@@ -27134,6 +27284,14 @@ pub fn wire__crate__api__pseudo_manual__method_twin_rust_async__simple_enum_twin
 }
 
 #[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__method_twin_rust_async__simple_primitive_enum_twin_rust_async_simple_method_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    that: i32,
+) {
+    wire__crate__api__pseudo_manual__method_twin_rust_async__simple_primitive_enum_twin_rust_async_simple_method_twin_rust_async_impl(port_, that)
+}
+
+#[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__method_twin_rust_async__simple_struct_twin_rust_async_arg_self_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     a: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
@@ -27330,6 +27488,16 @@ pub fn wire__crate__api__pseudo_manual__method_twin_rust_async_sse__simple_enum_
     data_len_: i32,
 ) {
     wire__crate__api__pseudo_manual__method_twin_rust_async_sse__simple_enum_twin_rust_async_sse_simple_method_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__method_twin_rust_async_sse__simple_primitive_enum_twin_rust_async_sse_simple_method_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire__crate__api__pseudo_manual__method_twin_rust_async_sse__simple_primitive_enum_twin_rust_async_sse_simple_method_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
@@ -27568,6 +27736,16 @@ pub fn wire__crate__api__pseudo_manual__method_twin_sse__simple_enum_twin_sse_si
 }
 
 #[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__method_twin_sse__simple_primitive_enum_twin_sse_simple_method_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire__crate__api__pseudo_manual__method_twin_sse__simple_primitive_enum_twin_sse_simple_method_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__method_twin_sse__simple_struct_twin_sse_arg_self_twin_sse(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -27762,6 +27940,13 @@ pub fn wire__crate__api__pseudo_manual__method_twin_sync__simple_enum_twin_sync_
 }
 
 #[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__method_twin_sync__simple_primitive_enum_twin_sync_simple_method_twin_sync(
+    that: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__pseudo_manual__method_twin_sync__simple_primitive_enum_twin_sync_simple_method_twin_sync_impl(that)
+}
+
+#[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__method_twin_sync__simple_struct_twin_sync_arg_self_twin_sync(
     a: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     b: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
@@ -27951,6 +28136,15 @@ pub fn wire__crate__api__pseudo_manual__method_twin_sync_sse__simple_enum_twin_s
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire__crate__api__pseudo_manual__method_twin_sync_sse__simple_enum_twin_sync_sse_simple_method_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__method_twin_sync_sse__simple_primitive_enum_twin_sync_sse_simple_method_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire__crate__api__pseudo_manual__method_twin_sync_sse__simple_primitive_enum_twin_sync_sse_simple_method_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
@@ -31209,6 +31403,14 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__StructWithGoo
 }
 
 #[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__hello_two_enum_twin_moi_func_hello(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    that: i32,
+) {
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__hello_two_enum_twin_moi_func_hello_impl(port_, that)
+}
+
+#[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_arg_borrow_twin_moi(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
@@ -31619,6 +31821,14 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__Struct
 }
 
 #[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__hello_two_enum_twin_rust_async_func_hello(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    that: i32,
+) {
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__hello_two_enum_twin_rust_async_func_hello_impl(port_, that)
+}
+
+#[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_arg_borrow_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
@@ -32022,6 +32232,14 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__St
     good: String,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi_set_good_impl(that, good)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__hello_two_enum_twin_rust_async_moi_func_hello(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    that: i32,
+) {
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__hello_two_enum_twin_rust_async_moi_func_hello_impl(port_, that)
 }
 
 #[wasm_bindgen]
@@ -32456,6 +32674,14 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__St
     good: String,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse_set_good_impl(that, good)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__hello_two_enum_twin_rust_async_sse_func_hello(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    that: i32,
+) {
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__hello_two_enum_twin_rust_async_sse_func_hello_impl(port_, that)
 }
 
 #[wasm_bindgen]
@@ -32962,6 +33188,14 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi
 }
 
 #[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__hello_two_enum_twin_rust_async_sse_moi_func_hello(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    that: i32,
+) {
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__hello_two_enum_twin_rust_async_sse_moi_func_hello_impl(port_, that)
+}
+
+#[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__rust_auto_opaque_arg_borrow_twin_rust_async_sse_moi(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -33462,6 +33696,14 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__StructWithGoo
     good: String,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSse_set_good_impl(that, good)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__hello_two_enum_twin_sse_func_hello(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    that: i32,
+) {
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__hello_two_enum_twin_sse_func_hello_impl(port_, that)
 }
 
 #[wasm_bindgen]
@@ -33978,6 +34220,14 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__StructWit
 }
 
 #[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__hello_two_enum_twin_sse_moi_func_hello(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    that: i32,
+) {
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__hello_two_enum_twin_sse_moi_func_hello_impl(port_, that)
+}
+
+#[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto_opaque_arg_borrow_twin_sse_moi(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -34441,6 +34691,14 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGo
 }
 
 #[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__hello_two_enum_twin_sync_func_hello(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    that: i32,
+) {
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__hello_two_enum_twin_sync_func_hello_impl(port_, that)
+}
+
+#[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_arg_borrow_twin_sync(
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     expect: i32,
@@ -34796,6 +35054,14 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__StructWi
     good: String,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi_set_good_impl(that, good)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__hello_two_enum_twin_sync_moi_func_hello(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    that: i32,
+) {
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__hello_two_enum_twin_sync_moi_func_hello_impl(port_, that)
 }
 
 #[wasm_bindgen]
@@ -35182,6 +35448,14 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__StructWi
     good: String,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse_set_good_impl(that, good)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__hello_two_enum_twin_sync_sse_func_hello(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    that: i32,
+) {
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__hello_two_enum_twin_sync_sse_func_hello_impl(port_, that)
 }
 
 #[wasm_bindgen]
@@ -35637,6 +35911,14 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__Stru
     good: String,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi_set_good_impl(that, good)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__hello_two_enum_twin_sync_sse_moi_func_hello(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    that: i32,
+) {
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__hello_two_enum_twin_sync_sse_moi_func_hello_impl(port_, that)
 }
 
 #[wasm_bindgen]
@@ -38910,6 +39192,14 @@ pub fn wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOp
     good: String,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_set_good_impl(that, good)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__rust_auto_opaque__hello_two_enum_twin_normal_func_hello(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    that: i32,
+) {
+    wire__crate__api__rust_auto_opaque__hello_two_enum_twin_normal_func_hello_impl(port_, that)
 }
 
 #[wasm_bindgen]

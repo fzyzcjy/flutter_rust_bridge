@@ -7002,6 +7002,47 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   HashMapValue dco_decode_hash_map_value(dynamic raw);
 
   @protected
+  HelloTwoEnumTwinMoi dco_decode_hello_two_enum_twin_moi(dynamic raw);
+
+  @protected
+  HelloTwoEnumTwinNormal dco_decode_hello_two_enum_twin_normal(dynamic raw);
+
+  @protected
+  HelloTwoEnumTwinRustAsync dco_decode_hello_two_enum_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  HelloTwoEnumTwinRustAsyncMoi dco_decode_hello_two_enum_twin_rust_async_moi(
+      dynamic raw);
+
+  @protected
+  HelloTwoEnumTwinRustAsyncSse dco_decode_hello_two_enum_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  HelloTwoEnumTwinRustAsyncSseMoi
+      dco_decode_hello_two_enum_twin_rust_async_sse_moi(dynamic raw);
+
+  @protected
+  HelloTwoEnumTwinSse dco_decode_hello_two_enum_twin_sse(dynamic raw);
+
+  @protected
+  HelloTwoEnumTwinSseMoi dco_decode_hello_two_enum_twin_sse_moi(dynamic raw);
+
+  @protected
+  HelloTwoEnumTwinSync dco_decode_hello_two_enum_twin_sync(dynamic raw);
+
+  @protected
+  HelloTwoEnumTwinSyncMoi dco_decode_hello_two_enum_twin_sync_moi(dynamic raw);
+
+  @protected
+  HelloTwoEnumTwinSyncSse dco_decode_hello_two_enum_twin_sync_sse(dynamic raw);
+
+  @protected
+  HelloTwoEnumTwinSyncSseMoi dco_decode_hello_two_enum_twin_sync_sse_moi(
+      dynamic raw);
+
+  @protected
   int dco_decode_i_16(dynamic raw);
 
   @protected
@@ -9068,6 +9109,30 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   SimpleEnumTwinSyncSse dco_decode_simple_enum_twin_sync_sse(dynamic raw);
+
+  @protected
+  SimplePrimitiveEnumTwinNormal dco_decode_simple_primitive_enum_twin_normal(
+      dynamic raw);
+
+  @protected
+  SimplePrimitiveEnumTwinRustAsync
+      dco_decode_simple_primitive_enum_twin_rust_async(dynamic raw);
+
+  @protected
+  SimplePrimitiveEnumTwinRustAsyncSse
+      dco_decode_simple_primitive_enum_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  SimplePrimitiveEnumTwinSse dco_decode_simple_primitive_enum_twin_sse(
+      dynamic raw);
+
+  @protected
+  SimplePrimitiveEnumTwinSync dco_decode_simple_primitive_enum_twin_sync(
+      dynamic raw);
+
+  @protected
+  SimplePrimitiveEnumTwinSyncSse dco_decode_simple_primitive_enum_twin_sync_sse(
+      dynamic raw);
 
   @protected
   SimpleStructForBorrowTwinNormal
@@ -16035,6 +16100,55 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   HashMapValue sse_decode_hash_map_value(SseDeserializer deserializer);
 
   @protected
+  HelloTwoEnumTwinMoi sse_decode_hello_two_enum_twin_moi(
+      SseDeserializer deserializer);
+
+  @protected
+  HelloTwoEnumTwinNormal sse_decode_hello_two_enum_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  HelloTwoEnumTwinRustAsync sse_decode_hello_two_enum_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  HelloTwoEnumTwinRustAsyncMoi sse_decode_hello_two_enum_twin_rust_async_moi(
+      SseDeserializer deserializer);
+
+  @protected
+  HelloTwoEnumTwinRustAsyncSse sse_decode_hello_two_enum_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  HelloTwoEnumTwinRustAsyncSseMoi
+      sse_decode_hello_two_enum_twin_rust_async_sse_moi(
+          SseDeserializer deserializer);
+
+  @protected
+  HelloTwoEnumTwinSse sse_decode_hello_two_enum_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  HelloTwoEnumTwinSseMoi sse_decode_hello_two_enum_twin_sse_moi(
+      SseDeserializer deserializer);
+
+  @protected
+  HelloTwoEnumTwinSync sse_decode_hello_two_enum_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  HelloTwoEnumTwinSyncMoi sse_decode_hello_two_enum_twin_sync_moi(
+      SseDeserializer deserializer);
+
+  @protected
+  HelloTwoEnumTwinSyncSse sse_decode_hello_two_enum_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  HelloTwoEnumTwinSyncSseMoi sse_decode_hello_two_enum_twin_sync_sse_moi(
+      SseDeserializer deserializer);
+
+  @protected
   int sse_decode_i_16(SseDeserializer deserializer);
 
   @protected
@@ -18373,6 +18487,32 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   SimpleEnumTwinSyncSse sse_decode_simple_enum_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  SimplePrimitiveEnumTwinNormal sse_decode_simple_primitive_enum_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  SimplePrimitiveEnumTwinRustAsync
+      sse_decode_simple_primitive_enum_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  SimplePrimitiveEnumTwinRustAsyncSse
+      sse_decode_simple_primitive_enum_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  SimplePrimitiveEnumTwinSse sse_decode_simple_primitive_enum_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  SimplePrimitiveEnumTwinSync sse_decode_simple_primitive_enum_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  SimplePrimitiveEnumTwinSyncSse sse_decode_simple_primitive_enum_twin_sync_sse(
       SseDeserializer deserializer);
 
   @protected
@@ -28232,6 +28372,46 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   double cst_encode_f_64(double raw);
 
   @protected
+  int cst_encode_hello_two_enum_twin_moi(HelloTwoEnumTwinMoi raw);
+
+  @protected
+  int cst_encode_hello_two_enum_twin_normal(HelloTwoEnumTwinNormal raw);
+
+  @protected
+  int cst_encode_hello_two_enum_twin_rust_async(HelloTwoEnumTwinRustAsync raw);
+
+  @protected
+  int cst_encode_hello_two_enum_twin_rust_async_moi(
+      HelloTwoEnumTwinRustAsyncMoi raw);
+
+  @protected
+  int cst_encode_hello_two_enum_twin_rust_async_sse(
+      HelloTwoEnumTwinRustAsyncSse raw);
+
+  @protected
+  int cst_encode_hello_two_enum_twin_rust_async_sse_moi(
+      HelloTwoEnumTwinRustAsyncSseMoi raw);
+
+  @protected
+  int cst_encode_hello_two_enum_twin_sse(HelloTwoEnumTwinSse raw);
+
+  @protected
+  int cst_encode_hello_two_enum_twin_sse_moi(HelloTwoEnumTwinSseMoi raw);
+
+  @protected
+  int cst_encode_hello_two_enum_twin_sync(HelloTwoEnumTwinSync raw);
+
+  @protected
+  int cst_encode_hello_two_enum_twin_sync_moi(HelloTwoEnumTwinSyncMoi raw);
+
+  @protected
+  int cst_encode_hello_two_enum_twin_sync_sse(HelloTwoEnumTwinSyncSse raw);
+
+  @protected
+  int cst_encode_hello_two_enum_twin_sync_sse_moi(
+      HelloTwoEnumTwinSyncSseMoi raw);
+
+  @protected
   int cst_encode_i_16(int raw);
 
   @protected
@@ -28242,6 +28422,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   int cst_encode_my_enum(MyEnum raw);
+
+  @protected
+  int cst_encode_simple_primitive_enum_twin_normal(
+      SimplePrimitiveEnumTwinNormal raw);
+
+  @protected
+  int cst_encode_simple_primitive_enum_twin_rust_async(
+      SimplePrimitiveEnumTwinRustAsync raw);
+
+  @protected
+  int cst_encode_simple_primitive_enum_twin_sync(
+      SimplePrimitiveEnumTwinSync raw);
 
   @protected
   int cst_encode_u_16(int raw);
@@ -34493,6 +34685,54 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_hash_map_value(HashMapValue self, SseSerializer serializer);
 
   @protected
+  void sse_encode_hello_two_enum_twin_moi(
+      HelloTwoEnumTwinMoi self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_hello_two_enum_twin_normal(
+      HelloTwoEnumTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_hello_two_enum_twin_rust_async(
+      HelloTwoEnumTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_hello_two_enum_twin_rust_async_moi(
+      HelloTwoEnumTwinRustAsyncMoi self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_hello_two_enum_twin_rust_async_sse(
+      HelloTwoEnumTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_hello_two_enum_twin_rust_async_sse_moi(
+      HelloTwoEnumTwinRustAsyncSseMoi self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_hello_two_enum_twin_sse(
+      HelloTwoEnumTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_hello_two_enum_twin_sse_moi(
+      HelloTwoEnumTwinSseMoi self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_hello_two_enum_twin_sync(
+      HelloTwoEnumTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_hello_two_enum_twin_sync_moi(
+      HelloTwoEnumTwinSyncMoi self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_hello_two_enum_twin_sync_sse(
+      HelloTwoEnumTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_hello_two_enum_twin_sync_sse_moi(
+      HelloTwoEnumTwinSyncSseMoi self, SseSerializer serializer);
+
+  @protected
   void sse_encode_i_16(int self, SseSerializer serializer);
 
   @protected
@@ -36732,6 +36972,30 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SimpleEnumTwinSyncSse self, SseSerializer serializer);
 
   @protected
+  void sse_encode_simple_primitive_enum_twin_normal(
+      SimplePrimitiveEnumTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_simple_primitive_enum_twin_rust_async(
+      SimplePrimitiveEnumTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_simple_primitive_enum_twin_rust_async_sse(
+      SimplePrimitiveEnumTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_simple_primitive_enum_twin_sse(
+      SimplePrimitiveEnumTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_simple_primitive_enum_twin_sync(
+      SimplePrimitiveEnumTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_simple_primitive_enum_twin_sync_sse(
+      SimplePrimitiveEnumTwinSyncSse self, SseSerializer serializer);
+
+  @protected
   void sse_encode_simple_struct_for_borrow_twin_normal(
       SimpleStructForBorrowTwinNormal self, SseSerializer serializer);
 
@@ -38374,6 +38638,12 @@ class RustLibWire implements BaseWire {
           NativePortType port_, List<dynamic> that) =>
       wasmModule
           .wire__crate__api__method__simple_enum_twin_normal_simple_method_twin_normal(
+              port_, that);
+
+  void wire__crate__api__method__simple_primitive_enum_twin_normal_simple_method_twin_normal(
+          NativePortType port_, int that) =>
+      wasmModule
+          .wire__crate__api__method__simple_primitive_enum_twin_normal_simple_method_twin_normal(
               port_, that);
 
   void wire__crate__api__method__simple_struct_twin_normal_arg_self_twin_normal(
@@ -47577,6 +47847,12 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__method_twin_rust_async__simple_enum_twin_rust_async_simple_method_twin_rust_async(
               port_, that);
 
+  void wire__crate__api__pseudo_manual__method_twin_rust_async__simple_primitive_enum_twin_rust_async_simple_method_twin_rust_async(
+          NativePortType port_, int that) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__method_twin_rust_async__simple_primitive_enum_twin_rust_async_simple_method_twin_rust_async(
+              port_, that);
+
   void wire__crate__api__pseudo_manual__method_twin_rust_async__simple_struct_twin_rust_async_arg_self_twin_rust_async(
           NativePortType port_, List<dynamic> a, List<dynamic> b) =>
       wasmModule
@@ -47743,6 +48019,15 @@ class RustLibWire implements BaseWire {
           int data_len_) =>
       wasmModule
           .wire__crate__api__pseudo_manual__method_twin_rust_async_sse__simple_enum_twin_rust_async_sse_simple_method_twin_rust_async_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__method_twin_rust_async_sse__simple_primitive_enum_twin_rust_async_sse_simple_method_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__method_twin_rust_async_sse__simple_primitive_enum_twin_rust_async_sse_simple_method_twin_rust_async_sse(
               port_, ptr_, rust_vec_len_, data_len_);
 
   void wire__crate__api__pseudo_manual__method_twin_rust_async_sse__simple_struct_twin_rust_async_sse_arg_self_twin_rust_async_sse(
@@ -47934,6 +48219,15 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__method_twin_sse__simple_enum_twin_sse_simple_method_twin_sse(
               port_, ptr_, rust_vec_len_, data_len_);
 
+  void wire__crate__api__pseudo_manual__method_twin_sse__simple_primitive_enum_twin_sse_simple_method_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__method_twin_sse__simple_primitive_enum_twin_sse_simple_method_twin_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
   void wire__crate__api__pseudo_manual__method_twin_sse__simple_struct_twin_sse_arg_self_twin_sse(
           NativePortType port_,
           PlatformGeneralizedUint8ListPtr ptr_,
@@ -48089,6 +48383,13 @@ class RustLibWire implements BaseWire {
               List<dynamic> that) =>
           wasmModule
               .wire__crate__api__pseudo_manual__method_twin_sync__simple_enum_twin_sync_simple_method_twin_sync(
+                  that);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__method_twin_sync__simple_primitive_enum_twin_sync_simple_method_twin_sync(
+              int that) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__method_twin_sync__simple_primitive_enum_twin_sync_simple_method_twin_sync(
                   that);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
@@ -48264,6 +48565,15 @@ class RustLibWire implements BaseWire {
               int data_len_) =>
           wasmModule
               .wire__crate__api__pseudo_manual__method_twin_sync_sse__simple_enum_twin_sync_sse_simple_method_twin_sync_sse(
+                  ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__method_twin_sync_sse__simple_primitive_enum_twin_sync_sse_simple_method_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__method_twin_sync_sse__simple_primitive_enum_twin_sync_sse_simple_method_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
@@ -50814,6 +51124,12 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi_set_good(
                   that, good);
 
+  void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__hello_two_enum_twin_moi_func_hello(
+          NativePortType port_, int that) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__hello_two_enum_twin_moi_func_hello(
+              port_, that);
+
   void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_arg_borrow_twin_moi(
           NativePortType port_, Object arg, int expect) =>
       wasmModule
@@ -51122,6 +51438,12 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync_set_good(
                   that, good);
 
+  void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__hello_two_enum_twin_rust_async_func_hello(
+          NativePortType port_, int that) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__hello_two_enum_twin_rust_async_func_hello(
+              port_, that);
+
   void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_arg_borrow_twin_rust_async(
           NativePortType port_, Object arg, int expect) =>
       wasmModule
@@ -51429,6 +51751,12 @@ class RustLibWire implements BaseWire {
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi_set_good(
                   that, good);
+
+  void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__hello_two_enum_twin_rust_async_moi_func_hello(
+          NativePortType port_, int that) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__hello_two_enum_twin_rust_async_moi_func_hello(
+              port_, that);
 
   void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_arg_borrow_twin_rust_async_moi(
           NativePortType port_, Object arg, int expect) =>
@@ -51773,6 +52101,12 @@ class RustLibWire implements BaseWire {
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse_set_good(
                   that, good);
+
+  void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__hello_two_enum_twin_rust_async_sse_func_hello(
+          NativePortType port_, int that) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__hello_two_enum_twin_rust_async_sse_func_hello(
+              port_, that);
 
   void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__rust_auto_opaque_arg_borrow_twin_rust_async_sse(
           NativePortType port_,
@@ -52226,6 +52560,12 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi_set_good(
                   that, good);
 
+  void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__hello_two_enum_twin_rust_async_sse_moi_func_hello(
+          NativePortType port_, int that) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__hello_two_enum_twin_rust_async_sse_moi_func_hello(
+              port_, that);
+
   void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__rust_auto_opaque_arg_borrow_twin_rust_async_sse_moi(
           NativePortType port_,
           PlatformGeneralizedUint8ListPtr ptr_,
@@ -52677,6 +53017,12 @@ class RustLibWire implements BaseWire {
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSse_set_good(
                   that, good);
+
+  void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__hello_two_enum_twin_sse_func_hello(
+          NativePortType port_, int that) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__hello_two_enum_twin_sse_func_hello(
+              port_, that);
 
   void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opaque_arg_borrow_twin_sse(
           NativePortType port_,
@@ -53130,6 +53476,12 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi_set_good(
                   that, good);
 
+  void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__hello_two_enum_twin_sse_moi_func_hello(
+          NativePortType port_, int that) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__hello_two_enum_twin_sse_moi_func_hello(
+              port_, that);
+
   void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto_opaque_arg_borrow_twin_sse_moi(
           NativePortType port_,
           PlatformGeneralizedUint8ListPtr ptr_,
@@ -53550,6 +53902,12 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_set_good(
                   that, good);
 
+  void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__hello_two_enum_twin_sync_func_hello(
+          NativePortType port_, int that) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__hello_two_enum_twin_sync_func_hello(
+              port_, that);
+
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_arg_borrow_twin_sync(
               Object arg, int expect) =>
@@ -53873,6 +54231,12 @@ class RustLibWire implements BaseWire {
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi_set_good(
                   that, good);
+
+  void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__hello_two_enum_twin_sync_moi_func_hello(
+          NativePortType port_, int that) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__hello_two_enum_twin_sync_moi_func_hello(
+              port_, that);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_arg_borrow_twin_sync_moi(
@@ -54229,6 +54593,12 @@ class RustLibWire implements BaseWire {
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse_set_good(
                   that, good);
+
+  void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__hello_two_enum_twin_sync_sse_func_hello(
+          NativePortType port_, int that) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__hello_two_enum_twin_sync_sse_func_hello(
+              port_, that);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_arg_borrow_twin_sync_sse(
@@ -54681,6 +55051,12 @@ class RustLibWire implements BaseWire {
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi_set_good(
                   that, good);
+
+  void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__hello_two_enum_twin_sync_sse_moi_func_hello(
+          NativePortType port_, int that) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__hello_two_enum_twin_sync_sse_moi_func_hello(
+              port_, that);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_arg_borrow_twin_sync_sse_moi(
@@ -57285,6 +57661,12 @@ class RustLibWire implements BaseWire {
           wasmModule
               .wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_set_good(
                   that, good);
+
+  void wire__crate__api__rust_auto_opaque__hello_two_enum_twin_normal_func_hello(
+          NativePortType port_, int that) =>
+      wasmModule
+          .wire__crate__api__rust_auto_opaque__hello_two_enum_twin_normal_func_hello(
+              port_, that);
 
   void wire__crate__api__rust_auto_opaque__rust_auto_opaque_arg_borrow_twin_normal(
           NativePortType port_, Object arg, int expect) =>
@@ -60874,6 +61256,10 @@ class RustLibWasmModule implements WasmModule {
   external void
       wire__crate__api__method__simple_enum_twin_normal_simple_method_twin_normal(
           NativePortType port_, List<dynamic> that);
+
+  external void
+      wire__crate__api__method__simple_primitive_enum_twin_normal_simple_method_twin_normal(
+          NativePortType port_, int that);
 
   external void
       wire__crate__api__method__simple_struct_twin_normal_arg_self_twin_normal(
@@ -67284,6 +67670,10 @@ class RustLibWasmModule implements WasmModule {
           NativePortType port_, List<dynamic> that);
 
   external void
+      wire__crate__api__pseudo_manual__method_twin_rust_async__simple_primitive_enum_twin_rust_async_simple_method_twin_rust_async(
+          NativePortType port_, int that);
+
+  external void
       wire__crate__api__pseudo_manual__method_twin_rust_async__simple_struct_twin_rust_async_arg_self_twin_rust_async(
           NativePortType port_, List<dynamic> a, List<dynamic> b);
 
@@ -67404,6 +67794,13 @@ class RustLibWasmModule implements WasmModule {
 
   external void
       wire__crate__api__pseudo_manual__method_twin_rust_async_sse__simple_enum_twin_rust_async_sse_simple_method_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__method_twin_rust_async_sse__simple_primitive_enum_twin_rust_async_sse_simple_method_twin_rust_async_sse(
           NativePortType port_,
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
@@ -67557,6 +67954,13 @@ class RustLibWasmModule implements WasmModule {
           int data_len_);
 
   external void
+      wire__crate__api__pseudo_manual__method_twin_sse__simple_primitive_enum_twin_sse_simple_method_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
       wire__crate__api__pseudo_manual__method_twin_sse__simple_struct_twin_sse_arg_self_twin_sse(
           NativePortType port_,
           PlatformGeneralizedUint8ListPtr ptr_,
@@ -67658,6 +68062,10 @@ class RustLibWasmModule implements WasmModule {
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__simple_enum_twin_sync_simple_method_twin_sync(
           List<dynamic> that);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__method_twin_sync__simple_primitive_enum_twin_sync_simple_method_twin_sync(
+          int that);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__simple_struct_twin_sync_arg_self_twin_sync(
@@ -67767,6 +68175,12 @@ class RustLibWasmModule implements WasmModule {
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__method_twin_sync_sse__simple_enum_twin_sync_sse_simple_method_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__method_twin_sync_sse__simple_primitive_enum_twin_sync_sse_simple_method_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
@@ -69561,6 +69975,10 @@ class RustLibWasmModule implements WasmModule {
           Object that, String good);
 
   external void
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__hello_two_enum_twin_moi_func_hello(
+          NativePortType port_, int that);
+
+  external void
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_arg_borrow_twin_moi(
           NativePortType port_, Object arg, int expect);
 
@@ -69765,6 +70183,10 @@ class RustLibWasmModule implements WasmModule {
           Object that, String good);
 
   external void
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__hello_two_enum_twin_rust_async_func_hello(
+          NativePortType port_, int that);
+
+  external void
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_arg_borrow_twin_rust_async(
           NativePortType port_, Object arg, int expect);
 
@@ -69967,6 +70389,10 @@ class RustLibWasmModule implements WasmModule {
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi_set_good(
           Object that, String good);
+
+  external void
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__hello_two_enum_twin_rust_async_moi_func_hello(
+          NativePortType port_, int that);
 
   external void
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_arg_borrow_twin_rust_async_moi(
@@ -70207,6 +70633,10 @@ class RustLibWasmModule implements WasmModule {
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse_set_good(
           Object that, String good);
+
+  external void
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__hello_two_enum_twin_rust_async_sse_func_hello(
+          NativePortType port_, int that);
 
   external void
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__rust_auto_opaque_arg_borrow_twin_rust_async_sse(
@@ -70557,6 +70987,10 @@ class RustLibWasmModule implements WasmModule {
           Object that, String good);
 
   external void
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__hello_two_enum_twin_rust_async_sse_moi_func_hello(
+          NativePortType port_, int that);
+
+  external void
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__rust_auto_opaque_arg_borrow_twin_rust_async_sse_moi(
           NativePortType port_,
           PlatformGeneralizedUint8ListPtr ptr_,
@@ -70903,6 +71337,10 @@ class RustLibWasmModule implements WasmModule {
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSse_set_good(
           Object that, String good);
+
+  external void
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__hello_two_enum_twin_sse_func_hello(
+          NativePortType port_, int that);
 
   external void
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opaque_arg_borrow_twin_sse(
@@ -71253,6 +71691,10 @@ class RustLibWasmModule implements WasmModule {
           Object that, String good);
 
   external void
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__hello_two_enum_twin_sse_moi_func_hello(
+          NativePortType port_, int that);
+
+  external void
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto_opaque_arg_borrow_twin_sse_moi(
           NativePortType port_,
           PlatformGeneralizedUint8ListPtr ptr_,
@@ -71560,6 +72002,10 @@ class RustLibWasmModule implements WasmModule {
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_set_good(
           Object that, String good);
 
+  external void
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__hello_two_enum_twin_sync_func_hello(
+          NativePortType port_, int that);
+
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_arg_borrow_twin_sync(
           Object arg, int expect);
@@ -71747,6 +72193,10 @@ class RustLibWasmModule implements WasmModule {
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi_set_good(
           Object that, String good);
+
+  external void
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__hello_two_enum_twin_sync_moi_func_hello(
+          NativePortType port_, int that);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_arg_borrow_twin_sync_moi(
@@ -71963,6 +72413,10 @@ class RustLibWasmModule implements WasmModule {
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse_set_good(
           Object that, String good);
+
+  external void
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__hello_two_enum_twin_sync_sse_func_hello(
+          NativePortType port_, int that);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_arg_borrow_twin_sync_sse(
@@ -72263,6 +72717,10 @@ class RustLibWasmModule implements WasmModule {
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi_set_good(
           Object that, String good);
+
+  external void
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__hello_two_enum_twin_sync_sse_moi_func_hello(
+          NativePortType port_, int that);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_arg_borrow_twin_sync_sse_moi(
@@ -74081,6 +74539,10 @@ class RustLibWasmModule implements WasmModule {
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_set_good(
           Object that, String good);
+
+  external void
+      wire__crate__api__rust_auto_opaque__hello_two_enum_twin_normal_func_hello(
+          NativePortType port_, int that);
 
   external void
       wire__crate__api__rust_auto_opaque__rust_auto_opaque_arg_borrow_twin_normal(
