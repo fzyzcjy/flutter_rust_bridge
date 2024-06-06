@@ -132,6 +132,7 @@ fn is_public_enough(item: &syn::Item) -> Option<bool> {
         syn::Item::Type(x) => &x.vis,
         syn::Item::Fn(x) => &x.vis,
         syn::Item::Trait(x) => &x.vis,
+        syn::Item::Impl(x) => TODO,
         _ => return None,
     };
     Some(matches!(vis, syn::Visibility::Public(_)))
