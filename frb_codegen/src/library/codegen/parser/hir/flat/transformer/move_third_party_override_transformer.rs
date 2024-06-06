@@ -3,6 +3,8 @@ use itertools::Itertools;
 
 pub(crate) fn transform(mut pack: HirFlatPack) -> anyhow::Result<HirFlatPack> {
     transform_component(&mut pack.functions);
+    transform_component(&mut pack.structs);
+    transform_component(&mut pack.enums);
     Ok(pack)
 }
 
