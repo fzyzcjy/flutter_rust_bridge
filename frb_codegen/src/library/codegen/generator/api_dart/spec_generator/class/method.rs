@@ -25,6 +25,13 @@ impl GenerateApiMethodConfig {
         mode_static: GenerateApiMethodMode::DeclAndImpl,
         mode_non_static: GenerateApiMethodMode::DeclAndImpl,
     };
+
+    fn get(&self, method_mode: MirFuncOwnerInfoMethodMode) -> GenerateApiMethodMode {
+        match method_mode {
+            MirFuncOwnerInfoMethodMode::Static => self.mode_static,
+            MirFuncOwnerInfoMethodMode::Instance => self.mode_non_static,
+        }
+    }
 }
 
 #[derive(Debug, Clone, Copy)]
@@ -101,10 +108,6 @@ fn generate_api_method(
 
     let method_info =
         if_then_some!(let MirFuncOwnerInfo::Method(info) = &func.owner , info).unwrap();
-
-    if method_info.mode == MirFuncOwnerInfoMethodMode::Static && !config.generate_static {
-        return None;
-    }
 
     let default_constructor_mode = func.default_constructor_mode();
 
@@ -214,16 +217,6 @@ fn generate_method_name(
             .as_ref()
             .unwrap_or(&method_info.actual_method_name))
         .to_case(Case::Camel)
-    }
-}
-
-fn should_generate_implementation(
-    mode: MirFuncOwnerInfoMethodMode,
-    config: &GenerateApiMethodConfig,
-) -> bool {
-    match mode.to_owned() {
-        MirFuncOwnerInfoMethodMode::Static => config.generate_static,
-        MirFuncOwnerInfoMethodMode::Instance => config.generate_non_static,
     }
 }
 
