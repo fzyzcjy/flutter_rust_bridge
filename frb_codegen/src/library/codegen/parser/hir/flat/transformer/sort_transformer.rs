@@ -1,3 +1,4 @@
+use crate::codegen::ir::hir::flat::component::HirFlatComponent;
 use crate::codegen::ir::hir::flat::pack::{HirFlatPack, HirFlatPackComponentVisitor};
 
 pub(crate) fn transform(mut pack: HirFlatPack) -> anyhow::Result<HirFlatPack> {
@@ -8,7 +9,7 @@ pub(crate) fn transform(mut pack: HirFlatPack) -> anyhow::Result<HirFlatPack> {
 struct Visitor;
 
 impl HirFlatPackComponentVisitor for Visitor {
-    fn visit<T>(&self, items: &mut Vec<T>) {
-        items.sort_by_cached_key(|item| todo!());
+    fn visit<T: HirFlatComponent>(&self, items: &mut Vec<T>) {
+        items.sort_by_cached_key(|item| item.sort_key());
     }
 }
