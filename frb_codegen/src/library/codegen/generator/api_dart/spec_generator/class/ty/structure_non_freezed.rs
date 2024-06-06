@@ -29,7 +29,7 @@ impl<'a> StructRefApiDartGenerator<'a> {
         let const_capable = src.fields.iter().all(|field| field.is_final);
         let maybe_const = if const_capable { "const " } else { "" };
         let implements_exception = generate_dart_maybe_implements_exception(self.mir.is_exception);
-        let methods_str = methods.code.join("\n");
+        let methods_str = &methods.code;
 
         let hashcode = if src.generate_hash {
             generate_hashcode(&src.fields)

@@ -43,7 +43,7 @@ pub(crate) fn generate_api_methods(
         .collect_vec();
     GeneratedApiMethods {
         num_methods: methods.len(),
-        code: methods.iter().map(|x| x.code).join("\n"),
+        code: methods.iter().map(|x| x.code.clone()).join("\n"),
         header: (methods.iter().map(|x| x.header.clone())).fold(Default::default(), |a, b| a + b),
     }
 }

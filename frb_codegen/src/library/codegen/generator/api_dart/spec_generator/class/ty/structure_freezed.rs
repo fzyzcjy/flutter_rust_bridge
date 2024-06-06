@@ -29,7 +29,7 @@ impl<'a> StructRefApiDartGenerator<'a> {
         let constructor_params =
             self.generate_mode_freezed_constructor_params(src, methods.num_methods > 0);
         let implements_exception = generate_dart_maybe_implements_exception(self.mir.is_exception);
-        let methods_str = methods.code.join("\n");
+        let methods_str = &methods.code;
 
         format!(
             "{comments}{metadata}class {class_name} with _${class_name} {implements_exception} {{
