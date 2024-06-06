@@ -1,3 +1,4 @@
+use crate::codegen::ir::hir::misc::generation_source::HirGenerationSource;
 use crate::codegen::ir::hir::naive_flat::item::{HirNaiveFlatItem, HirNaiveFlatItemMeta};
 use crate::codegen::ir::hir::naive_flat::pack::HirNaiveFlatPack;
 use crate::codegen::misc::SELF_CRATE_THIRD_PARTY_NAMESPACE;
@@ -11,6 +12,7 @@ pub(crate) fn transform(mut pack: HirNaiveFlatPack) -> anyhow::Result<HirNaiveFl
                 HirNaiveFlatItem {
                     meta: HirNaiveFlatItemMeta {
                         namespace: compute_moved_namespace(&item.meta.namespace),
+                        source: HirGenerationSource::MoveFromCrateThirdPartyFolder,
                         is_public: true,
                     },
                     item: item.item,
