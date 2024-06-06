@@ -1,4 +1,6 @@
-use crate::codegen::generator::api_dart::spec_generator::class::method::{generate_api_methods, GenerateApiMethodConfig, GenerateApiMethodMode, GeneratedApiMethods};
+use crate::codegen::generator::api_dart::spec_generator::class::method::{
+    generate_api_methods, GenerateApiMethodConfig, GenerateApiMethodMode, GeneratedApiMethods,
+};
 use crate::codegen::generator::api_dart::spec_generator::class::misc::generate_class_extra_body;
 use crate::codegen::generator::api_dart::spec_generator::class::ty::ApiDartGeneratorClassTrait;
 use crate::codegen::generator::api_dart::spec_generator::class::ApiDartGeneratedClass;
@@ -8,6 +10,7 @@ use crate::codegen::ir::mir::ty::MirType;
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
+use crate::utils::basic_code::DartBasicHeaderCode;
 use crate::utils::namespace::NamespacedName;
 use itertools::Itertools;
 use lazy_static::lazy_static;
@@ -32,7 +35,7 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
         let extra_body =
             generate_class_extra_body(self.mir_type(), &self.context.mir_pack.dart_code_of_type);
 
-        let maybe_impls = generate_maybe_impls(
+        let (maybe_impls, maybe_impls_header) = generate_maybe_impls(
             &self.context.mir_pack.trait_impls,
             &MirType::RustOpaque(self.mir.clone()),
             self.context,
@@ -56,7 +59,7 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
                 "
             ),
             needs_freezed: false,
-            header: methods.header,
+            header: methods.header + maybe_impls_header,
         })
     }
 
@@ -142,7 +145,7 @@ fn generate_maybe_impls(
     all_trait_impls: &[MirTraitImpl],
     self_type: &MirType,
     context: ApiDartGeneratorContext,
-) -> String {
+) -> (String, DartBasicHeaderCode) {
     let interest_trait_impls = all_trait_impls
         .iter()
         .filter(|x| {
@@ -158,7 +161,11 @@ fn generate_maybe_impls(
     let combined_impls = (interest_trait_impls.iter())
         .map(|t| ApiDartGenerator::new(t.trait_ty.clone(), context).dart_api_type())
         .join(", ");
-    format!(" implements {}", combined_impls)
+    let code = format!(" implements {}", combined_impls);
+
+    let header = TODO;
+
+    (code, header)
 }
 
 fn get_candidate_safe_idents_for_matching(ty: &MirType) -> Vec<String> {

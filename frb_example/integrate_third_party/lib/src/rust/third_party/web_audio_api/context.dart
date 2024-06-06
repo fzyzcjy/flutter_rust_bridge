@@ -3,12 +3,15 @@
 
 // ignore_for_file: invalid_use_of_internal_member, unused_import, unnecessary_import
 
+import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
+import 'package:frb_example_integrate_third_party/src/rust/api/override_web_audio_api.dart';
+import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
+
 import '../../frb_generated.dart';
 import '../web_audio_api.dart';
 import 'media_streams.dart';
 import 'node.dart';
-import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
+
 part 'context.freezed.dart';
 
 // These functions are ignored because they are not marked as `pub`: `context`, `id`, `post_message`
