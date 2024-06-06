@@ -14,7 +14,7 @@ use crate::codegen::parser::mir::type_parser::path_data::extract_path_data;
 use crate::codegen::parser::mir::type_parser::unencodable::{splay_segments, SplayedSegment};
 use crate::codegen::parser::mir::type_parser::TypeParserWithContext;
 use crate::if_then_some;
-use anyhow::bail;
+use anyhow::{bail, Context};
 use itertools::Itertools;
 use syn::{parse_str, Type};
 
@@ -126,5 +126,5 @@ fn parse_stream_sink_codec(codec: &Type) -> anyhow::Result<CodecMode> {
     let segments = extract_path_data(&path.path)?;
     let ident = &segments.last().unwrap().ident;
     let ident_stripped = ident.strip_suffix("Codec").unwrap();
-    Ok(ident_stripped.parse()?)
+    Ok((ident_stripped.parse()).with_context(|| format!("raw: {ident_stripped}"))?)
 }
