@@ -7,13 +7,15 @@ import '../../frb_generated.dart';
 import 'node.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// These functions are ignored because they are not marked as `pub`: `load`, `new`
 // These functions are ignored because they have generic arguments: `new`, `process`
 // These types are ignored because they are not used by any `pub` functions: `AudioParamValues`, `AudioWorkletNodeOptions`, `AudioWorkletRenderer`, `Processor`
 // These functions are ignored: `port`
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioWorkletNode>>
 abstract class AudioWorkletNode implements AudioNode {
+  /// Config for up/down-mixing of input channels for this node.
+  ///
+  /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
   Future<void> channelConfig();
 
   /// Represents an integer used to determine how many channels are used when up-mixing and
@@ -46,8 +48,10 @@ abstract class AudioWorkletNode implements AudioNode {
   /// - if the output port is out of bounds for this node
   Future<void> disconnectOutput({required BigInt output});
 
+  /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
   Future<BigInt> numberOfInputs();
 
+  /// The number of outputs coming out of the AudioNode.
   Future<BigInt> numberOfOutputs();
 
   /// Collection of AudioParam objects with associated names of this node
@@ -56,6 +60,9 @@ abstract class AudioWorkletNode implements AudioNode {
   /// [`AudioWorkletProcessor`] class constructor at the instantiation.
   Future<void> parameters();
 
+  /// Handle of the associated [`BaseAudioContext`](crate::context::BaseAudioContext).
+  ///
+  /// Only when implementing the AudioNode trait manually, this struct is of any concern.
   Future<void> registration();
 
   /// Update the `channel_count` attribute

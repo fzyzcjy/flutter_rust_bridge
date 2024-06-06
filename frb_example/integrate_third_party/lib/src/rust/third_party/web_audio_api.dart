@@ -7,7 +7,6 @@ import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'web_audio_api/node.dart';
 
-// These functions are ignored because they are not marked as `pub`: `assert_valid_buffer_length`, `assert_valid_channel_number`, `assert_valid_number_of_channels`, `assert_valid_sample_rate`, `assert_valid_time_value`
 // These types are ignored because they are not used by any `pub` functions: `AtomicF32`, `AtomicF64`, `ErrorEvent`, `MediaElement`, `MessagePort`
 // These functions are ignored: `load`, `load`, `new`, `new`, `store`, `store`
 
@@ -104,6 +103,9 @@ abstract class AudioParam implements AudioNode {
   /// Will panic if `cancel_time` is negative
   Future<void> cancelScheduledValues({required double cancelTime});
 
+  /// Config for up/down-mixing of input channels for this node.
+  ///
+  /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
   Future<void> channelConfig();
 
   /// Represents an integer used to determine how many channels are used when up-mixing and
@@ -162,10 +164,15 @@ abstract class AudioParam implements AudioNode {
 
   Future<double> minValue();
 
+  /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
   Future<BigInt> numberOfInputs();
 
+  /// The number of outputs coming out of the AudioNode.
   Future<BigInt> numberOfOutputs();
 
+  /// Handle of the associated [`BaseAudioContext`](crate::context::BaseAudioContext).
+  ///
+  /// Only when implementing the AudioNode trait manually, this struct is of any concern.
   Future<void> registration();
 
   /// Update the current value of the automation rate of the AudioParam
@@ -175,10 +182,13 @@ abstract class AudioParam implements AudioNode {
   /// Some nodes have automation rate constraints and may panic when updating the value.
   Future<void> setAutomationRate({required AutomationRate value});
 
+  /// Update the `channel_count` attribute
   Future<void> setChannelCount({required BigInt v});
 
+  /// Update the `channel_count_mode` attribute
   Future<void> setChannelCountMode({required ChannelCountMode v});
 
+  /// Update the `channel_interpretation` attribute
   Future<void> setChannelInterpretation({required ChannelInterpretation v});
 
   /// Start exponentially approaching the target value at the given time with

@@ -12,12 +12,12 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'context.freezed.dart';
 
-// These functions are ignored because they are not marked as `pub`: `context`, `id`, `post_message`
 // These functions are ignored because they have generic arguments: `decode_audio_data_sync`, `decode_audio_data_sync`, `decode_audio_data_sync`, `set_onstatechange`, `set_onstatechange`, `set_onstatechange`, `set_onstatechange`
 // These types are ignored because they are not used by any `pub` functions: `AudioNodeId`
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioContext>>
 abstract class AudioContext implements AudioContextExt, BaseAudioContext {
+  /// Returns the [`BaseAudioContext`] concrete type associated with this `AudioContext`
   Future<void> base();
 
   /// This represents the number of seconds of processing latency incurred by
@@ -280,6 +280,7 @@ abstract class AudioParamId {
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ConcreteBaseAudioContext>>
 abstract class ConcreteBaseAudioContext implements BaseAudioContext {
+  /// Returns the [`BaseAudioContext`] concrete type associated with this `AudioContext`
   Future<void> base();
 
   /// Unset the callback to run when the state of the AudioContext has changed
@@ -377,12 +378,25 @@ abstract class ConcreteBaseAudioContext implements BaseAudioContext {
   /// Creates a `WaveShaperNode`
   Future<WaveShaperNode> createWaveShaper();
 
+  /// This is the time in seconds of the sample frame immediately following the last sample-frame
+  /// in the block of audio most recently processed by the context’s rendering graph.
+  Future<double> currentTime();
+
   /// Returns an `AudioDestinationNode` representing the final destination of all audio in the
   /// context. It can be thought of as the audio-rendering device.
   Future<AudioDestinationNode> destination();
 
+  /// Returns the `AudioListener` which is used for 3D spatialization
+  Future<AudioListener> listener();
+
   /// Inform render thread that this node can act as a cycle breaker
   Future<void> markCycleBreaker({required AudioContextRegistration reg});
+
+  /// The sample rate (in sample-frames per second) at which the `AudioContext` handles audio.
+  Future<double> sampleRate();
+
+  /// Returns state of current context
+  Future<AudioContextState> state();
 
   void dispose();
 
@@ -391,6 +405,7 @@ abstract class ConcreteBaseAudioContext implements BaseAudioContext {
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OfflineAudioContext>>
 abstract class OfflineAudioContext implements BaseAudioContext {
+  /// Returns the [`BaseAudioContext`] concrete type associated with this `AudioContext`
   Future<void> base();
 
   /// Unset the callback to run when the rendering has completed
