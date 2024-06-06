@@ -1,10 +1,7 @@
 use crate::codegen::generator::codec::structs::{CodecMode, CodecModePack};
 use crate::codegen::ir::hir::flat::function::HirFlatFunction;
 use crate::codegen::ir::hir::flat::function::HirFlatFunctionOwner;
-use crate::codegen::ir::mir::func::{
-    MirFunc, MirFuncArgMode, MirFuncInput, MirFuncMode, MirFuncOutput, MirFuncOverridePriority,
-    MirFuncOwnerInfo, MirFuncOwnerInfoMethod, MirFuncOwnerInfoMethodMode,
-};
+use crate::codegen::ir::mir::func::{compute_interest_name_of_owner_ty, MirFunc, MirFuncArgMode, MirFuncInput, MirFuncMode, MirFuncOutput, MirFuncOverridePriority, MirFuncOwnerInfo, MirFuncOwnerInfoMethod, MirFuncOwnerInfoMethodMode};
 use crate::codegen::ir::mir::skip::MirSkipReason::IgnoredFunctionGeneric;
 use crate::codegen::ir::mir::skip::{MirSkip, MirSkipReason};
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
@@ -191,6 +188,11 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                 };
 
                 if owner_ty.should_ignore(self.type_parser) {
+                    return Ok(None);
+                }
+
+                // e.g. When seeing `impl MyTrait for String {}`, we should skip it
+                if compute_interest_name_of_owner_ty(&owner_ty).is_none() {
                     return Ok(None);
                 }
 
