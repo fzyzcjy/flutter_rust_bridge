@@ -325,7 +325,10 @@ pub(crate) fn compute_codec_mode_pack(
 fn refine_namespace(owner: &MirFuncOwnerInfo) -> Option<Namespace> {
     if let MirFuncOwnerInfo::Method(method) = owner {
         let owner_ty = &method.owner_ty;
-        if matches!(owner_ty, MirType::StructRef(_) | MirType::EnumRef(_)) {
+        if matches!(
+            owner_ty,
+            MirType::StructRef(_) | MirType::EnumRef(_) | MirType::RustAutoOpaqueImplicit(_)
+        ) {
             return owner_ty.self_namespace();
         }
     }
