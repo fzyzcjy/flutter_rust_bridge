@@ -35,7 +35,7 @@ fn parse_functions(
                 trait_def_name: trait_def_name.to_owned(),
             },
             item_fn: GeneralizedItemFn::TraitItemFn(trait_item_fn),
-            source: HirGenerationSource::Normal,
+            source: meta.source,
         })
         .collect_vec()
 }

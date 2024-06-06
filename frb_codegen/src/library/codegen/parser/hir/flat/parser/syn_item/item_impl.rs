@@ -39,7 +39,7 @@ fn parse_functions(
                 trait_def_name: trait_def_name.clone(),
             },
             item_fn: GeneralizedItemFn::ImplItemFn(impl_item_fn),
-            source: HirGenerationSource::Normal,
+            source: meta.source,
         })
         .collect_vec()
 }

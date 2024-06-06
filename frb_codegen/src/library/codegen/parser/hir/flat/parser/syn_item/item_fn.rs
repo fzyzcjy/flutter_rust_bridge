@@ -9,6 +9,6 @@ pub(crate) fn parse_syn_item_fn(item_fn: ItemFn, meta: &HirNaiveFlatItemMeta) ->
         namespace: meta.namespace.clone(),
         owner: HirFlatFunctionOwner::Function,
         item_fn: GeneralizedItemFn::ItemFn(item_fn),
-        source: HirGenerationSource::Normal,
+        source: meta.source,
     }
 }

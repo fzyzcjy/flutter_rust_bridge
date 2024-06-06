@@ -47,7 +47,7 @@ fn parse_syn_item_struct_or_enum<I: SynItemStructOrEnum>(
             name: NamespacedName::new(meta.namespace.to_owned(), ident.to_string()),
             visibility: item_vis.into(),
             mirror: mirror_by_ident || !meta.namespace.crate_name().is_self_crate(),
-            source: HirGenerationSource::Normal,
+            source: meta.source,
             src: item.to_owned(),
         })
         .collect_vec())
