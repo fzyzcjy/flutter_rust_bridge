@@ -15,6 +15,7 @@ fn flatten_module(module: HirTreeModule, target: &mut Vec<HirNaiveFlatItem>) {
     target.extend(module.items.into_iter().map(|item| HirNaiveFlatItem {
         meta: HirNaiveFlatItemMeta {
             namespace: module.meta.namespace.clone(),
+            is_public: module.meta.is_public(),
         },
         item,
     }));

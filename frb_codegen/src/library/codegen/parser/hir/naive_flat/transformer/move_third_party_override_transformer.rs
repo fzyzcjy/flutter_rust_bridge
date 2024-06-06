@@ -13,6 +13,7 @@ pub(crate) fn transform(mut pack: HirNaiveFlatPack) -> anyhow::Result<HirNaiveFl
                 HirNaiveFlatItem {
                     meta: HirNaiveFlatItemMeta {
                         namespace: compute_moved_namespace(&item.meta.namespace),
+                        is_public: true,
                     },
                     item: item.item,
                 }
