@@ -28,7 +28,7 @@ impl<'a> ApiDartGeneratorClassTrait for TraitDefApiDartGenerator<'a> {
                 "
             ),
             needs_freezed: false,
-            header: Default::default(),
+            header: methods.header,
         })
     }
 }
