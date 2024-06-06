@@ -1,3 +1,4 @@
+use crate::codegen::ir::hir::naive_flat::item::HirNaiveFlatItemMeta;
 use crate::codegen::ir::hir::naive_flat::pack::HirNaiveFlatPack;
 use crate::codegen::ir::hir::tree::module::HirTreeModuleMeta;
 use crate::utils::crate_name::CrateName;
@@ -10,7 +11,7 @@ pub(crate) fn transform(mut pack: HirNaiveFlatPack) -> anyhow::Result<HirNaiveFl
     Ok(pack)
 }
 
-fn is_interest_mod(meta: &HirTreeModuleMeta) -> bool {
+fn is_interest_mod(meta: &HirNaiveFlatItemMeta) -> bool {
     // If it is third party crate, then we only scan the `pub` mods,
     // since for non-pub modes, it is impossible to use them even if we scanned them.
     meta.namespace.path()[0] == CrateName::SELF_CRATE || meta.is_public()

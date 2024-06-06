@@ -1,4 +1,4 @@
-use crate::codegen::ir::hir::naive_flat::item::HirNaiveFlatItem;
+use crate::codegen::ir::hir::naive_flat::item::{HirNaiveFlatItem, HirNaiveFlatItemMeta};
 use crate::codegen::ir::hir::naive_flat::pack::HirNaiveFlatPack;
 use crate::codegen::ir::hir::tree::module::HirTreeModule;
 use crate::codegen::ir::hir::tree::pack::HirTreePack;
@@ -13,7 +13,9 @@ pub(crate) fn parse(pack: HirTreePack) -> anyhow::Result<HirNaiveFlatPack> {
 
 fn flatten_module(module: HirTreeModule, target: &mut Vec<HirNaiveFlatItem>) {
     target.extend(module.items.into_iter().map(|item| HirNaiveFlatItem {
-        meta: module.meta.clone(),
+        meta: HirNaiveFlatItemMeta {
+            namespace: module.meta.namespace.clone(),
+        },
         item,
     }));
 

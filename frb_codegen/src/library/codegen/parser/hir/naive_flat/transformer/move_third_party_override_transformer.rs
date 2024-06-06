@@ -1,5 +1,5 @@
 use crate::codegen::ir::hir::misc::visibility::HirVisibility;
-use crate::codegen::ir::hir::naive_flat::item::HirNaiveFlatItem;
+use crate::codegen::ir::hir::naive_flat::item::{HirNaiveFlatItem, HirNaiveFlatItemMeta};
 use crate::codegen::ir::hir::naive_flat::pack::HirNaiveFlatPack;
 use crate::codegen::ir::hir::tree::module::HirTreeModuleMeta;
 use crate::codegen::misc::SELF_CRATE_THIRD_PARTY_NAMESPACE;
@@ -11,11 +11,8 @@ pub(crate) fn transform(mut pack: HirNaiveFlatPack) -> anyhow::Result<HirNaiveFl
         .map(|item| {
             if SELF_CRATE_THIRD_PARTY_NAMESPACE.is_prefix_of(&item.meta.namespace) {
                 HirNaiveFlatItem {
-                    meta: HirTreeModuleMeta {
+                    meta: HirNaiveFlatItemMeta {
                         namespace: compute_moved_namespace(&item.meta.namespace),
-                        // hacky fake data
-                        parent_vis: vec![],
-                        vis: HirVisibility::Public,
                     },
                     item: item.item,
                 }
