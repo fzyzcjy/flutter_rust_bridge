@@ -24,6 +24,7 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
             &GenerateApiMethodConfig {
                 generate_static: true,
                 generate_non_static: false,
+                generate_impl: true,
             },
             "",
         );
@@ -70,6 +71,7 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
             &GenerateApiMethodConfig {
                 generate_static: false,
                 generate_non_static: true,
+                generate_impl: true,
             },
             "Impl",
         );

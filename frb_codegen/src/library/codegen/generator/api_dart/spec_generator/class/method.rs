@@ -18,12 +18,14 @@ use itertools::Itertools;
 pub(crate) struct GenerateApiMethodConfig {
     pub generate_static: bool,
     pub generate_non_static: bool,
+    pub generate_impl: bool,
 }
 
 impl GenerateApiMethodConfig {
     pub(crate) const COMBINED: GenerateApiMethodConfig = GenerateApiMethodConfig {
         generate_static: true,
         generate_non_static: true,
+        generate_impl: true,
     };
 }
 

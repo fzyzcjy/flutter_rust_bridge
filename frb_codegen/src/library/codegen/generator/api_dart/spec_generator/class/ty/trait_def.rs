@@ -14,6 +14,7 @@ impl<'a> ApiDartGeneratorClassTrait for TraitDefApiDartGenerator<'a> {
             &GenerateApiMethodConfig {
                 generate_static: false,
                 generate_non_static: true,
+                generate_impl: false,
             },
             dart_api_type,
         );
