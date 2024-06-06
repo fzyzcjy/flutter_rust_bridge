@@ -4,6 +4,8 @@ use itertools::Itertools;
 use serde::{Deserialize, Deserializer, Serialize, Serializer};
 use std::borrow::ToOwned;
 use std::fmt::{Display, Formatter};
+use std::path::Path;
+use crate::utils::rust_project_utils::compute_mod_from_rust_crate_path;
 
 /// The Rust files/modules/namespaces.
 #[derive(Debug, Clone, Hash, Eq, PartialEq, Serialize, Deserialize, Ord, PartialOrd, Default)]
@@ -41,13 +43,13 @@ impl Namespace {
         Self::new_raw(format!("{self_crate}{sep}{joined_path}"))
     }
 
-    // pub(crate) fn new_from_rust_crate_path(
-    //     code_path: &Path,
-    //     rust_crate_path: &Path,
-    // ) -> anyhow::Result<Self> {
-    //     let p = compute_mod_from_rust_crate_path(code_path, rust_crate_path)?;
-    //     Ok(Self::new_self_crate(p))
-    // }
+    pub(crate) fn new_from_rust_crate_path(
+        code_path: &Path,
+        rust_crate_path: &Path,
+    ) -> anyhow::Result<Self> {
+        let p = compute_mod_from_rust_crate_path(code_path, rust_crate_path)?;
+        Ok(Self::new_self_crate(p))
+    }
 
     pub fn crate_name(&self) -> CrateName {
         CrateName::new(self.path()[0].to_owned())

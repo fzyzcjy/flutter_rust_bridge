@@ -37,7 +37,10 @@ pub(super) fn compute_rust_path_info(
             rust_input_namespace_prefixes: tidy_rust_input_namespace_prefixes(
                 &rust_input_namespace_prefixes_raw,
             ),
-            early_skip_namespace_prefixes: vec![TODO],
+            early_skip_namespace_prefixes: vec![Namespace::new_from_rust_crate_path(
+                &rust_output_path.common,
+                &rust_crate_dir,
+            )?],
         },
         rust_output_path,
     })
