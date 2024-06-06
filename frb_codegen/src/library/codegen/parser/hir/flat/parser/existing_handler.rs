@@ -1,4 +1,4 @@
-use crate::codegen::ir::hir::misc::syn_item_with_meta::SynItemWithMeta;
+use crate::codegen::ir::hir::naive_flat::item::HirNaiveFlatItem;
 use crate::codegen::parser::hir::internal_config::ParserHirInternalConfig;
 use crate::library::misc::consts::HANDLER_NAME;
 use crate::utils::namespace::NamespacedName;
@@ -6,7 +6,7 @@ use anyhow::ensure;
 use itertools::Itertools;
 
 pub(super) fn parse_existing_handler(
-    items: &[SynItemWithMeta],
+    items: &[HirNaiveFlatItem],
     config: &ParserHirInternalConfig,
 ) -> anyhow::Result<Option<NamespacedName>> {
     let existing_handlers = (items.iter())
