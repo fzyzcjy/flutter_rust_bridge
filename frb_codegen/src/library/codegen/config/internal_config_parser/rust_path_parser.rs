@@ -28,6 +28,9 @@ pub(super) fn compute_rust_path_info(
     let rust_output_path =
         compute_rust_output_path(config_rust_output, &base_dir, &rust_crate_dir)?;
 
+    let rust_output_path_namespace =
+        Namespace::new_from_rust_crate_path(&rust_output_path.common, &rust_crate_dir)?;
+
     Ok(RustInputInfo {
         rust_crate_dir,
         third_party_crate_names: compute_third_party_crate_names(
@@ -37,10 +40,7 @@ pub(super) fn compute_rust_path_info(
             rust_input_namespace_prefixes: tidy_rust_input_namespace_prefixes(
                 &rust_input_namespace_prefixes_raw,
             ),
-            early_skip_namespace_prefixes: vec![Namespace::new_from_rust_crate_path(
-                &rust_output_path.common,
-                &rust_crate_dir,
-            )?],
+            early_skip_namespace_prefixes: vec![rust_output_path_namespace],
         },
         rust_output_path,
     })
