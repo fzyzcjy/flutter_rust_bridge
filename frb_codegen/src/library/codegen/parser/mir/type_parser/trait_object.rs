@@ -1,3 +1,4 @@
+use anyhow::bail;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::mir::type_parser::TypeParserWithContext;
 use syn::TypeTraitObject;
