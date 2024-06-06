@@ -26,3 +26,11 @@ impl MyStruct {
         Self {}
     }
 }
+
+pub enum HiEnum {
+    A,
+    B,
+}
+pub fn func_using_enum() -> HiEnum {
+    HiEnum::B
+}
