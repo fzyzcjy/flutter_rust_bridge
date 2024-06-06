@@ -7,6 +7,7 @@ pub(crate) mod misc;
 pub(crate) mod reader;
 pub(crate) mod sanity_checker;
 pub(crate) mod type_parser;
+mod trait_impl_parser;
 
 use crate::codegen::ir::hir::flat::function::HirFlatFunction;
 use crate::codegen::ir::hir::flat::pack::HirFlatPack;
@@ -54,7 +55,7 @@ pub(crate) fn parse(
         existing_handler: hir_flat.existing_handler.clone(),
         unused_types: vec![],
         skipped_functions: mir_skips,
-        trait_impls: compute_trait_impls(&hir_flat.trait_impls),
+        trait_impls: trait_impl_parser::parse(&hir_flat.trait_impls)?,
     };
 
     ans.unused_types = get_unused_types(
@@ -123,11 +124,3 @@ fn parse_mir_funcs(
 //         .collect_vec()
 // }
 
-fn compute_trait_impls(hir_trait_impls: &[HirFlatTraitImpl]) -> Vec<MirTraitImpl> {
-    (hir_trait_impls.iter())
-        .map(|x| MirTraitImpl {
-            trait_ty: x.trait_name.clone(),
-            impl_ty: ty_to_string(&x.impl_ty),
-        })
-        .collect_vec()
-}
