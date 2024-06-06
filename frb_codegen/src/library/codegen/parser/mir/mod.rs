@@ -126,7 +126,7 @@ fn parse_mir_funcs(
 fn compute_trait_impls(hir_trait_impls: &[HirFlatTraitImpl]) -> Vec<MirTraitImpl> {
     (hir_trait_impls.iter())
         .map(|x| MirTraitImpl {
-            trait_name: x.trait_name.clone(),
+            trait_ty: x.trait_name.clone(),
             impl_ty: ty_to_string(&x.impl_ty),
         })
         .collect_vec()

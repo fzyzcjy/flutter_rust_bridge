@@ -19,8 +19,8 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
     fn generate_class(&self) -> Option<ApiDartGeneratedClass> {
         let Info {
             dart_api_type,
-            type_query_name,
             methods,
+            ..
         } = self.compute_info(
             &GenerateApiMethodConfig {
                 generate_static: true,
@@ -143,7 +143,11 @@ fn compute_query_name(mir: &MirTypeRustOpaque) -> String {
     FILTER.replace_all(&mir.inner.0, "$1").to_string()
 }
 
-fn generate_maybe_impls(all_trait_impls: &[MirTraitImpl], self_type: &MirType) -> String {
+fn generate_maybe_impls(
+    all_trait_impls: &[MirTraitImpl],
+    self_type: &MirType,
+    context: ApiDartGeneratorContext,
+) -> String {
     let interest_trait_impls = all_trait_impls
         .iter()
         .filter(|x| x.impl_ty.safe_ident() == self_type.safe_ident())
@@ -154,7 +158,7 @@ fn generate_maybe_impls(all_trait_impls: &[MirTraitImpl], self_type: &MirType) -
     }
 
     let combined_impls = (interest_trait_impls.iter())
-        .map(|t| t.trait_name.clone())
+        .map(|t| ApiDartGenerator::new(t.trait_ty.clone(), context).dart_api_type())
         .join(", ");
     format!(" implements {}", combined_impls)
 }
