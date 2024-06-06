@@ -120,8 +120,8 @@ fn generate_item(
         .unwrap_or(Ok(vec![]))?;
 
     let classes = namespaced_types
-        .map(|classes| {
-            (classes.iter())
+        .map(|types| {
+            (types.iter())
                 .filter_map(|&ty| ApiDartGenerator::new(ty.clone(), context).generate_class())
                 .collect_vec()
         })
