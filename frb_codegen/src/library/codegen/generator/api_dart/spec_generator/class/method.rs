@@ -16,17 +16,22 @@ use itertools::Itertools;
 
 #[derive(Debug, Clone)]
 pub(crate) struct GenerateApiMethodConfig {
-    pub generate_static: bool,
-    pub generate_non_static: bool,
-    pub generate_impl: bool,
+    pub mode_static: GenerateApiMethodMode,
+    pub mode_non_static: GenerateApiMethodMode,
 }
 
 impl GenerateApiMethodConfig {
     pub(crate) const COMBINED: GenerateApiMethodConfig = GenerateApiMethodConfig {
-        generate_static: true,
-        generate_non_static: true,
-        generate_impl: true,
+        mode_static: GenerateApiMethodMode::DeclAndImpl,
+        mode_non_static: GenerateApiMethodMode::DeclAndImpl,
     };
+}
+
+#[derive(Debug, Clone, Copy)]
+pub(crate) enum GenerateApiMethodMode {
+    Nothing,
+    DeclOnly,
+    DeclAndImpl,
 }
 
 pub(crate) struct GeneratedApiMethods {
