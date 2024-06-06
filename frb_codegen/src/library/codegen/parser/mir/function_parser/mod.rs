@@ -7,6 +7,7 @@ use crate::codegen::ir::mir::func::{
 };
 use crate::codegen::ir::mir::skip::MirSkipReason::IgnoredFunctionGeneric;
 use crate::codegen::ir::mir::skip::{MirSkip, MirSkipReason};
+use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
 use crate::codegen::ir::mir::ty::rust_auto_opaque_implicit::MirTypeRustAutoOpaqueImplicitReason;
 use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
@@ -360,7 +361,9 @@ fn is_allowed_owner(owner_ty: &MirType, attributes: &FrbAttributes) -> bool {
 
     // wants structs or enums that we know
     match owner_ty {
-        MirType::StructRef(_) | MirType::EnumRef(_) => true,
+        MirType::StructRef(_)
+        | MirType::EnumRef(_)
+        | MirType::Delegate(MirTypeDelegate::PrimitiveEnum(_)) => true,
         MirType::RustAutoOpaqueImplicit(ty) => {
             ty.reason == Some(MirTypeRustAutoOpaqueImplicitReason::StructOrEnumRequireOpaque)
         }
