@@ -9,15 +9,13 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         let resolve_ty = self.resolve_alias(ty);
 
         Ok(match resolve_ty.clone() {
-            Type::Path(path) => self.parse_type_path(&path)?,
-            Type::Array(type_array) => self.parse_type_array(&type_array)?,
-            Type::Slice(type_slice) => self.parse_type_slice(&type_slice)?,
-            Type::Tuple(type_tuple) => self.parse_type_tuple(&type_tuple)?,
-            Type::TraitObject(type_trait_object) => {
-                self.parse_type_trait_object(&type_trait_object)?
-            }
-            Type::ImplTrait(type_impl_trait) => self
-                .parse_type_impl_trait_dart_fn(&type_impl_trait)
+            Type::Path(x) => self.parse_type_path(&x)?,
+            Type::Array(x) => self.parse_type_array(&x)?,
+            Type::Slice(x) => self.parse_type_slice(&x)?,
+            Type::Tuple(x) => self.parse_type_tuple(&x)?,
+            Type::TraitObject(x) => self.parse_type_trait_object(&x)?,
+            Type::ImplTrait(x) => self
+                .parse_type_impl_trait_dart_fn(&x)
                 .context("when trying to parse DartFn")?,
             _ => self.parse_type_rust_auto_opaque_implicit(None, &resolve_ty, None, None)?,
         })
