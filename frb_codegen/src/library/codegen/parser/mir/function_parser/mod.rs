@@ -197,7 +197,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                     return Ok(None);
                 }
 
-                if !is_allowed_owner(owner_ty) {
+                if !is_allowed_owner(&owner_ty, attributes) {
                     return Ok(None);
                 }
 
