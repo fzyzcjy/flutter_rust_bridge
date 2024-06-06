@@ -1,5 +1,6 @@
 use crate::codegen::ir::hir::flat::function::HirFlatFunction;
 use crate::codegen::ir::hir::flat::pack::HirFlatPack;
+use crate::codegen::ir::hir::misc::generation_source::HirGenerationSource;
 use crate::codegen::misc::SELF_CRATE_THIRD_PARTY_NAMESPACE;
 use crate::codegen::parser::hir::internal_config::ParserHirInternalConfig;
 use crate::utils::namespace::Namespace;
@@ -18,7 +19,9 @@ fn filter_function(pack: &mut HirFlatPack, config: &ParserHirInternalConfig) {
     pack.functions = (pack.functions.drain(..))
         .filter(|f| {
             is_interest_module(&f.namespace, config)
-                && (f.namespace.crate_name().is_self_crate() || is_function_public(f))
+                && (f.namespace.crate_name().is_self_crate()
+                    || f.source == HirGenerationSource::MoveFromCrateThirdPartyFolder
+                    || is_function_public(f))
         })
         .collect_vec();
 }
