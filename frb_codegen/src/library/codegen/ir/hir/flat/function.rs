@@ -1,4 +1,5 @@
 use crate::codegen::ir::hir::flat::component::HirFlatComponent;
+use crate::codegen::ir::hir::flat::source::HirFlatGenerationSource;
 use crate::codegen::ir::hir::misc::item_fn::GeneralizedItemFn;
 use crate::codegen::ir::hir::misc::serializers::serialize_generalized_item_fn;
 use crate::codegen::ir::hir::misc::serializers::serialize_syn;
@@ -11,7 +12,7 @@ use syn::Visibility;
 pub(crate) struct HirFlatFunction {
     pub(crate) namespace: Namespace,
     pub(crate) owner: HirFlatFunctionOwner,
-    pub(crate) source: HirFlatFunctionSource,
+    pub(crate) source: HirFlatGenerationSource,
     #[serde(serialize_with = "serialize_generalized_item_fn")]
     pub(crate) item_fn: GeneralizedItemFn,
 }
@@ -65,9 +66,3 @@ pub(crate) enum HirFlatFunctionOwner {
 }
 
 pub(crate) type SimpleOwnerAndName = (String, String);
-
-#[derive(Debug, Clone, Copy, Serialize)]
-pub(crate) enum HirFlatFunctionSource {
-    Normal,
-    CopyFromTraitDef,
-}

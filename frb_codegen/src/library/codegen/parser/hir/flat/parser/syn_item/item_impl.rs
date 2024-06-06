@@ -1,7 +1,6 @@
-use crate::codegen::ir::hir::flat::function::{
-    HirFlatFunction, HirFlatFunctionOwner, HirFlatFunctionSource,
-};
+use crate::codegen::ir::hir::flat::function::{HirFlatFunction, HirFlatFunctionOwner};
 use crate::codegen::ir::hir::flat::pack::HirFlatPack;
+use crate::codegen::ir::hir::flat::source::HirFlatGenerationSource;
 use crate::codegen::ir::hir::flat::trait_impl::HirFlatTraitImpl;
 use crate::codegen::ir::hir::misc::item_fn::GeneralizedItemFn;
 use crate::codegen::ir::hir::tree::module::HirTreeModuleMeta;
@@ -40,7 +39,7 @@ fn parse_functions(
                 trait_def_name: trait_def_name.clone(),
             },
             item_fn: GeneralizedItemFn::ImplItemFn(impl_item_fn),
-            source: HirFlatFunctionSource::Normal,
+            source: HirFlatGenerationSource::Normal,
         })
         .collect_vec()
 }

@@ -1,4 +1,5 @@
-use crate::codegen::ir::hir::flat::function::{HirFlatFunction, HirFlatFunctionSource};
+use crate::codegen::ir::hir::flat::function::HirFlatFunction;
+use crate::codegen::ir::hir::flat::source::HirFlatGenerationSource;
 use crate::codegen::ir::hir::flat::struct_or_enum::{HirFlatEnum, HirFlatStruct};
 use crate::codegen::parser::hir::flat::transformer::merge_duplicate_transformer::base::BaseMerger;
 
@@ -11,7 +12,7 @@ impl BaseMerger for TraitDefDefaultImplMerger {
         base: &HirFlatFunction,
         overrider: &HirFlatFunction,
     ) -> Option<HirFlatFunction> {
-        if let (HirFlatFunctionSource::CopyFromTraitDef, HirFlatFunctionSource::Normal) =
+        if let (HirFlatGenerationSource::CopyFromTraitDef, HirFlatGenerationSource::Normal) =
             (&base.source, &overrider.source)
         {
             Some(overrider.to_owned())
