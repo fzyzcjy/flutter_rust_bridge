@@ -26,8 +26,7 @@ fn is_interest(item: &HirNaiveFlatItem, config: &ParserHirInternalConfig) -> boo
 fn is_public_or_self_crate(item: &HirNaiveFlatItem) -> bool {
     // If it is third party crate, then we only scan the `pub` mods and items,
     // since for non-pub modes, it is impossible to use them even if we scanned them.
-    is_self_crate(item)
-        || (item.meta.is_module_public && is_item_public(&item.item).unwrap_or(true))
+    is_self_crate(item) || item.meta.is_module_public
 }
 
 fn is_self_crate(item: &HirNaiveFlatItem) -> bool {
