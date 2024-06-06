@@ -68,6 +68,7 @@ macro_rules! handle_audio_node_trait_impls {
     };
 }
 
+handle_audio_node_trait_impls!(AudioNode);
 handle_audio_node_trait_impls!(AnalyserNode);
 handle_audio_node_trait_impls!(AudioBufferSourceNode);
 handle_audio_node_trait_impls!(AudioDestinationNode);
