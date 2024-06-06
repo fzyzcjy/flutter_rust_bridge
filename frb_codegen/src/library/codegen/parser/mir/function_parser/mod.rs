@@ -327,23 +327,6 @@ fn refine_namespace(owner: &MirFuncOwnerInfo) -> Option<Namespace> {
     }
 }
 
-// TODO mv
-// fn parse_frb_override_marker(
-//     dart_name_raw: Option<String>,
-//     override_priority_raw: MirFuncOverridePriority,
-//     func: &HirFlatFunction,
-// ) -> (Option<String>, MirFuncOverridePriority) {
-//     const FRB_OVERRIDE_PREFIX: &str = "frb_override_";
-//     if let Some(func_name_stripped) = func.item_fn.name().strip_prefix(FRB_OVERRIDE_PREFIX) {
-//         (
-//             dart_name_raw.or(Some(func_name_stripped.to_owned())),
-//             MirFuncOverridePriority::FRB_OVERRIDE,
-//         )
-//     } else {
-//         (dart_name_raw, override_priority_raw)
-//     }
-// }
-
 fn is_allowed_owner(owner_ty: &MirType, attributes: &FrbAttributes) -> bool {
     // if `#[frb(external)]`, then allow arbitrary type
     if attributes.external() {
