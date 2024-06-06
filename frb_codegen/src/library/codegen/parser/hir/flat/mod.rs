@@ -16,8 +16,8 @@ pub(crate) fn parse(
     let pack = parser::pack::parse_pack(config, hir_tree)?;
     dump(dumper, "1_parse_pack", &pack)?;
 
-    let pack = transformer::function_interest_module_transformer::transform(pack, config)?;
-    dump(dumper, "2_function_interest_module_transformer", &pack)?;
+    let pack = transformer::filter_transformer::transform(pack, config)?;
+    dump(dumper, "2_filter_transformer", &pack)?;
 
     let pack = transformer::remove_not_defined_trait_transformer::transform(pack)?;
     dump(dumper, "3_remove_not_defined_trait_transformer", &pack)?;
