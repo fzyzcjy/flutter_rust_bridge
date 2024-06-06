@@ -60,9 +60,6 @@ impl MirTypeTrait for MirTypeRustOpaque {
         mir_context: &impl MirContext,
     ) {
         self.get_delegate().visit_types(f, mir_context);
-        for t in &self.impl_traits {
-            MirType::Delegate(MirTypeDelegate::DynTrait(t.clone())).visit_types(f, mir_context)
-        }
     }
 
     fn safe_ident(&self) -> String {
