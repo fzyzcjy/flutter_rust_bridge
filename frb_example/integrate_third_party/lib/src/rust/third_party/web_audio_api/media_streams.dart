@@ -8,7 +8,7 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 // These functions are ignored because they have generic arguments: `from_iter`
 // These types are ignored because they are not used by any `pub` functions: `MediaStreamTrackInner`, `MediaStreamTrackIter`
-// These functions have error during generation (see debug logs or enable `stop_on_error: true` for more details): `iter`
+// These functions have error during generation (see debug logs for more details): `iter`
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaStream>>
 abstract class MediaStream {

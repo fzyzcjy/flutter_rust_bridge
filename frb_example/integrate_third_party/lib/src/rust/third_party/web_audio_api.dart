@@ -5,13 +5,12 @@
 
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-import 'web_audio_api/context.dart';
 import 'web_audio_api/node.dart';
 
-// These functions are ignored because they are not marked as `pub`: `as_slice`, `assert_valid_buffer_length`, `assert_valid_channel_number`, `assert_valid_number_of_channels`, `assert_valid_sample_rate`, `assert_valid_time_value`, `cancel_and_hold_at_time_raw`, `cancel_scheduled_values_raw`, `channel_data_mut`, `channel_data`, `channels_mut`, `channels`, `compute_buffer`, `compute_exponential_ramp_automation`, `compute_intrinsic_values`, `compute_linear_ramp_automation`, `compute_set_target_automation`, `compute_set_value_automation`, `compute_set_value_curve_automation`, `exponential_ramp_to_value_at_time_raw`, `extend`, `from_channels`, `from_raw_parts`, `generate_wavetable`, `handle_event`, `handle_incoming_event`, `into_raw_parts`, `is_a_rate`, `is_empty`, `iter_mut`, `iter`, `linear_ramp_to_value_at_time_raw`, `mix_to_output`, `new`, `new`, `new`, `next`, `normalize`, `peek`, `pop`, `push`, `replace_peek`, `resample`, `retain`, `send_event`, `set_automation_rate_constrained`, `set_target_at_time_raw`, `set_value_at_time_raw`, `set_value_curve_at_time_raw`, `set_value_raw`, `sort`, `split_off`, `unsorted_peek`
-// These functions are ignored because they have generic arguments: `new`, `set_onupdate`
-// These types are ignored because they are not used by any `pub` functions: `AtomicF32`, `AtomicF64`, `MediaElement`, `MessagePort`
-// These functions are ignored: `audio_processing`, `copy_from_channel_with_offset`, `copy_from_channel`, `copy_to_channel_with_offset`, `copy_to_channel`, `ended`, `load`, `load`, `message`, `new`, `new`, `processor_error`, `store`, `store`
+// These functions are ignored because they are not marked as `pub`: `as_slice`, `assert_is_finite`, `assert_not_zero`, `assert_sequence_length`, `assert_strictly_positive`, `assert_valid_buffer_length`, `assert_valid_channel_number`, `assert_valid_number_of_channels`, `assert_valid_sample_rate`, `assert_valid_time_value`, `audio_param_pair`, `cancel_and_hold_at_time_raw`, `cancel_scheduled_values_raw`, `channel_data_mut`, `channel_data`, `channels_mut`, `channels`, `compute_buffer`, `compute_exponential_ramp_automation`, `compute_exponential_ramp_sample`, `compute_intrinsic_values`, `compute_linear_ramp_automation`, `compute_linear_ramp_sample`, `compute_set_target_automation`, `compute_set_target_sample`, `compute_set_value_automation`, `compute_set_value_curve_automation`, `compute_set_value_curve_sample`, `exponential_ramp_to_value_at_time_raw`, `extend`, `from_channels`, `from_raw_parts`, `generate_wavetable`, `handle_event`, `handle_incoming_event`, `into_raw_parts`, `is_a_rate`, `is_empty`, `iter_mut`, `iter`, `linear_ramp_to_value_at_time_raw`, `mix_to_output`, `new`, `new`, `new`, `next`, `normalize`, `peek`, `pop`, `push`, `replace_peek`, `resample`, `retain`, `send_event`, `set_automation_rate_constrained`, `set_target_at_time_raw`, `set_value_at_time_raw`, `set_value_curve_at_time_raw`, `set_value_raw`, `sort`, `split_off`, `take_stream`, `unsorted_peek`
+// These functions are ignored because they have generic arguments: `connect_from_output_to_input`, `connect`, `new`, `new`, `set_onupdate`
+// These types are ignored because they are not used by any `pub` functions: `AtomicF32`, `AtomicF64`, `AudioParamEventTimeline`, `AudioParamEventType`, `AudioParamEvent`, `AudioParamInner`, `AudioParamProcessor`, `AudioRenderCapacityLoad`, `BlockInfos`, `ChannelData`, `ErrorEvent`, `EventDispatch`, `EventHandler`, `EventLoop`, `EventPayload`, `EventType`, `MediaElement`, `MessagePort`
+// These functions are ignored: `as_mut_slice`, `as_slice`, `audio_processing`, `clear_handler`, `complete`, `copy_from_channel_with_offset`, `copy_from_channel`, `copy_to_channel_with_offset`, `copy_to_channel`, `current_time`, `diagnostics`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output`, `disconnect_dest`, `ended`, `forward_x`, `forward_y`, `forward_z`, `from`, `handle_pending_events`, `is_empty`, `len`, `load`, `load`, `loop_`, `message`, `new`, `new`, `new`, `new`, `pause`, `paused`, `play`, `playback_rate`, `position_x`, `position_y`, `position_z`, `processor_error`, `render_capacity`, `run_in_thread`, `set_current_time`, `set_handler`, `set_loop`, `set_onprocessorerror`, `set_playback_rate`, `sink_change`, `state_change`, `store`, `store`, `up_x`, `up_y`, `up_z`
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioBuffer>>
 abstract class AudioBuffer {
@@ -77,6 +76,13 @@ abstract class AudioBuffer {
   bool get isDisposed;
 }
 
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioContextRegistration>>
+abstract class AudioContextRegistration {
+  void dispose();
+
+  bool get isDisposed;
+}
+
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioListener>>
 abstract class AudioListener {
   void dispose();
@@ -108,7 +114,37 @@ abstract class AudioParam {
 
   Future<void> channelConfig();
 
+  /// Represents an integer used to determine how many channels are used when up-mixing and
+  /// down-mixing connections to any inputs to the node.
+  Future<BigInt> channelCount();
+
+  /// Represents an enumerated value describing the way channels must be matched between the
+  /// node's inputs and outputs.
+  Future<ChannelCountMode> channelCountMode();
+
+  /// Represents an enumerated value describing the meaning of the channels. This interpretation
+  /// will define how audio up-mixing and down-mixing will happen.
+  Future<ChannelInterpretation> channelInterpretation();
+
+  /// Unset the callback to run when an unhandled exception occurs in the audio processor.
+  Future<void> clearOnprocessorerror();
+
+  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
+  /// AudioNode.
+  Future<void> context();
+
   Future<double> defaultValue();
+
+  /// Disconnects all outgoing connections from the AudioNode.
+  Future<void> disconnect();
+
+  /// Disconnects all outgoing connections at the given output port from the AudioNode.
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - if the output port is out of bounds for this node
+  Future<void> disconnectOutput({required BigInt output});
 
   /// Schedules an exponential continuous change in parameter value from the
   /// previous scheduled parameter value to the given value.
@@ -197,36 +233,6 @@ abstract class AudioParam {
   /// Retrieve the current value of the `AudioParam`.
   Future<double> value();
 
-  /// Represents an integer used to determine how many channels are used when up-mixing and
-  /// down-mixing connections to any inputs to the node.
-  Future<BigInt> channelCount();
-
-  /// Represents an enumerated value describing the way channels must be matched between the
-  /// node's inputs and outputs.
-  Future<ChannelCountMode> channelCountMode();
-
-  /// Represents an enumerated value describing the meaning of the channels. This interpretation
-  /// will define how audio up-mixing and down-mixing will happen.
-  Future<ChannelInterpretation> channelInterpretation();
-
-  /// Unset the callback to run when an unhandled exception occurs in the audio processor.
-  Future<void> clearOnprocessorerror();
-
-  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
-  /// AudioNode.
-  Future<void> context();
-
-  /// Disconnects all outgoing connections from the AudioNode.
-  Future<void> disconnect();
-
-  /// Disconnects all outgoing connections at the given output port from the AudioNode.
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - if the output port is out of bounds for this node
-  Future<void> disconnectOutput({required BigInt output});
-
   void dispose();
 
   bool get isDisposed;
@@ -294,115 +300,8 @@ abstract class AudioRenderCapacityEvent {
   bool get isDisposed;
 }
 
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box < dyn Any + Send >>>
-abstract class BoxAny {
-  void dispose();
-
-  bool get isDisposed;
-}
-
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ChannelData>>
-abstract class ChannelData {
-  Future<void> asMutSlice();
-
-  Future<void> asSlice();
-
-  static Future<ChannelData> from({required List<double> data}) =>
-      RustLib.instance.api.webAudioApiChannelDataFrom(data: data);
-
-  Future<bool> isEmpty();
-
-  Future<BigInt> len();
-
-  // HINT: Make it `#[frb(sync)]` to let it become the default constructor of Dart class.
-  static Future<ChannelData> newInstance({required BigInt length}) =>
-      RustLib.instance.api.webAudioApiChannelDataNew(length: length);
-
-  void dispose();
-
-  bool get isDisposed;
-}
-
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ErrorEvent>>
-abstract class ErrorEvent {
-  BoxAny get error;
-
-  Event get event;
-
-  String get message;
-
-  void set error(BoxAny error);
-
-  void set event(Event event);
-
-  void set message(String message);
-
-  void dispose();
-
-  bool get isDisposed;
-}
-
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Event>>
 abstract class Event {
-  void dispose();
-
-  bool get isDisposed;
-}
-
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<EventDispatch>>
-abstract class EventDispatch {
-  static Future<EventDispatch> complete({required AudioBuffer buffer}) =>
-      RustLib.instance.api.webAudioApiEventDispatchComplete(buffer: buffer);
-
-  static Future<EventDispatch> diagnostics({required List<int> value}) =>
-      RustLib.instance.api.webAudioApiEventDispatchDiagnostics(value: value);
-
-  static Future<EventDispatch> renderCapacity(
-          {required AudioRenderCapacityEvent value}) =>
-      RustLib.instance.api.webAudioApiEventDispatchRenderCapacity(value: value);
-
-  static Future<EventDispatch> sinkChange() =>
-      RustLib.instance.api.webAudioApiEventDispatchSinkChange();
-
-  static Future<EventDispatch> stateChange(
-          {required AudioContextState state}) =>
-      RustLib.instance.api.webAudioApiEventDispatchStateChange(state: state);
-
-  void dispose();
-
-  bool get isDisposed;
-}
-
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<EventHandler>>
-abstract class EventHandler {
-  void dispose();
-
-  bool get isDisposed;
-}
-
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<EventLoop>>
-abstract class EventLoop {
-  Future<void> clearHandler({required EventType event});
-
-  Future<bool> handlePendingEvents();
-
-  // HINT: Make it `#[frb(sync)]` to let it become the default constructor of Dart class.
-  static Future<EventLoop> newInstance(
-          {required ReceiverEventDispatch eventRecv}) =>
-      RustLib.instance.api.webAudioApiEventLoopNew(eventRecv: eventRecv);
-
-  Future<void> runInThread();
-
-  Future<void> setHandler(
-      {required EventType event, required EventHandler callback});
-
-  void dispose();
-
-  bool get isDisposed;
-}
-
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<EventType>>
-abstract class EventType {
   void dispose();
 
   bool get isDisposed;
@@ -425,20 +324,6 @@ abstract class OfflineAudioCompletionEvent {
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<PeriodicWave>>
 abstract class PeriodicWave {
-  void dispose();
-
-  bool get isDisposed;
-}
-
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Receiver < EventDispatch >>>
-abstract class ReceiverEventDispatch {
-  void dispose();
-
-  bool get isDisposed;
-}
-
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<str>>
-abstract class Str {
   void dispose();
 
   bool get isDisposed;

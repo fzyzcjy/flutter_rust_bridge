@@ -83,34 +83,6 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
 }
 
 #[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContextLatencyCategory(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioContextLatencyCategory>>::increment_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContextLatencyCategory(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioContextLatencyCategory>>::decrement_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContextOptions(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioContextOptions>>::increment_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContextOptions(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioContextOptions>>::decrement_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
 pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContextRegistration(
     ptr: *const std::ffi::c_void,
 ) {
@@ -265,34 +237,6 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
 }
 
 #[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynAnySend(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box < dyn Any + Send >>>::increment_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynAnySend(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box < dyn Any + Send >>>::decrement_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelData(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ChannelData>>::increment_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelData(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ChannelData>>::decrement_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
 pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelMergerNode(
     ptr: *const std::ffi::c_void,
 ) {
@@ -405,20 +349,6 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
 }
 
 #[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerErrorEvent(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ErrorEvent>>::increment_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerErrorEvent(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ErrorEvent>>::decrement_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
 pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEvent(
     ptr: *const std::ffi::c_void,
 ) {
@@ -430,62 +360,6 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Event>>::decrement_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEventDispatch(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<EventDispatch>>::increment_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEventDispatch(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<EventDispatch>>::decrement_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEventHandler(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<EventHandler>>::increment_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEventHandler(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<EventHandler>>::decrement_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEventLoop(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<EventLoop>>::increment_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEventLoop(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<EventLoop>>::decrement_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEventType(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<EventType>>::increment_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEventType(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<EventType>>::decrement_strong_count(ptr as _);
 }
 
 #[wasm_bindgen]
@@ -514,20 +388,6 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<IIRFilterNode>>::decrement_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaDeviceInfo(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaDeviceInfo>>::increment_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaDeviceInfo(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaDeviceInfo>>::decrement_strong_count(ptr as _);
 }
 
 #[wasm_bindgen]
@@ -721,20 +581,6 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
 }
 
 #[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerReceiverEventDispatch(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Receiver < EventDispatch >>>::increment_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerReceiverEventDispatch(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Receiver < EventDispatch >>>::decrement_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
 pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScriptProcessorNode(
     ptr: *const std::ffi::c_void,
 ) {
@@ -774,22 +620,4 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<WaveShaperNode>>::decrement_strong_count(ptr as _);
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerstr(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<str>>::increment_strong_count(
-        ptr as _,
-    );
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerstr(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<str>>::decrement_strong_count(
-        ptr as _,
-    );
 }
