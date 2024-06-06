@@ -1,6 +1,7 @@
 use crate::codegen::ir::hir::flat::function::HirFlatFunction;
 use crate::codegen::ir::hir::flat::pack::HirFlatPack;
 use crate::codegen::ir::hir::misc::generation_source::HirGenerationSource;
+use crate::utils::syn_utils::parse_attribute;
 use anyhow::ensure;
 
 pub(crate) fn transform(mut pack: HirFlatPack) -> anyhow::Result<HirFlatPack> {
@@ -13,7 +14,7 @@ pub(crate) fn transform(mut pack: HirFlatPack) -> anyhow::Result<HirFlatPack> {
 fn transform_function(function: &mut HirFlatFunction) -> anyhow::Result<()> {
     if let Some(func_name_stripped) = function.item_fn.name().strip_prefix(FRB_OVERRIDE_PREFIX) {
         let attr_extra_str = format!(r###"#[frb(name = "{}")]"###, func_name_stripped);
-        let attr_extra = syn::parse_str(&attr_extra_str)?;
+        let attr_extra = parse_attribute(&attr_extra_str)?;
 
         ensure!(function.source == HirGenerationSource::Normal);
         function.source = HirGenerationSource::FromFrbOverride;
