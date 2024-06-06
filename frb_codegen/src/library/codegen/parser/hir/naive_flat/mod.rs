@@ -18,8 +18,8 @@ pub(crate) fn parse(
     let pack = transformer::move_third_party_override_transformer::transform(pack)?;
     dump(dumper, "2_move_third_party_override_transformer", &pack)?;
 
-    let pack = transformer::module_filter_transformer::transform(pack, config)?;
-    dump(dumper, "3_module_filter_transformer", &pack)?;
+    let pack = transformer::filter_transformer::transform(pack, config)?;
+    dump(dumper, "3_filter_transformer", &pack)?;
 
     Ok(pack)
 }
