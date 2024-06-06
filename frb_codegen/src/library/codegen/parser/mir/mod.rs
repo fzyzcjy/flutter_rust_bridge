@@ -44,7 +44,7 @@ pub(crate) fn parse(
 
     let (mir_funcs, mir_skips) =
         parse_mir_funcs(config, &hir_flat.functions, &mut type_parser, &structs_map)?;
-    let trait_impls = trait_impl_parser::parse(&hir_flat.trait_impls)?;
+    let trait_impls = trait_impl_parser::parse(&hir_flat.trait_impls, &mut type_parser)?;
 
     let (struct_pool, enum_pool, dart_code_of_type) = type_parser.consume();
 
