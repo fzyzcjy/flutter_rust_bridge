@@ -194,10 +194,13 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                     None
                 };
 
+                if !is_allowed_owner(&owner_ty, attributes) {
+                    return Ok(None);
+                }
+
                 self.parse_method_owner_inner(
                     func,
                     actual_method_dart_name,
-                    attributes,
                     owner_ty,
                     trait_def,
                 )
@@ -210,7 +213,6 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                 self.parse_method_owner_inner(
                     func,
                     actual_method_dart_name,
-                    attributes,
                     MirType::TraitDef(trait_def.clone()),
                     Some(trait_def),
                 )
@@ -222,7 +224,6 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         &mut self,
         func: &HirFlatFunction,
         actual_method_dart_name: Option<String>,
-        attributes: &FrbAttributes,
         owner_ty: MirType,
         trait_def: Option<MirTypeTraitDef>,
     ) -> anyhow::Result<Option<MirFuncOwnerInfo>> {
@@ -234,10 +235,6 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         };
 
         if owner_ty.should_ignore(self.type_parser) {
-            return Ok(None);
-        }
-
-        if !is_allowed_owner(&owner_ty, attributes) {
             return Ok(None);
         }
 
@@ -369,8 +366,7 @@ fn is_allowed_owner(owner_ty: &MirType, attributes: &FrbAttributes) -> bool {
     match owner_ty {
         MirType::StructRef(_)
         | MirType::EnumRef(_)
-        | MirType::Delegate(MirTypeDelegate::PrimitiveEnum(_))
-        | MirType::TraitDef(_) => true,
+        | MirType::Delegate(MirTypeDelegate::PrimitiveEnum(_)) => true,
         MirType::RustAutoOpaqueImplicit(ty) => {
             ty.reason == Some(MirTypeRustAutoOpaqueImplicitReason::StructOrEnumRequireOpaque)
         }
