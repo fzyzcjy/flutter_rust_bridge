@@ -6,6 +6,7 @@ use crate::codegen::generator::api_dart::spec_generator::class::ty::ApiDartGener
 use crate::codegen::generator::api_dart::spec_generator::class::ApiDartGeneratedClass;
 use crate::codegen::ir::mir::trait_impl::MirTraitImpl;
 use crate::codegen::ir::mir::ty::rust_opaque::MirTypeRustOpaque;
+use crate::codegen::ir::mir::ty::MirType;
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
@@ -34,8 +35,10 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
         let extra_body =
             generate_class_extra_body(self.mir_type(), &self.context.mir_pack.dart_code_of_type);
 
-        let maybe_impls =
-            generate_maybe_impls(&self.context.mir_pack.trait_impls, &type_query_name);
+        let maybe_impls = generate_maybe_impls(
+            &self.context.mir_pack.trait_impls,
+            &MirType::RustOpaque(self.mir.clone()),
+        );
 
         Some(ApiDartGeneratedClass {
             namespace: self.mir.namespace.clone(),
@@ -140,10 +143,10 @@ fn compute_query_name(mir: &MirTypeRustOpaque) -> String {
     FILTER.replace_all(&mir.inner.0, "$1").to_string()
 }
 
-fn generate_maybe_impls(all_trait_impls: &[MirTraitImpl], type_query_name: &str) -> String {
+fn generate_maybe_impls(all_trait_impls: &[MirTraitImpl], self_type: &MirType) -> String {
     let interest_trait_impls = all_trait_impls
         .iter()
-        .filter(|x| x.impl_ty == type_query_name)
+        .filter(|x| x.impl_ty.safe_ident() == self_type.safe_ident())
         .collect_vec();
 
     if interest_trait_impls.is_empty() {
