@@ -106,7 +106,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             owner,
         };
 
-        let is_owner_trait_def = matches!(func.owner, HirFlatFunctionOwner::TraitDef {..});
+        let is_owner_trait_def = matches!(func.owner, HirFlatFunctionOwner::TraitDef { .. });
         let owner = if let Some(owner) =
             self.parse_owner(func, &create_context(None), dart_name.clone(), &attributes)?
         {
@@ -124,7 +124,8 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         let context = create_context(Some(owner.clone()));
         let mut info = FunctionPartialInfo::default();
         for sig_input in func.item_fn.sig().inputs.iter() {
-            info = info.merge(self.parse_fn_arg(sig_input, &owner, &context, is_owner_trait_def)?)?;
+            info =
+                info.merge(self.parse_fn_arg(sig_input, &owner, &context, is_owner_trait_def)?)?;
         }
         info = info.merge(self.parse_fn_output(func.item_fn.sig(), &context)?)?;
         info = self.transform_fn_info(info);
@@ -200,12 +201,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                     return Ok(None);
                 }
 
-                self.parse_method_owner_inner(
-                    func,
-                    actual_method_dart_name,
-                    owner_ty,
-                    trait_def,
-                )
+                self.parse_method_owner_inner(func, actual_method_dart_name, owner_ty, trait_def)
             }
             HirFlatFunctionOwner::TraitDef { trait_def_name } => {
                 let trait_def = MirTypeTraitDef {
