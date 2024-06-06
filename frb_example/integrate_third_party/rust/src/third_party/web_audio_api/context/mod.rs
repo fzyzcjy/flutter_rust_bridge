@@ -4,16 +4,16 @@ use web_audio_api::context::AudioContext;
 #[frb(external)]
 impl AudioContext {
     #[frb(sync)]
-    fn new() {}
+    pub fn new() {}
 
     #[frb(ignore)]
-    fn create_media_element_source() {}
+    pub fn create_media_element_source() {}
 
     #[frb(ignore)]
-    fn set_sink_id_sync() {}
+    pub fn set_sink_id_sync() {}
 
     #[frb(ignore)]
-    fn resume() {}
+    pub fn resume() {}
 }
 
 #[frb(non_opaque)]
