@@ -45,7 +45,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         force_codec_mode_pack: &Option<CodecModePack>,
         default_stream_sink_codec: CodecMode,
         default_rust_opaque_codec: RustOpaqueCodecMode,
-    ) -> ParseFunctionOutput {
+    ) -> anyhow::Result<ParseFunctionOutput> {
         match self.parse_function_inner(
             func,
             force_codec_mode_pack,

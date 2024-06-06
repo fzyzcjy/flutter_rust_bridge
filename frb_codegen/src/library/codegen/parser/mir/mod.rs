@@ -86,6 +86,8 @@ fn parse_mir_funcs(
                 config.default_rust_opaque_codec,
             )
         })
+        .collect::<anyhow::Result<Vec<_>>>()?
+        .into_iter()
         .partition(|item| matches!(item, ParseFunctionOutput::Ok(_)));
     let mir_funcs_normal = mir_funcs_normal.into_iter().map(|x| x.ok()).collect_vec();
     let mir_skips = (mir_skips.into_iter()).map(|x| x.skip()).collect_vec();
