@@ -15,6 +15,7 @@ use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::mir::attribute_parser::FrbAttributes;
 use crate::codegen::parser::mir::function_parser::structs::ParseFunctionOutput;
 use crate::codegen::parser::mir::type_parser::misc::parse_comments;
+use crate::codegen::parser::mir::type_parser::trait_def::parse_type_trait;
 use crate::codegen::parser::mir::type_parser::{TypeParser, TypeParserParsingContext};
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use crate::utils::namespace::{Namespace, NamespacedName};
@@ -199,10 +200,11 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
                 let actual_method_name = sig.ident.to_string();
 
-                let trait_def_namespaced_name = if let Some(trait_def_name) = trait_def_name {
-                    if let Some(ans) = self.type_parser.src_traits.get(trait_def_name) {
-                        Some(ans.name.clone())
+                let trait_def = if let Some(trait_def_name) = trait_def_name {
+                    if let Some(ans) = parse_type_trait(trait_def_name, self.type_parser) {
+                        Some(ans)
                     } else {
+                        // If cannot find the trait, we directly skip the function currently
                         return Ok(None);
                     }
                 } else {
@@ -214,7 +216,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                     actual_method_name,
                     actual_method_dart_name,
                     mode,
-                    trait_def: trait_def_namespaced_name,
+                    trait_def,
                 })
             }
         }))
