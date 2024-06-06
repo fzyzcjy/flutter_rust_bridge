@@ -4,16 +4,17 @@ pub(crate) mod transformer;
 
 use crate::codegen::dumper::Dumper;
 use crate::codegen::ir::hir::flat::pack::HirFlatPack;
+use crate::codegen::ir::hir::naive_flat::pack::HirNaiveFlatPack;
 use crate::codegen::ir::hir::tree::pack::HirTreePack;
 use crate::codegen::parser::hir::internal_config::ParserHirInternalConfig;
 use crate::codegen::ConfigDumpContent::Hir;
 
 pub(crate) fn parse(
     config: &ParserHirInternalConfig,
-    hir_tree: HirTreePack,
+    hir_naive_flat: HirNaiveFlatPack,
     dumper: &Dumper,
 ) -> anyhow::Result<HirFlatPack> {
-    let pack = parser::pack::parse_pack(config, hir_tree)?;
+    let pack = parser::pack::parse_pack(config, hir_naive_flat)?;
     dump(dumper, "1_parse_pack", &pack)?;
 
     let pack = transformer::filter_transformer::transform(pack, config)?;
