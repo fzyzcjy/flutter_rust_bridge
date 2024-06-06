@@ -16,7 +16,6 @@ pub struct MirTypeRustOpaque {
     pub namespace: Namespace,
     pub inner: MirRustOpaqueInner,
     pub codec: RustOpaqueCodecMode,
-    pub impl_traits: Vec<MirTypeDelegateDynTrait>,
     pub brief_name: bool,
 }
 

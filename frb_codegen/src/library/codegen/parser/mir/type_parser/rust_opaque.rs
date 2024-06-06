@@ -48,7 +48,6 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             namespace: info.namespace,
             inner: MirRustOpaqueInner(ty_str),
             codec: info.codec,
-            impl_traits: self.parse_trait_impls()?,
             brief_name: false,
         }))
     }
