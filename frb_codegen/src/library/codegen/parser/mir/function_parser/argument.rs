@@ -21,6 +21,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         sig_input: &FnArg,
         owner: &MirFuncOwnerInfo,
         context: &TypeParserParsingContext,
+        is_owner_trait_def: bool,
     ) -> anyhow::Result<FunctionPartialInfo> {
         let (ty_syn_raw, name) = match sig_input {
             FnArg::Typed(ref pat_type) => {
@@ -36,8 +37,9 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             }
         };
 
+        let force_split_ownership = is_owner_trait_def;
         let (ty_syn_without_ownership, ownership_mode_split) =
-            split_ownership_from_ty_except_ref_mut(&ty_syn_raw);
+            split_ownership_from_ty_except_ref_mut(&ty_syn_raw, force_split_ownership);
 
         let ty_without_ownership =
             (self.type_parser).parse_type(&ty_syn_without_ownership, context)?;
@@ -141,11 +143,12 @@ fn parse_receiver_ownership_mode(receiver: &Receiver) -> OwnershipMode {
     }
 }
 
-pub(crate) fn split_ownership_from_ty_except_ref_mut(
+fn split_ownership_from_ty_except_ref_mut(
     ty_raw: &Type,
+    force_split: bool,
 ) -> (Type, Option<OwnershipMode>) {
     let (ty, ownership_mode) = split_ownership_from_ty(ty_raw);
-    if ownership_mode == OwnershipMode::RefMut {
+    if ownership_mode == OwnershipMode::RefMut && !force_split {
         (ty_raw.to_owned(), None)
     } else {
         (ty, Some(ownership_mode))
