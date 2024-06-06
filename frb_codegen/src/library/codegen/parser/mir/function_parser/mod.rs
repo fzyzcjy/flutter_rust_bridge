@@ -188,7 +188,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                     None
                 };
 
-                self.parse_method_owner(
+                self.parse_method_owner_inner(
                     func,
                     context,
                     actual_method_dart_name,
@@ -202,7 +202,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                     name: trait_def_name.to_owned(),
                 };
 
-                self.parse_method_owner(
+                self.parse_method_owner_inner(
                     func,
                     context,
                     actual_method_dart_name,
@@ -214,7 +214,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         }
     }
 
-    fn parse_method_owner(
+    fn parse_method_owner_inner(
         &mut self,
         func: &HirFlatFunction,
         context: &TypeParserParsingContext,
