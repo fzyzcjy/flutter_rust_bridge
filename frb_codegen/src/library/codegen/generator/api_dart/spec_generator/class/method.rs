@@ -9,10 +9,10 @@ use crate::codegen::ir::mir::func::{
 };
 use crate::if_then_some;
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
+use crate::utils::basic_code::DartBasicHeaderCode;
 use crate::utils::namespace::NamespacedName;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
-use crate::utils::basic_code::DartBasicHeaderCode;
 
 #[derive(Debug, Clone, Copy, Eq, PartialEq)]
 pub(crate) enum GenerateApiMethodMode {
@@ -70,7 +70,7 @@ fn generate_api_method(
     func: &MirFunc,
     context: ApiDartGeneratorContext,
     mode: GenerateApiMethodMode,
-) -> Option<String> {
+) -> Option<GeneratedApiMethod> {
     let api_dart_func = api_dart::spec_generator::function::generate(func, context).unwrap();
 
     let method_info =
@@ -106,7 +106,12 @@ fn generate_api_method(
         generate_maybe_implementation(func, context, method_info, &params, mode);
     let maybe_implementation = (maybe_implementation.map(|x| format!("=>{x}"))).unwrap_or_default();
 
-    Some(format!("{comments}{signature}{maybe_implementation};\n\n"))
+    let code = format!("{comments}{signature}{maybe_implementation};\n\n");
+
+    Some(GeneratedApiMethod {
+        code,
+        header: api_dart_func.header,
+    })
 }
 
 fn compute_skip_names(method_info: &MirFuncOwnerInfoMethod) -> Vec<&'static str> {
