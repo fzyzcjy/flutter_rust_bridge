@@ -6,7 +6,6 @@ pub(crate) mod item_type;
 
 use crate::codegen::ir::hir::flat::pack::HirFlatPack;
 use crate::codegen::ir::hir::naive_flat::item::HirNaiveFlatItemMeta;
-use crate::codegen::ir::hir::tree::module::HirTreeModuleMeta;
 use crate::codegen::parser::hir::flat::parser::syn_item::item_fn::parse_syn_item_fn;
 use crate::codegen::parser::hir::flat::parser::syn_item::item_impl::parse_syn_item_impl;
 use crate::codegen::parser::hir::flat::parser::syn_item::item_struct_or_enum::{

@@ -4,7 +4,6 @@ use crate::codegen::ir::hir::flat::source::HirFlatGenerationSource;
 use crate::codegen::ir::hir::flat::trait_impl::HirFlatTraitImpl;
 use crate::codegen::ir::hir::misc::item_fn::GeneralizedItemFn;
 use crate::codegen::ir::hir::naive_flat::item::HirNaiveFlatItemMeta;
-use crate::codegen::ir::hir::tree::module::HirTreeModuleMeta;
 use crate::if_then_some;
 use itertools::Itertools;
 use syn::{ImplItem, ItemImpl};

@@ -1,7 +1,5 @@
-use crate::codegen::ir::hir::misc::visibility::HirVisibility;
 use crate::codegen::ir::hir::naive_flat::item::{HirNaiveFlatItem, HirNaiveFlatItemMeta};
 use crate::codegen::ir::hir::naive_flat::pack::HirNaiveFlatPack;
-use crate::codegen::ir::hir::tree::module::HirTreeModuleMeta;
 use crate::codegen::misc::SELF_CRATE_THIRD_PARTY_NAMESPACE;
 use crate::utils::namespace::Namespace;
 use itertools::Itertools;

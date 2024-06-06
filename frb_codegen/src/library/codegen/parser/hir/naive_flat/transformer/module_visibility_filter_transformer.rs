@@ -1,6 +1,5 @@
 use crate::codegen::ir::hir::naive_flat::item::HirNaiveFlatItemMeta;
 use crate::codegen::ir::hir::naive_flat::pack::HirNaiveFlatPack;
-use crate::codegen::ir::hir::tree::module::HirTreeModuleMeta;
 use crate::utils::crate_name::CrateName;
 use itertools::Itertools;
 

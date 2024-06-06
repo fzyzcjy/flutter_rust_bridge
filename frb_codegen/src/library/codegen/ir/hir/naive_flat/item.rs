@@ -1,4 +1,3 @@
-use crate::codegen::ir::hir::tree::module::HirTreeModuleMeta;
 use crate::utils::namespace::Namespace;
 use derivative::Derivative;
 use serde::Serialize;
