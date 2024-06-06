@@ -50,7 +50,7 @@ impl MirPack {
         f: &mut F,
         filter_func: &Option<impl Fn(&MirFunc) -> bool>,
     ) {
-        for func in &self.funcs {
+        for func in &self.funcs_all {
             if filter_func.is_some() && !filter_func.as_ref().unwrap()(func) {
                 continue;
             }
