@@ -56,7 +56,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.0.0-dev.37';
 
   @override
-  int get rustContentHash => -1342678134;
+  int get rustContentHash => 1310156853;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -100,6 +100,17 @@ abstract class RustLibApi extends BaseApi {
 
   Future<int>
       crateApiMinimalStructTwoWithTraitTwinNormalSimpleTraitFnWithDefaultImplTwinNormal();
+
+  Future<int>
+      crateApiMinimalTraitDefSimpleTraitTwinNormalSimpleTraitFnReceiverBorrowTwinNormal(
+          {required SimpleTraitTwinNormal that});
+
+  Future<SimpleTraitTwinNormal>
+      crateApiMinimalTraitDefSimpleTraitTwinNormalSimpleTraitFnTwinNormal(
+          {required int value});
+
+  Future<int>
+      crateApiMinimalTraitDefSimpleTraitTwinNormalSimpleTraitFnWithDefaultImplTwinNormal();
 
   Future<void> crateApiMinimalInitApp();
 
@@ -423,12 +434,100 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
+  Future<int>
+      crateApiMinimalTraitDefSimpleTraitTwinNormalSimpleTraitFnReceiverBorrowTwinNormal(
+          {required SimpleTraitTwinNormal that}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_TraitDef_SimpleTraitTwinNormal(that, serializer);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 11, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiMinimalTraitDefSimpleTraitTwinNormalSimpleTraitFnReceiverBorrowTwinNormalConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiMinimalTraitDefSimpleTraitTwinNormalSimpleTraitFnReceiverBorrowTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "TraitDef_SimpleTraitTwinNormal_simple_trait_fn_receiver_borrow_twin_normal",
+            argNames: ["that"],
+          );
+
+  @override
+  Future<SimpleTraitTwinNormal>
+      crateApiMinimalTraitDefSimpleTraitTwinNormalSimpleTraitFnTwinNormal(
+          {required int value}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_i_32(value, serializer);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 12, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_TraitDef_SimpleTraitTwinNormal,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiMinimalTraitDefSimpleTraitTwinNormalSimpleTraitFnTwinNormalConstMeta,
+      argValues: [value],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiMinimalTraitDefSimpleTraitTwinNormalSimpleTraitFnTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "TraitDef_SimpleTraitTwinNormal_simple_trait_fn_twin_normal",
+            argNames: ["value"],
+          );
+
+  @override
+  Future<int>
+      crateApiMinimalTraitDefSimpleTraitTwinNormalSimpleTraitFnWithDefaultImplTwinNormal() {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 13, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiMinimalTraitDefSimpleTraitTwinNormalSimpleTraitFnWithDefaultImplTwinNormalConstMeta,
+      argValues: [],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiMinimalTraitDefSimpleTraitTwinNormalSimpleTraitFnWithDefaultImplTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "TraitDef_SimpleTraitTwinNormal_simple_trait_fn_with_default_impl_twin_normal",
+            argNames: [],
+          );
+
+  @override
   Future<void> crateApiMinimalInitApp() {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 11, port: port_);
+            funcId: 14, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -453,7 +552,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_i_32(a, serializer);
         sse_encode_i_32(b, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 12, port: port_);
+            funcId: 15, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_i_32,
@@ -557,6 +656,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return StructTwoWithTraitTwinNormalImpl.frbInternalDcoDecode(
         raw as List<dynamic>);
+  }
+
+  @protected
+  SimpleTraitTwinNormal dco_decode_TraitDef_SimpleTraitTwinNormal(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    throw UnimplementedError();
   }
 
   @protected

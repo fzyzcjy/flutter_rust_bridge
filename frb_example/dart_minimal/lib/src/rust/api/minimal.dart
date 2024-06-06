@@ -6,8 +6,6 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// These functions are ignored: `simple_trait_fn_receiver_borrow_twin_normal`, `simple_trait_fn_twin_normal`, `simple_trait_fn_with_default_impl_twin_normal`
-
 Future<int> minimalAdder({required int a, required int b}) =>
     RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b);
 
