@@ -3,6 +3,7 @@
     {
       "mirror": false,
       "name": "crate::another_file/EnumInAnotherFile",
+      "source": "Normal",
       "visibility": "Public"
     }
   ],
@@ -19,6 +20,7 @@
     {
       "mirror": false,
       "name": "crate::another_file/StructInAnotherFile",
+      "source": "Normal",
       "visibility": "Public"
     }
   ],

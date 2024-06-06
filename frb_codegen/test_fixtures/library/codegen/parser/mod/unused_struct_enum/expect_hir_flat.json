@@ -3,6 +3,7 @@
     {
       "mirror": false,
       "name": "crate::api/UnusedEnum",
+      "source": "Normal",
       "visibility": "Public"
     }
   ],
@@ -12,6 +13,7 @@
     {
       "mirror": false,
       "name": "crate::api/UnusedStruct",
+      "source": "Normal",
       "visibility": "Public"
     }
   ],

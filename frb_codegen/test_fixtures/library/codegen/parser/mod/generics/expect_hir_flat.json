@@ -3,6 +3,7 @@
     {
       "mirror": false,
       "name": "crate::api/MyGenericEnum",
+      "source": "Normal",
       "visibility": "Public"
     }
   ],
@@ -43,6 +44,7 @@
     {
       "mirror": false,
       "name": "crate::api/MyGenericStruct",
+      "source": "Normal",
       "visibility": "Public"
     }
   ],
