@@ -369,10 +369,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinSync;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_SimpleOpaqueExternalStructWithMethodPtr =>
-          wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleOpaqueExternalStructWithMethod;
-
-  CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_StaticGetterOnlyTwinNormalPtr => wire
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStaticGetterOnlyTwinNormal;
 
@@ -614,11 +610,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
-  SimpleOpaqueExternalStructWithMethod
-      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleOpaqueExternalStructWithMethod(
-          dynamic raw);
-
-  @protected
   StaticGetterOnlyTwinNormal
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStaticGetterOnlyTwinNormal(
           dynamic raw);
@@ -851,11 +842,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   OpaqueStructWithDartCodeTwinNormal
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueStructWithDartCodeTwinNormal(
-          dynamic raw);
-
-  @protected
-  SimpleOpaqueExternalStructWithMethod
-      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleOpaqueExternalStructWithMethod(
           dynamic raw);
 
   @protected
@@ -1357,11 +1343,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   OpaqueTwoTwinSync
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinSync(
-          dynamic raw);
-
-  @protected
-  SimpleOpaqueExternalStructWithMethod
-      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleOpaqueExternalStructWithMethod(
           dynamic raw);
 
   @protected
@@ -2972,16 +2953,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   HashMapValue dco_decode_hash_map_value(dynamic raw);
 
   @protected
-  HelloTwoEnumTwinNormal dco_decode_hello_two_enum_twin_normal(dynamic raw);
-
-  @protected
-  HelloTwoEnumTwinRustAsync dco_decode_hello_two_enum_twin_rust_async(
-      dynamic raw);
-
-  @protected
-  HelloTwoEnumTwinSync dco_decode_hello_two_enum_twin_sync(dynamic raw);
-
-  @protected
   int dco_decode_i_16(dynamic raw);
 
   @protected
@@ -4121,18 +4092,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   SimpleEnumTwinSync dco_decode_simple_enum_twin_sync(dynamic raw);
 
   @protected
-  SimplePrimitiveEnumTwinNormal dco_decode_simple_primitive_enum_twin_normal(
-      dynamic raw);
-
-  @protected
-  SimplePrimitiveEnumTwinRustAsync
-      dco_decode_simple_primitive_enum_twin_rust_async(dynamic raw);
-
-  @protected
-  SimplePrimitiveEnumTwinSync dco_decode_simple_primitive_enum_twin_sync(
-      dynamic raw);
-
-  @protected
   SimpleStructForBorrowTwinNormal
       dco_decode_simple_struct_for_borrow_twin_normal(dynamic raw);
 
@@ -4657,11 +4616,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
-  SimpleOpaqueExternalStructWithMethod
-      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleOpaqueExternalStructWithMethod(
-          SseDeserializer deserializer);
-
-  @protected
   StaticGetterOnlyTwinNormal
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStaticGetterOnlyTwinNormal(
           SseDeserializer deserializer);
@@ -4894,11 +4848,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   OpaqueStructWithDartCodeTwinNormal
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueStructWithDartCodeTwinNormal(
-          SseDeserializer deserializer);
-
-  @protected
-  SimpleOpaqueExternalStructWithMethod
-      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleOpaqueExternalStructWithMethod(
           SseDeserializer deserializer);
 
   @protected
@@ -5376,11 +5325,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   OpaqueTwoTwinSync
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinSync(
-          SseDeserializer deserializer);
-
-  @protected
-  SimpleOpaqueExternalStructWithMethod
-      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleOpaqueExternalStructWithMethod(
           SseDeserializer deserializer);
 
   @protected
@@ -7208,18 +7152,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   HashMapValue sse_decode_hash_map_value(SseDeserializer deserializer);
 
   @protected
-  HelloTwoEnumTwinNormal sse_decode_hello_two_enum_twin_normal(
-      SseDeserializer deserializer);
-
-  @protected
-  HelloTwoEnumTwinRustAsync sse_decode_hello_two_enum_twin_rust_async(
-      SseDeserializer deserializer);
-
-  @protected
-  HelloTwoEnumTwinSync sse_decode_hello_two_enum_twin_sync(
-      SseDeserializer deserializer);
-
-  @protected
   int sse_decode_i_16(SseDeserializer deserializer);
 
   @protected
@@ -8513,19 +8445,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
-  SimplePrimitiveEnumTwinNormal sse_decode_simple_primitive_enum_twin_normal(
-      SseDeserializer deserializer);
-
-  @protected
-  SimplePrimitiveEnumTwinRustAsync
-      sse_decode_simple_primitive_enum_twin_rust_async(
-          SseDeserializer deserializer);
-
-  @protected
-  SimplePrimitiveEnumTwinSync sse_decode_simple_primitive_enum_twin_sync(
-      SseDeserializer deserializer);
-
-  @protected
   SimpleStructForBorrowTwinNormal
       sse_decode_simple_struct_for_borrow_twin_normal(
           SseDeserializer deserializer);
@@ -9110,11 +9029,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void
-      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleOpaqueExternalStructWithMethod(
-          SimpleOpaqueExternalStructWithMethod self, SseSerializer serializer);
-
-  @protected
-  void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStaticGetterOnlyTwinNormal(
           StaticGetterOnlyTwinNormal self, SseSerializer serializer);
 
@@ -9353,11 +9267,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueStructWithDartCodeTwinNormal(
           OpaqueStructWithDartCodeTwinNormal self, SseSerializer serializer);
-
-  @protected
-  void
-      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleOpaqueExternalStructWithMethod(
-          SimpleOpaqueExternalStructWithMethod self, SseSerializer serializer);
 
   @protected
   void
@@ -9890,11 +9799,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinSync(
           OpaqueTwoTwinSync self, SseSerializer serializer);
-
-  @protected
-  void
-      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleOpaqueExternalStructWithMethod(
-          SimpleOpaqueExternalStructWithMethod self, SseSerializer serializer);
 
   @protected
   void
@@ -11646,18 +11550,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_hash_map_value(HashMapValue self, SseSerializer serializer);
 
   @protected
-  void sse_encode_hello_two_enum_twin_normal(
-      HelloTwoEnumTwinNormal self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_hello_two_enum_twin_rust_async(
-      HelloTwoEnumTwinRustAsync self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_hello_two_enum_twin_sync(
-      HelloTwoEnumTwinSync self, SseSerializer serializer);
-
-  @protected
   void sse_encode_i_16(int self, SseSerializer serializer);
 
   @protected
@@ -12931,18 +12823,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SimpleEnumTwinSync self, SseSerializer serializer);
 
   @protected
-  void sse_encode_simple_primitive_enum_twin_normal(
-      SimplePrimitiveEnumTwinNormal self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_simple_primitive_enum_twin_rust_async(
-      SimplePrimitiveEnumTwinRustAsync self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_simple_primitive_enum_twin_sync(
-      SimplePrimitiveEnumTwinSync self, SseSerializer serializer);
-
-  @protected
   void sse_encode_simple_struct_for_borrow_twin_normal(
       SimpleStructForBorrowTwinNormal self, SseSerializer serializer);
 
@@ -13970,18 +13850,6 @@ class RustLibWire implements BaseWire {
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinSync(
               ptr);
 
-  void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleOpaqueExternalStructWithMethod(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleOpaqueExternalStructWithMethod(
-              ptr);
-
-  void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleOpaqueExternalStructWithMethod(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleOpaqueExternalStructWithMethod(
-              ptr);
-
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStaticGetterOnlyTwinNormal(
           dynamic ptr) =>
       wasmModule
@@ -14553,14 +14421,6 @@ class RustLibWasmModule implements WasmModule {
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinSync(
-          dynamic ptr);
-
-  external void
-      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleOpaqueExternalStructWithMethod(
-          dynamic ptr);
-
-  external void
-      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleOpaqueExternalStructWithMethod(
           dynamic ptr);
 
   external void
