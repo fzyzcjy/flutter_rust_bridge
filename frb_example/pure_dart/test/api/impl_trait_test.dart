@@ -6,16 +6,21 @@ Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
   test('impl class should extend trait class', () async {
-    final one = await StructOneWithTraitTwinNormal.simpleTraitFnTwinNormal(value: 10);
-    expect(one is SimpleTraitTwinNormal, true);
+    final one =
+        await StructOneWithTraitTwinNormal.simpleTraitFnTwinNormal(value: 10);
+    expect(one, isA<SimpleTraitTwinNormal>());
   });
 
   test('call methods', () async {
-    final one = await StructOneWithTraitTwinNormal.simpleTraitFnTwinNormal(value: 10);
+    final one =
+        await StructOneWithTraitTwinNormal.simpleTraitFnTwinNormal(value: 10);
     expect(one.simpleTraitFnReceiverBorrowTwinNormal(), 10);
   });
 
   test('trait default impl', () async {
-    expect(await StructOneWithTraitTwinNormal.simpleTraitFnWithDefaultImplTwinNormal(), 42);
+    expect(
+        await StructOneWithTraitTwinNormal
+            .simpleTraitFnWithDefaultImplTwinNormal(),
+        42);
   });
 }
