@@ -195,7 +195,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                     return Ok(None);
                 }
 
-                if TODO {
+                if !is_allowed_owner_type(owner_ty) {
                     return Ok(None);
                 }
 
@@ -344,5 +344,16 @@ fn parse_frb_override_marker(
         )
     } else {
         (dart_name_raw, override_priority_raw)
+    }
+}
+
+fn is_allowed_owner_type(owner_ty: &MirType) -> bool {
+    match owner_ty {
+        MirType::StructRef(_) | MirType::EnumRef(_) => true,
+        MirType::RustAutoOpaqueImplicit(ty) => {
+            TODO;
+            TODO
+        }
+        _ => false,
     }
 }
