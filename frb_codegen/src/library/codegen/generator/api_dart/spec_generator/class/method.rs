@@ -21,20 +21,31 @@ pub(crate) enum GenerateApiMethodMode {
     Combined,
 }
 
-pub(crate) struct GeneratedApiMethod {
+pub(crate) struct GeneratedApiMethods {
+    pub(crate) num_methods: usize,
     pub(crate) code: String,
     pub(crate) header: DartBasicHeaderCode,
+}
+
+struct GeneratedApiMethod {
+    code: String,
+    header: DartBasicHeaderCode,
 }
 
 pub(crate) fn generate_api_methods(
     generalized_class_name: &NamespacedName,
     context: ApiDartGeneratorContext,
     mode: GenerateApiMethodMode,
-) -> Vec<GeneratedApiMethod> {
-    get_methods_of_enum_or_struct(generalized_class_name, &context.mir_pack.funcs)
+) -> GeneratedApiMethods {
+    let methods = get_methods_of_enum_or_struct(generalized_class_name, &context.mir_pack.funcs)
         .iter()
         .filter_map(|func| generate_api_method(func, context, mode))
-        .collect_vec()
+        .collect_vec();
+    GeneratedApiMethods {
+        num_methods: methods.len(),
+        code: methods.iter().map(|x| x.code).join("\n"),
+        header: (methods.iter().map(|x| x.header.clone())).fold(Default::default(), |a, b| a + b),
+    }
 }
 
 // TODO move
