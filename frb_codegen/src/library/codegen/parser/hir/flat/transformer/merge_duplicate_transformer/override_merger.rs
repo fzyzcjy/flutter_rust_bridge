@@ -4,9 +4,9 @@ use crate::codegen::ir::hir::misc::generation_source::HirGenerationSource;
 use crate::codegen::ir::hir::misc::syn_item_struct_or_enum::SynItemStructOrEnum;
 use crate::codegen::parser::hir::flat::transformer::merge_duplicate_transformer::base::BaseMerger;
 
-pub(crate) struct ThirdPartyOverrideMerger;
+pub(crate) struct OverrideMerger;
 
-impl BaseMerger for ThirdPartyOverrideMerger {
+impl BaseMerger for OverrideMerger {
     fn merge_functions(
         &self,
         base: &HirFlatFunction,
