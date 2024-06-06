@@ -211,10 +211,6 @@ impl MirFuncAccessorMode {
     }
 }
 
-impl MirFuncOverridePriority {
-    pub(crate) const FRB_OVERRIDE: MirFuncOverridePriority = MirFuncOverridePriority(1);
-}
-
 #[derive(Clone, Eq, PartialEq, Hash)]
 pub(crate) struct MirFuncDartApiLocator {
     accessor: Option<MirFuncAccessorMode>,
