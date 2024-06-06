@@ -9,6 +9,7 @@ use crate::utils::namespace::NamespacedName;
 use itertools::Itertools;
 use std::collections::{HashMap, HashSet};
 use strum::IntoEnumIterator;
+use crate::codegen::ir::mir::trait_impl::MirTraitImpl;
 
 pub type MirStructPool = HashMap<MirStructIdent, MirStruct>;
 pub type MirEnumPool = HashMap<MirEnumIdent, MirEnum>;
@@ -22,6 +23,7 @@ pub struct MirPack {
     pub existing_handler: Option<NamespacedName>,
     pub unused_types: Vec<NamespacedName>,
     pub skipped_functions: Vec<MirSkip>,
+    pub trait_impls: Vec<MirTraitImpl>,
 }
 
 impl MirPack {
