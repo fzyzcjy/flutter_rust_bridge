@@ -1,7 +1,9 @@
 use crate::codegen::ir::hir::naive_flat::item::HirNaiveFlatItem;
 use crate::codegen::ir::hir::naive_flat::pack::HirNaiveFlatPack;
 use crate::codegen::parser::hir::internal_config::ParserHirInternalConfig;
-use crate::codegen::parser::hir::tree::transformer::pub_use_transformer::is_localized_definition;
+use crate::codegen::parser::hir::tree::transformer::pub_use_transformer::{
+    is_item_public, is_localized_definition,
+};
 use crate::utils::crate_name::CrateName;
 use crate::utils::namespace::Namespace;
 use itertools::Itertools;
@@ -22,9 +24,10 @@ fn is_interest(item: &HirNaiveFlatItem, config: &ParserHirInternalConfig) -> boo
 }
 
 fn is_public_or_self_crate(item: &HirNaiveFlatItem) -> bool {
-    // If it is third party crate, then we only scan the `pub` mods,
+    // If it is third party crate, then we only scan the `pub` mods and items,
     // since for non-pub modes, it is impossible to use them even if we scanned them.
-    is_self_crate(item) || item.meta.is_module_public
+    is_self_crate(item)
+        || (item.meta.is_module_public && is_item_public(&item.item).unwrap_or(true))
 }
 
 fn is_self_crate(item: &HirNaiveFlatItem) -> bool {
