@@ -8,7 +8,7 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'rust_auto_opaque_twin_moi.freezed.dart';
 
-// These functions are ignored: `f`, `f`, `func_hello`
+// These functions are ignored: `f`
 
 Future<void> rustAutoOpaqueArgOwnTwinMoi(
         {required NonCloneSimpleTwinMoi arg, required int expect}) =>
@@ -241,7 +241,7 @@ abstract class EnumWithGoodAndOpaqueWithoutOptionTwinMoi {
 }
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<HelloOneStructTwinMoi>>
-abstract class HelloOneStructTwinMoi {
+abstract class HelloOneStructTwinMoi implements HelloTraitTwinMoi {
   Future<void> funcHello();
 
   void dispose();
@@ -332,6 +332,14 @@ abstract class StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi {
   void dispose();
 
   bool get isDisposed;
+}
+
+abstract class HelloTraitTwinMoi {
+  Future<void> funcHello();
+}
+
+abstract class MyTraitTwinMoi {
+  Future<void> f();
 }
 
 @freezed

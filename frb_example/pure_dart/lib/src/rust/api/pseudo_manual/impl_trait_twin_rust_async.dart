@@ -6,7 +6,7 @@
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// These functions are ignored: `simple_trait_fn_twin_rust_async`, `simple_trait_fn_with_default_impl_twin_rust_async`
+abstract class SimpleTraitTwinRustAsync {}
 
 class StructWithTraitTwinRustAsync {
   final int value;

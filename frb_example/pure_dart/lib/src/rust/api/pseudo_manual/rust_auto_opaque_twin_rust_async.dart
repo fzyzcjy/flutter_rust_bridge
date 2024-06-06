@@ -9,8 +9,6 @@ import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'rust_auto_opaque_twin_moi.dart';
 part 'rust_auto_opaque_twin_rust_async.freezed.dart';
 
-// These functions are ignored: `f`, `func_hello`
-
 Future<void> rustAutoOpaqueArgOwnTwinRustAsync(
         {required NonCloneSimpleTwinRustAsync arg, required int expect}) =>
     RustLib.instance.api
@@ -236,7 +234,7 @@ abstract class EnumWithGoodAndOpaqueWithoutOptionTwinRustAsync {
 }
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<HelloOneStructTwinRustAsync>>
-abstract class HelloOneStructTwinRustAsync {
+abstract class HelloOneStructTwinRustAsync implements HelloTraitTwinRustAsync {
   Future<void> funcHello();
 
   void dispose();
@@ -328,6 +326,14 @@ abstract class StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync {
   void dispose();
 
   bool get isDisposed;
+}
+
+abstract class HelloTraitTwinRustAsync {
+  Future<void> funcHello();
+}
+
+abstract class MyTraitTwinRustAsync {
+  Future<void> f();
 }
 
 @freezed
