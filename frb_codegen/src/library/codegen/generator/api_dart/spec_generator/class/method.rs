@@ -13,7 +13,6 @@ use crate::utils::basic_code::DartBasicHeaderCode;
 use crate::utils::namespace::NamespacedName;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
-use std::os::unix::raw::mode_t;
 
 #[derive(Debug, Clone)]
 pub(crate) struct GenerateApiMethodConfig {
@@ -156,6 +155,7 @@ fn generate_comments(
     ans
 }
 
+#[allow(clippy::too_many_arguments)]
 fn generate_signature(
     func: &MirFunc,
     method_info: &MirFuncOwnerInfoMethod,
@@ -163,7 +163,7 @@ fn generate_signature(
     default_constructor_mode: Option<MirFuncDefaultConstructorMode>,
     api_dart_func: &ApiDartGeneratedFunction,
     method_name: &str,
-    config: &GenerateApiMethodConfig,
+    _config: &GenerateApiMethodConfig,
     dart_class_name: &str,
 ) -> String {
     let is_static_method = method_info.mode == MirFuncOwnerInfoMethodMode::Static;
@@ -188,7 +188,7 @@ fn generate_signature(
     };
 
     if default_constructor_mode == Some(MirFuncDefaultConstructorMode::DartConstructor) {
-        let owner_ty_name = method_info.owner_ty_name().unwrap().name;
+        let _owner_ty_name = method_info.owner_ty_name().unwrap().name;
         return format!("factory {dart_class_name}{func_params}");
     }
 
