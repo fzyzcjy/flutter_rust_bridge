@@ -9,6 +9,6 @@ struct Visitor;
 
 impl HirFlatPackComponentVisitor for Visitor {
     fn visit<T>(&self, items: &mut Vec<T>) {
-        TODO
+        items.sort_by_cached_key(|item| todo!());
     }
 }
