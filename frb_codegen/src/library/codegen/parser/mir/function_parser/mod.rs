@@ -195,8 +195,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                     return Ok(None);
                 }
 
-                // e.g. When seeing `impl MyTrait for String {}`, we should skip it
-                if compute_interest_name_of_owner_ty(&owner_ty).is_none() {
+                if TODO {
                     return Ok(None);
                 }
 
