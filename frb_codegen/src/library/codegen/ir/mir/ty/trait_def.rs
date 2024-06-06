@@ -1,5 +1,5 @@
 use crate::codegen::ir::mir::ty::{MirContext, MirType, MirTypeTrait};
-use crate::utils::namespace::NamespacedName;
+use crate::utils::namespace::{Namespace, NamespacedName};
 
 crate::mir! {
 pub struct MirTypeTraitDef {
@@ -21,5 +21,9 @@ impl MirTypeTrait for MirTypeTraitDef {
 
     fn rust_api_type(&self) -> String {
         self.name.name.clone()
+    }
+
+    fn self_namespace(&self) -> Option<Namespace> {
+        Some(self.name.namespace.clone())
     }
 }
