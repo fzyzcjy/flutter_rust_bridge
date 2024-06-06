@@ -41,7 +41,7 @@ fn merge_core<T: Clone>(
     overrider_source: &HirFlatGenerationSource,
     writer: impl Fn(&mut T),
 ) -> Option<T> {
-    (overrider_source == HirFlatGenerationSource::MoveFromCrateThirdPartyFolder).then(|| {
+    (*overrider_source == HirFlatGenerationSource::MoveFromCrateThirdPartyFolder).then(|| {
         let mut ans = base.to_owned();
         writer(&mut ans);
         ans
