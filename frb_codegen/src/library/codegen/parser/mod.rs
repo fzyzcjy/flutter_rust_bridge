@@ -29,7 +29,7 @@ fn parse_inner(
 
     let pb = progress_bar_pack.parse_hir_primary.start();
     let hir_tree = hir::tree::parse(&config.hir, hir_raw, dumper)?;
-    let hir_naive_flat = hir::naive_flat::parse(hir_tree, dumper)?;
+    let hir_naive_flat = hir::naive_flat::parse(&config.hir, hir_tree, dumper)?;
     let hir_flat = hir::flat::parse(&config.hir, hir_naive_flat, dumper)?;
     on_hir_flat(&hir_flat)?;
     drop(pb);

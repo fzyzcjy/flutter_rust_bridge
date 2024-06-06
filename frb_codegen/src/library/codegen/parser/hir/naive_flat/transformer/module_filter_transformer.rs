@@ -1,18 +1,24 @@
 use crate::codegen::ir::hir::naive_flat::item::HirNaiveFlatItem;
 use crate::codegen::ir::hir::naive_flat::pack::HirNaiveFlatPack;
+use crate::codegen::parser::hir::internal_config::ParserHirInternalConfig;
 use crate::codegen::parser::hir::tree::transformer::pub_use_transformer::is_localized_definition;
 use crate::utils::crate_name::CrateName;
 use crate::utils::namespace::Namespace;
 use itertools::Itertools;
 
-pub(crate) fn transform(mut pack: HirNaiveFlatPack) -> anyhow::Result<HirNaiveFlatPack> {
-    pack.items = (pack.items.drain(..)).filter(is_interest).collect_vec();
+pub(crate) fn transform(
+    mut pack: HirNaiveFlatPack,
+    config: &ParserHirInternalConfig,
+) -> anyhow::Result<HirNaiveFlatPack> {
+    pack.items = (pack.items.drain(..))
+        .filter(|item| is_interest(item, config))
+        .collect_vec();
     Ok(pack)
 }
 
-fn is_interest(item: &HirNaiveFlatItem) -> bool {
+fn is_interest(item: &HirNaiveFlatItem, config: &ParserHirInternalConfig) -> bool {
     (is_public_mod_or_self_crate(item) || !is_localized_definition(&item.item))
-        && !is_frb_rust_output_path(&item.meta.namespace)
+        && !is_frb_rust_output_path(&item.meta.namespace, config)
 }
 
 fn is_public_mod_or_self_crate(item: &HirNaiveFlatItem) -> bool {
@@ -21,6 +27,6 @@ fn is_public_mod_or_self_crate(item: &HirNaiveFlatItem) -> bool {
     item.meta.namespace.path()[0] == CrateName::SELF_CRATE || item.meta.is_public
 }
 
-fn is_frb_rust_output_path(namespace: &Namespace) -> bool {
+fn is_frb_rust_output_path(namespace: &Namespace, config: &ParserHirInternalConfig) -> bool {
     todo!()
 }
