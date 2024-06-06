@@ -1,12 +1,13 @@
+use crate::codegen::ir::hir::naive_flat::pack::HirNaiveFlatPack;
 use crate::codegen::ir::hir::tree::module::HirTreeModuleMeta;
-use crate::codegen::parser::hir::flat::parser::flattener::SynItemWithMeta;
 use crate::utils::crate_name::CrateName;
 use itertools::Itertools;
 
-pub(crate) fn filter_visible_modules(items: Vec<SynItemWithMeta>) -> Vec<SynItemWithMeta> {
-    (items.into_iter())
+pub(crate) fn transform(mut pack: HirNaiveFlatPack) -> anyhow::Result<HirNaiveFlatPack> {
+    pack.items = (pack.items.drain(..))
         .filter(|item| is_interest_mod(&item.meta))
-        .collect_vec()
+        .collect_vec();
+    Ok(pack)
 }
 
 fn is_interest_mod(meta: &HirTreeModuleMeta) -> bool {
