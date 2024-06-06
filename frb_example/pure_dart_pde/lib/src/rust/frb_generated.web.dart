@@ -2953,6 +2953,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   HashMapValue dco_decode_hash_map_value(dynamic raw);
 
   @protected
+  HelloTwoEnumTwinNormal dco_decode_hello_two_enum_twin_normal(dynamic raw);
+
+  @protected
+  HelloTwoEnumTwinRustAsync dco_decode_hello_two_enum_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  HelloTwoEnumTwinSync dco_decode_hello_two_enum_twin_sync(dynamic raw);
+
+  @protected
   int dco_decode_i_16(dynamic raw);
 
   @protected
@@ -4090,6 +4100,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   SimpleEnumTwinSync dco_decode_simple_enum_twin_sync(dynamic raw);
+
+  @protected
+  SimplePrimitiveEnumTwinNormal dco_decode_simple_primitive_enum_twin_normal(
+      dynamic raw);
+
+  @protected
+  SimplePrimitiveEnumTwinRustAsync
+      dco_decode_simple_primitive_enum_twin_rust_async(dynamic raw);
+
+  @protected
+  SimplePrimitiveEnumTwinSync dco_decode_simple_primitive_enum_twin_sync(
+      dynamic raw);
 
   @protected
   SimpleStructForBorrowTwinNormal
@@ -7152,6 +7174,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   HashMapValue sse_decode_hash_map_value(SseDeserializer deserializer);
 
   @protected
+  HelloTwoEnumTwinNormal sse_decode_hello_two_enum_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  HelloTwoEnumTwinRustAsync sse_decode_hello_two_enum_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  HelloTwoEnumTwinSync sse_decode_hello_two_enum_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
   int sse_decode_i_16(SseDeserializer deserializer);
 
   @protected
@@ -8442,6 +8476,19 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   SimpleEnumTwinSync sse_decode_simple_enum_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  SimplePrimitiveEnumTwinNormal sse_decode_simple_primitive_enum_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  SimplePrimitiveEnumTwinRustAsync
+      sse_decode_simple_primitive_enum_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  SimplePrimitiveEnumTwinSync sse_decode_simple_primitive_enum_twin_sync(
       SseDeserializer deserializer);
 
   @protected
@@ -11550,6 +11597,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_hash_map_value(HashMapValue self, SseSerializer serializer);
 
   @protected
+  void sse_encode_hello_two_enum_twin_normal(
+      HelloTwoEnumTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_hello_two_enum_twin_rust_async(
+      HelloTwoEnumTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_hello_two_enum_twin_sync(
+      HelloTwoEnumTwinSync self, SseSerializer serializer);
+
+  @protected
   void sse_encode_i_16(int self, SseSerializer serializer);
 
   @protected
@@ -12821,6 +12880,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_simple_enum_twin_sync(
       SimpleEnumTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_simple_primitive_enum_twin_normal(
+      SimplePrimitiveEnumTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_simple_primitive_enum_twin_rust_async(
+      SimplePrimitiveEnumTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_simple_primitive_enum_twin_sync(
+      SimplePrimitiveEnumTwinSync self, SseSerializer serializer);
 
   @protected
   void sse_encode_simple_struct_for_borrow_twin_normal(

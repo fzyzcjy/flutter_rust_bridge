@@ -9,9 +9,6 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'method_twin_sync.freezed.dart';
 
-// These types are ignored because they are not used by any `pub` functions: `SimplePrimitiveEnumTwinSync`
-// These functions are ignored: `simple_method_twin_sync`
-
 SumWithTwinSync getSumStructTwinSync() => RustLib.instance.api
     .crateApiPseudoManualMethodTwinSyncGetSumStructTwinSync();
 
@@ -148,6 +145,17 @@ sealed class SimpleEnumTwinSync with _$SimpleEnumTwinSync {
 
   String simpleMethodTwinSync() => RustLib.instance.api
           .crateApiPseudoManualMethodTwinSyncSimpleEnumTwinSyncSimpleMethodTwinSync(
+        that: this,
+      );
+}
+
+enum SimplePrimitiveEnumTwinSync {
+  first,
+  second,
+  ;
+
+  int simpleMethodTwinSync() => RustLib.instance.api
+          .crateApiPseudoManualMethodTwinSyncSimplePrimitiveEnumTwinSyncSimpleMethodTwinSync(
         that: this,
       );
 }
