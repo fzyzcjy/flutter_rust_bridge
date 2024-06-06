@@ -20,7 +20,6 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
         let Info {
             dart_api_type,
             methods,
-            ..
         } = self.compute_info(
             &GenerateApiMethodConfig {
                 generate_static: true,
@@ -38,6 +37,7 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
         let maybe_impls = generate_maybe_impls(
             &self.context.mir_pack.trait_impls,
             &MirType::RustOpaque(self.mir.clone()),
+            self.context,
         );
 
         Some(ApiDartGeneratedClass {
@@ -66,7 +66,6 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
         let Info {
             dart_api_type,
             methods,
-            ..
         } = self.compute_info(
             &GenerateApiMethodConfig {
                 generate_static: false,
@@ -122,7 +121,6 @@ impl RustOpaqueApiDartGenerator<'_> {
 
         Info {
             dart_api_type,
-            type_query_name,
             methods,
         }
     }
@@ -130,7 +128,6 @@ impl RustOpaqueApiDartGenerator<'_> {
 
 struct Info {
     dart_api_type: String,
-    type_query_name: String,
     methods: GeneratedApiMethods,
 }
 
