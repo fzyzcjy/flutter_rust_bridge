@@ -1,4 +1,4 @@
-use crate::codegen::parser::hir::flat::parser::flattener::SynItemWithMeta;
+use crate::codegen::ir::hir::misc::syn_item_with_meta::SynItemWithMeta;
 use crate::codegen::parser::hir::internal_config::ParserHirInternalConfig;
 use crate::library::misc::consts::HANDLER_NAME;
 use crate::utils::namespace::NamespacedName;
