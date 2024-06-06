@@ -66,8 +66,7 @@ pub(crate) fn generate(
         .filter(|x| x.self_namespace().is_some())
         .into_group_map_by(|x| x.self_namespace().unwrap());
 
-    let namespaces = grouped_funcs
-        .keys()
+    let namespaces = (grouped_funcs.keys())
         .chain(grouped_namespaced_types.keys())
         .collect::<HashSet<_>>();
 
