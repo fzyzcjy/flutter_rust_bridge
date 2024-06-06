@@ -4,4 +4,5 @@ use serde::Serialize;
 pub(crate) enum HirFlatGenerationSource {
     Normal,
     CopyFromTraitDef,
+    MoveFromCrateThirdPartyFolder,
 }
