@@ -12,7 +12,7 @@ impl<'a> ApiDartGeneratorClassTrait for EnumRefApiDartGenerator<'a> {
         let src = self.mir.get(self.context.mir_pack);
 
         let methods =
-            generate_api_methods(&src.name, self.context, GenerateApiMethodMode::Combined, &src.name.name);
+            generate_api_methods(&src.name, self.context, &GenerateApiMethodConfig::COMBINED, &src.name.name);
         let extra_body =
             generate_class_extra_body(self.mir_type(), &self.context.mir_pack.dart_code_of_type);
 

@@ -47,7 +47,7 @@ pub(crate) fn generate_api_methods(
 ) -> GeneratedApiMethods {
     let methods = get_methods_of_enum_or_struct(generalized_class_name, &context.mir_pack.funcs)
         .iter()
-        .filter_map(|func| generate_api_method(func, context, mode))
+        .filter_map(|func| generate_api_method(func, context, config, dart_class_name))
         .collect_vec();
     GeneratedApiMethods {
         num_methods: methods.len(),

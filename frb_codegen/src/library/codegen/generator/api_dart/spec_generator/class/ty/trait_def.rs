@@ -17,8 +17,7 @@ impl<'a> ApiDartGeneratorClassTrait for TraitDefApiDartGenerator<'a> {
                 generate_non_static: true,
             },
             dart_api_type,
-        )
-        .join("\n");
+        );
 
         Some(ApiDartGeneratedClass {
             namespace: self.mir.name.namespace.clone(),
