@@ -33,7 +33,8 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
         let extra_body =
             generate_class_extra_body(self.mir_type(), &self.context.mir_pack.dart_code_of_type);
 
-        let maybe_impls = generate_maybe_impls(&self.mir.impl_traits);
+        // let maybe_impls = generate_maybe_impls(&self.mir.impl_traits);
+        let maybe_impls = "TODO";
 
         Some(ApiDartGeneratedClass {
             namespace: self.mir.namespace.clone(),
@@ -140,11 +141,12 @@ fn compute_api_method_query_name(
     FILTER.replace_all(&mir.inner.0, "$1").to_string()
 }
 
-fn generate_maybe_impls(impl_traits: &[MirTypeDelegateDynTrait]) -> String {
-    if impl_traits.is_empty() {
-        return "".to_owned();
-    }
-
-    let combined_impls = (impl_traits.iter()).map(|t| t.name.name.clone()).join(", ");
-    format!("implements {}", combined_impls)
-}
+// TODO
+// fn generate_maybe_impls(impl_traits: &[MirTypeDelegateDynTrait]) -> String {
+//     if impl_traits.is_empty() {
+//         return "".to_owned();
+//     }
+//
+//     let combined_impls = (impl_traits.iter()).map(|t| t.name.name.clone()).join(", ");
+//     format!("implements {}", combined_impls)
+// }
