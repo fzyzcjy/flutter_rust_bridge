@@ -2,7 +2,7 @@ use crate::codegen::generator::codec::structs::{CodecMode, CodecModePack};
 use crate::codegen::ir::hir::flat::function::HirFlatFunction;
 use crate::codegen::ir::hir::flat::function::HirFlatFunctionOwner;
 use crate::codegen::ir::mir::func::{
-    compute_interest_name_of_owner_ty, MirFunc, MirFuncArgMode, MirFuncInput, MirFuncMode,
+    MirFunc, MirFuncArgMode, MirFuncInput, MirFuncMode,
     MirFuncOutput, MirFuncOverridePriority, MirFuncOwnerInfo, MirFuncOwnerInfoMethod,
     MirFuncOwnerInfoMethodMode,
 };

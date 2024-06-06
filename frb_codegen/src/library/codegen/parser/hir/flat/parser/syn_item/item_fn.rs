@@ -1,5 +1,5 @@
 use crate::codegen::ir::hir::flat::function::{HirFlatFunction, HirFlatFunctionOwner};
-use crate::codegen::ir::hir::misc::generation_source::HirGenerationSource;
+
 use crate::codegen::ir::hir::misc::item_fn::GeneralizedItemFn;
 use crate::codegen::ir::hir::naive_flat::item::HirNaiveFlatItemMeta;
 use syn::ItemFn;

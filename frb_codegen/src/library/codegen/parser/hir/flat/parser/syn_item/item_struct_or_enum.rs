@@ -1,7 +1,7 @@
 use crate::codegen::ir::hir::flat::struct_or_enum::{
     HirFlatEnum, HirFlatStruct, HirFlatStructOrEnum,
 };
-use crate::codegen::ir::hir::misc::generation_source::HirGenerationSource;
+
 use crate::codegen::ir::hir::misc::syn_item_struct_or_enum::SynItemStructOrEnum;
 use crate::codegen::ir::hir::naive_flat::item::HirNaiveFlatItemMeta;
 use crate::codegen::parser::hir::flat::parser::mirror_ident::{
