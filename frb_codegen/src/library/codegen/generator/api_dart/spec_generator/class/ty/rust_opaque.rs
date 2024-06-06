@@ -153,5 +153,5 @@ fn generate_maybe_impls(all_trait_impls: &[MirTraitImpl], type_query_name: &str)
     let combined_impls = (interest_trait_impls.iter())
         .map(|t| t.trait_name.clone())
         .join(", ");
-    format!("implements {}", combined_impls)
+    format!(" implements {}", combined_impls)
 }
