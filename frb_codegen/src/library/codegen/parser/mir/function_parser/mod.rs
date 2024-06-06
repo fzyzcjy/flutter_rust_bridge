@@ -108,7 +108,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         };
 
         let owner = if let Some(owner) =
-            self.parse_owner(func, &create_context(None), dart_name.clone())?
+            self.parse_owner(func, &create_context(None), dart_name.clone(), &attributes)?
         {
             owner
         } else {
@@ -171,6 +171,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         func: &HirFlatFunction,
         context: &TypeParserParsingContext,
         actual_method_dart_name: Option<String>,
+        attributes: &FrbAttributes,
     ) -> anyhow::Result<Option<MirFuncOwnerInfo>> {
         Ok(Some(match &func.owner {
             HirFlatFunctionOwner::TraitDef { .. } => return Ok(None), // TODO not yet implemented
@@ -196,7 +197,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                     return Ok(None);
                 }
 
-                if !is_allowed_owner_type(owner_ty) {
+                if !is_allowed_owner(owner_ty) {
                     return Ok(None);
                 }
 
@@ -348,7 +349,13 @@ fn parse_frb_override_marker(
     }
 }
 
-fn is_allowed_owner_type(owner_ty: &MirType) -> bool {
+fn is_allowed_owner(owner_ty: &MirType, attributes: &FrbAttributes) -> bool {
+    // if `#[frb(external)]`, then allow arbitrary type
+    if attributes.external() {
+        return true;
+    }
+
+    // wants structs or enums that we know
     match owner_ty {
         MirType::StructRef(_) | MirType::EnumRef(_) => true,
         MirType::RustAutoOpaqueImplicit(ty) => {
