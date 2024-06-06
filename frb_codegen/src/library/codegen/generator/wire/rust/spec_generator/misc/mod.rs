@@ -52,7 +52,7 @@ pub(crate) fn generate(
             context.config.default_rust_opaque_codec,
             content_hash,
         ),
-        wire_funcs: (context.mir_pack.funcs.iter())
+        wire_funcs: (context.mir_pack.funcs_with_impl().iter())
             .map(|f| generate_wire_func(f, context))
             .collect(),
         wrapper_structs: Acc::default(),
@@ -100,7 +100,7 @@ fn generate_imports(
         .into_iter()
         .join("\n");
 
-    let imports_from_functions = (context.mir_pack.funcs.iter())
+    let imports_from_functions = (context.mir_pack.funcs_with_impl().iter())
         .filter_map(
             |func| if_then_some!(let MirFuncOwnerInfo::Method(method) = &func.owner, method),
         )
@@ -235,7 +235,7 @@ fn generate_handler(mir_pack: &MirPack) -> String {
 fn generate_content_hash(mir_pack: &MirPack) -> i32 {
     let mut hasher = Sha1::new();
     hasher.update(
-        (mir_pack.funcs.iter())
+        (mir_pack.funcs_with_impl().iter())
             .map(|func| func.name.rust_style())
             .sorted()
             .join("\n")
