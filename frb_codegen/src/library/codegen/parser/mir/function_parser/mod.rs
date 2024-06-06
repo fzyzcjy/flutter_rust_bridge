@@ -45,6 +45,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         force_codec_mode_pack: &Option<CodecModePack>,
         default_stream_sink_codec: CodecMode,
         default_rust_opaque_codec: RustOpaqueCodecMode,
+        stop_on_error: bool,
     ) -> anyhow::Result<ParseFunctionOutput> {
         match self.parse_function_inner(
             func,
@@ -54,12 +55,16 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         ) {
             Ok(output) => Ok(output),
             Err(err) => {
-                log::debug!(
-                    "parse_function see error and skip function: function={:?} error={:?}",
-                    func.item_fn.name(),
-                    err
-                );
-                Ok(create_output_skip(func, MirSkipReason::Err))
+                if stop_on_error {
+                    Err(err)
+                } else {
+                    log::debug!(
+                        "parse_function see error and skip function: function={:?} error={:?}",
+                        func.item_fn.name(),
+                        err
+                    );
+                    Ok(create_output_skip(func, MirSkipReason::Err))
+                }
             }
         }
     }

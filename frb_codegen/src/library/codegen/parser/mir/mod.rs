@@ -84,6 +84,7 @@ fn parse_mir_funcs(
                 &config.force_codec_mode_pack,
                 config.default_stream_sink_codec,
                 config.default_rust_opaque_codec,
+                config.stop_on_error,
             )
         })
         .collect::<anyhow::Result<Vec<_>>>()?
