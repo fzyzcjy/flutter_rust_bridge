@@ -56,7 +56,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.0.0-dev.37';
 
   @override
-  int get rustContentHash => -2119384465;
+  int get rustContentHash => -1498242409;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -70,6 +70,10 @@ abstract class RustLibApi extends BaseApi {
   Future<void> crateApiMinimalInitApp();
 
   Future<int> crateApiMinimalMinimalAdder({required int a, required int b});
+
+  Future<int>
+      crateApiMinimalSimplePrimitiveEnumTwinNormalSimpleMethodTwinNormal(
+          {required SimplePrimitiveEnumTwinNormal that});
 }
 
 class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
@@ -129,10 +133,47 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         argNames: ["a", "b"],
       );
 
+  @override
+  Future<int>
+      crateApiMinimalSimplePrimitiveEnumTwinNormalSimpleMethodTwinNormal(
+          {required SimplePrimitiveEnumTwinNormal that}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_simple_primitive_enum_twin_normal(that, serializer);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 3, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiMinimalSimplePrimitiveEnumTwinNormalSimpleMethodTwinNormalConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiMinimalSimplePrimitiveEnumTwinNormalSimpleMethodTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "simple_primitive_enum_twin_normal_simple_method_twin_normal",
+            argNames: ["that"],
+          );
+
   @protected
   int dco_decode_i_32(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return raw as int;
+  }
+
+  @protected
+  SimplePrimitiveEnumTwinNormal dco_decode_simple_primitive_enum_twin_normal(
+      dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return SimplePrimitiveEnumTwinNormal.values[raw as int];
   }
 
   @protected
@@ -145,6 +186,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   int sse_decode_i_32(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return deserializer.buffer.getInt32();
+  }
+
+  @protected
+  SimplePrimitiveEnumTwinNormal sse_decode_simple_primitive_enum_twin_normal(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var inner = sse_decode_i_32(deserializer);
+    return SimplePrimitiveEnumTwinNormal.values[inner];
   }
 
   @protected
@@ -162,6 +211,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void sse_encode_i_32(int self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     serializer.buffer.putInt32(self);
+  }
+
+  @protected
+  void sse_encode_simple_primitive_enum_twin_normal(
+      SimplePrimitiveEnumTwinNormal self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_i_32(self.index, serializer);
   }
 
   @protected
