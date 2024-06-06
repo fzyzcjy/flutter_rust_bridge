@@ -56,8 +56,5 @@ abstract class StructTwoWithTraitTwinNormal implements SimpleTraitTwinNormal {
 }
 
 abstract class SimpleTraitTwinNormal {
-  Future<int> simpleTraitFnReceiverBorrowTwinNormal() => RustLib.instance.api
-          .crateApiMinimalTraitDefSimpleTraitTwinNormalSimpleTraitFnReceiverBorrowTwinNormal(
-        that: this,
-      );
+  Future<int> simpleTraitFnReceiverBorrowTwinNormal();
 }
