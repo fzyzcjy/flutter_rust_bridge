@@ -18,7 +18,7 @@ pub(crate) fn transform(
 
 fn is_interest(item: &HirNaiveFlatItem, config: &ParserHirInternalConfig) -> bool {
     (is_public_mod_or_self_crate(item) || !is_localized_definition(&item.item))
-        && !is_frb_rust_output_path(&item.meta.namespace, config)
+        && !is_early_skip_namespace(&item.meta.namespace, config)
 }
 
 fn is_public_mod_or_self_crate(item: &HirNaiveFlatItem) -> bool {
@@ -27,6 +27,9 @@ fn is_public_mod_or_self_crate(item: &HirNaiveFlatItem) -> bool {
     item.meta.namespace.path()[0] == CrateName::SELF_CRATE || item.meta.is_public
 }
 
-fn is_frb_rust_output_path(namespace: &Namespace, config: &ParserHirInternalConfig) -> bool {
-    todo!()
+fn is_early_skip_namespace(namespace: &Namespace, config: &ParserHirInternalConfig) -> bool {
+    (config.rust_input_namespace_pack)
+        .early_skip_namespace_prefixes
+        .iter()
+        .any(|prefix| prefix.is_prefix_of(namespace))
 }

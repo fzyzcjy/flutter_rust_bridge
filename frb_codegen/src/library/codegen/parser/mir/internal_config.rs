@@ -16,7 +16,7 @@ pub(crate) struct ParserMirInternalConfig {
 pub(crate) struct RustInputNamespacePack {
     pub rust_input_namespace_prefixes: Vec<Namespace>,
     /// Namespaces that want to be skipped even in the early stage
-    pub early_skip_namespaces: Vec<Namespace>,
+    pub early_skip_namespace_prefixes: Vec<Namespace>,
 }
 
 impl RustInputNamespacePack {
