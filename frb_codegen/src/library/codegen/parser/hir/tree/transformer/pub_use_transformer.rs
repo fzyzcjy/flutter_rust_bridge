@@ -96,7 +96,7 @@ fn transform_module_by_pub_use_single(
                 let name_for_use_stmt =
                     name_for_use_stmt(x).unwrap_or_else(|| "NOT_EXIST_NAME".to_owned());
                 let is_interest_name = pub_use_info.is_interest_name(&name_for_use_stmt);
-                let is_public_enough = is_public_enough(x).unwrap_or(true);
+                let is_public_enough = is_item_public(x).unwrap_or(true);
 
                 is_interest_name && is_public_enough && is_localized_definition(x)
             })
@@ -125,7 +125,7 @@ fn name_for_use_stmt(item: &syn::Item) -> Option<String> {
     Some(ident.to_string())
 }
 
-fn is_public_enough(item: &syn::Item) -> Option<bool> {
+pub(crate) fn is_item_public(item: &syn::Item) -> Option<bool> {
     let vis = match item {
         syn::Item::Struct(x) => &x.vis,
         syn::Item::Enum(x) => &x.vis,
