@@ -22,17 +22,20 @@ pub(crate) fn parse(
     let pack = transformer::remove_not_defined_trait_transformer::transform(pack)?;
     dump(dumper, "3_remove_not_defined_trait_transformer", &pack)?;
 
+    let pack = transformer::move_third_party_override_transformer::transform(pack)?;
+    dump(dumper, "4_move_third_party_override_transformer", &pack)?;
+
     let pack = transformer::copy_trait_def_to_impl_transformer::transform(pack)?;
-    dump(dumper, "4_copy_trait_def_to_impl_transformer", &pack)?;
+    dump(dumper, "5_copy_trait_def_to_impl_transformer", &pack)?;
 
     let pack = transformer::merge_duplicate_transformer::transform(pack)?;
-    dump(dumper, "5_merge_duplicate_transformer", &pack)?;
+    dump(dumper, "6_merge_duplicate_transformer", &pack)?;
 
     let pack = transformer::resolve_type_alias_transformer::transform(pack)?;
-    dump(dumper, "6_resolve_type_alias_transformer", &pack)?;
+    dump(dumper, "7_resolve_type_alias_transformer", &pack)?;
 
     let pack = transformer::sort_transformer::transform(pack)?;
-    dump(dumper, "7_sort_transformer", &pack)?;
+    dump(dumper, "8_sort_transformer", &pack)?;
 
     Ok(pack)
 }
