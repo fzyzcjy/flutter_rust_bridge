@@ -4,9 +4,8 @@
 // ignore_for_file: invalid_use_of_internal_member, unused_import, unnecessary_import
 
 import '../frb_generated.dart';
-import '../web_audio_api.dart';
-import 'node.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
+import 'web_audio_api/node.dart';
 
 // These functions are ignored because they are not marked as `pub`: `assert_valid_buffer_length`, `assert_valid_channel_number`, `assert_valid_number_of_channels`, `assert_valid_sample_rate`, `assert_valid_time_value`
 // These types are ignored because they are not used by any `pub` functions: `AtomicF32`, `AtomicF64`, `ErrorEvent`, `MediaElement`, `MessagePort`
@@ -30,8 +29,8 @@ abstract class AudioBuffer {
   /// - any of its items have different lengths
   static Future<AudioBuffer> from(
           {required List<Float32List> samples, required double sampleRate}) =>
-      RustLib.instance.api.webAudioApiBufferAudioBufferFrom(
-          samples: samples, sampleRate: sampleRate);
+      RustLib.instance.api
+          .webAudioApiAudioBufferFrom(samples: samples, sampleRate: sampleRate);
 
   /// Return a read-only copy of the underlying data of the channel
   ///
@@ -63,7 +62,7 @@ abstract class AudioBuffer {
   /// 32 being defined by the MAX_CHANNELS constant.
   static Future<AudioBuffer> newInstance(
           {required AudioBufferOptions options}) =>
-      RustLib.instance.api.webAudioApiBufferAudioBufferNew(options: options);
+      RustLib.instance.api.webAudioApiAudioBufferNew(options: options);
 
   /// Number of channels in this `AudioBuffer`
   Future<BigInt> numberOfChannels();
@@ -85,36 +84,6 @@ abstract class AudioListener {
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioParam>>
 abstract class AudioParam {
-  /// Represents an integer used to determine how many channels are used when up-mixing and
-  /// down-mixing connections to any inputs to the node.
-  Future<BigInt> channelCount();
-
-  /// Represents an enumerated value describing the way channels must be matched between the
-  /// node's inputs and outputs.
-  Future<ChannelCountMode> channelCountMode();
-
-  /// Represents an enumerated value describing the meaning of the channels. This interpretation
-  /// will define how audio up-mixing and down-mixing will happen.
-  Future<ChannelInterpretation> channelInterpretation();
-
-  /// Unset the callback to run when an unhandled exception occurs in the audio processor.
-  Future<void> clearOnprocessorerror();
-
-  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
-  /// AudioNode.
-  Future<void> context();
-
-  /// Disconnects all outgoing connections from the AudioNode.
-  Future<void> disconnect();
-
-  /// Disconnects all outgoing connections at the given output port from the AudioNode.
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - if the output port is out of bounds for this node
-  Future<void> disconnectOutput({required BigInt output});
-
   /// Current value of the automation rate of the AudioParam
   Future<AutomationRate> automationRate();
 
@@ -137,7 +106,37 @@ abstract class AudioParam {
 
   Future<void> channelConfig();
 
+  /// Represents an integer used to determine how many channels are used when up-mixing and
+  /// down-mixing connections to any inputs to the node.
+  Future<BigInt> channelCount();
+
+  /// Represents an enumerated value describing the way channels must be matched between the
+  /// node's inputs and outputs.
+  Future<ChannelCountMode> channelCountMode();
+
+  /// Represents an enumerated value describing the meaning of the channels. This interpretation
+  /// will define how audio up-mixing and down-mixing will happen.
+  Future<ChannelInterpretation> channelInterpretation();
+
+  /// Unset the callback to run when an unhandled exception occurs in the audio processor.
+  Future<void> clearOnprocessorerror();
+
+  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
+  /// AudioNode.
+  Future<void> context();
+
   Future<double> defaultValue();
+
+  /// Disconnects all outgoing connections from the AudioNode.
+  Future<void> disconnect();
+
+  /// Disconnects all outgoing connections at the given output port from the AudioNode.
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - if the output port is out of bounds for this node
+  Future<void> disconnectOutput({required BigInt output});
 
   /// Schedules an exponential continuous change in parameter value from the
   /// previous scheduled parameter value to the given value.

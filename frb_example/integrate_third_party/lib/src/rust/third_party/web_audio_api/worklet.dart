@@ -4,8 +4,8 @@
 // ignore_for_file: invalid_use_of_internal_member, unused_import, unnecessary_import
 
 import '../../frb_generated.dart';
+import 'node.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-import 'worklet.dart';
 
 // These functions are ignored because they are not marked as `pub`: `load`, `new`
 // These functions are ignored because they have generic arguments: `new`, `process`
@@ -14,6 +14,8 @@ import 'worklet.dart';
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioWorkletNode>>
 abstract class AudioWorkletNode {
+  Future<void> channelConfig();
+
   /// Represents an integer used to determine how many channels are used when up-mixing and
   /// down-mixing connections to any inputs to the node.
   Future<BigInt> channelCount();
@@ -44,17 +46,6 @@ abstract class AudioWorkletNode {
   /// - if the output port is out of bounds for this node
   Future<void> disconnectOutput({required BigInt output});
 
-  /// Update the `channel_count` attribute
-  Future<void> setChannelCount({required BigInt v});
-
-  /// Update the `channel_count_mode` attribute
-  Future<void> setChannelCountMode({required ChannelCountMode v});
-
-  /// Update the `channel_interpretation` attribute
-  Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
-  Future<void> channelConfig();
-
   Future<BigInt> numberOfInputs();
 
   Future<BigInt> numberOfOutputs();
@@ -66,6 +57,15 @@ abstract class AudioWorkletNode {
   Future<void> parameters();
 
   Future<void> registration();
+
+  /// Update the `channel_count` attribute
+  Future<void> setChannelCount({required BigInt v});
+
+  /// Update the `channel_count_mode` attribute
+  Future<void> setChannelCountMode({required ChannelCountMode v});
+
+  /// Update the `channel_interpretation` attribute
+  Future<void> setChannelInterpretation({required ChannelInterpretation v});
 
   void dispose();
 
