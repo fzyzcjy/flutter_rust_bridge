@@ -1,6 +1,7 @@
 use crate::codegen::ir::hir::flat::struct_or_enum::HirFlatStructOrEnum;
 use crate::codegen::ir::hir::misc::syn_item_struct_or_enum::SynItemStructOrEnum;
 use crate::codegen::ir::hir::misc::visibility::HirVisibility;
+use crate::codegen::ir::mir::ty::rust_auto_opaque_implicit::MirTypeRustAutoOpaqueImplicitReason;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::mir::attribute_parser::FrbAttributes;
 use crate::codegen::parser::mir::type_parser::unencodable::SplayedSegment;
@@ -12,7 +13,6 @@ use std::collections::{HashMap, HashSet};
 use std::fmt::Debug;
 use std::hash::Hash;
 use syn::Type;
-use crate::codegen::ir::mir::ty::rust_auto_opaque_implicit::MirTypeRustAutoOpaqueImplicitReason;
 
 pub(super) trait EnumOrStructParser<Id, Obj, Item: SynItemStructOrEnum>
 where
@@ -107,6 +107,7 @@ where
         self.parse_type_rust_auto_opaque_implicit(
             Some(namespaced_name.namespace.clone()),
             &syn::parse_str(&namespaced_name.name)?,
+            Some(MirTypeRustAutoOpaqueImplicitReason::StructOrEnumRequireOpaque),
             Some(parse_struct_or_enum_should_ignore(
                 src_object,
                 &namespaced_name.namespace.crate_name(),
