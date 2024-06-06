@@ -57,8 +57,8 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             Err(err) => {
                 if stop_on_error {
                     Err(err.context(format!(
-                        "parse_function halt since stop_on_error=true and see error (function={:?})",
-                        func.item_fn.name(),
+                        "parse_function halt since stop_on_error=true and see error (function={})",
+                        serde_json::to_string(func).unwrap(),
                     )))
                 } else {
                     log::debug!(
