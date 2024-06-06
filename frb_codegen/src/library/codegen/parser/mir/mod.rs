@@ -11,9 +11,11 @@ pub(crate) mod type_parser;
 use crate::codegen::ir::hir::flat::function::HirFlatFunction;
 use crate::codegen::ir::hir::flat::pack::HirFlatPack;
 use crate::codegen::ir::hir::flat::struct_or_enum::HirFlatStruct;
+use crate::codegen::ir::hir::flat::trait_impl::HirFlatTraitImpl;
 use crate::codegen::ir::mir::func::MirFunc;
 use crate::codegen::ir::mir::pack::MirPack;
 use crate::codegen::ir::mir::skip::MirSkip;
+use crate::codegen::ir::mir::trait_impl::MirTraitImpl;
 use crate::codegen::parser::mir::auto_accessor_parser::parse_auto_accessors;
 use crate::codegen::parser::mir::function_parser::structs::ParseFunctionOutput;
 use crate::codegen::parser::mir::function_parser::FunctionParser;
@@ -21,6 +23,7 @@ use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
 use crate::codegen::parser::mir::sanity_checker::opaque_inside_translatable_checker::check_opaque_inside_translatable;
 use crate::codegen::parser::mir::sanity_checker::unused_checker::get_unused_types;
 use crate::codegen::parser::mir::type_parser::TypeParser;
+use crate::utils::syn_utils::ty_to_string;
 use itertools::{concat, Itertools};
 use std::collections::HashMap;
 
@@ -51,6 +54,7 @@ pub(crate) fn parse(
         existing_handler: hir_flat.existing_handler.clone(),
         unused_types: vec![],
         skipped_functions: mir_skips,
+        trait_impls: compute_trait_impls(&hir_flat.trait_impls),
     };
 
     ans.unused_types = get_unused_types(
@@ -118,3 +122,12 @@ fn parse_mir_funcs(
 //         .unique_by(|f| f.locator_dart_api())
 //         .collect_vec()
 // }
+
+fn compute_trait_impls(hir_trait_impls: &[HirFlatTraitImpl]) -> Vec<MirTraitImpl> {
+    (hir_trait_impls.iter())
+        .map(|x| MirTraitImpl {
+            trait_name: x.trait_name.clone(),
+            impl_ty: ty_to_string(&x.impl_ty),
+        })
+        .collect_vec()
+}
