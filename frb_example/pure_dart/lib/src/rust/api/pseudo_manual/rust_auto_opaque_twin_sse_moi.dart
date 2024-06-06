@@ -9,7 +9,8 @@ import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'rust_auto_opaque_twin_moi.dart';
 part 'rust_auto_opaque_twin_sse_moi.freezed.dart';
 
-// These functions are ignored: `f`, `func_hello`
+// These types are ignored because they are not used by any `pub` functions: `HelloTwoEnumTwinSseMoi`
+// These functions are ignored: `f`, `func_hello`, `func_hello`
 
 Future<void> rustAutoOpaqueArgOwnTwinSseMoi(
         {required NonCloneSimpleTwinSseMoi arg, required int expect}) =>
@@ -340,17 +341,6 @@ sealed class EnumWithGoodAndOpaqueTwinSseMoi
   const factory EnumWithGoodAndOpaqueTwinSseMoi.opaque(
     NonCloneSimpleTwinSseMoi field0,
   ) = EnumWithGoodAndOpaqueTwinSseMoi_Opaque;
-}
-
-enum HelloTwoEnumTwinSseMoi {
-  a,
-  b,
-  ;
-
-  Future<void> funcHello() => RustLib.instance.api
-          .crateApiPseudoManualRustAutoOpaqueTwinSseMoiHelloTwoEnumTwinSseMoiFuncHello(
-        that: this,
-      );
 }
 
 class StructWithExplicitAutoOpaqueFieldTwinSseMoi {

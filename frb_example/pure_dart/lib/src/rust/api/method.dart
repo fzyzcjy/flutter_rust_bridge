@@ -9,6 +9,9 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'method.freezed.dart';
 
+// These types are ignored because they are not used by any `pub` functions: `SimplePrimitiveEnumTwinNormal`
+// These functions are ignored: `simple_method_twin_normal`
+
 Future<SumWithTwinNormal> getSumStructTwinNormal() =>
     RustLib.instance.api.crateApiMethodGetSumStructTwinNormal();
 
@@ -143,17 +146,6 @@ sealed class SimpleEnumTwinNormal with _$SimpleEnumTwinNormal {
 
   Future<String> simpleMethodTwinNormal() => RustLib.instance.api
           .crateApiMethodSimpleEnumTwinNormalSimpleMethodTwinNormal(
-        that: this,
-      );
-}
-
-enum SimplePrimitiveEnumTwinNormal {
-  first,
-  second,
-  ;
-
-  Future<int> simpleMethodTwinNormal() => RustLib.instance.api
-          .crateApiMethodSimplePrimitiveEnumTwinNormalSimpleMethodTwinNormal(
         that: this,
       );
 }

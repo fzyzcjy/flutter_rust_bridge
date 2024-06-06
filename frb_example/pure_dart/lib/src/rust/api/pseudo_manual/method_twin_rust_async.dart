@@ -9,6 +9,9 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'method_twin_rust_async.freezed.dart';
 
+// These types are ignored because they are not used by any `pub` functions: `SimplePrimitiveEnumTwinRustAsync`
+// These functions are ignored: `simple_method_twin_rust_async`
+
 Future<SumWithTwinRustAsync> getSumStructTwinRustAsync() => RustLib.instance.api
     .crateApiPseudoManualMethodTwinRustAsyncGetSumStructTwinRustAsync();
 
@@ -149,17 +152,6 @@ sealed class SimpleEnumTwinRustAsync with _$SimpleEnumTwinRustAsync {
 
   Future<String> simpleMethodTwinRustAsync() => RustLib.instance.api
           .crateApiPseudoManualMethodTwinRustAsyncSimpleEnumTwinRustAsyncSimpleMethodTwinRustAsync(
-        that: this,
-      );
-}
-
-enum SimplePrimitiveEnumTwinRustAsync {
-  first,
-  second,
-  ;
-
-  Future<int> simpleMethodTwinRustAsync() => RustLib.instance.api
-          .crateApiPseudoManualMethodTwinRustAsyncSimplePrimitiveEnumTwinRustAsyncSimpleMethodTwinRustAsync(
         that: this,
       );
 }

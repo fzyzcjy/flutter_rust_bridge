@@ -9,8 +9,6 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'dart_opaque_twin_sync_sse.freezed.dart';
 
-// These types are ignored because they are not used by any `pub` functions: `DART_OPAQUE`
-
 String asyncAcceptDartOpaqueTwinSyncSse({required Object opaque}) => RustLib
     .instance.api
     .crateApiPseudoManualDartOpaqueTwinSyncSseAsyncAcceptDartOpaqueTwinSyncSse(

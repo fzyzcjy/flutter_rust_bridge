@@ -9,7 +9,8 @@ import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'pseudo_manual/rust_auto_opaque_twin_moi.dart';
 part 'rust_auto_opaque.freezed.dart';
 
-// These functions are ignored: `f`, `func_hello`
+// These types are ignored because they are not used by any `pub` functions: `HelloTwoEnumTwinNormal`
+// These functions are ignored: `f`, `func_hello`, `func_hello`
 
 Future<void> rustAutoOpaqueArgOwnTwinNormal(
         {required NonCloneSimpleTwinNormal arg, required int expect}) =>
@@ -332,17 +333,6 @@ sealed class EnumWithGoodAndOpaqueTwinNormal
   const factory EnumWithGoodAndOpaqueTwinNormal.opaque(
     NonCloneSimpleTwinNormal field0,
   ) = EnumWithGoodAndOpaqueTwinNormal_Opaque;
-}
-
-enum HelloTwoEnumTwinNormal {
-  a,
-  b,
-  ;
-
-  Future<void> funcHello() => RustLib.instance.api
-          .crateApiRustAutoOpaqueHelloTwoEnumTwinNormalFuncHello(
-        that: this,
-      );
 }
 
 class StructWithExplicitAutoOpaqueFieldTwinNormal {
