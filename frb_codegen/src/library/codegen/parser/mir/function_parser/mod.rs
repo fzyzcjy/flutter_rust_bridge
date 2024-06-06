@@ -322,6 +322,7 @@ pub(crate) fn compute_codec_mode_pack(
     force_ans.to_owned().or(attr_ans).unwrap_or(DEFAULT_ANS)
 }
 
+// TODO change to simply "If method, then use owner.self_namespace()"?
 fn refine_namespace(owner: &MirFuncOwnerInfo) -> Option<Namespace> {
     if let MirFuncOwnerInfo::Method(method) = owner {
         let owner_ty = &method.owner_ty;
