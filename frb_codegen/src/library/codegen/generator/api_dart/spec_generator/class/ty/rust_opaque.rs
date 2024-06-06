@@ -4,6 +4,7 @@ use crate::codegen::generator::api_dart::spec_generator::class::method::{
 use crate::codegen::generator::api_dart::spec_generator::class::misc::generate_class_extra_body;
 use crate::codegen::generator::api_dart::spec_generator::class::ty::ApiDartGeneratorClassTrait;
 use crate::codegen::generator::api_dart::spec_generator::class::ApiDartGeneratedClass;
+use crate::codegen::generator::api_dart::spec_generator::misc::generate_imports_which_types_and_funcs_use;
 use crate::codegen::ir::mir::trait_impl::MirTraitImpl;
 use crate::codegen::ir::mir::ty::rust_opaque::MirTypeRustOpaque;
 use crate::codegen::ir::mir::ty::MirType;
@@ -35,11 +36,8 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
         let extra_body =
             generate_class_extra_body(self.mir_type(), &self.context.mir_pack.dart_code_of_type);
 
-        let (maybe_impls, maybe_impls_header) = generate_maybe_impls(
-            &self.context.mir_pack.trait_impls,
-            &MirType::RustOpaque(self.mir.clone()),
-            self.context,
-        );
+        let (maybe_impls, maybe_impls_header) =
+            generate_maybe_impls(&self.context.mir_pack.trait_impls, &self.mir, self.context)?;
 
         Some(ApiDartGeneratedClass {
             namespace: self.mir.namespace.clone(),
@@ -143,9 +141,9 @@ fn compute_query_name(mir: &MirTypeRustOpaque) -> String {
 
 fn generate_maybe_impls(
     all_trait_impls: &[MirTraitImpl],
-    self_type: &MirType,
+    self_type: &MirTypeRustOpaque,
     context: ApiDartGeneratorContext,
-) -> (String, DartBasicHeaderCode) {
+) -> anyhow::Result<(String, DartBasicHeaderCode)> {
     let interest_trait_impls = all_trait_impls
         .iter()
         .filter(|x| {
@@ -155,7 +153,7 @@ fn generate_maybe_impls(
         .collect_vec();
 
     if interest_trait_impls.is_empty() {
-        return "".to_owned();
+        return Ok(("".to_owned(), Default::default()));
     }
 
     let combined_impls = (interest_trait_impls.iter())
@@ -163,9 +161,14 @@ fn generate_maybe_impls(
         .join(", ");
     let code = format!(" implements {}", combined_impls);
 
-    let header = TODO;
+    let header = generate_imports_which_types_and_funcs_use(
+        self_type.namespace.clone(),
+        Some(TODO),
+        None,
+        context,
+    )?;
 
-    (code, header)
+    Ok((code, header))
 }
 
 fn get_candidate_safe_idents_for_matching(ty: &MirType) -> Vec<String> {
