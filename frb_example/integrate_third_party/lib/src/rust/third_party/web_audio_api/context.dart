@@ -4,6 +4,12 @@
 // ignore_for_file: invalid_use_of_internal_member, unused_import, unnecessary_import
 
 import '../../frb_generated.dart';
+import '../../web_audio_api.dart';
+import '../context.dart';
+import '../media_streams.dart';
+import '../node.dart';
+import '../third_party/web_audio_api.dart';
+import '../third_party/web_audio_api/context.dart';
 import '../web_audio_api.dart';
 import 'node.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
