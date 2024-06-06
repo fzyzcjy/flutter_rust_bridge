@@ -3,7 +3,7 @@ use crate::codegen::ir::hir::flat::struct_or_enum::{
     HirFlatEnum, HirFlatStruct, HirFlatStructOrEnum,
 };
 use crate::codegen::ir::hir::misc::syn_item_struct_or_enum::SynItemStructOrEnum;
-use crate::codegen::ir::hir::tree::module::HirTreeModuleMeta;
+use crate::codegen::ir::hir::naive_flat::item::HirNaiveFlatItemMeta;
 use crate::codegen::parser::hir::flat::parser::mirror_ident::{
     parse_mirror_ident, ParseMirrorIdentOutput,
 };
@@ -15,21 +15,21 @@ use syn::{Attribute, ItemEnum, ItemStruct};
 
 pub(crate) fn parse_syn_item_struct(
     item: &ItemStruct,
-    meta: &HirTreeModuleMeta,
+    meta: &HirNaiveFlatItemMeta,
 ) -> anyhow::Result<Vec<HirFlatStruct>> {
     parse_syn_item_struct_or_enum(item, meta, &item.ident, &item.attrs, &item.vis)
 }
 
 pub(crate) fn parse_syn_item_enum(
     item: &ItemEnum,
-    meta: &HirTreeModuleMeta,
+    meta: &HirNaiveFlatItemMeta,
 ) -> anyhow::Result<Vec<HirFlatEnum>> {
     parse_syn_item_struct_or_enum(item, meta, &item.ident, &item.attrs, &item.vis)
 }
 
 fn parse_syn_item_struct_or_enum<I: SynItemStructOrEnum>(
     item: &I,
-    meta: &HirTreeModuleMeta,
+    meta: &HirNaiveFlatItemMeta,
     item_ident: &Ident,
     item_attrs: &[Attribute],
     item_vis: &syn::Visibility,

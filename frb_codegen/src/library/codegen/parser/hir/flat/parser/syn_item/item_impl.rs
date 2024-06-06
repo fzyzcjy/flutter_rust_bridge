@@ -3,6 +3,7 @@ use crate::codegen::ir::hir::flat::pack::HirFlatPack;
 use crate::codegen::ir::hir::flat::source::HirFlatGenerationSource;
 use crate::codegen::ir::hir::flat::trait_impl::HirFlatTraitImpl;
 use crate::codegen::ir::hir::misc::item_fn::GeneralizedItemFn;
+use crate::codegen::ir::hir::naive_flat::item::HirNaiveFlatItemMeta;
 use crate::codegen::ir::hir::tree::module::HirTreeModuleMeta;
 use crate::if_then_some;
 use itertools::Itertools;
@@ -11,7 +12,7 @@ use syn::{ImplItem, ItemImpl};
 pub(crate) fn parse_syn_item_impl(
     target: &mut HirFlatPack,
     item_impl: ItemImpl,
-    meta: &HirTreeModuleMeta,
+    meta: &HirNaiveFlatItemMeta,
 ) {
     let trait_name = parse_trait_name(&item_impl);
 
@@ -27,7 +28,7 @@ fn parse_trait_name(item_impl: &ItemImpl) -> Option<String> {
 
 fn parse_functions(
     item_impl: ItemImpl,
-    meta: &HirTreeModuleMeta,
+    meta: &HirNaiveFlatItemMeta,
     trait_def_name: &Option<String>,
 ) -> Vec<HirFlatFunction> {
     (item_impl.items.into_iter())

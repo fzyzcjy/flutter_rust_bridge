@@ -3,7 +3,7 @@ use crate::codegen::ir::hir::flat::pack::HirFlatPack;
 use crate::codegen::ir::hir::flat::source::HirFlatGenerationSource;
 use crate::codegen::ir::hir::flat::traits::HirFlatTrait;
 use crate::codegen::ir::hir::misc::item_fn::GeneralizedItemFn;
-use crate::codegen::ir::hir::tree::module::HirTreeModuleMeta;
+use crate::codegen::ir::hir::naive_flat::item::HirNaiveFlatItemMeta;
 use crate::if_then_some;
 use crate::utils::namespace::NamespacedName;
 use itertools::Itertools;
@@ -13,7 +13,7 @@ use syn::TraitItem;
 pub(crate) fn parse_syn_item_trait(
     target: &mut HirFlatPack,
     item_trait: ItemTrait,
-    meta: &HirTreeModuleMeta,
+    meta: &HirNaiveFlatItemMeta,
 ) {
     let trait_name = NamespacedName::new(meta.namespace.clone(), item_trait.ident.to_string());
     target.traits.push(HirFlatTrait {
@@ -24,7 +24,7 @@ pub(crate) fn parse_syn_item_trait(
 
 fn parse_functions(
     item_trait: ItemTrait,
-    meta: &HirTreeModuleMeta,
+    meta: &HirNaiveFlatItemMeta,
     trait_def_name: &NamespacedName,
 ) -> Vec<HirFlatFunction> {
     (item_trait.items.into_iter())

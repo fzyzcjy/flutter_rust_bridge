@@ -5,6 +5,7 @@ pub(crate) mod item_trait;
 pub(crate) mod item_type;
 
 use crate::codegen::ir::hir::flat::pack::HirFlatPack;
+use crate::codegen::ir::hir::naive_flat::item::HirNaiveFlatItemMeta;
 use crate::codegen::ir::hir::tree::module::HirTreeModuleMeta;
 use crate::codegen::parser::hir::flat::parser::syn_item::item_fn::parse_syn_item_fn;
 use crate::codegen::parser::hir::flat::parser::syn_item::item_impl::parse_syn_item_impl;
@@ -17,7 +18,7 @@ use crate::codegen::parser::hir::internal_config::ParserHirInternalConfig;
 
 pub(crate) fn parse_syn_item(
     item: syn::Item,
-    meta: &HirTreeModuleMeta,
+    meta: &HirNaiveFlatItemMeta,
     target: &mut HirFlatPack,
     _config: &ParserHirInternalConfig,
 ) -> anyhow::Result<()> {
