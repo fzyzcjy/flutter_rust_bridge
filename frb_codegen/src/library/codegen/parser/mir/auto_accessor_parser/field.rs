@@ -86,6 +86,7 @@ pub(super) fn parse_auto_accessor_of_field(
             &config.force_codec_mode_pack,
         ),
         rust_call_code: Some(rust_call_code),
+        has_impl: true,
         src_lineno_pseudo: compute_src_lineno_pseudo(struct_name, field),
     };
 

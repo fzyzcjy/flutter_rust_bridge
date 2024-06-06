@@ -132,6 +132,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         let mode = compute_func_mode(&attributes, &info);
         let stream_dart_await = attributes.stream_dart_await() && !attributes.sync();
         let namespace_refined = refine_namespace(&owner).unwrap_or(func.namespace.clone());
+        let has_impl = !matches!(func.owner, HirFlatFunctionOwner::TraitDef {..});
 
         if info.ignore_func {
             return Ok(create_output_skip(func, IgnoredMisc));
@@ -160,6 +161,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             comments: parse_comments(func.item_fn.attrs()),
             codec_mode_pack,
             rust_call_code: None,
+            has_impl,
             src_lineno_pseudo: src_lineno,
         }))
     }
