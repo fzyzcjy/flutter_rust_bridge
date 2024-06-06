@@ -26,7 +26,7 @@ impl GenerateApiMethodConfig {
         mode_non_static: GenerateApiMethodMode::DeclAndImpl,
     };
 
-    fn get(&self, method_mode: MirFuncOwnerInfoMethodMode) -> GenerateApiMethodMode {
+    fn get(&self, method_mode: &MirFuncOwnerInfoMethodMode) -> GenerateApiMethodMode {
         match method_mode {
             MirFuncOwnerInfoMethodMode::Static => self.mode_static,
             MirFuncOwnerInfoMethodMode::Instance => self.mode_non_static,
@@ -130,9 +130,14 @@ fn generate_api_method(
         dart_class_name,
     );
 
-    let maybe_implementation = should_generate_implementation(method_info.mode.clone(), config)
-        .then(|| generate_implementation(func, context, method_info, &params));
-    let maybe_implementation = (maybe_implementation.map(|x| format!("=>{x}"))).unwrap_or_default();
+    let maybe_implementation = match config.get(&method_info.mode) {
+        GenerateApiMethodMode::Nothing => return None,
+        GenerateApiMethodMode::DeclOnly => None,
+        GenerateApiMethodMode::DeclAndImpl => Some(format!(
+            "=>{}",
+            generate_implementation(func, context, method_info, &params)
+        )),
+    };
 
     let code = format!("{comments}{signature}{maybe_implementation};\n\n");
 
