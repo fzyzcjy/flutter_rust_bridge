@@ -182,19 +182,23 @@ impl MirFunc {
 
 impl MirFuncOwnerInfoMethod {
     pub(crate) fn owner_ty_name(&self) -> Option<NamespacedName> {
-        Some(match &self.owner_ty {
-            MirType::StructRef(ty) => ty.ident.0.clone(),
-            MirType::EnumRef(ty) => ty.ident.0.clone(),
-            MirType::Delegate(MirTypeDelegate::PrimitiveEnum(MirTypeDelegatePrimitiveEnum {
-                mir,
-                ..
-            })) => mir.ident.0.clone(),
-            MirType::RustAutoOpaqueImplicit(ty) => {
-                NamespacedName::new(ty.self_namespace().unwrap(), ty.rust_api_type())
-            }
-            _ => return None,
-        })
+        compute_name_of_owner_ty(&self.owner_ty)
     }
+}
+
+pub(crate) fn compute_name_of_owner_ty(owner_ty: &MirType) -> Option<NamespacedName> {
+    Some(match owner_ty {
+        MirType::StructRef(ty) => ty.ident.0.clone(),
+        MirType::EnumRef(ty) => ty.ident.0.clone(),
+        MirType::Delegate(MirTypeDelegate::PrimitiveEnum(MirTypeDelegatePrimitiveEnum {
+            mir,
+            ..
+        })) => mir.ident.0.clone(),
+        MirType::RustAutoOpaqueImplicit(ty) => {
+            NamespacedName::new(ty.self_namespace().unwrap(), ty.rust_api_type())
+        }
+        _ => return None,
+    })
 }
 
 #[derive(Clone, Copy, Eq, PartialEq)]
