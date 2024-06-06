@@ -18,7 +18,7 @@ pub(crate) struct HirFlatPack {
 }
 
 impl HirFlatPack {
-    pub(crate) fn visit_components_mut(&self, visitor: impl HirFlatPackComponentVisitor) {
+    pub(crate) fn visit_components_mut(&mut self, visitor: impl HirFlatPackComponentVisitor) {
         visitor.visit(&mut self.functions);
         visitor.visit(&mut self.enums);
         visitor.visit(&mut self.structs);
