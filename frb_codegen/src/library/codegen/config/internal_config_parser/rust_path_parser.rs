@@ -14,7 +14,7 @@ pub(super) struct RustInputInfo {
     pub rust_crate_dir: PathBuf,
     pub third_party_crate_names: Vec<CrateName>,
     pub rust_input_namespace_pack: RustInputNamespacePack,
-    pub rust_output_path: PathBuf,
+    pub rust_output_path: TargetOrCommonMap<PathBuf>,
 }
 
 pub(super) fn compute_rust_path_info(
