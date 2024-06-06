@@ -11,6 +11,7 @@ use crate::codegen::ir::mir::ty::structure::MirStruct;
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use itertools::Itertools;
+use crate::utils::basic_code::DartBasicHeaderCode;
 
 const BACKTRACE_IDENT: &str = "backtrace";
 
@@ -19,6 +20,7 @@ impl<'a> EnumRefApiDartGenerator<'a> {
         &self,
         src: &MirEnum,
         extra_body: &str,
+        header: DartBasicHeaderCode,
     ) -> Option<ApiDartGeneratedClass> {
         let variants = src
             .variants()
@@ -49,7 +51,7 @@ impl<'a> EnumRefApiDartGenerator<'a> {
                 }}",
             ),
             needs_freezed: true,
-            header: Default::default(),
+            header,
         })
     }
 

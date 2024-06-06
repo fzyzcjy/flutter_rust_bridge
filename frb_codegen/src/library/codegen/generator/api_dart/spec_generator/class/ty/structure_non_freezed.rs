@@ -9,6 +9,7 @@ use crate::codegen::ir::mir::ty::structure::MirStruct;
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use itertools::Itertools;
+use crate::codegen::generator::api_dart::spec_generator::class::method::GeneratedApiMethods;
 
 impl<'a> StructRefApiDartGenerator<'a> {
     #[allow(clippy::too_many_arguments)]
@@ -17,7 +18,7 @@ impl<'a> StructRefApiDartGenerator<'a> {
         src: &MirStruct,
         comments: &str,
         metadata: &str,
-        methods: &[String],
+        methods: &GeneratedApiMethods,
         constructor_postfix: &str,
         extra_body: &str,
         class_name: &str,
@@ -28,7 +29,7 @@ impl<'a> StructRefApiDartGenerator<'a> {
         let const_capable = src.fields.iter().all(|field| field.is_final);
         let maybe_const = if const_capable { "const " } else { "" };
         let implements_exception = generate_dart_maybe_implements_exception(self.mir.is_exception);
-        let methods_str = methods.join("\n");
+        let methods_str = methods.code.join("\n");
 
         let hashcode = if src.generate_hash {
             generate_hashcode(&src.fields)

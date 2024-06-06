@@ -4,12 +4,14 @@ use crate::codegen::ir::mir::ty::enumeration::{MirEnum, MirVariant};
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
 use crate::utils::dart_keywords::make_string_keyword_safe;
 use itertools::Itertools;
+use crate::utils::basic_code::DartBasicHeaderCode;
 
 impl<'a> EnumRefApiDartGenerator<'a> {
     pub(crate) fn generate_mode_simple(
         &self,
         src: &MirEnum,
         extra_body: &str,
+        header: DartBasicHeaderCode,
     ) -> Option<ApiDartGeneratedClass> {
         let comments = generate_dart_comments(&src.comments);
 
@@ -33,7 +35,7 @@ impl<'a> EnumRefApiDartGenerator<'a> {
                 }}",
             ),
             needs_freezed: false,
-            header: Default::default(),
+            header,
         })
     }
 
