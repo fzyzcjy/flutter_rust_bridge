@@ -30,7 +30,7 @@ fn is_public_or_self_crate(item: &HirNaiveFlatItem) -> bool {
 }
 
 fn is_self_crate(item: &HirNaiveFlatItem) -> bool {
-    item.meta.namespace.path()[0] == CrateName::SELF_CRATE
+    item.meta.namespace.crate_name().is_self_crate()
 }
 
 fn is_early_skip_namespace(namespace: &Namespace, config: &ParserHirInternalConfig) -> bool {
