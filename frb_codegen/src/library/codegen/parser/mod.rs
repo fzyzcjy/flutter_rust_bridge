@@ -86,6 +86,7 @@ mod tests {
                     Namespace::new_self_crate("api_one".to_owned()),
                     Namespace::new_self_crate("api_two".to_owned()),
                 ],
+                early_skip_namespace_prefixes: vec![],
             })),
         )
     }
@@ -149,6 +150,7 @@ mod tests {
             .map(|f| f(&rust_crate_dir))
             .unwrap_or(RustInputNamespacePack {
                 rust_input_namespace_prefixes: vec![Namespace::new_self_crate("api".to_owned())],
+                early_skip_namespace_prefixes: vec![],
             });
 
         let config = ParserInternalConfig {

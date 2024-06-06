@@ -32,6 +32,7 @@ pub(super) fn compute_rust_input_info(
             rust_input_namespace_prefixes: tidy_rust_input_namespace_prefixes(
                 &rust_input_namespace_prefixes_raw,
             ),
+            early_skip_namespace_prefixes: vec![TODO],
         },
     })
 }
