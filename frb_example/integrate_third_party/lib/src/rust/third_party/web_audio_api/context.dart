@@ -8,13 +8,11 @@ import '../web_audio_api.dart';
 import 'media_streams.dart';
 import 'node.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
-part 'context.freezed.dart';
 
-// These functions are ignored because they are not marked as `pub`: `address`, `calculate_suspend_frame`, `clear_event_handler`, `connect_listener_to_panner`, `connect`, `context`, `current_time`, `destination_channel_config`, `disconnect`, `ensure_audio_listener_present`, `get`, `id`, `is_valid_sink_id`, `listener`, `lock_control_msg_sender`, `mark_node_dropped`, `max_channel_count`, `new`, `new`, `offline`, `post_message`, `queue_audio_param_connect`, `register`, `resolve_queued_control_msgs`, `sample_rate`, `send_control_msg`, `send_event`, `set_event_handler`, `set_state`, `state`
-// These functions are ignored because they have generic arguments: `decode_audio_data_sync`, `decode_audio_data_sync`, `decode_audio_data_sync`, `run_diagnostics`, `set_oncomplete`, `set_onsinkchange`, `set_onstatechange`, `set_onstatechange`, `set_onstatechange`, `suspend_sync`
-// These types are ignored because they are not used by any `pub` functions: `AudioNodeIdProvider`, `AudioNodeId`, `ConcreteBaseAudioContextInner`, `OfflineAudioContextRenderer`
-// These functions are ignored: `create_media_element_source`, `resume`, `set_sink_id_sync`
+// These functions are ignored because they are not marked as `pub`: `address`, `calculate_suspend_frame`, `clear_event_handler`, `connect_listener_to_panner`, `connect`, `context`, `current_time`, `destination_channel_config`, `disconnect`, `ensure_audio_listener_present`, `get`, `id`, `listener`, `lock_control_msg_sender`, `mark_node_dropped`, `max_channel_count`, `new`, `new`, `offline`, `post_message`, `queue_audio_param_connect`, `register`, `resolve_queued_control_msgs`, `sample_rate`, `send_control_msg`, `send_event`, `set_event_handler`, `set_state`, `state`
+// These functions are ignored because they have generic arguments: `decode_audio_data_sync`, `decode_audio_data_sync`, `decode_audio_data_sync`, `decode_audio_data_sync`, `run_diagnostics`, `set_oncomplete`, `set_onsinkchange`, `set_onstatechange`, `set_onstatechange`, `set_onstatechange`, `set_onstatechange`, `suspend_sync`
+// These types are ignored because they are not used by any `pub` functions: `AudioNodeId`
+// These functions are ignored: `base`, `clear_onstatechange`, `create_analyser`, `create_audio_param`, `create_biquad_filter`, `create_buffer_source`, `create_buffer`, `create_channel_merger`, `create_channel_splitter`, `create_constant_source`, `create_convolver`, `create_delay`, `create_dynamics_compressor`, `create_gain`, `create_iir_filter`, `create_media_element_source`, `create_oscillator`, `create_panner`, `create_periodic_wave`, `create_script_processor`, `create_stereo_panner`, `create_wave_shaper`, `current_time`, `destination`, `listener`, `resume`, `sample_rate`, `set_sink_id_sync`, `state`
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioContext>>
 abstract class AudioContext {
@@ -264,6 +262,43 @@ abstract class AudioContext {
   bool get isDisposed;
 }
 
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioContextLatencyCategory>>
+abstract class AudioContextLatencyCategory {
+  void dispose();
+
+  bool get isDisposed;
+}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioContextOptions>>
+abstract class AudioContextOptions {
+  AudioContextLatencyCategory get latencyHint;
+
+  AudioContextRenderSizeCategory get renderSizeHint;
+
+  double? get sampleRate;
+
+  String get sinkId;
+
+  void set latencyHint(AudioContextLatencyCategory latencyHint);
+
+  void set renderSizeHint(AudioContextRenderSizeCategory renderSizeHint);
+
+  void set sampleRate(double? sampleRate);
+
+  void set sinkId(String sinkId);
+
+  void dispose();
+
+  bool get isDisposed;
+}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioContextRegistration>>
+abstract class AudioContextRegistration {
+  void dispose();
+
+  bool get isDisposed;
+}
+
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioParamId>>
 abstract class AudioParamId {
   void dispose();
@@ -370,25 +405,12 @@ abstract class ConcreteBaseAudioContext {
   /// Creates a `WaveShaperNode`
   Future<WaveShaperNode> createWaveShaper();
 
-  /// This is the time in seconds of the sample frame immediately following the last sample-frame
-  /// in the block of audio most recently processed by the context’s rendering graph.
-  Future<double> currentTime();
-
   /// Returns an `AudioDestinationNode` representing the final destination of all audio in the
   /// context. It can be thought of as the audio-rendering device.
   Future<AudioDestinationNode> destination();
 
-  /// Returns the `AudioListener` which is used for 3D spatialization
-  Future<AudioListener> listener();
-
   /// Inform render thread that this node can act as a cycle breaker
   Future<void> markCycleBreaker({required AudioContextRegistration reg});
-
-  /// The sample rate (in sample-frames per second) at which the `AudioContext` handles audio.
-  Future<double> sampleRate();
-
-  /// Returns state of current context
-  Future<AudioContextState> state();
 
   void dispose();
 
@@ -613,89 +635,6 @@ abstract class OfflineAudioContext {
   void dispose();
 
   bool get isDisposed;
-}
-
-@freezed
-sealed class AudioContextLatencyCategory with _$AudioContextLatencyCategory {
-  const AudioContextLatencyCategory._();
-
-  /// Balance audio output latency and power consumption.
-  const factory AudioContextLatencyCategory.balanced() =
-      AudioContextLatencyCategory_Balanced;
-
-  /// Provide the lowest audio output latency possible without glitching. This is the default.
-  const factory AudioContextLatencyCategory.interactive() =
-      AudioContextLatencyCategory_Interactive;
-
-  /// Prioritize sustained playback without interruption over audio output latency.
-  ///
-  /// Lowest power consumption.
-  const factory AudioContextLatencyCategory.playback() =
-      AudioContextLatencyCategory_Playback;
-
-  /// Specify the number of seconds of latency
-  ///
-  /// This latency is not guaranteed to be applied, it depends on the audio hardware capabilities
-  const factory AudioContextLatencyCategory.custom(
-    double field0,
-  ) = AudioContextLatencyCategory_Custom;
-}
-
-/// Specify the playback configuration for the [`AudioContext`] constructor.
-///
-/// All fields are optional and will default to the value best suited for interactive playback on
-/// your hardware configuration.
-///
-/// For future compatibility, it is best to construct a default implementation of this struct and
-/// set the fields you would like to override:
-/// ```
-/// use web_audio_api::context::AudioContextOptions;
-///
-/// // Request a sample rate of 44.1 kHz, leave other fields to their default values
-/// let opts = AudioContextOptions {
-///     sample_rate: Some(44100.),
-///     ..AudioContextOptions::default()
-/// };
-class AudioContextOptions {
-  /// Identify the type of playback, which affects tradeoffs between audio output latency and
-  /// power consumption.
-  final AudioContextLatencyCategory latencyHint;
-
-  /// Sample rate of the audio context and audio output hardware. Use `None` for a default value.
-  final double? sampleRate;
-
-  /// The audio output device
-  /// - use `""` for the default audio output device
-  /// - use `"none"` to process the audio graph without playing through an audio output device.
-  /// - use `"sinkId"` to use the specified audio sink id, obtained with [`enumerate_devices_sync`]
-  final String sinkId;
-
-  /// Option to request a default, optimized or specific render quantum size. It is a hint that might not be honored.
-  final AudioContextRenderSizeCategory renderSizeHint;
-
-  const AudioContextOptions({
-    required this.latencyHint,
-    this.sampleRate,
-    required this.sinkId,
-    required this.renderSizeHint,
-  });
-
-  @override
-  int get hashCode =>
-      latencyHint.hashCode ^
-      sampleRate.hashCode ^
-      sinkId.hashCode ^
-      renderSizeHint.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is AudioContextOptions &&
-          runtimeType == other.runtimeType &&
-          latencyHint == other.latencyHint &&
-          sampleRate == other.sampleRate &&
-          sinkId == other.sinkId &&
-          renderSizeHint == other.renderSizeHint;
 }
 
 /// This allows users to ask for a particular render quantum size.

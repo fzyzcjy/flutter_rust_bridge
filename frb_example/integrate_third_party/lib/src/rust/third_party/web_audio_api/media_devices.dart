@@ -4,12 +4,28 @@
 // ignore_for_file: invalid_use_of_internal_member, unused_import, unnecessary_import
 
 import '../../frb_generated.dart';
+import '../web_audio_api.dart';
 import 'media_streams.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 // These functions are ignored because they are not marked as `pub`: `as_string`, `device`, `is_valid_device_id`, `new`
-// These types are ignored because they are not used by any `pub` functions: `DeviceId`, `MediaDeviceInfoKind`, `MediaDeviceInfo`, `MediaTrackConstraints`
-// These functions are ignored: `device_id`, `enumerate_devices_sync`, `group_id`, `kind`, `label`
+// These types are ignored because they are not used by any `pub` functions: `DeviceId`, `MediaTrackConstraints`
+
+/// List the available media output devices, such as speakers, headsets, loopbacks, etc
+///
+/// The media device_id can be used to specify the [`sink_id` of the `AudioContext`](crate::context::AudioContextOptions::sink_id)
+///
+/// ```no_run
+/// use web_audio_api::media_devices::{enumerate_devices_sync, MediaDeviceInfoKind};
+///
+/// let devices = enumerate_devices_sync();
+/// assert_eq!(devices[0].device_id(), "1");
+/// assert_eq!(devices[0].group_id(), None);
+/// assert_eq!(devices[0].kind(), MediaDeviceInfoKind::AudioOutput);
+/// assert_eq!(devices[0].label(), "Macbook Pro Builtin Speakers");
+/// ```
+Future<List<MediaDeviceInfo>> enumerateDevicesSync() =>
+    RustLib.instance.api.webAudioApiMediaDevicesEnumerateDevicesSync();
 
 /// Prompt for permission to use a media input (audio only)
 ///
@@ -49,9 +65,39 @@ Future<MediaStream> getUserMediaSync(
     RustLib.instance.api
         .webAudioApiMediaDevicesGetUserMediaSync(constraints: constraints);
 
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaDeviceInfo>>
+abstract class MediaDeviceInfo {
+  /// Identifier for the represented device
+  ///
+  /// The current implementation is not stable across sessions so you should not persist this
+  /// value
+  Future<void> deviceId();
+
+  /// Two devices have the same group identifier if they belong to the same physical device
+  Future<Str?> groupId();
+
+  /// Enumerated value that is either "videoinput", "audioinput" or "audiooutput".
+  Future<MediaDeviceInfoKind> kind();
+
+  /// Friendly label describing this device
+  Future<void> label();
+
+  void dispose();
+
+  bool get isDisposed;
+}
+
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaStreamConstraints>>
 abstract class MediaStreamConstraints {
   void dispose();
 
   bool get isDisposed;
+}
+
+/// Describes input/output type of a media device
+enum MediaDeviceInfoKind {
+  videoInput,
+  audioInput,
+  audioOutput,
+  ;
 }

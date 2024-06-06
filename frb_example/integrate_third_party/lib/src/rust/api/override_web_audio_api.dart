@@ -7,3 +7,5 @@ import '../frb_generated.dart';
 import '../third_party/web_audio_api.dart';
 import '../third_party/web_audio_api/context.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
+
+// These functions are ignored: `frb_override_decode_audio_data_sync`, `frb_override_output_latency`
