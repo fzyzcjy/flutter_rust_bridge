@@ -5,4 +5,5 @@ pub(crate) enum HirGenerationSource {
     Normal,
     CopyFromTraitDef,
     MoveFromCrateThirdPartyFolder,
+    FromFrbOverride,
 }

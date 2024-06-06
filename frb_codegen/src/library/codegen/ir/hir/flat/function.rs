@@ -3,6 +3,7 @@ use crate::codegen::ir::hir::misc::generation_source::HirGenerationSource;
 use crate::codegen::ir::hir::misc::item_fn::GeneralizedItemFn;
 use crate::codegen::ir::hir::misc::serializers::serialize_generalized_item_fn;
 use crate::codegen::ir::hir::misc::serializers::serialize_syn;
+use crate::codegen::parser::mir::attribute_parser::FrbAttributes;
 use crate::utils::namespace::{Namespace, NamespacedName};
 use crate::utils::syn_utils::ty_to_string;
 use serde::Serialize;
@@ -25,7 +26,7 @@ impl HirFlatComponent<SimpleOwnerAndName> for HirFlatFunction {
 
 impl HirFlatFunction {
     pub(crate) fn owner_and_name_for_dedup(&self) -> SimpleOwnerAndName {
-        (self.owner_for_dedup(), self.item_fn.name())
+        (self.owner_for_dedup(), self.name_for_dedup())
     }
 
     pub(crate) fn owner_for_dedup(&self) -> String {
@@ -34,6 +35,11 @@ impl HirFlatFunction {
             HirFlatFunctionOwner::StructOrEnum { impl_ty, .. } => ty_to_string(impl_ty),
             HirFlatFunctionOwner::TraitDef { trait_def_name } => trait_def_name.name.clone(),
         }
+    }
+
+    pub(crate) fn name_for_dedup(&self) -> String {
+        let attributes = FrbAttributes::parse(self.item_fn.attrs()).unwrap();
+        attributes.name().unwrap_or_else(|| self.item_fn.name())
     }
 
     pub(crate) fn is_public(&self) -> Option<bool> {
