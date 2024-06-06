@@ -106,12 +106,10 @@ impl RustOpaqueApiDartGenerator<'_> {
         dart_class_name_postfix: &str,
     ) -> Info {
         let dart_api_type = ApiDartGenerator::new(self.mir.clone(), self.context).dart_api_type();
+        let type_query_name = compute_query_name(&self.mir);
 
         let methods = generate_api_methods(
-            &NamespacedName::new(
-                self.mir.namespace.clone(),
-                compute_api_method_query_name(&self.mir, self.context),
-            ),
+            &NamespacedName::new(self.mir.namespace.clone(), type_query_name.clone()),
             self.context,
             config,
             &format!("{dart_api_type}{dart_class_name_postfix}"),
@@ -119,6 +117,7 @@ impl RustOpaqueApiDartGenerator<'_> {
 
         Info {
             dart_api_type,
+            type_query_name,
             methods,
         }
     }
@@ -126,13 +125,11 @@ impl RustOpaqueApiDartGenerator<'_> {
 
 struct Info {
     dart_api_type: String,
+    type_query_name: String,
     methods: GeneratedApiMethods,
 }
 
-fn compute_api_method_query_name(
-    mir: &MirTypeRustOpaque,
-    _context: ApiDartGeneratorContext,
-) -> String {
+fn compute_query_name(mir: &MirTypeRustOpaque) -> String {
     lazy_static! {
         static ref FILTER: Regex =
             Regex::new(r"^flutter_rust_bridge::for_generated::RustAutoOpaqueInner<(.*)>$").unwrap();
@@ -142,8 +139,9 @@ fn compute_api_method_query_name(
 }
 
 fn generate_maybe_impls(all_trait_impls: &[MirTraitImpl]) -> String {
-    let interest_trait_impls = all_trait_impls.iter()
-        .filter(|x| TODO)
+    let interest_trait_impls = all_trait_impls
+        .iter()
+        .filter(|x| x.impl_ty == TODO)
         .collect_vec();
 
     if interest_trait_impls.is_empty() {
