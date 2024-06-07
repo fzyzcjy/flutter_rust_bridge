@@ -1,5 +1,6 @@
 use crate::codegen::ir::mir::pack::MirPack;
 use crate::codegen::ir::mir::ty::delegate::{MirTypeDelegate, MirTypeDelegateDynTrait};
+use crate::codegen::ir::mir::ty::enumeration::MirEnum;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::if_then_some;
 use itertools::Itertools;
@@ -29,8 +30,12 @@ fn handle_ty_dyn_trait(
         .filter(|item| item.trait_ty.name == ty_dyn_trait.trait_def_name)
         .map(|item| item.impl_ty.clone())
         .collect_vec();
+    let mir_enum = create_enum(&interest_impl_types);
 
-    let target_enum_ref = ty_dyn_trait.inner_raw();
+    pack.enum_pool
+        .insert(ty_dyn_trait.inner_raw().ident, mir_enum);
+}
 
-    todo!()
+fn create_enum(interest_impl_types: &[MirType]) -> MirEnum {
+    TODO
 }
