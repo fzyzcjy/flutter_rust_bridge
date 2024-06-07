@@ -1,5 +1,4 @@
 pub(crate) mod internal_config;
-pub(crate) mod misc;
 pub(crate) mod parser;
 pub(crate) mod sanity_checker;
 pub(crate) mod transformer;
