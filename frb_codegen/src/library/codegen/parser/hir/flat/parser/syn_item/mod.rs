@@ -19,7 +19,6 @@ pub(crate) fn parse_syn_item(
     item: syn::Item,
     meta: &HirNaiveFlatItemMeta,
     target: &mut HirFlatPack,
-    _config: &ParserHirInternalConfig,
 ) -> anyhow::Result<()> {
     match item {
         syn::Item::Struct(x) => (target.structs).extend(parse_syn_item_struct(&x, meta)?),

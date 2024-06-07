@@ -16,7 +16,7 @@ pub(crate) fn parse_pack(
     };
 
     for item in hir_naive_flat.items {
-        parse_syn_item(item.item, &item.meta, &mut pack, config)?;
+        parse_syn_item(item.item, &item.meta, &mut pack)?;
     }
 
     Ok(pack)
