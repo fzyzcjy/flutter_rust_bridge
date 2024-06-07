@@ -81,14 +81,12 @@ impl Namespace {
         other.path().starts_with(&self.path())
     }
 
-    // pub fn strip_prefix(&self, prefix: &Namespace) -> Self {
-    //     Self::new(
-    //         (self.path().into_iter().map(ToString::to_string).collect_vec())
-    //             .strip_prefix(&prefix.path().into_iter().map(ToString::to_string).collect_vec()[..])
-    //             .unwrap().to_vec(),
-    //     )
-    // }
-    //
+    pub fn strip_prefix(&self, prefix: &Namespace) -> Self {
+        let self_path = (self.path().into_iter().map(ToString::to_string)).collect_vec();
+        let prefix_path = (prefix.path().into_iter().map(ToString::to_string)).collect_vec();
+        Self::new(self_path.strip_prefix(&prefix_path[..]).unwrap().to_vec())
+    }
+
     // pub fn compute_common_prefix(namespaces: &[&Namespace]) -> Self {
     //     let paths = namespaces.iter().map(|x| x.path()).collect_vec();
     //     let prefix_len = vec_common_prefix(&paths);

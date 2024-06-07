@@ -41,7 +41,8 @@
                           }
                         ],
                         "string": "A"
-                      }
+                      },
+                      "reason": null
                     },
                     "safe_ident": "Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerA",
                     "type": "RustAutoOpaque"
@@ -93,7 +94,8 @@
                           }
                         ],
                         "string": "B"
-                      }
+                      },
+                      "reason": null
                     },
                     "safe_ident": "Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerB",
                     "type": "RustAutoOpaque"
@@ -157,7 +159,8 @@
                     }
                   ],
                   "string": "MyGenericEnum"
-                }
+                },
+                "reason": null
               },
               "safe_ident": "Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyGenericEnum",
               "type": "RustAutoOpaque"
@@ -176,7 +179,6 @@
           "type": "Primitive"
         }
       },
-      "override_priority": 0,
       "owner": "Function",
       "rust_async": false,
       "rust_call_code": null,
@@ -222,7 +224,8 @@
                     }
                   ],
                   "string": "MyGenericEnum"
-                }
+                },
+                "reason": null
               },
               "safe_ident": "Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyGenericEnum",
               "type": "RustAutoOpaque"
@@ -241,7 +244,6 @@
           "type": "Primitive"
         }
       },
-      "override_priority": 0,
       "owner": "Function",
       "rust_async": false,
       "rust_call_code": null,
@@ -287,7 +289,8 @@
                     }
                   ],
                   "string": "MyGenericStruct"
-                }
+                },
+                "reason": null
               },
               "safe_ident": "Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyGenericStruct",
               "type": "RustAutoOpaque"
@@ -306,7 +309,6 @@
           "type": "Primitive"
         }
       },
-      "override_priority": 0,
       "owner": "Function",
       "rust_async": false,
       "rust_call_code": null,
@@ -352,7 +354,8 @@
                     }
                   ],
                   "string": "MyGenericStruct"
-                }
+                },
+                "reason": null
               },
               "safe_ident": "Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyGenericStruct",
               "type": "RustAutoOpaque"
@@ -371,7 +374,6 @@
           "type": "Primitive"
         }
       },
-      "override_priority": 0,
       "owner": "Function",
       "rust_async": false,
       "rust_call_code": null,
@@ -417,7 +419,8 @@
                     }
                   ],
                   "string": "MyGenericStruct"
-                }
+                },
+                "reason": null
               },
               "safe_ident": "Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyGenericStruct",
               "type": "RustAutoOpaque"
@@ -436,7 +439,6 @@
           "type": "Primitive"
         }
       },
-      "override_priority": 0,
       "owner": "Function",
       "rust_async": false,
       "rust_call_code": null,
@@ -476,7 +478,8 @@
                   }
                 ],
                 "string": "T"
-              }
+              },
+              "reason": null
             },
             "safe_ident": "Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerT",
             "type": "RustAutoOpaque"
@@ -509,7 +512,8 @@
                   }
                 ],
                 "string": "Box < T >"
-              }
+              },
+              "reason": null
             },
             "safe_ident": "Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxT",
             "type": "RustAutoOpaque"

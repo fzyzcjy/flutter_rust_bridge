@@ -1,6 +1,7 @@
-use crate::codegen::ir::hir::hierarchical::module::HirVisibility;
-use crate::codegen::ir::hir::hierarchical::struct_or_enum::HirStructOrEnum;
-use crate::codegen::ir::hir::hierarchical::syn_item_struct_or_enum::SynItemStructOrEnum;
+use crate::codegen::ir::hir::flat::struct_or_enum::HirFlatStructOrEnum;
+use crate::codegen::ir::hir::misc::syn_item_struct_or_enum::SynItemStructOrEnum;
+use crate::codegen::ir::hir::misc::visibility::HirVisibility;
+use crate::codegen::ir::mir::ty::rust_auto_opaque_implicit::MirTypeRustAutoOpaqueImplicitReason;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::mir::attribute_parser::FrbAttributes;
 use crate::codegen::parser::mir::type_parser::unencodable::SplayedSegment;
@@ -11,7 +12,7 @@ use log::debug;
 use std::collections::{HashMap, HashSet};
 use std::fmt::Debug;
 use std::hash::Hash;
-use syn::{Ident, Type};
+use syn::Type;
 
 pub(super) trait EnumOrStructParser<Id, Obj, Item: SynItemStructOrEnum>
 where
@@ -38,7 +39,7 @@ where
         if let Some(src_object) = self.src_objects().get(*name) {
             let src_object = (*src_object).clone();
 
-            let namespace = &src_object.namespaced_name.namespace;
+            let namespace = &src_object.name.namespace;
             let namespaced_name = NamespacedName::new(namespace.clone(), name.to_string());
 
             let attrs = FrbAttributes::parse(src_object.src.attrs())?;
@@ -56,7 +57,7 @@ where
             if (self.parser_info().parsing_or_parsed_objects).insert(namespaced_name.clone()) {
                 let (name, wrapper_name) = compute_name_and_wrapper_name(
                     &namespaced_name.namespace,
-                    &src_object.ident,
+                    &src_object.name.name,
                     src_object.mirror,
                 );
                 let parsed_object = self.parse_inner_impl(&src_object, name, wrapper_name)?;
@@ -101,11 +102,12 @@ where
     fn parse_opaque(
         &mut self,
         namespaced_name: &NamespacedName,
-        src_object: &HirStructOrEnum<Item>,
+        src_object: &HirFlatStructOrEnum<Item>,
     ) -> anyhow::Result<MirType> {
         self.parse_type_rust_auto_opaque_implicit(
             Some(namespaced_name.namespace.clone()),
             &syn::parse_str(&namespaced_name.name)?,
+            Some(MirTypeRustAutoOpaqueImplicitReason::StructOrEnumRequireOpaque),
             Some(parse_struct_or_enum_should_ignore(
                 src_object,
                 &namespaced_name.namespace.crate_name(),
@@ -115,14 +117,14 @@ where
 
     fn parse_inner_impl(
         &mut self,
-        src_object: &HirStructOrEnum<Item>,
+        src_object: &HirFlatStructOrEnum<Item>,
         name: NamespacedName,
         wrapper_name: Option<String>,
     ) -> anyhow::Result<Obj>;
 
     fn construct_output(&self, ident: Id) -> anyhow::Result<MirType>;
 
-    fn src_objects(&self) -> &HashMap<String, &HirStructOrEnum<Item>>;
+    fn src_objects(&self) -> &HashMap<String, &HirFlatStructOrEnum<Item>>;
 
     fn parser_info(&mut self) -> &mut EnumOrStructParserInfo<Id, Obj>;
 
@@ -132,6 +134,7 @@ where
         &mut self,
         namespace: Option<Namespace>,
         ty: &Type,
+        reason: Option<MirTypeRustAutoOpaqueImplicitReason>,
         override_ignore: Option<bool>,
     ) -> anyhow::Result<MirType>;
 
@@ -155,11 +158,10 @@ impl<Id, Obj> EnumOrStructParserInfo<Id, Obj> {
 
 fn compute_name_and_wrapper_name(
     namespace: &Namespace,
-    ident: &Ident,
+    name: &str,
     mirror: bool,
 ) -> (NamespacedName, Option<String>) {
-    let name = ident.to_string();
-    let namespaced_name = NamespacedName::new(namespace.clone(), name);
+    let namespaced_name = NamespacedName::new(namespace.clone(), name.to_owned());
     let wrapper_name = if mirror {
         Some(format!("FrbWrapper<{}>", namespaced_name.rust_style()))
     } else {
@@ -169,7 +171,7 @@ fn compute_name_and_wrapper_name(
 }
 
 pub(crate) fn parse_struct_or_enum_should_ignore<Item: SynItemStructOrEnum>(
-    src_object: &HirStructOrEnum<Item>,
+    src_object: &HirFlatStructOrEnum<Item>,
     crate_name: &CrateName,
 ) -> bool {
     let attrs = FrbAttributes::parse(src_object.src.attrs()).unwrap();

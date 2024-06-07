@@ -71,6 +71,7 @@ impl InternalConfig {
         let default_stream_sink_codec = generate_default_stream_sink_codec(full_dep);
         let default_rust_opaque_codec = generate_default_rust_opaque_codec(full_dep);
         let enable_local_dependency = config.local.unwrap_or_default();
+        let stop_on_error = config.stop_on_error.unwrap_or_default();
 
         let controller = controller_parser::parse(meta_config, &rust_crate_dir, &rust_output_path)?;
 
@@ -106,6 +107,7 @@ impl InternalConfig {
                     force_codec_mode_pack: compute_force_codec_mode_pack(full_dep),
                     default_stream_sink_codec,
                     default_rust_opaque_codec,
+                    stop_on_error,
                 },
             },
             generator,

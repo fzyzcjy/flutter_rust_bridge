@@ -66,8 +66,7 @@ pub(crate) fn generate(
         .filter(|x| x.self_namespace().is_some())
         .into_group_map_by(|x| x.self_namespace().unwrap());
 
-    let namespaces = grouped_funcs
-        .keys()
+    let namespaces = (grouped_funcs.keys())
         .chain(grouped_namespaced_types.keys())
         .collect::<HashSet<_>>();
 
@@ -84,7 +83,12 @@ pub(crate) fn generate(
                 )?,
             ))
         })
-        .collect::<Result<HashMap<_, _>>>()?;
+        .collect::<Result<Vec<_>>>()?
+        .into_iter()
+        .filter(|(_, x)| {
+            !x.funcs.is_empty() || !x.classes.is_empty() || !x.extra_impl_code.is_empty()
+        })
+        .collect::<HashMap<_, _>>();
 
     Ok(ApiDartOutputSpec { namespaced_items })
 }

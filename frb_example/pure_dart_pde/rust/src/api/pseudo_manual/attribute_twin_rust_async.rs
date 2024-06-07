@@ -18,9 +18,9 @@ pub struct CustomizedTwinRustAsync {
 #[frb(ignore)]
 pub async fn func_should_not_exist_in_dart_twin_rust_async() {}
 
-pub struct EmptyTwinRustAsync;
+pub struct StructWithOnlyIgnoredMethodTwinRustAsync {}
 
-impl EmptyTwinRustAsync {
+impl StructWithOnlyIgnoredMethodTwinRustAsync {
     #[frb(ignore)]
     pub async fn method_should_not_exist_in_dart_twin_rust_async(&self) {}
 }

@@ -9,7 +9,7 @@ import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'rust_auto_opaque_twin_moi.dart';
 part 'rust_auto_opaque_twin_sync.freezed.dart';
 
-// These functions have error during generation (see debug logs for more details): `f`
+// These functions are ignored: `f`, `func_hello`
 
 void rustAutoOpaqueArgOwnTwinSync(
         {required NonCloneSimpleTwinSync arg, required int expect}) =>

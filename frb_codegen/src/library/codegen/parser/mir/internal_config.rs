@@ -9,6 +9,7 @@ pub(crate) struct ParserMirInternalConfig {
     pub force_codec_mode_pack: Option<CodecModePack>,
     pub default_stream_sink_codec: CodecMode,
     pub default_rust_opaque_codec: RustOpaqueCodecMode,
+    pub stop_on_error: bool,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]

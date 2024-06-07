@@ -8,6 +8,8 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'event_listener.freezed.dart';
 
+// These types are ignored because they are not used by any `pub` functions: `EVENTS`
+
 Future<Stream<EventTwinNormal>> registerEventListenerTwinNormal() =>
     RustLib.instance.api.crateApiEventListenerRegisterEventListenerTwinNormal();
 

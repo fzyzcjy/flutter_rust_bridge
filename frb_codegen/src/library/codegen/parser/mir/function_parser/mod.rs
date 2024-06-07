@@ -1,12 +1,15 @@
 use crate::codegen::generator::codec::structs::{CodecMode, CodecModePack};
-use crate::codegen::ir::hir::hierarchical::function::{HirFunction, HirFunctionOwner};
+use crate::codegen::ir::hir::flat::function::HirFlatFunction;
+use crate::codegen::ir::hir::flat::function::HirFlatFunctionOwner;
 use crate::codegen::ir::mir::func::{
-    MirFunc, MirFuncArgMode, MirFuncInput, MirFuncMode, MirFuncOutput, MirFuncOverridePriority,
-    MirFuncOwnerInfo, MirFuncOwnerInfoMethod, MirFuncOwnerInfoMethodMode,
+    MirFunc, MirFuncArgMode, MirFuncInput, MirFuncMode, MirFuncOutput, MirFuncOwnerInfo,
+    MirFuncOwnerInfoMethod, MirFuncOwnerInfoMethodMode,
 };
 use crate::codegen::ir::mir::skip::MirSkipReason::IgnoredFunctionGeneric;
 use crate::codegen::ir::mir::skip::{MirSkip, MirSkipReason};
+use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
+use crate::codegen::ir::mir::ty::rust_auto_opaque_implicit::MirTypeRustAutoOpaqueImplicitReason;
 use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::mir::attribute_parser::FrbAttributes;
@@ -40,31 +43,41 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
     #[allow(clippy::too_many_arguments)]
     pub(crate) fn parse_function(
         &mut self,
-        func: &HirFunction,
+        func: &HirFlatFunction,
         force_codec_mode_pack: &Option<CodecModePack>,
         default_stream_sink_codec: CodecMode,
         default_rust_opaque_codec: RustOpaqueCodecMode,
-    ) -> ParseFunctionOutput {
-        self.parse_function_inner(
+        stop_on_error: bool,
+    ) -> anyhow::Result<ParseFunctionOutput> {
+        match self.parse_function_inner(
             func,
             force_codec_mode_pack,
             default_stream_sink_codec,
             default_rust_opaque_codec,
-        )
-        .unwrap_or_else(|err| {
-            log::debug!(
-                "parse_function see error and skip function: function={:?} error={:?}",
-                func.item_fn.name(),
-                err
-            );
-            create_output_skip(func, MirSkipReason::Err)
-        })
+        ) {
+            Ok(output) => Ok(output),
+            Err(err) => {
+                if stop_on_error {
+                    Err(err.context(format!(
+                        "parse_function halt since stop_on_error=true and see error (function={})",
+                        serde_json::to_string(func).unwrap(),
+                    )))
+                } else {
+                    log::debug!(
+                        "parse_function see error and skip function: function={:?} error={:?}",
+                        func.item_fn.name(),
+                        err
+                    );
+                    Ok(create_output_skip(func, MirSkipReason::Err))
+                }
+            }
+        }
     }
 
     #[allow(clippy::too_many_arguments)]
     fn parse_function_inner(
         &mut self,
-        func: &HirFunction,
+        func: &HirFlatFunction,
         force_codec_mode_pack: &Option<CodecModePack>,
         default_stream_sink_codec: CodecMode,
         default_rust_opaque_codec: RustOpaqueCodecMode,
@@ -82,9 +95,6 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         let attributes = FrbAttributes::parse(func.item_fn.attrs())?;
 
         let dart_name = attributes.name();
-        let override_priority = MirFuncOverridePriority::default();
-        let (dart_name, override_priority) =
-            parse_frb_override_marker(dart_name, override_priority, func);
 
         let create_context = |owner: Option<MirFuncOwnerInfo>| TypeParserParsingContext {
             initiated_namespace: func.namespace.clone(),
@@ -95,7 +105,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         };
 
         let owner = if let Some(owner) =
-            self.parse_owner(func, &create_context(None), dart_name.clone())?
+            self.parse_owner(func, &create_context(None), dart_name.clone(), &attributes)?
         {
             owner
         } else {
@@ -149,20 +159,21 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             codec_mode_pack,
             rust_call_code: None,
             src_lineno_pseudo: src_lineno,
-            override_priority,
         }))
     }
 
     fn parse_owner(
         &mut self,
-        func: &HirFunction,
+        func: &HirFlatFunction,
         context: &TypeParserParsingContext,
         actual_method_dart_name: Option<String>,
+        attributes: &FrbAttributes,
     ) -> anyhow::Result<Option<MirFuncOwnerInfo>> {
         Ok(Some(match &func.owner {
-            HirFunctionOwner::Function => MirFuncOwnerInfo::Function,
-            HirFunctionOwner::Method {
-                item_impl,
+            HirFlatFunctionOwner::TraitDef { .. } => return Ok(None), // TODO not yet implemented
+            HirFlatFunctionOwner::Function => MirFuncOwnerInfo::Function,
+            HirFlatFunctionOwner::StructOrEnum {
+                impl_ty,
                 trait_def_name,
             } => {
                 let sig = func.item_fn.sig();
@@ -172,7 +183,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                     MirFuncOwnerInfoMethodMode::Static
                 };
 
-                let owner_ty = if let Some(x) = self.parse_method_owner_ty(item_impl, context)? {
+                let owner_ty = if let Some(x) = self.parse_method_owner_ty(impl_ty, context)? {
                     x
                 } else {
                     return Ok(None);
@@ -182,14 +193,28 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                     return Ok(None);
                 }
 
+                if !is_allowed_owner(&owner_ty, attributes) {
+                    return Ok(None);
+                }
+
                 let actual_method_name = sig.ident.to_string();
+
+                let trait_def_namespaced_name = if let Some(trait_def_name) = trait_def_name {
+                    if let Some(ans) = self.type_parser.src_traits.get(trait_def_name) {
+                        Some(ans.name.clone())
+                    } else {
+                        return Ok(None);
+                    }
+                } else {
+                    None
+                };
 
                 MirFuncOwnerInfo::Method(MirFuncOwnerInfoMethod {
                     owner_ty,
                     actual_method_name,
                     actual_method_dart_name,
                     mode,
-                    trait_def_name: trait_def_name.to_owned(),
+                    trait_def_name: trait_def_namespaced_name,
                 })
             }
         }))
@@ -197,10 +222,10 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
     fn parse_method_owner_ty(
         &mut self,
-        item_impl: &ItemImpl,
+        impl_ty: &Type,
         context: &TypeParserParsingContext,
     ) -> anyhow::Result<Option<MirType>> {
-        let self_ty_path = if let Type::Path(self_ty_path) = item_impl.self_ty.as_ref() {
+        let self_ty_path = if let Type::Path(self_ty_path) = impl_ty {
             self_ty_path
         } else {
             return Ok(None);
@@ -215,7 +240,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
     }
 }
 
-fn create_output_skip(func: &HirFunction, reason: MirSkipReason) -> ParseFunctionOutput {
+fn create_output_skip(func: &HirFlatFunction, reason: MirSkipReason) -> ParseFunctionOutput {
     ParseFunctionOutput::Skip(MirSkip {
         name: NamespacedName::new(func.namespace.clone(), func.item_fn.name().to_string()),
         reason,
@@ -296,26 +321,26 @@ pub(crate) fn compute_codec_mode_pack(
 
 fn refine_namespace(owner: &MirFuncOwnerInfo) -> Option<Namespace> {
     if let MirFuncOwnerInfo::Method(method) = owner {
-        let owner_ty = &method.owner_ty;
-        if matches!(owner_ty, MirType::StructRef(_) | MirType::EnumRef(_)) {
-            return owner_ty.self_namespace();
-        }
+        method.owner_ty.self_namespace()
+    } else {
+        None
     }
-    None
 }
 
-fn parse_frb_override_marker(
-    dart_name_raw: Option<String>,
-    override_priority_raw: MirFuncOverridePriority,
-    func: &HirFunction,
-) -> (Option<String>, MirFuncOverridePriority) {
-    const FRB_OVERRIDE_PREFIX: &str = "frb_override_";
-    if let Some(func_name_stripped) = func.item_fn.name().strip_prefix(FRB_OVERRIDE_PREFIX) {
-        (
-            dart_name_raw.or(Some(func_name_stripped.to_owned())),
-            MirFuncOverridePriority::FRB_OVERRIDE,
-        )
-    } else {
-        (dart_name_raw, override_priority_raw)
+fn is_allowed_owner(owner_ty: &MirType, attributes: &FrbAttributes) -> bool {
+    // if `#[frb(external)]`, then allow arbitrary type
+    if attributes.external() {
+        return true;
+    }
+
+    // wants structs or enums that we know
+    match owner_ty {
+        MirType::StructRef(_)
+        | MirType::EnumRef(_)
+        | MirType::Delegate(MirTypeDelegate::PrimitiveEnum(_)) => true,
+        MirType::RustAutoOpaqueImplicit(ty) => {
+            ty.reason == Some(MirTypeRustAutoOpaqueImplicitReason::StructOrEnumRequireOpaque)
+        }
+        _ => false,
     }
 }

@@ -1,5 +1,5 @@
 use crate::codegen::dumper::Dumper;
-use crate::codegen::ir::hir::hierarchical::pack::HirPack;
+use crate::codegen::ir::hir::flat::pack::HirFlatPack;
 use crate::codegen::ir::mir::pack::MirPack;
 use crate::codegen::misc::GeneratorProgressBarPack;
 use crate::codegen::parser::internal_config::ParserInternalConfig;
@@ -21,21 +21,17 @@ fn parse_inner(
     config: &ParserInternalConfig,
     dumper: &Dumper,
     progress_bar_pack: &GeneratorProgressBarPack,
-    on_hir: impl FnOnce(&HirPack) -> anyhow::Result<()>,
+    on_hir_flat: impl FnOnce(&HirFlatPack) -> anyhow::Result<()>,
 ) -> anyhow::Result<MirPack> {
     let pb = progress_bar_pack.parse_hir_raw.start();
     let hir_raw = hir::raw::parse(&config.hir, dumper)?;
     drop(pb);
 
     let pb = progress_bar_pack.parse_hir_primary.start();
-    let hir_hierarchical = hir::hierarchical::parse(&config.hir, &hir_raw)?;
-    let hir_flat = hir::flat::parse(&config.hir, &hir_hierarchical)?;
-    on_hir(&hir_hierarchical)?;
-    dumper.dump(
-        ConfigDumpContent::Hir,
-        "hir_hierarchical.json",
-        &hir_hierarchical,
-    )?;
+    let hir_tree = hir::tree::parse(&config.hir, hir_raw, dumper)?;
+    let hir_naive_flat = hir::naive_flat::parse(hir_tree, dumper)?;
+    let hir_flat = hir::flat::parse(&config.hir, hir_naive_flat, dumper)?;
+    on_hir_flat(&hir_flat)?;
     drop(pb);
 
     let pb = progress_bar_pack.parse_mir.start();
@@ -166,6 +162,7 @@ mod tests {
                 force_codec_mode_pack: compute_force_codec_mode_pack(true),
                 default_stream_sink_codec: CodecMode::Dco,
                 default_rust_opaque_codec: RustOpaqueCodecMode::Nom,
+                stop_on_error: true,
             },
         };
 
@@ -173,10 +170,10 @@ mod tests {
             &config,
             &Dumper(&Default::default()),
             &GeneratorProgressBarPack::new(),
-            |hir_hierarchical| {
+            |hir_flat| {
                 json_golden_test(
-                    &serde_json::to_value(hir_hierarchical).unwrap(),
-                    &rust_crate_dir.join("expect_hir_hierarchical.json"),
+                    &serde_json::to_value(hir_flat).unwrap(),
+                    &rust_crate_dir.join("expect_hir_flat.json"),
                     &create_path_sanitizers(&test_fixture_dir),
                 )
             },

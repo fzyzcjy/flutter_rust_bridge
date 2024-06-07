@@ -117,7 +117,8 @@
         "rust_input_namespace_prefixes": [
           "crate::api"
         ]
-      }
+      },
+      "stop_on_error": false
     }
   },
   "polisher": {

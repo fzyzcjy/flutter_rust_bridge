@@ -17,9 +17,9 @@ pub struct CustomizedTwinSse {
 #[flutter_rust_bridge::frb(serialize)]
 pub fn func_should_not_exist_in_dart_twin_sse() {}
 
-pub struct EmptyTwinSse;
+pub struct StructWithOnlyIgnoredMethodTwinSse {}
 
-impl EmptyTwinSse {
+impl StructWithOnlyIgnoredMethodTwinSse {
     #[frb(ignore)]
     #[flutter_rust_bridge::frb(serialize)]
     pub fn method_should_not_exist_in_dart_twin_sse(&self) {}
