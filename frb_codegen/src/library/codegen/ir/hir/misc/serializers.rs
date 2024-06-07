@@ -29,8 +29,9 @@ pub(crate) fn serialize_generalized_item_fn<S: Serializer>(
     s: S,
 ) -> Result<S::Ok, S::Error> {
     s.serialize_str(&format!(
-        "GeneralizedItemFn(name={}, vis={:?})",
+        "GeneralizedItemFn(name={}, vis={:?}, attrs={:?})",
         x.name(),
-        x.vis()
+        x.vis(),
+        x.attrs(),
     ))
 }
