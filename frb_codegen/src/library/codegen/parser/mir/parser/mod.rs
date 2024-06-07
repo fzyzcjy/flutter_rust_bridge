@@ -26,15 +26,15 @@ pub(crate) fn parse(
         hir_flat.types_map(),
     );
 
-    let (funcs_all, skipped_functions) =
-        function::parse(config, &hir_flat.functions, &mut type_parser, &structs_map)?;
-
     let trait_impls = trait_impl::parse(
         &hir_flat.trait_impls,
         &mut type_parser,
         config.default_stream_sink_codec,
         config.default_rust_opaque_codec,
     )?;
+
+    let (funcs_all, skipped_functions) =
+        function::parse(config, &hir_flat.functions, &mut type_parser, &structs_map)?;
 
     let (struct_pool, enum_pool, dart_code_of_type) = type_parser.consume();
 
