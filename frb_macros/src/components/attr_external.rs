@@ -17,7 +17,10 @@ pub(crate) fn handle_external_impl(attribute: TokenStream, item: TokenStream) ->
     let item_syn: syn::Item = syn::parse(item.into()).unwrap();
     let converted_item = match item_syn {
         Item::Impl(x) => handle_syn_item_impl(x, &item_string),
-        x => quote! { #x },
+        x => quote! {
+            #[cfg(not(frb_expand))]
+            #x
+        },
     };
 
     quote! {
