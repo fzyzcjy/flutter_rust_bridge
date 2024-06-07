@@ -67,6 +67,7 @@ fn generate_merged_code(spec: &WireRustOutputSpec) -> Acc<WireRustOutputCode> {
     add("wrapper_structs", &spec.misc.wrapper_structs);
     add("static_checks", &spec.misc.static_checks);
     add("related_funcs", &spec.misc.related_funcs);
+    add("extra_from_parser", &spec.misc.extra_from_parser);
     add("dart2rust", &spec.dart2rust.inner);
     add("rust2dart", &spec.rust2dart.inner);
 
