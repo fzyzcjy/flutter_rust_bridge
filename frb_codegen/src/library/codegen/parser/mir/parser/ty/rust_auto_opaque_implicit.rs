@@ -60,11 +60,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             },
             MirTypeRustOpaque {
                 namespace: info.namespace,
-                // TODO when all usages of a type do not require `&mut`, can drop this Mutex
-                // TODO similarly, can use std instead of `tokio`'s lock
-                inner: MirRustOpaqueInner(format!(
-                    "flutter_rust_bridge::for_generated::RustAutoOpaqueInner<{inner_str}>"
-                )),
+                inner: compute_rust_auto_opaque_inner(&inner_str),
                 codec: info.codec,
                 brief_name: true,
             },
@@ -116,4 +112,12 @@ pub(crate) fn split_ownership_from_ty(ty: &Type) -> (Type, OwnershipMode) {
         ),
         _ => (ty.clone(), OwnershipMode::Owned),
     }
+}
+
+pub(crate) fn compute_rust_auto_opaque_inner(inner_str: &str) -> MirRustOpaqueInner {
+    // TODO when all usages of a type do not require `&mut`, can drop this Mutex
+    // TODO similarly, can use std instead of `tokio`'s lock
+    MirRustOpaqueInner(format!(
+        "flutter_rust_bridge::for_generated::RustAutoOpaqueInner<{inner_str}>"
+    ))
 }
