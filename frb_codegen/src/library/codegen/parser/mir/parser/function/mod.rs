@@ -16,13 +16,13 @@ pub(crate) fn parse(
     type_parser: &mut TypeParser,
     src_structs: &HashMap<String, &HirFlatStruct>,
 ) -> anyhow::Result<(Vec<MirFunc>, Vec<MirSkip>)> {
-    let (mir_funcs_normal, mir_skips) = real::parse(src_fns, type_parser, config)?;
-    let mir_funcs_auto_accessor = auto_accessor::parse(config, src_structs, type_parser)?;
+    let (funcs_normal, skips) = real::parse(src_fns, type_parser, config)?;
+    let funcs_auto_accessor = auto_accessor::parse(config, src_structs, type_parser)?;
 
-    let mir_funcs = concat([mir_funcs_normal, mir_funcs_auto_accessor]);
-    let mir_funcs = sort_and_add_func_id(mir_funcs);
+    let funcs = concat([funcs_normal, funcs_auto_accessor]);
+    let funcs = sort_and_add_func_id(funcs);
 
-    Ok((mir_funcs, mir_skips))
+    Ok((funcs, skips))
 }
 
 fn sort_and_add_func_id(funcs: Vec<MirFunc>) -> Vec<MirFunc> {
