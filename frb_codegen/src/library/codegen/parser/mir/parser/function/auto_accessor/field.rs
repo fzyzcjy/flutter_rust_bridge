@@ -6,15 +6,15 @@ use crate::codegen::ir::mir::func::{
 use crate::codegen::ir::mir::ident::MirIdent;
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
 use crate::codegen::ir::mir::ty::MirType;
+use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
 use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
 use crate::codegen::parser::mir::parser::function::auto_accessor::MirFuncAndSanityCheckInfo;
 use crate::codegen::parser::mir::parser::function::real::argument::merge_ownership_into_ty;
 use crate::codegen::parser::mir::parser::function::real::{
     compute_codec_mode_pack, parse_effective_function_name_of_method,
 };
-use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
-use crate::codegen::parser::mir::sanity_checker::auto_accessor_checker;
 use crate::codegen::parser::mir::parser::ty::{TypeParser, TypeParserParsingContext};
+use crate::codegen::parser::mir::sanity_checker::auto_accessor_checker;
 use crate::utils::namespace::NamespacedName;
 use sha1::{Digest, Sha1};
 

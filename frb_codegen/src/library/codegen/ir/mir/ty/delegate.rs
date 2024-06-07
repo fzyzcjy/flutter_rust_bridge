@@ -266,7 +266,7 @@ impl MirTypeDelegate {
             MirTypeDelegate::StreamSink(_) => MirType::Delegate(MirTypeDelegate::String),
             MirTypeDelegate::BigPrimitive(_) => MirType::Delegate(MirTypeDelegate::String),
             MirTypeDelegate::RustAutoOpaqueExplicit(mir) => MirType::RustOpaque(mir.inner.clone()),
-            MirTypeDelegate::DynTrait(mir) => MirType::EnumRef(todo!()),
+            MirTypeDelegate::DynTrait(_mir) => MirType::EnumRef(todo!()),
         }
     }
 }
