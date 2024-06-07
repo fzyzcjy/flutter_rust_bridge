@@ -15,8 +15,10 @@ pub(crate) fn transform(mut pack: HirFlatPack) -> anyhow::Result<HirFlatPack> {
         .collect::<anyhow::Result<Vec<_>>>()?
         .into_iter()
         .join("");
+    
+    let namespace = TODO;
 
-    inject_extra_code(&mut pack, &extra_code)?;
+    inject_extra_code(&mut pack, &extra_code, namespace)?;
 
     Ok(pack)
 }
