@@ -1,10 +1,7 @@
 use crate::codegen::ir::hir::naive_flat::item::HirNaiveFlatItem;
 use crate::codegen::ir::hir::naive_flat::pack::HirNaiveFlatPack;
 use crate::codegen::parser::hir::internal_config::ParserHirInternalConfig;
-use crate::codegen::parser::hir::tree::transformer::pub_use_transformer::{
-    is_item_public, is_localized_definition,
-};
-use crate::utils::crate_name::CrateName;
+use crate::codegen::parser::hir::tree::transformer::pub_use_transformer::is_localized_definition;
 use crate::utils::namespace::Namespace;
 use itertools::Itertools;
 

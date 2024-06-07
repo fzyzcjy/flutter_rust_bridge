@@ -2,7 +2,6 @@ use crate::codegen::config::internal_config_parser::dart_path_parser::compute_pa
 use crate::codegen::config::internal_config_parser::rust_path_migrator::ConfigRustRootAndRustInput;
 use crate::codegen::generator::misc::target::TargetOrCommonMap;
 use crate::codegen::parser::mir::internal_config::RustInputNamespacePack;
-use crate::codegen::Config;
 use crate::utils::crate_name::CrateName;
 use crate::utils::namespace::Namespace;
 use crate::utils::path_utils::canonicalize_with_error_message;
@@ -25,8 +24,7 @@ pub(super) fn compute_rust_path_info(
     let rust_input_namespace_prefixes_raw =
         compute_rust_input_namespace_prefixes_raw(&migrated_rust_input.rust_input);
     let rust_crate_dir = compute_rust_crate_dir(base_dir, &migrated_rust_input.rust_root)?;
-    let rust_output_path =
-        compute_rust_output_path(config_rust_output, &base_dir, &rust_crate_dir)?;
+    let rust_output_path = compute_rust_output_path(config_rust_output, base_dir, &rust_crate_dir)?;
 
     let rust_output_path_namespace =
         Namespace::new_from_rust_crate_path(&rust_output_path.common, &rust_crate_dir)?;

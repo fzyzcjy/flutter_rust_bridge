@@ -1,6 +1,5 @@
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::mir::type_parser::TypeParserWithContext;
-use anyhow::bail;
 use syn::TypeTraitObject;
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {

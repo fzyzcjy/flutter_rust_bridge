@@ -35,7 +35,7 @@ impl BaseMerger for ThirdPartyOverrideMerger {
     }
 
     fn merge_traits(&self, base: &HirFlatTrait, overrider: &HirFlatTrait) -> Option<HirFlatTrait> {
-        merge_core(base, &overrider.sources, |ans| {
+        merge_core(base, &overrider.sources, |_ans| {
             // nothing extra to write; but we will throw away override and use base.
         })
     }
