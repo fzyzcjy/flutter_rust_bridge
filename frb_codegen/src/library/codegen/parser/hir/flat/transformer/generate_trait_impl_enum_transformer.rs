@@ -22,7 +22,7 @@ pub(crate) fn transform(mut pack: HirFlatPack) -> anyhow::Result<HirFlatPack> {
 
 fn generate_trait_impl_enum(
     hir_trait: &HirFlatTrait,
-    trait_impls: &[MirTraitImpl],
+    _trait_impls: &[MirTraitImpl],
 ) -> anyhow::Result<String> {
     let trait_def_name = &hir_trait.name.name;
 
