@@ -25,5 +25,10 @@ fn handle_ty_dyn_trait(
     pack: &mut MirPack,
     ty_dyn_trait: &MirTypeDelegateDynTrait,
 ) -> anyhow::Result<()> {
+    let interest_impl_types = (pack.trait_impls.iter())
+        .filter(|item| item.trait_ty.name == ty_dyn_trait.trait_def_name)
+        .map(|item| item.impl_ty.clone())
+        .collect_vec();
+
     todo!()
 }
