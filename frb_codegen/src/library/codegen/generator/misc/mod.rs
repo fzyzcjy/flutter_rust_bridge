@@ -89,7 +89,11 @@ impl PathTexts {
 
     fn assert_no_duplicate_paths(&self) {
         let paths = self.paths();
-        assert_eq!(paths.iter().unique().collect_vec().len(), paths.len());
+        assert_eq!(
+            paths.iter().unique().collect_vec().len(),
+            paths.len(),
+            "assert_no_duplicate_paths failed paths={paths:?}"
+        );
     }
 
     pub(crate) fn paths(&self) -> Vec<PathBuf> {
