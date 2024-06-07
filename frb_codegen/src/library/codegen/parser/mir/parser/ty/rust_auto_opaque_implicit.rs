@@ -43,28 +43,9 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         namespace: Option<Namespace>,
         codec: Option<RustOpaqueCodecMode>,
     ) -> Result<(MirRustAutoOpaqueRaw, MirTypeRustOpaque)> {
-        // let inner = external_impl::parse_type(inner)?;
-
         let inner_str = inner.to_token_stream().to_string();
         let info = self.get_or_insert_rust_auto_opaque_info(&inner_str, namespace, codec);
-
-        let raw_segments = match inner {
-            Type::Path(inner) => extract_path_data(&inner.path)?,
-            _ => vec![],
-        };
-
-        Ok((
-            MirRustAutoOpaqueRaw {
-                string: inner_str.clone(),
-                segments: raw_segments,
-            },
-            MirTypeRustOpaque {
-                namespace: info.namespace,
-                inner: compute_rust_auto_opaque_inner(&inner_str),
-                codec: info.codec,
-                brief_name: true,
-            },
-        ))
+        parse_type_rust_auto_opaque_common_raw(inner, info.namespace, info.codec)
     }
 
     fn get_or_insert_rust_auto_opaque_info(
@@ -114,10 +95,32 @@ pub(crate) fn split_ownership_from_ty(ty: &Type) -> (Type, OwnershipMode) {
     }
 }
 
-pub(crate) fn compute_rust_auto_opaque_inner(inner_str: &str) -> MirRustOpaqueInner {
-    // TODO when all usages of a type do not require `&mut`, can drop this Mutex
-    // TODO similarly, can use std instead of `tokio`'s lock
-    MirRustOpaqueInner(format!(
-        "flutter_rust_bridge::for_generated::RustAutoOpaqueInner<{inner_str}>"
+pub(crate) fn parse_type_rust_auto_opaque_common_raw(
+    inner: Type,
+    namespace: Namespace,
+    codec: RustOpaqueCodecMode,
+) -> Result<(MirRustAutoOpaqueRaw, MirTypeRustOpaque)> {
+    let inner_str = inner.to_token_stream().to_string();
+
+    let raw_segments = match inner {
+        Type::Path(inner) => extract_path_data(&inner.path)?,
+        _ => vec![],
+    };
+
+    Ok((
+        MirRustAutoOpaqueRaw {
+            string: inner_str.clone(),
+            segments: raw_segments,
+        },
+        MirTypeRustOpaque {
+            namespace,
+            // TODO when all usages of a type do not require `&mut`, can drop this Mutex
+            // TODO similarly, can use std instead of `tokio`'s lock
+            inner: MirRustOpaqueInner(format!(
+                "flutter_rust_bridge::for_generated::RustAutoOpaqueInner<{inner_str}>"
+            )),
+            codec,
+            brief_name: true,
+        },
     ))
 }
