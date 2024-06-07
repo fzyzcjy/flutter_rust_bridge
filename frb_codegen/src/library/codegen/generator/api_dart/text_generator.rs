@@ -9,7 +9,7 @@ use crate::codegen::generator::misc::{generate_code_header, PathText, PathTexts}
 use crate::utils::basic_code::DartBasicHeaderCode;
 use crate::utils::path_utils::path_to_string;
 use anyhow::Context;
-use itertools::Itertools;
+use itertools::{concat, Itertools};
 use pathdiff::diff_paths;
 use std::path::{Path, PathBuf};
 
@@ -25,29 +25,26 @@ pub(super) fn generate(
     //     Namespace::compute_common_prefix(&spec.namespaced_items.keys().collect_vec());
     // debug!("common_namespace_prefix={common_namespace_prefix:?}");
 
-    let path_texts = PathTexts(
-        spec.namespaced_items
-            .iter()
-            .map(|(namespace, item)| {
-                let dart_output_path =
-                    compute_path_from_namespace(&config.dart_decl_base_output_path, namespace);
-                let text =
-                    generate_end_api_text(&dart_output_path, &config.dart_impl_output_path, item)?;
-                Ok(PathText::new(dart_output_path, text))
-            })
-            .collect::<anyhow::Result<Vec<_>>>()?,
-    );
+    let normal_output_texts = (spec.namespaced_items.iter())
+        .map(|(namespace, item)| {
+            let dart_output_path =
+                compute_path_from_namespace(&config.dart_decl_base_output_path, namespace);
+            let text =
+                generate_end_api_text(&dart_output_path, &config.dart_impl_output_path, item)?;
+            Ok(PathText::new(dart_output_path, text))
+        })
+        .collect::<anyhow::Result<Vec<_>>>()?;
 
-    let extra_impl_text = spec
-        .namespaced_items
-        .values()
-        .flat_map(|item| item.extra_impl_code.clone())
-        .sorted()
-        .join("");
+    let extra_output_text = PathText {
+        path: TODO,
+        text: (spec.namespaced_items.values())
+            .flat_map(|item| item.extra_impl_code.clone())
+            .sorted()
+            .join(""),
+    };
 
     Ok(ApiDartOutputText {
-        output_texts: path_texts,
-        output_extra_impl_text: extra_impl_text,
+        output_texts: PathTexts(concat([normal_output_texts, vec![extra_output_text]])),
     })
 }
 
