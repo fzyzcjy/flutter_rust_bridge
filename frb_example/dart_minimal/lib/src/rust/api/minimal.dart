@@ -8,3 +8,53 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<int> minimalAdder({required int a, required int b}) =>
     RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b);
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructOneWithTraitTwinNormal>>
+abstract class StructOneWithTraitTwinNormal implements SimpleTraitTwinNormal {
+  int get one;
+
+  void set one(int one);
+
+  Future<int> simpleTraitFnReceiverBorrowTwinNormal();
+
+  static Future<StructOneWithTraitTwinNormal> simpleTraitFnTwinNormal(
+          {required int value}) =>
+      RustLib.instance.api
+          .crateApiMinimalStructOneWithTraitTwinNormalSimpleTraitFnTwinNormal(
+              value: value);
+
+  static Future<int> simpleTraitFnWithDefaultImplTwinNormal() => RustLib
+      .instance.api
+      .crateApiMinimalStructOneWithTraitTwinNormalSimpleTraitFnWithDefaultImplTwinNormal();
+
+  void dispose();
+
+  bool get isDisposed;
+}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructTwoWithTraitTwinNormal>>
+abstract class StructTwoWithTraitTwinNormal implements SimpleTraitTwinNormal {
+  int get two;
+
+  void set two(int two);
+
+  Future<int> simpleTraitFnReceiverBorrowTwinNormal();
+
+  static Future<StructTwoWithTraitTwinNormal> simpleTraitFnTwinNormal(
+          {required int value}) =>
+      RustLib.instance.api
+          .crateApiMinimalStructTwoWithTraitTwinNormalSimpleTraitFnTwinNormal(
+              value: value);
+
+  static Future<int> simpleTraitFnWithDefaultImplTwinNormal() => RustLib
+      .instance.api
+      .crateApiMinimalStructTwoWithTraitTwinNormalSimpleTraitFnWithDefaultImplTwinNormal();
+
+  void dispose();
+
+  bool get isDisposed;
+}
+
+abstract class SimpleTraitTwinNormal {
+  Future<int> simpleTraitFnReceiverBorrowTwinNormal();
+}
