@@ -1,6 +1,6 @@
 use crate::codegen::dumper::internal_config::ConfigDumpContent;
 use crate::codegen::dumper::Dumper;
-use crate::codegen::generator::misc::PathTexts;
+use crate::codegen::generator::misc::path_texts::PathTexts;
 use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGeneratorContext;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFunc;
 use crate::codegen::misc::GeneratorProgressBarPack;

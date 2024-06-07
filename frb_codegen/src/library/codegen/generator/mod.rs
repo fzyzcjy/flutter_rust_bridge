@@ -1,6 +1,6 @@
 use crate::codegen::config::internal_config::GeneratorInternalConfig;
 use crate::codegen::dumper::Dumper;
-use crate::codegen::generator::misc::PathTexts;
+use crate::codegen::generator::misc::path_texts::PathTexts;
 use crate::codegen::ir::mir::pack::MirPack;
 use crate::codegen::misc::GeneratorProgressBarPack;
 
