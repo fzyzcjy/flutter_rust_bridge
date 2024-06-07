@@ -12,13 +12,14 @@ use itertools::Itertools;
 pub(crate) fn parse(
     hir_trait_impls: &[HirFlatTraitImpl],
     type_parser: &mut TypeParser,
-    config: &ParserMirInternalConfig,
+    default_stream_sink_codec: CodecMode,
+    default_rust_opaque_codec: RustOpaqueCodecMode,
 ) -> anyhow::Result<Vec<MirTraitImpl>> {
     let context = TypeParserParsingContext {
         initiated_namespace: CrateName::self_crate().namespace(), // just a dummy value
         func_attributes: FrbAttributes::parse(&[])?,
-        default_stream_sink_codec: config.default_stream_sink_codec,
-        default_rust_opaque_codec: config.default_rust_opaque_codec,
+        default_stream_sink_codec,
+        default_rust_opaque_codec,
         owner: None,
     };
 
