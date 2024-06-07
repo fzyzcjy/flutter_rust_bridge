@@ -1,9 +1,9 @@
+use crate::codegen::ir::mir::ty::delegate::{MirTypeDelegate, MirTypeDelegateDynTrait};
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::mir::type_parser::trait_def::parse_type_trait;
 use crate::codegen::parser::mir::type_parser::TypeParserWithContext;
 use crate::utils::syn_utils::ty_to_string;
 use syn::TypeTraitObject;
-use crate::codegen::ir::mir::ty::delegate::{MirTypeDelegate, MirTypeDelegateDynTrait};
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_trait_object(
@@ -29,10 +29,11 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     ) -> anyhow::Result<Option<MirType>> {
         if let Some(trait_name_path) = extract_trait_name_path(type_trait_object) {
             let trait_name = ty_to_string(&trait_name_path.segments.last().unwrap());
-            return Ok(parse_type_trait(&trait_name, self.inner).map(|ty| MirType::Delegate(MirTypeDelegate::DynTrait(MirTypeDelegateDynTrait {
-                trait_def_name: NamespacedName {},
-                inner: MirTypeEnumRef {},
-            }))));
+            return Ok(parse_type_trait(&trait_name, self.inner).map(|ty| {
+                MirType::Delegate(MirTypeDelegate::DynTrait(MirTypeDelegateDynTrait {
+                    trait_def_name: ty.name,
+                }))
+            }));
         }
         Ok(None)
     }
