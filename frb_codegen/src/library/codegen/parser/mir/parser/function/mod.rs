@@ -21,7 +21,6 @@ pub(crate) fn parse(
     let mir_funcs_auto_accessor = auto_accessor::parse(config, src_structs, type_parser)?;
 
     let mir_funcs = concat([mir_funcs_normal, mir_funcs_auto_accessor]);
-    // let mir_funcs = dedup_funcs(mir_funcs);
     let mir_funcs = (mir_funcs.into_iter())
         // to give downstream a stable output
         .sorted_by_cached_key(|func| func.name.clone())
