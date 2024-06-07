@@ -15,8 +15,7 @@ pub(crate) struct ParserMirInternalConfig {
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
 pub(crate) struct RustInputNamespacePack {
     pub rust_input_namespace_prefixes: Vec<Namespace>,
-    /// Namespaces that want to be skipped even in the early stage
-    pub early_skip_namespace_prefixes: Vec<Namespace>,
+    pub rust_output_path_namespace: Namespace,
 }
 
 impl RustInputNamespacePack {
