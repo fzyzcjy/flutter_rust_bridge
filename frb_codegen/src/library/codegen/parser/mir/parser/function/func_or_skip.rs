@@ -3,14 +3,14 @@ use crate::codegen::ir::mir::func::MirFunc;
 use crate::codegen::ir::mir::skip::MirSkip;
 
 pub(crate) enum MirFuncOrSkip {
-    Ok(MirFunc),
+    Func(MirFunc),
     Skip(MirSkip),
 }
 
 impl MirFuncOrSkip {
-    pub(crate) fn ok(self) -> MirFunc {
+    pub(crate) fn func(self) -> MirFunc {
         match self {
-            Self::Ok(inner) => inner,
+            Self::Func(inner) => inner,
             _ => unreachable!(),
         }
     }
@@ -24,8 +24,8 @@ impl MirFuncOrSkip {
 
     pub(crate) fn split(items: Vec<MirFuncOrSkip>) -> (Vec<MirFunc>, Vec<MirSkip>) {
         let (funcs, skips): (Vec<_>, Vec<_>) =
-            (items.into_iter()).partition(|item| matches!(item, MirFuncOrSkip::Ok(_)));
-        let funcs = funcs.into_iter().map(|x| x.ok()).collect_vec();
+            (items.into_iter()).partition(|item| matches!(item, MirFuncOrSkip::Func(_)));
+        let funcs = funcs.into_iter().map(|x| x.func()).collect_vec();
         let skips = skips.into_iter().map(|x| x.skip()).collect_vec();
         (funcs, skips)
     }

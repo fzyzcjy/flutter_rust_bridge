@@ -44,7 +44,7 @@ pub(crate) fn parse(
 
     Ok(infos
         .into_iter()
-        .map(|x| MirFuncOrSkip::Ok(x.mir_func))
+        .map(|x| MirFuncOrSkip::Func(x.mir_func))
         .collect_vec())
 }
 

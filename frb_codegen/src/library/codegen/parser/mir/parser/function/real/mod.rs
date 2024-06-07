@@ -161,7 +161,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             return Ok(create_output_skip(func, IgnoredMisc));
         }
 
-        Ok(MirFuncOrSkip::Ok(MirFunc {
+        Ok(MirFuncOrSkip::Func(MirFunc {
             name: NamespacedName::new(namespace_refined, func_name),
             dart_name,
             id: None, // to be filled later
