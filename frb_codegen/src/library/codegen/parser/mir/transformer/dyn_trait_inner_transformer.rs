@@ -7,13 +7,14 @@ use crate::codegen::ir::mir::ty::delegate::{
 use crate::codegen::ir::mir::ty::enumeration::{
     MirEnum, MirEnumIdent, MirEnumMode, MirEnumVariant, MirVariantKind,
 };
+use crate::codegen::ir::mir::ty::rust_auto_opaque_implicit::MirRustAutoOpaqueRaw;
 use crate::codegen::ir::mir::ty::rust_opaque::MirTypeRustOpaque;
 use crate::codegen::ir::mir::ty::structure::MirStruct;
 use crate::codegen::ir::mir::ty::MirType;
+use crate::codegen::parser::mir::parser::ty::enumeration::compute_enum_variant_kind_struct_name;
 use crate::if_then_some;
 use crate::utils::namespace::NamespacedName;
 use itertools::Itertools;
-use crate::codegen::ir::mir::ty::rust_auto_opaque_implicit::MirRustAutoOpaqueRaw;
 
 pub(crate) fn transform(mut pack: MirPack) -> anyhow::Result<MirPack> {
     let distinct_types = pack.distinct_types(None);
@@ -64,7 +65,7 @@ fn create_enum(interest_impl_types: &[MirType], enum_name: &NamespacedName) -> M
 }
 
 fn create_enum_variant(interest_ty: &MirType, enum_name: &NamespacedName) -> MirEnumVariant {
-    let variant_name = TODO;
+    let variant_name: MirIdent = TODO;
 
     let field_ty = MirType::Delegate(MirTypeDelegate::RustAutoOpaqueExplicit(
         MirTypeDelegateRustAutoOpaqueExplicit {
@@ -82,11 +83,11 @@ fn create_enum_variant(interest_ty: &MirType, enum_name: &NamespacedName) -> Mir
     ));
 
     MirEnumVariant {
-        name: MirIdent::new(variant_name.clone()),
-        wrapper_name: MirIdent::new(format!("{}_{}", enum_name.name, variant_name)),
+        name: variant_name.clone(),
+        wrapper_name: MirIdent::new(format!("{}_{}", enum_name.name, variant_name.raw)),
         comments: vec![],
         kind: MirVariantKind::Struct(MirStruct {
-            name: TODO,
+            name: compute_enum_variant_kind_struct_name(enum_name, &variant_name),
             wrapper_name: None,
             fields: vec![MirField {
                 ty: field_ty,
