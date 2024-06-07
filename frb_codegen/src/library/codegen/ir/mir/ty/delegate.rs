@@ -134,7 +134,7 @@ impl MirTypeTrait for MirTypeDelegate {
                 format!("AutoExplicit_{}", mir.inner.safe_ident())
             }
             MirTypeDelegate::DynTrait(mir) => {
-                format!("DynTrait_{}", mir.inner.safe_ident())
+                format!("DynTrait_{}", mir.trait_def_name.name)
             }
         }
     }
@@ -266,7 +266,7 @@ impl MirTypeDelegate {
             MirTypeDelegate::StreamSink(_) => MirType::Delegate(MirTypeDelegate::String),
             MirTypeDelegate::BigPrimitive(_) => MirType::Delegate(MirTypeDelegate::String),
             MirTypeDelegate::RustAutoOpaqueExplicit(mir) => MirType::RustOpaque(mir.inner.clone()),
-            MirTypeDelegate::DynTrait(mir) => MirType::EnumRef(mir.inner.clone()),
+            MirTypeDelegate::DynTrait(mir) => MirType::EnumRef(todo!()),
         }
     }
 }
