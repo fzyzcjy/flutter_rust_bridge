@@ -8,7 +8,7 @@ use crate::codegen::parser::mir::parser::ty::{TypeParser, TypeParserParsingConte
 use crate::utils::crate_name::CrateName;
 use itertools::Itertools;
 
-pub(super) fn parse(
+pub(crate) fn parse(
     hir_trait_impls: &[HirFlatTraitImpl],
     type_parser: &mut TypeParser,
     default_stream_sink_codec: CodecMode,
