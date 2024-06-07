@@ -38,9 +38,9 @@ pub(crate) fn parse(
     src_fns: &[HirFlatFunction],
     type_parser: &mut TypeParser,
     config: &ParserMirInternalConfig,
-) -> anyhow::Result<(Vec<MirFunc>, Vec<MirSkip>)> {
+) -> anyhow::Result<Vec<ParseFunctionOutput>> {
     let mut function_parser = FunctionParser::new(type_parser);
-    let (mir_funcs, mir_skips): (Vec<_>, Vec<_>) = (src_fns.iter())
+    (src_fns.iter())
         // Sort to make things stable. The order of parsing functions will affect things like, e.g.,
         // which file an opaque type is put in.
         .sorted_by_key(|f| f.owner_and_name_for_dedup())
@@ -53,14 +53,7 @@ pub(crate) fn parse(
                 config.stop_on_error,
             )
         })
-        .collect::<anyhow::Result<Vec<_>>>()?
-        .into_iter()
-        .partition(|item| matches!(item, ParseFunctionOutput::Ok(_)));
-
-    let mir_funcs = mir_funcs.into_iter().map(|x| x.ok()).collect_vec();
-    let mir_skips = (mir_skips.into_iter()).map(|x| x.skip()).collect_vec();
-
-    Ok((mir_funcs, mir_skips))
+        .collect()
 }
 
 struct FunctionParser<'a, 'b> {

@@ -3,6 +3,7 @@ use crate::codegen::ir::hir::flat::struct_or_enum::HirFlatStruct;
 use crate::codegen::ir::mir::func::MirFunc;
 use crate::codegen::ir::mir::skip::MirSkip;
 use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
+use crate::codegen::parser::mir::parser::function::real::structs::ParseFunctionOutput;
 use crate::codegen::parser::mir::parser::ty::TypeParser;
 use itertools::{concat, Itertools};
 use std::collections::HashMap;
@@ -35,4 +36,12 @@ fn sort_and_add_func_id(funcs: Vec<MirFunc>) -> Vec<MirFunc> {
             ..f
         })
         .collect_vec()
+}
+
+fn split_func_and_skip(items: Vec<ParseFunctionOutput>) -> (Vec<MirFunc>, Vec<MirSkip>) {
+    let (funcs, skips): (Vec<_>, Vec<_>) =
+        (items.into_iter()).partition(|item| matches!(item, ParseFunctionOutput::Ok(_)));
+    let funcs = funcs.into_iter().map(|x| x.ok()).collect_vec();
+    let skips = skips.into_iter().map(|x| x.skip()).collect_vec();
+    (funcs, skips)
 }
