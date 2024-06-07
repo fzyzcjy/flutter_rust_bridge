@@ -5,13 +5,14 @@ use crate::codegen::ir::hir::flat::struct_or_enum::HirFlatStruct;
 use crate::codegen::ir::mir::func::{MirFunc, MirFuncAccessorMode, OwnershipMode};
 use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::ir::mir::ty::{MirContext, MirType};
-use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
 use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
+use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
+use crate::codegen::parser::mir::parser::function::func_or_skip::MirFuncOrSkip;
 use crate::codegen::parser::mir::parser::misc::extract_src_types_in_paths;
-use crate::codegen::parser::mir::sanity_checker::auto_accessor_checker;
 use crate::codegen::parser::mir::parser::ty::{
     TypeParser, TypeParserParsingContext, TypeParserWithContext,
 };
+use crate::codegen::parser::mir::sanity_checker::auto_accessor_checker;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use crate::utils::namespace::NamespacedName;
 use field::parse_auto_accessor_of_field;
@@ -22,7 +23,7 @@ pub(crate) fn parse(
     config: &ParserMirInternalConfig,
     src_structs: &HashMap<String, &HirFlatStruct>,
     type_parser: &mut TypeParser,
-) -> anyhow::Result<Vec<MirFunc>> {
+) -> anyhow::Result<Vec<MirFuncOrSkip>> {
     let src_structs_in_paths =
         extract_src_types_in_paths(src_structs, &config.rust_input_namespace_pack)?;
 
@@ -41,7 +42,10 @@ pub(crate) fn parse(
             .collect_vec(),
     );
 
-    Ok(infos.into_iter().map(|x| x.mir_func).collect_vec())
+    Ok(infos
+        .into_iter()
+        .map(|x| MirFuncOrSkip::Ok(x.mir_func))
+        .collect_vec())
 }
 
 fn parse_auto_accessors_of_struct(
