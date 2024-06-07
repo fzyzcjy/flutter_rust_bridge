@@ -379,6 +379,12 @@ flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
     flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructTwoWithTraitTwinNormal>
 );
 
+// Section: extra_from_parser
+
+enum SimpleTraitTwinNormalImpl {
+    Hello(i32),
+}
+
 // Section: dart2rust
 
 impl SseDecode for StructOneWithTraitTwinNormal {
