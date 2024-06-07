@@ -31,7 +31,7 @@ pub(crate) fn parse(
         hir_flat.types_map(),
     );
 
-    let (mir_funcs, mir_skips) =
+    let (funcs_all, skipped_functions) =
         parser::function::parse(config, &hir_flat.functions, &mut type_parser, &structs_map)?;
     let trait_impls = parser::trait_impl::parse(
         &hir_flat.trait_impls,
@@ -43,13 +43,13 @@ pub(crate) fn parse(
     let (struct_pool, enum_pool, dart_code_of_type) = type_parser.consume();
 
     let mut ans = MirPack {
-        funcs_all: mir_funcs,
+        funcs_all,
         struct_pool,
         enum_pool,
         dart_code_of_type,
         existing_handler: hir_flat.existing_handler.clone(),
         unused_types: vec![],
-        skipped_functions: mir_skips,
+        skipped_functions,
         trait_impls,
     };
 
