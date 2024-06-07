@@ -73,28 +73,8 @@ fn parse_mir_funcs(
     type_parser: &mut TypeParser,
     src_structs: &HashMap<String, &HirFlatStruct>,
 ) -> anyhow::Result<(Vec<MirFunc>, Vec<MirSkip>)> {
-    let mut function_parser = FunctionParser::new(type_parser);
-
-    let (mir_funcs_normal, mir_skips): (Vec<_>, Vec<_>) = src_fns
-        .iter()
-        // Sort to make things stable. The order of parsing functions will affect things like, e.g.,
-        // which file an opaque type is put in.
-        .sorted_by_key(|f| f.owner_and_name_for_dedup())
-        .map(|f| {
-            function_parser.parse_function(
-                f,
-                &config.force_codec_mode_pack,
-                config.default_stream_sink_codec,
-                config.default_rust_opaque_codec,
-                config.stop_on_error,
-            )
-        })
-        .collect::<anyhow::Result<Vec<_>>>()?
-        .into_iter()
-        .partition(|item| matches!(item, ParseFunctionOutput::Ok(_)));
-    let mir_funcs_normal = mir_funcs_normal.into_iter().map(|x| x.ok()).collect_vec();
-    let mir_skips = (mir_skips.into_iter()).map(|x| x.skip()).collect_vec();
-
+    let (mir_funcs_normal, mir_skips) =
+        parser::function::parse_functions(src_fns, type_parser, config)?;
     let mir_funcs_auto_accessor = parse_auto_accessors(config, src_structs, type_parser)?;
 
     let mir_funcs = concat([mir_funcs_normal, mir_funcs_auto_accessor]);

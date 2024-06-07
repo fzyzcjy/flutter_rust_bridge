@@ -13,6 +13,7 @@ use crate::codegen::ir::mir::ty::rust_auto_opaque_implicit::MirTypeRustAutoOpaqu
 use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::ir::mir::ty::trait_def::MirTypeTraitDef;
 use crate::codegen::ir::mir::ty::MirType;
+use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
 use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
 use crate::codegen::parser::mir::parser::function::structs::ParseFunctionOutput;
 use crate::codegen::parser::mir::parser::ty::misc::parse_comments;
@@ -21,7 +22,7 @@ use crate::codegen::parser::mir::parser::ty::{TypeParser, TypeParserParsingConte
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use crate::utils::namespace::{Namespace, NamespacedName};
 use anyhow::{bail, Context};
-use itertools::concat;
+use itertools::{concat, Itertools};
 use log::{debug, warn};
 use std::fmt::Debug;
 use syn::*;
@@ -33,17 +34,46 @@ pub(crate) mod output;
 pub(crate) mod structs;
 mod transformer;
 
-pub(crate) struct FunctionParser<'a, 'b> {
+pub(crate) fn parse_functions(
+    src_fns: &[HirFlatFunction],
+    type_parser: &mut TypeParser,
+    config: &ParserMirInternalConfig,
+) -> anyhow::Result<(Vec<MirFunc>, Vec<MirSkip>)> {
+    let mut function_parser = FunctionParser::new(type_parser);
+    let (mir_funcs, mir_skips): (Vec<_>, Vec<_>) = (src_fns.iter())
+        // Sort to make things stable. The order of parsing functions will affect things like, e.g.,
+        // which file an opaque type is put in.
+        .sorted_by_key(|f| f.owner_and_name_for_dedup())
+        .map(|f| {
+            function_parser.parse_function(
+                f,
+                &config.force_codec_mode_pack,
+                config.default_stream_sink_codec,
+                config.default_rust_opaque_codec,
+                config.stop_on_error,
+            )
+        })
+        .collect::<anyhow::Result<Vec<_>>>()?
+        .into_iter()
+        .partition(|item| matches!(item, ParseFunctionOutput::Ok(_)));
+
+    let mir_funcs = mir_funcs.into_iter().map(|x| x.ok()).collect_vec();
+    let mir_skips = (mir_skips.into_iter()).map(|x| x.skip()).collect_vec();
+
+    Ok((mir_funcs, mir_skips))
+}
+
+struct FunctionParser<'a, 'b> {
     type_parser: &'a mut TypeParser<'b>,
 }
 
 impl<'a, 'b> FunctionParser<'a, 'b> {
-    pub(crate) fn new(type_parser: &'a mut TypeParser<'b>) -> Self {
+    fn new(type_parser: &'a mut TypeParser<'b>) -> Self {
         Self { type_parser }
     }
 
     #[allow(clippy::too_many_arguments)]
-    pub(crate) fn parse_function(
+    fn parse_function(
         &mut self,
         func: &HirFlatFunction,
         force_codec_mode_pack: &Option<CodecModePack>,
