@@ -5,6 +5,7 @@ use crate::utils::namespace::NamespacedName;
 #[derive(Clone, serde::Serialize, Debug)]
 pub struct HirFlatTrait {
     pub(crate) name: NamespacedName,
+    pub(crate) attrs: Vec<syn::Attribute>,
     pub(crate) sources: Vec<HirGenerationSource>,
 }
 
