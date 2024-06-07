@@ -3,7 +3,7 @@ use md5::{Digest, Md5};
 use proc_macro2::TokenStream;
 use quote::quote;
 use quote::ToTokens;
-use syn::{ImplItem, ItemImpl};
+use syn::{ImplItem, Item, ItemImpl};
 
 pub(crate) fn handle_external_impl(attribute: TokenStream, item: TokenStream) -> TokenStream {
     if attribute.to_string() != ATTR_KEYWORD {
@@ -14,8 +14,11 @@ pub(crate) fn handle_external_impl(attribute: TokenStream, item: TokenStream) ->
     let encoded_original_item =
         create_frb_encoded_comment(&format!("#[frb({})]{}", attribute, &item_string));
 
-    let item_syn: ItemImpl = syn::parse(item.into()).unwrap();
-    let converted_item = handle_syn_item_impl(item_syn, &item_string);
+    let item_syn: syn::Item = syn::parse(item.into()).unwrap();
+    let converted_item = match item_syn {
+        Item::Impl(x) => handle_syn_item_impl(x, &item_string),
+        x => quote! { #x },
+    };
 
     quote! {
         #encoded_original_item
