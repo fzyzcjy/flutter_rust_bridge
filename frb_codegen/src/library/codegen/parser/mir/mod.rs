@@ -3,7 +3,6 @@ mod auto_accessor_parser;
 pub(crate) mod function_parser;
 pub(crate) mod internal_config;
 pub(crate) mod misc;
-pub(crate) mod reader;
 pub(crate) mod sanity_checker;
 mod trait_impl_parser;
 pub(crate) mod type_parser;
