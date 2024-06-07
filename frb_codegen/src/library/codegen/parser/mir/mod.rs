@@ -20,8 +20,8 @@ pub(crate) fn parse(
     let pack = transformer::filter_trait_impl_transformer::transform(pack)?;
     dump(dumper, "2_filter_trait_impl_transformer", &pack)?;
 
-    let pack = transformer::dyn_trait_inner_transformer::transform(pack)?;
-    dump(dumper, "3_dyn_trait_inner_transformer", &pack)?;
+    // let pack = transformer::dyn_trait_inner_transformer::transform(pack)?;
+    // dump(dumper, "3_dyn_trait_inner_transformer", &pack)?;
 
     Ok(pack)
 }

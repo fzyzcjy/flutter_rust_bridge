@@ -30,7 +30,7 @@ pub enum MirTypeDelegate {
     StreamSink(MirTypeDelegateStreamSink),
     BigPrimitive(MirTypeDelegateBigPrimitive),
     RustAutoOpaqueExplicit(MirTypeDelegateRustAutoOpaqueExplicit),
-    DynTrait(MirTypeDelegateDynTrait),
+    // DynTrait(MirTypeDelegateDynTrait),
 }
 
 pub struct MirTypeDelegateArray {
@@ -84,9 +84,9 @@ pub struct MirTypeDelegateRustAutoOpaqueExplicit {
     pub raw: MirRustAutoOpaqueRaw,
 }
 
-pub struct MirTypeDelegateDynTrait {
-    pub trait_def_name: NamespacedName,
-}
+// pub struct MirTypeDelegateDynTrait {
+//     pub trait_def_name: NamespacedName,
+// }
 }
 
 impl MirTypeTrait for MirTypeDelegate {
@@ -132,7 +132,7 @@ impl MirTypeTrait for MirTypeDelegate {
             MirTypeDelegate::RustAutoOpaqueExplicit(mir) => {
                 format!("AutoExplicit_{}", mir.inner.safe_ident())
             }
-            MirTypeDelegate::DynTrait(mir) => mir.safe_ident(),
+            // MirTypeDelegate::DynTrait(mir) => mir.safe_ident(),
         }
     }
 
@@ -195,7 +195,7 @@ impl MirTypeTrait for MirTypeDelegate {
             MirTypeDelegate::RustAutoOpaqueExplicit(mir) => {
                 format!("RustAutoOpaque{}<{}>", mir.inner.codec, mir.raw.string)
             }
-            MirTypeDelegate::DynTrait(mir) => format!("dyn <{}>", mir.trait_def_name.name),
+            // MirTypeDelegate::DynTrait(mir) => format!("dyn <{}>", mir.trait_def_name.name),
         }
     }
 
@@ -263,7 +263,7 @@ impl MirTypeDelegate {
             MirTypeDelegate::StreamSink(_) => MirType::Delegate(MirTypeDelegate::String),
             MirTypeDelegate::BigPrimitive(_) => MirType::Delegate(MirTypeDelegate::String),
             MirTypeDelegate::RustAutoOpaqueExplicit(mir) => MirType::RustOpaque(mir.inner.clone()),
-            MirTypeDelegate::DynTrait(mir) => mir.inner(),
+            // MirTypeDelegate::DynTrait(mir) => mir.inner(),
         }
     }
 }
@@ -305,26 +305,26 @@ impl MirTypeDelegateArray {
     }
 }
 
-impl MirTypeDelegateDynTrait {
-    pub fn inner(&self) -> MirType {
-        MirType::EnumRef(self.inner_raw())
-    }
-
-    pub fn inner_raw(&self) -> MirTypeEnumRef {
-        MirTypeEnumRef {
-            ident: MirEnumIdent(NamespacedName::new(
-                self.trait_def_name.namespace.clone(),
-                self.inner_enum_name(),
-            )),
-            is_exception: false,
-        }
-    }
-
-    pub(crate) fn inner_enum_name(&self) -> String {
-        format!("{}DynImplEnum", self.trait_def_name.name)
-    }
-
-    pub(crate) fn safe_ident(&self) -> String {
-        format!("DynTrait_{}", self.trait_def_name.name)
-    }
-}
+// impl MirTypeDelegateDynTrait {
+//     pub fn inner(&self) -> MirType {
+//         MirType::EnumRef(self.inner_raw())
+//     }
+//
+//     pub fn inner_raw(&self) -> MirTypeEnumRef {
+//         MirTypeEnumRef {
+//             ident: MirEnumIdent(NamespacedName::new(
+//                 self.trait_def_name.namespace.clone(),
+//                 self.inner_enum_name(),
+//             )),
+//             is_exception: false,
+//         }
+//     }
+//
+//     pub(crate) fn inner_enum_name(&self) -> String {
+//         format!("{}DynImplEnum", self.trait_def_name.name)
+//     }
+//
+//     pub(crate) fn safe_ident(&self) -> String {
+//         format!("DynTrait_{}", self.trait_def_name.name)
+//     }
+// }
