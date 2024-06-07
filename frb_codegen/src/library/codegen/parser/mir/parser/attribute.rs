@@ -111,6 +111,10 @@ impl FrbAttributes {
         self.any_eq(&FrbAttribute::External)
     }
 
+    pub(crate) fn generate_impl_enum(&self) -> bool {
+        self.any_eq(&FrbAttribute::GenerateImplEnum)
+    }
+
     pub(crate) fn rust_opaque_codec(&self) -> Option<RustOpaqueCodecMode> {
         if self.any_eq(&FrbAttribute::RustOpaqueCodecMoi) {
             Some(RustOpaqueCodecMode::Moi)
@@ -191,6 +195,7 @@ mod frb_keyword {
     syn::custom_keyword!(non_eq);
     syn::custom_keyword!(positional);
     syn::custom_keyword!(external);
+    syn::custom_keyword!(generate_impl_enum);
     syn::custom_keyword!(rust_opaque_codec_moi);
     syn::custom_keyword!(serialize);
     syn::custom_keyword!(semi_serialize);
@@ -229,6 +234,7 @@ enum FrbAttribute {
     NonEq,
     Positional,
     External,
+    GenerateImplEnum,
     RustOpaqueCodecMoi,
     Serialize,
     // NOTE: Undocumented, since this name may be suboptimal and is subject to change
@@ -266,6 +272,14 @@ impl Parse for FrbAttribute {
             .or_else(|| parse_keyword::<non_eq, _>(input, &lookahead, non_eq, NonEq))
             .or_else(|| parse_keyword::<positional, _>(input, &lookahead, positional, Positional))
             .or_else(|| parse_keyword::<external, _>(input, &lookahead, external, External))
+            .or_else(|| {
+                parse_keyword::<generate_impl_enum, _>(
+                    input,
+                    &lookahead,
+                    generate_impl_enum,
+                    GenerateImplEnum,
+                )
+            })
             .or_else(|| {
                 parse_keyword::<rust_opaque_codec_moi, _>(
                     input,
@@ -659,6 +673,11 @@ mod tests {
     #[test]
     fn test_external() {
         simple_keyword_tester("external", FrbAttribute::External);
+    }
+
+    #[test]
+    fn test_generate_impl_enum() {
+        simple_keyword_tester("generate_impl_enum", FrbAttribute::GenerateImplEnum);
     }
 
     #[test]
