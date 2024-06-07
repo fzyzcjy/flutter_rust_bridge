@@ -1,7 +1,7 @@
 use crate::codegen::ir::mir::ty::delegate::{MirTypeDelegate, MirTypeDelegateDynTrait};
 use crate::codegen::ir::mir::ty::MirType;
-use crate::codegen::parser::mir::type_parser::trait_def::parse_type_trait;
-use crate::codegen::parser::mir::type_parser::TypeParserWithContext;
+use crate::codegen::parser::mir::parser::ty::trait_def::parse_type_trait;
+use crate::codegen::parser::mir::parser::ty::TypeParserWithContext;
 use crate::utils::syn_utils::ty_to_string;
 use syn::TypeTraitObject;
 

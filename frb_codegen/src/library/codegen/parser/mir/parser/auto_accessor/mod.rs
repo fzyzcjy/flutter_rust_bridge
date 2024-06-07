@@ -5,11 +5,11 @@ use crate::codegen::ir::hir::flat::struct_or_enum::HirFlatStruct;
 use crate::codegen::ir::mir::func::{MirFunc, MirFuncAccessorMode, OwnershipMode};
 use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::ir::mir::ty::{MirContext, MirType};
-use crate::codegen::parser::mir::attribute::FrbAttributes;
+use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
 use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
 use crate::codegen::parser::mir::misc::extract_src_types_in_paths;
 use crate::codegen::parser::mir::sanity_checker::auto_accessor_checker;
-use crate::codegen::parser::mir::type_parser::{
+use crate::codegen::parser::mir::parser::ty::{
     TypeParser, TypeParserParsingContext, TypeParserWithContext,
 };
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;

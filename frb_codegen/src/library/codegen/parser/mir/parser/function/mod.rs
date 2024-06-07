@@ -13,11 +13,11 @@ use crate::codegen::ir::mir::ty::rust_auto_opaque_implicit::MirTypeRustAutoOpaqu
 use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::ir::mir::ty::trait_def::MirTypeTraitDef;
 use crate::codegen::ir::mir::ty::MirType;
-use crate::codegen::parser::mir::attribute::FrbAttributes;
-use crate::codegen::parser::mir::function_parser::structs::ParseFunctionOutput;
-use crate::codegen::parser::mir::type_parser::misc::parse_comments;
-use crate::codegen::parser::mir::type_parser::trait_def::parse_type_trait;
-use crate::codegen::parser::mir::type_parser::{TypeParser, TypeParserParsingContext};
+use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
+use crate::codegen::parser::mir::parser::function::structs::ParseFunctionOutput;
+use crate::codegen::parser::mir::parser::ty::misc::parse_comments;
+use crate::codegen::parser::mir::parser::ty::trait_def::parse_type_trait;
+use crate::codegen::parser::mir::parser::ty::{TypeParser, TypeParserParsingContext};
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use crate::utils::namespace::{Namespace, NamespacedName};
 use anyhow::{bail, Context};

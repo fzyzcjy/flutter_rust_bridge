@@ -2,9 +2,9 @@ use crate::codegen::ir::mir::func::OwnershipMode;
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
 use crate::codegen::ir::mir::ty::rust_auto_opaque_implicit::MirTypeRustAutoOpaqueImplicit;
 use crate::codegen::ir::mir::ty::MirType;
-use crate::codegen::parser::mir::function_parser::{FunctionParser, FunctionPartialInfo};
-use crate::codegen::parser::mir::type_parser::result::parse_type_maybe_result;
-use crate::codegen::parser::mir::type_parser::TypeParserParsingContext;
+use crate::codegen::parser::mir::parser::function::{FunctionParser, FunctionPartialInfo};
+use crate::codegen::parser::mir::parser::ty::result::parse_type_maybe_result;
+use crate::codegen::parser::mir::parser::ty::TypeParserParsingContext;
 use syn::*;
 
 impl<'a, 'b> FunctionParser<'a, 'b> {

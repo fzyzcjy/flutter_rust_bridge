@@ -5,8 +5,8 @@ use crate::codegen::ir::mir::ty::MirType::{
     Boxed, DartFn, DartOpaque, Delegate, Dynamic, EnumRef, GeneralList, Optional, Primitive,
     PrimitiveList, Record, RustAutoOpaqueImplicit, RustOpaque, StructRef,
 };
-use crate::codegen::parser::mir::type_parser::unencodable::SplayedSegment;
-use crate::codegen::parser::mir::type_parser::TypeParserWithContext;
+use crate::codegen::parser::mir::parser::ty::unencodable::SplayedSegment;
+use crate::codegen::parser::mir::parser::ty::TypeParserWithContext;
 use anyhow::ensure;
 use quote::ToTokens;
 use syn::TypePath;

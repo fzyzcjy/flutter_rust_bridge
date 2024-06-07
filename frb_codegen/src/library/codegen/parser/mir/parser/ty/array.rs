@@ -3,7 +3,7 @@ use crate::codegen::ir::mir::ty::delegate::{
 };
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::ir::mir::ty::MirType::{Delegate, Primitive};
-use crate::codegen::parser::mir::type_parser::TypeParserWithContext;
+use crate::codegen::parser::mir::parser::ty::TypeParserWithContext;
 use crate::utils::namespace::Namespace;
 use anyhow::bail;
 use std::collections::HashMap;

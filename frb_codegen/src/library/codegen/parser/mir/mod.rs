@@ -9,13 +9,13 @@ use crate::codegen::ir::hir::flat::struct_or_enum::HirFlatStruct;
 use crate::codegen::ir::mir::func::MirFunc;
 use crate::codegen::ir::mir::pack::MirPack;
 use crate::codegen::ir::mir::skip::MirSkip;
-use crate::codegen::parser::mir::auto_accessor_parser::parse_auto_accessors;
-use crate::codegen::parser::mir::function_parser::structs::ParseFunctionOutput;
-use crate::codegen::parser::mir::function_parser::FunctionParser;
+use crate::codegen::parser::mir::parser::auto_accessor::parse_auto_accessors;
+use crate::codegen::parser::mir::parser::function::structs::ParseFunctionOutput;
+use crate::codegen::parser::mir::parser::function::FunctionParser;
 use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
 use crate::codegen::parser::mir::sanity_checker::opaque_inside_translatable_checker::check_opaque_inside_translatable;
 use crate::codegen::parser::mir::sanity_checker::unused_checker::get_unused_types;
-use crate::codegen::parser::mir::type_parser::TypeParser;
+use crate::codegen::parser::mir::parser::ty::TypeParser;
 use itertools::{concat, Itertools};
 use std::collections::HashMap;
 

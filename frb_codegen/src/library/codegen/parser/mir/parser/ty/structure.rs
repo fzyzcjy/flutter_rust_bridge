@@ -5,13 +5,13 @@ use crate::codegen::ir::mir::ty::rust_auto_opaque_implicit::MirTypeRustAutoOpaqu
 use crate::codegen::ir::mir::ty::structure::{MirStruct, MirStructIdent, MirTypeStructRef};
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::ir::mir::ty::MirType::StructRef;
-use crate::codegen::parser::mir::attribute::FrbAttributes;
-use crate::codegen::parser::mir::type_parser::enum_or_struct::{
+use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
+use crate::codegen::parser::mir::parser::ty::enum_or_struct::{
     parse_struct_or_enum_should_ignore, EnumOrStructParser, EnumOrStructParserInfo,
 };
-use crate::codegen::parser::mir::type_parser::misc::parse_comments;
-use crate::codegen::parser::mir::type_parser::unencodable::SplayedSegment;
-use crate::codegen::parser::mir::type_parser::TypeParserWithContext;
+use crate::codegen::parser::mir::parser::ty::misc::parse_comments;
+use crate::codegen::parser::mir::parser::ty::unencodable::SplayedSegment;
+use crate::codegen::parser::mir::parser::ty::TypeParserWithContext;
 use crate::utils::crate_name::CrateName;
 use crate::utils::namespace::{Namespace, NamespacedName};
 use anyhow::bail;

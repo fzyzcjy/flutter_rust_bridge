@@ -2,9 +2,9 @@ use crate::codegen::generator::codec::structs::CodecMode;
 use crate::codegen::ir::hir::flat::trait_impl::HirFlatTraitImpl;
 use crate::codegen::ir::mir::trait_impl::MirTraitImpl;
 use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
-use crate::codegen::parser::mir::attribute::FrbAttributes;
-use crate::codegen::parser::mir::type_parser::trait_def::parse_type_trait;
-use crate::codegen::parser::mir::type_parser::{TypeParser, TypeParserParsingContext};
+use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
+use crate::codegen::parser::mir::parser::ty::trait_def::parse_type_trait;
+use crate::codegen::parser::mir::parser::ty::{TypeParser, TypeParserParsingContext};
 use crate::utils::crate_name::CrateName;
 use itertools::Itertools;
 

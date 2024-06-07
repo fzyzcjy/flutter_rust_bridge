@@ -1,7 +1,7 @@
 use crate::codegen::ir::mir::ty::MirType;
-use crate::codegen::parser::mir::type_parser::path_data::extract_path_data;
-use crate::codegen::parser::mir::type_parser::unencodable::splay_segments;
-use crate::codegen::parser::mir::type_parser::TypeParserWithContext;
+use crate::codegen::parser::mir::parser::ty::path_data::extract_path_data;
+use crate::codegen::parser::mir::parser::ty::unencodable::splay_segments;
+use crate::codegen::parser::mir::parser::ty::TypeParserWithContext;
 use anyhow::bail;
 use quote::ToTokens;
 use syn::{Path, QSelf, TypePath};

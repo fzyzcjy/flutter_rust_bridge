@@ -1,7 +1,7 @@
 use crate::codegen::ir::mir::ty::trait_def::MirTypeTraitDef;
 use crate::codegen::ir::mir::ty::MirType;
-use crate::codegen::parser::mir::type_parser::unencodable::SplayedSegment;
-use crate::codegen::parser::mir::type_parser::{TypeParser, TypeParserWithContext};
+use crate::codegen::parser::mir::parser::ty::unencodable::SplayedSegment;
+use crate::codegen::parser::mir::parser::ty::{TypeParser, TypeParserWithContext};
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_path_data_trait(
