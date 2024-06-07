@@ -54,9 +54,10 @@ fn transform_component_raw<T: Debug + Clone + Serialize, K: Eq + Hash + Debug>(
     merge: impl Fn(&dyn BaseMerger, &T, &T) -> Option<T>,
 ) -> Vec<T> {
     let mergers: Vec<Box<dyn BaseMerger>> = vec![
-        Box::new(TraitDefDefaultImplMerger),
         Box::new(ThirdPartyOverrideMerger),
         Box::new(FunctionFrbOverrideMerger),
+        // NOTE ordering
+        Box::new(TraitDefDefaultImplMerger),
     ];
 
     (items.into_iter())
