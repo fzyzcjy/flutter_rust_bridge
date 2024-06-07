@@ -43,7 +43,11 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for EnumRefWireDartCodecCstGenera
 }
 
 impl<'a> EnumRefWireDartCodecCstGenerator<'a> {
-    fn generate_api_fill_to_wire_body_variant(&self, index: usize, variant: &MirEnumVariant) -> String {
+    fn generate_api_fill_to_wire_body_variant(
+        &self,
+        index: usize,
+        variant: &MirEnumVariant,
+    ) -> String {
         let wrapper_name = &variant.wrapper_name;
         let variant_name = &variant.name;
 

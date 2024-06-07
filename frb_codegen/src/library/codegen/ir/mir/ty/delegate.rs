@@ -1,5 +1,5 @@
 use crate::codegen::generator::codec::structs::CodecMode;
-use crate::codegen::ir::mir::ty::enumeration::{MirEnumIdent, MirTypeEnumRef};
+use crate::codegen::ir::mir::ty::enumeration::MirTypeEnumRef;
 use crate::codegen::ir::mir::ty::general_list::{mir_list, MirTypeGeneralList};
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
 use crate::codegen::ir::mir::ty::primitive_list::MirTypePrimitiveList;
@@ -8,7 +8,6 @@ use crate::codegen::ir::mir::ty::rust_auto_opaque_implicit::MirRustAutoOpaqueRaw
 use crate::codegen::ir::mir::ty::rust_opaque::MirTypeRustOpaque;
 use crate::codegen::ir::mir::ty::{MirContext, MirType, MirTypeTrait};
 use crate::utils::namespace::Namespace;
-use crate::utils::namespace::NamespacedName;
 
 crate::mir! {
 /// types that delegate to another type
@@ -131,8 +130,7 @@ impl MirTypeTrait for MirTypeDelegate {
             MirTypeDelegate::BigPrimitive(mir) => mir.to_string(),
             MirTypeDelegate::RustAutoOpaqueExplicit(mir) => {
                 format!("AutoExplicit_{}", mir.inner.safe_ident())
-            }
-            // MirTypeDelegate::DynTrait(mir) => mir.safe_ident(),
+            } // MirTypeDelegate::DynTrait(mir) => mir.safe_ident(),
         }
     }
 
@@ -194,8 +192,7 @@ impl MirTypeTrait for MirTypeDelegate {
             },
             MirTypeDelegate::RustAutoOpaqueExplicit(mir) => {
                 format!("RustAutoOpaque{}<{}>", mir.inner.codec, mir.raw.string)
-            }
-            // MirTypeDelegate::DynTrait(mir) => format!("dyn <{}>", mir.trait_def_name.name),
+            } // MirTypeDelegate::DynTrait(mir) => format!("dyn <{}>", mir.trait_def_name.name),
         }
     }
 
