@@ -11,6 +11,7 @@ pub fn minimal_adder(a: i32, b: i32) -> i32 {
 
 // TODO temp demo
 
+#[frb(generate_impl_enum)]
 pub trait SimpleTraitTwinNormal {
     fn simple_trait_fn_twin_normal(value: i32) -> Self;
 
