@@ -5,7 +5,7 @@ use crate::codegen::ir::mir::ty::rust_auto_opaque_implicit::MirTypeRustAutoOpaqu
 use crate::codegen::ir::mir::ty::structure::{MirStruct, MirStructIdent, MirTypeStructRef};
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::ir::mir::ty::MirType::StructRef;
-use crate::codegen::parser::mir::attribute_parser::FrbAttributes;
+use crate::codegen::parser::mir::attribute::FrbAttributes;
 use crate::codegen::parser::mir::type_parser::enum_or_struct::{
     parse_struct_or_enum_should_ignore, EnumOrStructParser, EnumOrStructParserInfo,
 };

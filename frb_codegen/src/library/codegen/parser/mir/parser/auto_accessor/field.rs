@@ -6,7 +6,7 @@ use crate::codegen::ir::mir::func::{
 use crate::codegen::ir::mir::ident::MirIdent;
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
 use crate::codegen::ir::mir::ty::MirType;
-use crate::codegen::parser::mir::attribute_parser::FrbAttributes;
+use crate::codegen::parser::mir::attribute::FrbAttributes;
 use crate::codegen::parser::mir::auto_accessor_parser::MirFuncAndSanityCheckInfo;
 use crate::codegen::parser::mir::function_parser::argument::merge_ownership_into_ty;
 use crate::codegen::parser::mir::function_parser::{

@@ -10,7 +10,7 @@ use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::ir::mir::ty::structure::{MirStruct, MirStructIdent};
 use crate::codegen::ir::mir::ty::MirContext;
 use crate::codegen::ir::mir::ty::MirType;
-use crate::codegen::parser::mir::attribute_parser::FrbAttributes;
+use crate::codegen::parser::mir::attribute::FrbAttributes;
 use crate::codegen::parser::mir::type_parser::array::ArrayParserInfo;
 use crate::codegen::parser::mir::type_parser::enum_or_struct::EnumOrStructParserInfo;
 use crate::codegen::parser::mir::type_parser::rust_auto_opaque_implicit::RustAutoOpaqueParserInfo;

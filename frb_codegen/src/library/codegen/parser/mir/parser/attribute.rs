@@ -532,7 +532,7 @@ impl Parse for FrbAttributeName {
 #[cfg(test)]
 mod tests {
     use crate::codegen::ir::mir::default::MirDefaultValue;
-    use crate::codegen::parser::mir::attribute_parser::{
+    use crate::codegen::parser::mir::attribute::{
         FrbAttribute, FrbAttributeDartCode, FrbAttributeDefaultValue, FrbAttributeMirror,
         FrbAttributeName, FrbAttributes, NamedOption,
     };

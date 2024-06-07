@@ -5,7 +5,7 @@ use crate::codegen::ir::mir::ident::MirIdent;
 use crate::codegen::ir::mir::ty::boxed::MirTypeBoxed;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::ir::mir::ty::MirType::Boxed;
-use crate::codegen::parser::mir::attribute_parser::FrbAttributes;
+use crate::codegen::parser::mir::attribute::FrbAttributes;
 use crate::codegen::parser::mir::function_parser::{FunctionParser, FunctionPartialInfo};
 use crate::codegen::parser::mir::type_parser::misc::parse_comments;
 use crate::codegen::parser::mir::type_parser::rust_auto_opaque_implicit::split_ownership_from_ty;
