@@ -20,7 +20,7 @@ pub struct MirEnum {
     pub name: NamespacedName,
     pub wrapper_name: Option<String>,
     pub comments: Vec<MirComment>,
-    pub variants: Vec<MirVariant>,
+    pub variants: Vec<MirEnumVariant>,
     pub mode: MirEnumMode,
     pub ignore: bool,
 }
@@ -31,7 +31,7 @@ pub enum MirEnumMode {
     Complex,
 }
 
-pub struct MirVariant {
+pub struct MirEnumVariant {
     pub name: MirIdent,
     pub wrapper_name: MirIdent,
     pub comments: Vec<MirComment>,
@@ -85,7 +85,7 @@ impl MirTypeTrait for MirTypeEnumRef {
 }
 
 impl MirEnum {
-    pub fn variants(&self) -> &[MirVariant] {
+    pub fn variants(&self) -> &[MirEnumVariant] {
         &self.variants
     }
 }

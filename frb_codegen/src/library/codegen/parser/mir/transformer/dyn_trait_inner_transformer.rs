@@ -1,7 +1,7 @@
 use crate::codegen::ir::mir::pack::MirPack;
 use crate::codegen::ir::mir::ty::delegate::{MirTypeDelegate, MirTypeDelegateDynTrait};
 use crate::codegen::ir::mir::ty::enumeration::{
-    MirEnum, MirEnumIdent, MirEnumMode, MirVariant, MirVariantKind,
+    MirEnum, MirEnumIdent, MirEnumMode, MirEnumVariant, MirVariantKind,
 };
 use crate::codegen::ir::mir::ty::structure::MirStruct;
 use crate::codegen::ir::mir::ty::MirType;
@@ -56,8 +56,8 @@ fn create_enum(interest_impl_types: &[MirType], enum_name: &MirEnumIdent) -> Mir
     }
 }
 
-fn create_enum_variant(ty: &MirType) -> MirVariant {
-    MirVariant {
+fn create_enum_variant(ty: &MirType) -> MirEnumVariant {
+    MirEnumVariant {
         name: todo!(),
         wrapper_name: todo!(),
         comments: vec![],

@@ -5,7 +5,7 @@ use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRust
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::base::*;
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::ty::WireRustCodecCstGeneratorDecoderTrait;
 use crate::codegen::ir::mir::ident::MirIdent;
-use crate::codegen::ir::mir::ty::enumeration::{MirEnum, MirEnumMode, MirVariant, MirVariantKind};
+use crate::codegen::ir::mir::ty::enumeration::{MirEnum, MirEnumMode, MirEnumVariant, MirVariantKind};
 use crate::codegen::ir::mir::ty::structure::MirStruct;
 use itertools::Itertools;
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::impl_new_with_nullptr::generate_impl_new_with_nullptr_code_block;
@@ -153,7 +153,7 @@ fn generate_impl_cst_decode_body_variant(
     enu: &MirEnum,
     target: TargetOrCommon,
     idx: usize,
-    variant: &MirVariant,
+    variant: &MirEnumVariant,
 ) -> String {
     match &variant.kind {
         MirVariantKind::Value => {

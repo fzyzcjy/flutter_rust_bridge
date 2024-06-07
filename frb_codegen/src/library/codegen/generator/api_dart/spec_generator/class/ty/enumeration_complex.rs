@@ -6,7 +6,7 @@ use crate::codegen::generator::api_dart::spec_generator::misc::{
     generate_dart_comments, generate_dart_maybe_implements_exception,
 };
 use crate::codegen::ir::mir::field::MirField;
-use crate::codegen::ir::mir::ty::enumeration::{MirEnum, MirVariant, MirVariantKind};
+use crate::codegen::ir::mir::ty::enumeration::{MirEnum, MirEnumVariant, MirVariantKind};
 use crate::codegen::ir::mir::ty::structure::MirStruct;
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
@@ -55,7 +55,7 @@ impl<'a> EnumRefApiDartGenerator<'a> {
         })
     }
 
-    fn generate_mode_complex_variant(&self, variant: &MirVariant) -> String {
+    fn generate_mode_complex_variant(&self, variant: &MirEnumVariant) -> String {
         let args = match &variant.kind {
             MirVariantKind::Value => "".to_owned(),
             MirVariantKind::Struct(st) => {
@@ -128,7 +128,7 @@ impl<'a> EnumRefApiDartGenerator<'a> {
         format!("{{ {} }}", fields.join(""))
     }
 
-    fn generate_implements_exception(&self, variant: &MirVariant) -> &str {
+    fn generate_implements_exception(&self, variant: &MirEnumVariant) -> &str {
         let has_backtrace = matches!(&variant.kind,
             MirVariantKind::Struct(MirStruct {is_fields_named: true, fields, ..}) if fields.iter().any(|field| field.name.raw == BACKTRACE_IDENT));
         if self.mir.is_exception && has_backtrace {

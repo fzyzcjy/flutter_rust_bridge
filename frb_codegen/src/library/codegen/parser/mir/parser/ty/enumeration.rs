@@ -4,7 +4,7 @@ use crate::codegen::ir::mir::ident::MirIdent;
 use crate::codegen::ir::mir::ty::boxed::MirTypeBoxed;
 use crate::codegen::ir::mir::ty::delegate::{MirTypeDelegate, MirTypeDelegatePrimitiveEnum};
 use crate::codegen::ir::mir::ty::enumeration::{
-    MirEnum, MirEnumIdent, MirEnumMode, MirTypeEnumRef, MirVariant, MirVariantKind,
+    MirEnum, MirEnumIdent, MirEnumMode, MirTypeEnumRef, MirEnumVariant, MirVariantKind,
 };
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
 use crate::codegen::ir::mir::ty::rust_auto_opaque_implicit::MirTypeRustAutoOpaqueImplicitReason;
@@ -64,8 +64,8 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         &mut self,
         src_enum: &HirFlatEnum,
         variant: &Variant,
-    ) -> anyhow::Result<MirVariant> {
-        Ok(MirVariant {
+    ) -> anyhow::Result<MirEnumVariant> {
+        Ok(MirEnumVariant {
             name: MirIdent::new(variant.ident.to_string()),
             wrapper_name: MirIdent::new(format!("{}_{}", src_enum.name.name, variant.ident)),
             comments: parse_comments(&variant.attrs),
@@ -195,7 +195,7 @@ impl EnumOrStructParser<MirEnumIdent, MirEnum, ItemEnum>
     }
 }
 
-fn maybe_field_wrap_box(mut variants: Vec<MirVariant>, mode: MirEnumMode) -> Vec<MirVariant> {
+fn maybe_field_wrap_box(mut variants: Vec<MirEnumVariant>, mode: MirEnumMode) -> Vec<MirEnumVariant> {
     if mode == MirEnumMode::Complex {
         for variant in &mut variants {
             if let MirVariantKind::Struct(st) = &mut variant.kind {
@@ -218,7 +218,7 @@ fn mir_type_wrap_box(ty: &mut MirType) {
     }
 }
 
-fn compute_enum_mode(variants: &[MirVariant]) -> MirEnumMode {
+fn compute_enum_mode(variants: &[MirEnumVariant]) -> MirEnumMode {
     if variants
         .iter()
         .any(|variant| !matches!(variant.kind, MirVariantKind::Value))
