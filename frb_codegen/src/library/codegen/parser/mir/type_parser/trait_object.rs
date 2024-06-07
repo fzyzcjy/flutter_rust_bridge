@@ -29,11 +29,13 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     ) -> anyhow::Result<Option<MirType>> {
         if let Some(trait_name_path) = extract_trait_name_path(type_trait_object) {
             let trait_name = ty_to_string(&trait_name_path.segments.last().unwrap());
-            return Ok(parse_type_trait(&trait_name, self.inner).map(|ty| {
-                MirType::Delegate(MirTypeDelegate::DynTrait(MirTypeDelegateDynTrait {
-                    trait_def_name: ty.name,
-                }))
-            }));
+            if let Some(trait_ty) = parse_type_trait(&trait_name, self.inner) {
+                return Ok(Some(MirType::Delegate(MirTypeDelegate::DynTrait(
+                    MirTypeDelegateDynTrait {
+                        trait_def_name: trait_ty.name,
+                    },
+                ))));
+            }
         }
         Ok(None)
     }
