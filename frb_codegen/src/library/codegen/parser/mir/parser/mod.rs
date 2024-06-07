@@ -3,7 +3,6 @@ pub(crate) mod function;
 pub(crate) mod misc;
 pub(crate) mod trait_impl;
 pub(crate) mod ty;
-mod trait_impl_enum;
 
 use crate::codegen::ir::hir::flat::pack::HirFlatPack;
 use crate::codegen::ir::mir::pack::MirPack;
@@ -36,8 +35,6 @@ pub(crate) fn parse(
         config.default_stream_sink_codec,
         config.default_rust_opaque_codec,
     )?;
-
-    trait_impl_enum::generate();
 
     let (struct_pool, enum_pool, dart_code_of_type) = type_parser.consume();
 
