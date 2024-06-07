@@ -85,8 +85,8 @@ pub struct MirTypeDelegateRustAutoOpaqueExplicit {
 }
 
 pub struct MirTypeDelegateDynTrait {
-    pub name: NamespacedName,
-    pub inner: MirTypeEnumRef,
+    pub trait_def_name: NamespacedName,
+    // pub inner: MirTypeEnumRef, // TODO
 }
 }
 
@@ -198,7 +198,7 @@ impl MirTypeTrait for MirTypeDelegate {
             MirTypeDelegate::RustAutoOpaqueExplicit(mir) => {
                 format!("RustAutoOpaque{}<{}>", mir.inner.codec, mir.raw.string)
             }
-            MirTypeDelegate::DynTrait(mir) => format!("dyn <{}>", mir.name.name),
+            MirTypeDelegate::DynTrait(mir) => format!("dyn <{}>", mir.trait_def_name.name),
         }
     }
 
