@@ -6,6 +6,7 @@
 import 'api/minimal.dart';
 import 'dart:async';
 import 'dart:convert';
+import 'frb_generated.dart';
 import 'frb_generated.io.dart' if (dart.library.html) 'frb_generated.web.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
@@ -56,7 +57,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.0.0-dev.37';
 
   @override
-  int get rustContentHash => -1342678134;
+  int get rustContentHash => -1370915949;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -104,6 +105,9 @@ abstract class RustLibApi extends BaseApi {
   Future<void> crateApiMinimalInitApp();
 
   Future<int> crateApiMinimalMinimalAdder({required int a, required int b});
+
+  Future<void> crateFrbGeneratedHelloGenerateTraitImplEnum(
+      {required SimpleTraitTwinNormalImpl a});
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_StructOneWithTraitTwinNormal;
@@ -471,6 +475,32 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         argNames: ["a", "b"],
       );
 
+  @override
+  Future<void> crateFrbGeneratedHelloGenerateTraitImplEnum(
+      {required SimpleTraitTwinNormalImpl a}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_box_autoadd_simple_trait_twin_normal_impl(a, serializer);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 16, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateFrbGeneratedHelloGenerateTraitImplEnumConstMeta,
+      argValues: [a],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateFrbGeneratedHelloGenerateTraitImplEnumConstMeta =>
+      const TaskConstMeta(
+        debugName: "hello_generate_trait_impl_enum",
+        argNames: ["a"],
+      );
+
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_StructOneWithTraitTwinNormal => wire
           .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinNormal;
@@ -566,9 +596,30 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  SimpleTraitTwinNormalImpl
+      dco_decode_box_autoadd_simple_trait_twin_normal_impl(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return dco_decode_simple_trait_twin_normal_impl(raw);
+  }
+
+  @protected
   int dco_decode_i_32(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return raw as int;
+  }
+
+  @protected
+  SimpleTraitTwinNormalImpl dco_decode_simple_trait_twin_normal_impl(
+      dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    switch (raw[0]) {
+      case 0:
+        return SimpleTraitTwinNormalImpl_Hello(
+          dco_decode_i_32(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
   }
 
   @protected
@@ -656,9 +707,32 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  SimpleTraitTwinNormalImpl
+      sse_decode_box_autoadd_simple_trait_twin_normal_impl(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return (sse_decode_simple_trait_twin_normal_impl(deserializer));
+  }
+
+  @protected
   int sse_decode_i_32(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return deserializer.buffer.getInt32();
+  }
+
+  @protected
+  SimpleTraitTwinNormalImpl sse_decode_simple_trait_twin_normal_impl(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+
+    var tag_ = sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        var var_field0 = sse_decode_i_32(deserializer);
+        return SimpleTraitTwinNormalImpl_Hello(var_field0);
+      default:
+        throw UnimplementedError('');
+    }
   }
 
   @protected
@@ -767,9 +841,29 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void sse_encode_box_autoadd_simple_trait_twin_normal_impl(
+      SimpleTraitTwinNormalImpl self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_simple_trait_twin_normal_impl(self, serializer);
+  }
+
+  @protected
   void sse_encode_i_32(int self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     serializer.buffer.putInt32(self);
+  }
+
+  @protected
+  void sse_encode_simple_trait_twin_normal_impl(
+      SimpleTraitTwinNormalImpl self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    switch (self) {
+      case SimpleTraitTwinNormalImpl_Hello(field0: final field0):
+        sse_encode_i_32(0, serializer);
+        sse_encode_i_32(field0, serializer);
+      default:
+        throw UnimplementedError('');
+    }
   }
 
   @protected
