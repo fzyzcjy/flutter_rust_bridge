@@ -33,7 +33,7 @@ pub(crate) fn handle_external_impl(attribute: TokenStream, item: TokenStream) ->
 
 fn handle_syn_item_impl(item_syn: ItemImpl, item_string: &str) -> TokenStream {
     let original_self_ty = item_syn.self_ty.clone();
-    let dummy_struct_ty = compute_dummy_struct_ty(&original_self_ty, &item_string);
+    let dummy_struct_ty = compute_dummy_struct_ty(&original_self_ty, item_string);
     let converted_item = convert_item(item_syn, dummy_struct_ty.clone());
 
     quote! {
