@@ -58,7 +58,7 @@ pub(crate) struct TypeParser<'a> {
 }
 
 impl<'a> TypeParser<'a> {
-    pub(crate) fn new_from_hir_flat_pack(hir_flat: &HirFlatPack) -> Self {
+    pub(crate) fn new_from_hir_flat_pack(hir_flat: &'a HirFlatPack) -> Self {
         Self::new(
             hir_flat.structs_map(),
             hir_flat.enums_map(),
