@@ -65,7 +65,7 @@ fn create_enum(interest_impl_types: &[MirType], enum_name: &NamespacedName) -> M
 }
 
 fn create_enum_variant(interest_ty: &MirType, enum_name: &NamespacedName) -> MirEnumVariant {
-    let variant_name: MirIdent = TODO;
+    let variant_name = MirIdent::new(interest_ty.safe_ident());
 
     let field_ty = MirType::Delegate(MirTypeDelegate::RustAutoOpaqueExplicit(
         MirTypeDelegateRustAutoOpaqueExplicit {
