@@ -307,13 +307,17 @@ impl MirTypeDelegateArray {
 
 impl MirTypeDelegateDynTrait {
     pub fn inner(&self) -> MirType {
-        MirType::EnumRef(MirTypeEnumRef {
+        MirType::EnumRef(self.inner_raw())
+    }
+
+    pub fn inner_raw(&self) -> MirTypeEnumRef {
+        MirTypeEnumRef {
             ident: MirEnumIdent(NamespacedName::new(
                 self.trait_def_name.namespace.clone(),
                 self.inner_enum_name(),
             )),
             is_exception: false,
-        })
+        }
     }
 
     pub(crate) fn inner_enum_name(&self) -> String {

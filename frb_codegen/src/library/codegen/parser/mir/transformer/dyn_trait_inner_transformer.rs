@@ -30,5 +30,7 @@ fn handle_ty_dyn_trait(
         .map(|item| item.impl_ty.clone())
         .collect_vec();
 
+    let target_enum_ref = ty_dyn_trait.inner_raw();
+
     todo!()
 }
