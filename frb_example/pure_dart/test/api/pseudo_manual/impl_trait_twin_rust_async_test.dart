@@ -20,7 +20,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
     final one =
         await StructOneWithTraitTwinRustAsync.simpleTraitFnTwinRustAsync(
             value: 10);
-    expect(one.simpleTraitFnReceiverBorrowTwinRustAsync(), 10);
+    expect(await one.simpleTraitFnReceiverBorrowTwinRustAsync(), 10);
   });
 
   test('trait default impl', () async {

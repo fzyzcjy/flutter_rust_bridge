@@ -14,7 +14,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   test('call methods', () async {
     final one =
         await StructOneWithTraitTwinNormal.simpleTraitFnTwinNormal(value: 10);
-    expect(one.simpleTraitFnReceiverBorrowTwinNormal(), 10);
+    expect(await one.simpleTraitFnReceiverBorrowTwinNormal(), 10);
   });
 
   test('trait default impl', () async {
