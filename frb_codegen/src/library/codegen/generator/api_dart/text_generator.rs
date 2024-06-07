@@ -15,7 +15,6 @@ use std::path::{Path, PathBuf};
 
 pub(super) struct ApiDartOutputText {
     pub(super) output_texts: PathTexts,
-    pub(super) output_extra_impl_text: String,
 }
 
 pub(super) fn generate(
