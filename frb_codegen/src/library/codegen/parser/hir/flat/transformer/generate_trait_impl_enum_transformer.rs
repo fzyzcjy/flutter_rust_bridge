@@ -2,11 +2,15 @@ use crate::codegen::ir::hir::flat::pack::HirFlatPack;
 use crate::codegen::ir::hir::flat::traits::HirFlatTrait;
 use crate::codegen::ir::mir::trait_impl::MirTraitImpl;
 use crate::codegen::parser::hir::flat::extra_code_injector::inject_extra_code;
+use crate::codegen::parser::hir::internal_config::ParserHirInternalConfig;
 use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
 use crate::codegen::parser::mir::parser::tentative_parse_trait_impls;
 use itertools::Itertools;
 
-pub(crate) fn transform(mut pack: HirFlatPack) -> anyhow::Result<HirFlatPack> {
+pub(crate) fn transform(
+    mut pack: HirFlatPack,
+    config: &ParserHirInternalConfig,
+) -> anyhow::Result<HirFlatPack> {
     let trait_impls = tentative_parse_trait_impls(&pack)?;
 
     let extra_code = (pack.traits.iter())
@@ -16,7 +20,7 @@ pub(crate) fn transform(mut pack: HirFlatPack) -> anyhow::Result<HirFlatPack> {
         .into_iter()
         .join("");
 
-    let namespace = TODO;
+    let namespace = &config.rust_input_namespace_pack.rust_output_path_namespace;
 
     inject_extra_code(&mut pack, &extra_code, namespace)?;
 
