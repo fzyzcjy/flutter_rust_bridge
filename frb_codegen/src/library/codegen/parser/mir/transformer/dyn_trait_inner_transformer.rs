@@ -12,7 +12,7 @@ use crate::codegen::ir::mir::ty::rust_auto_opaque_implicit::{
 };
 use crate::codegen::ir::mir::ty::rust_opaque::MirTypeRustOpaque;
 use crate::codegen::ir::mir::ty::structure::MirStruct;
-use crate::codegen::ir::mir::ty::MirType;
+use crate::codegen::ir::mir::ty::{MirType, MirTypeTrait};
 use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
 use crate::codegen::parser::mir::parser::ty::enumeration::compute_enum_variant_kind_struct_name;
 use crate::codegen::parser::mir::parser::ty::rust_auto_opaque_implicit::parse_type_rust_auto_opaque_common_raw;
