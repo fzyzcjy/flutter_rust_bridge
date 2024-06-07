@@ -34,7 +34,7 @@ pub(crate) fn parse(
     )?;
 
     let (funcs_all, skipped_functions) =
-        function::parse(config, &hir_flat.functions, &mut type_parser, &structs_map, &trait_impls)?;
+        function::parse(config, &hir_flat.functions, &mut type_parser, &structs_map)?;
 
     let (struct_pool, enum_pool, dart_code_of_type) = type_parser.consume();
 

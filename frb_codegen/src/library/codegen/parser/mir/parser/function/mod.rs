@@ -7,7 +7,6 @@ use crate::codegen::parser::mir::parser::function::func_or_skip::MirFuncOrSkip;
 use crate::codegen::parser::mir::parser::ty::TypeParser;
 use itertools::{concat, Itertools};
 use std::collections::HashMap;
-use crate::codegen::ir::mir::trait_impl::MirTraitImpl;
 
 pub(crate) mod auto_accessor;
 pub(crate) mod func_or_skip;
@@ -18,7 +17,6 @@ pub(crate) fn parse(
     src_fns: &[HirFlatFunction],
     type_parser: &mut TypeParser,
     src_structs: &HashMap<String, &HirFlatStruct>,
-    trait_impls: &[MirTraitImpl],
 ) -> anyhow::Result<(Vec<MirFunc>, Vec<MirSkip>)> {
     let items = concat([
         real::parse(src_fns, type_parser, config)?,
