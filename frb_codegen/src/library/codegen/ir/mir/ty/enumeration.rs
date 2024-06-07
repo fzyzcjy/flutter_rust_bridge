@@ -33,6 +33,7 @@ pub enum MirEnumMode {
 
 pub struct MirEnumVariant {
     pub name: MirIdent,
+    pub wrapper_name: MirIdent,
     pub comments: Vec<MirComment>,
     pub kind: MirVariantKind,
 }
