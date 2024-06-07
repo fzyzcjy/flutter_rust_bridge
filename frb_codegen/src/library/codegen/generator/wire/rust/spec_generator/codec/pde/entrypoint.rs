@@ -31,7 +31,9 @@ impl BaseCodecEntrypointTrait<WireRustGeneratorContext<'_>, WireRustCodecOutputS
     ) -> Option<WireRustCodecOutputSpec> {
         match mode {
             EncodeOrDecode::Encode => None,
-            EncodeOrDecode::Decode => Some(generate_ffi_dispatcher(&context.mir_pack.funcs)),
+            EncodeOrDecode::Decode => {
+                Some(generate_ffi_dispatcher(&context.mir_pack.funcs_with_impl()))
+            }
         }
     }
 }

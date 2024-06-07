@@ -3,6 +3,7 @@ use crate::codegen::ir::mir::comment::MirComment;
 use crate::codegen::ir::mir::field::MirField;
 use crate::codegen::ir::mir::ty::delegate::{MirTypeDelegate, MirTypeDelegatePrimitiveEnum};
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
+use crate::codegen::ir::mir::ty::trait_def::MirTypeTraitDef;
 use crate::codegen::ir::mir::ty::{MirContext, MirType, MirTypeTrait};
 use crate::if_then_some;
 use crate::utils::namespace::NamespacedName;
@@ -26,6 +27,7 @@ pub struct MirFunc {
     pub comments: Vec<MirComment>,
     pub codec_mode_pack: CodecModePack,
     pub rust_call_code: Option<String>,
+    pub has_impl: bool,
     // Currently, we use serde only for tests. Since lineno can be unstable, we skip this field for comparison
     #[serde(skip_serializing)]
     pub src_lineno_pseudo: usize,
@@ -63,7 +65,7 @@ pub struct MirFuncOwnerInfoMethod {
     pub(crate) actual_method_name: String,
     pub(crate) actual_method_dart_name: Option<String>,
     pub(crate) mode: MirFuncOwnerInfoMethodMode,
-    pub(crate) trait_def_name: Option<NamespacedName>,
+    pub(crate) trait_def: Option<MirTypeTraitDef>,
 }
 
 pub enum MirFuncOwnerInfoMethodMode {
@@ -192,6 +194,7 @@ pub(crate) fn compute_interest_name_of_owner_ty(owner_ty: &MirType) -> Option<Na
         MirType::RustAutoOpaqueImplicit(ty) => {
             NamespacedName::new(ty.self_namespace().unwrap(), ty.rust_api_type())
         }
+        MirType::TraitDef(ty) => ty.name.clone(),
         _ => return None,
     })
 }

@@ -6,6 +6,7 @@
 // Static analysis wrongly picks the IO variant, thus ignore this
 // ignore_for_file: argument_type_not_assignable
 
+import 'api/override_web_audio_api.dart';
 import 'api/simple.dart';
 import 'dart:async';
 import 'dart:convert';
@@ -861,6 +862,22 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   String dco_decode_String(dynamic raw);
 
   @protected
+  AudioContextExt dco_decode_TraitDef_AudioContextExt(dynamic raw);
+
+  @protected
+  AudioNode dco_decode_TraitDef_AudioNode(dynamic raw);
+
+  @protected
+  AudioScheduledSourceNode dco_decode_TraitDef_AudioScheduledSourceNode(
+      dynamic raw);
+
+  @protected
+  AudioWorkletProcessor dco_decode_TraitDef_AudioWorkletProcessor(dynamic raw);
+
+  @protected
+  BaseAudioContext dco_decode_TraitDef_BaseAudioContext(dynamic raw);
+
+  @protected
   AudioBufferOptions dco_decode_audio_buffer_options(dynamic raw);
 
   @protected
@@ -935,6 +952,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<MediaStreamTrack>
       dco_decode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrack(
           dynamic raw);
+
+  @protected
+  List<AudioParamDescriptor> dco_decode_list_audio_param_descriptor(
+      dynamic raw);
 
   @protected
   List<Float32List> dco_decode_list_list_prim_f_32_strict(dynamic raw);
@@ -1747,6 +1768,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<MediaStreamTrack>
       sse_decode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrack(
           SseDeserializer deserializer);
+
+  @protected
+  List<AudioParamDescriptor> sse_decode_list_audio_param_descriptor(
+      SseDeserializer deserializer);
 
   @protected
   List<Float32List> sse_decode_list_list_prim_f_32_strict(
@@ -2566,6 +2591,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrack(
           List<MediaStreamTrack> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_audio_param_descriptor(
+      List<AudioParamDescriptor> self, SseSerializer serializer);
 
   @protected
   void sse_encode_list_list_prim_f_32_strict(

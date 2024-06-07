@@ -9,8 +9,6 @@ import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'pseudo_manual/rust_auto_opaque_twin_rust_async.dart';
 part 'rust_auto_opaque.freezed.dart';
 
-// These functions are ignored: `f`, `func_hello`
-
 Future<void> rustAutoOpaqueArgOwnTwinNormal(
         {required NonCloneSimpleTwinNormal arg, required int expect}) =>
     RustLib.instance.api.crateApiRustAutoOpaqueRustAutoOpaqueArgOwnTwinNormal(
@@ -227,7 +225,7 @@ abstract class EnumWithGoodAndOpaqueWithoutOptionTwinNormal {
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<HelloOneStructTwinNormal>>
-abstract class HelloOneStructTwinNormal {
+abstract class HelloOneStructTwinNormal implements HelloTraitTwinNormal {
   Future<void> funcHello();
 
   void dispose();
@@ -319,6 +317,14 @@ abstract class StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal {
   void dispose();
 
   bool get isDisposed;
+}
+
+abstract class HelloTraitTwinNormal {
+  Future<void> funcHello();
+}
+
+abstract class MyTraitTwinNormal {
+  Future<void> f();
 }
 
 @freezed

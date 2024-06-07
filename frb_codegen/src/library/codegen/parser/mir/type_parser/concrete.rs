@@ -14,7 +14,7 @@ use crate::codegen::parser::mir::type_parser::path_data::extract_path_data;
 use crate::codegen::parser::mir::type_parser::unencodable::{splay_segments, SplayedSegment};
 use crate::codegen::parser::mir::type_parser::TypeParserWithContext;
 use crate::if_then_some;
-use anyhow::bail;
+use anyhow::{bail, Context};
 use itertools::Itertools;
 use syn::{parse_str, Type};
 
@@ -98,7 +98,10 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     }
 
     fn parse_type_self(&mut self) -> anyhow::Result<MirType> {
-        let enum_or_struct_name = if_then_some!(let MirFuncOwnerInfo::Method(info) = self.context.owner.as_ref().unwrap(), info.owner_ty_name().unwrap().name.clone()).unwrap();
+        let enum_or_struct_name = if_then_some!(
+            let MirFuncOwnerInfo::Method(info) = self.context.owner.as_ref().context("owner is null")?,
+            info.owner_ty_name().context("owner_ty_name is null")?.name.clone()
+        ).context("name is null")?;
         self.parse_type(&parse_str::<Type>(&enum_or_struct_name)?)
     }
 
@@ -126,5 +129,5 @@ fn parse_stream_sink_codec(codec: &Type) -> anyhow::Result<CodecMode> {
     let segments = extract_path_data(&path.path)?;
     let ident = &segments.last().unwrap().ident;
     let ident_stripped = ident.strip_suffix("Codec").unwrap();
-    Ok(ident_stripped.parse()?)
+    (ident_stripped.parse()).with_context(|| format!("raw: {ident_stripped}"))
 }

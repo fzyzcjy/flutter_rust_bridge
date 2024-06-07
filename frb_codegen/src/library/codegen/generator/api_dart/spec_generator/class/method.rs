@@ -14,11 +14,31 @@ use crate::utils::namespace::NamespacedName;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
 
-#[derive(Debug, Clone, Copy, Eq, PartialEq)]
+#[derive(Debug, Clone)]
+pub(crate) struct GenerateApiMethodConfig {
+    pub mode_static: GenerateApiMethodMode,
+    pub mode_non_static: GenerateApiMethodMode,
+}
+
+impl GenerateApiMethodConfig {
+    pub(crate) const COMBINED: GenerateApiMethodConfig = GenerateApiMethodConfig {
+        mode_static: GenerateApiMethodMode::DeclAndImpl,
+        mode_non_static: GenerateApiMethodMode::DeclAndImpl,
+    };
+
+    fn get(&self, method_mode: &MirFuncOwnerInfoMethodMode) -> GenerateApiMethodMode {
+        match method_mode {
+            MirFuncOwnerInfoMethodMode::Static => self.mode_static,
+            MirFuncOwnerInfoMethodMode::Instance => self.mode_non_static,
+        }
+    }
+}
+
+#[derive(Debug, Clone, Copy)]
 pub(crate) enum GenerateApiMethodMode {
-    SeparatedDecl,
-    SeparatedImpl,
-    Combined,
+    Nothing,
+    DeclOnly,
+    DeclAndImpl,
 }
 
 pub(crate) struct GeneratedApiMethods {
@@ -35,12 +55,14 @@ struct GeneratedApiMethod {
 pub(crate) fn generate_api_methods(
     generalized_class_name: &NamespacedName,
     context: ApiDartGeneratorContext,
-    mode: GenerateApiMethodMode,
+    config: &GenerateApiMethodConfig,
+    dart_class_name: &str,
 ) -> GeneratedApiMethods {
-    let methods = get_methods_of_enum_or_struct(generalized_class_name, &context.mir_pack.funcs)
-        .iter()
-        .filter_map(|func| generate_api_method(func, context, mode))
-        .collect_vec();
+    let methods =
+        get_methods_of_enum_or_struct(generalized_class_name, &context.mir_pack.funcs_all)
+            .iter()
+            .filter_map(|func| generate_api_method(func, context, config, dart_class_name))
+            .collect_vec();
     GeneratedApiMethods {
         num_methods: methods.len(),
         code: methods.iter().map(|x| x.code.clone()).join("\n"),
@@ -80,18 +102,13 @@ fn get_methods_of_enum_or_struct<'a>(
 fn generate_api_method(
     func: &MirFunc,
     context: ApiDartGeneratorContext,
-    mode: GenerateApiMethodMode,
+    config: &GenerateApiMethodConfig,
+    dart_class_name: &str,
 ) -> Option<GeneratedApiMethod> {
     let api_dart_func = api_dart::spec_generator::function::generate(func, context).unwrap();
 
     let method_info =
         if_then_some!(let MirFuncOwnerInfo::Method(info) = &func.owner , info).unwrap();
-
-    if method_info.mode == MirFuncOwnerInfoMethodMode::Static
-        && mode == GenerateApiMethodMode::SeparatedImpl
-    {
-        return None;
-    }
 
     let default_constructor_mode = func.default_constructor_mode();
 
@@ -110,12 +127,18 @@ fn generate_api_method(
         default_constructor_mode,
         &api_dart_func,
         &method_name,
-        mode,
+        config,
+        dart_class_name,
     );
 
-    let maybe_implementation =
-        generate_maybe_implementation(func, context, method_info, &params, mode);
-    let maybe_implementation = (maybe_implementation.map(|x| format!("=>{x}"))).unwrap_or_default();
+    let maybe_implementation = match config.get(&method_info.mode) {
+        GenerateApiMethodMode::Nothing => return None,
+        GenerateApiMethodMode::DeclOnly => "".to_owned(),
+        GenerateApiMethodMode::DeclAndImpl => format!(
+            "=>{}",
+            generate_implementation(func, context, method_info, &params)
+        ),
+    };
 
     let code = format!("{comments}{signature}{maybe_implementation};\n\n");
 
@@ -148,6 +171,7 @@ fn generate_comments(
     ans
 }
 
+#[allow(clippy::too_many_arguments)]
 fn generate_signature(
     func: &MirFunc,
     method_info: &MirFuncOwnerInfoMethod,
@@ -155,7 +179,8 @@ fn generate_signature(
     default_constructor_mode: Option<MirFuncDefaultConstructorMode>,
     api_dart_func: &ApiDartGeneratedFunction,
     method_name: &str,
-    mode: GenerateApiMethodMode,
+    _config: &GenerateApiMethodConfig,
+    dart_class_name: &str,
 ) -> String {
     let is_static_method = method_info.mode == MirFuncOwnerInfoMethodMode::Static;
     let maybe_static = if is_static_method { "static" } else { "" };
@@ -179,13 +204,8 @@ fn generate_signature(
     };
 
     if default_constructor_mode == Some(MirFuncDefaultConstructorMode::DartConstructor) {
-        let owner_ty_name = method_info.owner_ty_name().unwrap().name;
-        let class_postfix = if mode == GenerateApiMethodMode::SeparatedImpl {
-            "Impl"
-        } else {
-            ""
-        };
-        return format!("factory {owner_ty_name}{class_postfix}{func_params}");
+        let _owner_ty_name = method_info.owner_ty_name().unwrap().name;
+        return format!("factory {dart_class_name}{func_params}");
     }
 
     format!("{maybe_static} {return_type} {maybe_accessor} {method_name}{func_params}")
@@ -206,24 +226,7 @@ fn generate_method_name(
     }
 }
 
-fn generate_maybe_implementation(
-    func: &MirFunc,
-    context: ApiDartGeneratorContext,
-    method_info: &MirFuncOwnerInfoMethod,
-    params: &[ApiDartGeneratedFunctionParam],
-    mode: GenerateApiMethodMode,
-) -> Option<String> {
-    match (mode, method_info.mode.to_owned()) {
-        (GenerateApiMethodMode::Combined, _)
-        | (GenerateApiMethodMode::SeparatedDecl, MirFuncOwnerInfoMethodMode::Static)
-        | (GenerateApiMethodMode::SeparatedImpl, MirFuncOwnerInfoMethodMode::Instance) => Some(
-            generate_implementation_call_impl(func, context, method_info, params),
-        ),
-        _ => None,
-    }
-}
-
-fn generate_implementation_call_impl(
+fn generate_implementation(
     func: &MirFunc,
     context: ApiDartGeneratorContext,
     method_info: &MirFuncOwnerInfoMethod,

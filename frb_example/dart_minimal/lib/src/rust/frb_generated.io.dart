@@ -22,18 +22,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   int dco_decode_i_32(dynamic raw);
 
   @protected
-  SimplePrimitiveEnumTwinNormal dco_decode_simple_primitive_enum_twin_normal(
-      dynamic raw);
-
-  @protected
   void dco_decode_unit(dynamic raw);
 
   @protected
   int sse_decode_i_32(SseDeserializer deserializer);
-
-  @protected
-  SimplePrimitiveEnumTwinNormal sse_decode_simple_primitive_enum_twin_normal(
-      SseDeserializer deserializer);
 
   @protected
   void sse_decode_unit(SseDeserializer deserializer);
@@ -43,10 +35,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_i_32(int self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_simple_primitive_enum_twin_normal(
-      SimplePrimitiveEnumTwinNormal self, SseSerializer serializer);
 
   @protected
   void sse_encode_unit(void self, SseSerializer serializer);

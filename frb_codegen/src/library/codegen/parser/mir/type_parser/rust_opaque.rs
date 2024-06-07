@@ -17,15 +17,23 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         last_segment: &SplayedSegment,
     ) -> anyhow::Result<Option<MirType>> {
         Ok(Some(match last_segment {
-            ("RustOpaque", [ty]) => self.parse_rust_opaque(ty, None),
-            ("RustOpaqueNom", [ty]) => self.parse_rust_opaque(ty, Some(RustOpaqueCodecMode::Nom)),
-            ("RustOpaqueMoi", [ty]) => self.parse_rust_opaque(ty, Some(RustOpaqueCodecMode::Moi)),
+            ("RustOpaque", [ty]) => self.parse_rust_opaque(ty, None)?,
+            ("RustOpaqueNom", [ty]) => {
+                self.parse_rust_opaque(ty, Some(RustOpaqueCodecMode::Nom))?
+            }
+            ("RustOpaqueMoi", [ty]) => {
+                self.parse_rust_opaque(ty, Some(RustOpaqueCodecMode::Moi))?
+            }
 
             _ => return Ok(None),
         }))
     }
 
-    fn parse_rust_opaque(&mut self, ty: &Type, codec: Option<RustOpaqueCodecMode>) -> MirType {
+    fn parse_rust_opaque(
+        &mut self,
+        ty: &Type,
+        codec: Option<RustOpaqueCodecMode>,
+    ) -> anyhow::Result<MirType> {
         let ty_str = ty.to_token_stream().to_string();
         let info = self.inner.rust_opaque_parser_info.get_or_insert(
             ty_str.clone(),
@@ -36,12 +44,12 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                     .unwrap_or(self.context.default_rust_opaque_codec),
             ),
         );
-        RustOpaque(MirTypeRustOpaque::new(
-            info.namespace,
-            MirRustOpaqueInner(ty_str),
-            info.codec,
-            false,
-        ))
+        Ok(RustOpaque(MirTypeRustOpaque {
+            namespace: info.namespace,
+            inner: MirRustOpaqueInner(ty_str),
+            codec: info.codec,
+            brief_name: false,
+        }))
     }
 }
 

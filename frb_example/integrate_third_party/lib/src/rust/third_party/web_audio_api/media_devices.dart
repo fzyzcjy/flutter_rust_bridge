@@ -7,7 +7,6 @@ import '../../frb_generated.dart';
 import 'media_streams.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// These functions are ignored because they are not marked as `pub`: `as_string`, `device`, `is_valid_device_id`, `new`
 // These types are ignored because they are not used by any `pub` functions: `DeviceId`, `MediaDeviceInfoKind`, `MediaDeviceInfo`, `MediaTrackConstraints`
 // These functions are ignored: `device_id`, `enumerate_devices_sync`, `group_id`, `kind`, `label`
 

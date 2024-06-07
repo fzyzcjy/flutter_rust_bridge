@@ -31,6 +31,11 @@ pub(crate) fn transform(mut pack: HirFlatPack) -> anyhow::Result<HirFlatPack> {
         |x| x.name.name.clone(),
         |merger, a, b| merger.merge_enums(a, b),
     );
+    transform_component(
+        &mut pack.traits,
+        |x| x.name.name.clone(),
+        |merger, a, b| merger.merge_traits(a, b),
+    );
 
     Ok(pack)
 }
@@ -49,9 +54,9 @@ fn transform_component_raw<T: Debug + Clone + Serialize, K: Eq + Hash + Debug>(
     merge: impl Fn(&dyn BaseMerger, &T, &T) -> Option<T>,
 ) -> Vec<T> {
     let mergers: Vec<Box<dyn BaseMerger>> = vec![
-        Box::new(TraitDefDefaultImplMerger),
         Box::new(ThirdPartyOverrideMerger),
         Box::new(FunctionFrbOverrideMerger),
+        Box::new(TraitDefDefaultImplMerger),
     ];
 
     (items.into_iter())

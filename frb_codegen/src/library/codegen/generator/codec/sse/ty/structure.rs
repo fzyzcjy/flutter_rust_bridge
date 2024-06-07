@@ -78,7 +78,7 @@ impl<'a> GeneralizedStructGenerator<'a> {
         let ctor = match self.mode {
             Struct => lang.call_constructor(
                 &override_struct_name.unwrap_or_else(|| self.st.name.style(lang)),
-                dart_constructor_postfix(&self.st.name, &self.context.mir_pack.funcs),
+                dart_constructor_postfix(&self.st.name, &self.context.mir_pack.funcs_with_impl()),
                 &(self.st.fields.iter())
                     .map(|x| x.name.style(lang))
                     .collect_vec(),

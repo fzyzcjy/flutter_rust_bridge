@@ -8,7 +8,6 @@ import '../web_audio_api.dart';
 import 'media_streams.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// These functions are ignored because they are not marked as `pub`: `encode_first`, `encode_next`, `flush`, `handle_error`, `new`, `record`, `stop`
 // These functions are ignored because they have generic arguments: `set_ondataavailable`, `set_onerror`, `set_onstop`
 // These types are ignored because they are not used by any `pub` functions: `MediaRecorderInner`, `RecordedData`
 

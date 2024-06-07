@@ -11,10 +11,12 @@ use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
 use crate::codegen::ir::mir::ty::rust_auto_opaque_implicit::MirTypeRustAutoOpaqueImplicitReason;
 use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
+use crate::codegen::ir::mir::ty::trait_def::MirTypeTraitDef;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::mir::attribute_parser::FrbAttributes;
 use crate::codegen::parser::mir::function_parser::structs::ParseFunctionOutput;
 use crate::codegen::parser::mir::type_parser::misc::parse_comments;
+use crate::codegen::parser::mir::type_parser::trait_def::parse_type_trait;
 use crate::codegen::parser::mir::type_parser::{TypeParser, TypeParserParsingContext};
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use crate::utils::namespace::{Namespace, NamespacedName};
@@ -104,6 +106,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             owner,
         };
 
+        let is_owner_trait_def = matches!(func.owner, HirFlatFunctionOwner::TraitDef { .. });
         let owner = if let Some(owner) =
             self.parse_owner(func, &create_context(None), dart_name.clone(), &attributes)?
         {
@@ -121,7 +124,8 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         let context = create_context(Some(owner.clone()));
         let mut info = FunctionPartialInfo::default();
         for sig_input in func.item_fn.sig().inputs.iter() {
-            info = info.merge(self.parse_fn_arg(sig_input, &owner, &context)?)?;
+            info =
+                info.merge(self.parse_fn_arg(sig_input, &owner, &context, is_owner_trait_def)?)?;
         }
         info = info.merge(self.parse_fn_output(func.item_fn.sig(), &context)?)?;
         info = self.transform_fn_info(info);
@@ -158,6 +162,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             comments: parse_comments(func.item_fn.attrs()),
             codec_mode_pack,
             rust_call_code: None,
+            has_impl: !is_owner_trait_def,
             src_lineno_pseudo: src_lineno,
         }))
     }
@@ -169,55 +174,77 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         actual_method_dart_name: Option<String>,
         attributes: &FrbAttributes,
     ) -> anyhow::Result<Option<MirFuncOwnerInfo>> {
-        Ok(Some(match &func.owner {
-            HirFlatFunctionOwner::TraitDef { .. } => return Ok(None), // TODO not yet implemented
-            HirFlatFunctionOwner::Function => MirFuncOwnerInfo::Function,
+        match &func.owner {
+            HirFlatFunctionOwner::Function => Ok(Some(MirFuncOwnerInfo::Function)),
             HirFlatFunctionOwner::StructOrEnum {
                 impl_ty,
                 trait_def_name,
             } => {
-                let sig = func.item_fn.sig();
-                let mode = if matches!(sig.inputs.first(), Some(FnArg::Receiver(..))) {
-                    MirFuncOwnerInfoMethodMode::Instance
-                } else {
-                    MirFuncOwnerInfoMethodMode::Static
-                };
-
                 let owner_ty = if let Some(x) = self.parse_method_owner_ty(impl_ty, context)? {
                     x
                 } else {
                     return Ok(None);
                 };
 
-                if owner_ty.should_ignore(self.type_parser) {
-                    return Ok(None);
-                }
-
-                if !is_allowed_owner(&owner_ty, attributes) {
-                    return Ok(None);
-                }
-
-                let actual_method_name = sig.ident.to_string();
-
-                let trait_def_namespaced_name = if let Some(trait_def_name) = trait_def_name {
-                    if let Some(ans) = self.type_parser.src_traits.get(trait_def_name) {
-                        Some(ans.name.clone())
+                let trait_def = if let Some(trait_def_name) = trait_def_name {
+                    if let Some(ans) = parse_type_trait(trait_def_name, self.type_parser) {
+                        Some(ans)
                     } else {
+                        // If cannot find the trait, we directly skip the function currently
                         return Ok(None);
                     }
                 } else {
                     None
                 };
 
-                MirFuncOwnerInfo::Method(MirFuncOwnerInfoMethod {
-                    owner_ty,
-                    actual_method_name,
-                    actual_method_dart_name,
-                    mode,
-                    trait_def_name: trait_def_namespaced_name,
-                })
+                if !is_allowed_owner(&owner_ty, attributes) {
+                    return Ok(None);
+                }
+
+                self.parse_method_owner_inner(func, actual_method_dart_name, owner_ty, trait_def)
             }
-        }))
+            HirFlatFunctionOwner::TraitDef { trait_def_name } => {
+                let trait_def = MirTypeTraitDef {
+                    name: trait_def_name.to_owned(),
+                };
+
+                self.parse_method_owner_inner(
+                    func,
+                    actual_method_dart_name,
+                    MirType::TraitDef(trait_def.clone()),
+                    Some(trait_def),
+                )
+            }
+        }
+    }
+
+    fn parse_method_owner_inner(
+        &mut self,
+        func: &HirFlatFunction,
+        actual_method_dart_name: Option<String>,
+        owner_ty: MirType,
+        trait_def: Option<MirTypeTraitDef>,
+    ) -> anyhow::Result<Option<MirFuncOwnerInfo>> {
+        let sig = func.item_fn.sig();
+        let mode = if matches!(sig.inputs.first(), Some(FnArg::Receiver(..))) {
+            MirFuncOwnerInfoMethodMode::Instance
+        } else {
+            MirFuncOwnerInfoMethodMode::Static
+        };
+
+        if owner_ty.should_ignore(self.type_parser) {
+            return Ok(None);
+        }
+
+        let actual_method_name = sig.ident.to_string();
+
+        Ok(Some(MirFuncOwnerInfo::Method(MirFuncOwnerInfoMethod {
+            owner_ty,
+            actual_method_name,
+            actual_method_dart_name,
+            mode,
+            trait_def,
+        })))
     }
 
     fn parse_method_owner_ty(

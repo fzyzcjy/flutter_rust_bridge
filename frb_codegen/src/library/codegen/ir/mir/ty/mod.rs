@@ -12,6 +12,7 @@ pub(crate) mod record;
 pub(crate) mod rust_auto_opaque_implicit;
 pub(crate) mod rust_opaque;
 pub(crate) mod structure;
+pub(crate) mod trait_def;
 
 use crate::codegen::ir::mir::pack::{MirEnumPool, MirPack, MirStructPool};
 use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
@@ -41,6 +42,7 @@ pub enum MirType {
     RustAutoOpaqueImplicit(rust_auto_opaque_implicit::MirTypeRustAutoOpaqueImplicit),
     RustOpaque(rust_opaque::MirTypeRustOpaque),
     StructRef(structure::MirTypeStructRef),
+    TraitDef(trait_def::MirTypeTraitDef),
 }
 }
 
@@ -151,6 +153,7 @@ impl Serialize for MirType {
             }
             MirType::RustOpaque(inner) => ser::<S, _>(&mut state, "RustOpaque", inner),
             MirType::StructRef(inner) => ser::<S, _>(&mut state, "StructRef", inner),
+            MirType::TraitDef(inner) => ser::<S, _>(&mut state, "TraitDef", inner),
         }?;
 
         state.end()

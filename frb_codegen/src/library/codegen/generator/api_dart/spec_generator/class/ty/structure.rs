@@ -1,5 +1,5 @@
 use crate::codegen::generator::api_dart::spec_generator::class::method::{
-    dart_constructor_postfix, generate_api_methods, GenerateApiMethodMode,
+    dart_constructor_postfix, generate_api_methods, GenerateApiMethodConfig,
 };
 use crate::codegen::generator::api_dart::spec_generator::class::misc::generate_class_extra_body;
 use crate::codegen::generator::api_dart::spec_generator::class::ty::ApiDartGeneratorClassTrait;
@@ -15,13 +15,18 @@ impl<'a> ApiDartGeneratorClassTrait for StructRefApiDartGenerator<'a> {
         let comments = generate_dart_comments(&src.comments);
         let metadata = generate_dart_metadata(&src.dart_metadata);
 
-        let methods =
-            generate_api_methods(&src.name, self.context, GenerateApiMethodMode::Combined);
+        let constructor_postfix =
+            dart_constructor_postfix(&src.name, &self.context.mir_pack.funcs_with_impl());
+        let class_name = &self.mir.ident.0.name;
+
+        let methods = generate_api_methods(
+            &src.name,
+            self.context,
+            &GenerateApiMethodConfig::COMBINED,
+            class_name,
+        );
         let extra_body =
             generate_class_extra_body(self.mir_type(), &self.context.mir_pack.dart_code_of_type);
-
-        let constructor_postfix = dart_constructor_postfix(&src.name, &self.context.mir_pack.funcs);
-        let class_name = &self.mir.ident.0.name;
 
         Some(ApiDartGeneratedClass {
             namespace: src.name.namespace.clone(),

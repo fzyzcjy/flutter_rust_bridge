@@ -10,6 +10,7 @@ pub(crate) mod rust_opaque;
 pub(crate) mod structure;
 mod structure_freezed;
 mod structure_non_freezed;
+mod trait_def;
 
 #[enum_dispatch]
 pub(crate) trait ApiDartGeneratorClassTrait {

@@ -6,30 +6,52 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// These functions are ignored: `simple_trait_fn_twin_normal`, `simple_trait_fn_with_default_impl_twin_normal`
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructOneWithTraitTwinNormal>>
+abstract class StructOneWithTraitTwinNormal implements SimpleTraitTwinNormal {
+  int get one;
 
-class StructWithTraitTwinNormal {
-  final int value;
+  void set one(int one);
 
-  const StructWithTraitTwinNormal({
-    required this.value,
-  });
+  Future<int> simpleTraitFnReceiverBorrowTwinNormal();
 
-  static Future<StructWithTraitTwinNormal> simpleTraitFnTwinNormal() =>
+  static Future<StructOneWithTraitTwinNormal> simpleTraitFnTwinNormal(
+          {required int value}) =>
       RustLib.instance.api
-          .crateApiImplTraitStructWithTraitTwinNormalSimpleTraitFnTwinNormal();
+          .crateApiImplTraitStructOneWithTraitTwinNormalSimpleTraitFnTwinNormal(
+              value: value);
 
   static Future<int> simpleTraitFnWithDefaultImplTwinNormal() => RustLib
       .instance.api
-      .crateApiImplTraitStructWithTraitTwinNormalSimpleTraitFnWithDefaultImplTwinNormal();
+      .crateApiImplTraitStructOneWithTraitTwinNormalSimpleTraitFnWithDefaultImplTwinNormal();
 
-  @override
-  int get hashCode => value.hashCode;
+  void dispose();
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is StructWithTraitTwinNormal &&
-          runtimeType == other.runtimeType &&
-          value == other.value;
+  bool get isDisposed;
+}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructTwoWithTraitTwinNormal>>
+abstract class StructTwoWithTraitTwinNormal implements SimpleTraitTwinNormal {
+  int get two;
+
+  void set two(int two);
+
+  Future<int> simpleTraitFnReceiverBorrowTwinNormal();
+
+  static Future<StructTwoWithTraitTwinNormal> simpleTraitFnTwinNormal(
+          {required int value}) =>
+      RustLib.instance.api
+          .crateApiImplTraitStructTwoWithTraitTwinNormalSimpleTraitFnTwinNormal(
+              value: value);
+
+  static Future<int> simpleTraitFnWithDefaultImplTwinNormal() => RustLib
+      .instance.api
+      .crateApiImplTraitStructTwoWithTraitTwinNormalSimpleTraitFnWithDefaultImplTwinNormal();
+
+  void dispose();
+
+  bool get isDisposed;
+}
+
+abstract class SimpleTraitTwinNormal {
+  Future<int> simpleTraitFnReceiverBorrowTwinNormal();
 }

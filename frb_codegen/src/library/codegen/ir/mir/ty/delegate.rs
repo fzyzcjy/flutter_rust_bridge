@@ -8,6 +8,7 @@ use crate::codegen::ir::mir::ty::rust_auto_opaque_implicit::MirRustAutoOpaqueRaw
 use crate::codegen::ir::mir::ty::rust_opaque::MirTypeRustOpaque;
 use crate::codegen::ir::mir::ty::{MirContext, MirType, MirTypeTrait};
 use crate::utils::namespace::Namespace;
+use crate::utils::namespace::NamespacedName;
 
 crate::mir! {
 /// types that delegate to another type
@@ -29,6 +30,7 @@ pub enum MirTypeDelegate {
     StreamSink(MirTypeDelegateStreamSink),
     BigPrimitive(MirTypeDelegateBigPrimitive),
     RustAutoOpaqueExplicit(MirTypeDelegateRustAutoOpaqueExplicit),
+    DynTrait(MirTypeDelegateDynTrait),
 }
 
 pub struct MirTypeDelegateArray {
@@ -81,6 +83,11 @@ pub struct MirTypeDelegateRustAutoOpaqueExplicit {
     pub inner: MirTypeRustOpaque,
     pub raw: MirRustAutoOpaqueRaw,
 }
+
+pub struct MirTypeDelegateDynTrait {
+    pub name: NamespacedName,
+    pub inner: MirTypeEnumRef,
+}
 }
 
 impl MirTypeTrait for MirTypeDelegate {
@@ -125,6 +132,9 @@ impl MirTypeTrait for MirTypeDelegate {
             MirTypeDelegate::BigPrimitive(mir) => mir.to_string(),
             MirTypeDelegate::RustAutoOpaqueExplicit(mir) => {
                 format!("AutoExplicit_{}", mir.inner.safe_ident())
+            }
+            MirTypeDelegate::DynTrait(mir) => {
+                format!("DynTrait_{}", mir.inner.safe_ident())
             }
         }
     }
@@ -188,6 +198,7 @@ impl MirTypeTrait for MirTypeDelegate {
             MirTypeDelegate::RustAutoOpaqueExplicit(mir) => {
                 format!("RustAutoOpaque{}<{}>", mir.inner.codec, mir.raw.string)
             }
+            MirTypeDelegate::DynTrait(mir) => format!("dyn <{}>", mir.name.name),
         }
     }
 
@@ -255,6 +266,7 @@ impl MirTypeDelegate {
             MirTypeDelegate::StreamSink(_) => MirType::Delegate(MirTypeDelegate::String),
             MirTypeDelegate::BigPrimitive(_) => MirType::Delegate(MirTypeDelegate::String),
             MirTypeDelegate::RustAutoOpaqueExplicit(mir) => MirType::RustOpaque(mir.inner.clone()),
+            MirTypeDelegate::DynTrait(mir) => MirType::EnumRef(mir.inner.clone()),
         }
     }
 }

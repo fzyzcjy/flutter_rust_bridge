@@ -6,6 +6,7 @@ pub(crate) mod internal_config;
 pub(crate) mod misc;
 pub(crate) mod reader;
 pub(crate) mod sanity_checker;
+mod trait_impl_parser;
 pub(crate) mod type_parser;
 
 use crate::codegen::ir::hir::flat::function::HirFlatFunction;
@@ -40,17 +41,24 @@ pub(crate) fn parse(
 
     let (mir_funcs, mir_skips) =
         parse_mir_funcs(config, &hir_flat.functions, &mut type_parser, &structs_map)?;
+    let trait_impls = trait_impl_parser::parse(
+        &hir_flat.trait_impls,
+        &mut type_parser,
+        config.default_stream_sink_codec,
+        config.default_rust_opaque_codec,
+    )?;
 
     let (struct_pool, enum_pool, dart_code_of_type) = type_parser.consume();
 
     let mut ans = MirPack {
-        funcs: mir_funcs,
+        funcs_all: mir_funcs,
         struct_pool,
         enum_pool,
         dart_code_of_type,
         existing_handler: hir_flat.existing_handler.clone(),
         unused_types: vec![],
         skipped_functions: mir_skips,
+        trait_impls,
     };
 
     ans.unused_types = get_unused_types(

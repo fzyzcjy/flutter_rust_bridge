@@ -8,14 +8,3 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<int> minimalAdder({required int a, required int b}) =>
     RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b);
-
-enum SimplePrimitiveEnumTwinNormal {
-  first,
-  second,
-  ;
-
-  Future<int> simpleMethodTwinNormal() => RustLib.instance.api
-          .crateApiMinimalSimplePrimitiveEnumTwinNormalSimpleMethodTwinNormal(
-        that: this,
-      );
-}

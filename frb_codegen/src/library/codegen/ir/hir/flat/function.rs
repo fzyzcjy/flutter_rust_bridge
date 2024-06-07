@@ -13,7 +13,7 @@ use syn::Visibility;
 pub(crate) struct HirFlatFunction {
     pub(crate) namespace: Namespace,
     pub(crate) owner: HirFlatFunctionOwner,
-    pub(crate) source: HirGenerationSource,
+    pub(crate) sources: Vec<HirGenerationSource>,
     #[serde(serialize_with = "serialize_generalized_item_fn")]
     pub(crate) item_fn: GeneralizedItemFn,
 }

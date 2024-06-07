@@ -41,20 +41,6 @@ impl RustOpaqueCodecMode {
 }
 
 impl MirTypeRustOpaque {
-    pub fn new(
-        namespace: Namespace,
-        inner: MirRustOpaqueInner,
-        codec: RustOpaqueCodecMode,
-        brief_name: bool,
-    ) -> Self {
-        Self {
-            namespace,
-            inner,
-            codec,
-            brief_name,
-        }
-    }
-
     pub(crate) fn get_delegate(&self) -> MirType {
         Self::DELEGATE_TYPE.clone()
     }
@@ -72,7 +58,7 @@ impl MirTypeTrait for MirTypeRustOpaque {
         f: &mut F,
         mir_context: &impl MirContext,
     ) {
-        self.get_delegate().visit_types(f, mir_context)
+        self.get_delegate().visit_types(f, mir_context);
     }
 
     fn safe_ident(&self) -> String {

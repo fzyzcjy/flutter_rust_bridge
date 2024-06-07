@@ -5,5 +5,10 @@
 
 import '../frb_generated.dart';
 import '../third_party/web_audio_api.dart';
-import '../third_party/web_audio_api/context.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
+
+abstract class AudioContextExt {
+  Future<AudioBuffer> decodeAudioDataSync({required String inputPath});
+
+  Future<String> outputLatency();
+}

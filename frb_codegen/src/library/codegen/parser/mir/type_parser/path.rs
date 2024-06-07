@@ -47,6 +47,9 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             if let Some(ans) = self.parse_type_path_data_enum(last_segment)? {
                 return Ok(ans);
             }
+            if let Some(ans) = self.parse_type_path_data_trait(last_segment)? {
+                return Ok(ans);
+            }
             if let Some(ans) = self.parse_type_path_data_rust_opaque(last_segment)? {
                 return Ok(ans);
             }

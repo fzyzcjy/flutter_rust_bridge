@@ -1,6 +1,7 @@
 use crate::codegen::generator::codec::structs::CodecMode;
 use crate::codegen::ir::mir::func::MirFunc;
 use crate::codegen::ir::mir::skip::MirSkip;
+use crate::codegen::ir::mir::trait_impl::MirTraitImpl;
 use crate::codegen::ir::mir::ty::enumeration::{MirEnum, MirEnumIdent};
 use crate::codegen::ir::mir::ty::structure::{MirStruct, MirStructIdent};
 use crate::codegen::ir::mir::ty::MirType;
@@ -15,16 +16,24 @@ pub type MirEnumPool = HashMap<MirEnumIdent, MirEnum>;
 
 #[derive(Debug, Clone, serde::Serialize)]
 pub struct MirPack {
-    pub funcs: Vec<MirFunc>,
+    pub funcs_all: Vec<MirFunc>, // Do not direct use, but use things like `funcs_with_impl`
     pub struct_pool: MirStructPool,
     pub enum_pool: MirEnumPool,
     pub dart_code_of_type: HashMap<String, String>,
     pub existing_handler: Option<NamespacedName>,
     pub unused_types: Vec<NamespacedName>,
     pub skipped_functions: Vec<MirSkip>,
+    pub trait_impls: Vec<MirTraitImpl>,
 }
 
 impl MirPack {
+    pub(crate) fn funcs_with_impl(&self) -> Vec<MirFunc> {
+        (self.funcs_all.iter())
+            .filter(|f| f.has_impl)
+            .cloned()
+            .collect()
+    }
+
     #[allow(clippy::type_complexity)]
     pub fn distinct_types(
         &self,
@@ -41,7 +50,7 @@ impl MirPack {
         f: &mut F,
         filter_func: &Option<impl Fn(&MirFunc) -> bool>,
     ) {
-        for func in &self.funcs {
+        for func in &self.funcs_all {
             if filter_func.is_some() && !filter_func.as_ref().unwrap()(func) {
                 continue;
             }

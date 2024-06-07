@@ -8,18 +8,3 @@ pub fn init_app() {
 pub fn minimal_adder(a: i32, b: i32) -> i32 {
     a + b
 }
-
-// TODO temp demo
-pub enum SimplePrimitiveEnumTwinNormal {
-    First,
-    Second,
-}
-
-impl SimplePrimitiveEnumTwinNormal {
-    pub fn simple_method_twin_normal(&self) -> i32 {
-        match self {
-            SimplePrimitiveEnumTwinNormal::First => 100,
-            SimplePrimitiveEnumTwinNormal::Second => 200,
-        }
-    }
-}

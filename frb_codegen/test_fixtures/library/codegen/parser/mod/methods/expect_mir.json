@@ -24,7 +24,7 @@
     }
   },
   "existing_handler": null,
-  "funcs": [
+  "funcs_all": [
     {
       "accessor": null,
       "arg_mode": "Named",
@@ -34,6 +34,7 @@
       },
       "comments": [],
       "dart_name": null,
+      "has_impl": true,
       "id": 1,
       "initializer": false,
       "inputs": [
@@ -92,7 +93,7 @@
             "safe_ident": "my_enum",
             "type": "Delegate"
           },
-          "trait_def_name": null
+          "trait_def": null
         }
       },
       "rust_async": false,
@@ -108,6 +109,7 @@
       },
       "comments": [],
       "dart_name": null,
+      "has_impl": true,
       "id": 2,
       "initializer": false,
       "inputs": [],
@@ -139,7 +141,7 @@
             "safe_ident": "my_enum",
             "type": "Delegate"
           },
-          "trait_def_name": null
+          "trait_def": null
         }
       },
       "rust_async": false,
@@ -155,6 +157,7 @@
       },
       "comments": [],
       "dart_name": null,
+      "has_impl": true,
       "id": 3,
       "initializer": false,
       "inputs": [
@@ -210,7 +213,7 @@
             "safe_ident": "my_struct",
             "type": "StructRef"
           },
-          "trait_def_name": null
+          "trait_def": null
         }
       },
       "rust_async": false,
@@ -226,6 +229,7 @@
       },
       "comments": [],
       "dart_name": null,
+      "has_impl": true,
       "id": 4,
       "initializer": false,
       "inputs": [],
@@ -252,7 +256,7 @@
             "safe_ident": "my_struct",
             "type": "StructRef"
           },
-          "trait_def_name": null
+          "trait_def": null
         }
       },
       "rust_async": false,
@@ -274,5 +278,6 @@
       "wrapper_name": null
     }
   },
+  "trait_impls": [],
   "unused_types": []
 }

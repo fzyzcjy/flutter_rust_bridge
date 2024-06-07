@@ -3,24 +3,30 @@
     {
       "mirror": false,
       "name": "crate::another_file/EnumInAnotherFile",
-      "source": "Normal",
+      "sources": [
+        "Normal"
+      ],
       "visibility": "Public"
     }
   ],
   "existing_handler": null,
   "functions": [
     {
-      "item_fn": "GeneralizedItemFn(name=func_one)",
+      "item_fn": "GeneralizedItemFn(name=func_one, vis=Some(Visibility::Public(Pub)), attrs=[])",
       "namespace": "crate::api",
       "owner": "Function",
-      "source": "Normal"
+      "sources": [
+        "Normal"
+      ]
     }
   ],
   "structs": [
     {
       "mirror": false,
       "name": "crate::another_file/StructInAnotherFile",
-      "source": "Normal",
+      "sources": [
+        "Normal"
+      ],
       "visibility": "Public"
     }
   ],

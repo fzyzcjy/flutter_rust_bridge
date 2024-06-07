@@ -113,7 +113,9 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGener
             //     return cst_encode_{}(builder.toBytes());",
             //     uint8list_safe_ident()
             // ))),
-            MirTypeDelegate::Backtrace | MirTypeDelegate::AnyhowException => {
+            MirTypeDelegate::Backtrace
+            | MirTypeDelegate::AnyhowException
+            | MirTypeDelegate::DynTrait(_) => {
                 Acc::distribute(Some("throw UnimplementedError();".to_string()))
             }
             MirTypeDelegate::Map(_) => Acc::distribute(Some(format!(

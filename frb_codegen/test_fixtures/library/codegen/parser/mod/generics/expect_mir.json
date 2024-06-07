@@ -118,7 +118,7 @@
     }
   },
   "existing_handler": null,
-  "funcs": [
+  "funcs_all": [
     {
       "accessor": null,
       "arg_mode": "Named",
@@ -128,6 +128,7 @@
       },
       "comments": [],
       "dart_name": null,
+      "has_impl": true,
       "id": 1,
       "initializer": false,
       "inputs": [
@@ -193,6 +194,7 @@
       },
       "comments": [],
       "dart_name": null,
+      "has_impl": true,
       "id": 2,
       "initializer": false,
       "inputs": [
@@ -258,6 +260,7 @@
       },
       "comments": [],
       "dart_name": null,
+      "has_impl": true,
       "id": 3,
       "initializer": false,
       "inputs": [
@@ -323,6 +326,7 @@
       },
       "comments": [],
       "dart_name": null,
+      "has_impl": true,
       "id": 4,
       "initializer": false,
       "inputs": [
@@ -388,6 +392,7 @@
       },
       "comments": [],
       "dart_name": null,
+      "has_impl": true,
       "id": 5,
       "initializer": false,
       "inputs": [
@@ -543,5 +548,6 @@
       "wrapper_name": null
     }
   },
+  "trait_impls": [],
   "unused_types": []
 }

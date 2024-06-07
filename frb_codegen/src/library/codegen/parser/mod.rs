@@ -29,7 +29,7 @@ fn parse_inner(
 
     let pb = progress_bar_pack.parse_hir_primary.start();
     let hir_tree = hir::tree::parse(&config.hir, hir_raw, dumper)?;
-    let hir_naive_flat = hir::naive_flat::parse(hir_tree, dumper)?;
+    let hir_naive_flat = hir::naive_flat::parse(&config.hir, hir_tree, dumper)?;
     let hir_flat = hir::flat::parse(&config.hir, hir_naive_flat, dumper)?;
     on_hir_flat(&hir_flat)?;
     drop(pb);
@@ -86,6 +86,7 @@ mod tests {
                     Namespace::new_self_crate("api_one".to_owned()),
                     Namespace::new_self_crate("api_two".to_owned()),
                 ],
+                early_skip_namespace_prefixes: vec![],
             })),
         )
     }
@@ -149,6 +150,7 @@ mod tests {
             .map(|f| f(&rust_crate_dir))
             .unwrap_or(RustInputNamespacePack {
                 rust_input_namespace_prefixes: vec![Namespace::new_self_crate("api".to_owned())],
+                early_skip_namespace_prefixes: vec![],
             });
 
         let config = ParserInternalConfig {

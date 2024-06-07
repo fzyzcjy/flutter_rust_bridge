@@ -12,7 +12,7 @@ use syn::{ItemEnum, ItemStruct};
 pub struct HirFlatStructOrEnum<Item: SynItemStructOrEnum> {
     pub(crate) name: NamespacedName,
     pub(crate) visibility: HirVisibility,
-    pub(crate) source: HirGenerationSource,
+    pub(crate) sources: Vec<HirGenerationSource>,
     pub(crate) mirror: bool,
     #[derivative(Debug = "ignore")]
     #[serde(skip_serializing)]

@@ -1,14 +1,19 @@
 use crate::codegen::generator::api_dart::spec_generator::class::method::{
-    generate_api_methods, GenerateApiMethodMode, GeneratedApiMethods,
+    generate_api_methods, GenerateApiMethodConfig, GenerateApiMethodMode, GeneratedApiMethods,
 };
 use crate::codegen::generator::api_dart::spec_generator::class::misc::generate_class_extra_body;
 use crate::codegen::generator::api_dart::spec_generator::class::ty::ApiDartGeneratorClassTrait;
 use crate::codegen::generator::api_dart::spec_generator::class::ApiDartGeneratedClass;
+use crate::codegen::generator::api_dart::spec_generator::misc::generate_imports_which_types_and_funcs_use;
+use crate::codegen::ir::mir::trait_impl::MirTraitImpl;
 use crate::codegen::ir::mir::ty::rust_opaque::MirTypeRustOpaque;
+use crate::codegen::ir::mir::ty::MirType;
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
+use crate::utils::basic_code::DartBasicHeaderCode;
 use crate::utils::namespace::NamespacedName;
+use itertools::Itertools;
 use lazy_static::lazy_static;
 use regex::Regex;
 
@@ -17,7 +22,13 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
         let Info {
             dart_api_type,
             methods,
-        } = self.compute_info(GenerateApiMethodMode::SeparatedDecl);
+        } = self.compute_info(
+            &GenerateApiMethodConfig {
+                mode_static: GenerateApiMethodMode::DeclAndImpl,
+                mode_non_static: GenerateApiMethodMode::DeclOnly,
+            },
+            "",
+        );
         let methods_str = &methods.code;
 
         let rust_api_type = self.mir.rust_api_type();
@@ -25,13 +36,16 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
         let extra_body =
             generate_class_extra_body(self.mir_type(), &self.context.mir_pack.dart_code_of_type);
 
+        let (maybe_impls, maybe_impls_header) =
+            generate_maybe_impls(&self.context.mir_pack.trait_impls, &self.mir, self.context);
+
         Some(ApiDartGeneratedClass {
             namespace: self.mir.namespace.clone(),
             class_name: dart_api_type.clone(),
             code: format!(
                 "
                 // Rust type: {rust_api_type}
-                abstract class {dart_api_type} {{
+                abstract class {dart_api_type}{maybe_impls} {{
                     {methods_str}
 
                     void dispose();
@@ -43,7 +57,7 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
                 "
             ),
             needs_freezed: false,
-            header: methods.header,
+            header: methods.header + maybe_impls_header,
         })
     }
 
@@ -51,7 +65,13 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
         let Info {
             dart_api_type,
             methods,
-        } = self.compute_info(GenerateApiMethodMode::SeparatedImpl);
+        } = self.compute_info(
+            &GenerateApiMethodConfig {
+                mode_static: GenerateApiMethodMode::Nothing,
+                mode_non_static: GenerateApiMethodMode::DeclAndImpl,
+            },
+            "Impl",
+        );
         let methods_str = &methods.code;
 
         let dart_api_type_impl = format!("{dart_api_type}Impl");
@@ -83,16 +103,19 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
 }
 
 impl RustOpaqueApiDartGenerator<'_> {
-    fn compute_info(&self, mode: GenerateApiMethodMode) -> Info {
+    fn compute_info(
+        &self,
+        config: &GenerateApiMethodConfig,
+        dart_class_name_postfix: &str,
+    ) -> Info {
         let dart_api_type = ApiDartGenerator::new(self.mir.clone(), self.context).dart_api_type();
+        let type_query_name = compute_query_name(&self.mir);
 
         let methods = generate_api_methods(
-            &NamespacedName::new(
-                self.mir.namespace.clone(),
-                compute_api_method_query_name(&self.mir, self.context),
-            ),
+            &NamespacedName::new(self.mir.namespace.clone(), type_query_name.clone()),
             self.context,
-            mode,
+            config,
+            &format!("{dart_api_type}{dart_class_name_postfix}"),
         );
 
         Info {
@@ -107,14 +130,62 @@ struct Info {
     methods: GeneratedApiMethods,
 }
 
-fn compute_api_method_query_name(
-    mir: &MirTypeRustOpaque,
-    _context: ApiDartGeneratorContext,
-) -> String {
+fn compute_query_name(mir: &MirTypeRustOpaque) -> String {
     lazy_static! {
         static ref FILTER: Regex =
             Regex::new(r"^flutter_rust_bridge::for_generated::RustAutoOpaqueInner<(.*)>$").unwrap();
     }
 
     FILTER.replace_all(&mir.inner.0, "$1").to_string()
+}
+
+fn generate_maybe_impls(
+    all_trait_impls: &[MirTraitImpl],
+    self_type: &MirTypeRustOpaque,
+    context: ApiDartGeneratorContext,
+) -> (String, DartBasicHeaderCode) {
+    let interest_trait_impls = all_trait_impls
+        .iter()
+        .filter(|x| {
+            (get_candidate_safe_idents_for_matching(&x.impl_ty).iter())
+                .any(|x| x == &self_type.safe_ident())
+        })
+        .collect_vec();
+
+    if interest_trait_impls.is_empty() {
+        return ("".to_owned(), Default::default());
+    }
+
+    let combined_impls = (interest_trait_impls.iter())
+        .map(|t| ApiDartGenerator::new(t.trait_ty.clone(), context).dart_api_type())
+        .join(", ");
+    let code = format!(" implements {}", combined_impls);
+
+    let interest_trait_types = (interest_trait_impls.iter())
+        .map(|x| MirType::TraitDef(x.trait_ty.clone()))
+        .collect_vec();
+    let import = generate_imports_which_types_and_funcs_use(
+        &self_type.namespace,
+        &Some(&interest_trait_types.iter().collect()),
+        &None,
+        context,
+    )
+    .unwrap();
+
+    (
+        code,
+        DartBasicHeaderCode {
+            import,
+            ..Default::default()
+        },
+    )
+}
+
+fn get_candidate_safe_idents_for_matching(ty: &MirType) -> Vec<String> {
+    let mut ans = vec![ty.safe_ident()];
+    match ty {
+        MirType::RustAutoOpaqueImplicit(ty) => ans.push(ty.inner.safe_ident()),
+        _ => {}
+    }
+    ans
 }

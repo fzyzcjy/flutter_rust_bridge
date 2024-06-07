@@ -46,6 +46,22 @@ impl WaveShaperNode {
     pub fn curve() {}
 }
 
+#[frb(external)]
+pub trait AudioNode {
+    #[frb(ignore)]
+    fn set_onprocessorerror();
+    #[frb(ignore)]
+    fn connect();
+    #[frb(ignore)]
+    fn connect_from_output_to_input();
+    #[frb(ignore)]
+    fn disconnect_dest();
+    #[frb(ignore)]
+    fn disconnect_dest_from_output();
+    #[frb(ignore)]
+    fn disconnect_dest_from_output_to_input();
+}
+
 #[macro_export]
 macro_rules! handle_audio_node_trait_impls {
     ($name:ident) => {

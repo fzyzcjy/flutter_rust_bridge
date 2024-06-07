@@ -1,4 +1,6 @@
 use crate::codegen::ir::hir::misc::item_fn::GeneralizedItemFn;
+use crate::utils::syn_utils::ty_to_string;
+use itertools::Itertools;
 use quote::ToTokens;
 use serde::{Serialize, Serializer};
 
@@ -28,5 +30,10 @@ pub(crate) fn serialize_generalized_item_fn<S: Serializer>(
     x: &GeneralizedItemFn,
     s: S,
 ) -> Result<S::Ok, S::Error> {
-    s.serialize_str(&format!("GeneralizedItemFn(name={})", x.name()))
+    s.serialize_str(&format!(
+        "GeneralizedItemFn(name={}, vis={:?}, attrs=[{}])",
+        x.name(),
+        x.vis(),
+        x.attrs().iter().map(ty_to_string).join(", "),
+    ))
 }

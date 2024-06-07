@@ -15,7 +15,7 @@ fn transform_function(function: &mut HirFlatFunction) -> anyhow::Result<()> {
         let attr_extra_str = format!(r###"#[frb(name = "{}")]"###, func_name_stripped);
         let attr_extra = parse_attribute(&attr_extra_str)?;
 
-        function.source = HirGenerationSource::FromFrbOverride;
+        function.sources.push(HirGenerationSource::FromFrbOverride);
         function.item_fn.attrs_mut().push(attr_extra);
     }
     Ok(())
