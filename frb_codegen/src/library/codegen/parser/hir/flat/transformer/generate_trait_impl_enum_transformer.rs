@@ -24,7 +24,15 @@ fn generate_trait_impl_enum(
     hir_trait: &HirFlatTrait,
     trait_impls: &[MirTraitImpl],
 ) -> anyhow::Result<String> {
-    Ok(TODO)
+    let trait_def_name = &hir_trait.name.name;
+
+    // TODO
+    Ok(format!(
+        "enum {trait_def_name}Impl {{
+            Hello(i32),
+        }}
+        "
+    ))
 }
 
 fn inject_extra_code(pack: &mut HirFlatPack, extra_code: &str) {
