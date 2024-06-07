@@ -15,7 +15,7 @@ pub(crate) fn handle_external_impl(attribute: TokenStream, item: TokenStream) ->
         create_frb_encoded_comment(&format!("#[frb({})]{}", attribute, &item_string));
 
     let item_syn: ItemImpl = syn::parse(item.into()).unwrap();
-    let converted_item = handle_syn_item_impl(item_syn);
+    let converted_item = handle_syn_item_impl(item_syn, &item_string);
 
     quote! {
         #encoded_original_item
