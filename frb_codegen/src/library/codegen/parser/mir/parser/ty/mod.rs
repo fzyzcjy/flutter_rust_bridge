@@ -39,6 +39,7 @@ pub(crate) mod structure;
 pub(crate) mod trait_def;
 pub(crate) mod trait_object;
 pub(crate) mod tuple;
+#[allow(clippy::module_inception)]
 pub(crate) mod ty;
 pub(crate) mod unencodable;
 
