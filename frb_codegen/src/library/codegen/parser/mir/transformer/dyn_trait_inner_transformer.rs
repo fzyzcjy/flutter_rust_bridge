@@ -1,5 +1,5 @@
 use crate::codegen::ir::mir::pack::MirPack;
-use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
+use crate::codegen::ir::mir::ty::delegate::{MirTypeDelegate, MirTypeDelegateDynTrait};
 use crate::codegen::ir::mir::ty::MirType;
 use crate::if_then_some;
 use itertools::Itertools;
@@ -14,7 +14,16 @@ pub(crate) fn transform(mut pack: MirPack) -> anyhow::Result<MirPack> {
         .unique_by(|ty| ty.safe_ident())
         .collect_vec();
 
-    todo!();
+    for ty_dyn_trait in &ty_dyn_traits {
+        handle_ty_dyn_trait(&mut pack, ty_dyn_trait)?;
+    }
 
     Ok(pack)
+}
+
+fn handle_ty_dyn_trait(
+    pack: &mut MirPack,
+    ty_dyn_trait: &MirTypeDelegateDynTrait,
+) -> anyhow::Result<()> {
+    todo!()
 }
