@@ -9,7 +9,7 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 // These functions are ignored because they have generic arguments: `new`, `process`
 // These types are ignored because they are not used by any `pub` functions: `AudioParamValues`, `AudioWorkletNodeOptions`, `AudioWorkletRenderer`, `Processor`
-// These functions are ignored: `constructor`, `port`
+// These functions are ignored: `constructor`, `onmessage`, `port`
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioWorkletNode>>
 abstract class AudioWorkletNode implements AudioNode {
@@ -79,25 +79,4 @@ abstract class AudioWorkletNode implements AudioNode {
   bool get isDisposed;
 }
 
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<dyn Any>>
-abstract class Any {
-  void dispose();
-
-  bool get isDisposed;
-}
-
-abstract class AudioWorkletProcessor {
-  /// Handle incoming messages from the linked AudioNode
-  ///
-  /// By overriding this method you can add a handler for messages sent from the control thread
-  /// via the AudioWorkletNode MessagePort.
-  ///
-  /// Receivers are supposed to consume the content of `msg`. The content of `msg` might
-  /// also be replaced by cruft that needs to be deallocated outside of the render thread
-  /// afterwards, e.g. when replacing an internal buffer.
-  ///
-  /// This method is just a shim of the full
-  /// [`MessagePort`](https://webaudio.github.io/web-audio-api/#dom-audioworkletprocessor-port)
-  /// `onmessage` functionality of the AudioWorkletProcessor.
-  Future<void> onmessage({required Any msg});
-}
+abstract class AudioWorkletProcessor {}
