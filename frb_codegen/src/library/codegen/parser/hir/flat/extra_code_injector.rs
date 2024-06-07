@@ -9,7 +9,7 @@ pub(crate) fn inject_extra_code(
     extra_code: &str,
     namespace: &Namespace,
 ) -> anyhow::Result<()> {
-    pack.extra_code += extra_code;
+    pack.extra_rust_output_code += extra_code;
     parse_synthesized_syn_items(pack, extra_code, namespace)?;
     Ok(())
 }

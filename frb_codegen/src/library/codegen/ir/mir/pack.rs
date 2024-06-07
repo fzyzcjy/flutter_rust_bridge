@@ -24,7 +24,7 @@ pub struct MirPack {
     pub unused_types: Vec<NamespacedName>,
     pub skipped_functions: Vec<MirSkip>,
     pub trait_impls: Vec<MirTraitImpl>,
-    pub extra_code: String,
+    pub extra_rust_output_code: String,
 }
 
 impl MirPack {

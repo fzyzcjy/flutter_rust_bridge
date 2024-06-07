@@ -44,7 +44,7 @@ pub(crate) fn parse(
         unused_types: vec![],
         skipped_functions,
         trait_impls,
-        extra_code: hir_flat.extra_code.clone(),
+        extra_rust_output_code: hir_flat.extra_rust_output_code.clone(),
     };
 
     ans.unused_types = get_unused_types(
