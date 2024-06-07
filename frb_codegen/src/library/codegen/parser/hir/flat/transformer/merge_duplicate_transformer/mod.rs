@@ -56,7 +56,6 @@ fn transform_component_raw<T: Debug + Clone + Serialize, K: Eq + Hash + Debug>(
     let mergers: Vec<Box<dyn BaseMerger>> = vec![
         Box::new(ThirdPartyOverrideMerger),
         Box::new(FunctionFrbOverrideMerger),
-        // NOTE ordering
         Box::new(TraitDefDefaultImplMerger),
     ];
 
