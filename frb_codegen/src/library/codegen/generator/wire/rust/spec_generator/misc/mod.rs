@@ -67,7 +67,11 @@ pub(crate) fn generate(
             .iter()
             .map(|ty| WireRustGenerator::new(ty.clone(), context).generate_related_funcs())
             .collect(),
-        extra_from_parser: TODO,
+        extra_from_parser: vec![WireRustOutputCode {
+            body: context.mir_pack.extra_rust_output_code.clone(),
+            extern_funcs: vec![],
+            extern_classes: vec![],
+        }],
         content_hash,
     })
 }
