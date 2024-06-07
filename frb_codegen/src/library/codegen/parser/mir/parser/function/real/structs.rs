@@ -1,12 +1,12 @@
 use crate::codegen::ir::mir::func::MirFunc;
 use crate::codegen::ir::mir::skip::MirSkip;
 
-pub(crate) enum ParseFunctionOutput {
+pub(crate) enum MirFuncOrSkip {
     Ok(MirFunc),
     Skip(MirSkip),
 }
 
-impl ParseFunctionOutput {
+impl MirFuncOrSkip {
     pub(crate) fn ok(self) -> MirFunc {
         match self {
             Self::Ok(inner) => inner,

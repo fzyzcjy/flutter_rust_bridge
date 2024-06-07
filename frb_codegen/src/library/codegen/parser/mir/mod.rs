@@ -11,7 +11,7 @@ use crate::codegen::ir::mir::pack::MirPack;
 use crate::codegen::ir::mir::skip::MirSkip;
 use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
 use crate::codegen::parser::mir::parser::function::auto_accessor::parse;
-use crate::codegen::parser::mir::parser::function::real::structs::ParseFunctionOutput;
+use crate::codegen::parser::mir::parser::function::real::structs::MirFuncOrSkip;
 use crate::codegen::parser::mir::parser::ty::TypeParser;
 use crate::codegen::parser::mir::sanity_checker::opaque_inside_translatable_checker::check_opaque_inside_translatable;
 use crate::codegen::parser::mir::sanity_checker::unused_checker::get_unused_types;

@@ -15,7 +15,7 @@ use crate::codegen::ir::mir::ty::trait_def::MirTypeTraitDef;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
 use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
-use crate::codegen::parser::mir::parser::function::real::structs::ParseFunctionOutput;
+use crate::codegen::parser::mir::parser::function::real::structs::MirFuncOrSkip;
 use crate::codegen::parser::mir::parser::ty::misc::parse_comments;
 use crate::codegen::parser::mir::parser::ty::trait_def::parse_type_trait;
 use crate::codegen::parser::mir::parser::ty::{TypeParser, TypeParserParsingContext};
@@ -38,7 +38,7 @@ pub(crate) fn parse(
     src_fns: &[HirFlatFunction],
     type_parser: &mut TypeParser,
     config: &ParserMirInternalConfig,
-) -> anyhow::Result<Vec<ParseFunctionOutput>> {
+) -> anyhow::Result<Vec<MirFuncOrSkip>> {
     let mut function_parser = FunctionParser::new(type_parser);
     (src_fns.iter())
         // Sort to make things stable. The order of parsing functions will affect things like, e.g.,
@@ -73,7 +73,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         default_stream_sink_codec: CodecMode,
         default_rust_opaque_codec: RustOpaqueCodecMode,
         stop_on_error: bool,
-    ) -> anyhow::Result<ParseFunctionOutput> {
+    ) -> anyhow::Result<MirFuncOrSkip> {
         match self.parse_function_inner(
             func,
             force_codec_mode_pack,
@@ -106,7 +106,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         force_codec_mode_pack: &Option<CodecModePack>,
         default_stream_sink_codec: CodecMode,
         default_rust_opaque_codec: RustOpaqueCodecMode,
-    ) -> anyhow::Result<ParseFunctionOutput> {
+    ) -> anyhow::Result<MirFuncOrSkip> {
         debug!("parse_function function name: {:?}", func.item_fn.name());
 
         if func.is_public() == Some(false) {
@@ -162,7 +162,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             return Ok(create_output_skip(func, IgnoredMisc));
         }
 
-        Ok(ParseFunctionOutput::Ok(MirFunc {
+        Ok(MirFuncOrSkip::Ok(MirFunc {
             name: NamespacedName::new(namespace_refined, func_name),
             dart_name,
             id: None, // to be filled later
@@ -290,8 +290,8 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
     }
 }
 
-fn create_output_skip(func: &HirFlatFunction, reason: MirSkipReason) -> ParseFunctionOutput {
-    ParseFunctionOutput::Skip(MirSkip {
+fn create_output_skip(func: &HirFlatFunction, reason: MirSkipReason) -> MirFuncOrSkip {
+    MirFuncOrSkip::Skip(MirSkip {
         name: NamespacedName::new(func.namespace.clone(), func.item_fn.name().to_string()),
         reason,
     })
