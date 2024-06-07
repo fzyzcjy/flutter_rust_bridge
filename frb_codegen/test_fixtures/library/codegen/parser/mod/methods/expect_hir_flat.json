@@ -3,14 +3,16 @@
     {
       "mirror": false,
       "name": "crate::api/MyEnum",
-      "source": "Normal",
+      "sources": [
+        "Normal"
+      ],
       "visibility": "Public"
     }
   ],
   "existing_handler": null,
   "functions": [
     {
-      "item_fn": "GeneralizedItemFn(name=example_instance_method)",
+      "item_fn": "GeneralizedItemFn(name=example_instance_method, vis=Some(Visibility::Public(Pub)), attrs=[])",
       "namespace": "crate::api",
       "owner": {
         "StructOrEnum": {
@@ -18,10 +20,12 @@
           "trait_def_name": null
         }
       },
-      "source": "Normal"
+      "sources": [
+        "Normal"
+      ]
     },
     {
-      "item_fn": "GeneralizedItemFn(name=example_static_method)",
+      "item_fn": "GeneralizedItemFn(name=example_static_method, vis=Some(Visibility::Public(Pub)), attrs=[])",
       "namespace": "crate::api",
       "owner": {
         "StructOrEnum": {
@@ -29,10 +33,12 @@
           "trait_def_name": null
         }
       },
-      "source": "Normal"
+      "sources": [
+        "Normal"
+      ]
     },
     {
-      "item_fn": "GeneralizedItemFn(name=example_instance_method)",
+      "item_fn": "GeneralizedItemFn(name=example_instance_method, vis=Some(Visibility::Public(Pub)), attrs=[])",
       "namespace": "crate::api",
       "owner": {
         "StructOrEnum": {
@@ -40,10 +46,12 @@
           "trait_def_name": null
         }
       },
-      "source": "Normal"
+      "sources": [
+        "Normal"
+      ]
     },
     {
-      "item_fn": "GeneralizedItemFn(name=example_static_method)",
+      "item_fn": "GeneralizedItemFn(name=example_static_method, vis=Some(Visibility::Public(Pub)), attrs=[])",
       "namespace": "crate::api",
       "owner": {
         "StructOrEnum": {
@@ -51,14 +59,18 @@
           "trait_def_name": null
         }
       },
-      "source": "Normal"
+      "sources": [
+        "Normal"
+      ]
     }
   ],
   "structs": [
     {
       "mirror": false,
       "name": "crate::api/MyStruct",
-      "source": "Normal",
+      "sources": [
+        "Normal"
+      ],
       "visibility": "Public"
     }
   ],
