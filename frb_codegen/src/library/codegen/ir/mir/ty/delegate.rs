@@ -1,5 +1,5 @@
 use crate::codegen::generator::codec::structs::CodecMode;
-use crate::codegen::ir::mir::ty::enumeration::MirTypeEnumRef;
+use crate::codegen::ir::mir::ty::enumeration::{MirEnumIdent, MirTypeEnumRef};
 use crate::codegen::ir::mir::ty::general_list::{mir_list, MirTypeGeneralList};
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
 use crate::codegen::ir::mir::ty::primitive_list::MirTypePrimitiveList;
@@ -86,7 +86,7 @@ pub struct MirTypeDelegateRustAutoOpaqueExplicit {
 
 pub struct MirTypeDelegateDynTrait {
     pub trait_def_name: NamespacedName,
-    // pub inner: MirTypeEnumRef, // TODO
+    pub inner_constructed: bool,
 }
 }
 
@@ -266,7 +266,7 @@ impl MirTypeDelegate {
             MirTypeDelegate::StreamSink(_) => MirType::Delegate(MirTypeDelegate::String),
             MirTypeDelegate::BigPrimitive(_) => MirType::Delegate(MirTypeDelegate::String),
             MirTypeDelegate::RustAutoOpaqueExplicit(mir) => MirType::RustOpaque(mir.inner.clone()),
-            MirTypeDelegate::DynTrait(_mir) => MirType::EnumRef(todo!()),
+            MirTypeDelegate::DynTrait(mir) => mir.inner(),
         }
     }
 }
@@ -305,5 +305,26 @@ impl MirTypeDelegateArray {
                 format!("{}_array_{length}", primitive.safe_ident())
             }
         }
+    }
+}
+
+impl MirTypeDelegateDynTrait {
+    pub fn inner(&self) -> MirType {
+        if self.inner_constructed {
+            MirType::EnumRef(MirTypeEnumRef {
+                ident: MirEnumIdent(NamespacedName::new(
+                    self.trait_def_name.namespace.clone(),
+                    self.inner_enum_name(),
+                )),
+                is_exception: false,
+            })
+        } else {
+            // Inner is not yet constructed, give a dummy type
+            MirType::Primitive(MirTypePrimitive::Unit)
+        }
+    }
+
+    pub(crate) fn inner_enum_name(&self) -> String {
+        format!("{}DynImplEnum", self.trait_def_name.name)
     }
 }
