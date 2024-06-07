@@ -18,7 +18,7 @@ pub(crate) fn parse_syn_item_trait(
     let trait_name = NamespacedName::new(meta.namespace.clone(), item_trait.ident.to_string());
     target.traits.push(HirFlatTrait {
         name: trait_name.clone(),
-        source: HirGenerationSource::Normal,
+        source: meta.source,
     });
     (target.functions).extend(parse_functions(item_trait, meta, &trait_name));
 }
