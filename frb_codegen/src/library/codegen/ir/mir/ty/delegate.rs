@@ -133,9 +133,7 @@ impl MirTypeTrait for MirTypeDelegate {
             MirTypeDelegate::RustAutoOpaqueExplicit(mir) => {
                 format!("AutoExplicit_{}", mir.inner.safe_ident())
             }
-            MirTypeDelegate::DynTrait(mir) => {
-                format!("DynTrait_{}", mir.trait_def_name.name)
-            }
+            MirTypeDelegate::DynTrait(mir) => mir.safe_ident(),
         }
     }
 
@@ -326,5 +324,9 @@ impl MirTypeDelegateDynTrait {
 
     pub(crate) fn inner_enum_name(&self) -> String {
         format!("{}DynImplEnum", self.trait_def_name.name)
+    }
+
+    pub(crate) fn safe_ident(&self) -> String {
+        format!("DynTrait_{}", self.trait_def_name.name)
     }
 }
