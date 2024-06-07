@@ -86,7 +86,6 @@ pub struct MirTypeDelegateRustAutoOpaqueExplicit {
 
 pub struct MirTypeDelegateDynTrait {
     pub trait_def_name: NamespacedName,
-    pub inner_constructed: bool,
 }
 }
 
@@ -308,18 +307,13 @@ impl MirTypeDelegateArray {
 
 impl MirTypeDelegateDynTrait {
     pub fn inner(&self) -> MirType {
-        if self.inner_constructed {
-            MirType::EnumRef(MirTypeEnumRef {
-                ident: MirEnumIdent(NamespacedName::new(
-                    self.trait_def_name.namespace.clone(),
-                    self.inner_enum_name(),
-                )),
-                is_exception: false,
-            })
-        } else {
-            // Inner is not yet constructed, give a dummy type
-            MirType::Primitive(MirTypePrimitive::Unit)
-        }
+        MirType::EnumRef(MirTypeEnumRef {
+            ident: MirEnumIdent(NamespacedName::new(
+                self.trait_def_name.namespace.clone(),
+                self.inner_enum_name(),
+            )),
+            is_exception: false,
+        })
     }
 
     pub(crate) fn inner_enum_name(&self) -> String {

@@ -33,7 +33,6 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                 return Ok(Some(MirType::Delegate(MirTypeDelegate::DynTrait(
                     MirTypeDelegateDynTrait {
                         trait_def_name: trait_ty.name,
-                        inner_constructed: false, // will be constructed later
                     },
                 ))));
             }
