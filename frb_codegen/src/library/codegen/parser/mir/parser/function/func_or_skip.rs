@@ -1,3 +1,4 @@
+use itertools::Itertools;
 use crate::codegen::ir::mir::func::MirFunc;
 use crate::codegen::ir::mir::skip::MirSkip;
 
@@ -19,5 +20,13 @@ impl MirFuncOrSkip {
             Self::Skip(inner) => inner,
             _ => unreachable!(),
         }
+    }
+
+    pub(crate) fn split(items: Vec<MirFuncOrSkip>) -> (Vec<MirFunc>, Vec<MirSkip>) {
+        let (funcs, skips): (Vec<_>, Vec<_>) =
+            (items.into_iter()).partition(|item| matches!(item, MirFuncOrSkip::Ok(_)));
+        let funcs = funcs.into_iter().map(|x| x.ok()).collect_vec();
+        let skips = skips.into_iter().map(|x| x.skip()).collect_vec();
+        (funcs, skips)
     }
 }

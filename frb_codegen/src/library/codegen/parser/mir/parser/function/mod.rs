@@ -22,7 +22,7 @@ pub(crate) fn parse(
         real::parse(src_fns, type_parser, config)?,
         auto_accessor::parse(config, src_structs, type_parser)?,
     ]);
-    let (funcs, skips) = split_func_and_skip(items);
+    let (funcs, skips) = MirFuncOrSkip::split(items);
     let funcs = sort_and_add_func_id(funcs);
     Ok((funcs, skips))
 }
@@ -37,12 +37,4 @@ fn sort_and_add_func_id(funcs: Vec<MirFunc>) -> Vec<MirFunc> {
             ..f
         })
         .collect_vec()
-}
-
-fn split_func_and_skip(items: Vec<MirFuncOrSkip>) -> (Vec<MirFunc>, Vec<MirSkip>) {
-    let (funcs, skips): (Vec<_>, Vec<_>) =
-        (items.into_iter()).partition(|item| matches!(item, MirFuncOrSkip::Ok(_)));
-    let funcs = funcs.into_iter().map(|x| x.ok()).collect_vec();
-    let skips = skips.into_iter().map(|x| x.skip()).collect_vec();
-    (funcs, skips)
 }
