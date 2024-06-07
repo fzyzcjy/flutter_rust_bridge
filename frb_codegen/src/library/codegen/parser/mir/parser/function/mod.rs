@@ -3,12 +3,13 @@ use crate::codegen::ir::hir::flat::struct_or_enum::HirFlatStruct;
 use crate::codegen::ir::mir::func::MirFunc;
 use crate::codegen::ir::mir::skip::MirSkip;
 use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
-use crate::codegen::parser::mir::parser::function::real::structs::MirFuncOrSkip;
+use crate::codegen::parser::mir::parser::function::func_or_skip::MirFuncOrSkip;
 use crate::codegen::parser::mir::parser::ty::TypeParser;
 use itertools::{concat, Itertools};
 use std::collections::HashMap;
 
 pub(crate) mod auto_accessor;
+pub(crate) mod func_or_skip;
 pub(crate) mod real;
 
 pub(crate) fn parse(
