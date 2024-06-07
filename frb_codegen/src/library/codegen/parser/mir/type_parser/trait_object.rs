@@ -1,4 +1,5 @@
 use crate::codegen::ir::mir::ty::MirType;
+use crate::codegen::parser::mir::type_parser::trait_def::parse_type_trait;
 use crate::codegen::parser::mir::type_parser::TypeParserWithContext;
 use crate::utils::syn_utils::ty_to_string;
 use syn::TypeTraitObject;
@@ -25,14 +26,15 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         &mut self,
         type_trait_object: &TypeTraitObject,
     ) -> anyhow::Result<Option<MirType>> {
-        if let Some(trait_name) = extract_trait_name(type_trait_object) {
-            return Ok(TODO);
+        if let Some(trait_name_path) = extract_trait_name_path(type_trait_object) {
+            let trait_name = ty_to_string(&trait_name_path.segments.last().unwrap());
+            return Ok(parse_type_trait(&trait_name, self.inner).map(MirType::TraitDef));
         }
         Ok(None)
     }
 }
 
-fn extract_trait_name(type_trait_object: &TypeTraitObject) -> Option<syn::Path> {
+fn extract_trait_name_path(type_trait_object: &TypeTraitObject) -> Option<syn::Path> {
     let bounds = &type_trait_object.bounds;
     if bounds.len() != 1 {
         return None;
