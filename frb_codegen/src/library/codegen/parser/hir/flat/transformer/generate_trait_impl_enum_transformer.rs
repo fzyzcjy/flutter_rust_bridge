@@ -16,7 +16,7 @@ pub(crate) fn transform(mut pack: HirFlatPack) -> anyhow::Result<HirFlatPack> {
         .into_iter()
         .join("");
 
-    inject_extra_code(&mut pack, &extra_code);
+    inject_extra_code(&mut pack, &extra_code)?;
 
     Ok(pack)
 }

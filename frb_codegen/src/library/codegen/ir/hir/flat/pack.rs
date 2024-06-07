@@ -15,6 +15,7 @@ pub(crate) struct HirFlatPack {
     pub trait_impls: Vec<HirFlatTraitImpl>,
     pub types: Vec<HirFlatTypeAlias>,
     pub existing_handler: Option<NamespacedName>,
+    pub extra_code: String,
 }
 
 impl HirFlatPack {
