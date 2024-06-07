@@ -37,6 +37,8 @@ fn handle_ty_dyn_trait(
     let mir_enum = create_enum(&interest_impl_types, &enum_name);
 
     pack.enum_pool.insert(enum_name, mir_enum);
+
+    Ok(())
 }
 
 fn create_enum(interest_impl_types: &[MirType], enum_name: &MirEnumIdent) -> MirEnum {
@@ -56,13 +58,13 @@ fn create_enum(interest_impl_types: &[MirType], enum_name: &MirEnumIdent) -> Mir
 
 fn create_enum_variant(ty: &MirType) -> MirVariant {
     MirVariant {
-        name: TODO,
-        wrapper_name: TODO,
+        name: todo!(),
+        wrapper_name: todo!(),
         comments: vec![],
         kind: MirVariantKind::Struct(MirStruct {
-            name: TODO,
+            name: todo!(),
             wrapper_name: None,
-            fields: TODO,
+            fields: todo!(),
             is_fields_named: false,
             dart_metadata: vec![],
             ignore: false,
