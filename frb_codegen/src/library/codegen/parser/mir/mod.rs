@@ -1,12 +1,7 @@
-pub(crate) mod attribute_parser;
-mod auto_accessor_parser;
-pub(crate) mod function_parser;
 pub(crate) mod internal_config;
 pub(crate) mod misc;
 pub(crate) mod parser;
 pub(crate) mod sanity_checker;
-mod trait_impl_parser;
-pub(crate) mod type_parser;
 
 use crate::codegen::ir::hir::flat::function::HirFlatFunction;
 use crate::codegen::ir::hir::flat::pack::HirFlatPack;

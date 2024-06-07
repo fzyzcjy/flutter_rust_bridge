@@ -1,6 +1,6 @@
 use crate::codegen::ir::hir::flat::pack::HirFlatPack;
 use crate::codegen::ir::hir::flat::type_alias::HirFlatTypeAlias;
-use crate::codegen::parser::mir::type_parser::misc::convert_ident_str;
+use crate::codegen::parser::mir::parser::ty::misc::convert_ident_str;
 use itertools::Itertools;
 use std::collections::HashMap;
 use syn::Type;

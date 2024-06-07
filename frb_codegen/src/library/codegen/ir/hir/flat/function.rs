@@ -3,7 +3,7 @@ use crate::codegen::ir::hir::misc::generation_source::HirGenerationSource;
 use crate::codegen::ir::hir::misc::item_fn::GeneralizedItemFn;
 use crate::codegen::ir::hir::misc::serializers::serialize_generalized_item_fn;
 use crate::codegen::ir::hir::misc::serializers::serialize_syn;
-use crate::codegen::parser::mir::attribute::FrbAttributes;
+use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
 use crate::utils::namespace::{Namespace, NamespacedName};
 use crate::utils::syn_utils::ty_to_string;
 use serde::Serialize;
