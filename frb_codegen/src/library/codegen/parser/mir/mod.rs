@@ -33,7 +33,7 @@ pub(crate) fn parse(
     );
 
     let (mir_funcs, mir_skips) =
-        parse_mir_funcs(config, &hir_flat.functions, &mut type_parser, &structs_map)?;
+        parser::function::parse(config, &hir_flat.functions, &mut type_parser, &structs_map)?;
     let trait_impls = parser::trait_impl::parse(
         &hir_flat.trait_impls,
         &mut type_parser,
@@ -65,37 +65,3 @@ pub(crate) fn parse(
 
     Ok(ans)
 }
-
-fn parse_mir_funcs(
-    config: &ParserMirInternalConfig,
-    src_fns: &[HirFlatFunction],
-    type_parser: &mut TypeParser,
-    src_structs: &HashMap<String, &HirFlatStruct>,
-) -> anyhow::Result<(Vec<MirFunc>, Vec<MirSkip>)> {
-    let (mir_funcs_normal, mir_skips) =
-        parser::function::real::parse_functions(src_fns, type_parser, config)?;
-    let mir_funcs_auto_accessor = parse_auto_accessors(config, src_structs, type_parser)?;
-
-    let mir_funcs = concat([mir_funcs_normal, mir_funcs_auto_accessor]);
-    // let mir_funcs = dedup_funcs(mir_funcs);
-    let mir_funcs = (mir_funcs.into_iter())
-        // to give downstream a stable output
-        .sorted_by_cached_key(|func| func.name.clone())
-        .enumerate()
-        .map(|(index, f)| MirFunc {
-            id: Some((index + 1) as _),
-            ..f
-        })
-        .collect_vec();
-
-    Ok((mir_funcs, mir_skips))
-}
-
-// fn dedup_funcs(funcs: Vec<MirFunc>) -> Vec<MirFunc> {
-//     funcs
-//         .into_iter()
-//         // Higher priority goes first
-//         .sorted_by_key(|f| -f.override_priority.0)
-//         .unique_by(|f| f.locator_dart_api())
-//         .collect_vec()
-// }
