@@ -2203,15 +2203,6 @@ abstract class RustLibApi extends BaseApi {
       get rust_arc_decrement_strong_count_ScriptProcessorNodePtr;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_SelfProcessorOptions;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_SelfProcessorOptions;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_SelfProcessorOptionsPtr;
-
-  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_StereoPannerNode;
 
   RustArcDecrementStrongCountFnType
@@ -18388,14 +18379,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScriptProcessorNode;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_SelfProcessorOptions => wire
-          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSelfProcessorOptions;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_SelfProcessorOptions => wire
-          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSelfProcessorOptions;
-
-  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_StereoPannerNode => wire
           .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNode;
 
@@ -18758,14 +18741,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return ScriptProcessorNodeImpl.frbInternalDcoDecode(raw as List<dynamic>);
-  }
-
-  @protected
-  SelfProcessorOptions
-      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSelfProcessorOptions(
-          dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return SelfProcessorOptionsImpl.frbInternalDcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -19549,14 +19524,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  SelfProcessorOptions
-      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSelfProcessorOptions(
-          dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return SelfProcessorOptionsImpl.frbInternalDcoDecode(raw as List<dynamic>);
-  }
-
-  @protected
   StereoPannerNode
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNode(
           dynamic raw) {
@@ -20313,15 +20280,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return ScriptProcessorNodeImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
-  }
-
-  @protected
-  SelfProcessorOptions
-      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSelfProcessorOptions(
-          SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return SelfProcessorOptionsImpl.frbInternalSseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -21180,15 +21138,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  SelfProcessorOptions
-      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSelfProcessorOptions(
-          SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return SelfProcessorOptionsImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
-  }
-
-  @protected
   StereoPannerNode
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNode(
           SseDeserializer deserializer) {
@@ -22000,16 +21949,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as ScriptProcessorNodeImpl).frbInternalSseEncode(move: true),
-        serializer);
-  }
-
-  @protected
-  void
-      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSelfProcessorOptions(
-          SelfProcessorOptions self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_usize(
-        (self as SelfProcessorOptionsImpl).frbInternalSseEncode(move: true),
         serializer);
   }
 
@@ -22957,16 +22896,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as ScriptProcessorNodeImpl).frbInternalSseEncode(move: null),
-        serializer);
-  }
-
-  @protected
-  void
-      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSelfProcessorOptions(
-          SelfProcessorOptions self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_usize(
-        (self as SelfProcessorOptionsImpl).frbInternalSseEncode(move: null),
         serializer);
   }
 
@@ -27878,28 +27807,6 @@ class ScriptProcessorNodeImpl extends RustOpaque
       RustLib.instance.api
           .webAudioApiNodeScriptProcessorNodeSetChannelInterpretation(
               that: this, v: v);
-}
-
-@sealed
-class SelfProcessorOptionsImpl extends RustOpaque
-    implements SelfProcessorOptions {
-  // Not to be used by end users
-  SelfProcessorOptionsImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  SelfProcessorOptionsImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_SelfProcessorOptions,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_SelfProcessorOptions,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_SelfProcessorOptionsPtr,
-  );
 }
 
 @sealed
