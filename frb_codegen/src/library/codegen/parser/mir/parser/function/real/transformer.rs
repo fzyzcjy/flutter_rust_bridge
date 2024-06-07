@@ -3,7 +3,7 @@ use crate::codegen::ir::mir::func::MirFuncInput;
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
 use crate::codegen::ir::mir::ty::primitive_list::MirTypePrimitiveList;
 use crate::codegen::ir::mir::ty::MirType;
-use crate::codegen::parser::mir::parser::function::{FunctionParser, FunctionPartialInfo};
+use crate::codegen::parser::mir::parser::function::real::{FunctionParser, FunctionPartialInfo};
 use itertools::Itertools;
 use MirTypePrimitive::{Isize, Usize, I64, U64};
 

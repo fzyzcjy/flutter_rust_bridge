@@ -15,7 +15,7 @@ use crate::codegen::ir::mir::ty::trait_def::MirTypeTraitDef;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
 use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
-use crate::codegen::parser::mir::parser::function::structs::ParseFunctionOutput;
+use crate::codegen::parser::mir::parser::function::real::structs::ParseFunctionOutput;
 use crate::codegen::parser::mir::parser::ty::misc::parse_comments;
 use crate::codegen::parser::mir::parser::ty::trait_def::parse_type_trait;
 use crate::codegen::parser::mir::parser::ty::{TypeParser, TypeParserParsingContext};

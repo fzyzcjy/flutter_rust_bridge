@@ -10,9 +10,8 @@ use crate::codegen::ir::mir::func::MirFunc;
 use crate::codegen::ir::mir::pack::MirPack;
 use crate::codegen::ir::mir::skip::MirSkip;
 use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
-use crate::codegen::parser::mir::parser::auto_accessor::parse_auto_accessors;
-use crate::codegen::parser::mir::parser::function::structs::ParseFunctionOutput;
-use crate::codegen::parser::mir::parser::function::FunctionParser;
+use crate::codegen::parser::mir::parser::function::auto_accessor::parse_auto_accessors;
+use crate::codegen::parser::mir::parser::function::real::structs::ParseFunctionOutput;
 use crate::codegen::parser::mir::parser::ty::TypeParser;
 use crate::codegen::parser::mir::sanity_checker::opaque_inside_translatable_checker::check_opaque_inside_translatable;
 use crate::codegen::parser::mir::sanity_checker::unused_checker::get_unused_types;
@@ -74,7 +73,7 @@ fn parse_mir_funcs(
     src_structs: &HashMap<String, &HirFlatStruct>,
 ) -> anyhow::Result<(Vec<MirFunc>, Vec<MirSkip>)> {
     let (mir_funcs_normal, mir_skips) =
-        parser::function::parse_functions(src_fns, type_parser, config)?;
+        parser::function::real::parse_functions(src_fns, type_parser, config)?;
     let mir_funcs_auto_accessor = parse_auto_accessors(config, src_structs, type_parser)?;
 
     let mir_funcs = concat([mir_funcs_normal, mir_funcs_auto_accessor]);
