@@ -1,4 +1,5 @@
 mod exporter;
+pub(crate) mod extra_code_injector;
 pub(crate) mod parser;
 pub(crate) mod transformer;
 

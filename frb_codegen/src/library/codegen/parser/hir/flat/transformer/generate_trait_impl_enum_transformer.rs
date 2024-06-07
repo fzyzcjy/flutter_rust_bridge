@@ -1,6 +1,7 @@
 use crate::codegen::ir::hir::flat::pack::HirFlatPack;
 use crate::codegen::ir::hir::flat::traits::HirFlatTrait;
 use crate::codegen::ir::mir::trait_impl::MirTraitImpl;
+use crate::codegen::parser::hir::flat::extra_code_injector::inject_extra_code;
 use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
 use crate::codegen::parser::mir::parser::tentative_parse_trait_impls;
 use itertools::Itertools;
@@ -33,8 +34,4 @@ fn generate_trait_impl_enum(
         }}
         "
     ))
-}
-
-fn inject_extra_code(pack: &mut HirFlatPack, extra_code: &str) {
-    TODO;
 }
