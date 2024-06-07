@@ -59,7 +59,6 @@ fn create_enum(interest_impl_types: &[MirType], enum_name: &MirEnumIdent) -> Mir
 fn create_enum_variant(ty: &MirType) -> MirEnumVariant {
     MirEnumVariant {
         name: todo!(),
-        wrapper_name: todo!(),
         comments: vec![],
         kind: MirVariantKind::Struct(MirStruct {
             name: todo!(),
