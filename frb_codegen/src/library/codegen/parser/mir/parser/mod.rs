@@ -20,12 +20,7 @@ pub(crate) fn parse(
 
     let mut type_parser = create_type_parser(hir_flat);
 
-    let trait_impls = trait_impl::parse(
-        &hir_flat.trait_impls,
-        &mut type_parser,
-        config.default_stream_sink_codec,
-        config.default_rust_opaque_codec,
-    )?;
+    let trait_impls = trait_impl::parse(&hir_flat.trait_impls, &mut type_parser, config)?;
 
     let (funcs_all, skipped_functions) =
         function::parse(config, &hir_flat.functions, &mut type_parser, &structs_map)?;

@@ -2,6 +2,7 @@ use crate::codegen::generator::codec::structs::CodecMode;
 use crate::codegen::ir::hir::flat::trait_impl::HirFlatTraitImpl;
 use crate::codegen::ir::mir::trait_impl::MirTraitImpl;
 use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
+use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
 use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
 use crate::codegen::parser::mir::parser::ty::trait_def::parse_type_trait;
 use crate::codegen::parser::mir::parser::ty::{TypeParser, TypeParserParsingContext};
@@ -11,14 +12,13 @@ use itertools::Itertools;
 pub(crate) fn parse(
     hir_trait_impls: &[HirFlatTraitImpl],
     type_parser: &mut TypeParser,
-    default_stream_sink_codec: CodecMode,
-    default_rust_opaque_codec: RustOpaqueCodecMode,
+    config: &ParserMirInternalConfig,
 ) -> anyhow::Result<Vec<MirTraitImpl>> {
     let context = TypeParserParsingContext {
         initiated_namespace: CrateName::self_crate().namespace(), // just a dummy value
         func_attributes: FrbAttributes::parse(&[])?,
-        default_stream_sink_codec,
-        default_rust_opaque_codec,
+        default_stream_sink_codec: config.default_stream_sink_codec,
+        default_rust_opaque_codec: config.default_rust_opaque_codec,
         owner: None,
     };
 
