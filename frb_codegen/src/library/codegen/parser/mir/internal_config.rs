@@ -12,6 +12,7 @@ pub(crate) struct ParserMirInternalConfig {
     pub stop_on_error: bool,
 }
 
+// TODO rename - this is no longer an "input-namespace"-only pack
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
 pub(crate) struct RustInputNamespacePack {
     pub rust_input_namespace_prefixes: Vec<Namespace>,
