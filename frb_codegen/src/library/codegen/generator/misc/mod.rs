@@ -80,10 +80,16 @@ impl PathTexts {
     }
 
     pub(crate) fn write_to_disk(&self) -> anyhow::Result<()> {
+        self.assert_no_duplicate_paths();
         for item in self.0.iter() {
             create_dir_all_and_write(&item.path, &item.text)?;
         }
         Ok(())
+    }
+
+    fn assert_no_duplicate_paths(&self) {
+        let paths = self.paths();
+        assert_eq!(paths.iter().unique().collect_vec().len(), paths.len());
     }
 
     pub(crate) fn paths(&self) -> Vec<PathBuf> {
