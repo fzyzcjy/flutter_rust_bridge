@@ -7,7 +7,7 @@ use crate::codegen::parser::mir::parser::tentative_parse_trait_impls;
 use itertools::Itertools;
 
 pub(crate) fn transform(mut pack: HirFlatPack) -> anyhow::Result<HirFlatPack> {
-    let trait_impls = tentative_parse_trait_impls(&pack);
+    let trait_impls = tentative_parse_trait_impls(&pack)?;
 
     let extra_code = (pack.traits.iter())
         .filter(|x| FrbAttributes::parse(&x.attrs).unwrap().generate_impl_enum())
@@ -15,7 +15,7 @@ pub(crate) fn transform(mut pack: HirFlatPack) -> anyhow::Result<HirFlatPack> {
         .collect::<anyhow::Result<Vec<_>>>()?
         .into_iter()
         .join("");
-    
+
     let namespace = TODO;
 
     inject_extra_code(&mut pack, &extra_code, namespace)?;
