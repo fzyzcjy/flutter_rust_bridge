@@ -36,7 +36,7 @@ pub(super) fn generate(
         .collect::<anyhow::Result<Vec<_>>>()?;
 
     let extra_output_text = PathText {
-        path: TODO,
+        path: config.dart_impl_output_path.common.clone(),
         text: (spec.namespaced_items.values())
             .flat_map(|item| item.extra_impl_code.clone())
             .sorted()
