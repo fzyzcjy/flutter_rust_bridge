@@ -3,48 +3,62 @@
     {
       "mirror": false,
       "name": "crate::api/MyGenericEnum",
-      "source": "Normal",
+      "sources": [
+        "Normal"
+      ],
       "visibility": "Public"
     }
   ],
   "existing_handler": null,
   "functions": [
     {
-      "item_fn": "GeneralizedItemFn(name=func_enum_bool)",
+      "item_fn": "GeneralizedItemFn(name=func_enum_bool, vis=Some(Visibility::Public(Pub)), attrs=[])",
       "namespace": "crate::api",
       "owner": "Function",
-      "source": "Normal"
+      "sources": [
+        "Normal"
+      ]
     },
     {
-      "item_fn": "GeneralizedItemFn(name=func_enum_string)",
+      "item_fn": "GeneralizedItemFn(name=func_enum_string, vis=Some(Visibility::Public(Pub)), attrs=[])",
       "namespace": "crate::api",
       "owner": "Function",
-      "source": "Normal"
+      "sources": [
+        "Normal"
+      ]
     },
     {
-      "item_fn": "GeneralizedItemFn(name=func_struct_bool)",
+      "item_fn": "GeneralizedItemFn(name=func_struct_bool, vis=Some(Visibility::Public(Pub)), attrs=[])",
       "namespace": "crate::api",
       "owner": "Function",
-      "source": "Normal"
+      "sources": [
+        "Normal"
+      ]
     },
     {
-      "item_fn": "GeneralizedItemFn(name=func_struct_string)",
+      "item_fn": "GeneralizedItemFn(name=func_struct_string, vis=Some(Visibility::Public(Pub)), attrs=[])",
       "namespace": "crate::api",
       "owner": "Function",
-      "source": "Normal"
+      "sources": [
+        "Normal"
+      ]
     },
     {
-      "item_fn": "GeneralizedItemFn(name=func_struct_string_repeated)",
+      "item_fn": "GeneralizedItemFn(name=func_struct_string_repeated, vis=Some(Visibility::Public(Pub)), attrs=[])",
       "namespace": "crate::api",
       "owner": "Function",
-      "source": "Normal"
+      "sources": [
+        "Normal"
+      ]
     }
   ],
   "structs": [
     {
       "mirror": false,
       "name": "crate::api/MyGenericStruct",
-      "source": "Normal",
+      "sources": [
+        "Normal"
+      ],
       "visibility": "Public"
     }
   ],

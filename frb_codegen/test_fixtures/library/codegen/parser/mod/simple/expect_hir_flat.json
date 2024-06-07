@@ -3,10 +3,12 @@
   "existing_handler": null,
   "functions": [
     {
-      "item_fn": "GeneralizedItemFn(name=first_function)",
+      "item_fn": "GeneralizedItemFn(name=first_function, vis=Some(Visibility::Public(Pub)), attrs=[])",
       "namespace": "crate::api",
       "owner": "Function",
-      "source": "Normal"
+      "sources": [
+        "Normal"
+      ]
     }
   ],
   "structs": [],

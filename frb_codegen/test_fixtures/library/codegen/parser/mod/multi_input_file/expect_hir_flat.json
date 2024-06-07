@@ -3,16 +3,20 @@
   "existing_handler": null,
   "functions": [
     {
-      "item_fn": "GeneralizedItemFn(name=func_one)",
+      "item_fn": "GeneralizedItemFn(name=func_one, vis=Some(Visibility::Public(Pub)), attrs=[])",
       "namespace": "crate::api_one",
       "owner": "Function",
-      "source": "Normal"
+      "sources": [
+        "Normal"
+      ]
     },
     {
-      "item_fn": "GeneralizedItemFn(name=func_two)",
+      "item_fn": "GeneralizedItemFn(name=func_two, vis=Some(Visibility::Public(Pub)), attrs=[])",
       "namespace": "crate::api_two",
       "owner": "Function",
-      "source": "Normal"
+      "sources": [
+        "Normal"
+      ]
     }
   ],
   "structs": [],
