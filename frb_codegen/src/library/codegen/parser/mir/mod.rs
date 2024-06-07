@@ -24,6 +24,7 @@ pub(crate) fn parse(
     let structs_map = hir_flat.structs_map();
     let enums_map = hir_flat.enums_map();
     let traits_map = hir_flat.traits_map();
+
     let mut type_parser = TypeParser::new(
         structs_map.clone(),
         enums_map.clone(),
@@ -33,6 +34,7 @@ pub(crate) fn parse(
 
     let (funcs_all, skipped_functions) =
         parser::function::parse(config, &hir_flat.functions, &mut type_parser, &structs_map)?;
+
     let trait_impls = parser::trait_impl::parse(
         &hir_flat.trait_impls,
         &mut type_parser,
