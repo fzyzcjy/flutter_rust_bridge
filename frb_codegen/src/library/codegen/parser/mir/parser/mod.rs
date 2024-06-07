@@ -17,14 +17,8 @@ pub(crate) fn parse(
 ) -> anyhow::Result<MirPack> {
     let structs_map = hir_flat.structs_map();
     let enums_map = hir_flat.enums_map();
-    let traits_map = hir_flat.traits_map();
 
-    let mut type_parser = TypeParser::new(
-        structs_map.clone(),
-        enums_map.clone(),
-        traits_map,
-        hir_flat.types_map(),
-    );
+    let mut type_parser = create_type_parser(hir_flat);
 
     let trait_impls = trait_impl::parse(
         &hir_flat.trait_impls,
@@ -59,4 +53,13 @@ pub(crate) fn parse(
     check_opaque_inside_translatable(&ans);
 
     Ok(ans)
+}
+
+fn create_type_parser(hir_flat: &HirFlatPack) -> TypeParser {
+    TypeParser::new(
+        hir_flat.structs_map(),
+        hir_flat.enums_map(),
+        hir_flat.traits_map(),
+        hir_flat.types_map(),
+    )
 }
