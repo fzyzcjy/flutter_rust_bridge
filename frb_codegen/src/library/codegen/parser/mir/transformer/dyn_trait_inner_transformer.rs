@@ -1,6 +1,9 @@
 use crate::codegen::ir::mir::pack::MirPack;
 use crate::codegen::ir::mir::ty::delegate::{MirTypeDelegate, MirTypeDelegateDynTrait};
-use crate::codegen::ir::mir::ty::enumeration::MirEnum;
+use crate::codegen::ir::mir::ty::enumeration::{
+    MirEnum, MirEnumIdent, MirEnumMode, MirVariant, MirVariantKind,
+};
+use crate::codegen::ir::mir::ty::structure::MirStruct;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::if_then_some;
 use itertools::Itertools;
@@ -30,12 +33,42 @@ fn handle_ty_dyn_trait(
         .filter(|item| item.trait_ty.name == ty_dyn_trait.trait_def_name)
         .map(|item| item.impl_ty.clone())
         .collect_vec();
-    let mir_enum = create_enum(&interest_impl_types);
+    let enum_name = ty_dyn_trait.inner_raw().ident;
+    let mir_enum = create_enum(&interest_impl_types, &enum_name);
 
-    pack.enum_pool
-        .insert(ty_dyn_trait.inner_raw().ident, mir_enum);
+    pack.enum_pool.insert(enum_name, mir_enum);
 }
 
-fn create_enum(interest_impl_types: &[MirType]) -> MirEnum {
-    TODO
+fn create_enum(interest_impl_types: &[MirType], enum_name: &MirEnumIdent) -> MirEnum {
+    let variants = (interest_impl_types.iter())
+        .map(|ty| create_enum_variant(ty))
+        .collect_vec();
+
+    MirEnum {
+        name: enum_name.0.clone(),
+        wrapper_name: None,
+        comments: vec![],
+        variants,
+        mode: MirEnumMode::Complex,
+        ignore: false,
+    }
+}
+
+fn create_enum_variant(ty: &MirType) -> MirVariant {
+    MirVariant {
+        name: TODO,
+        wrapper_name: TODO,
+        comments: vec![],
+        kind: MirVariantKind::Struct(MirStruct {
+            name: TODO,
+            wrapper_name: None,
+            fields: TODO,
+            is_fields_named: false,
+            dart_metadata: vec![],
+            ignore: false,
+            generate_hash: false,
+            generate_eq: false,
+            comments: vec![],
+        }),
+    }
 }
