@@ -48,7 +48,7 @@ fn handle_ty_dyn_trait(
         .map(|item| item.impl_ty.clone())
         .collect_vec();
     let enum_name = ty_dyn_trait.inner_raw().ident;
-    let mir_enum = create_enum(&interest_impl_types, &enum_name.0, config);
+    let mir_enum = create_enum(&interest_impl_types, &enum_name.0, config)?;
 
     pack.enum_pool.insert(enum_name, mir_enum);
 
@@ -59,31 +59,31 @@ fn create_enum(
     interest_impl_types: &[MirType],
     enum_name: &NamespacedName,
     config: &ParserMirInternalConfig,
-) -> MirEnum {
+) -> anyhow::Result<MirEnum> {
     let variants = (interest_impl_types.iter())
         .map(|ty| create_enum_variant(ty, enum_name, config))
-        .collect_vec();
+        .collect::<anyhow::Result<Vec<_>>>()?;
 
-    MirEnum {
+    Ok(MirEnum {
         name: enum_name.clone(),
         wrapper_name: None,
         comments: vec![],
         variants,
         mode: MirEnumMode::Complex,
         ignore: false,
-    }
+    })
 }
 
 fn create_enum_variant(
     interest_ty: &MirType,
     enum_name: &NamespacedName,
     config: &ParserMirInternalConfig,
-) -> MirEnumVariant {
+) -> anyhow::Result<MirEnumVariant> {
     let variant_name = MirIdent::new(interest_ty.safe_ident());
 
     let field_ty = {
         let (raw, inner) = parse_type_rust_auto_opaque_common_raw(
-            TODO,
+            syn::parse_str(TODO)?,
             enum_name.namespace.clone(),
             config.default_rust_opaque_codec,
         );
@@ -92,7 +92,7 @@ fn create_enum_variant(
         ))
     };
 
-    MirEnumVariant {
+    Ok(MirEnumVariant {
         name: variant_name.clone(),
         wrapper_name: MirIdent::new(format!("{}_{}", enum_name.name, variant_name.raw)),
         comments: vec![],
@@ -115,5 +115,5 @@ fn create_enum_variant(
             generate_eq: false,
             comments: vec![],
         }),
-    }
+    })
 }
