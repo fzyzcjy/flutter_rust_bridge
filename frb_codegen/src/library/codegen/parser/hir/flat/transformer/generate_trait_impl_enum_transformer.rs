@@ -38,6 +38,8 @@ fn generate_trait_impl_enum(
         "enum {trait_def_name}Impl {{
             Hello(i32),
         }}
+
+        pub fn hello_generate_trait_impl_enum(a: {trait_def_name}Impl) {{ let _ = a; }}
         "
     ))
 }
