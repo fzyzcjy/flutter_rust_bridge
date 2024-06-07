@@ -2,6 +2,7 @@ pub(crate) mod internal_config;
 pub(crate) mod misc;
 pub(crate) mod parser;
 pub(crate) mod sanity_checker;
+pub(crate) mod transformer;
 
 use crate::codegen::ir::hir::flat::function::HirFlatFunction;
 use crate::codegen::ir::hir::flat::pack::HirFlatPack;
@@ -9,13 +10,13 @@ use crate::codegen::ir::hir::flat::struct_or_enum::HirFlatStruct;
 use crate::codegen::ir::mir::func::MirFunc;
 use crate::codegen::ir::mir::pack::MirPack;
 use crate::codegen::ir::mir::skip::MirSkip;
+use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
 use crate::codegen::parser::mir::parser::auto_accessor::parse_auto_accessors;
 use crate::codegen::parser::mir::parser::function::structs::ParseFunctionOutput;
 use crate::codegen::parser::mir::parser::function::FunctionParser;
-use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
+use crate::codegen::parser::mir::parser::ty::TypeParser;
 use crate::codegen::parser::mir::sanity_checker::opaque_inside_translatable_checker::check_opaque_inside_translatable;
 use crate::codegen::parser::mir::sanity_checker::unused_checker::get_unused_types;
-use crate::codegen::parser::mir::parser::ty::TypeParser;
 use itertools::{concat, Itertools};
 use std::collections::HashMap;
 
