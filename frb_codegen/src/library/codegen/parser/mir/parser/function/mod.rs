@@ -3,8 +3,6 @@ use crate::codegen::ir::hir::flat::struct_or_enum::HirFlatStruct;
 use crate::codegen::ir::mir::func::MirFunc;
 use crate::codegen::ir::mir::skip::MirSkip;
 use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
-use crate::codegen::parser::mir::parser;
-use crate::codegen::parser::mir::parser::function::auto_accessor::parse_auto_accessors;
 use crate::codegen::parser::mir::parser::ty::TypeParser;
 use itertools::{concat, Itertools};
 use std::collections::HashMap;
@@ -19,8 +17,8 @@ pub(crate) fn parse(
     src_structs: &HashMap<String, &HirFlatStruct>,
 ) -> anyhow::Result<(Vec<MirFunc>, Vec<MirSkip>)> {
     let (mir_funcs_normal, mir_skips) =
-        parser::function::real::parse_functions(src_fns, type_parser, config)?;
-    let mir_funcs_auto_accessor = parse_auto_accessors(config, src_structs, type_parser)?;
+        real::parse(src_fns, type_parser, config)?;
+    let mir_funcs_auto_accessor = auto_accessor::parse(config, src_structs, type_parser)?;
 
     let mir_funcs = concat([mir_funcs_normal, mir_funcs_auto_accessor]);
     // let mir_funcs = dedup_funcs(mir_funcs);

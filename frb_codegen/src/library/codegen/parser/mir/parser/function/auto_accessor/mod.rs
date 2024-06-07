@@ -18,7 +18,7 @@ use field::parse_auto_accessor_of_field;
 use itertools::Itertools;
 use std::collections::HashMap;
 
-pub(crate) fn parse_auto_accessors(
+pub(crate) fn parse(
     config: &ParserMirInternalConfig,
     src_structs: &HashMap<String, &HirFlatStruct>,
     type_parser: &mut TypeParser,

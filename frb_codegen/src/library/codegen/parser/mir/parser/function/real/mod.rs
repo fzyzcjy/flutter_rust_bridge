@@ -34,7 +34,7 @@ pub(crate) mod output;
 pub(crate) mod structs;
 mod transformer;
 
-pub(crate) fn parse_functions(
+pub(crate) fn parse(
     src_fns: &[HirFlatFunction],
     type_parser: &mut TypeParser,
     config: &ParserMirInternalConfig,
