@@ -1,6 +1,6 @@
 use crate::codegen::generator::api_dart::spec_generator::class::ApiDartGeneratedClass;
 use crate::codegen::generator::api_dart::spec_generator::misc::generate_dart_comments;
-use crate::codegen::ir::mir::ty::enumeration::{MirEnum, MirVariant};
+use crate::codegen::ir::mir::ty::enumeration::{MirEnum, MirEnumVariant};
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
 use crate::utils::basic_code::DartBasicHeaderCode;
 use crate::utils::dart_keywords::make_string_keyword_safe;
@@ -39,7 +39,7 @@ impl<'a> EnumRefApiDartGenerator<'a> {
         })
     }
 
-    fn generate_mode_simple_variant(&self, variant: &MirVariant) -> String {
+    fn generate_mode_simple_variant(&self, variant: &MirEnumVariant) -> String {
         let variant_name = if self.context.config.dart_enums_style {
             make_string_keyword_safe(variant.name.dart_style())
         } else {

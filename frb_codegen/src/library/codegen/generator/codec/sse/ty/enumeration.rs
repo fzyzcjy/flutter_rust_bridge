@@ -1,7 +1,7 @@
 use crate::codegen::generator::codec::sse::ty::structure::GeneralizedStructGenerator;
 use crate::codegen::generator::codec::sse::ty::*;
 use crate::codegen::generator::misc::StructOrRecord;
-use crate::codegen::ir::mir::ty::enumeration::{MirEnum, MirVariant, MirVariantKind};
+use crate::codegen::ir::mir::ty::enumeration::{MirEnum, MirEnumVariant, MirVariantKind};
 use crate::library::codegen::generator::codec::sse::lang::LangTrait;
 use crate::utils::namespace::NamespacedName;
 use itertools::Itertools;
@@ -62,7 +62,7 @@ impl<'a> CodecSseTyTrait for EnumRefCodecSseTy<'a> {
 }
 
 fn generate_decode_variant(
-    variant: &MirVariant,
+    variant: &MirEnumVariant,
     enum_name: &NamespacedName,
     lang: &Lang,
     context: CodecSseTyContext,
@@ -95,7 +95,7 @@ pub(crate) fn generate_enum_encode_rust_general(
     lang: &Lang,
     src: &MirEnum,
     self_ref: &str,
-    generate_branch: impl Fn(usize, &MirVariant) -> String,
+    generate_branch: impl Fn(usize, &MirEnumVariant) -> String,
 ) -> String {
     let enum_name_str = src.name.style(lang);
     let enum_sep = enum_sep(lang);
@@ -118,7 +118,7 @@ pub(crate) fn generate_enum_encode_rust_general(
     )
 }
 
-fn pattern_match_enum_variant(lang: &Lang, variant: &MirVariant) -> String {
+fn pattern_match_enum_variant(lang: &Lang, variant: &MirEnumVariant) -> String {
     match &variant.kind {
         MirVariantKind::Value => match lang {
             Lang::DartLang(_) => "()".to_owned(),

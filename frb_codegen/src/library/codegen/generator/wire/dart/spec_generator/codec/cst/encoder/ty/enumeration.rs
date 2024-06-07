@@ -3,7 +3,7 @@ use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::misc::dart_wire_type_from_rust_wire_type_or_web;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::ty::WireDartCodecCstGeneratorEncoderTrait;
-use crate::codegen::ir::mir::ty::enumeration::{MirVariant, MirVariantKind};
+use crate::codegen::ir::mir::ty::enumeration::{MirEnumVariant, MirVariantKind};
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use itertools::Itertools;
 
@@ -43,7 +43,11 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for EnumRefWireDartCodecCstGenera
 }
 
 impl<'a> EnumRefWireDartCodecCstGenerator<'a> {
-    fn generate_api_fill_to_wire_body_variant(&self, index: usize, variant: &MirVariant) -> String {
+    fn generate_api_fill_to_wire_body_variant(
+        &self,
+        index: usize,
+        variant: &MirEnumVariant,
+    ) -> String {
         let wrapper_name = &variant.wrapper_name;
         let variant_name = &variant.name;
 
@@ -85,7 +89,7 @@ impl<'a> EnumRefWireDartCodecCstGenerator<'a> {
     }
 }
 
-fn generate_encode_body_variant(index: usize, variant: &MirVariant) -> String {
+fn generate_encode_body_variant(index: usize, variant: &MirEnumVariant) -> String {
     let fields = match &variant.kind {
         MirVariantKind::Value => vec![],
         MirVariantKind::Struct(st) => (st.fields)

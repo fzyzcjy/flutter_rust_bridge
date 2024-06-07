@@ -181,6 +181,7 @@ fn generate_maybe_impls(
     )
 }
 
+#[allow(clippy::single_match)]
 fn get_candidate_safe_idents_for_matching(ty: &MirType) -> Vec<String> {
     let mut ans = vec![ty.safe_ident()];
     match ty {

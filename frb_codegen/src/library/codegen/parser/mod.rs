@@ -35,7 +35,7 @@ fn parse_inner(
     drop(pb);
 
     let pb = progress_bar_pack.parse_mir.start();
-    let mir_pack = mir::parse(&config.mir, &hir_flat)?;
+    let mir_pack = mir::parse(&config.mir, &hir_flat, dumper)?;
     dumper.dump(ConfigDumpContent::Mir, "mir_pack.json", &mir_pack)?;
     drop(pb);
 
