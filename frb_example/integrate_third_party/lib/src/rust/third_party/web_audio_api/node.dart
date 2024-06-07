@@ -7,9 +7,9 @@ import '../../frb_generated.dart';
 import '../web_audio_api.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// These functions are ignored because they have generic arguments: `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `set_onended`, `set_onended`, `set_onended`, `set_onended`
+// These functions are ignored because they have generic arguments: `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `set_onended`, `set_onended`, `set_onended`, `set_onended`
 // These types are ignored because they are not used by any `pub` functions: `AnalyserOptions`, `AudioBufferSourceOptions`, `AudioNodeOptions`, `BiquadFilterOptions`, `ChannelConfig`, `ChannelMergerOptions`, `ChannelSplitterOptions`, `ConstantSourceOptions`, `ConvolverOptions`, `DelayOptions`, `DynamicsCompressorOptions`, `GainOptions`, `IIRFilterOptions`, `MediaElementAudioSourceOptions`, `MediaStreamAudioSourceOptions`, `MediaStreamRenderer`, `MediaStreamTrackAudioSourceOptions`, `OscillatorOptions`, `PannerOptions`, `ScriptProcessorOptions`, `StereoPannerOptions`, `WaveShaperOptions`
-// These functions are ignored: `channel_config`, `channel_count_mode`, `channel_count`, `channel_interpretation`, `clear_onprocessorerror`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect`, `connect`, `context`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest`, `disconnect_dest`, `disconnect_output`, `disconnect`, `number_of_inputs`, `number_of_outputs`, `registration`, `set_channel_count_mode`, `set_channel_count`, `set_channel_interpretation`, `set_onprocessorerror`, `set_onprocessorerror`
+// These functions are ignored: `channel_config`, `channel_count_mode`, `channel_count`, `channel_interpretation`, `clear_onprocessorerror`, `context`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_output`, `disconnect`, `number_of_inputs`, `number_of_outputs`, `registration`, `set_channel_count_mode`, `set_channel_count`, `set_channel_interpretation`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AnalyserNode>>
 abstract class AnalyserNode implements AudioNode {
@@ -39,39 +39,6 @@ abstract class AnalyserNode implements AudioNode {
 
   /// Disconnects all outgoing connections from the AudioNode.
   Future<void> disconnect();
-
-  /// Disconnects all outputs of the AudioNode that go to a specific destination AudioNode.
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDest({required AudioNode dest});
-
-  /// Disconnects a specific output of the AudioNode to a specific destination AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutput(
-      {required AudioNode dest, required BigInt output});
-
-  /// Disconnects a specific output of the AudioNode to a specific input of some destination
-  /// AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the input port is out of bounds for the destination node
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutputToInput(
-      {required AudioNode dest, required BigInt output, required BigInt input});
 
   /// Disconnects all outgoing connections at the given output port from the AudioNode.
   ///
@@ -154,14 +121,6 @@ abstract class AnalyserNode implements AudioNode {
   /// to max decibels.
   Future<void> setMinDecibels({required double value});
 
-  /// Register callback to run when an unhandled exception occurs in the audio processor.
-  ///
-  /// Note that once a unhandled exception is thrown, the processor will output silence throughout its lifetime.
-  ///
-  /// Only a single event handler is active at any time. Calling this method multiple times will
-  /// override the previous event handler.
-  Future<void> setOnprocessorerror({required BoxFnOnceErrorEvent callback});
-
   /// Set smoothing time constant
   ///
   /// # Panics
@@ -215,39 +174,6 @@ abstract class AudioBufferSourceNode
 
   /// Disconnects all outgoing connections from the AudioNode.
   Future<void> disconnect();
-
-  /// Disconnects all outputs of the AudioNode that go to a specific destination AudioNode.
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDest({required AudioNode dest});
-
-  /// Disconnects a specific output of the AudioNode to a specific destination AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutput(
-      {required AudioNode dest, required BigInt output});
-
-  /// Disconnects a specific output of the AudioNode to a specific input of some destination
-  /// AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the input port is out of bounds for the destination node
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutputToInput(
-      {required AudioNode dest, required BigInt output, required BigInt input});
 
   /// Disconnects all outgoing connections at the given output port from the AudioNode.
   ///
@@ -307,14 +233,6 @@ abstract class AudioBufferSourceNode
   Future<void> setLoopEnd({required double value});
 
   Future<void> setLoopStart({required double value});
-
-  /// Register callback to run when an unhandled exception occurs in the audio processor.
-  ///
-  /// Note that once a unhandled exception is thrown, the processor will output silence throughout its lifetime.
-  ///
-  /// Only a single event handler is active at any time. Calling this method multiple times will
-  /// override the previous event handler.
-  Future<void> setOnprocessorerror({required BoxFnOnceErrorEvent callback});
 
   /// Play immediately
   ///
@@ -396,39 +314,6 @@ abstract class AudioDestinationNode implements AudioNode {
   /// Disconnects all outgoing connections from the AudioNode.
   Future<void> disconnect();
 
-  /// Disconnects all outputs of the AudioNode that go to a specific destination AudioNode.
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDest({required AudioNode dest});
-
-  /// Disconnects a specific output of the AudioNode to a specific destination AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutput(
-      {required AudioNode dest, required BigInt output});
-
-  /// Disconnects a specific output of the AudioNode to a specific input of some destination
-  /// AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the input port is out of bounds for the destination node
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutputToInput(
-      {required AudioNode dest, required BigInt output, required BigInt input});
-
   /// Disconnects all outgoing connections at the given output port from the AudioNode.
   ///
   /// # Panics
@@ -461,14 +346,6 @@ abstract class AudioDestinationNode implements AudioNode {
 
   /// Update the `channel_interpretation` attribute
   Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
-  /// Register callback to run when an unhandled exception occurs in the audio processor.
-  ///
-  /// Note that once a unhandled exception is thrown, the processor will output silence throughout its lifetime.
-  ///
-  /// Only a single event handler is active at any time. Calling this method multiple times will
-  /// override the previous event handler.
-  Future<void> setOnprocessorerror({required BoxFnOnceErrorEvent callback});
 
   void dispose();
 
@@ -504,39 +381,6 @@ abstract class BiquadFilterNode implements AudioNode {
   /// Disconnects all outgoing connections from the AudioNode.
   Future<void> disconnect();
 
-  /// Disconnects all outputs of the AudioNode that go to a specific destination AudioNode.
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDest({required AudioNode dest});
-
-  /// Disconnects a specific output of the AudioNode to a specific destination AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutput(
-      {required AudioNode dest, required BigInt output});
-
-  /// Disconnects a specific output of the AudioNode to a specific input of some destination
-  /// AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the input port is out of bounds for the destination node
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutputToInput(
-      {required AudioNode dest, required BigInt output, required BigInt input});
-
   /// Disconnects all outgoing connections at the given output port from the AudioNode.
   ///
   /// # Panics
@@ -565,14 +409,6 @@ abstract class BiquadFilterNode implements AudioNode {
   /// Update the `channel_interpretation` attribute
   Future<void> setChannelInterpretation({required ChannelInterpretation v});
 
-  /// Register callback to run when an unhandled exception occurs in the audio processor.
-  ///
-  /// Note that once a unhandled exception is thrown, the processor will output silence throughout its lifetime.
-  ///
-  /// Only a single event handler is active at any time. Calling this method multiple times will
-  /// override the previous event handler.
-  Future<void> setOnprocessorerror({required BoxFnOnceErrorEvent callback});
-
   /// biquad filter type setter
   ///
   /// # Arguments
@@ -583,13 +419,6 @@ abstract class BiquadFilterNode implements AudioNode {
   /// Returns the biquad filter type
   Future<BiquadFilterType> type();
 
-  void dispose();
-
-  bool get isDisposed;
-}
-
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box < dyn FnOnce (ErrorEvent) + Send + 'static >>>
-abstract class BoxFnOnceErrorEvent {
   void dispose();
 
   bool get isDisposed;
@@ -624,39 +453,6 @@ abstract class ChannelMergerNode implements AudioNode {
   /// Disconnects all outgoing connections from the AudioNode.
   Future<void> disconnect();
 
-  /// Disconnects all outputs of the AudioNode that go to a specific destination AudioNode.
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDest({required AudioNode dest});
-
-  /// Disconnects a specific output of the AudioNode to a specific destination AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutput(
-      {required AudioNode dest, required BigInt output});
-
-  /// Disconnects a specific output of the AudioNode to a specific input of some destination
-  /// AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the input port is out of bounds for the destination node
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutputToInput(
-      {required AudioNode dest, required BigInt output, required BigInt input});
-
   /// Disconnects all outgoing connections at the given output port from the AudioNode.
   ///
   /// # Panics
@@ -684,14 +480,6 @@ abstract class ChannelMergerNode implements AudioNode {
 
   /// Update the `channel_interpretation` attribute
   Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
-  /// Register callback to run when an unhandled exception occurs in the audio processor.
-  ///
-  /// Note that once a unhandled exception is thrown, the processor will output silence throughout its lifetime.
-  ///
-  /// Only a single event handler is active at any time. Calling this method multiple times will
-  /// override the previous event handler.
-  Future<void> setOnprocessorerror({required BoxFnOnceErrorEvent callback});
 
   void dispose();
 
@@ -727,39 +515,6 @@ abstract class ChannelSplitterNode implements AudioNode {
   /// Disconnects all outgoing connections from the AudioNode.
   Future<void> disconnect();
 
-  /// Disconnects all outputs of the AudioNode that go to a specific destination AudioNode.
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDest({required AudioNode dest});
-
-  /// Disconnects a specific output of the AudioNode to a specific destination AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutput(
-      {required AudioNode dest, required BigInt output});
-
-  /// Disconnects a specific output of the AudioNode to a specific input of some destination
-  /// AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the input port is out of bounds for the destination node
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutputToInput(
-      {required AudioNode dest, required BigInt output, required BigInt input});
-
   /// Disconnects all outgoing connections at the given output port from the AudioNode.
   ///
   /// # Panics
@@ -787,14 +542,6 @@ abstract class ChannelSplitterNode implements AudioNode {
 
   /// Update the `channel_interpretation` attribute
   Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
-  /// Register callback to run when an unhandled exception occurs in the audio processor.
-  ///
-  /// Note that once a unhandled exception is thrown, the processor will output silence throughout its lifetime.
-  ///
-  /// Only a single event handler is active at any time. Calling this method multiple times will
-  /// override the previous event handler.
-  Future<void> setOnprocessorerror({required BoxFnOnceErrorEvent callback});
 
   void dispose();
 
@@ -834,39 +581,6 @@ abstract class ConstantSourceNode
   /// Disconnects all outgoing connections from the AudioNode.
   Future<void> disconnect();
 
-  /// Disconnects all outputs of the AudioNode that go to a specific destination AudioNode.
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDest({required AudioNode dest});
-
-  /// Disconnects a specific output of the AudioNode to a specific destination AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutput(
-      {required AudioNode dest, required BigInt output});
-
-  /// Disconnects a specific output of the AudioNode to a specific input of some destination
-  /// AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the input port is out of bounds for the destination node
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutputToInput(
-      {required AudioNode dest, required BigInt output, required BigInt input});
-
   /// Disconnects all outgoing connections at the given output port from the AudioNode.
   ///
   /// # Panics
@@ -894,14 +608,6 @@ abstract class ConstantSourceNode
 
   /// Update the `channel_interpretation` attribute
   Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
-  /// Register callback to run when an unhandled exception occurs in the audio processor.
-  ///
-  /// Note that once a unhandled exception is thrown, the processor will output silence throughout its lifetime.
-  ///
-  /// Only a single event handler is active at any time. Calling this method multiple times will
-  /// override the previous event handler.
-  Future<void> setOnprocessorerror({required BoxFnOnceErrorEvent callback});
 
   /// Play immediately
   ///
@@ -965,39 +671,6 @@ abstract class ConvolverNode implements AudioNode {
   /// Disconnects all outgoing connections from the AudioNode.
   Future<void> disconnect();
 
-  /// Disconnects all outputs of the AudioNode that go to a specific destination AudioNode.
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDest({required AudioNode dest});
-
-  /// Disconnects a specific output of the AudioNode to a specific destination AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutput(
-      {required AudioNode dest, required BigInt output});
-
-  /// Disconnects a specific output of the AudioNode to a specific input of some destination
-  /// AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the input port is out of bounds for the destination node
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutputToInput(
-      {required AudioNode dest, required BigInt output, required BigInt input});
-
   /// Disconnects all outgoing connections at the given output port from the AudioNode.
   ///
   /// # Panics
@@ -1040,14 +713,6 @@ abstract class ConvolverNode implements AudioNode {
   /// Update the `normalize` setting. This will only have an effect when `set_buffer` is called.
   Future<void> setNormalize({required bool value});
 
-  /// Register callback to run when an unhandled exception occurs in the audio processor.
-  ///
-  /// Note that once a unhandled exception is thrown, the processor will output silence throughout its lifetime.
-  ///
-  /// Only a single event handler is active at any time. Calling this method multiple times will
-  /// override the previous event handler.
-  Future<void> setOnprocessorerror({required BoxFnOnceErrorEvent callback});
-
   void dispose();
 
   bool get isDisposed;
@@ -1082,39 +747,6 @@ abstract class DelayNode implements AudioNode {
   /// Disconnects all outgoing connections from the AudioNode.
   Future<void> disconnect();
 
-  /// Disconnects all outputs of the AudioNode that go to a specific destination AudioNode.
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDest({required AudioNode dest});
-
-  /// Disconnects a specific output of the AudioNode to a specific destination AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutput(
-      {required AudioNode dest, required BigInt output});
-
-  /// Disconnects a specific output of the AudioNode to a specific input of some destination
-  /// AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the input port is out of bounds for the destination node
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutputToInput(
-      {required AudioNode dest, required BigInt output, required BigInt input});
-
   /// Disconnects all outgoing connections at the given output port from the AudioNode.
   ///
   /// # Panics
@@ -1142,14 +774,6 @@ abstract class DelayNode implements AudioNode {
 
   /// Update the `channel_interpretation` attribute
   Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
-  /// Register callback to run when an unhandled exception occurs in the audio processor.
-  ///
-  /// Note that once a unhandled exception is thrown, the processor will output silence throughout its lifetime.
-  ///
-  /// Only a single event handler is active at any time. Calling this method multiple times will
-  /// override the previous event handler.
-  Future<void> setOnprocessorerror({required BoxFnOnceErrorEvent callback});
 
   void dispose();
 
@@ -1185,39 +809,6 @@ abstract class DynamicsCompressorNode implements AudioNode {
   /// Disconnects all outgoing connections from the AudioNode.
   Future<void> disconnect();
 
-  /// Disconnects all outputs of the AudioNode that go to a specific destination AudioNode.
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDest({required AudioNode dest});
-
-  /// Disconnects a specific output of the AudioNode to a specific destination AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutput(
-      {required AudioNode dest, required BigInt output});
-
-  /// Disconnects a specific output of the AudioNode to a specific input of some destination
-  /// AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the input port is out of bounds for the destination node
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutputToInput(
-      {required AudioNode dest, required BigInt output, required BigInt input});
-
   /// Disconnects all outgoing connections at the given output port from the AudioNode.
   ///
   /// # Panics
@@ -1247,14 +838,6 @@ abstract class DynamicsCompressorNode implements AudioNode {
 
   /// Update the `channel_interpretation` attribute
   Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
-  /// Register callback to run when an unhandled exception occurs in the audio processor.
-  ///
-  /// Note that once a unhandled exception is thrown, the processor will output silence throughout its lifetime.
-  ///
-  /// Only a single event handler is active at any time. Calling this method multiple times will
-  /// override the previous event handler.
-  Future<void> setOnprocessorerror({required BoxFnOnceErrorEvent callback});
 
   void dispose();
 
@@ -1290,39 +873,6 @@ abstract class GainNode implements AudioNode {
   /// Disconnects all outgoing connections from the AudioNode.
   Future<void> disconnect();
 
-  /// Disconnects all outputs of the AudioNode that go to a specific destination AudioNode.
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDest({required AudioNode dest});
-
-  /// Disconnects a specific output of the AudioNode to a specific destination AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutput(
-      {required AudioNode dest, required BigInt output});
-
-  /// Disconnects a specific output of the AudioNode to a specific input of some destination
-  /// AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the input port is out of bounds for the destination node
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutputToInput(
-      {required AudioNode dest, required BigInt output, required BigInt input});
-
   /// Disconnects all outgoing connections at the given output port from the AudioNode.
   ///
   /// # Panics
@@ -1350,14 +900,6 @@ abstract class GainNode implements AudioNode {
 
   /// Update the `channel_interpretation` attribute
   Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
-  /// Register callback to run when an unhandled exception occurs in the audio processor.
-  ///
-  /// Note that once a unhandled exception is thrown, the processor will output silence throughout its lifetime.
-  ///
-  /// Only a single event handler is active at any time. Calling this method multiple times will
-  /// override the previous event handler.
-  Future<void> setOnprocessorerror({required BoxFnOnceErrorEvent callback});
 
   void dispose();
 
@@ -1393,39 +935,6 @@ abstract class IirFilterNode implements AudioNode {
   /// Disconnects all outgoing connections from the AudioNode.
   Future<void> disconnect();
 
-  /// Disconnects all outputs of the AudioNode that go to a specific destination AudioNode.
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDest({required AudioNode dest});
-
-  /// Disconnects a specific output of the AudioNode to a specific destination AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutput(
-      {required AudioNode dest, required BigInt output});
-
-  /// Disconnects a specific output of the AudioNode to a specific input of some destination
-  /// AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the input port is out of bounds for the destination node
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutputToInput(
-      {required AudioNode dest, required BigInt output, required BigInt input});
-
   /// Disconnects all outgoing connections at the given output port from the AudioNode.
   ///
   /// # Panics
@@ -1453,14 +962,6 @@ abstract class IirFilterNode implements AudioNode {
 
   /// Update the `channel_interpretation` attribute
   Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
-  /// Register callback to run when an unhandled exception occurs in the audio processor.
-  ///
-  /// Note that once a unhandled exception is thrown, the processor will output silence throughout its lifetime.
-  ///
-  /// Only a single event handler is active at any time. Calling this method multiple times will
-  /// override the previous event handler.
-  Future<void> setOnprocessorerror({required BoxFnOnceErrorEvent callback});
 
   void dispose();
 
@@ -1496,39 +997,6 @@ abstract class MediaElementAudioSourceNode implements AudioNode {
   /// Disconnects all outgoing connections from the AudioNode.
   Future<void> disconnect();
 
-  /// Disconnects all outputs of the AudioNode that go to a specific destination AudioNode.
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDest({required AudioNode dest});
-
-  /// Disconnects a specific output of the AudioNode to a specific destination AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutput(
-      {required AudioNode dest, required BigInt output});
-
-  /// Disconnects a specific output of the AudioNode to a specific input of some destination
-  /// AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the input port is out of bounds for the destination node
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutputToInput(
-      {required AudioNode dest, required BigInt output, required BigInt input});
-
   /// Disconnects all outgoing connections at the given output port from the AudioNode.
   ///
   /// # Panics
@@ -1556,14 +1024,6 @@ abstract class MediaElementAudioSourceNode implements AudioNode {
 
   /// Update the `channel_interpretation` attribute
   Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
-  /// Register callback to run when an unhandled exception occurs in the audio processor.
-  ///
-  /// Note that once a unhandled exception is thrown, the processor will output silence throughout its lifetime.
-  ///
-  /// Only a single event handler is active at any time. Calling this method multiple times will
-  /// override the previous event handler.
-  Future<void> setOnprocessorerror({required BoxFnOnceErrorEvent callback});
 
   void dispose();
 
@@ -1599,39 +1059,6 @@ abstract class MediaStreamAudioDestinationNode implements AudioNode {
   /// Disconnects all outgoing connections from the AudioNode.
   Future<void> disconnect();
 
-  /// Disconnects all outputs of the AudioNode that go to a specific destination AudioNode.
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDest({required AudioNode dest});
-
-  /// Disconnects a specific output of the AudioNode to a specific destination AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutput(
-      {required AudioNode dest, required BigInt output});
-
-  /// Disconnects a specific output of the AudioNode to a specific input of some destination
-  /// AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the input port is out of bounds for the destination node
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutputToInput(
-      {required AudioNode dest, required BigInt output, required BigInt input});
-
   /// Disconnects all outgoing connections at the given output port from the AudioNode.
   ///
   /// # Panics
@@ -1659,14 +1086,6 @@ abstract class MediaStreamAudioDestinationNode implements AudioNode {
 
   /// Update the `channel_interpretation` attribute
   Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
-  /// Register callback to run when an unhandled exception occurs in the audio processor.
-  ///
-  /// Note that once a unhandled exception is thrown, the processor will output silence throughout its lifetime.
-  ///
-  /// Only a single event handler is active at any time. Calling this method multiple times will
-  /// override the previous event handler.
-  Future<void> setOnprocessorerror({required BoxFnOnceErrorEvent callback});
 
   /// A [`MediaStream`] producing audio buffers with the same number of channels as the node
   /// itself
@@ -1706,39 +1125,6 @@ abstract class MediaStreamAudioSourceNode implements AudioNode {
   /// Disconnects all outgoing connections from the AudioNode.
   Future<void> disconnect();
 
-  /// Disconnects all outputs of the AudioNode that go to a specific destination AudioNode.
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDest({required AudioNode dest});
-
-  /// Disconnects a specific output of the AudioNode to a specific destination AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutput(
-      {required AudioNode dest, required BigInt output});
-
-  /// Disconnects a specific output of the AudioNode to a specific input of some destination
-  /// AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the input port is out of bounds for the destination node
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutputToInput(
-      {required AudioNode dest, required BigInt output, required BigInt input});
-
   /// Disconnects all outgoing connections at the given output port from the AudioNode.
   ///
   /// # Panics
@@ -1766,14 +1152,6 @@ abstract class MediaStreamAudioSourceNode implements AudioNode {
 
   /// Update the `channel_interpretation` attribute
   Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
-  /// Register callback to run when an unhandled exception occurs in the audio processor.
-  ///
-  /// Note that once a unhandled exception is thrown, the processor will output silence throughout its lifetime.
-  ///
-  /// Only a single event handler is active at any time. Calling this method multiple times will
-  /// override the previous event handler.
-  Future<void> setOnprocessorerror({required BoxFnOnceErrorEvent callback});
 
   void dispose();
 
@@ -1809,39 +1187,6 @@ abstract class MediaStreamTrackAudioSourceNode implements AudioNode {
   /// Disconnects all outgoing connections from the AudioNode.
   Future<void> disconnect();
 
-  /// Disconnects all outputs of the AudioNode that go to a specific destination AudioNode.
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDest({required AudioNode dest});
-
-  /// Disconnects a specific output of the AudioNode to a specific destination AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutput(
-      {required AudioNode dest, required BigInt output});
-
-  /// Disconnects a specific output of the AudioNode to a specific input of some destination
-  /// AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the input port is out of bounds for the destination node
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutputToInput(
-      {required AudioNode dest, required BigInt output, required BigInt input});
-
   /// Disconnects all outgoing connections at the given output port from the AudioNode.
   ///
   /// # Panics
@@ -1869,14 +1214,6 @@ abstract class MediaStreamTrackAudioSourceNode implements AudioNode {
 
   /// Update the `channel_interpretation` attribute
   Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
-  /// Register callback to run when an unhandled exception occurs in the audio processor.
-  ///
-  /// Note that once a unhandled exception is thrown, the processor will output silence throughout its lifetime.
-  ///
-  /// Only a single event handler is active at any time. Calling this method multiple times will
-  /// override the previous event handler.
-  Future<void> setOnprocessorerror({required BoxFnOnceErrorEvent callback});
 
   void dispose();
 
@@ -1915,39 +1252,6 @@ abstract class OscillatorNode implements AudioNode, AudioScheduledSourceNode {
   /// Disconnects all outgoing connections from the AudioNode.
   Future<void> disconnect();
 
-  /// Disconnects all outputs of the AudioNode that go to a specific destination AudioNode.
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDest({required AudioNode dest});
-
-  /// Disconnects a specific output of the AudioNode to a specific destination AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutput(
-      {required AudioNode dest, required BigInt output});
-
-  /// Disconnects a specific output of the AudioNode to a specific input of some destination
-  /// AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the input port is out of bounds for the destination node
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutputToInput(
-      {required AudioNode dest, required BigInt output, required BigInt input});
-
   /// Disconnects all outgoing connections at the given output port from the AudioNode.
   ///
   /// # Panics
@@ -1975,14 +1279,6 @@ abstract class OscillatorNode implements AudioNode, AudioScheduledSourceNode {
 
   /// Update the `channel_interpretation` attribute
   Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
-  /// Register callback to run when an unhandled exception occurs in the audio processor.
-  ///
-  /// Note that once a unhandled exception is thrown, the processor will output silence throughout its lifetime.
-  ///
-  /// Only a single event handler is active at any time. Calling this method multiple times will
-  /// override the previous event handler.
-  Future<void> setOnprocessorerror({required BoxFnOnceErrorEvent callback});
 
   /// Sets a `PeriodicWave` which describes a waveform to be used by the oscillator.
   ///
@@ -2072,39 +1368,6 @@ abstract class PannerNode implements AudioNode {
   /// Disconnects all outgoing connections from the AudioNode.
   Future<void> disconnect();
 
-  /// Disconnects all outputs of the AudioNode that go to a specific destination AudioNode.
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDest({required AudioNode dest});
-
-  /// Disconnects a specific output of the AudioNode to a specific destination AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutput(
-      {required AudioNode dest, required BigInt output});
-
-  /// Disconnects a specific output of the AudioNode to a specific input of some destination
-  /// AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the input port is out of bounds for the destination node
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutputToInput(
-      {required AudioNode dest, required BigInt output, required BigInt input});
-
   /// Disconnects all outgoing connections at the given output port from the AudioNode.
   ///
   /// # Panics
@@ -2162,14 +1425,6 @@ abstract class PannerNode implements AudioNode {
   ///
   /// Panics if the provided value is negative.
   Future<void> setMaxDistance({required double value});
-
-  /// Register callback to run when an unhandled exception occurs in the audio processor.
-  ///
-  /// Note that once a unhandled exception is thrown, the processor will output silence throughout its lifetime.
-  ///
-  /// Only a single event handler is active at any time. Calling this method multiple times will
-  /// override the previous event handler.
-  Future<void> setOnprocessorerror({required BoxFnOnceErrorEvent callback});
 
   Future<void> setOrientation(
       {required double x, required double y, required double z});
@@ -2232,39 +1487,6 @@ abstract class ScriptProcessorNode implements AudioNode {
   /// Disconnects all outgoing connections from the AudioNode.
   Future<void> disconnect();
 
-  /// Disconnects all outputs of the AudioNode that go to a specific destination AudioNode.
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDest({required AudioNode dest});
-
-  /// Disconnects a specific output of the AudioNode to a specific destination AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutput(
-      {required AudioNode dest, required BigInt output});
-
-  /// Disconnects a specific output of the AudioNode to a specific input of some destination
-  /// AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the input port is out of bounds for the destination node
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutputToInput(
-      {required AudioNode dest, required BigInt output, required BigInt input});
-
   /// Disconnects all outgoing connections at the given output port from the AudioNode.
   ///
   /// # Panics
@@ -2292,14 +1514,6 @@ abstract class ScriptProcessorNode implements AudioNode {
 
   /// Update the `channel_interpretation` attribute
   Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
-  /// Register callback to run when an unhandled exception occurs in the audio processor.
-  ///
-  /// Note that once a unhandled exception is thrown, the processor will output silence throughout its lifetime.
-  ///
-  /// Only a single event handler is active at any time. Calling this method multiple times will
-  /// override the previous event handler.
-  Future<void> setOnprocessorerror({required BoxFnOnceErrorEvent callback});
 
   void dispose();
 
@@ -2335,39 +1549,6 @@ abstract class StereoPannerNode implements AudioNode {
   /// Disconnects all outgoing connections from the AudioNode.
   Future<void> disconnect();
 
-  /// Disconnects all outputs of the AudioNode that go to a specific destination AudioNode.
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDest({required AudioNode dest});
-
-  /// Disconnects a specific output of the AudioNode to a specific destination AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutput(
-      {required AudioNode dest, required BigInt output});
-
-  /// Disconnects a specific output of the AudioNode to a specific input of some destination
-  /// AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the input port is out of bounds for the destination node
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutputToInput(
-      {required AudioNode dest, required BigInt output, required BigInt input});
-
   /// Disconnects all outgoing connections at the given output port from the AudioNode.
   ///
   /// # Panics
@@ -2395,14 +1576,6 @@ abstract class StereoPannerNode implements AudioNode {
 
   /// Update the `channel_interpretation` attribute
   Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
-  /// Register callback to run when an unhandled exception occurs in the audio processor.
-  ///
-  /// Note that once a unhandled exception is thrown, the processor will output silence throughout its lifetime.
-  ///
-  /// Only a single event handler is active at any time. Calling this method multiple times will
-  /// override the previous event handler.
-  Future<void> setOnprocessorerror({required BoxFnOnceErrorEvent callback});
 
   void dispose();
 
@@ -2437,39 +1610,6 @@ abstract class WaveShaperNode implements AudioNode {
 
   /// Disconnects all outgoing connections from the AudioNode.
   Future<void> disconnect();
-
-  /// Disconnects all outputs of the AudioNode that go to a specific destination AudioNode.
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDest({required AudioNode dest});
-
-  /// Disconnects a specific output of the AudioNode to a specific destination AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutput(
-      {required AudioNode dest, required BigInt output});
-
-  /// Disconnects a specific output of the AudioNode to a specific input of some destination
-  /// AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the input port is out of bounds for the destination node
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutputToInput(
-      {required AudioNode dest, required BigInt output, required BigInt input});
 
   /// Disconnects all outgoing connections at the given output port from the AudioNode.
   ///
@@ -2514,14 +1654,6 @@ abstract class WaveShaperNode implements AudioNode {
   /// `set_curve`)
   Future<void> setCurve({required List<double> curve});
 
-  /// Register callback to run when an unhandled exception occurs in the audio processor.
-  ///
-  /// Note that once a unhandled exception is thrown, the processor will output silence throughout its lifetime.
-  ///
-  /// Only a single event handler is active at any time. Calling this method multiple times will
-  /// override the previous event handler.
-  Future<void> setOnprocessorerror({required BoxFnOnceErrorEvent callback});
-
   /// set the `oversample` factor of this node
   ///
   /// # Arguments
@@ -2529,13 +1661,6 @@ abstract class WaveShaperNode implements AudioNode {
   /// * `oversample` - the desired `OversampleType` variant
   Future<void> setOversample({required OverSampleType oversample});
 
-  void dispose();
-
-  bool get isDisposed;
-}
-
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<dyn AudioNode>>
-abstract class AudioNode {
   void dispose();
 
   bool get isDisposed;

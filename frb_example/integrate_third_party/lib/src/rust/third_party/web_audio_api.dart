@@ -132,39 +132,6 @@ abstract class AudioParam implements AudioNode {
   /// Disconnects all outgoing connections from the AudioNode.
   Future<void> disconnect();
 
-  /// Disconnects all outputs of the AudioNode that go to a specific destination AudioNode.
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDest({required AudioNode dest});
-
-  /// Disconnects a specific output of the AudioNode to a specific destination AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutput(
-      {required AudioNode dest, required BigInt output});
-
-  /// Disconnects a specific output of the AudioNode to a specific input of some destination
-  /// AudioNode
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - the AudioContext of the source and destination does not match
-  /// - if the input port is out of bounds for the destination node
-  /// - if the output port is out of bounds for the source node
-  /// - the source node was not connected to the destination node
-  Future<void> disconnectDestFromOutputToInput(
-      {required AudioNode dest, required BigInt output, required BigInt input});
-
   /// Disconnects all outgoing connections at the given output port from the AudioNode.
   ///
   /// # Panics
@@ -223,14 +190,6 @@ abstract class AudioParam implements AudioNode {
 
   /// Update the `channel_interpretation` attribute
   Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
-  /// Register callback to run when an unhandled exception occurs in the audio processor.
-  ///
-  /// Note that once a unhandled exception is thrown, the processor will output silence throughout its lifetime.
-  ///
-  /// Only a single event handler is active at any time. Calling this method multiple times will
-  /// override the previous event handler.
-  Future<void> setOnprocessorerror({required BoxFnOnceErrorEvent callback});
 
   /// Start exponentially approaching the target value at the given time with
   /// a rate having the given time constant.
