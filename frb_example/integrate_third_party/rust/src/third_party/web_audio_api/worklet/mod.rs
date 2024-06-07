@@ -23,4 +23,7 @@ impl AudioWorkletNode {
 pub trait AudioWorkletProcessor {
     #[frb(ignore)]
     fn constructor();
+
+    #[frb(ignore)]
+    fn onmessage();
 }
