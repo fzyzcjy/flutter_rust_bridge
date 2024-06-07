@@ -40,7 +40,7 @@ impl BaseMerger for ThirdPartyOverrideMerger {
         overrider: &HirFlatTrait,
     ) -> Option<HirFlatTrait> {
         merge_core(base, &overrider.source, |ans| {
-            ans.src.attrs_mut().extend(overrider.src.attrs().to_owned());
+            // nothing extra to write; but we will throw away override and use base.
         })
     }
 }
