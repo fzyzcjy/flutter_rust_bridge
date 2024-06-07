@@ -7,9 +7,9 @@ import '../../frb_generated.dart';
 import '../web_audio_api.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// These functions are ignored because they have generic arguments: `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `set_onended`, `set_onended`, `set_onended`, `set_onended`
+// These functions are ignored because they have generic arguments: `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `set_onended`, `set_onended`, `set_onended`, `set_onended`
 // These types are ignored because they are not used by any `pub` functions: `AnalyserOptions`, `AudioBufferSourceOptions`, `AudioNodeOptions`, `BiquadFilterOptions`, `ChannelConfig`, `ChannelMergerOptions`, `ChannelSplitterOptions`, `ConstantSourceOptions`, `ConvolverOptions`, `DelayOptions`, `DynamicsCompressorOptions`, `GainOptions`, `IIRFilterOptions`, `MediaElementAudioSourceOptions`, `MediaStreamAudioSourceOptions`, `MediaStreamRenderer`, `MediaStreamTrackAudioSourceOptions`, `OscillatorOptions`, `PannerOptions`, `ScriptProcessorOptions`, `StereoPannerOptions`, `WaveShaperOptions`
-// These functions are ignored: `channel_config`, `channel_count_mode`, `channel_count`, `channel_interpretation`, `clear_onprocessorerror`, `context`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_output`, `disconnect`, `number_of_inputs`, `number_of_outputs`, `registration`, `set_channel_count_mode`, `set_channel_count`, `set_channel_interpretation`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`
+// These functions are ignored: `channel_config`, `channel_count_mode`, `channel_count`, `channel_interpretation`, `clear_onprocessorerror`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect`, `connect`, `context`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest`, `disconnect_dest`, `disconnect_output`, `disconnect`, `number_of_inputs`, `number_of_outputs`, `registration`, `set_channel_count_mode`, `set_channel_count`, `set_channel_interpretation`, `set_onprocessorerror`, `set_onprocessorerror`
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AnalyserNode>>
 abstract class AnalyserNode implements AudioNode {
@@ -39,6 +39,39 @@ abstract class AnalyserNode implements AudioNode {
 
   /// Disconnects all outgoing connections from the AudioNode.
   Future<void> disconnect();
+
+  /// Disconnects all outputs of the AudioNode that go to a specific destination AudioNode.
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - the AudioContext of the source and destination does not match
+  /// - the source node was not connected to the destination node
+  Future<void> disconnectDest({required AudioNode dest});
+
+  /// Disconnects a specific output of the AudioNode to a specific destination AudioNode
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - the AudioContext of the source and destination does not match
+  /// - if the output port is out of bounds for the source node
+  /// - the source node was not connected to the destination node
+  Future<void> disconnectDestFromOutput(
+      {required AudioNode dest, required BigInt output});
+
+  /// Disconnects a specific output of the AudioNode to a specific input of some destination
+  /// AudioNode
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - the AudioContext of the source and destination does not match
+  /// - if the input port is out of bounds for the destination node
+  /// - if the output port is out of bounds for the source node
+  /// - the source node was not connected to the destination node
+  Future<void> disconnectDestFromOutputToInput(
+      {required AudioNode dest, required BigInt output, required BigInt input});
 
   /// Disconnects all outgoing connections at the given output port from the AudioNode.
   ///
@@ -121,6 +154,14 @@ abstract class AnalyserNode implements AudioNode {
   /// to max decibels.
   Future<void> setMinDecibels({required double value});
 
+  /// Register callback to run when an unhandled exception occurs in the audio processor.
+  ///
+  /// Note that once a unhandled exception is thrown, the processor will output silence throughout its lifetime.
+  ///
+  /// Only a single event handler is active at any time. Calling this method multiple times will
+  /// override the previous event handler.
+  Future<void> setOnprocessorerror({required BoxFnOnceErrorEvent callback});
+
   /// Set smoothing time constant
   ///
   /// # Panics
@@ -174,6 +215,39 @@ abstract class AudioBufferSourceNode
 
   /// Disconnects all outgoing connections from the AudioNode.
   Future<void> disconnect();
+
+  /// Disconnects all outputs of the AudioNode that go to a specific destination AudioNode.
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - the AudioContext of the source and destination does not match
+  /// - the source node was not connected to the destination node
+  Future<void> disconnectDest({required AudioNode dest});
+
+  /// Disconnects a specific output of the AudioNode to a specific destination AudioNode
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - the AudioContext of the source and destination does not match
+  /// - if the output port is out of bounds for the source node
+  /// - the source node was not connected to the destination node
+  Future<void> disconnectDestFromOutput(
+      {required AudioNode dest, required BigInt output});
+
+  /// Disconnects a specific output of the AudioNode to a specific input of some destination
+  /// AudioNode
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - the AudioContext of the source and destination does not match
+  /// - if the input port is out of bounds for the destination node
+  /// - if the output port is out of bounds for the source node
+  /// - the source node was not connected to the destination node
+  Future<void> disconnectDestFromOutputToInput(
+      {required AudioNode dest, required BigInt output, required BigInt input});
 
   /// Disconnects all outgoing connections at the given output port from the AudioNode.
   ///
@@ -233,6 +307,14 @@ abstract class AudioBufferSourceNode
   Future<void> setLoopEnd({required double value});
 
   Future<void> setLoopStart({required double value});
+
+  /// Register callback to run when an unhandled exception occurs in the audio processor.
+  ///
+  /// Note that once a unhandled exception is thrown, the processor will output silence throughout its lifetime.
+  ///
+  /// Only a single event handler is active at any time. Calling this method multiple times will
+  /// override the previous event handler.
+  Future<void> setOnprocessorerror({required BoxFnOnceErrorEvent callback});
 
   /// Play immediately
   ///
@@ -314,6 +396,39 @@ abstract class AudioDestinationNode implements AudioNode {
   /// Disconnects all outgoing connections from the AudioNode.
   Future<void> disconnect();
 
+  /// Disconnects all outputs of the AudioNode that go to a specific destination AudioNode.
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - the AudioContext of the source and destination does not match
+  /// - the source node was not connected to the destination node
+  Future<void> disconnectDest({required AudioNode dest});
+
+  /// Disconnects a specific output of the AudioNode to a specific destination AudioNode
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - the AudioContext of the source and destination does not match
+  /// - if the output port is out of bounds for the source node
+  /// - the source node was not connected to the destination node
+  Future<void> disconnectDestFromOutput(
+      {required AudioNode dest, required BigInt output});
+
+  /// Disconnects a specific output of the AudioNode to a specific input of some destination
+  /// AudioNode
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - the AudioContext of the source and destination does not match
+  /// - if the input port is out of bounds for the destination node
+  /// - if the output port is out of bounds for the source node
+  /// - the source node was not connected to the destination node
+  Future<void> disconnectDestFromOutputToInput(
+      {required AudioNode dest, required BigInt output, required BigInt input});
+
   /// Disconnects all outgoing connections at the given output port from the AudioNode.
   ///
   /// # Panics
@@ -347,6 +462,14 @@ abstract class AudioDestinationNode implements AudioNode {
   /// Update the `channel_interpretation` attribute
   Future<void> setChannelInterpretation({required ChannelInterpretation v});
 
+  /// Register callback to run when an unhandled exception occurs in the audio processor.
+  ///
+  /// Note that once a unhandled exception is thrown, the processor will output silence throughout its lifetime.
+  ///
+  /// Only a single event handler is active at any time. Calling this method multiple times will
+  /// override the previous event handler.
+  Future<void> setOnprocessorerror({required BoxFnOnceErrorEvent callback});
+
   void dispose();
 
   bool get isDisposed;
@@ -354,1333 +477,6 @@ abstract class AudioDestinationNode implements AudioNode {
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<BiquadFilterNode>>
 abstract class BiquadFilterNode implements AudioNode {
-  /// Config for up/down-mixing of input channels for this node.
-  ///
-  /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
-  Future<void> channelConfig();
-
-  /// Represents an integer used to determine how many channels are used when up-mixing and
-  /// down-mixing connections to any inputs to the node.
-  Future<BigInt> channelCount();
-
-  /// Represents an enumerated value describing the way channels must be matched between the
-  /// node's inputs and outputs.
-  Future<ChannelCountMode> channelCountMode();
-
-  /// Represents an enumerated value describing the meaning of the channels. This interpretation
-  /// will define how audio up-mixing and down-mixing will happen.
-  Future<ChannelInterpretation> channelInterpretation();
-
-  /// Unset the callback to run when an unhandled exception occurs in the audio processor.
-  Future<void> clearOnprocessorerror();
-
-  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
-  /// AudioNode.
-  Future<void> context();
-
-  /// Disconnects all outgoing connections from the AudioNode.
-  Future<void> disconnect();
-
-  /// Disconnects all outgoing connections at the given output port from the AudioNode.
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - if the output port is out of bounds for this node
-  Future<void> disconnectOutput({required BigInt output});
-
-  /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
-  Future<BigInt> numberOfInputs();
-
-  /// The number of outputs coming out of the AudioNode.
-  Future<BigInt> numberOfOutputs();
-
-  /// Handle of the associated [`BaseAudioContext`](crate::context::BaseAudioContext).
-  ///
-  /// Only when implementing the AudioNode trait manually, this struct is of any concern.
-  Future<void> registration();
-
-  /// Update the `channel_count` attribute
-  Future<void> setChannelCount({required BigInt v});
-
-  /// Update the `channel_count_mode` attribute
-  Future<void> setChannelCountMode({required ChannelCountMode v});
-
-  /// Update the `channel_interpretation` attribute
-  Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
-  /// biquad filter type setter
-  ///
-  /// # Arguments
-  ///
-  /// * `type_` - the biquad filter type (lowpass, highpass,...)
-  Future<void> setType({required BiquadFilterType type});
-
-  /// Returns the biquad filter type
-  Future<BiquadFilterType> type();
-
-  void dispose();
-
-  bool get isDisposed;
-}
-
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box < dyn FnOnce (ErrorEvent) + Send + 'static >>>
-abstract class BoxFnOnceErrorEvent {
-  void dispose();
-
-  bool get isDisposed;
-}
-
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ChannelMergerNode>>
-abstract class ChannelMergerNode implements AudioNode {
-  /// Config for up/down-mixing of input channels for this node.
-  ///
-  /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
-  Future<void> channelConfig();
-
-  /// Represents an integer used to determine how many channels are used when up-mixing and
-  /// down-mixing connections to any inputs to the node.
-  Future<BigInt> channelCount();
-
-  /// Represents an enumerated value describing the way channels must be matched between the
-  /// node's inputs and outputs.
-  Future<ChannelCountMode> channelCountMode();
-
-  /// Represents an enumerated value describing the meaning of the channels. This interpretation
-  /// will define how audio up-mixing and down-mixing will happen.
-  Future<ChannelInterpretation> channelInterpretation();
-
-  /// Unset the callback to run when an unhandled exception occurs in the audio processor.
-  Future<void> clearOnprocessorerror();
-
-  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
-  /// AudioNode.
-  Future<void> context();
-
-  /// Disconnects all outgoing connections from the AudioNode.
-  Future<void> disconnect();
-
-  /// Disconnects all outgoing connections at the given output port from the AudioNode.
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - if the output port is out of bounds for this node
-  Future<void> disconnectOutput({required BigInt output});
-
-  /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
-  Future<BigInt> numberOfInputs();
-
-  /// The number of outputs coming out of the AudioNode.
-  Future<BigInt> numberOfOutputs();
-
-  /// Handle of the associated [`BaseAudioContext`](crate::context::BaseAudioContext).
-  ///
-  /// Only when implementing the AudioNode trait manually, this struct is of any concern.
-  Future<void> registration();
-
-  /// Update the `channel_count` attribute
-  Future<void> setChannelCount({required BigInt v});
-
-  /// Update the `channel_count_mode` attribute
-  Future<void> setChannelCountMode({required ChannelCountMode v});
-
-  /// Update the `channel_interpretation` attribute
-  Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
-  void dispose();
-
-  bool get isDisposed;
-}
-
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ChannelSplitterNode>>
-abstract class ChannelSplitterNode implements AudioNode {
-  /// Config for up/down-mixing of input channels for this node.
-  ///
-  /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
-  Future<void> channelConfig();
-
-  /// Represents an integer used to determine how many channels are used when up-mixing and
-  /// down-mixing connections to any inputs to the node.
-  Future<BigInt> channelCount();
-
-  /// Represents an enumerated value describing the way channels must be matched between the
-  /// node's inputs and outputs.
-  Future<ChannelCountMode> channelCountMode();
-
-  /// Represents an enumerated value describing the meaning of the channels. This interpretation
-  /// will define how audio up-mixing and down-mixing will happen.
-  Future<ChannelInterpretation> channelInterpretation();
-
-  /// Unset the callback to run when an unhandled exception occurs in the audio processor.
-  Future<void> clearOnprocessorerror();
-
-  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
-  /// AudioNode.
-  Future<void> context();
-
-  /// Disconnects all outgoing connections from the AudioNode.
-  Future<void> disconnect();
-
-  /// Disconnects all outgoing connections at the given output port from the AudioNode.
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - if the output port is out of bounds for this node
-  Future<void> disconnectOutput({required BigInt output});
-
-  /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
-  Future<BigInt> numberOfInputs();
-
-  /// The number of outputs coming out of the AudioNode.
-  Future<BigInt> numberOfOutputs();
-
-  /// Handle of the associated [`BaseAudioContext`](crate::context::BaseAudioContext).
-  ///
-  /// Only when implementing the AudioNode trait manually, this struct is of any concern.
-  Future<void> registration();
-
-  /// Update the `channel_count` attribute
-  Future<void> setChannelCount({required BigInt v});
-
-  /// Update the `channel_count_mode` attribute
-  Future<void> setChannelCountMode({required ChannelCountMode v});
-
-  /// Update the `channel_interpretation` attribute
-  Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
-  void dispose();
-
-  bool get isDisposed;
-}
-
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ConstantSourceNode>>
-abstract class ConstantSourceNode
-    implements AudioNode, AudioScheduledSourceNode {
-  /// Config for up/down-mixing of input channels for this node.
-  ///
-  /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
-  Future<void> channelConfig();
-
-  /// Represents an integer used to determine how many channels are used when up-mixing and
-  /// down-mixing connections to any inputs to the node.
-  Future<BigInt> channelCount();
-
-  /// Represents an enumerated value describing the way channels must be matched between the
-  /// node's inputs and outputs.
-  Future<ChannelCountMode> channelCountMode();
-
-  /// Represents an enumerated value describing the meaning of the channels. This interpretation
-  /// will define how audio up-mixing and down-mixing will happen.
-  Future<ChannelInterpretation> channelInterpretation();
-
-  /// Unset the callback to run when the source node has stopped playing
-  Future<void> clearOnended();
-
-  /// Unset the callback to run when an unhandled exception occurs in the audio processor.
-  Future<void> clearOnprocessorerror();
-
-  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
-  /// AudioNode.
-  Future<void> context();
-
-  /// Disconnects all outgoing connections from the AudioNode.
-  Future<void> disconnect();
-
-  /// Disconnects all outgoing connections at the given output port from the AudioNode.
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - if the output port is out of bounds for this node
-  Future<void> disconnectOutput({required BigInt output});
-
-  /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
-  Future<BigInt> numberOfInputs();
-
-  /// The number of outputs coming out of the AudioNode.
-  Future<BigInt> numberOfOutputs();
-
-  /// Handle of the associated [`BaseAudioContext`](crate::context::BaseAudioContext).
-  ///
-  /// Only when implementing the AudioNode trait manually, this struct is of any concern.
-  Future<void> registration();
-
-  /// Update the `channel_count` attribute
-  Future<void> setChannelCount({required BigInt v});
-
-  /// Update the `channel_count_mode` attribute
-  Future<void> setChannelCountMode({required ChannelCountMode v});
-
-  /// Update the `channel_interpretation` attribute
-  Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
-  /// Play immediately
-  ///
-  /// # Panics
-  ///
-  /// Panics if the source was already started
-  Future<void> start();
-
-  /// Schedule playback start at given timestamp
-  ///
-  /// # Panics
-  ///
-  /// Panics if the source was already started
-  Future<void> startAt({required double when});
-
-  /// Stop immediately
-  ///
-  /// # Panics
-  ///
-  /// Panics if the source was already stopped
-  Future<void> stop();
-
-  /// Schedule playback stop at given timestamp
-  ///
-  /// # Panics
-  ///
-  /// Panics if the source was already stopped
-  Future<void> stopAt({required double when});
-
-  void dispose();
-
-  bool get isDisposed;
-}
-
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ConvolverNode>>
-abstract class ConvolverNode implements AudioNode {
-  /// Config for up/down-mixing of input channels for this node.
-  ///
-  /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
-  Future<void> channelConfig();
-
-  /// Represents an integer used to determine how many channels are used when up-mixing and
-  /// down-mixing connections to any inputs to the node.
-  Future<BigInt> channelCount();
-
-  /// Represents an enumerated value describing the way channels must be matched between the
-  /// node's inputs and outputs.
-  Future<ChannelCountMode> channelCountMode();
-
-  /// Represents an enumerated value describing the meaning of the channels. This interpretation
-  /// will define how audio up-mixing and down-mixing will happen.
-  Future<ChannelInterpretation> channelInterpretation();
-
-  /// Unset the callback to run when an unhandled exception occurs in the audio processor.
-  Future<void> clearOnprocessorerror();
-
-  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
-  /// AudioNode.
-  Future<void> context();
-
-  /// Disconnects all outgoing connections from the AudioNode.
-  Future<void> disconnect();
-
-  /// Disconnects all outgoing connections at the given output port from the AudioNode.
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - if the output port is out of bounds for this node
-  Future<void> disconnectOutput({required BigInt output});
-
-  /// Denotes if the response buffer will be scaled with an equal-power normalization
-  Future<bool> normalize();
-
-  /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
-  Future<BigInt> numberOfInputs();
-
-  /// The number of outputs coming out of the AudioNode.
-  Future<BigInt> numberOfOutputs();
-
-  /// Handle of the associated [`BaseAudioContext`](crate::context::BaseAudioContext).
-  ///
-  /// Only when implementing the AudioNode trait manually, this struct is of any concern.
-  Future<void> registration();
-
-  /// Set or update the impulse response buffer
-  ///
-  /// # Panics
-  ///
-  /// Panics when the sample rate of the provided AudioBuffer differs from the audio context
-  /// sample rate.
-  Future<void> setBuffer({required AudioBuffer buffer});
-
-  /// Update the `channel_count` attribute
-  Future<void> setChannelCount({required BigInt v});
-
-  /// Update the `channel_count_mode` attribute
-  Future<void> setChannelCountMode({required ChannelCountMode v});
-
-  /// Update the `channel_interpretation` attribute
-  Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
-  /// Update the `normalize` setting. This will only have an effect when `set_buffer` is called.
-  Future<void> setNormalize({required bool value});
-
-  void dispose();
-
-  bool get isDisposed;
-}
-
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<DelayNode>>
-abstract class DelayNode implements AudioNode {
-  /// Config for up/down-mixing of input channels for this node.
-  ///
-  /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
-  Future<void> channelConfig();
-
-  /// Represents an integer used to determine how many channels are used when up-mixing and
-  /// down-mixing connections to any inputs to the node.
-  Future<BigInt> channelCount();
-
-  /// Represents an enumerated value describing the way channels must be matched between the
-  /// node's inputs and outputs.
-  Future<ChannelCountMode> channelCountMode();
-
-  /// Represents an enumerated value describing the meaning of the channels. This interpretation
-  /// will define how audio up-mixing and down-mixing will happen.
-  Future<ChannelInterpretation> channelInterpretation();
-
-  /// Unset the callback to run when an unhandled exception occurs in the audio processor.
-  Future<void> clearOnprocessorerror();
-
-  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
-  /// AudioNode.
-  Future<void> context();
-
-  /// Disconnects all outgoing connections from the AudioNode.
-  Future<void> disconnect();
-
-  /// Disconnects all outgoing connections at the given output port from the AudioNode.
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - if the output port is out of bounds for this node
-  Future<void> disconnectOutput({required BigInt output});
-
-  /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
-  Future<BigInt> numberOfInputs();
-
-  /// The number of outputs coming out of the AudioNode.
-  Future<BigInt> numberOfOutputs();
-
-  /// Handle of the associated [`BaseAudioContext`](crate::context::BaseAudioContext).
-  ///
-  /// Only when implementing the AudioNode trait manually, this struct is of any concern.
-  Future<void> registration();
-
-  /// Update the `channel_count` attribute
-  Future<void> setChannelCount({required BigInt v});
-
-  /// Update the `channel_count_mode` attribute
-  Future<void> setChannelCountMode({required ChannelCountMode v});
-
-  /// Update the `channel_interpretation` attribute
-  Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
-  void dispose();
-
-  bool get isDisposed;
-}
-
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<DynamicsCompressorNode>>
-abstract class DynamicsCompressorNode implements AudioNode {
-  /// Config for up/down-mixing of input channels for this node.
-  ///
-  /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
-  Future<void> channelConfig();
-
-  /// Represents an integer used to determine how many channels are used when up-mixing and
-  /// down-mixing connections to any inputs to the node.
-  Future<BigInt> channelCount();
-
-  /// Represents an enumerated value describing the way channels must be matched between the
-  /// node's inputs and outputs.
-  Future<ChannelCountMode> channelCountMode();
-
-  /// Represents an enumerated value describing the meaning of the channels. This interpretation
-  /// will define how audio up-mixing and down-mixing will happen.
-  Future<ChannelInterpretation> channelInterpretation();
-
-  /// Unset the callback to run when an unhandled exception occurs in the audio processor.
-  Future<void> clearOnprocessorerror();
-
-  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
-  /// AudioNode.
-  Future<void> context();
-
-  /// Disconnects all outgoing connections from the AudioNode.
-  Future<void> disconnect();
-
-  /// Disconnects all outgoing connections at the given output port from the AudioNode.
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - if the output port is out of bounds for this node
-  Future<void> disconnectOutput({required BigInt output});
-
-  /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
-  Future<BigInt> numberOfInputs();
-
-  /// The number of outputs coming out of the AudioNode.
-  Future<BigInt> numberOfOutputs();
-
-  Future<double> reduction();
-
-  /// Handle of the associated [`BaseAudioContext`](crate::context::BaseAudioContext).
-  ///
-  /// Only when implementing the AudioNode trait manually, this struct is of any concern.
-  Future<void> registration();
-
-  /// Update the `channel_count` attribute
-  Future<void> setChannelCount({required BigInt v});
-
-  /// Update the `channel_count_mode` attribute
-  Future<void> setChannelCountMode({required ChannelCountMode v});
-
-  /// Update the `channel_interpretation` attribute
-  Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
-  void dispose();
-
-  bool get isDisposed;
-}
-
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<GainNode>>
-abstract class GainNode implements AudioNode {
-  /// Config for up/down-mixing of input channels for this node.
-  ///
-  /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
-  Future<void> channelConfig();
-
-  /// Represents an integer used to determine how many channels are used when up-mixing and
-  /// down-mixing connections to any inputs to the node.
-  Future<BigInt> channelCount();
-
-  /// Represents an enumerated value describing the way channels must be matched between the
-  /// node's inputs and outputs.
-  Future<ChannelCountMode> channelCountMode();
-
-  /// Represents an enumerated value describing the meaning of the channels. This interpretation
-  /// will define how audio up-mixing and down-mixing will happen.
-  Future<ChannelInterpretation> channelInterpretation();
-
-  /// Unset the callback to run when an unhandled exception occurs in the audio processor.
-  Future<void> clearOnprocessorerror();
-
-  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
-  /// AudioNode.
-  Future<void> context();
-
-  /// Disconnects all outgoing connections from the AudioNode.
-  Future<void> disconnect();
-
-  /// Disconnects all outgoing connections at the given output port from the AudioNode.
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - if the output port is out of bounds for this node
-  Future<void> disconnectOutput({required BigInt output});
-
-  /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
-  Future<BigInt> numberOfInputs();
-
-  /// The number of outputs coming out of the AudioNode.
-  Future<BigInt> numberOfOutputs();
-
-  /// Handle of the associated [`BaseAudioContext`](crate::context::BaseAudioContext).
-  ///
-  /// Only when implementing the AudioNode trait manually, this struct is of any concern.
-  Future<void> registration();
-
-  /// Update the `channel_count` attribute
-  Future<void> setChannelCount({required BigInt v});
-
-  /// Update the `channel_count_mode` attribute
-  Future<void> setChannelCountMode({required ChannelCountMode v});
-
-  /// Update the `channel_interpretation` attribute
-  Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
-  void dispose();
-
-  bool get isDisposed;
-}
-
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<IIRFilterNode>>
-abstract class IirFilterNode implements AudioNode {
-  /// Config for up/down-mixing of input channels for this node.
-  ///
-  /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
-  Future<void> channelConfig();
-
-  /// Represents an integer used to determine how many channels are used when up-mixing and
-  /// down-mixing connections to any inputs to the node.
-  Future<BigInt> channelCount();
-
-  /// Represents an enumerated value describing the way channels must be matched between the
-  /// node's inputs and outputs.
-  Future<ChannelCountMode> channelCountMode();
-
-  /// Represents an enumerated value describing the meaning of the channels. This interpretation
-  /// will define how audio up-mixing and down-mixing will happen.
-  Future<ChannelInterpretation> channelInterpretation();
-
-  /// Unset the callback to run when an unhandled exception occurs in the audio processor.
-  Future<void> clearOnprocessorerror();
-
-  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
-  /// AudioNode.
-  Future<void> context();
-
-  /// Disconnects all outgoing connections from the AudioNode.
-  Future<void> disconnect();
-
-  /// Disconnects all outgoing connections at the given output port from the AudioNode.
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - if the output port is out of bounds for this node
-  Future<void> disconnectOutput({required BigInt output});
-
-  /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
-  Future<BigInt> numberOfInputs();
-
-  /// The number of outputs coming out of the AudioNode.
-  Future<BigInt> numberOfOutputs();
-
-  /// Handle of the associated [`BaseAudioContext`](crate::context::BaseAudioContext).
-  ///
-  /// Only when implementing the AudioNode trait manually, this struct is of any concern.
-  Future<void> registration();
-
-  /// Update the `channel_count` attribute
-  Future<void> setChannelCount({required BigInt v});
-
-  /// Update the `channel_count_mode` attribute
-  Future<void> setChannelCountMode({required ChannelCountMode v});
-
-  /// Update the `channel_interpretation` attribute
-  Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
-  void dispose();
-
-  bool get isDisposed;
-}
-
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaElementAudioSourceNode>>
-abstract class MediaElementAudioSourceNode implements AudioNode {
-  /// Config for up/down-mixing of input channels for this node.
-  ///
-  /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
-  Future<void> channelConfig();
-
-  /// Represents an integer used to determine how many channels are used when up-mixing and
-  /// down-mixing connections to any inputs to the node.
-  Future<BigInt> channelCount();
-
-  /// Represents an enumerated value describing the way channels must be matched between the
-  /// node's inputs and outputs.
-  Future<ChannelCountMode> channelCountMode();
-
-  /// Represents an enumerated value describing the meaning of the channels. This interpretation
-  /// will define how audio up-mixing and down-mixing will happen.
-  Future<ChannelInterpretation> channelInterpretation();
-
-  /// Unset the callback to run when an unhandled exception occurs in the audio processor.
-  Future<void> clearOnprocessorerror();
-
-  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
-  /// AudioNode.
-  Future<void> context();
-
-  /// Disconnects all outgoing connections from the AudioNode.
-  Future<void> disconnect();
-
-  /// Disconnects all outgoing connections at the given output port from the AudioNode.
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - if the output port is out of bounds for this node
-  Future<void> disconnectOutput({required BigInt output});
-
-  /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
-  Future<BigInt> numberOfInputs();
-
-  /// The number of outputs coming out of the AudioNode.
-  Future<BigInt> numberOfOutputs();
-
-  /// Handle of the associated [`BaseAudioContext`](crate::context::BaseAudioContext).
-  ///
-  /// Only when implementing the AudioNode trait manually, this struct is of any concern.
-  Future<void> registration();
-
-  /// Update the `channel_count` attribute
-  Future<void> setChannelCount({required BigInt v});
-
-  /// Update the `channel_count_mode` attribute
-  Future<void> setChannelCountMode({required ChannelCountMode v});
-
-  /// Update the `channel_interpretation` attribute
-  Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
-  void dispose();
-
-  bool get isDisposed;
-}
-
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaStreamAudioDestinationNode>>
-abstract class MediaStreamAudioDestinationNode implements AudioNode {
-  /// Config for up/down-mixing of input channels for this node.
-  ///
-  /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
-  Future<void> channelConfig();
-
-  /// Represents an integer used to determine how many channels are used when up-mixing and
-  /// down-mixing connections to any inputs to the node.
-  Future<BigInt> channelCount();
-
-  /// Represents an enumerated value describing the way channels must be matched between the
-  /// node's inputs and outputs.
-  Future<ChannelCountMode> channelCountMode();
-
-  /// Represents an enumerated value describing the meaning of the channels. This interpretation
-  /// will define how audio up-mixing and down-mixing will happen.
-  Future<ChannelInterpretation> channelInterpretation();
-
-  /// Unset the callback to run when an unhandled exception occurs in the audio processor.
-  Future<void> clearOnprocessorerror();
-
-  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
-  /// AudioNode.
-  Future<void> context();
-
-  /// Disconnects all outgoing connections from the AudioNode.
-  Future<void> disconnect();
-
-  /// Disconnects all outgoing connections at the given output port from the AudioNode.
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - if the output port is out of bounds for this node
-  Future<void> disconnectOutput({required BigInt output});
-
-  /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
-  Future<BigInt> numberOfInputs();
-
-  /// The number of outputs coming out of the AudioNode.
-  Future<BigInt> numberOfOutputs();
-
-  /// Handle of the associated [`BaseAudioContext`](crate::context::BaseAudioContext).
-  ///
-  /// Only when implementing the AudioNode trait manually, this struct is of any concern.
-  Future<void> registration();
-
-  /// Update the `channel_count` attribute
-  Future<void> setChannelCount({required BigInt v});
-
-  /// Update the `channel_count_mode` attribute
-  Future<void> setChannelCountMode({required ChannelCountMode v});
-
-  /// Update the `channel_interpretation` attribute
-  Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
-  /// A [`MediaStream`] producing audio buffers with the same number of channels as the node
-  /// itself
-  Future<void> stream();
-
-  void dispose();
-
-  bool get isDisposed;
-}
-
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaStreamAudioSourceNode>>
-abstract class MediaStreamAudioSourceNode implements AudioNode {
-  /// Config for up/down-mixing of input channels for this node.
-  ///
-  /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
-  Future<void> channelConfig();
-
-  /// Represents an integer used to determine how many channels are used when up-mixing and
-  /// down-mixing connections to any inputs to the node.
-  Future<BigInt> channelCount();
-
-  /// Represents an enumerated value describing the way channels must be matched between the
-  /// node's inputs and outputs.
-  Future<ChannelCountMode> channelCountMode();
-
-  /// Represents an enumerated value describing the meaning of the channels. This interpretation
-  /// will define how audio up-mixing and down-mixing will happen.
-  Future<ChannelInterpretation> channelInterpretation();
-
-  /// Unset the callback to run when an unhandled exception occurs in the audio processor.
-  Future<void> clearOnprocessorerror();
-
-  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
-  /// AudioNode.
-  Future<void> context();
-
-  /// Disconnects all outgoing connections from the AudioNode.
-  Future<void> disconnect();
-
-  /// Disconnects all outgoing connections at the given output port from the AudioNode.
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - if the output port is out of bounds for this node
-  Future<void> disconnectOutput({required BigInt output});
-
-  /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
-  Future<BigInt> numberOfInputs();
-
-  /// The number of outputs coming out of the AudioNode.
-  Future<BigInt> numberOfOutputs();
-
-  /// Handle of the associated [`BaseAudioContext`](crate::context::BaseAudioContext).
-  ///
-  /// Only when implementing the AudioNode trait manually, this struct is of any concern.
-  Future<void> registration();
-
-  /// Update the `channel_count` attribute
-  Future<void> setChannelCount({required BigInt v});
-
-  /// Update the `channel_count_mode` attribute
-  Future<void> setChannelCountMode({required ChannelCountMode v});
-
-  /// Update the `channel_interpretation` attribute
-  Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
-  void dispose();
-
-  bool get isDisposed;
-}
-
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaStreamTrackAudioSourceNode>>
-abstract class MediaStreamTrackAudioSourceNode implements AudioNode {
-  /// Config for up/down-mixing of input channels for this node.
-  ///
-  /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
-  Future<void> channelConfig();
-
-  /// Represents an integer used to determine how many channels are used when up-mixing and
-  /// down-mixing connections to any inputs to the node.
-  Future<BigInt> channelCount();
-
-  /// Represents an enumerated value describing the way channels must be matched between the
-  /// node's inputs and outputs.
-  Future<ChannelCountMode> channelCountMode();
-
-  /// Represents an enumerated value describing the meaning of the channels. This interpretation
-  /// will define how audio up-mixing and down-mixing will happen.
-  Future<ChannelInterpretation> channelInterpretation();
-
-  /// Unset the callback to run when an unhandled exception occurs in the audio processor.
-  Future<void> clearOnprocessorerror();
-
-  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
-  /// AudioNode.
-  Future<void> context();
-
-  /// Disconnects all outgoing connections from the AudioNode.
-  Future<void> disconnect();
-
-  /// Disconnects all outgoing connections at the given output port from the AudioNode.
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - if the output port is out of bounds for this node
-  Future<void> disconnectOutput({required BigInt output});
-
-  /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
-  Future<BigInt> numberOfInputs();
-
-  /// The number of outputs coming out of the AudioNode.
-  Future<BigInt> numberOfOutputs();
-
-  /// Handle of the associated [`BaseAudioContext`](crate::context::BaseAudioContext).
-  ///
-  /// Only when implementing the AudioNode trait manually, this struct is of any concern.
-  Future<void> registration();
-
-  /// Update the `channel_count` attribute
-  Future<void> setChannelCount({required BigInt v});
-
-  /// Update the `channel_count_mode` attribute
-  Future<void> setChannelCountMode({required ChannelCountMode v});
-
-  /// Update the `channel_interpretation` attribute
-  Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
-  void dispose();
-
-  bool get isDisposed;
-}
-
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OscillatorNode>>
-abstract class OscillatorNode implements AudioNode, AudioScheduledSourceNode {
-  /// Config for up/down-mixing of input channels for this node.
-  ///
-  /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
-  Future<void> channelConfig();
-
-  /// Represents an integer used to determine how many channels are used when up-mixing and
-  /// down-mixing connections to any inputs to the node.
-  Future<BigInt> channelCount();
-
-  /// Represents an enumerated value describing the way channels must be matched between the
-  /// node's inputs and outputs.
-  Future<ChannelCountMode> channelCountMode();
-
-  /// Represents an enumerated value describing the meaning of the channels. This interpretation
-  /// will define how audio up-mixing and down-mixing will happen.
-  Future<ChannelInterpretation> channelInterpretation();
-
-  /// Unset the callback to run when the source node has stopped playing
-  Future<void> clearOnended();
-
-  /// Unset the callback to run when an unhandled exception occurs in the audio processor.
-  Future<void> clearOnprocessorerror();
-
-  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
-  /// AudioNode.
-  Future<void> context();
-
-  /// Disconnects all outgoing connections from the AudioNode.
-  Future<void> disconnect();
-
-  /// Disconnects all outgoing connections at the given output port from the AudioNode.
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - if the output port is out of bounds for this node
-  Future<void> disconnectOutput({required BigInt output});
-
-  /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
-  Future<BigInt> numberOfInputs();
-
-  /// The number of outputs coming out of the AudioNode.
-  Future<BigInt> numberOfOutputs();
-
-  /// Handle of the associated [`BaseAudioContext`](crate::context::BaseAudioContext).
-  ///
-  /// Only when implementing the AudioNode trait manually, this struct is of any concern.
-  Future<void> registration();
-
-  /// Update the `channel_count` attribute
-  Future<void> setChannelCount({required BigInt v});
-
-  /// Update the `channel_count_mode` attribute
-  Future<void> setChannelCountMode({required ChannelCountMode v});
-
-  /// Update the `channel_interpretation` attribute
-  Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
-  /// Sets a `PeriodicWave` which describes a waveform to be used by the oscillator.
-  ///
-  /// Calling this sets the oscillator type to `custom`, once set to `custom`
-  /// the oscillator cannot be reverted back to a standard waveform.
-  Future<void> setPeriodicWave({required PeriodicWave periodicWave});
-
-  /// Set the oscillator type
-  ///
-  /// # Arguments
-  ///
-  /// * `type_` - oscillator type (sine, square, triangle, sawtooth)
-  ///
-  /// # Panics
-  ///
-  /// if `type_` is `OscillatorType::Custom`
-  Future<void> setType({required OscillatorType type});
-
-  /// Play immediately
-  ///
-  /// # Panics
-  ///
-  /// Panics if the source was already started
-  Future<void> start();
-
-  /// Schedule playback start at given timestamp
-  ///
-  /// # Panics
-  ///
-  /// Panics if the source was already started
-  Future<void> startAt({required double when});
-
-  /// Stop immediately
-  ///
-  /// # Panics
-  ///
-  /// Panics if the source was already stopped
-  Future<void> stop();
-
-  /// Schedule playback stop at given timestamp
-  ///
-  /// # Panics
-  ///
-  /// Panics if the source was already stopped
-  Future<void> stopAt({required double when});
-
-  /// Returns the oscillator type
-  Future<OscillatorType> type();
-
-  void dispose();
-
-  bool get isDisposed;
-}
-
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<PannerNode>>
-abstract class PannerNode implements AudioNode {
-  /// Config for up/down-mixing of input channels for this node.
-  ///
-  /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
-  Future<void> channelConfig();
-
-  /// Represents an integer used to determine how many channels are used when up-mixing and
-  /// down-mixing connections to any inputs to the node.
-  Future<BigInt> channelCount();
-
-  /// Represents an enumerated value describing the way channels must be matched between the
-  /// node's inputs and outputs.
-  Future<ChannelCountMode> channelCountMode();
-
-  /// Represents an enumerated value describing the meaning of the channels. This interpretation
-  /// will define how audio up-mixing and down-mixing will happen.
-  Future<ChannelInterpretation> channelInterpretation();
-
-  /// Unset the callback to run when an unhandled exception occurs in the audio processor.
-  Future<void> clearOnprocessorerror();
-
-  Future<double> coneInnerAngle();
-
-  Future<double> coneOuterAngle();
-
-  Future<double> coneOuterGain();
-
-  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
-  /// AudioNode.
-  Future<void> context();
-
-  /// Disconnects all outgoing connections from the AudioNode.
-  Future<void> disconnect();
-
-  /// Disconnects all outgoing connections at the given output port from the AudioNode.
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - if the output port is out of bounds for this node
-  Future<void> disconnectOutput({required BigInt output});
-
-  Future<DistanceModelType> distanceModel();
-
-  Future<double> maxDistance();
-
-  /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
-  Future<BigInt> numberOfInputs();
-
-  /// The number of outputs coming out of the AudioNode.
-  Future<BigInt> numberOfOutputs();
-
-  Future<PanningModelType> panningModel();
-
-  Future<double> refDistance();
-
-  /// Handle of the associated [`BaseAudioContext`](crate::context::BaseAudioContext).
-  ///
-  /// Only when implementing the AudioNode trait manually, this struct is of any concern.
-  Future<void> registration();
-
-  Future<double> rolloffFactor();
-
-  /// Update the `channel_count` attribute
-  Future<void> setChannelCount({required BigInt v});
-
-  /// Update the `channel_count_mode` attribute
-  Future<void> setChannelCountMode({required ChannelCountMode v});
-
-  /// Update the `channel_interpretation` attribute
-  Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
-  Future<void> setConeInnerAngle({required double value});
-
-  Future<void> setConeOuterAngle({required double value});
-
-  /// Set the coneOuterGain attribute
-  ///
-  /// # Panics
-  ///
-  /// Panics if the provided value is not in the range [0, 1]
-  Future<void> setConeOuterGain({required double value});
-
-  Future<void> setDistanceModel({required DistanceModelType value});
-
-  /// Set the maxDistance attribute
-  ///
-  /// # Panics
-  ///
-  /// Panics if the provided value is negative.
-  Future<void> setMaxDistance({required double value});
-
-  Future<void> setOrientation(
-      {required double x, required double y, required double z});
-
-  Future<void> setPanningModel({required PanningModelType value});
-
-  Future<void> setPosition(
-      {required double x, required double y, required double z});
-
-  /// Set the refDistance attribute
-  ///
-  /// # Panics
-  ///
-  /// Panics if the provided value is negative.
-  Future<void> setRefDistance({required double value});
-
-  /// Set the rolloffFactor attribute
-  ///
-  /// # Panics
-  ///
-  /// Panics if the provided value is negative.
-  Future<void> setRolloffFactor({required double value});
-
-  void dispose();
-
-  bool get isDisposed;
-}
-
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ScriptProcessorNode>>
-abstract class ScriptProcessorNode implements AudioNode {
-  Future<BigInt> bufferSize();
-
-  /// Config for up/down-mixing of input channels for this node.
-  ///
-  /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
-  Future<void> channelConfig();
-
-  /// Represents an integer used to determine how many channels are used when up-mixing and
-  /// down-mixing connections to any inputs to the node.
-  Future<BigInt> channelCount();
-
-  /// Represents an enumerated value describing the way channels must be matched between the
-  /// node's inputs and outputs.
-  Future<ChannelCountMode> channelCountMode();
-
-  /// Represents an enumerated value describing the meaning of the channels. This interpretation
-  /// will define how audio up-mixing and down-mixing will happen.
-  Future<ChannelInterpretation> channelInterpretation();
-
-  /// Unset the callback to run when the AudioProcessingEvent is dispatched
-  Future<void> clearOnaudioprocess();
-
-  /// Unset the callback to run when an unhandled exception occurs in the audio processor.
-  Future<void> clearOnprocessorerror();
-
-  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
-  /// AudioNode.
-  Future<void> context();
-
-  /// Disconnects all outgoing connections from the AudioNode.
-  Future<void> disconnect();
-
-  /// Disconnects all outgoing connections at the given output port from the AudioNode.
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - if the output port is out of bounds for this node
-  Future<void> disconnectOutput({required BigInt output});
-
-  /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
-  Future<BigInt> numberOfInputs();
-
-  /// The number of outputs coming out of the AudioNode.
-  Future<BigInt> numberOfOutputs();
-
-  /// Handle of the associated [`BaseAudioContext`](crate::context::BaseAudioContext).
-  ///
-  /// Only when implementing the AudioNode trait manually, this struct is of any concern.
-  Future<void> registration();
-
-  /// Update the `channel_count` attribute
-  Future<void> setChannelCount({required BigInt v});
-
-  /// Update the `channel_count_mode` attribute
-  Future<void> setChannelCountMode({required ChannelCountMode v});
-
-  /// Update the `channel_interpretation` attribute
-  Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
-  void dispose();
-
-  bool get isDisposed;
-}
-
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StereoPannerNode>>
-abstract class StereoPannerNode implements AudioNode {
-  /// Config for up/down-mixing of input channels for this node.
-  ///
-  /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
-  Future<void> channelConfig();
-
-  /// Represents an integer used to determine how many channels are used when up-mixing and
-  /// down-mixing connections to any inputs to the node.
-  Future<BigInt> channelCount();
-
-  /// Represents an enumerated value describing the way channels must be matched between the
-  /// node's inputs and outputs.
-  Future<ChannelCountMode> channelCountMode();
-
-  /// Represents an enumerated value describing the meaning of the channels. This interpretation
-  /// will define how audio up-mixing and down-mixing will happen.
-  Future<ChannelInterpretation> channelInterpretation();
-
-  /// Unset the callback to run when an unhandled exception occurs in the audio processor.
-  Future<void> clearOnprocessorerror();
-
-  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
-  /// AudioNode.
-  Future<void> context();
-
-  /// Disconnects all outgoing connections from the AudioNode.
-  Future<void> disconnect();
-
-  /// Disconnects all outgoing connections at the given output port from the AudioNode.
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - if the output port is out of bounds for this node
-  Future<void> disconnectOutput({required BigInt output});
-
-  /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
-  Future<BigInt> numberOfInputs();
-
-  /// The number of outputs coming out of the AudioNode.
-  Future<BigInt> numberOfOutputs();
-
-  /// Handle of the associated [`BaseAudioContext`](crate::context::BaseAudioContext).
-  ///
-  /// Only when implementing the AudioNode trait manually, this struct is of any concern.
-  Future<void> registration();
-
-  /// Update the `channel_count` attribute
-  Future<void> setChannelCount({required BigInt v});
-
-  /// Update the `channel_count_mode` attribute
-  Future<void> setChannelCountMode({required ChannelCountMode v});
-
-  /// Update the `channel_interpretation` attribute
-  Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
-  void dispose();
-
-  bool get isDisposed;
-}
-
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<WaveShaperNode>>
-abstract class WaveShaperNode implements AudioNode {
-  /// Config for up/down-mixing of input channels for this node.
-  ///
-  /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
-  Future<void> channelConfig();
-
-  /// Represents an integer used to determine how many channels are used when up-mixing and
-  /// down-mixing connections to any inputs to the node.
-  Future<BigInt> channelCount();
-
-  /// Represents an enumerated value describing the way channels must be matched between the
-  /// node's inputs and outputs.
-  Future<ChannelCountMode> channelCountMode();
-
-  /// Represents an enumerated value describing the meaning of the channels. This interpretation
-  /// will define how audio up-mixing and down-mixing will happen.
-  Future<ChannelInterpretation> channelInterpretation();
-
-  /// Unset the callback to run when an unhandled exception occurs in the audio processor.
-  Future<void> clearOnprocessorerror();
-
-  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
-  /// AudioNode.
-  Future<void> context();
-
-  /// Disconnects all outgoing connections from the AudioNode.
-  Future<void> disconnect();
-
-  /// Disconnects all outgoing connections at the given output port from the AudioNode.
-  ///
-  /// # Panics
-  ///
-  /// This function will panic when
-  /// - if the output port is out of bounds for this node
-  Future<void> disconnectOutput({required BigInt output});
-
-  /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
-  Future<BigInt> numberOfInputs();
-
-  /// The number of outputs coming out of the AudioNode.
-  Future<BigInt> numberOfOutputs();
-
-  /// Returns the `oversample` faactor of this node
-  Future<OverSampleType> oversample();
-
-  /// Handle of the associated [`BaseAudioContext`](crate::context::BaseAudioContext).
-  ///
-  /// Only when implementing the AudioNode trait manually, this struct is of any concern.
-  Future<void> registration();
-
-  /// Update the `channel_count` attribute
-  Future<void> setChannelCount({required BigInt v});
-
-  /// Update the `channel_count_mode` attribute
-  Future<void> setChannelCountMode({required ChannelCountMode v});
-
-  /// Update the `channel_interpretation` attribute
-  Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
-  /// Set the distortion `curve` of this node
-  ///
-  /// # Arguments
-  ///
-  /// * `curve` - the desired distortion `curve`
-  ///
-  /// # Panics
-  ///
-  /// Panics if a curve has already been given to the source (though `new` or through
-  /// `set_curve`)
-  Future<void> setCurve({required List<double> curve});
-
-  /// set the `oversample` factor of this node
-  ///
-  /// # Arguments
-  ///
-  /// * `oversample` - the desired `OversampleType` variant
-  Future<void> setOversample({required OverSampleType oversample});
-
-  void dispose();
-
-  bool get isDisposed;
-}
-
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<dyn AudioNode>>
-abstract class AudioNode {
-  void dispose();
-
-  bool get isDisposed;
-}
-
-abstract class AudioNode {
   /// Config for up/down-mixing of input channels for this node.
   ///
   /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
@@ -1776,6 +572,2030 @@ abstract class AudioNode {
   /// Only a single event handler is active at any time. Calling this method multiple times will
   /// override the previous event handler.
   Future<void> setOnprocessorerror({required BoxFnOnceErrorEvent callback});
+
+  /// biquad filter type setter
+  ///
+  /// # Arguments
+  ///
+  /// * `type_` - the biquad filter type (lowpass, highpass,...)
+  Future<void> setType({required BiquadFilterType type});
+
+  /// Returns the biquad filter type
+  Future<BiquadFilterType> type();
+
+  void dispose();
+
+  bool get isDisposed;
+}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box < dyn FnOnce (ErrorEvent) + Send + 'static >>>
+abstract class BoxFnOnceErrorEvent {
+  void dispose();
+
+  bool get isDisposed;
+}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ChannelMergerNode>>
+abstract class ChannelMergerNode implements AudioNode {
+  /// Config for up/down-mixing of input channels for this node.
+  ///
+  /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
+  Future<void> channelConfig();
+
+  /// Represents an integer used to determine how many channels are used when up-mixing and
+  /// down-mixing connections to any inputs to the node.
+  Future<BigInt> channelCount();
+
+  /// Represents an enumerated value describing the way channels must be matched between the
+  /// node's inputs and outputs.
+  Future<ChannelCountMode> channelCountMode();
+
+  /// Represents an enumerated value describing the meaning of the channels. This interpretation
+  /// will define how audio up-mixing and down-mixing will happen.
+  Future<ChannelInterpretation> channelInterpretation();
+
+  /// Unset the callback to run when an unhandled exception occurs in the audio processor.
+  Future<void> clearOnprocessorerror();
+
+  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
+  /// AudioNode.
+  Future<void> context();
+
+  /// Disconnects all outgoing connections from the AudioNode.
+  Future<void> disconnect();
+
+  /// Disconnects all outputs of the AudioNode that go to a specific destination AudioNode.
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - the AudioContext of the source and destination does not match
+  /// - the source node was not connected to the destination node
+  Future<void> disconnectDest({required AudioNode dest});
+
+  /// Disconnects a specific output of the AudioNode to a specific destination AudioNode
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - the AudioContext of the source and destination does not match
+  /// - if the output port is out of bounds for the source node
+  /// - the source node was not connected to the destination node
+  Future<void> disconnectDestFromOutput(
+      {required AudioNode dest, required BigInt output});
+
+  /// Disconnects a specific output of the AudioNode to a specific input of some destination
+  /// AudioNode
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - the AudioContext of the source and destination does not match
+  /// - if the input port is out of bounds for the destination node
+  /// - if the output port is out of bounds for the source node
+  /// - the source node was not connected to the destination node
+  Future<void> disconnectDestFromOutputToInput(
+      {required AudioNode dest, required BigInt output, required BigInt input});
+
+  /// Disconnects all outgoing connections at the given output port from the AudioNode.
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - if the output port is out of bounds for this node
+  Future<void> disconnectOutput({required BigInt output});
+
+  /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
+  Future<BigInt> numberOfInputs();
+
+  /// The number of outputs coming out of the AudioNode.
+  Future<BigInt> numberOfOutputs();
+
+  /// Handle of the associated [`BaseAudioContext`](crate::context::BaseAudioContext).
+  ///
+  /// Only when implementing the AudioNode trait manually, this struct is of any concern.
+  Future<void> registration();
+
+  /// Update the `channel_count` attribute
+  Future<void> setChannelCount({required BigInt v});
+
+  /// Update the `channel_count_mode` attribute
+  Future<void> setChannelCountMode({required ChannelCountMode v});
+
+  /// Update the `channel_interpretation` attribute
+  Future<void> setChannelInterpretation({required ChannelInterpretation v});
+
+  /// Register callback to run when an unhandled exception occurs in the audio processor.
+  ///
+  /// Note that once a unhandled exception is thrown, the processor will output silence throughout its lifetime.
+  ///
+  /// Only a single event handler is active at any time. Calling this method multiple times will
+  /// override the previous event handler.
+  Future<void> setOnprocessorerror({required BoxFnOnceErrorEvent callback});
+
+  void dispose();
+
+  bool get isDisposed;
+}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ChannelSplitterNode>>
+abstract class ChannelSplitterNode implements AudioNode {
+  /// Config for up/down-mixing of input channels for this node.
+  ///
+  /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
+  Future<void> channelConfig();
+
+  /// Represents an integer used to determine how many channels are used when up-mixing and
+  /// down-mixing connections to any inputs to the node.
+  Future<BigInt> channelCount();
+
+  /// Represents an enumerated value describing the way channels must be matched between the
+  /// node's inputs and outputs.
+  Future<ChannelCountMode> channelCountMode();
+
+  /// Represents an enumerated value describing the meaning of the channels. This interpretation
+  /// will define how audio up-mixing and down-mixing will happen.
+  Future<ChannelInterpretation> channelInterpretation();
+
+  /// Unset the callback to run when an unhandled exception occurs in the audio processor.
+  Future<void> clearOnprocessorerror();
+
+  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
+  /// AudioNode.
+  Future<void> context();
+
+  /// Disconnects all outgoing connections from the AudioNode.
+  Future<void> disconnect();
+
+  /// Disconnects all outputs of the AudioNode that go to a specific destination AudioNode.
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - the AudioContext of the source and destination does not match
+  /// - the source node was not connected to the destination node
+  Future<void> disconnectDest({required AudioNode dest});
+
+  /// Disconnects a specific output of the AudioNode to a specific destination AudioNode
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - the AudioContext of the source and destination does not match
+  /// - if the output port is out of bounds for the source node
+  /// - the source node was not connected to the destination node
+  Future<void> disconnectDestFromOutput(
+      {required AudioNode dest, required BigInt output});
+
+  /// Disconnects a specific output of the AudioNode to a specific input of some destination
+  /// AudioNode
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - the AudioContext of the source and destination does not match
+  /// - if the input port is out of bounds for the destination node
+  /// - if the output port is out of bounds for the source node
+  /// - the source node was not connected to the destination node
+  Future<void> disconnectDestFromOutputToInput(
+      {required AudioNode dest, required BigInt output, required BigInt input});
+
+  /// Disconnects all outgoing connections at the given output port from the AudioNode.
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - if the output port is out of bounds for this node
+  Future<void> disconnectOutput({required BigInt output});
+
+  /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
+  Future<BigInt> numberOfInputs();
+
+  /// The number of outputs coming out of the AudioNode.
+  Future<BigInt> numberOfOutputs();
+
+  /// Handle of the associated [`BaseAudioContext`](crate::context::BaseAudioContext).
+  ///
+  /// Only when implementing the AudioNode trait manually, this struct is of any concern.
+  Future<void> registration();
+
+  /// Update the `channel_count` attribute
+  Future<void> setChannelCount({required BigInt v});
+
+  /// Update the `channel_count_mode` attribute
+  Future<void> setChannelCountMode({required ChannelCountMode v});
+
+  /// Update the `channel_interpretation` attribute
+  Future<void> setChannelInterpretation({required ChannelInterpretation v});
+
+  /// Register callback to run when an unhandled exception occurs in the audio processor.
+  ///
+  /// Note that once a unhandled exception is thrown, the processor will output silence throughout its lifetime.
+  ///
+  /// Only a single event handler is active at any time. Calling this method multiple times will
+  /// override the previous event handler.
+  Future<void> setOnprocessorerror({required BoxFnOnceErrorEvent callback});
+
+  void dispose();
+
+  bool get isDisposed;
+}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ConstantSourceNode>>
+abstract class ConstantSourceNode
+    implements AudioNode, AudioScheduledSourceNode {
+  /// Config for up/down-mixing of input channels for this node.
+  ///
+  /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
+  Future<void> channelConfig();
+
+  /// Represents an integer used to determine how many channels are used when up-mixing and
+  /// down-mixing connections to any inputs to the node.
+  Future<BigInt> channelCount();
+
+  /// Represents an enumerated value describing the way channels must be matched between the
+  /// node's inputs and outputs.
+  Future<ChannelCountMode> channelCountMode();
+
+  /// Represents an enumerated value describing the meaning of the channels. This interpretation
+  /// will define how audio up-mixing and down-mixing will happen.
+  Future<ChannelInterpretation> channelInterpretation();
+
+  /// Unset the callback to run when the source node has stopped playing
+  Future<void> clearOnended();
+
+  /// Unset the callback to run when an unhandled exception occurs in the audio processor.
+  Future<void> clearOnprocessorerror();
+
+  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
+  /// AudioNode.
+  Future<void> context();
+
+  /// Disconnects all outgoing connections from the AudioNode.
+  Future<void> disconnect();
+
+  /// Disconnects all outputs of the AudioNode that go to a specific destination AudioNode.
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - the AudioContext of the source and destination does not match
+  /// - the source node was not connected to the destination node
+  Future<void> disconnectDest({required AudioNode dest});
+
+  /// Disconnects a specific output of the AudioNode to a specific destination AudioNode
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - the AudioContext of the source and destination does not match
+  /// - if the output port is out of bounds for the source node
+  /// - the source node was not connected to the destination node
+  Future<void> disconnectDestFromOutput(
+      {required AudioNode dest, required BigInt output});
+
+  /// Disconnects a specific output of the AudioNode to a specific input of some destination
+  /// AudioNode
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - the AudioContext of the source and destination does not match
+  /// - if the input port is out of bounds for the destination node
+  /// - if the output port is out of bounds for the source node
+  /// - the source node was not connected to the destination node
+  Future<void> disconnectDestFromOutputToInput(
+      {required AudioNode dest, required BigInt output, required BigInt input});
+
+  /// Disconnects all outgoing connections at the given output port from the AudioNode.
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - if the output port is out of bounds for this node
+  Future<void> disconnectOutput({required BigInt output});
+
+  /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
+  Future<BigInt> numberOfInputs();
+
+  /// The number of outputs coming out of the AudioNode.
+  Future<BigInt> numberOfOutputs();
+
+  /// Handle of the associated [`BaseAudioContext`](crate::context::BaseAudioContext).
+  ///
+  /// Only when implementing the AudioNode trait manually, this struct is of any concern.
+  Future<void> registration();
+
+  /// Update the `channel_count` attribute
+  Future<void> setChannelCount({required BigInt v});
+
+  /// Update the `channel_count_mode` attribute
+  Future<void> setChannelCountMode({required ChannelCountMode v});
+
+  /// Update the `channel_interpretation` attribute
+  Future<void> setChannelInterpretation({required ChannelInterpretation v});
+
+  /// Register callback to run when an unhandled exception occurs in the audio processor.
+  ///
+  /// Note that once a unhandled exception is thrown, the processor will output silence throughout its lifetime.
+  ///
+  /// Only a single event handler is active at any time. Calling this method multiple times will
+  /// override the previous event handler.
+  Future<void> setOnprocessorerror({required BoxFnOnceErrorEvent callback});
+
+  /// Play immediately
+  ///
+  /// # Panics
+  ///
+  /// Panics if the source was already started
+  Future<void> start();
+
+  /// Schedule playback start at given timestamp
+  ///
+  /// # Panics
+  ///
+  /// Panics if the source was already started
+  Future<void> startAt({required double when});
+
+  /// Stop immediately
+  ///
+  /// # Panics
+  ///
+  /// Panics if the source was already stopped
+  Future<void> stop();
+
+  /// Schedule playback stop at given timestamp
+  ///
+  /// # Panics
+  ///
+  /// Panics if the source was already stopped
+  Future<void> stopAt({required double when});
+
+  void dispose();
+
+  bool get isDisposed;
+}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ConvolverNode>>
+abstract class ConvolverNode implements AudioNode {
+  /// Config for up/down-mixing of input channels for this node.
+  ///
+  /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
+  Future<void> channelConfig();
+
+  /// Represents an integer used to determine how many channels are used when up-mixing and
+  /// down-mixing connections to any inputs to the node.
+  Future<BigInt> channelCount();
+
+  /// Represents an enumerated value describing the way channels must be matched between the
+  /// node's inputs and outputs.
+  Future<ChannelCountMode> channelCountMode();
+
+  /// Represents an enumerated value describing the meaning of the channels. This interpretation
+  /// will define how audio up-mixing and down-mixing will happen.
+  Future<ChannelInterpretation> channelInterpretation();
+
+  /// Unset the callback to run when an unhandled exception occurs in the audio processor.
+  Future<void> clearOnprocessorerror();
+
+  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
+  /// AudioNode.
+  Future<void> context();
+
+  /// Disconnects all outgoing connections from the AudioNode.
+  Future<void> disconnect();
+
+  /// Disconnects all outputs of the AudioNode that go to a specific destination AudioNode.
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - the AudioContext of the source and destination does not match
+  /// - the source node was not connected to the destination node
+  Future<void> disconnectDest({required AudioNode dest});
+
+  /// Disconnects a specific output of the AudioNode to a specific destination AudioNode
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - the AudioContext of the source and destination does not match
+  /// - if the output port is out of bounds for the source node
+  /// - the source node was not connected to the destination node
+  Future<void> disconnectDestFromOutput(
+      {required AudioNode dest, required BigInt output});
+
+  /// Disconnects a specific output of the AudioNode to a specific input of some destination
+  /// AudioNode
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - the AudioContext of the source and destination does not match
+  /// - if the input port is out of bounds for the destination node
+  /// - if the output port is out of bounds for the source node
+  /// - the source node was not connected to the destination node
+  Future<void> disconnectDestFromOutputToInput(
+      {required AudioNode dest, required BigInt output, required BigInt input});
+
+  /// Disconnects all outgoing connections at the given output port from the AudioNode.
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - if the output port is out of bounds for this node
+  Future<void> disconnectOutput({required BigInt output});
+
+  /// Denotes if the response buffer will be scaled with an equal-power normalization
+  Future<bool> normalize();
+
+  /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
+  Future<BigInt> numberOfInputs();
+
+  /// The number of outputs coming out of the AudioNode.
+  Future<BigInt> numberOfOutputs();
+
+  /// Handle of the associated [`BaseAudioContext`](crate::context::BaseAudioContext).
+  ///
+  /// Only when implementing the AudioNode trait manually, this struct is of any concern.
+  Future<void> registration();
+
+  /// Set or update the impulse response buffer
+  ///
+  /// # Panics
+  ///
+  /// Panics when the sample rate of the provided AudioBuffer differs from the audio context
+  /// sample rate.
+  Future<void> setBuffer({required AudioBuffer buffer});
+
+  /// Update the `channel_count` attribute
+  Future<void> setChannelCount({required BigInt v});
+
+  /// Update the `channel_count_mode` attribute
+  Future<void> setChannelCountMode({required ChannelCountMode v});
+
+  /// Update the `channel_interpretation` attribute
+  Future<void> setChannelInterpretation({required ChannelInterpretation v});
+
+  /// Update the `normalize` setting. This will only have an effect when `set_buffer` is called.
+  Future<void> setNormalize({required bool value});
+
+  /// Register callback to run when an unhandled exception occurs in the audio processor.
+  ///
+  /// Note that once a unhandled exception is thrown, the processor will output silence throughout its lifetime.
+  ///
+  /// Only a single event handler is active at any time. Calling this method multiple times will
+  /// override the previous event handler.
+  Future<void> setOnprocessorerror({required BoxFnOnceErrorEvent callback});
+
+  void dispose();
+
+  bool get isDisposed;
+}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<DelayNode>>
+abstract class DelayNode implements AudioNode {
+  /// Config for up/down-mixing of input channels for this node.
+  ///
+  /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
+  Future<void> channelConfig();
+
+  /// Represents an integer used to determine how many channels are used when up-mixing and
+  /// down-mixing connections to any inputs to the node.
+  Future<BigInt> channelCount();
+
+  /// Represents an enumerated value describing the way channels must be matched between the
+  /// node's inputs and outputs.
+  Future<ChannelCountMode> channelCountMode();
+
+  /// Represents an enumerated value describing the meaning of the channels. This interpretation
+  /// will define how audio up-mixing and down-mixing will happen.
+  Future<ChannelInterpretation> channelInterpretation();
+
+  /// Unset the callback to run when an unhandled exception occurs in the audio processor.
+  Future<void> clearOnprocessorerror();
+
+  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
+  /// AudioNode.
+  Future<void> context();
+
+  /// Disconnects all outgoing connections from the AudioNode.
+  Future<void> disconnect();
+
+  /// Disconnects all outputs of the AudioNode that go to a specific destination AudioNode.
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - the AudioContext of the source and destination does not match
+  /// - the source node was not connected to the destination node
+  Future<void> disconnectDest({required AudioNode dest});
+
+  /// Disconnects a specific output of the AudioNode to a specific destination AudioNode
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - the AudioContext of the source and destination does not match
+  /// - if the output port is out of bounds for the source node
+  /// - the source node was not connected to the destination node
+  Future<void> disconnectDestFromOutput(
+      {required AudioNode dest, required BigInt output});
+
+  /// Disconnects a specific output of the AudioNode to a specific input of some destination
+  /// AudioNode
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - the AudioContext of the source and destination does not match
+  /// - if the input port is out of bounds for the destination node
+  /// - if the output port is out of bounds for the source node
+  /// - the source node was not connected to the destination node
+  Future<void> disconnectDestFromOutputToInput(
+      {required AudioNode dest, required BigInt output, required BigInt input});
+
+  /// Disconnects all outgoing connections at the given output port from the AudioNode.
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - if the output port is out of bounds for this node
+  Future<void> disconnectOutput({required BigInt output});
+
+  /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
+  Future<BigInt> numberOfInputs();
+
+  /// The number of outputs coming out of the AudioNode.
+  Future<BigInt> numberOfOutputs();
+
+  /// Handle of the associated [`BaseAudioContext`](crate::context::BaseAudioContext).
+  ///
+  /// Only when implementing the AudioNode trait manually, this struct is of any concern.
+  Future<void> registration();
+
+  /// Update the `channel_count` attribute
+  Future<void> setChannelCount({required BigInt v});
+
+  /// Update the `channel_count_mode` attribute
+  Future<void> setChannelCountMode({required ChannelCountMode v});
+
+  /// Update the `channel_interpretation` attribute
+  Future<void> setChannelInterpretation({required ChannelInterpretation v});
+
+  /// Register callback to run when an unhandled exception occurs in the audio processor.
+  ///
+  /// Note that once a unhandled exception is thrown, the processor will output silence throughout its lifetime.
+  ///
+  /// Only a single event handler is active at any time. Calling this method multiple times will
+  /// override the previous event handler.
+  Future<void> setOnprocessorerror({required BoxFnOnceErrorEvent callback});
+
+  void dispose();
+
+  bool get isDisposed;
+}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<DynamicsCompressorNode>>
+abstract class DynamicsCompressorNode implements AudioNode {
+  /// Config for up/down-mixing of input channels for this node.
+  ///
+  /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
+  Future<void> channelConfig();
+
+  /// Represents an integer used to determine how many channels are used when up-mixing and
+  /// down-mixing connections to any inputs to the node.
+  Future<BigInt> channelCount();
+
+  /// Represents an enumerated value describing the way channels must be matched between the
+  /// node's inputs and outputs.
+  Future<ChannelCountMode> channelCountMode();
+
+  /// Represents an enumerated value describing the meaning of the channels. This interpretation
+  /// will define how audio up-mixing and down-mixing will happen.
+  Future<ChannelInterpretation> channelInterpretation();
+
+  /// Unset the callback to run when an unhandled exception occurs in the audio processor.
+  Future<void> clearOnprocessorerror();
+
+  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
+  /// AudioNode.
+  Future<void> context();
+
+  /// Disconnects all outgoing connections from the AudioNode.
+  Future<void> disconnect();
+
+  /// Disconnects all outputs of the AudioNode that go to a specific destination AudioNode.
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - the AudioContext of the source and destination does not match
+  /// - the source node was not connected to the destination node
+  Future<void> disconnectDest({required AudioNode dest});
+
+  /// Disconnects a specific output of the AudioNode to a specific destination AudioNode
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - the AudioContext of the source and destination does not match
+  /// - if the output port is out of bounds for the source node
+  /// - the source node was not connected to the destination node
+  Future<void> disconnectDestFromOutput(
+      {required AudioNode dest, required BigInt output});
+
+  /// Disconnects a specific output of the AudioNode to a specific input of some destination
+  /// AudioNode
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - the AudioContext of the source and destination does not match
+  /// - if the input port is out of bounds for the destination node
+  /// - if the output port is out of bounds for the source node
+  /// - the source node was not connected to the destination node
+  Future<void> disconnectDestFromOutputToInput(
+      {required AudioNode dest, required BigInt output, required BigInt input});
+
+  /// Disconnects all outgoing connections at the given output port from the AudioNode.
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - if the output port is out of bounds for this node
+  Future<void> disconnectOutput({required BigInt output});
+
+  /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
+  Future<BigInt> numberOfInputs();
+
+  /// The number of outputs coming out of the AudioNode.
+  Future<BigInt> numberOfOutputs();
+
+  Future<double> reduction();
+
+  /// Handle of the associated [`BaseAudioContext`](crate::context::BaseAudioContext).
+  ///
+  /// Only when implementing the AudioNode trait manually, this struct is of any concern.
+  Future<void> registration();
+
+  /// Update the `channel_count` attribute
+  Future<void> setChannelCount({required BigInt v});
+
+  /// Update the `channel_count_mode` attribute
+  Future<void> setChannelCountMode({required ChannelCountMode v});
+
+  /// Update the `channel_interpretation` attribute
+  Future<void> setChannelInterpretation({required ChannelInterpretation v});
+
+  /// Register callback to run when an unhandled exception occurs in the audio processor.
+  ///
+  /// Note that once a unhandled exception is thrown, the processor will output silence throughout its lifetime.
+  ///
+  /// Only a single event handler is active at any time. Calling this method multiple times will
+  /// override the previous event handler.
+  Future<void> setOnprocessorerror({required BoxFnOnceErrorEvent callback});
+
+  void dispose();
+
+  bool get isDisposed;
+}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<GainNode>>
+abstract class GainNode implements AudioNode {
+  /// Config for up/down-mixing of input channels for this node.
+  ///
+  /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
+  Future<void> channelConfig();
+
+  /// Represents an integer used to determine how many channels are used when up-mixing and
+  /// down-mixing connections to any inputs to the node.
+  Future<BigInt> channelCount();
+
+  /// Represents an enumerated value describing the way channels must be matched between the
+  /// node's inputs and outputs.
+  Future<ChannelCountMode> channelCountMode();
+
+  /// Represents an enumerated value describing the meaning of the channels. This interpretation
+  /// will define how audio up-mixing and down-mixing will happen.
+  Future<ChannelInterpretation> channelInterpretation();
+
+  /// Unset the callback to run when an unhandled exception occurs in the audio processor.
+  Future<void> clearOnprocessorerror();
+
+  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
+  /// AudioNode.
+  Future<void> context();
+
+  /// Disconnects all outgoing connections from the AudioNode.
+  Future<void> disconnect();
+
+  /// Disconnects all outputs of the AudioNode that go to a specific destination AudioNode.
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - the AudioContext of the source and destination does not match
+  /// - the source node was not connected to the destination node
+  Future<void> disconnectDest({required AudioNode dest});
+
+  /// Disconnects a specific output of the AudioNode to a specific destination AudioNode
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - the AudioContext of the source and destination does not match
+  /// - if the output port is out of bounds for the source node
+  /// - the source node was not connected to the destination node
+  Future<void> disconnectDestFromOutput(
+      {required AudioNode dest, required BigInt output});
+
+  /// Disconnects a specific output of the AudioNode to a specific input of some destination
+  /// AudioNode
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - the AudioContext of the source and destination does not match
+  /// - if the input port is out of bounds for the destination node
+  /// - if the output port is out of bounds for the source node
+  /// - the source node was not connected to the destination node
+  Future<void> disconnectDestFromOutputToInput(
+      {required AudioNode dest, required BigInt output, required BigInt input});
+
+  /// Disconnects all outgoing connections at the given output port from the AudioNode.
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - if the output port is out of bounds for this node
+  Future<void> disconnectOutput({required BigInt output});
+
+  /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
+  Future<BigInt> numberOfInputs();
+
+  /// The number of outputs coming out of the AudioNode.
+  Future<BigInt> numberOfOutputs();
+
+  /// Handle of the associated [`BaseAudioContext`](crate::context::BaseAudioContext).
+  ///
+  /// Only when implementing the AudioNode trait manually, this struct is of any concern.
+  Future<void> registration();
+
+  /// Update the `channel_count` attribute
+  Future<void> setChannelCount({required BigInt v});
+
+  /// Update the `channel_count_mode` attribute
+  Future<void> setChannelCountMode({required ChannelCountMode v});
+
+  /// Update the `channel_interpretation` attribute
+  Future<void> setChannelInterpretation({required ChannelInterpretation v});
+
+  /// Register callback to run when an unhandled exception occurs in the audio processor.
+  ///
+  /// Note that once a unhandled exception is thrown, the processor will output silence throughout its lifetime.
+  ///
+  /// Only a single event handler is active at any time. Calling this method multiple times will
+  /// override the previous event handler.
+  Future<void> setOnprocessorerror({required BoxFnOnceErrorEvent callback});
+
+  void dispose();
+
+  bool get isDisposed;
+}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<IIRFilterNode>>
+abstract class IirFilterNode implements AudioNode {
+  /// Config for up/down-mixing of input channels for this node.
+  ///
+  /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
+  Future<void> channelConfig();
+
+  /// Represents an integer used to determine how many channels are used when up-mixing and
+  /// down-mixing connections to any inputs to the node.
+  Future<BigInt> channelCount();
+
+  /// Represents an enumerated value describing the way channels must be matched between the
+  /// node's inputs and outputs.
+  Future<ChannelCountMode> channelCountMode();
+
+  /// Represents an enumerated value describing the meaning of the channels. This interpretation
+  /// will define how audio up-mixing and down-mixing will happen.
+  Future<ChannelInterpretation> channelInterpretation();
+
+  /// Unset the callback to run when an unhandled exception occurs in the audio processor.
+  Future<void> clearOnprocessorerror();
+
+  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
+  /// AudioNode.
+  Future<void> context();
+
+  /// Disconnects all outgoing connections from the AudioNode.
+  Future<void> disconnect();
+
+  /// Disconnects all outputs of the AudioNode that go to a specific destination AudioNode.
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - the AudioContext of the source and destination does not match
+  /// - the source node was not connected to the destination node
+  Future<void> disconnectDest({required AudioNode dest});
+
+  /// Disconnects a specific output of the AudioNode to a specific destination AudioNode
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - the AudioContext of the source and destination does not match
+  /// - if the output port is out of bounds for the source node
+  /// - the source node was not connected to the destination node
+  Future<void> disconnectDestFromOutput(
+      {required AudioNode dest, required BigInt output});
+
+  /// Disconnects a specific output of the AudioNode to a specific input of some destination
+  /// AudioNode
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - the AudioContext of the source and destination does not match
+  /// - if the input port is out of bounds for the destination node
+  /// - if the output port is out of bounds for the source node
+  /// - the source node was not connected to the destination node
+  Future<void> disconnectDestFromOutputToInput(
+      {required AudioNode dest, required BigInt output, required BigInt input});
+
+  /// Disconnects all outgoing connections at the given output port from the AudioNode.
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - if the output port is out of bounds for this node
+  Future<void> disconnectOutput({required BigInt output});
+
+  /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
+  Future<BigInt> numberOfInputs();
+
+  /// The number of outputs coming out of the AudioNode.
+  Future<BigInt> numberOfOutputs();
+
+  /// Handle of the associated [`BaseAudioContext`](crate::context::BaseAudioContext).
+  ///
+  /// Only when implementing the AudioNode trait manually, this struct is of any concern.
+  Future<void> registration();
+
+  /// Update the `channel_count` attribute
+  Future<void> setChannelCount({required BigInt v});
+
+  /// Update the `channel_count_mode` attribute
+  Future<void> setChannelCountMode({required ChannelCountMode v});
+
+  /// Update the `channel_interpretation` attribute
+  Future<void> setChannelInterpretation({required ChannelInterpretation v});
+
+  /// Register callback to run when an unhandled exception occurs in the audio processor.
+  ///
+  /// Note that once a unhandled exception is thrown, the processor will output silence throughout its lifetime.
+  ///
+  /// Only a single event handler is active at any time. Calling this method multiple times will
+  /// override the previous event handler.
+  Future<void> setOnprocessorerror({required BoxFnOnceErrorEvent callback});
+
+  void dispose();
+
+  bool get isDisposed;
+}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaElementAudioSourceNode>>
+abstract class MediaElementAudioSourceNode implements AudioNode {
+  /// Config for up/down-mixing of input channels for this node.
+  ///
+  /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
+  Future<void> channelConfig();
+
+  /// Represents an integer used to determine how many channels are used when up-mixing and
+  /// down-mixing connections to any inputs to the node.
+  Future<BigInt> channelCount();
+
+  /// Represents an enumerated value describing the way channels must be matched between the
+  /// node's inputs and outputs.
+  Future<ChannelCountMode> channelCountMode();
+
+  /// Represents an enumerated value describing the meaning of the channels. This interpretation
+  /// will define how audio up-mixing and down-mixing will happen.
+  Future<ChannelInterpretation> channelInterpretation();
+
+  /// Unset the callback to run when an unhandled exception occurs in the audio processor.
+  Future<void> clearOnprocessorerror();
+
+  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
+  /// AudioNode.
+  Future<void> context();
+
+  /// Disconnects all outgoing connections from the AudioNode.
+  Future<void> disconnect();
+
+  /// Disconnects all outputs of the AudioNode that go to a specific destination AudioNode.
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - the AudioContext of the source and destination does not match
+  /// - the source node was not connected to the destination node
+  Future<void> disconnectDest({required AudioNode dest});
+
+  /// Disconnects a specific output of the AudioNode to a specific destination AudioNode
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - the AudioContext of the source and destination does not match
+  /// - if the output port is out of bounds for the source node
+  /// - the source node was not connected to the destination node
+  Future<void> disconnectDestFromOutput(
+      {required AudioNode dest, required BigInt output});
+
+  /// Disconnects a specific output of the AudioNode to a specific input of some destination
+  /// AudioNode
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - the AudioContext of the source and destination does not match
+  /// - if the input port is out of bounds for the destination node
+  /// - if the output port is out of bounds for the source node
+  /// - the source node was not connected to the destination node
+  Future<void> disconnectDestFromOutputToInput(
+      {required AudioNode dest, required BigInt output, required BigInt input});
+
+  /// Disconnects all outgoing connections at the given output port from the AudioNode.
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - if the output port is out of bounds for this node
+  Future<void> disconnectOutput({required BigInt output});
+
+  /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
+  Future<BigInt> numberOfInputs();
+
+  /// The number of outputs coming out of the AudioNode.
+  Future<BigInt> numberOfOutputs();
+
+  /// Handle of the associated [`BaseAudioContext`](crate::context::BaseAudioContext).
+  ///
+  /// Only when implementing the AudioNode trait manually, this struct is of any concern.
+  Future<void> registration();
+
+  /// Update the `channel_count` attribute
+  Future<void> setChannelCount({required BigInt v});
+
+  /// Update the `channel_count_mode` attribute
+  Future<void> setChannelCountMode({required ChannelCountMode v});
+
+  /// Update the `channel_interpretation` attribute
+  Future<void> setChannelInterpretation({required ChannelInterpretation v});
+
+  /// Register callback to run when an unhandled exception occurs in the audio processor.
+  ///
+  /// Note that once a unhandled exception is thrown, the processor will output silence throughout its lifetime.
+  ///
+  /// Only a single event handler is active at any time. Calling this method multiple times will
+  /// override the previous event handler.
+  Future<void> setOnprocessorerror({required BoxFnOnceErrorEvent callback});
+
+  void dispose();
+
+  bool get isDisposed;
+}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaStreamAudioDestinationNode>>
+abstract class MediaStreamAudioDestinationNode implements AudioNode {
+  /// Config for up/down-mixing of input channels for this node.
+  ///
+  /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
+  Future<void> channelConfig();
+
+  /// Represents an integer used to determine how many channels are used when up-mixing and
+  /// down-mixing connections to any inputs to the node.
+  Future<BigInt> channelCount();
+
+  /// Represents an enumerated value describing the way channels must be matched between the
+  /// node's inputs and outputs.
+  Future<ChannelCountMode> channelCountMode();
+
+  /// Represents an enumerated value describing the meaning of the channels. This interpretation
+  /// will define how audio up-mixing and down-mixing will happen.
+  Future<ChannelInterpretation> channelInterpretation();
+
+  /// Unset the callback to run when an unhandled exception occurs in the audio processor.
+  Future<void> clearOnprocessorerror();
+
+  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
+  /// AudioNode.
+  Future<void> context();
+
+  /// Disconnects all outgoing connections from the AudioNode.
+  Future<void> disconnect();
+
+  /// Disconnects all outputs of the AudioNode that go to a specific destination AudioNode.
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - the AudioContext of the source and destination does not match
+  /// - the source node was not connected to the destination node
+  Future<void> disconnectDest({required AudioNode dest});
+
+  /// Disconnects a specific output of the AudioNode to a specific destination AudioNode
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - the AudioContext of the source and destination does not match
+  /// - if the output port is out of bounds for the source node
+  /// - the source node was not connected to the destination node
+  Future<void> disconnectDestFromOutput(
+      {required AudioNode dest, required BigInt output});
+
+  /// Disconnects a specific output of the AudioNode to a specific input of some destination
+  /// AudioNode
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - the AudioContext of the source and destination does not match
+  /// - if the input port is out of bounds for the destination node
+  /// - if the output port is out of bounds for the source node
+  /// - the source node was not connected to the destination node
+  Future<void> disconnectDestFromOutputToInput(
+      {required AudioNode dest, required BigInt output, required BigInt input});
+
+  /// Disconnects all outgoing connections at the given output port from the AudioNode.
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - if the output port is out of bounds for this node
+  Future<void> disconnectOutput({required BigInt output});
+
+  /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
+  Future<BigInt> numberOfInputs();
+
+  /// The number of outputs coming out of the AudioNode.
+  Future<BigInt> numberOfOutputs();
+
+  /// Handle of the associated [`BaseAudioContext`](crate::context::BaseAudioContext).
+  ///
+  /// Only when implementing the AudioNode trait manually, this struct is of any concern.
+  Future<void> registration();
+
+  /// Update the `channel_count` attribute
+  Future<void> setChannelCount({required BigInt v});
+
+  /// Update the `channel_count_mode` attribute
+  Future<void> setChannelCountMode({required ChannelCountMode v});
+
+  /// Update the `channel_interpretation` attribute
+  Future<void> setChannelInterpretation({required ChannelInterpretation v});
+
+  /// Register callback to run when an unhandled exception occurs in the audio processor.
+  ///
+  /// Note that once a unhandled exception is thrown, the processor will output silence throughout its lifetime.
+  ///
+  /// Only a single event handler is active at any time. Calling this method multiple times will
+  /// override the previous event handler.
+  Future<void> setOnprocessorerror({required BoxFnOnceErrorEvent callback});
+
+  /// A [`MediaStream`] producing audio buffers with the same number of channels as the node
+  /// itself
+  Future<void> stream();
+
+  void dispose();
+
+  bool get isDisposed;
+}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaStreamAudioSourceNode>>
+abstract class MediaStreamAudioSourceNode implements AudioNode {
+  /// Config for up/down-mixing of input channels for this node.
+  ///
+  /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
+  Future<void> channelConfig();
+
+  /// Represents an integer used to determine how many channels are used when up-mixing and
+  /// down-mixing connections to any inputs to the node.
+  Future<BigInt> channelCount();
+
+  /// Represents an enumerated value describing the way channels must be matched between the
+  /// node's inputs and outputs.
+  Future<ChannelCountMode> channelCountMode();
+
+  /// Represents an enumerated value describing the meaning of the channels. This interpretation
+  /// will define how audio up-mixing and down-mixing will happen.
+  Future<ChannelInterpretation> channelInterpretation();
+
+  /// Unset the callback to run when an unhandled exception occurs in the audio processor.
+  Future<void> clearOnprocessorerror();
+
+  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
+  /// AudioNode.
+  Future<void> context();
+
+  /// Disconnects all outgoing connections from the AudioNode.
+  Future<void> disconnect();
+
+  /// Disconnects all outputs of the AudioNode that go to a specific destination AudioNode.
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - the AudioContext of the source and destination does not match
+  /// - the source node was not connected to the destination node
+  Future<void> disconnectDest({required AudioNode dest});
+
+  /// Disconnects a specific output of the AudioNode to a specific destination AudioNode
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - the AudioContext of the source and destination does not match
+  /// - if the output port is out of bounds for the source node
+  /// - the source node was not connected to the destination node
+  Future<void> disconnectDestFromOutput(
+      {required AudioNode dest, required BigInt output});
+
+  /// Disconnects a specific output of the AudioNode to a specific input of some destination
+  /// AudioNode
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - the AudioContext of the source and destination does not match
+  /// - if the input port is out of bounds for the destination node
+  /// - if the output port is out of bounds for the source node
+  /// - the source node was not connected to the destination node
+  Future<void> disconnectDestFromOutputToInput(
+      {required AudioNode dest, required BigInt output, required BigInt input});
+
+  /// Disconnects all outgoing connections at the given output port from the AudioNode.
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - if the output port is out of bounds for this node
+  Future<void> disconnectOutput({required BigInt output});
+
+  /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
+  Future<BigInt> numberOfInputs();
+
+  /// The number of outputs coming out of the AudioNode.
+  Future<BigInt> numberOfOutputs();
+
+  /// Handle of the associated [`BaseAudioContext`](crate::context::BaseAudioContext).
+  ///
+  /// Only when implementing the AudioNode trait manually, this struct is of any concern.
+  Future<void> registration();
+
+  /// Update the `channel_count` attribute
+  Future<void> setChannelCount({required BigInt v});
+
+  /// Update the `channel_count_mode` attribute
+  Future<void> setChannelCountMode({required ChannelCountMode v});
+
+  /// Update the `channel_interpretation` attribute
+  Future<void> setChannelInterpretation({required ChannelInterpretation v});
+
+  /// Register callback to run when an unhandled exception occurs in the audio processor.
+  ///
+  /// Note that once a unhandled exception is thrown, the processor will output silence throughout its lifetime.
+  ///
+  /// Only a single event handler is active at any time. Calling this method multiple times will
+  /// override the previous event handler.
+  Future<void> setOnprocessorerror({required BoxFnOnceErrorEvent callback});
+
+  void dispose();
+
+  bool get isDisposed;
+}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaStreamTrackAudioSourceNode>>
+abstract class MediaStreamTrackAudioSourceNode implements AudioNode {
+  /// Config for up/down-mixing of input channels for this node.
+  ///
+  /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
+  Future<void> channelConfig();
+
+  /// Represents an integer used to determine how many channels are used when up-mixing and
+  /// down-mixing connections to any inputs to the node.
+  Future<BigInt> channelCount();
+
+  /// Represents an enumerated value describing the way channels must be matched between the
+  /// node's inputs and outputs.
+  Future<ChannelCountMode> channelCountMode();
+
+  /// Represents an enumerated value describing the meaning of the channels. This interpretation
+  /// will define how audio up-mixing and down-mixing will happen.
+  Future<ChannelInterpretation> channelInterpretation();
+
+  /// Unset the callback to run when an unhandled exception occurs in the audio processor.
+  Future<void> clearOnprocessorerror();
+
+  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
+  /// AudioNode.
+  Future<void> context();
+
+  /// Disconnects all outgoing connections from the AudioNode.
+  Future<void> disconnect();
+
+  /// Disconnects all outputs of the AudioNode that go to a specific destination AudioNode.
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - the AudioContext of the source and destination does not match
+  /// - the source node was not connected to the destination node
+  Future<void> disconnectDest({required AudioNode dest});
+
+  /// Disconnects a specific output of the AudioNode to a specific destination AudioNode
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - the AudioContext of the source and destination does not match
+  /// - if the output port is out of bounds for the source node
+  /// - the source node was not connected to the destination node
+  Future<void> disconnectDestFromOutput(
+      {required AudioNode dest, required BigInt output});
+
+  /// Disconnects a specific output of the AudioNode to a specific input of some destination
+  /// AudioNode
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - the AudioContext of the source and destination does not match
+  /// - if the input port is out of bounds for the destination node
+  /// - if the output port is out of bounds for the source node
+  /// - the source node was not connected to the destination node
+  Future<void> disconnectDestFromOutputToInput(
+      {required AudioNode dest, required BigInt output, required BigInt input});
+
+  /// Disconnects all outgoing connections at the given output port from the AudioNode.
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - if the output port is out of bounds for this node
+  Future<void> disconnectOutput({required BigInt output});
+
+  /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
+  Future<BigInt> numberOfInputs();
+
+  /// The number of outputs coming out of the AudioNode.
+  Future<BigInt> numberOfOutputs();
+
+  /// Handle of the associated [`BaseAudioContext`](crate::context::BaseAudioContext).
+  ///
+  /// Only when implementing the AudioNode trait manually, this struct is of any concern.
+  Future<void> registration();
+
+  /// Update the `channel_count` attribute
+  Future<void> setChannelCount({required BigInt v});
+
+  /// Update the `channel_count_mode` attribute
+  Future<void> setChannelCountMode({required ChannelCountMode v});
+
+  /// Update the `channel_interpretation` attribute
+  Future<void> setChannelInterpretation({required ChannelInterpretation v});
+
+  /// Register callback to run when an unhandled exception occurs in the audio processor.
+  ///
+  /// Note that once a unhandled exception is thrown, the processor will output silence throughout its lifetime.
+  ///
+  /// Only a single event handler is active at any time. Calling this method multiple times will
+  /// override the previous event handler.
+  Future<void> setOnprocessorerror({required BoxFnOnceErrorEvent callback});
+
+  void dispose();
+
+  bool get isDisposed;
+}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OscillatorNode>>
+abstract class OscillatorNode implements AudioNode, AudioScheduledSourceNode {
+  /// Config for up/down-mixing of input channels for this node.
+  ///
+  /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
+  Future<void> channelConfig();
+
+  /// Represents an integer used to determine how many channels are used when up-mixing and
+  /// down-mixing connections to any inputs to the node.
+  Future<BigInt> channelCount();
+
+  /// Represents an enumerated value describing the way channels must be matched between the
+  /// node's inputs and outputs.
+  Future<ChannelCountMode> channelCountMode();
+
+  /// Represents an enumerated value describing the meaning of the channels. This interpretation
+  /// will define how audio up-mixing and down-mixing will happen.
+  Future<ChannelInterpretation> channelInterpretation();
+
+  /// Unset the callback to run when the source node has stopped playing
+  Future<void> clearOnended();
+
+  /// Unset the callback to run when an unhandled exception occurs in the audio processor.
+  Future<void> clearOnprocessorerror();
+
+  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
+  /// AudioNode.
+  Future<void> context();
+
+  /// Disconnects all outgoing connections from the AudioNode.
+  Future<void> disconnect();
+
+  /// Disconnects all outputs of the AudioNode that go to a specific destination AudioNode.
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - the AudioContext of the source and destination does not match
+  /// - the source node was not connected to the destination node
+  Future<void> disconnectDest({required AudioNode dest});
+
+  /// Disconnects a specific output of the AudioNode to a specific destination AudioNode
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - the AudioContext of the source and destination does not match
+  /// - if the output port is out of bounds for the source node
+  /// - the source node was not connected to the destination node
+  Future<void> disconnectDestFromOutput(
+      {required AudioNode dest, required BigInt output});
+
+  /// Disconnects a specific output of the AudioNode to a specific input of some destination
+  /// AudioNode
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - the AudioContext of the source and destination does not match
+  /// - if the input port is out of bounds for the destination node
+  /// - if the output port is out of bounds for the source node
+  /// - the source node was not connected to the destination node
+  Future<void> disconnectDestFromOutputToInput(
+      {required AudioNode dest, required BigInt output, required BigInt input});
+
+  /// Disconnects all outgoing connections at the given output port from the AudioNode.
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - if the output port is out of bounds for this node
+  Future<void> disconnectOutput({required BigInt output});
+
+  /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
+  Future<BigInt> numberOfInputs();
+
+  /// The number of outputs coming out of the AudioNode.
+  Future<BigInt> numberOfOutputs();
+
+  /// Handle of the associated [`BaseAudioContext`](crate::context::BaseAudioContext).
+  ///
+  /// Only when implementing the AudioNode trait manually, this struct is of any concern.
+  Future<void> registration();
+
+  /// Update the `channel_count` attribute
+  Future<void> setChannelCount({required BigInt v});
+
+  /// Update the `channel_count_mode` attribute
+  Future<void> setChannelCountMode({required ChannelCountMode v});
+
+  /// Update the `channel_interpretation` attribute
+  Future<void> setChannelInterpretation({required ChannelInterpretation v});
+
+  /// Register callback to run when an unhandled exception occurs in the audio processor.
+  ///
+  /// Note that once a unhandled exception is thrown, the processor will output silence throughout its lifetime.
+  ///
+  /// Only a single event handler is active at any time. Calling this method multiple times will
+  /// override the previous event handler.
+  Future<void> setOnprocessorerror({required BoxFnOnceErrorEvent callback});
+
+  /// Sets a `PeriodicWave` which describes a waveform to be used by the oscillator.
+  ///
+  /// Calling this sets the oscillator type to `custom`, once set to `custom`
+  /// the oscillator cannot be reverted back to a standard waveform.
+  Future<void> setPeriodicWave({required PeriodicWave periodicWave});
+
+  /// Set the oscillator type
+  ///
+  /// # Arguments
+  ///
+  /// * `type_` - oscillator type (sine, square, triangle, sawtooth)
+  ///
+  /// # Panics
+  ///
+  /// if `type_` is `OscillatorType::Custom`
+  Future<void> setType({required OscillatorType type});
+
+  /// Play immediately
+  ///
+  /// # Panics
+  ///
+  /// Panics if the source was already started
+  Future<void> start();
+
+  /// Schedule playback start at given timestamp
+  ///
+  /// # Panics
+  ///
+  /// Panics if the source was already started
+  Future<void> startAt({required double when});
+
+  /// Stop immediately
+  ///
+  /// # Panics
+  ///
+  /// Panics if the source was already stopped
+  Future<void> stop();
+
+  /// Schedule playback stop at given timestamp
+  ///
+  /// # Panics
+  ///
+  /// Panics if the source was already stopped
+  Future<void> stopAt({required double when});
+
+  /// Returns the oscillator type
+  Future<OscillatorType> type();
+
+  void dispose();
+
+  bool get isDisposed;
+}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<PannerNode>>
+abstract class PannerNode implements AudioNode {
+  /// Config for up/down-mixing of input channels for this node.
+  ///
+  /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
+  Future<void> channelConfig();
+
+  /// Represents an integer used to determine how many channels are used when up-mixing and
+  /// down-mixing connections to any inputs to the node.
+  Future<BigInt> channelCount();
+
+  /// Represents an enumerated value describing the way channels must be matched between the
+  /// node's inputs and outputs.
+  Future<ChannelCountMode> channelCountMode();
+
+  /// Represents an enumerated value describing the meaning of the channels. This interpretation
+  /// will define how audio up-mixing and down-mixing will happen.
+  Future<ChannelInterpretation> channelInterpretation();
+
+  /// Unset the callback to run when an unhandled exception occurs in the audio processor.
+  Future<void> clearOnprocessorerror();
+
+  Future<double> coneInnerAngle();
+
+  Future<double> coneOuterAngle();
+
+  Future<double> coneOuterGain();
+
+  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
+  /// AudioNode.
+  Future<void> context();
+
+  /// Disconnects all outgoing connections from the AudioNode.
+  Future<void> disconnect();
+
+  /// Disconnects all outputs of the AudioNode that go to a specific destination AudioNode.
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - the AudioContext of the source and destination does not match
+  /// - the source node was not connected to the destination node
+  Future<void> disconnectDest({required AudioNode dest});
+
+  /// Disconnects a specific output of the AudioNode to a specific destination AudioNode
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - the AudioContext of the source and destination does not match
+  /// - if the output port is out of bounds for the source node
+  /// - the source node was not connected to the destination node
+  Future<void> disconnectDestFromOutput(
+      {required AudioNode dest, required BigInt output});
+
+  /// Disconnects a specific output of the AudioNode to a specific input of some destination
+  /// AudioNode
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - the AudioContext of the source and destination does not match
+  /// - if the input port is out of bounds for the destination node
+  /// - if the output port is out of bounds for the source node
+  /// - the source node was not connected to the destination node
+  Future<void> disconnectDestFromOutputToInput(
+      {required AudioNode dest, required BigInt output, required BigInt input});
+
+  /// Disconnects all outgoing connections at the given output port from the AudioNode.
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - if the output port is out of bounds for this node
+  Future<void> disconnectOutput({required BigInt output});
+
+  Future<DistanceModelType> distanceModel();
+
+  Future<double> maxDistance();
+
+  /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
+  Future<BigInt> numberOfInputs();
+
+  /// The number of outputs coming out of the AudioNode.
+  Future<BigInt> numberOfOutputs();
+
+  Future<PanningModelType> panningModel();
+
+  Future<double> refDistance();
+
+  /// Handle of the associated [`BaseAudioContext`](crate::context::BaseAudioContext).
+  ///
+  /// Only when implementing the AudioNode trait manually, this struct is of any concern.
+  Future<void> registration();
+
+  Future<double> rolloffFactor();
+
+  /// Update the `channel_count` attribute
+  Future<void> setChannelCount({required BigInt v});
+
+  /// Update the `channel_count_mode` attribute
+  Future<void> setChannelCountMode({required ChannelCountMode v});
+
+  /// Update the `channel_interpretation` attribute
+  Future<void> setChannelInterpretation({required ChannelInterpretation v});
+
+  Future<void> setConeInnerAngle({required double value});
+
+  Future<void> setConeOuterAngle({required double value});
+
+  /// Set the coneOuterGain attribute
+  ///
+  /// # Panics
+  ///
+  /// Panics if the provided value is not in the range [0, 1]
+  Future<void> setConeOuterGain({required double value});
+
+  Future<void> setDistanceModel({required DistanceModelType value});
+
+  /// Set the maxDistance attribute
+  ///
+  /// # Panics
+  ///
+  /// Panics if the provided value is negative.
+  Future<void> setMaxDistance({required double value});
+
+  /// Register callback to run when an unhandled exception occurs in the audio processor.
+  ///
+  /// Note that once a unhandled exception is thrown, the processor will output silence throughout its lifetime.
+  ///
+  /// Only a single event handler is active at any time. Calling this method multiple times will
+  /// override the previous event handler.
+  Future<void> setOnprocessorerror({required BoxFnOnceErrorEvent callback});
+
+  Future<void> setOrientation(
+      {required double x, required double y, required double z});
+
+  Future<void> setPanningModel({required PanningModelType value});
+
+  Future<void> setPosition(
+      {required double x, required double y, required double z});
+
+  /// Set the refDistance attribute
+  ///
+  /// # Panics
+  ///
+  /// Panics if the provided value is negative.
+  Future<void> setRefDistance({required double value});
+
+  /// Set the rolloffFactor attribute
+  ///
+  /// # Panics
+  ///
+  /// Panics if the provided value is negative.
+  Future<void> setRolloffFactor({required double value});
+
+  void dispose();
+
+  bool get isDisposed;
+}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ScriptProcessorNode>>
+abstract class ScriptProcessorNode implements AudioNode {
+  Future<BigInt> bufferSize();
+
+  /// Config for up/down-mixing of input channels for this node.
+  ///
+  /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
+  Future<void> channelConfig();
+
+  /// Represents an integer used to determine how many channels are used when up-mixing and
+  /// down-mixing connections to any inputs to the node.
+  Future<BigInt> channelCount();
+
+  /// Represents an enumerated value describing the way channels must be matched between the
+  /// node's inputs and outputs.
+  Future<ChannelCountMode> channelCountMode();
+
+  /// Represents an enumerated value describing the meaning of the channels. This interpretation
+  /// will define how audio up-mixing and down-mixing will happen.
+  Future<ChannelInterpretation> channelInterpretation();
+
+  /// Unset the callback to run when the AudioProcessingEvent is dispatched
+  Future<void> clearOnaudioprocess();
+
+  /// Unset the callback to run when an unhandled exception occurs in the audio processor.
+  Future<void> clearOnprocessorerror();
+
+  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
+  /// AudioNode.
+  Future<void> context();
+
+  /// Disconnects all outgoing connections from the AudioNode.
+  Future<void> disconnect();
+
+  /// Disconnects all outputs of the AudioNode that go to a specific destination AudioNode.
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - the AudioContext of the source and destination does not match
+  /// - the source node was not connected to the destination node
+  Future<void> disconnectDest({required AudioNode dest});
+
+  /// Disconnects a specific output of the AudioNode to a specific destination AudioNode
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - the AudioContext of the source and destination does not match
+  /// - if the output port is out of bounds for the source node
+  /// - the source node was not connected to the destination node
+  Future<void> disconnectDestFromOutput(
+      {required AudioNode dest, required BigInt output});
+
+  /// Disconnects a specific output of the AudioNode to a specific input of some destination
+  /// AudioNode
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - the AudioContext of the source and destination does not match
+  /// - if the input port is out of bounds for the destination node
+  /// - if the output port is out of bounds for the source node
+  /// - the source node was not connected to the destination node
+  Future<void> disconnectDestFromOutputToInput(
+      {required AudioNode dest, required BigInt output, required BigInt input});
+
+  /// Disconnects all outgoing connections at the given output port from the AudioNode.
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - if the output port is out of bounds for this node
+  Future<void> disconnectOutput({required BigInt output});
+
+  /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
+  Future<BigInt> numberOfInputs();
+
+  /// The number of outputs coming out of the AudioNode.
+  Future<BigInt> numberOfOutputs();
+
+  /// Handle of the associated [`BaseAudioContext`](crate::context::BaseAudioContext).
+  ///
+  /// Only when implementing the AudioNode trait manually, this struct is of any concern.
+  Future<void> registration();
+
+  /// Update the `channel_count` attribute
+  Future<void> setChannelCount({required BigInt v});
+
+  /// Update the `channel_count_mode` attribute
+  Future<void> setChannelCountMode({required ChannelCountMode v});
+
+  /// Update the `channel_interpretation` attribute
+  Future<void> setChannelInterpretation({required ChannelInterpretation v});
+
+  /// Register callback to run when an unhandled exception occurs in the audio processor.
+  ///
+  /// Note that once a unhandled exception is thrown, the processor will output silence throughout its lifetime.
+  ///
+  /// Only a single event handler is active at any time. Calling this method multiple times will
+  /// override the previous event handler.
+  Future<void> setOnprocessorerror({required BoxFnOnceErrorEvent callback});
+
+  void dispose();
+
+  bool get isDisposed;
+}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StereoPannerNode>>
+abstract class StereoPannerNode implements AudioNode {
+  /// Config for up/down-mixing of input channels for this node.
+  ///
+  /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
+  Future<void> channelConfig();
+
+  /// Represents an integer used to determine how many channels are used when up-mixing and
+  /// down-mixing connections to any inputs to the node.
+  Future<BigInt> channelCount();
+
+  /// Represents an enumerated value describing the way channels must be matched between the
+  /// node's inputs and outputs.
+  Future<ChannelCountMode> channelCountMode();
+
+  /// Represents an enumerated value describing the meaning of the channels. This interpretation
+  /// will define how audio up-mixing and down-mixing will happen.
+  Future<ChannelInterpretation> channelInterpretation();
+
+  /// Unset the callback to run when an unhandled exception occurs in the audio processor.
+  Future<void> clearOnprocessorerror();
+
+  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
+  /// AudioNode.
+  Future<void> context();
+
+  /// Disconnects all outgoing connections from the AudioNode.
+  Future<void> disconnect();
+
+  /// Disconnects all outputs of the AudioNode that go to a specific destination AudioNode.
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - the AudioContext of the source and destination does not match
+  /// - the source node was not connected to the destination node
+  Future<void> disconnectDest({required AudioNode dest});
+
+  /// Disconnects a specific output of the AudioNode to a specific destination AudioNode
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - the AudioContext of the source and destination does not match
+  /// - if the output port is out of bounds for the source node
+  /// - the source node was not connected to the destination node
+  Future<void> disconnectDestFromOutput(
+      {required AudioNode dest, required BigInt output});
+
+  /// Disconnects a specific output of the AudioNode to a specific input of some destination
+  /// AudioNode
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - the AudioContext of the source and destination does not match
+  /// - if the input port is out of bounds for the destination node
+  /// - if the output port is out of bounds for the source node
+  /// - the source node was not connected to the destination node
+  Future<void> disconnectDestFromOutputToInput(
+      {required AudioNode dest, required BigInt output, required BigInt input});
+
+  /// Disconnects all outgoing connections at the given output port from the AudioNode.
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - if the output port is out of bounds for this node
+  Future<void> disconnectOutput({required BigInt output});
+
+  /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
+  Future<BigInt> numberOfInputs();
+
+  /// The number of outputs coming out of the AudioNode.
+  Future<BigInt> numberOfOutputs();
+
+  /// Handle of the associated [`BaseAudioContext`](crate::context::BaseAudioContext).
+  ///
+  /// Only when implementing the AudioNode trait manually, this struct is of any concern.
+  Future<void> registration();
+
+  /// Update the `channel_count` attribute
+  Future<void> setChannelCount({required BigInt v});
+
+  /// Update the `channel_count_mode` attribute
+  Future<void> setChannelCountMode({required ChannelCountMode v});
+
+  /// Update the `channel_interpretation` attribute
+  Future<void> setChannelInterpretation({required ChannelInterpretation v});
+
+  /// Register callback to run when an unhandled exception occurs in the audio processor.
+  ///
+  /// Note that once a unhandled exception is thrown, the processor will output silence throughout its lifetime.
+  ///
+  /// Only a single event handler is active at any time. Calling this method multiple times will
+  /// override the previous event handler.
+  Future<void> setOnprocessorerror({required BoxFnOnceErrorEvent callback});
+
+  void dispose();
+
+  bool get isDisposed;
+}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<WaveShaperNode>>
+abstract class WaveShaperNode implements AudioNode {
+  /// Config for up/down-mixing of input channels for this node.
+  ///
+  /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
+  Future<void> channelConfig();
+
+  /// Represents an integer used to determine how many channels are used when up-mixing and
+  /// down-mixing connections to any inputs to the node.
+  Future<BigInt> channelCount();
+
+  /// Represents an enumerated value describing the way channels must be matched between the
+  /// node's inputs and outputs.
+  Future<ChannelCountMode> channelCountMode();
+
+  /// Represents an enumerated value describing the meaning of the channels. This interpretation
+  /// will define how audio up-mixing and down-mixing will happen.
+  Future<ChannelInterpretation> channelInterpretation();
+
+  /// Unset the callback to run when an unhandled exception occurs in the audio processor.
+  Future<void> clearOnprocessorerror();
+
+  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
+  /// AudioNode.
+  Future<void> context();
+
+  /// Disconnects all outgoing connections from the AudioNode.
+  Future<void> disconnect();
+
+  /// Disconnects all outputs of the AudioNode that go to a specific destination AudioNode.
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - the AudioContext of the source and destination does not match
+  /// - the source node was not connected to the destination node
+  Future<void> disconnectDest({required AudioNode dest});
+
+  /// Disconnects a specific output of the AudioNode to a specific destination AudioNode
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - the AudioContext of the source and destination does not match
+  /// - if the output port is out of bounds for the source node
+  /// - the source node was not connected to the destination node
+  Future<void> disconnectDestFromOutput(
+      {required AudioNode dest, required BigInt output});
+
+  /// Disconnects a specific output of the AudioNode to a specific input of some destination
+  /// AudioNode
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - the AudioContext of the source and destination does not match
+  /// - if the input port is out of bounds for the destination node
+  /// - if the output port is out of bounds for the source node
+  /// - the source node was not connected to the destination node
+  Future<void> disconnectDestFromOutputToInput(
+      {required AudioNode dest, required BigInt output, required BigInt input});
+
+  /// Disconnects all outgoing connections at the given output port from the AudioNode.
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - if the output port is out of bounds for this node
+  Future<void> disconnectOutput({required BigInt output});
+
+  /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
+  Future<BigInt> numberOfInputs();
+
+  /// The number of outputs coming out of the AudioNode.
+  Future<BigInt> numberOfOutputs();
+
+  /// Returns the `oversample` faactor of this node
+  Future<OverSampleType> oversample();
+
+  /// Handle of the associated [`BaseAudioContext`](crate::context::BaseAudioContext).
+  ///
+  /// Only when implementing the AudioNode trait manually, this struct is of any concern.
+  Future<void> registration();
+
+  /// Update the `channel_count` attribute
+  Future<void> setChannelCount({required BigInt v});
+
+  /// Update the `channel_count_mode` attribute
+  Future<void> setChannelCountMode({required ChannelCountMode v});
+
+  /// Update the `channel_interpretation` attribute
+  Future<void> setChannelInterpretation({required ChannelInterpretation v});
+
+  /// Set the distortion `curve` of this node
+  ///
+  /// # Arguments
+  ///
+  /// * `curve` - the desired distortion `curve`
+  ///
+  /// # Panics
+  ///
+  /// Panics if a curve has already been given to the source (though `new` or through
+  /// `set_curve`)
+  Future<void> setCurve({required List<double> curve});
+
+  /// Register callback to run when an unhandled exception occurs in the audio processor.
+  ///
+  /// Note that once a unhandled exception is thrown, the processor will output silence throughout its lifetime.
+  ///
+  /// Only a single event handler is active at any time. Calling this method multiple times will
+  /// override the previous event handler.
+  Future<void> setOnprocessorerror({required BoxFnOnceErrorEvent callback});
+
+  /// set the `oversample` factor of this node
+  ///
+  /// # Arguments
+  ///
+  /// * `oversample` - the desired `OversampleType` variant
+  Future<void> setOversample({required OverSampleType oversample});
+
+  void dispose();
+
+  bool get isDisposed;
+}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<dyn AudioNode>>
+abstract class AudioNode {
+  void dispose();
+
+  bool get isDisposed;
+}
+
+abstract class AudioNode {
+  /// Config for up/down-mixing of input channels for this node.
+  ///
+  /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
+  Future<void> channelConfig();
+
+  /// Represents an integer used to determine how many channels are used when up-mixing and
+  /// down-mixing connections to any inputs to the node.
+  Future<BigInt> channelCount();
+
+  /// Represents an enumerated value describing the way channels must be matched between the
+  /// node's inputs and outputs.
+  Future<ChannelCountMode> channelCountMode();
+
+  /// Represents an enumerated value describing the meaning of the channels. This interpretation
+  /// will define how audio up-mixing and down-mixing will happen.
+  Future<ChannelInterpretation> channelInterpretation();
+
+  /// Unset the callback to run when an unhandled exception occurs in the audio processor.
+  Future<void> clearOnprocessorerror();
+
+  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
+  /// AudioNode.
+  Future<void> context();
+
+  /// Disconnects all outgoing connections from the AudioNode.
+  Future<void> disconnect();
+
+  /// Disconnects all outgoing connections at the given output port from the AudioNode.
+  ///
+  /// # Panics
+  ///
+  /// This function will panic when
+  /// - if the output port is out of bounds for this node
+  Future<void> disconnectOutput({required BigInt output});
+
+  /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
+  Future<BigInt> numberOfInputs();
+
+  /// The number of outputs coming out of the AudioNode.
+  Future<BigInt> numberOfOutputs();
+
+  /// Handle of the associated [`BaseAudioContext`](crate::context::BaseAudioContext).
+  ///
+  /// Only when implementing the AudioNode trait manually, this struct is of any concern.
+  Future<void> registration();
+
+  /// Update the `channel_count` attribute
+  Future<void> setChannelCount({required BigInt v});
+
+  /// Update the `channel_count_mode` attribute
+  Future<void> setChannelCountMode({required ChannelCountMode v});
+
+  /// Update the `channel_interpretation` attribute
+  Future<void> setChannelInterpretation({required ChannelInterpretation v});
 }
 
 abstract class AudioScheduledSourceNode {
