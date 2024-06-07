@@ -11,13 +11,17 @@ use crate::codegen::ir::mir::ty::rust_auto_opaque_implicit::MirRustAutoOpaqueRaw
 use crate::codegen::ir::mir::ty::rust_opaque::MirTypeRustOpaque;
 use crate::codegen::ir::mir::ty::structure::MirStruct;
 use crate::codegen::ir::mir::ty::MirType;
+use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
 use crate::codegen::parser::mir::parser::ty::enumeration::compute_enum_variant_kind_struct_name;
 use crate::codegen::parser::mir::parser::ty::rust_auto_opaque_implicit::parse_type_rust_auto_opaque_common_raw;
 use crate::if_then_some;
 use crate::utils::namespace::NamespacedName;
 use itertools::Itertools;
 
-pub(crate) fn transform(mut pack: MirPack) -> anyhow::Result<MirPack> {
+pub(crate) fn transform(
+    mut pack: MirPack,
+    config: &ParserMirInternalConfig,
+) -> anyhow::Result<MirPack> {
     let distinct_types = pack.distinct_types(None);
 
     let ty_dyn_traits = (distinct_types.iter())
@@ -28,7 +32,7 @@ pub(crate) fn transform(mut pack: MirPack) -> anyhow::Result<MirPack> {
         .collect_vec();
 
     for ty_dyn_trait in &ty_dyn_traits {
-        handle_ty_dyn_trait(&mut pack, ty_dyn_trait)?;
+        handle_ty_dyn_trait(&mut pack, ty_dyn_trait, config)?;
     }
 
     Ok(pack)
@@ -37,22 +41,27 @@ pub(crate) fn transform(mut pack: MirPack) -> anyhow::Result<MirPack> {
 fn handle_ty_dyn_trait(
     pack: &mut MirPack,
     ty_dyn_trait: &MirTypeDelegateDynTrait,
+    config: &ParserMirInternalConfig,
 ) -> anyhow::Result<()> {
     let interest_impl_types = (pack.trait_impls.iter())
         .filter(|item| item.trait_ty.name == ty_dyn_trait.trait_def_name)
         .map(|item| item.impl_ty.clone())
         .collect_vec();
     let enum_name = ty_dyn_trait.inner_raw().ident;
-    let mir_enum = create_enum(&interest_impl_types, &enum_name.0);
+    let mir_enum = create_enum(&interest_impl_types, &enum_name.0, config);
 
     pack.enum_pool.insert(enum_name, mir_enum);
 
     Ok(())
 }
 
-fn create_enum(interest_impl_types: &[MirType], enum_name: &NamespacedName) -> MirEnum {
+fn create_enum(
+    interest_impl_types: &[MirType],
+    enum_name: &NamespacedName,
+    config: &ParserMirInternalConfig,
+) -> MirEnum {
     let variants = (interest_impl_types.iter())
-        .map(|ty| create_enum_variant(ty, enum_name))
+        .map(|ty| create_enum_variant(ty, enum_name, config))
         .collect_vec();
 
     MirEnum {
@@ -65,12 +74,19 @@ fn create_enum(interest_impl_types: &[MirType], enum_name: &NamespacedName) -> M
     }
 }
 
-fn create_enum_variant(interest_ty: &MirType, enum_name: &NamespacedName) -> MirEnumVariant {
+fn create_enum_variant(
+    interest_ty: &MirType,
+    enum_name: &NamespacedName,
+    config: &ParserMirInternalConfig,
+) -> MirEnumVariant {
     let variant_name = MirIdent::new(interest_ty.safe_ident());
 
     let field_ty = {
-        let (raw, inner) =
-            parse_type_rust_auto_opaque_common_raw(TODO, enum_name.namespace.clone(), TODO);
+        let (raw, inner) = parse_type_rust_auto_opaque_common_raw(
+            TODO,
+            enum_name.namespace.clone(),
+            config.default_rust_opaque_codec,
+        );
         MirType::Delegate(MirTypeDelegate::RustAutoOpaqueExplicit(
             MirTypeDelegateRustAutoOpaqueExplicit { raw, inner },
         ))
