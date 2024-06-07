@@ -55,6 +55,7 @@
 - gutenfries: Bump proc-macros.
 - anstadnik: Check keywords.
 - syndim: Add a bracket to box.
+- vhdirk: Support dashed crate.
 - rhian-cs: Add Cargo workspace doc.
 - TENX-S: Improve doc. Reproduce a bug.
 - polypixeldev: Improve doc.
