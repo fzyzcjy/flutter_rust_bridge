@@ -13,6 +13,7 @@ use crate::codegen::ir::mir::ty::MirType;
 use crate::if_then_some;
 use crate::utils::namespace::NamespacedName;
 use itertools::Itertools;
+use crate::codegen::ir::mir::ty::rust_auto_opaque_implicit::MirRustAutoOpaqueRaw;
 
 pub(crate) fn transform(mut pack: MirPack) -> anyhow::Result<MirPack> {
     let distinct_types = pack.distinct_types(None);
@@ -67,8 +68,16 @@ fn create_enum_variant(interest_ty: &MirType, enum_name: &NamespacedName) -> Mir
 
     let field_ty = MirType::Delegate(MirTypeDelegate::RustAutoOpaqueExplicit(
         MirTypeDelegateRustAutoOpaqueExplicit {
-            raw: TODO,
-            inner: TODO,
+            raw: MirRustAutoOpaqueRaw {
+                string: TODO,
+                segments: TODO,
+            },
+            inner: MirTypeRustOpaque {
+                namespace: TODO,
+                inner: TODO,
+                codec: TODO,
+                brief_name: true,
+            },
         },
     ));
 
