@@ -11,7 +11,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         if let Some(out) = self.parse_type_trait_object_inner(type_trait_object)? {
             return Ok(out);
         }
-        
+
         // fallback
         self.parse_type_rust_auto_opaque_implicit(
             None,
@@ -25,9 +25,22 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         &mut self,
         type_trait_object: &TypeTraitObject,
     ) -> anyhow::Result<Option<MirType>> {
-        let bounds = &type_trait_object.bounds;
-        if bounds.len() != 1 {}
-        if let [syn::TypeParamBound::Trait(trait_bound)] = &bounds {}
-        todo!()
+        if let Some(trait_name) = extract_trait_name(type_trait_object) {
+            return Ok(TODO);
+        }
+        Ok(None)
+    }
+}
+
+fn extract_trait_name(type_trait_object: &TypeTraitObject) -> Option<syn::Path> {
+    let bounds = &type_trait_object.bounds;
+    if bounds.len() != 1 {
+        return None;
+    }
+
+    if let syn::TypeParamBound::Trait(trait_bound) = bounds.first().unwrap() {
+        Some(trait_bound.path.clone())
+    } else {
+        None
     }
 }
