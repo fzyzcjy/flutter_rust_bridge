@@ -13,8 +13,8 @@ impl BaseMerger for TraitDefDefaultImplMerger {
         base: &HirFlatFunction,
         overrider: &HirFlatFunction,
     ) -> Option<HirFlatFunction> {
-        if let (HirGenerationSource::CopyFromTraitDef, HirGenerationSource::Normal) =
-            (&base.source, &overrider.source)
+        if (base.sources).contains(&HirGenerationSource::CopyFromTraitDef)
+            && overrider.sources.contains(&HirGenerationSource::Normal)
         {
             Some(overrider.to_owned())
         } else {

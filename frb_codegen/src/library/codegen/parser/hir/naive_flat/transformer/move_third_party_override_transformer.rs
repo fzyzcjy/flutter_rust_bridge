@@ -3,7 +3,7 @@ use crate::codegen::ir::hir::naive_flat::item::{HirNaiveFlatItem, HirNaiveFlatIt
 use crate::codegen::ir::hir::naive_flat::pack::HirNaiveFlatPack;
 use crate::codegen::misc::SELF_CRATE_THIRD_PARTY_NAMESPACE;
 use crate::utils::namespace::Namespace;
-use itertools::Itertools;
+use itertools::{concat, Itertools};
 
 pub(crate) fn transform(mut pack: HirNaiveFlatPack) -> anyhow::Result<HirNaiveFlatPack> {
     pack.items = (pack.items.drain(..))
@@ -12,7 +12,10 @@ pub(crate) fn transform(mut pack: HirNaiveFlatPack) -> anyhow::Result<HirNaiveFl
                 HirNaiveFlatItem {
                     meta: HirNaiveFlatItemMeta {
                         namespace: compute_moved_namespace(&item.meta.namespace),
-                        source: HirGenerationSource::MoveFromCrateThirdPartyFolder,
+                        sources: concat([
+                            item.meta.sources.clone(),
+                            vec![HirGenerationSource::MoveFromCrateThirdPartyFolder],
+                        ]),
                         is_module_public: true,
                     },
                     item: item.item,

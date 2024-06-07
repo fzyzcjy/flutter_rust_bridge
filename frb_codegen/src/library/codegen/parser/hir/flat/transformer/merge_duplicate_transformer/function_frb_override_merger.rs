@@ -12,7 +12,7 @@ impl BaseMerger for FunctionFrbOverrideMerger {
         _base: &HirFlatFunction,
         overrider: &HirFlatFunction,
     ) -> Option<HirFlatFunction> {
-        if overrider.source == HirGenerationSource::FromFrbOverride {
+        if (overrider.sources).contains(&HirGenerationSource::FromFrbOverride) {
             Some(overrider.to_owned())
         } else {
             None
