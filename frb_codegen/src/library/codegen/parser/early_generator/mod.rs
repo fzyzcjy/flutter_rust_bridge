@@ -13,11 +13,14 @@ pub(crate) fn execute(
     config_mir: &ParserMirInternalConfig,
     dumper: &Dumper,
 ) -> anyhow::Result<HirFlatPack> {
-    let dumper_tentative_mir = dumper.with_add_name_prefix("tentative_mir/");
+    let dumper_tentative_mir = dumper.with_add_name_prefix("1_tentative_mir/");
     let tentative_mir_pack = mir::parse(config_mir, &pack, &dumper_tentative_mir)?;
 
     trait_impl_enum::generate(&mut pack, &tentative_mir_pack, config_mir)?;
+    dumper.dump("2_trait_impl_enum", &pack)?;
+
     proxy_enum::generate(&mut pack, &tentative_mir_pack, config_mir)?;
+    dumper.dump("3_proxy_enum", &pack)?;
 
     Ok(pack)
 }
