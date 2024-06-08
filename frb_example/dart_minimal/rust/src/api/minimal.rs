@@ -1,5 +1,7 @@
 use crate::frb_generated::{RustAutoOpaque, SimpleTraitTwinNormalImpl};
 use flutter_rust_bridge::frb;
+use flutter_rust_bridge::rust_async::RwLockReadGuard;
+use std::ops;
 
 #[frb(init)]
 pub fn init_app() {
@@ -60,13 +62,42 @@ pub fn func_arg_trait_impl_twin_normal(arg: SimpleTraitTwinNormalImpl) -> i32 {
 impl SimpleTraitTwinNormalImpl {
     pub fn blocking_read(&self) -> SimpleTraitTwinNormalRwLockReadGuard {
         match self {
-            Self::StructOneWithTraitTwinNormal(inner) => SimpleTraitTwinNormalRwLockReadGuard::StructOneWithTraitTwinNormal(inner.blocking_read()),
-            Self::StructTwoWithTraitTwinNormal(inner) => SimpleTraitTwinNormalRwLockReadGuard::StructTwoWithTraitTwinNormal(inner.blocking_read()),
+            Self::StructOneWithTraitTwinNormal(inner) => {
+                SimpleTraitTwinNormalRwLockReadGuard::StructOneWithTraitTwinNormal(
+                    inner.blocking_read(),
+                )
+            }
+            Self::StructTwoWithTraitTwinNormal(inner) => {
+                SimpleTraitTwinNormalRwLockReadGuard::StructTwoWithTraitTwinNormal(
+                    inner.blocking_read(),
+                )
+            }
         }
     }
 }
 
 pub enum SimpleTraitTwinNormalRwLockReadGuard<'a> {
-    StructOneWithTraitTwinNormal(flutter_rust_bridge::for_generated::rust_async::RwLockReadGuard<'a, StructOneWithTraitTwinNormal>),
-    StructTwoWithTraitTwinNormal(flutter_rust_bridge::for_generated::rust_async::RwLockReadGuard<'a, StructTwoWithTraitTwinNormal>),
+    StructOneWithTraitTwinNormal(
+        flutter_rust_bridge::for_generated::rust_async::RwLockReadGuard<
+            'a,
+            StructOneWithTraitTwinNormal,
+        >,
+    ),
+    StructTwoWithTraitTwinNormal(
+        flutter_rust_bridge::for_generated::rust_async::RwLockReadGuard<
+            'a,
+            StructTwoWithTraitTwinNormal,
+        >,
+    ),
+}
+
+impl std::ops::Deref for SimpleTraitTwinNormalRwLockReadGuard<'_> {
+    type Target = dyn SimpleTraitTwinNormal;
+
+    fn deref(&self) -> &Self::Target {
+        match self {
+            Self::StructOneWithTraitTwinNormal(inner) => &*inner,
+            Self::StructTwoWithTraitTwinNormal(inner) => &*inner,
+        }
+    }
 }
