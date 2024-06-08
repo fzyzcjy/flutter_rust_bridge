@@ -16,32 +16,41 @@ Future<int> funcArgTraitImplTwinNormal(
         {required SimpleTraitTwinNormalImpl arg}) =>
     RustLib.instance.api.crateApiMinimalFuncArgTraitImplTwinNormal(arg: arg);
 
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructOneWithTraitTwinNormal>>
-abstract class StructOneWithTraitTwinNormal implements SimpleTraitTwinNormal {
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<SimpleTraitTwinNormalImpl>>
+abstract class SimpleTraitTwinNormalImpl {
+  void dispose();
+
+  bool get isDisposed;
+}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructOneWithTraitForDynTwinNormal>>
+abstract class StructOneWithTraitForDynTwinNormal
+    implements SimpleTraitForDynTwinNormal {
   int get one;
 
   void set one(int one);
 
-  Future<int> simpleTraitFnReceiverBorrowTwinNormal();
+  Future<int> simpleMethodTwinNormal();
 
   void dispose();
 
   bool get isDisposed;
 }
 
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructTwoWithTraitTwinNormal>>
-abstract class StructTwoWithTraitTwinNormal implements SimpleTraitTwinNormal {
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructTwoWithTraitForDynTwinNormal>>
+abstract class StructTwoWithTraitForDynTwinNormal
+    implements SimpleTraitForDynTwinNormal {
   int get two;
 
   void set two(int two);
 
-  Future<int> simpleTraitFnReceiverBorrowTwinNormal();
+  Future<int> simpleMethodTwinNormal();
 
   void dispose();
 
   bool get isDisposed;
 }
 
-abstract class SimpleTraitTwinNormal {
-  Future<int> simpleTraitFnReceiverBorrowTwinNormal();
+abstract class SimpleTraitForDynTwinNormal {
+  Future<int> simpleMethodTwinNormal();
 }
