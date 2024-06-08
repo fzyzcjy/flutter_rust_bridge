@@ -493,3 +493,5 @@ class MyNodeImpl extends RustOpaque implements MyNode {
 
   Future<MyAudioParam> paramOne() => MyAudioParamProxyVariantMyNode(this);
 }
+
+class MyAudioParamProxyVariantMyNode {}
