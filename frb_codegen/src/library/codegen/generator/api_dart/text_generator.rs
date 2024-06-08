@@ -108,21 +108,20 @@ fn generate_end_api_text(
         header += c.header.clone();
     }
 
-    let header = header.all_code();
-
     let skips = compute_skips(item);
 
-    Ok(format!(
-        "
-        {header}
+    Ok(GeneralCode::Dart(GeneralDartCode {
+        header,
+        body: format!(
+            "
+            {skips}
 
-        {skips}
+            {funcs}
 
-        {funcs}
-
-        {classes}
-        ",
-    ))
+            {classes}
+            ",
+        ),
+    }))
 }
 
 fn compute_skips(item: &ApiDartOutputSpecItem) -> String {
