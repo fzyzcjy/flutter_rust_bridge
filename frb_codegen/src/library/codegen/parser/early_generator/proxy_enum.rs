@@ -25,10 +25,8 @@ pub(crate) fn generate(pack: &HirFlatPack, tentative_mir_pack: &MirPack) -> anyh
 
 fn generate_proxy_enum(proxy_variants: &[MirTypeDelegateProxyVariant]) -> String {
     let proxy_enum_ty = *proxy_variants[0].proxy_enum.clone();
-    let proxy_enum_dart_api_type =
-        ApiDartGenerator::new(proxy_enum_ty.clone(), context).dart_api_type();
 
-    let enum_name = format!("{proxy_enum_dart_api_type}ProxyEnum");
+    let enum_name = format!("{}ProxyEnum", proxy_enum_ty.safe_ident());
 
     let variants = ""; // TODO
 
