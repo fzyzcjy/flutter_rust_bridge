@@ -25,6 +25,7 @@ pub(crate) fn transform(
                 .unwrap()
                 .generate_implementor_enum()
         })
+        .sorted_by_key(|x| x.name.clone())
         .map(|x| generate_trait_impl_enum(x, &trait_impls))
         .collect::<anyhow::Result<Vec<_>>>()?
         .into_iter()
