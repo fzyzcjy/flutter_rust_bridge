@@ -24,6 +24,7 @@
     }
   },
   "existing_handler": null,
+  "extra_rust_output_code": "",
   "funcs_all": [
     {
       "accessor": null,

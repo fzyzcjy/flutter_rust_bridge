@@ -2,6 +2,8 @@
 // and is auto-generated from `impl_trait.rs` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
+// FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["rustAsync", "rustAsync sse"]}
+
 use crate::frb_generated::SimpleTraitForDynTwinSseImplementor;
 use flutter_rust_bridge::frb;
 

@@ -2,6 +2,7 @@
   "dart_code_of_type": {},
   "enum_pool": {},
   "existing_handler": null,
+  "extra_rust_output_code": "",
   "funcs_all": [],
   "skipped_functions": [],
   "struct_pool": {
