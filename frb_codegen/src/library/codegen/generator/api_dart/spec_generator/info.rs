@@ -93,7 +93,7 @@ impl<'a> ApiDartGeneratorInfoTrait for DelegateApiDartGenerator<'a> {
                 ApiDartGenerator::new(mir.inner.clone(), self.context).dart_api_type()
             }
             MirTypeDelegate::ProxyEnum(mir) => {
-                ApiDartGenerator::new(mir.inner.clone(), self.context).dart_api_type()
+                ApiDartGenerator::new(mir.original.clone(), self.context).dart_api_type()
             }
         }
     }

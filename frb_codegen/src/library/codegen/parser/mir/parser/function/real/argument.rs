@@ -171,7 +171,8 @@ fn parse_maybe_proxy_enum(ty: MirType, type_parser: &TypeParser) -> anyhow::Resu
     if type_parser.proxied_types.contains(&ty) {
         return Ok(MirType::Delegate(MirTypeDelegate::ProxyEnum(
             MirTypeDelegateProxyEnum {
-                inner: Box::new(ty),
+                original: Box::new(ty),
+                delegate_namespace: TODO,
             },
         )));
     }
