@@ -7,8 +7,12 @@ use syn::Type;
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type(&mut self, ty: &Type) -> anyhow::Result<MirType> {
         let resolve_ty = self.resolve_alias(ty);
+        let output = self.parse_type_inner(&resolve_ty)?;
+        Ok(output)
+    }
 
-        Ok(match resolve_ty.clone() {
+    fn parse_type_inner(&mut self, ty: &Type) -> anyhow::Result<MirType> {
+        Ok(match ty.clone() {
             Type::Path(x) => self.parse_type_path(&x)?,
             Type::Array(x) => self.parse_type_array(&x)?,
             Type::Slice(x) => self.parse_type_slice(&x)?,
@@ -17,7 +21,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             Type::ImplTrait(x) => self
                 .parse_type_impl_trait_dart_fn(&x)
                 .context("when trying to parse DartFn")?,
-            _ => self.parse_type_rust_auto_opaque_implicit(None, &resolve_ty, None, None)?,
+            _ => self.parse_type_rust_auto_opaque_implicit(None, &ty, None, None)?,
         })
     }
 
