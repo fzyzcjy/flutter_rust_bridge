@@ -16,16 +16,20 @@ pub(crate) fn execute(
     let dumper_tentative_mir = dumper.with_add_name_prefix("tentative_mir/");
     let tentative_mir_pack = mir::parse(config_mir, &pack, &dumper_tentative_mir)?;
 
-    let extra_codes = vec![
-        trait_impl_enum::generate(&pack, &tentative_mir_pack)?,
-        proxy_enum::generate(&pack, &tentative_mir_pack)?,
-    ];
-
-    inject_extra_code(
-        &mut pack,
-        &extra_codes.join(""),
-        &(config_mir.rust_input_namespace_pack).rust_output_path_namespace,
-    )?;
+    trait_impl_enum::generate(&mut pack, &tentative_mir_pack, config_mir)?;
+    proxy_enum::generate(&mut pack, &tentative_mir_pack, config_mir)?;
 
     Ok(pack)
+}
+
+fn inject_extra_code_to_rust_output(
+    pack: &mut HirFlatPack,
+    extra_code: &str,
+    config_mir: &ParserMirInternalConfig,
+) -> anyhow::Result<()> {
+    inject_extra_code(
+        pack,
+        &extra_code,
+        &(config_mir.rust_input_namespace_pack).rust_output_path_namespace,
+    )
 }
