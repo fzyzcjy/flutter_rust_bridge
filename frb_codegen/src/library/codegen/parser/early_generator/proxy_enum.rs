@@ -4,6 +4,7 @@ use crate::codegen::ir::hir::flat::pack::HirFlatPack;
 use crate::codegen::ir::mir::pack::MirPack;
 use crate::codegen::ir::mir::ty::delegate::{MirTypeDelegate, MirTypeDelegateProxyVariant};
 use crate::codegen::ir::mir::ty::MirType;
+use crate::codegen::parser::mir::parser::function::real::FUNC_PREFIX_FRB_INTERNAL_NO_IMPL;
 use crate::if_then_some;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
@@ -32,15 +33,21 @@ fn generate_proxy_enum(proxy_variants: &[MirTypeDelegateProxyVariant]) -> String
     let variants = (proxy_variants.iter())
         .map(|variant| {
             let upstream = &variant.upstream;
-            format!("{}(RustAutoOpaque<{}>),\n", upstream.safe_ident(), upstream.rust_api_type())
+            format!(
+                "{}(RustAutoOpaque<{}>),\n",
+                upstream.safe_ident(),
+                upstream.rust_api_type()
+            )
         })
         .join("");
 
     format!(
         "
-    enum {enum_name} {{
-        {variants}
-    }}
-    "
+        enum {enum_name} {{
+            {variants}
+        }}
+
+        pub fn {FUNC_PREFIX_FRB_INTERNAL_NO_IMPL}_dummy_function_{enum_name}(a: {enum_name}) {{ }}
+        "
     )
 }
