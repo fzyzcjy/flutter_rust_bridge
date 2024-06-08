@@ -9,6 +9,7 @@ use crate::codegen::ir::mir::ty::delegate::{
     MirTypeDelegate, MirTypeDelegateArray, MirTypeDelegateArrayMode, MirTypeDelegatePrimitiveEnum,
     MirTypeDelegateProxyVariant,
 };
+use crate::codegen::ir::mir::ty::MirType;
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use crate::utils::basic_code::dart_header_code::DartHeaderCode;
@@ -85,23 +86,23 @@ fn generate_proxy_variant(
     mir: &MirTypeDelegateProxyVariant,
     context: ApiDartGeneratorContext,
 ) -> String {
-    todo!();
+    let class_name = proxy_variant::compute_dart_extra_type(mir, context);
 
-    // let class_name = proxy_variant::compute_dart_extra_type(mir, context);
-    //
-    // let methods = generate_api_methods(
-    //     &todo!(),
-    //     context,
-    //     &GenerateApiMethodConfig {
-    //         mode_static: GenerateApiMethodMode::Nothing,
-    //         // TODO we provide impl
-    //         mode_non_static: GenerateApiMethodMode::DeclOnly,
-    //     },
-    //     &class_name,
-    // );
-    //
-    // format!(
-    //     "class {class_name} {{
-    //     }}"
-    // )
+    let methods = generate_api_methods(
+        &MirType::Delegate(MirTypeDelegate::ProxyVariant(mir.clone())),
+        context,
+        &GenerateApiMethodConfig {
+            mode_static: GenerateApiMethodMode::Nothing,
+            // TODO we provide impl
+            mode_non_static: GenerateApiMethodMode::DeclOnly,
+        },
+        &class_name,
+    );
+    let methods_str = methods.code;
+
+    format!(
+        "class {class_name} {{
+            {methods_str}
+        }}"
+    )
 }
