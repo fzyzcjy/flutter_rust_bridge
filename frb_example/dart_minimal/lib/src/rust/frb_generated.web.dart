@@ -29,6 +29,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   MyNode
+      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNode(
+          dynamic raw);
+
+  @protected
+  MyNode
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNode(
           dynamic raw);
 
@@ -58,10 +63,25 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum
+      dco_decode_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_my_audio_param_proxy_enum(
+          dynamic raw);
+
+  @protected
+  Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum
+      dco_decode_box_autoadd_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_my_audio_param_proxy_enum(
+          dynamic raw);
+
+  @protected
   void dco_decode_unit(dynamic raw);
 
   @protected
   BigInt dco_decode_usize(dynamic raw);
+
+  @protected
+  MyNode
+      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNode(
+          SseDeserializer deserializer);
 
   @protected
   MyNode
@@ -94,6 +114,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
+  Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum
+      sse_decode_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_my_audio_param_proxy_enum(
+          SseDeserializer deserializer);
+
+  @protected
+  Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum
+      sse_decode_box_autoadd_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_my_audio_param_proxy_enum(
+          SseDeserializer deserializer);
+
+  @protected
   void sse_decode_unit(SseDeserializer deserializer);
 
   @protected
@@ -104,6 +134,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   bool sse_decode_bool(SseDeserializer deserializer);
+
+  @protected
+  void
+      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNode(
+          MyNode self, SseSerializer serializer);
 
   @protected
   void
@@ -134,6 +169,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNode(
           MyNode self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_my_audio_param_proxy_enum(
+      Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum
+          self,
+      SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_my_audio_param_proxy_enum(
+      Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum
+          self,
+      SseSerializer serializer);
 
   @protected
   void sse_encode_unit(void self, SseSerializer serializer);
