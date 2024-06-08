@@ -2,6 +2,7 @@ use crate::codegen::ir::mir::func::OwnershipMode;
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
 use crate::codegen::ir::mir::ty::rust_auto_opaque_implicit::MirTypeRustAutoOpaqueImplicit;
 use crate::codegen::ir::mir::ty::MirType;
+use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
 use crate::codegen::parser::mir::parser::function::real::{FunctionParser, FunctionPartialInfo};
 use crate::codegen::parser::mir::parser::ty::result::parse_type_maybe_result;
 use crate::codegen::parser::mir::parser::ty::TypeParserParsingContext;
@@ -12,10 +13,11 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         &mut self,
         sig: &Signature,
         context: &TypeParserParsingContext,
+        attributes: &FrbAttributes,
     ) -> anyhow::Result<FunctionPartialInfo> {
         Ok(match &sig.output {
             ReturnType::Type(_, ty) => remove_reference_type(remove_primitive_unit(
-                self.parse_fn_output_type(ty, context)?,
+                self.parse_fn_output_type(ty, context, attributes)?,
             )),
             ReturnType::Default => Default::default(),
         })
@@ -26,6 +28,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         &mut self,
         ty: &Type,
         context: &TypeParserParsingContext,
+        attributes: &FrbAttributes,
     ) -> anyhow::Result<FunctionPartialInfo> {
         let mir = self.type_parser.parse_type(ty, context)?;
         let info = parse_type_maybe_result(&mir, self.type_parser, context)?;
