@@ -168,11 +168,11 @@ fn parse_attrs_from_fn_arg(fn_arg: &FnArg) -> &[Attribute] {
 }
 
 fn parse_maybe_proxy_enum(ty: MirType, type_parser: &TypeParser) -> anyhow::Result<MirType> {
-    if type_parser.proxied_types.contains(&ty) {
+    if let Some(proxied_type) = (type_parser.proxied_types.iter()).find(|x| x.original_ty == ty) {
         return Ok(MirType::Delegate(MirTypeDelegate::ProxyEnum(
             MirTypeDelegateProxyEnum {
                 original: Box::new(ty),
-                delegate_namespace: TODO,
+                delegate_namespace: proxied_type.proxy_enum_namespace.clone(),
             },
         )));
     }
