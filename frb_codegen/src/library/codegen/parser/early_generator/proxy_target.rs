@@ -1,6 +1,6 @@
 use crate::codegen::ir::hir::flat::pack::HirFlatPack;
 use crate::codegen::ir::mir::pack::MirPack;
-use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
+use crate::codegen::ir::mir::ty::delegate::{MirTypeDelegate, MirTypeDelegateProxyVariant};
 use crate::codegen::ir::mir::ty::MirType;
 use crate::if_then_some;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
@@ -15,5 +15,11 @@ pub(crate) fn generate(pack: &HirFlatPack, tentative_mir_pack: &MirPack) -> anyh
     let proxy_variants_of_target =
         (proxy_variants.into_iter()).into_group_map_by(|ty| ty.upstream.safe_ident());
 
-    todo!()
+    (proxy_variants_of_target.into_iter())
+        .map(|(_, proxy_variants)| generate_proxy_target(&proxy_variants))
+        .join("")
+}
+
+fn generate_proxy_target(proxy_variants: &[MirTypeDelegateProxyVariant]) -> String {
+    format!("{TODO}")
 }
