@@ -80,9 +80,26 @@ fn generate_code_impl(trait_def_name: &str, trait_impls: &[MirType]) -> String {
     )
 }
 
-fn generate_code_read_guard() -> String {
+fn generate_code_read_guard(trait_def_name: &str, trait_impls: &[MirType]) -> String {
+    let enum_name = format!("{trait_def_name}RwLockReadGuard");
+    let enum_def = generate_enum_raw(&trait_impls, &enum_name, |ty| {
+        format!("flutter_rust_bridge::for_generated::rust_async::RwLockReadGuard<'a, {ty}>")
+    });
+
+    let deref_body = generate_match_raw(trait_impls, |_| "inner.deref()".to_owned());
+
     format!(
-        "{enum_def}
+        "#[frb(ignore)]
+        {enum_def}
+
+
+        impl std::ops::Deref for {enum_name}<'_> {{
+            type Target = dyn SimpleTraitForDynTwinNormal;
+
+            fn deref(&self) -> &Self::Target {{
+                {deref_body}
+            }}
+        }}
         "
     )
 }
@@ -110,7 +127,14 @@ fn generate_enum_raw(
     )
 }
 
-fn generate_match_raw() -> String {
+fn generate_match_raw(trait_impls: &[MirType], branch: impl Fn(&str) -> String) -> String {
+    let variants = (trait_impls.iter())
+        .map(|ty| {
+            let rust_api_type = ty.rust_api_type();
+            format!("Self::{rust_api_type}(inner) => {}", branch(&rust_api_type))
+        })
+        .join("");
+
     format!(
         "match self {{
             {variants}
