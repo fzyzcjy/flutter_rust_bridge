@@ -1,9 +1,5 @@
-use crate::frb_generated::{
-    RustAutoOpaque, SimpleTraitForDynTwinNormalImpl, SimpleTraitTwinNormalImpl,
-};
+use crate::frb_generated::SimpleTraitForDynTwinNormalImpl;
 use flutter_rust_bridge::frb;
-use flutter_rust_bridge::rust_async::RwLockReadGuard;
-use std::ops;
 
 #[frb(init)]
 pub fn init_app() {
