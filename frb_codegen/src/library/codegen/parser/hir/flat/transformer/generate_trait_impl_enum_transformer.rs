@@ -167,7 +167,7 @@ fn generate_match_raw(trait_impls: &[MirType], branch: impl Fn(&str) -> String) 
     let variants = (trait_impls.iter())
         .map(|ty| {
             let rust_api_type = ty.rust_api_type();
-            format!("Self::{rust_api_type}(inner) => {}", branch(&rust_api_type))
+            format!("Self::{rust_api_type}(inner) => {},\n", branch(&rust_api_type))
         })
         .join("");
 
