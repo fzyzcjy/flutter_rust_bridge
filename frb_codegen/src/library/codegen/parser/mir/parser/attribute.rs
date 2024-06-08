@@ -111,7 +111,7 @@ impl FrbAttributes {
         self.any_eq(&FrbAttribute::External)
     }
 
-    pub(crate) fn generate_impl_enum(&self) -> bool {
+    pub(crate) fn generate_implementor_enum(&self) -> bool {
         self.any_eq(&FrbAttribute::GenerateImplEnum)
     }
 
@@ -195,7 +195,7 @@ mod frb_keyword {
     syn::custom_keyword!(non_eq);
     syn::custom_keyword!(positional);
     syn::custom_keyword!(external);
-    syn::custom_keyword!(generate_impl_enum);
+    syn::custom_keyword!(generate_implementor_enum);
     syn::custom_keyword!(rust_opaque_codec_moi);
     syn::custom_keyword!(serialize);
     syn::custom_keyword!(semi_serialize);
@@ -273,10 +273,10 @@ impl Parse for FrbAttribute {
             .or_else(|| parse_keyword::<positional, _>(input, &lookahead, positional, Positional))
             .or_else(|| parse_keyword::<external, _>(input, &lookahead, external, External))
             .or_else(|| {
-                parse_keyword::<generate_impl_enum, _>(
+                parse_keyword::<generate_implementor_enum, _>(
                     input,
                     &lookahead,
-                    generate_impl_enum,
+                    generate_implementor_enum,
                     GenerateImplEnum,
                 )
             })
@@ -676,8 +676,8 @@ mod tests {
     }
 
     #[test]
-    fn test_generate_impl_enum() {
-        simple_keyword_tester("generate_impl_enum", FrbAttribute::GenerateImplEnum);
+    fn test_generate_implementor_enum() {
+        simple_keyword_tester("generate_implementor_enum", FrbAttribute::GenerateImplEnum);
     }
 
     #[test]

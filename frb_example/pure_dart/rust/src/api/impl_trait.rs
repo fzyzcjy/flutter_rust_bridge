@@ -41,7 +41,7 @@ impl SimpleTraitTwinNormal for StructTwoWithTraitTwinNormal {
     }
 }
 
-#[frb(generate_impl_enum)]
+#[frb(generate_implementor_enum)]
 pub trait SimpleTraitForDynTwinNormal {
     fn simple_method_twin_normal(&self) -> i32;
 }
