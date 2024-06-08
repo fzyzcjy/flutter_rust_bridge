@@ -290,7 +290,7 @@ fn generate_proxy_enum_dart_encode(mir: &MirTypeDelegateProxyEnum, mir_pack: &Mi
         .map(|ty| {
             format!(
                 "if (self is {TODO}) {{
-                    return {TODO};
+                    return {enum_name}.{TODO}(self._upstream);
                 }}
                 "
             )
