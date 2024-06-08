@@ -197,8 +197,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     "flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_decode(inner)"
                         .to_owned()
                 } // MirTypeDelegate::DynTrait(_ir) => lang.throw_unimplemented(""),
-                MirTypeDelegate::ProxyEnum(_) => "inner".to_owned(),
-                MirTypeDelegate::ProxyVariant(_) => return None,
+                MirTypeDelegate::ProxyVariant(_) | MirTypeDelegate::ProxyEnum(_) => return None,
             },
         };
 
