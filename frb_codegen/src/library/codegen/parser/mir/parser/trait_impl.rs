@@ -40,7 +40,7 @@ pub(crate) fn parse(
         .flatten()
         .filter(|ty| {
             !ty.impl_ty.should_ignore(type_parser)
-                && is_struct_or_enum_or_opaque_from_them(ty.impl_ty)
+                && is_struct_or_enum_or_opaque_from_them(&ty.impl_ty)
         })
         .collect_vec())
 }
