@@ -5,6 +5,7 @@ use crate::codegen::misc::GeneratorProgressBarPack;
 use crate::codegen::parser::internal_config::ParserInternalConfig;
 use crate::codegen::ConfigDumpContent;
 
+pub(crate) mod early_generator;
 pub(crate) mod hir;
 pub(crate) mod internal_config;
 pub(crate) mod mir;
