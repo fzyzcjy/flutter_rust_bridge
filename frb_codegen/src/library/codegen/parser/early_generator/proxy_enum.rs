@@ -44,11 +44,9 @@ fn compute_proxied_types(proxy_variants: &[MirTypeDelegateProxyVariant]) -> Vec<
 }
 
 fn generate_proxy_enum(proxy_variants: &[&MirTypeDelegateProxyVariant]) -> String {
-    let proxy_enum_ty = MirTypeDelegateProxyEnum {
-        inner: proxy_variants[0].inner.clone(),
-    };
+    let proxy_enum_ty = *proxy_variants[0].inner.clone();
 
-    let enum_name = proxy_enum_ty.proxy_enum_name();
+    let enum_name = MirTypeDelegateProxyEnum::proxy_enum_name_raw(&proxy_enum_ty);
 
     let variants = (proxy_variants.iter())
         .map(|variant| {

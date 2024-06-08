@@ -324,7 +324,11 @@ impl MirTypeDelegateArray {
 
 impl MirTypeDelegateProxyEnum {
     pub(crate) fn proxy_enum_name(&self) -> String {
-        format!("{}ProxyEnum", self.inner.safe_ident())
+        Self::proxy_enum_name_raw(&self.inner)
+    }
+
+    pub(crate) fn proxy_enum_name_raw(inner_ty: &MirType) -> String {
+        format!("{}ProxyEnum", inner_ty.safe_ident())
     }
 }
 
