@@ -5,7 +5,7 @@ use crate::codegen::generator::wire::dart::spec_generator::wire_class::io::commo
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::{
     ExternFunc, ExternFuncParam,
 };
-use crate::utils::basic_code::dart_basic_header_code::DartHeaderCode;
+use crate::utils::basic_code::dart_header_code::DartHeaderCode;
 use itertools::Itertools;
 
 pub(crate) fn generate(

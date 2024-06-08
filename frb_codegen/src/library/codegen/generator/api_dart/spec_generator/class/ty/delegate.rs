@@ -5,7 +5,7 @@ use crate::codegen::ir::mir::ty::delegate::{
 };
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
-use crate::utils::basic_code::dart_basic_header_code::DartHeaderCode;
+use crate::utils::basic_code::dart_header_code::DartHeaderCode;
 
 impl<'a> ApiDartGeneratorClassTrait for DelegateApiDartGenerator<'a> {
     fn generate_class(&self) -> Option<ApiDartGeneratedClass> {
