@@ -93,6 +93,7 @@ pub struct MirTypeDelegateProxyVariant {
 pub struct MirTypeDelegateProxyEnum {
     pub original: Box<MirType>,
     pub delegate_namespace: Namespace,
+    pub variants: Vec<TODO>,
 }
 
 // pub struct MirTypeDelegateDynTrait {
