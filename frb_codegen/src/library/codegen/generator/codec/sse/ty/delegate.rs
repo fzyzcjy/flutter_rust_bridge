@@ -86,7 +86,6 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 },
                 MirTypeDelegate::Uuid => "self.as_bytes().to_vec()".to_owned(),
                 MirTypeDelegate::StreamSink(_)
-                | MirTypeDelegate::ProxyEnum(_)
                 /*| MirTypeDelegate::DynTrait(_)*/ => {
                     return Some(lang.throw_unimplemented(""))
                 }
@@ -95,7 +94,9 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     "flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_encode(self)"
                         .to_owned()
                 }
-                MirTypeDelegate::ProxyVariant(_) => return None,
+                MirTypeDelegate::ProxyVariant(_)
+                | MirTypeDelegate::ProxyEnum(_)
+                => return None,
             },
         };
         Some(simple_delegate_encode(
