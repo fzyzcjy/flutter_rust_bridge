@@ -5,6 +5,7 @@ use itertools::Itertools;
 use std::ops::Add;
 use std::path::PathBuf;
 use strum::IntoEnumIterator;
+use crate::utils::basic_code::general_code::GeneralCode;
 
 #[derive(Clone)]
 pub(crate) struct PathTexts(pub Vec<PathText>);
@@ -58,11 +59,11 @@ impl PathTexts {
 #[derive(Clone)]
 pub(crate) struct PathText {
     pub path: PathBuf,
-    pub text: String,
+    pub text: GeneralCode,
 }
 
 impl PathText {
-    pub(crate) fn new(path: PathBuf, text: String) -> Self {
+    pub(crate) fn new(path: PathBuf, text: GeneralCode) -> Self {
         Self { path, text }
     }
 }
