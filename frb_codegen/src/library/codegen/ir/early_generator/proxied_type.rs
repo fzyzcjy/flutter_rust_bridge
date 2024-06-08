@@ -1,3 +1,4 @@
+use crate::codegen::ir::mir::ty::delegate::MirTypeDelegateProxyVariant;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::utils::namespace::Namespace;
 
@@ -5,4 +6,5 @@ use crate::utils::namespace::Namespace;
 pub(crate) struct IrEarlyGeneratorProxiedType {
     pub proxy_enum_namespace: Namespace,
     pub original_ty: MirType,
+    pub variants: Vec<MirTypeDelegateProxyVariant>,
 }
