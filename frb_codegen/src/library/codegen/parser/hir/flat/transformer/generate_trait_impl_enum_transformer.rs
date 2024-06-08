@@ -40,7 +40,11 @@ fn generate_trait_impl_enum(
         .map(|x| x.impl_ty.clone())
         .collect_vec();
 
-    let enum_impl = generate_simple_enum(interest_trait_impls, &format!("{trait_def_name}Impl"));
+    let enum_impl = generate_simple_enum(
+        &interest_trait_impls,
+        &format!("{trait_def_name}Impl"),
+        |ty| format!("RustAutoOpaque<{ty}>"),
+    );
 
     Ok(format!(
         "{enum_impl}
@@ -50,11 +54,15 @@ fn generate_trait_impl_enum(
     ))
 }
 
-fn generate_simple_enum(trait_impls: &[MirType], enum_name: &str) -> String {
+fn generate_simple_enum(
+    trait_impls: &[MirType],
+    enum_name: &str,
+    wrapper: impl Fn(&str) -> String,
+) -> String {
     let variants = (trait_impls.iter())
         .map(|ty| {
             let rust_api_type = ty.rust_api_type();
-            format!("{rust_api_type}({rust_api_type})\n")
+            format!("{rust_api_type}({})\n", wrapper(&rust_api_type))
         })
         .join("");
 
