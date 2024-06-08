@@ -327,7 +327,7 @@ impl MirTypeDelegateArray {
 impl MirTypeDelegateProxyEnum {
     pub(crate) fn get_delegate(&self) -> MirType {
         MirType::EnumRef(MirTypeEnumRef {
-            ident: MirEnumIdent(NamespacedName::new(self.delegate_namespace, self.proxy_enum_name())),
+            ident: MirEnumIdent(NamespacedName::new(self.delegate_namespace.clone(), self.proxy_enum_name())),
             is_exception: false,
         })
     }
