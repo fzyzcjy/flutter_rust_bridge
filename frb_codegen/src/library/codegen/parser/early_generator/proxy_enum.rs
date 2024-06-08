@@ -1,4 +1,5 @@
 use crate::codegen::ir::early_generator::pack::IrEarlyGeneratorPack;
+use crate::codegen::ir::early_generator::proxied_type::IrEarlyGeneratorProxiedType;
 use crate::codegen::ir::hir::flat::pack::HirFlatPack;
 use crate::codegen::ir::mir::pack::MirPack;
 use crate::codegen::ir::mir::ty::delegate::{
@@ -31,14 +32,23 @@ pub(crate) fn generate(
         .join("");
 
     inject_extra_code_to_rust_output(&mut pack.hir_flat_pack, &extra_code, config_mir)?;
-    (pack.proxied_types).extend(compute_proxied_types(&proxy_variants));
+    (pack.proxied_types).extend(compute_proxied_types(&proxy_variants, config_mir));
 
     Ok(())
 }
 
-fn compute_proxied_types(proxy_variants: &[MirTypeDelegateProxyVariant]) -> Vec<MirType> {
+fn compute_proxied_types(
+    proxy_variants: &[MirTypeDelegateProxyVariant],
+    config_mir: &ParserMirInternalConfig,
+) -> Vec<IrEarlyGeneratorProxiedType> {
     (proxy_variants.iter())
-        .map(|variant| (*variant.inner).to_owned())
+        .map(|variant| IrEarlyGeneratorProxiedType {
+            proxy_enum_namespace: config_mir
+                .rust_input_namespace_pack
+                .rust_output_path_namespace
+                .clone(),
+            original_ty: (*variant.inner).to_owned(),
+        })
         .unique()
         .collect_vec()
 }
