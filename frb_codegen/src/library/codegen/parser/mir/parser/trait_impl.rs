@@ -5,6 +5,7 @@ use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
 use crate::codegen::parser::mir::parser::ty::trait_def::parse_type_trait;
 use crate::codegen::parser::mir::parser::ty::{TypeParser, TypeParserParsingContext};
+use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use crate::utils::crate_name::CrateName;
 use itertools::Itertools;
 
@@ -28,12 +29,12 @@ pub(crate) fn parse(
             let impl_ty = type_parser.parse_type(&x.impl_ty, &context).ok();
 
             if let (Some(trait_ty), Some(impl_ty)) = (trait_ty, impl_ty) {
-                if !impl_ty.should_ignore(context) {
+                if !impl_ty.should_ignore(type_parser) {
                     return Ok(Some(MirTraitImpl { trait_ty, impl_ty }));
                 }
             }
 
-            None
+            Ok(None)
         })
         .collect::<anyhow::Result<Vec<_>>>()?
         .into_iter()
