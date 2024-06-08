@@ -10,10 +10,16 @@ pub(crate) mod rust_opaque;
 pub(crate) mod structure;
 mod structure_freezed;
 mod structure_non_freezed;
+mod trait_def;
 
 #[enum_dispatch]
 pub(crate) trait ApiDartGeneratorClassTrait {
     fn generate_class(&self) -> Option<ApiDartGeneratedClass> {
+        None
+    }
+
+    /// The code will not be put in dart api files, but instead be in `frb_generated.dart`
+    fn generate_extra_impl_code(&self) -> Option<String> {
         None
     }
 }

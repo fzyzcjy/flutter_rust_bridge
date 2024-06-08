@@ -1,0 +1,26 @@
+{
+  "enums": [],
+  "existing_handler": null,
+  "functions": [
+    {
+      "item_fn": "GeneralizedItemFn(name=func_one, vis=Some(Visibility::Public(Pub)), attrs=[])",
+      "namespace": "crate::api_one",
+      "owner": "Function",
+      "sources": [
+        "Normal"
+      ]
+    },
+    {
+      "item_fn": "GeneralizedItemFn(name=func_two, vis=Some(Visibility::Public(Pub)), attrs=[])",
+      "namespace": "crate::api_two",
+      "owner": "Function",
+      "sources": [
+        "Normal"
+      ]
+    }
+  ],
+  "structs": [],
+  "trait_impls": [],
+  "traits": [],
+  "types": []
+}

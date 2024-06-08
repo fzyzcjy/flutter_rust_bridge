@@ -16,6 +16,8 @@ Config _$parseConfigResult(ArgResults result) => Config()
   ..verbose = result['verbose'] as bool
   ..cargoBuildArgs = result['cargo-build-args'] as List<String>
   ..wasmBindgenArgs = result['wasm-bindgen-args'] as List<String>
+  ..wasmPackRustupToolchain = result['wasm-pack-rustup-toolchain'] as String?
+  ..wasmPackRustflags = result['wasm-pack-rustflags'] as String?
   ..dartCompileJsEntrypoint = result['dart-compile-js-entrypoint'] as String?;
 
 ArgParser _$populateConfigParser(ArgParser parser) => parser
@@ -52,6 +54,15 @@ ArgParser _$populateConfigParser(ArgParser parser) => parser
   ..addMultiOption(
     'wasm-bindgen-args',
     help: 'Arguments passed to wasm-bindgen',
+  )
+  ..addOption(
+    'wasm-pack-rustup-toolchain',
+    help:
+        'Override RUSTUP_TOOLCHAIN environment variable when running wasm-pack',
+  )
+  ..addOption(
+    'wasm-pack-rustflags',
+    help: 'Override RUSTFLAGS environment variable when running wasm-pack',
   )
   ..addOption(
     'dart-compile-js-entrypoint',

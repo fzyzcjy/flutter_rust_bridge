@@ -2,7 +2,7 @@ use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::target::{Target, TargetOrCommon};
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::ty::WireDartCodecCstGeneratorEncoderTrait;
-use crate::library::codegen::ir::ty::IrTypeTrait;
+use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 
 impl<'a> WireDartCodecCstGeneratorEncoderTrait for OptionalWireDartCodecCstGenerator<'a> {
     fn generate_encode_func_body(&self) -> Acc<Option<String>> {
@@ -14,7 +14,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for OptionalWireDartCodecCstGener
                 } else {
                     "ffi.nullptr"
                 },
-                self.ir.inner.safe_ident()
+                self.mir.inner.safe_ident()
             )),
             _ => None,
         })
@@ -24,11 +24,11 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for OptionalWireDartCodecCstGener
         if target == Target::Web {
             format!(
                 "{}?",
-                WireDartCodecCstGenerator::new(self.ir.inner.clone(), self.context)
+                WireDartCodecCstGenerator::new(self.mir.inner.clone(), self.context)
                     .dart_wire_type(target)
             )
         } else {
-            WireDartCodecCstGenerator::new(self.ir.inner.clone(), self.context)
+            WireDartCodecCstGenerator::new(self.mir.inner.clone(), self.context)
                 .dart_wire_type(target)
         }
     }

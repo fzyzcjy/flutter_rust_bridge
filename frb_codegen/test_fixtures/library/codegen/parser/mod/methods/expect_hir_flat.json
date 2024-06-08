@@ -1,0 +1,80 @@
+{
+  "enums": [
+    {
+      "mirror": false,
+      "name": "crate::api/MyEnum",
+      "sources": [
+        "Normal"
+      ],
+      "visibility": "Public"
+    }
+  ],
+  "existing_handler": null,
+  "functions": [
+    {
+      "item_fn": "GeneralizedItemFn(name=example_instance_method, vis=Some(Visibility::Public(Pub)), attrs=[])",
+      "namespace": "crate::api",
+      "owner": {
+        "StructOrEnum": {
+          "impl_ty": "MyEnum",
+          "trait_def_name": null
+        }
+      },
+      "sources": [
+        "Normal"
+      ]
+    },
+    {
+      "item_fn": "GeneralizedItemFn(name=example_static_method, vis=Some(Visibility::Public(Pub)), attrs=[])",
+      "namespace": "crate::api",
+      "owner": {
+        "StructOrEnum": {
+          "impl_ty": "MyEnum",
+          "trait_def_name": null
+        }
+      },
+      "sources": [
+        "Normal"
+      ]
+    },
+    {
+      "item_fn": "GeneralizedItemFn(name=example_instance_method, vis=Some(Visibility::Public(Pub)), attrs=[])",
+      "namespace": "crate::api",
+      "owner": {
+        "StructOrEnum": {
+          "impl_ty": "MyStruct",
+          "trait_def_name": null
+        }
+      },
+      "sources": [
+        "Normal"
+      ]
+    },
+    {
+      "item_fn": "GeneralizedItemFn(name=example_static_method, vis=Some(Visibility::Public(Pub)), attrs=[])",
+      "namespace": "crate::api",
+      "owner": {
+        "StructOrEnum": {
+          "impl_ty": "MyStruct",
+          "trait_def_name": null
+        }
+      },
+      "sources": [
+        "Normal"
+      ]
+    }
+  ],
+  "structs": [
+    {
+      "mirror": false,
+      "name": "crate::api/MyStruct",
+      "sources": [
+        "Normal"
+      ],
+      "visibility": "Public"
+    }
+  ],
+  "trait_impls": [],
+  "traits": [],
+  "types": []
+}

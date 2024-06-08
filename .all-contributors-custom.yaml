@@ -22,6 +22,7 @@
 - JustSimplyKyle: Also finish implementing exception hierarchy. Allow ignore function.
 - Zaitam: Fix when method return struct. Partial migration to Dart 3.
 - coder0xff: Discuss binding unmodified Rust. Refactor SupportedInnerType. Extra codegen tester.
+- NobodyForNothing: Support impl-for partially.
 - nitn3lav: Nested `struct`s without `Box`.
 - AlienKevin: Add flutter example for macOS. Add doc for Android NDK bug. Improve migration doc.
 - alexthe2: Add Option Datetime. Add empty structs. Improve doc. Add `r#`. Fix mirror enum bug.
@@ -54,6 +55,7 @@
 - gutenfries: Bump proc-macros.
 - anstadnik: Check keywords.
 - syndim: Add a bracket to box.
+- vhdirk: Support dashed crate.
 - rhian-cs: Add Cargo workspace doc.
 - TENX-S: Improve doc. Reproduce a bug.
 - polypixeldev: Improve doc.

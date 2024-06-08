@@ -23,6 +23,7 @@ pub mod event_listener;
 pub mod exception;
 pub mod external_impl;
 pub mod external_type_in_crate;
+pub mod impl_trait;
 pub mod inside_macro;
 pub mod map_and_set;
 pub mod method;
@@ -50,4 +51,4 @@ pub mod tuple;
 pub mod type_alias;
 pub mod uuid_type;
 
-pub fn this_function_should_be_ignored() {}
+pub fn function_at_api_mod_rs() {}

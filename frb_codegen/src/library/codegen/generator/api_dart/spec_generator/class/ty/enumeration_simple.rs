@@ -1,15 +1,17 @@
 use crate::codegen::generator::api_dart::spec_generator::class::ApiDartGeneratedClass;
 use crate::codegen::generator::api_dart::spec_generator::misc::generate_dart_comments;
-use crate::codegen::ir::ty::enumeration::{IrEnum, IrVariant};
+use crate::codegen::ir::mir::ty::enumeration::{MirEnum, MirEnumVariant};
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
+use crate::utils::basic_code::DartBasicHeaderCode;
 use crate::utils::dart_keywords::make_string_keyword_safe;
 use itertools::Itertools;
 
 impl<'a> EnumRefApiDartGenerator<'a> {
     pub(crate) fn generate_mode_simple(
         &self,
-        src: &IrEnum,
+        src: &MirEnum,
         extra_body: &str,
+        header: DartBasicHeaderCode,
     ) -> Option<ApiDartGeneratedClass> {
         let comments = generate_dart_comments(&src.comments);
 
@@ -20,7 +22,7 @@ impl<'a> EnumRefApiDartGenerator<'a> {
             .collect_vec()
             .join("\n");
 
-        let name = &self.ir.ident.0.name;
+        let name = &self.mir.ident.0.name;
 
         Some(ApiDartGeneratedClass {
             namespace: src.name.namespace.clone(),
@@ -33,11 +35,11 @@ impl<'a> EnumRefApiDartGenerator<'a> {
                 }}",
             ),
             needs_freezed: false,
-            header: Default::default(),
+            header,
         })
     }
 
-    fn generate_mode_simple_variant(&self, variant: &IrVariant) -> String {
+    fn generate_mode_simple_variant(&self, variant: &MirEnumVariant) -> String {
         let variant_name = if self.context.config.dart_enums_style {
             make_string_keyword_safe(variant.name.dart_style())
         } else {

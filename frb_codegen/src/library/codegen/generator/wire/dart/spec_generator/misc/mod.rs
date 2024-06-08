@@ -8,11 +8,11 @@ use crate::codegen::generator::wire::dart::spec_generator::base::{
 };
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFunc;
-use crate::codegen::ir::namespace::Namespace;
-use crate::codegen::ir::pack::IrPackComputedCache;
+use crate::codegen::ir::mir::pack::MirPackComputedCache;
 use crate::codegen::misc::GeneratorProgressBarPack;
 use crate::library::codegen::generator::wire::dart::spec_generator::misc::ty::WireDartGeneratorMiscTrait;
 use crate::utils::basic_code::DartBasicHeaderCode;
+use crate::utils::namespace::Namespace;
 use crate::utils::path_utils::path_to_string;
 use anyhow::Context;
 use itertools::Itertools;
@@ -31,11 +31,13 @@ pub(crate) struct WireDartOutputSpecMisc {
     pub(crate) extra_functions: Acc<Vec<WireDartOutputCode>>,
 }
 
+#[allow(clippy::too_many_arguments)]
 pub(crate) fn generate(
     context: WireDartGeneratorContext,
-    cache: &IrPackComputedCache,
+    cache: &MirPackComputedCache,
     c_file_content: &str,
     api_dart_actual_output_paths: &[PathBuf],
+    extra_impl_text: &str,
     rust_extern_funcs: &[ExternFunc],
     rust_content_hash: i32,
     progress_bar_pack: &GeneratorProgressBarPack,
@@ -49,11 +51,12 @@ pub(crate) fn generate(
         )?,
         boilerplate: generate_boilerplate(
             api_dart_actual_output_paths,
+            extra_impl_text,
             cache,
             context,
             rust_content_hash,
         )?,
-        api_impl_normal_functions: (context.ir_pack.funcs.iter())
+        api_impl_normal_functions: (context.mir_pack.funcs_with_impl().iter())
             .map(|f| api_impl_body::generate_api_impl_normal_function(f, context))
             .collect::<anyhow::Result<Vec<_>>>()?,
         // wire_delegate_functions: (rust_extern_funcs.iter())
@@ -67,7 +70,8 @@ pub(crate) fn generate(
 
 fn generate_boilerplate(
     api_dart_actual_output_paths: &[PathBuf],
-    cache: &IrPackComputedCache,
+    extra_impl_text: &str,
+    cache: &MirPackComputedCache,
     context: WireDartGeneratorContext,
     rust_content_hash: i32,
 ) -> anyhow::Result<Acc<Vec<WireDartOutputCode>>> {
@@ -99,7 +103,7 @@ fn generate_boilerplate(
     import 'dart:async';
     ";
 
-    let execute_rust_initializers = (context.ir_pack.funcs.iter())
+    let execute_rust_initializers = (context.mir_pack.funcs_with_impl().iter())
         .filter(|f| f.initializer)
         .map(|f| format!("await api.{}();\n", f.name_dart_wire()))
         .join("");
@@ -178,6 +182,7 @@ fn generate_boilerplate(
                 io_directory = context.config.default_external_library_loader.io_directory,
                 web_prefix = context.config.default_external_library_loader.web_prefix,
             ),
+            body: extra_impl_text.to_owned(),
             ..Default::default()
         }],
         io: vec![WireDartOutputCode {

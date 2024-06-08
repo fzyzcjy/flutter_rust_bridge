@@ -6,7 +6,7 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::
     generate_enum_access_object_core, parse_wrapper_name_into_dart_name_and_self_path,
 };
 use crate::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::ty::WireRustCodecDcoGeneratorEncoderTrait;
-use crate::codegen::ir::ty::delegate::{IrTypeDelegate, IrTypeDelegatePrimitiveEnum};
+use crate::codegen::ir::mir::ty::delegate::{MirTypeDelegate, MirTypeDelegatePrimitiveEnum};
 use itertools::Itertools;
 
 impl<'a> WireRustCodecDcoGeneratorEncoderTrait for DelegateWireRustCodecDcoGenerator<'a> {
@@ -14,12 +14,13 @@ impl<'a> WireRustCodecDcoGeneratorEncoderTrait for DelegateWireRustCodecDcoGener
     // frb-coverage:ignore-start
     fn generate_impl_into_dart(&self) -> Option<String> {
         // frb-coverage:ignore-end
-        if let IrTypeDelegate::PrimitiveEnum(IrTypeDelegatePrimitiveEnum { ir, .. }) = &self.ir {
-            let src = ir.get(self.context.ir_pack);
+        if let MirTypeDelegate::PrimitiveEnum(MirTypeDelegatePrimitiveEnum { mir, .. }) = &self.mir
+        {
+            let src = mir.get(self.context.mir_pack);
             let (name, self_path) =
                 parse_wrapper_name_into_dart_name_and_self_path(&src.name, &src.wrapper_name);
 
-            let self_ref = generate_enum_access_object_core(ir, "self".to_owned(), self.context);
+            let self_ref = generate_enum_access_object_core(mir, "self".to_owned(), self.context);
             let variants = src
                 .variants()
                 .iter()
@@ -33,6 +34,7 @@ impl<'a> WireRustCodecDcoGeneratorEncoderTrait for DelegateWireRustCodecDcoGener
             let body = format!(
                 "match {self_ref} {{
                     {variants}
+                    _ => unreachable!(),
                 }}"
             );
 

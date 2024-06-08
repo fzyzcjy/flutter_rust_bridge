@@ -14,10 +14,12 @@ pub(crate) struct GeneratorWireDartOutput {
     pub output_texts: PathTexts,
 }
 
+#[allow(clippy::too_many_arguments)]
 pub(crate) fn generate(
     context: WireDartGeneratorContext,
     c_file_content: &str,
     api_dart_actual_output_paths: &[PathBuf],
+    extra_impl_text: &str,
     rust_extern_funcs: &[ExternFunc],
     rust_content_hash: i32,
     dumper: &Dumper,
@@ -27,6 +29,7 @@ pub(crate) fn generate(
         context,
         c_file_content,
         api_dart_actual_output_paths,
+        extra_impl_text,
         rust_extern_funcs,
         rust_content_hash,
         dumper,

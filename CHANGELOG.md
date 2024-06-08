@@ -1,5 +1,19 @@
 # Changelog
 
+## Unreleased
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Fix dashed library names #2034 (thanks @vhdirk)
+
+## 2.0.0-dev.37
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Support positional parameters (in addition to named parameters) #1988
+* Support overriding environment variable for build-web #1984
+* Hint users when a function is not public and is ignored #1985
+* Rename generated functions that are not to be used by end users explicitly #1983
+* Improve generated user-facing API #1988
+
 ## 2.0.0-dev.36
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.

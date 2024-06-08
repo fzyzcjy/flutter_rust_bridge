@@ -6,12 +6,12 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::cst::base::{
     WireRustCodecCstGenerator, WireRustCodecCstGeneratorContext,
 };
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
-use crate::codegen::ir::ty::IrType;
+use crate::codegen::ir::mir::ty::MirType;
 use crate::library::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::ty::WireRustCodecCstGeneratorDecoderTrait;
-use crate::library::codegen::ir::ty::IrTypeTrait;
+use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 
 pub(crate) fn generate_impl_decode(
-    types: &[IrType],
+    types: &[MirType],
     context: WireRustCodecCstGeneratorContext,
 ) -> Acc<Vec<WireRustOutputCode>> {
     let mut lines = Acc::<Vec<WireRustOutputCode>>::default();
@@ -27,7 +27,7 @@ pub(crate) fn generate_impl_decode(
 }
 
 fn generate_impl_decode_for_type(
-    ty: &IrType,
+    ty: &MirType,
     context: WireRustCodecCstGeneratorContext,
 ) -> Acc<WireRustOutputCode> {
     let generator = WireRustCodecCstGenerator::new(ty.clone(), context);
@@ -53,7 +53,7 @@ fn generate_impl_decode_for_type(
 }
 
 fn generate_impl_decode_jsvalue_for_type(
-    ty: &IrType,
+    ty: &MirType,
     context: WireRustCodecCstGeneratorContext,
 ) -> Acc<WireRustOutputCode> {
     let generator = WireRustCodecCstGenerator::new(ty.clone(), context);

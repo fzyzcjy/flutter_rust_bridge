@@ -29,7 +29,6 @@ void main() {
       constMeta: meta,
       argValues: const ['v'],
       apiImpl: _MockBaseApiImpl(),
-      hint: null,
     );
 
     expect(task.argMap, {'k': 'v'});

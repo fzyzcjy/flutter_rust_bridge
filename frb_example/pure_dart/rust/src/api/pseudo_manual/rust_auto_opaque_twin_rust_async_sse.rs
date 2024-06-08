@@ -131,6 +131,7 @@ pub trait HelloTraitTwinRustAsyncSse: Send + Sync {
     fn func_hello(&self) -> &str;
 }
 
+#[frb(opaque)]
 pub struct HelloOneStructTwinRustAsyncSse {
     inner: String,
 }

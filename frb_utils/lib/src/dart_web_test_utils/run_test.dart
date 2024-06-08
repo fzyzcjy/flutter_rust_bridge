@@ -33,6 +33,8 @@ Future<void> executeTestWeb(TestWebConfig config) async {
     cargoBuildArgs: [],
     wasmBindgenArgs: [],
     dartCompileJsEntrypoint: config.entrypoint,
+    wasmPackRustupToolchain: null,
+    wasmPackRustflags: null,
   ));
 
   Browser? browser;

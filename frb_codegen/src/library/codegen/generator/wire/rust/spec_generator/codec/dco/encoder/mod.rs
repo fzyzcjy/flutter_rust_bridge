@@ -4,7 +4,7 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::dco::base::{
     WireRustCodecDcoGenerator, WireRustCodecDcoGeneratorContext,
 };
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
-use crate::codegen::ir::ty::IrType;
+use crate::codegen::ir::mir::ty::MirType;
 use crate::library::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::ty::WireRustCodecDcoGeneratorEncoderTrait;
 
 mod misc;
@@ -12,7 +12,7 @@ pub(crate) mod ty;
 
 pub(crate) fn generate(
     context: WireRustCodecDcoGeneratorContext,
-    types: &[IrType],
+    types: &[MirType],
 ) -> WireRustCodecOutputSpec {
     let mut inner = Default::default();
     // inner += generate_misc();

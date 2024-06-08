@@ -1,22 +1,24 @@
+use crate::codegen::generator::api_dart;
 use crate::codegen::generator::api_dart::spec_generator::base::{
     ApiDartGenerator, ApiDartGeneratorContext,
 };
-use crate::codegen::ir::annotation::IrDartAnnotation;
-use crate::codegen::ir::comment::IrComment;
-use crate::codegen::ir::func::IrFunc;
-use crate::codegen::ir::import::IrDartImport;
-use crate::codegen::ir::namespace::Namespace;
-use crate::codegen::ir::pack::DistinctTypeGatherer;
-use crate::codegen::ir::ty::IrType;
+use crate::codegen::ir::mir::annotation::MirDartAnnotation;
+use crate::codegen::ir::mir::comment::MirComment;
+use crate::codegen::ir::mir::func::MirFunc;
+use crate::codegen::ir::mir::import::MirDartImport;
+use crate::codegen::ir::mir::pack::DistinctTypeGatherer;
+use crate::codegen::ir::mir::ty::MirType;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
-use crate::library::codegen::ir::ty::IrTypeTrait;
+use crate::library::codegen::ir::mir::ty::MirTypeTrait;
+use crate::utils::namespace::Namespace;
 use crate::utils::path_utils::path_to_string;
 use anyhow::Context;
 use itertools::Itertools;
 use pathdiff::diff_paths;
+use std::path::PathBuf;
 
 /// A trailing newline is included if comments is not empty.
-pub(crate) fn generate_dart_comments(comments: &[IrComment]) -> String {
+pub(crate) fn generate_dart_comments(comments: &[MirComment]) -> String {
     let mut comments = comments
         .iter()
         .map(|comment| comment.0.clone())
@@ -28,11 +30,11 @@ pub(crate) fn generate_dart_comments(comments: &[IrComment]) -> String {
     comments
 }
 
-pub(crate) fn generate_dart_metadata(metadata: &[IrDartAnnotation]) -> String {
+pub(crate) fn generate_dart_metadata(metadata: &[MirDartAnnotation]) -> String {
     let mut metadata = metadata
         .iter()
         .map(|it| match &it.library {
-            Some(IrDartImport {
+            Some(MirDartImport {
                 alias: Some(alias), ..
             }) => format!("@{}.{}", alias, it.content),
             _ => format!("@{}", it.content),
@@ -55,17 +57,19 @@ pub(crate) fn generate_dart_maybe_implements_exception(is_exception: bool) -> &'
 
 pub(crate) fn generate_imports_which_types_and_funcs_use(
     current_file_namespace: &Namespace,
-    seed_types: &Option<&Vec<&IrType>>,
-    seed_funcs: &Option<&Vec<&IrFunc>>,
+    seed_types: &Option<&Vec<&MirType>>,
+    seed_funcs: &Option<&Vec<&MirFunc>>,
     context: ApiDartGeneratorContext,
 ) -> anyhow::Result<String> {
     let interest_types = {
         let mut gatherer = DistinctTypeGatherer::new();
         if let Some(types) = seed_types {
-            (types.iter()).for_each(|x| x.visit_types(&mut |ty| gatherer.add(ty), context.ir_pack));
+            (types.iter())
+                .for_each(|x| x.visit_types(&mut |ty| gatherer.add(ty), context.mir_pack));
         }
         if let Some(funcs) = seed_funcs {
-            (funcs.iter()).for_each(|x| x.visit_types(&mut |ty| gatherer.add(ty), context.ir_pack));
+            (funcs.iter())
+                .for_each(|x| x.visit_types(&mut |ty| gatherer.add(ty), context.mir_pack));
         }
         gatherer.gather()
     };
@@ -81,15 +85,21 @@ pub(crate) fn generate_imports_which_types_and_funcs_use(
 }
 
 fn generate_imports_from_ty(
-    ty: &IrType,
+    ty: &MirType,
     current_file_namespace: &Namespace,
     context: ApiDartGeneratorContext,
 ) -> anyhow::Result<String> {
     let import_ty_itself = if let Some(ty_namespace) = ty.self_namespace() {
         if &ty_namespace != current_file_namespace {
+            let dummy_base_path = PathBuf::from("/".to_owned());
             let path_diff = diff_paths(
-                ty_namespace.to_pseudo_io_path("dart"),
-                (current_file_namespace.to_pseudo_io_path("dart").parent()).unwrap(),
+                api_dart::misc::compute_path_from_namespace(&dummy_base_path, &ty_namespace),
+                (api_dart::misc::compute_path_from_namespace(
+                    &dummy_base_path,
+                    current_file_namespace,
+                )
+                .parent())
+                .unwrap(),
             )
             .context("cannot diff path")?;
             format!(

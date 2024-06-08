@@ -1,13 +1,13 @@
 use anyhow::{Context, Result};
 use std::path::{Path, PathBuf};
 
-pub(crate) fn glob_path(pattern: &Path) -> Result<Vec<PathBuf>> {
-    let pattern = normalize_windows_unc_path(pattern.to_str().context("cannot convert to str")?);
-    glob::glob(pattern)?
-        .filter_map(Result::ok)
-        .map(|p| canonicalize_with_error_message(&p))
-        .collect::<Result<Vec<_>>>()
-}
+// pub(crate) fn glob_path(pattern: &Path) -> Result<Vec<PathBuf>> {
+//     let pattern = normalize_windows_unc_path(pattern.to_str().context("cannot convert to str")?);
+//     glob::glob(pattern)?
+//         .filter_map(Result::ok)
+//         .map(|p| canonicalize_with_error_message(&p))
+//         .collect::<Result<Vec<_>>>()
+// }
 
 pub(crate) fn path_to_string(path: &Path) -> Result<String> {
     Ok(path
@@ -41,14 +41,14 @@ pub(crate) fn find_dart_package_dir(dart_file_path: &Path) -> Result<PathBuf> {
     })
 }
 
-pub(crate) fn find_rust_crate_dir(rust_file_path: &Path) -> Result<PathBuf> {
-    find_parent_dir_with_file(rust_file_path, "Cargo.toml").with_context(|| {
-        // frb-coverage:ignore-start
-        // This will stop the whole generator and tell the users, so we do not care about testing it
-        format!("Fail to detect rust crate dir from rust_file_path={rust_file_path:?}")
-        // frb-coverage:ignore-end
-    })
-}
+// pub(crate) fn find_rust_crate_dir(rust_file_path: &Path) -> Result<PathBuf> {
+//     find_parent_dir_with_file(rust_file_path, "Cargo.toml").with_context(|| {
+//         // frb-coverage:ignore-start
+//         // This will stop the whole generator and tell the users, so we do not care about testing it
+//         format!("Fail to detect rust crate dir from rust_file_path={rust_file_path:?}")
+//         // frb-coverage:ignore-end
+//     })
+// }
 
 pub(crate) fn normalize_windows_unc_path(path: &str) -> &str {
     // on windows get rid of the UNC path
@@ -57,14 +57,13 @@ pub(crate) fn normalize_windows_unc_path(path: &str) -> &str {
 
 pub(crate) fn canonicalize_with_error_message(path: &Path) -> Result<PathBuf> {
     path.canonicalize()
-        .with_context(|| format!("path={path:?}"))
+        .with_context(|| format!("Fail to canonicalize path={path:?}"))
 }
 
 #[cfg(test)]
 mod tests {
-    use crate::utils::path_utils::{find_parent_dir_with_file, glob_path};
+    use crate::utils::path_utils::find_parent_dir_with_file;
     use anyhow::Result;
-    use std::collections::HashSet;
     use std::fs;
     use std::path::PathBuf;
     use tempfile::tempdir;
@@ -85,12 +84,12 @@ mod tests {
         fs::write(temp_dir.path().join("orange.rs"), "")?;
         fs::write(temp_dir.path().join("aha.rs"), "")?;
 
-        fn extract_names(items: &[PathBuf]) -> HashSet<String> {
-            items
-                .iter()
-                .map(|x| x.file_name().unwrap().to_str().unwrap().to_owned())
-                .collect()
-        }
+        // fn extract_names(items: &[PathBuf]) -> HashSet<String> {
+        //     items
+        //         .iter()
+        //         .map(|x| x.file_name().unwrap().to_str().unwrap().to_owned())
+        //         .collect()
+        // }
 
         assert_eq!(
             PathBuf::from("/a/b").join("*.rs"),
@@ -105,23 +104,23 @@ mod tests {
             PathBuf::from("/c/*.rs")
         );
 
-        assert_eq!(
-            extract_names(&glob_path(&temp_dir.path().join("*.rs"))?),
-            vec![
-                "apple.rs".to_owned(),
-                "orange.rs".to_owned(),
-                "aha.rs".to_owned()
-            ]
-            .into_iter()
-            .collect(),
-        );
-
-        assert_eq!(
-            extract_names(&glob_path(&temp_dir.path().join("a*.rs"))?),
-            vec!["apple.rs".to_owned(), "aha.rs".to_owned()]
-                .into_iter()
-                .collect(),
-        );
+        // assert_eq!(
+        //     extract_names(&glob_path(&temp_dir.path().join("*.rs"))?),
+        //     vec![
+        //         "apple.rs".to_owned(),
+        //         "orange.rs".to_owned(),
+        //         "aha.rs".to_owned()
+        //     ]
+        //     .into_iter()
+        //     .collect(),
+        // );
+        //
+        // assert_eq!(
+        //     extract_names(&glob_path(&temp_dir.path().join("a*.rs"))?),
+        //     vec!["apple.rs".to_owned(), "aha.rs".to_owned()]
+        //         .into_iter()
+        //         .collect(),
+        // );
 
         Ok(())
     }

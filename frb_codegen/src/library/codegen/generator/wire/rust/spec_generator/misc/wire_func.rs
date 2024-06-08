@@ -7,8 +7,9 @@ use crate::codegen::generator::wire::rust::spec_generator::extern_func::{
     ExternFunc, ExternFuncParam,
 };
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
-use crate::codegen::ir::func::{IrFunc, IrFuncMode, IrFuncOwnerInfo};
-use crate::codegen::ir::ty::IrType;
+use crate::codegen::ir::mir::func::{MirFunc, MirFuncMode, MirFuncOwnerInfo};
+use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
+use crate::codegen::ir::mir::ty::MirType;
 use crate::if_then_some;
 use crate::misc::consts::HANDLER_NAME;
 use convert_case::{Case, Casing};
@@ -16,7 +17,7 @@ use itertools::Itertools;
 use std::convert::TryInto;
 
 pub(crate) fn generate_wire_func(
-    func: &IrFunc,
+    func: &MirFunc,
     context: WireRustGeneratorContext,
 ) -> Acc<WireRustOutputCode> {
     let dart2rust_codec = WireRustCodecEntrypoint::from(func.codec_mode_pack.dart2rust);
@@ -66,14 +67,14 @@ pub(crate) fn generate_wire_func(
     })
 }
 
-fn generate_inner_func_args(func: &IrFunc) -> Vec<String> {
+fn generate_inner_func_args(func: &MirFunc) -> Vec<String> {
     let ans = func
         .inputs
         .iter()
         .map(|field| {
             let mut ans = format!("api_{}", field.inner.name.rust_style());
             let ownership_mode =
-                if_then_some!(let IrType::RustAutoOpaqueImplicit(o) = &field.inner.ty, o.ownership_mode)
+                if_then_some!(let MirType::RustAutoOpaqueImplicit(o) = &field.inner.ty, o.ownership_mode)
                     .or(field.ownership_mode);
             if let Some(ownership_mode) = ownership_mode {
                 ans = format!("{}{ans}", ownership_mode.prefix())
@@ -85,7 +86,7 @@ fn generate_inner_func_args(func: &IrFunc) -> Vec<String> {
     ans
 }
 
-fn generate_wrap_info_obj(func: &IrFunc) -> String {
+fn generate_wrap_info_obj(func: &MirFunc) -> String {
     format!(
         "flutter_rust_bridge::for_generated::TaskInfo{{ debug_name: \"{name}\", port: {port}, mode: flutter_rust_bridge::for_generated::FfiCallMode::{mode} }}",
         name = func.name.name,
@@ -98,19 +99,19 @@ fn generate_wrap_info_obj(func: &IrFunc) -> String {
     )
 }
 
-fn generate_code_inner_decode(func: &IrFunc) -> String {
+fn generate_code_inner_decode(func: &MirFunc) -> String {
     super::wire_func_rao::generate_code_inner_decode(func)
 }
 
-fn generate_code_call_inner_func_result(func: &IrFunc, inner_func_args: Vec<String>) -> String {
+fn generate_code_call_inner_func_result(func: &MirFunc, inner_func_args: Vec<String>) -> String {
     let mut ans = (func.rust_call_code.clone()).unwrap_or_else(|| match &func.owner {
-        IrFuncOwnerInfo::Function => {
+        MirFuncOwnerInfo::Function => {
             format!("{}({})", func.name.rust_style(), inner_func_args.join(", "))
         }
-        IrFuncOwnerInfo::Method(method) => {
+        MirFuncOwnerInfo::Method(method) => {
             format!(
                 r"{}::{}({})",
-                method.owner_ty_name().rust_style(),
+                method.owner_ty_name().unwrap().rust_style(),
                 method.actual_method_name,
                 inner_func_args.join(", ")
             )
@@ -121,6 +122,12 @@ fn generate_code_call_inner_func_result(func: &IrFunc, inner_func_args: Vec<Stri
         ans = format!("{ans}.await");
     }
 
+    if func.output.normal == MirType::Primitive(MirTypePrimitive::Unit)
+        && func.output.error.is_none()
+    {
+        ans = format!("{{ {ans}; }}");
+    }
+
     if !func.fallible() {
         ans = format!("Result::<_,()>::Ok({ans})");
     }
@@ -128,15 +135,15 @@ fn generate_code_call_inner_func_result(func: &IrFunc, inner_func_args: Vec<Stri
     ans
 }
 
-fn generate_handler_func_name(func: &IrFunc) -> String {
+fn generate_handler_func_name(func: &MirFunc) -> String {
     let codec = format!(
         "flutter_rust_bridge::for_generated::{}Codec",
         func.codec_mode_pack.rust2dart.delegate_or_self()
     );
 
     match func.mode {
-        IrFuncMode::Sync => format!("wrap_sync::<{codec},_>"),
-        IrFuncMode::Normal => {
+        MirFuncMode::Sync => format!("wrap_sync::<{codec},_>"),
+        MirFuncMode::Normal => {
             let name = if func.rust_async {
                 "wrap_async"
             } else {
@@ -154,18 +161,18 @@ fn generate_handler_func_name(func: &IrFunc) -> String {
     }
 }
 
-fn generate_return_type(func: &IrFunc) -> Option<String> {
+fn generate_return_type(func: &MirFunc) -> Option<String> {
     match func.mode {
-        IrFuncMode::Sync => Some(format!(
+        MirFuncMode::Sync => Some(format!(
             "flutter_rust_bridge::for_generated::WireSyncRust2Dart{}",
             func.codec_mode_pack.rust2dart.delegate_or_self(),
         )),
-        IrFuncMode::Normal => None,
+        MirFuncMode::Normal => None,
     }
 }
 
 fn generate_code_closure(
-    func: &IrFunc,
+    func: &MirFunc,
     code_decode: &str,
     code_inner_decode: &str,
     code_call_inner_func_result: &str,
@@ -175,7 +182,7 @@ fn generate_code_closure(
         .to_case(Case::Snake);
 
     match func.mode {
-        IrFuncMode::Sync => {
+        MirFuncMode::Sync => {
             format!(
                 "{code_decode}
                 transform_result_{codec}((move || {{
@@ -183,7 +190,7 @@ fn generate_code_closure(
                 }})())"
             )
         }
-        IrFuncMode::Normal => {
+        MirFuncMode::Normal => {
             let maybe_async_move = if func.rust_async { "async move" } else { "" };
             let maybe_await = if func.rust_async { ".await" } else { "" };
             format!(
@@ -197,7 +204,7 @@ fn generate_code_closure(
     }
 }
 
-fn generate_redirect_body(func: &IrFunc, params: &[ExternFuncParam]) -> String {
+fn generate_redirect_body(func: &MirFunc, params: &[ExternFuncParam]) -> String {
     format!(
         "{}_impl({})",
         wire_func_name(func),
@@ -205,14 +212,14 @@ fn generate_redirect_body(func: &IrFunc, params: &[ExternFuncParam]) -> String {
     )
 }
 
-pub(crate) fn wire_func_name(func: &IrFunc) -> String {
+pub(crate) fn wire_func_name(func: &MirFunc) -> String {
     let name = &func.name;
     format!("wire__{}__{}", name.namespace.safe_ident(), name.name)
 }
 
-fn ffi_call_mode(mode: IrFuncMode) -> &'static str {
+fn ffi_call_mode(mode: MirFuncMode) -> &'static str {
     match mode {
-        IrFuncMode::Normal => "Normal",
-        IrFuncMode::Sync => "Sync",
+        MirFuncMode::Normal => "Normal",
+        MirFuncMode::Sync => "Sync",
     }
 }

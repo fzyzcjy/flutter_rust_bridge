@@ -1,18 +1,20 @@
 use crate::codegen::generator::api_dart;
 use crate::codegen::generator::api_dart::spec_generator::base::ApiDartGenerator;
-use crate::codegen::generator::api_dart::spec_generator::function::ApiDartGeneratedFunction;
+use crate::codegen::generator::api_dart::spec_generator::function::{
+    compute_params_str, ApiDartGeneratedFunction,
+};
 use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGeneratorContext;
 use crate::codegen::generator::wire::dart::spec_generator::codec::base::WireDartCodecEntrypoint;
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
 use crate::codegen::generator::wire::rust::spec_generator::misc::wire_func::wire_func_name;
-use crate::codegen::ir::func::{IrFunc, IrFuncMode};
+use crate::codegen::ir::mir::func::{MirFunc, MirFuncArgMode, MirFuncMode};
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
-use crate::library::codegen::ir::ty::IrTypeTrait;
+use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
 
 pub(crate) fn generate_api_impl_normal_function(
-    func: &IrFunc,
+    func: &MirFunc,
     context: WireDartGeneratorContext,
 ) -> anyhow::Result<WireDartOutputCode> {
     let dart2rust_codec = WireDartCodecEntrypoint::from(func.codec_mode_pack.dart2rust);
@@ -35,9 +37,10 @@ pub(crate) fn generate_api_impl_normal_function(
 
     let ApiDartGeneratedFunction {
         func_return_type,
-        func_params_str,
+        func_params,
         ..
     } = api_dart_func;
+    let func_params_str = compute_params_str(&func_params, MirFuncArgMode::Named);
     let func_expr = format!(
         "{func_return_type} {func_name}({func_params_str})",
         func_name = func.name_dart_wire(),
@@ -52,19 +55,18 @@ pub(crate) fn generate_api_impl_normal_function(
             constMeta: {const_meta_field_name},
             argValues: [{arg_values}],
             apiImpl: this,
-            hint: hint,
         ))",
     );
     let function_implementation_body = if let Some(return_stream) = &api_dart_func.return_stream {
         let wrapped_call_handler = match func.mode {
-            IrFuncMode::Normal => {
+            MirFuncMode::Normal => {
                 if func.stream_dart_await {
                     format!("await {call_handler}")
                 } else {
                     format!("unawaited({call_handler})")
                 }
             }
-            IrFuncMode::Sync => call_handler.clone(),
+            MirFuncMode::Sync => call_handler.clone(),
         };
 
         format!(
@@ -85,7 +87,7 @@ pub(crate) fn generate_api_impl_normal_function(
     };
     let function_implementation = format!(
         "@override {func_expr} {maybe_async} {{ {function_implementation_body} }}",
-        maybe_async = if func.mode != IrFuncMode::Sync
+        maybe_async = if func.mode != MirFuncMode::Sync
             && api_dart_func.return_stream.is_some()
             && func.stream_dart_await
         {
@@ -106,21 +108,21 @@ pub(crate) fn generate_api_impl_normal_function(
     })
 }
 
-fn generate_execute_func_name(func: &IrFunc) -> &str {
+fn generate_execute_func_name(func: &MirFunc) -> &str {
     match func.mode {
-        IrFuncMode::Normal => "executeNormal",
-        IrFuncMode::Sync => "executeSync",
+        MirFuncMode::Normal => "executeNormal",
+        MirFuncMode::Sync => "executeSync",
     }
 }
 
-fn generate_task_class(func: &IrFunc) -> &str {
+fn generate_task_class(func: &MirFunc) -> &str {
     match func.mode {
-        IrFuncMode::Normal => "NormalTask",
-        IrFuncMode::Sync => "SyncTask",
+        MirFuncMode::Normal => "NormalTask",
+        MirFuncMode::Sync => "SyncTask",
     }
 }
 
-fn generate_companion_field(func: &IrFunc, const_meta_field_name: &str) -> String {
+fn generate_companion_field(func: &MirFunc, const_meta_field_name: &str) -> String {
     format!(
         r#"
         TaskConstMeta get {const_meta_field_name} => const TaskConstMeta(
@@ -137,21 +139,21 @@ fn generate_companion_field(func: &IrFunc, const_meta_field_name: &str) -> Strin
     )
 }
 
-fn generate_call_ffi_args(func: &IrFunc) -> &str {
-    if func.mode == IrFuncMode::Sync {
+fn generate_call_ffi_args(func: &MirFunc) -> &str {
+    if func.mode == MirFuncMode::Sync {
         ""
     } else {
         "port_"
     }
 }
 
-fn generate_arg_values(func: &IrFunc) -> String {
+fn generate_arg_values(func: &MirFunc) -> String {
     (func.inputs.iter())
         .map(|input| input.inner.name.dart_style())
         .join(", ")
 }
 
-fn generate_rust2dart_codec_object(func: &IrFunc) -> String {
+fn generate_rust2dart_codec_object(func: &MirFunc) -> String {
     let codec_mode = func.codec_mode_pack.rust2dart;
     let codec_name_pascal = codec_mode.delegate_or_self().to_string();
     let codec_name_snake = codec_name_pascal.to_case(Case::Snake);

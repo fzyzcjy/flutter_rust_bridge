@@ -5,24 +5,24 @@ use crate::codegen::generator::codec::sse::ty::delegate::{
 use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::ty::WireDartCodecCstGeneratorEncoderTrait;
-use crate::codegen::ir::ty::delegate::{
-    IrTypeDelegate, IrTypeDelegateArrayMode, IrTypeDelegatePrimitiveEnum, IrTypeDelegateTime,
+use crate::codegen::ir::mir::ty::delegate::{
+    MirTypeDelegate, MirTypeDelegateArrayMode, MirTypeDelegatePrimitiveEnum, MirTypeDelegateTime,
 };
-use crate::codegen::ir::ty::primitive::IrTypePrimitive;
-use crate::codegen::ir::ty::primitive_list::IrTypePrimitiveList;
+use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
+use crate::codegen::ir::mir::ty::primitive_list::MirTypePrimitiveList;
 use crate::library::codegen::generator::api_dart::spec_generator::base::ApiDartGenerator;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
-use crate::library::codegen::ir::ty::IrTypeTrait;
+use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 
 impl<'a> WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGenerator<'a> {
     fn generate_encode_func_body(&self) -> Acc<Option<String>> {
-        match &self.ir {
-            IrTypeDelegate::Array(ref array) => match &array.mode {
-                IrTypeDelegateArrayMode::General(_) => Acc::distribute(Some(format!(
+        match &self.mir {
+            MirTypeDelegate::Array(ref array) => match &array.mode {
+                MirTypeDelegateArrayMode::General(_) => Acc::distribute(Some(format!(
                     "return cst_encode_{}(raw);",
                     array.get_delegate().safe_ident(),
                 ))),
-                IrTypeDelegateArrayMode::Primitive(_) => Acc {
+                MirTypeDelegateArrayMode::Primitive(_) => Acc {
                     io: Some(format!(
                         "final ans = wire.cst_new_{}({length});
                         ans.ref.ptr.asTypedList({length}).setAll(0, raw);
@@ -42,7 +42,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGener
                 },
             },
 
-            IrTypeDelegate::String => Acc {
+            MirTypeDelegate::String => Acc {
                 io: Some(format!(
                     "return cst_encode_{}(utf8.encoder.convert(raw));",
                     uint8list_safe_ident(true)
@@ -50,21 +50,21 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGener
                 web: Some("return raw;".into()),
                 ..Default::default()
             },
-            IrTypeDelegate::Char => Acc {
+            MirTypeDelegate::Char => Acc {
                 io: Some("return cst_encode_String(raw);".into()),
                 web: Some("return cst_encode_String(raw);".into()),
                 ..Default::default()
             },
-            // IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
+            // MirTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
             //     // In this case, even though the body is the same, their types are different
             //     // and must be split.
             //     let body = format!(
             //         "return cst_encode_{}(raw);",
-            //         self.ir.get_delegate().safe_ident()
+            //         self.mir.get_delegate().safe_ident()
             //     );
             //     Acc::distribute(Some(body))
             // }
-            // IrTypeDelegate::StringList => Acc {
+            // MirTypeDelegate::StringList => Acc {
             //     io: Some(
             //         "final ans = wire.cst_new_StringList(raw.length);
             //         for (var i = 0; i < raw.length; i++){
@@ -76,37 +76,37 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGener
             //     web: Some("return raw;".into()),
             //     ..Default::default()
             // },
-            IrTypeDelegate::PrimitiveEnum(IrTypeDelegatePrimitiveEnum { ref repr, .. }) => {
+            MirTypeDelegate::PrimitiveEnum(MirTypeDelegatePrimitiveEnum { ref repr, .. }) => {
                 format!("return cst_encode_{}(raw.index);", repr.safe_ident()).into()
             }
-            IrTypeDelegate::Time(ir) => match ir {
-                IrTypeDelegateTime::Utc
-                | IrTypeDelegateTime::Local
-                | IrTypeDelegateTime::NaiveDate
-                | IrTypeDelegateTime::NaiveDateTime => Acc {
+            MirTypeDelegate::Time(mir) => match mir {
+                MirTypeDelegateTime::Utc
+                | MirTypeDelegateTime::Local
+                | MirTypeDelegateTime::NaiveDate
+                | MirTypeDelegateTime::NaiveDateTime => Acc {
                     io: Some("return cst_encode_i_64(raw.microsecondsSinceEpoch);".into()),
                     web: Some(
                         "return cst_encode_i_64(BigInt.from(raw.millisecondsSinceEpoch));".into(),
                     ),
                     ..Default::default()
                 },
-                IrTypeDelegateTime::Duration => Acc {
+                MirTypeDelegateTime::Duration => Acc {
                     io: Some("return cst_encode_i_64(raw.inMicroseconds);".into()),
                     web: Some("return cst_encode_i_64(BigInt.from(raw.inMilliseconds));".into()),
                     ..Default::default()
                 },
             },
-            // IrTypeDelegate::TimeList(t) => Acc::distribute(Some(format!(
+            // MirTypeDelegate::TimeList(t) => Acc::distribute(Some(format!(
             //     "final ans = Int64List(raw.length);
             //     for (var i=0; i < raw.length; ++i) ans[i] = cst_encode_{}(raw[i]);
             //     return cst_encode_list_prim_i_64(ans);",
-            //     IrTypeDelegate::Time(*t).safe_ident()
+            //     MirTypeDelegate::Time(*t).safe_ident()
             // ))),
-            IrTypeDelegate::Uuid => Acc::distribute(Some(format!(
+            MirTypeDelegate::Uuid => Acc::distribute(Some(format!(
                 "return cst_encode_{}(raw.toBytes());",
                 uint8list_safe_ident(true)
             ))),
-            // IrTypeDelegate::Uuids => Acc::distribute(Some(format!(
+            // MirTypeDelegate::Uuids => Acc::distribute(Some(format!(
             //     "final builder = BytesBuilder();
             //     for (final element in raw) {{
             //       builder.add(element.toBytes());
@@ -114,29 +114,31 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGener
             //     return cst_encode_{}(builder.toBytes());",
             //     uint8list_safe_ident()
             // ))),
-            IrTypeDelegate::Backtrace | IrTypeDelegate::AnyhowException => {
+            MirTypeDelegate::Backtrace
+            | MirTypeDelegate::AnyhowException
+            /*| MirTypeDelegate::DynTrait(_)*/ => {
                 Acc::distribute(Some("throw UnimplementedError();".to_string()))
             }
-            IrTypeDelegate::Map(_) => Acc::distribute(Some(format!(
+            MirTypeDelegate::Map(_) => Acc::distribute(Some(format!(
                 "return cst_encode_{}(raw.entries.map((e) => (e.key, e.value)).toList());",
-                self.ir.get_delegate().safe_ident()
+                self.mir.get_delegate().safe_ident()
             ))),
-            IrTypeDelegate::Set(ir) => Acc::distribute(Some(format!(
+            MirTypeDelegate::Set(mir) => Acc::distribute(Some(format!(
                 "return cst_encode_{}({});",
-                self.ir.get_delegate().safe_ident(),
-                generate_set_to_list(ir, self.context.as_api_dart_context(), "raw"),
+                self.mir.get_delegate().safe_ident(),
+                generate_set_to_list(mir, self.context.as_api_dart_context(), "raw"),
             ))),
-            IrTypeDelegate::StreamSink(ir) => Acc::distribute(Some(format!(
+            MirTypeDelegate::StreamSink(mir) => Acc::distribute(Some(format!(
                 "return cst_encode_{}({});",
-                self.ir.get_delegate().safe_ident(),
-                generate_stream_sink_setup_and_serialize(ir, "raw")
+                self.mir.get_delegate().safe_ident(),
+                generate_stream_sink_setup_and_serialize(mir, "raw")
             ))),
-            IrTypeDelegate::BigPrimitive(_) => Acc::distribute(Some(
+            MirTypeDelegate::BigPrimitive(_) => Acc::distribute(Some(
                 "return cst_encode_String(raw.toString());".to_string(),
             )),
-            IrTypeDelegate::RustAutoOpaqueExplicit(_) => Acc::distribute(Some(format!(
+            MirTypeDelegate::RustAutoOpaqueExplicit(_) => Acc::distribute(Some(format!(
                 "return cst_encode_{}(raw);",
-                self.ir.get_delegate().safe_ident(),
+                self.mir.get_delegate().safe_ident(),
             ))),
         }
     }
@@ -145,19 +147,19 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGener
     // frb-coverage:ignore-start
     fn dart_wire_type(&self, target: Target) -> String {
         // frb-coverage:ignore-end
-        match (&self.ir, target) {
-            (IrTypeDelegate::String, Target::Web) => "String".into(),
-            // (IrTypeDelegate::StringList, Target::Web) => "List<String>".into(),
-            // (IrTypeDelegate::StringList, _) => "ffi.Pointer<wire_cst_StringList>".to_owned(),
-            _ => WireDartCodecCstGenerator::new(self.ir.get_delegate(), self.context)
+        match (&self.mir, target) {
+            (MirTypeDelegate::String, Target::Web) => "String".into(),
+            // (MirTypeDelegate::StringList, Target::Web) => "List<String>".into(),
+            // (MirTypeDelegate::StringList, _) => "ffi.Pointer<wire_cst_StringList>".to_owned(),
+            _ => WireDartCodecCstGenerator::new(self.mir.get_delegate(), self.context)
                 .dart_wire_type(target),
         }
     }
 }
 
 fn uint8list_safe_ident(strict_dart_type: bool) -> String {
-    IrTypePrimitiveList {
-        primitive: IrTypePrimitive::U8,
+    MirTypePrimitiveList {
+        primitive: MirTypePrimitive::U8,
         strict_dart_type,
     }
     .safe_ident()

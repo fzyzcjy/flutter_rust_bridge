@@ -1,0 +1,283 @@
+{
+  "dart_code_of_type": {},
+  "enum_pool": {
+    "crate::api/MyEnum": {
+      "comments": [],
+      "ignore": false,
+      "mode": "Simple",
+      "name": "crate::api/MyEnum",
+      "variants": [
+        {
+          "comments": [],
+          "kind": "Value",
+          "name": "A",
+          "wrapper_name": "MyEnum_A"
+        },
+        {
+          "comments": [],
+          "kind": "Value",
+          "name": "B",
+          "wrapper_name": "MyEnum_B"
+        }
+      ],
+      "wrapper_name": null
+    }
+  },
+  "existing_handler": null,
+  "funcs_all": [
+    {
+      "accessor": null,
+      "arg_mode": "Named",
+      "codec_mode_pack": {
+        "dart2rust": "Cst",
+        "rust2dart": "Dco"
+      },
+      "comments": [],
+      "dart_name": null,
+      "has_impl": true,
+      "id": 1,
+      "initializer": false,
+      "inputs": [
+        {
+          "inner": {
+            "comments": [],
+            "default": null,
+            "is_final": true,
+            "is_rust_public": null,
+            "name": "that",
+            "settings": {
+              "is_in_mirrored_enum": false
+            },
+            "ty": {
+              "data": {
+                "PrimitiveEnum": {
+                  "mir": {
+                    "ident": "crate::api/MyEnum",
+                    "is_exception": false
+                  },
+                  "repr": "I32"
+                }
+              },
+              "safe_ident": "my_enum",
+              "type": "Delegate"
+            }
+          },
+          "ownership_mode": "Ref"
+        }
+      ],
+      "mode": "Normal",
+      "name": "crate::api/my_enum_example_instance_method",
+      "output": {
+        "error": null,
+        "normal": {
+          "data": "Unit",
+          "safe_ident": "unit",
+          "type": "Primitive"
+        }
+      },
+      "owner": {
+        "Method": {
+          "actual_method_dart_name": null,
+          "actual_method_name": "example_instance_method",
+          "mode": "Instance",
+          "owner_ty": {
+            "data": {
+              "PrimitiveEnum": {
+                "mir": {
+                  "ident": "crate::api/MyEnum",
+                  "is_exception": false
+                },
+                "repr": "I32"
+              }
+            },
+            "safe_ident": "my_enum",
+            "type": "Delegate"
+          },
+          "trait_def": null
+        }
+      },
+      "rust_async": false,
+      "rust_call_code": null,
+      "stream_dart_await": false
+    },
+    {
+      "accessor": null,
+      "arg_mode": "Named",
+      "codec_mode_pack": {
+        "dart2rust": "Cst",
+        "rust2dart": "Dco"
+      },
+      "comments": [],
+      "dart_name": null,
+      "has_impl": true,
+      "id": 2,
+      "initializer": false,
+      "inputs": [],
+      "mode": "Normal",
+      "name": "crate::api/my_enum_example_static_method",
+      "output": {
+        "error": null,
+        "normal": {
+          "data": "Unit",
+          "safe_ident": "unit",
+          "type": "Primitive"
+        }
+      },
+      "owner": {
+        "Method": {
+          "actual_method_dart_name": null,
+          "actual_method_name": "example_static_method",
+          "mode": "Static",
+          "owner_ty": {
+            "data": {
+              "PrimitiveEnum": {
+                "mir": {
+                  "ident": "crate::api/MyEnum",
+                  "is_exception": false
+                },
+                "repr": "I32"
+              }
+            },
+            "safe_ident": "my_enum",
+            "type": "Delegate"
+          },
+          "trait_def": null
+        }
+      },
+      "rust_async": false,
+      "rust_call_code": null,
+      "stream_dart_await": false
+    },
+    {
+      "accessor": null,
+      "arg_mode": "Named",
+      "codec_mode_pack": {
+        "dart2rust": "Cst",
+        "rust2dart": "Dco"
+      },
+      "comments": [],
+      "dart_name": null,
+      "has_impl": true,
+      "id": 3,
+      "initializer": false,
+      "inputs": [
+        {
+          "inner": {
+            "comments": [],
+            "default": null,
+            "is_final": true,
+            "is_rust_public": null,
+            "name": "that",
+            "settings": {
+              "is_in_mirrored_enum": false
+            },
+            "ty": {
+              "data": {
+                "exist_in_real_api": false,
+                "inner": {
+                  "data": {
+                    "ident": "crate::api/MyStruct",
+                    "is_exception": false
+                  },
+                  "safe_ident": "my_struct",
+                  "type": "StructRef"
+                }
+              },
+              "safe_ident": "box_autoadd_my_struct",
+              "type": "Boxed"
+            }
+          },
+          "ownership_mode": "Ref"
+        }
+      ],
+      "mode": "Normal",
+      "name": "crate::api/my_struct_example_instance_method",
+      "output": {
+        "error": null,
+        "normal": {
+          "data": "Unit",
+          "safe_ident": "unit",
+          "type": "Primitive"
+        }
+      },
+      "owner": {
+        "Method": {
+          "actual_method_dart_name": null,
+          "actual_method_name": "example_instance_method",
+          "mode": "Instance",
+          "owner_ty": {
+            "data": {
+              "ident": "crate::api/MyStruct",
+              "is_exception": false
+            },
+            "safe_ident": "my_struct",
+            "type": "StructRef"
+          },
+          "trait_def": null
+        }
+      },
+      "rust_async": false,
+      "rust_call_code": null,
+      "stream_dart_await": false
+    },
+    {
+      "accessor": null,
+      "arg_mode": "Named",
+      "codec_mode_pack": {
+        "dart2rust": "Cst",
+        "rust2dart": "Dco"
+      },
+      "comments": [],
+      "dart_name": null,
+      "has_impl": true,
+      "id": 4,
+      "initializer": false,
+      "inputs": [],
+      "mode": "Normal",
+      "name": "crate::api/my_struct_example_static_method",
+      "output": {
+        "error": null,
+        "normal": {
+          "data": "Unit",
+          "safe_ident": "unit",
+          "type": "Primitive"
+        }
+      },
+      "owner": {
+        "Method": {
+          "actual_method_dart_name": null,
+          "actual_method_name": "example_static_method",
+          "mode": "Static",
+          "owner_ty": {
+            "data": {
+              "ident": "crate::api/MyStruct",
+              "is_exception": false
+            },
+            "safe_ident": "my_struct",
+            "type": "StructRef"
+          },
+          "trait_def": null
+        }
+      },
+      "rust_async": false,
+      "rust_call_code": null,
+      "stream_dart_await": false
+    }
+  ],
+  "skipped_functions": [],
+  "struct_pool": {
+    "crate::api/MyStruct": {
+      "comments": [],
+      "dart_metadata": [],
+      "fields": [],
+      "generate_eq": true,
+      "generate_hash": true,
+      "ignore": false,
+      "is_fields_named": true,
+      "name": "crate::api/MyStruct",
+      "wrapper_name": null
+    }
+  },
+  "trait_impls": [],
+  "unused_types": []
+}

@@ -1,13 +1,13 @@
 use crate::codegen::generator::wire::dart::spec_generator::codec::dco::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::codec::dco::decoder::ty::WireDartCodecDcoGeneratorDecoderTrait;
-use crate::library::codegen::ir::ty::IrTypeTrait;
+use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use itertools::Itertools;
 
 impl<'a> WireDartCodecDcoGeneratorDecoderTrait for RecordWireDartCodecDcoGenerator<'a> {
     fn generate_impl_decode_body(&self) -> String {
-        let len = self.ir.values.len();
+        let len = self.mir.values.len();
         let values = self
-            .ir
+            .mir
             .values
             .iter()
             .enumerate()

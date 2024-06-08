@@ -34,6 +34,8 @@ pub mod exception_twin_rust_async;
 pub mod exception_twin_sync;
 pub mod external_type_in_crate_twin_rust_async;
 pub mod external_type_in_crate_twin_sync;
+pub mod impl_trait_twin_rust_async;
+pub mod impl_trait_twin_sync;
 pub mod map_and_set_twin_rust_async;
 pub mod map_and_set_twin_sync;
 pub mod method_twin_rust_async;
@@ -73,5 +75,3 @@ pub mod type_alias_twin_rust_async;
 pub mod type_alias_twin_sync;
 pub mod uuid_type_twin_rust_async;
 pub mod uuid_type_twin_sync;
-
-pub fn this_function_should_be_ignored() {}

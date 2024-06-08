@@ -6,6 +6,6 @@ impl<'a> WireDartCodecDcoGeneratorDecoderTrait
     for RustAutoOpaqueImplicitWireDartCodecDcoGenerator<'a>
 {
     fn generate_impl_decode_body(&self) -> String {
-        generalized_rust_opaque_generate_impl_decode_body(self.ir.clone().into(), self.context)
+        generalized_rust_opaque_generate_impl_decode_body(self.mir.clone().into(), self.context)
     }
 }

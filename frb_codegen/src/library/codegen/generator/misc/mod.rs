@@ -1,10 +1,10 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::codec::sse::lang::Lang;
 use crate::codegen::generator::misc::target::{TargetOrCommon, TargetOrCommonMap};
-use crate::codegen::ir::field::IrField;
-use crate::codegen::ir::ty::boxed::IrTypeBoxed;
-use crate::codegen::ir::ty::delegate::IrTypeDelegate;
-use crate::codegen::ir::ty::IrType;
+use crate::codegen::ir::mir::field::MirField;
+use crate::codegen::ir::mir::ty::boxed::MirTypeBoxed;
+use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
+use crate::codegen::ir::mir::ty::MirType;
 use crate::utils::file_utils::create_dir_all_and_write;
 use itertools::Itertools;
 use std::ops::Add;
@@ -19,23 +19,23 @@ pub(crate) mod text_generator_utils;
 /// In WASM, these types belong to the JS scope-local heap, **NOT** the Rust heap and
 /// therefore do not implement [Send]. More specifically, these are types wasm-bindgen
 /// can't handle yet.
-pub fn is_js_value(ty: &IrType) -> bool {
+pub fn is_js_value(ty: &MirType) -> bool {
     match ty {
-        IrType::GeneralList(_)
-        | IrType::StructRef(_)
-        | IrType::EnumRef(_)
-        | IrType::RustAutoOpaqueImplicit(_)
-        | IrType::RustOpaque(_)
-        | IrType::Delegate(IrTypeDelegate::RustAutoOpaqueExplicit(_))
-        | IrType::DartOpaque(_)
-        | IrType::DartFn(_)
-        | IrType::Record(_) => true,
-        IrType::Boxed(IrTypeBoxed { inner, .. }) => is_js_value(inner),
-        IrType::Delegate(inner) => is_js_value(&inner.get_delegate()),
-        IrType::Optional(inner) => is_js_value(&inner.inner),
-        IrType::Primitive(_) | IrType::PrimitiveList(_) => false,
+        MirType::GeneralList(_)
+        | MirType::StructRef(_)
+        | MirType::EnumRef(_)
+        | MirType::RustAutoOpaqueImplicit(_)
+        | MirType::RustOpaque(_)
+        | MirType::Delegate(MirTypeDelegate::RustAutoOpaqueExplicit(_))
+        | MirType::DartOpaque(_)
+        | MirType::DartFn(_)
+        | MirType::Record(_) => true,
+        MirType::Boxed(MirTypeBoxed { inner, .. }) => is_js_value(inner),
+        MirType::Delegate(inner) => is_js_value(&inner.get_delegate()),
+        MirType::Optional(inner) => is_js_value(&inner.inner),
+        MirType::Primitive(_) | MirType::PrimitiveList(_) => false,
         // frb-coverage:ignore-start
-        IrType::Dynamic(_) => unreachable!(),
+        MirType::Dynamic(_) | MirType::TraitDef(_) => unreachable!(),
         // frb-coverage:ignore-end
     }
 }
@@ -108,7 +108,7 @@ impl StructOrRecord {
     pub(crate) fn field_name(
         &self,
         index: usize,
-        field: &IrField,
+        field: &MirField,
         is_field_named: bool,
         lang: &Lang,
     ) -> String {

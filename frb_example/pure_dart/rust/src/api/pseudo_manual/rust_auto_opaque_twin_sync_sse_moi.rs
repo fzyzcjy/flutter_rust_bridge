@@ -148,6 +148,7 @@ pub trait HelloTraitTwinSyncSseMoi: Send + Sync {
     fn func_hello(&self) -> &str;
 }
 
+#[frb(opaque)]
 pub struct HelloOneStructTwinSyncSseMoi {
     inner: String,
 }

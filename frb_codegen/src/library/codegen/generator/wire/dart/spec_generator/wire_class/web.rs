@@ -98,7 +98,7 @@ fn generate_method(func: &ExternFunc) -> MethodInfo {
 
 /// Since there exists no toolchain that can generate Dart bindings
 /// for JS code, we have to supply our own stubs. The external function
-/// generator however converts an [IrType] (sometimes a raw string)
+/// generator however converts an [MirType] (sometimes a raw string)
 /// into its string representation, so these heuristics parse those representations
 /// into their appropriate Dart wire types. Note that only a subset of types
 /// is supported, outside of which `dynamic` is returned.

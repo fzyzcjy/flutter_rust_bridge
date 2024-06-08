@@ -14,7 +14,6 @@ use crate::codegen::config::internal_config::InternalConfig;
 use crate::codegen::dumper::internal_config::ConfigDumpContent::Config as ContentConfig;
 use crate::codegen::dumper::Dumper;
 use crate::codegen::misc::GeneratorProgressBarPack;
-use crate::codegen::parser::reader::CachedRustReader;
 pub use config::config::{Config, MetaConfig};
 pub use dumper::internal_config::ConfigDumpContent;
 use log::debug;
@@ -43,21 +42,13 @@ fn generate_once(internal_config: &InternalConfig, dumper: &Dumper) -> anyhow::R
 
     preparer::prepare(&internal_config.preparer)?;
 
-    let mut cached_rust_reader = CachedRustReader::default();
-
     let pb = progress_bar_pack.parse.start();
-    let ir_pack = parser::parse(
-        &internal_config.parser,
-        &mut cached_rust_reader,
-        dumper,
-        &progress_bar_pack,
-    )?;
-    dumper.dump(ConfigDumpContent::Ir, "ir_pack.json", &ir_pack)?;
+    let mir_pack = parser::parse(&internal_config.parser, dumper, &progress_bar_pack)?;
     drop(pb);
 
     let pb = progress_bar_pack.generate.start();
     let generator_output = generator::generate(
-        &ir_pack,
+        &mir_pack,
         &internal_config.generator,
         dumper,
         &progress_bar_pack,

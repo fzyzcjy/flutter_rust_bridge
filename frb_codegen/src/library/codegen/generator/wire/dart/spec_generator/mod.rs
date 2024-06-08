@@ -11,7 +11,7 @@ use crate::codegen::generator::wire::dart::spec_generator::output_code::{
     DartApiImplClassMethod, WireDartOutputCode,
 };
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFunc;
-use crate::codegen::ir::pack::IrPackComputedCache;
+use crate::codegen::ir::mir::pack::MirPackComputedCache;
 use crate::codegen::misc::GeneratorProgressBarPack;
 use crate::codegen::ConfigDumpContent::GeneratorInfo;
 use itertools::Itertools;
@@ -32,16 +32,18 @@ pub(crate) struct WireDartOutputSpec {
     pub(super) dart2rust: WireDartCodecOutputSpec,
 }
 
+#[allow(clippy::too_many_arguments)]
 pub(crate) fn generate(
     context: WireDartGeneratorContext,
     c_file_content: &str,
     api_dart_actual_output_paths: &[PathBuf],
+    extra_impl_text: &str,
     rust_extern_funcs: &[ExternFunc],
     rust_content_hash: i32,
     dumper: &Dumper,
     progress_bar_pack: &GeneratorProgressBarPack,
 ) -> anyhow::Result<WireDartOutputSpec> {
-    let cache = IrPackComputedCache::compute(context.ir_pack);
+    let cache = MirPackComputedCache::compute(context.mir_pack);
 
     dumper.dump(
         GeneratorInfo,
@@ -55,6 +57,7 @@ pub(crate) fn generate(
             &cache,
             c_file_content,
             api_dart_actual_output_paths,
+            extra_impl_text,
             rust_extern_funcs,
             rust_content_hash,
             progress_bar_pack,

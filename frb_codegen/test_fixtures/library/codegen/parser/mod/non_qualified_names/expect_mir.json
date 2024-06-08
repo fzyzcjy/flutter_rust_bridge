@@ -1,0 +1,110 @@
+{
+  "dart_code_of_type": {},
+  "enum_pool": {},
+  "existing_handler": null,
+  "funcs_all": [
+    {
+      "accessor": null,
+      "arg_mode": "Named",
+      "codec_mode_pack": {
+        "dart2rust": "Cst",
+        "rust2dart": "Dco"
+      },
+      "comments": [],
+      "dart_name": null,
+      "has_impl": true,
+      "id": 1,
+      "initializer": false,
+      "inputs": [
+        {
+          "inner": {
+            "comments": [],
+            "default": null,
+            "is_final": true,
+            "is_rust_public": null,
+            "name": "duration",
+            "settings": {
+              "is_in_mirrored_enum": false
+            },
+            "ty": {
+              "data": {
+                "Time": "Duration"
+              },
+              "safe_ident": "Chrono_Duration",
+              "type": "Delegate"
+            }
+          },
+          "ownership_mode": "Owned"
+        },
+        {
+          "inner": {
+            "comments": [],
+            "default": null,
+            "is_final": true,
+            "is_rust_public": null,
+            "name": "uuid",
+            "settings": {
+              "is_in_mirrored_enum": false
+            },
+            "ty": {
+              "data": "Uuid",
+              "safe_ident": "Uuid",
+              "type": "Delegate"
+            }
+          },
+          "ownership_mode": "Owned"
+        }
+      ],
+      "mode": "Normal",
+      "name": "crate::api/func_1",
+      "output": {
+        "error": null,
+        "normal": {
+          "data": "Unit",
+          "safe_ident": "unit",
+          "type": "Primitive"
+        }
+      },
+      "owner": "Function",
+      "rust_async": false,
+      "rust_call_code": null,
+      "stream_dart_await": false
+    },
+    {
+      "accessor": null,
+      "arg_mode": "Named",
+      "codec_mode_pack": {
+        "dart2rust": "Cst",
+        "rust2dart": "Dco"
+      },
+      "comments": [],
+      "dart_name": null,
+      "has_impl": true,
+      "id": 2,
+      "initializer": false,
+      "inputs": [],
+      "mode": "Normal",
+      "name": "crate::api/func_anyhow_result",
+      "output": {
+        "error": {
+          "data": "String",
+          "safe_ident": "String",
+          "type": "Delegate"
+        },
+        "normal": {
+          "data": "I32",
+          "safe_ident": "i_32",
+          "type": "Primitive"
+        }
+      },
+      "owner": "Function",
+      "rust_async": false,
+      "rust_call_code": null,
+      "stream_dart_await": false
+    }
+  ],
+  "skipped_functions": [],
+  "struct_pool": {},
+  "trait_impls": [],
+  "unused_types": []
+}

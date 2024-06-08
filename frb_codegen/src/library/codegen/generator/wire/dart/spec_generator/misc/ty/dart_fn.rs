@@ -4,17 +4,17 @@ use crate::codegen::generator::wire::dart::spec_generator::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::misc::ty::WireDartGeneratorMiscTrait;
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
 use crate::codegen::generator::wire::rust::spec_generator::misc::ty::dart_fn::DartFnOutputAction;
-use crate::codegen::ir::ty::IrTypeTrait;
+use crate::codegen::ir::mir::ty::MirTypeTrait;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use itertools::Itertools;
 
 impl<'a> WireDartGeneratorMiscTrait for DartFnWireDartGenerator<'a> {
     fn generate_extra_functions(&self) -> Option<Acc<WireDartOutputCode>> {
-        let num_params = self.ir.inputs.len();
+        let num_params = self.mir.inputs.len();
         let raw_parameter_names = (0..num_params).map(|i| format!("rawArg{i}")).join(", ");
         let parameter_names = (0..num_params).map(|i| format!("arg{i}")).join(", ");
         let repeated_dynamics = (0..num_params).map(|_i| "dynamic".to_string()).join(", ");
-        let decode_block = (self.ir.inputs.iter().enumerate())
+        let decode_block = (self.mir.inputs.iter().enumerate())
             .map(|(i, ty)| {
                 format!(
                     "final arg{i} = dco_decode_{}(rawArg{i});\n",
@@ -22,23 +22,23 @@ impl<'a> WireDartGeneratorMiscTrait for DartFnWireDartGenerator<'a> {
                 )
             })
             .join("");
-        let ir_safe_ident = self.ir.safe_ident();
+        let mir_safe_ident = self.mir.safe_ident();
         let dart_api_type =
-            ApiDartGenerator::new(self.ir.clone(), self.context.as_api_dart_context())
+            ApiDartGenerator::new(self.mir.clone(), self.context.as_api_dart_context())
                 .dart_api_type();
 
         let output_normal_dart_api_type = ApiDartGenerator::new(
-            self.ir.output.normal.clone(),
+            self.mir.output.normal.clone(),
             self.context.as_api_dart_context(),
         )
         .dart_api_type();
         let output_error_dart_api_type = ApiDartGenerator::new(
-            self.ir.output.error.clone(),
+            self.mir.output.error.clone(),
             self.context.as_api_dart_context(),
         )
         .dart_api_type();
-        let output_normal_safe_ident = self.ir.output.normal.safe_ident();
-        let output_error_safe_ident = self.ir.output.error.safe_ident();
+        let output_normal_safe_ident = self.mir.output.normal.safe_ident();
+        let output_error_safe_ident = self.mir.output.error.safe_ident();
 
         let action_normal = DartFnOutputAction::Success as i32;
         let action_error = DartFnOutputAction::Error as i32;
@@ -46,7 +46,7 @@ impl<'a> WireDartGeneratorMiscTrait for DartFnWireDartGenerator<'a> {
         let api_impl_body = format!(
             r#"
             Future<void> Function(int, {repeated_dynamics})
-                encode_{ir_safe_ident}({dart_api_type} raw) {{
+                encode_{mir_safe_ident}({dart_api_type} raw) {{
               return (callId, {raw_parameter_names}) async {{
                 {decode_block}
 

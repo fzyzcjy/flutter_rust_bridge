@@ -1,5 +1,5 @@
-use crate::codegen::ir::namespace::Namespace;
 use crate::utils::basic_code::DartBasicHeaderCode;
+use crate::utils::namespace::Namespace;
 use serde::Serialize;
 
 pub(crate) mod field;

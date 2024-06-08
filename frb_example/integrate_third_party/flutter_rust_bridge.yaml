@@ -1,0 +1,5 @@
+rust_root: rust/
+rust_input: crate::api,web-audio-api
+dart_output: lib/src/rust
+dump_all: true
+local: true

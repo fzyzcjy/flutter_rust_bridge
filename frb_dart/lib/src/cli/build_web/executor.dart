@@ -27,6 +27,12 @@ class BuildWebArgs {
   final List<String> wasmBindgenArgs;
 
   /// {@macro flutter_rust_bridge.cli}
+  final String? wasmPackRustupToolchain;
+
+  /// {@macro flutter_rust_bridge.cli}
+  final String? wasmPackRustflags;
+
+  /// {@macro flutter_rust_bridge.cli}
   final String? dartCompileJsEntrypoint;
 
   /// {@macro flutter_rust_bridge.cli}
@@ -37,6 +43,8 @@ class BuildWebArgs {
     required this.rustCrateDir,
     required this.cargoBuildArgs,
     required this.wasmBindgenArgs,
+    required this.wasmPackRustupToolchain,
+    required this.wasmPackRustflags,
     required this.dartCompileJsEntrypoint,
   });
 }
@@ -160,8 +168,9 @@ Future<void> _executeWasmPack(BuildWebArgs args,
     // if (config.cliOpts.noDefaultFeatures) '--no-default-features',
     // if (config.cliOpts.features != null) '--features=${config.cliOpts.features}'
   ], env: {
-    'RUSTUP_TOOLCHAIN': 'nightly',
-    'RUSTFLAGS': '-C target-feature=+atomics,+bulk-memory,+mutable-globals',
+    'RUSTUP_TOOLCHAIN': args.wasmPackRustupToolchain ?? 'nightly',
+    'RUSTFLAGS': args.wasmPackRustflags ??
+        '-C target-feature=+atomics,+bulk-memory,+mutable-globals',
     if (stdout.supportsAnsiEscapes) 'CARGO_TERM_COLOR': 'always',
   });
 }

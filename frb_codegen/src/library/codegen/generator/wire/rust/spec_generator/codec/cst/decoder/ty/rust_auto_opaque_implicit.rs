@@ -4,9 +4,9 @@ use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::base::*;
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::ty::rust_opaque::generalized_rust_opaque_rust_wire_type;
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::ty::WireRustCodecCstGeneratorDecoderTrait;
-use crate::codegen::ir::func::OwnershipMode;
-use crate::codegen::ir::ty::rust_auto_opaque_implicit::IrTypeRustAutoOpaqueImplicit;
-use crate::codegen::ir::ty::IrTypeTrait;
+use crate::codegen::ir::mir::func::OwnershipMode;
+use crate::codegen::ir::mir::ty::rust_auto_opaque_implicit::MirTypeRustAutoOpaqueImplicit;
+use crate::codegen::ir::mir::ty::MirTypeTrait;
 use std::borrow::Cow;
 
 impl<'a> WireRustCodecCstGeneratorDecoderTrait
@@ -14,13 +14,13 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait
 {
     fn generate_impl_decode_body(&self) -> Acc<Option<String>> {
         Acc {
-            io: generate_decode(&self.ir),
+            io: generate_decode(&self.mir),
             ..Default::default()
         }
     }
 
     fn generate_impl_decode_jsvalue_body(&self) -> Option<Cow<str>> {
-        generate_decode(&self.ir).map(Cow::from)
+        generate_decode(&self.mir).map(Cow::from)
     }
 
     fn rust_wire_type(&self, target: Target) -> String {
@@ -28,13 +28,13 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait
     }
 }
 
-fn generate_decode(ir: &IrTypeRustAutoOpaqueImplicit) -> Option<String> {
-    if ir.ownership_mode == OwnershipMode::Owned {
+fn generate_decode(mir: &MirTypeRustAutoOpaqueImplicit) -> Option<String> {
+    if mir.ownership_mode == OwnershipMode::Owned {
         let inner = format!(
             "CstDecode::<{}>::cst_decode(self)",
-            ir.inner.rust_api_type()
+            mir.inner.rust_api_type()
         );
-        Some(generate_decode_rust_auto_opaque(ir, &inner))
+        Some(generate_decode_rust_auto_opaque(mir, &inner))
     } else {
         None
     }

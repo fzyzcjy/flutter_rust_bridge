@@ -1,10 +1,10 @@
-use crate::codegen::ir::func::{IrFunc, IrFuncInput, OwnershipMode};
-use crate::codegen::ir::ty::rust_auto_opaque_implicit::IrTypeRustAutoOpaqueImplicit;
-use crate::codegen::ir::ty::IrType;
+use crate::codegen::ir::mir::func::{MirFunc, MirFuncInput, OwnershipMode};
+use crate::codegen::ir::mir::ty::rust_auto_opaque_implicit::MirTypeRustAutoOpaqueImplicit;
+use crate::codegen::ir::mir::ty::MirType;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
 
-pub(crate) fn generate_code_inner_decode(func: &IrFunc) -> String {
+pub(crate) fn generate_code_inner_decode(func: &MirFunc) -> String {
     let interest_fields = filter_interest_fields(func);
     if interest_fields.is_empty() {
         return "".to_owned();
@@ -62,9 +62,9 @@ pub(crate) fn generate_code_inner_decode(func: &IrFunc) -> String {
 }
 
 fn generate_decode_statement(
-    func: &IrFunc,
-    field: &IrFuncInput,
-    ty: &IrTypeRustAutoOpaqueImplicit,
+    func: &MirFunc,
+    field: &MirFuncInput,
+    ty: &MirTypeRustAutoOpaqueImplicit,
 ) -> String {
     let mode = ty.ownership_mode.to_string().to_case(Case::Snake);
     format!(
@@ -75,10 +75,10 @@ fn generate_decode_statement(
     )
 }
 
-fn filter_interest_fields(func: &IrFunc) -> Vec<(&IrFuncInput, &IrTypeRustAutoOpaqueImplicit)> {
+fn filter_interest_fields(func: &MirFunc) -> Vec<(&MirFuncInput, &MirTypeRustAutoOpaqueImplicit)> {
     (func.inputs.iter())
         .filter_map(|field| {
-            if let IrType::RustAutoOpaqueImplicit(ty) = &field.inner.ty {
+            if let MirType::RustAutoOpaqueImplicit(ty) = &field.inner.ty {
                 if ty.ownership_mode != OwnershipMode::Owned {
                     Some((field, ty))
                 } else {
@@ -91,6 +91,6 @@ fn filter_interest_fields(func: &IrFunc) -> Vec<(&IrFuncInput, &IrTypeRustAutoOp
         .collect_vec()
 }
 
-fn get_variable_name(field: &IrFuncInput) -> &str {
+fn get_variable_name(field: &MirFuncInput) -> &str {
     field.inner.name.rust_style()
 }

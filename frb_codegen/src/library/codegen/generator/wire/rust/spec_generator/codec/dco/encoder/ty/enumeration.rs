@@ -6,16 +6,16 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::
     generate_impl_into_dart, generate_impl_into_into_dart,
 };
 use crate::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::ty::WireRustCodecDcoGeneratorEncoderTrait;
-use crate::codegen::ir::namespace::NamespacedName;
-use crate::codegen::ir::ty::enumeration::IrTypeEnumRef;
+use crate::codegen::ir::mir::ty::enumeration::MirTypeEnumRef;
+use crate::utils::namespace::NamespacedName;
 use itertools::Itertools;
 
 impl<'a> WireRustCodecDcoGeneratorEncoderTrait for EnumRefWireRustCodecDcoGenerator<'a> {
     fn generate_impl_into_dart(&self) -> Option<String> {
-        let src = self.ir.get(self.context.ir_pack);
+        let src = self.mir.get(self.context.mir_pack);
         let (name, _self_path) =
             parse_wrapper_name_into_dart_name_and_self_path(&src.name, &src.wrapper_name);
-        let self_ref = generate_enum_access_object_core(&self.ir, "self".to_owned(), self.context);
+        let self_ref = generate_enum_access_object_core(&self.mir, "self".to_owned(), self.context);
 
         let body = generate_enum_encode_rust_general(
             &Lang::RustLang(RustLang),
@@ -40,11 +40,11 @@ impl<'a> WireRustCodecDcoGeneratorEncoderTrait for EnumRefWireRustCodecDcoGenera
 }
 
 pub(super) fn generate_enum_access_object_core(
-    ir: &IrTypeEnumRef,
+    mir: &MirTypeEnumRef,
     obj: String,
     context: WireRustCodecDcoGeneratorContext,
 ) -> String {
-    let src = ir.get(context.ir_pack);
+    let src = mir.get(context.mir_pack);
     match &src.wrapper_name {
         Some(_) => format!("{obj}.0"),
         None => obj,

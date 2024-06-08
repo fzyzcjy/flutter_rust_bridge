@@ -1,0 +1,18 @@
+{
+  "enums": [],
+  "existing_handler": null,
+  "functions": [
+    {
+      "item_fn": "GeneralizedItemFn(name=first_function, vis=Some(Visibility::Public(Pub)), attrs=[])",
+      "namespace": "crate::api",
+      "owner": "Function",
+      "sources": [
+        "Normal"
+      ]
+    }
+  ],
+  "structs": [],
+  "trait_impls": [],
+  "traits": [],
+  "types": []
+}

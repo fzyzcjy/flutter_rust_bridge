@@ -5,8 +5,8 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::base::{
     WireRustCodecEntrypointTrait, WireRustCodecOutputSpec,
 };
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFuncParam;
-use crate::codegen::ir::func::IrFunc;
-use crate::codegen::ir::ty::IrType;
+use crate::codegen::ir::mir::func::MirFunc;
+use crate::codegen::ir::mir::ty::MirType;
 
 pub(crate) struct DcoWireRustCodecEntrypoint;
 
@@ -16,7 +16,7 @@ impl BaseCodecEntrypointTrait<WireRustGeneratorContext<'_>, WireRustCodecOutputS
     fn generate(
         &self,
         context: WireRustGeneratorContext,
-        types: &[IrType],
+        types: &[MirType],
         mode: EncodeOrDecode,
     ) -> Option<WireRustCodecOutputSpec> {
         match mode {
@@ -33,7 +33,7 @@ impl WireRustCodecEntrypointTrait<'_> for DcoWireRustCodecEntrypoint {
     // frb-coverage:ignore-start
     fn generate_func_params(
         &self,
-        _func: &IrFunc,
+        _func: &MirFunc,
         _context: WireRustGeneratorContext,
     ) -> Acc<Vec<ExternFuncParam>> {
         unreachable!()
@@ -41,7 +41,7 @@ impl WireRustCodecEntrypointTrait<'_> for DcoWireRustCodecEntrypoint {
 
     fn generate_func_call_decode(
         &self,
-        _func: &IrFunc,
+        _func: &MirFunc,
         _context: WireRustGeneratorContext,
     ) -> String {
         unreachable!()
