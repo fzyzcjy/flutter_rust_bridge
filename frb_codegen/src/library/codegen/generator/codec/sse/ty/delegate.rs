@@ -286,11 +286,11 @@ pub(crate) fn generate_stream_sink_setup_and_serialize(
 fn generate_proxy_enum_dart_encode(mir: &MirTypeDelegateProxyEnum, mir_pack: &MirPack) -> String {
     let enum_name = mir.proxy_enum_name();
 
-    let variants = (mir.inner.get(mir_pack).variants.iter())
+    let variants = (TODO.iter())
         .map(|ty| {
             format!(
                 "if (self is {TODO}) {{
-                    return {enum_name}.{TODO}(self._upstream);
+                    return {enum_name}.variant{index}(self._upstream);
                 }}
                 "
             )
