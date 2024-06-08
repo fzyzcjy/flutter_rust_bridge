@@ -91,7 +91,8 @@ pub struct MirTypeDelegateProxyVariant {
 }
 
 pub struct MirTypeDelegateProxyEnum {
-    pub inner: Box<MirType>,
+    pub original: Box<MirType>,
+    pub inner: MirTypeEnumRef,
 }
 
 // pub struct MirTypeDelegateDynTrait {
