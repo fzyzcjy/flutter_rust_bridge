@@ -8,39 +8,3 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<int> minimalAdder({required int a, required int b}) =>
     RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b);
-
-Future<int> funcArgTraitImplTwinNormal(
-        {required SimpleTraitForDynTwinNormalImpl arg}) =>
-    RustLib.instance.api.crateApiMinimalFuncArgTraitImplTwinNormal(arg: arg);
-
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructOneWithTraitForDynTwinNormal>>
-abstract class StructOneWithTraitForDynTwinNormal
-    implements SimpleTraitForDynTwinNormal {
-  int get one;
-
-  void set one(int one);
-
-  Future<int> simpleMethodTwinNormal();
-
-  void dispose();
-
-  bool get isDisposed;
-}
-
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructTwoWithTraitForDynTwinNormal>>
-abstract class StructTwoWithTraitForDynTwinNormal
-    implements SimpleTraitForDynTwinNormal {
-  int get two;
-
-  void set two(int two);
-
-  Future<int> simpleMethodTwinNormal();
-
-  void dispose();
-
-  bool get isDisposed;
-}
-
-abstract class SimpleTraitForDynTwinNormal {
-  Future<int> simpleMethodTwinNormal();
-}
