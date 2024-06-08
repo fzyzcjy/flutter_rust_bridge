@@ -5,6 +5,7 @@ use crate::codegen::generator::api_dart::spec_generator::class::misc::generate_c
 use crate::codegen::generator::api_dart::spec_generator::class::ty::ApiDartGeneratorClassTrait;
 use crate::codegen::generator::api_dart::spec_generator::class::ApiDartGeneratedClass;
 use crate::codegen::ir::mir::ty::enumeration::MirEnumMode;
+use crate::codegen::ir::mir::ty::MirType;
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
 
 impl<'a> ApiDartGeneratorClassTrait for EnumRefApiDartGenerator<'a> {
@@ -12,7 +13,7 @@ impl<'a> ApiDartGeneratorClassTrait for EnumRefApiDartGenerator<'a> {
         let src = self.mir.get(self.context.mir_pack);
 
         let methods = generate_api_methods(
-            &src.name,
+            &MirType::EnumRef(self.mir.clone()),
             self.context,
             &GenerateApiMethodConfig::COMBINED,
             &src.name.name,
