@@ -5,7 +5,7 @@ use crate::codegen::generator::wire::dart::spec_generator::wire_class::io::commo
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::{
     ExternFunc, ExternFuncParam,
 };
-use crate::utils::basic_code::dart_basic_header_code::DartBasicHeaderCode;
+use crate::utils::basic_code::dart_basic_header_code::DartHeaderCode;
 use itertools::Itertools;
 
 pub(crate) fn generate(
@@ -35,7 +35,7 @@ pub(crate) fn generate(
         "
     );
     Ok(WireDartOutputCode {
-        header: DartBasicHeaderCode {
+        header: DartHeaderCode {
             import: "import 'dart:ffi' as ffi;\n".to_owned(),
             ..Default::default()
         },

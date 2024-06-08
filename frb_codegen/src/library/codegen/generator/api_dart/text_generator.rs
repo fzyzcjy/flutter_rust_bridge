@@ -7,7 +7,7 @@ use crate::codegen::generator::api_dart::spec_generator::{
 use crate::codegen::generator::misc::target::TargetOrCommonMap;
 use crate::codegen::generator::misc::generate_code_header;
 use crate::codegen::generator::misc::path_texts::{PathText, PathTexts};
-use crate::utils::basic_code::dart_basic_header_code::DartBasicHeaderCode;
+use crate::utils::basic_code::dart_basic_header_code::DartHeaderCode;
 use crate::utils::path_utils::path_to_string;
 use anyhow::Context;
 use itertools::{concat, Itertools};
@@ -70,7 +70,7 @@ fn generate_end_api_text(
     let path_frb_generated = path_to_string(&path_frb_generated)?.replace('\\', "/");
 
     let preamble = &item.preamble.as_str();
-    let mut header = DartBasicHeaderCode {
+    let mut header = DartHeaderCode {
         file_top: generate_code_header()
             + if !preamble.is_empty() {"\n\n"} else {""} + preamble
             + "\n\n// ignore_for_file: invalid_use_of_internal_member, unused_import, unnecessary_import\n",
@@ -84,7 +84,7 @@ fn generate_end_api_text(
     };
 
     if item.needs_freezed {
-        header += DartBasicHeaderCode {
+        header += DartHeaderCode {
             import: "import 'package:freezed_annotation/freezed_annotation.dart' hide protected;"
                 .into(),
             part: format!(

@@ -1,4 +1,4 @@
-use crate::utils::basic_code::dart_basic_header_code::DartBasicHeaderCode;
+use crate::utils::basic_code::dart_basic_header_code::DartHeaderCode;
 use crate::utils::namespace::Namespace;
 use serde::Serialize;
 
@@ -9,7 +9,7 @@ pub(crate) mod ty;
 
 #[derive(Debug, Serialize)]
 pub(crate) struct ApiDartGeneratedClass {
-    pub(crate) header: DartBasicHeaderCode,
+    pub(crate) header: DartHeaderCode,
     pub(crate) namespace: Namespace,
     pub(crate) class_name: String,
     pub(crate) code: String,

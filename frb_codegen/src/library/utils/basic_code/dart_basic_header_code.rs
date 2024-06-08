@@ -4,15 +4,15 @@ use serde::Serialize;
 use std::ops::AddAssign;
 
 #[derive(Default, Clone, Debug, Serialize)]
-pub(crate) struct DartBasicHeaderCode {
+pub(crate) struct DartHeaderCode {
     pub file_top: String,
     pub import: String,
     pub part: String,
 }
 
-basic_code_partial_impl!(DartBasicHeaderCode);
+basic_code_partial_impl!(DartHeaderCode);
 
-impl AddAssign for DartBasicHeaderCode {
+impl AddAssign for DartHeaderCode {
     #[inline]
     fn add_assign(&mut self, rhs: Self) {
         self.file_top += &rhs.file_top;
@@ -21,7 +21,7 @@ impl AddAssign for DartBasicHeaderCode {
     }
 }
 
-impl DartBasicHeaderCode {
+impl DartHeaderCode {
     pub(crate) fn all_code(&self) -> String {
         let import = optimize_imports(&self.import);
         format!("{}\n{}\n{}", self.file_top, import, self.part)
