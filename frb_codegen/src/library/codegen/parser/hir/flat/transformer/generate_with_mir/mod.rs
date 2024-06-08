@@ -9,12 +9,19 @@ pub(crate) fn transform(
     config: &ParserHirInternalConfig,
 ) -> anyhow::Result<HirFlatPack> {
     let mir_pack = tentatively_run_mir(&pack)?;
-
-    let pack = generator::trait_impl_enum::transform(pack, &mir_pack, config)?;
-
-    Ok(pack)
+    execute_transformers(pack, &mir_pack, config)
 }
 
 fn tentatively_run_mir(pack: &HirFlatPack) -> anyhow::Result<MirPack> {
-    TODO;
+    TODO
+}
+
+fn execute_transformers(
+    pack: HirFlatPack,
+    mir_pack: &MirPack,
+    config: &ParserHirInternalConfig,
+) -> anyhow::Result<HirFlatPack> {
+    let pack = generator::trait_impl_enum::transform(pack, &mir_pack, config)?;
+    // TODO other transforms
+    Ok(pack)
 }
