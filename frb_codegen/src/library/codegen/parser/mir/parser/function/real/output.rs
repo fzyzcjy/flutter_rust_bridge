@@ -31,7 +31,6 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         attributes: &FrbAttributes,
     ) -> anyhow::Result<FunctionPartialInfo> {
         let mir = self.type_parser.parse_type(ty, context)?;
-        log::warn!("hi mir={mir:?}");
         let info = parse_type_maybe_result(&mir, self.type_parser, context)?;
         Ok(FunctionPartialInfo {
             ok_output: Some(info.ok_output),
