@@ -8,3 +8,18 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<int> minimalAdder({required int a, required int b}) =>
     RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b);
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyAudioParam>>
+abstract class MyAudioParam implements RustOpaqueInterface {
+  Future<String> myMethod();
+
+  factory MyAudioParam({required String value}) =>
+      RustLib.instance.api.crateApiMinimalMyAudioParamNew(value: value);
+}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyNode>>
+abstract class MyNode implements RustOpaqueInterface {
+  factory MyNode() => RustLib.instance.api.crateApiMinimalMyNodeNew();
+
+  Future<void> paramOne();
+}
