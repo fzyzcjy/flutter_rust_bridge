@@ -1,5 +1,5 @@
-use crate::simple_code_trait_impl;
 use crate::utils::basic_code::dart_header_code::DartHeaderCode;
+use crate::{impl_add_by_add_assign, simple_code_trait_impl};
 use serde::Serialize;
 use std::ops::AddAssign;
 
@@ -42,6 +42,30 @@ impl GeneralCode {
     pub(crate) fn new_c(body: String) -> GeneralCode {
         GeneralCode::C(GeneralCCode { body })
     }
+
+    pub(crate) fn dart(&self) -> &GeneralDartCode {
+        if let Self::Dart(inner) = self {
+            inner
+        } else {
+            panic!()
+        }
+    }
+
+    pub(crate) fn rust(&self) -> &GeneralRustCode {
+        if let Self::Rust(inner) = self {
+            inner
+        } else {
+            panic!()
+        }
+    }
+
+    pub(crate) fn c(&self) -> &GeneralCCode {
+        if let Self::C(inner) = self {
+            inner
+        } else {
+            panic!()
+        }
+    }
 }
 
 impl GeneralDartCode {
@@ -59,6 +83,17 @@ impl GeneralRustCode {
 impl GeneralCCode {
     pub(crate) fn all_code(&self) -> String {
         self.body.clone()
+    }
+}
+
+impl AddAssign for GeneralCode {
+    #[inline]
+    fn add_assign(&mut self, rhs: Self) {
+        match self {
+            GeneralCode::Dart(inner) => inner.add_assign(rhs.dart()),
+            GeneralCode::Rust(inner) => inner.add_assign(rhs.rust()),
+            GeneralCode::C(inner) => inner.add_assign(rhs.c()),
+        }
     }
 }
 
@@ -84,6 +119,7 @@ impl AddAssign for GeneralCCode {
     }
 }
 
+impl_add_by_add_assign!(GeneralCode);
 simple_code_trait_impl!(GeneralDartCode);
 simple_code_trait_impl!(GeneralRustCode);
 simple_code_trait_impl!(GeneralCCode);
