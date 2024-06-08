@@ -7,8 +7,13 @@ use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartG
 pub(crate) fn compute_func_implementation(
     ir: &MirTypeDelegateProxyVariant,
     context: ApiDartGeneratorContext,
+    rust_async: bool,
 ) -> String {
-    format!("{}(this)", compute_dart_extra_type(ir, context))
+    let mut ans = format!("{}(this)", compute_dart_extra_type(ir, context));
+    if rust_async {
+        ans = format!("Future.value({ans})");
+    }
+    ans
 }
 
 pub(crate) fn compute_dart_extra_type(
