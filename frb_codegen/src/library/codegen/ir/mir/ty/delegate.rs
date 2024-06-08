@@ -141,7 +141,9 @@ impl MirTypeTrait for MirTypeDelegate {
             MirTypeDelegate::RustAutoOpaqueExplicit(mir) => {
                 format!("AutoExplicit_{}", mir.inner.safe_ident())
             } // MirTypeDelegate::DynTrait(mir) => mir.safe_ident(),
-            MirTypeDelegate::ProxyVariant(mir) => format!("ProxyVariant_{}", mir.inner.safe_ident()),
+            MirTypeDelegate::ProxyVariant(mir) => {
+                format!("ProxyVariant_{}", mir.inner.safe_ident())
+            }
             MirTypeDelegate::ProxyTarget(mir) => format!("ProxyTarget_{}", mir.inner.safe_ident()),
         }
     }
@@ -315,6 +317,12 @@ impl MirTypeDelegateArray {
                 format!("{}_array_{length}", primitive.safe_ident())
             }
         }
+    }
+}
+
+impl MirTypeDelegateProxyVariant {
+    pub(crate) fn dart_proxy_class(&self) -> String {
+        TODO
     }
 }
 

@@ -411,7 +411,8 @@ fn compute_impl_mode(
 
     if attributes.proxy() {
         if let MirType::Delegate(MirTypeDelegate::ProxyVariant(inner)) = &output.normal {
-            return MirFuncImplMode::DartOnly { code: TODO };
+            let code = format!("{}(this)", inner.dart_proxy_class());
+            return MirFuncImplMode::DartOnly { code };
         }
     }
 
