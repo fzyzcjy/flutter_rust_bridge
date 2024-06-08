@@ -50,6 +50,7 @@ pub(crate) struct TypeParser<'a> {
     src_enums: HashMap<String, &'a HirFlatEnum>,
     pub(super) src_traits: HashMap<String, &'a HirFlatTrait>,
     src_types: HashMap<String, Type>,
+    proxied_types: Vec<MirType>,
     dart_code_of_type: HashMap<String, String>,
     struct_parser_info: EnumOrStructParserInfo<MirStructIdent, MirStruct>,
     enum_parser_info: EnumOrStructParserInfo<MirEnumIdent, MirEnum>,
@@ -65,6 +66,7 @@ impl<'a> TypeParser<'a> {
             ir_pack.hir_flat_pack.enums_map(),
             ir_pack.hir_flat_pack.traits_map(),
             ir_pack.hir_flat_pack.types_map(),
+            ir_pack.proxied_types.clone(),
         )
     }
 
@@ -73,12 +75,14 @@ impl<'a> TypeParser<'a> {
         src_enums: HashMap<String, &'a HirFlatEnum>,
         src_traits: HashMap<String, &'a HirFlatTrait>,
         src_types: HashMap<String, Type>,
+        proxied_types: Vec<MirType>,
     ) -> Self {
         TypeParser {
             src_structs,
             src_enums,
             src_traits,
             src_types,
+            proxied_types,
             dart_code_of_type: HashMap::new(),
             struct_parser_info: EnumOrStructParserInfo::new(),
             enum_parser_info: EnumOrStructParserInfo::new(),
