@@ -20,7 +20,7 @@ pub impl AudioContext {
 macro_rules! handle_audio_node_trait_impls_override {
     ($name:ident) => {
         #[ext]
-        impl $name {
+        pub impl $name {
             fn frb_override_connect(&self, dest: AudioNodeImplementor) {
                 let dest = dest.blocking_read();
                 self.connect(&*dest);
