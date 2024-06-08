@@ -60,7 +60,7 @@ pub(crate) struct TypeParser<'a> {
 }
 
 impl<'a> TypeParser<'a> {
-    pub(crate) fn new_from_pack(ir_pack: &IrEarlyGeneratorPack) -> Self {
+    pub(crate) fn new_from_pack(ir_pack: &'a IrEarlyGeneratorPack) -> Self {
         Self::new(
             ir_pack.hir_flat_pack.structs_map(),
             ir_pack.hir_flat_pack.enums_map(),
