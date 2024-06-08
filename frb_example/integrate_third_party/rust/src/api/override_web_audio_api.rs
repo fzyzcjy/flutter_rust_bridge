@@ -51,3 +51,25 @@ handle_audio_node_trait_impls_override!(PannerNode);
 handle_audio_node_trait_impls_override!(ScriptProcessorNode);
 handle_audio_node_trait_impls_override!(StereoPannerNode);
 handle_audio_node_trait_impls_override!(WaveShaperNode);
+
+macro_rules! handle_getter_audio_param_override {
+    ($struct_name:ident ; $($func_name:ident),+) => {
+        #[ext]
+        pub impl $struct_name {
+            $(
+                pub fn TODO() {}
+            )+
+        }
+    };
+}
+
+handle_getter_audio_param_override!(AudioListener; position_x, position_y, position_z, forward_x, forward_y, forward_z, up_x, up_y, up_z);
+handle_getter_audio_param_override!(AudioBufferSourceNode; playback_rate, detune);
+handle_getter_audio_param_override!(BiquadFilterNode; gain, frequency, detune, q);
+handle_getter_audio_param_override!(ConstantSourceNode; offset);
+handle_getter_audio_param_override!(DelayNode; delay_time);
+handle_getter_audio_param_override!(DynamicsCompressorNode; attack, knee, ratio, release, threshold);
+handle_getter_audio_param_override!(GainNode; gain);
+handle_getter_audio_param_override!(OscillatorNode; frequency, detune);
+handle_getter_audio_param_override!(PannerNode; position_x, position_y, position_z, orientation_x, orientation_y, orientation_z);
+handle_getter_audio_param_override!(StereoPannerNode; pan);
