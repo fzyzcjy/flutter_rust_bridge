@@ -8,6 +8,7 @@ use crate::codegen::ir::mir::func::{
     MirFunc, MirFuncAccessorMode, MirFuncArgMode, MirFuncDefaultConstructorMode, MirFuncImplMode,
     MirFuncImplModeDartOnly, MirFuncOwnerInfo, MirFuncOwnerInfoMethod, MirFuncOwnerInfoMethodMode,
 };
+use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::if_then_some;
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
@@ -79,6 +80,9 @@ fn compute_class_name_for_querying_methods(ty: &MirType) -> NamespacedName {
         MirType::EnumRef(ty) => ty.ident.0.clone(),
         MirType::StructRef(ty) => ty.ident.0.clone(),
         MirType::TraitDef(ty) => ty.name.clone(),
+        MirType::Delegate(MirTypeDelegate::ProxyVariant(ty)) => {
+            compute_class_name_for_querying_methods(&*ty.inner)
+        }
         MirType::RustOpaque(ty) => {
             lazy_static! {
                 static ref FILTER: Regex =
