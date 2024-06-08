@@ -88,7 +88,10 @@ fn parse_proxy_return_type(mir: MirType) -> anyhow::Result<MirType> {
             || mir_inner.ownership_mode == OwnershipMode::RefMut
         {
             return Ok(MirType::Delegate(MirTypeDelegate::ProxyVariant(
-                MirTypeDelegateProxyVariant { inner: Box::new(mir) },
+                MirTypeDelegateProxyVariant {
+                    inner: Box::new(mir),
+                    upstream: Box::new(TODO),
+                },
             )));
         }
     }
