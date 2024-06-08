@@ -76,7 +76,7 @@ impl<'a> TypeParser<'a> {
         src_enums: HashMap<String, &'a HirFlatEnum>,
         src_traits: HashMap<String, &'a HirFlatTrait>,
         src_types: HashMap<String, Type>,
-        proxied_types: Vec<MirType>,
+        proxied_types: Vec<IrEarlyGeneratorProxiedType>,
     ) -> Self {
         TypeParser {
             src_structs,
