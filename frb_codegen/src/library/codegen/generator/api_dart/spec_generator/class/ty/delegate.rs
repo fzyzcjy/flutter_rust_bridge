@@ -85,21 +85,23 @@ fn generate_proxy_variant(
     mir: &MirTypeDelegateProxyVariant,
     context: ApiDartGeneratorContext,
 ) -> String {
-    let class_name = proxy_variant::compute_dart_extra_type(mir, context);
+    todo!();
 
-    let methods = generate_api_methods(
-        &todo!(),
-        context,
-        &GenerateApiMethodConfig {
-            mode_static: GenerateApiMethodMode::Nothing,
-            // TODO we provide impl
-            mode_non_static: GenerateApiMethodMode::DeclOnly,
-        },
-        &class_name,
-    );
-
-    format!(
-        "class {class_name} {{
-        }}"
-    )
+    // let class_name = proxy_variant::compute_dart_extra_type(mir, context);
+    //
+    // let methods = generate_api_methods(
+    //     &todo!(),
+    //     context,
+    //     &GenerateApiMethodConfig {
+    //         mode_static: GenerateApiMethodMode::Nothing,
+    //         // TODO we provide impl
+    //         mode_non_static: GenerateApiMethodMode::DeclOnly,
+    //     },
+    //     &class_name,
+    // );
+    //
+    // format!(
+    //     "class {class_name} {{
+    //     }}"
+    // )
 }
