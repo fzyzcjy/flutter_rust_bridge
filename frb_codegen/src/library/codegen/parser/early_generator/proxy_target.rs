@@ -1,6 +1,15 @@
 use crate::codegen::ir::hir::flat::pack::HirFlatPack;
 use crate::codegen::ir::mir::pack::MirPack;
+use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
+use crate::codegen::ir::mir::ty::MirType;
+use crate::if_then_some;
+use itertools::Itertools;
 
 pub(crate) fn generate(pack: &HirFlatPack, tentative_mir_pack: &MirPack) -> anyhow::Result<String> {
+    let distinct_types = tentative_mir_pack.distinct_types(None);
+    let proxy_variants = (distinct_types.iter())
+        .filter_map(|ty| if_then_some!(let MirType::Delegate(MirTypeDelegate::ProxyVariant(inner)) = ty, inner.clone()))
+        .collect_vec();
+
     TODO
 }
