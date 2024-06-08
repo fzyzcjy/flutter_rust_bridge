@@ -7,6 +7,7 @@ use super::*;
 use crate::api::constructor::*;
 use crate::api::dart_code::*;
 use crate::api::dropping::*;
+use crate::api::impl_trait::SimpleTraitForDynTwinNormal;
 use crate::api::impl_trait::SimpleTraitTwinNormal;
 use crate::api::impl_trait::*;
 use crate::api::method::*;
@@ -129,6 +130,18 @@ impl CstDecode<RustAutoOpaqueMoi<NonCloneSimpleTwinSyncMoi>> for usize {
 impl CstDecode<RustAutoOpaqueNom<OpaqueItemTwinNormal>> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> RustAutoOpaqueNom<OpaqueItemTwinNormal> {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_decode(self.cst_decode())
+    }
+}
+impl CstDecode<RustAutoOpaqueNom<StructOneWithTraitForDynTwinNormal>> for usize {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> RustAutoOpaqueNom<StructOneWithTraitForDynTwinNormal> {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_decode(self.cst_decode())
+    }
+}
+impl CstDecode<RustAutoOpaqueNom<StructTwoWithTraitForDynTwinNormal>> for usize {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> RustAutoOpaqueNom<StructTwoWithTraitForDynTwinNormal> {
         flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_decode(self.cst_decode())
     }
 }
@@ -1044,6 +1057,20 @@ impl CstDecode<StructInMiscNoTwinExampleB> for usize {
         ))
     }
 }
+impl CstDecode<StructOneWithTraitForDynTwinNormal> for usize {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> StructOneWithTraitForDynTwinNormal {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
+            RustOpaqueNom<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                    StructOneWithTraitForDynTwinNormal,
+                >,
+            >,
+        >::cst_decode(
+            self
+        ))
+    }
+}
 impl CstDecode<StructOneWithTraitTwinNormal> for usize {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> StructOneWithTraitTwinNormal {
@@ -1117,6 +1144,20 @@ impl CstDecode<StructOneWithTraitTwinSyncSse> for usize {
             RustOpaqueNom<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
                     StructOneWithTraitTwinSyncSse,
+                >,
+            >,
+        >::cst_decode(
+            self
+        ))
+    }
+}
+impl CstDecode<StructTwoWithTraitForDynTwinNormal> for usize {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> StructTwoWithTraitForDynTwinNormal {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
+            RustOpaqueNom<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                    StructTwoWithTraitForDynTwinNormal,
                 >,
             >,
         >::cst_decode(
@@ -3376,6 +3417,24 @@ impl
 impl
     CstDecode<
         RustOpaqueNom<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                StructOneWithTraitForDynTwinNormal,
+            >,
+        >,
+    > for usize
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> RustOpaqueNom<
+        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructOneWithTraitForDynTwinNormal>,
+    > {
+        unsafe { decode_rust_opaque_nom(self as _) }
+    }
+}
+impl
+    CstDecode<
+        RustOpaqueNom<
             flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructOneWithTraitTwinNormal>,
         >,
     > for usize
@@ -3469,6 +3528,24 @@ impl
         self,
     ) -> RustOpaqueNom<
         flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructOneWithTraitTwinSyncSse>,
+    > {
+        unsafe { decode_rust_opaque_nom(self as _) }
+    }
+}
+impl
+    CstDecode<
+        RustOpaqueNom<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                StructTwoWithTraitForDynTwinNormal,
+            >,
+        >,
+    > for usize
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> RustOpaqueNom<
+        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructTwoWithTraitForDynTwinNormal>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
@@ -6678,6 +6755,16 @@ impl CstDecode<crate::api::pseudo_manual::method_twin_sync::SimpleStructTwinSync
             *wrap,
         )
         .into()
+    }
+}
+impl CstDecode<crate::frb_generated::SimpleTraitForDynTwinNormalImplementor>
+    for *mut wire_cst_simple_trait_for_dyn_twin_normal_implementor
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> crate::frb_generated::SimpleTraitForDynTwinNormalImplementor {
+        let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+        CstDecode::<crate::frb_generated::SimpleTraitForDynTwinNormalImplementor>::cst_decode(*wrap)
+            .into()
     }
 }
 impl CstDecode<crate::api::external_impl::SimpleTranslatableExternalStructWithMethod>
@@ -12314,6 +12401,24 @@ impl CstDecode<crate::api::pseudo_manual::method_twin_sync::SimpleStructTwinSync
         }
     }
 }
+impl CstDecode<crate::frb_generated::SimpleTraitForDynTwinNormalImplementor>
+    for wire_cst_simple_trait_for_dyn_twin_normal_implementor
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> crate::frb_generated::SimpleTraitForDynTwinNormalImplementor {
+        match self.tag {
+            0 => {
+                let ans = unsafe { self.kind.StructOneWithTraitForDynTwinNormal };
+                crate::frb_generated::SimpleTraitForDynTwinNormalImplementor::StructOneWithTraitForDynTwinNormal( ans.field0.cst_decode())
+            }
+            1 => {
+                let ans = unsafe { self.kind.StructTwoWithTraitForDynTwinNormal };
+                crate::frb_generated::SimpleTraitForDynTwinNormalImplementor::StructTwoWithTraitForDynTwinNormal( ans.field0.cst_decode())
+            }
+            _ => unreachable!(),
+        }
+    }
+}
 impl CstDecode<crate::api::external_impl::SimpleTranslatableExternalStructWithMethod>
     for wire_cst_simple_translatable_external_struct_with_method
 {
@@ -16457,6 +16562,19 @@ impl Default for wire_cst_simple_struct_twin_sync {
         Self::new_with_null_ptr()
     }
 }
+impl NewWithNullPtr for wire_cst_simple_trait_for_dyn_twin_normal_implementor {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            tag: -1,
+            kind: SimpleTraitForDynTwinNormalImplementorKind { nil__: () },
+        }
+    }
+}
+impl Default for wire_cst_simple_trait_for_dyn_twin_normal_implementor {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
 impl NewWithNullPtr for wire_cst_simple_translatable_external_struct_with_method {
     fn new_with_null_ptr() -> Self {
         Self {
@@ -18406,6 +18524,41 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__external_type_i
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__impl_trait__StructOneWithTraitForDynTwinNormal_create_twin_normal(
+    port_: i64,
+    one: i32,
+) {
+    wire__crate__api__impl_trait__StructOneWithTraitForDynTwinNormal_create_twin_normal_impl(
+        port_, one,
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__impl_trait__StructOneWithTraitForDynTwinNormal_get_one(
+    that: usize,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__impl_trait__StructOneWithTraitForDynTwinNormal_get_one_impl(that)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__impl_trait__StructOneWithTraitForDynTwinNormal_set_one(
+    that: usize,
+    one: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__impl_trait__StructOneWithTraitForDynTwinNormal_set_one_impl(that, one)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__impl_trait__StructOneWithTraitForDynTwinNormal_simple_method_twin_normal(
+    port_: i64,
+    that: usize,
+) {
+    wire__crate__api__impl_trait__StructOneWithTraitForDynTwinNormal_simple_method_twin_normal_impl(
+        port_, that,
+    )
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__impl_trait__StructOneWithTraitTwinNormal_get_one(
     that: usize,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
@@ -18446,6 +18599,31 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__impl_trait__Str
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__impl_trait__StructTwoWithTraitForDynTwinNormal_get_two(
+    that: usize,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__impl_trait__StructTwoWithTraitForDynTwinNormal_get_two_impl(that)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__impl_trait__StructTwoWithTraitForDynTwinNormal_set_two(
+    that: usize,
+    two: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__impl_trait__StructTwoWithTraitForDynTwinNormal_set_two_impl(that, two)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__impl_trait__StructTwoWithTraitForDynTwinNormal_simple_method_twin_normal(
+    port_: i64,
+    that: usize,
+) {
+    wire__crate__api__impl_trait__StructTwoWithTraitForDynTwinNormal_simple_method_twin_normal_impl(
+        port_, that,
+    )
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__impl_trait__StructTwoWithTraitTwinNormal_get_two(
     that: usize,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
@@ -18483,6 +18661,14 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__impl_trait__Str
     port_: i64,
 ) {
     wire__crate__api__impl_trait__StructTwoWithTraitTwinNormal_simple_trait_fn_with_default_impl_twin_normal_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__impl_trait__func_arg_trait_impl_twin_normal(
+    port_: i64,
+    arg: *mut wire_cst_simple_trait_for_dyn_twin_normal_implementor,
+) {
+    wire__crate__api__impl_trait__func_arg_trait_impl_twin_normal_impl(port_, arg)
 }
 
 #[no_mangle]
@@ -46927,6 +47113,32 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitForDynTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        StdArc::<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                StructOneWithTraitForDynTwinNormal,
+            >,
+        >::increment_strong_count(ptr as _);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitForDynTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        StdArc::<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                StructOneWithTraitForDynTwinNormal,
+            >,
+        >::decrement_strong_count(ptr as _);
+    }
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinNormal(
     ptr: *const std::ffi::c_void,
 ) {
@@ -47054,6 +47266,32 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     unsafe {
         StdArc::<
             flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructOneWithTraitTwinSyncSse>,
+        >::decrement_strong_count(ptr as _);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitForDynTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        StdArc::<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                StructTwoWithTraitForDynTwinNormal,
+            >,
+        >::increment_strong_count(ptr as _);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitForDynTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        StdArc::<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                StructTwoWithTraitForDynTwinNormal,
+            >,
         >::decrement_strong_count(ptr as _);
     }
 }
@@ -48943,6 +49181,14 @@ pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_box_autoadd_simple_struct
 ) -> *mut wire_cst_simple_struct_twin_sync {
     flutter_rust_bridge::for_generated::new_leak_box_ptr(
         wire_cst_simple_struct_twin_sync::new_with_null_ptr(),
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_box_autoadd_simple_trait_for_dyn_twin_normal_implementor(
+) -> *mut wire_cst_simple_trait_for_dyn_twin_normal_implementor {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(
+        wire_cst_simple_trait_for_dyn_twin_normal_implementor::new_with_null_ptr(),
     )
 }
 
@@ -54872,6 +55118,31 @@ pub struct wire_cst_simple_struct_twin_rust_async {
 #[derive(Clone, Copy)]
 pub struct wire_cst_simple_struct_twin_sync {
     one: *mut wire_cst_list_prim_u_8_strict,
+}
+#[repr(C)]
+#[derive(Clone, Copy)]
+pub struct wire_cst_simple_trait_for_dyn_twin_normal_implementor {
+    tag: i32,
+    kind: SimpleTraitForDynTwinNormalImplementorKind,
+}
+#[repr(C)]
+#[derive(Clone, Copy)]
+pub union SimpleTraitForDynTwinNormalImplementorKind {
+    StructOneWithTraitForDynTwinNormal:
+        wire_cst_SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormal,
+    StructTwoWithTraitForDynTwinNormal:
+        wire_cst_SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormal,
+    nil__: (),
+}
+#[repr(C)]
+#[derive(Clone, Copy)]
+pub struct wire_cst_SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormal {
+    field0: usize,
+}
+#[repr(C)]
+#[derive(Clone, Copy)]
+pub struct wire_cst_SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormal {
+    field0: usize,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
