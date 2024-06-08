@@ -14,9 +14,11 @@ use strum::IntoEnumIterator;
 
 pub(super) mod internal_config;
 
+#[derive(Clone)]
 pub(crate) struct Dumper<'a> {
     config: &'a DumperInternalConfig,
     content: Option<ConfigDumpContent>,
+    name_prefix: String,
 }
 
 impl<'a> Dumper<'a> {
@@ -24,13 +26,21 @@ impl<'a> Dumper<'a> {
         Self {
             config,
             content: None,
+            name_prefix: "".to_string(),
         }
     }
 
     pub(crate) fn with_content(&self, content: ConfigDumpContent) -> Self {
         Self {
-            config: self.config,
             content: Some(content),
+            ..self.clone()
+        }
+    }
+
+    pub(crate) fn with_add_name_prefix(&self, add_name_prefix: &str) -> Self {
+        Self {
+            name_prefix: format!("{}{}", self.name_prefix, add_name_prefix),
+            ..self.clone()
         }
     }
 
