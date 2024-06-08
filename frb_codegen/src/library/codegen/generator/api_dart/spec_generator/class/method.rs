@@ -4,8 +4,8 @@ use crate::codegen::generator::api_dart::spec_generator::function::{
 };
 use crate::codegen::generator::api_dart::spec_generator::misc::generate_dart_comments;
 use crate::codegen::ir::mir::func::{
-    MirFunc, MirFuncAccessorMode, MirFuncArgMode, MirFuncDefaultConstructorMode, MirFuncOwnerInfo,
-    MirFuncOwnerInfoMethod, MirFuncOwnerInfoMethodMode,
+    MirFunc, MirFuncAccessorMode, MirFuncArgMode, MirFuncDefaultConstructorMode, MirFuncImplMode,
+    MirFuncImplModeDartOnly, MirFuncOwnerInfo, MirFuncOwnerInfoMethod, MirFuncOwnerInfoMethodMode,
 };
 use crate::if_then_some;
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
@@ -232,20 +232,30 @@ fn generate_implementation(
     method_info: &MirFuncOwnerInfoMethod,
     params: &[ApiDartGeneratedFunctionParam],
 ) -> String {
-    let dart_entrypoint_class_name = &context.config.dart_entrypoint_class_name;
-    let dart_api_instance = format!("{dart_entrypoint_class_name}.instance.api");
+    match func.impl_mode {
+        MirFuncImplMode::Normal => {
+            let dart_entrypoint_class_name = &context.config.dart_entrypoint_class_name;
+            let dart_api_instance = format!("{dart_entrypoint_class_name}.instance.api");
 
-    let func_name = func.name_dart_wire();
+            let func_name = func.name_dart_wire();
 
-    let arg_names = params
-        .iter()
-        .map(|x| format!("{name}: {name}", name = x.name_str))
-        .join(", ");
+            let arg_names = params
+                .iter()
+                .map(|x| format!("{name}: {name}", name = x.name_str))
+                .join(", ");
 
-    if method_info.mode == MirFuncOwnerInfoMethodMode::Static {
-        format!("{dart_api_instance}.{func_name}({arg_names})")
-    } else {
-        let extra_arg_name = func.inputs[0].inner.name.dart_style();
-        format!("{dart_api_instance}.{func_name}({extra_arg_name}: this, {arg_names})")
+            if method_info.mode == MirFuncOwnerInfoMethodMode::Static {
+                format!("{dart_api_instance}.{func_name}({arg_names})")
+            } else {
+                let extra_arg_name = func.inputs[0].inner.name.dart_style();
+                format!("{dart_api_instance}.{func_name}({extra_arg_name}: this, {arg_names})")
+            }
+        }
+        MirFuncImplMode::NoImpl => "should_not_reach_here".to_owned(),
+        MirFuncImplMode::DartOnly(inner) => match inner {
+            MirFuncImplModeDartOnly::CreateProxyVariant(inner) => {
+                format!("{TODO}")
+            }
+        },
     }
 }
