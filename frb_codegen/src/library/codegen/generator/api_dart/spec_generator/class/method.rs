@@ -62,8 +62,8 @@ pub(crate) fn generate_api_methods(
     config: &GenerateApiMethodConfig,
     dart_class_name: &str,
 ) -> GeneratedApiMethods {
-    let query_class_name = compute_query_class_name(owner_ty);
-    let methods = get_methods_of_enum_or_struct(&query_class_name, &context.mir_pack.funcs_all)
+    let query_class_name = compute_class_name_for_querying_methods(owner_ty);
+    let methods = get_methods_of_ty(&query_class_name, &context.mir_pack.funcs_all)
         .iter()
         .filter_map(|func| generate_api_method(func, context, config, dart_class_name))
         .collect_vec();
@@ -74,7 +74,7 @@ pub(crate) fn generate_api_methods(
     }
 }
 
-fn compute_query_class_name(ty: &MirType) -> NamespacedName {
+fn compute_class_name_for_querying_methods(ty: &MirType) -> NamespacedName {
     match ty {
         MirType::EnumRef(ty) => ty.ident.0.clone(),
         MirType::StructRef(ty) => ty.ident.0.clone(),
@@ -105,17 +105,12 @@ pub(crate) fn dart_constructor_postfix(
 }
 
 fn has_default_dart_constructor(name: &NamespacedName, all_funcs: &[MirFunc]) -> bool {
-    get_methods_of_enum_or_struct(name, all_funcs)
-        .iter()
-        .any(|m| {
-            m.default_constructor_mode() == Some(MirFuncDefaultConstructorMode::DartConstructor)
-        })
+    get_methods_of_ty(name, all_funcs).iter().any(|m| {
+        m.default_constructor_mode() == Some(MirFuncDefaultConstructorMode::DartConstructor)
+    })
 }
 
-fn get_methods_of_enum_or_struct<'a>(
-    name: &NamespacedName,
-    all_funcs: &'a [MirFunc],
-) -> Vec<&'a MirFunc> {
+fn get_methods_of_ty<'a>(name: &NamespacedName, all_funcs: &'a [MirFunc]) -> Vec<&'a MirFunc> {
     (all_funcs.iter())
         .filter(|f| matches!(&f.owner, MirFuncOwnerInfo::Method(m) if m.owner_ty_name().as_ref() == Some(name)))
         .collect_vec()
