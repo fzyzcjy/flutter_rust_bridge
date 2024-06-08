@@ -88,9 +88,9 @@ fn generate_proxy_variant(
     let class_name = proxy_variant::compute_dart_extra_type(mir, context);
 
     let methods = generate_api_methods(
-        &NamespacedName::new(mir.namespace.clone(), type_query_name.clone()),
+        &todo!(),
         context,
-        GenerateApiMethodConfig {
+        &GenerateApiMethodConfig {
             mode_static: GenerateApiMethodMode::Nothing,
             // TODO we provide impl
             mode_non_static: GenerateApiMethodMode::DeclOnly,
