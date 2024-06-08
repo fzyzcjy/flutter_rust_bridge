@@ -93,8 +93,7 @@ fn generate_proxy_variant(
         context,
         &GenerateApiMethodConfig {
             mode_static: GenerateApiMethodMode::Nothing,
-            // TODO we provide impl
-            mode_non_static: GenerateApiMethodMode::DeclOnly,
+            mode_non_static: GenerateApiMethodMode::DeclAndImpl,
         },
         &class_name,
     );
