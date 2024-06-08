@@ -8,6 +8,7 @@ use crate::codegen::ir::mir::ty::delegate::{
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
+use crate::codegen::generator::acc::Acc;
 
 impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
     fn generate_encode(&self, lang: &Lang) -> Option<String> {
@@ -43,6 +44,8 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 }
                 MirTypeDelegate::BigPrimitive(_) => "self.toString()".to_owned(),
                 MirTypeDelegate::RustAutoOpaqueExplicit(_ir) => "self".to_owned(),
+                MirTypeDelegate::ProxyVariant(_mir) => "TODO".to_owned(),
+                MirTypeDelegate::ProxyTarget(_mir) => "TODO".to_owned(),
                 // MirTypeDelegate::DynTrait(_ir) => lang.throw_unimplemented(""), // TODO
             },
             Lang::RustLang(_) => match &self.mir {
@@ -90,6 +93,8 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     "flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_encode(self)"
                         .to_owned()
                 }
+                MirTypeDelegate::ProxyVariant(_mir) => "todo!()".to_owned(),
+                MirTypeDelegate::ProxyTarget(_mir) => "todo!()".to_owned(),
             },
         };
         Some(simple_delegate_encode(
@@ -146,6 +151,8 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     }
                     MirTypeDelegate::BigPrimitive(_) => "BigInt.parse(inner)".to_owned(),
                     MirTypeDelegate::RustAutoOpaqueExplicit(_ir) => "inner".to_owned(),
+                    MirTypeDelegate::ProxyVariant(_mir) => "TODO".to_owned(),
+                    MirTypeDelegate::ProxyTarget(_mir) => "TODO".to_owned(),
                     // MirTypeDelegate::DynTrait(_) => return Some(lang.throw_unimplemented("")),
                 }
             }
@@ -189,6 +196,8 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     "flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_decode(inner)"
                         .to_owned()
                 } // MirTypeDelegate::DynTrait(_ir) => lang.throw_unimplemented(""), // TODO
+                MirTypeDelegate::ProxyVariant(_mir) => "todo!()".to_owned(),
+                MirTypeDelegate::ProxyTarget(_mir) => "todo!()".to_owned(),
             },
         };
 
