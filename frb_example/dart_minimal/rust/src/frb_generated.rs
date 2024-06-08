@@ -139,7 +139,7 @@ impl SseDecode
         let mut inner = <RustOpaqueMoi<
             flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyAudioParam>,
         >>::sse_decode(deserializer);
-        return todo!();
+        return inner;
     }
 }
 
@@ -335,7 +335,7 @@ impl SseEncode
 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyAudioParam>>>::sse_encode(todo!(), serializer);
+        unimplemented!("")
     }
 }
 
