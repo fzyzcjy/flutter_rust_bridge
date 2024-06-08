@@ -86,7 +86,6 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 },
                 MirTypeDelegate::Uuid => "self.as_bytes().to_vec()".to_owned(),
                 MirTypeDelegate::StreamSink(_)
-                | MirTypeDelegate::ProxyVariant(_)
                 | MirTypeDelegate::ProxyEnum(_)
                 /*| MirTypeDelegate::DynTrait(_)*/ => {
                     return Some(lang.throw_unimplemented(""))
@@ -96,6 +95,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     "flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_encode(self)"
                         .to_owned()
                 }
+                MirTypeDelegate::ProxyVariant(_) => return None,
             },
         };
         Some(simple_delegate_encode(
@@ -166,7 +166,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 MirTypeDelegate::PrimitiveEnum(inner) => {
                     rust_decode_primitive_enum(inner, self.context.mir_pack, "inner")
                 }
-                MirTypeDelegate::Backtrace | MirTypeDelegate::ProxyVariant(_) => {
+                MirTypeDelegate::Backtrace => {
                     return Some(format!("{};", lang.throw_unreachable("")));
                 }
                 MirTypeDelegate::AnyhowException => {
@@ -198,6 +198,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                         .to_owned()
                 } // MirTypeDelegate::DynTrait(_ir) => lang.throw_unimplemented(""),
                 MirTypeDelegate::ProxyEnum(_) => "inner".to_owned(),
+                MirTypeDelegate::ProxyVariant(_) => return None,
             },
         };
 
