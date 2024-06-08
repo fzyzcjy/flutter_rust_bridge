@@ -1,7 +1,8 @@
-use crate::simple_code_trait_impl;
 use crate::codegen::generator::misc::target::TargetOrCommon;
 use crate::codegen::generator::wire::dart::internal_config::DartOutputClassNamePack;
+use crate::simple_code_trait_impl;
 use crate::utils::basic_code::dart_header_code::DartHeaderCode;
+use crate::utils::basic_code::general_code::GeneralDartCode;
 use itertools::Itertools;
 use serde::Serialize;
 use std::ops::AddAssign;
@@ -62,7 +63,7 @@ impl WireDartOutputCode {
         &self,
         target: TargetOrCommon,
         dart_output_class_name_pack: &DartOutputClassNamePack,
-    ) -> String {
+    ) -> GeneralDartCode {
         let DartOutputClassNamePack {
             api_class_name,
             api_impl_class_name,
