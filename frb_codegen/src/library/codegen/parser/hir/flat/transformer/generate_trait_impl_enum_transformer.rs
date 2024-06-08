@@ -10,8 +10,7 @@ use crate::codegen::parser::mir::parser::tentative_parse_trait_impls;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
-use serde::{Deserialize, Serialize};
-use strum_macros::{Display, EnumIter, EnumString};
+use strum_macros::Display;
 
 pub(crate) fn transform(
     mut pack: HirFlatPack,
@@ -70,7 +69,7 @@ fn generate_trait_impl_enum(
 
 fn generate_code_impl(trait_def_name: &str, trait_impls: &[MirType]) -> String {
     let enum_name = format!("{trait_def_name}Implementor");
-    let enum_def = generate_enum_raw(&trait_impls, &enum_name, |ty| {
+    let enum_def = generate_enum_raw(trait_impls, &enum_name, |ty| {
         format!("RustAutoOpaque<{ty}>")
     });
 
@@ -112,7 +111,7 @@ fn generate_code_read_write_guard(
     let rw_pascal = rw.to_string().to_case(Case::Pascal);
 
     let enum_name = format!("{trait_def_name}RwLock{rw_pascal}Guard");
-    let enum_def = generate_enum_raw(&trait_impls, &format!("{enum_name}<'a>"), |ty| {
+    let enum_def = generate_enum_raw(trait_impls, &format!("{enum_name}<'a>"), |ty| {
         format!("flutter_rust_bridge::for_generated::rust_async::RwLock{rw_pascal}Guard<'a, {ty}>")
     });
 
