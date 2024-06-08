@@ -11,6 +11,7 @@ macro_rules! simple_code_trait_impl {
         $crate::impl_add_by_add_assign!($name);
 
         impl From<String> for $name {
+            #[allow(clippy::needless_update)]
             fn from(body: String) -> Self {
                 Self {
                     body,
