@@ -47,6 +47,7 @@ pub fn func_arg_trait_impl_twin_normal(arg: SimpleTraitTwinNormalImpl) -> i32 {
 }
 
 impl SimpleTraitTwinNormalImpl {
+    #[frb(ignore)]
     pub fn blocking_read(&self) -> SimpleTraitTwinNormalRwLockReadGuard {
         match self {
             Self::StructOneWithTraitTwinNormal(inner) => {

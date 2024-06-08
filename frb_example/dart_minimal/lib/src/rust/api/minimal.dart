@@ -6,19 +6,15 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
+// These types are ignored because they are not used by any `pub` functions: `SimpleTraitTwinNormalRwLockReadGuard`
+// These functions are ignored: `blocking_read`
+
 Future<int> minimalAdder({required int a, required int b}) =>
     RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b);
 
 Future<int> funcArgTraitImplTwinNormal(
         {required SimpleTraitTwinNormalImpl arg}) =>
     RustLib.instance.api.crateApiMinimalFuncArgTraitImplTwinNormal(arg: arg);
-
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<SimpleTraitTwinNormalRwLockReadGuard>>
-abstract class SimpleTraitTwinNormalRwLockReadGuard {
-  void dispose();
-
-  bool get isDisposed;
-}
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructOneWithTraitTwinNormal>>
 abstract class StructOneWithTraitTwinNormal implements SimpleTraitTwinNormal {
