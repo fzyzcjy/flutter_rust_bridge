@@ -18,7 +18,7 @@ pub(crate) fn generate(
     tentative_mir_pack: &MirPack,
     config_mir: &ParserMirInternalConfig,
 ) -> anyhow::Result<()> {
-    let extra_code = (pack.traits.iter())
+    let extra_code = (pack.hir_flat_pack.traits.iter())
         .filter(|x| {
             FrbAttributes::parse(&x.attrs)
                 .unwrap()
@@ -30,7 +30,7 @@ pub(crate) fn generate(
         .into_iter()
         .join("");
 
-    inject_extra_code_to_rust_output(pack, &extra_code, config_mir)?;
+    inject_extra_code_to_rust_output(&mut pack.hir_flat_pack, &extra_code, config_mir)?;
 
     Ok(())
 }

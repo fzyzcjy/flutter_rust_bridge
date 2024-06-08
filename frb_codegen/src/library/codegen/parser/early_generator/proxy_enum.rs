@@ -28,7 +28,7 @@ pub(crate) fn generate(
         .map(|proxy_variants| generate_proxy_enum(&proxy_variants))
         .join("");
 
-    inject_extra_code_to_rust_output(pack, &extra_code, config_mir)?;
+    inject_extra_code_to_rust_output(&mut pack.hir_flat_pack, &extra_code, config_mir)?;
     (pack.proxied_types).extend(compute_proxied_types(&proxy_variants));
 
     Ok(())
