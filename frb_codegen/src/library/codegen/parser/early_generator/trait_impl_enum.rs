@@ -14,7 +14,7 @@ use strum_macros::Display;
 
 pub(crate) fn transform(
     mut pack: HirFlatPack,
-    mir_pack: &MirPack,
+    tentative_mir_pack: &MirPack,
     config: &ParserHirInternalConfig,
 ) -> anyhow::Result<HirFlatPack> {
     let extra_code = (pack.traits.iter())
@@ -24,7 +24,7 @@ pub(crate) fn transform(
                 .generate_implementor_enum()
         })
         .sorted_by_key(|x| x.name.clone())
-        .map(|x| generate_trait_impl_enum(x, &mir_pack.trait_impls))
+        .map(|x| generate_trait_impl_enum(x, &tentative_mir_pack.trait_impls))
         .collect::<anyhow::Result<Vec<_>>>()?
         .into_iter()
         .join("");
