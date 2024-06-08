@@ -88,6 +88,8 @@ fn generate_proxy_variant(
 ) -> String {
     let class_name = proxy_variant::compute_dart_extra_type(mir, context);
 
+    let implements_name = ApiDartGenerator::new(mir.inner.clone(), context).dart_api_type();
+
     let methods = generate_api_methods(
         &MirType::Delegate(MirTypeDelegate::ProxyVariant(mir.clone())),
         context,
@@ -100,7 +102,7 @@ fn generate_proxy_variant(
     let methods_str = methods.code;
 
     format!(
-        "class {class_name} {{
+        "class {class_name} implements {implements_name} {{
             {methods_str}
         }}"
     )
