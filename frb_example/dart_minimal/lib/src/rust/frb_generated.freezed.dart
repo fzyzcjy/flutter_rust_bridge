@@ -19,45 +19,42 @@ mixin _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerM
   MyNode get field0 => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(MyNode field0)
-        autoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerMyNode,
+    required TResult Function(MyNode field0) variant0,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(MyNode field0)?
-        autoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerMyNode,
+    TResult? Function(MyNode field0)? variant0,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(MyNode field0)?
-        autoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerMyNode,
+    TResult Function(MyNode field0)? variant0,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(
-            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNode
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum_Variant0
                 value)
-        autoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerMyNode,
+        variant0,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(
-            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNode
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum_Variant0
                 value)?
-        autoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerMyNode,
+        variant0,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(
-            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNode
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum_Variant0
                 value)?
-        autoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerMyNode,
+        variant0,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -113,18 +110,18 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerM
 }
 
 /// @nodoc
-abstract class _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNodeImplCopyWith<
+abstract class _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum_Variant0ImplCopyWith<
         $Res>
     implements
         $Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnumCopyWith<
             $Res> {
-  factory _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNodeImplCopyWith(
-          _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNodeImpl
+  factory _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum_Variant0ImplCopyWith(
+          _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum_Variant0Impl
               value,
           $Res Function(
-                  _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNodeImpl)
+                  _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum_Variant0Impl)
               then) =
-      __$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNodeImplCopyWithImpl<
+      __$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum_Variant0ImplCopyWithImpl<
           $Res>;
   @override
   @useResult
@@ -132,19 +129,19 @@ abstract class _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOp
 }
 
 /// @nodoc
-class __$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNodeImplCopyWithImpl<
+class __$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum_Variant0ImplCopyWithImpl<
         $Res>
     extends _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnumCopyWithImpl<
         $Res,
-        _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNodeImpl>
+        _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum_Variant0Impl>
     implements
-        _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNodeImplCopyWith<
+        _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum_Variant0ImplCopyWith<
             $Res> {
-  __$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNodeImplCopyWithImpl(
-      _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNodeImpl
+  __$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum_Variant0ImplCopyWithImpl(
+      _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum_Variant0Impl
           _value,
       $Res Function(
-              _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNodeImpl)
+              _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum_Variant0Impl)
           _then)
       : super(_value, _then);
 
@@ -154,7 +151,7 @@ class __$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInne
     Object? field0 = null,
   }) {
     return _then(
-        _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNodeImpl(
+        _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum_Variant0Impl(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
@@ -165,9 +162,9 @@ class __$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInne
 
 /// @nodoc
 
-class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNodeImpl
-    extends Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNode {
-  const _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNodeImpl(
+class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum_Variant0Impl
+    extends Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum_Variant0 {
+  const _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum_Variant0Impl(
       this.field0)
       : super._();
 
@@ -176,7 +173,7 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerM
 
   @override
   String toString() {
-    return 'Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum.autoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerMyNode(field0: $field0)';
+    return 'Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum.variant0(field0: $field0)';
   }
 
   @override
@@ -184,7 +181,7 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerM
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other
-                is _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNodeImpl &&
+                is _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum_Variant0Impl &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
@@ -194,44 +191,37 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerM
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNodeImplCopyWith<
-          _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNodeImpl>
+  _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum_Variant0ImplCopyWith<
+          _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum_Variant0Impl>
       get copyWith =>
-          __$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNodeImplCopyWithImpl<
-                  _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNodeImpl>(
+          __$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum_Variant0ImplCopyWithImpl<
+                  _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum_Variant0Impl>(
               this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(MyNode field0)
-        autoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerMyNode,
+    required TResult Function(MyNode field0) variant0,
   }) {
-    return autoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerMyNode(
-        field0);
+    return variant0(field0);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(MyNode field0)?
-        autoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerMyNode,
+    TResult? Function(MyNode field0)? variant0,
   }) {
-    return autoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerMyNode
-        ?.call(field0);
+    return variant0?.call(field0);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(MyNode field0)?
-        autoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerMyNode,
+    TResult Function(MyNode field0)? variant0,
     required TResult orElse(),
   }) {
-    if (autoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerMyNode !=
-        null) {
-      return autoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerMyNode(
-          field0);
+    if (variant0 != null) {
+      return variant0(field0);
     }
     return orElse();
   }
@@ -240,57 +230,53 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerM
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(
-            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNode
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum_Variant0
                 value)
-        autoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerMyNode,
+        variant0,
   }) {
-    return autoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerMyNode(
-        this);
+    return variant0(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(
-            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNode
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum_Variant0
                 value)?
-        autoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerMyNode,
+        variant0,
   }) {
-    return autoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerMyNode
-        ?.call(this);
+    return variant0?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(
-            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNode
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum_Variant0
                 value)?
-        autoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerMyNode,
+        variant0,
     required TResult orElse(),
   }) {
-    if (autoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerMyNode !=
-        null) {
-      return autoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerMyNode(
-          this);
+    if (variant0 != null) {
+      return variant0(this);
     }
     return orElse();
   }
 }
 
-abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNode
+abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum_Variant0
     extends Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum {
-  const factory Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNode(
+  const factory Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum_Variant0(
           final MyNode field0) =
-      _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNodeImpl;
-  const Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNode._()
+      _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum_Variant0Impl;
+  const Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum_Variant0._()
       : super._();
 
   @override
   MyNode get field0;
   @override
   @JsonKey(ignore: true)
-  _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNodeImplCopyWith<
-          _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNodeImpl>
+  _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum_Variant0ImplCopyWith<
+          _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum_Variant0Impl>
       get copyWith => throw _privateConstructorUsedError;
 }

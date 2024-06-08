@@ -89,9 +89,7 @@ flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
 // Section: extra_from_parser
 
 enum Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum {
-    Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNode(
-        RustAutoOpaque<MyNode>,
-    ),
+    Variant0(RustAutoOpaque<MyNode>),
 }
 
 pub fn frb_internal_no_impl_dummy_function_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum(
@@ -136,9 +134,7 @@ impl SseDecode
 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <RustOpaqueMoi<
-            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyAudioParam>,
-        >>::sse_decode(deserializer);
+        let mut inner = <crate::frb_generated::Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum>::sse_decode(deserializer);
         return inner;
     }
 }
@@ -182,7 +178,7 @@ impl SseDecode for crate::frb_generated::Auto_Ref_RustOpaque_flutter_rust_bridge
                     // Codec=Sse (Serialization based), see doc to use other codecs
                     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {let mut tag_ = <i32>::sse_decode(deserializer);
             match tag_ {0 => { let mut var_field0 = <RustAutoOpaqueMoi<MyNode>>::sse_decode(deserializer);
-return crate::frb_generated::Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum::Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNode(var_field0); }
+return crate::frb_generated::Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum::Variant0(var_field0); }
  _ => { unimplemented!(""); }}}
                 }
 
@@ -297,7 +293,7 @@ impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<MyNode>> for MyNode {
 // Codec=Dco (DartCObject based), see doc to use other codecs
 impl flutter_rust_bridge::IntoDart for crate::frb_generated::Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum {
                 fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-                    match self {crate::frb_generated::Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum::Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNode(field0) => { [0.into_dart(),
+                    match self {crate::frb_generated::Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum::Variant0(field0) => { [0.into_dart(),
 field0.into_into_dart().into_dart()].into_dart() }
  _ => { unimplemented!(""); }}
                 }
@@ -377,7 +373,7 @@ impl SseEncode for String {
 
 impl SseEncode for crate::frb_generated::Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum {
                     // Codec=Sse (Serialization based), see doc to use other codecs
-                    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {match self {crate::frb_generated::Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum::Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNode(field0) => { <i32>::sse_encode(0, serializer); <RustAutoOpaqueMoi<MyNode>>::sse_encode(field0, serializer);
+                    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {match self {crate::frb_generated::Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum::Variant0(field0) => { <i32>::sse_encode(0, serializer); <RustAutoOpaqueMoi<MyNode>>::sse_encode(field0, serializer);
  }
  _ => { unimplemented!(""); }}}
                 }
