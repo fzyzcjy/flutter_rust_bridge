@@ -1,7 +1,9 @@
 use crate::codegen::ir::early_generator::pack::IrEarlyGeneratorPack;
 use crate::codegen::ir::hir::flat::pack::HirFlatPack;
 use crate::codegen::ir::mir::pack::MirPack;
-use crate::codegen::ir::mir::ty::delegate::{MirTypeDelegate, MirTypeDelegateProxyVariant};
+use crate::codegen::ir::mir::ty::delegate::{
+    MirTypeDelegate, MirTypeDelegateProxyEnum, MirTypeDelegateProxyVariant,
+};
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::early_generator::inject_extra_code_to_rust_output;
 use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
@@ -42,9 +44,11 @@ fn compute_proxied_types(proxy_variants: &[MirTypeDelegateProxyVariant]) -> Vec<
 }
 
 fn generate_proxy_enum(proxy_variants: &[&MirTypeDelegateProxyVariant]) -> String {
-    let proxy_enum_ty = *proxy_variants[0].inner.clone();
+    let proxy_enum_ty = MirTypeDelegateProxyEnum {
+        inner: proxy_variants[0].inner.clone(),
+    };
 
-    let enum_name = format!("{}ProxyEnum", proxy_enum_ty.safe_ident());
+    let enum_name = proxy_enum_ty.proxy_enum_name();
 
     let variants = (proxy_variants.iter())
         .map(|variant| {

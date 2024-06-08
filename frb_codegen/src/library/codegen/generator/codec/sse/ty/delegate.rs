@@ -283,6 +283,8 @@ pub(crate) fn generate_stream_sink_setup_and_serialize(
 }
 
 fn generate_proxy_enum_dart_encode(mir: &MirTypeDelegateProxyEnum) -> String {
+    let enum_name = mir.proxy_enum_name();
+
     format!(
         "
         (() {{
