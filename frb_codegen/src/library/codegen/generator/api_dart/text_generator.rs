@@ -8,12 +8,12 @@ use crate::codegen::generator::misc::generate_code_header;
 use crate::codegen::generator::misc::path_texts::{PathText, PathTexts};
 use crate::codegen::generator::misc::target::TargetOrCommonMap;
 use crate::utils::basic_code::dart_header_code::DartHeaderCode;
+use crate::utils::basic_code::general_code::{GeneralCode, GeneralDartCode};
 use crate::utils::path_utils::path_to_string;
 use anyhow::Context;
 use itertools::{concat, Itertools};
 use pathdiff::diff_paths;
 use std::path::{Path, PathBuf};
-use crate::utils::basic_code::general_code::GeneralCode;
 
 pub(super) struct ApiDartOutputText {
     pub(super) output_texts: PathTexts,
@@ -39,10 +39,13 @@ pub(super) fn generate(
 
     let extra_output_text = PathText {
         path: config.dart_impl_output_path.common.clone(),
-        text: (spec.namespaced_items.values())
-            .flat_map(|item| item.extra_impl_code.clone())
-            .sorted()
-            .join(""),
+        text: GeneralCode::Dart(GeneralDartCode {
+            body: (spec.namespaced_items.values())
+                .flat_map(|item| item.extra_impl_code.clone())
+                .sorted()
+                .join(""),
+            header: Default::default(),
+        }),
     };
 
     Ok(ApiDartOutputText {
