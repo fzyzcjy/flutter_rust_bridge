@@ -64,7 +64,7 @@ pub trait AudioNode {
 }
 
 #[macro_export]
-macro_rules! handle_audio_node_trait_impls {
+macro_rules! handle_audio_node_trait_impls_marker {
     ($name:ident) => {
         #[frb(external)]
         impl $name {
@@ -85,27 +85,27 @@ macro_rules! handle_audio_node_trait_impls {
     };
 }
 
-handle_audio_node_trait_impls!(AnalyserNode);
-handle_audio_node_trait_impls!(AudioBufferSourceNode);
-handle_audio_node_trait_impls!(AudioDestinationNode);
-handle_audio_node_trait_impls!(BiquadFilterNode);
-handle_audio_node_trait_impls!(ChannelMergerNode);
-handle_audio_node_trait_impls!(ChannelSplitterNode);
-handle_audio_node_trait_impls!(ConstantSourceNode);
-handle_audio_node_trait_impls!(ConvolverNode);
-handle_audio_node_trait_impls!(DelayNode);
-handle_audio_node_trait_impls!(DynamicsCompressorNode);
-handle_audio_node_trait_impls!(GainNode);
-handle_audio_node_trait_impls!(IIRFilterNode);
-handle_audio_node_trait_impls!(MediaElementAudioSourceNode);
-handle_audio_node_trait_impls!(MediaStreamAudioDestinationNode);
-handle_audio_node_trait_impls!(MediaStreamAudioSourceNode);
-handle_audio_node_trait_impls!(MediaStreamTrackAudioSourceNode);
-handle_audio_node_trait_impls!(OscillatorNode);
-handle_audio_node_trait_impls!(PannerNode);
-handle_audio_node_trait_impls!(ScriptProcessorNode);
-handle_audio_node_trait_impls!(StereoPannerNode);
-handle_audio_node_trait_impls!(WaveShaperNode);
+handle_audio_node_trait_impls_marker!(AnalyserNode);
+handle_audio_node_trait_impls_marker!(AudioBufferSourceNode);
+handle_audio_node_trait_impls_marker!(AudioDestinationNode);
+handle_audio_node_trait_impls_marker!(BiquadFilterNode);
+handle_audio_node_trait_impls_marker!(ChannelMergerNode);
+handle_audio_node_trait_impls_marker!(ChannelSplitterNode);
+handle_audio_node_trait_impls_marker!(ConstantSourceNode);
+handle_audio_node_trait_impls_marker!(ConvolverNode);
+handle_audio_node_trait_impls_marker!(DelayNode);
+handle_audio_node_trait_impls_marker!(DynamicsCompressorNode);
+handle_audio_node_trait_impls_marker!(GainNode);
+handle_audio_node_trait_impls_marker!(IIRFilterNode);
+handle_audio_node_trait_impls_marker!(MediaElementAudioSourceNode);
+handle_audio_node_trait_impls_marker!(MediaStreamAudioDestinationNode);
+handle_audio_node_trait_impls_marker!(MediaStreamAudioSourceNode);
+handle_audio_node_trait_impls_marker!(MediaStreamTrackAudioSourceNode);
+handle_audio_node_trait_impls_marker!(OscillatorNode);
+handle_audio_node_trait_impls_marker!(PannerNode);
+handle_audio_node_trait_impls_marker!(ScriptProcessorNode);
+handle_audio_node_trait_impls_marker!(StereoPannerNode);
+handle_audio_node_trait_impls_marker!(WaveShaperNode);
 
 #[macro_export]
 macro_rules! handle_getter_audio_param {
