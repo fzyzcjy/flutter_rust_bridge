@@ -1,4 +1,5 @@
 use crate::codegen::generator::codec::structs::CodecMode;
+use crate::codegen::ir::early_generator::pack::IrEarlyGeneratorPack;
 use crate::codegen::ir::hir::flat::pack::HirFlatPack;
 use crate::codegen::ir::hir::flat::struct_or_enum::HirFlatEnum;
 use crate::codegen::ir::hir::flat::struct_or_enum::HirFlatStruct;
@@ -58,12 +59,12 @@ pub(crate) struct TypeParser<'a> {
 }
 
 impl<'a> TypeParser<'a> {
-    pub(crate) fn new_from_hir_flat_pack(hir_flat: &'a HirFlatPack) -> Self {
+    pub(crate) fn new_from_pack(ir_pack: &IrEarlyGeneratorPack) -> Self {
         Self::new(
-            hir_flat.structs_map(),
-            hir_flat.enums_map(),
-            hir_flat.traits_map(),
-            hir_flat.types_map(),
+            ir_pack.hir_flat_pack.structs_map(),
+            ir_pack.hir_flat_pack.enums_map(),
+            ir_pack.hir_flat_pack.traits_map(),
+            ir_pack.hir_flat_pack.types_map(),
         )
     }
 

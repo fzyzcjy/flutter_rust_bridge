@@ -20,7 +20,7 @@ pub(crate) fn parse(
     let structs_map = hir_flat.structs_map();
     let enums_map = hir_flat.enums_map();
 
-    let mut type_parser = TypeParser::new_from_hir_flat_pack(hir_flat);
+    let mut type_parser = TypeParser::new_from_pack(ir_pack);
 
     let trait_impls = trait_impl::parse(
         &hir_flat.trait_impls,
