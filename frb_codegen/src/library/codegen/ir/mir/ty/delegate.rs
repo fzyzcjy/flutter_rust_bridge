@@ -29,6 +29,8 @@ pub enum MirTypeDelegate {
     StreamSink(MirTypeDelegateStreamSink),
     BigPrimitive(MirTypeDelegateBigPrimitive),
     RustAutoOpaqueExplicit(MirTypeDelegateRustAutoOpaqueExplicit),
+    ProxyVariant(MirTypeDelegateProxyVariant),
+    ProxyTarget(MirTypeDelegateProxyTarget),
     // DynTrait(MirTypeDelegateDynTrait),
 }
 
@@ -81,6 +83,12 @@ pub enum MirTypeDelegateBigPrimitive {
 pub struct MirTypeDelegateRustAutoOpaqueExplicit {
     pub inner: MirTypeRustOpaque,
     pub raw: MirRustAutoOpaqueRaw,
+}
+
+pub struct MirTypeDelegateProxyVariant {
+}
+
+pub struct MirTypeDelegateProxyTarget {
 }
 
 // pub struct MirTypeDelegateDynTrait {
