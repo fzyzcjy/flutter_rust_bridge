@@ -1,8 +1,5 @@
 use crate::codegen::ir::mir::field::MirField;
-use crate::codegen::ir::mir::func::{
-    MirFunc, MirFuncAccessorMode, MirFuncArgMode, MirFuncInput, MirFuncMode, MirFuncOutput,
-    MirFuncOwnerInfo, MirFuncOwnerInfoMethod, MirFuncOwnerInfoMethodMode, OwnershipMode,
-};
+use crate::codegen::ir::mir::func::{MirFunc, MirFuncAccessorMode, MirFuncArgMode, MirFuncImplMode, MirFuncInput, MirFuncMode, MirFuncOutput, MirFuncOwnerInfo, MirFuncOwnerInfoMethod, MirFuncOwnerInfoMethodMode, OwnershipMode};
 use crate::codegen::ir::mir::ident::MirIdent;
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
 use crate::codegen::ir::mir::ty::MirType;
@@ -86,7 +83,7 @@ pub(super) fn parse_auto_accessor_of_field(
             &config.force_codec_mode_pack,
         ),
         rust_call_code: Some(rust_call_code),
-        has_impl: true,
+        impl_mode: MirFuncImplMode::Normal,
         src_lineno_pseudo: compute_src_lineno_pseudo(struct_name, field),
     };
 

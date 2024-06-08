@@ -1,5 +1,5 @@
 use crate::codegen::generator::codec::structs::CodecMode;
-use crate::codegen::ir::mir::func::MirFunc;
+use crate::codegen::ir::mir::func::{MirFunc, MirFuncImplMode};
 use crate::codegen::ir::mir::skip::MirSkip;
 use crate::codegen::ir::mir::trait_impl::MirTraitImpl;
 use crate::codegen::ir::mir::ty::enumeration::{MirEnum, MirEnumIdent};
@@ -30,7 +30,7 @@ pub struct MirPack {
 impl MirPack {
     pub(crate) fn funcs_with_impl(&self) -> Vec<MirFunc> {
         (self.funcs_all.iter())
-            .filter(|f| f.has_impl)
+            .filter(|f| f.impl_mode == MirFuncImplMode::Normal)
             .cloned()
             .collect()
     }
