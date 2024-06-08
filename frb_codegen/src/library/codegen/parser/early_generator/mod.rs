@@ -2,6 +2,7 @@ mod proxy_enum;
 mod trait_impl_enum;
 
 use crate::codegen::dumper::Dumper;
+use crate::codegen::ir::early_generator::pack::IrEarlyGeneratorPack;
 use crate::codegen::ir::hir::flat::pack::HirFlatPack;
 use crate::codegen::parser::hir::flat::extra_code_injector::inject_extra_code;
 use crate::codegen::parser::mir;
@@ -11,7 +12,7 @@ pub(crate) fn execute(
     mut pack: HirFlatPack,
     config_mir: &ParserMirInternalConfig,
     dumper: &Dumper,
-) -> anyhow::Result<HirFlatPack> {
+) -> anyhow::Result<IrEarlyGeneratorPack> {
     let dumper_tentative_mir = dumper.with_add_name_prefix("1_tentative_mir/");
     let tentative_mir_pack = mir::parse(config_mir, &pack, &dumper_tentative_mir)?;
 
