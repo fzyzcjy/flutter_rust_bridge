@@ -173,6 +173,7 @@ fn parse_maybe_proxy_enum(ty: MirType, type_parser: &TypeParser) -> anyhow::Resu
             MirTypeDelegateProxyEnum {
                 original: Box::new(ty),
                 delegate_namespace: proxied_type.proxy_enum_namespace.clone(),
+                variants: TODO,
             },
         )));
     }
