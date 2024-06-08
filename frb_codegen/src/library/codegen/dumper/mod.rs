@@ -19,7 +19,7 @@ pub(crate) struct Dumper<'a> {
 }
 
 impl<'a> Dumper<'a> {
-    pub fn new(config: &'a DumperInternalConfig) -> Self {
+    pub(crate) fn new(config: &'a DumperInternalConfig) -> Self {
         Self { config }
     }
 
