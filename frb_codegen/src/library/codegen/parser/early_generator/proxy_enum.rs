@@ -24,18 +24,26 @@ pub(crate) fn generate(
         .collect_vec();
 
     let proxy_variants_of_enum =
-        (proxy_variants.into_iter()).into_group_map_by(|ty| ty.upstream.safe_ident());
+        (proxy_variants.iter()).into_group_map_by(|ty| ty.upstream.safe_ident());
 
     let extra_code = (proxy_variants_of_enum.into_iter())
         .map(|(_, proxy_variants)| generate_proxy_enum(&proxy_variants))
         .join("");
 
     inject_extra_code_to_rust_output(pack, &extra_code, config_mir)?;
+    (pack.proxied_types).extend(compute_proxied_types(&proxy_variants));
 
     Ok(())
 }
 
-fn generate_proxy_enum(proxy_variants: &[MirTypeDelegateProxyVariant]) -> String {
+fn compute_proxied_types(proxy_variants: &[MirTypeDelegateProxyVariant]) -> Vec<String> {
+    (proxy_variants.iter())
+        .filter_map(|variant| variant.inner.rust_api_type())
+        .unique()
+        .collect_vec()
+}
+
+fn generate_proxy_enum(proxy_variants: &[&MirTypeDelegateProxyVariant]) -> String {
     let proxy_enum_ty = *proxy_variants[0].inner.clone();
 
     let enum_name = format!("{}ProxyEnum", proxy_enum_ty.safe_ident());
