@@ -381,7 +381,7 @@ flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
 
 // Section: extra_from_parser
 
-enum SimpleTraitTwinNormalImpl {
+pub enum SimpleTraitTwinNormalImpl {
     StructOneWithTraitTwinNormal(RustAutoOpaque<StructOneWithTraitTwinNormal>),
     StructTwoWithTraitTwinNormal(RustAutoOpaque<StructTwoWithTraitTwinNormal>),
 }

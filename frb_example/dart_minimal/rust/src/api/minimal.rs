@@ -1,3 +1,4 @@
+use crate::frb_generated::SimpleTraitTwinNormalImpl;
 use flutter_rust_bridge::frb;
 
 #[frb(init)]
@@ -50,4 +51,8 @@ impl SimpleTraitTwinNormal for StructTwoWithTraitTwinNormal {
     fn simple_trait_fn_receiver_borrow_twin_normal(&self) -> i32 {
         self.two * 2
     }
+}
+
+pub fn func_arg_trait_impl_twin_normal(arg: SimpleTraitTwinNormalImpl) -> i32 {
+    // TODO
 }
