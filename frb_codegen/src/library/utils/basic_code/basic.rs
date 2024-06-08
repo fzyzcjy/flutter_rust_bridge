@@ -1,4 +1,4 @@
-pub(crate) trait BasicCode {
+pub(crate) trait SimpleCodeTrait {
     fn body(&self) -> &str;
 
     fn new_body(body: String) -> Self;
@@ -47,7 +47,7 @@ macro_rules! basic_code_impl {
             }
         }
 
-        impl $crate::utils::basic_code::basic::BasicCode for $name {
+        impl $crate::utils::basic_code::basic:BasicCodee for $name {
             fn body(&self) -> &str {
                 &self.body
             }

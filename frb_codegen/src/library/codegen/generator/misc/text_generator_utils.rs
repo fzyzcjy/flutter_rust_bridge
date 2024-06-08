@@ -1,8 +1,8 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::target::TargetOrCommon;
-use crate::utils::basic_code::basic::BasicCode;
+use crate::utils::basic_code::basic::SimpleCodeTrait;
 
-pub(crate) fn section_header_comment<T: BasicCode>(
+pub(crate) fn section_header_comment<T: SimpleCodeTrait>(
     section_name: &str,
     item: &Acc<Vec<T>>,
 ) -> Acc<Vec<T>> {
