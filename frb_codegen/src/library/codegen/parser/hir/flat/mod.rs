@@ -35,11 +35,8 @@ pub(crate) fn parse(
     let pack = transformer::resolve_type_alias_transformer::transform(pack)?;
     dump(dumper, "7_resolve_type_alias_transformer", &pack)?;
 
-    let pack = transformer::generate_with_mir::transform(pack, config)?;
-    dump(dumper, "8_generate_with_mir", &pack)?;
-
     let pack = transformer::sort_transformer::transform(pack)?;
-    dump(dumper, "9_sort_transformer", &pack)?;
+    dump(dumper, "8_sort_transformer", &pack)?;
 
     Ok(pack)
 }
