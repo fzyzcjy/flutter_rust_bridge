@@ -45,7 +45,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 MirTypeDelegate::BigPrimitive(_) => "self.toString()".to_owned(),
                 MirTypeDelegate::RustAutoOpaqueExplicit(_ir) => "self".to_owned(),
                 MirTypeDelegate::ProxyVariant(_mir) => "TODO".to_owned(),
-                MirTypeDelegate::ProxyTarget(_mir) => "TODO".to_owned(),
+                MirTypeDelegate::ProxyEnum(_mir) => "TODO".to_owned(),
                 // MirTypeDelegate::DynTrait(_ir) => lang.throw_unimplemented(""), // TODO
             },
             Lang::RustLang(_) => match &self.mir {
@@ -94,7 +94,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                         .to_owned()
                 }
                 MirTypeDelegate::ProxyVariant(_mir) => "todo!()".to_owned(),
-                MirTypeDelegate::ProxyTarget(_mir) => "todo!()".to_owned(),
+                MirTypeDelegate::ProxyEnum(_mir) => "todo!()".to_owned(),
             },
         };
         Some(simple_delegate_encode(
@@ -152,7 +152,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     MirTypeDelegate::BigPrimitive(_) => "BigInt.parse(inner)".to_owned(),
                     MirTypeDelegate::RustAutoOpaqueExplicit(_ir) => "inner".to_owned(),
                     MirTypeDelegate::ProxyVariant(_mir) => "TODO".to_owned(),
-                    MirTypeDelegate::ProxyTarget(_mir) => "TODO".to_owned(),
+                    MirTypeDelegate::ProxyEnum(_mir) => "TODO".to_owned(),
                     // MirTypeDelegate::DynTrait(_) => return Some(lang.throw_unimplemented("")),
                 }
             }
@@ -197,7 +197,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                         .to_owned()
                 } // MirTypeDelegate::DynTrait(_ir) => lang.throw_unimplemented(""), // TODO
                 MirTypeDelegate::ProxyVariant(_mir) => "todo!()".to_owned(),
-                MirTypeDelegate::ProxyTarget(_mir) => "todo!()".to_owned(),
+                MirTypeDelegate::ProxyEnum(_mir) => "todo!()".to_owned(),
             },
         };
 

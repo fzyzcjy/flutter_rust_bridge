@@ -87,7 +87,7 @@ impl<'a> WireDartCodecDcoGeneratorDecoderTrait for DelegateWireDartCodecDcoGener
                 "return BigInt.parse(raw);".to_owned()
             }
             MirTypeDelegate::RustAutoOpaqueExplicit(mir) => format!(r"return dco_decode_{}(raw);", mir.inner.safe_ident()),
-            MirTypeDelegate::ProxyVariant(_) | MirTypeDelegate::ProxyTarget(_) =>
+            MirTypeDelegate::ProxyVariant(_) | MirTypeDelegate::ProxyEnum(_) =>
                 "throw UnimplementedError('Not implemented in this codec, please use the other one');".into(),
         }
     }

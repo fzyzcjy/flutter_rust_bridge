@@ -23,7 +23,7 @@ pub(crate) fn generate(pack: &HirFlatPack, tentative_mir_pack: &MirPack) -> anyh
 
 fn generate_proxy_target(proxy_variants: &[MirTypeDelegateProxyVariant]) -> String {
     let proxy_target = *proxy_variants[0].upstream.clone();
-    
+
     let enum_name = format!("{}ProxyEnum");
 
     format!("

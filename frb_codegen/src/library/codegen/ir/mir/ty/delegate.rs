@@ -30,7 +30,7 @@ pub enum MirTypeDelegate {
     BigPrimitive(MirTypeDelegateBigPrimitive),
     RustAutoOpaqueExplicit(MirTypeDelegateRustAutoOpaqueExplicit),
     ProxyVariant(MirTypeDelegateProxyVariant),
-    ProxyTarget(MirTypeDelegateProxyTarget),
+    ProxyEnum(MirTypeDelegateProxyEnum),
     // DynTrait(MirTypeDelegateDynTrait),
 }
 
@@ -90,7 +90,7 @@ pub struct MirTypeDelegateProxyVariant {
     pub upstream: Box<MirType>,
 }
 
-pub struct MirTypeDelegateProxyTarget {
+pub struct MirTypeDelegateProxyEnum {
     pub inner: Box<MirType>,
 }
 
@@ -145,7 +145,7 @@ impl MirTypeTrait for MirTypeDelegate {
             MirTypeDelegate::ProxyVariant(mir) => {
                 format!("ProxyVariant_{}", mir.inner.safe_ident())
             }
-            MirTypeDelegate::ProxyTarget(mir) => format!("ProxyTarget_{}", mir.inner.safe_ident()),
+            MirTypeDelegate::ProxyEnum(mir) => format!("ProxyTarget_{}", mir.inner.safe_ident()),
         }
     }
 
@@ -209,7 +209,7 @@ impl MirTypeTrait for MirTypeDelegate {
                 format!("RustAutoOpaque{}<{}>", mir.inner.codec, mir.raw.string)
             } // MirTypeDelegate::DynTrait(mir) => format!("dyn <{}>", mir.trait_def_name.name),
             MirTypeDelegate::ProxyVariant(mir) => mir.inner.rust_api_type(),
-            MirTypeDelegate::ProxyTarget(mir) => mir.inner.rust_api_type(),
+            MirTypeDelegate::ProxyEnum(mir) => mir.inner.rust_api_type(),
         }
     }
 
@@ -279,7 +279,7 @@ impl MirTypeDelegate {
             MirTypeDelegate::RustAutoOpaqueExplicit(mir) => MirType::RustOpaque(mir.inner.clone()),
             // MirTypeDelegate::DynTrait(mir) => mir.inner(),
             MirTypeDelegate::ProxyVariant(mir) => *mir.inner.clone(),
-            MirTypeDelegate::ProxyTarget(mir) => *mir.inner.clone(),
+            MirTypeDelegate::ProxyEnum(mir) => *mir.inner.clone(),
         }
     }
 }

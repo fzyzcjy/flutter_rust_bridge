@@ -139,7 +139,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGener
                 "return cst_encode_{}(raw);",
                 self.mir.get_delegate().safe_ident(),
             ))),
-            MirTypeDelegate::ProxyVariant(_) | MirTypeDelegate::ProxyTarget(_) =>
+            MirTypeDelegate::ProxyVariant(_) | MirTypeDelegate::ProxyEnum(_) =>
                 Acc::distribute(Some("throw UnimplementedError('Not implemented in this codec, please use the other one');".to_string()))
         }
     }
