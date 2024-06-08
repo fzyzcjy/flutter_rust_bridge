@@ -6,6 +6,31 @@
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
+Future<int> funcArgTraitImplTwinRustAsyncSse(
+        {required SimpleTraitForDynTwinRustAsyncSseImplementor arg}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualImplTraitTwinRustAsyncSseFuncArgTraitImplTwinRustAsyncSse(
+            arg: arg);
+
+// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructOneWithTraitForDynTwinRustAsyncSse>>
+abstract class StructOneWithTraitForDynTwinRustAsyncSse
+    implements SimpleTraitForDynTwinRustAsyncSse {
+  static Future<StructOneWithTraitForDynTwinRustAsyncSse>
+      createTwinRustAsyncSse({required int one}) => RustLib.instance.api
+          .crateApiPseudoManualImplTraitTwinRustAsyncSseStructOneWithTraitForDynTwinRustAsyncSseCreateTwinRustAsyncSse(
+              one: one);
+
+  int get one;
+
+  void set one(int one);
+
+  Future<int> simpleMethodTwinRustAsyncSse();
+
+  void dispose();
+
+  bool get isDisposed;
+}
+
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructOneWithTraitTwinRustAsyncSse>>
 abstract class StructOneWithTraitTwinRustAsyncSse
     implements SimpleTraitTwinRustAsyncSse {
@@ -24,6 +49,20 @@ abstract class StructOneWithTraitTwinRustAsyncSse
   static Future<int> simpleTraitFnWithDefaultImplTwinRustAsyncSse() => RustLib
       .instance.api
       .crateApiPseudoManualImplTraitTwinRustAsyncSseStructOneWithTraitTwinRustAsyncSseSimpleTraitFnWithDefaultImplTwinRustAsyncSse();
+
+  void dispose();
+
+  bool get isDisposed;
+}
+
+// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructTwoWithTraitForDynTwinRustAsyncSse>>
+abstract class StructTwoWithTraitForDynTwinRustAsyncSse
+    implements SimpleTraitForDynTwinRustAsyncSse {
+  int get two;
+
+  void set two(int two);
+
+  Future<int> simpleMethodTwinRustAsyncSse();
 
   void dispose();
 
@@ -52,6 +91,10 @@ abstract class StructTwoWithTraitTwinRustAsyncSse
   void dispose();
 
   bool get isDisposed;
+}
+
+abstract class SimpleTraitForDynTwinRustAsyncSse {
+  Future<int> simpleMethodTwinRustAsyncSse();
 }
 
 abstract class SimpleTraitTwinRustAsyncSse {

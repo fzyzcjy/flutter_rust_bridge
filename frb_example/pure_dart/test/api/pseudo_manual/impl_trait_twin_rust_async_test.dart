@@ -29,4 +29,15 @@ Future<void> main({bool skipRustLibInit = false}) async {
             .simpleTraitFnWithDefaultImplTwinRustAsync(),
         42);
   });
+
+  test('use generated implementor', () async {
+    final object =
+        await StructOneWithTraitForDynTwinRustAsync.createTwinRustAsync(
+            one: 100);
+    expect(
+        await funcArgTraitImplTwinRustAsync(
+            arg: SimpleTraitForDynTwinRustAsyncImplementor
+                .structOneWithTraitForDynTwinRustAsync(object)),
+        100);
+  });
 }

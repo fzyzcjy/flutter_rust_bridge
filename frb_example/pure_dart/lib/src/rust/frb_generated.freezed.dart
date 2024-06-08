@@ -475,3 +475,2318 @@ abstract class SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTw
           _$SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormalImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
+
+/// @nodoc
+mixin _$SimpleTraitForDynTwinRustAsyncImplementor {
+  SimpleTraitForDynTwinRustAsync get field0 =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(StructOneWithTraitForDynTwinRustAsync field0)
+        structOneWithTraitForDynTwinRustAsync,
+    required TResult Function(StructTwoWithTraitForDynTwinRustAsync field0)
+        structTwoWithTraitForDynTwinRustAsync,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(StructOneWithTraitForDynTwinRustAsync field0)?
+        structOneWithTraitForDynTwinRustAsync,
+    TResult? Function(StructTwoWithTraitForDynTwinRustAsync field0)?
+        structTwoWithTraitForDynTwinRustAsync,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(StructOneWithTraitForDynTwinRustAsync field0)?
+        structOneWithTraitForDynTwinRustAsync,
+    TResult Function(StructTwoWithTraitForDynTwinRustAsync field0)?
+        structTwoWithTraitForDynTwinRustAsync,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(
+            SimpleTraitForDynTwinRustAsyncImplementor_StructOneWithTraitForDynTwinRustAsync
+                value)
+        structOneWithTraitForDynTwinRustAsync,
+    required TResult Function(
+            SimpleTraitForDynTwinRustAsyncImplementor_StructTwoWithTraitForDynTwinRustAsync
+                value)
+        structTwoWithTraitForDynTwinRustAsync,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(
+            SimpleTraitForDynTwinRustAsyncImplementor_StructOneWithTraitForDynTwinRustAsync
+                value)?
+        structOneWithTraitForDynTwinRustAsync,
+    TResult? Function(
+            SimpleTraitForDynTwinRustAsyncImplementor_StructTwoWithTraitForDynTwinRustAsync
+                value)?
+        structTwoWithTraitForDynTwinRustAsync,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(
+            SimpleTraitForDynTwinRustAsyncImplementor_StructOneWithTraitForDynTwinRustAsync
+                value)?
+        structOneWithTraitForDynTwinRustAsync,
+    TResult Function(
+            SimpleTraitForDynTwinRustAsyncImplementor_StructTwoWithTraitForDynTwinRustAsync
+                value)?
+        structTwoWithTraitForDynTwinRustAsync,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SimpleTraitForDynTwinRustAsyncImplementorCopyWith<$Res> {
+  factory $SimpleTraitForDynTwinRustAsyncImplementorCopyWith(
+          SimpleTraitForDynTwinRustAsyncImplementor value,
+          $Res Function(SimpleTraitForDynTwinRustAsyncImplementor) then) =
+      _$SimpleTraitForDynTwinRustAsyncImplementorCopyWithImpl<$Res,
+          SimpleTraitForDynTwinRustAsyncImplementor>;
+}
+
+/// @nodoc
+class _$SimpleTraitForDynTwinRustAsyncImplementorCopyWithImpl<$Res,
+        $Val extends SimpleTraitForDynTwinRustAsyncImplementor>
+    implements $SimpleTraitForDynTwinRustAsyncImplementorCopyWith<$Res> {
+  _$SimpleTraitForDynTwinRustAsyncImplementorCopyWithImpl(
+      this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$SimpleTraitForDynTwinRustAsyncImplementor_StructOneWithTraitForDynTwinRustAsyncImplCopyWith<
+    $Res> {
+  factory _$$SimpleTraitForDynTwinRustAsyncImplementor_StructOneWithTraitForDynTwinRustAsyncImplCopyWith(
+          _$SimpleTraitForDynTwinRustAsyncImplementor_StructOneWithTraitForDynTwinRustAsyncImpl
+              value,
+          $Res Function(
+                  _$SimpleTraitForDynTwinRustAsyncImplementor_StructOneWithTraitForDynTwinRustAsyncImpl)
+              then) =
+      __$$SimpleTraitForDynTwinRustAsyncImplementor_StructOneWithTraitForDynTwinRustAsyncImplCopyWithImpl<
+          $Res>;
+  @useResult
+  $Res call({StructOneWithTraitForDynTwinRustAsync field0});
+}
+
+/// @nodoc
+class __$$SimpleTraitForDynTwinRustAsyncImplementor_StructOneWithTraitForDynTwinRustAsyncImplCopyWithImpl<
+        $Res>
+    extends _$SimpleTraitForDynTwinRustAsyncImplementorCopyWithImpl<$Res,
+        _$SimpleTraitForDynTwinRustAsyncImplementor_StructOneWithTraitForDynTwinRustAsyncImpl>
+    implements
+        _$$SimpleTraitForDynTwinRustAsyncImplementor_StructOneWithTraitForDynTwinRustAsyncImplCopyWith<
+            $Res> {
+  __$$SimpleTraitForDynTwinRustAsyncImplementor_StructOneWithTraitForDynTwinRustAsyncImplCopyWithImpl(
+      _$SimpleTraitForDynTwinRustAsyncImplementor_StructOneWithTraitForDynTwinRustAsyncImpl
+          _value,
+      $Res Function(
+              _$SimpleTraitForDynTwinRustAsyncImplementor_StructOneWithTraitForDynTwinRustAsyncImpl)
+          _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(
+        _$SimpleTraitForDynTwinRustAsyncImplementor_StructOneWithTraitForDynTwinRustAsyncImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as StructOneWithTraitForDynTwinRustAsync,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SimpleTraitForDynTwinRustAsyncImplementor_StructOneWithTraitForDynTwinRustAsyncImpl
+    extends SimpleTraitForDynTwinRustAsyncImplementor_StructOneWithTraitForDynTwinRustAsync {
+  const _$SimpleTraitForDynTwinRustAsyncImplementor_StructOneWithTraitForDynTwinRustAsyncImpl(
+      this.field0)
+      : super._();
+
+  @override
+  final StructOneWithTraitForDynTwinRustAsync field0;
+
+  @override
+  String toString() {
+    return 'SimpleTraitForDynTwinRustAsyncImplementor.structOneWithTraitForDynTwinRustAsync(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other
+                is _$SimpleTraitForDynTwinRustAsyncImplementor_StructOneWithTraitForDynTwinRustAsyncImpl &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SimpleTraitForDynTwinRustAsyncImplementor_StructOneWithTraitForDynTwinRustAsyncImplCopyWith<
+          _$SimpleTraitForDynTwinRustAsyncImplementor_StructOneWithTraitForDynTwinRustAsyncImpl>
+      get copyWith =>
+          __$$SimpleTraitForDynTwinRustAsyncImplementor_StructOneWithTraitForDynTwinRustAsyncImplCopyWithImpl<
+                  _$SimpleTraitForDynTwinRustAsyncImplementor_StructOneWithTraitForDynTwinRustAsyncImpl>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(StructOneWithTraitForDynTwinRustAsync field0)
+        structOneWithTraitForDynTwinRustAsync,
+    required TResult Function(StructTwoWithTraitForDynTwinRustAsync field0)
+        structTwoWithTraitForDynTwinRustAsync,
+  }) {
+    return structOneWithTraitForDynTwinRustAsync(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(StructOneWithTraitForDynTwinRustAsync field0)?
+        structOneWithTraitForDynTwinRustAsync,
+    TResult? Function(StructTwoWithTraitForDynTwinRustAsync field0)?
+        structTwoWithTraitForDynTwinRustAsync,
+  }) {
+    return structOneWithTraitForDynTwinRustAsync?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(StructOneWithTraitForDynTwinRustAsync field0)?
+        structOneWithTraitForDynTwinRustAsync,
+    TResult Function(StructTwoWithTraitForDynTwinRustAsync field0)?
+        structTwoWithTraitForDynTwinRustAsync,
+    required TResult orElse(),
+  }) {
+    if (structOneWithTraitForDynTwinRustAsync != null) {
+      return structOneWithTraitForDynTwinRustAsync(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(
+            SimpleTraitForDynTwinRustAsyncImplementor_StructOneWithTraitForDynTwinRustAsync
+                value)
+        structOneWithTraitForDynTwinRustAsync,
+    required TResult Function(
+            SimpleTraitForDynTwinRustAsyncImplementor_StructTwoWithTraitForDynTwinRustAsync
+                value)
+        structTwoWithTraitForDynTwinRustAsync,
+  }) {
+    return structOneWithTraitForDynTwinRustAsync(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(
+            SimpleTraitForDynTwinRustAsyncImplementor_StructOneWithTraitForDynTwinRustAsync
+                value)?
+        structOneWithTraitForDynTwinRustAsync,
+    TResult? Function(
+            SimpleTraitForDynTwinRustAsyncImplementor_StructTwoWithTraitForDynTwinRustAsync
+                value)?
+        structTwoWithTraitForDynTwinRustAsync,
+  }) {
+    return structOneWithTraitForDynTwinRustAsync?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(
+            SimpleTraitForDynTwinRustAsyncImplementor_StructOneWithTraitForDynTwinRustAsync
+                value)?
+        structOneWithTraitForDynTwinRustAsync,
+    TResult Function(
+            SimpleTraitForDynTwinRustAsyncImplementor_StructTwoWithTraitForDynTwinRustAsync
+                value)?
+        structTwoWithTraitForDynTwinRustAsync,
+    required TResult orElse(),
+  }) {
+    if (structOneWithTraitForDynTwinRustAsync != null) {
+      return structOneWithTraitForDynTwinRustAsync(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SimpleTraitForDynTwinRustAsyncImplementor_StructOneWithTraitForDynTwinRustAsync
+    extends SimpleTraitForDynTwinRustAsyncImplementor {
+  const factory SimpleTraitForDynTwinRustAsyncImplementor_StructOneWithTraitForDynTwinRustAsync(
+          final StructOneWithTraitForDynTwinRustAsync field0) =
+      _$SimpleTraitForDynTwinRustAsyncImplementor_StructOneWithTraitForDynTwinRustAsyncImpl;
+  const SimpleTraitForDynTwinRustAsyncImplementor_StructOneWithTraitForDynTwinRustAsync._()
+      : super._();
+
+  @override
+  StructOneWithTraitForDynTwinRustAsync get field0;
+  @JsonKey(ignore: true)
+  _$$SimpleTraitForDynTwinRustAsyncImplementor_StructOneWithTraitForDynTwinRustAsyncImplCopyWith<
+          _$SimpleTraitForDynTwinRustAsyncImplementor_StructOneWithTraitForDynTwinRustAsyncImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SimpleTraitForDynTwinRustAsyncImplementor_StructTwoWithTraitForDynTwinRustAsyncImplCopyWith<
+    $Res> {
+  factory _$$SimpleTraitForDynTwinRustAsyncImplementor_StructTwoWithTraitForDynTwinRustAsyncImplCopyWith(
+          _$SimpleTraitForDynTwinRustAsyncImplementor_StructTwoWithTraitForDynTwinRustAsyncImpl
+              value,
+          $Res Function(
+                  _$SimpleTraitForDynTwinRustAsyncImplementor_StructTwoWithTraitForDynTwinRustAsyncImpl)
+              then) =
+      __$$SimpleTraitForDynTwinRustAsyncImplementor_StructTwoWithTraitForDynTwinRustAsyncImplCopyWithImpl<
+          $Res>;
+  @useResult
+  $Res call({StructTwoWithTraitForDynTwinRustAsync field0});
+}
+
+/// @nodoc
+class __$$SimpleTraitForDynTwinRustAsyncImplementor_StructTwoWithTraitForDynTwinRustAsyncImplCopyWithImpl<
+        $Res>
+    extends _$SimpleTraitForDynTwinRustAsyncImplementorCopyWithImpl<$Res,
+        _$SimpleTraitForDynTwinRustAsyncImplementor_StructTwoWithTraitForDynTwinRustAsyncImpl>
+    implements
+        _$$SimpleTraitForDynTwinRustAsyncImplementor_StructTwoWithTraitForDynTwinRustAsyncImplCopyWith<
+            $Res> {
+  __$$SimpleTraitForDynTwinRustAsyncImplementor_StructTwoWithTraitForDynTwinRustAsyncImplCopyWithImpl(
+      _$SimpleTraitForDynTwinRustAsyncImplementor_StructTwoWithTraitForDynTwinRustAsyncImpl
+          _value,
+      $Res Function(
+              _$SimpleTraitForDynTwinRustAsyncImplementor_StructTwoWithTraitForDynTwinRustAsyncImpl)
+          _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(
+        _$SimpleTraitForDynTwinRustAsyncImplementor_StructTwoWithTraitForDynTwinRustAsyncImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as StructTwoWithTraitForDynTwinRustAsync,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SimpleTraitForDynTwinRustAsyncImplementor_StructTwoWithTraitForDynTwinRustAsyncImpl
+    extends SimpleTraitForDynTwinRustAsyncImplementor_StructTwoWithTraitForDynTwinRustAsync {
+  const _$SimpleTraitForDynTwinRustAsyncImplementor_StructTwoWithTraitForDynTwinRustAsyncImpl(
+      this.field0)
+      : super._();
+
+  @override
+  final StructTwoWithTraitForDynTwinRustAsync field0;
+
+  @override
+  String toString() {
+    return 'SimpleTraitForDynTwinRustAsyncImplementor.structTwoWithTraitForDynTwinRustAsync(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other
+                is _$SimpleTraitForDynTwinRustAsyncImplementor_StructTwoWithTraitForDynTwinRustAsyncImpl &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SimpleTraitForDynTwinRustAsyncImplementor_StructTwoWithTraitForDynTwinRustAsyncImplCopyWith<
+          _$SimpleTraitForDynTwinRustAsyncImplementor_StructTwoWithTraitForDynTwinRustAsyncImpl>
+      get copyWith =>
+          __$$SimpleTraitForDynTwinRustAsyncImplementor_StructTwoWithTraitForDynTwinRustAsyncImplCopyWithImpl<
+                  _$SimpleTraitForDynTwinRustAsyncImplementor_StructTwoWithTraitForDynTwinRustAsyncImpl>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(StructOneWithTraitForDynTwinRustAsync field0)
+        structOneWithTraitForDynTwinRustAsync,
+    required TResult Function(StructTwoWithTraitForDynTwinRustAsync field0)
+        structTwoWithTraitForDynTwinRustAsync,
+  }) {
+    return structTwoWithTraitForDynTwinRustAsync(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(StructOneWithTraitForDynTwinRustAsync field0)?
+        structOneWithTraitForDynTwinRustAsync,
+    TResult? Function(StructTwoWithTraitForDynTwinRustAsync field0)?
+        structTwoWithTraitForDynTwinRustAsync,
+  }) {
+    return structTwoWithTraitForDynTwinRustAsync?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(StructOneWithTraitForDynTwinRustAsync field0)?
+        structOneWithTraitForDynTwinRustAsync,
+    TResult Function(StructTwoWithTraitForDynTwinRustAsync field0)?
+        structTwoWithTraitForDynTwinRustAsync,
+    required TResult orElse(),
+  }) {
+    if (structTwoWithTraitForDynTwinRustAsync != null) {
+      return structTwoWithTraitForDynTwinRustAsync(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(
+            SimpleTraitForDynTwinRustAsyncImplementor_StructOneWithTraitForDynTwinRustAsync
+                value)
+        structOneWithTraitForDynTwinRustAsync,
+    required TResult Function(
+            SimpleTraitForDynTwinRustAsyncImplementor_StructTwoWithTraitForDynTwinRustAsync
+                value)
+        structTwoWithTraitForDynTwinRustAsync,
+  }) {
+    return structTwoWithTraitForDynTwinRustAsync(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(
+            SimpleTraitForDynTwinRustAsyncImplementor_StructOneWithTraitForDynTwinRustAsync
+                value)?
+        structOneWithTraitForDynTwinRustAsync,
+    TResult? Function(
+            SimpleTraitForDynTwinRustAsyncImplementor_StructTwoWithTraitForDynTwinRustAsync
+                value)?
+        structTwoWithTraitForDynTwinRustAsync,
+  }) {
+    return structTwoWithTraitForDynTwinRustAsync?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(
+            SimpleTraitForDynTwinRustAsyncImplementor_StructOneWithTraitForDynTwinRustAsync
+                value)?
+        structOneWithTraitForDynTwinRustAsync,
+    TResult Function(
+            SimpleTraitForDynTwinRustAsyncImplementor_StructTwoWithTraitForDynTwinRustAsync
+                value)?
+        structTwoWithTraitForDynTwinRustAsync,
+    required TResult orElse(),
+  }) {
+    if (structTwoWithTraitForDynTwinRustAsync != null) {
+      return structTwoWithTraitForDynTwinRustAsync(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SimpleTraitForDynTwinRustAsyncImplementor_StructTwoWithTraitForDynTwinRustAsync
+    extends SimpleTraitForDynTwinRustAsyncImplementor {
+  const factory SimpleTraitForDynTwinRustAsyncImplementor_StructTwoWithTraitForDynTwinRustAsync(
+          final StructTwoWithTraitForDynTwinRustAsync field0) =
+      _$SimpleTraitForDynTwinRustAsyncImplementor_StructTwoWithTraitForDynTwinRustAsyncImpl;
+  const SimpleTraitForDynTwinRustAsyncImplementor_StructTwoWithTraitForDynTwinRustAsync._()
+      : super._();
+
+  @override
+  StructTwoWithTraitForDynTwinRustAsync get field0;
+  @JsonKey(ignore: true)
+  _$$SimpleTraitForDynTwinRustAsyncImplementor_StructTwoWithTraitForDynTwinRustAsyncImplCopyWith<
+          _$SimpleTraitForDynTwinRustAsyncImplementor_StructTwoWithTraitForDynTwinRustAsyncImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$SimpleTraitForDynTwinRustAsyncSseImplementor {
+  SimpleTraitForDynTwinRustAsyncSse get field0 =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(StructOneWithTraitForDynTwinRustAsyncSse field0)
+        structOneWithTraitForDynTwinRustAsyncSse,
+    required TResult Function(StructTwoWithTraitForDynTwinRustAsyncSse field0)
+        structTwoWithTraitForDynTwinRustAsyncSse,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(StructOneWithTraitForDynTwinRustAsyncSse field0)?
+        structOneWithTraitForDynTwinRustAsyncSse,
+    TResult? Function(StructTwoWithTraitForDynTwinRustAsyncSse field0)?
+        structTwoWithTraitForDynTwinRustAsyncSse,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(StructOneWithTraitForDynTwinRustAsyncSse field0)?
+        structOneWithTraitForDynTwinRustAsyncSse,
+    TResult Function(StructTwoWithTraitForDynTwinRustAsyncSse field0)?
+        structTwoWithTraitForDynTwinRustAsyncSse,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(
+            SimpleTraitForDynTwinRustAsyncSseImplementor_StructOneWithTraitForDynTwinRustAsyncSse
+                value)
+        structOneWithTraitForDynTwinRustAsyncSse,
+    required TResult Function(
+            SimpleTraitForDynTwinRustAsyncSseImplementor_StructTwoWithTraitForDynTwinRustAsyncSse
+                value)
+        structTwoWithTraitForDynTwinRustAsyncSse,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(
+            SimpleTraitForDynTwinRustAsyncSseImplementor_StructOneWithTraitForDynTwinRustAsyncSse
+                value)?
+        structOneWithTraitForDynTwinRustAsyncSse,
+    TResult? Function(
+            SimpleTraitForDynTwinRustAsyncSseImplementor_StructTwoWithTraitForDynTwinRustAsyncSse
+                value)?
+        structTwoWithTraitForDynTwinRustAsyncSse,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(
+            SimpleTraitForDynTwinRustAsyncSseImplementor_StructOneWithTraitForDynTwinRustAsyncSse
+                value)?
+        structOneWithTraitForDynTwinRustAsyncSse,
+    TResult Function(
+            SimpleTraitForDynTwinRustAsyncSseImplementor_StructTwoWithTraitForDynTwinRustAsyncSse
+                value)?
+        structTwoWithTraitForDynTwinRustAsyncSse,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SimpleTraitForDynTwinRustAsyncSseImplementorCopyWith<$Res> {
+  factory $SimpleTraitForDynTwinRustAsyncSseImplementorCopyWith(
+          SimpleTraitForDynTwinRustAsyncSseImplementor value,
+          $Res Function(SimpleTraitForDynTwinRustAsyncSseImplementor) then) =
+      _$SimpleTraitForDynTwinRustAsyncSseImplementorCopyWithImpl<$Res,
+          SimpleTraitForDynTwinRustAsyncSseImplementor>;
+}
+
+/// @nodoc
+class _$SimpleTraitForDynTwinRustAsyncSseImplementorCopyWithImpl<$Res,
+        $Val extends SimpleTraitForDynTwinRustAsyncSseImplementor>
+    implements $SimpleTraitForDynTwinRustAsyncSseImplementorCopyWith<$Res> {
+  _$SimpleTraitForDynTwinRustAsyncSseImplementorCopyWithImpl(
+      this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$SimpleTraitForDynTwinRustAsyncSseImplementor_StructOneWithTraitForDynTwinRustAsyncSseImplCopyWith<
+    $Res> {
+  factory _$$SimpleTraitForDynTwinRustAsyncSseImplementor_StructOneWithTraitForDynTwinRustAsyncSseImplCopyWith(
+          _$SimpleTraitForDynTwinRustAsyncSseImplementor_StructOneWithTraitForDynTwinRustAsyncSseImpl
+              value,
+          $Res Function(
+                  _$SimpleTraitForDynTwinRustAsyncSseImplementor_StructOneWithTraitForDynTwinRustAsyncSseImpl)
+              then) =
+      __$$SimpleTraitForDynTwinRustAsyncSseImplementor_StructOneWithTraitForDynTwinRustAsyncSseImplCopyWithImpl<
+          $Res>;
+  @useResult
+  $Res call({StructOneWithTraitForDynTwinRustAsyncSse field0});
+}
+
+/// @nodoc
+class __$$SimpleTraitForDynTwinRustAsyncSseImplementor_StructOneWithTraitForDynTwinRustAsyncSseImplCopyWithImpl<
+        $Res>
+    extends _$SimpleTraitForDynTwinRustAsyncSseImplementorCopyWithImpl<$Res,
+        _$SimpleTraitForDynTwinRustAsyncSseImplementor_StructOneWithTraitForDynTwinRustAsyncSseImpl>
+    implements
+        _$$SimpleTraitForDynTwinRustAsyncSseImplementor_StructOneWithTraitForDynTwinRustAsyncSseImplCopyWith<
+            $Res> {
+  __$$SimpleTraitForDynTwinRustAsyncSseImplementor_StructOneWithTraitForDynTwinRustAsyncSseImplCopyWithImpl(
+      _$SimpleTraitForDynTwinRustAsyncSseImplementor_StructOneWithTraitForDynTwinRustAsyncSseImpl
+          _value,
+      $Res Function(
+              _$SimpleTraitForDynTwinRustAsyncSseImplementor_StructOneWithTraitForDynTwinRustAsyncSseImpl)
+          _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(
+        _$SimpleTraitForDynTwinRustAsyncSseImplementor_StructOneWithTraitForDynTwinRustAsyncSseImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as StructOneWithTraitForDynTwinRustAsyncSse,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SimpleTraitForDynTwinRustAsyncSseImplementor_StructOneWithTraitForDynTwinRustAsyncSseImpl
+    extends SimpleTraitForDynTwinRustAsyncSseImplementor_StructOneWithTraitForDynTwinRustAsyncSse {
+  const _$SimpleTraitForDynTwinRustAsyncSseImplementor_StructOneWithTraitForDynTwinRustAsyncSseImpl(
+      this.field0)
+      : super._();
+
+  @override
+  final StructOneWithTraitForDynTwinRustAsyncSse field0;
+
+  @override
+  String toString() {
+    return 'SimpleTraitForDynTwinRustAsyncSseImplementor.structOneWithTraitForDynTwinRustAsyncSse(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other
+                is _$SimpleTraitForDynTwinRustAsyncSseImplementor_StructOneWithTraitForDynTwinRustAsyncSseImpl &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SimpleTraitForDynTwinRustAsyncSseImplementor_StructOneWithTraitForDynTwinRustAsyncSseImplCopyWith<
+          _$SimpleTraitForDynTwinRustAsyncSseImplementor_StructOneWithTraitForDynTwinRustAsyncSseImpl>
+      get copyWith =>
+          __$$SimpleTraitForDynTwinRustAsyncSseImplementor_StructOneWithTraitForDynTwinRustAsyncSseImplCopyWithImpl<
+                  _$SimpleTraitForDynTwinRustAsyncSseImplementor_StructOneWithTraitForDynTwinRustAsyncSseImpl>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(StructOneWithTraitForDynTwinRustAsyncSse field0)
+        structOneWithTraitForDynTwinRustAsyncSse,
+    required TResult Function(StructTwoWithTraitForDynTwinRustAsyncSse field0)
+        structTwoWithTraitForDynTwinRustAsyncSse,
+  }) {
+    return structOneWithTraitForDynTwinRustAsyncSse(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(StructOneWithTraitForDynTwinRustAsyncSse field0)?
+        structOneWithTraitForDynTwinRustAsyncSse,
+    TResult? Function(StructTwoWithTraitForDynTwinRustAsyncSse field0)?
+        structTwoWithTraitForDynTwinRustAsyncSse,
+  }) {
+    return structOneWithTraitForDynTwinRustAsyncSse?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(StructOneWithTraitForDynTwinRustAsyncSse field0)?
+        structOneWithTraitForDynTwinRustAsyncSse,
+    TResult Function(StructTwoWithTraitForDynTwinRustAsyncSse field0)?
+        structTwoWithTraitForDynTwinRustAsyncSse,
+    required TResult orElse(),
+  }) {
+    if (structOneWithTraitForDynTwinRustAsyncSse != null) {
+      return structOneWithTraitForDynTwinRustAsyncSse(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(
+            SimpleTraitForDynTwinRustAsyncSseImplementor_StructOneWithTraitForDynTwinRustAsyncSse
+                value)
+        structOneWithTraitForDynTwinRustAsyncSse,
+    required TResult Function(
+            SimpleTraitForDynTwinRustAsyncSseImplementor_StructTwoWithTraitForDynTwinRustAsyncSse
+                value)
+        structTwoWithTraitForDynTwinRustAsyncSse,
+  }) {
+    return structOneWithTraitForDynTwinRustAsyncSse(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(
+            SimpleTraitForDynTwinRustAsyncSseImplementor_StructOneWithTraitForDynTwinRustAsyncSse
+                value)?
+        structOneWithTraitForDynTwinRustAsyncSse,
+    TResult? Function(
+            SimpleTraitForDynTwinRustAsyncSseImplementor_StructTwoWithTraitForDynTwinRustAsyncSse
+                value)?
+        structTwoWithTraitForDynTwinRustAsyncSse,
+  }) {
+    return structOneWithTraitForDynTwinRustAsyncSse?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(
+            SimpleTraitForDynTwinRustAsyncSseImplementor_StructOneWithTraitForDynTwinRustAsyncSse
+                value)?
+        structOneWithTraitForDynTwinRustAsyncSse,
+    TResult Function(
+            SimpleTraitForDynTwinRustAsyncSseImplementor_StructTwoWithTraitForDynTwinRustAsyncSse
+                value)?
+        structTwoWithTraitForDynTwinRustAsyncSse,
+    required TResult orElse(),
+  }) {
+    if (structOneWithTraitForDynTwinRustAsyncSse != null) {
+      return structOneWithTraitForDynTwinRustAsyncSse(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SimpleTraitForDynTwinRustAsyncSseImplementor_StructOneWithTraitForDynTwinRustAsyncSse
+    extends SimpleTraitForDynTwinRustAsyncSseImplementor {
+  const factory SimpleTraitForDynTwinRustAsyncSseImplementor_StructOneWithTraitForDynTwinRustAsyncSse(
+          final StructOneWithTraitForDynTwinRustAsyncSse field0) =
+      _$SimpleTraitForDynTwinRustAsyncSseImplementor_StructOneWithTraitForDynTwinRustAsyncSseImpl;
+  const SimpleTraitForDynTwinRustAsyncSseImplementor_StructOneWithTraitForDynTwinRustAsyncSse._()
+      : super._();
+
+  @override
+  StructOneWithTraitForDynTwinRustAsyncSse get field0;
+  @JsonKey(ignore: true)
+  _$$SimpleTraitForDynTwinRustAsyncSseImplementor_StructOneWithTraitForDynTwinRustAsyncSseImplCopyWith<
+          _$SimpleTraitForDynTwinRustAsyncSseImplementor_StructOneWithTraitForDynTwinRustAsyncSseImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SimpleTraitForDynTwinRustAsyncSseImplementor_StructTwoWithTraitForDynTwinRustAsyncSseImplCopyWith<
+    $Res> {
+  factory _$$SimpleTraitForDynTwinRustAsyncSseImplementor_StructTwoWithTraitForDynTwinRustAsyncSseImplCopyWith(
+          _$SimpleTraitForDynTwinRustAsyncSseImplementor_StructTwoWithTraitForDynTwinRustAsyncSseImpl
+              value,
+          $Res Function(
+                  _$SimpleTraitForDynTwinRustAsyncSseImplementor_StructTwoWithTraitForDynTwinRustAsyncSseImpl)
+              then) =
+      __$$SimpleTraitForDynTwinRustAsyncSseImplementor_StructTwoWithTraitForDynTwinRustAsyncSseImplCopyWithImpl<
+          $Res>;
+  @useResult
+  $Res call({StructTwoWithTraitForDynTwinRustAsyncSse field0});
+}
+
+/// @nodoc
+class __$$SimpleTraitForDynTwinRustAsyncSseImplementor_StructTwoWithTraitForDynTwinRustAsyncSseImplCopyWithImpl<
+        $Res>
+    extends _$SimpleTraitForDynTwinRustAsyncSseImplementorCopyWithImpl<$Res,
+        _$SimpleTraitForDynTwinRustAsyncSseImplementor_StructTwoWithTraitForDynTwinRustAsyncSseImpl>
+    implements
+        _$$SimpleTraitForDynTwinRustAsyncSseImplementor_StructTwoWithTraitForDynTwinRustAsyncSseImplCopyWith<
+            $Res> {
+  __$$SimpleTraitForDynTwinRustAsyncSseImplementor_StructTwoWithTraitForDynTwinRustAsyncSseImplCopyWithImpl(
+      _$SimpleTraitForDynTwinRustAsyncSseImplementor_StructTwoWithTraitForDynTwinRustAsyncSseImpl
+          _value,
+      $Res Function(
+              _$SimpleTraitForDynTwinRustAsyncSseImplementor_StructTwoWithTraitForDynTwinRustAsyncSseImpl)
+          _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(
+        _$SimpleTraitForDynTwinRustAsyncSseImplementor_StructTwoWithTraitForDynTwinRustAsyncSseImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as StructTwoWithTraitForDynTwinRustAsyncSse,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SimpleTraitForDynTwinRustAsyncSseImplementor_StructTwoWithTraitForDynTwinRustAsyncSseImpl
+    extends SimpleTraitForDynTwinRustAsyncSseImplementor_StructTwoWithTraitForDynTwinRustAsyncSse {
+  const _$SimpleTraitForDynTwinRustAsyncSseImplementor_StructTwoWithTraitForDynTwinRustAsyncSseImpl(
+      this.field0)
+      : super._();
+
+  @override
+  final StructTwoWithTraitForDynTwinRustAsyncSse field0;
+
+  @override
+  String toString() {
+    return 'SimpleTraitForDynTwinRustAsyncSseImplementor.structTwoWithTraitForDynTwinRustAsyncSse(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other
+                is _$SimpleTraitForDynTwinRustAsyncSseImplementor_StructTwoWithTraitForDynTwinRustAsyncSseImpl &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SimpleTraitForDynTwinRustAsyncSseImplementor_StructTwoWithTraitForDynTwinRustAsyncSseImplCopyWith<
+          _$SimpleTraitForDynTwinRustAsyncSseImplementor_StructTwoWithTraitForDynTwinRustAsyncSseImpl>
+      get copyWith =>
+          __$$SimpleTraitForDynTwinRustAsyncSseImplementor_StructTwoWithTraitForDynTwinRustAsyncSseImplCopyWithImpl<
+                  _$SimpleTraitForDynTwinRustAsyncSseImplementor_StructTwoWithTraitForDynTwinRustAsyncSseImpl>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(StructOneWithTraitForDynTwinRustAsyncSse field0)
+        structOneWithTraitForDynTwinRustAsyncSse,
+    required TResult Function(StructTwoWithTraitForDynTwinRustAsyncSse field0)
+        structTwoWithTraitForDynTwinRustAsyncSse,
+  }) {
+    return structTwoWithTraitForDynTwinRustAsyncSse(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(StructOneWithTraitForDynTwinRustAsyncSse field0)?
+        structOneWithTraitForDynTwinRustAsyncSse,
+    TResult? Function(StructTwoWithTraitForDynTwinRustAsyncSse field0)?
+        structTwoWithTraitForDynTwinRustAsyncSse,
+  }) {
+    return structTwoWithTraitForDynTwinRustAsyncSse?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(StructOneWithTraitForDynTwinRustAsyncSse field0)?
+        structOneWithTraitForDynTwinRustAsyncSse,
+    TResult Function(StructTwoWithTraitForDynTwinRustAsyncSse field0)?
+        structTwoWithTraitForDynTwinRustAsyncSse,
+    required TResult orElse(),
+  }) {
+    if (structTwoWithTraitForDynTwinRustAsyncSse != null) {
+      return structTwoWithTraitForDynTwinRustAsyncSse(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(
+            SimpleTraitForDynTwinRustAsyncSseImplementor_StructOneWithTraitForDynTwinRustAsyncSse
+                value)
+        structOneWithTraitForDynTwinRustAsyncSse,
+    required TResult Function(
+            SimpleTraitForDynTwinRustAsyncSseImplementor_StructTwoWithTraitForDynTwinRustAsyncSse
+                value)
+        structTwoWithTraitForDynTwinRustAsyncSse,
+  }) {
+    return structTwoWithTraitForDynTwinRustAsyncSse(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(
+            SimpleTraitForDynTwinRustAsyncSseImplementor_StructOneWithTraitForDynTwinRustAsyncSse
+                value)?
+        structOneWithTraitForDynTwinRustAsyncSse,
+    TResult? Function(
+            SimpleTraitForDynTwinRustAsyncSseImplementor_StructTwoWithTraitForDynTwinRustAsyncSse
+                value)?
+        structTwoWithTraitForDynTwinRustAsyncSse,
+  }) {
+    return structTwoWithTraitForDynTwinRustAsyncSse?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(
+            SimpleTraitForDynTwinRustAsyncSseImplementor_StructOneWithTraitForDynTwinRustAsyncSse
+                value)?
+        structOneWithTraitForDynTwinRustAsyncSse,
+    TResult Function(
+            SimpleTraitForDynTwinRustAsyncSseImplementor_StructTwoWithTraitForDynTwinRustAsyncSse
+                value)?
+        structTwoWithTraitForDynTwinRustAsyncSse,
+    required TResult orElse(),
+  }) {
+    if (structTwoWithTraitForDynTwinRustAsyncSse != null) {
+      return structTwoWithTraitForDynTwinRustAsyncSse(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SimpleTraitForDynTwinRustAsyncSseImplementor_StructTwoWithTraitForDynTwinRustAsyncSse
+    extends SimpleTraitForDynTwinRustAsyncSseImplementor {
+  const factory SimpleTraitForDynTwinRustAsyncSseImplementor_StructTwoWithTraitForDynTwinRustAsyncSse(
+          final StructTwoWithTraitForDynTwinRustAsyncSse field0) =
+      _$SimpleTraitForDynTwinRustAsyncSseImplementor_StructTwoWithTraitForDynTwinRustAsyncSseImpl;
+  const SimpleTraitForDynTwinRustAsyncSseImplementor_StructTwoWithTraitForDynTwinRustAsyncSse._()
+      : super._();
+
+  @override
+  StructTwoWithTraitForDynTwinRustAsyncSse get field0;
+  @JsonKey(ignore: true)
+  _$$SimpleTraitForDynTwinRustAsyncSseImplementor_StructTwoWithTraitForDynTwinRustAsyncSseImplCopyWith<
+          _$SimpleTraitForDynTwinRustAsyncSseImplementor_StructTwoWithTraitForDynTwinRustAsyncSseImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$SimpleTraitForDynTwinSseImplementor {
+  SimpleTraitForDynTwinSse get field0 => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(StructOneWithTraitForDynTwinSse field0)
+        structOneWithTraitForDynTwinSse,
+    required TResult Function(StructTwoWithTraitForDynTwinSse field0)
+        structTwoWithTraitForDynTwinSse,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(StructOneWithTraitForDynTwinSse field0)?
+        structOneWithTraitForDynTwinSse,
+    TResult? Function(StructTwoWithTraitForDynTwinSse field0)?
+        structTwoWithTraitForDynTwinSse,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(StructOneWithTraitForDynTwinSse field0)?
+        structOneWithTraitForDynTwinSse,
+    TResult Function(StructTwoWithTraitForDynTwinSse field0)?
+        structTwoWithTraitForDynTwinSse,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(
+            SimpleTraitForDynTwinSseImplementor_StructOneWithTraitForDynTwinSse
+                value)
+        structOneWithTraitForDynTwinSse,
+    required TResult Function(
+            SimpleTraitForDynTwinSseImplementor_StructTwoWithTraitForDynTwinSse
+                value)
+        structTwoWithTraitForDynTwinSse,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(
+            SimpleTraitForDynTwinSseImplementor_StructOneWithTraitForDynTwinSse
+                value)?
+        structOneWithTraitForDynTwinSse,
+    TResult? Function(
+            SimpleTraitForDynTwinSseImplementor_StructTwoWithTraitForDynTwinSse
+                value)?
+        structTwoWithTraitForDynTwinSse,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(
+            SimpleTraitForDynTwinSseImplementor_StructOneWithTraitForDynTwinSse
+                value)?
+        structOneWithTraitForDynTwinSse,
+    TResult Function(
+            SimpleTraitForDynTwinSseImplementor_StructTwoWithTraitForDynTwinSse
+                value)?
+        structTwoWithTraitForDynTwinSse,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SimpleTraitForDynTwinSseImplementorCopyWith<$Res> {
+  factory $SimpleTraitForDynTwinSseImplementorCopyWith(
+          SimpleTraitForDynTwinSseImplementor value,
+          $Res Function(SimpleTraitForDynTwinSseImplementor) then) =
+      _$SimpleTraitForDynTwinSseImplementorCopyWithImpl<$Res,
+          SimpleTraitForDynTwinSseImplementor>;
+}
+
+/// @nodoc
+class _$SimpleTraitForDynTwinSseImplementorCopyWithImpl<$Res,
+        $Val extends SimpleTraitForDynTwinSseImplementor>
+    implements $SimpleTraitForDynTwinSseImplementorCopyWith<$Res> {
+  _$SimpleTraitForDynTwinSseImplementorCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$SimpleTraitForDynTwinSseImplementor_StructOneWithTraitForDynTwinSseImplCopyWith<
+    $Res> {
+  factory _$$SimpleTraitForDynTwinSseImplementor_StructOneWithTraitForDynTwinSseImplCopyWith(
+          _$SimpleTraitForDynTwinSseImplementor_StructOneWithTraitForDynTwinSseImpl
+              value,
+          $Res Function(
+                  _$SimpleTraitForDynTwinSseImplementor_StructOneWithTraitForDynTwinSseImpl)
+              then) =
+      __$$SimpleTraitForDynTwinSseImplementor_StructOneWithTraitForDynTwinSseImplCopyWithImpl<
+          $Res>;
+  @useResult
+  $Res call({StructOneWithTraitForDynTwinSse field0});
+}
+
+/// @nodoc
+class __$$SimpleTraitForDynTwinSseImplementor_StructOneWithTraitForDynTwinSseImplCopyWithImpl<
+        $Res>
+    extends _$SimpleTraitForDynTwinSseImplementorCopyWithImpl<$Res,
+        _$SimpleTraitForDynTwinSseImplementor_StructOneWithTraitForDynTwinSseImpl>
+    implements
+        _$$SimpleTraitForDynTwinSseImplementor_StructOneWithTraitForDynTwinSseImplCopyWith<
+            $Res> {
+  __$$SimpleTraitForDynTwinSseImplementor_StructOneWithTraitForDynTwinSseImplCopyWithImpl(
+      _$SimpleTraitForDynTwinSseImplementor_StructOneWithTraitForDynTwinSseImpl
+          _value,
+      $Res Function(
+              _$SimpleTraitForDynTwinSseImplementor_StructOneWithTraitForDynTwinSseImpl)
+          _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(
+        _$SimpleTraitForDynTwinSseImplementor_StructOneWithTraitForDynTwinSseImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as StructOneWithTraitForDynTwinSse,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SimpleTraitForDynTwinSseImplementor_StructOneWithTraitForDynTwinSseImpl
+    extends SimpleTraitForDynTwinSseImplementor_StructOneWithTraitForDynTwinSse {
+  const _$SimpleTraitForDynTwinSseImplementor_StructOneWithTraitForDynTwinSseImpl(
+      this.field0)
+      : super._();
+
+  @override
+  final StructOneWithTraitForDynTwinSse field0;
+
+  @override
+  String toString() {
+    return 'SimpleTraitForDynTwinSseImplementor.structOneWithTraitForDynTwinSse(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other
+                is _$SimpleTraitForDynTwinSseImplementor_StructOneWithTraitForDynTwinSseImpl &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SimpleTraitForDynTwinSseImplementor_StructOneWithTraitForDynTwinSseImplCopyWith<
+          _$SimpleTraitForDynTwinSseImplementor_StructOneWithTraitForDynTwinSseImpl>
+      get copyWith =>
+          __$$SimpleTraitForDynTwinSseImplementor_StructOneWithTraitForDynTwinSseImplCopyWithImpl<
+                  _$SimpleTraitForDynTwinSseImplementor_StructOneWithTraitForDynTwinSseImpl>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(StructOneWithTraitForDynTwinSse field0)
+        structOneWithTraitForDynTwinSse,
+    required TResult Function(StructTwoWithTraitForDynTwinSse field0)
+        structTwoWithTraitForDynTwinSse,
+  }) {
+    return structOneWithTraitForDynTwinSse(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(StructOneWithTraitForDynTwinSse field0)?
+        structOneWithTraitForDynTwinSse,
+    TResult? Function(StructTwoWithTraitForDynTwinSse field0)?
+        structTwoWithTraitForDynTwinSse,
+  }) {
+    return structOneWithTraitForDynTwinSse?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(StructOneWithTraitForDynTwinSse field0)?
+        structOneWithTraitForDynTwinSse,
+    TResult Function(StructTwoWithTraitForDynTwinSse field0)?
+        structTwoWithTraitForDynTwinSse,
+    required TResult orElse(),
+  }) {
+    if (structOneWithTraitForDynTwinSse != null) {
+      return structOneWithTraitForDynTwinSse(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(
+            SimpleTraitForDynTwinSseImplementor_StructOneWithTraitForDynTwinSse
+                value)
+        structOneWithTraitForDynTwinSse,
+    required TResult Function(
+            SimpleTraitForDynTwinSseImplementor_StructTwoWithTraitForDynTwinSse
+                value)
+        structTwoWithTraitForDynTwinSse,
+  }) {
+    return structOneWithTraitForDynTwinSse(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(
+            SimpleTraitForDynTwinSseImplementor_StructOneWithTraitForDynTwinSse
+                value)?
+        structOneWithTraitForDynTwinSse,
+    TResult? Function(
+            SimpleTraitForDynTwinSseImplementor_StructTwoWithTraitForDynTwinSse
+                value)?
+        structTwoWithTraitForDynTwinSse,
+  }) {
+    return structOneWithTraitForDynTwinSse?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(
+            SimpleTraitForDynTwinSseImplementor_StructOneWithTraitForDynTwinSse
+                value)?
+        structOneWithTraitForDynTwinSse,
+    TResult Function(
+            SimpleTraitForDynTwinSseImplementor_StructTwoWithTraitForDynTwinSse
+                value)?
+        structTwoWithTraitForDynTwinSse,
+    required TResult orElse(),
+  }) {
+    if (structOneWithTraitForDynTwinSse != null) {
+      return structOneWithTraitForDynTwinSse(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SimpleTraitForDynTwinSseImplementor_StructOneWithTraitForDynTwinSse
+    extends SimpleTraitForDynTwinSseImplementor {
+  const factory SimpleTraitForDynTwinSseImplementor_StructOneWithTraitForDynTwinSse(
+          final StructOneWithTraitForDynTwinSse field0) =
+      _$SimpleTraitForDynTwinSseImplementor_StructOneWithTraitForDynTwinSseImpl;
+  const SimpleTraitForDynTwinSseImplementor_StructOneWithTraitForDynTwinSse._()
+      : super._();
+
+  @override
+  StructOneWithTraitForDynTwinSse get field0;
+  @JsonKey(ignore: true)
+  _$$SimpleTraitForDynTwinSseImplementor_StructOneWithTraitForDynTwinSseImplCopyWith<
+          _$SimpleTraitForDynTwinSseImplementor_StructOneWithTraitForDynTwinSseImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SimpleTraitForDynTwinSseImplementor_StructTwoWithTraitForDynTwinSseImplCopyWith<
+    $Res> {
+  factory _$$SimpleTraitForDynTwinSseImplementor_StructTwoWithTraitForDynTwinSseImplCopyWith(
+          _$SimpleTraitForDynTwinSseImplementor_StructTwoWithTraitForDynTwinSseImpl
+              value,
+          $Res Function(
+                  _$SimpleTraitForDynTwinSseImplementor_StructTwoWithTraitForDynTwinSseImpl)
+              then) =
+      __$$SimpleTraitForDynTwinSseImplementor_StructTwoWithTraitForDynTwinSseImplCopyWithImpl<
+          $Res>;
+  @useResult
+  $Res call({StructTwoWithTraitForDynTwinSse field0});
+}
+
+/// @nodoc
+class __$$SimpleTraitForDynTwinSseImplementor_StructTwoWithTraitForDynTwinSseImplCopyWithImpl<
+        $Res>
+    extends _$SimpleTraitForDynTwinSseImplementorCopyWithImpl<$Res,
+        _$SimpleTraitForDynTwinSseImplementor_StructTwoWithTraitForDynTwinSseImpl>
+    implements
+        _$$SimpleTraitForDynTwinSseImplementor_StructTwoWithTraitForDynTwinSseImplCopyWith<
+            $Res> {
+  __$$SimpleTraitForDynTwinSseImplementor_StructTwoWithTraitForDynTwinSseImplCopyWithImpl(
+      _$SimpleTraitForDynTwinSseImplementor_StructTwoWithTraitForDynTwinSseImpl
+          _value,
+      $Res Function(
+              _$SimpleTraitForDynTwinSseImplementor_StructTwoWithTraitForDynTwinSseImpl)
+          _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(
+        _$SimpleTraitForDynTwinSseImplementor_StructTwoWithTraitForDynTwinSseImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as StructTwoWithTraitForDynTwinSse,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SimpleTraitForDynTwinSseImplementor_StructTwoWithTraitForDynTwinSseImpl
+    extends SimpleTraitForDynTwinSseImplementor_StructTwoWithTraitForDynTwinSse {
+  const _$SimpleTraitForDynTwinSseImplementor_StructTwoWithTraitForDynTwinSseImpl(
+      this.field0)
+      : super._();
+
+  @override
+  final StructTwoWithTraitForDynTwinSse field0;
+
+  @override
+  String toString() {
+    return 'SimpleTraitForDynTwinSseImplementor.structTwoWithTraitForDynTwinSse(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other
+                is _$SimpleTraitForDynTwinSseImplementor_StructTwoWithTraitForDynTwinSseImpl &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SimpleTraitForDynTwinSseImplementor_StructTwoWithTraitForDynTwinSseImplCopyWith<
+          _$SimpleTraitForDynTwinSseImplementor_StructTwoWithTraitForDynTwinSseImpl>
+      get copyWith =>
+          __$$SimpleTraitForDynTwinSseImplementor_StructTwoWithTraitForDynTwinSseImplCopyWithImpl<
+                  _$SimpleTraitForDynTwinSseImplementor_StructTwoWithTraitForDynTwinSseImpl>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(StructOneWithTraitForDynTwinSse field0)
+        structOneWithTraitForDynTwinSse,
+    required TResult Function(StructTwoWithTraitForDynTwinSse field0)
+        structTwoWithTraitForDynTwinSse,
+  }) {
+    return structTwoWithTraitForDynTwinSse(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(StructOneWithTraitForDynTwinSse field0)?
+        structOneWithTraitForDynTwinSse,
+    TResult? Function(StructTwoWithTraitForDynTwinSse field0)?
+        structTwoWithTraitForDynTwinSse,
+  }) {
+    return structTwoWithTraitForDynTwinSse?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(StructOneWithTraitForDynTwinSse field0)?
+        structOneWithTraitForDynTwinSse,
+    TResult Function(StructTwoWithTraitForDynTwinSse field0)?
+        structTwoWithTraitForDynTwinSse,
+    required TResult orElse(),
+  }) {
+    if (structTwoWithTraitForDynTwinSse != null) {
+      return structTwoWithTraitForDynTwinSse(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(
+            SimpleTraitForDynTwinSseImplementor_StructOneWithTraitForDynTwinSse
+                value)
+        structOneWithTraitForDynTwinSse,
+    required TResult Function(
+            SimpleTraitForDynTwinSseImplementor_StructTwoWithTraitForDynTwinSse
+                value)
+        structTwoWithTraitForDynTwinSse,
+  }) {
+    return structTwoWithTraitForDynTwinSse(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(
+            SimpleTraitForDynTwinSseImplementor_StructOneWithTraitForDynTwinSse
+                value)?
+        structOneWithTraitForDynTwinSse,
+    TResult? Function(
+            SimpleTraitForDynTwinSseImplementor_StructTwoWithTraitForDynTwinSse
+                value)?
+        structTwoWithTraitForDynTwinSse,
+  }) {
+    return structTwoWithTraitForDynTwinSse?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(
+            SimpleTraitForDynTwinSseImplementor_StructOneWithTraitForDynTwinSse
+                value)?
+        structOneWithTraitForDynTwinSse,
+    TResult Function(
+            SimpleTraitForDynTwinSseImplementor_StructTwoWithTraitForDynTwinSse
+                value)?
+        structTwoWithTraitForDynTwinSse,
+    required TResult orElse(),
+  }) {
+    if (structTwoWithTraitForDynTwinSse != null) {
+      return structTwoWithTraitForDynTwinSse(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SimpleTraitForDynTwinSseImplementor_StructTwoWithTraitForDynTwinSse
+    extends SimpleTraitForDynTwinSseImplementor {
+  const factory SimpleTraitForDynTwinSseImplementor_StructTwoWithTraitForDynTwinSse(
+          final StructTwoWithTraitForDynTwinSse field0) =
+      _$SimpleTraitForDynTwinSseImplementor_StructTwoWithTraitForDynTwinSseImpl;
+  const SimpleTraitForDynTwinSseImplementor_StructTwoWithTraitForDynTwinSse._()
+      : super._();
+
+  @override
+  StructTwoWithTraitForDynTwinSse get field0;
+  @JsonKey(ignore: true)
+  _$$SimpleTraitForDynTwinSseImplementor_StructTwoWithTraitForDynTwinSseImplCopyWith<
+          _$SimpleTraitForDynTwinSseImplementor_StructTwoWithTraitForDynTwinSseImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$SimpleTraitForDynTwinSyncImplementor {
+  SimpleTraitForDynTwinSync get field0 => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(StructOneWithTraitForDynTwinSync field0)
+        structOneWithTraitForDynTwinSync,
+    required TResult Function(StructTwoWithTraitForDynTwinSync field0)
+        structTwoWithTraitForDynTwinSync,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(StructOneWithTraitForDynTwinSync field0)?
+        structOneWithTraitForDynTwinSync,
+    TResult? Function(StructTwoWithTraitForDynTwinSync field0)?
+        structTwoWithTraitForDynTwinSync,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(StructOneWithTraitForDynTwinSync field0)?
+        structOneWithTraitForDynTwinSync,
+    TResult Function(StructTwoWithTraitForDynTwinSync field0)?
+        structTwoWithTraitForDynTwinSync,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(
+            SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSync
+                value)
+        structOneWithTraitForDynTwinSync,
+    required TResult Function(
+            SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSync
+                value)
+        structTwoWithTraitForDynTwinSync,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(
+            SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSync
+                value)?
+        structOneWithTraitForDynTwinSync,
+    TResult? Function(
+            SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSync
+                value)?
+        structTwoWithTraitForDynTwinSync,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(
+            SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSync
+                value)?
+        structOneWithTraitForDynTwinSync,
+    TResult Function(
+            SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSync
+                value)?
+        structTwoWithTraitForDynTwinSync,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SimpleTraitForDynTwinSyncImplementorCopyWith<$Res> {
+  factory $SimpleTraitForDynTwinSyncImplementorCopyWith(
+          SimpleTraitForDynTwinSyncImplementor value,
+          $Res Function(SimpleTraitForDynTwinSyncImplementor) then) =
+      _$SimpleTraitForDynTwinSyncImplementorCopyWithImpl<$Res,
+          SimpleTraitForDynTwinSyncImplementor>;
+}
+
+/// @nodoc
+class _$SimpleTraitForDynTwinSyncImplementorCopyWithImpl<$Res,
+        $Val extends SimpleTraitForDynTwinSyncImplementor>
+    implements $SimpleTraitForDynTwinSyncImplementorCopyWith<$Res> {
+  _$SimpleTraitForDynTwinSyncImplementorCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSyncImplCopyWith<
+    $Res> {
+  factory _$$SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSyncImplCopyWith(
+          _$SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSyncImpl
+              value,
+          $Res Function(
+                  _$SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSyncImpl)
+              then) =
+      __$$SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSyncImplCopyWithImpl<
+          $Res>;
+  @useResult
+  $Res call({StructOneWithTraitForDynTwinSync field0});
+}
+
+/// @nodoc
+class __$$SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSyncImplCopyWithImpl<
+        $Res>
+    extends _$SimpleTraitForDynTwinSyncImplementorCopyWithImpl<$Res,
+        _$SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSyncImpl>
+    implements
+        _$$SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSyncImplCopyWith<
+            $Res> {
+  __$$SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSyncImplCopyWithImpl(
+      _$SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSyncImpl
+          _value,
+      $Res Function(
+              _$SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSyncImpl)
+          _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(
+        _$SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSyncImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as StructOneWithTraitForDynTwinSync,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSyncImpl
+    extends SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSync {
+  const _$SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSyncImpl(
+      this.field0)
+      : super._();
+
+  @override
+  final StructOneWithTraitForDynTwinSync field0;
+
+  @override
+  String toString() {
+    return 'SimpleTraitForDynTwinSyncImplementor.structOneWithTraitForDynTwinSync(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other
+                is _$SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSyncImpl &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSyncImplCopyWith<
+          _$SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSyncImpl>
+      get copyWith =>
+          __$$SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSyncImplCopyWithImpl<
+                  _$SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSyncImpl>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(StructOneWithTraitForDynTwinSync field0)
+        structOneWithTraitForDynTwinSync,
+    required TResult Function(StructTwoWithTraitForDynTwinSync field0)
+        structTwoWithTraitForDynTwinSync,
+  }) {
+    return structOneWithTraitForDynTwinSync(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(StructOneWithTraitForDynTwinSync field0)?
+        structOneWithTraitForDynTwinSync,
+    TResult? Function(StructTwoWithTraitForDynTwinSync field0)?
+        structTwoWithTraitForDynTwinSync,
+  }) {
+    return structOneWithTraitForDynTwinSync?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(StructOneWithTraitForDynTwinSync field0)?
+        structOneWithTraitForDynTwinSync,
+    TResult Function(StructTwoWithTraitForDynTwinSync field0)?
+        structTwoWithTraitForDynTwinSync,
+    required TResult orElse(),
+  }) {
+    if (structOneWithTraitForDynTwinSync != null) {
+      return structOneWithTraitForDynTwinSync(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(
+            SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSync
+                value)
+        structOneWithTraitForDynTwinSync,
+    required TResult Function(
+            SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSync
+                value)
+        structTwoWithTraitForDynTwinSync,
+  }) {
+    return structOneWithTraitForDynTwinSync(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(
+            SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSync
+                value)?
+        structOneWithTraitForDynTwinSync,
+    TResult? Function(
+            SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSync
+                value)?
+        structTwoWithTraitForDynTwinSync,
+  }) {
+    return structOneWithTraitForDynTwinSync?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(
+            SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSync
+                value)?
+        structOneWithTraitForDynTwinSync,
+    TResult Function(
+            SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSync
+                value)?
+        structTwoWithTraitForDynTwinSync,
+    required TResult orElse(),
+  }) {
+    if (structOneWithTraitForDynTwinSync != null) {
+      return structOneWithTraitForDynTwinSync(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSync
+    extends SimpleTraitForDynTwinSyncImplementor {
+  const factory SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSync(
+          final StructOneWithTraitForDynTwinSync field0) =
+      _$SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSyncImpl;
+  const SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSync._()
+      : super._();
+
+  @override
+  StructOneWithTraitForDynTwinSync get field0;
+  @JsonKey(ignore: true)
+  _$$SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSyncImplCopyWith<
+          _$SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSyncImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSyncImplCopyWith<
+    $Res> {
+  factory _$$SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSyncImplCopyWith(
+          _$SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSyncImpl
+              value,
+          $Res Function(
+                  _$SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSyncImpl)
+              then) =
+      __$$SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSyncImplCopyWithImpl<
+          $Res>;
+  @useResult
+  $Res call({StructTwoWithTraitForDynTwinSync field0});
+}
+
+/// @nodoc
+class __$$SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSyncImplCopyWithImpl<
+        $Res>
+    extends _$SimpleTraitForDynTwinSyncImplementorCopyWithImpl<$Res,
+        _$SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSyncImpl>
+    implements
+        _$$SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSyncImplCopyWith<
+            $Res> {
+  __$$SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSyncImplCopyWithImpl(
+      _$SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSyncImpl
+          _value,
+      $Res Function(
+              _$SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSyncImpl)
+          _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(
+        _$SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSyncImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as StructTwoWithTraitForDynTwinSync,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSyncImpl
+    extends SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSync {
+  const _$SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSyncImpl(
+      this.field0)
+      : super._();
+
+  @override
+  final StructTwoWithTraitForDynTwinSync field0;
+
+  @override
+  String toString() {
+    return 'SimpleTraitForDynTwinSyncImplementor.structTwoWithTraitForDynTwinSync(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other
+                is _$SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSyncImpl &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSyncImplCopyWith<
+          _$SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSyncImpl>
+      get copyWith =>
+          __$$SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSyncImplCopyWithImpl<
+                  _$SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSyncImpl>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(StructOneWithTraitForDynTwinSync field0)
+        structOneWithTraitForDynTwinSync,
+    required TResult Function(StructTwoWithTraitForDynTwinSync field0)
+        structTwoWithTraitForDynTwinSync,
+  }) {
+    return structTwoWithTraitForDynTwinSync(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(StructOneWithTraitForDynTwinSync field0)?
+        structOneWithTraitForDynTwinSync,
+    TResult? Function(StructTwoWithTraitForDynTwinSync field0)?
+        structTwoWithTraitForDynTwinSync,
+  }) {
+    return structTwoWithTraitForDynTwinSync?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(StructOneWithTraitForDynTwinSync field0)?
+        structOneWithTraitForDynTwinSync,
+    TResult Function(StructTwoWithTraitForDynTwinSync field0)?
+        structTwoWithTraitForDynTwinSync,
+    required TResult orElse(),
+  }) {
+    if (structTwoWithTraitForDynTwinSync != null) {
+      return structTwoWithTraitForDynTwinSync(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(
+            SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSync
+                value)
+        structOneWithTraitForDynTwinSync,
+    required TResult Function(
+            SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSync
+                value)
+        structTwoWithTraitForDynTwinSync,
+  }) {
+    return structTwoWithTraitForDynTwinSync(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(
+            SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSync
+                value)?
+        structOneWithTraitForDynTwinSync,
+    TResult? Function(
+            SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSync
+                value)?
+        structTwoWithTraitForDynTwinSync,
+  }) {
+    return structTwoWithTraitForDynTwinSync?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(
+            SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSync
+                value)?
+        structOneWithTraitForDynTwinSync,
+    TResult Function(
+            SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSync
+                value)?
+        structTwoWithTraitForDynTwinSync,
+    required TResult orElse(),
+  }) {
+    if (structTwoWithTraitForDynTwinSync != null) {
+      return structTwoWithTraitForDynTwinSync(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSync
+    extends SimpleTraitForDynTwinSyncImplementor {
+  const factory SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSync(
+          final StructTwoWithTraitForDynTwinSync field0) =
+      _$SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSyncImpl;
+  const SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSync._()
+      : super._();
+
+  @override
+  StructTwoWithTraitForDynTwinSync get field0;
+  @JsonKey(ignore: true)
+  _$$SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSyncImplCopyWith<
+          _$SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSyncImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$SimpleTraitForDynTwinSyncSseImplementor {
+  SimpleTraitForDynTwinSyncSse get field0 => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(StructOneWithTraitForDynTwinSyncSse field0)
+        structOneWithTraitForDynTwinSyncSse,
+    required TResult Function(StructTwoWithTraitForDynTwinSyncSse field0)
+        structTwoWithTraitForDynTwinSyncSse,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(StructOneWithTraitForDynTwinSyncSse field0)?
+        structOneWithTraitForDynTwinSyncSse,
+    TResult? Function(StructTwoWithTraitForDynTwinSyncSse field0)?
+        structTwoWithTraitForDynTwinSyncSse,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(StructOneWithTraitForDynTwinSyncSse field0)?
+        structOneWithTraitForDynTwinSyncSse,
+    TResult Function(StructTwoWithTraitForDynTwinSyncSse field0)?
+        structTwoWithTraitForDynTwinSyncSse,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(
+            SimpleTraitForDynTwinSyncSseImplementor_StructOneWithTraitForDynTwinSyncSse
+                value)
+        structOneWithTraitForDynTwinSyncSse,
+    required TResult Function(
+            SimpleTraitForDynTwinSyncSseImplementor_StructTwoWithTraitForDynTwinSyncSse
+                value)
+        structTwoWithTraitForDynTwinSyncSse,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(
+            SimpleTraitForDynTwinSyncSseImplementor_StructOneWithTraitForDynTwinSyncSse
+                value)?
+        structOneWithTraitForDynTwinSyncSse,
+    TResult? Function(
+            SimpleTraitForDynTwinSyncSseImplementor_StructTwoWithTraitForDynTwinSyncSse
+                value)?
+        structTwoWithTraitForDynTwinSyncSse,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(
+            SimpleTraitForDynTwinSyncSseImplementor_StructOneWithTraitForDynTwinSyncSse
+                value)?
+        structOneWithTraitForDynTwinSyncSse,
+    TResult Function(
+            SimpleTraitForDynTwinSyncSseImplementor_StructTwoWithTraitForDynTwinSyncSse
+                value)?
+        structTwoWithTraitForDynTwinSyncSse,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SimpleTraitForDynTwinSyncSseImplementorCopyWith<$Res> {
+  factory $SimpleTraitForDynTwinSyncSseImplementorCopyWith(
+          SimpleTraitForDynTwinSyncSseImplementor value,
+          $Res Function(SimpleTraitForDynTwinSyncSseImplementor) then) =
+      _$SimpleTraitForDynTwinSyncSseImplementorCopyWithImpl<$Res,
+          SimpleTraitForDynTwinSyncSseImplementor>;
+}
+
+/// @nodoc
+class _$SimpleTraitForDynTwinSyncSseImplementorCopyWithImpl<$Res,
+        $Val extends SimpleTraitForDynTwinSyncSseImplementor>
+    implements $SimpleTraitForDynTwinSyncSseImplementorCopyWith<$Res> {
+  _$SimpleTraitForDynTwinSyncSseImplementorCopyWithImpl(
+      this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$SimpleTraitForDynTwinSyncSseImplementor_StructOneWithTraitForDynTwinSyncSseImplCopyWith<
+    $Res> {
+  factory _$$SimpleTraitForDynTwinSyncSseImplementor_StructOneWithTraitForDynTwinSyncSseImplCopyWith(
+          _$SimpleTraitForDynTwinSyncSseImplementor_StructOneWithTraitForDynTwinSyncSseImpl
+              value,
+          $Res Function(
+                  _$SimpleTraitForDynTwinSyncSseImplementor_StructOneWithTraitForDynTwinSyncSseImpl)
+              then) =
+      __$$SimpleTraitForDynTwinSyncSseImplementor_StructOneWithTraitForDynTwinSyncSseImplCopyWithImpl<
+          $Res>;
+  @useResult
+  $Res call({StructOneWithTraitForDynTwinSyncSse field0});
+}
+
+/// @nodoc
+class __$$SimpleTraitForDynTwinSyncSseImplementor_StructOneWithTraitForDynTwinSyncSseImplCopyWithImpl<
+        $Res>
+    extends _$SimpleTraitForDynTwinSyncSseImplementorCopyWithImpl<$Res,
+        _$SimpleTraitForDynTwinSyncSseImplementor_StructOneWithTraitForDynTwinSyncSseImpl>
+    implements
+        _$$SimpleTraitForDynTwinSyncSseImplementor_StructOneWithTraitForDynTwinSyncSseImplCopyWith<
+            $Res> {
+  __$$SimpleTraitForDynTwinSyncSseImplementor_StructOneWithTraitForDynTwinSyncSseImplCopyWithImpl(
+      _$SimpleTraitForDynTwinSyncSseImplementor_StructOneWithTraitForDynTwinSyncSseImpl
+          _value,
+      $Res Function(
+              _$SimpleTraitForDynTwinSyncSseImplementor_StructOneWithTraitForDynTwinSyncSseImpl)
+          _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(
+        _$SimpleTraitForDynTwinSyncSseImplementor_StructOneWithTraitForDynTwinSyncSseImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as StructOneWithTraitForDynTwinSyncSse,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SimpleTraitForDynTwinSyncSseImplementor_StructOneWithTraitForDynTwinSyncSseImpl
+    extends SimpleTraitForDynTwinSyncSseImplementor_StructOneWithTraitForDynTwinSyncSse {
+  const _$SimpleTraitForDynTwinSyncSseImplementor_StructOneWithTraitForDynTwinSyncSseImpl(
+      this.field0)
+      : super._();
+
+  @override
+  final StructOneWithTraitForDynTwinSyncSse field0;
+
+  @override
+  String toString() {
+    return 'SimpleTraitForDynTwinSyncSseImplementor.structOneWithTraitForDynTwinSyncSse(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other
+                is _$SimpleTraitForDynTwinSyncSseImplementor_StructOneWithTraitForDynTwinSyncSseImpl &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SimpleTraitForDynTwinSyncSseImplementor_StructOneWithTraitForDynTwinSyncSseImplCopyWith<
+          _$SimpleTraitForDynTwinSyncSseImplementor_StructOneWithTraitForDynTwinSyncSseImpl>
+      get copyWith =>
+          __$$SimpleTraitForDynTwinSyncSseImplementor_StructOneWithTraitForDynTwinSyncSseImplCopyWithImpl<
+                  _$SimpleTraitForDynTwinSyncSseImplementor_StructOneWithTraitForDynTwinSyncSseImpl>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(StructOneWithTraitForDynTwinSyncSse field0)
+        structOneWithTraitForDynTwinSyncSse,
+    required TResult Function(StructTwoWithTraitForDynTwinSyncSse field0)
+        structTwoWithTraitForDynTwinSyncSse,
+  }) {
+    return structOneWithTraitForDynTwinSyncSse(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(StructOneWithTraitForDynTwinSyncSse field0)?
+        structOneWithTraitForDynTwinSyncSse,
+    TResult? Function(StructTwoWithTraitForDynTwinSyncSse field0)?
+        structTwoWithTraitForDynTwinSyncSse,
+  }) {
+    return structOneWithTraitForDynTwinSyncSse?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(StructOneWithTraitForDynTwinSyncSse field0)?
+        structOneWithTraitForDynTwinSyncSse,
+    TResult Function(StructTwoWithTraitForDynTwinSyncSse field0)?
+        structTwoWithTraitForDynTwinSyncSse,
+    required TResult orElse(),
+  }) {
+    if (structOneWithTraitForDynTwinSyncSse != null) {
+      return structOneWithTraitForDynTwinSyncSse(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(
+            SimpleTraitForDynTwinSyncSseImplementor_StructOneWithTraitForDynTwinSyncSse
+                value)
+        structOneWithTraitForDynTwinSyncSse,
+    required TResult Function(
+            SimpleTraitForDynTwinSyncSseImplementor_StructTwoWithTraitForDynTwinSyncSse
+                value)
+        structTwoWithTraitForDynTwinSyncSse,
+  }) {
+    return structOneWithTraitForDynTwinSyncSse(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(
+            SimpleTraitForDynTwinSyncSseImplementor_StructOneWithTraitForDynTwinSyncSse
+                value)?
+        structOneWithTraitForDynTwinSyncSse,
+    TResult? Function(
+            SimpleTraitForDynTwinSyncSseImplementor_StructTwoWithTraitForDynTwinSyncSse
+                value)?
+        structTwoWithTraitForDynTwinSyncSse,
+  }) {
+    return structOneWithTraitForDynTwinSyncSse?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(
+            SimpleTraitForDynTwinSyncSseImplementor_StructOneWithTraitForDynTwinSyncSse
+                value)?
+        structOneWithTraitForDynTwinSyncSse,
+    TResult Function(
+            SimpleTraitForDynTwinSyncSseImplementor_StructTwoWithTraitForDynTwinSyncSse
+                value)?
+        structTwoWithTraitForDynTwinSyncSse,
+    required TResult orElse(),
+  }) {
+    if (structOneWithTraitForDynTwinSyncSse != null) {
+      return structOneWithTraitForDynTwinSyncSse(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SimpleTraitForDynTwinSyncSseImplementor_StructOneWithTraitForDynTwinSyncSse
+    extends SimpleTraitForDynTwinSyncSseImplementor {
+  const factory SimpleTraitForDynTwinSyncSseImplementor_StructOneWithTraitForDynTwinSyncSse(
+          final StructOneWithTraitForDynTwinSyncSse field0) =
+      _$SimpleTraitForDynTwinSyncSseImplementor_StructOneWithTraitForDynTwinSyncSseImpl;
+  const SimpleTraitForDynTwinSyncSseImplementor_StructOneWithTraitForDynTwinSyncSse._()
+      : super._();
+
+  @override
+  StructOneWithTraitForDynTwinSyncSse get field0;
+  @JsonKey(ignore: true)
+  _$$SimpleTraitForDynTwinSyncSseImplementor_StructOneWithTraitForDynTwinSyncSseImplCopyWith<
+          _$SimpleTraitForDynTwinSyncSseImplementor_StructOneWithTraitForDynTwinSyncSseImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SimpleTraitForDynTwinSyncSseImplementor_StructTwoWithTraitForDynTwinSyncSseImplCopyWith<
+    $Res> {
+  factory _$$SimpleTraitForDynTwinSyncSseImplementor_StructTwoWithTraitForDynTwinSyncSseImplCopyWith(
+          _$SimpleTraitForDynTwinSyncSseImplementor_StructTwoWithTraitForDynTwinSyncSseImpl
+              value,
+          $Res Function(
+                  _$SimpleTraitForDynTwinSyncSseImplementor_StructTwoWithTraitForDynTwinSyncSseImpl)
+              then) =
+      __$$SimpleTraitForDynTwinSyncSseImplementor_StructTwoWithTraitForDynTwinSyncSseImplCopyWithImpl<
+          $Res>;
+  @useResult
+  $Res call({StructTwoWithTraitForDynTwinSyncSse field0});
+}
+
+/// @nodoc
+class __$$SimpleTraitForDynTwinSyncSseImplementor_StructTwoWithTraitForDynTwinSyncSseImplCopyWithImpl<
+        $Res>
+    extends _$SimpleTraitForDynTwinSyncSseImplementorCopyWithImpl<$Res,
+        _$SimpleTraitForDynTwinSyncSseImplementor_StructTwoWithTraitForDynTwinSyncSseImpl>
+    implements
+        _$$SimpleTraitForDynTwinSyncSseImplementor_StructTwoWithTraitForDynTwinSyncSseImplCopyWith<
+            $Res> {
+  __$$SimpleTraitForDynTwinSyncSseImplementor_StructTwoWithTraitForDynTwinSyncSseImplCopyWithImpl(
+      _$SimpleTraitForDynTwinSyncSseImplementor_StructTwoWithTraitForDynTwinSyncSseImpl
+          _value,
+      $Res Function(
+              _$SimpleTraitForDynTwinSyncSseImplementor_StructTwoWithTraitForDynTwinSyncSseImpl)
+          _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(
+        _$SimpleTraitForDynTwinSyncSseImplementor_StructTwoWithTraitForDynTwinSyncSseImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as StructTwoWithTraitForDynTwinSyncSse,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SimpleTraitForDynTwinSyncSseImplementor_StructTwoWithTraitForDynTwinSyncSseImpl
+    extends SimpleTraitForDynTwinSyncSseImplementor_StructTwoWithTraitForDynTwinSyncSse {
+  const _$SimpleTraitForDynTwinSyncSseImplementor_StructTwoWithTraitForDynTwinSyncSseImpl(
+      this.field0)
+      : super._();
+
+  @override
+  final StructTwoWithTraitForDynTwinSyncSse field0;
+
+  @override
+  String toString() {
+    return 'SimpleTraitForDynTwinSyncSseImplementor.structTwoWithTraitForDynTwinSyncSse(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other
+                is _$SimpleTraitForDynTwinSyncSseImplementor_StructTwoWithTraitForDynTwinSyncSseImpl &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SimpleTraitForDynTwinSyncSseImplementor_StructTwoWithTraitForDynTwinSyncSseImplCopyWith<
+          _$SimpleTraitForDynTwinSyncSseImplementor_StructTwoWithTraitForDynTwinSyncSseImpl>
+      get copyWith =>
+          __$$SimpleTraitForDynTwinSyncSseImplementor_StructTwoWithTraitForDynTwinSyncSseImplCopyWithImpl<
+                  _$SimpleTraitForDynTwinSyncSseImplementor_StructTwoWithTraitForDynTwinSyncSseImpl>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(StructOneWithTraitForDynTwinSyncSse field0)
+        structOneWithTraitForDynTwinSyncSse,
+    required TResult Function(StructTwoWithTraitForDynTwinSyncSse field0)
+        structTwoWithTraitForDynTwinSyncSse,
+  }) {
+    return structTwoWithTraitForDynTwinSyncSse(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(StructOneWithTraitForDynTwinSyncSse field0)?
+        structOneWithTraitForDynTwinSyncSse,
+    TResult? Function(StructTwoWithTraitForDynTwinSyncSse field0)?
+        structTwoWithTraitForDynTwinSyncSse,
+  }) {
+    return structTwoWithTraitForDynTwinSyncSse?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(StructOneWithTraitForDynTwinSyncSse field0)?
+        structOneWithTraitForDynTwinSyncSse,
+    TResult Function(StructTwoWithTraitForDynTwinSyncSse field0)?
+        structTwoWithTraitForDynTwinSyncSse,
+    required TResult orElse(),
+  }) {
+    if (structTwoWithTraitForDynTwinSyncSse != null) {
+      return structTwoWithTraitForDynTwinSyncSse(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(
+            SimpleTraitForDynTwinSyncSseImplementor_StructOneWithTraitForDynTwinSyncSse
+                value)
+        structOneWithTraitForDynTwinSyncSse,
+    required TResult Function(
+            SimpleTraitForDynTwinSyncSseImplementor_StructTwoWithTraitForDynTwinSyncSse
+                value)
+        structTwoWithTraitForDynTwinSyncSse,
+  }) {
+    return structTwoWithTraitForDynTwinSyncSse(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(
+            SimpleTraitForDynTwinSyncSseImplementor_StructOneWithTraitForDynTwinSyncSse
+                value)?
+        structOneWithTraitForDynTwinSyncSse,
+    TResult? Function(
+            SimpleTraitForDynTwinSyncSseImplementor_StructTwoWithTraitForDynTwinSyncSse
+                value)?
+        structTwoWithTraitForDynTwinSyncSse,
+  }) {
+    return structTwoWithTraitForDynTwinSyncSse?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(
+            SimpleTraitForDynTwinSyncSseImplementor_StructOneWithTraitForDynTwinSyncSse
+                value)?
+        structOneWithTraitForDynTwinSyncSse,
+    TResult Function(
+            SimpleTraitForDynTwinSyncSseImplementor_StructTwoWithTraitForDynTwinSyncSse
+                value)?
+        structTwoWithTraitForDynTwinSyncSse,
+    required TResult orElse(),
+  }) {
+    if (structTwoWithTraitForDynTwinSyncSse != null) {
+      return structTwoWithTraitForDynTwinSyncSse(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SimpleTraitForDynTwinSyncSseImplementor_StructTwoWithTraitForDynTwinSyncSse
+    extends SimpleTraitForDynTwinSyncSseImplementor {
+  const factory SimpleTraitForDynTwinSyncSseImplementor_StructTwoWithTraitForDynTwinSyncSse(
+          final StructTwoWithTraitForDynTwinSyncSse field0) =
+      _$SimpleTraitForDynTwinSyncSseImplementor_StructTwoWithTraitForDynTwinSyncSseImpl;
+  const SimpleTraitForDynTwinSyncSseImplementor_StructTwoWithTraitForDynTwinSyncSse._()
+      : super._();
+
+  @override
+  StructTwoWithTraitForDynTwinSyncSse get field0;
+  @JsonKey(ignore: true)
+  _$$SimpleTraitForDynTwinSyncSseImplementor_StructTwoWithTraitForDynTwinSyncSseImplCopyWith<
+          _$SimpleTraitForDynTwinSyncSseImplementor_StructTwoWithTraitForDynTwinSyncSseImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}

@@ -26,4 +26,14 @@ Future<void> main({bool skipRustLibInit = false}) async {
         await StructOneWithTraitTwinSync.simpleTraitFnWithDefaultImplTwinSync(),
         42);
   });
+
+  test('use generated implementor', () async {
+    final object =
+        await StructOneWithTraitForDynTwinSync.createTwinSync(one: 100);
+    expect(
+        await funcArgTraitImplTwinSync(
+            arg: SimpleTraitForDynTwinSyncImplementor
+                .structOneWithTraitForDynTwinSync(object)),
+        100);
+  });
 }

@@ -6,6 +6,32 @@
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
+Future<int> funcArgTraitImplTwinRustAsync(
+        {required SimpleTraitForDynTwinRustAsyncImplementor arg}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualImplTraitTwinRustAsyncFuncArgTraitImplTwinRustAsync(
+            arg: arg);
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructOneWithTraitForDynTwinRustAsync>>
+abstract class StructOneWithTraitForDynTwinRustAsync
+    implements SimpleTraitForDynTwinRustAsync {
+  static Future<StructOneWithTraitForDynTwinRustAsync> createTwinRustAsync(
+          {required int one}) =>
+      RustLib.instance.api
+          .crateApiPseudoManualImplTraitTwinRustAsyncStructOneWithTraitForDynTwinRustAsyncCreateTwinRustAsync(
+              one: one);
+
+  int get one;
+
+  void set one(int one);
+
+  Future<int> simpleMethodTwinRustAsync();
+
+  void dispose();
+
+  bool get isDisposed;
+}
+
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructOneWithTraitTwinRustAsync>>
 abstract class StructOneWithTraitTwinRustAsync
     implements SimpleTraitTwinRustAsync {
@@ -24,6 +50,20 @@ abstract class StructOneWithTraitTwinRustAsync
   static Future<int> simpleTraitFnWithDefaultImplTwinRustAsync() => RustLib
       .instance.api
       .crateApiPseudoManualImplTraitTwinRustAsyncStructOneWithTraitTwinRustAsyncSimpleTraitFnWithDefaultImplTwinRustAsync();
+
+  void dispose();
+
+  bool get isDisposed;
+}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructTwoWithTraitForDynTwinRustAsync>>
+abstract class StructTwoWithTraitForDynTwinRustAsync
+    implements SimpleTraitForDynTwinRustAsync {
+  int get two;
+
+  void set two(int two);
+
+  Future<int> simpleMethodTwinRustAsync();
 
   void dispose();
 
@@ -52,6 +92,10 @@ abstract class StructTwoWithTraitTwinRustAsync
   void dispose();
 
   bool get isDisposed;
+}
+
+abstract class SimpleTraitForDynTwinRustAsync {
+  Future<int> simpleMethodTwinRustAsync();
 }
 
 abstract class SimpleTraitTwinRustAsync {

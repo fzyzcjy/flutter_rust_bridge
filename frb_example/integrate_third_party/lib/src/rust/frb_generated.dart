@@ -7,6 +7,7 @@ import 'api/override_web_audio_api.dart';
 import 'api/simple.dart';
 import 'dart:async';
 import 'dart:convert';
+import 'frb_generated.dart';
 import 'frb_generated.io.dart' if (dart.library.html) 'frb_generated.web.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'third_party/web_audio_api.dart';
@@ -23075,8 +23076,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     serializer.buffer.putBigUint64(self);
   }
 }
-
-// Section: boilerplate
 
 @sealed
 class AnalyserNodeImpl extends RustOpaque implements AnalyserNode {
