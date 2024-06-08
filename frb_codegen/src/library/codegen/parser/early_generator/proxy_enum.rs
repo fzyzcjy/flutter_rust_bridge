@@ -32,7 +32,7 @@ fn generate_proxy_enum(proxy_variants: &[MirTypeDelegateProxyVariant]) -> String
     let variants = (proxy_variants.iter())
         .map(|variant| {
             let upstream = &variant.upstream;
-            format!("{}({}),\n", upstream.safe_ident(), upstream.rust_api_type())
+            format!("{}(RustAutoOpaque<{}>),\n", upstream.safe_ident(), upstream.rust_api_type())
         })
         .join("");
 
