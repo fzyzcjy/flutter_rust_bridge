@@ -77,12 +77,12 @@ fn generate_code_impl(trait_def_name: &str, trait_impls: &[MirType]) -> String {
         "{enum_def}
 
         impl {enum_name} {{
-            #[frb(ignore)]
+            #[flutter_rust_bridge::frb(ignore)]
             pub fn blocking_read(&self) -> {trait_def_name}RwLockReadGuard {{
                 {blocking_read_body}
             }}
 
-            #[frb(ignore)]
+            #[flutter_rust_bridge::frb(ignore)]
             pub fn blocking_write(&mut self) -> {trait_def_name}RwLockWriteGuard {{
                 {blocking_write_body}
             }}
@@ -139,7 +139,7 @@ fn generate_code_read_write_guard(
     };
 
     format!(
-        "#[frb(ignore)]
+        "#[flutter_rust_bridge::frb(ignore)]
         {enum_def}
 
         {deref_code}
