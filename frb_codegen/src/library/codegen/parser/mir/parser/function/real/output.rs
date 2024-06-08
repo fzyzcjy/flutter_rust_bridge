@@ -94,7 +94,7 @@ fn parse_proxy_return_type(mir: MirType, owner: &MirFuncOwnerInfo) -> anyhow::Re
                 return Ok(MirType::Delegate(MirTypeDelegate::ProxyVariant(
                     MirTypeDelegateProxyVariant {
                         inner: Box::new(mir),
-                        proxy_enum: Box::new(method.owner_ty.clone()),
+                        upstream: Box::new(method.owner_ty.clone()),
                     },
                 )));
             }

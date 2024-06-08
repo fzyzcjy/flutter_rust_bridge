@@ -17,7 +17,7 @@ pub(crate) fn generate(pack: &HirFlatPack, tentative_mir_pack: &MirPack) -> anyh
         .collect_vec();
 
     let proxy_variants_of_enum =
-        (proxy_variants.into_iter()).into_group_map_by(|ty| ty.proxy_enum.safe_ident());
+        (proxy_variants.into_iter()).into_group_map_by(|ty| ty.upstream.safe_ident());
 
     Ok((proxy_variants_of_enum.into_iter())
         .map(|(_, proxy_variants)| generate_proxy_enum(&proxy_variants))
@@ -25,7 +25,7 @@ pub(crate) fn generate(pack: &HirFlatPack, tentative_mir_pack: &MirPack) -> anyh
 }
 
 fn generate_proxy_enum(proxy_variants: &[MirTypeDelegateProxyVariant]) -> String {
-    let proxy_enum_ty = *proxy_variants[0].proxy_enum.clone();
+    let proxy_enum_ty = *proxy_variants[0].upstream.clone();
 
     let enum_name = format!("{}ProxyEnum", proxy_enum_ty.safe_ident());
 
