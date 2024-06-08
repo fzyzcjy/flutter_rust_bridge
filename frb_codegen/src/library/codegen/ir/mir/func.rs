@@ -59,6 +59,7 @@ pub enum MirFuncArgMode {
 pub enum MirFuncImplMode {
     Normal,
     NoImpl,
+    DartOnly,
 }
 
 pub enum MirFuncOwnerInfo {
