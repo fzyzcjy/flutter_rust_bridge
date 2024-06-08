@@ -1,4 +1,5 @@
 use crate::codegen::generator::api_dart;
+use crate::codegen::generator::api_dart::spec_generator::class::proxy_variant;
 use crate::codegen::generator::api_dart::spec_generator::function::{
     compute_params_str, ApiDartGeneratedFunction, ApiDartGeneratedFunctionParam,
 };
@@ -232,7 +233,7 @@ fn generate_implementation(
     method_info: &MirFuncOwnerInfoMethod,
     params: &[ApiDartGeneratedFunctionParam],
 ) -> String {
-    match func.impl_mode {
+    match &func.impl_mode {
         MirFuncImplMode::Normal => {
             let dart_entrypoint_class_name = &context.config.dart_entrypoint_class_name;
             let dart_api_instance = format!("{dart_entrypoint_class_name}.instance.api");
@@ -254,7 +255,7 @@ fn generate_implementation(
         MirFuncImplMode::NoImpl => "should_not_reach_here".to_owned(),
         MirFuncImplMode::DartOnly(inner) => match inner {
             MirFuncImplModeDartOnly::CreateProxyVariant(inner) => {
-                format!("{TODO}")
+                proxy_variant::compute_func_implementation(inner)
             }
         },
     }

@@ -5,6 +5,7 @@ use serde::Serialize;
 pub(crate) mod field;
 pub(crate) mod method;
 pub(super) mod misc;
+pub(crate) mod proxy_variant;
 pub(crate) mod ty;
 
 #[derive(Debug, Serialize)]
