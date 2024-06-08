@@ -13,6 +13,7 @@ use anyhow::Context;
 use itertools::{concat, Itertools};
 use pathdiff::diff_paths;
 use std::path::{Path, PathBuf};
+use crate::utils::basic_code::general_code::GeneralCode;
 
 pub(super) struct ApiDartOutputText {
     pub(super) output_texts: PathTexts,
@@ -53,7 +54,7 @@ fn generate_end_api_text(
     dart_output_path: &Path,
     dart_impl_output_path: &TargetOrCommonMap<PathBuf>,
     item: &ApiDartOutputSpecItem,
-) -> anyhow::Result<String> {
+) -> anyhow::Result<GeneralCode> {
     let funcs = item
         .funcs
         .iter()

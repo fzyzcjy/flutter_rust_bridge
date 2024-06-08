@@ -5,9 +5,10 @@ use crate::codegen::generator::misc::text_generator_utils::{
 use crate::codegen::generator::wire::dart::internal_config::GeneratorWireDartInternalConfig;
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
 use crate::codegen::generator::wire::dart::spec_generator::WireDartOutputSpec;
+use crate::utils::basic_code::general_code::GeneralCode;
 
 pub(super) struct WireDartOutputText {
-    pub(super) text: Acc<Option<String>>,
+    pub(super) text: Acc<Option<GeneralCode>>,
 }
 
 pub(super) fn generate(
