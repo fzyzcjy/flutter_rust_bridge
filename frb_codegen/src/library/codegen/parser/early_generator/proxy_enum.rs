@@ -1,5 +1,3 @@
-use crate::codegen::generator::api_dart::spec_generator::base::ApiDartGenerator;
-use crate::codegen::generator::api_dart::spec_generator::class::proxy_variant;
 use crate::codegen::ir::hir::flat::pack::HirFlatPack;
 use crate::codegen::ir::mir::pack::MirPack;
 use crate::codegen::ir::mir::ty::delegate::{MirTypeDelegate, MirTypeDelegateProxyVariant};
@@ -8,10 +6,8 @@ use crate::codegen::parser::early_generator::inject_extra_code_to_rust_output;
 use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
 use crate::codegen::parser::mir::parser::function::real::FUNC_PREFIX_FRB_INTERNAL_NO_IMPL;
 use crate::if_then_some;
-use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use itertools::Itertools;
-use std::env::var;
 
 pub(crate) fn generate(
     pack: &mut HirFlatPack,
@@ -26,8 +22,9 @@ pub(crate) fn generate(
     let proxy_variants_of_enum =
         (proxy_variants.iter()).into_group_map_by(|ty| ty.upstream.safe_ident());
 
-    let extra_code = (proxy_variants_of_enum.into_iter())
-        .map(|(_, proxy_variants)| generate_proxy_enum(&proxy_variants))
+    let extra_code = proxy_variants_of_enum
+        .into_values()
+        .map(|proxy_variants| generate_proxy_enum(&proxy_variants))
         .join("");
 
     inject_extra_code_to_rust_output(pack, &extra_code, config_mir)?;

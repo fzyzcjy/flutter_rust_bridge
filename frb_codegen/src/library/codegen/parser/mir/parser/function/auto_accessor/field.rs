@@ -1,5 +1,9 @@
 use crate::codegen::ir::mir::field::MirField;
-use crate::codegen::ir::mir::func::{MirFunc, MirFuncAccessorMode, MirFuncArgMode, MirFuncImplMode, MirFuncInput, MirFuncMode, MirFuncOutput, MirFuncOwnerInfo, MirFuncOwnerInfoMethod, MirFuncOwnerInfoMethodMode, OwnershipMode};
+use crate::codegen::ir::mir::func::{
+    MirFunc, MirFuncAccessorMode, MirFuncArgMode, MirFuncImplMode, MirFuncInput, MirFuncMode,
+    MirFuncOutput, MirFuncOwnerInfo, MirFuncOwnerInfoMethod, MirFuncOwnerInfoMethodMode,
+    OwnershipMode,
+};
 use crate::codegen::ir::mir::ident::MirIdent;
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
 use crate::codegen::ir::mir::ty::MirType;

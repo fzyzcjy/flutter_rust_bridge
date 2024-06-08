@@ -8,7 +8,6 @@ use crate::codegen::ir::mir::ty::delegate::{
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
-use crate::codegen::generator::acc::Acc;
 
 impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
     fn generate_encode(&self, lang: &Lang) -> Option<String> {

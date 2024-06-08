@@ -1,7 +1,9 @@
 use crate::codegen::generator::codec::structs::CodecModePack;
 use crate::codegen::ir::mir::comment::MirComment;
 use crate::codegen::ir::mir::field::MirField;
-use crate::codegen::ir::mir::ty::delegate::{MirTypeDelegate, MirTypeDelegatePrimitiveEnum, MirTypeDelegateProxyVariant};
+use crate::codegen::ir::mir::ty::delegate::{
+    MirTypeDelegate, MirTypeDelegatePrimitiveEnum, MirTypeDelegateProxyVariant,
+};
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
 use crate::codegen::ir::mir::ty::trait_def::MirTypeTraitDef;
 use crate::codegen::ir::mir::ty::{MirContext, MirType, MirTypeTrait};
