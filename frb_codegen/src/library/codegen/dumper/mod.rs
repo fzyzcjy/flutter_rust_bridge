@@ -105,7 +105,7 @@ impl<'a> Dumper<'a> {
         let name = format!("{}{}", self.name_prefix, partial_name);
         let path = (self.config.dump_directory)
             .join(self.content.unwrap().to_string().to_case(Case::Snake))
-            .join(name);
+            .join(&name);
         debug!("Dumping {name} into {path:?}");
 
         create_dir_all_and_write(path, text)
