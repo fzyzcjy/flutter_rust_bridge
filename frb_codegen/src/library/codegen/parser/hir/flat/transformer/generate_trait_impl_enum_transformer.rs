@@ -63,7 +63,7 @@ fn generate_simple_enum(
     let variants = (trait_impls.iter())
         .map(|ty| {
             let rust_api_type = ty.rust_api_type();
-            format!("{rust_api_type}({})\n", wrapper(&rust_api_type))
+            format!("{rust_api_type}({}),\n", wrapper(&rust_api_type))
         })
         .join("");
 
