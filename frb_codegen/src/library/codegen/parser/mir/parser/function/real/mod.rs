@@ -2,8 +2,8 @@ use crate::codegen::generator::codec::structs::{CodecMode, CodecModePack};
 use crate::codegen::ir::hir::flat::function::HirFlatFunction;
 use crate::codegen::ir::hir::flat::function::HirFlatFunctionOwner;
 use crate::codegen::ir::mir::func::{
-    MirFunc, MirFuncArgMode, MirFuncImplMode, MirFuncInput, MirFuncMode, MirFuncOutput,
-    MirFuncOwnerInfo, MirFuncOwnerInfoMethod, MirFuncOwnerInfoMethodMode,
+    MirFunc, MirFuncArgMode, MirFuncImplMode, MirFuncImplModeDartOnly, MirFuncInput, MirFuncMode,
+    MirFuncOutput, MirFuncOwnerInfo, MirFuncOwnerInfoMethod, MirFuncOwnerInfoMethodMode,
 };
 use crate::codegen::ir::mir::skip::MirSkipReason::IgnoredFunctionGeneric;
 use crate::codegen::ir::mir::skip::{MirSkip, MirSkipReason};
@@ -411,8 +411,9 @@ fn compute_impl_mode(
 
     if attributes.proxy() {
         if let MirType::Delegate(MirTypeDelegate::ProxyVariant(inner)) = &output.normal {
-            let code = format!("{}(this)", inner.dart_proxy_class());
-            return MirFuncImplMode::DartOnly { code };
+            return MirFuncImplMode::DartOnly(MirFuncImplModeDartOnly::CreateProxyVariant(
+                inner.clone(),
+            ));
         }
     }
 

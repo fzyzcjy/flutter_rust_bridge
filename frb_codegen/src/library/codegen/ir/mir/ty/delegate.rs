@@ -320,12 +320,6 @@ impl MirTypeDelegateArray {
     }
 }
 
-impl MirTypeDelegateProxyVariant {
-    pub(crate) fn dart_proxy_class(&self) -> String {
-        format!("{}ProxyVariant{}", self.inner.dart_api_type(), self.upstream.dart_api_type())
-    }
-}
-
 // impl MirTypeDelegateDynTrait {
 //     pub fn inner(&self) -> MirType {
 //         MirType::EnumRef(self.inner_raw())
