@@ -45,8 +45,10 @@ fn generate_trait_impl_enum(
         .collect_vec();
 
     let code_impl = generate_code_impl(trait_def_name, &interest_trait_impls);
-    let code_read_guard = generate_code_read_write_guard(ReadWrite::Read, trait_def_name, &interest_trait_impls);
-    let code_write_guard = generate_code_read_write_guard(ReadWrite::Write, trait_def_name, &interest_trait_impls);
+    let code_read_guard =
+        generate_code_read_write_guard(ReadWrite::Read, trait_def_name, &interest_trait_impls);
+    let code_write_guard =
+        generate_code_read_write_guard(ReadWrite::Write, trait_def_name, &interest_trait_impls);
 
     Ok(format!(
         "{code_impl}
@@ -104,7 +106,7 @@ fn generate_code_read_write_guard(
     let rw_pascal = rw.to_string().to_case(Case::Pascal);
 
     let enum_name = format!("{trait_def_name}RwLock{rw_pascal}Guard");
-    let enum_def = generate_enum_raw(&trait_impls, &enum_name, |ty| {
+    let enum_def = generate_enum_raw(&trait_impls, &format!("{enum_name}<'a>"), |ty| {
         format!("flutter_rust_bridge::for_generated::rust_async::RwLock{rw_pascal}Guard<'a, {ty}>")
     });
 
@@ -172,7 +174,10 @@ fn generate_match_raw(trait_impls: &[MirType], branch: impl Fn(&str) -> String) 
     let variants = (trait_impls.iter())
         .map(|ty| {
             let rust_api_type = ty.rust_api_type();
-            format!("Self::{rust_api_type}(inner) => {},\n", branch(&rust_api_type))
+            format!(
+                "Self::{rust_api_type}(inner) => {},\n",
+                branch(&rust_api_type)
+            )
         })
         .join("");
 

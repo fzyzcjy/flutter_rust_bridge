@@ -397,7 +397,7 @@ impl SimpleTraitForDynTwinNormalImpl {
 }
 
 #[flutter_rust_bridge::frb(ignore)]
-pub enum SimpleTraitForDynTwinNormalRwLockReadGuard {
+pub enum SimpleTraitForDynTwinNormalRwLockReadGuard<'a> {
     StructOneWithTraitForDynTwinNormal(
         flutter_rust_bridge::for_generated::rust_async::RwLockReadGuard<
             'a,
@@ -424,7 +424,7 @@ impl std::ops::Deref for SimpleTraitForDynTwinNormalRwLockReadGuard<'_> {
 }
 
 #[flutter_rust_bridge::frb(ignore)]
-pub enum SimpleTraitForDynTwinNormalRwLockWriteGuard {
+pub enum SimpleTraitForDynTwinNormalRwLockWriteGuard<'a> {
     StructOneWithTraitForDynTwinNormal(
         flutter_rust_bridge::for_generated::rust_async::RwLockWriteGuard<
             'a,
