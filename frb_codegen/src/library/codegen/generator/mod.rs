@@ -31,8 +31,11 @@ pub(crate) fn generate(
         progress_bar_pack,
     )?;
 
+    let output_texts = api_dart_output.output_texts + wire_output.output_texts;
+    let output_texts = output_texts.merge();
+
     Ok(GeneratorOutput {
-        output_texts: api_dart_output.output_texts + wire_output.output_texts,
+        output_texts,
         dart_needs_freezed: api_dart_output.needs_freezed,
     })
 }

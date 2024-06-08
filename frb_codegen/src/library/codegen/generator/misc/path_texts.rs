@@ -34,6 +34,10 @@ impl PathTexts {
         )
     }
 
+    pub(crate) fn merge(self) -> Self {
+        TODO
+    }
+
     pub(crate) fn write_to_disk(&self) -> anyhow::Result<()> {
         self.assert_no_duplicate_paths();
         for item in self.0.iter() {
