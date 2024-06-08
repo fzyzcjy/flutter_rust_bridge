@@ -8,6 +8,7 @@ use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
 use crate::codegen::parser::mir::parser::function::real::FUNC_PREFIX_FRB_INTERNAL_NO_IMPL;
 use crate::codegen::parser::mir::parser::tentative_parse_trait_impls;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
+use convert_case::{Case, Casing};
 use itertools::Itertools;
 use serde::{Deserialize, Serialize};
 use strum_macros::{Display, EnumIter, EnumString};
@@ -97,25 +98,48 @@ fn generate_code_read_write_guard(
     trait_def_name: &str,
     trait_impls: &[MirType],
 ) -> String {
-    let enum_name = format!("{trait_def_name}RwLockReadGuard");
+    let rw_pascal = rw.to_string().to_case(Case::Pascal);
+
+    let enum_name = format!("{trait_def_name}RwLock{rw_pascal}Guard");
     let enum_def = generate_enum_raw(&trait_impls, &enum_name, |ty| {
-        format!("flutter_rust_bridge::for_generated::rust_async::RwLockReadGuard<'a, {ty}>")
+        format!("flutter_rust_bridge::for_generated::rust_async::RwLock{rw_pascal}Guard<'a, {ty}>")
     });
 
     let deref_body = generate_match_raw(trait_impls, |_| "inner.deref()".to_owned());
-
-    format!(
-        "#[frb(ignore)]
-        {enum_def}
-
-
+    let deref_code = format!(
+        "
         impl std::ops::Deref for {enum_name}<'_> {{
-            type Target = dyn SimpleTraitForDynTwinNormal;
+            type Target = dyn {trait_def_name};
 
             fn deref(&self) -> &Self::Target {{
                 {deref_body}
             }}
         }}
+        "
+    );
+
+    let maybe_deref_mut_code = if rw == ReadWrite::Write {
+        let body = generate_match_raw(trait_impls, |_| "inner.deref_mut()".to_owned());
+        format!(
+            "
+            impl std::ops::DerefMut for {enum_name}<'_> {{
+                type Target = dyn {trait_def_name};
+
+                fn deref_mut(&mut self) -> &mut Self::Target {{
+                    {body}
+                }}
+            }}
+            "
+        )
+    } else {
+        "".to_owned()
+    };
+
+    format!(
+        "#[frb(ignore)]
+        {enum_def}
+        {deref_code}
+        {maybe_deref_mut_code}
         "
     )
 }
