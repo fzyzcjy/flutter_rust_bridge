@@ -68,7 +68,7 @@ fn generate_simple_enum(
         .join("");
 
     format!(
-        "enum {enum_name} {{
+        "pub enum {enum_name} {{
             {variants}
         }}"
     )
