@@ -3,6 +3,7 @@
 
 // ignore_for_file: invalid_use_of_internal_member, unused_import, unnecessary_import
 
+import '../api/override_web_audio_api.dart';
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'web_audio_api/node.dart';
@@ -82,7 +83,7 @@ abstract class AudioListener {
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioParam>>
-abstract class AudioParam implements AudioNode {
+abstract class AudioParam implements AudioNode, AudioParamExt {
   /// Current value of the automation rate of the AudioParam
   Future<AutomationRate> automationRate();
 
