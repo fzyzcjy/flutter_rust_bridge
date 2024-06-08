@@ -6,6 +6,32 @@
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
+int funcArgTraitImplTwinSyncSse(
+        {required SimpleTraitForDynTwinSyncSseImplementor arg}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualImplTraitTwinSyncSseFuncArgTraitImplTwinSyncSse(
+            arg: arg);
+
+// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructOneWithTraitForDynTwinSyncSse>>
+abstract class StructOneWithTraitForDynTwinSyncSse
+    implements SimpleTraitForDynTwinSyncSse {
+  static StructOneWithTraitForDynTwinSyncSse createTwinSyncSse(
+          {required int one}) =>
+      RustLib.instance.api
+          .crateApiPseudoManualImplTraitTwinSyncSseStructOneWithTraitForDynTwinSyncSseCreateTwinSyncSse(
+              one: one);
+
+  int get one;
+
+  void set one(int one);
+
+  Future<int> simpleMethodTwinSyncSse();
+
+  void dispose();
+
+  bool get isDisposed;
+}
+
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructOneWithTraitTwinSyncSse>>
 abstract class StructOneWithTraitTwinSyncSse implements SimpleTraitTwinSyncSse {
   int get one;
@@ -23,6 +49,20 @@ abstract class StructOneWithTraitTwinSyncSse implements SimpleTraitTwinSyncSse {
   static Future<int> simpleTraitFnWithDefaultImplTwinSyncSse() => RustLib
       .instance.api
       .crateApiPseudoManualImplTraitTwinSyncSseStructOneWithTraitTwinSyncSseSimpleTraitFnWithDefaultImplTwinSyncSse();
+
+  void dispose();
+
+  bool get isDisposed;
+}
+
+// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructTwoWithTraitForDynTwinSyncSse>>
+abstract class StructTwoWithTraitForDynTwinSyncSse
+    implements SimpleTraitForDynTwinSyncSse {
+  int get two;
+
+  void set two(int two);
+
+  Future<int> simpleMethodTwinSyncSse();
 
   void dispose();
 
@@ -50,6 +90,10 @@ abstract class StructTwoWithTraitTwinSyncSse implements SimpleTraitTwinSyncSse {
   void dispose();
 
   bool get isDisposed;
+}
+
+abstract class SimpleTraitForDynTwinSyncSse {
+  Future<int> simpleMethodTwinSyncSse();
 }
 
 abstract class SimpleTraitTwinSyncSse {

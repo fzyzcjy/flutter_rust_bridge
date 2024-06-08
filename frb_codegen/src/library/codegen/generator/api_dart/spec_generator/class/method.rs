@@ -9,7 +9,7 @@ use crate::codegen::ir::mir::func::{
 };
 use crate::if_then_some;
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
-use crate::utils::basic_code::DartBasicHeaderCode;
+use crate::utils::basic_code::dart_header_code::DartHeaderCode;
 use crate::utils::namespace::NamespacedName;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
@@ -44,12 +44,12 @@ pub(crate) enum GenerateApiMethodMode {
 pub(crate) struct GeneratedApiMethods {
     pub(crate) num_methods: usize,
     pub(crate) code: String,
-    pub(crate) header: DartBasicHeaderCode,
+    pub(crate) header: DartHeaderCode,
 }
 
 struct GeneratedApiMethod {
     code: String,
-    header: DartBasicHeaderCode,
+    header: DartHeaderCode,
 }
 
 pub(crate) fn generate_api_methods(

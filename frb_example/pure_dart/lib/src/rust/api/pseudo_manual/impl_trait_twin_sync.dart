@@ -6,6 +6,31 @@
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
+int funcArgTraitImplTwinSync(
+        {required SimpleTraitForDynTwinSyncImplementor arg}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualImplTraitTwinSyncFuncArgTraitImplTwinSync(
+            arg: arg);
+
+// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructOneWithTraitForDynTwinSync>>
+abstract class StructOneWithTraitForDynTwinSync
+    implements SimpleTraitForDynTwinSync {
+  static StructOneWithTraitForDynTwinSync createTwinSync({required int one}) =>
+      RustLib.instance.api
+          .crateApiPseudoManualImplTraitTwinSyncStructOneWithTraitForDynTwinSyncCreateTwinSync(
+              one: one);
+
+  int get one;
+
+  void set one(int one);
+
+  Future<int> simpleMethodTwinSync();
+
+  void dispose();
+
+  bool get isDisposed;
+}
+
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructOneWithTraitTwinSync>>
 abstract class StructOneWithTraitTwinSync implements SimpleTraitTwinSync {
   int get one;
@@ -23,6 +48,20 @@ abstract class StructOneWithTraitTwinSync implements SimpleTraitTwinSync {
   static Future<int> simpleTraitFnWithDefaultImplTwinSync() => RustLib
       .instance.api
       .crateApiPseudoManualImplTraitTwinSyncStructOneWithTraitTwinSyncSimpleTraitFnWithDefaultImplTwinSync();
+
+  void dispose();
+
+  bool get isDisposed;
+}
+
+// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructTwoWithTraitForDynTwinSync>>
+abstract class StructTwoWithTraitForDynTwinSync
+    implements SimpleTraitForDynTwinSync {
+  int get two;
+
+  void set two(int two);
+
+  Future<int> simpleMethodTwinSync();
 
   void dispose();
 
@@ -50,6 +89,10 @@ abstract class StructTwoWithTraitTwinSync implements SimpleTraitTwinSync {
   void dispose();
 
   bool get isDisposed;
+}
+
+abstract class SimpleTraitForDynTwinSync {
+  Future<int> simpleMethodTwinSync();
 }
 
 abstract class SimpleTraitTwinSync {

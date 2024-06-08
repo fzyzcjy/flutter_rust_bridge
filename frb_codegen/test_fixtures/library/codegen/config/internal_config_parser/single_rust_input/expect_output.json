@@ -100,12 +100,10 @@
     "hir": {
       "rust_crate_dir": "{the-working-directory}",
       "rust_input_namespace_pack": {
-        "early_skip_namespace_prefixes": [
-          "crate::frb_generated"
-        ],
         "rust_input_namespace_prefixes": [
           "crate::api"
-        ]
+        ],
+        "rust_output_path_namespace": "crate::frb_generated"
       },
       "third_party_crate_names": []
     },
@@ -117,12 +115,10 @@
         "rust2dart": "Pde"
       },
       "rust_input_namespace_pack": {
-        "early_skip_namespace_prefixes": [
-          "crate::frb_generated"
-        ],
         "rust_input_namespace_prefixes": [
           "crate::api"
-        ]
+        ],
+        "rust_output_path_namespace": "crate::frb_generated"
       },
       "stop_on_error": false
     }

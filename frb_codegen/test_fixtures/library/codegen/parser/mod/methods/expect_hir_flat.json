@@ -10,6 +10,7 @@
     }
   ],
   "existing_handler": null,
+  "extra_rust_output_code": "",
   "functions": [
     {
       "item_fn": "GeneralizedItemFn(name=example_instance_method, vis=Some(Visibility::Public(Pub)), attrs=[])",

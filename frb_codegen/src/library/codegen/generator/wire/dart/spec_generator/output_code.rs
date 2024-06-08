@@ -1,14 +1,15 @@
-use crate::basic_code_impl;
 use crate::codegen::generator::misc::target::TargetOrCommon;
 use crate::codegen::generator::wire::dart::internal_config::DartOutputClassNamePack;
-use crate::utils::basic_code::DartBasicHeaderCode;
+use crate::simple_code_trait_impl;
+use crate::utils::basic_code::dart_header_code::DartHeaderCode;
+use crate::utils::basic_code::general_code::GeneralDartCode;
 use itertools::Itertools;
 use serde::Serialize;
 use std::ops::AddAssign;
 
 #[derive(Default, Clone, Debug, Serialize)]
 pub(crate) struct WireDartOutputCode {
-    pub header: DartBasicHeaderCode,
+    pub header: DartHeaderCode,
     pub body_top: String,
     pub api_class_body: String,
     pub api_impl_class_body: String,
@@ -16,7 +17,7 @@ pub(crate) struct WireDartOutputCode {
     pub body: String,
 }
 
-basic_code_impl!(WireDartOutputCode);
+simple_code_trait_impl!(WireDartOutputCode);
 
 impl AddAssign for WireDartOutputCode {
     #[inline]
@@ -49,7 +50,7 @@ impl WireDartOutputCode {
             .push(line);
         }
         WireDartOutputCode {
-            header: DartBasicHeaderCode {
+            header: DartHeaderCode {
                 import: imports.join("\n"),
                 ..Default::default()
             },
@@ -62,7 +63,7 @@ impl WireDartOutputCode {
         &self,
         target: TargetOrCommon,
         dart_output_class_name_pack: &DartOutputClassNamePack,
-    ) -> String {
+    ) -> GeneralDartCode {
         let DartOutputClassNamePack {
             api_class_name,
             api_impl_class_name,
@@ -141,13 +142,12 @@ impl WireDartOutputCode {
             )
         };
 
-        format!(
-            "{}\n{}\n{}\n{}\n{}",
-            self.header.all_code(),
-            self.body_top,
-            api_class_code,
-            api_impl_class_code,
-            self.body
-        )
+        GeneralDartCode {
+            header: self.header.clone(),
+            body: format!(
+                "{}\n{}\n{}\n{}",
+                self.body_top, api_class_code, api_impl_class_code, self.body
+            ),
+        }
     }
 }

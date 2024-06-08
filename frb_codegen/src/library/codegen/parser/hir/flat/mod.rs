@@ -1,4 +1,5 @@
 mod exporter;
+pub(crate) mod extra_code_injector;
 pub(crate) mod parser;
 pub(crate) mod transformer;
 
@@ -34,8 +35,11 @@ pub(crate) fn parse(
     let pack = transformer::resolve_type_alias_transformer::transform(pack)?;
     dump(dumper, "7_resolve_type_alias_transformer", &pack)?;
 
+    let pack = transformer::generate_trait_impl_enum_transformer::transform(pack, config)?;
+    dump(dumper, "8_generate_trait_impl_enum_transformer", &pack)?;
+
     let pack = transformer::sort_transformer::transform(pack)?;
-    dump(dumper, "8_sort_transformer", &pack)?;
+    dump(dumper, "9_sort_transformer", &pack)?;
 
     Ok(pack)
 }

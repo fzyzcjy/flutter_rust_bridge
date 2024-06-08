@@ -1,3 +1,5 @@
+// FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["rustAsync", "rustAsync sse"]}
+
 import 'package:frb_example_pure_dart/src/rust/api/impl_trait.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
@@ -22,5 +24,15 @@ Future<void> main({bool skipRustLibInit = false}) async {
         await StructOneWithTraitTwinNormal
             .simpleTraitFnWithDefaultImplTwinNormal(),
         42);
+  });
+
+  test('use generated implementor', () async {
+    final object =
+        await StructOneWithTraitForDynTwinNormal.createTwinNormal(one: 100);
+    expect(
+        await funcArgTraitImplTwinNormal(
+            arg: SimpleTraitForDynTwinNormalImplementor
+                .structOneWithTraitForDynTwinNormal(object)),
+        100);
   });
 }

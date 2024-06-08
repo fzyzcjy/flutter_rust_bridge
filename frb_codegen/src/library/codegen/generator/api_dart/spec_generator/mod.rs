@@ -15,7 +15,7 @@ use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::ConfigDumpContent;
 use crate::library::codegen::generator::api_dart::spec_generator::class::ty::ApiDartGeneratorClassTrait;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
-use crate::utils::basic_code::DartBasicHeaderCode;
+use crate::utils::basic_code::dart_header_code::DartHeaderCode;
 use crate::utils::namespace::Namespace;
 use anyhow::Result;
 use itertools::{concat, Itertools};
@@ -41,7 +41,7 @@ pub(crate) struct ApiDartOutputSpecItem {
     pub funcs: Vec<ApiDartGeneratedFunction>,
     pub classes: Vec<ApiDartGeneratedClass>,
     pub extra_impl_code: Vec<String>,
-    pub imports: DartBasicHeaderCode,
+    pub imports: DartHeaderCode,
     pub preamble: String,
     pub skips: Vec<MirSkip>,
     pub needs_freezed: bool,
@@ -100,7 +100,7 @@ fn generate_item(
     funcs: &Option<&Vec<&MirFunc>>,
     context: ApiDartGeneratorContext,
 ) -> Result<ApiDartOutputSpecItem> {
-    let imports = DartBasicHeaderCode {
+    let imports = DartHeaderCode {
         import: generate_imports_which_types_and_funcs_use(
             namespace,
             namespaced_types,

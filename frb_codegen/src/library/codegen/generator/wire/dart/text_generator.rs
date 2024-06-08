@@ -5,9 +5,10 @@ use crate::codegen::generator::misc::text_generator_utils::{
 use crate::codegen::generator::wire::dart::internal_config::GeneratorWireDartInternalConfig;
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
 use crate::codegen::generator::wire::dart::spec_generator::WireDartOutputSpec;
+use crate::utils::basic_code::general_code::GeneralCode;
 
 pub(super) struct WireDartOutputText {
-    pub(super) text: Acc<Option<String>>,
+    pub(super) text: Acc<Option<GeneralCode>>,
 }
 
 pub(super) fn generate(
@@ -17,7 +18,9 @@ pub(super) fn generate(
     let merged_code = generate_merged_code(spec);
     let text = generate_text_from_merged_code(
         config,
-        merged_code.map(|code, target| code.all_code(target, &config.dart_output_class_name_pack)),
+        merged_code.map(|code, target| {
+            GeneralCode::Dart(code.all_code(target, &config.dart_output_class_name_pack))
+        }),
     )?;
     Ok(WireDartOutputText { text })
 }
@@ -43,10 +46,10 @@ fn generate_merged_code(spec: &WireDartOutputSpec) -> Acc<WireDartOutputCode> {
     merged_code.map(|code, _| code.into_iter().fold(Default::default(), |a, b| a + b))
 }
 
-fn generate_text_from_merged_code(
+fn generate_text_from_merged_code<T>(
     config: &GeneratorWireDartInternalConfig,
-    core_code: Acc<String>,
-) -> anyhow::Result<Acc<Option<String>>> {
+    core_code: Acc<T>,
+) -> anyhow::Result<Acc<Option<T>>> {
     Ok(generate_text_respecting_web_flag(
         core_code,
         config.web_enabled,

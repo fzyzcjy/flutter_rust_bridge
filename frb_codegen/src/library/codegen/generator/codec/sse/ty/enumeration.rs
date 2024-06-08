@@ -1,6 +1,6 @@
 use crate::codegen::generator::codec::sse::ty::structure::GeneralizedStructGenerator;
 use crate::codegen::generator::codec::sse::ty::*;
-use crate::codegen::generator::misc::StructOrRecord;
+use crate::codegen::generator::misc::struct_or_record::StructOrRecord;
 use crate::codegen::ir::mir::ty::enumeration::{MirEnum, MirEnumVariant, MirVariantKind};
 use crate::library::codegen::generator::codec::sse::lang::LangTrait;
 use crate::utils::namespace::NamespacedName;

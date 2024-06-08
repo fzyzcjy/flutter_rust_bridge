@@ -33,12 +33,14 @@ Future<void> _demoUsage() async {
   await src.setBuffer(audioBuffer: buffer);
   await src.setLoop(value: true);
 
+  final biquad = await context.createBiquadFilter();
   // TODO
-  // final biquad = context.createBiquadFilter();
   // biquad.frequencyValue = 125;
-  //
-  // await src.connect(biquad);
-  // await biquad.connect(await context.destination());
+
+  await src.connect(dest: AudioNodeImplementor.biquadFilterNode(biquad));
+  await biquad.connect(
+      dest: await AudioNodeImplementor.audioDestinationNode(
+          await context.destination()));
 
   await src.start();
 

@@ -3,16 +3,18 @@
 
 // ignore_for_file: invalid_use_of_internal_member, unused_import, unnecessary_import
 
+import '../../api/override_web_audio_api.dart';
 import '../../frb_generated.dart';
 import '../web_audio_api.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
+import 'worklet.dart';
 
-// These functions are ignored because they have generic arguments: `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `connect`, `set_onended`, `set_onended`, `set_onended`, `set_onended`
+// These functions are ignored because they have generic arguments: `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect`, `connect`, `connect`, `set_onended`, `set_onended`, `set_onended`, `set_onended`
 // These types are ignored because they are not used by any `pub` functions: `AnalyserOptions`, `AudioBufferSourceOptions`, `AudioNodeOptions`, `BiquadFilterOptions`, `ChannelConfig`, `ChannelMergerOptions`, `ChannelSplitterOptions`, `ConstantSourceOptions`, `ConvolverOptions`, `DelayOptions`, `DynamicsCompressorOptions`, `GainOptions`, `IIRFilterOptions`, `MediaElementAudioSourceOptions`, `MediaStreamAudioSourceOptions`, `MediaStreamRenderer`, `MediaStreamTrackAudioSourceOptions`, `OscillatorOptions`, `PannerOptions`, `ScriptProcessorOptions`, `StereoPannerOptions`, `WaveShaperOptions`
 // These functions are ignored: `channel_config`, `channel_count_mode`, `channel_count`, `channel_interpretation`, `clear_onprocessorerror`, `context`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_output`, `disconnect`, `number_of_inputs`, `number_of_outputs`, `registration`, `set_channel_count_mode`, `set_channel_count`, `set_channel_interpretation`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AnalyserNode>>
-abstract class AnalyserNode implements AudioNode {
+abstract class AnalyserNode implements AnalyserNodeExt, AudioNode {
   /// Config for up/down-mixing of input channels for this node.
   ///
   /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
@@ -54,6 +56,8 @@ abstract class AnalyserNode implements AudioNode {
   ///
   /// This method may panic if the lock to the inner analyser is poisoned
   Future<BigInt> fftSize();
+
+  Future<void> connect({required AudioNodeImplementor dest});
 
   /// Number of bins in the FFT results, is half the FFT size
   ///
@@ -144,7 +148,7 @@ abstract class AnalyserNode implements AudioNode {
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioBufferSourceNode>>
 abstract class AudioBufferSourceNode
-    implements AudioNode, AudioScheduledSourceNode {
+    implements AudioBufferSourceNodeExt, AudioNode, AudioScheduledSourceNode {
   /// Config for up/down-mixing of input channels for this node.
   ///
   /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
@@ -182,6 +186,8 @@ abstract class AudioBufferSourceNode
   /// This function will panic when
   /// - if the output port is out of bounds for this node
   Future<void> disconnectOutput({required BigInt output});
+
+  Future<void> connect({required AudioNodeImplementor dest});
 
   /// Defines if the playback the [`AudioBuffer`] should be looped
   Future<bool> loop();
@@ -286,7 +292,8 @@ abstract class AudioBufferSourceNode
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioDestinationNode>>
-abstract class AudioDestinationNode implements AudioNode {
+abstract class AudioDestinationNode
+    implements AudioDestinationNodeExt, AudioNode {
   /// Config for up/down-mixing of input channels for this node.
   ///
   /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
@@ -321,6 +328,8 @@ abstract class AudioDestinationNode implements AudioNode {
   /// This function will panic when
   /// - if the output port is out of bounds for this node
   Future<void> disconnectOutput({required BigInt output});
+
+  Future<void> connect({required AudioNodeImplementor dest});
 
   /// The maximum number of channels that the channelCount attribute can be set to (the max
   /// number of channels that the hardware is capable of supporting).
@@ -353,7 +362,7 @@ abstract class AudioDestinationNode implements AudioNode {
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<BiquadFilterNode>>
-abstract class BiquadFilterNode implements AudioNode {
+abstract class BiquadFilterNode implements AudioNode, BiquadFilterNodeExt {
   /// Config for up/down-mixing of input channels for this node.
   ///
   /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
@@ -388,6 +397,8 @@ abstract class BiquadFilterNode implements AudioNode {
   /// This function will panic when
   /// - if the output port is out of bounds for this node
   Future<void> disconnectOutput({required BigInt output});
+
+  Future<void> connect({required AudioNodeImplementor dest});
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
   Future<BigInt> numberOfInputs();
@@ -425,7 +436,7 @@ abstract class BiquadFilterNode implements AudioNode {
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ChannelMergerNode>>
-abstract class ChannelMergerNode implements AudioNode {
+abstract class ChannelMergerNode implements AudioNode, ChannelMergerNodeExt {
   /// Config for up/down-mixing of input channels for this node.
   ///
   /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
@@ -460,6 +471,8 @@ abstract class ChannelMergerNode implements AudioNode {
   /// This function will panic when
   /// - if the output port is out of bounds for this node
   Future<void> disconnectOutput({required BigInt output});
+
+  Future<void> connect({required AudioNodeImplementor dest});
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
   Future<BigInt> numberOfInputs();
@@ -487,7 +500,8 @@ abstract class ChannelMergerNode implements AudioNode {
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ChannelSplitterNode>>
-abstract class ChannelSplitterNode implements AudioNode {
+abstract class ChannelSplitterNode
+    implements AudioNode, ChannelSplitterNodeExt {
   /// Config for up/down-mixing of input channels for this node.
   ///
   /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
@@ -522,6 +536,8 @@ abstract class ChannelSplitterNode implements AudioNode {
   /// This function will panic when
   /// - if the output port is out of bounds for this node
   Future<void> disconnectOutput({required BigInt output});
+
+  Future<void> connect({required AudioNodeImplementor dest});
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
   Future<BigInt> numberOfInputs();
@@ -550,7 +566,7 @@ abstract class ChannelSplitterNode implements AudioNode {
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ConstantSourceNode>>
 abstract class ConstantSourceNode
-    implements AudioNode, AudioScheduledSourceNode {
+    implements AudioNode, AudioScheduledSourceNode, ConstantSourceNodeExt {
   /// Config for up/down-mixing of input channels for this node.
   ///
   /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
@@ -588,6 +604,8 @@ abstract class ConstantSourceNode
   /// This function will panic when
   /// - if the output port is out of bounds for this node
   Future<void> disconnectOutput({required BigInt output});
+
+  Future<void> connect({required AudioNodeImplementor dest});
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
   Future<BigInt> numberOfInputs();
@@ -643,7 +661,7 @@ abstract class ConstantSourceNode
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ConvolverNode>>
-abstract class ConvolverNode implements AudioNode {
+abstract class ConvolverNode implements AudioNode, ConvolverNodeExt {
   /// Config for up/down-mixing of input channels for this node.
   ///
   /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
@@ -678,6 +696,8 @@ abstract class ConvolverNode implements AudioNode {
   /// This function will panic when
   /// - if the output port is out of bounds for this node
   Future<void> disconnectOutput({required BigInt output});
+
+  Future<void> connect({required AudioNodeImplementor dest});
 
   /// Denotes if the response buffer will be scaled with an equal-power normalization
   Future<bool> normalize();
@@ -719,7 +739,7 @@ abstract class ConvolverNode implements AudioNode {
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<DelayNode>>
-abstract class DelayNode implements AudioNode {
+abstract class DelayNode implements AudioNode, DelayNodeExt {
   /// Config for up/down-mixing of input channels for this node.
   ///
   /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
@@ -754,6 +774,8 @@ abstract class DelayNode implements AudioNode {
   /// This function will panic when
   /// - if the output port is out of bounds for this node
   Future<void> disconnectOutput({required BigInt output});
+
+  Future<void> connect({required AudioNodeImplementor dest});
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
   Future<BigInt> numberOfInputs();
@@ -781,7 +803,8 @@ abstract class DelayNode implements AudioNode {
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<DynamicsCompressorNode>>
-abstract class DynamicsCompressorNode implements AudioNode {
+abstract class DynamicsCompressorNode
+    implements AudioNode, DynamicsCompressorNodeExt {
   /// Config for up/down-mixing of input channels for this node.
   ///
   /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
@@ -816,6 +839,8 @@ abstract class DynamicsCompressorNode implements AudioNode {
   /// This function will panic when
   /// - if the output port is out of bounds for this node
   Future<void> disconnectOutput({required BigInt output});
+
+  Future<void> connect({required AudioNodeImplementor dest});
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
   Future<BigInt> numberOfInputs();
@@ -845,7 +870,7 @@ abstract class DynamicsCompressorNode implements AudioNode {
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<GainNode>>
-abstract class GainNode implements AudioNode {
+abstract class GainNode implements AudioNode, GainNodeExt {
   /// Config for up/down-mixing of input channels for this node.
   ///
   /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
@@ -880,6 +905,8 @@ abstract class GainNode implements AudioNode {
   /// This function will panic when
   /// - if the output port is out of bounds for this node
   Future<void> disconnectOutput({required BigInt output});
+
+  Future<void> connect({required AudioNodeImplementor dest});
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
   Future<BigInt> numberOfInputs();
@@ -907,7 +934,7 @@ abstract class GainNode implements AudioNode {
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<IIRFilterNode>>
-abstract class IirFilterNode implements AudioNode {
+abstract class IirFilterNode implements AudioNode, IIRFilterNodeExt {
   /// Config for up/down-mixing of input channels for this node.
   ///
   /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
@@ -942,6 +969,8 @@ abstract class IirFilterNode implements AudioNode {
   /// This function will panic when
   /// - if the output port is out of bounds for this node
   Future<void> disconnectOutput({required BigInt output});
+
+  Future<void> connect({required AudioNodeImplementor dest});
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
   Future<BigInt> numberOfInputs();
@@ -969,7 +998,8 @@ abstract class IirFilterNode implements AudioNode {
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaElementAudioSourceNode>>
-abstract class MediaElementAudioSourceNode implements AudioNode {
+abstract class MediaElementAudioSourceNode
+    implements AudioNode, MediaElementAudioSourceNodeExt {
   /// Config for up/down-mixing of input channels for this node.
   ///
   /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
@@ -1004,6 +1034,8 @@ abstract class MediaElementAudioSourceNode implements AudioNode {
   /// This function will panic when
   /// - if the output port is out of bounds for this node
   Future<void> disconnectOutput({required BigInt output});
+
+  Future<void> connect({required AudioNodeImplementor dest});
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
   Future<BigInt> numberOfInputs();
@@ -1031,7 +1063,8 @@ abstract class MediaElementAudioSourceNode implements AudioNode {
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaStreamAudioDestinationNode>>
-abstract class MediaStreamAudioDestinationNode implements AudioNode {
+abstract class MediaStreamAudioDestinationNode
+    implements AudioNode, MediaStreamAudioDestinationNodeExt {
   /// Config for up/down-mixing of input channels for this node.
   ///
   /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
@@ -1066,6 +1099,8 @@ abstract class MediaStreamAudioDestinationNode implements AudioNode {
   /// This function will panic when
   /// - if the output port is out of bounds for this node
   Future<void> disconnectOutput({required BigInt output});
+
+  Future<void> connect({required AudioNodeImplementor dest});
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
   Future<BigInt> numberOfInputs();
@@ -1097,7 +1132,8 @@ abstract class MediaStreamAudioDestinationNode implements AudioNode {
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaStreamAudioSourceNode>>
-abstract class MediaStreamAudioSourceNode implements AudioNode {
+abstract class MediaStreamAudioSourceNode
+    implements AudioNode, MediaStreamAudioSourceNodeExt {
   /// Config for up/down-mixing of input channels for this node.
   ///
   /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
@@ -1132,6 +1168,8 @@ abstract class MediaStreamAudioSourceNode implements AudioNode {
   /// This function will panic when
   /// - if the output port is out of bounds for this node
   Future<void> disconnectOutput({required BigInt output});
+
+  Future<void> connect({required AudioNodeImplementor dest});
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
   Future<BigInt> numberOfInputs();
@@ -1159,7 +1197,8 @@ abstract class MediaStreamAudioSourceNode implements AudioNode {
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaStreamTrackAudioSourceNode>>
-abstract class MediaStreamTrackAudioSourceNode implements AudioNode {
+abstract class MediaStreamTrackAudioSourceNode
+    implements AudioNode, MediaStreamTrackAudioSourceNodeExt {
   /// Config for up/down-mixing of input channels for this node.
   ///
   /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
@@ -1195,6 +1234,8 @@ abstract class MediaStreamTrackAudioSourceNode implements AudioNode {
   /// - if the output port is out of bounds for this node
   Future<void> disconnectOutput({required BigInt output});
 
+  Future<void> connect({required AudioNodeImplementor dest});
+
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
   Future<BigInt> numberOfInputs();
 
@@ -1221,7 +1262,8 @@ abstract class MediaStreamTrackAudioSourceNode implements AudioNode {
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OscillatorNode>>
-abstract class OscillatorNode implements AudioNode, AudioScheduledSourceNode {
+abstract class OscillatorNode
+    implements AudioNode, AudioScheduledSourceNode, OscillatorNodeExt {
   /// Config for up/down-mixing of input channels for this node.
   ///
   /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
@@ -1259,6 +1301,8 @@ abstract class OscillatorNode implements AudioNode, AudioScheduledSourceNode {
   /// This function will panic when
   /// - if the output port is out of bounds for this node
   Future<void> disconnectOutput({required BigInt output});
+
+  Future<void> connect({required AudioNodeImplementor dest});
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
   Future<BigInt> numberOfInputs();
@@ -1334,7 +1378,7 @@ abstract class OscillatorNode implements AudioNode, AudioScheduledSourceNode {
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<PannerNode>>
-abstract class PannerNode implements AudioNode {
+abstract class PannerNode implements AudioNode, PannerNodeExt {
   /// Config for up/down-mixing of input channels for this node.
   ///
   /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
@@ -1377,6 +1421,8 @@ abstract class PannerNode implements AudioNode {
   Future<void> disconnectOutput({required BigInt output});
 
   Future<DistanceModelType> distanceModel();
+
+  Future<void> connect({required AudioNodeImplementor dest});
 
   Future<double> maxDistance();
 
@@ -1454,7 +1500,8 @@ abstract class PannerNode implements AudioNode {
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ScriptProcessorNode>>
-abstract class ScriptProcessorNode implements AudioNode {
+abstract class ScriptProcessorNode
+    implements AudioNode, ScriptProcessorNodeExt {
   Future<BigInt> bufferSize();
 
   /// Config for up/down-mixing of input channels for this node.
@@ -1495,6 +1542,8 @@ abstract class ScriptProcessorNode implements AudioNode {
   /// - if the output port is out of bounds for this node
   Future<void> disconnectOutput({required BigInt output});
 
+  Future<void> connect({required AudioNodeImplementor dest});
+
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
   Future<BigInt> numberOfInputs();
 
@@ -1521,7 +1570,7 @@ abstract class ScriptProcessorNode implements AudioNode {
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StereoPannerNode>>
-abstract class StereoPannerNode implements AudioNode {
+abstract class StereoPannerNode implements AudioNode, StereoPannerNodeExt {
   /// Config for up/down-mixing of input channels for this node.
   ///
   /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
@@ -1556,6 +1605,8 @@ abstract class StereoPannerNode implements AudioNode {
   /// This function will panic when
   /// - if the output port is out of bounds for this node
   Future<void> disconnectOutput({required BigInt output});
+
+  Future<void> connect({required AudioNodeImplementor dest});
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
   Future<BigInt> numberOfInputs();
@@ -1583,7 +1634,7 @@ abstract class StereoPannerNode implements AudioNode {
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<WaveShaperNode>>
-abstract class WaveShaperNode implements AudioNode {
+abstract class WaveShaperNode implements AudioNode, WaveShaperNodeExt {
   /// Config for up/down-mixing of input channels for this node.
   ///
   /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
@@ -1618,6 +1669,8 @@ abstract class WaveShaperNode implements AudioNode {
   /// This function will panic when
   /// - if the output port is out of bounds for this node
   Future<void> disconnectOutput({required BigInt output});
+
+  Future<void> connect({required AudioNodeImplementor dest});
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
   Future<BigInt> numberOfInputs();

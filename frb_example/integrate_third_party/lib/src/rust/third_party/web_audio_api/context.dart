@@ -169,8 +169,6 @@ abstract class AudioContext implements AudioContextExt, BaseAudioContext {
 
   Future<AudioBuffer> decodeAudioDataSync({required String inputPath});
 
-  Future<String> outputLatency();
-
   /// Returns the `AudioListener` which is used for 3D spatialization
   Future<AudioListener> listener();
 
@@ -201,6 +199,12 @@ abstract class AudioContext implements AudioContextExt, BaseAudioContext {
   /// never panics.
   factory AudioContext({required AudioContextOptions options}) =>
       RustLib.instance.api.webAudioApiContextAudioContextNew(options: options);
+
+  /// The estimation in seconds of audio output latency, i.e., the interval
+  /// between the time the UA requests the host system to play a buffer and
+  /// the time at which the first sample in the buffer is actually processed
+  /// by the audio output device.
+  Future<double> outputLatency();
 
   /// Returns an [`AudioRenderCapacity`] instance associated with an AudioContext.
   Future<void> renderCapacity();

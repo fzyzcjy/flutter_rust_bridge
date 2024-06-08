@@ -1,6 +1,6 @@
 use crate::codegen::dumper::internal_config::ConfigDumpContent;
 use crate::codegen::dumper::Dumper;
-use crate::codegen::generator::misc::PathTexts;
+use crate::codegen::generator::misc::path_texts::PathTexts;
 use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGeneratorContext;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFunc;
 use crate::codegen::misc::GeneratorProgressBarPack;
@@ -19,7 +19,6 @@ pub(crate) fn generate(
     context: WireDartGeneratorContext,
     c_file_content: &str,
     api_dart_actual_output_paths: &[PathBuf],
-    extra_impl_text: &str,
     rust_extern_funcs: &[ExternFunc],
     rust_content_hash: i32,
     dumper: &Dumper,
@@ -29,7 +28,6 @@ pub(crate) fn generate(
         context,
         c_file_content,
         api_dart_actual_output_paths,
-        extra_impl_text,
         rust_extern_funcs,
         rust_content_hash,
         dumper,
@@ -42,7 +40,7 @@ pub(crate) fn generate(
         ConfigDumpContent::GeneratorText,
         "wire_dart",
         "dart",
-        &text.text,
+        &text.text.clone().map(|x, _| x.map(|x| x.all_code())),
     )?;
 
     Ok(GeneratorWireDartOutput {
