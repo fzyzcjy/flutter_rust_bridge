@@ -32,7 +32,7 @@ fn parse_inner(
     let hir_tree = hir::tree::parse(&config.hir, hir_raw, dumper)?;
     let hir_naive_flat = hir::naive_flat::parse(&config.hir, hir_tree, dumper)?;
     let hir_flat = hir::flat::parse(&config.hir, hir_naive_flat, dumper)?;
-    let hir_flat = early_generator::execute(hir_flat)?;
+    let hir_flat = early_generator::execute(hir_flat, &config.mir, &config.hir)?;
     on_hir_flat(&hir_flat)?;
     drop(pb);
 
