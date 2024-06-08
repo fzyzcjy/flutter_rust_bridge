@@ -87,6 +87,7 @@ pub struct MirTypeDelegateRustAutoOpaqueExplicit {
 
 pub struct MirTypeDelegateProxyVariant {
     pub inner: Box<MirType>,
+    pub upstream: Box<MirType>,
 }
 
 pub struct MirTypeDelegateProxyTarget {
