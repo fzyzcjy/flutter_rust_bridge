@@ -152,15 +152,15 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         info = info.merge(self.parse_fn_output(func.item_fn.sig(), &context, &attributes)?)?;
         info = self.transform_fn_info(info);
 
-        let output = MirFuncOutput {
-            normal: info.ok_output.unwrap_or(Primitive(MirTypePrimitive::Unit)),
-            error: info.error_output,
-        };
-
         let codec_mode_pack = compute_codec_mode_pack(&attributes, force_codec_mode_pack);
         let mode = compute_func_mode(&attributes, &info);
         let stream_dart_await = attributes.stream_dart_await() && !attributes.sync();
         let namespace_refined = refine_namespace(&owner).unwrap_or(func.namespace.clone());
+
+        let output = MirFuncOutput {
+            normal: info.ok_output.unwrap_or(Primitive(MirTypePrimitive::Unit)),
+            error: info.error_output,
+        };
 
         let impl_mode = compute_impl_mode(is_owner_trait_def, &func_name, &attributes, &output);
 
