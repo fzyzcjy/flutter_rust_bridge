@@ -83,7 +83,7 @@ fn parse_maybe_proxy_return_type(
 }
 
 fn parse_proxy_return_type(mir: MirType) -> anyhow::Result<MirType> {
-    if let Some(MirType::RustAutoOpaqueImplicit(mir_inner)) = &mir {
+    if let MirType::RustAutoOpaqueImplicit(mir_inner) = &mir {
         if mir_inner.ownership_mode == OwnershipMode::Ref
             || mir_inner.ownership_mode == OwnershipMode::RefMut
         {
