@@ -8,6 +8,7 @@ use crate::if_then_some;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use itertools::Itertools;
+use std::env::var;
 
 pub(crate) fn generate(pack: &HirFlatPack, tentative_mir_pack: &MirPack) -> anyhow::Result<String> {
     let distinct_types = tentative_mir_pack.distinct_types(None);
@@ -28,7 +29,15 @@ fn generate_proxy_enum(proxy_variants: &[MirTypeDelegateProxyVariant]) -> String
 
     let enum_name = format!("{}ProxyEnum", proxy_enum_ty.safe_ident());
 
-    let variants = ""; // TODO
+    let variants = (proxy_variants.iter())
+        .map(|variant| {
+            format!(
+                "{}({}),\n",
+                variant.inner.safe_ident(),
+                variant.upstream.rust_api_type()
+            )
+        })
+        .join("");
 
     format!(
         "
