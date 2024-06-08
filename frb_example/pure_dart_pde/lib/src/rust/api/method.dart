@@ -17,13 +17,9 @@ Future<SumWithTwinNormalArray3> getSumArrayTwinNormal(
     RustLib.instance.api.crateApiMethodGetSumArrayTwinNormal(a: a, b: b, c: c);
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StaticGetterOnlyTwinNormal>>
-abstract class StaticGetterOnlyTwinNormal {
+abstract class StaticGetterOnlyTwinNormal implements RustOpaqueInterface {
   static Future<int> get staticGetterTwinNormal => RustLib.instance.api
       .crateApiMethodStaticGetterOnlyTwinNormalStaticGetterTwinNormal();
-
-  void dispose();
-
-  bool get isDisposed;
 }
 
 class ConcatenateWithTwinNormal {

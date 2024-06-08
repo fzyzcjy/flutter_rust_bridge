@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$SimpleTraitForDynTwinNormalImplementor {
-  SimpleTraitForDynTwinNormal get field0 => throw _privateConstructorUsedError;
+  Object get field0 => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(StructOneWithTraitForDynTwinNormal field0)
@@ -478,7 +478,7 @@ abstract class SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTw
 
 /// @nodoc
 mixin _$SimpleTraitForDynTwinSyncImplementor {
-  SimpleTraitForDynTwinSync get field0 => throw _privateConstructorUsedError;
+  Object get field0 => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(StructOneWithTraitForDynTwinSync field0)

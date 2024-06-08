@@ -213,44 +213,26 @@ int rustAutoOpaqueBorrowAndBorrowTwinSyncSse(
             a: a, b: b);
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box < dyn HelloTraitTwinSyncSse >>>
-abstract class BoxHelloTraitTwinSyncSse {
-  void dispose();
-
-  bool get isDisposed;
-}
+abstract class BoxHelloTraitTwinSyncSse implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box < dyn MyTraitTwinSyncSse + Send + Sync >>>
-abstract class BoxMyTraitTwinSyncSse {
-  void dispose();
-
-  bool get isDisposed;
-}
+abstract class BoxMyTraitTwinSyncSse implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<EnumWithGoodAndOpaqueWithoutOptionTwinSyncSse>>
-abstract class EnumWithGoodAndOpaqueWithoutOptionTwinSyncSse {
-  void dispose();
-
-  bool get isDisposed;
-}
+abstract class EnumWithGoodAndOpaqueWithoutOptionTwinSyncSse
+    implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<HelloOneStructTwinSyncSse>>
-abstract class HelloOneStructTwinSyncSse implements HelloTraitTwinSyncSse {
+abstract class HelloOneStructTwinSyncSse
+    implements RustOpaqueInterface, HelloTraitTwinSyncSse {
   Future<void> funcHello();
-
-  void dispose();
-
-  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleEnumTwinSyncSse>>
-abstract class NonCloneSimpleEnumTwinSyncSse {
-  void dispose();
-
-  bool get isDisposed;
-}
+abstract class NonCloneSimpleEnumTwinSyncSse implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleTwinSyncSse>>
-abstract class NonCloneSimpleTwinSyncSse {
+abstract class NonCloneSimpleTwinSyncSse implements RustOpaqueInterface {
   void instanceMethodArgBorrowTwinSyncSse();
 
   void instanceMethodArgMutBorrowTwinSyncSse();
@@ -296,35 +278,20 @@ abstract class NonCloneSimpleTwinSyncSse {
   static NonCloneSimpleTwinSyncSse staticMethodReturnOwnTwinSyncSse() => RustLib
       .instance.api
       .crateApiPseudoManualRustAutoOpaqueTwinSyncSseNonCloneSimpleTwinSyncSseStaticMethodReturnOwnTwinSyncSse();
-
-  void dispose();
-
-  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueOneTwinSyncSse>>
-abstract class OpaqueOneTwinSyncSse {
-  void dispose();
-
-  bool get isDisposed;
-}
+abstract class OpaqueOneTwinSyncSse implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueTwoTwinSyncSse>>
-abstract class OpaqueTwoTwinSyncSse {
-  void dispose();
-
-  bool get isDisposed;
-}
+abstract class OpaqueTwoTwinSyncSse implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse>>
-abstract class StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse {
+abstract class StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse
+    implements RustOpaqueInterface {
   String get good;
 
   void set good(String good);
-
-  void dispose();
-
-  bool get isDisposed;
 }
 
 abstract class HelloTraitTwinSyncSse {

@@ -74,25 +74,13 @@ Future<FrbOpaqueReturnTwinMoi> frbGeneratorTestTwinMoi() => RustLib.instance.api
     .crateApiPseudoManualRustOpaqueTwinMoiFrbGeneratorTestTwinMoi();
 
 // Rust type: RustOpaqueMoi<Box < dyn DartDebugTwinMoi >>
-abstract class BoxDartDebugTwinMoi {
-  void dispose();
-
-  bool get isDisposed;
-}
+abstract class BoxDartDebugTwinMoi implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueMoi<FrbOpaqueReturnTwinMoi>
-abstract class FrbOpaqueReturnTwinMoi {
-  void dispose();
-
-  bool get isDisposed;
-}
+abstract class FrbOpaqueReturnTwinMoi implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueMoi<HideDataTwinMoi>
-abstract class HideDataTwinMoi {
-  void dispose();
-
-  bool get isDisposed;
-}
+abstract class HideDataTwinMoi implements RustOpaqueInterface {}
 
 class HideDataTwinMoiArray2 extends NonGrowableListView<HideDataTwinMoi> {
   static const arraySize = 2;
@@ -110,25 +98,13 @@ class HideDataTwinMoiArray2 extends NonGrowableListView<HideDataTwinMoi> {
 }
 
 // Rust type: RustOpaqueMoi<Mutex < HideDataTwinMoi >>
-abstract class MutexHideDataTwinMoi {
-  void dispose();
-
-  bool get isDisposed;
-}
+abstract class MutexHideDataTwinMoi implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueMoi<RwLock < HideDataTwinMoi >>
-abstract class RwLockHideDataTwinMoi {
-  void dispose();
-
-  bool get isDisposed;
-}
+abstract class RwLockHideDataTwinMoi implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueMoi<i16>
-abstract class I16 {
-  void dispose();
-
-  bool get isDisposed;
-}
+abstract class I16 implements RustOpaqueInterface {}
 
 @freezed
 sealed class EnumOpaqueTwinMoi with _$EnumOpaqueTwinMoi {

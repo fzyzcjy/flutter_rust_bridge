@@ -18,13 +18,9 @@ Future<SumWithTwinSseArray3> getSumArrayTwinSse(
         .crateApiPseudoManualMethodTwinSseGetSumArrayTwinSse(a: a, b: b, c: c);
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StaticGetterOnlyTwinSse>>
-abstract class StaticGetterOnlyTwinSse {
+abstract class StaticGetterOnlyTwinSse implements RustOpaqueInterface {
   static Future<int> get staticGetterTwinSse => RustLib.instance.api
       .crateApiPseudoManualMethodTwinSseStaticGetterOnlyTwinSseStaticGetterTwinSse();
-
-  void dispose();
-
-  bool get isDisposed;
 }
 
 class ConcatenateWithTwinSse {

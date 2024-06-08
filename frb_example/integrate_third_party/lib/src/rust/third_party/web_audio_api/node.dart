@@ -14,7 +14,8 @@ import 'worklet.dart';
 // These functions are ignored: `channel_config`, `channel_count_mode`, `channel_count`, `channel_interpretation`, `clear_onprocessorerror`, `context`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_output`, `disconnect`, `number_of_inputs`, `number_of_outputs`, `registration`, `set_channel_count_mode`, `set_channel_count`, `set_channel_interpretation`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AnalyserNode>>
-abstract class AnalyserNode implements AnalyserNodeExt, AudioNode {
+abstract class AnalyserNode
+    implements RustOpaqueInterface, AnalyserNodeExt, AudioNode {
   /// Config for up/down-mixing of input channels for this node.
   ///
   /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
@@ -140,15 +141,15 @@ abstract class AnalyserNode implements AnalyserNodeExt, AudioNode {
   ///
   /// This method may panic if the lock to the inner analyser is poisoned
   Future<double> smoothingTimeConstant();
-
-  void dispose();
-
-  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioBufferSourceNode>>
 abstract class AudioBufferSourceNode
-    implements AudioBufferSourceNodeExt, AudioNode, AudioScheduledSourceNode {
+    implements
+        RustOpaqueInterface,
+        AudioBufferSourceNodeExt,
+        AudioNode,
+        AudioScheduledSourceNode {
   /// Config for up/down-mixing of input channels for this node.
   ///
   /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
@@ -285,15 +286,11 @@ abstract class AudioBufferSourceNode
   ///
   /// Panics if the source was already stopped
   Future<void> stopAt({required double when});
-
-  void dispose();
-
-  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioDestinationNode>>
 abstract class AudioDestinationNode
-    implements AudioDestinationNodeExt, AudioNode {
+    implements RustOpaqueInterface, AudioDestinationNodeExt, AudioNode {
   /// Config for up/down-mixing of input channels for this node.
   ///
   /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
@@ -355,14 +352,11 @@ abstract class AudioDestinationNode
 
   /// Update the `channel_interpretation` attribute
   Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
-  void dispose();
-
-  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<BiquadFilterNode>>
-abstract class BiquadFilterNode implements AudioNode, BiquadFilterNodeExt {
+abstract class BiquadFilterNode
+    implements RustOpaqueInterface, AudioNode, BiquadFilterNodeExt {
   /// Config for up/down-mixing of input channels for this node.
   ///
   /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
@@ -429,14 +423,11 @@ abstract class BiquadFilterNode implements AudioNode, BiquadFilterNodeExt {
 
   /// Returns the biquad filter type
   Future<BiquadFilterType> type();
-
-  void dispose();
-
-  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ChannelMergerNode>>
-abstract class ChannelMergerNode implements AudioNode, ChannelMergerNodeExt {
+abstract class ChannelMergerNode
+    implements RustOpaqueInterface, AudioNode, ChannelMergerNodeExt {
   /// Config for up/down-mixing of input channels for this node.
   ///
   /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
@@ -493,15 +484,11 @@ abstract class ChannelMergerNode implements AudioNode, ChannelMergerNodeExt {
 
   /// Update the `channel_interpretation` attribute
   Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
-  void dispose();
-
-  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ChannelSplitterNode>>
 abstract class ChannelSplitterNode
-    implements AudioNode, ChannelSplitterNodeExt {
+    implements RustOpaqueInterface, AudioNode, ChannelSplitterNodeExt {
   /// Config for up/down-mixing of input channels for this node.
   ///
   /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
@@ -558,15 +545,15 @@ abstract class ChannelSplitterNode
 
   /// Update the `channel_interpretation` attribute
   Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
-  void dispose();
-
-  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ConstantSourceNode>>
 abstract class ConstantSourceNode
-    implements AudioNode, AudioScheduledSourceNode, ConstantSourceNodeExt {
+    implements
+        RustOpaqueInterface,
+        AudioNode,
+        AudioScheduledSourceNode,
+        ConstantSourceNodeExt {
   /// Config for up/down-mixing of input channels for this node.
   ///
   /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
@@ -654,14 +641,11 @@ abstract class ConstantSourceNode
   ///
   /// Panics if the source was already stopped
   Future<void> stopAt({required double when});
-
-  void dispose();
-
-  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ConvolverNode>>
-abstract class ConvolverNode implements AudioNode, ConvolverNodeExt {
+abstract class ConvolverNode
+    implements RustOpaqueInterface, AudioNode, ConvolverNodeExt {
   /// Config for up/down-mixing of input channels for this node.
   ///
   /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
@@ -732,14 +716,11 @@ abstract class ConvolverNode implements AudioNode, ConvolverNodeExt {
 
   /// Update the `normalize` setting. This will only have an effect when `set_buffer` is called.
   Future<void> setNormalize({required bool value});
-
-  void dispose();
-
-  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<DelayNode>>
-abstract class DelayNode implements AudioNode, DelayNodeExt {
+abstract class DelayNode
+    implements RustOpaqueInterface, AudioNode, DelayNodeExt {
   /// Config for up/down-mixing of input channels for this node.
   ///
   /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
@@ -796,15 +777,11 @@ abstract class DelayNode implements AudioNode, DelayNodeExt {
 
   /// Update the `channel_interpretation` attribute
   Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
-  void dispose();
-
-  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<DynamicsCompressorNode>>
 abstract class DynamicsCompressorNode
-    implements AudioNode, DynamicsCompressorNodeExt {
+    implements RustOpaqueInterface, AudioNode, DynamicsCompressorNodeExt {
   /// Config for up/down-mixing of input channels for this node.
   ///
   /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
@@ -863,14 +840,10 @@ abstract class DynamicsCompressorNode
 
   /// Update the `channel_interpretation` attribute
   Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
-  void dispose();
-
-  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<GainNode>>
-abstract class GainNode implements AudioNode, GainNodeExt {
+abstract class GainNode implements RustOpaqueInterface, AudioNode, GainNodeExt {
   /// Config for up/down-mixing of input channels for this node.
   ///
   /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
@@ -927,14 +900,11 @@ abstract class GainNode implements AudioNode, GainNodeExt {
 
   /// Update the `channel_interpretation` attribute
   Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
-  void dispose();
-
-  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<IIRFilterNode>>
-abstract class IirFilterNode implements AudioNode, IIRFilterNodeExt {
+abstract class IirFilterNode
+    implements RustOpaqueInterface, AudioNode, IIRFilterNodeExt {
   /// Config for up/down-mixing of input channels for this node.
   ///
   /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
@@ -991,15 +961,11 @@ abstract class IirFilterNode implements AudioNode, IIRFilterNodeExt {
 
   /// Update the `channel_interpretation` attribute
   Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
-  void dispose();
-
-  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaElementAudioSourceNode>>
 abstract class MediaElementAudioSourceNode
-    implements AudioNode, MediaElementAudioSourceNodeExt {
+    implements RustOpaqueInterface, AudioNode, MediaElementAudioSourceNodeExt {
   /// Config for up/down-mixing of input channels for this node.
   ///
   /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
@@ -1056,15 +1022,14 @@ abstract class MediaElementAudioSourceNode
 
   /// Update the `channel_interpretation` attribute
   Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
-  void dispose();
-
-  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaStreamAudioDestinationNode>>
 abstract class MediaStreamAudioDestinationNode
-    implements AudioNode, MediaStreamAudioDestinationNodeExt {
+    implements
+        RustOpaqueInterface,
+        AudioNode,
+        MediaStreamAudioDestinationNodeExt {
   /// Config for up/down-mixing of input channels for this node.
   ///
   /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
@@ -1125,15 +1090,11 @@ abstract class MediaStreamAudioDestinationNode
   /// A [`MediaStream`] producing audio buffers with the same number of channels as the node
   /// itself
   Future<void> stream();
-
-  void dispose();
-
-  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaStreamAudioSourceNode>>
 abstract class MediaStreamAudioSourceNode
-    implements AudioNode, MediaStreamAudioSourceNodeExt {
+    implements RustOpaqueInterface, AudioNode, MediaStreamAudioSourceNodeExt {
   /// Config for up/down-mixing of input channels for this node.
   ///
   /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
@@ -1190,15 +1151,14 @@ abstract class MediaStreamAudioSourceNode
 
   /// Update the `channel_interpretation` attribute
   Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
-  void dispose();
-
-  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaStreamTrackAudioSourceNode>>
 abstract class MediaStreamTrackAudioSourceNode
-    implements AudioNode, MediaStreamTrackAudioSourceNodeExt {
+    implements
+        RustOpaqueInterface,
+        AudioNode,
+        MediaStreamTrackAudioSourceNodeExt {
   /// Config for up/down-mixing of input channels for this node.
   ///
   /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
@@ -1255,15 +1215,15 @@ abstract class MediaStreamTrackAudioSourceNode
 
   /// Update the `channel_interpretation` attribute
   Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
-  void dispose();
-
-  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OscillatorNode>>
 abstract class OscillatorNode
-    implements AudioNode, AudioScheduledSourceNode, OscillatorNodeExt {
+    implements
+        RustOpaqueInterface,
+        AudioNode,
+        AudioScheduledSourceNode,
+        OscillatorNodeExt {
   /// Config for up/down-mixing of input channels for this node.
   ///
   /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
@@ -1371,14 +1331,11 @@ abstract class OscillatorNode
 
   /// Returns the oscillator type
   Future<OscillatorType> type();
-
-  void dispose();
-
-  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<PannerNode>>
-abstract class PannerNode implements AudioNode, PannerNodeExt {
+abstract class PannerNode
+    implements RustOpaqueInterface, AudioNode, PannerNodeExt {
   /// Config for up/down-mixing of input channels for this node.
   ///
   /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
@@ -1493,15 +1450,11 @@ abstract class PannerNode implements AudioNode, PannerNodeExt {
   ///
   /// Panics if the provided value is negative.
   Future<void> setRolloffFactor({required double value});
-
-  void dispose();
-
-  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ScriptProcessorNode>>
 abstract class ScriptProcessorNode
-    implements AudioNode, ScriptProcessorNodeExt {
+    implements RustOpaqueInterface, AudioNode, ScriptProcessorNodeExt {
   Future<BigInt> bufferSize();
 
   /// Config for up/down-mixing of input channels for this node.
@@ -1563,14 +1516,11 @@ abstract class ScriptProcessorNode
 
   /// Update the `channel_interpretation` attribute
   Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
-  void dispose();
-
-  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StereoPannerNode>>
-abstract class StereoPannerNode implements AudioNode, StereoPannerNodeExt {
+abstract class StereoPannerNode
+    implements RustOpaqueInterface, AudioNode, StereoPannerNodeExt {
   /// Config for up/down-mixing of input channels for this node.
   ///
   /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
@@ -1627,14 +1577,11 @@ abstract class StereoPannerNode implements AudioNode, StereoPannerNodeExt {
 
   /// Update the `channel_interpretation` attribute
   Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
-  void dispose();
-
-  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<WaveShaperNode>>
-abstract class WaveShaperNode implements AudioNode, WaveShaperNodeExt {
+abstract class WaveShaperNode
+    implements RustOpaqueInterface, AudioNode, WaveShaperNodeExt {
   /// Config for up/down-mixing of input channels for this node.
   ///
   /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
@@ -1713,10 +1660,6 @@ abstract class WaveShaperNode implements AudioNode, WaveShaperNodeExt {
   ///
   /// * `oversample` - the desired `OversampleType` variant
   Future<void> setOversample({required OverSampleType oversample});
-
-  void dispose();
-
-  bool get isDisposed;
 }
 
 abstract class AudioNode {

@@ -24,22 +24,10 @@ FrbOpaqueSyncReturnTwinSseMoi frbSyncGeneratorTestTwinSseMoi() => RustLib
     .crateApiPseudoManualRustOpaqueSyncTwinSseMoiFrbSyncGeneratorTestTwinSseMoi();
 
 // Rust type: RustOpaqueMoi<FrbOpaqueSyncReturnTwinSseMoi>
-abstract class FrbOpaqueSyncReturnTwinSseMoi {
-  void dispose();
-
-  bool get isDisposed;
-}
+abstract class FrbOpaqueSyncReturnTwinSseMoi implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueMoi<HideDataAnotherTwinSseMoi>
-abstract class HideDataAnotherTwinSseMoi {
-  void dispose();
-
-  bool get isDisposed;
-}
+abstract class HideDataAnotherTwinSseMoi implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueMoi<NonCloneDataTwinSseMoi>
-abstract class NonCloneDataTwinSseMoi {
-  void dispose();
-
-  bool get isDisposed;
-}
+abstract class NonCloneDataTwinSseMoi implements RustOpaqueInterface {}

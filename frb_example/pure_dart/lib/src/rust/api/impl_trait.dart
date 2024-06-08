@@ -12,7 +12,7 @@ Future<int> funcArgTraitImplTwinNormal(
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructOneWithTraitForDynTwinNormal>>
 abstract class StructOneWithTraitForDynTwinNormal
-    implements SimpleTraitForDynTwinNormal {
+    implements RustOpaqueInterface, SimpleTraitForDynTwinNormal {
   static Future<StructOneWithTraitForDynTwinNormal> createTwinNormal(
           {required int one}) =>
       RustLib.instance.api
@@ -24,14 +24,11 @@ abstract class StructOneWithTraitForDynTwinNormal
   void set one(int one);
 
   Future<int> simpleMethodTwinNormal();
-
-  void dispose();
-
-  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructOneWithTraitTwinNormal>>
-abstract class StructOneWithTraitTwinNormal implements SimpleTraitTwinNormal {
+abstract class StructOneWithTraitTwinNormal
+    implements RustOpaqueInterface, SimpleTraitTwinNormal {
   int get one;
 
   void set one(int one);
@@ -47,28 +44,21 @@ abstract class StructOneWithTraitTwinNormal implements SimpleTraitTwinNormal {
   static Future<int> simpleTraitFnWithDefaultImplTwinNormal() => RustLib
       .instance.api
       .crateApiImplTraitStructOneWithTraitTwinNormalSimpleTraitFnWithDefaultImplTwinNormal();
-
-  void dispose();
-
-  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructTwoWithTraitForDynTwinNormal>>
 abstract class StructTwoWithTraitForDynTwinNormal
-    implements SimpleTraitForDynTwinNormal {
+    implements RustOpaqueInterface, SimpleTraitForDynTwinNormal {
   int get two;
 
   void set two(int two);
 
   Future<int> simpleMethodTwinNormal();
-
-  void dispose();
-
-  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructTwoWithTraitTwinNormal>>
-abstract class StructTwoWithTraitTwinNormal implements SimpleTraitTwinNormal {
+abstract class StructTwoWithTraitTwinNormal
+    implements RustOpaqueInterface, SimpleTraitTwinNormal {
   int get two;
 
   void set two(int two);
@@ -84,10 +74,6 @@ abstract class StructTwoWithTraitTwinNormal implements SimpleTraitTwinNormal {
   static Future<int> simpleTraitFnWithDefaultImplTwinNormal() => RustLib
       .instance.api
       .crateApiImplTraitStructTwoWithTraitTwinNormalSimpleTraitFnWithDefaultImplTwinNormal();
-
-  void dispose();
-
-  bool get isDisposed;
 }
 
 abstract class SimpleTraitForDynTwinNormal {

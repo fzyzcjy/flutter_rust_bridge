@@ -19,14 +19,11 @@ Future<void> functionWithArgTypeNameOverride(
         .crateApiMiscNoTwinExampleAFunctionWithArgTypeNameOverride(a: a);
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box < dyn Any + Send + Sync + 'static >>>
-abstract class BoxAnyMyDartTypeRename {
-  void dispose();
-
-  bool get isDisposed;
-}
+abstract class BoxAnyMyDartTypeRename implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<DeliberateFailSanityCheckTwinNormal>>
-abstract class DeliberateFailSanityCheckTwinNormal {
+abstract class DeliberateFailSanityCheckTwinNormal
+    implements RustOpaqueInterface {
   static Future<void> dummyFunctionTwinNormal() => RustLib.instance.api
       .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalDummyFunctionTwinNormal();
 
@@ -53,14 +50,11 @@ abstract class DeliberateFailSanityCheckTwinNormal {
   void set goodFieldB(int goodFieldB);
 
   void set goodFieldC(OpaqueItemTwinNormal goodFieldC);
-
-  void dispose();
-
-  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ItemContainerSolutionOneTwinNormal>>
-abstract class ItemContainerSolutionOneTwinNormal {
+abstract class ItemContainerSolutionOneTwinNormal
+    implements RustOpaqueInterface {
   static Future<ItemContainerSolutionOneTwinNormal> createTwinNormal() => RustLib
       .instance.api
       .crateApiMiscNoTwinExampleAItemContainerSolutionOneTwinNormalCreateTwinNormal();
@@ -70,51 +64,31 @@ abstract class ItemContainerSolutionOneTwinNormal {
   String get name;
 
   void set name(String name);
-
-  void dispose();
-
-  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinNormal>>
-abstract class OpaqueItemTwinNormal {
-  void dispose();
-
-  bool get isDisposed;
-}
+abstract class OpaqueItemTwinNormal implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructInMiscNoTwinExampleA>>
-abstract class StructInMiscNoTwinExampleA {
+abstract class StructInMiscNoTwinExampleA implements RustOpaqueInterface {
   Future<void> sampleFunctionA();
-
-  void dispose();
-
-  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructWithImplBlockInMultiFile>>
-abstract class StructWithImplBlockInMultiFile {
+abstract class StructWithImplBlockInMultiFile implements RustOpaqueInterface {
   Future<void> methodInA();
 
   Future<void> methodInB();
-
-  void dispose();
-
-  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructWithSimpleSetterTwinNormal>>
-abstract class StructWithSimpleSetterTwinNormal {
+abstract class StructWithSimpleSetterTwinNormal implements RustOpaqueInterface {
   factory StructWithSimpleSetterTwinNormal() => RustLib.instance.api
       .crateApiMiscNoTwinExampleAStructWithSimpleSetterTwinNormalNew();
 
   int get simpleGetter;
 
   void set simpleSetter(int value);
-
-  void dispose();
-
-  bool get isDisposed;
 }
 
 class ItemContainerSolutionTwoTwinNormal {

@@ -18,13 +18,9 @@ SumWithTwinSyncArray3 getSumArrayTwinSync(
         a: a, b: b, c: c);
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StaticGetterOnlyTwinSync>>
-abstract class StaticGetterOnlyTwinSync {
+abstract class StaticGetterOnlyTwinSync implements RustOpaqueInterface {
   static int get staticGetterTwinSync => RustLib.instance.api
       .crateApiPseudoManualMethodTwinSyncStaticGetterOnlyTwinSyncStaticGetterTwinSync();
-
-  void dispose();
-
-  bool get isDisposed;
 }
 
 class ConcatenateWithTwinSync {

@@ -7,7 +7,7 @@ import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<DroppableTwinSyncSse>>
-abstract class DroppableTwinSyncSse {
+abstract class DroppableTwinSyncSse implements RustOpaqueInterface {
   Stream<int> createStreamTwinSyncSse();
 
   static int getDropCountTwinSyncSse() => RustLib.instance.api
@@ -17,8 +17,4 @@ abstract class DroppableTwinSyncSse {
       .crateApiPseudoManualDroppingTwinSyncSseDroppableTwinSyncSseNewTwinSyncSse();
 
   void simpleMethodTwinSyncSse();
-
-  void dispose();
-
-  bool get isDisposed;
 }

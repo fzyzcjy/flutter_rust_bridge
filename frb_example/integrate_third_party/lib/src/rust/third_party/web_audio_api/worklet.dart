@@ -12,7 +12,7 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 // These functions are ignored: `constructor`, `onmessage`, `port`
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioWorkletNode>>
-abstract class AudioWorkletNode implements AudioNode {
+abstract class AudioWorkletNode implements RustOpaqueInterface, AudioNode {
   /// Config for up/down-mixing of input channels for this node.
   ///
   /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
@@ -73,10 +73,6 @@ abstract class AudioWorkletNode implements AudioNode {
 
   /// Update the `channel_interpretation` attribute
   Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
-  void dispose();
-
-  bool get isDisposed;
 }
 
 abstract class AudioWorkletProcessor {}

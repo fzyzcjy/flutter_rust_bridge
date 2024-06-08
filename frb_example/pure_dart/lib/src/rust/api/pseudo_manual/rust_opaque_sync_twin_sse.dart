@@ -22,22 +22,10 @@ FrbOpaqueSyncReturnTwinSse frbSyncGeneratorTestTwinSse() => RustLib.instance.api
     .crateApiPseudoManualRustOpaqueSyncTwinSseFrbSyncGeneratorTestTwinSse();
 
 // Rust type: RustOpaqueNom<FrbOpaqueSyncReturnTwinSse>
-abstract class FrbOpaqueSyncReturnTwinSse {
-  void dispose();
-
-  bool get isDisposed;
-}
+abstract class FrbOpaqueSyncReturnTwinSse implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueNom<HideDataAnotherTwinSse>
-abstract class HideDataAnotherTwinSse {
-  void dispose();
-
-  bool get isDisposed;
-}
+abstract class HideDataAnotherTwinSse implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueNom<NonCloneDataTwinSse>
-abstract class NonCloneDataTwinSse {
-  void dispose();
-
-  bool get isDisposed;
-}
+abstract class NonCloneDataTwinSse implements RustOpaqueInterface {}

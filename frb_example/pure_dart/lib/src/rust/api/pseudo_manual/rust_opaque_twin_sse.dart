@@ -75,25 +75,13 @@ Future<FrbOpaqueReturnTwinSse> frbGeneratorTestTwinSse() => RustLib.instance.api
     .crateApiPseudoManualRustOpaqueTwinSseFrbGeneratorTestTwinSse();
 
 // Rust type: RustOpaqueNom<Box < dyn DartDebugTwinSse >>
-abstract class BoxDartDebugTwinSse {
-  void dispose();
-
-  bool get isDisposed;
-}
+abstract class BoxDartDebugTwinSse implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueNom<FrbOpaqueReturnTwinSse>
-abstract class FrbOpaqueReturnTwinSse {
-  void dispose();
-
-  bool get isDisposed;
-}
+abstract class FrbOpaqueReturnTwinSse implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueNom<HideDataTwinSse>
-abstract class HideDataTwinSse {
-  void dispose();
-
-  bool get isDisposed;
-}
+abstract class HideDataTwinSse implements RustOpaqueInterface {}
 
 class HideDataTwinSseArray2 extends NonGrowableListView<HideDataTwinSse> {
   static const arraySize = 2;
@@ -111,18 +99,10 @@ class HideDataTwinSseArray2 extends NonGrowableListView<HideDataTwinSse> {
 }
 
 // Rust type: RustOpaqueNom<Mutex < HideDataTwinSse >>
-abstract class MutexHideDataTwinSse {
-  void dispose();
-
-  bool get isDisposed;
-}
+abstract class MutexHideDataTwinSse implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueNom<RwLock < HideDataTwinSse >>
-abstract class RwLockHideDataTwinSse {
-  void dispose();
-
-  bool get isDisposed;
-}
+abstract class RwLockHideDataTwinSse implements RustOpaqueInterface {}
 
 @freezed
 sealed class EnumOpaqueTwinSse with _$EnumOpaqueTwinSse {

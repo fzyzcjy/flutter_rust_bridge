@@ -22,22 +22,10 @@ FrbOpaqueSyncReturnTwinMoi frbSyncGeneratorTestTwinMoi() => RustLib.instance.api
     .crateApiPseudoManualRustOpaqueSyncTwinMoiFrbSyncGeneratorTestTwinMoi();
 
 // Rust type: RustOpaqueMoi<FrbOpaqueSyncReturnTwinMoi>
-abstract class FrbOpaqueSyncReturnTwinMoi {
-  void dispose();
-
-  bool get isDisposed;
-}
+abstract class FrbOpaqueSyncReturnTwinMoi implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueMoi<HideDataAnotherTwinMoi>
-abstract class HideDataAnotherTwinMoi {
-  void dispose();
-
-  bool get isDisposed;
-}
+abstract class HideDataAnotherTwinMoi implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueMoi<NonCloneDataTwinMoi>
-abstract class NonCloneDataTwinMoi {
-  void dispose();
-
-  bool get isDisposed;
-}
+abstract class NonCloneDataTwinMoi implements RustOpaqueInterface {}

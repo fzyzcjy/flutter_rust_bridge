@@ -204,44 +204,26 @@ Future<int> rustAutoOpaqueBorrowAndBorrowTwinNormal(
             a: a, b: b);
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box < dyn HelloTraitTwinNormal >>>
-abstract class BoxHelloTraitTwinNormal {
-  void dispose();
-
-  bool get isDisposed;
-}
+abstract class BoxHelloTraitTwinNormal implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box < dyn MyTraitTwinNormal + Send + Sync >>>
-abstract class BoxMyTraitTwinNormal {
-  void dispose();
-
-  bool get isDisposed;
-}
+abstract class BoxMyTraitTwinNormal implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<EnumWithGoodAndOpaqueWithoutOptionTwinNormal>>
-abstract class EnumWithGoodAndOpaqueWithoutOptionTwinNormal {
-  void dispose();
-
-  bool get isDisposed;
-}
+abstract class EnumWithGoodAndOpaqueWithoutOptionTwinNormal
+    implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<HelloOneStructTwinNormal>>
-abstract class HelloOneStructTwinNormal implements HelloTraitTwinNormal {
+abstract class HelloOneStructTwinNormal
+    implements RustOpaqueInterface, HelloTraitTwinNormal {
   Future<void> funcHello();
-
-  void dispose();
-
-  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleEnumTwinNormal>>
-abstract class NonCloneSimpleEnumTwinNormal {
-  void dispose();
-
-  bool get isDisposed;
-}
+abstract class NonCloneSimpleEnumTwinNormal implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleTwinNormal>>
-abstract class NonCloneSimpleTwinNormal {
+abstract class NonCloneSimpleTwinNormal implements RustOpaqueInterface {
   Future<void> instanceMethodArgBorrowTwinNormal();
 
   Future<void> instanceMethodArgMutBorrowTwinNormal();
@@ -288,35 +270,20 @@ abstract class NonCloneSimpleTwinNormal {
   static Future<NonCloneSimpleTwinNormal> staticMethodReturnOwnTwinNormal() =>
       RustLib.instance.api
           .crateApiRustAutoOpaqueNonCloneSimpleTwinNormalStaticMethodReturnOwnTwinNormal();
-
-  void dispose();
-
-  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueOneTwinNormal>>
-abstract class OpaqueOneTwinNormal {
-  void dispose();
-
-  bool get isDisposed;
-}
+abstract class OpaqueOneTwinNormal implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueTwoTwinNormal>>
-abstract class OpaqueTwoTwinNormal {
-  void dispose();
-
-  bool get isDisposed;
-}
+abstract class OpaqueTwoTwinNormal implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal>>
-abstract class StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal {
+abstract class StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal
+    implements RustOpaqueInterface {
   String get good;
 
   void set good(String good);
-
-  void dispose();
-
-  bool get isDisposed;
 }
 
 abstract class HelloTraitTwinNormal {
