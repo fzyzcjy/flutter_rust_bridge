@@ -2,7 +2,6 @@ use crate::codegen::dumper::Dumper;
 use crate::codegen::ir::hir::flat::pack::HirFlatPack;
 use crate::codegen::ir::mir::pack::MirPack;
 use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
-use crate::codegen::ConfigDumpContent::Mir;
 
 pub(crate) mod internal_config;
 pub(crate) mod parser;

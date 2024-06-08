@@ -8,7 +8,6 @@ use crate::codegen::dumper::Dumper;
 use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig;
 use crate::codegen::generator::misc::path_texts::PathTexts;
 use crate::codegen::ir::mir::pack::MirPack;
-use crate::codegen::ConfigDumpContent::GeneratorInfo;
 use anyhow::Result;
 
 pub(crate) struct GeneratorApiDartOutput {

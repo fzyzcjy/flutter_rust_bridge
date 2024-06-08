@@ -5,8 +5,6 @@ use crate::codegen::dumper::Dumper;
 use crate::codegen::ir::hir::raw::pack::HirRawPack;
 use crate::codegen::ir::hir::tree::pack::HirTreePack;
 use crate::codegen::parser::hir::internal_config::ParserHirInternalConfig;
-use crate::codegen::ConfigDumpContent;
-use ConfigDumpContent::Hir;
 
 pub(crate) fn parse(
     config: &ParserHirInternalConfig,

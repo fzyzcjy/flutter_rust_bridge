@@ -2,7 +2,6 @@ use crate::codegen::dumper::Dumper;
 use crate::codegen::ir::hir::naive_flat::pack::HirNaiveFlatPack;
 use crate::codegen::ir::hir::tree::pack::HirTreePack;
 use crate::codegen::parser::hir::internal_config::ParserHirInternalConfig;
-use crate::codegen::ConfigDumpContent::Hir;
 
 pub(crate) mod parser;
 pub(crate) mod transformer;
