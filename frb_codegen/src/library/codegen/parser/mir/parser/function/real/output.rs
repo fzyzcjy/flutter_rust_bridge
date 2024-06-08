@@ -1,4 +1,5 @@
 use crate::codegen::ir::mir::func::OwnershipMode;
+use crate::codegen::ir::mir::ty::delegate::{MirTypeDelegate, MirTypeDelegateProxyVariant};
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
 use crate::codegen::ir::mir::ty::rust_auto_opaque_implicit::MirTypeRustAutoOpaqueImplicit;
 use crate::codegen::ir::mir::ty::MirType;
@@ -82,11 +83,13 @@ fn parse_maybe_proxy_return_type(
 }
 
 fn parse_proxy_return_type(mir: MirType) -> anyhow::Result<MirType> {
-    if let Some(MirType::RustAutoOpaqueImplicit(mir_inner)) = mir {
+    if let Some(MirType::RustAutoOpaqueImplicit(mir_inner)) = &mir {
         if mir_inner.ownership_mode == OwnershipMode::Ref
             || mir_inner.ownership_mode == OwnershipMode::RefMut
         {
-            return TODO;
+            return Ok(MirType::Delegate(MirTypeDelegate::ProxyVariant(
+                MirTypeDelegateProxyVariant { inner: Box::new(mir) },
+            )));
         }
     }
     bail!("This return type is not currently compatible with `#[frb(proxy)]` yet")
