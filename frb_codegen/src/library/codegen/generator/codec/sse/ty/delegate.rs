@@ -43,7 +43,11 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 }
                 MirTypeDelegate::BigPrimitive(_) => "self.toString()".to_owned(),
                 MirTypeDelegate::RustAutoOpaqueExplicit(_ir) => "self".to_owned(),
-                MirTypeDelegate::ProxyEnum(_mir) => "TODO".to_owned(),
+                MirTypeDelegate::ProxyEnum(mir) => format!(
+                    "{}._create(self)",
+                    ApiDartGenerator::new(mir.inner.clone(), self.context.as_api_dart_context())
+                        .dart_api_type()
+                ),
                 // MirTypeDelegate::DynTrait(_ir) => lang.throw_unimplemented(""),
             },
             Lang::RustLang(_) => match &self.mir {
@@ -195,7 +199,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     "flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_decode(inner)"
                         .to_owned()
                 } // MirTypeDelegate::DynTrait(_ir) => lang.throw_unimplemented(""),
-                MirTypeDelegate::ProxyEnum(_mir) => "TODO".to_owned(),
+                MirTypeDelegate::ProxyEnum(_) => "inner".to_owned(),
             },
         };
 
