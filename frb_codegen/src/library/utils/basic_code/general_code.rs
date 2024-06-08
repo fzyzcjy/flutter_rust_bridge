@@ -43,7 +43,7 @@ impl GeneralCode {
         GeneralCode::C(GeneralCCode { body })
     }
 
-    pub(crate) fn dart(&self) -> &GeneralDartCode {
+    pub(crate) fn dart(self) -> GeneralDartCode {
         if let Self::Dart(inner) = self {
             inner
         } else {
@@ -51,7 +51,7 @@ impl GeneralCode {
         }
     }
 
-    pub(crate) fn rust(&self) -> &GeneralRustCode {
+    pub(crate) fn rust(self) -> GeneralRustCode {
         if let Self::Rust(inner) = self {
             inner
         } else {
@@ -59,7 +59,7 @@ impl GeneralCode {
         }
     }
 
-    pub(crate) fn c(&self) -> &GeneralCCode {
+    pub(crate) fn c(self) -> GeneralCCode {
         if let Self::C(inner) = self {
             inner
         } else {
