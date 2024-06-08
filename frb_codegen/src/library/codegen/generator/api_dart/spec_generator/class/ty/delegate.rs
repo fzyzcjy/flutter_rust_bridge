@@ -1,3 +1,6 @@
+use crate::codegen::generator::api_dart::spec_generator::class::method::{
+    generate_api_methods, GenerateApiMethodConfig, GenerateApiMethodMode,
+};
 use crate::codegen::generator::api_dart::spec_generator::class::ty::ApiDartGeneratorClassTrait;
 use crate::codegen::generator::api_dart::spec_generator::class::{
     proxy_variant, ApiDartGeneratedClass,
@@ -9,6 +12,7 @@ use crate::codegen::ir::mir::ty::delegate::{
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use crate::utils::basic_code::dart_header_code::DartHeaderCode;
+use crate::utils::namespace::NamespacedName;
 
 impl<'a> ApiDartGeneratorClassTrait for DelegateApiDartGenerator<'a> {
     fn generate_class(&self) -> Option<ApiDartGeneratedClass> {
@@ -82,6 +86,18 @@ fn generate_proxy_variant(
     context: ApiDartGeneratorContext,
 ) -> String {
     let class_name = proxy_variant::compute_dart_extra_type(mir, context);
+
+    let methods = generate_api_methods(
+        &NamespacedName::new(mir.namespace.clone(), type_query_name.clone()),
+        context,
+        GenerateApiMethodConfig {
+            mode_static: GenerateApiMethodMode::Nothing,
+            // TODO we provide impl
+            mode_non_static: GenerateApiMethodMode::DeclOnly,
+        },
+        &class_name,
+    );
+
     format!(
         "class {class_name} {{
         }}"
