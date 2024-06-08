@@ -54,13 +54,13 @@ struct GeneratedApiMethod {
 }
 
 pub(crate) fn generate_api_methods(
-    generalized_class_name: &NamespacedName,
+    query_class_name: &NamespacedName,
     context: ApiDartGeneratorContext,
     config: &GenerateApiMethodConfig,
     dart_class_name: &str,
 ) -> GeneratedApiMethods {
     let methods =
-        get_methods_of_enum_or_struct(generalized_class_name, &context.mir_pack.funcs_all)
+        get_methods_of_enum_or_struct(query_class_name, &context.mir_pack.funcs_all)
             .iter()
             .filter_map(|func| generate_api_method(func, context, config, dart_class_name))
             .collect_vec();
