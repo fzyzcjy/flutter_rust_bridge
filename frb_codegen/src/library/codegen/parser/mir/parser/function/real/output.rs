@@ -90,12 +90,14 @@ fn parse_proxy_return_type(mir: MirType, owner: &MirFuncOwnerInfo) -> anyhow::Re
         if mir_inner.ownership_mode == OwnershipMode::Ref
             || mir_inner.ownership_mode == OwnershipMode::RefMut
         {
-            return Ok(MirType::Delegate(MirTypeDelegate::ProxyVariant(
-                MirTypeDelegateProxyVariant {
-                    inner: Box::new(mir),
-                    upstream: Box::new(TODO),
-                },
-            )));
+            if let MirFuncOwnerInfo::Method(method) = owner {
+                return Ok(MirType::Delegate(MirTypeDelegate::ProxyVariant(
+                    MirTypeDelegateProxyVariant {
+                        inner: Box::new(mir),
+                        upstream: Box::new(method.owner_ty.clone()),
+                    },
+                )));
+            }
         }
     }
     bail!("This return type is not currently compatible with `#[frb(proxy)]` yet")
