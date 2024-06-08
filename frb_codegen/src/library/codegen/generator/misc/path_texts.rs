@@ -35,7 +35,21 @@ impl PathTexts {
     }
 
     pub(crate) fn merge(self) -> Self {
-        TODO
+        Self(
+            self.0
+                .into_iter()
+                .into_group_map_by(|x| x.path.clone())
+                .into_iter()
+                .map(|(path, items_of_same_path)| PathText {
+                    path,
+                    text: items_of_same_path
+                        .into_iter()
+                        .map(|x| x.text)
+                        .reduce(|a, b| a + b)
+                        .unwrap(),
+                })
+                .collect_vec(),
+        )
     }
 
     pub(crate) fn write_to_disk(&self) -> anyhow::Result<()> {
