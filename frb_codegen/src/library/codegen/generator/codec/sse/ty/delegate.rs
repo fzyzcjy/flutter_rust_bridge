@@ -43,8 +43,9 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 }
                 MirTypeDelegate::BigPrimitive(_) => "self.toString()".to_owned(),
                 MirTypeDelegate::RustAutoOpaqueExplicit(_ir) => "self".to_owned(),
-                MirTypeDelegate::ProxyEnum(mir) => generate_proxy_enum_dart_encode(mir),
-                // MirTypeDelegate::DynTrait(_ir) => lang.throw_unimplemented(""),
+                MirTypeDelegate::ProxyEnum(mir) => {
+                    generate_proxy_enum_dart_encode(mir, self.context.mir_pack)
+                } // MirTypeDelegate::DynTrait(_ir) => lang.throw_unimplemented(""),
             },
             Lang::RustLang(_) => match &self.mir {
                 MirTypeDelegate::Array(_) => {
@@ -282,15 +283,25 @@ pub(crate) fn generate_stream_sink_setup_and_serialize(
     format!("{var_name}.setupAndSerialize(codec: {codec_code})")
 }
 
-fn generate_proxy_enum_dart_encode(mir: &MirTypeDelegateProxyEnum) -> String {
+fn generate_proxy_enum_dart_encode(mir: &MirTypeDelegateProxyEnum, mir_pack: &MirPack) -> String {
     let enum_name = mir.proxy_enum_name();
 
-    let variants = TODO;
+    let variants = (mir.inner.get(mir_pack).variants.iter())
+        .map(|ty| {
+            format!(
+                "if (self is {TODO}) {{
+                    return {TODO};
+                }}
+                "
+            )
+        })
+        .join("");
 
     format!(
         "
         (() {{
             {variants}
+            throw Exception('not reachable');
         }})()
         "
     )
