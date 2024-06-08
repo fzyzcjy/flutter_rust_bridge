@@ -13,7 +13,6 @@ use crate::codegen::parser::hir::flat::parser::syn_item::item_struct_or_enum::{
 };
 use crate::codegen::parser::hir::flat::parser::syn_item::item_trait::parse_syn_item_trait;
 use crate::codegen::parser::hir::flat::parser::syn_item::item_type::parse_syn_item_type;
-use crate::codegen::parser::hir::internal_config::ParserHirInternalConfig;
 
 pub(crate) fn parse_syn_item(
     item: syn::Item,

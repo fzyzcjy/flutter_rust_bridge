@@ -1,15 +1,6 @@
-use crate::codegen::generator::acc::Acc;
-use crate::codegen::generator::codec::sse::lang::Lang;
-use crate::codegen::generator::misc::target::{TargetOrCommon, TargetOrCommonMap};
-use crate::codegen::ir::mir::field::MirField;
 use crate::codegen::ir::mir::ty::boxed::MirTypeBoxed;
 use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
 use crate::codegen::ir::mir::ty::MirType;
-use crate::utils::file_utils::create_dir_all_and_write;
-use itertools::Itertools;
-use std::ops::Add;
-use std::path::PathBuf;
-use strum::IntoEnumIterator;
 
 pub(crate) mod comments;
 pub(crate) mod path_texts;

@@ -4,7 +4,6 @@ use crate::codegen::generator::misc::path_texts::PathTexts;
 use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGeneratorContext;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFunc;
 use crate::codegen::misc::GeneratorProgressBarPack;
-use sha1::digest::typenum::private::IsEqualPrivate;
 use std::path::PathBuf;
 
 pub(crate) mod internal_config;

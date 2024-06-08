@@ -1,5 +1,5 @@
-use crate::simple_code_trait_impl;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::{ExternClass, ExternFunc};
+use crate::simple_code_trait_impl;
 use itertools::Itertools;
 use serde::Serialize;
 use std::ops::AddAssign;

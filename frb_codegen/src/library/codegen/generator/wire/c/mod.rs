@@ -38,7 +38,10 @@ pub(crate) fn generate(
         output_texts: PathTexts({
             let mut ans = vec![];
             if let Some(c_output_path) = &config.c_output_path {
-                ans.push(PathText::new(c_output_path.clone(), GeneralCode::new_c(text.clone())))
+                ans.push(PathText::new(
+                    c_output_path.clone(),
+                    GeneralCode::new_c(text.clone()),
+                ))
             }
             ans
         }),

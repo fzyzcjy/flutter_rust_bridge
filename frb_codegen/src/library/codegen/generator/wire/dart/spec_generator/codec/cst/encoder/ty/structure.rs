@@ -1,9 +1,9 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::codec::sse::lang::dart::DartLang;
 use crate::codegen::generator::codec::sse::lang::Lang;
-use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::misc::struct_or_record::StructOrRecord;
 use crate::codegen::generator::misc::struct_or_record::StructOrRecord::Struct;
+use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::misc::dart_wire_type_from_rust_wire_type_or_web;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::ty::WireDartCodecCstGeneratorEncoderTrait;

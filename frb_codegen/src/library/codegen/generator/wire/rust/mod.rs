@@ -35,7 +35,7 @@ pub(crate) fn generate(
     Ok(GeneratorWireRustOutput {
         output_texts: PathTexts::new_from_targets(
             &context.config.rust_output_path,
-            &(text.text.clone()).map(|x, _| x.map(|x| GeneralCode::new_rust(x))),
+            &(text.text.clone()).map(|x, _| x.map(GeneralCode::new_rust)),
         ),
         extern_funcs: text.extern_funcs,
         content_hash: spec.misc.content_hash,
