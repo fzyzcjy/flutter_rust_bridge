@@ -48,6 +48,7 @@ fn compute_proxied_types(
                 .rust_output_path_namespace
                 .clone(),
             original_ty: (*variant.inner).to_owned(),
+            variants: TODO,
         })
         .unique()
         .collect_vec()
