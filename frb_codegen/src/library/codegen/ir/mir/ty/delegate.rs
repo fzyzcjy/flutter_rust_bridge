@@ -225,6 +225,7 @@ impl MirTypeTrait for MirTypeDelegate {
         match self {
             MirTypeDelegate::PrimitiveEnum(inner) => inner.mir.self_namespace(),
             MirTypeDelegate::Array(inner) => Some(inner.namespace.clone()),
+            MirTypeDelegate::ProxyVariant(inner) => inner.inner.self_namespace(),
             _ => None,
         }
     }
