@@ -95,20 +95,11 @@ abstract class RustLibApi extends BaseApi {
           {required StructTwoWithTraitForDynTwinNormal that});
 
   Future<int> crateApiMinimalFuncArgTraitImplTwinNormal(
-      {required SimpleTraitTwinNormalImpl arg});
+      {required SimpleTraitForDynTwinNormalImpl arg});
 
   Future<void> crateApiMinimalInitApp();
 
   Future<int> crateApiMinimalMinimalAdder({required int a, required int b});
-
-  RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_SimpleTraitTwinNormalImpl;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_SimpleTraitTwinNormalImpl;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_SimpleTraitTwinNormalImplPtr;
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_StructOneWithTraitForDynTwinNormal;
@@ -315,11 +306,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<int> crateApiMinimalFuncArgTraitImplTwinNormal(
-      {required SimpleTraitTwinNormalImpl arg}) {
+      {required SimpleTraitForDynTwinNormalImpl arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleTraitTwinNormalImpl(
+        sse_encode_box_autoadd_simple_trait_for_dyn_twin_normal_impl(
             arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 8, port: port_);
@@ -390,14 +381,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_SimpleTraitTwinNormalImpl => wire
-          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleTraitTwinNormalImpl;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_SimpleTraitTwinNormalImpl => wire
-          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleTraitTwinNormalImpl;
-
-  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_StructOneWithTraitForDynTwinNormal =>
           wire.rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitForDynTwinNormal;
 
@@ -429,15 +412,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitForDynTwinNormal(
         raw);
-  }
-
-  @protected
-  SimpleTraitTwinNormalImpl
-      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleTraitTwinNormalImpl(
-          dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return SimpleTraitTwinNormalImplImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
   }
 
   @protected
@@ -491,15 +465,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return StructTwoWithTraitForDynTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
-  }
-
-  @protected
-  SimpleTraitTwinNormalImpl
-      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleTraitTwinNormalImpl(
-          dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return SimpleTraitTwinNormalImplImpl.frbInternalDcoDecode(
         raw as List<dynamic>);
   }
 
@@ -597,15 +562,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  SimpleTraitTwinNormalImpl
-      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleTraitTwinNormalImpl(
-          SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return SimpleTraitTwinNormalImplImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
-  }
-
-  @protected
   StructOneWithTraitForDynTwinNormal
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitForDynTwinNormal(
           SseDeserializer deserializer) {
@@ -656,15 +612,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return StructTwoWithTraitForDynTwinNormalImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
-  }
-
-  @protected
-  SimpleTraitTwinNormalImpl
-      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleTraitTwinNormalImpl(
-          SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return SimpleTraitTwinNormalImplImpl.frbInternalSseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -762,17 +709,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleTraitTwinNormalImpl(
-          SimpleTraitTwinNormalImpl self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_usize(
-        (self as SimpleTraitTwinNormalImplImpl)
-            .frbInternalSseEncode(move: true),
-        serializer);
-  }
-
-  @protected
-  void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitForDynTwinNormal(
           StructOneWithTraitForDynTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -834,17 +770,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     sse_encode_usize(
         (self as StructTwoWithTraitForDynTwinNormalImpl)
             .frbInternalSseEncode(move: false),
-        serializer);
-  }
-
-  @protected
-  void
-      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleTraitTwinNormalImpl(
-          SimpleTraitTwinNormalImpl self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_usize(
-        (self as SimpleTraitTwinNormalImplImpl)
-            .frbInternalSseEncode(move: null),
         serializer);
   }
 
@@ -923,6 +848,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 }
 
+// These functions are ignored: `blocking_read`, `blocking_write`, `deref_mut`, `deref`, `deref`
+
 @freezed
 sealed class SimpleTraitForDynTwinNormalImpl
     with _$SimpleTraitForDynTwinNormalImpl {
@@ -934,28 +861,6 @@ sealed class SimpleTraitForDynTwinNormalImpl
   const factory SimpleTraitForDynTwinNormalImpl.structTwoWithTraitForDynTwinNormal(
     StructTwoWithTraitForDynTwinNormal field0,
   ) = SimpleTraitForDynTwinNormalImpl_StructTwoWithTraitForDynTwinNormal;
-}
-
-@sealed
-class SimpleTraitTwinNormalImplImpl extends RustOpaque
-    implements SimpleTraitTwinNormalImpl {
-  // Not to be used by end users
-  SimpleTraitTwinNormalImplImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  SimpleTraitTwinNormalImplImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_SimpleTraitTwinNormalImpl,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_SimpleTraitTwinNormalImpl,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_SimpleTraitTwinNormalImplPtr,
-  );
 }
 
 @sealed

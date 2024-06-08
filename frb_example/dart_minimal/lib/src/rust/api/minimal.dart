@@ -13,15 +13,8 @@ Future<int> minimalAdder({required int a, required int b}) =>
     RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b);
 
 Future<int> funcArgTraitImplTwinNormal(
-        {required SimpleTraitTwinNormalImpl arg}) =>
+        {required SimpleTraitForDynTwinNormalImpl arg}) =>
     RustLib.instance.api.crateApiMinimalFuncArgTraitImplTwinNormal(arg: arg);
-
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<SimpleTraitTwinNormalImpl>>
-abstract class SimpleTraitTwinNormalImpl {
-  void dispose();
-
-  bool get isDisposed;
-}
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructOneWithTraitForDynTwinNormal>>
 abstract class StructOneWithTraitForDynTwinNormal
