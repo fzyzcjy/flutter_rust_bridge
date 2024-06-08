@@ -55,7 +55,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.0.0-dev.37';
 
   @override
-  int get rustContentHash => 1170338736;
+  int get rustContentHash => -291292710;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -66,8 +66,6 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 }
 
 abstract class RustLibApi extends BaseApi {
-  Future<MyAudioParam> crateApiMinimalMyNodeParamOne({required MyNode that});
-
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_MyAudioParam;
 
@@ -90,33 +88,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     required super.generalizedFrbRustBinding,
     required super.portManager,
   });
-
-  @override
-  Future<MyAudioParam> crateApiMinimalMyNodeParamOne({required MyNode that}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNode(
-            that, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1, port: port_);
-      },
-      codec: SseCodec(
-        decodeSuccessData:
-            sse_decode_ProxyVariant_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParam,
-        decodeErrorData: null,
-      ),
-      constMeta: kCrateApiMinimalMyNodeParamOneConstMeta,
-      argValues: [that],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta get kCrateApiMinimalMyNodeParamOneConstMeta =>
-      const TaskConstMeta(
-        debugName: "MyNode_param_one",
-        argNames: ["that"],
-      );
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_MyAudioParam => wire
