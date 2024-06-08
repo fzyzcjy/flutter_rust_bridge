@@ -68,8 +68,10 @@ abstract class RustOpaque implements RustOpaqueInterface {
       BigInt.from(frbInternalCstEncode(move: move)).toUnsigned(64);
 
   /// Dispose the underlying `Arc`.
+  @override
   void dispose() => _arc.dispose();
 
   /// Whether the underlying `Arc` is disposed.
+  @override
   bool get isDisposed => _arc.isDisposed;
 }
