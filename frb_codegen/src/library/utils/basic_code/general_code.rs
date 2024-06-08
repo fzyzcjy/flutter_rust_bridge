@@ -28,7 +28,11 @@ pub(crate) struct GeneralCCode {
 
 impl GeneralCode {
     pub(crate) fn all_code(&self) -> String {
-        todo!()
+        match self {
+            GeneralCode::Dart(inner) => inner.all_code(),
+            GeneralCode::Rust(inner) => inner.all_code(),
+            GeneralCode::C(inner) => inner.all_code(),
+        }
     }
 
     pub(crate) fn new_rust(body: String) -> GeneralCode {
@@ -37,6 +41,24 @@ impl GeneralCode {
 
     pub(crate) fn new_c(body: String) -> GeneralCode {
         GeneralCode::C(GeneralCCode { body })
+    }
+}
+
+impl GeneralDartCode {
+    pub(crate) fn all_code(&self) -> String {
+        format!("{}\n{}", self.header.all_code(), self.body)
+    }
+}
+
+impl GeneralRustCode {
+    pub(crate) fn all_code(&self) -> String {
+        self.body.clone()
+    }
+}
+
+impl GeneralCCode {
+    pub(crate) fn all_code(&self) -> String {
+        self.body.clone()
     }
 }
 
