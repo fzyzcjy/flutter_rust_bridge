@@ -49,9 +49,10 @@ impl WaveShaperNode {
 #[frb(external)]
 pub trait AudioNode {
     #[frb(ignore)]
-    fn set_onprocessorerror();
-    #[frb(ignore)]
     fn connect();
+
+    #[frb(ignore)]
+    fn set_onprocessorerror();
     #[frb(ignore)]
     fn connect_from_output_to_input();
     #[frb(ignore)]
@@ -68,10 +69,10 @@ macro_rules! handle_audio_node_trait_impls {
         #[frb(external)]
         impl $name {
             #[frb(ignore)]
-            pub fn set_onprocessorerror() {}
+            pub fn connect() {}
 
             #[frb(ignore)]
-            pub fn connect() {}
+            pub fn set_onprocessorerror() {}
             #[frb(ignore)]
             pub fn connect_from_output_to_input() {}
             #[frb(ignore)]
