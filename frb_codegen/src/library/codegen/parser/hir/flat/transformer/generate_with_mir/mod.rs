@@ -1,6 +1,7 @@
 use crate::codegen::ir::hir::flat::pack::HirFlatPack;
 use crate::codegen::ir::mir::pack::MirPack;
 use crate::codegen::parser::hir::internal_config::ParserHirInternalConfig;
+use crate::codegen::parser::mir;
 
 pub(crate) mod generator;
 
@@ -13,7 +14,7 @@ pub(crate) fn transform(
 }
 
 fn tentatively_run_mir(pack: &HirFlatPack) -> anyhow::Result<MirPack> {
-    TODO
+    mir::parse(TODO, pack, TODO)
 }
 
 fn execute_transformers(
