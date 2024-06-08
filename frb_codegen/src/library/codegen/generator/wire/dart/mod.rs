@@ -33,11 +33,10 @@ pub(crate) fn generate(
         dumper,
         progress_bar_pack,
     )?;
-    dumper.dump(ConfigDumpContent::GeneratorSpec, "wire_dart.json", &spec)?;
+    (dumper.with_content(ConfigDumpContent::GeneratorSpec)).dump("wire_dart.json", &spec)?;
 
     let text = text_generator::generate(&spec, context.config)?;
-    dumper.dump_acc(
-        ConfigDumpContent::GeneratorText,
+    (dumper.with_content(ConfigDumpContent::GeneratorText)).dump_acc(
         "wire_dart",
         "dart",
         &text.text.clone().map(|x, _| x.map(|x| x.all_code())),

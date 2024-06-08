@@ -22,11 +22,10 @@ pub(crate) fn generate(
     dumper: &Dumper,
 ) -> anyhow::Result<GeneratorWireRustOutput> {
     let spec = spec_generator::generate(context, dumper)?;
-    dumper.dump(ConfigDumpContent::GeneratorSpec, "wire_rust.json", &spec)?;
+    (dumper.with_content(ConfigDumpContent::GeneratorSpec)).dump("wire_rust.json", &spec)?;
 
     let text = text_generator::generate(&spec, context.config)?;
-    dumper.dump_acc(
-        ConfigDumpContent::GeneratorText,
+    (dumper.with_content(ConfigDumpContent::GeneratorText)).dump_acc(
         "wire_rust",
         "rs",
         &text.text,

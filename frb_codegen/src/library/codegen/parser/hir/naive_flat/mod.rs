@@ -13,17 +13,13 @@ pub(crate) fn parse(
     dumper: &Dumper,
 ) -> anyhow::Result<HirNaiveFlatPack> {
     let pack = parser::parse(hir_tree)?;
-    dump(dumper, "1_parse_pack", &pack)?;
+    dumper.dump("1_parse_pack", &pack)?;
 
     let pack = transformer::move_third_party_override_transformer::transform(pack)?;
-    dump(dumper, "2_move_third_party_override_transformer", &pack)?;
+    dumper.dump("2_move_third_party_override_transformer", &pack)?;
 
     let pack = transformer::filter_transformer::transform(pack, config)?;
-    dump(dumper, "3_filter_transformer", &pack)?;
+    dumper.dump("3_filter_transformer", &pack)?;
 
     Ok(pack)
-}
-
-fn dump(dumper: &Dumper, name: &str, pack: &HirNaiveFlatPack) -> anyhow::Result<()> {
-    dumper.dump(Hir, &format!("hir_naive_flat/{name}.json"), pack)
 }

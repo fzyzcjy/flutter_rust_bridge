@@ -14,10 +14,10 @@ pub(crate) fn parse(
     dumper: &Dumper,
 ) -> anyhow::Result<HirTreePack> {
     let pack = parser::pack::parse_pack(config, hir_raw)?;
-    dumper.dump(Hir, "hir_tree/1_parse_pack.json", &pack)?;
+    dumper.dump("1_parse_pack.json", &pack)?;
 
     let pack = transformer::pub_use_transformer::transform(pack)?;
-    dumper.dump(Hir, "hir_tree/2_pub_use_transformer.json", &pack)?;
+    dumper.dump("2_pub_use_transformer.json", &pack)?;
 
     Ok(pack)
 }
