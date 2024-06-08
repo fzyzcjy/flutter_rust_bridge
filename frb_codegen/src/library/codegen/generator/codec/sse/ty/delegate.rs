@@ -1,4 +1,5 @@
 use crate::codegen::generator::api_dart::spec_generator::base::ApiDartGenerator;
+use crate::codegen::generator::api_dart::spec_generator::class::proxy_variant;
 use crate::codegen::generator::codec::sse::lang::*;
 use crate::codegen::generator::codec::sse::ty::*;
 use crate::codegen::ir::mir::ty::delegate::{
@@ -288,8 +289,9 @@ fn generate_proxy_enum_dart_encode(mir: &MirTypeDelegateProxyEnum, mir_pack: &Mi
 
     let variants = (mir.variants.iter().enumerate())
         .map(|(index, variant)| {
+            let variant_dart_extra_type = proxy_variant::compute_dart_extra_type(variant, context);
             format!(
-                "if (self is {TODO}) {{
+                "if (self is {variant_dart_extra_type}) {{
                     return {enum_name}.variant{index}(self._upstream);
                 }}
                 "
