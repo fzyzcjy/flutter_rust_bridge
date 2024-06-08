@@ -21,8 +21,6 @@ abstract class AudioBufferSourceNodeExt {
 
 abstract class AudioContextExt {
   Future<AudioBuffer> decodeAudioDataSync({required String inputPath});
-
-  Future<String> outputLatency();
 }
 
 abstract class AudioDestinationNodeExt {
