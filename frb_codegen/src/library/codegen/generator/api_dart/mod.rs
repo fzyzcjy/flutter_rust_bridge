@@ -95,7 +95,9 @@ mod tests {
         for path_text in output_texts.0 {
             let path = path_text.path.file_name().unwrap().to_str().unwrap();
             let expect_output = expect_outputs.get(path).unwrap();
-            let raw_text = (path_text.text).replace(env!("CARGO_PKG_VERSION"), "{VERSION}");
+            let raw_text = (path_text.text)
+                .all_code()
+                .replace(env!("CARGO_PKG_VERSION"), "{VERSION}");
             text_golden_test(raw_text, &test_fixture_dir.join(expect_output))?;
         }
 
