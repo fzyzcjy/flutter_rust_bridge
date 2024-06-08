@@ -1,4 +1,4 @@
-use crate::basic_code_partial_impl;
+use crate::impl_add_by_add_assign;
 use itertools::Itertools;
 use serde::Serialize;
 use std::ops::AddAssign;
@@ -10,7 +10,7 @@ pub(crate) struct DartHeaderCode {
     pub part: String,
 }
 
-basic_code_partial_impl!(DartHeaderCode);
+impl_add_by_add_assign!(DartHeaderCode);
 
 impl AddAssign for DartHeaderCode {
     #[inline]

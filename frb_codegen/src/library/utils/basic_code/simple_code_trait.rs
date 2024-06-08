@@ -6,31 +6,9 @@ pub(crate) trait SimpleCodeTrait {
 
 #[doc(hidden)]
 #[macro_export]
-macro_rules! basic_code_partial_impl {
+macro_rules! simple_code_trait_impl {
     ($name:ident) => {
-        impl std::ops::Add for $name {
-            type Output = Self;
-
-            fn add(mut self, rhs: Self) -> Self::Output {
-                self += rhs;
-                self
-            }
-        }
-
-        // unused now, thus uncomment only when needed
-        // impl std::iter::FromIterator<$name> for $name {
-        //     fn from_iter<A: IntoIterator<Item = $name>>(iter: A) -> Self {
-        //         iter.into_iter().fold(Default::default(), |a, b| a + b)
-        //     }
-        // }
-    };
-}
-
-#[doc(hidden)]
-#[macro_export]
-macro_rules! basic_code_impl {
-    ($name:ident) => {
-        $crate::basic_code_partial_impl!($name);
+        $crate::impl_add_by_add_assign!($name);
 
         impl From<String> for $name {
             fn from(body: String) -> Self {
@@ -61,3 +39,26 @@ macro_rules! basic_code_impl {
         }
     };
 }
+
+#[doc(hidden)]
+#[macro_export]
+macro_rules! impl_add_by_add_assign {
+    ($name:ident) => {
+        impl std::ops::Add for $name {
+            type Output = Self;
+
+            fn add(mut self, rhs: Self) -> Self::Output {
+                self += rhs;
+                self
+            }
+        }
+
+        // unused now, thus uncomment only when needed
+        // impl std::iter::FromIterator<$name> for $name {
+        //     fn from_iter<A: IntoIterator<Item = $name>>(iter: A) -> Self {
+        //         iter.into_iter().fold(Default::default(), |a, b| a + b)
+        //     }
+        // }
+    };
+}
+

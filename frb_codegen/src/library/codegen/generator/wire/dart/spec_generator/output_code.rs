@@ -1,4 +1,4 @@
-use crate::basic_code_impl;
+use crate::simple_code_trait_impl;
 use crate::codegen::generator::misc::target::TargetOrCommon;
 use crate::codegen::generator::wire::dart::internal_config::DartOutputClassNamePack;
 use crate::utils::basic_code::dart_header_code::DartHeaderCode;
@@ -16,7 +16,7 @@ pub(crate) struct WireDartOutputCode {
     pub body: String,
 }
 
-basic_code_impl!(WireDartOutputCode);
+simple_code_trait_impl!(WireDartOutputCode);
 
 impl AddAssign for WireDartOutputCode {
     #[inline]
