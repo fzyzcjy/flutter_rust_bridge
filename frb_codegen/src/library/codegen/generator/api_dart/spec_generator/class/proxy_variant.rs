@@ -12,7 +12,7 @@ pub(crate) fn compute_func_implementation(
     let upstream_dart_api_type =
         ApiDartGenerator::new(ir.upstream.clone(), context).dart_api_type();
     format!(
-        "{}ProxyVariant{}",
+        "{}ProxyVariant{}(this)",
         inner_dart_api_type, upstream_dart_api_type
     )
 }

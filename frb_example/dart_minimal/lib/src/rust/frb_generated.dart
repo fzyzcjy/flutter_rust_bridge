@@ -364,5 +364,5 @@ class MyNodeImpl extends RustOpaque implements MyNode {
         RustLib.instance.api.rust_arc_decrement_strong_count_MyNodePtr,
   );
 
-  Future<MyAudioParam> paramOne() => MyAudioParamProxyVariantMyNode;
+  Future<MyAudioParam> paramOne() => MyAudioParamProxyVariantMyNode(this);
 }
