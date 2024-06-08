@@ -49,8 +49,4 @@ Future<MediaStream> getUserMediaSync(
         .webAudioApiMediaDevicesGetUserMediaSync(constraints: constraints);
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaStreamConstraints>>
-abstract class MediaStreamConstraints {
-  void dispose();
-
-  bool get isDisposed;
-}
+abstract class MediaStreamConstraints implements RustOpaqueInterface {}

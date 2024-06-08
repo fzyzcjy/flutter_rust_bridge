@@ -73,25 +73,13 @@ FrbOpaqueReturnTwinSync frbGeneratorTestTwinSync() => RustLib.instance.api
     .crateApiPseudoManualRustOpaqueTwinSyncFrbGeneratorTestTwinSync();
 
 // Rust type: RustOpaqueNom<Box < dyn DartDebugTwinSync >>
-abstract class BoxDartDebugTwinSync {
-  void dispose();
-
-  bool get isDisposed;
-}
+abstract class BoxDartDebugTwinSync implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueNom<FrbOpaqueReturnTwinSync>
-abstract class FrbOpaqueReturnTwinSync {
-  void dispose();
-
-  bool get isDisposed;
-}
+abstract class FrbOpaqueReturnTwinSync implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueNom<HideDataTwinSync>
-abstract class HideDataTwinSync {
-  void dispose();
-
-  bool get isDisposed;
-}
+abstract class HideDataTwinSync implements RustOpaqueInterface {}
 
 class HideDataTwinSyncArray2 extends NonGrowableListView<HideDataTwinSync> {
   static const arraySize = 2;
@@ -109,25 +97,13 @@ class HideDataTwinSyncArray2 extends NonGrowableListView<HideDataTwinSync> {
 }
 
 // Rust type: RustOpaqueNom<Mutex < HideDataTwinSync >>
-abstract class MutexHideDataTwinSync {
-  void dispose();
-
-  bool get isDisposed;
-}
+abstract class MutexHideDataTwinSync implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueNom<NonCloneDataTwinSync>
-abstract class NonCloneDataTwinSync {
-  void dispose();
-
-  bool get isDisposed;
-}
+abstract class NonCloneDataTwinSync implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueNom<RwLock < HideDataTwinSync >>
-abstract class RwLockHideDataTwinSync {
-  void dispose();
-
-  bool get isDisposed;
-}
+abstract class RwLockHideDataTwinSync implements RustOpaqueInterface {}
 
 @freezed
 sealed class EnumOpaqueTwinSync with _$EnumOpaqueTwinSync {

@@ -7,12 +7,9 @@ import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueStructWithDartCodeTwinNormal>>
-abstract class OpaqueStructWithDartCodeTwinNormal {
+abstract class OpaqueStructWithDartCodeTwinNormal
+    implements RustOpaqueInterface {
   Future<int> normalMethodTwinNormal();
-
-  void dispose();
-
-  bool get isDisposed;
 
   static int get dartCodeGetter => 123;
 }

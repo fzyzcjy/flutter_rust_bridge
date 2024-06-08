@@ -92,25 +92,13 @@ Future<FrbOpaqueReturnTwinRustAsyncMoi> frbGeneratorTestTwinRustAsyncMoi() =>
         .crateApiPseudoManualRustOpaqueTwinRustAsyncMoiFrbGeneratorTestTwinRustAsyncMoi();
 
 // Rust type: RustOpaqueMoi<Box < dyn DartDebugTwinRustAsyncMoi >>
-abstract class BoxDartDebugTwinRustAsyncMoi {
-  void dispose();
-
-  bool get isDisposed;
-}
+abstract class BoxDartDebugTwinRustAsyncMoi implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueMoi<FrbOpaqueReturnTwinRustAsyncMoi>
-abstract class FrbOpaqueReturnTwinRustAsyncMoi {
-  void dispose();
-
-  bool get isDisposed;
-}
+abstract class FrbOpaqueReturnTwinRustAsyncMoi implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueMoi<HideDataTwinRustAsyncMoi>
-abstract class HideDataTwinRustAsyncMoi {
-  void dispose();
-
-  bool get isDisposed;
-}
+abstract class HideDataTwinRustAsyncMoi implements RustOpaqueInterface {}
 
 class HideDataTwinRustAsyncMoiArray2
     extends NonGrowableListView<HideDataTwinRustAsyncMoi> {
@@ -129,25 +117,13 @@ class HideDataTwinRustAsyncMoiArray2
 }
 
 // Rust type: RustOpaqueMoi<Mutex < HideDataTwinRustAsyncMoi >>
-abstract class MutexHideDataTwinRustAsyncMoi {
-  void dispose();
-
-  bool get isDisposed;
-}
+abstract class MutexHideDataTwinRustAsyncMoi implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueMoi<NonCloneDataTwinRustAsyncMoi>
-abstract class NonCloneDataTwinRustAsyncMoi {
-  void dispose();
-
-  bool get isDisposed;
-}
+abstract class NonCloneDataTwinRustAsyncMoi implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueMoi<RwLock < HideDataTwinRustAsyncMoi >>
-abstract class RwLockHideDataTwinRustAsyncMoi {
-  void dispose();
-
-  bool get isDisposed;
-}
+abstract class RwLockHideDataTwinRustAsyncMoi implements RustOpaqueInterface {}
 
 @freezed
 sealed class EnumOpaqueTwinRustAsyncMoi with _$EnumOpaqueTwinRustAsyncMoi {

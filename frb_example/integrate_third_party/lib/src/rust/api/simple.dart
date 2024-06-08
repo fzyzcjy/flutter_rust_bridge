@@ -10,8 +10,4 @@ Future<void> f({required DummyStruct a}) =>
     RustLib.instance.api.crateApiSimpleF(a: a);
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<DummyStruct>>
-abstract class DummyStruct {
-  void dispose();
-
-  bool get isDisposed;
-}
+abstract class DummyStruct implements RustOpaqueInterface {}

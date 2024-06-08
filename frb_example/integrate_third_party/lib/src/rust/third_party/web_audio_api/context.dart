@@ -16,7 +16,8 @@ part 'context.freezed.dart';
 // These types are ignored because they are not used by any `pub` functions: `AudioNodeId`
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioContext>>
-abstract class AudioContext implements AudioContextExt, BaseAudioContext {
+abstract class AudioContext
+    implements RustOpaqueInterface, AudioContextExt, BaseAudioContext {
   /// Returns the [`BaseAudioContext`] concrete type associated with this `AudioContext`
   Future<void> base();
 
@@ -262,28 +263,17 @@ abstract class AudioContext implements AudioContextExt, BaseAudioContext {
   /// * The audio device is not available
   /// * For a `BackendSpecificError`
   Future<void> suspendSync();
-
-  void dispose();
-
-  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioContextRegistration>>
-abstract class AudioContextRegistration {
-  void dispose();
-
-  bool get isDisposed;
-}
+abstract class AudioContextRegistration implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioParamId>>
-abstract class AudioParamId {
-  void dispose();
-
-  bool get isDisposed;
-}
+abstract class AudioParamId implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ConcreteBaseAudioContext>>
-abstract class ConcreteBaseAudioContext implements BaseAudioContext {
+abstract class ConcreteBaseAudioContext
+    implements RustOpaqueInterface, BaseAudioContext {
   /// Returns the [`BaseAudioContext`] concrete type associated with this `AudioContext`
   Future<void> base();
 
@@ -401,14 +391,11 @@ abstract class ConcreteBaseAudioContext implements BaseAudioContext {
 
   /// Returns state of current context
   Future<AudioContextState> state();
-
-  void dispose();
-
-  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OfflineAudioContext>>
-abstract class OfflineAudioContext implements BaseAudioContext {
+abstract class OfflineAudioContext
+    implements RustOpaqueInterface, BaseAudioContext {
   /// Returns the [`BaseAudioContext`] concrete type associated with this `AudioContext`
   Future<void> base();
 
@@ -622,10 +609,6 @@ abstract class OfflineAudioContext implements BaseAudioContext {
   /// assert_eq!(buffer.length(), 512);
   /// ```
   Future<void> suspend({required double suspendTime});
-
-  void dispose();
-
-  bool get isDisposed;
 }
 
 abstract class BaseAudioContext {

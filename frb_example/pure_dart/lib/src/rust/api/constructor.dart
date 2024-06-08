@@ -7,7 +7,8 @@ import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ConstructorOpaqueStructTwinNormal>>
-abstract class ConstructorOpaqueStructTwinNormal {
+abstract class ConstructorOpaqueStructTwinNormal
+    implements RustOpaqueInterface {
   void check();
 
   String get one;
@@ -18,14 +19,11 @@ abstract class ConstructorOpaqueStructTwinNormal {
           .crateApiConstructorConstructorOpaqueStructTwinNormalNew();
 
   void set one(String one);
-
-  void dispose();
-
-  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ConstructorOpaqueSyncStructTwinNormal>>
-abstract class ConstructorOpaqueSyncStructTwinNormal {
+abstract class ConstructorOpaqueSyncStructTwinNormal
+    implements RustOpaqueInterface {
   void check();
 
   String get one;
@@ -34,10 +32,6 @@ abstract class ConstructorOpaqueSyncStructTwinNormal {
       .crateApiConstructorConstructorOpaqueSyncStructTwinNormalNew();
 
   void set one(String one);
-
-  void dispose();
-
-  bool get isDisposed;
 }
 
 class ConstructorTranslatableStructTwinNormal {

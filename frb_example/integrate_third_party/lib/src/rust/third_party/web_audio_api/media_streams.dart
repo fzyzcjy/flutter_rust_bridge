@@ -11,28 +11,20 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 // These functions have error during generation (see debug logs or enable `stop_on_error: true` for more details): `iter`
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaStream>>
-abstract class MediaStream {
+abstract class MediaStream implements RustOpaqueInterface {
   static Future<MediaStream> fromTracks(
           {required List<MediaStreamTrack> tracks}) =>
       RustLib.instance.api
           .webAudioApiMediaStreamsMediaStreamFromTracks(tracks: tracks);
 
   Future<void> getTracks();
-
-  void dispose();
-
-  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaStreamTrack>>
-abstract class MediaStreamTrack {
+abstract class MediaStreamTrack implements RustOpaqueInterface {
   Future<void> close();
 
   Future<MediaStreamTrackState> readyState();
-
-  void dispose();
-
-  bool get isDisposed;
 }
 
 /// Ready-state of a [`MediaStreamTrack`]

@@ -13,7 +13,7 @@ import 'web_audio_api/worklet.dart';
 // These functions are ignored: `load`, `load`, `new`, `new`, `store`, `store`
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioBuffer>>
-abstract class AudioBuffer {
+abstract class AudioBuffer implements RustOpaqueInterface {
   /// Duration in seconds of the `AudioBuffer`
   Future<double> duration();
 
@@ -70,21 +70,14 @@ abstract class AudioBuffer {
 
   /// Sample rate of this `AudioBuffer` in Hertz
   Future<double> sampleRate();
-
-  void dispose();
-
-  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioListener>>
-abstract class AudioListener {
-  void dispose();
-
-  bool get isDisposed;
-}
+abstract class AudioListener implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioParam>>
-abstract class AudioParam implements AudioNode, AudioParamExt {
+abstract class AudioParam
+    implements RustOpaqueInterface, AudioNode, AudioParamExt {
   /// Current value of the automation rate of the AudioParam
   Future<AutomationRate> automationRate();
 
@@ -238,14 +231,10 @@ abstract class AudioParam implements AudioNode, AudioParamExt {
 
   /// Retrieve the current value of the `AudioParam`.
   Future<double> value();
-
-  void dispose();
-
-  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioProcessingEvent>>
-abstract class AudioProcessingEvent {
+abstract class AudioProcessingEvent implements RustOpaqueInterface {
   AudioBuffer get inputBuffer;
 
   AudioBuffer get outputBuffer;
@@ -257,14 +246,10 @@ abstract class AudioProcessingEvent {
   void set outputBuffer(AudioBuffer outputBuffer);
 
   void set playbackTime(double playbackTime);
-
-  void dispose();
-
-  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioRenderCapacity>>
-abstract class AudioRenderCapacity {
+abstract class AudioRenderCapacity implements RustOpaqueInterface {
   /// Unset the EventHandler for [`AudioRenderCapacityEvent`].
   Future<void> clearOnupdate();
 
@@ -273,14 +258,10 @@ abstract class AudioRenderCapacity {
 
   /// Stop metric collection and analysis
   Future<void> stop();
-
-  void dispose();
-
-  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioRenderCapacityEvent>>
-abstract class AudioRenderCapacityEvent {
+abstract class AudioRenderCapacityEvent implements RustOpaqueInterface {
   double get averageLoad;
 
   Event get event;
@@ -300,21 +281,13 @@ abstract class AudioRenderCapacityEvent {
   void set timestamp(double timestamp);
 
   void set underrunRatio(double underrunRatio);
-
-  void dispose();
-
-  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Event>>
-abstract class Event {
-  void dispose();
-
-  bool get isDisposed;
-}
+abstract class Event implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OfflineAudioCompletionEvent>>
-abstract class OfflineAudioCompletionEvent {
+abstract class OfflineAudioCompletionEvent implements RustOpaqueInterface {
   Event get event;
 
   AudioBuffer get renderedBuffer;
@@ -322,18 +295,10 @@ abstract class OfflineAudioCompletionEvent {
   void set event(Event event);
 
   void set renderedBuffer(AudioBuffer renderedBuffer);
-
-  void dispose();
-
-  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<PeriodicWave>>
-abstract class PeriodicWave {
-  void dispose();
-
-  bool get isDisposed;
-}
+abstract class PeriodicWave implements RustOpaqueInterface {}
 
 /// Options for constructing an [`AudioBuffer`]
 class AudioBufferOptions {

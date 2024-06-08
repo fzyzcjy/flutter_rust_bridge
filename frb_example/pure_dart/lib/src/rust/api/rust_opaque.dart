@@ -70,25 +70,13 @@ Future<FrbOpaqueReturnTwinNormal> frbGeneratorTestTwinNormal() =>
     RustLib.instance.api.crateApiRustOpaqueFrbGeneratorTestTwinNormal();
 
 // Rust type: RustOpaqueNom<Box < dyn DartDebugTwinNormal >>
-abstract class BoxDartDebugTwinNormal {
-  void dispose();
-
-  bool get isDisposed;
-}
+abstract class BoxDartDebugTwinNormal implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueNom<FrbOpaqueReturnTwinNormal>
-abstract class FrbOpaqueReturnTwinNormal {
-  void dispose();
-
-  bool get isDisposed;
-}
+abstract class FrbOpaqueReturnTwinNormal implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueNom<HideDataTwinNormal>
-abstract class HideDataTwinNormal {
-  void dispose();
-
-  bool get isDisposed;
-}
+abstract class HideDataTwinNormal implements RustOpaqueInterface {}
 
 class HideDataTwinNormalArray2 extends NonGrowableListView<HideDataTwinNormal> {
   static const arraySize = 2;
@@ -106,25 +94,13 @@ class HideDataTwinNormalArray2 extends NonGrowableListView<HideDataTwinNormal> {
 }
 
 // Rust type: RustOpaqueNom<Mutex < HideDataTwinNormal >>
-abstract class MutexHideDataTwinNormal {
-  void dispose();
-
-  bool get isDisposed;
-}
+abstract class MutexHideDataTwinNormal implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueNom<NonCloneDataTwinNormal>
-abstract class NonCloneDataTwinNormal {
-  void dispose();
-
-  bool get isDisposed;
-}
+abstract class NonCloneDataTwinNormal implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueNom<RwLock < HideDataTwinNormal >>
-abstract class RwLockHideDataTwinNormal {
-  void dispose();
-
-  bool get isDisposed;
-}
+abstract class RwLockHideDataTwinNormal implements RustOpaqueInterface {}
 
 @freezed
 sealed class EnumOpaqueTwinNormal with _$EnumOpaqueTwinNormal {
