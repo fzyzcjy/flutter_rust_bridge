@@ -16,12 +16,6 @@ pub fn minimal_adder(a: i32, b: i32) -> i32 {
 
 #[frb(generate_impl_enum)]
 pub trait SimpleTraitTwinNormal {
-    fn simple_trait_fn_twin_normal(value: i32) -> Self;
-
-    fn simple_trait_fn_with_default_impl_twin_normal() -> i32 {
-        42
-    }
-
     fn simple_trait_fn_receiver_borrow_twin_normal(&self) -> i32;
 }
 
@@ -31,10 +25,6 @@ pub struct StructOneWithTraitTwinNormal {
 }
 
 impl SimpleTraitTwinNormal for StructOneWithTraitTwinNormal {
-    fn simple_trait_fn_twin_normal(value: i32) -> Self {
-        StructOneWithTraitTwinNormal { one: value }
-    }
-
     fn simple_trait_fn_receiver_borrow_twin_normal(&self) -> i32 {
         self.one
     }
@@ -46,10 +36,6 @@ pub struct StructTwoWithTraitTwinNormal {
 }
 
 impl SimpleTraitTwinNormal for StructTwoWithTraitTwinNormal {
-    fn simple_trait_fn_twin_normal(value: i32) -> Self {
-        StructTwoWithTraitTwinNormal { two: value * 2 }
-    }
-
     fn simple_trait_fn_receiver_borrow_twin_normal(&self) -> i32 {
         self.two * 2
     }
