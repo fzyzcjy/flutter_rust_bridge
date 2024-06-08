@@ -20,6 +20,12 @@ pub(crate) struct GeneralRustCode {
     pub body: String,
 }
 
+impl GeneralCode {
+    pub(crate) fn all_code(&self) -> String {
+        todo!()
+    }
+}
+
 impl AddAssign for GeneralDartCode {
     #[inline]
     fn add_assign(&mut self, rhs: Self) {

@@ -50,7 +50,7 @@ impl Dumper<'_> {
                         &diff_paths(&path_text.path, base_dir).context("cannot diff path")?
                     )?
                 ),
-                &path_text.text,
+                &path_text.text.all_code(),
             )?;
         }
 
