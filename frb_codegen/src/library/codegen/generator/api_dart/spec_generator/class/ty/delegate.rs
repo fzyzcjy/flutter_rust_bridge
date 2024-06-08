@@ -89,6 +89,7 @@ fn generate_proxy_variant(
     let class_name = proxy_variant::compute_dart_extra_type(mir, context);
 
     let implements_name = ApiDartGenerator::new(mir.inner.clone(), context).dart_api_type();
+    let upstream_name = ApiDartGenerator::new(mir.upstream.clone(), context).dart_api_type();
 
     let methods = generate_api_methods(
         &MirType::Delegate(MirTypeDelegate::ProxyVariant(mir.clone())),
@@ -103,6 +104,10 @@ fn generate_proxy_variant(
 
     format!(
         "class {class_name} with SimpleDisposable implements {implements_name} {{
+            final {upstream_name} _upstream;
+
+            {class_name}(this._upstream);
+
             {methods_str}
         }}"
     )
