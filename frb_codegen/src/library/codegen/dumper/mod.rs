@@ -45,7 +45,7 @@ impl<'a> Dumper<'a> {
     }
 
     pub(crate) fn dump<T: Serialize>(&self, name: &str, data: &T) -> anyhow::Result<()> {
-        if !self.is_enabled(content) {
+        if !self.is_enabled() {
             return Ok(());
         }
 
@@ -58,7 +58,7 @@ impl<'a> Dumper<'a> {
         path_texts: &PathTexts,
         base_dir: &Path,
     ) -> anyhow::Result<()> {
-        if !self.is_enabled(content) {
+        if !self.is_enabled() {
             return Ok(());
         }
 
@@ -83,7 +83,7 @@ impl<'a> Dumper<'a> {
         extension: &str,
         acc: &Acc<Option<String>>,
     ) -> anyhow::Result<()> {
-        if !self.is_enabled(content) {
+        if !self.is_enabled() {
             return Ok(());
         }
 
@@ -97,22 +97,21 @@ impl<'a> Dumper<'a> {
         Ok(())
     }
 
-    pub(crate) fn dump_str(&self, name: &str, str: &str) -> anyhow::Result<()> {
-        if !self.is_enabled(content) {
+    pub(crate) fn dump_str(&self, partial_name: &str, text: &str) -> anyhow::Result<()> {
+        if !self.is_enabled() {
             return Ok(());
         }
 
-        let path = self
-            .config
-            .dump_directory
-            .join(content.to_string().to_case(Case::Snake))
+        let name = format!("{}{}", self.name_prefix, partial_name);
+        let path = (self.config.dump_directory)
+            .join(self.content.unwrap().to_string().to_case(Case::Snake))
             .join(name);
         debug!("Dumping {name} into {path:?}");
 
-        create_dir_all_and_write(path, str)
+        create_dir_all_and_write(path, text)
     }
 
     fn is_enabled(&self) -> bool {
-        self.config.dump_contents.contains(&content)
+        self.config.dump_contents.contains(&self.content.unwrap())
     }
 }
