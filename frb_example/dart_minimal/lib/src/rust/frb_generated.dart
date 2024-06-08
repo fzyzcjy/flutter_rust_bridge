@@ -66,7 +66,15 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 }
 
 abstract class RustLibApi extends BaseApi {
-  Future<void> crateApiMinimalMyNodeParamOne({required MyNode that});
+  Future<MyAudioParam> crateApiMinimalMyNodeParamOne({required MyNode that});
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_MyAudioParam;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_MyAudioParam;
+
+  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_MyAudioParamPtr;
 
   RustArcIncrementStrongCountFnType get rust_arc_increment_strong_count_MyNode;
 
@@ -84,7 +92,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   });
 
   @override
-  Future<void> crateApiMinimalMyNodeParamOne({required MyNode that}) {
+  Future<MyAudioParam> crateApiMinimalMyNodeParamOne({required MyNode that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -94,7 +102,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             funcId: 1, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
+        decodeSuccessData:
+            sse_decode_ProxyVariant_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParam,
         decodeErrorData: null,
       ),
       constMeta: kCrateApiMinimalMyNodeParamOneConstMeta,
@@ -108,6 +117,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         debugName: "MyNode_param_one",
         argNames: ["that"],
       );
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_MyAudioParam => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParam;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_MyAudioParam => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParam;
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_MyNode => wire
@@ -126,11 +143,36 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  MyAudioParam
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParam(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return MyAudioParamImpl.frbInternalDcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
   MyNode
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNode(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return MyNodeImpl.frbInternalDcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  MyAudioParam
+      dco_decode_ProxyVariant_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParam(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    throw UnimplementedError(
+        'Not implemented in this codec, please use the other one');
+  }
+
+  @protected
+  MyAudioParam
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParam(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return MyAudioParamImpl.frbInternalDcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -163,11 +205,40 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  MyAudioParam
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParam(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return MyAudioParamImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   MyNode
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNode(
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return MyNodeImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  MyAudioParam
+      sse_decode_ProxyVariant_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParam(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var inner =
+        sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParam(
+            deserializer);
+    return TODO;
+  }
+
+  @protected
+  MyAudioParam
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParam(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return MyAudioParamImpl.frbInternalSseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -214,11 +285,40 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParam(
+          MyAudioParam self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as MyAudioParamImpl).frbInternalSseEncode(move: false),
+        serializer);
+  }
+
+  @protected
+  void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNode(
           MyNode self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as MyNodeImpl).frbInternalSseEncode(move: false), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_ProxyVariant_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParam(
+          MyAudioParam self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParam(
+        TODO, serializer);
+  }
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParam(
+          MyAudioParam self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as MyAudioParamImpl).frbInternalSseEncode(move: null),
+        serializer);
   }
 
   @protected
@@ -255,6 +355,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 }
 
 @sealed
+class MyAudioParamImpl extends RustOpaque implements MyAudioParam {
+  // Not to be used by end users
+  MyAudioParamImpl.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  MyAudioParamImpl.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount:
+        RustLib.instance.api.rust_arc_increment_strong_count_MyAudioParam,
+    rustArcDecrementStrongCount:
+        RustLib.instance.api.rust_arc_decrement_strong_count_MyAudioParam,
+    rustArcDecrementStrongCountPtr:
+        RustLib.instance.api.rust_arc_decrement_strong_count_MyAudioParamPtr,
+  );
+}
+
+@sealed
 class MyNodeImpl extends RustOpaque implements MyNode {
   // Not to be used by end users
   MyNodeImpl.frbInternalDcoDecode(List<dynamic> wire)
@@ -273,7 +393,8 @@ class MyNodeImpl extends RustOpaque implements MyNode {
         RustLib.instance.api.rust_arc_decrement_strong_count_MyNodePtr,
   );
 
-  Future<void> paramOne() => RustLib.instance.api.crateApiMinimalMyNodeParamOne(
+  Future<MyAudioParam> paramOne() =>
+      RustLib.instance.api.crateApiMinimalMyNodeParamOne(
         that: this,
       );
 }
