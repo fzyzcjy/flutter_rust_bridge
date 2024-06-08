@@ -102,7 +102,7 @@ fn generate_proxy_variant(
     let methods_str = methods.code;
 
     format!(
-        "class {class_name} implements {implements_name} {{
+        "class {class_name} with SimpleDisposable implements {implements_name} {{
             {methods_str}
         }}"
     )
