@@ -41,21 +41,35 @@ fn generate_trait_impl_enum(
         .map(|x| x.impl_ty.clone())
         .collect_vec();
 
-    let enum_impl_name = format!("{trait_def_name}Impl");
-    let enum_impl_def = generate_enum_raw(&interest_trait_impls, &enum_impl_name, |ty| {
-        format!("RustAutoOpaque<{ty}>")
-    });
+    let code_impl = generate_code_impl(interest_trait_impls);
+    let code_read_guard = TODO;
+    let code_write_guard = TODO;
 
     Ok(format!(
-        "{enum_impl_def}
-
-        impl {enum_impl_name} {{
-            {enum_impl_methods}
-        }}
-
+        "{code_impl}
+        {code_read_guard}
+        {code_write_guard}
         pub fn {FUNC_PREFIX_FRB_INTERNAL_NO_IMPL}_dummy_function_{trait_def_name}(a: {trait_def_name}Impl) {{ }}
         "
     ))
+}
+
+fn generate_code_impl(trait_impls: &[MirType]) {
+    let enum_impl_name = format!("{trait_def_name}Impl");
+    let enum_impl_def = generate_enum_raw(&trait_impls, &enum_impl_name, |ty| {
+        format!("RustAutoOpaque<{ty}>")
+    });
+    let enum_impl_method_read = TODO;
+    let enum_impl_method_write = TODO;
+
+    format!(
+        "{enum_impl_def}
+
+        impl {enum_impl_name} {{
+            {enum_impl_method_read}
+            {enum_impl_method_write}
+        }}"
+    )
 }
 
 fn generate_enum_raw(
