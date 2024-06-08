@@ -91,7 +91,7 @@ mod tests {
         )?;
 
         let output_texts = actual.output_texts;
-        assert_eq!(output_texts.0.len(), expect_outputs.len());
+        assert_eq!(output_texts.0.len(), expect_outputs.len(), "output_texts={output_texts:?}");
         for path_text in output_texts.0 {
             let path = path_text.path.file_name().unwrap().to_str().unwrap();
             let expect_output = expect_outputs.get(path).unwrap();

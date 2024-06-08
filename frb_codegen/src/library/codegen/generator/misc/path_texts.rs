@@ -7,7 +7,7 @@ use std::ops::Add;
 use std::path::PathBuf;
 use strum::IntoEnumIterator;
 
-#[derive(Clone)]
+#[derive(Clone, Debug)]
 pub(crate) struct PathTexts(pub Vec<PathText>);
 
 impl Add for PathTexts {
@@ -74,7 +74,7 @@ impl PathTexts {
     }
 }
 
-#[derive(Clone)]
+#[derive(Clone, Debug)]
 pub(crate) struct PathText {
     pub path: PathBuf,
     pub text: GeneralCode,
