@@ -1,3 +1,4 @@
+use crate::codegen::parser::mir::parser::function::real::FUNC_PREFIX_FRB_INTERNAL_NO_IMPL;
 use crate::codegen::ir::hir::flat::pack::HirFlatPack;
 use crate::codegen::ir::hir::flat::traits::HirFlatTrait;
 use crate::codegen::ir::mir::trait_impl::MirTraitImpl;
@@ -39,7 +40,7 @@ fn generate_trait_impl_enum(
             Hello(i32),
         }}
 
-        pub fn hello_generate_trait_impl_enum(a: {trait_def_name}Impl) {{ let _ = a; }}
+        pub fn {FUNC_PREFIX_FRB_INTERNAL_NO_IMPL}_dummy_function_{trait_def_name}(a: {trait_def_name}Impl) {{ }}
         "
     ))
 }
