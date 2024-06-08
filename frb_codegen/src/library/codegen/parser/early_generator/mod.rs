@@ -1,4 +1,4 @@
-mod proxy_target;
+mod proxy_enum;
 mod trait_impl_enum;
 
 use crate::codegen::dumper::Dumper;
@@ -18,7 +18,7 @@ pub(crate) fn execute(
 
     let extra_codes = vec![
         trait_impl_enum::generate(&pack, &tentative_mir_pack)?,
-        proxy_target::generate(&pack, &tentative_mir_pack)?,
+        proxy_enum::generate(&pack, &tentative_mir_pack)?,
     ];
 
     inject_extra_code(
