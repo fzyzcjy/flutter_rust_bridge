@@ -63,7 +63,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.0.0-dev.37';
 
   @override
-  int get rustContentHash => -1342678134;
+  int get rustContentHash => -945703519;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -84,13 +84,6 @@ abstract class RustLibApi extends BaseApi {
       crateApiMinimalStructOneWithTraitTwinNormalSimpleTraitFnReceiverBorrowTwinNormal(
           {required StructOneWithTraitTwinNormal that});
 
-  Future<StructOneWithTraitTwinNormal>
-      crateApiMinimalStructOneWithTraitTwinNormalSimpleTraitFnTwinNormal(
-          {required int value});
-
-  Future<int>
-      crateApiMinimalStructOneWithTraitTwinNormalSimpleTraitFnWithDefaultImplTwinNormal();
-
   int crateApiMinimalStructTwoWithTraitTwinNormalGetTwo(
       {required StructTwoWithTraitTwinNormal that});
 
@@ -101,16 +94,25 @@ abstract class RustLibApi extends BaseApi {
       crateApiMinimalStructTwoWithTraitTwinNormalSimpleTraitFnReceiverBorrowTwinNormal(
           {required StructTwoWithTraitTwinNormal that});
 
-  Future<StructTwoWithTraitTwinNormal>
-      crateApiMinimalStructTwoWithTraitTwinNormalSimpleTraitFnTwinNormal(
-          {required int value});
-
-  Future<int>
-      crateApiMinimalStructTwoWithTraitTwinNormalSimpleTraitFnWithDefaultImplTwinNormal();
+  Future<int> crateApiMinimalFuncArgTraitImplTwinNormal(
+      {required SimpleTraitTwinNormalImpl arg});
 
   Future<void> crateApiMinimalInitApp();
 
   Future<int> crateApiMinimalMinimalAdder({required int a, required int b});
+
+  Future<SimpleTraitTwinNormalRwLockReadGuard>
+      crateFrbGeneratedSimpleTraitTwinNormalImplBlockingRead(
+          {required SimpleTraitTwinNormalImpl that});
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_SimpleTraitTwinNormalRwLockReadGuard;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_SimpleTraitTwinNormalRwLockReadGuard;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_SimpleTraitTwinNormalRwLockReadGuardPtr;
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_StructOneWithTraitTwinNormal;
@@ -226,65 +228,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
-  Future<StructOneWithTraitTwinNormal>
-      crateApiMinimalStructOneWithTraitTwinNormalSimpleTraitFnTwinNormal(
-          {required int value}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_i_32(value, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 4, port: port_);
-      },
-      codec: SseCodec(
-        decodeSuccessData:
-            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinNormal,
-        decodeErrorData: null,
-      ),
-      constMeta:
-          kCrateApiMinimalStructOneWithTraitTwinNormalSimpleTraitFnTwinNormalConstMeta,
-      argValues: [value],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta
-      get kCrateApiMinimalStructOneWithTraitTwinNormalSimpleTraitFnTwinNormalConstMeta =>
-          const TaskConstMeta(
-            debugName:
-                "StructOneWithTraitTwinNormal_simple_trait_fn_twin_normal",
-            argNames: ["value"],
-          );
-
-  @override
-  Future<int>
-      crateApiMinimalStructOneWithTraitTwinNormalSimpleTraitFnWithDefaultImplTwinNormal() {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 5, port: port_);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_i_32,
-        decodeErrorData: null,
-      ),
-      constMeta:
-          kCrateApiMinimalStructOneWithTraitTwinNormalSimpleTraitFnWithDefaultImplTwinNormalConstMeta,
-      argValues: [],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta
-      get kCrateApiMinimalStructOneWithTraitTwinNormalSimpleTraitFnWithDefaultImplTwinNormalConstMeta =>
-          const TaskConstMeta(
-            debugName:
-                "StructOneWithTraitTwinNormal_simple_trait_fn_with_default_impl_twin_normal",
-            argNames: [],
-          );
-
-  @override
   int crateApiMinimalStructTwoWithTraitTwinNormalGetTwo(
       {required StructTwoWithTraitTwinNormal that}) {
     return handler.executeSync(SyncTask(
@@ -292,7 +235,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinNormal(
             that, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 6)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 4)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_i_32,
@@ -320,7 +263,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinNormal(
             that, serializer);
         sse_encode_i_32(two, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 7)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 5)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -349,7 +292,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinNormal(
             that, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 8, port: port_);
+            funcId: 6, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_i_32,
@@ -371,63 +314,30 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
-  Future<StructTwoWithTraitTwinNormal>
-      crateApiMinimalStructTwoWithTraitTwinNormalSimpleTraitFnTwinNormal(
-          {required int value}) {
+  Future<int> crateApiMinimalFuncArgTraitImplTwinNormal(
+      {required SimpleTraitTwinNormalImpl arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_i_32(value, serializer);
+        sse_encode_box_autoadd_simple_trait_twin_normal_impl(arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 9, port: port_);
-      },
-      codec: SseCodec(
-        decodeSuccessData:
-            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinNormal,
-        decodeErrorData: null,
-      ),
-      constMeta:
-          kCrateApiMinimalStructTwoWithTraitTwinNormalSimpleTraitFnTwinNormalConstMeta,
-      argValues: [value],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta
-      get kCrateApiMinimalStructTwoWithTraitTwinNormalSimpleTraitFnTwinNormalConstMeta =>
-          const TaskConstMeta(
-            debugName:
-                "StructTwoWithTraitTwinNormal_simple_trait_fn_twin_normal",
-            argNames: ["value"],
-          );
-
-  @override
-  Future<int>
-      crateApiMinimalStructTwoWithTraitTwinNormalSimpleTraitFnWithDefaultImplTwinNormal() {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 10, port: port_);
+            funcId: 8, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_i_32,
         decodeErrorData: null,
       ),
-      constMeta:
-          kCrateApiMinimalStructTwoWithTraitTwinNormalSimpleTraitFnWithDefaultImplTwinNormalConstMeta,
-      argValues: [],
+      constMeta: kCrateApiMinimalFuncArgTraitImplTwinNormalConstMeta,
+      argValues: [arg],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta
-      get kCrateApiMinimalStructTwoWithTraitTwinNormalSimpleTraitFnWithDefaultImplTwinNormalConstMeta =>
-          const TaskConstMeta(
-            debugName:
-                "StructTwoWithTraitTwinNormal_simple_trait_fn_with_default_impl_twin_normal",
-            argNames: [],
-          );
+  TaskConstMeta get kCrateApiMinimalFuncArgTraitImplTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "func_arg_trait_impl_twin_normal",
+        argNames: ["arg"],
+      );
 
   @override
   Future<void> crateApiMinimalInitApp() {
@@ -435,7 +345,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 14, port: port_);
+            funcId: 9, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -460,7 +370,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_i_32(a, serializer);
         sse_encode_i_32(b, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 15, port: port_);
+            funcId: 10, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_i_32,
@@ -477,6 +387,44 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         debugName: "minimal_adder",
         argNames: ["a", "b"],
       );
+
+  @override
+  Future<SimpleTraitTwinNormalRwLockReadGuard>
+      crateFrbGeneratedSimpleTraitTwinNormalImplBlockingRead(
+          {required SimpleTraitTwinNormalImpl that}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_box_autoadd_simple_trait_twin_normal_impl(that, serializer);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 12, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleTraitTwinNormalRwLockReadGuard,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateFrbGeneratedSimpleTraitTwinNormalImplBlockingReadConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateFrbGeneratedSimpleTraitTwinNormalImplBlockingReadConstMeta =>
+          const TaskConstMeta(
+            debugName: "simple_trait_twin_normal_impl_blocking_read",
+            argNames: ["that"],
+          );
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_SimpleTraitTwinNormalRwLockReadGuard =>
+          wire.rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleTraitTwinNormalRwLockReadGuard;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_SimpleTraitTwinNormalRwLockReadGuard =>
+          wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleTraitTwinNormalRwLockReadGuard;
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_StructOneWithTraitTwinNormal => wire
@@ -510,6 +458,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinNormal(
         raw);
+  }
+
+  @protected
+  SimpleTraitTwinNormalRwLockReadGuard
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleTraitTwinNormalRwLockReadGuard(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return SimpleTraitTwinNormalRwLockReadGuardImpl.frbInternalDcoDecode(
+        raw as List<dynamic>);
   }
 
   @protected
@@ -563,6 +520,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return StructTwoWithTraitTwinNormalImpl.frbInternalDcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  SimpleTraitTwinNormalRwLockReadGuard
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleTraitTwinNormalRwLockReadGuard(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return SimpleTraitTwinNormalRwLockReadGuardImpl.frbInternalDcoDecode(
         raw as List<dynamic>);
   }
 
@@ -658,6 +624,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  SimpleTraitTwinNormalRwLockReadGuard
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleTraitTwinNormalRwLockReadGuard(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return SimpleTraitTwinNormalRwLockReadGuardImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   StructOneWithTraitTwinNormal
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinNormal(
           SseDeserializer deserializer) {
@@ -708,6 +683,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return StructTwoWithTraitTwinNormalImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  SimpleTraitTwinNormalRwLockReadGuard
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleTraitTwinNormalRwLockReadGuard(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return SimpleTraitTwinNormalRwLockReadGuardImpl.frbInternalSseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -804,6 +788,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleTraitTwinNormalRwLockReadGuard(
+          SimpleTraitTwinNormalRwLockReadGuard self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as SimpleTraitTwinNormalRwLockReadGuardImpl)
+            .frbInternalSseEncode(move: true),
+        serializer);
+  }
+
+  @protected
+  void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinNormal(
           StructOneWithTraitTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -865,6 +860,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     sse_encode_usize(
         (self as StructTwoWithTraitTwinNormalImpl)
             .frbInternalSseEncode(move: false),
+        serializer);
+  }
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleTraitTwinNormalRwLockReadGuard(
+          SimpleTraitTwinNormalRwLockReadGuard self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as SimpleTraitTwinNormalRwLockReadGuardImpl)
+            .frbInternalSseEncode(move: null),
         serializer);
   }
 
@@ -953,6 +959,35 @@ sealed class SimpleTraitTwinNormalImpl with _$SimpleTraitTwinNormalImpl {
   const factory SimpleTraitTwinNormalImpl.structTwoWithTraitTwinNormal(
     StructTwoWithTraitTwinNormal field0,
   ) = SimpleTraitTwinNormalImpl_StructTwoWithTraitTwinNormal;
+
+  Future<SimpleTraitTwinNormalRwLockReadGuard> blockingRead() =>
+      RustLib.instance.api
+          .crateFrbGeneratedSimpleTraitTwinNormalImplBlockingRead(
+        that: this,
+      );
+}
+
+@sealed
+class SimpleTraitTwinNormalRwLockReadGuardImpl extends RustOpaque
+    implements SimpleTraitTwinNormalRwLockReadGuard {
+  // Not to be used by end users
+  SimpleTraitTwinNormalRwLockReadGuardImpl.frbInternalDcoDecode(
+      List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  SimpleTraitTwinNormalRwLockReadGuardImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_SimpleTraitTwinNormalRwLockReadGuard,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_SimpleTraitTwinNormalRwLockReadGuard,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_SimpleTraitTwinNormalRwLockReadGuardPtr,
+  );
 }
 
 @sealed
