@@ -14,7 +14,7 @@ Future<int> funcArgTraitImplTwinRustAsync(
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructOneWithTraitForDynTwinRustAsync>>
 abstract class StructOneWithTraitForDynTwinRustAsync
-    implements SimpleTraitForDynTwinRustAsync {
+    implements RustOpaqueInterface, SimpleTraitForDynTwinRustAsync {
   static Future<StructOneWithTraitForDynTwinRustAsync> createTwinRustAsync(
           {required int one}) =>
       RustLib.instance.api
@@ -26,15 +26,11 @@ abstract class StructOneWithTraitForDynTwinRustAsync
   void set one(int one);
 
   Future<int> simpleMethodTwinRustAsync();
-
-  void dispose();
-
-  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructOneWithTraitTwinRustAsync>>
 abstract class StructOneWithTraitTwinRustAsync
-    implements SimpleTraitTwinRustAsync {
+    implements RustOpaqueInterface, SimpleTraitTwinRustAsync {
   int get one;
 
   void set one(int one);
@@ -50,29 +46,21 @@ abstract class StructOneWithTraitTwinRustAsync
   static Future<int> simpleTraitFnWithDefaultImplTwinRustAsync() => RustLib
       .instance.api
       .crateApiPseudoManualImplTraitTwinRustAsyncStructOneWithTraitTwinRustAsyncSimpleTraitFnWithDefaultImplTwinRustAsync();
-
-  void dispose();
-
-  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructTwoWithTraitForDynTwinRustAsync>>
 abstract class StructTwoWithTraitForDynTwinRustAsync
-    implements SimpleTraitForDynTwinRustAsync {
+    implements RustOpaqueInterface, SimpleTraitForDynTwinRustAsync {
   int get two;
 
   void set two(int two);
 
   Future<int> simpleMethodTwinRustAsync();
-
-  void dispose();
-
-  bool get isDisposed;
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructTwoWithTraitTwinRustAsync>>
 abstract class StructTwoWithTraitTwinRustAsync
-    implements SimpleTraitTwinRustAsync {
+    implements RustOpaqueInterface, SimpleTraitTwinRustAsync {
   int get two;
 
   void set two(int two);
@@ -88,10 +76,6 @@ abstract class StructTwoWithTraitTwinRustAsync
   static Future<int> simpleTraitFnWithDefaultImplTwinRustAsync() => RustLib
       .instance.api
       .crateApiPseudoManualImplTraitTwinRustAsyncStructTwoWithTraitTwinRustAsyncSimpleTraitFnWithDefaultImplTwinRustAsync();
-
-  void dispose();
-
-  bool get isDisposed;
 }
 
 abstract class SimpleTraitForDynTwinRustAsync {

@@ -23,15 +23,7 @@ FrbOpaqueSyncReturnTwinNormal frbSyncGeneratorTestTwinNormal() =>
     RustLib.instance.api.crateApiRustOpaqueSyncFrbSyncGeneratorTestTwinNormal();
 
 // Rust type: RustOpaqueMoi<FrbOpaqueSyncReturnTwinNormal>
-abstract class FrbOpaqueSyncReturnTwinNormal {
-  void dispose();
-
-  bool get isDisposed;
-}
+abstract class FrbOpaqueSyncReturnTwinNormal implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueMoi<HideDataAnotherTwinNormal>
-abstract class HideDataAnotherTwinNormal {
-  void dispose();
-
-  bool get isDisposed;
-}
+abstract class HideDataAnotherTwinNormal implements RustOpaqueInterface {}
