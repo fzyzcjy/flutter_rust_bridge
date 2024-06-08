@@ -1,4 +1,6 @@
-use crate::frb_generated::{RustAutoOpaque, SimpleTraitForDynTwinNormalImpl, SimpleTraitTwinNormalImpl};
+use crate::frb_generated::{
+    RustAutoOpaque, SimpleTraitForDynTwinNormalImpl, SimpleTraitTwinNormalImpl,
+};
 use flutter_rust_bridge::frb;
 use flutter_rust_bridge::rust_async::RwLockReadGuard;
 use std::ops;
@@ -44,44 +46,4 @@ impl SimpleTraitForDynTwinNormal for StructTwoWithTraitForDynTwinNormal {
 pub fn func_arg_trait_impl_twin_normal(arg: SimpleTraitForDynTwinNormalImpl) -> i32 {
     let arg = arg.blocking_read();
     arg.simple_method_twin_normal()
-}
-
-impl SimpleTraitForDynTwinNormalImpl {
-    #[frb(ignore)]
-    pub fn blocking_read(&self) -> SimpleTraitTwinNormalRwLockReadGuard {
-        match self {
-            Self::StructOneWithTraitTwinNormal(inner) => {
-                SimpleTraitTwinNormalRwLockReadGuard::StructOneWithTraitTwinNormal(inner.blocking_read())
-            }
-            Self::StructTwoWithTraitTwinNormal(inner) => {
-                SimpleTraitTwinNormalRwLockReadGuard::StructTwoWithTraitTwinNormal(
-                    inner.blocking_read(),
-                )
-            }
-        }
-    }
-}
-
-#[frb(ignore)]
-pub enum SimpleTraitTwinNormalRwLockReadGuard<'a> {
-    StructOneWithTraitTwinNormal(
-        flutter_rust_bridge::for_generated::rust_async::RwLockReadGuard<'a, StructOneWithTraitForDynTwinNormal, >,
-    ),
-    StructTwoWithTraitTwinNormal(
-        flutter_rust_bridge::for_generated::rust_async::RwLockReadGuard<
-            'a,
-            StructTwoWithTraitForDynTwinNormal,
-        >,
-    ),
-}
-
-impl std::ops::Deref for SimpleTraitTwinNormalRwLockReadGuard<'_> {
-    type Target = dyn SimpleTraitForDynTwinNormal;
-
-    fn deref(&self) -> &Self::Target {
-        match self {
-            Self::StructOneWithTraitTwinNormal(inner) => inner.deref(),
-            Self::StructTwoWithTraitTwinNormal(inner) => inner.deref(),
-        }
-    }
 }
