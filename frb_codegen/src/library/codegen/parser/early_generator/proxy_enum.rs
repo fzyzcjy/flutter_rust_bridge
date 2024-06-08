@@ -1,3 +1,4 @@
+use crate::codegen::ir::early_generator::pack::IrEarlyGeneratorPack;
 use crate::codegen::ir::hir::flat::pack::HirFlatPack;
 use crate::codegen::ir::mir::pack::MirPack;
 use crate::codegen::ir::mir::ty::delegate::{MirTypeDelegate, MirTypeDelegateProxyVariant};
@@ -8,7 +9,6 @@ use crate::codegen::parser::mir::parser::function::real::FUNC_PREFIX_FRB_INTERNA
 use crate::if_then_some;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use itertools::Itertools;
-use crate::codegen::ir::early_generator::pack::IrEarlyGeneratorPack;
 
 pub(crate) fn generate(
     pack: &mut IrEarlyGeneratorPack,
@@ -34,9 +34,9 @@ pub(crate) fn generate(
     Ok(())
 }
 
-fn compute_proxied_types(proxy_variants: &[MirTypeDelegateProxyVariant]) -> Vec<String> {
+fn compute_proxied_types(proxy_variants: &[MirTypeDelegateProxyVariant]) -> Vec<MirType> {
     (proxy_variants.iter())
-        .map(|variant| variant.inner.rust_api_type())
+        .map(|variant| (*variant.inner).to_owned())
         .unique()
         .collect_vec()
 }
