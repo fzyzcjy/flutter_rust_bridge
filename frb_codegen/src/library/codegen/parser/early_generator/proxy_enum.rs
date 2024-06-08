@@ -53,8 +53,8 @@ fn compute_proxied_types(
 
             IrEarlyGeneratorProxiedType {
                 proxy_enum_namespace,
-                original_ty: (*variant.inner).to_owned(),
-                variants: TODO,
+                original_ty: (*variants[0].inner).to_owned(),
+                variants: variants.iter().map(|&x| x.to_owned()).collect_vec(),
             }
         })
         .collect_vec()
