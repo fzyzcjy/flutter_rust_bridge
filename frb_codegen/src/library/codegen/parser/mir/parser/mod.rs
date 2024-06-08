@@ -59,15 +59,16 @@ pub(crate) fn parse(
     Ok(ans)
 }
 
-pub(crate) fn tentative_parse_trait_impls(
-    hir_flat: &HirFlatPack,
-) -> anyhow::Result<Vec<MirTraitImpl>> {
-    let mut type_parser = TypeParser::new_from_hir_flat_pack(hir_flat);
-    trait_impl::parse(
-        &hir_flat.trait_impls,
-        &mut type_parser,
-        // randomly pick a value, which does not matter for this "tentative" purpose
-        CodecMode::Sse,
-        RustOpaqueCodecMode::Moi,
-    )
-}
+// TODO rm
+// pub(crate) fn tentative_parse_trait_impls(
+//     hir_flat: &HirFlatPack,
+// ) -> anyhow::Result<Vec<MirTraitImpl>> {
+//     let mut type_parser = TypeParser::new_from_hir_flat_pack(hir_flat);
+//     trait_impl::parse(
+//         &hir_flat.trait_impls,
+//         &mut type_parser,
+//         // randomly pick a value, which does not matter for this "tentative" purpose
+//         CodecMode::Sse,
+//         RustOpaqueCodecMode::Moi,
+//     )
+// }
