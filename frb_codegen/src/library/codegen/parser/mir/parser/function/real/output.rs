@@ -6,6 +6,7 @@ use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
 use crate::codegen::parser::mir::parser::function::real::{FunctionParser, FunctionPartialInfo};
 use crate::codegen::parser::mir::parser::ty::result::parse_type_maybe_result;
 use crate::codegen::parser::mir::parser::ty::TypeParserParsingContext;
+use anyhow::bail;
 use syn::*;
 
 impl<'a, 'b> FunctionParser<'a, 'b> {
@@ -74,8 +75,19 @@ fn parse_maybe_proxy_return_type(
     attributes: &FrbAttributes,
 ) -> anyhow::Result<MirType> {
     if attributes.proxy() {
-        return TODO;
+        parse_proxy_return_type(mir)
+    } else {
+        Ok(mir)
     }
-    
-    Ok(mir)
+}
+
+fn parse_proxy_return_type(mir: MirType) -> anyhow::Result<MirType> {
+    if let Some(MirType::RustAutoOpaqueImplicit(mir_inner)) = mir {
+        if mir_inner.ownership_mode == OwnershipMode::Ref
+            || mir_inner.ownership_mode == OwnershipMode::RefMut
+        {
+            return TODO;
+        }
+    }
+    bail!("This return type is not currently compatible with `#[frb(proxy)]` yet")
 }
