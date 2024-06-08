@@ -152,12 +152,17 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         info = info.merge(self.parse_fn_output(func.item_fn.sig(), &context, &attributes)?)?;
         info = self.transform_fn_info(info);
 
+        let output = MirFuncOutput {
+            normal: info.ok_output.unwrap_or(Primitive(MirTypePrimitive::Unit)),
+            error: info.error_output,
+        };
+
         let codec_mode_pack = compute_codec_mode_pack(&attributes, force_codec_mode_pack);
         let mode = compute_func_mode(&attributes, &info);
         let stream_dart_await = attributes.stream_dart_await() && !attributes.sync();
         let namespace_refined = refine_namespace(&owner).unwrap_or(func.namespace.clone());
 
-        let impl_mode = compute_impl_mode(is_owner_trait_def, &func_name, &attributes);
+        let impl_mode = compute_impl_mode(is_owner_trait_def, &func_name, &attributes, &output);
 
         if info.ignore_func {
             return Ok(create_output_skip(func, IgnoredMisc));
@@ -168,10 +173,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             dart_name,
             id: None, // to be filled later
             inputs: info.inputs,
-            output: MirFuncOutput {
-                normal: info.ok_output.unwrap_or(Primitive(MirTypePrimitive::Unit)),
-                error: info.error_output,
-            },
+            output,
             owner,
             mode,
             stream_dart_await,
@@ -401,14 +403,17 @@ fn compute_impl_mode(
     is_owner_trait_def: bool,
     func_name: &String,
     attributes: &FrbAttributes,
+    output: &MirFuncOutput,
 ) -> MirFuncImplMode {
     if is_owner_trait_def || func_name.starts_with(FUNC_PREFIX_FRB_INTERNAL_NO_IMPL) {
-        MirFuncImplMode::NoImpl
-    } else if attributes.proxy() {
-        MirFuncImplMode::DartOnly {
-            code: TODO,
-        }
-    } else {
-        MirFuncImplMode::Normal
+        return MirFuncImplMode::NoImpl;
     }
+
+    if attributes.proxy() {
+        if let MirType::Delegate(MirTypeDelegate::ProxyVariant(inner)) = &output.normal {
+            return MirFuncImplMode::DartOnly { code: TODO };
+        }
+    }
+
+    MirFuncImplMode::Normal
 }
