@@ -1,4 +1,4 @@
-use crate::frb_generated::SimpleTraitTwinNormalImpl;
+use crate::frb_generated::{RustAutoOpaque, SimpleTraitTwinNormalImpl};
 use flutter_rust_bridge::frb;
 
 #[frb(init)]
@@ -55,4 +55,18 @@ impl SimpleTraitTwinNormal for StructTwoWithTraitTwinNormal {
 
 pub fn func_arg_trait_impl_twin_normal(arg: SimpleTraitTwinNormalImpl) -> i32 {
     // TODO
+}
+
+impl SimpleTraitTwinNormalImpl {
+    pub fn blocking_read(&self) -> SimpleTraitTwinNormalRwLockReadGuard {
+        match self {
+            Self::StructOneWithTraitTwinNormal(inner) => SimpleTraitTwinNormalRwLockReadGuard::StructOneWithTraitTwinNormal(inner.blocking_read()),
+            Self::StructTwoWithTraitTwinNormal(inner) => SimpleTraitTwinNormalRwLockReadGuard::StructTwoWithTraitTwinNormal(inner.blocking_read()),
+        }
+    }
+}
+
+pub enum SimpleTraitTwinNormalRwLockReadGuard<'a> {
+    StructOneWithTraitTwinNormal(flutter_rust_bridge::for_generated::rust_async::RwLockReadGuard<'a, StructOneWithTraitTwinNormal>),
+    StructTwoWithTraitTwinNormal(flutter_rust_bridge::for_generated::rust_async::RwLockReadGuard<'a, StructTwoWithTraitTwinNormal>),
 }
