@@ -9,6 +9,8 @@ use crate::codegen::parser::mir::parser::function::real::FUNC_PREFIX_FRB_INTERNA
 use crate::codegen::parser::mir::parser::tentative_parse_trait_impls;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use itertools::Itertools;
+use serde::{Deserialize, Serialize};
+use strum_macros::{Display, EnumIter, EnumString};
 
 pub(crate) fn transform(
     mut pack: HirFlatPack,
@@ -42,8 +44,8 @@ fn generate_trait_impl_enum(
         .collect_vec();
 
     let code_impl = generate_code_impl(trait_def_name, &interest_trait_impls);
-    let code_read_guard = generate_code_read_guard();
-    let code_write_guard = generate_code_write_guard();
+    let code_read_guard = generate_code_read_write_guard(ReadWrite::Read);
+    let code_write_guard = generate_code_read_write_guard(ReadWrite::Write);
 
     Ok(format!(
         "{code_impl}
@@ -84,7 +86,17 @@ fn generate_code_impl(trait_def_name: &str, trait_impls: &[MirType]) -> String {
     )
 }
 
-fn generate_code_read_guard(trait_def_name: &str, trait_impls: &[MirType]) -> String {
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Display)]
+enum ReadWrite {
+    Read,
+    Write,
+}
+
+fn generate_code_read_write_guard(
+    rw: ReadWrite,
+    trait_def_name: &str,
+    trait_impls: &[MirType],
+) -> String {
     let enum_name = format!("{trait_def_name}RwLockReadGuard");
     let enum_def = generate_enum_raw(&trait_impls, &enum_name, |ty| {
         format!("flutter_rust_bridge::for_generated::rust_async::RwLockReadGuard<'a, {ty}>")
@@ -106,10 +118,6 @@ fn generate_code_read_guard(trait_def_name: &str, trait_impls: &[MirType]) -> St
         }}
         "
     )
-}
-
-fn generate_code_write_guard(trait_def_name: &str, trait_impls: &[MirType]) -> String {
-    TODO;
 }
 
 fn generate_enum_raw(
