@@ -52,7 +52,7 @@ flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
 // Section: extra_from_parser
 
 enum Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum {
-    Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParam(MyNode),
+    Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNode(MyNode),
 }
 
 // Section: dart2rust

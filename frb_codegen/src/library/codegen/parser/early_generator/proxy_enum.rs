@@ -31,11 +31,8 @@ fn generate_proxy_enum(proxy_variants: &[MirTypeDelegateProxyVariant]) -> String
 
     let variants = (proxy_variants.iter())
         .map(|variant| {
-            format!(
-                "{}({}),\n",
-                variant.inner.safe_ident(),
-                variant.upstream.rust_api_type()
-            )
+            let upstream = &variant.upstream;
+            format!("{}({}),\n", upstream.safe_ident(), upstream.rust_api_type())
         })
         .join("");
 
