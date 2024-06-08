@@ -1,10 +1,11 @@
-use crate::codegen::parser::mir::parser::function::real::FUNC_PREFIX_FRB_INTERNAL_NO_IMPL;
 use crate::codegen::ir::hir::flat::pack::HirFlatPack;
 use crate::codegen::ir::hir::flat::traits::HirFlatTrait;
 use crate::codegen::ir::mir::trait_impl::MirTraitImpl;
+use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::hir::flat::extra_code_injector::inject_extra_code;
 use crate::codegen::parser::hir::internal_config::ParserHirInternalConfig;
 use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
+use crate::codegen::parser::mir::parser::function::real::FUNC_PREFIX_FRB_INTERNAL_NO_IMPL;
 use crate::codegen::parser::mir::parser::tentative_parse_trait_impls;
 use itertools::Itertools;
 
@@ -30,17 +31,36 @@ pub(crate) fn transform(
 
 fn generate_trait_impl_enum(
     hir_trait: &HirFlatTrait,
-    _trait_impls: &[MirTraitImpl],
+    trait_impls: &[MirTraitImpl],
 ) -> anyhow::Result<String> {
     let trait_def_name = &hir_trait.name.name;
 
-    // TODO
+    let interest_trait_impls = (trait_impls.iter())
+        .filter(|x| x.trait_ty.name == hir_trait.name)
+        .map(|x| x.impl_ty.clone())
+        .collect_vec();
+
+    let enum_impl = generate_simple_enum(interest_trait_impls, &format!("{trait_def_name}Impl"));
+
     Ok(format!(
-        "enum {trait_def_name}Impl {{
-            Hello(i32),
-        }}
+        "{enum_impl}
 
         pub fn {FUNC_PREFIX_FRB_INTERNAL_NO_IMPL}_dummy_function_{trait_def_name}(a: {trait_def_name}Impl) {{ }}
         "
     ))
+}
+
+fn generate_simple_enum(trait_impls: &[MirType], enum_name: &str) -> String {
+    let variants = (trait_impls.iter())
+        .map(|ty| {
+            let rust_api_type = ty.rust_api_type();
+            format!("{rust_api_type}({rust_api_type})\n")
+        })
+        .join("");
+
+    format!(
+        "enum {enum_name} {{
+            {variants}
+        }}"
+    )
 }
