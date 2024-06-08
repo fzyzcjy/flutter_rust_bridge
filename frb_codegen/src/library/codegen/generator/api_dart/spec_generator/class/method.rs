@@ -255,7 +255,7 @@ fn generate_implementation(
         MirFuncImplMode::NoImpl => "should_not_reach_here".to_owned(),
         MirFuncImplMode::DartOnly(inner) => match inner {
             MirFuncImplModeDartOnly::CreateProxyVariant(inner) => {
-                proxy_variant::compute_func_implementation(inner)
+                proxy_variant::compute_func_implementation(inner, context)
             }
         },
     }

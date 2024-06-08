@@ -1,5 +1,17 @@
+use crate::codegen::generator::api_dart::spec_generator::base::{
+    ApiDartGenerator, ApiDartGeneratorContext,
+};
 use crate::codegen::ir::mir::ty::delegate::MirTypeDelegateProxyVariant;
 
-pub(crate) fn compute_func_implementation(ir: &MirTypeDelegateProxyVariant) -> String {
-    TODO
+pub(crate) fn compute_func_implementation(
+    ir: &MirTypeDelegateProxyVariant,
+    context: ApiDartGeneratorContext,
+) -> String {
+    let inner_dart_api_type = ApiDartGenerator::new(ir.inner.clone(), context).dart_api_type();
+    let upstream_dart_api_type =
+        ApiDartGenerator::new(ir.upstream.clone(), context).dart_api_type();
+    format!(
+        "{}ProxyVariant{}",
+        inner_dart_api_type, upstream_dart_api_type
+    )
 }
