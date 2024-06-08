@@ -20,7 +20,11 @@ pub(crate) fn transform(
     let trait_impls = tentative_parse_trait_impls(&pack)?;
 
     let extra_code = (pack.traits.iter())
-        .filter(|x| FrbAttributes::parse(&x.attrs).unwrap().generate_implementor_enum())
+        .filter(|x| {
+            FrbAttributes::parse(&x.attrs)
+                .unwrap()
+                .generate_implementor_enum()
+        })
         .map(|x| generate_trait_impl_enum(x, &trait_impls))
         .collect::<anyhow::Result<Vec<_>>>()?
         .into_iter()

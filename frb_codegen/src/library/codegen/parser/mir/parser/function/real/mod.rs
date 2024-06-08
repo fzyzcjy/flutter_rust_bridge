@@ -157,7 +157,8 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         let stream_dart_await = attributes.stream_dart_await() && !attributes.sync();
         let namespace_refined = refine_namespace(&owner).unwrap_or(func.namespace.clone());
 
-        let has_impl = !is_owner_trait_def && !func_name.starts_with(FUNC_PREFIX_FRB_INTERNAL_NO_IMPL);
+        let has_impl =
+            !is_owner_trait_def && !func_name.starts_with(FUNC_PREFIX_FRB_INTERNAL_NO_IMPL);
 
         if info.ignore_func {
             return Ok(create_output_skip(func, IgnoredMisc));
