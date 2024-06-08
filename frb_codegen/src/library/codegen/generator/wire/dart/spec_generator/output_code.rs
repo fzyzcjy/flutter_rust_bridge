@@ -142,13 +142,12 @@ impl WireDartOutputCode {
             )
         };
 
-        format!(
-            "{}\n{}\n{}\n{}\n{}",
-            self.header.all_code(),
-            self.body_top,
-            api_class_code,
-            api_impl_class_code,
-            self.body
-        )
+        GeneralDartCode {
+            header: self.header.clone(),
+            body: format!(
+                "{}\n{}\n{}\n{}",
+                self.body_top, api_class_code, api_impl_class_code, self.body
+            ),
+        }
     }
 }
