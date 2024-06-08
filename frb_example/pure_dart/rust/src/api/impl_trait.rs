@@ -1,3 +1,5 @@
+// FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["rustAsync", "rustAsync sse"]}
+
 use crate::frb_generated::SimpleTraitForDynTwinNormalImplementor;
 use flutter_rust_bridge::frb;
 
