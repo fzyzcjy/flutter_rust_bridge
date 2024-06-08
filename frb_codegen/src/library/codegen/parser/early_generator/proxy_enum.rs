@@ -12,6 +12,7 @@ use crate::codegen::parser::mir::parser::function::real::FUNC_PREFIX_FRB_INTERNA
 use crate::if_then_some;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use itertools::Itertools;
+use std::collections::HashMap;
 
 pub(crate) fn generate(
     pack: &mut IrEarlyGeneratorPack,
@@ -26,31 +27,36 @@ pub(crate) fn generate(
     let proxy_variants_of_enum =
         (proxy_variants.iter()).into_group_map_by(|ty| ty.upstream.safe_ident());
 
+    let proxied_types = compute_proxied_types(&proxy_variants_of_enum, config_mir);
+
     let extra_code = proxy_variants_of_enum
         .into_values()
         .map(|proxy_variants| generate_proxy_enum(&proxy_variants))
         .join("");
 
     inject_extra_code_to_rust_output(&mut pack.hir_flat_pack, &extra_code, config_mir)?;
-    (pack.proxied_types).extend(compute_proxied_types(&proxy_variants, config_mir));
+    (pack.proxied_types).extend(proxied_types);
 
     Ok(())
 }
 
 fn compute_proxied_types(
-    proxy_variants: &[MirTypeDelegateProxyVariant],
+    proxy_variants_of_enum: &HashMap<String, Vec<&MirTypeDelegateProxyVariant>>,
     config_mir: &ParserMirInternalConfig,
 ) -> Vec<IrEarlyGeneratorProxiedType> {
-    (proxy_variants.iter())
-        .map(|variant| IrEarlyGeneratorProxiedType {
-            proxy_enum_namespace: config_mir
+    (proxy_variants_of_enum.values())
+        .map(|variants| {
+            let proxy_enum_namespace = config_mir
                 .rust_input_namespace_pack
                 .rust_output_path_namespace
-                .clone(),
-            original_ty: (*variant.inner).to_owned(),
-            variants: TODO,
+                .clone();
+
+            IrEarlyGeneratorProxiedType {
+                proxy_enum_namespace,
+                original_ty: (*variant.inner).to_owned(),
+                variants: TODO,
+            }
         })
-        .unique()
         .collect_vec()
 }
 
