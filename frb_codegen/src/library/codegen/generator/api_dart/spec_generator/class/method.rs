@@ -83,6 +83,9 @@ fn compute_class_name_for_querying_methods(ty: &MirType) -> NamespacedName {
         MirType::Delegate(MirTypeDelegate::ProxyVariant(ty)) => {
             compute_class_name_for_querying_methods(&*ty.inner)
         }
+        MirType::RustAutoOpaqueImplicit(ty) => {
+            compute_class_name_for_querying_methods(&MirType::RustOpaque(ty.inner.clone()))
+        }
         MirType::RustOpaque(ty) => {
             lazy_static! {
                 static ref FILTER: Regex =
