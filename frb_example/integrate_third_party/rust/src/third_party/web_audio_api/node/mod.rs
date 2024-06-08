@@ -103,7 +103,7 @@ handle_audio_node_trait_impls_marker!(StereoPannerNode);
 handle_audio_node_trait_impls_marker!(WaveShaperNode);
 
 #[macro_export]
-macro_rules! handle_getter_audio_param {
+macro_rules! handle_getter_audio_param_marker {
     ($struct_name:ident ; $($func_name:ident),+) => {
         #[frb(external)]
         impl $struct_name {
@@ -115,12 +115,12 @@ macro_rules! handle_getter_audio_param {
     };
 }
 
-handle_getter_audio_param!(AudioBufferSourceNode; playback_rate, detune);
-handle_getter_audio_param!(BiquadFilterNode; gain, frequency, detune, q);
-handle_getter_audio_param!(ConstantSourceNode; offset);
-handle_getter_audio_param!(DelayNode; delay_time);
-handle_getter_audio_param!(DynamicsCompressorNode; attack, knee, ratio, release, threshold);
-handle_getter_audio_param!(GainNode; gain);
-handle_getter_audio_param!(OscillatorNode; frequency, detune);
-handle_getter_audio_param!(PannerNode; position_x, position_y, position_z, orientation_x, orientation_y, orientation_z);
-handle_getter_audio_param!(StereoPannerNode; pan);
+handle_getter_audio_param_marker!(AudioBufferSourceNode; playback_rate, detune);
+handle_getter_audio_param_marker!(BiquadFilterNode; gain, frequency, detune, q);
+handle_getter_audio_param_marker!(ConstantSourceNode; offset);
+handle_getter_audio_param_marker!(DelayNode; delay_time);
+handle_getter_audio_param_marker!(DynamicsCompressorNode; attack, knee, ratio, release, threshold);
+handle_getter_audio_param_marker!(GainNode; gain);
+handle_getter_audio_param_marker!(OscillatorNode; frequency, detune);
+handle_getter_audio_param_marker!(PannerNode; position_x, position_y, position_z, orientation_x, orientation_y, orientation_z);
+handle_getter_audio_param_marker!(StereoPannerNode; pan);
