@@ -25,7 +25,9 @@ macro_rules! handle_audio_node_trait_impls_override {
     ($name:ident) => {
         #[ext]
         impl $name {
-            // TODO
+            fn frb_override_connect(&self, dest: AudioNodeImplementor) {
+                self.connect(dest.blocking_read());
+            }
         }
     };
 }

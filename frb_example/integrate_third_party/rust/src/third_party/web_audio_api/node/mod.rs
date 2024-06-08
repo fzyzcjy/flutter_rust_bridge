@@ -47,6 +47,7 @@ impl WaveShaperNode {
 }
 
 #[frb(external)]
+#[frb(generate_implementor_enum)]
 pub trait AudioNode {
     #[frb(ignore)]
     fn connect();
