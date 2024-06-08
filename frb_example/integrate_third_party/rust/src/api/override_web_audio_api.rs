@@ -1,3 +1,4 @@
+use crate::frb_generated::AudioNodeImplementor;
 use extend::ext;
 use flutter_rust_bridge::for_generated::anyhow;
 use web_audio_api::context::{AudioContext, BaseAudioContext};
