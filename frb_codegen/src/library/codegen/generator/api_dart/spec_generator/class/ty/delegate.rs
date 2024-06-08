@@ -1,5 +1,7 @@
 use crate::codegen::generator::api_dart::spec_generator::class::ty::ApiDartGeneratorClassTrait;
-use crate::codegen::generator::api_dart::spec_generator::class::{ApiDartGeneratedClass, proxy_variant};
+use crate::codegen::generator::api_dart::spec_generator::class::{
+    proxy_variant, ApiDartGeneratedClass,
+};
 use crate::codegen::ir::mir::ty::delegate::{
     MirTypeDelegate, MirTypeDelegateArray, MirTypeDelegateArrayMode, MirTypeDelegatePrimitiveEnum,
     MirTypeDelegateProxyVariant,
@@ -21,7 +23,7 @@ impl<'a> ApiDartGeneratorClassTrait for DelegateApiDartGenerator<'a> {
 
     fn generate_extra_impl_code(&self) -> Option<String> {
         match &self.mir {
-            MirTypeDelegate::ProxyVariant(mir) => Some(generate_proxy_variant(mir)),
+            MirTypeDelegate::ProxyVariant(mir) => Some(generate_proxy_variant(mir, self.context)),
             _ => None,
         }
     }
@@ -75,8 +77,11 @@ fn generate_array(
     })
 }
 
-fn generate_proxy_variant(mir: &MirTypeDelegateProxyVariant) -> String {
-    let class_name = proxy_variant::compute_dart_extra_type(mir);
+fn generate_proxy_variant(
+    mir: &MirTypeDelegateProxyVariant,
+    context: ApiDartGeneratorContext,
+) -> String {
+    let class_name = proxy_variant::compute_dart_extra_type(mir, context);
     format!(
         "class {class_name} {{
         }}"
