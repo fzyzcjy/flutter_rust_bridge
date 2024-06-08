@@ -5,6 +5,7 @@ use crate::codegen::ir::mir::ty::MirType;
 use crate::if_then_some;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use itertools::Itertools;
+use crate::codegen::generator::api_dart::spec_generator::class::proxy_variant;
 
 pub(crate) fn generate(pack: &HirFlatPack, tentative_mir_pack: &MirPack) -> anyhow::Result<String> {
     let distinct_types = tentative_mir_pack.distinct_types(None);
@@ -21,6 +22,10 @@ pub(crate) fn generate(pack: &HirFlatPack, tentative_mir_pack: &MirPack) -> anyh
 }
 
 fn generate_proxy_target(proxy_variants: &[MirTypeDelegateProxyVariant]) -> String {
+    let proxy_target = *proxy_variants[0].upstream.clone();
+    
+    let enum_name = format!("{}ProxyEnum");
+
     format!("
     enum {TODO} {{
         {variants}
