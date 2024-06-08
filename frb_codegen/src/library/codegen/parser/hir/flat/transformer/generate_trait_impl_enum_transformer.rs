@@ -50,8 +50,11 @@ fn generate_trait_impl_enum(
 
     Ok(format!(
         "{code_impl}
+
         {code_read_guard}
+
         {code_write_guard}
+
         pub fn {FUNC_PREFIX_FRB_INTERNAL_NO_IMPL}_dummy_function_{trait_def_name}(a: {trait_def_name}Impl) {{ }}
         "
     ))
@@ -138,7 +141,9 @@ fn generate_code_read_write_guard(
     format!(
         "#[frb(ignore)]
         {enum_def}
+
         {deref_code}
+
         {maybe_deref_mut_code}
         "
     )
