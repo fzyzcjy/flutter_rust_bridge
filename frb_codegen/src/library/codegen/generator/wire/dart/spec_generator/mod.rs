@@ -44,11 +44,8 @@ pub(crate) fn generate(
 ) -> anyhow::Result<WireDartOutputSpec> {
     let cache = MirPackComputedCache::compute(context.mir_pack);
 
-    dumper.dump(
-        GeneratorInfo,
-        "wire_dart.json",
-        &generate_dump_info(&cache, context),
-    )?;
+    (dumper.with_content(GeneratorInfo))
+        .dump("wire_dart.json", &generate_dump_info(&cache, context))?;
 
     Ok(WireDartOutputSpec {
         misc: misc::generate(

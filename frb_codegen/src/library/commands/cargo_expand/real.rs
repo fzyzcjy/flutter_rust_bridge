@@ -18,7 +18,7 @@ pub(super) fn run(
     dumper: &Dumper,
 ) -> Result<syn::File> {
     let text = run_with_frb_aware(rust_crate_dir, interest_crate_name)?;
-    dumper.dump_str(ConfigDumpContent::Source, "cargo_expand.rs", &text)?;
+    (dumper.with_content(ConfigDumpContent::Source)).dump_str("cargo_expand.rs", &text)?;
     Ok(syn::parse_file(&text)?)
 }
 

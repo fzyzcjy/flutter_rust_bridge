@@ -32,11 +32,8 @@ pub(super) fn generate(
 ) -> anyhow::Result<WireRustOutputSpec> {
     let cache = MirPackComputedCache::compute(context.mir_pack);
 
-    dumper.dump(
-        GeneratorInfo,
-        "wire_rust.json",
-        &generate_dump_info(&cache, context),
-    )?;
+    (dumper.with_content(GeneratorInfo))
+        .dump("wire_rust.json", &generate_dump_info(&cache, context))?;
 
     let dart2rust = WireRustCodecEntrypoint::generate_all(context, &cache, Decode);
     let rust2dart = WireRustCodecEntrypoint::generate_all(context, &cache, Encode);

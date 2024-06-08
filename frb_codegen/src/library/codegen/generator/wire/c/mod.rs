@@ -29,10 +29,10 @@ pub(crate) fn generate(
         rust_output_texts,
         progress_bar_pack,
     )?;
-    dumper.dump(ConfigDumpContent::GeneratorSpec, "wire_c.json", &spec)?;
+    (dumper.with_content(ConfigDumpContent::GeneratorSpec)).dump("wire_c.json", &spec)?;
 
     let text = text_generator::generate(spec)?;
-    dumper.dump_str(ConfigDumpContent::GeneratorText, "wire_c/content.h", &text)?;
+    (dumper.with_content(ConfigDumpContent::GeneratorText)).dump_str("wire_c/content.h", &text)?;
 
     Ok(GeneratorWireCOutput {
         output_texts: PathTexts({

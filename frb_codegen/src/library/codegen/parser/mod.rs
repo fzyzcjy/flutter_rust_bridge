@@ -4,7 +4,10 @@ use crate::codegen::ir::mir::pack::MirPack;
 use crate::codegen::misc::GeneratorProgressBarPack;
 use crate::codegen::parser::internal_config::ParserInternalConfig;
 use crate::codegen::ConfigDumpContent;
+use crate::codegen::ConfigDumpContent::Hir;
+use ConfigDumpContent::Mir;
 
+pub(crate) mod early_generator;
 pub(crate) mod hir;
 pub(crate) mod internal_config;
 pub(crate) mod mir;
@@ -23,20 +26,27 @@ fn parse_inner(
     progress_bar_pack: &GeneratorProgressBarPack,
     on_hir_flat: impl FnOnce(&HirFlatPack) -> anyhow::Result<()>,
 ) -> anyhow::Result<MirPack> {
+    let dumper_hir = dumper.with_content(Hir);
+    let dumper_hir_tree = dumper_hir.with_add_name_prefix("hir_tree/");
+    let dumper_hir_naive_flat = dumper_hir.with_add_name_prefix("hir_naive_flat/");
+    let dumper_hir_flat = dumper_hir.with_add_name_prefix("hir_flat/");
+    let dumper_early_generator = dumper_hir.with_add_name_prefix("early_generator/");
+    let dumper_mir = dumper.with_content(Mir);
+
     let pb = progress_bar_pack.parse_hir_raw.start();
     let hir_raw = hir::raw::parse(&config.hir, dumper)?;
     drop(pb);
 
     let pb = progress_bar_pack.parse_hir_primary.start();
-    let hir_tree = hir::tree::parse(&config.hir, hir_raw, dumper)?;
-    let hir_naive_flat = hir::naive_flat::parse(&config.hir, hir_tree, dumper)?;
-    let hir_flat = hir::flat::parse(&config.hir, hir_naive_flat, dumper)?;
+    let hir_tree = hir::tree::parse(&config.hir, hir_raw, &dumper_hir_tree)?;
+    let hir_naive_flat = hir::naive_flat::parse(&config.hir, hir_tree, &dumper_hir_naive_flat)?;
+    let hir_flat = hir::flat::parse(&config.hir, hir_naive_flat, &dumper_hir_flat)?;
+    let hir_flat = early_generator::execute(hir_flat, &config.mir, &dumper_early_generator)?;
     on_hir_flat(&hir_flat)?;
     drop(pb);
 
     let pb = progress_bar_pack.parse_mir.start();
-    let mir_pack = mir::parse(&config.mir, &hir_flat, dumper)?;
-    dumper.dump(ConfigDumpContent::Mir, "mir_pack.json", &mir_pack)?;
+    let mir_pack = mir::parse(&config.mir, &hir_flat, &dumper_mir)?;
     drop(pb);
 
     Ok(mir_pack)
@@ -170,7 +180,7 @@ mod tests {
 
         let pack = parse_inner(
             &config,
-            &Dumper(&Default::default()),
+            &Dumper::new(&Default::default()),
             &GeneratorProgressBarPack::new(),
             |hir_flat| {
                 json_golden_test(

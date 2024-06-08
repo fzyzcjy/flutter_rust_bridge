@@ -1,40 +1,32 @@
 use crate::codegen::ir::hir::flat::pack::HirFlatPack;
 use crate::codegen::ir::hir::flat::traits::HirFlatTrait;
+use crate::codegen::ir::mir::pack::MirPack;
 use crate::codegen::ir::mir::trait_impl::MirTraitImpl;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::hir::flat::extra_code_injector::inject_extra_code;
 use crate::codegen::parser::hir::internal_config::ParserHirInternalConfig;
 use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
 use crate::codegen::parser::mir::parser::function::real::FUNC_PREFIX_FRB_INTERNAL_NO_IMPL;
-use crate::codegen::parser::mir::parser::tentative_parse_trait_impls;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
 use strum_macros::Display;
 
-pub(crate) fn transform(
-    mut pack: HirFlatPack,
-    config: &ParserHirInternalConfig,
-) -> anyhow::Result<HirFlatPack> {
-    let trait_impls = tentative_parse_trait_impls(&pack)?;
-
-    let extra_code = (pack.traits.iter())
+pub(crate) fn generate(
+    pack: &HirFlatPack,
+    tentative_mir_pack: &MirPack,
+) -> anyhow::Result<String> {
+    Ok((pack.traits.iter())
         .filter(|x| {
             FrbAttributes::parse(&x.attrs)
                 .unwrap()
                 .generate_implementor_enum()
         })
         .sorted_by_key(|x| x.name.clone())
-        .map(|x| generate_trait_impl_enum(x, &trait_impls))
+        .map(|x| generate_trait_impl_enum(x, &tentative_mir_pack.trait_impls))
         .collect::<anyhow::Result<Vec<_>>>()?
         .into_iter()
-        .join("");
-
-    let namespace = &config.rust_input_namespace_pack.rust_output_path_namespace;
-
-    inject_extra_code(&mut pack, &extra_code, namespace)?;
-
-    Ok(pack)
+        .join(""))
 }
 
 fn generate_trait_impl_enum(

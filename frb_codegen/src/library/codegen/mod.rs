@@ -25,8 +25,10 @@ pub fn generate(config: Config, meta_config: MetaConfig) -> anyhow::Result<()> {
     let internal_config = InternalConfig::parse(&config, &meta_config)?;
     debug!("internal_config={internal_config:?}");
 
-    let dumper = Dumper(&internal_config.dumper);
-    dumper.dump(ContentConfig, "config.json", &config)?;
+    let dumper = Dumper::new(&internal_config.dumper);
+    dumper
+        .with_content(ContentConfig)
+        .dump("config.json", &config)?;
 
     controller::run(&internal_config.controller, &|| {
         generate_once(&internal_config, &dumper)
@@ -38,7 +40,9 @@ pub fn generate(config: Config, meta_config: MetaConfig) -> anyhow::Result<()> {
 fn generate_once(internal_config: &InternalConfig, dumper: &Dumper) -> anyhow::Result<()> {
     let progress_bar_pack = GeneratorProgressBarPack::new();
 
-    dumper.dump(ContentConfig, "internal_config.json", &internal_config)?;
+    dumper
+        .with_content(ContentConfig)
+        .dump("internal_config.json", &internal_config)?;
 
     preparer::prepare(&internal_config.preparer)?;
 

@@ -21,11 +21,11 @@ pub(crate) fn generate(
     dumper: &Dumper,
 ) -> Result<GeneratorApiDartOutput> {
     let spec = spec_generator::generate(mir_pack, config, dumper)?;
-    dumper.dump(ConfigDumpContent::GeneratorSpec, "api_dart.json", &spec)?;
+
+    (dumper.with_content(ConfigDumpContent::GeneratorSpec)).dump("api_dart.json", &spec)?;
 
     let text = text_generator::generate(&spec, config)?;
-    dumper.dump_path_texts(
-        ConfigDumpContent::GeneratorText,
+    (dumper.with_content(ConfigDumpContent::GeneratorText)).dump_path_texts(
         "api_dart",
         &text.output_texts,
         &config.dart_decl_base_output_path,
@@ -85,13 +85,13 @@ mod tests {
         let internal_config = InternalConfig::parse(&config, &MetaConfig { watch: false })?;
         let mir_pack = crate::codegen::parser::parse(
             &internal_config.parser,
-            &Dumper(&Default::default()),
+            &Dumper::new(&Default::default()),
             &GeneratorProgressBarPack::new(),
         )?;
         let actual = generate(
             &mir_pack,
             &internal_config.generator.api_dart,
-            &Dumper(&Default::default()),
+            &Dumper::new(&Default::default()),
         )?;
 
         let output_texts = actual.output_texts;

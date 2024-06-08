@@ -55,11 +55,8 @@ pub(crate) fn generate(
     let cache = MirPackComputedCache::compute(mir_pack);
     let context = ApiDartGeneratorContext { mir_pack, config };
 
-    dumper.dump(
-        GeneratorInfo,
-        "api_dart.json",
-        &generate_dump_info(&cache, context),
-    )?;
+    (dumper.with_content(GeneratorInfo))
+        .dump("api_dart.json", &generate_dump_info(&cache, context))?;
 
     let funcs_with_impl = mir_pack.funcs_with_impl();
     let grouped_funcs = (funcs_with_impl.iter()).into_group_map_by(|x| x.name.namespace.clone());

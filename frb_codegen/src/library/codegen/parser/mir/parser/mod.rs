@@ -4,11 +4,8 @@ pub(crate) mod misc;
 pub(crate) mod trait_impl;
 pub(crate) mod ty;
 
-use crate::codegen::generator::codec::structs::CodecMode;
 use crate::codegen::ir::hir::flat::pack::HirFlatPack;
 use crate::codegen::ir::mir::pack::MirPack;
-use crate::codegen::ir::mir::trait_impl::MirTraitImpl;
-use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
 use crate::codegen::parser::mir::parser::ty::TypeParser;
 use crate::codegen::parser::mir::sanity_checker::opaque_inside_translatable_checker::check_opaque_inside_translatable;
@@ -59,15 +56,16 @@ pub(crate) fn parse(
     Ok(ans)
 }
 
-pub(crate) fn tentative_parse_trait_impls(
-    hir_flat: &HirFlatPack,
-) -> anyhow::Result<Vec<MirTraitImpl>> {
-    let mut type_parser = TypeParser::new_from_hir_flat_pack(hir_flat);
-    trait_impl::parse(
-        &hir_flat.trait_impls,
-        &mut type_parser,
-        // randomly pick a value, which does not matter for this "tentative" purpose
-        CodecMode::Sse,
-        RustOpaqueCodecMode::Moi,
-    )
-}
+// TODO rm
+// pub(crate) fn tentative_parse_trait_impls(
+//     hir_flat: &HirFlatPack,
+// ) -> anyhow::Result<Vec<MirTraitImpl>> {
+//     let mut type_parser = TypeParser::new_from_hir_flat_pack(hir_flat);
+//     trait_impl::parse(
+//         &hir_flat.trait_impls,
+//         &mut type_parser,
+//         // randomly pick a value, which does not matter for this "tentative" purpose
+//         CodecMode::Sse,
+//         RustOpaqueCodecMode::Moi,
+//     )
+// }
