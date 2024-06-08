@@ -128,8 +128,6 @@ fn generate_code_read_write_guard(
         format!(
             "
             impl std::ops::DerefMut for {enum_name}<'_> {{
-                type Target = dyn {trait_def_name};
-
                 fn deref_mut(&mut self) -> &mut Self::Target {{
                     {body}
                 }}

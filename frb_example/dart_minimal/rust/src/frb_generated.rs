@@ -451,8 +451,6 @@ impl std::ops::Deref for SimpleTraitForDynTwinNormalRwLockWriteGuard<'_> {
 }
 
 impl std::ops::DerefMut for SimpleTraitForDynTwinNormalRwLockWriteGuard<'_> {
-    type Target = dyn SimpleTraitForDynTwinNormal;
-
     fn deref_mut(&mut self) -> &mut Self::Target {
         match self {
             Self::StructOneWithTraitForDynTwinNormal(inner) => inner.deref_mut(),
