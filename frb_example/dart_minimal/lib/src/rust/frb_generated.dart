@@ -666,7 +666,7 @@ class MyNodeImpl extends RustOpaque implements MyNode {
   Future<MyAudioParam> paramOne() => MyAudioParamProxyVariantMyNode(this);
 }
 
-class MyAudioParamProxyVariantMyNode {
+class MyAudioParamProxyVariantMyNode implements MyAudioParam {
   Future<String> myMethod() =>
       RustLib.instance.api.crateApiMinimalMyAudioParamMyMethod(
         that: this,
