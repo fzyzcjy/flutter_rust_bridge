@@ -11,9 +11,10 @@ use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
 use strum_macros::Display;
+use crate::codegen::ir::early_generator::pack::IrEarlyGeneratorPack;
 
 pub(crate) fn generate(
-    pack: &mut HirFlatPack,
+    pack: &mut IrEarlyGeneratorPack,
     tentative_mir_pack: &MirPack,
     config_mir: &ParserMirInternalConfig,
 ) -> anyhow::Result<()> {

@@ -8,9 +8,10 @@ use crate::codegen::parser::mir::parser::function::real::FUNC_PREFIX_FRB_INTERNA
 use crate::if_then_some;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use itertools::Itertools;
+use crate::codegen::ir::early_generator::pack::IrEarlyGeneratorPack;
 
 pub(crate) fn generate(
-    pack: &mut HirFlatPack,
+    pack: &mut IrEarlyGeneratorPack,
     tentative_mir_pack: &MirPack,
     config_mir: &ParserMirInternalConfig,
 ) -> anyhow::Result<()> {
