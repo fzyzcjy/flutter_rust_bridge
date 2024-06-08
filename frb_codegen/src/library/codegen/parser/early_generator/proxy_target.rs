@@ -21,5 +21,9 @@ pub(crate) fn generate(pack: &HirFlatPack, tentative_mir_pack: &MirPack) -> anyh
 }
 
 fn generate_proxy_target(proxy_variants: &[MirTypeDelegateProxyVariant]) -> String {
-    format!("{TODO}")
+    format!("
+    enum {TODO} {{
+        {variants}
+    }}
+    ")
 }
