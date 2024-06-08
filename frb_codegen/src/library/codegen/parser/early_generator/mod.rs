@@ -1,4 +1,5 @@
-pub(crate) mod trait_impl_enum;
+mod proxy_target;
+mod trait_impl_enum;
 
 use crate::codegen::dumper::Dumper;
 use crate::codegen::ir::hir::flat::pack::HirFlatPack;
@@ -15,11 +16,14 @@ pub(crate) fn execute(
     let dumper_tentative_mir = dumper.with_add_name_prefix("tentative_mir/");
     let tentative_mir_pack = mir::parse(config_mir, &pack, &dumper_tentative_mir)?;
 
-    let extra_code = trait_impl_enum::generate(&pack, &tentative_mir_pack)?;
+    let extra_codes = vec![
+        trait_impl_enum::generate(&pack, &tentative_mir_pack)?,
+        proxy_target::generate(&pack, &tentative_mir_pack)?,
+    ];
 
     inject_extra_code(
         &mut pack,
-        &extra_code,
+        &extra_codes.join(""),
         &(config_mir.rust_input_namespace_pack).rust_output_path_namespace,
     )?;
 
