@@ -1,9 +1,18 @@
 import 'package:flutter_rust_bridge/src/rust_arc/_common.dart';
 import 'package:meta/meta.dart';
 
+/// {@macro flutter_rust_bridge.only_for_generated_code}
+abstract class RustOpaqueInterface {
+  /// Dispose the underlying `Arc`.
+  void dispose();
+
+  /// Whether the underlying `Arc` is disposed.
+  bool get isDisposed;
+}
+
 /// An opaque pointer to a native arbitrary Rust type.
 /// TODO: link to the doc talking about "dispose"/GC semantics
-abstract class RustOpaque {
+abstract class RustOpaque implements RustOpaqueInterface {
   final RustArc _arc;
 
   /// If true, when sending this object to Rust, the ownership of this object
