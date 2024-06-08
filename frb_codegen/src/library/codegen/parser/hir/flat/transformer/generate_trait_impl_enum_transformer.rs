@@ -41,21 +41,24 @@ fn generate_trait_impl_enum(
         .map(|x| x.impl_ty.clone())
         .collect_vec();
 
-    let enum_impl = generate_simple_enum(
-        &interest_trait_impls,
-        &format!("{trait_def_name}Impl"),
-        |ty| format!("RustAutoOpaque<{ty}>"),
-    );
+    let enum_impl_name = format!("{trait_def_name}Impl");
+    let enum_impl_def = generate_enum_raw(&interest_trait_impls, &enum_impl_name, |ty| {
+        format!("RustAutoOpaque<{ty}>")
+    });
 
     Ok(format!(
-        "{enum_impl}
+        "{enum_impl_def}
+
+        impl {enum_impl_name} {{
+            {enum_impl_methods}
+        }}
 
         pub fn {FUNC_PREFIX_FRB_INTERNAL_NO_IMPL}_dummy_function_{trait_def_name}(a: {trait_def_name}Impl) {{ }}
         "
     ))
 }
 
-fn generate_simple_enum(
+fn generate_enum_raw(
     trait_impls: &[MirType],
     enum_name: &str,
     wrapper: impl Fn(&str) -> String,
@@ -69,6 +72,14 @@ fn generate_simple_enum(
 
     format!(
         "pub enum {enum_name} {{
+            {variants}
+        }}"
+    )
+}
+
+fn generate_match_raw() -> String {
+    format!(
+        "match self {{
             {variants}
         }}"
     )
