@@ -12,12 +12,11 @@ use convert_case::{Case, Casing};
 use itertools::Itertools;
 use strum_macros::Display;
 
-pub(crate) fn transform(
-    mut pack: HirFlatPack,
+pub(crate) fn generate(
+    pack: &HirFlatPack,
     tentative_mir_pack: &MirPack,
-    config: &ParserHirInternalConfig,
-) -> anyhow::Result<HirFlatPack> {
-    let extra_code = (pack.traits.iter())
+) -> anyhow::Result<String> {
+    Ok((pack.traits.iter())
         .filter(|x| {
             FrbAttributes::parse(&x.attrs)
                 .unwrap()
@@ -27,13 +26,7 @@ pub(crate) fn transform(
         .map(|x| generate_trait_impl_enum(x, &tentative_mir_pack.trait_impls))
         .collect::<anyhow::Result<Vec<_>>>()?
         .into_iter()
-        .join("");
-
-    let namespace = &config.rust_input_namespace_pack.rust_output_path_namespace;
-
-    inject_extra_code(&mut pack, &extra_code, namespace)?;
-
-    Ok(pack)
+        .join(""))
 }
 
 fn generate_trait_impl_enum(
