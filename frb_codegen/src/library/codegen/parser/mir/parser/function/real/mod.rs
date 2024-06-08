@@ -381,12 +381,11 @@ fn refine_namespace(owner: &MirFuncOwnerInfo) -> Option<Namespace> {
 
 fn is_allowed_owner(owner_ty: &MirType, attributes: &FrbAttributes) -> bool {
     // if `#[frb(external)]`, then allow arbitrary type
-    if attributes.external() {
-        return true;
-    }
+    attributes.external() || is_struct_or_enum_or_opaque_from_them(owner_ty)
+}
 
-    // wants structs or enums that we know
-    match owner_ty {
+pub(crate) fn is_struct_or_enum_or_opaque_from_them(ty: &MirType) -> bool {
+    match ty {
         MirType::StructRef(_)
         | MirType::EnumRef(_)
         | MirType::Delegate(MirTypeDelegate::PrimitiveEnum(_)) => true,
