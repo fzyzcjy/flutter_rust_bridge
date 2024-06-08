@@ -57,13 +57,13 @@ fn generate_trait_impl_enum(
 
         {code_write_guard}
 
-        pub fn {FUNC_PREFIX_FRB_INTERNAL_NO_IMPL}_dummy_function_{trait_def_name}(a: {trait_def_name}Impl) {{ }}
+        pub fn {FUNC_PREFIX_FRB_INTERNAL_NO_IMPL}_dummy_function_{trait_def_name}(a: {trait_def_name}Implementor) {{ }}
         "
     ))
 }
 
 fn generate_code_impl(trait_def_name: &str, trait_impls: &[MirType]) -> String {
-    let enum_name = format!("{trait_def_name}Impl");
+    let enum_name = format!("{trait_def_name}Implementor");
     let enum_def = generate_enum_raw(&trait_impls, &enum_name, |ty| {
         format!("RustAutoOpaque<{ty}>")
     });
