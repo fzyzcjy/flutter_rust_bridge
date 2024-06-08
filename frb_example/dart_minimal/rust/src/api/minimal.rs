@@ -56,7 +56,8 @@ impl SimpleTraitTwinNormal for StructTwoWithTraitTwinNormal {
 }
 
 pub fn func_arg_trait_impl_twin_normal(arg: SimpleTraitTwinNormalImpl) -> i32 {
-    // TODO
+    let arg = arg.blocking_read();
+    arg.simple_trait_fn_receiver_borrow_twin_normal()
 }
 
 impl SimpleTraitTwinNormalImpl {
