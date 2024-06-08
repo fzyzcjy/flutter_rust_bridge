@@ -55,11 +55,12 @@ pub enum MirFuncArgMode {
     Named,
 }
 
-#[derive(Copy)]
 pub enum MirFuncImplMode {
     Normal,
     NoImpl,
-    DartOnly,
+    DartOnly {
+        code: String,
+    },
 }
 
 pub enum MirFuncOwnerInfo {

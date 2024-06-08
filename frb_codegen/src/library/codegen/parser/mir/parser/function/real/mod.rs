@@ -405,7 +405,9 @@ fn compute_impl_mode(
     if is_owner_trait_def || func_name.starts_with(FUNC_PREFIX_FRB_INTERNAL_NO_IMPL) {
         MirFuncImplMode::NoImpl
     } else if attributes.proxy() {
-        MirFuncImplMode::DartOnly
+        MirFuncImplMode::DartOnly {
+            code: TODO,
+        }
     } else {
         MirFuncImplMode::Normal
     }
