@@ -35,7 +35,7 @@ flutter_rust_bridge::frb_generated_boilerplate!(
     default_rust_auto_opaque = RustAutoOpaqueMoi,
 );
 pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "2.0.0-dev.37";
-pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = -1370915949;
+pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = -1342678134;
 
 // Section: executor
 
@@ -369,41 +369,6 @@ fn wire__crate__api__minimal__minimal_adder_impl(
         },
     )
 }
-fn wire__crate__frb_generated__hello_generate_trait_impl_enum_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "hello_generate_trait_impl_enum",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
-        },
-        move || {
-            let message = unsafe {
-                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
-                    ptr_,
-                    rust_vec_len_,
-                    data_len_,
-                )
-            };
-            let mut deserializer =
-                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_a =
-                <crate::frb_generated::SimpleTraitTwinNormalImpl>::sse_decode(&mut deserializer);
-            deserializer.end();
-            move |context| {
-                transform_result_sse((move || {
-                    Result::<_, ()>::Ok({
-                        crate::frb_generated::hello_generate_trait_impl_enum(api_a);
-                    })
-                })())
-            }
-        },
-    )
-}
 
 // Section: related_funcs
 
@@ -420,9 +385,7 @@ enum SimpleTraitTwinNormalImpl {
     Hello(i32),
 }
 
-pub fn hello_generate_trait_impl_enum(a: SimpleTraitTwinNormalImpl) {
-    let _ = a;
-}
+pub fn frb_internal_no_impl_dummy_function_SimpleTraitTwinNormal(a: SimpleTraitTwinNormalImpl) {}
 
 // Section: dart2rust
 
@@ -529,7 +492,6 @@ fn pde_ffi_dispatcher_primary_impl(
 10 => wire__crate__api__minimal__StructTwoWithTraitTwinNormal_simple_trait_fn_with_default_impl_twin_normal_impl(port, ptr, rust_vec_len, data_len),
 14 => wire__crate__api__minimal__init_app_impl(port, ptr, rust_vec_len, data_len),
 15 => wire__crate__api__minimal__minimal_adder_impl(port, ptr, rust_vec_len, data_len),
-16 => wire__crate__frb_generated__hello_generate_trait_impl_enum_impl(port, ptr, rust_vec_len, data_len),
                         _ => unreachable!(),
                     }
 }

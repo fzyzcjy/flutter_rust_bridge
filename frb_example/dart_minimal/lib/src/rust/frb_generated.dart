@@ -63,7 +63,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.0.0-dev.37';
 
   @override
-  int get rustContentHash => -1370915949;
+  int get rustContentHash => -1342678134;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -111,9 +111,6 @@ abstract class RustLibApi extends BaseApi {
   Future<void> crateApiMinimalInitApp();
 
   Future<int> crateApiMinimalMinimalAdder({required int a, required int b});
-
-  Future<void> crateFrbGeneratedHelloGenerateTraitImplEnum(
-      {required SimpleTraitTwinNormalImpl a});
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_StructOneWithTraitTwinNormal;
@@ -479,32 +476,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       const TaskConstMeta(
         debugName: "minimal_adder",
         argNames: ["a", "b"],
-      );
-
-  @override
-  Future<void> crateFrbGeneratedHelloGenerateTraitImplEnum(
-      {required SimpleTraitTwinNormalImpl a}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_box_autoadd_simple_trait_twin_normal_impl(a, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 16, port: port_);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
-      ),
-      constMeta: kCrateFrbGeneratedHelloGenerateTraitImplEnumConstMeta,
-      argValues: [a],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta get kCrateFrbGeneratedHelloGenerateTraitImplEnumConstMeta =>
-      const TaskConstMeta(
-        debugName: "hello_generate_trait_impl_enum",
-        argNames: ["a"],
       );
 
   RustArcIncrementStrongCountFnType
@@ -889,10 +860,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     serializer.buffer.putUint8(self ? 1 : 0);
   }
 }
-
-Future<void> helloGenerateTraitImplEnum(
-        {required SimpleTraitTwinNormalImpl a}) =>
-    RustLib.instance.api.crateFrbGeneratedHelloGenerateTraitImplEnum(a: a);
 
 @freezed
 sealed class SimpleTraitTwinNormalImpl with _$SimpleTraitTwinNormalImpl {
