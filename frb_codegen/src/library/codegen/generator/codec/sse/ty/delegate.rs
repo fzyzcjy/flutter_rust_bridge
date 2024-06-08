@@ -2,8 +2,8 @@ use crate::codegen::generator::api_dart::spec_generator::base::ApiDartGenerator;
 use crate::codegen::generator::codec::sse::lang::*;
 use crate::codegen::generator::codec::sse::ty::*;
 use crate::codegen::ir::mir::ty::delegate::{
-    MirTypeDelegatePrimitiveEnum, MirTypeDelegateSet, MirTypeDelegateStreamSink,
-    MirTypeDelegateTime,
+    MirTypeDelegatePrimitiveEnum, MirTypeDelegateProxyEnum, MirTypeDelegateSet,
+    MirTypeDelegateStreamSink, MirTypeDelegateTime,
 };
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use convert_case::{Case, Casing};
@@ -43,11 +43,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 }
                 MirTypeDelegate::BigPrimitive(_) => "self.toString()".to_owned(),
                 MirTypeDelegate::RustAutoOpaqueExplicit(_ir) => "self".to_owned(),
-                MirTypeDelegate::ProxyEnum(mir) => format!(
-                    "{}._create(self)",
-                    ApiDartGenerator::new(mir.inner.clone(), self.context.as_api_dart_context())
-                        .dart_api_type()
-                ),
+                MirTypeDelegate::ProxyEnum(mir) => generate_proxy_enum_dart_encode(mir),
                 // MirTypeDelegate::DynTrait(_ir) => lang.throw_unimplemented(""),
             },
             Lang::RustLang(_) => match &self.mir {
@@ -284,4 +280,14 @@ pub(crate) fn generate_stream_sink_setup_and_serialize(
     );
 
     format!("{var_name}.setupAndSerialize(codec: {codec_code})")
+}
+
+fn generate_proxy_enum_dart_encode(mir: &MirTypeDelegateProxyEnum) -> String {
+    format!(
+        "
+        (() {{
+            {variants}
+        }})()
+        "
+    )
 }
