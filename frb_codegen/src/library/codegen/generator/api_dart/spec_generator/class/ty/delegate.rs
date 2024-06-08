@@ -2,6 +2,7 @@ use crate::codegen::generator::api_dart::spec_generator::class::ty::ApiDartGener
 use crate::codegen::generator::api_dart::spec_generator::class::ApiDartGeneratedClass;
 use crate::codegen::ir::mir::ty::delegate::{
     MirTypeDelegate, MirTypeDelegateArray, MirTypeDelegateArrayMode, MirTypeDelegatePrimitiveEnum,
+    MirTypeDelegateProxyVariant,
 };
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
@@ -14,6 +15,13 @@ impl<'a> ApiDartGeneratorClassTrait for DelegateApiDartGenerator<'a> {
                 EnumRefApiDartGenerator::new(mir.clone(), self.context).generate_class()
             }
             MirTypeDelegate::Array(array) => generate_array(array, self.context),
+            _ => None,
+        }
+    }
+
+    fn generate_extra_impl_code(&self) -> Option<String> {
+        match &self.mir {
+            MirTypeDelegate::ProxyVariant(mir) => Some(generate_proxy_variant(mir)),
             _ => None,
         }
     }
@@ -65,4 +73,11 @@ fn generate_array(
         ),
         needs_freezed: false,
     })
+}
+
+fn generate_proxy_variant(mir: &MirTypeDelegateProxyVariant) -> String {
+    format!(
+        "class TODO {{
+        }}"
+    )
 }
