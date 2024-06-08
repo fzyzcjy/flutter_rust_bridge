@@ -7,7 +7,7 @@ use crate::codegen::generator::api_dart::spec_generator::{
 use crate::codegen::generator::misc::target::TargetOrCommonMap;
 use crate::codegen::generator::misc::generate_code_header;
 use crate::codegen::generator::misc::path_texts::{PathText, PathTexts};
-use crate::utils::basic_code::DartBasicHeaderCode;
+use crate::utils::basic_code::dart_basic_header_code::DartBasicHeaderCode;
 use crate::utils::path_utils::path_to_string;
 use anyhow::Context;
 use itertools::{concat, Itertools};

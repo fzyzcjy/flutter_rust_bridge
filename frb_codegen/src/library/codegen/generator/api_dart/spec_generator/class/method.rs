@@ -9,7 +9,7 @@ use crate::codegen::ir::mir::func::{
 };
 use crate::if_then_some;
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
-use crate::utils::basic_code::DartBasicHeaderCode;
+use crate::utils::basic_code::dart_basic_header_code::DartBasicHeaderCode;
 use crate::utils::namespace::NamespacedName;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
