@@ -7,6 +7,7 @@ import '../../api/override_web_audio_api.dart';
 import '../../frb_generated.dart';
 import '../web_audio_api.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
+import 'worklet.dart';
 
 // These functions are ignored because they have generic arguments: `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect`, `connect`, `connect`, `set_onended`, `set_onended`, `set_onended`, `set_onended`
 // These types are ignored because they are not used by any `pub` functions: `AnalyserOptions`, `AudioBufferSourceOptions`, `AudioNodeOptions`, `BiquadFilterOptions`, `ChannelConfig`, `ChannelMergerOptions`, `ChannelSplitterOptions`, `ConstantSourceOptions`, `ConvolverOptions`, `DelayOptions`, `DynamicsCompressorOptions`, `GainOptions`, `IIRFilterOptions`, `MediaElementAudioSourceOptions`, `MediaStreamAudioSourceOptions`, `MediaStreamRenderer`, `MediaStreamTrackAudioSourceOptions`, `OscillatorOptions`, `PannerOptions`, `ScriptProcessorOptions`, `StereoPannerOptions`, `WaveShaperOptions`
@@ -55,6 +56,8 @@ abstract class AnalyserNode implements AnalyserNodeExt, AudioNode {
   ///
   /// This method may panic if the lock to the inner analyser is poisoned
   Future<BigInt> fftSize();
+
+  Future<void> connect({required AudioNodeImplementor dest});
 
   /// Number of bins in the FFT results, is half the FFT size
   ///
@@ -183,6 +186,8 @@ abstract class AudioBufferSourceNode
   /// This function will panic when
   /// - if the output port is out of bounds for this node
   Future<void> disconnectOutput({required BigInt output});
+
+  Future<void> connect({required AudioNodeImplementor dest});
 
   /// Defines if the playback the [`AudioBuffer`] should be looped
   Future<bool> loop();
@@ -324,6 +329,8 @@ abstract class AudioDestinationNode
   /// - if the output port is out of bounds for this node
   Future<void> disconnectOutput({required BigInt output});
 
+  Future<void> connect({required AudioNodeImplementor dest});
+
   /// The maximum number of channels that the channelCount attribute can be set to (the max
   /// number of channels that the hardware is capable of supporting).
   /// <https://www.w3.org/TR/webaudio/#dom-audiodestinationnode-maxchannelcount>
@@ -390,6 +397,8 @@ abstract class BiquadFilterNode implements AudioNode, BiquadFilterNodeExt {
   /// This function will panic when
   /// - if the output port is out of bounds for this node
   Future<void> disconnectOutput({required BigInt output});
+
+  Future<void> connect({required AudioNodeImplementor dest});
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
   Future<BigInt> numberOfInputs();
@@ -463,6 +472,8 @@ abstract class ChannelMergerNode implements AudioNode, ChannelMergerNodeExt {
   /// - if the output port is out of bounds for this node
   Future<void> disconnectOutput({required BigInt output});
 
+  Future<void> connect({required AudioNodeImplementor dest});
+
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
   Future<BigInt> numberOfInputs();
 
@@ -525,6 +536,8 @@ abstract class ChannelSplitterNode
   /// This function will panic when
   /// - if the output port is out of bounds for this node
   Future<void> disconnectOutput({required BigInt output});
+
+  Future<void> connect({required AudioNodeImplementor dest});
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
   Future<BigInt> numberOfInputs();
@@ -591,6 +604,8 @@ abstract class ConstantSourceNode
   /// This function will panic when
   /// - if the output port is out of bounds for this node
   Future<void> disconnectOutput({required BigInt output});
+
+  Future<void> connect({required AudioNodeImplementor dest});
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
   Future<BigInt> numberOfInputs();
@@ -682,6 +697,8 @@ abstract class ConvolverNode implements AudioNode, ConvolverNodeExt {
   /// - if the output port is out of bounds for this node
   Future<void> disconnectOutput({required BigInt output});
 
+  Future<void> connect({required AudioNodeImplementor dest});
+
   /// Denotes if the response buffer will be scaled with an equal-power normalization
   Future<bool> normalize();
 
@@ -758,6 +775,8 @@ abstract class DelayNode implements AudioNode, DelayNodeExt {
   /// - if the output port is out of bounds for this node
   Future<void> disconnectOutput({required BigInt output});
 
+  Future<void> connect({required AudioNodeImplementor dest});
+
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
   Future<BigInt> numberOfInputs();
 
@@ -820,6 +839,8 @@ abstract class DynamicsCompressorNode
   /// This function will panic when
   /// - if the output port is out of bounds for this node
   Future<void> disconnectOutput({required BigInt output});
+
+  Future<void> connect({required AudioNodeImplementor dest});
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
   Future<BigInt> numberOfInputs();
@@ -885,6 +906,8 @@ abstract class GainNode implements AudioNode, GainNodeExt {
   /// - if the output port is out of bounds for this node
   Future<void> disconnectOutput({required BigInt output});
 
+  Future<void> connect({required AudioNodeImplementor dest});
+
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
   Future<BigInt> numberOfInputs();
 
@@ -946,6 +969,8 @@ abstract class IirFilterNode implements AudioNode, IIRFilterNodeExt {
   /// This function will panic when
   /// - if the output port is out of bounds for this node
   Future<void> disconnectOutput({required BigInt output});
+
+  Future<void> connect({required AudioNodeImplementor dest});
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
   Future<BigInt> numberOfInputs();
@@ -1010,6 +1035,8 @@ abstract class MediaElementAudioSourceNode
   /// - if the output port is out of bounds for this node
   Future<void> disconnectOutput({required BigInt output});
 
+  Future<void> connect({required AudioNodeImplementor dest});
+
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
   Future<BigInt> numberOfInputs();
 
@@ -1072,6 +1099,8 @@ abstract class MediaStreamAudioDestinationNode
   /// This function will panic when
   /// - if the output port is out of bounds for this node
   Future<void> disconnectOutput({required BigInt output});
+
+  Future<void> connect({required AudioNodeImplementor dest});
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
   Future<BigInt> numberOfInputs();
@@ -1140,6 +1169,8 @@ abstract class MediaStreamAudioSourceNode
   /// - if the output port is out of bounds for this node
   Future<void> disconnectOutput({required BigInt output});
 
+  Future<void> connect({required AudioNodeImplementor dest});
+
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
   Future<BigInt> numberOfInputs();
 
@@ -1202,6 +1233,8 @@ abstract class MediaStreamTrackAudioSourceNode
   /// This function will panic when
   /// - if the output port is out of bounds for this node
   Future<void> disconnectOutput({required BigInt output});
+
+  Future<void> connect({required AudioNodeImplementor dest});
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
   Future<BigInt> numberOfInputs();
@@ -1268,6 +1301,8 @@ abstract class OscillatorNode
   /// This function will panic when
   /// - if the output port is out of bounds for this node
   Future<void> disconnectOutput({required BigInt output});
+
+  Future<void> connect({required AudioNodeImplementor dest});
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
   Future<BigInt> numberOfInputs();
@@ -1387,6 +1422,8 @@ abstract class PannerNode implements AudioNode, PannerNodeExt {
 
   Future<DistanceModelType> distanceModel();
 
+  Future<void> connect({required AudioNodeImplementor dest});
+
   Future<double> maxDistance();
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
@@ -1505,6 +1542,8 @@ abstract class ScriptProcessorNode
   /// - if the output port is out of bounds for this node
   Future<void> disconnectOutput({required BigInt output});
 
+  Future<void> connect({required AudioNodeImplementor dest});
+
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
   Future<BigInt> numberOfInputs();
 
@@ -1567,6 +1606,8 @@ abstract class StereoPannerNode implements AudioNode, StereoPannerNodeExt {
   /// - if the output port is out of bounds for this node
   Future<void> disconnectOutput({required BigInt output});
 
+  Future<void> connect({required AudioNodeImplementor dest});
+
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
   Future<BigInt> numberOfInputs();
 
@@ -1628,6 +1669,8 @@ abstract class WaveShaperNode implements AudioNode, WaveShaperNodeExt {
   /// This function will panic when
   /// - if the output port is out of bounds for this node
   Future<void> disconnectOutput({required BigInt output});
+
+  Future<void> connect({required AudioNodeImplementor dest});
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
   Future<BigInt> numberOfInputs();
