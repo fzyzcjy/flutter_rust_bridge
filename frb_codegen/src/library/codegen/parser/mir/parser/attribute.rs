@@ -107,6 +107,10 @@ impl FrbAttributes {
         self.any_eq(&FrbAttribute::Positional)
     }
 
+    pub(crate) fn proxy(&self) -> bool {
+        self.any_eq(&FrbAttribute::Proxy)
+    }
+
     pub(crate) fn external(&self) -> bool {
         self.any_eq(&FrbAttribute::External)
     }
@@ -194,6 +198,7 @@ mod frb_keyword {
     syn::custom_keyword!(non_hash);
     syn::custom_keyword!(non_eq);
     syn::custom_keyword!(positional);
+    syn::custom_keyword!(proxy);
     syn::custom_keyword!(external);
     syn::custom_keyword!(generate_implementor_enum);
     syn::custom_keyword!(rust_opaque_codec_moi);
@@ -233,6 +238,7 @@ enum FrbAttribute {
     NonHash,
     NonEq,
     Positional,
+    Proxy,
     External,
     GenerateImplEnum,
     RustOpaqueCodecMoi,
@@ -271,6 +277,7 @@ impl Parse for FrbAttribute {
             .or_else(|| parse_keyword::<non_hash, _>(input, &lookahead, non_hash, NonHash))
             .or_else(|| parse_keyword::<non_eq, _>(input, &lookahead, non_eq, NonEq))
             .or_else(|| parse_keyword::<positional, _>(input, &lookahead, positional, Positional))
+            .or_else(|| parse_keyword::<proxy, _>(input, &lookahead, proxy, Proxy))
             .or_else(|| parse_keyword::<external, _>(input, &lookahead, external, External))
             .or_else(|| {
                 parse_keyword::<generate_implementor_enum, _>(
@@ -668,6 +675,11 @@ mod tests {
     #[test]
     fn test_positional() {
         simple_keyword_tester("positional", FrbAttribute::Positional);
+    }
+
+    #[test]
+    fn test_proxy() {
+        simple_keyword_tester("positional", FrbAttribute::Proxy);
     }
 
     #[test]
