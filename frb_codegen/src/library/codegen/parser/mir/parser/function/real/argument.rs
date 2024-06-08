@@ -63,7 +63,9 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
         let attrs = parse_attrs_from_fn_arg(sig_input);
         let attributes = FrbAttributes::parse(attrs)?;
+
         let ty = auto_add_boxed(ty);
+        
         Ok(FunctionPartialInfo {
             inputs: vec![MirFuncInput {
                 inner: MirField {
