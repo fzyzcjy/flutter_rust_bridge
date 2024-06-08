@@ -31,6 +31,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         attributes: &FrbAttributes,
     ) -> anyhow::Result<FunctionPartialInfo> {
         let mir = self.type_parser.parse_type(ty, context)?;
+        let mir = parse_maybe_proxy_return_type(mir, attributes)?;
         let info = parse_type_maybe_result(&mir, self.type_parser, context)?;
         Ok(FunctionPartialInfo {
             ok_output: Some(info.ok_output),
@@ -66,4 +67,15 @@ fn remove_reference_type(info: FunctionPartialInfo) -> FunctionPartialInfo {
         }
     }
     info
+}
+
+fn parse_maybe_proxy_return_type(
+    mir: MirType,
+    attributes: &FrbAttributes,
+) -> anyhow::Result<MirType> {
+    if attributes.proxy() {
+        return TODO;
+    }
+    
+    Ok(mir)
 }
