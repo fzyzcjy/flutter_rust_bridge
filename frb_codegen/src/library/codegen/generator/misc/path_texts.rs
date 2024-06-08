@@ -21,7 +21,7 @@ impl Add for PathTexts {
 impl PathTexts {
     pub(crate) fn new_from_targets(
         path: &TargetOrCommonMap<PathBuf>,
-        text: &Acc<Option<String>>,
+        text: &Acc<Option<GeneralCode>>,
     ) -> Self {
         Self(
             TargetOrCommon::iter()
@@ -37,7 +37,7 @@ impl PathTexts {
     pub(crate) fn write_to_disk(&self) -> anyhow::Result<()> {
         self.assert_no_duplicate_paths();
         for item in self.0.iter() {
-            create_dir_all_and_write(&item.path, &item.text)?;
+            create_dir_all_and_write(&item.path, &item.text.all_code())?;
         }
         Ok(())
     }
