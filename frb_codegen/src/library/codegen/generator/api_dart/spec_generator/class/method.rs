@@ -14,6 +14,7 @@ use crate::utils::basic_code::dart_header_code::DartHeaderCode;
 use crate::utils::namespace::NamespacedName;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
+use crate::codegen::ir::mir::ty::MirType;
 
 #[derive(Debug, Clone)]
 pub(crate) struct GenerateApiMethodConfig {
@@ -54,13 +55,14 @@ struct GeneratedApiMethod {
 }
 
 pub(crate) fn generate_api_methods(
-    query_class_name: &NamespacedName,
+    owner_ty: &MirType,
     context: ApiDartGeneratorContext,
     config: &GenerateApiMethodConfig,
     dart_class_name: &str,
 ) -> GeneratedApiMethods {
+    let query_class_name = compute_query_class_name(owner_ty);
     let methods =
-        get_methods_of_enum_or_struct(query_class_name, &context.mir_pack.funcs_all)
+        get_methods_of_enum_or_struct(&query_class_name, &context.mir_pack.funcs_all)
             .iter()
             .filter_map(|func| generate_api_method(func, context, config, dart_class_name))
             .collect_vec();
@@ -68,6 +70,12 @@ pub(crate) fn generate_api_methods(
         num_methods: methods.len(),
         code: methods.iter().map(|x| x.code.clone()).join("\n"),
         header: (methods.iter().map(|x| x.header.clone())).fold(Default::default(), |a, b| a + b),
+    }
+}
+
+pub(crate) fn compute_query_class_name(ty: &MirType) -> NamespacedName {
+    match ty {
+
     }
 }
 
