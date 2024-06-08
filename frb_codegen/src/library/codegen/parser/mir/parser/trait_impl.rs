@@ -3,6 +3,7 @@ use crate::codegen::ir::hir::flat::trait_impl::HirFlatTraitImpl;
 use crate::codegen::ir::mir::trait_impl::MirTraitImpl;
 use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
+use crate::codegen::parser::mir::parser::function::real::is_struct_or_enum_or_opaque_from_them;
 use crate::codegen::parser::mir::parser::ty::trait_def::parse_type_trait;
 use crate::codegen::parser::mir::parser::ty::{TypeParser, TypeParserParsingContext};
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
@@ -29,9 +30,7 @@ pub(crate) fn parse(
             let impl_ty = type_parser.parse_type(&x.impl_ty, &context).ok();
 
             if let (Some(trait_ty), Some(impl_ty)) = (trait_ty, impl_ty) {
-                if !impl_ty.should_ignore(type_parser) {
-                    return Ok(Some(MirTraitImpl { trait_ty, impl_ty }));
-                }
+                return Ok(Some(MirTraitImpl { trait_ty, impl_ty }));
             }
 
             Ok(None)
@@ -39,5 +38,9 @@ pub(crate) fn parse(
         .collect::<anyhow::Result<Vec<_>>>()?
         .into_iter()
         .flatten()
+        .filter(|ty| {
+            !ty.impl_ty.should_ignore(type_parser)
+                && is_struct_or_enum_or_opaque_from_them(ty.impl_ty)
+        })
         .collect_vec())
 }
