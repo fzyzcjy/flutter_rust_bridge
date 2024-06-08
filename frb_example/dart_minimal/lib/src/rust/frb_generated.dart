@@ -496,6 +496,24 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   StructOneWithTraitTwinNormal
+      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinNormal(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinNormal(
+        raw);
+  }
+
+  @protected
+  StructTwoWithTraitTwinNormal
+      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinNormal(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinNormal(
+        raw);
+  }
+
+  @protected
+  StructOneWithTraitTwinNormal
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinNormal(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -591,8 +609,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     switch (raw[0]) {
       case 0:
-        return SimpleTraitTwinNormalImpl_Hello(
-          dco_decode_i_32(raw[1]),
+        return SimpleTraitTwinNormalImpl_StructOneWithTraitTwinNormal(
+          dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinNormal(
+              raw[1]),
+        );
+      case 1:
+        return SimpleTraitTwinNormalImpl_StructTwoWithTraitTwinNormal(
+          dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinNormal(
+              raw[1]),
         );
       default:
         throw Exception("unreachable");
@@ -609,6 +633,28 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   BigInt dco_decode_usize(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return dcoDecodeU64(raw);
+  }
+
+  @protected
+  StructOneWithTraitTwinNormal
+      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinNormal(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var inner =
+        sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinNormal(
+            deserializer);
+    return inner;
+  }
+
+  @protected
+  StructTwoWithTraitTwinNormal
+      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinNormal(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var inner =
+        sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinNormal(
+            deserializer);
+    return inner;
   }
 
   @protected
@@ -705,8 +751,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var var_field0 = sse_decode_i_32(deserializer);
-        return SimpleTraitTwinNormalImpl_Hello(var_field0);
+        var var_field0 =
+            sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinNormal(
+                deserializer);
+        return SimpleTraitTwinNormalImpl_StructOneWithTraitTwinNormal(
+            var_field0);
+      case 1:
+        var var_field0 =
+            sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinNormal(
+                deserializer);
+        return SimpleTraitTwinNormalImpl_StructTwoWithTraitTwinNormal(
+            var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -727,6 +782,24 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   bool sse_decode_bool(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return deserializer.buffer.getUint8() != 0;
+  }
+
+  @protected
+  void
+      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinNormal(
+          StructOneWithTraitTwinNormal self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinNormal(
+        self, serializer);
+  }
+
+  @protected
+  void
+      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinNormal(
+          StructTwoWithTraitTwinNormal self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinNormal(
+        self, serializer);
   }
 
   @protected
@@ -835,9 +908,18 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       SimpleTraitTwinNormalImpl self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     switch (self) {
-      case SimpleTraitTwinNormalImpl_Hello(field0: final field0):
+      case SimpleTraitTwinNormalImpl_StructOneWithTraitTwinNormal(
+          field0: final field0
+        ):
         sse_encode_i_32(0, serializer);
-        sse_encode_i_32(field0, serializer);
+        sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinNormal(
+            field0, serializer);
+      case SimpleTraitTwinNormalImpl_StructTwoWithTraitTwinNormal(
+          field0: final field0
+        ):
+        sse_encode_i_32(1, serializer);
+        sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinNormal(
+            field0, serializer);
       default:
         throw UnimplementedError('');
     }
@@ -865,9 +947,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 sealed class SimpleTraitTwinNormalImpl with _$SimpleTraitTwinNormalImpl {
   const SimpleTraitTwinNormalImpl._();
 
-  const factory SimpleTraitTwinNormalImpl.hello(
-    int field0,
-  ) = SimpleTraitTwinNormalImpl_Hello;
+  const factory SimpleTraitTwinNormalImpl.structOneWithTraitTwinNormal(
+    StructOneWithTraitTwinNormal field0,
+  ) = SimpleTraitTwinNormalImpl_StructOneWithTraitTwinNormal;
+  const factory SimpleTraitTwinNormalImpl.structTwoWithTraitTwinNormal(
+    StructTwoWithTraitTwinNormal field0,
+  ) = SimpleTraitTwinNormalImpl_StructTwoWithTraitTwinNormal;
 }
 
 @sealed

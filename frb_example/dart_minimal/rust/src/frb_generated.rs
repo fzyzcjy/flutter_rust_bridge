@@ -382,12 +382,33 @@ flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
 // Section: extra_from_parser
 
 enum SimpleTraitTwinNormalImpl {
-    Hello(i32),
+    StructOneWithTraitTwinNormal(RustAutoOpaque<StructOneWithTraitTwinNormal>),
+    StructTwoWithTraitTwinNormal(RustAutoOpaque<StructTwoWithTraitTwinNormal>),
 }
 
 pub fn frb_internal_no_impl_dummy_function_SimpleTraitTwinNormal(a: SimpleTraitTwinNormalImpl) {}
 
 // Section: dart2rust
+
+impl SseDecode for RustAutoOpaqueMoi<StructOneWithTraitTwinNormal> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <RustOpaqueMoi<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructOneWithTraitTwinNormal>,
+        >>::sse_decode(deserializer);
+        return flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_decode(inner);
+    }
+}
+
+impl SseDecode for RustAutoOpaqueMoi<StructTwoWithTraitTwinNormal> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <RustOpaqueMoi<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructTwoWithTraitTwinNormal>,
+        >>::sse_decode(deserializer);
+        return flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_decode(inner);
+    }
+}
 
 impl SseDecode for StructOneWithTraitTwinNormal {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -446,8 +467,14 @@ impl SseDecode for crate::frb_generated::SimpleTraitTwinNormalImpl {
         let mut tag_ = <i32>::sse_decode(deserializer);
         match tag_ {
             0 => {
-                let mut var_field0 = <i32>::sse_decode(deserializer);
-                return crate::frb_generated::SimpleTraitTwinNormalImpl::Hello(var_field0);
+                let mut var_field0 =
+                    <RustAutoOpaqueMoi<StructOneWithTraitTwinNormal>>::sse_decode(deserializer);
+                return crate::frb_generated::SimpleTraitTwinNormalImpl::StructOneWithTraitTwinNormal(var_field0);
+            }
+            1 => {
+                let mut var_field0 =
+                    <RustAutoOpaqueMoi<StructTwoWithTraitTwinNormal>>::sse_decode(deserializer);
+                return crate::frb_generated::SimpleTraitTwinNormalImpl::StructTwoWithTraitTwinNormal(var_field0);
             }
             _ => {
                 unimplemented!("");
@@ -574,9 +601,12 @@ impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<StructTwoWithTraitTwinNormal>>
 impl flutter_rust_bridge::IntoDart for crate::frb_generated::SimpleTraitTwinNormalImpl {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {
-            crate::frb_generated::SimpleTraitTwinNormalImpl::Hello(field0) => {
-                [0.into_dart(), field0.into_into_dart().into_dart()].into_dart()
-            }
+            crate::frb_generated::SimpleTraitTwinNormalImpl::StructOneWithTraitTwinNormal(
+                field0,
+            ) => [0.into_dart(), field0.into_into_dart().into_dart()].into_dart(),
+            crate::frb_generated::SimpleTraitTwinNormalImpl::StructTwoWithTraitTwinNormal(
+                field0,
+            ) => [1.into_dart(), field0.into_into_dart().into_dart()].into_dart(),
             _ => {
                 unimplemented!("");
             }
@@ -592,6 +622,30 @@ impl flutter_rust_bridge::IntoIntoDart<crate::frb_generated::SimpleTraitTwinNorm
 {
     fn into_into_dart(self) -> crate::frb_generated::SimpleTraitTwinNormalImpl {
         self
+    }
+}
+
+impl SseEncode for RustAutoOpaqueMoi<StructOneWithTraitTwinNormal> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <RustOpaqueMoi<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructOneWithTraitTwinNormal>,
+        >>::sse_encode(
+            flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_encode(self),
+            serializer,
+        );
+    }
+}
+
+impl SseEncode for RustAutoOpaqueMoi<StructTwoWithTraitTwinNormal> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <RustOpaqueMoi<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructTwoWithTraitTwinNormal>,
+        >>::sse_encode(
+            flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_encode(self),
+            serializer,
+        );
     }
 }
 
@@ -656,9 +710,17 @@ impl SseEncode for crate::frb_generated::SimpleTraitTwinNormalImpl {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         match self {
-            crate::frb_generated::SimpleTraitTwinNormalImpl::Hello(field0) => {
+            crate::frb_generated::SimpleTraitTwinNormalImpl::StructOneWithTraitTwinNormal(
+                field0,
+            ) => {
                 <i32>::sse_encode(0, serializer);
-                <i32>::sse_encode(field0, serializer);
+                <RustAutoOpaqueMoi<StructOneWithTraitTwinNormal>>::sse_encode(field0, serializer);
+            }
+            crate::frb_generated::SimpleTraitTwinNormalImpl::StructTwoWithTraitTwinNormal(
+                field0,
+            ) => {
+                <i32>::sse_encode(1, serializer);
+                <RustAutoOpaqueMoi<StructTwoWithTraitTwinNormal>>::sse_encode(field0, serializer);
             }
             _ => {
                 unimplemented!("");

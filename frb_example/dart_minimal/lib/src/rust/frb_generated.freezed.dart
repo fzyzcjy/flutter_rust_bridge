@@ -16,42 +16,62 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$SimpleTraitTwinNormalImpl {
-  int get field0 => throw _privateConstructorUsedError;
+  SimpleTraitTwinNormal get field0 => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int field0) hello,
+    required TResult Function(StructOneWithTraitTwinNormal field0)
+        structOneWithTraitTwinNormal,
+    required TResult Function(StructTwoWithTraitTwinNormal field0)
+        structTwoWithTraitTwinNormal,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int field0)? hello,
+    TResult? Function(StructOneWithTraitTwinNormal field0)?
+        structOneWithTraitTwinNormal,
+    TResult? Function(StructTwoWithTraitTwinNormal field0)?
+        structTwoWithTraitTwinNormal,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int field0)? hello,
+    TResult Function(StructOneWithTraitTwinNormal field0)?
+        structOneWithTraitTwinNormal,
+    TResult Function(StructTwoWithTraitTwinNormal field0)?
+        structTwoWithTraitTwinNormal,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(SimpleTraitTwinNormalImpl_Hello value) hello,
+    required TResult Function(
+            SimpleTraitTwinNormalImpl_StructOneWithTraitTwinNormal value)
+        structOneWithTraitTwinNormal,
+    required TResult Function(
+            SimpleTraitTwinNormalImpl_StructTwoWithTraitTwinNormal value)
+        structTwoWithTraitTwinNormal,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(SimpleTraitTwinNormalImpl_Hello value)? hello,
+    TResult? Function(
+            SimpleTraitTwinNormalImpl_StructOneWithTraitTwinNormal value)?
+        structOneWithTraitTwinNormal,
+    TResult? Function(
+            SimpleTraitTwinNormalImpl_StructTwoWithTraitTwinNormal value)?
+        structTwoWithTraitTwinNormal,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(SimpleTraitTwinNormalImpl_Hello value)? hello,
+    TResult Function(
+            SimpleTraitTwinNormalImpl_StructOneWithTraitTwinNormal value)?
+        structOneWithTraitTwinNormal,
+    TResult Function(
+            SimpleTraitTwinNormalImpl_StructTwoWithTraitTwinNormal value)?
+        structTwoWithTraitTwinNormal,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $SimpleTraitTwinNormalImplCopyWith<SimpleTraitTwinNormalImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -60,8 +80,6 @@ abstract class $SimpleTraitTwinNormalImplCopyWith<$Res> {
   factory $SimpleTraitTwinNormalImplCopyWith(SimpleTraitTwinNormalImpl value,
           $Res Function(SimpleTraitTwinNormalImpl) then) =
       _$SimpleTraitTwinNormalImplCopyWithImpl<$Res, SimpleTraitTwinNormalImpl>;
-  @useResult
-  $Res call({int field0});
 }
 
 /// @nodoc
@@ -74,41 +92,35 @@ class _$SimpleTraitTwinNormalImplCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? field0 = null,
-  }) {
-    return _then(_value.copyWith(
-      field0: null == field0
-          ? _value.field0
-          : field0 // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$SimpleTraitTwinNormalImpl_HelloImplCopyWith<$Res>
-    implements $SimpleTraitTwinNormalImplCopyWith<$Res> {
-  factory _$$SimpleTraitTwinNormalImpl_HelloImplCopyWith(
-          _$SimpleTraitTwinNormalImpl_HelloImpl value,
-          $Res Function(_$SimpleTraitTwinNormalImpl_HelloImpl) then) =
-      __$$SimpleTraitTwinNormalImpl_HelloImplCopyWithImpl<$Res>;
-  @override
+abstract class _$$SimpleTraitTwinNormalImpl_StructOneWithTraitTwinNormalImplCopyWith<
+    $Res> {
+  factory _$$SimpleTraitTwinNormalImpl_StructOneWithTraitTwinNormalImplCopyWith(
+          _$SimpleTraitTwinNormalImpl_StructOneWithTraitTwinNormalImpl value,
+          $Res Function(
+                  _$SimpleTraitTwinNormalImpl_StructOneWithTraitTwinNormalImpl)
+              then) =
+      __$$SimpleTraitTwinNormalImpl_StructOneWithTraitTwinNormalImplCopyWithImpl<
+          $Res>;
   @useResult
-  $Res call({int field0});
+  $Res call({StructOneWithTraitTwinNormal field0});
 }
 
 /// @nodoc
-class __$$SimpleTraitTwinNormalImpl_HelloImplCopyWithImpl<$Res>
+class __$$SimpleTraitTwinNormalImpl_StructOneWithTraitTwinNormalImplCopyWithImpl<
+        $Res>
     extends _$SimpleTraitTwinNormalImplCopyWithImpl<$Res,
-        _$SimpleTraitTwinNormalImpl_HelloImpl>
-    implements _$$SimpleTraitTwinNormalImpl_HelloImplCopyWith<$Res> {
-  __$$SimpleTraitTwinNormalImpl_HelloImplCopyWithImpl(
-      _$SimpleTraitTwinNormalImpl_HelloImpl _value,
-      $Res Function(_$SimpleTraitTwinNormalImpl_HelloImpl) _then)
+        _$SimpleTraitTwinNormalImpl_StructOneWithTraitTwinNormalImpl>
+    implements
+        _$$SimpleTraitTwinNormalImpl_StructOneWithTraitTwinNormalImplCopyWith<
+            $Res> {
+  __$$SimpleTraitTwinNormalImpl_StructOneWithTraitTwinNormalImplCopyWithImpl(
+      _$SimpleTraitTwinNormalImpl_StructOneWithTraitTwinNormalImpl _value,
+      $Res Function(
+              _$SimpleTraitTwinNormalImpl_StructOneWithTraitTwinNormalImpl)
+          _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -116,34 +128,37 @@ class __$$SimpleTraitTwinNormalImpl_HelloImplCopyWithImpl<$Res>
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(_$SimpleTraitTwinNormalImpl_HelloImpl(
+    return _then(_$SimpleTraitTwinNormalImpl_StructOneWithTraitTwinNormalImpl(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
-              as int,
+              as StructOneWithTraitTwinNormal,
     ));
   }
 }
 
 /// @nodoc
 
-class _$SimpleTraitTwinNormalImpl_HelloImpl
-    extends SimpleTraitTwinNormalImpl_Hello {
-  const _$SimpleTraitTwinNormalImpl_HelloImpl(this.field0) : super._();
+class _$SimpleTraitTwinNormalImpl_StructOneWithTraitTwinNormalImpl
+    extends SimpleTraitTwinNormalImpl_StructOneWithTraitTwinNormal {
+  const _$SimpleTraitTwinNormalImpl_StructOneWithTraitTwinNormalImpl(
+      this.field0)
+      : super._();
 
   @override
-  final int field0;
+  final StructOneWithTraitTwinNormal field0;
 
   @override
   String toString() {
-    return 'SimpleTraitTwinNormalImpl.hello(field0: $field0)';
+    return 'SimpleTraitTwinNormalImpl.structOneWithTraitTwinNormal(field0: $field0)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SimpleTraitTwinNormalImpl_HelloImpl &&
+            other
+                is _$SimpleTraitTwinNormalImpl_StructOneWithTraitTwinNormalImpl &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
@@ -153,35 +168,46 @@ class _$SimpleTraitTwinNormalImpl_HelloImpl
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$SimpleTraitTwinNormalImpl_HelloImplCopyWith<
-          _$SimpleTraitTwinNormalImpl_HelloImpl>
-      get copyWith => __$$SimpleTraitTwinNormalImpl_HelloImplCopyWithImpl<
-          _$SimpleTraitTwinNormalImpl_HelloImpl>(this, _$identity);
+  _$$SimpleTraitTwinNormalImpl_StructOneWithTraitTwinNormalImplCopyWith<
+          _$SimpleTraitTwinNormalImpl_StructOneWithTraitTwinNormalImpl>
+      get copyWith =>
+          __$$SimpleTraitTwinNormalImpl_StructOneWithTraitTwinNormalImplCopyWithImpl<
+                  _$SimpleTraitTwinNormalImpl_StructOneWithTraitTwinNormalImpl>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int field0) hello,
+    required TResult Function(StructOneWithTraitTwinNormal field0)
+        structOneWithTraitTwinNormal,
+    required TResult Function(StructTwoWithTraitTwinNormal field0)
+        structTwoWithTraitTwinNormal,
   }) {
-    return hello(field0);
+    return structOneWithTraitTwinNormal(field0);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int field0)? hello,
+    TResult? Function(StructOneWithTraitTwinNormal field0)?
+        structOneWithTraitTwinNormal,
+    TResult? Function(StructTwoWithTraitTwinNormal field0)?
+        structTwoWithTraitTwinNormal,
   }) {
-    return hello?.call(field0);
+    return structOneWithTraitTwinNormal?.call(field0);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int field0)? hello,
+    TResult Function(StructOneWithTraitTwinNormal field0)?
+        structOneWithTraitTwinNormal,
+    TResult Function(StructTwoWithTraitTwinNormal field0)?
+        structTwoWithTraitTwinNormal,
     required TResult orElse(),
   }) {
-    if (hello != null) {
-      return hello(field0);
+    if (structOneWithTraitTwinNormal != null) {
+      return structOneWithTraitTwinNormal(field0);
     }
     return orElse();
   }
@@ -189,43 +215,235 @@ class _$SimpleTraitTwinNormalImpl_HelloImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(SimpleTraitTwinNormalImpl_Hello value) hello,
+    required TResult Function(
+            SimpleTraitTwinNormalImpl_StructOneWithTraitTwinNormal value)
+        structOneWithTraitTwinNormal,
+    required TResult Function(
+            SimpleTraitTwinNormalImpl_StructTwoWithTraitTwinNormal value)
+        structTwoWithTraitTwinNormal,
   }) {
-    return hello(this);
+    return structOneWithTraitTwinNormal(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(SimpleTraitTwinNormalImpl_Hello value)? hello,
+    TResult? Function(
+            SimpleTraitTwinNormalImpl_StructOneWithTraitTwinNormal value)?
+        structOneWithTraitTwinNormal,
+    TResult? Function(
+            SimpleTraitTwinNormalImpl_StructTwoWithTraitTwinNormal value)?
+        structTwoWithTraitTwinNormal,
   }) {
-    return hello?.call(this);
+    return structOneWithTraitTwinNormal?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(SimpleTraitTwinNormalImpl_Hello value)? hello,
+    TResult Function(
+            SimpleTraitTwinNormalImpl_StructOneWithTraitTwinNormal value)?
+        structOneWithTraitTwinNormal,
+    TResult Function(
+            SimpleTraitTwinNormalImpl_StructTwoWithTraitTwinNormal value)?
+        structTwoWithTraitTwinNormal,
     required TResult orElse(),
   }) {
-    if (hello != null) {
-      return hello(this);
+    if (structOneWithTraitTwinNormal != null) {
+      return structOneWithTraitTwinNormal(this);
     }
     return orElse();
   }
 }
 
-abstract class SimpleTraitTwinNormalImpl_Hello
+abstract class SimpleTraitTwinNormalImpl_StructOneWithTraitTwinNormal
     extends SimpleTraitTwinNormalImpl {
-  const factory SimpleTraitTwinNormalImpl_Hello(final int field0) =
-      _$SimpleTraitTwinNormalImpl_HelloImpl;
-  const SimpleTraitTwinNormalImpl_Hello._() : super._();
+  const factory SimpleTraitTwinNormalImpl_StructOneWithTraitTwinNormal(
+          final StructOneWithTraitTwinNormal field0) =
+      _$SimpleTraitTwinNormalImpl_StructOneWithTraitTwinNormalImpl;
+  const SimpleTraitTwinNormalImpl_StructOneWithTraitTwinNormal._() : super._();
 
   @override
-  int get field0;
-  @override
+  StructOneWithTraitTwinNormal get field0;
   @JsonKey(ignore: true)
-  _$$SimpleTraitTwinNormalImpl_HelloImplCopyWith<
-          _$SimpleTraitTwinNormalImpl_HelloImpl>
+  _$$SimpleTraitTwinNormalImpl_StructOneWithTraitTwinNormalImplCopyWith<
+          _$SimpleTraitTwinNormalImpl_StructOneWithTraitTwinNormalImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SimpleTraitTwinNormalImpl_StructTwoWithTraitTwinNormalImplCopyWith<
+    $Res> {
+  factory _$$SimpleTraitTwinNormalImpl_StructTwoWithTraitTwinNormalImplCopyWith(
+          _$SimpleTraitTwinNormalImpl_StructTwoWithTraitTwinNormalImpl value,
+          $Res Function(
+                  _$SimpleTraitTwinNormalImpl_StructTwoWithTraitTwinNormalImpl)
+              then) =
+      __$$SimpleTraitTwinNormalImpl_StructTwoWithTraitTwinNormalImplCopyWithImpl<
+          $Res>;
+  @useResult
+  $Res call({StructTwoWithTraitTwinNormal field0});
+}
+
+/// @nodoc
+class __$$SimpleTraitTwinNormalImpl_StructTwoWithTraitTwinNormalImplCopyWithImpl<
+        $Res>
+    extends _$SimpleTraitTwinNormalImplCopyWithImpl<$Res,
+        _$SimpleTraitTwinNormalImpl_StructTwoWithTraitTwinNormalImpl>
+    implements
+        _$$SimpleTraitTwinNormalImpl_StructTwoWithTraitTwinNormalImplCopyWith<
+            $Res> {
+  __$$SimpleTraitTwinNormalImpl_StructTwoWithTraitTwinNormalImplCopyWithImpl(
+      _$SimpleTraitTwinNormalImpl_StructTwoWithTraitTwinNormalImpl _value,
+      $Res Function(
+              _$SimpleTraitTwinNormalImpl_StructTwoWithTraitTwinNormalImpl)
+          _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$SimpleTraitTwinNormalImpl_StructTwoWithTraitTwinNormalImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as StructTwoWithTraitTwinNormal,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SimpleTraitTwinNormalImpl_StructTwoWithTraitTwinNormalImpl
+    extends SimpleTraitTwinNormalImpl_StructTwoWithTraitTwinNormal {
+  const _$SimpleTraitTwinNormalImpl_StructTwoWithTraitTwinNormalImpl(
+      this.field0)
+      : super._();
+
+  @override
+  final StructTwoWithTraitTwinNormal field0;
+
+  @override
+  String toString() {
+    return 'SimpleTraitTwinNormalImpl.structTwoWithTraitTwinNormal(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other
+                is _$SimpleTraitTwinNormalImpl_StructTwoWithTraitTwinNormalImpl &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SimpleTraitTwinNormalImpl_StructTwoWithTraitTwinNormalImplCopyWith<
+          _$SimpleTraitTwinNormalImpl_StructTwoWithTraitTwinNormalImpl>
+      get copyWith =>
+          __$$SimpleTraitTwinNormalImpl_StructTwoWithTraitTwinNormalImplCopyWithImpl<
+                  _$SimpleTraitTwinNormalImpl_StructTwoWithTraitTwinNormalImpl>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(StructOneWithTraitTwinNormal field0)
+        structOneWithTraitTwinNormal,
+    required TResult Function(StructTwoWithTraitTwinNormal field0)
+        structTwoWithTraitTwinNormal,
+  }) {
+    return structTwoWithTraitTwinNormal(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(StructOneWithTraitTwinNormal field0)?
+        structOneWithTraitTwinNormal,
+    TResult? Function(StructTwoWithTraitTwinNormal field0)?
+        structTwoWithTraitTwinNormal,
+  }) {
+    return structTwoWithTraitTwinNormal?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(StructOneWithTraitTwinNormal field0)?
+        structOneWithTraitTwinNormal,
+    TResult Function(StructTwoWithTraitTwinNormal field0)?
+        structTwoWithTraitTwinNormal,
+    required TResult orElse(),
+  }) {
+    if (structTwoWithTraitTwinNormal != null) {
+      return structTwoWithTraitTwinNormal(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(
+            SimpleTraitTwinNormalImpl_StructOneWithTraitTwinNormal value)
+        structOneWithTraitTwinNormal,
+    required TResult Function(
+            SimpleTraitTwinNormalImpl_StructTwoWithTraitTwinNormal value)
+        structTwoWithTraitTwinNormal,
+  }) {
+    return structTwoWithTraitTwinNormal(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(
+            SimpleTraitTwinNormalImpl_StructOneWithTraitTwinNormal value)?
+        structOneWithTraitTwinNormal,
+    TResult? Function(
+            SimpleTraitTwinNormalImpl_StructTwoWithTraitTwinNormal value)?
+        structTwoWithTraitTwinNormal,
+  }) {
+    return structTwoWithTraitTwinNormal?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(
+            SimpleTraitTwinNormalImpl_StructOneWithTraitTwinNormal value)?
+        structOneWithTraitTwinNormal,
+    TResult Function(
+            SimpleTraitTwinNormalImpl_StructTwoWithTraitTwinNormal value)?
+        structTwoWithTraitTwinNormal,
+    required TResult orElse(),
+  }) {
+    if (structTwoWithTraitTwinNormal != null) {
+      return structTwoWithTraitTwinNormal(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SimpleTraitTwinNormalImpl_StructTwoWithTraitTwinNormal
+    extends SimpleTraitTwinNormalImpl {
+  const factory SimpleTraitTwinNormalImpl_StructTwoWithTraitTwinNormal(
+          final StructTwoWithTraitTwinNormal field0) =
+      _$SimpleTraitTwinNormalImpl_StructTwoWithTraitTwinNormalImpl;
+  const SimpleTraitTwinNormalImpl_StructTwoWithTraitTwinNormal._() : super._();
+
+  @override
+  StructTwoWithTraitTwinNormal get field0;
+  @JsonKey(ignore: true)
+  _$$SimpleTraitTwinNormalImpl_StructTwoWithTraitTwinNormalImplCopyWith<
+          _$SimpleTraitTwinNormalImpl_StructTwoWithTraitTwinNormalImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
