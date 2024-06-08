@@ -86,9 +86,11 @@ pub struct MirTypeDelegateRustAutoOpaqueExplicit {
 }
 
 pub struct MirTypeDelegateProxyVariant {
+    pub inner: Box<MirType>,
 }
 
 pub struct MirTypeDelegateProxyTarget {
+    pub inner: Box<MirType>,
 }
 
 // pub struct MirTypeDelegateDynTrait {
@@ -139,6 +141,8 @@ impl MirTypeTrait for MirTypeDelegate {
             MirTypeDelegate::RustAutoOpaqueExplicit(mir) => {
                 format!("AutoExplicit_{}", mir.inner.safe_ident())
             } // MirTypeDelegate::DynTrait(mir) => mir.safe_ident(),
+            MirTypeDelegate::ProxyVariant(mir) => format!("ProxyVariant_{}", mir.inner.safe_ident()),
+            MirTypeDelegate::ProxyTarget(mir) => format!("ProxyTarget_{}", mir.inner.safe_ident()),
         }
     }
 
@@ -201,6 +205,8 @@ impl MirTypeTrait for MirTypeDelegate {
             MirTypeDelegate::RustAutoOpaqueExplicit(mir) => {
                 format!("RustAutoOpaque{}<{}>", mir.inner.codec, mir.raw.string)
             } // MirTypeDelegate::DynTrait(mir) => format!("dyn <{}>", mir.trait_def_name.name),
+            MirTypeDelegate::ProxyVariant(mir) => mir.inner.rust_api_type(),
+            MirTypeDelegate::ProxyTarget(mir) => mir.inner.rust_api_type(),
         }
     }
 
@@ -269,6 +275,8 @@ impl MirTypeDelegate {
             MirTypeDelegate::BigPrimitive(_) => MirType::Delegate(MirTypeDelegate::String),
             MirTypeDelegate::RustAutoOpaqueExplicit(mir) => MirType::RustOpaque(mir.inner.clone()),
             // MirTypeDelegate::DynTrait(mir) => mir.inner(),
+            MirTypeDelegate::ProxyVariant(mir) => *mir.inner.clone(),
+            MirTypeDelegate::ProxyTarget(mir) => *mir.inner.clone(),
         }
     }
 }
