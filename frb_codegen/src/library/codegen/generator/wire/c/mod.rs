@@ -7,6 +7,7 @@ use crate::codegen::dumper::Dumper;
 use crate::codegen::generator::misc::path_texts::{PathText, PathTexts};
 use crate::codegen::generator::wire::c::internal_config::GeneratorWireCInternalConfig;
 use crate::codegen::misc::GeneratorProgressBarPack;
+use crate::utils::basic_code::general_code::GeneralCode;
 
 pub(crate) struct GeneratorWireCOutput {
     pub output_texts: PathTexts,
@@ -37,7 +38,7 @@ pub(crate) fn generate(
         output_texts: PathTexts({
             let mut ans = vec![];
             if let Some(c_output_path) = &config.c_output_path {
-                ans.push(PathText::new(c_output_path.clone(), text.clone()))
+                ans.push(PathText::new(c_output_path.clone(), GeneralCode::new_c(text.clone())))
             }
             ans
         }),

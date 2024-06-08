@@ -28,7 +28,7 @@ pub(crate) fn generate(
         ConfigDumpContent::GeneratorText,
         "wire_rust",
         "rs",
-        &text.text,
+        &text.text.map_ref(|x, _| x.as_ref().map(|x| x.all_code())),
     )?;
 
     Ok(GeneratorWireRustOutput {

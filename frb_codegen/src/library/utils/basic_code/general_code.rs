@@ -30,6 +30,14 @@ impl GeneralCode {
     pub(crate) fn all_code(&self) -> String {
         todo!()
     }
+
+    pub(crate) fn new_rust(body: String) -> GeneralCode {
+        GeneralCode::Rust(GeneralRustCode { body })
+    }
+
+    pub(crate) fn new_c(body: String) -> GeneralCode {
+        GeneralCode::C(GeneralCCode { body })
+    }
 }
 
 impl AddAssign for GeneralDartCode {
