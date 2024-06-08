@@ -60,8 +60,12 @@ fn generate_code_impl(trait_def_name: &str, trait_impls: &[MirType]) -> String {
         format!("RustAutoOpaque<{ty}>")
     });
 
-    let blocking_read_body = TODO;
-    let blocking_write_body = TODO;
+    let blocking_read_body = generate_match_raw(trait_impls, |ty| {
+        format!("{trait_def_name}RwLockReadGuard::{ty}(inner.blocking_read())")
+    });
+    let blocking_write_body = generate_match_raw(trait_impls, |ty| {
+        format!("{trait_def_name}RwLockWriteGuard::{ty}(inner.blocking_write())")
+    });
 
     format!(
         "{enum_def}
@@ -104,8 +108,8 @@ fn generate_code_read_guard(trait_def_name: &str, trait_impls: &[MirType]) -> St
     )
 }
 
-fn generate_code_write_guard() -> String {
-    TODO
+fn generate_code_write_guard(trait_def_name: &str, trait_impls: &[MirType]) -> String {
+    TODO;
 }
 
 fn generate_enum_raw(

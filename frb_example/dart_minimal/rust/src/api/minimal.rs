@@ -51,9 +51,7 @@ impl SimpleTraitForDynTwinNormalImpl {
     pub fn blocking_read(&self) -> SimpleTraitTwinNormalRwLockReadGuard {
         match self {
             Self::StructOneWithTraitTwinNormal(inner) => {
-                SimpleTraitTwinNormalRwLockReadGuard::StructOneWithTraitTwinNormal(
-                    inner.blocking_read(),
-                )
+                SimpleTraitTwinNormalRwLockReadGuard::StructOneWithTraitTwinNormal(inner.blocking_read())
             }
             Self::StructTwoWithTraitTwinNormal(inner) => {
                 SimpleTraitTwinNormalRwLockReadGuard::StructTwoWithTraitTwinNormal(
