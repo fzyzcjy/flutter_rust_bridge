@@ -54,6 +54,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   MyAudioParam
+      dco_decode_ProxyTarget_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParam(
+          dynamic raw);
+
+  @protected
+  MyAudioParam
       dco_decode_ProxyVariant_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParam(
           dynamic raw);
 
@@ -115,6 +120,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   MyNode
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNode(
+          SseDeserializer deserializer);
+
+  @protected
+  MyAudioParam
+      sse_decode_ProxyTarget_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParam(
           SseDeserializer deserializer);
 
   @protected
@@ -187,6 +197,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNode(
           MyNode self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_ProxyTarget_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParam(
+          MyAudioParam self, SseSerializer serializer);
 
   @protected
   void
