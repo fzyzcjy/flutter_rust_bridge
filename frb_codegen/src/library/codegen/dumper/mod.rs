@@ -16,19 +16,25 @@ pub(super) mod internal_config;
 
 pub(crate) struct Dumper<'a> {
     config: &'a DumperInternalConfig,
+    content: Option<ConfigDumpContent>,
 }
 
 impl<'a> Dumper<'a> {
     pub(crate) fn new(config: &'a DumperInternalConfig) -> Self {
-        Self { config }
+        Self {
+            config,
+            content: None,
+        }
     }
 
-    pub(crate) fn dump<T: Serialize>(
-        &self,
-        content: ConfigDumpContent,
-        name: &str,
-        data: &T,
-    ) -> anyhow::Result<()> {
+    pub(crate) fn with_content(&self, content: ConfigDumpContent) -> Self {
+        Self {
+            config: self.config,
+            content: Some(content),
+        }
+    }
+
+    pub(crate) fn dump<T: Serialize>(&self, name: &str, data: &T) -> anyhow::Result<()> {
         if !self.is_enabled(content) {
             return Ok(());
         }
@@ -38,7 +44,6 @@ impl<'a> Dumper<'a> {
 
     pub(crate) fn dump_path_texts(
         &self,
-        content: ConfigDumpContent,
         partial_name: &str,
         path_texts: &PathTexts,
         base_dir: &Path,
@@ -65,7 +70,6 @@ impl<'a> Dumper<'a> {
 
     pub(crate) fn dump_acc(
         &self,
-        content: ConfigDumpContent,
         partial_name: &str,
         extension: &str,
         acc: &Acc<Option<String>>,
@@ -85,12 +89,7 @@ impl<'a> Dumper<'a> {
         Ok(())
     }
 
-    pub(crate) fn dump_str(
-        &self,
-        content: ConfigDumpContent,
-        name: &str,
-        str: &str,
-    ) -> anyhow::Result<()> {
+    pub(crate) fn dump_str(&self, name: &str, str: &str) -> anyhow::Result<()> {
         if !self.is_enabled(content) {
             return Ok(());
         }
@@ -105,7 +104,7 @@ impl<'a> Dumper<'a> {
         create_dir_all_and_write(path, str)
     }
 
-    fn is_enabled(&self, content: ConfigDumpContent) -> bool {
+    fn is_enabled(&self) -> bool {
         self.config.dump_contents.contains(&content)
     }
 }
