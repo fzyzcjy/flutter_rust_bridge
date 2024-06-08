@@ -25,6 +25,7 @@ pub(crate) fn transform(
                 .unwrap()
                 .generate_implementor_enum()
         })
+        .sorted_by_key(|x| x.name.clone())
         .map(|x| generate_trait_impl_enum(x, &trait_impls))
         .collect::<anyhow::Result<Vec<_>>>()?
         .into_iter()
@@ -46,6 +47,7 @@ fn generate_trait_impl_enum(
     let interest_trait_impls = (all_trait_impls.iter())
         .filter(|x| x.trait_ty.name == hir_trait.name)
         .map(|x| x.impl_ty.clone())
+        .sorted_by_key(|x| x.safe_ident())
         .collect_vec();
 
     let code_impl = generate_code_impl(trait_def_name, &interest_trait_impls);
