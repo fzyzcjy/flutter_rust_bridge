@@ -47,7 +47,7 @@ macro_rules! basic_code_impl {
             }
         }
 
-        impl $crate::utils::basic_code::basic:BasicCodee for $name {
+        impl $crate::utils::basic_code::simple_code_trait::SimpleCodeTrait for $name {
             fn body(&self) -> &str {
                 &self.body
             }

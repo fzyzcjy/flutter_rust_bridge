@@ -1,6 +1,6 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::target::TargetOrCommon;
-use crate::utils::basic_code::basic::SimpleCodeTrait;
+use crate::utils::basic_code::simple_code_trait::SimpleCodeTrait;
 
 pub(crate) fn section_header_comment<T: SimpleCodeTrait>(
     section_name: &str,
