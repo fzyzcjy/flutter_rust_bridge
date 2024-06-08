@@ -17,10 +17,10 @@ pub(crate) fn execute(
     let tentative_mir_pack = mir::parse(config_mir, &pack, &dumper_tentative_mir)?;
 
     trait_impl_enum::generate(&mut pack, &tentative_mir_pack, config_mir)?;
-    dumper.dump("2_trait_impl_enum", &pack)?;
+    dumper.dump("2_trait_impl_enum.json", &pack)?;
 
     proxy_enum::generate(&mut pack, &tentative_mir_pack, config_mir)?;
-    dumper.dump("3_proxy_enum", &pack)?;
+    dumper.dump("3_proxy_enum.json", &pack)?;
 
     Ok(pack)
 }
