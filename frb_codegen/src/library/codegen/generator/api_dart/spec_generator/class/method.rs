@@ -15,6 +15,8 @@ use crate::utils::basic_code::dart_header_code::DartHeaderCode;
 use crate::utils::namespace::NamespacedName;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
+use lazy_static::lazy_static;
+use regex::Regex;
 
 #[derive(Debug, Clone)]
 pub(crate) struct GenerateApiMethodConfig {
@@ -60,7 +62,7 @@ pub(crate) fn generate_api_methods(
     config: &GenerateApiMethodConfig,
     dart_class_name: &str,
 ) -> GeneratedApiMethods {
-    let query_class_name = compute_query_class_name(owner_ty, context);
+    let query_class_name = compute_query_class_name(owner_ty);
     let methods = get_methods_of_enum_or_struct(&query_class_name, &context.mir_pack.funcs_all)
         .iter()
         .filter_map(|func| generate_api_method(func, context, config, dart_class_name))
@@ -72,13 +74,21 @@ pub(crate) fn generate_api_methods(
     }
 }
 
-pub(crate) fn compute_query_class_name(
-    ty: &MirType,
-    context: ApiDartGeneratorContext,
-) -> NamespacedName {
+fn compute_query_class_name(ty: &MirType) -> NamespacedName {
     match ty {
         MirType::EnumRef(ty) => ty.ident.0.clone(),
         MirType::StructRef(ty) => ty.ident.0.clone(),
+        MirType::TraitDef(ty) => ty.name.clone(),
+        MirType::RustOpaque(ty) => {
+            lazy_static! {
+                static ref FILTER: Regex =
+                    Regex::new(r"^flutter_rust_bridge::for_generated::RustAutoOpaqueInner<(.*)>$")
+                        .unwrap();
+            }
+            let name = FILTER.replace_all(&ty.inner.0, "$1").to_string();
+            NamespacedName::new(ty.namespace.clone(), name)
+        }
+        _ => panic!("compute_query_class_name see unknown ty={ty:?}"),
     }
 }
 
