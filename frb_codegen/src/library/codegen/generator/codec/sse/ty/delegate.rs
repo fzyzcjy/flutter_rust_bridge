@@ -17,7 +17,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 MirTypeDelegate::String => "utf8.encoder.convert(self)".to_owned(),
                 MirTypeDelegate::Char => "self".to_owned(),
                 MirTypeDelegate::PrimitiveEnum(_) => "self.index".to_owned(),
-                MirTypeDelegate::Backtrace => {
+                MirTypeDelegate::Backtrace | MirTypeDelegate::ProxyVariant(_) => {
                     return Some(format!("{};", lang.throw_unreachable("")));
                 }
                 MirTypeDelegate::AnyhowException => "self.message".to_owned(),
@@ -43,7 +43,6 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 }
                 MirTypeDelegate::BigPrimitive(_) => "self.toString()".to_owned(),
                 MirTypeDelegate::RustAutoOpaqueExplicit(_ir) => "self".to_owned(),
-                MirTypeDelegate::ProxyVariant(_mir) => "TODO".to_owned(),
                 MirTypeDelegate::ProxyEnum(_mir) => "TODO".to_owned(),
                 // MirTypeDelegate::DynTrait(_ir) => lang.throw_unimplemented(""),
             },
@@ -84,7 +83,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     }
                 },
                 MirTypeDelegate::Uuid => "self.as_bytes().to_vec()".to_owned(),
-                MirTypeDelegate::StreamSink(_) /*| MirTypeDelegate::DynTrait(_)*/ => {
+                MirTypeDelegate::StreamSink(_) | MirTypeDelegate::ProxyVariant(_) /*| MirTypeDelegate::DynTrait(_)*/ => {
                     return Some(lang.throw_unimplemented(""))
                 }
                 MirTypeDelegate::BigPrimitive(_) => "self.to_string()".to_owned(),
@@ -92,7 +91,6 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     "flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_encode(self)"
                         .to_owned()
                 }
-                MirTypeDelegate::ProxyVariant(_mir) => "todo!()".to_owned(),
                 MirTypeDelegate::ProxyEnum(_mir) => "todo!()".to_owned(),
             },
         };
@@ -145,12 +143,11 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                         }
                     },
                     MirTypeDelegate::Uuid => "UuidValue.fromByteList(inner)".to_owned(),
-                    MirTypeDelegate::StreamSink(_) => {
+                    MirTypeDelegate::StreamSink(_) | MirTypeDelegate::ProxyVariant(_) => {
                         return Some(format!("{};", lang.throw_unreachable("")));
                     }
                     MirTypeDelegate::BigPrimitive(_) => "BigInt.parse(inner)".to_owned(),
                     MirTypeDelegate::RustAutoOpaqueExplicit(_ir) => "inner".to_owned(),
-                    MirTypeDelegate::ProxyVariant(_mir) => "TODO".to_owned(),
                     MirTypeDelegate::ProxyEnum(_mir) => "TODO".to_owned(),
                     // MirTypeDelegate::DynTrait(_) => return Some(lang.throw_unimplemented("")),
                 }
@@ -164,7 +161,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 MirTypeDelegate::PrimitiveEnum(inner) => {
                     rust_decode_primitive_enum(inner, self.context.mir_pack, "inner")
                 }
-                MirTypeDelegate::Backtrace => {
+                MirTypeDelegate::Backtrace | MirTypeDelegate::ProxyVariant(_) => {
                     return Some(format!("{};", lang.throw_unreachable("")));
                 }
                 MirTypeDelegate::AnyhowException => {
@@ -195,7 +192,6 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     "flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_decode(inner)"
                         .to_owned()
                 } // MirTypeDelegate::DynTrait(_ir) => lang.throw_unimplemented(""),
-                MirTypeDelegate::ProxyVariant(_mir) => "todo!()".to_owned(),
                 MirTypeDelegate::ProxyEnum(_mir) => "todo!()".to_owned(),
             },
         };
