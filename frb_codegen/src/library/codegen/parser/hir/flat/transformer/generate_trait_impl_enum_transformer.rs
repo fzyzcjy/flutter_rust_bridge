@@ -54,20 +54,28 @@ fn generate_trait_impl_enum(
     ))
 }
 
-fn generate_code_impl(trait_impls: &[MirType]) {
+fn generate_code_impl(trait_def_name: &str, trait_impls: &[MirType]) -> String {
     let enum_impl_name = format!("{trait_def_name}Impl");
     let enum_impl_def = generate_enum_raw(&trait_impls, &enum_impl_name, |ty| {
         format!("RustAutoOpaque<{ty}>")
     });
-    let enum_impl_method_read = TODO;
-    let enum_impl_method_write = TODO;
+
+    let blocking_read_body = TODO;
+    let blocking_write_body = TODO;
 
     format!(
         "{enum_impl_def}
 
         impl {enum_impl_name} {{
-            {enum_impl_method_read}
-            {enum_impl_method_write}
+            #[frb(ignore)]
+            pub fn blocking_read(&self) -> {trait_def_name}RwLockReadGuard {{
+                {blocking_read_body}
+            }}
+
+            #[frb(ignore)]
+            pub fn blocking_write(&mut self) -> {trait_def_name}RwLockWriteGuard {{
+                {blocking_write_body}
+            }}
         }}"
     )
 }
