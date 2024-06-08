@@ -83,8 +83,8 @@ impl std::ops::Deref for SimpleTraitTwinNormalRwLockReadGuard<'_> {
 
     fn deref(&self) -> &Self::Target {
         match self {
-            Self::StructOneWithTraitTwinNormal(inner) => &*inner,
-            Self::StructTwoWithTraitTwinNormal(inner) => &*inner,
+            Self::StructOneWithTraitTwinNormal(inner) => inner.deref(),
+            Self::StructTwoWithTraitTwinNormal(inner) => inner.deref(),
         }
     }
 }
