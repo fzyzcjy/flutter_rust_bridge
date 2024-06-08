@@ -49,7 +49,7 @@ impl<'a> Dumper<'a> {
             return Ok(());
         }
 
-        self.dump_str(content, name, &serde_json::to_string_pretty(data)?)
+        self.dump_str(name, &serde_json::to_string_pretty(data)?)
     }
 
     pub(crate) fn dump_path_texts(
@@ -64,7 +64,6 @@ impl<'a> Dumper<'a> {
 
         for path_text in path_texts.0.iter() {
             self.dump_str(
-                content,
                 &format!(
                     "{partial_name}/{}",
                     path_to_string(
@@ -90,7 +89,6 @@ impl<'a> Dumper<'a> {
 
         for target in TargetOrCommon::iter() {
             self.dump_str(
-                content,
                 &format!("{partial_name}/{target}.{extension}"),
                 &acc[target].clone().unwrap_or_default(),
             )?;
