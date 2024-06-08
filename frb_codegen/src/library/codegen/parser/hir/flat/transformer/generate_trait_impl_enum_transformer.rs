@@ -35,18 +35,18 @@ pub(crate) fn transform(
 
 fn generate_trait_impl_enum(
     hir_trait: &HirFlatTrait,
-    trait_impls: &[MirTraitImpl],
+    all_trait_impls: &[MirTraitImpl],
 ) -> anyhow::Result<String> {
     let trait_def_name = &hir_trait.name.name;
 
-    let interest_trait_impls = (trait_impls.iter())
+    let interest_trait_impls = (all_trait_impls.iter())
         .filter(|x| x.trait_ty.name == hir_trait.name)
         .map(|x| x.impl_ty.clone())
         .collect_vec();
 
     let code_impl = generate_code_impl(trait_def_name, &interest_trait_impls);
-    let code_read_guard = generate_code_read_write_guard(ReadWrite::Read);
-    let code_write_guard = generate_code_read_write_guard(ReadWrite::Write);
+    let code_read_guard = generate_code_read_write_guard(ReadWrite::Read, trait_def_name, &interest_trait_impls);
+    let code_write_guard = generate_code_read_write_guard(ReadWrite::Write, trait_def_name, &interest_trait_impls);
 
     Ok(format!(
         "{code_impl}
