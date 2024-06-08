@@ -7,6 +7,7 @@ use crate::codegen::parser::hir::internal_config::ParserHirInternalConfig;
 use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
 use crate::codegen::parser::mir::parser::function::real::FUNC_PREFIX_FRB_INTERNAL_NO_IMPL;
 use crate::codegen::parser::mir::parser::tentative_parse_trait_impls;
+use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use itertools::Itertools;
 
 pub(crate) fn transform(
