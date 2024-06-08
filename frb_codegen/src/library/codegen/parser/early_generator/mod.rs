@@ -10,7 +10,7 @@ pub(crate) fn execute(
     config_mir: &ParserMirInternalConfig,
     config_hir: &ParserHirInternalConfig,
 ) -> anyhow::Result<HirFlatPack> {
-    let tentative_mir_pack = mir::parse(config_mir, &pack, TODO)?;
+    let tentative_mir_pack = mir::parse(config_mir, &pack, todo!())?;
 
     let pack = trait_impl_enum::transform(pack, &tentative_mir_pack, config_hir)?;
 

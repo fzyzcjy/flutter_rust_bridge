@@ -14,9 +14,15 @@ use strum::IntoEnumIterator;
 
 pub(super) mod internal_config;
 
-pub(crate) struct Dumper<'a>(pub &'a DumperInternalConfig);
+pub(crate) struct Dumper<'a> {
+    config: &'a DumperInternalConfig,
+}
 
-impl Dumper<'_> {
+impl<'a> Dumper<'a> {
+    pub fn new(config: &'a DumperInternalConfig) -> Self {
+        Self { config }
+    }
+
     pub(crate) fn dump<T: Serialize>(
         &self,
         content: ConfigDumpContent,
@@ -90,7 +96,7 @@ impl Dumper<'_> {
         }
 
         let path = self
-            .0
+            .config
             .dump_directory
             .join(content.to_string().to_case(Case::Snake))
             .join(name);
@@ -100,6 +106,6 @@ impl Dumper<'_> {
     }
 
     fn is_enabled(&self, content: ConfigDumpContent) -> bool {
-        self.0.dump_contents.contains(&content)
+        self.config.dump_contents.contains(&content)
     }
 }

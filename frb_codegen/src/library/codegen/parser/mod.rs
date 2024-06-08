@@ -172,7 +172,7 @@ mod tests {
 
         let pack = parse_inner(
             &config,
-            &Dumper(&Default::default()),
+            &Dumper::new(&Default::default()),
             &GeneratorProgressBarPack::new(),
             |hir_flat| {
                 json_golden_test(

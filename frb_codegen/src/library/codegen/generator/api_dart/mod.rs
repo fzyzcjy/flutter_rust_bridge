@@ -85,13 +85,13 @@ mod tests {
         let internal_config = InternalConfig::parse(&config, &MetaConfig { watch: false })?;
         let mir_pack = crate::codegen::parser::parse(
             &internal_config.parser,
-            &Dumper(&Default::default()),
+            &Dumper::new(&Default::default()),
             &GeneratorProgressBarPack::new(),
         )?;
         let actual = generate(
             &mir_pack,
             &internal_config.generator.api_dart,
-            &Dumper(&Default::default()),
+            &Dumper::new(&Default::default()),
         )?;
 
         let output_texts = actual.output_texts;
