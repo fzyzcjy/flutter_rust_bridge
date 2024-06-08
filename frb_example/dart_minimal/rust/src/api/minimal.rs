@@ -63,6 +63,7 @@ impl SimpleTraitTwinNormalImpl {
     }
 }
 
+#[frb(ignore)]
 pub enum SimpleTraitTwinNormalRwLockReadGuard<'a> {
     StructOneWithTraitTwinNormal(
         flutter_rust_bridge::for_generated::rust_async::RwLockReadGuard<
