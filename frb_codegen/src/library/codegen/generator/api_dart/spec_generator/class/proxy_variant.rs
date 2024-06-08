@@ -1,16 +1,17 @@
 use crate::codegen::generator::api_dart::spec_generator::base::{
     ApiDartGenerator, ApiDartGeneratorContext,
 };
+use crate::codegen::ir::mir::func::MirFuncMode;
 use crate::codegen::ir::mir::ty::delegate::MirTypeDelegateProxyVariant;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 
 pub(crate) fn compute_func_implementation(
     ir: &MirTypeDelegateProxyVariant,
     context: ApiDartGeneratorContext,
-    rust_async: bool,
+    func_mode: MirFuncMode,
 ) -> String {
     let mut ans = format!("{}(this)", compute_dart_extra_type(ir, context));
-    if rust_async {
+    if func_mode == MirFuncMode::Normal {
         ans = format!("Future.value({ans})");
     }
     ans
