@@ -31,7 +31,7 @@ pub(crate) fn generate(
         (proxy_variants.iter()).into_group_map_by(|ty| ty.upstream.safe_ident());
 
     let proxied_types =
-        compute_proxied_types(&proxy_variants_of_enum, config_mir, output_namespace);
+        compute_proxied_types(&proxy_variants_of_enum, &output_namespace);
 
     let extra_code = proxy_variants_of_enum
         .into_values()
@@ -50,7 +50,7 @@ fn compute_proxied_types(
 ) -> Vec<IrEarlyGeneratorProxiedType> {
     (proxy_variants_of_enum.values())
         .map(|variants| IrEarlyGeneratorProxiedType {
-            proxy_enum_namespace: proxy_variants_of_enum.clone(),
+            proxy_enum_namespace: proxy_enum_namespace.clone(),
             original_ty: (*variants[0].inner).to_owned(),
             variants: variants.iter().map(|&x| x.to_owned()).collect_vec(),
         })
