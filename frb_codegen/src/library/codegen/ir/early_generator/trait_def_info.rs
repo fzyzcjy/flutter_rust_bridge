@@ -1,4 +1,6 @@
-use crate::codegen::ir::mir::ty::delegate::{MirTypeDelegateDynTraitVariant, MirTypeDelegateProxyVariant};
+use crate::codegen::ir::mir::ty::delegate::{
+    MirTypeDelegateDynTraitVariant, MirTypeDelegateProxyVariant,
+};
 use crate::codegen::ir::mir::ty::MirType;
 use crate::utils::namespace::{Namespace, NamespacedName};
 

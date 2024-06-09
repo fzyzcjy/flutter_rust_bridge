@@ -5,9 +5,9 @@ use crate::codegen::ir::mir::skip::MirSkip;
 use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
 use crate::codegen::parser::mir::parser::function::func_or_skip::MirFuncOrSkip;
 use crate::codegen::parser::mir::parser::ty::TypeParser;
+use crate::codegen::parser::mir::ParseMode;
 use itertools::{concat, Itertools};
 use std::collections::HashMap;
-use crate::codegen::parser::mir::ParseMode;
 
 pub(crate) mod auto_accessor;
 pub(crate) mod func_or_skip;

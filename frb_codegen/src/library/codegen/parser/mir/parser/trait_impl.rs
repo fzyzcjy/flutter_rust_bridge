@@ -6,11 +6,11 @@ use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
 use crate::codegen::parser::mir::parser::function::real::is_struct_or_enum_or_opaque_from_them;
 use crate::codegen::parser::mir::parser::ty::trait_def::parse_type_trait;
 use crate::codegen::parser::mir::parser::ty::{TypeParser, TypeParserParsingContext};
+use crate::codegen::parser::mir::ParseMode;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use crate::utils::crate_name::CrateName;
-use itertools::Itertools;
-use crate::codegen::parser::mir::ParseMode;
 use crate::utils::namespace::Namespace;
+use itertools::Itertools;
 
 pub(crate) fn parse(
     hir_trait_impls: &[HirFlatTraitImpl],

@@ -1,8 +1,6 @@
 use crate::lockable::order_info::LockableOrderInfo;
 
-pub(super) fn check_no_immediate_invalid_borrow(
-    sorted_infos: &[LockableOrderInfo],
-) -> bool {
+pub(super) fn check_no_immediate_invalid_borrow(sorted_infos: &[LockableOrderInfo]) -> bool {
     let mut last_object = None;
     let mut checker = ImmediateInvalidBorrowChecker::default();
 
@@ -36,23 +34,19 @@ impl ImmediateInvalidBorrowChecker {
 
 #[cfg(test)]
 mod tests {
-    use crate::lockable::order::LockableOrder;
     use super::*;
+    use crate::lockable::order::LockableOrder;
 
     #[test]
     fn test_check_no_immediate_invalid_borrow() {
         assert!(check_no_immediate_invalid_borrow(&[]));
 
         for mutable in [false, true] {
-            assert!(check_no_immediate_invalid_borrow(&[
-                LockableOrderInfo {
-                    index: 0,
-                    mutable,
-                    object_order: LockableOrder::new_for_test(
-                        100
-                    ),
-                }
-            ]));
+            assert!(check_no_immediate_invalid_borrow(&[LockableOrderInfo {
+                index: 0,
+                mutable,
+                object_order: LockableOrder::new_for_test(100),
+            }]));
         }
 
         for (mutable_a, mutable_b, expect) in [
@@ -66,14 +60,12 @@ mod tests {
                     LockableOrderInfo {
                         index: 0,
                         mutable: mutable_a,
-                        object_order:
-                            LockableOrder::new_for_test(100),
+                        object_order: LockableOrder::new_for_test(100),
                     },
                     LockableOrderInfo {
                         index: 1,
                         mutable: mutable_b,
-                        object_order:
-                            LockableOrder::new_for_test(100),
+                        object_order: LockableOrder::new_for_test(100),
                     }
                 ]),
                 expect
@@ -84,16 +76,12 @@ mod tests {
             LockableOrderInfo {
                 index: 0,
                 mutable: true,
-                object_order: LockableOrder::new_for_test(
-                    100
-                ),
+                object_order: LockableOrder::new_for_test(100),
             },
             LockableOrderInfo {
                 index: 1,
                 mutable: true,
-                object_order: LockableOrder::new_for_test(
-                    101
-                ),
+                object_order: LockableOrder::new_for_test(101),
             }
         ]));
     }

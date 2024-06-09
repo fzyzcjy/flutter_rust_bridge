@@ -9,10 +9,10 @@ use crate::codegen::ir::hir::flat::pack::HirFlatPack;
 use crate::codegen::ir::mir::pack::MirPack;
 use crate::codegen::parser::early_generator::trait_impl_enum::compute_trait_implementor_namespace;
 use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
-use crate::codegen::parser::mir::ParseMode;
 use crate::codegen::parser::mir::parser::ty::TypeParser;
 use crate::codegen::parser::mir::sanity_checker::opaque_inside_translatable_checker::check_opaque_inside_translatable;
 use crate::codegen::parser::mir::sanity_checker::unused_checker::get_unused_types;
+use crate::codegen::parser::mir::ParseMode;
 
 pub(crate) fn parse(
     config: &ParserMirInternalConfig,
@@ -33,8 +33,13 @@ pub(crate) fn parse(
         parse_mode,
     )?;
 
-    let (funcs_all, skipped_functions) =
-        function::parse(config, &hir_flat.functions, &mut type_parser, &structs_map, parse_mode)?;
+    let (funcs_all, skipped_functions) = function::parse(
+        config,
+        &hir_flat.functions,
+        &mut type_parser,
+        &structs_map,
+        parse_mode,
+    )?;
 
     let (struct_pool, enum_pool, dart_code_of_type) = type_parser.consume();
 
