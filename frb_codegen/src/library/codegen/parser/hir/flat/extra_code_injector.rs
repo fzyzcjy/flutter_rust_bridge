@@ -17,6 +17,7 @@ pub(crate) fn inject_extra_codes(
     Ok(())
 }
 
+#[derive(Clone)]
 pub(crate) struct InjectExtraCodeBlock {
     pub code: String,
     pub should_parse: bool,
