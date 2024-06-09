@@ -75,10 +75,7 @@ fn generate_inner_func_args(func: &MirFunc) -> Vec<String> {
         .iter()
         .map(|field| {
             let mut ans = format!("api_{}", field.inner.name.rust_style());
-            let ownership_mode =
-                if_then_some!(let MirType::RustAutoOpaqueImplicit(o) = &field.inner.ty, o.ownership_mode)
-                    .or(field.ownership_mode);
-            if let Some(ownership_mode) = ownership_mode {
+            if let Some(ownership_mode) = lockable::generate_inner_func_arg_ownership(field) {
                 ans = format!("{}{ans}", ownership_mode.prefix())
             }
             ans

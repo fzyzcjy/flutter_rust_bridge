@@ -1,6 +1,7 @@
 use crate::codegen::ir::mir::func::{MirFunc, MirFuncInput, OwnershipMode};
 use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
 use crate::codegen::ir::mir::ty::MirType;
+use crate::if_then_some;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
 
@@ -108,4 +109,9 @@ fn compute_interest_field(ty: &MirType) -> Option<OwnershipMode> {
 struct FieldInfo<'a> {
     field: &'a MirFuncInput,
     ownership_mode: OwnershipMode,
+}
+
+pub(crate) fn generate_inner_func_arg_ownership(field: &MirFuncInput) -> Option<OwnershipMode> {
+    if_then_some!(let MirType::RustAutoOpaqueImplicit(o) = &field.inner.ty, o.ownership_mode)
+        .or(field.ownership_mode)
 }
