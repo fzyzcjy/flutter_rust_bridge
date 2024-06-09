@@ -189,10 +189,7 @@ impl std::ops::Deref for Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRus
 
 impl std::ops::DerefMut for Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnumRwLockWriteGuard<'_> {
                 fn deref_mut(&mut self) -> &mut Self::Target {
-                    match self {
-            Self::Variant0(inner) => inner.deref_mut(),
-
-        }
+                    unreachable!()
                 }
             }
 
