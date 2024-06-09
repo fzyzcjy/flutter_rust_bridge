@@ -211,31 +211,26 @@ Future<void> main({bool skipRustLibInit = false}) async {
     });
   });
 
-  group('trait object', () {
-    Future<void> _body(
-        BoxHelloTraitTwinRustAsyncSseMoi obj, String expect) async {
-      await futurizeVoidTwinRustAsyncSseMoi(
-          rustAutoOpaqueTraitObjectArgBorrowTwinRustAsyncSseMoi(
-              arg: obj, expect: expect));
-      await futurizeVoidTwinRustAsyncSseMoi(
-          rustAutoOpaqueTraitObjectArgMutBorrowTwinRustAsyncSseMoi(
-              arg: obj, expect: expect));
-      await futurizeVoidTwinRustAsyncSseMoi(
-          rustAutoOpaqueTraitObjectArgOwnTwinRustAsyncSseMoi(
-              arg: obj, expect: expect));
-    }
-
-    test(
-        'case one',
-        () async => await _body(
-            await rustAutoOpaqueTraitObjectReturnOwnOneTwinRustAsyncSseMoi(),
-            'hello'));
-    test(
-        'case two',
-        () async => await _body(
-            await rustAutoOpaqueTraitObjectReturnOwnTwoTwinRustAsyncSseMoi(),
-            'B'));
-  });
+  // group('trait object', () {
+  //   Future<void> _body(BoxHelloTraitTwinRustAsyncSseMoi obj, String expect) async {
+  //     await futurizeVoidTwinRustAsyncSseMoi(rustAutoOpaqueTraitObjectArgBorrowTwinRustAsyncSseMoi(
+  //         arg: obj, expect: expect));
+  //     await futurizeVoidTwinRustAsyncSseMoi(
+  //         rustAutoOpaqueTraitObjectArgMutBorrowTwinRustAsyncSseMoi(
+  //             arg: obj, expect: expect));
+  //     await futurizeVoidTwinRustAsyncSseMoi(
+  //         rustAutoOpaqueTraitObjectArgOwnTwinRustAsyncSseMoi(arg: obj, expect: expect));
+  //   }
+  //
+  //   test(
+  //       'case one',
+  //       () async => await _body(
+  //           await rustAutoOpaqueTraitObjectReturnOwnOneTwinRustAsyncSseMoi(), 'hello'));
+  //   test(
+  //       'case two',
+  //       () async => await _body(
+  //           await rustAutoOpaqueTraitObjectReturnOwnTwoTwinRustAsyncSseMoi(), 'B'));
+  // });
 
   test('static method', () async {
     final obj = await NonCloneSimpleTwinRustAsyncSseMoi

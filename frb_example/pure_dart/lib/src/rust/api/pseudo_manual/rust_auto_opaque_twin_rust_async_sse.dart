@@ -76,34 +76,6 @@ Future<BoxFnStringString> rustAutoOpaqueCallableReturnTwinRustAsyncSse() => Rust
     .instance.api
     .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseRustAutoOpaqueCallableReturnTwinRustAsyncSse();
 
-Future<void> rustAutoOpaqueTraitObjectArgOwnTwinRustAsyncSse(
-        {required BoxHelloTraitTwinRustAsyncSse arg, required String expect}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseRustAutoOpaqueTraitObjectArgOwnTwinRustAsyncSse(
-            arg: arg, expect: expect);
-
-Future<void> rustAutoOpaqueTraitObjectArgBorrowTwinRustAsyncSse(
-        {required BoxHelloTraitTwinRustAsyncSse arg, required String expect}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseRustAutoOpaqueTraitObjectArgBorrowTwinRustAsyncSse(
-            arg: arg, expect: expect);
-
-Future<void> rustAutoOpaqueTraitObjectArgMutBorrowTwinRustAsyncSse(
-        {required BoxHelloTraitTwinRustAsyncSse arg, required String expect}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseRustAutoOpaqueTraitObjectArgMutBorrowTwinRustAsyncSse(
-            arg: arg, expect: expect);
-
-Future<BoxHelloTraitTwinRustAsyncSse>
-    rustAutoOpaqueTraitObjectReturnOwnOneTwinRustAsyncSse() => RustLib
-        .instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseRustAutoOpaqueTraitObjectReturnOwnOneTwinRustAsyncSse();
-
-Future<BoxHelloTraitTwinRustAsyncSse>
-    rustAutoOpaqueTraitObjectReturnOwnTwoTwinRustAsyncSse() => RustLib
-        .instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseRustAutoOpaqueTraitObjectReturnOwnTwoTwinRustAsyncSse();
-
 Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinRustAsyncSse(
         {required StructWithGoodAndOpaqueFieldTwinRustAsyncSse arg}) =>
     RustLib.instance.api
@@ -216,21 +188,12 @@ Future<int> rustAutoOpaqueBorrowAndBorrowTwinRustAsyncSse(
         .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseRustAutoOpaqueBorrowAndBorrowTwinRustAsyncSse(
             a: a, b: b);
 
-// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box < dyn HelloTraitTwinRustAsyncSse >>>
-abstract class BoxHelloTraitTwinRustAsyncSse implements RustOpaqueInterface {}
-
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box < dyn MyTraitTwinRustAsyncSse + Send + Sync >>>
 abstract class BoxMyTraitTwinRustAsyncSse implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<EnumWithGoodAndOpaqueWithoutOptionTwinRustAsyncSse>>
 abstract class EnumWithGoodAndOpaqueWithoutOptionTwinRustAsyncSse
     implements RustOpaqueInterface {}
-
-// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<HelloOneStructTwinRustAsyncSse>>
-abstract class HelloOneStructTwinRustAsyncSse
-    implements RustOpaqueInterface, HelloTraitTwinRustAsyncSse {
-  Future<void> funcHello();
-}
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleEnumTwinRustAsyncSse>>
 abstract class NonCloneSimpleEnumTwinRustAsyncSse
@@ -301,10 +264,6 @@ abstract class StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse
   void set good(String good);
 }
 
-abstract class HelloTraitTwinRustAsyncSse {
-  Future<void> funcHello();
-}
-
 abstract class MyTraitTwinRustAsyncSse {
   Future<void> f();
 }
@@ -320,17 +279,6 @@ sealed class EnumWithGoodAndOpaqueTwinRustAsyncSse
   const factory EnumWithGoodAndOpaqueTwinRustAsyncSse.opaque(
     NonCloneSimpleTwinRustAsyncSse field0,
   ) = EnumWithGoodAndOpaqueTwinRustAsyncSse_Opaque;
-}
-
-enum HelloTwoEnumTwinRustAsyncSse {
-  a,
-  b,
-  ;
-
-  Future<void> funcHello() => RustLib.instance.api
-          .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseHelloTwoEnumTwinRustAsyncSseFuncHello(
-        that: this,
-      );
 }
 
 class StructWithExplicitAutoOpaqueFieldTwinRustAsyncSse {

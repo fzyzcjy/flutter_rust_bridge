@@ -47,7 +47,9 @@ impl GeneralCode {
         if let Self::Dart(inner) = self {
             inner
         } else {
+            // frb-coverage:ignore-start
             panic!()
+            // frb-coverage:ignore-end
         }
     }
 
@@ -55,7 +57,9 @@ impl GeneralCode {
         if let Self::Rust(inner) = self {
             inner
         } else {
+            // frb-coverage:ignore-start
             panic!()
+            // frb-coverage:ignore-end
         }
     }
 
@@ -63,7 +67,9 @@ impl GeneralCode {
         if let Self::C(inner) = self {
             inner
         } else {
+            // frb-coverage:ignore-start
             panic!()
+            // frb-coverage:ignore-end
         }
     }
 }
@@ -123,3 +129,14 @@ impl_add_by_add_assign!(GeneralCode);
 simple_code_trait_impl!(GeneralDartCode);
 simple_code_trait_impl!(GeneralRustCode);
 simple_code_trait_impl!(GeneralCCode);
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    pub fn test_simple() {
+        let _ = GeneralCode::new_rust("a".to_owned()) + GeneralCode::new_rust("b".to_owned());
+        let _ = GeneralCode::new_c("a".to_owned()) + GeneralCode::new_c("b".to_owned());
+    }
+}

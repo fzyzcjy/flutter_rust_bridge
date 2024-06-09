@@ -72,32 +72,6 @@ void rustAutoOpaqueCallableArgTwinSync({required BoxFnStringString arg}) => Rust
 BoxFnStringString rustAutoOpaqueCallableReturnTwinSync() => RustLib.instance.api
     .crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueCallableReturnTwinSync();
 
-void rustAutoOpaqueTraitObjectArgOwnTwinSync(
-        {required BoxHelloTraitTwinSync arg, required String expect}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueTraitObjectArgOwnTwinSync(
-            arg: arg, expect: expect);
-
-void rustAutoOpaqueTraitObjectArgBorrowTwinSync(
-        {required BoxHelloTraitTwinSync arg, required String expect}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueTraitObjectArgBorrowTwinSync(
-            arg: arg, expect: expect);
-
-void rustAutoOpaqueTraitObjectArgMutBorrowTwinSync(
-        {required BoxHelloTraitTwinSync arg, required String expect}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueTraitObjectArgMutBorrowTwinSync(
-            arg: arg, expect: expect);
-
-BoxHelloTraitTwinSync rustAutoOpaqueTraitObjectReturnOwnOneTwinSync() => RustLib
-    .instance.api
-    .crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueTraitObjectReturnOwnOneTwinSync();
-
-BoxHelloTraitTwinSync rustAutoOpaqueTraitObjectReturnOwnTwoTwinSync() => RustLib
-    .instance.api
-    .crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueTraitObjectReturnOwnTwoTwinSync();
-
 void rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinSync(
         {required StructWithGoodAndOpaqueFieldTwinSync arg}) =>
     RustLib.instance.api
@@ -210,21 +184,12 @@ int rustAutoOpaqueBorrowAndBorrowTwinSync(
         .crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueBorrowAndBorrowTwinSync(
             a: a, b: b);
 
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box < dyn HelloTraitTwinSync >>>
-abstract class BoxHelloTraitTwinSync implements RustOpaqueInterface {}
-
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box < dyn MyTraitTwinSync + Send + Sync >>>
 abstract class BoxMyTraitTwinSync implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<EnumWithGoodAndOpaqueWithoutOptionTwinSync>>
 abstract class EnumWithGoodAndOpaqueWithoutOptionTwinSync
     implements RustOpaqueInterface {}
-
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<HelloOneStructTwinSync>>
-abstract class HelloOneStructTwinSync
-    implements RustOpaqueInterface, HelloTraitTwinSync {
-  Future<void> funcHello();
-}
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleEnumTwinSync>>
 abstract class NonCloneSimpleEnumTwinSync implements RustOpaqueInterface {}
@@ -290,10 +255,6 @@ abstract class StructWithGoodAndOpaqueFieldWithoutOptionTwinSync
   void set good(String good);
 }
 
-abstract class HelloTraitTwinSync {
-  Future<void> funcHello();
-}
-
 abstract class MyTraitTwinSync {
   Future<void> f();
 }
@@ -309,17 +270,6 @@ sealed class EnumWithGoodAndOpaqueTwinSync
   const factory EnumWithGoodAndOpaqueTwinSync.opaque(
     NonCloneSimpleTwinSync field0,
   ) = EnumWithGoodAndOpaqueTwinSync_Opaque;
-}
-
-enum HelloTwoEnumTwinSync {
-  a,
-  b,
-  ;
-
-  Future<void> funcHello() => RustLib.instance.api
-          .crateApiPseudoManualRustAutoOpaqueTwinSyncHelloTwoEnumTwinSyncFuncHello(
-        that: this,
-      );
 }
 
 class StructWithExplicitAutoOpaqueFieldTwinSync {

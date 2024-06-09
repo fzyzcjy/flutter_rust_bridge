@@ -1,12 +1,7 @@
-use crate::codegen::ir::hir::flat::traits::HirFlatTrait;
-use crate::codegen::ir::mir::trait_impl::MirTraitImpl;
-use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::hir::flat::extra_code_injector::InjectExtraCodeBlock;
 use crate::codegen::parser::mir::parser::function::real::FUNC_PREFIX_FRB_INTERNAL_NO_IMPL;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
-use std::env;
-use std::env::var;
 use strum_macros::Display;
 
 pub(crate) struct VariantInfo {
@@ -21,7 +16,7 @@ pub(crate) fn generate(
     support_mut: bool,
     variants: &[VariantInfo],
 ) -> anyhow::Result<Vec<InjectExtraCodeBlock>> {
-    let code_enum_def = generate_enum_raw(variants, &enum_name, |variant| {
+    let code_enum_def = generate_enum_raw(variants, enum_name, |variant| {
         format!("RustAutoOpaque<{}>", variant.ty_name)
     });
     let code_lockable_impl = generate_code_lockable_impl(enum_name, support_mut, variants);
@@ -102,7 +97,7 @@ fn generate_code_lockable_impl(
         "unreachable!()".to_owned()
     };
 
-    let lockable_order_body = generate_match_raw(variants, |variant| {
+    let lockable_order_body = generate_match_raw(variants, |_variant| {
         "flutter_rust_bridge::for_generated::rust_auto_opaque_lockable_order(inner)".to_string()
     });
 
@@ -253,7 +248,7 @@ fn generate_match_raw(variants: &[VariantInfo], branch: impl Fn(&VariantInfo) ->
             format!(
                 "Self::{}(inner) => {},\n",
                 &variant.enum_variant_name,
-                branch(&variant)
+                branch(variant)
             )
         })
         .join("");

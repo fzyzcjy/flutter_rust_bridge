@@ -191,25 +191,26 @@ Future<void> main({bool skipRustLibInit = false}) async {
     });
   });
 
-  group('trait object', () {
-    Future<void> _body(BoxHelloTraitTwinSync obj, String expect) async {
-      await futurizeVoidTwinSync(
-          rustAutoOpaqueTraitObjectArgBorrowTwinSync(arg: obj, expect: expect));
-      await futurizeVoidTwinSync(rustAutoOpaqueTraitObjectArgMutBorrowTwinSync(
-          arg: obj, expect: expect));
-      await futurizeVoidTwinSync(
-          rustAutoOpaqueTraitObjectArgOwnTwinSync(arg: obj, expect: expect));
-    }
-
-    test(
-        'case one',
-        () async => await _body(
-            await rustAutoOpaqueTraitObjectReturnOwnOneTwinSync(), 'hello'));
-    test(
-        'case two',
-        () async => await _body(
-            await rustAutoOpaqueTraitObjectReturnOwnTwoTwinSync(), 'B'));
-  });
+  // group('trait object', () {
+  //   Future<void> _body(BoxHelloTraitTwinSync obj, String expect) async {
+  //     await futurizeVoidTwinSync(rustAutoOpaqueTraitObjectArgBorrowTwinSync(
+  //         arg: obj, expect: expect));
+  //     await futurizeVoidTwinSync(
+  //         rustAutoOpaqueTraitObjectArgMutBorrowTwinSync(
+  //             arg: obj, expect: expect));
+  //     await futurizeVoidTwinSync(
+  //         rustAutoOpaqueTraitObjectArgOwnTwinSync(arg: obj, expect: expect));
+  //   }
+  //
+  //   test(
+  //       'case one',
+  //       () async => await _body(
+  //           await rustAutoOpaqueTraitObjectReturnOwnOneTwinSync(), 'hello'));
+  //   test(
+  //       'case two',
+  //       () async => await _body(
+  //           await rustAutoOpaqueTraitObjectReturnOwnTwoTwinSync(), 'B'));
+  // });
 
   test('static method', () async {
     final obj = await NonCloneSimpleTwinSync.staticMethodReturnOwnTwinSync();

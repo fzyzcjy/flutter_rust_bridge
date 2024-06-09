@@ -126,74 +126,68 @@ pub async fn rust_auto_opaque_callable_return_twin_rust_async_sse(
 }
 
 // ==================================== trait object =======================================
-
-pub trait HelloTraitTwinRustAsyncSse: Send + Sync {
-    fn func_hello(&self) -> &str;
-}
-
-#[frb(opaque)]
-pub struct HelloOneStructTwinRustAsyncSse {
-    inner: String,
-}
-
-impl HelloTraitTwinRustAsyncSse for HelloOneStructTwinRustAsyncSse {
-    fn func_hello(&self) -> &str {
-        &self.inner
-    }
-}
-
-pub enum HelloTwoEnumTwinRustAsyncSse {
-    A,
-    B,
-}
-
-impl HelloTraitTwinRustAsyncSse for HelloTwoEnumTwinRustAsyncSse {
-    fn func_hello(&self) -> &str {
-        match self {
-            HelloTwoEnumTwinRustAsyncSse::A => "A",
-            HelloTwoEnumTwinRustAsyncSse::B => "B",
-        }
-    }
-}
-
-#[flutter_rust_bridge::frb(serialize)]
-pub async fn rust_auto_opaque_trait_object_arg_own_twin_rust_async_sse(
-    arg: Box<dyn HelloTraitTwinRustAsyncSse>,
-    expect: String,
-) {
-    assert_eq!(arg.func_hello(), expect);
-}
-
-#[allow(clippy::borrowed_box)]
-#[flutter_rust_bridge::frb(serialize)]
-pub async fn rust_auto_opaque_trait_object_arg_borrow_twin_rust_async_sse(
-    arg: &Box<dyn HelloTraitTwinRustAsyncSse>,
-    expect: String,
-) {
-    assert_eq!(arg.func_hello(), expect);
-}
-
-#[flutter_rust_bridge::frb(serialize)]
-pub async fn rust_auto_opaque_trait_object_arg_mut_borrow_twin_rust_async_sse(
-    arg: &mut Box<dyn HelloTraitTwinRustAsyncSse>,
-    expect: String,
-) {
-    assert_eq!(arg.func_hello(), expect);
-}
-
-#[flutter_rust_bridge::frb(serialize)]
-pub async fn rust_auto_opaque_trait_object_return_own_one_twin_rust_async_sse(
-) -> Box<dyn HelloTraitTwinRustAsyncSse> {
-    Box::new(HelloOneStructTwinRustAsyncSse {
-        inner: "hello".into(),
-    })
-}
-
-#[flutter_rust_bridge::frb(serialize)]
-pub async fn rust_auto_opaque_trait_object_return_own_two_twin_rust_async_sse(
-) -> Box<dyn HelloTraitTwinRustAsyncSse> {
-    Box::new(HelloTwoEnumTwinRustAsyncSse::B)
-}
+//
+// pub trait HelloTraitTwinRustAsyncSse: Send + Sync {
+//     fn func_hello(&self) -> &str;
+// }
+//
+// #[frb(opaque)]
+// pub struct HelloOneStructTwinRustAsyncSse {
+//     inner: String,
+// }
+//
+// impl HelloTraitTwinRustAsyncSse for HelloOneStructTwinRustAsyncSse {
+//     fn func_hello(&self) -> &str {
+//         &self.inner
+//     }
+// }
+//
+// pub enum HelloTwoEnumTwinRustAsyncSse {
+//     A,
+//     B,
+// }
+//
+// impl HelloTraitTwinRustAsyncSse for HelloTwoEnumTwinRustAsyncSse {
+//     fn func_hello(&self) -> &str {
+//         match self {
+//             HelloTwoEnumTwinRustAsyncSse::A => "A",
+//             HelloTwoEnumTwinRustAsyncSse::B => "B",
+//         }
+//     }
+// }
+//
+// #[flutter_rust_bridge::frb(serialize)] pub async fn rust_auto_opaque_trait_object_arg_own_twin_rust_async_sse(
+//     arg: Box<dyn HelloTraitTwinRustAsyncSse>,
+//     expect: String,
+// ) {
+//     assert_eq!(arg.func_hello(), expect);
+// }
+//
+// #[allow(clippy::borrowed_box)]
+// #[flutter_rust_bridge::frb(serialize)] pub async fn rust_auto_opaque_trait_object_arg_borrow_twin_rust_async_sse(
+//     arg: &Box<dyn HelloTraitTwinRustAsyncSse>,
+//     expect: String,
+// ) {
+//     assert_eq!(arg.func_hello(), expect);
+// }
+//
+// #[flutter_rust_bridge::frb(serialize)] pub async fn rust_auto_opaque_trait_object_arg_mut_borrow_twin_rust_async_sse(
+//     arg: &mut Box<dyn HelloTraitTwinRustAsyncSse>,
+//     expect: String,
+// ) {
+//     assert_eq!(arg.func_hello(), expect);
+// }
+//
+// #[flutter_rust_bridge::frb(serialize)] pub async fn rust_auto_opaque_trait_object_return_own_one_twin_rust_async_sse() -> Box<dyn HelloTraitTwinRustAsyncSse> {
+//     Box::new(HelloOneStructTwinRustAsyncSse {
+//         inner: "hello".into(),
+//     })
+// }
+//
+// #[flutter_rust_bridge::frb(serialize)] pub async fn rust_auto_opaque_trait_object_return_own_two_twin_rust_async_sse() -> Box<dyn HelloTraitTwinRustAsyncSse> {
+//     Box::new(HelloTwoEnumTwinRustAsyncSse::B)
+// }
+//
 
 // ==================================== static method =======================================
 

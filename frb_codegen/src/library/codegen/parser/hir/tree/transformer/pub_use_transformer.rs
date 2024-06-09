@@ -34,7 +34,10 @@ fn parse_pub_use_from_items(items: &[syn::Item]) -> Vec<PubUseInfo> {
         .collect_vec()
 }
 
+// the function signature is not covered while the whole body is covered - looks like a bug in coverage tool
+// frb-coverage:ignore-start
 fn parse_pub_use_from_item(item: &syn::Item) -> Option<PubUseInfo> {
+    // frb-coverage:ignore-end
     if let syn::Item::Use(item_use) = item {
         if matches!(item_use.vis, syn::Visibility::Public(_)) {
             let tree = &item_use.tree;
@@ -65,7 +68,10 @@ struct PubUseInfo {
 }
 
 impl PubUseInfo {
+    // the function signature is not covered while the whole body is covered - looks like a bug in coverage tool
+    // frb-coverage:ignore-start
     fn is_interest_name(&self, name: &str) -> bool {
+        // frb-coverage:ignore-end
         if let Some(name_filters) = &self.name_filters {
             name_filters.contains(&name.to_owned())
         } else {
@@ -74,15 +80,21 @@ impl PubUseInfo {
     }
 }
 
+// the function signature is not covered while the whole body is covered - looks like a bug in coverage tool
+// frb-coverage:ignore-start
 fn transform_module_by_pub_use_single(
     module: &mut HirTreeModule,
     pub_use_info: &PubUseInfo,
 ) -> anyhow::Result<()> {
+    // frb-coverage:ignore-end
     if let Some(src_mod) = module.get_module_nested(&pub_use_info.namespace.path()) {
+        // Codecov seems to be buggy by saying this line is not covered (while lines above/below) are
+        // frb-coverage:ignore-start
         log::debug!(
             "transform_module_by_pub_use_single pub_use_info={:?}",
             pub_use_info
         );
+        // frb-coverage:ignore-end
 
         if src_mod.meta.is_public() {
             log::debug!("transform_module_by_pub_use_single skip `{pub_use_info:?}` since src mod already public");
@@ -105,9 +117,12 @@ fn transform_module_by_pub_use_single(
 
         module.items.extend(src_mod_interest_items);
     } else {
+        // Codecov seems to be buggy by saying this line is not covered (while lines above/below) are
+        // frb-coverage:ignore-start
         log::debug!(
             "transform_module_by_pub_use_single skip `{pub_use_info:?}` since cannot find mod"
         );
+        // frb-coverage:ignore-end
     }
 
     Ok(())

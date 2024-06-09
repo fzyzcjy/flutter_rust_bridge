@@ -101,10 +101,13 @@ fn generate_imports_from_ty(
                 current_file_namespace,
             );
             let path_b = (path_b_inner.parent()).with_context(|| {
+                // This will stop the whole generator and tell the users, so we do not care about testing it
+                // frb-coverage:ignore-start
                 format!(
                     "no parent for path_b_inner={path_b_inner:?} \
                     (current_file_namespace={current_file_namespace}, ty_namespace={ty_namespace} current_file_namespace={current_file_namespace:?} ty={ty:?})"
                 )
+                // frb-coverage:ignore-end
             });
 
             let path_diff = diff_paths(path_a, path_b?).context("cannot diff path")?;

@@ -15,6 +15,6386 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
+mixin _$AudioNodeImplementor {
+  Object get field0 => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(AnalyserNode field0) variant0,
+    required TResult Function(AudioBufferSourceNode field0) variant1,
+    required TResult Function(AudioDestinationNode field0) variant2,
+    required TResult Function(AudioParam field0) variant3,
+    required TResult Function(AudioWorkletNode field0) variant4,
+    required TResult Function(BiquadFilterNode field0) variant5,
+    required TResult Function(ChannelMergerNode field0) variant6,
+    required TResult Function(ChannelSplitterNode field0) variant7,
+    required TResult Function(ConstantSourceNode field0) variant8,
+    required TResult Function(ConvolverNode field0) variant9,
+    required TResult Function(DelayNode field0) variant10,
+    required TResult Function(DynamicsCompressorNode field0) variant11,
+    required TResult Function(GainNode field0) variant12,
+    required TResult Function(IirFilterNode field0) variant13,
+    required TResult Function(MediaElementAudioSourceNode field0) variant14,
+    required TResult Function(MediaStreamAudioDestinationNode field0) variant15,
+    required TResult Function(MediaStreamAudioSourceNode field0) variant16,
+    required TResult Function(MediaStreamTrackAudioSourceNode field0) variant17,
+    required TResult Function(OscillatorNode field0) variant18,
+    required TResult Function(PannerNode field0) variant19,
+    required TResult Function(ScriptProcessorNode field0) variant20,
+    required TResult Function(StereoPannerNode field0) variant21,
+    required TResult Function(WaveShaperNode field0) variant22,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(AnalyserNode field0)? variant0,
+    TResult? Function(AudioBufferSourceNode field0)? variant1,
+    TResult? Function(AudioDestinationNode field0)? variant2,
+    TResult? Function(AudioParam field0)? variant3,
+    TResult? Function(AudioWorkletNode field0)? variant4,
+    TResult? Function(BiquadFilterNode field0)? variant5,
+    TResult? Function(ChannelMergerNode field0)? variant6,
+    TResult? Function(ChannelSplitterNode field0)? variant7,
+    TResult? Function(ConstantSourceNode field0)? variant8,
+    TResult? Function(ConvolverNode field0)? variant9,
+    TResult? Function(DelayNode field0)? variant10,
+    TResult? Function(DynamicsCompressorNode field0)? variant11,
+    TResult? Function(GainNode field0)? variant12,
+    TResult? Function(IirFilterNode field0)? variant13,
+    TResult? Function(MediaElementAudioSourceNode field0)? variant14,
+    TResult? Function(MediaStreamAudioDestinationNode field0)? variant15,
+    TResult? Function(MediaStreamAudioSourceNode field0)? variant16,
+    TResult? Function(MediaStreamTrackAudioSourceNode field0)? variant17,
+    TResult? Function(OscillatorNode field0)? variant18,
+    TResult? Function(PannerNode field0)? variant19,
+    TResult? Function(ScriptProcessorNode field0)? variant20,
+    TResult? Function(StereoPannerNode field0)? variant21,
+    TResult? Function(WaveShaperNode field0)? variant22,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(AnalyserNode field0)? variant0,
+    TResult Function(AudioBufferSourceNode field0)? variant1,
+    TResult Function(AudioDestinationNode field0)? variant2,
+    TResult Function(AudioParam field0)? variant3,
+    TResult Function(AudioWorkletNode field0)? variant4,
+    TResult Function(BiquadFilterNode field0)? variant5,
+    TResult Function(ChannelMergerNode field0)? variant6,
+    TResult Function(ChannelSplitterNode field0)? variant7,
+    TResult Function(ConstantSourceNode field0)? variant8,
+    TResult Function(ConvolverNode field0)? variant9,
+    TResult Function(DelayNode field0)? variant10,
+    TResult Function(DynamicsCompressorNode field0)? variant11,
+    TResult Function(GainNode field0)? variant12,
+    TResult Function(IirFilterNode field0)? variant13,
+    TResult Function(MediaElementAudioSourceNode field0)? variant14,
+    TResult Function(MediaStreamAudioDestinationNode field0)? variant15,
+    TResult Function(MediaStreamAudioSourceNode field0)? variant16,
+    TResult Function(MediaStreamTrackAudioSourceNode field0)? variant17,
+    TResult Function(OscillatorNode field0)? variant18,
+    TResult Function(PannerNode field0)? variant19,
+    TResult Function(ScriptProcessorNode field0)? variant20,
+    TResult Function(StereoPannerNode field0)? variant21,
+    TResult Function(WaveShaperNode field0)? variant22,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AudioNodeImplementor_Variant0 value) variant0,
+    required TResult Function(AudioNodeImplementor_Variant1 value) variant1,
+    required TResult Function(AudioNodeImplementor_Variant2 value) variant2,
+    required TResult Function(AudioNodeImplementor_Variant3 value) variant3,
+    required TResult Function(AudioNodeImplementor_Variant4 value) variant4,
+    required TResult Function(AudioNodeImplementor_Variant5 value) variant5,
+    required TResult Function(AudioNodeImplementor_Variant6 value) variant6,
+    required TResult Function(AudioNodeImplementor_Variant7 value) variant7,
+    required TResult Function(AudioNodeImplementor_Variant8 value) variant8,
+    required TResult Function(AudioNodeImplementor_Variant9 value) variant9,
+    required TResult Function(AudioNodeImplementor_Variant10 value) variant10,
+    required TResult Function(AudioNodeImplementor_Variant11 value) variant11,
+    required TResult Function(AudioNodeImplementor_Variant12 value) variant12,
+    required TResult Function(AudioNodeImplementor_Variant13 value) variant13,
+    required TResult Function(AudioNodeImplementor_Variant14 value) variant14,
+    required TResult Function(AudioNodeImplementor_Variant15 value) variant15,
+    required TResult Function(AudioNodeImplementor_Variant16 value) variant16,
+    required TResult Function(AudioNodeImplementor_Variant17 value) variant17,
+    required TResult Function(AudioNodeImplementor_Variant18 value) variant18,
+    required TResult Function(AudioNodeImplementor_Variant19 value) variant19,
+    required TResult Function(AudioNodeImplementor_Variant20 value) variant20,
+    required TResult Function(AudioNodeImplementor_Variant21 value) variant21,
+    required TResult Function(AudioNodeImplementor_Variant22 value) variant22,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AudioNodeImplementor_Variant0 value)? variant0,
+    TResult? Function(AudioNodeImplementor_Variant1 value)? variant1,
+    TResult? Function(AudioNodeImplementor_Variant2 value)? variant2,
+    TResult? Function(AudioNodeImplementor_Variant3 value)? variant3,
+    TResult? Function(AudioNodeImplementor_Variant4 value)? variant4,
+    TResult? Function(AudioNodeImplementor_Variant5 value)? variant5,
+    TResult? Function(AudioNodeImplementor_Variant6 value)? variant6,
+    TResult? Function(AudioNodeImplementor_Variant7 value)? variant7,
+    TResult? Function(AudioNodeImplementor_Variant8 value)? variant8,
+    TResult? Function(AudioNodeImplementor_Variant9 value)? variant9,
+    TResult? Function(AudioNodeImplementor_Variant10 value)? variant10,
+    TResult? Function(AudioNodeImplementor_Variant11 value)? variant11,
+    TResult? Function(AudioNodeImplementor_Variant12 value)? variant12,
+    TResult? Function(AudioNodeImplementor_Variant13 value)? variant13,
+    TResult? Function(AudioNodeImplementor_Variant14 value)? variant14,
+    TResult? Function(AudioNodeImplementor_Variant15 value)? variant15,
+    TResult? Function(AudioNodeImplementor_Variant16 value)? variant16,
+    TResult? Function(AudioNodeImplementor_Variant17 value)? variant17,
+    TResult? Function(AudioNodeImplementor_Variant18 value)? variant18,
+    TResult? Function(AudioNodeImplementor_Variant19 value)? variant19,
+    TResult? Function(AudioNodeImplementor_Variant20 value)? variant20,
+    TResult? Function(AudioNodeImplementor_Variant21 value)? variant21,
+    TResult? Function(AudioNodeImplementor_Variant22 value)? variant22,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AudioNodeImplementor_Variant0 value)? variant0,
+    TResult Function(AudioNodeImplementor_Variant1 value)? variant1,
+    TResult Function(AudioNodeImplementor_Variant2 value)? variant2,
+    TResult Function(AudioNodeImplementor_Variant3 value)? variant3,
+    TResult Function(AudioNodeImplementor_Variant4 value)? variant4,
+    TResult Function(AudioNodeImplementor_Variant5 value)? variant5,
+    TResult Function(AudioNodeImplementor_Variant6 value)? variant6,
+    TResult Function(AudioNodeImplementor_Variant7 value)? variant7,
+    TResult Function(AudioNodeImplementor_Variant8 value)? variant8,
+    TResult Function(AudioNodeImplementor_Variant9 value)? variant9,
+    TResult Function(AudioNodeImplementor_Variant10 value)? variant10,
+    TResult Function(AudioNodeImplementor_Variant11 value)? variant11,
+    TResult Function(AudioNodeImplementor_Variant12 value)? variant12,
+    TResult Function(AudioNodeImplementor_Variant13 value)? variant13,
+    TResult Function(AudioNodeImplementor_Variant14 value)? variant14,
+    TResult Function(AudioNodeImplementor_Variant15 value)? variant15,
+    TResult Function(AudioNodeImplementor_Variant16 value)? variant16,
+    TResult Function(AudioNodeImplementor_Variant17 value)? variant17,
+    TResult Function(AudioNodeImplementor_Variant18 value)? variant18,
+    TResult Function(AudioNodeImplementor_Variant19 value)? variant19,
+    TResult Function(AudioNodeImplementor_Variant20 value)? variant20,
+    TResult Function(AudioNodeImplementor_Variant21 value)? variant21,
+    TResult Function(AudioNodeImplementor_Variant22 value)? variant22,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $AudioNodeImplementorCopyWith<$Res> {
+  factory $AudioNodeImplementorCopyWith(AudioNodeImplementor value,
+          $Res Function(AudioNodeImplementor) then) =
+      _$AudioNodeImplementorCopyWithImpl<$Res, AudioNodeImplementor>;
+}
+
+/// @nodoc
+class _$AudioNodeImplementorCopyWithImpl<$Res,
+        $Val extends AudioNodeImplementor>
+    implements $AudioNodeImplementorCopyWith<$Res> {
+  _$AudioNodeImplementorCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$AudioNodeImplementor_Variant0ImplCopyWith<$Res> {
+  factory _$$AudioNodeImplementor_Variant0ImplCopyWith(
+          _$AudioNodeImplementor_Variant0Impl value,
+          $Res Function(_$AudioNodeImplementor_Variant0Impl) then) =
+      __$$AudioNodeImplementor_Variant0ImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({AnalyserNode field0});
+}
+
+/// @nodoc
+class __$$AudioNodeImplementor_Variant0ImplCopyWithImpl<$Res>
+    extends _$AudioNodeImplementorCopyWithImpl<$Res,
+        _$AudioNodeImplementor_Variant0Impl>
+    implements _$$AudioNodeImplementor_Variant0ImplCopyWith<$Res> {
+  __$$AudioNodeImplementor_Variant0ImplCopyWithImpl(
+      _$AudioNodeImplementor_Variant0Impl _value,
+      $Res Function(_$AudioNodeImplementor_Variant0Impl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$AudioNodeImplementor_Variant0Impl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as AnalyserNode,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AudioNodeImplementor_Variant0Impl
+    extends AudioNodeImplementor_Variant0 {
+  const _$AudioNodeImplementor_Variant0Impl(this.field0) : super._();
+
+  @override
+  final AnalyserNode field0;
+
+  @override
+  String toString() {
+    return 'AudioNodeImplementor.variant0(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AudioNodeImplementor_Variant0Impl &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AudioNodeImplementor_Variant0ImplCopyWith<
+          _$AudioNodeImplementor_Variant0Impl>
+      get copyWith => __$$AudioNodeImplementor_Variant0ImplCopyWithImpl<
+          _$AudioNodeImplementor_Variant0Impl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(AnalyserNode field0) variant0,
+    required TResult Function(AudioBufferSourceNode field0) variant1,
+    required TResult Function(AudioDestinationNode field0) variant2,
+    required TResult Function(AudioParam field0) variant3,
+    required TResult Function(AudioWorkletNode field0) variant4,
+    required TResult Function(BiquadFilterNode field0) variant5,
+    required TResult Function(ChannelMergerNode field0) variant6,
+    required TResult Function(ChannelSplitterNode field0) variant7,
+    required TResult Function(ConstantSourceNode field0) variant8,
+    required TResult Function(ConvolverNode field0) variant9,
+    required TResult Function(DelayNode field0) variant10,
+    required TResult Function(DynamicsCompressorNode field0) variant11,
+    required TResult Function(GainNode field0) variant12,
+    required TResult Function(IirFilterNode field0) variant13,
+    required TResult Function(MediaElementAudioSourceNode field0) variant14,
+    required TResult Function(MediaStreamAudioDestinationNode field0) variant15,
+    required TResult Function(MediaStreamAudioSourceNode field0) variant16,
+    required TResult Function(MediaStreamTrackAudioSourceNode field0) variant17,
+    required TResult Function(OscillatorNode field0) variant18,
+    required TResult Function(PannerNode field0) variant19,
+    required TResult Function(ScriptProcessorNode field0) variant20,
+    required TResult Function(StereoPannerNode field0) variant21,
+    required TResult Function(WaveShaperNode field0) variant22,
+  }) {
+    return variant0(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(AnalyserNode field0)? variant0,
+    TResult? Function(AudioBufferSourceNode field0)? variant1,
+    TResult? Function(AudioDestinationNode field0)? variant2,
+    TResult? Function(AudioParam field0)? variant3,
+    TResult? Function(AudioWorkletNode field0)? variant4,
+    TResult? Function(BiquadFilterNode field0)? variant5,
+    TResult? Function(ChannelMergerNode field0)? variant6,
+    TResult? Function(ChannelSplitterNode field0)? variant7,
+    TResult? Function(ConstantSourceNode field0)? variant8,
+    TResult? Function(ConvolverNode field0)? variant9,
+    TResult? Function(DelayNode field0)? variant10,
+    TResult? Function(DynamicsCompressorNode field0)? variant11,
+    TResult? Function(GainNode field0)? variant12,
+    TResult? Function(IirFilterNode field0)? variant13,
+    TResult? Function(MediaElementAudioSourceNode field0)? variant14,
+    TResult? Function(MediaStreamAudioDestinationNode field0)? variant15,
+    TResult? Function(MediaStreamAudioSourceNode field0)? variant16,
+    TResult? Function(MediaStreamTrackAudioSourceNode field0)? variant17,
+    TResult? Function(OscillatorNode field0)? variant18,
+    TResult? Function(PannerNode field0)? variant19,
+    TResult? Function(ScriptProcessorNode field0)? variant20,
+    TResult? Function(StereoPannerNode field0)? variant21,
+    TResult? Function(WaveShaperNode field0)? variant22,
+  }) {
+    return variant0?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(AnalyserNode field0)? variant0,
+    TResult Function(AudioBufferSourceNode field0)? variant1,
+    TResult Function(AudioDestinationNode field0)? variant2,
+    TResult Function(AudioParam field0)? variant3,
+    TResult Function(AudioWorkletNode field0)? variant4,
+    TResult Function(BiquadFilterNode field0)? variant5,
+    TResult Function(ChannelMergerNode field0)? variant6,
+    TResult Function(ChannelSplitterNode field0)? variant7,
+    TResult Function(ConstantSourceNode field0)? variant8,
+    TResult Function(ConvolverNode field0)? variant9,
+    TResult Function(DelayNode field0)? variant10,
+    TResult Function(DynamicsCompressorNode field0)? variant11,
+    TResult Function(GainNode field0)? variant12,
+    TResult Function(IirFilterNode field0)? variant13,
+    TResult Function(MediaElementAudioSourceNode field0)? variant14,
+    TResult Function(MediaStreamAudioDestinationNode field0)? variant15,
+    TResult Function(MediaStreamAudioSourceNode field0)? variant16,
+    TResult Function(MediaStreamTrackAudioSourceNode field0)? variant17,
+    TResult Function(OscillatorNode field0)? variant18,
+    TResult Function(PannerNode field0)? variant19,
+    TResult Function(ScriptProcessorNode field0)? variant20,
+    TResult Function(StereoPannerNode field0)? variant21,
+    TResult Function(WaveShaperNode field0)? variant22,
+    required TResult orElse(),
+  }) {
+    if (variant0 != null) {
+      return variant0(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AudioNodeImplementor_Variant0 value) variant0,
+    required TResult Function(AudioNodeImplementor_Variant1 value) variant1,
+    required TResult Function(AudioNodeImplementor_Variant2 value) variant2,
+    required TResult Function(AudioNodeImplementor_Variant3 value) variant3,
+    required TResult Function(AudioNodeImplementor_Variant4 value) variant4,
+    required TResult Function(AudioNodeImplementor_Variant5 value) variant5,
+    required TResult Function(AudioNodeImplementor_Variant6 value) variant6,
+    required TResult Function(AudioNodeImplementor_Variant7 value) variant7,
+    required TResult Function(AudioNodeImplementor_Variant8 value) variant8,
+    required TResult Function(AudioNodeImplementor_Variant9 value) variant9,
+    required TResult Function(AudioNodeImplementor_Variant10 value) variant10,
+    required TResult Function(AudioNodeImplementor_Variant11 value) variant11,
+    required TResult Function(AudioNodeImplementor_Variant12 value) variant12,
+    required TResult Function(AudioNodeImplementor_Variant13 value) variant13,
+    required TResult Function(AudioNodeImplementor_Variant14 value) variant14,
+    required TResult Function(AudioNodeImplementor_Variant15 value) variant15,
+    required TResult Function(AudioNodeImplementor_Variant16 value) variant16,
+    required TResult Function(AudioNodeImplementor_Variant17 value) variant17,
+    required TResult Function(AudioNodeImplementor_Variant18 value) variant18,
+    required TResult Function(AudioNodeImplementor_Variant19 value) variant19,
+    required TResult Function(AudioNodeImplementor_Variant20 value) variant20,
+    required TResult Function(AudioNodeImplementor_Variant21 value) variant21,
+    required TResult Function(AudioNodeImplementor_Variant22 value) variant22,
+  }) {
+    return variant0(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AudioNodeImplementor_Variant0 value)? variant0,
+    TResult? Function(AudioNodeImplementor_Variant1 value)? variant1,
+    TResult? Function(AudioNodeImplementor_Variant2 value)? variant2,
+    TResult? Function(AudioNodeImplementor_Variant3 value)? variant3,
+    TResult? Function(AudioNodeImplementor_Variant4 value)? variant4,
+    TResult? Function(AudioNodeImplementor_Variant5 value)? variant5,
+    TResult? Function(AudioNodeImplementor_Variant6 value)? variant6,
+    TResult? Function(AudioNodeImplementor_Variant7 value)? variant7,
+    TResult? Function(AudioNodeImplementor_Variant8 value)? variant8,
+    TResult? Function(AudioNodeImplementor_Variant9 value)? variant9,
+    TResult? Function(AudioNodeImplementor_Variant10 value)? variant10,
+    TResult? Function(AudioNodeImplementor_Variant11 value)? variant11,
+    TResult? Function(AudioNodeImplementor_Variant12 value)? variant12,
+    TResult? Function(AudioNodeImplementor_Variant13 value)? variant13,
+    TResult? Function(AudioNodeImplementor_Variant14 value)? variant14,
+    TResult? Function(AudioNodeImplementor_Variant15 value)? variant15,
+    TResult? Function(AudioNodeImplementor_Variant16 value)? variant16,
+    TResult? Function(AudioNodeImplementor_Variant17 value)? variant17,
+    TResult? Function(AudioNodeImplementor_Variant18 value)? variant18,
+    TResult? Function(AudioNodeImplementor_Variant19 value)? variant19,
+    TResult? Function(AudioNodeImplementor_Variant20 value)? variant20,
+    TResult? Function(AudioNodeImplementor_Variant21 value)? variant21,
+    TResult? Function(AudioNodeImplementor_Variant22 value)? variant22,
+  }) {
+    return variant0?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AudioNodeImplementor_Variant0 value)? variant0,
+    TResult Function(AudioNodeImplementor_Variant1 value)? variant1,
+    TResult Function(AudioNodeImplementor_Variant2 value)? variant2,
+    TResult Function(AudioNodeImplementor_Variant3 value)? variant3,
+    TResult Function(AudioNodeImplementor_Variant4 value)? variant4,
+    TResult Function(AudioNodeImplementor_Variant5 value)? variant5,
+    TResult Function(AudioNodeImplementor_Variant6 value)? variant6,
+    TResult Function(AudioNodeImplementor_Variant7 value)? variant7,
+    TResult Function(AudioNodeImplementor_Variant8 value)? variant8,
+    TResult Function(AudioNodeImplementor_Variant9 value)? variant9,
+    TResult Function(AudioNodeImplementor_Variant10 value)? variant10,
+    TResult Function(AudioNodeImplementor_Variant11 value)? variant11,
+    TResult Function(AudioNodeImplementor_Variant12 value)? variant12,
+    TResult Function(AudioNodeImplementor_Variant13 value)? variant13,
+    TResult Function(AudioNodeImplementor_Variant14 value)? variant14,
+    TResult Function(AudioNodeImplementor_Variant15 value)? variant15,
+    TResult Function(AudioNodeImplementor_Variant16 value)? variant16,
+    TResult Function(AudioNodeImplementor_Variant17 value)? variant17,
+    TResult Function(AudioNodeImplementor_Variant18 value)? variant18,
+    TResult Function(AudioNodeImplementor_Variant19 value)? variant19,
+    TResult Function(AudioNodeImplementor_Variant20 value)? variant20,
+    TResult Function(AudioNodeImplementor_Variant21 value)? variant21,
+    TResult Function(AudioNodeImplementor_Variant22 value)? variant22,
+    required TResult orElse(),
+  }) {
+    if (variant0 != null) {
+      return variant0(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AudioNodeImplementor_Variant0 extends AudioNodeImplementor {
+  const factory AudioNodeImplementor_Variant0(final AnalyserNode field0) =
+      _$AudioNodeImplementor_Variant0Impl;
+  const AudioNodeImplementor_Variant0._() : super._();
+
+  @override
+  AnalyserNode get field0;
+  @JsonKey(ignore: true)
+  _$$AudioNodeImplementor_Variant0ImplCopyWith<
+          _$AudioNodeImplementor_Variant0Impl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AudioNodeImplementor_Variant1ImplCopyWith<$Res> {
+  factory _$$AudioNodeImplementor_Variant1ImplCopyWith(
+          _$AudioNodeImplementor_Variant1Impl value,
+          $Res Function(_$AudioNodeImplementor_Variant1Impl) then) =
+      __$$AudioNodeImplementor_Variant1ImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({AudioBufferSourceNode field0});
+}
+
+/// @nodoc
+class __$$AudioNodeImplementor_Variant1ImplCopyWithImpl<$Res>
+    extends _$AudioNodeImplementorCopyWithImpl<$Res,
+        _$AudioNodeImplementor_Variant1Impl>
+    implements _$$AudioNodeImplementor_Variant1ImplCopyWith<$Res> {
+  __$$AudioNodeImplementor_Variant1ImplCopyWithImpl(
+      _$AudioNodeImplementor_Variant1Impl _value,
+      $Res Function(_$AudioNodeImplementor_Variant1Impl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$AudioNodeImplementor_Variant1Impl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as AudioBufferSourceNode,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AudioNodeImplementor_Variant1Impl
+    extends AudioNodeImplementor_Variant1 {
+  const _$AudioNodeImplementor_Variant1Impl(this.field0) : super._();
+
+  @override
+  final AudioBufferSourceNode field0;
+
+  @override
+  String toString() {
+    return 'AudioNodeImplementor.variant1(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AudioNodeImplementor_Variant1Impl &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AudioNodeImplementor_Variant1ImplCopyWith<
+          _$AudioNodeImplementor_Variant1Impl>
+      get copyWith => __$$AudioNodeImplementor_Variant1ImplCopyWithImpl<
+          _$AudioNodeImplementor_Variant1Impl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(AnalyserNode field0) variant0,
+    required TResult Function(AudioBufferSourceNode field0) variant1,
+    required TResult Function(AudioDestinationNode field0) variant2,
+    required TResult Function(AudioParam field0) variant3,
+    required TResult Function(AudioWorkletNode field0) variant4,
+    required TResult Function(BiquadFilterNode field0) variant5,
+    required TResult Function(ChannelMergerNode field0) variant6,
+    required TResult Function(ChannelSplitterNode field0) variant7,
+    required TResult Function(ConstantSourceNode field0) variant8,
+    required TResult Function(ConvolverNode field0) variant9,
+    required TResult Function(DelayNode field0) variant10,
+    required TResult Function(DynamicsCompressorNode field0) variant11,
+    required TResult Function(GainNode field0) variant12,
+    required TResult Function(IirFilterNode field0) variant13,
+    required TResult Function(MediaElementAudioSourceNode field0) variant14,
+    required TResult Function(MediaStreamAudioDestinationNode field0) variant15,
+    required TResult Function(MediaStreamAudioSourceNode field0) variant16,
+    required TResult Function(MediaStreamTrackAudioSourceNode field0) variant17,
+    required TResult Function(OscillatorNode field0) variant18,
+    required TResult Function(PannerNode field0) variant19,
+    required TResult Function(ScriptProcessorNode field0) variant20,
+    required TResult Function(StereoPannerNode field0) variant21,
+    required TResult Function(WaveShaperNode field0) variant22,
+  }) {
+    return variant1(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(AnalyserNode field0)? variant0,
+    TResult? Function(AudioBufferSourceNode field0)? variant1,
+    TResult? Function(AudioDestinationNode field0)? variant2,
+    TResult? Function(AudioParam field0)? variant3,
+    TResult? Function(AudioWorkletNode field0)? variant4,
+    TResult? Function(BiquadFilterNode field0)? variant5,
+    TResult? Function(ChannelMergerNode field0)? variant6,
+    TResult? Function(ChannelSplitterNode field0)? variant7,
+    TResult? Function(ConstantSourceNode field0)? variant8,
+    TResult? Function(ConvolverNode field0)? variant9,
+    TResult? Function(DelayNode field0)? variant10,
+    TResult? Function(DynamicsCompressorNode field0)? variant11,
+    TResult? Function(GainNode field0)? variant12,
+    TResult? Function(IirFilterNode field0)? variant13,
+    TResult? Function(MediaElementAudioSourceNode field0)? variant14,
+    TResult? Function(MediaStreamAudioDestinationNode field0)? variant15,
+    TResult? Function(MediaStreamAudioSourceNode field0)? variant16,
+    TResult? Function(MediaStreamTrackAudioSourceNode field0)? variant17,
+    TResult? Function(OscillatorNode field0)? variant18,
+    TResult? Function(PannerNode field0)? variant19,
+    TResult? Function(ScriptProcessorNode field0)? variant20,
+    TResult? Function(StereoPannerNode field0)? variant21,
+    TResult? Function(WaveShaperNode field0)? variant22,
+  }) {
+    return variant1?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(AnalyserNode field0)? variant0,
+    TResult Function(AudioBufferSourceNode field0)? variant1,
+    TResult Function(AudioDestinationNode field0)? variant2,
+    TResult Function(AudioParam field0)? variant3,
+    TResult Function(AudioWorkletNode field0)? variant4,
+    TResult Function(BiquadFilterNode field0)? variant5,
+    TResult Function(ChannelMergerNode field0)? variant6,
+    TResult Function(ChannelSplitterNode field0)? variant7,
+    TResult Function(ConstantSourceNode field0)? variant8,
+    TResult Function(ConvolverNode field0)? variant9,
+    TResult Function(DelayNode field0)? variant10,
+    TResult Function(DynamicsCompressorNode field0)? variant11,
+    TResult Function(GainNode field0)? variant12,
+    TResult Function(IirFilterNode field0)? variant13,
+    TResult Function(MediaElementAudioSourceNode field0)? variant14,
+    TResult Function(MediaStreamAudioDestinationNode field0)? variant15,
+    TResult Function(MediaStreamAudioSourceNode field0)? variant16,
+    TResult Function(MediaStreamTrackAudioSourceNode field0)? variant17,
+    TResult Function(OscillatorNode field0)? variant18,
+    TResult Function(PannerNode field0)? variant19,
+    TResult Function(ScriptProcessorNode field0)? variant20,
+    TResult Function(StereoPannerNode field0)? variant21,
+    TResult Function(WaveShaperNode field0)? variant22,
+    required TResult orElse(),
+  }) {
+    if (variant1 != null) {
+      return variant1(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AudioNodeImplementor_Variant0 value) variant0,
+    required TResult Function(AudioNodeImplementor_Variant1 value) variant1,
+    required TResult Function(AudioNodeImplementor_Variant2 value) variant2,
+    required TResult Function(AudioNodeImplementor_Variant3 value) variant3,
+    required TResult Function(AudioNodeImplementor_Variant4 value) variant4,
+    required TResult Function(AudioNodeImplementor_Variant5 value) variant5,
+    required TResult Function(AudioNodeImplementor_Variant6 value) variant6,
+    required TResult Function(AudioNodeImplementor_Variant7 value) variant7,
+    required TResult Function(AudioNodeImplementor_Variant8 value) variant8,
+    required TResult Function(AudioNodeImplementor_Variant9 value) variant9,
+    required TResult Function(AudioNodeImplementor_Variant10 value) variant10,
+    required TResult Function(AudioNodeImplementor_Variant11 value) variant11,
+    required TResult Function(AudioNodeImplementor_Variant12 value) variant12,
+    required TResult Function(AudioNodeImplementor_Variant13 value) variant13,
+    required TResult Function(AudioNodeImplementor_Variant14 value) variant14,
+    required TResult Function(AudioNodeImplementor_Variant15 value) variant15,
+    required TResult Function(AudioNodeImplementor_Variant16 value) variant16,
+    required TResult Function(AudioNodeImplementor_Variant17 value) variant17,
+    required TResult Function(AudioNodeImplementor_Variant18 value) variant18,
+    required TResult Function(AudioNodeImplementor_Variant19 value) variant19,
+    required TResult Function(AudioNodeImplementor_Variant20 value) variant20,
+    required TResult Function(AudioNodeImplementor_Variant21 value) variant21,
+    required TResult Function(AudioNodeImplementor_Variant22 value) variant22,
+  }) {
+    return variant1(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AudioNodeImplementor_Variant0 value)? variant0,
+    TResult? Function(AudioNodeImplementor_Variant1 value)? variant1,
+    TResult? Function(AudioNodeImplementor_Variant2 value)? variant2,
+    TResult? Function(AudioNodeImplementor_Variant3 value)? variant3,
+    TResult? Function(AudioNodeImplementor_Variant4 value)? variant4,
+    TResult? Function(AudioNodeImplementor_Variant5 value)? variant5,
+    TResult? Function(AudioNodeImplementor_Variant6 value)? variant6,
+    TResult? Function(AudioNodeImplementor_Variant7 value)? variant7,
+    TResult? Function(AudioNodeImplementor_Variant8 value)? variant8,
+    TResult? Function(AudioNodeImplementor_Variant9 value)? variant9,
+    TResult? Function(AudioNodeImplementor_Variant10 value)? variant10,
+    TResult? Function(AudioNodeImplementor_Variant11 value)? variant11,
+    TResult? Function(AudioNodeImplementor_Variant12 value)? variant12,
+    TResult? Function(AudioNodeImplementor_Variant13 value)? variant13,
+    TResult? Function(AudioNodeImplementor_Variant14 value)? variant14,
+    TResult? Function(AudioNodeImplementor_Variant15 value)? variant15,
+    TResult? Function(AudioNodeImplementor_Variant16 value)? variant16,
+    TResult? Function(AudioNodeImplementor_Variant17 value)? variant17,
+    TResult? Function(AudioNodeImplementor_Variant18 value)? variant18,
+    TResult? Function(AudioNodeImplementor_Variant19 value)? variant19,
+    TResult? Function(AudioNodeImplementor_Variant20 value)? variant20,
+    TResult? Function(AudioNodeImplementor_Variant21 value)? variant21,
+    TResult? Function(AudioNodeImplementor_Variant22 value)? variant22,
+  }) {
+    return variant1?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AudioNodeImplementor_Variant0 value)? variant0,
+    TResult Function(AudioNodeImplementor_Variant1 value)? variant1,
+    TResult Function(AudioNodeImplementor_Variant2 value)? variant2,
+    TResult Function(AudioNodeImplementor_Variant3 value)? variant3,
+    TResult Function(AudioNodeImplementor_Variant4 value)? variant4,
+    TResult Function(AudioNodeImplementor_Variant5 value)? variant5,
+    TResult Function(AudioNodeImplementor_Variant6 value)? variant6,
+    TResult Function(AudioNodeImplementor_Variant7 value)? variant7,
+    TResult Function(AudioNodeImplementor_Variant8 value)? variant8,
+    TResult Function(AudioNodeImplementor_Variant9 value)? variant9,
+    TResult Function(AudioNodeImplementor_Variant10 value)? variant10,
+    TResult Function(AudioNodeImplementor_Variant11 value)? variant11,
+    TResult Function(AudioNodeImplementor_Variant12 value)? variant12,
+    TResult Function(AudioNodeImplementor_Variant13 value)? variant13,
+    TResult Function(AudioNodeImplementor_Variant14 value)? variant14,
+    TResult Function(AudioNodeImplementor_Variant15 value)? variant15,
+    TResult Function(AudioNodeImplementor_Variant16 value)? variant16,
+    TResult Function(AudioNodeImplementor_Variant17 value)? variant17,
+    TResult Function(AudioNodeImplementor_Variant18 value)? variant18,
+    TResult Function(AudioNodeImplementor_Variant19 value)? variant19,
+    TResult Function(AudioNodeImplementor_Variant20 value)? variant20,
+    TResult Function(AudioNodeImplementor_Variant21 value)? variant21,
+    TResult Function(AudioNodeImplementor_Variant22 value)? variant22,
+    required TResult orElse(),
+  }) {
+    if (variant1 != null) {
+      return variant1(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AudioNodeImplementor_Variant1 extends AudioNodeImplementor {
+  const factory AudioNodeImplementor_Variant1(
+      final AudioBufferSourceNode field0) = _$AudioNodeImplementor_Variant1Impl;
+  const AudioNodeImplementor_Variant1._() : super._();
+
+  @override
+  AudioBufferSourceNode get field0;
+  @JsonKey(ignore: true)
+  _$$AudioNodeImplementor_Variant1ImplCopyWith<
+          _$AudioNodeImplementor_Variant1Impl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AudioNodeImplementor_Variant2ImplCopyWith<$Res> {
+  factory _$$AudioNodeImplementor_Variant2ImplCopyWith(
+          _$AudioNodeImplementor_Variant2Impl value,
+          $Res Function(_$AudioNodeImplementor_Variant2Impl) then) =
+      __$$AudioNodeImplementor_Variant2ImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({AudioDestinationNode field0});
+}
+
+/// @nodoc
+class __$$AudioNodeImplementor_Variant2ImplCopyWithImpl<$Res>
+    extends _$AudioNodeImplementorCopyWithImpl<$Res,
+        _$AudioNodeImplementor_Variant2Impl>
+    implements _$$AudioNodeImplementor_Variant2ImplCopyWith<$Res> {
+  __$$AudioNodeImplementor_Variant2ImplCopyWithImpl(
+      _$AudioNodeImplementor_Variant2Impl _value,
+      $Res Function(_$AudioNodeImplementor_Variant2Impl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$AudioNodeImplementor_Variant2Impl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as AudioDestinationNode,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AudioNodeImplementor_Variant2Impl
+    extends AudioNodeImplementor_Variant2 {
+  const _$AudioNodeImplementor_Variant2Impl(this.field0) : super._();
+
+  @override
+  final AudioDestinationNode field0;
+
+  @override
+  String toString() {
+    return 'AudioNodeImplementor.variant2(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AudioNodeImplementor_Variant2Impl &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AudioNodeImplementor_Variant2ImplCopyWith<
+          _$AudioNodeImplementor_Variant2Impl>
+      get copyWith => __$$AudioNodeImplementor_Variant2ImplCopyWithImpl<
+          _$AudioNodeImplementor_Variant2Impl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(AnalyserNode field0) variant0,
+    required TResult Function(AudioBufferSourceNode field0) variant1,
+    required TResult Function(AudioDestinationNode field0) variant2,
+    required TResult Function(AudioParam field0) variant3,
+    required TResult Function(AudioWorkletNode field0) variant4,
+    required TResult Function(BiquadFilterNode field0) variant5,
+    required TResult Function(ChannelMergerNode field0) variant6,
+    required TResult Function(ChannelSplitterNode field0) variant7,
+    required TResult Function(ConstantSourceNode field0) variant8,
+    required TResult Function(ConvolverNode field0) variant9,
+    required TResult Function(DelayNode field0) variant10,
+    required TResult Function(DynamicsCompressorNode field0) variant11,
+    required TResult Function(GainNode field0) variant12,
+    required TResult Function(IirFilterNode field0) variant13,
+    required TResult Function(MediaElementAudioSourceNode field0) variant14,
+    required TResult Function(MediaStreamAudioDestinationNode field0) variant15,
+    required TResult Function(MediaStreamAudioSourceNode field0) variant16,
+    required TResult Function(MediaStreamTrackAudioSourceNode field0) variant17,
+    required TResult Function(OscillatorNode field0) variant18,
+    required TResult Function(PannerNode field0) variant19,
+    required TResult Function(ScriptProcessorNode field0) variant20,
+    required TResult Function(StereoPannerNode field0) variant21,
+    required TResult Function(WaveShaperNode field0) variant22,
+  }) {
+    return variant2(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(AnalyserNode field0)? variant0,
+    TResult? Function(AudioBufferSourceNode field0)? variant1,
+    TResult? Function(AudioDestinationNode field0)? variant2,
+    TResult? Function(AudioParam field0)? variant3,
+    TResult? Function(AudioWorkletNode field0)? variant4,
+    TResult? Function(BiquadFilterNode field0)? variant5,
+    TResult? Function(ChannelMergerNode field0)? variant6,
+    TResult? Function(ChannelSplitterNode field0)? variant7,
+    TResult? Function(ConstantSourceNode field0)? variant8,
+    TResult? Function(ConvolverNode field0)? variant9,
+    TResult? Function(DelayNode field0)? variant10,
+    TResult? Function(DynamicsCompressorNode field0)? variant11,
+    TResult? Function(GainNode field0)? variant12,
+    TResult? Function(IirFilterNode field0)? variant13,
+    TResult? Function(MediaElementAudioSourceNode field0)? variant14,
+    TResult? Function(MediaStreamAudioDestinationNode field0)? variant15,
+    TResult? Function(MediaStreamAudioSourceNode field0)? variant16,
+    TResult? Function(MediaStreamTrackAudioSourceNode field0)? variant17,
+    TResult? Function(OscillatorNode field0)? variant18,
+    TResult? Function(PannerNode field0)? variant19,
+    TResult? Function(ScriptProcessorNode field0)? variant20,
+    TResult? Function(StereoPannerNode field0)? variant21,
+    TResult? Function(WaveShaperNode field0)? variant22,
+  }) {
+    return variant2?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(AnalyserNode field0)? variant0,
+    TResult Function(AudioBufferSourceNode field0)? variant1,
+    TResult Function(AudioDestinationNode field0)? variant2,
+    TResult Function(AudioParam field0)? variant3,
+    TResult Function(AudioWorkletNode field0)? variant4,
+    TResult Function(BiquadFilterNode field0)? variant5,
+    TResult Function(ChannelMergerNode field0)? variant6,
+    TResult Function(ChannelSplitterNode field0)? variant7,
+    TResult Function(ConstantSourceNode field0)? variant8,
+    TResult Function(ConvolverNode field0)? variant9,
+    TResult Function(DelayNode field0)? variant10,
+    TResult Function(DynamicsCompressorNode field0)? variant11,
+    TResult Function(GainNode field0)? variant12,
+    TResult Function(IirFilterNode field0)? variant13,
+    TResult Function(MediaElementAudioSourceNode field0)? variant14,
+    TResult Function(MediaStreamAudioDestinationNode field0)? variant15,
+    TResult Function(MediaStreamAudioSourceNode field0)? variant16,
+    TResult Function(MediaStreamTrackAudioSourceNode field0)? variant17,
+    TResult Function(OscillatorNode field0)? variant18,
+    TResult Function(PannerNode field0)? variant19,
+    TResult Function(ScriptProcessorNode field0)? variant20,
+    TResult Function(StereoPannerNode field0)? variant21,
+    TResult Function(WaveShaperNode field0)? variant22,
+    required TResult orElse(),
+  }) {
+    if (variant2 != null) {
+      return variant2(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AudioNodeImplementor_Variant0 value) variant0,
+    required TResult Function(AudioNodeImplementor_Variant1 value) variant1,
+    required TResult Function(AudioNodeImplementor_Variant2 value) variant2,
+    required TResult Function(AudioNodeImplementor_Variant3 value) variant3,
+    required TResult Function(AudioNodeImplementor_Variant4 value) variant4,
+    required TResult Function(AudioNodeImplementor_Variant5 value) variant5,
+    required TResult Function(AudioNodeImplementor_Variant6 value) variant6,
+    required TResult Function(AudioNodeImplementor_Variant7 value) variant7,
+    required TResult Function(AudioNodeImplementor_Variant8 value) variant8,
+    required TResult Function(AudioNodeImplementor_Variant9 value) variant9,
+    required TResult Function(AudioNodeImplementor_Variant10 value) variant10,
+    required TResult Function(AudioNodeImplementor_Variant11 value) variant11,
+    required TResult Function(AudioNodeImplementor_Variant12 value) variant12,
+    required TResult Function(AudioNodeImplementor_Variant13 value) variant13,
+    required TResult Function(AudioNodeImplementor_Variant14 value) variant14,
+    required TResult Function(AudioNodeImplementor_Variant15 value) variant15,
+    required TResult Function(AudioNodeImplementor_Variant16 value) variant16,
+    required TResult Function(AudioNodeImplementor_Variant17 value) variant17,
+    required TResult Function(AudioNodeImplementor_Variant18 value) variant18,
+    required TResult Function(AudioNodeImplementor_Variant19 value) variant19,
+    required TResult Function(AudioNodeImplementor_Variant20 value) variant20,
+    required TResult Function(AudioNodeImplementor_Variant21 value) variant21,
+    required TResult Function(AudioNodeImplementor_Variant22 value) variant22,
+  }) {
+    return variant2(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AudioNodeImplementor_Variant0 value)? variant0,
+    TResult? Function(AudioNodeImplementor_Variant1 value)? variant1,
+    TResult? Function(AudioNodeImplementor_Variant2 value)? variant2,
+    TResult? Function(AudioNodeImplementor_Variant3 value)? variant3,
+    TResult? Function(AudioNodeImplementor_Variant4 value)? variant4,
+    TResult? Function(AudioNodeImplementor_Variant5 value)? variant5,
+    TResult? Function(AudioNodeImplementor_Variant6 value)? variant6,
+    TResult? Function(AudioNodeImplementor_Variant7 value)? variant7,
+    TResult? Function(AudioNodeImplementor_Variant8 value)? variant8,
+    TResult? Function(AudioNodeImplementor_Variant9 value)? variant9,
+    TResult? Function(AudioNodeImplementor_Variant10 value)? variant10,
+    TResult? Function(AudioNodeImplementor_Variant11 value)? variant11,
+    TResult? Function(AudioNodeImplementor_Variant12 value)? variant12,
+    TResult? Function(AudioNodeImplementor_Variant13 value)? variant13,
+    TResult? Function(AudioNodeImplementor_Variant14 value)? variant14,
+    TResult? Function(AudioNodeImplementor_Variant15 value)? variant15,
+    TResult? Function(AudioNodeImplementor_Variant16 value)? variant16,
+    TResult? Function(AudioNodeImplementor_Variant17 value)? variant17,
+    TResult? Function(AudioNodeImplementor_Variant18 value)? variant18,
+    TResult? Function(AudioNodeImplementor_Variant19 value)? variant19,
+    TResult? Function(AudioNodeImplementor_Variant20 value)? variant20,
+    TResult? Function(AudioNodeImplementor_Variant21 value)? variant21,
+    TResult? Function(AudioNodeImplementor_Variant22 value)? variant22,
+  }) {
+    return variant2?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AudioNodeImplementor_Variant0 value)? variant0,
+    TResult Function(AudioNodeImplementor_Variant1 value)? variant1,
+    TResult Function(AudioNodeImplementor_Variant2 value)? variant2,
+    TResult Function(AudioNodeImplementor_Variant3 value)? variant3,
+    TResult Function(AudioNodeImplementor_Variant4 value)? variant4,
+    TResult Function(AudioNodeImplementor_Variant5 value)? variant5,
+    TResult Function(AudioNodeImplementor_Variant6 value)? variant6,
+    TResult Function(AudioNodeImplementor_Variant7 value)? variant7,
+    TResult Function(AudioNodeImplementor_Variant8 value)? variant8,
+    TResult Function(AudioNodeImplementor_Variant9 value)? variant9,
+    TResult Function(AudioNodeImplementor_Variant10 value)? variant10,
+    TResult Function(AudioNodeImplementor_Variant11 value)? variant11,
+    TResult Function(AudioNodeImplementor_Variant12 value)? variant12,
+    TResult Function(AudioNodeImplementor_Variant13 value)? variant13,
+    TResult Function(AudioNodeImplementor_Variant14 value)? variant14,
+    TResult Function(AudioNodeImplementor_Variant15 value)? variant15,
+    TResult Function(AudioNodeImplementor_Variant16 value)? variant16,
+    TResult Function(AudioNodeImplementor_Variant17 value)? variant17,
+    TResult Function(AudioNodeImplementor_Variant18 value)? variant18,
+    TResult Function(AudioNodeImplementor_Variant19 value)? variant19,
+    TResult Function(AudioNodeImplementor_Variant20 value)? variant20,
+    TResult Function(AudioNodeImplementor_Variant21 value)? variant21,
+    TResult Function(AudioNodeImplementor_Variant22 value)? variant22,
+    required TResult orElse(),
+  }) {
+    if (variant2 != null) {
+      return variant2(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AudioNodeImplementor_Variant2 extends AudioNodeImplementor {
+  const factory AudioNodeImplementor_Variant2(
+      final AudioDestinationNode field0) = _$AudioNodeImplementor_Variant2Impl;
+  const AudioNodeImplementor_Variant2._() : super._();
+
+  @override
+  AudioDestinationNode get field0;
+  @JsonKey(ignore: true)
+  _$$AudioNodeImplementor_Variant2ImplCopyWith<
+          _$AudioNodeImplementor_Variant2Impl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AudioNodeImplementor_Variant3ImplCopyWith<$Res> {
+  factory _$$AudioNodeImplementor_Variant3ImplCopyWith(
+          _$AudioNodeImplementor_Variant3Impl value,
+          $Res Function(_$AudioNodeImplementor_Variant3Impl) then) =
+      __$$AudioNodeImplementor_Variant3ImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({AudioParam field0});
+}
+
+/// @nodoc
+class __$$AudioNodeImplementor_Variant3ImplCopyWithImpl<$Res>
+    extends _$AudioNodeImplementorCopyWithImpl<$Res,
+        _$AudioNodeImplementor_Variant3Impl>
+    implements _$$AudioNodeImplementor_Variant3ImplCopyWith<$Res> {
+  __$$AudioNodeImplementor_Variant3ImplCopyWithImpl(
+      _$AudioNodeImplementor_Variant3Impl _value,
+      $Res Function(_$AudioNodeImplementor_Variant3Impl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$AudioNodeImplementor_Variant3Impl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as AudioParam,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AudioNodeImplementor_Variant3Impl
+    extends AudioNodeImplementor_Variant3 {
+  const _$AudioNodeImplementor_Variant3Impl(this.field0) : super._();
+
+  @override
+  final AudioParam field0;
+
+  @override
+  String toString() {
+    return 'AudioNodeImplementor.variant3(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AudioNodeImplementor_Variant3Impl &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AudioNodeImplementor_Variant3ImplCopyWith<
+          _$AudioNodeImplementor_Variant3Impl>
+      get copyWith => __$$AudioNodeImplementor_Variant3ImplCopyWithImpl<
+          _$AudioNodeImplementor_Variant3Impl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(AnalyserNode field0) variant0,
+    required TResult Function(AudioBufferSourceNode field0) variant1,
+    required TResult Function(AudioDestinationNode field0) variant2,
+    required TResult Function(AudioParam field0) variant3,
+    required TResult Function(AudioWorkletNode field0) variant4,
+    required TResult Function(BiquadFilterNode field0) variant5,
+    required TResult Function(ChannelMergerNode field0) variant6,
+    required TResult Function(ChannelSplitterNode field0) variant7,
+    required TResult Function(ConstantSourceNode field0) variant8,
+    required TResult Function(ConvolverNode field0) variant9,
+    required TResult Function(DelayNode field0) variant10,
+    required TResult Function(DynamicsCompressorNode field0) variant11,
+    required TResult Function(GainNode field0) variant12,
+    required TResult Function(IirFilterNode field0) variant13,
+    required TResult Function(MediaElementAudioSourceNode field0) variant14,
+    required TResult Function(MediaStreamAudioDestinationNode field0) variant15,
+    required TResult Function(MediaStreamAudioSourceNode field0) variant16,
+    required TResult Function(MediaStreamTrackAudioSourceNode field0) variant17,
+    required TResult Function(OscillatorNode field0) variant18,
+    required TResult Function(PannerNode field0) variant19,
+    required TResult Function(ScriptProcessorNode field0) variant20,
+    required TResult Function(StereoPannerNode field0) variant21,
+    required TResult Function(WaveShaperNode field0) variant22,
+  }) {
+    return variant3(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(AnalyserNode field0)? variant0,
+    TResult? Function(AudioBufferSourceNode field0)? variant1,
+    TResult? Function(AudioDestinationNode field0)? variant2,
+    TResult? Function(AudioParam field0)? variant3,
+    TResult? Function(AudioWorkletNode field0)? variant4,
+    TResult? Function(BiquadFilterNode field0)? variant5,
+    TResult? Function(ChannelMergerNode field0)? variant6,
+    TResult? Function(ChannelSplitterNode field0)? variant7,
+    TResult? Function(ConstantSourceNode field0)? variant8,
+    TResult? Function(ConvolverNode field0)? variant9,
+    TResult? Function(DelayNode field0)? variant10,
+    TResult? Function(DynamicsCompressorNode field0)? variant11,
+    TResult? Function(GainNode field0)? variant12,
+    TResult? Function(IirFilterNode field0)? variant13,
+    TResult? Function(MediaElementAudioSourceNode field0)? variant14,
+    TResult? Function(MediaStreamAudioDestinationNode field0)? variant15,
+    TResult? Function(MediaStreamAudioSourceNode field0)? variant16,
+    TResult? Function(MediaStreamTrackAudioSourceNode field0)? variant17,
+    TResult? Function(OscillatorNode field0)? variant18,
+    TResult? Function(PannerNode field0)? variant19,
+    TResult? Function(ScriptProcessorNode field0)? variant20,
+    TResult? Function(StereoPannerNode field0)? variant21,
+    TResult? Function(WaveShaperNode field0)? variant22,
+  }) {
+    return variant3?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(AnalyserNode field0)? variant0,
+    TResult Function(AudioBufferSourceNode field0)? variant1,
+    TResult Function(AudioDestinationNode field0)? variant2,
+    TResult Function(AudioParam field0)? variant3,
+    TResult Function(AudioWorkletNode field0)? variant4,
+    TResult Function(BiquadFilterNode field0)? variant5,
+    TResult Function(ChannelMergerNode field0)? variant6,
+    TResult Function(ChannelSplitterNode field0)? variant7,
+    TResult Function(ConstantSourceNode field0)? variant8,
+    TResult Function(ConvolverNode field0)? variant9,
+    TResult Function(DelayNode field0)? variant10,
+    TResult Function(DynamicsCompressorNode field0)? variant11,
+    TResult Function(GainNode field0)? variant12,
+    TResult Function(IirFilterNode field0)? variant13,
+    TResult Function(MediaElementAudioSourceNode field0)? variant14,
+    TResult Function(MediaStreamAudioDestinationNode field0)? variant15,
+    TResult Function(MediaStreamAudioSourceNode field0)? variant16,
+    TResult Function(MediaStreamTrackAudioSourceNode field0)? variant17,
+    TResult Function(OscillatorNode field0)? variant18,
+    TResult Function(PannerNode field0)? variant19,
+    TResult Function(ScriptProcessorNode field0)? variant20,
+    TResult Function(StereoPannerNode field0)? variant21,
+    TResult Function(WaveShaperNode field0)? variant22,
+    required TResult orElse(),
+  }) {
+    if (variant3 != null) {
+      return variant3(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AudioNodeImplementor_Variant0 value) variant0,
+    required TResult Function(AudioNodeImplementor_Variant1 value) variant1,
+    required TResult Function(AudioNodeImplementor_Variant2 value) variant2,
+    required TResult Function(AudioNodeImplementor_Variant3 value) variant3,
+    required TResult Function(AudioNodeImplementor_Variant4 value) variant4,
+    required TResult Function(AudioNodeImplementor_Variant5 value) variant5,
+    required TResult Function(AudioNodeImplementor_Variant6 value) variant6,
+    required TResult Function(AudioNodeImplementor_Variant7 value) variant7,
+    required TResult Function(AudioNodeImplementor_Variant8 value) variant8,
+    required TResult Function(AudioNodeImplementor_Variant9 value) variant9,
+    required TResult Function(AudioNodeImplementor_Variant10 value) variant10,
+    required TResult Function(AudioNodeImplementor_Variant11 value) variant11,
+    required TResult Function(AudioNodeImplementor_Variant12 value) variant12,
+    required TResult Function(AudioNodeImplementor_Variant13 value) variant13,
+    required TResult Function(AudioNodeImplementor_Variant14 value) variant14,
+    required TResult Function(AudioNodeImplementor_Variant15 value) variant15,
+    required TResult Function(AudioNodeImplementor_Variant16 value) variant16,
+    required TResult Function(AudioNodeImplementor_Variant17 value) variant17,
+    required TResult Function(AudioNodeImplementor_Variant18 value) variant18,
+    required TResult Function(AudioNodeImplementor_Variant19 value) variant19,
+    required TResult Function(AudioNodeImplementor_Variant20 value) variant20,
+    required TResult Function(AudioNodeImplementor_Variant21 value) variant21,
+    required TResult Function(AudioNodeImplementor_Variant22 value) variant22,
+  }) {
+    return variant3(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AudioNodeImplementor_Variant0 value)? variant0,
+    TResult? Function(AudioNodeImplementor_Variant1 value)? variant1,
+    TResult? Function(AudioNodeImplementor_Variant2 value)? variant2,
+    TResult? Function(AudioNodeImplementor_Variant3 value)? variant3,
+    TResult? Function(AudioNodeImplementor_Variant4 value)? variant4,
+    TResult? Function(AudioNodeImplementor_Variant5 value)? variant5,
+    TResult? Function(AudioNodeImplementor_Variant6 value)? variant6,
+    TResult? Function(AudioNodeImplementor_Variant7 value)? variant7,
+    TResult? Function(AudioNodeImplementor_Variant8 value)? variant8,
+    TResult? Function(AudioNodeImplementor_Variant9 value)? variant9,
+    TResult? Function(AudioNodeImplementor_Variant10 value)? variant10,
+    TResult? Function(AudioNodeImplementor_Variant11 value)? variant11,
+    TResult? Function(AudioNodeImplementor_Variant12 value)? variant12,
+    TResult? Function(AudioNodeImplementor_Variant13 value)? variant13,
+    TResult? Function(AudioNodeImplementor_Variant14 value)? variant14,
+    TResult? Function(AudioNodeImplementor_Variant15 value)? variant15,
+    TResult? Function(AudioNodeImplementor_Variant16 value)? variant16,
+    TResult? Function(AudioNodeImplementor_Variant17 value)? variant17,
+    TResult? Function(AudioNodeImplementor_Variant18 value)? variant18,
+    TResult? Function(AudioNodeImplementor_Variant19 value)? variant19,
+    TResult? Function(AudioNodeImplementor_Variant20 value)? variant20,
+    TResult? Function(AudioNodeImplementor_Variant21 value)? variant21,
+    TResult? Function(AudioNodeImplementor_Variant22 value)? variant22,
+  }) {
+    return variant3?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AudioNodeImplementor_Variant0 value)? variant0,
+    TResult Function(AudioNodeImplementor_Variant1 value)? variant1,
+    TResult Function(AudioNodeImplementor_Variant2 value)? variant2,
+    TResult Function(AudioNodeImplementor_Variant3 value)? variant3,
+    TResult Function(AudioNodeImplementor_Variant4 value)? variant4,
+    TResult Function(AudioNodeImplementor_Variant5 value)? variant5,
+    TResult Function(AudioNodeImplementor_Variant6 value)? variant6,
+    TResult Function(AudioNodeImplementor_Variant7 value)? variant7,
+    TResult Function(AudioNodeImplementor_Variant8 value)? variant8,
+    TResult Function(AudioNodeImplementor_Variant9 value)? variant9,
+    TResult Function(AudioNodeImplementor_Variant10 value)? variant10,
+    TResult Function(AudioNodeImplementor_Variant11 value)? variant11,
+    TResult Function(AudioNodeImplementor_Variant12 value)? variant12,
+    TResult Function(AudioNodeImplementor_Variant13 value)? variant13,
+    TResult Function(AudioNodeImplementor_Variant14 value)? variant14,
+    TResult Function(AudioNodeImplementor_Variant15 value)? variant15,
+    TResult Function(AudioNodeImplementor_Variant16 value)? variant16,
+    TResult Function(AudioNodeImplementor_Variant17 value)? variant17,
+    TResult Function(AudioNodeImplementor_Variant18 value)? variant18,
+    TResult Function(AudioNodeImplementor_Variant19 value)? variant19,
+    TResult Function(AudioNodeImplementor_Variant20 value)? variant20,
+    TResult Function(AudioNodeImplementor_Variant21 value)? variant21,
+    TResult Function(AudioNodeImplementor_Variant22 value)? variant22,
+    required TResult orElse(),
+  }) {
+    if (variant3 != null) {
+      return variant3(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AudioNodeImplementor_Variant3 extends AudioNodeImplementor {
+  const factory AudioNodeImplementor_Variant3(final AudioParam field0) =
+      _$AudioNodeImplementor_Variant3Impl;
+  const AudioNodeImplementor_Variant3._() : super._();
+
+  @override
+  AudioParam get field0;
+  @JsonKey(ignore: true)
+  _$$AudioNodeImplementor_Variant3ImplCopyWith<
+          _$AudioNodeImplementor_Variant3Impl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AudioNodeImplementor_Variant4ImplCopyWith<$Res> {
+  factory _$$AudioNodeImplementor_Variant4ImplCopyWith(
+          _$AudioNodeImplementor_Variant4Impl value,
+          $Res Function(_$AudioNodeImplementor_Variant4Impl) then) =
+      __$$AudioNodeImplementor_Variant4ImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({AudioWorkletNode field0});
+}
+
+/// @nodoc
+class __$$AudioNodeImplementor_Variant4ImplCopyWithImpl<$Res>
+    extends _$AudioNodeImplementorCopyWithImpl<$Res,
+        _$AudioNodeImplementor_Variant4Impl>
+    implements _$$AudioNodeImplementor_Variant4ImplCopyWith<$Res> {
+  __$$AudioNodeImplementor_Variant4ImplCopyWithImpl(
+      _$AudioNodeImplementor_Variant4Impl _value,
+      $Res Function(_$AudioNodeImplementor_Variant4Impl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$AudioNodeImplementor_Variant4Impl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as AudioWorkletNode,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AudioNodeImplementor_Variant4Impl
+    extends AudioNodeImplementor_Variant4 {
+  const _$AudioNodeImplementor_Variant4Impl(this.field0) : super._();
+
+  @override
+  final AudioWorkletNode field0;
+
+  @override
+  String toString() {
+    return 'AudioNodeImplementor.variant4(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AudioNodeImplementor_Variant4Impl &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AudioNodeImplementor_Variant4ImplCopyWith<
+          _$AudioNodeImplementor_Variant4Impl>
+      get copyWith => __$$AudioNodeImplementor_Variant4ImplCopyWithImpl<
+          _$AudioNodeImplementor_Variant4Impl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(AnalyserNode field0) variant0,
+    required TResult Function(AudioBufferSourceNode field0) variant1,
+    required TResult Function(AudioDestinationNode field0) variant2,
+    required TResult Function(AudioParam field0) variant3,
+    required TResult Function(AudioWorkletNode field0) variant4,
+    required TResult Function(BiquadFilterNode field0) variant5,
+    required TResult Function(ChannelMergerNode field0) variant6,
+    required TResult Function(ChannelSplitterNode field0) variant7,
+    required TResult Function(ConstantSourceNode field0) variant8,
+    required TResult Function(ConvolverNode field0) variant9,
+    required TResult Function(DelayNode field0) variant10,
+    required TResult Function(DynamicsCompressorNode field0) variant11,
+    required TResult Function(GainNode field0) variant12,
+    required TResult Function(IirFilterNode field0) variant13,
+    required TResult Function(MediaElementAudioSourceNode field0) variant14,
+    required TResult Function(MediaStreamAudioDestinationNode field0) variant15,
+    required TResult Function(MediaStreamAudioSourceNode field0) variant16,
+    required TResult Function(MediaStreamTrackAudioSourceNode field0) variant17,
+    required TResult Function(OscillatorNode field0) variant18,
+    required TResult Function(PannerNode field0) variant19,
+    required TResult Function(ScriptProcessorNode field0) variant20,
+    required TResult Function(StereoPannerNode field0) variant21,
+    required TResult Function(WaveShaperNode field0) variant22,
+  }) {
+    return variant4(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(AnalyserNode field0)? variant0,
+    TResult? Function(AudioBufferSourceNode field0)? variant1,
+    TResult? Function(AudioDestinationNode field0)? variant2,
+    TResult? Function(AudioParam field0)? variant3,
+    TResult? Function(AudioWorkletNode field0)? variant4,
+    TResult? Function(BiquadFilterNode field0)? variant5,
+    TResult? Function(ChannelMergerNode field0)? variant6,
+    TResult? Function(ChannelSplitterNode field0)? variant7,
+    TResult? Function(ConstantSourceNode field0)? variant8,
+    TResult? Function(ConvolverNode field0)? variant9,
+    TResult? Function(DelayNode field0)? variant10,
+    TResult? Function(DynamicsCompressorNode field0)? variant11,
+    TResult? Function(GainNode field0)? variant12,
+    TResult? Function(IirFilterNode field0)? variant13,
+    TResult? Function(MediaElementAudioSourceNode field0)? variant14,
+    TResult? Function(MediaStreamAudioDestinationNode field0)? variant15,
+    TResult? Function(MediaStreamAudioSourceNode field0)? variant16,
+    TResult? Function(MediaStreamTrackAudioSourceNode field0)? variant17,
+    TResult? Function(OscillatorNode field0)? variant18,
+    TResult? Function(PannerNode field0)? variant19,
+    TResult? Function(ScriptProcessorNode field0)? variant20,
+    TResult? Function(StereoPannerNode field0)? variant21,
+    TResult? Function(WaveShaperNode field0)? variant22,
+  }) {
+    return variant4?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(AnalyserNode field0)? variant0,
+    TResult Function(AudioBufferSourceNode field0)? variant1,
+    TResult Function(AudioDestinationNode field0)? variant2,
+    TResult Function(AudioParam field0)? variant3,
+    TResult Function(AudioWorkletNode field0)? variant4,
+    TResult Function(BiquadFilterNode field0)? variant5,
+    TResult Function(ChannelMergerNode field0)? variant6,
+    TResult Function(ChannelSplitterNode field0)? variant7,
+    TResult Function(ConstantSourceNode field0)? variant8,
+    TResult Function(ConvolverNode field0)? variant9,
+    TResult Function(DelayNode field0)? variant10,
+    TResult Function(DynamicsCompressorNode field0)? variant11,
+    TResult Function(GainNode field0)? variant12,
+    TResult Function(IirFilterNode field0)? variant13,
+    TResult Function(MediaElementAudioSourceNode field0)? variant14,
+    TResult Function(MediaStreamAudioDestinationNode field0)? variant15,
+    TResult Function(MediaStreamAudioSourceNode field0)? variant16,
+    TResult Function(MediaStreamTrackAudioSourceNode field0)? variant17,
+    TResult Function(OscillatorNode field0)? variant18,
+    TResult Function(PannerNode field0)? variant19,
+    TResult Function(ScriptProcessorNode field0)? variant20,
+    TResult Function(StereoPannerNode field0)? variant21,
+    TResult Function(WaveShaperNode field0)? variant22,
+    required TResult orElse(),
+  }) {
+    if (variant4 != null) {
+      return variant4(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AudioNodeImplementor_Variant0 value) variant0,
+    required TResult Function(AudioNodeImplementor_Variant1 value) variant1,
+    required TResult Function(AudioNodeImplementor_Variant2 value) variant2,
+    required TResult Function(AudioNodeImplementor_Variant3 value) variant3,
+    required TResult Function(AudioNodeImplementor_Variant4 value) variant4,
+    required TResult Function(AudioNodeImplementor_Variant5 value) variant5,
+    required TResult Function(AudioNodeImplementor_Variant6 value) variant6,
+    required TResult Function(AudioNodeImplementor_Variant7 value) variant7,
+    required TResult Function(AudioNodeImplementor_Variant8 value) variant8,
+    required TResult Function(AudioNodeImplementor_Variant9 value) variant9,
+    required TResult Function(AudioNodeImplementor_Variant10 value) variant10,
+    required TResult Function(AudioNodeImplementor_Variant11 value) variant11,
+    required TResult Function(AudioNodeImplementor_Variant12 value) variant12,
+    required TResult Function(AudioNodeImplementor_Variant13 value) variant13,
+    required TResult Function(AudioNodeImplementor_Variant14 value) variant14,
+    required TResult Function(AudioNodeImplementor_Variant15 value) variant15,
+    required TResult Function(AudioNodeImplementor_Variant16 value) variant16,
+    required TResult Function(AudioNodeImplementor_Variant17 value) variant17,
+    required TResult Function(AudioNodeImplementor_Variant18 value) variant18,
+    required TResult Function(AudioNodeImplementor_Variant19 value) variant19,
+    required TResult Function(AudioNodeImplementor_Variant20 value) variant20,
+    required TResult Function(AudioNodeImplementor_Variant21 value) variant21,
+    required TResult Function(AudioNodeImplementor_Variant22 value) variant22,
+  }) {
+    return variant4(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AudioNodeImplementor_Variant0 value)? variant0,
+    TResult? Function(AudioNodeImplementor_Variant1 value)? variant1,
+    TResult? Function(AudioNodeImplementor_Variant2 value)? variant2,
+    TResult? Function(AudioNodeImplementor_Variant3 value)? variant3,
+    TResult? Function(AudioNodeImplementor_Variant4 value)? variant4,
+    TResult? Function(AudioNodeImplementor_Variant5 value)? variant5,
+    TResult? Function(AudioNodeImplementor_Variant6 value)? variant6,
+    TResult? Function(AudioNodeImplementor_Variant7 value)? variant7,
+    TResult? Function(AudioNodeImplementor_Variant8 value)? variant8,
+    TResult? Function(AudioNodeImplementor_Variant9 value)? variant9,
+    TResult? Function(AudioNodeImplementor_Variant10 value)? variant10,
+    TResult? Function(AudioNodeImplementor_Variant11 value)? variant11,
+    TResult? Function(AudioNodeImplementor_Variant12 value)? variant12,
+    TResult? Function(AudioNodeImplementor_Variant13 value)? variant13,
+    TResult? Function(AudioNodeImplementor_Variant14 value)? variant14,
+    TResult? Function(AudioNodeImplementor_Variant15 value)? variant15,
+    TResult? Function(AudioNodeImplementor_Variant16 value)? variant16,
+    TResult? Function(AudioNodeImplementor_Variant17 value)? variant17,
+    TResult? Function(AudioNodeImplementor_Variant18 value)? variant18,
+    TResult? Function(AudioNodeImplementor_Variant19 value)? variant19,
+    TResult? Function(AudioNodeImplementor_Variant20 value)? variant20,
+    TResult? Function(AudioNodeImplementor_Variant21 value)? variant21,
+    TResult? Function(AudioNodeImplementor_Variant22 value)? variant22,
+  }) {
+    return variant4?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AudioNodeImplementor_Variant0 value)? variant0,
+    TResult Function(AudioNodeImplementor_Variant1 value)? variant1,
+    TResult Function(AudioNodeImplementor_Variant2 value)? variant2,
+    TResult Function(AudioNodeImplementor_Variant3 value)? variant3,
+    TResult Function(AudioNodeImplementor_Variant4 value)? variant4,
+    TResult Function(AudioNodeImplementor_Variant5 value)? variant5,
+    TResult Function(AudioNodeImplementor_Variant6 value)? variant6,
+    TResult Function(AudioNodeImplementor_Variant7 value)? variant7,
+    TResult Function(AudioNodeImplementor_Variant8 value)? variant8,
+    TResult Function(AudioNodeImplementor_Variant9 value)? variant9,
+    TResult Function(AudioNodeImplementor_Variant10 value)? variant10,
+    TResult Function(AudioNodeImplementor_Variant11 value)? variant11,
+    TResult Function(AudioNodeImplementor_Variant12 value)? variant12,
+    TResult Function(AudioNodeImplementor_Variant13 value)? variant13,
+    TResult Function(AudioNodeImplementor_Variant14 value)? variant14,
+    TResult Function(AudioNodeImplementor_Variant15 value)? variant15,
+    TResult Function(AudioNodeImplementor_Variant16 value)? variant16,
+    TResult Function(AudioNodeImplementor_Variant17 value)? variant17,
+    TResult Function(AudioNodeImplementor_Variant18 value)? variant18,
+    TResult Function(AudioNodeImplementor_Variant19 value)? variant19,
+    TResult Function(AudioNodeImplementor_Variant20 value)? variant20,
+    TResult Function(AudioNodeImplementor_Variant21 value)? variant21,
+    TResult Function(AudioNodeImplementor_Variant22 value)? variant22,
+    required TResult orElse(),
+  }) {
+    if (variant4 != null) {
+      return variant4(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AudioNodeImplementor_Variant4 extends AudioNodeImplementor {
+  const factory AudioNodeImplementor_Variant4(final AudioWorkletNode field0) =
+      _$AudioNodeImplementor_Variant4Impl;
+  const AudioNodeImplementor_Variant4._() : super._();
+
+  @override
+  AudioWorkletNode get field0;
+  @JsonKey(ignore: true)
+  _$$AudioNodeImplementor_Variant4ImplCopyWith<
+          _$AudioNodeImplementor_Variant4Impl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AudioNodeImplementor_Variant5ImplCopyWith<$Res> {
+  factory _$$AudioNodeImplementor_Variant5ImplCopyWith(
+          _$AudioNodeImplementor_Variant5Impl value,
+          $Res Function(_$AudioNodeImplementor_Variant5Impl) then) =
+      __$$AudioNodeImplementor_Variant5ImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({BiquadFilterNode field0});
+}
+
+/// @nodoc
+class __$$AudioNodeImplementor_Variant5ImplCopyWithImpl<$Res>
+    extends _$AudioNodeImplementorCopyWithImpl<$Res,
+        _$AudioNodeImplementor_Variant5Impl>
+    implements _$$AudioNodeImplementor_Variant5ImplCopyWith<$Res> {
+  __$$AudioNodeImplementor_Variant5ImplCopyWithImpl(
+      _$AudioNodeImplementor_Variant5Impl _value,
+      $Res Function(_$AudioNodeImplementor_Variant5Impl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$AudioNodeImplementor_Variant5Impl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as BiquadFilterNode,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AudioNodeImplementor_Variant5Impl
+    extends AudioNodeImplementor_Variant5 {
+  const _$AudioNodeImplementor_Variant5Impl(this.field0) : super._();
+
+  @override
+  final BiquadFilterNode field0;
+
+  @override
+  String toString() {
+    return 'AudioNodeImplementor.variant5(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AudioNodeImplementor_Variant5Impl &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AudioNodeImplementor_Variant5ImplCopyWith<
+          _$AudioNodeImplementor_Variant5Impl>
+      get copyWith => __$$AudioNodeImplementor_Variant5ImplCopyWithImpl<
+          _$AudioNodeImplementor_Variant5Impl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(AnalyserNode field0) variant0,
+    required TResult Function(AudioBufferSourceNode field0) variant1,
+    required TResult Function(AudioDestinationNode field0) variant2,
+    required TResult Function(AudioParam field0) variant3,
+    required TResult Function(AudioWorkletNode field0) variant4,
+    required TResult Function(BiquadFilterNode field0) variant5,
+    required TResult Function(ChannelMergerNode field0) variant6,
+    required TResult Function(ChannelSplitterNode field0) variant7,
+    required TResult Function(ConstantSourceNode field0) variant8,
+    required TResult Function(ConvolverNode field0) variant9,
+    required TResult Function(DelayNode field0) variant10,
+    required TResult Function(DynamicsCompressorNode field0) variant11,
+    required TResult Function(GainNode field0) variant12,
+    required TResult Function(IirFilterNode field0) variant13,
+    required TResult Function(MediaElementAudioSourceNode field0) variant14,
+    required TResult Function(MediaStreamAudioDestinationNode field0) variant15,
+    required TResult Function(MediaStreamAudioSourceNode field0) variant16,
+    required TResult Function(MediaStreamTrackAudioSourceNode field0) variant17,
+    required TResult Function(OscillatorNode field0) variant18,
+    required TResult Function(PannerNode field0) variant19,
+    required TResult Function(ScriptProcessorNode field0) variant20,
+    required TResult Function(StereoPannerNode field0) variant21,
+    required TResult Function(WaveShaperNode field0) variant22,
+  }) {
+    return variant5(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(AnalyserNode field0)? variant0,
+    TResult? Function(AudioBufferSourceNode field0)? variant1,
+    TResult? Function(AudioDestinationNode field0)? variant2,
+    TResult? Function(AudioParam field0)? variant3,
+    TResult? Function(AudioWorkletNode field0)? variant4,
+    TResult? Function(BiquadFilterNode field0)? variant5,
+    TResult? Function(ChannelMergerNode field0)? variant6,
+    TResult? Function(ChannelSplitterNode field0)? variant7,
+    TResult? Function(ConstantSourceNode field0)? variant8,
+    TResult? Function(ConvolverNode field0)? variant9,
+    TResult? Function(DelayNode field0)? variant10,
+    TResult? Function(DynamicsCompressorNode field0)? variant11,
+    TResult? Function(GainNode field0)? variant12,
+    TResult? Function(IirFilterNode field0)? variant13,
+    TResult? Function(MediaElementAudioSourceNode field0)? variant14,
+    TResult? Function(MediaStreamAudioDestinationNode field0)? variant15,
+    TResult? Function(MediaStreamAudioSourceNode field0)? variant16,
+    TResult? Function(MediaStreamTrackAudioSourceNode field0)? variant17,
+    TResult? Function(OscillatorNode field0)? variant18,
+    TResult? Function(PannerNode field0)? variant19,
+    TResult? Function(ScriptProcessorNode field0)? variant20,
+    TResult? Function(StereoPannerNode field0)? variant21,
+    TResult? Function(WaveShaperNode field0)? variant22,
+  }) {
+    return variant5?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(AnalyserNode field0)? variant0,
+    TResult Function(AudioBufferSourceNode field0)? variant1,
+    TResult Function(AudioDestinationNode field0)? variant2,
+    TResult Function(AudioParam field0)? variant3,
+    TResult Function(AudioWorkletNode field0)? variant4,
+    TResult Function(BiquadFilterNode field0)? variant5,
+    TResult Function(ChannelMergerNode field0)? variant6,
+    TResult Function(ChannelSplitterNode field0)? variant7,
+    TResult Function(ConstantSourceNode field0)? variant8,
+    TResult Function(ConvolverNode field0)? variant9,
+    TResult Function(DelayNode field0)? variant10,
+    TResult Function(DynamicsCompressorNode field0)? variant11,
+    TResult Function(GainNode field0)? variant12,
+    TResult Function(IirFilterNode field0)? variant13,
+    TResult Function(MediaElementAudioSourceNode field0)? variant14,
+    TResult Function(MediaStreamAudioDestinationNode field0)? variant15,
+    TResult Function(MediaStreamAudioSourceNode field0)? variant16,
+    TResult Function(MediaStreamTrackAudioSourceNode field0)? variant17,
+    TResult Function(OscillatorNode field0)? variant18,
+    TResult Function(PannerNode field0)? variant19,
+    TResult Function(ScriptProcessorNode field0)? variant20,
+    TResult Function(StereoPannerNode field0)? variant21,
+    TResult Function(WaveShaperNode field0)? variant22,
+    required TResult orElse(),
+  }) {
+    if (variant5 != null) {
+      return variant5(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AudioNodeImplementor_Variant0 value) variant0,
+    required TResult Function(AudioNodeImplementor_Variant1 value) variant1,
+    required TResult Function(AudioNodeImplementor_Variant2 value) variant2,
+    required TResult Function(AudioNodeImplementor_Variant3 value) variant3,
+    required TResult Function(AudioNodeImplementor_Variant4 value) variant4,
+    required TResult Function(AudioNodeImplementor_Variant5 value) variant5,
+    required TResult Function(AudioNodeImplementor_Variant6 value) variant6,
+    required TResult Function(AudioNodeImplementor_Variant7 value) variant7,
+    required TResult Function(AudioNodeImplementor_Variant8 value) variant8,
+    required TResult Function(AudioNodeImplementor_Variant9 value) variant9,
+    required TResult Function(AudioNodeImplementor_Variant10 value) variant10,
+    required TResult Function(AudioNodeImplementor_Variant11 value) variant11,
+    required TResult Function(AudioNodeImplementor_Variant12 value) variant12,
+    required TResult Function(AudioNodeImplementor_Variant13 value) variant13,
+    required TResult Function(AudioNodeImplementor_Variant14 value) variant14,
+    required TResult Function(AudioNodeImplementor_Variant15 value) variant15,
+    required TResult Function(AudioNodeImplementor_Variant16 value) variant16,
+    required TResult Function(AudioNodeImplementor_Variant17 value) variant17,
+    required TResult Function(AudioNodeImplementor_Variant18 value) variant18,
+    required TResult Function(AudioNodeImplementor_Variant19 value) variant19,
+    required TResult Function(AudioNodeImplementor_Variant20 value) variant20,
+    required TResult Function(AudioNodeImplementor_Variant21 value) variant21,
+    required TResult Function(AudioNodeImplementor_Variant22 value) variant22,
+  }) {
+    return variant5(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AudioNodeImplementor_Variant0 value)? variant0,
+    TResult? Function(AudioNodeImplementor_Variant1 value)? variant1,
+    TResult? Function(AudioNodeImplementor_Variant2 value)? variant2,
+    TResult? Function(AudioNodeImplementor_Variant3 value)? variant3,
+    TResult? Function(AudioNodeImplementor_Variant4 value)? variant4,
+    TResult? Function(AudioNodeImplementor_Variant5 value)? variant5,
+    TResult? Function(AudioNodeImplementor_Variant6 value)? variant6,
+    TResult? Function(AudioNodeImplementor_Variant7 value)? variant7,
+    TResult? Function(AudioNodeImplementor_Variant8 value)? variant8,
+    TResult? Function(AudioNodeImplementor_Variant9 value)? variant9,
+    TResult? Function(AudioNodeImplementor_Variant10 value)? variant10,
+    TResult? Function(AudioNodeImplementor_Variant11 value)? variant11,
+    TResult? Function(AudioNodeImplementor_Variant12 value)? variant12,
+    TResult? Function(AudioNodeImplementor_Variant13 value)? variant13,
+    TResult? Function(AudioNodeImplementor_Variant14 value)? variant14,
+    TResult? Function(AudioNodeImplementor_Variant15 value)? variant15,
+    TResult? Function(AudioNodeImplementor_Variant16 value)? variant16,
+    TResult? Function(AudioNodeImplementor_Variant17 value)? variant17,
+    TResult? Function(AudioNodeImplementor_Variant18 value)? variant18,
+    TResult? Function(AudioNodeImplementor_Variant19 value)? variant19,
+    TResult? Function(AudioNodeImplementor_Variant20 value)? variant20,
+    TResult? Function(AudioNodeImplementor_Variant21 value)? variant21,
+    TResult? Function(AudioNodeImplementor_Variant22 value)? variant22,
+  }) {
+    return variant5?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AudioNodeImplementor_Variant0 value)? variant0,
+    TResult Function(AudioNodeImplementor_Variant1 value)? variant1,
+    TResult Function(AudioNodeImplementor_Variant2 value)? variant2,
+    TResult Function(AudioNodeImplementor_Variant3 value)? variant3,
+    TResult Function(AudioNodeImplementor_Variant4 value)? variant4,
+    TResult Function(AudioNodeImplementor_Variant5 value)? variant5,
+    TResult Function(AudioNodeImplementor_Variant6 value)? variant6,
+    TResult Function(AudioNodeImplementor_Variant7 value)? variant7,
+    TResult Function(AudioNodeImplementor_Variant8 value)? variant8,
+    TResult Function(AudioNodeImplementor_Variant9 value)? variant9,
+    TResult Function(AudioNodeImplementor_Variant10 value)? variant10,
+    TResult Function(AudioNodeImplementor_Variant11 value)? variant11,
+    TResult Function(AudioNodeImplementor_Variant12 value)? variant12,
+    TResult Function(AudioNodeImplementor_Variant13 value)? variant13,
+    TResult Function(AudioNodeImplementor_Variant14 value)? variant14,
+    TResult Function(AudioNodeImplementor_Variant15 value)? variant15,
+    TResult Function(AudioNodeImplementor_Variant16 value)? variant16,
+    TResult Function(AudioNodeImplementor_Variant17 value)? variant17,
+    TResult Function(AudioNodeImplementor_Variant18 value)? variant18,
+    TResult Function(AudioNodeImplementor_Variant19 value)? variant19,
+    TResult Function(AudioNodeImplementor_Variant20 value)? variant20,
+    TResult Function(AudioNodeImplementor_Variant21 value)? variant21,
+    TResult Function(AudioNodeImplementor_Variant22 value)? variant22,
+    required TResult orElse(),
+  }) {
+    if (variant5 != null) {
+      return variant5(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AudioNodeImplementor_Variant5 extends AudioNodeImplementor {
+  const factory AudioNodeImplementor_Variant5(final BiquadFilterNode field0) =
+      _$AudioNodeImplementor_Variant5Impl;
+  const AudioNodeImplementor_Variant5._() : super._();
+
+  @override
+  BiquadFilterNode get field0;
+  @JsonKey(ignore: true)
+  _$$AudioNodeImplementor_Variant5ImplCopyWith<
+          _$AudioNodeImplementor_Variant5Impl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AudioNodeImplementor_Variant6ImplCopyWith<$Res> {
+  factory _$$AudioNodeImplementor_Variant6ImplCopyWith(
+          _$AudioNodeImplementor_Variant6Impl value,
+          $Res Function(_$AudioNodeImplementor_Variant6Impl) then) =
+      __$$AudioNodeImplementor_Variant6ImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({ChannelMergerNode field0});
+}
+
+/// @nodoc
+class __$$AudioNodeImplementor_Variant6ImplCopyWithImpl<$Res>
+    extends _$AudioNodeImplementorCopyWithImpl<$Res,
+        _$AudioNodeImplementor_Variant6Impl>
+    implements _$$AudioNodeImplementor_Variant6ImplCopyWith<$Res> {
+  __$$AudioNodeImplementor_Variant6ImplCopyWithImpl(
+      _$AudioNodeImplementor_Variant6Impl _value,
+      $Res Function(_$AudioNodeImplementor_Variant6Impl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$AudioNodeImplementor_Variant6Impl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as ChannelMergerNode,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AudioNodeImplementor_Variant6Impl
+    extends AudioNodeImplementor_Variant6 {
+  const _$AudioNodeImplementor_Variant6Impl(this.field0) : super._();
+
+  @override
+  final ChannelMergerNode field0;
+
+  @override
+  String toString() {
+    return 'AudioNodeImplementor.variant6(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AudioNodeImplementor_Variant6Impl &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AudioNodeImplementor_Variant6ImplCopyWith<
+          _$AudioNodeImplementor_Variant6Impl>
+      get copyWith => __$$AudioNodeImplementor_Variant6ImplCopyWithImpl<
+          _$AudioNodeImplementor_Variant6Impl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(AnalyserNode field0) variant0,
+    required TResult Function(AudioBufferSourceNode field0) variant1,
+    required TResult Function(AudioDestinationNode field0) variant2,
+    required TResult Function(AudioParam field0) variant3,
+    required TResult Function(AudioWorkletNode field0) variant4,
+    required TResult Function(BiquadFilterNode field0) variant5,
+    required TResult Function(ChannelMergerNode field0) variant6,
+    required TResult Function(ChannelSplitterNode field0) variant7,
+    required TResult Function(ConstantSourceNode field0) variant8,
+    required TResult Function(ConvolverNode field0) variant9,
+    required TResult Function(DelayNode field0) variant10,
+    required TResult Function(DynamicsCompressorNode field0) variant11,
+    required TResult Function(GainNode field0) variant12,
+    required TResult Function(IirFilterNode field0) variant13,
+    required TResult Function(MediaElementAudioSourceNode field0) variant14,
+    required TResult Function(MediaStreamAudioDestinationNode field0) variant15,
+    required TResult Function(MediaStreamAudioSourceNode field0) variant16,
+    required TResult Function(MediaStreamTrackAudioSourceNode field0) variant17,
+    required TResult Function(OscillatorNode field0) variant18,
+    required TResult Function(PannerNode field0) variant19,
+    required TResult Function(ScriptProcessorNode field0) variant20,
+    required TResult Function(StereoPannerNode field0) variant21,
+    required TResult Function(WaveShaperNode field0) variant22,
+  }) {
+    return variant6(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(AnalyserNode field0)? variant0,
+    TResult? Function(AudioBufferSourceNode field0)? variant1,
+    TResult? Function(AudioDestinationNode field0)? variant2,
+    TResult? Function(AudioParam field0)? variant3,
+    TResult? Function(AudioWorkletNode field0)? variant4,
+    TResult? Function(BiquadFilterNode field0)? variant5,
+    TResult? Function(ChannelMergerNode field0)? variant6,
+    TResult? Function(ChannelSplitterNode field0)? variant7,
+    TResult? Function(ConstantSourceNode field0)? variant8,
+    TResult? Function(ConvolverNode field0)? variant9,
+    TResult? Function(DelayNode field0)? variant10,
+    TResult? Function(DynamicsCompressorNode field0)? variant11,
+    TResult? Function(GainNode field0)? variant12,
+    TResult? Function(IirFilterNode field0)? variant13,
+    TResult? Function(MediaElementAudioSourceNode field0)? variant14,
+    TResult? Function(MediaStreamAudioDestinationNode field0)? variant15,
+    TResult? Function(MediaStreamAudioSourceNode field0)? variant16,
+    TResult? Function(MediaStreamTrackAudioSourceNode field0)? variant17,
+    TResult? Function(OscillatorNode field0)? variant18,
+    TResult? Function(PannerNode field0)? variant19,
+    TResult? Function(ScriptProcessorNode field0)? variant20,
+    TResult? Function(StereoPannerNode field0)? variant21,
+    TResult? Function(WaveShaperNode field0)? variant22,
+  }) {
+    return variant6?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(AnalyserNode field0)? variant0,
+    TResult Function(AudioBufferSourceNode field0)? variant1,
+    TResult Function(AudioDestinationNode field0)? variant2,
+    TResult Function(AudioParam field0)? variant3,
+    TResult Function(AudioWorkletNode field0)? variant4,
+    TResult Function(BiquadFilterNode field0)? variant5,
+    TResult Function(ChannelMergerNode field0)? variant6,
+    TResult Function(ChannelSplitterNode field0)? variant7,
+    TResult Function(ConstantSourceNode field0)? variant8,
+    TResult Function(ConvolverNode field0)? variant9,
+    TResult Function(DelayNode field0)? variant10,
+    TResult Function(DynamicsCompressorNode field0)? variant11,
+    TResult Function(GainNode field0)? variant12,
+    TResult Function(IirFilterNode field0)? variant13,
+    TResult Function(MediaElementAudioSourceNode field0)? variant14,
+    TResult Function(MediaStreamAudioDestinationNode field0)? variant15,
+    TResult Function(MediaStreamAudioSourceNode field0)? variant16,
+    TResult Function(MediaStreamTrackAudioSourceNode field0)? variant17,
+    TResult Function(OscillatorNode field0)? variant18,
+    TResult Function(PannerNode field0)? variant19,
+    TResult Function(ScriptProcessorNode field0)? variant20,
+    TResult Function(StereoPannerNode field0)? variant21,
+    TResult Function(WaveShaperNode field0)? variant22,
+    required TResult orElse(),
+  }) {
+    if (variant6 != null) {
+      return variant6(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AudioNodeImplementor_Variant0 value) variant0,
+    required TResult Function(AudioNodeImplementor_Variant1 value) variant1,
+    required TResult Function(AudioNodeImplementor_Variant2 value) variant2,
+    required TResult Function(AudioNodeImplementor_Variant3 value) variant3,
+    required TResult Function(AudioNodeImplementor_Variant4 value) variant4,
+    required TResult Function(AudioNodeImplementor_Variant5 value) variant5,
+    required TResult Function(AudioNodeImplementor_Variant6 value) variant6,
+    required TResult Function(AudioNodeImplementor_Variant7 value) variant7,
+    required TResult Function(AudioNodeImplementor_Variant8 value) variant8,
+    required TResult Function(AudioNodeImplementor_Variant9 value) variant9,
+    required TResult Function(AudioNodeImplementor_Variant10 value) variant10,
+    required TResult Function(AudioNodeImplementor_Variant11 value) variant11,
+    required TResult Function(AudioNodeImplementor_Variant12 value) variant12,
+    required TResult Function(AudioNodeImplementor_Variant13 value) variant13,
+    required TResult Function(AudioNodeImplementor_Variant14 value) variant14,
+    required TResult Function(AudioNodeImplementor_Variant15 value) variant15,
+    required TResult Function(AudioNodeImplementor_Variant16 value) variant16,
+    required TResult Function(AudioNodeImplementor_Variant17 value) variant17,
+    required TResult Function(AudioNodeImplementor_Variant18 value) variant18,
+    required TResult Function(AudioNodeImplementor_Variant19 value) variant19,
+    required TResult Function(AudioNodeImplementor_Variant20 value) variant20,
+    required TResult Function(AudioNodeImplementor_Variant21 value) variant21,
+    required TResult Function(AudioNodeImplementor_Variant22 value) variant22,
+  }) {
+    return variant6(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AudioNodeImplementor_Variant0 value)? variant0,
+    TResult? Function(AudioNodeImplementor_Variant1 value)? variant1,
+    TResult? Function(AudioNodeImplementor_Variant2 value)? variant2,
+    TResult? Function(AudioNodeImplementor_Variant3 value)? variant3,
+    TResult? Function(AudioNodeImplementor_Variant4 value)? variant4,
+    TResult? Function(AudioNodeImplementor_Variant5 value)? variant5,
+    TResult? Function(AudioNodeImplementor_Variant6 value)? variant6,
+    TResult? Function(AudioNodeImplementor_Variant7 value)? variant7,
+    TResult? Function(AudioNodeImplementor_Variant8 value)? variant8,
+    TResult? Function(AudioNodeImplementor_Variant9 value)? variant9,
+    TResult? Function(AudioNodeImplementor_Variant10 value)? variant10,
+    TResult? Function(AudioNodeImplementor_Variant11 value)? variant11,
+    TResult? Function(AudioNodeImplementor_Variant12 value)? variant12,
+    TResult? Function(AudioNodeImplementor_Variant13 value)? variant13,
+    TResult? Function(AudioNodeImplementor_Variant14 value)? variant14,
+    TResult? Function(AudioNodeImplementor_Variant15 value)? variant15,
+    TResult? Function(AudioNodeImplementor_Variant16 value)? variant16,
+    TResult? Function(AudioNodeImplementor_Variant17 value)? variant17,
+    TResult? Function(AudioNodeImplementor_Variant18 value)? variant18,
+    TResult? Function(AudioNodeImplementor_Variant19 value)? variant19,
+    TResult? Function(AudioNodeImplementor_Variant20 value)? variant20,
+    TResult? Function(AudioNodeImplementor_Variant21 value)? variant21,
+    TResult? Function(AudioNodeImplementor_Variant22 value)? variant22,
+  }) {
+    return variant6?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AudioNodeImplementor_Variant0 value)? variant0,
+    TResult Function(AudioNodeImplementor_Variant1 value)? variant1,
+    TResult Function(AudioNodeImplementor_Variant2 value)? variant2,
+    TResult Function(AudioNodeImplementor_Variant3 value)? variant3,
+    TResult Function(AudioNodeImplementor_Variant4 value)? variant4,
+    TResult Function(AudioNodeImplementor_Variant5 value)? variant5,
+    TResult Function(AudioNodeImplementor_Variant6 value)? variant6,
+    TResult Function(AudioNodeImplementor_Variant7 value)? variant7,
+    TResult Function(AudioNodeImplementor_Variant8 value)? variant8,
+    TResult Function(AudioNodeImplementor_Variant9 value)? variant9,
+    TResult Function(AudioNodeImplementor_Variant10 value)? variant10,
+    TResult Function(AudioNodeImplementor_Variant11 value)? variant11,
+    TResult Function(AudioNodeImplementor_Variant12 value)? variant12,
+    TResult Function(AudioNodeImplementor_Variant13 value)? variant13,
+    TResult Function(AudioNodeImplementor_Variant14 value)? variant14,
+    TResult Function(AudioNodeImplementor_Variant15 value)? variant15,
+    TResult Function(AudioNodeImplementor_Variant16 value)? variant16,
+    TResult Function(AudioNodeImplementor_Variant17 value)? variant17,
+    TResult Function(AudioNodeImplementor_Variant18 value)? variant18,
+    TResult Function(AudioNodeImplementor_Variant19 value)? variant19,
+    TResult Function(AudioNodeImplementor_Variant20 value)? variant20,
+    TResult Function(AudioNodeImplementor_Variant21 value)? variant21,
+    TResult Function(AudioNodeImplementor_Variant22 value)? variant22,
+    required TResult orElse(),
+  }) {
+    if (variant6 != null) {
+      return variant6(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AudioNodeImplementor_Variant6 extends AudioNodeImplementor {
+  const factory AudioNodeImplementor_Variant6(final ChannelMergerNode field0) =
+      _$AudioNodeImplementor_Variant6Impl;
+  const AudioNodeImplementor_Variant6._() : super._();
+
+  @override
+  ChannelMergerNode get field0;
+  @JsonKey(ignore: true)
+  _$$AudioNodeImplementor_Variant6ImplCopyWith<
+          _$AudioNodeImplementor_Variant6Impl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AudioNodeImplementor_Variant7ImplCopyWith<$Res> {
+  factory _$$AudioNodeImplementor_Variant7ImplCopyWith(
+          _$AudioNodeImplementor_Variant7Impl value,
+          $Res Function(_$AudioNodeImplementor_Variant7Impl) then) =
+      __$$AudioNodeImplementor_Variant7ImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({ChannelSplitterNode field0});
+}
+
+/// @nodoc
+class __$$AudioNodeImplementor_Variant7ImplCopyWithImpl<$Res>
+    extends _$AudioNodeImplementorCopyWithImpl<$Res,
+        _$AudioNodeImplementor_Variant7Impl>
+    implements _$$AudioNodeImplementor_Variant7ImplCopyWith<$Res> {
+  __$$AudioNodeImplementor_Variant7ImplCopyWithImpl(
+      _$AudioNodeImplementor_Variant7Impl _value,
+      $Res Function(_$AudioNodeImplementor_Variant7Impl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$AudioNodeImplementor_Variant7Impl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as ChannelSplitterNode,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AudioNodeImplementor_Variant7Impl
+    extends AudioNodeImplementor_Variant7 {
+  const _$AudioNodeImplementor_Variant7Impl(this.field0) : super._();
+
+  @override
+  final ChannelSplitterNode field0;
+
+  @override
+  String toString() {
+    return 'AudioNodeImplementor.variant7(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AudioNodeImplementor_Variant7Impl &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AudioNodeImplementor_Variant7ImplCopyWith<
+          _$AudioNodeImplementor_Variant7Impl>
+      get copyWith => __$$AudioNodeImplementor_Variant7ImplCopyWithImpl<
+          _$AudioNodeImplementor_Variant7Impl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(AnalyserNode field0) variant0,
+    required TResult Function(AudioBufferSourceNode field0) variant1,
+    required TResult Function(AudioDestinationNode field0) variant2,
+    required TResult Function(AudioParam field0) variant3,
+    required TResult Function(AudioWorkletNode field0) variant4,
+    required TResult Function(BiquadFilterNode field0) variant5,
+    required TResult Function(ChannelMergerNode field0) variant6,
+    required TResult Function(ChannelSplitterNode field0) variant7,
+    required TResult Function(ConstantSourceNode field0) variant8,
+    required TResult Function(ConvolverNode field0) variant9,
+    required TResult Function(DelayNode field0) variant10,
+    required TResult Function(DynamicsCompressorNode field0) variant11,
+    required TResult Function(GainNode field0) variant12,
+    required TResult Function(IirFilterNode field0) variant13,
+    required TResult Function(MediaElementAudioSourceNode field0) variant14,
+    required TResult Function(MediaStreamAudioDestinationNode field0) variant15,
+    required TResult Function(MediaStreamAudioSourceNode field0) variant16,
+    required TResult Function(MediaStreamTrackAudioSourceNode field0) variant17,
+    required TResult Function(OscillatorNode field0) variant18,
+    required TResult Function(PannerNode field0) variant19,
+    required TResult Function(ScriptProcessorNode field0) variant20,
+    required TResult Function(StereoPannerNode field0) variant21,
+    required TResult Function(WaveShaperNode field0) variant22,
+  }) {
+    return variant7(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(AnalyserNode field0)? variant0,
+    TResult? Function(AudioBufferSourceNode field0)? variant1,
+    TResult? Function(AudioDestinationNode field0)? variant2,
+    TResult? Function(AudioParam field0)? variant3,
+    TResult? Function(AudioWorkletNode field0)? variant4,
+    TResult? Function(BiquadFilterNode field0)? variant5,
+    TResult? Function(ChannelMergerNode field0)? variant6,
+    TResult? Function(ChannelSplitterNode field0)? variant7,
+    TResult? Function(ConstantSourceNode field0)? variant8,
+    TResult? Function(ConvolverNode field0)? variant9,
+    TResult? Function(DelayNode field0)? variant10,
+    TResult? Function(DynamicsCompressorNode field0)? variant11,
+    TResult? Function(GainNode field0)? variant12,
+    TResult? Function(IirFilterNode field0)? variant13,
+    TResult? Function(MediaElementAudioSourceNode field0)? variant14,
+    TResult? Function(MediaStreamAudioDestinationNode field0)? variant15,
+    TResult? Function(MediaStreamAudioSourceNode field0)? variant16,
+    TResult? Function(MediaStreamTrackAudioSourceNode field0)? variant17,
+    TResult? Function(OscillatorNode field0)? variant18,
+    TResult? Function(PannerNode field0)? variant19,
+    TResult? Function(ScriptProcessorNode field0)? variant20,
+    TResult? Function(StereoPannerNode field0)? variant21,
+    TResult? Function(WaveShaperNode field0)? variant22,
+  }) {
+    return variant7?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(AnalyserNode field0)? variant0,
+    TResult Function(AudioBufferSourceNode field0)? variant1,
+    TResult Function(AudioDestinationNode field0)? variant2,
+    TResult Function(AudioParam field0)? variant3,
+    TResult Function(AudioWorkletNode field0)? variant4,
+    TResult Function(BiquadFilterNode field0)? variant5,
+    TResult Function(ChannelMergerNode field0)? variant6,
+    TResult Function(ChannelSplitterNode field0)? variant7,
+    TResult Function(ConstantSourceNode field0)? variant8,
+    TResult Function(ConvolverNode field0)? variant9,
+    TResult Function(DelayNode field0)? variant10,
+    TResult Function(DynamicsCompressorNode field0)? variant11,
+    TResult Function(GainNode field0)? variant12,
+    TResult Function(IirFilterNode field0)? variant13,
+    TResult Function(MediaElementAudioSourceNode field0)? variant14,
+    TResult Function(MediaStreamAudioDestinationNode field0)? variant15,
+    TResult Function(MediaStreamAudioSourceNode field0)? variant16,
+    TResult Function(MediaStreamTrackAudioSourceNode field0)? variant17,
+    TResult Function(OscillatorNode field0)? variant18,
+    TResult Function(PannerNode field0)? variant19,
+    TResult Function(ScriptProcessorNode field0)? variant20,
+    TResult Function(StereoPannerNode field0)? variant21,
+    TResult Function(WaveShaperNode field0)? variant22,
+    required TResult orElse(),
+  }) {
+    if (variant7 != null) {
+      return variant7(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AudioNodeImplementor_Variant0 value) variant0,
+    required TResult Function(AudioNodeImplementor_Variant1 value) variant1,
+    required TResult Function(AudioNodeImplementor_Variant2 value) variant2,
+    required TResult Function(AudioNodeImplementor_Variant3 value) variant3,
+    required TResult Function(AudioNodeImplementor_Variant4 value) variant4,
+    required TResult Function(AudioNodeImplementor_Variant5 value) variant5,
+    required TResult Function(AudioNodeImplementor_Variant6 value) variant6,
+    required TResult Function(AudioNodeImplementor_Variant7 value) variant7,
+    required TResult Function(AudioNodeImplementor_Variant8 value) variant8,
+    required TResult Function(AudioNodeImplementor_Variant9 value) variant9,
+    required TResult Function(AudioNodeImplementor_Variant10 value) variant10,
+    required TResult Function(AudioNodeImplementor_Variant11 value) variant11,
+    required TResult Function(AudioNodeImplementor_Variant12 value) variant12,
+    required TResult Function(AudioNodeImplementor_Variant13 value) variant13,
+    required TResult Function(AudioNodeImplementor_Variant14 value) variant14,
+    required TResult Function(AudioNodeImplementor_Variant15 value) variant15,
+    required TResult Function(AudioNodeImplementor_Variant16 value) variant16,
+    required TResult Function(AudioNodeImplementor_Variant17 value) variant17,
+    required TResult Function(AudioNodeImplementor_Variant18 value) variant18,
+    required TResult Function(AudioNodeImplementor_Variant19 value) variant19,
+    required TResult Function(AudioNodeImplementor_Variant20 value) variant20,
+    required TResult Function(AudioNodeImplementor_Variant21 value) variant21,
+    required TResult Function(AudioNodeImplementor_Variant22 value) variant22,
+  }) {
+    return variant7(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AudioNodeImplementor_Variant0 value)? variant0,
+    TResult? Function(AudioNodeImplementor_Variant1 value)? variant1,
+    TResult? Function(AudioNodeImplementor_Variant2 value)? variant2,
+    TResult? Function(AudioNodeImplementor_Variant3 value)? variant3,
+    TResult? Function(AudioNodeImplementor_Variant4 value)? variant4,
+    TResult? Function(AudioNodeImplementor_Variant5 value)? variant5,
+    TResult? Function(AudioNodeImplementor_Variant6 value)? variant6,
+    TResult? Function(AudioNodeImplementor_Variant7 value)? variant7,
+    TResult? Function(AudioNodeImplementor_Variant8 value)? variant8,
+    TResult? Function(AudioNodeImplementor_Variant9 value)? variant9,
+    TResult? Function(AudioNodeImplementor_Variant10 value)? variant10,
+    TResult? Function(AudioNodeImplementor_Variant11 value)? variant11,
+    TResult? Function(AudioNodeImplementor_Variant12 value)? variant12,
+    TResult? Function(AudioNodeImplementor_Variant13 value)? variant13,
+    TResult? Function(AudioNodeImplementor_Variant14 value)? variant14,
+    TResult? Function(AudioNodeImplementor_Variant15 value)? variant15,
+    TResult? Function(AudioNodeImplementor_Variant16 value)? variant16,
+    TResult? Function(AudioNodeImplementor_Variant17 value)? variant17,
+    TResult? Function(AudioNodeImplementor_Variant18 value)? variant18,
+    TResult? Function(AudioNodeImplementor_Variant19 value)? variant19,
+    TResult? Function(AudioNodeImplementor_Variant20 value)? variant20,
+    TResult? Function(AudioNodeImplementor_Variant21 value)? variant21,
+    TResult? Function(AudioNodeImplementor_Variant22 value)? variant22,
+  }) {
+    return variant7?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AudioNodeImplementor_Variant0 value)? variant0,
+    TResult Function(AudioNodeImplementor_Variant1 value)? variant1,
+    TResult Function(AudioNodeImplementor_Variant2 value)? variant2,
+    TResult Function(AudioNodeImplementor_Variant3 value)? variant3,
+    TResult Function(AudioNodeImplementor_Variant4 value)? variant4,
+    TResult Function(AudioNodeImplementor_Variant5 value)? variant5,
+    TResult Function(AudioNodeImplementor_Variant6 value)? variant6,
+    TResult Function(AudioNodeImplementor_Variant7 value)? variant7,
+    TResult Function(AudioNodeImplementor_Variant8 value)? variant8,
+    TResult Function(AudioNodeImplementor_Variant9 value)? variant9,
+    TResult Function(AudioNodeImplementor_Variant10 value)? variant10,
+    TResult Function(AudioNodeImplementor_Variant11 value)? variant11,
+    TResult Function(AudioNodeImplementor_Variant12 value)? variant12,
+    TResult Function(AudioNodeImplementor_Variant13 value)? variant13,
+    TResult Function(AudioNodeImplementor_Variant14 value)? variant14,
+    TResult Function(AudioNodeImplementor_Variant15 value)? variant15,
+    TResult Function(AudioNodeImplementor_Variant16 value)? variant16,
+    TResult Function(AudioNodeImplementor_Variant17 value)? variant17,
+    TResult Function(AudioNodeImplementor_Variant18 value)? variant18,
+    TResult Function(AudioNodeImplementor_Variant19 value)? variant19,
+    TResult Function(AudioNodeImplementor_Variant20 value)? variant20,
+    TResult Function(AudioNodeImplementor_Variant21 value)? variant21,
+    TResult Function(AudioNodeImplementor_Variant22 value)? variant22,
+    required TResult orElse(),
+  }) {
+    if (variant7 != null) {
+      return variant7(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AudioNodeImplementor_Variant7 extends AudioNodeImplementor {
+  const factory AudioNodeImplementor_Variant7(
+      final ChannelSplitterNode field0) = _$AudioNodeImplementor_Variant7Impl;
+  const AudioNodeImplementor_Variant7._() : super._();
+
+  @override
+  ChannelSplitterNode get field0;
+  @JsonKey(ignore: true)
+  _$$AudioNodeImplementor_Variant7ImplCopyWith<
+          _$AudioNodeImplementor_Variant7Impl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AudioNodeImplementor_Variant8ImplCopyWith<$Res> {
+  factory _$$AudioNodeImplementor_Variant8ImplCopyWith(
+          _$AudioNodeImplementor_Variant8Impl value,
+          $Res Function(_$AudioNodeImplementor_Variant8Impl) then) =
+      __$$AudioNodeImplementor_Variant8ImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({ConstantSourceNode field0});
+}
+
+/// @nodoc
+class __$$AudioNodeImplementor_Variant8ImplCopyWithImpl<$Res>
+    extends _$AudioNodeImplementorCopyWithImpl<$Res,
+        _$AudioNodeImplementor_Variant8Impl>
+    implements _$$AudioNodeImplementor_Variant8ImplCopyWith<$Res> {
+  __$$AudioNodeImplementor_Variant8ImplCopyWithImpl(
+      _$AudioNodeImplementor_Variant8Impl _value,
+      $Res Function(_$AudioNodeImplementor_Variant8Impl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$AudioNodeImplementor_Variant8Impl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as ConstantSourceNode,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AudioNodeImplementor_Variant8Impl
+    extends AudioNodeImplementor_Variant8 {
+  const _$AudioNodeImplementor_Variant8Impl(this.field0) : super._();
+
+  @override
+  final ConstantSourceNode field0;
+
+  @override
+  String toString() {
+    return 'AudioNodeImplementor.variant8(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AudioNodeImplementor_Variant8Impl &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AudioNodeImplementor_Variant8ImplCopyWith<
+          _$AudioNodeImplementor_Variant8Impl>
+      get copyWith => __$$AudioNodeImplementor_Variant8ImplCopyWithImpl<
+          _$AudioNodeImplementor_Variant8Impl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(AnalyserNode field0) variant0,
+    required TResult Function(AudioBufferSourceNode field0) variant1,
+    required TResult Function(AudioDestinationNode field0) variant2,
+    required TResult Function(AudioParam field0) variant3,
+    required TResult Function(AudioWorkletNode field0) variant4,
+    required TResult Function(BiquadFilterNode field0) variant5,
+    required TResult Function(ChannelMergerNode field0) variant6,
+    required TResult Function(ChannelSplitterNode field0) variant7,
+    required TResult Function(ConstantSourceNode field0) variant8,
+    required TResult Function(ConvolverNode field0) variant9,
+    required TResult Function(DelayNode field0) variant10,
+    required TResult Function(DynamicsCompressorNode field0) variant11,
+    required TResult Function(GainNode field0) variant12,
+    required TResult Function(IirFilterNode field0) variant13,
+    required TResult Function(MediaElementAudioSourceNode field0) variant14,
+    required TResult Function(MediaStreamAudioDestinationNode field0) variant15,
+    required TResult Function(MediaStreamAudioSourceNode field0) variant16,
+    required TResult Function(MediaStreamTrackAudioSourceNode field0) variant17,
+    required TResult Function(OscillatorNode field0) variant18,
+    required TResult Function(PannerNode field0) variant19,
+    required TResult Function(ScriptProcessorNode field0) variant20,
+    required TResult Function(StereoPannerNode field0) variant21,
+    required TResult Function(WaveShaperNode field0) variant22,
+  }) {
+    return variant8(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(AnalyserNode field0)? variant0,
+    TResult? Function(AudioBufferSourceNode field0)? variant1,
+    TResult? Function(AudioDestinationNode field0)? variant2,
+    TResult? Function(AudioParam field0)? variant3,
+    TResult? Function(AudioWorkletNode field0)? variant4,
+    TResult? Function(BiquadFilterNode field0)? variant5,
+    TResult? Function(ChannelMergerNode field0)? variant6,
+    TResult? Function(ChannelSplitterNode field0)? variant7,
+    TResult? Function(ConstantSourceNode field0)? variant8,
+    TResult? Function(ConvolverNode field0)? variant9,
+    TResult? Function(DelayNode field0)? variant10,
+    TResult? Function(DynamicsCompressorNode field0)? variant11,
+    TResult? Function(GainNode field0)? variant12,
+    TResult? Function(IirFilterNode field0)? variant13,
+    TResult? Function(MediaElementAudioSourceNode field0)? variant14,
+    TResult? Function(MediaStreamAudioDestinationNode field0)? variant15,
+    TResult? Function(MediaStreamAudioSourceNode field0)? variant16,
+    TResult? Function(MediaStreamTrackAudioSourceNode field0)? variant17,
+    TResult? Function(OscillatorNode field0)? variant18,
+    TResult? Function(PannerNode field0)? variant19,
+    TResult? Function(ScriptProcessorNode field0)? variant20,
+    TResult? Function(StereoPannerNode field0)? variant21,
+    TResult? Function(WaveShaperNode field0)? variant22,
+  }) {
+    return variant8?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(AnalyserNode field0)? variant0,
+    TResult Function(AudioBufferSourceNode field0)? variant1,
+    TResult Function(AudioDestinationNode field0)? variant2,
+    TResult Function(AudioParam field0)? variant3,
+    TResult Function(AudioWorkletNode field0)? variant4,
+    TResult Function(BiquadFilterNode field0)? variant5,
+    TResult Function(ChannelMergerNode field0)? variant6,
+    TResult Function(ChannelSplitterNode field0)? variant7,
+    TResult Function(ConstantSourceNode field0)? variant8,
+    TResult Function(ConvolverNode field0)? variant9,
+    TResult Function(DelayNode field0)? variant10,
+    TResult Function(DynamicsCompressorNode field0)? variant11,
+    TResult Function(GainNode field0)? variant12,
+    TResult Function(IirFilterNode field0)? variant13,
+    TResult Function(MediaElementAudioSourceNode field0)? variant14,
+    TResult Function(MediaStreamAudioDestinationNode field0)? variant15,
+    TResult Function(MediaStreamAudioSourceNode field0)? variant16,
+    TResult Function(MediaStreamTrackAudioSourceNode field0)? variant17,
+    TResult Function(OscillatorNode field0)? variant18,
+    TResult Function(PannerNode field0)? variant19,
+    TResult Function(ScriptProcessorNode field0)? variant20,
+    TResult Function(StereoPannerNode field0)? variant21,
+    TResult Function(WaveShaperNode field0)? variant22,
+    required TResult orElse(),
+  }) {
+    if (variant8 != null) {
+      return variant8(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AudioNodeImplementor_Variant0 value) variant0,
+    required TResult Function(AudioNodeImplementor_Variant1 value) variant1,
+    required TResult Function(AudioNodeImplementor_Variant2 value) variant2,
+    required TResult Function(AudioNodeImplementor_Variant3 value) variant3,
+    required TResult Function(AudioNodeImplementor_Variant4 value) variant4,
+    required TResult Function(AudioNodeImplementor_Variant5 value) variant5,
+    required TResult Function(AudioNodeImplementor_Variant6 value) variant6,
+    required TResult Function(AudioNodeImplementor_Variant7 value) variant7,
+    required TResult Function(AudioNodeImplementor_Variant8 value) variant8,
+    required TResult Function(AudioNodeImplementor_Variant9 value) variant9,
+    required TResult Function(AudioNodeImplementor_Variant10 value) variant10,
+    required TResult Function(AudioNodeImplementor_Variant11 value) variant11,
+    required TResult Function(AudioNodeImplementor_Variant12 value) variant12,
+    required TResult Function(AudioNodeImplementor_Variant13 value) variant13,
+    required TResult Function(AudioNodeImplementor_Variant14 value) variant14,
+    required TResult Function(AudioNodeImplementor_Variant15 value) variant15,
+    required TResult Function(AudioNodeImplementor_Variant16 value) variant16,
+    required TResult Function(AudioNodeImplementor_Variant17 value) variant17,
+    required TResult Function(AudioNodeImplementor_Variant18 value) variant18,
+    required TResult Function(AudioNodeImplementor_Variant19 value) variant19,
+    required TResult Function(AudioNodeImplementor_Variant20 value) variant20,
+    required TResult Function(AudioNodeImplementor_Variant21 value) variant21,
+    required TResult Function(AudioNodeImplementor_Variant22 value) variant22,
+  }) {
+    return variant8(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AudioNodeImplementor_Variant0 value)? variant0,
+    TResult? Function(AudioNodeImplementor_Variant1 value)? variant1,
+    TResult? Function(AudioNodeImplementor_Variant2 value)? variant2,
+    TResult? Function(AudioNodeImplementor_Variant3 value)? variant3,
+    TResult? Function(AudioNodeImplementor_Variant4 value)? variant4,
+    TResult? Function(AudioNodeImplementor_Variant5 value)? variant5,
+    TResult? Function(AudioNodeImplementor_Variant6 value)? variant6,
+    TResult? Function(AudioNodeImplementor_Variant7 value)? variant7,
+    TResult? Function(AudioNodeImplementor_Variant8 value)? variant8,
+    TResult? Function(AudioNodeImplementor_Variant9 value)? variant9,
+    TResult? Function(AudioNodeImplementor_Variant10 value)? variant10,
+    TResult? Function(AudioNodeImplementor_Variant11 value)? variant11,
+    TResult? Function(AudioNodeImplementor_Variant12 value)? variant12,
+    TResult? Function(AudioNodeImplementor_Variant13 value)? variant13,
+    TResult? Function(AudioNodeImplementor_Variant14 value)? variant14,
+    TResult? Function(AudioNodeImplementor_Variant15 value)? variant15,
+    TResult? Function(AudioNodeImplementor_Variant16 value)? variant16,
+    TResult? Function(AudioNodeImplementor_Variant17 value)? variant17,
+    TResult? Function(AudioNodeImplementor_Variant18 value)? variant18,
+    TResult? Function(AudioNodeImplementor_Variant19 value)? variant19,
+    TResult? Function(AudioNodeImplementor_Variant20 value)? variant20,
+    TResult? Function(AudioNodeImplementor_Variant21 value)? variant21,
+    TResult? Function(AudioNodeImplementor_Variant22 value)? variant22,
+  }) {
+    return variant8?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AudioNodeImplementor_Variant0 value)? variant0,
+    TResult Function(AudioNodeImplementor_Variant1 value)? variant1,
+    TResult Function(AudioNodeImplementor_Variant2 value)? variant2,
+    TResult Function(AudioNodeImplementor_Variant3 value)? variant3,
+    TResult Function(AudioNodeImplementor_Variant4 value)? variant4,
+    TResult Function(AudioNodeImplementor_Variant5 value)? variant5,
+    TResult Function(AudioNodeImplementor_Variant6 value)? variant6,
+    TResult Function(AudioNodeImplementor_Variant7 value)? variant7,
+    TResult Function(AudioNodeImplementor_Variant8 value)? variant8,
+    TResult Function(AudioNodeImplementor_Variant9 value)? variant9,
+    TResult Function(AudioNodeImplementor_Variant10 value)? variant10,
+    TResult Function(AudioNodeImplementor_Variant11 value)? variant11,
+    TResult Function(AudioNodeImplementor_Variant12 value)? variant12,
+    TResult Function(AudioNodeImplementor_Variant13 value)? variant13,
+    TResult Function(AudioNodeImplementor_Variant14 value)? variant14,
+    TResult Function(AudioNodeImplementor_Variant15 value)? variant15,
+    TResult Function(AudioNodeImplementor_Variant16 value)? variant16,
+    TResult Function(AudioNodeImplementor_Variant17 value)? variant17,
+    TResult Function(AudioNodeImplementor_Variant18 value)? variant18,
+    TResult Function(AudioNodeImplementor_Variant19 value)? variant19,
+    TResult Function(AudioNodeImplementor_Variant20 value)? variant20,
+    TResult Function(AudioNodeImplementor_Variant21 value)? variant21,
+    TResult Function(AudioNodeImplementor_Variant22 value)? variant22,
+    required TResult orElse(),
+  }) {
+    if (variant8 != null) {
+      return variant8(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AudioNodeImplementor_Variant8 extends AudioNodeImplementor {
+  const factory AudioNodeImplementor_Variant8(final ConstantSourceNode field0) =
+      _$AudioNodeImplementor_Variant8Impl;
+  const AudioNodeImplementor_Variant8._() : super._();
+
+  @override
+  ConstantSourceNode get field0;
+  @JsonKey(ignore: true)
+  _$$AudioNodeImplementor_Variant8ImplCopyWith<
+          _$AudioNodeImplementor_Variant8Impl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AudioNodeImplementor_Variant9ImplCopyWith<$Res> {
+  factory _$$AudioNodeImplementor_Variant9ImplCopyWith(
+          _$AudioNodeImplementor_Variant9Impl value,
+          $Res Function(_$AudioNodeImplementor_Variant9Impl) then) =
+      __$$AudioNodeImplementor_Variant9ImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({ConvolverNode field0});
+}
+
+/// @nodoc
+class __$$AudioNodeImplementor_Variant9ImplCopyWithImpl<$Res>
+    extends _$AudioNodeImplementorCopyWithImpl<$Res,
+        _$AudioNodeImplementor_Variant9Impl>
+    implements _$$AudioNodeImplementor_Variant9ImplCopyWith<$Res> {
+  __$$AudioNodeImplementor_Variant9ImplCopyWithImpl(
+      _$AudioNodeImplementor_Variant9Impl _value,
+      $Res Function(_$AudioNodeImplementor_Variant9Impl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$AudioNodeImplementor_Variant9Impl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as ConvolverNode,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AudioNodeImplementor_Variant9Impl
+    extends AudioNodeImplementor_Variant9 {
+  const _$AudioNodeImplementor_Variant9Impl(this.field0) : super._();
+
+  @override
+  final ConvolverNode field0;
+
+  @override
+  String toString() {
+    return 'AudioNodeImplementor.variant9(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AudioNodeImplementor_Variant9Impl &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AudioNodeImplementor_Variant9ImplCopyWith<
+          _$AudioNodeImplementor_Variant9Impl>
+      get copyWith => __$$AudioNodeImplementor_Variant9ImplCopyWithImpl<
+          _$AudioNodeImplementor_Variant9Impl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(AnalyserNode field0) variant0,
+    required TResult Function(AudioBufferSourceNode field0) variant1,
+    required TResult Function(AudioDestinationNode field0) variant2,
+    required TResult Function(AudioParam field0) variant3,
+    required TResult Function(AudioWorkletNode field0) variant4,
+    required TResult Function(BiquadFilterNode field0) variant5,
+    required TResult Function(ChannelMergerNode field0) variant6,
+    required TResult Function(ChannelSplitterNode field0) variant7,
+    required TResult Function(ConstantSourceNode field0) variant8,
+    required TResult Function(ConvolverNode field0) variant9,
+    required TResult Function(DelayNode field0) variant10,
+    required TResult Function(DynamicsCompressorNode field0) variant11,
+    required TResult Function(GainNode field0) variant12,
+    required TResult Function(IirFilterNode field0) variant13,
+    required TResult Function(MediaElementAudioSourceNode field0) variant14,
+    required TResult Function(MediaStreamAudioDestinationNode field0) variant15,
+    required TResult Function(MediaStreamAudioSourceNode field0) variant16,
+    required TResult Function(MediaStreamTrackAudioSourceNode field0) variant17,
+    required TResult Function(OscillatorNode field0) variant18,
+    required TResult Function(PannerNode field0) variant19,
+    required TResult Function(ScriptProcessorNode field0) variant20,
+    required TResult Function(StereoPannerNode field0) variant21,
+    required TResult Function(WaveShaperNode field0) variant22,
+  }) {
+    return variant9(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(AnalyserNode field0)? variant0,
+    TResult? Function(AudioBufferSourceNode field0)? variant1,
+    TResult? Function(AudioDestinationNode field0)? variant2,
+    TResult? Function(AudioParam field0)? variant3,
+    TResult? Function(AudioWorkletNode field0)? variant4,
+    TResult? Function(BiquadFilterNode field0)? variant5,
+    TResult? Function(ChannelMergerNode field0)? variant6,
+    TResult? Function(ChannelSplitterNode field0)? variant7,
+    TResult? Function(ConstantSourceNode field0)? variant8,
+    TResult? Function(ConvolverNode field0)? variant9,
+    TResult? Function(DelayNode field0)? variant10,
+    TResult? Function(DynamicsCompressorNode field0)? variant11,
+    TResult? Function(GainNode field0)? variant12,
+    TResult? Function(IirFilterNode field0)? variant13,
+    TResult? Function(MediaElementAudioSourceNode field0)? variant14,
+    TResult? Function(MediaStreamAudioDestinationNode field0)? variant15,
+    TResult? Function(MediaStreamAudioSourceNode field0)? variant16,
+    TResult? Function(MediaStreamTrackAudioSourceNode field0)? variant17,
+    TResult? Function(OscillatorNode field0)? variant18,
+    TResult? Function(PannerNode field0)? variant19,
+    TResult? Function(ScriptProcessorNode field0)? variant20,
+    TResult? Function(StereoPannerNode field0)? variant21,
+    TResult? Function(WaveShaperNode field0)? variant22,
+  }) {
+    return variant9?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(AnalyserNode field0)? variant0,
+    TResult Function(AudioBufferSourceNode field0)? variant1,
+    TResult Function(AudioDestinationNode field0)? variant2,
+    TResult Function(AudioParam field0)? variant3,
+    TResult Function(AudioWorkletNode field0)? variant4,
+    TResult Function(BiquadFilterNode field0)? variant5,
+    TResult Function(ChannelMergerNode field0)? variant6,
+    TResult Function(ChannelSplitterNode field0)? variant7,
+    TResult Function(ConstantSourceNode field0)? variant8,
+    TResult Function(ConvolverNode field0)? variant9,
+    TResult Function(DelayNode field0)? variant10,
+    TResult Function(DynamicsCompressorNode field0)? variant11,
+    TResult Function(GainNode field0)? variant12,
+    TResult Function(IirFilterNode field0)? variant13,
+    TResult Function(MediaElementAudioSourceNode field0)? variant14,
+    TResult Function(MediaStreamAudioDestinationNode field0)? variant15,
+    TResult Function(MediaStreamAudioSourceNode field0)? variant16,
+    TResult Function(MediaStreamTrackAudioSourceNode field0)? variant17,
+    TResult Function(OscillatorNode field0)? variant18,
+    TResult Function(PannerNode field0)? variant19,
+    TResult Function(ScriptProcessorNode field0)? variant20,
+    TResult Function(StereoPannerNode field0)? variant21,
+    TResult Function(WaveShaperNode field0)? variant22,
+    required TResult orElse(),
+  }) {
+    if (variant9 != null) {
+      return variant9(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AudioNodeImplementor_Variant0 value) variant0,
+    required TResult Function(AudioNodeImplementor_Variant1 value) variant1,
+    required TResult Function(AudioNodeImplementor_Variant2 value) variant2,
+    required TResult Function(AudioNodeImplementor_Variant3 value) variant3,
+    required TResult Function(AudioNodeImplementor_Variant4 value) variant4,
+    required TResult Function(AudioNodeImplementor_Variant5 value) variant5,
+    required TResult Function(AudioNodeImplementor_Variant6 value) variant6,
+    required TResult Function(AudioNodeImplementor_Variant7 value) variant7,
+    required TResult Function(AudioNodeImplementor_Variant8 value) variant8,
+    required TResult Function(AudioNodeImplementor_Variant9 value) variant9,
+    required TResult Function(AudioNodeImplementor_Variant10 value) variant10,
+    required TResult Function(AudioNodeImplementor_Variant11 value) variant11,
+    required TResult Function(AudioNodeImplementor_Variant12 value) variant12,
+    required TResult Function(AudioNodeImplementor_Variant13 value) variant13,
+    required TResult Function(AudioNodeImplementor_Variant14 value) variant14,
+    required TResult Function(AudioNodeImplementor_Variant15 value) variant15,
+    required TResult Function(AudioNodeImplementor_Variant16 value) variant16,
+    required TResult Function(AudioNodeImplementor_Variant17 value) variant17,
+    required TResult Function(AudioNodeImplementor_Variant18 value) variant18,
+    required TResult Function(AudioNodeImplementor_Variant19 value) variant19,
+    required TResult Function(AudioNodeImplementor_Variant20 value) variant20,
+    required TResult Function(AudioNodeImplementor_Variant21 value) variant21,
+    required TResult Function(AudioNodeImplementor_Variant22 value) variant22,
+  }) {
+    return variant9(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AudioNodeImplementor_Variant0 value)? variant0,
+    TResult? Function(AudioNodeImplementor_Variant1 value)? variant1,
+    TResult? Function(AudioNodeImplementor_Variant2 value)? variant2,
+    TResult? Function(AudioNodeImplementor_Variant3 value)? variant3,
+    TResult? Function(AudioNodeImplementor_Variant4 value)? variant4,
+    TResult? Function(AudioNodeImplementor_Variant5 value)? variant5,
+    TResult? Function(AudioNodeImplementor_Variant6 value)? variant6,
+    TResult? Function(AudioNodeImplementor_Variant7 value)? variant7,
+    TResult? Function(AudioNodeImplementor_Variant8 value)? variant8,
+    TResult? Function(AudioNodeImplementor_Variant9 value)? variant9,
+    TResult? Function(AudioNodeImplementor_Variant10 value)? variant10,
+    TResult? Function(AudioNodeImplementor_Variant11 value)? variant11,
+    TResult? Function(AudioNodeImplementor_Variant12 value)? variant12,
+    TResult? Function(AudioNodeImplementor_Variant13 value)? variant13,
+    TResult? Function(AudioNodeImplementor_Variant14 value)? variant14,
+    TResult? Function(AudioNodeImplementor_Variant15 value)? variant15,
+    TResult? Function(AudioNodeImplementor_Variant16 value)? variant16,
+    TResult? Function(AudioNodeImplementor_Variant17 value)? variant17,
+    TResult? Function(AudioNodeImplementor_Variant18 value)? variant18,
+    TResult? Function(AudioNodeImplementor_Variant19 value)? variant19,
+    TResult? Function(AudioNodeImplementor_Variant20 value)? variant20,
+    TResult? Function(AudioNodeImplementor_Variant21 value)? variant21,
+    TResult? Function(AudioNodeImplementor_Variant22 value)? variant22,
+  }) {
+    return variant9?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AudioNodeImplementor_Variant0 value)? variant0,
+    TResult Function(AudioNodeImplementor_Variant1 value)? variant1,
+    TResult Function(AudioNodeImplementor_Variant2 value)? variant2,
+    TResult Function(AudioNodeImplementor_Variant3 value)? variant3,
+    TResult Function(AudioNodeImplementor_Variant4 value)? variant4,
+    TResult Function(AudioNodeImplementor_Variant5 value)? variant5,
+    TResult Function(AudioNodeImplementor_Variant6 value)? variant6,
+    TResult Function(AudioNodeImplementor_Variant7 value)? variant7,
+    TResult Function(AudioNodeImplementor_Variant8 value)? variant8,
+    TResult Function(AudioNodeImplementor_Variant9 value)? variant9,
+    TResult Function(AudioNodeImplementor_Variant10 value)? variant10,
+    TResult Function(AudioNodeImplementor_Variant11 value)? variant11,
+    TResult Function(AudioNodeImplementor_Variant12 value)? variant12,
+    TResult Function(AudioNodeImplementor_Variant13 value)? variant13,
+    TResult Function(AudioNodeImplementor_Variant14 value)? variant14,
+    TResult Function(AudioNodeImplementor_Variant15 value)? variant15,
+    TResult Function(AudioNodeImplementor_Variant16 value)? variant16,
+    TResult Function(AudioNodeImplementor_Variant17 value)? variant17,
+    TResult Function(AudioNodeImplementor_Variant18 value)? variant18,
+    TResult Function(AudioNodeImplementor_Variant19 value)? variant19,
+    TResult Function(AudioNodeImplementor_Variant20 value)? variant20,
+    TResult Function(AudioNodeImplementor_Variant21 value)? variant21,
+    TResult Function(AudioNodeImplementor_Variant22 value)? variant22,
+    required TResult orElse(),
+  }) {
+    if (variant9 != null) {
+      return variant9(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AudioNodeImplementor_Variant9 extends AudioNodeImplementor {
+  const factory AudioNodeImplementor_Variant9(final ConvolverNode field0) =
+      _$AudioNodeImplementor_Variant9Impl;
+  const AudioNodeImplementor_Variant9._() : super._();
+
+  @override
+  ConvolverNode get field0;
+  @JsonKey(ignore: true)
+  _$$AudioNodeImplementor_Variant9ImplCopyWith<
+          _$AudioNodeImplementor_Variant9Impl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AudioNodeImplementor_Variant10ImplCopyWith<$Res> {
+  factory _$$AudioNodeImplementor_Variant10ImplCopyWith(
+          _$AudioNodeImplementor_Variant10Impl value,
+          $Res Function(_$AudioNodeImplementor_Variant10Impl) then) =
+      __$$AudioNodeImplementor_Variant10ImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({DelayNode field0});
+}
+
+/// @nodoc
+class __$$AudioNodeImplementor_Variant10ImplCopyWithImpl<$Res>
+    extends _$AudioNodeImplementorCopyWithImpl<$Res,
+        _$AudioNodeImplementor_Variant10Impl>
+    implements _$$AudioNodeImplementor_Variant10ImplCopyWith<$Res> {
+  __$$AudioNodeImplementor_Variant10ImplCopyWithImpl(
+      _$AudioNodeImplementor_Variant10Impl _value,
+      $Res Function(_$AudioNodeImplementor_Variant10Impl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$AudioNodeImplementor_Variant10Impl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as DelayNode,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AudioNodeImplementor_Variant10Impl
+    extends AudioNodeImplementor_Variant10 {
+  const _$AudioNodeImplementor_Variant10Impl(this.field0) : super._();
+
+  @override
+  final DelayNode field0;
+
+  @override
+  String toString() {
+    return 'AudioNodeImplementor.variant10(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AudioNodeImplementor_Variant10Impl &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AudioNodeImplementor_Variant10ImplCopyWith<
+          _$AudioNodeImplementor_Variant10Impl>
+      get copyWith => __$$AudioNodeImplementor_Variant10ImplCopyWithImpl<
+          _$AudioNodeImplementor_Variant10Impl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(AnalyserNode field0) variant0,
+    required TResult Function(AudioBufferSourceNode field0) variant1,
+    required TResult Function(AudioDestinationNode field0) variant2,
+    required TResult Function(AudioParam field0) variant3,
+    required TResult Function(AudioWorkletNode field0) variant4,
+    required TResult Function(BiquadFilterNode field0) variant5,
+    required TResult Function(ChannelMergerNode field0) variant6,
+    required TResult Function(ChannelSplitterNode field0) variant7,
+    required TResult Function(ConstantSourceNode field0) variant8,
+    required TResult Function(ConvolverNode field0) variant9,
+    required TResult Function(DelayNode field0) variant10,
+    required TResult Function(DynamicsCompressorNode field0) variant11,
+    required TResult Function(GainNode field0) variant12,
+    required TResult Function(IirFilterNode field0) variant13,
+    required TResult Function(MediaElementAudioSourceNode field0) variant14,
+    required TResult Function(MediaStreamAudioDestinationNode field0) variant15,
+    required TResult Function(MediaStreamAudioSourceNode field0) variant16,
+    required TResult Function(MediaStreamTrackAudioSourceNode field0) variant17,
+    required TResult Function(OscillatorNode field0) variant18,
+    required TResult Function(PannerNode field0) variant19,
+    required TResult Function(ScriptProcessorNode field0) variant20,
+    required TResult Function(StereoPannerNode field0) variant21,
+    required TResult Function(WaveShaperNode field0) variant22,
+  }) {
+    return variant10(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(AnalyserNode field0)? variant0,
+    TResult? Function(AudioBufferSourceNode field0)? variant1,
+    TResult? Function(AudioDestinationNode field0)? variant2,
+    TResult? Function(AudioParam field0)? variant3,
+    TResult? Function(AudioWorkletNode field0)? variant4,
+    TResult? Function(BiquadFilterNode field0)? variant5,
+    TResult? Function(ChannelMergerNode field0)? variant6,
+    TResult? Function(ChannelSplitterNode field0)? variant7,
+    TResult? Function(ConstantSourceNode field0)? variant8,
+    TResult? Function(ConvolverNode field0)? variant9,
+    TResult? Function(DelayNode field0)? variant10,
+    TResult? Function(DynamicsCompressorNode field0)? variant11,
+    TResult? Function(GainNode field0)? variant12,
+    TResult? Function(IirFilterNode field0)? variant13,
+    TResult? Function(MediaElementAudioSourceNode field0)? variant14,
+    TResult? Function(MediaStreamAudioDestinationNode field0)? variant15,
+    TResult? Function(MediaStreamAudioSourceNode field0)? variant16,
+    TResult? Function(MediaStreamTrackAudioSourceNode field0)? variant17,
+    TResult? Function(OscillatorNode field0)? variant18,
+    TResult? Function(PannerNode field0)? variant19,
+    TResult? Function(ScriptProcessorNode field0)? variant20,
+    TResult? Function(StereoPannerNode field0)? variant21,
+    TResult? Function(WaveShaperNode field0)? variant22,
+  }) {
+    return variant10?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(AnalyserNode field0)? variant0,
+    TResult Function(AudioBufferSourceNode field0)? variant1,
+    TResult Function(AudioDestinationNode field0)? variant2,
+    TResult Function(AudioParam field0)? variant3,
+    TResult Function(AudioWorkletNode field0)? variant4,
+    TResult Function(BiquadFilterNode field0)? variant5,
+    TResult Function(ChannelMergerNode field0)? variant6,
+    TResult Function(ChannelSplitterNode field0)? variant7,
+    TResult Function(ConstantSourceNode field0)? variant8,
+    TResult Function(ConvolverNode field0)? variant9,
+    TResult Function(DelayNode field0)? variant10,
+    TResult Function(DynamicsCompressorNode field0)? variant11,
+    TResult Function(GainNode field0)? variant12,
+    TResult Function(IirFilterNode field0)? variant13,
+    TResult Function(MediaElementAudioSourceNode field0)? variant14,
+    TResult Function(MediaStreamAudioDestinationNode field0)? variant15,
+    TResult Function(MediaStreamAudioSourceNode field0)? variant16,
+    TResult Function(MediaStreamTrackAudioSourceNode field0)? variant17,
+    TResult Function(OscillatorNode field0)? variant18,
+    TResult Function(PannerNode field0)? variant19,
+    TResult Function(ScriptProcessorNode field0)? variant20,
+    TResult Function(StereoPannerNode field0)? variant21,
+    TResult Function(WaveShaperNode field0)? variant22,
+    required TResult orElse(),
+  }) {
+    if (variant10 != null) {
+      return variant10(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AudioNodeImplementor_Variant0 value) variant0,
+    required TResult Function(AudioNodeImplementor_Variant1 value) variant1,
+    required TResult Function(AudioNodeImplementor_Variant2 value) variant2,
+    required TResult Function(AudioNodeImplementor_Variant3 value) variant3,
+    required TResult Function(AudioNodeImplementor_Variant4 value) variant4,
+    required TResult Function(AudioNodeImplementor_Variant5 value) variant5,
+    required TResult Function(AudioNodeImplementor_Variant6 value) variant6,
+    required TResult Function(AudioNodeImplementor_Variant7 value) variant7,
+    required TResult Function(AudioNodeImplementor_Variant8 value) variant8,
+    required TResult Function(AudioNodeImplementor_Variant9 value) variant9,
+    required TResult Function(AudioNodeImplementor_Variant10 value) variant10,
+    required TResult Function(AudioNodeImplementor_Variant11 value) variant11,
+    required TResult Function(AudioNodeImplementor_Variant12 value) variant12,
+    required TResult Function(AudioNodeImplementor_Variant13 value) variant13,
+    required TResult Function(AudioNodeImplementor_Variant14 value) variant14,
+    required TResult Function(AudioNodeImplementor_Variant15 value) variant15,
+    required TResult Function(AudioNodeImplementor_Variant16 value) variant16,
+    required TResult Function(AudioNodeImplementor_Variant17 value) variant17,
+    required TResult Function(AudioNodeImplementor_Variant18 value) variant18,
+    required TResult Function(AudioNodeImplementor_Variant19 value) variant19,
+    required TResult Function(AudioNodeImplementor_Variant20 value) variant20,
+    required TResult Function(AudioNodeImplementor_Variant21 value) variant21,
+    required TResult Function(AudioNodeImplementor_Variant22 value) variant22,
+  }) {
+    return variant10(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AudioNodeImplementor_Variant0 value)? variant0,
+    TResult? Function(AudioNodeImplementor_Variant1 value)? variant1,
+    TResult? Function(AudioNodeImplementor_Variant2 value)? variant2,
+    TResult? Function(AudioNodeImplementor_Variant3 value)? variant3,
+    TResult? Function(AudioNodeImplementor_Variant4 value)? variant4,
+    TResult? Function(AudioNodeImplementor_Variant5 value)? variant5,
+    TResult? Function(AudioNodeImplementor_Variant6 value)? variant6,
+    TResult? Function(AudioNodeImplementor_Variant7 value)? variant7,
+    TResult? Function(AudioNodeImplementor_Variant8 value)? variant8,
+    TResult? Function(AudioNodeImplementor_Variant9 value)? variant9,
+    TResult? Function(AudioNodeImplementor_Variant10 value)? variant10,
+    TResult? Function(AudioNodeImplementor_Variant11 value)? variant11,
+    TResult? Function(AudioNodeImplementor_Variant12 value)? variant12,
+    TResult? Function(AudioNodeImplementor_Variant13 value)? variant13,
+    TResult? Function(AudioNodeImplementor_Variant14 value)? variant14,
+    TResult? Function(AudioNodeImplementor_Variant15 value)? variant15,
+    TResult? Function(AudioNodeImplementor_Variant16 value)? variant16,
+    TResult? Function(AudioNodeImplementor_Variant17 value)? variant17,
+    TResult? Function(AudioNodeImplementor_Variant18 value)? variant18,
+    TResult? Function(AudioNodeImplementor_Variant19 value)? variant19,
+    TResult? Function(AudioNodeImplementor_Variant20 value)? variant20,
+    TResult? Function(AudioNodeImplementor_Variant21 value)? variant21,
+    TResult? Function(AudioNodeImplementor_Variant22 value)? variant22,
+  }) {
+    return variant10?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AudioNodeImplementor_Variant0 value)? variant0,
+    TResult Function(AudioNodeImplementor_Variant1 value)? variant1,
+    TResult Function(AudioNodeImplementor_Variant2 value)? variant2,
+    TResult Function(AudioNodeImplementor_Variant3 value)? variant3,
+    TResult Function(AudioNodeImplementor_Variant4 value)? variant4,
+    TResult Function(AudioNodeImplementor_Variant5 value)? variant5,
+    TResult Function(AudioNodeImplementor_Variant6 value)? variant6,
+    TResult Function(AudioNodeImplementor_Variant7 value)? variant7,
+    TResult Function(AudioNodeImplementor_Variant8 value)? variant8,
+    TResult Function(AudioNodeImplementor_Variant9 value)? variant9,
+    TResult Function(AudioNodeImplementor_Variant10 value)? variant10,
+    TResult Function(AudioNodeImplementor_Variant11 value)? variant11,
+    TResult Function(AudioNodeImplementor_Variant12 value)? variant12,
+    TResult Function(AudioNodeImplementor_Variant13 value)? variant13,
+    TResult Function(AudioNodeImplementor_Variant14 value)? variant14,
+    TResult Function(AudioNodeImplementor_Variant15 value)? variant15,
+    TResult Function(AudioNodeImplementor_Variant16 value)? variant16,
+    TResult Function(AudioNodeImplementor_Variant17 value)? variant17,
+    TResult Function(AudioNodeImplementor_Variant18 value)? variant18,
+    TResult Function(AudioNodeImplementor_Variant19 value)? variant19,
+    TResult Function(AudioNodeImplementor_Variant20 value)? variant20,
+    TResult Function(AudioNodeImplementor_Variant21 value)? variant21,
+    TResult Function(AudioNodeImplementor_Variant22 value)? variant22,
+    required TResult orElse(),
+  }) {
+    if (variant10 != null) {
+      return variant10(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AudioNodeImplementor_Variant10 extends AudioNodeImplementor {
+  const factory AudioNodeImplementor_Variant10(final DelayNode field0) =
+      _$AudioNodeImplementor_Variant10Impl;
+  const AudioNodeImplementor_Variant10._() : super._();
+
+  @override
+  DelayNode get field0;
+  @JsonKey(ignore: true)
+  _$$AudioNodeImplementor_Variant10ImplCopyWith<
+          _$AudioNodeImplementor_Variant10Impl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AudioNodeImplementor_Variant11ImplCopyWith<$Res> {
+  factory _$$AudioNodeImplementor_Variant11ImplCopyWith(
+          _$AudioNodeImplementor_Variant11Impl value,
+          $Res Function(_$AudioNodeImplementor_Variant11Impl) then) =
+      __$$AudioNodeImplementor_Variant11ImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({DynamicsCompressorNode field0});
+}
+
+/// @nodoc
+class __$$AudioNodeImplementor_Variant11ImplCopyWithImpl<$Res>
+    extends _$AudioNodeImplementorCopyWithImpl<$Res,
+        _$AudioNodeImplementor_Variant11Impl>
+    implements _$$AudioNodeImplementor_Variant11ImplCopyWith<$Res> {
+  __$$AudioNodeImplementor_Variant11ImplCopyWithImpl(
+      _$AudioNodeImplementor_Variant11Impl _value,
+      $Res Function(_$AudioNodeImplementor_Variant11Impl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$AudioNodeImplementor_Variant11Impl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as DynamicsCompressorNode,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AudioNodeImplementor_Variant11Impl
+    extends AudioNodeImplementor_Variant11 {
+  const _$AudioNodeImplementor_Variant11Impl(this.field0) : super._();
+
+  @override
+  final DynamicsCompressorNode field0;
+
+  @override
+  String toString() {
+    return 'AudioNodeImplementor.variant11(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AudioNodeImplementor_Variant11Impl &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AudioNodeImplementor_Variant11ImplCopyWith<
+          _$AudioNodeImplementor_Variant11Impl>
+      get copyWith => __$$AudioNodeImplementor_Variant11ImplCopyWithImpl<
+          _$AudioNodeImplementor_Variant11Impl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(AnalyserNode field0) variant0,
+    required TResult Function(AudioBufferSourceNode field0) variant1,
+    required TResult Function(AudioDestinationNode field0) variant2,
+    required TResult Function(AudioParam field0) variant3,
+    required TResult Function(AudioWorkletNode field0) variant4,
+    required TResult Function(BiquadFilterNode field0) variant5,
+    required TResult Function(ChannelMergerNode field0) variant6,
+    required TResult Function(ChannelSplitterNode field0) variant7,
+    required TResult Function(ConstantSourceNode field0) variant8,
+    required TResult Function(ConvolverNode field0) variant9,
+    required TResult Function(DelayNode field0) variant10,
+    required TResult Function(DynamicsCompressorNode field0) variant11,
+    required TResult Function(GainNode field0) variant12,
+    required TResult Function(IirFilterNode field0) variant13,
+    required TResult Function(MediaElementAudioSourceNode field0) variant14,
+    required TResult Function(MediaStreamAudioDestinationNode field0) variant15,
+    required TResult Function(MediaStreamAudioSourceNode field0) variant16,
+    required TResult Function(MediaStreamTrackAudioSourceNode field0) variant17,
+    required TResult Function(OscillatorNode field0) variant18,
+    required TResult Function(PannerNode field0) variant19,
+    required TResult Function(ScriptProcessorNode field0) variant20,
+    required TResult Function(StereoPannerNode field0) variant21,
+    required TResult Function(WaveShaperNode field0) variant22,
+  }) {
+    return variant11(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(AnalyserNode field0)? variant0,
+    TResult? Function(AudioBufferSourceNode field0)? variant1,
+    TResult? Function(AudioDestinationNode field0)? variant2,
+    TResult? Function(AudioParam field0)? variant3,
+    TResult? Function(AudioWorkletNode field0)? variant4,
+    TResult? Function(BiquadFilterNode field0)? variant5,
+    TResult? Function(ChannelMergerNode field0)? variant6,
+    TResult? Function(ChannelSplitterNode field0)? variant7,
+    TResult? Function(ConstantSourceNode field0)? variant8,
+    TResult? Function(ConvolverNode field0)? variant9,
+    TResult? Function(DelayNode field0)? variant10,
+    TResult? Function(DynamicsCompressorNode field0)? variant11,
+    TResult? Function(GainNode field0)? variant12,
+    TResult? Function(IirFilterNode field0)? variant13,
+    TResult? Function(MediaElementAudioSourceNode field0)? variant14,
+    TResult? Function(MediaStreamAudioDestinationNode field0)? variant15,
+    TResult? Function(MediaStreamAudioSourceNode field0)? variant16,
+    TResult? Function(MediaStreamTrackAudioSourceNode field0)? variant17,
+    TResult? Function(OscillatorNode field0)? variant18,
+    TResult? Function(PannerNode field0)? variant19,
+    TResult? Function(ScriptProcessorNode field0)? variant20,
+    TResult? Function(StereoPannerNode field0)? variant21,
+    TResult? Function(WaveShaperNode field0)? variant22,
+  }) {
+    return variant11?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(AnalyserNode field0)? variant0,
+    TResult Function(AudioBufferSourceNode field0)? variant1,
+    TResult Function(AudioDestinationNode field0)? variant2,
+    TResult Function(AudioParam field0)? variant3,
+    TResult Function(AudioWorkletNode field0)? variant4,
+    TResult Function(BiquadFilterNode field0)? variant5,
+    TResult Function(ChannelMergerNode field0)? variant6,
+    TResult Function(ChannelSplitterNode field0)? variant7,
+    TResult Function(ConstantSourceNode field0)? variant8,
+    TResult Function(ConvolverNode field0)? variant9,
+    TResult Function(DelayNode field0)? variant10,
+    TResult Function(DynamicsCompressorNode field0)? variant11,
+    TResult Function(GainNode field0)? variant12,
+    TResult Function(IirFilterNode field0)? variant13,
+    TResult Function(MediaElementAudioSourceNode field0)? variant14,
+    TResult Function(MediaStreamAudioDestinationNode field0)? variant15,
+    TResult Function(MediaStreamAudioSourceNode field0)? variant16,
+    TResult Function(MediaStreamTrackAudioSourceNode field0)? variant17,
+    TResult Function(OscillatorNode field0)? variant18,
+    TResult Function(PannerNode field0)? variant19,
+    TResult Function(ScriptProcessorNode field0)? variant20,
+    TResult Function(StereoPannerNode field0)? variant21,
+    TResult Function(WaveShaperNode field0)? variant22,
+    required TResult orElse(),
+  }) {
+    if (variant11 != null) {
+      return variant11(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AudioNodeImplementor_Variant0 value) variant0,
+    required TResult Function(AudioNodeImplementor_Variant1 value) variant1,
+    required TResult Function(AudioNodeImplementor_Variant2 value) variant2,
+    required TResult Function(AudioNodeImplementor_Variant3 value) variant3,
+    required TResult Function(AudioNodeImplementor_Variant4 value) variant4,
+    required TResult Function(AudioNodeImplementor_Variant5 value) variant5,
+    required TResult Function(AudioNodeImplementor_Variant6 value) variant6,
+    required TResult Function(AudioNodeImplementor_Variant7 value) variant7,
+    required TResult Function(AudioNodeImplementor_Variant8 value) variant8,
+    required TResult Function(AudioNodeImplementor_Variant9 value) variant9,
+    required TResult Function(AudioNodeImplementor_Variant10 value) variant10,
+    required TResult Function(AudioNodeImplementor_Variant11 value) variant11,
+    required TResult Function(AudioNodeImplementor_Variant12 value) variant12,
+    required TResult Function(AudioNodeImplementor_Variant13 value) variant13,
+    required TResult Function(AudioNodeImplementor_Variant14 value) variant14,
+    required TResult Function(AudioNodeImplementor_Variant15 value) variant15,
+    required TResult Function(AudioNodeImplementor_Variant16 value) variant16,
+    required TResult Function(AudioNodeImplementor_Variant17 value) variant17,
+    required TResult Function(AudioNodeImplementor_Variant18 value) variant18,
+    required TResult Function(AudioNodeImplementor_Variant19 value) variant19,
+    required TResult Function(AudioNodeImplementor_Variant20 value) variant20,
+    required TResult Function(AudioNodeImplementor_Variant21 value) variant21,
+    required TResult Function(AudioNodeImplementor_Variant22 value) variant22,
+  }) {
+    return variant11(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AudioNodeImplementor_Variant0 value)? variant0,
+    TResult? Function(AudioNodeImplementor_Variant1 value)? variant1,
+    TResult? Function(AudioNodeImplementor_Variant2 value)? variant2,
+    TResult? Function(AudioNodeImplementor_Variant3 value)? variant3,
+    TResult? Function(AudioNodeImplementor_Variant4 value)? variant4,
+    TResult? Function(AudioNodeImplementor_Variant5 value)? variant5,
+    TResult? Function(AudioNodeImplementor_Variant6 value)? variant6,
+    TResult? Function(AudioNodeImplementor_Variant7 value)? variant7,
+    TResult? Function(AudioNodeImplementor_Variant8 value)? variant8,
+    TResult? Function(AudioNodeImplementor_Variant9 value)? variant9,
+    TResult? Function(AudioNodeImplementor_Variant10 value)? variant10,
+    TResult? Function(AudioNodeImplementor_Variant11 value)? variant11,
+    TResult? Function(AudioNodeImplementor_Variant12 value)? variant12,
+    TResult? Function(AudioNodeImplementor_Variant13 value)? variant13,
+    TResult? Function(AudioNodeImplementor_Variant14 value)? variant14,
+    TResult? Function(AudioNodeImplementor_Variant15 value)? variant15,
+    TResult? Function(AudioNodeImplementor_Variant16 value)? variant16,
+    TResult? Function(AudioNodeImplementor_Variant17 value)? variant17,
+    TResult? Function(AudioNodeImplementor_Variant18 value)? variant18,
+    TResult? Function(AudioNodeImplementor_Variant19 value)? variant19,
+    TResult? Function(AudioNodeImplementor_Variant20 value)? variant20,
+    TResult? Function(AudioNodeImplementor_Variant21 value)? variant21,
+    TResult? Function(AudioNodeImplementor_Variant22 value)? variant22,
+  }) {
+    return variant11?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AudioNodeImplementor_Variant0 value)? variant0,
+    TResult Function(AudioNodeImplementor_Variant1 value)? variant1,
+    TResult Function(AudioNodeImplementor_Variant2 value)? variant2,
+    TResult Function(AudioNodeImplementor_Variant3 value)? variant3,
+    TResult Function(AudioNodeImplementor_Variant4 value)? variant4,
+    TResult Function(AudioNodeImplementor_Variant5 value)? variant5,
+    TResult Function(AudioNodeImplementor_Variant6 value)? variant6,
+    TResult Function(AudioNodeImplementor_Variant7 value)? variant7,
+    TResult Function(AudioNodeImplementor_Variant8 value)? variant8,
+    TResult Function(AudioNodeImplementor_Variant9 value)? variant9,
+    TResult Function(AudioNodeImplementor_Variant10 value)? variant10,
+    TResult Function(AudioNodeImplementor_Variant11 value)? variant11,
+    TResult Function(AudioNodeImplementor_Variant12 value)? variant12,
+    TResult Function(AudioNodeImplementor_Variant13 value)? variant13,
+    TResult Function(AudioNodeImplementor_Variant14 value)? variant14,
+    TResult Function(AudioNodeImplementor_Variant15 value)? variant15,
+    TResult Function(AudioNodeImplementor_Variant16 value)? variant16,
+    TResult Function(AudioNodeImplementor_Variant17 value)? variant17,
+    TResult Function(AudioNodeImplementor_Variant18 value)? variant18,
+    TResult Function(AudioNodeImplementor_Variant19 value)? variant19,
+    TResult Function(AudioNodeImplementor_Variant20 value)? variant20,
+    TResult Function(AudioNodeImplementor_Variant21 value)? variant21,
+    TResult Function(AudioNodeImplementor_Variant22 value)? variant22,
+    required TResult orElse(),
+  }) {
+    if (variant11 != null) {
+      return variant11(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AudioNodeImplementor_Variant11 extends AudioNodeImplementor {
+  const factory AudioNodeImplementor_Variant11(
+          final DynamicsCompressorNode field0) =
+      _$AudioNodeImplementor_Variant11Impl;
+  const AudioNodeImplementor_Variant11._() : super._();
+
+  @override
+  DynamicsCompressorNode get field0;
+  @JsonKey(ignore: true)
+  _$$AudioNodeImplementor_Variant11ImplCopyWith<
+          _$AudioNodeImplementor_Variant11Impl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AudioNodeImplementor_Variant12ImplCopyWith<$Res> {
+  factory _$$AudioNodeImplementor_Variant12ImplCopyWith(
+          _$AudioNodeImplementor_Variant12Impl value,
+          $Res Function(_$AudioNodeImplementor_Variant12Impl) then) =
+      __$$AudioNodeImplementor_Variant12ImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({GainNode field0});
+}
+
+/// @nodoc
+class __$$AudioNodeImplementor_Variant12ImplCopyWithImpl<$Res>
+    extends _$AudioNodeImplementorCopyWithImpl<$Res,
+        _$AudioNodeImplementor_Variant12Impl>
+    implements _$$AudioNodeImplementor_Variant12ImplCopyWith<$Res> {
+  __$$AudioNodeImplementor_Variant12ImplCopyWithImpl(
+      _$AudioNodeImplementor_Variant12Impl _value,
+      $Res Function(_$AudioNodeImplementor_Variant12Impl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$AudioNodeImplementor_Variant12Impl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as GainNode,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AudioNodeImplementor_Variant12Impl
+    extends AudioNodeImplementor_Variant12 {
+  const _$AudioNodeImplementor_Variant12Impl(this.field0) : super._();
+
+  @override
+  final GainNode field0;
+
+  @override
+  String toString() {
+    return 'AudioNodeImplementor.variant12(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AudioNodeImplementor_Variant12Impl &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AudioNodeImplementor_Variant12ImplCopyWith<
+          _$AudioNodeImplementor_Variant12Impl>
+      get copyWith => __$$AudioNodeImplementor_Variant12ImplCopyWithImpl<
+          _$AudioNodeImplementor_Variant12Impl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(AnalyserNode field0) variant0,
+    required TResult Function(AudioBufferSourceNode field0) variant1,
+    required TResult Function(AudioDestinationNode field0) variant2,
+    required TResult Function(AudioParam field0) variant3,
+    required TResult Function(AudioWorkletNode field0) variant4,
+    required TResult Function(BiquadFilterNode field0) variant5,
+    required TResult Function(ChannelMergerNode field0) variant6,
+    required TResult Function(ChannelSplitterNode field0) variant7,
+    required TResult Function(ConstantSourceNode field0) variant8,
+    required TResult Function(ConvolverNode field0) variant9,
+    required TResult Function(DelayNode field0) variant10,
+    required TResult Function(DynamicsCompressorNode field0) variant11,
+    required TResult Function(GainNode field0) variant12,
+    required TResult Function(IirFilterNode field0) variant13,
+    required TResult Function(MediaElementAudioSourceNode field0) variant14,
+    required TResult Function(MediaStreamAudioDestinationNode field0) variant15,
+    required TResult Function(MediaStreamAudioSourceNode field0) variant16,
+    required TResult Function(MediaStreamTrackAudioSourceNode field0) variant17,
+    required TResult Function(OscillatorNode field0) variant18,
+    required TResult Function(PannerNode field0) variant19,
+    required TResult Function(ScriptProcessorNode field0) variant20,
+    required TResult Function(StereoPannerNode field0) variant21,
+    required TResult Function(WaveShaperNode field0) variant22,
+  }) {
+    return variant12(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(AnalyserNode field0)? variant0,
+    TResult? Function(AudioBufferSourceNode field0)? variant1,
+    TResult? Function(AudioDestinationNode field0)? variant2,
+    TResult? Function(AudioParam field0)? variant3,
+    TResult? Function(AudioWorkletNode field0)? variant4,
+    TResult? Function(BiquadFilterNode field0)? variant5,
+    TResult? Function(ChannelMergerNode field0)? variant6,
+    TResult? Function(ChannelSplitterNode field0)? variant7,
+    TResult? Function(ConstantSourceNode field0)? variant8,
+    TResult? Function(ConvolverNode field0)? variant9,
+    TResult? Function(DelayNode field0)? variant10,
+    TResult? Function(DynamicsCompressorNode field0)? variant11,
+    TResult? Function(GainNode field0)? variant12,
+    TResult? Function(IirFilterNode field0)? variant13,
+    TResult? Function(MediaElementAudioSourceNode field0)? variant14,
+    TResult? Function(MediaStreamAudioDestinationNode field0)? variant15,
+    TResult? Function(MediaStreamAudioSourceNode field0)? variant16,
+    TResult? Function(MediaStreamTrackAudioSourceNode field0)? variant17,
+    TResult? Function(OscillatorNode field0)? variant18,
+    TResult? Function(PannerNode field0)? variant19,
+    TResult? Function(ScriptProcessorNode field0)? variant20,
+    TResult? Function(StereoPannerNode field0)? variant21,
+    TResult? Function(WaveShaperNode field0)? variant22,
+  }) {
+    return variant12?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(AnalyserNode field0)? variant0,
+    TResult Function(AudioBufferSourceNode field0)? variant1,
+    TResult Function(AudioDestinationNode field0)? variant2,
+    TResult Function(AudioParam field0)? variant3,
+    TResult Function(AudioWorkletNode field0)? variant4,
+    TResult Function(BiquadFilterNode field0)? variant5,
+    TResult Function(ChannelMergerNode field0)? variant6,
+    TResult Function(ChannelSplitterNode field0)? variant7,
+    TResult Function(ConstantSourceNode field0)? variant8,
+    TResult Function(ConvolverNode field0)? variant9,
+    TResult Function(DelayNode field0)? variant10,
+    TResult Function(DynamicsCompressorNode field0)? variant11,
+    TResult Function(GainNode field0)? variant12,
+    TResult Function(IirFilterNode field0)? variant13,
+    TResult Function(MediaElementAudioSourceNode field0)? variant14,
+    TResult Function(MediaStreamAudioDestinationNode field0)? variant15,
+    TResult Function(MediaStreamAudioSourceNode field0)? variant16,
+    TResult Function(MediaStreamTrackAudioSourceNode field0)? variant17,
+    TResult Function(OscillatorNode field0)? variant18,
+    TResult Function(PannerNode field0)? variant19,
+    TResult Function(ScriptProcessorNode field0)? variant20,
+    TResult Function(StereoPannerNode field0)? variant21,
+    TResult Function(WaveShaperNode field0)? variant22,
+    required TResult orElse(),
+  }) {
+    if (variant12 != null) {
+      return variant12(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AudioNodeImplementor_Variant0 value) variant0,
+    required TResult Function(AudioNodeImplementor_Variant1 value) variant1,
+    required TResult Function(AudioNodeImplementor_Variant2 value) variant2,
+    required TResult Function(AudioNodeImplementor_Variant3 value) variant3,
+    required TResult Function(AudioNodeImplementor_Variant4 value) variant4,
+    required TResult Function(AudioNodeImplementor_Variant5 value) variant5,
+    required TResult Function(AudioNodeImplementor_Variant6 value) variant6,
+    required TResult Function(AudioNodeImplementor_Variant7 value) variant7,
+    required TResult Function(AudioNodeImplementor_Variant8 value) variant8,
+    required TResult Function(AudioNodeImplementor_Variant9 value) variant9,
+    required TResult Function(AudioNodeImplementor_Variant10 value) variant10,
+    required TResult Function(AudioNodeImplementor_Variant11 value) variant11,
+    required TResult Function(AudioNodeImplementor_Variant12 value) variant12,
+    required TResult Function(AudioNodeImplementor_Variant13 value) variant13,
+    required TResult Function(AudioNodeImplementor_Variant14 value) variant14,
+    required TResult Function(AudioNodeImplementor_Variant15 value) variant15,
+    required TResult Function(AudioNodeImplementor_Variant16 value) variant16,
+    required TResult Function(AudioNodeImplementor_Variant17 value) variant17,
+    required TResult Function(AudioNodeImplementor_Variant18 value) variant18,
+    required TResult Function(AudioNodeImplementor_Variant19 value) variant19,
+    required TResult Function(AudioNodeImplementor_Variant20 value) variant20,
+    required TResult Function(AudioNodeImplementor_Variant21 value) variant21,
+    required TResult Function(AudioNodeImplementor_Variant22 value) variant22,
+  }) {
+    return variant12(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AudioNodeImplementor_Variant0 value)? variant0,
+    TResult? Function(AudioNodeImplementor_Variant1 value)? variant1,
+    TResult? Function(AudioNodeImplementor_Variant2 value)? variant2,
+    TResult? Function(AudioNodeImplementor_Variant3 value)? variant3,
+    TResult? Function(AudioNodeImplementor_Variant4 value)? variant4,
+    TResult? Function(AudioNodeImplementor_Variant5 value)? variant5,
+    TResult? Function(AudioNodeImplementor_Variant6 value)? variant6,
+    TResult? Function(AudioNodeImplementor_Variant7 value)? variant7,
+    TResult? Function(AudioNodeImplementor_Variant8 value)? variant8,
+    TResult? Function(AudioNodeImplementor_Variant9 value)? variant9,
+    TResult? Function(AudioNodeImplementor_Variant10 value)? variant10,
+    TResult? Function(AudioNodeImplementor_Variant11 value)? variant11,
+    TResult? Function(AudioNodeImplementor_Variant12 value)? variant12,
+    TResult? Function(AudioNodeImplementor_Variant13 value)? variant13,
+    TResult? Function(AudioNodeImplementor_Variant14 value)? variant14,
+    TResult? Function(AudioNodeImplementor_Variant15 value)? variant15,
+    TResult? Function(AudioNodeImplementor_Variant16 value)? variant16,
+    TResult? Function(AudioNodeImplementor_Variant17 value)? variant17,
+    TResult? Function(AudioNodeImplementor_Variant18 value)? variant18,
+    TResult? Function(AudioNodeImplementor_Variant19 value)? variant19,
+    TResult? Function(AudioNodeImplementor_Variant20 value)? variant20,
+    TResult? Function(AudioNodeImplementor_Variant21 value)? variant21,
+    TResult? Function(AudioNodeImplementor_Variant22 value)? variant22,
+  }) {
+    return variant12?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AudioNodeImplementor_Variant0 value)? variant0,
+    TResult Function(AudioNodeImplementor_Variant1 value)? variant1,
+    TResult Function(AudioNodeImplementor_Variant2 value)? variant2,
+    TResult Function(AudioNodeImplementor_Variant3 value)? variant3,
+    TResult Function(AudioNodeImplementor_Variant4 value)? variant4,
+    TResult Function(AudioNodeImplementor_Variant5 value)? variant5,
+    TResult Function(AudioNodeImplementor_Variant6 value)? variant6,
+    TResult Function(AudioNodeImplementor_Variant7 value)? variant7,
+    TResult Function(AudioNodeImplementor_Variant8 value)? variant8,
+    TResult Function(AudioNodeImplementor_Variant9 value)? variant9,
+    TResult Function(AudioNodeImplementor_Variant10 value)? variant10,
+    TResult Function(AudioNodeImplementor_Variant11 value)? variant11,
+    TResult Function(AudioNodeImplementor_Variant12 value)? variant12,
+    TResult Function(AudioNodeImplementor_Variant13 value)? variant13,
+    TResult Function(AudioNodeImplementor_Variant14 value)? variant14,
+    TResult Function(AudioNodeImplementor_Variant15 value)? variant15,
+    TResult Function(AudioNodeImplementor_Variant16 value)? variant16,
+    TResult Function(AudioNodeImplementor_Variant17 value)? variant17,
+    TResult Function(AudioNodeImplementor_Variant18 value)? variant18,
+    TResult Function(AudioNodeImplementor_Variant19 value)? variant19,
+    TResult Function(AudioNodeImplementor_Variant20 value)? variant20,
+    TResult Function(AudioNodeImplementor_Variant21 value)? variant21,
+    TResult Function(AudioNodeImplementor_Variant22 value)? variant22,
+    required TResult orElse(),
+  }) {
+    if (variant12 != null) {
+      return variant12(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AudioNodeImplementor_Variant12 extends AudioNodeImplementor {
+  const factory AudioNodeImplementor_Variant12(final GainNode field0) =
+      _$AudioNodeImplementor_Variant12Impl;
+  const AudioNodeImplementor_Variant12._() : super._();
+
+  @override
+  GainNode get field0;
+  @JsonKey(ignore: true)
+  _$$AudioNodeImplementor_Variant12ImplCopyWith<
+          _$AudioNodeImplementor_Variant12Impl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AudioNodeImplementor_Variant13ImplCopyWith<$Res> {
+  factory _$$AudioNodeImplementor_Variant13ImplCopyWith(
+          _$AudioNodeImplementor_Variant13Impl value,
+          $Res Function(_$AudioNodeImplementor_Variant13Impl) then) =
+      __$$AudioNodeImplementor_Variant13ImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({IirFilterNode field0});
+}
+
+/// @nodoc
+class __$$AudioNodeImplementor_Variant13ImplCopyWithImpl<$Res>
+    extends _$AudioNodeImplementorCopyWithImpl<$Res,
+        _$AudioNodeImplementor_Variant13Impl>
+    implements _$$AudioNodeImplementor_Variant13ImplCopyWith<$Res> {
+  __$$AudioNodeImplementor_Variant13ImplCopyWithImpl(
+      _$AudioNodeImplementor_Variant13Impl _value,
+      $Res Function(_$AudioNodeImplementor_Variant13Impl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$AudioNodeImplementor_Variant13Impl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as IirFilterNode,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AudioNodeImplementor_Variant13Impl
+    extends AudioNodeImplementor_Variant13 {
+  const _$AudioNodeImplementor_Variant13Impl(this.field0) : super._();
+
+  @override
+  final IirFilterNode field0;
+
+  @override
+  String toString() {
+    return 'AudioNodeImplementor.variant13(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AudioNodeImplementor_Variant13Impl &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AudioNodeImplementor_Variant13ImplCopyWith<
+          _$AudioNodeImplementor_Variant13Impl>
+      get copyWith => __$$AudioNodeImplementor_Variant13ImplCopyWithImpl<
+          _$AudioNodeImplementor_Variant13Impl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(AnalyserNode field0) variant0,
+    required TResult Function(AudioBufferSourceNode field0) variant1,
+    required TResult Function(AudioDestinationNode field0) variant2,
+    required TResult Function(AudioParam field0) variant3,
+    required TResult Function(AudioWorkletNode field0) variant4,
+    required TResult Function(BiquadFilterNode field0) variant5,
+    required TResult Function(ChannelMergerNode field0) variant6,
+    required TResult Function(ChannelSplitterNode field0) variant7,
+    required TResult Function(ConstantSourceNode field0) variant8,
+    required TResult Function(ConvolverNode field0) variant9,
+    required TResult Function(DelayNode field0) variant10,
+    required TResult Function(DynamicsCompressorNode field0) variant11,
+    required TResult Function(GainNode field0) variant12,
+    required TResult Function(IirFilterNode field0) variant13,
+    required TResult Function(MediaElementAudioSourceNode field0) variant14,
+    required TResult Function(MediaStreamAudioDestinationNode field0) variant15,
+    required TResult Function(MediaStreamAudioSourceNode field0) variant16,
+    required TResult Function(MediaStreamTrackAudioSourceNode field0) variant17,
+    required TResult Function(OscillatorNode field0) variant18,
+    required TResult Function(PannerNode field0) variant19,
+    required TResult Function(ScriptProcessorNode field0) variant20,
+    required TResult Function(StereoPannerNode field0) variant21,
+    required TResult Function(WaveShaperNode field0) variant22,
+  }) {
+    return variant13(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(AnalyserNode field0)? variant0,
+    TResult? Function(AudioBufferSourceNode field0)? variant1,
+    TResult? Function(AudioDestinationNode field0)? variant2,
+    TResult? Function(AudioParam field0)? variant3,
+    TResult? Function(AudioWorkletNode field0)? variant4,
+    TResult? Function(BiquadFilterNode field0)? variant5,
+    TResult? Function(ChannelMergerNode field0)? variant6,
+    TResult? Function(ChannelSplitterNode field0)? variant7,
+    TResult? Function(ConstantSourceNode field0)? variant8,
+    TResult? Function(ConvolverNode field0)? variant9,
+    TResult? Function(DelayNode field0)? variant10,
+    TResult? Function(DynamicsCompressorNode field0)? variant11,
+    TResult? Function(GainNode field0)? variant12,
+    TResult? Function(IirFilterNode field0)? variant13,
+    TResult? Function(MediaElementAudioSourceNode field0)? variant14,
+    TResult? Function(MediaStreamAudioDestinationNode field0)? variant15,
+    TResult? Function(MediaStreamAudioSourceNode field0)? variant16,
+    TResult? Function(MediaStreamTrackAudioSourceNode field0)? variant17,
+    TResult? Function(OscillatorNode field0)? variant18,
+    TResult? Function(PannerNode field0)? variant19,
+    TResult? Function(ScriptProcessorNode field0)? variant20,
+    TResult? Function(StereoPannerNode field0)? variant21,
+    TResult? Function(WaveShaperNode field0)? variant22,
+  }) {
+    return variant13?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(AnalyserNode field0)? variant0,
+    TResult Function(AudioBufferSourceNode field0)? variant1,
+    TResult Function(AudioDestinationNode field0)? variant2,
+    TResult Function(AudioParam field0)? variant3,
+    TResult Function(AudioWorkletNode field0)? variant4,
+    TResult Function(BiquadFilterNode field0)? variant5,
+    TResult Function(ChannelMergerNode field0)? variant6,
+    TResult Function(ChannelSplitterNode field0)? variant7,
+    TResult Function(ConstantSourceNode field0)? variant8,
+    TResult Function(ConvolverNode field0)? variant9,
+    TResult Function(DelayNode field0)? variant10,
+    TResult Function(DynamicsCompressorNode field0)? variant11,
+    TResult Function(GainNode field0)? variant12,
+    TResult Function(IirFilterNode field0)? variant13,
+    TResult Function(MediaElementAudioSourceNode field0)? variant14,
+    TResult Function(MediaStreamAudioDestinationNode field0)? variant15,
+    TResult Function(MediaStreamAudioSourceNode field0)? variant16,
+    TResult Function(MediaStreamTrackAudioSourceNode field0)? variant17,
+    TResult Function(OscillatorNode field0)? variant18,
+    TResult Function(PannerNode field0)? variant19,
+    TResult Function(ScriptProcessorNode field0)? variant20,
+    TResult Function(StereoPannerNode field0)? variant21,
+    TResult Function(WaveShaperNode field0)? variant22,
+    required TResult orElse(),
+  }) {
+    if (variant13 != null) {
+      return variant13(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AudioNodeImplementor_Variant0 value) variant0,
+    required TResult Function(AudioNodeImplementor_Variant1 value) variant1,
+    required TResult Function(AudioNodeImplementor_Variant2 value) variant2,
+    required TResult Function(AudioNodeImplementor_Variant3 value) variant3,
+    required TResult Function(AudioNodeImplementor_Variant4 value) variant4,
+    required TResult Function(AudioNodeImplementor_Variant5 value) variant5,
+    required TResult Function(AudioNodeImplementor_Variant6 value) variant6,
+    required TResult Function(AudioNodeImplementor_Variant7 value) variant7,
+    required TResult Function(AudioNodeImplementor_Variant8 value) variant8,
+    required TResult Function(AudioNodeImplementor_Variant9 value) variant9,
+    required TResult Function(AudioNodeImplementor_Variant10 value) variant10,
+    required TResult Function(AudioNodeImplementor_Variant11 value) variant11,
+    required TResult Function(AudioNodeImplementor_Variant12 value) variant12,
+    required TResult Function(AudioNodeImplementor_Variant13 value) variant13,
+    required TResult Function(AudioNodeImplementor_Variant14 value) variant14,
+    required TResult Function(AudioNodeImplementor_Variant15 value) variant15,
+    required TResult Function(AudioNodeImplementor_Variant16 value) variant16,
+    required TResult Function(AudioNodeImplementor_Variant17 value) variant17,
+    required TResult Function(AudioNodeImplementor_Variant18 value) variant18,
+    required TResult Function(AudioNodeImplementor_Variant19 value) variant19,
+    required TResult Function(AudioNodeImplementor_Variant20 value) variant20,
+    required TResult Function(AudioNodeImplementor_Variant21 value) variant21,
+    required TResult Function(AudioNodeImplementor_Variant22 value) variant22,
+  }) {
+    return variant13(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AudioNodeImplementor_Variant0 value)? variant0,
+    TResult? Function(AudioNodeImplementor_Variant1 value)? variant1,
+    TResult? Function(AudioNodeImplementor_Variant2 value)? variant2,
+    TResult? Function(AudioNodeImplementor_Variant3 value)? variant3,
+    TResult? Function(AudioNodeImplementor_Variant4 value)? variant4,
+    TResult? Function(AudioNodeImplementor_Variant5 value)? variant5,
+    TResult? Function(AudioNodeImplementor_Variant6 value)? variant6,
+    TResult? Function(AudioNodeImplementor_Variant7 value)? variant7,
+    TResult? Function(AudioNodeImplementor_Variant8 value)? variant8,
+    TResult? Function(AudioNodeImplementor_Variant9 value)? variant9,
+    TResult? Function(AudioNodeImplementor_Variant10 value)? variant10,
+    TResult? Function(AudioNodeImplementor_Variant11 value)? variant11,
+    TResult? Function(AudioNodeImplementor_Variant12 value)? variant12,
+    TResult? Function(AudioNodeImplementor_Variant13 value)? variant13,
+    TResult? Function(AudioNodeImplementor_Variant14 value)? variant14,
+    TResult? Function(AudioNodeImplementor_Variant15 value)? variant15,
+    TResult? Function(AudioNodeImplementor_Variant16 value)? variant16,
+    TResult? Function(AudioNodeImplementor_Variant17 value)? variant17,
+    TResult? Function(AudioNodeImplementor_Variant18 value)? variant18,
+    TResult? Function(AudioNodeImplementor_Variant19 value)? variant19,
+    TResult? Function(AudioNodeImplementor_Variant20 value)? variant20,
+    TResult? Function(AudioNodeImplementor_Variant21 value)? variant21,
+    TResult? Function(AudioNodeImplementor_Variant22 value)? variant22,
+  }) {
+    return variant13?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AudioNodeImplementor_Variant0 value)? variant0,
+    TResult Function(AudioNodeImplementor_Variant1 value)? variant1,
+    TResult Function(AudioNodeImplementor_Variant2 value)? variant2,
+    TResult Function(AudioNodeImplementor_Variant3 value)? variant3,
+    TResult Function(AudioNodeImplementor_Variant4 value)? variant4,
+    TResult Function(AudioNodeImplementor_Variant5 value)? variant5,
+    TResult Function(AudioNodeImplementor_Variant6 value)? variant6,
+    TResult Function(AudioNodeImplementor_Variant7 value)? variant7,
+    TResult Function(AudioNodeImplementor_Variant8 value)? variant8,
+    TResult Function(AudioNodeImplementor_Variant9 value)? variant9,
+    TResult Function(AudioNodeImplementor_Variant10 value)? variant10,
+    TResult Function(AudioNodeImplementor_Variant11 value)? variant11,
+    TResult Function(AudioNodeImplementor_Variant12 value)? variant12,
+    TResult Function(AudioNodeImplementor_Variant13 value)? variant13,
+    TResult Function(AudioNodeImplementor_Variant14 value)? variant14,
+    TResult Function(AudioNodeImplementor_Variant15 value)? variant15,
+    TResult Function(AudioNodeImplementor_Variant16 value)? variant16,
+    TResult Function(AudioNodeImplementor_Variant17 value)? variant17,
+    TResult Function(AudioNodeImplementor_Variant18 value)? variant18,
+    TResult Function(AudioNodeImplementor_Variant19 value)? variant19,
+    TResult Function(AudioNodeImplementor_Variant20 value)? variant20,
+    TResult Function(AudioNodeImplementor_Variant21 value)? variant21,
+    TResult Function(AudioNodeImplementor_Variant22 value)? variant22,
+    required TResult orElse(),
+  }) {
+    if (variant13 != null) {
+      return variant13(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AudioNodeImplementor_Variant13 extends AudioNodeImplementor {
+  const factory AudioNodeImplementor_Variant13(final IirFilterNode field0) =
+      _$AudioNodeImplementor_Variant13Impl;
+  const AudioNodeImplementor_Variant13._() : super._();
+
+  @override
+  IirFilterNode get field0;
+  @JsonKey(ignore: true)
+  _$$AudioNodeImplementor_Variant13ImplCopyWith<
+          _$AudioNodeImplementor_Variant13Impl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AudioNodeImplementor_Variant14ImplCopyWith<$Res> {
+  factory _$$AudioNodeImplementor_Variant14ImplCopyWith(
+          _$AudioNodeImplementor_Variant14Impl value,
+          $Res Function(_$AudioNodeImplementor_Variant14Impl) then) =
+      __$$AudioNodeImplementor_Variant14ImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({MediaElementAudioSourceNode field0});
+}
+
+/// @nodoc
+class __$$AudioNodeImplementor_Variant14ImplCopyWithImpl<$Res>
+    extends _$AudioNodeImplementorCopyWithImpl<$Res,
+        _$AudioNodeImplementor_Variant14Impl>
+    implements _$$AudioNodeImplementor_Variant14ImplCopyWith<$Res> {
+  __$$AudioNodeImplementor_Variant14ImplCopyWithImpl(
+      _$AudioNodeImplementor_Variant14Impl _value,
+      $Res Function(_$AudioNodeImplementor_Variant14Impl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$AudioNodeImplementor_Variant14Impl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as MediaElementAudioSourceNode,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AudioNodeImplementor_Variant14Impl
+    extends AudioNodeImplementor_Variant14 {
+  const _$AudioNodeImplementor_Variant14Impl(this.field0) : super._();
+
+  @override
+  final MediaElementAudioSourceNode field0;
+
+  @override
+  String toString() {
+    return 'AudioNodeImplementor.variant14(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AudioNodeImplementor_Variant14Impl &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AudioNodeImplementor_Variant14ImplCopyWith<
+          _$AudioNodeImplementor_Variant14Impl>
+      get copyWith => __$$AudioNodeImplementor_Variant14ImplCopyWithImpl<
+          _$AudioNodeImplementor_Variant14Impl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(AnalyserNode field0) variant0,
+    required TResult Function(AudioBufferSourceNode field0) variant1,
+    required TResult Function(AudioDestinationNode field0) variant2,
+    required TResult Function(AudioParam field0) variant3,
+    required TResult Function(AudioWorkletNode field0) variant4,
+    required TResult Function(BiquadFilterNode field0) variant5,
+    required TResult Function(ChannelMergerNode field0) variant6,
+    required TResult Function(ChannelSplitterNode field0) variant7,
+    required TResult Function(ConstantSourceNode field0) variant8,
+    required TResult Function(ConvolverNode field0) variant9,
+    required TResult Function(DelayNode field0) variant10,
+    required TResult Function(DynamicsCompressorNode field0) variant11,
+    required TResult Function(GainNode field0) variant12,
+    required TResult Function(IirFilterNode field0) variant13,
+    required TResult Function(MediaElementAudioSourceNode field0) variant14,
+    required TResult Function(MediaStreamAudioDestinationNode field0) variant15,
+    required TResult Function(MediaStreamAudioSourceNode field0) variant16,
+    required TResult Function(MediaStreamTrackAudioSourceNode field0) variant17,
+    required TResult Function(OscillatorNode field0) variant18,
+    required TResult Function(PannerNode field0) variant19,
+    required TResult Function(ScriptProcessorNode field0) variant20,
+    required TResult Function(StereoPannerNode field0) variant21,
+    required TResult Function(WaveShaperNode field0) variant22,
+  }) {
+    return variant14(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(AnalyserNode field0)? variant0,
+    TResult? Function(AudioBufferSourceNode field0)? variant1,
+    TResult? Function(AudioDestinationNode field0)? variant2,
+    TResult? Function(AudioParam field0)? variant3,
+    TResult? Function(AudioWorkletNode field0)? variant4,
+    TResult? Function(BiquadFilterNode field0)? variant5,
+    TResult? Function(ChannelMergerNode field0)? variant6,
+    TResult? Function(ChannelSplitterNode field0)? variant7,
+    TResult? Function(ConstantSourceNode field0)? variant8,
+    TResult? Function(ConvolverNode field0)? variant9,
+    TResult? Function(DelayNode field0)? variant10,
+    TResult? Function(DynamicsCompressorNode field0)? variant11,
+    TResult? Function(GainNode field0)? variant12,
+    TResult? Function(IirFilterNode field0)? variant13,
+    TResult? Function(MediaElementAudioSourceNode field0)? variant14,
+    TResult? Function(MediaStreamAudioDestinationNode field0)? variant15,
+    TResult? Function(MediaStreamAudioSourceNode field0)? variant16,
+    TResult? Function(MediaStreamTrackAudioSourceNode field0)? variant17,
+    TResult? Function(OscillatorNode field0)? variant18,
+    TResult? Function(PannerNode field0)? variant19,
+    TResult? Function(ScriptProcessorNode field0)? variant20,
+    TResult? Function(StereoPannerNode field0)? variant21,
+    TResult? Function(WaveShaperNode field0)? variant22,
+  }) {
+    return variant14?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(AnalyserNode field0)? variant0,
+    TResult Function(AudioBufferSourceNode field0)? variant1,
+    TResult Function(AudioDestinationNode field0)? variant2,
+    TResult Function(AudioParam field0)? variant3,
+    TResult Function(AudioWorkletNode field0)? variant4,
+    TResult Function(BiquadFilterNode field0)? variant5,
+    TResult Function(ChannelMergerNode field0)? variant6,
+    TResult Function(ChannelSplitterNode field0)? variant7,
+    TResult Function(ConstantSourceNode field0)? variant8,
+    TResult Function(ConvolverNode field0)? variant9,
+    TResult Function(DelayNode field0)? variant10,
+    TResult Function(DynamicsCompressorNode field0)? variant11,
+    TResult Function(GainNode field0)? variant12,
+    TResult Function(IirFilterNode field0)? variant13,
+    TResult Function(MediaElementAudioSourceNode field0)? variant14,
+    TResult Function(MediaStreamAudioDestinationNode field0)? variant15,
+    TResult Function(MediaStreamAudioSourceNode field0)? variant16,
+    TResult Function(MediaStreamTrackAudioSourceNode field0)? variant17,
+    TResult Function(OscillatorNode field0)? variant18,
+    TResult Function(PannerNode field0)? variant19,
+    TResult Function(ScriptProcessorNode field0)? variant20,
+    TResult Function(StereoPannerNode field0)? variant21,
+    TResult Function(WaveShaperNode field0)? variant22,
+    required TResult orElse(),
+  }) {
+    if (variant14 != null) {
+      return variant14(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AudioNodeImplementor_Variant0 value) variant0,
+    required TResult Function(AudioNodeImplementor_Variant1 value) variant1,
+    required TResult Function(AudioNodeImplementor_Variant2 value) variant2,
+    required TResult Function(AudioNodeImplementor_Variant3 value) variant3,
+    required TResult Function(AudioNodeImplementor_Variant4 value) variant4,
+    required TResult Function(AudioNodeImplementor_Variant5 value) variant5,
+    required TResult Function(AudioNodeImplementor_Variant6 value) variant6,
+    required TResult Function(AudioNodeImplementor_Variant7 value) variant7,
+    required TResult Function(AudioNodeImplementor_Variant8 value) variant8,
+    required TResult Function(AudioNodeImplementor_Variant9 value) variant9,
+    required TResult Function(AudioNodeImplementor_Variant10 value) variant10,
+    required TResult Function(AudioNodeImplementor_Variant11 value) variant11,
+    required TResult Function(AudioNodeImplementor_Variant12 value) variant12,
+    required TResult Function(AudioNodeImplementor_Variant13 value) variant13,
+    required TResult Function(AudioNodeImplementor_Variant14 value) variant14,
+    required TResult Function(AudioNodeImplementor_Variant15 value) variant15,
+    required TResult Function(AudioNodeImplementor_Variant16 value) variant16,
+    required TResult Function(AudioNodeImplementor_Variant17 value) variant17,
+    required TResult Function(AudioNodeImplementor_Variant18 value) variant18,
+    required TResult Function(AudioNodeImplementor_Variant19 value) variant19,
+    required TResult Function(AudioNodeImplementor_Variant20 value) variant20,
+    required TResult Function(AudioNodeImplementor_Variant21 value) variant21,
+    required TResult Function(AudioNodeImplementor_Variant22 value) variant22,
+  }) {
+    return variant14(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AudioNodeImplementor_Variant0 value)? variant0,
+    TResult? Function(AudioNodeImplementor_Variant1 value)? variant1,
+    TResult? Function(AudioNodeImplementor_Variant2 value)? variant2,
+    TResult? Function(AudioNodeImplementor_Variant3 value)? variant3,
+    TResult? Function(AudioNodeImplementor_Variant4 value)? variant4,
+    TResult? Function(AudioNodeImplementor_Variant5 value)? variant5,
+    TResult? Function(AudioNodeImplementor_Variant6 value)? variant6,
+    TResult? Function(AudioNodeImplementor_Variant7 value)? variant7,
+    TResult? Function(AudioNodeImplementor_Variant8 value)? variant8,
+    TResult? Function(AudioNodeImplementor_Variant9 value)? variant9,
+    TResult? Function(AudioNodeImplementor_Variant10 value)? variant10,
+    TResult? Function(AudioNodeImplementor_Variant11 value)? variant11,
+    TResult? Function(AudioNodeImplementor_Variant12 value)? variant12,
+    TResult? Function(AudioNodeImplementor_Variant13 value)? variant13,
+    TResult? Function(AudioNodeImplementor_Variant14 value)? variant14,
+    TResult? Function(AudioNodeImplementor_Variant15 value)? variant15,
+    TResult? Function(AudioNodeImplementor_Variant16 value)? variant16,
+    TResult? Function(AudioNodeImplementor_Variant17 value)? variant17,
+    TResult? Function(AudioNodeImplementor_Variant18 value)? variant18,
+    TResult? Function(AudioNodeImplementor_Variant19 value)? variant19,
+    TResult? Function(AudioNodeImplementor_Variant20 value)? variant20,
+    TResult? Function(AudioNodeImplementor_Variant21 value)? variant21,
+    TResult? Function(AudioNodeImplementor_Variant22 value)? variant22,
+  }) {
+    return variant14?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AudioNodeImplementor_Variant0 value)? variant0,
+    TResult Function(AudioNodeImplementor_Variant1 value)? variant1,
+    TResult Function(AudioNodeImplementor_Variant2 value)? variant2,
+    TResult Function(AudioNodeImplementor_Variant3 value)? variant3,
+    TResult Function(AudioNodeImplementor_Variant4 value)? variant4,
+    TResult Function(AudioNodeImplementor_Variant5 value)? variant5,
+    TResult Function(AudioNodeImplementor_Variant6 value)? variant6,
+    TResult Function(AudioNodeImplementor_Variant7 value)? variant7,
+    TResult Function(AudioNodeImplementor_Variant8 value)? variant8,
+    TResult Function(AudioNodeImplementor_Variant9 value)? variant9,
+    TResult Function(AudioNodeImplementor_Variant10 value)? variant10,
+    TResult Function(AudioNodeImplementor_Variant11 value)? variant11,
+    TResult Function(AudioNodeImplementor_Variant12 value)? variant12,
+    TResult Function(AudioNodeImplementor_Variant13 value)? variant13,
+    TResult Function(AudioNodeImplementor_Variant14 value)? variant14,
+    TResult Function(AudioNodeImplementor_Variant15 value)? variant15,
+    TResult Function(AudioNodeImplementor_Variant16 value)? variant16,
+    TResult Function(AudioNodeImplementor_Variant17 value)? variant17,
+    TResult Function(AudioNodeImplementor_Variant18 value)? variant18,
+    TResult Function(AudioNodeImplementor_Variant19 value)? variant19,
+    TResult Function(AudioNodeImplementor_Variant20 value)? variant20,
+    TResult Function(AudioNodeImplementor_Variant21 value)? variant21,
+    TResult Function(AudioNodeImplementor_Variant22 value)? variant22,
+    required TResult orElse(),
+  }) {
+    if (variant14 != null) {
+      return variant14(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AudioNodeImplementor_Variant14 extends AudioNodeImplementor {
+  const factory AudioNodeImplementor_Variant14(
+          final MediaElementAudioSourceNode field0) =
+      _$AudioNodeImplementor_Variant14Impl;
+  const AudioNodeImplementor_Variant14._() : super._();
+
+  @override
+  MediaElementAudioSourceNode get field0;
+  @JsonKey(ignore: true)
+  _$$AudioNodeImplementor_Variant14ImplCopyWith<
+          _$AudioNodeImplementor_Variant14Impl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AudioNodeImplementor_Variant15ImplCopyWith<$Res> {
+  factory _$$AudioNodeImplementor_Variant15ImplCopyWith(
+          _$AudioNodeImplementor_Variant15Impl value,
+          $Res Function(_$AudioNodeImplementor_Variant15Impl) then) =
+      __$$AudioNodeImplementor_Variant15ImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({MediaStreamAudioDestinationNode field0});
+}
+
+/// @nodoc
+class __$$AudioNodeImplementor_Variant15ImplCopyWithImpl<$Res>
+    extends _$AudioNodeImplementorCopyWithImpl<$Res,
+        _$AudioNodeImplementor_Variant15Impl>
+    implements _$$AudioNodeImplementor_Variant15ImplCopyWith<$Res> {
+  __$$AudioNodeImplementor_Variant15ImplCopyWithImpl(
+      _$AudioNodeImplementor_Variant15Impl _value,
+      $Res Function(_$AudioNodeImplementor_Variant15Impl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$AudioNodeImplementor_Variant15Impl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as MediaStreamAudioDestinationNode,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AudioNodeImplementor_Variant15Impl
+    extends AudioNodeImplementor_Variant15 {
+  const _$AudioNodeImplementor_Variant15Impl(this.field0) : super._();
+
+  @override
+  final MediaStreamAudioDestinationNode field0;
+
+  @override
+  String toString() {
+    return 'AudioNodeImplementor.variant15(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AudioNodeImplementor_Variant15Impl &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AudioNodeImplementor_Variant15ImplCopyWith<
+          _$AudioNodeImplementor_Variant15Impl>
+      get copyWith => __$$AudioNodeImplementor_Variant15ImplCopyWithImpl<
+          _$AudioNodeImplementor_Variant15Impl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(AnalyserNode field0) variant0,
+    required TResult Function(AudioBufferSourceNode field0) variant1,
+    required TResult Function(AudioDestinationNode field0) variant2,
+    required TResult Function(AudioParam field0) variant3,
+    required TResult Function(AudioWorkletNode field0) variant4,
+    required TResult Function(BiquadFilterNode field0) variant5,
+    required TResult Function(ChannelMergerNode field0) variant6,
+    required TResult Function(ChannelSplitterNode field0) variant7,
+    required TResult Function(ConstantSourceNode field0) variant8,
+    required TResult Function(ConvolverNode field0) variant9,
+    required TResult Function(DelayNode field0) variant10,
+    required TResult Function(DynamicsCompressorNode field0) variant11,
+    required TResult Function(GainNode field0) variant12,
+    required TResult Function(IirFilterNode field0) variant13,
+    required TResult Function(MediaElementAudioSourceNode field0) variant14,
+    required TResult Function(MediaStreamAudioDestinationNode field0) variant15,
+    required TResult Function(MediaStreamAudioSourceNode field0) variant16,
+    required TResult Function(MediaStreamTrackAudioSourceNode field0) variant17,
+    required TResult Function(OscillatorNode field0) variant18,
+    required TResult Function(PannerNode field0) variant19,
+    required TResult Function(ScriptProcessorNode field0) variant20,
+    required TResult Function(StereoPannerNode field0) variant21,
+    required TResult Function(WaveShaperNode field0) variant22,
+  }) {
+    return variant15(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(AnalyserNode field0)? variant0,
+    TResult? Function(AudioBufferSourceNode field0)? variant1,
+    TResult? Function(AudioDestinationNode field0)? variant2,
+    TResult? Function(AudioParam field0)? variant3,
+    TResult? Function(AudioWorkletNode field0)? variant4,
+    TResult? Function(BiquadFilterNode field0)? variant5,
+    TResult? Function(ChannelMergerNode field0)? variant6,
+    TResult? Function(ChannelSplitterNode field0)? variant7,
+    TResult? Function(ConstantSourceNode field0)? variant8,
+    TResult? Function(ConvolverNode field0)? variant9,
+    TResult? Function(DelayNode field0)? variant10,
+    TResult? Function(DynamicsCompressorNode field0)? variant11,
+    TResult? Function(GainNode field0)? variant12,
+    TResult? Function(IirFilterNode field0)? variant13,
+    TResult? Function(MediaElementAudioSourceNode field0)? variant14,
+    TResult? Function(MediaStreamAudioDestinationNode field0)? variant15,
+    TResult? Function(MediaStreamAudioSourceNode field0)? variant16,
+    TResult? Function(MediaStreamTrackAudioSourceNode field0)? variant17,
+    TResult? Function(OscillatorNode field0)? variant18,
+    TResult? Function(PannerNode field0)? variant19,
+    TResult? Function(ScriptProcessorNode field0)? variant20,
+    TResult? Function(StereoPannerNode field0)? variant21,
+    TResult? Function(WaveShaperNode field0)? variant22,
+  }) {
+    return variant15?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(AnalyserNode field0)? variant0,
+    TResult Function(AudioBufferSourceNode field0)? variant1,
+    TResult Function(AudioDestinationNode field0)? variant2,
+    TResult Function(AudioParam field0)? variant3,
+    TResult Function(AudioWorkletNode field0)? variant4,
+    TResult Function(BiquadFilterNode field0)? variant5,
+    TResult Function(ChannelMergerNode field0)? variant6,
+    TResult Function(ChannelSplitterNode field0)? variant7,
+    TResult Function(ConstantSourceNode field0)? variant8,
+    TResult Function(ConvolverNode field0)? variant9,
+    TResult Function(DelayNode field0)? variant10,
+    TResult Function(DynamicsCompressorNode field0)? variant11,
+    TResult Function(GainNode field0)? variant12,
+    TResult Function(IirFilterNode field0)? variant13,
+    TResult Function(MediaElementAudioSourceNode field0)? variant14,
+    TResult Function(MediaStreamAudioDestinationNode field0)? variant15,
+    TResult Function(MediaStreamAudioSourceNode field0)? variant16,
+    TResult Function(MediaStreamTrackAudioSourceNode field0)? variant17,
+    TResult Function(OscillatorNode field0)? variant18,
+    TResult Function(PannerNode field0)? variant19,
+    TResult Function(ScriptProcessorNode field0)? variant20,
+    TResult Function(StereoPannerNode field0)? variant21,
+    TResult Function(WaveShaperNode field0)? variant22,
+    required TResult orElse(),
+  }) {
+    if (variant15 != null) {
+      return variant15(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AudioNodeImplementor_Variant0 value) variant0,
+    required TResult Function(AudioNodeImplementor_Variant1 value) variant1,
+    required TResult Function(AudioNodeImplementor_Variant2 value) variant2,
+    required TResult Function(AudioNodeImplementor_Variant3 value) variant3,
+    required TResult Function(AudioNodeImplementor_Variant4 value) variant4,
+    required TResult Function(AudioNodeImplementor_Variant5 value) variant5,
+    required TResult Function(AudioNodeImplementor_Variant6 value) variant6,
+    required TResult Function(AudioNodeImplementor_Variant7 value) variant7,
+    required TResult Function(AudioNodeImplementor_Variant8 value) variant8,
+    required TResult Function(AudioNodeImplementor_Variant9 value) variant9,
+    required TResult Function(AudioNodeImplementor_Variant10 value) variant10,
+    required TResult Function(AudioNodeImplementor_Variant11 value) variant11,
+    required TResult Function(AudioNodeImplementor_Variant12 value) variant12,
+    required TResult Function(AudioNodeImplementor_Variant13 value) variant13,
+    required TResult Function(AudioNodeImplementor_Variant14 value) variant14,
+    required TResult Function(AudioNodeImplementor_Variant15 value) variant15,
+    required TResult Function(AudioNodeImplementor_Variant16 value) variant16,
+    required TResult Function(AudioNodeImplementor_Variant17 value) variant17,
+    required TResult Function(AudioNodeImplementor_Variant18 value) variant18,
+    required TResult Function(AudioNodeImplementor_Variant19 value) variant19,
+    required TResult Function(AudioNodeImplementor_Variant20 value) variant20,
+    required TResult Function(AudioNodeImplementor_Variant21 value) variant21,
+    required TResult Function(AudioNodeImplementor_Variant22 value) variant22,
+  }) {
+    return variant15(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AudioNodeImplementor_Variant0 value)? variant0,
+    TResult? Function(AudioNodeImplementor_Variant1 value)? variant1,
+    TResult? Function(AudioNodeImplementor_Variant2 value)? variant2,
+    TResult? Function(AudioNodeImplementor_Variant3 value)? variant3,
+    TResult? Function(AudioNodeImplementor_Variant4 value)? variant4,
+    TResult? Function(AudioNodeImplementor_Variant5 value)? variant5,
+    TResult? Function(AudioNodeImplementor_Variant6 value)? variant6,
+    TResult? Function(AudioNodeImplementor_Variant7 value)? variant7,
+    TResult? Function(AudioNodeImplementor_Variant8 value)? variant8,
+    TResult? Function(AudioNodeImplementor_Variant9 value)? variant9,
+    TResult? Function(AudioNodeImplementor_Variant10 value)? variant10,
+    TResult? Function(AudioNodeImplementor_Variant11 value)? variant11,
+    TResult? Function(AudioNodeImplementor_Variant12 value)? variant12,
+    TResult? Function(AudioNodeImplementor_Variant13 value)? variant13,
+    TResult? Function(AudioNodeImplementor_Variant14 value)? variant14,
+    TResult? Function(AudioNodeImplementor_Variant15 value)? variant15,
+    TResult? Function(AudioNodeImplementor_Variant16 value)? variant16,
+    TResult? Function(AudioNodeImplementor_Variant17 value)? variant17,
+    TResult? Function(AudioNodeImplementor_Variant18 value)? variant18,
+    TResult? Function(AudioNodeImplementor_Variant19 value)? variant19,
+    TResult? Function(AudioNodeImplementor_Variant20 value)? variant20,
+    TResult? Function(AudioNodeImplementor_Variant21 value)? variant21,
+    TResult? Function(AudioNodeImplementor_Variant22 value)? variant22,
+  }) {
+    return variant15?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AudioNodeImplementor_Variant0 value)? variant0,
+    TResult Function(AudioNodeImplementor_Variant1 value)? variant1,
+    TResult Function(AudioNodeImplementor_Variant2 value)? variant2,
+    TResult Function(AudioNodeImplementor_Variant3 value)? variant3,
+    TResult Function(AudioNodeImplementor_Variant4 value)? variant4,
+    TResult Function(AudioNodeImplementor_Variant5 value)? variant5,
+    TResult Function(AudioNodeImplementor_Variant6 value)? variant6,
+    TResult Function(AudioNodeImplementor_Variant7 value)? variant7,
+    TResult Function(AudioNodeImplementor_Variant8 value)? variant8,
+    TResult Function(AudioNodeImplementor_Variant9 value)? variant9,
+    TResult Function(AudioNodeImplementor_Variant10 value)? variant10,
+    TResult Function(AudioNodeImplementor_Variant11 value)? variant11,
+    TResult Function(AudioNodeImplementor_Variant12 value)? variant12,
+    TResult Function(AudioNodeImplementor_Variant13 value)? variant13,
+    TResult Function(AudioNodeImplementor_Variant14 value)? variant14,
+    TResult Function(AudioNodeImplementor_Variant15 value)? variant15,
+    TResult Function(AudioNodeImplementor_Variant16 value)? variant16,
+    TResult Function(AudioNodeImplementor_Variant17 value)? variant17,
+    TResult Function(AudioNodeImplementor_Variant18 value)? variant18,
+    TResult Function(AudioNodeImplementor_Variant19 value)? variant19,
+    TResult Function(AudioNodeImplementor_Variant20 value)? variant20,
+    TResult Function(AudioNodeImplementor_Variant21 value)? variant21,
+    TResult Function(AudioNodeImplementor_Variant22 value)? variant22,
+    required TResult orElse(),
+  }) {
+    if (variant15 != null) {
+      return variant15(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AudioNodeImplementor_Variant15 extends AudioNodeImplementor {
+  const factory AudioNodeImplementor_Variant15(
+          final MediaStreamAudioDestinationNode field0) =
+      _$AudioNodeImplementor_Variant15Impl;
+  const AudioNodeImplementor_Variant15._() : super._();
+
+  @override
+  MediaStreamAudioDestinationNode get field0;
+  @JsonKey(ignore: true)
+  _$$AudioNodeImplementor_Variant15ImplCopyWith<
+          _$AudioNodeImplementor_Variant15Impl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AudioNodeImplementor_Variant16ImplCopyWith<$Res> {
+  factory _$$AudioNodeImplementor_Variant16ImplCopyWith(
+          _$AudioNodeImplementor_Variant16Impl value,
+          $Res Function(_$AudioNodeImplementor_Variant16Impl) then) =
+      __$$AudioNodeImplementor_Variant16ImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({MediaStreamAudioSourceNode field0});
+}
+
+/// @nodoc
+class __$$AudioNodeImplementor_Variant16ImplCopyWithImpl<$Res>
+    extends _$AudioNodeImplementorCopyWithImpl<$Res,
+        _$AudioNodeImplementor_Variant16Impl>
+    implements _$$AudioNodeImplementor_Variant16ImplCopyWith<$Res> {
+  __$$AudioNodeImplementor_Variant16ImplCopyWithImpl(
+      _$AudioNodeImplementor_Variant16Impl _value,
+      $Res Function(_$AudioNodeImplementor_Variant16Impl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$AudioNodeImplementor_Variant16Impl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as MediaStreamAudioSourceNode,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AudioNodeImplementor_Variant16Impl
+    extends AudioNodeImplementor_Variant16 {
+  const _$AudioNodeImplementor_Variant16Impl(this.field0) : super._();
+
+  @override
+  final MediaStreamAudioSourceNode field0;
+
+  @override
+  String toString() {
+    return 'AudioNodeImplementor.variant16(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AudioNodeImplementor_Variant16Impl &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AudioNodeImplementor_Variant16ImplCopyWith<
+          _$AudioNodeImplementor_Variant16Impl>
+      get copyWith => __$$AudioNodeImplementor_Variant16ImplCopyWithImpl<
+          _$AudioNodeImplementor_Variant16Impl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(AnalyserNode field0) variant0,
+    required TResult Function(AudioBufferSourceNode field0) variant1,
+    required TResult Function(AudioDestinationNode field0) variant2,
+    required TResult Function(AudioParam field0) variant3,
+    required TResult Function(AudioWorkletNode field0) variant4,
+    required TResult Function(BiquadFilterNode field0) variant5,
+    required TResult Function(ChannelMergerNode field0) variant6,
+    required TResult Function(ChannelSplitterNode field0) variant7,
+    required TResult Function(ConstantSourceNode field0) variant8,
+    required TResult Function(ConvolverNode field0) variant9,
+    required TResult Function(DelayNode field0) variant10,
+    required TResult Function(DynamicsCompressorNode field0) variant11,
+    required TResult Function(GainNode field0) variant12,
+    required TResult Function(IirFilterNode field0) variant13,
+    required TResult Function(MediaElementAudioSourceNode field0) variant14,
+    required TResult Function(MediaStreamAudioDestinationNode field0) variant15,
+    required TResult Function(MediaStreamAudioSourceNode field0) variant16,
+    required TResult Function(MediaStreamTrackAudioSourceNode field0) variant17,
+    required TResult Function(OscillatorNode field0) variant18,
+    required TResult Function(PannerNode field0) variant19,
+    required TResult Function(ScriptProcessorNode field0) variant20,
+    required TResult Function(StereoPannerNode field0) variant21,
+    required TResult Function(WaveShaperNode field0) variant22,
+  }) {
+    return variant16(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(AnalyserNode field0)? variant0,
+    TResult? Function(AudioBufferSourceNode field0)? variant1,
+    TResult? Function(AudioDestinationNode field0)? variant2,
+    TResult? Function(AudioParam field0)? variant3,
+    TResult? Function(AudioWorkletNode field0)? variant4,
+    TResult? Function(BiquadFilterNode field0)? variant5,
+    TResult? Function(ChannelMergerNode field0)? variant6,
+    TResult? Function(ChannelSplitterNode field0)? variant7,
+    TResult? Function(ConstantSourceNode field0)? variant8,
+    TResult? Function(ConvolverNode field0)? variant9,
+    TResult? Function(DelayNode field0)? variant10,
+    TResult? Function(DynamicsCompressorNode field0)? variant11,
+    TResult? Function(GainNode field0)? variant12,
+    TResult? Function(IirFilterNode field0)? variant13,
+    TResult? Function(MediaElementAudioSourceNode field0)? variant14,
+    TResult? Function(MediaStreamAudioDestinationNode field0)? variant15,
+    TResult? Function(MediaStreamAudioSourceNode field0)? variant16,
+    TResult? Function(MediaStreamTrackAudioSourceNode field0)? variant17,
+    TResult? Function(OscillatorNode field0)? variant18,
+    TResult? Function(PannerNode field0)? variant19,
+    TResult? Function(ScriptProcessorNode field0)? variant20,
+    TResult? Function(StereoPannerNode field0)? variant21,
+    TResult? Function(WaveShaperNode field0)? variant22,
+  }) {
+    return variant16?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(AnalyserNode field0)? variant0,
+    TResult Function(AudioBufferSourceNode field0)? variant1,
+    TResult Function(AudioDestinationNode field0)? variant2,
+    TResult Function(AudioParam field0)? variant3,
+    TResult Function(AudioWorkletNode field0)? variant4,
+    TResult Function(BiquadFilterNode field0)? variant5,
+    TResult Function(ChannelMergerNode field0)? variant6,
+    TResult Function(ChannelSplitterNode field0)? variant7,
+    TResult Function(ConstantSourceNode field0)? variant8,
+    TResult Function(ConvolverNode field0)? variant9,
+    TResult Function(DelayNode field0)? variant10,
+    TResult Function(DynamicsCompressorNode field0)? variant11,
+    TResult Function(GainNode field0)? variant12,
+    TResult Function(IirFilterNode field0)? variant13,
+    TResult Function(MediaElementAudioSourceNode field0)? variant14,
+    TResult Function(MediaStreamAudioDestinationNode field0)? variant15,
+    TResult Function(MediaStreamAudioSourceNode field0)? variant16,
+    TResult Function(MediaStreamTrackAudioSourceNode field0)? variant17,
+    TResult Function(OscillatorNode field0)? variant18,
+    TResult Function(PannerNode field0)? variant19,
+    TResult Function(ScriptProcessorNode field0)? variant20,
+    TResult Function(StereoPannerNode field0)? variant21,
+    TResult Function(WaveShaperNode field0)? variant22,
+    required TResult orElse(),
+  }) {
+    if (variant16 != null) {
+      return variant16(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AudioNodeImplementor_Variant0 value) variant0,
+    required TResult Function(AudioNodeImplementor_Variant1 value) variant1,
+    required TResult Function(AudioNodeImplementor_Variant2 value) variant2,
+    required TResult Function(AudioNodeImplementor_Variant3 value) variant3,
+    required TResult Function(AudioNodeImplementor_Variant4 value) variant4,
+    required TResult Function(AudioNodeImplementor_Variant5 value) variant5,
+    required TResult Function(AudioNodeImplementor_Variant6 value) variant6,
+    required TResult Function(AudioNodeImplementor_Variant7 value) variant7,
+    required TResult Function(AudioNodeImplementor_Variant8 value) variant8,
+    required TResult Function(AudioNodeImplementor_Variant9 value) variant9,
+    required TResult Function(AudioNodeImplementor_Variant10 value) variant10,
+    required TResult Function(AudioNodeImplementor_Variant11 value) variant11,
+    required TResult Function(AudioNodeImplementor_Variant12 value) variant12,
+    required TResult Function(AudioNodeImplementor_Variant13 value) variant13,
+    required TResult Function(AudioNodeImplementor_Variant14 value) variant14,
+    required TResult Function(AudioNodeImplementor_Variant15 value) variant15,
+    required TResult Function(AudioNodeImplementor_Variant16 value) variant16,
+    required TResult Function(AudioNodeImplementor_Variant17 value) variant17,
+    required TResult Function(AudioNodeImplementor_Variant18 value) variant18,
+    required TResult Function(AudioNodeImplementor_Variant19 value) variant19,
+    required TResult Function(AudioNodeImplementor_Variant20 value) variant20,
+    required TResult Function(AudioNodeImplementor_Variant21 value) variant21,
+    required TResult Function(AudioNodeImplementor_Variant22 value) variant22,
+  }) {
+    return variant16(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AudioNodeImplementor_Variant0 value)? variant0,
+    TResult? Function(AudioNodeImplementor_Variant1 value)? variant1,
+    TResult? Function(AudioNodeImplementor_Variant2 value)? variant2,
+    TResult? Function(AudioNodeImplementor_Variant3 value)? variant3,
+    TResult? Function(AudioNodeImplementor_Variant4 value)? variant4,
+    TResult? Function(AudioNodeImplementor_Variant5 value)? variant5,
+    TResult? Function(AudioNodeImplementor_Variant6 value)? variant6,
+    TResult? Function(AudioNodeImplementor_Variant7 value)? variant7,
+    TResult? Function(AudioNodeImplementor_Variant8 value)? variant8,
+    TResult? Function(AudioNodeImplementor_Variant9 value)? variant9,
+    TResult? Function(AudioNodeImplementor_Variant10 value)? variant10,
+    TResult? Function(AudioNodeImplementor_Variant11 value)? variant11,
+    TResult? Function(AudioNodeImplementor_Variant12 value)? variant12,
+    TResult? Function(AudioNodeImplementor_Variant13 value)? variant13,
+    TResult? Function(AudioNodeImplementor_Variant14 value)? variant14,
+    TResult? Function(AudioNodeImplementor_Variant15 value)? variant15,
+    TResult? Function(AudioNodeImplementor_Variant16 value)? variant16,
+    TResult? Function(AudioNodeImplementor_Variant17 value)? variant17,
+    TResult? Function(AudioNodeImplementor_Variant18 value)? variant18,
+    TResult? Function(AudioNodeImplementor_Variant19 value)? variant19,
+    TResult? Function(AudioNodeImplementor_Variant20 value)? variant20,
+    TResult? Function(AudioNodeImplementor_Variant21 value)? variant21,
+    TResult? Function(AudioNodeImplementor_Variant22 value)? variant22,
+  }) {
+    return variant16?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AudioNodeImplementor_Variant0 value)? variant0,
+    TResult Function(AudioNodeImplementor_Variant1 value)? variant1,
+    TResult Function(AudioNodeImplementor_Variant2 value)? variant2,
+    TResult Function(AudioNodeImplementor_Variant3 value)? variant3,
+    TResult Function(AudioNodeImplementor_Variant4 value)? variant4,
+    TResult Function(AudioNodeImplementor_Variant5 value)? variant5,
+    TResult Function(AudioNodeImplementor_Variant6 value)? variant6,
+    TResult Function(AudioNodeImplementor_Variant7 value)? variant7,
+    TResult Function(AudioNodeImplementor_Variant8 value)? variant8,
+    TResult Function(AudioNodeImplementor_Variant9 value)? variant9,
+    TResult Function(AudioNodeImplementor_Variant10 value)? variant10,
+    TResult Function(AudioNodeImplementor_Variant11 value)? variant11,
+    TResult Function(AudioNodeImplementor_Variant12 value)? variant12,
+    TResult Function(AudioNodeImplementor_Variant13 value)? variant13,
+    TResult Function(AudioNodeImplementor_Variant14 value)? variant14,
+    TResult Function(AudioNodeImplementor_Variant15 value)? variant15,
+    TResult Function(AudioNodeImplementor_Variant16 value)? variant16,
+    TResult Function(AudioNodeImplementor_Variant17 value)? variant17,
+    TResult Function(AudioNodeImplementor_Variant18 value)? variant18,
+    TResult Function(AudioNodeImplementor_Variant19 value)? variant19,
+    TResult Function(AudioNodeImplementor_Variant20 value)? variant20,
+    TResult Function(AudioNodeImplementor_Variant21 value)? variant21,
+    TResult Function(AudioNodeImplementor_Variant22 value)? variant22,
+    required TResult orElse(),
+  }) {
+    if (variant16 != null) {
+      return variant16(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AudioNodeImplementor_Variant16 extends AudioNodeImplementor {
+  const factory AudioNodeImplementor_Variant16(
+          final MediaStreamAudioSourceNode field0) =
+      _$AudioNodeImplementor_Variant16Impl;
+  const AudioNodeImplementor_Variant16._() : super._();
+
+  @override
+  MediaStreamAudioSourceNode get field0;
+  @JsonKey(ignore: true)
+  _$$AudioNodeImplementor_Variant16ImplCopyWith<
+          _$AudioNodeImplementor_Variant16Impl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AudioNodeImplementor_Variant17ImplCopyWith<$Res> {
+  factory _$$AudioNodeImplementor_Variant17ImplCopyWith(
+          _$AudioNodeImplementor_Variant17Impl value,
+          $Res Function(_$AudioNodeImplementor_Variant17Impl) then) =
+      __$$AudioNodeImplementor_Variant17ImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({MediaStreamTrackAudioSourceNode field0});
+}
+
+/// @nodoc
+class __$$AudioNodeImplementor_Variant17ImplCopyWithImpl<$Res>
+    extends _$AudioNodeImplementorCopyWithImpl<$Res,
+        _$AudioNodeImplementor_Variant17Impl>
+    implements _$$AudioNodeImplementor_Variant17ImplCopyWith<$Res> {
+  __$$AudioNodeImplementor_Variant17ImplCopyWithImpl(
+      _$AudioNodeImplementor_Variant17Impl _value,
+      $Res Function(_$AudioNodeImplementor_Variant17Impl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$AudioNodeImplementor_Variant17Impl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as MediaStreamTrackAudioSourceNode,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AudioNodeImplementor_Variant17Impl
+    extends AudioNodeImplementor_Variant17 {
+  const _$AudioNodeImplementor_Variant17Impl(this.field0) : super._();
+
+  @override
+  final MediaStreamTrackAudioSourceNode field0;
+
+  @override
+  String toString() {
+    return 'AudioNodeImplementor.variant17(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AudioNodeImplementor_Variant17Impl &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AudioNodeImplementor_Variant17ImplCopyWith<
+          _$AudioNodeImplementor_Variant17Impl>
+      get copyWith => __$$AudioNodeImplementor_Variant17ImplCopyWithImpl<
+          _$AudioNodeImplementor_Variant17Impl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(AnalyserNode field0) variant0,
+    required TResult Function(AudioBufferSourceNode field0) variant1,
+    required TResult Function(AudioDestinationNode field0) variant2,
+    required TResult Function(AudioParam field0) variant3,
+    required TResult Function(AudioWorkletNode field0) variant4,
+    required TResult Function(BiquadFilterNode field0) variant5,
+    required TResult Function(ChannelMergerNode field0) variant6,
+    required TResult Function(ChannelSplitterNode field0) variant7,
+    required TResult Function(ConstantSourceNode field0) variant8,
+    required TResult Function(ConvolverNode field0) variant9,
+    required TResult Function(DelayNode field0) variant10,
+    required TResult Function(DynamicsCompressorNode field0) variant11,
+    required TResult Function(GainNode field0) variant12,
+    required TResult Function(IirFilterNode field0) variant13,
+    required TResult Function(MediaElementAudioSourceNode field0) variant14,
+    required TResult Function(MediaStreamAudioDestinationNode field0) variant15,
+    required TResult Function(MediaStreamAudioSourceNode field0) variant16,
+    required TResult Function(MediaStreamTrackAudioSourceNode field0) variant17,
+    required TResult Function(OscillatorNode field0) variant18,
+    required TResult Function(PannerNode field0) variant19,
+    required TResult Function(ScriptProcessorNode field0) variant20,
+    required TResult Function(StereoPannerNode field0) variant21,
+    required TResult Function(WaveShaperNode field0) variant22,
+  }) {
+    return variant17(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(AnalyserNode field0)? variant0,
+    TResult? Function(AudioBufferSourceNode field0)? variant1,
+    TResult? Function(AudioDestinationNode field0)? variant2,
+    TResult? Function(AudioParam field0)? variant3,
+    TResult? Function(AudioWorkletNode field0)? variant4,
+    TResult? Function(BiquadFilterNode field0)? variant5,
+    TResult? Function(ChannelMergerNode field0)? variant6,
+    TResult? Function(ChannelSplitterNode field0)? variant7,
+    TResult? Function(ConstantSourceNode field0)? variant8,
+    TResult? Function(ConvolverNode field0)? variant9,
+    TResult? Function(DelayNode field0)? variant10,
+    TResult? Function(DynamicsCompressorNode field0)? variant11,
+    TResult? Function(GainNode field0)? variant12,
+    TResult? Function(IirFilterNode field0)? variant13,
+    TResult? Function(MediaElementAudioSourceNode field0)? variant14,
+    TResult? Function(MediaStreamAudioDestinationNode field0)? variant15,
+    TResult? Function(MediaStreamAudioSourceNode field0)? variant16,
+    TResult? Function(MediaStreamTrackAudioSourceNode field0)? variant17,
+    TResult? Function(OscillatorNode field0)? variant18,
+    TResult? Function(PannerNode field0)? variant19,
+    TResult? Function(ScriptProcessorNode field0)? variant20,
+    TResult? Function(StereoPannerNode field0)? variant21,
+    TResult? Function(WaveShaperNode field0)? variant22,
+  }) {
+    return variant17?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(AnalyserNode field0)? variant0,
+    TResult Function(AudioBufferSourceNode field0)? variant1,
+    TResult Function(AudioDestinationNode field0)? variant2,
+    TResult Function(AudioParam field0)? variant3,
+    TResult Function(AudioWorkletNode field0)? variant4,
+    TResult Function(BiquadFilterNode field0)? variant5,
+    TResult Function(ChannelMergerNode field0)? variant6,
+    TResult Function(ChannelSplitterNode field0)? variant7,
+    TResult Function(ConstantSourceNode field0)? variant8,
+    TResult Function(ConvolverNode field0)? variant9,
+    TResult Function(DelayNode field0)? variant10,
+    TResult Function(DynamicsCompressorNode field0)? variant11,
+    TResult Function(GainNode field0)? variant12,
+    TResult Function(IirFilterNode field0)? variant13,
+    TResult Function(MediaElementAudioSourceNode field0)? variant14,
+    TResult Function(MediaStreamAudioDestinationNode field0)? variant15,
+    TResult Function(MediaStreamAudioSourceNode field0)? variant16,
+    TResult Function(MediaStreamTrackAudioSourceNode field0)? variant17,
+    TResult Function(OscillatorNode field0)? variant18,
+    TResult Function(PannerNode field0)? variant19,
+    TResult Function(ScriptProcessorNode field0)? variant20,
+    TResult Function(StereoPannerNode field0)? variant21,
+    TResult Function(WaveShaperNode field0)? variant22,
+    required TResult orElse(),
+  }) {
+    if (variant17 != null) {
+      return variant17(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AudioNodeImplementor_Variant0 value) variant0,
+    required TResult Function(AudioNodeImplementor_Variant1 value) variant1,
+    required TResult Function(AudioNodeImplementor_Variant2 value) variant2,
+    required TResult Function(AudioNodeImplementor_Variant3 value) variant3,
+    required TResult Function(AudioNodeImplementor_Variant4 value) variant4,
+    required TResult Function(AudioNodeImplementor_Variant5 value) variant5,
+    required TResult Function(AudioNodeImplementor_Variant6 value) variant6,
+    required TResult Function(AudioNodeImplementor_Variant7 value) variant7,
+    required TResult Function(AudioNodeImplementor_Variant8 value) variant8,
+    required TResult Function(AudioNodeImplementor_Variant9 value) variant9,
+    required TResult Function(AudioNodeImplementor_Variant10 value) variant10,
+    required TResult Function(AudioNodeImplementor_Variant11 value) variant11,
+    required TResult Function(AudioNodeImplementor_Variant12 value) variant12,
+    required TResult Function(AudioNodeImplementor_Variant13 value) variant13,
+    required TResult Function(AudioNodeImplementor_Variant14 value) variant14,
+    required TResult Function(AudioNodeImplementor_Variant15 value) variant15,
+    required TResult Function(AudioNodeImplementor_Variant16 value) variant16,
+    required TResult Function(AudioNodeImplementor_Variant17 value) variant17,
+    required TResult Function(AudioNodeImplementor_Variant18 value) variant18,
+    required TResult Function(AudioNodeImplementor_Variant19 value) variant19,
+    required TResult Function(AudioNodeImplementor_Variant20 value) variant20,
+    required TResult Function(AudioNodeImplementor_Variant21 value) variant21,
+    required TResult Function(AudioNodeImplementor_Variant22 value) variant22,
+  }) {
+    return variant17(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AudioNodeImplementor_Variant0 value)? variant0,
+    TResult? Function(AudioNodeImplementor_Variant1 value)? variant1,
+    TResult? Function(AudioNodeImplementor_Variant2 value)? variant2,
+    TResult? Function(AudioNodeImplementor_Variant3 value)? variant3,
+    TResult? Function(AudioNodeImplementor_Variant4 value)? variant4,
+    TResult? Function(AudioNodeImplementor_Variant5 value)? variant5,
+    TResult? Function(AudioNodeImplementor_Variant6 value)? variant6,
+    TResult? Function(AudioNodeImplementor_Variant7 value)? variant7,
+    TResult? Function(AudioNodeImplementor_Variant8 value)? variant8,
+    TResult? Function(AudioNodeImplementor_Variant9 value)? variant9,
+    TResult? Function(AudioNodeImplementor_Variant10 value)? variant10,
+    TResult? Function(AudioNodeImplementor_Variant11 value)? variant11,
+    TResult? Function(AudioNodeImplementor_Variant12 value)? variant12,
+    TResult? Function(AudioNodeImplementor_Variant13 value)? variant13,
+    TResult? Function(AudioNodeImplementor_Variant14 value)? variant14,
+    TResult? Function(AudioNodeImplementor_Variant15 value)? variant15,
+    TResult? Function(AudioNodeImplementor_Variant16 value)? variant16,
+    TResult? Function(AudioNodeImplementor_Variant17 value)? variant17,
+    TResult? Function(AudioNodeImplementor_Variant18 value)? variant18,
+    TResult? Function(AudioNodeImplementor_Variant19 value)? variant19,
+    TResult? Function(AudioNodeImplementor_Variant20 value)? variant20,
+    TResult? Function(AudioNodeImplementor_Variant21 value)? variant21,
+    TResult? Function(AudioNodeImplementor_Variant22 value)? variant22,
+  }) {
+    return variant17?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AudioNodeImplementor_Variant0 value)? variant0,
+    TResult Function(AudioNodeImplementor_Variant1 value)? variant1,
+    TResult Function(AudioNodeImplementor_Variant2 value)? variant2,
+    TResult Function(AudioNodeImplementor_Variant3 value)? variant3,
+    TResult Function(AudioNodeImplementor_Variant4 value)? variant4,
+    TResult Function(AudioNodeImplementor_Variant5 value)? variant5,
+    TResult Function(AudioNodeImplementor_Variant6 value)? variant6,
+    TResult Function(AudioNodeImplementor_Variant7 value)? variant7,
+    TResult Function(AudioNodeImplementor_Variant8 value)? variant8,
+    TResult Function(AudioNodeImplementor_Variant9 value)? variant9,
+    TResult Function(AudioNodeImplementor_Variant10 value)? variant10,
+    TResult Function(AudioNodeImplementor_Variant11 value)? variant11,
+    TResult Function(AudioNodeImplementor_Variant12 value)? variant12,
+    TResult Function(AudioNodeImplementor_Variant13 value)? variant13,
+    TResult Function(AudioNodeImplementor_Variant14 value)? variant14,
+    TResult Function(AudioNodeImplementor_Variant15 value)? variant15,
+    TResult Function(AudioNodeImplementor_Variant16 value)? variant16,
+    TResult Function(AudioNodeImplementor_Variant17 value)? variant17,
+    TResult Function(AudioNodeImplementor_Variant18 value)? variant18,
+    TResult Function(AudioNodeImplementor_Variant19 value)? variant19,
+    TResult Function(AudioNodeImplementor_Variant20 value)? variant20,
+    TResult Function(AudioNodeImplementor_Variant21 value)? variant21,
+    TResult Function(AudioNodeImplementor_Variant22 value)? variant22,
+    required TResult orElse(),
+  }) {
+    if (variant17 != null) {
+      return variant17(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AudioNodeImplementor_Variant17 extends AudioNodeImplementor {
+  const factory AudioNodeImplementor_Variant17(
+          final MediaStreamTrackAudioSourceNode field0) =
+      _$AudioNodeImplementor_Variant17Impl;
+  const AudioNodeImplementor_Variant17._() : super._();
+
+  @override
+  MediaStreamTrackAudioSourceNode get field0;
+  @JsonKey(ignore: true)
+  _$$AudioNodeImplementor_Variant17ImplCopyWith<
+          _$AudioNodeImplementor_Variant17Impl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AudioNodeImplementor_Variant18ImplCopyWith<$Res> {
+  factory _$$AudioNodeImplementor_Variant18ImplCopyWith(
+          _$AudioNodeImplementor_Variant18Impl value,
+          $Res Function(_$AudioNodeImplementor_Variant18Impl) then) =
+      __$$AudioNodeImplementor_Variant18ImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({OscillatorNode field0});
+}
+
+/// @nodoc
+class __$$AudioNodeImplementor_Variant18ImplCopyWithImpl<$Res>
+    extends _$AudioNodeImplementorCopyWithImpl<$Res,
+        _$AudioNodeImplementor_Variant18Impl>
+    implements _$$AudioNodeImplementor_Variant18ImplCopyWith<$Res> {
+  __$$AudioNodeImplementor_Variant18ImplCopyWithImpl(
+      _$AudioNodeImplementor_Variant18Impl _value,
+      $Res Function(_$AudioNodeImplementor_Variant18Impl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$AudioNodeImplementor_Variant18Impl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as OscillatorNode,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AudioNodeImplementor_Variant18Impl
+    extends AudioNodeImplementor_Variant18 {
+  const _$AudioNodeImplementor_Variant18Impl(this.field0) : super._();
+
+  @override
+  final OscillatorNode field0;
+
+  @override
+  String toString() {
+    return 'AudioNodeImplementor.variant18(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AudioNodeImplementor_Variant18Impl &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AudioNodeImplementor_Variant18ImplCopyWith<
+          _$AudioNodeImplementor_Variant18Impl>
+      get copyWith => __$$AudioNodeImplementor_Variant18ImplCopyWithImpl<
+          _$AudioNodeImplementor_Variant18Impl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(AnalyserNode field0) variant0,
+    required TResult Function(AudioBufferSourceNode field0) variant1,
+    required TResult Function(AudioDestinationNode field0) variant2,
+    required TResult Function(AudioParam field0) variant3,
+    required TResult Function(AudioWorkletNode field0) variant4,
+    required TResult Function(BiquadFilterNode field0) variant5,
+    required TResult Function(ChannelMergerNode field0) variant6,
+    required TResult Function(ChannelSplitterNode field0) variant7,
+    required TResult Function(ConstantSourceNode field0) variant8,
+    required TResult Function(ConvolverNode field0) variant9,
+    required TResult Function(DelayNode field0) variant10,
+    required TResult Function(DynamicsCompressorNode field0) variant11,
+    required TResult Function(GainNode field0) variant12,
+    required TResult Function(IirFilterNode field0) variant13,
+    required TResult Function(MediaElementAudioSourceNode field0) variant14,
+    required TResult Function(MediaStreamAudioDestinationNode field0) variant15,
+    required TResult Function(MediaStreamAudioSourceNode field0) variant16,
+    required TResult Function(MediaStreamTrackAudioSourceNode field0) variant17,
+    required TResult Function(OscillatorNode field0) variant18,
+    required TResult Function(PannerNode field0) variant19,
+    required TResult Function(ScriptProcessorNode field0) variant20,
+    required TResult Function(StereoPannerNode field0) variant21,
+    required TResult Function(WaveShaperNode field0) variant22,
+  }) {
+    return variant18(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(AnalyserNode field0)? variant0,
+    TResult? Function(AudioBufferSourceNode field0)? variant1,
+    TResult? Function(AudioDestinationNode field0)? variant2,
+    TResult? Function(AudioParam field0)? variant3,
+    TResult? Function(AudioWorkletNode field0)? variant4,
+    TResult? Function(BiquadFilterNode field0)? variant5,
+    TResult? Function(ChannelMergerNode field0)? variant6,
+    TResult? Function(ChannelSplitterNode field0)? variant7,
+    TResult? Function(ConstantSourceNode field0)? variant8,
+    TResult? Function(ConvolverNode field0)? variant9,
+    TResult? Function(DelayNode field0)? variant10,
+    TResult? Function(DynamicsCompressorNode field0)? variant11,
+    TResult? Function(GainNode field0)? variant12,
+    TResult? Function(IirFilterNode field0)? variant13,
+    TResult? Function(MediaElementAudioSourceNode field0)? variant14,
+    TResult? Function(MediaStreamAudioDestinationNode field0)? variant15,
+    TResult? Function(MediaStreamAudioSourceNode field0)? variant16,
+    TResult? Function(MediaStreamTrackAudioSourceNode field0)? variant17,
+    TResult? Function(OscillatorNode field0)? variant18,
+    TResult? Function(PannerNode field0)? variant19,
+    TResult? Function(ScriptProcessorNode field0)? variant20,
+    TResult? Function(StereoPannerNode field0)? variant21,
+    TResult? Function(WaveShaperNode field0)? variant22,
+  }) {
+    return variant18?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(AnalyserNode field0)? variant0,
+    TResult Function(AudioBufferSourceNode field0)? variant1,
+    TResult Function(AudioDestinationNode field0)? variant2,
+    TResult Function(AudioParam field0)? variant3,
+    TResult Function(AudioWorkletNode field0)? variant4,
+    TResult Function(BiquadFilterNode field0)? variant5,
+    TResult Function(ChannelMergerNode field0)? variant6,
+    TResult Function(ChannelSplitterNode field0)? variant7,
+    TResult Function(ConstantSourceNode field0)? variant8,
+    TResult Function(ConvolverNode field0)? variant9,
+    TResult Function(DelayNode field0)? variant10,
+    TResult Function(DynamicsCompressorNode field0)? variant11,
+    TResult Function(GainNode field0)? variant12,
+    TResult Function(IirFilterNode field0)? variant13,
+    TResult Function(MediaElementAudioSourceNode field0)? variant14,
+    TResult Function(MediaStreamAudioDestinationNode field0)? variant15,
+    TResult Function(MediaStreamAudioSourceNode field0)? variant16,
+    TResult Function(MediaStreamTrackAudioSourceNode field0)? variant17,
+    TResult Function(OscillatorNode field0)? variant18,
+    TResult Function(PannerNode field0)? variant19,
+    TResult Function(ScriptProcessorNode field0)? variant20,
+    TResult Function(StereoPannerNode field0)? variant21,
+    TResult Function(WaveShaperNode field0)? variant22,
+    required TResult orElse(),
+  }) {
+    if (variant18 != null) {
+      return variant18(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AudioNodeImplementor_Variant0 value) variant0,
+    required TResult Function(AudioNodeImplementor_Variant1 value) variant1,
+    required TResult Function(AudioNodeImplementor_Variant2 value) variant2,
+    required TResult Function(AudioNodeImplementor_Variant3 value) variant3,
+    required TResult Function(AudioNodeImplementor_Variant4 value) variant4,
+    required TResult Function(AudioNodeImplementor_Variant5 value) variant5,
+    required TResult Function(AudioNodeImplementor_Variant6 value) variant6,
+    required TResult Function(AudioNodeImplementor_Variant7 value) variant7,
+    required TResult Function(AudioNodeImplementor_Variant8 value) variant8,
+    required TResult Function(AudioNodeImplementor_Variant9 value) variant9,
+    required TResult Function(AudioNodeImplementor_Variant10 value) variant10,
+    required TResult Function(AudioNodeImplementor_Variant11 value) variant11,
+    required TResult Function(AudioNodeImplementor_Variant12 value) variant12,
+    required TResult Function(AudioNodeImplementor_Variant13 value) variant13,
+    required TResult Function(AudioNodeImplementor_Variant14 value) variant14,
+    required TResult Function(AudioNodeImplementor_Variant15 value) variant15,
+    required TResult Function(AudioNodeImplementor_Variant16 value) variant16,
+    required TResult Function(AudioNodeImplementor_Variant17 value) variant17,
+    required TResult Function(AudioNodeImplementor_Variant18 value) variant18,
+    required TResult Function(AudioNodeImplementor_Variant19 value) variant19,
+    required TResult Function(AudioNodeImplementor_Variant20 value) variant20,
+    required TResult Function(AudioNodeImplementor_Variant21 value) variant21,
+    required TResult Function(AudioNodeImplementor_Variant22 value) variant22,
+  }) {
+    return variant18(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AudioNodeImplementor_Variant0 value)? variant0,
+    TResult? Function(AudioNodeImplementor_Variant1 value)? variant1,
+    TResult? Function(AudioNodeImplementor_Variant2 value)? variant2,
+    TResult? Function(AudioNodeImplementor_Variant3 value)? variant3,
+    TResult? Function(AudioNodeImplementor_Variant4 value)? variant4,
+    TResult? Function(AudioNodeImplementor_Variant5 value)? variant5,
+    TResult? Function(AudioNodeImplementor_Variant6 value)? variant6,
+    TResult? Function(AudioNodeImplementor_Variant7 value)? variant7,
+    TResult? Function(AudioNodeImplementor_Variant8 value)? variant8,
+    TResult? Function(AudioNodeImplementor_Variant9 value)? variant9,
+    TResult? Function(AudioNodeImplementor_Variant10 value)? variant10,
+    TResult? Function(AudioNodeImplementor_Variant11 value)? variant11,
+    TResult? Function(AudioNodeImplementor_Variant12 value)? variant12,
+    TResult? Function(AudioNodeImplementor_Variant13 value)? variant13,
+    TResult? Function(AudioNodeImplementor_Variant14 value)? variant14,
+    TResult? Function(AudioNodeImplementor_Variant15 value)? variant15,
+    TResult? Function(AudioNodeImplementor_Variant16 value)? variant16,
+    TResult? Function(AudioNodeImplementor_Variant17 value)? variant17,
+    TResult? Function(AudioNodeImplementor_Variant18 value)? variant18,
+    TResult? Function(AudioNodeImplementor_Variant19 value)? variant19,
+    TResult? Function(AudioNodeImplementor_Variant20 value)? variant20,
+    TResult? Function(AudioNodeImplementor_Variant21 value)? variant21,
+    TResult? Function(AudioNodeImplementor_Variant22 value)? variant22,
+  }) {
+    return variant18?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AudioNodeImplementor_Variant0 value)? variant0,
+    TResult Function(AudioNodeImplementor_Variant1 value)? variant1,
+    TResult Function(AudioNodeImplementor_Variant2 value)? variant2,
+    TResult Function(AudioNodeImplementor_Variant3 value)? variant3,
+    TResult Function(AudioNodeImplementor_Variant4 value)? variant4,
+    TResult Function(AudioNodeImplementor_Variant5 value)? variant5,
+    TResult Function(AudioNodeImplementor_Variant6 value)? variant6,
+    TResult Function(AudioNodeImplementor_Variant7 value)? variant7,
+    TResult Function(AudioNodeImplementor_Variant8 value)? variant8,
+    TResult Function(AudioNodeImplementor_Variant9 value)? variant9,
+    TResult Function(AudioNodeImplementor_Variant10 value)? variant10,
+    TResult Function(AudioNodeImplementor_Variant11 value)? variant11,
+    TResult Function(AudioNodeImplementor_Variant12 value)? variant12,
+    TResult Function(AudioNodeImplementor_Variant13 value)? variant13,
+    TResult Function(AudioNodeImplementor_Variant14 value)? variant14,
+    TResult Function(AudioNodeImplementor_Variant15 value)? variant15,
+    TResult Function(AudioNodeImplementor_Variant16 value)? variant16,
+    TResult Function(AudioNodeImplementor_Variant17 value)? variant17,
+    TResult Function(AudioNodeImplementor_Variant18 value)? variant18,
+    TResult Function(AudioNodeImplementor_Variant19 value)? variant19,
+    TResult Function(AudioNodeImplementor_Variant20 value)? variant20,
+    TResult Function(AudioNodeImplementor_Variant21 value)? variant21,
+    TResult Function(AudioNodeImplementor_Variant22 value)? variant22,
+    required TResult orElse(),
+  }) {
+    if (variant18 != null) {
+      return variant18(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AudioNodeImplementor_Variant18 extends AudioNodeImplementor {
+  const factory AudioNodeImplementor_Variant18(final OscillatorNode field0) =
+      _$AudioNodeImplementor_Variant18Impl;
+  const AudioNodeImplementor_Variant18._() : super._();
+
+  @override
+  OscillatorNode get field0;
+  @JsonKey(ignore: true)
+  _$$AudioNodeImplementor_Variant18ImplCopyWith<
+          _$AudioNodeImplementor_Variant18Impl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AudioNodeImplementor_Variant19ImplCopyWith<$Res> {
+  factory _$$AudioNodeImplementor_Variant19ImplCopyWith(
+          _$AudioNodeImplementor_Variant19Impl value,
+          $Res Function(_$AudioNodeImplementor_Variant19Impl) then) =
+      __$$AudioNodeImplementor_Variant19ImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({PannerNode field0});
+}
+
+/// @nodoc
+class __$$AudioNodeImplementor_Variant19ImplCopyWithImpl<$Res>
+    extends _$AudioNodeImplementorCopyWithImpl<$Res,
+        _$AudioNodeImplementor_Variant19Impl>
+    implements _$$AudioNodeImplementor_Variant19ImplCopyWith<$Res> {
+  __$$AudioNodeImplementor_Variant19ImplCopyWithImpl(
+      _$AudioNodeImplementor_Variant19Impl _value,
+      $Res Function(_$AudioNodeImplementor_Variant19Impl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$AudioNodeImplementor_Variant19Impl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as PannerNode,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AudioNodeImplementor_Variant19Impl
+    extends AudioNodeImplementor_Variant19 {
+  const _$AudioNodeImplementor_Variant19Impl(this.field0) : super._();
+
+  @override
+  final PannerNode field0;
+
+  @override
+  String toString() {
+    return 'AudioNodeImplementor.variant19(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AudioNodeImplementor_Variant19Impl &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AudioNodeImplementor_Variant19ImplCopyWith<
+          _$AudioNodeImplementor_Variant19Impl>
+      get copyWith => __$$AudioNodeImplementor_Variant19ImplCopyWithImpl<
+          _$AudioNodeImplementor_Variant19Impl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(AnalyserNode field0) variant0,
+    required TResult Function(AudioBufferSourceNode field0) variant1,
+    required TResult Function(AudioDestinationNode field0) variant2,
+    required TResult Function(AudioParam field0) variant3,
+    required TResult Function(AudioWorkletNode field0) variant4,
+    required TResult Function(BiquadFilterNode field0) variant5,
+    required TResult Function(ChannelMergerNode field0) variant6,
+    required TResult Function(ChannelSplitterNode field0) variant7,
+    required TResult Function(ConstantSourceNode field0) variant8,
+    required TResult Function(ConvolverNode field0) variant9,
+    required TResult Function(DelayNode field0) variant10,
+    required TResult Function(DynamicsCompressorNode field0) variant11,
+    required TResult Function(GainNode field0) variant12,
+    required TResult Function(IirFilterNode field0) variant13,
+    required TResult Function(MediaElementAudioSourceNode field0) variant14,
+    required TResult Function(MediaStreamAudioDestinationNode field0) variant15,
+    required TResult Function(MediaStreamAudioSourceNode field0) variant16,
+    required TResult Function(MediaStreamTrackAudioSourceNode field0) variant17,
+    required TResult Function(OscillatorNode field0) variant18,
+    required TResult Function(PannerNode field0) variant19,
+    required TResult Function(ScriptProcessorNode field0) variant20,
+    required TResult Function(StereoPannerNode field0) variant21,
+    required TResult Function(WaveShaperNode field0) variant22,
+  }) {
+    return variant19(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(AnalyserNode field0)? variant0,
+    TResult? Function(AudioBufferSourceNode field0)? variant1,
+    TResult? Function(AudioDestinationNode field0)? variant2,
+    TResult? Function(AudioParam field0)? variant3,
+    TResult? Function(AudioWorkletNode field0)? variant4,
+    TResult? Function(BiquadFilterNode field0)? variant5,
+    TResult? Function(ChannelMergerNode field0)? variant6,
+    TResult? Function(ChannelSplitterNode field0)? variant7,
+    TResult? Function(ConstantSourceNode field0)? variant8,
+    TResult? Function(ConvolverNode field0)? variant9,
+    TResult? Function(DelayNode field0)? variant10,
+    TResult? Function(DynamicsCompressorNode field0)? variant11,
+    TResult? Function(GainNode field0)? variant12,
+    TResult? Function(IirFilterNode field0)? variant13,
+    TResult? Function(MediaElementAudioSourceNode field0)? variant14,
+    TResult? Function(MediaStreamAudioDestinationNode field0)? variant15,
+    TResult? Function(MediaStreamAudioSourceNode field0)? variant16,
+    TResult? Function(MediaStreamTrackAudioSourceNode field0)? variant17,
+    TResult? Function(OscillatorNode field0)? variant18,
+    TResult? Function(PannerNode field0)? variant19,
+    TResult? Function(ScriptProcessorNode field0)? variant20,
+    TResult? Function(StereoPannerNode field0)? variant21,
+    TResult? Function(WaveShaperNode field0)? variant22,
+  }) {
+    return variant19?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(AnalyserNode field0)? variant0,
+    TResult Function(AudioBufferSourceNode field0)? variant1,
+    TResult Function(AudioDestinationNode field0)? variant2,
+    TResult Function(AudioParam field0)? variant3,
+    TResult Function(AudioWorkletNode field0)? variant4,
+    TResult Function(BiquadFilterNode field0)? variant5,
+    TResult Function(ChannelMergerNode field0)? variant6,
+    TResult Function(ChannelSplitterNode field0)? variant7,
+    TResult Function(ConstantSourceNode field0)? variant8,
+    TResult Function(ConvolverNode field0)? variant9,
+    TResult Function(DelayNode field0)? variant10,
+    TResult Function(DynamicsCompressorNode field0)? variant11,
+    TResult Function(GainNode field0)? variant12,
+    TResult Function(IirFilterNode field0)? variant13,
+    TResult Function(MediaElementAudioSourceNode field0)? variant14,
+    TResult Function(MediaStreamAudioDestinationNode field0)? variant15,
+    TResult Function(MediaStreamAudioSourceNode field0)? variant16,
+    TResult Function(MediaStreamTrackAudioSourceNode field0)? variant17,
+    TResult Function(OscillatorNode field0)? variant18,
+    TResult Function(PannerNode field0)? variant19,
+    TResult Function(ScriptProcessorNode field0)? variant20,
+    TResult Function(StereoPannerNode field0)? variant21,
+    TResult Function(WaveShaperNode field0)? variant22,
+    required TResult orElse(),
+  }) {
+    if (variant19 != null) {
+      return variant19(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AudioNodeImplementor_Variant0 value) variant0,
+    required TResult Function(AudioNodeImplementor_Variant1 value) variant1,
+    required TResult Function(AudioNodeImplementor_Variant2 value) variant2,
+    required TResult Function(AudioNodeImplementor_Variant3 value) variant3,
+    required TResult Function(AudioNodeImplementor_Variant4 value) variant4,
+    required TResult Function(AudioNodeImplementor_Variant5 value) variant5,
+    required TResult Function(AudioNodeImplementor_Variant6 value) variant6,
+    required TResult Function(AudioNodeImplementor_Variant7 value) variant7,
+    required TResult Function(AudioNodeImplementor_Variant8 value) variant8,
+    required TResult Function(AudioNodeImplementor_Variant9 value) variant9,
+    required TResult Function(AudioNodeImplementor_Variant10 value) variant10,
+    required TResult Function(AudioNodeImplementor_Variant11 value) variant11,
+    required TResult Function(AudioNodeImplementor_Variant12 value) variant12,
+    required TResult Function(AudioNodeImplementor_Variant13 value) variant13,
+    required TResult Function(AudioNodeImplementor_Variant14 value) variant14,
+    required TResult Function(AudioNodeImplementor_Variant15 value) variant15,
+    required TResult Function(AudioNodeImplementor_Variant16 value) variant16,
+    required TResult Function(AudioNodeImplementor_Variant17 value) variant17,
+    required TResult Function(AudioNodeImplementor_Variant18 value) variant18,
+    required TResult Function(AudioNodeImplementor_Variant19 value) variant19,
+    required TResult Function(AudioNodeImplementor_Variant20 value) variant20,
+    required TResult Function(AudioNodeImplementor_Variant21 value) variant21,
+    required TResult Function(AudioNodeImplementor_Variant22 value) variant22,
+  }) {
+    return variant19(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AudioNodeImplementor_Variant0 value)? variant0,
+    TResult? Function(AudioNodeImplementor_Variant1 value)? variant1,
+    TResult? Function(AudioNodeImplementor_Variant2 value)? variant2,
+    TResult? Function(AudioNodeImplementor_Variant3 value)? variant3,
+    TResult? Function(AudioNodeImplementor_Variant4 value)? variant4,
+    TResult? Function(AudioNodeImplementor_Variant5 value)? variant5,
+    TResult? Function(AudioNodeImplementor_Variant6 value)? variant6,
+    TResult? Function(AudioNodeImplementor_Variant7 value)? variant7,
+    TResult? Function(AudioNodeImplementor_Variant8 value)? variant8,
+    TResult? Function(AudioNodeImplementor_Variant9 value)? variant9,
+    TResult? Function(AudioNodeImplementor_Variant10 value)? variant10,
+    TResult? Function(AudioNodeImplementor_Variant11 value)? variant11,
+    TResult? Function(AudioNodeImplementor_Variant12 value)? variant12,
+    TResult? Function(AudioNodeImplementor_Variant13 value)? variant13,
+    TResult? Function(AudioNodeImplementor_Variant14 value)? variant14,
+    TResult? Function(AudioNodeImplementor_Variant15 value)? variant15,
+    TResult? Function(AudioNodeImplementor_Variant16 value)? variant16,
+    TResult? Function(AudioNodeImplementor_Variant17 value)? variant17,
+    TResult? Function(AudioNodeImplementor_Variant18 value)? variant18,
+    TResult? Function(AudioNodeImplementor_Variant19 value)? variant19,
+    TResult? Function(AudioNodeImplementor_Variant20 value)? variant20,
+    TResult? Function(AudioNodeImplementor_Variant21 value)? variant21,
+    TResult? Function(AudioNodeImplementor_Variant22 value)? variant22,
+  }) {
+    return variant19?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AudioNodeImplementor_Variant0 value)? variant0,
+    TResult Function(AudioNodeImplementor_Variant1 value)? variant1,
+    TResult Function(AudioNodeImplementor_Variant2 value)? variant2,
+    TResult Function(AudioNodeImplementor_Variant3 value)? variant3,
+    TResult Function(AudioNodeImplementor_Variant4 value)? variant4,
+    TResult Function(AudioNodeImplementor_Variant5 value)? variant5,
+    TResult Function(AudioNodeImplementor_Variant6 value)? variant6,
+    TResult Function(AudioNodeImplementor_Variant7 value)? variant7,
+    TResult Function(AudioNodeImplementor_Variant8 value)? variant8,
+    TResult Function(AudioNodeImplementor_Variant9 value)? variant9,
+    TResult Function(AudioNodeImplementor_Variant10 value)? variant10,
+    TResult Function(AudioNodeImplementor_Variant11 value)? variant11,
+    TResult Function(AudioNodeImplementor_Variant12 value)? variant12,
+    TResult Function(AudioNodeImplementor_Variant13 value)? variant13,
+    TResult Function(AudioNodeImplementor_Variant14 value)? variant14,
+    TResult Function(AudioNodeImplementor_Variant15 value)? variant15,
+    TResult Function(AudioNodeImplementor_Variant16 value)? variant16,
+    TResult Function(AudioNodeImplementor_Variant17 value)? variant17,
+    TResult Function(AudioNodeImplementor_Variant18 value)? variant18,
+    TResult Function(AudioNodeImplementor_Variant19 value)? variant19,
+    TResult Function(AudioNodeImplementor_Variant20 value)? variant20,
+    TResult Function(AudioNodeImplementor_Variant21 value)? variant21,
+    TResult Function(AudioNodeImplementor_Variant22 value)? variant22,
+    required TResult orElse(),
+  }) {
+    if (variant19 != null) {
+      return variant19(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AudioNodeImplementor_Variant19 extends AudioNodeImplementor {
+  const factory AudioNodeImplementor_Variant19(final PannerNode field0) =
+      _$AudioNodeImplementor_Variant19Impl;
+  const AudioNodeImplementor_Variant19._() : super._();
+
+  @override
+  PannerNode get field0;
+  @JsonKey(ignore: true)
+  _$$AudioNodeImplementor_Variant19ImplCopyWith<
+          _$AudioNodeImplementor_Variant19Impl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AudioNodeImplementor_Variant20ImplCopyWith<$Res> {
+  factory _$$AudioNodeImplementor_Variant20ImplCopyWith(
+          _$AudioNodeImplementor_Variant20Impl value,
+          $Res Function(_$AudioNodeImplementor_Variant20Impl) then) =
+      __$$AudioNodeImplementor_Variant20ImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({ScriptProcessorNode field0});
+}
+
+/// @nodoc
+class __$$AudioNodeImplementor_Variant20ImplCopyWithImpl<$Res>
+    extends _$AudioNodeImplementorCopyWithImpl<$Res,
+        _$AudioNodeImplementor_Variant20Impl>
+    implements _$$AudioNodeImplementor_Variant20ImplCopyWith<$Res> {
+  __$$AudioNodeImplementor_Variant20ImplCopyWithImpl(
+      _$AudioNodeImplementor_Variant20Impl _value,
+      $Res Function(_$AudioNodeImplementor_Variant20Impl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$AudioNodeImplementor_Variant20Impl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as ScriptProcessorNode,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AudioNodeImplementor_Variant20Impl
+    extends AudioNodeImplementor_Variant20 {
+  const _$AudioNodeImplementor_Variant20Impl(this.field0) : super._();
+
+  @override
+  final ScriptProcessorNode field0;
+
+  @override
+  String toString() {
+    return 'AudioNodeImplementor.variant20(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AudioNodeImplementor_Variant20Impl &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AudioNodeImplementor_Variant20ImplCopyWith<
+          _$AudioNodeImplementor_Variant20Impl>
+      get copyWith => __$$AudioNodeImplementor_Variant20ImplCopyWithImpl<
+          _$AudioNodeImplementor_Variant20Impl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(AnalyserNode field0) variant0,
+    required TResult Function(AudioBufferSourceNode field0) variant1,
+    required TResult Function(AudioDestinationNode field0) variant2,
+    required TResult Function(AudioParam field0) variant3,
+    required TResult Function(AudioWorkletNode field0) variant4,
+    required TResult Function(BiquadFilterNode field0) variant5,
+    required TResult Function(ChannelMergerNode field0) variant6,
+    required TResult Function(ChannelSplitterNode field0) variant7,
+    required TResult Function(ConstantSourceNode field0) variant8,
+    required TResult Function(ConvolverNode field0) variant9,
+    required TResult Function(DelayNode field0) variant10,
+    required TResult Function(DynamicsCompressorNode field0) variant11,
+    required TResult Function(GainNode field0) variant12,
+    required TResult Function(IirFilterNode field0) variant13,
+    required TResult Function(MediaElementAudioSourceNode field0) variant14,
+    required TResult Function(MediaStreamAudioDestinationNode field0) variant15,
+    required TResult Function(MediaStreamAudioSourceNode field0) variant16,
+    required TResult Function(MediaStreamTrackAudioSourceNode field0) variant17,
+    required TResult Function(OscillatorNode field0) variant18,
+    required TResult Function(PannerNode field0) variant19,
+    required TResult Function(ScriptProcessorNode field0) variant20,
+    required TResult Function(StereoPannerNode field0) variant21,
+    required TResult Function(WaveShaperNode field0) variant22,
+  }) {
+    return variant20(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(AnalyserNode field0)? variant0,
+    TResult? Function(AudioBufferSourceNode field0)? variant1,
+    TResult? Function(AudioDestinationNode field0)? variant2,
+    TResult? Function(AudioParam field0)? variant3,
+    TResult? Function(AudioWorkletNode field0)? variant4,
+    TResult? Function(BiquadFilterNode field0)? variant5,
+    TResult? Function(ChannelMergerNode field0)? variant6,
+    TResult? Function(ChannelSplitterNode field0)? variant7,
+    TResult? Function(ConstantSourceNode field0)? variant8,
+    TResult? Function(ConvolverNode field0)? variant9,
+    TResult? Function(DelayNode field0)? variant10,
+    TResult? Function(DynamicsCompressorNode field0)? variant11,
+    TResult? Function(GainNode field0)? variant12,
+    TResult? Function(IirFilterNode field0)? variant13,
+    TResult? Function(MediaElementAudioSourceNode field0)? variant14,
+    TResult? Function(MediaStreamAudioDestinationNode field0)? variant15,
+    TResult? Function(MediaStreamAudioSourceNode field0)? variant16,
+    TResult? Function(MediaStreamTrackAudioSourceNode field0)? variant17,
+    TResult? Function(OscillatorNode field0)? variant18,
+    TResult? Function(PannerNode field0)? variant19,
+    TResult? Function(ScriptProcessorNode field0)? variant20,
+    TResult? Function(StereoPannerNode field0)? variant21,
+    TResult? Function(WaveShaperNode field0)? variant22,
+  }) {
+    return variant20?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(AnalyserNode field0)? variant0,
+    TResult Function(AudioBufferSourceNode field0)? variant1,
+    TResult Function(AudioDestinationNode field0)? variant2,
+    TResult Function(AudioParam field0)? variant3,
+    TResult Function(AudioWorkletNode field0)? variant4,
+    TResult Function(BiquadFilterNode field0)? variant5,
+    TResult Function(ChannelMergerNode field0)? variant6,
+    TResult Function(ChannelSplitterNode field0)? variant7,
+    TResult Function(ConstantSourceNode field0)? variant8,
+    TResult Function(ConvolverNode field0)? variant9,
+    TResult Function(DelayNode field0)? variant10,
+    TResult Function(DynamicsCompressorNode field0)? variant11,
+    TResult Function(GainNode field0)? variant12,
+    TResult Function(IirFilterNode field0)? variant13,
+    TResult Function(MediaElementAudioSourceNode field0)? variant14,
+    TResult Function(MediaStreamAudioDestinationNode field0)? variant15,
+    TResult Function(MediaStreamAudioSourceNode field0)? variant16,
+    TResult Function(MediaStreamTrackAudioSourceNode field0)? variant17,
+    TResult Function(OscillatorNode field0)? variant18,
+    TResult Function(PannerNode field0)? variant19,
+    TResult Function(ScriptProcessorNode field0)? variant20,
+    TResult Function(StereoPannerNode field0)? variant21,
+    TResult Function(WaveShaperNode field0)? variant22,
+    required TResult orElse(),
+  }) {
+    if (variant20 != null) {
+      return variant20(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AudioNodeImplementor_Variant0 value) variant0,
+    required TResult Function(AudioNodeImplementor_Variant1 value) variant1,
+    required TResult Function(AudioNodeImplementor_Variant2 value) variant2,
+    required TResult Function(AudioNodeImplementor_Variant3 value) variant3,
+    required TResult Function(AudioNodeImplementor_Variant4 value) variant4,
+    required TResult Function(AudioNodeImplementor_Variant5 value) variant5,
+    required TResult Function(AudioNodeImplementor_Variant6 value) variant6,
+    required TResult Function(AudioNodeImplementor_Variant7 value) variant7,
+    required TResult Function(AudioNodeImplementor_Variant8 value) variant8,
+    required TResult Function(AudioNodeImplementor_Variant9 value) variant9,
+    required TResult Function(AudioNodeImplementor_Variant10 value) variant10,
+    required TResult Function(AudioNodeImplementor_Variant11 value) variant11,
+    required TResult Function(AudioNodeImplementor_Variant12 value) variant12,
+    required TResult Function(AudioNodeImplementor_Variant13 value) variant13,
+    required TResult Function(AudioNodeImplementor_Variant14 value) variant14,
+    required TResult Function(AudioNodeImplementor_Variant15 value) variant15,
+    required TResult Function(AudioNodeImplementor_Variant16 value) variant16,
+    required TResult Function(AudioNodeImplementor_Variant17 value) variant17,
+    required TResult Function(AudioNodeImplementor_Variant18 value) variant18,
+    required TResult Function(AudioNodeImplementor_Variant19 value) variant19,
+    required TResult Function(AudioNodeImplementor_Variant20 value) variant20,
+    required TResult Function(AudioNodeImplementor_Variant21 value) variant21,
+    required TResult Function(AudioNodeImplementor_Variant22 value) variant22,
+  }) {
+    return variant20(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AudioNodeImplementor_Variant0 value)? variant0,
+    TResult? Function(AudioNodeImplementor_Variant1 value)? variant1,
+    TResult? Function(AudioNodeImplementor_Variant2 value)? variant2,
+    TResult? Function(AudioNodeImplementor_Variant3 value)? variant3,
+    TResult? Function(AudioNodeImplementor_Variant4 value)? variant4,
+    TResult? Function(AudioNodeImplementor_Variant5 value)? variant5,
+    TResult? Function(AudioNodeImplementor_Variant6 value)? variant6,
+    TResult? Function(AudioNodeImplementor_Variant7 value)? variant7,
+    TResult? Function(AudioNodeImplementor_Variant8 value)? variant8,
+    TResult? Function(AudioNodeImplementor_Variant9 value)? variant9,
+    TResult? Function(AudioNodeImplementor_Variant10 value)? variant10,
+    TResult? Function(AudioNodeImplementor_Variant11 value)? variant11,
+    TResult? Function(AudioNodeImplementor_Variant12 value)? variant12,
+    TResult? Function(AudioNodeImplementor_Variant13 value)? variant13,
+    TResult? Function(AudioNodeImplementor_Variant14 value)? variant14,
+    TResult? Function(AudioNodeImplementor_Variant15 value)? variant15,
+    TResult? Function(AudioNodeImplementor_Variant16 value)? variant16,
+    TResult? Function(AudioNodeImplementor_Variant17 value)? variant17,
+    TResult? Function(AudioNodeImplementor_Variant18 value)? variant18,
+    TResult? Function(AudioNodeImplementor_Variant19 value)? variant19,
+    TResult? Function(AudioNodeImplementor_Variant20 value)? variant20,
+    TResult? Function(AudioNodeImplementor_Variant21 value)? variant21,
+    TResult? Function(AudioNodeImplementor_Variant22 value)? variant22,
+  }) {
+    return variant20?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AudioNodeImplementor_Variant0 value)? variant0,
+    TResult Function(AudioNodeImplementor_Variant1 value)? variant1,
+    TResult Function(AudioNodeImplementor_Variant2 value)? variant2,
+    TResult Function(AudioNodeImplementor_Variant3 value)? variant3,
+    TResult Function(AudioNodeImplementor_Variant4 value)? variant4,
+    TResult Function(AudioNodeImplementor_Variant5 value)? variant5,
+    TResult Function(AudioNodeImplementor_Variant6 value)? variant6,
+    TResult Function(AudioNodeImplementor_Variant7 value)? variant7,
+    TResult Function(AudioNodeImplementor_Variant8 value)? variant8,
+    TResult Function(AudioNodeImplementor_Variant9 value)? variant9,
+    TResult Function(AudioNodeImplementor_Variant10 value)? variant10,
+    TResult Function(AudioNodeImplementor_Variant11 value)? variant11,
+    TResult Function(AudioNodeImplementor_Variant12 value)? variant12,
+    TResult Function(AudioNodeImplementor_Variant13 value)? variant13,
+    TResult Function(AudioNodeImplementor_Variant14 value)? variant14,
+    TResult Function(AudioNodeImplementor_Variant15 value)? variant15,
+    TResult Function(AudioNodeImplementor_Variant16 value)? variant16,
+    TResult Function(AudioNodeImplementor_Variant17 value)? variant17,
+    TResult Function(AudioNodeImplementor_Variant18 value)? variant18,
+    TResult Function(AudioNodeImplementor_Variant19 value)? variant19,
+    TResult Function(AudioNodeImplementor_Variant20 value)? variant20,
+    TResult Function(AudioNodeImplementor_Variant21 value)? variant21,
+    TResult Function(AudioNodeImplementor_Variant22 value)? variant22,
+    required TResult orElse(),
+  }) {
+    if (variant20 != null) {
+      return variant20(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AudioNodeImplementor_Variant20 extends AudioNodeImplementor {
+  const factory AudioNodeImplementor_Variant20(
+      final ScriptProcessorNode field0) = _$AudioNodeImplementor_Variant20Impl;
+  const AudioNodeImplementor_Variant20._() : super._();
+
+  @override
+  ScriptProcessorNode get field0;
+  @JsonKey(ignore: true)
+  _$$AudioNodeImplementor_Variant20ImplCopyWith<
+          _$AudioNodeImplementor_Variant20Impl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AudioNodeImplementor_Variant21ImplCopyWith<$Res> {
+  factory _$$AudioNodeImplementor_Variant21ImplCopyWith(
+          _$AudioNodeImplementor_Variant21Impl value,
+          $Res Function(_$AudioNodeImplementor_Variant21Impl) then) =
+      __$$AudioNodeImplementor_Variant21ImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({StereoPannerNode field0});
+}
+
+/// @nodoc
+class __$$AudioNodeImplementor_Variant21ImplCopyWithImpl<$Res>
+    extends _$AudioNodeImplementorCopyWithImpl<$Res,
+        _$AudioNodeImplementor_Variant21Impl>
+    implements _$$AudioNodeImplementor_Variant21ImplCopyWith<$Res> {
+  __$$AudioNodeImplementor_Variant21ImplCopyWithImpl(
+      _$AudioNodeImplementor_Variant21Impl _value,
+      $Res Function(_$AudioNodeImplementor_Variant21Impl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$AudioNodeImplementor_Variant21Impl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as StereoPannerNode,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AudioNodeImplementor_Variant21Impl
+    extends AudioNodeImplementor_Variant21 {
+  const _$AudioNodeImplementor_Variant21Impl(this.field0) : super._();
+
+  @override
+  final StereoPannerNode field0;
+
+  @override
+  String toString() {
+    return 'AudioNodeImplementor.variant21(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AudioNodeImplementor_Variant21Impl &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AudioNodeImplementor_Variant21ImplCopyWith<
+          _$AudioNodeImplementor_Variant21Impl>
+      get copyWith => __$$AudioNodeImplementor_Variant21ImplCopyWithImpl<
+          _$AudioNodeImplementor_Variant21Impl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(AnalyserNode field0) variant0,
+    required TResult Function(AudioBufferSourceNode field0) variant1,
+    required TResult Function(AudioDestinationNode field0) variant2,
+    required TResult Function(AudioParam field0) variant3,
+    required TResult Function(AudioWorkletNode field0) variant4,
+    required TResult Function(BiquadFilterNode field0) variant5,
+    required TResult Function(ChannelMergerNode field0) variant6,
+    required TResult Function(ChannelSplitterNode field0) variant7,
+    required TResult Function(ConstantSourceNode field0) variant8,
+    required TResult Function(ConvolverNode field0) variant9,
+    required TResult Function(DelayNode field0) variant10,
+    required TResult Function(DynamicsCompressorNode field0) variant11,
+    required TResult Function(GainNode field0) variant12,
+    required TResult Function(IirFilterNode field0) variant13,
+    required TResult Function(MediaElementAudioSourceNode field0) variant14,
+    required TResult Function(MediaStreamAudioDestinationNode field0) variant15,
+    required TResult Function(MediaStreamAudioSourceNode field0) variant16,
+    required TResult Function(MediaStreamTrackAudioSourceNode field0) variant17,
+    required TResult Function(OscillatorNode field0) variant18,
+    required TResult Function(PannerNode field0) variant19,
+    required TResult Function(ScriptProcessorNode field0) variant20,
+    required TResult Function(StereoPannerNode field0) variant21,
+    required TResult Function(WaveShaperNode field0) variant22,
+  }) {
+    return variant21(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(AnalyserNode field0)? variant0,
+    TResult? Function(AudioBufferSourceNode field0)? variant1,
+    TResult? Function(AudioDestinationNode field0)? variant2,
+    TResult? Function(AudioParam field0)? variant3,
+    TResult? Function(AudioWorkletNode field0)? variant4,
+    TResult? Function(BiquadFilterNode field0)? variant5,
+    TResult? Function(ChannelMergerNode field0)? variant6,
+    TResult? Function(ChannelSplitterNode field0)? variant7,
+    TResult? Function(ConstantSourceNode field0)? variant8,
+    TResult? Function(ConvolverNode field0)? variant9,
+    TResult? Function(DelayNode field0)? variant10,
+    TResult? Function(DynamicsCompressorNode field0)? variant11,
+    TResult? Function(GainNode field0)? variant12,
+    TResult? Function(IirFilterNode field0)? variant13,
+    TResult? Function(MediaElementAudioSourceNode field0)? variant14,
+    TResult? Function(MediaStreamAudioDestinationNode field0)? variant15,
+    TResult? Function(MediaStreamAudioSourceNode field0)? variant16,
+    TResult? Function(MediaStreamTrackAudioSourceNode field0)? variant17,
+    TResult? Function(OscillatorNode field0)? variant18,
+    TResult? Function(PannerNode field0)? variant19,
+    TResult? Function(ScriptProcessorNode field0)? variant20,
+    TResult? Function(StereoPannerNode field0)? variant21,
+    TResult? Function(WaveShaperNode field0)? variant22,
+  }) {
+    return variant21?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(AnalyserNode field0)? variant0,
+    TResult Function(AudioBufferSourceNode field0)? variant1,
+    TResult Function(AudioDestinationNode field0)? variant2,
+    TResult Function(AudioParam field0)? variant3,
+    TResult Function(AudioWorkletNode field0)? variant4,
+    TResult Function(BiquadFilterNode field0)? variant5,
+    TResult Function(ChannelMergerNode field0)? variant6,
+    TResult Function(ChannelSplitterNode field0)? variant7,
+    TResult Function(ConstantSourceNode field0)? variant8,
+    TResult Function(ConvolverNode field0)? variant9,
+    TResult Function(DelayNode field0)? variant10,
+    TResult Function(DynamicsCompressorNode field0)? variant11,
+    TResult Function(GainNode field0)? variant12,
+    TResult Function(IirFilterNode field0)? variant13,
+    TResult Function(MediaElementAudioSourceNode field0)? variant14,
+    TResult Function(MediaStreamAudioDestinationNode field0)? variant15,
+    TResult Function(MediaStreamAudioSourceNode field0)? variant16,
+    TResult Function(MediaStreamTrackAudioSourceNode field0)? variant17,
+    TResult Function(OscillatorNode field0)? variant18,
+    TResult Function(PannerNode field0)? variant19,
+    TResult Function(ScriptProcessorNode field0)? variant20,
+    TResult Function(StereoPannerNode field0)? variant21,
+    TResult Function(WaveShaperNode field0)? variant22,
+    required TResult orElse(),
+  }) {
+    if (variant21 != null) {
+      return variant21(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AudioNodeImplementor_Variant0 value) variant0,
+    required TResult Function(AudioNodeImplementor_Variant1 value) variant1,
+    required TResult Function(AudioNodeImplementor_Variant2 value) variant2,
+    required TResult Function(AudioNodeImplementor_Variant3 value) variant3,
+    required TResult Function(AudioNodeImplementor_Variant4 value) variant4,
+    required TResult Function(AudioNodeImplementor_Variant5 value) variant5,
+    required TResult Function(AudioNodeImplementor_Variant6 value) variant6,
+    required TResult Function(AudioNodeImplementor_Variant7 value) variant7,
+    required TResult Function(AudioNodeImplementor_Variant8 value) variant8,
+    required TResult Function(AudioNodeImplementor_Variant9 value) variant9,
+    required TResult Function(AudioNodeImplementor_Variant10 value) variant10,
+    required TResult Function(AudioNodeImplementor_Variant11 value) variant11,
+    required TResult Function(AudioNodeImplementor_Variant12 value) variant12,
+    required TResult Function(AudioNodeImplementor_Variant13 value) variant13,
+    required TResult Function(AudioNodeImplementor_Variant14 value) variant14,
+    required TResult Function(AudioNodeImplementor_Variant15 value) variant15,
+    required TResult Function(AudioNodeImplementor_Variant16 value) variant16,
+    required TResult Function(AudioNodeImplementor_Variant17 value) variant17,
+    required TResult Function(AudioNodeImplementor_Variant18 value) variant18,
+    required TResult Function(AudioNodeImplementor_Variant19 value) variant19,
+    required TResult Function(AudioNodeImplementor_Variant20 value) variant20,
+    required TResult Function(AudioNodeImplementor_Variant21 value) variant21,
+    required TResult Function(AudioNodeImplementor_Variant22 value) variant22,
+  }) {
+    return variant21(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AudioNodeImplementor_Variant0 value)? variant0,
+    TResult? Function(AudioNodeImplementor_Variant1 value)? variant1,
+    TResult? Function(AudioNodeImplementor_Variant2 value)? variant2,
+    TResult? Function(AudioNodeImplementor_Variant3 value)? variant3,
+    TResult? Function(AudioNodeImplementor_Variant4 value)? variant4,
+    TResult? Function(AudioNodeImplementor_Variant5 value)? variant5,
+    TResult? Function(AudioNodeImplementor_Variant6 value)? variant6,
+    TResult? Function(AudioNodeImplementor_Variant7 value)? variant7,
+    TResult? Function(AudioNodeImplementor_Variant8 value)? variant8,
+    TResult? Function(AudioNodeImplementor_Variant9 value)? variant9,
+    TResult? Function(AudioNodeImplementor_Variant10 value)? variant10,
+    TResult? Function(AudioNodeImplementor_Variant11 value)? variant11,
+    TResult? Function(AudioNodeImplementor_Variant12 value)? variant12,
+    TResult? Function(AudioNodeImplementor_Variant13 value)? variant13,
+    TResult? Function(AudioNodeImplementor_Variant14 value)? variant14,
+    TResult? Function(AudioNodeImplementor_Variant15 value)? variant15,
+    TResult? Function(AudioNodeImplementor_Variant16 value)? variant16,
+    TResult? Function(AudioNodeImplementor_Variant17 value)? variant17,
+    TResult? Function(AudioNodeImplementor_Variant18 value)? variant18,
+    TResult? Function(AudioNodeImplementor_Variant19 value)? variant19,
+    TResult? Function(AudioNodeImplementor_Variant20 value)? variant20,
+    TResult? Function(AudioNodeImplementor_Variant21 value)? variant21,
+    TResult? Function(AudioNodeImplementor_Variant22 value)? variant22,
+  }) {
+    return variant21?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AudioNodeImplementor_Variant0 value)? variant0,
+    TResult Function(AudioNodeImplementor_Variant1 value)? variant1,
+    TResult Function(AudioNodeImplementor_Variant2 value)? variant2,
+    TResult Function(AudioNodeImplementor_Variant3 value)? variant3,
+    TResult Function(AudioNodeImplementor_Variant4 value)? variant4,
+    TResult Function(AudioNodeImplementor_Variant5 value)? variant5,
+    TResult Function(AudioNodeImplementor_Variant6 value)? variant6,
+    TResult Function(AudioNodeImplementor_Variant7 value)? variant7,
+    TResult Function(AudioNodeImplementor_Variant8 value)? variant8,
+    TResult Function(AudioNodeImplementor_Variant9 value)? variant9,
+    TResult Function(AudioNodeImplementor_Variant10 value)? variant10,
+    TResult Function(AudioNodeImplementor_Variant11 value)? variant11,
+    TResult Function(AudioNodeImplementor_Variant12 value)? variant12,
+    TResult Function(AudioNodeImplementor_Variant13 value)? variant13,
+    TResult Function(AudioNodeImplementor_Variant14 value)? variant14,
+    TResult Function(AudioNodeImplementor_Variant15 value)? variant15,
+    TResult Function(AudioNodeImplementor_Variant16 value)? variant16,
+    TResult Function(AudioNodeImplementor_Variant17 value)? variant17,
+    TResult Function(AudioNodeImplementor_Variant18 value)? variant18,
+    TResult Function(AudioNodeImplementor_Variant19 value)? variant19,
+    TResult Function(AudioNodeImplementor_Variant20 value)? variant20,
+    TResult Function(AudioNodeImplementor_Variant21 value)? variant21,
+    TResult Function(AudioNodeImplementor_Variant22 value)? variant22,
+    required TResult orElse(),
+  }) {
+    if (variant21 != null) {
+      return variant21(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AudioNodeImplementor_Variant21 extends AudioNodeImplementor {
+  const factory AudioNodeImplementor_Variant21(final StereoPannerNode field0) =
+      _$AudioNodeImplementor_Variant21Impl;
+  const AudioNodeImplementor_Variant21._() : super._();
+
+  @override
+  StereoPannerNode get field0;
+  @JsonKey(ignore: true)
+  _$$AudioNodeImplementor_Variant21ImplCopyWith<
+          _$AudioNodeImplementor_Variant21Impl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AudioNodeImplementor_Variant22ImplCopyWith<$Res> {
+  factory _$$AudioNodeImplementor_Variant22ImplCopyWith(
+          _$AudioNodeImplementor_Variant22Impl value,
+          $Res Function(_$AudioNodeImplementor_Variant22Impl) then) =
+      __$$AudioNodeImplementor_Variant22ImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({WaveShaperNode field0});
+}
+
+/// @nodoc
+class __$$AudioNodeImplementor_Variant22ImplCopyWithImpl<$Res>
+    extends _$AudioNodeImplementorCopyWithImpl<$Res,
+        _$AudioNodeImplementor_Variant22Impl>
+    implements _$$AudioNodeImplementor_Variant22ImplCopyWith<$Res> {
+  __$$AudioNodeImplementor_Variant22ImplCopyWithImpl(
+      _$AudioNodeImplementor_Variant22Impl _value,
+      $Res Function(_$AudioNodeImplementor_Variant22Impl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$AudioNodeImplementor_Variant22Impl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as WaveShaperNode,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AudioNodeImplementor_Variant22Impl
+    extends AudioNodeImplementor_Variant22 {
+  const _$AudioNodeImplementor_Variant22Impl(this.field0) : super._();
+
+  @override
+  final WaveShaperNode field0;
+
+  @override
+  String toString() {
+    return 'AudioNodeImplementor.variant22(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AudioNodeImplementor_Variant22Impl &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AudioNodeImplementor_Variant22ImplCopyWith<
+          _$AudioNodeImplementor_Variant22Impl>
+      get copyWith => __$$AudioNodeImplementor_Variant22ImplCopyWithImpl<
+          _$AudioNodeImplementor_Variant22Impl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(AnalyserNode field0) variant0,
+    required TResult Function(AudioBufferSourceNode field0) variant1,
+    required TResult Function(AudioDestinationNode field0) variant2,
+    required TResult Function(AudioParam field0) variant3,
+    required TResult Function(AudioWorkletNode field0) variant4,
+    required TResult Function(BiquadFilterNode field0) variant5,
+    required TResult Function(ChannelMergerNode field0) variant6,
+    required TResult Function(ChannelSplitterNode field0) variant7,
+    required TResult Function(ConstantSourceNode field0) variant8,
+    required TResult Function(ConvolverNode field0) variant9,
+    required TResult Function(DelayNode field0) variant10,
+    required TResult Function(DynamicsCompressorNode field0) variant11,
+    required TResult Function(GainNode field0) variant12,
+    required TResult Function(IirFilterNode field0) variant13,
+    required TResult Function(MediaElementAudioSourceNode field0) variant14,
+    required TResult Function(MediaStreamAudioDestinationNode field0) variant15,
+    required TResult Function(MediaStreamAudioSourceNode field0) variant16,
+    required TResult Function(MediaStreamTrackAudioSourceNode field0) variant17,
+    required TResult Function(OscillatorNode field0) variant18,
+    required TResult Function(PannerNode field0) variant19,
+    required TResult Function(ScriptProcessorNode field0) variant20,
+    required TResult Function(StereoPannerNode field0) variant21,
+    required TResult Function(WaveShaperNode field0) variant22,
+  }) {
+    return variant22(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(AnalyserNode field0)? variant0,
+    TResult? Function(AudioBufferSourceNode field0)? variant1,
+    TResult? Function(AudioDestinationNode field0)? variant2,
+    TResult? Function(AudioParam field0)? variant3,
+    TResult? Function(AudioWorkletNode field0)? variant4,
+    TResult? Function(BiquadFilterNode field0)? variant5,
+    TResult? Function(ChannelMergerNode field0)? variant6,
+    TResult? Function(ChannelSplitterNode field0)? variant7,
+    TResult? Function(ConstantSourceNode field0)? variant8,
+    TResult? Function(ConvolverNode field0)? variant9,
+    TResult? Function(DelayNode field0)? variant10,
+    TResult? Function(DynamicsCompressorNode field0)? variant11,
+    TResult? Function(GainNode field0)? variant12,
+    TResult? Function(IirFilterNode field0)? variant13,
+    TResult? Function(MediaElementAudioSourceNode field0)? variant14,
+    TResult? Function(MediaStreamAudioDestinationNode field0)? variant15,
+    TResult? Function(MediaStreamAudioSourceNode field0)? variant16,
+    TResult? Function(MediaStreamTrackAudioSourceNode field0)? variant17,
+    TResult? Function(OscillatorNode field0)? variant18,
+    TResult? Function(PannerNode field0)? variant19,
+    TResult? Function(ScriptProcessorNode field0)? variant20,
+    TResult? Function(StereoPannerNode field0)? variant21,
+    TResult? Function(WaveShaperNode field0)? variant22,
+  }) {
+    return variant22?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(AnalyserNode field0)? variant0,
+    TResult Function(AudioBufferSourceNode field0)? variant1,
+    TResult Function(AudioDestinationNode field0)? variant2,
+    TResult Function(AudioParam field0)? variant3,
+    TResult Function(AudioWorkletNode field0)? variant4,
+    TResult Function(BiquadFilterNode field0)? variant5,
+    TResult Function(ChannelMergerNode field0)? variant6,
+    TResult Function(ChannelSplitterNode field0)? variant7,
+    TResult Function(ConstantSourceNode field0)? variant8,
+    TResult Function(ConvolverNode field0)? variant9,
+    TResult Function(DelayNode field0)? variant10,
+    TResult Function(DynamicsCompressorNode field0)? variant11,
+    TResult Function(GainNode field0)? variant12,
+    TResult Function(IirFilterNode field0)? variant13,
+    TResult Function(MediaElementAudioSourceNode field0)? variant14,
+    TResult Function(MediaStreamAudioDestinationNode field0)? variant15,
+    TResult Function(MediaStreamAudioSourceNode field0)? variant16,
+    TResult Function(MediaStreamTrackAudioSourceNode field0)? variant17,
+    TResult Function(OscillatorNode field0)? variant18,
+    TResult Function(PannerNode field0)? variant19,
+    TResult Function(ScriptProcessorNode field0)? variant20,
+    TResult Function(StereoPannerNode field0)? variant21,
+    TResult Function(WaveShaperNode field0)? variant22,
+    required TResult orElse(),
+  }) {
+    if (variant22 != null) {
+      return variant22(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AudioNodeImplementor_Variant0 value) variant0,
+    required TResult Function(AudioNodeImplementor_Variant1 value) variant1,
+    required TResult Function(AudioNodeImplementor_Variant2 value) variant2,
+    required TResult Function(AudioNodeImplementor_Variant3 value) variant3,
+    required TResult Function(AudioNodeImplementor_Variant4 value) variant4,
+    required TResult Function(AudioNodeImplementor_Variant5 value) variant5,
+    required TResult Function(AudioNodeImplementor_Variant6 value) variant6,
+    required TResult Function(AudioNodeImplementor_Variant7 value) variant7,
+    required TResult Function(AudioNodeImplementor_Variant8 value) variant8,
+    required TResult Function(AudioNodeImplementor_Variant9 value) variant9,
+    required TResult Function(AudioNodeImplementor_Variant10 value) variant10,
+    required TResult Function(AudioNodeImplementor_Variant11 value) variant11,
+    required TResult Function(AudioNodeImplementor_Variant12 value) variant12,
+    required TResult Function(AudioNodeImplementor_Variant13 value) variant13,
+    required TResult Function(AudioNodeImplementor_Variant14 value) variant14,
+    required TResult Function(AudioNodeImplementor_Variant15 value) variant15,
+    required TResult Function(AudioNodeImplementor_Variant16 value) variant16,
+    required TResult Function(AudioNodeImplementor_Variant17 value) variant17,
+    required TResult Function(AudioNodeImplementor_Variant18 value) variant18,
+    required TResult Function(AudioNodeImplementor_Variant19 value) variant19,
+    required TResult Function(AudioNodeImplementor_Variant20 value) variant20,
+    required TResult Function(AudioNodeImplementor_Variant21 value) variant21,
+    required TResult Function(AudioNodeImplementor_Variant22 value) variant22,
+  }) {
+    return variant22(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AudioNodeImplementor_Variant0 value)? variant0,
+    TResult? Function(AudioNodeImplementor_Variant1 value)? variant1,
+    TResult? Function(AudioNodeImplementor_Variant2 value)? variant2,
+    TResult? Function(AudioNodeImplementor_Variant3 value)? variant3,
+    TResult? Function(AudioNodeImplementor_Variant4 value)? variant4,
+    TResult? Function(AudioNodeImplementor_Variant5 value)? variant5,
+    TResult? Function(AudioNodeImplementor_Variant6 value)? variant6,
+    TResult? Function(AudioNodeImplementor_Variant7 value)? variant7,
+    TResult? Function(AudioNodeImplementor_Variant8 value)? variant8,
+    TResult? Function(AudioNodeImplementor_Variant9 value)? variant9,
+    TResult? Function(AudioNodeImplementor_Variant10 value)? variant10,
+    TResult? Function(AudioNodeImplementor_Variant11 value)? variant11,
+    TResult? Function(AudioNodeImplementor_Variant12 value)? variant12,
+    TResult? Function(AudioNodeImplementor_Variant13 value)? variant13,
+    TResult? Function(AudioNodeImplementor_Variant14 value)? variant14,
+    TResult? Function(AudioNodeImplementor_Variant15 value)? variant15,
+    TResult? Function(AudioNodeImplementor_Variant16 value)? variant16,
+    TResult? Function(AudioNodeImplementor_Variant17 value)? variant17,
+    TResult? Function(AudioNodeImplementor_Variant18 value)? variant18,
+    TResult? Function(AudioNodeImplementor_Variant19 value)? variant19,
+    TResult? Function(AudioNodeImplementor_Variant20 value)? variant20,
+    TResult? Function(AudioNodeImplementor_Variant21 value)? variant21,
+    TResult? Function(AudioNodeImplementor_Variant22 value)? variant22,
+  }) {
+    return variant22?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AudioNodeImplementor_Variant0 value)? variant0,
+    TResult Function(AudioNodeImplementor_Variant1 value)? variant1,
+    TResult Function(AudioNodeImplementor_Variant2 value)? variant2,
+    TResult Function(AudioNodeImplementor_Variant3 value)? variant3,
+    TResult Function(AudioNodeImplementor_Variant4 value)? variant4,
+    TResult Function(AudioNodeImplementor_Variant5 value)? variant5,
+    TResult Function(AudioNodeImplementor_Variant6 value)? variant6,
+    TResult Function(AudioNodeImplementor_Variant7 value)? variant7,
+    TResult Function(AudioNodeImplementor_Variant8 value)? variant8,
+    TResult Function(AudioNodeImplementor_Variant9 value)? variant9,
+    TResult Function(AudioNodeImplementor_Variant10 value)? variant10,
+    TResult Function(AudioNodeImplementor_Variant11 value)? variant11,
+    TResult Function(AudioNodeImplementor_Variant12 value)? variant12,
+    TResult Function(AudioNodeImplementor_Variant13 value)? variant13,
+    TResult Function(AudioNodeImplementor_Variant14 value)? variant14,
+    TResult Function(AudioNodeImplementor_Variant15 value)? variant15,
+    TResult Function(AudioNodeImplementor_Variant16 value)? variant16,
+    TResult Function(AudioNodeImplementor_Variant17 value)? variant17,
+    TResult Function(AudioNodeImplementor_Variant18 value)? variant18,
+    TResult Function(AudioNodeImplementor_Variant19 value)? variant19,
+    TResult Function(AudioNodeImplementor_Variant20 value)? variant20,
+    TResult Function(AudioNodeImplementor_Variant21 value)? variant21,
+    TResult Function(AudioNodeImplementor_Variant22 value)? variant22,
+    required TResult orElse(),
+  }) {
+    if (variant22 != null) {
+      return variant22(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AudioNodeImplementor_Variant22 extends AudioNodeImplementor {
+  const factory AudioNodeImplementor_Variant22(final WaveShaperNode field0) =
+      _$AudioNodeImplementor_Variant22Impl;
+  const AudioNodeImplementor_Variant22._() : super._();
+
+  @override
+  WaveShaperNode get field0;
+  @JsonKey(ignore: true)
+  _$$AudioNodeImplementor_Variant22ImplCopyWith<
+          _$AudioNodeImplementor_Variant22Impl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum {
   RustOpaqueInterface get field0 => throw _privateConstructorUsedError;
   @optionalTypeArgs

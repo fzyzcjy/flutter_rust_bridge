@@ -21,12 +21,8 @@ macro_rules! handle_audio_node_trait_impls_override {
     ($name:ident) => {
         #[ext]
         pub impl $name {
-            // fn frb_override_connect(&self, dest: AudioNodeImplementor) {
-            //     let dest = dest.blocking_read();
-            //     self.connect(&*dest);
-            // }
-            fn frb_override_connect(&self) {
-                todo!()
+            fn frb_override_connect(&self, dest: &dyn AudioNode) {
+                self.connect(dest);
             }
         }
     };

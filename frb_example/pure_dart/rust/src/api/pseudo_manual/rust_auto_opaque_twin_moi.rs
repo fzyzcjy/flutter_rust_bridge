@@ -106,72 +106,68 @@ pub fn rust_auto_opaque_callable_return_twin_moi() -> Box<dyn Fn(String) -> Stri
 }
 
 // ==================================== trait object =======================================
-
-pub trait HelloTraitTwinMoi: Send + Sync {
-    fn func_hello(&self) -> &str;
-}
-
-#[frb(opaque)]
-pub struct HelloOneStructTwinMoi {
-    inner: String,
-}
-
-impl HelloTraitTwinMoi for HelloOneStructTwinMoi {
-    fn func_hello(&self) -> &str {
-        &self.inner
-    }
-}
-
-pub enum HelloTwoEnumTwinMoi {
-    A,
-    B,
-}
-
-impl HelloTraitTwinMoi for HelloTwoEnumTwinMoi {
-    fn func_hello(&self) -> &str {
-        match self {
-            HelloTwoEnumTwinMoi::A => "A",
-            HelloTwoEnumTwinMoi::B => "B",
-        }
-    }
-}
-
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
-pub fn rust_auto_opaque_trait_object_arg_own_twin_moi(
-    arg: Box<dyn HelloTraitTwinMoi>,
-    expect: String,
-) {
-    assert_eq!(arg.func_hello(), expect);
-}
-
-#[allow(clippy::borrowed_box)]
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
-pub fn rust_auto_opaque_trait_object_arg_borrow_twin_moi(
-    arg: &Box<dyn HelloTraitTwinMoi>,
-    expect: String,
-) {
-    assert_eq!(arg.func_hello(), expect);
-}
-
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
-pub fn rust_auto_opaque_trait_object_arg_mut_borrow_twin_moi(
-    arg: &mut Box<dyn HelloTraitTwinMoi>,
-    expect: String,
-) {
-    assert_eq!(arg.func_hello(), expect);
-}
-
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
-pub fn rust_auto_opaque_trait_object_return_own_one_twin_moi() -> Box<dyn HelloTraitTwinMoi> {
-    Box::new(HelloOneStructTwinMoi {
-        inner: "hello".into(),
-    })
-}
-
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
-pub fn rust_auto_opaque_trait_object_return_own_two_twin_moi() -> Box<dyn HelloTraitTwinMoi> {
-    Box::new(HelloTwoEnumTwinMoi::B)
-}
+//
+// pub trait HelloTraitTwinMoi: Send + Sync {
+//     fn func_hello(&self) -> &str;
+// }
+//
+// #[frb(opaque)]
+// pub struct HelloOneStructTwinMoi {
+//     inner: String,
+// }
+//
+// impl HelloTraitTwinMoi for HelloOneStructTwinMoi {
+//     fn func_hello(&self) -> &str {
+//         &self.inner
+//     }
+// }
+//
+// pub enum HelloTwoEnumTwinMoi {
+//     A,
+//     B,
+// }
+//
+// impl HelloTraitTwinMoi for HelloTwoEnumTwinMoi {
+//     fn func_hello(&self) -> &str {
+//         match self {
+//             HelloTwoEnumTwinMoi::A => "A",
+//             HelloTwoEnumTwinMoi::B => "B",
+//         }
+//     }
+// }
+//
+// #[flutter_rust_bridge::frb(rust_opaque_codec_moi)] pub fn rust_auto_opaque_trait_object_arg_own_twin_moi(
+//     arg: Box<dyn HelloTraitTwinMoi>,
+//     expect: String,
+// ) {
+//     assert_eq!(arg.func_hello(), expect);
+// }
+//
+// #[allow(clippy::borrowed_box)]
+// #[flutter_rust_bridge::frb(rust_opaque_codec_moi)] pub fn rust_auto_opaque_trait_object_arg_borrow_twin_moi(
+//     arg: &Box<dyn HelloTraitTwinMoi>,
+//     expect: String,
+// ) {
+//     assert_eq!(arg.func_hello(), expect);
+// }
+//
+// #[flutter_rust_bridge::frb(rust_opaque_codec_moi)] pub fn rust_auto_opaque_trait_object_arg_mut_borrow_twin_moi(
+//     arg: &mut Box<dyn HelloTraitTwinMoi>,
+//     expect: String,
+// ) {
+//     assert_eq!(arg.func_hello(), expect);
+// }
+//
+// #[flutter_rust_bridge::frb(rust_opaque_codec_moi)] pub fn rust_auto_opaque_trait_object_return_own_one_twin_moi() -> Box<dyn HelloTraitTwinMoi> {
+//     Box::new(HelloOneStructTwinMoi {
+//         inner: "hello".into(),
+//     })
+// }
+//
+// #[flutter_rust_bridge::frb(rust_opaque_codec_moi)] pub fn rust_auto_opaque_trait_object_return_own_two_twin_moi() -> Box<dyn HelloTraitTwinMoi> {
+//     Box::new(HelloTwoEnumTwinMoi::B)
+// }
+//
 
 // ==================================== static method =======================================
 

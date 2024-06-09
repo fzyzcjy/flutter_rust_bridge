@@ -31,6 +31,7 @@ macro_rules! simple_code_trait_impl {
                 &self.body
             }
 
+            #[allow(clippy::needless_update)]
             fn new_body(body: String) -> Self {
                 Self {
                     body,

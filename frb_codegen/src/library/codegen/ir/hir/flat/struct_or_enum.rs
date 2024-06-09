@@ -7,6 +7,8 @@ use derivative::Derivative;
 use serde::Serialize;
 use syn::{ItemEnum, ItemStruct};
 
+// This is surely used, but not counted by coverage tools
+// frb-coverage:ignore-start
 #[derive(Clone, Derivative, Serialize)]
 #[derivative(Debug)]
 pub struct HirFlatStructOrEnum<Item: SynItemStructOrEnum> {
@@ -18,6 +20,7 @@ pub struct HirFlatStructOrEnum<Item: SynItemStructOrEnum> {
     #[serde(skip_serializing)]
     pub(crate) src: Item,
 }
+// frb-coverage:ignore-end
 
 impl<Item: SynItemStructOrEnum> HirFlatComponent<NamespacedName> for HirFlatStructOrEnum<Item> {
     fn sort_key(&self) -> NamespacedName {

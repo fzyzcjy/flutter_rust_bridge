@@ -19,6 +19,7 @@ use crate::codegen::parser::mir::parser::function::func_or_skip::MirFuncOrSkip;
 use crate::codegen::parser::mir::parser::ty::misc::parse_comments;
 use crate::codegen::parser::mir::parser::ty::trait_def::parse_type_trait;
 use crate::codegen::parser::mir::parser::ty::{TypeParser, TypeParserParsingContext};
+use crate::codegen::parser::mir::ParseMode;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use crate::utils::namespace::{Namespace, NamespacedName};
 use anyhow::{bail, Context};
@@ -37,6 +38,7 @@ pub(crate) fn parse(
     src_fns: &[HirFlatFunction],
     type_parser: &mut TypeParser,
     config: &ParserMirInternalConfig,
+    parse_mode: ParseMode,
 ) -> anyhow::Result<Vec<MirFuncOrSkip>> {
     let mut function_parser = FunctionParser::new(type_parser);
     (src_fns.iter())
@@ -49,6 +51,7 @@ pub(crate) fn parse(
                 &config.force_codec_mode_pack,
                 config.default_stream_sink_codec,
                 config.default_rust_opaque_codec,
+                parse_mode,
                 config.stop_on_error,
             )
         })
@@ -71,6 +74,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         force_codec_mode_pack: &Option<CodecModePack>,
         default_stream_sink_codec: CodecMode,
         default_rust_opaque_codec: RustOpaqueCodecMode,
+        parse_mode: ParseMode,
         stop_on_error: bool,
     ) -> anyhow::Result<MirFuncOrSkip> {
         match self.parse_function_inner(
@@ -78,22 +82,26 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             force_codec_mode_pack,
             default_stream_sink_codec,
             default_rust_opaque_codec,
+            parse_mode,
         ) {
             Ok(output) => Ok(output),
             Err(err) => {
+                // This will stop the whole generator and tell the users, so we do not care about testing it
+                // frb-coverage:ignore-start
                 if stop_on_error {
                     Err(err.context(format!(
                         "parse_function halt since stop_on_error=true and see error (function={})",
                         serde_json::to_string(func).unwrap(),
                     )))
                 } else {
-                    log::debug!(
+                    debug!(
                         "parse_function see error and skip function: function={:?} error={:?}",
                         func.item_fn.name(),
                         err
                     );
                     Ok(create_output_skip(func, MirSkipReason::Err))
                 }
+                // frb-coverage:ignore-end
             }
         }
     }
@@ -105,6 +113,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         force_codec_mode_pack: &Option<CodecModePack>,
         default_stream_sink_codec: CodecMode,
         default_rust_opaque_codec: RustOpaqueCodecMode,
+        parse_mode: ParseMode,
     ) -> anyhow::Result<MirFuncOrSkip> {
         debug!("parse_function function name: {:?}", func.item_fn.name());
 
@@ -126,6 +135,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             default_stream_sink_codec,
             default_rust_opaque_codec,
             owner,
+            parse_mode,
         };
 
         let is_owner_trait_def = matches!(func.owner, HirFlatFunctionOwner::TraitDef { .. });
@@ -402,7 +412,7 @@ pub(crate) const FUNC_PREFIX_FRB_INTERNAL_NO_IMPL: &str = "frb_internal_no_impl"
 
 fn compute_impl_mode(
     is_owner_trait_def: bool,
-    func_name: &String,
+    func_name: &str,
     attributes: &FrbAttributes,
     output: &MirFuncOutput,
 ) -> MirFuncImplMode {

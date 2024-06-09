@@ -6,6 +6,7 @@ use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
 use crate::codegen::parser::mir::parser::function::real::is_struct_or_enum_or_opaque_from_them;
 use crate::codegen::parser::mir::parser::ty::trait_def::parse_type_trait;
 use crate::codegen::parser::mir::parser::ty::{TypeParser, TypeParserParsingContext};
+use crate::codegen::parser::mir::ParseMode;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use crate::utils::crate_name::CrateName;
 use itertools::Itertools;
@@ -15,6 +16,7 @@ pub(crate) fn parse(
     type_parser: &mut TypeParser,
     default_stream_sink_codec: CodecMode,
     default_rust_opaque_codec: RustOpaqueCodecMode,
+    parse_mode: ParseMode,
 ) -> anyhow::Result<Vec<MirTraitImpl>> {
     let context = TypeParserParsingContext {
         initiated_namespace: CrateName::self_crate().namespace(), // just a dummy value
@@ -22,6 +24,7 @@ pub(crate) fn parse(
         default_stream_sink_codec,
         default_rust_opaque_codec,
         owner: None,
+        parse_mode,
     };
 
     Ok((hir_trait_impls.iter())

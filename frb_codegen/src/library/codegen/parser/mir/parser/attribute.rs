@@ -115,9 +115,9 @@ impl FrbAttributes {
         self.any_eq(&FrbAttribute::External)
     }
 
-    pub(crate) fn generate_implementor_enum(&self) -> bool {
-        self.any_eq(&FrbAttribute::GenerateImplEnum)
-    }
+    // pub(crate) fn generate_implementor_enum(&self) -> bool {
+    //     self.any_eq(&FrbAttribute::GenerateImplEnum)
+    // }
 
     pub(crate) fn rust_opaque_codec(&self) -> Option<RustOpaqueCodecMode> {
         if self.any_eq(&FrbAttribute::RustOpaqueCodecMoi) {
@@ -240,7 +240,7 @@ enum FrbAttribute {
     Positional,
     Proxy,
     External,
-    GenerateImplEnum,
+    // GenerateImplEnum,
     RustOpaqueCodecMoi,
     Serialize,
     // NOTE: Undocumented, since this name may be suboptimal and is subject to change
@@ -279,14 +279,14 @@ impl Parse for FrbAttribute {
             .or_else(|| parse_keyword::<positional, _>(input, &lookahead, positional, Positional))
             .or_else(|| parse_keyword::<proxy, _>(input, &lookahead, proxy, Proxy))
             .or_else(|| parse_keyword::<external, _>(input, &lookahead, external, External))
-            .or_else(|| {
-                parse_keyword::<generate_implementor_enum, _>(
-                    input,
-                    &lookahead,
-                    generate_implementor_enum,
-                    GenerateImplEnum,
-                )
-            })
+            // .or_else(|| {
+            //     parse_keyword::<generate_implementor_enum, _>(
+            //         input,
+            //         &lookahead,
+            //         generate_implementor_enum,
+            //         GenerateImplEnum,
+            //     )
+            // })
             .or_else(|| {
                 parse_keyword::<rust_opaque_codec_moi, _>(
                     input,
@@ -679,7 +679,7 @@ mod tests {
 
     #[test]
     fn test_proxy() {
-        simple_keyword_tester("positional", FrbAttribute::Proxy);
+        simple_keyword_tester("proxy", FrbAttribute::Proxy);
     }
 
     #[test]
@@ -687,10 +687,10 @@ mod tests {
         simple_keyword_tester("external", FrbAttribute::External);
     }
 
-    #[test]
-    fn test_generate_implementor_enum() {
-        simple_keyword_tester("generate_implementor_enum", FrbAttribute::GenerateImplEnum);
-    }
+    // #[test]
+    // fn test_generate_implementor_enum() {
+    //     simple_keyword_tester("generate_implementor_enum", FrbAttribute::GenerateImplEnum);
+    // }
 
     #[test]
     fn test_rust_opaque_codec_moi() {

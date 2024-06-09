@@ -71,32 +71,6 @@ Future<BoxFnStringString> rustAutoOpaqueCallableReturnTwinNormal() =>
     RustLib.instance.api
         .crateApiRustAutoOpaqueRustAutoOpaqueCallableReturnTwinNormal();
 
-Future<void> rustAutoOpaqueTraitObjectArgOwnTwinNormal(
-        {required BoxHelloTraitTwinNormal arg, required String expect}) =>
-    RustLib.instance.api
-        .crateApiRustAutoOpaqueRustAutoOpaqueTraitObjectArgOwnTwinNormal(
-            arg: arg, expect: expect);
-
-Future<void> rustAutoOpaqueTraitObjectArgBorrowTwinNormal(
-        {required BoxHelloTraitTwinNormal arg, required String expect}) =>
-    RustLib.instance.api
-        .crateApiRustAutoOpaqueRustAutoOpaqueTraitObjectArgBorrowTwinNormal(
-            arg: arg, expect: expect);
-
-Future<void> rustAutoOpaqueTraitObjectArgMutBorrowTwinNormal(
-        {required BoxHelloTraitTwinNormal arg, required String expect}) =>
-    RustLib.instance.api
-        .crateApiRustAutoOpaqueRustAutoOpaqueTraitObjectArgMutBorrowTwinNormal(
-            arg: arg, expect: expect);
-
-Future<BoxHelloTraitTwinNormal>
-    rustAutoOpaqueTraitObjectReturnOwnOneTwinNormal() => RustLib.instance.api
-        .crateApiRustAutoOpaqueRustAutoOpaqueTraitObjectReturnOwnOneTwinNormal();
-
-Future<BoxHelloTraitTwinNormal>
-    rustAutoOpaqueTraitObjectReturnOwnTwoTwinNormal() => RustLib.instance.api
-        .crateApiRustAutoOpaqueRustAutoOpaqueTraitObjectReturnOwnTwoTwinNormal();
-
 Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinNormal(
         {required StructWithGoodAndOpaqueFieldTwinNormal arg}) =>
     RustLib.instance.api
@@ -203,21 +177,12 @@ Future<int> rustAutoOpaqueBorrowAndBorrowTwinNormal(
         .crateApiRustAutoOpaqueRustAutoOpaqueBorrowAndBorrowTwinNormal(
             a: a, b: b);
 
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box < dyn HelloTraitTwinNormal >>>
-abstract class BoxHelloTraitTwinNormal implements RustOpaqueInterface {}
-
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box < dyn MyTraitTwinNormal + Send + Sync >>>
 abstract class BoxMyTraitTwinNormal implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<EnumWithGoodAndOpaqueWithoutOptionTwinNormal>>
 abstract class EnumWithGoodAndOpaqueWithoutOptionTwinNormal
     implements RustOpaqueInterface {}
-
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<HelloOneStructTwinNormal>>
-abstract class HelloOneStructTwinNormal
-    implements RustOpaqueInterface, HelloTraitTwinNormal {
-  Future<void> funcHello();
-}
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleEnumTwinNormal>>
 abstract class NonCloneSimpleEnumTwinNormal implements RustOpaqueInterface {}
@@ -286,10 +251,6 @@ abstract class StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal
   void set good(String good);
 }
 
-abstract class HelloTraitTwinNormal {
-  Future<void> funcHello();
-}
-
 abstract class MyTraitTwinNormal {
   Future<void> f();
 }
@@ -305,17 +266,6 @@ sealed class EnumWithGoodAndOpaqueTwinNormal
   const factory EnumWithGoodAndOpaqueTwinNormal.opaque(
     NonCloneSimpleTwinNormal field0,
   ) = EnumWithGoodAndOpaqueTwinNormal_Opaque;
-}
-
-enum HelloTwoEnumTwinNormal {
-  a,
-  b,
-  ;
-
-  Future<void> funcHello() => RustLib.instance.api
-          .crateApiRustAutoOpaqueHelloTwoEnumTwinNormalFuncHello(
-        that: this,
-      );
 }
 
 class StructWithExplicitAutoOpaqueFieldTwinNormal {

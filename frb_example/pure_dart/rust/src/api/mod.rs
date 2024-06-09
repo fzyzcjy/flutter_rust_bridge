@@ -18,6 +18,7 @@ pub mod dart_opaque;
 pub mod dart_opaque_sync;
 pub mod deliberate_name_conflict;
 pub mod dropping;
+pub mod dyn_trait;
 pub mod enumeration;
 pub mod event_listener;
 pub mod exception;

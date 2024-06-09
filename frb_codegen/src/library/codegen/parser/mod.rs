@@ -42,11 +42,17 @@ fn parse_inner(
     let hir_naive_flat = hir::naive_flat::parse(&config.hir, hir_tree, &dumper_hir_naive_flat)?;
     let hir_flat = hir::flat::parse(&config.hir, hir_naive_flat, &dumper_hir_flat)?;
     on_hir_flat(&hir_flat)?;
-    let ir_early_generator = early_generator::execute(hir_flat, &config.mir, &dumper_early_generator)?;
+    let ir_early_generator =
+        early_generator::execute(hir_flat, &config.mir, &dumper_early_generator)?;
     drop(pb);
 
     let pb = progress_bar_pack.parse_mir.start();
-    let mir_pack = mir::parse(&config.mir, &ir_early_generator, &dumper_mir)?;
+    let mir_pack = mir::parse(
+        &config.mir,
+        &ir_early_generator,
+        &dumper_mir,
+        mir::ParseMode::Normal,
+    )?;
     drop(pb);
 
     Ok(mir_pack)

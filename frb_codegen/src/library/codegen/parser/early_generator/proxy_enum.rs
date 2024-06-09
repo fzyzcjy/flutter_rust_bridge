@@ -1,6 +1,5 @@
 use crate::codegen::ir::early_generator::pack::IrEarlyGeneratorPack;
 use crate::codegen::ir::early_generator::proxied_type::IrEarlyGeneratorProxiedType;
-use crate::codegen::ir::hir::flat::pack::HirFlatPack;
 use crate::codegen::ir::mir::pack::MirPack;
 use crate::codegen::ir::mir::ty::delegate::{
     MirTypeDelegate, MirTypeDelegateProxyEnum, MirTypeDelegateProxyVariant,
@@ -11,7 +10,6 @@ use crate::codegen::parser::hir::flat::extra_code_injector::{
     inject_extra_codes, InjectExtraCodeBlock,
 };
 use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
-use crate::codegen::parser::mir::parser::function::real::FUNC_PREFIX_FRB_INTERNAL_NO_IMPL;
 use crate::if_then_some;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use crate::utils::namespace::Namespace;
@@ -24,6 +22,7 @@ pub(crate) fn generate(
     config_mir: &ParserMirInternalConfig,
 ) -> anyhow::Result<()> {
     let distinct_types = tentative_mir_pack.distinct_types(None);
+
     let proxy_variants = (distinct_types.iter())
         .filter_map(|ty| if_then_some!(let MirType::Delegate(MirTypeDelegate::ProxyVariant(inner)) = ty, inner.clone()))
         .collect_vec();
@@ -33,7 +32,7 @@ pub(crate) fn generate(
     let proxy_variants_of_enum =
         (proxy_variants.iter()).into_group_map_by(|ty| ty.inner.safe_ident());
 
-    let proxied_types = compute_proxied_types(&proxy_variants_of_enum, &output_namespace);
+    let proxied_types = compute_proxied_types(&proxy_variants_of_enum, output_namespace);
 
     let extra_codes = (proxy_variants_of_enum.values())
         .map(|proxy_variants| generate_proxy_enum(proxy_variants))
@@ -66,7 +65,7 @@ fn generate_proxy_enum(
 ) -> anyhow::Result<Vec<InjectExtraCodeBlock>> {
     let proxy_enum_ty = *proxy_variants[0].inner.clone();
 
-    let enum_name = MirTypeDelegateProxyEnum::proxy_enum_name_raw(&proxy_enum_ty);
+    let enum_name = MirTypeDelegateProxyEnum::delegate_enum_name_raw(&proxy_enum_ty);
 
     let variants = (proxy_variants.iter().enumerate())
         .map(|(index, variant)| lockable::VariantInfo {

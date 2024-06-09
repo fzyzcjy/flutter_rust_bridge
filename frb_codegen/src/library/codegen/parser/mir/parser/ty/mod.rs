@@ -1,6 +1,7 @@
 use crate::codegen::generator::codec::structs::CodecMode;
 use crate::codegen::ir::early_generator::pack::IrEarlyGeneratorPack;
-use crate::codegen::ir::hir::flat::pack::HirFlatPack;
+use crate::codegen::ir::early_generator::proxied_type::IrEarlyGeneratorProxiedType;
+use crate::codegen::ir::early_generator::trait_def_info::IrEarlyGeneratorTraitDefInfo;
 use crate::codegen::ir::hir::flat::struct_or_enum::HirFlatEnum;
 use crate::codegen::ir::hir::flat::struct_or_enum::HirFlatStruct;
 use crate::codegen::ir::hir::flat::traits::HirFlatTrait;
@@ -17,10 +18,10 @@ use crate::codegen::parser::mir::parser::ty::array::ArrayParserInfo;
 use crate::codegen::parser::mir::parser::ty::enum_or_struct::EnumOrStructParserInfo;
 use crate::codegen::parser::mir::parser::ty::rust_auto_opaque_implicit::RustAutoOpaqueParserInfo;
 use crate::codegen::parser::mir::parser::ty::rust_opaque::RustOpaqueParserInfo;
+use crate::codegen::parser::mir::ParseMode;
 use crate::utils::namespace::Namespace;
 use std::collections::HashMap;
 use syn::Type;
-use crate::codegen::ir::early_generator::proxied_type::IrEarlyGeneratorProxiedType;
 
 pub(crate) mod array;
 pub(crate) mod concrete;
@@ -52,6 +53,7 @@ pub(crate) struct TypeParser<'a> {
     pub(super) src_traits: HashMap<String, &'a HirFlatTrait>,
     src_types: HashMap<String, Type>,
     pub(super) proxied_types: Vec<IrEarlyGeneratorProxiedType>,
+    pub(super) trait_def_infos: Vec<IrEarlyGeneratorTraitDefInfo>,
     dart_code_of_type: HashMap<String, String>,
     struct_parser_info: EnumOrStructParserInfo<MirStructIdent, MirStruct>,
     enum_parser_info: EnumOrStructParserInfo<MirEnumIdent, MirEnum>,
@@ -68,6 +70,7 @@ impl<'a> TypeParser<'a> {
             ir_pack.hir_flat_pack.traits_map(),
             ir_pack.hir_flat_pack.types_map(),
             ir_pack.proxied_types.clone(),
+            ir_pack.trait_def_infos.clone(),
         )
     }
 
@@ -77,6 +80,7 @@ impl<'a> TypeParser<'a> {
         src_traits: HashMap<String, &'a HirFlatTrait>,
         src_types: HashMap<String, Type>,
         proxied_types: Vec<IrEarlyGeneratorProxiedType>,
+        trait_def_infos: Vec<IrEarlyGeneratorTraitDefInfo>,
     ) -> Self {
         TypeParser {
             src_structs,
@@ -84,6 +88,7 @@ impl<'a> TypeParser<'a> {
             src_traits,
             src_types,
             proxied_types,
+            trait_def_infos,
             dart_code_of_type: HashMap::new(),
             struct_parser_info: EnumOrStructParserInfo::new(),
             enum_parser_info: EnumOrStructParserInfo::new(),
@@ -136,6 +141,7 @@ pub(crate) struct TypeParserParsingContext {
     pub(crate) default_stream_sink_codec: CodecMode,
     pub(crate) default_rust_opaque_codec: RustOpaqueCodecMode,
     pub(crate) owner: Option<MirFuncOwnerInfo>,
+    pub(crate) parse_mode: ParseMode,
 }
 
 impl MirContext for TypeParser<'_> {
