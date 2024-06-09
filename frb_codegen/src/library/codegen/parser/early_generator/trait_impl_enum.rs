@@ -32,7 +32,7 @@ pub(crate) fn generate(
 
     let output_namespace = &(config_mir.rust_input_namespace_pack).rust_output_path_namespace;
 
-    inject_extra_code(&mut pack.hir_flat_pack, &extra_code, output_namespace)?;
+    inject_extra_code(&mut pack.hir_flat_pack, &extra_code, output_namespace, true)?;
 
     Ok(())
 }

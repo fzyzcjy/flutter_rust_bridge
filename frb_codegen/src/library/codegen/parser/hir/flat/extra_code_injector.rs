@@ -9,9 +9,12 @@ pub(crate) fn inject_extra_code(
     pack: &mut HirFlatPack,
     extra_code: &str,
     namespace: &Namespace,
+    should_parse: bool,
 ) -> anyhow::Result<()> {
     pack.extra_rust_output_code += extra_code;
-    parse_synthesized_syn_items(pack, extra_code, namespace)?;
+    if should_parse {
+        parse_synthesized_syn_items(pack, extra_code, namespace)?;
+    }
     Ok(())
 }
 
