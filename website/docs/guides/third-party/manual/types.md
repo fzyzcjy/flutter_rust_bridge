@@ -1,6 +1,8 @@
 # Types
 
-TODO: below
+:::info
+Third-party packages can be converted automatically; only use the feature in this page when the automation is unwanted.
+:::
 
 Consider the types in other crates.
 The feature is called "mirroring". In short, you need to define the type again mirroring the external type that you want
@@ -10,7 +12,7 @@ exact grammar, have a look at the example below.
 No need to worry whether this breaks the DRY principle, or what happens when you accidentally write down a wrong field.
 This is because *compile errors will happen* if your mirrored type is not exactly same as the original type.
 
-In order to use methods of externals types, please refer to [this page](../../../functions/methods).
+In order to use methods of externals types, please refer to the sibling page.
 
 When multiple structs have the same fields, you can mirror them *once* using grammar
 like `#[frb(mirror(FirstStruct, SecondStruct, ThirdStruct))]`.

@@ -1,9 +1,13 @@
 # Methods
 
-TODO: below
+:::info
+Third-party packages can be converted automatically; only use the feature in this page when the automation is unwanted.
+:::
 
 For methods that are not defined in the `rust_input` folders in the current crate,
 the `#[frb(external)]` syntax (see example below) is needed to make flutter_rust_bridge aware of the methods.
+
+## Example
 
 Suppose we have these in external crates:
 
