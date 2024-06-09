@@ -184,7 +184,7 @@ fn wire__web_audio_api__AudioBuffer_duration_impl(
                         }
                     }
                     let api_that = &*api_that_decoded.unwrap();
-                    Result::<_, ()>::Ok(web_audio_api::AudioBuffer::duration(&api_that))
+                    Result::<_, ()>::Ok(web_audio_api::AudioBuffer::duration(api_that))
                 })())
             }
         },
@@ -270,7 +270,7 @@ fn wire__web_audio_api__AudioBuffer_get_channel_data_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::AudioBuffer::get_channel_data(&api_that, api_channel_number);
+                        web_audio_api::AudioBuffer::get_channel_data(api_that, api_channel_number);
                     })
                 })())
             }
@@ -322,7 +322,7 @@ fn wire__web_audio_api__AudioBuffer_get_channel_data_mut_impl(
                     let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::AudioBuffer::get_channel_data_mut(
-                            &mut api_that,
+                            api_that,
                             api_channel_number,
                         );
                     })
@@ -373,7 +373,7 @@ fn wire__web_audio_api__AudioBuffer_length_impl(
                         }
                     }
                     let api_that = &*api_that_decoded.unwrap();
-                    Result::<_, ()>::Ok(web_audio_api::AudioBuffer::length(&api_that))
+                    Result::<_, ()>::Ok(web_audio_api::AudioBuffer::length(api_that))
                 })())
             }
         },
@@ -453,7 +453,7 @@ fn wire__web_audio_api__AudioBuffer_number_of_channels_impl(
                         }
                     }
                     let api_that = &*api_that_decoded.unwrap();
-                    Result::<_, ()>::Ok(web_audio_api::AudioBuffer::number_of_channels(&api_that))
+                    Result::<_, ()>::Ok(web_audio_api::AudioBuffer::number_of_channels(api_that))
                 })())
             }
         },
@@ -501,7 +501,7 @@ fn wire__web_audio_api__AudioBuffer_sample_rate_impl(
                         }
                     }
                     let api_that = &*api_that_decoded.unwrap();
-                    Result::<_, ()>::Ok(web_audio_api::AudioBuffer::sample_rate(&api_that))
+                    Result::<_, ()>::Ok(web_audio_api::AudioBuffer::sample_rate(api_that))
                 })())
             }
         },
@@ -2026,7 +2026,7 @@ fn wire__web_audio_api__AudioRenderCapacity_clear_onupdate_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::AudioRenderCapacity::clear_onupdate(&api_that);
+                        web_audio_api::AudioRenderCapacity::clear_onupdate(api_that);
                     })
                 })())
             }
@@ -2078,7 +2078,7 @@ fn wire__web_audio_api__AudioRenderCapacity_start_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::AudioRenderCapacity::start(&api_that, api_options);
+                        web_audio_api::AudioRenderCapacity::start(api_that, api_options);
                     })
                 })())
             }
@@ -2128,7 +2128,7 @@ fn wire__web_audio_api__AudioRenderCapacity_stop_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::AudioRenderCapacity::stop(&api_that);
+                        web_audio_api::AudioRenderCapacity::stop(api_that);
                     })
                 })())
             }
@@ -2376,7 +2376,7 @@ fn wire__web_audio_api__context__AudioContext_base_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::context::AudioContext::base(&api_that);
+                        web_audio_api::context::AudioContext::base(api_that);
                     })
                 })())
             }
@@ -2426,7 +2426,7 @@ fn wire__web_audio_api__context__AudioContext_base_latency_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::context::AudioContext::base_latency(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -2476,7 +2476,7 @@ fn wire__web_audio_api__context__AudioContext_clear_onsinkchange_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::context::AudioContext::clear_onsinkchange(&api_that);
+                        web_audio_api::context::AudioContext::clear_onsinkchange(api_that);
                     })
                 })())
             }
@@ -2526,7 +2526,7 @@ fn wire__web_audio_api__context__AudioContext_clear_onstatechange_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::context::AudioContext::clear_onstatechange(&api_that);
+                        web_audio_api::context::AudioContext::clear_onstatechange(api_that);
                     })
                 })())
             }
@@ -2580,7 +2580,7 @@ fn wire__web_audio_api__context__AudioContext_close_impl(
                         }
                         let api_that = &*api_that_decoded.unwrap();
                         Result::<_, ()>::Ok({
-                            web_audio_api::context::AudioContext::close(&api_that).await;
+                            web_audio_api::context::AudioContext::close(api_that).await;
                         })
                     })()
                     .await,
@@ -2632,7 +2632,7 @@ fn wire__web_audio_api__context__AudioContext_close_sync_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::context::AudioContext::close_sync(&api_that);
+                        web_audio_api::context::AudioContext::close_sync(api_that);
                     })
                 })())
             }
@@ -2682,7 +2682,7 @@ fn wire__web_audio_api__context__AudioContext_create_analyser_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::context::AudioContext::create_analyser(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -2742,7 +2742,7 @@ fn wire__web_audio_api__context__AudioContext_create_audio_param_impl(
                     let api_that = &*api_that_decoded.unwrap();
                     let api_dest = &*api_dest_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::context::AudioContext::create_audio_param(
-                        &api_that, api_opts, &api_dest,
+                        api_that, api_opts, api_dest,
                     ))
                 })())
             }
@@ -2792,7 +2792,7 @@ fn wire__web_audio_api__context__AudioContext_create_biquad_filter_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::context::AudioContext::create_biquad_filter(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -2845,7 +2845,7 @@ fn wire__web_audio_api__context__AudioContext_create_buffer_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::context::AudioContext::create_buffer(
-                        &api_that,
+                        api_that,
                         api_number_of_channels,
                         api_length,
                         api_sample_rate,
@@ -2898,7 +2898,7 @@ fn wire__web_audio_api__context__AudioContext_create_buffer_source_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::context::AudioContext::create_buffer_source(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -2950,7 +2950,7 @@ fn wire__web_audio_api__context__AudioContext_create_channel_merger_impl(
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
                         web_audio_api::context::AudioContext::create_channel_merger(
-                            &api_that,
+                            api_that,
                             api_number_of_inputs,
                         ),
                     )
@@ -3004,7 +3004,7 @@ fn wire__web_audio_api__context__AudioContext_create_channel_splitter_impl(
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
                         web_audio_api::context::AudioContext::create_channel_splitter(
-                            &api_that,
+                            api_that,
                             api_number_of_outputs,
                         ),
                     )
@@ -3056,7 +3056,7 @@ fn wire__web_audio_api__context__AudioContext_create_constant_source_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
-                        web_audio_api::context::AudioContext::create_constant_source(&api_that),
+                        web_audio_api::context::AudioContext::create_constant_source(api_that),
                     )
                 })())
             }
@@ -3106,7 +3106,7 @@ fn wire__web_audio_api__context__AudioContext_create_convolver_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::context::AudioContext::create_convolver(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -3157,7 +3157,7 @@ fn wire__web_audio_api__context__AudioContext_create_delay_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::context::AudioContext::create_delay(
-                        &api_that,
+                        api_that,
                         api_max_delay_time,
                     ))
                 })())
@@ -3208,7 +3208,7 @@ fn wire__web_audio_api__context__AudioContext_create_dynamics_compressor_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
-                        web_audio_api::context::AudioContext::create_dynamics_compressor(&api_that),
+                        web_audio_api::context::AudioContext::create_dynamics_compressor(api_that),
                     )
                 })())
             }
@@ -3257,9 +3257,7 @@ fn wire__web_audio_api__context__AudioContext_create_gain_impl(
                         }
                     }
                     let api_that = &*api_that_decoded.unwrap();
-                    Result::<_, ()>::Ok(web_audio_api::context::AudioContext::create_gain(
-                        &api_that,
-                    ))
+                    Result::<_, ()>::Ok(web_audio_api::context::AudioContext::create_gain(api_that))
                 })())
             }
         },
@@ -3310,7 +3308,7 @@ fn wire__web_audio_api__context__AudioContext_create_iir_filter_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::context::AudioContext::create_iir_filter(
-                        &api_that,
+                        api_that,
                         api_feedforward,
                         api_feedback,
                     ))
@@ -3363,7 +3361,7 @@ fn wire__web_audio_api__context__AudioContext_create_media_stream_destination_im
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
                         web_audio_api::context::AudioContext::create_media_stream_destination(
-                            &api_that,
+                            api_that,
                         ),
                     )
                 })())
@@ -3424,7 +3422,7 @@ fn wire__web_audio_api__context__AudioContext_create_media_stream_source_impl(
                     let api_media = &*api_media_decoded.unwrap();
                     Result::<_, ()>::Ok(
                         web_audio_api::context::AudioContext::create_media_stream_source(
-                            &api_that, &api_media,
+                            api_that, api_media,
                         ),
                     )
                 })())
@@ -3485,7 +3483,7 @@ fn wire__web_audio_api__context__AudioContext_create_media_stream_track_source_i
                     let api_media = &*api_media_decoded.unwrap();
                     Result::<_, ()>::Ok(
                         web_audio_api::context::AudioContext::create_media_stream_track_source(
-                            &api_that, &api_media,
+                            api_that, api_media,
                         ),
                     )
                 })())
@@ -3536,7 +3534,7 @@ fn wire__web_audio_api__context__AudioContext_create_oscillator_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::context::AudioContext::create_oscillator(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -3586,7 +3584,7 @@ fn wire__web_audio_api__context__AudioContext_create_panner_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::context::AudioContext::create_panner(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -3637,7 +3635,7 @@ fn wire__web_audio_api__context__AudioContext_create_periodic_wave_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::context::AudioContext::create_periodic_wave(
-                        &api_that,
+                        api_that,
                         api_options,
                     ))
                 })())
@@ -3692,7 +3690,7 @@ fn wire__web_audio_api__context__AudioContext_create_script_processor_impl(
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
                         web_audio_api::context::AudioContext::create_script_processor(
-                            &api_that,
+                            api_that,
                             api_buffer_size,
                             api_number_of_input_channels,
                             api_number_of_output_channels,
@@ -3746,7 +3744,7 @@ fn wire__web_audio_api__context__AudioContext_create_stereo_panner_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::context::AudioContext::create_stereo_panner(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -3796,7 +3794,7 @@ fn wire__web_audio_api__context__AudioContext_create_wave_shaper_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::context::AudioContext::create_wave_shaper(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -3846,7 +3844,7 @@ fn wire__web_audio_api__context__AudioContext_current_time_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::context::AudioContext::current_time(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -3895,9 +3893,7 @@ fn wire__web_audio_api__context__AudioContext_destination_impl(
                         }
                     }
                     let api_that = &*api_that_decoded.unwrap();
-                    Result::<_, ()>::Ok(web_audio_api::context::AudioContext::destination(
-                        &api_that,
-                    ))
+                    Result::<_, ()>::Ok(web_audio_api::context::AudioContext::destination(api_that))
                 })())
             }
         },
@@ -3947,7 +3943,7 @@ fn wire__web_audio_api__context__AudioContext_frb_override_decode_audio_data_syn
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     web_audio_api::context::AudioContext::frb_override_decode_audio_data_sync(
-                        &api_that,
+                        api_that,
                         api_input_path,
                     )
                 })())
@@ -3997,7 +3993,7 @@ fn wire__web_audio_api__context__AudioContext_listener_impl(
                         }
                     }
                     let api_that = &*api_that_decoded.unwrap();
-                    Result::<_, ()>::Ok(web_audio_api::context::AudioContext::listener(&api_that))
+                    Result::<_, ()>::Ok(web_audio_api::context::AudioContext::listener(api_that))
                 })())
             }
         },
@@ -4076,7 +4072,7 @@ fn wire__web_audio_api__context__AudioContext_output_latency_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::context::AudioContext::output_latency(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -4126,7 +4122,7 @@ fn wire__web_audio_api__context__AudioContext_render_capacity_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::context::AudioContext::render_capacity(&api_that);
+                        web_audio_api::context::AudioContext::render_capacity(api_that);
                     })
                 })())
             }
@@ -4176,7 +4172,7 @@ fn wire__web_audio_api__context__AudioContext_resume_sync_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::context::AudioContext::resume_sync(&api_that);
+                        web_audio_api::context::AudioContext::resume_sync(api_that);
                     })
                 })())
             }
@@ -4225,9 +4221,7 @@ fn wire__web_audio_api__context__AudioContext_sample_rate_impl(
                         }
                     }
                     let api_that = &*api_that_decoded.unwrap();
-                    Result::<_, ()>::Ok(web_audio_api::context::AudioContext::sample_rate(
-                        &api_that,
-                    ))
+                    Result::<_, ()>::Ok(web_audio_api::context::AudioContext::sample_rate(api_that))
                 })())
             }
         },
@@ -4275,7 +4269,7 @@ fn wire__web_audio_api__context__AudioContext_sink_id_impl(
                         }
                     }
                     let api_that = &*api_that_decoded.unwrap();
-                    Result::<_, ()>::Ok(web_audio_api::context::AudioContext::sink_id(&api_that))
+                    Result::<_, ()>::Ok(web_audio_api::context::AudioContext::sink_id(api_that))
                 })())
             }
         },
@@ -4323,7 +4317,7 @@ fn wire__web_audio_api__context__AudioContext_state_impl(
                         }
                     }
                     let api_that = &*api_that_decoded.unwrap();
-                    Result::<_, ()>::Ok(web_audio_api::context::AudioContext::state(&api_that))
+                    Result::<_, ()>::Ok(web_audio_api::context::AudioContext::state(api_that))
                 })())
             }
         },
@@ -4376,7 +4370,7 @@ fn wire__web_audio_api__context__AudioContext_suspend_impl(
                         }
                         let api_that = &*api_that_decoded.unwrap();
                         Result::<_, ()>::Ok({
-                            web_audio_api::context::AudioContext::suspend(&api_that).await;
+                            web_audio_api::context::AudioContext::suspend(api_that).await;
                         })
                     })()
                     .await,
@@ -4428,7 +4422,7 @@ fn wire__web_audio_api__context__AudioContext_suspend_sync_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::context::AudioContext::suspend_sync(&api_that);
+                        web_audio_api::context::AudioContext::suspend_sync(api_that);
                     })
                 })())
             }
@@ -4478,7 +4472,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_base_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::context::ConcreteBaseAudioContext::base(&api_that);
+                        web_audio_api::context::ConcreteBaseAudioContext::base(api_that);
                     })
                 })())
             }
@@ -4529,7 +4523,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_clear_onstatechange_im
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::context::ConcreteBaseAudioContext::clear_onstatechange(
-                            &api_that,
+                            api_that,
                         );
                     })
                 })())
@@ -4580,9 +4574,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_analyser_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
-                        web_audio_api::context::ConcreteBaseAudioContext::create_analyser(
-                            &api_that,
-                        ),
+                        web_audio_api::context::ConcreteBaseAudioContext::create_analyser(api_that),
                     )
                 })())
             }
@@ -4643,7 +4635,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_audio_param_imp
                     let api_dest = &*api_dest_decoded.unwrap();
                     Result::<_, ()>::Ok(
                         web_audio_api::context::ConcreteBaseAudioContext::create_audio_param(
-                            &api_that, api_opts, &api_dest,
+                            api_that, api_opts, api_dest,
                         ),
                     )
                 })())
@@ -4695,7 +4687,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_biquad_filter_i
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
                         web_audio_api::context::ConcreteBaseAudioContext::create_biquad_filter(
-                            &api_that,
+                            api_that,
                         ),
                     )
                 })())
@@ -4750,7 +4742,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_buffer_impl(
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
                         web_audio_api::context::ConcreteBaseAudioContext::create_buffer(
-                            &api_that,
+                            api_that,
                             api_number_of_channels,
                             api_length,
                             api_sample_rate,
@@ -4805,7 +4797,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_buffer_source_i
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
                         web_audio_api::context::ConcreteBaseAudioContext::create_buffer_source(
-                            &api_that,
+                            api_that,
                         ),
                     )
                 })())
@@ -4858,7 +4850,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_channel_merger_
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
                         web_audio_api::context::ConcreteBaseAudioContext::create_channel_merger(
-                            &api_that,
+                            api_that,
                             api_number_of_inputs,
                         ),
                     )
@@ -4912,7 +4904,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_channel_splitte
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
                         web_audio_api::context::ConcreteBaseAudioContext::create_channel_splitter(
-                            &api_that,
+                            api_that,
                             api_number_of_outputs,
                         ),
                     )
@@ -4965,7 +4957,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_constant_source
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
                         web_audio_api::context::ConcreteBaseAudioContext::create_constant_source(
-                            &api_that,
+                            api_that,
                         ),
                     )
                 })())
@@ -5017,7 +5009,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_convolver_impl(
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
                         web_audio_api::context::ConcreteBaseAudioContext::create_convolver(
-                            &api_that,
+                            api_that,
                         ),
                     )
                 })())
@@ -5070,7 +5062,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_delay_impl(
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
                         web_audio_api::context::ConcreteBaseAudioContext::create_delay(
-                            &api_that,
+                            api_that,
                             api_max_delay_time,
                         ),
                     )
@@ -5099,7 +5091,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that = &*api_that_decoded.unwrap();
- Result::<_,()>::Ok(web_audio_api::context::ConcreteBaseAudioContext::create_dynamics_compressor(&api_that))
+ Result::<_,()>::Ok(web_audio_api::context::ConcreteBaseAudioContext::create_dynamics_compressor(api_that))
                     })())
                 } })
 }
@@ -5146,7 +5138,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_gain_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
-                        web_audio_api::context::ConcreteBaseAudioContext::create_gain(&api_that),
+                        web_audio_api::context::ConcreteBaseAudioContext::create_gain(api_that),
                     )
                 })())
             }
@@ -5199,7 +5191,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_iir_filter_impl
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
                         web_audio_api::context::ConcreteBaseAudioContext::create_iir_filter(
-                            &api_that,
+                            api_that,
                             api_feedforward,
                             api_feedback,
                         ),
@@ -5253,7 +5245,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_oscillator_impl
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
                         web_audio_api::context::ConcreteBaseAudioContext::create_oscillator(
-                            &api_that,
+                            api_that,
                         ),
                     )
                 })())
@@ -5304,7 +5296,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_panner_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
-                        web_audio_api::context::ConcreteBaseAudioContext::create_panner(&api_that),
+                        web_audio_api::context::ConcreteBaseAudioContext::create_panner(api_that),
                     )
                 })())
             }
@@ -5356,7 +5348,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_periodic_wave_i
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
                         web_audio_api::context::ConcreteBaseAudioContext::create_periodic_wave(
-                            &api_that,
+                            api_that,
                             api_options,
                         ),
                     )
@@ -5412,7 +5404,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_script_processo
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
                         web_audio_api::context::ConcreteBaseAudioContext::create_script_processor(
-                            &api_that,
+                            api_that,
                             api_buffer_size,
                             api_number_of_input_channels,
                             api_number_of_output_channels,
@@ -5467,7 +5459,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_stereo_panner_i
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
                         web_audio_api::context::ConcreteBaseAudioContext::create_stereo_panner(
-                            &api_that,
+                            api_that,
                         ),
                     )
                 })())
@@ -5519,7 +5511,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_wave_shaper_imp
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
                         web_audio_api::context::ConcreteBaseAudioContext::create_wave_shaper(
-                            &api_that,
+                            api_that,
                         ),
                     )
                 })())
@@ -5570,7 +5562,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_current_time_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
-                        web_audio_api::context::ConcreteBaseAudioContext::current_time(&api_that),
+                        web_audio_api::context::ConcreteBaseAudioContext::current_time(api_that),
                     )
                 })())
             }
@@ -5620,7 +5612,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_destination_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
-                        web_audio_api::context::ConcreteBaseAudioContext::destination(&api_that),
+                        web_audio_api::context::ConcreteBaseAudioContext::destination(api_that),
                     )
                 })())
             }
@@ -5670,7 +5662,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_listener_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::context::ConcreteBaseAudioContext::listener(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -5730,7 +5722,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_mark_cycle_breaker_imp
                     let api_reg = &*api_reg_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::context::ConcreteBaseAudioContext::mark_cycle_breaker(
-                            &api_that, &api_reg,
+                            api_that, api_reg,
                         );
                     })
                 })())
@@ -5781,7 +5773,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_sample_rate_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
-                        web_audio_api::context::ConcreteBaseAudioContext::sample_rate(&api_that),
+                        web_audio_api::context::ConcreteBaseAudioContext::sample_rate(api_that),
                     )
                 })())
             }
@@ -5831,7 +5823,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_state_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::context::ConcreteBaseAudioContext::state(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -5881,7 +5873,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_base_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::context::OfflineAudioContext::base(&api_that);
+                        web_audio_api::context::OfflineAudioContext::base(api_that);
                     })
                 })())
             }
@@ -5931,7 +5923,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_clear_oncomplete_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::context::OfflineAudioContext::clear_oncomplete(&api_that);
+                        web_audio_api::context::OfflineAudioContext::clear_oncomplete(api_that);
                     })
                 })())
             }
@@ -5981,7 +5973,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_clear_onstatechange_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::context::OfflineAudioContext::clear_onstatechange(&api_that);
+                        web_audio_api::context::OfflineAudioContext::clear_onstatechange(api_that);
                     })
                 })())
             }
@@ -6031,7 +6023,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_create_analyser_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
-                        web_audio_api::context::OfflineAudioContext::create_analyser(&api_that),
+                        web_audio_api::context::OfflineAudioContext::create_analyser(api_that),
                     )
                 })())
             }
@@ -6092,7 +6084,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_create_audio_param_impl(
                     let api_dest = &*api_dest_decoded.unwrap();
                     Result::<_, ()>::Ok(
                         web_audio_api::context::OfflineAudioContext::create_audio_param(
-                            &api_that, api_opts, &api_dest,
+                            api_that, api_opts, api_dest,
                         ),
                     )
                 })())
@@ -6143,9 +6135,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_create_biquad_filter_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
-                        web_audio_api::context::OfflineAudioContext::create_biquad_filter(
-                            &api_that,
-                        ),
+                        web_audio_api::context::OfflineAudioContext::create_biquad_filter(api_that),
                     )
                 })())
             }
@@ -6198,7 +6188,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_create_buffer_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::context::OfflineAudioContext::create_buffer(
-                        &api_that,
+                        api_that,
                         api_number_of_channels,
                         api_length,
                         api_sample_rate,
@@ -6251,9 +6241,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_create_buffer_source_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
-                        web_audio_api::context::OfflineAudioContext::create_buffer_source(
-                            &api_that,
-                        ),
+                        web_audio_api::context::OfflineAudioContext::create_buffer_source(api_that),
                     )
                 })())
             }
@@ -6305,7 +6293,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_create_channel_merger_impl(
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
                         web_audio_api::context::OfflineAudioContext::create_channel_merger(
-                            &api_that,
+                            api_that,
                             api_number_of_inputs,
                         ),
                     )
@@ -6359,7 +6347,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_create_channel_splitter_imp
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
                         web_audio_api::context::OfflineAudioContext::create_channel_splitter(
-                            &api_that,
+                            api_that,
                             api_number_of_outputs,
                         ),
                     )
@@ -6412,7 +6400,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_create_constant_source_impl
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
                         web_audio_api::context::OfflineAudioContext::create_constant_source(
-                            &api_that,
+                            api_that,
                         ),
                     )
                 })())
@@ -6463,7 +6451,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_create_convolver_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
-                        web_audio_api::context::OfflineAudioContext::create_convolver(&api_that),
+                        web_audio_api::context::OfflineAudioContext::create_convolver(api_that),
                     )
                 })())
             }
@@ -6514,7 +6502,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_create_delay_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::context::OfflineAudioContext::create_delay(
-                        &api_that,
+                        api_that,
                         api_max_delay_time,
                     ))
                 })())
@@ -6566,7 +6554,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_create_dynamics_compressor_
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
                         web_audio_api::context::OfflineAudioContext::create_dynamics_compressor(
-                            &api_that,
+                            api_that,
                         ),
                     )
                 })())
@@ -6617,7 +6605,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_create_gain_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::context::OfflineAudioContext::create_gain(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -6670,7 +6658,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_create_iir_filter_impl(
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
                         web_audio_api::context::OfflineAudioContext::create_iir_filter(
-                            &api_that,
+                            api_that,
                             api_feedforward,
                             api_feedback,
                         ),
@@ -6723,7 +6711,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_create_oscillator_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
-                        web_audio_api::context::OfflineAudioContext::create_oscillator(&api_that),
+                        web_audio_api::context::OfflineAudioContext::create_oscillator(api_that),
                     )
                 })())
             }
@@ -6773,7 +6761,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_create_panner_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::context::OfflineAudioContext::create_panner(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -6825,7 +6813,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_create_periodic_wave_impl(
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
                         web_audio_api::context::OfflineAudioContext::create_periodic_wave(
-                            &api_that,
+                            api_that,
                             api_options,
                         ),
                     )
@@ -6881,7 +6869,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_create_script_processor_imp
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
                         web_audio_api::context::OfflineAudioContext::create_script_processor(
-                            &api_that,
+                            api_that,
                             api_buffer_size,
                             api_number_of_input_channels,
                             api_number_of_output_channels,
@@ -6935,9 +6923,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_create_stereo_panner_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
-                        web_audio_api::context::OfflineAudioContext::create_stereo_panner(
-                            &api_that,
-                        ),
+                        web_audio_api::context::OfflineAudioContext::create_stereo_panner(api_that),
                     )
                 })())
             }
@@ -6987,7 +6973,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_create_wave_shaper_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
-                        web_audio_api::context::OfflineAudioContext::create_wave_shaper(&api_that),
+                        web_audio_api::context::OfflineAudioContext::create_wave_shaper(api_that),
                     )
                 })())
             }
@@ -7037,7 +7023,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_current_time_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::context::OfflineAudioContext::current_time(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -7087,7 +7073,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_destination_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::context::OfflineAudioContext::destination(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -7137,7 +7123,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_length_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::context::OfflineAudioContext::length(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -7187,7 +7173,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_listener_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::context::OfflineAudioContext::listener(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -7279,7 +7265,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_resume_impl(
                         }
                         let api_that = &*api_that_decoded.unwrap();
                         Result::<_, ()>::Ok({
-                            web_audio_api::context::OfflineAudioContext::resume(&api_that).await;
+                            web_audio_api::context::OfflineAudioContext::resume(api_that).await;
                         })
                     })()
                     .await,
@@ -7331,7 +7317,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_sample_rate_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::context::OfflineAudioContext::sample_rate(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -7385,7 +7371,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_start_rendering_impl(
                         }
                         let api_that = &*api_that_decoded.unwrap();
                         Result::<_, ()>::Ok(
-                            web_audio_api::context::OfflineAudioContext::start_rendering(&api_that)
+                            web_audio_api::context::OfflineAudioContext::start_rendering(api_that)
                                 .await,
                         )
                     })()
@@ -7438,9 +7424,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_start_rendering_sync_impl(
                     }
                     let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
-                        web_audio_api::context::OfflineAudioContext::start_rendering_sync(
-                            &mut api_that,
-                        ),
+                        web_audio_api::context::OfflineAudioContext::start_rendering_sync(api_that),
                     )
                 })())
             }
@@ -7490,7 +7474,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_state_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::context::OfflineAudioContext::state(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -7546,7 +7530,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_suspend_impl(
                         let api_that = &*api_that_decoded.unwrap();
                         Result::<_, ()>::Ok({
                             web_audio_api::context::OfflineAudioContext::suspend(
-                                &api_that,
+                                api_that,
                                 api_suspend_time,
                             )
                             .await;
@@ -7921,7 +7905,7 @@ fn wire__web_audio_api__media_recorder__MediaRecorder_clear_ondataavailable_impl
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::media_recorder::MediaRecorder::clear_ondataavailable(
-                            &api_that,
+                            api_that,
                         );
                     })
                 })())
@@ -7972,7 +7956,7 @@ fn wire__web_audio_api__media_recorder__MediaRecorder_clear_onerror_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::media_recorder::MediaRecorder::clear_onerror(&api_that);
+                        web_audio_api::media_recorder::MediaRecorder::clear_onerror(api_that);
                     })
                 })())
             }
@@ -8022,7 +8006,7 @@ fn wire__web_audio_api__media_recorder__MediaRecorder_clear_onstop_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::media_recorder::MediaRecorder::clear_onstop(&api_that);
+                        web_audio_api::media_recorder::MediaRecorder::clear_onstop(api_that);
                     })
                 })())
             }
@@ -8074,7 +8058,7 @@ fn wire__web_audio_api__media_recorder__MediaRecorder_new_impl(
                     }
                     let api_stream = &*api_stream_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::media_recorder::MediaRecorder::new(
-                        &api_stream,
+                        api_stream,
                     ))
                 })())
             }
@@ -8124,7 +8108,7 @@ fn wire__web_audio_api__media_recorder__MediaRecorder_start_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::media_recorder::MediaRecorder::start(&api_that);
+                        web_audio_api::media_recorder::MediaRecorder::start(api_that);
                     })
                 })())
             }
@@ -8174,7 +8158,7 @@ fn wire__web_audio_api__media_recorder__MediaRecorder_stop_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::media_recorder::MediaRecorder::stop(&api_that);
+                        web_audio_api::media_recorder::MediaRecorder::stop(api_that);
                     })
                 })())
             }
@@ -8224,7 +8208,7 @@ fn wire__web_audio_api__media_streams__MediaStreamTrack_close_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::media_streams::MediaStreamTrack::close(&api_that);
+                        web_audio_api::media_streams::MediaStreamTrack::close(api_that);
                     })
                 })())
             }
@@ -8274,7 +8258,7 @@ fn wire__web_audio_api__media_streams__MediaStreamTrack_ready_state_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
-                        web_audio_api::media_streams::MediaStreamTrack::ready_state(&api_that),
+                        web_audio_api::media_streams::MediaStreamTrack::ready_state(api_that),
                     )
                 })())
             }
@@ -8358,7 +8342,7 @@ fn wire__web_audio_api__media_streams__MediaStream_get_tracks_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::media_streams::MediaStream::get_tracks(&api_that);
+                        web_audio_api::media_streams::MediaStream::get_tracks(api_that);
                     })
                 })())
             }
@@ -8408,7 +8392,7 @@ fn wire__web_audio_api__node__AnalyserNode_channel_config_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::AnalyserNode::channel_config(&api_that);
+                        web_audio_api::node::AnalyserNode::channel_config(api_that);
                     })
                 })())
             }
@@ -8457,7 +8441,7 @@ fn wire__web_audio_api__node__AnalyserNode_channel_count_impl(
                         }
                     }
                     let api_that = &*api_that_decoded.unwrap();
-                    Result::<_, ()>::Ok(web_audio_api::node::AnalyserNode::channel_count(&api_that))
+                    Result::<_, ()>::Ok(web_audio_api::node::AnalyserNode::channel_count(api_that))
                 })())
             }
         },
@@ -8506,7 +8490,7 @@ fn wire__web_audio_api__node__AnalyserNode_channel_count_mode_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::node::AnalyserNode::channel_count_mode(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -8556,7 +8540,7 @@ fn wire__web_audio_api__node__AnalyserNode_channel_interpretation_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::node::AnalyserNode::channel_interpretation(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -8606,7 +8590,7 @@ fn wire__web_audio_api__node__AnalyserNode_clear_onprocessorerror_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::AnalyserNode::clear_onprocessorerror(&api_that);
+                        web_audio_api::node::AnalyserNode::clear_onprocessorerror(api_that);
                     })
                 })())
             }
@@ -8656,7 +8640,7 @@ fn wire__web_audio_api__node__AnalyserNode_context_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::AnalyserNode::context(&api_that);
+                        web_audio_api::node::AnalyserNode::context(api_that);
                     })
                 })())
             }
@@ -8706,7 +8690,7 @@ fn wire__web_audio_api__node__AnalyserNode_disconnect_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::AnalyserNode::disconnect(&api_that);
+                        web_audio_api::node::AnalyserNode::disconnect(api_that);
                     })
                 })())
             }
@@ -8757,7 +8741,7 @@ fn wire__web_audio_api__node__AnalyserNode_disconnect_output_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::AnalyserNode::disconnect_output(&api_that, api_output);
+                        web_audio_api::node::AnalyserNode::disconnect_output(api_that, api_output);
                     })
                 })())
             }
@@ -8806,7 +8790,7 @@ fn wire__web_audio_api__node__AnalyserNode_fft_size_impl(
                         }
                     }
                     let api_that = &*api_that_decoded.unwrap();
-                    Result::<_, ()>::Ok(web_audio_api::node::AnalyserNode::fft_size(&api_that))
+                    Result::<_, ()>::Ok(web_audio_api::node::AnalyserNode::fft_size(api_that))
                 })())
             }
         },
@@ -8863,9 +8847,7 @@ fn wire__web_audio_api__node__AnalyserNode_frb_override_connect_impl(
                     let api_that = &*api_that_decoded.unwrap();
                     let api_dest = &*api_dest_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::AnalyserNode::frb_override_connect(
-                            &api_that, api_dest,
-                        );
+                        web_audio_api::node::AnalyserNode::frb_override_connect(api_that, api_dest);
                     })
                 })())
             }
@@ -8915,7 +8897,7 @@ fn wire__web_audio_api__node__AnalyserNode_frequency_bin_count_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::node::AnalyserNode::frequency_bin_count(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -8964,7 +8946,7 @@ fn wire__web_audio_api__node__AnalyserNode_max_decibels_impl(
                         }
                     }
                     let api_that = &*api_that_decoded.unwrap();
-                    Result::<_, ()>::Ok(web_audio_api::node::AnalyserNode::max_decibels(&api_that))
+                    Result::<_, ()>::Ok(web_audio_api::node::AnalyserNode::max_decibels(api_that))
                 })())
             }
         },
@@ -9012,7 +8994,7 @@ fn wire__web_audio_api__node__AnalyserNode_min_decibels_impl(
                         }
                     }
                     let api_that = &*api_that_decoded.unwrap();
-                    Result::<_, ()>::Ok(web_audio_api::node::AnalyserNode::min_decibels(&api_that))
+                    Result::<_, ()>::Ok(web_audio_api::node::AnalyserNode::min_decibels(api_that))
                 })())
             }
         },
@@ -9061,7 +9043,7 @@ fn wire__web_audio_api__node__AnalyserNode_number_of_inputs_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::node::AnalyserNode::number_of_inputs(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -9111,7 +9093,7 @@ fn wire__web_audio_api__node__AnalyserNode_number_of_outputs_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::node::AnalyserNode::number_of_outputs(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -9161,7 +9143,7 @@ fn wire__web_audio_api__node__AnalyserNode_registration_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::AnalyserNode::registration(&api_that);
+                        web_audio_api::node::AnalyserNode::registration(api_that);
                     })
                 })())
             }
@@ -9212,7 +9194,7 @@ fn wire__web_audio_api__node__AnalyserNode_set_channel_count_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::AnalyserNode::set_channel_count(&api_that, api_v);
+                        web_audio_api::node::AnalyserNode::set_channel_count(api_that, api_v);
                     })
                 })())
             }
@@ -9263,7 +9245,7 @@ fn wire__web_audio_api__node__AnalyserNode_set_channel_count_mode_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::AnalyserNode::set_channel_count_mode(&api_that, api_v);
+                        web_audio_api::node::AnalyserNode::set_channel_count_mode(api_that, api_v);
                     })
                 })())
             }
@@ -9315,7 +9297,7 @@ fn wire__web_audio_api__node__AnalyserNode_set_channel_interpretation_impl(
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::AnalyserNode::set_channel_interpretation(
-                            &api_that, api_v,
+                            api_that, api_v,
                         );
                     })
                 })())
@@ -9367,10 +9349,7 @@ fn wire__web_audio_api__node__AnalyserNode_set_fft_size_impl(
                     }
                     let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::AnalyserNode::set_fft_size(
-                            &mut api_that,
-                            api_fft_size,
-                        );
+                        web_audio_api::node::AnalyserNode::set_fft_size(api_that, api_fft_size);
                     })
                 })())
             }
@@ -9421,10 +9400,7 @@ fn wire__web_audio_api__node__AnalyserNode_set_max_decibels_impl(
                     }
                     let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::AnalyserNode::set_max_decibels(
-                            &mut api_that,
-                            api_value,
-                        );
+                        web_audio_api::node::AnalyserNode::set_max_decibels(api_that, api_value);
                     })
                 })())
             }
@@ -9475,10 +9451,7 @@ fn wire__web_audio_api__node__AnalyserNode_set_min_decibels_impl(
                     }
                     let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::AnalyserNode::set_min_decibels(
-                            &mut api_that,
-                            api_value,
-                        );
+                        web_audio_api::node::AnalyserNode::set_min_decibels(api_that, api_value);
                     })
                 })())
             }
@@ -9530,8 +9503,7 @@ fn wire__web_audio_api__node__AnalyserNode_set_smoothing_time_constant_impl(
                     let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::AnalyserNode::set_smoothing_time_constant(
-                            &mut api_that,
-                            api_value,
+                            api_that, api_value,
                         );
                     })
                 })())
@@ -9582,7 +9554,7 @@ fn wire__web_audio_api__node__AnalyserNode_smoothing_time_constant_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::node::AnalyserNode::smoothing_time_constant(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -9632,7 +9604,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_channel_config_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::AudioBufferSourceNode::channel_config(&api_that);
+                        web_audio_api::node::AudioBufferSourceNode::channel_config(api_that);
                     })
                 })())
             }
@@ -9682,7 +9654,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_channel_count_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::node::AudioBufferSourceNode::channel_count(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -9732,7 +9704,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_channel_count_mode_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
-                        web_audio_api::node::AudioBufferSourceNode::channel_count_mode(&api_that),
+                        web_audio_api::node::AudioBufferSourceNode::channel_count_mode(api_that),
                     )
                 })())
             }
@@ -9783,7 +9755,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_channel_interpretation_impl(
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
                         web_audio_api::node::AudioBufferSourceNode::channel_interpretation(
-                            &api_that,
+                            api_that,
                         ),
                     )
                 })())
@@ -9834,7 +9806,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_clear_onended_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::AudioBufferSourceNode::clear_onended(&api_that);
+                        web_audio_api::node::AudioBufferSourceNode::clear_onended(api_that);
                     })
                 })())
             }
@@ -9885,7 +9857,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_clear_onprocessorerror_impl(
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::AudioBufferSourceNode::clear_onprocessorerror(
-                            &api_that,
+                            api_that,
                         );
                     })
                 })())
@@ -9936,7 +9908,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_context_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::AudioBufferSourceNode::context(&api_that);
+                        web_audio_api::node::AudioBufferSourceNode::context(api_that);
                     })
                 })())
             }
@@ -9986,7 +9958,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_disconnect_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::AudioBufferSourceNode::disconnect(&api_that);
+                        web_audio_api::node::AudioBufferSourceNode::disconnect(api_that);
                     })
                 })())
             }
@@ -10038,7 +10010,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_disconnect_output_impl(
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::AudioBufferSourceNode::disconnect_output(
-                            &api_that, api_output,
+                            api_that, api_output,
                         );
                     })
                 })())
@@ -10098,7 +10070,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_frb_override_connect_impl(
                     let api_dest = &*api_dest_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::AudioBufferSourceNode::frb_override_connect(
-                            &api_that, api_dest,
+                            api_that, api_dest,
                         );
                     })
                 })())
@@ -10148,9 +10120,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_loop__impl(
                         }
                     }
                     let api_that = &*api_that_decoded.unwrap();
-                    Result::<_, ()>::Ok(web_audio_api::node::AudioBufferSourceNode::loop_(
-                        &api_that,
-                    ))
+                    Result::<_, ()>::Ok(web_audio_api::node::AudioBufferSourceNode::loop_(api_that))
                 })())
             }
         },
@@ -10199,7 +10169,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_loop_end_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::node::AudioBufferSourceNode::loop_end(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -10249,7 +10219,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_loop_start_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::node::AudioBufferSourceNode::loop_start(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -10299,7 +10269,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_number_of_inputs_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
-                        web_audio_api::node::AudioBufferSourceNode::number_of_inputs(&api_that),
+                        web_audio_api::node::AudioBufferSourceNode::number_of_inputs(api_that),
                     )
                 })())
             }
@@ -10349,7 +10319,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_number_of_outputs_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
-                        web_audio_api::node::AudioBufferSourceNode::number_of_outputs(&api_that),
+                        web_audio_api::node::AudioBufferSourceNode::number_of_outputs(api_that),
                     )
                 })())
             }
@@ -10399,7 +10369,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_position_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::node::AudioBufferSourceNode::position(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -10449,7 +10419,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_registration_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::AudioBufferSourceNode::registration(&api_that);
+                        web_audio_api::node::AudioBufferSourceNode::registration(api_that);
                     })
                 })())
             }
@@ -10501,7 +10471,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_set_buffer_impl(
                     let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::AudioBufferSourceNode::set_buffer(
-                            &mut api_that,
+                            api_that,
                             api_audio_buffer,
                         );
                     })
@@ -10555,7 +10525,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_set_channel_count_impl(
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::AudioBufferSourceNode::set_channel_count(
-                            &api_that, api_v,
+                            api_that, api_v,
                         );
                     })
                 })())
@@ -10608,7 +10578,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_set_channel_count_mode_impl(
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::AudioBufferSourceNode::set_channel_count_mode(
-                            &api_that, api_v,
+                            api_that, api_v,
                         );
                     })
                 })())
@@ -10661,7 +10631,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_set_channel_interpretation_i
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::AudioBufferSourceNode::set_channel_interpretation(
-                            &api_that, api_v,
+                            api_that, api_v,
                         );
                     })
                 })())
@@ -10713,10 +10683,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_set_loop_impl(
                     }
                     let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::AudioBufferSourceNode::set_loop(
-                            &mut api_that,
-                            api_value,
-                        );
+                        web_audio_api::node::AudioBufferSourceNode::set_loop(api_that, api_value);
                     })
                 })())
             }
@@ -10768,8 +10735,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_set_loop_end_impl(
                     let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::AudioBufferSourceNode::set_loop_end(
-                            &mut api_that,
-                            api_value,
+                            api_that, api_value,
                         );
                     })
                 })())
@@ -10822,8 +10788,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_set_loop_start_impl(
                     let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::AudioBufferSourceNode::set_loop_start(
-                            &mut api_that,
-                            api_value,
+                            api_that, api_value,
                         );
                     })
                 })())
@@ -10874,7 +10839,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_start_impl(
                     }
                     let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::AudioBufferSourceNode::start(&mut api_that);
+                        web_audio_api::node::AudioBufferSourceNode::start(api_that);
                     })
                 })())
             }
@@ -10925,10 +10890,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_start_at_impl(
                     }
                     let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::AudioBufferSourceNode::start_at(
-                            &mut api_that,
-                            api_when,
-                        );
+                        web_audio_api::node::AudioBufferSourceNode::start_at(api_that, api_when);
                     })
                 })())
             }
@@ -10981,9 +10943,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_start_at_with_offset_impl(
                     let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::AudioBufferSourceNode::start_at_with_offset(
-                            &mut api_that,
-                            api_start,
-                            api_offset,
+                            api_that, api_start, api_offset,
                         );
                     })
                 })())
@@ -11014,7 +10974,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let mut api_that = &mut *api_that_decoded.unwrap();
- Result::<_,()>::Ok({ web_audio_api::node::AudioBufferSourceNode::start_at_with_offset_and_duration(&mut api_that, api_start, api_offset, api_duration); })
+ Result::<_,()>::Ok({ web_audio_api::node::AudioBufferSourceNode::start_at_with_offset_and_duration(api_that, api_start, api_offset, api_duration); })
                     })())
                 } })
 }
@@ -11061,7 +11021,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_stop_impl(
                     }
                     let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::AudioBufferSourceNode::stop(&mut api_that);
+                        web_audio_api::node::AudioBufferSourceNode::stop(api_that);
                     })
                 })())
             }
@@ -11112,10 +11072,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_stop_at_impl(
                     }
                     let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::AudioBufferSourceNode::stop_at(
-                            &mut api_that,
-                            api_when,
-                        );
+                        web_audio_api::node::AudioBufferSourceNode::stop_at(api_that, api_when);
                     })
                 })())
             }
@@ -11165,7 +11122,7 @@ fn wire__web_audio_api__node__AudioDestinationNode_channel_config_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::AudioDestinationNode::channel_config(&api_that);
+                        web_audio_api::node::AudioDestinationNode::channel_config(api_that);
                     })
                 })())
             }
@@ -11215,7 +11172,7 @@ fn wire__web_audio_api__node__AudioDestinationNode_channel_count_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::node::AudioDestinationNode::channel_count(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -11265,7 +11222,7 @@ fn wire__web_audio_api__node__AudioDestinationNode_channel_count_mode_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
-                        web_audio_api::node::AudioDestinationNode::channel_count_mode(&api_that),
+                        web_audio_api::node::AudioDestinationNode::channel_count_mode(api_that),
                     )
                 })())
             }
@@ -11315,9 +11272,7 @@ fn wire__web_audio_api__node__AudioDestinationNode_channel_interpretation_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
-                        web_audio_api::node::AudioDestinationNode::channel_interpretation(
-                            &api_that,
-                        ),
+                        web_audio_api::node::AudioDestinationNode::channel_interpretation(api_that),
                     )
                 })())
             }
@@ -11367,9 +11322,7 @@ fn wire__web_audio_api__node__AudioDestinationNode_clear_onprocessorerror_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::AudioDestinationNode::clear_onprocessorerror(
-                            &api_that,
-                        );
+                        web_audio_api::node::AudioDestinationNode::clear_onprocessorerror(api_that);
                     })
                 })())
             }
@@ -11419,7 +11372,7 @@ fn wire__web_audio_api__node__AudioDestinationNode_context_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::AudioDestinationNode::context(&api_that);
+                        web_audio_api::node::AudioDestinationNode::context(api_that);
                     })
                 })())
             }
@@ -11469,7 +11422,7 @@ fn wire__web_audio_api__node__AudioDestinationNode_disconnect_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::AudioDestinationNode::disconnect(&api_that);
+                        web_audio_api::node::AudioDestinationNode::disconnect(api_that);
                     })
                 })())
             }
@@ -11521,7 +11474,7 @@ fn wire__web_audio_api__node__AudioDestinationNode_disconnect_output_impl(
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::AudioDestinationNode::disconnect_output(
-                            &api_that, api_output,
+                            api_that, api_output,
                         );
                     })
                 })())
@@ -11581,7 +11534,7 @@ fn wire__web_audio_api__node__AudioDestinationNode_frb_override_connect_impl(
                     let api_dest = &*api_dest_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::AudioDestinationNode::frb_override_connect(
-                            &api_that, api_dest,
+                            api_that, api_dest,
                         );
                     })
                 })())
@@ -11632,7 +11585,7 @@ fn wire__web_audio_api__node__AudioDestinationNode_max_channel_count_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
-                        web_audio_api::node::AudioDestinationNode::max_channel_count(&api_that),
+                        web_audio_api::node::AudioDestinationNode::max_channel_count(api_that),
                     )
                 })())
             }
@@ -11682,7 +11635,7 @@ fn wire__web_audio_api__node__AudioDestinationNode_number_of_inputs_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
-                        web_audio_api::node::AudioDestinationNode::number_of_inputs(&api_that),
+                        web_audio_api::node::AudioDestinationNode::number_of_inputs(api_that),
                     )
                 })())
             }
@@ -11732,7 +11685,7 @@ fn wire__web_audio_api__node__AudioDestinationNode_number_of_outputs_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
-                        web_audio_api::node::AudioDestinationNode::number_of_outputs(&api_that),
+                        web_audio_api::node::AudioDestinationNode::number_of_outputs(api_that),
                     )
                 })())
             }
@@ -11782,7 +11735,7 @@ fn wire__web_audio_api__node__AudioDestinationNode_registration_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::AudioDestinationNode::registration(&api_that);
+                        web_audio_api::node::AudioDestinationNode::registration(api_that);
                     })
                 })())
             }
@@ -11834,7 +11787,7 @@ fn wire__web_audio_api__node__AudioDestinationNode_set_channel_count_impl(
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::AudioDestinationNode::set_channel_count(
-                            &api_that, api_v,
+                            api_that, api_v,
                         );
                     })
                 })())
@@ -11887,7 +11840,7 @@ fn wire__web_audio_api__node__AudioDestinationNode_set_channel_count_mode_impl(
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::AudioDestinationNode::set_channel_count_mode(
-                            &api_that, api_v,
+                            api_that, api_v,
                         );
                     })
                 })())
@@ -11940,7 +11893,7 @@ fn wire__web_audio_api__node__AudioDestinationNode_set_channel_interpretation_im
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::AudioDestinationNode::set_channel_interpretation(
-                            &api_that, api_v,
+                            api_that, api_v,
                         );
                     })
                 })())
@@ -11991,7 +11944,7 @@ fn wire__web_audio_api__node__BiquadFilterNode_channel_config_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::BiquadFilterNode::channel_config(&api_that);
+                        web_audio_api::node::BiquadFilterNode::channel_config(api_that);
                     })
                 })())
             }
@@ -12041,7 +11994,7 @@ fn wire__web_audio_api__node__BiquadFilterNode_channel_count_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::node::BiquadFilterNode::channel_count(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -12091,7 +12044,7 @@ fn wire__web_audio_api__node__BiquadFilterNode_channel_count_mode_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::node::BiquadFilterNode::channel_count_mode(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -12141,7 +12094,7 @@ fn wire__web_audio_api__node__BiquadFilterNode_channel_interpretation_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
-                        web_audio_api::node::BiquadFilterNode::channel_interpretation(&api_that),
+                        web_audio_api::node::BiquadFilterNode::channel_interpretation(api_that),
                     )
                 })())
             }
@@ -12191,7 +12144,7 @@ fn wire__web_audio_api__node__BiquadFilterNode_clear_onprocessorerror_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::BiquadFilterNode::clear_onprocessorerror(&api_that);
+                        web_audio_api::node::BiquadFilterNode::clear_onprocessorerror(api_that);
                     })
                 })())
             }
@@ -12241,7 +12194,7 @@ fn wire__web_audio_api__node__BiquadFilterNode_context_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::BiquadFilterNode::context(&api_that);
+                        web_audio_api::node::BiquadFilterNode::context(api_that);
                     })
                 })())
             }
@@ -12291,7 +12244,7 @@ fn wire__web_audio_api__node__BiquadFilterNode_disconnect_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::BiquadFilterNode::disconnect(&api_that);
+                        web_audio_api::node::BiquadFilterNode::disconnect(api_that);
                     })
                 })())
             }
@@ -12343,7 +12296,7 @@ fn wire__web_audio_api__node__BiquadFilterNode_disconnect_output_impl(
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::BiquadFilterNode::disconnect_output(
-                            &api_that, api_output,
+                            api_that, api_output,
                         );
                     })
                 })())
@@ -12403,7 +12356,7 @@ fn wire__web_audio_api__node__BiquadFilterNode_frb_override_connect_impl(
                     let api_dest = &*api_dest_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::BiquadFilterNode::frb_override_connect(
-                            &api_that, api_dest,
+                            api_that, api_dest,
                         );
                     })
                 })())
@@ -12454,7 +12407,7 @@ fn wire__web_audio_api__node__BiquadFilterNode_number_of_inputs_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::node::BiquadFilterNode::number_of_inputs(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -12504,7 +12457,7 @@ fn wire__web_audio_api__node__BiquadFilterNode_number_of_outputs_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::node::BiquadFilterNode::number_of_outputs(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -12554,7 +12507,7 @@ fn wire__web_audio_api__node__BiquadFilterNode_registration_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::BiquadFilterNode::registration(&api_that);
+                        web_audio_api::node::BiquadFilterNode::registration(api_that);
                     })
                 })())
             }
@@ -12605,7 +12558,7 @@ fn wire__web_audio_api__node__BiquadFilterNode_set_channel_count_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::BiquadFilterNode::set_channel_count(&api_that, api_v);
+                        web_audio_api::node::BiquadFilterNode::set_channel_count(api_that, api_v);
                     })
                 })())
             }
@@ -12657,7 +12610,7 @@ fn wire__web_audio_api__node__BiquadFilterNode_set_channel_count_mode_impl(
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::BiquadFilterNode::set_channel_count_mode(
-                            &api_that, api_v,
+                            api_that, api_v,
                         );
                     })
                 })())
@@ -12710,7 +12663,7 @@ fn wire__web_audio_api__node__BiquadFilterNode_set_channel_interpretation_impl(
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::BiquadFilterNode::set_channel_interpretation(
-                            &api_that, api_v,
+                            api_that, api_v,
                         );
                     })
                 })())
@@ -12762,7 +12715,7 @@ fn wire__web_audio_api__node__BiquadFilterNode_set_type_impl(
                     }
                     let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::BiquadFilterNode::set_type(&mut api_that, api_type_);
+                        web_audio_api::node::BiquadFilterNode::set_type(api_that, api_type_);
                     })
                 })())
             }
@@ -12811,7 +12764,7 @@ fn wire__web_audio_api__node__BiquadFilterNode_type__impl(
                         }
                     }
                     let api_that = &*api_that_decoded.unwrap();
-                    Result::<_, ()>::Ok(web_audio_api::node::BiquadFilterNode::type_(&api_that))
+                    Result::<_, ()>::Ok(web_audio_api::node::BiquadFilterNode::type_(api_that))
                 })())
             }
         },
@@ -12860,7 +12813,7 @@ fn wire__web_audio_api__node__ChannelMergerNode_channel_config_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::ChannelMergerNode::channel_config(&api_that);
+                        web_audio_api::node::ChannelMergerNode::channel_config(api_that);
                     })
                 })())
             }
@@ -12910,7 +12863,7 @@ fn wire__web_audio_api__node__ChannelMergerNode_channel_count_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::node::ChannelMergerNode::channel_count(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -12960,7 +12913,7 @@ fn wire__web_audio_api__node__ChannelMergerNode_channel_count_mode_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::node::ChannelMergerNode::channel_count_mode(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -13010,7 +12963,7 @@ fn wire__web_audio_api__node__ChannelMergerNode_channel_interpretation_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
-                        web_audio_api::node::ChannelMergerNode::channel_interpretation(&api_that),
+                        web_audio_api::node::ChannelMergerNode::channel_interpretation(api_that),
                     )
                 })())
             }
@@ -13060,7 +13013,7 @@ fn wire__web_audio_api__node__ChannelMergerNode_clear_onprocessorerror_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::ChannelMergerNode::clear_onprocessorerror(&api_that);
+                        web_audio_api::node::ChannelMergerNode::clear_onprocessorerror(api_that);
                     })
                 })())
             }
@@ -13110,7 +13063,7 @@ fn wire__web_audio_api__node__ChannelMergerNode_context_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::ChannelMergerNode::context(&api_that);
+                        web_audio_api::node::ChannelMergerNode::context(api_that);
                     })
                 })())
             }
@@ -13160,7 +13113,7 @@ fn wire__web_audio_api__node__ChannelMergerNode_disconnect_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::ChannelMergerNode::disconnect(&api_that);
+                        web_audio_api::node::ChannelMergerNode::disconnect(api_that);
                     })
                 })())
             }
@@ -13212,7 +13165,7 @@ fn wire__web_audio_api__node__ChannelMergerNode_disconnect_output_impl(
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::ChannelMergerNode::disconnect_output(
-                            &api_that, api_output,
+                            api_that, api_output,
                         );
                     })
                 })())
@@ -13272,7 +13225,7 @@ fn wire__web_audio_api__node__ChannelMergerNode_frb_override_connect_impl(
                     let api_dest = &*api_dest_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::ChannelMergerNode::frb_override_connect(
-                            &api_that, api_dest,
+                            api_that, api_dest,
                         );
                     })
                 })())
@@ -13323,7 +13276,7 @@ fn wire__web_audio_api__node__ChannelMergerNode_number_of_inputs_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::node::ChannelMergerNode::number_of_inputs(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -13373,7 +13326,7 @@ fn wire__web_audio_api__node__ChannelMergerNode_number_of_outputs_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::node::ChannelMergerNode::number_of_outputs(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -13423,7 +13376,7 @@ fn wire__web_audio_api__node__ChannelMergerNode_registration_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::ChannelMergerNode::registration(&api_that);
+                        web_audio_api::node::ChannelMergerNode::registration(api_that);
                     })
                 })())
             }
@@ -13474,7 +13427,7 @@ fn wire__web_audio_api__node__ChannelMergerNode_set_channel_count_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::ChannelMergerNode::set_channel_count(&api_that, api_v);
+                        web_audio_api::node::ChannelMergerNode::set_channel_count(api_that, api_v);
                     })
                 })())
             }
@@ -13526,7 +13479,7 @@ fn wire__web_audio_api__node__ChannelMergerNode_set_channel_count_mode_impl(
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::ChannelMergerNode::set_channel_count_mode(
-                            &api_that, api_v,
+                            api_that, api_v,
                         );
                     })
                 })())
@@ -13579,7 +13532,7 @@ fn wire__web_audio_api__node__ChannelMergerNode_set_channel_interpretation_impl(
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::ChannelMergerNode::set_channel_interpretation(
-                            &api_that, api_v,
+                            api_that, api_v,
                         );
                     })
                 })())
@@ -13630,7 +13583,7 @@ fn wire__web_audio_api__node__ChannelSplitterNode_channel_config_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::ChannelSplitterNode::channel_config(&api_that);
+                        web_audio_api::node::ChannelSplitterNode::channel_config(api_that);
                     })
                 })())
             }
@@ -13680,7 +13633,7 @@ fn wire__web_audio_api__node__ChannelSplitterNode_channel_count_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::node::ChannelSplitterNode::channel_count(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -13730,7 +13683,7 @@ fn wire__web_audio_api__node__ChannelSplitterNode_channel_count_mode_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
-                        web_audio_api::node::ChannelSplitterNode::channel_count_mode(&api_that),
+                        web_audio_api::node::ChannelSplitterNode::channel_count_mode(api_that),
                     )
                 })())
             }
@@ -13780,7 +13733,7 @@ fn wire__web_audio_api__node__ChannelSplitterNode_channel_interpretation_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
-                        web_audio_api::node::ChannelSplitterNode::channel_interpretation(&api_that),
+                        web_audio_api::node::ChannelSplitterNode::channel_interpretation(api_that),
                     )
                 })())
             }
@@ -13830,7 +13783,7 @@ fn wire__web_audio_api__node__ChannelSplitterNode_clear_onprocessorerror_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::ChannelSplitterNode::clear_onprocessorerror(&api_that);
+                        web_audio_api::node::ChannelSplitterNode::clear_onprocessorerror(api_that);
                     })
                 })())
             }
@@ -13880,7 +13833,7 @@ fn wire__web_audio_api__node__ChannelSplitterNode_context_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::ChannelSplitterNode::context(&api_that);
+                        web_audio_api::node::ChannelSplitterNode::context(api_that);
                     })
                 })())
             }
@@ -13930,7 +13883,7 @@ fn wire__web_audio_api__node__ChannelSplitterNode_disconnect_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::ChannelSplitterNode::disconnect(&api_that);
+                        web_audio_api::node::ChannelSplitterNode::disconnect(api_that);
                     })
                 })())
             }
@@ -13982,7 +13935,7 @@ fn wire__web_audio_api__node__ChannelSplitterNode_disconnect_output_impl(
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::ChannelSplitterNode::disconnect_output(
-                            &api_that, api_output,
+                            api_that, api_output,
                         );
                     })
                 })())
@@ -14042,7 +13995,7 @@ fn wire__web_audio_api__node__ChannelSplitterNode_frb_override_connect_impl(
                     let api_dest = &*api_dest_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::ChannelSplitterNode::frb_override_connect(
-                            &api_that, api_dest,
+                            api_that, api_dest,
                         );
                     })
                 })())
@@ -14093,7 +14046,7 @@ fn wire__web_audio_api__node__ChannelSplitterNode_number_of_inputs_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::node::ChannelSplitterNode::number_of_inputs(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -14143,7 +14096,7 @@ fn wire__web_audio_api__node__ChannelSplitterNode_number_of_outputs_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
-                        web_audio_api::node::ChannelSplitterNode::number_of_outputs(&api_that),
+                        web_audio_api::node::ChannelSplitterNode::number_of_outputs(api_that),
                     )
                 })())
             }
@@ -14193,7 +14146,7 @@ fn wire__web_audio_api__node__ChannelSplitterNode_registration_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::ChannelSplitterNode::registration(&api_that);
+                        web_audio_api::node::ChannelSplitterNode::registration(api_that);
                     })
                 })())
             }
@@ -14245,7 +14198,7 @@ fn wire__web_audio_api__node__ChannelSplitterNode_set_channel_count_impl(
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::ChannelSplitterNode::set_channel_count(
-                            &api_that, api_v,
+                            api_that, api_v,
                         );
                     })
                 })())
@@ -14298,7 +14251,7 @@ fn wire__web_audio_api__node__ChannelSplitterNode_set_channel_count_mode_impl(
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::ChannelSplitterNode::set_channel_count_mode(
-                            &api_that, api_v,
+                            api_that, api_v,
                         );
                     })
                 })())
@@ -14351,7 +14304,7 @@ fn wire__web_audio_api__node__ChannelSplitterNode_set_channel_interpretation_imp
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::ChannelSplitterNode::set_channel_interpretation(
-                            &api_that, api_v,
+                            api_that, api_v,
                         );
                     })
                 })())
@@ -14402,7 +14355,7 @@ fn wire__web_audio_api__node__ConstantSourceNode_channel_config_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::ConstantSourceNode::channel_config(&api_that);
+                        web_audio_api::node::ConstantSourceNode::channel_config(api_that);
                     })
                 })())
             }
@@ -14452,7 +14405,7 @@ fn wire__web_audio_api__node__ConstantSourceNode_channel_count_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::node::ConstantSourceNode::channel_count(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -14502,7 +14455,7 @@ fn wire__web_audio_api__node__ConstantSourceNode_channel_count_mode_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
-                        web_audio_api::node::ConstantSourceNode::channel_count_mode(&api_that),
+                        web_audio_api::node::ConstantSourceNode::channel_count_mode(api_that),
                     )
                 })())
             }
@@ -14552,7 +14505,7 @@ fn wire__web_audio_api__node__ConstantSourceNode_channel_interpretation_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
-                        web_audio_api::node::ConstantSourceNode::channel_interpretation(&api_that),
+                        web_audio_api::node::ConstantSourceNode::channel_interpretation(api_that),
                     )
                 })())
             }
@@ -14602,7 +14555,7 @@ fn wire__web_audio_api__node__ConstantSourceNode_clear_onended_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::ConstantSourceNode::clear_onended(&api_that);
+                        web_audio_api::node::ConstantSourceNode::clear_onended(api_that);
                     })
                 })())
             }
@@ -14652,7 +14605,7 @@ fn wire__web_audio_api__node__ConstantSourceNode_clear_onprocessorerror_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::ConstantSourceNode::clear_onprocessorerror(&api_that);
+                        web_audio_api::node::ConstantSourceNode::clear_onprocessorerror(api_that);
                     })
                 })())
             }
@@ -14702,7 +14655,7 @@ fn wire__web_audio_api__node__ConstantSourceNode_context_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::ConstantSourceNode::context(&api_that);
+                        web_audio_api::node::ConstantSourceNode::context(api_that);
                     })
                 })())
             }
@@ -14752,7 +14705,7 @@ fn wire__web_audio_api__node__ConstantSourceNode_disconnect_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::ConstantSourceNode::disconnect(&api_that);
+                        web_audio_api::node::ConstantSourceNode::disconnect(api_that);
                     })
                 })())
             }
@@ -14804,7 +14757,7 @@ fn wire__web_audio_api__node__ConstantSourceNode_disconnect_output_impl(
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::ConstantSourceNode::disconnect_output(
-                            &api_that, api_output,
+                            api_that, api_output,
                         );
                     })
                 })())
@@ -14864,7 +14817,7 @@ fn wire__web_audio_api__node__ConstantSourceNode_frb_override_connect_impl(
                     let api_dest = &*api_dest_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::ConstantSourceNode::frb_override_connect(
-                            &api_that, api_dest,
+                            api_that, api_dest,
                         );
                     })
                 })())
@@ -14915,7 +14868,7 @@ fn wire__web_audio_api__node__ConstantSourceNode_number_of_inputs_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::node::ConstantSourceNode::number_of_inputs(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -14965,7 +14918,7 @@ fn wire__web_audio_api__node__ConstantSourceNode_number_of_outputs_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::node::ConstantSourceNode::number_of_outputs(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -15015,7 +14968,7 @@ fn wire__web_audio_api__node__ConstantSourceNode_registration_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::ConstantSourceNode::registration(&api_that);
+                        web_audio_api::node::ConstantSourceNode::registration(api_that);
                     })
                 })())
             }
@@ -15066,9 +15019,7 @@ fn wire__web_audio_api__node__ConstantSourceNode_set_channel_count_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::ConstantSourceNode::set_channel_count(
-                            &api_that, api_v,
-                        );
+                        web_audio_api::node::ConstantSourceNode::set_channel_count(api_that, api_v);
                     })
                 })())
             }
@@ -15120,7 +15071,7 @@ fn wire__web_audio_api__node__ConstantSourceNode_set_channel_count_mode_impl(
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::ConstantSourceNode::set_channel_count_mode(
-                            &api_that, api_v,
+                            api_that, api_v,
                         );
                     })
                 })())
@@ -15173,7 +15124,7 @@ fn wire__web_audio_api__node__ConstantSourceNode_set_channel_interpretation_impl
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::ConstantSourceNode::set_channel_interpretation(
-                            &api_that, api_v,
+                            api_that, api_v,
                         );
                     })
                 })())
@@ -15224,7 +15175,7 @@ fn wire__web_audio_api__node__ConstantSourceNode_start_impl(
                     }
                     let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::ConstantSourceNode::start(&mut api_that);
+                        web_audio_api::node::ConstantSourceNode::start(api_that);
                     })
                 })())
             }
@@ -15275,7 +15226,7 @@ fn wire__web_audio_api__node__ConstantSourceNode_start_at_impl(
                     }
                     let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::ConstantSourceNode::start_at(&mut api_that, api_when);
+                        web_audio_api::node::ConstantSourceNode::start_at(api_that, api_when);
                     })
                 })())
             }
@@ -15325,7 +15276,7 @@ fn wire__web_audio_api__node__ConstantSourceNode_stop_impl(
                     }
                     let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::ConstantSourceNode::stop(&mut api_that);
+                        web_audio_api::node::ConstantSourceNode::stop(api_that);
                     })
                 })())
             }
@@ -15376,7 +15327,7 @@ fn wire__web_audio_api__node__ConstantSourceNode_stop_at_impl(
                     }
                     let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::ConstantSourceNode::stop_at(&mut api_that, api_when);
+                        web_audio_api::node::ConstantSourceNode::stop_at(api_that, api_when);
                     })
                 })())
             }
@@ -15426,7 +15377,7 @@ fn wire__web_audio_api__node__ConvolverNode_channel_config_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::ConvolverNode::channel_config(&api_that);
+                        web_audio_api::node::ConvolverNode::channel_config(api_that);
                     })
                 })())
             }
@@ -15475,9 +15426,7 @@ fn wire__web_audio_api__node__ConvolverNode_channel_count_impl(
                         }
                     }
                     let api_that = &*api_that_decoded.unwrap();
-                    Result::<_, ()>::Ok(web_audio_api::node::ConvolverNode::channel_count(
-                        &api_that,
-                    ))
+                    Result::<_, ()>::Ok(web_audio_api::node::ConvolverNode::channel_count(api_that))
                 })())
             }
         },
@@ -15526,7 +15475,7 @@ fn wire__web_audio_api__node__ConvolverNode_channel_count_mode_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::node::ConvolverNode::channel_count_mode(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -15576,7 +15525,7 @@ fn wire__web_audio_api__node__ConvolverNode_channel_interpretation_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::node::ConvolverNode::channel_interpretation(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -15626,7 +15575,7 @@ fn wire__web_audio_api__node__ConvolverNode_clear_onprocessorerror_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::ConvolverNode::clear_onprocessorerror(&api_that);
+                        web_audio_api::node::ConvolverNode::clear_onprocessorerror(api_that);
                     })
                 })())
             }
@@ -15676,7 +15625,7 @@ fn wire__web_audio_api__node__ConvolverNode_context_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::ConvolverNode::context(&api_that);
+                        web_audio_api::node::ConvolverNode::context(api_that);
                     })
                 })())
             }
@@ -15726,7 +15675,7 @@ fn wire__web_audio_api__node__ConvolverNode_disconnect_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::ConvolverNode::disconnect(&api_that);
+                        web_audio_api::node::ConvolverNode::disconnect(api_that);
                     })
                 })())
             }
@@ -15777,9 +15726,7 @@ fn wire__web_audio_api__node__ConvolverNode_disconnect_output_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::ConvolverNode::disconnect_output(
-                            &api_that, api_output,
-                        );
+                        web_audio_api::node::ConvolverNode::disconnect_output(api_that, api_output);
                     })
                 })())
             }
@@ -15838,7 +15785,7 @@ fn wire__web_audio_api__node__ConvolverNode_frb_override_connect_impl(
                     let api_dest = &*api_dest_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::ConvolverNode::frb_override_connect(
-                            &api_that, api_dest,
+                            api_that, api_dest,
                         );
                     })
                 })())
@@ -15888,7 +15835,7 @@ fn wire__web_audio_api__node__ConvolverNode_normalize_impl(
                         }
                     }
                     let api_that = &*api_that_decoded.unwrap();
-                    Result::<_, ()>::Ok(web_audio_api::node::ConvolverNode::normalize(&api_that))
+                    Result::<_, ()>::Ok(web_audio_api::node::ConvolverNode::normalize(api_that))
                 })())
             }
         },
@@ -15937,7 +15884,7 @@ fn wire__web_audio_api__node__ConvolverNode_number_of_inputs_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::node::ConvolverNode::number_of_inputs(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -15987,7 +15934,7 @@ fn wire__web_audio_api__node__ConvolverNode_number_of_outputs_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::node::ConvolverNode::number_of_outputs(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -16037,7 +15984,7 @@ fn wire__web_audio_api__node__ConvolverNode_registration_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::ConvolverNode::registration(&api_that);
+                        web_audio_api::node::ConvolverNode::registration(api_that);
                     })
                 })())
             }
@@ -16088,7 +16035,7 @@ fn wire__web_audio_api__node__ConvolverNode_set_buffer_impl(
                     }
                     let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::ConvolverNode::set_buffer(&mut api_that, api_buffer);
+                        web_audio_api::node::ConvolverNode::set_buffer(api_that, api_buffer);
                     })
                 })())
             }
@@ -16139,7 +16086,7 @@ fn wire__web_audio_api__node__ConvolverNode_set_channel_count_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::ConvolverNode::set_channel_count(&api_that, api_v);
+                        web_audio_api::node::ConvolverNode::set_channel_count(api_that, api_v);
                     })
                 })())
             }
@@ -16190,9 +16137,7 @@ fn wire__web_audio_api__node__ConvolverNode_set_channel_count_mode_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::ConvolverNode::set_channel_count_mode(
-                            &api_that, api_v,
-                        );
+                        web_audio_api::node::ConvolverNode::set_channel_count_mode(api_that, api_v);
                     })
                 })())
             }
@@ -16244,7 +16189,7 @@ fn wire__web_audio_api__node__ConvolverNode_set_channel_interpretation_impl(
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::ConvolverNode::set_channel_interpretation(
-                            &api_that, api_v,
+                            api_that, api_v,
                         );
                     })
                 })())
@@ -16296,7 +16241,7 @@ fn wire__web_audio_api__node__ConvolverNode_set_normalize_impl(
                     }
                     let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::ConvolverNode::set_normalize(&mut api_that, api_value);
+                        web_audio_api::node::ConvolverNode::set_normalize(api_that, api_value);
                     })
                 })())
             }
@@ -16346,7 +16291,7 @@ fn wire__web_audio_api__node__DelayNode_channel_config_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::DelayNode::channel_config(&api_that);
+                        web_audio_api::node::DelayNode::channel_config(api_that);
                     })
                 })())
             }
@@ -16395,7 +16340,7 @@ fn wire__web_audio_api__node__DelayNode_channel_count_impl(
                         }
                     }
                     let api_that = &*api_that_decoded.unwrap();
-                    Result::<_, ()>::Ok(web_audio_api::node::DelayNode::channel_count(&api_that))
+                    Result::<_, ()>::Ok(web_audio_api::node::DelayNode::channel_count(api_that))
                 })())
             }
         },
@@ -16444,7 +16389,7 @@ fn wire__web_audio_api__node__DelayNode_channel_count_mode_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::node::DelayNode::channel_count_mode(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -16494,7 +16439,7 @@ fn wire__web_audio_api__node__DelayNode_channel_interpretation_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::node::DelayNode::channel_interpretation(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -16544,7 +16489,7 @@ fn wire__web_audio_api__node__DelayNode_clear_onprocessorerror_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::DelayNode::clear_onprocessorerror(&api_that);
+                        web_audio_api::node::DelayNode::clear_onprocessorerror(api_that);
                     })
                 })())
             }
@@ -16594,7 +16539,7 @@ fn wire__web_audio_api__node__DelayNode_context_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::DelayNode::context(&api_that);
+                        web_audio_api::node::DelayNode::context(api_that);
                     })
                 })())
             }
@@ -16644,7 +16589,7 @@ fn wire__web_audio_api__node__DelayNode_disconnect_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::DelayNode::disconnect(&api_that);
+                        web_audio_api::node::DelayNode::disconnect(api_that);
                     })
                 })())
             }
@@ -16695,7 +16640,7 @@ fn wire__web_audio_api__node__DelayNode_disconnect_output_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::DelayNode::disconnect_output(&api_that, api_output);
+                        web_audio_api::node::DelayNode::disconnect_output(api_that, api_output);
                     })
                 })())
             }
@@ -16753,7 +16698,7 @@ fn wire__web_audio_api__node__DelayNode_frb_override_connect_impl(
                     let api_that = &*api_that_decoded.unwrap();
                     let api_dest = &*api_dest_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::DelayNode::frb_override_connect(&api_that, api_dest);
+                        web_audio_api::node::DelayNode::frb_override_connect(api_that, api_dest);
                     })
                 })())
             }
@@ -16802,7 +16747,7 @@ fn wire__web_audio_api__node__DelayNode_number_of_inputs_impl(
                         }
                     }
                     let api_that = &*api_that_decoded.unwrap();
-                    Result::<_, ()>::Ok(web_audio_api::node::DelayNode::number_of_inputs(&api_that))
+                    Result::<_, ()>::Ok(web_audio_api::node::DelayNode::number_of_inputs(api_that))
                 })())
             }
         },
@@ -16850,9 +16795,7 @@ fn wire__web_audio_api__node__DelayNode_number_of_outputs_impl(
                         }
                     }
                     let api_that = &*api_that_decoded.unwrap();
-                    Result::<_, ()>::Ok(web_audio_api::node::DelayNode::number_of_outputs(
-                        &api_that,
-                    ))
+                    Result::<_, ()>::Ok(web_audio_api::node::DelayNode::number_of_outputs(api_that))
                 })())
             }
         },
@@ -16901,7 +16844,7 @@ fn wire__web_audio_api__node__DelayNode_registration_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::DelayNode::registration(&api_that);
+                        web_audio_api::node::DelayNode::registration(api_that);
                     })
                 })())
             }
@@ -16952,7 +16895,7 @@ fn wire__web_audio_api__node__DelayNode_set_channel_count_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::DelayNode::set_channel_count(&api_that, api_v);
+                        web_audio_api::node::DelayNode::set_channel_count(api_that, api_v);
                     })
                 })())
             }
@@ -17003,7 +16946,7 @@ fn wire__web_audio_api__node__DelayNode_set_channel_count_mode_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::DelayNode::set_channel_count_mode(&api_that, api_v);
+                        web_audio_api::node::DelayNode::set_channel_count_mode(api_that, api_v);
                     })
                 })())
             }
@@ -17054,9 +16997,7 @@ fn wire__web_audio_api__node__DelayNode_set_channel_interpretation_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::DelayNode::set_channel_interpretation(
-                            &api_that, api_v,
-                        );
+                        web_audio_api::node::DelayNode::set_channel_interpretation(api_that, api_v);
                     })
                 })())
             }
@@ -17106,7 +17047,7 @@ fn wire__web_audio_api__node__DynamicsCompressorNode_channel_config_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::DynamicsCompressorNode::channel_config(&api_that);
+                        web_audio_api::node::DynamicsCompressorNode::channel_config(api_that);
                     })
                 })())
             }
@@ -17156,7 +17097,7 @@ fn wire__web_audio_api__node__DynamicsCompressorNode_channel_count_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::node::DynamicsCompressorNode::channel_count(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -17206,7 +17147,7 @@ fn wire__web_audio_api__node__DynamicsCompressorNode_channel_count_mode_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
-                        web_audio_api::node::DynamicsCompressorNode::channel_count_mode(&api_that),
+                        web_audio_api::node::DynamicsCompressorNode::channel_count_mode(api_that),
                     )
                 })())
             }
@@ -17257,7 +17198,7 @@ fn wire__web_audio_api__node__DynamicsCompressorNode_channel_interpretation_impl
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
                         web_audio_api::node::DynamicsCompressorNode::channel_interpretation(
-                            &api_that,
+                            api_that,
                         ),
                     )
                 })())
@@ -17309,7 +17250,7 @@ fn wire__web_audio_api__node__DynamicsCompressorNode_clear_onprocessorerror_impl
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::DynamicsCompressorNode::clear_onprocessorerror(
-                            &api_that,
+                            api_that,
                         );
                     })
                 })())
@@ -17360,7 +17301,7 @@ fn wire__web_audio_api__node__DynamicsCompressorNode_context_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::DynamicsCompressorNode::context(&api_that);
+                        web_audio_api::node::DynamicsCompressorNode::context(api_that);
                     })
                 })())
             }
@@ -17410,7 +17351,7 @@ fn wire__web_audio_api__node__DynamicsCompressorNode_disconnect_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::DynamicsCompressorNode::disconnect(&api_that);
+                        web_audio_api::node::DynamicsCompressorNode::disconnect(api_that);
                     })
                 })())
             }
@@ -17462,7 +17403,7 @@ fn wire__web_audio_api__node__DynamicsCompressorNode_disconnect_output_impl(
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::DynamicsCompressorNode::disconnect_output(
-                            &api_that, api_output,
+                            api_that, api_output,
                         );
                     })
                 })())
@@ -17522,7 +17463,7 @@ fn wire__web_audio_api__node__DynamicsCompressorNode_frb_override_connect_impl(
                     let api_dest = &*api_dest_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::DynamicsCompressorNode::frb_override_connect(
-                            &api_that, api_dest,
+                            api_that, api_dest,
                         );
                     })
                 })())
@@ -17573,7 +17514,7 @@ fn wire__web_audio_api__node__DynamicsCompressorNode_number_of_inputs_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
-                        web_audio_api::node::DynamicsCompressorNode::number_of_inputs(&api_that),
+                        web_audio_api::node::DynamicsCompressorNode::number_of_inputs(api_that),
                     )
                 })())
             }
@@ -17623,7 +17564,7 @@ fn wire__web_audio_api__node__DynamicsCompressorNode_number_of_outputs_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
-                        web_audio_api::node::DynamicsCompressorNode::number_of_outputs(&api_that),
+                        web_audio_api::node::DynamicsCompressorNode::number_of_outputs(api_that),
                     )
                 })())
             }
@@ -17673,7 +17614,7 @@ fn wire__web_audio_api__node__DynamicsCompressorNode_reduction_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::node::DynamicsCompressorNode::reduction(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -17723,7 +17664,7 @@ fn wire__web_audio_api__node__DynamicsCompressorNode_registration_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::DynamicsCompressorNode::registration(&api_that);
+                        web_audio_api::node::DynamicsCompressorNode::registration(api_that);
                     })
                 })())
             }
@@ -17775,7 +17716,7 @@ fn wire__web_audio_api__node__DynamicsCompressorNode_set_channel_count_impl(
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::DynamicsCompressorNode::set_channel_count(
-                            &api_that, api_v,
+                            api_that, api_v,
                         );
                     })
                 })())
@@ -17828,7 +17769,7 @@ fn wire__web_audio_api__node__DynamicsCompressorNode_set_channel_count_mode_impl
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::DynamicsCompressorNode::set_channel_count_mode(
-                            &api_that, api_v,
+                            api_that, api_v,
                         );
                     })
                 })())
@@ -17881,7 +17822,7 @@ fn wire__web_audio_api__node__DynamicsCompressorNode_set_channel_interpretation_
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::DynamicsCompressorNode::set_channel_interpretation(
-                            &api_that, api_v,
+                            api_that, api_v,
                         );
                     })
                 })())
@@ -17932,7 +17873,7 @@ fn wire__web_audio_api__node__GainNode_channel_config_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::GainNode::channel_config(&api_that);
+                        web_audio_api::node::GainNode::channel_config(api_that);
                     })
                 })())
             }
@@ -17981,7 +17922,7 @@ fn wire__web_audio_api__node__GainNode_channel_count_impl(
                         }
                     }
                     let api_that = &*api_that_decoded.unwrap();
-                    Result::<_, ()>::Ok(web_audio_api::node::GainNode::channel_count(&api_that))
+                    Result::<_, ()>::Ok(web_audio_api::node::GainNode::channel_count(api_that))
                 })())
             }
         },
@@ -18029,9 +17970,7 @@ fn wire__web_audio_api__node__GainNode_channel_count_mode_impl(
                         }
                     }
                     let api_that = &*api_that_decoded.unwrap();
-                    Result::<_, ()>::Ok(web_audio_api::node::GainNode::channel_count_mode(
-                        &api_that,
-                    ))
+                    Result::<_, ()>::Ok(web_audio_api::node::GainNode::channel_count_mode(api_that))
                 })())
             }
         },
@@ -18080,7 +18019,7 @@ fn wire__web_audio_api__node__GainNode_channel_interpretation_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::node::GainNode::channel_interpretation(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -18130,7 +18069,7 @@ fn wire__web_audio_api__node__GainNode_clear_onprocessorerror_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::GainNode::clear_onprocessorerror(&api_that);
+                        web_audio_api::node::GainNode::clear_onprocessorerror(api_that);
                     })
                 })())
             }
@@ -18180,7 +18119,7 @@ fn wire__web_audio_api__node__GainNode_context_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::GainNode::context(&api_that);
+                        web_audio_api::node::GainNode::context(api_that);
                     })
                 })())
             }
@@ -18230,7 +18169,7 @@ fn wire__web_audio_api__node__GainNode_disconnect_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::GainNode::disconnect(&api_that);
+                        web_audio_api::node::GainNode::disconnect(api_that);
                     })
                 })())
             }
@@ -18281,7 +18220,7 @@ fn wire__web_audio_api__node__GainNode_disconnect_output_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::GainNode::disconnect_output(&api_that, api_output);
+                        web_audio_api::node::GainNode::disconnect_output(api_that, api_output);
                     })
                 })())
             }
@@ -18339,7 +18278,7 @@ fn wire__web_audio_api__node__GainNode_frb_override_connect_impl(
                     let api_that = &*api_that_decoded.unwrap();
                     let api_dest = &*api_dest_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::GainNode::frb_override_connect(&api_that, api_dest);
+                        web_audio_api::node::GainNode::frb_override_connect(api_that, api_dest);
                     })
                 })())
             }
@@ -18388,7 +18327,7 @@ fn wire__web_audio_api__node__GainNode_number_of_inputs_impl(
                         }
                     }
                     let api_that = &*api_that_decoded.unwrap();
-                    Result::<_, ()>::Ok(web_audio_api::node::GainNode::number_of_inputs(&api_that))
+                    Result::<_, ()>::Ok(web_audio_api::node::GainNode::number_of_inputs(api_that))
                 })())
             }
         },
@@ -18436,7 +18375,7 @@ fn wire__web_audio_api__node__GainNode_number_of_outputs_impl(
                         }
                     }
                     let api_that = &*api_that_decoded.unwrap();
-                    Result::<_, ()>::Ok(web_audio_api::node::GainNode::number_of_outputs(&api_that))
+                    Result::<_, ()>::Ok(web_audio_api::node::GainNode::number_of_outputs(api_that))
                 })())
             }
         },
@@ -18485,7 +18424,7 @@ fn wire__web_audio_api__node__GainNode_registration_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::GainNode::registration(&api_that);
+                        web_audio_api::node::GainNode::registration(api_that);
                     })
                 })())
             }
@@ -18536,7 +18475,7 @@ fn wire__web_audio_api__node__GainNode_set_channel_count_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::GainNode::set_channel_count(&api_that, api_v);
+                        web_audio_api::node::GainNode::set_channel_count(api_that, api_v);
                     })
                 })())
             }
@@ -18587,7 +18526,7 @@ fn wire__web_audio_api__node__GainNode_set_channel_count_mode_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::GainNode::set_channel_count_mode(&api_that, api_v);
+                        web_audio_api::node::GainNode::set_channel_count_mode(api_that, api_v);
                     })
                 })())
             }
@@ -18638,7 +18577,7 @@ fn wire__web_audio_api__node__GainNode_set_channel_interpretation_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::GainNode::set_channel_interpretation(&api_that, api_v);
+                        web_audio_api::node::GainNode::set_channel_interpretation(api_that, api_v);
                     })
                 })())
             }
@@ -18688,7 +18627,7 @@ fn wire__web_audio_api__node__IirFilterNode_channel_config_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::IIRFilterNode::channel_config(&api_that);
+                        web_audio_api::node::IIRFilterNode::channel_config(api_that);
                     })
                 })())
             }
@@ -18737,9 +18676,7 @@ fn wire__web_audio_api__node__IirFilterNode_channel_count_impl(
                         }
                     }
                     let api_that = &*api_that_decoded.unwrap();
-                    Result::<_, ()>::Ok(web_audio_api::node::IIRFilterNode::channel_count(
-                        &api_that,
-                    ))
+                    Result::<_, ()>::Ok(web_audio_api::node::IIRFilterNode::channel_count(api_that))
                 })())
             }
         },
@@ -18788,7 +18725,7 @@ fn wire__web_audio_api__node__IirFilterNode_channel_count_mode_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::node::IIRFilterNode::channel_count_mode(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -18838,7 +18775,7 @@ fn wire__web_audio_api__node__IirFilterNode_channel_interpretation_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::node::IIRFilterNode::channel_interpretation(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -18888,7 +18825,7 @@ fn wire__web_audio_api__node__IirFilterNode_clear_onprocessorerror_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::IIRFilterNode::clear_onprocessorerror(&api_that);
+                        web_audio_api::node::IIRFilterNode::clear_onprocessorerror(api_that);
                     })
                 })())
             }
@@ -18938,7 +18875,7 @@ fn wire__web_audio_api__node__IirFilterNode_context_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::IIRFilterNode::context(&api_that);
+                        web_audio_api::node::IIRFilterNode::context(api_that);
                     })
                 })())
             }
@@ -18988,7 +18925,7 @@ fn wire__web_audio_api__node__IirFilterNode_disconnect_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::IIRFilterNode::disconnect(&api_that);
+                        web_audio_api::node::IIRFilterNode::disconnect(api_that);
                     })
                 })())
             }
@@ -19039,9 +18976,7 @@ fn wire__web_audio_api__node__IirFilterNode_disconnect_output_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::IIRFilterNode::disconnect_output(
-                            &api_that, api_output,
-                        );
+                        web_audio_api::node::IIRFilterNode::disconnect_output(api_that, api_output);
                     })
                 })())
             }
@@ -19100,7 +19035,7 @@ fn wire__web_audio_api__node__IirFilterNode_frb_override_connect_impl(
                     let api_dest = &*api_dest_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::IIRFilterNode::frb_override_connect(
-                            &api_that, api_dest,
+                            api_that, api_dest,
                         );
                     })
                 })())
@@ -19151,7 +19086,7 @@ fn wire__web_audio_api__node__IirFilterNode_number_of_inputs_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::node::IIRFilterNode::number_of_inputs(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -19201,7 +19136,7 @@ fn wire__web_audio_api__node__IirFilterNode_number_of_outputs_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::node::IIRFilterNode::number_of_outputs(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -19251,7 +19186,7 @@ fn wire__web_audio_api__node__IirFilterNode_registration_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::IIRFilterNode::registration(&api_that);
+                        web_audio_api::node::IIRFilterNode::registration(api_that);
                     })
                 })())
             }
@@ -19302,7 +19237,7 @@ fn wire__web_audio_api__node__IirFilterNode_set_channel_count_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::IIRFilterNode::set_channel_count(&api_that, api_v);
+                        web_audio_api::node::IIRFilterNode::set_channel_count(api_that, api_v);
                     })
                 })())
             }
@@ -19353,9 +19288,7 @@ fn wire__web_audio_api__node__IirFilterNode_set_channel_count_mode_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::IIRFilterNode::set_channel_count_mode(
-                            &api_that, api_v,
-                        );
+                        web_audio_api::node::IIRFilterNode::set_channel_count_mode(api_that, api_v);
                     })
                 })())
             }
@@ -19407,7 +19340,7 @@ fn wire__web_audio_api__node__IirFilterNode_set_channel_interpretation_impl(
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::IIRFilterNode::set_channel_interpretation(
-                            &api_that, api_v,
+                            api_that, api_v,
                         );
                     })
                 })())
@@ -19460,7 +19393,7 @@ fn wire__web_audio_api__node__MediaElementAudioSourceNode_channel_config_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::MediaElementAudioSourceNode::channel_config(&api_that);
+                        web_audio_api::node::MediaElementAudioSourceNode::channel_config(api_that);
                     })
                 })())
             }
@@ -19512,7 +19445,7 @@ fn wire__web_audio_api__node__MediaElementAudioSourceNode_channel_count_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
-                        web_audio_api::node::MediaElementAudioSourceNode::channel_count(&api_that),
+                        web_audio_api::node::MediaElementAudioSourceNode::channel_count(api_that),
                     )
                 })())
             }
@@ -19565,7 +19498,7 @@ fn wire__web_audio_api__node__MediaElementAudioSourceNode_channel_count_mode_imp
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
                         web_audio_api::node::MediaElementAudioSourceNode::channel_count_mode(
-                            &api_that,
+                            api_that,
                         ),
                     )
                 })())
@@ -19619,7 +19552,7 @@ fn wire__web_audio_api__node__MediaElementAudioSourceNode_channel_interpretation
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
                         web_audio_api::node::MediaElementAudioSourceNode::channel_interpretation(
-                            &api_that,
+                            api_that,
                         ),
                     )
                 })())
@@ -19673,7 +19606,7 @@ fn wire__web_audio_api__node__MediaElementAudioSourceNode_clear_onprocessorerror
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::MediaElementAudioSourceNode::clear_onprocessorerror(
-                            &api_that,
+                            api_that,
                         );
                     })
                 })())
@@ -19726,7 +19659,7 @@ fn wire__web_audio_api__node__MediaElementAudioSourceNode_context_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::MediaElementAudioSourceNode::context(&api_that);
+                        web_audio_api::node::MediaElementAudioSourceNode::context(api_that);
                     })
                 })())
             }
@@ -19778,7 +19711,7 @@ fn wire__web_audio_api__node__MediaElementAudioSourceNode_disconnect_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::MediaElementAudioSourceNode::disconnect(&api_that);
+                        web_audio_api::node::MediaElementAudioSourceNode::disconnect(api_that);
                     })
                 })())
             }
@@ -19832,7 +19765,7 @@ fn wire__web_audio_api__node__MediaElementAudioSourceNode_disconnect_output_impl
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::MediaElementAudioSourceNode::disconnect_output(
-                            &api_that, api_output,
+                            api_that, api_output,
                         );
                     })
                 })())
@@ -19894,7 +19827,7 @@ fn wire__web_audio_api__node__MediaElementAudioSourceNode_frb_override_connect_i
                     let api_dest = &*api_dest_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::MediaElementAudioSourceNode::frb_override_connect(
-                            &api_that, api_dest,
+                            api_that, api_dest,
                         );
                     })
                 })())
@@ -19948,7 +19881,7 @@ fn wire__web_audio_api__node__MediaElementAudioSourceNode_number_of_inputs_impl(
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
                         web_audio_api::node::MediaElementAudioSourceNode::number_of_inputs(
-                            &api_that,
+                            api_that,
                         ),
                     )
                 })())
@@ -20002,7 +19935,7 @@ fn wire__web_audio_api__node__MediaElementAudioSourceNode_number_of_outputs_impl
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
                         web_audio_api::node::MediaElementAudioSourceNode::number_of_outputs(
-                            &api_that,
+                            api_that,
                         ),
                     )
                 })())
@@ -20055,7 +19988,7 @@ fn wire__web_audio_api__node__MediaElementAudioSourceNode_registration_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::MediaElementAudioSourceNode::registration(&api_that);
+                        web_audio_api::node::MediaElementAudioSourceNode::registration(api_that);
                     })
                 })())
             }
@@ -20109,7 +20042,7 @@ fn wire__web_audio_api__node__MediaElementAudioSourceNode_set_channel_count_impl
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::MediaElementAudioSourceNode::set_channel_count(
-                            &api_that, api_v,
+                            api_that, api_v,
                         );
                     })
                 })())
@@ -20164,7 +20097,7 @@ fn wire__web_audio_api__node__MediaElementAudioSourceNode_set_channel_count_mode
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::MediaElementAudioSourceNode::set_channel_count_mode(
-                            &api_that, api_v,
+                            api_that, api_v,
                         );
                     })
                 })())
@@ -20193,7 +20126,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that = &*api_that_decoded.unwrap();
- Result::<_,()>::Ok({ web_audio_api::node::MediaElementAudioSourceNode::set_channel_interpretation(&api_that, api_v); })
+ Result::<_,()>::Ok({ web_audio_api::node::MediaElementAudioSourceNode::set_channel_interpretation(api_that, api_v); })
                     })())
                 } })
 }
@@ -20243,7 +20176,7 @@ fn wire__web_audio_api__node__MediaStreamAudioDestinationNode_channel_config_imp
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::MediaStreamAudioDestinationNode::channel_config(
-                            &api_that,
+                            api_that,
                         );
                     })
                 })())
@@ -20297,7 +20230,7 @@ fn wire__web_audio_api__node__MediaStreamAudioDestinationNode_channel_count_impl
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
                         web_audio_api::node::MediaStreamAudioDestinationNode::channel_count(
-                            &api_that,
+                            api_that,
                         ),
                     )
                 })())
@@ -20351,7 +20284,7 @@ fn wire__web_audio_api__node__MediaStreamAudioDestinationNode_channel_count_mode
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
                         web_audio_api::node::MediaStreamAudioDestinationNode::channel_count_mode(
-                            &api_that,
+                            api_that,
                         ),
                     )
                 })())
@@ -20379,7 +20312,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that = &*api_that_decoded.unwrap();
- Result::<_,()>::Ok(web_audio_api::node::MediaStreamAudioDestinationNode::channel_interpretation(&api_that))
+ Result::<_,()>::Ok(web_audio_api::node::MediaStreamAudioDestinationNode::channel_interpretation(api_that))
                     })())
                 } })
 }
@@ -20403,7 +20336,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that = &*api_that_decoded.unwrap();
- Result::<_,()>::Ok({ web_audio_api::node::MediaStreamAudioDestinationNode::clear_onprocessorerror(&api_that); })
+ Result::<_,()>::Ok({ web_audio_api::node::MediaStreamAudioDestinationNode::clear_onprocessorerror(api_that); })
                     })())
                 } })
 }
@@ -20452,7 +20385,7 @@ fn wire__web_audio_api__node__MediaStreamAudioDestinationNode_context_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::MediaStreamAudioDestinationNode::context(&api_that);
+                        web_audio_api::node::MediaStreamAudioDestinationNode::context(api_that);
                     })
                 })())
             }
@@ -20504,7 +20437,7 @@ fn wire__web_audio_api__node__MediaStreamAudioDestinationNode_disconnect_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::MediaStreamAudioDestinationNode::disconnect(&api_that);
+                        web_audio_api::node::MediaStreamAudioDestinationNode::disconnect(api_that);
                     })
                 })())
             }
@@ -20558,7 +20491,7 @@ fn wire__web_audio_api__node__MediaStreamAudioDestinationNode_disconnect_output_
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::MediaStreamAudioDestinationNode::disconnect_output(
-                            &api_that, api_output,
+                            api_that, api_output,
                         );
                     })
                 })())
@@ -20620,7 +20553,7 @@ fn wire__web_audio_api__node__MediaStreamAudioDestinationNode_frb_override_conne
                     let api_dest = &*api_dest_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::MediaStreamAudioDestinationNode::frb_override_connect(
-                            &api_that, api_dest,
+                            api_that, api_dest,
                         );
                     })
                 })())
@@ -20674,7 +20607,7 @@ fn wire__web_audio_api__node__MediaStreamAudioDestinationNode_number_of_inputs_i
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
                         web_audio_api::node::MediaStreamAudioDestinationNode::number_of_inputs(
-                            &api_that,
+                            api_that,
                         ),
                     )
                 })())
@@ -20728,7 +20661,7 @@ fn wire__web_audio_api__node__MediaStreamAudioDestinationNode_number_of_outputs_
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
                         web_audio_api::node::MediaStreamAudioDestinationNode::number_of_outputs(
-                            &api_that,
+                            api_that,
                         ),
                     )
                 })())
@@ -20782,7 +20715,7 @@ fn wire__web_audio_api__node__MediaStreamAudioDestinationNode_registration_impl(
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::MediaStreamAudioDestinationNode::registration(
-                            &api_that,
+                            api_that,
                         );
                     })
                 })())
@@ -20837,7 +20770,7 @@ fn wire__web_audio_api__node__MediaStreamAudioDestinationNode_set_channel_count_
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::MediaStreamAudioDestinationNode::set_channel_count(
-                            &api_that, api_v,
+                            api_that, api_v,
                         );
                     })
                 })())
@@ -20866,7 +20799,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that = &*api_that_decoded.unwrap();
- Result::<_,()>::Ok({ web_audio_api::node::MediaStreamAudioDestinationNode::set_channel_count_mode(&api_that, api_v); })
+ Result::<_,()>::Ok({ web_audio_api::node::MediaStreamAudioDestinationNode::set_channel_count_mode(api_that, api_v); })
                     })())
                 } })
 }
@@ -20891,7 +20824,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that = &*api_that_decoded.unwrap();
- Result::<_,()>::Ok({ web_audio_api::node::MediaStreamAudioDestinationNode::set_channel_interpretation(&api_that, api_v); })
+ Result::<_,()>::Ok({ web_audio_api::node::MediaStreamAudioDestinationNode::set_channel_interpretation(api_that, api_v); })
                     })())
                 } })
 }
@@ -20940,7 +20873,7 @@ fn wire__web_audio_api__node__MediaStreamAudioDestinationNode_stream_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::MediaStreamAudioDestinationNode::stream(&api_that);
+                        web_audio_api::node::MediaStreamAudioDestinationNode::stream(api_that);
                     })
                 })())
             }
@@ -20990,7 +20923,7 @@ fn wire__web_audio_api__node__MediaStreamAudioSourceNode_channel_config_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::MediaStreamAudioSourceNode::channel_config(&api_that);
+                        web_audio_api::node::MediaStreamAudioSourceNode::channel_config(api_that);
                     })
                 })())
             }
@@ -21040,7 +20973,7 @@ fn wire__web_audio_api__node__MediaStreamAudioSourceNode_channel_count_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
-                        web_audio_api::node::MediaStreamAudioSourceNode::channel_count(&api_that),
+                        web_audio_api::node::MediaStreamAudioSourceNode::channel_count(api_that),
                     )
                 })())
             }
@@ -21091,7 +21024,7 @@ fn wire__web_audio_api__node__MediaStreamAudioSourceNode_channel_count_mode_impl
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
                         web_audio_api::node::MediaStreamAudioSourceNode::channel_count_mode(
-                            &api_that,
+                            api_that,
                         ),
                     )
                 })())
@@ -21143,7 +21076,7 @@ fn wire__web_audio_api__node__MediaStreamAudioSourceNode_channel_interpretation_
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
                         web_audio_api::node::MediaStreamAudioSourceNode::channel_interpretation(
-                            &api_that,
+                            api_that,
                         ),
                     )
                 })())
@@ -21195,7 +21128,7 @@ fn wire__web_audio_api__node__MediaStreamAudioSourceNode_clear_onprocessorerror_
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::MediaStreamAudioSourceNode::clear_onprocessorerror(
-                            &api_that,
+                            api_that,
                         );
                     })
                 })())
@@ -21246,7 +21179,7 @@ fn wire__web_audio_api__node__MediaStreamAudioSourceNode_context_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::MediaStreamAudioSourceNode::context(&api_that);
+                        web_audio_api::node::MediaStreamAudioSourceNode::context(api_that);
                     })
                 })())
             }
@@ -21296,7 +21229,7 @@ fn wire__web_audio_api__node__MediaStreamAudioSourceNode_disconnect_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::MediaStreamAudioSourceNode::disconnect(&api_that);
+                        web_audio_api::node::MediaStreamAudioSourceNode::disconnect(api_that);
                     })
                 })())
             }
@@ -21348,7 +21281,7 @@ fn wire__web_audio_api__node__MediaStreamAudioSourceNode_disconnect_output_impl(
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::MediaStreamAudioSourceNode::disconnect_output(
-                            &api_that, api_output,
+                            api_that, api_output,
                         );
                     })
                 })())
@@ -21408,7 +21341,7 @@ fn wire__web_audio_api__node__MediaStreamAudioSourceNode_frb_override_connect_im
                     let api_dest = &*api_dest_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::MediaStreamAudioSourceNode::frb_override_connect(
-                            &api_that, api_dest,
+                            api_that, api_dest,
                         );
                     })
                 })())
@@ -21459,9 +21392,7 @@ fn wire__web_audio_api__node__MediaStreamAudioSourceNode_number_of_inputs_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
-                        web_audio_api::node::MediaStreamAudioSourceNode::number_of_inputs(
-                            &api_that,
-                        ),
+                        web_audio_api::node::MediaStreamAudioSourceNode::number_of_inputs(api_that),
                     )
                 })())
             }
@@ -21512,7 +21443,7 @@ fn wire__web_audio_api__node__MediaStreamAudioSourceNode_number_of_outputs_impl(
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
                         web_audio_api::node::MediaStreamAudioSourceNode::number_of_outputs(
-                            &api_that,
+                            api_that,
                         ),
                     )
                 })())
@@ -21563,7 +21494,7 @@ fn wire__web_audio_api__node__MediaStreamAudioSourceNode_registration_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::MediaStreamAudioSourceNode::registration(&api_that);
+                        web_audio_api::node::MediaStreamAudioSourceNode::registration(api_that);
                     })
                 })())
             }
@@ -21615,7 +21546,7 @@ fn wire__web_audio_api__node__MediaStreamAudioSourceNode_set_channel_count_impl(
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::MediaStreamAudioSourceNode::set_channel_count(
-                            &api_that, api_v,
+                            api_that, api_v,
                         );
                     })
                 })())
@@ -21668,7 +21599,7 @@ fn wire__web_audio_api__node__MediaStreamAudioSourceNode_set_channel_count_mode_
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::MediaStreamAudioSourceNode::set_channel_count_mode(
-                            &api_that, api_v,
+                            api_that, api_v,
                         );
                     })
                 })())
@@ -21721,7 +21652,7 @@ fn wire__web_audio_api__node__MediaStreamAudioSourceNode_set_channel_interpretat
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::MediaStreamAudioSourceNode::set_channel_interpretation(
-                            &api_that, api_v,
+                            api_that, api_v,
                         );
                     })
                 })())
@@ -21775,7 +21706,7 @@ fn wire__web_audio_api__node__MediaStreamTrackAudioSourceNode_channel_config_imp
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::MediaStreamTrackAudioSourceNode::channel_config(
-                            &api_that,
+                            api_that,
                         );
                     })
                 })())
@@ -21829,7 +21760,7 @@ fn wire__web_audio_api__node__MediaStreamTrackAudioSourceNode_channel_count_impl
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
                         web_audio_api::node::MediaStreamTrackAudioSourceNode::channel_count(
-                            &api_that,
+                            api_that,
                         ),
                     )
                 })())
@@ -21883,7 +21814,7 @@ fn wire__web_audio_api__node__MediaStreamTrackAudioSourceNode_channel_count_mode
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
                         web_audio_api::node::MediaStreamTrackAudioSourceNode::channel_count_mode(
-                            &api_that,
+                            api_that,
                         ),
                     )
                 })())
@@ -21911,7 +21842,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that = &*api_that_decoded.unwrap();
- Result::<_,()>::Ok(web_audio_api::node::MediaStreamTrackAudioSourceNode::channel_interpretation(&api_that))
+ Result::<_,()>::Ok(web_audio_api::node::MediaStreamTrackAudioSourceNode::channel_interpretation(api_that))
                     })())
                 } })
 }
@@ -21935,7 +21866,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that = &*api_that_decoded.unwrap();
- Result::<_,()>::Ok({ web_audio_api::node::MediaStreamTrackAudioSourceNode::clear_onprocessorerror(&api_that); })
+ Result::<_,()>::Ok({ web_audio_api::node::MediaStreamTrackAudioSourceNode::clear_onprocessorerror(api_that); })
                     })())
                 } })
 }
@@ -21984,7 +21915,7 @@ fn wire__web_audio_api__node__MediaStreamTrackAudioSourceNode_context_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::MediaStreamTrackAudioSourceNode::context(&api_that);
+                        web_audio_api::node::MediaStreamTrackAudioSourceNode::context(api_that);
                     })
                 })())
             }
@@ -22036,7 +21967,7 @@ fn wire__web_audio_api__node__MediaStreamTrackAudioSourceNode_disconnect_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::MediaStreamTrackAudioSourceNode::disconnect(&api_that);
+                        web_audio_api::node::MediaStreamTrackAudioSourceNode::disconnect(api_that);
                     })
                 })())
             }
@@ -22090,7 +22021,7 @@ fn wire__web_audio_api__node__MediaStreamTrackAudioSourceNode_disconnect_output_
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::MediaStreamTrackAudioSourceNode::disconnect_output(
-                            &api_that, api_output,
+                            api_that, api_output,
                         );
                     })
                 })())
@@ -22152,7 +22083,7 @@ fn wire__web_audio_api__node__MediaStreamTrackAudioSourceNode_frb_override_conne
                     let api_dest = &*api_dest_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::MediaStreamTrackAudioSourceNode::frb_override_connect(
-                            &api_that, api_dest,
+                            api_that, api_dest,
                         );
                     })
                 })())
@@ -22206,7 +22137,7 @@ fn wire__web_audio_api__node__MediaStreamTrackAudioSourceNode_number_of_inputs_i
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
                         web_audio_api::node::MediaStreamTrackAudioSourceNode::number_of_inputs(
-                            &api_that,
+                            api_that,
                         ),
                     )
                 })())
@@ -22260,7 +22191,7 @@ fn wire__web_audio_api__node__MediaStreamTrackAudioSourceNode_number_of_outputs_
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
                         web_audio_api::node::MediaStreamTrackAudioSourceNode::number_of_outputs(
-                            &api_that,
+                            api_that,
                         ),
                     )
                 })())
@@ -22314,7 +22245,7 @@ fn wire__web_audio_api__node__MediaStreamTrackAudioSourceNode_registration_impl(
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::MediaStreamTrackAudioSourceNode::registration(
-                            &api_that,
+                            api_that,
                         );
                     })
                 })())
@@ -22369,7 +22300,7 @@ fn wire__web_audio_api__node__MediaStreamTrackAudioSourceNode_set_channel_count_
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::MediaStreamTrackAudioSourceNode::set_channel_count(
-                            &api_that, api_v,
+                            api_that, api_v,
                         );
                     })
                 })())
@@ -22398,7 +22329,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that = &*api_that_decoded.unwrap();
- Result::<_,()>::Ok({ web_audio_api::node::MediaStreamTrackAudioSourceNode::set_channel_count_mode(&api_that, api_v); })
+ Result::<_,()>::Ok({ web_audio_api::node::MediaStreamTrackAudioSourceNode::set_channel_count_mode(api_that, api_v); })
                     })())
                 } })
 }
@@ -22423,7 +22354,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that = &*api_that_decoded.unwrap();
- Result::<_,()>::Ok({ web_audio_api::node::MediaStreamTrackAudioSourceNode::set_channel_interpretation(&api_that, api_v); })
+ Result::<_,()>::Ok({ web_audio_api::node::MediaStreamTrackAudioSourceNode::set_channel_interpretation(api_that, api_v); })
                     })())
                 } })
 }
@@ -22470,7 +22401,7 @@ fn wire__web_audio_api__node__OscillatorNode_channel_config_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::OscillatorNode::channel_config(&api_that);
+                        web_audio_api::node::OscillatorNode::channel_config(api_that);
                     })
                 })())
             }
@@ -22520,7 +22451,7 @@ fn wire__web_audio_api__node__OscillatorNode_channel_count_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::node::OscillatorNode::channel_count(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -22570,7 +22501,7 @@ fn wire__web_audio_api__node__OscillatorNode_channel_count_mode_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::node::OscillatorNode::channel_count_mode(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -22620,7 +22551,7 @@ fn wire__web_audio_api__node__OscillatorNode_channel_interpretation_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
-                        web_audio_api::node::OscillatorNode::channel_interpretation(&api_that),
+                        web_audio_api::node::OscillatorNode::channel_interpretation(api_that),
                     )
                 })())
             }
@@ -22670,7 +22601,7 @@ fn wire__web_audio_api__node__OscillatorNode_clear_onended_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::OscillatorNode::clear_onended(&api_that);
+                        web_audio_api::node::OscillatorNode::clear_onended(api_that);
                     })
                 })())
             }
@@ -22720,7 +22651,7 @@ fn wire__web_audio_api__node__OscillatorNode_clear_onprocessorerror_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::OscillatorNode::clear_onprocessorerror(&api_that);
+                        web_audio_api::node::OscillatorNode::clear_onprocessorerror(api_that);
                     })
                 })())
             }
@@ -22770,7 +22701,7 @@ fn wire__web_audio_api__node__OscillatorNode_context_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::OscillatorNode::context(&api_that);
+                        web_audio_api::node::OscillatorNode::context(api_that);
                     })
                 })())
             }
@@ -22820,7 +22751,7 @@ fn wire__web_audio_api__node__OscillatorNode_disconnect_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::OscillatorNode::disconnect(&api_that);
+                        web_audio_api::node::OscillatorNode::disconnect(api_that);
                     })
                 })())
             }
@@ -22872,7 +22803,7 @@ fn wire__web_audio_api__node__OscillatorNode_disconnect_output_impl(
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::OscillatorNode::disconnect_output(
-                            &api_that, api_output,
+                            api_that, api_output,
                         );
                     })
                 })())
@@ -22932,7 +22863,7 @@ fn wire__web_audio_api__node__OscillatorNode_frb_override_connect_impl(
                     let api_dest = &*api_dest_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::OscillatorNode::frb_override_connect(
-                            &api_that, api_dest,
+                            api_that, api_dest,
                         );
                     })
                 })())
@@ -22983,7 +22914,7 @@ fn wire__web_audio_api__node__OscillatorNode_number_of_inputs_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::node::OscillatorNode::number_of_inputs(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -23033,7 +22964,7 @@ fn wire__web_audio_api__node__OscillatorNode_number_of_outputs_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::node::OscillatorNode::number_of_outputs(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -23083,7 +23014,7 @@ fn wire__web_audio_api__node__OscillatorNode_registration_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::OscillatorNode::registration(&api_that);
+                        web_audio_api::node::OscillatorNode::registration(api_that);
                     })
                 })())
             }
@@ -23134,7 +23065,7 @@ fn wire__web_audio_api__node__OscillatorNode_set_channel_count_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::OscillatorNode::set_channel_count(&api_that, api_v);
+                        web_audio_api::node::OscillatorNode::set_channel_count(api_that, api_v);
                     })
                 })())
             }
@@ -23186,7 +23117,7 @@ fn wire__web_audio_api__node__OscillatorNode_set_channel_count_mode_impl(
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::OscillatorNode::set_channel_count_mode(
-                            &api_that, api_v,
+                            api_that, api_v,
                         );
                     })
                 })())
@@ -23239,7 +23170,7 @@ fn wire__web_audio_api__node__OscillatorNode_set_channel_interpretation_impl(
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::OscillatorNode::set_channel_interpretation(
-                            &api_that, api_v,
+                            api_that, api_v,
                         );
                     })
                 })())
@@ -23292,7 +23223,7 @@ fn wire__web_audio_api__node__OscillatorNode_set_periodic_wave_impl(
                     let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::OscillatorNode::set_periodic_wave(
-                            &mut api_that,
+                            api_that,
                             api_periodic_wave,
                         );
                     })
@@ -23345,7 +23276,7 @@ fn wire__web_audio_api__node__OscillatorNode_set_type_impl(
                     }
                     let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::OscillatorNode::set_type(&mut api_that, api_type_);
+                        web_audio_api::node::OscillatorNode::set_type(api_that, api_type_);
                     })
                 })())
             }
@@ -23395,7 +23326,7 @@ fn wire__web_audio_api__node__OscillatorNode_start_impl(
                     }
                     let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::OscillatorNode::start(&mut api_that);
+                        web_audio_api::node::OscillatorNode::start(api_that);
                     })
                 })())
             }
@@ -23446,7 +23377,7 @@ fn wire__web_audio_api__node__OscillatorNode_start_at_impl(
                     }
                     let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::OscillatorNode::start_at(&mut api_that, api_when);
+                        web_audio_api::node::OscillatorNode::start_at(api_that, api_when);
                     })
                 })())
             }
@@ -23496,7 +23427,7 @@ fn wire__web_audio_api__node__OscillatorNode_stop_impl(
                     }
                     let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::OscillatorNode::stop(&mut api_that);
+                        web_audio_api::node::OscillatorNode::stop(api_that);
                     })
                 })())
             }
@@ -23547,7 +23478,7 @@ fn wire__web_audio_api__node__OscillatorNode_stop_at_impl(
                     }
                     let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::OscillatorNode::stop_at(&mut api_that, api_when);
+                        web_audio_api::node::OscillatorNode::stop_at(api_that, api_when);
                     })
                 })())
             }
@@ -23596,7 +23527,7 @@ fn wire__web_audio_api__node__OscillatorNode_type__impl(
                         }
                     }
                     let api_that = &*api_that_decoded.unwrap();
-                    Result::<_, ()>::Ok(web_audio_api::node::OscillatorNode::type_(&api_that))
+                    Result::<_, ()>::Ok(web_audio_api::node::OscillatorNode::type_(api_that))
                 })())
             }
         },
@@ -23645,7 +23576,7 @@ fn wire__web_audio_api__node__PannerNode_channel_config_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::PannerNode::channel_config(&api_that);
+                        web_audio_api::node::PannerNode::channel_config(api_that);
                     })
                 })())
             }
@@ -23694,7 +23625,7 @@ fn wire__web_audio_api__node__PannerNode_channel_count_impl(
                         }
                     }
                     let api_that = &*api_that_decoded.unwrap();
-                    Result::<_, ()>::Ok(web_audio_api::node::PannerNode::channel_count(&api_that))
+                    Result::<_, ()>::Ok(web_audio_api::node::PannerNode::channel_count(api_that))
                 })())
             }
         },
@@ -23743,7 +23674,7 @@ fn wire__web_audio_api__node__PannerNode_channel_count_mode_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::node::PannerNode::channel_count_mode(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -23793,7 +23724,7 @@ fn wire__web_audio_api__node__PannerNode_channel_interpretation_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::node::PannerNode::channel_interpretation(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -23843,7 +23774,7 @@ fn wire__web_audio_api__node__PannerNode_clear_onprocessorerror_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::PannerNode::clear_onprocessorerror(&api_that);
+                        web_audio_api::node::PannerNode::clear_onprocessorerror(api_that);
                     })
                 })())
             }
@@ -23892,9 +23823,7 @@ fn wire__web_audio_api__node__PannerNode_cone_inner_angle_impl(
                         }
                     }
                     let api_that = &*api_that_decoded.unwrap();
-                    Result::<_, ()>::Ok(web_audio_api::node::PannerNode::cone_inner_angle(
-                        &api_that,
-                    ))
+                    Result::<_, ()>::Ok(web_audio_api::node::PannerNode::cone_inner_angle(api_that))
                 })())
             }
         },
@@ -23942,9 +23871,7 @@ fn wire__web_audio_api__node__PannerNode_cone_outer_angle_impl(
                         }
                     }
                     let api_that = &*api_that_decoded.unwrap();
-                    Result::<_, ()>::Ok(web_audio_api::node::PannerNode::cone_outer_angle(
-                        &api_that,
-                    ))
+                    Result::<_, ()>::Ok(web_audio_api::node::PannerNode::cone_outer_angle(api_that))
                 })())
             }
         },
@@ -23992,7 +23919,7 @@ fn wire__web_audio_api__node__PannerNode_cone_outer_gain_impl(
                         }
                     }
                     let api_that = &*api_that_decoded.unwrap();
-                    Result::<_, ()>::Ok(web_audio_api::node::PannerNode::cone_outer_gain(&api_that))
+                    Result::<_, ()>::Ok(web_audio_api::node::PannerNode::cone_outer_gain(api_that))
                 })())
             }
         },
@@ -24041,7 +23968,7 @@ fn wire__web_audio_api__node__PannerNode_context_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::PannerNode::context(&api_that);
+                        web_audio_api::node::PannerNode::context(api_that);
                     })
                 })())
             }
@@ -24091,7 +24018,7 @@ fn wire__web_audio_api__node__PannerNode_disconnect_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::PannerNode::disconnect(&api_that);
+                        web_audio_api::node::PannerNode::disconnect(api_that);
                     })
                 })())
             }
@@ -24142,7 +24069,7 @@ fn wire__web_audio_api__node__PannerNode_disconnect_output_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::PannerNode::disconnect_output(&api_that, api_output);
+                        web_audio_api::node::PannerNode::disconnect_output(api_that, api_output);
                     })
                 })())
             }
@@ -24191,7 +24118,7 @@ fn wire__web_audio_api__node__PannerNode_distance_model_impl(
                         }
                     }
                     let api_that = &*api_that_decoded.unwrap();
-                    Result::<_, ()>::Ok(web_audio_api::node::PannerNode::distance_model(&api_that))
+                    Result::<_, ()>::Ok(web_audio_api::node::PannerNode::distance_model(api_that))
                 })())
             }
         },
@@ -24248,7 +24175,7 @@ fn wire__web_audio_api__node__PannerNode_frb_override_connect_impl(
                     let api_that = &*api_that_decoded.unwrap();
                     let api_dest = &*api_dest_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::PannerNode::frb_override_connect(&api_that, api_dest);
+                        web_audio_api::node::PannerNode::frb_override_connect(api_that, api_dest);
                     })
                 })())
             }
@@ -24297,7 +24224,7 @@ fn wire__web_audio_api__node__PannerNode_max_distance_impl(
                         }
                     }
                     let api_that = &*api_that_decoded.unwrap();
-                    Result::<_, ()>::Ok(web_audio_api::node::PannerNode::max_distance(&api_that))
+                    Result::<_, ()>::Ok(web_audio_api::node::PannerNode::max_distance(api_that))
                 })())
             }
         },
@@ -24345,9 +24272,7 @@ fn wire__web_audio_api__node__PannerNode_number_of_inputs_impl(
                         }
                     }
                     let api_that = &*api_that_decoded.unwrap();
-                    Result::<_, ()>::Ok(web_audio_api::node::PannerNode::number_of_inputs(
-                        &api_that,
-                    ))
+                    Result::<_, ()>::Ok(web_audio_api::node::PannerNode::number_of_inputs(api_that))
                 })())
             }
         },
@@ -24396,7 +24321,7 @@ fn wire__web_audio_api__node__PannerNode_number_of_outputs_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::node::PannerNode::number_of_outputs(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -24445,7 +24370,7 @@ fn wire__web_audio_api__node__PannerNode_panning_model_impl(
                         }
                     }
                     let api_that = &*api_that_decoded.unwrap();
-                    Result::<_, ()>::Ok(web_audio_api::node::PannerNode::panning_model(&api_that))
+                    Result::<_, ()>::Ok(web_audio_api::node::PannerNode::panning_model(api_that))
                 })())
             }
         },
@@ -24493,7 +24418,7 @@ fn wire__web_audio_api__node__PannerNode_ref_distance_impl(
                         }
                     }
                     let api_that = &*api_that_decoded.unwrap();
-                    Result::<_, ()>::Ok(web_audio_api::node::PannerNode::ref_distance(&api_that))
+                    Result::<_, ()>::Ok(web_audio_api::node::PannerNode::ref_distance(api_that))
                 })())
             }
         },
@@ -24542,7 +24467,7 @@ fn wire__web_audio_api__node__PannerNode_registration_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::PannerNode::registration(&api_that);
+                        web_audio_api::node::PannerNode::registration(api_that);
                     })
                 })())
             }
@@ -24591,7 +24516,7 @@ fn wire__web_audio_api__node__PannerNode_rolloff_factor_impl(
                         }
                     }
                     let api_that = &*api_that_decoded.unwrap();
-                    Result::<_, ()>::Ok(web_audio_api::node::PannerNode::rolloff_factor(&api_that))
+                    Result::<_, ()>::Ok(web_audio_api::node::PannerNode::rolloff_factor(api_that))
                 })())
             }
         },
@@ -24641,7 +24566,7 @@ fn wire__web_audio_api__node__PannerNode_set_channel_count_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::PannerNode::set_channel_count(&api_that, api_v);
+                        web_audio_api::node::PannerNode::set_channel_count(api_that, api_v);
                     })
                 })())
             }
@@ -24692,7 +24617,7 @@ fn wire__web_audio_api__node__PannerNode_set_channel_count_mode_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::PannerNode::set_channel_count_mode(&api_that, api_v);
+                        web_audio_api::node::PannerNode::set_channel_count_mode(api_that, api_v);
                     })
                 })())
             }
@@ -24744,7 +24669,7 @@ fn wire__web_audio_api__node__PannerNode_set_channel_interpretation_impl(
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::PannerNode::set_channel_interpretation(
-                            &api_that, api_v,
+                            api_that, api_v,
                         );
                     })
                 })())
@@ -24796,10 +24721,7 @@ fn wire__web_audio_api__node__PannerNode_set_cone_inner_angle_impl(
                     }
                     let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::PannerNode::set_cone_inner_angle(
-                            &mut api_that,
-                            api_value,
-                        );
+                        web_audio_api::node::PannerNode::set_cone_inner_angle(api_that, api_value);
                     })
                 })())
             }
@@ -24850,10 +24772,7 @@ fn wire__web_audio_api__node__PannerNode_set_cone_outer_angle_impl(
                     }
                     let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::PannerNode::set_cone_outer_angle(
-                            &mut api_that,
-                            api_value,
-                        );
+                        web_audio_api::node::PannerNode::set_cone_outer_angle(api_that, api_value);
                     })
                 })())
             }
@@ -24904,10 +24823,7 @@ fn wire__web_audio_api__node__PannerNode_set_cone_outer_gain_impl(
                     }
                     let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::PannerNode::set_cone_outer_gain(
-                            &mut api_that,
-                            api_value,
-                        );
+                        web_audio_api::node::PannerNode::set_cone_outer_gain(api_that, api_value);
                     })
                 })())
             }
@@ -24958,10 +24874,7 @@ fn wire__web_audio_api__node__PannerNode_set_distance_model_impl(
                     }
                     let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::PannerNode::set_distance_model(
-                            &mut api_that,
-                            api_value,
-                        );
+                        web_audio_api::node::PannerNode::set_distance_model(api_that, api_value);
                     })
                 })())
             }
@@ -25012,7 +24925,7 @@ fn wire__web_audio_api__node__PannerNode_set_max_distance_impl(
                     }
                     let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::PannerNode::set_max_distance(&mut api_that, api_value);
+                        web_audio_api::node::PannerNode::set_max_distance(api_that, api_value);
                     })
                 })())
             }
@@ -25066,7 +24979,7 @@ fn wire__web_audio_api__node__PannerNode_set_orientation_impl(
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::PannerNode::set_orientation(
-                            &api_that, api_x, api_y, api_z,
+                            api_that, api_x, api_y, api_z,
                         );
                     })
                 })())
@@ -25118,10 +25031,7 @@ fn wire__web_audio_api__node__PannerNode_set_panning_model_impl(
                     }
                     let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::PannerNode::set_panning_model(
-                            &mut api_that,
-                            api_value,
-                        );
+                        web_audio_api::node::PannerNode::set_panning_model(api_that, api_value);
                     })
                 })())
             }
@@ -25175,7 +25085,7 @@ fn wire__web_audio_api__node__PannerNode_set_position_impl(
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::PannerNode::set_position(
-                            &api_that, api_x, api_y, api_z,
+                            api_that, api_x, api_y, api_z,
                         );
                     })
                 })())
@@ -25227,7 +25137,7 @@ fn wire__web_audio_api__node__PannerNode_set_ref_distance_impl(
                     }
                     let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::PannerNode::set_ref_distance(&mut api_that, api_value);
+                        web_audio_api::node::PannerNode::set_ref_distance(api_that, api_value);
                     })
                 })())
             }
@@ -25278,10 +25188,7 @@ fn wire__web_audio_api__node__PannerNode_set_rolloff_factor_impl(
                     }
                     let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::PannerNode::set_rolloff_factor(
-                            &mut api_that,
-                            api_value,
-                        );
+                        web_audio_api::node::PannerNode::set_rolloff_factor(api_that, api_value);
                     })
                 })())
             }
@@ -25331,7 +25238,7 @@ fn wire__web_audio_api__node__ScriptProcessorNode_buffer_size_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::node::ScriptProcessorNode::buffer_size(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -25381,7 +25288,7 @@ fn wire__web_audio_api__node__ScriptProcessorNode_channel_config_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::ScriptProcessorNode::channel_config(&api_that);
+                        web_audio_api::node::ScriptProcessorNode::channel_config(api_that);
                     })
                 })())
             }
@@ -25431,7 +25338,7 @@ fn wire__web_audio_api__node__ScriptProcessorNode_channel_count_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::node::ScriptProcessorNode::channel_count(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -25481,7 +25388,7 @@ fn wire__web_audio_api__node__ScriptProcessorNode_channel_count_mode_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
-                        web_audio_api::node::ScriptProcessorNode::channel_count_mode(&api_that),
+                        web_audio_api::node::ScriptProcessorNode::channel_count_mode(api_that),
                     )
                 })())
             }
@@ -25531,7 +25438,7 @@ fn wire__web_audio_api__node__ScriptProcessorNode_channel_interpretation_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
-                        web_audio_api::node::ScriptProcessorNode::channel_interpretation(&api_that),
+                        web_audio_api::node::ScriptProcessorNode::channel_interpretation(api_that),
                     )
                 })())
             }
@@ -25581,7 +25488,7 @@ fn wire__web_audio_api__node__ScriptProcessorNode_clear_onaudioprocess_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::ScriptProcessorNode::clear_onaudioprocess(&api_that);
+                        web_audio_api::node::ScriptProcessorNode::clear_onaudioprocess(api_that);
                     })
                 })())
             }
@@ -25631,7 +25538,7 @@ fn wire__web_audio_api__node__ScriptProcessorNode_clear_onprocessorerror_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::ScriptProcessorNode::clear_onprocessorerror(&api_that);
+                        web_audio_api::node::ScriptProcessorNode::clear_onprocessorerror(api_that);
                     })
                 })())
             }
@@ -25681,7 +25588,7 @@ fn wire__web_audio_api__node__ScriptProcessorNode_context_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::ScriptProcessorNode::context(&api_that);
+                        web_audio_api::node::ScriptProcessorNode::context(api_that);
                     })
                 })())
             }
@@ -25731,7 +25638,7 @@ fn wire__web_audio_api__node__ScriptProcessorNode_disconnect_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::ScriptProcessorNode::disconnect(&api_that);
+                        web_audio_api::node::ScriptProcessorNode::disconnect(api_that);
                     })
                 })())
             }
@@ -25783,7 +25690,7 @@ fn wire__web_audio_api__node__ScriptProcessorNode_disconnect_output_impl(
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::ScriptProcessorNode::disconnect_output(
-                            &api_that, api_output,
+                            api_that, api_output,
                         );
                     })
                 })())
@@ -25843,7 +25750,7 @@ fn wire__web_audio_api__node__ScriptProcessorNode_frb_override_connect_impl(
                     let api_dest = &*api_dest_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::ScriptProcessorNode::frb_override_connect(
-                            &api_that, api_dest,
+                            api_that, api_dest,
                         );
                     })
                 })())
@@ -25894,7 +25801,7 @@ fn wire__web_audio_api__node__ScriptProcessorNode_number_of_inputs_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::node::ScriptProcessorNode::number_of_inputs(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -25944,7 +25851,7 @@ fn wire__web_audio_api__node__ScriptProcessorNode_number_of_outputs_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
-                        web_audio_api::node::ScriptProcessorNode::number_of_outputs(&api_that),
+                        web_audio_api::node::ScriptProcessorNode::number_of_outputs(api_that),
                     )
                 })())
             }
@@ -25994,7 +25901,7 @@ fn wire__web_audio_api__node__ScriptProcessorNode_registration_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::ScriptProcessorNode::registration(&api_that);
+                        web_audio_api::node::ScriptProcessorNode::registration(api_that);
                     })
                 })())
             }
@@ -26046,7 +25953,7 @@ fn wire__web_audio_api__node__ScriptProcessorNode_set_channel_count_impl(
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::ScriptProcessorNode::set_channel_count(
-                            &api_that, api_v,
+                            api_that, api_v,
                         );
                     })
                 })())
@@ -26099,7 +26006,7 @@ fn wire__web_audio_api__node__ScriptProcessorNode_set_channel_count_mode_impl(
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::ScriptProcessorNode::set_channel_count_mode(
-                            &api_that, api_v,
+                            api_that, api_v,
                         );
                     })
                 })())
@@ -26152,7 +26059,7 @@ fn wire__web_audio_api__node__ScriptProcessorNode_set_channel_interpretation_imp
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::ScriptProcessorNode::set_channel_interpretation(
-                            &api_that, api_v,
+                            api_that, api_v,
                         );
                     })
                 })())
@@ -26203,7 +26110,7 @@ fn wire__web_audio_api__node__StereoPannerNode_channel_config_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::StereoPannerNode::channel_config(&api_that);
+                        web_audio_api::node::StereoPannerNode::channel_config(api_that);
                     })
                 })())
             }
@@ -26253,7 +26160,7 @@ fn wire__web_audio_api__node__StereoPannerNode_channel_count_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::node::StereoPannerNode::channel_count(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -26303,7 +26210,7 @@ fn wire__web_audio_api__node__StereoPannerNode_channel_count_mode_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::node::StereoPannerNode::channel_count_mode(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -26353,7 +26260,7 @@ fn wire__web_audio_api__node__StereoPannerNode_channel_interpretation_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
-                        web_audio_api::node::StereoPannerNode::channel_interpretation(&api_that),
+                        web_audio_api::node::StereoPannerNode::channel_interpretation(api_that),
                     )
                 })())
             }
@@ -26403,7 +26310,7 @@ fn wire__web_audio_api__node__StereoPannerNode_clear_onprocessorerror_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::StereoPannerNode::clear_onprocessorerror(&api_that);
+                        web_audio_api::node::StereoPannerNode::clear_onprocessorerror(api_that);
                     })
                 })())
             }
@@ -26453,7 +26360,7 @@ fn wire__web_audio_api__node__StereoPannerNode_context_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::StereoPannerNode::context(&api_that);
+                        web_audio_api::node::StereoPannerNode::context(api_that);
                     })
                 })())
             }
@@ -26503,7 +26410,7 @@ fn wire__web_audio_api__node__StereoPannerNode_disconnect_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::StereoPannerNode::disconnect(&api_that);
+                        web_audio_api::node::StereoPannerNode::disconnect(api_that);
                     })
                 })())
             }
@@ -26555,7 +26462,7 @@ fn wire__web_audio_api__node__StereoPannerNode_disconnect_output_impl(
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::StereoPannerNode::disconnect_output(
-                            &api_that, api_output,
+                            api_that, api_output,
                         );
                     })
                 })())
@@ -26615,7 +26522,7 @@ fn wire__web_audio_api__node__StereoPannerNode_frb_override_connect_impl(
                     let api_dest = &*api_dest_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::StereoPannerNode::frb_override_connect(
-                            &api_that, api_dest,
+                            api_that, api_dest,
                         );
                     })
                 })())
@@ -26666,7 +26573,7 @@ fn wire__web_audio_api__node__StereoPannerNode_number_of_inputs_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::node::StereoPannerNode::number_of_inputs(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -26716,7 +26623,7 @@ fn wire__web_audio_api__node__StereoPannerNode_number_of_outputs_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::node::StereoPannerNode::number_of_outputs(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -26766,7 +26673,7 @@ fn wire__web_audio_api__node__StereoPannerNode_registration_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::StereoPannerNode::registration(&api_that);
+                        web_audio_api::node::StereoPannerNode::registration(api_that);
                     })
                 })())
             }
@@ -26817,7 +26724,7 @@ fn wire__web_audio_api__node__StereoPannerNode_set_channel_count_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::StereoPannerNode::set_channel_count(&api_that, api_v);
+                        web_audio_api::node::StereoPannerNode::set_channel_count(api_that, api_v);
                     })
                 })())
             }
@@ -26869,7 +26776,7 @@ fn wire__web_audio_api__node__StereoPannerNode_set_channel_count_mode_impl(
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::StereoPannerNode::set_channel_count_mode(
-                            &api_that, api_v,
+                            api_that, api_v,
                         );
                     })
                 })())
@@ -26922,7 +26829,7 @@ fn wire__web_audio_api__node__StereoPannerNode_set_channel_interpretation_impl(
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::StereoPannerNode::set_channel_interpretation(
-                            &api_that, api_v,
+                            api_that, api_v,
                         );
                     })
                 })())
@@ -26973,7 +26880,7 @@ fn wire__web_audio_api__node__WaveShaperNode_channel_config_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::WaveShaperNode::channel_config(&api_that);
+                        web_audio_api::node::WaveShaperNode::channel_config(api_that);
                     })
                 })())
             }
@@ -27023,7 +26930,7 @@ fn wire__web_audio_api__node__WaveShaperNode_channel_count_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::node::WaveShaperNode::channel_count(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -27073,7 +26980,7 @@ fn wire__web_audio_api__node__WaveShaperNode_channel_count_mode_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::node::WaveShaperNode::channel_count_mode(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -27123,7 +27030,7 @@ fn wire__web_audio_api__node__WaveShaperNode_channel_interpretation_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
-                        web_audio_api::node::WaveShaperNode::channel_interpretation(&api_that),
+                        web_audio_api::node::WaveShaperNode::channel_interpretation(api_that),
                     )
                 })())
             }
@@ -27173,7 +27080,7 @@ fn wire__web_audio_api__node__WaveShaperNode_clear_onprocessorerror_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::WaveShaperNode::clear_onprocessorerror(&api_that);
+                        web_audio_api::node::WaveShaperNode::clear_onprocessorerror(api_that);
                     })
                 })())
             }
@@ -27223,7 +27130,7 @@ fn wire__web_audio_api__node__WaveShaperNode_context_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::WaveShaperNode::context(&api_that);
+                        web_audio_api::node::WaveShaperNode::context(api_that);
                     })
                 })())
             }
@@ -27273,7 +27180,7 @@ fn wire__web_audio_api__node__WaveShaperNode_disconnect_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::WaveShaperNode::disconnect(&api_that);
+                        web_audio_api::node::WaveShaperNode::disconnect(api_that);
                     })
                 })())
             }
@@ -27325,7 +27232,7 @@ fn wire__web_audio_api__node__WaveShaperNode_disconnect_output_impl(
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::WaveShaperNode::disconnect_output(
-                            &api_that, api_output,
+                            api_that, api_output,
                         );
                     })
                 })())
@@ -27385,7 +27292,7 @@ fn wire__web_audio_api__node__WaveShaperNode_frb_override_connect_impl(
                     let api_dest = &*api_dest_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::WaveShaperNode::frb_override_connect(
-                            &api_that, api_dest,
+                            api_that, api_dest,
                         );
                     })
                 })())
@@ -27436,7 +27343,7 @@ fn wire__web_audio_api__node__WaveShaperNode_number_of_inputs_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::node::WaveShaperNode::number_of_inputs(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -27486,7 +27393,7 @@ fn wire__web_audio_api__node__WaveShaperNode_number_of_outputs_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::node::WaveShaperNode::number_of_outputs(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -27535,7 +27442,7 @@ fn wire__web_audio_api__node__WaveShaperNode_oversample_impl(
                         }
                     }
                     let api_that = &*api_that_decoded.unwrap();
-                    Result::<_, ()>::Ok(web_audio_api::node::WaveShaperNode::oversample(&api_that))
+                    Result::<_, ()>::Ok(web_audio_api::node::WaveShaperNode::oversample(api_that))
                 })())
             }
         },
@@ -27584,7 +27491,7 @@ fn wire__web_audio_api__node__WaveShaperNode_registration_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::WaveShaperNode::registration(&api_that);
+                        web_audio_api::node::WaveShaperNode::registration(api_that);
                     })
                 })())
             }
@@ -27635,7 +27542,7 @@ fn wire__web_audio_api__node__WaveShaperNode_set_channel_count_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::WaveShaperNode::set_channel_count(&api_that, api_v);
+                        web_audio_api::node::WaveShaperNode::set_channel_count(api_that, api_v);
                     })
                 })())
             }
@@ -27687,7 +27594,7 @@ fn wire__web_audio_api__node__WaveShaperNode_set_channel_count_mode_impl(
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::WaveShaperNode::set_channel_count_mode(
-                            &api_that, api_v,
+                            api_that, api_v,
                         );
                     })
                 })())
@@ -27740,7 +27647,7 @@ fn wire__web_audio_api__node__WaveShaperNode_set_channel_interpretation_impl(
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::WaveShaperNode::set_channel_interpretation(
-                            &api_that, api_v,
+                            api_that, api_v,
                         );
                     })
                 })())
@@ -27792,7 +27699,7 @@ fn wire__web_audio_api__node__WaveShaperNode_set_curve_impl(
                     }
                     let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::node::WaveShaperNode::set_curve(&mut api_that, api_curve);
+                        web_audio_api::node::WaveShaperNode::set_curve(api_that, api_curve);
                     })
                 })())
             }
@@ -27845,7 +27752,7 @@ fn wire__web_audio_api__node__WaveShaperNode_set_oversample_impl(
                     let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::WaveShaperNode::set_oversample(
-                            &mut api_that,
+                            api_that,
                             api_oversample,
                         );
                     })
@@ -27897,7 +27804,7 @@ fn wire__web_audio_api__worklet__AudioWorkletNode_channel_config_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::worklet::AudioWorkletNode::channel_config(&api_that);
+                        web_audio_api::worklet::AudioWorkletNode::channel_config(api_that);
                     })
                 })())
             }
@@ -27947,7 +27854,7 @@ fn wire__web_audio_api__worklet__AudioWorkletNode_channel_count_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::worklet::AudioWorkletNode::channel_count(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -27997,7 +27904,7 @@ fn wire__web_audio_api__worklet__AudioWorkletNode_channel_count_mode_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
-                        web_audio_api::worklet::AudioWorkletNode::channel_count_mode(&api_that),
+                        web_audio_api::worklet::AudioWorkletNode::channel_count_mode(api_that),
                     )
                 })())
             }
@@ -28047,7 +27954,7 @@ fn wire__web_audio_api__worklet__AudioWorkletNode_channel_interpretation_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
-                        web_audio_api::worklet::AudioWorkletNode::channel_interpretation(&api_that),
+                        web_audio_api::worklet::AudioWorkletNode::channel_interpretation(api_that),
                     )
                 })())
             }
@@ -28097,7 +28004,7 @@ fn wire__web_audio_api__worklet__AudioWorkletNode_clear_onprocessorerror_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::worklet::AudioWorkletNode::clear_onprocessorerror(&api_that);
+                        web_audio_api::worklet::AudioWorkletNode::clear_onprocessorerror(api_that);
                     })
                 })())
             }
@@ -28147,7 +28054,7 @@ fn wire__web_audio_api__worklet__AudioWorkletNode_context_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::worklet::AudioWorkletNode::context(&api_that);
+                        web_audio_api::worklet::AudioWorkletNode::context(api_that);
                     })
                 })())
             }
@@ -28197,7 +28104,7 @@ fn wire__web_audio_api__worklet__AudioWorkletNode_disconnect_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::worklet::AudioWorkletNode::disconnect(&api_that);
+                        web_audio_api::worklet::AudioWorkletNode::disconnect(api_that);
                     })
                 })())
             }
@@ -28249,7 +28156,7 @@ fn wire__web_audio_api__worklet__AudioWorkletNode_disconnect_output_impl(
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::worklet::AudioWorkletNode::disconnect_output(
-                            &api_that, api_output,
+                            api_that, api_output,
                         );
                     })
                 })())
@@ -28300,7 +28207,7 @@ fn wire__web_audio_api__worklet__AudioWorkletNode_number_of_inputs_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(web_audio_api::worklet::AudioWorkletNode::number_of_inputs(
-                        &api_that,
+                        api_that,
                     ))
                 })())
             }
@@ -28350,7 +28257,7 @@ fn wire__web_audio_api__worklet__AudioWorkletNode_number_of_outputs_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
-                        web_audio_api::worklet::AudioWorkletNode::number_of_outputs(&api_that),
+                        web_audio_api::worklet::AudioWorkletNode::number_of_outputs(api_that),
                     )
                 })())
             }
@@ -28400,7 +28307,7 @@ fn wire__web_audio_api__worklet__AudioWorkletNode_parameters_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::worklet::AudioWorkletNode::parameters(&api_that);
+                        web_audio_api::worklet::AudioWorkletNode::parameters(api_that);
                     })
                 })())
             }
@@ -28450,7 +28357,7 @@ fn wire__web_audio_api__worklet__AudioWorkletNode_registration_impl(
                     }
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
-                        web_audio_api::worklet::AudioWorkletNode::registration(&api_that);
+                        web_audio_api::worklet::AudioWorkletNode::registration(api_that);
                     })
                 })())
             }
@@ -28502,7 +28409,7 @@ fn wire__web_audio_api__worklet__AudioWorkletNode_set_channel_count_impl(
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::worklet::AudioWorkletNode::set_channel_count(
-                            &api_that, api_v,
+                            api_that, api_v,
                         );
                     })
                 })())
@@ -28555,7 +28462,7 @@ fn wire__web_audio_api__worklet__AudioWorkletNode_set_channel_count_mode_impl(
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::worklet::AudioWorkletNode::set_channel_count_mode(
-                            &api_that, api_v,
+                            api_that, api_v,
                         );
                     })
                 })())
@@ -28608,7 +28515,7 @@ fn wire__web_audio_api__worklet__AudioWorkletNode_set_channel_interpretation_imp
                     let api_that = &*api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::worklet::AudioWorkletNode::set_channel_interpretation(
-                            &api_that, api_v,
+                            api_that, api_v,
                         );
                     })
                 })())
