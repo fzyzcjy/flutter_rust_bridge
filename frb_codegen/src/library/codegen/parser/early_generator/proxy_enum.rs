@@ -75,7 +75,14 @@ fn generate_proxy_enum(
         })
         .collect_vec();
 
-    let deref_target = proxy_enum_ty.rust_api_type();
+    let deref_target = compute_deref_target(&proxy_enum_ty);
 
     lockable::generate(&enum_name, &deref_target, &variants)
+}
+
+fn compute_deref_target(ty: &MirType) -> String {
+    match ty {
+        MirType::RustAutoOpaqueImplicit(ty) => ty.raw.string.clone(),
+        _ => unimplemented!(),
+    }
 }
