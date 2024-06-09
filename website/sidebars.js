@@ -217,6 +217,7 @@ const sidebars = {
                         'guides/traits/overview',
                         'guides/traits/trait-def',
                         'guides/traits/trait-objects',
+                        'guides/traits/ext-pattern',
                     ],
                 },
                 {
