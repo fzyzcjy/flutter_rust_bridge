@@ -1,7 +1,6 @@
 use crate::codegen::ir::early_generator::proxied_type::IrEarlyGeneratorProxiedType;
 use crate::codegen::ir::early_generator::trait_def_info::IrEarlyGeneratorTraitDefInfo;
 use crate::codegen::ir::hir::flat::pack::HirFlatPack;
-use crate::codegen::ir::mir::ty::MirType;
 
 #[derive(Debug, Clone, Default, serde::Serialize)]
 pub(crate) struct IrEarlyGeneratorPack {

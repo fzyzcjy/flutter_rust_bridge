@@ -1,4 +1,3 @@
-use crate::codegen::ir::mir::ty::delegate::{MirTypeDelegate, MirTypeDelegateProxyEnum};
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::mir::parser::ty::misc::convert_ident_str;
 use crate::codegen::parser::mir::parser::ty::TypeParserWithContext;
@@ -21,7 +20,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             Type::ImplTrait(x) => self
                 .parse_type_impl_trait_dart_fn(&x)
                 .context("when trying to parse DartFn")?,
-            _ => self.parse_type_rust_auto_opaque_implicit(None, &ty, None, None)?,
+            _ => self.parse_type_rust_auto_opaque_implicit(None, ty, None, None)?,
         })
     }
 

@@ -1,7 +1,4 @@
-use crate::codegen::ir::mir::ty::delegate::{
-    MirTypeDelegateDynTraitVariant, MirTypeDelegateProxyVariant,
-};
-use crate::codegen::ir::mir::ty::MirType;
+use crate::codegen::ir::mir::ty::delegate::MirTypeDelegateDynTraitVariant;
 use crate::utils::namespace::{Namespace, NamespacedName};
 
 #[derive(Debug, Clone, serde::Serialize, PartialEq, Eq, Hash)]

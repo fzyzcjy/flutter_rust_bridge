@@ -1,7 +1,6 @@
 use crate::codegen::ir::mir::func::{MirFunc, MirFuncInput, OwnershipMode};
 use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
 use crate::codegen::ir::mir::ty::MirType;
-use crate::if_then_some;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
 

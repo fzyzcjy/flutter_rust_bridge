@@ -1,4 +1,3 @@
-use crate::codegen::generator::api_dart::spec_generator::class::proxy_variant;
 use itertools::Itertools;
 
 pub(super) fn generate_encode_to_enum(enum_name: &str, variants: &[VariantInfo]) -> String {

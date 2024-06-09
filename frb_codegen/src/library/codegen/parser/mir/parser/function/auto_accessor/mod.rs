@@ -15,7 +15,7 @@ use crate::codegen::parser::mir::parser::ty::{
 use crate::codegen::parser::mir::sanity_checker::auto_accessor_checker;
 use crate::codegen::parser::mir::ParseMode;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
-use crate::utils::namespace::{Namespace, NamespacedName};
+use crate::utils::namespace::NamespacedName;
 use field::parse_auto_accessor_of_field;
 use itertools::Itertools;
 use std::collections::HashMap;

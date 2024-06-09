@@ -47,7 +47,8 @@ pub enum MirVariantKind {
 impl MirTypeEnumRef {
     #[inline]
     pub fn get<'a>(&self, file: &'a impl MirContext) -> &'a MirEnum {
-        &(file.enum_pool().get(&self.ident)).expect(&format!("enum_pool does not contain {self:?}"))
+        (file.enum_pool().get(&self.ident))
+            .unwrap_or_else(|| panic!("enum_pool does not contain {self:?}"))
     }
 }
 
