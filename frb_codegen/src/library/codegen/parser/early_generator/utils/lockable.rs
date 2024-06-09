@@ -12,6 +12,7 @@ use strum_macros::Display;
 pub(crate) struct VariantInfo {
     pub enum_variant_name: String,
     pub ty_name: String,
+    pub deref_extra_code: String,
 }
 
 pub(crate) fn generate(
@@ -186,7 +187,9 @@ fn generate_code_read_write_guard(
         )
     });
 
-    let deref_body = generate_match_raw(variants, |_| "inner.deref()".to_owned());
+    let deref_body = generate_match_raw(variants, |variant| {
+        format!("inner.deref(){}", variant.deref_extra_code)
+    });
     let deref_code = format!(
         "
         impl std::ops::Deref for {enum_name}<'_> {{
