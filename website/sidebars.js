@@ -130,22 +130,6 @@ const sidebars = {
                 },
                 {
                     type: 'category',
-                    label: 'Concurrency and async',
-                    collapsed: true,
-                    link: {
-                        type: 'doc',
-                        id: 'guides/concurrency/index',
-                    },
-                    items: [
-                        'guides/concurrency/overview',
-                        'guides/concurrency/sync-rust',
-                        'guides/concurrency/async-rust',
-                        'guides/concurrency/sync-dart',
-                        'guides/concurrency/async-dart',
-                    ],
-                },
-                {
-                    type: 'category',
                     label: 'Two-way Road',
                     collapsed: true,
                     link: {
@@ -155,35 +139,6 @@ const sidebars = {
                     items: [
                         'guides/direction/dart-call-rust',
                         'guides/direction/rust-call-dart',
-                    ],
-                },
-                {
-                    type: 'category',
-                    label: 'Customization',
-                    collapsed: true,
-                    link: {
-                        type: 'doc',
-                        id: 'guides/custom/index',
-                    },
-                    items: [
-                        'guides/custom/codegen',
-                        'guides/custom/rust',
-                        'guides/custom/dart',
-                    ],
-                },
-                {
-                    type: 'category',
-                    label: 'Cross-platform utils',
-                    collapsed: true,
-                    link: {
-                        type: 'doc',
-                        id: 'guides/cross-platform/index',
-                    },
-                    items: [
-                        'guides/cross-platform/overview',
-                        'guides/cross-platform/async',
-                        'guides/cross-platform/thread-pool',
-                        'guides/cross-platform/isolate',
                     ],
                 },
                 {
@@ -257,6 +212,51 @@ const sidebars = {
                                 'guides/third-party/manual/types',
                             ],
                         },
+                    ],
+                },
+                {
+                    type: 'category',
+                    label: 'Concurrency and async',
+                    collapsed: true,
+                    link: {
+                        type: 'doc',
+                        id: 'guides/concurrency/index',
+                    },
+                    items: [
+                        'guides/concurrency/overview',
+                        'guides/concurrency/sync-rust',
+                        'guides/concurrency/async-rust',
+                        'guides/concurrency/sync-dart',
+                        'guides/concurrency/async-dart',
+                    ],
+                },
+                {
+                    type: 'category',
+                    label: 'Customization',
+                    collapsed: true,
+                    link: {
+                        type: 'doc',
+                        id: 'guides/custom/index',
+                    },
+                    items: [
+                        'guides/custom/codegen',
+                        'guides/custom/rust',
+                        'guides/custom/dart',
+                    ],
+                },
+                {
+                    type: 'category',
+                    label: 'Cross-platform utils',
+                    collapsed: true,
+                    link: {
+                        type: 'doc',
+                        id: 'guides/cross-platform/index',
+                    },
+                    items: [
+                        'guides/cross-platform/overview',
+                        'guides/cross-platform/async',
+                        'guides/cross-platform/thread-pool',
+                        'guides/cross-platform/isolate',
                     ],
                 },
                 {
