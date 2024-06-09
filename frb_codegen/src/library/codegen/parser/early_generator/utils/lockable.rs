@@ -16,14 +16,17 @@ pub(crate) struct VariantInfo {
 
 pub(crate) fn generate(
     enum_name: &str,
+    deref_target: &str,
     variants: &[VariantInfo],
 ) -> anyhow::Result<Vec<InjectExtraCodeBlock>> {
     let code_enum_def = generate_enum_raw(variants, &enum_name, |variant| {
         format!("RustAutoOpaque<{}>", variant.ty_name)
     });
     let code_lockable_impl = generate_code_lockable_impl(enum_name, variants);
-    let code_read_guard = generate_code_read_write_guard(enum_name, ReadWrite::Read, variants);
-    let code_write_guard = generate_code_read_write_guard(enum_name, ReadWrite::Write, variants);
+    let code_read_guard =
+        generate_code_read_write_guard(enum_name, deref_target, ReadWrite::Read, variants);
+    let code_write_guard =
+        generate_code_read_write_guard(enum_name, deref_target, ReadWrite::Write, variants);
 
     Ok(vec![
         InjectExtraCodeBlock {
@@ -144,6 +147,7 @@ enum ReadWrite {
 
 fn generate_code_read_write_guard(
     enum_name: &str,
+    deref_target: &str,
     rw: ReadWrite,
     variants: &[VariantInfo],
 ) -> String {
@@ -161,7 +165,7 @@ fn generate_code_read_write_guard(
     let deref_code = format!(
         "
         impl std::ops::Deref for {enum_name}<'_> {{
-            type Target = dyn TODO;
+            type Target = {deref_target};
 
             fn deref(&self) -> &Self::Target {{
                 {deref_body}
