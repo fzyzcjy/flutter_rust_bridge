@@ -11,7 +11,7 @@ pub(crate) fn compute_path_from_namespace(
     let raw_path = namespace.path();
     let chunks = if namespace == &CrateName::self_crate().namespace() {
         // workaround - for `lib.rs`, we cannot just output `/` which is invalid
-        raw_path.clone()
+        vec!["lib".to_owned()]
     } else {
         match raw_path[0] {
             CrateName::SELF_CRATE => raw_path[1..].to_owned(),
