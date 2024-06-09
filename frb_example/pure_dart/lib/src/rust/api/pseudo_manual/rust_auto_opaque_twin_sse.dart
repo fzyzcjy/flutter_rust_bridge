@@ -75,13 +75,13 @@ Future<BoxFnStringString> rustAutoOpaqueCallableReturnTwinSse() => RustLib
     .crateApiPseudoManualRustAutoOpaqueTwinSseRustAutoOpaqueCallableReturnTwinSse();
 
 Future<void> rustAutoOpaqueTraitObjectArgOwnTwinSse(
-        {required BoxHelloTraitTwinSse arg, required String expect}) =>
+        {required HelloTraitTwinSse arg, required String expect}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustAutoOpaqueTwinSseRustAutoOpaqueTraitObjectArgOwnTwinSse(
             arg: arg, expect: expect);
 
 Future<void> rustAutoOpaqueTraitObjectArgBorrowTwinSse(
-        {required BoxHelloTraitTwinSse arg, required String expect}) =>
+        {required HelloTraitTwinSse arg, required String expect}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustAutoOpaqueTwinSseRustAutoOpaqueTraitObjectArgBorrowTwinSse(
             arg: arg, expect: expect);
@@ -92,13 +92,13 @@ Future<void> rustAutoOpaqueTraitObjectArgMutBorrowTwinSse(
         .crateApiPseudoManualRustAutoOpaqueTwinSseRustAutoOpaqueTraitObjectArgMutBorrowTwinSse(
             arg: arg, expect: expect);
 
-Future<BoxHelloTraitTwinSse> rustAutoOpaqueTraitObjectReturnOwnOneTwinSse() =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinSseRustAutoOpaqueTraitObjectReturnOwnOneTwinSse();
+Future<HelloTraitTwinSse> rustAutoOpaqueTraitObjectReturnOwnOneTwinSse() => RustLib
+    .instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinSseRustAutoOpaqueTraitObjectReturnOwnOneTwinSse();
 
-Future<BoxHelloTraitTwinSse> rustAutoOpaqueTraitObjectReturnOwnTwoTwinSse() =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinSseRustAutoOpaqueTraitObjectReturnOwnTwoTwinSse();
+Future<HelloTraitTwinSse> rustAutoOpaqueTraitObjectReturnOwnTwoTwinSse() => RustLib
+    .instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinSseRustAutoOpaqueTraitObjectReturnOwnTwoTwinSse();
 
 Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinSse(
         {required StructWithGoodAndOpaqueFieldTwinSse arg}) =>

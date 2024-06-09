@@ -76,13 +76,13 @@ Future<BoxFnStringString> rustAutoOpaqueCallableReturnTwinMoi() => RustLib
     .crateApiPseudoManualRustAutoOpaqueTwinMoiRustAutoOpaqueCallableReturnTwinMoi();
 
 Future<void> rustAutoOpaqueTraitObjectArgOwnTwinMoi(
-        {required BoxHelloTraitTwinMoi arg, required String expect}) =>
+        {required HelloTraitTwinMoi arg, required String expect}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustAutoOpaqueTwinMoiRustAutoOpaqueTraitObjectArgOwnTwinMoi(
             arg: arg, expect: expect);
 
 Future<void> rustAutoOpaqueTraitObjectArgBorrowTwinMoi(
-        {required BoxHelloTraitTwinMoi arg, required String expect}) =>
+        {required HelloTraitTwinMoi arg, required String expect}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustAutoOpaqueTwinMoiRustAutoOpaqueTraitObjectArgBorrowTwinMoi(
             arg: arg, expect: expect);
@@ -93,13 +93,13 @@ Future<void> rustAutoOpaqueTraitObjectArgMutBorrowTwinMoi(
         .crateApiPseudoManualRustAutoOpaqueTwinMoiRustAutoOpaqueTraitObjectArgMutBorrowTwinMoi(
             arg: arg, expect: expect);
 
-Future<BoxHelloTraitTwinMoi> rustAutoOpaqueTraitObjectReturnOwnOneTwinMoi() =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinMoiRustAutoOpaqueTraitObjectReturnOwnOneTwinMoi();
+Future<HelloTraitTwinMoi> rustAutoOpaqueTraitObjectReturnOwnOneTwinMoi() => RustLib
+    .instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinMoiRustAutoOpaqueTraitObjectReturnOwnOneTwinMoi();
 
-Future<BoxHelloTraitTwinMoi> rustAutoOpaqueTraitObjectReturnOwnTwoTwinMoi() =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinMoiRustAutoOpaqueTraitObjectReturnOwnTwoTwinMoi();
+Future<HelloTraitTwinMoi> rustAutoOpaqueTraitObjectReturnOwnTwoTwinMoi() => RustLib
+    .instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinMoiRustAutoOpaqueTraitObjectReturnOwnTwoTwinMoi();
 
 Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinMoi(
         {required StructWithGoodAndOpaqueFieldTwinMoi arg}) =>

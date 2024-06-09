@@ -6,22 +6,6 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructOneWithTraitForDynTwinNormal>>
-abstract class StructOneWithTraitForDynTwinNormal
-    implements RustOpaqueInterface, SimpleTraitForDynTwinNormal {
-  static Future<StructOneWithTraitForDynTwinNormal> createTwinNormal(
-          {required int one}) =>
-      RustLib.instance.api
-          .crateApiImplTraitStructOneWithTraitForDynTwinNormalCreateTwinNormal(
-              one: one);
-
-  int get one;
-
-  void set one(int one);
-
-  Future<int> simpleMethodTwinNormal();
-}
-
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructOneWithTraitTwinNormal>>
 abstract class StructOneWithTraitTwinNormal
     implements RustOpaqueInterface, SimpleTraitTwinNormal {
@@ -42,16 +26,6 @@ abstract class StructOneWithTraitTwinNormal
       .crateApiImplTraitStructOneWithTraitTwinNormalSimpleTraitFnWithDefaultImplTwinNormal();
 }
 
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructTwoWithTraitForDynTwinNormal>>
-abstract class StructTwoWithTraitForDynTwinNormal
-    implements RustOpaqueInterface, SimpleTraitForDynTwinNormal {
-  int get two;
-
-  void set two(int two);
-
-  Future<int> simpleMethodTwinNormal();
-}
-
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructTwoWithTraitTwinNormal>>
 abstract class StructTwoWithTraitTwinNormal
     implements RustOpaqueInterface, SimpleTraitTwinNormal {
@@ -70,10 +44,6 @@ abstract class StructTwoWithTraitTwinNormal
   static Future<int> simpleTraitFnWithDefaultImplTwinNormal() => RustLib
       .instance.api
       .crateApiImplTraitStructTwoWithTraitTwinNormalSimpleTraitFnWithDefaultImplTwinNormal();
-}
-
-abstract class SimpleTraitForDynTwinNormal {
-  Future<int> simpleMethodTwinNormal();
 }
 
 abstract class SimpleTraitTwinNormal {

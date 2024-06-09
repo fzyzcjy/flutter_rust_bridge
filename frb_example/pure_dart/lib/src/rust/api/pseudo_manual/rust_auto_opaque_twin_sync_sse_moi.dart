@@ -76,13 +76,13 @@ BoxFnStringString rustAutoOpaqueCallableReturnTwinSyncSseMoi() => RustLib
     .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiRustAutoOpaqueCallableReturnTwinSyncSseMoi();
 
 void rustAutoOpaqueTraitObjectArgOwnTwinSyncSseMoi(
-        {required BoxHelloTraitTwinSyncSseMoi arg, required String expect}) =>
+        {required HelloTraitTwinSyncSseMoi arg, required String expect}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiRustAutoOpaqueTraitObjectArgOwnTwinSyncSseMoi(
             arg: arg, expect: expect);
 
 void rustAutoOpaqueTraitObjectArgBorrowTwinSyncSseMoi(
-        {required BoxHelloTraitTwinSyncSseMoi arg, required String expect}) =>
+        {required HelloTraitTwinSyncSseMoi arg, required String expect}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiRustAutoOpaqueTraitObjectArgBorrowTwinSyncSseMoi(
             arg: arg, expect: expect);
@@ -93,12 +93,12 @@ void rustAutoOpaqueTraitObjectArgMutBorrowTwinSyncSseMoi(
         .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiRustAutoOpaqueTraitObjectArgMutBorrowTwinSyncSseMoi(
             arg: arg, expect: expect);
 
-BoxHelloTraitTwinSyncSseMoi
+HelloTraitTwinSyncSseMoi
     rustAutoOpaqueTraitObjectReturnOwnOneTwinSyncSseMoi() => RustLib
         .instance.api
         .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiRustAutoOpaqueTraitObjectReturnOwnOneTwinSyncSseMoi();
 
-BoxHelloTraitTwinSyncSseMoi
+HelloTraitTwinSyncSseMoi
     rustAutoOpaqueTraitObjectReturnOwnTwoTwinSyncSseMoi() => RustLib
         .instance.api
         .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiRustAutoOpaqueTraitObjectReturnOwnTwoTwinSyncSseMoi();

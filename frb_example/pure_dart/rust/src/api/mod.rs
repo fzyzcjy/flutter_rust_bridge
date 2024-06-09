@@ -18,6 +18,7 @@ pub mod dart_opaque;
 pub mod dart_opaque_sync;
 pub mod deliberate_name_conflict;
 pub mod dropping;
+pub mod dyn_trait;
 pub mod enumeration;
 pub mod event_listener;
 pub mod exception;
@@ -51,6 +52,5 @@ pub mod structure;
 pub mod tuple;
 pub mod type_alias;
 pub mod uuid_type;
-mod dyn_trait;
 
 pub fn function_at_api_mod_rs() {}

@@ -77,13 +77,13 @@ Future<BoxFnStringString> rustAutoOpaqueCallableReturnTwinRustAsyncMoi() => Rust
     .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncMoiRustAutoOpaqueCallableReturnTwinRustAsyncMoi();
 
 Future<void> rustAutoOpaqueTraitObjectArgOwnTwinRustAsyncMoi(
-        {required BoxHelloTraitTwinRustAsyncMoi arg, required String expect}) =>
+        {required HelloTraitTwinRustAsyncMoi arg, required String expect}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncMoiRustAutoOpaqueTraitObjectArgOwnTwinRustAsyncMoi(
             arg: arg, expect: expect);
 
 Future<void> rustAutoOpaqueTraitObjectArgBorrowTwinRustAsyncMoi(
-        {required BoxHelloTraitTwinRustAsyncMoi arg, required String expect}) =>
+        {required HelloTraitTwinRustAsyncMoi arg, required String expect}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncMoiRustAutoOpaqueTraitObjectArgBorrowTwinRustAsyncMoi(
             arg: arg, expect: expect);
@@ -94,12 +94,12 @@ Future<void> rustAutoOpaqueTraitObjectArgMutBorrowTwinRustAsyncMoi(
         .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncMoiRustAutoOpaqueTraitObjectArgMutBorrowTwinRustAsyncMoi(
             arg: arg, expect: expect);
 
-Future<BoxHelloTraitTwinRustAsyncMoi>
+Future<HelloTraitTwinRustAsyncMoi>
     rustAutoOpaqueTraitObjectReturnOwnOneTwinRustAsyncMoi() => RustLib
         .instance.api
         .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncMoiRustAutoOpaqueTraitObjectReturnOwnOneTwinRustAsyncMoi();
 
-Future<BoxHelloTraitTwinRustAsyncMoi>
+Future<HelloTraitTwinRustAsyncMoi>
     rustAutoOpaqueTraitObjectReturnOwnTwoTwinRustAsyncMoi() => RustLib
         .instance.api
         .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncMoiRustAutoOpaqueTraitObjectReturnOwnTwoTwinRustAsyncMoi();

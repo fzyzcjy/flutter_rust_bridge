@@ -75,13 +75,13 @@ BoxFnStringString rustAutoOpaqueCallableReturnTwinSyncMoi() => RustLib
     .crateApiPseudoManualRustAutoOpaqueTwinSyncMoiRustAutoOpaqueCallableReturnTwinSyncMoi();
 
 void rustAutoOpaqueTraitObjectArgOwnTwinSyncMoi(
-        {required BoxHelloTraitTwinSyncMoi arg, required String expect}) =>
+        {required HelloTraitTwinSyncMoi arg, required String expect}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustAutoOpaqueTwinSyncMoiRustAutoOpaqueTraitObjectArgOwnTwinSyncMoi(
             arg: arg, expect: expect);
 
 void rustAutoOpaqueTraitObjectArgBorrowTwinSyncMoi(
-        {required BoxHelloTraitTwinSyncMoi arg, required String expect}) =>
+        {required HelloTraitTwinSyncMoi arg, required String expect}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustAutoOpaqueTwinSyncMoiRustAutoOpaqueTraitObjectArgBorrowTwinSyncMoi(
             arg: arg, expect: expect);
@@ -92,13 +92,13 @@ void rustAutoOpaqueTraitObjectArgMutBorrowTwinSyncMoi(
         .crateApiPseudoManualRustAutoOpaqueTwinSyncMoiRustAutoOpaqueTraitObjectArgMutBorrowTwinSyncMoi(
             arg: arg, expect: expect);
 
-BoxHelloTraitTwinSyncMoi rustAutoOpaqueTraitObjectReturnOwnOneTwinSyncMoi() =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinSyncMoiRustAutoOpaqueTraitObjectReturnOwnOneTwinSyncMoi();
+HelloTraitTwinSyncMoi rustAutoOpaqueTraitObjectReturnOwnOneTwinSyncMoi() => RustLib
+    .instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinSyncMoiRustAutoOpaqueTraitObjectReturnOwnOneTwinSyncMoi();
 
-BoxHelloTraitTwinSyncMoi rustAutoOpaqueTraitObjectReturnOwnTwoTwinSyncMoi() =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinSyncMoiRustAutoOpaqueTraitObjectReturnOwnTwoTwinSyncMoi();
+HelloTraitTwinSyncMoi rustAutoOpaqueTraitObjectReturnOwnTwoTwinSyncMoi() => RustLib
+    .instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinSyncMoiRustAutoOpaqueTraitObjectReturnOwnTwoTwinSyncMoi();
 
 void rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinSyncMoi(
         {required StructWithGoodAndOpaqueFieldTwinSyncMoi arg}) =>

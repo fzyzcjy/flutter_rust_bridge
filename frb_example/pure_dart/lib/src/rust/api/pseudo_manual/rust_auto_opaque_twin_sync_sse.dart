@@ -75,13 +75,13 @@ BoxFnStringString rustAutoOpaqueCallableReturnTwinSyncSse() => RustLib
     .crateApiPseudoManualRustAutoOpaqueTwinSyncSseRustAutoOpaqueCallableReturnTwinSyncSse();
 
 void rustAutoOpaqueTraitObjectArgOwnTwinSyncSse(
-        {required BoxHelloTraitTwinSyncSse arg, required String expect}) =>
+        {required HelloTraitTwinSyncSse arg, required String expect}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustAutoOpaqueTwinSyncSseRustAutoOpaqueTraitObjectArgOwnTwinSyncSse(
             arg: arg, expect: expect);
 
 void rustAutoOpaqueTraitObjectArgBorrowTwinSyncSse(
-        {required BoxHelloTraitTwinSyncSse arg, required String expect}) =>
+        {required HelloTraitTwinSyncSse arg, required String expect}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustAutoOpaqueTwinSyncSseRustAutoOpaqueTraitObjectArgBorrowTwinSyncSse(
             arg: arg, expect: expect);
@@ -92,13 +92,13 @@ void rustAutoOpaqueTraitObjectArgMutBorrowTwinSyncSse(
         .crateApiPseudoManualRustAutoOpaqueTwinSyncSseRustAutoOpaqueTraitObjectArgMutBorrowTwinSyncSse(
             arg: arg, expect: expect);
 
-BoxHelloTraitTwinSyncSse rustAutoOpaqueTraitObjectReturnOwnOneTwinSyncSse() =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinSyncSseRustAutoOpaqueTraitObjectReturnOwnOneTwinSyncSse();
+HelloTraitTwinSyncSse rustAutoOpaqueTraitObjectReturnOwnOneTwinSyncSse() => RustLib
+    .instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinSyncSseRustAutoOpaqueTraitObjectReturnOwnOneTwinSyncSse();
 
-BoxHelloTraitTwinSyncSse rustAutoOpaqueTraitObjectReturnOwnTwoTwinSyncSse() =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinSyncSseRustAutoOpaqueTraitObjectReturnOwnTwoTwinSyncSse();
+HelloTraitTwinSyncSse rustAutoOpaqueTraitObjectReturnOwnTwoTwinSyncSse() => RustLib
+    .instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinSyncSseRustAutoOpaqueTraitObjectReturnOwnTwoTwinSyncSse();
 
 void rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinSyncSse(
         {required StructWithGoodAndOpaqueFieldTwinSyncSse arg}) =>

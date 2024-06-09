@@ -72,13 +72,13 @@ Future<BoxFnStringString> rustAutoOpaqueCallableReturnTwinNormal() =>
         .crateApiRustAutoOpaqueRustAutoOpaqueCallableReturnTwinNormal();
 
 Future<void> rustAutoOpaqueTraitObjectArgOwnTwinNormal(
-        {required BoxHelloTraitTwinNormal arg, required String expect}) =>
+        {required HelloTraitTwinNormal arg, required String expect}) =>
     RustLib.instance.api
         .crateApiRustAutoOpaqueRustAutoOpaqueTraitObjectArgOwnTwinNormal(
             arg: arg, expect: expect);
 
 Future<void> rustAutoOpaqueTraitObjectArgBorrowTwinNormal(
-        {required BoxHelloTraitTwinNormal arg, required String expect}) =>
+        {required HelloTraitTwinNormal arg, required String expect}) =>
     RustLib.instance.api
         .crateApiRustAutoOpaqueRustAutoOpaqueTraitObjectArgBorrowTwinNormal(
             arg: arg, expect: expect);
@@ -89,11 +89,11 @@ Future<void> rustAutoOpaqueTraitObjectArgMutBorrowTwinNormal(
         .crateApiRustAutoOpaqueRustAutoOpaqueTraitObjectArgMutBorrowTwinNormal(
             arg: arg, expect: expect);
 
-Future<BoxHelloTraitTwinNormal>
+Future<HelloTraitTwinNormal>
     rustAutoOpaqueTraitObjectReturnOwnOneTwinNormal() => RustLib.instance.api
         .crateApiRustAutoOpaqueRustAutoOpaqueTraitObjectReturnOwnOneTwinNormal();
 
-Future<BoxHelloTraitTwinNormal>
+Future<HelloTraitTwinNormal>
     rustAutoOpaqueTraitObjectReturnOwnTwoTwinNormal() => RustLib.instance.api
         .crateApiRustAutoOpaqueRustAutoOpaqueTraitObjectReturnOwnTwoTwinNormal();
 

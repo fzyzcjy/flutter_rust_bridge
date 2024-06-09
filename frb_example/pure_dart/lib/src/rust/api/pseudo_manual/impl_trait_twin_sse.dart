@@ -6,22 +6,6 @@
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructOneWithTraitForDynTwinSse>>
-abstract class StructOneWithTraitForDynTwinSse
-    implements RustOpaqueInterface, SimpleTraitForDynTwinSse {
-  static Future<StructOneWithTraitForDynTwinSse> createTwinSse(
-          {required int one}) =>
-      RustLib.instance.api
-          .crateApiPseudoManualImplTraitTwinSseStructOneWithTraitForDynTwinSseCreateTwinSse(
-              one: one);
-
-  int get one;
-
-  void set one(int one);
-
-  Future<int> simpleMethodTwinSse();
-}
-
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructOneWithTraitTwinSse>>
 abstract class StructOneWithTraitTwinSse
     implements RustOpaqueInterface, SimpleTraitTwinSse {
@@ -42,16 +26,6 @@ abstract class StructOneWithTraitTwinSse
       .crateApiPseudoManualImplTraitTwinSseStructOneWithTraitTwinSseSimpleTraitFnWithDefaultImplTwinSse();
 }
 
-// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructTwoWithTraitForDynTwinSse>>
-abstract class StructTwoWithTraitForDynTwinSse
-    implements RustOpaqueInterface, SimpleTraitForDynTwinSse {
-  int get two;
-
-  void set two(int two);
-
-  Future<int> simpleMethodTwinSse();
-}
-
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructTwoWithTraitTwinSse>>
 abstract class StructTwoWithTraitTwinSse
     implements RustOpaqueInterface, SimpleTraitTwinSse {
@@ -70,10 +44,6 @@ abstract class StructTwoWithTraitTwinSse
   static Future<int> simpleTraitFnWithDefaultImplTwinSse() => RustLib
       .instance.api
       .crateApiPseudoManualImplTraitTwinSseStructTwoWithTraitTwinSseSimpleTraitFnWithDefaultImplTwinSse();
-}
-
-abstract class SimpleTraitForDynTwinSse {
-  Future<int> simpleMethodTwinSse();
 }
 
 abstract class SimpleTraitTwinSse {
