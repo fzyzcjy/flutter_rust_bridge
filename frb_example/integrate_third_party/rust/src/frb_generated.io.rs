@@ -4,30 +4,7 @@
 // Section: imports
 
 use super::*;
-use crate::api::override_web_audio_api::AnalyserNodeExt;
-use crate::api::override_web_audio_api::AudioBufferSourceNodeExt;
 use crate::api::override_web_audio_api::AudioContextExt;
-use crate::api::override_web_audio_api::AudioDestinationNodeExt;
-use crate::api::override_web_audio_api::AudioParamExt;
-use crate::api::override_web_audio_api::BiquadFilterNodeExt;
-use crate::api::override_web_audio_api::ChannelMergerNodeExt;
-use crate::api::override_web_audio_api::ChannelSplitterNodeExt;
-use crate::api::override_web_audio_api::ConstantSourceNodeExt;
-use crate::api::override_web_audio_api::ConvolverNodeExt;
-use crate::api::override_web_audio_api::DelayNodeExt;
-use crate::api::override_web_audio_api::DynamicsCompressorNodeExt;
-use crate::api::override_web_audio_api::GainNodeExt;
-use crate::api::override_web_audio_api::IIRFilterNodeExt;
-use crate::api::override_web_audio_api::MediaElementAudioSourceNodeExt;
-use crate::api::override_web_audio_api::MediaStreamAudioDestinationNodeExt;
-use crate::api::override_web_audio_api::MediaStreamAudioSourceNodeExt;
-use crate::api::override_web_audio_api::MediaStreamTrackAudioSourceNodeExt;
-use crate::api::override_web_audio_api::OscillatorNodeExt;
-use crate::api::override_web_audio_api::PannerNodeExt;
-use crate::api::override_web_audio_api::ScriptProcessorNodeExt;
-use crate::api::override_web_audio_api::StereoPannerNodeExt;
-use crate::api::override_web_audio_api::WaveShaperNodeExt;
-use crate::api::override_web_audio_api::*;
 use crate::api::simple::*;
 use flutter_rust_bridge::for_generated::byteorder::{NativeEndian, ReadBytesExt, WriteBytesExt};
 use flutter_rust_bridge::for_generated::{transform_result_dco, Lockable};
@@ -143,20 +120,6 @@ pub extern "C" fn frbgen_frb_example_integrate_third_party_rust_arc_decrement_st
     ptr: *const std::ffi::c_void,
 ) {
     MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioListener>>::decrement_strong_count(ptr as _);
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioNodeImplementor(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioNodeImplementor>>::increment_strong_count(ptr as _);
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioNodeImplementor(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioNodeImplementor>>::decrement_strong_count(ptr as _);
 }
 
 #[no_mangle]

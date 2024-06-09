@@ -56,10 +56,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       get rust_arc_decrement_strong_count_AudioListenerPtr => wire
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener;
 
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_AudioNodeImplementorPtr => wire
-          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioNodeImplementor;
-
   CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_AudioParamPtr =>
       wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParam;
 
@@ -225,11 +221,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   AudioListener
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
-          dynamic raw);
-
-  @protected
-  AudioNodeImplementor
-      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioNodeImplementor(
           dynamic raw);
 
   @protected
@@ -693,11 +684,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
-  AudioNodeImplementor
-      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioNodeImplementor(
-          dynamic raw);
-
-  @protected
   AudioParam
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParam(
           dynamic raw);
@@ -876,24 +862,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   String dco_decode_String(dynamic raw);
 
   @protected
-  AnalyserNodeExt dco_decode_TraitDef_AnalyserNodeExt(dynamic raw);
-
-  @protected
-  AudioBufferSourceNodeExt dco_decode_TraitDef_AudioBufferSourceNodeExt(
-      dynamic raw);
-
-  @protected
   AudioContextExt dco_decode_TraitDef_AudioContextExt(dynamic raw);
 
   @protected
-  AudioDestinationNodeExt dco_decode_TraitDef_AudioDestinationNodeExt(
-      dynamic raw);
-
-  @protected
   AudioNode dco_decode_TraitDef_AudioNode(dynamic raw);
-
-  @protected
-  AudioParamExt dco_decode_TraitDef_AudioParamExt(dynamic raw);
 
   @protected
   AudioScheduledSourceNode dco_decode_TraitDef_AudioScheduledSourceNode(
@@ -904,67 +876,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   BaseAudioContext dco_decode_TraitDef_BaseAudioContext(dynamic raw);
-
-  @protected
-  BiquadFilterNodeExt dco_decode_TraitDef_BiquadFilterNodeExt(dynamic raw);
-
-  @protected
-  ChannelMergerNodeExt dco_decode_TraitDef_ChannelMergerNodeExt(dynamic raw);
-
-  @protected
-  ChannelSplitterNodeExt dco_decode_TraitDef_ChannelSplitterNodeExt(
-      dynamic raw);
-
-  @protected
-  ConstantSourceNodeExt dco_decode_TraitDef_ConstantSourceNodeExt(dynamic raw);
-
-  @protected
-  ConvolverNodeExt dco_decode_TraitDef_ConvolverNodeExt(dynamic raw);
-
-  @protected
-  DelayNodeExt dco_decode_TraitDef_DelayNodeExt(dynamic raw);
-
-  @protected
-  DynamicsCompressorNodeExt dco_decode_TraitDef_DynamicsCompressorNodeExt(
-      dynamic raw);
-
-  @protected
-  GainNodeExt dco_decode_TraitDef_GainNodeExt(dynamic raw);
-
-  @protected
-  IIRFilterNodeExt dco_decode_TraitDef_IIRFilterNodeExt(dynamic raw);
-
-  @protected
-  MediaElementAudioSourceNodeExt
-      dco_decode_TraitDef_MediaElementAudioSourceNodeExt(dynamic raw);
-
-  @protected
-  MediaStreamAudioDestinationNodeExt
-      dco_decode_TraitDef_MediaStreamAudioDestinationNodeExt(dynamic raw);
-
-  @protected
-  MediaStreamAudioSourceNodeExt
-      dco_decode_TraitDef_MediaStreamAudioSourceNodeExt(dynamic raw);
-
-  @protected
-  MediaStreamTrackAudioSourceNodeExt
-      dco_decode_TraitDef_MediaStreamTrackAudioSourceNodeExt(dynamic raw);
-
-  @protected
-  OscillatorNodeExt dco_decode_TraitDef_OscillatorNodeExt(dynamic raw);
-
-  @protected
-  PannerNodeExt dco_decode_TraitDef_PannerNodeExt(dynamic raw);
-
-  @protected
-  ScriptProcessorNodeExt dco_decode_TraitDef_ScriptProcessorNodeExt(
-      dynamic raw);
-
-  @protected
-  StereoPannerNodeExt dco_decode_TraitDef_StereoPannerNodeExt(dynamic raw);
-
-  @protected
-  WaveShaperNodeExt dco_decode_TraitDef_WaveShaperNodeExt(dynamic raw);
 
   @protected
   AudioBufferOptions dco_decode_audio_buffer_options(dynamic raw);
@@ -1132,11 +1043,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   AudioListener
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
-          SseDeserializer deserializer);
-
-  @protected
-  AudioNodeImplementor
-      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioNodeImplementor(
           SseDeserializer deserializer);
 
   @protected
@@ -1600,11 +1506,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
-  AudioNodeImplementor
-      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioNodeImplementor(
-          SseDeserializer deserializer);
-
-  @protected
   AudioParam
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParam(
           SseDeserializer deserializer);
@@ -1964,11 +1865,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
           AudioListener self, SseSerializer serializer);
-
-  @protected
-  void
-      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioNodeImplementor(
-          AudioNodeImplementor self, SseSerializer serializer);
 
   @protected
   void
@@ -2432,11 +2328,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void
-      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioNodeImplementor(
-          AudioNodeImplementor self, SseSerializer serializer);
-
-  @protected
-  void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParam(
           AudioParam self, SseSerializer serializer);
 
@@ -2858,18 +2749,6 @@ class RustLibWire implements BaseWire {
           dynamic ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
-              ptr);
-
-  void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioNodeImplementor(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioNodeImplementor(
-              ptr);
-
-  void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioNodeImplementor(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioNodeImplementor(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParam(
@@ -3359,14 +3238,6 @@ class RustLibWasmModule implements WasmModule {
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
-          dynamic ptr);
-
-  external void
-      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioNodeImplementor(
-          dynamic ptr);
-
-  external void
-      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioNodeImplementor(
           dynamic ptr);
 
   external void
