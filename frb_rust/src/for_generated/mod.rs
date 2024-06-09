@@ -31,7 +31,8 @@ pub use crate::handler::implementation::executor::SimpleExecutor;
 pub use crate::handler::implementation::handler::SimpleHandler;
 #[cfg(feature = "rust-async")]
 pub use crate::lockable::{
-    base::Lockable, order_computer::lockable_compute_decode_order, order_info::LockableOrderInfo,
+    base::Lockable, order::LockableOrder, order_computer::lockable_compute_decode_order,
+    order_info::LockableOrderInfo,
 };
 #[allow(unused)]
 pub use crate::misc::manual_impl::*;
@@ -49,7 +50,7 @@ pub use crate::rust_async::{BaseAsyncRuntime, SimpleAsyncRuntime};
 pub use crate::rust_auto_opaque::dart2rust_explicit::rust_auto_opaque_explicit_decode;
 #[cfg(feature = "rust-async")]
 pub use crate::rust_auto_opaque::dart2rust_implicit::{
-    rust_auto_opaque_decode_owned, rust_auto_opaque_encode,
+    rust_auto_opaque_decode_owned, rust_auto_opaque_encode, rust_auto_opaque_lockable_order,
 };
 #[cfg(feature = "rust-async")]
 pub use crate::rust_auto_opaque::rust2dart_explicit::rust_auto_opaque_explicit_encode;

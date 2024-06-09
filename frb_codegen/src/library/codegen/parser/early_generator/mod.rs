@@ -1,10 +1,10 @@
 mod proxy_enum;
 mod trait_impl_enum;
+pub(crate) mod utils;
 
 use crate::codegen::dumper::Dumper;
 use crate::codegen::ir::early_generator::pack::IrEarlyGeneratorPack;
 use crate::codegen::ir::hir::flat::pack::HirFlatPack;
-use crate::codegen::parser::hir::flat::extra_code_injector::inject_extra_code;
 use crate::codegen::parser::mir;
 use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
 
@@ -28,16 +28,4 @@ pub(crate) fn execute(
     dumper.dump("3_proxy_enum.json", &pack)?;
 
     Ok(pack)
-}
-
-fn inject_extra_code_to_rust_output(
-    pack: &mut HirFlatPack,
-    extra_code: &str,
-    config_mir: &ParserMirInternalConfig,
-) -> anyhow::Result<()> {
-    inject_extra_code(
-        pack,
-        extra_code,
-        &(config_mir.rust_input_namespace_pack).rust_output_path_namespace,
-    )
 }

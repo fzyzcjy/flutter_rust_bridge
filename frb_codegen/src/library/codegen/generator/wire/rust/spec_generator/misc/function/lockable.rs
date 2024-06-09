@@ -1,4 +1,5 @@
 use crate::codegen::ir::mir::func::{MirFunc, MirFuncInput, OwnershipMode};
+use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
 use crate::codegen::ir::mir::ty::MirType;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
@@ -45,8 +46,8 @@ pub(crate) fn generate_code_inner_decode(func: &MirFunc) -> String {
                 ""
             };
             format!(
-                "let {mutability}api_{name} = api_{name}_decoded.unwrap();\n",
-                name = get_variable_name(info.field)
+                "let {mutability}api_{name} = &{mutability}*api_{name}_decoded.unwrap();\n",
+                name = get_variable_name(info.field),
             )
         })
         .join("");
@@ -83,19 +84,21 @@ fn get_variable_name(field: &MirFuncInput) -> &str {
 
 fn filter_interest_fields(func: &MirFunc) -> Vec<FieldInfo> {
     (func.inputs.iter())
-        .filter_map(|field| compute_interest_field(field))
+        .filter_map(|field| {
+            compute_interest_field(&field.inner.ty).map(|ownership_mode| FieldInfo {
+                field,
+                ownership_mode,
+            })
+        })
         .collect_vec()
 }
 
-fn compute_interest_field(field: &MirFuncInput) -> Option<FieldInfo> {
-    match &field.inner.ty {
+fn compute_interest_field(ty: &MirType) -> Option<OwnershipMode> {
+    match &ty {
         MirType::RustAutoOpaqueImplicit(ty) if ty.ownership_mode != OwnershipMode::Owned => {
-            Some(FieldInfo {
-                field,
-                ownership_mode: ty.ownership_mode,
-            })
+            Some(ty.ownership_mode)
         }
-        // TODO: ProxyEnum here
+        MirType::Delegate(MirTypeDelegate::ProxyEnum(ty)) => compute_interest_field(&ty.original),
         _ => None,
     }
 }

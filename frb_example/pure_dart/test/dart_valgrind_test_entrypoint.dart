@@ -40,6 +40,7 @@ import 'api/optional_test.dart' as optional_test;
 import 'api/ownership_test.dart' as ownership_test;
 import 'api/primitive_list_misc_test.dart' as primitive_list_misc_test;
 import 'api/primitive_misc_test.dart' as primitive_misc_test;
+import 'api/proxy_test.dart' as proxy_test;
 import 'api/pseudo_manual/array_twin_rust_async_sse_test.dart'
     as array_twin_rust_async_sse_test;
 import 'api/pseudo_manual/array_twin_rust_async_test.dart'
@@ -466,6 +467,7 @@ Future<void> callFileEntrypoints() async {
   await ownership_test.main(skipRustLibInit: true);
   await primitive_list_misc_test.main(skipRustLibInit: true);
   await primitive_misc_test.main(skipRustLibInit: true);
+  await proxy_test.main(skipRustLibInit: true);
   await array_twin_rust_async_sse_test.main(skipRustLibInit: true);
   await array_twin_rust_async_test.main(skipRustLibInit: true);
   await array_twin_sse_test.main(skipRustLibInit: true);
