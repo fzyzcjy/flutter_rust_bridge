@@ -101,7 +101,7 @@ fn compute_interest_field(ty: &MirType) -> Option<OwnershipMode> {
         }
         MirType::Delegate(MirTypeDelegate::ProxyEnum(ty)) => compute_interest_field(&ty.original),
         // temporarily only support Ref
-        MirType::Delegate(MirTypeDelegate::DynTrait(ty)) => Some(OwnershipMode::Ref),
+        MirType::Delegate(MirTypeDelegate::DynTrait(_)) => Some(OwnershipMode::Ref),
         _ => None,
     }
 }
@@ -114,6 +114,7 @@ struct FieldInfo<'a> {
 pub(crate) fn generate_inner_func_arg_ownership(field: &MirFuncInput) -> Option<OwnershipMode> {
     match &field.inner.ty {
         MirType::RustAutoOpaqueImplicit(ty) => Some(ty.ownership_mode),
+        MirType::Delegate(MirTypeDelegate::DynTrait(_)) => None,
         _ => field.ownership_mode
     }
 }
