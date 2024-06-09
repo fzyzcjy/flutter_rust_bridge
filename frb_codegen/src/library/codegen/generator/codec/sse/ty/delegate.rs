@@ -1,7 +1,8 @@
 use crate::codegen::generator::api_dart::spec_generator::base::ApiDartGenerator;
 use crate::codegen::generator::api_dart::spec_generator::class::proxy_variant;
+use crate::codegen::generator::codec::sse::encode_to_enum;
+use crate::codegen::generator::codec::sse::encode_to_enum::generate_encode_to_enum;
 use crate::codegen::generator::codec::sse::lang::*;
-use crate::codegen::generator::codec::sse::lockable;
 use crate::codegen::generator::codec::sse::ty::*;
 use crate::codegen::ir::mir::ty::delegate::{
     MirTypeDelegatePrimitiveEnum, MirTypeDelegateProxyEnum, MirTypeDelegateSet,
@@ -293,5 +294,5 @@ fn generate_proxy_enum_dart_encode(
     context: ApiDartGeneratorContext,
 ) -> String {
     let enum_name = mir.proxy_enum_name();
-    lockable::generate_lockable_encode_to_enum(&enum_name)
+    generate_encode_to_enum(&enum_name)
 }
