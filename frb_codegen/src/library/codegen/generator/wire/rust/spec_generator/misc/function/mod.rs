@@ -1,3 +1,5 @@
+pub(crate) mod lockable;
+
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::target::TargetOrCommon;
 use crate::codegen::generator::wire::misc::has_port_argument;
@@ -47,7 +49,7 @@ pub(crate) fn generate_wire_func(
             target: target.try_into().unwrap(),
             needs_ffigen: true,
         }
-            .into(),
+        .into(),
         TargetOrCommon::Common => format!(
             "fn {func_name}_impl({params}) {return_type} {{
                 {HANDLER_NAME}.{handler_func_name}({wrap_info_obj}, move || {{ {code_closure} }})
@@ -63,7 +65,7 @@ pub(crate) fn generate_wire_func(
                 .map(|t| format!("-> {t}"))
                 .unwrap_or_default(),
         )
-            .into(),
+        .into(),
     })
 }
 
@@ -100,7 +102,7 @@ fn generate_wrap_info_obj(func: &MirFunc) -> String {
 }
 
 fn generate_code_inner_decode(func: &MirFunc) -> String {
-    super::wire_func_rao::generate_code_inner_decode(func)
+    lockable::generate_code_inner_decode(func)
 }
 
 fn generate_code_call_inner_func_result(func: &MirFunc, inner_func_args: Vec<String>) -> String {
