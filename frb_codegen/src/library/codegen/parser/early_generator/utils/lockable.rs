@@ -78,8 +78,9 @@ fn generate_code_lockable_impl(enum_name: &str, variants: &[VariantInfo]) -> Str
         )
     });
 
-    let lockable_order_body =
-        generate_match_raw(variants, |variant| "inner.lockable_order()".to_string());
+    let lockable_order_body = generate_match_raw(variants, |variant| {
+        "flutter_rust_bridge::for_generated::rust_auto_opaque_lockable_order(inner)".to_string()
+    });
 
     format!(
         "

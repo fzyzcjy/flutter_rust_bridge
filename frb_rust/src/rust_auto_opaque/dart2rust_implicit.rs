@@ -1,4 +1,4 @@
-use crate::for_generated::BaseArc;
+use crate::for_generated::{BaseArc, Lockable, LockableOrder, RustAutoOpaqueBase};
 use crate::rust_auto_opaque::inner::RustAutoOpaqueInner;
 use crate::rust_opaque::RustOpaqueBase;
 use tokio::sync::RwLock;
@@ -22,4 +22,10 @@ pub fn rust_auto_opaque_encode<T, A: BaseArc<RustAutoOpaqueInner<T>>>(
     value: T,
 ) -> RustOpaqueBase<RustAutoOpaqueInner<T>, A> {
     RustOpaqueBase::new(RustAutoOpaqueInner::new(RwLock::new(value)))
+}
+
+pub fn rust_auto_opaque_lockable_order<T, A: BaseArc<RustAutoOpaqueInner<T>>>(
+    opaque: &RustAutoOpaqueBase<T, A>,
+) -> LockableOrder {
+    opaque.0.lockable_order()
 }
