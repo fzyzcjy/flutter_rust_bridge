@@ -21,28 +21,24 @@ pub(crate) fn generate(
     tentative_mir_pack: &MirPack,
     config_mir: &ParserMirInternalConfig,
 ) -> anyhow::Result<()> {
-    // TODO temp disable
-    return Ok(());
+    let extra_codes = (pack.hir_flat_pack.traits.iter())
+        .filter(|x| {
+            FrbAttributes::parse(&x.attrs)
+                .unwrap()
+                .generate_implementor_enum()
+        })
+        .sorted_by_key(|x| x.name.clone())
+        .map(|x| generate_trait_impl_enum(x, &tentative_mir_pack.trait_impls))
+        .collect::<anyhow::Result<Vec<_>>>()?
+        .into_iter()
+        .flatten()
+        .collect_vec();
 
-    // TODO
-    // let extra_codes = (pack.hir_flat_pack.traits.iter())
-    //     .filter(|x| {
-    //         FrbAttributes::parse(&x.attrs)
-    //             .unwrap()
-    //             .generate_implementor_enum()
-    //     })
-    //     .sorted_by_key(|x| x.name.clone())
-    //     .map(|x| generate_trait_impl_enum(x, &tentative_mir_pack.trait_impls))
-    //     .collect::<anyhow::Result<Vec<_>>>()?
-    //     .into_iter()
-    //     .flatten()
-    //     .collect_vec();
-    //
-    // let output_namespace = &(config_mir.rust_input_namespace_pack).rust_output_path_namespace;
-    //
-    // inject_extra_codes(&mut pack.hir_flat_pack, output_namespace, &extra_codes)?;
-    //
-    // Ok(())
+    let output_namespace = &(config_mir.rust_input_namespace_pack).rust_output_path_namespace;
+
+    inject_extra_codes(&mut pack.hir_flat_pack, output_namespace, &extra_codes)?;
+
+    Ok(())
 }
 
 fn generate_trait_impl_enum(
