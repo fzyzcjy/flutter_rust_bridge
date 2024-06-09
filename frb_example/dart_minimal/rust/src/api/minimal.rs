@@ -13,10 +13,10 @@ use flutter_rust_bridge::frb;
 pub struct MyAudioParam(String);
 
 impl MyAudioParam {
-    // #[frb(sync)]
-    // pub fn new(value: String) -> Self {
-    //     Self(value)
-    // }
+    #[frb(sync)]
+    pub fn new(value: String) -> Self {
+        Self(value)
+    }
 
     pub fn my_method(&self) -> String {
         self.0.repeat(2)
@@ -29,12 +29,12 @@ pub struct MyNode {
 }
 
 impl MyNode {
-    // #[frb(sync)]
-    // pub fn new() -> Self {
-    //     Self {
-    //         param_one: MyAudioParam::new("a".to_owned()),
-    //     }
-    // }
+    #[frb(sync)]
+    pub fn new() -> Self {
+        Self {
+            param_one: MyAudioParam::new("a".to_owned()),
+        }
+    }
 
     #[frb(proxy)]
     pub fn param_one(&self) -> &MyAudioParam {
