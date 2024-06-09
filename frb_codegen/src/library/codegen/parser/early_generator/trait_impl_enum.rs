@@ -15,12 +15,20 @@ use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
 use strum_macros::Display;
+use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
+use crate::if_then_some;
 
 pub(crate) fn generate(
     pack: &mut IrEarlyGeneratorPack,
     tentative_mir_pack: &MirPack,
     config_mir: &ParserMirInternalConfig,
 ) -> anyhow::Result<()> {
+    let distinct_types = tentative_mir_pack.distinct_types(None);
+
+    let dyn_trait_types = (distinct_types.iter())
+        .filter_map(|ty| if_then_some!(let MirType::Delegate(MirTypeDelegate::DynTrait(inner)) = ty, inner.clone()))
+        .collect_vec();
+
     let extra_codes = (pack.hir_flat_pack.traits.iter())
         .filter(|x| {
             FrbAttributes::parse(&x.attrs)

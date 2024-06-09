@@ -24,6 +24,7 @@ pub(crate) fn generate(
     config_mir: &ParserMirInternalConfig,
 ) -> anyhow::Result<()> {
     let distinct_types = tentative_mir_pack.distinct_types(None);
+
     let proxy_variants = (distinct_types.iter())
         .filter_map(|ty| if_then_some!(let MirType::Delegate(MirTypeDelegate::ProxyVariant(inner)) = ty, inner.clone()))
         .collect_vec();
