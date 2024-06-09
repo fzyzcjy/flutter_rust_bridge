@@ -72,7 +72,7 @@ fn generate_proxy_enum(
         .map(|(index, variant)| lockable::VariantInfo {
             enum_variant_name: format!("Variant{index}"),
             ty_name: variant.upstream.rust_api_type(),
-            deref_extra_code: TODO,
+            deref_extra_code: format!(".{}()", variant.upstream_method_name),
         })
         .collect_vec();
 
