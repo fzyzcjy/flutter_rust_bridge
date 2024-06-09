@@ -31,7 +31,7 @@ pub(crate) fn generate(
     let output_namespace = &(config_mir.rust_input_namespace_pack).rust_output_path_namespace;
 
     let proxy_variants_of_enum =
-        (proxy_variants.iter()).into_group_map_by(|ty| ty.upstream.safe_ident());
+        (proxy_variants.iter()).into_group_map_by(|ty| ty.inner.safe_ident());
 
     let proxied_types = compute_proxied_types(&proxy_variants_of_enum, &output_namespace);
 
