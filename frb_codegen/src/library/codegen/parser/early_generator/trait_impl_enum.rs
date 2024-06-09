@@ -27,8 +27,11 @@ pub(crate) fn generate(
                 .generate_implementor_enum()
         })
         .sorted_by_key(|x| x.name.clone())
-        .flat_map(|x| generate_trait_impl_enum(x, &tentative_mir_pack.trait_impls))
-        .collect::<anyhow::Result<Vec<_>>>()?;
+        .map(|x| generate_trait_impl_enum(x, &tentative_mir_pack.trait_impls))
+        .collect::<anyhow::Result<Vec<_>>>()?
+        .into_iter()
+        .flatten()
+        .collect_vec();
 
     let output_namespace = &(config_mir.rust_input_namespace_pack).rust_output_path_namespace;
 
