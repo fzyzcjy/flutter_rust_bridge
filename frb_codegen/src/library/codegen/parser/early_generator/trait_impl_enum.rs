@@ -62,16 +62,17 @@ fn generate_trait_impl_enum(
     hir_trait: &HirFlatTrait,
     all_trait_impls: &[MirTraitImpl],
 ) -> anyhow::Result<(Vec<InjectExtraCodeBlock>, IrEarlyGeneratorTraitDefInfo)> {
-    let trait_def_name = &hir_trait.name.name;
+    let trait_def_namespaced_name = &hir_trait.name;
+    let trait_def_name = &trait_def_namespaced_name.name;
     let enum_name = format!("{trait_def_name}Implementor");
 
     let interest_trait_impls = (all_trait_impls.iter())
-        .filter(|x| x.trait_ty.name == hir_trait.name)
+        .filter(|x| &x.trait_ty.name == trait_def_namespaced_name)
         .map(|x| x.impl_ty.clone())
         .sorted_by_key(|x| x.safe_ident())
         .collect_vec();
 
-    let variants = (interest_trait_impls.into_iter().enumerate())
+    let variants = (interest_trait_impls.iter().enumerate())
         .map(|(index, ty)| lockable::VariantInfo {
             // enum_variant_name: ty.rust_api_type(),
             enum_variant_name: format!("Variant{index}"),
@@ -87,7 +88,11 @@ fn generate_trait_impl_enum(
         &variants,
     )?;
 
-    let info = TODO;
+    let info = IrEarlyGeneratorTraitDefInfo {
+        trait_def_name: trait_def_namespaced_name.clone(),
+        delegate_namespace: TODO,
+        variants: TODO,
+    };
 
     Ok((extra_codes, info))
 }
