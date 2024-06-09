@@ -66,16 +66,50 @@ fn generate_code_lockable_impl(enum_name: &str, variants: &[VariantInfo]) -> Str
     format!(
         "
         impl {enum_name} {{
-            #[flutter_rust_bridge::frb(ignore)]
             pub fn blocking_read(&self) -> {enum_name}RwLockReadGuard {{
                 {blocking_read_body}
             }}
 
-            #[flutter_rust_bridge::frb(ignore)]
             pub fn blocking_write(&mut self) -> {enum_name}RwLockWriteGuard {{
                 {blocking_write_body}
             }}
-        }}"
+        }}
+
+        impl Lockable for {enum_name} {{
+            type RwLockReadGuard<'a> = {enum_name}RwLockReadGuard<'a>;
+            type RwLockWriteGuard<'a> = {enum_name}RwLockWriteGuard<'a>;
+
+            fn lockable_order(&self) -> LockableOrder {{
+                TODO
+            }}
+
+            fn lockable_decode_sync_ref(&self) -> Self::RwLockReadGuard<'_> {{
+                self.blocking_read()
+            }}
+
+            fn lockable_decode_sync_ref_mut(&self) -> Self::RwLockWriteGuard<'_> {{
+                self.blocking_write()
+            }}
+
+            fn lockable_decode_async_ref<'a>(
+                &'a self,
+            ) -> Pin<Box<dyn Future<Output = Self::RwLockReadGuard<'_>> + Send + 'a>>
+            where
+                Self: Sync + 'a,
+            {{
+                Box::pin(async move {{ TODO }})
+            }}
+
+            fn lockable_decode_async_ref_mut<'a>(
+                &'a self,
+            ) -> Pin<Box<dyn Future<Output = Self::RwLockWriteGuard<'_>> + Send + 'a>>
+            where
+                Self: Sync + 'a,
+            {{
+                Box::pin(async move {{ TODO }})
+            }}
+        }}
+        "
     )
 }
 
