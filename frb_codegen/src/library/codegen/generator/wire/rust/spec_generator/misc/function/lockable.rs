@@ -82,13 +82,11 @@ fn filter_interest_fields(func: &MirFunc) -> Vec<(&MirFuncInput, OwnershipMode)>
         .filter_map(|field| {
             if let MirType::RustAutoOpaqueImplicit(ty) = &field.inner.ty {
                 if ty.ownership_mode != OwnershipMode::Owned {
-                    Some((field, ty.ownership_mode))
-                } else {
-                    None
+                    return Some((field, ty.ownership_mode));
                 }
-            } else {
-                None
             }
+
+            None
         })
         .collect_vec()
 }
