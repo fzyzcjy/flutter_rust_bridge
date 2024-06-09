@@ -124,7 +124,7 @@ impl Lockable
     type RwLockReadGuard<'a> = Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnumRwLockReadGuard<'a>;
     type RwLockWriteGuard<'a> = Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnumRwLockWriteGuard<'a>;
 
-    fn lockable_order(&self) -> LockableOrder {
+    fn lockable_order(&self) -> flutter_rust_bridge::for_generated::LockableOrder {
         match self {
             Self::Variant0(inner) => inner.lockable_order(),
         }

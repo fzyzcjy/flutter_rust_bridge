@@ -102,7 +102,7 @@ fn generate_code_lockable_impl(enum_name: &str, variants: &[VariantInfo]) -> Str
             type RwLockReadGuard<'a> = {enum_name}RwLockReadGuard<'a>;
             type RwLockWriteGuard<'a> = {enum_name}RwLockWriteGuard<'a>;
 
-            fn lockable_order(&self) -> LockableOrder {{
+            fn lockable_order(&self) -> flutter_rust_bridge::for_generated::LockableOrder {{
                 {lockable_order_body}
             }}
 
