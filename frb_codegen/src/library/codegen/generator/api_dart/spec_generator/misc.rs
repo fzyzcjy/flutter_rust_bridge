@@ -92,16 +92,19 @@ fn generate_imports_from_ty(
     let import_ty_itself = if let Some(ty_namespace) = ty.self_namespace() {
         if &ty_namespace != current_file_namespace {
             let dummy_base_path = PathBuf::from("/".to_owned());
-            let path_diff = diff_paths(
-                api_dart::misc::compute_path_from_namespace(&dummy_base_path, &ty_namespace),
-                (api_dart::misc::compute_path_from_namespace(
-                    &dummy_base_path,
-                    current_file_namespace,
-                )
-                .parent())
-                .unwrap(),
-            )
-            .context("cannot diff path")?;
+
+            let path_a =
+                api_dart::misc::compute_path_from_namespace(&dummy_base_path, &ty_namespace);
+
+            let path_b_inner = api_dart::misc::compute_path_from_namespace(
+                &dummy_base_path,
+                current_file_namespace,
+            );
+            let path_b =
+                (path_b_inner.parent()).with_context(|| format!("no parent for {path_b_inner:?}"));
+
+            let path_diff = diff_paths(path_a, path_b?).context("cannot diff path")?;
+
             format!(
                 "import '{}';\n",
                 path_to_string(&path_diff).unwrap().replace('\\', "/")
