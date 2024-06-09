@@ -207,6 +207,18 @@ const sidebars = {
                 },
                 {
                     type: 'category',
+                    label: 'Traits (base classes)',
+                    collapsed: true,
+                    link: {
+                        type: 'doc',
+                        id: 'guides/traits/index',
+                    },
+                    items: [
+                        'guides/traits/overview',
+                    ],
+                },
+                {
+                    type: 'category',
                     label: 'Miscellaneous',
                     collapsed: true,
                     link: {
