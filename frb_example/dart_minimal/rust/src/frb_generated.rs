@@ -164,7 +164,7 @@ pub enum Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInner
 }
 
 impl std::ops::Deref for Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnumRwLockReadGuard<'_> {
-            type Target = RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyAudioParam>>;
+            type Target = MyAudioParam;
 
             fn deref(&self) -> &Self::Target {
                 match self {
@@ -181,7 +181,7 @@ pub enum Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInner
 }
 
 impl std::ops::Deref for Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnumRwLockWriteGuard<'_> {
-            type Target = RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyAudioParam>>;
+            type Target = MyAudioParam;
 
             fn deref(&self) -> &Self::Target {
                 match self {
