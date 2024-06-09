@@ -1,4 +1,5 @@
 use crate::codegen::ir::early_generator::pack::IrEarlyGeneratorPack;
+use crate::codegen::ir::early_generator::trait_def_info::IrEarlyGeneratorTraitDefInfo;
 use crate::codegen::ir::hir::flat::pack::HirFlatPack;
 use crate::codegen::ir::hir::flat::traits::HirFlatTrait;
 use crate::codegen::ir::mir::pack::MirPack;
@@ -14,10 +15,10 @@ use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
 use crate::codegen::parser::mir::parser::function::real::FUNC_PREFIX_FRB_INTERNAL_NO_IMPL;
 use crate::if_then_some;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
+use crate::utils::namespace::Namespace;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
 use strum_macros::Display;
-use crate::utils::namespace::Namespace;
 
 pub(crate) fn generate(
     pack: &mut IrEarlyGeneratorPack,
@@ -33,16 +34,17 @@ pub(crate) fn generate(
         .unique()
         .collect_vec();
 
-    let trait_def_infos = compute_trait_def_infos();
-
-    let extra_codes = (pack.hir_flat_pack.traits.iter())
+    let generated_items = (pack.hir_flat_pack.traits.iter())
         .filter(|x| interest_trait_names.contains(&x.name))
         .sorted_by_key(|x| x.name.clone())
         .map(|x| generate_trait_impl_enum(x, &tentative_mir_pack.trait_impls))
-        .collect::<anyhow::Result<Vec<_>>>()?
-        .into_iter()
-        .flatten()
+        .collect::<anyhow::Result<Vec<_>>>()?;
+
+    let extra_codes = (generated_items.iter())
+        .flat_map(|x| x.0.clone())
         .collect_vec();
+
+    let trait_def_infos = (generated_items.iter()).map(|x| x.1.clone()).collect_vec();
 
     let output_namespace = compute_trait_implementor_namespace(config_mir);
 
@@ -52,15 +54,14 @@ pub(crate) fn generate(
     Ok(())
 }
 
-pub(crate) fn compute_trait_implementor_namespace(config: &ParserMirInternalConfig)  -> &Namespace{
+pub(crate) fn compute_trait_implementor_namespace(config: &ParserMirInternalConfig) -> &Namespace {
     &(config.rust_input_namespace_pack).rust_output_path_namespace
 }
-
 
 fn generate_trait_impl_enum(
     hir_trait: &HirFlatTrait,
     all_trait_impls: &[MirTraitImpl],
-) -> anyhow::Result<Vec<InjectExtraCodeBlock>> {
+) -> anyhow::Result<(Vec<InjectExtraCodeBlock>, IrEarlyGeneratorTraitDefInfo)> {
     let trait_def_name = &hir_trait.name.name;
     let enum_name = format!("{trait_def_name}Implementor");
 
