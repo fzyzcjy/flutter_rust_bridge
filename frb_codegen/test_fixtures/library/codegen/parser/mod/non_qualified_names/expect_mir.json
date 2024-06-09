@@ -13,8 +13,8 @@
       },
       "comments": [],
       "dart_name": null,
-      "has_impl": true,
       "id": 1,
+      "impl_mode": "Normal",
       "initializer": false,
       "inputs": [
         {
@@ -80,8 +80,8 @@
       },
       "comments": [],
       "dart_name": null,
-      "has_impl": true,
       "id": 2,
+      "impl_mode": "Normal",
       "initializer": false,
       "inputs": [],
       "mode": "Normal",
