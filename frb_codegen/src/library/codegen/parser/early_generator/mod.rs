@@ -4,7 +4,6 @@ mod trait_impl_enum;
 use crate::codegen::dumper::Dumper;
 use crate::codegen::ir::early_generator::pack::IrEarlyGeneratorPack;
 use crate::codegen::ir::hir::flat::pack::HirFlatPack;
-use crate::codegen::parser::hir::flat::extra_code_injector::inject_extra_code;
 use crate::codegen::parser::mir;
 use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
 

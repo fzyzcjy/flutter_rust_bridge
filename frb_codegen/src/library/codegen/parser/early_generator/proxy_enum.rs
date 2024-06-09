@@ -38,7 +38,7 @@ pub(crate) fn generate(
         .flat_map(|proxy_variants| generate_proxy_enum(proxy_variants))
         .collect_vec();
 
-    inject_extra_codes(&mut pack.hir_flat_pack, &extra_codes, output_namespace)?;
+    inject_extra_codes(&mut pack.hir_flat_pack, output_namespace, &extra_codes)?;
     (pack.proxied_types).extend(proxied_types);
 
     Ok(())
