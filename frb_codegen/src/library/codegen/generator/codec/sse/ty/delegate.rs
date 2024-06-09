@@ -48,7 +48,9 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 MirTypeDelegate::ProxyEnum(mir) => {
                     generate_proxy_enum_dart_encode(mir, self.context.as_api_dart_context())
                 }
-                MirTypeDelegate::DynTrait(_ir) => lang.throw_unimplemented(""),
+                MirTypeDelegate::DynTrait(mir) => {
+                    generate_dyn_trait_dart_encode(mir, self.context.as_api_dart_context())
+                }
             },
             Lang::RustLang(_) => match &self.mir {
                 MirTypeDelegate::Array(_) => {
@@ -299,6 +301,23 @@ fn generate_proxy_enum_dart_encode(
             enum_variant_name: format!("variant{index}"),
             ty_name: proxy_variant::compute_dart_extra_type(variant, context),
             extra_code: "._upstream".to_owned(),
+        })
+        .collect_vec();
+
+    encode_to_enum::generate_encode_to_enum(&enum_name, &variants)
+}
+
+fn generate_dyn_trait_dart_encode(
+    mir: &MirTypeDelegateProxyEnum,
+    context: ApiDartGeneratorContext,
+) -> String {
+    let enum_name = mir.proxy_enum_name();
+
+    let variants = (mir.variants.iter().enumerate())
+        .map(|(index, variant)| encode_to_enum::VariantInfo {
+            enum_variant_name: TODO,
+            ty_name: TODO,
+            extra_code: TODO,
         })
         .collect_vec();
 
