@@ -61,7 +61,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
                 _ => unreachable!(),
             }
         }
-        let api_that = api_that_decoded.unwrap();
+        let api_that = &*api_that_decoded.unwrap();
  Result::<_,()>::Ok(crate::api::minimal::MyAudioParam::my_method(api_that))
                     })())
                 } })

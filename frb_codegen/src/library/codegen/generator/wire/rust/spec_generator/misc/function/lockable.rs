@@ -46,7 +46,7 @@ pub(crate) fn generate_code_inner_decode(func: &MirFunc) -> String {
                 ""
             };
             format!(
-                "let {mutability}api_{name} = api_{name}_decoded.unwrap();\n",
+                "let {mutability}api_{name} = &*api_{name}_decoded.unwrap();\n",
                 name = get_variable_name(info.field)
             )
         })
