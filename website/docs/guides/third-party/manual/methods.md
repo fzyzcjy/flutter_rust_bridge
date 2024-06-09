@@ -34,4 +34,4 @@ impl MyExternalStruct {
 
 Remark: Just leave the function body empty (i.e. `{}`), no need to put anything there.
 
-This feature is compatible with the [mirroring](../types/translatable/external/diff-crate) feature as well.
+This feature is compatible with the [mirroring](../../types/translatable/external/diff-crate) feature as well.

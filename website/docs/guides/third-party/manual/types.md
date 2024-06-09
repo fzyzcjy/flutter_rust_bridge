@@ -18,7 +18,7 @@ When multiple structs have the same fields, you can mirror them *once* using gra
 like `#[frb(mirror(FirstStruct, SecondStruct, ThirdStruct))]`.
 
 Remark: This mirroring boilerplate is only needed for translatable types.
-For [arbitrary types](../../arbitrary), everything is automatic.
+For [arbitrary types](../../types/arbitrary), everything is automatic.
 
 Remark: When it comes to types in other crates,
 [serde](https://crates.io/crates/serde) also has a similar developer-facing API,
