@@ -99,6 +99,7 @@ pub struct MirTypeDelegateProxyEnum {
 
 pub struct MirTypeDelegateDynTrait {
     pub trait_def_name: NamespacedName,
+    pub dummy_delegate: bool,
 }
 }
 
@@ -147,9 +148,15 @@ impl MirTypeTrait for MirTypeDelegate {
             }
             MirTypeDelegate::DynTrait(mir) => mir.safe_ident(),
             MirTypeDelegate::ProxyVariant(mir) => {
-                format!("ProxyVariant_{}_{}", mir.upstream.safe_ident(), mir.upstream_method_name)
+                format!(
+                    "ProxyVariant_{}_{}",
+                    mir.upstream.safe_ident(),
+                    mir.upstream_method_name
+                )
             }
-            MirTypeDelegate::ProxyEnum(mir) => format!("ProxyEnum_{}", mir.get_delegate().safe_ident()),
+            MirTypeDelegate::ProxyEnum(mir) => {
+                format!("ProxyEnum_{}", mir.get_delegate().safe_ident())
+            }
         }
     }
 
@@ -330,7 +337,10 @@ impl MirTypeDelegateArray {
 impl MirTypeDelegateProxyEnum {
     pub(crate) fn get_delegate(&self) -> MirType {
         MirType::EnumRef(MirTypeEnumRef {
-            ident: MirEnumIdent(NamespacedName::new(self.delegate_namespace.clone(), self.proxy_enum_name())),
+            ident: MirEnumIdent(NamespacedName::new(
+                self.delegate_namespace.clone(),
+                self.proxy_enum_name(),
+            )),
             is_exception: false,
         })
     }
@@ -346,16 +356,16 @@ impl MirTypeDelegateProxyEnum {
 
 impl MirTypeDelegateDynTrait {
     pub fn inner(&self) -> MirType {
-        MirType::EnumRef(self.inner_raw())
-    }
-
-    pub fn inner_raw(&self) -> MirTypeEnumRef {
-        MirTypeEnumRef {
-            ident: MirEnumIdent(NamespacedName::new(
-                self.trait_def_name.namespace.clone(),
-                self.inner_enum_name(),
-            )),
-            is_exception: false,
+        if self.dummy_delegate {
+            MirType::Primitive(MirTypePrimitive::Unit)
+        } else {
+            MirType::EnumRef(MirTypeEnumRef {
+                ident: MirEnumIdent(NamespacedName::new(
+                    self.trait_def_name.namespace.clone(),
+                    self.inner_enum_name(),
+                )),
+                is_exception: false,
+            })
         }
     }
 
