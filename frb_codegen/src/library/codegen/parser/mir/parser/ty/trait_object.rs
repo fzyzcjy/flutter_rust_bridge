@@ -5,6 +5,7 @@ use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::mir::parser::ty::trait_def::parse_type_trait;
 use crate::codegen::parser::mir::parser::ty::TypeParserWithContext;
 use crate::codegen::parser::mir::ParseMode;
+use crate::if_then_some;
 use crate::utils::syn_utils::ty_to_string;
 use syn::TypeTraitObject;
 
@@ -26,10 +27,13 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         )
     }
 
+    // the function signature is not covered while the whole body is covered - looks like a bug in coverage tool
+    // frb-coverage:ignore-start
     fn parse_type_trait_object_inner(
         &mut self,
         type_trait_object: &TypeTraitObject,
     ) -> anyhow::Result<Option<MirType>> {
+        // frb-coverage:ignore-end
         if let Some(trait_name_path) = extract_trait_name_path(type_trait_object) {
             let trait_name = ty_to_string(&trait_name_path.segments.last().unwrap());
             if let Some(trait_ty) = parse_type_trait(&trait_name, self.inner) {
@@ -62,9 +66,8 @@ fn extract_trait_name_path(type_trait_object: &TypeTraitObject) -> Option<syn::P
         return None;
     }
 
-    if let syn::TypeParamBound::Trait(trait_bound) = bounds.first().unwrap() {
-        Some(trait_bound.path.clone())
-    } else {
-        None
-    }
+    if_then_some!(
+        let syn::TypeParamBound::Trait(trait_bound) = bounds.first().unwrap(),
+        trait_bound.path.clone()
+    )
 }

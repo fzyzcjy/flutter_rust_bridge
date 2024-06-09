@@ -88,10 +88,13 @@ fn transform_module_by_pub_use_single(
 ) -> anyhow::Result<()> {
     // frb-coverage:ignore-end
     if let Some(src_mod) = module.get_module_nested(&pub_use_info.namespace.path()) {
+        // Codecov seems to be buggy by saying this line is not covered (while lines above/below) are
+        // frb-coverage:ignore-start
         log::debug!(
             "transform_module_by_pub_use_single pub_use_info={:?}",
             pub_use_info
         );
+        // frb-coverage:ignore-end
 
         if src_mod.meta.is_public() {
             log::debug!("transform_module_by_pub_use_single skip `{pub_use_info:?}` since src mod already public");
@@ -114,9 +117,12 @@ fn transform_module_by_pub_use_single(
 
         module.items.extend(src_mod_interest_items);
     } else {
+        // Codecov seems to be buggy by saying this line is not covered (while lines above/below) are
+        // frb-coverage:ignore-start
         log::debug!(
             "transform_module_by_pub_use_single skip `{pub_use_info:?}` since cannot find mod"
         );
+        // frb-coverage:ignore-end
     }
 
     Ok(())

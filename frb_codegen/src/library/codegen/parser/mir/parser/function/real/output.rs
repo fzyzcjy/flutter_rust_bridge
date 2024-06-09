@@ -85,7 +85,10 @@ fn parse_maybe_proxy_return_type(
     }
 }
 
+// the function signature is not covered while the whole body is covered - looks like a bug in coverage tool
+// frb-coverage:ignore-start
 fn parse_proxy_return_type(mir: MirType, owner: &MirFuncOwnerInfo) -> anyhow::Result<MirType> {
+    // frb-coverage:ignore-end
     if let MirType::RustAutoOpaqueImplicit(mir_inner) = &mir {
         if mir_inner.ownership_mode == OwnershipMode::Ref
             || mir_inner.ownership_mode == OwnershipMode::RefMut
@@ -101,5 +104,8 @@ fn parse_proxy_return_type(mir: MirType, owner: &MirFuncOwnerInfo) -> anyhow::Re
             }
         }
     }
+    // This will stop the whole generator and tell the users, so we do not care about testing it
+    // frb-coverage:ignore-start
     bail!("This return type is not currently compatible with `#[frb(proxy)]` yet")
+    // frb-coverage:ignore-end
 }
