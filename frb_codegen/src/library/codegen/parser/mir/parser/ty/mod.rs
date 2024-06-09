@@ -22,6 +22,7 @@ use crate::codegen::parser::mir::ParseMode;
 use crate::utils::namespace::Namespace;
 use std::collections::HashMap;
 use syn::Type;
+use crate::codegen::ir::early_generator::trait_def_info::IrEarlyGeneratorTraitDefInfo;
 
 pub(crate) mod array;
 pub(crate) mod concrete;
@@ -53,7 +54,7 @@ pub(crate) struct TypeParser<'a> {
     pub(super) src_traits: HashMap<String, &'a HirFlatTrait>,
     src_types: HashMap<String, Type>,
     pub(super) proxied_types: Vec<IrEarlyGeneratorProxiedType>,
-    pub(super) trait_def_infos: Vec<TODO>,
+    pub(super) trait_def_infos: Vec<IrEarlyGeneratorTraitDefInfo>,
     dart_code_of_type: HashMap<String, String>,
     struct_parser_info: EnumOrStructParserInfo<MirStructIdent, MirStruct>,
     enum_parser_info: EnumOrStructParserInfo<MirEnumIdent, MirEnum>,
