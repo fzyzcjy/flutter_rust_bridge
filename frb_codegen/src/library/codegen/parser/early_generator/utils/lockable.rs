@@ -113,7 +113,7 @@ fn generate_code_lockable_impl(
                 {blocking_read_body}
             }}
 
-            pub fn blocking_write(&mut self) -> {enum_name}RwLockWriteGuard {{
+            pub fn blocking_write(&self) -> {enum_name}RwLockWriteGuard {{
                 {blocking_write_body}
             }}
 
@@ -121,7 +121,7 @@ fn generate_code_lockable_impl(
                 {read_body}
             }}
 
-            pub async fn write(&mut self) -> {enum_name}RwLockWriteGuard {{
+            pub async fn write(&self) -> {enum_name}RwLockWriteGuard {{
                 {write_body}
             }}
         }}
