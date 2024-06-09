@@ -32,6 +32,12 @@ abstract class StructOneWithTraitForDynTwinNormal
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructTwoWithTraitForDynTwinNormal>>
 abstract class StructTwoWithTraitForDynTwinNormal
     implements RustOpaqueInterface, SimpleTraitForDynTwinNormal {
+  static Future<StructTwoWithTraitForDynTwinNormal> createTwinNormal(
+          {required int two}) =>
+      RustLib.instance.api
+          .crateApiMinimalStructTwoWithTraitForDynTwinNormalCreateTwinNormal(
+              two: two);
+
   int get two;
 
   void set two(int two);

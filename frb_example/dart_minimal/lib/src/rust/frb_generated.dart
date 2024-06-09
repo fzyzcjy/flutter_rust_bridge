@@ -63,7 +63,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.0.0-dev.37';
 
   @override
-  int get rustContentHash => 532243759;
+  int get rustContentHash => 1210120125;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -87,6 +87,10 @@ abstract class RustLibApi extends BaseApi {
   Future<int>
       crateApiMinimalStructOneWithTraitForDynTwinNormalSimpleMethodTwinNormal(
           {required StructOneWithTraitForDynTwinNormal that});
+
+  Future<StructTwoWithTraitForDynTwinNormal>
+      crateApiMinimalStructTwoWithTraitForDynTwinNormalCreateTwinNormal(
+          {required int two});
 
   int crateApiMinimalStructTwoWithTraitForDynTwinNormalGetTwo(
       {required StructTwoWithTraitForDynTwinNormal that});
@@ -251,6 +255,36 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
+  Future<StructTwoWithTraitForDynTwinNormal>
+      crateApiMinimalStructTwoWithTraitForDynTwinNormalCreateTwinNormal(
+          {required int two}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_i_32(two, serializer);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 5, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitForDynTwinNormal,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiMinimalStructTwoWithTraitForDynTwinNormalCreateTwinNormalConstMeta,
+      argValues: [two],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiMinimalStructTwoWithTraitForDynTwinNormalCreateTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName: "StructTwoWithTraitForDynTwinNormal_create_twin_normal",
+            argNames: ["two"],
+          );
+
+  @override
   int crateApiMinimalStructTwoWithTraitForDynTwinNormalGetTwo(
       {required StructTwoWithTraitForDynTwinNormal that}) {
     return handler.executeSync(SyncTask(
@@ -258,7 +292,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitForDynTwinNormal(
             that, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 5)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 6)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_i_32,
@@ -287,7 +321,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitForDynTwinNormal(
             that, serializer);
         sse_encode_i_32(two, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 6)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 7)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -317,7 +351,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitForDynTwinNormal(
             that, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 7, port: port_);
+            funcId: 8, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_i_32,
@@ -346,7 +380,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_DynTrait_SimpleTraitForDynTwinNormal(arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 9, port: port_);
+            funcId: 10, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_i_32,
@@ -370,7 +404,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 10, port: port_);
+            funcId: 11, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -395,7 +429,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_i_32(a, serializer);
         sse_encode_i_32(b, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 11, port: port_);
+            funcId: 12, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_i_32,
