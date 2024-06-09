@@ -7,10 +7,11 @@ In this page, we show how to do these in the example below:
 
 ## (Optional) How it is done
 
-How is the example below implemented? It is just a combination of two simple things:
-
-* There are convenient Rust tools (e.g. [extend](https://crates.io/crates/extend), [easy-ext](https://crates.io/crates/easy-ext/)) to implement the "extension trait pattern".
-* `flutter_rust_bridge` understands the [`frb_override_` prefix](../../miscellaneous/override-prefix)
+How is the example below implemented?
+Shortly speaking,
+the [`#[ext]` macro](../../traits/ext-pattern) automatically generates a trait and an implementation,
+which `flutter_rust_bridge` picks up.
+Then, the [`frb_override_` prefix](../../miscellaneous/override-prefix) is recognized to automatically rename and override the original function.
 
 ## Example
 
