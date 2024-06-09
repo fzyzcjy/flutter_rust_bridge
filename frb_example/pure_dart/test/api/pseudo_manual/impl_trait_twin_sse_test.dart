@@ -27,13 +27,13 @@ Future<void> main({bool skipRustLibInit = false}) async {
         42);
   });
 
-  // test('use generated implementor', () async {
-  //   final object =
-  //       await StructOneWithTraitForDynTwinSse.createTwinSse(one: 100);
-  //   expect(
-  //       await funcArgTraitImplTwinSse(
-  //           arg: SimpleTraitForDynTwinSseImplementor
-  //               .structOneWithTraitForDynTwinSse(object)),
-  //       100);
-  // });
+  test('use generated implementor', () async {
+    final object =
+        await StructOneWithTraitForDynTwinSse.createTwinSse(one: 100);
+    expect(
+        await funcArgTraitImplTwinSse(
+            arg: SimpleTraitForDynTwinSseImplementor
+                .structOneWithTraitForDynTwinSse(object)),
+        100);
+  });
 }

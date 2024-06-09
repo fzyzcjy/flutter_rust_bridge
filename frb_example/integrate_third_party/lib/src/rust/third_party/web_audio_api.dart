@@ -7,6 +7,7 @@ import '../api/override_web_audio_api.dart';
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'web_audio_api/node.dart';
+import 'web_audio_api/worklet.dart';
 
 // These types are ignored because they are not used by any `pub` functions: `AtomicF32`, `AtomicF64`, `ErrorEvent`, `MediaElement`, `MessagePort`
 // These functions are ignored: `load`, `load`, `new`, `new`, `store`, `store`

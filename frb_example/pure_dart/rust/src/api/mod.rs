@@ -38,7 +38,6 @@ pub mod optional_primitive_misc;
 pub mod ownership;
 pub mod primitive_list_misc;
 pub mod primitive_misc;
-pub mod proxy;
 pub mod pseudo_manual;
 pub mod raw_string;
 pub mod rust_auto_opaque;
@@ -51,5 +50,6 @@ pub mod structure;
 pub mod tuple;
 pub mod type_alias;
 pub mod uuid_type;
+pub mod proxy;
 
 pub fn function_at_api_mod_rs() {}
