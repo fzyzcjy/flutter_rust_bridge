@@ -115,7 +115,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGener
             // ))),
             MirTypeDelegate::Backtrace
             | MirTypeDelegate::AnyhowException
-            /*| MirTypeDelegate::DynTrait(_)*/ => {
+            | MirTypeDelegate::DynTrait(_) => {
                 Acc::distribute(Some("throw UnimplementedError();".to_string()))
             }
             MirTypeDelegate::Map(_) => Acc::distribute(Some(format!(

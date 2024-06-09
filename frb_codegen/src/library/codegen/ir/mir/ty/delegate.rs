@@ -144,7 +144,8 @@ impl MirTypeTrait for MirTypeDelegate {
             MirTypeDelegate::BigPrimitive(mir) => mir.to_string(),
             MirTypeDelegate::RustAutoOpaqueExplicit(mir) => {
                 format!("AutoExplicit_{}", mir.inner.safe_ident())
-            } // MirTypeDelegate::DynTrait(mir) => mir.safe_ident(),
+            }
+            MirTypeDelegate::DynTrait(mir) => mir.safe_ident(),
             MirTypeDelegate::ProxyVariant(mir) => {
                 format!("ProxyVariant_{}_{}", mir.upstream.safe_ident(), mir.upstream_method_name)
             }
@@ -210,7 +211,8 @@ impl MirTypeTrait for MirTypeDelegate {
             },
             MirTypeDelegate::RustAutoOpaqueExplicit(mir) => {
                 format!("RustAutoOpaque{}<{}>", mir.inner.codec, mir.raw.string)
-            } // MirTypeDelegate::DynTrait(mir) => format!("dyn <{}>", mir.trait_def_name.name),
+            }
+            MirTypeDelegate::DynTrait(mir) => format!("dyn <{}>", mir.trait_def_name.name),
             MirTypeDelegate::ProxyVariant(mir) => mir.inner.rust_api_type(),
             MirTypeDelegate::ProxyEnum(mir) => mir.original.rust_api_type(),
         }
@@ -281,7 +283,7 @@ impl MirTypeDelegate {
             MirTypeDelegate::StreamSink(_) => MirType::Delegate(MirTypeDelegate::String),
             MirTypeDelegate::BigPrimitive(_) => MirType::Delegate(MirTypeDelegate::String),
             MirTypeDelegate::RustAutoOpaqueExplicit(mir) => MirType::RustOpaque(mir.inner.clone()),
-            // MirTypeDelegate::DynTrait(mir) => mir.inner(),
+            MirTypeDelegate::DynTrait(mir) => mir.inner(),
             MirTypeDelegate::ProxyVariant(mir) => *mir.inner.clone(),
             MirTypeDelegate::ProxyEnum(mir) => mir.get_delegate(),
         }

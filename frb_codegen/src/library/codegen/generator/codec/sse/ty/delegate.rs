@@ -46,7 +46,8 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 MirTypeDelegate::RustAutoOpaqueExplicit(_ir) => "self".to_owned(),
                 MirTypeDelegate::ProxyEnum(mir) => {
                     generate_proxy_enum_dart_encode(mir, self.context.as_api_dart_context())
-                } // MirTypeDelegate::DynTrait(_ir) => lang.throw_unimplemented(""),
+                }
+                MirTypeDelegate::DynTrait(_ir) => lang.throw_unimplemented(""),
             },
             Lang::RustLang(_) => match &self.mir {
                 MirTypeDelegate::Array(_) => {
@@ -86,7 +87,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 },
                 MirTypeDelegate::Uuid => "self.as_bytes().to_vec()".to_owned(),
                 MirTypeDelegate::StreamSink(_)
-                /*| MirTypeDelegate::DynTrait(_)*/ => {
+                | MirTypeDelegate::DynTrait(_) => {
                     return Some(lang.throw_unimplemented(""))
                 }
                 MirTypeDelegate::BigPrimitive(_) => "self.to_string()".to_owned(),
@@ -155,7 +156,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     }
                     MirTypeDelegate::BigPrimitive(_) => "BigInt.parse(inner)".to_owned(),
                     MirTypeDelegate::RustAutoOpaqueExplicit(_ir) => "inner".to_owned(),
-                    // MirTypeDelegate::DynTrait(_) => return Some(lang.throw_unimplemented("")),
+                    MirTypeDelegate::DynTrait(_) => return Some(lang.throw_unimplemented("")),
                 }
             }
             Lang::RustLang(_) => match &self.mir {
@@ -197,7 +198,8 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 MirTypeDelegate::RustAutoOpaqueExplicit(_ir) => {
                     "flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_decode(inner)"
                         .to_owned()
-                } // MirTypeDelegate::DynTrait(_ir) => lang.throw_unimplemented(""),
+                }
+                MirTypeDelegate::DynTrait(_ir) => lang.throw_unimplemented(""),
                 MirTypeDelegate::ProxyVariant(_) | MirTypeDelegate::ProxyEnum(_) => return None,
             },
         };
