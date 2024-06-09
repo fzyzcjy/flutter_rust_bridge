@@ -6,6 +6,7 @@ use crate::codegen::ir::mir::ty::delegate::{
     MirTypeDelegate, MirTypeDelegateProxyEnum, MirTypeDelegateProxyVariant,
 };
 use crate::codegen::ir::mir::ty::MirType;
+use crate::codegen::parser::early_generator::utils::lockable;
 use crate::codegen::parser::hir::flat::extra_code_injector::{
     inject_extra_codes, InjectExtraCodeBlock,
 };
@@ -65,42 +66,13 @@ fn generate_proxy_enum(
     let enum_name = MirTypeDelegateProxyEnum::proxy_enum_name_raw(&proxy_enum_ty);
 
     let variants = (proxy_variants.iter().enumerate())
-        .map(|(index, variant)| {
-            format!(
-                "Variant{index}(RustAutoOpaque<{}>),\n",
-                &variant.upstream.rust_api_type()
-            )
+        .map(|(index, variant)| lockable::VariantInfo {
+            enum_variant_name: format!("Variant{index}"),
+            ty_name: variant.upstream.rust_api_type(),
         })
         .join("");
 
-    let impl_lockable = generate_impl_lockable(&enum_name);
-
-    let block_with_parse = format!(
-        "
-        enum {enum_name} {{
-            {variants}
-        }}
-
-        pub fn {FUNC_PREFIX_FRB_INTERNAL_NO_IMPL}_dummy_function_{enum_name}(a: {enum_name}) {{ }}
-        "
-    );
-
-    let block_without_parse = format!(
-        "
-        {impl_lockable}
-        "
-    );
-
-    vec![
-        InjectExtraCodeBlock {
-            code: block_with_parse,
-            should_parse: true,
-        },
-        InjectExtraCodeBlock {
-            code: block_without_parse,
-            should_parse: false,
-        },
-    ]
+    lockable::generate(&enum_name, &variants)
 }
 
 fn generate_impl_lockable(enum_name: &str) -> String {
