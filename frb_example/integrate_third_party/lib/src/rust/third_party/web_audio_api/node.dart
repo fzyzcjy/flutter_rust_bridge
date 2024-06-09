@@ -57,7 +57,7 @@ abstract class AnalyserNode
   /// This method may panic if the lock to the inner analyser is poisoned
   Future<BigInt> fftSize();
 
-  Future<void> connect({required AudioNodeImplementor dest});
+  Future<void> connect();
 
   /// Number of bins in the FFT results, is half the FFT size
   ///
@@ -176,6 +176,12 @@ abstract class AudioBufferSourceNode
   /// AudioNode.
   Future<void> context();
 
+  /// K-rate [`AudioParam`] that defines a pitch transposition of the file,
+  /// expressed in cents
+  ///
+  /// see <https://en.wikipedia.org/wiki/Cent_(music)>
+  AudioParam get detune;
+
   /// Disconnects all outgoing connections from the AudioNode.
   Future<void> disconnect();
 
@@ -187,7 +193,7 @@ abstract class AudioBufferSourceNode
   /// - if the output port is out of bounds for this node
   Future<void> disconnectOutput({required BigInt output});
 
-  Future<void> connect({required AudioNodeImplementor dest});
+  Future<void> connect();
 
   /// Defines if the playback the [`AudioBuffer`] should be looped
   Future<bool> loop();
@@ -203,6 +209,14 @@ abstract class AudioBufferSourceNode
 
   /// The number of outputs coming out of the AudioNode.
   Future<BigInt> numberOfOutputs();
+
+  /// K-rate [`AudioParam`] that defines the speed at which the [`AudioBuffer`]
+  /// will be played, e.g.:
+  /// - `0.5` will play the file at half speed
+  /// - `-1` will play the file in reverse
+  ///
+  /// Note that playback rate will also alter the pitch of the [`AudioBuffer`]
+  AudioParam get playbackRate;
 
   /// Current playhead position in seconds within the [`AudioBuffer`].
   ///
@@ -325,7 +339,7 @@ abstract class AudioDestinationNode
   /// - if the output port is out of bounds for this node
   Future<void> disconnectOutput({required BigInt output});
 
-  Future<void> connect({required AudioNodeImplementor dest});
+  Future<void> connect();
 
   /// The maximum number of channels that the channelCount attribute can be set to (the max
   /// number of channels that the hardware is capable of supporting).
@@ -380,6 +394,9 @@ abstract class BiquadFilterNode
   /// AudioNode.
   Future<void> context();
 
+  /// Returns the detune audio parameter
+  AudioParam get detune;
+
   /// Disconnects all outgoing connections from the AudioNode.
   Future<void> disconnect();
 
@@ -391,13 +408,22 @@ abstract class BiquadFilterNode
   /// - if the output port is out of bounds for this node
   Future<void> disconnectOutput({required BigInt output});
 
-  Future<void> connect({required AudioNodeImplementor dest});
+  Future<void> connect();
+
+  /// Returns the frequency audio parameter
+  AudioParam get frequency;
+
+  /// Returns the gain audio parameter
+  AudioParam get gain;
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
   Future<BigInt> numberOfInputs();
 
   /// The number of outputs coming out of the AudioNode.
   Future<BigInt> numberOfOutputs();
+
+  /// Returns the Q audio parameter
+  AudioParam get q;
 
   /// Handle of the associated [`BaseAudioContext`](crate::context::BaseAudioContext).
   ///
@@ -462,7 +488,7 @@ abstract class ChannelMergerNode
   /// - if the output port is out of bounds for this node
   Future<void> disconnectOutput({required BigInt output});
 
-  Future<void> connect({required AudioNodeImplementor dest});
+  Future<void> connect();
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
   Future<BigInt> numberOfInputs();
@@ -523,7 +549,7 @@ abstract class ChannelSplitterNode
   /// - if the output port is out of bounds for this node
   Future<void> disconnectOutput({required BigInt output});
 
-  Future<void> connect({required AudioNodeImplementor dest});
+  Future<void> connect();
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
   Future<BigInt> numberOfInputs();
@@ -591,13 +617,15 @@ abstract class ConstantSourceNode
   /// - if the output port is out of bounds for this node
   Future<void> disconnectOutput({required BigInt output});
 
-  Future<void> connect({required AudioNodeImplementor dest});
+  Future<void> connect();
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
   Future<BigInt> numberOfInputs();
 
   /// The number of outputs coming out of the AudioNode.
   Future<BigInt> numberOfOutputs();
+
+  AudioParam get offset;
 
   /// Handle of the associated [`BaseAudioContext`](crate::context::BaseAudioContext).
   ///
@@ -680,7 +708,7 @@ abstract class ConvolverNode
   /// - if the output port is out of bounds for this node
   Future<void> disconnectOutput({required BigInt output});
 
-  Future<void> connect({required AudioNodeImplementor dest});
+  Future<void> connect();
 
   /// Denotes if the response buffer will be scaled with an equal-power normalization
   Future<bool> normalize();
@@ -744,6 +772,9 @@ abstract class DelayNode
   /// AudioNode.
   Future<void> context();
 
+  /// A-rate [`AudioParam`] representing the amount of delay (in seconds) to apply.
+  AudioParam get delayTime;
+
   /// Disconnects all outgoing connections from the AudioNode.
   Future<void> disconnect();
 
@@ -755,7 +786,7 @@ abstract class DelayNode
   /// - if the output port is out of bounds for this node
   Future<void> disconnectOutput({required BigInt output});
 
-  Future<void> connect({required AudioNodeImplementor dest});
+  Future<void> connect();
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
   Future<BigInt> numberOfInputs();
@@ -781,6 +812,8 @@ abstract class DelayNode
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<DynamicsCompressorNode>>
 abstract class DynamicsCompressorNode
     implements RustOpaqueInterface, AudioNode, DynamicsCompressorNodeExt {
+  AudioParam get attack;
+
   /// Config for up/down-mixing of input channels for this node.
   ///
   /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
@@ -816,7 +849,9 @@ abstract class DynamicsCompressorNode
   /// - if the output port is out of bounds for this node
   Future<void> disconnectOutput({required BigInt output});
 
-  Future<void> connect({required AudioNodeImplementor dest});
+  Future<void> connect();
+
+  AudioParam get knee;
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
   Future<BigInt> numberOfInputs();
@@ -824,12 +859,16 @@ abstract class DynamicsCompressorNode
   /// The number of outputs coming out of the AudioNode.
   Future<BigInt> numberOfOutputs();
 
+  AudioParam get ratio;
+
   Future<double> reduction();
 
   /// Handle of the associated [`BaseAudioContext`](crate::context::BaseAudioContext).
   ///
   /// Only when implementing the AudioNode trait manually, this struct is of any concern.
   Future<void> registration();
+
+  AudioParam get release;
 
   /// Update the `channel_count` attribute
   Future<void> setChannelCount({required BigInt v});
@@ -839,6 +878,8 @@ abstract class DynamicsCompressorNode
 
   /// Update the `channel_interpretation` attribute
   Future<void> setChannelInterpretation({required ChannelInterpretation v});
+
+  AudioParam get threshold;
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<GainNode>>
@@ -878,7 +919,9 @@ abstract class GainNode implements RustOpaqueInterface, AudioNode, GainNodeExt {
   /// - if the output port is out of bounds for this node
   Future<void> disconnectOutput({required BigInt output});
 
-  Future<void> connect({required AudioNodeImplementor dest});
+  Future<void> connect();
+
+  AudioParam get gain;
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
   Future<BigInt> numberOfInputs();
@@ -939,7 +982,7 @@ abstract class IirFilterNode
   /// - if the output port is out of bounds for this node
   Future<void> disconnectOutput({required BigInt output});
 
-  Future<void> connect({required AudioNodeImplementor dest});
+  Future<void> connect();
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
   Future<BigInt> numberOfInputs();
@@ -1000,7 +1043,7 @@ abstract class MediaElementAudioSourceNode
   /// - if the output port is out of bounds for this node
   Future<void> disconnectOutput({required BigInt output});
 
-  Future<void> connect({required AudioNodeImplementor dest});
+  Future<void> connect();
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
   Future<BigInt> numberOfInputs();
@@ -1064,7 +1107,7 @@ abstract class MediaStreamAudioDestinationNode
   /// - if the output port is out of bounds for this node
   Future<void> disconnectOutput({required BigInt output});
 
-  Future<void> connect({required AudioNodeImplementor dest});
+  Future<void> connect();
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
   Future<BigInt> numberOfInputs();
@@ -1129,7 +1172,7 @@ abstract class MediaStreamAudioSourceNode
   /// - if the output port is out of bounds for this node
   Future<void> disconnectOutput({required BigInt output});
 
-  Future<void> connect({required AudioNodeImplementor dest});
+  Future<void> connect();
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
   Future<BigInt> numberOfInputs();
@@ -1193,7 +1236,7 @@ abstract class MediaStreamTrackAudioSourceNode
   /// - if the output port is out of bounds for this node
   Future<void> disconnectOutput({required BigInt output});
 
-  Future<void> connect({required AudioNodeImplementor dest});
+  Future<void> connect();
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
   Future<BigInt> numberOfInputs();
@@ -1250,6 +1293,14 @@ abstract class OscillatorNode
   /// AudioNode.
   Future<void> context();
 
+  /// A-rate [`AudioParam`] that defines a transposition according to the
+  /// frequency, expressed in cents.
+  ///
+  /// see <https://en.wikipedia.org/wiki/Cent_(music)>
+  ///
+  /// The final frequency is calculated as follow: frequency * 2^(detune/1200)
+  AudioParam get detune;
+
   /// Disconnects all outgoing connections from the AudioNode.
   Future<void> disconnect();
 
@@ -1261,7 +1312,13 @@ abstract class OscillatorNode
   /// - if the output port is out of bounds for this node
   Future<void> disconnectOutput({required BigInt output});
 
-  Future<void> connect({required AudioNodeImplementor dest});
+  Future<void> connect();
+
+  /// A-rate [`AudioParam`] that defines the fundamental frequency of the
+  /// oscillator, expressed in Hz
+  ///
+  /// The final frequency is calculated as follow: frequency * 2^(detune/1200)
+  AudioParam get frequency;
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
   Future<BigInt> numberOfInputs();
@@ -1378,7 +1435,7 @@ abstract class PannerNode
 
   Future<DistanceModelType> distanceModel();
 
-  Future<void> connect({required AudioNodeImplementor dest});
+  Future<void> connect();
 
   Future<double> maxDistance();
 
@@ -1388,7 +1445,19 @@ abstract class PannerNode
   /// The number of outputs coming out of the AudioNode.
   Future<BigInt> numberOfOutputs();
 
+  AudioParam get orientationX;
+
+  AudioParam get orientationY;
+
+  AudioParam get orientationZ;
+
   Future<PanningModelType> panningModel();
+
+  AudioParam get positionX;
+
+  AudioParam get positionY;
+
+  AudioParam get positionZ;
 
   Future<double> refDistance();
 
@@ -1494,7 +1563,7 @@ abstract class ScriptProcessorNode
   /// - if the output port is out of bounds for this node
   Future<void> disconnectOutput({required BigInt output});
 
-  Future<void> connect({required AudioNodeImplementor dest});
+  Future<void> connect();
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
   Future<BigInt> numberOfInputs();
@@ -1555,13 +1624,16 @@ abstract class StereoPannerNode
   /// - if the output port is out of bounds for this node
   Future<void> disconnectOutput({required BigInt output});
 
-  Future<void> connect({required AudioNodeImplementor dest});
+  Future<void> connect();
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
   Future<BigInt> numberOfInputs();
 
   /// The number of outputs coming out of the AudioNode.
   Future<BigInt> numberOfOutputs();
+
+  /// Returns the pan audio parameter
+  AudioParam get pan;
 
   /// Handle of the associated [`BaseAudioContext`](crate::context::BaseAudioContext).
   ///
@@ -1616,7 +1688,7 @@ abstract class WaveShaperNode
   /// - if the output port is out of bounds for this node
   Future<void> disconnectOutput({required BigInt output});
 
-  Future<void> connect({required AudioNodeImplementor dest});
+  Future<void> connect();
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
   Future<BigInt> numberOfInputs();

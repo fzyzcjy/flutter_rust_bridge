@@ -72,7 +72,25 @@ abstract class AudioBuffer implements RustOpaqueInterface {
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioListener>>
-abstract class AudioListener implements RustOpaqueInterface {}
+abstract class AudioListener implements RustOpaqueInterface {
+  AudioParam get forwardX;
+
+  AudioParam get forwardY;
+
+  AudioParam get forwardZ;
+
+  AudioParam get positionX;
+
+  AudioParam get positionY;
+
+  AudioParam get positionZ;
+
+  AudioParam get upX;
+
+  AudioParam get upY;
+
+  AudioParam get upZ;
+}
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioParam>>
 abstract class AudioParam
@@ -145,7 +163,7 @@ abstract class AudioParam
   Future<void> exponentialRampToValueAtTime(
       {required double value, required double endTime});
 
-  Future<void> connect({required AudioNodeImplementor dest});
+  Future<void> connect();
 
   /// Schedules a linear continuous change in parameter value from the
   /// previous scheduled parameter value to the given value.
@@ -204,7 +222,7 @@ abstract class AudioParam
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
-  Future<void> setValue({required double value});
+  void setValue({required double value});
 
   /// Schedules a parameter value change at the given time.
   ///
@@ -229,7 +247,7 @@ abstract class AudioParam
       required double duration});
 
   /// Retrieve the current value of the `AudioParam`.
-  Future<double> value();
+  double get value;
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioProcessingEvent>>

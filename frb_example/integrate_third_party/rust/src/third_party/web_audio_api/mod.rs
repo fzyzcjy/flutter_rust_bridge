@@ -30,6 +30,13 @@ impl AudioBuffer {
 impl AudioParam {
     #[frb(ignore)]
     pub fn set_onprocessorerror() {}
+
+    #[frb(sync, getter)]
+    pub fn value() {}
+
+    // TODO make it setter later
+    #[frb(sync)]
+    pub fn set_value() {}
 }
 
 #[frb(ignore)]

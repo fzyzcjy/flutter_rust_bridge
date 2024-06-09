@@ -1,4 +1,4 @@
-use crate::frb_generated::AudioNodeImplementor;
+// use crate::frb_generated::AudioNodeImplementor;
 use extend::ext;
 use flutter_rust_bridge::for_generated::anyhow;
 use web_audio_api::context::{AudioContext, BaseAudioContext};
@@ -21,9 +21,12 @@ macro_rules! handle_audio_node_trait_impls_override {
     ($name:ident) => {
         #[ext]
         pub impl $name {
-            fn frb_override_connect(&self, dest: AudioNodeImplementor) {
-                let dest = dest.blocking_read();
-                self.connect(&*dest);
+            // fn frb_override_connect(&self, dest: AudioNodeImplementor) {
+            //     let dest = dest.blocking_read();
+            //     self.connect(&*dest);
+            // }
+            fn frb_override_connect(&self) {
+                todo!()
             }
         }
     };

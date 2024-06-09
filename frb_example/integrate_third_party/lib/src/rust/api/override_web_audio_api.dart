@@ -7,15 +7,12 @@ import '../frb_generated.dart';
 import '../third_party/web_audio_api.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioNodeImplementor>>
-abstract class AudioNodeImplementor implements RustOpaqueInterface {}
-
 abstract class AnalyserNodeExt {
-  Future<void> connect({required AudioNodeImplementor dest});
+  Future<void> connect();
 }
 
 abstract class AudioBufferSourceNodeExt {
-  Future<void> connect({required AudioNodeImplementor dest});
+  Future<void> connect();
 }
 
 abstract class AudioContextExt {
@@ -23,81 +20,81 @@ abstract class AudioContextExt {
 }
 
 abstract class AudioDestinationNodeExt {
-  Future<void> connect({required AudioNodeImplementor dest});
+  Future<void> connect();
 }
 
 abstract class AudioParamExt {
-  Future<void> connect({required AudioNodeImplementor dest});
+  Future<void> connect();
 }
 
 abstract class BiquadFilterNodeExt {
-  Future<void> connect({required AudioNodeImplementor dest});
+  Future<void> connect();
 }
 
 abstract class ChannelMergerNodeExt {
-  Future<void> connect({required AudioNodeImplementor dest});
+  Future<void> connect();
 }
 
 abstract class ChannelSplitterNodeExt {
-  Future<void> connect({required AudioNodeImplementor dest});
+  Future<void> connect();
 }
 
 abstract class ConstantSourceNodeExt {
-  Future<void> connect({required AudioNodeImplementor dest});
+  Future<void> connect();
 }
 
 abstract class ConvolverNodeExt {
-  Future<void> connect({required AudioNodeImplementor dest});
+  Future<void> connect();
 }
 
 abstract class DelayNodeExt {
-  Future<void> connect({required AudioNodeImplementor dest});
+  Future<void> connect();
 }
 
 abstract class DynamicsCompressorNodeExt {
-  Future<void> connect({required AudioNodeImplementor dest});
+  Future<void> connect();
 }
 
 abstract class GainNodeExt {
-  Future<void> connect({required AudioNodeImplementor dest});
+  Future<void> connect();
 }
 
 abstract class IIRFilterNodeExt {
-  Future<void> connect({required AudioNodeImplementor dest});
+  Future<void> connect();
 }
 
 abstract class MediaElementAudioSourceNodeExt {
-  Future<void> connect({required AudioNodeImplementor dest});
+  Future<void> connect();
 }
 
 abstract class MediaStreamAudioDestinationNodeExt {
-  Future<void> connect({required AudioNodeImplementor dest});
+  Future<void> connect();
 }
 
 abstract class MediaStreamAudioSourceNodeExt {
-  Future<void> connect({required AudioNodeImplementor dest});
+  Future<void> connect();
 }
 
 abstract class MediaStreamTrackAudioSourceNodeExt {
-  Future<void> connect({required AudioNodeImplementor dest});
+  Future<void> connect();
 }
 
 abstract class OscillatorNodeExt {
-  Future<void> connect({required AudioNodeImplementor dest});
+  Future<void> connect();
 }
 
 abstract class PannerNodeExt {
-  Future<void> connect({required AudioNodeImplementor dest});
+  Future<void> connect();
 }
 
 abstract class ScriptProcessorNodeExt {
-  Future<void> connect({required AudioNodeImplementor dest});
+  Future<void> connect();
 }
 
 abstract class StereoPannerNodeExt {
-  Future<void> connect({required AudioNodeImplementor dest});
+  Future<void> connect();
 }
 
 abstract class WaveShaperNodeExt {
-  Future<void> connect({required AudioNodeImplementor dest});
+  Future<void> connect();
 }
