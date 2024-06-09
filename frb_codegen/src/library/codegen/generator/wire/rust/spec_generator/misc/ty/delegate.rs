@@ -16,10 +16,9 @@ impl<'a> WireRustGeneratorMiscTrait for DelegateWireRustGenerator<'a> {
     }
 
     fn generate_wire_func_call_decode_type(&self) -> Option<String> {
-        if let MirTypeDelegate::ProxyEnum(mir) = &self.mir {
-            Some(mir.get_delegate().rust_api_type())
-        } else {
-            None
+        match &self.mir {
+            MirTypeDelegate::ProxyEnum(mir) => Some(mir.get_delegate().rust_api_type()),
+            _ => None,
         }
     }
 }
