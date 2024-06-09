@@ -28,6 +28,7 @@ use std::fmt::Debug;
 use syn::*;
 use MirSkipReason::{IgnoredFunctionNotPub, IgnoredMisc};
 use MirType::Primitive;
+use crate::codegen::parser::mir::ParseMode;
 
 pub(crate) mod argument;
 pub(crate) mod output;
@@ -37,6 +38,7 @@ pub(crate) fn parse(
     src_fns: &[HirFlatFunction],
     type_parser: &mut TypeParser,
     config: &ParserMirInternalConfig,
+    parse_mode: ParseMode,
 ) -> anyhow::Result<Vec<MirFuncOrSkip>> {
     let mut function_parser = FunctionParser::new(type_parser);
     (src_fns.iter())
@@ -49,6 +51,7 @@ pub(crate) fn parse(
                 &config.force_codec_mode_pack,
                 config.default_stream_sink_codec,
                 config.default_rust_opaque_codec,
+                parse_mode,
                 config.stop_on_error,
             )
         })
@@ -71,6 +74,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         force_codec_mode_pack: &Option<CodecModePack>,
         default_stream_sink_codec: CodecMode,
         default_rust_opaque_codec: RustOpaqueCodecMode,
+        parse_mode: ParseMode,
         stop_on_error: bool,
     ) -> anyhow::Result<MirFuncOrSkip> {
         match self.parse_function_inner(
@@ -78,6 +82,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             force_codec_mode_pack,
             default_stream_sink_codec,
             default_rust_opaque_codec,
+            parse_mode,
         ) {
             Ok(output) => Ok(output),
             Err(err) => {
@@ -105,6 +110,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         force_codec_mode_pack: &Option<CodecModePack>,
         default_stream_sink_codec: CodecMode,
         default_rust_opaque_codec: RustOpaqueCodecMode,
+        parse_mode: ParseMode,
     ) -> anyhow::Result<MirFuncOrSkip> {
         debug!("parse_function function name: {:?}", func.item_fn.name());
 
@@ -126,6 +132,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             default_stream_sink_codec,
             default_rust_opaque_codec,
             owner,
+            parse_mode,
         };
 
         let is_owner_trait_def = matches!(func.owner, HirFlatFunctionOwner::TraitDef { .. });

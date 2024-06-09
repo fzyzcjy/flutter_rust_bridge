@@ -18,18 +18,20 @@ use crate::utils::namespace::NamespacedName;
 use field::parse_auto_accessor_of_field;
 use itertools::Itertools;
 use std::collections::HashMap;
+use crate::codegen::parser::mir::ParseMode;
 
 pub(crate) fn parse(
     config: &ParserMirInternalConfig,
     src_structs: &HashMap<String, &HirFlatStruct>,
     type_parser: &mut TypeParser,
+    parse_mode: ParseMode,
 ) -> anyhow::Result<Vec<MirFuncOrSkip>> {
     let src_structs_in_paths =
         extract_src_types_in_paths(src_structs, &config.rust_input_namespace_pack)?;
 
     let infos = src_structs_in_paths
         .iter()
-        .map(|struct_name| parse_auto_accessors_of_struct(config, struct_name, type_parser))
+        .map(|struct_name| parse_auto_accessors_of_struct(config, struct_name, type_parser, parse_mode))
         .collect::<anyhow::Result<Vec<_>>>()?
         .into_iter()
         .flatten()
@@ -52,11 +54,13 @@ fn parse_auto_accessors_of_struct(
     config: &ParserMirInternalConfig,
     struct_name: &NamespacedName,
     type_parser: &mut TypeParser,
+    parse_mode: ParseMode,
 ) -> anyhow::Result<Vec<MirFuncAndSanityCheckInfo>> {
     let context = create_parsing_context(
         struct_name,
         config.default_stream_sink_codec,
         config.default_rust_opaque_codec,
+        parse_mode,
     )?;
 
     let ty_direct_parse =
@@ -106,6 +110,7 @@ fn create_parsing_context(
     struct_name: &NamespacedName,
     default_stream_sink_codec: CodecMode,
     default_rust_opaque_codec: RustOpaqueCodecMode,
+    parse_mode: ParseMode,
 ) -> anyhow::Result<TypeParserParsingContext> {
     Ok(TypeParserParsingContext {
         initiated_namespace: struct_name.namespace.to_owned(),
@@ -113,6 +118,7 @@ fn create_parsing_context(
         default_stream_sink_codec,
         default_rust_opaque_codec,
         owner: None,
+        parse_mode,
     })
 }
 

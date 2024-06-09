@@ -9,12 +9,14 @@ use crate::codegen::parser::mir::parser::ty::{TypeParser, TypeParserParsingConte
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use crate::utils::crate_name::CrateName;
 use itertools::Itertools;
+use crate::codegen::parser::mir::ParseMode;
 
 pub(crate) fn parse(
     hir_trait_impls: &[HirFlatTraitImpl],
     type_parser: &mut TypeParser,
     default_stream_sink_codec: CodecMode,
     default_rust_opaque_codec: RustOpaqueCodecMode,
+    parse_mode: ParseMode,
 ) -> anyhow::Result<Vec<MirTraitImpl>> {
     let context = TypeParserParsingContext {
         initiated_namespace: CrateName::self_crate().namespace(), // just a dummy value
@@ -22,6 +24,7 @@ pub(crate) fn parse(
         default_stream_sink_codec,
         default_rust_opaque_codec,
         owner: None,
+        parse_mode,
     };
 
     Ok((hir_trait_impls.iter())

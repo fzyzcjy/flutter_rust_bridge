@@ -15,7 +15,7 @@ pub(crate) fn parse(
     dumper: &Dumper,
     parse_mode: ParseMode,
 ) -> anyhow::Result<MirPack> {
-    let pack = parser::parse(config, ir_pack)?;
+    let pack = parser::parse(config, ir_pack, parse_mode)?;
     dumper.dump("1_parse_pack.json", &pack)?;
 
     let pack = transformer::filter_trait_impl_transformer::transform(pack)?;

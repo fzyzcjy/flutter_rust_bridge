@@ -8,6 +8,7 @@ use crate::codegen::ir::early_generator::pack::IrEarlyGeneratorPack;
 use crate::codegen::ir::hir::flat::pack::HirFlatPack;
 use crate::codegen::ir::mir::pack::MirPack;
 use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
+use crate::codegen::parser::mir::ParseMode;
 use crate::codegen::parser::mir::parser::ty::TypeParser;
 use crate::codegen::parser::mir::sanity_checker::opaque_inside_translatable_checker::check_opaque_inside_translatable;
 use crate::codegen::parser::mir::sanity_checker::unused_checker::get_unused_types;
@@ -15,6 +16,7 @@ use crate::codegen::parser::mir::sanity_checker::unused_checker::get_unused_type
 pub(crate) fn parse(
     config: &ParserMirInternalConfig,
     ir_pack: &IrEarlyGeneratorPack,
+    parse_mode: ParseMode,
 ) -> anyhow::Result<MirPack> {
     let hir_flat = &ir_pack.hir_flat_pack;
     let structs_map = hir_flat.structs_map();
@@ -27,10 +29,11 @@ pub(crate) fn parse(
         &mut type_parser,
         config.default_stream_sink_codec,
         config.default_rust_opaque_codec,
+        parse_mode,
     )?;
 
     let (funcs_all, skipped_functions) =
-        function::parse(config, &hir_flat.functions, &mut type_parser, &structs_map)?;
+        function::parse(config, &hir_flat.functions, &mut type_parser, &structs_map, parse_mode)?;
 
     let (struct_pool, enum_pool, dart_code_of_type) = type_parser.consume();
 
