@@ -5,6 +5,9 @@ use log::warn;
 use std::fs;
 use std::path::{Path, PathBuf};
 
+// This is executed because `dart_build_rs`'s `build.rs` will go through this branch
+// but coverage tool does not think so, possibly because it is done in build time
+// frb-coverage:ignore-start
 pub(super) fn run(
     rust_crate_dir: &Path,
     interest_crate_name: Option<&CrateName>,
@@ -63,6 +66,7 @@ fn get_module_file_path(module_name: &str, parent_module_file_path: &Path) -> Op
     let path_candidates = get_module_file_path_candidates(module_name, parent_module_file_path);
     path_candidates.iter().find(|path| path.exists()).cloned()
 }
+// frb-coverage:ignore-end
 
 fn get_module_file_path_candidates(
     module_name: &str,
