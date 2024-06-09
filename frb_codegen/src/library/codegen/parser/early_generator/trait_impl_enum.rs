@@ -3,6 +3,7 @@ use crate::codegen::ir::hir::flat::pack::HirFlatPack;
 use crate::codegen::ir::hir::flat::traits::HirFlatTrait;
 use crate::codegen::ir::mir::pack::MirPack;
 use crate::codegen::ir::mir::trait_impl::MirTraitImpl;
+use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::early_generator::utils::lockable;
 use crate::codegen::parser::hir::flat::extra_code_injector::{
@@ -11,12 +12,11 @@ use crate::codegen::parser::hir::flat::extra_code_injector::{
 use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
 use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
 use crate::codegen::parser::mir::parser::function::real::FUNC_PREFIX_FRB_INTERNAL_NO_IMPL;
+use crate::if_then_some;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
 use strum_macros::Display;
-use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
-use crate::if_then_some;
 
 pub(crate) fn generate(
     pack: &mut IrEarlyGeneratorPack,
@@ -26,15 +26,14 @@ pub(crate) fn generate(
     let distinct_types = tentative_mir_pack.distinct_types(None);
 
     let dyn_trait_types = (distinct_types.iter())
-        .filter_map(|ty| if_then_some!(let MirType::Delegate(MirTypeDelegate::DynTrait(inner)) = ty, inner.clone()))
+        .filter_map(|ty| if_then_some!(let MirType::Delegate(MirTypeDelegate::DynTrait(inner)) = ty, inner.clone()));
+    let interest_trait_names = dyn_trait_types
+        .map(|ty| ty.trait_def_name.clone())
+        .unique()
         .collect_vec();
 
     let extra_codes = (pack.hir_flat_pack.traits.iter())
-        .filter(|x| {
-            FrbAttributes::parse(&x.attrs)
-                .unwrap()
-                .generate_implementor_enum()
-        })
+        .filter(|x| interest_trait_names.contains(&x.name))
         .sorted_by_key(|x| x.name.clone())
         .map(|x| generate_trait_impl_enum(x, &tentative_mir_pack.trait_impls))
         .collect::<anyhow::Result<Vec<_>>>()?
