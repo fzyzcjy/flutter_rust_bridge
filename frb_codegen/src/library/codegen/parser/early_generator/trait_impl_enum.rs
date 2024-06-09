@@ -33,6 +33,8 @@ pub(crate) fn generate(
         .unique()
         .collect_vec();
 
+    let trait_def_infos = compute_trait_def_infos();
+
     let extra_codes = (pack.hir_flat_pack.traits.iter())
         .filter(|x| interest_trait_names.contains(&x.name))
         .sorted_by_key(|x| x.name.clone())
@@ -45,6 +47,7 @@ pub(crate) fn generate(
     let output_namespace = compute_trait_implementor_namespace(config_mir);
 
     inject_extra_codes(&mut pack.hir_flat_pack, output_namespace, &extra_codes)?;
+    (pack.trait_def_infos).extend(trait_def_infos);
 
     Ok(())
 }

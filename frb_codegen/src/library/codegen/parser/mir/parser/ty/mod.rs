@@ -71,6 +71,7 @@ impl<'a> TypeParser<'a> {
             ir_pack.hir_flat_pack.traits_map(),
             ir_pack.hir_flat_pack.types_map(),
             ir_pack.proxied_types.clone(),
+            ir_pack.trait_def_infos.clone(),
         )
     }
 
@@ -80,6 +81,7 @@ impl<'a> TypeParser<'a> {
         src_traits: HashMap<String, &'a HirFlatTrait>,
         src_types: HashMap<String, Type>,
         proxied_types: Vec<IrEarlyGeneratorProxiedType>,
+        trait_def_infos: Vec<IrEarlyGeneratorTraitDefInfo>,
     ) -> Self {
         TypeParser {
             src_structs,
@@ -87,6 +89,7 @@ impl<'a> TypeParser<'a> {
             src_traits,
             src_types,
             proxied_types,
+            trait_def_infos,
             dart_code_of_type: HashMap::new(),
             struct_parser_info: EnumOrStructParserInfo::new(),
             enum_parser_info: EnumOrStructParserInfo::new(),
