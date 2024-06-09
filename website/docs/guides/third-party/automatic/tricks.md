@@ -11,3 +11,9 @@ For example, we can add a method to an auto-generated Dart class.
 
 When we are going to write down code that contains a lot of duplication,
 Rust macros can often be helpful.
+
+## Ignore things
+
+There can be things that are hard to automatically translate (e.g. complex lifetime specifiers, complex generics, ...),
+and I suggest to put `#[frb(ignore)]` on them firstly to quickly get a working translation of the third party package.
+After that, we can remove the `ignore`s and handle them (e.g. by [overriding methods](override-methods)).
