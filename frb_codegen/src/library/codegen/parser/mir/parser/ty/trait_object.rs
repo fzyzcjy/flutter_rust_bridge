@@ -4,6 +4,7 @@ use crate::codegen::parser::mir::parser::ty::trait_def::parse_type_trait;
 use crate::codegen::parser::mir::parser::ty::TypeParserWithContext;
 use crate::utils::syn_utils::ty_to_string;
 use syn::TypeTraitObject;
+use crate::codegen::parser::mir::ParseMode;
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_trait_object(
@@ -33,7 +34,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                 return Ok(Some(MirType::Delegate(MirTypeDelegate::DynTrait(
                     MirTypeDelegateDynTrait {
                         trait_def_name: trait_ty.name,
-                        dummy_delegate: TODO,
+                        dummy_delegate: self.context.parse_mode == ParseMode::Early,
                     },
                 ))));
             }

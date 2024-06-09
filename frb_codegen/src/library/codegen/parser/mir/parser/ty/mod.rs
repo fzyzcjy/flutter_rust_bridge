@@ -1,5 +1,6 @@
 use crate::codegen::generator::codec::structs::CodecMode;
 use crate::codegen::ir::early_generator::pack::IrEarlyGeneratorPack;
+use crate::codegen::ir::early_generator::proxied_type::IrEarlyGeneratorProxiedType;
 use crate::codegen::ir::hir::flat::pack::HirFlatPack;
 use crate::codegen::ir::hir::flat::struct_or_enum::HirFlatEnum;
 use crate::codegen::ir::hir::flat::struct_or_enum::HirFlatStruct;
@@ -17,10 +18,10 @@ use crate::codegen::parser::mir::parser::ty::array::ArrayParserInfo;
 use crate::codegen::parser::mir::parser::ty::enum_or_struct::EnumOrStructParserInfo;
 use crate::codegen::parser::mir::parser::ty::rust_auto_opaque_implicit::RustAutoOpaqueParserInfo;
 use crate::codegen::parser::mir::parser::ty::rust_opaque::RustOpaqueParserInfo;
+use crate::codegen::parser::mir::ParseMode;
 use crate::utils::namespace::Namespace;
 use std::collections::HashMap;
 use syn::Type;
-use crate::codegen::ir::early_generator::proxied_type::IrEarlyGeneratorProxiedType;
 
 pub(crate) mod array;
 pub(crate) mod concrete;
@@ -136,6 +137,7 @@ pub(crate) struct TypeParserParsingContext {
     pub(crate) default_stream_sink_codec: CodecMode,
     pub(crate) default_rust_opaque_codec: RustOpaqueCodecMode,
     pub(crate) owner: Option<MirFuncOwnerInfo>,
+    pub(crate) parse_mode: ParseMode,
 }
 
 impl MirContext for TypeParser<'_> {
