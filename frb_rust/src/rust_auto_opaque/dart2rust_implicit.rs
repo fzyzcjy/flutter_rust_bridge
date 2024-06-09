@@ -31,12 +31,6 @@ pub fn rust_auto_opaque_lock_order_info<T, A: BaseArc<RustAutoOpaqueInner<T>>>(
     }
 }
 
-pub struct RustAutoOpaqueLockOrderInfo {
-    index: usize,
-    mutable: bool,
-    object_order: RustAutoOpaqueOrder,
-}
-
 pub fn rust_auto_opaque_encode<T, A: BaseArc<RustAutoOpaqueInner<T>>>(
     value: T,
 ) -> RustOpaqueBase<RustAutoOpaqueInner<T>, A> {

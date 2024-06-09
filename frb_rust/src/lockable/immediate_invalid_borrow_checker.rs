@@ -1,6 +1,8 @@
 use crate::rust_auto_opaque::dart2rust_implicit::RustAutoOpaqueLockOrderInfo;
 
-fn check_no_immediate_invalid_borrow(sorted_infos: &[RustAutoOpaqueLockOrderInfo]) -> bool {
+pub(super) fn check_no_immediate_invalid_borrow(
+    sorted_infos: &[RustAutoOpaqueLockOrderInfo],
+) -> bool {
     let mut last_object = None;
     let mut checker = ImmediateInvalidBorrowChecker::default();
 
@@ -45,7 +47,9 @@ mod tests {
                 RustAutoOpaqueLockOrderInfo {
                     index: 0,
                     mutable,
-                    object_order: crate::rust_auto_opaque::order::RustAutoOpaqueOrder::new_for_test(100),
+                    object_order: crate::rust_auto_opaque::order::RustAutoOpaqueOrder::new_for_test(
+                        100
+                    ),
                 }
             ]));
         }
@@ -61,12 +65,14 @@ mod tests {
                     RustAutoOpaqueLockOrderInfo {
                         index: 0,
                         mutable: mutable_a,
-                        object_order: crate::rust_auto_opaque::order::RustAutoOpaqueOrder::new_for_test(100),
+                        object_order:
+                            crate::rust_auto_opaque::order::RustAutoOpaqueOrder::new_for_test(100),
                     },
                     RustAutoOpaqueLockOrderInfo {
                         index: 1,
                         mutable: mutable_b,
-                        object_order: crate::rust_auto_opaque::order::RustAutoOpaqueOrder::new_for_test(100),
+                        object_order:
+                            crate::rust_auto_opaque::order::RustAutoOpaqueOrder::new_for_test(100),
                     }
                 ]),
                 expect
@@ -77,12 +83,16 @@ mod tests {
             RustAutoOpaqueLockOrderInfo {
                 index: 0,
                 mutable: true,
-                object_order: crate::rust_auto_opaque::order::RustAutoOpaqueOrder::new_for_test(100),
+                object_order: crate::rust_auto_opaque::order::RustAutoOpaqueOrder::new_for_test(
+                    100
+                ),
             },
             RustAutoOpaqueLockOrderInfo {
                 index: 1,
                 mutable: true,
-                object_order: crate::rust_auto_opaque::order::RustAutoOpaqueOrder::new_for_test(101),
+                object_order: crate::rust_auto_opaque::order::RustAutoOpaqueOrder::new_for_test(
+                    101
+                ),
             }
         ]));
     }
