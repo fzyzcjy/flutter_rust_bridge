@@ -1,9 +1,10 @@
 use crate::codegen::generator::api_dart::spec_generator::base::ApiDartGenerator;
+use crate::codegen::generator::api_dart::spec_generator::class::proxy_variant;
 use crate::codegen::generator::codec::sse::lang::*;
 use crate::codegen::generator::codec::sse::ty::*;
 use crate::codegen::ir::mir::ty::delegate::{
-    MirTypeDelegatePrimitiveEnum, MirTypeDelegateSet, MirTypeDelegateStreamSink,
-    MirTypeDelegateTime,
+    MirTypeDelegatePrimitiveEnum, MirTypeDelegateProxyEnum, MirTypeDelegateSet,
+    MirTypeDelegateStreamSink, MirTypeDelegateTime,
 };
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use convert_case::{Case, Casing};
@@ -17,7 +18,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 MirTypeDelegate::String => "utf8.encoder.convert(self)".to_owned(),
                 MirTypeDelegate::Char => "self".to_owned(),
                 MirTypeDelegate::PrimitiveEnum(_) => "self.index".to_owned(),
-                MirTypeDelegate::Backtrace => {
+                MirTypeDelegate::Backtrace | MirTypeDelegate::ProxyVariant(_) => {
                     return Some(format!("{};", lang.throw_unreachable("")));
                 }
                 MirTypeDelegate::AnyhowException => "self.message".to_owned(),
@@ -43,7 +44,9 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 }
                 MirTypeDelegate::BigPrimitive(_) => "self.toString()".to_owned(),
                 MirTypeDelegate::RustAutoOpaqueExplicit(_ir) => "self".to_owned(),
-                // MirTypeDelegate::DynTrait(_ir) => lang.throw_unimplemented(""), // TODO
+                MirTypeDelegate::ProxyEnum(mir) => {
+                    generate_proxy_enum_dart_encode(mir, self.context.as_api_dart_context())
+                } // MirTypeDelegate::DynTrait(_ir) => lang.throw_unimplemented(""),
             },
             Lang::RustLang(_) => match &self.mir {
                 MirTypeDelegate::Array(_) => {
@@ -82,7 +85,8 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     }
                 },
                 MirTypeDelegate::Uuid => "self.as_bytes().to_vec()".to_owned(),
-                MirTypeDelegate::StreamSink(_) /*| MirTypeDelegate::DynTrait(_)*/ => {
+                MirTypeDelegate::StreamSink(_)
+                /*| MirTypeDelegate::DynTrait(_)*/ => {
                     return Some(lang.throw_unimplemented(""))
                 }
                 MirTypeDelegate::BigPrimitive(_) => "self.to_string()".to_owned(),
@@ -90,6 +94,9 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     "flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_encode(self)"
                         .to_owned()
                 }
+                MirTypeDelegate::ProxyVariant(_)
+                | MirTypeDelegate::ProxyEnum(_)
+                => return None,
             },
         };
         Some(simple_delegate_encode(
@@ -141,7 +148,9 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                         }
                     },
                     MirTypeDelegate::Uuid => "UuidValue.fromByteList(inner)".to_owned(),
-                    MirTypeDelegate::StreamSink(_) => {
+                    MirTypeDelegate::StreamSink(_)
+                    | MirTypeDelegate::ProxyVariant(_)
+                    | MirTypeDelegate::ProxyEnum(_) => {
                         return Some(format!("{};", lang.throw_unreachable("")));
                     }
                     MirTypeDelegate::BigPrimitive(_) => "BigInt.parse(inner)".to_owned(),
@@ -188,7 +197,8 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 MirTypeDelegate::RustAutoOpaqueExplicit(_ir) => {
                     "flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_decode(inner)"
                         .to_owned()
-                } // MirTypeDelegate::DynTrait(_ir) => lang.throw_unimplemented(""), // TODO
+                } // MirTypeDelegate::DynTrait(_ir) => lang.throw_unimplemented(""),
+                MirTypeDelegate::ProxyVariant(_) | MirTypeDelegate::ProxyEnum(_) => return None,
             },
         };
 
@@ -273,4 +283,32 @@ pub(crate) fn generate_stream_sink_setup_and_serialize(
     );
 
     format!("{var_name}.setupAndSerialize(codec: {codec_code})")
+}
+
+fn generate_proxy_enum_dart_encode(
+    mir: &MirTypeDelegateProxyEnum,
+    context: ApiDartGeneratorContext,
+) -> String {
+    let enum_name = mir.proxy_enum_name();
+
+    let variants = (mir.variants.iter().enumerate())
+        .map(|(index, variant)| {
+            let variant_dart_extra_type = proxy_variant::compute_dart_extra_type(variant, context);
+            format!(
+                "if (self is {variant_dart_extra_type}) {{
+                    return {enum_name}.variant{index}(self._upstream);
+                }}
+                "
+            )
+        })
+        .join("");
+
+    format!(
+        "
+        (() {{
+            {variants}
+            throw Exception('not reachable');
+        }})()
+        "
+    )
 }

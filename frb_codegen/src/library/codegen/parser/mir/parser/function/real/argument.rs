@@ -3,6 +3,7 @@ use crate::codegen::ir::mir::func::{MirFuncInput, MirFuncOwnerInfo};
 use crate::codegen::ir::mir::func::{MirFuncOwnerInfoMethod, OwnershipMode};
 use crate::codegen::ir::mir::ident::MirIdent;
 use crate::codegen::ir::mir::ty::boxed::MirTypeBoxed;
+use crate::codegen::ir::mir::ty::delegate::{MirTypeDelegate, MirTypeDelegateProxyEnum};
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::ir::mir::ty::MirType::Boxed;
 use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
@@ -51,6 +52,8 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             ownership_mode_split,
         )?;
 
+        let ty = parse_maybe_proxy_enum(ty, self.type_parser)?;
+
         if ty.should_ignore(self.type_parser) {
             return Ok(FunctionPartialInfo {
                 ignore_func: true,
@@ -60,7 +63,9 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
         let attrs = parse_attrs_from_fn_arg(sig_input);
         let attributes = FrbAttributes::parse(attrs)?;
+
         let ty = auto_add_boxed(ty);
+
         Ok(FunctionPartialInfo {
             inputs: vec![MirFuncInput {
                 inner: MirField {
@@ -160,4 +165,18 @@ fn parse_attrs_from_fn_arg(fn_arg: &FnArg) -> &[Attribute] {
         FnArg::Typed(inner) => &inner.attrs,
         FnArg::Receiver(inner) => &inner.attrs,
     }
+}
+
+fn parse_maybe_proxy_enum(ty: MirType, type_parser: &TypeParser) -> anyhow::Result<MirType> {
+    if let Some(proxied_type) = (type_parser.proxied_types.iter()).find(|x| x.original_ty == ty) {
+        return Ok(MirType::Delegate(MirTypeDelegate::ProxyEnum(
+            MirTypeDelegateProxyEnum {
+                original: Box::new(ty),
+                delegate_namespace: proxied_type.proxy_enum_namespace.clone(),
+                variants: proxied_type.variants.clone(),
+            },
+        )));
+    }
+
+    Ok(ty)
 }

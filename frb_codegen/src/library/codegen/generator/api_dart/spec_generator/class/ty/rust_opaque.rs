@@ -105,10 +105,9 @@ impl RustOpaqueApiDartGenerator<'_> {
         dart_class_name_postfix: &str,
     ) -> Info {
         let dart_api_type = ApiDartGenerator::new(self.mir.clone(), self.context).dart_api_type();
-        let type_query_name = compute_query_name(&self.mir);
 
         let methods = generate_api_methods(
-            &NamespacedName::new(self.mir.namespace.clone(), type_query_name.clone()),
+            &MirType::RustOpaque(self.mir.clone()),
             self.context,
             config,
             &format!("{dart_api_type}{dart_class_name_postfix}"),
@@ -124,15 +123,6 @@ impl RustOpaqueApiDartGenerator<'_> {
 struct Info {
     dart_api_type: String,
     methods: GeneratedApiMethods,
-}
-
-fn compute_query_name(mir: &MirTypeRustOpaque) -> String {
-    lazy_static! {
-        static ref FILTER: Regex =
-            Regex::new(r"^flutter_rust_bridge::for_generated::RustAutoOpaqueInner<(.*)>$").unwrap();
-    }
-
-    FILTER.replace_all(&mir.inner.0, "$1").to_string()
 }
 
 fn generate_implements(

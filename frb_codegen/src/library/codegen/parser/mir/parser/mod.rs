@@ -4,6 +4,7 @@ pub(crate) mod misc;
 pub(crate) mod trait_impl;
 pub(crate) mod ty;
 
+use crate::codegen::ir::early_generator::pack::IrEarlyGeneratorPack;
 use crate::codegen::ir::hir::flat::pack::HirFlatPack;
 use crate::codegen::ir::mir::pack::MirPack;
 use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
@@ -13,12 +14,13 @@ use crate::codegen::parser::mir::sanity_checker::unused_checker::get_unused_type
 
 pub(crate) fn parse(
     config: &ParserMirInternalConfig,
-    hir_flat: &HirFlatPack,
+    ir_pack: &IrEarlyGeneratorPack,
 ) -> anyhow::Result<MirPack> {
+    let hir_flat = &ir_pack.hir_flat_pack;
     let structs_map = hir_flat.structs_map();
     let enums_map = hir_flat.enums_map();
 
-    let mut type_parser = TypeParser::new_from_hir_flat_pack(hir_flat);
+    let mut type_parser = TypeParser::new_from_pack(ir_pack);
 
     let trait_impls = trait_impl::parse(
         &hir_flat.trait_impls,

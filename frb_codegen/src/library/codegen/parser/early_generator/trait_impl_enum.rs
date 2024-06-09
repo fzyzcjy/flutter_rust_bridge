@@ -3,20 +3,22 @@ use crate::codegen::ir::hir::flat::traits::HirFlatTrait;
 use crate::codegen::ir::mir::pack::MirPack;
 use crate::codegen::ir::mir::trait_impl::MirTraitImpl;
 use crate::codegen::ir::mir::ty::MirType;
-use crate::codegen::parser::hir::flat::extra_code_injector::inject_extra_code;
-use crate::codegen::parser::hir::internal_config::ParserHirInternalConfig;
+use crate::codegen::parser::early_generator::inject_extra_code_to_rust_output;
+use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
 use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
 use crate::codegen::parser::mir::parser::function::real::FUNC_PREFIX_FRB_INTERNAL_NO_IMPL;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
 use strum_macros::Display;
+use crate::codegen::ir::early_generator::pack::IrEarlyGeneratorPack;
 
 pub(crate) fn generate(
-    pack: &HirFlatPack,
+    pack: &mut IrEarlyGeneratorPack,
     tentative_mir_pack: &MirPack,
-) -> anyhow::Result<String> {
-    Ok((pack.traits.iter())
+    config_mir: &ParserMirInternalConfig,
+) -> anyhow::Result<()> {
+    let extra_code = (pack.hir_flat_pack.traits.iter())
         .filter(|x| {
             FrbAttributes::parse(&x.attrs)
                 .unwrap()
@@ -26,7 +28,11 @@ pub(crate) fn generate(
         .map(|x| generate_trait_impl_enum(x, &tentative_mir_pack.trait_impls))
         .collect::<anyhow::Result<Vec<_>>>()?
         .into_iter()
-        .join(""))
+        .join("");
+
+    inject_extra_code_to_rust_output(&mut pack.hir_flat_pack, &extra_code, config_mir)?;
+
+    Ok(())
 }
 
 fn generate_trait_impl_enum(

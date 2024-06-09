@@ -1,11 +1,19 @@
+use crate::codegen::generator::api_dart::spec_generator::class::method::{
+    generate_api_methods, GenerateApiMethodConfig, GenerateApiMethodMode,
+};
 use crate::codegen::generator::api_dart::spec_generator::class::ty::ApiDartGeneratorClassTrait;
-use crate::codegen::generator::api_dart::spec_generator::class::ApiDartGeneratedClass;
+use crate::codegen::generator::api_dart::spec_generator::class::{
+    proxy_variant, ApiDartGeneratedClass,
+};
 use crate::codegen::ir::mir::ty::delegate::{
     MirTypeDelegate, MirTypeDelegateArray, MirTypeDelegateArrayMode, MirTypeDelegatePrimitiveEnum,
+    MirTypeDelegateProxyVariant,
 };
+use crate::codegen::ir::mir::ty::MirType;
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use crate::utils::basic_code::dart_header_code::DartHeaderCode;
+use crate::utils::namespace::NamespacedName;
 
 impl<'a> ApiDartGeneratorClassTrait for DelegateApiDartGenerator<'a> {
     fn generate_class(&self) -> Option<ApiDartGeneratedClass> {
@@ -14,6 +22,13 @@ impl<'a> ApiDartGeneratorClassTrait for DelegateApiDartGenerator<'a> {
                 EnumRefApiDartGenerator::new(mir.clone(), self.context).generate_class()
             }
             MirTypeDelegate::Array(array) => generate_array(array, self.context),
+            _ => None,
+        }
+    }
+
+    fn generate_extra_impl_code(&self) -> Option<String> {
+        match &self.mir {
+            MirTypeDelegate::ProxyVariant(mir) => Some(generate_proxy_variant(mir, self.context)),
             _ => None,
         }
     }
@@ -65,4 +80,35 @@ fn generate_array(
         ),
         needs_freezed: false,
     })
+}
+
+fn generate_proxy_variant(
+    mir: &MirTypeDelegateProxyVariant,
+    context: ApiDartGeneratorContext,
+) -> String {
+    let class_name = proxy_variant::compute_dart_extra_type(mir, context);
+
+    let implements_name = ApiDartGenerator::new(mir.inner.clone(), context).dart_api_type();
+    let upstream_name = ApiDartGenerator::new(mir.upstream.clone(), context).dart_api_type();
+
+    let methods = generate_api_methods(
+        &MirType::Delegate(MirTypeDelegate::ProxyVariant(mir.clone())),
+        context,
+        &GenerateApiMethodConfig {
+            mode_static: GenerateApiMethodMode::Nothing,
+            mode_non_static: GenerateApiMethodMode::DeclAndImpl,
+        },
+        &class_name,
+    );
+    let methods_str = methods.code;
+
+    format!(
+        "class {class_name} with SimpleDisposable implements {implements_name} {{
+            final {upstream_name} _upstream;
+
+            {class_name}(this._upstream);
+
+            {methods_str}
+        }}"
+    )
 }

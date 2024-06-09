@@ -7,6 +7,7 @@ use crate::codegen::generator::api_dart::spec_generator::class::ApiDartGenerated
 use crate::codegen::generator::api_dart::spec_generator::misc::{
     generate_dart_comments, generate_dart_metadata,
 };
+use crate::codegen::ir::mir::ty::MirType;
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
 
 impl<'a> ApiDartGeneratorClassTrait for StructRefApiDartGenerator<'a> {
@@ -20,7 +21,7 @@ impl<'a> ApiDartGeneratorClassTrait for StructRefApiDartGenerator<'a> {
         let class_name = &self.mir.ident.0.name;
 
         let methods = generate_api_methods(
-            &src.name,
+            &MirType::StructRef(self.mir.clone()),
             self.context,
             &GenerateApiMethodConfig::COMBINED,
             class_name,

@@ -1,4 +1,5 @@
 use crate::codegen::generator::codec::structs::CodecMode;
+use crate::codegen::ir::early_generator::pack::IrEarlyGeneratorPack;
 use crate::codegen::ir::hir::flat::pack::HirFlatPack;
 use crate::codegen::ir::hir::flat::struct_or_enum::HirFlatEnum;
 use crate::codegen::ir::hir::flat::struct_or_enum::HirFlatStruct;
@@ -19,6 +20,7 @@ use crate::codegen::parser::mir::parser::ty::rust_opaque::RustOpaqueParserInfo;
 use crate::utils::namespace::Namespace;
 use std::collections::HashMap;
 use syn::Type;
+use crate::codegen::ir::early_generator::proxied_type::IrEarlyGeneratorProxiedType;
 
 pub(crate) mod array;
 pub(crate) mod concrete;
@@ -49,6 +51,7 @@ pub(crate) struct TypeParser<'a> {
     src_enums: HashMap<String, &'a HirFlatEnum>,
     pub(super) src_traits: HashMap<String, &'a HirFlatTrait>,
     src_types: HashMap<String, Type>,
+    pub(super) proxied_types: Vec<IrEarlyGeneratorProxiedType>,
     dart_code_of_type: HashMap<String, String>,
     struct_parser_info: EnumOrStructParserInfo<MirStructIdent, MirStruct>,
     enum_parser_info: EnumOrStructParserInfo<MirEnumIdent, MirEnum>,
@@ -58,12 +61,13 @@ pub(crate) struct TypeParser<'a> {
 }
 
 impl<'a> TypeParser<'a> {
-    pub(crate) fn new_from_hir_flat_pack(hir_flat: &'a HirFlatPack) -> Self {
+    pub(crate) fn new_from_pack(ir_pack: &'a IrEarlyGeneratorPack) -> Self {
         Self::new(
-            hir_flat.structs_map(),
-            hir_flat.enums_map(),
-            hir_flat.traits_map(),
-            hir_flat.types_map(),
+            ir_pack.hir_flat_pack.structs_map(),
+            ir_pack.hir_flat_pack.enums_map(),
+            ir_pack.hir_flat_pack.traits_map(),
+            ir_pack.hir_flat_pack.types_map(),
+            ir_pack.proxied_types.clone(),
         )
     }
 
@@ -72,12 +76,14 @@ impl<'a> TypeParser<'a> {
         src_enums: HashMap<String, &'a HirFlatEnum>,
         src_traits: HashMap<String, &'a HirFlatTrait>,
         src_types: HashMap<String, Type>,
+        proxied_types: Vec<IrEarlyGeneratorProxiedType>,
     ) -> Self {
         TypeParser {
             src_structs,
             src_enums,
             src_traits,
             src_types,
+            proxied_types,
             dart_code_of_type: HashMap::new(),
             struct_parser_info: EnumOrStructParserInfo::new(),
             enum_parser_info: EnumOrStructParserInfo::new(),

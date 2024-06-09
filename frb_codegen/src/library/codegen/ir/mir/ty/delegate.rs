@@ -1,5 +1,5 @@
 use crate::codegen::generator::codec::structs::CodecMode;
-use crate::codegen::ir::mir::ty::enumeration::MirTypeEnumRef;
+use crate::codegen::ir::mir::ty::enumeration::{MirEnumIdent, MirTypeEnumRef};
 use crate::codegen::ir::mir::ty::general_list::{mir_list, MirTypeGeneralList};
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
 use crate::codegen::ir::mir::ty::primitive_list::MirTypePrimitiveList;
@@ -7,7 +7,7 @@ use crate::codegen::ir::mir::ty::record::MirTypeRecord;
 use crate::codegen::ir::mir::ty::rust_auto_opaque_implicit::MirRustAutoOpaqueRaw;
 use crate::codegen::ir::mir::ty::rust_opaque::MirTypeRustOpaque;
 use crate::codegen::ir::mir::ty::{MirContext, MirType, MirTypeTrait};
-use crate::utils::namespace::Namespace;
+use crate::utils::namespace::{Namespace, NamespacedName};
 
 crate::mir! {
 /// types that delegate to another type
@@ -29,6 +29,8 @@ pub enum MirTypeDelegate {
     StreamSink(MirTypeDelegateStreamSink),
     BigPrimitive(MirTypeDelegateBigPrimitive),
     RustAutoOpaqueExplicit(MirTypeDelegateRustAutoOpaqueExplicit),
+    ProxyVariant(MirTypeDelegateProxyVariant),
+    ProxyEnum(MirTypeDelegateProxyEnum),
     // DynTrait(MirTypeDelegateDynTrait),
 }
 
@@ -83,6 +85,17 @@ pub struct MirTypeDelegateRustAutoOpaqueExplicit {
     pub raw: MirRustAutoOpaqueRaw,
 }
 
+pub struct MirTypeDelegateProxyVariant {
+    pub inner: Box<MirType>,
+    pub upstream: Box<MirType>,
+}
+
+pub struct MirTypeDelegateProxyEnum {
+    pub original: Box<MirType>,
+    pub delegate_namespace: Namespace,
+    pub variants: Vec<MirTypeDelegateProxyVariant>,
+}
+
 // pub struct MirTypeDelegateDynTrait {
 //     pub trait_def_name: NamespacedName,
 // }
@@ -131,6 +144,10 @@ impl MirTypeTrait for MirTypeDelegate {
             MirTypeDelegate::RustAutoOpaqueExplicit(mir) => {
                 format!("AutoExplicit_{}", mir.inner.safe_ident())
             } // MirTypeDelegate::DynTrait(mir) => mir.safe_ident(),
+            MirTypeDelegate::ProxyVariant(mir) => {
+                format!("ProxyVariant_{}", mir.inner.safe_ident())
+            }
+            MirTypeDelegate::ProxyEnum(mir) => format!("ProxyEnum_{}", mir.get_delegate().safe_ident()),
         }
     }
 
@@ -193,6 +210,8 @@ impl MirTypeTrait for MirTypeDelegate {
             MirTypeDelegate::RustAutoOpaqueExplicit(mir) => {
                 format!("RustAutoOpaque{}<{}>", mir.inner.codec, mir.raw.string)
             } // MirTypeDelegate::DynTrait(mir) => format!("dyn <{}>", mir.trait_def_name.name),
+            MirTypeDelegate::ProxyVariant(mir) => mir.inner.rust_api_type(),
+            MirTypeDelegate::ProxyEnum(mir) => mir.original.rust_api_type(),
         }
     }
 
@@ -208,6 +227,7 @@ impl MirTypeTrait for MirTypeDelegate {
         match self {
             MirTypeDelegate::PrimitiveEnum(inner) => inner.mir.self_namespace(),
             MirTypeDelegate::Array(inner) => Some(inner.namespace.clone()),
+            MirTypeDelegate::ProxyVariant(inner) => inner.inner.self_namespace(),
             _ => None,
         }
     }
@@ -261,6 +281,8 @@ impl MirTypeDelegate {
             MirTypeDelegate::BigPrimitive(_) => MirType::Delegate(MirTypeDelegate::String),
             MirTypeDelegate::RustAutoOpaqueExplicit(mir) => MirType::RustOpaque(mir.inner.clone()),
             // MirTypeDelegate::DynTrait(mir) => mir.inner(),
+            MirTypeDelegate::ProxyVariant(mir) => *mir.inner.clone(),
+            MirTypeDelegate::ProxyEnum(mir) => mir.get_delegate(),
         }
     }
 }
@@ -299,6 +321,23 @@ impl MirTypeDelegateArray {
                 format!("{}_array_{length}", primitive.safe_ident())
             }
         }
+    }
+}
+
+impl MirTypeDelegateProxyEnum {
+    pub(crate) fn get_delegate(&self) -> MirType {
+        MirType::EnumRef(MirTypeEnumRef {
+            ident: MirEnumIdent(NamespacedName::new(self.delegate_namespace.clone(), self.proxy_enum_name())),
+            is_exception: false,
+        })
+    }
+
+    pub(crate) fn proxy_enum_name(&self) -> String {
+        Self::proxy_enum_name_raw(&self.original)
+    }
+
+    pub(crate) fn proxy_enum_name_raw(original_ty: &MirType) -> String {
+        format!("{}ProxyEnum", original_ty.safe_ident())
     }
 }
 

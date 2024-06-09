@@ -2,8 +2,8 @@ use crate::codegen::generator::codec::structs::{CodecMode, CodecModePack};
 use crate::codegen::ir::hir::flat::function::HirFlatFunction;
 use crate::codegen::ir::hir::flat::function::HirFlatFunctionOwner;
 use crate::codegen::ir::mir::func::{
-    MirFunc, MirFuncArgMode, MirFuncInput, MirFuncMode, MirFuncOutput, MirFuncOwnerInfo,
-    MirFuncOwnerInfoMethod, MirFuncOwnerInfoMethodMode,
+    MirFunc, MirFuncArgMode, MirFuncImplMode, MirFuncImplModeDartOnly, MirFuncInput, MirFuncMode,
+    MirFuncOutput, MirFuncOwnerInfo, MirFuncOwnerInfoMethod, MirFuncOwnerInfoMethodMode,
 };
 use crate::codegen::ir::mir::skip::MirSkipReason::IgnoredFunctionGeneric;
 use crate::codegen::ir::mir::skip::{MirSkip, MirSkipReason};
@@ -149,7 +149,8 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             info =
                 info.merge(self.parse_fn_arg(sig_input, &owner, &context, is_owner_trait_def)?)?;
         }
-        info = info.merge(self.parse_fn_output(func.item_fn.sig(), &context)?)?;
+        info =
+            info.merge(self.parse_fn_output(func.item_fn.sig(), &owner, &context, &attributes)?)?;
         info = self.transform_fn_info(info);
 
         let codec_mode_pack = compute_codec_mode_pack(&attributes, force_codec_mode_pack);
@@ -157,8 +158,12 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         let stream_dart_await = attributes.stream_dart_await() && !attributes.sync();
         let namespace_refined = refine_namespace(&owner).unwrap_or(func.namespace.clone());
 
-        let has_impl =
-            !is_owner_trait_def && !func_name.starts_with(FUNC_PREFIX_FRB_INTERNAL_NO_IMPL);
+        let output = MirFuncOutput {
+            normal: info.ok_output.unwrap_or(Primitive(MirTypePrimitive::Unit)),
+            error: info.error_output,
+        };
+
+        let impl_mode = compute_impl_mode(is_owner_trait_def, &func_name, &attributes, &output);
 
         if info.ignore_func {
             return Ok(create_output_skip(func, IgnoredMisc));
@@ -169,10 +174,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             dart_name,
             id: None, // to be filled later
             inputs: info.inputs,
-            output: MirFuncOutput {
-                normal: info.ok_output.unwrap_or(Primitive(MirTypePrimitive::Unit)),
-                error: info.error_output,
-            },
+            output,
             owner,
             mode,
             stream_dart_await,
@@ -187,7 +189,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             comments: parse_comments(func.item_fn.attrs()),
             codec_mode_pack,
             rust_call_code: None,
-            has_impl,
+            impl_mode,
             src_lineno_pseudo: src_lineno,
         }))
     }
@@ -397,3 +399,24 @@ pub(crate) fn is_struct_or_enum_or_opaque_from_them(ty: &MirType) -> bool {
 }
 
 pub(crate) const FUNC_PREFIX_FRB_INTERNAL_NO_IMPL: &str = "frb_internal_no_impl";
+
+fn compute_impl_mode(
+    is_owner_trait_def: bool,
+    func_name: &String,
+    attributes: &FrbAttributes,
+    output: &MirFuncOutput,
+) -> MirFuncImplMode {
+    if is_owner_trait_def || func_name.starts_with(FUNC_PREFIX_FRB_INTERNAL_NO_IMPL) {
+        return MirFuncImplMode::NoImpl;
+    }
+
+    if attributes.proxy() {
+        if let MirType::Delegate(MirTypeDelegate::ProxyVariant(inner)) = &output.normal {
+            return MirFuncImplMode::DartOnly(MirFuncImplModeDartOnly::CreateProxyVariant(
+                inner.clone(),
+            ));
+        }
+    }
+
+    MirFuncImplMode::Normal
+}

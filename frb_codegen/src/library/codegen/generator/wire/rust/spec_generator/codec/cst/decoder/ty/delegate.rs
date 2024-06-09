@@ -103,6 +103,8 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
                 io: Some("flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_decode(self.cst_decode())".into()),
                 ..Default::default()
             },
+            MirTypeDelegate::ProxyVariant(_) | MirTypeDelegate::ProxyEnum(_) =>
+                Acc::distribute(Some(r#"unimplemented!("Not implemented in this codec, please use the other one")"#.to_string()))
         }
     }
 
@@ -141,6 +143,8 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
             MirTypeDelegate::BigPrimitive(_) => "CstDecode::<String>::cst_decode(self).parse().unwrap()".into(),
             MirTypeDelegate::RustAutoOpaqueExplicit(_) =>
                 "flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_decode(self.cst_decode())".into(),
+            MirTypeDelegate::ProxyVariant(_) | MirTypeDelegate::ProxyEnum(_) =>
+                r#"unimplemented!("Not implemented in this codec, please use the other one")"#.into(),
         })
     }
 

@@ -1,7 +1,9 @@
 use crate::codegen::generator::codec::structs::CodecModePack;
 use crate::codegen::ir::mir::comment::MirComment;
 use crate::codegen::ir::mir::field::MirField;
-use crate::codegen::ir::mir::ty::delegate::{MirTypeDelegate, MirTypeDelegatePrimitiveEnum};
+use crate::codegen::ir::mir::ty::delegate::{
+    MirTypeDelegate, MirTypeDelegatePrimitiveEnum, MirTypeDelegateProxyVariant,
+};
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
 use crate::codegen::ir::mir::ty::trait_def::MirTypeTraitDef;
 use crate::codegen::ir::mir::ty::{MirContext, MirType, MirTypeTrait};
@@ -27,7 +29,7 @@ pub struct MirFunc {
     pub comments: Vec<MirComment>,
     pub codec_mode_pack: CodecModePack,
     pub rust_call_code: Option<String>,
-    pub has_impl: bool,
+    pub impl_mode: MirFuncImplMode,
     // Currently, we use serde only for tests. Since lineno can be unstable, we skip this field for comparison
     #[serde(skip_serializing)]
     pub src_lineno_pseudo: usize,
@@ -53,6 +55,16 @@ pub enum MirFuncMode {
 pub enum MirFuncArgMode {
     Positional,
     Named,
+}
+
+pub enum MirFuncImplMode {
+    Normal,
+    NoImpl,
+    DartOnly(MirFuncImplModeDartOnly),
+}
+
+pub enum MirFuncImplModeDartOnly {
+    CreateProxyVariant(MirTypeDelegateProxyVariant),
 }
 
 pub enum MirFuncOwnerInfo {

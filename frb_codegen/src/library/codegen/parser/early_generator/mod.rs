@@ -1,27 +1,43 @@
-pub(crate) mod trait_impl_enum;
+mod proxy_enum;
+mod trait_impl_enum;
 
 use crate::codegen::dumper::Dumper;
+use crate::codegen::ir::early_generator::pack::IrEarlyGeneratorPack;
 use crate::codegen::ir::hir::flat::pack::HirFlatPack;
 use crate::codegen::parser::hir::flat::extra_code_injector::inject_extra_code;
-use crate::codegen::parser::hir::internal_config::ParserHirInternalConfig;
 use crate::codegen::parser::mir;
 use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
 
 pub(crate) fn execute(
-    mut pack: HirFlatPack,
+    hir_flat_pack: HirFlatPack,
     config_mir: &ParserMirInternalConfig,
     dumper: &Dumper,
-) -> anyhow::Result<HirFlatPack> {
-    let dumper_tentative_mir = dumper.with_add_name_prefix("tentative_mir/");
+) -> anyhow::Result<IrEarlyGeneratorPack> {
+    let mut pack = IrEarlyGeneratorPack {
+        hir_flat_pack,
+        ..Default::default()
+    };
+
+    let dumper_tentative_mir = dumper.with_add_name_prefix("1_tentative_mir/");
     let tentative_mir_pack = mir::parse(config_mir, &pack, &dumper_tentative_mir)?;
 
-    let extra_code = trait_impl_enum::generate(&pack, &tentative_mir_pack)?;
+    trait_impl_enum::generate(&mut pack, &tentative_mir_pack, config_mir)?;
+    dumper.dump("2_trait_impl_enum.json", &pack)?;
 
-    inject_extra_code(
-        &mut pack,
-        &extra_code,
-        &(config_mir.rust_input_namespace_pack).rust_output_path_namespace,
-    )?;
+    proxy_enum::generate(&mut pack, &tentative_mir_pack, config_mir)?;
+    dumper.dump("3_proxy_enum.json", &pack)?;
 
     Ok(pack)
+}
+
+fn inject_extra_code_to_rust_output(
+    pack: &mut HirFlatPack,
+    extra_code: &str,
+    config_mir: &ParserMirInternalConfig,
+) -> anyhow::Result<()> {
+    inject_extra_code(
+        pack,
+        extra_code,
+        &(config_mir.rust_input_namespace_pack).rust_output_path_namespace,
+    )
 }

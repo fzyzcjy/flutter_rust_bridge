@@ -3,13 +3,14 @@ use crate::codegen::generator::api_dart::spec_generator::class::method::{
 };
 use crate::codegen::generator::api_dart::spec_generator::class::ty::ApiDartGeneratorClassTrait;
 use crate::codegen::generator::api_dart::spec_generator::class::ApiDartGeneratedClass;
+use crate::codegen::ir::mir::ty::MirType;
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
 
 impl<'a> ApiDartGeneratorClassTrait for TraitDefApiDartGenerator<'a> {
     fn generate_class(&self) -> Option<ApiDartGeneratedClass> {
         let dart_api_type = &self.mir.name.name;
         let methods = generate_api_methods(
-            &self.mir.name,
+            &MirType::TraitDef(self.mir.clone()),
             self.context,
             &GenerateApiMethodConfig {
                 mode_static: GenerateApiMethodMode::Nothing,

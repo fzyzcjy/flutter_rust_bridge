@@ -25,6 +25,7 @@ export 'src/main_components/wire.dart';
 export 'src/manual_impl/_common.dart';
 export 'src/misc/box.dart';
 export 'src/misc/rust_opaque.dart';
+export 'src/misc/simple_disposable.dart';
 export 'src/rust_arc/_common.dart';
 export 'src/stream/stream_sink.dart';
 export 'src/task.dart';
