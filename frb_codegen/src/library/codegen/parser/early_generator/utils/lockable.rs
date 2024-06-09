@@ -17,16 +17,20 @@ pub(crate) struct VariantInfo {
 pub(crate) fn generate(
     enum_name: &str,
     deref_target: &str,
+    support_mut: bool,
     variants: &[VariantInfo],
 ) -> anyhow::Result<Vec<InjectExtraCodeBlock>> {
     let code_enum_def = generate_enum_raw(variants, &enum_name, |variant| {
         format!("RustAutoOpaque<{}>", variant.ty_name)
     });
-    let code_lockable_impl = generate_code_lockable_impl(enum_name, variants);
+    let code_lockable_impl = generate_code_lockable_impl(enum_name, support_mut, variants);
     let code_read_guard =
         generate_code_read_write_guard(enum_name, deref_target, ReadWrite::Read, variants);
-    let code_write_guard =
-        generate_code_read_write_guard(enum_name, deref_target, ReadWrite::Write, variants);
+    let code_write_guard = if support_mut {
+        generate_code_read_write_guard(enum_name, deref_target, ReadWrite::Write, variants)
+    } else {
+        "".to_owned()
+    };
 
     Ok(vec![
         InjectExtraCodeBlock {
@@ -51,19 +55,27 @@ pub(crate) fn generate(
     ])
 }
 
-fn generate_code_lockable_impl(enum_name: &str, variants: &[VariantInfo]) -> String {
+fn generate_code_lockable_impl(
+    enum_name: &str,
+    support_mut: bool,
+    variants: &[VariantInfo],
+) -> String {
     let blocking_read_body = generate_match_raw(variants, |variant| {
         format!(
             "{enum_name}RwLockReadGuard::{}(inner.blocking_read())",
             variant.enum_variant_name
         )
     });
-    let blocking_write_body = generate_match_raw(variants, |variant| {
-        format!(
-            "{enum_name}RwLockWriteGuard::{}(inner.blocking_write())",
-            variant.enum_variant_name
-        )
-    });
+    let blocking_write_body = if support_mut {
+        generate_match_raw(variants, |variant| {
+            format!(
+                "{enum_name}RwLockWriteGuard::{}(inner.blocking_write())",
+                variant.enum_variant_name
+            )
+        })
+    } else {
+        "unreachable!()".to_owned()
+    };
 
     let read_body = generate_match_raw(variants, |variant| {
         format!(
@@ -71,12 +83,16 @@ fn generate_code_lockable_impl(enum_name: &str, variants: &[VariantInfo]) -> Str
             variant.enum_variant_name
         )
     });
-    let write_body = generate_match_raw(variants, |variant| {
-        format!(
-            "{enum_name}RwLockWriteGuard::{}(inner.write().await)",
-            variant.enum_variant_name
-        )
-    });
+    let write_body = if support_mut {
+        generate_match_raw(variants, |variant| {
+            format!(
+                "{enum_name}RwLockWriteGuard::{}(inner.write().await)",
+                variant.enum_variant_name
+            )
+        })
+    } else {
+        "unreachable!()".to_owned()
+    };
 
     let lockable_order_body = generate_match_raw(variants, |variant| {
         "flutter_rust_bridge::for_generated::rust_auto_opaque_lockable_order(inner)".to_string()
