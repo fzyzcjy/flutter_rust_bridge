@@ -1,28 +1,28 @@
 use crate::for_generated::{BaseArc, RustAutoOpaqueInner, RustOpaqueBase};
 use crate::lockable::base::Lockable;
+use crate::lockable::order::LockableOrder;
 use std::future::Future;
 use std::pin::Pin;
-use crate::lockable::order::LockableOrder;
 
 impl<T, A: BaseArc<RustAutoOpaqueInner<T>>> Lockable for RustOpaqueBase<RustAutoOpaqueInner<T>, A> {
-    type RwLockReadGuard = crate::rust_async::RwLockReadGuard<'_, T>;
-    type RwLockWriteGuard = crate::rust_async::RwLockWriteGuard<'_, T>;
+    type RwLockReadGuard<'a> = crate::rust_async::RwLockReadGuard<'a, T> where A: 'a;
+    type RwLockWriteGuard<'a> = crate::rust_async::RwLockWriteGuard<'a, T>where A: 'a;
 
     fn lockable_order(&self) -> LockableOrder {
         self.order
     }
 
-    fn lockable_decode_sync_ref(&self) -> Self::RwLockReadGuard {
+    fn lockable_decode_sync_ref(&self) -> Self::RwLockReadGuard<'_> {
         self.data.blocking_read()
     }
 
-    fn lockable_decode_sync_ref_mut(&self) -> Self::RwLockWriteGuard {
+    fn lockable_decode_sync_ref_mut(&self) -> Self::RwLockWriteGuard<'_> {
         self.data.blocking_write()
     }
 
     fn lockable_decode_async_ref<'a>(
         &'a self,
-    ) -> Pin<Box<dyn Future<Output = Self::RwLockReadGuard> + Send + 'a>>
+    ) -> Pin<Box<dyn Future<Output = Self::RwLockReadGuard<'_>> + Send + 'a>>
     where
         Self: Sync + 'a,
     {
@@ -31,7 +31,7 @@ impl<T, A: BaseArc<RustAutoOpaqueInner<T>>> Lockable for RustOpaqueBase<RustAuto
 
     fn lockable_decode_async_ref_mut<'a>(
         &'a self,
-    ) -> Pin<Box<dyn Future<Output = Self::RwLockWriteGuard> + Send + 'a>>
+    ) -> Pin<Box<dyn Future<Output = Self::RwLockWriteGuard<'_>> + Send + 'a>>
     where
         Self: Sync + 'a,
     {
