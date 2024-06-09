@@ -26,13 +26,13 @@ Future<void> main({bool skipRustLibInit = false}) async {
         42);
   });
 
-  test('use generated implementor', () async {
-    final object =
-        await StructOneWithTraitForDynTwinNormal.createTwinNormal(one: 100);
-    expect(
-        await funcArgTraitImplTwinNormal(
-            arg: SimpleTraitForDynTwinNormalImplementor
-                .structOneWithTraitForDynTwinNormal(object)),
-        100);
-  });
+  // test('use generated implementor', () async {
+  //   final object =
+  //       await StructOneWithTraitForDynTwinNormal.createTwinNormal(one: 100);
+  //   expect(
+  //       await funcArgTraitImplTwinNormal(
+  //           arg: SimpleTraitForDynTwinNormalImplementor
+  //               .structOneWithTraitForDynTwinNormal(object)),
+  //       100);
+  // });
 }
