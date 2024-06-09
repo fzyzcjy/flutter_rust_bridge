@@ -409,7 +409,7 @@ pub(crate) const FUNC_PREFIX_FRB_INTERNAL_NO_IMPL: &str = "frb_internal_no_impl"
 
 fn compute_impl_mode(
     is_owner_trait_def: bool,
-    func_name: &String,
+    func_name: &str,
     attributes: &FrbAttributes,
     output: &MirFuncOutput,
 ) -> MirFuncImplMode {
