@@ -24,10 +24,20 @@ pub(crate) fn generate(
         format!("RustAutoOpaque<{}>", variant.ty_name)
     });
     let code_lockable_impl = generate_code_lockable_impl(enum_name, support_mut, variants);
-    let code_read_guard =
-        generate_code_read_write_guard(enum_name, deref_target, ReadWrite::Read, variants);
-    let code_write_guard =
-        generate_code_read_write_guard(enum_name, deref_target, ReadWrite::Write, variants);
+    let code_read_guard = generate_code_read_write_guard(
+        enum_name,
+        deref_target,
+        support_mut,
+        ReadWrite::Read,
+        variants,
+    );
+    let code_write_guard = generate_code_read_write_guard(
+        enum_name,
+        deref_target,
+        support_mut,
+        ReadWrite::Write,
+        variants,
+    );
 
     Ok(vec![
         InjectExtraCodeBlock {
@@ -162,6 +172,7 @@ enum ReadWrite {
 fn generate_code_read_write_guard(
     enum_name: &str,
     deref_target: &str,
+    support_mut: bool,
     rw: ReadWrite,
     variants: &[VariantInfo],
 ) -> String {
@@ -189,7 +200,11 @@ fn generate_code_read_write_guard(
     );
 
     let maybe_deref_mut_code = if rw == ReadWrite::Write {
-        let body = generate_match_raw(variants, |_| "inner.deref_mut()".to_owned());
+        let body = if support_mut {
+            generate_match_raw(variants, |_| "inner.deref_mut()".to_owned())
+        } else {
+            "unreachable!()".to_owned()
+        };
         format!(
             "
             impl std::ops::DerefMut for {enum_name}<'_> {{
