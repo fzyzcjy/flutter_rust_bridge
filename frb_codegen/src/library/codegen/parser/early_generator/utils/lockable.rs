@@ -10,8 +10,11 @@ pub(crate) struct VariantInfo {
     pub enum_variant_name: String,
 }
 
-pub(crate) fn generate(variants: &[VariantInfo]) -> anyhow::Result<Vec<InjectExtraCodeBlock>> {
-    let code_impl = generate_code_impl(variants);
+pub(crate) fn generate(
+    enum_name: &str,
+    variants: &[VariantInfo],
+) -> anyhow::Result<Vec<InjectExtraCodeBlock>> {
+    let code_impl = generate_code_impl(enum_name, variants);
     let code_read_guard = generate_code_read_write_guard(ReadWrite::Read, variants);
     let code_write_guard = generate_code_read_write_guard(ReadWrite::Write, variants);
 
@@ -32,8 +35,7 @@ pub(crate) fn generate(variants: &[VariantInfo]) -> anyhow::Result<Vec<InjectExt
     }])
 }
 
-fn generate_code_impl(variants: &[VariantInfo]) -> String {
-    let enum_name = format!("{trait_def_name}Implementor");
+fn generate_code_impl(enum_name: &str, variants: &[VariantInfo]) -> String {
     let enum_def = generate_enum_raw(variants, &enum_name, |ty| format!("RustAutoOpaque<{ty}>"));
 
     let blocking_read_body = generate_match_raw(variants, |ty| {

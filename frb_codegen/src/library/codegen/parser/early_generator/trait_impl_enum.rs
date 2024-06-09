@@ -46,6 +46,7 @@ fn generate_trait_impl_enum(
     all_trait_impls: &[MirTraitImpl],
 ) -> anyhow::Result<Vec<InjectExtraCodeBlock>> {
     let trait_def_name = &hir_trait.name.name;
+    let enum_name = format!("{trait_def_name}Implementor");
 
     let interest_trait_impls = (all_trait_impls.iter())
         .filter(|x| x.trait_ty.name == hir_trait.name)
@@ -59,7 +60,7 @@ fn generate_trait_impl_enum(
         })
         .collect_vec();
 
-    let code = lockable::generate(&variants);
+    let code = lockable::generate(&enum_name, &variants);
 
     Ok(vec![InjectExtraCodeBlock {
         code,
