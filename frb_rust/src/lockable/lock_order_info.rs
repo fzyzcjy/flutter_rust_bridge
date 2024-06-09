@@ -1,5 +1,7 @@
-pub struct RustAutoOpaqueLockOrderInfo {
+use crate::lockable::lockable_order::LockableOrder;
+
+pub struct LockableOrderInfo {
     index: usize,
     mutable: bool,
-    object_order: RustAutoOpaqueOrder,
+    object_order: LockableOrder,
 }

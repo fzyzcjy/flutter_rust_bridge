@@ -1,9 +1,12 @@
 use std::pin::Pin;
+use crate::lockable::lockable_order::LockableOrder;
 
 // Only for generated code, not for normal users
 pub trait Lockable {
     type RwLockReadGuard;
     type RwLockWriteGuard;
+
+    fn lockable_order(&self) -> LockableOrder;
 
     fn lockable_decode_sync_ref(&self) -> Self::RwLockReadGuard;
 
