@@ -1,5 +1,5 @@
 use std::pin::Pin;
-use crate::lockable::lockable_order::LockableOrder;
+use crate::lockable::order::LockableOrder;
 
 // Only for generated code, not for normal users
 pub trait Lockable {
