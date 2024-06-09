@@ -1,12 +1,14 @@
+use itertools::Itertools;
 use crate::codegen::generator::api_dart::spec_generator::class::proxy_variant;
 
-pub(super) fn generate_encode_to_enum(enum_name: &str) -> String {
-    let variants = (mir.variants.iter().enumerate())
-        .map(|(index, variant)| {
-            let variant_dart_extra_type = proxy_variant::compute_dart_extra_type(variant, context);
+pub(super) fn generate_encode_to_enum(enum_name: &str, variants: &[VariantInfo]) -> String {
+    let variants = (variants.iter())
+        .map(|variant| {
+            let ty_name = &variant.ty_name;
+            let enum_variant_name = &variant.enum_variant_name;
             format!(
-                "if (self is {variant_dart_extra_type}) {{
-                    return {enum_name}.variant{index}(self._upstream);
+                "if (self is {ty_name}) {{
+                    return {enum_name}.{enum_variant_name}(self._upstream);
                 }}
                 "
             )
@@ -21,4 +23,9 @@ pub(super) fn generate_encode_to_enum(enum_name: &str) -> String {
         }})()
         "
     )
+}
+
+pub(crate) struct VariantInfo {
+    pub enum_variant_name: String,
+    pub ty_name: String,
 }
