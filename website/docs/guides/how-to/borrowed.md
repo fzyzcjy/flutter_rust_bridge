@@ -25,3 +25,8 @@ struct MyStruct {
 
 As a side remark, if you want to expose that field to Dart side in opaque struct,
 you can also wrap as `RustAutoOpaque<Another>`.
+
+## Clone
+
+Yet another way is to simply clone related things when returned, instead of returning a reference.
+This is especially reasonable when the resource being cloned is not heavy.

@@ -17,3 +17,9 @@ Rust macros can often be helpful.
 There can be things that are hard to automatically translate (e.g. complex lifetime specifiers, complex generics, ...),
 and I suggest to put `#[frb(ignore)]` on them firstly to quickly get a working translation of the third party package.
 After that, we can remove the `ignore`s and handle them (e.g. by [overriding methods](override-methods)).
+
+## Using proxies
+
+The [proxy](../../miscellaneous/proxy) feature can be utilized when we need to return a reference type,
+especially when returning something like the reference to a struct field.
+Please refer to that page for more details.
