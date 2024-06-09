@@ -13,6 +13,7 @@ pub(crate) fn parse(
     config: &ParserMirInternalConfig,
     ir_pack: &IrEarlyGeneratorPack,
     dumper: &Dumper,
+    parse_mode: ParseMode,
 ) -> anyhow::Result<MirPack> {
     let pack = parser::parse(config, ir_pack)?;
     dumper.dump("1_parse_pack.json", &pack)?;
@@ -24,4 +25,10 @@ pub(crate) fn parse(
     // dump(dumper, "3_dyn_trait_inner_transformer", &pack)?;
 
     Ok(pack)
+}
+
+#[derive(Debug, Clone, Copy, Eq, PartialEq, Hash)]
+pub(crate) enum ParseMode {
+    Early,
+    Normal,
 }
