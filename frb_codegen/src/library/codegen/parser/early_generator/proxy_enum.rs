@@ -74,7 +74,7 @@ fn generate_proxy_enum(proxy_variants: &[&MirTypeDelegateProxyVariant]) -> Strin
         })
         .join("");
 
-    let impl_lockable = generate_impl_lockable();
+    let impl_lockable = generate_impl_lockable(enum_name);
 
     format!(
         "
@@ -89,25 +89,23 @@ fn generate_proxy_enum(proxy_variants: &[&MirTypeDelegateProxyVariant]) -> Strin
     )
 }
 
-fn generate_impl_lockable() -> String {
+fn generate_impl_lockable(enum_name: &str) -> String {
     format!(
         "
-        impl<T: Send + Sync, A: BaseArc<RustAutoOpaqueInner<T>>> Lockable
-            for RustOpaqueBase<RustAutoOpaqueInner<T>, A>
-        {{
-            type RwLockReadGuard<'a> = crate::rust_async::RwLockReadGuard<'a, T> where A: 'a;
-            type RwLockWriteGuard<'a> = crate::rust_async::RwLockWriteGuard<'a, T>where A: 'a;
+        impl Lockable for {enum_name} {{
+            type RwLockReadGuard<'a> = TODO;
+            type RwLockWriteGuard<'a> = TODO;
 
             fn lockable_order(&self) -> LockableOrder {{
-                self.order
+                TODO
             }}
 
             fn lockable_decode_sync_ref(&self) -> Self::RwLockReadGuard<'_> {{
-                self.data.blocking_read()
+                TODO
             }}
 
             fn lockable_decode_sync_ref_mut(&self) -> Self::RwLockWriteGuard<'_> {{
-                self.data.blocking_write()
+                TODO
             }}
 
             fn lockable_decode_async_ref<'a>(
@@ -116,7 +114,7 @@ fn generate_impl_lockable() -> String {
             where
                 Self: Sync + 'a,
             {{
-                Box::pin(async move {{ self.data.read().await }})
+                Box::pin(async move {{ TODO }})
             }}
 
             fn lockable_decode_async_ref_mut<'a>(
@@ -125,7 +123,7 @@ fn generate_impl_lockable() -> String {
             where
                 Self: Sync + 'a,
             {{
-                Box::pin(async move {{ self.data.write().await }})
+                Box::pin(async move {{ TODO }})
             }}
         }
         "
