@@ -18,13 +18,10 @@ pub(super) fn run(
          This might cause errors if your api contains macros or complex mods."
     );
 
-    // This will stop the whole generator and tell the users, so we do not care about testing it
-    // frb-coverage:ignore-start
     ensure!(
         interest_crate_name.is_none(),
         "When parsing third party crates, need to use cargo-expand"
     );
-    // frb-coverage:ignore-end
 
     parse_file(&rust_crate_dir.join("src/lib.rs"))
 }

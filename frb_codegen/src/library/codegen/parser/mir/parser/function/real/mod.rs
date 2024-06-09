@@ -86,19 +86,22 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         ) {
             Ok(output) => Ok(output),
             Err(err) => {
+                // This will stop the whole generator and tell the users, so we do not care about testing it
+                // frb-coverage:ignore-start
                 if stop_on_error {
                     Err(err.context(format!(
                         "parse_function halt since stop_on_error=true and see error (function={})",
                         serde_json::to_string(func).unwrap(),
                     )))
                 } else {
-                    log::debug!(
+                    debug!(
                         "parse_function see error and skip function: function={:?} error={:?}",
                         func.item_fn.name(),
                         err
                     );
                     Ok(create_output_skip(func, MirSkipReason::Err))
                 }
+                // frb-coverage:ignore-end
             }
         }
     }

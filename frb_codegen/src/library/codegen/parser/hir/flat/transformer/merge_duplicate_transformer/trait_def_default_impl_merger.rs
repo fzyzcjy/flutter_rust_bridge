@@ -34,6 +34,8 @@ impl BaseMerger for TraitDefDefaultImplMerger {
         None
     }
 
+    // Does not care about this empty impl, since it does nothing
+    // frb-coverage:ignore-start
     fn merge_traits(
         &self,
         _base: &HirFlatTrait,
@@ -41,4 +43,5 @@ impl BaseMerger for TraitDefDefaultImplMerger {
     ) -> Option<HirFlatTrait> {
         None
     }
+    // frb-coverage:ignore-end
 }
