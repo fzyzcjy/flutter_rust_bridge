@@ -18,32 +18,38 @@ pub(crate) fn generate(
     enum_name: &str,
     variants: &[VariantInfo],
 ) -> anyhow::Result<Vec<InjectExtraCodeBlock>> {
-    let code_impl = generate_code_impl(enum_name, variants);
+    let code_enum_def = generate_enum_raw(variants, &enum_name, |variant| {
+        format!("RustAutoOpaque<{}>", variant.ty_name)
+    });
+    let code_lockable_impl = generate_code_lockable_impl(enum_name, variants);
     let code_read_guard = generate_code_read_write_guard(enum_name, ReadWrite::Read, variants);
     let code_write_guard = generate_code_read_write_guard(enum_name, ReadWrite::Write, variants);
 
-    let code = format!(
-        "{code_impl}
+    Ok(vec![
+        InjectExtraCodeBlock {
+            code: format!(
+                "{code_enum_def}
 
-        {code_read_guard}
+                {code_read_guard}
 
-        {code_write_guard}
+                {code_write_guard}
 
-        pub fn {FUNC_PREFIX_FRB_INTERNAL_NO_IMPL}_dummy_function_{enum_name}(a: {enum_name}) {{ }}
-        "
-    );
-
-    Ok(vec![InjectExtraCodeBlock {
-        code,
-        should_parse: true,
-    }])
+                pub fn {FUNC_PREFIX_FRB_INTERNAL_NO_IMPL}_dummy_function_{enum_name}(a: {enum_name}) {{ }}
+                "
+            ),
+            should_parse: true,
+        },
+        InjectExtraCodeBlock {
+            code: format!(
+                "{code_lockable_impl}
+                "
+            ),
+            should_parse: false,
+        }
+    ])
 }
 
-fn generate_code_impl(enum_name: &str, variants: &[VariantInfo]) -> String {
-    let enum_def = generate_enum_raw(variants, &enum_name, |variant| {
-        format!("RustAutoOpaque<{}>", variant.ty_name)
-    });
-
+fn generate_code_lockable_impl(enum_name: &str, variants: &[VariantInfo]) -> String {
     let blocking_read_body = generate_match_raw(variants, |variant| {
         format!(
             "{enum_name}RwLockReadGuard::{}(inner.blocking_read())",
@@ -58,8 +64,7 @@ fn generate_code_impl(enum_name: &str, variants: &[VariantInfo]) -> String {
     });
 
     format!(
-        "{enum_def}
-
+        "
         impl {enum_name} {{
             #[flutter_rust_bridge::frb(ignore)]
             pub fn blocking_read(&self) -> {enum_name}RwLockReadGuard {{
