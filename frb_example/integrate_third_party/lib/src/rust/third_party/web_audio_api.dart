@@ -3,6 +3,7 @@
 
 // ignore_for_file: invalid_use_of_internal_member, unused_import, unnecessary_import
 
+import '../api/override_web_audio_api.dart';
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'web_audio_api/node.dart';
@@ -74,7 +75,8 @@ abstract class AudioBuffer implements RustOpaqueInterface {
 abstract class AudioListener implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioParam>>
-abstract class AudioParam implements RustOpaqueInterface, AudioNode {
+abstract class AudioParam
+    implements RustOpaqueInterface, AudioNode, AudioParamExt {
   /// Current value of the automation rate of the AudioParam
   Future<AutomationRate> automationRate();
 
@@ -142,6 +144,8 @@ abstract class AudioParam implements RustOpaqueInterface, AudioNode {
   /// - `end_time` is negative
   Future<void> exponentialRampToValueAtTime(
       {required double value, required double endTime});
+
+  Future<void> connect();
 
   /// Schedules a linear continuous change in parameter value from the
   /// previous scheduled parameter value to the given value.

@@ -4,7 +4,29 @@
 // Section: imports
 
 use super::*;
+use crate::api::override_web_audio_api::AnalyserNodeExt;
+use crate::api::override_web_audio_api::AudioBufferSourceNodeExt;
 use crate::api::override_web_audio_api::AudioContextExt;
+use crate::api::override_web_audio_api::AudioDestinationNodeExt;
+use crate::api::override_web_audio_api::AudioParamExt;
+use crate::api::override_web_audio_api::BiquadFilterNodeExt;
+use crate::api::override_web_audio_api::ChannelMergerNodeExt;
+use crate::api::override_web_audio_api::ChannelSplitterNodeExt;
+use crate::api::override_web_audio_api::ConstantSourceNodeExt;
+use crate::api::override_web_audio_api::ConvolverNodeExt;
+use crate::api::override_web_audio_api::DelayNodeExt;
+use crate::api::override_web_audio_api::DynamicsCompressorNodeExt;
+use crate::api::override_web_audio_api::GainNodeExt;
+use crate::api::override_web_audio_api::IIRFilterNodeExt;
+use crate::api::override_web_audio_api::MediaElementAudioSourceNodeExt;
+use crate::api::override_web_audio_api::MediaStreamAudioDestinationNodeExt;
+use crate::api::override_web_audio_api::MediaStreamAudioSourceNodeExt;
+use crate::api::override_web_audio_api::MediaStreamTrackAudioSourceNodeExt;
+use crate::api::override_web_audio_api::OscillatorNodeExt;
+use crate::api::override_web_audio_api::PannerNodeExt;
+use crate::api::override_web_audio_api::ScriptProcessorNodeExt;
+use crate::api::override_web_audio_api::StereoPannerNodeExt;
+use crate::api::override_web_audio_api::WaveShaperNodeExt;
 use crate::api::simple::*;
 use flutter_rust_bridge::for_generated::byteorder::{NativeEndian, ReadBytesExt, WriteBytesExt};
 use flutter_rust_bridge::for_generated::{transform_result_dco, Lockable};

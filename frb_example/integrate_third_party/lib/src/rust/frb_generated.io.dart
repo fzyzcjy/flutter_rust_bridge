@@ -860,10 +860,24 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   String dco_decode_String(dynamic raw);
 
   @protected
+  AnalyserNodeExt dco_decode_TraitDef_AnalyserNodeExt(dynamic raw);
+
+  @protected
+  AudioBufferSourceNodeExt dco_decode_TraitDef_AudioBufferSourceNodeExt(
+      dynamic raw);
+
+  @protected
   AudioContextExt dco_decode_TraitDef_AudioContextExt(dynamic raw);
 
   @protected
+  AudioDestinationNodeExt dco_decode_TraitDef_AudioDestinationNodeExt(
+      dynamic raw);
+
+  @protected
   AudioNode dco_decode_TraitDef_AudioNode(dynamic raw);
+
+  @protected
+  AudioParamExt dco_decode_TraitDef_AudioParamExt(dynamic raw);
 
   @protected
   AudioScheduledSourceNode dco_decode_TraitDef_AudioScheduledSourceNode(
@@ -874,6 +888,67 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   BaseAudioContext dco_decode_TraitDef_BaseAudioContext(dynamic raw);
+
+  @protected
+  BiquadFilterNodeExt dco_decode_TraitDef_BiquadFilterNodeExt(dynamic raw);
+
+  @protected
+  ChannelMergerNodeExt dco_decode_TraitDef_ChannelMergerNodeExt(dynamic raw);
+
+  @protected
+  ChannelSplitterNodeExt dco_decode_TraitDef_ChannelSplitterNodeExt(
+      dynamic raw);
+
+  @protected
+  ConstantSourceNodeExt dco_decode_TraitDef_ConstantSourceNodeExt(dynamic raw);
+
+  @protected
+  ConvolverNodeExt dco_decode_TraitDef_ConvolverNodeExt(dynamic raw);
+
+  @protected
+  DelayNodeExt dco_decode_TraitDef_DelayNodeExt(dynamic raw);
+
+  @protected
+  DynamicsCompressorNodeExt dco_decode_TraitDef_DynamicsCompressorNodeExt(
+      dynamic raw);
+
+  @protected
+  GainNodeExt dco_decode_TraitDef_GainNodeExt(dynamic raw);
+
+  @protected
+  IIRFilterNodeExt dco_decode_TraitDef_IIRFilterNodeExt(dynamic raw);
+
+  @protected
+  MediaElementAudioSourceNodeExt
+      dco_decode_TraitDef_MediaElementAudioSourceNodeExt(dynamic raw);
+
+  @protected
+  MediaStreamAudioDestinationNodeExt
+      dco_decode_TraitDef_MediaStreamAudioDestinationNodeExt(dynamic raw);
+
+  @protected
+  MediaStreamAudioSourceNodeExt
+      dco_decode_TraitDef_MediaStreamAudioSourceNodeExt(dynamic raw);
+
+  @protected
+  MediaStreamTrackAudioSourceNodeExt
+      dco_decode_TraitDef_MediaStreamTrackAudioSourceNodeExt(dynamic raw);
+
+  @protected
+  OscillatorNodeExt dco_decode_TraitDef_OscillatorNodeExt(dynamic raw);
+
+  @protected
+  PannerNodeExt dco_decode_TraitDef_PannerNodeExt(dynamic raw);
+
+  @protected
+  ScriptProcessorNodeExt dco_decode_TraitDef_ScriptProcessorNodeExt(
+      dynamic raw);
+
+  @protected
+  StereoPannerNodeExt dco_decode_TraitDef_StereoPannerNodeExt(dynamic raw);
+
+  @protected
+  WaveShaperNodeExt dco_decode_TraitDef_WaveShaperNodeExt(dynamic raw);
 
   @protected
   AudioBufferOptions dco_decode_audio_buffer_options(dynamic raw);
