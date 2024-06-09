@@ -4,8 +4,8 @@ use crate::codegen::generator::codec::sse::encode_to_enum;
 use crate::codegen::generator::codec::sse::lang::*;
 use crate::codegen::generator::codec::sse::ty::*;
 use crate::codegen::ir::mir::ty::delegate::{
-    MirTypeDelegatePrimitiveEnum, MirTypeDelegateProxyEnum, MirTypeDelegateSet,
-    MirTypeDelegateStreamSink, MirTypeDelegateTime,
+    MirTypeDelegateDynTrait, MirTypeDelegatePrimitiveEnum, MirTypeDelegateProxyEnum,
+    MirTypeDelegateSet, MirTypeDelegateStreamSink, MirTypeDelegateTime,
 };
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use convert_case::{Case, Casing};
@@ -308,7 +308,7 @@ fn generate_proxy_enum_dart_encode(
 }
 
 fn generate_dyn_trait_dart_encode(
-    mir: &MirTypeDelegateProxyEnum,
+    mir: &MirTypeDelegateDynTrait,
     context: ApiDartGeneratorContext,
 ) -> String {
     let enum_name = mir.proxy_enum_name();
