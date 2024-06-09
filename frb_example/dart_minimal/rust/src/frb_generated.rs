@@ -126,7 +126,9 @@ impl Lockable
 
     fn lockable_order(&self) -> flutter_rust_bridge::for_generated::LockableOrder {
         match self {
-            Self::Variant0(inner) => inner.lockable_order(),
+            Self::Variant0(inner) => {
+                flutter_rust_bridge::for_generated::rust_auto_opaque_lockable_order(inner)
+            }
         }
     }
 
