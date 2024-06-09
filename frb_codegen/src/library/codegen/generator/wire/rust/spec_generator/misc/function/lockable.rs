@@ -77,6 +77,10 @@ fn generate_decode_statement(
     )
 }
 
+fn get_variable_name(field: &MirFuncInput) -> &str {
+    field.inner.name.rust_style()
+}
+
 fn filter_interest_fields(func: &MirFunc) -> Vec<(&MirFuncInput, OwnershipMode)> {
     (func.inputs.iter())
         .filter_map(|field| match &field.inner.ty {
@@ -86,8 +90,4 @@ fn filter_interest_fields(func: &MirFunc) -> Vec<(&MirFuncInput, OwnershipMode)>
             _ => None,
         })
         .collect_vec()
-}
-
-fn get_variable_name(field: &MirFuncInput) -> &str {
-    field.inner.name.rust_style()
 }
