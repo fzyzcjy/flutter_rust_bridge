@@ -104,11 +104,17 @@ impl Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAu
     }
 
     pub async fn read(&self) -> Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnumRwLockReadGuard{
-        TODO
+        match self {
+            Self::Variant0(inner) => Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnumRwLockReadGuard::Variant0(inner.read().await),
+
+        }
     }
 
     pub async fn write(&mut self) -> Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnumRwLockWriteGuard{
-        TODO
+        match self {
+            Self::Variant0(inner) => Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnumRwLockWriteGuard::Variant0(inner.write().await),
+
+        }
     }
 }
 
@@ -119,7 +125,9 @@ impl Lockable
     type RwLockWriteGuard<'a> = Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnumRwLockWriteGuard<'a>;
 
     fn lockable_order(&self) -> LockableOrder {
-        TODO
+        match self {
+            Self::Variant0(inner) => inner.lockable_order(),
+        }
     }
 
     fn lockable_decode_sync_ref(&self) -> Self::RwLockReadGuard<'_> {
