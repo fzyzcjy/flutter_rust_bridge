@@ -31,7 +31,7 @@ pub enum MirTypeDelegate {
     RustAutoOpaqueExplicit(MirTypeDelegateRustAutoOpaqueExplicit),
     ProxyVariant(MirTypeDelegateProxyVariant),
     ProxyEnum(MirTypeDelegateProxyEnum),
-    // DynTrait(MirTypeDelegateDynTrait),
+    DynTrait(MirTypeDelegateDynTrait),
 }
 
 pub struct MirTypeDelegateArray {
@@ -97,9 +97,9 @@ pub struct MirTypeDelegateProxyEnum {
     pub variants: Vec<MirTypeDelegateProxyVariant>,
 }
 
-// pub struct MirTypeDelegateDynTrait {
-//     pub trait_def_name: NamespacedName,
-// }
+pub struct MirTypeDelegateDynTrait {
+    pub trait_def_name: NamespacedName,
+}
 }
 
 impl MirTypeTrait for MirTypeDelegate {
@@ -342,26 +342,26 @@ impl MirTypeDelegateProxyEnum {
     }
 }
 
-// impl MirTypeDelegateDynTrait {
-//     pub fn inner(&self) -> MirType {
-//         MirType::EnumRef(self.inner_raw())
-//     }
-//
-//     pub fn inner_raw(&self) -> MirTypeEnumRef {
-//         MirTypeEnumRef {
-//             ident: MirEnumIdent(NamespacedName::new(
-//                 self.trait_def_name.namespace.clone(),
-//                 self.inner_enum_name(),
-//             )),
-//             is_exception: false,
-//         }
-//     }
-//
-//     pub(crate) fn inner_enum_name(&self) -> String {
-//         format!("{}DynImplEnum", self.trait_def_name.name)
-//     }
-//
-//     pub(crate) fn safe_ident(&self) -> String {
-//         format!("DynTrait_{}", self.trait_def_name.name)
-//     }
-// }
+impl MirTypeDelegateDynTrait {
+    pub fn inner(&self) -> MirType {
+        MirType::EnumRef(self.inner_raw())
+    }
+
+    pub fn inner_raw(&self) -> MirTypeEnumRef {
+        MirTypeEnumRef {
+            ident: MirEnumIdent(NamespacedName::new(
+                self.trait_def_name.namespace.clone(),
+                self.inner_enum_name(),
+            )),
+            is_exception: false,
+        }
+    }
+
+    pub(crate) fn inner_enum_name(&self) -> String {
+        format!("{}DynImplEnum", self.trait_def_name.name)
+    }
+
+    pub(crate) fn safe_ident(&self) -> String {
+        format!("DynTrait_{}", self.trait_def_name.name)
+    }
+}
