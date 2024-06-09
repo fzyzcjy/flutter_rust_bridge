@@ -4,6 +4,7 @@ use crate::codegen::generator::api_dart::spec_generator::base::{
 use crate::codegen::ir::mir::func::MirFuncMode;
 use crate::codegen::ir::mir::ty::delegate::MirTypeDelegateProxyVariant;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
+use convert_case::{Case, Casing};
 
 pub(crate) fn compute_func_implementation(
     ir: &MirTypeDelegateProxyVariant,
@@ -25,7 +26,9 @@ pub(crate) fn compute_dart_extra_type(
     let upstream_dart_api_type =
         ApiDartGenerator::new(ir.upstream.clone(), context).dart_api_type();
     format!(
-        "{}ProxyVariant{}",
-        inner_dart_api_type, upstream_dart_api_type
+        "{}ProxyVariant{}{}",
+        inner_dart_api_type,
+        upstream_dart_api_type,
+        ir.upstream_method_name.to_case(Case::Pascal),
     )
 }

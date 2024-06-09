@@ -610,7 +610,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_my_audio_param_twin_normal_proxy_enum(
         (() {
-      if (self is MyAudioParamTwinNormalProxyVariantMyNodeTwinNormal) {
+      if (self
+          is MyAudioParamTwinNormalProxyVariantMyNodeTwinNormalParamOneTwinNormal) {
         return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum
             .variant0(self._upstream);
       }
@@ -777,19 +778,22 @@ class MyNodeTwinNormalImpl extends RustOpaque implements MyNodeTwinNormal {
         .instance.api.rust_arc_decrement_strong_count_MyNodeTwinNormalPtr,
   );
 
-  Future<MyAudioParamTwinNormal> paramOneTwinNormal() =>
-      Future.value(MyAudioParamTwinNormalProxyVariantMyNodeTwinNormal(this));
+  Future<MyAudioParamTwinNormal> paramOneTwinNormal() => Future.value(
+      MyAudioParamTwinNormalProxyVariantMyNodeTwinNormalParamOneTwinNormal(
+          this));
 
-  Future<MyAudioParamTwinNormal> paramTwoTwinNormal() =>
-      Future.value(MyAudioParamTwinNormalProxyVariantMyNodeTwinNormal(this));
+  Future<MyAudioParamTwinNormal> paramTwoTwinNormal() => Future.value(
+      MyAudioParamTwinNormalProxyVariantMyNodeTwinNormalParamTwoTwinNormal(
+          this));
 }
 
-class MyAudioParamTwinNormalProxyVariantMyNodeTwinNormal
+class MyAudioParamTwinNormalProxyVariantMyNodeTwinNormalParamOneTwinNormal
     with SimpleDisposable
     implements MyAudioParamTwinNormal {
   final MyNodeTwinNormal _upstream;
 
-  MyAudioParamTwinNormalProxyVariantMyNodeTwinNormal(this._upstream);
+  MyAudioParamTwinNormalProxyVariantMyNodeTwinNormalParamOneTwinNormal(
+      this._upstream);
 
   Future<String> myMethodTwinNormal() => RustLib.instance.api
           .crateApiMinimalMyAudioParamTwinNormalMyMethodTwinNormal(
