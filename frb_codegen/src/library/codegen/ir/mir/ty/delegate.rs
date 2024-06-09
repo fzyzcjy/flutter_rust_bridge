@@ -366,16 +366,16 @@ impl MirTypeDelegateProxyEnum {
 
 impl MirTypeDelegateDynTrait {
     pub fn get_delegate(&self) -> MirType {
-        if self.dummy_delegate {
-            MirType::Primitive(MirTypePrimitive::Unit)
-        } else {
+        if let Some(data) = &self.data {
             MirType::EnumRef(MirTypeEnumRef {
                 ident: MirEnumIdent(NamespacedName::new(
-                    self.delegate_namespace.clone(),
+                    data.delegate_namespace.clone(),
                     self.delegate_enum_name(),
                 )),
                 is_exception: false,
             })
+        } else {
+            MirType::Primitive(MirTypePrimitive::Unit)
         }
     }
 
@@ -385,5 +385,9 @@ impl MirTypeDelegateDynTrait {
 
     pub(crate) fn safe_ident(&self) -> String {
         format!("DynTrait_{}", self.trait_def_name.name)
+    }
+
+    pub(crate) fn data(&self) -> &MirTypeDelegateDynTraitData {
+        self.data.as_ref().unwrap()
     }
 }

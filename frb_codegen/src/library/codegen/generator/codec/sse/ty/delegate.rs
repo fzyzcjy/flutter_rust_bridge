@@ -313,7 +313,7 @@ fn generate_dyn_trait_dart_encode(
 ) -> String {
     let enum_name = mir.delegate_enum_name();
 
-    let variants = (mir.variants.iter().enumerate())
+    let variants = (mir.data().variants.iter().enumerate())
         .map(|(index, variant)| encode_to_enum::VariantInfo {
             enum_variant_name: format!("variant{index}"),
             ty_name: ApiDartGenerator::new(variant.ty.clone(), context).dart_api_type(),
