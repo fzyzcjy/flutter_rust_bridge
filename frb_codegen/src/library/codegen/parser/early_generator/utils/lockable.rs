@@ -5,6 +5,7 @@ use crate::codegen::parser::hir::flat::extra_code_injector::InjectExtraCodeBlock
 use crate::codegen::parser::mir::parser::function::real::FUNC_PREFIX_FRB_INTERNAL_NO_IMPL;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
+use std::env;
 use std::env::var;
 use strum_macros::Display;
 
@@ -18,8 +19,8 @@ pub(crate) fn generate(
     variants: &[VariantInfo],
 ) -> anyhow::Result<Vec<InjectExtraCodeBlock>> {
     let code_impl = generate_code_impl(enum_name, variants);
-    let code_read_guard = generate_code_read_write_guard(ReadWrite::Read, variants);
-    let code_write_guard = generate_code_read_write_guard(ReadWrite::Write, variants);
+    let code_read_guard = generate_code_read_write_guard(enum_name, ReadWrite::Read, variants);
+    let code_write_guard = generate_code_read_write_guard(enum_name, ReadWrite::Write, variants);
 
     let code = format!(
         "{code_impl}
@@ -45,13 +46,13 @@ fn generate_code_impl(enum_name: &str, variants: &[VariantInfo]) -> String {
 
     let blocking_read_body = generate_match_raw(variants, |variant| {
         format!(
-            "{trait_def_name}RwLockReadGuard::{}(inner.blocking_read())",
+            "{enum_name}RwLockReadGuard::{}(inner.blocking_read())",
             variant.enum_variant_name
         )
     });
     let blocking_write_body = generate_match_raw(variants, |variant| {
         format!(
-            "{trait_def_name}RwLockWriteGuard::{}(inner.blocking_write())",
+            "{enum_name}RwLockWriteGuard::{}(inner.blocking_write())",
             variant.enum_variant_name
         )
     });
@@ -79,7 +80,11 @@ enum ReadWrite {
     Write,
 }
 
-fn generate_code_read_write_guard(rw: ReadWrite, variants: &[VariantInfo]) -> String {
+fn generate_code_read_write_guard(
+    enum_name: &str,
+    rw: ReadWrite,
+    variants: &[VariantInfo],
+) -> String {
     let rw_pascal = rw.to_string().to_case(Case::Pascal);
 
     let enum_name = format!("{enum_name}RwLock{rw_pascal}Guard");
