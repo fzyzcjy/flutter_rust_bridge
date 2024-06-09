@@ -21,7 +21,7 @@ impl<T, A: BaseArc<RustAutoOpaqueInner<T>>> Lockable for RustOpaqueBase<RustAuto
     where
         Self: Sync + 'a,
     {
-        self.data.read().await
+        Box::pin(async move { self.data.read().await })
     }
 
     fn lockable_decode_async_ref_mut<'a>(
@@ -30,6 +30,6 @@ impl<T, A: BaseArc<RustAutoOpaqueInner<T>>> Lockable for RustOpaqueBase<RustAuto
     where
         Self: Sync + 'a,
     {
-        self.data.write().await
+        Box::pin(async move { self.data.write().await })
     }
 }
