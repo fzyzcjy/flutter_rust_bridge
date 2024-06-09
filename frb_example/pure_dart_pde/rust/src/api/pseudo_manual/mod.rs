@@ -57,6 +57,8 @@ pub mod primitive_list_misc_twin_rust_async;
 pub mod primitive_list_misc_twin_sync;
 pub mod primitive_misc_twin_rust_async;
 pub mod primitive_misc_twin_sync;
+pub mod proxy_twin_rust_async;
+pub mod proxy_twin_sync;
 pub mod raw_string_twin_rust_async;
 pub mod raw_string_twin_sync;
 pub mod rust_auto_opaque_twin_rust_async;

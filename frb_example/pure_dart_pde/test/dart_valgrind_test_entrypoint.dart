@@ -39,6 +39,7 @@ import 'api/optional_test.dart' as optional_test;
 import 'api/ownership_test.dart' as ownership_test;
 import 'api/primitive_list_misc_test.dart' as primitive_list_misc_test;
 import 'api/primitive_misc_test.dart' as primitive_misc_test;
+import 'api/proxy_test.dart' as proxy_test;
 import 'api/pseudo_manual/array_twin_rust_async_test.dart'
     as array_twin_rust_async_test;
 import 'api/pseudo_manual/array_twin_sync_test.dart' as array_twin_sync_test;
@@ -137,6 +138,9 @@ import 'api/pseudo_manual/primitive_misc_twin_rust_async_test.dart'
     as primitive_misc_twin_rust_async_test;
 import 'api/pseudo_manual/primitive_misc_twin_sync_test.dart'
     as primitive_misc_twin_sync_test;
+import 'api/pseudo_manual/proxy_twin_rust_async_test.dart'
+    as proxy_twin_rust_async_test;
+import 'api/pseudo_manual/proxy_twin_sync_test.dart' as proxy_twin_sync_test;
 import 'api/pseudo_manual/raw_string_twin_rust_async_test.dart'
     as raw_string_twin_rust_async_test;
 import 'api/pseudo_manual/raw_string_twin_sync_test.dart'
@@ -231,6 +235,7 @@ Future<void> callFileEntrypoints() async {
   await ownership_test.main(skipRustLibInit: true);
   await primitive_list_misc_test.main(skipRustLibInit: true);
   await primitive_misc_test.main(skipRustLibInit: true);
+  await proxy_test.main(skipRustLibInit: true);
   await array_twin_rust_async_test.main(skipRustLibInit: true);
   await array_twin_sync_test.main(skipRustLibInit: true);
   await attribute_twin_rust_async_test.main(skipRustLibInit: true);
@@ -285,6 +290,8 @@ Future<void> callFileEntrypoints() async {
   await primitive_list_misc_twin_sync_test.main(skipRustLibInit: true);
   await primitive_misc_twin_rust_async_test.main(skipRustLibInit: true);
   await primitive_misc_twin_sync_test.main(skipRustLibInit: true);
+  await proxy_twin_rust_async_test.main(skipRustLibInit: true);
+  await proxy_twin_sync_test.main(skipRustLibInit: true);
   await raw_string_twin_rust_async_test.main(skipRustLibInit: true);
   await raw_string_twin_sync_test.main(skipRustLibInit: true);
   await rust_auto_opaque_twin_rust_async_test.main(skipRustLibInit: true);

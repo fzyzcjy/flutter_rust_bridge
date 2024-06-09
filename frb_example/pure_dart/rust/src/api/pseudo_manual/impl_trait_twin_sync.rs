@@ -81,8 +81,7 @@ impl SimpleTraitForDynTwinSync for StructTwoWithTraitForDynTwinSync {
     }
 }
 
-#[flutter_rust_bridge::frb(sync)]
-pub fn func_arg_trait_impl_twin_sync(arg: SimpleTraitForDynTwinSyncImplementor) -> i32 {
-    let arg = arg.blocking_read();
-    arg.simple_method_twin_sync()
-}
+// #[flutter_rust_bridge::frb(sync)] pub fn func_arg_trait_impl_twin_sync(arg: SimpleTraitForDynTwinSyncImplementor) -> i32 {
+//     let arg = arg.blocking_read();
+//     arg.simple_method_twin_sync()
+// }

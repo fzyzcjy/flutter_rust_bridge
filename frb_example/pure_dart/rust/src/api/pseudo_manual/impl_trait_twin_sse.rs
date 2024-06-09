@@ -81,8 +81,7 @@ impl SimpleTraitForDynTwinSse for StructTwoWithTraitForDynTwinSse {
     }
 }
 
-#[flutter_rust_bridge::frb(serialize)]
-pub fn func_arg_trait_impl_twin_sse(arg: SimpleTraitForDynTwinSseImplementor) -> i32 {
-    let arg = arg.blocking_read();
-    arg.simple_method_twin_sse()
-}
+// #[flutter_rust_bridge::frb(serialize)] pub fn func_arg_trait_impl_twin_sse(arg: SimpleTraitForDynTwinSseImplementor) -> i32 {
+//     let arg = arg.blocking_read();
+//     arg.simple_method_twin_sse()
+// }

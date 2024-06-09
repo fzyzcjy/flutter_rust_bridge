@@ -23,7 +23,7 @@ pub(crate) fn generate(
 ) -> anyhow::Result<()> {
     // TODO temp disable
     return Ok(());
-    
+
     let extra_codes = (pack.hir_flat_pack.traits.iter())
         .filter(|x| {
             FrbAttributes::parse(&x.attrs)

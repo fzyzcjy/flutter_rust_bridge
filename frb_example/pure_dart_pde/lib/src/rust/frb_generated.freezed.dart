@@ -15,121 +15,148 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$SimpleTraitForDynTwinNormalImplementor {
-  Object get field0 => throw _privateConstructorUsedError;
+mixin _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum {
+  MyNodeTwinNormal get field0 => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(StructOneWithTraitForDynTwinNormal field0)
-        structOneWithTraitForDynTwinNormal,
-    required TResult Function(StructTwoWithTraitForDynTwinNormal field0)
-        structTwoWithTraitForDynTwinNormal,
+    required TResult Function(MyNodeTwinNormal field0) variant0,
+    required TResult Function(MyNodeTwinNormal field0) variant1,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(StructOneWithTraitForDynTwinNormal field0)?
-        structOneWithTraitForDynTwinNormal,
-    TResult? Function(StructTwoWithTraitForDynTwinNormal field0)?
-        structTwoWithTraitForDynTwinNormal,
+    TResult? Function(MyNodeTwinNormal field0)? variant0,
+    TResult? Function(MyNodeTwinNormal field0)? variant1,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(StructOneWithTraitForDynTwinNormal field0)?
-        structOneWithTraitForDynTwinNormal,
-    TResult Function(StructTwoWithTraitForDynTwinNormal field0)?
-        structTwoWithTraitForDynTwinNormal,
+    TResult Function(MyNodeTwinNormal field0)? variant0,
+    TResult Function(MyNodeTwinNormal field0)? variant1,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(
-            SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormal
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant0
                 value)
-        structOneWithTraitForDynTwinNormal,
+        variant0,
     required TResult Function(
-            SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormal
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant1
                 value)
-        structTwoWithTraitForDynTwinNormal,
+        variant1,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(
-            SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormal
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant0
                 value)?
-        structOneWithTraitForDynTwinNormal,
+        variant0,
     TResult? Function(
-            SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormal
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant1
                 value)?
-        structTwoWithTraitForDynTwinNormal,
+        variant1,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(
-            SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormal
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant0
                 value)?
-        structOneWithTraitForDynTwinNormal,
+        variant0,
     TResult Function(
-            SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormal
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant1
                 value)?
-        structTwoWithTraitForDynTwinNormal,
+        variant1,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnumCopyWith<
+          Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $SimpleTraitForDynTwinNormalImplementorCopyWith<$Res> {
-  factory $SimpleTraitForDynTwinNormalImplementorCopyWith(
-          SimpleTraitForDynTwinNormalImplementor value,
-          $Res Function(SimpleTraitForDynTwinNormalImplementor) then) =
-      _$SimpleTraitForDynTwinNormalImplementorCopyWithImpl<$Res,
-          SimpleTraitForDynTwinNormalImplementor>;
+abstract class $Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnumCopyWith<
+    $Res> {
+  factory $Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnumCopyWith(
+      Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum
+          value,
+      $Res Function(
+              Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum)
+          then) = _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnumCopyWithImpl<
+      $Res,
+      Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum>;
+  @useResult
+  $Res call({MyNodeTwinNormal field0});
 }
 
 /// @nodoc
-class _$SimpleTraitForDynTwinNormalImplementorCopyWithImpl<$Res,
-        $Val extends SimpleTraitForDynTwinNormalImplementor>
-    implements $SimpleTraitForDynTwinNormalImplementorCopyWith<$Res> {
-  _$SimpleTraitForDynTwinNormalImplementorCopyWithImpl(this._value, this._then);
+class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnumCopyWithImpl<
+        $Res,
+        $Val extends Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum>
+    implements
+        $Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnumCopyWith<
+            $Res> {
+  _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnumCopyWithImpl(
+      this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_value.copyWith(
+      field0: null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as MyNodeTwinNormal,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormalImplCopyWith<
-    $Res> {
-  factory _$$SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormalImplCopyWith(
-          _$SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormalImpl
+abstract class _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant0ImplCopyWith<
+        $Res>
+    implements
+        $Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnumCopyWith<
+            $Res> {
+  factory _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant0ImplCopyWith(
+          _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant0Impl
               value,
           $Res Function(
-                  _$SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormalImpl)
+                  _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant0Impl)
               then) =
-      __$$SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormalImplCopyWithImpl<
+      __$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant0ImplCopyWithImpl<
           $Res>;
+  @override
   @useResult
-  $Res call({StructOneWithTraitForDynTwinNormal field0});
+  $Res call({MyNodeTwinNormal field0});
 }
 
 /// @nodoc
-class __$$SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormalImplCopyWithImpl<
+class __$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant0ImplCopyWithImpl<
         $Res>
-    extends _$SimpleTraitForDynTwinNormalImplementorCopyWithImpl<$Res,
-        _$SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormalImpl>
+    extends _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnumCopyWithImpl<
+        $Res,
+        _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant0Impl>
     implements
-        _$$SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormalImplCopyWith<
+        _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant0ImplCopyWith<
             $Res> {
-  __$$SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormalImplCopyWithImpl(
-      _$SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormalImpl
+  __$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant0ImplCopyWithImpl(
+      _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant0Impl
           _value,
       $Res Function(
-              _$SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormalImpl)
+              _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant0Impl)
           _then)
       : super(_value, _then);
 
@@ -139,29 +166,29 @@ class __$$SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNor
     Object? field0 = null,
   }) {
     return _then(
-        _$SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormalImpl(
+        _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant0Impl(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
-              as StructOneWithTraitForDynTwinNormal,
+              as MyNodeTwinNormal,
     ));
   }
 }
 
 /// @nodoc
 
-class _$SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormalImpl
-    extends SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormal {
-  const _$SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormalImpl(
+class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant0Impl
+    extends Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant0 {
+  const _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant0Impl(
       this.field0)
       : super._();
 
   @override
-  final StructOneWithTraitForDynTwinNormal field0;
+  final MyNodeTwinNormal field0;
 
   @override
   String toString() {
-    return 'SimpleTraitForDynTwinNormalImplementor.structOneWithTraitForDynTwinNormal(field0: $field0)';
+    return 'Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum.variant0(field0: $field0)';
   }
 
   @override
@@ -169,7 +196,7 @@ class _$SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNorma
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other
-                is _$SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormalImpl &&
+                is _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant0Impl &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
@@ -179,46 +206,40 @@ class _$SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNorma
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormalImplCopyWith<
-          _$SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormalImpl>
+  _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant0ImplCopyWith<
+          _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant0Impl>
       get copyWith =>
-          __$$SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormalImplCopyWithImpl<
-                  _$SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormalImpl>(
+          __$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant0ImplCopyWithImpl<
+                  _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant0Impl>(
               this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(StructOneWithTraitForDynTwinNormal field0)
-        structOneWithTraitForDynTwinNormal,
-    required TResult Function(StructTwoWithTraitForDynTwinNormal field0)
-        structTwoWithTraitForDynTwinNormal,
+    required TResult Function(MyNodeTwinNormal field0) variant0,
+    required TResult Function(MyNodeTwinNormal field0) variant1,
   }) {
-    return structOneWithTraitForDynTwinNormal(field0);
+    return variant0(field0);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(StructOneWithTraitForDynTwinNormal field0)?
-        structOneWithTraitForDynTwinNormal,
-    TResult? Function(StructTwoWithTraitForDynTwinNormal field0)?
-        structTwoWithTraitForDynTwinNormal,
+    TResult? Function(MyNodeTwinNormal field0)? variant0,
+    TResult? Function(MyNodeTwinNormal field0)? variant1,
   }) {
-    return structOneWithTraitForDynTwinNormal?.call(field0);
+    return variant0?.call(field0);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(StructOneWithTraitForDynTwinNormal field0)?
-        structOneWithTraitForDynTwinNormal,
-    TResult Function(StructTwoWithTraitForDynTwinNormal field0)?
-        structTwoWithTraitForDynTwinNormal,
+    TResult Function(MyNodeTwinNormal field0)? variant0,
+    TResult Function(MyNodeTwinNormal field0)? variant1,
     required TResult orElse(),
   }) {
-    if (structOneWithTraitForDynTwinNormal != null) {
-      return structOneWithTraitForDynTwinNormal(field0);
+    if (variant0 != null) {
+      return variant0(field0);
     }
     return orElse();
   }
@@ -227,96 +248,102 @@ class _$SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNorma
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(
-            SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormal
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant0
                 value)
-        structOneWithTraitForDynTwinNormal,
+        variant0,
     required TResult Function(
-            SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormal
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant1
                 value)
-        structTwoWithTraitForDynTwinNormal,
+        variant1,
   }) {
-    return structOneWithTraitForDynTwinNormal(this);
+    return variant0(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(
-            SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormal
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant0
                 value)?
-        structOneWithTraitForDynTwinNormal,
+        variant0,
     TResult? Function(
-            SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormal
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant1
                 value)?
-        structTwoWithTraitForDynTwinNormal,
+        variant1,
   }) {
-    return structOneWithTraitForDynTwinNormal?.call(this);
+    return variant0?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(
-            SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormal
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant0
                 value)?
-        structOneWithTraitForDynTwinNormal,
+        variant0,
     TResult Function(
-            SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormal
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant1
                 value)?
-        structTwoWithTraitForDynTwinNormal,
+        variant1,
     required TResult orElse(),
   }) {
-    if (structOneWithTraitForDynTwinNormal != null) {
-      return structOneWithTraitForDynTwinNormal(this);
+    if (variant0 != null) {
+      return variant0(this);
     }
     return orElse();
   }
 }
 
-abstract class SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormal
-    extends SimpleTraitForDynTwinNormalImplementor {
-  const factory SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormal(
-          final StructOneWithTraitForDynTwinNormal field0) =
-      _$SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormalImpl;
-  const SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormal._()
+abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant0
+    extends Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum {
+  const factory Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant0(
+          final MyNodeTwinNormal field0) =
+      _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant0Impl;
+  const Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant0._()
       : super._();
 
   @override
-  StructOneWithTraitForDynTwinNormal get field0;
+  MyNodeTwinNormal get field0;
+  @override
   @JsonKey(ignore: true)
-  _$$SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormalImplCopyWith<
-          _$SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormalImpl>
+  _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant0ImplCopyWith<
+          _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant0Impl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormalImplCopyWith<
-    $Res> {
-  factory _$$SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormalImplCopyWith(
-          _$SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormalImpl
+abstract class _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant1ImplCopyWith<
+        $Res>
+    implements
+        $Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnumCopyWith<
+            $Res> {
+  factory _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant1ImplCopyWith(
+          _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant1Impl
               value,
           $Res Function(
-                  _$SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormalImpl)
+                  _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant1Impl)
               then) =
-      __$$SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormalImplCopyWithImpl<
+      __$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant1ImplCopyWithImpl<
           $Res>;
+  @override
   @useResult
-  $Res call({StructTwoWithTraitForDynTwinNormal field0});
+  $Res call({MyNodeTwinNormal field0});
 }
 
 /// @nodoc
-class __$$SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormalImplCopyWithImpl<
+class __$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant1ImplCopyWithImpl<
         $Res>
-    extends _$SimpleTraitForDynTwinNormalImplementorCopyWithImpl<$Res,
-        _$SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormalImpl>
+    extends _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnumCopyWithImpl<
+        $Res,
+        _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant1Impl>
     implements
-        _$$SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormalImplCopyWith<
+        _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant1ImplCopyWith<
             $Res> {
-  __$$SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormalImplCopyWithImpl(
-      _$SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormalImpl
+  __$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant1ImplCopyWithImpl(
+      _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant1Impl
           _value,
       $Res Function(
-              _$SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormalImpl)
+              _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant1Impl)
           _then)
       : super(_value, _then);
 
@@ -326,29 +353,29 @@ class __$$SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNor
     Object? field0 = null,
   }) {
     return _then(
-        _$SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormalImpl(
+        _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant1Impl(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
-              as StructTwoWithTraitForDynTwinNormal,
+              as MyNodeTwinNormal,
     ));
   }
 }
 
 /// @nodoc
 
-class _$SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormalImpl
-    extends SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormal {
-  const _$SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormalImpl(
+class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant1Impl
+    extends Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant1 {
+  const _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant1Impl(
       this.field0)
       : super._();
 
   @override
-  final StructTwoWithTraitForDynTwinNormal field0;
+  final MyNodeTwinNormal field0;
 
   @override
   String toString() {
-    return 'SimpleTraitForDynTwinNormalImplementor.structTwoWithTraitForDynTwinNormal(field0: $field0)';
+    return 'Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum.variant1(field0: $field0)';
   }
 
   @override
@@ -356,7 +383,7 @@ class _$SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNorma
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other
-                is _$SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormalImpl &&
+                is _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant1Impl &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
@@ -366,46 +393,40 @@ class _$SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNorma
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormalImplCopyWith<
-          _$SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormalImpl>
+  _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant1ImplCopyWith<
+          _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant1Impl>
       get copyWith =>
-          __$$SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormalImplCopyWithImpl<
-                  _$SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormalImpl>(
+          __$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant1ImplCopyWithImpl<
+                  _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant1Impl>(
               this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(StructOneWithTraitForDynTwinNormal field0)
-        structOneWithTraitForDynTwinNormal,
-    required TResult Function(StructTwoWithTraitForDynTwinNormal field0)
-        structTwoWithTraitForDynTwinNormal,
+    required TResult Function(MyNodeTwinNormal field0) variant0,
+    required TResult Function(MyNodeTwinNormal field0) variant1,
   }) {
-    return structTwoWithTraitForDynTwinNormal(field0);
+    return variant1(field0);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(StructOneWithTraitForDynTwinNormal field0)?
-        structOneWithTraitForDynTwinNormal,
-    TResult? Function(StructTwoWithTraitForDynTwinNormal field0)?
-        structTwoWithTraitForDynTwinNormal,
+    TResult? Function(MyNodeTwinNormal field0)? variant0,
+    TResult? Function(MyNodeTwinNormal field0)? variant1,
   }) {
-    return structTwoWithTraitForDynTwinNormal?.call(field0);
+    return variant1?.call(field0);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(StructOneWithTraitForDynTwinNormal field0)?
-        structOneWithTraitForDynTwinNormal,
-    TResult Function(StructTwoWithTraitForDynTwinNormal field0)?
-        structTwoWithTraitForDynTwinNormal,
+    TResult Function(MyNodeTwinNormal field0)? variant0,
+    TResult Function(MyNodeTwinNormal field0)? variant1,
     required TResult orElse(),
   }) {
-    if (structTwoWithTraitForDynTwinNormal != null) {
-      return structTwoWithTraitForDynTwinNormal(field0);
+    if (variant1 != null) {
+      return variant1(field0);
     }
     return orElse();
   }
@@ -414,184 +435,212 @@ class _$SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNorma
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(
-            SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormal
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant0
                 value)
-        structOneWithTraitForDynTwinNormal,
+        variant0,
     required TResult Function(
-            SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormal
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant1
                 value)
-        structTwoWithTraitForDynTwinNormal,
+        variant1,
   }) {
-    return structTwoWithTraitForDynTwinNormal(this);
+    return variant1(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(
-            SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormal
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant0
                 value)?
-        structOneWithTraitForDynTwinNormal,
+        variant0,
     TResult? Function(
-            SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormal
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant1
                 value)?
-        structTwoWithTraitForDynTwinNormal,
+        variant1,
   }) {
-    return structTwoWithTraitForDynTwinNormal?.call(this);
+    return variant1?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(
-            SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormal
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant0
                 value)?
-        structOneWithTraitForDynTwinNormal,
+        variant0,
     TResult Function(
-            SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormal
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant1
                 value)?
-        structTwoWithTraitForDynTwinNormal,
+        variant1,
     required TResult orElse(),
   }) {
-    if (structTwoWithTraitForDynTwinNormal != null) {
-      return structTwoWithTraitForDynTwinNormal(this);
+    if (variant1 != null) {
+      return variant1(this);
     }
     return orElse();
   }
 }
 
-abstract class SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormal
-    extends SimpleTraitForDynTwinNormalImplementor {
-  const factory SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormal(
-          final StructTwoWithTraitForDynTwinNormal field0) =
-      _$SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormalImpl;
-  const SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormal._()
+abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant1
+    extends Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum {
+  const factory Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant1(
+          final MyNodeTwinNormal field0) =
+      _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant1Impl;
+  const Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant1._()
       : super._();
 
   @override
-  StructTwoWithTraitForDynTwinNormal get field0;
+  MyNodeTwinNormal get field0;
+  @override
   @JsonKey(ignore: true)
-  _$$SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormalImplCopyWith<
-          _$SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormalImpl>
+  _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant1ImplCopyWith<
+          _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant1Impl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-mixin _$SimpleTraitForDynTwinSyncImplementor {
-  Object get field0 => throw _privateConstructorUsedError;
+mixin _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum {
+  MyNodeTwinRustAsync get field0 => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(StructOneWithTraitForDynTwinSync field0)
-        structOneWithTraitForDynTwinSync,
-    required TResult Function(StructTwoWithTraitForDynTwinSync field0)
-        structTwoWithTraitForDynTwinSync,
+    required TResult Function(MyNodeTwinRustAsync field0) variant0,
+    required TResult Function(MyNodeTwinRustAsync field0) variant1,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(StructOneWithTraitForDynTwinSync field0)?
-        structOneWithTraitForDynTwinSync,
-    TResult? Function(StructTwoWithTraitForDynTwinSync field0)?
-        structTwoWithTraitForDynTwinSync,
+    TResult? Function(MyNodeTwinRustAsync field0)? variant0,
+    TResult? Function(MyNodeTwinRustAsync field0)? variant1,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(StructOneWithTraitForDynTwinSync field0)?
-        structOneWithTraitForDynTwinSync,
-    TResult Function(StructTwoWithTraitForDynTwinSync field0)?
-        structTwoWithTraitForDynTwinSync,
+    TResult Function(MyNodeTwinRustAsync field0)? variant0,
+    TResult Function(MyNodeTwinRustAsync field0)? variant1,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(
-            SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSync
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum_Variant0
                 value)
-        structOneWithTraitForDynTwinSync,
+        variant0,
     required TResult Function(
-            SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSync
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum_Variant1
                 value)
-        structTwoWithTraitForDynTwinSync,
+        variant1,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(
-            SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSync
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum_Variant0
                 value)?
-        structOneWithTraitForDynTwinSync,
+        variant0,
     TResult? Function(
-            SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSync
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum_Variant1
                 value)?
-        structTwoWithTraitForDynTwinSync,
+        variant1,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(
-            SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSync
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum_Variant0
                 value)?
-        structOneWithTraitForDynTwinSync,
+        variant0,
     TResult Function(
-            SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSync
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum_Variant1
                 value)?
-        structTwoWithTraitForDynTwinSync,
+        variant1,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnumCopyWith<
+          Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $SimpleTraitForDynTwinSyncImplementorCopyWith<$Res> {
-  factory $SimpleTraitForDynTwinSyncImplementorCopyWith(
-          SimpleTraitForDynTwinSyncImplementor value,
-          $Res Function(SimpleTraitForDynTwinSyncImplementor) then) =
-      _$SimpleTraitForDynTwinSyncImplementorCopyWithImpl<$Res,
-          SimpleTraitForDynTwinSyncImplementor>;
+abstract class $Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnumCopyWith<
+    $Res> {
+  factory $Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnumCopyWith(
+      Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum
+          value,
+      $Res Function(
+              Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum)
+          then) = _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnumCopyWithImpl<
+      $Res,
+      Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum>;
+  @useResult
+  $Res call({MyNodeTwinRustAsync field0});
 }
 
 /// @nodoc
-class _$SimpleTraitForDynTwinSyncImplementorCopyWithImpl<$Res,
-        $Val extends SimpleTraitForDynTwinSyncImplementor>
-    implements $SimpleTraitForDynTwinSyncImplementorCopyWith<$Res> {
-  _$SimpleTraitForDynTwinSyncImplementorCopyWithImpl(this._value, this._then);
+class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnumCopyWithImpl<
+        $Res,
+        $Val extends Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum>
+    implements
+        $Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnumCopyWith<
+            $Res> {
+  _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnumCopyWithImpl(
+      this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_value.copyWith(
+      field0: null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as MyNodeTwinRustAsync,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSyncImplCopyWith<
-    $Res> {
-  factory _$$SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSyncImplCopyWith(
-          _$SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSyncImpl
+abstract class _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum_Variant0ImplCopyWith<
+        $Res>
+    implements
+        $Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnumCopyWith<
+            $Res> {
+  factory _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum_Variant0ImplCopyWith(
+          _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum_Variant0Impl
               value,
           $Res Function(
-                  _$SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSyncImpl)
+                  _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum_Variant0Impl)
               then) =
-      __$$SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSyncImplCopyWithImpl<
+      __$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum_Variant0ImplCopyWithImpl<
           $Res>;
+  @override
   @useResult
-  $Res call({StructOneWithTraitForDynTwinSync field0});
+  $Res call({MyNodeTwinRustAsync field0});
 }
 
 /// @nodoc
-class __$$SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSyncImplCopyWithImpl<
+class __$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum_Variant0ImplCopyWithImpl<
         $Res>
-    extends _$SimpleTraitForDynTwinSyncImplementorCopyWithImpl<$Res,
-        _$SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSyncImpl>
+    extends _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnumCopyWithImpl<
+        $Res,
+        _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum_Variant0Impl>
     implements
-        _$$SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSyncImplCopyWith<
+        _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum_Variant0ImplCopyWith<
             $Res> {
-  __$$SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSyncImplCopyWithImpl(
-      _$SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSyncImpl
+  __$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum_Variant0ImplCopyWithImpl(
+      _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum_Variant0Impl
           _value,
       $Res Function(
-              _$SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSyncImpl)
+              _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum_Variant0Impl)
           _then)
       : super(_value, _then);
 
@@ -601,29 +650,29 @@ class __$$SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSyncI
     Object? field0 = null,
   }) {
     return _then(
-        _$SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSyncImpl(
+        _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum_Variant0Impl(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
-              as StructOneWithTraitForDynTwinSync,
+              as MyNodeTwinRustAsync,
     ));
   }
 }
 
 /// @nodoc
 
-class _$SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSyncImpl
-    extends SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSync {
-  const _$SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSyncImpl(
+class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum_Variant0Impl
+    extends Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum_Variant0 {
+  const _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum_Variant0Impl(
       this.field0)
       : super._();
 
   @override
-  final StructOneWithTraitForDynTwinSync field0;
+  final MyNodeTwinRustAsync field0;
 
   @override
   String toString() {
-    return 'SimpleTraitForDynTwinSyncImplementor.structOneWithTraitForDynTwinSync(field0: $field0)';
+    return 'Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum.variant0(field0: $field0)';
   }
 
   @override
@@ -631,7 +680,7 @@ class _$SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSyncImp
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other
-                is _$SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSyncImpl &&
+                is _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum_Variant0Impl &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
@@ -641,46 +690,40 @@ class _$SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSyncImp
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSyncImplCopyWith<
-          _$SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSyncImpl>
+  _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum_Variant0ImplCopyWith<
+          _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum_Variant0Impl>
       get copyWith =>
-          __$$SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSyncImplCopyWithImpl<
-                  _$SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSyncImpl>(
+          __$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum_Variant0ImplCopyWithImpl<
+                  _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum_Variant0Impl>(
               this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(StructOneWithTraitForDynTwinSync field0)
-        structOneWithTraitForDynTwinSync,
-    required TResult Function(StructTwoWithTraitForDynTwinSync field0)
-        structTwoWithTraitForDynTwinSync,
+    required TResult Function(MyNodeTwinRustAsync field0) variant0,
+    required TResult Function(MyNodeTwinRustAsync field0) variant1,
   }) {
-    return structOneWithTraitForDynTwinSync(field0);
+    return variant0(field0);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(StructOneWithTraitForDynTwinSync field0)?
-        structOneWithTraitForDynTwinSync,
-    TResult? Function(StructTwoWithTraitForDynTwinSync field0)?
-        structTwoWithTraitForDynTwinSync,
+    TResult? Function(MyNodeTwinRustAsync field0)? variant0,
+    TResult? Function(MyNodeTwinRustAsync field0)? variant1,
   }) {
-    return structOneWithTraitForDynTwinSync?.call(field0);
+    return variant0?.call(field0);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(StructOneWithTraitForDynTwinSync field0)?
-        structOneWithTraitForDynTwinSync,
-    TResult Function(StructTwoWithTraitForDynTwinSync field0)?
-        structTwoWithTraitForDynTwinSync,
+    TResult Function(MyNodeTwinRustAsync field0)? variant0,
+    TResult Function(MyNodeTwinRustAsync field0)? variant1,
     required TResult orElse(),
   }) {
-    if (structOneWithTraitForDynTwinSync != null) {
-      return structOneWithTraitForDynTwinSync(field0);
+    if (variant0 != null) {
+      return variant0(field0);
     }
     return orElse();
   }
@@ -689,96 +732,102 @@ class _$SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSyncImp
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(
-            SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSync
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum_Variant0
                 value)
-        structOneWithTraitForDynTwinSync,
+        variant0,
     required TResult Function(
-            SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSync
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum_Variant1
                 value)
-        structTwoWithTraitForDynTwinSync,
+        variant1,
   }) {
-    return structOneWithTraitForDynTwinSync(this);
+    return variant0(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(
-            SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSync
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum_Variant0
                 value)?
-        structOneWithTraitForDynTwinSync,
+        variant0,
     TResult? Function(
-            SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSync
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum_Variant1
                 value)?
-        structTwoWithTraitForDynTwinSync,
+        variant1,
   }) {
-    return structOneWithTraitForDynTwinSync?.call(this);
+    return variant0?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(
-            SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSync
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum_Variant0
                 value)?
-        structOneWithTraitForDynTwinSync,
+        variant0,
     TResult Function(
-            SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSync
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum_Variant1
                 value)?
-        structTwoWithTraitForDynTwinSync,
+        variant1,
     required TResult orElse(),
   }) {
-    if (structOneWithTraitForDynTwinSync != null) {
-      return structOneWithTraitForDynTwinSync(this);
+    if (variant0 != null) {
+      return variant0(this);
     }
     return orElse();
   }
 }
 
-abstract class SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSync
-    extends SimpleTraitForDynTwinSyncImplementor {
-  const factory SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSync(
-          final StructOneWithTraitForDynTwinSync field0) =
-      _$SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSyncImpl;
-  const SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSync._()
+abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum_Variant0
+    extends Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum {
+  const factory Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum_Variant0(
+          final MyNodeTwinRustAsync field0) =
+      _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum_Variant0Impl;
+  const Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum_Variant0._()
       : super._();
 
   @override
-  StructOneWithTraitForDynTwinSync get field0;
+  MyNodeTwinRustAsync get field0;
+  @override
   @JsonKey(ignore: true)
-  _$$SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSyncImplCopyWith<
-          _$SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSyncImpl>
+  _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum_Variant0ImplCopyWith<
+          _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum_Variant0Impl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSyncImplCopyWith<
-    $Res> {
-  factory _$$SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSyncImplCopyWith(
-          _$SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSyncImpl
+abstract class _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum_Variant1ImplCopyWith<
+        $Res>
+    implements
+        $Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnumCopyWith<
+            $Res> {
+  factory _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum_Variant1ImplCopyWith(
+          _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum_Variant1Impl
               value,
           $Res Function(
-                  _$SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSyncImpl)
+                  _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum_Variant1Impl)
               then) =
-      __$$SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSyncImplCopyWithImpl<
+      __$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum_Variant1ImplCopyWithImpl<
           $Res>;
+  @override
   @useResult
-  $Res call({StructTwoWithTraitForDynTwinSync field0});
+  $Res call({MyNodeTwinRustAsync field0});
 }
 
 /// @nodoc
-class __$$SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSyncImplCopyWithImpl<
+class __$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum_Variant1ImplCopyWithImpl<
         $Res>
-    extends _$SimpleTraitForDynTwinSyncImplementorCopyWithImpl<$Res,
-        _$SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSyncImpl>
+    extends _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnumCopyWithImpl<
+        $Res,
+        _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum_Variant1Impl>
     implements
-        _$$SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSyncImplCopyWith<
+        _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum_Variant1ImplCopyWith<
             $Res> {
-  __$$SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSyncImplCopyWithImpl(
-      _$SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSyncImpl
+  __$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum_Variant1ImplCopyWithImpl(
+      _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum_Variant1Impl
           _value,
       $Res Function(
-              _$SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSyncImpl)
+              _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum_Variant1Impl)
           _then)
       : super(_value, _then);
 
@@ -788,29 +837,29 @@ class __$$SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSyncI
     Object? field0 = null,
   }) {
     return _then(
-        _$SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSyncImpl(
+        _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum_Variant1Impl(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
-              as StructTwoWithTraitForDynTwinSync,
+              as MyNodeTwinRustAsync,
     ));
   }
 }
 
 /// @nodoc
 
-class _$SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSyncImpl
-    extends SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSync {
-  const _$SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSyncImpl(
+class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum_Variant1Impl
+    extends Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum_Variant1 {
+  const _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum_Variant1Impl(
       this.field0)
       : super._();
 
   @override
-  final StructTwoWithTraitForDynTwinSync field0;
+  final MyNodeTwinRustAsync field0;
 
   @override
   String toString() {
-    return 'SimpleTraitForDynTwinSyncImplementor.structTwoWithTraitForDynTwinSync(field0: $field0)';
+    return 'Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum.variant1(field0: $field0)';
   }
 
   @override
@@ -818,7 +867,7 @@ class _$SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSyncImp
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other
-                is _$SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSyncImpl &&
+                is _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum_Variant1Impl &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
@@ -828,46 +877,40 @@ class _$SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSyncImp
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSyncImplCopyWith<
-          _$SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSyncImpl>
+  _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum_Variant1ImplCopyWith<
+          _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum_Variant1Impl>
       get copyWith =>
-          __$$SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSyncImplCopyWithImpl<
-                  _$SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSyncImpl>(
+          __$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum_Variant1ImplCopyWithImpl<
+                  _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum_Variant1Impl>(
               this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(StructOneWithTraitForDynTwinSync field0)
-        structOneWithTraitForDynTwinSync,
-    required TResult Function(StructTwoWithTraitForDynTwinSync field0)
-        structTwoWithTraitForDynTwinSync,
+    required TResult Function(MyNodeTwinRustAsync field0) variant0,
+    required TResult Function(MyNodeTwinRustAsync field0) variant1,
   }) {
-    return structTwoWithTraitForDynTwinSync(field0);
+    return variant1(field0);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(StructOneWithTraitForDynTwinSync field0)?
-        structOneWithTraitForDynTwinSync,
-    TResult? Function(StructTwoWithTraitForDynTwinSync field0)?
-        structTwoWithTraitForDynTwinSync,
+    TResult? Function(MyNodeTwinRustAsync field0)? variant0,
+    TResult? Function(MyNodeTwinRustAsync field0)? variant1,
   }) {
-    return structTwoWithTraitForDynTwinSync?.call(field0);
+    return variant1?.call(field0);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(StructOneWithTraitForDynTwinSync field0)?
-        structOneWithTraitForDynTwinSync,
-    TResult Function(StructTwoWithTraitForDynTwinSync field0)?
-        structTwoWithTraitForDynTwinSync,
+    TResult Function(MyNodeTwinRustAsync field0)? variant0,
+    TResult Function(MyNodeTwinRustAsync field0)? variant1,
     required TResult orElse(),
   }) {
-    if (structTwoWithTraitForDynTwinSync != null) {
-      return structTwoWithTraitForDynTwinSync(field0);
+    if (variant1 != null) {
+      return variant1(field0);
     }
     return orElse();
   }
@@ -876,64 +919,549 @@ class _$SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSyncImp
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(
-            SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSync
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum_Variant0
                 value)
-        structOneWithTraitForDynTwinSync,
+        variant0,
     required TResult Function(
-            SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSync
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum_Variant1
                 value)
-        structTwoWithTraitForDynTwinSync,
+        variant1,
   }) {
-    return structTwoWithTraitForDynTwinSync(this);
+    return variant1(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(
-            SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSync
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum_Variant0
                 value)?
-        structOneWithTraitForDynTwinSync,
+        variant0,
     TResult? Function(
-            SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSync
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum_Variant1
                 value)?
-        structTwoWithTraitForDynTwinSync,
+        variant1,
   }) {
-    return structTwoWithTraitForDynTwinSync?.call(this);
+    return variant1?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(
-            SimpleTraitForDynTwinSyncImplementor_StructOneWithTraitForDynTwinSync
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum_Variant0
                 value)?
-        structOneWithTraitForDynTwinSync,
+        variant0,
     TResult Function(
-            SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSync
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum_Variant1
                 value)?
-        structTwoWithTraitForDynTwinSync,
+        variant1,
     required TResult orElse(),
   }) {
-    if (structTwoWithTraitForDynTwinSync != null) {
-      return structTwoWithTraitForDynTwinSync(this);
+    if (variant1 != null) {
+      return variant1(this);
     }
     return orElse();
   }
 }
 
-abstract class SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSync
-    extends SimpleTraitForDynTwinSyncImplementor {
-  const factory SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSync(
-          final StructTwoWithTraitForDynTwinSync field0) =
-      _$SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSyncImpl;
-  const SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSync._()
+abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum_Variant1
+    extends Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum {
+  const factory Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum_Variant1(
+          final MyNodeTwinRustAsync field0) =
+      _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum_Variant1Impl;
+  const Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum_Variant1._()
       : super._();
 
   @override
-  StructTwoWithTraitForDynTwinSync get field0;
+  MyNodeTwinRustAsync get field0;
+  @override
   @JsonKey(ignore: true)
-  _$$SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSyncImplCopyWith<
-          _$SimpleTraitForDynTwinSyncImplementor_StructTwoWithTraitForDynTwinSyncImpl>
+  _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum_Variant1ImplCopyWith<
+          _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinRustAsyncProxyEnum_Variant1Impl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum {
+  MyNodeTwinSync get field0 => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(MyNodeTwinSync field0) variant0,
+    required TResult Function(MyNodeTwinSync field0) variant1,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(MyNodeTwinSync field0)? variant0,
+    TResult? Function(MyNodeTwinSync field0)? variant1,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(MyNodeTwinSync field0)? variant0,
+    TResult Function(MyNodeTwinSync field0)? variant1,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum_Variant0
+                value)
+        variant0,
+    required TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum_Variant1
+                value)
+        variant1,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum_Variant0
+                value)?
+        variant0,
+    TResult? Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum_Variant1
+                value)?
+        variant1,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum_Variant0
+                value)?
+        variant0,
+    TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum_Variant1
+                value)?
+        variant1,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnumCopyWith<
+          Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnumCopyWith<
+    $Res> {
+  factory $Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnumCopyWith(
+      Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum
+          value,
+      $Res Function(
+              Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum)
+          then) = _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnumCopyWithImpl<
+      $Res,
+      Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum>;
+  @useResult
+  $Res call({MyNodeTwinSync field0});
+}
+
+/// @nodoc
+class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnumCopyWithImpl<
+        $Res,
+        $Val extends Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum>
+    implements
+        $Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnumCopyWith<
+            $Res> {
+  _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnumCopyWithImpl(
+      this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_value.copyWith(
+      field0: null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as MyNodeTwinSync,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum_Variant0ImplCopyWith<
+        $Res>
+    implements
+        $Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnumCopyWith<
+            $Res> {
+  factory _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum_Variant0ImplCopyWith(
+          _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum_Variant0Impl
+              value,
+          $Res Function(
+                  _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum_Variant0Impl)
+              then) =
+      __$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum_Variant0ImplCopyWithImpl<
+          $Res>;
+  @override
+  @useResult
+  $Res call({MyNodeTwinSync field0});
+}
+
+/// @nodoc
+class __$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum_Variant0ImplCopyWithImpl<
+        $Res>
+    extends _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnumCopyWithImpl<
+        $Res,
+        _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum_Variant0Impl>
+    implements
+        _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum_Variant0ImplCopyWith<
+            $Res> {
+  __$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum_Variant0ImplCopyWithImpl(
+      _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum_Variant0Impl
+          _value,
+      $Res Function(
+              _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum_Variant0Impl)
+          _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(
+        _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum_Variant0Impl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as MyNodeTwinSync,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum_Variant0Impl
+    extends Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum_Variant0 {
+  const _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum_Variant0Impl(
+      this.field0)
+      : super._();
+
+  @override
+  final MyNodeTwinSync field0;
+
+  @override
+  String toString() {
+    return 'Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum.variant0(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other
+                is _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum_Variant0Impl &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum_Variant0ImplCopyWith<
+          _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum_Variant0Impl>
+      get copyWith =>
+          __$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum_Variant0ImplCopyWithImpl<
+                  _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum_Variant0Impl>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(MyNodeTwinSync field0) variant0,
+    required TResult Function(MyNodeTwinSync field0) variant1,
+  }) {
+    return variant0(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(MyNodeTwinSync field0)? variant0,
+    TResult? Function(MyNodeTwinSync field0)? variant1,
+  }) {
+    return variant0?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(MyNodeTwinSync field0)? variant0,
+    TResult Function(MyNodeTwinSync field0)? variant1,
+    required TResult orElse(),
+  }) {
+    if (variant0 != null) {
+      return variant0(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum_Variant0
+                value)
+        variant0,
+    required TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum_Variant1
+                value)
+        variant1,
+  }) {
+    return variant0(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum_Variant0
+                value)?
+        variant0,
+    TResult? Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum_Variant1
+                value)?
+        variant1,
+  }) {
+    return variant0?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum_Variant0
+                value)?
+        variant0,
+    TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum_Variant1
+                value)?
+        variant1,
+    required TResult orElse(),
+  }) {
+    if (variant0 != null) {
+      return variant0(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum_Variant0
+    extends Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum {
+  const factory Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum_Variant0(
+          final MyNodeTwinSync field0) =
+      _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum_Variant0Impl;
+  const Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum_Variant0._()
+      : super._();
+
+  @override
+  MyNodeTwinSync get field0;
+  @override
+  @JsonKey(ignore: true)
+  _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum_Variant0ImplCopyWith<
+          _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum_Variant0Impl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum_Variant1ImplCopyWith<
+        $Res>
+    implements
+        $Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnumCopyWith<
+            $Res> {
+  factory _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum_Variant1ImplCopyWith(
+          _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum_Variant1Impl
+              value,
+          $Res Function(
+                  _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum_Variant1Impl)
+              then) =
+      __$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum_Variant1ImplCopyWithImpl<
+          $Res>;
+  @override
+  @useResult
+  $Res call({MyNodeTwinSync field0});
+}
+
+/// @nodoc
+class __$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum_Variant1ImplCopyWithImpl<
+        $Res>
+    extends _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnumCopyWithImpl<
+        $Res,
+        _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum_Variant1Impl>
+    implements
+        _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum_Variant1ImplCopyWith<
+            $Res> {
+  __$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum_Variant1ImplCopyWithImpl(
+      _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum_Variant1Impl
+          _value,
+      $Res Function(
+              _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum_Variant1Impl)
+          _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(
+        _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum_Variant1Impl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as MyNodeTwinSync,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum_Variant1Impl
+    extends Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum_Variant1 {
+  const _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum_Variant1Impl(
+      this.field0)
+      : super._();
+
+  @override
+  final MyNodeTwinSync field0;
+
+  @override
+  String toString() {
+    return 'Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum.variant1(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other
+                is _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum_Variant1Impl &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum_Variant1ImplCopyWith<
+          _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum_Variant1Impl>
+      get copyWith =>
+          __$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum_Variant1ImplCopyWithImpl<
+                  _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum_Variant1Impl>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(MyNodeTwinSync field0) variant0,
+    required TResult Function(MyNodeTwinSync field0) variant1,
+  }) {
+    return variant1(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(MyNodeTwinSync field0)? variant0,
+    TResult? Function(MyNodeTwinSync field0)? variant1,
+  }) {
+    return variant1?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(MyNodeTwinSync field0)? variant0,
+    TResult Function(MyNodeTwinSync field0)? variant1,
+    required TResult orElse(),
+  }) {
+    if (variant1 != null) {
+      return variant1(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum_Variant0
+                value)
+        variant0,
+    required TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum_Variant1
+                value)
+        variant1,
+  }) {
+    return variant1(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum_Variant0
+                value)?
+        variant0,
+    TResult? Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum_Variant1
+                value)?
+        variant1,
+  }) {
+    return variant1?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum_Variant0
+                value)?
+        variant0,
+    TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum_Variant1
+                value)?
+        variant1,
+    required TResult orElse(),
+  }) {
+    if (variant1 != null) {
+      return variant1(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum_Variant1
+    extends Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum {
+  const factory Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum_Variant1(
+          final MyNodeTwinSync field0) =
+      _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum_Variant1Impl;
+  const Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum_Variant1._()
+      : super._();
+
+  @override
+  MyNodeTwinSync get field0;
+  @override
+  @JsonKey(ignore: true)
+  _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum_Variant1ImplCopyWith<
+          _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinSyncProxyEnum_Variant1Impl>
       get copyWith => throw _privateConstructorUsedError;
 }

@@ -78,7 +78,7 @@ impl SimpleTraitForDynTwinNormal for StructTwoWithTraitForDynTwinNormal {
     }
 }
 
-pub fn func_arg_trait_impl_twin_normal(arg: SimpleTraitForDynTwinNormalImplementor) -> i32 {
-    let arg = arg.blocking_read();
-    arg.simple_method_twin_normal()
-}
+// pub fn func_arg_trait_impl_twin_normal(arg: SimpleTraitForDynTwinNormalImplementor) -> i32 {
+//     let arg = arg.blocking_read();
+//     arg.simple_method_twin_normal()
+// }

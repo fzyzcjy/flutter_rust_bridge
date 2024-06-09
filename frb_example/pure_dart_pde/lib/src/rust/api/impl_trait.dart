@@ -6,10 +6,6 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-Future<int> funcArgTraitImplTwinNormal(
-        {required SimpleTraitForDynTwinNormalImplementor arg}) =>
-    RustLib.instance.api.crateApiImplTraitFuncArgTraitImplTwinNormal(arg: arg);
-
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructOneWithTraitForDynTwinNormal>>
 abstract class StructOneWithTraitForDynTwinNormal
     implements RustOpaqueInterface, SimpleTraitForDynTwinNormal {
