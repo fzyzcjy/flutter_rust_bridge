@@ -146,7 +146,7 @@ impl MirTypeTrait for MirTypeDelegate {
                 format!("AutoExplicit_{}", mir.inner.safe_ident())
             } // MirTypeDelegate::DynTrait(mir) => mir.safe_ident(),
             MirTypeDelegate::ProxyVariant(mir) => {
-                format!("ProxyVariant_{}", mir.inner.safe_ident())
+                format!("ProxyVariant_{}_{}", mir.upstream.safe_ident(), mir.upstream_method_name)
             }
             MirTypeDelegate::ProxyEnum(mir) => format!("ProxyEnum_{}", mir.get_delegate().safe_ident()),
         }
