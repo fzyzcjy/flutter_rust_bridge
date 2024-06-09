@@ -35,7 +35,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             if let Some(trait_ty) = parse_type_trait(&trait_name, self.inner) {
                 return Ok(Some(MirType::Delegate(MirTypeDelegate::DynTrait(
                     MirTypeDelegateDynTrait {
-                        trait_def_name: trait_ty.name,
+                        trait_def_name: trait_ty.name.clone(),
                         data: match self.context.parse_mode {
                             ParseMode::Early => None,
                             ParseMode::Normal => {
