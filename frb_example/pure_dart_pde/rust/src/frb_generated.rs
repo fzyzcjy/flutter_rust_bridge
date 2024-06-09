@@ -1339,7 +1339,7 @@ fn wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_set_one_impl
                         _ => unreachable!(),
                     }
                 }
-                let mut api_that = &*api_that_decoded.unwrap();
+                let mut api_that = &mut *api_that_decoded.unwrap();
                 Result::<_, ()>::Ok({
                     {
                         api_that.one = api_one;
@@ -1519,7 +1519,7 @@ fn wire__crate__api__constructor__ConstructorOpaqueSyncStructTwinNormal_set_one_
                         _ => unreachable!(),
                     }
                 }
-                let mut api_that = &*api_that_decoded.unwrap();
+                let mut api_that = &mut *api_that_decoded.unwrap();
                 Result::<_, ()>::Ok({
                     {
                         api_that.one = api_one;
@@ -2828,7 +2828,7 @@ fn wire__crate__api__dropping__DroppableTwinNormal_create_stream_impl(
                             _ => unreachable!(),
                         }
                     }
-                    let mut api_that = &*api_that_decoded.unwrap();
+                    let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         crate::api::dropping::DroppableTwinNormal::create_stream(
                             &mut api_that,
@@ -4515,7 +4515,7 @@ fn wire__crate__api__impl_trait__StructOneWithTraitForDynTwinNormal_set_one_impl
                         _ => unreachable!(),
                     }
                 }
-                let mut api_that = &*api_that_decoded.unwrap();
+                let mut api_that = &mut *api_that_decoded.unwrap();
                 Result::<_, ()>::Ok({
                     {
                         api_that.one = api_one;
@@ -4638,7 +4638,7 @@ fn wire__crate__api__impl_trait__StructOneWithTraitTwinNormal_set_one_impl(
                         _ => unreachable!(),
                     }
                 }
-                let mut api_that = &*api_that_decoded.unwrap();
+                let mut api_that = &mut *api_that_decoded.unwrap();
                 Result::<_, ()>::Ok({
                     {
                         api_that.one = api_one;
@@ -4791,7 +4791,7 @@ fn wire__crate__api__impl_trait__StructTwoWithTraitForDynTwinNormal_set_two_impl
                         _ => unreachable!(),
                     }
                 }
-                let mut api_that = &*api_that_decoded.unwrap();
+                let mut api_that = &mut *api_that_decoded.unwrap();
                 Result::<_, ()>::Ok({
                     {
                         api_that.two = api_two;
@@ -4914,7 +4914,7 @@ fn wire__crate__api__impl_trait__StructTwoWithTraitTwinNormal_set_two_impl(
                         _ => unreachable!(),
                     }
                 }
-                let mut api_that = &*api_that_decoded.unwrap();
+                let mut api_that = &mut *api_that_decoded.unwrap();
                 Result::<_, ()>::Ok({
                     {
                         api_that.two = api_two;
@@ -7564,7 +7564,7 @@ fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal
                         _ => unreachable!(),
                     }
                 }
-                let mut api_that = &*api_that_decoded.unwrap();
+                let mut api_that = &mut *api_that_decoded.unwrap();
                 Result::<_, ()>::Ok({
                     {
                         api_that.deliberate_bad_field_a = api_deliberate_bad_field_a;
@@ -7616,7 +7616,7 @@ fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal
                         _ => unreachable!(),
                     }
                 }
-                let mut api_that = &*api_that_decoded.unwrap();
+                let mut api_that = &mut *api_that_decoded.unwrap();
                 Result::<_, ()>::Ok({
                     {
                         api_that.deliberate_bad_field_b = api_deliberate_bad_field_b;
@@ -7669,7 +7669,7 @@ fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal
                         _ => unreachable!(),
                     }
                 }
-                let mut api_that = &*api_that_decoded.unwrap();
+                let mut api_that = &mut *api_that_decoded.unwrap();
                 Result::<_, ()>::Ok({
                     {
                         api_that.deliberate_bad_field_c = api_deliberate_bad_field_c;
@@ -7721,7 +7721,7 @@ fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal
                         _ => unreachable!(),
                     }
                 }
-                let mut api_that = &*api_that_decoded.unwrap();
+                let mut api_that = &mut *api_that_decoded.unwrap();
                 Result::<_, ()>::Ok({
                     {
                         api_that.good_field_a = api_good_field_a;
@@ -7773,7 +7773,7 @@ fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal
                         _ => unreachable!(),
                     }
                 }
-                let mut api_that = &*api_that_decoded.unwrap();
+                let mut api_that = &mut *api_that_decoded.unwrap();
                 Result::<_, ()>::Ok({
                     {
                         api_that.good_field_b = api_good_field_b;
@@ -7826,7 +7826,7 @@ fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal
                         _ => unreachable!(),
                     }
                 }
-                let mut api_that = &*api_that_decoded.unwrap();
+                let mut api_that = &mut *api_that_decoded.unwrap();
                 Result::<_, ()>::Ok({
                     {
                         api_that.good_field_c = api_good_field_c;
@@ -7964,7 +7964,7 @@ fn wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_
                         _ => unreachable!(),
                     }
                 }
-                let mut api_that = &*api_that_decoded.unwrap();
+                let mut api_that = &mut *api_that_decoded.unwrap();
                 Result::<_, ()>::Ok({
                     {
                         api_that.name = api_name;
@@ -8117,7 +8117,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
                 _ => unreachable!(),
             }
         }
-        let mut api_that = &*api_that_decoded.unwrap();
+        let mut api_that = &mut *api_that_decoded.unwrap();
  Result::<_,()>::Ok({ crate::api::misc_no_twin_example_a::StructWithSimpleSetterTwinNormal::simple_setter(&mut api_that, api_value); })
                 })()) })
 }
@@ -15908,7 +15908,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
                 _ => unreachable!(),
             }
         }
-        let mut api_that = &*api_that_decoded.unwrap();
+        let mut api_that = &mut *api_that_decoded.unwrap();
  Result::<_,()>::Ok({ crate::api::pseudo_manual::dropping_twin_rust_async::DroppableTwinRustAsync::create_stream_twin_rust_async(&mut api_that, api_sink).await; })
                     })().await)
                 } })
@@ -15986,7 +15986,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
                 _ => unreachable!(),
             }
         }
-        let mut api_that = &*api_that_decoded.unwrap();
+        let mut api_that = &mut *api_that_decoded.unwrap();
  Result::<_,()>::Ok({ crate::api::pseudo_manual::dropping_twin_sync::DroppableTwinSync::create_stream_twin_sync(&mut api_that, api_sink); })
                 })()) })
 }
@@ -17694,7 +17694,7 @@ fn wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructOneWithTraitForD
                         _ => unreachable!(),
                     }
                 }
-                let mut api_that = &*api_that_decoded.unwrap();
+                let mut api_that = &mut *api_that_decoded.unwrap();
                 Result::<_, ()>::Ok({
                     {
                         api_that.one = api_one;
@@ -17813,7 +17813,7 @@ fn wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructOneWithTraitTwin
                         _ => unreachable!(),
                     }
                 }
-                let mut api_that = &*api_that_decoded.unwrap();
+                let mut api_that = &mut *api_that_decoded.unwrap();
                 Result::<_, ()>::Ok({
                     {
                         api_that.one = api_one;
@@ -17966,7 +17966,7 @@ fn wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructTwoWithTraitForD
                         _ => unreachable!(),
                     }
                 }
-                let mut api_that = &*api_that_decoded.unwrap();
+                let mut api_that = &mut *api_that_decoded.unwrap();
                 Result::<_, ()>::Ok({
                     {
                         api_that.two = api_two;
@@ -18085,7 +18085,7 @@ fn wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructTwoWithTraitTwin
                         _ => unreachable!(),
                     }
                 }
-                let mut api_that = &*api_that_decoded.unwrap();
+                let mut api_that = &mut *api_that_decoded.unwrap();
                 Result::<_, ()>::Ok({
                     {
                         api_that.two = api_two;
@@ -21680,7 +21680,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
                 _ => unreachable!(),
             }
         }
-        let mut api_that = &*api_that_decoded.unwrap();
+        let mut api_that = &mut *api_that_decoded.unwrap();
  Result::<_,()>::Ok({ crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::NonCloneSimpleTwinRustAsync::instance_method_arg_mut_borrow_twin_rust_async(&mut api_that).await; })
                     })().await)
                 } })
@@ -21836,7 +21836,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
                 _ => unreachable!(),
             }
         }
-        let mut api_arg = &*api_arg_decoded.unwrap();
+        let mut api_arg = &mut *api_arg_decoded.unwrap();
  Result::<_,()>::Ok({ crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::NonCloneSimpleTwinRustAsync::static_method_arg_mut_borrow_twin_rust_async(&mut api_arg).await; })
                     })().await)
                 } })
@@ -21960,7 +21960,7 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__StructWith
                         _ => unreachable!(),
                     }
                 }
-                let mut api_that = &*api_that_decoded.unwrap();
+                let mut api_that = &mut *api_that_decoded.unwrap();
                 Result::<_, ()>::Ok({
                     {
                         api_that.good = api_good;
@@ -22031,7 +22031,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
                 _ => unreachable!(),
             }
         }
-        let mut api_arg = &*api_arg_decoded.unwrap();
+        let mut api_arg = &mut *api_arg_decoded.unwrap();
  Result::<_,()>::Ok({ crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_arg_mut_borrow_twin_rust_async(&mut api_arg, api_expect, api_adder).await; })
                     })().await)
                 } })
@@ -22134,7 +22134,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_borrow = &*api_borrow_decoded.unwrap();
-let mut api_mut_borrow = &*api_mut_borrow_decoded.unwrap();
+let mut api_mut_borrow = &mut *api_mut_borrow_decoded.unwrap();
  Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_borrow_and_mut_borrow_twin_rust_async(&api_borrow, &mut api_mut_borrow).await)
                     })().await)
                 } })
@@ -22458,8 +22458,8 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
                 _ => unreachable!(),
             }
         }
-        let mut api_apple = &*api_apple_decoded.unwrap();
-let mut api_orange = &*api_orange_decoded.unwrap();
+        let mut api_apple = &mut *api_apple_decoded.unwrap();
+let mut api_orange = &mut *api_orange_decoded.unwrap();
  Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_sleep_twin_rust_async(&mut api_apple, &mut api_orange).await)
                     })().await)
                 } })
@@ -22554,7 +22554,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
                 _ => unreachable!(),
             }
         }
-        let mut api_arg = &*api_arg_decoded.unwrap();
+        let mut api_arg = &mut *api_arg_decoded.unwrap();
  Result::<_,()>::Ok({ crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_trait_object_arg_mut_borrow_twin_rust_async(&mut api_arg, api_expect).await; })
                     })().await)
                 } })
@@ -22685,7 +22685,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
                 _ => unreachable!(),
             }
         }
-        let mut api_that = &*api_that_decoded.unwrap();
+        let mut api_that = &mut *api_that_decoded.unwrap();
  Result::<_,()>::Ok({ crate::api::pseudo_manual::rust_auto_opaque_twin_sync::NonCloneSimpleTwinSync::instance_method_arg_mut_borrow_twin_sync(&mut api_that); })
                 })()) })
 }
@@ -22825,7 +22825,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
                 _ => unreachable!(),
             }
         }
-        let mut api_arg = &*api_arg_decoded.unwrap();
+        let mut api_arg = &mut *api_arg_decoded.unwrap();
  Result::<_,()>::Ok({ crate::api::pseudo_manual::rust_auto_opaque_twin_sync::NonCloneSimpleTwinSync::static_method_arg_mut_borrow_twin_sync(&mut api_arg); })
                 })()) })
 }
@@ -22944,7 +22944,7 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGoodAn
                         _ => unreachable!(),
                     }
                 }
-                let mut api_that = &*api_that_decoded.unwrap();
+                let mut api_that = &mut *api_that_decoded.unwrap();
                 Result::<_, ()>::Ok({
                     {
                         api_that.good = api_good;
@@ -23012,7 +23012,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
                 _ => unreachable!(),
             }
         }
-        let mut api_arg = &*api_arg_decoded.unwrap();
+        let mut api_arg = &mut *api_arg_decoded.unwrap();
  Result::<_,()>::Ok({ crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_arg_mut_borrow_twin_sync(&mut api_arg, api_expect, api_adder); })
                 })()) })
 }
@@ -23105,7 +23105,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_borrow = &*api_borrow_decoded.unwrap();
-let mut api_mut_borrow = &*api_mut_borrow_decoded.unwrap();
+let mut api_mut_borrow = &mut *api_mut_borrow_decoded.unwrap();
  Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_borrow_and_mut_borrow_twin_sync(&api_borrow, &mut api_mut_borrow))
                 })()) })
 }
@@ -23389,8 +23389,8 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
                 _ => unreachable!(),
             }
         }
-        let mut api_apple = &*api_apple_decoded.unwrap();
-let mut api_orange = &*api_orange_decoded.unwrap();
+        let mut api_apple = &mut *api_apple_decoded.unwrap();
+let mut api_orange = &mut *api_orange_decoded.unwrap();
  Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_sleep_twin_sync(&mut api_apple, &mut api_orange))
                 })()) })
 }
@@ -23475,7 +23475,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
                 _ => unreachable!(),
             }
         }
-        let mut api_arg = &*api_arg_decoded.unwrap();
+        let mut api_arg = &mut *api_arg_decoded.unwrap();
  Result::<_,()>::Ok({ crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_trait_object_arg_mut_borrow_twin_sync(&mut api_arg, api_expect); })
                 })()) })
 }
@@ -24967,7 +24967,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
                 _ => unreachable!(),
             }
         }
-        let mut api_that = &*api_that_decoded.unwrap();
+        let mut api_that = &mut *api_that_decoded.unwrap();
  Result::<_,()>::Ok({ crate::api::rust_auto_opaque::NonCloneSimpleTwinNormal::instance_method_arg_mut_borrow_twin_normal(&mut api_that); })
                     })())
                 } })
@@ -25141,7 +25141,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
                 _ => unreachable!(),
             }
         }
-        let mut api_arg = &*api_arg_decoded.unwrap();
+        let mut api_arg = &mut *api_arg_decoded.unwrap();
  Result::<_,()>::Ok({ crate::api::rust_auto_opaque::NonCloneSimpleTwinNormal::static_method_arg_mut_borrow_twin_normal(&mut api_arg); })
                     })())
                 } })
@@ -25265,7 +25265,7 @@ fn wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOption
                         _ => unreachable!(),
                     }
                 }
-                let mut api_that = &*api_that_decoded.unwrap();
+                let mut api_that = &mut *api_that_decoded.unwrap();
                 Result::<_, ()>::Ok({
                     {
                         api_that.good = api_good;
@@ -25407,7 +25407,7 @@ fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_arg_mut_borrow_twin_norm
                             _ => unreachable!(),
                         }
                     }
-                    let mut api_arg = &*api_arg_decoded.unwrap();
+                    let mut api_arg = &mut *api_arg_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         crate::api::rust_auto_opaque::rust_auto_opaque_arg_mut_borrow_twin_normal(
                             &mut api_arg,
@@ -25560,7 +25560,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_borrow = &*api_borrow_decoded.unwrap();
-let mut api_mut_borrow = &*api_mut_borrow_decoded.unwrap();
+let mut api_mut_borrow = &mut *api_mut_borrow_decoded.unwrap();
  Result::<_,()>::Ok(crate::api::rust_auto_opaque::rust_auto_opaque_borrow_and_mut_borrow_twin_normal(&api_borrow, &mut api_mut_borrow))
                     })())
                 } })
@@ -26151,8 +26151,8 @@ fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_sleep_twin_normal_impl(
                             _ => unreachable!(),
                         }
                     }
-                    let mut api_apple = &*api_apple_decoded.unwrap();
-                    let mut api_orange = &*api_orange_decoded.unwrap();
+                    let mut api_apple = &mut *api_apple_decoded.unwrap();
+                    let mut api_orange = &mut *api_orange_decoded.unwrap();
                     Result::<_, ()>::Ok(
                         crate::api::rust_auto_opaque::rust_auto_opaque_sleep_twin_normal(
                             &mut api_apple,
@@ -26278,7 +26278,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
                 _ => unreachable!(),
             }
         }
-        let mut api_arg = &*api_arg_decoded.unwrap();
+        let mut api_arg = &mut *api_arg_decoded.unwrap();
  Result::<_,()>::Ok({ crate::api::rust_auto_opaque::rust_auto_opaque_trait_object_arg_mut_borrow_twin_normal(&mut api_arg, api_expect); })
                     })())
                 } })

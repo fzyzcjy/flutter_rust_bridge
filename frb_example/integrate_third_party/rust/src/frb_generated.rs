@@ -320,7 +320,7 @@ fn wire__web_audio_api__AudioBuffer_get_channel_data_mut_impl(
                             _ => unreachable!(),
                         }
                     }
-                    let mut api_that = &*api_that_decoded.unwrap();
+                    let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::AudioBuffer::get_channel_data_mut(
                             &mut api_that,
@@ -2164,7 +2164,7 @@ fn wire__web_audio_api__AudioProcessingEvent_set_input_buffer_impl(
                         _ => unreachable!(),
                     }
                 }
-                let mut api_that = &*api_that_decoded.unwrap();
+                let mut api_that = &mut *api_that_decoded.unwrap();
                 Result::<_, ()>::Ok({
                     {
                         api_that.input_buffer = api_input_buffer;
@@ -2214,7 +2214,7 @@ fn wire__web_audio_api__AudioProcessingEvent_set_output_buffer_impl(
                         _ => unreachable!(),
                     }
                 }
-                let mut api_that = &*api_that_decoded.unwrap();
+                let mut api_that = &mut *api_that_decoded.unwrap();
                 Result::<_, ()>::Ok({
                     {
                         api_that.output_buffer = api_output_buffer;
@@ -2264,7 +2264,7 @@ fn wire__web_audio_api__AudioProcessingEvent_set_playback_time_impl(
                         _ => unreachable!(),
                     }
                 }
-                let mut api_that = &*api_that_decoded.unwrap();
+                let mut api_that = &mut *api_that_decoded.unwrap();
                 Result::<_, ()>::Ok({
                     {
                         api_that.playback_time = api_playback_time;
@@ -2539,7 +2539,7 @@ fn wire__web_audio_api__AudioRenderCapacityEvent_set_average_load_impl(
                         _ => unreachable!(),
                     }
                 }
-                let mut api_that = &*api_that_decoded.unwrap();
+                let mut api_that = &mut *api_that_decoded.unwrap();
                 Result::<_, ()>::Ok({
                     {
                         api_that.average_load = api_average_load;
@@ -2589,7 +2589,7 @@ fn wire__web_audio_api__AudioRenderCapacityEvent_set_event_impl(
                         _ => unreachable!(),
                     }
                 }
-                let mut api_that = &*api_that_decoded.unwrap();
+                let mut api_that = &mut *api_that_decoded.unwrap();
                 Result::<_, ()>::Ok({
                     {
                         api_that.event = api_event;
@@ -2639,7 +2639,7 @@ fn wire__web_audio_api__AudioRenderCapacityEvent_set_peak_load_impl(
                         _ => unreachable!(),
                     }
                 }
-                let mut api_that = &*api_that_decoded.unwrap();
+                let mut api_that = &mut *api_that_decoded.unwrap();
                 Result::<_, ()>::Ok({
                     {
                         api_that.peak_load = api_peak_load;
@@ -2689,7 +2689,7 @@ fn wire__web_audio_api__AudioRenderCapacityEvent_set_timestamp_impl(
                         _ => unreachable!(),
                     }
                 }
-                let mut api_that = &*api_that_decoded.unwrap();
+                let mut api_that = &mut *api_that_decoded.unwrap();
                 Result::<_, ()>::Ok({
                     {
                         api_that.timestamp = api_timestamp;
@@ -2739,7 +2739,7 @@ fn wire__web_audio_api__AudioRenderCapacityEvent_set_underrun_ratio_impl(
                         _ => unreachable!(),
                     }
                 }
-                let mut api_that = &*api_that_decoded.unwrap();
+                let mut api_that = &mut *api_that_decoded.unwrap();
                 Result::<_, ()>::Ok({
                     {
                         api_that.underrun_ratio = api_underrun_ratio;
@@ -3037,7 +3037,7 @@ fn wire__web_audio_api__OfflineAudioCompletionEvent_set_event_impl(
                         _ => unreachable!(),
                     }
                 }
-                let mut api_that = &*api_that_decoded.unwrap();
+                let mut api_that = &mut *api_that_decoded.unwrap();
                 Result::<_, ()>::Ok({
                     {
                         api_that.event = api_event;
@@ -3089,7 +3089,7 @@ fn wire__web_audio_api__OfflineAudioCompletionEvent_set_rendered_buffer_impl(
                         _ => unreachable!(),
                     }
                 }
-                let mut api_that = &*api_that_decoded.unwrap();
+                let mut api_that = &mut *api_that_decoded.unwrap();
                 Result::<_, ()>::Ok({
                     {
                         api_that.rendered_buffer = api_rendered_buffer;
@@ -8202,7 +8202,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_start_rendering_sync_impl(
                             _ => unreachable!(),
                         }
                     }
-                    let mut api_that = &*api_that_decoded.unwrap();
+                    let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok(
                         web_audio_api::context::OfflineAudioContext::start_rendering_sync(
                             &mut api_that,
@@ -8533,7 +8533,7 @@ fn wire__web_audio_api__media_recorder__BlobEvent_set_blob_impl(
                         _ => unreachable!(),
                     }
                 }
-                let mut api_that = &*api_that_decoded.unwrap();
+                let mut api_that = &mut *api_that_decoded.unwrap();
                 Result::<_, ()>::Ok({
                     {
                         api_that.blob = api_blob;
@@ -8583,7 +8583,7 @@ fn wire__web_audio_api__media_recorder__BlobEvent_set_event_impl(
                         _ => unreachable!(),
                     }
                 }
-                let mut api_that = &*api_that_decoded.unwrap();
+                let mut api_that = &mut *api_that_decoded.unwrap();
                 Result::<_, ()>::Ok({
                     {
                         api_that.event = api_event;
@@ -8633,7 +8633,7 @@ fn wire__web_audio_api__media_recorder__BlobEvent_set_timecode_impl(
                         _ => unreachable!(),
                     }
                 }
-                let mut api_that = &*api_that_decoded.unwrap();
+                let mut api_that = &mut *api_that_decoded.unwrap();
                 Result::<_, ()>::Ok({
                     {
                         api_that.timecode = api_timecode;
@@ -10124,7 +10124,7 @@ fn wire__web_audio_api__node__AnalyserNode_set_fft_size_impl(
                             _ => unreachable!(),
                         }
                     }
-                    let mut api_that = &*api_that_decoded.unwrap();
+                    let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::AnalyserNode::set_fft_size(
                             &mut api_that,
@@ -10178,7 +10178,7 @@ fn wire__web_audio_api__node__AnalyserNode_set_max_decibels_impl(
                             _ => unreachable!(),
                         }
                     }
-                    let mut api_that = &*api_that_decoded.unwrap();
+                    let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::AnalyserNode::set_max_decibels(
                             &mut api_that,
@@ -10232,7 +10232,7 @@ fn wire__web_audio_api__node__AnalyserNode_set_min_decibels_impl(
                             _ => unreachable!(),
                         }
                     }
-                    let mut api_that = &*api_that_decoded.unwrap();
+                    let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::AnalyserNode::set_min_decibels(
                             &mut api_that,
@@ -10286,7 +10286,7 @@ fn wire__web_audio_api__node__AnalyserNode_set_smoothing_time_constant_impl(
                             _ => unreachable!(),
                         }
                     }
-                    let mut api_that = &*api_that_decoded.unwrap();
+                    let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::AnalyserNode::set_smoothing_time_constant(
                             &mut api_that,
@@ -11250,7 +11250,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_set_buffer_impl(
                             _ => unreachable!(),
                         }
                     }
-                    let mut api_that = &*api_that_decoded.unwrap();
+                    let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::AudioBufferSourceNode::set_buffer(
                             &mut api_that,
@@ -11463,7 +11463,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_set_loop_impl(
                             _ => unreachable!(),
                         }
                     }
-                    let mut api_that = &*api_that_decoded.unwrap();
+                    let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::AudioBufferSourceNode::set_loop(
                             &mut api_that,
@@ -11517,7 +11517,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_set_loop_end_impl(
                             _ => unreachable!(),
                         }
                     }
-                    let mut api_that = &*api_that_decoded.unwrap();
+                    let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::AudioBufferSourceNode::set_loop_end(
                             &mut api_that,
@@ -11571,7 +11571,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_set_loop_start_impl(
                             _ => unreachable!(),
                         }
                     }
-                    let mut api_that = &*api_that_decoded.unwrap();
+                    let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::AudioBufferSourceNode::set_loop_start(
                             &mut api_that,
@@ -11624,7 +11624,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_start_impl(
                             _ => unreachable!(),
                         }
                     }
-                    let mut api_that = &*api_that_decoded.unwrap();
+                    let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::AudioBufferSourceNode::start(&mut api_that);
                     })
@@ -11675,7 +11675,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_start_at_impl(
                             _ => unreachable!(),
                         }
                     }
-                    let mut api_that = &*api_that_decoded.unwrap();
+                    let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::AudioBufferSourceNode::start_at(
                             &mut api_that,
@@ -11730,7 +11730,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_start_at_with_offset_impl(
                             _ => unreachable!(),
                         }
                     }
-                    let mut api_that = &*api_that_decoded.unwrap();
+                    let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::AudioBufferSourceNode::start_at_with_offset(
                             &mut api_that,
@@ -11765,7 +11765,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
                 _ => unreachable!(),
             }
         }
-        let mut api_that = &*api_that_decoded.unwrap();
+        let mut api_that = &mut *api_that_decoded.unwrap();
  Result::<_,()>::Ok({ web_audio_api::node::AudioBufferSourceNode::start_at_with_offset_and_duration(&mut api_that, api_start, api_offset, api_duration); })
                     })())
                 } })
@@ -11811,7 +11811,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_stop_impl(
                             _ => unreachable!(),
                         }
                     }
-                    let mut api_that = &*api_that_decoded.unwrap();
+                    let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::AudioBufferSourceNode::stop(&mut api_that);
                     })
@@ -11862,7 +11862,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_stop_at_impl(
                             _ => unreachable!(),
                         }
                     }
-                    let mut api_that = &*api_that_decoded.unwrap();
+                    let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::AudioBufferSourceNode::stop_at(
                             &mut api_that,
@@ -13498,7 +13498,7 @@ fn wire__web_audio_api__node__BiquadFilterNode_set_type_impl(
                             _ => unreachable!(),
                         }
                     }
-                    let mut api_that = &*api_that_decoded.unwrap();
+                    let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::BiquadFilterNode::set_type(&mut api_that, api_type_);
                     })
@@ -15939,7 +15939,7 @@ fn wire__web_audio_api__node__ConstantSourceNode_start_impl(
                             _ => unreachable!(),
                         }
                     }
-                    let mut api_that = &*api_that_decoded.unwrap();
+                    let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::ConstantSourceNode::start(&mut api_that);
                     })
@@ -15990,7 +15990,7 @@ fn wire__web_audio_api__node__ConstantSourceNode_start_at_impl(
                             _ => unreachable!(),
                         }
                     }
-                    let mut api_that = &*api_that_decoded.unwrap();
+                    let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::ConstantSourceNode::start_at(&mut api_that, api_when);
                     })
@@ -16040,7 +16040,7 @@ fn wire__web_audio_api__node__ConstantSourceNode_stop_impl(
                             _ => unreachable!(),
                         }
                     }
-                    let mut api_that = &*api_that_decoded.unwrap();
+                    let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::ConstantSourceNode::stop(&mut api_that);
                     })
@@ -16091,7 +16091,7 @@ fn wire__web_audio_api__node__ConstantSourceNode_stop_at_impl(
                             _ => unreachable!(),
                         }
                     }
-                    let mut api_that = &*api_that_decoded.unwrap();
+                    let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::ConstantSourceNode::stop_at(&mut api_that, api_when);
                     })
@@ -16796,7 +16796,7 @@ fn wire__web_audio_api__node__ConvolverNode_set_buffer_impl(
                             _ => unreachable!(),
                         }
                     }
-                    let mut api_that = &*api_that_decoded.unwrap();
+                    let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::ConvolverNode::set_buffer(&mut api_that, api_buffer);
                     })
@@ -17004,7 +17004,7 @@ fn wire__web_audio_api__node__ConvolverNode_set_normalize_impl(
                             _ => unreachable!(),
                         }
                     }
-                    let mut api_that = &*api_that_decoded.unwrap();
+                    let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::ConvolverNode::set_normalize(&mut api_that, api_value);
                     })
@@ -23936,7 +23936,7 @@ fn wire__web_audio_api__node__OscillatorNode_set_periodic_wave_impl(
                             _ => unreachable!(),
                         }
                     }
-                    let mut api_that = &*api_that_decoded.unwrap();
+                    let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::OscillatorNode::set_periodic_wave(
                             &mut api_that,
@@ -23990,7 +23990,7 @@ fn wire__web_audio_api__node__OscillatorNode_set_type_impl(
                             _ => unreachable!(),
                         }
                     }
-                    let mut api_that = &*api_that_decoded.unwrap();
+                    let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::OscillatorNode::set_type(&mut api_that, api_type_);
                     })
@@ -24040,7 +24040,7 @@ fn wire__web_audio_api__node__OscillatorNode_start_impl(
                             _ => unreachable!(),
                         }
                     }
-                    let mut api_that = &*api_that_decoded.unwrap();
+                    let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::OscillatorNode::start(&mut api_that);
                     })
@@ -24091,7 +24091,7 @@ fn wire__web_audio_api__node__OscillatorNode_start_at_impl(
                             _ => unreachable!(),
                         }
                     }
-                    let mut api_that = &*api_that_decoded.unwrap();
+                    let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::OscillatorNode::start_at(&mut api_that, api_when);
                     })
@@ -24141,7 +24141,7 @@ fn wire__web_audio_api__node__OscillatorNode_stop_impl(
                             _ => unreachable!(),
                         }
                     }
-                    let mut api_that = &*api_that_decoded.unwrap();
+                    let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::OscillatorNode::stop(&mut api_that);
                     })
@@ -24192,7 +24192,7 @@ fn wire__web_audio_api__node__OscillatorNode_stop_at_impl(
                             _ => unreachable!(),
                         }
                     }
-                    let mut api_that = &*api_that_decoded.unwrap();
+                    let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::OscillatorNode::stop_at(&mut api_that, api_when);
                     })
@@ -25434,7 +25434,7 @@ fn wire__web_audio_api__node__PannerNode_set_cone_inner_angle_impl(
                             _ => unreachable!(),
                         }
                     }
-                    let mut api_that = &*api_that_decoded.unwrap();
+                    let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::PannerNode::set_cone_inner_angle(
                             &mut api_that,
@@ -25488,7 +25488,7 @@ fn wire__web_audio_api__node__PannerNode_set_cone_outer_angle_impl(
                             _ => unreachable!(),
                         }
                     }
-                    let mut api_that = &*api_that_decoded.unwrap();
+                    let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::PannerNode::set_cone_outer_angle(
                             &mut api_that,
@@ -25542,7 +25542,7 @@ fn wire__web_audio_api__node__PannerNode_set_cone_outer_gain_impl(
                             _ => unreachable!(),
                         }
                     }
-                    let mut api_that = &*api_that_decoded.unwrap();
+                    let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::PannerNode::set_cone_outer_gain(
                             &mut api_that,
@@ -25596,7 +25596,7 @@ fn wire__web_audio_api__node__PannerNode_set_distance_model_impl(
                             _ => unreachable!(),
                         }
                     }
-                    let mut api_that = &*api_that_decoded.unwrap();
+                    let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::PannerNode::set_distance_model(
                             &mut api_that,
@@ -25650,7 +25650,7 @@ fn wire__web_audio_api__node__PannerNode_set_max_distance_impl(
                             _ => unreachable!(),
                         }
                     }
-                    let mut api_that = &*api_that_decoded.unwrap();
+                    let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::PannerNode::set_max_distance(&mut api_that, api_value);
                     })
@@ -25756,7 +25756,7 @@ fn wire__web_audio_api__node__PannerNode_set_panning_model_impl(
                             _ => unreachable!(),
                         }
                     }
-                    let mut api_that = &*api_that_decoded.unwrap();
+                    let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::PannerNode::set_panning_model(
                             &mut api_that,
@@ -25865,7 +25865,7 @@ fn wire__web_audio_api__node__PannerNode_set_ref_distance_impl(
                             _ => unreachable!(),
                         }
                     }
-                    let mut api_that = &*api_that_decoded.unwrap();
+                    let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::PannerNode::set_ref_distance(&mut api_that, api_value);
                     })
@@ -25916,7 +25916,7 @@ fn wire__web_audio_api__node__PannerNode_set_rolloff_factor_impl(
                             _ => unreachable!(),
                         }
                     }
-                    let mut api_that = &*api_that_decoded.unwrap();
+                    let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::PannerNode::set_rolloff_factor(
                             &mut api_that,
@@ -28409,7 +28409,7 @@ fn wire__web_audio_api__node__WaveShaperNode_set_curve_impl(
                             _ => unreachable!(),
                         }
                     }
-                    let mut api_that = &*api_that_decoded.unwrap();
+                    let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::WaveShaperNode::set_curve(&mut api_that, api_curve);
                     })
@@ -28461,7 +28461,7 @@ fn wire__web_audio_api__node__WaveShaperNode_set_oversample_impl(
                             _ => unreachable!(),
                         }
                     }
-                    let mut api_that = &*api_that_decoded.unwrap();
+                    let mut api_that = &mut *api_that_decoded.unwrap();
                     Result::<_, ()>::Ok({
                         web_audio_api::node::WaveShaperNode::set_oversample(
                             &mut api_that,
