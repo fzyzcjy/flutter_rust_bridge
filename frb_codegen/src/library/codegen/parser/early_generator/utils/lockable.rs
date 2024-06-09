@@ -51,12 +51,12 @@ fn generate_code_impl(enum_name: &str, variants: &[VariantInfo]) -> String {
 
         impl {enum_name} {{
             #[flutter_rust_bridge::frb(ignore)]
-            pub fn blocking_read(&self) -> {trait_def_name}RwLockReadGuard {{
+            pub fn blocking_read(&self) -> {enum_name}RwLockReadGuard {{
                 {blocking_read_body}
             }}
 
             #[flutter_rust_bridge::frb(ignore)]
-            pub fn blocking_write(&mut self) -> {trait_def_name}RwLockWriteGuard {{
+            pub fn blocking_write(&mut self) -> {enum_name}RwLockWriteGuard {{
                 {blocking_write_body}
             }}
         }}"
@@ -72,7 +72,7 @@ enum ReadWrite {
 fn generate_code_read_write_guard(rw: ReadWrite, variants: &[VariantInfo]) -> String {
     let rw_pascal = rw.to_string().to_case(Case::Pascal);
 
-    let enum_name = format!("{trait_def_name}RwLock{rw_pascal}Guard");
+    let enum_name = format!("{enum_name}RwLock{rw_pascal}Guard");
     let enum_def = generate_enum_raw(variants, &format!("{enum_name}<'a>"), |variant| {
         format!("flutter_rust_bridge::for_generated::rust_async::RwLock{rw_pascal}Guard<'a, {ty}>")
     });
@@ -81,7 +81,7 @@ fn generate_code_read_write_guard(rw: ReadWrite, variants: &[VariantInfo]) -> St
     let deref_code = format!(
         "
         impl std::ops::Deref for {enum_name}<'_> {{
-            type Target = dyn {trait_def_name};
+            type Target = dyn TODO;
 
             fn deref(&self) -> &Self::Target {{
                 {deref_body}
