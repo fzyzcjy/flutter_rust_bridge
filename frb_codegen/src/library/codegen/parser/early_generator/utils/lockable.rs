@@ -62,6 +62,9 @@ fn generate_code_lockable_impl(enum_name: &str, variants: &[VariantInfo]) -> Str
         )
     });
 
+    let lockable_order_body =
+        generate_match_raw(variants, |variant| "inner.lockable_order()".to_string());
+
     format!(
         "
         impl {enum_name} {{
@@ -87,7 +90,7 @@ fn generate_code_lockable_impl(enum_name: &str, variants: &[VariantInfo]) -> Str
             type RwLockWriteGuard<'a> = {enum_name}RwLockWriteGuard<'a>;
 
             fn lockable_order(&self) -> LockableOrder {{
-                TODO
+                {lockable_order_body}
             }}
 
             fn lockable_decode_sync_ref(&self) -> Self::RwLockReadGuard<'_> {{
