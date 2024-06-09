@@ -1,5 +1,4 @@
 use crate::codegen::ir::mir::func::{MirFunc, MirFuncInput, OwnershipMode};
-use crate::codegen::ir::mir::ty::rust_auto_opaque_implicit::MirTypeRustAutoOpaqueImplicit;
 use crate::codegen::ir::mir::ty::MirType;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
@@ -11,7 +10,7 @@ pub(crate) fn generate_code_inner_decode(func: &MirFunc) -> String {
     }
 
     let declarations = (interest_fields.iter())
-        .map(|(field, _ty)| {
+        .map(|(field, _ownership_mode)| {
             format!(
                 "let mut api_{name}_decoded = None;\n",
                 name = get_variable_name(field)
@@ -20,8 +19,8 @@ pub(crate) fn generate_code_inner_decode(func: &MirFunc) -> String {
         .join("");
 
     let var_orders = (interest_fields.iter().enumerate())
-        .map(|(index, (field, ty))| {
-            let mutable = (ty.ownership_mode == OwnershipMode::RefMut).to_string();
+        .map(|(index, (field, ownership_mode))| {
+            let mutable = (ownership_mode == &OwnershipMode::RefMut).to_string();
             format!(
                 "flutter_rust_bridge::for_generated::LockableOrderInfo::new(&api_{name}, {index}, {mutable})",
                 name = get_variable_name(field)
@@ -30,14 +29,17 @@ pub(crate) fn generate_code_inner_decode(func: &MirFunc) -> String {
         .join(", ");
 
     let match_arms = (interest_fields.iter().enumerate())
-        .map(|(index, (field, ty))| {
-            format!("{index} => {},", generate_decode_statement(func, field, ty))
+        .map(|(index, (field, ownership_mode))| {
+            format!(
+                "{index} => {},",
+                generate_decode_statement(func, field, *ownership_mode)
+            )
         })
         .join("\n");
 
     let unwraps = (interest_fields.iter())
-        .map(|(field, ty)| {
-            let mutability = if ty.ownership_mode == OwnershipMode::RefMut {
+        .map(|(field, ownership_mode)| {
+            let mutability = if ownership_mode == &OwnershipMode::RefMut {
                 "mut "
             } else {
                 ""
@@ -64,9 +66,9 @@ pub(crate) fn generate_code_inner_decode(func: &MirFunc) -> String {
 fn generate_decode_statement(
     func: &MirFunc,
     field: &MirFuncInput,
-    ty: &MirTypeRustAutoOpaqueImplicit,
+    ownership_mode: OwnershipMode,
 ) -> String {
-    let mode = ty.ownership_mode.to_string().to_case(Case::Snake);
+    let mode = ownership_mode.to_string().to_case(Case::Snake);
     format!(
         "api_{name}_decoded = Some(api_{name}.lockable_decode_{syncness}_{mode}(){maybe_await})",
         name = get_variable_name(field),
@@ -75,12 +77,12 @@ fn generate_decode_statement(
     )
 }
 
-fn filter_interest_fields(func: &MirFunc) -> Vec<(&MirFuncInput, &MirTypeRustAutoOpaqueImplicit)> {
+fn filter_interest_fields(func: &MirFunc) -> Vec<(&MirFuncInput, OwnershipMode)> {
     (func.inputs.iter())
         .filter_map(|field| {
             if let MirType::RustAutoOpaqueImplicit(ty) = &field.inner.ty {
                 if ty.ownership_mode != OwnershipMode::Owned {
-                    Some((field, ty))
+                    Some((field, ty.ownership_mode))
                 } else {
                     None
                 }
