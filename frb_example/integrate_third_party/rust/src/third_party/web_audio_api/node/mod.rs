@@ -108,7 +108,7 @@ macro_rules! handle_getter_audio_param {
         #[frb(external)]
         impl $struct_name {
             $(
-                #[frb(ignore)]
+                #[frb(proxy)]
                 pub fn $func_name() {}
             )+
         }
