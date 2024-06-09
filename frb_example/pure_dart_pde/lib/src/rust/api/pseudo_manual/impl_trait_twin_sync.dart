@@ -6,12 +6,6 @@
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-int funcArgTraitImplTwinSync(
-        {required SimpleTraitForDynTwinSyncImplementor arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualImplTraitTwinSyncFuncArgTraitImplTwinSync(
-            arg: arg);
-
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructOneWithTraitForDynTwinSync>>
 abstract class StructOneWithTraitForDynTwinSync
     implements RustOpaqueInterface, SimpleTraitForDynTwinSync {

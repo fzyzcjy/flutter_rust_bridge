@@ -2,7 +2,7 @@
 
 // FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["rustAsync", "rustAsync sse"]}
 
-use crate::frb_generated::SimpleTraitForDynTwinNormalImplementor;
+// use crate::frb_generated::SimpleTraitForDynTwinNormalImplementor;
 use flutter_rust_bridge::frb;
 
 pub trait SimpleTraitTwinNormal {
@@ -78,7 +78,7 @@ impl SimpleTraitForDynTwinNormal for StructTwoWithTraitForDynTwinNormal {
     }
 }
 
-pub fn func_arg_trait_impl_twin_normal(arg: SimpleTraitForDynTwinNormalImplementor) -> i32 {
-    let arg = arg.blocking_read();
-    arg.simple_method_twin_normal()
-}
+// pub fn func_arg_trait_impl_twin_normal(arg: SimpleTraitForDynTwinNormalImplementor) -> i32 {
+//     let arg = arg.blocking_read();
+//     arg.simple_method_twin_normal()
+// }

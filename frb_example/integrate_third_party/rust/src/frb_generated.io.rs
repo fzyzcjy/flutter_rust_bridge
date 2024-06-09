@@ -27,6 +27,7 @@ use crate::api::override_web_audio_api::PannerNodeExt;
 use crate::api::override_web_audio_api::ScriptProcessorNodeExt;
 use crate::api::override_web_audio_api::StereoPannerNodeExt;
 use crate::api::override_web_audio_api::WaveShaperNodeExt;
+use crate::api::override_web_audio_api::*;
 use crate::api::simple::*;
 use flutter_rust_bridge::for_generated::byteorder::{NativeEndian, ReadBytesExt, WriteBytesExt};
 use flutter_rust_bridge::for_generated::{transform_result_dco, Lockable};
@@ -142,6 +143,20 @@ pub extern "C" fn frbgen_frb_example_integrate_third_party_rust_arc_decrement_st
     ptr: *const std::ffi::c_void,
 ) {
     MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioListener>>::decrement_strong_count(ptr as _);
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioNodeImplementor(
+    ptr: *const std::ffi::c_void,
+) {
+    MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioNodeImplementor>>::increment_strong_count(ptr as _);
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioNodeImplementor(
+    ptr: *const std::ffi::c_void,
+) {
+    MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioNodeImplementor>>::decrement_strong_count(ptr as _);
 }
 
 #[no_mangle]
