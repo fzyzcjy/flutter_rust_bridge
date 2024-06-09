@@ -170,7 +170,8 @@ const sidebars = {
                     },
                     items: [
                         'guides/traits/overview',
-                        'guides/traits/translations',
+                        'guides/traits/definitions',
+                        'guides/traits/implementations',
                         'guides/traits/trait-objects',
                     ],
                 },
