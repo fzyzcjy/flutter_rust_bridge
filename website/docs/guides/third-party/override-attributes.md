@@ -1,14 +1,10 @@
-# Overrides
-
-This page shows how to override an existing third-party function/method/struct/enum/etc.
-
-## Override attributes
+# Override attributes
 
 If the implementations of an external component (function/method/struct/enum/etc) is good,
 and we only want to add some *attributes* to it,
 then we only need to write down component name and new attributes inside our first-party package like below.
 
-### Example: Making methods synchronous getters
+## Example: Making methods synchronous getters
 
 Suppose we are interested in the `web_audio_api::AudioParam::value` method in third-party crate:
 
@@ -40,7 +36,3 @@ Remarks:
 
 * No need to repeat function signatures (such as `&self`, `f32`, etc) - the function name itself is sufficient.
 * Please put the code inside `src/third_party/{third-party-crate-name}/{path-to-the-module}`. For example, for `hello::a::b::C` we need to put in `src/third_party/hello/a/b.rs`
-
-## Override code
-
-TODO
