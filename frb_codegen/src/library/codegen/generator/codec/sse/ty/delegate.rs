@@ -298,6 +298,7 @@ fn generate_proxy_enum_dart_encode(
         .map(|(index, variant)| encode_to_enum::VariantInfo {
             enum_variant_name: format!("variant{index}"),
             ty_name: proxy_variant::compute_dart_extra_type(variant, context),
+            extra_code: "._upstream".to_owned(),
         })
         .collect_vec();
 
