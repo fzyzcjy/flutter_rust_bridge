@@ -4,6 +4,49 @@
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
 * Fix dashed library names #2034 (thanks @vhdirk)
+* Refactor internals to base on mods instead of files #2000
+* Support code in mod file #2000
+* Support code in lib.rs file #2000
+* Fix dart_code cannot generate when containing brackets confusing to mod parser #2000
+* Support multiple input path prefixes #2000
+* Add dart_type_rename to customize Dart names of opaque types #2006
+* Support automatic scanning of third party crates (part 1) #2007
+* Enhance usize and isize #2008
+* Support syntax of `pub use something::*` #2009
+* Improve Dart output directory of third party crates #2010
+* Support overriding things in third party crate #2011 #2013
+* Automatically mark methods of non-pub structs as ignored #2012
+* Refactor macros information encoding and decoding #2014
+* Detect and skip functions with generics #2015
+* Auto detect as opaque when third party struct/enum has non public field #2016
+* Auto convert reference type in return type as unit type #2017
+* Automatically mirror for scanned third party types #2018
+* Skip generating auto accessors for borrowed fields #2018
+* Support slices as arguments (such as `&[u8]`, `&[Something]`) #2019
+* Support non-exhaustive enumerations #2020
+* Improve Dart import generation #2021
+* Support trait methods and trait default implementations #2024
+* Improve pub use parsing and trait definition parsing in third party crates #2025
+* Add integrate_third_party example #2027
+* Support overriding third party methods #2029
+* Support adding new methods to third party structs #2029
+* Fix third party pub use scanning problem #2030
+* Support multiple `#[frb(external)]` impl blocks for a single struct #2030
+* Fix scanning third party pub use concrete type for methods #2031
+* Make generated Dart opaque class abstract to improve testability #2032
+* Refactor HIR (high-level intermediate representation) #2037
+* Add stop_on_error configuration #2037
+* Refactor override_priority and refine_namespace #2041
+* Support trait definitions and translate to Dart abstract classes #2033
+* Support third party overriding traits #2033
+* Refactor MIR (mid-level intermediate representation) parser #2044
+* Support `#[frb(generate_impl_enum)]` #2046
+* Fix overriding attributes in third party crates for traits #2046
+* Add RustOpaqueInterface to cleanup generated interface #2047
+* Refactor to extract early_generator between high-level intermediate representation and mid-level intermediate representation #2049
+* Support `#[frb(proxy)]` #2050 #2052 #2053
+* Refactor to extract Lockable #2051
+* Support &dyn Trait #2054
 
 ## 2.0.0-dev.37
 

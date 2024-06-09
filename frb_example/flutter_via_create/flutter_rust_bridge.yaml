@@ -1,3 +1,4 @@
-rust_input: rust/src/api/**/*.rs
+rust_input: crate::api
+rust_root: rust/
 dart_output: lib/src/rust
 local: true
