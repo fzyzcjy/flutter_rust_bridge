@@ -315,8 +315,8 @@ fn generate_dyn_trait_dart_encode(
 
     let variants = (mir.variants.iter().enumerate())
         .map(|(index, variant)| encode_to_enum::VariantInfo {
-            enum_variant_name: TODO,
-            ty_name: TODO,
+            enum_variant_name: format!("variant{index}"),
+            ty_name: ApiDartGenerator::new(variant.ty.clone(), context).dart_api_type(),
             extra_code: "".to_owned(),
         })
         .collect_vec();
