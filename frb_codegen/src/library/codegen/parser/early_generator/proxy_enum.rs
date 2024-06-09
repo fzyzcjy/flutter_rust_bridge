@@ -74,7 +74,7 @@ fn generate_proxy_enum(proxy_variants: &[&MirTypeDelegateProxyVariant]) -> Strin
         })
         .join("");
 
-    let impl_lockable = generate_impl_lockable(enum_name);
+    let impl_lockable = generate_impl_lockable(&enum_name);
 
     format!(
         "
@@ -125,7 +125,7 @@ fn generate_impl_lockable(enum_name: &str) -> String {
             {{
                 Box::pin(async move {{ TODO }})
             }}
-        }
+        }}
         "
     )
 }
