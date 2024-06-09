@@ -62,6 +62,19 @@ fn generate_code_lockable_impl(enum_name: &str, variants: &[VariantInfo]) -> Str
         )
     });
 
+    let read_body = generate_match_raw(variants, |variant| {
+        format!(
+            "{enum_name}RwLockReadGuard::{}(inner.read().await)",
+            variant.enum_variant_name
+        )
+    });
+    let write_body = generate_match_raw(variants, |variant| {
+        format!(
+            "{enum_name}RwLockWriteGuard::{}(inner.write().await)",
+            variant.enum_variant_name
+        )
+    });
+
     let lockable_order_body =
         generate_match_raw(variants, |variant| "inner.lockable_order()".to_string());
 
@@ -77,11 +90,11 @@ fn generate_code_lockable_impl(enum_name: &str, variants: &[VariantInfo]) -> Str
             }}
 
             pub async fn read(&self) -> {enum_name}RwLockReadGuard {{
-                TODO
+                {read_body}
             }}
 
             pub async fn write(&mut self) -> {enum_name}RwLockWriteGuard {{
-                TODO
+                {write_body}
             }}
         }}
 
