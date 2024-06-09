@@ -360,7 +360,7 @@ impl MirTypeDelegateDynTrait {
     }
 
     pub(crate) fn inner_enum_name(&self) -> String {
-        format!("{}DynImplEnum", self.trait_def_name.name)
+        format!("{}Implementor", self.trait_def_name.name)
     }
 
     pub(crate) fn safe_ident(&self) -> String {
