@@ -180,7 +180,7 @@ abstract class AudioBufferSourceNode
   /// expressed in cents
   ///
   /// see <https://en.wikipedia.org/wiki/Cent_(music)>
-  Future<AudioParam> detune();
+  AudioParam get detune;
 
   /// Disconnects all outgoing connections from the AudioNode.
   Future<void> disconnect();
@@ -216,7 +216,7 @@ abstract class AudioBufferSourceNode
   /// - `-1` will play the file in reverse
   ///
   /// Note that playback rate will also alter the pitch of the [`AudioBuffer`]
-  Future<AudioParam> playbackRate();
+  AudioParam get playbackRate;
 
   /// Current playhead position in seconds within the [`AudioBuffer`].
   ///
@@ -395,7 +395,7 @@ abstract class BiquadFilterNode
   Future<void> context();
 
   /// Returns the detune audio parameter
-  Future<AudioParam> detune();
+  AudioParam get detune;
 
   /// Disconnects all outgoing connections from the AudioNode.
   Future<void> disconnect();
@@ -411,10 +411,10 @@ abstract class BiquadFilterNode
   Future<void> connect();
 
   /// Returns the frequency audio parameter
-  Future<AudioParam> frequency();
+  AudioParam get frequency;
 
   /// Returns the gain audio parameter
-  Future<AudioParam> gain();
+  AudioParam get gain;
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
   Future<BigInt> numberOfInputs();
@@ -423,7 +423,7 @@ abstract class BiquadFilterNode
   Future<BigInt> numberOfOutputs();
 
   /// Returns the Q audio parameter
-  Future<AudioParam> q();
+  AudioParam get q;
 
   /// Handle of the associated [`BaseAudioContext`](crate::context::BaseAudioContext).
   ///
@@ -625,7 +625,7 @@ abstract class ConstantSourceNode
   /// The number of outputs coming out of the AudioNode.
   Future<BigInt> numberOfOutputs();
 
-  Future<AudioParam> offset();
+  AudioParam get offset;
 
   /// Handle of the associated [`BaseAudioContext`](crate::context::BaseAudioContext).
   ///
@@ -773,7 +773,7 @@ abstract class DelayNode
   Future<void> context();
 
   /// A-rate [`AudioParam`] representing the amount of delay (in seconds) to apply.
-  Future<AudioParam> delayTime();
+  AudioParam get delayTime;
 
   /// Disconnects all outgoing connections from the AudioNode.
   Future<void> disconnect();
@@ -812,7 +812,7 @@ abstract class DelayNode
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<DynamicsCompressorNode>>
 abstract class DynamicsCompressorNode
     implements RustOpaqueInterface, AudioNode, DynamicsCompressorNodeExt {
-  Future<AudioParam> attack();
+  AudioParam get attack;
 
   /// Config for up/down-mixing of input channels for this node.
   ///
@@ -851,7 +851,7 @@ abstract class DynamicsCompressorNode
 
   Future<void> connect();
 
-  Future<AudioParam> knee();
+  AudioParam get knee;
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
   Future<BigInt> numberOfInputs();
@@ -859,7 +859,7 @@ abstract class DynamicsCompressorNode
   /// The number of outputs coming out of the AudioNode.
   Future<BigInt> numberOfOutputs();
 
-  Future<AudioParam> ratio();
+  AudioParam get ratio;
 
   Future<double> reduction();
 
@@ -868,7 +868,7 @@ abstract class DynamicsCompressorNode
   /// Only when implementing the AudioNode trait manually, this struct is of any concern.
   Future<void> registration();
 
-  Future<AudioParam> release();
+  AudioParam get release;
 
   /// Update the `channel_count` attribute
   Future<void> setChannelCount({required BigInt v});
@@ -879,7 +879,7 @@ abstract class DynamicsCompressorNode
   /// Update the `channel_interpretation` attribute
   Future<void> setChannelInterpretation({required ChannelInterpretation v});
 
-  Future<AudioParam> threshold();
+  AudioParam get threshold;
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<GainNode>>
@@ -921,7 +921,7 @@ abstract class GainNode implements RustOpaqueInterface, AudioNode, GainNodeExt {
 
   Future<void> connect();
 
-  Future<AudioParam> gain();
+  AudioParam get gain;
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
   Future<BigInt> numberOfInputs();
@@ -1299,7 +1299,7 @@ abstract class OscillatorNode
   /// see <https://en.wikipedia.org/wiki/Cent_(music)>
   ///
   /// The final frequency is calculated as follow: frequency * 2^(detune/1200)
-  Future<AudioParam> detune();
+  AudioParam get detune;
 
   /// Disconnects all outgoing connections from the AudioNode.
   Future<void> disconnect();
@@ -1318,7 +1318,7 @@ abstract class OscillatorNode
   /// oscillator, expressed in Hz
   ///
   /// The final frequency is calculated as follow: frequency * 2^(detune/1200)
-  Future<AudioParam> frequency();
+  AudioParam get frequency;
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
   Future<BigInt> numberOfInputs();
@@ -1445,19 +1445,19 @@ abstract class PannerNode
   /// The number of outputs coming out of the AudioNode.
   Future<BigInt> numberOfOutputs();
 
-  Future<AudioParam> orientationX();
+  AudioParam get orientationX;
 
-  Future<AudioParam> orientationY();
+  AudioParam get orientationY;
 
-  Future<AudioParam> orientationZ();
+  AudioParam get orientationZ;
 
   Future<PanningModelType> panningModel();
 
-  Future<AudioParam> positionX();
+  AudioParam get positionX;
 
-  Future<AudioParam> positionY();
+  AudioParam get positionY;
 
-  Future<AudioParam> positionZ();
+  AudioParam get positionZ;
 
   Future<double> refDistance();
 
@@ -1633,7 +1633,7 @@ abstract class StereoPannerNode
   Future<BigInt> numberOfOutputs();
 
   /// Returns the pan audio parameter
-  Future<AudioParam> pan();
+  AudioParam get pan;
 
   /// Handle of the associated [`BaseAudioContext`](crate::context::BaseAudioContext).
   ///

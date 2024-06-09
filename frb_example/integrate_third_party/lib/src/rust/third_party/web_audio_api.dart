@@ -73,23 +73,23 @@ abstract class AudioBuffer implements RustOpaqueInterface {
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioListener>>
 abstract class AudioListener implements RustOpaqueInterface {
-  Future<AudioParam> forwardX();
+  AudioParam get forwardX;
 
-  Future<AudioParam> forwardY();
+  AudioParam get forwardY;
 
-  Future<AudioParam> forwardZ();
+  AudioParam get forwardZ;
 
-  Future<AudioParam> positionX();
+  AudioParam get positionX;
 
-  Future<AudioParam> positionY();
+  AudioParam get positionY;
 
-  Future<AudioParam> positionZ();
+  AudioParam get positionZ;
 
-  Future<AudioParam> upX();
+  AudioParam get upX;
 
-  Future<AudioParam> upY();
+  AudioParam get upY;
 
-  Future<AudioParam> upZ();
+  AudioParam get upZ;
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioParam>>
@@ -247,7 +247,7 @@ abstract class AudioParam
       required double duration});
 
   /// Retrieve the current value of the `AudioParam`.
-  Future<double> value();
+  double get value;
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioProcessingEvent>>

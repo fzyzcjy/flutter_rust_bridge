@@ -195,7 +195,7 @@ abstract class RustLibApi extends BaseApi {
       required double startTime,
       required double duration});
 
-  Future<double> webAudioApiAudioParamValue({required AudioParam that});
+  double webAudioApiAudioParamValue({required AudioParam that});
 
   AudioBuffer webAudioApiAudioProcessingEventGetInputBuffer(
       {required AudioProcessingEvent that});
@@ -3337,14 +3337,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<double> webAudioApiAudioParamValue({required AudioParam that}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
+  double webAudioApiAudioParamValue({required AudioParam that}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_ProxyEnum_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_audio_param_proxy_enum(
             that, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 72, port: port_);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 72)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_f_32,
@@ -26230,8 +26229,8 @@ class AudioBufferSourceNodeImpl extends RustOpaque
   /// expressed in cents
   ///
   /// see <https://en.wikipedia.org/wiki/Cent_(music)>
-  Future<AudioParam> detune() =>
-      Future.value(AudioParamProxyVariantAudioBufferSourceNodeDetune(this));
+  AudioParam get detune =>
+      AudioParamProxyVariantAudioBufferSourceNodeDetune(this);
 
   /// Disconnects all outgoing connections from the AudioNode.
   Future<void> disconnect() =>
@@ -26290,8 +26289,8 @@ class AudioBufferSourceNodeImpl extends RustOpaque
   /// - `-1` will play the file in reverse
   ///
   /// Note that playback rate will also alter the pitch of the [`AudioBuffer`]
-  Future<AudioParam> playbackRate() => Future.value(
-      AudioParamProxyVariantAudioBufferSourceNodePlaybackRate(this));
+  AudioParam get playbackRate =>
+      AudioParamProxyVariantAudioBufferSourceNodePlaybackRate(this);
 
   /// Current playhead position in seconds within the [`AudioBuffer`].
   ///
@@ -26937,32 +26936,26 @@ class AudioListenerImpl extends RustOpaque implements AudioListener {
         RustLib.instance.api.rust_arc_decrement_strong_count_AudioListenerPtr,
   );
 
-  Future<AudioParam> forwardX() =>
-      Future.value(AudioParamProxyVariantAudioListenerForwardX(this));
+  AudioParam get forwardX => AudioParamProxyVariantAudioListenerForwardX(this);
 
-  Future<AudioParam> forwardY() =>
-      Future.value(AudioParamProxyVariantAudioListenerForwardY(this));
+  AudioParam get forwardY => AudioParamProxyVariantAudioListenerForwardY(this);
 
-  Future<AudioParam> forwardZ() =>
-      Future.value(AudioParamProxyVariantAudioListenerForwardZ(this));
+  AudioParam get forwardZ => AudioParamProxyVariantAudioListenerForwardZ(this);
 
-  Future<AudioParam> positionX() =>
-      Future.value(AudioParamProxyVariantAudioListenerPositionX(this));
+  AudioParam get positionX =>
+      AudioParamProxyVariantAudioListenerPositionX(this);
 
-  Future<AudioParam> positionY() =>
-      Future.value(AudioParamProxyVariantAudioListenerPositionY(this));
+  AudioParam get positionY =>
+      AudioParamProxyVariantAudioListenerPositionY(this);
 
-  Future<AudioParam> positionZ() =>
-      Future.value(AudioParamProxyVariantAudioListenerPositionZ(this));
+  AudioParam get positionZ =>
+      AudioParamProxyVariantAudioListenerPositionZ(this);
 
-  Future<AudioParam> upX() =>
-      Future.value(AudioParamProxyVariantAudioListenerUpX(this));
+  AudioParam get upX => AudioParamProxyVariantAudioListenerUpX(this);
 
-  Future<AudioParam> upY() =>
-      Future.value(AudioParamProxyVariantAudioListenerUpY(this));
+  AudioParam get upY => AudioParamProxyVariantAudioListenerUpY(this);
 
-  Future<AudioParam> upZ() =>
-      Future.value(AudioParamProxyVariantAudioListenerUpZ(this));
+  AudioParam get upZ => AudioParamProxyVariantAudioListenerUpZ(this);
 }
 
 @sealed
@@ -27227,7 +27220,7 @@ class AudioParamImpl extends RustOpaque implements AudioParam {
           that: this, values: values, startTime: startTime, duration: duration);
 
   /// Retrieve the current value of the `AudioParam`.
-  Future<double> value() => RustLib.instance.api.webAudioApiAudioParamValue(
+  double get value => RustLib.instance.api.webAudioApiAudioParamValue(
         that: this,
       );
 }
@@ -27572,8 +27565,7 @@ class BiquadFilterNodeImpl extends RustOpaque implements BiquadFilterNode {
       );
 
   /// Returns the detune audio parameter
-  Future<AudioParam> detune() =>
-      Future.value(AudioParamProxyVariantBiquadFilterNodeDetune(this));
+  AudioParam get detune => AudioParamProxyVariantBiquadFilterNodeDetune(this);
 
   /// Disconnects all outgoing connections from the AudioNode.
   Future<void> disconnect() =>
@@ -27597,12 +27589,11 @@ class BiquadFilterNodeImpl extends RustOpaque implements BiquadFilterNode {
       );
 
   /// Returns the frequency audio parameter
-  Future<AudioParam> frequency() =>
-      Future.value(AudioParamProxyVariantBiquadFilterNodeFrequency(this));
+  AudioParam get frequency =>
+      AudioParamProxyVariantBiquadFilterNodeFrequency(this);
 
   /// Returns the gain audio parameter
-  Future<AudioParam> gain() =>
-      Future.value(AudioParamProxyVariantBiquadFilterNodeGain(this));
+  AudioParam get gain => AudioParamProxyVariantBiquadFilterNodeGain(this);
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
   Future<BigInt> numberOfInputs() =>
@@ -27617,8 +27608,7 @@ class BiquadFilterNodeImpl extends RustOpaque implements BiquadFilterNode {
       );
 
   /// Returns the Q audio parameter
-  Future<AudioParam> q() =>
-      Future.value(AudioParamProxyVariantBiquadFilterNodeQ(this));
+  AudioParam get q => AudioParamProxyVariantBiquadFilterNodeQ(this);
 
   /// Handle of the associated [`BaseAudioContext`](crate::context::BaseAudioContext).
   ///
@@ -28272,8 +28262,7 @@ class ConstantSourceNodeImpl extends RustOpaque implements ConstantSourceNode {
         that: this,
       );
 
-  Future<AudioParam> offset() =>
-      Future.value(AudioParamProxyVariantConstantSourceNodeOffset(this));
+  AudioParam get offset => AudioParamProxyVariantConstantSourceNodeOffset(this);
 
   /// Handle of the associated [`BaseAudioContext`](crate::context::BaseAudioContext).
   ///
@@ -28533,8 +28522,7 @@ class DelayNodeImpl extends RustOpaque implements DelayNode {
       );
 
   /// A-rate [`AudioParam`] representing the amount of delay (in seconds) to apply.
-  Future<AudioParam> delayTime() =>
-      Future.value(AudioParamProxyVariantDelayNodeDelayTime(this));
+  AudioParam get delayTime => AudioParamProxyVariantDelayNodeDelayTime(this);
 
   /// Disconnects all outgoing connections from the AudioNode.
   Future<void> disconnect() =>
@@ -28633,8 +28621,8 @@ class DynamicsCompressorNodeImpl extends RustOpaque
         .instance.api.rust_arc_decrement_strong_count_DynamicsCompressorNodePtr,
   );
 
-  Future<AudioParam> attack() =>
-      Future.value(AudioParamProxyVariantDynamicsCompressorNodeAttack(this));
+  AudioParam get attack =>
+      AudioParamProxyVariantDynamicsCompressorNodeAttack(this);
 
   /// Config for up/down-mixing of input channels for this node.
   ///
@@ -28700,8 +28688,7 @@ class DynamicsCompressorNodeImpl extends RustOpaque
         that: this,
       );
 
-  Future<AudioParam> knee() =>
-      Future.value(AudioParamProxyVariantDynamicsCompressorNodeKnee(this));
+  AudioParam get knee => AudioParamProxyVariantDynamicsCompressorNodeKnee(this);
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
   Future<BigInt> numberOfInputs() =>
@@ -28715,8 +28702,8 @@ class DynamicsCompressorNodeImpl extends RustOpaque
         that: this,
       );
 
-  Future<AudioParam> ratio() =>
-      Future.value(AudioParamProxyVariantDynamicsCompressorNodeRatio(this));
+  AudioParam get ratio =>
+      AudioParamProxyVariantDynamicsCompressorNodeRatio(this);
 
   Future<double> reduction() =>
       RustLib.instance.api.webAudioApiNodeDynamicsCompressorNodeReduction(
@@ -28731,8 +28718,8 @@ class DynamicsCompressorNodeImpl extends RustOpaque
         that: this,
       );
 
-  Future<AudioParam> release() =>
-      Future.value(AudioParamProxyVariantDynamicsCompressorNodeRelease(this));
+  AudioParam get release =>
+      AudioParamProxyVariantDynamicsCompressorNodeRelease(this);
 
   /// Update the `channel_count` attribute
   Future<void> setChannelCount({required BigInt v}) => RustLib.instance.api
@@ -28750,8 +28737,8 @@ class DynamicsCompressorNodeImpl extends RustOpaque
           .webAudioApiNodeDynamicsCompressorNodeSetChannelInterpretation(
               that: this, v: v);
 
-  Future<AudioParam> threshold() =>
-      Future.value(AudioParamProxyVariantDynamicsCompressorNodeThreshold(this));
+  AudioParam get threshold =>
+      AudioParamProxyVariantDynamicsCompressorNodeThreshold(this);
 }
 
 @sealed
@@ -28855,8 +28842,7 @@ class GainNodeImpl extends RustOpaque implements GainNode {
         that: this,
       );
 
-  Future<AudioParam> gain() =>
-      Future.value(AudioParamProxyVariantGainNodeGain(this));
+  AudioParam get gain => AudioParamProxyVariantGainNodeGain(this);
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
   Future<BigInt> numberOfInputs() =>
@@ -30068,8 +30054,7 @@ class OscillatorNodeImpl extends RustOpaque implements OscillatorNode {
   /// see <https://en.wikipedia.org/wiki/Cent_(music)>
   ///
   /// The final frequency is calculated as follow: frequency * 2^(detune/1200)
-  Future<AudioParam> detune() =>
-      Future.value(AudioParamProxyVariantOscillatorNodeDetune(this));
+  AudioParam get detune => AudioParamProxyVariantOscillatorNodeDetune(this);
 
   /// Disconnects all outgoing connections from the AudioNode.
   Future<void> disconnect() =>
@@ -30096,8 +30081,8 @@ class OscillatorNodeImpl extends RustOpaque implements OscillatorNode {
   /// oscillator, expressed in Hz
   ///
   /// The final frequency is calculated as follow: frequency * 2^(detune/1200)
-  Future<AudioParam> frequency() =>
-      Future.value(AudioParamProxyVariantOscillatorNodeFrequency(this));
+  AudioParam get frequency =>
+      AudioParamProxyVariantOscillatorNodeFrequency(this);
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
   Future<BigInt> numberOfInputs() =>
@@ -30315,28 +30300,25 @@ class PannerNodeImpl extends RustOpaque implements PannerNode {
         that: this,
       );
 
-  Future<AudioParam> orientationX() =>
-      Future.value(AudioParamProxyVariantPannerNodeOrientationX(this));
+  AudioParam get orientationX =>
+      AudioParamProxyVariantPannerNodeOrientationX(this);
 
-  Future<AudioParam> orientationY() =>
-      Future.value(AudioParamProxyVariantPannerNodeOrientationY(this));
+  AudioParam get orientationY =>
+      AudioParamProxyVariantPannerNodeOrientationY(this);
 
-  Future<AudioParam> orientationZ() =>
-      Future.value(AudioParamProxyVariantPannerNodeOrientationZ(this));
+  AudioParam get orientationZ =>
+      AudioParamProxyVariantPannerNodeOrientationZ(this);
 
   Future<PanningModelType> panningModel() =>
       RustLib.instance.api.webAudioApiNodePannerNodePanningModel(
         that: this,
       );
 
-  Future<AudioParam> positionX() =>
-      Future.value(AudioParamProxyVariantPannerNodePositionX(this));
+  AudioParam get positionX => AudioParamProxyVariantPannerNodePositionX(this);
 
-  Future<AudioParam> positionY() =>
-      Future.value(AudioParamProxyVariantPannerNodePositionY(this));
+  AudioParam get positionY => AudioParamProxyVariantPannerNodePositionY(this);
 
-  Future<AudioParam> positionZ() =>
-      Future.value(AudioParamProxyVariantPannerNodePositionZ(this));
+  AudioParam get positionZ => AudioParamProxyVariantPannerNodePositionZ(this);
 
   Future<double> refDistance() =>
       RustLib.instance.api.webAudioApiNodePannerNodeRefDistance(
@@ -30676,8 +30658,7 @@ class StereoPannerNodeImpl extends RustOpaque implements StereoPannerNode {
       );
 
   /// Returns the pan audio parameter
-  Future<AudioParam> pan() =>
-      Future.value(AudioParamProxyVariantStereoPannerNodePan(this));
+  AudioParam get pan => AudioParamProxyVariantStereoPannerNodePan(this);
 
   /// Handle of the associated [`BaseAudioContext`](crate::context::BaseAudioContext).
   ///
@@ -31079,7 +31060,7 @@ class AudioParamProxyVariantAudioBufferSourceNodeDetune
           that: this, values: values, startTime: startTime, duration: duration);
 
   /// Retrieve the current value of the `AudioParam`.
-  Future<double> value() => RustLib.instance.api.webAudioApiAudioParamValue(
+  double get value => RustLib.instance.api.webAudioApiAudioParamValue(
         that: this,
       );
 }
@@ -31314,7 +31295,7 @@ class AudioParamProxyVariantAudioBufferSourceNodePlaybackRate
           that: this, values: values, startTime: startTime, duration: duration);
 
   /// Retrieve the current value of the `AudioParam`.
-  Future<double> value() => RustLib.instance.api.webAudioApiAudioParamValue(
+  double get value => RustLib.instance.api.webAudioApiAudioParamValue(
         that: this,
       );
 }
@@ -31549,7 +31530,7 @@ class AudioParamProxyVariantAudioListenerForwardX
           that: this, values: values, startTime: startTime, duration: duration);
 
   /// Retrieve the current value of the `AudioParam`.
-  Future<double> value() => RustLib.instance.api.webAudioApiAudioParamValue(
+  double get value => RustLib.instance.api.webAudioApiAudioParamValue(
         that: this,
       );
 }
@@ -31784,7 +31765,7 @@ class AudioParamProxyVariantAudioListenerForwardY
           that: this, values: values, startTime: startTime, duration: duration);
 
   /// Retrieve the current value of the `AudioParam`.
-  Future<double> value() => RustLib.instance.api.webAudioApiAudioParamValue(
+  double get value => RustLib.instance.api.webAudioApiAudioParamValue(
         that: this,
       );
 }
@@ -32019,7 +32000,7 @@ class AudioParamProxyVariantAudioListenerForwardZ
           that: this, values: values, startTime: startTime, duration: duration);
 
   /// Retrieve the current value of the `AudioParam`.
-  Future<double> value() => RustLib.instance.api.webAudioApiAudioParamValue(
+  double get value => RustLib.instance.api.webAudioApiAudioParamValue(
         that: this,
       );
 }
@@ -32254,7 +32235,7 @@ class AudioParamProxyVariantAudioListenerPositionX
           that: this, values: values, startTime: startTime, duration: duration);
 
   /// Retrieve the current value of the `AudioParam`.
-  Future<double> value() => RustLib.instance.api.webAudioApiAudioParamValue(
+  double get value => RustLib.instance.api.webAudioApiAudioParamValue(
         that: this,
       );
 }
@@ -32489,7 +32470,7 @@ class AudioParamProxyVariantAudioListenerPositionY
           that: this, values: values, startTime: startTime, duration: duration);
 
   /// Retrieve the current value of the `AudioParam`.
-  Future<double> value() => RustLib.instance.api.webAudioApiAudioParamValue(
+  double get value => RustLib.instance.api.webAudioApiAudioParamValue(
         that: this,
       );
 }
@@ -32724,7 +32705,7 @@ class AudioParamProxyVariantAudioListenerPositionZ
           that: this, values: values, startTime: startTime, duration: duration);
 
   /// Retrieve the current value of the `AudioParam`.
-  Future<double> value() => RustLib.instance.api.webAudioApiAudioParamValue(
+  double get value => RustLib.instance.api.webAudioApiAudioParamValue(
         that: this,
       );
 }
@@ -32959,7 +32940,7 @@ class AudioParamProxyVariantAudioListenerUpX
           that: this, values: values, startTime: startTime, duration: duration);
 
   /// Retrieve the current value of the `AudioParam`.
-  Future<double> value() => RustLib.instance.api.webAudioApiAudioParamValue(
+  double get value => RustLib.instance.api.webAudioApiAudioParamValue(
         that: this,
       );
 }
@@ -33194,7 +33175,7 @@ class AudioParamProxyVariantAudioListenerUpY
           that: this, values: values, startTime: startTime, duration: duration);
 
   /// Retrieve the current value of the `AudioParam`.
-  Future<double> value() => RustLib.instance.api.webAudioApiAudioParamValue(
+  double get value => RustLib.instance.api.webAudioApiAudioParamValue(
         that: this,
       );
 }
@@ -33429,7 +33410,7 @@ class AudioParamProxyVariantAudioListenerUpZ
           that: this, values: values, startTime: startTime, duration: duration);
 
   /// Retrieve the current value of the `AudioParam`.
-  Future<double> value() => RustLib.instance.api.webAudioApiAudioParamValue(
+  double get value => RustLib.instance.api.webAudioApiAudioParamValue(
         that: this,
       );
 }
@@ -33664,7 +33645,7 @@ class AudioParamProxyVariantBiquadFilterNodeDetune
           that: this, values: values, startTime: startTime, duration: duration);
 
   /// Retrieve the current value of the `AudioParam`.
-  Future<double> value() => RustLib.instance.api.webAudioApiAudioParamValue(
+  double get value => RustLib.instance.api.webAudioApiAudioParamValue(
         that: this,
       );
 }
@@ -33899,7 +33880,7 @@ class AudioParamProxyVariantBiquadFilterNodeFrequency
           that: this, values: values, startTime: startTime, duration: duration);
 
   /// Retrieve the current value of the `AudioParam`.
-  Future<double> value() => RustLib.instance.api.webAudioApiAudioParamValue(
+  double get value => RustLib.instance.api.webAudioApiAudioParamValue(
         that: this,
       );
 }
@@ -34134,7 +34115,7 @@ class AudioParamProxyVariantBiquadFilterNodeGain
           that: this, values: values, startTime: startTime, duration: duration);
 
   /// Retrieve the current value of the `AudioParam`.
-  Future<double> value() => RustLib.instance.api.webAudioApiAudioParamValue(
+  double get value => RustLib.instance.api.webAudioApiAudioParamValue(
         that: this,
       );
 }
@@ -34369,7 +34350,7 @@ class AudioParamProxyVariantBiquadFilterNodeQ
           that: this, values: values, startTime: startTime, duration: duration);
 
   /// Retrieve the current value of the `AudioParam`.
-  Future<double> value() => RustLib.instance.api.webAudioApiAudioParamValue(
+  double get value => RustLib.instance.api.webAudioApiAudioParamValue(
         that: this,
       );
 }
@@ -34604,7 +34585,7 @@ class AudioParamProxyVariantConstantSourceNodeOffset
           that: this, values: values, startTime: startTime, duration: duration);
 
   /// Retrieve the current value of the `AudioParam`.
-  Future<double> value() => RustLib.instance.api.webAudioApiAudioParamValue(
+  double get value => RustLib.instance.api.webAudioApiAudioParamValue(
         that: this,
       );
 }
@@ -34839,7 +34820,7 @@ class AudioParamProxyVariantDelayNodeDelayTime
           that: this, values: values, startTime: startTime, duration: duration);
 
   /// Retrieve the current value of the `AudioParam`.
-  Future<double> value() => RustLib.instance.api.webAudioApiAudioParamValue(
+  double get value => RustLib.instance.api.webAudioApiAudioParamValue(
         that: this,
       );
 }
@@ -35074,7 +35055,7 @@ class AudioParamProxyVariantDynamicsCompressorNodeAttack
           that: this, values: values, startTime: startTime, duration: duration);
 
   /// Retrieve the current value of the `AudioParam`.
-  Future<double> value() => RustLib.instance.api.webAudioApiAudioParamValue(
+  double get value => RustLib.instance.api.webAudioApiAudioParamValue(
         that: this,
       );
 }
@@ -35309,7 +35290,7 @@ class AudioParamProxyVariantDynamicsCompressorNodeKnee
           that: this, values: values, startTime: startTime, duration: duration);
 
   /// Retrieve the current value of the `AudioParam`.
-  Future<double> value() => RustLib.instance.api.webAudioApiAudioParamValue(
+  double get value => RustLib.instance.api.webAudioApiAudioParamValue(
         that: this,
       );
 }
@@ -35544,7 +35525,7 @@ class AudioParamProxyVariantDynamicsCompressorNodeRatio
           that: this, values: values, startTime: startTime, duration: duration);
 
   /// Retrieve the current value of the `AudioParam`.
-  Future<double> value() => RustLib.instance.api.webAudioApiAudioParamValue(
+  double get value => RustLib.instance.api.webAudioApiAudioParamValue(
         that: this,
       );
 }
@@ -35779,7 +35760,7 @@ class AudioParamProxyVariantDynamicsCompressorNodeRelease
           that: this, values: values, startTime: startTime, duration: duration);
 
   /// Retrieve the current value of the `AudioParam`.
-  Future<double> value() => RustLib.instance.api.webAudioApiAudioParamValue(
+  double get value => RustLib.instance.api.webAudioApiAudioParamValue(
         that: this,
       );
 }
@@ -36014,7 +35995,7 @@ class AudioParamProxyVariantDynamicsCompressorNodeThreshold
           that: this, values: values, startTime: startTime, duration: duration);
 
   /// Retrieve the current value of the `AudioParam`.
-  Future<double> value() => RustLib.instance.api.webAudioApiAudioParamValue(
+  double get value => RustLib.instance.api.webAudioApiAudioParamValue(
         that: this,
       );
 }
@@ -36249,7 +36230,7 @@ class AudioParamProxyVariantGainNodeGain
           that: this, values: values, startTime: startTime, duration: duration);
 
   /// Retrieve the current value of the `AudioParam`.
-  Future<double> value() => RustLib.instance.api.webAudioApiAudioParamValue(
+  double get value => RustLib.instance.api.webAudioApiAudioParamValue(
         that: this,
       );
 }
@@ -36484,7 +36465,7 @@ class AudioParamProxyVariantOscillatorNodeDetune
           that: this, values: values, startTime: startTime, duration: duration);
 
   /// Retrieve the current value of the `AudioParam`.
-  Future<double> value() => RustLib.instance.api.webAudioApiAudioParamValue(
+  double get value => RustLib.instance.api.webAudioApiAudioParamValue(
         that: this,
       );
 }
@@ -36719,7 +36700,7 @@ class AudioParamProxyVariantOscillatorNodeFrequency
           that: this, values: values, startTime: startTime, duration: duration);
 
   /// Retrieve the current value of the `AudioParam`.
-  Future<double> value() => RustLib.instance.api.webAudioApiAudioParamValue(
+  double get value => RustLib.instance.api.webAudioApiAudioParamValue(
         that: this,
       );
 }
@@ -36954,7 +36935,7 @@ class AudioParamProxyVariantPannerNodeOrientationX
           that: this, values: values, startTime: startTime, duration: duration);
 
   /// Retrieve the current value of the `AudioParam`.
-  Future<double> value() => RustLib.instance.api.webAudioApiAudioParamValue(
+  double get value => RustLib.instance.api.webAudioApiAudioParamValue(
         that: this,
       );
 }
@@ -37189,7 +37170,7 @@ class AudioParamProxyVariantPannerNodeOrientationY
           that: this, values: values, startTime: startTime, duration: duration);
 
   /// Retrieve the current value of the `AudioParam`.
-  Future<double> value() => RustLib.instance.api.webAudioApiAudioParamValue(
+  double get value => RustLib.instance.api.webAudioApiAudioParamValue(
         that: this,
       );
 }
@@ -37424,7 +37405,7 @@ class AudioParamProxyVariantPannerNodeOrientationZ
           that: this, values: values, startTime: startTime, duration: duration);
 
   /// Retrieve the current value of the `AudioParam`.
-  Future<double> value() => RustLib.instance.api.webAudioApiAudioParamValue(
+  double get value => RustLib.instance.api.webAudioApiAudioParamValue(
         that: this,
       );
 }
@@ -37659,7 +37640,7 @@ class AudioParamProxyVariantPannerNodePositionX
           that: this, values: values, startTime: startTime, duration: duration);
 
   /// Retrieve the current value of the `AudioParam`.
-  Future<double> value() => RustLib.instance.api.webAudioApiAudioParamValue(
+  double get value => RustLib.instance.api.webAudioApiAudioParamValue(
         that: this,
       );
 }
@@ -37894,7 +37875,7 @@ class AudioParamProxyVariantPannerNodePositionY
           that: this, values: values, startTime: startTime, duration: duration);
 
   /// Retrieve the current value of the `AudioParam`.
-  Future<double> value() => RustLib.instance.api.webAudioApiAudioParamValue(
+  double get value => RustLib.instance.api.webAudioApiAudioParamValue(
         that: this,
       );
 }
@@ -38129,7 +38110,7 @@ class AudioParamProxyVariantPannerNodePositionZ
           that: this, values: values, startTime: startTime, duration: duration);
 
   /// Retrieve the current value of the `AudioParam`.
-  Future<double> value() => RustLib.instance.api.webAudioApiAudioParamValue(
+  double get value => RustLib.instance.api.webAudioApiAudioParamValue(
         that: this,
       );
 }
@@ -38364,7 +38345,7 @@ class AudioParamProxyVariantStereoPannerNodePan
           that: this, values: values, startTime: startTime, duration: duration);
 
   /// Retrieve the current value of the `AudioParam`.
-  Future<double> value() => RustLib.instance.api.webAudioApiAudioParamValue(
+  double get value => RustLib.instance.api.webAudioApiAudioParamValue(
         that: this,
       );
 }
