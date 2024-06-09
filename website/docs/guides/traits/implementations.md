@@ -1,5 +1,10 @@
 # Trait implementations
 
+The `impl A for B` is supported, and is translated to a `class B implements A`.
+In addition, the methods inside this `impl` block will also be converted automatically.
+
+## Example
+
 For example, suppose we write down:
 
 ```rust

@@ -1,5 +1,12 @@
 # Trait definitions
 
+The trait definitions will be automatically converted to Dart abstract classes.
+
+The non-instance method (i.e. static method) will not be generated,
+since Dart, unlike Rust, does not support such methods being implemented by subclasses.
+
+## Example
+
 For example, suppose we write down:
 
 ```rust
