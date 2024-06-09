@@ -12,7 +12,6 @@ import 'dart:async';
 import 'dart:convert';
 import 'frb_generated.dart';
 import 'frb_generated.io.dart' if (dart.library.html) 'frb_generated.web.dart';
-import 'lib.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'frb_generated.freezed.dart';
@@ -108,7 +107,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_ProxyEnum_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_my_audio_param_proxy_enum(
             that, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 2, port: port_);
+            funcId: 1, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_String,
@@ -585,9 +584,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     serializer.buffer.putUint8(self ? 1 : 0);
   }
 }
-
-// These functions are ignored because they have generic arguments: `lockable_decode_async_ref_mut`, `lockable_decode_async_ref`
-// These functions are ignored: `lockable_decode_sync_ref_mut`, `lockable_decode_sync_ref`, `lockable_order`
 
 @freezed
 sealed class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum

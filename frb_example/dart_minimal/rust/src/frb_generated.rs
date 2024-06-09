@@ -22,7 +22,6 @@
 // Section: imports
 
 use crate::api::minimal::*;
-use crate::*;
 use flutter_rust_bridge::for_generated::byteorder::{NativeEndian, ReadBytesExt, WriteBytesExt};
 use flutter_rust_bridge::for_generated::{transform_result_dco, Lockable};
 use flutter_rust_bridge::{Handler, IntoIntoDart};
@@ -81,49 +80,6 @@ flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
 
 enum Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum {
     Variant0(RustAutoOpaque<MyNode>),
-}
-
-#[frb(ignore)]
-impl Lockable
-    for Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum
-{
-    type RwLockReadGuard<'a> = TODO;
-    type RwLockWriteGuard<'a> = TODO;
-
-    #[frb(ignore)]
-    fn lockable_order(&self) -> LockableOrder {
-        TODO
-    }
-
-    #[frb(ignore)]
-    fn lockable_decode_sync_ref(&self) -> Self::RwLockReadGuard<'_> {
-        TODO
-    }
-
-    #[frb(ignore)]
-    fn lockable_decode_sync_ref_mut(&self) -> Self::RwLockWriteGuard<'_> {
-        TODO
-    }
-
-    #[frb(ignore)]
-    fn lockable_decode_async_ref<'a>(
-        &'a self,
-    ) -> Pin<Box<dyn Future<Output = Self::RwLockReadGuard<'_>> + Send + 'a>>
-    where
-        Self: Sync + 'a,
-    {
-        Box::pin(async move { TODO })
-    }
-
-    #[frb(ignore)]
-    fn lockable_decode_async_ref_mut<'a>(
-        &'a self,
-    ) -> Pin<Box<dyn Future<Output = Self::RwLockWriteGuard<'_>> + Send + 'a>>
-    where
-        Self: Sync + 'a,
-    {
-        Box::pin(async move { TODO })
-    }
 }
 
 pub fn frb_internal_no_impl_dummy_function_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum(
@@ -251,7 +207,7 @@ fn pde_ffi_dispatcher_primary_impl(
 ) {
     // Codec=Pde (Serialization + dispatch), see doc to use other codecs
     match func_id {
-        2 => wire__crate__api__minimal__MyAudioParam_my_method_impl(
+        1 => wire__crate__api__minimal__MyAudioParam_my_method_impl(
             port,
             ptr,
             rust_vec_len,
