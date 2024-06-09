@@ -60,10 +60,5 @@ fn generate_trait_impl_enum(
         })
         .collect_vec();
 
-    let code = lockable::generate(&enum_name, &variants);
-
-    Ok(vec![InjectExtraCodeBlock {
-        code,
-        should_parse: true,
-    }])
+    lockable::generate(&enum_name, &variants)
 }

@@ -1,3 +1,4 @@
+use crate::codegen::parser::mir::parser::function::real::FUNC_PREFIX_FRB_INTERNAL_NO_IMPL;
 use crate::codegen::ir::hir::flat::traits::HirFlatTrait;
 use crate::codegen::ir::mir::trait_impl::MirTraitImpl;
 use crate::codegen::ir::mir::ty::MirType;
@@ -25,7 +26,7 @@ pub(crate) fn generate(
 
         {code_write_guard}
 
-        pub fn {FUNC_PREFIX_FRB_INTERNAL_NO_IMPL}_dummy_function_{trait_def_name}(a: {trait_def_name}Implementor) {{ }}
+        pub fn {FUNC_PREFIX_FRB_INTERNAL_NO_IMPL}_dummy_function_{enum_name}(a: {enum_name}) {{ }}
         "
     );
 
@@ -36,12 +37,12 @@ pub(crate) fn generate(
 }
 
 fn generate_code_impl(enum_name: &str, variants: &[VariantInfo]) -> String {
-    let enum_def = generate_enum_raw(variants, &enum_name, |ty| format!("RustAutoOpaque<{ty}>"));
+    let enum_def = generate_enum_raw(variants, &enum_name, |variant| format!("RustAutoOpaque<{ty}>"));
 
-    let blocking_read_body = generate_match_raw(variants, |ty| {
+    let blocking_read_body = generate_match_raw(variants, |variant| {
         format!("{trait_def_name}RwLockReadGuard::{ty}(inner.blocking_read())")
     });
-    let blocking_write_body = generate_match_raw(variants, |ty| {
+    let blocking_write_body = generate_match_raw(variants, |variant| {
         format!("{trait_def_name}RwLockWriteGuard::{ty}(inner.blocking_write())")
     });
 
@@ -72,7 +73,7 @@ fn generate_code_read_write_guard(rw: ReadWrite, variants: &[VariantInfo]) -> St
     let rw_pascal = rw.to_string().to_case(Case::Pascal);
 
     let enum_name = format!("{trait_def_name}RwLock{rw_pascal}Guard");
-    let enum_def = generate_enum_raw(variants, &format!("{enum_name}<'a>"), |ty| {
+    let enum_def = generate_enum_raw(variants, &format!("{enum_name}<'a>"), |variant| {
         format!("flutter_rust_bridge::for_generated::rust_async::RwLock{rw_pascal}Guard<'a, {ty}>")
     });
 
