@@ -72,6 +72,14 @@ fn generate_code_lockable_impl(enum_name: &str, variants: &[VariantInfo]) -> Str
             pub fn blocking_write(&mut self) -> {enum_name}RwLockWriteGuard {{
                 {blocking_write_body}
             }}
+
+            pub async fn read(&self) -> {enum_name}RwLockReadGuard {{
+                TODO
+            }}
+
+            pub async fn write(&mut self) -> {enum_name}RwLockWriteGuard {{
+                TODO
+            }}
         }}
 
         impl Lockable for {enum_name} {{
@@ -96,7 +104,7 @@ fn generate_code_lockable_impl(enum_name: &str, variants: &[VariantInfo]) -> Str
             where
                 Self: Sync + 'a,
             {{
-                Box::pin(async move {{ TODO }})
+                Box::pin(async move {{ self.read().await }})
             }}
 
             fn lockable_decode_async_ref_mut<'a>(
@@ -105,7 +113,7 @@ fn generate_code_lockable_impl(enum_name: &str, variants: &[VariantInfo]) -> Str
             where
                 Self: Sync + 'a,
             {{
-                Box::pin(async move {{ TODO }})
+                Box::pin(async move {{ self.write().await }})
             }}
         }}
         "

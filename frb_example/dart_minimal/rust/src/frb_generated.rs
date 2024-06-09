@@ -83,51 +83,6 @@ pub enum Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInner
     Variant0(RustAutoOpaque<MyNode>),
 }
 
-#[flutter_rust_bridge::frb(ignore)]
-pub enum Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnumRwLockReadGuard<
-    'a,
-> {
-    Variant0(flutter_rust_bridge::for_generated::rust_async::RwLockReadGuard<'a, MyNode>),
-}
-
-impl std::ops::Deref for Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnumRwLockReadGuard<'_> {
-            type Target = dyn TODO;
-
-            fn deref(&self) -> &Self::Target {
-                match self {
-            Self::Variant0(inner) => inner.deref(),
-
-        }
-            }
-        }
-
-#[flutter_rust_bridge::frb(ignore)]
-pub enum Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnumRwLockWriteGuard<
-    'a,
-> {
-    Variant0(flutter_rust_bridge::for_generated::rust_async::RwLockWriteGuard<'a, MyNode>),
-}
-
-impl std::ops::Deref for Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnumRwLockWriteGuard<'_> {
-            type Target = dyn TODO;
-
-            fn deref(&self) -> &Self::Target {
-                match self {
-            Self::Variant0(inner) => inner.deref(),
-
-        }
-            }
-        }
-
-impl std::ops::DerefMut for Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnumRwLockWriteGuard<'_> {
-                fn deref_mut(&mut self) -> &mut Self::Target {
-                    match self {
-            Self::Variant0(inner) => inner.deref_mut(),
-
-        }
-                }
-            }
-
 pub fn frb_internal_no_impl_dummy_function_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum(
     a: Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum,
 ) {
@@ -146,6 +101,14 @@ impl Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAu
             Self::Variant0(inner) => Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnumRwLockWriteGuard::Variant0(inner.blocking_write()),
 
         }
+    }
+
+    pub async fn read(&self) -> Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnumRwLockReadGuard{
+        TODO
+    }
+
+    pub async fn write(&mut self) -> Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnumRwLockWriteGuard{
+        TODO
     }
 }
 
@@ -173,7 +136,7 @@ impl Lockable
     where
         Self: Sync + 'a,
     {
-        Box::pin(async move { TODO })
+        Box::pin(async move { self.read().await })
     }
 
     fn lockable_decode_async_ref_mut<'a>(
@@ -182,9 +145,52 @@ impl Lockable
     where
         Self: Sync + 'a,
     {
-        Box::pin(async move { TODO })
+        Box::pin(async move { self.write().await })
     }
 }
+
+pub enum Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnumRwLockReadGuard<
+    'a,
+> {
+    Variant0(flutter_rust_bridge::for_generated::rust_async::RwLockReadGuard<'a, MyNode>),
+}
+
+impl std::ops::Deref for Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnumRwLockReadGuard<'_> {
+            type Target = dyn TODO;
+
+            fn deref(&self) -> &Self::Target {
+                match self {
+            Self::Variant0(inner) => inner.deref(),
+
+        }
+            }
+        }
+
+pub enum Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnumRwLockWriteGuard<
+    'a,
+> {
+    Variant0(flutter_rust_bridge::for_generated::rust_async::RwLockWriteGuard<'a, MyNode>),
+}
+
+impl std::ops::Deref for Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnumRwLockWriteGuard<'_> {
+            type Target = dyn TODO;
+
+            fn deref(&self) -> &Self::Target {
+                match self {
+            Self::Variant0(inner) => inner.deref(),
+
+        }
+            }
+        }
+
+impl std::ops::DerefMut for Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnumRwLockWriteGuard<'_> {
+                fn deref_mut(&mut self) -> &mut Self::Target {
+                    match self {
+            Self::Variant0(inner) => inner.deref_mut(),
+
+        }
+                }
+            }
 
 // Section: dart2rust
 
