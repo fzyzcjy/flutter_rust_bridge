@@ -35,6 +35,12 @@ pub struct StructTwoWithTraitForDynTwinNormal {
     pub two: i32,
 }
 
+impl StructTwoWithTraitForDynTwinNormal {
+    pub fn create_twin_normal(two: i32) -> Self {
+        Self { two }
+    }
+}
+
 impl SimpleTraitForDynTwinNormal for StructTwoWithTraitForDynTwinNormal {
     fn simple_method_twin_normal(&self) -> i32 {
         self.two * 2
