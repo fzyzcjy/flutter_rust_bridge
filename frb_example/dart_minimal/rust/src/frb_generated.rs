@@ -170,6 +170,32 @@ impl std::ops::Deref for Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRus
             }
         }
 
+pub enum Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnumRwLockWriteGuard<
+    'a,
+> {
+    Variant0(flutter_rust_bridge::for_generated::rust_async::RwLockWriteGuard<'a, MyNode>),
+}
+
+impl std::ops::Deref for Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnumRwLockWriteGuard<'_> {
+            type Target = MyAudioParam;
+
+            fn deref(&self) -> &Self::Target {
+                match self {
+            Self::Variant0(inner) => inner.deref(),
+
+        }
+            }
+        }
+
+impl std::ops::DerefMut for Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnumRwLockWriteGuard<'_> {
+                fn deref_mut(&mut self) -> &mut Self::Target {
+                    match self {
+            Self::Variant0(inner) => inner.deref_mut(),
+
+        }
+                }
+            }
+
 // Section: dart2rust
 
 impl SseDecode for RustAutoOpaqueMoi<MyNode> {
