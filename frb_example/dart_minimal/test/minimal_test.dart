@@ -14,4 +14,12 @@ Future<void> main() async {
     print('Action: Call rust (after)');
   });
   print('Action: Configure tests (end)');
+
+  test('simple proxy', () async {
+    final node = await MyNodeTwinNormal.createTwinNormal();
+    final paramOne = await node.paramOneTwinNormal();
+    final paramTwo = await node.paramTwoTwinNormal();
+    expect(await paramOne.myMethodTwinNormal(), 'aa');
+    expect(await paramTwo.myMethodTwinNormal(), 'bb');
+  });
 }

@@ -10,34 +10,39 @@ pub fn minimal_adder(a: i32, b: i32) -> i32 {
 }
 
 #[frb(opaque)]
-pub struct MyAudioParam(String);
+pub struct MyAudioParamTwinNormal(String);
 
-impl MyAudioParam {
-    #[frb(sync)]
-    pub fn new(value: String) -> Self {
+impl MyAudioParamTwinNormal {
+    pub fn create_twin_normal(value: String) -> Self {
         Self(value)
     }
 
-    pub fn my_method(&self) -> String {
+    pub fn my_method_twin_normal(&self) -> String {
         self.0.repeat(2)
     }
 }
 
 #[frb(opaque)]
-pub struct MyNode {
-    param_one: MyAudioParam,
+pub struct MyNodeTwinNormal {
+    param_one: MyAudioParamTwinNormal,
+    param_two: MyAudioParamTwinNormal,
 }
 
-impl MyNode {
-    #[frb(sync)]
-    pub fn new() -> Self {
+impl MyNodeTwinNormal {
+    pub fn create_twin_normal() -> Self {
         Self {
-            param_one: MyAudioParam::new("a".to_owned()),
+            param_one: MyAudioParamTwinNormal::new("a".to_owned()),
+            param_two: MyAudioParamTwinNormal::new("b".to_owned()),
         }
     }
 
     #[frb(proxy)]
-    pub fn param_one(&self) -> &MyAudioParam {
+    pub fn param_one_twin_normal(&self) -> &MyAudioParamTwinNormal {
         &self.param_one
+    }
+
+    #[frb(proxy)]
+    pub fn param_two_twin_normal(&self) -> &MyAudioParamTwinNormal {
+        &self.param_two
     }
 }
