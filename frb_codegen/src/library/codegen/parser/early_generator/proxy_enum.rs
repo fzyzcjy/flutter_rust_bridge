@@ -36,7 +36,10 @@ pub(crate) fn generate(
     let proxied_types = compute_proxied_types(&proxy_variants_of_enum, &output_namespace);
 
     let extra_codes = (proxy_variants_of_enum.values())
-        .flat_map(|proxy_variants| generate_proxy_enum(proxy_variants))
+        .map(|proxy_variants| generate_proxy_enum(proxy_variants))
+        .collect::<anyhow::Result<Vec<_>>>()?
+        .into_iter()
+        .flatten()
         .collect_vec();
 
     inject_extra_codes(&mut pack.hir_flat_pack, output_namespace, &extra_codes)?;
@@ -60,7 +63,7 @@ fn compute_proxied_types(
 
 fn generate_proxy_enum(
     proxy_variants: &[&MirTypeDelegateProxyVariant],
-) -> Vec<InjectExtraCodeBlock> {
+) -> anyhow::Result<Vec<InjectExtraCodeBlock>> {
     let proxy_enum_ty = *proxy_variants[0].inner.clone();
 
     let enum_name = MirTypeDelegateProxyEnum::proxy_enum_name_raw(&proxy_enum_ty);
@@ -70,7 +73,7 @@ fn generate_proxy_enum(
             enum_variant_name: format!("Variant{index}"),
             ty_name: variant.upstream.rust_api_type(),
         })
-        .join("");
+        .collect_vec();
 
     lockable::generate(&enum_name, &variants)
 }
