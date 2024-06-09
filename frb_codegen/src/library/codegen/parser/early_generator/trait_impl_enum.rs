@@ -4,7 +4,7 @@ use crate::codegen::ir::hir::flat::pack::HirFlatPack;
 use crate::codegen::ir::hir::flat::traits::HirFlatTrait;
 use crate::codegen::ir::mir::pack::MirPack;
 use crate::codegen::ir::mir::trait_impl::MirTraitImpl;
-use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
+use crate::codegen::ir::mir::ty::delegate::{MirTypeDelegate, MirTypeDelegateDynTraitVariant};
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::early_generator::utils::lockable;
 use crate::codegen::parser::hir::flat::extra_code_injector::{
@@ -91,7 +91,9 @@ fn generate_trait_impl_enum(
     let info = IrEarlyGeneratorTraitDefInfo {
         trait_def_name: trait_def_namespaced_name.clone(),
         delegate_namespace: output_namespace.clone(),
-        variants: TODO,
+        variants: (interest_trait_impls.into_iter())
+            .map(|ty| MirTypeDelegateDynTraitVariant { ty })
+            .collect_vec(),
     };
 
     Ok((extra_codes, info))
