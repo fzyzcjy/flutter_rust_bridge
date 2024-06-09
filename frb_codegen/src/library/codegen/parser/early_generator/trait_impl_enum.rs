@@ -61,5 +61,5 @@ fn generate_trait_impl_enum(
         })
         .collect_vec();
 
-    lockable::generate(&enum_name, &variants)
+    lockable::generate(&enum_name, &format!("dyn {trait_def_name}"), &variants)
 }

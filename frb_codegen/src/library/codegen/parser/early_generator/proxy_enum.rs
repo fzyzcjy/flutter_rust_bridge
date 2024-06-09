@@ -75,5 +75,5 @@ fn generate_proxy_enum(
         })
         .collect_vec();
 
-    lockable::generate(&enum_name, &variants)
+    lockable::generate(&enum_name, &proxy_enum_ty.rust_api_type(), &variants)
 }
