@@ -1,7 +1,7 @@
-use crate::rust_auto_opaque::dart2rust_implicit::RustAutoOpaqueLockOrderInfo;
+use crate::lockable::order_info::LockableOrderInfo;
 
 pub(super) fn check_no_immediate_invalid_borrow(
-    sorted_infos: &[RustAutoOpaqueLockOrderInfo],
+    sorted_infos: &[LockableOrderInfo],
 ) -> bool {
     let mut last_object = None;
     let mut checker = ImmediateInvalidBorrowChecker::default();
@@ -44,7 +44,7 @@ mod tests {
 
         for mutable in [false, true] {
             assert!(check_no_immediate_invalid_borrow(&[
-                RustAutoOpaqueLockOrderInfo {
+                LockableOrderInfo {
                     index: 0,
                     mutable,
                     object_order: crate::rust_auto_opaque::order::RustAutoOpaqueOrder::new_for_test(
@@ -62,13 +62,13 @@ mod tests {
         ] {
             assert_eq!(
                 check_no_immediate_invalid_borrow(&[
-                    RustAutoOpaqueLockOrderInfo {
+                    LockableOrderInfo {
                         index: 0,
                         mutable: mutable_a,
                         object_order:
                             crate::rust_auto_opaque::order::RustAutoOpaqueOrder::new_for_test(100),
                     },
-                    RustAutoOpaqueLockOrderInfo {
+                    LockableOrderInfo {
                         index: 1,
                         mutable: mutable_b,
                         object_order:
@@ -80,14 +80,14 @@ mod tests {
         }
 
         assert!(check_no_immediate_invalid_borrow(&[
-            RustAutoOpaqueLockOrderInfo {
+            LockableOrderInfo {
                 index: 0,
                 mutable: true,
                 object_order: crate::rust_auto_opaque::order::RustAutoOpaqueOrder::new_for_test(
                     100
                 ),
             },
-            RustAutoOpaqueLockOrderInfo {
+            LockableOrderInfo {
                 index: 1,
                 mutable: true,
                 object_order: crate::rust_auto_opaque::order::RustAutoOpaqueOrder::new_for_test(
