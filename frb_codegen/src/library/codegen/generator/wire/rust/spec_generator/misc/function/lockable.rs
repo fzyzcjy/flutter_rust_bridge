@@ -112,9 +112,9 @@ struct FieldInfo<'a> {
 
 pub(crate) fn generate_inner_func_arg_ownership(field: &MirFuncInput) -> String {
     match &field.inner.ty {
-        // TODO seems not needed anymore? (can use no-prefix now for rust auto opaque?)
-        MirType::RustAutoOpaqueImplicit(ty) => ty.ownership_mode.prefix().to_owned(),
-        MirType::Delegate(MirTypeDelegate::DynTrait(_)) => "".to_owned(),
+        MirType::RustAutoOpaqueImplicit(_) | MirType::Delegate(MirTypeDelegate::DynTrait(_)) => {
+            "".to_owned()
+        }
         _ => (field.ownership_mode.map(|x| x.prefix()))
             .unwrap_or_default()
             .to_owned(),
