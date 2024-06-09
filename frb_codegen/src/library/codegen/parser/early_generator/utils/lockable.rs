@@ -1,14 +1,16 @@
-use crate::codegen::parser::mir::parser::function::real::FUNC_PREFIX_FRB_INTERNAL_NO_IMPL;
 use crate::codegen::ir::hir::flat::traits::HirFlatTrait;
 use crate::codegen::ir::mir::trait_impl::MirTraitImpl;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::hir::flat::extra_code_injector::InjectExtraCodeBlock;
+use crate::codegen::parser::mir::parser::function::real::FUNC_PREFIX_FRB_INTERNAL_NO_IMPL;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
+use std::env::var;
 use strum_macros::Display;
 
 pub(crate) struct VariantInfo {
     pub enum_variant_name: String,
+    pub ty_name: String,
 }
 
 pub(crate) fn generate(
@@ -37,13 +39,21 @@ pub(crate) fn generate(
 }
 
 fn generate_code_impl(enum_name: &str, variants: &[VariantInfo]) -> String {
-    let enum_def = generate_enum_raw(variants, &enum_name, |variant| format!("RustAutoOpaque<{ty}>"));
+    let enum_def = generate_enum_raw(variants, &enum_name, |variant| {
+        format!("RustAutoOpaque<{}>", variant.ty_name)
+    });
 
     let blocking_read_body = generate_match_raw(variants, |variant| {
-        format!("{trait_def_name}RwLockReadGuard::{ty}(inner.blocking_read())")
+        format!(
+            "{trait_def_name}RwLockReadGuard::{}(inner.blocking_read())",
+            variant.enum_variant_name
+        )
     });
     let blocking_write_body = generate_match_raw(variants, |variant| {
-        format!("{trait_def_name}RwLockWriteGuard::{ty}(inner.blocking_write())")
+        format!(
+            "{trait_def_name}RwLockWriteGuard::{}(inner.blocking_write())",
+            variant.enum_variant_name
+        )
     });
 
     format!(
@@ -74,7 +84,10 @@ fn generate_code_read_write_guard(rw: ReadWrite, variants: &[VariantInfo]) -> St
 
     let enum_name = format!("{enum_name}RwLock{rw_pascal}Guard");
     let enum_def = generate_enum_raw(variants, &format!("{enum_name}<'a>"), |variant| {
-        format!("flutter_rust_bridge::for_generated::rust_async::RwLock{rw_pascal}Guard<'a, {ty}>")
+        format!(
+            "flutter_rust_bridge::for_generated::rust_async::RwLock{rw_pascal}Guard<'a, {}>",
+            variant.ty_name
+        )
     });
 
     let deref_body = generate_match_raw(variants, |_| "inner.deref()".to_owned());
