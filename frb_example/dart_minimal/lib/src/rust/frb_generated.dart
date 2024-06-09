@@ -585,6 +585,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 }
 
+// These functions are ignored: `deref_mut`, `deref`, `deref`
+
 @freezed
 sealed class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum
     with

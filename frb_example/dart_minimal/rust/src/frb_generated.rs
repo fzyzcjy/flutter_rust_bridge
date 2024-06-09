@@ -78,38 +78,95 @@ flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
 
 // Section: extra_from_parser
 
-enum Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum {
+pub enum Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum
+{
     Variant0(RustAutoOpaque<MyNode>),
 }
+
+#[flutter_rust_bridge::frb(ignore)]
+pub enum Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnumRwLockReadGuard<
+    'a,
+> {
+    Variant0(flutter_rust_bridge::for_generated::rust_async::RwLockReadGuard<'a, MyNode>),
+}
+
+impl std::ops::Deref for Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnumRwLockReadGuard<'_> {
+            type Target = dyn TODO;
+
+            fn deref(&self) -> &Self::Target {
+                match self {
+            Self::Variant0(inner) => inner.deref(),
+
+        }
+            }
+        }
+
+#[flutter_rust_bridge::frb(ignore)]
+pub enum Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnumRwLockWriteGuard<
+    'a,
+> {
+    Variant0(flutter_rust_bridge::for_generated::rust_async::RwLockWriteGuard<'a, MyNode>),
+}
+
+impl std::ops::Deref for Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnumRwLockWriteGuard<'_> {
+            type Target = dyn TODO;
+
+            fn deref(&self) -> &Self::Target {
+                match self {
+            Self::Variant0(inner) => inner.deref(),
+
+        }
+            }
+        }
+
+impl std::ops::DerefMut for Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnumRwLockWriteGuard<'_> {
+                fn deref_mut(&mut self) -> &mut Self::Target {
+                    match self {
+            Self::Variant0(inner) => inner.deref_mut(),
+
+        }
+                }
+            }
 
 pub fn frb_internal_no_impl_dummy_function_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum(
     a: Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum,
 ) {
 }
 
-#[frb(ignore)]
+impl Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum {
+    pub fn blocking_read(&self) -> Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnumRwLockReadGuard{
+        match self {
+            Self::Variant0(inner) => Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnumRwLockReadGuard::Variant0(inner.blocking_read()),
+
+        }
+    }
+
+    pub fn blocking_write(&mut self) -> Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnumRwLockWriteGuard{
+        match self {
+            Self::Variant0(inner) => Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnumRwLockWriteGuard::Variant0(inner.blocking_write()),
+
+        }
+    }
+}
+
 impl Lockable
     for Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum
 {
-    type RwLockReadGuard<'a> = TODO;
-    type RwLockWriteGuard<'a> = TODO;
+    type RwLockReadGuard<'a> = Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnumRwLockReadGuard<'a>;
+    type RwLockWriteGuard<'a> = Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnumRwLockWriteGuard<'a>;
 
-    #[frb(ignore)]
     fn lockable_order(&self) -> LockableOrder {
         TODO
     }
 
-    #[frb(ignore)]
     fn lockable_decode_sync_ref(&self) -> Self::RwLockReadGuard<'_> {
-        TODO
+        self.blocking_read()
     }
 
-    #[frb(ignore)]
     fn lockable_decode_sync_ref_mut(&self) -> Self::RwLockWriteGuard<'_> {
-        TODO
+        self.blocking_write()
     }
 
-    #[frb(ignore)]
     fn lockable_decode_async_ref<'a>(
         &'a self,
     ) -> Pin<Box<dyn Future<Output = Self::RwLockReadGuard<'_>> + Send + 'a>>
@@ -119,7 +176,6 @@ impl Lockable
         Box::pin(async move { TODO })
     }
 
-    #[frb(ignore)]
     fn lockable_decode_async_ref_mut<'a>(
         &'a self,
     ) -> Pin<Box<dyn Future<Output = Self::RwLockWriteGuard<'_>> + Send + 'a>>
