@@ -1,7 +1,7 @@
-use crate::lockable::lockable_order::LockableOrder;
+use crate::lockable::order::LockableOrder;
 
 pub struct LockableOrderInfo {
-    index: usize,
-    mutable: bool,
-    object_order: LockableOrder,
+    pub index: usize,
+    pub mutable: bool,
+    pub object_order: LockableOrder,
 }
