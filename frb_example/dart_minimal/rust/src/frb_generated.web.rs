@@ -51,3 +51,21 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
         flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructTwoWithTraitForDynTwinNormal>,
     >::decrement_strong_count(ptr as _);
 }
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerdynSimpleTraitForDynTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    MoiArc::<
+        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<dyn SimpleTraitForDynTwinNormal>,
+    >::increment_strong_count(ptr as _);
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerdynSimpleTraitForDynTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    MoiArc::<
+        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<dyn SimpleTraitForDynTwinNormal>,
+    >::decrement_strong_count(ptr as _);
+}

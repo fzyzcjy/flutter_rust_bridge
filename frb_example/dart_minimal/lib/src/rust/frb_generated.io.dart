@@ -26,15 +26,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       get rust_arc_decrement_strong_count_StructTwoWithTraitForDynTwinNormalPtr =>
           wire._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitForDynTwinNormalPtr;
 
-  @protected
-  StructOneWithTraitForDynTwinNormal
-      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitForDynTwinNormal(
-          dynamic raw);
-
-  @protected
-  StructTwoWithTraitForDynTwinNormal
-      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitForDynTwinNormal(
-          dynamic raw);
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_SimpleTraitForDynTwinNormalPtr => wire
+          ._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerdynSimpleTraitForDynTwinNormalPtr;
 
   @protected
   StructOneWithTraitForDynTwinNormal
@@ -67,8 +61,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
-  SimpleTraitForDynTwinNormal dco_decode_DynTrait_SimpleTraitForDynTwinNormal(
-      dynamic raw);
+  SimpleTraitForDynTwinNormal
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerdynSimpleTraitForDynTwinNormal(
+          dynamic raw);
 
   @protected
   StructOneWithTraitForDynTwinNormal
@@ -81,36 +76,22 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  SimpleTraitForDynTwinNormal
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerdynSimpleTraitForDynTwinNormal(
+          dynamic raw);
+
+  @protected
   SimpleTraitForDynTwinNormal dco_decode_TraitDef_SimpleTraitForDynTwinNormal(
       dynamic raw);
 
   @protected
-  SimpleTraitForDynTwinNormalImplementor
-      dco_decode_box_autoadd_simple_trait_for_dyn_twin_normal_implementor(
-          dynamic raw);
-
-  @protected
   int dco_decode_i_32(dynamic raw);
-
-  @protected
-  SimpleTraitForDynTwinNormalImplementor
-      dco_decode_simple_trait_for_dyn_twin_normal_implementor(dynamic raw);
 
   @protected
   void dco_decode_unit(dynamic raw);
 
   @protected
   BigInt dco_decode_usize(dynamic raw);
-
-  @protected
-  StructOneWithTraitForDynTwinNormal
-      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitForDynTwinNormal(
-          SseDeserializer deserializer);
-
-  @protected
-  StructTwoWithTraitForDynTwinNormal
-      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitForDynTwinNormal(
-          SseDeserializer deserializer);
 
   @protected
   StructOneWithTraitForDynTwinNormal
@@ -143,8 +124,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
-  SimpleTraitForDynTwinNormal sse_decode_DynTrait_SimpleTraitForDynTwinNormal(
-      SseDeserializer deserializer);
+  SimpleTraitForDynTwinNormal
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerdynSimpleTraitForDynTwinNormal(
+          SseDeserializer deserializer);
 
   @protected
   StructOneWithTraitForDynTwinNormal
@@ -157,17 +139,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
-  SimpleTraitForDynTwinNormalImplementor
-      sse_decode_box_autoadd_simple_trait_for_dyn_twin_normal_implementor(
+  SimpleTraitForDynTwinNormal
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerdynSimpleTraitForDynTwinNormal(
           SseDeserializer deserializer);
 
   @protected
   int sse_decode_i_32(SseDeserializer deserializer);
-
-  @protected
-  SimpleTraitForDynTwinNormalImplementor
-      sse_decode_simple_trait_for_dyn_twin_normal_implementor(
-          SseDeserializer deserializer);
 
   @protected
   void sse_decode_unit(SseDeserializer deserializer);
@@ -177,16 +154,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   bool sse_decode_bool(SseDeserializer deserializer);
-
-  @protected
-  void
-      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitForDynTwinNormal(
-          StructOneWithTraitForDynTwinNormal self, SseSerializer serializer);
-
-  @protected
-  void
-      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitForDynTwinNormal(
-          StructTwoWithTraitForDynTwinNormal self, SseSerializer serializer);
 
   @protected
   void
@@ -219,8 +186,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           StructTwoWithTraitForDynTwinNormal self, SseSerializer serializer);
 
   @protected
-  void sse_encode_DynTrait_SimpleTraitForDynTwinNormal(
-      SimpleTraitForDynTwinNormal self, SseSerializer serializer);
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerdynSimpleTraitForDynTwinNormal(
+          SimpleTraitForDynTwinNormal self, SseSerializer serializer);
 
   @protected
   void
@@ -233,15 +201,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           StructTwoWithTraitForDynTwinNormal self, SseSerializer serializer);
 
   @protected
-  void sse_encode_box_autoadd_simple_trait_for_dyn_twin_normal_implementor(
-      SimpleTraitForDynTwinNormalImplementor self, SseSerializer serializer);
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerdynSimpleTraitForDynTwinNormal(
+          SimpleTraitForDynTwinNormal self, SseSerializer serializer);
 
   @protected
   void sse_encode_i_32(int self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_simple_trait_for_dyn_twin_normal_implementor(
-      SimpleTraitForDynTwinNormalImplementor self, SseSerializer serializer);
 
   @protected
   void sse_encode_unit(void self, SseSerializer serializer);
@@ -329,5 +294,37 @@ class RustLibWire implements BaseWire {
           'frbgen_frb_example_dart_minimal_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitForDynTwinNormal');
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitForDynTwinNormal =
       _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitForDynTwinNormalPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerdynSimpleTraitForDynTwinNormal(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerdynSimpleTraitForDynTwinNormal(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerdynSimpleTraitForDynTwinNormalPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'frbgen_frb_example_dart_minimal_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerdynSimpleTraitForDynTwinNormal');
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerdynSimpleTraitForDynTwinNormal =
+      _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerdynSimpleTraitForDynTwinNormalPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerdynSimpleTraitForDynTwinNormal(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerdynSimpleTraitForDynTwinNormal(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerdynSimpleTraitForDynTwinNormalPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'frbgen_frb_example_dart_minimal_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerdynSimpleTraitForDynTwinNormal');
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerdynSimpleTraitForDynTwinNormal =
+      _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerdynSimpleTraitForDynTwinNormalPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 }

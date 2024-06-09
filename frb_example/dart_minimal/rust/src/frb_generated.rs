@@ -347,10 +347,11 @@ fn wire__crate__api__minimal__func_arg_dyn_trait_twin_normal_impl(
             };
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_arg =
-                <crate::frb_generated::SimpleTraitForDynTwinNormalImplementor>::sse_decode(
-                    &mut deserializer,
-                );
+            let api_arg = <RustOpaqueMoi<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                    dyn SimpleTraitForDynTwinNormal,
+                >,
+            >>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
@@ -369,7 +370,7 @@ fn wire__crate__api__minimal__func_arg_dyn_trait_twin_normal_impl(
                     }
                     let api_arg = &*api_arg_decoded.unwrap();
                     Result::<_, ()>::Ok(crate::api::minimal::func_arg_dyn_trait_twin_normal(
-                        api_arg,
+                        &api_arg,
                     ))
                 })())
             }
@@ -451,181 +452,11 @@ flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
 flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
     flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructTwoWithTraitForDynTwinNormal>
 );
-
-// Section: extra_from_parser
-
-pub enum SimpleTraitForDynTwinNormalImplementor {
-    StructOneWithTraitForDynTwinNormal(RustAutoOpaque<StructOneWithTraitForDynTwinNormal>),
-    StructTwoWithTraitForDynTwinNormal(RustAutoOpaque<StructTwoWithTraitForDynTwinNormal>),
-}
-
-pub fn frb_internal_no_impl_dummy_function_SimpleTraitForDynTwinNormalImplementor(
-    a: SimpleTraitForDynTwinNormalImplementor,
-) {
-}
-
-impl SimpleTraitForDynTwinNormalImplementor {
-    pub fn blocking_read(&self) -> SimpleTraitForDynTwinNormalImplementorRwLockReadGuard {
-        match self {
-            Self::StructOneWithTraitForDynTwinNormal(inner) => SimpleTraitForDynTwinNormalImplementorRwLockReadGuard::StructOneWithTraitForDynTwinNormal(inner.blocking_read()),
-Self::StructTwoWithTraitForDynTwinNormal(inner) => SimpleTraitForDynTwinNormalImplementorRwLockReadGuard::StructTwoWithTraitForDynTwinNormal(inner.blocking_read()),
-
-        }
-    }
-
-    pub fn blocking_write(&self) -> SimpleTraitForDynTwinNormalImplementorRwLockWriteGuard {
-        match self {
-            Self::StructOneWithTraitForDynTwinNormal(inner) => SimpleTraitForDynTwinNormalImplementorRwLockWriteGuard::StructOneWithTraitForDynTwinNormal(inner.blocking_write()),
-Self::StructTwoWithTraitForDynTwinNormal(inner) => SimpleTraitForDynTwinNormalImplementorRwLockWriteGuard::StructTwoWithTraitForDynTwinNormal(inner.blocking_write()),
-
-        }
-    }
-
-    pub async fn read(&self) -> SimpleTraitForDynTwinNormalImplementorRwLockReadGuard {
-        match self {
-            Self::StructOneWithTraitForDynTwinNormal(inner) => SimpleTraitForDynTwinNormalImplementorRwLockReadGuard::StructOneWithTraitForDynTwinNormal(inner.read().await),
-Self::StructTwoWithTraitForDynTwinNormal(inner) => SimpleTraitForDynTwinNormalImplementorRwLockReadGuard::StructTwoWithTraitForDynTwinNormal(inner.read().await),
-
-        }
-    }
-
-    pub async fn write(&self) -> SimpleTraitForDynTwinNormalImplementorRwLockWriteGuard {
-        match self {
-            Self::StructOneWithTraitForDynTwinNormal(inner) => SimpleTraitForDynTwinNormalImplementorRwLockWriteGuard::StructOneWithTraitForDynTwinNormal(inner.write().await),
-Self::StructTwoWithTraitForDynTwinNormal(inner) => SimpleTraitForDynTwinNormalImplementorRwLockWriteGuard::StructTwoWithTraitForDynTwinNormal(inner.write().await),
-
-        }
-    }
-}
-
-impl Lockable for SimpleTraitForDynTwinNormalImplementor {
-    type RwLockReadGuard<'a> = SimpleTraitForDynTwinNormalImplementorRwLockReadGuard<'a>;
-    type RwLockWriteGuard<'a> = SimpleTraitForDynTwinNormalImplementorRwLockWriteGuard<'a>;
-
-    fn lockable_order(&self) -> flutter_rust_bridge::for_generated::LockableOrder {
-        match self {
-            Self::StructOneWithTraitForDynTwinNormal(inner) => {
-                flutter_rust_bridge::for_generated::rust_auto_opaque_lockable_order(inner)
-            }
-            Self::StructTwoWithTraitForDynTwinNormal(inner) => {
-                flutter_rust_bridge::for_generated::rust_auto_opaque_lockable_order(inner)
-            }
-        }
-    }
-
-    fn lockable_decode_sync_ref(&self) -> Self::RwLockReadGuard<'_> {
-        self.blocking_read()
-    }
-
-    fn lockable_decode_sync_ref_mut(&self) -> Self::RwLockWriteGuard<'_> {
-        self.blocking_write()
-    }
-
-    fn lockable_decode_async_ref<'a>(
-        &'a self,
-    ) -> std::pin::Pin<Box<dyn std::future::Future<Output = Self::RwLockReadGuard<'_>> + Send + 'a>>
-    where
-        Self: Sync + 'a,
-    {
-        Box::pin(async move { self.read().await })
-    }
-
-    fn lockable_decode_async_ref_mut<'a>(
-        &'a self,
-    ) -> std::pin::Pin<Box<dyn std::future::Future<Output = Self::RwLockWriteGuard<'_>> + Send + 'a>>
-    where
-        Self: Sync + 'a,
-    {
-        Box::pin(async move { self.write().await })
-    }
-}
-
-pub enum SimpleTraitForDynTwinNormalImplementorRwLockReadGuard<'a> {
-    StructOneWithTraitForDynTwinNormal(
-        flutter_rust_bridge::for_generated::rust_async::RwLockReadGuard<
-            'a,
-            StructOneWithTraitForDynTwinNormal,
-        >,
-    ),
-    StructTwoWithTraitForDynTwinNormal(
-        flutter_rust_bridge::for_generated::rust_async::RwLockReadGuard<
-            'a,
-            StructTwoWithTraitForDynTwinNormal,
-        >,
-    ),
-}
-
-impl std::ops::Deref for SimpleTraitForDynTwinNormalImplementorRwLockReadGuard<'_> {
-    type Target = dyn SimpleTraitForDynTwinNormal;
-
-    fn deref(&self) -> &Self::Target {
-        match self {
-            Self::StructOneWithTraitForDynTwinNormal(inner) => inner.deref(),
-            Self::StructTwoWithTraitForDynTwinNormal(inner) => inner.deref(),
-        }
-    }
-}
-
-pub enum SimpleTraitForDynTwinNormalImplementorRwLockWriteGuard<'a> {
-    StructOneWithTraitForDynTwinNormal(
-        flutter_rust_bridge::for_generated::rust_async::RwLockWriteGuard<
-            'a,
-            StructOneWithTraitForDynTwinNormal,
-        >,
-    ),
-    StructTwoWithTraitForDynTwinNormal(
-        flutter_rust_bridge::for_generated::rust_async::RwLockWriteGuard<
-            'a,
-            StructTwoWithTraitForDynTwinNormal,
-        >,
-    ),
-}
-
-impl std::ops::Deref for SimpleTraitForDynTwinNormalImplementorRwLockWriteGuard<'_> {
-    type Target = dyn SimpleTraitForDynTwinNormal;
-
-    fn deref(&self) -> &Self::Target {
-        match self {
-            Self::StructOneWithTraitForDynTwinNormal(inner) => inner.deref(),
-            Self::StructTwoWithTraitForDynTwinNormal(inner) => inner.deref(),
-        }
-    }
-}
-
-impl std::ops::DerefMut for SimpleTraitForDynTwinNormalImplementorRwLockWriteGuard<'_> {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        match self {
-            Self::StructOneWithTraitForDynTwinNormal(inner) => inner.deref_mut(),
-            Self::StructTwoWithTraitForDynTwinNormal(inner) => inner.deref_mut(),
-        }
-    }
-}
+flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
+    flutter_rust_bridge::for_generated::RustAutoOpaqueInner<dyn SimpleTraitForDynTwinNormal>
+);
 
 // Section: dart2rust
-
-impl SseDecode for RustAutoOpaqueMoi<StructOneWithTraitForDynTwinNormal> {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <RustOpaqueMoi<
-            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
-                StructOneWithTraitForDynTwinNormal,
-            >,
-        >>::sse_decode(deserializer);
-        return flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_decode(inner);
-    }
-}
-
-impl SseDecode for RustAutoOpaqueMoi<StructTwoWithTraitForDynTwinNormal> {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <RustOpaqueMoi<
-            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
-                StructTwoWithTraitForDynTwinNormal,
-            >,
-        >>::sse_decode(deserializer);
-        return flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_decode(inner);
-    }
-}
 
 impl SseDecode for StructOneWithTraitForDynTwinNormal {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -675,36 +506,22 @@ impl SseDecode
     }
 }
 
+impl SseDecode
+    for RustOpaqueMoi<
+        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<dyn SimpleTraitForDynTwinNormal>,
+    >
+{
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return decode_rust_opaque_moi(inner);
+    }
+}
+
 impl SseDecode for i32 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         deserializer.cursor.read_i32::<NativeEndian>().unwrap()
-    }
-}
-
-impl SseDecode for crate::frb_generated::SimpleTraitForDynTwinNormalImplementor {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut tag_ = <i32>::sse_decode(deserializer);
-        match tag_ {
-            0 => {
-                let mut var_field0 =
-                    <RustAutoOpaqueMoi<StructOneWithTraitForDynTwinNormal>>::sse_decode(
-                        deserializer,
-                    );
-                return crate::frb_generated::SimpleTraitForDynTwinNormalImplementor::StructOneWithTraitForDynTwinNormal(var_field0);
-            }
-            1 => {
-                let mut var_field0 =
-                    <RustAutoOpaqueMoi<StructTwoWithTraitForDynTwinNormal>>::sse_decode(
-                        deserializer,
-                    );
-                return crate::frb_generated::SimpleTraitForDynTwinNormalImplementor::StructTwoWithTraitForDynTwinNormal(var_field0);
-            }
-            _ => {
-                unimplemented!("");
-            }
-        }
     }
 }
 
@@ -820,58 +637,6 @@ impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<StructTwoWithTraitForDynTwinNo
     }
 }
 
-// Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart
-    for crate::frb_generated::SimpleTraitForDynTwinNormalImplementor
-{
-    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-        match self {crate::frb_generated::SimpleTraitForDynTwinNormalImplementor::StructOneWithTraitForDynTwinNormal(field0) => { [0.into_dart(),
-field0.into_into_dart().into_dart()].into_dart() }
-crate::frb_generated::SimpleTraitForDynTwinNormalImplementor::StructTwoWithTraitForDynTwinNormal(field0) => { [1.into_dart(),
-field0.into_into_dart().into_dart()].into_dart() }
- _ => { unimplemented!(""); }}
-    }
-}
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
-    for crate::frb_generated::SimpleTraitForDynTwinNormalImplementor
-{
-}
-impl flutter_rust_bridge::IntoIntoDart<crate::frb_generated::SimpleTraitForDynTwinNormalImplementor>
-    for crate::frb_generated::SimpleTraitForDynTwinNormalImplementor
-{
-    fn into_into_dart(self) -> crate::frb_generated::SimpleTraitForDynTwinNormalImplementor {
-        self
-    }
-}
-
-impl SseEncode for RustAutoOpaqueMoi<StructOneWithTraitForDynTwinNormal> {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <RustOpaqueMoi<
-            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
-                StructOneWithTraitForDynTwinNormal,
-            >,
-        >>::sse_encode(
-            flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_encode(self),
-            serializer,
-        );
-    }
-}
-
-impl SseEncode for RustAutoOpaqueMoi<StructTwoWithTraitForDynTwinNormal> {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <RustOpaqueMoi<
-            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
-                StructTwoWithTraitForDynTwinNormal,
-            >,
-        >>::sse_encode(
-            flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_encode(self),
-            serializer,
-        );
-    }
-}
-
 impl SseEncode for StructOneWithTraitForDynTwinNormal {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -926,21 +691,23 @@ impl SseEncode
     }
 }
 
+impl SseEncode
+    for RustOpaqueMoi<
+        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<dyn SimpleTraitForDynTwinNormal>,
+    >
+{
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
 impl SseEncode for i32 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         serializer.cursor.write_i32::<NativeEndian>(self).unwrap();
-    }
-}
-
-impl SseEncode for crate::frb_generated::SimpleTraitForDynTwinNormalImplementor {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        match self {crate::frb_generated::SimpleTraitForDynTwinNormalImplementor::StructOneWithTraitForDynTwinNormal(field0) => { <i32>::sse_encode(0, serializer); <RustAutoOpaqueMoi<StructOneWithTraitForDynTwinNormal>>::sse_encode(field0, serializer);
- }
-crate::frb_generated::SimpleTraitForDynTwinNormalImplementor::StructTwoWithTraitForDynTwinNormal(field0) => { <i32>::sse_encode(1, serializer); <RustAutoOpaqueMoi<StructTwoWithTraitForDynTwinNormal>>::sse_encode(field0, serializer);
- }
- _ => { unimplemented!(""); }}
     }
 }
 

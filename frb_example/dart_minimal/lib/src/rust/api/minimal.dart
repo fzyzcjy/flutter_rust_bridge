@@ -39,6 +39,9 @@ abstract class StructTwoWithTraitForDynTwinNormal
   Future<int> simpleMethodTwinNormal();
 }
 
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<dyn SimpleTraitForDynTwinNormal>>
+abstract class SimpleTraitForDynTwinNormal implements RustOpaqueInterface {}
+
 abstract class SimpleTraitForDynTwinNormal {
   Future<int> simpleMethodTwinNormal();
 }
