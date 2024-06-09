@@ -58,8 +58,14 @@ fn generate_trait_impl_enum(
         .map(|ty| lockable::VariantInfo {
             enum_variant_name: ty.rust_api_type(),
             ty_name: ty.rust_api_type(),
+            deref_extra_code: "".to_owned(),
         })
         .collect_vec();
 
-    lockable::generate(&enum_name, &format!("dyn {trait_def_name}"), true, &variants)
+    lockable::generate(
+        &enum_name,
+        &format!("dyn {trait_def_name}"),
+        true,
+        &variants,
+    )
 }
