@@ -8,3 +8,5 @@ rust_input: crate::api,web-audio-api
 ```
 
 The line above means we want to both scan `src/api` folder in our crate and scan the `web-audio-api` crate.
+
+Please refer to [this page](../miscellaneous/multi-input) for more details of the configuration.
