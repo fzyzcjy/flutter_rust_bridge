@@ -136,6 +136,7 @@ pub(crate) struct TypeParserParsingContext {
     pub(crate) func_attributes: FrbAttributes,
     pub(crate) default_stream_sink_codec: CodecMode,
     pub(crate) default_rust_opaque_codec: RustOpaqueCodecMode,
+    pub(crate) trait_implementor_namespace: Namespace,
     pub(crate) owner: Option<MirFuncOwnerInfo>,
     pub(crate) parse_mode: ParseMode,
 }
