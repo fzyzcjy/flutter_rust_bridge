@@ -272,6 +272,7 @@ const sidebars = {
                         'guides/miscellaneous/dart-code',
                         'guides/miscellaneous/codec',
                         'guides/miscellaneous/build-rs',
+                        'guides/miscellaneous/proxy',
                         'guides/miscellaneous/expanding-macros',
                         'guides/miscellaneous/default',
                         'guides/miscellaneous/multi-input',
