@@ -369,7 +369,7 @@ fn wire__crate__api__minimal__func_arg_dyn_trait_twin_normal_impl(
                     }
                     let api_arg = &*api_arg_decoded.unwrap();
                     Result::<_, ()>::Ok(crate::api::minimal::func_arg_dyn_trait_twin_normal(
-                        &api_arg,
+                        api_arg,
                     ))
                 })())
             }
