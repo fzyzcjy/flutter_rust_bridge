@@ -116,7 +116,7 @@ fn generate_code_lockable_impl(enum_name: &str, variants: &[VariantInfo]) -> Str
 
             fn lockable_decode_async_ref<'a>(
                 &'a self,
-            ) -> Pin<Box<dyn Future<Output = Self::RwLockReadGuard<'_>> + Send + 'a>>
+            ) -> std::pin::Pin<Box<dyn std::future::Future<Output = Self::RwLockReadGuard<'_>> + Send + 'a>>
             where
                 Self: Sync + 'a,
             {{
@@ -125,7 +125,7 @@ fn generate_code_lockable_impl(enum_name: &str, variants: &[VariantInfo]) -> Str
 
             fn lockable_decode_async_ref_mut<'a>(
                 &'a self,
-            ) -> Pin<Box<dyn Future<Output = Self::RwLockWriteGuard<'_>> + Send + 'a>>
+            ) -> std::pin::Pin<Box<dyn std::future::Future<Output = Self::RwLockWriteGuard<'_>> + Send + 'a>>
             where
                 Self: Sync + 'a,
             {{
