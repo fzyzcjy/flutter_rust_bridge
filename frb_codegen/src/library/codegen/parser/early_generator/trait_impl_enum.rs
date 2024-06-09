@@ -70,9 +70,10 @@ fn generate_trait_impl_enum(
         .sorted_by_key(|x| x.safe_ident())
         .collect_vec();
 
-    let variants = (interest_trait_impls.into_iter())
-        .map(|ty| lockable::VariantInfo {
-            enum_variant_name: ty.rust_api_type(),
+    let variants = (interest_trait_impls.into_iter().enumerate())
+        .map(|(index, ty)| lockable::VariantInfo {
+            // enum_variant_name: ty.rust_api_type(),
+            enum_variant_name: format!("Variant{index}"),
             ty_name: ty.rust_api_type(),
             deref_extra_code: "".to_owned(),
         })
