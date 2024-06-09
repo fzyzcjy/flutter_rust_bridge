@@ -167,6 +167,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         let mode = compute_func_mode(&attributes, &info);
         let stream_dart_await = attributes.stream_dart_await() && !attributes.sync();
         let namespace_refined = refine_namespace(&owner).unwrap_or(func.namespace.clone());
+        let accessor = attributes.accessor();
 
         let output = MirFuncOutput {
             normal: info.ok_output.unwrap_or(Primitive(MirTypePrimitive::Unit)),
@@ -190,7 +191,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             stream_dart_await,
             rust_async: func.item_fn.sig().asyncness.is_some(),
             initializer: attributes.init(),
-            accessor: attributes.accessor(),
+            accessor,
             arg_mode: if attributes.positional() {
                 MirFuncArgMode::Positional
             } else {
