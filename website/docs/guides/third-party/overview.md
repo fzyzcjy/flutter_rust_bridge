@@ -14,8 +14,6 @@ To make it concrete, we will use the [web-audio-api](https://crates.io/crates/we
 This feature is quite young, thus it may be possible to have some breaking changes in the future,
 and thus it may not follow semantics versioning, unlike other parts of flutter_rust_bridge.
 
-TODO: Whole chapter
-
 ## The manual approach
 
 Alternatively, we can manually repeat the function signatures and struct definitions in external crates,

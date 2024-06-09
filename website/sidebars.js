@@ -253,6 +253,8 @@ const sidebars = {
                                 id: 'guides/third-party/manual/index',
                             },
                             items: [
+                                'guides/third-party/manual/methods',
+                                'guides/third-party/manual/types',
                             ],
                         },
                     ],
