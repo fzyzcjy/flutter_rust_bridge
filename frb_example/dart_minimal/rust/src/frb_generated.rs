@@ -97,10 +97,7 @@ impl Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAu
     }
 
     pub fn blocking_write(&mut self) -> Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnumRwLockWriteGuard{
-        match self {
-            Self::Variant0(inner) => Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnumRwLockWriteGuard::Variant0(inner.blocking_write()),
-
-        }
+        unreachable!()
     }
 
     pub async fn read(&self) -> Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnumRwLockReadGuard{
@@ -111,10 +108,7 @@ impl Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAu
     }
 
     pub async fn write(&mut self) -> Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnumRwLockWriteGuard{
-        match self {
-            Self::Variant0(inner) => Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnumRwLockWriteGuard::Variant0(inner.write().await),
-
-        }
+        unreachable!()
     }
 }
 
@@ -175,32 +169,6 @@ impl std::ops::Deref for Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRus
         }
             }
         }
-
-pub enum Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnumRwLockWriteGuard<
-    'a,
-> {
-    Variant0(flutter_rust_bridge::for_generated::rust_async::RwLockWriteGuard<'a, MyNode>),
-}
-
-impl std::ops::Deref for Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnumRwLockWriteGuard<'_> {
-            type Target = MyAudioParam;
-
-            fn deref(&self) -> &Self::Target {
-                match self {
-            Self::Variant0(inner) => inner.deref(),
-
-        }
-            }
-        }
-
-impl std::ops::DerefMut for Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnumRwLockWriteGuard<'_> {
-                fn deref_mut(&mut self) -> &mut Self::Target {
-                    match self {
-            Self::Variant0(inner) => inner.deref_mut(),
-
-        }
-                }
-            }
 
 // Section: dart2rust
 
