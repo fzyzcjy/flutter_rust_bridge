@@ -164,7 +164,7 @@ impl std::ops::Deref for Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRus
 
             fn deref(&self) -> &Self::Target {
                 match self {
-            Self::Variant0(inner) => inner.deref(),
+            Self::Variant0(inner) => inner.deref().param_one(),
 
         }
             }
@@ -181,7 +181,7 @@ impl std::ops::Deref for Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRus
 
             fn deref(&self) -> &Self::Target {
                 match self {
-            Self::Variant0(inner) => inner.deref(),
+            Self::Variant0(inner) => inner.deref().param_one(),
 
         }
             }
