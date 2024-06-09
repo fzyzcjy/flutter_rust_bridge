@@ -77,7 +77,7 @@ fn generate_proxy_enum(
 
     let deref_target = compute_deref_target(&proxy_enum_ty);
 
-    lockable::generate(&enum_name, &deref_target, &variants)
+    lockable::generate(&enum_name, &deref_target, false, &variants)
 }
 
 fn compute_deref_target(ty: &MirType) -> String {
