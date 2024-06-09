@@ -2,8 +2,9 @@ use crate::codegen::generator::codec::structs::{CodecMode, CodecModePack};
 use crate::codegen::ir::hir::flat::function::HirFlatFunction;
 use crate::codegen::ir::hir::flat::function::HirFlatFunctionOwner;
 use crate::codegen::ir::mir::func::{
-    MirFunc, MirFuncArgMode, MirFuncImplMode, MirFuncImplModeDartOnly, MirFuncInput, MirFuncMode,
-    MirFuncOutput, MirFuncOwnerInfo, MirFuncOwnerInfoMethod, MirFuncOwnerInfoMethodMode,
+    MirFunc, MirFuncAccessorMode, MirFuncArgMode, MirFuncImplMode, MirFuncImplModeDartOnly,
+    MirFuncInput, MirFuncMode, MirFuncOutput, MirFuncOwnerInfo, MirFuncOwnerInfoMethod,
+    MirFuncOwnerInfoMethodMode,
 };
 use crate::codegen::ir::mir::skip::MirSkipReason::IgnoredFunctionGeneric;
 use crate::codegen::ir::mir::skip::{MirSkip, MirSkipReason};
@@ -127,7 +128,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         let src_lineno = func.item_fn.span().start().line;
         let attributes = FrbAttributes::parse(func.item_fn.attrs())?;
 
-        let dart_name = attributes.name();
+        let dart_name = parse_dart_name(attributes);
 
         let create_context = |owner: Option<MirFuncOwnerInfo>| TypeParserParsingContext {
             initiated_namespace: func.namespace.clone(),
@@ -430,4 +431,8 @@ fn compute_impl_mode(
     }
 
     MirFuncImplMode::Normal
+}
+
+fn parse_dart_name(attributes: &FrbAttributes) -> Option<String> {
+    (attributes.name()).or_else(|| attributes.accessor().map(|accessor| TODO))
 }
