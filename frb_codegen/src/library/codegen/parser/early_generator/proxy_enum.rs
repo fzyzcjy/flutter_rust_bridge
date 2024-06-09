@@ -30,15 +30,28 @@ pub(crate) fn generate(
     let proxy_variants_of_enum =
         (proxy_variants.iter()).into_group_map_by(|ty| ty.upstream.safe_ident());
 
-    let proxied_types =
-        compute_proxied_types(&proxy_variants_of_enum, &output_namespace);
+    let proxied_types = compute_proxied_types(&proxy_variants_of_enum, &output_namespace);
 
-    let extra_code = proxy_variants_of_enum
-        .into_values()
-        .map(|proxy_variants| generate_proxy_enum(&proxy_variants))
+    let extra_code_with_parse = (proxy_variants_of_enum.values())
+        .map(|proxy_variants| generate_proxy_enum_with_parse(proxy_variants))
         .join("");
 
-    inject_extra_code(&mut pack.hir_flat_pack, &extra_code, output_namespace, true)?;
+    let extra_code_without_parse = (proxy_variants_of_enum.values())
+        .map(|proxy_variants| generate_proxy_enum_without_parse(proxy_variants))
+        .join("");
+
+    inject_extra_code(
+        &mut pack.hir_flat_pack,
+        &extra_code_with_parse,
+        output_namespace,
+        true,
+    )?;
+    inject_extra_code(
+        &mut pack.hir_flat_pack,
+        &extra_code_without_parse,
+        output_namespace,
+        false,
+    )?;
     (pack.proxied_types).extend(proxied_types);
 
     Ok(())
@@ -57,7 +70,7 @@ fn compute_proxied_types(
         .collect_vec()
 }
 
-fn generate_proxy_enum(proxy_variants: &[&MirTypeDelegateProxyVariant]) -> String {
+fn generate_proxy_enum_with_parse(proxy_variants: &[&MirTypeDelegateProxyVariant]) -> String {
     let proxy_enum_ty = *proxy_variants[0].inner.clone();
 
     let enum_name = MirTypeDelegateProxyEnum::proxy_enum_name_raw(&proxy_enum_ty);
@@ -71,17 +84,23 @@ fn generate_proxy_enum(proxy_variants: &[&MirTypeDelegateProxyVariant]) -> Strin
         })
         .join("");
 
-    let impl_lockable = generate_impl_lockable(&enum_name);
-
     format!(
         "
         enum {enum_name} {{
             {variants}
         }}
 
-        {impl_lockable}
-
         pub fn {FUNC_PREFIX_FRB_INTERNAL_NO_IMPL}_dummy_function_{enum_name}(a: {enum_name}) {{ }}
+        "
+    )
+}
+
+fn generate_proxy_enum_without_parse(proxy_variants: &[&MirTypeDelegateProxyVariant]) -> String {
+    let impl_lockable = generate_impl_lockable(&enum_name);
+
+    format!(
+        "
+        {impl_lockable}
         "
     )
 }
