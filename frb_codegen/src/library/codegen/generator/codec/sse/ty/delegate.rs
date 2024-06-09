@@ -294,7 +294,7 @@ fn generate_proxy_enum_dart_encode(
     mir: &MirTypeDelegateProxyEnum,
     context: ApiDartGeneratorContext,
 ) -> String {
-    let enum_name = mir.proxy_enum_name();
+    let enum_name = mir.delegate_enum_name();
 
     let variants = (mir.variants.iter().enumerate())
         .map(|(index, variant)| encode_to_enum::VariantInfo {
@@ -311,7 +311,7 @@ fn generate_dyn_trait_dart_encode(
     mir: &MirTypeDelegateDynTrait,
     context: ApiDartGeneratorContext,
 ) -> String {
-    let enum_name = mir.proxy_enum_name();
+    let enum_name = mir.delegate_enum_name();
 
     let variants = (mir.variants.iter().enumerate())
         .map(|(index, variant)| encode_to_enum::VariantInfo {

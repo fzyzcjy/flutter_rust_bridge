@@ -67,7 +67,7 @@ fn generate_proxy_enum(
 ) -> anyhow::Result<Vec<InjectExtraCodeBlock>> {
     let proxy_enum_ty = *proxy_variants[0].inner.clone();
 
-    let enum_name = MirTypeDelegateProxyEnum::proxy_enum_name_raw(&proxy_enum_ty);
+    let enum_name = MirTypeDelegateProxyEnum::delegate_enum_name_raw(&proxy_enum_ty);
 
     let variants = (proxy_variants.iter().enumerate())
         .map(|(index, variant)| lockable::VariantInfo {

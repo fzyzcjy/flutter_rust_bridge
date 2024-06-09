@@ -341,17 +341,17 @@ impl MirTypeDelegateProxyEnum {
         MirType::EnumRef(MirTypeEnumRef {
             ident: MirEnumIdent(NamespacedName::new(
                 self.delegate_namespace.clone(),
-                self.proxy_enum_name(),
+                self.delegate_enum_name(),
             )),
             is_exception: false,
         })
     }
 
-    pub(crate) fn proxy_enum_name(&self) -> String {
-        Self::proxy_enum_name_raw(&self.original)
+    pub(crate) fn delegate_enum_name(&self) -> String {
+        Self::delegate_enum_name_raw(&self.original)
     }
 
-    pub(crate) fn proxy_enum_name_raw(original_ty: &MirType) -> String {
+    pub(crate) fn delegate_enum_name_raw(original_ty: &MirType) -> String {
         format!("{}ProxyEnum", original_ty.safe_ident())
     }
 }
