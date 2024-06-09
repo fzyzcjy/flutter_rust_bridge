@@ -679,7 +679,7 @@ mod tests {
 
     #[test]
     fn test_proxy() {
-        simple_keyword_tester("positional", FrbAttribute::Proxy);
+        simple_keyword_tester("proxy", FrbAttribute::Proxy);
     }
 
     #[test]
