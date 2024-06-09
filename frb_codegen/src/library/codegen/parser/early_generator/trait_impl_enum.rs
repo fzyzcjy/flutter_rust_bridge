@@ -3,7 +3,6 @@ use crate::codegen::ir::hir::flat::traits::HirFlatTrait;
 use crate::codegen::ir::mir::pack::MirPack;
 use crate::codegen::ir::mir::trait_impl::MirTraitImpl;
 use crate::codegen::ir::mir::ty::MirType;
-use crate::codegen::parser::early_generator::inject_extra_code_to_rust_output;
 use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
 use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
 use crate::codegen::parser::mir::parser::function::real::FUNC_PREFIX_FRB_INTERNAL_NO_IMPL;
@@ -12,6 +11,7 @@ use convert_case::{Case, Casing};
 use itertools::Itertools;
 use strum_macros::Display;
 use crate::codegen::ir::early_generator::pack::IrEarlyGeneratorPack;
+use crate::codegen::parser::hir::flat::extra_code_injector::inject_extra_code;
 
 pub(crate) fn generate(
     pack: &mut IrEarlyGeneratorPack,
@@ -30,7 +30,9 @@ pub(crate) fn generate(
         .into_iter()
         .join("");
 
-    inject_extra_code_to_rust_output(&mut pack.hir_flat_pack, &extra_code, config_mir)?;
+    let output_namespace = &(config_mir.rust_input_namespace_pack).rust_output_path_namespace;
+
+    inject_extra_code(&mut pack.hir_flat_pack, &extra_code, output_namespace)?;
 
     Ok(())
 }

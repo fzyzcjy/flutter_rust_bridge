@@ -29,15 +29,3 @@ pub(crate) fn execute(
 
     Ok(pack)
 }
-
-fn inject_extra_code_to_rust_output(
-    pack: &mut HirFlatPack,
-    extra_code: &str,
-    config_mir: &ParserMirInternalConfig,
-) -> anyhow::Result<()> {
-    inject_extra_code(
-        pack,
-        extra_code,
-        &(config_mir.rust_input_namespace_pack).rust_output_path_namespace,
-    )
-}

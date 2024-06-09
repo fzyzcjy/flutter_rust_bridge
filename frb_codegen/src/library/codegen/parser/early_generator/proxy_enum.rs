@@ -6,13 +6,13 @@ use crate::codegen::ir::mir::ty::delegate::{
     MirTypeDelegate, MirTypeDelegateProxyEnum, MirTypeDelegateProxyVariant,
 };
 use crate::codegen::ir::mir::ty::MirType;
-use crate::codegen::parser::early_generator::inject_extra_code_to_rust_output;
 use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
 use crate::codegen::parser::mir::parser::function::real::FUNC_PREFIX_FRB_INTERNAL_NO_IMPL;
 use crate::if_then_some;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use itertools::Itertools;
 use std::collections::HashMap;
+use crate::codegen::parser::hir::flat::extra_code_injector::inject_extra_code;
 
 pub(crate) fn generate(
     pack: &mut IrEarlyGeneratorPack,
@@ -34,7 +34,9 @@ pub(crate) fn generate(
         .map(|proxy_variants| generate_proxy_enum(&proxy_variants))
         .join("");
 
-    inject_extra_code_to_rust_output(&mut pack.hir_flat_pack, &extra_code, config_mir)?;
+    let output_namespace = &(config_mir.rust_input_namespace_pack).rust_output_path_namespace;
+
+    inject_extra_code(&mut pack.hir_flat_pack, &extra_code, output_namespace)?;
     (pack.proxied_types).extend(proxied_types);
 
     Ok(())
