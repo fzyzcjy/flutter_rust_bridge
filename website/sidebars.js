@@ -245,6 +245,7 @@ const sidebars = {
                         'guides/miscellaneous/build-rs',
                         'guides/miscellaneous/expanding-macros',
                         'guides/miscellaneous/default',
+                        'guides/miscellaneous/multi-input',
                         'guides/miscellaneous/pure-dart',
                         'guides/miscellaneous/isolates',
                         'guides/miscellaneous/attributes',
