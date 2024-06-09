@@ -5,9 +5,9 @@ use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::mir::parser::ty::trait_def::parse_type_trait;
 use crate::codegen::parser::mir::parser::ty::TypeParserWithContext;
 use crate::codegen::parser::mir::ParseMode;
+use crate::if_then_some;
 use crate::utils::syn_utils::ty_to_string;
 use syn::TypeTraitObject;
-use crate::if_then_some;
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_trait_object(
