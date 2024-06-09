@@ -74,13 +74,64 @@ fn generate_proxy_enum(proxy_variants: &[&MirTypeDelegateProxyVariant]) -> Strin
         })
         .join("");
 
+    let impl_lockable = generate_impl_lockable(&enum_name);
+
     format!(
         "
         enum {enum_name} {{
             {variants}
         }}
 
+        {impl_lockable}
+
         pub fn {FUNC_PREFIX_FRB_INTERNAL_NO_IMPL}_dummy_function_{enum_name}(a: {enum_name}) {{ }}
+        "
+    )
+}
+
+fn generate_impl_lockable(enum_name: &str) -> String {
+    format!(
+        "
+        #[frb(ignore)]
+        impl Lockable for {enum_name} {{
+            type RwLockReadGuard<'a> = TODO;
+            type RwLockWriteGuard<'a> = TODO;
+
+            #[frb(ignore)]
+            fn lockable_order(&self) -> LockableOrder {{
+                TODO
+            }}
+
+            #[frb(ignore)]
+            fn lockable_decode_sync_ref(&self) -> Self::RwLockReadGuard<'_> {{
+                TODO
+            }}
+
+            #[frb(ignore)]
+            fn lockable_decode_sync_ref_mut(&self) -> Self::RwLockWriteGuard<'_> {{
+                TODO
+            }}
+
+            #[frb(ignore)]
+            fn lockable_decode_async_ref<'a>(
+                &'a self,
+            ) -> Pin<Box<dyn Future<Output = Self::RwLockReadGuard<'_>> + Send + 'a>>
+            where
+                Self: Sync + 'a,
+            {{
+                Box::pin(async move {{ TODO }})
+            }}
+
+            #[frb(ignore)]
+            fn lockable_decode_async_ref_mut<'a>(
+                &'a self,
+            ) -> Pin<Box<dyn Future<Output = Self::RwLockWriteGuard<'_>> + Send + 'a>>
+            where
+                Self: Sync + 'a,
+            {{
+                Box::pin(async move {{ TODO }})
+            }}
+        }}
         "
     )
 }
