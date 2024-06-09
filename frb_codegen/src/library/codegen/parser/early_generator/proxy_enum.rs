@@ -96,6 +96,7 @@ fn generate_proxy_enum_with_parse(proxy_variants: &[&MirTypeDelegateProxyVariant
 }
 
 fn generate_proxy_enum_without_parse(proxy_variants: &[&MirTypeDelegateProxyVariant]) -> String {
+    let enum_name = "TodoEnumName"; // TODO
     let impl_lockable = generate_impl_lockable(&enum_name);
 
     format!(
