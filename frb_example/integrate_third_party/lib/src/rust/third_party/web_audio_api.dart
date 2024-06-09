@@ -7,6 +7,7 @@ import '../api/override_web_audio_api.dart';
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'web_audio_api/node.dart';
+import 'web_audio_api/worklet.dart';
 
 // These types are ignored because they are not used by any `pub` functions: `AtomicF32`, `AtomicF64`, `ErrorEvent`, `MediaElement`, `MessagePort`
 // These functions are ignored: `load`, `load`, `new`, `new`, `store`, `store`
@@ -163,7 +164,7 @@ abstract class AudioParam
   Future<void> exponentialRampToValueAtTime(
       {required double value, required double endTime});
 
-  Future<void> connect();
+  Future<void> connect({required AudioNode dest});
 
   /// Schedules a linear continuous change in parameter value from the
   /// previous scheduled parameter value to the given value.
