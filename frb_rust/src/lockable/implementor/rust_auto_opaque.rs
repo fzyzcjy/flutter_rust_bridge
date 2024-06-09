@@ -2,7 +2,6 @@ use crate::for_generated::{BaseArc, RustAutoOpaqueInner, RustOpaqueBase};
 use crate::lockable::base::Lockable;
 use std::future::Future;
 use std::pin::Pin;
-use crate::lockable::order::LockableOrderInfo;
 use crate::lockable::order::LockableOrder;
 
 impl<T, A: BaseArc<RustAutoOpaqueInner<T>>> Lockable for RustOpaqueBase<RustAutoOpaqueInner<T>, A> {
