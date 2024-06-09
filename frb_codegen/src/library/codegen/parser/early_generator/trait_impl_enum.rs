@@ -17,6 +17,7 @@ use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
 use strum_macros::Display;
+use crate::utils::namespace::Namespace;
 
 pub(crate) fn generate(
     pack: &mut IrEarlyGeneratorPack,
@@ -41,12 +42,17 @@ pub(crate) fn generate(
         .flatten()
         .collect_vec();
 
-    let output_namespace = &(config_mir.rust_input_namespace_pack).rust_output_path_namespace;
+    let output_namespace = compute_trait_implementor_namespace(config);
 
     inject_extra_codes(&mut pack.hir_flat_pack, output_namespace, &extra_codes)?;
 
     Ok(())
 }
+
+pub(crate) fn compute_trait_implementor_namespace(config: &ParserMirInternalConfig)  -> &Namespace{
+    &(config.rust_input_namespace_pack).rust_output_path_namespace
+}
+
 
 fn generate_trait_impl_enum(
     hir_trait: &HirFlatTrait,

@@ -1,5 +1,5 @@
 mod proxy_enum;
-mod trait_impl_enum;
+pub(crate) mod trait_impl_enum;
 pub(crate) mod utils;
 
 use crate::codegen::dumper::Dumper;

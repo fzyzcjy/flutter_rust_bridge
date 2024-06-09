@@ -5,6 +5,7 @@ use crate::codegen::ir::hir::flat::struct_or_enum::HirFlatStruct;
 use crate::codegen::ir::mir::func::{MirFunc, MirFuncAccessorMode, OwnershipMode};
 use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::ir::mir::ty::{MirContext, MirType};
+use crate::codegen::parser::early_generator::trait_impl_enum::compute_trait_implementor_namespace;
 use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
 use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
 use crate::codegen::parser::mir::parser::function::func_or_skip::MirFuncOrSkip;
@@ -13,12 +14,12 @@ use crate::codegen::parser::mir::parser::ty::{
     TypeParser, TypeParserParsingContext, TypeParserWithContext,
 };
 use crate::codegen::parser::mir::sanity_checker::auto_accessor_checker;
+use crate::codegen::parser::mir::ParseMode;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
-use crate::utils::namespace::NamespacedName;
+use crate::utils::namespace::{Namespace, NamespacedName};
 use field::parse_auto_accessor_of_field;
 use itertools::Itertools;
 use std::collections::HashMap;
-use crate::codegen::parser::mir::ParseMode;
 
 pub(crate) fn parse(
     config: &ParserMirInternalConfig,
@@ -31,7 +32,9 @@ pub(crate) fn parse(
 
     let infos = src_structs_in_paths
         .iter()
-        .map(|struct_name| parse_auto_accessors_of_struct(config, struct_name, type_parser, parse_mode))
+        .map(|struct_name| {
+            parse_auto_accessors_of_struct(config, struct_name, type_parser, parse_mode)
+        })
         .collect::<anyhow::Result<Vec<_>>>()?
         .into_iter()
         .flatten()
@@ -60,6 +63,7 @@ fn parse_auto_accessors_of_struct(
         struct_name,
         config.default_stream_sink_codec,
         config.default_rust_opaque_codec,
+        compute_trait_implementor_namespace(config).to_owned(),
         parse_mode,
     )?;
 
@@ -110,6 +114,7 @@ fn create_parsing_context(
     struct_name: &NamespacedName,
     default_stream_sink_codec: CodecMode,
     default_rust_opaque_codec: RustOpaqueCodecMode,
+    trait_implementor_namespace: Namespace,
     parse_mode: ParseMode,
 ) -> anyhow::Result<TypeParserParsingContext> {
     Ok(TypeParserParsingContext {
@@ -117,6 +122,7 @@ fn create_parsing_context(
         func_attributes: FrbAttributes::parse(&[])?,
         default_stream_sink_codec,
         default_rust_opaque_codec,
+        trait_implementor_namespace,
         owner: None,
         parse_mode,
     })
