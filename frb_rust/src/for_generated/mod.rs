@@ -30,7 +30,9 @@ pub use crate::handler::implementation::error_listener::NoOpErrorListener;
 pub use crate::handler::implementation::executor::SimpleExecutor;
 pub use crate::handler::implementation::handler::SimpleHandler;
 #[cfg(feature = "rust-async")]
-pub use crate::lockable::{base::Lockable, order_computer::lockable_compute_decode_order};
+pub use crate::lockable::{
+    base::Lockable, order_computer::lockable_compute_decode_order, order_info::LockableOrderInfo,
+};
 #[allow(unused)]
 pub use crate::misc::manual_impl::*;
 pub use crate::misc::version::FLUTTER_RUST_BRIDGE_RUNTIME_VERSION;

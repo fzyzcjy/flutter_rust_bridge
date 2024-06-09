@@ -3,4 +3,4 @@ mod immediate_invalid_borrow_checker;
 pub(crate) mod implementor;
 pub(crate) mod order;
 pub(crate) mod order_computer;
-mod order_info;
+pub(crate) mod order_info;
