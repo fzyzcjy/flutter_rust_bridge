@@ -99,6 +99,7 @@ pub struct MirTypeDelegateProxyEnum {
 
 pub struct MirTypeDelegateDynTrait {
     pub trait_def_name: NamespacedName,
+    pub delegate_namespace: Namespace,
     pub dummy_delegate: bool,
 }
 }
@@ -361,7 +362,7 @@ impl MirTypeDelegateDynTrait {
         } else {
             MirType::EnumRef(MirTypeEnumRef {
                 ident: MirEnumIdent(NamespacedName::new(
-                    self.trait_def_name.namespace.clone(),
+                    self.delegate_namespace.clone(),
                     self.inner_enum_name(),
                 )),
                 is_exception: false,
