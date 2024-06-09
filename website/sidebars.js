@@ -228,6 +228,7 @@ const sidebars = {
                     items: [
                         'guides/third-party/overview',
                         'guides/third-party/scanning',
+                        'guides/third-party/overrides',
                     ],
                 },
                 {
