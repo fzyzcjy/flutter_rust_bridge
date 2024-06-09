@@ -112,6 +112,8 @@ struct FieldInfo<'a> {
 }
 
 pub(crate) fn generate_inner_func_arg_ownership(field: &MirFuncInput) -> Option<OwnershipMode> {
-    if_then_some!(let MirType::RustAutoOpaqueImplicit(o) = &field.inner.ty, o.ownership_mode)
-        .or(field.ownership_mode)
+    match &field.inner.ty {
+        MirType::RustAutoOpaqueImplicit(ty) => Some(ty.ownership_mode),
+        _ => field.ownership_mode
+    }
 }
