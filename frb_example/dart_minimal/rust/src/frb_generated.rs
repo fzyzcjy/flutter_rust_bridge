@@ -212,6 +212,7 @@ flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
 pub enum Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum
 {
     Variant0(RustAutoOpaque<MyNodeTwinNormal>),
+    Variant1(RustAutoOpaque<MyNodeTwinNormal>),
 }
 
 pub fn frb_internal_no_impl_dummy_function_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum(
@@ -223,6 +224,7 @@ impl Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAu
             pub fn blocking_read(&self) -> Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnumRwLockReadGuard {
                 match self {
             Self::Variant0(inner) => Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnumRwLockReadGuard::Variant0(inner.blocking_read()),
+Self::Variant1(inner) => Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnumRwLockReadGuard::Variant1(inner.blocking_read()),
 
         }
             }
@@ -234,6 +236,7 @@ impl Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAu
             pub async fn read(&self) -> Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnumRwLockReadGuard {
                 match self {
             Self::Variant0(inner) => Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnumRwLockReadGuard::Variant0(inner.read().await),
+Self::Variant1(inner) => Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnumRwLockReadGuard::Variant1(inner.read().await),
 
         }
             }
@@ -250,6 +253,7 @@ impl Lockable for Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOp
             fn lockable_order(&self) -> flutter_rust_bridge::for_generated::LockableOrder {
                 match self {
             Self::Variant0(inner) => flutter_rust_bridge::for_generated::rust_auto_opaque_lockable_order(inner),
+Self::Variant1(inner) => flutter_rust_bridge::for_generated::rust_auto_opaque_lockable_order(inner),
 
         }
             }
@@ -285,6 +289,7 @@ pub enum Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInner
     'a,
 > {
     Variant0(flutter_rust_bridge::for_generated::rust_async::RwLockReadGuard<'a, MyNodeTwinNormal>),
+    Variant1(flutter_rust_bridge::for_generated::rust_async::RwLockReadGuard<'a, MyNodeTwinNormal>),
 }
 
 impl std::ops::Deref for Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnumRwLockReadGuard<'_> {
@@ -293,6 +298,7 @@ impl std::ops::Deref for Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRus
             fn deref(&self) -> &Self::Target {
                 match self {
             Self::Variant0(inner) => inner.deref().param_one_twin_normal(),
+Self::Variant1(inner) => inner.deref().param_two_twin_normal(),
 
         }
             }
@@ -304,6 +310,9 @@ pub enum Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInner
     Variant0(
         flutter_rust_bridge::for_generated::rust_async::RwLockWriteGuard<'a, MyNodeTwinNormal>,
     ),
+    Variant1(
+        flutter_rust_bridge::for_generated::rust_async::RwLockWriteGuard<'a, MyNodeTwinNormal>,
+    ),
 }
 
 impl std::ops::Deref for Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnumRwLockWriteGuard<'_> {
@@ -312,6 +321,7 @@ impl std::ops::Deref for Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRus
             fn deref(&self) -> &Self::Target {
                 match self {
             Self::Variant0(inner) => inner.deref().param_one_twin_normal(),
+Self::Variant1(inner) => inner.deref().param_two_twin_normal(),
 
         }
             }
@@ -390,6 +400,8 @@ impl SseDecode for crate::frb_generated::Auto_Ref_RustOpaque_flutter_rust_bridge
                     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {let mut tag_ = <i32>::sse_decode(deserializer);
             match tag_ {0 => { let mut var_field0 = <RustAutoOpaqueMoi<MyNodeTwinNormal>>::sse_decode(deserializer);
 return crate::frb_generated::Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum::Variant0(var_field0); }
+1 => { let mut var_field0 = <RustAutoOpaqueMoi<MyNodeTwinNormal>>::sse_decode(deserializer);
+return crate::frb_generated::Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum::Variant1(var_field0); }
  _ => { unimplemented!(""); }}}
                 }
 
@@ -525,6 +537,8 @@ impl flutter_rust_bridge::IntoDart for crate::frb_generated::Auto_Ref_RustOpaque
                 fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
                     match self {crate::frb_generated::Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum::Variant0(field0) => { [0.into_dart(),
 field0.into_into_dart().into_dart()].into_dart() }
+crate::frb_generated::Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum::Variant1(field0) => { [1.into_dart(),
+field0.into_into_dart().into_dart()].into_dart() }
  _ => { unimplemented!(""); }}
                 }
             }
@@ -595,6 +609,8 @@ impl SseEncode for String {
 impl SseEncode for crate::frb_generated::Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum {
                     // Codec=Sse (Serialization based), see doc to use other codecs
                     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {match self {crate::frb_generated::Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum::Variant0(field0) => { <i32>::sse_encode(0, serializer); <RustAutoOpaqueMoi<MyNodeTwinNormal>>::sse_encode(field0, serializer);
+ }
+crate::frb_generated::Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum::Variant1(field0) => { <i32>::sse_encode(1, serializer); <RustAutoOpaqueMoi<MyNodeTwinNormal>>::sse_encode(field0, serializer);
  }
  _ => { unimplemented!(""); }}}
                 }
