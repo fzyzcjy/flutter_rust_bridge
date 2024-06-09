@@ -70,16 +70,12 @@ pub(crate) fn generate_wire_func(
 }
 
 fn generate_inner_func_args(func: &MirFunc) -> Vec<String> {
-    let ans = func
-        .inputs
-        .iter()
+    (func.inputs.iter())
         .map(|field| {
             let ownership = lockable::generate_inner_func_arg_ownership(field);
-            format!("{ownership}api_{}", field.inner.name.rust_style());
+            format!("{ownership}api_{}", field.inner.name.rust_style())
         })
-        .collect_vec();
-
-    ans
+        .collect_vec()
 }
 
 fn generate_wrap_info_obj(func: &MirFunc) -> String {
