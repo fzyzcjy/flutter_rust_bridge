@@ -26,11 +26,8 @@ pub(crate) fn generate(
     let code_lockable_impl = generate_code_lockable_impl(enum_name, support_mut, variants);
     let code_read_guard =
         generate_code_read_write_guard(enum_name, deref_target, ReadWrite::Read, variants);
-    let code_write_guard = if support_mut {
-        generate_code_read_write_guard(enum_name, deref_target, ReadWrite::Write, variants)
-    } else {
-        "".to_owned()
-    };
+    let code_write_guard =
+        generate_code_read_write_guard(enum_name, deref_target, ReadWrite::Write, variants);
 
     Ok(vec![
         InjectExtraCodeBlock {
