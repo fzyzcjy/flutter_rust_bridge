@@ -20,62 +20,48 @@ mixin _$SimpleTraitForDynTwinNormalImplementor {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(StructOneWithTraitForDynTwinNormal field0)
-        structOneWithTraitForDynTwinNormal,
+        variant0,
     required TResult Function(StructTwoWithTraitForDynTwinNormal field0)
-        structTwoWithTraitForDynTwinNormal,
+        variant1,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(StructOneWithTraitForDynTwinNormal field0)?
-        structOneWithTraitForDynTwinNormal,
-    TResult? Function(StructTwoWithTraitForDynTwinNormal field0)?
-        structTwoWithTraitForDynTwinNormal,
+    TResult? Function(StructOneWithTraitForDynTwinNormal field0)? variant0,
+    TResult? Function(StructTwoWithTraitForDynTwinNormal field0)? variant1,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(StructOneWithTraitForDynTwinNormal field0)?
-        structOneWithTraitForDynTwinNormal,
-    TResult Function(StructTwoWithTraitForDynTwinNormal field0)?
-        structTwoWithTraitForDynTwinNormal,
+    TResult Function(StructOneWithTraitForDynTwinNormal field0)? variant0,
+    TResult Function(StructTwoWithTraitForDynTwinNormal field0)? variant1,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(
-            SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormal
-                value)
-        structOneWithTraitForDynTwinNormal,
+            SimpleTraitForDynTwinNormalImplementor_Variant0 value)
+        variant0,
     required TResult Function(
-            SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormal
-                value)
-        structTwoWithTraitForDynTwinNormal,
+            SimpleTraitForDynTwinNormalImplementor_Variant1 value)
+        variant1,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(
-            SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormal
-                value)?
-        structOneWithTraitForDynTwinNormal,
-    TResult? Function(
-            SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormal
-                value)?
-        structTwoWithTraitForDynTwinNormal,
+    TResult? Function(SimpleTraitForDynTwinNormalImplementor_Variant0 value)?
+        variant0,
+    TResult? Function(SimpleTraitForDynTwinNormalImplementor_Variant1 value)?
+        variant1,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(
-            SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormal
-                value)?
-        structOneWithTraitForDynTwinNormal,
-    TResult Function(
-            SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormal
-                value)?
-        structTwoWithTraitForDynTwinNormal,
+    TResult Function(SimpleTraitForDynTwinNormalImplementor_Variant0 value)?
+        variant0,
+    TResult Function(SimpleTraitForDynTwinNormalImplementor_Variant1 value)?
+        variant1,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -103,33 +89,26 @@ class _$SimpleTraitForDynTwinNormalImplementorCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormalImplCopyWith<
+abstract class _$$SimpleTraitForDynTwinNormalImplementor_Variant0ImplCopyWith<
     $Res> {
-  factory _$$SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormalImplCopyWith(
-          _$SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormalImpl
-              value,
-          $Res Function(
-                  _$SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormalImpl)
+  factory _$$SimpleTraitForDynTwinNormalImplementor_Variant0ImplCopyWith(
+          _$SimpleTraitForDynTwinNormalImplementor_Variant0Impl value,
+          $Res Function(_$SimpleTraitForDynTwinNormalImplementor_Variant0Impl)
               then) =
-      __$$SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormalImplCopyWithImpl<
-          $Res>;
+      __$$SimpleTraitForDynTwinNormalImplementor_Variant0ImplCopyWithImpl<$Res>;
   @useResult
   $Res call({StructOneWithTraitForDynTwinNormal field0});
 }
 
 /// @nodoc
-class __$$SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormalImplCopyWithImpl<
-        $Res>
+class __$$SimpleTraitForDynTwinNormalImplementor_Variant0ImplCopyWithImpl<$Res>
     extends _$SimpleTraitForDynTwinNormalImplementorCopyWithImpl<$Res,
-        _$SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormalImpl>
+        _$SimpleTraitForDynTwinNormalImplementor_Variant0Impl>
     implements
-        _$$SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormalImplCopyWith<
-            $Res> {
-  __$$SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormalImplCopyWithImpl(
-      _$SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormalImpl
-          _value,
-      $Res Function(
-              _$SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormalImpl)
+        _$$SimpleTraitForDynTwinNormalImplementor_Variant0ImplCopyWith<$Res> {
+  __$$SimpleTraitForDynTwinNormalImplementor_Variant0ImplCopyWithImpl(
+      _$SimpleTraitForDynTwinNormalImplementor_Variant0Impl _value,
+      $Res Function(_$SimpleTraitForDynTwinNormalImplementor_Variant0Impl)
           _then)
       : super(_value, _then);
 
@@ -138,8 +117,7 @@ class __$$SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNor
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(
-        _$SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormalImpl(
+    return _then(_$SimpleTraitForDynTwinNormalImplementor_Variant0Impl(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
@@ -150,10 +128,9 @@ class __$$SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNor
 
 /// @nodoc
 
-class _$SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormalImpl
-    extends SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormal {
-  const _$SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormalImpl(
-      this.field0)
+class _$SimpleTraitForDynTwinNormalImplementor_Variant0Impl
+    extends SimpleTraitForDynTwinNormalImplementor_Variant0 {
+  const _$SimpleTraitForDynTwinNormalImplementor_Variant0Impl(this.field0)
       : super._();
 
   @override
@@ -161,15 +138,14 @@ class _$SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNorma
 
   @override
   String toString() {
-    return 'SimpleTraitForDynTwinNormalImplementor.structOneWithTraitForDynTwinNormal(field0: $field0)';
+    return 'SimpleTraitForDynTwinNormalImplementor.variant0(field0: $field0)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other
-                is _$SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormalImpl &&
+            other is _$SimpleTraitForDynTwinNormalImplementor_Variant0Impl &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
@@ -179,46 +155,42 @@ class _$SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNorma
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormalImplCopyWith<
-          _$SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormalImpl>
+  _$$SimpleTraitForDynTwinNormalImplementor_Variant0ImplCopyWith<
+          _$SimpleTraitForDynTwinNormalImplementor_Variant0Impl>
       get copyWith =>
-          __$$SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormalImplCopyWithImpl<
-                  _$SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormalImpl>(
+          __$$SimpleTraitForDynTwinNormalImplementor_Variant0ImplCopyWithImpl<
+                  _$SimpleTraitForDynTwinNormalImplementor_Variant0Impl>(
               this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(StructOneWithTraitForDynTwinNormal field0)
-        structOneWithTraitForDynTwinNormal,
+        variant0,
     required TResult Function(StructTwoWithTraitForDynTwinNormal field0)
-        structTwoWithTraitForDynTwinNormal,
+        variant1,
   }) {
-    return structOneWithTraitForDynTwinNormal(field0);
+    return variant0(field0);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(StructOneWithTraitForDynTwinNormal field0)?
-        structOneWithTraitForDynTwinNormal,
-    TResult? Function(StructTwoWithTraitForDynTwinNormal field0)?
-        structTwoWithTraitForDynTwinNormal,
+    TResult? Function(StructOneWithTraitForDynTwinNormal field0)? variant0,
+    TResult? Function(StructTwoWithTraitForDynTwinNormal field0)? variant1,
   }) {
-    return structOneWithTraitForDynTwinNormal?.call(field0);
+    return variant0?.call(field0);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(StructOneWithTraitForDynTwinNormal field0)?
-        structOneWithTraitForDynTwinNormal,
-    TResult Function(StructTwoWithTraitForDynTwinNormal field0)?
-        structTwoWithTraitForDynTwinNormal,
+    TResult Function(StructOneWithTraitForDynTwinNormal field0)? variant0,
+    TResult Function(StructTwoWithTraitForDynTwinNormal field0)? variant1,
     required TResult orElse(),
   }) {
-    if (structOneWithTraitForDynTwinNormal != null) {
-      return structOneWithTraitForDynTwinNormal(field0);
+    if (variant0 != null) {
+      return variant0(field0);
     }
     return orElse();
   }
@@ -227,96 +199,78 @@ class _$SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNorma
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(
-            SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormal
-                value)
-        structOneWithTraitForDynTwinNormal,
+            SimpleTraitForDynTwinNormalImplementor_Variant0 value)
+        variant0,
     required TResult Function(
-            SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormal
-                value)
-        structTwoWithTraitForDynTwinNormal,
+            SimpleTraitForDynTwinNormalImplementor_Variant1 value)
+        variant1,
   }) {
-    return structOneWithTraitForDynTwinNormal(this);
+    return variant0(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(
-            SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormal
-                value)?
-        structOneWithTraitForDynTwinNormal,
-    TResult? Function(
-            SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormal
-                value)?
-        structTwoWithTraitForDynTwinNormal,
+    TResult? Function(SimpleTraitForDynTwinNormalImplementor_Variant0 value)?
+        variant0,
+    TResult? Function(SimpleTraitForDynTwinNormalImplementor_Variant1 value)?
+        variant1,
   }) {
-    return structOneWithTraitForDynTwinNormal?.call(this);
+    return variant0?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(
-            SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormal
-                value)?
-        structOneWithTraitForDynTwinNormal,
-    TResult Function(
-            SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormal
-                value)?
-        structTwoWithTraitForDynTwinNormal,
+    TResult Function(SimpleTraitForDynTwinNormalImplementor_Variant0 value)?
+        variant0,
+    TResult Function(SimpleTraitForDynTwinNormalImplementor_Variant1 value)?
+        variant1,
     required TResult orElse(),
   }) {
-    if (structOneWithTraitForDynTwinNormal != null) {
-      return structOneWithTraitForDynTwinNormal(this);
+    if (variant0 != null) {
+      return variant0(this);
     }
     return orElse();
   }
 }
 
-abstract class SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormal
+abstract class SimpleTraitForDynTwinNormalImplementor_Variant0
     extends SimpleTraitForDynTwinNormalImplementor {
-  const factory SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormal(
+  const factory SimpleTraitForDynTwinNormalImplementor_Variant0(
           final StructOneWithTraitForDynTwinNormal field0) =
-      _$SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormalImpl;
-  const SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormal._()
-      : super._();
+      _$SimpleTraitForDynTwinNormalImplementor_Variant0Impl;
+  const SimpleTraitForDynTwinNormalImplementor_Variant0._() : super._();
 
   @override
   StructOneWithTraitForDynTwinNormal get field0;
   @JsonKey(ignore: true)
-  _$$SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormalImplCopyWith<
-          _$SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormalImpl>
+  _$$SimpleTraitForDynTwinNormalImplementor_Variant0ImplCopyWith<
+          _$SimpleTraitForDynTwinNormalImplementor_Variant0Impl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormalImplCopyWith<
+abstract class _$$SimpleTraitForDynTwinNormalImplementor_Variant1ImplCopyWith<
     $Res> {
-  factory _$$SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormalImplCopyWith(
-          _$SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormalImpl
-              value,
-          $Res Function(
-                  _$SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormalImpl)
+  factory _$$SimpleTraitForDynTwinNormalImplementor_Variant1ImplCopyWith(
+          _$SimpleTraitForDynTwinNormalImplementor_Variant1Impl value,
+          $Res Function(_$SimpleTraitForDynTwinNormalImplementor_Variant1Impl)
               then) =
-      __$$SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormalImplCopyWithImpl<
-          $Res>;
+      __$$SimpleTraitForDynTwinNormalImplementor_Variant1ImplCopyWithImpl<$Res>;
   @useResult
   $Res call({StructTwoWithTraitForDynTwinNormal field0});
 }
 
 /// @nodoc
-class __$$SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormalImplCopyWithImpl<
-        $Res>
+class __$$SimpleTraitForDynTwinNormalImplementor_Variant1ImplCopyWithImpl<$Res>
     extends _$SimpleTraitForDynTwinNormalImplementorCopyWithImpl<$Res,
-        _$SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormalImpl>
+        _$SimpleTraitForDynTwinNormalImplementor_Variant1Impl>
     implements
-        _$$SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormalImplCopyWith<
-            $Res> {
-  __$$SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormalImplCopyWithImpl(
-      _$SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormalImpl
-          _value,
-      $Res Function(
-              _$SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormalImpl)
+        _$$SimpleTraitForDynTwinNormalImplementor_Variant1ImplCopyWith<$Res> {
+  __$$SimpleTraitForDynTwinNormalImplementor_Variant1ImplCopyWithImpl(
+      _$SimpleTraitForDynTwinNormalImplementor_Variant1Impl _value,
+      $Res Function(_$SimpleTraitForDynTwinNormalImplementor_Variant1Impl)
           _then)
       : super(_value, _then);
 
@@ -325,8 +279,7 @@ class __$$SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNor
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(
-        _$SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormalImpl(
+    return _then(_$SimpleTraitForDynTwinNormalImplementor_Variant1Impl(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
@@ -337,10 +290,9 @@ class __$$SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNor
 
 /// @nodoc
 
-class _$SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormalImpl
-    extends SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormal {
-  const _$SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormalImpl(
-      this.field0)
+class _$SimpleTraitForDynTwinNormalImplementor_Variant1Impl
+    extends SimpleTraitForDynTwinNormalImplementor_Variant1 {
+  const _$SimpleTraitForDynTwinNormalImplementor_Variant1Impl(this.field0)
       : super._();
 
   @override
@@ -348,15 +300,14 @@ class _$SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNorma
 
   @override
   String toString() {
-    return 'SimpleTraitForDynTwinNormalImplementor.structTwoWithTraitForDynTwinNormal(field0: $field0)';
+    return 'SimpleTraitForDynTwinNormalImplementor.variant1(field0: $field0)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other
-                is _$SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormalImpl &&
+            other is _$SimpleTraitForDynTwinNormalImplementor_Variant1Impl &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
@@ -366,46 +317,42 @@ class _$SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNorma
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormalImplCopyWith<
-          _$SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormalImpl>
+  _$$SimpleTraitForDynTwinNormalImplementor_Variant1ImplCopyWith<
+          _$SimpleTraitForDynTwinNormalImplementor_Variant1Impl>
       get copyWith =>
-          __$$SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormalImplCopyWithImpl<
-                  _$SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormalImpl>(
+          __$$SimpleTraitForDynTwinNormalImplementor_Variant1ImplCopyWithImpl<
+                  _$SimpleTraitForDynTwinNormalImplementor_Variant1Impl>(
               this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(StructOneWithTraitForDynTwinNormal field0)
-        structOneWithTraitForDynTwinNormal,
+        variant0,
     required TResult Function(StructTwoWithTraitForDynTwinNormal field0)
-        structTwoWithTraitForDynTwinNormal,
+        variant1,
   }) {
-    return structTwoWithTraitForDynTwinNormal(field0);
+    return variant1(field0);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(StructOneWithTraitForDynTwinNormal field0)?
-        structOneWithTraitForDynTwinNormal,
-    TResult? Function(StructTwoWithTraitForDynTwinNormal field0)?
-        structTwoWithTraitForDynTwinNormal,
+    TResult? Function(StructOneWithTraitForDynTwinNormal field0)? variant0,
+    TResult? Function(StructTwoWithTraitForDynTwinNormal field0)? variant1,
   }) {
-    return structTwoWithTraitForDynTwinNormal?.call(field0);
+    return variant1?.call(field0);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(StructOneWithTraitForDynTwinNormal field0)?
-        structOneWithTraitForDynTwinNormal,
-    TResult Function(StructTwoWithTraitForDynTwinNormal field0)?
-        structTwoWithTraitForDynTwinNormal,
+    TResult Function(StructOneWithTraitForDynTwinNormal field0)? variant0,
+    TResult Function(StructTwoWithTraitForDynTwinNormal field0)? variant1,
     required TResult orElse(),
   }) {
-    if (structTwoWithTraitForDynTwinNormal != null) {
-      return structTwoWithTraitForDynTwinNormal(field0);
+    if (variant1 != null) {
+      return variant1(field0);
     }
     return orElse();
   }
@@ -414,64 +361,53 @@ class _$SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNorma
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(
-            SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormal
-                value)
-        structOneWithTraitForDynTwinNormal,
+            SimpleTraitForDynTwinNormalImplementor_Variant0 value)
+        variant0,
     required TResult Function(
-            SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormal
-                value)
-        structTwoWithTraitForDynTwinNormal,
+            SimpleTraitForDynTwinNormalImplementor_Variant1 value)
+        variant1,
   }) {
-    return structTwoWithTraitForDynTwinNormal(this);
+    return variant1(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(
-            SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormal
-                value)?
-        structOneWithTraitForDynTwinNormal,
-    TResult? Function(
-            SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormal
-                value)?
-        structTwoWithTraitForDynTwinNormal,
+    TResult? Function(SimpleTraitForDynTwinNormalImplementor_Variant0 value)?
+        variant0,
+    TResult? Function(SimpleTraitForDynTwinNormalImplementor_Variant1 value)?
+        variant1,
   }) {
-    return structTwoWithTraitForDynTwinNormal?.call(this);
+    return variant1?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(
-            SimpleTraitForDynTwinNormalImplementor_StructOneWithTraitForDynTwinNormal
-                value)?
-        structOneWithTraitForDynTwinNormal,
-    TResult Function(
-            SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormal
-                value)?
-        structTwoWithTraitForDynTwinNormal,
+    TResult Function(SimpleTraitForDynTwinNormalImplementor_Variant0 value)?
+        variant0,
+    TResult Function(SimpleTraitForDynTwinNormalImplementor_Variant1 value)?
+        variant1,
     required TResult orElse(),
   }) {
-    if (structTwoWithTraitForDynTwinNormal != null) {
-      return structTwoWithTraitForDynTwinNormal(this);
+    if (variant1 != null) {
+      return variant1(this);
     }
     return orElse();
   }
 }
 
-abstract class SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormal
+abstract class SimpleTraitForDynTwinNormalImplementor_Variant1
     extends SimpleTraitForDynTwinNormalImplementor {
-  const factory SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormal(
+  const factory SimpleTraitForDynTwinNormalImplementor_Variant1(
           final StructTwoWithTraitForDynTwinNormal field0) =
-      _$SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormalImpl;
-  const SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormal._()
-      : super._();
+      _$SimpleTraitForDynTwinNormalImplementor_Variant1Impl;
+  const SimpleTraitForDynTwinNormalImplementor_Variant1._() : super._();
 
   @override
   StructTwoWithTraitForDynTwinNormal get field0;
   @JsonKey(ignore: true)
-  _$$SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormalImplCopyWith<
-          _$SimpleTraitForDynTwinNormalImplementor_StructTwoWithTraitForDynTwinNormalImpl>
+  _$$SimpleTraitForDynTwinNormalImplementor_Variant1ImplCopyWith<
+          _$SimpleTraitForDynTwinNormalImplementor_Variant1Impl>
       get copyWith => throw _privateConstructorUsedError;
 }
