@@ -347,7 +347,10 @@ fn wire__crate__api__minimal__func_arg_dyn_trait_twin_normal_impl(
             };
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_arg = <dyn SimpleTraitForDynTwinNormal>::sse_decode(&mut deserializer);
+            let api_arg =
+                <crate::frb_generated::SimpleTraitForDynTwinNormalImplementor>::sse_decode(
+                    &mut deserializer,
+                );
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
