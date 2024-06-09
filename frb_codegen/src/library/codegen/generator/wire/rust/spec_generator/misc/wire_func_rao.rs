@@ -50,7 +50,7 @@ pub(crate) fn generate_code_inner_decode(func: &MirFunc) -> String {
         .join("");
 
     format!(
-        "{declarations}let decode_indices_ = flutter_rust_bridge::for_generated::rust_auto_opaque_decode_compute_order(vec![{var_orders}]);
+        "{declarations}let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![{var_orders}]);
         for i in decode_indices_ {{
             match i {{
                 {match_arms}
