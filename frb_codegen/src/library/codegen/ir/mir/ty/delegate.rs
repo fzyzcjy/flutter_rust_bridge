@@ -99,9 +99,13 @@ pub struct MirTypeDelegateProxyEnum {
 
 pub struct MirTypeDelegateDynTrait {
     pub trait_def_name: NamespacedName,
+    // `None` if and only if dummy mode
+    pub data: Option<MirTypeDelegateDynTraitData>,
+}
+
+pub struct MirTypeDelegateDynTraitData {
     pub delegate_namespace: Namespace,
     pub variants: Vec<MirTypeDelegateDynTraitVariant>,
-    pub dummy_delegate: bool,
 }
 
 pub struct MirTypeDelegateDynTraitVariant {
