@@ -75,5 +75,7 @@ fn generate_proxy_enum(
         })
         .collect_vec();
 
-    lockable::generate(&enum_name, &proxy_enum_ty.rust_api_type(), &variants)
+    let deref_target = proxy_enum_ty.rust_api_type();
+
+    lockable::generate(&enum_name, &deref_target, &variants)
 }
