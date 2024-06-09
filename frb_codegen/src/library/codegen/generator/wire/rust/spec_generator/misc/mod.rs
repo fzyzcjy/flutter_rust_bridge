@@ -5,7 +5,7 @@ use crate::codegen::generator::misc::target::TargetOrCommon;
 use crate::codegen::generator::wire::rust::spec_generator::base::{
     WireRustGenerator, WireRustGeneratorContext,
 };
-use crate::codegen::generator::wire::rust::spec_generator::misc::wire_func::generate_wire_func;
+use crate::codegen::generator::wire::rust::spec_generator::misc::function::generate_wire_func;
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
 use crate::codegen::generator::wire::rust::MirPackComputedCache;
 use crate::codegen::ir::mir::func::MirFuncOwnerInfo;
@@ -19,8 +19,8 @@ use serde::Serialize;
 use sha1::{Digest, Sha1};
 use std::collections::HashSet;
 
+pub(crate) mod function;
 pub(crate) mod ty;
-pub(crate) mod wire_func;
 pub(crate) mod wire_func_rao;
 
 #[derive(Serialize)]
