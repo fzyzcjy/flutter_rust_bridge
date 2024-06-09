@@ -10,7 +10,7 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::base::{
 };
 use crate::codegen::generator::wire::rust::spec_generator::codec::sse::entrypoint::SseWireRustCodecEntrypoint;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFuncParam;
-use crate::codegen::generator::wire::rust::spec_generator::misc::wire_func::wire_func_name;
+use crate::codegen::generator::wire::rust::spec_generator::misc::function::wire_func_name;
 use crate::codegen::ir::mir::func::{MirFunc, MirFuncMode};
 use crate::codegen::ir::mir::ty::MirType;
 use itertools::Itertools;

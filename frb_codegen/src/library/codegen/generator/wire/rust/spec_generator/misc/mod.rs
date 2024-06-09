@@ -5,7 +5,7 @@ use crate::codegen::generator::misc::target::TargetOrCommon;
 use crate::codegen::generator::wire::rust::spec_generator::base::{
     WireRustGenerator, WireRustGeneratorContext,
 };
-use crate::codegen::generator::wire::rust::spec_generator::misc::wire_func::generate_wire_func;
+use crate::codegen::generator::wire::rust::spec_generator::misc::function::generate_wire_func;
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
 use crate::codegen::generator::wire::rust::MirPackComputedCache;
 use crate::codegen::ir::mir::func::MirFuncOwnerInfo;
@@ -19,9 +19,8 @@ use serde::Serialize;
 use sha1::{Digest, Sha1};
 use std::collections::HashSet;
 
+pub(crate) mod function;
 pub(crate) mod ty;
-pub(crate) mod wire_func;
-pub(crate) mod wire_func_rao;
 
 #[derive(Serialize)]
 pub(crate) struct WireRustOutputSpecMisc {
@@ -117,7 +116,7 @@ fn generate_imports(
 
     // NOTE Do *not* use imports when possible, instead use fully specified name directly
     let static_imports = "use flutter_rust_bridge::{Handler, IntoIntoDart};
-use flutter_rust_bridge::for_generated::transform_result_dco;
+use flutter_rust_bridge::for_generated::{Lockable, transform_result_dco};
 use flutter_rust_bridge::for_generated::byteorder::{NativeEndian, WriteBytesExt, ReadBytesExt};";
 
     Acc::new(|target| {

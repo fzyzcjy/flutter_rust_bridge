@@ -36,8 +36,8 @@ impl MyNode {
     //     }
     // }
 
-    #[frb(proxy)]
-    pub fn param_one(&self) -> &MyAudioParam {
-        &self.param_one
-    }
+    // #[frb(proxy)]
+    // pub fn param_one(&self) -> &MyAudioParam {
+    //     &self.param_one
+    // }
 }
