@@ -220,7 +220,7 @@ impl MirTypeTrait for MirTypeDelegate {
             MirTypeDelegate::RustAutoOpaqueExplicit(mir) => {
                 format!("RustAutoOpaque{}<{}>", mir.inner.codec, mir.raw.string)
             }
-            MirTypeDelegate::DynTrait(mir) => format!("dyn <{}>", mir.trait_def_name.name),
+            MirTypeDelegate::DynTrait(mir) => format!("dyn {}", mir.trait_def_name.name),
             MirTypeDelegate::ProxyVariant(mir) => mir.inner.rust_api_type(),
             MirTypeDelegate::ProxyEnum(mir) => mir.original.rust_api_type(),
         }
