@@ -79,14 +79,11 @@ fn generate_decode_statement(
 
 fn filter_interest_fields(func: &MirFunc) -> Vec<(&MirFuncInput, OwnershipMode)> {
     (func.inputs.iter())
-        .filter_map(|field| {
-            if let MirType::RustAutoOpaqueImplicit(ty) = &field.inner.ty {
-                if ty.ownership_mode != OwnershipMode::Owned {
-                    return Some((field, ty.ownership_mode));
-                }
+        .filter_map(|field| match &field.inner.ty {
+            MirType::RustAutoOpaqueImplicit(ty) if ty.ownership_mode != OwnershipMode::Owned => {
+                Some((field, ty.ownership_mode))
             }
-
-            None
+            _ => None,
         })
         .collect_vec()
 }
