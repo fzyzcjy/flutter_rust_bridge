@@ -277,6 +277,7 @@ const sidebars = {
                         'guides/miscellaneous/multi-input',
                         'guides/miscellaneous/pure-dart',
                         'guides/miscellaneous/isolates',
+                        'guides/miscellaneous/override-prefix',
                         'guides/miscellaneous/dart-type-rename',
                         'guides/miscellaneous/attributes',
                         'guides/miscellaneous/safety',
