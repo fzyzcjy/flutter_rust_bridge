@@ -56,7 +56,7 @@ pub(crate) struct GenerateCommandArgsPrimary {
     #[arg(long)]
     pub config_file: Option<String>,
 
-    /// Glob pattern of input Rust files
+    /// Input Rust files, such as `crate::api,crate::hello::world,another-third-party-crate`
     #[arg(short, long)]
     pub rust_input: Option<String>,
 
