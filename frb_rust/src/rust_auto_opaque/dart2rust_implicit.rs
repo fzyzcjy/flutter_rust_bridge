@@ -1,6 +1,5 @@
 use crate::for_generated::BaseArc;
 use crate::rust_auto_opaque::inner::RustAutoOpaqueInner;
-use crate::rust_auto_opaque::order::RustAutoOpaqueOrder;
 use crate::rust_opaque::RustOpaqueBase;
 use tokio::sync::RwLock;
 
@@ -19,38 +18,8 @@ pub fn rust_auto_opaque_decode_owned<T, A: BaseArc<RustAutoOpaqueInner<T>>>(
             .into_inner()
 }
 
-pub fn rust_auto_opaque_lock_order_info<T, A: BaseArc<RustAutoOpaqueInner<T>>>(
-    opaque: &RustOpaqueBase<RustAutoOpaqueInner<T>, A>,
-    index: usize,
-    mutable: bool,
-) -> RustAutoOpaqueLockOrderInfo {
-    RustAutoOpaqueLockOrderInfo {
-        index,
-        mutable,
-        object_order: opaque.order,
-    }
-}
-
 pub fn rust_auto_opaque_encode<T, A: BaseArc<RustAutoOpaqueInner<T>>>(
     value: T,
 ) -> RustOpaqueBase<RustAutoOpaqueInner<T>, A> {
     RustOpaqueBase::new(RustAutoOpaqueInner::new(RwLock::new(value)))
 }
-
-pub fn rust_auto_opaque_decode_compute_order(
-    infos: Vec<RustAutoOpaqueLockOrderInfo>,
-) -> Vec<usize> {
-    let sorted_infos = {
-        let mut x = infos;
-        x.sort_unstable_by_key(|info| info.object_order);
-        x
-    };
-
-    assert!(
-        check_no_immediate_invalid_borrow(&sorted_infos),
-        "Cannot borrow an object mutably, and at the same time borrow again in another argument"
-    );
-
-    sorted_infos.into_iter().map(|info| info.index).collect()
-}
-
