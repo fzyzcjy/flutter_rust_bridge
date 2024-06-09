@@ -354,6 +354,20 @@ fn wire__crate__api__minimal__func_arg_dyn_trait_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
+                    let mut api_arg_decoded = None;
+                    let decode_indices_ =
+                        flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![
+                            flutter_rust_bridge::for_generated::LockableOrderInfo::new(
+                                &api_arg, 0, false,
+                            ),
+                        ]);
+                    for i in decode_indices_ {
+                        match i {
+                            0 => api_arg_decoded = Some(api_arg.lockable_decode_sync_ref()),
+                            _ => unreachable!(),
+                        }
+                    }
+                    let api_arg = &*api_arg_decoded.unwrap();
                     Result::<_, ()>::Ok(crate::api::minimal::func_arg_dyn_trait_twin_normal(
                         &api_arg,
                     ))
