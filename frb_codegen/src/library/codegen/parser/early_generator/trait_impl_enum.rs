@@ -54,7 +54,9 @@ fn generate_trait_impl_enum(
         .collect_vec();
 
     let variants = (interest_trait_impls.into_iter())
-        .map(|item| lockable::VariantInfo {})
+        .map(|ty| lockable::VariantInfo {
+            enum_variant_name: ty.rust_api_type(),
+        })
         .collect_vec();
 
     let code = lockable::generate(&variants);

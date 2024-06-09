@@ -6,7 +6,9 @@ use convert_case::{Case, Casing};
 use itertools::Itertools;
 use strum_macros::Display;
 
-pub(crate) struct VariantInfo {}
+pub(crate) struct VariantInfo {
+    pub enum_variant_name: String,
+}
 
 pub(crate) fn generate(variants: &[VariantInfo]) -> anyhow::Result<Vec<InjectExtraCodeBlock>> {
     let code_impl = generate_code_impl(variants);
@@ -32,14 +34,12 @@ pub(crate) fn generate(variants: &[VariantInfo]) -> anyhow::Result<Vec<InjectExt
 
 fn generate_code_impl(variants: &[VariantInfo]) -> String {
     let enum_name = format!("{trait_def_name}Implementor");
-    let enum_def = generate_enum_raw(trait_impls, &enum_name, |ty| {
-        format!("RustAutoOpaque<{ty}>")
-    });
+    let enum_def = generate_enum_raw(variants, &enum_name, |ty| format!("RustAutoOpaque<{ty}>"));
 
-    let blocking_read_body = generate_match_raw(trait_impls, |ty| {
+    let blocking_read_body = generate_match_raw(variants, |ty| {
         format!("{trait_def_name}RwLockReadGuard::{ty}(inner.blocking_read())")
     });
-    let blocking_write_body = generate_match_raw(trait_impls, |ty| {
+    let blocking_write_body = generate_match_raw(variants, |ty| {
         format!("{trait_def_name}RwLockWriteGuard::{ty}(inner.blocking_write())")
     });
 
@@ -70,11 +70,11 @@ fn generate_code_read_write_guard(rw: ReadWrite, variants: &[VariantInfo]) -> St
     let rw_pascal = rw.to_string().to_case(Case::Pascal);
 
     let enum_name = format!("{trait_def_name}RwLock{rw_pascal}Guard");
-    let enum_def = generate_enum_raw(trait_impls, &format!("{enum_name}<'a>"), |ty| {
+    let enum_def = generate_enum_raw(variants, &format!("{enum_name}<'a>"), |ty| {
         format!("flutter_rust_bridge::for_generated::rust_async::RwLock{rw_pascal}Guard<'a, {ty}>")
     });
 
-    let deref_body = generate_match_raw(trait_impls, |_| "inner.deref()".to_owned());
+    let deref_body = generate_match_raw(variants, |_| "inner.deref()".to_owned());
     let deref_code = format!(
         "
         impl std::ops::Deref for {enum_name}<'_> {{
@@ -88,7 +88,7 @@ fn generate_code_read_write_guard(rw: ReadWrite, variants: &[VariantInfo]) -> St
     );
 
     let maybe_deref_mut_code = if rw == ReadWrite::Write {
-        let body = generate_match_raw(trait_impls, |_| "inner.deref_mut()".to_owned());
+        let body = generate_match_raw(variants, |_| "inner.deref_mut()".to_owned());
         format!(
             "
             impl std::ops::DerefMut for {enum_name}<'_> {{
@@ -114,15 +114,12 @@ fn generate_code_read_write_guard(rw: ReadWrite, variants: &[VariantInfo]) -> St
 }
 
 fn generate_enum_raw(
-    trait_impls: &[MirType],
+    variants: &[VariantInfo],
     enum_name: &str,
-    wrapper: impl Fn(&str) -> String,
+    wrapper: impl Fn(&VariantInfo) -> String,
 ) -> String {
-    let variants = (trait_impls.iter())
-        .map(|ty| {
-            let rust_api_type = ty.rust_api_type();
-            format!("{rust_api_type}({}),\n", wrapper(&rust_api_type))
-        })
+    let variants = (variants.iter())
+        .map(|variant| format!("{}({}),\n", variant.enum_variant_name, wrapper(variant)))
         .join("");
 
     format!(
@@ -132,13 +129,13 @@ fn generate_enum_raw(
     )
 }
 
-fn generate_match_raw(trait_impls: &[MirType], branch: impl Fn(&str) -> String) -> String {
-    let variants = (trait_impls.iter())
-        .map(|ty| {
-            let rust_api_type = ty.rust_api_type();
+fn generate_match_raw(variants: &[VariantInfo], branch: impl Fn(&VariantInfo) -> String) -> String {
+    let variants = (variants.iter())
+        .map(|variant| {
             format!(
-                "Self::{rust_api_type}(inner) => {},\n",
-                branch(&rust_api_type)
+                "Self::{}(inner) => {},\n",
+                &variant.enum_variant_name,
+                branch(&variant)
             )
         })
         .join("");
