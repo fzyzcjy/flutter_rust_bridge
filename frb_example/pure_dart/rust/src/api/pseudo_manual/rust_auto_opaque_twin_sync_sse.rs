@@ -129,79 +129,68 @@ pub fn rust_auto_opaque_callable_return_twin_sync_sse(
 }
 
 // ==================================== trait object =======================================
-
-pub trait HelloTraitTwinSyncSse: Send + Sync {
-    fn func_hello(&self) -> &str;
-}
-
-#[frb(opaque)]
-pub struct HelloOneStructTwinSyncSse {
-    inner: String,
-}
-
-impl HelloTraitTwinSyncSse for HelloOneStructTwinSyncSse {
-    fn func_hello(&self) -> &str {
-        &self.inner
-    }
-}
-
-pub enum HelloTwoEnumTwinSyncSse {
-    A,
-    B,
-}
-
-impl HelloTraitTwinSyncSse for HelloTwoEnumTwinSyncSse {
-    fn func_hello(&self) -> &str {
-        match self {
-            HelloTwoEnumTwinSyncSse::A => "A",
-            HelloTwoEnumTwinSyncSse::B => "B",
-        }
-    }
-}
-
-#[flutter_rust_bridge::frb(serialize)]
-#[flutter_rust_bridge::frb(sync)]
-pub fn rust_auto_opaque_trait_object_arg_own_twin_sync_sse(
-    arg: Box<dyn HelloTraitTwinSyncSse>,
-    expect: String,
-) {
-    assert_eq!(arg.func_hello(), expect);
-}
-
-#[allow(clippy::borrowed_box)]
-#[flutter_rust_bridge::frb(serialize)]
-#[flutter_rust_bridge::frb(sync)]
-pub fn rust_auto_opaque_trait_object_arg_borrow_twin_sync_sse(
-    arg: &Box<dyn HelloTraitTwinSyncSse>,
-    expect: String,
-) {
-    assert_eq!(arg.func_hello(), expect);
-}
-
-#[flutter_rust_bridge::frb(serialize)]
-#[flutter_rust_bridge::frb(sync)]
-pub fn rust_auto_opaque_trait_object_arg_mut_borrow_twin_sync_sse(
-    arg: &mut Box<dyn HelloTraitTwinSyncSse>,
-    expect: String,
-) {
-    assert_eq!(arg.func_hello(), expect);
-}
-
-#[flutter_rust_bridge::frb(serialize)]
-#[flutter_rust_bridge::frb(sync)]
-pub fn rust_auto_opaque_trait_object_return_own_one_twin_sync_sse() -> Box<dyn HelloTraitTwinSyncSse>
-{
-    Box::new(HelloOneStructTwinSyncSse {
-        inner: "hello".into(),
-    })
-}
-
-#[flutter_rust_bridge::frb(serialize)]
-#[flutter_rust_bridge::frb(sync)]
-pub fn rust_auto_opaque_trait_object_return_own_two_twin_sync_sse() -> Box<dyn HelloTraitTwinSyncSse>
-{
-    Box::new(HelloTwoEnumTwinSyncSse::B)
-}
+//
+// pub trait HelloTraitTwinSyncSse: Send + Sync {
+//     fn func_hello(&self) -> &str;
+// }
+//
+// #[frb(opaque)]
+// pub struct HelloOneStructTwinSyncSse {
+//     inner: String,
+// }
+//
+// impl HelloTraitTwinSyncSse for HelloOneStructTwinSyncSse {
+//     fn func_hello(&self) -> &str {
+//         &self.inner
+//     }
+// }
+//
+// pub enum HelloTwoEnumTwinSyncSse {
+//     A,
+//     B,
+// }
+//
+// impl HelloTraitTwinSyncSse for HelloTwoEnumTwinSyncSse {
+//     fn func_hello(&self) -> &str {
+//         match self {
+//             HelloTwoEnumTwinSyncSse::A => "A",
+//             HelloTwoEnumTwinSyncSse::B => "B",
+//         }
+//     }
+// }
+//
+// #[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn rust_auto_opaque_trait_object_arg_own_twin_sync_sse(
+//     arg: Box<dyn HelloTraitTwinSyncSse>,
+//     expect: String,
+// ) {
+//     assert_eq!(arg.func_hello(), expect);
+// }
+//
+// #[allow(clippy::borrowed_box)]
+// #[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn rust_auto_opaque_trait_object_arg_borrow_twin_sync_sse(
+//     arg: &Box<dyn HelloTraitTwinSyncSse>,
+//     expect: String,
+// ) {
+//     assert_eq!(arg.func_hello(), expect);
+// }
+//
+// #[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn rust_auto_opaque_trait_object_arg_mut_borrow_twin_sync_sse(
+//     arg: &mut Box<dyn HelloTraitTwinSyncSse>,
+//     expect: String,
+// ) {
+//     assert_eq!(arg.func_hello(), expect);
+// }
+//
+// #[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn rust_auto_opaque_trait_object_return_own_one_twin_sync_sse() -> Box<dyn HelloTraitTwinSyncSse> {
+//     Box::new(HelloOneStructTwinSyncSse {
+//         inner: "hello".into(),
+//     })
+// }
+//
+// #[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn rust_auto_opaque_trait_object_return_own_two_twin_sync_sse() -> Box<dyn HelloTraitTwinSyncSse> {
+//     Box::new(HelloTwoEnumTwinSyncSse::B)
+// }
+//
 
 // ==================================== static method =======================================
 

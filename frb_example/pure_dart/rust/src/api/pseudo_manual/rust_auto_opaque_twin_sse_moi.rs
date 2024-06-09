@@ -124,79 +124,68 @@ pub fn rust_auto_opaque_callable_return_twin_sse_moi() -> Box<dyn Fn(String) -> 
 }
 
 // ==================================== trait object =======================================
-
-pub trait HelloTraitTwinSseMoi: Send + Sync {
-    fn func_hello(&self) -> &str;
-}
-
-#[frb(opaque)]
-pub struct HelloOneStructTwinSseMoi {
-    inner: String,
-}
-
-impl HelloTraitTwinSseMoi for HelloOneStructTwinSseMoi {
-    fn func_hello(&self) -> &str {
-        &self.inner
-    }
-}
-
-pub enum HelloTwoEnumTwinSseMoi {
-    A,
-    B,
-}
-
-impl HelloTraitTwinSseMoi for HelloTwoEnumTwinSseMoi {
-    fn func_hello(&self) -> &str {
-        match self {
-            HelloTwoEnumTwinSseMoi::A => "A",
-            HelloTwoEnumTwinSseMoi::B => "B",
-        }
-    }
-}
-
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
-#[flutter_rust_bridge::frb(serialize)]
-pub fn rust_auto_opaque_trait_object_arg_own_twin_sse_moi(
-    arg: Box<dyn HelloTraitTwinSseMoi>,
-    expect: String,
-) {
-    assert_eq!(arg.func_hello(), expect);
-}
-
-#[allow(clippy::borrowed_box)]
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
-#[flutter_rust_bridge::frb(serialize)]
-pub fn rust_auto_opaque_trait_object_arg_borrow_twin_sse_moi(
-    arg: &Box<dyn HelloTraitTwinSseMoi>,
-    expect: String,
-) {
-    assert_eq!(arg.func_hello(), expect);
-}
-
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
-#[flutter_rust_bridge::frb(serialize)]
-pub fn rust_auto_opaque_trait_object_arg_mut_borrow_twin_sse_moi(
-    arg: &mut Box<dyn HelloTraitTwinSseMoi>,
-    expect: String,
-) {
-    assert_eq!(arg.func_hello(), expect);
-}
-
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
-#[flutter_rust_bridge::frb(serialize)]
-pub fn rust_auto_opaque_trait_object_return_own_one_twin_sse_moi() -> Box<dyn HelloTraitTwinSseMoi>
-{
-    Box::new(HelloOneStructTwinSseMoi {
-        inner: "hello".into(),
-    })
-}
-
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
-#[flutter_rust_bridge::frb(serialize)]
-pub fn rust_auto_opaque_trait_object_return_own_two_twin_sse_moi() -> Box<dyn HelloTraitTwinSseMoi>
-{
-    Box::new(HelloTwoEnumTwinSseMoi::B)
-}
+//
+// pub trait HelloTraitTwinSseMoi: Send + Sync {
+//     fn func_hello(&self) -> &str;
+// }
+//
+// #[frb(opaque)]
+// pub struct HelloOneStructTwinSseMoi {
+//     inner: String,
+// }
+//
+// impl HelloTraitTwinSseMoi for HelloOneStructTwinSseMoi {
+//     fn func_hello(&self) -> &str {
+//         &self.inner
+//     }
+// }
+//
+// pub enum HelloTwoEnumTwinSseMoi {
+//     A,
+//     B,
+// }
+//
+// impl HelloTraitTwinSseMoi for HelloTwoEnumTwinSseMoi {
+//     fn func_hello(&self) -> &str {
+//         match self {
+//             HelloTwoEnumTwinSseMoi::A => "A",
+//             HelloTwoEnumTwinSseMoi::B => "B",
+//         }
+//     }
+// }
+//
+// #[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(serialize)] pub fn rust_auto_opaque_trait_object_arg_own_twin_sse_moi(
+//     arg: Box<dyn HelloTraitTwinSseMoi>,
+//     expect: String,
+// ) {
+//     assert_eq!(arg.func_hello(), expect);
+// }
+//
+// #[allow(clippy::borrowed_box)]
+// #[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(serialize)] pub fn rust_auto_opaque_trait_object_arg_borrow_twin_sse_moi(
+//     arg: &Box<dyn HelloTraitTwinSseMoi>,
+//     expect: String,
+// ) {
+//     assert_eq!(arg.func_hello(), expect);
+// }
+//
+// #[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(serialize)] pub fn rust_auto_opaque_trait_object_arg_mut_borrow_twin_sse_moi(
+//     arg: &mut Box<dyn HelloTraitTwinSseMoi>,
+//     expect: String,
+// ) {
+//     assert_eq!(arg.func_hello(), expect);
+// }
+//
+// #[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(serialize)] pub fn rust_auto_opaque_trait_object_return_own_one_twin_sse_moi() -> Box<dyn HelloTraitTwinSseMoi> {
+//     Box::new(HelloOneStructTwinSseMoi {
+//         inner: "hello".into(),
+//     })
+// }
+//
+// #[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(serialize)] pub fn rust_auto_opaque_trait_object_return_own_two_twin_sse_moi() -> Box<dyn HelloTraitTwinSseMoi> {
+//     Box::new(HelloTwoEnumTwinSseMoi::B)
+// }
+//
 
 // ==================================== static method =======================================
 

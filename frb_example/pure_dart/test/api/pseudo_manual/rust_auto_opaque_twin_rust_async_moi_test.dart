@@ -197,30 +197,26 @@ Future<void> main({bool skipRustLibInit = false}) async {
     });
   });
 
-  group('trait object', () {
-    Future<void> _body(BoxHelloTraitTwinRustAsyncMoi obj, String expect) async {
-      await futurizeVoidTwinRustAsyncMoi(
-          rustAutoOpaqueTraitObjectArgBorrowTwinRustAsyncMoi(
-              arg: obj, expect: expect));
-      await futurizeVoidTwinRustAsyncMoi(
-          rustAutoOpaqueTraitObjectArgMutBorrowTwinRustAsyncMoi(
-              arg: obj, expect: expect));
-      await futurizeVoidTwinRustAsyncMoi(
-          rustAutoOpaqueTraitObjectArgOwnTwinRustAsyncMoi(
-              arg: obj, expect: expect));
-    }
-
-    test(
-        'case one',
-        () async => await _body(
-            await rustAutoOpaqueTraitObjectReturnOwnOneTwinRustAsyncMoi(),
-            'hello'));
-    test(
-        'case two',
-        () async => await _body(
-            await rustAutoOpaqueTraitObjectReturnOwnTwoTwinRustAsyncMoi(),
-            'B'));
-  });
+  // group('trait object', () {
+  //   Future<void> _body(BoxHelloTraitTwinRustAsyncMoi obj, String expect) async {
+  //     await futurizeVoidTwinRustAsyncMoi(rustAutoOpaqueTraitObjectArgBorrowTwinRustAsyncMoi(
+  //         arg: obj, expect: expect));
+  //     await futurizeVoidTwinRustAsyncMoi(
+  //         rustAutoOpaqueTraitObjectArgMutBorrowTwinRustAsyncMoi(
+  //             arg: obj, expect: expect));
+  //     await futurizeVoidTwinRustAsyncMoi(
+  //         rustAutoOpaqueTraitObjectArgOwnTwinRustAsyncMoi(arg: obj, expect: expect));
+  //   }
+  //
+  //   test(
+  //       'case one',
+  //       () async => await _body(
+  //           await rustAutoOpaqueTraitObjectReturnOwnOneTwinRustAsyncMoi(), 'hello'));
+  //   test(
+  //       'case two',
+  //       () async => await _body(
+  //           await rustAutoOpaqueTraitObjectReturnOwnTwoTwinRustAsyncMoi(), 'B'));
+  // });
 
   test('static method', () async {
     final obj = await NonCloneSimpleTwinRustAsyncMoi

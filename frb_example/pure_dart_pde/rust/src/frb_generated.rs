@@ -38,17 +38,13 @@ use crate::api::pseudo_manual::impl_trait_twin_sync::SimpleTraitTwinSync;
 use crate::api::pseudo_manual::impl_trait_twin_sync::*;
 use crate::api::pseudo_manual::method_twin_rust_async::*;
 use crate::api::pseudo_manual::method_twin_sync::*;
-use crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::HelloTraitTwinRustAsync;
 use crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::*;
-use crate::api::pseudo_manual::rust_auto_opaque_twin_sync::HelloTraitTwinSync;
 use crate::api::pseudo_manual::rust_auto_opaque_twin_sync::*;
 use crate::api::pseudo_manual::rust_opaque_twin_rust_async::*;
 use crate::api::pseudo_manual::rust_opaque_twin_sync::*;
-use crate::api::rust_auto_opaque::HelloTraitTwinNormal;
 use crate::api::rust_auto_opaque::*;
 use crate::api::rust_opaque::*;
 use crate::api::rust_opaque_sync::*;
-use crate::frb_generated::*;
 use flutter_rust_bridge::for_generated::byteorder::{NativeEndian, ReadBytesExt, WriteBytesExt};
 use flutter_rust_bridge::for_generated::{transform_result_dco, Lockable};
 use flutter_rust_bridge::{Handler, IntoIntoDart};
@@ -61,7 +57,7 @@ flutter_rust_bridge::frb_generated_boilerplate!(
     default_rust_auto_opaque = RustAutoOpaqueMoi,
 );
 pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "2.0.0-dev.37";
-pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = 1790638448;
+pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = -224322201;
 
 // Section: executor
 
@@ -21421,30 +21417,6 @@ fn wire__crate__api__pseudo_manual__raw_string_twin_sync__test_raw_string_item_s
                      Result::<_,()>::Ok(crate::api::pseudo_manual::raw_string_twin_sync::test_raw_string_item_struct_twin_sync())
                 })()) })
 }
-fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__HelloOneStructTwinRustAsync_func_hello_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "HelloOneStructTwinRustAsync_func_hello", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
-            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
-            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_that = <RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<HelloOneStructTwinRustAsync>>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
-                    transform_result_sse((move ||  {
-                        let mut api_that_decoded = None;
-let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![flutter_rust_bridge::for_generated::LockableOrderInfo::new(&api_that, 0, false)]);
-        for i in decode_indices_ {
-            match i {
-                0 => api_that_decoded = Some(api_that.lockable_decode_sync_ref()),
-                _ => unreachable!(),
-            }
-        }
-        let api_that = &*api_that_decoded.unwrap();
- Result::<_,()>::Ok({ crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::HelloOneStructTwinRustAsync::func_hello(&api_that); })
-                    })())
-                } })
-}
 fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__NonCloneSimpleTwinRustAsync_instance_method_arg_borrow_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -21777,21 +21749,6 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__StructWith
             })())
         },
     )
-}
-fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__hello_two_enum_twin_rust_async_func_hello_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "hello_two_enum_twin_rust_async_func_hello", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
-            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
-            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_that = <crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::HelloTwoEnumTwinRustAsync>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
-                    transform_result_sse((move ||  {
-                         Result::<_,()>::Ok({ crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::HelloTwoEnumTwinRustAsync::func_hello(&api_that); })
-                    })())
-                } })
 }
 fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_arg_borrow_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
@@ -22317,93 +22274,6 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_
                     })().await)
                 } })
 }
-fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_trait_object_arg_borrow_twin_rust_async_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_trait_object_arg_borrow_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
-            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
-            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_arg = <Box<dyn HelloTraitTwinRustAsync>>::sse_decode(&mut deserializer);
-let api_expect = <String>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
-                    transform_result_sse((move || async move {
-                         Result::<_,()>::Ok({ crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_trait_object_arg_borrow_twin_rust_async(&api_arg, api_expect).await; })
-                    })().await)
-                } })
-}
-fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_trait_object_arg_mut_borrow_twin_rust_async_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_trait_object_arg_mut_borrow_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
-            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
-            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_arg = <RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box < dyn HelloTraitTwinRustAsync >>>>::sse_decode(&mut deserializer);
-let api_expect = <String>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
-                    transform_result_sse((move || async move {
-                        let mut api_arg_decoded = None;
-let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![flutter_rust_bridge::for_generated::LockableOrderInfo::new(&api_arg, 0, true)]);
-        for i in decode_indices_ {
-            match i {
-                0 => api_arg_decoded = Some(api_arg.lockable_decode_async_ref_mut().await),
-                _ => unreachable!(),
-            }
-        }
-        let mut api_arg = &mut *api_arg_decoded.unwrap();
- Result::<_,()>::Ok({ crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_trait_object_arg_mut_borrow_twin_rust_async(&mut api_arg, api_expect).await; })
-                    })().await)
-                } })
-}
-fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_trait_object_arg_own_twin_rust_async_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_trait_object_arg_own_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
-            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
-            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_arg = <Box<dyn HelloTraitTwinRustAsync>>::sse_decode(&mut deserializer);
-let api_expect = <String>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
-                    transform_result_sse((move || async move {
-                         Result::<_,()>::Ok({ crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_trait_object_arg_own_twin_rust_async(api_arg, api_expect).await; })
-                    })().await)
-                } })
-}
-fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_trait_object_return_own_one_twin_rust_async_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_trait_object_return_own_one_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
-            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
-            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            deserializer.end(); move |context| async move {
-                    transform_result_sse((move || async move {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_trait_object_return_own_one_twin_rust_async().await)
-                    })().await)
-                } })
-}
-fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_trait_object_return_own_two_twin_rust_async_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_trait_object_return_own_two_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
-            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
-            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            deserializer.end(); move |context| async move {
-                    transform_result_sse((move || async move {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_trait_object_return_own_two_twin_rust_async().await)
-                    })().await)
-                } })
-}
 fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_two_args_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -22418,30 +22288,6 @@ let api_b = <NonCloneSimpleTwinRustAsync>::sse_decode(&mut deserializer);deseria
                     transform_result_sse((move || async move {
                          Result::<_,()>::Ok({ crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_two_args_twin_rust_async(api_a, api_b).await; })
                     })().await)
-                } })
-}
-fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__HelloOneStructTwinSync_func_hello_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "HelloOneStructTwinSync_func_hello", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
-            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
-            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_that = <RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<HelloOneStructTwinSync>>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
-                    transform_result_sse((move ||  {
-                        let mut api_that_decoded = None;
-let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![flutter_rust_bridge::for_generated::LockableOrderInfo::new(&api_that, 0, false)]);
-        for i in decode_indices_ {
-            match i {
-                0 => api_that_decoded = Some(api_that.lockable_decode_sync_ref()),
-                _ => unreachable!(),
-            }
-        }
-        let api_that = &*api_that_decoded.unwrap();
- Result::<_,()>::Ok({ crate::api::pseudo_manual::rust_auto_opaque_twin_sync::HelloOneStructTwinSync::func_hello(&api_that); })
-                    })())
                 } })
 }
 fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_instance_method_arg_borrow_twin_sync_impl(
@@ -22752,21 +22598,6 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGoodAn
             })())
         },
     )
-}
-fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__hello_two_enum_twin_sync_func_hello_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "hello_two_enum_twin_sync_func_hello", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
-            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
-            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_that = <crate::api::pseudo_manual::rust_auto_opaque_twin_sync::HelloTwoEnumTwinSync>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
-                    transform_result_sse((move ||  {
-                         Result::<_,()>::Ok({ crate::api::pseudo_manual::rust_auto_opaque_twin_sync::HelloTwoEnumTwinSync::func_hello(&api_that); })
-                    })())
-                } })
 }
 fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_arg_borrow_twin_sync_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -23230,83 +23061,6 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque
             deserializer.end();
                 transform_result_sse((move || {
                      Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync())
-                })()) })
-}
-fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_trait_object_arg_borrow_twin_sync_impl(
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_trait_object_arg_borrow_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { 
-            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
-            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_arg = <Box<dyn HelloTraitTwinSync>>::sse_decode(&mut deserializer);
-let api_expect = <String>::sse_decode(&mut deserializer);deserializer.end();
-                transform_result_sse((move || {
-                     Result::<_,()>::Ok({ crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_trait_object_arg_borrow_twin_sync(&api_arg, api_expect); })
-                })()) })
-}
-fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_trait_object_arg_mut_borrow_twin_sync_impl(
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_trait_object_arg_mut_borrow_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { 
-            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
-            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_arg = <RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box < dyn HelloTraitTwinSync >>>>::sse_decode(&mut deserializer);
-let api_expect = <String>::sse_decode(&mut deserializer);deserializer.end();
-                transform_result_sse((move || {
-                    let mut api_arg_decoded = None;
-let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![flutter_rust_bridge::for_generated::LockableOrderInfo::new(&api_arg, 0, true)]);
-        for i in decode_indices_ {
-            match i {
-                0 => api_arg_decoded = Some(api_arg.lockable_decode_sync_ref_mut()),
-                _ => unreachable!(),
-            }
-        }
-        let mut api_arg = &mut *api_arg_decoded.unwrap();
- Result::<_,()>::Ok({ crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_trait_object_arg_mut_borrow_twin_sync(&mut api_arg, api_expect); })
-                })()) })
-}
-fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_trait_object_arg_own_twin_sync_impl(
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_trait_object_arg_own_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { 
-            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
-            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_arg = <Box<dyn HelloTraitTwinSync>>::sse_decode(&mut deserializer);
-let api_expect = <String>::sse_decode(&mut deserializer);deserializer.end();
-                transform_result_sse((move || {
-                     Result::<_,()>::Ok({ crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_trait_object_arg_own_twin_sync(api_arg, api_expect); })
-                })()) })
-}
-fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_trait_object_return_own_one_twin_sync_impl(
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_trait_object_return_own_one_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { 
-            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
-            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            deserializer.end();
-                transform_result_sse((move || {
-                     Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_trait_object_return_own_one_twin_sync())
-                })()) })
-}
-fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_trait_object_return_own_two_twin_sync_impl(
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_trait_object_return_own_two_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { 
-            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
-            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            deserializer.end();
-                transform_result_sse((move || {
-                     Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_trait_object_return_own_two_twin_sync())
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_two_args_twin_sync_impl(
@@ -24662,58 +24416,6 @@ fn wire__crate__api__raw_string__test_raw_string_item_struct_twin_normal_impl(
         },
     )
 }
-fn wire__crate__api__rust_auto_opaque__HelloOneStructTwinNormal_func_hello_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "HelloOneStructTwinNormal_func_hello",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
-        },
-        move || {
-            let message = unsafe {
-                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
-                    ptr_,
-                    rust_vec_len_,
-                    data_len_,
-                )
-            };
-            let mut deserializer =
-                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_that = <RustOpaqueMoi<
-                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<HelloOneStructTwinNormal>,
-            >>::sse_decode(&mut deserializer);
-            deserializer.end();
-            move |context| {
-                transform_result_sse((move || {
-                    let mut api_that_decoded = None;
-                    let decode_indices_ =
-                        flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![
-                            flutter_rust_bridge::for_generated::LockableOrderInfo::new(
-                                &api_that, 0, false,
-                            ),
-                        ]);
-                    for i in decode_indices_ {
-                        match i {
-                            0 => api_that_decoded = Some(api_that.lockable_decode_sync_ref()),
-                            _ => unreachable!(),
-                        }
-                    }
-                    let api_that = &*api_that_decoded.unwrap();
-                    Result::<_, ()>::Ok({
-                        crate::api::rust_auto_opaque::HelloOneStructTwinNormal::func_hello(
-                            &api_that,
-                        );
-                    })
-                })())
-            }
-        },
-    )
-}
 fn wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_instance_method_arg_borrow_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -25062,42 +24764,6 @@ fn wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOption
                     };
                 })
             })())
-        },
-    )
-}
-fn wire__crate__api__rust_auto_opaque__hello_two_enum_twin_normal_func_hello_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "hello_two_enum_twin_normal_func_hello",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
-        },
-        move || {
-            let message = unsafe {
-                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
-                    ptr_,
-                    rust_vec_len_,
-                    data_len_,
-                )
-            };
-            let mut deserializer =
-                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_that = <crate::api::rust_auto_opaque::HelloTwoEnumTwinNormal>::sse_decode(
-                &mut deserializer,
-            );
-            deserializer.end();
-            move |context| {
-                transform_result_sse((move || {
-                    Result::<_, ()>::Ok({
-                        crate::api::rust_auto_opaque::HelloTwoEnumTwinNormal::func_hello(&api_that);
-                    })
-                })())
-            }
         },
     )
 }
@@ -26020,93 +25686,6 @@ fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_struct_with_good_and_opa
             deserializer.end(); move |context|  {
                     transform_result_sse((move ||  {
                          Result::<_,()>::Ok(crate::api::rust_auto_opaque::rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_normal())
-                    })())
-                } })
-}
-fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_trait_object_arg_borrow_twin_normal_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_trait_object_arg_borrow_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
-            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
-            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_arg = <Box<dyn HelloTraitTwinNormal>>::sse_decode(&mut deserializer);
-let api_expect = <String>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
-                    transform_result_sse((move ||  {
-                         Result::<_,()>::Ok({ crate::api::rust_auto_opaque::rust_auto_opaque_trait_object_arg_borrow_twin_normal(&api_arg, api_expect); })
-                    })())
-                } })
-}
-fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_trait_object_arg_mut_borrow_twin_normal_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_trait_object_arg_mut_borrow_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
-            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
-            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_arg = <RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box < dyn HelloTraitTwinNormal >>>>::sse_decode(&mut deserializer);
-let api_expect = <String>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
-                    transform_result_sse((move ||  {
-                        let mut api_arg_decoded = None;
-let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![flutter_rust_bridge::for_generated::LockableOrderInfo::new(&api_arg, 0, true)]);
-        for i in decode_indices_ {
-            match i {
-                0 => api_arg_decoded = Some(api_arg.lockable_decode_sync_ref_mut()),
-                _ => unreachable!(),
-            }
-        }
-        let mut api_arg = &mut *api_arg_decoded.unwrap();
- Result::<_,()>::Ok({ crate::api::rust_auto_opaque::rust_auto_opaque_trait_object_arg_mut_borrow_twin_normal(&mut api_arg, api_expect); })
-                    })())
-                } })
-}
-fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_trait_object_arg_own_twin_normal_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_trait_object_arg_own_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
-            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
-            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_arg = <Box<dyn HelloTraitTwinNormal>>::sse_decode(&mut deserializer);
-let api_expect = <String>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
-                    transform_result_sse((move ||  {
-                         Result::<_,()>::Ok({ crate::api::rust_auto_opaque::rust_auto_opaque_trait_object_arg_own_twin_normal(api_arg, api_expect); })
-                    })())
-                } })
-}
-fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_trait_object_return_own_one_twin_normal_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_trait_object_return_own_one_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
-            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
-            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            deserializer.end(); move |context|  {
-                    transform_result_sse((move ||  {
-                         Result::<_,()>::Ok(crate::api::rust_auto_opaque::rust_auto_opaque_trait_object_return_own_one_twin_normal())
-                    })())
-                } })
-}
-fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_trait_object_return_own_two_twin_normal_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_trait_object_return_own_two_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
-            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
-            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            deserializer.end(); move |context|  {
-                    transform_result_sse((move ||  {
-                         Result::<_,()>::Ok(crate::api::rust_auto_opaque::rust_auto_opaque_trait_object_return_own_two_twin_normal())
                     })())
                 } })
 }
@@ -28166,15 +27745,6 @@ flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
     >
 );
 flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
-    flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box<dyn HelloTraitTwinNormal>>
-);
-flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
-    flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box<dyn HelloTraitTwinRustAsync>>
-);
-flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
-    flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box<dyn HelloTraitTwinSync>>
-);
-flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
     flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
         Box<dyn MyTraitTwinNormal + Send + Sync>,
     >
@@ -28219,15 +27789,6 @@ flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
     flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
         EnumWithGoodAndOpaqueWithoutOptionTwinSync,
     >
-);
-flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
-    flutter_rust_bridge::for_generated::RustAutoOpaqueInner<HelloOneStructTwinNormal>
-);
-flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
-    flutter_rust_bridge::for_generated::RustAutoOpaqueInner<HelloOneStructTwinRustAsync>
-);
-flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
-    flutter_rust_bridge::for_generated::RustAutoOpaqueInner<HelloOneStructTwinSync>
 );
 flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
     flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ItemContainerSolutionOneTwinNormal>
@@ -28333,21 +27894,6 @@ flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
 );
 flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
     flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructWithSimpleSetterTwinNormal>
-);
-flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
-    flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
-        crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::HelloTwoEnumTwinRustAsync,
-    >
-);
-flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
-    flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
-        crate::api::pseudo_manual::rust_auto_opaque_twin_sync::HelloTwoEnumTwinSync,
-    >
-);
-flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
-    flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
-        crate::api::rust_auto_opaque::HelloTwoEnumTwinNormal,
-    >
 );
 flutter_rust_bridge::frb_generated_moi_arc_impl_value!(i32);
 
@@ -28524,486 +28070,6 @@ impl std::ops::DerefMut for SimpleTraitForDynTwinNormalImplementorRwLockWriteGua
     }
 }
 
-pub enum HelloTraitTwinRustAsyncImplementor {
-    Variant0(RustAutoOpaque<HelloOneStructTwinRustAsync>),
-    Variant1(
-        RustAutoOpaque<
-            crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::HelloTwoEnumTwinRustAsync,
-        >,
-    ),
-}
-
-pub fn frb_internal_no_impl_dummy_function_HelloTraitTwinRustAsyncImplementor(
-    a: HelloTraitTwinRustAsyncImplementor,
-) {
-}
-
-impl HelloTraitTwinRustAsyncImplementor {
-    pub fn blocking_read(&self) -> HelloTraitTwinRustAsyncImplementorRwLockReadGuard {
-        match self {
-            Self::Variant0(inner) => {
-                HelloTraitTwinRustAsyncImplementorRwLockReadGuard::Variant0(inner.blocking_read())
-            }
-            Self::Variant1(inner) => {
-                HelloTraitTwinRustAsyncImplementorRwLockReadGuard::Variant1(inner.blocking_read())
-            }
-        }
-    }
-
-    pub fn blocking_write(&self) -> HelloTraitTwinRustAsyncImplementorRwLockWriteGuard {
-        match self {
-            Self::Variant0(inner) => {
-                HelloTraitTwinRustAsyncImplementorRwLockWriteGuard::Variant0(inner.blocking_write())
-            }
-            Self::Variant1(inner) => {
-                HelloTraitTwinRustAsyncImplementorRwLockWriteGuard::Variant1(inner.blocking_write())
-            }
-        }
-    }
-
-    pub async fn read(&self) -> HelloTraitTwinRustAsyncImplementorRwLockReadGuard {
-        match self {
-            Self::Variant0(inner) => {
-                HelloTraitTwinRustAsyncImplementorRwLockReadGuard::Variant0(inner.read().await)
-            }
-            Self::Variant1(inner) => {
-                HelloTraitTwinRustAsyncImplementorRwLockReadGuard::Variant1(inner.read().await)
-            }
-        }
-    }
-
-    pub async fn write(&self) -> HelloTraitTwinRustAsyncImplementorRwLockWriteGuard {
-        match self {
-            Self::Variant0(inner) => {
-                HelloTraitTwinRustAsyncImplementorRwLockWriteGuard::Variant0(inner.write().await)
-            }
-            Self::Variant1(inner) => {
-                HelloTraitTwinRustAsyncImplementorRwLockWriteGuard::Variant1(inner.write().await)
-            }
-        }
-    }
-}
-
-impl Lockable for HelloTraitTwinRustAsyncImplementor {
-    type RwLockReadGuard<'a> = HelloTraitTwinRustAsyncImplementorRwLockReadGuard<'a>;
-    type RwLockWriteGuard<'a> = HelloTraitTwinRustAsyncImplementorRwLockWriteGuard<'a>;
-
-    fn lockable_order(&self) -> flutter_rust_bridge::for_generated::LockableOrder {
-        match self {
-            Self::Variant0(inner) => {
-                flutter_rust_bridge::for_generated::rust_auto_opaque_lockable_order(inner)
-            }
-            Self::Variant1(inner) => {
-                flutter_rust_bridge::for_generated::rust_auto_opaque_lockable_order(inner)
-            }
-        }
-    }
-
-    fn lockable_decode_sync_ref(&self) -> Self::RwLockReadGuard<'_> {
-        self.blocking_read()
-    }
-
-    fn lockable_decode_sync_ref_mut(&self) -> Self::RwLockWriteGuard<'_> {
-        self.blocking_write()
-    }
-
-    fn lockable_decode_async_ref<'a>(
-        &'a self,
-    ) -> std::pin::Pin<Box<dyn std::future::Future<Output = Self::RwLockReadGuard<'_>> + Send + 'a>>
-    where
-        Self: Sync + 'a,
-    {
-        Box::pin(async move { self.read().await })
-    }
-
-    fn lockable_decode_async_ref_mut<'a>(
-        &'a self,
-    ) -> std::pin::Pin<Box<dyn std::future::Future<Output = Self::RwLockWriteGuard<'_>> + Send + 'a>>
-    where
-        Self: Sync + 'a,
-    {
-        Box::pin(async move { self.write().await })
-    }
-}
-
-pub enum HelloTraitTwinRustAsyncImplementorRwLockReadGuard<'a> {
-    Variant0(
-        flutter_rust_bridge::for_generated::rust_async::RwLockReadGuard<
-            'a,
-            HelloOneStructTwinRustAsync,
-        >,
-    ),
-    Variant1(
-        flutter_rust_bridge::for_generated::rust_async::RwLockReadGuard<
-            'a,
-            crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::HelloTwoEnumTwinRustAsync,
-        >,
-    ),
-}
-
-impl std::ops::Deref for HelloTraitTwinRustAsyncImplementorRwLockReadGuard<'_> {
-    type Target = dyn HelloTraitTwinRustAsync;
-
-    fn deref(&self) -> &Self::Target {
-        match self {
-            Self::Variant0(inner) => inner.deref(),
-            Self::Variant1(inner) => inner.deref(),
-        }
-    }
-}
-
-pub enum HelloTraitTwinRustAsyncImplementorRwLockWriteGuard<'a> {
-    Variant0(
-        flutter_rust_bridge::for_generated::rust_async::RwLockWriteGuard<
-            'a,
-            HelloOneStructTwinRustAsync,
-        >,
-    ),
-    Variant1(
-        flutter_rust_bridge::for_generated::rust_async::RwLockWriteGuard<
-            'a,
-            crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::HelloTwoEnumTwinRustAsync,
-        >,
-    ),
-}
-
-impl std::ops::Deref for HelloTraitTwinRustAsyncImplementorRwLockWriteGuard<'_> {
-    type Target = dyn HelloTraitTwinRustAsync;
-
-    fn deref(&self) -> &Self::Target {
-        match self {
-            Self::Variant0(inner) => inner.deref(),
-            Self::Variant1(inner) => inner.deref(),
-        }
-    }
-}
-
-impl std::ops::DerefMut for HelloTraitTwinRustAsyncImplementorRwLockWriteGuard<'_> {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        match self {
-            Self::Variant0(inner) => inner.deref_mut(),
-            Self::Variant1(inner) => inner.deref_mut(),
-        }
-    }
-}
-
-pub enum HelloTraitTwinSyncImplementor {
-    Variant0(RustAutoOpaque<HelloOneStructTwinSync>),
-    Variant1(
-        RustAutoOpaque<crate::api::pseudo_manual::rust_auto_opaque_twin_sync::HelloTwoEnumTwinSync>,
-    ),
-}
-
-pub fn frb_internal_no_impl_dummy_function_HelloTraitTwinSyncImplementor(
-    a: HelloTraitTwinSyncImplementor,
-) {
-}
-
-impl HelloTraitTwinSyncImplementor {
-    pub fn blocking_read(&self) -> HelloTraitTwinSyncImplementorRwLockReadGuard {
-        match self {
-            Self::Variant0(inner) => {
-                HelloTraitTwinSyncImplementorRwLockReadGuard::Variant0(inner.blocking_read())
-            }
-            Self::Variant1(inner) => {
-                HelloTraitTwinSyncImplementorRwLockReadGuard::Variant1(inner.blocking_read())
-            }
-        }
-    }
-
-    pub fn blocking_write(&self) -> HelloTraitTwinSyncImplementorRwLockWriteGuard {
-        match self {
-            Self::Variant0(inner) => {
-                HelloTraitTwinSyncImplementorRwLockWriteGuard::Variant0(inner.blocking_write())
-            }
-            Self::Variant1(inner) => {
-                HelloTraitTwinSyncImplementorRwLockWriteGuard::Variant1(inner.blocking_write())
-            }
-        }
-    }
-
-    pub async fn read(&self) -> HelloTraitTwinSyncImplementorRwLockReadGuard {
-        match self {
-            Self::Variant0(inner) => {
-                HelloTraitTwinSyncImplementorRwLockReadGuard::Variant0(inner.read().await)
-            }
-            Self::Variant1(inner) => {
-                HelloTraitTwinSyncImplementorRwLockReadGuard::Variant1(inner.read().await)
-            }
-        }
-    }
-
-    pub async fn write(&self) -> HelloTraitTwinSyncImplementorRwLockWriteGuard {
-        match self {
-            Self::Variant0(inner) => {
-                HelloTraitTwinSyncImplementorRwLockWriteGuard::Variant0(inner.write().await)
-            }
-            Self::Variant1(inner) => {
-                HelloTraitTwinSyncImplementorRwLockWriteGuard::Variant1(inner.write().await)
-            }
-        }
-    }
-}
-
-impl Lockable for HelloTraitTwinSyncImplementor {
-    type RwLockReadGuard<'a> = HelloTraitTwinSyncImplementorRwLockReadGuard<'a>;
-    type RwLockWriteGuard<'a> = HelloTraitTwinSyncImplementorRwLockWriteGuard<'a>;
-
-    fn lockable_order(&self) -> flutter_rust_bridge::for_generated::LockableOrder {
-        match self {
-            Self::Variant0(inner) => {
-                flutter_rust_bridge::for_generated::rust_auto_opaque_lockable_order(inner)
-            }
-            Self::Variant1(inner) => {
-                flutter_rust_bridge::for_generated::rust_auto_opaque_lockable_order(inner)
-            }
-        }
-    }
-
-    fn lockable_decode_sync_ref(&self) -> Self::RwLockReadGuard<'_> {
-        self.blocking_read()
-    }
-
-    fn lockable_decode_sync_ref_mut(&self) -> Self::RwLockWriteGuard<'_> {
-        self.blocking_write()
-    }
-
-    fn lockable_decode_async_ref<'a>(
-        &'a self,
-    ) -> std::pin::Pin<Box<dyn std::future::Future<Output = Self::RwLockReadGuard<'_>> + Send + 'a>>
-    where
-        Self: Sync + 'a,
-    {
-        Box::pin(async move { self.read().await })
-    }
-
-    fn lockable_decode_async_ref_mut<'a>(
-        &'a self,
-    ) -> std::pin::Pin<Box<dyn std::future::Future<Output = Self::RwLockWriteGuard<'_>> + Send + 'a>>
-    where
-        Self: Sync + 'a,
-    {
-        Box::pin(async move { self.write().await })
-    }
-}
-
-pub enum HelloTraitTwinSyncImplementorRwLockReadGuard<'a> {
-    Variant0(
-        flutter_rust_bridge::for_generated::rust_async::RwLockReadGuard<'a, HelloOneStructTwinSync>,
-    ),
-    Variant1(
-        flutter_rust_bridge::for_generated::rust_async::RwLockReadGuard<
-            'a,
-            crate::api::pseudo_manual::rust_auto_opaque_twin_sync::HelloTwoEnumTwinSync,
-        >,
-    ),
-}
-
-impl std::ops::Deref for HelloTraitTwinSyncImplementorRwLockReadGuard<'_> {
-    type Target = dyn HelloTraitTwinSync;
-
-    fn deref(&self) -> &Self::Target {
-        match self {
-            Self::Variant0(inner) => inner.deref(),
-            Self::Variant1(inner) => inner.deref(),
-        }
-    }
-}
-
-pub enum HelloTraitTwinSyncImplementorRwLockWriteGuard<'a> {
-    Variant0(
-        flutter_rust_bridge::for_generated::rust_async::RwLockWriteGuard<
-            'a,
-            HelloOneStructTwinSync,
-        >,
-    ),
-    Variant1(
-        flutter_rust_bridge::for_generated::rust_async::RwLockWriteGuard<
-            'a,
-            crate::api::pseudo_manual::rust_auto_opaque_twin_sync::HelloTwoEnumTwinSync,
-        >,
-    ),
-}
-
-impl std::ops::Deref for HelloTraitTwinSyncImplementorRwLockWriteGuard<'_> {
-    type Target = dyn HelloTraitTwinSync;
-
-    fn deref(&self) -> &Self::Target {
-        match self {
-            Self::Variant0(inner) => inner.deref(),
-            Self::Variant1(inner) => inner.deref(),
-        }
-    }
-}
-
-impl std::ops::DerefMut for HelloTraitTwinSyncImplementorRwLockWriteGuard<'_> {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        match self {
-            Self::Variant0(inner) => inner.deref_mut(),
-            Self::Variant1(inner) => inner.deref_mut(),
-        }
-    }
-}
-
-pub enum HelloTraitTwinNormalImplementor {
-    Variant0(RustAutoOpaque<HelloOneStructTwinNormal>),
-    Variant1(RustAutoOpaque<crate::api::rust_auto_opaque::HelloTwoEnumTwinNormal>),
-}
-
-pub fn frb_internal_no_impl_dummy_function_HelloTraitTwinNormalImplementor(
-    a: HelloTraitTwinNormalImplementor,
-) {
-}
-
-impl HelloTraitTwinNormalImplementor {
-    pub fn blocking_read(&self) -> HelloTraitTwinNormalImplementorRwLockReadGuard {
-        match self {
-            Self::Variant0(inner) => {
-                HelloTraitTwinNormalImplementorRwLockReadGuard::Variant0(inner.blocking_read())
-            }
-            Self::Variant1(inner) => {
-                HelloTraitTwinNormalImplementorRwLockReadGuard::Variant1(inner.blocking_read())
-            }
-        }
-    }
-
-    pub fn blocking_write(&self) -> HelloTraitTwinNormalImplementorRwLockWriteGuard {
-        match self {
-            Self::Variant0(inner) => {
-                HelloTraitTwinNormalImplementorRwLockWriteGuard::Variant0(inner.blocking_write())
-            }
-            Self::Variant1(inner) => {
-                HelloTraitTwinNormalImplementorRwLockWriteGuard::Variant1(inner.blocking_write())
-            }
-        }
-    }
-
-    pub async fn read(&self) -> HelloTraitTwinNormalImplementorRwLockReadGuard {
-        match self {
-            Self::Variant0(inner) => {
-                HelloTraitTwinNormalImplementorRwLockReadGuard::Variant0(inner.read().await)
-            }
-            Self::Variant1(inner) => {
-                HelloTraitTwinNormalImplementorRwLockReadGuard::Variant1(inner.read().await)
-            }
-        }
-    }
-
-    pub async fn write(&self) -> HelloTraitTwinNormalImplementorRwLockWriteGuard {
-        match self {
-            Self::Variant0(inner) => {
-                HelloTraitTwinNormalImplementorRwLockWriteGuard::Variant0(inner.write().await)
-            }
-            Self::Variant1(inner) => {
-                HelloTraitTwinNormalImplementorRwLockWriteGuard::Variant1(inner.write().await)
-            }
-        }
-    }
-}
-
-impl Lockable for HelloTraitTwinNormalImplementor {
-    type RwLockReadGuard<'a> = HelloTraitTwinNormalImplementorRwLockReadGuard<'a>;
-    type RwLockWriteGuard<'a> = HelloTraitTwinNormalImplementorRwLockWriteGuard<'a>;
-
-    fn lockable_order(&self) -> flutter_rust_bridge::for_generated::LockableOrder {
-        match self {
-            Self::Variant0(inner) => {
-                flutter_rust_bridge::for_generated::rust_auto_opaque_lockable_order(inner)
-            }
-            Self::Variant1(inner) => {
-                flutter_rust_bridge::for_generated::rust_auto_opaque_lockable_order(inner)
-            }
-        }
-    }
-
-    fn lockable_decode_sync_ref(&self) -> Self::RwLockReadGuard<'_> {
-        self.blocking_read()
-    }
-
-    fn lockable_decode_sync_ref_mut(&self) -> Self::RwLockWriteGuard<'_> {
-        self.blocking_write()
-    }
-
-    fn lockable_decode_async_ref<'a>(
-        &'a self,
-    ) -> std::pin::Pin<Box<dyn std::future::Future<Output = Self::RwLockReadGuard<'_>> + Send + 'a>>
-    where
-        Self: Sync + 'a,
-    {
-        Box::pin(async move { self.read().await })
-    }
-
-    fn lockable_decode_async_ref_mut<'a>(
-        &'a self,
-    ) -> std::pin::Pin<Box<dyn std::future::Future<Output = Self::RwLockWriteGuard<'_>> + Send + 'a>>
-    where
-        Self: Sync + 'a,
-    {
-        Box::pin(async move { self.write().await })
-    }
-}
-
-pub enum HelloTraitTwinNormalImplementorRwLockReadGuard<'a> {
-    Variant0(
-        flutter_rust_bridge::for_generated::rust_async::RwLockReadGuard<
-            'a,
-            HelloOneStructTwinNormal,
-        >,
-    ),
-    Variant1(
-        flutter_rust_bridge::for_generated::rust_async::RwLockReadGuard<
-            'a,
-            crate::api::rust_auto_opaque::HelloTwoEnumTwinNormal,
-        >,
-    ),
-}
-
-impl std::ops::Deref for HelloTraitTwinNormalImplementorRwLockReadGuard<'_> {
-    type Target = dyn HelloTraitTwinNormal;
-
-    fn deref(&self) -> &Self::Target {
-        match self {
-            Self::Variant0(inner) => inner.deref(),
-            Self::Variant1(inner) => inner.deref(),
-        }
-    }
-}
-
-pub enum HelloTraitTwinNormalImplementorRwLockWriteGuard<'a> {
-    Variant0(
-        flutter_rust_bridge::for_generated::rust_async::RwLockWriteGuard<
-            'a,
-            HelloOneStructTwinNormal,
-        >,
-    ),
-    Variant1(
-        flutter_rust_bridge::for_generated::rust_async::RwLockWriteGuard<
-            'a,
-            crate::api::rust_auto_opaque::HelloTwoEnumTwinNormal,
-        >,
-    ),
-}
-
-impl std::ops::Deref for HelloTraitTwinNormalImplementorRwLockWriteGuard<'_> {
-    type Target = dyn HelloTraitTwinNormal;
-
-    fn deref(&self) -> &Self::Target {
-        match self {
-            Self::Variant0(inner) => inner.deref(),
-            Self::Variant1(inner) => inner.deref(),
-        }
-    }
-}
-
-impl std::ops::DerefMut for HelloTraitTwinNormalImplementorRwLockWriteGuard<'_> {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        match self {
-            Self::Variant0(inner) => inner.deref_mut(),
-            Self::Variant1(inner) => inner.deref_mut(),
-        }
-    }
-}
-
 pub enum Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum
 {
     Variant0(RustAutoOpaque<MyNodeTwinNormal>),
@@ -29138,36 +28204,6 @@ impl SseDecode for flutter_rust_bridge::for_generated::anyhow::Error {
     }
 }
 
-impl SseDecode for RustAutoOpaqueMoi<HelloOneStructTwinNormal> {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <RustOpaqueMoi<
-            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<HelloOneStructTwinNormal>,
-        >>::sse_decode(deserializer);
-        return flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_decode(inner);
-    }
-}
-
-impl SseDecode for RustAutoOpaqueMoi<HelloOneStructTwinRustAsync> {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <RustOpaqueMoi<
-            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<HelloOneStructTwinRustAsync>,
-        >>::sse_decode(deserializer);
-        return flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_decode(inner);
-    }
-}
-
-impl SseDecode for RustAutoOpaqueMoi<HelloOneStructTwinSync> {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <RustOpaqueMoi<
-            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<HelloOneStructTwinSync>,
-        >>::sse_decode(deserializer);
-        return flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_decode(inner);
-    }
-}
-
 impl SseDecode for RustAutoOpaqueMoi<MyNodeTwinNormal> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -29236,46 +28272,6 @@ impl SseDecode for RustAutoOpaqueMoi<StructTwoWithTraitForDynTwinNormal> {
         let mut inner = <RustOpaqueMoi<
             flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
                 StructTwoWithTraitForDynTwinNormal,
-            >,
-        >>::sse_decode(deserializer);
-        return flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_decode(inner);
-    }
-}
-
-impl SseDecode
-    for RustAutoOpaqueMoi<
-        crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::HelloTwoEnumTwinRustAsync,
-    >
-{
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<crate :: api :: pseudo_manual :: rust_auto_opaque_twin_rust_async :: HelloTwoEnumTwinRustAsync>>>::sse_decode(deserializer);
-        return flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_decode(inner);
-    }
-}
-
-impl SseDecode
-    for RustAutoOpaqueMoi<
-        crate::api::pseudo_manual::rust_auto_opaque_twin_sync::HelloTwoEnumTwinSync,
-    >
-{
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <RustOpaqueMoi<
-            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
-                crate::api::pseudo_manual::rust_auto_opaque_twin_sync::HelloTwoEnumTwinSync,
-            >,
-        >>::sse_decode(deserializer);
-        return flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_decode(inner);
-    }
-}
-
-impl SseDecode for RustAutoOpaqueMoi<crate::api::rust_auto_opaque::HelloTwoEnumTwinNormal> {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <RustOpaqueMoi<
-            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
-                crate::api::rust_auto_opaque::HelloTwoEnumTwinNormal,
             >,
         >>::sse_decode(deserializer);
         return flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_decode(inner);
@@ -29439,36 +28435,6 @@ impl SseDecode for EnumWithGoodAndOpaqueWithoutOptionTwinSync {
             flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
                 EnumWithGoodAndOpaqueWithoutOptionTwinSync,
             >,
-        >>::sse_decode(deserializer);
-        return flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(inner);
-    }
-}
-
-impl SseDecode for HelloOneStructTwinNormal {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <RustOpaqueMoi<
-            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<HelloOneStructTwinNormal>,
-        >>::sse_decode(deserializer);
-        return flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(inner);
-    }
-}
-
-impl SseDecode for HelloOneStructTwinRustAsync {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <RustOpaqueMoi<
-            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<HelloOneStructTwinRustAsync>,
-        >>::sse_decode(deserializer);
-        return flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(inner);
-    }
-}
-
-impl SseDecode for HelloOneStructTwinSync {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <RustOpaqueMoi<
-            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<HelloOneStructTwinSync>,
         >>::sse_decode(deserializer);
         return flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(inner);
     }
@@ -30524,42 +29490,6 @@ impl SseDecode
 
 impl SseDecode
     for RustOpaqueMoi<
-        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box<dyn HelloTraitTwinNormal>>,
-    >
-{
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <usize>::sse_decode(deserializer);
-        return decode_rust_opaque_moi(inner);
-    }
-}
-
-impl SseDecode
-    for RustOpaqueMoi<
-        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box<dyn HelloTraitTwinRustAsync>>,
-    >
-{
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <usize>::sse_decode(deserializer);
-        return decode_rust_opaque_moi(inner);
-    }
-}
-
-impl SseDecode
-    for RustOpaqueMoi<
-        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box<dyn HelloTraitTwinSync>>,
-    >
-{
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <usize>::sse_decode(deserializer);
-        return decode_rust_opaque_moi(inner);
-    }
-}
-
-impl SseDecode
-    for RustOpaqueMoi<
         flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
             Box<dyn MyTraitTwinNormal + Send + Sync>,
         >,
@@ -30705,42 +29635,6 @@ impl SseDecode
         flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
             EnumWithGoodAndOpaqueWithoutOptionTwinSync,
         >,
-    >
-{
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <usize>::sse_decode(deserializer);
-        return decode_rust_opaque_moi(inner);
-    }
-}
-
-impl SseDecode
-    for RustOpaqueMoi<
-        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<HelloOneStructTwinNormal>,
-    >
-{
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <usize>::sse_decode(deserializer);
-        return decode_rust_opaque_moi(inner);
-    }
-}
-
-impl SseDecode
-    for RustOpaqueMoi<
-        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<HelloOneStructTwinRustAsync>,
-    >
-{
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <usize>::sse_decode(deserializer);
-        return decode_rust_opaque_moi(inner);
-    }
-}
-
-impl SseDecode
-    for RustOpaqueMoi<
-        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<HelloOneStructTwinSync>,
     >
 {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -31131,48 +30025,6 @@ impl SseDecode
 impl SseDecode
     for RustOpaqueMoi<
         flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructWithSimpleSetterTwinNormal>,
-    >
-{
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <usize>::sse_decode(deserializer);
-        return decode_rust_opaque_moi(inner);
-    }
-}
-
-impl SseDecode
-    for RustOpaqueMoi<
-        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
-            crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::HelloTwoEnumTwinRustAsync,
-        >,
-    >
-{
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <usize>::sse_decode(deserializer);
-        return decode_rust_opaque_moi(inner);
-    }
-}
-
-impl SseDecode
-    for RustOpaqueMoi<
-        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
-            crate::api::pseudo_manual::rust_auto_opaque_twin_sync::HelloTwoEnumTwinSync,
-        >,
-    >
-{
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <usize>::sse_decode(deserializer);
-        return decode_rust_opaque_moi(inner);
-    }
-}
-
-impl SseDecode
-    for RustOpaqueMoi<
-        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
-            crate::api::rust_auto_opaque::HelloTwoEnumTwinNormal,
-        >,
     >
 {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -32180,27 +31032,6 @@ impl SseDecode for bool {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         deserializer.cursor.read_u8().unwrap() != 0
-    }
-}
-
-impl SseDecode for Box<dyn HelloTraitTwinNormal> {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        return Box::new(<dyn HelloTraitTwinNormal>::sse_decode(deserializer));
-    }
-}
-
-impl SseDecode for Box<dyn HelloTraitTwinRustAsync> {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        return Box::new(<dyn HelloTraitTwinRustAsync>::sse_decode(deserializer));
-    }
-}
-
-impl SseDecode for Box<dyn HelloTraitTwinSync> {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        return Box::new(<dyn HelloTraitTwinSync>::sse_decode(deserializer));
     }
 }
 
@@ -34170,115 +33001,6 @@ impl SseDecode for crate::api::mirror::HashMapValue {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut var_inner = <String>::sse_decode(deserializer);
         return crate::api::mirror::HashMapValue { inner: var_inner };
-    }
-}
-
-impl SseDecode for crate::frb_generated::HelloTraitTwinNormalImplementor {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut tag_ = <i32>::sse_decode(deserializer);
-        match tag_ {
-            0 => {
-                let mut var_field0 =
-                    <RustAutoOpaqueMoi<HelloOneStructTwinNormal>>::sse_decode(deserializer);
-                return crate::frb_generated::HelloTraitTwinNormalImplementor::Variant0(var_field0);
-            }
-            1 => {
-                let mut var_field0 = <RustAutoOpaqueMoi<
-                    crate::api::rust_auto_opaque::HelloTwoEnumTwinNormal,
-                >>::sse_decode(deserializer);
-                return crate::frb_generated::HelloTraitTwinNormalImplementor::Variant1(var_field0);
-            }
-            _ => {
-                unimplemented!("");
-            }
-        }
-    }
-}
-
-impl SseDecode for crate::frb_generated::HelloTraitTwinRustAsyncImplementor {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut tag_ = <i32>::sse_decode(deserializer);
-        match tag_ {
-            0 => {
-                let mut var_field0 =
-                    <RustAutoOpaqueMoi<HelloOneStructTwinRustAsync>>::sse_decode(deserializer);
-                return crate::frb_generated::HelloTraitTwinRustAsyncImplementor::Variant0(
-                    var_field0,
-                );
-            }
-            1 => {
-                let mut var_field0 = <RustAutoOpaqueMoi<crate :: api :: pseudo_manual :: rust_auto_opaque_twin_rust_async :: HelloTwoEnumTwinRustAsync>>::sse_decode(deserializer);
-                return crate::frb_generated::HelloTraitTwinRustAsyncImplementor::Variant1(
-                    var_field0,
-                );
-            }
-            _ => {
-                unimplemented!("");
-            }
-        }
-    }
-}
-
-impl SseDecode for crate::frb_generated::HelloTraitTwinSyncImplementor {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut tag_ = <i32>::sse_decode(deserializer);
-        match tag_ {
-            0 => {
-                let mut var_field0 =
-                    <RustAutoOpaqueMoi<HelloOneStructTwinSync>>::sse_decode(deserializer);
-                return crate::frb_generated::HelloTraitTwinSyncImplementor::Variant0(var_field0);
-            }
-            1 => {
-                let mut var_field0 = <RustAutoOpaqueMoi<
-                    crate::api::pseudo_manual::rust_auto_opaque_twin_sync::HelloTwoEnumTwinSync,
-                >>::sse_decode(deserializer);
-                return crate::frb_generated::HelloTraitTwinSyncImplementor::Variant1(var_field0);
-            }
-            _ => {
-                unimplemented!("");
-            }
-        }
-    }
-}
-
-impl SseDecode for crate::api::rust_auto_opaque::HelloTwoEnumTwinNormal {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <i32>::sse_decode(deserializer);
-        return match inner {
-            0 => crate::api::rust_auto_opaque::HelloTwoEnumTwinNormal::A,
-            1 => crate::api::rust_auto_opaque::HelloTwoEnumTwinNormal::B,
-            _ => unreachable!("Invalid variant for HelloTwoEnumTwinNormal: {}", inner),
-        };
-    }
-}
-
-impl SseDecode
-    for crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::HelloTwoEnumTwinRustAsync
-{
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <i32>::sse_decode(deserializer);
-        return match inner {
-            0 => crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::HelloTwoEnumTwinRustAsync::A,
-1 => crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::HelloTwoEnumTwinRustAsync::B,
-            _ => unreachable!("Invalid variant for HelloTwoEnumTwinRustAsync: {}", inner),
-        };
-    }
-}
-
-impl SseDecode for crate::api::pseudo_manual::rust_auto_opaque_twin_sync::HelloTwoEnumTwinSync {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <i32>::sse_decode(deserializer);
-        return match inner {
-            0 => crate::api::pseudo_manual::rust_auto_opaque_twin_sync::HelloTwoEnumTwinSync::A,
-            1 => crate::api::pseudo_manual::rust_auto_opaque_twin_sync::HelloTwoEnumTwinSync::B,
-            _ => unreachable!("Invalid variant for HelloTwoEnumTwinSync: {}", inner),
-        };
     }
 }
 
@@ -40148,190 +38870,174 @@ fn pde_ffi_dispatcher_primary_impl(
 941 => wire__crate__api__pseudo_manual__primitive_misc_twin_rust_async__primitive_u32_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
 944 => wire__crate__api__pseudo_manual__raw_string_twin_rust_async__test_more_than_just_one_raw_string_struct_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
 945 => wire__crate__api__pseudo_manual__raw_string_twin_rust_async__test_raw_string_item_struct_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-948 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__HelloOneStructTwinRustAsync_func_hello_impl(port, ptr, rust_vec_len, data_len),
-949 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__NonCloneSimpleTwinRustAsync_instance_method_arg_borrow_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-950 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__NonCloneSimpleTwinRustAsync_instance_method_arg_mut_borrow_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-951 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__NonCloneSimpleTwinRustAsync_instance_method_arg_own_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-952 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__NonCloneSimpleTwinRustAsync_instance_method_getter_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-953 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__NonCloneSimpleTwinRustAsync_instance_method_return_own_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-954 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__NonCloneSimpleTwinRustAsync_new_custom_name_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-955 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__NonCloneSimpleTwinRustAsync_new_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-956 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__NonCloneSimpleTwinRustAsync_new_with_result_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-957 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__NonCloneSimpleTwinRustAsync_static_method_arg_borrow_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-958 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__NonCloneSimpleTwinRustAsync_static_method_arg_mut_borrow_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-959 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__NonCloneSimpleTwinRustAsync_static_method_arg_own_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-960 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__NonCloneSimpleTwinRustAsync_static_method_return_own_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-965 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__hello_two_enum_twin_rust_async_func_hello_impl(port, ptr, rust_vec_len, data_len),
-966 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_arg_borrow_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-967 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_arg_mut_borrow_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-968 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_arg_own_and_return_own_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-969 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_arg_own_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-970 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_arg_vec_own_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-971 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_borrow_and_borrow_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-972 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_borrow_and_mut_borrow_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-973 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_callable_arg_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-974 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_callable_return_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-975 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_dummy_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-976 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_enum_arg_borrow_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-977 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_enum_return_own_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-978 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-979 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-980 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-981 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_explicit_arg_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-982 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_explicit_return_struct_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-983 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_explicit_return_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-984 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_explicit_struct_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-985 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_normal_and_opaque_arg_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-986 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_plus_sign_arg_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-987 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_plus_sign_return_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-988 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_return_opaque_one_and_two_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-989 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_return_opaque_two_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-990 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_return_own_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-991 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_return_vec_own_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-992 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_sleep_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-993 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_stream_sink_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-994 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-995 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-996 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_trait_object_arg_borrow_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-997 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_trait_object_arg_mut_borrow_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-998 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_trait_object_arg_own_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-999 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_trait_object_return_own_one_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1000 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_trait_object_return_own_two_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1001 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_two_args_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1002 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__HelloOneStructTwinSync_func_hello_impl(port, ptr, rust_vec_len, data_len),
-1019 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__hello_two_enum_twin_sync_func_hello_impl(port, ptr, rust_vec_len, data_len),
-1056 => wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__create_array_opaque_enum_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1057 => wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__create_nested_opaque_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1058 => wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__create_opaque_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1059 => wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__create_option_opaque_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1060 => wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__frb_generator_test_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1061 => wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__opaque_array_run_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1062 => wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__opaque_array_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1063 => wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__opaque_vec_run_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1064 => wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__opaque_vec_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1065 => wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__run_enum_opaque_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1066 => wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__run_nested_opaque_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1067 => wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__run_non_clone_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1068 => wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__run_opaque_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1069 => wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__run_opaque_with_delay_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1070 => wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__unwrap_rust_opaque_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1086 => wire__crate__api__pseudo_manual__simple_twin_rust_async__simple_adder_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1088 => wire__crate__api__pseudo_manual__stream_twin_rust_async__func_stream_return_error_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1089 => wire__crate__api__pseudo_manual__stream_twin_rust_async__func_stream_return_panic_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1090 => wire__crate__api__pseudo_manual__stream_twin_rust_async__func_stream_sink_arg_position_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1091 => wire__crate__api__pseudo_manual__stream_twin_rust_async__handle_stream_of_struct_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1092 => wire__crate__api__pseudo_manual__stream_twin_rust_async__handle_stream_sink_at_1_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1093 => wire__crate__api__pseudo_manual__stream_twin_rust_async__handle_stream_sink_at_2_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1094 => wire__crate__api__pseudo_manual__stream_twin_rust_async__handle_stream_sink_at_3_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1095 => wire__crate__api__pseudo_manual__stream_twin_rust_async__stream_sink_fixed_sized_primitive_array_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1096 => wire__crate__api__pseudo_manual__stream_twin_rust_async__stream_sink_inside_struct_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1097 => wire__crate__api__pseudo_manual__stream_twin_rust_async__stream_sink_inside_vec_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1098 => wire__crate__api__pseudo_manual__structure_twin_rust_async__func_struct_with_one_field_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1099 => wire__crate__api__pseudo_manual__structure_twin_rust_async__func_struct_with_two_field_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1100 => wire__crate__api__pseudo_manual__structure_twin_rust_async__func_struct_with_zero_field_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1101 => wire__crate__api__pseudo_manual__structure_twin_rust_async__func_tuple_struct_with_one_field_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1102 => wire__crate__api__pseudo_manual__structure_twin_rust_async__func_tuple_struct_with_two_field_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1108 => wire__crate__api__pseudo_manual__tuple_twin_rust_async__test_tuple_2_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1109 => wire__crate__api__pseudo_manual__tuple_twin_rust_async__test_tuple_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1112 => wire__crate__api__pseudo_manual__type_alias_twin_rust_async__handle_type_alias_id_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1113 => wire__crate__api__pseudo_manual__type_alias_twin_rust_async__handle_type_alias_model_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1114 => wire__crate__api__pseudo_manual__type_alias_twin_rust_async__handle_type_nest_alias_id_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1118 => wire__crate__api__pseudo_manual__uuid_type_twin_rust_async__handle_nested_uuids_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1119 => wire__crate__api__pseudo_manual__uuid_type_twin_rust_async__handle_uuid_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1120 => wire__crate__api__pseudo_manual__uuid_type_twin_rust_async__handle_uuids_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1124 => wire__crate__api__raw_string__test_more_than_just_one_raw_string_struct_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1125 => wire__crate__api__raw_string__test_raw_string_item_struct_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1126 => wire__crate__api__rust_auto_opaque__HelloOneStructTwinNormal_func_hello_impl(port, ptr, rust_vec_len, data_len),
-1127 => wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_instance_method_arg_borrow_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1128 => wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1129 => wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_instance_method_arg_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1130 => wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_instance_method_getter_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1131 => wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_instance_method_return_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1132 => wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_new_custom_name_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1133 => wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_new_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1134 => wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_new_with_result_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1135 => wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_static_method_arg_borrow_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1136 => wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_static_method_arg_mut_borrow_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1137 => wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_static_method_arg_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1138 => wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_static_method_return_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1143 => wire__crate__api__rust_auto_opaque__hello_two_enum_twin_normal_func_hello_impl(port, ptr, rust_vec_len, data_len),
-1144 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_arg_borrow_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1145 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_arg_mut_borrow_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1146 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_arg_own_and_return_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1147 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_arg_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1148 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_arg_vec_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1149 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_borrow_and_borrow_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1150 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_borrow_and_mut_borrow_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1151 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_callable_arg_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1152 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_callable_return_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1153 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_dummy_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1154 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_enum_arg_borrow_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1155 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_enum_return_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1156 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1157 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1158 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1159 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_explicit_arg_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1160 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_explicit_return_struct_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1161 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_explicit_return_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1162 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_explicit_struct_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1163 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_normal_and_opaque_arg_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1164 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_plus_sign_arg_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1165 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_plus_sign_return_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1166 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_return_opaque_one_and_two_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1167 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_return_opaque_two_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1168 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_return_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1169 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_return_vec_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1170 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_sleep_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1171 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_stream_sink_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1172 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1173 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1174 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_trait_object_arg_borrow_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1175 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_trait_object_arg_mut_borrow_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1176 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_trait_object_arg_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1177 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_trait_object_return_own_one_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1178 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_trait_object_return_own_two_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1179 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_two_args_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1180 => wire__crate__api__rust_opaque__create_array_opaque_enum_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1181 => wire__crate__api__rust_opaque__create_nested_opaque_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1182 => wire__crate__api__rust_opaque__create_opaque_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1183 => wire__crate__api__rust_opaque__create_option_opaque_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1184 => wire__crate__api__rust_opaque__frb_generator_test_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1185 => wire__crate__api__rust_opaque__opaque_array_run_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1186 => wire__crate__api__rust_opaque__opaque_array_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1187 => wire__crate__api__rust_opaque__opaque_vec_run_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1188 => wire__crate__api__rust_opaque__opaque_vec_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1189 => wire__crate__api__rust_opaque__run_enum_opaque_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1190 => wire__crate__api__rust_opaque__run_nested_opaque_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1191 => wire__crate__api__rust_opaque__run_non_clone_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1192 => wire__crate__api__rust_opaque__run_opaque_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1193 => wire__crate__api__rust_opaque__run_opaque_with_delay_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1194 => wire__crate__api__rust_opaque__unwrap_rust_opaque_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1199 => wire__crate__api__simple__simple_adder_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1200 => wire__crate__api__stream__func_stream_return_error_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1201 => wire__crate__api__stream__func_stream_return_panic_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1202 => wire__crate__api__stream__func_stream_sink_arg_position_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1203 => wire__crate__api__stream__handle_stream_of_struct_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1204 => wire__crate__api__stream__handle_stream_sink_at_1_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1205 => wire__crate__api__stream__handle_stream_sink_at_2_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1206 => wire__crate__api__stream__handle_stream_sink_at_3_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1207 => wire__crate__api__stream__stream_sink_fixed_sized_primitive_array_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1208 => wire__crate__api__stream__stream_sink_inside_struct_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1209 => wire__crate__api__stream__stream_sink_inside_vec_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1210 => wire__crate__api__stream_misc__func_stream_realistic_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1211 => wire__crate__api__stream_misc__stream_sink_dart_async_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1212 => wire__crate__api__structure__func_struct_with_one_field_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1213 => wire__crate__api__structure__func_struct_with_two_field_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1214 => wire__crate__api__structure__func_struct_with_zero_field_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1215 => wire__crate__api__structure__func_tuple_struct_with_one_field_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1216 => wire__crate__api__structure__func_tuple_struct_with_two_field_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1217 => wire__crate__api__tuple__test_tuple_2_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1218 => wire__crate__api__tuple__test_tuple_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1219 => wire__crate__api__type_alias__handle_type_alias_id_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1220 => wire__crate__api__type_alias__handle_type_alias_model_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1221 => wire__crate__api__type_alias__handle_type_nest_alias_id_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1222 => wire__crate__api__uuid_type__handle_nested_uuids_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1223 => wire__crate__api__uuid_type__handle_uuid_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1224 => wire__crate__api__uuid_type__handle_uuids_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+948 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__NonCloneSimpleTwinRustAsync_instance_method_arg_borrow_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+949 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__NonCloneSimpleTwinRustAsync_instance_method_arg_mut_borrow_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+950 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__NonCloneSimpleTwinRustAsync_instance_method_arg_own_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+951 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__NonCloneSimpleTwinRustAsync_instance_method_getter_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+952 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__NonCloneSimpleTwinRustAsync_instance_method_return_own_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+953 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__NonCloneSimpleTwinRustAsync_new_custom_name_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+954 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__NonCloneSimpleTwinRustAsync_new_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+955 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__NonCloneSimpleTwinRustAsync_new_with_result_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+956 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__NonCloneSimpleTwinRustAsync_static_method_arg_borrow_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+957 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__NonCloneSimpleTwinRustAsync_static_method_arg_mut_borrow_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+958 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__NonCloneSimpleTwinRustAsync_static_method_arg_own_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+959 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__NonCloneSimpleTwinRustAsync_static_method_return_own_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+963 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_arg_borrow_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+964 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_arg_mut_borrow_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+965 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_arg_own_and_return_own_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+966 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_arg_own_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+967 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_arg_vec_own_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+968 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_borrow_and_borrow_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+969 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_borrow_and_mut_borrow_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+970 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_callable_arg_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+971 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_callable_return_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+972 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_dummy_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+973 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_enum_arg_borrow_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+974 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_enum_return_own_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+975 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+976 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+977 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+978 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_explicit_arg_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+979 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_explicit_return_struct_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+980 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_explicit_return_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+981 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_explicit_struct_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+982 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_normal_and_opaque_arg_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+983 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_plus_sign_arg_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+984 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_plus_sign_return_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+985 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_return_opaque_one_and_two_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+986 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_return_opaque_two_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+987 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_return_own_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+988 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_return_vec_own_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+989 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_sleep_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+990 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_stream_sink_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+991 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+992 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+993 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_two_args_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1040 => wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__create_array_opaque_enum_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1041 => wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__create_nested_opaque_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1042 => wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__create_opaque_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1043 => wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__create_option_opaque_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1044 => wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__frb_generator_test_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1045 => wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__opaque_array_run_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1046 => wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__opaque_array_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1047 => wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__opaque_vec_run_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1048 => wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__opaque_vec_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1049 => wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__run_enum_opaque_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1050 => wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__run_nested_opaque_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1051 => wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__run_non_clone_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1052 => wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__run_opaque_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1053 => wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__run_opaque_with_delay_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1054 => wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__unwrap_rust_opaque_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1070 => wire__crate__api__pseudo_manual__simple_twin_rust_async__simple_adder_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1072 => wire__crate__api__pseudo_manual__stream_twin_rust_async__func_stream_return_error_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1073 => wire__crate__api__pseudo_manual__stream_twin_rust_async__func_stream_return_panic_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1074 => wire__crate__api__pseudo_manual__stream_twin_rust_async__func_stream_sink_arg_position_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1075 => wire__crate__api__pseudo_manual__stream_twin_rust_async__handle_stream_of_struct_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1076 => wire__crate__api__pseudo_manual__stream_twin_rust_async__handle_stream_sink_at_1_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1077 => wire__crate__api__pseudo_manual__stream_twin_rust_async__handle_stream_sink_at_2_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1078 => wire__crate__api__pseudo_manual__stream_twin_rust_async__handle_stream_sink_at_3_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1079 => wire__crate__api__pseudo_manual__stream_twin_rust_async__stream_sink_fixed_sized_primitive_array_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1080 => wire__crate__api__pseudo_manual__stream_twin_rust_async__stream_sink_inside_struct_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1081 => wire__crate__api__pseudo_manual__stream_twin_rust_async__stream_sink_inside_vec_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1082 => wire__crate__api__pseudo_manual__structure_twin_rust_async__func_struct_with_one_field_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1083 => wire__crate__api__pseudo_manual__structure_twin_rust_async__func_struct_with_two_field_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1084 => wire__crate__api__pseudo_manual__structure_twin_rust_async__func_struct_with_zero_field_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1085 => wire__crate__api__pseudo_manual__structure_twin_rust_async__func_tuple_struct_with_one_field_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1086 => wire__crate__api__pseudo_manual__structure_twin_rust_async__func_tuple_struct_with_two_field_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1092 => wire__crate__api__pseudo_manual__tuple_twin_rust_async__test_tuple_2_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1093 => wire__crate__api__pseudo_manual__tuple_twin_rust_async__test_tuple_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1096 => wire__crate__api__pseudo_manual__type_alias_twin_rust_async__handle_type_alias_id_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1097 => wire__crate__api__pseudo_manual__type_alias_twin_rust_async__handle_type_alias_model_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1098 => wire__crate__api__pseudo_manual__type_alias_twin_rust_async__handle_type_nest_alias_id_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1102 => wire__crate__api__pseudo_manual__uuid_type_twin_rust_async__handle_nested_uuids_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1103 => wire__crate__api__pseudo_manual__uuid_type_twin_rust_async__handle_uuid_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1104 => wire__crate__api__pseudo_manual__uuid_type_twin_rust_async__handle_uuids_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1108 => wire__crate__api__raw_string__test_more_than_just_one_raw_string_struct_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1109 => wire__crate__api__raw_string__test_raw_string_item_struct_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1110 => wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_instance_method_arg_borrow_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1111 => wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1112 => wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_instance_method_arg_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1113 => wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_instance_method_getter_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1114 => wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_instance_method_return_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1115 => wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_new_custom_name_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1116 => wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_new_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1117 => wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_new_with_result_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1118 => wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_static_method_arg_borrow_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1119 => wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_static_method_arg_mut_borrow_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1120 => wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_static_method_arg_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1121 => wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_static_method_return_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1125 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_arg_borrow_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1126 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_arg_mut_borrow_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1127 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_arg_own_and_return_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1128 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_arg_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1129 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_arg_vec_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1130 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_borrow_and_borrow_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1131 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_borrow_and_mut_borrow_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1132 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_callable_arg_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1133 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_callable_return_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1134 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_dummy_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1135 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_enum_arg_borrow_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1136 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_enum_return_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1137 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1138 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1139 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1140 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_explicit_arg_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1141 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_explicit_return_struct_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1142 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_explicit_return_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1143 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_explicit_struct_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1144 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_normal_and_opaque_arg_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1145 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_plus_sign_arg_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1146 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_plus_sign_return_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1147 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_return_opaque_one_and_two_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1148 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_return_opaque_two_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1149 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_return_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1150 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_return_vec_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1151 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_sleep_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1152 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_stream_sink_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1153 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1154 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1155 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_two_args_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1156 => wire__crate__api__rust_opaque__create_array_opaque_enum_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1157 => wire__crate__api__rust_opaque__create_nested_opaque_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1158 => wire__crate__api__rust_opaque__create_opaque_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1159 => wire__crate__api__rust_opaque__create_option_opaque_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1160 => wire__crate__api__rust_opaque__frb_generator_test_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1161 => wire__crate__api__rust_opaque__opaque_array_run_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1162 => wire__crate__api__rust_opaque__opaque_array_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1163 => wire__crate__api__rust_opaque__opaque_vec_run_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1164 => wire__crate__api__rust_opaque__opaque_vec_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1165 => wire__crate__api__rust_opaque__run_enum_opaque_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1166 => wire__crate__api__rust_opaque__run_nested_opaque_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1167 => wire__crate__api__rust_opaque__run_non_clone_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1168 => wire__crate__api__rust_opaque__run_opaque_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1169 => wire__crate__api__rust_opaque__run_opaque_with_delay_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1170 => wire__crate__api__rust_opaque__unwrap_rust_opaque_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1175 => wire__crate__api__simple__simple_adder_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1176 => wire__crate__api__stream__func_stream_return_error_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1177 => wire__crate__api__stream__func_stream_return_panic_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1178 => wire__crate__api__stream__func_stream_sink_arg_position_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1179 => wire__crate__api__stream__handle_stream_of_struct_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1180 => wire__crate__api__stream__handle_stream_sink_at_1_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1181 => wire__crate__api__stream__handle_stream_sink_at_2_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1182 => wire__crate__api__stream__handle_stream_sink_at_3_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1183 => wire__crate__api__stream__stream_sink_fixed_sized_primitive_array_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1184 => wire__crate__api__stream__stream_sink_inside_struct_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1185 => wire__crate__api__stream__stream_sink_inside_vec_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1186 => wire__crate__api__stream_misc__func_stream_realistic_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1187 => wire__crate__api__stream_misc__stream_sink_dart_async_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1188 => wire__crate__api__structure__func_struct_with_one_field_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1189 => wire__crate__api__structure__func_struct_with_two_field_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1190 => wire__crate__api__structure__func_struct_with_zero_field_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1191 => wire__crate__api__structure__func_tuple_struct_with_one_field_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1192 => wire__crate__api__structure__func_tuple_struct_with_two_field_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1193 => wire__crate__api__tuple__test_tuple_2_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1194 => wire__crate__api__tuple__test_tuple_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1195 => wire__crate__api__type_alias__handle_type_alias_id_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1196 => wire__crate__api__type_alias__handle_type_alias_model_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1197 => wire__crate__api__type_alias__handle_type_nest_alias_id_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1198 => wire__crate__api__uuid_type__handle_nested_uuids_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1199 => wire__crate__api__uuid_type__handle_uuid_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1200 => wire__crate__api__uuid_type__handle_uuids_twin_normal_impl(port, ptr, rust_vec_len, data_len),
                         _ => unreachable!(),
                     }
 }
@@ -40661,93 +39367,88 @@ fn pde_ffi_dispatcher_sync_impl(
 943 => wire__crate__api__pseudo_manual__primitive_misc_twin_sync__primitive_u32_twin_sync_impl(ptr, rust_vec_len, data_len),
 946 => wire__crate__api__pseudo_manual__raw_string_twin_sync__test_more_than_just_one_raw_string_struct_twin_sync_impl(ptr, rust_vec_len, data_len),
 947 => wire__crate__api__pseudo_manual__raw_string_twin_sync__test_raw_string_item_struct_twin_sync_impl(ptr, rust_vec_len, data_len),
-961 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync_get_good_impl(ptr, rust_vec_len, data_len),
-962 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync_set_good_impl(ptr, rust_vec_len, data_len),
-1003 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_instance_method_arg_borrow_twin_sync_impl(ptr, rust_vec_len, data_len),
-1004 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_instance_method_arg_mut_borrow_twin_sync_impl(ptr, rust_vec_len, data_len),
-1005 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_instance_method_arg_own_twin_sync_impl(ptr, rust_vec_len, data_len),
-1006 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_instance_method_getter_twin_sync_impl(ptr, rust_vec_len, data_len),
-1007 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_instance_method_return_own_twin_sync_impl(ptr, rust_vec_len, data_len),
-1008 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_new_custom_name_twin_sync_impl(ptr, rust_vec_len, data_len),
-1009 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_new_twin_sync_impl(ptr, rust_vec_len, data_len),
-1010 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_new_with_result_twin_sync_impl(ptr, rust_vec_len, data_len),
-1011 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_static_method_arg_borrow_twin_sync_impl(ptr, rust_vec_len, data_len),
-1012 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_static_method_arg_mut_borrow_twin_sync_impl(ptr, rust_vec_len, data_len),
-1013 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_static_method_arg_own_twin_sync_impl(ptr, rust_vec_len, data_len),
-1014 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_static_method_return_own_twin_sync_impl(ptr, rust_vec_len, data_len),
-1015 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_get_good_impl(ptr, rust_vec_len, data_len),
-1016 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_set_good_impl(ptr, rust_vec_len, data_len),
-1020 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_arg_borrow_twin_sync_impl(ptr, rust_vec_len, data_len),
-1021 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_arg_mut_borrow_twin_sync_impl(ptr, rust_vec_len, data_len),
-1022 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_arg_own_and_return_own_twin_sync_impl(ptr, rust_vec_len, data_len),
-1023 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_arg_own_twin_sync_impl(ptr, rust_vec_len, data_len),
-1024 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_arg_vec_own_twin_sync_impl(ptr, rust_vec_len, data_len),
-1025 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_borrow_and_borrow_twin_sync_impl(ptr, rust_vec_len, data_len),
-1026 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_borrow_and_mut_borrow_twin_sync_impl(ptr, rust_vec_len, data_len),
-1027 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_callable_arg_twin_sync_impl(ptr, rust_vec_len, data_len),
-1028 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_callable_return_twin_sync_impl(ptr, rust_vec_len, data_len),
-1029 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_dummy_twin_sync_impl(ptr, rust_vec_len, data_len),
-1030 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_enum_arg_borrow_twin_sync_impl(ptr, rust_vec_len, data_len),
-1031 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_enum_return_own_twin_sync_impl(ptr, rust_vec_len, data_len),
-1032 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sync_impl(ptr, rust_vec_len, data_len),
-1033 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sync_impl(ptr, rust_vec_len, data_len),
-1034 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sync_impl(ptr, rust_vec_len, data_len),
-1035 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_explicit_arg_twin_sync_impl(ptr, rust_vec_len, data_len),
-1036 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_explicit_return_struct_twin_sync_impl(ptr, rust_vec_len, data_len),
-1037 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_explicit_return_twin_sync_impl(ptr, rust_vec_len, data_len),
-1038 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_explicit_struct_twin_sync_impl(ptr, rust_vec_len, data_len),
-1039 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_normal_and_opaque_arg_twin_sync_impl(ptr, rust_vec_len, data_len),
-1040 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_plus_sign_arg_twin_sync_impl(ptr, rust_vec_len, data_len),
-1041 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_plus_sign_return_twin_sync_impl(ptr, rust_vec_len, data_len),
-1042 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_return_opaque_one_and_two_twin_sync_impl(ptr, rust_vec_len, data_len),
-1043 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_return_opaque_two_twin_sync_impl(ptr, rust_vec_len, data_len),
-1044 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_return_own_twin_sync_impl(ptr, rust_vec_len, data_len),
-1045 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_return_vec_own_twin_sync_impl(ptr, rust_vec_len, data_len),
-1046 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_sleep_twin_sync_impl(ptr, rust_vec_len, data_len),
-1047 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_stream_sink_twin_sync_impl(ptr, rust_vec_len, data_len),
-1048 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync_impl(ptr, rust_vec_len, data_len),
-1049 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync_impl(ptr, rust_vec_len, data_len),
-1050 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_trait_object_arg_borrow_twin_sync_impl(ptr, rust_vec_len, data_len),
-1051 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_trait_object_arg_mut_borrow_twin_sync_impl(ptr, rust_vec_len, data_len),
-1052 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_trait_object_arg_own_twin_sync_impl(ptr, rust_vec_len, data_len),
-1053 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_trait_object_return_own_one_twin_sync_impl(ptr, rust_vec_len, data_len),
-1054 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_trait_object_return_own_two_twin_sync_impl(ptr, rust_vec_len, data_len),
-1055 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_two_args_twin_sync_impl(ptr, rust_vec_len, data_len),
-1071 => wire__crate__api__pseudo_manual__rust_opaque_twin_sync__create_array_opaque_enum_twin_sync_impl(ptr, rust_vec_len, data_len),
-1072 => wire__crate__api__pseudo_manual__rust_opaque_twin_sync__create_nested_opaque_twin_sync_impl(ptr, rust_vec_len, data_len),
-1073 => wire__crate__api__pseudo_manual__rust_opaque_twin_sync__create_opaque_twin_sync_impl(ptr, rust_vec_len, data_len),
-1074 => wire__crate__api__pseudo_manual__rust_opaque_twin_sync__create_option_opaque_twin_sync_impl(ptr, rust_vec_len, data_len),
-1075 => wire__crate__api__pseudo_manual__rust_opaque_twin_sync__frb_generator_test_twin_sync_impl(ptr, rust_vec_len, data_len),
-1076 => wire__crate__api__pseudo_manual__rust_opaque_twin_sync__opaque_array_run_twin_sync_impl(ptr, rust_vec_len, data_len),
-1077 => wire__crate__api__pseudo_manual__rust_opaque_twin_sync__opaque_array_twin_sync_impl(ptr, rust_vec_len, data_len),
-1078 => wire__crate__api__pseudo_manual__rust_opaque_twin_sync__opaque_vec_run_twin_sync_impl(ptr, rust_vec_len, data_len),
-1079 => wire__crate__api__pseudo_manual__rust_opaque_twin_sync__opaque_vec_twin_sync_impl(ptr, rust_vec_len, data_len),
-1080 => wire__crate__api__pseudo_manual__rust_opaque_twin_sync__run_enum_opaque_twin_sync_impl(ptr, rust_vec_len, data_len),
-1081 => wire__crate__api__pseudo_manual__rust_opaque_twin_sync__run_nested_opaque_twin_sync_impl(ptr, rust_vec_len, data_len),
-1082 => wire__crate__api__pseudo_manual__rust_opaque_twin_sync__run_non_clone_twin_sync_impl(ptr, rust_vec_len, data_len),
-1083 => wire__crate__api__pseudo_manual__rust_opaque_twin_sync__run_opaque_twin_sync_impl(ptr, rust_vec_len, data_len),
-1084 => wire__crate__api__pseudo_manual__rust_opaque_twin_sync__run_opaque_with_delay_twin_sync_impl(ptr, rust_vec_len, data_len),
-1085 => wire__crate__api__pseudo_manual__rust_opaque_twin_sync__unwrap_rust_opaque_twin_sync_impl(ptr, rust_vec_len, data_len),
-1087 => wire__crate__api__pseudo_manual__simple_twin_sync__simple_adder_twin_sync_impl(ptr, rust_vec_len, data_len),
-1103 => wire__crate__api__pseudo_manual__structure_twin_sync__func_struct_with_one_field_twin_sync_impl(ptr, rust_vec_len, data_len),
-1104 => wire__crate__api__pseudo_manual__structure_twin_sync__func_struct_with_two_field_twin_sync_impl(ptr, rust_vec_len, data_len),
-1105 => wire__crate__api__pseudo_manual__structure_twin_sync__func_struct_with_zero_field_twin_sync_impl(ptr, rust_vec_len, data_len),
-1106 => wire__crate__api__pseudo_manual__structure_twin_sync__func_tuple_struct_with_one_field_twin_sync_impl(ptr, rust_vec_len, data_len),
-1107 => wire__crate__api__pseudo_manual__structure_twin_sync__func_tuple_struct_with_two_field_twin_sync_impl(ptr, rust_vec_len, data_len),
-1110 => wire__crate__api__pseudo_manual__tuple_twin_sync__test_tuple_2_twin_sync_impl(ptr, rust_vec_len, data_len),
-1111 => wire__crate__api__pseudo_manual__tuple_twin_sync__test_tuple_twin_sync_impl(ptr, rust_vec_len, data_len),
-1115 => wire__crate__api__pseudo_manual__type_alias_twin_sync__handle_type_alias_id_twin_sync_impl(ptr, rust_vec_len, data_len),
-1116 => wire__crate__api__pseudo_manual__type_alias_twin_sync__handle_type_alias_model_twin_sync_impl(ptr, rust_vec_len, data_len),
-1117 => wire__crate__api__pseudo_manual__type_alias_twin_sync__handle_type_nest_alias_id_twin_sync_impl(ptr, rust_vec_len, data_len),
-1121 => wire__crate__api__pseudo_manual__uuid_type_twin_sync__handle_nested_uuids_twin_sync_impl(ptr, rust_vec_len, data_len),
-1122 => wire__crate__api__pseudo_manual__uuid_type_twin_sync__handle_uuid_twin_sync_impl(ptr, rust_vec_len, data_len),
-1123 => wire__crate__api__pseudo_manual__uuid_type_twin_sync__handle_uuids_twin_sync_impl(ptr, rust_vec_len, data_len),
-1139 => wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_get_good_impl(ptr, rust_vec_len, data_len),
-1140 => wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_set_good_impl(ptr, rust_vec_len, data_len),
-1195 => wire__crate__api__rust_opaque_sync__frb_sync_generator_test_twin_normal_impl(ptr, rust_vec_len, data_len),
-1196 => wire__crate__api__rust_opaque_sync__sync_create_non_clone_twin_normal_impl(ptr, rust_vec_len, data_len),
-1197 => wire__crate__api__rust_opaque_sync__sync_create_opaque_twin_normal_impl(ptr, rust_vec_len, data_len),
-1198 => wire__crate__api__rust_opaque_sync__sync_option_rust_opaque_twin_normal_impl(ptr, rust_vec_len, data_len),
+960 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync_get_good_impl(ptr, rust_vec_len, data_len),
+961 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync_set_good_impl(ptr, rust_vec_len, data_len),
+994 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_instance_method_arg_borrow_twin_sync_impl(ptr, rust_vec_len, data_len),
+995 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_instance_method_arg_mut_borrow_twin_sync_impl(ptr, rust_vec_len, data_len),
+996 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_instance_method_arg_own_twin_sync_impl(ptr, rust_vec_len, data_len),
+997 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_instance_method_getter_twin_sync_impl(ptr, rust_vec_len, data_len),
+998 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_instance_method_return_own_twin_sync_impl(ptr, rust_vec_len, data_len),
+999 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_new_custom_name_twin_sync_impl(ptr, rust_vec_len, data_len),
+1000 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_new_twin_sync_impl(ptr, rust_vec_len, data_len),
+1001 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_new_with_result_twin_sync_impl(ptr, rust_vec_len, data_len),
+1002 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_static_method_arg_borrow_twin_sync_impl(ptr, rust_vec_len, data_len),
+1003 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_static_method_arg_mut_borrow_twin_sync_impl(ptr, rust_vec_len, data_len),
+1004 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_static_method_arg_own_twin_sync_impl(ptr, rust_vec_len, data_len),
+1005 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_static_method_return_own_twin_sync_impl(ptr, rust_vec_len, data_len),
+1006 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_get_good_impl(ptr, rust_vec_len, data_len),
+1007 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_set_good_impl(ptr, rust_vec_len, data_len),
+1009 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_arg_borrow_twin_sync_impl(ptr, rust_vec_len, data_len),
+1010 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_arg_mut_borrow_twin_sync_impl(ptr, rust_vec_len, data_len),
+1011 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_arg_own_and_return_own_twin_sync_impl(ptr, rust_vec_len, data_len),
+1012 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_arg_own_twin_sync_impl(ptr, rust_vec_len, data_len),
+1013 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_arg_vec_own_twin_sync_impl(ptr, rust_vec_len, data_len),
+1014 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_borrow_and_borrow_twin_sync_impl(ptr, rust_vec_len, data_len),
+1015 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_borrow_and_mut_borrow_twin_sync_impl(ptr, rust_vec_len, data_len),
+1016 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_callable_arg_twin_sync_impl(ptr, rust_vec_len, data_len),
+1017 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_callable_return_twin_sync_impl(ptr, rust_vec_len, data_len),
+1018 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_dummy_twin_sync_impl(ptr, rust_vec_len, data_len),
+1019 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_enum_arg_borrow_twin_sync_impl(ptr, rust_vec_len, data_len),
+1020 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_enum_return_own_twin_sync_impl(ptr, rust_vec_len, data_len),
+1021 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sync_impl(ptr, rust_vec_len, data_len),
+1022 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sync_impl(ptr, rust_vec_len, data_len),
+1023 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sync_impl(ptr, rust_vec_len, data_len),
+1024 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_explicit_arg_twin_sync_impl(ptr, rust_vec_len, data_len),
+1025 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_explicit_return_struct_twin_sync_impl(ptr, rust_vec_len, data_len),
+1026 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_explicit_return_twin_sync_impl(ptr, rust_vec_len, data_len),
+1027 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_explicit_struct_twin_sync_impl(ptr, rust_vec_len, data_len),
+1028 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_normal_and_opaque_arg_twin_sync_impl(ptr, rust_vec_len, data_len),
+1029 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_plus_sign_arg_twin_sync_impl(ptr, rust_vec_len, data_len),
+1030 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_plus_sign_return_twin_sync_impl(ptr, rust_vec_len, data_len),
+1031 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_return_opaque_one_and_two_twin_sync_impl(ptr, rust_vec_len, data_len),
+1032 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_return_opaque_two_twin_sync_impl(ptr, rust_vec_len, data_len),
+1033 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_return_own_twin_sync_impl(ptr, rust_vec_len, data_len),
+1034 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_return_vec_own_twin_sync_impl(ptr, rust_vec_len, data_len),
+1035 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_sleep_twin_sync_impl(ptr, rust_vec_len, data_len),
+1036 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_stream_sink_twin_sync_impl(ptr, rust_vec_len, data_len),
+1037 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync_impl(ptr, rust_vec_len, data_len),
+1038 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync_impl(ptr, rust_vec_len, data_len),
+1039 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_two_args_twin_sync_impl(ptr, rust_vec_len, data_len),
+1055 => wire__crate__api__pseudo_manual__rust_opaque_twin_sync__create_array_opaque_enum_twin_sync_impl(ptr, rust_vec_len, data_len),
+1056 => wire__crate__api__pseudo_manual__rust_opaque_twin_sync__create_nested_opaque_twin_sync_impl(ptr, rust_vec_len, data_len),
+1057 => wire__crate__api__pseudo_manual__rust_opaque_twin_sync__create_opaque_twin_sync_impl(ptr, rust_vec_len, data_len),
+1058 => wire__crate__api__pseudo_manual__rust_opaque_twin_sync__create_option_opaque_twin_sync_impl(ptr, rust_vec_len, data_len),
+1059 => wire__crate__api__pseudo_manual__rust_opaque_twin_sync__frb_generator_test_twin_sync_impl(ptr, rust_vec_len, data_len),
+1060 => wire__crate__api__pseudo_manual__rust_opaque_twin_sync__opaque_array_run_twin_sync_impl(ptr, rust_vec_len, data_len),
+1061 => wire__crate__api__pseudo_manual__rust_opaque_twin_sync__opaque_array_twin_sync_impl(ptr, rust_vec_len, data_len),
+1062 => wire__crate__api__pseudo_manual__rust_opaque_twin_sync__opaque_vec_run_twin_sync_impl(ptr, rust_vec_len, data_len),
+1063 => wire__crate__api__pseudo_manual__rust_opaque_twin_sync__opaque_vec_twin_sync_impl(ptr, rust_vec_len, data_len),
+1064 => wire__crate__api__pseudo_manual__rust_opaque_twin_sync__run_enum_opaque_twin_sync_impl(ptr, rust_vec_len, data_len),
+1065 => wire__crate__api__pseudo_manual__rust_opaque_twin_sync__run_nested_opaque_twin_sync_impl(ptr, rust_vec_len, data_len),
+1066 => wire__crate__api__pseudo_manual__rust_opaque_twin_sync__run_non_clone_twin_sync_impl(ptr, rust_vec_len, data_len),
+1067 => wire__crate__api__pseudo_manual__rust_opaque_twin_sync__run_opaque_twin_sync_impl(ptr, rust_vec_len, data_len),
+1068 => wire__crate__api__pseudo_manual__rust_opaque_twin_sync__run_opaque_with_delay_twin_sync_impl(ptr, rust_vec_len, data_len),
+1069 => wire__crate__api__pseudo_manual__rust_opaque_twin_sync__unwrap_rust_opaque_twin_sync_impl(ptr, rust_vec_len, data_len),
+1071 => wire__crate__api__pseudo_manual__simple_twin_sync__simple_adder_twin_sync_impl(ptr, rust_vec_len, data_len),
+1087 => wire__crate__api__pseudo_manual__structure_twin_sync__func_struct_with_one_field_twin_sync_impl(ptr, rust_vec_len, data_len),
+1088 => wire__crate__api__pseudo_manual__structure_twin_sync__func_struct_with_two_field_twin_sync_impl(ptr, rust_vec_len, data_len),
+1089 => wire__crate__api__pseudo_manual__structure_twin_sync__func_struct_with_zero_field_twin_sync_impl(ptr, rust_vec_len, data_len),
+1090 => wire__crate__api__pseudo_manual__structure_twin_sync__func_tuple_struct_with_one_field_twin_sync_impl(ptr, rust_vec_len, data_len),
+1091 => wire__crate__api__pseudo_manual__structure_twin_sync__func_tuple_struct_with_two_field_twin_sync_impl(ptr, rust_vec_len, data_len),
+1094 => wire__crate__api__pseudo_manual__tuple_twin_sync__test_tuple_2_twin_sync_impl(ptr, rust_vec_len, data_len),
+1095 => wire__crate__api__pseudo_manual__tuple_twin_sync__test_tuple_twin_sync_impl(ptr, rust_vec_len, data_len),
+1099 => wire__crate__api__pseudo_manual__type_alias_twin_sync__handle_type_alias_id_twin_sync_impl(ptr, rust_vec_len, data_len),
+1100 => wire__crate__api__pseudo_manual__type_alias_twin_sync__handle_type_alias_model_twin_sync_impl(ptr, rust_vec_len, data_len),
+1101 => wire__crate__api__pseudo_manual__type_alias_twin_sync__handle_type_nest_alias_id_twin_sync_impl(ptr, rust_vec_len, data_len),
+1105 => wire__crate__api__pseudo_manual__uuid_type_twin_sync__handle_nested_uuids_twin_sync_impl(ptr, rust_vec_len, data_len),
+1106 => wire__crate__api__pseudo_manual__uuid_type_twin_sync__handle_uuid_twin_sync_impl(ptr, rust_vec_len, data_len),
+1107 => wire__crate__api__pseudo_manual__uuid_type_twin_sync__handle_uuids_twin_sync_impl(ptr, rust_vec_len, data_len),
+1122 => wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_get_good_impl(ptr, rust_vec_len, data_len),
+1123 => wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_set_good_impl(ptr, rust_vec_len, data_len),
+1171 => wire__crate__api__rust_opaque_sync__frb_sync_generator_test_twin_normal_impl(ptr, rust_vec_len, data_len),
+1172 => wire__crate__api__rust_opaque_sync__sync_create_non_clone_twin_normal_impl(ptr, rust_vec_len, data_len),
+1173 => wire__crate__api__rust_opaque_sync__sync_create_opaque_twin_normal_impl(ptr, rust_vec_len, data_len),
+1174 => wire__crate__api__rust_opaque_sync__sync_option_rust_opaque_twin_normal_impl(ptr, rust_vec_len, data_len),
                         _ => unreachable!(),
                     }
 }
@@ -41023,66 +39724,6 @@ impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<EnumWithGoodAndOpaqueWithoutOp
     for EnumWithGoodAndOpaqueWithoutOptionTwinSync
 {
     fn into_into_dart(self) -> FrbWrapper<EnumWithGoodAndOpaqueWithoutOptionTwinSync> {
-        self.into()
-    }
-}
-
-// Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for FrbWrapper<HelloOneStructTwinNormal> {
-    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0)
-            .into_dart()
-    }
-}
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
-    for FrbWrapper<HelloOneStructTwinNormal>
-{
-}
-
-impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<HelloOneStructTwinNormal>>
-    for HelloOneStructTwinNormal
-{
-    fn into_into_dart(self) -> FrbWrapper<HelloOneStructTwinNormal> {
-        self.into()
-    }
-}
-
-// Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for FrbWrapper<HelloOneStructTwinRustAsync> {
-    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0)
-            .into_dart()
-    }
-}
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
-    for FrbWrapper<HelloOneStructTwinRustAsync>
-{
-}
-
-impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<HelloOneStructTwinRustAsync>>
-    for HelloOneStructTwinRustAsync
-{
-    fn into_into_dart(self) -> FrbWrapper<HelloOneStructTwinRustAsync> {
-        self.into()
-    }
-}
-
-// Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for FrbWrapper<HelloOneStructTwinSync> {
-    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0)
-            .into_dart()
-    }
-}
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
-    for FrbWrapper<HelloOneStructTwinSync>
-{
-}
-
-impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<HelloOneStructTwinSync>>
-    for HelloOneStructTwinSync
-{
-    fn into_into_dart(self) -> FrbWrapper<HelloOneStructTwinSync> {
         self.into()
     }
 }
@@ -45249,163 +43890,6 @@ impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::api::mirror::HashMapVal
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for crate::frb_generated::HelloTraitTwinNormalImplementor {
-    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-        match self {
-            crate::frb_generated::HelloTraitTwinNormalImplementor::Variant0(field0) => {
-                [0.into_dart(), field0.into_into_dart().into_dart()].into_dart()
-            }
-            crate::frb_generated::HelloTraitTwinNormalImplementor::Variant1(field0) => {
-                [1.into_dart(), field0.into_into_dart().into_dart()].into_dart()
-            }
-            _ => {
-                unimplemented!("");
-            }
-        }
-    }
-}
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
-    for crate::frb_generated::HelloTraitTwinNormalImplementor
-{
-}
-impl flutter_rust_bridge::IntoIntoDart<crate::frb_generated::HelloTraitTwinNormalImplementor>
-    for crate::frb_generated::HelloTraitTwinNormalImplementor
-{
-    fn into_into_dart(self) -> crate::frb_generated::HelloTraitTwinNormalImplementor {
-        self
-    }
-}
-// Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for crate::frb_generated::HelloTraitTwinRustAsyncImplementor {
-    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-        match self {
-            crate::frb_generated::HelloTraitTwinRustAsyncImplementor::Variant0(field0) => {
-                [0.into_dart(), field0.into_into_dart().into_dart()].into_dart()
-            }
-            crate::frb_generated::HelloTraitTwinRustAsyncImplementor::Variant1(field0) => {
-                [1.into_dart(), field0.into_into_dart().into_dart()].into_dart()
-            }
-            _ => {
-                unimplemented!("");
-            }
-        }
-    }
-}
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
-    for crate::frb_generated::HelloTraitTwinRustAsyncImplementor
-{
-}
-impl flutter_rust_bridge::IntoIntoDart<crate::frb_generated::HelloTraitTwinRustAsyncImplementor>
-    for crate::frb_generated::HelloTraitTwinRustAsyncImplementor
-{
-    fn into_into_dart(self) -> crate::frb_generated::HelloTraitTwinRustAsyncImplementor {
-        self
-    }
-}
-// Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for crate::frb_generated::HelloTraitTwinSyncImplementor {
-    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-        match self {
-            crate::frb_generated::HelloTraitTwinSyncImplementor::Variant0(field0) => {
-                [0.into_dart(), field0.into_into_dart().into_dart()].into_dart()
-            }
-            crate::frb_generated::HelloTraitTwinSyncImplementor::Variant1(field0) => {
-                [1.into_dart(), field0.into_into_dart().into_dart()].into_dart()
-            }
-            _ => {
-                unimplemented!("");
-            }
-        }
-    }
-}
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
-    for crate::frb_generated::HelloTraitTwinSyncImplementor
-{
-}
-impl flutter_rust_bridge::IntoIntoDart<crate::frb_generated::HelloTraitTwinSyncImplementor>
-    for crate::frb_generated::HelloTraitTwinSyncImplementor
-{
-    fn into_into_dart(self) -> crate::frb_generated::HelloTraitTwinSyncImplementor {
-        self
-    }
-}
-// Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for crate::api::rust_auto_opaque::HelloTwoEnumTwinNormal {
-    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-        match self {
-            Self::A => 0.into_dart(),
-            Self::B => 1.into_dart(),
-            _ => unreachable!(),
-        }
-    }
-}
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
-    for crate::api::rust_auto_opaque::HelloTwoEnumTwinNormal
-{
-}
-impl flutter_rust_bridge::IntoIntoDart<crate::api::rust_auto_opaque::HelloTwoEnumTwinNormal>
-    for crate::api::rust_auto_opaque::HelloTwoEnumTwinNormal
-{
-    fn into_into_dart(self) -> crate::api::rust_auto_opaque::HelloTwoEnumTwinNormal {
-        self
-    }
-}
-// Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart
-    for crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::HelloTwoEnumTwinRustAsync
-{
-    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-        match self {
-            Self::A => 0.into_dart(),
-            Self::B => 1.into_dart(),
-            _ => unreachable!(),
-        }
-    }
-}
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
-    for crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::HelloTwoEnumTwinRustAsync
-{
-}
-impl
-    flutter_rust_bridge::IntoIntoDart<
-        crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::HelloTwoEnumTwinRustAsync,
-    > for crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::HelloTwoEnumTwinRustAsync
-{
-    fn into_into_dart(
-        self,
-    ) -> crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::HelloTwoEnumTwinRustAsync
-    {
-        self
-    }
-}
-// Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart
-    for crate::api::pseudo_manual::rust_auto_opaque_twin_sync::HelloTwoEnumTwinSync
-{
-    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-        match self {
-            Self::A => 0.into_dart(),
-            Self::B => 1.into_dart(),
-            _ => unreachable!(),
-        }
-    }
-}
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
-    for crate::api::pseudo_manual::rust_auto_opaque_twin_sync::HelloTwoEnumTwinSync
-{
-}
-impl
-    flutter_rust_bridge::IntoIntoDart<
-        crate::api::pseudo_manual::rust_auto_opaque_twin_sync::HelloTwoEnumTwinSync,
-    > for crate::api::pseudo_manual::rust_auto_opaque_twin_sync::HelloTwoEnumTwinSync
-{
-    fn into_into_dart(
-        self,
-    ) -> crate::api::pseudo_manual::rust_auto_opaque_twin_sync::HelloTwoEnumTwinSync {
-        self
-    }
-}
-// Codec=Dco (DartCObject based), see doc to use other codecs
 impl flutter_rust_bridge::IntoDart
     for crate::api::misc_no_twin_example_a::ItemContainerSolutionTwoTwinNormal
 {
@@ -48786,42 +47270,6 @@ impl SseEncode for flutter_rust_bridge::for_generated::anyhow::Error {
     }
 }
 
-impl SseEncode for RustAutoOpaqueMoi<HelloOneStructTwinNormal> {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <RustOpaqueMoi<
-            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<HelloOneStructTwinNormal>,
-        >>::sse_encode(
-            flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_encode(self),
-            serializer,
-        );
-    }
-}
-
-impl SseEncode for RustAutoOpaqueMoi<HelloOneStructTwinRustAsync> {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <RustOpaqueMoi<
-            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<HelloOneStructTwinRustAsync>,
-        >>::sse_encode(
-            flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_encode(self),
-            serializer,
-        );
-    }
-}
-
-impl SseEncode for RustAutoOpaqueMoi<HelloOneStructTwinSync> {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <RustOpaqueMoi<
-            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<HelloOneStructTwinSync>,
-        >>::sse_encode(
-            flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_encode(self),
-            serializer,
-        );
-    }
-}
-
 impl SseEncode for RustAutoOpaqueMoi<MyNodeTwinNormal> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -48897,49 +47345,6 @@ impl SseEncode for RustAutoOpaqueMoi<StructTwoWithTraitForDynTwinNormal> {
         <RustOpaqueMoi<
             flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
                 StructTwoWithTraitForDynTwinNormal,
-            >,
-        >>::sse_encode(
-            flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_encode(self),
-            serializer,
-        );
-    }
-}
-
-impl SseEncode
-    for RustAutoOpaqueMoi<
-        crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::HelloTwoEnumTwinRustAsync,
-    >
-{
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<crate :: api :: pseudo_manual :: rust_auto_opaque_twin_rust_async :: HelloTwoEnumTwinRustAsync>>>::sse_encode(flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_encode(self), serializer);
-    }
-}
-
-impl SseEncode
-    for RustAutoOpaqueMoi<
-        crate::api::pseudo_manual::rust_auto_opaque_twin_sync::HelloTwoEnumTwinSync,
-    >
-{
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <RustOpaqueMoi<
-            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
-                crate::api::pseudo_manual::rust_auto_opaque_twin_sync::HelloTwoEnumTwinSync,
-            >,
-        >>::sse_encode(
-            flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_encode(self),
-            serializer,
-        );
-    }
-}
-
-impl SseEncode for RustAutoOpaqueMoi<crate::api::rust_auto_opaque::HelloTwoEnumTwinNormal> {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <RustOpaqueMoi<
-            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
-                crate::api::rust_auto_opaque::HelloTwoEnumTwinNormal,
             >,
         >>::sse_encode(
             flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_encode(self),
@@ -49121,42 +47526,6 @@ impl SseEncode for EnumWithGoodAndOpaqueWithoutOptionTwinSync {
             flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
                 EnumWithGoodAndOpaqueWithoutOptionTwinSync,
             >,
-        >>::sse_encode(
-            flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self),
-            serializer,
-        );
-    }
-}
-
-impl SseEncode for HelloOneStructTwinNormal {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <RustOpaqueMoi<
-            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<HelloOneStructTwinNormal>,
-        >>::sse_encode(
-            flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self),
-            serializer,
-        );
-    }
-}
-
-impl SseEncode for HelloOneStructTwinRustAsync {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <RustOpaqueMoi<
-            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<HelloOneStructTwinRustAsync>,
-        >>::sse_encode(
-            flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self),
-            serializer,
-        );
-    }
-}
-
-impl SseEncode for HelloOneStructTwinSync {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <RustOpaqueMoi<
-            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<HelloOneStructTwinSync>,
         >>::sse_encode(
             flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self),
             serializer,
@@ -50253,45 +48622,6 @@ impl SseEncode
 
 impl SseEncode
     for RustOpaqueMoi<
-        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box<dyn HelloTraitTwinNormal>>,
-    >
-{
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        let (ptr, size) = self.sse_encode_raw();
-        <usize>::sse_encode(ptr, serializer);
-        <i32>::sse_encode(size, serializer);
-    }
-}
-
-impl SseEncode
-    for RustOpaqueMoi<
-        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box<dyn HelloTraitTwinRustAsync>>,
-    >
-{
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        let (ptr, size) = self.sse_encode_raw();
-        <usize>::sse_encode(ptr, serializer);
-        <i32>::sse_encode(size, serializer);
-    }
-}
-
-impl SseEncode
-    for RustOpaqueMoi<
-        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box<dyn HelloTraitTwinSync>>,
-    >
-{
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        let (ptr, size) = self.sse_encode_raw();
-        <usize>::sse_encode(ptr, serializer);
-        <i32>::sse_encode(size, serializer);
-    }
-}
-
-impl SseEncode
-    for RustOpaqueMoi<
         flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
             Box<dyn MyTraitTwinNormal + Send + Sync>,
         >,
@@ -50448,45 +48778,6 @@ impl SseEncode
         flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
             EnumWithGoodAndOpaqueWithoutOptionTwinSync,
         >,
-    >
-{
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        let (ptr, size) = self.sse_encode_raw();
-        <usize>::sse_encode(ptr, serializer);
-        <i32>::sse_encode(size, serializer);
-    }
-}
-
-impl SseEncode
-    for RustOpaqueMoi<
-        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<HelloOneStructTwinNormal>,
-    >
-{
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        let (ptr, size) = self.sse_encode_raw();
-        <usize>::sse_encode(ptr, serializer);
-        <i32>::sse_encode(size, serializer);
-    }
-}
-
-impl SseEncode
-    for RustOpaqueMoi<
-        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<HelloOneStructTwinRustAsync>,
-    >
-{
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        let (ptr, size) = self.sse_encode_raw();
-        <usize>::sse_encode(ptr, serializer);
-        <i32>::sse_encode(size, serializer);
-    }
-}
-
-impl SseEncode
-    for RustOpaqueMoi<
-        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<HelloOneStructTwinSync>,
     >
 {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -50910,51 +49201,6 @@ impl SseEncode
 impl SseEncode
     for RustOpaqueMoi<
         flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructWithSimpleSetterTwinNormal>,
-    >
-{
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        let (ptr, size) = self.sse_encode_raw();
-        <usize>::sse_encode(ptr, serializer);
-        <i32>::sse_encode(size, serializer);
-    }
-}
-
-impl SseEncode
-    for RustOpaqueMoi<
-        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
-            crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::HelloTwoEnumTwinRustAsync,
-        >,
-    >
-{
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        let (ptr, size) = self.sse_encode_raw();
-        <usize>::sse_encode(ptr, serializer);
-        <i32>::sse_encode(size, serializer);
-    }
-}
-
-impl SseEncode
-    for RustOpaqueMoi<
-        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
-            crate::api::pseudo_manual::rust_auto_opaque_twin_sync::HelloTwoEnumTwinSync,
-        >,
-    >
-{
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        let (ptr, size) = self.sse_encode_raw();
-        <usize>::sse_encode(ptr, serializer);
-        <i32>::sse_encode(size, serializer);
-    }
-}
-
-impl SseEncode
-    for RustOpaqueMoi<
-        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
-            crate::api::rust_auto_opaque::HelloTwoEnumTwinNormal,
-        >,
     >
 {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -51828,27 +50074,6 @@ impl SseEncode for bool {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         serializer.cursor.write_u8(self as _).unwrap();
-    }
-}
-
-impl SseEncode for Box<dyn HelloTraitTwinNormal> {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <dyn HelloTraitTwinNormal>::sse_encode(*self, serializer);
-    }
-}
-
-impl SseEncode for Box<dyn HelloTraitTwinRustAsync> {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <dyn HelloTraitTwinRustAsync>::sse_encode(*self, serializer);
-    }
-}
-
-impl SseEncode for Box<dyn HelloTraitTwinSync> {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <dyn HelloTraitTwinSync>::sse_encode(*self, serializer);
     }
 }
 
@@ -53439,108 +51664,6 @@ impl SseEncode for crate::api::mirror::HashMapValue {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <String>::sse_encode(self.inner, serializer);
-    }
-}
-
-impl SseEncode for crate::frb_generated::HelloTraitTwinNormalImplementor {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        match self {
-            crate::frb_generated::HelloTraitTwinNormalImplementor::Variant0(field0) => {
-                <i32>::sse_encode(0, serializer);
-                <RustAutoOpaqueMoi<HelloOneStructTwinNormal>>::sse_encode(field0, serializer);
-            }
-            crate::frb_generated::HelloTraitTwinNormalImplementor::Variant1(field0) => {
-                <i32>::sse_encode(1, serializer);
-                <RustAutoOpaqueMoi<crate :: api :: rust_auto_opaque :: HelloTwoEnumTwinNormal>>::sse_encode(field0, serializer);
-            }
-            _ => {
-                unimplemented!("");
-            }
-        }
-    }
-}
-
-impl SseEncode for crate::frb_generated::HelloTraitTwinRustAsyncImplementor {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        match self {
-            crate::frb_generated::HelloTraitTwinRustAsyncImplementor::Variant0(field0) => {
-                <i32>::sse_encode(0, serializer);
-                <RustAutoOpaqueMoi<HelloOneStructTwinRustAsync>>::sse_encode(field0, serializer);
-            }
-            crate::frb_generated::HelloTraitTwinRustAsyncImplementor::Variant1(field0) => {
-                <i32>::sse_encode(1, serializer);
-                <RustAutoOpaqueMoi<crate :: api :: pseudo_manual :: rust_auto_opaque_twin_rust_async :: HelloTwoEnumTwinRustAsync>>::sse_encode(field0, serializer);
-            }
-            _ => {
-                unimplemented!("");
-            }
-        }
-    }
-}
-
-impl SseEncode for crate::frb_generated::HelloTraitTwinSyncImplementor {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        match self {
-            crate::frb_generated::HelloTraitTwinSyncImplementor::Variant0(field0) => {
-                <i32>::sse_encode(0, serializer);
-                <RustAutoOpaqueMoi<HelloOneStructTwinSync>>::sse_encode(field0, serializer);
-            }
-            crate::frb_generated::HelloTraitTwinSyncImplementor::Variant1(field0) => {
-                <i32>::sse_encode(1, serializer);
-                <RustAutoOpaqueMoi<
-                    crate::api::pseudo_manual::rust_auto_opaque_twin_sync::HelloTwoEnumTwinSync,
-                >>::sse_encode(field0, serializer);
-            }
-            _ => {
-                unimplemented!("");
-            }
-        }
-    }
-}
-
-impl SseEncode for crate::api::rust_auto_opaque::HelloTwoEnumTwinNormal {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <i32>::sse_encode(
-            match self {
-                crate::api::rust_auto_opaque::HelloTwoEnumTwinNormal::A => 0,
-                crate::api::rust_auto_opaque::HelloTwoEnumTwinNormal::B => 1,
-                _ => {
-                    unimplemented!("");
-                }
-            },
-            serializer,
-        );
-    }
-}
-
-impl SseEncode
-    for crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::HelloTwoEnumTwinRustAsync
-{
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <i32>::sse_encode(match self {crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::HelloTwoEnumTwinRustAsync::A => { 0 }
-crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::HelloTwoEnumTwinRustAsync::B => { 1 }
- _ => { unimplemented!(""); }}, serializer);
-    }
-}
-
-impl SseEncode for crate::api::pseudo_manual::rust_auto_opaque_twin_sync::HelloTwoEnumTwinSync {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <i32>::sse_encode(
-            match self {
-                crate::api::pseudo_manual::rust_auto_opaque_twin_sync::HelloTwoEnumTwinSync::A => 0,
-                crate::api::pseudo_manual::rust_auto_opaque_twin_sync::HelloTwoEnumTwinSync::B => 1,
-                _ => {
-                    unimplemented!("");
-                }
-            },
-            serializer,
-        );
     }
 }
 

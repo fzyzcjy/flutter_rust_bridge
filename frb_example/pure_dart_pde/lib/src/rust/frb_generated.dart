@@ -194,7 +194,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.0.0-dev.37';
 
   @override
-  int get rustContentHash => 1790638448;
+  int get rustContentHash => -224322201;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -3456,10 +3456,6 @@ abstract class RustLibApi extends BaseApi {
       crateApiPseudoManualRawStringTwinSyncTestRawStringItemStructTwinSync();
 
   Future<void>
-      crateApiPseudoManualRustAutoOpaqueTwinRustAsyncHelloOneStructTwinRustAsyncFuncHello(
-          {required HelloOneStructTwinRustAsync that});
-
-  Future<void>
       crateApiPseudoManualRustAutoOpaqueTwinRustAsyncNonCloneSimpleTwinRustAsyncInstanceMethodArgBorrowTwinRustAsync(
           {required NonCloneSimpleTwinRustAsync that});
 
@@ -3512,10 +3508,6 @@ abstract class RustLibApi extends BaseApi {
       crateApiPseudoManualRustAutoOpaqueTwinRustAsyncStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSetGood(
           {required StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync that,
           required String good});
-
-  Future<void>
-      crateApiPseudoManualRustAutoOpaqueTwinRustAsyncHelloTwoEnumTwinRustAsyncFuncHello(
-          {required HelloTwoEnumTwinRustAsync that});
 
   Future<void>
       crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueArgBorrowTwinRustAsync(
@@ -3634,31 +3626,9 @@ abstract class RustLibApi extends BaseApi {
       crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinRustAsync();
 
   Future<void>
-      crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueTraitObjectArgBorrowTwinRustAsync(
-          {required HelloTraitTwinRustAsync arg, required String expect});
-
-  Future<void>
-      crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueTraitObjectArgMutBorrowTwinRustAsync(
-          {required BoxHelloTraitTwinRustAsync arg, required String expect});
-
-  Future<void>
-      crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueTraitObjectArgOwnTwinRustAsync(
-          {required HelloTraitTwinRustAsync arg, required String expect});
-
-  Future<HelloTraitTwinRustAsync>
-      crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueTraitObjectReturnOwnOneTwinRustAsync();
-
-  Future<HelloTraitTwinRustAsync>
-      crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueTraitObjectReturnOwnTwoTwinRustAsync();
-
-  Future<void>
       crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueTwoArgsTwinRustAsync(
           {required NonCloneSimpleTwinRustAsync a,
           required NonCloneSimpleTwinRustAsync b});
-
-  Future<void>
-      crateApiPseudoManualRustAutoOpaqueTwinSyncHelloOneStructTwinSyncFuncHello(
-          {required HelloOneStructTwinSync that});
 
   void
       crateApiPseudoManualRustAutoOpaqueTwinSyncNonCloneSimpleTwinSyncInstanceMethodArgBorrowTwinSync(
@@ -3711,10 +3681,6 @@ abstract class RustLibApi extends BaseApi {
       crateApiPseudoManualRustAutoOpaqueTwinSyncStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSetGood(
           {required StructWithGoodAndOpaqueFieldWithoutOptionTwinSync that,
           required String good});
-
-  Future<void>
-      crateApiPseudoManualRustAutoOpaqueTwinSyncHelloTwoEnumTwinSyncFuncHello(
-          {required HelloTwoEnumTwinSync that});
 
   void
       crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueArgBorrowTwinSync(
@@ -3827,24 +3793,6 @@ abstract class RustLibApi extends BaseApi {
 
   StructWithGoodAndOpaqueFieldTwinSync
       crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinSync();
-
-  void
-      crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueTraitObjectArgBorrowTwinSync(
-          {required HelloTraitTwinSync arg, required String expect});
-
-  void
-      crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueTraitObjectArgMutBorrowTwinSync(
-          {required BoxHelloTraitTwinSync arg, required String expect});
-
-  void
-      crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueTraitObjectArgOwnTwinSync(
-          {required HelloTraitTwinSync arg, required String expect});
-
-  HelloTraitTwinSync
-      crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueTraitObjectReturnOwnOneTwinSync();
-
-  HelloTraitTwinSync
-      crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueTraitObjectReturnOwnTwoTwinSync();
 
   void crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueTwoArgsTwinSync(
       {required NonCloneSimpleTwinSync a, required NonCloneSimpleTwinSync b});
@@ -4093,9 +4041,6 @@ abstract class RustLibApi extends BaseApi {
   Future<RawStringItemStructTwinNormal>
       crateApiRawStringTestRawStringItemStructTwinNormal();
 
-  Future<void> crateApiRustAutoOpaqueHelloOneStructTwinNormalFuncHello(
-      {required HelloOneStructTwinNormal that});
-
   Future<void>
       crateApiRustAutoOpaqueNonCloneSimpleTwinNormalInstanceMethodArgBorrowTwinNormal(
           {required NonCloneSimpleTwinNormal that});
@@ -4148,9 +4093,6 @@ abstract class RustLibApi extends BaseApi {
       crateApiRustAutoOpaqueStructWithGoodAndOpaqueFieldWithoutOptionTwinNormalSetGood(
           {required StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal that,
           required String good});
-
-  Future<void> crateApiRustAutoOpaqueHelloTwoEnumTwinNormalFuncHello(
-      {required HelloTwoEnumTwinNormal that});
 
   Future<void> crateApiRustAutoOpaqueRustAutoOpaqueArgBorrowTwinNormal(
       {required NonCloneSimpleTwinNormal arg, required int expect});
@@ -4252,23 +4194,6 @@ abstract class RustLibApi extends BaseApi {
 
   Future<StructWithGoodAndOpaqueFieldTwinNormal>
       crateApiRustAutoOpaqueRustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinNormal();
-
-  Future<void>
-      crateApiRustAutoOpaqueRustAutoOpaqueTraitObjectArgBorrowTwinNormal(
-          {required HelloTraitTwinNormal arg, required String expect});
-
-  Future<void>
-      crateApiRustAutoOpaqueRustAutoOpaqueTraitObjectArgMutBorrowTwinNormal(
-          {required BoxHelloTraitTwinNormal arg, required String expect});
-
-  Future<void> crateApiRustAutoOpaqueRustAutoOpaqueTraitObjectArgOwnTwinNormal(
-      {required HelloTraitTwinNormal arg, required String expect});
-
-  Future<HelloTraitTwinNormal>
-      crateApiRustAutoOpaqueRustAutoOpaqueTraitObjectReturnOwnOneTwinNormal();
-
-  Future<HelloTraitTwinNormal>
-      crateApiRustAutoOpaqueRustAutoOpaqueTraitObjectReturnOwnTwoTwinNormal();
 
   Future<void> crateApiRustAutoOpaqueRustAutoOpaqueTwoArgsTwinNormal(
       {required NonCloneSimpleTwinNormal a,
@@ -4604,33 +4529,6 @@ abstract class RustLibApi extends BaseApi {
       get rust_arc_decrement_strong_count_BoxFnStringStringPtr;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_BoxHelloTraitTwinNormal;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_BoxHelloTraitTwinNormal;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_BoxHelloTraitTwinNormalPtr;
-
-  RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_BoxHelloTraitTwinRustAsync;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_BoxHelloTraitTwinRustAsync;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_BoxHelloTraitTwinRustAsyncPtr;
-
-  RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_BoxHelloTraitTwinSync;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_BoxHelloTraitTwinSync;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_BoxHelloTraitTwinSyncPtr;
-
-  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_BoxMyTraitTwinNormal;
 
   RustArcDecrementStrongCountFnType
@@ -4737,33 +4635,6 @@ abstract class RustLibApi extends BaseApi {
 
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_EnumWithGoodAndOpaqueWithoutOptionTwinSyncPtr;
-
-  RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_HelloOneStructTwinNormal;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_HelloOneStructTwinNormal;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_HelloOneStructTwinNormalPtr;
-
-  RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_HelloOneStructTwinRustAsync;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_HelloOneStructTwinRustAsync;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_HelloOneStructTwinRustAsyncPtr;
-
-  RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_HelloOneStructTwinSync;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_HelloOneStructTwinSync;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_HelloOneStructTwinSyncPtr;
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_ItemContainerSolutionOneTwinNormal;
@@ -5061,33 +4932,6 @@ abstract class RustLibApi extends BaseApi {
 
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_StructWithSimpleSetterTwinNormalPtr;
-
-  RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_CrateApiPseudoManualRustAutoOpaqueTwinRustAsyncHelloTwoEnumTwinRustAsync;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_CrateApiPseudoManualRustAutoOpaqueTwinRustAsyncHelloTwoEnumTwinRustAsync;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_CrateApiPseudoManualRustAutoOpaqueTwinRustAsyncHelloTwoEnumTwinRustAsyncPtr;
-
-  RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_CrateApiPseudoManualRustAutoOpaqueTwinSyncHelloTwoEnumTwinSync;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_CrateApiPseudoManualRustAutoOpaqueTwinSyncHelloTwoEnumTwinSync;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_CrateApiPseudoManualRustAutoOpaqueTwinSyncHelloTwoEnumTwinSyncPtr;
-
-  RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_CrateApiRustAutoOpaqueHelloTwoEnumTwinNormal;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_CrateApiRustAutoOpaqueHelloTwoEnumTwinNormal;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_CrateApiRustAutoOpaqueHelloTwoEnumTwinNormalPtr;
 
   RustArcIncrementStrongCountFnType get rust_arc_increment_strong_count_I32;
 
@@ -31632,36 +31476,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void>
-      crateApiPseudoManualRustAutoOpaqueTwinRustAsyncHelloOneStructTwinRustAsyncFuncHello(
-          {required HelloOneStructTwinRustAsync that}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinRustAsync(
-            that, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 948, port: port_);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
-      ),
-      constMeta:
-          kCrateApiPseudoManualRustAutoOpaqueTwinRustAsyncHelloOneStructTwinRustAsyncFuncHelloConstMeta,
-      argValues: [that],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta
-      get kCrateApiPseudoManualRustAutoOpaqueTwinRustAsyncHelloOneStructTwinRustAsyncFuncHelloConstMeta =>
-          const TaskConstMeta(
-            debugName: "HelloOneStructTwinRustAsync_func_hello",
-            argNames: ["that"],
-          );
-
-  @override
-  Future<void>
       crateApiPseudoManualRustAutoOpaqueTwinRustAsyncNonCloneSimpleTwinRustAsyncInstanceMethodArgBorrowTwinRustAsync(
           {required NonCloneSimpleTwinRustAsync that}) {
     return handler.executeNormal(NormalTask(
@@ -31670,7 +31484,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
             that, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 949, port: port_);
+            funcId: 948, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -31701,7 +31515,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
             that, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 950, port: port_);
+            funcId: 949, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -31732,7 +31546,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
             that, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 951, port: port_);
+            funcId: 950, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -31763,7 +31577,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
             that, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 952, port: port_);
+            funcId: 951, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_i_32,
@@ -31794,7 +31608,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
             that, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 953, port: port_);
+            funcId: 952, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -31823,7 +31637,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 954, port: port_);
+            funcId: 953, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -31852,7 +31666,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 955, port: port_);
+            funcId: 954, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -31880,7 +31694,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 956, port: port_);
+            funcId: 955, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -31912,7 +31726,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
             arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 957, port: port_);
+            funcId: 956, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -31943,7 +31757,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
             arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 958, port: port_);
+            funcId: 957, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -31974,7 +31788,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
             arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 959, port: port_);
+            funcId: 958, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -32002,7 +31816,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 960, port: port_);
+            funcId: 959, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -32034,7 +31848,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync(
             that, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 961)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 960)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_String,
@@ -32066,7 +31880,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync(
             that, serializer);
         sse_encode_String(good, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 962)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 961)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -32089,35 +31903,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void>
-      crateApiPseudoManualRustAutoOpaqueTwinRustAsyncHelloTwoEnumTwinRustAsyncFuncHello(
-          {required HelloTwoEnumTwinRustAsync that}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_hello_two_enum_twin_rust_async(that, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 965, port: port_);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
-      ),
-      constMeta:
-          kCrateApiPseudoManualRustAutoOpaqueTwinRustAsyncHelloTwoEnumTwinRustAsyncFuncHelloConstMeta,
-      argValues: [that],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta
-      get kCrateApiPseudoManualRustAutoOpaqueTwinRustAsyncHelloTwoEnumTwinRustAsyncFuncHelloConstMeta =>
-          const TaskConstMeta(
-            debugName: "hello_two_enum_twin_rust_async_func_hello",
-            argNames: ["that"],
-          );
-
-  @override
-  Future<void>
       crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueArgBorrowTwinRustAsync(
           {required NonCloneSimpleTwinRustAsync arg, required int expect}) {
     return handler.executeNormal(NormalTask(
@@ -32127,7 +31912,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             arg, serializer);
         sse_encode_i_32(expect, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 966, port: port_);
+            funcId: 963, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -32161,7 +31946,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_i_32(expect, serializer);
         sse_encode_i_32(adder, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 967, port: port_);
+            funcId: 964, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -32191,7 +31976,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
             arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 968, port: port_);
+            funcId: 965, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -32224,7 +32009,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             arg, serializer);
         sse_encode_i_32(expect, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 969, port: port_);
+            funcId: 966, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -32256,7 +32041,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             arg, serializer);
         sse_encode_list_prim_i_32_loose(expect, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 970, port: port_);
+            funcId: 967, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -32289,7 +32074,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
             b, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 971, port: port_);
+            funcId: 968, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_i_32,
@@ -32322,7 +32107,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
             mutBorrow, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 972, port: port_);
+            funcId: 969, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_i_32,
@@ -32352,7 +32137,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynFnStringStringSendSync(
             arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 973, port: port_);
+            funcId: 970, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -32379,7 +32164,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 974, port: port_);
+            funcId: 971, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -32413,7 +32198,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinRustAsync(
             b, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 975, port: port_);
+            funcId: 972, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -32443,7 +32228,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinRustAsync(
             arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 976, port: port_);
+            funcId: 973, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -32470,7 +32255,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 977, port: port_);
+            funcId: 974, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -32501,7 +32286,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_box_autoadd_enum_with_good_and_opaque_twin_rust_async(
             arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 978, port: port_);
+            funcId: 975, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -32529,7 +32314,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 979, port: port_);
+            funcId: 976, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_enum_with_good_and_opaque_twin_rust_async,
@@ -32557,7 +32342,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 980, port: port_);
+            funcId: 977, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_enum_with_good_and_opaque_twin_rust_async,
@@ -32589,7 +32374,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             arg, serializer);
         sse_encode_i_32(expect, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 981, port: port_);
+            funcId: 978, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -32616,7 +32401,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 982, port: port_);
+            funcId: 979, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -32647,7 +32432,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_i_32(initial, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 983, port: port_);
+            funcId: 980, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -32678,7 +32463,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_box_autoadd_struct_with_explicit_auto_opaque_field_twin_rust_async(
             arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 984, port: port_);
+            funcId: 981, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -32709,7 +32494,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             a, serializer);
         sse_encode_String(b, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 985, port: port_);
+            funcId: 982, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -32739,7 +32524,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinRustAsyncSendSync(
             arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 986, port: port_);
+            funcId: 983, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -32766,7 +32551,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 987, port: port_);
+            funcId: 984, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -32794,7 +32579,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 988, port: port_);
+            funcId: 985, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -32823,7 +32608,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 989, port: port_);
+            funcId: 986, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -32853,7 +32638,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_i_32(initial, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 990, port: port_);
+            funcId: 987, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -32881,7 +32666,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 991, port: port_);
+            funcId: 988, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -32915,7 +32700,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
             orange, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 992, port: port_);
+            funcId: 989, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_i_32,
@@ -32945,7 +32730,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync_Sse(
             sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 993, port: port_);
+            funcId: 990, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -32976,7 +32761,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_box_autoadd_struct_with_good_and_opaque_field_twin_rust_async(
             arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 994, port: port_);
+            funcId: 991, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -33004,7 +32789,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 995, port: port_);
+            funcId: 992, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -33028,155 +32813,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void>
-      crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueTraitObjectArgBorrowTwinRustAsync(
-          {required HelloTraitTwinRustAsync arg, required String expect}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_box_DynTrait_HelloTraitTwinRustAsync(arg, serializer);
-        sse_encode_String(expect, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 996, port: port_);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
-      ),
-      constMeta:
-          kCrateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueTraitObjectArgBorrowTwinRustAsyncConstMeta,
-      argValues: [arg, expect],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta
-      get kCrateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueTraitObjectArgBorrowTwinRustAsyncConstMeta =>
-          const TaskConstMeta(
-            debugName:
-                "rust_auto_opaque_trait_object_arg_borrow_twin_rust_async",
-            argNames: ["arg", "expect"],
-          );
-
-  @override
-  Future<void>
-      crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueTraitObjectArgMutBorrowTwinRustAsync(
-          {required BoxHelloTraitTwinRustAsync arg, required String expect}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynHelloTraitTwinRustAsync(
-            arg, serializer);
-        sse_encode_String(expect, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 997, port: port_);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
-      ),
-      constMeta:
-          kCrateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueTraitObjectArgMutBorrowTwinRustAsyncConstMeta,
-      argValues: [arg, expect],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta
-      get kCrateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueTraitObjectArgMutBorrowTwinRustAsyncConstMeta =>
-          const TaskConstMeta(
-            debugName:
-                "rust_auto_opaque_trait_object_arg_mut_borrow_twin_rust_async",
-            argNames: ["arg", "expect"],
-          );
-
-  @override
-  Future<void>
-      crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueTraitObjectArgOwnTwinRustAsync(
-          {required HelloTraitTwinRustAsync arg, required String expect}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_box_DynTrait_HelloTraitTwinRustAsync(arg, serializer);
-        sse_encode_String(expect, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 998, port: port_);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
-      ),
-      constMeta:
-          kCrateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueTraitObjectArgOwnTwinRustAsyncConstMeta,
-      argValues: [arg, expect],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta
-      get kCrateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueTraitObjectArgOwnTwinRustAsyncConstMeta =>
-          const TaskConstMeta(
-            debugName: "rust_auto_opaque_trait_object_arg_own_twin_rust_async",
-            argNames: ["arg", "expect"],
-          );
-
-  @override
-  Future<HelloTraitTwinRustAsync>
-      crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueTraitObjectReturnOwnOneTwinRustAsync() {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 999, port: port_);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_box_DynTrait_HelloTraitTwinRustAsync,
-        decodeErrorData: null,
-      ),
-      constMeta:
-          kCrateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueTraitObjectReturnOwnOneTwinRustAsyncConstMeta,
-      argValues: [],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta
-      get kCrateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueTraitObjectReturnOwnOneTwinRustAsyncConstMeta =>
-          const TaskConstMeta(
-            debugName:
-                "rust_auto_opaque_trait_object_return_own_one_twin_rust_async",
-            argNames: [],
-          );
-
-  @override
-  Future<HelloTraitTwinRustAsync>
-      crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueTraitObjectReturnOwnTwoTwinRustAsync() {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1000, port: port_);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_box_DynTrait_HelloTraitTwinRustAsync,
-        decodeErrorData: null,
-      ),
-      constMeta:
-          kCrateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueTraitObjectReturnOwnTwoTwinRustAsyncConstMeta,
-      argValues: [],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta
-      get kCrateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueTraitObjectReturnOwnTwoTwinRustAsyncConstMeta =>
-          const TaskConstMeta(
-            debugName:
-                "rust_auto_opaque_trait_object_return_own_two_twin_rust_async",
-            argNames: [],
-          );
-
-  @override
-  Future<void>
       crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueTwoArgsTwinRustAsync(
           {required NonCloneSimpleTwinRustAsync a,
           required NonCloneSimpleTwinRustAsync b}) {
@@ -33188,7 +32824,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
             b, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1001, port: port_);
+            funcId: 993, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -33209,36 +32845,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
-  Future<void>
-      crateApiPseudoManualRustAutoOpaqueTwinSyncHelloOneStructTwinSyncFuncHello(
-          {required HelloOneStructTwinSync that}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinSync(
-            that, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1002, port: port_);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
-      ),
-      constMeta:
-          kCrateApiPseudoManualRustAutoOpaqueTwinSyncHelloOneStructTwinSyncFuncHelloConstMeta,
-      argValues: [that],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta
-      get kCrateApiPseudoManualRustAutoOpaqueTwinSyncHelloOneStructTwinSyncFuncHelloConstMeta =>
-          const TaskConstMeta(
-            debugName: "HelloOneStructTwinSync_func_hello",
-            argNames: ["that"],
-          );
-
-  @override
   void
       crateApiPseudoManualRustAutoOpaqueTwinSyncNonCloneSimpleTwinSyncInstanceMethodArgBorrowTwinSync(
           {required NonCloneSimpleTwinSync that}) {
@@ -33247,7 +32853,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
             that, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1003)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 994)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -33277,7 +32883,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
             that, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1004)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 995)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -33307,7 +32913,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
             that, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1005)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 996)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -33336,7 +32942,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
             that, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1006)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 997)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_i_32,
@@ -33366,7 +32972,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
             that, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1007)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 998)!;
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -33394,7 +33000,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1008)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 999)!;
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -33421,7 +33027,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1009)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1000)!;
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -33448,7 +33054,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1010)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1001)!;
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -33478,7 +33084,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
             arg, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1011)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1002)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -33508,7 +33114,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
             arg, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1012)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1003)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -33538,7 +33144,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
             arg, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1013)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1004)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -33564,7 +33170,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1014)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1005)!;
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -33595,7 +33201,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSync(
             that, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1015)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1006)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_String,
@@ -33627,7 +33233,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSync(
             that, serializer);
         sse_encode_String(good, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1016)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1007)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -33649,35 +33255,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
-  Future<void>
-      crateApiPseudoManualRustAutoOpaqueTwinSyncHelloTwoEnumTwinSyncFuncHello(
-          {required HelloTwoEnumTwinSync that}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_hello_two_enum_twin_sync(that, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1019, port: port_);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
-      ),
-      constMeta:
-          kCrateApiPseudoManualRustAutoOpaqueTwinSyncHelloTwoEnumTwinSyncFuncHelloConstMeta,
-      argValues: [that],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta
-      get kCrateApiPseudoManualRustAutoOpaqueTwinSyncHelloTwoEnumTwinSyncFuncHelloConstMeta =>
-          const TaskConstMeta(
-            debugName: "hello_two_enum_twin_sync_func_hello",
-            argNames: ["that"],
-          );
-
-  @override
   void
       crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueArgBorrowTwinSync(
           {required NonCloneSimpleTwinSync arg, required int expect}) {
@@ -33687,7 +33264,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
             arg, serializer);
         sse_encode_i_32(expect, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1020)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1009)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -33720,7 +33297,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             arg, serializer);
         sse_encode_i_32(expect, serializer);
         sse_encode_i_32(adder, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1021)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1010)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -33749,7 +33326,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
             arg, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1022)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1011)!;
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -33779,7 +33356,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
             arg, serializer);
         sse_encode_i_32(expect, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1023)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1012)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -33810,7 +33387,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
             arg, serializer);
         sse_encode_list_prim_i_32_loose(expect, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1024)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1013)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -33840,7 +33417,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             a, serializer);
         sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
             b, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1025)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1014)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_i_32,
@@ -33871,7 +33448,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             borrow, serializer);
         sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
             mutBorrow, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1026)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1015)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_i_32,
@@ -33900,7 +33477,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynFnStringStringSendSync(
             arg, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1027)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1016)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -33926,7 +33503,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1028)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1017)!;
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -33958,7 +33535,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             a, serializer);
         sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinSync(
             b, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1029)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1018)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -33987,7 +33564,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinSync(
             arg, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1030)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1019)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -34013,7 +33590,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1031)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1020)!;
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -34043,7 +33620,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_box_autoadd_enum_with_good_and_opaque_twin_sync(
             arg, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1032)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1021)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -34070,7 +33647,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1033)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1022)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_enum_with_good_and_opaque_twin_sync,
@@ -34097,7 +33674,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1034)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1023)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_enum_with_good_and_opaque_twin_sync,
@@ -34128,7 +33705,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
             arg, serializer);
         sse_encode_i_32(expect, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1035)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1024)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -34154,7 +33731,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1036)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1025)!;
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -34183,7 +33760,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_i_32(initial, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1037)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1026)!;
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -34213,7 +33790,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_box_autoadd_struct_with_explicit_auto_opaque_field_twin_sync(
             arg, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1038)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1027)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -34243,7 +33820,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
             a, serializer);
         sse_encode_String(b, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1039)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1028)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -34272,7 +33849,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinSyncSendSync(
             arg, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1040)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1029)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -34298,7 +33875,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1041)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1030)!;
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -34327,7 +33904,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1042)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1031)!;
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -34354,7 +33931,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1043)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1032)!;
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -34383,7 +33960,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_i_32(initial, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1044)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1033)!;
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -34410,7 +33987,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1045)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1034)!;
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -34442,7 +34019,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             apple, serializer);
         sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
             orange, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1046)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1035)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_i_32,
@@ -34471,7 +34048,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync_Sse(
             sink, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1047)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1036)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -34501,7 +34078,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_box_autoadd_struct_with_good_and_opaque_field_twin_sync(
             arg, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1048)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1037)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -34528,7 +34105,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1049)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1038)!;
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -34551,146 +34128,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
-  void
-      crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueTraitObjectArgBorrowTwinSync(
-          {required HelloTraitTwinSync arg, required String expect}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_box_DynTrait_HelloTraitTwinSync(arg, serializer);
-        sse_encode_String(expect, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1050)!;
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
-      ),
-      constMeta:
-          kCrateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueTraitObjectArgBorrowTwinSyncConstMeta,
-      argValues: [arg, expect],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta
-      get kCrateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueTraitObjectArgBorrowTwinSyncConstMeta =>
-          const TaskConstMeta(
-            debugName: "rust_auto_opaque_trait_object_arg_borrow_twin_sync",
-            argNames: ["arg", "expect"],
-          );
-
-  @override
-  void
-      crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueTraitObjectArgMutBorrowTwinSync(
-          {required BoxHelloTraitTwinSync arg, required String expect}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynHelloTraitTwinSync(
-            arg, serializer);
-        sse_encode_String(expect, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1051)!;
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
-      ),
-      constMeta:
-          kCrateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueTraitObjectArgMutBorrowTwinSyncConstMeta,
-      argValues: [arg, expect],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta
-      get kCrateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueTraitObjectArgMutBorrowTwinSyncConstMeta =>
-          const TaskConstMeta(
-            debugName: "rust_auto_opaque_trait_object_arg_mut_borrow_twin_sync",
-            argNames: ["arg", "expect"],
-          );
-
-  @override
-  void
-      crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueTraitObjectArgOwnTwinSync(
-          {required HelloTraitTwinSync arg, required String expect}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_box_DynTrait_HelloTraitTwinSync(arg, serializer);
-        sse_encode_String(expect, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1052)!;
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
-      ),
-      constMeta:
-          kCrateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueTraitObjectArgOwnTwinSyncConstMeta,
-      argValues: [arg, expect],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta
-      get kCrateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueTraitObjectArgOwnTwinSyncConstMeta =>
-          const TaskConstMeta(
-            debugName: "rust_auto_opaque_trait_object_arg_own_twin_sync",
-            argNames: ["arg", "expect"],
-          );
-
-  @override
-  HelloTraitTwinSync
-      crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueTraitObjectReturnOwnOneTwinSync() {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1053)!;
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_box_DynTrait_HelloTraitTwinSync,
-        decodeErrorData: null,
-      ),
-      constMeta:
-          kCrateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueTraitObjectReturnOwnOneTwinSyncConstMeta,
-      argValues: [],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta
-      get kCrateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueTraitObjectReturnOwnOneTwinSyncConstMeta =>
-          const TaskConstMeta(
-            debugName: "rust_auto_opaque_trait_object_return_own_one_twin_sync",
-            argNames: [],
-          );
-
-  @override
-  HelloTraitTwinSync
-      crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueTraitObjectReturnOwnTwoTwinSync() {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1054)!;
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_box_DynTrait_HelloTraitTwinSync,
-        decodeErrorData: null,
-      ),
-      constMeta:
-          kCrateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueTraitObjectReturnOwnTwoTwinSyncConstMeta,
-      argValues: [],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta
-      get kCrateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueTraitObjectReturnOwnTwoTwinSyncConstMeta =>
-          const TaskConstMeta(
-            debugName: "rust_auto_opaque_trait_object_return_own_two_twin_sync",
-            argNames: [],
-          );
-
-  @override
   void crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueTwoArgsTwinSync(
       {required NonCloneSimpleTwinSync a, required NonCloneSimpleTwinSync b}) {
     return handler.executeSync(SyncTask(
@@ -34700,7 +34137,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             a, serializer);
         sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
             b, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1055)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1039)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -34727,7 +34164,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1056, port: port_);
+            funcId: 1040, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_enum_opaque_twin_rust_async_array_5,
@@ -34754,7 +34191,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1057, port: port_);
+            funcId: 1041, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_opaque_nested_twin_rust_async,
@@ -34781,7 +34218,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1058, port: port_);
+            funcId: 1042, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_RustOpaque_HideDataTwinRustAsync,
@@ -34811,7 +34248,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_opt_box_autoadd_RustOpaque_HideDataTwinRustAsync(
             opaque, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1059, port: port_);
+            funcId: 1043, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -34839,7 +34276,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1060, port: port_);
+            funcId: 1044, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_RustOpaque_FrbOpaqueReturnTwinRustAsync,
@@ -34868,7 +34305,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_RustOpaque_HideDataTwinRustAsync_array_2(data, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1061, port: port_);
+            funcId: 1045, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -34895,7 +34332,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1062, port: port_);
+            funcId: 1046, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_RustOpaque_HideDataTwinRustAsync_array_2,
@@ -34924,7 +34361,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_list_RustOpaque_HideDataTwinRustAsync(data, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1063, port: port_);
+            funcId: 1047, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -34951,7 +34388,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1064, port: port_);
+            funcId: 1048, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_list_RustOpaque_HideDataTwinRustAsync,
@@ -34980,7 +34417,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_box_autoadd_enum_opaque_twin_rust_async(opaque, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1065, port: port_);
+            funcId: 1049, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_String,
@@ -35010,7 +34447,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_box_autoadd_opaque_nested_twin_rust_async(
             opaque, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1066, port: port_);
+            funcId: 1050, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -35039,7 +34476,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_RustOpaque_NonCloneDataTwinRustAsync(clone, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1067, port: port_);
+            funcId: 1051, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_String,
@@ -35068,7 +34505,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_RustOpaque_HideDataTwinRustAsync(opaque, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1068, port: port_);
+            funcId: 1052, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_String,
@@ -35097,7 +34534,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_RustOpaque_HideDataTwinRustAsync(opaque, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1069, port: port_);
+            funcId: 1053, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_String,
@@ -35126,7 +34563,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_RustOpaque_HideDataTwinRustAsync(opaque, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1070, port: port_);
+            funcId: 1054, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_String,
@@ -35152,7 +34589,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1071)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1055)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_enum_opaque_twin_sync_array_5,
@@ -35178,7 +34615,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1072)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1056)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_opaque_nested_twin_sync,
@@ -35204,7 +34641,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1073)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1057)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_RustOpaque_HideDataTwinSync,
@@ -35233,7 +34670,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_opt_box_autoadd_RustOpaque_HideDataTwinSync(
             opaque, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1074)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1058)!;
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -35260,7 +34697,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1075)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1059)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_RustOpaque_FrbOpaqueReturnTwinSync,
@@ -35287,7 +34724,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_RustOpaque_HideDataTwinSync_array_2(data, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1076)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1060)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -35313,7 +34750,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1077)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1061)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_RustOpaque_HideDataTwinSync_array_2,
@@ -35340,7 +34777,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_list_RustOpaque_HideDataTwinSync(data, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1078)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1062)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -35366,7 +34803,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1079)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1063)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_list_RustOpaque_HideDataTwinSync,
@@ -35393,7 +34830,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_box_autoadd_enum_opaque_twin_sync(opaque, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1080)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1064)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_String,
@@ -35420,7 +34857,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_box_autoadd_opaque_nested_twin_sync(opaque, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1081)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1065)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -35447,7 +34884,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_RustOpaque_NonCloneDataTwinSync(clone, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1082)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1066)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_String,
@@ -35474,7 +34911,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_RustOpaque_HideDataTwinSync(opaque, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1083)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1067)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_String,
@@ -35501,7 +34938,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_RustOpaque_HideDataTwinSync(opaque, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1084)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1068)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_String,
@@ -35528,7 +34965,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_RustOpaque_HideDataTwinSync(opaque, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1085)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1069)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_String,
@@ -35557,7 +34994,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_i_32(a, serializer);
         sse_encode_i_32(b, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1086, port: port_);
+            funcId: 1070, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_i_32,
@@ -35585,7 +35022,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_i_32(a, serializer);
         sse_encode_i_32(b, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1087)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1071)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_i_32,
@@ -35614,7 +35051,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_StreamSink_String_Sse(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1088, port: port_);
+            funcId: 1072, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -35644,7 +35081,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_StreamSink_String_Sse(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1089, port: port_);
+            funcId: 1073, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -35677,7 +35114,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_u_32(b, serializer);
         sse_encode_StreamSink_u_32_Sse(c, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1090, port: port_);
+            funcId: 1074, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -35708,7 +35145,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_StreamSink_my_stream_entry_twin_rust_async_Sse(
             sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1091, port: port_);
+            funcId: 1075, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -35741,7 +35178,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_u_32(max, serializer);
         sse_encode_StreamSink_log_twin_rust_async_Sse(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1092, port: port_);
+            funcId: 1076, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -35774,7 +35211,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_StreamSink_log_twin_rust_async_Sse(sink, serializer);
         sse_encode_u_32(max, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1093, port: port_);
+            funcId: 1077, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -35807,7 +35244,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_u_32(key, serializer);
         sse_encode_u_32(max, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1094, port: port_);
+            funcId: 1078, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -35837,7 +35274,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_StreamSink_u_8_array_2_Sse(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1095, port: port_);
+            funcId: 1079, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -35869,7 +35306,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_box_autoadd_my_struct_containing_stream_sink_twin_rust_async(
             arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1096, port: port_);
+            funcId: 1080, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -35898,7 +35335,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_list_StreamSink_i_32_Sse(arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1097, port: port_);
+            funcId: 1081, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -35928,7 +35365,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_box_autoadd_struct_with_one_field_twin_rust_async(
             arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1098, port: port_);
+            funcId: 1082, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_struct_with_one_field_twin_rust_async,
@@ -35958,7 +35395,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_box_autoadd_struct_with_two_field_twin_rust_async(
             arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1099, port: port_);
+            funcId: 1083, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_struct_with_two_field_twin_rust_async,
@@ -35988,7 +35425,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_box_autoadd_struct_with_zero_field_twin_rust_async(
             arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1100, port: port_);
+            funcId: 1084, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_struct_with_zero_field_twin_rust_async,
@@ -36018,7 +35455,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_box_autoadd_tuple_struct_with_one_field_twin_rust_async(
             arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1101, port: port_);
+            funcId: 1085, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -36049,7 +35486,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_box_autoadd_tuple_struct_with_two_field_twin_rust_async(
             arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1102, port: port_);
+            funcId: 1086, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -36078,7 +35515,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_box_autoadd_struct_with_one_field_twin_sync(arg, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1103)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1087)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_struct_with_one_field_twin_sync,
@@ -36106,7 +35543,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_box_autoadd_struct_with_two_field_twin_sync(arg, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1104)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1088)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_struct_with_two_field_twin_sync,
@@ -36135,7 +35572,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_box_autoadd_struct_with_zero_field_twin_sync(
             arg, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1105)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1089)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_struct_with_zero_field_twin_sync,
@@ -36164,7 +35601,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_box_autoadd_tuple_struct_with_one_field_twin_sync(
             arg, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1106)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1090)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_tuple_struct_with_one_field_twin_sync,
@@ -36193,7 +35630,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_box_autoadd_tuple_struct_with_two_field_twin_sync(
             arg, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1107)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1091)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_tuple_struct_with_two_field_twin_sync,
@@ -36221,7 +35658,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_list_record_string_i_32(value, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1108, port: port_);
+            funcId: 1092, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -36250,7 +35687,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_opt_box_autoadd_record_string_i_32(value, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1109, port: port_);
+            funcId: 1093, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_record_string_i_32,
@@ -36277,7 +35714,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_list_record_string_i_32(value, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1110)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1094)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -36303,7 +35740,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_opt_box_autoadd_record_string_i_32(value, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1111)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1095)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_record_string_i_32,
@@ -36331,7 +35768,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_u_64(input, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1112, port: port_);
+            funcId: 1096, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_u_64,
@@ -36360,7 +35797,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_u_64(input, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1113, port: port_);
+            funcId: 1097, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_test_model_twin_rust_async,
@@ -36389,7 +35826,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_u_64(input, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1114, port: port_);
+            funcId: 1098, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_u_64,
@@ -36416,7 +35853,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_u_64(input, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1115)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1099)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_u_64,
@@ -36444,7 +35881,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_u_64(input, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1116)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1100)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_test_model_twin_sync,
@@ -36471,7 +35908,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_u_64(input, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1117)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1101)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_u_64,
@@ -36500,7 +35937,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_box_autoadd_feature_uuid_twin_rust_async(ids, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1118, port: port_);
+            funcId: 1102, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_feature_uuid_twin_rust_async,
@@ -36529,7 +35966,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_Uuid(id, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1119, port: port_);
+            funcId: 1103, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_Uuid,
@@ -36558,7 +35995,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_list_Uuid(ids, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1120, port: port_);
+            funcId: 1104, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_list_Uuid,
@@ -36586,7 +36023,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_box_autoadd_feature_uuid_twin_sync(ids, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1121)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1105)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_feature_uuid_twin_sync,
@@ -36613,7 +36050,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_Uuid(id, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1122)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1106)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_Uuid,
@@ -36640,7 +36077,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_list_Uuid(ids, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1123)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1107)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_list_Uuid,
@@ -36667,7 +36104,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1124, port: port_);
+            funcId: 1108, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -36695,7 +36132,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1125, port: port_);
+            funcId: 1109, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_raw_string_item_struct_twin_normal,
@@ -36715,35 +36152,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
-  Future<void> crateApiRustAutoOpaqueHelloOneStructTwinNormalFuncHello(
-      {required HelloOneStructTwinNormal that}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinNormal(
-            that, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1126, port: port_);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
-      ),
-      constMeta:
-          kCrateApiRustAutoOpaqueHelloOneStructTwinNormalFuncHelloConstMeta,
-      argValues: [that],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta
-      get kCrateApiRustAutoOpaqueHelloOneStructTwinNormalFuncHelloConstMeta =>
-          const TaskConstMeta(
-            debugName: "HelloOneStructTwinNormal_func_hello",
-            argNames: ["that"],
-          );
-
-  @override
   Future<void>
       crateApiRustAutoOpaqueNonCloneSimpleTwinNormalInstanceMethodArgBorrowTwinNormal(
           {required NonCloneSimpleTwinNormal that}) {
@@ -36753,7 +36161,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
             that, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1127, port: port_);
+            funcId: 1110, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -36784,7 +36192,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
             that, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1128, port: port_);
+            funcId: 1111, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -36815,7 +36223,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
             that, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1129, port: port_);
+            funcId: 1112, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -36846,7 +36254,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
             that, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1130, port: port_);
+            funcId: 1113, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_i_32,
@@ -36877,7 +36285,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
             that, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1131, port: port_);
+            funcId: 1114, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -36906,7 +36314,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1132, port: port_);
+            funcId: 1115, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -36934,7 +36342,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1133, port: port_);
+            funcId: 1116, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -36962,7 +36370,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1134, port: port_);
+            funcId: 1117, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -36993,7 +36401,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
             arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1135, port: port_);
+            funcId: 1118, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -37024,7 +36432,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
             arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1136, port: port_);
+            funcId: 1119, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -37055,7 +36463,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
             arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1137, port: port_);
+            funcId: 1120, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -37083,7 +36491,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1138, port: port_);
+            funcId: 1121, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -37114,7 +36522,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinNormal(
             that, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1139)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1122)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_String,
@@ -37146,7 +36554,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinNormal(
             that, serializer);
         sse_encode_String(good, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1140)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1123)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -37168,34 +36576,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
-  Future<void> crateApiRustAutoOpaqueHelloTwoEnumTwinNormalFuncHello(
-      {required HelloTwoEnumTwinNormal that}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_hello_two_enum_twin_normal(that, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1143, port: port_);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
-      ),
-      constMeta:
-          kCrateApiRustAutoOpaqueHelloTwoEnumTwinNormalFuncHelloConstMeta,
-      argValues: [that],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta
-      get kCrateApiRustAutoOpaqueHelloTwoEnumTwinNormalFuncHelloConstMeta =>
-          const TaskConstMeta(
-            debugName: "hello_two_enum_twin_normal_func_hello",
-            argNames: ["that"],
-          );
-
-  @override
   Future<void> crateApiRustAutoOpaqueRustAutoOpaqueArgBorrowTwinNormal(
       {required NonCloneSimpleTwinNormal arg, required int expect}) {
     return handler.executeNormal(NormalTask(
@@ -37205,7 +36585,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             arg, serializer);
         sse_encode_i_32(expect, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1144, port: port_);
+            funcId: 1125, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -37238,7 +36618,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_i_32(expect, serializer);
         sse_encode_i_32(adder, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1145, port: port_);
+            funcId: 1126, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -37268,7 +36648,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
             arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1146, port: port_);
+            funcId: 1127, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -37299,7 +36679,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             arg, serializer);
         sse_encode_i_32(expect, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1147, port: port_);
+            funcId: 1128, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -37329,7 +36709,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             arg, serializer);
         sse_encode_list_prim_i_32_loose(expect, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1148, port: port_);
+            funcId: 1129, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -37361,7 +36741,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
             b, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1149, port: port_);
+            funcId: 1130, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_i_32,
@@ -37393,7 +36773,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
             mutBorrow, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1150, port: port_);
+            funcId: 1131, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_i_32,
@@ -37422,7 +36802,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynFnStringStringSendSync(
             arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1151, port: port_);
+            funcId: 1132, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -37449,7 +36829,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1152, port: port_);
+            funcId: 1133, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -37482,7 +36862,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinNormal(
             b, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1153, port: port_);
+            funcId: 1134, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -37510,7 +36890,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinNormal(
             arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1154, port: port_);
+            funcId: 1135, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -37537,7 +36917,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1155, port: port_);
+            funcId: 1136, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -37568,7 +36948,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_box_autoadd_enum_with_good_and_opaque_twin_normal(
             arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1156, port: port_);
+            funcId: 1137, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -37596,7 +36976,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1157, port: port_);
+            funcId: 1138, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_enum_with_good_and_opaque_twin_normal,
@@ -37624,7 +37004,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1158, port: port_);
+            funcId: 1139, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_enum_with_good_and_opaque_twin_normal,
@@ -37655,7 +37035,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             arg, serializer);
         sse_encode_i_32(expect, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1159, port: port_);
+            funcId: 1140, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -37682,7 +37062,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1160, port: port_);
+            funcId: 1141, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -37712,7 +37092,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_i_32(initial, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1161, port: port_);
+            funcId: 1142, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -37742,7 +37122,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_box_autoadd_struct_with_explicit_auto_opaque_field_twin_normal(
             arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1162, port: port_);
+            funcId: 1143, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -37772,7 +37152,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             a, serializer);
         sse_encode_String(b, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1163, port: port_);
+            funcId: 1144, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -37801,7 +37181,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinNormalSendSync(
             arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1164, port: port_);
+            funcId: 1145, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -37828,7 +37208,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1165, port: port_);
+            funcId: 1146, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -37856,7 +37236,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1166, port: port_);
+            funcId: 1147, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -37884,7 +37264,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1167, port: port_);
+            funcId: 1148, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -37914,7 +37294,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_i_32(initial, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1168, port: port_);
+            funcId: 1149, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -37942,7 +37322,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1169, port: port_);
+            funcId: 1150, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -37975,7 +37355,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
             orange, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1170, port: port_);
+            funcId: 1151, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_i_32,
@@ -38004,7 +37384,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal_Sse(
             sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1171, port: port_);
+            funcId: 1152, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -38035,7 +37415,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_box_autoadd_struct_with_good_and_opaque_field_twin_normal(
             arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1172, port: port_);
+            funcId: 1153, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -38063,7 +37443,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1173, port: port_);
+            funcId: 1154, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -38086,153 +37466,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
-  Future<void>
-      crateApiRustAutoOpaqueRustAutoOpaqueTraitObjectArgBorrowTwinNormal(
-          {required HelloTraitTwinNormal arg, required String expect}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_box_DynTrait_HelloTraitTwinNormal(arg, serializer);
-        sse_encode_String(expect, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1174, port: port_);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
-      ),
-      constMeta:
-          kCrateApiRustAutoOpaqueRustAutoOpaqueTraitObjectArgBorrowTwinNormalConstMeta,
-      argValues: [arg, expect],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta
-      get kCrateApiRustAutoOpaqueRustAutoOpaqueTraitObjectArgBorrowTwinNormalConstMeta =>
-          const TaskConstMeta(
-            debugName: "rust_auto_opaque_trait_object_arg_borrow_twin_normal",
-            argNames: ["arg", "expect"],
-          );
-
-  @override
-  Future<void>
-      crateApiRustAutoOpaqueRustAutoOpaqueTraitObjectArgMutBorrowTwinNormal(
-          {required BoxHelloTraitTwinNormal arg, required String expect}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynHelloTraitTwinNormal(
-            arg, serializer);
-        sse_encode_String(expect, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1175, port: port_);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
-      ),
-      constMeta:
-          kCrateApiRustAutoOpaqueRustAutoOpaqueTraitObjectArgMutBorrowTwinNormalConstMeta,
-      argValues: [arg, expect],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta
-      get kCrateApiRustAutoOpaqueRustAutoOpaqueTraitObjectArgMutBorrowTwinNormalConstMeta =>
-          const TaskConstMeta(
-            debugName:
-                "rust_auto_opaque_trait_object_arg_mut_borrow_twin_normal",
-            argNames: ["arg", "expect"],
-          );
-
-  @override
-  Future<void> crateApiRustAutoOpaqueRustAutoOpaqueTraitObjectArgOwnTwinNormal(
-      {required HelloTraitTwinNormal arg, required String expect}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_box_DynTrait_HelloTraitTwinNormal(arg, serializer);
-        sse_encode_String(expect, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1176, port: port_);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
-      ),
-      constMeta:
-          kCrateApiRustAutoOpaqueRustAutoOpaqueTraitObjectArgOwnTwinNormalConstMeta,
-      argValues: [arg, expect],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta
-      get kCrateApiRustAutoOpaqueRustAutoOpaqueTraitObjectArgOwnTwinNormalConstMeta =>
-          const TaskConstMeta(
-            debugName: "rust_auto_opaque_trait_object_arg_own_twin_normal",
-            argNames: ["arg", "expect"],
-          );
-
-  @override
-  Future<HelloTraitTwinNormal>
-      crateApiRustAutoOpaqueRustAutoOpaqueTraitObjectReturnOwnOneTwinNormal() {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1177, port: port_);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_box_DynTrait_HelloTraitTwinNormal,
-        decodeErrorData: null,
-      ),
-      constMeta:
-          kCrateApiRustAutoOpaqueRustAutoOpaqueTraitObjectReturnOwnOneTwinNormalConstMeta,
-      argValues: [],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta
-      get kCrateApiRustAutoOpaqueRustAutoOpaqueTraitObjectReturnOwnOneTwinNormalConstMeta =>
-          const TaskConstMeta(
-            debugName:
-                "rust_auto_opaque_trait_object_return_own_one_twin_normal",
-            argNames: [],
-          );
-
-  @override
-  Future<HelloTraitTwinNormal>
-      crateApiRustAutoOpaqueRustAutoOpaqueTraitObjectReturnOwnTwoTwinNormal() {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1178, port: port_);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_box_DynTrait_HelloTraitTwinNormal,
-        decodeErrorData: null,
-      ),
-      constMeta:
-          kCrateApiRustAutoOpaqueRustAutoOpaqueTraitObjectReturnOwnTwoTwinNormalConstMeta,
-      argValues: [],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta
-      get kCrateApiRustAutoOpaqueRustAutoOpaqueTraitObjectReturnOwnTwoTwinNormalConstMeta =>
-          const TaskConstMeta(
-            debugName:
-                "rust_auto_opaque_trait_object_return_own_two_twin_normal",
-            argNames: [],
-          );
-
-  @override
   Future<void> crateApiRustAutoOpaqueRustAutoOpaqueTwoArgsTwinNormal(
       {required NonCloneSimpleTwinNormal a,
       required NonCloneSimpleTwinNormal b}) {
@@ -38244,7 +37477,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
             b, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1179, port: port_);
+            funcId: 1155, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -38271,7 +37504,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1180, port: port_);
+            funcId: 1156, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_enum_opaque_twin_normal_array_5,
@@ -38297,7 +37530,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1181, port: port_);
+            funcId: 1157, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_opaque_nested_twin_normal,
@@ -38321,7 +37554,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1182, port: port_);
+            funcId: 1158, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_RustOpaque_HideDataTwinNormal,
@@ -38348,7 +37581,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_opt_box_autoadd_RustOpaque_HideDataTwinNormal(
             opaque, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1183, port: port_);
+            funcId: 1159, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -38374,7 +37607,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1184, port: port_);
+            funcId: 1160, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_RustOpaque_FrbOpaqueReturnTwinNormal,
@@ -38400,7 +37633,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_RustOpaque_HideDataTwinNormal_array_2(data, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1185, port: port_);
+            funcId: 1161, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -38424,7 +37657,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1186, port: port_);
+            funcId: 1162, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_RustOpaque_HideDataTwinNormal_array_2,
@@ -38450,7 +37683,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_list_RustOpaque_HideDataTwinNormal(data, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1187, port: port_);
+            funcId: 1163, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -38474,7 +37707,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1188, port: port_);
+            funcId: 1164, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_list_RustOpaque_HideDataTwinNormal,
@@ -38500,7 +37733,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_box_autoadd_enum_opaque_twin_normal(opaque, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1189, port: port_);
+            funcId: 1165, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_String,
@@ -38526,7 +37759,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_box_autoadd_opaque_nested_twin_normal(opaque, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1190, port: port_);
+            funcId: 1166, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -38552,7 +37785,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_RustOpaque_NonCloneDataTwinNormal(clone, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1191, port: port_);
+            funcId: 1167, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_String,
@@ -38578,7 +37811,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_RustOpaque_HideDataTwinNormal(opaque, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1192, port: port_);
+            funcId: 1168, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_String,
@@ -38604,7 +37837,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_RustOpaque_HideDataTwinNormal(opaque, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1193, port: port_);
+            funcId: 1169, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_String,
@@ -38630,7 +37863,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_RustOpaque_HideDataTwinNormal(opaque, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1194, port: port_);
+            funcId: 1170, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_String,
@@ -38654,7 +37887,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1195)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1171)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_RustOpaque_FrbOpaqueSyncReturnTwinNormal,
@@ -38678,7 +37911,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1196)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1172)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_RustOpaque_NonCloneDataTwinNormal,
@@ -38702,7 +37935,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1197)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1173)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_RustOpaque_HideDataAnotherTwinNormal,
@@ -38727,7 +37960,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1198)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1174)!;
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -38756,7 +37989,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_i_32(a, serializer);
         sse_encode_i_32(b, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1199, port: port_);
+            funcId: 1175, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_i_32,
@@ -38782,7 +38015,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_StreamSink_String_Sse(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1200, port: port_);
+            funcId: 1176, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -38809,7 +38042,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_StreamSink_String_Sse(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1201, port: port_);
+            funcId: 1177, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -38839,7 +38072,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_u_32(b, serializer);
         sse_encode_StreamSink_u_32_Sse(c, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1202, port: port_);
+            funcId: 1178, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -38868,7 +38101,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_StreamSink_my_stream_entry_twin_normal_Sse(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1203, port: port_);
+            funcId: 1179, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -38898,7 +38131,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_u_32(max, serializer);
         sse_encode_StreamSink_log_twin_normal_Sse(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1204, port: port_);
+            funcId: 1180, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -38928,7 +38161,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_StreamSink_log_twin_normal_Sse(sink, serializer);
         sse_encode_u_32(max, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1205, port: port_);
+            funcId: 1181, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -38958,7 +38191,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_u_32(key, serializer);
         sse_encode_u_32(max, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1206, port: port_);
+            funcId: 1182, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -38986,7 +38219,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_StreamSink_u_8_array_2_Sse(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1207, port: port_);
+            funcId: 1183, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -39016,7 +38249,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_box_autoadd_my_struct_containing_stream_sink_twin_normal(
             arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1208, port: port_);
+            funcId: 1184, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -39042,7 +38275,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_list_StreamSink_i_32_Sse(arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1209, port: port_);
+            funcId: 1185, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -39070,7 +38303,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_StreamSink_String_Sse(sink, serializer);
         sse_encode_String(arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1210, port: port_);
+            funcId: 1186, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -39097,7 +38330,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_StreamSink_i_32_Sse(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1211, port: port_);
+            funcId: 1187, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -39126,7 +38359,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_box_autoadd_struct_with_one_field_twin_normal(
             arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1212, port: port_);
+            funcId: 1188, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_struct_with_one_field_twin_normal,
@@ -39155,7 +38388,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_box_autoadd_struct_with_two_field_twin_normal(
             arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1213, port: port_);
+            funcId: 1189, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_struct_with_two_field_twin_normal,
@@ -39184,7 +38417,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_box_autoadd_struct_with_zero_field_twin_normal(
             arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1214, port: port_);
+            funcId: 1190, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_struct_with_zero_field_twin_normal,
@@ -39213,7 +38446,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_box_autoadd_tuple_struct_with_one_field_twin_normal(
             arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1215, port: port_);
+            funcId: 1191, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_tuple_struct_with_one_field_twin_normal,
@@ -39243,7 +38476,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_box_autoadd_tuple_struct_with_two_field_twin_normal(
             arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1216, port: port_);
+            funcId: 1192, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_tuple_struct_with_two_field_twin_normal,
@@ -39271,7 +38504,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_list_record_string_i_32(value, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1217, port: port_);
+            funcId: 1193, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -39297,7 +38530,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_opt_box_autoadd_record_string_i_32(value, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1218, port: port_);
+            funcId: 1194, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_record_string_i_32,
@@ -39323,7 +38556,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_u_64(input, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1219, port: port_);
+            funcId: 1195, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_u_64,
@@ -39349,7 +38582,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_u_64(input, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1220, port: port_);
+            funcId: 1196, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_test_model_twin_normal,
@@ -39375,7 +38608,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_u_64(input, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1221, port: port_);
+            funcId: 1197, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_u_64,
@@ -39402,7 +38635,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_box_autoadd_feature_uuid_twin_normal(ids, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1222, port: port_);
+            funcId: 1198, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_feature_uuid_twin_normal,
@@ -39428,7 +38661,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_Uuid(id, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1223, port: port_);
+            funcId: 1199, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_Uuid,
@@ -39454,7 +38687,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_list_Uuid(ids, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1224, port: port_);
+            funcId: 1200, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_list_Uuid,
@@ -39997,30 +39230,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynFnStringStringSendSync;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_BoxHelloTraitTwinNormal => wire
-          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynHelloTraitTwinNormal;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_BoxHelloTraitTwinNormal => wire
-          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynHelloTraitTwinNormal;
-
-  RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_BoxHelloTraitTwinRustAsync => wire
-          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynHelloTraitTwinRustAsync;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_BoxHelloTraitTwinRustAsync => wire
-          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynHelloTraitTwinRustAsync;
-
-  RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_BoxHelloTraitTwinSync => wire
-          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynHelloTraitTwinSync;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_BoxHelloTraitTwinSync => wire
-          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynHelloTraitTwinSync;
-
-  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_BoxMyTraitTwinNormal => wire
           .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinNormalSendSync;
 
@@ -40115,30 +39324,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   RustArcDecrementStrongCountFnType
       get rust_arc_decrement_strong_count_EnumWithGoodAndOpaqueWithoutOptionTwinSync =>
           wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinSync;
-
-  RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_HelloOneStructTwinNormal => wire
-          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinNormal;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_HelloOneStructTwinNormal => wire
-          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinNormal;
-
-  RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_HelloOneStructTwinRustAsync => wire
-          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinRustAsync;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_HelloOneStructTwinRustAsync => wire
-          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinRustAsync;
-
-  RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_HelloOneStructTwinSync => wire
-          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinSync;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_HelloOneStructTwinSync => wire
-          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinSync;
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_ItemContainerSolutionOneTwinNormal =>
@@ -40404,30 +39589,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       get rust_arc_decrement_strong_count_StructWithSimpleSetterTwinNormal => wire
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal;
 
-  RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_CrateApiPseudoManualRustAutoOpaqueTwinRustAsyncHelloTwoEnumTwinRustAsync =>
-          wire.rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnercrateapipseudo_manualrust_auto_opaque_twin_rust_asyncHelloTwoEnumTwinRustAsync;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_CrateApiPseudoManualRustAutoOpaqueTwinRustAsyncHelloTwoEnumTwinRustAsync =>
-          wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnercrateapipseudo_manualrust_auto_opaque_twin_rust_asyncHelloTwoEnumTwinRustAsync;
-
-  RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_CrateApiPseudoManualRustAutoOpaqueTwinSyncHelloTwoEnumTwinSync =>
-          wire.rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnercrateapipseudo_manualrust_auto_opaque_twin_syncHelloTwoEnumTwinSync;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_CrateApiPseudoManualRustAutoOpaqueTwinSyncHelloTwoEnumTwinSync =>
-          wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnercrateapipseudo_manualrust_auto_opaque_twin_syncHelloTwoEnumTwinSync;
-
-  RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_CrateApiRustAutoOpaqueHelloTwoEnumTwinNormal =>
-          wire.rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnercrateapirust_auto_opaqueHelloTwoEnumTwinNormal;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_CrateApiRustAutoOpaqueHelloTwoEnumTwinNormal =>
-          wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnercrateapirust_auto_opaqueHelloTwoEnumTwinNormal;
-
   RustArcIncrementStrongCountFnType get rust_arc_increment_strong_count_I32 =>
       wire.rust_arc_increment_strong_count_RustOpaque_i32;
 
@@ -40438,33 +39599,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   AnyhowException dco_decode_AnyhowException(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return AnyhowException(raw as String);
-  }
-
-  @protected
-  HelloOneStructTwinNormal
-      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinNormal(
-          dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinNormal(
-        raw);
-  }
-
-  @protected
-  HelloOneStructTwinRustAsync
-      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinRustAsync(
-          dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinRustAsync(
-        raw);
-  }
-
-  @protected
-  HelloOneStructTwinSync
-      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinSync(
-          dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinSync(
-        raw);
   }
 
   @protected
@@ -40527,33 +39661,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitForDynTwinNormal(
-        raw);
-  }
-
-  @protected
-  CrateApiPseudoManualRustAutoOpaqueTwinRustAsyncHelloTwoEnumTwinRustAsync
-      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnercrateapipseudo_manualrust_auto_opaque_twin_rust_asyncHelloTwoEnumTwinRustAsync(
-          dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnercrateapipseudo_manualrust_auto_opaque_twin_rust_asyncHelloTwoEnumTwinRustAsync(
-        raw);
-  }
-
-  @protected
-  CrateApiPseudoManualRustAutoOpaqueTwinSyncHelloTwoEnumTwinSync
-      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnercrateapipseudo_manualrust_auto_opaque_twin_syncHelloTwoEnumTwinSync(
-          dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnercrateapipseudo_manualrust_auto_opaque_twin_syncHelloTwoEnumTwinSync(
-        raw);
-  }
-
-  @protected
-  CrateApiRustAutoOpaqueHelloTwoEnumTwinNormal
-      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnercrateapirust_auto_opaqueHelloTwoEnumTwinNormal(
-          dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnercrateapirust_auto_opaqueHelloTwoEnumTwinNormal(
         raw);
   }
 
@@ -40675,33 +39782,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return EnumWithGoodAndOpaqueWithoutOptionTwinSyncImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
-  }
-
-  @protected
-  HelloOneStructTwinNormal
-      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinNormal(
-          dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return HelloOneStructTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
-  }
-
-  @protected
-  HelloOneStructTwinRustAsync
-      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinRustAsync(
-          dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return HelloOneStructTwinRustAsyncImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
-  }
-
-  @protected
-  HelloOneStructTwinSync
-      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinSync(
-          dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return HelloOneStructTwinSyncImpl.frbInternalDcoDecode(
         raw as List<dynamic>);
   }
 
@@ -40997,32 +40077,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  BoxHelloTraitTwinNormal
-      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynHelloTraitTwinNormal(
-          dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return BoxHelloTraitTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
-  }
-
-  @protected
-  BoxHelloTraitTwinRustAsync
-      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynHelloTraitTwinRustAsync(
-          dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return BoxHelloTraitTwinRustAsyncImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
-  }
-
-  @protected
-  BoxHelloTraitTwinSync
-      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynHelloTraitTwinSync(
-          dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return BoxHelloTraitTwinSyncImpl.frbInternalDcoDecode(raw as List<dynamic>);
-  }
-
-  @protected
   ConstructorOpaqueStructTwinNormal
       dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueStructTwinNormal(
           dynamic raw) {
@@ -41250,33 +40304,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return DroppableTwinSyncImpl.frbInternalDcoDecode(raw as List<dynamic>);
-  }
-
-  @protected
-  HelloOneStructTwinNormal
-      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinNormal(
-          dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return HelloOneStructTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
-  }
-
-  @protected
-  HelloOneStructTwinRustAsync
-      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinRustAsync(
-          dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return HelloOneStructTwinRustAsyncImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
-  }
-
-  @protected
-  HelloOneStructTwinSync
-      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinSync(
-          dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return HelloOneStructTwinSyncImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
   }
 
   @protected
@@ -41610,25 +40637,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return ObjectArray1(
         (raw as List<dynamic>).map(dco_decode_DartOpaque).toList());
-  }
-
-  @protected
-  HelloTraitTwinNormal dco_decode_DynTrait_HelloTraitTwinNormal(dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    throw UnimplementedError();
-  }
-
-  @protected
-  HelloTraitTwinRustAsync dco_decode_DynTrait_HelloTraitTwinRustAsync(
-      dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    throw UnimplementedError();
-  }
-
-  @protected
-  HelloTraitTwinSync dco_decode_DynTrait_HelloTraitTwinSync(dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    throw UnimplementedError();
   }
 
   @protected
@@ -42158,32 +41166,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  BoxHelloTraitTwinNormal
-      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynHelloTraitTwinNormal(
-          dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return BoxHelloTraitTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
-  }
-
-  @protected
-  BoxHelloTraitTwinRustAsync
-      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynHelloTraitTwinRustAsync(
-          dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return BoxHelloTraitTwinRustAsyncImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
-  }
-
-  @protected
-  BoxHelloTraitTwinSync
-      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynHelloTraitTwinSync(
-          dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return BoxHelloTraitTwinSyncImpl.frbInternalDcoDecode(raw as List<dynamic>);
-  }
-
-  @protected
   BoxMyTraitTwinNormal
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinNormalSendSync(
           dynamic raw) {
@@ -42284,33 +41266,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return EnumWithGoodAndOpaqueWithoutOptionTwinSyncImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
-  }
-
-  @protected
-  HelloOneStructTwinNormal
-      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinNormal(
-          dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return HelloOneStructTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
-  }
-
-  @protected
-  HelloOneStructTwinRustAsync
-      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinRustAsync(
-          dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return HelloOneStructTwinRustAsyncImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
-  }
-
-  @protected
-  HelloOneStructTwinSync
-      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinSync(
-          dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return HelloOneStructTwinSyncImpl.frbInternalDcoDecode(
         raw as List<dynamic>);
   }
 
@@ -42606,33 +41561,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  CrateApiPseudoManualRustAutoOpaqueTwinRustAsyncHelloTwoEnumTwinRustAsync
-      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnercrateapipseudo_manualrust_auto_opaque_twin_rust_asyncHelloTwoEnumTwinRustAsync(
-          dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return CrateApiPseudoManualRustAutoOpaqueTwinRustAsyncHelloTwoEnumTwinRustAsyncImpl
-        .frbInternalDcoDecode(raw as List<dynamic>);
-  }
-
-  @protected
-  CrateApiPseudoManualRustAutoOpaqueTwinSyncHelloTwoEnumTwinSync
-      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnercrateapipseudo_manualrust_auto_opaque_twin_syncHelloTwoEnumTwinSync(
-          dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return CrateApiPseudoManualRustAutoOpaqueTwinSyncHelloTwoEnumTwinSyncImpl
-        .frbInternalDcoDecode(raw as List<dynamic>);
-  }
-
-  @protected
-  CrateApiRustAutoOpaqueHelloTwoEnumTwinNormal
-      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnercrateapirust_auto_opaqueHelloTwoEnumTwinNormal(
-          dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return CrateApiRustAutoOpaqueHelloTwoEnumTwinNormalImpl
-        .frbInternalDcoDecode(raw as List<dynamic>);
-  }
-
-  @protected
   I32 dco_decode_RustOpaque_i32(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return I32Impl.frbInternalDcoDecode(raw as List<dynamic>);
@@ -42856,25 +41784,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   String dco_decode_String(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return raw as String;
-  }
-
-  @protected
-  HelloTraitTwinNormal dco_decode_TraitDef_HelloTraitTwinNormal(dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    throw UnimplementedError();
-  }
-
-  @protected
-  HelloTraitTwinRustAsync dco_decode_TraitDef_HelloTraitTwinRustAsync(
-      dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    throw UnimplementedError();
-  }
-
-  @protected
-  HelloTraitTwinSync dco_decode_TraitDef_HelloTraitTwinSync(dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    throw UnimplementedError();
   }
 
   @protected
@@ -43502,26 +42411,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   bool dco_decode_bool(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return raw as bool;
-  }
-
-  @protected
-  HelloTraitTwinNormal dco_decode_box_DynTrait_HelloTraitTwinNormal(
-      dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return raw as HelloTraitTwinNormal;
-  }
-
-  @protected
-  HelloTraitTwinRustAsync dco_decode_box_DynTrait_HelloTraitTwinRustAsync(
-      dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return raw as HelloTraitTwinRustAsync;
-  }
-
-  @protected
-  HelloTraitTwinSync dco_decode_box_DynTrait_HelloTraitTwinSync(dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return raw as HelloTraitTwinSync;
   }
 
   @protected
@@ -44281,28 +43170,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   FeedIdTwinSync dco_decode_box_autoadd_feed_id_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return dco_decode_feed_id_twin_sync(raw);
-  }
-
-  @protected
-  HelloTraitTwinNormalImplementor
-      dco_decode_box_autoadd_hello_trait_twin_normal_implementor(dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return dco_decode_hello_trait_twin_normal_implementor(raw);
-  }
-
-  @protected
-  HelloTraitTwinRustAsyncImplementor
-      dco_decode_box_autoadd_hello_trait_twin_rust_async_implementor(
-          dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return dco_decode_hello_trait_twin_rust_async_implementor(raw);
-  }
-
-  @protected
-  HelloTraitTwinSyncImplementor
-      dco_decode_box_autoadd_hello_trait_twin_sync_implementor(dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return dco_decode_hello_trait_twin_sync_implementor(raw);
   }
 
   @protected
@@ -46724,85 +45591,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return HashMapValue(
       inner: dco_decode_String(arr[0]),
     );
-  }
-
-  @protected
-  HelloTraitTwinNormalImplementor
-      dco_decode_hello_trait_twin_normal_implementor(dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
-      case 0:
-        return HelloTraitTwinNormalImplementor_Variant0(
-          dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinNormal(
-              raw[1]),
-        );
-      case 1:
-        return HelloTraitTwinNormalImplementor_Variant1(
-          dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnercrateapirust_auto_opaqueHelloTwoEnumTwinNormal(
-              raw[1]),
-        );
-      default:
-        throw Exception("unreachable");
-    }
-  }
-
-  @protected
-  HelloTraitTwinRustAsyncImplementor
-      dco_decode_hello_trait_twin_rust_async_implementor(dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
-      case 0:
-        return HelloTraitTwinRustAsyncImplementor_Variant0(
-          dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinRustAsync(
-              raw[1]),
-        );
-      case 1:
-        return HelloTraitTwinRustAsyncImplementor_Variant1(
-          dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnercrateapipseudo_manualrust_auto_opaque_twin_rust_asyncHelloTwoEnumTwinRustAsync(
-              raw[1]),
-        );
-      default:
-        throw Exception("unreachable");
-    }
-  }
-
-  @protected
-  HelloTraitTwinSyncImplementor dco_decode_hello_trait_twin_sync_implementor(
-      dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
-      case 0:
-        return HelloTraitTwinSyncImplementor_Variant0(
-          dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinSync(
-              raw[1]),
-        );
-      case 1:
-        return HelloTraitTwinSyncImplementor_Variant1(
-          dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnercrateapipseudo_manualrust_auto_opaque_twin_syncHelloTwoEnumTwinSync(
-              raw[1]),
-        );
-      default:
-        throw Exception("unreachable");
-    }
-  }
-
-  @protected
-  HelloTwoEnumTwinNormal dco_decode_hello_two_enum_twin_normal(dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return HelloTwoEnumTwinNormal.values[raw as int];
-  }
-
-  @protected
-  HelloTwoEnumTwinRustAsync dco_decode_hello_two_enum_twin_rust_async(
-      dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return HelloTwoEnumTwinRustAsync.values[raw as int];
-  }
-
-  @protected
-  HelloTwoEnumTwinSync dco_decode_hello_two_enum_twin_sync(dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return HelloTwoEnumTwinSync.values[raw as int];
   }
 
   @protected
@@ -51021,39 +49809,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  HelloOneStructTwinNormal
-      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinNormal(
-          SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    var inner =
-        sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinNormal(
-            deserializer);
-    return inner;
-  }
-
-  @protected
-  HelloOneStructTwinRustAsync
-      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinRustAsync(
-          SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    var inner =
-        sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinRustAsync(
-            deserializer);
-    return inner;
-  }
-
-  @protected
-  HelloOneStructTwinSync
-      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinSync(
-          SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    var inner =
-        sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinSync(
-            deserializer);
-    return inner;
-  }
-
-  @protected
   MyNodeTwinNormal
       sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNodeTwinNormal(
           SseDeserializer deserializer) {
@@ -51126,39 +49881,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner =
         sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitForDynTwinNormal(
-            deserializer);
-    return inner;
-  }
-
-  @protected
-  CrateApiPseudoManualRustAutoOpaqueTwinRustAsyncHelloTwoEnumTwinRustAsync
-      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnercrateapipseudo_manualrust_auto_opaque_twin_rust_asyncHelloTwoEnumTwinRustAsync(
-          SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    var inner =
-        sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnercrateapipseudo_manualrust_auto_opaque_twin_rust_asyncHelloTwoEnumTwinRustAsync(
-            deserializer);
-    return inner;
-  }
-
-  @protected
-  CrateApiPseudoManualRustAutoOpaqueTwinSyncHelloTwoEnumTwinSync
-      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnercrateapipseudo_manualrust_auto_opaque_twin_syncHelloTwoEnumTwinSync(
-          SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    var inner =
-        sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnercrateapipseudo_manualrust_auto_opaque_twin_syncHelloTwoEnumTwinSync(
-            deserializer);
-    return inner;
-  }
-
-  @protected
-  CrateApiRustAutoOpaqueHelloTwoEnumTwinNormal
-      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnercrateapirust_auto_opaqueHelloTwoEnumTwinNormal(
-          SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    var inner =
-        sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnercrateapirust_auto_opaqueHelloTwoEnumTwinNormal(
             deserializer);
     return inner;
   }
@@ -51288,33 +50010,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return EnumWithGoodAndOpaqueWithoutOptionTwinSyncImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
-  }
-
-  @protected
-  HelloOneStructTwinNormal
-      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinNormal(
-          SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return HelloOneStructTwinNormalImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
-  }
-
-  @protected
-  HelloOneStructTwinRustAsync
-      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinRustAsync(
-          SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return HelloOneStructTwinRustAsyncImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
-  }
-
-  @protected
-  HelloOneStructTwinSync
-      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinSync(
-          SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return HelloOneStructTwinSyncImpl.frbInternalSseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -51619,33 +50314,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  BoxHelloTraitTwinNormal
-      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynHelloTraitTwinNormal(
-          SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return BoxHelloTraitTwinNormalImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
-  }
-
-  @protected
-  BoxHelloTraitTwinRustAsync
-      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynHelloTraitTwinRustAsync(
-          SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return BoxHelloTraitTwinRustAsyncImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
-  }
-
-  @protected
-  BoxHelloTraitTwinSync
-      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynHelloTraitTwinSync(
-          SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return BoxHelloTraitTwinSyncImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
-  }
-
-  @protected
   ConstructorOpaqueStructTwinNormal
       sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueStructTwinNormal(
           SseDeserializer deserializer) {
@@ -51879,33 +50547,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return DroppableTwinSyncImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
-  }
-
-  @protected
-  HelloOneStructTwinNormal
-      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinNormal(
-          SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return HelloOneStructTwinNormalImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
-  }
-
-  @protected
-  HelloOneStructTwinRustAsync
-      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinRustAsync(
-          SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return HelloOneStructTwinRustAsyncImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
-  }
-
-  @protected
-  HelloOneStructTwinSync
-      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinSync(
-          SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return HelloOneStructTwinSyncImpl.frbInternalSseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -52173,27 +50814,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner = sse_decode_list_DartOpaque(deserializer);
     return ObjectArray1(inner);
-  }
-
-  @protected
-  HelloTraitTwinNormal sse_decode_DynTrait_HelloTraitTwinNormal(
-      SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    throw UnimplementedError('');
-  }
-
-  @protected
-  HelloTraitTwinRustAsync sse_decode_DynTrait_HelloTraitTwinRustAsync(
-      SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    throw UnimplementedError('');
-  }
-
-  @protected
-  HelloTraitTwinSync sse_decode_DynTrait_HelloTraitTwinSync(
-      SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    throw UnimplementedError('');
   }
 
   @protected
@@ -52750,33 +51370,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  BoxHelloTraitTwinNormal
-      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynHelloTraitTwinNormal(
-          SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return BoxHelloTraitTwinNormalImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
-  }
-
-  @protected
-  BoxHelloTraitTwinRustAsync
-      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynHelloTraitTwinRustAsync(
-          SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return BoxHelloTraitTwinRustAsyncImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
-  }
-
-  @protected
-  BoxHelloTraitTwinSync
-      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynHelloTraitTwinSync(
-          SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return BoxHelloTraitTwinSyncImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
-  }
-
-  @protected
   BoxMyTraitTwinNormal
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinNormalSendSync(
           SseDeserializer deserializer) {
@@ -52883,33 +51476,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return EnumWithGoodAndOpaqueWithoutOptionTwinSyncImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
-  }
-
-  @protected
-  HelloOneStructTwinNormal
-      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinNormal(
-          SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return HelloOneStructTwinNormalImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
-  }
-
-  @protected
-  HelloOneStructTwinRustAsync
-      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinRustAsync(
-          SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return HelloOneStructTwinRustAsyncImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
-  }
-
-  @protected
-  HelloOneStructTwinSync
-      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinSync(
-          SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return HelloOneStructTwinSyncImpl.frbInternalSseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -53211,36 +51777,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return StructWithSimpleSetterTwinNormalImpl.frbInternalSseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
-  }
-
-  @protected
-  CrateApiPseudoManualRustAutoOpaqueTwinRustAsyncHelloTwoEnumTwinRustAsync
-      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnercrateapipseudo_manualrust_auto_opaque_twin_rust_asyncHelloTwoEnumTwinRustAsync(
-          SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return CrateApiPseudoManualRustAutoOpaqueTwinRustAsyncHelloTwoEnumTwinRustAsyncImpl
-        .frbInternalSseDecode(
-            sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
-  }
-
-  @protected
-  CrateApiPseudoManualRustAutoOpaqueTwinSyncHelloTwoEnumTwinSync
-      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnercrateapipseudo_manualrust_auto_opaque_twin_syncHelloTwoEnumTwinSync(
-          SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return CrateApiPseudoManualRustAutoOpaqueTwinSyncHelloTwoEnumTwinSyncImpl
-        .frbInternalSseDecode(
-            sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
-  }
-
-  @protected
-  CrateApiRustAutoOpaqueHelloTwoEnumTwinNormal
-      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnercrateapirust_auto_opaqueHelloTwoEnumTwinNormal(
-          SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return CrateApiRustAutoOpaqueHelloTwoEnumTwinNormalImpl
-        .frbInternalSseDecode(
-            sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
@@ -54004,27 +52540,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   bool sse_decode_bool(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return deserializer.buffer.getUint8() != 0;
-  }
-
-  @protected
-  HelloTraitTwinNormal sse_decode_box_DynTrait_HelloTraitTwinNormal(
-      SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return (sse_decode_DynTrait_HelloTraitTwinNormal(deserializer));
-  }
-
-  @protected
-  HelloTraitTwinRustAsync sse_decode_box_DynTrait_HelloTraitTwinRustAsync(
-      SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return (sse_decode_DynTrait_HelloTraitTwinRustAsync(deserializer));
-  }
-
-  @protected
-  HelloTraitTwinSync sse_decode_box_DynTrait_HelloTraitTwinSync(
-      SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return (sse_decode_DynTrait_HelloTraitTwinSync(deserializer));
   }
 
   @protected
@@ -54841,30 +53356,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return (sse_decode_feed_id_twin_sync(deserializer));
-  }
-
-  @protected
-  HelloTraitTwinNormalImplementor
-      sse_decode_box_autoadd_hello_trait_twin_normal_implementor(
-          SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return (sse_decode_hello_trait_twin_normal_implementor(deserializer));
-  }
-
-  @protected
-  HelloTraitTwinRustAsyncImplementor
-      sse_decode_box_autoadd_hello_trait_twin_rust_async_implementor(
-          SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return (sse_decode_hello_trait_twin_rust_async_implementor(deserializer));
-  }
-
-  @protected
-  HelloTraitTwinSyncImplementor
-      sse_decode_box_autoadd_hello_trait_twin_sync_implementor(
-          SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return (sse_decode_hello_trait_twin_sync_implementor(deserializer));
   }
 
   @protected
@@ -57321,98 +55812,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var var_inner = sse_decode_String(deserializer);
     return HashMapValue(inner: var_inner);
-  }
-
-  @protected
-  HelloTraitTwinNormalImplementor
-      sse_decode_hello_trait_twin_normal_implementor(
-          SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-
-    var tag_ = sse_decode_i_32(deserializer);
-    switch (tag_) {
-      case 0:
-        var var_field0 =
-            sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinNormal(
-                deserializer);
-        return HelloTraitTwinNormalImplementor_Variant0(var_field0);
-      case 1:
-        var var_field0 =
-            sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnercrateapirust_auto_opaqueHelloTwoEnumTwinNormal(
-                deserializer);
-        return HelloTraitTwinNormalImplementor_Variant1(var_field0);
-      default:
-        throw UnimplementedError('');
-    }
-  }
-
-  @protected
-  HelloTraitTwinRustAsyncImplementor
-      sse_decode_hello_trait_twin_rust_async_implementor(
-          SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-
-    var tag_ = sse_decode_i_32(deserializer);
-    switch (tag_) {
-      case 0:
-        var var_field0 =
-            sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinRustAsync(
-                deserializer);
-        return HelloTraitTwinRustAsyncImplementor_Variant0(var_field0);
-      case 1:
-        var var_field0 =
-            sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnercrateapipseudo_manualrust_auto_opaque_twin_rust_asyncHelloTwoEnumTwinRustAsync(
-                deserializer);
-        return HelloTraitTwinRustAsyncImplementor_Variant1(var_field0);
-      default:
-        throw UnimplementedError('');
-    }
-  }
-
-  @protected
-  HelloTraitTwinSyncImplementor sse_decode_hello_trait_twin_sync_implementor(
-      SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-
-    var tag_ = sse_decode_i_32(deserializer);
-    switch (tag_) {
-      case 0:
-        var var_field0 =
-            sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinSync(
-                deserializer);
-        return HelloTraitTwinSyncImplementor_Variant0(var_field0);
-      case 1:
-        var var_field0 =
-            sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnercrateapipseudo_manualrust_auto_opaque_twin_syncHelloTwoEnumTwinSync(
-                deserializer);
-        return HelloTraitTwinSyncImplementor_Variant1(var_field0);
-      default:
-        throw UnimplementedError('');
-    }
-  }
-
-  @protected
-  HelloTwoEnumTwinNormal sse_decode_hello_two_enum_twin_normal(
-      SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    var inner = sse_decode_i_32(deserializer);
-    return HelloTwoEnumTwinNormal.values[inner];
-  }
-
-  @protected
-  HelloTwoEnumTwinRustAsync sse_decode_hello_two_enum_twin_rust_async(
-      SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    var inner = sse_decode_i_32(deserializer);
-    return HelloTwoEnumTwinRustAsync.values[inner];
-  }
-
-  @protected
-  HelloTwoEnumTwinSync sse_decode_hello_two_enum_twin_sync(
-      SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    var inner = sse_decode_i_32(deserializer);
-    return HelloTwoEnumTwinSync.values[inner];
   }
 
   @protected
@@ -62183,33 +60582,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinNormal(
-          HelloOneStructTwinNormal self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinNormal(
-        self, serializer);
-  }
-
-  @protected
-  void
-      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinRustAsync(
-          HelloOneStructTwinRustAsync self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinRustAsync(
-        self, serializer);
-  }
-
-  @protected
-  void
-      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinSync(
-          HelloOneStructTwinSync self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinSync(
-        self, serializer);
-  }
-
-  @protected
-  void
       sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNodeTwinNormal(
           MyNodeTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -62268,36 +60640,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           StructTwoWithTraitForDynTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitForDynTwinNormal(
-        self, serializer);
-  }
-
-  @protected
-  void sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnercrateapipseudo_manualrust_auto_opaque_twin_rust_asyncHelloTwoEnumTwinRustAsync(
-      CrateApiPseudoManualRustAutoOpaqueTwinRustAsyncHelloTwoEnumTwinRustAsync
-          self,
-      SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnercrateapipseudo_manualrust_auto_opaque_twin_rust_asyncHelloTwoEnumTwinRustAsync(
-        self, serializer);
-  }
-
-  @protected
-  void
-      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnercrateapipseudo_manualrust_auto_opaque_twin_syncHelloTwoEnumTwinSync(
-          CrateApiPseudoManualRustAutoOpaqueTwinSyncHelloTwoEnumTwinSync self,
-          SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnercrateapipseudo_manualrust_auto_opaque_twin_syncHelloTwoEnumTwinSync(
-        self, serializer);
-  }
-
-  @protected
-  void
-      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnercrateapirust_auto_opaqueHelloTwoEnumTwinNormal(
-          CrateApiRustAutoOpaqueHelloTwoEnumTwinNormal self,
-          SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnercrateapirust_auto_opaqueHelloTwoEnumTwinNormal(
         self, serializer);
   }
 
@@ -62448,37 +60790,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     sse_encode_usize(
         (self as EnumWithGoodAndOpaqueWithoutOptionTwinSyncImpl)
             .frbInternalSseEncode(move: true),
-        serializer);
-  }
-
-  @protected
-  void
-      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinNormal(
-          HelloOneStructTwinNormal self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_usize(
-        (self as HelloOneStructTwinNormalImpl).frbInternalSseEncode(move: true),
-        serializer);
-  }
-
-  @protected
-  void
-      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinRustAsync(
-          HelloOneStructTwinRustAsync self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_usize(
-        (self as HelloOneStructTwinRustAsyncImpl)
-            .frbInternalSseEncode(move: true),
-        serializer);
-  }
-
-  @protected
-  void
-      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinSync(
-          HelloOneStructTwinSync self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_usize(
-        (self as HelloOneStructTwinSyncImpl).frbInternalSseEncode(move: true),
         serializer);
   }
 
@@ -62838,37 +61149,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynHelloTraitTwinNormal(
-          BoxHelloTraitTwinNormal self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_usize(
-        (self as BoxHelloTraitTwinNormalImpl).frbInternalSseEncode(move: false),
-        serializer);
-  }
-
-  @protected
-  void
-      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynHelloTraitTwinRustAsync(
-          BoxHelloTraitTwinRustAsync self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_usize(
-        (self as BoxHelloTraitTwinRustAsyncImpl)
-            .frbInternalSseEncode(move: false),
-        serializer);
-  }
-
-  @protected
-  void
-      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynHelloTraitTwinSync(
-          BoxHelloTraitTwinSync self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_usize(
-        (self as BoxHelloTraitTwinSyncImpl).frbInternalSseEncode(move: false),
-        serializer);
-  }
-
-  @protected
-  void
       sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueStructTwinNormal(
           ConstructorOpaqueStructTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -63148,38 +61428,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as DroppableTwinSyncImpl).frbInternalSseEncode(move: false),
-        serializer);
-  }
-
-  @protected
-  void
-      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinNormal(
-          HelloOneStructTwinNormal self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_usize(
-        (self as HelloOneStructTwinNormalImpl)
-            .frbInternalSseEncode(move: false),
-        serializer);
-  }
-
-  @protected
-  void
-      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinRustAsync(
-          HelloOneStructTwinRustAsync self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_usize(
-        (self as HelloOneStructTwinRustAsyncImpl)
-            .frbInternalSseEncode(move: false),
-        serializer);
-  }
-
-  @protected
-  void
-      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinSync(
-          HelloOneStructTwinSync self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_usize(
-        (self as HelloOneStructTwinSyncImpl).frbInternalSseEncode(move: false),
         serializer);
   }
 
@@ -63597,54 +61845,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       ObjectArray1 self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_list_DartOpaque(self.inner, serializer);
-  }
-
-  @protected
-  void sse_encode_DynTrait_HelloTraitTwinNormal(
-      HelloTraitTwinNormal self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_hello_trait_twin_normal_implementor((() {
-      if (self is HelloOneStructTwinNormal) {
-        return HelloTraitTwinNormalImplementor.variant0(self);
-      }
-      if (self is HelloTwoEnumTwinNormal) {
-        return HelloTraitTwinNormalImplementor.variant1(self);
-      }
-
-      throw Exception('not reachable');
-    })(), serializer);
-  }
-
-  @protected
-  void sse_encode_DynTrait_HelloTraitTwinRustAsync(
-      HelloTraitTwinRustAsync self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_hello_trait_twin_rust_async_implementor((() {
-      if (self is HelloOneStructTwinRustAsync) {
-        return HelloTraitTwinRustAsyncImplementor.variant0(self);
-      }
-      if (self is HelloTwoEnumTwinRustAsync) {
-        return HelloTraitTwinRustAsyncImplementor.variant1(self);
-      }
-
-      throw Exception('not reachable');
-    })(), serializer);
-  }
-
-  @protected
-  void sse_encode_DynTrait_HelloTraitTwinSync(
-      HelloTraitTwinSync self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_hello_trait_twin_sync_implementor((() {
-      if (self is HelloOneStructTwinSync) {
-        return HelloTraitTwinSyncImplementor.variant0(self);
-      }
-      if (self is HelloTwoEnumTwinSync) {
-        return HelloTraitTwinSyncImplementor.variant1(self);
-      }
-
-      throw Exception('not reachable');
-    })(), serializer);
   }
 
   @protected
@@ -64228,37 +62428,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynHelloTraitTwinNormal(
-          BoxHelloTraitTwinNormal self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_usize(
-        (self as BoxHelloTraitTwinNormalImpl).frbInternalSseEncode(move: null),
-        serializer);
-  }
-
-  @protected
-  void
-      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynHelloTraitTwinRustAsync(
-          BoxHelloTraitTwinRustAsync self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_usize(
-        (self as BoxHelloTraitTwinRustAsyncImpl)
-            .frbInternalSseEncode(move: null),
-        serializer);
-  }
-
-  @protected
-  void
-      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynHelloTraitTwinSync(
-          BoxHelloTraitTwinSync self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_usize(
-        (self as BoxHelloTraitTwinSyncImpl).frbInternalSseEncode(move: null),
-        serializer);
-  }
-
-  @protected
-  void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinNormalSendSync(
           BoxMyTraitTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -64384,37 +62553,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     sse_encode_usize(
         (self as EnumWithGoodAndOpaqueWithoutOptionTwinSyncImpl)
             .frbInternalSseEncode(move: null),
-        serializer);
-  }
-
-  @protected
-  void
-      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinNormal(
-          HelloOneStructTwinNormal self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_usize(
-        (self as HelloOneStructTwinNormalImpl).frbInternalSseEncode(move: null),
-        serializer);
-  }
-
-  @protected
-  void
-      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinRustAsync(
-          HelloOneStructTwinRustAsync self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_usize(
-        (self as HelloOneStructTwinRustAsyncImpl)
-            .frbInternalSseEncode(move: null),
-        serializer);
-  }
-
-  @protected
-  void
-      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinSync(
-          HelloOneStructTwinSync self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_usize(
-        (self as HelloOneStructTwinSyncImpl).frbInternalSseEncode(move: null),
         serializer);
   }
 
@@ -64768,42 +62906,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as StructWithSimpleSetterTwinNormalImpl)
-            .frbInternalSseEncode(move: null),
-        serializer);
-  }
-
-  @protected
-  void sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnercrateapipseudo_manualrust_auto_opaque_twin_rust_asyncHelloTwoEnumTwinRustAsync(
-      CrateApiPseudoManualRustAutoOpaqueTwinRustAsyncHelloTwoEnumTwinRustAsync
-          self,
-      SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_usize(
-        (self as CrateApiPseudoManualRustAutoOpaqueTwinRustAsyncHelloTwoEnumTwinRustAsyncImpl)
-            .frbInternalSseEncode(move: null),
-        serializer);
-  }
-
-  @protected
-  void
-      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnercrateapipseudo_manualrust_auto_opaque_twin_syncHelloTwoEnumTwinSync(
-          CrateApiPseudoManualRustAutoOpaqueTwinSyncHelloTwoEnumTwinSync self,
-          SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_usize(
-        (self as CrateApiPseudoManualRustAutoOpaqueTwinSyncHelloTwoEnumTwinSyncImpl)
-            .frbInternalSseEncode(move: null),
-        serializer);
-  }
-
-  @protected
-  void
-      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnercrateapirust_auto_opaqueHelloTwoEnumTwinNormal(
-          CrateApiRustAutoOpaqueHelloTwoEnumTwinNormal self,
-          SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_usize(
-        (self as CrateApiRustAutoOpaqueHelloTwoEnumTwinNormalImpl)
             .frbInternalSseEncode(move: null),
         serializer);
   }
@@ -65639,27 +63741,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_box_DynTrait_HelloTraitTwinNormal(
-      HelloTraitTwinNormal self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_DynTrait_HelloTraitTwinNormal(self, serializer);
-  }
-
-  @protected
-  void sse_encode_box_DynTrait_HelloTraitTwinRustAsync(
-      HelloTraitTwinRustAsync self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_DynTrait_HelloTraitTwinRustAsync(self, serializer);
-  }
-
-  @protected
-  void sse_encode_box_DynTrait_HelloTraitTwinSync(
-      HelloTraitTwinSync self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_DynTrait_HelloTraitTwinSync(self, serializer);
-  }
-
-  @protected
   void sse_encode_box_application_env(
       ApplicationEnv self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -66440,27 +64521,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       FeedIdTwinSync self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_feed_id_twin_sync(self, serializer);
-  }
-
-  @protected
-  void sse_encode_box_autoadd_hello_trait_twin_normal_implementor(
-      HelloTraitTwinNormalImplementor self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_hello_trait_twin_normal_implementor(self, serializer);
-  }
-
-  @protected
-  void sse_encode_box_autoadd_hello_trait_twin_rust_async_implementor(
-      HelloTraitTwinRustAsyncImplementor self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_hello_trait_twin_rust_async_implementor(self, serializer);
-  }
-
-  @protected
-  void sse_encode_box_autoadd_hello_trait_twin_sync_implementor(
-      HelloTraitTwinSyncImplementor self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_hello_trait_twin_sync_implementor(self, serializer);
   }
 
   @protected
@@ -68658,81 +66718,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void sse_encode_hash_map_value(HashMapValue self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_String(self.inner, serializer);
-  }
-
-  @protected
-  void sse_encode_hello_trait_twin_normal_implementor(
-      HelloTraitTwinNormalImplementor self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    switch (self) {
-      case HelloTraitTwinNormalImplementor_Variant0(field0: final field0):
-        sse_encode_i_32(0, serializer);
-        sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinNormal(
-            field0, serializer);
-      case HelloTraitTwinNormalImplementor_Variant1(field0: final field0):
-        sse_encode_i_32(1, serializer);
-        sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnercrateapirust_auto_opaqueHelloTwoEnumTwinNormal(
-            field0, serializer);
-      default:
-        throw UnimplementedError('');
-    }
-  }
-
-  @protected
-  void sse_encode_hello_trait_twin_rust_async_implementor(
-      HelloTraitTwinRustAsyncImplementor self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    switch (self) {
-      case HelloTraitTwinRustAsyncImplementor_Variant0(field0: final field0):
-        sse_encode_i_32(0, serializer);
-        sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinRustAsync(
-            field0, serializer);
-      case HelloTraitTwinRustAsyncImplementor_Variant1(field0: final field0):
-        sse_encode_i_32(1, serializer);
-        sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnercrateapipseudo_manualrust_auto_opaque_twin_rust_asyncHelloTwoEnumTwinRustAsync(
-            field0, serializer);
-      default:
-        throw UnimplementedError('');
-    }
-  }
-
-  @protected
-  void sse_encode_hello_trait_twin_sync_implementor(
-      HelloTraitTwinSyncImplementor self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    switch (self) {
-      case HelloTraitTwinSyncImplementor_Variant0(field0: final field0):
-        sse_encode_i_32(0, serializer);
-        sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerHelloOneStructTwinSync(
-            field0, serializer);
-      case HelloTraitTwinSyncImplementor_Variant1(field0: final field0):
-        sse_encode_i_32(1, serializer);
-        sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnercrateapipseudo_manualrust_auto_opaque_twin_syncHelloTwoEnumTwinSync(
-            field0, serializer);
-      default:
-        throw UnimplementedError('');
-    }
-  }
-
-  @protected
-  void sse_encode_hello_two_enum_twin_normal(
-      HelloTwoEnumTwinNormal self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_i_32(self.index, serializer);
-  }
-
-  @protected
-  void sse_encode_hello_two_enum_twin_rust_async(
-      HelloTwoEnumTwinRustAsync self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_i_32(self.index, serializer);
-  }
-
-  @protected
-  void sse_encode_hello_two_enum_twin_sync(
-      HelloTwoEnumTwinSync self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_i_32(self.index, serializer);
   }
 
   @protected
@@ -72734,18 +70719,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 }
 
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<crate :: api :: pseudo_manual :: rust_auto_opaque_twin_rust_async :: HelloTwoEnumTwinRustAsync>>
-abstract class CrateApiPseudoManualRustAutoOpaqueTwinRustAsyncHelloTwoEnumTwinRustAsync
-    implements RustOpaqueInterface {}
-
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<crate :: api :: pseudo_manual :: rust_auto_opaque_twin_sync :: HelloTwoEnumTwinSync>>
-abstract class CrateApiPseudoManualRustAutoOpaqueTwinSyncHelloTwoEnumTwinSync
-    implements RustOpaqueInterface {}
-
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<crate :: api :: rust_auto_opaque :: HelloTwoEnumTwinNormal>>
-abstract class CrateApiRustAutoOpaqueHelloTwoEnumTwinNormal
-    implements RustOpaqueInterface {}
-
 @freezed
 sealed class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum
     with
@@ -72758,46 +70731,6 @@ sealed class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueI
   const factory Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum.variant1(
     MyNodeTwinNormal field0,
   ) = Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant1;
-}
-
-@freezed
-sealed class HelloTraitTwinNormalImplementor
-    with _$HelloTraitTwinNormalImplementor {
-  const HelloTraitTwinNormalImplementor._();
-
-  const factory HelloTraitTwinNormalImplementor.variant0(
-    HelloOneStructTwinNormal field0,
-  ) = HelloTraitTwinNormalImplementor_Variant0;
-  const factory HelloTraitTwinNormalImplementor.variant1(
-    CrateApiRustAutoOpaqueHelloTwoEnumTwinNormal field0,
-  ) = HelloTraitTwinNormalImplementor_Variant1;
-}
-
-@freezed
-sealed class HelloTraitTwinRustAsyncImplementor
-    with _$HelloTraitTwinRustAsyncImplementor {
-  const HelloTraitTwinRustAsyncImplementor._();
-
-  const factory HelloTraitTwinRustAsyncImplementor.variant0(
-    HelloOneStructTwinRustAsync field0,
-  ) = HelloTraitTwinRustAsyncImplementor_Variant0;
-  const factory HelloTraitTwinRustAsyncImplementor.variant1(
-    CrateApiPseudoManualRustAutoOpaqueTwinRustAsyncHelloTwoEnumTwinRustAsync
-        field0,
-  ) = HelloTraitTwinRustAsyncImplementor_Variant1;
-}
-
-@freezed
-sealed class HelloTraitTwinSyncImplementor
-    with _$HelloTraitTwinSyncImplementor {
-  const HelloTraitTwinSyncImplementor._();
-
-  const factory HelloTraitTwinSyncImplementor.variant0(
-    HelloOneStructTwinSync field0,
-  ) = HelloTraitTwinSyncImplementor_Variant0;
-  const factory HelloTraitTwinSyncImplementor.variant1(
-    CrateApiPseudoManualRustAutoOpaqueTwinSyncHelloTwoEnumTwinSync field0,
-  ) = HelloTraitTwinSyncImplementor_Variant1;
 }
 
 @freezed
@@ -72919,72 +70852,6 @@ class BoxFnStringStringImpl extends RustOpaque implements BoxFnStringString {
         RustLib.instance.api.rust_arc_decrement_strong_count_BoxFnStringString,
     rustArcDecrementStrongCountPtr: RustLib
         .instance.api.rust_arc_decrement_strong_count_BoxFnStringStringPtr,
-  );
-}
-
-@sealed
-class BoxHelloTraitTwinNormalImpl extends RustOpaque
-    implements BoxHelloTraitTwinNormal {
-  // Not to be used by end users
-  BoxHelloTraitTwinNormalImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  BoxHelloTraitTwinNormalImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_BoxHelloTraitTwinNormal,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_BoxHelloTraitTwinNormal,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_BoxHelloTraitTwinNormalPtr,
-  );
-}
-
-@sealed
-class BoxHelloTraitTwinRustAsyncImpl extends RustOpaque
-    implements BoxHelloTraitTwinRustAsync {
-  // Not to be used by end users
-  BoxHelloTraitTwinRustAsyncImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  BoxHelloTraitTwinRustAsyncImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_BoxHelloTraitTwinRustAsync,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_BoxHelloTraitTwinRustAsync,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_BoxHelloTraitTwinRustAsyncPtr,
-  );
-}
-
-@sealed
-class BoxHelloTraitTwinSyncImpl extends RustOpaque
-    implements BoxHelloTraitTwinSync {
-  // Not to be used by end users
-  BoxHelloTraitTwinSyncImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  BoxHelloTraitTwinSyncImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_BoxHelloTraitTwinSync,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_BoxHelloTraitTwinSync,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_BoxHelloTraitTwinSyncPtr,
   );
 }
 
@@ -73124,78 +70991,6 @@ class ConstructorOpaqueSyncStructTwinNormalImpl extends RustOpaque
   void set one(String one) => RustLib.instance.api
       .crateApiConstructorConstructorOpaqueSyncStructTwinNormalSetOne(
           that: this, one: one);
-}
-
-@sealed
-class CrateApiPseudoManualRustAutoOpaqueTwinRustAsyncHelloTwoEnumTwinRustAsyncImpl
-    extends RustOpaque
-    implements
-        CrateApiPseudoManualRustAutoOpaqueTwinRustAsyncHelloTwoEnumTwinRustAsync {
-  // Not to be used by end users
-  CrateApiPseudoManualRustAutoOpaqueTwinRustAsyncHelloTwoEnumTwinRustAsyncImpl.frbInternalDcoDecode(
-      List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  CrateApiPseudoManualRustAutoOpaqueTwinRustAsyncHelloTwoEnumTwinRustAsyncImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_CrateApiPseudoManualRustAutoOpaqueTwinRustAsyncHelloTwoEnumTwinRustAsync,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_CrateApiPseudoManualRustAutoOpaqueTwinRustAsyncHelloTwoEnumTwinRustAsync,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_CrateApiPseudoManualRustAutoOpaqueTwinRustAsyncHelloTwoEnumTwinRustAsyncPtr,
-  );
-}
-
-@sealed
-class CrateApiPseudoManualRustAutoOpaqueTwinSyncHelloTwoEnumTwinSyncImpl
-    extends RustOpaque
-    implements CrateApiPseudoManualRustAutoOpaqueTwinSyncHelloTwoEnumTwinSync {
-  // Not to be used by end users
-  CrateApiPseudoManualRustAutoOpaqueTwinSyncHelloTwoEnumTwinSyncImpl.frbInternalDcoDecode(
-      List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  CrateApiPseudoManualRustAutoOpaqueTwinSyncHelloTwoEnumTwinSyncImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_CrateApiPseudoManualRustAutoOpaqueTwinSyncHelloTwoEnumTwinSync,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_CrateApiPseudoManualRustAutoOpaqueTwinSyncHelloTwoEnumTwinSync,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_CrateApiPseudoManualRustAutoOpaqueTwinSyncHelloTwoEnumTwinSyncPtr,
-  );
-}
-
-@sealed
-class CrateApiRustAutoOpaqueHelloTwoEnumTwinNormalImpl extends RustOpaque
-    implements CrateApiRustAutoOpaqueHelloTwoEnumTwinNormal {
-  // Not to be used by end users
-  CrateApiRustAutoOpaqueHelloTwoEnumTwinNormalImpl.frbInternalDcoDecode(
-      List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  CrateApiRustAutoOpaqueHelloTwoEnumTwinNormalImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_CrateApiRustAutoOpaqueHelloTwoEnumTwinNormal,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_CrateApiRustAutoOpaqueHelloTwoEnumTwinNormal,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_CrateApiRustAutoOpaqueHelloTwoEnumTwinNormalPtr,
-  );
 }
 
 @sealed
@@ -73529,87 +71324,6 @@ class FrbOpaqueSyncReturnTwinNormalImpl extends RustOpaque
     rustArcDecrementStrongCountPtr: RustLib.instance.api
         .rust_arc_decrement_strong_count_FrbOpaqueSyncReturnTwinNormalPtr,
   );
-}
-
-@sealed
-class HelloOneStructTwinNormalImpl extends RustOpaque
-    implements HelloOneStructTwinNormal {
-  // Not to be used by end users
-  HelloOneStructTwinNormalImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  HelloOneStructTwinNormalImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_HelloOneStructTwinNormal,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_HelloOneStructTwinNormal,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_HelloOneStructTwinNormalPtr,
-  );
-
-  Future<void> funcHello() => RustLib.instance.api
-          .crateApiRustAutoOpaqueHelloOneStructTwinNormalFuncHello(
-        that: this,
-      );
-}
-
-@sealed
-class HelloOneStructTwinRustAsyncImpl extends RustOpaque
-    implements HelloOneStructTwinRustAsync {
-  // Not to be used by end users
-  HelloOneStructTwinRustAsyncImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  HelloOneStructTwinRustAsyncImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_HelloOneStructTwinRustAsync,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_HelloOneStructTwinRustAsync,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_HelloOneStructTwinRustAsyncPtr,
-  );
-
-  Future<void> funcHello() => RustLib.instance.api
-          .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncHelloOneStructTwinRustAsyncFuncHello(
-        that: this,
-      );
-}
-
-@sealed
-class HelloOneStructTwinSyncImpl extends RustOpaque
-    implements HelloOneStructTwinSync {
-  // Not to be used by end users
-  HelloOneStructTwinSyncImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  HelloOneStructTwinSyncImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_HelloOneStructTwinSync,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_HelloOneStructTwinSync,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_HelloOneStructTwinSyncPtr,
-  );
-
-  Future<void> funcHello() => RustLib.instance.api
-          .crateApiPseudoManualRustAutoOpaqueTwinSyncHelloOneStructTwinSyncFuncHello(
-        that: this,
-      );
 }
 
 @sealed

@@ -143,84 +143,68 @@ pub fn rust_auto_opaque_callable_return_twin_sync_sse_moi(
 }
 
 // ==================================== trait object =======================================
-
-pub trait HelloTraitTwinSyncSseMoi: Send + Sync {
-    fn func_hello(&self) -> &str;
-}
-
-#[frb(opaque)]
-pub struct HelloOneStructTwinSyncSseMoi {
-    inner: String,
-}
-
-impl HelloTraitTwinSyncSseMoi for HelloOneStructTwinSyncSseMoi {
-    fn func_hello(&self) -> &str {
-        &self.inner
-    }
-}
-
-pub enum HelloTwoEnumTwinSyncSseMoi {
-    A,
-    B,
-}
-
-impl HelloTraitTwinSyncSseMoi for HelloTwoEnumTwinSyncSseMoi {
-    fn func_hello(&self) -> &str {
-        match self {
-            HelloTwoEnumTwinSyncSseMoi::A => "A",
-            HelloTwoEnumTwinSyncSseMoi::B => "B",
-        }
-    }
-}
-
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
-#[flutter_rust_bridge::frb(serialize)]
-#[flutter_rust_bridge::frb(sync)]
-pub fn rust_auto_opaque_trait_object_arg_own_twin_sync_sse_moi(
-    arg: Box<dyn HelloTraitTwinSyncSseMoi>,
-    expect: String,
-) {
-    assert_eq!(arg.func_hello(), expect);
-}
-
-#[allow(clippy::borrowed_box)]
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
-#[flutter_rust_bridge::frb(serialize)]
-#[flutter_rust_bridge::frb(sync)]
-pub fn rust_auto_opaque_trait_object_arg_borrow_twin_sync_sse_moi(
-    arg: &Box<dyn HelloTraitTwinSyncSseMoi>,
-    expect: String,
-) {
-    assert_eq!(arg.func_hello(), expect);
-}
-
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
-#[flutter_rust_bridge::frb(serialize)]
-#[flutter_rust_bridge::frb(sync)]
-pub fn rust_auto_opaque_trait_object_arg_mut_borrow_twin_sync_sse_moi(
-    arg: &mut Box<dyn HelloTraitTwinSyncSseMoi>,
-    expect: String,
-) {
-    assert_eq!(arg.func_hello(), expect);
-}
-
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
-#[flutter_rust_bridge::frb(serialize)]
-#[flutter_rust_bridge::frb(sync)]
-pub fn rust_auto_opaque_trait_object_return_own_one_twin_sync_sse_moi(
-) -> Box<dyn HelloTraitTwinSyncSseMoi> {
-    Box::new(HelloOneStructTwinSyncSseMoi {
-        inner: "hello".into(),
-    })
-}
-
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
-#[flutter_rust_bridge::frb(serialize)]
-#[flutter_rust_bridge::frb(sync)]
-pub fn rust_auto_opaque_trait_object_return_own_two_twin_sync_sse_moi(
-) -> Box<dyn HelloTraitTwinSyncSseMoi> {
-    Box::new(HelloTwoEnumTwinSyncSseMoi::B)
-}
+//
+// pub trait HelloTraitTwinSyncSseMoi: Send + Sync {
+//     fn func_hello(&self) -> &str;
+// }
+//
+// #[frb(opaque)]
+// pub struct HelloOneStructTwinSyncSseMoi {
+//     inner: String,
+// }
+//
+// impl HelloTraitTwinSyncSseMoi for HelloOneStructTwinSyncSseMoi {
+//     fn func_hello(&self) -> &str {
+//         &self.inner
+//     }
+// }
+//
+// pub enum HelloTwoEnumTwinSyncSseMoi {
+//     A,
+//     B,
+// }
+//
+// impl HelloTraitTwinSyncSseMoi for HelloTwoEnumTwinSyncSseMoi {
+//     fn func_hello(&self) -> &str {
+//         match self {
+//             HelloTwoEnumTwinSyncSseMoi::A => "A",
+//             HelloTwoEnumTwinSyncSseMoi::B => "B",
+//         }
+//     }
+// }
+//
+// #[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn rust_auto_opaque_trait_object_arg_own_twin_sync_sse_moi(
+//     arg: Box<dyn HelloTraitTwinSyncSseMoi>,
+//     expect: String,
+// ) {
+//     assert_eq!(arg.func_hello(), expect);
+// }
+//
+// #[allow(clippy::borrowed_box)]
+// #[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn rust_auto_opaque_trait_object_arg_borrow_twin_sync_sse_moi(
+//     arg: &Box<dyn HelloTraitTwinSyncSseMoi>,
+//     expect: String,
+// ) {
+//     assert_eq!(arg.func_hello(), expect);
+// }
+//
+// #[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn rust_auto_opaque_trait_object_arg_mut_borrow_twin_sync_sse_moi(
+//     arg: &mut Box<dyn HelloTraitTwinSyncSseMoi>,
+//     expect: String,
+// ) {
+//     assert_eq!(arg.func_hello(), expect);
+// }
+//
+// #[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn rust_auto_opaque_trait_object_return_own_one_twin_sync_sse_moi() -> Box<dyn HelloTraitTwinSyncSseMoi> {
+//     Box::new(HelloOneStructTwinSyncSseMoi {
+//         inner: "hello".into(),
+//     })
+// }
+//
+// #[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn rust_auto_opaque_trait_object_return_own_two_twin_sync_sse_moi() -> Box<dyn HelloTraitTwinSyncSseMoi> {
+//     Box::new(HelloTwoEnumTwinSyncSseMoi::B)
+// }
+//
 
 // ==================================== static method =======================================
 

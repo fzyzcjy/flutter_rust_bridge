@@ -117,69 +117,68 @@ pub async fn rust_auto_opaque_callable_return_twin_rust_async(
 }
 
 // ==================================== trait object =======================================
-
-pub trait HelloTraitTwinRustAsync: Send + Sync {
-    fn func_hello(&self) -> &str;
-}
-
-#[frb(opaque)]
-pub struct HelloOneStructTwinRustAsync {
-    inner: String,
-}
-
-impl HelloTraitTwinRustAsync for HelloOneStructTwinRustAsync {
-    fn func_hello(&self) -> &str {
-        &self.inner
-    }
-}
-
-pub enum HelloTwoEnumTwinRustAsync {
-    A,
-    B,
-}
-
-impl HelloTraitTwinRustAsync for HelloTwoEnumTwinRustAsync {
-    fn func_hello(&self) -> &str {
-        match self {
-            HelloTwoEnumTwinRustAsync::A => "A",
-            HelloTwoEnumTwinRustAsync::B => "B",
-        }
-    }
-}
-
-pub async fn rust_auto_opaque_trait_object_arg_own_twin_rust_async(
-    arg: Box<dyn HelloTraitTwinRustAsync>,
-    expect: String,
-) {
-    assert_eq!(arg.func_hello(), expect);
-}
-
-#[allow(clippy::borrowed_box)]
-pub async fn rust_auto_opaque_trait_object_arg_borrow_twin_rust_async(
-    arg: &Box<dyn HelloTraitTwinRustAsync>,
-    expect: String,
-) {
-    assert_eq!(arg.func_hello(), expect);
-}
-
-pub async fn rust_auto_opaque_trait_object_arg_mut_borrow_twin_rust_async(
-    arg: &mut Box<dyn HelloTraitTwinRustAsync>,
-    expect: String,
-) {
-    assert_eq!(arg.func_hello(), expect);
-}
-
-pub async fn rust_auto_opaque_trait_object_return_own_one_twin_rust_async(
-) -> Box<dyn HelloTraitTwinRustAsync> {
-    Box::new(HelloOneStructTwinRustAsync {
-        inner: "hello".into(),
-    })
-}
-
-pub async fn rust_auto_opaque_trait_object_return_own_two_twin_rust_async(
-) -> Box<dyn HelloTraitTwinRustAsync> {
-    Box::new(HelloTwoEnumTwinRustAsync::B)
-}
+//
+// pub trait HelloTraitTwinRustAsync: Send + Sync {
+//     fn func_hello(&self) -> &str;
+// }
+//
+// #[frb(opaque)]
+// pub struct HelloOneStructTwinRustAsync {
+//     inner: String,
+// }
+//
+// impl HelloTraitTwinRustAsync for HelloOneStructTwinRustAsync {
+//     fn func_hello(&self) -> &str {
+//         &self.inner
+//     }
+// }
+//
+// pub enum HelloTwoEnumTwinRustAsync {
+//     A,
+//     B,
+// }
+//
+// impl HelloTraitTwinRustAsync for HelloTwoEnumTwinRustAsync {
+//     fn func_hello(&self) -> &str {
+//         match self {
+//             HelloTwoEnumTwinRustAsync::A => "A",
+//             HelloTwoEnumTwinRustAsync::B => "B",
+//         }
+//     }
+// }
+//
+// pub async fn rust_auto_opaque_trait_object_arg_own_twin_rust_async(
+//     arg: Box<dyn HelloTraitTwinRustAsync>,
+//     expect: String,
+// ) {
+//     assert_eq!(arg.func_hello(), expect);
+// }
+//
+// #[allow(clippy::borrowed_box)]
+// pub async fn rust_auto_opaque_trait_object_arg_borrow_twin_rust_async(
+//     arg: &Box<dyn HelloTraitTwinRustAsync>,
+//     expect: String,
+// ) {
+//     assert_eq!(arg.func_hello(), expect);
+// }
+//
+// pub async fn rust_auto_opaque_trait_object_arg_mut_borrow_twin_rust_async(
+//     arg: &mut Box<dyn HelloTraitTwinRustAsync>,
+//     expect: String,
+// ) {
+//     assert_eq!(arg.func_hello(), expect);
+// }
+//
+// pub async fn rust_auto_opaque_trait_object_return_own_one_twin_rust_async() -> Box<dyn HelloTraitTwinRustAsync> {
+//     Box::new(HelloOneStructTwinRustAsync {
+//         inner: "hello".into(),
+//     })
+// }
+//
+// pub async fn rust_auto_opaque_trait_object_return_own_two_twin_rust_async() -> Box<dyn HelloTraitTwinRustAsync> {
+//     Box::new(HelloTwoEnumTwinRustAsync::B)
+// }
+//
 
 // ==================================== static method =======================================
 

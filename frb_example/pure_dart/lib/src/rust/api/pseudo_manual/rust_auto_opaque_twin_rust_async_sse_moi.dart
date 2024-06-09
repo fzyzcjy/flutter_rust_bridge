@@ -78,35 +78,6 @@ Future<BoxFnStringString> rustAutoOpaqueCallableReturnTwinRustAsyncSseMoi() =>
     RustLib.instance.api
         .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseMoiRustAutoOpaqueCallableReturnTwinRustAsyncSseMoi();
 
-Future<void> rustAutoOpaqueTraitObjectArgOwnTwinRustAsyncSseMoi(
-        {required HelloTraitTwinRustAsyncSseMoi arg, required String expect}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseMoiRustAutoOpaqueTraitObjectArgOwnTwinRustAsyncSseMoi(
-            arg: arg, expect: expect);
-
-Future<void> rustAutoOpaqueTraitObjectArgBorrowTwinRustAsyncSseMoi(
-        {required HelloTraitTwinRustAsyncSseMoi arg, required String expect}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseMoiRustAutoOpaqueTraitObjectArgBorrowTwinRustAsyncSseMoi(
-            arg: arg, expect: expect);
-
-Future<void> rustAutoOpaqueTraitObjectArgMutBorrowTwinRustAsyncSseMoi(
-        {required BoxHelloTraitTwinRustAsyncSseMoi arg,
-        required String expect}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseMoiRustAutoOpaqueTraitObjectArgMutBorrowTwinRustAsyncSseMoi(
-            arg: arg, expect: expect);
-
-Future<HelloTraitTwinRustAsyncSseMoi>
-    rustAutoOpaqueTraitObjectReturnOwnOneTwinRustAsyncSseMoi() => RustLib
-        .instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseMoiRustAutoOpaqueTraitObjectReturnOwnOneTwinRustAsyncSseMoi();
-
-Future<HelloTraitTwinRustAsyncSseMoi>
-    rustAutoOpaqueTraitObjectReturnOwnTwoTwinRustAsyncSseMoi() => RustLib
-        .instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseMoiRustAutoOpaqueTraitObjectReturnOwnTwoTwinRustAsyncSseMoi();
-
 Future<
     void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinRustAsyncSseMoi(
         {required StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi arg}) =>
@@ -222,22 +193,12 @@ Future<int> rustAutoOpaqueBorrowAndBorrowTwinRustAsyncSseMoi(
         .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseMoiRustAutoOpaqueBorrowAndBorrowTwinRustAsyncSseMoi(
             a: a, b: b);
 
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box < dyn HelloTraitTwinRustAsyncSseMoi >>>
-abstract class BoxHelloTraitTwinRustAsyncSseMoi
-    implements RustOpaqueInterface {}
-
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box < dyn MyTraitTwinRustAsyncSseMoi + Send + Sync >>>
 abstract class BoxMyTraitTwinRustAsyncSseMoi implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<EnumWithGoodAndOpaqueWithoutOptionTwinRustAsyncSseMoi>>
 abstract class EnumWithGoodAndOpaqueWithoutOptionTwinRustAsyncSseMoi
     implements RustOpaqueInterface {}
-
-// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<HelloOneStructTwinRustAsyncSseMoi>>
-abstract class HelloOneStructTwinRustAsyncSseMoi
-    implements RustOpaqueInterface, HelloTraitTwinRustAsyncSseMoi {
-  Future<void> funcHello();
-}
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleEnumTwinRustAsyncSseMoi>>
 abstract class NonCloneSimpleEnumTwinRustAsyncSseMoi
@@ -309,10 +270,6 @@ abstract class StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi
   void set good(String good);
 }
 
-abstract class HelloTraitTwinRustAsyncSseMoi {
-  Future<void> funcHello();
-}
-
 abstract class MyTraitTwinRustAsyncSseMoi {
   Future<void> f();
 }
@@ -328,17 +285,6 @@ sealed class EnumWithGoodAndOpaqueTwinRustAsyncSseMoi
   const factory EnumWithGoodAndOpaqueTwinRustAsyncSseMoi.opaque(
     NonCloneSimpleTwinRustAsyncSseMoi field0,
   ) = EnumWithGoodAndOpaqueTwinRustAsyncSseMoi_Opaque;
-}
-
-enum HelloTwoEnumTwinRustAsyncSseMoi {
-  a,
-  b,
-  ;
-
-  Future<void> funcHello() => RustLib.instance.api
-          .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseMoiHelloTwoEnumTwinRustAsyncSseMoiFuncHello(
-        that: this,
-      );
 }
 
 class StructWithExplicitAutoOpaqueFieldTwinRustAsyncSseMoi {
