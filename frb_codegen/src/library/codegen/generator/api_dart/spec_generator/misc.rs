@@ -100,8 +100,12 @@ fn generate_imports_from_ty(
                 &dummy_base_path,
                 current_file_namespace,
             );
-            let path_b =
-                (path_b_inner.parent()).with_context(|| format!("no parent for path_b_inner={path_b_inner:?} (current_file_namespace={current_file_namespace:?}, ty={ty:?})"));
+            let path_b = (path_b_inner.parent()).with_context(|| {
+                format!(
+                    "no parent for path_b_inner={path_b_inner:?} \
+                    (current_file_namespace={current_file_namespace:?}, ty_namespace={ty_namespace:?} current_file_namespace={current_file_namespace:?} ty={ty:?})"
+                )
+            });
 
             let path_diff = diff_paths(path_a, path_b?).context("cannot diff path")?;
 
