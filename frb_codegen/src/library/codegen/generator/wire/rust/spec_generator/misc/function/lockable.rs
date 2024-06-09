@@ -10,43 +10,43 @@ pub(crate) fn generate_code_inner_decode(func: &MirFunc) -> String {
     }
 
     let declarations = (interest_fields.iter())
-        .map(|(field, _ownership_mode)| {
+        .map(|info| {
             format!(
                 "let mut api_{name}_decoded = None;\n",
-                name = get_variable_name(field)
+                name = get_variable_name(info.field)
             )
         })
         .join("");
 
     let var_orders = (interest_fields.iter().enumerate())
-        .map(|(index, (field, ownership_mode))| {
-            let mutable = (ownership_mode == &OwnershipMode::RefMut).to_string();
+        .map(|(index, info)| {
+            let mutable = (info.ownership_mode == OwnershipMode::RefMut).to_string();
             format!(
                 "flutter_rust_bridge::for_generated::LockableOrderInfo::new(&api_{name}, {index}, {mutable})",
-                name = get_variable_name(field)
+                name = get_variable_name(info.field)
             )
         })
         .join(", ");
 
     let match_arms = (interest_fields.iter().enumerate())
-        .map(|(index, (field, ownership_mode))| {
+        .map(|(index, info)| {
             format!(
                 "{index} => {},",
-                generate_decode_statement(func, field, *ownership_mode)
+                generate_decode_statement(func, info.field, info.ownership_mode)
             )
         })
         .join("\n");
 
     let unwraps = (interest_fields.iter())
-        .map(|(field, ownership_mode)| {
-            let mutability = if ownership_mode == &OwnershipMode::RefMut {
+        .map(|info| {
+            let mutability = if info.ownership_mode == OwnershipMode::RefMut {
                 "mut "
             } else {
                 ""
             };
             format!(
                 "let {mutability}api_{name} = api_{name}_decoded.unwrap();\n",
-                name = get_variable_name(field)
+                name = get_variable_name(info.field)
             )
         })
         .join("");
@@ -81,13 +81,21 @@ fn get_variable_name(field: &MirFuncInput) -> &str {
     field.inner.name.rust_style()
 }
 
-fn filter_interest_fields(func: &MirFunc) -> Vec<(&MirFuncInput, OwnershipMode)> {
+fn filter_interest_fields(func: &MirFunc) -> Vec<FieldInfo> {
     (func.inputs.iter())
         .filter_map(|field| match &field.inner.ty {
             MirType::RustAutoOpaqueImplicit(ty) if ty.ownership_mode != OwnershipMode::Owned => {
-                Some((field, ty.ownership_mode))
+                Some(FieldInfo {
+                    field,
+                    ownership_mode: ty.ownership_mode,
+                })
             }
             _ => None,
         })
         .collect_vec()
+}
+
+struct FieldInfo<'a> {
+    field: &'a MirFuncInput,
+    ownership_mode: OwnershipMode,
 }
