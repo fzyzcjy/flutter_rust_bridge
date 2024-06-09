@@ -111,10 +111,12 @@ struct FieldInfo<'a> {
     ownership_mode: OwnershipMode,
 }
 
-pub(crate) fn generate_inner_func_arg_ownership(field: &MirFuncInput) -> Option<OwnershipMode> {
+pub(crate) fn generate_inner_func_arg_ownership(field: &MirFuncInput) -> String {
     match &field.inner.ty {
-        MirType::RustAutoOpaqueImplicit(ty) => Some(ty.ownership_mode),
-        MirType::Delegate(MirTypeDelegate::DynTrait(_)) => None,
-        _ => field.ownership_mode
+        MirType::RustAutoOpaqueImplicit(ty) => ty.ownership_mode.prefix().to_owned(),
+        MirType::Delegate(MirTypeDelegate::DynTrait(_)) => "".to_owned(),
+        _ => (field.ownership_mode.map(|x| x.prefix()))
+            .unwrap_or_default()
+            .to_owned(),
     }
 }
