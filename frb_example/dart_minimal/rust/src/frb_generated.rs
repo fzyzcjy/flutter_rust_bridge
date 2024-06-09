@@ -634,16 +634,6 @@ impl SseDecode for StructTwoWithTraitForDynTwinNormal {
     }
 }
 
-impl SseDecode for dyn SimpleTraitForDynTwinNormal {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <crate::frb_generated::SimpleTraitForDynTwinNormalImplementor>::sse_decode(
-            deserializer,
-        );
-        return unimplemented!("");
-    }
-}
-
 impl SseDecode
     for RustOpaqueMoi<
         flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructOneWithTraitForDynTwinNormal>,
@@ -890,13 +880,6 @@ impl SseEncode for StructTwoWithTraitForDynTwinNormal {
             flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self),
             serializer,
         );
-    }
-}
-
-impl SseEncode for dyn SimpleTraitForDynTwinNormal {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        unimplemented!("")
     }
 }
 
