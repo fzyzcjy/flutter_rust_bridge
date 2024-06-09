@@ -31,8 +31,8 @@ pub struct MyNodeTwinNormal {
 impl MyNodeTwinNormal {
     pub fn create_twin_normal() -> Self {
         Self {
-            param_one: MyAudioParamTwinNormal::new("a".to_owned()),
-            param_two: MyAudioParamTwinNormal::new("b".to_owned()),
+            param_one: MyAudioParamTwinNormal("a".to_owned()),
+            param_two: MyAudioParamTwinNormal("b".to_owned()),
         }
     }
 
