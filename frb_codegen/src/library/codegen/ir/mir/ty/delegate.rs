@@ -291,7 +291,7 @@ impl MirTypeDelegate {
             MirTypeDelegate::StreamSink(_) => MirType::Delegate(MirTypeDelegate::String),
             MirTypeDelegate::BigPrimitive(_) => MirType::Delegate(MirTypeDelegate::String),
             MirTypeDelegate::RustAutoOpaqueExplicit(mir) => MirType::RustOpaque(mir.inner.clone()),
-            MirTypeDelegate::DynTrait(mir) => mir.inner(),
+            MirTypeDelegate::DynTrait(mir) => mir.get_delegate(),
             MirTypeDelegate::ProxyVariant(mir) => *mir.inner.clone(),
             MirTypeDelegate::ProxyEnum(mir) => mir.get_delegate(),
         }
@@ -356,21 +356,21 @@ impl MirTypeDelegateProxyEnum {
 }
 
 impl MirTypeDelegateDynTrait {
-    pub fn inner(&self) -> MirType {
+    pub fn get_delegate(&self) -> MirType {
         if self.dummy_delegate {
             MirType::Primitive(MirTypePrimitive::Unit)
         } else {
             MirType::EnumRef(MirTypeEnumRef {
                 ident: MirEnumIdent(NamespacedName::new(
                     self.delegate_namespace.clone(),
-                    self.inner_enum_name(),
+                    self.delegate_enum_name(),
                 )),
                 is_exception: false,
             })
         }
     }
 
-    pub(crate) fn inner_enum_name(&self) -> String {
+    pub(crate) fn delegate_enum_name(&self) -> String {
         format!("{}Implementor", self.trait_def_name.name)
     }
 
