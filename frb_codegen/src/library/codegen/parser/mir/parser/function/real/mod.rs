@@ -128,7 +128,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         let src_lineno = func.item_fn.span().start().line;
         let attributes = FrbAttributes::parse(func.item_fn.attrs())?;
 
-        let dart_name = parse_dart_name(attributes);
+        let dart_name = parse_dart_name(&attributes, &func.item_fn.name());
 
         let create_context = |owner: Option<MirFuncOwnerInfo>| TypeParserParsingContext {
             initiated_namespace: func.namespace.clone(),
@@ -433,6 +433,12 @@ fn compute_impl_mode(
     MirFuncImplMode::Normal
 }
 
-fn parse_dart_name(attributes: &FrbAttributes) -> Option<String> {
-    (attributes.name()).or_else(|| attributes.accessor().map(|accessor| TODO))
+fn parse_dart_name(attributes: &FrbAttributes, func_name_raw: &str) -> Option<String> {
+    (attributes.name()).or_else(|| {
+        (attributes.accessor()).flat_map(|accessor| {
+            func_name_raw
+                .strip_prefix(format!("{}_", accessor.verb_str()))
+                .cloned()
+        })
+    })
 }
