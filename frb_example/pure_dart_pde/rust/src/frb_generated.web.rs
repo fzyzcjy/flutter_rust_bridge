@@ -31,9 +31,9 @@ use crate::api::rust_auto_opaque::*;
 use crate::api::rust_opaque::*;
 use crate::api::rust_opaque_sync::*;
 use flutter_rust_bridge::for_generated::byteorder::{NativeEndian, ReadBytesExt, WriteBytesExt};
-use flutter_rust_bridge::for_generated::transform_result_dco;
 use flutter_rust_bridge::for_generated::wasm_bindgen;
 use flutter_rust_bridge::for_generated::wasm_bindgen::prelude::*;
+use flutter_rust_bridge::for_generated::{transform_result_dco, Lockable};
 use flutter_rust_bridge::{Handler, IntoIntoDart};
 
 // Section: boilerplate
