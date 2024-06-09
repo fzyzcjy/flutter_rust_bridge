@@ -51,5 +51,6 @@ pub mod structure;
 pub mod tuple;
 pub mod type_alias;
 pub mod uuid_type;
+mod dyn_trait;
 
 pub fn function_at_api_mod_rs() {}

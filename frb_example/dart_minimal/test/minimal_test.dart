@@ -14,13 +14,4 @@ Future<void> main() async {
     print('Action: Call rust (after)');
   });
   print('Action: Configure tests (end)');
-
-  test('support &dyn TraitType', () async {
-    final one =
-        await StructOneWithTraitForDynTwinNormal.createTwinNormal(one: 10);
-    final two =
-        await StructTwoWithTraitForDynTwinNormal.createTwinNormal(two: 100);
-    expect(await funcArgDynTraitTwinNormal(arg: one), 10);
-    expect(await funcArgDynTraitTwinNormal(arg: two), 200);
-  });
 }
