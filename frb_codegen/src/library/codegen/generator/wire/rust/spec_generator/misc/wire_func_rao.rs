@@ -23,7 +23,7 @@ pub(crate) fn generate_code_inner_decode(func: &MirFunc) -> String {
         .map(|(index, (field, ty))| {
             let mutable = (ty.ownership_mode == OwnershipMode::RefMut).to_string();
             format!(
-                "flutter_rust_bridge::for_generated::rust_auto_opaque_lock_order_info(&api_{name}, {index}, {mutable})",
+                "flutter_rust_bridge::for_generated::LockableOrderInfo::new(&api_{name}, {index}, {mutable})",
                 name = get_variable_name(field)
             )
         })
@@ -68,7 +68,7 @@ fn generate_decode_statement(
 ) -> String {
     let mode = ty.ownership_mode.to_string().to_case(Case::Snake);
     format!(
-        "api_{name}_decoded = Some(flutter_rust_bridge::for_generated::rust_auto_opaque_decode_{syncness}_{mode}(&api_{name}){maybe_await})",
+        "api_{name}_decoded = Some(api_{name}.lockable_decode_{syncness}_{mode}(){maybe_await})",
         name = get_variable_name(field),
         syncness = if func.rust_async { "async" } else { "sync" },
         maybe_await = if func.rust_async { ".await" } else { "" },
