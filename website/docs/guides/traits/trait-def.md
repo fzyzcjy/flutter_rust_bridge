@@ -1,0 +1,3 @@
+# Traits to classes
+
+TODO

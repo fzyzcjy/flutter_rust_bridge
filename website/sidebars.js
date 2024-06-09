@@ -215,6 +215,8 @@ const sidebars = {
                     },
                     items: [
                         'guides/traits/overview',
+                        'guides/traits/trait-def',
+                        'guides/traits/trait-objects',
                     ],
                 },
                 {
