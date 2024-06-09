@@ -435,10 +435,9 @@ fn compute_impl_mode(
 
 fn parse_dart_name(attributes: &FrbAttributes, func_name_raw: &str) -> Option<String> {
     (attributes.name()).or_else(|| {
-        (attributes.accessor()).flat_map(|accessor| {
-            func_name_raw
-                .strip_prefix(format!("{}_", accessor.verb_str()))
-                .cloned()
+        (attributes.accessor()).and_then(|accessor| {
+            (func_name_raw.strip_prefix(&format!("{}_", accessor.verb_str())))
+                .map(ToString::to_string)
         })
     })
 }
