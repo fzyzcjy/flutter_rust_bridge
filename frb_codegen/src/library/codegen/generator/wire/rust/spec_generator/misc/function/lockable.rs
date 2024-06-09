@@ -95,6 +95,7 @@ fn compute_interest_field(field: &MirFuncInput) -> Option<FieldInfo> {
                 ownership_mode: ty.ownership_mode,
             })
         }
+        // TODO: ProxyEnum here
         _ => None,
     }
 }
