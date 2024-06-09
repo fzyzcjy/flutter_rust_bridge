@@ -83,16 +83,20 @@ fn get_variable_name(field: &MirFuncInput) -> &str {
 
 fn filter_interest_fields(func: &MirFunc) -> Vec<FieldInfo> {
     (func.inputs.iter())
-        .filter_map(|field| match &field.inner.ty {
-            MirType::RustAutoOpaqueImplicit(ty) if ty.ownership_mode != OwnershipMode::Owned => {
-                Some(FieldInfo {
-                    field,
-                    ownership_mode: ty.ownership_mode,
-                })
-            }
-            _ => None,
-        })
+        .filter_map(|field| compute_interest_field(field))
         .collect_vec()
+}
+
+fn compute_interest_field(field: &MirFuncInput) -> Option<FieldInfo> {
+    match &field.inner.ty {
+        MirType::RustAutoOpaqueImplicit(ty) if ty.ownership_mode != OwnershipMode::Owned => {
+            Some(FieldInfo {
+                field,
+                ownership_mode: ty.ownership_mode,
+            })
+        }
+        _ => None,
+    }
 }
 
 struct FieldInfo<'a> {
