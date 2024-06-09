@@ -76,7 +76,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     MirTypeDelegateTime::Utc | MirTypeDelegateTime::Local => {
                         "self.timestamp_micros()".to_owned()
                     }
-                    MirTypeDelegateTime::NaiveDate => "self.and_hms_opt(0, 0, 0).unwrap().and_utc().timestamp_micros()".to_owned(),
+                    MirTypeDelegateTime::NaiveDate => r#"self.and_hms_opt(0, 0, 0).expect("cannot convert NaiveDate to NaiveDateTime").and_utc().timestamp_micros()"#.to_owned(),
                     MirTypeDelegateTime::NaiveDateTime => {
                         "self.and_utc().timestamp_micros()".to_owned()
                     }
