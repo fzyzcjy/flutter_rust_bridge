@@ -42,7 +42,7 @@ pub(crate) fn generate(
         .flatten()
         .collect_vec();
 
-    let output_namespace = compute_trait_implementor_namespace(config);
+    let output_namespace = compute_trait_implementor_namespace(config_mir);
 
     inject_extra_codes(&mut pack.hir_flat_pack, output_namespace, &extra_codes)?;
 

@@ -7,6 +7,7 @@ pub(crate) mod ty;
 use crate::codegen::ir::early_generator::pack::IrEarlyGeneratorPack;
 use crate::codegen::ir::hir::flat::pack::HirFlatPack;
 use crate::codegen::ir::mir::pack::MirPack;
+use crate::codegen::parser::early_generator::trait_impl_enum::compute_trait_implementor_namespace;
 use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
 use crate::codegen::parser::mir::ParseMode;
 use crate::codegen::parser::mir::parser::ty::TypeParser;
@@ -29,6 +30,7 @@ pub(crate) fn parse(
         &mut type_parser,
         config.default_stream_sink_codec,
         config.default_rust_opaque_codec,
+        compute_trait_implementor_namespace(config),
         parse_mode,
     )?;
 

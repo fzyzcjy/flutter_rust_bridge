@@ -13,12 +13,14 @@ use crate::codegen::ir::mir::ty::rust_auto_opaque_implicit::MirTypeRustAutoOpaqu
 use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::ir::mir::ty::trait_def::MirTypeTraitDef;
 use crate::codegen::ir::mir::ty::MirType;
+use crate::codegen::parser::early_generator::trait_impl_enum::compute_trait_implementor_namespace;
 use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
 use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
 use crate::codegen::parser::mir::parser::function::func_or_skip::MirFuncOrSkip;
 use crate::codegen::parser::mir::parser::ty::misc::parse_comments;
 use crate::codegen::parser::mir::parser::ty::trait_def::parse_type_trait;
 use crate::codegen::parser::mir::parser::ty::{TypeParser, TypeParserParsingContext};
+use crate::codegen::parser::mir::ParseMode;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use crate::utils::namespace::{Namespace, NamespacedName};
 use anyhow::{bail, Context};
@@ -28,7 +30,6 @@ use std::fmt::Debug;
 use syn::*;
 use MirSkipReason::{IgnoredFunctionNotPub, IgnoredMisc};
 use MirType::Primitive;
-use crate::codegen::parser::mir::ParseMode;
 
 pub(crate) mod argument;
 pub(crate) mod output;
@@ -51,6 +52,7 @@ pub(crate) fn parse(
                 &config.force_codec_mode_pack,
                 config.default_stream_sink_codec,
                 config.default_rust_opaque_codec,
+                compute_trait_implementor_namespace(config),
                 parse_mode,
                 config.stop_on_error,
             )
@@ -74,6 +76,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         force_codec_mode_pack: &Option<CodecModePack>,
         default_stream_sink_codec: CodecMode,
         default_rust_opaque_codec: RustOpaqueCodecMode,
+        trait_implementor_namespace: &Namespace,
         parse_mode: ParseMode,
         stop_on_error: bool,
     ) -> anyhow::Result<MirFuncOrSkip> {
@@ -82,6 +85,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             force_codec_mode_pack,
             default_stream_sink_codec,
             default_rust_opaque_codec,
+            trait_implementor_namespace,
             parse_mode,
         ) {
             Ok(output) => Ok(output),
@@ -110,6 +114,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         force_codec_mode_pack: &Option<CodecModePack>,
         default_stream_sink_codec: CodecMode,
         default_rust_opaque_codec: RustOpaqueCodecMode,
+        trait_implementor_namespace: &Namespace,
         parse_mode: ParseMode,
     ) -> anyhow::Result<MirFuncOrSkip> {
         debug!("parse_function function name: {:?}", func.item_fn.name());
@@ -131,6 +136,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             func_attributes: attributes.clone(),
             default_stream_sink_codec,
             default_rust_opaque_codec,
+            trait_implementor_namespace: trait_implementor_namespace.clone(),
             owner,
             parse_mode,
         };

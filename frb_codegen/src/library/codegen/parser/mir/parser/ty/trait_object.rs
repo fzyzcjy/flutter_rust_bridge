@@ -34,7 +34,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                 return Ok(Some(MirType::Delegate(MirTypeDelegate::DynTrait(
                     MirTypeDelegateDynTrait {
                         trait_def_name: trait_ty.name,
-                        delegate_namespace: self.context.trait_implementor_namespace,
+                        delegate_namespace: self.context.trait_implementor_namespace.clone(),
                         dummy_delegate: self.context.parse_mode == ParseMode::Early,
                     },
                 ))));
