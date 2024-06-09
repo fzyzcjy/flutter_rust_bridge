@@ -1,6 +1,7 @@
 use crate::codegen::generator::api_dart::spec_generator::base::ApiDartGenerator;
 use crate::codegen::generator::api_dart::spec_generator::class::proxy_variant;
 use crate::codegen::generator::codec::sse::lang::*;
+use crate::codegen::generator::codec::sse::lockable;
 use crate::codegen::generator::codec::sse::ty::*;
 use crate::codegen::ir::mir::ty::delegate::{
     MirTypeDelegatePrimitiveEnum, MirTypeDelegateProxyEnum, MirTypeDelegateSet,
@@ -292,25 +293,5 @@ fn generate_proxy_enum_dart_encode(
     context: ApiDartGeneratorContext,
 ) -> String {
     let enum_name = mir.proxy_enum_name();
-
-    let variants = (mir.variants.iter().enumerate())
-        .map(|(index, variant)| {
-            let variant_dart_extra_type = proxy_variant::compute_dart_extra_type(variant, context);
-            format!(
-                "if (self is {variant_dart_extra_type}) {{
-                    return {enum_name}.variant{index}(self._upstream);
-                }}
-                "
-            )
-        })
-        .join("");
-
-    format!(
-        "
-        (() {{
-            {variants}
-            throw Exception('not reachable');
-        }})()
-        "
-    )
+    lockable::generate_lockable_encode_to_enum(&enum_name)
 }
