@@ -229,10 +229,32 @@ const sidebars = {
                     },
                     items: [
                         'guides/third-party/overview',
-                        'guides/third-party/scanning',
-                        'guides/third-party/override-attributes',
-                        'guides/third-party/override-methods',
-                        'guides/third-party/tricks',
+                        {
+                            type: 'category',
+                            label: 'Automatic',
+                            collapsed: true,
+                            link: {
+                                type: 'doc',
+                                id: 'guides/third-party/automatic/index',
+                            },
+                            items: [
+                                'guides/third-party/automatic/scanning',
+                                'guides/third-party/automatic/override-attributes',
+                                'guides/third-party/automatic/override-methods',
+                                'guides/third-party/automatic/tricks',
+                            ],
+                        },
+                        {
+                            type: 'category',
+                            label: 'Manual',
+                            collapsed: true,
+                            link: {
+                                type: 'doc',
+                                id: 'guides/third-party/manual/index',
+                            },
+                            items: [
+                            ],
+                        },
                     ],
                 },
                 {
