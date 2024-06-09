@@ -36,6 +36,7 @@ impl ImmediateInvalidBorrowChecker {
 
 #[cfg(test)]
 mod tests {
+    use crate::lockable::order::LockableOrder;
     use super::*;
 
     #[test]
@@ -47,7 +48,7 @@ mod tests {
                 LockableOrderInfo {
                     index: 0,
                     mutable,
-                    object_order: crate::rust_auto_opaque::order::RustAutoOpaqueOrder::new_for_test(
+                    object_order: LockableOrder::new_for_test(
                         100
                     ),
                 }
@@ -66,13 +67,13 @@ mod tests {
                         index: 0,
                         mutable: mutable_a,
                         object_order:
-                            crate::rust_auto_opaque::order::RustAutoOpaqueOrder::new_for_test(100),
+                            LockableOrder::new_for_test(100),
                     },
                     LockableOrderInfo {
                         index: 1,
                         mutable: mutable_b,
                         object_order:
-                            crate::rust_auto_opaque::order::RustAutoOpaqueOrder::new_for_test(100),
+                            LockableOrder::new_for_test(100),
                     }
                 ]),
                 expect
@@ -83,14 +84,14 @@ mod tests {
             LockableOrderInfo {
                 index: 0,
                 mutable: true,
-                object_order: crate::rust_auto_opaque::order::RustAutoOpaqueOrder::new_for_test(
+                object_order: LockableOrder::new_for_test(
                     100
                 ),
             },
             LockableOrderInfo {
                 index: 1,
                 mutable: true,
-                object_order: crate::rust_auto_opaque::order::RustAutoOpaqueOrder::new_for_test(
+                object_order: LockableOrder::new_for_test(
                     101
                 ),
             }
