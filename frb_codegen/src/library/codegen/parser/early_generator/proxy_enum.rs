@@ -92,22 +92,27 @@ fn generate_proxy_enum(proxy_variants: &[&MirTypeDelegateProxyVariant]) -> Strin
 fn generate_impl_lockable(enum_name: &str) -> String {
     format!(
         "
+        #[frb(ignore)]
         impl Lockable for {enum_name} {{
             type RwLockReadGuard<'a> = TODO;
             type RwLockWriteGuard<'a> = TODO;
 
+            #[frb(ignore)]
             fn lockable_order(&self) -> LockableOrder {{
                 TODO
             }}
 
+            #[frb(ignore)]
             fn lockable_decode_sync_ref(&self) -> Self::RwLockReadGuard<'_> {{
                 TODO
             }}
 
+            #[frb(ignore)]
             fn lockable_decode_sync_ref_mut(&self) -> Self::RwLockWriteGuard<'_> {{
                 TODO
             }}
 
+            #[frb(ignore)]
             fn lockable_decode_async_ref<'a>(
                 &'a self,
             ) -> Pin<Box<dyn Future<Output = Self::RwLockReadGuard<'_>> + Send + 'a>>
@@ -117,6 +122,7 @@ fn generate_impl_lockable(enum_name: &str) -> String {
                 Box::pin(async move {{ TODO }})
             }}
 
+            #[frb(ignore)]
             fn lockable_decode_async_ref_mut<'a>(
                 &'a self,
             ) -> Pin<Box<dyn Future<Output = Self::RwLockWriteGuard<'_>> + Send + 'a>>
