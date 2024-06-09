@@ -5,10 +5,27 @@ use crate::codegen::parser::hir::flat::parser::syn_item::parse_syn_item;
 use crate::utils::namespace::Namespace;
 use anyhow::Context;
 
-pub(crate) fn inject_extra_code(
+// just a convenient wrapper around `inject_extra_code`
+pub(crate) fn inject_extra_codes(
     pack: &mut HirFlatPack,
-    extra_code: &str,
     namespace: &Namespace,
+    blocks: &[InjectExtraCodeBlock],
+) -> anyhow::Result<()> {
+    for block in blocks {
+        inject_extra_code(pack, namespace, &block.code, block.should_parse)?;
+    }
+    Ok(())
+}
+
+pub(crate) struct InjectExtraCodeBlock {
+    code: String,
+    should_parse: bool,
+}
+
+fn inject_extra_code(
+    pack: &mut HirFlatPack,
+    namespace: &Namespace,
+    extra_code: &str,
     should_parse: bool,
 ) -> anyhow::Result<()> {
     pack.extra_rust_output_code += extra_code;
