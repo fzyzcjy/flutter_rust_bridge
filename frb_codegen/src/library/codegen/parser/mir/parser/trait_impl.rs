@@ -17,7 +17,6 @@ pub(crate) fn parse(
     type_parser: &mut TypeParser,
     default_stream_sink_codec: CodecMode,
     default_rust_opaque_codec: RustOpaqueCodecMode,
-    trait_implementor_namespace: &Namespace,
     parse_mode: ParseMode,
 ) -> anyhow::Result<Vec<MirTraitImpl>> {
     let context = TypeParserParsingContext {
@@ -25,7 +24,6 @@ pub(crate) fn parse(
         func_attributes: FrbAttributes::parse(&[])?,
         default_stream_sink_codec,
         default_rust_opaque_codec,
-        trait_implementor_namespace: trait_implementor_namespace.clone(),
         owner: None,
         parse_mode,
     };

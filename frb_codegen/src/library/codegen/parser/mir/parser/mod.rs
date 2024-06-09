@@ -30,7 +30,6 @@ pub(crate) fn parse(
         &mut type_parser,
         config.default_stream_sink_codec,
         config.default_rust_opaque_codec,
-        compute_trait_implementor_namespace(config),
         parse_mode,
     )?;
 

@@ -5,7 +5,6 @@ use crate::codegen::ir::hir::flat::struct_or_enum::HirFlatStruct;
 use crate::codegen::ir::mir::func::{MirFunc, MirFuncAccessorMode, OwnershipMode};
 use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::ir::mir::ty::{MirContext, MirType};
-use crate::codegen::parser::early_generator::trait_impl_enum::compute_trait_implementor_namespace;
 use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
 use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
 use crate::codegen::parser::mir::parser::function::func_or_skip::MirFuncOrSkip;
@@ -63,7 +62,6 @@ fn parse_auto_accessors_of_struct(
         struct_name,
         config.default_stream_sink_codec,
         config.default_rust_opaque_codec,
-        compute_trait_implementor_namespace(config).to_owned(),
         parse_mode,
     )?;
 
@@ -114,7 +112,6 @@ fn create_parsing_context(
     struct_name: &NamespacedName,
     default_stream_sink_codec: CodecMode,
     default_rust_opaque_codec: RustOpaqueCodecMode,
-    trait_implementor_namespace: Namespace,
     parse_mode: ParseMode,
 ) -> anyhow::Result<TypeParserParsingContext> {
     Ok(TypeParserParsingContext {
@@ -122,7 +119,6 @@ fn create_parsing_context(
         func_attributes: FrbAttributes::parse(&[])?,
         default_stream_sink_codec,
         default_rust_opaque_codec,
-        trait_implementor_namespace,
         owner: None,
         parse_mode,
     })
