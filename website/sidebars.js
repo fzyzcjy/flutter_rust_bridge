@@ -232,6 +232,7 @@ const sidebars = {
                         'guides/third-party/scanning',
                         'guides/third-party/override-attributes',
                         'guides/third-party/override-methods',
+                        'guides/third-party/tricks',
                     ],
                 },
                 {
