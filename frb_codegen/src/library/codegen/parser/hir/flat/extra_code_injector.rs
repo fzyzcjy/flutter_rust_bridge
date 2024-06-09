@@ -18,8 +18,8 @@ pub(crate) fn inject_extra_codes(
 }
 
 pub(crate) struct InjectExtraCodeBlock {
-    code: String,
-    should_parse: bool,
+    pub code: String,
+    pub should_parse: bool,
 }
 
 fn inject_extra_code(

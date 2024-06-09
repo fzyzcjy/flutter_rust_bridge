@@ -6,7 +6,9 @@ use crate::codegen::ir::mir::ty::delegate::{
     MirTypeDelegate, MirTypeDelegateProxyEnum, MirTypeDelegateProxyVariant,
 };
 use crate::codegen::ir::mir::ty::MirType;
-use crate::codegen::parser::hir::flat::extra_code_injector::inject_extra_code;
+use crate::codegen::parser::hir::flat::extra_code_injector::{
+    inject_extra_codes, InjectExtraCodeBlock,
+};
 use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
 use crate::codegen::parser::mir::parser::function::real::FUNC_PREFIX_FRB_INTERNAL_NO_IMPL;
 use crate::if_then_some;
@@ -32,26 +34,11 @@ pub(crate) fn generate(
 
     let proxied_types = compute_proxied_types(&proxy_variants_of_enum, &output_namespace);
 
-    let extra_code_with_parse = (proxy_variants_of_enum.values())
-        .map(|proxy_variants| generate_proxy_enum_with_parse(proxy_variants))
-        .join("");
+    let extra_codes = (proxy_variants_of_enum.values())
+        .flat_map(|proxy_variants| generate_proxy_enum(proxy_variants))
+        .collect_vec();
 
-    let extra_code_without_parse = (proxy_variants_of_enum.values())
-        .map(|proxy_variants| generate_proxy_enum_without_parse(proxy_variants))
-        .join("");
-
-    inject_extra_code(
-        &mut pack.hir_flat_pack,
-        &extra_code_with_parse,
-        output_namespace,
-        true,
-    )?;
-    inject_extra_code(
-        &mut pack.hir_flat_pack,
-        &extra_code_without_parse,
-        output_namespace,
-        false,
-    )?;
+    inject_extra_codes(&mut pack.hir_flat_pack, &extra_codes, output_namespace)?;
     (pack.proxied_types).extend(proxied_types);
 
     Ok(())
@@ -70,7 +57,9 @@ fn compute_proxied_types(
         .collect_vec()
 }
 
-fn generate_proxy_enum_with_parse(proxy_variants: &[&MirTypeDelegateProxyVariant]) -> String {
+fn generate_proxy_enum(
+    proxy_variants: &[&MirTypeDelegateProxyVariant],
+) -> Vec<InjectExtraCodeBlock> {
     let proxy_enum_ty = *proxy_variants[0].inner.clone();
 
     let enum_name = MirTypeDelegateProxyEnum::proxy_enum_name_raw(&proxy_enum_ty);
@@ -84,7 +73,9 @@ fn generate_proxy_enum_with_parse(proxy_variants: &[&MirTypeDelegateProxyVariant
         })
         .join("");
 
-    format!(
+    let impl_lockable = generate_impl_lockable(&enum_name);
+
+    let block_with_parse = format!(
         "
         enum {enum_name} {{
             {variants}
@@ -92,18 +83,24 @@ fn generate_proxy_enum_with_parse(proxy_variants: &[&MirTypeDelegateProxyVariant
 
         pub fn {FUNC_PREFIX_FRB_INTERNAL_NO_IMPL}_dummy_function_{enum_name}(a: {enum_name}) {{ }}
         "
-    )
-}
+    );
 
-fn generate_proxy_enum_without_parse(proxy_variants: &[&MirTypeDelegateProxyVariant]) -> String {
-    let enum_name = "Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamProxyEnum"; // TODO
-    let impl_lockable = generate_impl_lockable(&enum_name);
-
-    format!(
+    let block_without_parse = format!(
         "
         {impl_lockable}
         "
-    )
+    );
+
+    vec![
+        InjectExtraCodeBlock {
+            code: block_with_parse,
+            should_parse: true,
+        },
+        InjectExtraCodeBlock {
+            code: block_without_parse,
+            should_parse: false,
+        },
+    ]
 }
 
 fn generate_impl_lockable(enum_name: &str) -> String {
