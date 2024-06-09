@@ -30,10 +30,6 @@ pub(crate) fn generate(
             code: format!(
                 "{code_enum_def}
 
-                {code_read_guard}
-
-                {code_write_guard}
-
                 pub fn {FUNC_PREFIX_FRB_INTERNAL_NO_IMPL}_dummy_function_{enum_name}(a: {enum_name}) {{ }}
                 "
             ),
@@ -42,7 +38,10 @@ pub(crate) fn generate(
         InjectExtraCodeBlock {
             code: format!(
                 "{code_lockable_impl}
-                "
+
+                {code_read_guard}
+
+                {code_write_guard}"
             ),
             should_parse: false,
         }
@@ -163,8 +162,7 @@ fn generate_code_read_write_guard(
     };
 
     format!(
-        "#[flutter_rust_bridge::frb(ignore)]
-        {enum_def}
+        "{enum_def}
 
         {deref_code}
 
