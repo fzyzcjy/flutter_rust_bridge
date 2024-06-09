@@ -317,7 +317,7 @@ fn generate_dyn_trait_dart_encode(
         .map(|(index, variant)| encode_to_enum::VariantInfo {
             enum_variant_name: TODO,
             ty_name: TODO,
-            extra_code: TODO,
+            extra_code: "".to_owned(),
         })
         .collect_vec();
 

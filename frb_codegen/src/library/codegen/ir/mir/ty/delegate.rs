@@ -100,6 +100,7 @@ pub struct MirTypeDelegateProxyEnum {
 pub struct MirTypeDelegateDynTrait {
     pub trait_def_name: NamespacedName,
     pub delegate_namespace: Namespace,
+    pub variants: Vec<TODO>,
     pub dummy_delegate: bool,
 }
 }
