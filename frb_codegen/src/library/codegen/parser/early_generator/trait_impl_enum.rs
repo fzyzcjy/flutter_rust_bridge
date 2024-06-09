@@ -4,6 +4,7 @@ use crate::codegen::ir::hir::flat::traits::HirFlatTrait;
 use crate::codegen::ir::mir::pack::MirPack;
 use crate::codegen::ir::mir::trait_impl::MirTraitImpl;
 use crate::codegen::ir::mir::ty::MirType;
+use crate::codegen::parser::early_generator::utils::lockable;
 use crate::codegen::parser::hir::flat::extra_code_injector::{
     inject_extra_codes, InjectExtraCodeBlock,
 };
@@ -52,7 +53,11 @@ fn generate_trait_impl_enum(
         .sorted_by_key(|x| x.safe_ident())
         .collect_vec();
 
-    let code = TODO;
+    let variants = (interest_trait_impls.into_iter())
+        .map(|item| lockable::VariantInfo {})
+        .collect_vec();
+
+    let code = lockable::generate(&variants);
 
     Ok(vec![InjectExtraCodeBlock {
         code,
