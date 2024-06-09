@@ -1122,18 +1122,17 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
                 } })
 }
 fn wire__web_audio_api__AudioParam_set_value_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "AudioParam_set_value", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "AudioParam_set_value", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_that = <crate::frb_generated::Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum>::sse_decode(&mut deserializer);
-let api_value = <f32>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
-                    transform_result_sse((move ||  {
-                        let mut api_that_decoded = None;
+let api_value = <f32>::sse_decode(&mut deserializer);deserializer.end();
+                transform_result_sse((move || {
+                    let mut api_that_decoded = None;
 let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![flutter_rust_bridge::for_generated::LockableOrderInfo::new(&api_that, 0, false)]);
         for i in decode_indices_ {
             match i {
@@ -1143,8 +1142,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
         }
         let api_that = &*api_that_decoded.unwrap();
  Result::<_,()>::Ok({ web_audio_api::AudioParam::set_value(api_that, api_value); })
-                    })())
-                } })
+                })()) })
 }
 fn wire__web_audio_api__AudioParam_set_value_at_time_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
@@ -30575,7 +30573,6 @@ fn pde_ffi_dispatcher_primary_impl(
 66 => wire__web_audio_api__AudioParam_set_channel_count_mode_impl(port, ptr, rust_vec_len, data_len),
 67 => wire__web_audio_api__AudioParam_set_channel_interpretation_impl(port, ptr, rust_vec_len, data_len),
 68 => wire__web_audio_api__AudioParam_set_target_at_time_impl(port, ptr, rust_vec_len, data_len),
-69 => wire__web_audio_api__AudioParam_set_value_impl(port, ptr, rust_vec_len, data_len),
 70 => wire__web_audio_api__AudioParam_set_value_at_time_impl(port, ptr, rust_vec_len, data_len),
 71 => wire__web_audio_api__AudioParam_set_value_curve_at_time_impl(port, ptr, rust_vec_len, data_len),
 89 => wire__web_audio_api__AudioRenderCapacity_clear_onupdate_impl(port, ptr, rust_vec_len, data_len),
@@ -31102,6 +31099,7 @@ fn pde_ffi_dispatcher_sync_impl(
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     // Codec=Pde (Serialization + dispatch), see doc to use other codecs
     match func_id {
+        69 => wire__web_audio_api__AudioParam_set_value_impl(ptr, rust_vec_len, data_len),
         72 => wire__web_audio_api__AudioParam_value_impl(ptr, rust_vec_len, data_len),
         73 => wire__web_audio_api__AudioProcessingEvent_get_input_buffer_impl(
             ptr,

@@ -34,7 +34,8 @@ impl AudioParam {
     #[frb(sync, getter)]
     pub fn value() {}
 
-    #[frb(sync, setter, name = "value")]
+    // TODO make it setter later
+    #[frb(sync)]
     pub fn set_value() {}
 }
 

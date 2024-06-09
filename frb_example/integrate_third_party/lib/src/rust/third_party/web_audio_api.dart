@@ -222,7 +222,7 @@ abstract class AudioParam
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
-  Future<void> setValue({required double value});
+  void setValue({required double value});
 
   /// Schedules a parameter value change at the given time.
   ///

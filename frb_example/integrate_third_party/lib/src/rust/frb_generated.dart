@@ -181,7 +181,7 @@ abstract class RustLibApi extends BaseApi {
       required double startTime,
       required double timeConstant});
 
-  Future<void> webAudioApiAudioParamSetValue(
+  void webAudioApiAudioParamSetValue(
       {required AudioParam that, required double value});
 
   Future<void> webAudioApiAudioParamSetValueAtTime(
@@ -3245,16 +3245,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<void> webAudioApiAudioParamSetValue(
+  void webAudioApiAudioParamSetValue(
       {required AudioParam that, required double value}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_ProxyEnum_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_audio_param_proxy_enum(
             that, serializer);
         sse_encode_f_32(value, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 69, port: port_);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 69)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -27190,7 +27189,7 @@ class AudioParamImpl extends RustOpaque implements AudioParam {
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
-  Future<void> setValue({required double value}) => RustLib.instance.api
+  void setValue({required double value}) => RustLib.instance.api
       .webAudioApiAudioParamSetValue(that: this, value: value);
 
   /// Schedules a parameter value change at the given time.
@@ -31030,7 +31029,7 @@ class AudioParamProxyVariantAudioBufferSourceNodeDetune
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
-  Future<void> setValue({required double value}) => RustLib.instance.api
+  void setValue({required double value}) => RustLib.instance.api
       .webAudioApiAudioParamSetValue(that: this, value: value);
 
   /// Schedules a parameter value change at the given time.
@@ -31265,7 +31264,7 @@ class AudioParamProxyVariantAudioBufferSourceNodePlaybackRate
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
-  Future<void> setValue({required double value}) => RustLib.instance.api
+  void setValue({required double value}) => RustLib.instance.api
       .webAudioApiAudioParamSetValue(that: this, value: value);
 
   /// Schedules a parameter value change at the given time.
@@ -31500,7 +31499,7 @@ class AudioParamProxyVariantAudioListenerForwardX
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
-  Future<void> setValue({required double value}) => RustLib.instance.api
+  void setValue({required double value}) => RustLib.instance.api
       .webAudioApiAudioParamSetValue(that: this, value: value);
 
   /// Schedules a parameter value change at the given time.
@@ -31735,7 +31734,7 @@ class AudioParamProxyVariantAudioListenerForwardY
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
-  Future<void> setValue({required double value}) => RustLib.instance.api
+  void setValue({required double value}) => RustLib.instance.api
       .webAudioApiAudioParamSetValue(that: this, value: value);
 
   /// Schedules a parameter value change at the given time.
@@ -31970,7 +31969,7 @@ class AudioParamProxyVariantAudioListenerForwardZ
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
-  Future<void> setValue({required double value}) => RustLib.instance.api
+  void setValue({required double value}) => RustLib.instance.api
       .webAudioApiAudioParamSetValue(that: this, value: value);
 
   /// Schedules a parameter value change at the given time.
@@ -32205,7 +32204,7 @@ class AudioParamProxyVariantAudioListenerPositionX
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
-  Future<void> setValue({required double value}) => RustLib.instance.api
+  void setValue({required double value}) => RustLib.instance.api
       .webAudioApiAudioParamSetValue(that: this, value: value);
 
   /// Schedules a parameter value change at the given time.
@@ -32440,7 +32439,7 @@ class AudioParamProxyVariantAudioListenerPositionY
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
-  Future<void> setValue({required double value}) => RustLib.instance.api
+  void setValue({required double value}) => RustLib.instance.api
       .webAudioApiAudioParamSetValue(that: this, value: value);
 
   /// Schedules a parameter value change at the given time.
@@ -32675,7 +32674,7 @@ class AudioParamProxyVariantAudioListenerPositionZ
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
-  Future<void> setValue({required double value}) => RustLib.instance.api
+  void setValue({required double value}) => RustLib.instance.api
       .webAudioApiAudioParamSetValue(that: this, value: value);
 
   /// Schedules a parameter value change at the given time.
@@ -32910,7 +32909,7 @@ class AudioParamProxyVariantAudioListenerUpX
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
-  Future<void> setValue({required double value}) => RustLib.instance.api
+  void setValue({required double value}) => RustLib.instance.api
       .webAudioApiAudioParamSetValue(that: this, value: value);
 
   /// Schedules a parameter value change at the given time.
@@ -33145,7 +33144,7 @@ class AudioParamProxyVariantAudioListenerUpY
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
-  Future<void> setValue({required double value}) => RustLib.instance.api
+  void setValue({required double value}) => RustLib.instance.api
       .webAudioApiAudioParamSetValue(that: this, value: value);
 
   /// Schedules a parameter value change at the given time.
@@ -33380,7 +33379,7 @@ class AudioParamProxyVariantAudioListenerUpZ
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
-  Future<void> setValue({required double value}) => RustLib.instance.api
+  void setValue({required double value}) => RustLib.instance.api
       .webAudioApiAudioParamSetValue(that: this, value: value);
 
   /// Schedules a parameter value change at the given time.
@@ -33615,7 +33614,7 @@ class AudioParamProxyVariantBiquadFilterNodeDetune
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
-  Future<void> setValue({required double value}) => RustLib.instance.api
+  void setValue({required double value}) => RustLib.instance.api
       .webAudioApiAudioParamSetValue(that: this, value: value);
 
   /// Schedules a parameter value change at the given time.
@@ -33850,7 +33849,7 @@ class AudioParamProxyVariantBiquadFilterNodeFrequency
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
-  Future<void> setValue({required double value}) => RustLib.instance.api
+  void setValue({required double value}) => RustLib.instance.api
       .webAudioApiAudioParamSetValue(that: this, value: value);
 
   /// Schedules a parameter value change at the given time.
@@ -34085,7 +34084,7 @@ class AudioParamProxyVariantBiquadFilterNodeGain
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
-  Future<void> setValue({required double value}) => RustLib.instance.api
+  void setValue({required double value}) => RustLib.instance.api
       .webAudioApiAudioParamSetValue(that: this, value: value);
 
   /// Schedules a parameter value change at the given time.
@@ -34320,7 +34319,7 @@ class AudioParamProxyVariantBiquadFilterNodeQ
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
-  Future<void> setValue({required double value}) => RustLib.instance.api
+  void setValue({required double value}) => RustLib.instance.api
       .webAudioApiAudioParamSetValue(that: this, value: value);
 
   /// Schedules a parameter value change at the given time.
@@ -34555,7 +34554,7 @@ class AudioParamProxyVariantConstantSourceNodeOffset
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
-  Future<void> setValue({required double value}) => RustLib.instance.api
+  void setValue({required double value}) => RustLib.instance.api
       .webAudioApiAudioParamSetValue(that: this, value: value);
 
   /// Schedules a parameter value change at the given time.
@@ -34790,7 +34789,7 @@ class AudioParamProxyVariantDelayNodeDelayTime
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
-  Future<void> setValue({required double value}) => RustLib.instance.api
+  void setValue({required double value}) => RustLib.instance.api
       .webAudioApiAudioParamSetValue(that: this, value: value);
 
   /// Schedules a parameter value change at the given time.
@@ -35025,7 +35024,7 @@ class AudioParamProxyVariantDynamicsCompressorNodeAttack
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
-  Future<void> setValue({required double value}) => RustLib.instance.api
+  void setValue({required double value}) => RustLib.instance.api
       .webAudioApiAudioParamSetValue(that: this, value: value);
 
   /// Schedules a parameter value change at the given time.
@@ -35260,7 +35259,7 @@ class AudioParamProxyVariantDynamicsCompressorNodeKnee
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
-  Future<void> setValue({required double value}) => RustLib.instance.api
+  void setValue({required double value}) => RustLib.instance.api
       .webAudioApiAudioParamSetValue(that: this, value: value);
 
   /// Schedules a parameter value change at the given time.
@@ -35495,7 +35494,7 @@ class AudioParamProxyVariantDynamicsCompressorNodeRatio
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
-  Future<void> setValue({required double value}) => RustLib.instance.api
+  void setValue({required double value}) => RustLib.instance.api
       .webAudioApiAudioParamSetValue(that: this, value: value);
 
   /// Schedules a parameter value change at the given time.
@@ -35730,7 +35729,7 @@ class AudioParamProxyVariantDynamicsCompressorNodeRelease
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
-  Future<void> setValue({required double value}) => RustLib.instance.api
+  void setValue({required double value}) => RustLib.instance.api
       .webAudioApiAudioParamSetValue(that: this, value: value);
 
   /// Schedules a parameter value change at the given time.
@@ -35965,7 +35964,7 @@ class AudioParamProxyVariantDynamicsCompressorNodeThreshold
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
-  Future<void> setValue({required double value}) => RustLib.instance.api
+  void setValue({required double value}) => RustLib.instance.api
       .webAudioApiAudioParamSetValue(that: this, value: value);
 
   /// Schedules a parameter value change at the given time.
@@ -36200,7 +36199,7 @@ class AudioParamProxyVariantGainNodeGain
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
-  Future<void> setValue({required double value}) => RustLib.instance.api
+  void setValue({required double value}) => RustLib.instance.api
       .webAudioApiAudioParamSetValue(that: this, value: value);
 
   /// Schedules a parameter value change at the given time.
@@ -36435,7 +36434,7 @@ class AudioParamProxyVariantOscillatorNodeDetune
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
-  Future<void> setValue({required double value}) => RustLib.instance.api
+  void setValue({required double value}) => RustLib.instance.api
       .webAudioApiAudioParamSetValue(that: this, value: value);
 
   /// Schedules a parameter value change at the given time.
@@ -36670,7 +36669,7 @@ class AudioParamProxyVariantOscillatorNodeFrequency
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
-  Future<void> setValue({required double value}) => RustLib.instance.api
+  void setValue({required double value}) => RustLib.instance.api
       .webAudioApiAudioParamSetValue(that: this, value: value);
 
   /// Schedules a parameter value change at the given time.
@@ -36905,7 +36904,7 @@ class AudioParamProxyVariantPannerNodeOrientationX
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
-  Future<void> setValue({required double value}) => RustLib.instance.api
+  void setValue({required double value}) => RustLib.instance.api
       .webAudioApiAudioParamSetValue(that: this, value: value);
 
   /// Schedules a parameter value change at the given time.
@@ -37140,7 +37139,7 @@ class AudioParamProxyVariantPannerNodeOrientationY
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
-  Future<void> setValue({required double value}) => RustLib.instance.api
+  void setValue({required double value}) => RustLib.instance.api
       .webAudioApiAudioParamSetValue(that: this, value: value);
 
   /// Schedules a parameter value change at the given time.
@@ -37375,7 +37374,7 @@ class AudioParamProxyVariantPannerNodeOrientationZ
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
-  Future<void> setValue({required double value}) => RustLib.instance.api
+  void setValue({required double value}) => RustLib.instance.api
       .webAudioApiAudioParamSetValue(that: this, value: value);
 
   /// Schedules a parameter value change at the given time.
@@ -37610,7 +37609,7 @@ class AudioParamProxyVariantPannerNodePositionX
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
-  Future<void> setValue({required double value}) => RustLib.instance.api
+  void setValue({required double value}) => RustLib.instance.api
       .webAudioApiAudioParamSetValue(that: this, value: value);
 
   /// Schedules a parameter value change at the given time.
@@ -37845,7 +37844,7 @@ class AudioParamProxyVariantPannerNodePositionY
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
-  Future<void> setValue({required double value}) => RustLib.instance.api
+  void setValue({required double value}) => RustLib.instance.api
       .webAudioApiAudioParamSetValue(that: this, value: value);
 
   /// Schedules a parameter value change at the given time.
@@ -38080,7 +38079,7 @@ class AudioParamProxyVariantPannerNodePositionZ
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
-  Future<void> setValue({required double value}) => RustLib.instance.api
+  void setValue({required double value}) => RustLib.instance.api
       .webAudioApiAudioParamSetValue(that: this, value: value);
 
   /// Schedules a parameter value change at the given time.
@@ -38315,7 +38314,7 @@ class AudioParamProxyVariantStereoPannerNodePan
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
-  Future<void> setValue({required double value}) => RustLib.instance.api
+  void setValue({required double value}) => RustLib.instance.api
       .webAudioApiAudioParamSetValue(that: this, value: value);
 
   /// Schedules a parameter value change at the given time.
