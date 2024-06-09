@@ -9,9 +9,14 @@ pub(crate) fn compute_path_from_namespace(
     namespace: &Namespace,
 ) -> PathBuf {
     let raw_path = namespace.path();
-    let chunks = match raw_path[0] {
-        CrateName::SELF_CRATE => raw_path[1..].to_owned(),
-        _ => concat([vec![THIRD_PARTY_DIR_NAME], raw_path.clone()]),
+    let chunks = if namespace == &CrateName::self_crate().namespace() {
+        // workaround - for `lib.rs`, we cannot just output `/` which is invalid
+        raw_path.clone()
+    } else {
+        match raw_path[0] {
+            CrateName::SELF_CRATE => raw_path[1..].to_owned(),
+            _ => concat([vec![THIRD_PARTY_DIR_NAME], raw_path.clone()]),
+        }
     };
 
     let ans_without_extension =

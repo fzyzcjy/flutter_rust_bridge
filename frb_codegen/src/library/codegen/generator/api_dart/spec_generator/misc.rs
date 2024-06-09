@@ -103,7 +103,7 @@ fn generate_imports_from_ty(
             let path_b = (path_b_inner.parent()).with_context(|| {
                 format!(
                     "no parent for path_b_inner={path_b_inner:?} \
-                    (current_file_namespace={current_file_namespace:?}, ty_namespace={ty_namespace:?} current_file_namespace={current_file_namespace:?} ty={ty:?})"
+                    (current_file_namespace={current_file_namespace}, ty_namespace={ty_namespace} current_file_namespace={current_file_namespace:?} ty={ty:?})"
                 )
             });
 
