@@ -129,8 +129,8 @@
       },
       "comments": [],
       "dart_name": null,
-      "has_impl": true,
       "id": 1,
+      "impl_mode": "Normal",
       "initializer": false,
       "inputs": [
         {
@@ -195,8 +195,8 @@
       },
       "comments": [],
       "dart_name": null,
-      "has_impl": true,
       "id": 2,
+      "impl_mode": "Normal",
       "initializer": false,
       "inputs": [
         {
@@ -261,8 +261,8 @@
       },
       "comments": [],
       "dart_name": null,
-      "has_impl": true,
       "id": 3,
+      "impl_mode": "Normal",
       "initializer": false,
       "inputs": [
         {
@@ -327,8 +327,8 @@
       },
       "comments": [],
       "dart_name": null,
-      "has_impl": true,
       "id": 4,
+      "impl_mode": "Normal",
       "initializer": false,
       "inputs": [
         {
@@ -393,8 +393,8 @@
       },
       "comments": [],
       "dart_name": null,
-      "has_impl": true,
       "id": 5,
+      "impl_mode": "Normal",
       "initializer": false,
       "inputs": [
         {

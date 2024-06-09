@@ -29,8 +29,8 @@
       },
       "comments": [],
       "dart_name": null,
-      "has_impl": true,
       "id": 1,
+      "impl_mode": "Normal",
       "initializer": false,
       "inputs": [
         {
