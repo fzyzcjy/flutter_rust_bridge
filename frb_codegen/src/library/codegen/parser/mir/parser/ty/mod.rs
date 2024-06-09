@@ -53,6 +53,7 @@ pub(crate) struct TypeParser<'a> {
     pub(super) src_traits: HashMap<String, &'a HirFlatTrait>,
     src_types: HashMap<String, Type>,
     pub(super) proxied_types: Vec<IrEarlyGeneratorProxiedType>,
+    pub(super) trait_def_infos: Vec<TODO>,
     dart_code_of_type: HashMap<String, String>,
     struct_parser_info: EnumOrStructParserInfo<MirStructIdent, MirStruct>,
     enum_parser_info: EnumOrStructParserInfo<MirEnumIdent, MirEnum>,
