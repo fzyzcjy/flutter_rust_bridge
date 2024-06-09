@@ -24,7 +24,7 @@ pub fn rust_auto_opaque_encode<T, A: BaseArc<RustAutoOpaqueInner<T>>>(
     RustOpaqueBase::new(RustAutoOpaqueInner::new(RwLock::new(value)))
 }
 
-pub fn rust_auto_opaque_lockable_order<T, A: BaseArc<RustAutoOpaqueInner<T>>>(
+pub fn rust_auto_opaque_lockable_order<T: Send + Sync, A: BaseArc<RustAutoOpaqueInner<T>>>(
     opaque: &RustAutoOpaqueBase<T, A>,
 ) -> LockableOrder {
     opaque.0.lockable_order()
