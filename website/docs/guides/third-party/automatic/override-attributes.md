@@ -6,33 +6,33 @@ then we only need to write down component name and new attributes inside our fir
 
 The rule is that:
 
-* Put the code inside `src/third_party/{third-party-crate-name}/{path-to-the-module}`. For example, for `hello::a::b::C` we need to put in `src/third_party/hello/a/b.rs`.
+* Put the code inside `src/third_party/{third-party-crate-name}/{path-to-the-module}`.
 * Only write down function name, and no need to specify function arguments and return types.
 
 ## Examples
 
-Suppose we are interested in the `web_audio_api::AudioParam::value` method in third-party crate:
+Suppose we are interested in the `some_crate::hello::world::SomeStruct::method` method in third-party crate:
 
 ```rust
 // This is code in third-party crate, we cannot modify it
-pub struct AudioParam {
+pub struct SomeStruct {
     ...
 }
 
-impl AudioParam {
-    pub fn value(&self) -> f32 {
+impl SomeStruct {
+    pub fn method(&self, a: String, b: Vec<i32>) -> f32 {
         ...
     }
 }
 ```
 
-Then, we can write down the following lines to make that method a synchronous getter:
+Then, we can write down the following lines to make that method has synchronous Dart code:
 
 ```rust
-// src/third_party/web_audio_api/mod.rs
+// src/third_party/some_crate/hello/world/mod.rs
 #[frb(external)]
-impl AudioParam {
-    #[frb(sync, getter)] // <-- This attribute will be auto merged to third-party code
-    pub fn value() {}
+impl SomeStruct {
+    #[frb(sync)] // <-- This attribute will be auto merged to third-party code
+    pub fn method() {}
 }
 ```
