@@ -219,6 +219,18 @@ const sidebars = {
                 },
                 {
                     type: 'category',
+                    label: 'Translate third-party packages',
+                    collapsed: true,
+                    link: {
+                        type: 'doc',
+                        id: 'guides/third-party/index',
+                    },
+                    items: [
+                        'guides/third-party/overview',
+                    ],
+                },
+                {
+                    type: 'category',
                     label: 'Miscellaneous',
                     collapsed: true,
                     link: {
