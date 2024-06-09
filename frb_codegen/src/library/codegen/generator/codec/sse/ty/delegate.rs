@@ -86,8 +86,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     }
                 },
                 MirTypeDelegate::Uuid => "self.as_bytes().to_vec()".to_owned(),
-                MirTypeDelegate::StreamSink(_)
-                | MirTypeDelegate::DynTrait(_) => {
+                MirTypeDelegate::StreamSink(_) | MirTypeDelegate::DynTrait(_) => {
                     return Some(lang.throw_unimplemented(""))
                 }
                 MirTypeDelegate::BigPrimitive(_) => "self.to_string()".to_owned(),
@@ -95,9 +94,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     "flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_encode(self)"
                         .to_owned()
                 }
-                MirTypeDelegate::ProxyVariant(_)
-                | MirTypeDelegate::ProxyEnum(_)
-                => return None,
+                MirTypeDelegate::ProxyVariant(_) | MirTypeDelegate::ProxyEnum(_) => return None,
             },
         };
         Some(simple_delegate_encode(
@@ -156,7 +153,9 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     }
                     MirTypeDelegate::BigPrimitive(_) => "BigInt.parse(inner)".to_owned(),
                     MirTypeDelegate::RustAutoOpaqueExplicit(_ir) => "inner".to_owned(),
-                    MirTypeDelegate::DynTrait(_) => return Some(lang.throw_unimplemented("")),
+                    MirTypeDelegate::DynTrait(_) => {
+                        return Some(format!("{};", lang.throw_unimplemented("")))
+                    }
                 }
             }
             Lang::RustLang(_) => match &self.mir {
