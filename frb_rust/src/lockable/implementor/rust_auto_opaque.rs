@@ -4,7 +4,9 @@ use crate::lockable::order::LockableOrder;
 use std::future::Future;
 use std::pin::Pin;
 
-impl<T, A: BaseArc<RustAutoOpaqueInner<T>>> Lockable for RustOpaqueBase<RustAutoOpaqueInner<T>, A> {
+impl<T: Send + Sync, A: BaseArc<RustAutoOpaqueInner<T>>> Lockable
+    for RustOpaqueBase<RustAutoOpaqueInner<T>, A>
+{
     type RwLockReadGuard<'a> = crate::rust_async::RwLockReadGuard<'a, T> where A: 'a;
     type RwLockWriteGuard<'a> = crate::rust_async::RwLockWriteGuard<'a, T>where A: 'a;
 
