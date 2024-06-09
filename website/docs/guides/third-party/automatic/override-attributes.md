@@ -36,3 +36,9 @@ impl SomeStruct {
     pub fn method() {}
 }
 ```
+
+## Remark on `pub use`
+
+`flutter_rust_bridge` understands syntax like `pub use something::*` and `pub use another::Thing`.
+Therefore, if a struct in third party code is defined non-publicly but then re-exported as public using such `pub use` grammar,
+`flutter_rust_bridge` will consider that type to be in the latter module.
