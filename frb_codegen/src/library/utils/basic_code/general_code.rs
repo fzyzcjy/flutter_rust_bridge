@@ -136,7 +136,7 @@ mod tests {
 
     #[test]
     pub fn test_simple() {
-        GeneralCode::new_rust("a".to_owned()) + GeneralCode::new_rust("b".to_owned());
-        GeneralCode::new_c("a".to_owned()) + GeneralCode::new_c("b".to_owned());
+        let _ = GeneralCode::new_rust("a".to_owned()) + GeneralCode::new_rust("b".to_owned());
+        let _ = GeneralCode::new_c("a".to_owned()) + GeneralCode::new_c("b".to_owned());
     }
 }
