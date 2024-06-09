@@ -6,15 +6,12 @@ use convert_case::{Case, Casing};
 use itertools::Itertools;
 use strum_macros::Display;
 
-pub(crate) fn generate(
-    hir_trait: &HirFlatTrait,
-    all_trait_impls: &[MirTraitImpl],
-) -> anyhow::Result<Vec<InjectExtraCodeBlock>> {
-    let code_impl = generate_code_impl(trait_def_name, &interest_trait_impls);
-    let code_read_guard =
-        generate_code_read_write_guard(ReadWrite::Read, trait_def_name, &interest_trait_impls);
-    let code_write_guard =
-        generate_code_read_write_guard(ReadWrite::Write, trait_def_name, &interest_trait_impls);
+pub(crate) struct VariantInfo {}
+
+pub(crate) fn generate(variants: &[VariantInfo]) -> anyhow::Result<Vec<InjectExtraCodeBlock>> {
+    let code_impl = generate_code_impl(variants);
+    let code_read_guard = generate_code_read_write_guard(ReadWrite::Read, variants);
+    let code_write_guard = generate_code_read_write_guard(ReadWrite::Write, variants);
 
     let code = format!(
         "{code_impl}
@@ -33,7 +30,7 @@ pub(crate) fn generate(
     }])
 }
 
-fn generate_code_impl(trait_def_name: &str, trait_impls: &[MirType]) -> String {
+fn generate_code_impl(variants: &[VariantInfo]) -> String {
     let enum_name = format!("{trait_def_name}Implementor");
     let enum_def = generate_enum_raw(trait_impls, &enum_name, |ty| {
         format!("RustAutoOpaque<{ty}>")
@@ -69,11 +66,7 @@ enum ReadWrite {
     Write,
 }
 
-fn generate_code_read_write_guard(
-    rw: ReadWrite,
-    trait_def_name: &str,
-    trait_impls: &[MirType],
-) -> String {
+fn generate_code_read_write_guard(rw: ReadWrite, variants: &[VariantInfo]) -> String {
     let rw_pascal = rw.to_string().to_case(Case::Pascal);
 
     let enum_name = format!("{trait_def_name}RwLock{rw_pascal}Guard");
