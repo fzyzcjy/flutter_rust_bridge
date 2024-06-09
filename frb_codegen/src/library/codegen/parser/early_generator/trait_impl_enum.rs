@@ -48,10 +48,6 @@ pub(crate) fn generate(
     Ok(())
 }
 
-pub(crate) fn compute_trait_implementor_namespace(config: &ParserMirInternalConfig) -> &Namespace {
-    &(config.rust_input_namespace_pack).rust_output_path_namespace
-}
-
 fn generate_trait_impl_enum(
     hir_trait: &HirFlatTrait,
     all_trait_impls: &[MirTraitImpl],
