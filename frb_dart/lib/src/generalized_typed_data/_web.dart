@@ -7,7 +7,7 @@ import 'dart:typed_data' hide Int64List, Uint64List;
 
 import 'package:flutter_rust_bridge/src/exceptions.dart';
 import 'package:flutter_rust_bridge/src/platform_utils/_web.dart';
-import 'package:web' as web;
+import 'package:web/web.dart' as web;
 
 /// Opt out of type safety for setting the value.
 /// Helpful if the array needs to accept multiple types.
@@ -19,7 +19,7 @@ abstract class _SetAnyListMixin<T> extends ListMixin<T> {
 }
 
 abstract class _TypedList<T> extends _SetAnyListMixin<T> {
-  web.JSTypedArray get inner;
+  JSTypedArray get inner;
 
   /// How to cast a raw JS value to an acceptable Dart value.
   T _js2dart(Object? value);
@@ -53,7 +53,7 @@ Object _convertBigIntToJs(Object dart) {
 /// A list whose elements are Int64
 class Int64List extends _TypedList<BigInt> {
   @override
-  final web.BigInt64Array inner;
+  final JSBigInt64Array inner;
 
   /// Construct a list
   Int64List.from(this.inner);
