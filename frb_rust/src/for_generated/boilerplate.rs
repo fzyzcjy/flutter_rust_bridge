@@ -144,8 +144,24 @@ macro_rules! frb_generated_stream_sink {
                 T: $crate::IntoIntoDart<T2>,
                 T2: $crate::IntoDart,
             {
-                self.base.add($crate::for_generated::DcoCodec::encode(
-                    $crate::for_generated::Rust2DartAction::Success,
+                self.add_raw($crate::for_generated::Rust2DartAction::Success, value)
+            }
+
+            pub fn add_error<T2>(&self, value: T) -> Result<(), $crate::Rust2DartSendError>
+            where
+                T: $crate::IntoIntoDart<T2>,
+                T2: $crate::IntoDart,
+            {
+                self.add_raw($crate::for_generated::Rust2DartAction::Error, value)
+            }
+
+            fn add_raw<T2>(&self, action: $crate::for_generated::Rust2DartAction, value: T) -> Result<(), $crate::Rust2DartSendError>
+            where
+                T: $crate::IntoIntoDart<T2>,
+                T2: $crate::IntoDart,
+            {
+                self.base.add_raw($crate::for_generated::DcoCodec::encode(
+                    action,
                     value.into_into_dart(),
                 ))
             }
@@ -156,8 +172,16 @@ macro_rules! frb_generated_stream_sink {
             T: SseEncode,
         {
             pub fn add(&self, value: T) -> Result<(), $crate::Rust2DartSendError> {
-                self.base.add($crate::for_generated::SseCodec::encode(
-                    $crate::for_generated::Rust2DartAction::Success,
+                self.add_raw($crate::for_generated::Rust2DartAction::Success, value)
+            }
+
+            pub fn add_error(&self, value: T) -> Result<(), $crate::Rust2DartSendError> {
+                self.add_raw($crate::for_generated::Rust2DartAction::Error, value)
+            }
+
+            pub fn add_raw(&self, action: $crate::for_generated::Rust2DartAction, value: T) -> Result<(), $crate::Rust2DartSendError> {
+                self.base.add_raw($crate::for_generated::SseCodec::encode(
+                    action,
                     |serializer| value.sse_encode(serializer),
                 ))
             }
