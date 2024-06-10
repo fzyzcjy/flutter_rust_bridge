@@ -23,6 +23,7 @@ use crate::if_then_some;
 use crate::utils::namespace::{Namespace, NamespacedName};
 use std::collections::HashMap;
 use syn::{Attribute, Field, Ident, ItemEnum, Type, Variant, Visibility};
+use crate::utils::basic_code::general_code::GeneralDartCode;
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_path_data_enum(
@@ -185,7 +186,7 @@ impl EnumOrStructParser<MirEnumIdent, MirEnum, ItemEnum>
         &mut self.0.inner.enum_parser_info
     }
 
-    fn dart_code_of_type(&mut self) -> &mut HashMap<String, String> {
+    fn dart_code_of_type(&mut self) -> &mut HashMap<String, GeneralDartCode> {
         &mut self.0.inner.dart_code_of_type
     }
 

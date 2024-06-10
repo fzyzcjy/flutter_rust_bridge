@@ -17,6 +17,7 @@ use crate::utils::namespace::{Namespace, NamespacedName};
 use anyhow::bail;
 use std::collections::HashMap;
 use syn::{Field, Fields, FieldsNamed, FieldsUnnamed, ItemStruct, Type, Visibility};
+use crate::utils::basic_code::general_code::GeneralDartCode;
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_path_data_struct(
@@ -116,7 +117,7 @@ impl EnumOrStructParser<MirStructIdent, MirStruct, ItemStruct>
         &mut self.0.inner.struct_parser_info
     }
 
-    fn dart_code_of_type(&mut self) -> &mut HashMap<String, String> {
+    fn dart_code_of_type(&mut self) -> &mut HashMap<String, GeneralDartCode> {
         &mut self.0.inner.dart_code_of_type
     }
 

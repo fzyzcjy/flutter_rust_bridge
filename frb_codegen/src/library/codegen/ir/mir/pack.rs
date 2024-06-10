@@ -10,6 +10,7 @@ use crate::utils::namespace::NamespacedName;
 use itertools::Itertools;
 use std::collections::{HashMap, HashSet};
 use strum::IntoEnumIterator;
+use crate::utils::basic_code::general_code::GeneralDartCode;
 
 pub type MirStructPool = HashMap<MirStructIdent, MirStruct>;
 pub type MirEnumPool = HashMap<MirEnumIdent, MirEnum>;
@@ -19,7 +20,7 @@ pub struct MirPack {
     pub funcs_all: Vec<MirFunc>, // Do not direct use, but use things like `funcs_with_impl`
     pub struct_pool: MirStructPool,
     pub enum_pool: MirEnumPool,
-    pub dart_code_of_type: HashMap<String, String>,
+    pub dart_code_of_type: HashMap<String, GeneralDartCode>,
     pub existing_handler: Option<NamespacedName>,
     pub unused_types: Vec<NamespacedName>,
     pub skipped_functions: Vec<MirSkip>,

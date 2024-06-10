@@ -133,7 +133,7 @@ where
 
     fn parser_info(&mut self) -> &mut EnumOrStructParserInfo<Id, Obj>;
 
-    fn dart_code_of_type(&mut self) -> &mut HashMap<String, String>;
+    fn dart_code_of_type(&mut self) -> &mut HashMap<String, GeneralDartCode>;
 
     fn parse_type_rust_auto_opaque_implicit(
         &mut self,
