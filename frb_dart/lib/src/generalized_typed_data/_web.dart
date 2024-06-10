@@ -10,18 +10,12 @@ import 'package:js/js.dart';
 import 'package:js/js_util.dart';
 
 /// A list whose elements are Int64
-class Int64List extends _TypedList<BigInt> {
+class Int64List extends _Int64OrUint64List {
   @override
   final _BigInt64Array _inner;
 
   /// Construct a list
   Int64List._from(this._inner);
-
-  @override
-  BigInt _js2dart(Object? value) => jsBigIntToDartBigInt(value!);
-
-  @override
-  Object? _dart2js(Object? value) => _convertBigIntToJs(value!);
 
   /// Construct a list
   factory Int64List(int length) => Int64List._from(_BigInt64Array(length));
@@ -41,18 +35,12 @@ class Int64List extends _TypedList<BigInt> {
 }
 
 /// A list whose elements are Uint64
-class Uint64List extends _TypedList<BigInt> {
+class Uint64List extends _Int64OrUint64List {
   @override
   final _BigUint64Array _inner;
 
   /// Construct a list
   Uint64List._from(this._inner);
-
-  @override
-  BigInt _js2dart(Object? value) => jsBigIntToDartBigInt(value!);
-
-  @override
-  Object? _dart2js(Object? value) => _convertBigIntToJs(value!);
 
   /// Construct a list
   factory Uint64List(int length) => Uint64List._from(_BigUint64Array(length));
@@ -148,6 +136,14 @@ abstract class _TypedList<T> extends _SetAnyListMixin<T> {
   set length(int newLength) => throw const UnmodifiableTypedListException();
 
   ByteBuffer get buffer => _inner.buffer;
+}
+
+abstract class _Int64OrUint64List extends _TypedList<BigInt> {
+  @override
+  BigInt _js2dart(Object? value) => jsBigIntToDartBigInt(value!);
+
+  @override
+  Object? _dart2js(Object? value) => _convertBigIntToJs(value!);
 }
 
 /// Opt out of type safety for setting the value.
