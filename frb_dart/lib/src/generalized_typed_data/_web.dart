@@ -9,18 +9,12 @@ import 'package:flutter_rust_bridge/src/exceptions.dart';
 import 'package:flutter_rust_bridge/src/platform_utils/_web.dart';
 
 /// A list whose elements are Int64
-class Int64List extends _TypedList<BigInt> {
+class Int64List extends _Int64OrUint64List {
   @override
   final _BigInt64Array _inner;
 
   /// Construct a list
   Int64List._from(this._inner);
-
-  @override
-  BigInt _js2dart(Object? value) => jsBigIntToDartBigInt(value!);
-
-  @override
-  Object? _dart2js(Object? value) => _convertBigIntToJs(value!);
 
   /// Construct a list
   factory Int64List(int length) => Int64List._from(_BigInt64Array(length));
@@ -40,18 +34,12 @@ class Int64List extends _TypedList<BigInt> {
 }
 
 /// A list whose elements are Uint64
-class Uint64List extends _TypedList<BigInt> {
+class Uint64List extends _Int64OrUint64List {
   @override
   final _BigUint64Array _inner;
 
   /// Construct a list
   Uint64List._from(this._inner);
-
-  @override
-  BigInt _js2dart(Object? value) => jsBigIntToDartBigInt(value!);
-
-  @override
-  Object? _dart2js(Object? value) => _convertBigIntToJs(value!);
 
   /// Construct a list
   factory Uint64List(int length) => Uint64List._from(_BigUint64Array(length));
@@ -117,10 +105,13 @@ BigInt byteDataGetInt64(ByteData byteData, int byteOffset, Endian endian) {
   return ans;
 }
 
-Object _convertBigIntToJs(Object dart) {
-  if (dart is int) return BigInt.from(dart);
-  // Assume value is already JS safe.
-  return dart;
+/// Opt out of type safety for setting the value.
+/// Helpful if the array needs to accept multiple types.
+abstract class _SetAnyListMixin<T> extends ListMixin<T> {
+  @override
+  void operator []=(int index, Object? value) {
+    this[index] = value;
+  }
 }
 
 abstract class _TypedList<T> extends _SetAnyListMixin<T> {
@@ -136,9 +127,7 @@ abstract class _TypedList<T> extends _SetAnyListMixin<T> {
   T operator [](int index) => _js2dart(_inner.at(index));
 
   @override
-  void operator []=(int index, value) {
-    _inner[index] = _dart2js(value);
-  }
+  void operator []=(int index, value) => _inner[index] = _dart2js(value);
 
   @override
   int get length => _inner.length;
@@ -149,12 +138,15 @@ abstract class _TypedList<T> extends _SetAnyListMixin<T> {
   ByteBuffer get buffer => _inner.buffer;
 }
 
-/// Opt out of type safety for setting the value.
-/// Helpful if the array needs to accept multiple types.
-abstract class _SetAnyListMixin<T> extends ListMixin<T> {
+abstract class _Int64OrUint64List extends _TypedList<BigInt> {
   @override
-  void operator []=(int index, Object? value) {
-    this[index] = value;
+  BigInt _js2dart(Object? value) => jsBigIntToDartBigInt(value!);
+
+  @override
+  Object? _dart2js(Object? dart) {
+    if (dart is int) return BigInt.from(dart);
+    // Assume value is already JS safe.
+    return dart;
   }
 }
 
