@@ -123,7 +123,7 @@ ReceivePort broadcastPort(String channelName) =>
     ReceivePort(RawReceivePort(Channel.broadcastChannel(channelName)));
 
 /// [web.MessagePort]'s interface.
-abstract class PortLike extends web.EventTarget {
+abstract class PortLike /*extends web.EventTarget*/ {
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   factory PortLike.messagePort(web.MessagePort port) = _MessagePortWrapper;
 
