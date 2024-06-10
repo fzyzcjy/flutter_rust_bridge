@@ -6,11 +6,13 @@
 // Static analysis wrongly picks the IO variant, thus ignore this
 // ignore_for_file: argument_type_not_assignable
 
-import 'api/minimal.dart';
 import 'dart:async';
 import 'dart:convert';
-import 'frb_generated.dart';
+
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_web.dart';
+
+import 'api/minimal.dart';
+import 'frb_generated.dart';
 
 abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   RustLibApiImplPlatform({
@@ -69,11 +71,9 @@ external RustLibWasmModule get wasmModule;
 
 @JS()
 @anonymous
-class RustLibWasmModule implements WasmModule {
-  @override
+extension type RustLibWasmModule._(JSObject _) implements JSObject {
   external Object /* Promise */ call([String? moduleName]);
 
-  @override
   external RustLibWasmModule bind(dynamic thisArg, String moduleName);
 
   external void wire__crate__api__minimal__init_app(NativePortType port_);
