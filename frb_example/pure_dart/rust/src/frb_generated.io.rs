@@ -18820,9 +18820,28 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_ex
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__StructWithSimpleSetterTwinNormal_get_something(
+    that: usize,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__misc_no_twin_example_a__StructWithSimpleSetterTwinNormal_get_something_impl(
+        that,
+    )
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__StructWithSimpleSetterTwinNormal_new(
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire__crate__api__misc_no_twin_example_a__StructWithSimpleSetterTwinNormal_new_impl()
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__StructWithSimpleSetterTwinNormal_set_something(
+    that: usize,
+    value: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__misc_no_twin_example_a__StructWithSimpleSetterTwinNormal_set_something_impl(
+        that, value,
+    )
 }
 
 #[no_mangle]

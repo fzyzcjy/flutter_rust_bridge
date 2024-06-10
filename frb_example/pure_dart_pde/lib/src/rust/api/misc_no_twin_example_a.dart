@@ -83,8 +83,12 @@ abstract class StructWithImplBlockInMultiFile implements RustOpaqueInterface {
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructWithSimpleSetterTwinNormal>>
 abstract class StructWithSimpleSetterTwinNormal implements RustOpaqueInterface {
+  int get something;
+
   factory StructWithSimpleSetterTwinNormal() => RustLib.instance.api
       .crateApiMiscNoTwinExampleAStructWithSimpleSetterTwinNormalNew();
+
+  void set something(int value);
 
   int get simpleGetter;
 
