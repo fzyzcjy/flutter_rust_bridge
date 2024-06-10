@@ -22,8 +22,6 @@ class ReceivePort extends Stream<dynamic> {
   /// The receive port.
   final RawReceivePort _rawReceivePort;
 
-  static dynamic _extractData(MessageEvent event) => event.data;
-
   /// Create a new receive port from an optional [RawReceivePort].
   factory ReceivePort() => ReceivePort._raw();
 
@@ -44,6 +42,8 @@ class ReceivePort extends Stream<dynamic> {
           cancelOnError: cancelOnError,
         );
   }
+
+  static dynamic _extractData(MessageEvent event) => event.data;
 
   /// The send port.
   SendPort get sendPort => _rawReceivePort.sendPort;
