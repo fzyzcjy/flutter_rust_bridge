@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:js_interop';
 
 import 'package:flutter_rust_bridge/src/exceptions.dart';
 import 'package:flutter_rust_bridge/src/platform_utils/_web.dart';
@@ -76,11 +77,8 @@ class _WasmBindgenNoModules extends Modules {
     jsEval('window.wasm_bindgen = wasm_bindgen');
 
     final moduleOrDefault = module?.call() ?? _noModules!;
-    final executed = moduleOrDefault('${root}_bg.wasm');
-  
-    // TODO looks like we can use `JSPromise.toDart`
-    // return await web.promiseToFuture(executed);
-    return executed;
+    final JSPromise promise = moduleOrDefault('${root}_bg.wasm');
+    return await promise.toDart;
   }
 }
 
