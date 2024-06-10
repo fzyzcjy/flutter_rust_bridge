@@ -13,6 +13,7 @@ use std::collections::{HashMap, HashSet};
 use std::fmt::Debug;
 use std::hash::Hash;
 use syn::Type;
+use crate::utils::basic_code::general_code::GeneralDartCode;
 
 pub(super) trait EnumOrStructParser<Id, Obj, Item: SynItemStructOrEnum>
 where
@@ -88,13 +89,15 @@ where
                 return;
             }
 
+            let dart_code_typed = GeneralDartCode::TODO(dart_code);
+
             let keys = match ty {
                 MirType::RustAutoOpaqueImplicit(ty) => vec![ty.safe_ident(), ty.inner.safe_ident()],
                 ty => vec![ty.safe_ident()],
             };
 
             for key in keys {
-                self.dart_code_of_type().insert(key, dart_code.clone());
+                self.dart_code_of_type().insert(key, dart_code_typed.clone());
             }
         }
     }
