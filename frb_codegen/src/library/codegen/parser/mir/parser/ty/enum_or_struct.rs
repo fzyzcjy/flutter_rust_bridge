@@ -6,6 +6,8 @@ use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
 use crate::codegen::parser::mir::parser::ty::unencodable::SplayedSegment;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
+use crate::utils::basic_code::general_code::GeneralDartCode;
+use crate::utils::basic_code::parser::parse_dart_code;
 use crate::utils::crate_name::CrateName;
 use crate::utils::namespace::{Namespace, NamespacedName};
 use log::debug;
@@ -13,7 +15,6 @@ use std::collections::{HashMap, HashSet};
 use std::fmt::Debug;
 use std::hash::Hash;
 use syn::Type;
-use crate::utils::basic_code::general_code::GeneralDartCode;
 
 pub(super) trait EnumOrStructParser<Id, Obj, Item: SynItemStructOrEnum>
 where
@@ -89,7 +90,7 @@ where
                 return;
             }
 
-            let dart_code_typed = GeneralDartCode::TODO(dart_code);
+            let dart_code_typed = parse_dart_code(&dart_code);
 
             let keys = match ty {
                 MirType::RustAutoOpaqueImplicit(ty) => vec![ty.safe_ident(), ty.inner.safe_ident()],
@@ -97,7 +98,8 @@ where
             };
 
             for key in keys {
-                self.dart_code_of_type().insert(key, dart_code_typed.clone());
+                self.dart_code_of_type()
+                    .insert(key, dart_code_typed.clone());
             }
         }
     }
