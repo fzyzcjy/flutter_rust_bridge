@@ -17,9 +17,6 @@ abstract class WasmModule {
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   Object call([String? moduleName]);
 
-  /// Create a new WASM module initializer that is bound to the specified binary.
-  WasmModule bind(dynamic thisArg, String moduleName);
-
   /// Initialize a [WasmModule] with the specified kind of [Modules].
   static Future<void> initialize({required Modules kind}) =>
       kind.initializeModule();
