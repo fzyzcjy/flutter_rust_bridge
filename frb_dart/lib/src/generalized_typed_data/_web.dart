@@ -2,6 +2,7 @@
 library html_typed_data;
 
 import 'dart:collection';
+import 'dart:js_interop';
 import 'dart:typed_data' hide Int64List, Uint64List;
 
 import 'package:flutter_rust_bridge/src/exceptions.dart';

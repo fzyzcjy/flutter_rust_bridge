@@ -1,5 +1,7 @@
 // ignore_for_file: non_constant_identifier_names
 
+import 'dart:js_interop';
+
 import 'package:flutter_rust_bridge/src/generalized_uint8list/generalized_uint8list.dart';
 import 'package:flutter_rust_bridge/src/platform_types/_web.dart';
 

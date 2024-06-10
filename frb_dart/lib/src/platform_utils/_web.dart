@@ -1,3 +1,5 @@
+import 'dart:js_interop';
+
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 @JS('Number')
 external int castInt(Object? value);
