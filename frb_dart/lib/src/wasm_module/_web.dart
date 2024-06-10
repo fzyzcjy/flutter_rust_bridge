@@ -68,7 +68,7 @@ class _WasmBindgenNoModules extends Modules {
   @override
   Future<Object> initializeModule(WasmModule Function()? module) async {
     _ensureCrossOriginIsolated();
-    final script = web.ScriptElement()..src = '$root.js';
+    final script = web.HTMLScriptElement()..src = '$root.js';
     web.document.head!.append(script);
 
     await script.onLoad.first;
