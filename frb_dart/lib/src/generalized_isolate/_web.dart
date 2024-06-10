@@ -14,7 +14,7 @@ String serializeNativePort(NativePortType port) => port.name;
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 typedef MessagePort = _PortLike;
 
-/// An alias to [MessagePort] on web platforms.
+/// {@macro flutter_rust_bridge.only_for_generated_code}
 typedef SendPort = _PortLike;
 
 /// Web implementation of the `dart:isolate`'s ReceivePort.
@@ -125,23 +125,17 @@ class _BroadcastChannelWrapper implements _Channel {
 abstract class _PortLike {
   const _PortLike._();
 
-  /// {@macro flutter_rust_bridge.only_for_generated_code}
   factory _PortLike.messagePort(html.MessagePort port) = _MessagePortWrapper;
 
-  /// {@macro flutter_rust_bridge.only_for_generated_code}
   factory _PortLike.broadcastChannel(BroadcastChannel channel) =
       _BroadcastPortWrapper;
 
-  /// {@macro flutter_rust_bridge.only_for_generated_code}
   void postMessage(Object? value);
 
-  /// {@macro flutter_rust_bridge.only_for_generated_code}
   void close();
 
-  /// {@macro flutter_rust_bridge.only_for_generated_code}
   html.EventTarget get nativePort;
 
-  /// {@macro flutter_rust_bridge.only_for_generated_code}
   Stream<MessageEvent> get onMessage => _kMessageEvent.forTarget(nativePort);
   static const _kMessageEvent = EventStreamProvider<MessageEvent>('message');
 }
