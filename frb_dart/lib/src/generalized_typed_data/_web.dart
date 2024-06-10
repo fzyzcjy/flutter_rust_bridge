@@ -12,10 +12,10 @@ import 'package:js/js_util.dart';
 /// A list whose elements are Int64
 class Int64List extends _TypedList<BigInt> {
   @override
-  final _BigInt64Array inner;
+  final _BigInt64Array _inner;
 
   /// Construct a list
-  Int64List.from(this.inner);
+  Int64List.from(this._inner);
 
   @override
   BigInt _js2dart(Object? value) => jsBigIntToDartBigInt(value!);
@@ -43,10 +43,10 @@ class Int64List extends _TypedList<BigInt> {
 /// A list whose elements are Uint64
 class Uint64List extends _TypedList<BigInt> {
   @override
-  final _BigUint64Array inner;
+  final _BigUint64Array _inner;
 
   /// Construct a list
-  Uint64List.from(this.inner);
+  Uint64List.from(this._inner);
 
   @override
   BigInt _js2dart(Object? value) => jsBigIntToDartBigInt(value!);
@@ -125,7 +125,7 @@ Object _convertBigIntToJs(Object dart) {
 }
 
 abstract class _TypedList<T> extends _SetAnyListMixin<T> {
-  _TypedArray get inner;
+  _TypedArray get _inner;
 
   /// How to cast a raw JS value to an acceptable Dart value.
   T _js2dart(Object? value);
@@ -134,20 +134,20 @@ abstract class _TypedList<T> extends _SetAnyListMixin<T> {
   Object? _dart2js(Object? value);
 
   @override
-  T operator [](int index) => _js2dart(inner.at(index));
+  T operator [](int index) => _js2dart(_inner.at(index));
 
   @override
   void operator []=(int index, value) {
-    inner[index] = _dart2js(value);
+    _inner[index] = _dart2js(value);
   }
 
   @override
-  int get length => inner.length;
+  int get length => _inner.length;
 
   @override
   set length(int newLength) => throw const UnmodifiableTypedListException();
 
-  ByteBuffer get buffer => inner.buffer;
+  ByteBuffer get buffer => _inner.buffer;
 }
 
 /// Opt out of type safety for setting the value.
