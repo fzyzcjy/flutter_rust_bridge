@@ -18,14 +18,15 @@ impl<'a> ApiDartGeneratorClassTrait for EnumRefApiDartGenerator<'a> {
             &GenerateApiMethodConfig::COMBINED,
             &src.name.name,
         );
-        let extra_body =
+        let extra_code =
             generate_class_extra_body(self.mir_type(), &self.context.mir_pack.dart_code_of_type);
 
-        let body = methods.code + &extra_body;
+        let body = methods.code + &extra_code.body;
+        let header = methods.header + extra_code.header;
 
         match src.mode {
-            MirEnumMode::Simple => self.generate_mode_simple(src, &body, methods.header),
-            MirEnumMode::Complex => self.generate_mode_complex(src, &body, methods.header),
+            MirEnumMode::Simple => self.generate_mode_simple(src, &body, header),
+            MirEnumMode::Complex => self.generate_mode_complex(src, &body, header),
         }
     }
 }

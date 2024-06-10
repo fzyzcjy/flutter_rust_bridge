@@ -30,8 +30,9 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
 
         let rust_api_type = self.mir.rust_api_type();
 
-        let extra_body =
+        let extra_code =
             generate_class_extra_body(self.mir_type(), &self.context.mir_pack.dart_code_of_type);
+        let extra_body = &extra_code.body;
 
         let (impl_code, impl_header) =
             generate_implements(&self.context.mir_pack.trait_impls, &self.mir, self.context);
@@ -50,7 +51,7 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
                 "
             ),
             needs_freezed: false,
-            header: methods.header + impl_header,
+            header: methods.header + impl_header + extra_code.header,
         })
     }
 

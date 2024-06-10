@@ -26,8 +26,9 @@ impl<'a> ApiDartGeneratorClassTrait for StructRefApiDartGenerator<'a> {
             &GenerateApiMethodConfig::COMBINED,
             class_name,
         );
-        let extra_body =
+        let extra_code =
             generate_class_extra_body(self.mir_type(), &self.context.mir_pack.dart_code_of_type);
+        let extra_body = &extra_code.body;
 
         Some(ApiDartGeneratedClass {
             namespace: src.name.namespace.clone(),
@@ -39,7 +40,7 @@ impl<'a> ApiDartGeneratorClassTrait for StructRefApiDartGenerator<'a> {
                     &metadata,
                     &methods,
                     constructor_postfix,
-                    &extra_body,
+                    extra_body,
                     class_name,
                 )
             } else {
@@ -49,12 +50,12 @@ impl<'a> ApiDartGeneratorClassTrait for StructRefApiDartGenerator<'a> {
                     &metadata,
                     &methods,
                     constructor_postfix,
-                    &extra_body,
+                    extra_body,
                     class_name,
                 )
             },
             needs_freezed: src.using_freezed(),
-            header: methods.header,
+            header: methods.header + extra_code.header,
         })
     }
 }
