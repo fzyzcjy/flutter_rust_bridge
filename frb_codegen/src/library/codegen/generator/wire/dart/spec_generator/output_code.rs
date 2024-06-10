@@ -3,6 +3,7 @@ use crate::codegen::generator::wire::dart::internal_config::DartOutputClassNameP
 use crate::simple_code_trait_impl;
 use crate::utils::basic_code::dart_header_code::DartHeaderCode;
 use crate::utils::basic_code::general_code::GeneralDartCode;
+use crate::utils::basic_code::parser::parse_dart_code;
 use itertools::Itertools;
 use serde::Serialize;
 use std::ops::AddAssign;
@@ -40,21 +41,10 @@ pub(crate) struct DartApiImplClassMethod {
 
 impl WireDartOutputCode {
     pub fn parse(raw: &str) -> WireDartOutputCode {
-        let (mut imports, mut body) = (Vec::new(), Vec::new());
-        for line in raw.split('\n') {
-            (if line.starts_with("import ") {
-                &mut imports
-            } else {
-                &mut body
-            })
-            .push(line);
-        }
+        let GeneralDartCode { header, body } = parse_dart_code(raw);
         WireDartOutputCode {
-            header: DartHeaderCode {
-                import: imports.join("\n"),
-                ..Default::default()
-            },
-            body: body.join("\n"),
+            header,
+            body,
             ..Default::default()
         }
     }
