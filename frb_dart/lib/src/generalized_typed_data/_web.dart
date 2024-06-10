@@ -119,9 +119,7 @@ abstract class _TypedList<T> extends _SetAnyListMixin<T> {
   T operator [](int index) => _js2dart(_inner.at(index));
 
   @override
-  void operator []=(int index, value) {
-    _inner[index] = _dart2js(value);
-  }
+  void operator []=(int index, value) => _inner[index] = _dart2js(value);
 
   @override
   int get length => _inner.length;
