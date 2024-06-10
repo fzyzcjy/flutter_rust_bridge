@@ -3,7 +3,6 @@ import 'dart:js_interop';
 
 import 'package:flutter_rust_bridge/src/exceptions.dart';
 import 'package:flutter_rust_bridge/src/platform_utils/_web.dart';
-import 'package:js/js.dart';
 import 'package:web/web.dart' as web;
 
 /// A JS function that returns a Promise to a WASM module.
