@@ -50,19 +50,18 @@ class _WasmBindgenNoModules extends Modules {
   final String root;
 
   const _WasmBindgenNoModules({required this.root});
+}
 
-  @override
-  Future<void> initializeModule() async {
-    _ensureCrossOriginIsolated();
-    final script = ScriptElement()..src = '$root.js';
-    document.head!.append(script);
+Future<void> initializeModule({required String root}) async {
+  _ensureCrossOriginIsolated();
+  final script = ScriptElement()..src = '$root.js';
+  document.head!.append(script);
 
-    await script.onLoad.first;
+  await script.onLoad.first;
 
-    jsEval('window.wasm_bindgen = wasm_bindgen');
+  jsEval('window.wasm_bindgen = wasm_bindgen');
 
-    await promiseToFuture(_noModules!('${root}_bg.wasm'));
-  }
+  await promiseToFuture(_noModules!('${root}_bg.wasm'));
 }
 
 @JS('wasm_bindgen')
