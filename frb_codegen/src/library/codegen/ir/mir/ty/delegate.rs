@@ -70,7 +70,8 @@ pub struct MirTypeDelegateSet {
 }
 
 pub struct MirTypeDelegateStreamSink {
-    pub inner: Box<MirType>,
+    pub inner_ok: Box<MirType>,
+    pub inner_err: Box<MirType>,
     pub codec: CodecMode,
 }
 
@@ -123,7 +124,10 @@ impl MirTypeTrait for MirTypeDelegate {
 
         #[allow(clippy::single_match)]
         match self {
-            Self::StreamSink(mir) => mir.inner.visit_types(f, mir_context),
+            Self::StreamSink(mir) => {
+                mir.inner_ok.visit_types(f, mir_context);
+                mir.inner_err.visit_types(f, mir_context);
+            }
             // ... others
             _ => {}
         }
@@ -150,7 +154,7 @@ impl MirTypeTrait for MirTypeDelegate {
             }
             MirTypeDelegate::Set(mir) => format!("Set_{}", mir.inner.safe_ident()),
             MirTypeDelegate::StreamSink(mir) => {
-                format!("StreamSink_{}_{}", mir.inner.safe_ident(), mir.codec)
+                format!("StreamSink_{}_{}", mir.inner_ok.safe_ident(), mir.codec)
             }
             MirTypeDelegate::BigPrimitive(mir) => mir.to_string(),
             MirTypeDelegate::RustAutoOpaqueExplicit(mir) => {
@@ -218,7 +222,7 @@ impl MirTypeTrait for MirTypeDelegate {
             MirTypeDelegate::StreamSink(mir) => {
                 format!(
                     "StreamSink<{},flutter_rust_bridge::for_generated::{codec}Codec>",
-                    mir.inner.rust_api_type(),
+                    mir.inner_ok.rust_api_type(),
                     codec = mir.codec,
                 )
             }

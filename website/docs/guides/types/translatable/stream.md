@@ -37,6 +37,13 @@ If you need the Rust function to finish execution *before* the stream can be obt
 just add `#[frb(stream_dart_await)]` (to await the stream) or `#[frb(sync)]` (to let the whole function be synchronous) to
 the function.
 
+## Add an error
+
+To put an error into the stream, the `stream.add_error` method can be utilized.
+It currently accepts an `anyhow::Error` type.
+
+For example, we can write down `stream.add_error(anyhow::anyhow!("hello"))` and the Dart side will see an exception thrown.
+
 ## Examples
 
 See [logging examples](../../how-to/logging) which uses streams extensively.

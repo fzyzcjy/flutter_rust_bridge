@@ -214,7 +214,7 @@ fn generate_function_dart_return_type(
     if let Some(return_stream) = return_stream {
         inner = format!(
             "Stream<{}>",
-            ApiDartGenerator::new(return_stream.ty.inner.clone(), context).dart_api_type()
+            ApiDartGenerator::new(return_stream.ty.inner_ok.clone(), context).dart_api_type()
         );
     }
 

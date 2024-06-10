@@ -61,6 +61,9 @@ Future<void> streamSinkInsideStructTwinRustAsyncSse(
         .crateApiPseudoManualStreamTwinRustAsyncSseStreamSinkInsideStructTwinRustAsyncSse(
             arg: arg);
 
+Stream<int> funcStreamAddValueAndErrorTwinRustAsyncSse() => RustLib.instance.api
+    .crateApiPseudoManualStreamTwinRustAsyncSseFuncStreamAddValueAndErrorTwinRustAsyncSse();
+
 class LogTwinRustAsyncSse {
   final int key;
   final int value;

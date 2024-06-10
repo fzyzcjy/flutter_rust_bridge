@@ -19358,9 +19358,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_String(raw.setupAndSerialize(
         codec: DcoCodec(
-            decodeSuccessData:
-                dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi,
-            decodeErrorData: null)));
+      decodeSuccessData:
+          dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi,
+      decodeErrorData: dco_decode_AnyhowException,
+    )));
   }
 
   @protected
@@ -19370,9 +19371,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_String(raw.setupAndSerialize(
         codec: DcoCodec(
-            decodeSuccessData:
-                dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal,
-            decodeErrorData: null)));
+      decodeSuccessData:
+          dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal,
+      decodeErrorData: dco_decode_AnyhowException,
+    )));
   }
 
   @protected
@@ -19382,9 +19384,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_String(raw.setupAndSerialize(
         codec: DcoCodec(
-            decodeSuccessData:
-                dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi,
-            decodeErrorData: null)));
+      decodeSuccessData:
+          dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi,
+      decodeErrorData: dco_decode_AnyhowException,
+    )));
   }
 
   @protected
@@ -19394,9 +19397,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_String(raw.setupAndSerialize(
         codec: DcoCodec(
-            decodeSuccessData:
-                dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync,
-            decodeErrorData: null)));
+      decodeSuccessData:
+          dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync,
+      decodeErrorData: dco_decode_AnyhowException,
+    )));
   }
 
   @protected
@@ -19406,9 +19410,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_String(raw.setupAndSerialize(
         codec: DcoCodec(
-            decodeSuccessData:
-                dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi,
-            decodeErrorData: null)));
+      decodeSuccessData:
+          dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi,
+      decodeErrorData: dco_decode_AnyhowException,
+    )));
   }
 
   @protected
@@ -19418,9 +19423,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_String(raw.setupAndSerialize(
         codec: DcoCodec(
-            decodeSuccessData:
-                dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync,
-            decodeErrorData: null)));
+      decodeSuccessData:
+          dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync,
+      decodeErrorData: dco_decode_AnyhowException,
+    )));
   }
 
   @protected
@@ -19429,8 +19435,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_String(raw.setupAndSerialize(
         codec: DcoCodec(
-            decodeSuccessData: dco_decode_Map_u_8_application_mode,
-            decodeErrorData: null)));
+      decodeSuccessData: dco_decode_Map_u_8_application_mode,
+      decodeErrorData: dco_decode_AnyhowException,
+    )));
   }
 
   @protected
@@ -19439,8 +19446,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_String(raw.setupAndSerialize(
         codec: DcoCodec(
-            decodeSuccessData: dco_decode_Set_application_mode,
-            decodeErrorData: null)));
+      decodeSuccessData: dco_decode_Set_application_mode,
+      decodeErrorData: dco_decode_AnyhowException,
+    )));
   }
 
   @protected
@@ -19448,7 +19456,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_String(raw.setupAndSerialize(
         codec: DcoCodec(
-            decodeSuccessData: dco_decode_String, decodeErrorData: null)));
+      decodeSuccessData: dco_decode_String,
+      decodeErrorData: dco_decode_AnyhowException,
+    )));
   }
 
   @protected
@@ -19457,8 +19467,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_String(raw.setupAndSerialize(
         codec: DcoCodec(
-            decodeSuccessData: dco_decode_application_mode,
-            decodeErrorData: null)));
+      decodeSuccessData: dco_decode_application_mode,
+      decodeErrorData: dco_decode_AnyhowException,
+    )));
   }
 
   @protected
@@ -19467,8 +19478,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_String(raw.setupAndSerialize(
         codec: DcoCodec(
-            decodeSuccessData: dco_decode_application_mode_array_2,
-            decodeErrorData: null)));
+      decodeSuccessData: dco_decode_application_mode_array_2,
+      decodeErrorData: dco_decode_AnyhowException,
+    )));
   }
 
   @protected
@@ -19477,8 +19489,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_String(raw.setupAndSerialize(
         codec: DcoCodec(
-            decodeSuccessData: dco_decode_application_settings,
-            decodeErrorData: null)));
+      decodeSuccessData: dco_decode_application_settings,
+      decodeErrorData: dco_decode_AnyhowException,
+    )));
   }
 
   @protected
@@ -19487,8 +19500,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_String(raw.setupAndSerialize(
         codec: DcoCodec(
-            decodeSuccessData: dco_decode_event_twin_normal,
-            decodeErrorData: null)));
+      decodeSuccessData: dco_decode_event_twin_normal,
+      decodeErrorData: dco_decode_AnyhowException,
+    )));
   }
 
   @protected
@@ -19497,8 +19511,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_String(raw.setupAndSerialize(
         codec: DcoCodec(
-            decodeSuccessData: dco_decode_event_twin_rust_async,
-            decodeErrorData: null)));
+      decodeSuccessData: dco_decode_event_twin_rust_async,
+      decodeErrorData: dco_decode_AnyhowException,
+    )));
   }
 
   @protected
@@ -19506,7 +19521,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_String(raw.setupAndSerialize(
         codec: DcoCodec(
-            decodeSuccessData: dco_decode_i_32, decodeErrorData: null)));
+      decodeSuccessData: dco_decode_i_32,
+      decodeErrorData: dco_decode_AnyhowException,
+    )));
   }
 
   @protected
@@ -19515,8 +19532,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_String(raw.setupAndSerialize(
         codec: DcoCodec(
-            decodeSuccessData: dco_decode_list_application_mode,
-            decodeErrorData: null)));
+      decodeSuccessData: dco_decode_list_application_mode,
+      decodeErrorData: dco_decode_AnyhowException,
+    )));
   }
 
   @protected
@@ -19525,8 +19543,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_String(raw.setupAndSerialize(
         codec: DcoCodec(
-            decodeSuccessData: dco_decode_list_application_settings,
-            decodeErrorData: null)));
+      decodeSuccessData: dco_decode_list_application_settings,
+      decodeErrorData: dco_decode_AnyhowException,
+    )));
   }
 
   @protected
@@ -19535,8 +19554,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_String(raw.setupAndSerialize(
         codec: DcoCodec(
-            decodeSuccessData: dco_decode_log_2_twin_normal,
-            decodeErrorData: null)));
+      decodeSuccessData: dco_decode_log_2_twin_normal,
+      decodeErrorData: dco_decode_AnyhowException,
+    )));
   }
 
   @protected
@@ -19545,8 +19565,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_String(raw.setupAndSerialize(
         codec: DcoCodec(
-            decodeSuccessData: dco_decode_log_2_twin_rust_async,
-            decodeErrorData: null)));
+      decodeSuccessData: dco_decode_log_2_twin_rust_async,
+      decodeErrorData: dco_decode_AnyhowException,
+    )));
   }
 
   @protected
@@ -19555,8 +19576,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_String(raw.setupAndSerialize(
         codec: DcoCodec(
-            decodeSuccessData: dco_decode_log_2_twin_sync,
-            decodeErrorData: null)));
+      decodeSuccessData: dco_decode_log_2_twin_sync,
+      decodeErrorData: dco_decode_AnyhowException,
+    )));
   }
 
   @protected
@@ -19565,8 +19587,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_String(raw.setupAndSerialize(
         codec: DcoCodec(
-            decodeSuccessData: dco_decode_log_twin_normal,
-            decodeErrorData: null)));
+      decodeSuccessData: dco_decode_log_twin_normal,
+      decodeErrorData: dco_decode_AnyhowException,
+    )));
   }
 
   @protected
@@ -19575,8 +19598,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_String(raw.setupAndSerialize(
         codec: DcoCodec(
-            decodeSuccessData: dco_decode_log_twin_rust_async,
-            decodeErrorData: null)));
+      decodeSuccessData: dco_decode_log_twin_rust_async,
+      decodeErrorData: dco_decode_AnyhowException,
+    )));
   }
 
   @protected
@@ -19585,8 +19609,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_String(raw.setupAndSerialize(
         codec: DcoCodec(
-            decodeSuccessData: dco_decode_mirror_struct_twin_normal,
-            decodeErrorData: null)));
+      decodeSuccessData: dco_decode_mirror_struct_twin_normal,
+      decodeErrorData: dco_decode_AnyhowException,
+    )));
   }
 
   @protected
@@ -19595,8 +19620,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_String(raw.setupAndSerialize(
         codec: DcoCodec(
-            decodeSuccessData: dco_decode_mirror_struct_twin_rust_async,
-            decodeErrorData: null)));
+      decodeSuccessData: dco_decode_mirror_struct_twin_rust_async,
+      decodeErrorData: dco_decode_AnyhowException,
+    )));
   }
 
   @protected
@@ -19605,8 +19631,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_String(raw.setupAndSerialize(
         codec: DcoCodec(
-            decodeSuccessData: dco_decode_mirror_struct_twin_sync,
-            decodeErrorData: null)));
+      decodeSuccessData: dco_decode_mirror_struct_twin_sync,
+      decodeErrorData: dco_decode_AnyhowException,
+    )));
   }
 
   @protected
@@ -19615,8 +19642,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_String(raw.setupAndSerialize(
         codec: DcoCodec(
-            decodeSuccessData: dco_decode_my_stream_entry_twin_normal,
-            decodeErrorData: null)));
+      decodeSuccessData: dco_decode_my_stream_entry_twin_normal,
+      decodeErrorData: dco_decode_AnyhowException,
+    )));
   }
 
   @protected
@@ -19625,8 +19653,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_String(raw.setupAndSerialize(
         codec: DcoCodec(
-            decodeSuccessData: dco_decode_my_stream_entry_twin_rust_async,
-            decodeErrorData: null)));
+      decodeSuccessData: dco_decode_my_stream_entry_twin_rust_async,
+      decodeErrorData: dco_decode_AnyhowException,
+    )));
   }
 
   @protected
@@ -19635,8 +19664,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_String(raw.setupAndSerialize(
         codec: DcoCodec(
-            decodeSuccessData: dco_decode_opt_box_autoadd_application_mode,
-            decodeErrorData: null)));
+      decodeSuccessData: dco_decode_opt_box_autoadd_application_mode,
+      decodeErrorData: dco_decode_AnyhowException,
+    )));
   }
 
   @protected
@@ -19646,9 +19676,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_String(raw.setupAndSerialize(
         codec: DcoCodec(
-            decodeSuccessData:
-                dco_decode_record_application_settings_raw_string_enum_mirrored,
-            decodeErrorData: null)));
+      decodeSuccessData:
+          dco_decode_record_application_settings_raw_string_enum_mirrored,
+      decodeErrorData: dco_decode_AnyhowException,
+    )));
   }
 
   @protected
@@ -19656,7 +19687,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_String(raw.setupAndSerialize(
         codec: DcoCodec(
-            decodeSuccessData: dco_decode_u_32, decodeErrorData: null)));
+      decodeSuccessData: dco_decode_u_32,
+      decodeErrorData: dco_decode_AnyhowException,
+    )));
   }
 
   @protected
@@ -19664,7 +19697,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_String(raw.setupAndSerialize(
         codec: DcoCodec(
-            decodeSuccessData: dco_decode_u_8_array_2, decodeErrorData: null)));
+      decodeSuccessData: dco_decode_u_8_array_2,
+      decodeErrorData: dco_decode_AnyhowException,
+    )));
   }
 
   @protected
@@ -55865,6 +55900,12 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__stream_misc_twin_sse__stream_sink_dart_async_twin_sse(
               port_, ptr_, rust_vec_len_, data_len_);
 
+  void wire__crate__api__pseudo_manual__stream_twin_rust_async__func_stream_add_value_and_error_twin_rust_async(
+          NativePortType port_, String sink) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__stream_twin_rust_async__func_stream_add_value_and_error_twin_rust_async(
+              port_, sink);
+
   void wire__crate__api__pseudo_manual__stream_twin_rust_async__func_stream_return_error_twin_rust_async(
           NativePortType port_, String _sink) =>
       wasmModule
@@ -55924,6 +55965,15 @@ class RustLibWire implements BaseWire {
       wasmModule
           .wire__crate__api__pseudo_manual__stream_twin_rust_async__stream_sink_inside_vec_twin_rust_async(
               port_, arg);
+
+  void wire__crate__api__pseudo_manual__stream_twin_rust_async_sse__func_stream_add_value_and_error_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__stream_twin_rust_async_sse__func_stream_add_value_and_error_twin_rust_async_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
 
   void wire__crate__api__pseudo_manual__stream_twin_rust_async_sse__func_stream_return_error_twin_rust_async_sse(
           NativePortType port_,
@@ -56013,6 +56063,15 @@ class RustLibWire implements BaseWire {
           int data_len_) =>
       wasmModule
           .wire__crate__api__pseudo_manual__stream_twin_rust_async_sse__stream_sink_inside_vec_twin_rust_async_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__stream_twin_sse__func_stream_add_value_and_error_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__stream_twin_sse__func_stream_add_value_and_error_twin_sse(
               port_, ptr_, rust_vec_len_, data_len_);
 
   void wire__crate__api__pseudo_manual__stream_twin_sse__func_stream_return_error_twin_sse(
@@ -57010,6 +57069,12 @@ class RustLibWire implements BaseWire {
           NativePortType port_, int a, int b) =>
       wasmModule.wire__crate__api__simple__simple_adder_twin_normal(
           port_, a, b);
+
+  void wire__crate__api__stream__func_stream_add_value_and_error_twin_normal(
+          NativePortType port_, String sink) =>
+      wasmModule
+          .wire__crate__api__stream__func_stream_add_value_and_error_twin_normal(
+              port_, sink);
 
   void wire__crate__api__stream__func_stream_return_error_twin_normal(
           NativePortType port_, String _sink) =>
@@ -72616,6 +72681,10 @@ class RustLibWasmModule implements WasmModule {
           int data_len_);
 
   external void
+      wire__crate__api__pseudo_manual__stream_twin_rust_async__func_stream_add_value_and_error_twin_rust_async(
+          NativePortType port_, String sink);
+
+  external void
       wire__crate__api__pseudo_manual__stream_twin_rust_async__func_stream_return_error_twin_rust_async(
           NativePortType port_, String _sink);
 
@@ -72654,6 +72723,13 @@ class RustLibWasmModule implements WasmModule {
   external void
       wire__crate__api__pseudo_manual__stream_twin_rust_async__stream_sink_inside_vec_twin_rust_async(
           NativePortType port_, List<dynamic> arg);
+
+  external void
+      wire__crate__api__pseudo_manual__stream_twin_rust_async_sse__func_stream_add_value_and_error_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
 
   external void
       wire__crate__api__pseudo_manual__stream_twin_rust_async_sse__func_stream_return_error_twin_rust_async_sse(
@@ -72720,6 +72796,13 @@ class RustLibWasmModule implements WasmModule {
 
   external void
       wire__crate__api__pseudo_manual__stream_twin_rust_async_sse__stream_sink_inside_vec_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__stream_twin_sse__func_stream_add_value_and_error_twin_sse(
           NativePortType port_,
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
@@ -73408,6 +73491,10 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire__crate__api__simple__simple_adder_twin_normal(
       NativePortType port_, int a, int b);
+
+  external void
+      wire__crate__api__stream__func_stream_add_value_and_error_twin_normal(
+          NativePortType port_, String sink);
 
   external void wire__crate__api__stream__func_stream_return_error_twin_normal(
       NativePortType port_, String _sink);

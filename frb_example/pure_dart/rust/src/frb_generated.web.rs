@@ -37345,6 +37345,14 @@ pub fn wire__crate__api__pseudo_manual__stream_misc_twin_sse__stream_sink_dart_a
 }
 
 #[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__stream_twin_rust_async__func_stream_add_value_and_error_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    sink: String,
+) {
+    wire__crate__api__pseudo_manual__stream_twin_rust_async__func_stream_add_value_and_error_twin_rust_async_impl(port_, sink)
+}
+
+#[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__stream_twin_rust_async__func_stream_return_error_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     _sink: String,
@@ -37430,6 +37438,16 @@ pub fn wire__crate__api__pseudo_manual__stream_twin_rust_async__stream_sink_insi
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__stream_twin_rust_async__stream_sink_inside_vec_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__stream_twin_rust_async_sse__func_stream_add_value_and_error_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire__crate__api__pseudo_manual__stream_twin_rust_async_sse__func_stream_add_value_and_error_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
@@ -37530,6 +37548,21 @@ pub fn wire__crate__api__pseudo_manual__stream_twin_rust_async_sse__stream_sink_
     data_len_: i32,
 ) {
     wire__crate__api__pseudo_manual__stream_twin_rust_async_sse__stream_sink_inside_vec_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__stream_twin_sse__func_stream_add_value_and_error_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire__crate__api__pseudo_manual__stream_twin_sse__func_stream_add_value_and_error_twin_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
 }
 
 #[wasm_bindgen]
@@ -38899,6 +38932,14 @@ pub fn wire__crate__api__simple__simple_adder_twin_normal(
     b: i32,
 ) {
     wire__crate__api__simple__simple_adder_twin_normal_impl(port_, a, b)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__stream__func_stream_add_value_and_error_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    sink: String,
+) {
+    wire__crate__api__stream__func_stream_add_value_and_error_twin_normal_impl(port_, sink)
 }
 
 #[wasm_bindgen]
