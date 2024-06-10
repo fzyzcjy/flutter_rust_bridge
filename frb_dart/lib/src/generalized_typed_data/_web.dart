@@ -9,109 +9,6 @@ import 'package:flutter_rust_bridge/src/platform_utils/_web.dart';
 import 'package:js/js.dart';
 import 'package:js/js_util.dart';
 
-@JS('TypedArray')
-abstract class _TypedArray {
-  external ByteBuffer get buffer;
-
-  external int length;
-
-  external BigInt at(int index);
-}
-
-extension on _TypedArray {
-  operator []=(int index, Object? value) {
-    setProperty(this, index, value);
-  }
-}
-
-/// An array whose element is BigInt64
-@JS('BigInt64Array')
-abstract class _BigInt64Array extends _TypedArray {
-  /// Construct the array
-  external factory _BigInt64Array(Object lengthOrBuffer,
-      [int? offset, int? length]);
-
-  /// Construct the array from `List<int>`
-  factory _BigInt64Array.fromList(List<int> list) =>
-      _BigInt64Array(list.map((n) => BigInt.from(n)).toList());
-
-  /// Construct an array view
-  factory _BigInt64Array.view(
-    ByteBuffer buffer, [
-    int offset = 0,
-    int? length,
-  ]) =>
-      _BigInt64Array(buffer, offset, length);
-
-  /// Construct an array sub-list view
-  factory _BigInt64Array.sublistView(TypedData array,
-          [int offset = 0, int? length]) =>
-      _BigInt64Array(array.buffer, offset, length);
-}
-
-/// An array whose element is BigUint64
-@JS('BigUint64Array')
-abstract class _BigUint64Array extends _TypedArray {
-  /// Construct the array
-  external factory _BigUint64Array(Object lengthOrBuffer,
-      [int? offset, int? buffer]);
-
-  /// Construct the array from `List<int>`
-  factory _BigUint64Array.fromList(List<int> list) =>
-      _BigUint64Array(list.map((n) => BigInt.from(n)).toList());
-
-  /// Construct an array view
-  factory _BigUint64Array.view(ByteBuffer buffer,
-          [int offset = 0, int? length]) =>
-      _BigUint64Array(buffer, offset, length);
-
-  /// Construct an array sub-list view
-  factory _BigUint64Array.sublistView(TypedData array,
-          [int offset = 0, int? length]) =>
-      _BigUint64Array(array.buffer, offset, length);
-}
-
-/// Opt out of type safety for setting the value.
-/// Helpful if the array needs to accept multiple types.
-abstract class _SetAnyListMixin<T> extends ListMixin<T> {
-  @override
-  void operator []=(int index, Object? value) {
-    this[index] = value;
-  }
-}
-
-abstract class _TypedList<T> extends _SetAnyListMixin<T> {
-  _TypedArray get inner;
-
-  /// How to cast a raw JS value to an acceptable Dart value.
-  T _js2dart(Object? value);
-
-  /// How to convert a Dart integer-like value to an acceptable JS value.
-  Object? _dart2js(Object? value);
-
-  @override
-  T operator [](int index) => _js2dart(inner.at(index));
-
-  @override
-  void operator []=(int index, value) {
-    inner[index] = _dart2js(value);
-  }
-
-  @override
-  int get length => inner.length;
-
-  @override
-  set length(int newLength) => throw const UnmodifiableTypedListException();
-
-  ByteBuffer get buffer => inner.buffer;
-}
-
-Object _convertBigIntToJs(Object dart) {
-  if (dart is int) return BigInt.from(dart);
-  // Assume value is already JS safe.
-  return dart;
-}
-
 /// A list whose elements are Int64
 class Int64List extends _TypedList<BigInt> {
   @override
@@ -219,4 +116,107 @@ BigInt byteDataGetInt64(ByteData byteData, int byteOffset, Endian endian) {
     ans -= BigInt.from(1) << 64;
   }
   return ans;
+}
+
+Object _convertBigIntToJs(Object dart) {
+  if (dart is int) return BigInt.from(dart);
+  // Assume value is already JS safe.
+  return dart;
+}
+
+abstract class _TypedList<T> extends _SetAnyListMixin<T> {
+  _TypedArray get inner;
+
+  /// How to cast a raw JS value to an acceptable Dart value.
+  T _js2dart(Object? value);
+
+  /// How to convert a Dart integer-like value to an acceptable JS value.
+  Object? _dart2js(Object? value);
+
+  @override
+  T operator [](int index) => _js2dart(inner.at(index));
+
+  @override
+  void operator []=(int index, value) {
+    inner[index] = _dart2js(value);
+  }
+
+  @override
+  int get length => inner.length;
+
+  @override
+  set length(int newLength) => throw const UnmodifiableTypedListException();
+
+  ByteBuffer get buffer => inner.buffer;
+}
+
+/// Opt out of type safety for setting the value.
+/// Helpful if the array needs to accept multiple types.
+abstract class _SetAnyListMixin<T> extends ListMixin<T> {
+  @override
+  void operator []=(int index, Object? value) {
+    this[index] = value;
+  }
+}
+
+@JS('TypedArray')
+abstract class _TypedArray {
+  external ByteBuffer get buffer;
+
+  external int length;
+
+  external BigInt at(int index);
+}
+
+extension on _TypedArray {
+  operator []=(int index, Object? value) {
+    setProperty(this, index, value);
+  }
+}
+
+/// An array whose element is BigInt64
+@JS('BigInt64Array')
+abstract class _BigInt64Array extends _TypedArray {
+  /// Construct the array
+  external factory _BigInt64Array(Object lengthOrBuffer,
+      [int? offset, int? length]);
+
+  /// Construct the array from `List<int>`
+  factory _BigInt64Array.fromList(List<int> list) =>
+      _BigInt64Array(list.map((n) => BigInt.from(n)).toList());
+
+  /// Construct an array view
+  factory _BigInt64Array.view(
+    ByteBuffer buffer, [
+    int offset = 0,
+    int? length,
+  ]) =>
+      _BigInt64Array(buffer, offset, length);
+
+  /// Construct an array sub-list view
+  factory _BigInt64Array.sublistView(TypedData array,
+          [int offset = 0, int? length]) =>
+      _BigInt64Array(array.buffer, offset, length);
+}
+
+/// An array whose element is BigUint64
+@JS('BigUint64Array')
+abstract class _BigUint64Array extends _TypedArray {
+  /// Construct the array
+  external factory _BigUint64Array(Object lengthOrBuffer,
+      [int? offset, int? buffer]);
+
+  /// Construct the array from `List<int>`
+  factory _BigUint64Array.fromList(List<int> list) =>
+      _BigUint64Array(list.map((n) => BigInt.from(n)).toList());
+
+  /// Construct an array view
+  factory _BigUint64Array.view(ByteBuffer buffer,
+          [int offset = 0, int? length]) =>
+      _BigUint64Array(buffer, offset, length);
+
+  /// Construct an array sub-list view
+  factory _BigUint64Array.sublistView(TypedData array,
+          [int offset = 0, int? length]) =>
+      _BigUint64Array(array.buffer, offset, length);
 }
