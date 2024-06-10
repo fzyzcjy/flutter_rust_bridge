@@ -11,7 +11,6 @@ Future<void> initializeWasmModule({required String root}) async {
 
   final script = ScriptElement()..src = '$root.js';
   document.head!.append(script);
-
   await script.onLoad.first;
 
   await promiseToFuture(_noModules('${root}_bg.wasm'));
