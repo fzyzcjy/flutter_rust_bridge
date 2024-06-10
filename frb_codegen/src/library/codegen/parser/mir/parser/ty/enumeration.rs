@@ -20,10 +20,10 @@ use crate::codegen::parser::mir::parser::ty::structure::structure_compute_defaul
 use crate::codegen::parser::mir::parser::ty::unencodable::SplayedSegment;
 use crate::codegen::parser::mir::parser::ty::TypeParserWithContext;
 use crate::if_then_some;
+use crate::utils::basic_code::general_code::GeneralDartCode;
 use crate::utils::namespace::{Namespace, NamespacedName};
 use std::collections::HashMap;
 use syn::{Attribute, Field, Ident, ItemEnum, Type, Variant, Visibility};
-use crate::utils::basic_code::general_code::GeneralDartCode;
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_path_data_enum(

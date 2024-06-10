@@ -19,10 +19,10 @@ use crate::codegen::parser::mir::parser::ty::enum_or_struct::EnumOrStructParserI
 use crate::codegen::parser::mir::parser::ty::rust_auto_opaque_implicit::RustAutoOpaqueParserInfo;
 use crate::codegen::parser::mir::parser::ty::rust_opaque::RustOpaqueParserInfo;
 use crate::codegen::parser::mir::ParseMode;
+use crate::utils::basic_code::general_code::GeneralDartCode;
 use crate::utils::namespace::Namespace;
 use std::collections::HashMap;
 use syn::Type;
-use crate::utils::basic_code::general_code::GeneralDartCode;
 
 pub(crate) mod array;
 pub(crate) mod concrete;

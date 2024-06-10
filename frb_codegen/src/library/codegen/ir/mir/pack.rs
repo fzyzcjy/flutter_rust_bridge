@@ -6,11 +6,11 @@ use crate::codegen::ir::mir::ty::enumeration::{MirEnum, MirEnumIdent};
 use crate::codegen::ir::mir::ty::structure::{MirStruct, MirStructIdent};
 use crate::codegen::ir::mir::ty::MirType;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
+use crate::utils::basic_code::general_code::GeneralDartCode;
 use crate::utils::namespace::NamespacedName;
 use itertools::Itertools;
 use std::collections::{HashMap, HashSet};
 use strum::IntoEnumIterator;
-use crate::utils::basic_code::general_code::GeneralDartCode;
 
 pub type MirStructPool = HashMap<MirStructIdent, MirStruct>;
 pub type MirEnumPool = HashMap<MirEnumIdent, MirEnum>;
