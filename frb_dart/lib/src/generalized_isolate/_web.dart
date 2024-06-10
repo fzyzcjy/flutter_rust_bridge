@@ -49,7 +49,7 @@ class ReceivePort extends Stream<dynamic> {
   SendPort get sendPort => _rawReceivePort.sendPort;
 
   /// Close the receive port, ignoring any further messages.
-  void close() => _rawReceivePort.receivePort.close();
+  void close() => _rawReceivePort.close();
 }
 
 /// Wrapper around a [MessageChannel].
