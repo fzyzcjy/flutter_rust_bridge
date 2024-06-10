@@ -2,11 +2,10 @@
 library html_isolate;
 
 import 'dart:async';
-import 'dart:html' as html;
-import 'dart:html' hide MessagePort;
 
 import 'package:flutter_rust_bridge/src/platform_types/_web.dart';
 import 'package:flutter_rust_bridge/src/platform_utils/_web.dart';
+import 'package:web/web.dart' as web;
 
 /// {@macro flutter_rust_bridge.internal}
 String serializeNativePort(NativePortType port) => port.name;

@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'dart:html';
+import 'package:web/web.dart' as web;
 
 import 'package:flutter_rust_bridge/src/exceptions.dart';
 import 'package:flutter_rust_bridge/src/platform_utils/_web.dart';
