@@ -4,8 +4,6 @@ library html_isolate;
 import 'dart:async';
 
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_web.dart';
-import 'package:flutter_rust_bridge/src/platform_types/_web.dart';
-import 'package:flutter_rust_bridge/src/platform_utils/_web.dart';
 import 'package:web/web.dart' as web;
 
 /// {@macro flutter_rust_bridge.internal}
@@ -144,24 +142,24 @@ abstract class PortLike /*extends web.EventTarget*/ {
 
 /// Delegates a subset of PortLike methods verbatim.
 abstract class _DelegatedPort implements PortLike {
-  @override
-  void addEventListener(String type, web.EventListener? listener,
-          [bool? useCapture]) =>
-      nativePort.addEventListener(type, listener, useCapture);
-
-  @override
-  void removeEventListener(String type, web.EventListener? listener,
-          [bool? useCapture]) =>
-      nativePort.removeEventListener(type, listener, useCapture);
+  // @override
+  // void addEventListener(String type, web.EventListener? listener,
+  //         [bool? useCapture]) =>
+  //     nativePort.addEventListener(type, listener, useCapture);
+  //
+  // @override
+  // void removeEventListener(String type, web.EventListener? listener,
+  //         [bool? useCapture]) =>
+  //     nativePort.removeEventListener(type, listener, useCapture);
 
   @override
   void close() => nativePort.close();
 
-  @override
-  bool dispatchEvent(web.Event event) => nativePort.dispatchEvent(event);
-
-  @override
-  web.Events get on => nativePort.on;
+// @override
+// bool dispatchEvent(web.Event event) => nativePort.dispatchEvent(event);
+//
+// @override
+// web.Events get on => nativePort.on;
 }
 
 class _MessagePortWrapper extends _DelegatedPort {
