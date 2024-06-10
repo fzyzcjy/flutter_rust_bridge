@@ -77,8 +77,8 @@ class _WasmBindgenNoModules extends Modules {
 
     final moduleOrDefault = module?.call() ?? _noModules!;
     final executed = moduleOrDefault('${root}_bg.wasm');
-   
-    // TODO
+  
+    // TODO looks like we can use `JSPromise.toDart`
     // return await web.promiseToFuture(executed);
     return executed;
   }

@@ -72,7 +72,7 @@ external RustLibWasmModule get wasmModule;
 @JS()
 @anonymous
 extension type RustLibWasmModule._(JSObject _) implements JSObject {
-  external JSAny /* Promise */ call([String? moduleName]);
+  external JSPromise call([String? moduleName]);
 
   external RustLibWasmModule bind(JSAny thisArg, String moduleName);
 
