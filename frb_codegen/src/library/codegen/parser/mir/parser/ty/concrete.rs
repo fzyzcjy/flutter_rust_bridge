@@ -85,11 +85,11 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             })),
 
             ("StreamSink", [inner ]) => Delegate(MirTypeDelegate::StreamSink(MirTypeDelegateStreamSink {
-                inner: Box::new(self.parse_type(inner)?),
+                inner_ok: Box::new(self.parse_type(inner)?),
                 codec: self.context.default_stream_sink_codec,
             })),
             ("StreamSink", [inner, codec ]) => Delegate(MirTypeDelegate::StreamSink(MirTypeDelegateStreamSink {
-                inner: Box::new(self.parse_type(inner)?),
+                inner_ok: Box::new(self.parse_type(inner)?),
                 codec: parse_stream_sink_codec(codec)?,
             })),
 

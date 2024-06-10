@@ -83,7 +83,7 @@ impl<'a> ApiDartGeneratorInfoTrait for DelegateApiDartGenerator<'a> {
             ),
             MirTypeDelegate::StreamSink(mir) => format!(
                 "RustStreamSink<{}>",
-                ApiDartGenerator::new(*mir.inner.clone(), self.context).dart_api_type(),
+                ApiDartGenerator::new(*mir.inner_ok.clone(), self.context).dart_api_type(),
             ),
             MirTypeDelegate::BigPrimitive(_) => "BigInt".to_owned(),
             MirTypeDelegate::RustAutoOpaqueExplicit(mir) => {
