@@ -17,26 +17,20 @@ typedef MessagePort = PortLike;
 /// An alias to [MessagePort] on web platforms.
 typedef SendPort = PortLike;
 
-/// {@macro flutter_rust_bridge.only_for_generated_code}
-abstract class Channel {
-  /// {@macro flutter_rust_bridge.only_for_generated_code}
+abstract class _Channel {
   SendPort get sendPort;
 
-  /// {@macro flutter_rust_bridge.only_for_generated_code}
   SendPort get receivePort;
 
-  /// {@macro flutter_rust_bridge.only_for_generated_code}
-  const Channel();
+  const _Channel();
 
-  /// {@macro flutter_rust_bridge.only_for_generated_code}
-  factory Channel.messageChannel() = _MessageChannelWrapper;
+  factory _Channel.messageChannel() = _MessageChannelWrapper;
 
-  /// {@macro flutter_rust_bridge.only_for_generated_code}
-  factory Channel.broadcastChannel(String channelName) =
+  factory _Channel.broadcastChannel(String channelName) =
       _BroadcastChannelWrapper;
 }
 
-class _MessageChannelWrapper implements Channel {
+class _MessageChannelWrapper implements _Channel {
   final channel = MessageChannel();
 
   @override
@@ -46,7 +40,7 @@ class _MessageChannelWrapper implements Channel {
   SendPort get receivePort => PortLike.messagePort(channel.port1);
 }
 
-class _BroadcastChannelWrapper implements Channel {
+class _BroadcastChannelWrapper implements _Channel {
   final BroadcastChannel _sendChannel;
   final BroadcastChannel _receiveChannel;
 
@@ -67,11 +61,11 @@ class _BroadcastChannelWrapper implements Channel {
 /// Wrapper around a [MessageChannel].
 class RawReceivePort {
   /// The underlying message channel.
-  final Channel channel;
+  final _Channel channel;
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  RawReceivePort([Channel? channel])
-      : channel = channel ?? Channel.messageChannel();
+  RawReceivePort([_Channel? channel])
+      : channel = channel ?? _Channel.messageChannel();
 
   set handler(Function(dynamic) handler) {
     receivePort.onMessage.listen((event) => handler(event.data));
@@ -121,7 +115,7 @@ class ReceivePort extends Stream<dynamic> {
 
 /// {@macro flutter_rust_bridge.internal}
 ReceivePort broadcastPort(String channelName) =>
-    ReceivePort(RawReceivePort(Channel.broadcastChannel(channelName)));
+    ReceivePort(RawReceivePort(_Channel.broadcastChannel(channelName)));
 
 /// [html.MessagePort]'s interface.
 abstract class PortLike {
