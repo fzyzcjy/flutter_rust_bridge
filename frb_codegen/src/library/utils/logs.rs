@@ -21,12 +21,15 @@ use log::LevelFilter;
 /// configure_opinionated_logging("./logs/", false).expect("failed to initialize log");
 /// ```
 pub fn configure_opinionated_logging(path: &str, verbose: bool) -> Result<(), fern::InitError> {
-    std::fs::create_dir_all(path).unwrap();
+    let level_filter = log_level_from_env_var().unwrap_or_else(|| verbose_to_level_filter(verbose));
+
+    if level_filter == LevelFilter::Debug {
+        std::fs::create_dir_all(path).unwrap();
+    }
 
     let mut fern_logger = fern::Dispatch::new();
     fern_logger = log_format_simple(fern_logger);
-    fern_logger = match log_level_from_env_var().unwrap_or_else(|| verbose_to_level_filter(verbose))
-    {
+    fern_logger = match level_filter {
         LevelFilter::Debug => fern_logger
             .level(LevelFilter::Debug)
             .chain(fern::DateBased::new(path, "%Y-%m-%d.log"))
