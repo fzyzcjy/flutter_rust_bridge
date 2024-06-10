@@ -137,7 +137,7 @@ abstract class PortLike /*extends web.EventTarget*/ {
   void close();
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  web.EventTarget get nativePort;
+  NativePortType get nativePort;
 }
 
 /// Delegates a subset of PortLike methods verbatim.
