@@ -20,6 +20,7 @@ use crate::codegen::parser::mir::parser::ty::structure::structure_compute_defaul
 use crate::codegen::parser::mir::parser::ty::unencodable::SplayedSegment;
 use crate::codegen::parser::mir::parser::ty::TypeParserWithContext;
 use crate::if_then_some;
+use crate::utils::basic_code::general_code::GeneralDartCode;
 use crate::utils::namespace::{Namespace, NamespacedName};
 use std::collections::HashMap;
 use syn::{Attribute, Field, Ident, ItemEnum, Type, Variant, Visibility};
@@ -185,7 +186,7 @@ impl EnumOrStructParser<MirEnumIdent, MirEnum, ItemEnum>
         &mut self.0.inner.enum_parser_info
     }
 
-    fn dart_code_of_type(&mut self) -> &mut HashMap<String, String> {
+    fn dart_code_of_type(&mut self) -> &mut HashMap<String, GeneralDartCode> {
         &mut self.0.inner.dart_code_of_type
     }
 

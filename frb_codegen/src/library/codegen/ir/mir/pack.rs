@@ -6,6 +6,7 @@ use crate::codegen::ir::mir::ty::enumeration::{MirEnum, MirEnumIdent};
 use crate::codegen::ir::mir::ty::structure::{MirStruct, MirStructIdent};
 use crate::codegen::ir::mir::ty::MirType;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
+use crate::utils::basic_code::general_code::GeneralDartCode;
 use crate::utils::namespace::NamespacedName;
 use itertools::Itertools;
 use std::collections::{HashMap, HashSet};
@@ -19,7 +20,7 @@ pub struct MirPack {
     pub funcs_all: Vec<MirFunc>, // Do not direct use, but use things like `funcs_with_impl`
     pub struct_pool: MirStructPool,
     pub enum_pool: MirEnumPool,
-    pub dart_code_of_type: HashMap<String, String>,
+    pub dart_code_of_type: HashMap<String, GeneralDartCode>,
     pub existing_handler: Option<NamespacedName>,
     pub unused_types: Vec<NamespacedName>,
     pub skipped_functions: Vec<MirSkip>,

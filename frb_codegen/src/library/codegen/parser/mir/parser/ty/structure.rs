@@ -12,6 +12,7 @@ use crate::codegen::parser::mir::parser::ty::enum_or_struct::{
 use crate::codegen::parser::mir::parser::ty::misc::parse_comments;
 use crate::codegen::parser::mir::parser::ty::unencodable::SplayedSegment;
 use crate::codegen::parser::mir::parser::ty::TypeParserWithContext;
+use crate::utils::basic_code::general_code::GeneralDartCode;
 use crate::utils::crate_name::CrateName;
 use crate::utils::namespace::{Namespace, NamespacedName};
 use anyhow::bail;
@@ -116,7 +117,7 @@ impl EnumOrStructParser<MirStructIdent, MirStruct, ItemStruct>
         &mut self.0.inner.struct_parser_info
     }
 
-    fn dart_code_of_type(&mut self) -> &mut HashMap<String, String> {
+    fn dart_code_of_type(&mut self) -> &mut HashMap<String, GeneralDartCode> {
         &mut self.0.inner.dart_code_of_type
     }
 

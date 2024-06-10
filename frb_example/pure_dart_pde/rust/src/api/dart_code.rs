@@ -8,6 +8,10 @@ use flutter_rust_bridge::frb;
     non_hash,
     non_eq,
     dart_code = "
+  import 'dart:math';
+
+  int dummyMethodThatNeedsDartImport() => Random().nextInt(10);
+
   @override
   bool operator ==(Object other) =>
     other is TranslatableStructWithDartCodeTwinNormal && a == other.a;
