@@ -71,6 +71,7 @@ pub struct MirTypeDelegateSet {
 
 pub struct MirTypeDelegateStreamSink {
     pub inner_ok: Box<MirType>,
+    pub inner_err: Box<MirType>,
     pub codec: CodecMode,
 }
 
