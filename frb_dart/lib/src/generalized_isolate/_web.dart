@@ -12,10 +12,10 @@ import 'package:flutter_rust_bridge/src/platform_utils/_web.dart';
 String serializeNativePort(NativePortType port) => port.name;
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
-typedef MessagePort = PortLike;
+typedef MessagePort = _PortLike;
 
 /// An alias to [MessagePort] on web platforms.
-typedef SendPort = PortLike;
+typedef SendPort = _PortLike;
 
 /// Web implementation of the `dart:isolate`'s ReceivePort.
 class ReceivePort extends Stream<dynamic> {
@@ -98,10 +98,10 @@ class _MessageChannelWrapper implements _Channel {
   final channel = MessageChannel();
 
   @override
-  SendPort get sendPort => PortLike.messagePort(channel.port2);
+  SendPort get sendPort => _PortLike.messagePort(channel.port2);
 
   @override
-  SendPort get receivePort => PortLike.messagePort(channel.port1);
+  SendPort get receivePort => _PortLike.messagePort(channel.port1);
 }
 
 class _BroadcastChannelWrapper implements _Channel {
@@ -116,21 +116,21 @@ class _BroadcastChannelWrapper implements _Channel {
         _receiveChannel = BroadcastChannel(channelName);
 
   @override
-  SendPort get sendPort => PortLike.broadcastChannel(_sendChannel);
+  SendPort get sendPort => _PortLike.broadcastChannel(_sendChannel);
 
   @override
-  SendPort get receivePort => PortLike.broadcastChannel(_receiveChannel);
+  SendPort get receivePort => _PortLike.broadcastChannel(_receiveChannel);
 }
 
 /// [html.MessagePort]'s interface.
-abstract class PortLike {
-  const PortLike._();
+abstract class _PortLike {
+  const _PortLike._();
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  factory PortLike.messagePort(html.MessagePort port) = _MessagePortWrapper;
+  factory _PortLike.messagePort(html.MessagePort port) = _MessagePortWrapper;
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  factory PortLike.broadcastChannel(BroadcastChannel channel) =
+  factory _PortLike.broadcastChannel(BroadcastChannel channel) =
       _BroadcastPortWrapper;
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
@@ -147,7 +147,7 @@ abstract class PortLike {
   static const _kMessageEvent = EventStreamProvider<MessageEvent>('message');
 }
 
-class _MessagePortWrapper extends PortLike {
+class _MessagePortWrapper extends _PortLike {
   @override
   final html.MessagePort nativePort;
 
@@ -161,7 +161,7 @@ class _MessagePortWrapper extends PortLike {
   void close() => nativePort.close();
 }
 
-class _BroadcastPortWrapper extends PortLike {
+class _BroadcastPortWrapper extends _PortLike {
   @override
   final html.BroadcastChannel nativePort;
 
