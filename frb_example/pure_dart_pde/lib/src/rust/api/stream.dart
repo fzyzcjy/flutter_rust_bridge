@@ -51,6 +51,9 @@ Future<void> streamSinkInsideStructTwinNormal(
     RustLib.instance.api
         .crateApiStreamStreamSinkInsideStructTwinNormal(arg: arg);
 
+Stream<int> funcStreamAddValueAndErrorTwinNormal() =>
+    RustLib.instance.api.crateApiStreamFuncStreamAddValueAndErrorTwinNormal();
+
 class LogTwinNormal {
   final int key;
   final int value;

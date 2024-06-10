@@ -40338,6 +40338,14 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__stream_twin_rust_async__func_stream_add_value_and_error_twin_rust_async(
+    port_: i64,
+    sink: *mut wire_cst_list_prim_u_8_strict,
+) {
+    wire__crate__api__pseudo_manual__stream_twin_rust_async__func_stream_add_value_and_error_twin_rust_async_impl(port_, sink)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__stream_twin_rust_async__func_stream_return_error_twin_rust_async(
     port_: i64,
     _sink: *mut wire_cst_list_prim_u_8_strict,
@@ -40423,6 +40431,16 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__
     arg: *mut wire_cst_list_StreamSink_i_32_Dco,
 ) {
     wire__crate__api__pseudo_manual__stream_twin_rust_async__stream_sink_inside_vec_twin_rust_async_impl(port_, arg)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__stream_twin_rust_async_sse__func_stream_add_value_and_error_twin_rust_async_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire__crate__api__pseudo_manual__stream_twin_rust_async_sse__func_stream_add_value_and_error_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[no_mangle]
@@ -40523,6 +40541,21 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__
     data_len_: i32,
 ) {
     wire__crate__api__pseudo_manual__stream_twin_rust_async_sse__stream_sink_inside_vec_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__stream_twin_sse__func_stream_add_value_and_error_twin_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire__crate__api__pseudo_manual__stream_twin_sse__func_stream_add_value_and_error_twin_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
 }
 
 #[no_mangle]
@@ -41892,6 +41925,14 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__simple__simple_
     b: i32,
 ) {
     wire__crate__api__simple__simple_adder_twin_normal_impl(port_, a, b)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__stream__func_stream_add_value_and_error_twin_normal(
+    port_: i64,
+    sink: *mut wire_cst_list_prim_u_8_strict,
+) {
+    wire__crate__api__stream__func_stream_add_value_and_error_twin_normal_impl(port_, sink)
 }
 
 #[no_mangle]

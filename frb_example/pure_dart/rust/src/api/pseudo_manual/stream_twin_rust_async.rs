@@ -100,3 +100,11 @@ pub async fn stream_sink_inside_struct_twin_rust_async(
 ) {
     arg.b.add(arg.a).unwrap();
 }
+
+pub async fn func_stream_add_value_and_error_twin_rust_async(sink: StreamSink<i32>) {
+    (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool()).execute(transfer!(|| {
+        sink.add(100).unwrap();
+        sink.add(200).unwrap();
+        sink.add_error(anyhow!("deliberate error")).unwrap();
+    }));
+}
