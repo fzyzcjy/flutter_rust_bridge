@@ -142,29 +142,7 @@ abstract class PortLike {
   NativePortType get nativePort;
 }
 
-/// Delegates a subset of PortLike methods verbatim.
-abstract class _DelegatedPort implements PortLike {
-  @override
-  void close() => nativePort.close();
-
-// @override
-// void addEventListener(String type, html.EventListener? listener,
-//     [bool? useCapture]) =>
-//     nativePort.addEventListener(type, listener, useCapture);
-//
-// @override
-// void removeEventListener(String type, html.EventListener? listener,
-//     [bool? useCapture]) =>
-//     nativePort.removeEventListener(type, listener, useCapture);
-//
-// @override
-// bool dispatchEvent(html.Event event) => nativePort.dispatchEvent(event);
-//
-// @override
-// html.Events get on => nativePort.on;
-}
-
-class _MessagePortWrapper extends _DelegatedPort {
+class _MessagePortWrapper implements PortLike {
   @override
   final html.MessagePort nativePort;
 
@@ -173,9 +151,12 @@ class _MessagePortWrapper extends _DelegatedPort {
   @override
   void postMessage(message, [List<Object>? transfer]) =>
       nativePort.postMessage(message, transfer);
+
+  @override
+  void close() => nativePort.close();
 }
 
-class _BroadcastPortWrapper extends _DelegatedPort {
+class _BroadcastPortWrapper implements PortLike {
   @override
   final html.BroadcastChannel nativePort;
 
@@ -190,6 +171,9 @@ class _BroadcastPortWrapper extends _DelegatedPort {
     }
     nativePort.postMessage(message ?? false);
   }
+
+  @override
+  void close() => nativePort.close();
 }
 
 extension on PortLike {
