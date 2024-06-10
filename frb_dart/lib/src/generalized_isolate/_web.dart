@@ -3,6 +3,7 @@ library html_isolate;
 
 import 'dart:async';
 
+import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_web.dart';
 import 'package:flutter_rust_bridge/src/platform_types/_web.dart';
 import 'package:flutter_rust_bridge/src/platform_utils/_web.dart';
 import 'package:web/web.dart' as web;
@@ -187,7 +188,7 @@ class _BroadcastPortWrapper extends _DelegatedPort {
     if (transfer != null && transfer.isNotEmpty) {
       jsConsoleWarn("Ignoring transferables for BroadcastPort:", transfer);
     }
-    nativePort.postMessage(message ?? false);
+    nativePort.postMessage(message?.toJSBox ?? false.toJS);
   }
 }
 
