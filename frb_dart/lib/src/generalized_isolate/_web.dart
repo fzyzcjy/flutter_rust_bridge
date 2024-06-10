@@ -23,7 +23,9 @@ class RawReceivePort {
   final _Channel _channel;
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  RawReceivePort([_Channel? channel])
+  factory RawReceivePort() => RawReceivePort._raw();
+
+  RawReceivePort._raw([_Channel? channel])
       : _channel = channel ?? _Channel.messageChannel();
 
   set handler(Function(dynamic) handler) {
@@ -74,7 +76,7 @@ class ReceivePort extends Stream<dynamic> {
 
 /// {@macro flutter_rust_bridge.internal}
 ReceivePort broadcastPort(String channelName) =>
-    ReceivePort(RawReceivePort(_Channel.broadcastChannel(channelName)));
+    ReceivePort(RawReceivePort._raw(_Channel.broadcastChannel(channelName)));
 
 abstract class _Channel {
   SendPort get sendPort;
