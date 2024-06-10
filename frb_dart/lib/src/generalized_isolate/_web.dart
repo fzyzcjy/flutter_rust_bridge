@@ -177,7 +177,7 @@ class _BroadcastPortWrapper implements PortLike {
 }
 
 extension on PortLike {
-  static const messageEvent = EventStreamProvider<MessageEvent>('message');
+  static const _kMessageEvent = EventStreamProvider<MessageEvent>('message');
 
-  Stream<MessageEvent> get onMessage => messageEvent.forTarget(nativePort);
+  Stream<MessageEvent> get onMessage => _kMessageEvent.forTarget(nativePort);
 }
