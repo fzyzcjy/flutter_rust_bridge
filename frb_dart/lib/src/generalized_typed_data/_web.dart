@@ -106,12 +106,6 @@ BigInt byteDataGetInt64(ByteData byteData, int byteOffset, Endian endian) {
   return ans;
 }
 
-Object _convertBigIntToJs(Object dart) {
-  if (dart is int) return BigInt.from(dart);
-  // Assume value is already JS safe.
-  return dart;
-}
-
 abstract class _TypedList<T> extends _SetAnyListMixin<T> {
   _TypedArray get _inner;
 
@@ -143,7 +137,11 @@ abstract class _Int64OrUint64List extends _TypedList<BigInt> {
   BigInt _js2dart(Object? value) => jsBigIntToDartBigInt(value!);
 
   @override
-  Object? _dart2js(Object? value) => _convertBigIntToJs(value!);
+  Object? _dart2js(Object? dart) {
+    if (dart is int) return BigInt.from(dart);
+    // Assume value is already JS safe.
+    return dart;
+  }
 }
 
 /// Opt out of type safety for setting the value.
