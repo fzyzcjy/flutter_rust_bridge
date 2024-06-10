@@ -2,7 +2,6 @@
 
 import 'package:flutter_rust_bridge/src/generalized_uint8list/generalized_uint8list.dart';
 import 'package:flutter_rust_bridge/src/platform_types/_web.dart';
-import 'package:js/js.dart';
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 class GeneralizedFrbRustBinding {

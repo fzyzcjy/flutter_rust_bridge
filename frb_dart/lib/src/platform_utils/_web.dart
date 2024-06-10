@@ -1,6 +1,3 @@
-import 'package:js/js.dart';
-import 'package:js/js_util.dart';
-
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 @JS('Number')
 external int castInt(Object? value);

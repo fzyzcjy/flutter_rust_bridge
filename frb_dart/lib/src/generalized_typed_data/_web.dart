@@ -6,8 +6,6 @@ import 'dart:typed_data' hide Int64List, Uint64List;
 
 import 'package:flutter_rust_bridge/src/exceptions.dart';
 import 'package:flutter_rust_bridge/src/platform_utils/_web.dart';
-import 'package:js/js.dart';
-import 'package:js/js_util.dart';
 
 @JS('TypedArray')
 abstract class _TypedArray {

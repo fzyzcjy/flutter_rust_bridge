@@ -3,7 +3,6 @@ import 'dart:html';
 
 import 'package:flutter_rust_bridge/src/exceptions.dart';
 import 'package:flutter_rust_bridge/src/platform_utils/_web.dart';
-import 'package:js/js.dart';
 
 /// {@macro flutter_rust_bridge.internal}
 Future<void> initializeWasmModule({required String root}) async {
