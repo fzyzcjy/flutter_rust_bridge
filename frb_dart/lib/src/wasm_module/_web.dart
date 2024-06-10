@@ -1,9 +1,9 @@
 import 'dart:async';
-import 'package:web/web.dart' as web;
 
 import 'package:flutter_rust_bridge/src/exceptions.dart';
 import 'package:flutter_rust_bridge/src/platform_utils/_web.dart';
 import 'package:js/js.dart';
+import 'package:web/web.dart' as web;
 
 /// A JS function that returns a Promise to a WASM module.
 /// See [this file](https://github.com/fzyzcjy/flutter_rust_bridge/blob/ffc9c2f530daa72ebd2f77e45e67b4fa7a65c172/frb_example/pure_dart/dart/lib/ffi.web.dart)
@@ -68,8 +68,8 @@ class _WasmBindgenNoModules extends Modules {
   @override
   Future<Object> initializeModule(WasmModule Function()? module) async {
     _ensureCrossOriginIsolated();
-    final script = ScriptElement()..src = '$root.js';
-    document.head!.append(script);
+    final script = web.ScriptElement()..src = '$root.js';
+    web.document.head!.append(script);
 
     await script.onLoad.first;
 
@@ -77,7 +77,7 @@ class _WasmBindgenNoModules extends Modules {
 
     final module_ = module?.call() ?? _noModules!;
 
-    return await promiseToFuture(module_('${root}_bg.wasm'));
+    return await web.promiseToFuture(module_('${root}_bg.wasm'));
   }
 }
 

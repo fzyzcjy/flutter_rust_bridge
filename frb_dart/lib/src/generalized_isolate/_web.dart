@@ -36,7 +36,7 @@ abstract class Channel {
 }
 
 class _MessageChannelWrapper implements Channel {
-  final channel = MessageChannel();
+  final channel = web.MessageChannel();
 
   @override
   SendPort get sendPort => PortLike.messagePort(channel.port2);
@@ -46,15 +46,15 @@ class _MessageChannelWrapper implements Channel {
 }
 
 class _BroadcastChannelWrapper implements Channel {
-  final BroadcastChannel _sendChannel;
-  final BroadcastChannel _receiveChannel;
+  final web.BroadcastChannel _sendChannel;
+  final web.BroadcastChannel _receiveChannel;
 
   _BroadcastChannelWrapper(String channelName)
       // Note: It is *wrong* to reuse the same HTML BroadcastChannel object,
       // because HTML BroadcastChannel spec says that, the event will not be fired
       // at the object which sends it. Therefore, we need two different objects.
-      : _sendChannel = BroadcastChannel(channelName),
-        _receiveChannel = BroadcastChannel(channelName);
+      : _sendChannel = web.BroadcastChannel(channelName),
+        _receiveChannel = web.BroadcastChannel(channelName);
 
   @override
   SendPort get sendPort => PortLike.broadcastChannel(_sendChannel);
@@ -91,7 +91,7 @@ class ReceivePort extends Stream<dynamic> {
   /// The receive port.
   final RawReceivePort port;
 
-  static dynamic _extractData(MessageEvent event) => event.data;
+  static dynamic _extractData(web.MessageEvent event) => event.data;
 
   /// Create a new receive port from an optional [RawReceivePort].
   ReceivePort([RawReceivePort? port]) : port = port ?? RawReceivePort();
@@ -122,13 +122,13 @@ class ReceivePort extends Stream<dynamic> {
 ReceivePort broadcastPort(String channelName) =>
     ReceivePort(RawReceivePort(Channel.broadcastChannel(channelName)));
 
-/// [html.MessagePort]'s interface.
-abstract class PortLike extends EventTarget {
+/// [web.MessagePort]'s interface.
+abstract class PortLike extends web.EventTarget {
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  factory PortLike.messagePort(html.MessagePort port) = _MessagePortWrapper;
+  factory PortLike.messagePort(web.MessagePort port) = _MessagePortWrapper;
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  factory PortLike.broadcastChannel(BroadcastChannel channel) =
+  factory PortLike.broadcastChannel(web.BroadcastChannel channel) =
       _BroadcastPortWrapper;
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
@@ -144,12 +144,12 @@ abstract class PortLike extends EventTarget {
 /// Delegates a subset of PortLike methods verbatim.
 abstract class _DelegatedPort implements PortLike {
   @override
-  void addEventListener(String type, html.EventListener? listener,
+  void addEventListener(String type, web.EventListener? listener,
           [bool? useCapture]) =>
       nativePort.addEventListener(type, listener, useCapture);
 
   @override
-  void removeEventListener(String type, html.EventListener? listener,
+  void removeEventListener(String type, web.EventListener? listener,
           [bool? useCapture]) =>
       nativePort.removeEventListener(type, listener, useCapture);
 
@@ -157,15 +157,15 @@ abstract class _DelegatedPort implements PortLike {
   void close() => nativePort.close();
 
   @override
-  bool dispatchEvent(html.Event event) => nativePort.dispatchEvent(event);
+  bool dispatchEvent(web.Event event) => nativePort.dispatchEvent(event);
 
   @override
-  html.Events get on => nativePort.on;
+  web.Events get on => nativePort.on;
 }
 
 class _MessagePortWrapper extends _DelegatedPort {
   @override
-  final html.MessagePort nativePort;
+  final web.MessagePort nativePort;
 
   _MessagePortWrapper(this.nativePort);
 
@@ -176,7 +176,7 @@ class _MessagePortWrapper extends _DelegatedPort {
 
 class _BroadcastPortWrapper extends _DelegatedPort {
   @override
-  final html.BroadcastChannel nativePort;
+  final web.BroadcastChannel nativePort;
 
   _BroadcastPortWrapper(this.nativePort);
 
@@ -192,7 +192,8 @@ class _BroadcastPortWrapper extends _DelegatedPort {
 }
 
 extension on PortLike {
-  static const messageEvent = EventStreamProvider<MessageEvent>('message');
+  static const messageEvent =
+      web.EventStreamProvider<web.MessageEvent>('message');
 
-  Stream<MessageEvent> get onMessage => messageEvent.forTarget(this);
+  Stream<web.MessageEvent> get onMessage => messageEvent.forTarget(this);
 }
