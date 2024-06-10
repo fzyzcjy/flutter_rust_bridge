@@ -8,3 +8,6 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<int> minimalAdder({required int a, required int b}) =>
     RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b);
+
+Stream<int> funcStreamAddValueAndErrorTwinNormal() =>
+    RustLib.instance.api.crateApiMinimalFuncStreamAddValueAndErrorTwinNormal();

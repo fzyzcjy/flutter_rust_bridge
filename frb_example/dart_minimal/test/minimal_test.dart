@@ -14,4 +14,14 @@ Future<void> main() async {
     print('Action: Call rust (after)');
   });
   print('Action: Configure tests (end)');
+
+  test('func_stream_add_value_and_error_twin_normal', () async {
+    final stream = await funcStreamAddValueAndErrorTwinNormal();
+    final events = <String>[];
+    stream.listen(
+      (e) => events.add('data $e'),
+      onError: (e) => events.add('error $e'),
+    );
+    expect(events, ['data 100', 'data 200', 'error TODO']);
+  });
 }
