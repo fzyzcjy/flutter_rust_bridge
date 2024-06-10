@@ -125,6 +125,8 @@ ReceivePort broadcastPort(String channelName) =>
 
 /// [html.MessagePort]'s interface.
 abstract class PortLike {
+  const PortLike._();
+
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   factory PortLike.messagePort(html.MessagePort port) = _MessagePortWrapper;
 
@@ -140,13 +142,17 @@ abstract class PortLike {
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   html.EventTarget get nativePort;
+
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
+  Stream<MessageEvent> get onMessage => _kMessageEvent.forTarget(nativePort);
+  static const _kMessageEvent = EventStreamProvider<MessageEvent>('message');
 }
 
-class _MessagePortWrapper implements PortLike {
+class _MessagePortWrapper extends PortLike {
   @override
   final html.MessagePort nativePort;
 
-  _MessagePortWrapper(this.nativePort);
+  _MessagePortWrapper(this.nativePort) : super._();
 
   @override
   void postMessage(message, [List<Object>? transfer]) =>
@@ -156,11 +162,11 @@ class _MessagePortWrapper implements PortLike {
   void close() => nativePort.close();
 }
 
-class _BroadcastPortWrapper implements PortLike {
+class _BroadcastPortWrapper extends PortLike {
   @override
   final html.BroadcastChannel nativePort;
 
-  _BroadcastPortWrapper(this.nativePort);
+  _BroadcastPortWrapper(this.nativePort) : super._();
 
   /// This presents a limitation of BroadcastChannel,
   /// i.e. it cannot carry transferables and will unconditionally clone the items.
@@ -174,10 +180,4 @@ class _BroadcastPortWrapper implements PortLike {
 
   @override
   void close() => nativePort.close();
-}
-
-extension on PortLike {
-  static const _kMessageEvent = EventStreamProvider<MessageEvent>('message');
-
-  Stream<MessageEvent> get onMessage => _kMessageEvent.forTarget(nativePort);
 }
