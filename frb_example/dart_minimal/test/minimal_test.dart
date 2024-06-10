@@ -23,7 +23,10 @@ Future<void> main() async {
     final onDone = Completer<void>();
     stream.listen(
       (e) => events.add('data $e'),
-      onError: (e) => events.add('error $e'),
+      onError: (e, s) {
+        print('onError $e $s');
+        events.add('error $e');
+      },
       onDone: () => onDone.complete(),
     );
     await onDone.future;
