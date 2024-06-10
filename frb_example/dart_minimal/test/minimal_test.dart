@@ -30,6 +30,6 @@ Future<void> main() async {
       onDone: () => onDone.complete(),
     );
     await onDone.future;
-    expect(events, ['data 100', 'data 200', 'error TODO']);
+    expect(events, ['data 100', 'data 200', contains('deliberate error')]);
   });
 }
