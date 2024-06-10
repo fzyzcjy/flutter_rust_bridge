@@ -8,6 +8,68 @@ import 'dart:typed_data' hide Int64List, Uint64List;
 import 'package:flutter_rust_bridge/src/exceptions.dart';
 import 'package:flutter_rust_bridge/src/platform_utils/_web.dart';
 
+@JS('TypedArray')
+abstract class _TypedArray {
+  external ByteBuffer get buffer;
+
+  external int length;
+
+  external BigInt at(int index);
+}
+
+extension on _TypedArray {
+  operator []=(int index, Object? value) {
+    setProperty(this, index, value);
+  }
+}
+
+/// An array whose element is BigInt64
+@JS('BigInt64Array')
+abstract class _BigInt64Array extends _TypedArray {
+  /// Construct the array
+  external factory _BigInt64Array(Object lengthOrBuffer,
+      [int? offset, int? length]);
+
+  /// Construct the array from `List<int>`
+  factory _BigInt64Array.fromList(List<int> list) =>
+      _BigInt64Array(list.map((n) => BigInt.from(n)).toList());
+
+  /// Construct an array view
+  factory _BigInt64Array.view(
+    ByteBuffer buffer, [
+    int offset = 0,
+    int? length,
+  ]) =>
+      _BigInt64Array(buffer, offset, length);
+
+  /// Construct an array sub-list view
+  factory _BigInt64Array.sublistView(TypedData array,
+          [int offset = 0, int? length]) =>
+      _BigInt64Array(array.buffer, offset, length);
+}
+
+/// An array whose element is BigUint64
+@JS('BigUint64Array')
+abstract class _BigUint64Array extends _TypedArray {
+  /// Construct the array
+  external factory _BigUint64Array(Object lengthOrBuffer,
+      [int? offset, int? buffer]);
+
+  /// Construct the array from `List<int>`
+  factory _BigUint64Array.fromList(List<int> list) =>
+      _BigUint64Array(list.map((n) => BigInt.from(n)).toList());
+
+  /// Construct an array view
+  factory _BigUint64Array.view(ByteBuffer buffer,
+          [int offset = 0, int? length]) =>
+      _BigUint64Array(buffer, offset, length);
+
+  /// Construct an array sub-list view
+  factory _BigUint64Array.sublistView(TypedData array,
+          [int offset = 0, int? length]) =>
+      _BigUint64Array(array.buffer, offset, length);
+}
+
 /// Opt out of type safety for setting the value.
 /// Helpful if the array needs to accept multiple types.
 abstract class _SetAnyListMixin<T> extends ListMixin<T> {
