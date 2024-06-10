@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:frb_example_dart_minimal/src/rust/api/minimal.dart';
 import 'package:frb_example_dart_minimal/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
@@ -18,10 +20,13 @@ Future<void> main() async {
   test('func_stream_add_value_and_error_twin_normal', () async {
     final stream = await funcStreamAddValueAndErrorTwinNormal();
     final events = <String>[];
+    final onDone = Completer<void>();
     stream.listen(
       (e) => events.add('data $e'),
       onError: (e) => events.add('error $e'),
+      onDone: () => onDone.complete(),
     );
+    await onDone.future;
     expect(events, ['data 100', 'data 200', 'error TODO']);
   });
 }
