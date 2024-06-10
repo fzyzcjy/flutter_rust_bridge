@@ -72,12 +72,12 @@ external RustLibWasmModule get wasmModule;
 @JS()
 @anonymous
 extension type RustLibWasmModule._(JSObject _) implements JSObject {
-  external Object /* Promise */ call([String? moduleName]);
+  external JSAny /* Promise */ call([String? moduleName]);
 
-  external RustLibWasmModule bind(dynamic thisArg, String moduleName);
+  external RustLibWasmModule bind(JSAny thisArg, String moduleName);
 
-  external void wire__crate__api__minimal__init_app(NativePortType port_);
+  external void wire__crate__api__minimal__init_app(JSAny port_);
 
   external void wire__crate__api__minimal__minimal_adder(
-      NativePortType port_, int a, int b);
+      JSAny port_, int a, int b);
 }
