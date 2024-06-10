@@ -282,7 +282,7 @@ pub(crate) fn generate_stream_sink_setup_and_serialize(
     let codec = mir.codec;
     let codec_lower = codec.to_string().to_case(Case::Snake);
     let ok_ty = mir.inner_ok.safe_ident();
-    let err_ty = TODO;
+    let err_ty = mir.inner_err.safe_ident();
 
     let codec_code = format!(
         "{codec}Codec(
