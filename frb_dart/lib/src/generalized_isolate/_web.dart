@@ -20,12 +20,13 @@ typedef SendPort = PortLike;
 /// Web implementation of the `dart:isolate`'s ReceivePort.
 class ReceivePort extends Stream<dynamic> {
   /// The receive port.
-  final RawReceivePort port;
+  final RawReceivePort _rawReceivePort;
 
   static dynamic _extractData(MessageEvent event) => event.data;
 
   /// Create a new receive port from an optional [RawReceivePort].
-  ReceivePort([RawReceivePort? port]) : port = port ?? RawReceivePort();
+  ReceivePort([RawReceivePort? rawReceivePort])
+      : _rawReceivePort = rawReceivePort ?? RawReceivePort();
 
   @override
   StreamSubscription listen(
@@ -34,7 +35,7 @@ class ReceivePort extends Stream<dynamic> {
     void Function()? onDone,
     bool? cancelOnError,
   }) {
-    return port.receivePort.onMessage.map(_extractData).listen(
+    return _rawReceivePort.receivePort.onMessage.map(_extractData).listen(
           onData,
           onError: onError,
           onDone: onDone,
@@ -43,10 +44,10 @@ class ReceivePort extends Stream<dynamic> {
   }
 
   /// The send port.
-  SendPort get sendPort => port.sendPort;
+  SendPort get sendPort => _rawReceivePort.sendPort;
 
   /// Close the receive port, ignoring any further messages.
-  void close() => port.receivePort.close();
+  void close() => _rawReceivePort.receivePort.close();
 }
 
 /// Wrapper around a [MessageChannel].
