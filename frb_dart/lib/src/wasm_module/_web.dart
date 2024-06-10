@@ -75,9 +75,12 @@ class _WasmBindgenNoModules extends Modules {
 
     jsEval('window.wasm_bindgen = wasm_bindgen');
 
-    final module_ = module?.call() ?? _noModules!;
-
-    return await web.promiseToFuture(module_('${root}_bg.wasm'));
+    final moduleOrDefault = module?.call() ?? _noModules!;
+    final executed = moduleOrDefault('${root}_bg.wasm');
+   
+    // TODO
+    // return await web.promiseToFuture(executed);
+    return executed;
   }
 }
 
