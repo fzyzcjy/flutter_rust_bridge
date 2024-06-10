@@ -59606,13 +59606,7 @@ external RustLibWasmModule get wasmModule;
 
 @JS()
 @anonymous
-class RustLibWasmModule implements WasmModule {
-  @override
-  external Object /* Promise */ call([String? moduleName]);
-
-  @override
-  external RustLibWasmModule bind(dynamic thisArg, String moduleName);
-
+class RustLibWasmModule {
   external void wire__crate__api__function_at_api_mod_rs(NativePortType port_);
 
   external void wire__crate__api__array__boxed_blob_twin_normal(
