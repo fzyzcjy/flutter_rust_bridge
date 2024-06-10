@@ -17,47 +17,6 @@ typedef MessagePort = PortLike;
 /// An alias to [MessagePort] on web platforms.
 typedef SendPort = PortLike;
 
-abstract class _Channel {
-  SendPort get sendPort;
-
-  SendPort get receivePort;
-
-  const _Channel();
-
-  factory _Channel.messageChannel() = _MessageChannelWrapper;
-
-  factory _Channel.broadcastChannel(String channelName) =
-      _BroadcastChannelWrapper;
-}
-
-class _MessageChannelWrapper implements _Channel {
-  final channel = MessageChannel();
-
-  @override
-  SendPort get sendPort => PortLike.messagePort(channel.port2);
-
-  @override
-  SendPort get receivePort => PortLike.messagePort(channel.port1);
-}
-
-class _BroadcastChannelWrapper implements _Channel {
-  final BroadcastChannel _sendChannel;
-  final BroadcastChannel _receiveChannel;
-
-  _BroadcastChannelWrapper(String channelName)
-      // Note: It is *wrong* to reuse the same HTML BroadcastChannel object,
-      // because HTML BroadcastChannel spec says that, the event will not be fired
-      // at the object which sends it. Therefore, we need two different objects.
-      : _sendChannel = BroadcastChannel(channelName),
-        _receiveChannel = BroadcastChannel(channelName);
-
-  @override
-  SendPort get sendPort => PortLike.broadcastChannel(_sendChannel);
-
-  @override
-  SendPort get receivePort => PortLike.broadcastChannel(_receiveChannel);
-}
-
 /// Wrapper around a [MessageChannel].
 class RawReceivePort {
   /// The underlying message channel.
@@ -116,6 +75,47 @@ class ReceivePort extends Stream<dynamic> {
 /// {@macro flutter_rust_bridge.internal}
 ReceivePort broadcastPort(String channelName) =>
     ReceivePort(RawReceivePort(_Channel.broadcastChannel(channelName)));
+
+abstract class _Channel {
+  SendPort get sendPort;
+
+  SendPort get receivePort;
+
+  const _Channel();
+
+  factory _Channel.messageChannel() = _MessageChannelWrapper;
+
+  factory _Channel.broadcastChannel(String channelName) =
+      _BroadcastChannelWrapper;
+}
+
+class _MessageChannelWrapper implements _Channel {
+  final channel = MessageChannel();
+
+  @override
+  SendPort get sendPort => PortLike.messagePort(channel.port2);
+
+  @override
+  SendPort get receivePort => PortLike.messagePort(channel.port1);
+}
+
+class _BroadcastChannelWrapper implements _Channel {
+  final BroadcastChannel _sendChannel;
+  final BroadcastChannel _receiveChannel;
+
+  _BroadcastChannelWrapper(String channelName)
+      // Note: It is *wrong* to reuse the same HTML BroadcastChannel object,
+      // because HTML BroadcastChannel spec says that, the event will not be fired
+      // at the object which sends it. Therefore, we need two different objects.
+      : _sendChannel = BroadcastChannel(channelName),
+        _receiveChannel = BroadcastChannel(channelName);
+
+  @override
+  SendPort get sendPort => PortLike.broadcastChannel(_sendChannel);
+
+  @override
+  SendPort get receivePort => PortLike.broadcastChannel(_receiveChannel);
+}
 
 /// [html.MessagePort]'s interface.
 abstract class PortLike {
