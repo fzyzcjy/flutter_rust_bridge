@@ -74,8 +74,7 @@ class RawReceivePort {
   /// The port to be used by other workers.
   SendPort get sendPort => _channel.sendPort;
 
-  /// The port used to receive messages from other workers.
-  SendPort get receivePort => _channel.receivePort;
+  SendPort get _receivePort => _channel.receivePort;
 }
 
 /// {@macro flutter_rust_bridge.internal}
