@@ -30,4 +30,14 @@ Future<void> main({bool skipRustLibInit = false}) async {
     container.name = 'hello';
     expect(container.name, 'hello');
   });
+
+  test('getter and setter', () async {
+    final obj = StructWithSimpleSetterTwinNormal();
+
+    obj.simpleSetter = 42;
+    expect(obj.simpleGetter, 42);
+
+    obj.something = 200;
+    expect(obj.something, 200);
+  });
 }

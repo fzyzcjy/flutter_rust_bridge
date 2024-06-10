@@ -2,8 +2,9 @@ use crate::codegen::generator::codec::structs::{CodecMode, CodecModePack};
 use crate::codegen::ir::hir::flat::function::HirFlatFunction;
 use crate::codegen::ir::hir::flat::function::HirFlatFunctionOwner;
 use crate::codegen::ir::mir::func::{
-    MirFunc, MirFuncArgMode, MirFuncImplMode, MirFuncImplModeDartOnly, MirFuncInput, MirFuncMode,
-    MirFuncOutput, MirFuncOwnerInfo, MirFuncOwnerInfoMethod, MirFuncOwnerInfoMethodMode,
+    MirFunc, MirFuncArgMode, MirFuncImplMode, MirFuncImplModeDartOnly,
+    MirFuncInput, MirFuncMode, MirFuncOutput, MirFuncOwnerInfo, MirFuncOwnerInfoMethod,
+    MirFuncOwnerInfoMethodMode,
 };
 use crate::codegen::ir::mir::skip::MirSkipReason::IgnoredFunctionGeneric;
 use crate::codegen::ir::mir::skip::{MirSkip, MirSkipReason};
@@ -127,7 +128,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         let src_lineno = func.item_fn.span().start().line;
         let attributes = FrbAttributes::parse(func.item_fn.attrs())?;
 
-        let dart_name = attributes.name();
+        let dart_name = parse_dart_name(&attributes, &func.item_fn.name());
 
         let create_context = |owner: Option<MirFuncOwnerInfo>| TypeParserParsingContext {
             initiated_namespace: func.namespace.clone(),
@@ -167,6 +168,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         let mode = compute_func_mode(&attributes, &info);
         let stream_dart_await = attributes.stream_dart_await() && !attributes.sync();
         let namespace_refined = refine_namespace(&owner).unwrap_or(func.namespace.clone());
+        let accessor = attributes.accessor();
 
         let output = MirFuncOutput {
             normal: info.ok_output.unwrap_or(Primitive(MirTypePrimitive::Unit)),
@@ -190,7 +192,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             stream_dart_await,
             rust_async: func.item_fn.sig().asyncness.is_some(),
             initializer: attributes.init(),
-            accessor: attributes.accessor(),
+            accessor,
             arg_mode: if attributes.positional() {
                 MirFuncArgMode::Positional
             } else {
@@ -429,4 +431,13 @@ fn compute_impl_mode(
     }
 
     MirFuncImplMode::Normal
+}
+
+fn parse_dart_name(attributes: &FrbAttributes, func_name_raw: &str) -> Option<String> {
+    (attributes.name()).or_else(|| {
+        (attributes.accessor()).and_then(|accessor| {
+            (func_name_raw.strip_prefix(&format!("{}_", accessor.verb_str())))
+                .map(ToString::to_string)
+        })
+    })
 }

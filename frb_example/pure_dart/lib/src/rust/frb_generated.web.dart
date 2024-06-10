@@ -38468,9 +38468,23 @@ class RustLibWire implements BaseWire {
               port_, that);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__misc_no_twin_example_a__StructWithSimpleSetterTwinNormal_get_something(
+              Object that) =>
+          wasmModule
+              .wire__crate__api__misc_no_twin_example_a__StructWithSimpleSetterTwinNormal_get_something(
+                  that);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__misc_no_twin_example_a__StructWithSimpleSetterTwinNormal_new() =>
           wasmModule
               .wire__crate__api__misc_no_twin_example_a__StructWithSimpleSetterTwinNormal_new();
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__misc_no_twin_example_a__StructWithSimpleSetterTwinNormal_set_something(
+              Object that, int value) =>
+          wasmModule
+              .wire__crate__api__misc_no_twin_example_a__StructWithSimpleSetterTwinNormal_set_something(
+                  that, value);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__misc_no_twin_example_a__StructWithSimpleSetterTwinNormal_simple_getter(
@@ -60441,7 +60455,15 @@ class RustLibWasmModule implements WasmModule {
           NativePortType port_, Object that);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__misc_no_twin_example_a__StructWithSimpleSetterTwinNormal_get_something(
+          Object that);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__misc_no_twin_example_a__StructWithSimpleSetterTwinNormal_new();
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__misc_no_twin_example_a__StructWithSimpleSetterTwinNormal_set_something(
+          Object that, int value);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__misc_no_twin_example_a__StructWithSimpleSetterTwinNormal_simple_getter(

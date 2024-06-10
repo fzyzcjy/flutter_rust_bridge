@@ -15827,9 +15827,28 @@ pub fn wire__crate__api__misc_no_twin_example_a__StructWithImplBlockInMultiFile_
 }
 
 #[wasm_bindgen]
+pub fn wire__crate__api__misc_no_twin_example_a__StructWithSimpleSetterTwinNormal_get_something(
+    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__misc_no_twin_example_a__StructWithSimpleSetterTwinNormal_get_something_impl(
+        that,
+    )
+}
+
+#[wasm_bindgen]
 pub fn wire__crate__api__misc_no_twin_example_a__StructWithSimpleSetterTwinNormal_new(
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire__crate__api__misc_no_twin_example_a__StructWithSimpleSetterTwinNormal_new_impl()
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__misc_no_twin_example_a__StructWithSimpleSetterTwinNormal_set_something(
+    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    value: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__misc_no_twin_example_a__StructWithSimpleSetterTwinNormal_set_something_impl(
+        that, value,
+    )
 }
 
 #[wasm_bindgen]
