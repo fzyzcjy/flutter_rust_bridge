@@ -1,7 +1,7 @@
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 library;
 
-export 'package:js/js.dart';
+export 'dart:js_interop';
 
 export 'flutter_rust_bridge_for_generated_common.dart';
 export 'src/dart_opaque/_web.dart';
