@@ -20,24 +20,24 @@ typedef SendPort = PortLike;
 /// Wrapper around a [MessageChannel].
 class RawReceivePort {
   /// The underlying message channel.
-  final _Channel channel;
+  final _Channel _channel;
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   RawReceivePort([_Channel? channel])
-      : channel = channel ?? _Channel.messageChannel();
+      : _channel = channel ?? _Channel.messageChannel();
 
   set handler(Function(dynamic) handler) {
     receivePort.onMessage.listen((event) => handler(event.data));
   }
 
   /// Close the receive port.
-  void close() => channel.receivePort.close();
+  void close() => _channel.receivePort.close();
 
   /// The port to be used by other workers.
-  SendPort get sendPort => channel.sendPort;
+  SendPort get sendPort => _channel.sendPort;
 
   /// The port used to receive messages from other workers.
-  SendPort get receivePort => channel.receivePort;
+  SendPort get receivePort => _channel.receivePort;
 }
 
 /// Web implementation of the `dart:isolate`'s ReceivePort.
