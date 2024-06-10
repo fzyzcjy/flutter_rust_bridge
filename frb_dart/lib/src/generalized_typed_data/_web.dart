@@ -106,6 +106,15 @@ BigInt byteDataGetInt64(ByteData byteData, int byteOffset, Endian endian) {
   return ans;
 }
 
+/// Opt out of type safety for setting the value.
+/// Helpful if the array needs to accept multiple types.
+abstract class _SetAnyListMixin<T> extends ListMixin<T> {
+  @override
+  void operator []=(int index, Object? value) {
+    this[index] = value;
+  }
+}
+
 abstract class _TypedList<T> extends _SetAnyListMixin<T> {
   _TypedArray get _inner;
 
@@ -139,15 +148,6 @@ abstract class _Int64OrUint64List extends _TypedList<BigInt> {
     if (dart is int) return BigInt.from(dart);
     // Assume value is already JS safe.
     return dart;
-  }
-}
-
-/// Opt out of type safety for setting the value.
-/// Helpful if the array needs to accept multiple types.
-abstract class _SetAnyListMixin<T> extends ListMixin<T> {
-  @override
-  void operator []=(int index, Object? value) {
-    this[index] = value;
   }
 }
 
