@@ -86,10 +86,12 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
             ("StreamSink", [inner ]) => Delegate(MirTypeDelegate::StreamSink(MirTypeDelegateStreamSink {
                 inner_ok: Box::new(self.parse_type(inner)?),
+                inner_err: stream_sink_err_type(),
                 codec: self.context.default_stream_sink_codec,
             })),
             ("StreamSink", [inner, codec ]) => Delegate(MirTypeDelegate::StreamSink(MirTypeDelegateStreamSink {
                 inner_ok: Box::new(self.parse_type(inner)?),
+                inner_err: stream_sink_err_type(),
                 codec: parse_stream_sink_codec(codec)?,
             })),
 
@@ -130,4 +132,8 @@ fn parse_stream_sink_codec(codec: &Type) -> anyhow::Result<CodecMode> {
     let ident = &segments.last().unwrap().ident;
     let ident_stripped = ident.strip_suffix("Codec").unwrap();
     (ident_stripped.parse()).with_context(|| format!("raw: {ident_stripped}"))
+}
+
+fn stream_sink_err_type() -> Box<MirType> {
+    Box::new(MirType::Delegate(MirTypeDelegate::AnyhowException))
 }
