@@ -170,7 +170,7 @@ class _MessagePortWrapper extends _DelegatedPort {
 
   @override
   void postMessage(message, [List<Object>? transfer]) => nativePort.postMessage(
-      message?.toJSBox, transfer?.map((x) => x.toJSBox).toList());
+      message?.toJSBox, (transfer ?? []).map((x) => x.toJSBox).toList().toJS);
 }
 
 class _BroadcastPortWrapper extends _DelegatedPort {
