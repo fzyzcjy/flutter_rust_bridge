@@ -5,7 +5,6 @@ import 'dart:async';
 
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_web.dart';
 import 'package:flutter_rust_bridge/src/platform_types/_web.dart';
-import 'package:flutter_rust_bridge/src/platform_utils/_web.dart';
 import 'package:web/web.dart' as web;
 
 /// {@macro flutter_rust_bridge.internal}
@@ -40,10 +39,10 @@ class _MessageChannelWrapper implements Channel {
   final channel = web.MessageChannel();
 
   @override
-  SendPort get sendPort => PortLike.messagePort(channel.port2);
+  SendPort get sendPort => _createMessagePort(channel.port2);
 
   @override
-  SendPort get receivePort => PortLike.messagePort(channel.port1);
+  SendPort get receivePort => _createMessagePort(channel.port1);
 }
 
 class _BroadcastChannelWrapper implements Channel {
@@ -58,10 +57,10 @@ class _BroadcastChannelWrapper implements Channel {
         _receiveChannel = web.BroadcastChannel(channelName);
 
   @override
-  SendPort get sendPort => PortLike.broadcastChannel(_sendChannel);
+  SendPort get sendPort => _createBroadcastChannel(_sendChannel);
 
   @override
-  SendPort get receivePort => PortLike.broadcastChannel(_receiveChannel);
+  SendPort get receivePort => _createBroadcastChannel(_receiveChannel);
 }
 
 /// Wrapper around a [MessageChannel].
@@ -123,8 +122,15 @@ class ReceivePort extends Stream<dynamic> {
 ReceivePort broadcastPort(String channelName) =>
     ReceivePort(RawReceivePort(Channel.broadcastChannel(channelName)));
 
+/// {@macro flutter_rust_bridge.only_for_generated_code}
+typedef PortLike = web.EventTarget;
+
+PortLike _createMessagePort(web.MessagePort port) => TODO;
+
+PortLike _createBroadcastChannel(web.BroadcastChannel channel) => TODO;
+
 // /// [web.MessagePort]'s interface.
-// abstract class PortLike /*extends web.EventTarget*/ {
+// abstract class PortLike extends web.EventTarget {
 //   /// {@macro flutter_rust_bridge.only_for_generated_code}
 //   factory PortLike.messagePort(web.MessagePort port) = _MessagePortWrapper;
 //
