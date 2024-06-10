@@ -56,13 +56,7 @@ fn generate_wasm_module_class(
     format!(
         "@JS('wasm_bindgen') external {wasm_module_name} get wasmModule;
 
-        @JS() @anonymous class {wasm_module_name} implements WasmModule {{
-            @override
-            external Object /* Promise */ call([String? moduleName]);
-
-            @override
-            external {wasm_module_name} bind(dynamic thisArg, String moduleName);
-
+        @JS() @anonymous class {wasm_module_name} {{
             {body}
         }}
         "
