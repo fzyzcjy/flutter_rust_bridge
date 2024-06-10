@@ -139,7 +139,7 @@ abstract class PortLike {
   void close();
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  NativePortType get nativePort;
+  html.EventTarget get nativePort;
 }
 
 class _MessagePortWrapper implements PortLike {
