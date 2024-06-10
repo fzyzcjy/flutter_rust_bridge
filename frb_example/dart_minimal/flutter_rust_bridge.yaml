@@ -4,3 +4,6 @@ dart_output: lib/src/rust
 c_output: frb_generated.h
 dump_all: true
 local: true
+
+# TODO temp
+full_dep: true
