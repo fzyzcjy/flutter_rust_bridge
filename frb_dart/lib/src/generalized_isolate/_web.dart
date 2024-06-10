@@ -123,78 +123,78 @@ class ReceivePort extends Stream<dynamic> {
 ReceivePort broadcastPort(String channelName) =>
     ReceivePort(RawReceivePort(Channel.broadcastChannel(channelName)));
 
-/// [web.MessagePort]'s interface.
-abstract class PortLike /*extends web.EventTarget*/ {
-  /// {@macro flutter_rust_bridge.only_for_generated_code}
-  factory PortLike.messagePort(web.MessagePort port) = _MessagePortWrapper;
-
-  /// {@macro flutter_rust_bridge.only_for_generated_code}
-  factory PortLike.broadcastChannel(web.BroadcastChannel channel) =
-      _BroadcastPortWrapper;
-
-  /// {@macro flutter_rust_bridge.only_for_generated_code}
-  void postMessage(Object? value);
-
-  /// {@macro flutter_rust_bridge.only_for_generated_code}
-  void close();
-
-  /// {@macro flutter_rust_bridge.only_for_generated_code}
-  NativePortType get nativePort;
-}
-
-/// Delegates a subset of PortLike methods verbatim.
-abstract class _DelegatedPort implements PortLike {
-  @override
-  void addEventListener(String type, web.EventListener? listener,
-          [bool? useCapture]) =>
-      nativePort.addEventListener(type, listener, useCapture);
-
-  @override
-  void removeEventListener(String type, web.EventListener? listener,
-          [bool? useCapture]) =>
-      nativePort.removeEventListener(type, listener, useCapture);
-
-  @override
-  void close() => nativePort.close();
-
-  @override
-  bool dispatchEvent(web.Event event) => nativePort.dispatchEvent(event);
-
-  @override
-  web.Events get on => nativePort.on;
-}
-
-class _MessagePortWrapper extends _DelegatedPort {
-  @override
-  final web.MessagePort nativePort;
-
-  _MessagePortWrapper(this.nativePort);
-
-  @override
-  void postMessage(message, [List<Object>? transfer]) => nativePort.postMessage(
-      message?.toJSBox, transfer?.map((x) => x.toJSBox).toList());
-}
-
-class _BroadcastPortWrapper extends _DelegatedPort {
-  @override
-  final web.BroadcastChannel nativePort;
-
-  _BroadcastPortWrapper(this.nativePort);
-
-  /// This presents a limitation of BroadcastChannel,
-  /// i.e. it cannot carry transferables and will unconditionally clone the items.
-  @override
-  void postMessage(message, [List<Object>? transfer]) {
-    if (transfer != null && transfer.isNotEmpty) {
-      jsConsoleWarn("Ignoring transferables for BroadcastPort:", transfer);
-    }
-    nativePort.postMessage(message?.toJSBox ?? false.toJS);
-  }
-}
-
-extension on PortLike {
-  static const messageEvent =
-      web.EventStreamProvider<web.MessageEvent>('message');
-
-  Stream<web.MessageEvent> get onMessage => messageEvent.forTarget(this);
-}
+// /// [web.MessagePort]'s interface.
+// abstract class PortLike /*extends web.EventTarget*/ {
+//   /// {@macro flutter_rust_bridge.only_for_generated_code}
+//   factory PortLike.messagePort(web.MessagePort port) = _MessagePortWrapper;
+//
+//   /// {@macro flutter_rust_bridge.only_for_generated_code}
+//   factory PortLike.broadcastChannel(web.BroadcastChannel channel) =
+//       _BroadcastPortWrapper;
+//
+//   /// {@macro flutter_rust_bridge.only_for_generated_code}
+//   void postMessage(Object? value);
+//
+//   /// {@macro flutter_rust_bridge.only_for_generated_code}
+//   void close();
+//
+//   /// {@macro flutter_rust_bridge.only_for_generated_code}
+//   NativePortType get nativePort;
+// }
+//
+// /// Delegates a subset of PortLike methods verbatim.
+// abstract class _DelegatedPort implements PortLike {
+//   @override
+//   void addEventListener(String type, web.EventListener? listener,
+//           [bool? useCapture]) =>
+//       nativePort.addEventListener(type, listener, useCapture);
+//
+//   @override
+//   void removeEventListener(String type, web.EventListener? listener,
+//           [bool? useCapture]) =>
+//       nativePort.removeEventListener(type, listener, useCapture);
+//
+//   @override
+//   void close() => nativePort.close();
+//
+//   @override
+//   bool dispatchEvent(web.Event event) => nativePort.dispatchEvent(event);
+//
+//   @override
+//   web.Events get on => nativePort.on;
+// }
+//
+// class _MessagePortWrapper extends _DelegatedPort {
+//   @override
+//   final web.MessagePort nativePort;
+//
+//   _MessagePortWrapper(this.nativePort);
+//
+//   @override
+//   void postMessage(message, [List<Object>? transfer]) => nativePort.postMessage(
+//       message?.toJSBox, transfer?.map((x) => x.toJSBox).toList());
+// }
+//
+// class _BroadcastPortWrapper extends _DelegatedPort {
+//   @override
+//   final web.BroadcastChannel nativePort;
+//
+//   _BroadcastPortWrapper(this.nativePort);
+//
+//   /// This presents a limitation of BroadcastChannel,
+//   /// i.e. it cannot carry transferables and will unconditionally clone the items.
+//   @override
+//   void postMessage(message, [List<Object>? transfer]) {
+//     if (transfer != null && transfer.isNotEmpty) {
+//       jsConsoleWarn("Ignoring transferables for BroadcastPort:", transfer);
+//     }
+//     nativePort.postMessage(message?.toJSBox ?? false.toJS);
+//   }
+// }
+//
+// extension on PortLike {
+//   static const messageEvent =
+//       web.EventStreamProvider<web.MessageEvent>('message');
+//
+//   Stream<web.MessageEvent> get onMessage => messageEvent.forTarget(this);
+// }
