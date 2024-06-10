@@ -63,10 +63,9 @@ class RawReceivePort {
   RawReceivePort._raw([_Channel? channel])
       : _channel = channel ?? _Channel.messageChannel();
 
-  // Not used currently thus comment out; but if needed, can uncomment later
-  // set handler(Function(dynamic) handler) {
-  //   receivePort.onMessage.listen((event) => handler(event.data));
-  // }
+  set handler(Function(dynamic) handler) {
+    _receivePort.onMessage.listen((event) => handler(event.data));
+  }
 
   /// Close the receive port.
   void close() => _channel.receivePort.close();
