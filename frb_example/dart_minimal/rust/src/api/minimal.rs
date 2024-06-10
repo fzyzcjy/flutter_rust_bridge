@@ -16,6 +16,6 @@ pub fn func_stream_add_value_and_error_twin_normal(sink: StreamSink<i32>) {
     (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool()).execute(transfer!(|| {
         sink.add(100).unwrap();
         sink.add(200).unwrap();
-        sink.add_error("deliberate error".to_owned()).unwrap();
+        sink.add_error(anyhow!("deliberate error")).unwrap();
     }));
 }
