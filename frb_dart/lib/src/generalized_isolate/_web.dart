@@ -124,7 +124,7 @@ ReceivePort broadcastPort(String channelName) =>
     ReceivePort(RawReceivePort(Channel.broadcastChannel(channelName)));
 
 /// [html.MessagePort]'s interface.
-abstract class PortLike extends EventTarget {
+abstract class PortLike {
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   factory PortLike.messagePort(html.MessagePort port) = _MessagePortWrapper;
 
@@ -145,23 +145,23 @@ abstract class PortLike extends EventTarget {
 /// Delegates a subset of PortLike methods verbatim.
 abstract class _DelegatedPort implements PortLike {
   @override
-  void addEventListener(String type, html.EventListener? listener,
-          [bool? useCapture]) =>
-      nativePort.addEventListener(type, listener, useCapture);
-
-  @override
-  void removeEventListener(String type, html.EventListener? listener,
-          [bool? useCapture]) =>
-      nativePort.removeEventListener(type, listener, useCapture);
-
-  @override
   void close() => nativePort.close();
 
-  @override
-  bool dispatchEvent(html.Event event) => nativePort.dispatchEvent(event);
-
-  @override
-  html.Events get on => nativePort.on;
+// @override
+// void addEventListener(String type, html.EventListener? listener,
+//     [bool? useCapture]) =>
+//     nativePort.addEventListener(type, listener, useCapture);
+//
+// @override
+// void removeEventListener(String type, html.EventListener? listener,
+//     [bool? useCapture]) =>
+//     nativePort.removeEventListener(type, listener, useCapture);
+//
+// @override
+// bool dispatchEvent(html.Event event) => nativePort.dispatchEvent(event);
+//
+// @override
+// html.Events get on => nativePort.on;
 }
 
 class _MessagePortWrapper extends _DelegatedPort {
@@ -195,5 +195,5 @@ class _BroadcastPortWrapper extends _DelegatedPort {
 extension on PortLike {
   static const messageEvent = EventStreamProvider<MessageEvent>('message');
 
-  Stream<MessageEvent> get onMessage => messageEvent.forTarget(this);
+  Stream<MessageEvent> get onMessage => messageEvent.forTarget(nativePort);
 }
