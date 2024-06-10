@@ -35,7 +35,7 @@ class ReceivePort extends Stream<dynamic> {
     void Function()? onDone,
     bool? cancelOnError,
   }) {
-    return _rawReceivePort.receivePort.onMessage.map(_extractData).listen(
+    return _rawReceivePort._receivePort.onMessage.map(_extractData).listen(
           onData,
           onError: onError,
           onDone: onDone,
