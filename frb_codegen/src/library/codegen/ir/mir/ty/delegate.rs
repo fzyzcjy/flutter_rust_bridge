@@ -127,7 +127,7 @@ impl MirTypeTrait for MirTypeDelegate {
             Self::StreamSink(mir) => {
                 mir.inner_ok.visit_types(f, mir_context);
                 mir.inner_err.visit_types(f, mir_context);
-            },
+            }
             // ... others
             _ => {}
         }
