@@ -16,6 +16,9 @@ class _Function {
   external factory _Function(String script);
 }
 
+/// {@macro flutter_rust_bridge.internal}
+dynamic jsEval(String script) => _Function(script)();
+
 /// Whether the web platform has been isolated by COOP and COEP headers,
 /// and is capable of sharing buffers between workers.
 ///
