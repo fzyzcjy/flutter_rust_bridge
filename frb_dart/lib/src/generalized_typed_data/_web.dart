@@ -25,49 +25,49 @@ extension on _TypedArray {
 
 /// An array whose element is BigInt64
 @JS('BigInt64Array')
-abstract class BigInt64Array extends _TypedArray {
+abstract class _BigInt64Array extends _TypedArray {
   /// Construct the array
-  external factory BigInt64Array(Object lengthOrBuffer,
+  external factory _BigInt64Array(Object lengthOrBuffer,
       [int? offset, int? length]);
 
   /// Construct the array from `List<int>`
-  factory BigInt64Array.fromList(List<int> list) =>
-      BigInt64Array(list.map((n) => BigInt.from(n)).toList());
+  factory _BigInt64Array.fromList(List<int> list) =>
+      _BigInt64Array(list.map((n) => BigInt.from(n)).toList());
 
   /// Construct an array view
-  factory BigInt64Array.view(
+  factory _BigInt64Array.view(
     ByteBuffer buffer, [
     int offset = 0,
     int? length,
   ]) =>
-      BigInt64Array(buffer, offset, length);
+      _BigInt64Array(buffer, offset, length);
 
   /// Construct an array sub-list view
-  factory BigInt64Array.sublistView(TypedData array,
+  factory _BigInt64Array.sublistView(TypedData array,
           [int offset = 0, int? length]) =>
-      BigInt64Array(array.buffer, offset, length);
+      _BigInt64Array(array.buffer, offset, length);
 }
 
 /// An array whose element is BigUint64
 @JS('BigUint64Array')
-abstract class BigUint64Array extends _TypedArray {
+abstract class _BigUint64Array extends _TypedArray {
   /// Construct the array
-  external factory BigUint64Array(Object lengthOrBuffer,
+  external factory _BigUint64Array(Object lengthOrBuffer,
       [int? offset, int? buffer]);
 
   /// Construct the array from `List<int>`
-  factory BigUint64Array.fromList(List<int> list) =>
-      BigUint64Array(list.map((n) => BigInt.from(n)).toList());
+  factory _BigUint64Array.fromList(List<int> list) =>
+      _BigUint64Array(list.map((n) => BigInt.from(n)).toList());
 
   /// Construct an array view
-  factory BigUint64Array.view(ByteBuffer buffer,
+  factory _BigUint64Array.view(ByteBuffer buffer,
           [int offset = 0, int? length]) =>
-      BigUint64Array(buffer, offset, length);
+      _BigUint64Array(buffer, offset, length);
 
   /// Construct an array sub-list view
-  factory BigUint64Array.sublistView(TypedData array,
+  factory _BigUint64Array.sublistView(TypedData array,
           [int offset = 0, int? length]) =>
-      BigUint64Array(array.buffer, offset, length);
+      _BigUint64Array(array.buffer, offset, length);
 }
 
 /// Opt out of type safety for setting the value.
@@ -114,7 +114,7 @@ Object _convertBigIntToJs(Object dart) {
 /// A list whose elements are Int64
 class Int64List extends _TypedList<BigInt> {
   @override
-  final BigInt64Array inner;
+  final _BigInt64Array inner;
 
   /// Construct a list
   Int64List.from(this.inner);
@@ -126,26 +126,26 @@ class Int64List extends _TypedList<BigInt> {
   Object? _dart2js(Object? value) => _convertBigIntToJs(value!);
 
   /// Construct a list
-  factory Int64List(int length) => Int64List.from(BigInt64Array(length));
+  factory Int64List(int length) => Int64List.from(_BigInt64Array(length));
 
   /// Construct a list
   factory Int64List.fromList(List<int> list) =>
-      Int64List.from(BigInt64Array.fromList(list));
+      Int64List.from(_BigInt64Array.fromList(list));
 
   /// Construct a list
   factory Int64List.view(ByteBuffer buffer, [int offset = 0, int? length]) =>
-      Int64List.from(BigInt64Array.view(buffer, offset, length));
+      Int64List.from(_BigInt64Array.view(buffer, offset, length));
 
   /// Construct a list
   factory Int64List.sublistView(TypedData array,
           [int offset = 0, int? length]) =>
-      Int64List.from(BigInt64Array.sublistView(array, offset, length));
+      Int64List.from(_BigInt64Array.sublistView(array, offset, length));
 }
 
 /// A list whose elements are Uint64
 class Uint64List extends _TypedList<BigInt> {
   @override
-  final BigUint64Array inner;
+  final _BigUint64Array inner;
 
   /// Construct a list
   Uint64List.from(this.inner);
@@ -157,20 +157,20 @@ class Uint64List extends _TypedList<BigInt> {
   Object? _dart2js(Object? value) => _convertBigIntToJs(value!);
 
   /// Construct a list
-  factory Uint64List(int length) => Uint64List.from(BigUint64Array(length));
+  factory Uint64List(int length) => Uint64List.from(_BigUint64Array(length));
 
   /// Construct a list
   factory Uint64List.fromList(List<int> list) =>
-      Uint64List.from(BigUint64Array.fromList(list));
+      Uint64List.from(_BigUint64Array.fromList(list));
 
   /// Construct a list
   factory Uint64List.view(ByteBuffer buffer, [int offset = 0, int? length]) =>
-      Uint64List.from(BigUint64Array.view(buffer, offset, length));
+      Uint64List.from(_BigUint64Array.view(buffer, offset, length));
 
   /// Construct a list
   factory Uint64List.sublistView(TypedData array,
           [int offset = 0, int? length]) =>
-      Uint64List.from(BigUint64Array.sublistView(array, offset, length));
+      Uint64List.from(_BigUint64Array.sublistView(array, offset, length));
 }
 
 /// {@macro flutter_rust_bridge.internal}
