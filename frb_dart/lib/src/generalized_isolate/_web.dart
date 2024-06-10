@@ -137,7 +137,7 @@ abstract class PortLike /*extends web.EventTarget*/ {
   void close();
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  NativePortType get nativePort;
+  web.EventTarget get nativePort;
 }
 
 /// Delegates a subset of PortLike methods verbatim.
@@ -194,5 +194,5 @@ extension on PortLike {
   static const messageEvent =
       web.EventStreamProvider<web.MessageEvent>('message');
 
-  Stream<web.MessageEvent> get onMessage => messageEvent.forTarget(this);
+  Stream<web.MessageEvent> get onMessage => messageEvent.forTarget(nativePort);
 }
