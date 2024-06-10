@@ -44,19 +44,6 @@ abstract class Modules {
   ///
   /// Override this method to define custom initialization processes.
   Future<void> initializeModule();
-
-  void _ensureCrossOriginIsolated() {
-    switch (crossOriginIsolated) {
-      case false:
-        throw const MissingHeaderException();
-      case true:
-        return;
-      case null:
-        jsConsoleWarn(
-            'Warning: crossOriginIsolated is null, browser might not support buffer sharing.');
-        return;
-    }
-  }
 }
 
 class _WasmBindgenNoModules extends Modules {
@@ -80,3 +67,16 @@ class _WasmBindgenNoModules extends Modules {
 
 @JS('wasm_bindgen')
 external WasmModule? get _noModules;
+
+void _ensureCrossOriginIsolated() {
+  switch (crossOriginIsolated) {
+    case false:
+      throw const MissingHeaderException();
+    case true:
+      return;
+    case null:
+      jsConsoleWarn(
+          'Warning: crossOriginIsolated is null, browser might not support buffer sharing.');
+      return;
+  }
+}
