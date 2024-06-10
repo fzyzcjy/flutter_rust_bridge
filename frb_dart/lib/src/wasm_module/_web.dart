@@ -14,8 +14,6 @@ Future<void> initializeWasmModule({required String root}) async {
 
   await script.onLoad.first;
 
-  jsEval('window.wasm_bindgen = wasm_bindgen');
-
   await promiseToFuture(_noModules('${root}_bg.wasm'));
 }
 
