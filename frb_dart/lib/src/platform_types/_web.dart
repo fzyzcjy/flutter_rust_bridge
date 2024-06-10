@@ -25,13 +25,8 @@ typedef DartPostCObject = void;
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 class ExternalLibrary extends BaseExternalLibrary {
-  // final Object wasmModule;
-
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  const ExternalLibrary({
-    // required this.wasmModule,
-    required super.debugInfo,
-  });
+  const ExternalLibrary({required super.debugInfo});
 }
 
 /// {@macro flutter_rust_bridge.internal}
