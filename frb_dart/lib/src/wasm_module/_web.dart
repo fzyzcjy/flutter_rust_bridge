@@ -21,7 +21,7 @@ abstract class WasmModule {
   WasmModule bind(dynamic thisArg, String moduleName);
 
   /// Initialize a [WasmModule] with the specified kind of [Modules].
-  static Future<Object> initialize({required Modules kind}) =>
+  static Future<void> initialize({required Modules kind}) =>
       kind.initializeModule();
 }
 
@@ -43,7 +43,7 @@ abstract class Modules {
   /// How a WASM module is brought into Dart's scope and initialized.
   ///
   /// Override this method to define custom initialization processes.
-  Future<Object> initializeModule();
+  Future<void> initializeModule();
 
   void _ensureCrossOriginIsolated() {
     switch (crossOriginIsolated) {
@@ -65,7 +65,7 @@ class _WasmBindgenNoModules extends Modules {
   const _WasmBindgenNoModules({required this.root});
 
   @override
-  Future<Object> initializeModule() async {
+  Future<void> initializeModule() async {
     _ensureCrossOriginIsolated();
     final script = ScriptElement()..src = '$root.js';
     document.head!.append(script);
@@ -74,7 +74,7 @@ class _WasmBindgenNoModules extends Modules {
 
     jsEval('window.wasm_bindgen = wasm_bindgen');
 
-    return await promiseToFuture(_noModules!('${root}_bg.wasm'));
+    await promiseToFuture(_noModules!('${root}_bg.wasm'));
   }
 }
 
