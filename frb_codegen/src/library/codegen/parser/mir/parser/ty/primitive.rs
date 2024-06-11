@@ -2,6 +2,7 @@ use crate::codegen::ir::mir::ty::delegate::{MirTypeDelegate, MirTypeDelegateBigP
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::ir::mir::ty::MirType::Primitive;
+use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
 use crate::codegen::parser::mir::parser::ty::unencodable::SplayedSegment;
 use crate::codegen::parser::mir::parser::ty::TypeParserWithContext;
 
@@ -12,8 +13,13 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     ) -> anyhow::Result<Option<MirType>> {
         Ok(Some(match last_segment {
             // TODO: change to "if let guard" https://github.com/rust-lang/rust/issues/51114
-            (name, []) if matches!(parse_primitive(name), Some(..)) => {
-                Primitive(parse_primitive(name).unwrap())
+            (name, [])
+                if matches!(
+                    parse_primitive(name, &self.context.func_attributes),
+                    Some(..)
+                ) =>
+            {
+                Primitive(parse_primitive(name, &self.context.func_attributes).unwrap())
             }
             (name, []) if matches!(parse_big_primitive(name), Some(..)) => {
                 parse_big_primitive(name).unwrap()
@@ -24,7 +30,11 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     }
 }
 
-fn parse_primitive(s: &str) -> Option<MirTypePrimitive> {
+fn parse_primitive(s: &str, attrs: &FrbAttributes) -> Option<MirTypePrimitive> {
+    parse_primitive_raw(s).map(|primitive| transform_primitive(primitive, attrs))
+}
+
+fn parse_primitive_raw(s: &str) -> Option<MirTypePrimitive> {
     Some(match s {
         "u8" => MirTypePrimitive::U8,
         "i8" => MirTypePrimitive::I8,
@@ -42,6 +52,10 @@ fn parse_primitive(s: &str) -> Option<MirTypePrimitive> {
         "isize" => MirTypePrimitive::Isize,
         _ => return None,
     })
+}
+
+fn transform_primitive(inner: MirTypePrimitive, attrs: &FrbAttributes) -> MirTypePrimitive {
+    todo!()
 }
 
 fn parse_big_primitive(s: &str) -> Option<MirType> {
