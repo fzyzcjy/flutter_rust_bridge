@@ -158,13 +158,13 @@ abstract class _Int64OrUint64List extends _TypedList<BigInt> {
 //
 //   BigInt at(int index);
 // }
-
-extension on _TypedArray {
-  operator []=(int index, Object? value) {
-    throw UnimplementedError('todo!');
-    // setProperty(this, index, value);
-  }
-}
+//
+// extension on _TypedArray {
+//   operator []=(int index, Object? value) {
+//     throw UnimplementedError('todo!');
+//     // setProperty(this, index, value);
+//   }
+// }
 
 /// An array whose element is BigInt64
 @JS('BigInt64Array')
