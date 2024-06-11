@@ -25,8 +25,7 @@ class _Int64OrUint64List extends TypedList<BigInt, BigInt> {
   BigInt outer2inner(Object? value) {
     if (value is int) return BigInt.from(value);
     if (value is BigInt) return value;
-    throw UnimplementedError(
-        'Unsupported value type: ${value.runtimeType} (value=$value)');
+    throw ArgumentError.value(value);
   }
 }
 
