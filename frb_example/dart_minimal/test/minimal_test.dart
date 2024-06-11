@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:frb_example_dart_minimal/src/rust/api/minimal.dart';
 import 'package:frb_example_dart_minimal/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
@@ -16,4 +17,9 @@ Future<void> main() async {
     print('Action: Call rust (after)');
   });
   print('Action: Configure tests (end)');
+
+  test('temp', () async {
+    expect(await f(a: Uint64List.fromList([123456789012345678])),
+        [123456789012345678]);
+  });
 }
