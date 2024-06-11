@@ -55,9 +55,7 @@ class RawReceivePort {
       : _receiveChannel = html.BroadcastChannel(_PortNameGenerator.create());
 
   set handler(Function(dynamic) handler) {
-    _kMessageEvent
-        .forTarget(_receiveChannel)
-        .listen((event) => handler(event.data));
+    _onMessage.listen((event) => handler(event.data));
   }
 
   /// Close the receive port.
