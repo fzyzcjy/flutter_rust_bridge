@@ -1,11 +1,9 @@
-import 'dart:collection';
 import 'dart:typed_data' as $data;
 
-import 'package:flutter_rust_bridge/src/exceptions.dart';
 import 'package:flutter_rust_bridge/src/generalized_typed_data/common.dart';
 
 /// A strict version of [$data.Int64List] which always returns a [BigInt].
-class Int64List extends TypedList<BigInt> {
+class Int64List extends TypedList<BigInt, int> {
   @override
   final $data.Int64List inner;
 
@@ -49,7 +47,7 @@ class Int64List extends TypedList<BigInt> {
 }
 
 /// A strict version of [$data.Uint64List] which always returns a [BigInt].
-class Uint64List extends TypedList<BigInt> {
+class Uint64List extends TypedList<BigInt, int> {
   @override
   final $data.Uint64List inner;
 
@@ -112,20 +110,20 @@ class Uint64List extends TypedList<BigInt> {
 
 /// {@macro flutter_rust_bridge.internal}
 void byteDataSetUint64($data.ByteData byteData, int byteOffset, BigInt value,
-        $data.Endian endian) =>
+    $data.Endian endian) =>
     byteData.setUint64(byteOffset, value.toSigned(64).toInt(), endian);
 
 /// {@macro flutter_rust_bridge.internal}
 void byteDataSetInt64($data.ByteData byteData, int byteOffset, BigInt value,
-        $data.Endian endian) =>
+    $data.Endian endian) =>
     byteData.setInt64(byteOffset, value.toInt(), endian);
 
 /// {@macro flutter_rust_bridge.internal}
-BigInt byteDataGetUint64(
-        $data.ByteData byteData, int byteOffset, $data.Endian endian) =>
+BigInt byteDataGetUint64($data.ByteData byteData, int byteOffset,
+    $data.Endian endian) =>
     BigInt.from(byteData.getUint64(byteOffset, endian)).toUnsigned(64);
 
 /// {@macro flutter_rust_bridge.internal}
-BigInt byteDataGetInt64(
-        $data.ByteData byteData, int byteOffset, $data.Endian endian) =>
+BigInt byteDataGetInt64($data.ByteData byteData, int byteOffset,
+    $data.Endian endian) =>
     BigInt.from(byteData.getInt64(byteOffset, endian));

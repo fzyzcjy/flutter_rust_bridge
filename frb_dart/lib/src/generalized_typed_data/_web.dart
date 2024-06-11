@@ -13,9 +13,9 @@ Object _convertBigIntToJs(Object dart) {
 }
 
 /// A list whose elements are Int64
-class Int64List extends TypedList<BigInt> {
+class Int64List extends TypedList<BigInt, BigInt> {
   @override
-  final BigInt64Array inner;
+  final List<BigInt> inner;
 
   /// Construct a list
   Int64List.from(this.inner);
@@ -44,9 +44,9 @@ class Int64List extends TypedList<BigInt> {
 }
 
 /// A list whose elements are Uint64
-class Uint64List extends TypedList<BigInt> {
+class Uint64List extends TypedList<BigInt, BigInt> {
   @override
-  final BigUint64Array inner;
+  final List<BigInt> inner;
 
   /// Construct a list
   Uint64List.from(this.inner);
