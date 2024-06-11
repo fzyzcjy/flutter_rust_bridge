@@ -11,3 +11,15 @@ impl<T> ZeroCopyBuffer<Vec<T>> {
         self.0.as_slice()
     }
 }
+
+pub type DartSendPort = web_sys::BroadcastChannel;
+
+pub type SerializedDartSendPort = String;
+
+pub fn dart_send_port_serialize(port: &DartSendPort) -> SerializedDartSendPort {
+    port.name()
+}
+
+pub fn dart_send_port_deserialize(port: &SerializedDartSendPort) -> DartSendPort {
+    DartSendPort::new(port).unwrap()
+}
