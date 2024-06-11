@@ -10,10 +10,6 @@ import 'package:flutter_rust_bridge/src/platform_types/_web.dart';
 /// {@macro flutter_rust_bridge.internal}
 String serializeNativePort(NativePortType port) => port;
 
-/// {@macro flutter_rust_bridge.only_for_generated_code}
-// TODO rename
-typedef MessagePort = String;
-
 /// Web implementation of the `dart:isolate`'s ReceivePort.
 class ReceivePort extends Stream<dynamic> {
   /// The receive port.
@@ -82,5 +78,5 @@ class SendPort {
   SendPort._(this._broadcastChannelName);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  MessagePort get nativePort => _broadcastChannelName;
+  String get nativePort => _broadcastChannelName;
 }
