@@ -27,8 +27,8 @@ impl DartSendPort {
         self.0.name()
     }
 
-    pub fn from_sendable(port: SendableDartSendPort) -> DartSendPort {
-        Self(web_sys::BroadcastChannel::new(&port).unwrap())
+    pub fn from_sendable(port: &SendableDartSendPort) -> DartSendPort {
+        Self(web_sys::BroadcastChannel::new(port).unwrap())
     }
 
     pub fn post(&self, msg: impl IntoDart) -> bool {
