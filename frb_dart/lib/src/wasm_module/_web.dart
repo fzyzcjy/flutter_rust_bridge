@@ -29,8 +29,9 @@ void _ensureCrossOriginIsolated() {
     case true:
       return;
     case null:
-      jsConsoleWarn(
-          'Warning: crossOriginIsolated is null, browser might not support buffer sharing.');
+      web.console.warn(
+          'Warning: crossOriginIsolated is null, browser might not support buffer sharing.'
+              .toJS);
       return;
   }
 }

@@ -4,10 +4,6 @@ import 'dart:js_interop';
 @JS('Number')
 external int castInt(Object? value);
 
-/// {@macro flutter_rust_bridge.internal}
-@JS('console.warn')
-external void jsConsoleWarn([a, b, c, d, e, f, g, h, i]);
-
 // @JS('Function')
 // class _Function {
 //   external dynamic call();
