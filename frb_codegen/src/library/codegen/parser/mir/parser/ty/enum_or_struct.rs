@@ -5,6 +5,7 @@ use crate::codegen::ir::mir::ty::rust_auto_opaque_implicit::MirTypeRustAutoOpaqu
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
 use crate::codegen::parser::mir::parser::ty::unencodable::SplayedSegment;
+use crate::codegen::parser::mir::parser::ty::TypeParserWithContext;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use crate::utils::basic_code::general_code::GeneralDartCode;
 use crate::utils::basic_code::parser::parse_dart_code;
@@ -98,8 +99,7 @@ where
             };
 
             for key in keys {
-                self.dart_code_of_type()
-                    .insert(key, dart_code_typed.clone());
+                (self.inner_mut().inner.dart_code_of_type).insert(key, dart_code_typed.clone());
             }
         }
     }
@@ -109,7 +109,7 @@ where
         namespaced_name: &NamespacedName,
         src_object: &HirFlatStructOrEnum<Item>,
     ) -> anyhow::Result<MirType> {
-        self.parse_type_rust_auto_opaque_implicit(
+        self.inner_mut().parse_type_rust_auto_opaque_implicit(
             Some(namespaced_name.namespace.clone()),
             &syn::parse_str(&namespaced_name.name)?,
             Some(MirTypeRustAutoOpaqueImplicitReason::StructOrEnumRequireOpaque),
@@ -134,6 +134,8 @@ where
     fn parser_info(&mut self) -> &mut EnumOrStructParserInfo<Id, Obj>;
 
     fn compute_default_opaque(obj: &Obj) -> bool;
+
+    fn inner_mut(&mut self) -> &mut TypeParserWithContext<'_, '_, '_>;
 }
 
 #[derive(Clone, Debug, Default)]

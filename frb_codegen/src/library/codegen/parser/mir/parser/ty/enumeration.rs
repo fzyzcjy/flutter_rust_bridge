@@ -192,6 +192,10 @@ impl EnumOrStructParser<MirEnumIdent, MirEnum, ItemEnum>
             .filter_map(|variant| if_then_some!(let MirVariantKind::Struct(s) = &variant.kind, s))
             .any(|ty| structure_compute_default_opaque(ty, &obj.name.namespace.crate_name()))
     }
+
+    fn inner_mut(&mut self) -> &mut TypeParserWithContext<'_, '_, '_> {
+        &mut self.0
+    }
 }
 
 fn maybe_field_wrap_box(
