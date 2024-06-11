@@ -20,8 +20,11 @@ pub async fn my_async_rust_function() {
     // https://docs.rs/tokio/latest/tokio/sync/mpsc/struct.Sender.html
     let (tx, mut rx) = tokio::sync::mpsc::unbounded_channel();
 
+    // let num_threads = 10;
+    let num_threads = 3;
+
     let mut handles = vec![];
-    for spawn_id in 0..10 {
+    for spawn_id in 0..num_threads {
         let tx2 = tx.clone();
         // let mutex2 = mutex.clone();
         let handle = flutter_rust_bridge::spawn_blocking_with(
