@@ -24,7 +24,10 @@ impl BaseCodec for DcoCodec {
 
 impl DcoCodec {
     pub fn encode<T: IntoDart + Send>(result_code: Rust2DartAction, data: T) -> Rust2DartMessageDco {
-        Rust2DartMessageDco(vec![result_code.into_dart(), data.into_dart()].into_dart())
+        // TODO temp debug
+        let data2: Box<dyn IntoDart + Send> = Box::new(data);
+        log::warn!("temp debug!!!");
+        Rust2DartMessageDco(vec![result_code.into_dart(), data2.into_dart()].into_dart())
     }
 }
 
