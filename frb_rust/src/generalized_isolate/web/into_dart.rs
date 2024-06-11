@@ -14,13 +14,10 @@ pub trait IntoDart: Send {
 }
 
 pub trait IntoDartExceptPrimitive: IntoDart {}
-// impl IntoDartExceptPrimitive for JsValue {}
-impl<T: Send, A: BaseArc<T> + Send> IntoDartExceptPrimitive for RustOpaqueBase<T, A> {}
+impl IntoDartExceptPrimitive for JsValue {}
+impl<T, A: BaseArc<T>> IntoDartExceptPrimitive for RustOpaqueBase<T, A> {}
 #[cfg(feature = "rust-async")]
-impl<T: Send, A: BaseArc<RustAutoOpaqueInner<T>> + Send> IntoDartExceptPrimitive
-    for RustAutoOpaqueBase<T, A>
-{
-}
+impl<T, A: BaseArc<RustAutoOpaqueInner<T>>> IntoDartExceptPrimitive for RustAutoOpaqueBase<T, A> {}
 #[cfg(feature = "dart-opaque")]
 impl IntoDartExceptPrimitive for crate::dart_opaque::DartOpaque {}
 impl IntoDartExceptPrimitive for String {}
@@ -154,8 +151,7 @@ delegate! {
     bool
     i8 u8 i16 u16 i32 u32 i64 u64 isize usize
     f32 f64
-    &str String
-    // TODO rm: `JsValue`
+    &str String JsValue
 }
 delegate_buffer! {
     i8 => js_sys::Int8Array
@@ -236,21 +232,20 @@ impl<T: IntoDart> IntoDart for Option<T> {
         self.map(T::into_dart).unwrap_or_else(JsValue::null)
     }
 }
+impl<T> IntoDart for *const T {
+    #[inline]
+    fn into_dart(self) -> DartAbi {
+        (self as usize).into_dart()
+    }
+}
+impl<T> IntoDart for *mut T {
+    #[inline]
+    fn into_dart(self) -> DartAbi {
+        (self as usize).into_dart()
+    }
+}
 
-// impl<T> IntoDart for *const T {
-//     #[inline]
-//     fn into_dart(self) -> DartAbi {
-//         (self as usize).into_dart()
-//     }
-// }
-// impl<T> IntoDart for *mut T {
-//     #[inline]
-//     fn into_dart(self) -> DartAbi {
-//         (self as usize).into_dart()
-//     }
-// }
-
-impl<T: Send, A: BaseArc<T> + Send> IntoDart for RustOpaqueBase<T, A> {
+impl<T, A: BaseArc<T>> IntoDart for RustOpaqueBase<T, A> {
     #[inline]
     fn into_dart(self) -> DartAbi {
         self.into()
@@ -258,7 +253,7 @@ impl<T: Send, A: BaseArc<T> + Send> IntoDart for RustOpaqueBase<T, A> {
 }
 
 #[cfg(feature = "rust-async")]
-impl<T: Send, A: BaseArc<RustAutoOpaqueInner<T>> + Send> IntoDart for RustAutoOpaqueBase<T, A> {
+impl<T, A: BaseArc<RustAutoOpaqueInner<T>>> IntoDart for RustAutoOpaqueBase<T, A> {
     #[inline]
     fn into_dart(self) -> DartAbi {
         self.into()

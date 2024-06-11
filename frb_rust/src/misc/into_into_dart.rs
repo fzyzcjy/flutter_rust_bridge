@@ -38,7 +38,7 @@ where
     }
 }
 
-impl<T: Send, A: BaseArc<T> + Send> IntoIntoDart<RustOpaqueBase<T, A>> for RustOpaqueBase<T, A> {
+impl<T, A: BaseArc<T>> IntoIntoDart<RustOpaqueBase<T, A>> for RustOpaqueBase<T, A> {
     #[inline(always)]
     fn into_into_dart(self) -> RustOpaqueBase<T, A> {
         self
@@ -46,7 +46,7 @@ impl<T: Send, A: BaseArc<T> + Send> IntoIntoDart<RustOpaqueBase<T, A>> for RustO
 }
 
 #[cfg(feature = "rust-async")]
-impl<T: Send, A: BaseArc<RustAutoOpaqueInner<T>> + Send> IntoIntoDart<RustAutoOpaqueBase<T, A>>
+impl<T, A: BaseArc<RustAutoOpaqueInner<T>>> IntoIntoDart<RustAutoOpaqueBase<T, A>>
     for RustAutoOpaqueBase<T, A>
 {
     #[inline(always)]
@@ -118,7 +118,7 @@ where
 }
 
 // frb-coverage:ignore-start
-impl<T:Send, Rust2DartCodec: BaseCodec+Send> IntoIntoDart<StreamSinkBase<T, Rust2DartCodec>>
+impl<T, Rust2DartCodec: BaseCodec> IntoIntoDart<StreamSinkBase<T, Rust2DartCodec>>
     for StreamSinkBase<T, Rust2DartCodec>
 {
     fn into_into_dart(self) -> StreamSinkBase<T, Rust2DartCodec> {
@@ -198,8 +198,8 @@ impl_into_into_dart_by_self!(char);
 impl_into_into_dart_by_self!(crate::dart_opaque::DartOpaque);
 #[cfg(not(target_family = "wasm"))]
 impl_into_into_dart_by_self!(allo_isolate::ffi::DartCObject);
-// #[cfg(target_family = "wasm")]
-// impl_into_into_dart_by_self!(wasm_bindgen::JsValue);
+#[cfg(target_family = "wasm")]
+impl_into_into_dart_by_self!(wasm_bindgen::JsValue);
 #[cfg(feature = "uuid")]
 impl_into_into_dart_by_self!(uuid::Uuid);
 #[cfg(feature = "backtrace")]
