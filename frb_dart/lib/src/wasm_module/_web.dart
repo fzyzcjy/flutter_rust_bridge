@@ -16,11 +16,11 @@ Future<void> initializeWasmModule({required String root}) async {
 
   jsEval('window.wasm_bindgen = wasm_bindgen');
 
-  await promiseToFuture(_jsWasmBindgen('${root}_bg.wasm'));
+  await _jsWasmBindgen('${root}_bg.wasm');
 }
 
 @JS('wasm_bindgen')
-external dynamic get _jsWasmBindgen;
+external Future<dynamic> _jsWasmBindgen(String path);
 
 void _ensureCrossOriginIsolated() {
   switch (crossOriginIsolated) {
