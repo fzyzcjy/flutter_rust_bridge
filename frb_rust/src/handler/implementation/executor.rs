@@ -1,6 +1,6 @@
 use crate::codec::BaseCodec;
 use crate::codec::Rust2DartMessageTrait;
-use crate::generalized_isolate::Channel;
+use crate::generalized_isolate::DartSendPort;
 use crate::handler::error::Error;
 use crate::handler::error_listener::ErrorListener;
 use crate::handler::executor::Executor;
@@ -64,7 +64,7 @@ impl<EL: ErrorListener + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executo
                 let port2 = port.clone();
                 let thread_result = PanicBacktrace::catch_unwind(AssertUnwindSafe(|| {
                     #[allow(clippy::clone_on_copy)]
-                    let sender = Rust2DartSender::new(Channel::new(port2.clone()));
+                    let sender = Rust2DartSender::new(DartSendPort::new(port2.clone()));
                     let task_context = TaskContext::new();
 
                     let ret = task(task_context);
@@ -115,7 +115,7 @@ impl<EL: ErrorListener + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executo
 
             let async_result = AssertUnwindSafe(async {
                 #[allow(clippy::clone_on_copy)]
-                let sender = Rust2DartSender::new(Channel::new(port2.clone()));
+                let sender = Rust2DartSender::new(DartSendPort::new(port2.clone()));
                 let task_context = TaskContext::new();
 
                 let ret = task(task_context).await;

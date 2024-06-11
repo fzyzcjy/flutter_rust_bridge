@@ -3,7 +3,7 @@ use super::{
 };
 use crate::dart_opaque::action::DartHandlerPortAction;
 use crate::for_generated::{box_from_leak_ptr, new_leak_box_ptr};
-use crate::generalized_isolate::Channel;
+use crate::generalized_isolate::DartSendPort;
 use crate::generalized_isolate::IntoDart;
 use crate::misc::logs::log_warn_or_println;
 use crate::platform_types::{handle_to_message_port, SendableMessagePortHandle};
@@ -73,7 +73,7 @@ fn drop_thread_box_persistent_handle_via_port(
     persistent_handle: GeneralizedDartHandleBox<GeneralizedAutoDropDartPersistentHandle>,
     dart_handler_port: &SendableMessagePortHandle,
 ) {
-    let channel = Channel::new(handle_to_message_port(dart_handler_port));
+    let channel = DartSendPort::new(handle_to_message_port(dart_handler_port));
     let ptr = new_leak_box_ptr(persistent_handle) as usize;
 
     let msg = [
