@@ -15,14 +15,14 @@ impl<T> ZeroCopyBuffer<Vec<T>> {
 pub type SendableDartSendPort = String;
 
 #[derive(Debug, Clone)]
-pub(crate) struct DartSendPort(web_sys::BroadcastChannel);
+pub struct DartSendPort(web_sys::BroadcastChannel);
 
-impl crate::for_generated::DartSendPort {
+impl DartSendPort {
     pub fn to_sendable(&self) -> SendableDartSendPort {
-        self.name()
+        self.0.name()
     }
 
     pub fn from_sendable(port: SendableDartSendPort) -> DartSendPort {
-        Self::new(port).unwrap()
+        Self(web_sys::BroadcastChannel::new(port).unwrap())
     }
 }
