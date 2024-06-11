@@ -8,7 +8,7 @@ import 'dart:html' hide MessagePort;
 import 'package:flutter_rust_bridge/src/platform_types/_web.dart';
 
 /// {@macro flutter_rust_bridge.internal}
-String serializeNativePort(NativePortType port) => port.name;
+String serializeNativePort(NativePortType port) => port;
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 // TODO rename
