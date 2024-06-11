@@ -42,7 +42,7 @@ flutter_rust_bridge::frb_generated_default_handler!();
 // Section: wire_funcs
 
 fn wire__crate__api__simple__make_data_race_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -75,7 +75,7 @@ fn wire__crate__api__simple__make_data_race_impl(
     )
 }
 fn wire__crate__api__simple__make_heap_use_after_free_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -108,7 +108,7 @@ fn wire__crate__api__simple__make_heap_use_after_free_impl(
     )
 }
 fn wire__crate__api__simple__make_memory_leak_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -141,7 +141,7 @@ fn wire__crate__api__simple__make_memory_leak_impl(
     )
 }
 fn wire__crate__api__simple__make_stack_buffer_overflow_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -174,7 +174,7 @@ fn wire__crate__api__simple__make_stack_buffer_overflow_impl(
     )
 }
 fn wire__crate__api__simple__make_use_of_uninitialized_value_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -230,7 +230,7 @@ impl SseDecode for bool {
 
 fn pde_ffi_dispatcher_primary_impl(
     func_id: i32,
-    port: flutter_rust_bridge::for_generated::MessagePort,
+    port: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len: i32,
     data_len: i32,
