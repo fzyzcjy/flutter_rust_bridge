@@ -1,4 +1,5 @@
 use flutter_rust_bridge::frb;
+use crate::frb_generated::FLUTTER_RUST_BRIDGE_HANDLER;
 
 #[frb(init)]
 pub fn init_app() {
@@ -18,7 +19,7 @@ pub async fn my_async_rust_function() {
     let mut handles = vec![];
     for spawn_id in 0..10 {
         let tx2 = tx.clone();
-        let handle = flutter_rust_bridge::spawn(async move {
+        let handle = flutter_rust_bridge::spawn_blocking_with(move || {
             let thread_id = std::thread::current().id();
             for i in 0..10 {
                 if let Err(_) = tx2.send(format!("{spawn_id}_{thread_id:?}_{i}")) {
@@ -26,7 +27,7 @@ pub async fn my_async_rust_function() {
                     return;
                 }
             }
-        });
+        }, FLUTTER_RUST_BRIDGE_HANDLER.thread_pool());
         handles.push(handle);
     }
     drop(tx);
