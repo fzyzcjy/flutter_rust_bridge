@@ -168,7 +168,7 @@ extension on _TypedArray {
 
 /// An array whose element is BigInt64
 @JS('BigInt64Array')
-abstract class JSBigInt64Array extends _TypedArray {
+extension type JSBigInt64Array._(JSObject _) implements JSObject {
   /// Construct the array
   external factory JSBigInt64Array(Object lengthOrBuffer,
       [int? offset, int? length]);
@@ -193,7 +193,7 @@ abstract class JSBigInt64Array extends _TypedArray {
 
 /// An array whose element is BigUint64
 @JS('BigUint64Array')
-abstract class JSBigUint64Array extends _TypedArray {
+extension type JSBigUint64Array._(JSObject _) implements JSObject {
   /// Construct the array
   external factory JSBigUint64Array(Object lengthOrBuffer,
       [int? offset, int? buffer]);
