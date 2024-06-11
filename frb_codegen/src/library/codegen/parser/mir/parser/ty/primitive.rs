@@ -19,7 +19,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                     Some(..)
                 ) =>
             {
-                Primitive(parse_primitive(name, &self.context.func_attributes).unwrap())
+                parse_primitive(name, &self.context.func_attributes).unwrap()
             }
             (name, []) if matches!(parse_big_primitive(name), Some(..)) => {
                 parse_big_primitive(name).unwrap()
@@ -30,7 +30,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     }
 }
 
-fn parse_primitive(s: &str, attrs: &FrbAttributes) -> Option<MirTypePrimitive> {
+fn parse_primitive(s: &str, attrs: &FrbAttributes) -> Option<MirType> {
     parse_primitive_raw(s).map(|primitive| transform_primitive(primitive, attrs))
 }
 
@@ -54,8 +54,18 @@ fn parse_primitive_raw(s: &str) -> Option<MirTypePrimitive> {
     })
 }
 
-fn transform_primitive(inner: MirTypePrimitive, attrs: &FrbAttributes) -> MirTypePrimitive {
-    todo!()
+fn transform_primitive(inner: MirTypePrimitive, attrs: &FrbAttributes) -> MirType {
+    if attrs.type_64bit_int() {
+        match inner {
+            MirTypePrimitive::U64
+            | MirTypePrimitive::I64
+            | MirTypePrimitive::Usize
+            | MirTypePrimitive::Isize => return MirType::Delegate(MirTypeDelegate::TODO(inner)),
+            _ => {}
+        }
+    }
+
+    Primitive(inner)
 }
 
 fn parse_big_primitive(s: &str) -> Option<MirType> {
