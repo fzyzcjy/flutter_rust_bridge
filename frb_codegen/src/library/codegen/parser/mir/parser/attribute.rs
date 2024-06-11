@@ -285,7 +285,9 @@ impl Parse for FrbAttribute {
             .or_else(|| parse_keyword::<positional, _>(input, &lookahead, positional, Positional))
             .or_else(|| parse_keyword::<proxy, _>(input, &lookahead, proxy, Proxy))
             .or_else(|| parse_keyword::<external, _>(input, &lookahead, external, External))
-            .or_else(|| parse_keyword::<type_64bit_int, _>(input, &lookahead, type_64bit_int, Type64bitInt))
+            .or_else(|| {
+                parse_keyword::<type_64bit_int, _>(input, &lookahead, type_64bit_int, Type64bitInt)
+            })
             // .or_else(|| {
             //     parse_keyword::<generate_implementor_enum, _>(
             //         input,
