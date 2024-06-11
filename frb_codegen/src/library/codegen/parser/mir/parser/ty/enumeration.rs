@@ -144,8 +144,8 @@ pub(crate) fn compute_enum_variant_kind_struct_name(
 
 struct EnumOrStructParserEnum<'a, 'b, 'c, 'd>(&'d mut TypeParserWithContext<'a, 'b, 'c>);
 
-impl<'a, 'b, 'c, 'd> EnumOrStructParser<MirEnumIdent, MirEnum, ItemEnum>
-    for EnumOrStructParserEnum<'a, 'b, 'c, 'd>
+impl EnumOrStructParser<MirEnumIdent, MirEnum, ItemEnum>
+    for EnumOrStructParserEnum<'_, '_, '_, '_>
 {
     fn parse_inner_impl(
         &mut self,
@@ -193,9 +193,9 @@ impl<'a, 'b, 'c, 'd> EnumOrStructParser<MirEnumIdent, MirEnum, ItemEnum>
             .any(|ty| structure_compute_default_opaque(ty, &obj.name.namespace.crate_name()))
     }
 
-    fn inner_mut<'z: 'a + 'b + 'c + 'd>(&'z mut self) -> &'z mut TypeParserWithContext<'_, '_, '_>
+    fn inner_mut<'a>(&'a mut self) -> &'a mut TypeParserWithContext<'_, '_, '_>
     where
-        Self: 'z,
+        Self: 'a,
     {
         &mut self.0
     }
