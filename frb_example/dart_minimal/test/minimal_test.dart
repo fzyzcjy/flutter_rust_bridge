@@ -19,7 +19,12 @@ Future<void> main() async {
   print('Action: Configure tests (end)');
 
   test('temp', () async {
-    final input = Uint64List(1)..[0] = BigInt.parse('123456789012345678');
-    expect(await f(a: input), input);
+    print('hi before call');
+    await funcTypeFalliblePanicTwinNormal();
+    print('hi after call');
   });
+  // test('temp', () async {
+  //   final input = Uint64List(1)..[0] = BigInt.parse('123456789012345678');
+  //   expect(await f(a: input), input);
+  // });
 }

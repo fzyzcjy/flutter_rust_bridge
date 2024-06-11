@@ -12,3 +12,7 @@ pub fn minimal_adder(a: i32, b: i32) -> i32 {
 pub fn f(a: Vec<u64>) -> Vec<u64> {
     a
 }
+
+pub fn func_type_fallible_panic_twin_normal() -> Result<i32> {
+    panic!("deliberate panic")
+}

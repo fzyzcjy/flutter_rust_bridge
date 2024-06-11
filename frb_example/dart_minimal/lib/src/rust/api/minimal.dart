@@ -11,3 +11,6 @@ Future<int> minimalAdder({required int a, required int b}) =>
 
 Future<Uint64List> f({required Uint64List a}) =>
     RustLib.instance.api.crateApiMinimalF(a: a);
+
+Future<int> funcTypeFalliblePanicTwinNormal() =>
+    RustLib.instance.api.crateApiMinimalFuncTypeFalliblePanicTwinNormal();
