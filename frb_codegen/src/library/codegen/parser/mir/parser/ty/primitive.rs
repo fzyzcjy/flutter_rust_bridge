@@ -1,4 +1,6 @@
-use crate::codegen::ir::mir::ty::delegate::{MirTypeDelegate, MirTypeDelegateBigPrimitive};
+use crate::codegen::ir::mir::ty::delegate::{
+    MirTypeDelegate, MirTypeDelegateBigPrimitive, MirTypeDelegateCastedPrimitive,
+};
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::ir::mir::ty::MirType::Primitive;
@@ -60,7 +62,11 @@ fn transform_primitive(inner: MirTypePrimitive, attrs: &FrbAttributes) -> MirTyp
             MirTypePrimitive::U64
             | MirTypePrimitive::I64
             | MirTypePrimitive::Usize
-            | MirTypePrimitive::Isize => return MirType::Delegate(MirTypeDelegate::TODO(inner)),
+            | MirTypePrimitive::Isize => {
+                return MirType::Delegate(MirTypeDelegate::CastedPrimitive(
+                    MirTypeDelegateCastedPrimitive { inner },
+                ))
+            }
             _ => {}
         }
     }
