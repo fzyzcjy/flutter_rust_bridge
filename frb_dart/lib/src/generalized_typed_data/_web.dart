@@ -15,7 +15,7 @@ abstract class _SetAnyListMixin<T> extends ListMixin<T> {
 
 abstract class _TypedList<T> extends _SetAnyListMixin<T> {
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  TODO get inner;
+  List<T> get inner;
 
   /// How to cast a raw JS value to an acceptable Dart value.
   T _js2dart(Object? value);
@@ -24,7 +24,7 @@ abstract class _TypedList<T> extends _SetAnyListMixin<T> {
   Object? _dart2js(Object? value);
 
   @override
-  T operator [](int index) => _js2dart(inner.at(index));
+  T operator [](int index) => _js2dart(inner[index]);
 
   @override
   void operator []=(int index, value) {
