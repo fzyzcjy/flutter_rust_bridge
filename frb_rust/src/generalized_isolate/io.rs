@@ -1,16 +1,13 @@
-pub use allo_isolate::ZeroCopyBuffer;
 pub use allo_isolate::{IntoDart, IntoDartExceptPrimitive};
+pub type DartSendPort = allo_isolate::Isolate;
+pub use allo_isolate::ZeroCopyBuffer;
 
-pub(crate) type SerializedDartSendPort = i64;
+pub type SerializedDartSendPort = DartSendPort;
 
-pub(crate) struct DartSendPort(allo_isolate::Isolate);
+pub fn dart_send_port_serialize(port: &DartSendPort) -> SerializedDartSendPort {
+    port.to_owned()
+}
 
-impl DartSendPort {
-    pub fn serialize(&self) -> String {
-        port.to_owned()
-    }
-
-    pub fn dart_send_port_deserialize(port: &SerializedDartSendPort) -> DartSendPort {
-        port.to_owned()
-    }
+pub fn dart_send_port_deserialize(port: &SerializedDartSendPort) -> DartSendPort {
+    port.to_owned()
 }
