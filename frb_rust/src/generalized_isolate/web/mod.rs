@@ -12,14 +12,17 @@ impl<T> ZeroCopyBuffer<Vec<T>> {
     }
 }
 
-pub type DartSendPort = web_sys::BroadcastChannel;
+pub type SendableDartSendPort = String;
 
-pub type SerializedDartSendPort = String;
+#[derive(Debug, Clone)]
+pub(crate) struct DartSendPort(web_sys::BroadcastChannel);
 
-pub fn dart_send_port_serialize(port: &DartSendPort) -> SerializedDartSendPort {
-    port.name()
-}
+impl crate::for_generated::DartSendPort {
+    pub fn to_sendable(&self) -> SendableDartSendPort {
+        self.name()
+    }
 
-pub fn dart_send_port_deserialize(port: &SerializedDartSendPort) -> DartSendPort {
-    DartSendPort::new(port).unwrap()
+    pub fn from_sendable(port: SendableDartSendPort) -> DartSendPort {
+        Self::new(port).unwrap()
+    }
 }
