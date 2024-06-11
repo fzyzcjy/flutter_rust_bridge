@@ -18,6 +18,6 @@ pub fn minimal_adder(a: i32, b: i32) -> i32 {
 // }
 
 #[wasm_bindgen]
-pub fn hello_func(port: JsValue) {
+pub fn hello_func(port: web_sys::MessagePort) {
     flutter_rust_bridge::console_error!("rust hello_func port={:#?}", port);
 }
