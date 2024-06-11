@@ -4,16 +4,7 @@ import 'dart:typed_data' hide Int64List, Uint64List;
 import 'package:flutter_rust_bridge/src/exceptions.dart';
 import 'package:flutter_rust_bridge/src/platform_utils/_web.dart';
 
-/// Opt out of type safety for setting the value.
-/// Helpful if the array needs to accept multiple types.
-abstract class _SetAnyListMixin<T> extends ListMixin<T> {
-  @override
-  void operator []=(int index, Object? value) {
-    this[index] = value;
-  }
-}
-
-abstract class _TypedList<T> extends _SetAnyListMixin<T> {
+abstract class _TypedList<T> extends ListMixin<T> {
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   List<BigInt> get inner;
 
