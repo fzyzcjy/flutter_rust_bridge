@@ -2,10 +2,10 @@
 library html_isolate;
 
 import 'dart:async';
-import 'package:web/web.dart' as web;
 
 import 'package:flutter_rust_bridge/src/platform_types/_web.dart';
 import 'package:flutter_rust_bridge/src/platform_utils/_web.dart';
+import 'package:web/web.dart' as web;
 
 /// {@macro flutter_rust_bridge.internal}
 String serializeNativePort(NativePortType port) => port.name;
@@ -42,7 +42,7 @@ class ReceivePort extends Stream<dynamic> {
         );
   }
 
-  static dynamic _extractData(MessageEvent event) => event.data;
+  static dynamic _extractData(web.MessageEvent event) => event.data;
 
   /// The send port.
   SendPort get sendPort => _rawReceivePort.sendPort;
@@ -93,7 +93,7 @@ abstract class _Channel {
 }
 
 class _MessageChannelWrapper implements _Channel {
-  final channel = MessageChannel();
+  final channel = web.MessageChannel();
 
   @override
   SendPort get sendPort => _PortLike.messagePort(channel.port2);
@@ -103,15 +103,15 @@ class _MessageChannelWrapper implements _Channel {
 }
 
 class _BroadcastChannelWrapper implements _Channel {
-  final BroadcastChannel _sendChannel;
-  final BroadcastChannel _receiveChannel;
+  final web.BroadcastChannel _sendChannel;
+  final web.BroadcastChannel _receiveChannel;
 
   _BroadcastChannelWrapper(String channelName)
       // Note: It is *wrong* to reuse the same HTML BroadcastChannel object,
       // because HTML BroadcastChannel spec says that, the event will not be fired
       // at the object which sends it. Therefore, we need two different objects.
-      : _sendChannel = BroadcastChannel(channelName),
-        _receiveChannel = BroadcastChannel(channelName);
+      : _sendChannel = web.BroadcastChannel(channelName),
+        _receiveChannel = web.BroadcastChannel(channelName);
 
   @override
   SendPort get sendPort => _PortLike.broadcastChannel(_sendChannel);
@@ -120,28 +120,29 @@ class _BroadcastChannelWrapper implements _Channel {
   SendPort get receivePort => _PortLike.broadcastChannel(_receiveChannel);
 }
 
-/// [html.MessagePort]'s interface.
 abstract class _PortLike {
   const _PortLike._();
 
-  factory _PortLike.messagePort(html.MessagePort port) = _MessagePortWrapper;
+  factory _PortLike.messagePort(web.MessagePort port) = _MessagePortWrapper;
 
-  factory _PortLike.broadcastChannel(BroadcastChannel channel) =
+  factory _PortLike.broadcastChannel(web.BroadcastChannel channel) =
       _BroadcastPortWrapper;
 
   void postMessage(Object? value);
 
   void close();
 
-  html.EventTarget get nativePort;
+  web.EventTarget get nativePort;
 
-  Stream<MessageEvent> get onMessage => _kMessageEvent.forTarget(nativePort);
-  static const _kMessageEvent = EventStreamProvider<MessageEvent>('message');
+  Stream<web.MessageEvent> get onMessage =>
+      _kMessageEvent.forTarget(nativePort);
+  static const _kMessageEvent =
+      web.EventStreamProvider<web.MessageEvent>('message');
 }
 
 class _MessagePortWrapper extends _PortLike {
   @override
-  final html.MessagePort nativePort;
+  final web.MessagePort nativePort;
 
   _MessagePortWrapper(this.nativePort) : super._();
 
@@ -155,7 +156,7 @@ class _MessagePortWrapper extends _PortLike {
 
 class _BroadcastPortWrapper extends _PortLike {
   @override
-  final html.BroadcastChannel nativePort;
+  final web.BroadcastChannel nativePort;
 
   _BroadcastPortWrapper(this.nativePort) : super._();
 
