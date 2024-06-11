@@ -73,7 +73,7 @@ fn drop_thread_box_persistent_handle_via_port(
     persistent_handle: GeneralizedDartHandleBox<GeneralizedAutoDropDartPersistentHandle>,
     dart_handler_port: &SendableMessagePortHandle,
 ) {
-    let channel = DartSendPort::new(handle_to_message_port(dart_handler_port));
+    let port = DartSendPort::new(handle_to_message_port(dart_handler_port));
     let ptr = new_leak_box_ptr(persistent_handle) as usize;
 
     let msg = [
@@ -81,7 +81,7 @@ fn drop_thread_box_persistent_handle_via_port(
         ptr.into_dart(),
     ];
 
-    if !channel.post(msg) {
+    if !port.post(msg) {
         // We do not care about the detailed error message
         // frb-coverage:ignore-start
         log_warn_or_println(
