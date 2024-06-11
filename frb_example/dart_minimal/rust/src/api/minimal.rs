@@ -39,8 +39,9 @@ pub async fn my_async_rust_function() {
                 //     }
                 // }
 
-                for i in 0..10 {
-                    if let Err(_) = tx2.send(format!("{spawn_id}_{thread_id:?}_{i}")) {
+                for i in 0..100000 {
+                    // let msg = format!("{spawn_id}_{thread_id:?}_{i}");
+                    if let Err(_) = tx2.send(1) {
                         flutter_rust_bridge::console_error!("receiver dropped");
                         return;
                     }
@@ -59,8 +60,13 @@ pub async fn my_async_rust_function() {
     //     }
     // }
 
+    let mut sum = 0;
     while let Some(i) = rx.recv().await {
-        flutter_rust_bridge::console_error!("recv: {}", i);
+        sum += i;
+        // flutter_rust_bridge::console_error!("recv: {}", i);
+        if sum % 1000 == 0 {
+            flutter_rust_bridge::console_error!("main thread sum={}", sum);
+        }
     }
 
     for handle in handles {
