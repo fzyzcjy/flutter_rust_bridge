@@ -46392,7 +46392,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   Int64List dco_decode_list_prim_i_64_strict(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return Int64List.from(raw);
+    return dcoDecodeInt64List(raw);
   }
 
   @protected
@@ -46434,7 +46434,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   Uint64List dco_decode_list_prim_u_64_strict(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return Uint64List.from(raw);
+    return dcoDecodeUint64List(raw);
   }
 
   @protected
