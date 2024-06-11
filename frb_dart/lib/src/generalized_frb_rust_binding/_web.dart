@@ -105,11 +105,11 @@ external int _frb_get_rust_content_hash();
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 @JS("wasm_bindgen.dart_opaque_dart2rust_encode")
 external int _dart_opaque_dart2rust_encode(
-    Object object, NativePortType dartHandlerPort);
+    JSAny object, NativePortType dartHandlerPort);
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 @JS("wasm_bindgen.dart_opaque_rust2dart_decode")
-external Object _dart_opaque_rust2dart_decode(int ptr);
+external JSAny _dart_opaque_rust2dart_decode(int ptr);
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 @JS("wasm_bindgen.dart_opaque_drop_thread_box_persistent_handle")
