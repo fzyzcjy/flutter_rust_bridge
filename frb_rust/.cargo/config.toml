@@ -1,2 +1,2 @@
-#[build]
-#target = "wasm32-unknown-unknown" # uncomment this to let IDE think we are developing web target
+[build]
+target = "wasm32-unknown-unknown" # uncomment this to let IDE think we are developing web target
