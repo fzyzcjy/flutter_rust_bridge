@@ -23,7 +23,7 @@ impl BaseCodec for DcoCodec {
 }
 
 impl DcoCodec {
-    pub fn encode<T: IntoDart>(result_code: Rust2DartAction, data: T) -> Rust2DartMessageDco {
+    pub fn encode<T: IntoDart + Send>(result_code: Rust2DartAction, data: T) -> Rust2DartMessageDco {
         Rust2DartMessageDco(vec![result_code.into_dart(), data.into_dart()].into_dart())
     }
 }
