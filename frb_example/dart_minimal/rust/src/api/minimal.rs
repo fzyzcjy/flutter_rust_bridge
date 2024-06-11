@@ -9,7 +9,7 @@ pub fn minimal_adder(a: i32, b: i32) -> i32 {
     a + b
 }
 
-// #[frb(type_64bit_int)]
+#[frb(type_64bit_int)]
 pub fn f(arg: u64) -> u64 {
     arg
 }
