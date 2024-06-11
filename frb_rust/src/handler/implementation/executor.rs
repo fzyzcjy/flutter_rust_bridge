@@ -58,24 +58,23 @@ impl<EL: ErrorListener + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executo
         let TaskInfo { port, .. } = task_info;
         let port: DartNativeSendPort = port.unwrap();
 
-        self.thread_pool
-            .execute(transfer!(|port: crate::platform_types::DartNativeSendPort| {
+        self.thread_pool.execute(transfer!(|| {
+            #[allow(clippy::clone_on_copy)]
+            let port2 = port.clone();
+            let thread_result = PanicBacktrace::catch_unwind(AssertUnwindSafe(|| {
                 #[allow(clippy::clone_on_copy)]
-                let port2 = port.clone();
-                let thread_result = PanicBacktrace::catch_unwind(AssertUnwindSafe(|| {
-                    #[allow(clippy::clone_on_copy)]
-                    let sender = Rust2DartSender::new(DartSendPort::new(port2.clone()));
-                    let task_context = TaskContext::new();
+                let sender = Rust2DartSender::new(DartSendPort::new(port2.clone()));
+                let task_context = TaskContext::new();
 
-                    let ret = task(task_context);
+                let ret = task(task_context);
 
-                    ExecuteNormalOrAsyncUtils::handle_result::<Rust2DartCodec, _>(ret, sender, el2);
-                }));
-
-                if let Err(error) = thread_result {
-                    handle_non_sync_panic_error::<Rust2DartCodec>(el, port, error);
-                }
+                ExecuteNormalOrAsyncUtils::handle_result::<Rust2DartCodec, _>(ret, sender, el2);
             }));
+
+            if let Err(error) = thread_result {
+                handle_non_sync_panic_error::<Rust2DartCodec>(el, port, error);
+            }
+        }));
     }
 
     fn execute_sync<Rust2DartCodec, SyncTaskFn>(
