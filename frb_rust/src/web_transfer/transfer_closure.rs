@@ -41,10 +41,15 @@ impl TransferClosure<JsValue> {
     pub fn apply(self, worker: &Worker) -> Result<(), JsValue> {
         let transfer = self.transfer.into_iter().filter(|value| value.is_truthy());
         let transfer = Array::from_iter(transfer);
+
         let data = Array::from_iter(self.data);
+
+        data.unshift(&JsValue::from(self.error_report_broadcast_channel_name));
+
         // The worker is responsible for cleaning up the leak here.
         let payload = Box::into_raw(Box::new(TransferClosurePayload { func: self.closure }));
         data.unshift(&JsValue::from(payload as i32));
+
         worker
             .post_message_with_transfer(&data, &transfer)
             .map_err(|err| {
