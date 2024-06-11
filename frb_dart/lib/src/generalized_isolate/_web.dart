@@ -51,7 +51,7 @@ class ReceivePort extends Stream<dynamic> {
   void close() => _rawReceivePort.close();
 }
 
-/// Wrapper around a [MessageChannel].
+/// Web implementation of the `dart:isolate`'s RawReceivePort.
 class RawReceivePort {
   /// The underlying message channel.
   final _Channel _channel;
