@@ -56,7 +56,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for PrimitiveListWireDartCodecCst
             }
             Target::Web => match self.mir.primitive {
                 MirTypePrimitive::I64 | MirTypePrimitive::U64 => {
-                    "Object /* BigInt64Array */".to_owned()
+                    "JSAny /* BigInt64Array */".to_owned()
                 }
                 _ => ApiDartGenerator::new(self.mir.clone(), self.context.as_api_dart_context())
                     .dart_api_type(),
