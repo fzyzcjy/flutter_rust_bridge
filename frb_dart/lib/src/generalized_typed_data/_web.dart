@@ -6,7 +6,8 @@ class _Int64OrUint64List extends TypedList<BigInt, BigInt> {
   @override
   final List<BigInt> inner;
 
-  _Int64OrUint64List.from(this.inner);
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
+  _Int64OrUint64List.raw(this.inner);
 
   @override
   BigInt inner2outer(BigInt value) => value;
@@ -21,16 +22,16 @@ class _Int64OrUint64List extends TypedList<BigInt, BigInt> {
 
 /// A list whose elements are Int64
 class Int64List extends _Int64OrUint64List {
-  /// Construct a list
-  Int64List.from(super.inner) : super.from();
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
+  Int64List.raw(super.inner) : super.raw();
 
   /// Construct a list
   factory Int64List(int length) =>
-      Int64List.from(List.filled(length, BigInt.zero));
+      Int64List.raw(List.filled(length, BigInt.zero));
 
   /// Construct a list
   factory Int64List.fromList(List<int> list) =>
-      Int64List.from(list.map(BigInt.from).toList());
+      Int64List.raw(list.map(BigInt.from).toList());
 
 // /// Construct a list
 // factory Int64List.view(ByteBuffer buffer, [int offset = 0, int? length]) =>
@@ -44,16 +45,16 @@ class Int64List extends _Int64OrUint64List {
 
 /// A list whose elements are Uint64
 class Uint64List extends _Int64OrUint64List {
-  /// Construct a list
-  Uint64List.from(super.inner) : super.from();
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
+  Uint64List.raw(super.inner) : super.raw();
 
   /// Construct a list
   factory Uint64List(int length) =>
-      Uint64List.from(List.filled(length, BigInt.zero));
+      Uint64List.raw(List.filled(length, BigInt.zero));
 
   /// Construct a list
   factory Uint64List.fromList(List<int> list) =>
-      Uint64List.from(list.map(BigInt.from).toList());
+      Uint64List.raw(list.map(BigInt.from).toList());
 
 // /// Construct a list
 // factory Uint64List.view(ByteBuffer buffer, [int offset = 0, int? length]) =>
