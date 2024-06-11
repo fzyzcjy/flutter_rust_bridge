@@ -40,7 +40,7 @@ pub use crate::misc::version::FLUTTER_RUST_BRIDGE_RUNTIME_VERSION;
 #[cfg(wasm)]
 pub use crate::misc::web_utils;
 pub use crate::platform_types::{
-    DartAbi, MessagePort, PlatformGeneralizedUint8ListPtr, WireSyncRust2DartDco,
+    DartAbi, DartNativeSendPort, PlatformGeneralizedUint8ListPtr, WireSyncRust2DartDco,
     WireSyncRust2DartSse,
 };
 pub use crate::rust2dart::action::Rust2DartAction;

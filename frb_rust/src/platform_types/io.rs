@@ -6,21 +6,21 @@ pub struct WireSyncRust2DartSse {
     pub len: i32,
 }
 
-pub type MessagePort = i64;
+pub type DartNativeSendPort = i64;
 
 pub type DartAbi = allo_isolate::ffi::DartCObject;
 
-pub type SendableMessagePortHandle = MessagePort;
+pub type SerializedDartNativeSendPort = DartNativeSendPort;
 
-pub fn message_port_to_handle(port: &MessagePort) -> SendableMessagePortHandle {
+pub fn message_port_to_handle(port: &DartNativeSendPort) -> SerializedDartNativeSendPort {
     *port
 }
 
-pub fn handle_to_message_port(handle: &SendableMessagePortHandle) -> MessagePort {
+pub fn handle_to_message_port(handle: &SerializedDartNativeSendPort) -> DartNativeSendPort {
     *handle
 }
 
-pub fn deserialize_sendable_message_port_handle(raw: String) -> SendableMessagePortHandle {
+pub fn deserialize_sendable_message_port_handle(raw: String) -> SerializedDartNativeSendPort {
     raw.parse().unwrap()
 }
 

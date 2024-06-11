@@ -42,7 +42,7 @@ flutter_rust_bridge::frb_generated_default_handler!();
 // Section: wire_funcs
 
 fn wire__crate__api__minimal__f_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     a: impl CstDecode<Vec<u64>>,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
@@ -60,7 +60,7 @@ fn wire__crate__api__minimal__f_impl(
     )
 }
 fn wire__crate__api__minimal__init_app_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -80,7 +80,7 @@ fn wire__crate__api__minimal__init_app_impl(
     )
 }
 fn wire__crate__api__minimal__minimal_adder_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     a: impl CstDecode<i32>,
     b: impl CstDecode<i32>,
 ) {
@@ -156,7 +156,7 @@ impl SseDecode for bool {
 
 fn pde_ffi_dispatcher_primary_impl(
     func_id: i32,
-    port: flutter_rust_bridge::for_generated::MessagePort,
+    port: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len: i32,
     data_len: i32,

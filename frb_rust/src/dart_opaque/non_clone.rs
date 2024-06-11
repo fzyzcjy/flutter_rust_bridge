@@ -6,7 +6,7 @@ use crate::for_generated::{box_from_leak_ptr, new_leak_box_ptr};
 use crate::generalized_isolate::DartSendPort;
 use crate::generalized_isolate::IntoDart;
 use crate::misc::logs::log_warn_or_println;
-use crate::platform_types::{handle_to_message_port, SendableMessagePortHandle};
+use crate::platform_types::{handle_to_message_port, SerializedDartNativeSendPort};
 #[cfg(wasm)]
 use wasm_bindgen::prelude::*;
 
@@ -17,13 +17,13 @@ pub(super) struct DartOpaqueNonClone {
     persistent_handle: Option<GeneralizedDartHandleBox<GeneralizedAutoDropDartPersistentHandle>>,
 
     /// The port to drop object (when we cannot drop in current thread)
-    dart_handler_port: SendableMessagePortHandle,
+    dart_handler_port: SerializedDartNativeSendPort,
 }
 
 impl DartOpaqueNonClone {
     pub(super) fn new(
         handle: GeneralizedDartHandle,
-        dart_handler_port: SendableMessagePortHandle,
+        dart_handler_port: SerializedDartNativeSendPort,
     ) -> Self {
         let auto_drop_persistent_handle =
             GeneralizedAutoDropDartPersistentHandle::new_from_non_persistent_handle(handle);
@@ -49,7 +49,7 @@ impl DartOpaqueNonClone {
         (self.persistent_handle.as_ref().unwrap().as_ref()).create_dart_handle()
     }
 
-    pub(crate) fn dart_handler_port(&self) -> &SendableMessagePortHandle {
+    pub(crate) fn dart_handler_port(&self) -> &SerializedDartNativeSendPort {
         &self.dart_handler_port
     }
 }
@@ -71,7 +71,7 @@ impl Drop for DartOpaqueNonClone {
 /// Drop by sending to a Dart port and let the handler there call [dart_opaque_drop_thread_box_persistent_handle]
 fn drop_thread_box_persistent_handle_via_port(
     persistent_handle: GeneralizedDartHandleBox<GeneralizedAutoDropDartPersistentHandle>,
-    dart_handler_port: &SendableMessagePortHandle,
+    dart_handler_port: &SerializedDartNativeSendPort,
 ) {
     let port = DartSendPort::new(handle_to_message_port(dart_handler_port));
     let ptr = new_leak_box_ptr(persistent_handle) as usize;

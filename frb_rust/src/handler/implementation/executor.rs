@@ -7,7 +7,7 @@ use crate::handler::executor::Executor;
 use crate::handler::handler::{TaskContext, TaskInfo, TaskRetFutTrait};
 use crate::handler::implementation::error_listener::handle_non_sync_panic_error;
 use crate::misc::panic_backtrace::{CatchUnwindWithBacktrace, PanicBacktrace};
-use crate::platform_types::MessagePort;
+use crate::platform_types::DartNativeSendPort;
 use crate::rust2dart::sender::Rust2DartSender;
 use crate::rust_async::BaseAsyncRuntime;
 use crate::thread_pool::BaseThreadPool;
@@ -56,10 +56,10 @@ impl<EL: ErrorListener + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executo
         let el2 = self.error_listener;
 
         let TaskInfo { port, .. } = task_info;
-        let port: MessagePort = port.unwrap();
+        let port: DartNativeSendPort = port.unwrap();
 
         self.thread_pool
-            .execute(transfer!(|port: crate::platform_types::MessagePort| {
+            .execute(transfer!(|port: crate::platform_types::DartNativeSendPort| {
                 #[allow(clippy::clone_on_copy)]
                 let port2 = port.clone();
                 let thread_result = PanicBacktrace::catch_unwind(AssertUnwindSafe(|| {

@@ -4,7 +4,7 @@ use crate::generalized_isolate::DartSendPort;
 use crate::handler::error::Error;
 use crate::handler::error_listener::ErrorListener;
 use crate::misc::panic_backtrace::CatchUnwindWithBacktrace;
-use crate::platform_types::MessagePort;
+use crate::platform_types::DartNativeSendPort;
 use crate::rust2dart::sender::Rust2DartSender;
 
 /// The default one.
@@ -19,7 +19,7 @@ impl ErrorListener for NoOpErrorListener {
 
 pub(crate) fn handle_non_sync_panic_error<Rust2DartCodec: BaseCodec>(
     error_listener: impl ErrorListener,
-    port: MessagePort,
+    port: DartNativeSendPort,
     error: CatchUnwindWithBacktrace,
 ) {
     let message = Rust2DartCodec::encode_panic(&error.err, &error.backtrace).into_dart_abi();
