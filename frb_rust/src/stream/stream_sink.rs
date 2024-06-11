@@ -5,7 +5,6 @@ use crate::generalized_isolate::IntoDart;
 use crate::generalized_isolate::{
     dart_send_port_serialize, dart_send_port_deserialize, DartSendPort, SerializedDartSendPort,
 };
-use crate::platform_types::{deserialize_sendable_message_port_handle, handle_to_message_port};
 use crate::rust2dart::sender::{Rust2DartSendError, Rust2DartSender};
 use crate::stream::closer::StreamSinkCloser;
 use std::marker::PhantomData;
