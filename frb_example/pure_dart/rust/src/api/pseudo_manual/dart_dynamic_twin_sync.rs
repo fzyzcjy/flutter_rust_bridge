@@ -6,7 +6,12 @@
 
 use flutter_rust_bridge::{DartDynamic, IntoDart};
 
+#[cfg(not(wasm))]
 #[flutter_rust_bridge::frb(sync)]
 pub fn return_dart_dynamic_twin_sync() -> DartDynamic {
     vec!["foo".into_dart()].into_dart()
 }
+
+#[cfg(wasm)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn return_dart_dynamic_twin_sync() {}

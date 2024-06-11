@@ -6,6 +6,10 @@
 
 use flutter_rust_bridge::{DartDynamic, IntoDart};
 
+#[cfg(not(wasm))]
 pub async fn return_dart_dynamic_twin_rust_async() -> DartDynamic {
     vec!["foo".into_dart()].into_dart()
 }
+
+#[cfg(wasm)]
+pub async fn return_dart_dynamic_twin_rust_async() {}
