@@ -9,7 +9,7 @@ use std::collections::{HashMap, HashSet};
 use std::iter::FromIterator;
 use wasm_bindgen::JsValue;
 
-pub trait IntoDart: Send {
+pub trait IntoDart {
     fn into_dart(self) -> DartAbi;
 }
 
