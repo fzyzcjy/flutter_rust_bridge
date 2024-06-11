@@ -2,9 +2,9 @@
 library html_isolate;
 
 import 'dart:async';
+import 'dart:js_interop';
 
 import 'package:flutter_rust_bridge/src/platform_types/_web.dart';
-import 'package:flutter_rust_bridge/src/platform_utils/_web.dart';
 import 'package:web/web.dart' as web;
 
 /// {@macro flutter_rust_bridge.internal}
@@ -147,7 +147,7 @@ class _MessagePortWrapper extends _PortLike {
   _MessagePortWrapper(this.nativePort) : super._();
 
   @override
-  void postMessage(message) => nativePort.postMessage(message);
+  void postMessage(message) => nativePort.postMessage(message.jsify());
 
   @override
   void close() => nativePort.close();
@@ -162,7 +162,7 @@ class _BroadcastPortWrapper extends _PortLike {
   /// This presents a limitation of BroadcastChannel,
   /// i.e. it cannot carry transferables and will unconditionally clone the items.
   @override
-  void postMessage(message) => nativePort.postMessage(message ?? false);
+  void postMessage(message) => nativePort.postMessage(message.jsify());
 
   @override
   void close() => nativePort.close();
