@@ -20,8 +20,9 @@ pub async fn my_async_rust_function() {
     // https://docs.rs/tokio/latest/tokio/sync/mpsc/struct.Sender.html
     let (tx, mut rx) = tokio::sync::mpsc::unbounded_channel();
 
-    // let num_threads = 10;
-    let num_threads = 3;
+    let num_threads = 10;
+    // let num_threads = 3;
+    // let num_threads = 100;
 
     let mut handles = vec![];
     for spawn_id in 0..num_threads {
@@ -42,7 +43,7 @@ pub async fn my_async_rust_function() {
                 //     }
                 // }
 
-                for i in 0..100000 {
+                for i in 0..10000000 {
                     // let msg = format!("{spawn_id}_{thread_id:?}_{i}");
                     if let Err(_) = tx2.send(1) {
                         flutter_rust_bridge::console_error!("receiver dropped");
