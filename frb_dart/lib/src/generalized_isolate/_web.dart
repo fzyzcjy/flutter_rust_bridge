@@ -21,10 +21,7 @@ class ReceivePort extends Stream<dynamic> {
   final RawReceivePort _rawReceivePort;
 
   /// Create a new receive port from an optional [RawReceivePort].
-  factory ReceivePort() => ReceivePort._raw();
-
-  ReceivePort._raw([RawReceivePort? rawReceivePort])
-      : _rawReceivePort = rawReceivePort ?? RawReceivePort();
+  ReceivePort() : _rawReceivePort = RawReceivePort();
 
   @override
   StreamSubscription listen(void Function(dynamic event)? onData, {
@@ -55,10 +52,7 @@ class RawReceivePort {
   final _Channel _channel;
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  factory RawReceivePort() => RawReceivePort._raw();
-
-  RawReceivePort._raw([_Channel? channel])
-      : _channel = channel ?? _Channel.messageChannel();
+  RawReceivePort() : _channel = TODO;
 
   set handler(Function(dynamic) handler) {
     _receivePort.onMessage.listen((event) => handler(event.data));
@@ -72,11 +66,6 @@ class RawReceivePort {
 
   SendPort get _receivePort => _channel.receivePort;
 }
-
-/// {@macro flutter_rust_bridge.internal}
-ReceivePort broadcastPort(String channelName) =>
-    ReceivePort._raw(
-        RawReceivePort._raw(_Channel.broadcastChannel(channelName)));
 
 abstract class _Channel {
   SendPort get sendPort;
