@@ -147,8 +147,7 @@ class _MessagePortWrapper extends _PortLike {
   _MessagePortWrapper(this.nativePort) : super._();
 
   @override
-  void postMessage(message, [List<Object>? transfer]) =>
-      nativePort.postMessage(message, transfer);
+  void postMessage(message) => nativePort.postMessage(message);
 
   @override
   void close() => nativePort.close();
@@ -163,12 +162,7 @@ class _BroadcastPortWrapper extends _PortLike {
   /// This presents a limitation of BroadcastChannel,
   /// i.e. it cannot carry transferables and will unconditionally clone the items.
   @override
-  void postMessage(message, [List<Object>? transfer]) {
-    if (transfer != null && transfer.isNotEmpty) {
-      jsConsoleWarn("Ignoring transferables for BroadcastPort:", transfer);
-    }
-    nativePort.postMessage(message ?? false);
-  }
+  void postMessage(message) => nativePort.postMessage(message ?? false);
 
   @override
   void close() => nativePort.close();
