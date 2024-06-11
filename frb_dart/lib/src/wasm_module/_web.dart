@@ -9,8 +9,8 @@ import 'package:web/web.dart' as web;
 Future<void> initializeWasmModule({required String root}) async {
   _ensureCrossOriginIsolated();
 
-  final script = ScriptElement()..src = '$root.js';
-  document.head!.append(script);
+  final script = web.HTMLScriptElement()..src = '$root.js';
+  web.document.head!.append(script);
 
   await script.onLoad.first;
 
