@@ -10,10 +10,11 @@ typedef NativePortType = JSObject;
 typedef WireSyncRust2DartDco = List<dynamic>;
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
-typedef WireSyncRust2DartSse = Uint8List;
+typedef WireSyncRust2DartSse = JSUint8Array;
 
 /// {@macro flutter_rust_bridge.internal}
-Uint8List wireSyncRust2DartSseAsUint8ListView(WireSyncRust2DartSse raw) => raw;
+Uint8List wireSyncRust2DartSseAsUint8ListView(WireSyncRust2DartSse raw) =>
+    raw.toDart;
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 typedef PlatformPointer = int;

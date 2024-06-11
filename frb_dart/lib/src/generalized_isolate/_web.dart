@@ -8,7 +8,11 @@ import 'package:flutter_rust_bridge/src/platform_types/_web.dart';
 import 'package:web/web.dart' as web;
 
 /// {@macro flutter_rust_bridge.internal}
-String serializeNativePort(NativePortType port) => port.name;
+String serializeNativePort(NativePortType port) {
+  throw UnimplementedError(
+      'serializeNativePort port=$port type=${port.runtimeType}');
+  // return port.name;
+}
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 typedef MessagePort = _PortLike;
