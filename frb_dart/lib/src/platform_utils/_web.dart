@@ -1,8 +1,10 @@
 import 'dart:js_interop';
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
-@JS('Number')
-external int castInt(Object? value);
+// @JS('Number')
+int castInt(Object? value) {
+  throw UnimplementedError('castInt($value) runtimeType=${value.runtimeType}');
+}
 
 // @JS('Function')
 // class _Function {
@@ -15,7 +17,7 @@ external int castInt(Object? value);
 // dynamic jsEval(String script) => _Function(script)();
 
 dynamic jsEval(String script) {
-  throw Exception('TODO jsEval(script=$script)');
+  throw UnimplementedError('jsEval(script=$script)');
 }
 
 /// Whether the web platform has been isolated by COOP and COEP headers,
@@ -26,8 +28,11 @@ dynamic jsEval(String script) {
 external bool? get crossOriginIsolated;
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
-@JS('BigInt')
-external Object castNativeBigInt(Object? value);
+// @JS('BigInt')
+Object castNativeBigInt(Object? value) {
+  throw UnimplementedError(
+      'castNativeBigInt($value) runtimeType=${value.runtimeType}');
+}
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 BigInt jsBigIntToDartBigInt(Object bigInt) {
