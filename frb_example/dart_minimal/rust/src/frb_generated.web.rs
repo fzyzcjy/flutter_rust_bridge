@@ -22,6 +22,20 @@ impl CstDecode<i32> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValu
         self.unchecked_into_f64() as _
     }
 }
+impl CstDecode<u64> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> u64 {
+        ::std::convert::TryInto::<u64>::try_into(self).unwrap() as _
+    }
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__minimal__f(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire__crate__api__minimal__f_impl(port_, arg)
+}
 
 #[wasm_bindgen]
 pub fn wire__crate__api__minimal__init_app(port_: flutter_rust_bridge::for_generated::MessagePort) {

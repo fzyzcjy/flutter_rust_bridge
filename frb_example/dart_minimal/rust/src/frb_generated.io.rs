@@ -13,6 +13,14 @@ use flutter_rust_bridge::{Handler, IntoIntoDart};
 flutter_rust_bridge::frb_generated_boilerplate_io!();
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_dart_minimal_wire__crate__api__minimal__f(
+    port_: i64,
+    arg: u64,
+) {
+    wire__crate__api__minimal__f_impl(port_, arg)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_dart_minimal_wire__crate__api__minimal__init_app(port_: i64) {
     wire__crate__api__minimal__init_app_impl(port_)
 }

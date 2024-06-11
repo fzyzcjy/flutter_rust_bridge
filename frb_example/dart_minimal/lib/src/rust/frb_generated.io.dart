@@ -22,16 +22,28 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   int dco_decode_i_32(dynamic raw);
 
   @protected
+  BigInt dco_decode_u_64(dynamic raw);
+
+  @protected
   void dco_decode_unit(dynamic raw);
 
   @protected
   int sse_decode_i_32(SseDeserializer deserializer);
 
   @protected
+  BigInt sse_decode_u_64(SseDeserializer deserializer);
+
+  @protected
   void sse_decode_unit(SseDeserializer deserializer);
 
   @protected
   bool sse_decode_bool(SseDeserializer deserializer);
+
+  @protected
+  int cst_encode_u_64(BigInt raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw.toSigned(64).toInt();
+  }
 
   @protected
   int cst_encode_i_32(int raw);
@@ -41,6 +53,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_i_32(int self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_u_64(BigInt self, SseSerializer serializer);
 
   @protected
   void sse_encode_unit(void self, SseSerializer serializer);
@@ -89,6 +104,22 @@ class RustLibWire implements BaseWire {
           'store_dart_post_cobject');
   late final _store_dart_post_cobject = _store_dart_post_cobjectPtr
       .asFunction<void Function(DartPostCObjectFnType)>();
+
+  void wire__crate__api__minimal__f(
+    int port_,
+    int arg,
+  ) {
+    return _wire__crate__api__minimal__f(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire__crate__api__minimal__fPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Uint64)>>(
+          'frbgen_frb_example_dart_minimal_wire__crate__api__minimal__f');
+  late final _wire__crate__api__minimal__f =
+      _wire__crate__api__minimal__fPtr.asFunction<void Function(int, int)>();
 
   void wire__crate__api__minimal__init_app(
     int port_,

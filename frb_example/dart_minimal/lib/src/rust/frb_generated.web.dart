@@ -24,16 +24,28 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   int dco_decode_i_32(dynamic raw);
 
   @protected
+  BigInt dco_decode_u_64(dynamic raw);
+
+  @protected
   void dco_decode_unit(dynamic raw);
 
   @protected
   int sse_decode_i_32(SseDeserializer deserializer);
 
   @protected
+  BigInt sse_decode_u_64(SseDeserializer deserializer);
+
+  @protected
   void sse_decode_unit(SseDeserializer deserializer);
 
   @protected
   bool sse_decode_bool(SseDeserializer deserializer);
+
+  @protected
+  Object cst_encode_u_64(BigInt raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return castNativeBigInt(raw);
+  }
 
   @protected
   int cst_encode_i_32(int raw);
@@ -43,6 +55,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_i_32(int self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_u_64(BigInt self, SseSerializer serializer);
 
   @protected
   void sse_encode_unit(void self, SseSerializer serializer);
@@ -55,6 +70,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
 class RustLibWire implements BaseWire {
   RustLibWire.fromExternalLibrary(ExternalLibrary lib);
+
+  void wire__crate__api__minimal__f(NativePortType port_, Object arg) =>
+      wasmModule.wire__crate__api__minimal__f(port_, arg);
 
   void wire__crate__api__minimal__init_app(NativePortType port_) =>
       wasmModule.wire__crate__api__minimal__init_app(port_);
@@ -70,6 +88,8 @@ external RustLibWasmModule get wasmModule;
 @JS()
 @anonymous
 class RustLibWasmModule {
+  external void wire__crate__api__minimal__f(NativePortType port_, Object arg);
+
   external void wire__crate__api__minimal__init_app(NativePortType port_);
 
   external void wire__crate__api__minimal__minimal_adder(
