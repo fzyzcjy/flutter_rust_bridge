@@ -1,16 +1,16 @@
 use crate::codec::BaseCodec;
 use crate::codec::Rust2DartMessageTrait;
-use crate::generalized_isolate::SerializedDartSendPort;
+use crate::generalized_isolate::SendableDartSendPort;
 use std::marker::PhantomData;
 
 // *NOT* cloneable, since it invokes stream-close when dropped
 pub(crate) struct StreamSinkCloser<Rust2DartCodec: BaseCodec> {
-    serialized_dart_send_port: SerializedDartSendPort,
+    serialized_dart_send_port: SendableDartSendPort,
     _phantom_data: PhantomData<Rust2DartCodec>,
 }
 
 impl<Rust2DartCodec: BaseCodec> StreamSinkCloser<Rust2DartCodec> {
-    pub fn new(serialized_dart_send_port: SerializedDartSendPort) -> Self {
+    pub fn new(serialized_dart_send_port: SendableDartSendPort) -> Self {
         Self {
             serialized_dart_send_port,
             _phantom_data: PhantomData,

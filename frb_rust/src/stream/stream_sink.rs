@@ -3,7 +3,7 @@ use crate::codec::Rust2DartMessageTrait;
 use crate::for_generated::DartAbi;
 use crate::generalized_isolate::IntoDart;
 use crate::generalized_isolate::{
-    dart_send_port_deserialize, dart_send_port_serialize, DartSendPort, SerializedDartSendPort,
+    dart_send_port_deserialize, dart_send_port_serialize, DartSendPort, SendableDartSendPort,
 };
 use crate::platform_types::deserialize_dart_native_send_port;
 use crate::rust2dart::sender::{Rust2DartSendError, Rust2DartSender};
@@ -16,7 +16,7 @@ use std::sync::Arc;
 /// [`Stream`](https://api.dart.dev/stable/dart-async/Stream-class.html).
 #[derive(Clone)]
 pub struct StreamSinkBase<T, Rust2DartCodec: BaseCodec> {
-    serialized_dart_send_port: SerializedDartSendPort,
+    serialized_dart_send_port: SendableDartSendPort,
     _closer: Arc<StreamSinkCloser<Rust2DartCodec>>,
     _phantom_data: (PhantomData<T>, PhantomData<Rust2DartCodec>),
 }
@@ -40,7 +40,7 @@ impl<T, Rust2DartCodec: BaseCodec> StreamSinkBase<T, Rust2DartCodec> {
     }
 }
 
-pub(super) fn sender(serialized_dart_send_port: &SerializedDartSendPort) -> Rust2DartSender {
+pub(super) fn sender(serialized_dart_send_port: &SendableDartSendPort) -> Rust2DartSender {
     Rust2DartSender::new(dart_send_port_deserialize(serialized_dart_send_port))
 }
 
