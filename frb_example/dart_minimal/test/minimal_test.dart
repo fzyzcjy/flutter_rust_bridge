@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:typed_data';
 
 import 'package:frb_example_dart_minimal/src/rust/api/minimal.dart';
 import 'package:frb_example_dart_minimal/src/rust/frb_generated.dart';
@@ -16,4 +17,44 @@ Future<void> main() async {
     print('Action: Call rust (after)');
   });
   print('Action: Configure tests (end)');
+
+  for (var i = 0; i < 100; ++i) {
+    group('group $i', () {
+      test('loop and call many times', () async {
+        var obj = _createMyTreeNode(arrLen: 5);
+        for (var i = 0; i < 500; ++i) {
+          obj = await handleComplexStructTwinNormal(s: obj);
+        }
+      });
+    });
+  }
+}
+
+MyTreeNodeTwinNormal _createMyTreeNode({required int arrLen}) {
+  return MyTreeNodeTwinNormal(
+    valueI32: 100,
+    valueVecU8: Uint8List.fromList(List.filled(arrLen, 100)),
+    valueBoolean: true,
+    children: [
+      MyTreeNodeTwinNormal(
+        valueI32: 110,
+        valueVecU8: Uint8List.fromList(List.filled(arrLen, 110)),
+        valueBoolean: true,
+        children: [
+          MyTreeNodeTwinNormal(
+            valueI32: 111,
+            valueVecU8: Uint8List.fromList(List.filled(arrLen, 111)),
+            valueBoolean: true,
+            children: [],
+          ),
+        ],
+      ),
+      MyTreeNodeTwinNormal(
+        valueI32: 120,
+        valueVecU8: Uint8List.fromList(List.filled(arrLen, 120)),
+        valueBoolean: true,
+        children: [],
+      ),
+    ],
+  );
 }
