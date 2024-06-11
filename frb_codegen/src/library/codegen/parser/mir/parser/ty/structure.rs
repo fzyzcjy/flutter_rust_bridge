@@ -117,21 +117,6 @@ impl EnumOrStructParser<MirStructIdent, MirStruct, ItemStruct>
         &mut self.0.inner.struct_parser_info
     }
 
-    fn dart_code_of_type(&mut self) -> &mut HashMap<String, GeneralDartCode> {
-        &mut self.0.inner.dart_code_of_type
-    }
-
-    fn parse_type_rust_auto_opaque_implicit(
-        &mut self,
-        namespace: Option<Namespace>,
-        ty: &Type,
-        reason: Option<MirTypeRustAutoOpaqueImplicitReason>,
-        override_ignore: Option<bool>,
-    ) -> anyhow::Result<MirType> {
-        self.0
-            .parse_type_rust_auto_opaque_implicit(namespace, ty, reason, override_ignore)
-    }
-
     fn compute_default_opaque(obj: &MirStruct) -> bool {
         structure_compute_default_opaque(obj, &obj.name.namespace.crate_name())
     }
