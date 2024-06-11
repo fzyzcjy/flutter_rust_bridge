@@ -9,7 +9,17 @@ use std::collections::{HashMap, HashSet};
 use std::iter::FromIterator;
 use wasm_bindgen::JsValue;
 
-pub trait IntoDart: Sized {
+pub trait BoxIntoDart {
+    fn box_into_dart(self: Box<Self>) -> DartAbi;
+}
+
+impl<T: IntoDart> BoxIntoDart for T {
+    fn box_into_dart(self: Box<Self>) -> DartAbi {
+        (*self).into_dart()
+    }
+}
+
+pub trait IntoDart {
     fn into_dart(self) -> DartAbi;
 }
 

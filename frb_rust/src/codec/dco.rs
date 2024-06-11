@@ -1,5 +1,5 @@
 use super::{BaseCodec, Rust2DartMessageTrait};
-use crate::generalized_isolate::IntoDart;
+use crate::generalized_isolate::{BoxIntoDart, IntoDart};
 use crate::handler::error::error_to_string;
 use crate::misc::into_into_dart::IntoIntoDart;
 use crate::platform_types::{DartAbi, WireSyncRust2DartDco};
@@ -29,8 +29,9 @@ impl DcoCodec {
         // TODO temp debug
         // TODO
         // TODO
-        let data2: Box<dyn IntoDart + Send> = Box::new(data);
-        Rust2DartMessageDco(vec![result_code.into_dart(), data2.into_dart()].into_dart())
+        let data2: Box<dyn BoxIntoDart + Send> = Box::new(data);
+
+        Rust2DartMessageDco(vec![result_code.into_dart(), data2.box_into_dart()].into_dart())
     }
 }
 
