@@ -74,7 +74,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             .ident
             .as_ref()
             .map_or(format!("field{idx}"), ToString::to_string);
-        let field_type = self.parse_type(&field.ty)?;
+        let field_type = self.parse_type_with_context(&field.ty, |c|c.to_owned())?;
         let attributes = FrbAttributes::parse(&field.attrs)?;
         Ok(MirField {
             name: MirIdent::new(field_name),

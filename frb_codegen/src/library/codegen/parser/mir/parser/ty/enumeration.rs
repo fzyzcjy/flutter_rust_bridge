@@ -119,7 +119,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                                 .map(ToString::to_string)
                                 .unwrap_or_else(|| format!("field{idx}")),
                         ),
-                        ty: self.parse_type(&field.ty)?,
+                        ty: self.parse_type_with_context(&field.ty, |c| c.to_owned())?,
                         is_final: true,
                         is_rust_public: Some(matches!(field.vis, Visibility::Public(_))),
                         comments: parse_comments(&field.attrs),

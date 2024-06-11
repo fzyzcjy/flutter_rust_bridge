@@ -146,6 +146,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     }
 }
 
+#[derive(Clone)]
 pub(crate) struct TypeParserParsingContext {
     pub(crate) initiated_namespace: Namespace,
     pub(crate) func_attributes: FrbAttributes,
