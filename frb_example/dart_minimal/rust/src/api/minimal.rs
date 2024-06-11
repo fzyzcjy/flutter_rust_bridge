@@ -10,6 +10,12 @@ pub fn minimal_adder(a: i32, b: i32) -> i32 {
 }
 
 #[frb(type_64bit_int)]
-pub fn f(arg: u64) -> u64 {
+pub struct MyStruct {
+    pub a: i64,
+    pub b: u64,
+    pub c: String,
+}
+
+pub fn f(arg: MyStruct) -> MyStruct {
     arg
 }
