@@ -56,7 +56,7 @@ fn generate_wasm_module_class(
     format!(
         "@JS('wasm_bindgen') external {wasm_module_name} get wasmModule;
 
-        @JS() @anonymous class {wasm_module_name} {{
+        @JS() @anonymous extension type {wasm_module_name}._(JSObject _) implements JSObject {{
             {body}
         }}
         "
