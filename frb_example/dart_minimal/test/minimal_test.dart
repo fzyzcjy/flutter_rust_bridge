@@ -4,10 +4,9 @@ import 'dart:typed_data';
 
 import 'package:frb_example_dart_minimal/src/rust/api/minimal.dart';
 import 'package:frb_example_dart_minimal/src/rust/frb_generated.dart';
-import 'package:test/test.dart';
 
-@JS()
-void rust_wasm_bindgen_func();
+@JS("wasm_bindgen.rust_wasm_bindgen_func")
+external void rust_wasm_bindgen_func();
 
 Future<void> main() async {
   print('Action: Init rust (before)');
