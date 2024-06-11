@@ -10,11 +10,11 @@ int castInt(Object? value) {
 extension type _Function._(JSObject _) implements JSObject {
   external factory _Function(String script);
 
-  external dynamic call();
+  external JSAny? call();
 }
 
 /// {@macro flutter_rust_bridge.internal}
-dynamic jsEval(String script) => _Function(script)();
+JSAny? jsEval(String script) => _Function(script)();
 
 /// Whether the web platform has been isolated by COOP and COEP headers,
 /// and is capable of sharing buffers between workers.
