@@ -8,9 +8,6 @@ abstract class TypedList<T, TInner> extends ListMixin<T> {
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   List<TInner> get inner;
 
-  @override
-  TypedList<T, TInner> operator +(Object other);
-
   /// {@macro flutter_rust_bridge.internal}
   @protected
   T inner2outer(TInner value);
