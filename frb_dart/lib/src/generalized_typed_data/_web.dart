@@ -161,7 +161,8 @@ abstract class _TypedArray {
 
 extension on _TypedArray {
   operator []=(int index, Object? value) {
-    setProperty(this, index, value);
+    throw UnimplementedError('todo!');
+    // setProperty(this, index, value);
   }
 }
 

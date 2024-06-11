@@ -31,5 +31,6 @@ external Object castNativeBigInt(Object? value);
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 BigInt jsBigIntToDartBigInt(Object bigInt) {
-  return BigInt.parse(callMethod(bigInt, 'toString', const []));
+  throw UnimplementedError('todo!');
+  // return BigInt.parse(callMethod(bigInt, 'toString', const []));
 }
