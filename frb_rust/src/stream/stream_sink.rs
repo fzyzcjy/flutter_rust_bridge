@@ -2,9 +2,7 @@ use crate::codec::BaseCodec;
 use crate::codec::Rust2DartMessageTrait;
 use crate::for_generated::DartAbi;
 use crate::generalized_isolate::IntoDart;
-use crate::generalized_isolate::{
-    dart_send_port_deserialize, dart_send_port_serialize, DartSendPort, SendableDartSendPort,
-};
+use crate::generalized_isolate::{DartSendPort, SendableDartSendPort};
 use crate::platform_types::deserialize_dart_native_send_port;
 use crate::rust2dart::sender::{Rust2DartSendError, Rust2DartSender};
 use crate::stream::closer::StreamSinkCloser;
@@ -24,7 +22,7 @@ pub struct StreamSinkBase<T, Rust2DartCodec: BaseCodec> {
 impl<T, Rust2DartCodec: BaseCodec> StreamSinkBase<T, Rust2DartCodec> {
     pub fn deserialize(raw: String) -> Self {
         let serialized_dart_send_port =
-            dart_send_port_serialize(&DartSendPort::new(deserialize_dart_native_send_port(raw)));
+            DartSendPort::new(deserialize_dart_native_send_port(raw)).to_sendable();
         Self {
             #[allow(clippy::clone_on_copy)]
             serialized_dart_send_port: serialized_dart_send_port.clone(),
@@ -41,7 +39,7 @@ impl<T, Rust2DartCodec: BaseCodec> StreamSinkBase<T, Rust2DartCodec> {
 }
 
 pub(super) fn sender(serialized_dart_send_port: &SendableDartSendPort) -> Rust2DartSender {
-    Rust2DartSender::new(dart_send_port_deserialize(serialized_dart_send_port))
+    Rust2DartSender::new(DartSendPort::from_sendable(serialized_dart_send_port))
 }
 
 // frb-coverage:ignore-start
