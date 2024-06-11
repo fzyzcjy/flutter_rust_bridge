@@ -5,10 +5,10 @@ pub use allo_isolate::ZeroCopyBuffer;
 /// A channel that implements `Send`
 pub type SerializedDartSendPort = DartSendPort;
 
-pub fn channel_to_handle(channel: &DartSendPort) -> SerializedDartSendPort {
-    channel.to_owned()
+pub fn dart_send_port_serialize(port: &DartSendPort) -> SerializedDartSendPort {
+    port.to_owned()
 }
 
-pub fn handle_to_channel(handle: &SerializedDartSendPort) -> DartSendPort {
-    handle.to_owned()
+pub fn dart_send_port_deserialize(port: &SerializedDartSendPort) -> DartSendPort {
+    port.to_owned()
 }

@@ -3,7 +3,7 @@ use crate::codec::Rust2DartMessageTrait;
 use crate::for_generated::DartAbi;
 use crate::generalized_isolate::IntoDart;
 use crate::generalized_isolate::{
-    channel_to_handle, handle_to_channel, DartSendPort, SerializedDartSendPort,
+    dart_send_port_serialize, dart_send_port_deserialize, DartSendPort, SerializedDartSendPort,
 };
 use crate::platform_types::{deserialize_sendable_message_port_handle, handle_to_message_port};
 use crate::rust2dart::sender::{Rust2DartSendError, Rust2DartSender};
@@ -23,7 +23,7 @@ pub struct StreamSinkBase<T, Rust2DartCodec: BaseCodec> {
 
 impl<T, Rust2DartCodec: BaseCodec> StreamSinkBase<T, Rust2DartCodec> {
     pub fn deserialize(raw: String) -> Self {
-        let sendable_channel_handle = channel_to_handle(&DartSendPort::new(handle_to_message_port(
+        let sendable_channel_handle = dart_send_port_serialize(&DartSendPort::new(handle_to_message_port(
             &deserialize_sendable_message_port_handle(raw),
         )));
         Self {
@@ -42,7 +42,7 @@ impl<T, Rust2DartCodec: BaseCodec> StreamSinkBase<T, Rust2DartCodec> {
 }
 
 pub(super) fn sender(sendable_channel_handle: &SerializedDartSendPort) -> Rust2DartSender {
-    Rust2DartSender::new(handle_to_channel(sendable_channel_handle))
+    Rust2DartSender::new(dart_send_port_deserialize(sendable_channel_handle))
 }
 
 // frb-coverage:ignore-start
