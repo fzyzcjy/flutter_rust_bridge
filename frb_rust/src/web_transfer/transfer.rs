@@ -1,7 +1,6 @@
 use js_sys::ArrayBuffer;
 use wasm_bindgen::JsCast;
 use wasm_bindgen::JsValue;
-use web_sys::BroadcastChannel;
 
 /// Internal implementations for transferables on WASM platforms.
 pub trait Transfer {
