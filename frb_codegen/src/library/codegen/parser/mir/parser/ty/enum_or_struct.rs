@@ -133,6 +133,16 @@ where
 
     fn parser_info(&mut self) -> &mut EnumOrStructParserInfo<Id, Obj>;
 
+    fn dart_code_of_type(&mut self) -> &mut HashMap<String, GeneralDartCode>;
+
+    fn parse_type_rust_auto_opaque_implicit(
+        &mut self,
+        namespace: Option<Namespace>,
+        ty: &Type,
+        reason: Option<MirTypeRustAutoOpaqueImplicitReason>,
+        override_ignore: Option<bool>,
+    ) -> anyhow::Result<MirType>;
+
     fn compute_default_opaque(obj: &Obj) -> bool;
 }
 
