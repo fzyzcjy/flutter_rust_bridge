@@ -58,7 +58,7 @@ impl<EL: ErrorListener + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executo
         let TaskInfo { port, .. } = task_info;
         let port: DartNativeSendPort = port.unwrap();
 
-        self.thread_pool.execute(transfer_raw!(Some(TODO), || {
+        self.thread_pool.execute(transfer_raw!(Some(port.clone()), || {
             #[allow(clippy::clone_on_copy)]
             let port2 = port.clone();
             let thread_result = PanicBacktrace::catch_unwind(AssertUnwindSafe(|| {
