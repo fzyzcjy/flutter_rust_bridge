@@ -120,9 +120,6 @@ abstract class _PortLike {
   void close();
 
   html.EventTarget get nativePort;
-
-  Stream<MessageEvent> get onMessage => _kMessageEvent.forTarget(nativePort);
-  static const _kMessageEvent = EventStreamProvider<MessageEvent>('message');
 }
 
 class _BroadcastPortWrapper extends _PortLike {
@@ -138,4 +135,7 @@ class _BroadcastPortWrapper extends _PortLike {
 
   @override
   void close() => nativePort.close();
+
+  Stream<MessageEvent> get onMessage => _kMessageEvent.forTarget(nativePort);
+  static const _kMessageEvent = EventStreamProvider<MessageEvent>('message');
 }
