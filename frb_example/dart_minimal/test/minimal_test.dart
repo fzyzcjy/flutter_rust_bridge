@@ -9,11 +9,15 @@ Future<void> main() async {
   await RustLib.init();
   print('Action: Init rust (after)');
 
-  print('Action: Configure tests (before)');
-  test('dart call minimalAdder', () async {
-    print('Action: Call rust (before)');
-    expect(await minimalAdder(a: 100, b: 200), 300);
-    print('Action: Call rust (after)');
-  });
-  print('Action: Configure tests (end)');
+  print('Dart call myAsyncRustFunction (before)');
+  await myAsyncRustFunction();
+  print('Dart call myAsyncRustFunction (after)');
+
+  // print('Action: Configure tests (before)');
+  // test('dart call minimalAdder', () async {
+  //   print('Action: Call rust (before)');
+  //   expect(await minimalAdder(a: 100, b: 200), 300);
+  //   print('Action: Call rust (after)');
+  // });
+  // print('Action: Configure tests (end)');
 }

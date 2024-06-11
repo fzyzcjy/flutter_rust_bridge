@@ -62,6 +62,10 @@ class RustLibWire implements BaseWire {
   void wire__crate__api__minimal__minimal_adder(
           NativePortType port_, int a, int b) =>
       wasmModule.wire__crate__api__minimal__minimal_adder(port_, a, b);
+
+  void wire__crate__api__minimal__my_async_rust_function(
+          NativePortType port_) =>
+      wasmModule.wire__crate__api__minimal__my_async_rust_function(port_);
 }
 
 @JS('wasm_bindgen')
@@ -74,4 +78,7 @@ class RustLibWasmModule {
 
   external void wire__crate__api__minimal__minimal_adder(
       NativePortType port_, int a, int b);
+
+  external void wire__crate__api__minimal__my_async_rust_function(
+      NativePortType port_);
 }

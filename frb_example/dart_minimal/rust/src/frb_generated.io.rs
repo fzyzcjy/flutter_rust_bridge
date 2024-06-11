@@ -25,3 +25,10 @@ pub extern "C" fn frbgen_frb_example_dart_minimal_wire__crate__api__minimal__min
 ) {
     wire__crate__api__minimal__minimal_adder_impl(port_, a, b)
 }
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_dart_minimal_wire__crate__api__minimal__my_async_rust_function(
+    port_: i64,
+) {
+    wire__crate__api__minimal__my_async_rust_function_impl(port_)
+}

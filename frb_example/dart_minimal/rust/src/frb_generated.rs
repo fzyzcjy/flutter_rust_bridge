@@ -33,7 +33,7 @@ flutter_rust_bridge::frb_generated_boilerplate!(
     default_rust_auto_opaque = RustAutoOpaqueNom,
 );
 pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "2.0.0-dev.38";
-pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = -2119384465;
+pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = 549540642;
 
 // Section: executor
 
@@ -79,6 +79,29 @@ fn wire__crate__api__minimal__minimal_adder_impl(
                 transform_result_dco((move || {
                     Result::<_, ()>::Ok(crate::api::minimal::minimal_adder(api_a, api_b))
                 })())
+            }
+        },
+    )
+}
+fn wire__crate__api__minimal__my_async_rust_function_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "my_async_rust_function",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            move |context| async move {
+                transform_result_dco(
+                    (move || async move {
+                        Result::<_, ()>::Ok({
+                            crate::api::minimal::my_async_rust_function().await;
+                        })
+                    })()
+                    .await,
+                )
             }
         },
     )

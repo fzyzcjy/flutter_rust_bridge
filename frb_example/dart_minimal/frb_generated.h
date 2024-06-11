@@ -19,10 +19,13 @@ void frbgen_frb_example_dart_minimal_wire__crate__api__minimal__init_app(int64_t
 void frbgen_frb_example_dart_minimal_wire__crate__api__minimal__minimal_adder(int64_t port_,
                                                                               int32_t a,
                                                                               int32_t b);
+
+void frbgen_frb_example_dart_minimal_wire__crate__api__minimal__my_async_rust_function(int64_t port_);
 static int64_t dummy_method_to_enforce_bundling(void) {
     int64_t dummy_var = 0;
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_dart_minimal_wire__crate__api__minimal__init_app);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_dart_minimal_wire__crate__api__minimal__minimal_adder);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_dart_minimal_wire__crate__api__minimal__my_async_rust_function);
     dummy_var ^= ((int64_t) (void*) store_dart_post_cobject);
     return dummy_var;
 }

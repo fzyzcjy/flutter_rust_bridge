@@ -124,6 +124,21 @@ class RustLibWire implements BaseWire {
       _wire__crate__api__minimal__minimal_adderPtr
           .asFunction<void Function(int, int, int)>();
 
+  void wire__crate__api__minimal__my_async_rust_function(
+    int port_,
+  ) {
+    return _wire__crate__api__minimal__my_async_rust_function(
+      port_,
+    );
+  }
+
+  late final _wire__crate__api__minimal__my_async_rust_functionPtr = _lookup<
+          ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      'frbgen_frb_example_dart_minimal_wire__crate__api__minimal__my_async_rust_function');
+  late final _wire__crate__api__minimal__my_async_rust_function =
+      _wire__crate__api__minimal__my_async_rust_functionPtr
+          .asFunction<void Function(int)>();
+
   int dummy_method_to_enforce_bundling() {
     return _dummy_method_to_enforce_bundling();
   }

@@ -36,3 +36,10 @@ pub fn wire__crate__api__minimal__minimal_adder(
 ) {
     wire__crate__api__minimal__minimal_adder_impl(port_, a, b)
 }
+
+#[wasm_bindgen]
+pub fn wire__crate__api__minimal__my_async_rust_function(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+) {
+    wire__crate__api__minimal__my_async_rust_function_impl(port_)
+}

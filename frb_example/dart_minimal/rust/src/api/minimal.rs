@@ -8,3 +8,8 @@ pub fn init_app() {
 pub fn minimal_adder(a: i32, b: i32) -> i32 {
     a + b
 }
+
+pub async fn my_async_rust_function() {
+    flutter_rust_bridge::console_error!("my_async_rust_function start");
+    flutter_rust_bridge::console_error!("my_async_rust_function end");
+}
