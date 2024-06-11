@@ -57,7 +57,7 @@ impl<EL: ErrorListener + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executo
 
         let TaskInfo { port, .. } = task_info;
         let port: DartNativeSendPort = port.unwrap();
-        #[allow(clippy::clone_on_copy)]
+        #[allow(clippy::clone_on_copy, unused_variables)]
         let port3 = port.clone();
 
         self.thread_pool.execute(transfer_raw!(Some(port3), || {
