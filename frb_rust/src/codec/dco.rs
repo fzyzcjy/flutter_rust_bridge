@@ -63,8 +63,8 @@ pub fn transform_result_dco<T, T2, E>(
 ) -> Result<Rust2DartMessageDco, Rust2DartMessageDco>
 where
     T: IntoIntoDart<T2>,
-    T2: IntoDart,
-    E: IntoDart,
+    T2: IntoDart + Send,
+    E: IntoDart + Send,
 {
     match raw {
         Ok(raw) => Ok(DcoCodec::encode(

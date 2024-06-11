@@ -142,7 +142,7 @@ macro_rules! frb_generated_stream_sink {
             pub fn add<T2>(&self, value: T) -> Result<(), $crate::Rust2DartSendError>
             where
                 T: $crate::IntoIntoDart<T2>,
-                T2: $crate::IntoDart,
+                T2: $crate::IntoDart + Send,
             {
                 self.add_raw($crate::for_generated::Rust2DartAction::Success, value)
             }
@@ -150,7 +150,7 @@ macro_rules! frb_generated_stream_sink {
             pub fn add_error<TR, T2>(&self, value: TR) -> Result<(), $crate::Rust2DartSendError>
             where
                 TR: $crate::IntoIntoDart<T2>,
-                T2: $crate::IntoDart,
+                T2: $crate::IntoDart + Send,
             {
                 self.add_raw($crate::for_generated::Rust2DartAction::Error, value)
             }
@@ -158,7 +158,7 @@ macro_rules! frb_generated_stream_sink {
             fn add_raw<TR, T2>(&self, action: $crate::for_generated::Rust2DartAction, value: TR) -> Result<(), $crate::Rust2DartSendError>
             where
                 TR: $crate::IntoIntoDart<T2>,
-                T2: $crate::IntoDart,
+                T2: $crate::IntoDart + Send,
             {
                 self.base.add_raw($crate::for_generated::DcoCodec::encode(
                     action,
