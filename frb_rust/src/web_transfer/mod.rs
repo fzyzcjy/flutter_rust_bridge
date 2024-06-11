@@ -29,7 +29,7 @@ macro_rules! transfer_raw {
 
         #[cfg(target_family = "wasm")]
         {
-            $crate::for_generated::TransferClosure::new(vec![], vec![], move |_: &[wasm_bindgen::JsValue]| $block)
+            $crate::for_generated::TransferClosure::new(vec![], vec![], move |_: &[wasm_bindgen::JsValue]| $block, $error_report_broadcast_channel_name)
         }
     }};
     ($error_report_broadcast_channel_name:expr, |$($param:ident: $ty:ty),*| $block:block) => {{
@@ -51,7 +51,7 @@ macro_rules! transfer_raw {
                 $block
             };
             let transferables = [$($param.transferables()),*].concat();
-            $crate::for_generated::TransferClosure::new(vec![$($param.serialize()),*], transferables, worker)
+            $crate::for_generated::TransferClosure::new(vec![$($param.serialize()),*], transferables, worker, $error_report_broadcast_channel_name)
         }
     }};
 }

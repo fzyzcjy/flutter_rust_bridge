@@ -9,6 +9,7 @@ pub struct TransferClosure<T> {
     pub(crate) data: Vec<T>,
     pub(crate) transfer: Vec<T>,
     pub(crate) closure: RawClosure<T>,
+    pub(crate) error_report_broadcast_channel_name: Option<String>,
 }
 
 pub struct TransferClosurePayload<T> {
@@ -20,12 +21,14 @@ impl TransferClosure<JsValue> {
         data: Vec<JsValue>,
         transfer: Vec<JsValue>,
         closure: impl FnOnce(&[JsValue]) + Send + 'static,
+        error_report_broadcast_channel_name: Option<String>,
     ) -> Self {
         let closure = Box::new(closure);
         Self {
             data,
             transfer,
             closure,
+            error_report_broadcast_channel_name,
         }
     }
 
