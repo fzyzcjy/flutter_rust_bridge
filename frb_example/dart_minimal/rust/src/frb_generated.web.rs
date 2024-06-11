@@ -54,7 +54,9 @@ pub fn wire__crate__api__minimal__f(
 }
 
 #[wasm_bindgen]
-pub fn wire__crate__api__minimal__init_app(port_: flutter_rust_bridge::for_generated::DartNativeSendPort) {
+pub fn wire__crate__api__minimal__init_app(
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+) {
     wire__crate__api__minimal__init_app_impl(port_)
 }
 
