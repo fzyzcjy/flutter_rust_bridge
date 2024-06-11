@@ -2,12 +2,6 @@ import 'dart:typed_data' hide Int64List, Uint64List;
 
 import 'package:flutter_rust_bridge/src/generalized_typed_data/common.dart';
 
-Object _convertBigIntToJs(Object dart) {
-  if (dart is int) return BigInt.from(dart);
-  // Assume value is already JS safe.
-  return dart;
-}
-
 class _Int64OrUint64List extends TypedList<BigInt, BigInt> {
   @override
   final List<BigInt> inner;
