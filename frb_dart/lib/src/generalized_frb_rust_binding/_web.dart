@@ -67,7 +67,7 @@ class GeneralizedFrbRustBinding {
   void freeWireSyncRust2DartDco(WireSyncRust2DartDco raw) {}
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  void freeWireSyncRust2DartSse(WireSyncRust2DartDco raw) {}
+  void freeWireSyncRust2DartSse(WireSyncRust2DartSse raw) {}
 }
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
