@@ -15,7 +15,7 @@ Future<void> main() async {
   final channel = web.BroadcastChannel('hello_channel');
   const kMessageEvent = web.EventStreamProvider<web.MessageEvent>('message');
   kMessageEvent.forTarget(channel).listen(
-        (data) => print('stream recv data=$data'),
+        (e) => print('stream recv data=${e.data} e=$e'),
         onError: (e, s) => print('stream recv e=$e s=$s'),
         onDone: () => print('stream recv done'),
       );
