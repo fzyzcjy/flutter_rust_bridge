@@ -108,7 +108,7 @@ external RustLibWasmModule get wasmModule;
 @anonymous
 extension type RustLibWasmModule._(JSObject _) implements JSObject {
   external void wire__crate__api__minimal__f(
-      NativePortType port_, Object /* BigInt64Array */ a);
+      NativePortType port_, JSArray /* BigInt64Array */ a);
 
   external void wire__crate__api__minimal__init_app(NativePortType port_);
 
