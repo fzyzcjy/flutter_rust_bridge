@@ -32,7 +32,7 @@ class ReceivePort extends Stream<dynamic> {
         );
   }
 
-  static dynamic _extractData(MessageEvent event) => event.data;
+  static dynamic _extractData(web.MessageEvent event) => event.data;
 
   /// The send port.
   SendPort get sendPort => _rawReceivePort.sendPort;
@@ -47,11 +47,11 @@ class RawReceivePort {
   // for both sending and receiving, because HTML BroadcastChannel spec says
   // that, the event will not be fired at the object which sends it.
   /// The underlying message channel.
-  final BroadcastChannel _receiveChannel;
+  final web.BroadcastChannel _receiveChannel;
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   RawReceivePort()
-      : _receiveChannel = html.BroadcastChannel(_PortNameGenerator.create());
+      : _receiveChannel = web.BroadcastChannel(_PortNameGenerator.create());
 
   set handler(Function(dynamic) handler) {
     _kMessageEvent
@@ -63,13 +63,13 @@ class RawReceivePort {
   void close() => _receiveChannel.close();
 
   /// The port to be used by other workers.
-  SendPort get sendPort => SendPort._(_receiveChannel.name!);
+  SendPort get sendPort => SendPort._(_receiveChannel.name);
 
-  Stream<MessageEvent> get _onMessage =>
+  Stream<web.MessageEvent> get _onMessage =>
       _kMessageEvent.forTarget(_receiveChannel);
 }
 
-const _kMessageEvent = EventStreamProvider<MessageEvent>('message');
+const _kMessageEvent = web.EventStreamProvider<web.MessageEvent>('message');
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 class SendPort {
