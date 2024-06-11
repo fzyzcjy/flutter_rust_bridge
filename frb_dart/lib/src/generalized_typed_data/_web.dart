@@ -22,7 +22,12 @@ class _Int64OrUint64List extends TypedList<BigInt, BigInt> {
   BigInt inner2outer(BigInt value) => value;
 
   @override
-  BigInt outer2inner(Object? value) => _convertBigIntToJs(value!);
+  BigInt outer2inner(Object? value) {
+    if (value is int) return BigInt.from(value);
+    if (value is BigInt) return value;
+    throw UnimplementedError(
+        'Unsupported value type: ${value.runtimeType} (value=$value)');
+  }
 }
 
 /// A list whose elements are Int64
