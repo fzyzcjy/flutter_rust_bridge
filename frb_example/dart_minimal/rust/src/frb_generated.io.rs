@@ -12,6 +12,15 @@ use flutter_rust_bridge::{Handler, IntoIntoDart};
 
 flutter_rust_bridge::frb_generated_boilerplate_io!();
 
+// Section: dart2rust
+
+impl CstDecode<u64> for u64 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> u64 {
+        unimplemented!("Not implemented in this codec, please use the other one")
+    }
+}
+
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_dart_minimal_wire__crate__api__minimal__f(
     port_: i64,
