@@ -11,7 +11,7 @@ use crate::platform_types::DartNativeSendPort;
 use crate::rust2dart::sender::Rust2DartSender;
 use crate::rust_async::BaseAsyncRuntime;
 use crate::thread_pool::BaseThreadPool;
-use crate::transfer;
+use crate::transfer_raw;
 #[cfg(feature = "rust-async")]
 use futures::FutureExt;
 use std::future::Future;
@@ -58,7 +58,7 @@ impl<EL: ErrorListener + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executo
         let TaskInfo { port, .. } = task_info;
         let port: DartNativeSendPort = port.unwrap();
 
-        self.thread_pool.execute(transfer!(|| {
+        self.thread_pool.execute(transfer_raw!(Some(TODO), || {
             #[allow(clippy::clone_on_copy)]
             let port2 = port.clone();
             let thread_result = PanicBacktrace::catch_unwind(AssertUnwindSafe(|| {
