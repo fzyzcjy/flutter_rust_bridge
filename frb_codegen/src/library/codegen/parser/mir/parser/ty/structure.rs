@@ -121,10 +121,7 @@ impl EnumOrStructParser<MirStructIdent, MirStruct, ItemStruct>
         structure_compute_default_opaque(obj, &obj.name.namespace.crate_name())
     }
 
-    fn inner_mut<'a>(&'a mut self) -> &'a mut TypeParserWithContext<'_, '_, '_>
-    where
-        Self: 'a,
-    {
+    fn inner_mut(&mut self) -> &mut TypeParserWithContext<'_, '_, '_> {
         &mut self.0
     }
 }
