@@ -24,7 +24,9 @@ class BaseHandler {
 
     task.callFfi(sendPort);
 
-    throw UnimplementedError('TODO');
+    print('hack BaseHandler.executeNormal and sleep forever!');
+    return Future.delayed(const Duration(days: 1));
+
     // final completer = Completer<dynamic>();
     // final SendPort sendPort = singleCompletePort(completer);
     // task.callFfi(sendPort.nativePort);
