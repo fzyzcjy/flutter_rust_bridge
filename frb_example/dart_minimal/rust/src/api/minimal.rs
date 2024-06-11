@@ -9,6 +9,7 @@ pub fn minimal_adder(a: i32, b: i32) -> i32 {
     a + b
 }
 
-pub fn f(a: Vec<u64>) -> Vec<u64> {
-    a
-}
+// TODO temp demo
+// pub fn f(a: Vec<u64>) -> Vec<u64> {
+//     a
+// }
