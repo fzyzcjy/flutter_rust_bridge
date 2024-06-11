@@ -52,17 +52,29 @@ class RawReceivePort {
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   RawReceivePort()
-      : _receiveChannel = html.BroadcastChannel(_PortNameGenerator.create());
+      : _receiveChannel = html.BroadcastChannel(_PortNameGenerator.create()) {
+    print('RawReceivePort#${identityHashCode(this)} constructor');
+  }
 
   set handler(Function(dynamic) handler) {
-    _onMessage.listen((event) => handler(event.data));
+    print('RawReceivePort#${identityHashCode(this)} set-handler');
+    _onMessage.listen((event) {
+      print('RawReceivePort#${identityHashCode(this)} listen callback called');
+      handler(event.data);
+    });
   }
 
   /// Close the receive port.
-  void close() => _receiveChannel.close();
+  void close() {
+    print('RawReceivePort#${identityHashCode(this)} close()');
+    _receiveChannel.close();
+  }
 
   /// The port to be used by other workers.
-  SendPort get sendPort => SendPort._(_receiveChannel.name!);
+  SendPort get sendPort {
+    print('RawReceivePort#${identityHashCode(this)} get-sendPort');
+    return SendPort._(_receiveChannel.name!);
+  }
 
   Stream<MessageEvent> get _onMessage =>
       _kMessageEvent.forTarget(_receiveChannel);
