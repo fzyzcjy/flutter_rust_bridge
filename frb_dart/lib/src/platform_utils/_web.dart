@@ -1,4 +1,5 @@
 import 'dart:js_interop';
+import 'dart:js_interop_unsafe';
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 // @JS('Number')
@@ -31,7 +32,12 @@ Object castNativeBigInt(Object? value) {
 }
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
-BigInt jsBigIntToDartBigInt(Object bigInt) {
-  throw UnimplementedError('todo! bigInt=$bigInt ty=${bigInt.runtimeType}');
-// return BigInt.parse(callMethod(bigInt, 'toString', const []));
+BigInt jsBigIntToDartBigInt(Object raw) {
+  final jsAny = raw.jsify();
+  if (jsAny.isA<JSObject>()) {
+    final jsObject = jsAny as JSObject;
+    return BigInt.parse(jsObject.callMethod('toString'.toJS));
+  }
+  throw Exception(
+      'jsBigIntToDartBigInt see unexpected type=${raw.runtimeType} value=$raw');
 }
