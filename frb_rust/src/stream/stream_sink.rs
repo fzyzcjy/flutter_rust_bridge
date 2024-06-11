@@ -3,8 +3,9 @@ use crate::codec::Rust2DartMessageTrait;
 use crate::for_generated::DartAbi;
 use crate::generalized_isolate::IntoDart;
 use crate::generalized_isolate::{
-    dart_send_port_serialize, dart_send_port_deserialize, DartSendPort, SerializedDartSendPort,
+    dart_send_port_deserialize, dart_send_port_serialize, DartSendPort, SerializedDartSendPort,
 };
+use crate::platform_types::deserialize_sendable_message_port_handle;
 use crate::rust2dart::sender::{Rust2DartSendError, Rust2DartSender};
 use crate::stream::closer::StreamSinkCloser;
 use std::marker::PhantomData;
@@ -22,9 +23,9 @@ pub struct StreamSinkBase<T, Rust2DartCodec: BaseCodec> {
 
 impl<T, Rust2DartCodec: BaseCodec> StreamSinkBase<T, Rust2DartCodec> {
     pub fn deserialize(raw: String) -> Self {
-        let serialized_dart_send_port = dart_send_port_serialize(&DartSendPort::new(handle_to_message_port(
-            &deserialize_sendable_message_port_handle(raw),
-        )));
+        let serialized_dart_send_port = dart_send_port_serialize(&DartSendPort::new(
+            deserialize_sendable_message_port_handle(raw),
+        ));
         Self {
             #[allow(clippy::clone_on_copy)]
             serialized_dart_send_port: serialized_dart_send_port.clone(),
