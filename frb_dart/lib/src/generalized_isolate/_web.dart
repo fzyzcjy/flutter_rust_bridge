@@ -112,8 +112,6 @@ class _BroadcastChannelWrapper implements _Channel {
 abstract class _PortLike {
   const _PortLike._();
 
-  factory _PortLike.messagePort(html.MessagePort port) = _MessagePortWrapper;
-
   factory _PortLike.broadcastChannel(BroadcastChannel channel) =
       _BroadcastPortWrapper;
 
@@ -125,19 +123,6 @@ abstract class _PortLike {
 
   Stream<MessageEvent> get onMessage => _kMessageEvent.forTarget(nativePort);
   static const _kMessageEvent = EventStreamProvider<MessageEvent>('message');
-}
-
-class _MessagePortWrapper extends _PortLike {
-  @override
-  final html.MessagePort nativePort;
-
-  _MessagePortWrapper(this.nativePort) : super._();
-
-  @override
-  void postMessage(message) => nativePort.postMessage(message);
-
-  @override
-  void close() => nativePort.close();
 }
 
 class _BroadcastPortWrapper extends _PortLike {
