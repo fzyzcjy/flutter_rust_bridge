@@ -87,8 +87,12 @@ impl WorkerPool {
                     try {{
                         wasm_bindgen.receive_transfer_closure(payload, transfer)
                     }} catch (err) {{
-                        const channel = new BroadcastChannel(error_report_broadcast_channel_name);
-                        channel.postMessage([FRB_ACTION_PANIC, err.toString()]);
+                        if (error_report_broadcast_channel_name != null) {{
+                            const channel = new BroadcastChannel(error_report_broadcast_channel_name);
+                            channel.postMessage([FRB_ACTION_PANIC, err.toString()]);
+                        }} else {{
+                            console.warn('flutter_rust_bridge: Caught error when receive_transfer_closure but fail to report')
+                        }}
 
                         setTimeout(() => {{ throw err }})
                         postMessage(null)
