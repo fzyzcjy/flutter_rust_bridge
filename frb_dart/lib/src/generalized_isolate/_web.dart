@@ -6,7 +6,6 @@ import 'dart:html' as html;
 import 'dart:html' hide MessagePort;
 
 import 'package:flutter_rust_bridge/src/platform_types/_web.dart';
-import 'package:flutter_rust_bridge/src/platform_utils/_web.dart';
 
 /// {@macro flutter_rust_bridge.internal}
 String serializeNativePort(NativePortType port) => port.name;
@@ -147,8 +146,7 @@ class _MessagePortWrapper extends _PortLike {
   _MessagePortWrapper(this.nativePort) : super._();
 
   @override
-  void postMessage(message, [List<Object>? transfer]) =>
-      nativePort.postMessage(message, transfer);
+  void postMessage(message) => nativePort.postMessage(message);
 
   @override
   void close() => nativePort.close();
@@ -163,12 +161,7 @@ class _BroadcastPortWrapper extends _PortLike {
   /// This presents a limitation of BroadcastChannel,
   /// i.e. it cannot carry transferables and will unconditionally clone the items.
   @override
-  void postMessage(message, [List<Object>? transfer]) {
-    if (transfer != null && transfer.isNotEmpty) {
-      jsConsoleWarn("Ignoring transferables for BroadcastPort:", transfer);
-    }
-    nativePort.postMessage(message ?? false);
-  }
+  void postMessage(message) => nativePort.postMessage(message ?? false);
 
   @override
   void close() => nativePort.close();
