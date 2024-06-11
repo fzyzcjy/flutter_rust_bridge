@@ -86,20 +86,8 @@ abstract class _Channel {
 
   const _Channel();
 
-  factory _Channel.messageChannel() = _MessageChannelWrapper;
-
   factory _Channel.broadcastChannel(String channelName) =
       _BroadcastChannelWrapper;
-}
-
-class _MessageChannelWrapper implements _Channel {
-  final channel = MessageChannel();
-
-  @override
-  SendPort get sendPort => _PortLike.messagePort(channel.port2);
-
-  @override
-  SendPort get receivePort => _PortLike.messagePort(channel.port1);
 }
 
 class _BroadcastChannelWrapper implements _Channel {
