@@ -12,6 +12,6 @@ pub type DartAbi = allo_isolate::ffi::DartCObject;
 
 pub type PlatformGeneralizedUint8ListPtr = *mut u8;
 
-pub fn deserialize_sendable_message_port_handle(raw: String) -> DartNativeSendPort {
+pub fn deserialize_dart_native_send_port(raw: String) -> DartNativeSendPort {
     raw.parse().unwrap()
 }

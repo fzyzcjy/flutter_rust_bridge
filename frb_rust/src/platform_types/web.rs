@@ -24,7 +24,7 @@ pub fn handle_to_message_port(handle: &SendableMessagePortHandle) -> MessagePort
     PortLike::broadcast(&handle.0)
 }
 
-pub fn deserialize_sendable_message_port_handle(raw: String) -> SendableMessagePortHandle {
+pub fn deserialize_dart_native_send_port(raw: String) -> SendableMessagePortHandle {
     SendableMessagePortHandle(raw)
 }
 
