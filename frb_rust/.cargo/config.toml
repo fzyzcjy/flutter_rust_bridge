@@ -1,3 +1,2 @@
-# TODO temp enable wasm mode for IDE support
-[build]
-target = "wasm32-unknown-unknown"
+#[build]
+#target = "wasm32-unknown-unknown" # uncomment this to let IDE think we are developing web target
