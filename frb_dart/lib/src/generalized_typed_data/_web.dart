@@ -12,19 +12,23 @@ Object _convertBigIntToJs(Object dart) {
   return dart;
 }
 
-/// A list whose elements are Int64
-class Int64List extends TypedList<BigInt, BigInt> {
+class _Int64OrUint64List extends TypedList<BigInt, BigInt> {
   @override
   final List<BigInt> inner;
 
-  /// Construct a list
-  Int64List.from(this.inner);
+  _Int64OrUint64List.from(this.inner);
 
   @override
   BigInt inner2outer(BigInt value) => value;
 
   @override
   BigInt outer2inner(Object? value) => _convertBigIntToJs(value!);
+}
+
+/// A list whose elements are Int64
+class Int64List extends _Int64OrUint64List {
+  /// Construct a list
+  Int64List.from(super.inner) : super.from();
 
   /// Construct a list
   factory Int64List(int length) => Int64List.from(BigInt64Array(length));
@@ -44,18 +48,9 @@ class Int64List extends TypedList<BigInt, BigInt> {
 }
 
 /// A list whose elements are Uint64
-class Uint64List extends TypedList<BigInt, BigInt> {
-  @override
-  final List<BigInt> inner;
-
+class Uint64List extends _Int64OrUint64List {
   /// Construct a list
-  Uint64List.from(this.inner);
-
-  @override
-  BigInt inner2outer(BigInt value) => value;
-
-  @override
-  BigInt outer2inner(Object? value) => _convertBigIntToJs(value!);
+  Uint64List.from(super.inner) : super.from();
 
   /// Construct a list
   factory Uint64List(int length) => Uint64List.from(BigUint64Array(length));
