@@ -14,3 +14,9 @@ int dcoDecodeI64(int raw) => raw;
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 BigInt dcoDecodeU64(int raw) => BigInt.from(raw).toUnsigned(64);
+
+/// {@macro flutter_rust_bridge.only_for_generated_code}
+int sseEncodeCastedPrimitiveI64(int raw) => raw;
+
+/// {@macro flutter_rust_bridge.only_for_generated_code}
+BigInt sseEncodeCastedPrimitiveU64(int raw) => BigInt.from(raw);
