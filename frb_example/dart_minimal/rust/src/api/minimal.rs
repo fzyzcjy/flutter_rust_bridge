@@ -18,9 +18,13 @@ pub fn minimal_adder(a: i32, b: i32) -> i32 {
 // }
 
 #[wasm_bindgen]
-pub fn hello_func(port: web_sys::MessagePort) {
-    flutter_rust_bridge::console_error!("rust hello_func before post_message port={:#?}", port);
+pub fn hello_func() {
+    flutter_rust_bridge::console_error!("rust hello_func before post_message");
+
+    let channel = web_sys::BroadcastChannel::new("hello_channel").unwrap();
+    flutter_rust_bridge::console_error!("rust hello_func before post_message after create channel={channel:?}");
+
     let data: JsValue = "this_is_data_in_post_message".into();
-    port.post_message(&data).unwrap();
-    flutter_rust_bridge::console_error!("rust hello_func done");
+    channel.post_message(&data).unwrap();
+    flutter_rust_bridge::console_error!("rust hello_func after post_message");
 }

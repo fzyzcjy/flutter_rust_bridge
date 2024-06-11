@@ -6,26 +6,22 @@ import 'package:web/web.dart' as web;
 
 // TODO temp
 @JS("wasm_bindgen.hello_func")
-external void _hello_func(JSAny port);
+external void _hello_func();
 
 Future<void> main() async {
   print('minimal_test:main before RustLib.init');
   await RustLib.init();
 
-  final channel = web.MessageChannel();
-
-  final sendPort = channel.port2;
-  final receivePort = channel.port1;
-
+  final channel = web.BroadcastChannel('hello_channel');
   const kMessageEvent = web.EventStreamProvider<web.MessageEvent>('message');
-  kMessageEvent.forTarget(receivePort).listen(
+  kMessageEvent.forTarget(channel).listen(
         (data) => print('stream recv data=$data'),
         onError: (e, s) => print('stream recv e=$e s=$s'),
         onDone: () => print('stream recv done'),
       );
 
   print('minimal_test:main before call Rust _hello_func');
-  _hello_func(sendPort);
+  _hello_func();
 
   print('minimal_test:main sleep forever');
   await Future.delayed(const Duration(days: 1));
