@@ -1,6 +1,4 @@
 use flutter_rust_bridge::frb;
-use wasm_bindgen::prelude::*;
-use wasm_bindgen::JsValue;
 
 // TODO temp rm
 // #[frb(init)]
@@ -16,19 +14,3 @@ pub fn minimal_adder(a: i32, b: i32) -> i32 {
 // pub fn f(a: Vec<u64>) -> Vec<u64> {
 //     a
 // }
-
-#[wasm_bindgen]
-pub fn hello_func() {
-    flutter_rust_bridge::console_error!("rust hello_func before post_message");
-
-    let channel = web_sys::BroadcastChannel::new("hello_channel").unwrap();
-    flutter_rust_bridge::console_error!("rust hello_func before post_message after create channel={channel:?}");
-
-    let data: JsValue = "this_is_data_in_post_message".into();
-    channel.post_message(&data).unwrap();
-    flutter_rust_bridge::console_error!("rust hello_func after post_message");
-}
-
-pub fn func_type_fallible_panic_twin_normal() {
-    panic!("deliberate panic")
-}
