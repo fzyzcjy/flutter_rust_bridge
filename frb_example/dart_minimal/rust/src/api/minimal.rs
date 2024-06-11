@@ -13,22 +13,31 @@ pub async fn my_async_rust_function() {
     flutter_rust_bridge::console_error!("my_async_rust_function start");
 
     // https://docs.rs/tokio/latest/tokio/sync/mpsc/struct.Sender.html
-    let (tx, mut rx) = tokio::sync::mpsc::channel(1);
+    let (tx, mut rx) = tokio::sync::mpsc::unbounded_channel();
 
-    let handle = flutter_rust_bridge::spawn(async move {
-        for i in 0..10 {
-            if let Err(_) = tx.send(i).await {
-                flutter_rust_bridge::console_error!("receiver dropped");
-                return;
+    let mut handles = vec![];
+    for spawn_id in 0..10 {
+        let tx2 = tx.clone();
+        let handle = flutter_rust_bridge::spawn(async move {
+            let thread_id = std::thread::current().id();
+            for i in 0..10 {
+                if let Err(_) = tx2.send(format!("{spawn_id}_{thread_id:?}_{i}")) {
+                    flutter_rust_bridge::console_error!("receiver dropped");
+                    return;
+                }
             }
-        }
-    });
+        });
+        handles.push(handle);
+    }
+    drop(tx);
 
     while let Some(i) = rx.recv().await {
-        flutter_rust_bridge::console_error!("got = {}", i);
+        flutter_rust_bridge::console_error!("recv: {}", i);
     }
 
-    handle.await.unwrap();
+    for handle in handles {
+        handle.await.unwrap();
+    }
 
     flutter_rust_bridge::console_error!("my_async_rust_function end");
 }
