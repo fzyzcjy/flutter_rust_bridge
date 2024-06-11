@@ -1,75 +1,8 @@
-@JS()
-library html_typed_data;
-
 import 'dart:collection';
 import 'dart:typed_data' hide Int64List, Uint64List;
 
 import 'package:flutter_rust_bridge/src/exceptions.dart';
 import 'package:flutter_rust_bridge/src/platform_utils/_web.dart';
-import 'package:js/js.dart';
-import 'package:js/js_util.dart';
-
-@JS('TypedArray')
-abstract class _TypedArray {
-  external ByteBuffer get buffer;
-
-  external int length;
-
-  external BigInt at(int index);
-}
-
-extension on _TypedArray {
-  operator []=(int index, Object? value) {
-    setProperty(this, index, value);
-  }
-}
-
-/// An array whose element is BigInt64
-@JS('BigInt64Array')
-abstract class BigInt64Array extends _TypedArray {
-  /// Construct the array
-  external factory BigInt64Array(Object lengthOrBuffer,
-      [int? offset, int? length]);
-
-  /// Construct the array from `List<int>`
-  factory BigInt64Array.fromList(List<int> list) =>
-      BigInt64Array(list.map((n) => BigInt.from(n)).toList());
-
-  /// Construct an array view
-  factory BigInt64Array.view(
-    ByteBuffer buffer, [
-    int offset = 0,
-    int? length,
-  ]) =>
-      BigInt64Array(buffer, offset, length);
-
-  /// Construct an array sub-list view
-  factory BigInt64Array.sublistView(TypedData array,
-          [int offset = 0, int? length]) =>
-      BigInt64Array(array.buffer, offset, length);
-}
-
-/// An array whose element is BigUint64
-@JS('BigUint64Array')
-abstract class BigUint64Array extends _TypedArray {
-  /// Construct the array
-  external factory BigUint64Array(Object lengthOrBuffer,
-      [int? offset, int? buffer]);
-
-  /// Construct the array from `List<int>`
-  factory BigUint64Array.fromList(List<int> list) =>
-      BigUint64Array(list.map((n) => BigInt.from(n)).toList());
-
-  /// Construct an array view
-  factory BigUint64Array.view(ByteBuffer buffer,
-          [int offset = 0, int? length]) =>
-      BigUint64Array(buffer, offset, length);
-
-  /// Construct an array sub-list view
-  factory BigUint64Array.sublistView(TypedData array,
-          [int offset = 0, int? length]) =>
-      BigUint64Array(array.buffer, offset, length);
-}
 
 /// Opt out of type safety for setting the value.
 /// Helpful if the array needs to accept multiple types.
@@ -81,7 +14,8 @@ abstract class _SetAnyListMixin<T> extends ListMixin<T> {
 }
 
 abstract class _TypedList<T> extends _SetAnyListMixin<T> {
-  _TypedArray get inner;
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
+  TODO get inner;
 
   /// How to cast a raw JS value to an acceptable Dart value.
   T _js2dart(Object? value);
