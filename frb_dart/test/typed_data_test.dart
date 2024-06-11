@@ -17,7 +17,7 @@ void main() {
       expect(buf[0], i64maxb, reason: 'max');
       buf[0] += BigInt.one;
       if (isWeb) {
-        expect(buf[0], i64minb, reason: 'max+1 (wrapped)');
+        expect(buf[0], i64maxb + BigInt.from(1), reason: 'max+1 (bigint)');
       } else {
         expect(buf[0], i64maxb, reason: 'max+1 (clamped)');
       }
@@ -31,7 +31,7 @@ void main() {
       expect(buf[1], i64maxb, reason: 'i64max');
       buf[0] += BigInt.one;
       if (isWeb) {
-        expect(buf[0], BigInt.zero, reason: 'max+1 (wrapped)');
+        expect(buf[0], u64maxb + BigInt.from(1), reason: 'max+1 (bigint)');
       } else {
         expect(buf[0], u64maxb, reason: 'max+1 (clamped)');
       }
