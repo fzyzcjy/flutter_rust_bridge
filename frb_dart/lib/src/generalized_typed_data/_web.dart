@@ -15,21 +15,19 @@ abstract class _SetAnyListMixin<T> extends ListMixin<T> {
 
 abstract class _TypedList<T> extends _SetAnyListMixin<T> {
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  List<T> get inner;
+  List<BigInt> get inner;
 
   /// How to cast a raw JS value to an acceptable Dart value.
-  T _js2dart(Object? value);
+  T _raw2dart(BigInt value);
 
   /// How to convert a Dart integer-like value to an acceptable JS value.
-  Object? _dart2js(Object? value);
+  BigInt _dart2raw(Object? value);
 
   @override
-  T operator [](int index) => _js2dart(inner[index]);
+  T operator [](int index) => _raw2dart(inner[index]);
 
   @override
-  void operator []=(int index, value) {
-    inner[index] = _dart2js(value);
-  }
+  void operator []=(int index, value) => inner[index] = _dart2raw(value);
 
   @override
   int get length => inner.length;
@@ -37,7 +35,7 @@ abstract class _TypedList<T> extends _SetAnyListMixin<T> {
   @override
   set length(int newLength) => throw const UnmodifiableTypedListException();
 
-  ByteBuffer get buffer => inner.buffer;
+// ByteBuffer get buffer => inner.buffer;
 }
 
 Object _convertBigIntToJs(Object dart) {
@@ -55,10 +53,10 @@ class Int64List extends _TypedList<BigInt> {
   Int64List.from(this.inner);
 
   @override
-  BigInt _js2dart(Object? value) => jsBigIntToDartBigInt(value!);
+  BigInt _raw2dart(Object? value) => jsBigIntToDartBigInt(value!);
 
   @override
-  Object? _dart2js(Object? value) => _convertBigIntToJs(value!);
+  Object? _dart2raw(Object? value) => _convertBigIntToJs(value!);
 
   /// Construct a list
   factory Int64List(int length) => Int64List.from(BigInt64Array(length));
@@ -86,10 +84,10 @@ class Uint64List extends _TypedList<BigInt> {
   Uint64List.from(this.inner);
 
   @override
-  BigInt _js2dart(Object? value) => jsBigIntToDartBigInt(value!);
+  BigInt _raw2dart(Object? value) => jsBigIntToDartBigInt(value!);
 
   @override
-  Object? _dart2js(Object? value) => _convertBigIntToJs(value!);
+  Object? _dart2raw(Object? value) => _convertBigIntToJs(value!);
 
   /// Construct a list
   factory Uint64List(int length) => Uint64List.from(BigUint64Array(length));
