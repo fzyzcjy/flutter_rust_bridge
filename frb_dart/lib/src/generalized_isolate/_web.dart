@@ -51,7 +51,8 @@ class RawReceivePort {
   final BroadcastChannel _receiveChannel;
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  RawReceivePort() : _receiveChannel = html.BroadcastChannel(TODO_unique_name);
+  RawReceivePort()
+      : _receiveChannel = html.BroadcastChannel(_PortNameGenerator.create());
 
   set handler(Function(dynamic) handler) {
     _kMessageEvent
@@ -79,4 +80,10 @@ class SendPort {
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   String get nativePort => _broadcastChannelName;
+}
+
+class _PortNameGenerator {
+  static int _nextPort = 0;
+
+  static String create() => '__frb_port_${_nextPort++}';
 }
