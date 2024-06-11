@@ -1,9 +1,10 @@
+import 'dart:js_interop';
 import 'dart:typed_data';
 
 import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
-typedef NativePortType = dynamic;
+typedef NativePortType = JSObject;
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 typedef WireSyncRust2DartDco = List<dynamic>;
