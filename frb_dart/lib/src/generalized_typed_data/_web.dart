@@ -3,6 +3,7 @@ import 'dart:typed_data' hide Int64List, Uint64List;
 
 import 'package:flutter_rust_bridge/src/exceptions.dart';
 import 'package:flutter_rust_bridge/src/generalized_typed_data/common.dart';
+import 'package:flutter_rust_bridge/src/generalized_typed_data/common.dart';
 import 'package:flutter_rust_bridge/src/platform_utils/_web.dart';
 
 Object _convertBigIntToJs(Object dart) {
@@ -20,10 +21,10 @@ class Int64List extends TypedList<BigInt> {
   Int64List.from(this.inner);
 
   @override
-  BigInt _raw2dart(Object? value) => jsBigIntToDartBigInt(value!);
+  BigInt _inner2outer(Object? value) => jsBigIntToDartBigInt(value!);
 
   @override
-  Object? _dart2raw(Object? value) => _convertBigIntToJs(value!);
+  Object? _outer2inner(Object? value) => _convertBigIntToJs(value!);
 
   /// Construct a list
   factory Int64List(int length) => Int64List.from(BigInt64Array(length));
@@ -51,10 +52,10 @@ class Uint64List extends TypedList<BigInt> {
   Uint64List.from(this.inner);
 
   @override
-  BigInt _raw2dart(Object? value) => jsBigIntToDartBigInt(value!);
+  BigInt _inner2outer(Object? value) => jsBigIntToDartBigInt(value!);
 
   @override
-  Object? _dart2raw(Object? value) => _convertBigIntToJs(value!);
+  Object? _outer2inner(Object? value) => _convertBigIntToJs(value!);
 
   /// Construct a list
   factory Uint64List(int length) => Uint64List.from(BigUint64Array(length));

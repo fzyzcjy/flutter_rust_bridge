@@ -2,33 +2,10 @@ import 'dart:collection';
 import 'dart:typed_data' as $data;
 
 import 'package:flutter_rust_bridge/src/exceptions.dart';
-
-abstract class _TypedList<T> extends ListMixin<T> {
-  List<int> get inner;
-
-  @override
-  _TypedList<T> operator +(Object other);
-
-  T _raw2dart(int value);
-
-  int _dart2raw(Object? value);
-
-  @override
-  T operator [](int index) => _raw2dart(inner[index]);
-
-  @override
-  void operator []=(int index, Object? value) =>
-      inner[index] = _dart2raw(value);
-
-  @override
-  int get length => inner.length;
-
-  @override
-  set length(int newLength) => throw const UnmodifiableTypedListException();
-}
+import 'package:flutter_rust_bridge/src/generalized_typed_data/common.dart';
 
 /// A strict version of [$data.Int64List] which always returns a [BigInt].
-class Int64List extends _TypedList<BigInt> {
+class Int64List extends TypedList<BigInt> {
   @override
   final $data.Int64List inner;
 
@@ -57,7 +34,7 @@ class Int64List extends _TypedList<BigInt> {
   }
 
   @override
-  BigInt _raw2dart(int value) => BigInt.from(value);
+  BigInt _inner2outer(int value) => BigInt.from(value);
 
   @override
   Int64List operator +(Object other) {
@@ -72,7 +49,7 @@ class Int64List extends _TypedList<BigInt> {
 }
 
 /// A strict version of [$data.Uint64List] which always returns a [BigInt].
-class Uint64List extends _TypedList<BigInt> {
+class Uint64List extends TypedList<BigInt> {
   @override
   final $data.Uint64List inner;
 
@@ -97,7 +74,7 @@ class Uint64List extends _TypedList<BigInt> {
   static const _minI64 = 0x8000000000000000;
 
   @override
-  BigInt _raw2dart(int value) {
+  BigInt _inner2outer(int value) {
     if (value < 0) {
       // two's complement signed integer to unsigned bigint
       return _maxI64b + BigInt.from(value - _minI64) + BigInt.one;
