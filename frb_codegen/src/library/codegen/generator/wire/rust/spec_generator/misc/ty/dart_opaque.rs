@@ -21,7 +21,7 @@ impl<'a> WireRustGeneratorMiscTrait for DartOpaqueWireRustGenerator<'a> {
     //                         name: "dart_handler_port".to_owned(),
     //                         rust_type: match target {
     //                             Target::Io => "i64",
-    //                             Target::Web => "flutter_rust_bridge::for_generated::MessagePort",
+    //                             Target::Web => "flutter_rust_bridge::for_generated::DartNativeSendPort",
     //                         }.into(),
     //                         dart_type: "Object".into(),
     //                     },
