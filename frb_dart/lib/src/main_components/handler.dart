@@ -3,34 +3,18 @@ import 'dart:async';
 import 'package:flutter_rust_bridge/src/dart_opaque/dart_opaque.dart';
 import 'package:flutter_rust_bridge/src/exceptions.dart';
 import 'package:flutter_rust_bridge/src/generalized_frb_rust_binding/generalized_frb_rust_binding.dart';
+import 'package:flutter_rust_bridge/src/generalized_isolate/generalized_isolate.dart';
 import 'package:flutter_rust_bridge/src/task.dart';
-import 'package:web/web.dart' as web;
+import 'package:flutter_rust_bridge/src/utils/single_complete_port.dart';
 
 /// Generically handles a Dart-Rust call.
 class BaseHandler {
   /// Execute a normal ffi call. Usually called by generated code instead of manually called.
   Future<S> executeNormal<S, E extends Object>(NormalTask<S, E> task) {
-    final channel = web.MessageChannel();
-
-    final sendPort = channel.port2;
-    final receivePort = channel.port1;
-
-    const kMessageEvent = web.EventStreamProvider<web.MessageEvent>('message');
-    kMessageEvent.forTarget(receivePort).listen(
-          (data) => print('stream recv data=$data'),
-          onError: (e, s) => print('stream recv e=$e s=$s'),
-          onDone: () => print('stream recv done'),
-        );
-
-    task.callFfi(sendPort);
-
-    print('hack BaseHandler.executeNormal and sleep forever!');
-    return Future.delayed(const Duration(days: 1));
-
-    // final completer = Completer<dynamic>();
-    // final SendPort sendPort = singleCompletePort(completer);
-    // task.callFfi(sendPort.nativePort);
-    // return completer.future.then(task.codec.decodeObject);
+    final completer = Completer<dynamic>();
+    final SendPort sendPort = singleCompletePort(completer);
+    task.callFfi(sendPort.nativePort);
+    return completer.future.then(task.codec.decodeObject);
   }
 
   /// Similar to [executeNormal], except that this will return synchronously
