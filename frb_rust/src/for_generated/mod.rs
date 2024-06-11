@@ -19,7 +19,7 @@ pub use crate::codec::{cst::CstCodec, dco::DcoCodec, sse::SseCodec, BaseCodec};
 pub use crate::dart_opaque::dart2rust::{cst_decode_dart_opaque, sse_decode_dart_opaque};
 pub use crate::generalized_arc::base_arc::BaseArc;
 pub use crate::generalized_arc::std_arc::StdArc; // TODO temp
-pub use crate::generalized_isolate::Channel;
+pub use crate::generalized_isolate::DartSendPort;
 pub use crate::generalized_isolate::IntoDartExceptPrimitive;
 pub use crate::handler::error::Error as HandlerError;
 pub use crate::handler::error_listener::ErrorListener;
@@ -40,7 +40,7 @@ pub use crate::misc::version::FLUTTER_RUST_BRIDGE_RUNTIME_VERSION;
 #[cfg(wasm)]
 pub use crate::misc::web_utils;
 pub use crate::platform_types::{
-    DartAbi, MessagePort, PlatformGeneralizedUint8ListPtr, WireSyncRust2DartDco,
+    DartAbi, DartNativeSendPort, PlatformGeneralizedUint8ListPtr, WireSyncRust2DartDco,
     WireSyncRust2DartSse,
 };
 pub use crate::rust2dart::action::Rust2DartAction;

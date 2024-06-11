@@ -8,3 +8,9 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<int> minimalAdder({required int a, required int b}) =>
     RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b);
+
+Future<Uint64List> f({required Uint64List a}) =>
+    RustLib.instance.api.crateApiMinimalF(a: a);
+
+Future<void> funcTypeFalliblePanicTwinNormal() =>
+    RustLib.instance.api.crateApiMinimalFuncTypeFalliblePanicTwinNormal();

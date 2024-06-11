@@ -1,20 +1,18 @@
-import 'dart:js_interop';
 import 'dart:typed_data';
 
 import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
-typedef NativePortType = JSObject;
+typedef NativePortType = String;
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 typedef WireSyncRust2DartDco = List<dynamic>;
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
-typedef WireSyncRust2DartSse = JSUint8Array;
+typedef WireSyncRust2DartSse = Uint8List;
 
 /// {@macro flutter_rust_bridge.internal}
-Uint8List wireSyncRust2DartSseAsUint8ListView(WireSyncRust2DartSse raw) =>
-    raw.toDart;
+Uint8List wireSyncRust2DartSseAsUint8ListView(WireSyncRust2DartSse raw) => raw;
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 typedef PlatformPointer = int;

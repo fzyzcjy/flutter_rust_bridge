@@ -194,7 +194,7 @@ fn generate_boilerplate(
 // fn generate_boilerplate_frb_initialize_rust(target: TargetOrCommon) -> ExternFunc {
 //     let message_port_type = match target {
 //         TargetOrCommon::Common | TargetOrCommon::Web => {
-//             "flutter_rust_bridge::for_generated::MessagePort"
+//             "flutter_rust_bridge::for_generated::DartNativeSendPort"
 //         }
 //         // to make cbingen/ffigen happy
 //         TargetOrCommon::Io => "i64",

@@ -92,7 +92,7 @@ pub(crate) fn generate_ffi_dispatcher_raw(
             let (name, maybe_port, maybe_return) = match mode {
                 FfiDispatcherMode::Primary => (
                     "primary",
-                    format!("port: {crate_name}::for_generated::MessagePort,"),
+                    format!("port: {crate_name}::for_generated::DartNativeSendPort,"),
                     "".to_owned(),
                 ),
                 FfiDispatcherMode::Sync => (

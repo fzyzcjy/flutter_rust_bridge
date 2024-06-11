@@ -83,14 +83,17 @@ impl WorkerPool {
                 }})
                 onmessage = async event => {{
                     await init
-                    const [payload, ...transfer] = event.data
+                    const [payload, error_report_broadcast_channel_name, ...transfer] = event.data
                     try {{
                         wasm_bindgen.receive_transfer_closure(payload, transfer)
                     }} catch (err) {{
-                        if (transfer[0] && typeof transfer[0].postMessage === 'function') {{
-                            // panic
-                            transfer[0].postMessage([FRB_ACTION_PANIC, err.toString()])
+                        if (error_report_broadcast_channel_name != null) {{
+                            const channel = new BroadcastChannel(error_report_broadcast_channel_name);
+                            channel.postMessage([FRB_ACTION_PANIC, err.toString()]);
+                        }} else {{
+                            console.warn('flutter_rust_bridge: Caught error when receive_transfer_closure but fail to report')
                         }}
+
                         setTimeout(() => {{ throw err }})
                         postMessage(null)
                         throw err

@@ -76,7 +76,7 @@ flutter_rust_bridge::frb_generated_default_handler!();
 // Section: wire_funcs
 
 fn wire__crate__api__simple__f_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -110,7 +110,7 @@ fn wire__crate__api__simple__f_impl(
     )
 }
 fn wire__crate__api__simple__init_app_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -143,7 +143,7 @@ fn wire__crate__api__simple__init_app_impl(
     )
 }
 fn wire__web_audio_api__AudioBuffer_duration_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -191,7 +191,7 @@ fn wire__web_audio_api__AudioBuffer_duration_impl(
     )
 }
 fn wire__web_audio_api__AudioBuffer_from_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -227,7 +227,7 @@ fn wire__web_audio_api__AudioBuffer_from_impl(
     )
 }
 fn wire__web_audio_api__AudioBuffer_get_channel_data_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -278,7 +278,7 @@ fn wire__web_audio_api__AudioBuffer_get_channel_data_impl(
     )
 }
 fn wire__web_audio_api__AudioBuffer_get_channel_data_mut_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -332,7 +332,7 @@ fn wire__web_audio_api__AudioBuffer_get_channel_data_mut_impl(
     )
 }
 fn wire__web_audio_api__AudioBuffer_length_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -380,7 +380,7 @@ fn wire__web_audio_api__AudioBuffer_length_impl(
     )
 }
 fn wire__web_audio_api__AudioBuffer_new_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -412,7 +412,7 @@ fn wire__web_audio_api__AudioBuffer_new_impl(
     )
 }
 fn wire__web_audio_api__AudioBuffer_number_of_channels_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -460,7 +460,7 @@ fn wire__web_audio_api__AudioBuffer_number_of_channels_impl(
     )
 }
 fn wire__web_audio_api__AudioBuffer_sample_rate_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -508,7 +508,7 @@ fn wire__web_audio_api__AudioBuffer_sample_rate_impl(
     )
 }
 fn wire__web_audio_api__AudioParam_automation_rate_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -532,7 +532,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
                 } })
 }
 fn wire__web_audio_api__AudioParam_cancel_and_hold_at_time_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -557,7 +557,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
                 } })
 }
 fn wire__web_audio_api__AudioParam_cancel_scheduled_values_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -582,7 +582,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
                 } })
 }
 fn wire__web_audio_api__AudioParam_channel_config_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -606,7 +606,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
                 } })
 }
 fn wire__web_audio_api__AudioParam_channel_count_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -630,7 +630,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
                 } })
 }
 fn wire__web_audio_api__AudioParam_channel_count_mode_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -654,7 +654,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
                 } })
 }
 fn wire__web_audio_api__AudioParam_channel_interpretation_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -678,7 +678,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
                 } })
 }
 fn wire__web_audio_api__AudioParam_clear_onprocessorerror_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -702,7 +702,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
                 } })
 }
 fn wire__web_audio_api__AudioParam_context_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -726,7 +726,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
                 } })
 }
 fn wire__web_audio_api__AudioParam_default_value_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -750,7 +750,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
                 } })
 }
 fn wire__web_audio_api__AudioParam_disconnect_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -774,7 +774,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
                 } })
 }
 fn wire__web_audio_api__AudioParam_disconnect_output_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -799,7 +799,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
                 } })
 }
 fn wire__web_audio_api__AudioParam_exponential_ramp_to_value_at_time_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -825,7 +825,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
                 } })
 }
 fn wire__web_audio_api__AudioParam_frb_override_connect_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -853,7 +853,7 @@ let api_dest = &*api_dest_decoded.unwrap();
                 } })
 }
 fn wire__web_audio_api__AudioParam_linear_ramp_to_value_at_time_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -879,7 +879,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
                 } })
 }
 fn wire__web_audio_api__AudioParam_max_value_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -903,7 +903,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
                 } })
 }
 fn wire__web_audio_api__AudioParam_min_value_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -927,7 +927,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
                 } })
 }
 fn wire__web_audio_api__AudioParam_number_of_inputs_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -951,7 +951,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
                 } })
 }
 fn wire__web_audio_api__AudioParam_number_of_outputs_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -975,7 +975,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
                 } })
 }
 fn wire__web_audio_api__AudioParam_registration_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -999,7 +999,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
                 } })
 }
 fn wire__web_audio_api__AudioParam_set_automation_rate_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -1024,7 +1024,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
                 } })
 }
 fn wire__web_audio_api__AudioParam_set_channel_count_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -1049,7 +1049,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
                 } })
 }
 fn wire__web_audio_api__AudioParam_set_channel_count_mode_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -1074,7 +1074,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
                 } })
 }
 fn wire__web_audio_api__AudioParam_set_channel_interpretation_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -1099,7 +1099,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
                 } })
 }
 fn wire__web_audio_api__AudioParam_set_target_at_time_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -1149,7 +1149,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
                 })()) })
 }
 fn wire__web_audio_api__AudioParam_set_value_at_time_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -1175,7 +1175,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
                 } })
 }
 fn wire__web_audio_api__AudioParam_set_value_curve_at_time_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -1984,7 +1984,7 @@ fn wire__web_audio_api__AudioRenderCapacityEvent_set_underrun_ratio_impl(
     )
 }
 fn wire__web_audio_api__AudioRenderCapacity_clear_onupdate_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -2034,7 +2034,7 @@ fn wire__web_audio_api__AudioRenderCapacity_clear_onupdate_impl(
     )
 }
 fn wire__web_audio_api__AudioRenderCapacity_start_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -2086,7 +2086,7 @@ fn wire__web_audio_api__AudioRenderCapacity_start_impl(
     )
 }
 fn wire__web_audio_api__AudioRenderCapacity_stop_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -2334,7 +2334,7 @@ fn wire__web_audio_api__OfflineAudioCompletionEvent_set_rendered_buffer_impl(
     )
 }
 fn wire__web_audio_api__context__AudioContext_base_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -2384,7 +2384,7 @@ fn wire__web_audio_api__context__AudioContext_base_impl(
     )
 }
 fn wire__web_audio_api__context__AudioContext_base_latency_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -2434,7 +2434,7 @@ fn wire__web_audio_api__context__AudioContext_base_latency_impl(
     )
 }
 fn wire__web_audio_api__context__AudioContext_clear_onsinkchange_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -2484,7 +2484,7 @@ fn wire__web_audio_api__context__AudioContext_clear_onsinkchange_impl(
     )
 }
 fn wire__web_audio_api__context__AudioContext_clear_onstatechange_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -2534,7 +2534,7 @@ fn wire__web_audio_api__context__AudioContext_clear_onstatechange_impl(
     )
 }
 fn wire__web_audio_api__context__AudioContext_close_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -2590,7 +2590,7 @@ fn wire__web_audio_api__context__AudioContext_close_impl(
     )
 }
 fn wire__web_audio_api__context__AudioContext_close_sync_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -2640,7 +2640,7 @@ fn wire__web_audio_api__context__AudioContext_close_sync_impl(
     )
 }
 fn wire__web_audio_api__context__AudioContext_create_analyser_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -2690,7 +2690,7 @@ fn wire__web_audio_api__context__AudioContext_create_analyser_impl(
     )
 }
 fn wire__web_audio_api__context__AudioContext_create_audio_param_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -2750,7 +2750,7 @@ fn wire__web_audio_api__context__AudioContext_create_audio_param_impl(
     )
 }
 fn wire__web_audio_api__context__AudioContext_create_biquad_filter_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -2800,7 +2800,7 @@ fn wire__web_audio_api__context__AudioContext_create_biquad_filter_impl(
     )
 }
 fn wire__web_audio_api__context__AudioContext_create_buffer_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -2856,7 +2856,7 @@ fn wire__web_audio_api__context__AudioContext_create_buffer_impl(
     )
 }
 fn wire__web_audio_api__context__AudioContext_create_buffer_source_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -2906,7 +2906,7 @@ fn wire__web_audio_api__context__AudioContext_create_buffer_source_impl(
     )
 }
 fn wire__web_audio_api__context__AudioContext_create_channel_merger_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -2960,7 +2960,7 @@ fn wire__web_audio_api__context__AudioContext_create_channel_merger_impl(
     )
 }
 fn wire__web_audio_api__context__AudioContext_create_channel_splitter_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -3014,7 +3014,7 @@ fn wire__web_audio_api__context__AudioContext_create_channel_splitter_impl(
     )
 }
 fn wire__web_audio_api__context__AudioContext_create_constant_source_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -3064,7 +3064,7 @@ fn wire__web_audio_api__context__AudioContext_create_constant_source_impl(
     )
 }
 fn wire__web_audio_api__context__AudioContext_create_convolver_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -3114,7 +3114,7 @@ fn wire__web_audio_api__context__AudioContext_create_convolver_impl(
     )
 }
 fn wire__web_audio_api__context__AudioContext_create_delay_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -3166,7 +3166,7 @@ fn wire__web_audio_api__context__AudioContext_create_delay_impl(
     )
 }
 fn wire__web_audio_api__context__AudioContext_create_dynamics_compressor_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -3216,7 +3216,7 @@ fn wire__web_audio_api__context__AudioContext_create_dynamics_compressor_impl(
     )
 }
 fn wire__web_audio_api__context__AudioContext_create_gain_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -3264,7 +3264,7 @@ fn wire__web_audio_api__context__AudioContext_create_gain_impl(
     )
 }
 fn wire__web_audio_api__context__AudioContext_create_iir_filter_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -3318,7 +3318,7 @@ fn wire__web_audio_api__context__AudioContext_create_iir_filter_impl(
     )
 }
 fn wire__web_audio_api__context__AudioContext_create_media_stream_destination_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -3370,7 +3370,7 @@ fn wire__web_audio_api__context__AudioContext_create_media_stream_destination_im
     )
 }
 fn wire__web_audio_api__context__AudioContext_create_media_stream_source_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -3431,7 +3431,7 @@ fn wire__web_audio_api__context__AudioContext_create_media_stream_source_impl(
     )
 }
 fn wire__web_audio_api__context__AudioContext_create_media_stream_track_source_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -3492,7 +3492,7 @@ fn wire__web_audio_api__context__AudioContext_create_media_stream_track_source_i
     )
 }
 fn wire__web_audio_api__context__AudioContext_create_oscillator_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -3542,7 +3542,7 @@ fn wire__web_audio_api__context__AudioContext_create_oscillator_impl(
     )
 }
 fn wire__web_audio_api__context__AudioContext_create_panner_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -3592,7 +3592,7 @@ fn wire__web_audio_api__context__AudioContext_create_panner_impl(
     )
 }
 fn wire__web_audio_api__context__AudioContext_create_periodic_wave_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -3644,7 +3644,7 @@ fn wire__web_audio_api__context__AudioContext_create_periodic_wave_impl(
     )
 }
 fn wire__web_audio_api__context__AudioContext_create_script_processor_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -3702,7 +3702,7 @@ fn wire__web_audio_api__context__AudioContext_create_script_processor_impl(
     )
 }
 fn wire__web_audio_api__context__AudioContext_create_stereo_panner_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -3752,7 +3752,7 @@ fn wire__web_audio_api__context__AudioContext_create_stereo_panner_impl(
     )
 }
 fn wire__web_audio_api__context__AudioContext_create_wave_shaper_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -3802,7 +3802,7 @@ fn wire__web_audio_api__context__AudioContext_create_wave_shaper_impl(
     )
 }
 fn wire__web_audio_api__context__AudioContext_current_time_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -3852,7 +3852,7 @@ fn wire__web_audio_api__context__AudioContext_current_time_impl(
     )
 }
 fn wire__web_audio_api__context__AudioContext_destination_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -3900,7 +3900,7 @@ fn wire__web_audio_api__context__AudioContext_destination_impl(
     )
 }
 fn wire__web_audio_api__context__AudioContext_frb_override_decode_audio_data_sync_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -3952,7 +3952,7 @@ fn wire__web_audio_api__context__AudioContext_frb_override_decode_audio_data_syn
     )
 }
 fn wire__web_audio_api__context__AudioContext_listener_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -4030,7 +4030,7 @@ fn wire__web_audio_api__context__AudioContext_new_impl(
     )
 }
 fn wire__web_audio_api__context__AudioContext_output_latency_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -4080,7 +4080,7 @@ fn wire__web_audio_api__context__AudioContext_output_latency_impl(
     )
 }
 fn wire__web_audio_api__context__AudioContext_render_capacity_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -4130,7 +4130,7 @@ fn wire__web_audio_api__context__AudioContext_render_capacity_impl(
     )
 }
 fn wire__web_audio_api__context__AudioContext_resume_sync_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -4180,7 +4180,7 @@ fn wire__web_audio_api__context__AudioContext_resume_sync_impl(
     )
 }
 fn wire__web_audio_api__context__AudioContext_sample_rate_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -4228,7 +4228,7 @@ fn wire__web_audio_api__context__AudioContext_sample_rate_impl(
     )
 }
 fn wire__web_audio_api__context__AudioContext_sink_id_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -4276,7 +4276,7 @@ fn wire__web_audio_api__context__AudioContext_sink_id_impl(
     )
 }
 fn wire__web_audio_api__context__AudioContext_state_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -4324,7 +4324,7 @@ fn wire__web_audio_api__context__AudioContext_state_impl(
     )
 }
 fn wire__web_audio_api__context__AudioContext_suspend_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -4380,7 +4380,7 @@ fn wire__web_audio_api__context__AudioContext_suspend_impl(
     )
 }
 fn wire__web_audio_api__context__AudioContext_suspend_sync_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -4430,7 +4430,7 @@ fn wire__web_audio_api__context__AudioContext_suspend_sync_impl(
     )
 }
 fn wire__web_audio_api__context__ConcreteBaseAudioContext_base_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -4480,7 +4480,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_base_impl(
     )
 }
 fn wire__web_audio_api__context__ConcreteBaseAudioContext_clear_onstatechange_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -4532,7 +4532,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_clear_onstatechange_im
     )
 }
 fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_analyser_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -4582,7 +4582,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_analyser_impl(
     )
 }
 fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_audio_param_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -4644,7 +4644,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_audio_param_imp
     )
 }
 fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_biquad_filter_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -4696,7 +4696,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_biquad_filter_i
     )
 }
 fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_buffer_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -4754,7 +4754,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_buffer_impl(
     )
 }
 fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_buffer_source_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -4806,7 +4806,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_buffer_source_i
     )
 }
 fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_channel_merger_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -4860,7 +4860,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_channel_merger_
     )
 }
 fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_channel_splitter_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -4914,7 +4914,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_channel_splitte
     )
 }
 fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_constant_source_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -4966,7 +4966,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_constant_source
     )
 }
 fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_convolver_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -5018,7 +5018,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_convolver_impl(
     )
 }
 fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_delay_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -5072,7 +5072,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_delay_impl(
     )
 }
 fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_dynamics_compressor_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -5096,7 +5096,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
                 } })
 }
 fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_gain_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -5146,7 +5146,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_gain_impl(
     )
 }
 fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_iir_filter_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -5202,7 +5202,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_iir_filter_impl
     )
 }
 fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_oscillator_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -5254,7 +5254,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_oscillator_impl
     )
 }
 fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_panner_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -5304,7 +5304,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_panner_impl(
     )
 }
 fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_periodic_wave_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -5358,7 +5358,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_periodic_wave_i
     )
 }
 fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_script_processor_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -5416,7 +5416,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_script_processo
     )
 }
 fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_stereo_panner_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -5468,7 +5468,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_stereo_panner_i
     )
 }
 fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_wave_shaper_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -5520,7 +5520,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_wave_shaper_imp
     )
 }
 fn wire__web_audio_api__context__ConcreteBaseAudioContext_current_time_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -5570,7 +5570,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_current_time_impl(
     )
 }
 fn wire__web_audio_api__context__ConcreteBaseAudioContext_destination_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -5620,7 +5620,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_destination_impl(
     )
 }
 fn wire__web_audio_api__context__ConcreteBaseAudioContext_listener_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -5670,7 +5670,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_listener_impl(
     )
 }
 fn wire__web_audio_api__context__ConcreteBaseAudioContext_mark_cycle_breaker_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -5731,7 +5731,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_mark_cycle_breaker_imp
     )
 }
 fn wire__web_audio_api__context__ConcreteBaseAudioContext_sample_rate_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -5781,7 +5781,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_sample_rate_impl(
     )
 }
 fn wire__web_audio_api__context__ConcreteBaseAudioContext_state_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -5831,7 +5831,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_state_impl(
     )
 }
 fn wire__web_audio_api__context__OfflineAudioContext_base_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -5881,7 +5881,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_base_impl(
     )
 }
 fn wire__web_audio_api__context__OfflineAudioContext_clear_oncomplete_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -5931,7 +5931,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_clear_oncomplete_impl(
     )
 }
 fn wire__web_audio_api__context__OfflineAudioContext_clear_onstatechange_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -5981,7 +5981,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_clear_onstatechange_impl(
     )
 }
 fn wire__web_audio_api__context__OfflineAudioContext_create_analyser_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -6031,7 +6031,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_create_analyser_impl(
     )
 }
 fn wire__web_audio_api__context__OfflineAudioContext_create_audio_param_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -6093,7 +6093,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_create_audio_param_impl(
     )
 }
 fn wire__web_audio_api__context__OfflineAudioContext_create_biquad_filter_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -6143,7 +6143,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_create_biquad_filter_impl(
     )
 }
 fn wire__web_audio_api__context__OfflineAudioContext_create_buffer_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -6199,7 +6199,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_create_buffer_impl(
     )
 }
 fn wire__web_audio_api__context__OfflineAudioContext_create_buffer_source_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -6249,7 +6249,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_create_buffer_source_impl(
     )
 }
 fn wire__web_audio_api__context__OfflineAudioContext_create_channel_merger_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -6303,7 +6303,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_create_channel_merger_impl(
     )
 }
 fn wire__web_audio_api__context__OfflineAudioContext_create_channel_splitter_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -6357,7 +6357,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_create_channel_splitter_imp
     )
 }
 fn wire__web_audio_api__context__OfflineAudioContext_create_constant_source_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -6409,7 +6409,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_create_constant_source_impl
     )
 }
 fn wire__web_audio_api__context__OfflineAudioContext_create_convolver_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -6459,7 +6459,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_create_convolver_impl(
     )
 }
 fn wire__web_audio_api__context__OfflineAudioContext_create_delay_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -6511,7 +6511,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_create_delay_impl(
     )
 }
 fn wire__web_audio_api__context__OfflineAudioContext_create_dynamics_compressor_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -6563,7 +6563,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_create_dynamics_compressor_
     )
 }
 fn wire__web_audio_api__context__OfflineAudioContext_create_gain_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -6613,7 +6613,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_create_gain_impl(
     )
 }
 fn wire__web_audio_api__context__OfflineAudioContext_create_iir_filter_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -6669,7 +6669,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_create_iir_filter_impl(
     )
 }
 fn wire__web_audio_api__context__OfflineAudioContext_create_oscillator_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -6719,7 +6719,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_create_oscillator_impl(
     )
 }
 fn wire__web_audio_api__context__OfflineAudioContext_create_panner_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -6769,7 +6769,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_create_panner_impl(
     )
 }
 fn wire__web_audio_api__context__OfflineAudioContext_create_periodic_wave_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -6823,7 +6823,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_create_periodic_wave_impl(
     )
 }
 fn wire__web_audio_api__context__OfflineAudioContext_create_script_processor_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -6881,7 +6881,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_create_script_processor_imp
     )
 }
 fn wire__web_audio_api__context__OfflineAudioContext_create_stereo_panner_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -6931,7 +6931,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_create_stereo_panner_impl(
     )
 }
 fn wire__web_audio_api__context__OfflineAudioContext_create_wave_shaper_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -6981,7 +6981,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_create_wave_shaper_impl(
     )
 }
 fn wire__web_audio_api__context__OfflineAudioContext_current_time_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -7031,7 +7031,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_current_time_impl(
     )
 }
 fn wire__web_audio_api__context__OfflineAudioContext_destination_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -7081,7 +7081,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_destination_impl(
     )
 }
 fn wire__web_audio_api__context__OfflineAudioContext_length_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -7131,7 +7131,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_length_impl(
     )
 }
 fn wire__web_audio_api__context__OfflineAudioContext_listener_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -7181,7 +7181,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_listener_impl(
     )
 }
 fn wire__web_audio_api__context__OfflineAudioContext_new_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -7219,7 +7219,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_new_impl(
     )
 }
 fn wire__web_audio_api__context__OfflineAudioContext_resume_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -7275,7 +7275,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_resume_impl(
     )
 }
 fn wire__web_audio_api__context__OfflineAudioContext_sample_rate_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -7325,7 +7325,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_sample_rate_impl(
     )
 }
 fn wire__web_audio_api__context__OfflineAudioContext_start_rendering_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -7382,7 +7382,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_start_rendering_impl(
     )
 }
 fn wire__web_audio_api__context__OfflineAudioContext_start_rendering_sync_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -7432,7 +7432,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_start_rendering_sync_impl(
     )
 }
 fn wire__web_audio_api__context__OfflineAudioContext_state_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -7482,7 +7482,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_state_impl(
     )
 }
 fn wire__web_audio_api__context__OfflineAudioContext_suspend_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -7543,7 +7543,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_suspend_impl(
     )
 }
 fn wire__web_audio_api__media_devices__get_user_media_sync_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -7862,7 +7862,7 @@ fn wire__web_audio_api__media_recorder__BlobEvent_set_timecode_impl(
     )
 }
 fn wire__web_audio_api__media_recorder__MediaRecorder_clear_ondataavailable_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -7914,7 +7914,7 @@ fn wire__web_audio_api__media_recorder__MediaRecorder_clear_ondataavailable_impl
     )
 }
 fn wire__web_audio_api__media_recorder__MediaRecorder_clear_onerror_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -7964,7 +7964,7 @@ fn wire__web_audio_api__media_recorder__MediaRecorder_clear_onerror_impl(
     )
 }
 fn wire__web_audio_api__media_recorder__MediaRecorder_clear_onstop_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8014,7 +8014,7 @@ fn wire__web_audio_api__media_recorder__MediaRecorder_clear_onstop_impl(
     )
 }
 fn wire__web_audio_api__media_recorder__MediaRecorder_new_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8066,7 +8066,7 @@ fn wire__web_audio_api__media_recorder__MediaRecorder_new_impl(
     )
 }
 fn wire__web_audio_api__media_recorder__MediaRecorder_start_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8116,7 +8116,7 @@ fn wire__web_audio_api__media_recorder__MediaRecorder_start_impl(
     )
 }
 fn wire__web_audio_api__media_recorder__MediaRecorder_stop_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8166,7 +8166,7 @@ fn wire__web_audio_api__media_recorder__MediaRecorder_stop_impl(
     )
 }
 fn wire__web_audio_api__media_streams__MediaStreamTrack_close_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8216,7 +8216,7 @@ fn wire__web_audio_api__media_streams__MediaStreamTrack_close_impl(
     )
 }
 fn wire__web_audio_api__media_streams__MediaStreamTrack_ready_state_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8266,7 +8266,7 @@ fn wire__web_audio_api__media_streams__MediaStreamTrack_ready_state_impl(
     )
 }
 fn wire__web_audio_api__media_streams__MediaStream_from_tracks_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8300,7 +8300,7 @@ fn wire__web_audio_api__media_streams__MediaStream_from_tracks_impl(
     )
 }
 fn wire__web_audio_api__media_streams__MediaStream_get_tracks_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8350,7 +8350,7 @@ fn wire__web_audio_api__media_streams__MediaStream_get_tracks_impl(
     )
 }
 fn wire__web_audio_api__node__AnalyserNode_channel_config_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8400,7 +8400,7 @@ fn wire__web_audio_api__node__AnalyserNode_channel_config_impl(
     )
 }
 fn wire__web_audio_api__node__AnalyserNode_channel_count_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8448,7 +8448,7 @@ fn wire__web_audio_api__node__AnalyserNode_channel_count_impl(
     )
 }
 fn wire__web_audio_api__node__AnalyserNode_channel_count_mode_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8498,7 +8498,7 @@ fn wire__web_audio_api__node__AnalyserNode_channel_count_mode_impl(
     )
 }
 fn wire__web_audio_api__node__AnalyserNode_channel_interpretation_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8548,7 +8548,7 @@ fn wire__web_audio_api__node__AnalyserNode_channel_interpretation_impl(
     )
 }
 fn wire__web_audio_api__node__AnalyserNode_clear_onprocessorerror_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8598,7 +8598,7 @@ fn wire__web_audio_api__node__AnalyserNode_clear_onprocessorerror_impl(
     )
 }
 fn wire__web_audio_api__node__AnalyserNode_context_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8648,7 +8648,7 @@ fn wire__web_audio_api__node__AnalyserNode_context_impl(
     )
 }
 fn wire__web_audio_api__node__AnalyserNode_disconnect_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8698,7 +8698,7 @@ fn wire__web_audio_api__node__AnalyserNode_disconnect_impl(
     )
 }
 fn wire__web_audio_api__node__AnalyserNode_disconnect_output_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8749,7 +8749,7 @@ fn wire__web_audio_api__node__AnalyserNode_disconnect_output_impl(
     )
 }
 fn wire__web_audio_api__node__AnalyserNode_fft_size_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8797,7 +8797,7 @@ fn wire__web_audio_api__node__AnalyserNode_fft_size_impl(
     )
 }
 fn wire__web_audio_api__node__AnalyserNode_frb_override_connect_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8855,7 +8855,7 @@ fn wire__web_audio_api__node__AnalyserNode_frb_override_connect_impl(
     )
 }
 fn wire__web_audio_api__node__AnalyserNode_frequency_bin_count_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8905,7 +8905,7 @@ fn wire__web_audio_api__node__AnalyserNode_frequency_bin_count_impl(
     )
 }
 fn wire__web_audio_api__node__AnalyserNode_max_decibels_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8953,7 +8953,7 @@ fn wire__web_audio_api__node__AnalyserNode_max_decibels_impl(
     )
 }
 fn wire__web_audio_api__node__AnalyserNode_min_decibels_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9001,7 +9001,7 @@ fn wire__web_audio_api__node__AnalyserNode_min_decibels_impl(
     )
 }
 fn wire__web_audio_api__node__AnalyserNode_number_of_inputs_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9051,7 +9051,7 @@ fn wire__web_audio_api__node__AnalyserNode_number_of_inputs_impl(
     )
 }
 fn wire__web_audio_api__node__AnalyserNode_number_of_outputs_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9101,7 +9101,7 @@ fn wire__web_audio_api__node__AnalyserNode_number_of_outputs_impl(
     )
 }
 fn wire__web_audio_api__node__AnalyserNode_registration_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9151,7 +9151,7 @@ fn wire__web_audio_api__node__AnalyserNode_registration_impl(
     )
 }
 fn wire__web_audio_api__node__AnalyserNode_set_channel_count_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9202,7 +9202,7 @@ fn wire__web_audio_api__node__AnalyserNode_set_channel_count_impl(
     )
 }
 fn wire__web_audio_api__node__AnalyserNode_set_channel_count_mode_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9253,7 +9253,7 @@ fn wire__web_audio_api__node__AnalyserNode_set_channel_count_mode_impl(
     )
 }
 fn wire__web_audio_api__node__AnalyserNode_set_channel_interpretation_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9306,7 +9306,7 @@ fn wire__web_audio_api__node__AnalyserNode_set_channel_interpretation_impl(
     )
 }
 fn wire__web_audio_api__node__AnalyserNode_set_fft_size_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9357,7 +9357,7 @@ fn wire__web_audio_api__node__AnalyserNode_set_fft_size_impl(
     )
 }
 fn wire__web_audio_api__node__AnalyserNode_set_max_decibels_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9408,7 +9408,7 @@ fn wire__web_audio_api__node__AnalyserNode_set_max_decibels_impl(
     )
 }
 fn wire__web_audio_api__node__AnalyserNode_set_min_decibels_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9459,7 +9459,7 @@ fn wire__web_audio_api__node__AnalyserNode_set_min_decibels_impl(
     )
 }
 fn wire__web_audio_api__node__AnalyserNode_set_smoothing_time_constant_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9512,7 +9512,7 @@ fn wire__web_audio_api__node__AnalyserNode_set_smoothing_time_constant_impl(
     )
 }
 fn wire__web_audio_api__node__AnalyserNode_smoothing_time_constant_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9562,7 +9562,7 @@ fn wire__web_audio_api__node__AnalyserNode_smoothing_time_constant_impl(
     )
 }
 fn wire__web_audio_api__node__AudioBufferSourceNode_channel_config_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9612,7 +9612,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_channel_config_impl(
     )
 }
 fn wire__web_audio_api__node__AudioBufferSourceNode_channel_count_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9662,7 +9662,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_channel_count_impl(
     )
 }
 fn wire__web_audio_api__node__AudioBufferSourceNode_channel_count_mode_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9712,7 +9712,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_channel_count_mode_impl(
     )
 }
 fn wire__web_audio_api__node__AudioBufferSourceNode_channel_interpretation_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9764,7 +9764,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_channel_interpretation_impl(
     )
 }
 fn wire__web_audio_api__node__AudioBufferSourceNode_clear_onended_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9814,7 +9814,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_clear_onended_impl(
     )
 }
 fn wire__web_audio_api__node__AudioBufferSourceNode_clear_onprocessorerror_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9866,7 +9866,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_clear_onprocessorerror_impl(
     )
 }
 fn wire__web_audio_api__node__AudioBufferSourceNode_context_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9916,7 +9916,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_context_impl(
     )
 }
 fn wire__web_audio_api__node__AudioBufferSourceNode_disconnect_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9966,7 +9966,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_disconnect_impl(
     )
 }
 fn wire__web_audio_api__node__AudioBufferSourceNode_disconnect_output_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10019,7 +10019,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_disconnect_output_impl(
     )
 }
 fn wire__web_audio_api__node__AudioBufferSourceNode_frb_override_connect_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10079,7 +10079,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_frb_override_connect_impl(
     )
 }
 fn wire__web_audio_api__node__AudioBufferSourceNode_loop__impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10127,7 +10127,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_loop__impl(
     )
 }
 fn wire__web_audio_api__node__AudioBufferSourceNode_loop_end_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10177,7 +10177,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_loop_end_impl(
     )
 }
 fn wire__web_audio_api__node__AudioBufferSourceNode_loop_start_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10227,7 +10227,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_loop_start_impl(
     )
 }
 fn wire__web_audio_api__node__AudioBufferSourceNode_number_of_inputs_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10277,7 +10277,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_number_of_inputs_impl(
     )
 }
 fn wire__web_audio_api__node__AudioBufferSourceNode_number_of_outputs_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10327,7 +10327,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_number_of_outputs_impl(
     )
 }
 fn wire__web_audio_api__node__AudioBufferSourceNode_position_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10377,7 +10377,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_position_impl(
     )
 }
 fn wire__web_audio_api__node__AudioBufferSourceNode_registration_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10427,7 +10427,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_registration_impl(
     )
 }
 fn wire__web_audio_api__node__AudioBufferSourceNode_set_buffer_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10481,7 +10481,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_set_buffer_impl(
     )
 }
 fn wire__web_audio_api__node__AudioBufferSourceNode_set_channel_count_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10534,7 +10534,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_set_channel_count_impl(
     )
 }
 fn wire__web_audio_api__node__AudioBufferSourceNode_set_channel_count_mode_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10587,7 +10587,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_set_channel_count_mode_impl(
     )
 }
 fn wire__web_audio_api__node__AudioBufferSourceNode_set_channel_interpretation_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10640,7 +10640,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_set_channel_interpretation_i
     )
 }
 fn wire__web_audio_api__node__AudioBufferSourceNode_set_loop_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10691,7 +10691,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_set_loop_impl(
     )
 }
 fn wire__web_audio_api__node__AudioBufferSourceNode_set_loop_end_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10744,7 +10744,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_set_loop_end_impl(
     )
 }
 fn wire__web_audio_api__node__AudioBufferSourceNode_set_loop_start_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10797,7 +10797,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_set_loop_start_impl(
     )
 }
 fn wire__web_audio_api__node__AudioBufferSourceNode_start_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10847,7 +10847,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_start_impl(
     )
 }
 fn wire__web_audio_api__node__AudioBufferSourceNode_start_at_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10898,7 +10898,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_start_at_impl(
     )
 }
 fn wire__web_audio_api__node__AudioBufferSourceNode_start_at_with_offset_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10952,7 +10952,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_start_at_with_offset_impl(
     )
 }
 fn wire__web_audio_api__node__AudioBufferSourceNode_start_at_with_offset_and_duration_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10979,7 +10979,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
                 } })
 }
 fn wire__web_audio_api__node__AudioBufferSourceNode_stop_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11029,7 +11029,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_stop_impl(
     )
 }
 fn wire__web_audio_api__node__AudioBufferSourceNode_stop_at_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11080,7 +11080,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_stop_at_impl(
     )
 }
 fn wire__web_audio_api__node__AudioDestinationNode_channel_config_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11130,7 +11130,7 @@ fn wire__web_audio_api__node__AudioDestinationNode_channel_config_impl(
     )
 }
 fn wire__web_audio_api__node__AudioDestinationNode_channel_count_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11180,7 +11180,7 @@ fn wire__web_audio_api__node__AudioDestinationNode_channel_count_impl(
     )
 }
 fn wire__web_audio_api__node__AudioDestinationNode_channel_count_mode_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11230,7 +11230,7 @@ fn wire__web_audio_api__node__AudioDestinationNode_channel_count_mode_impl(
     )
 }
 fn wire__web_audio_api__node__AudioDestinationNode_channel_interpretation_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11280,7 +11280,7 @@ fn wire__web_audio_api__node__AudioDestinationNode_channel_interpretation_impl(
     )
 }
 fn wire__web_audio_api__node__AudioDestinationNode_clear_onprocessorerror_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11330,7 +11330,7 @@ fn wire__web_audio_api__node__AudioDestinationNode_clear_onprocessorerror_impl(
     )
 }
 fn wire__web_audio_api__node__AudioDestinationNode_context_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11380,7 +11380,7 @@ fn wire__web_audio_api__node__AudioDestinationNode_context_impl(
     )
 }
 fn wire__web_audio_api__node__AudioDestinationNode_disconnect_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11430,7 +11430,7 @@ fn wire__web_audio_api__node__AudioDestinationNode_disconnect_impl(
     )
 }
 fn wire__web_audio_api__node__AudioDestinationNode_disconnect_output_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11483,7 +11483,7 @@ fn wire__web_audio_api__node__AudioDestinationNode_disconnect_output_impl(
     )
 }
 fn wire__web_audio_api__node__AudioDestinationNode_frb_override_connect_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11543,7 +11543,7 @@ fn wire__web_audio_api__node__AudioDestinationNode_frb_override_connect_impl(
     )
 }
 fn wire__web_audio_api__node__AudioDestinationNode_max_channel_count_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11593,7 +11593,7 @@ fn wire__web_audio_api__node__AudioDestinationNode_max_channel_count_impl(
     )
 }
 fn wire__web_audio_api__node__AudioDestinationNode_number_of_inputs_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11643,7 +11643,7 @@ fn wire__web_audio_api__node__AudioDestinationNode_number_of_inputs_impl(
     )
 }
 fn wire__web_audio_api__node__AudioDestinationNode_number_of_outputs_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11693,7 +11693,7 @@ fn wire__web_audio_api__node__AudioDestinationNode_number_of_outputs_impl(
     )
 }
 fn wire__web_audio_api__node__AudioDestinationNode_registration_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11743,7 +11743,7 @@ fn wire__web_audio_api__node__AudioDestinationNode_registration_impl(
     )
 }
 fn wire__web_audio_api__node__AudioDestinationNode_set_channel_count_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11796,7 +11796,7 @@ fn wire__web_audio_api__node__AudioDestinationNode_set_channel_count_impl(
     )
 }
 fn wire__web_audio_api__node__AudioDestinationNode_set_channel_count_mode_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11849,7 +11849,7 @@ fn wire__web_audio_api__node__AudioDestinationNode_set_channel_count_mode_impl(
     )
 }
 fn wire__web_audio_api__node__AudioDestinationNode_set_channel_interpretation_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11902,7 +11902,7 @@ fn wire__web_audio_api__node__AudioDestinationNode_set_channel_interpretation_im
     )
 }
 fn wire__web_audio_api__node__BiquadFilterNode_channel_config_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11952,7 +11952,7 @@ fn wire__web_audio_api__node__BiquadFilterNode_channel_config_impl(
     )
 }
 fn wire__web_audio_api__node__BiquadFilterNode_channel_count_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12002,7 +12002,7 @@ fn wire__web_audio_api__node__BiquadFilterNode_channel_count_impl(
     )
 }
 fn wire__web_audio_api__node__BiquadFilterNode_channel_count_mode_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12052,7 +12052,7 @@ fn wire__web_audio_api__node__BiquadFilterNode_channel_count_mode_impl(
     )
 }
 fn wire__web_audio_api__node__BiquadFilterNode_channel_interpretation_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12102,7 +12102,7 @@ fn wire__web_audio_api__node__BiquadFilterNode_channel_interpretation_impl(
     )
 }
 fn wire__web_audio_api__node__BiquadFilterNode_clear_onprocessorerror_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12152,7 +12152,7 @@ fn wire__web_audio_api__node__BiquadFilterNode_clear_onprocessorerror_impl(
     )
 }
 fn wire__web_audio_api__node__BiquadFilterNode_context_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12202,7 +12202,7 @@ fn wire__web_audio_api__node__BiquadFilterNode_context_impl(
     )
 }
 fn wire__web_audio_api__node__BiquadFilterNode_disconnect_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12252,7 +12252,7 @@ fn wire__web_audio_api__node__BiquadFilterNode_disconnect_impl(
     )
 }
 fn wire__web_audio_api__node__BiquadFilterNode_disconnect_output_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12305,7 +12305,7 @@ fn wire__web_audio_api__node__BiquadFilterNode_disconnect_output_impl(
     )
 }
 fn wire__web_audio_api__node__BiquadFilterNode_frb_override_connect_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12365,7 +12365,7 @@ fn wire__web_audio_api__node__BiquadFilterNode_frb_override_connect_impl(
     )
 }
 fn wire__web_audio_api__node__BiquadFilterNode_number_of_inputs_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12415,7 +12415,7 @@ fn wire__web_audio_api__node__BiquadFilterNode_number_of_inputs_impl(
     )
 }
 fn wire__web_audio_api__node__BiquadFilterNode_number_of_outputs_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12465,7 +12465,7 @@ fn wire__web_audio_api__node__BiquadFilterNode_number_of_outputs_impl(
     )
 }
 fn wire__web_audio_api__node__BiquadFilterNode_registration_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12515,7 +12515,7 @@ fn wire__web_audio_api__node__BiquadFilterNode_registration_impl(
     )
 }
 fn wire__web_audio_api__node__BiquadFilterNode_set_channel_count_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12566,7 +12566,7 @@ fn wire__web_audio_api__node__BiquadFilterNode_set_channel_count_impl(
     )
 }
 fn wire__web_audio_api__node__BiquadFilterNode_set_channel_count_mode_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12619,7 +12619,7 @@ fn wire__web_audio_api__node__BiquadFilterNode_set_channel_count_mode_impl(
     )
 }
 fn wire__web_audio_api__node__BiquadFilterNode_set_channel_interpretation_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12672,7 +12672,7 @@ fn wire__web_audio_api__node__BiquadFilterNode_set_channel_interpretation_impl(
     )
 }
 fn wire__web_audio_api__node__BiquadFilterNode_set_type_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12723,7 +12723,7 @@ fn wire__web_audio_api__node__BiquadFilterNode_set_type_impl(
     )
 }
 fn wire__web_audio_api__node__BiquadFilterNode_type__impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12771,7 +12771,7 @@ fn wire__web_audio_api__node__BiquadFilterNode_type__impl(
     )
 }
 fn wire__web_audio_api__node__ChannelMergerNode_channel_config_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12821,7 +12821,7 @@ fn wire__web_audio_api__node__ChannelMergerNode_channel_config_impl(
     )
 }
 fn wire__web_audio_api__node__ChannelMergerNode_channel_count_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12871,7 +12871,7 @@ fn wire__web_audio_api__node__ChannelMergerNode_channel_count_impl(
     )
 }
 fn wire__web_audio_api__node__ChannelMergerNode_channel_count_mode_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12921,7 +12921,7 @@ fn wire__web_audio_api__node__ChannelMergerNode_channel_count_mode_impl(
     )
 }
 fn wire__web_audio_api__node__ChannelMergerNode_channel_interpretation_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12971,7 +12971,7 @@ fn wire__web_audio_api__node__ChannelMergerNode_channel_interpretation_impl(
     )
 }
 fn wire__web_audio_api__node__ChannelMergerNode_clear_onprocessorerror_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13021,7 +13021,7 @@ fn wire__web_audio_api__node__ChannelMergerNode_clear_onprocessorerror_impl(
     )
 }
 fn wire__web_audio_api__node__ChannelMergerNode_context_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13071,7 +13071,7 @@ fn wire__web_audio_api__node__ChannelMergerNode_context_impl(
     )
 }
 fn wire__web_audio_api__node__ChannelMergerNode_disconnect_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13121,7 +13121,7 @@ fn wire__web_audio_api__node__ChannelMergerNode_disconnect_impl(
     )
 }
 fn wire__web_audio_api__node__ChannelMergerNode_disconnect_output_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13174,7 +13174,7 @@ fn wire__web_audio_api__node__ChannelMergerNode_disconnect_output_impl(
     )
 }
 fn wire__web_audio_api__node__ChannelMergerNode_frb_override_connect_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13234,7 +13234,7 @@ fn wire__web_audio_api__node__ChannelMergerNode_frb_override_connect_impl(
     )
 }
 fn wire__web_audio_api__node__ChannelMergerNode_number_of_inputs_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13284,7 +13284,7 @@ fn wire__web_audio_api__node__ChannelMergerNode_number_of_inputs_impl(
     )
 }
 fn wire__web_audio_api__node__ChannelMergerNode_number_of_outputs_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13334,7 +13334,7 @@ fn wire__web_audio_api__node__ChannelMergerNode_number_of_outputs_impl(
     )
 }
 fn wire__web_audio_api__node__ChannelMergerNode_registration_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13384,7 +13384,7 @@ fn wire__web_audio_api__node__ChannelMergerNode_registration_impl(
     )
 }
 fn wire__web_audio_api__node__ChannelMergerNode_set_channel_count_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13435,7 +13435,7 @@ fn wire__web_audio_api__node__ChannelMergerNode_set_channel_count_impl(
     )
 }
 fn wire__web_audio_api__node__ChannelMergerNode_set_channel_count_mode_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13488,7 +13488,7 @@ fn wire__web_audio_api__node__ChannelMergerNode_set_channel_count_mode_impl(
     )
 }
 fn wire__web_audio_api__node__ChannelMergerNode_set_channel_interpretation_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13541,7 +13541,7 @@ fn wire__web_audio_api__node__ChannelMergerNode_set_channel_interpretation_impl(
     )
 }
 fn wire__web_audio_api__node__ChannelSplitterNode_channel_config_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13591,7 +13591,7 @@ fn wire__web_audio_api__node__ChannelSplitterNode_channel_config_impl(
     )
 }
 fn wire__web_audio_api__node__ChannelSplitterNode_channel_count_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13641,7 +13641,7 @@ fn wire__web_audio_api__node__ChannelSplitterNode_channel_count_impl(
     )
 }
 fn wire__web_audio_api__node__ChannelSplitterNode_channel_count_mode_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13691,7 +13691,7 @@ fn wire__web_audio_api__node__ChannelSplitterNode_channel_count_mode_impl(
     )
 }
 fn wire__web_audio_api__node__ChannelSplitterNode_channel_interpretation_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13741,7 +13741,7 @@ fn wire__web_audio_api__node__ChannelSplitterNode_channel_interpretation_impl(
     )
 }
 fn wire__web_audio_api__node__ChannelSplitterNode_clear_onprocessorerror_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13791,7 +13791,7 @@ fn wire__web_audio_api__node__ChannelSplitterNode_clear_onprocessorerror_impl(
     )
 }
 fn wire__web_audio_api__node__ChannelSplitterNode_context_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13841,7 +13841,7 @@ fn wire__web_audio_api__node__ChannelSplitterNode_context_impl(
     )
 }
 fn wire__web_audio_api__node__ChannelSplitterNode_disconnect_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13891,7 +13891,7 @@ fn wire__web_audio_api__node__ChannelSplitterNode_disconnect_impl(
     )
 }
 fn wire__web_audio_api__node__ChannelSplitterNode_disconnect_output_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13944,7 +13944,7 @@ fn wire__web_audio_api__node__ChannelSplitterNode_disconnect_output_impl(
     )
 }
 fn wire__web_audio_api__node__ChannelSplitterNode_frb_override_connect_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14004,7 +14004,7 @@ fn wire__web_audio_api__node__ChannelSplitterNode_frb_override_connect_impl(
     )
 }
 fn wire__web_audio_api__node__ChannelSplitterNode_number_of_inputs_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14054,7 +14054,7 @@ fn wire__web_audio_api__node__ChannelSplitterNode_number_of_inputs_impl(
     )
 }
 fn wire__web_audio_api__node__ChannelSplitterNode_number_of_outputs_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14104,7 +14104,7 @@ fn wire__web_audio_api__node__ChannelSplitterNode_number_of_outputs_impl(
     )
 }
 fn wire__web_audio_api__node__ChannelSplitterNode_registration_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14154,7 +14154,7 @@ fn wire__web_audio_api__node__ChannelSplitterNode_registration_impl(
     )
 }
 fn wire__web_audio_api__node__ChannelSplitterNode_set_channel_count_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14207,7 +14207,7 @@ fn wire__web_audio_api__node__ChannelSplitterNode_set_channel_count_impl(
     )
 }
 fn wire__web_audio_api__node__ChannelSplitterNode_set_channel_count_mode_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14260,7 +14260,7 @@ fn wire__web_audio_api__node__ChannelSplitterNode_set_channel_count_mode_impl(
     )
 }
 fn wire__web_audio_api__node__ChannelSplitterNode_set_channel_interpretation_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14313,7 +14313,7 @@ fn wire__web_audio_api__node__ChannelSplitterNode_set_channel_interpretation_imp
     )
 }
 fn wire__web_audio_api__node__ConstantSourceNode_channel_config_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14363,7 +14363,7 @@ fn wire__web_audio_api__node__ConstantSourceNode_channel_config_impl(
     )
 }
 fn wire__web_audio_api__node__ConstantSourceNode_channel_count_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14413,7 +14413,7 @@ fn wire__web_audio_api__node__ConstantSourceNode_channel_count_impl(
     )
 }
 fn wire__web_audio_api__node__ConstantSourceNode_channel_count_mode_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14463,7 +14463,7 @@ fn wire__web_audio_api__node__ConstantSourceNode_channel_count_mode_impl(
     )
 }
 fn wire__web_audio_api__node__ConstantSourceNode_channel_interpretation_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14513,7 +14513,7 @@ fn wire__web_audio_api__node__ConstantSourceNode_channel_interpretation_impl(
     )
 }
 fn wire__web_audio_api__node__ConstantSourceNode_clear_onended_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14563,7 +14563,7 @@ fn wire__web_audio_api__node__ConstantSourceNode_clear_onended_impl(
     )
 }
 fn wire__web_audio_api__node__ConstantSourceNode_clear_onprocessorerror_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14613,7 +14613,7 @@ fn wire__web_audio_api__node__ConstantSourceNode_clear_onprocessorerror_impl(
     )
 }
 fn wire__web_audio_api__node__ConstantSourceNode_context_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14663,7 +14663,7 @@ fn wire__web_audio_api__node__ConstantSourceNode_context_impl(
     )
 }
 fn wire__web_audio_api__node__ConstantSourceNode_disconnect_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14713,7 +14713,7 @@ fn wire__web_audio_api__node__ConstantSourceNode_disconnect_impl(
     )
 }
 fn wire__web_audio_api__node__ConstantSourceNode_disconnect_output_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14766,7 +14766,7 @@ fn wire__web_audio_api__node__ConstantSourceNode_disconnect_output_impl(
     )
 }
 fn wire__web_audio_api__node__ConstantSourceNode_frb_override_connect_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14826,7 +14826,7 @@ fn wire__web_audio_api__node__ConstantSourceNode_frb_override_connect_impl(
     )
 }
 fn wire__web_audio_api__node__ConstantSourceNode_number_of_inputs_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14876,7 +14876,7 @@ fn wire__web_audio_api__node__ConstantSourceNode_number_of_inputs_impl(
     )
 }
 fn wire__web_audio_api__node__ConstantSourceNode_number_of_outputs_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14926,7 +14926,7 @@ fn wire__web_audio_api__node__ConstantSourceNode_number_of_outputs_impl(
     )
 }
 fn wire__web_audio_api__node__ConstantSourceNode_registration_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14976,7 +14976,7 @@ fn wire__web_audio_api__node__ConstantSourceNode_registration_impl(
     )
 }
 fn wire__web_audio_api__node__ConstantSourceNode_set_channel_count_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15027,7 +15027,7 @@ fn wire__web_audio_api__node__ConstantSourceNode_set_channel_count_impl(
     )
 }
 fn wire__web_audio_api__node__ConstantSourceNode_set_channel_count_mode_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15080,7 +15080,7 @@ fn wire__web_audio_api__node__ConstantSourceNode_set_channel_count_mode_impl(
     )
 }
 fn wire__web_audio_api__node__ConstantSourceNode_set_channel_interpretation_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15133,7 +15133,7 @@ fn wire__web_audio_api__node__ConstantSourceNode_set_channel_interpretation_impl
     )
 }
 fn wire__web_audio_api__node__ConstantSourceNode_start_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15183,7 +15183,7 @@ fn wire__web_audio_api__node__ConstantSourceNode_start_impl(
     )
 }
 fn wire__web_audio_api__node__ConstantSourceNode_start_at_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15234,7 +15234,7 @@ fn wire__web_audio_api__node__ConstantSourceNode_start_at_impl(
     )
 }
 fn wire__web_audio_api__node__ConstantSourceNode_stop_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15284,7 +15284,7 @@ fn wire__web_audio_api__node__ConstantSourceNode_stop_impl(
     )
 }
 fn wire__web_audio_api__node__ConstantSourceNode_stop_at_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15335,7 +15335,7 @@ fn wire__web_audio_api__node__ConstantSourceNode_stop_at_impl(
     )
 }
 fn wire__web_audio_api__node__ConvolverNode_channel_config_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15385,7 +15385,7 @@ fn wire__web_audio_api__node__ConvolverNode_channel_config_impl(
     )
 }
 fn wire__web_audio_api__node__ConvolverNode_channel_count_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15433,7 +15433,7 @@ fn wire__web_audio_api__node__ConvolverNode_channel_count_impl(
     )
 }
 fn wire__web_audio_api__node__ConvolverNode_channel_count_mode_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15483,7 +15483,7 @@ fn wire__web_audio_api__node__ConvolverNode_channel_count_mode_impl(
     )
 }
 fn wire__web_audio_api__node__ConvolverNode_channel_interpretation_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15533,7 +15533,7 @@ fn wire__web_audio_api__node__ConvolverNode_channel_interpretation_impl(
     )
 }
 fn wire__web_audio_api__node__ConvolverNode_clear_onprocessorerror_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15583,7 +15583,7 @@ fn wire__web_audio_api__node__ConvolverNode_clear_onprocessorerror_impl(
     )
 }
 fn wire__web_audio_api__node__ConvolverNode_context_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15633,7 +15633,7 @@ fn wire__web_audio_api__node__ConvolverNode_context_impl(
     )
 }
 fn wire__web_audio_api__node__ConvolverNode_disconnect_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15683,7 +15683,7 @@ fn wire__web_audio_api__node__ConvolverNode_disconnect_impl(
     )
 }
 fn wire__web_audio_api__node__ConvolverNode_disconnect_output_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15734,7 +15734,7 @@ fn wire__web_audio_api__node__ConvolverNode_disconnect_output_impl(
     )
 }
 fn wire__web_audio_api__node__ConvolverNode_frb_override_connect_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15794,7 +15794,7 @@ fn wire__web_audio_api__node__ConvolverNode_frb_override_connect_impl(
     )
 }
 fn wire__web_audio_api__node__ConvolverNode_normalize_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15842,7 +15842,7 @@ fn wire__web_audio_api__node__ConvolverNode_normalize_impl(
     )
 }
 fn wire__web_audio_api__node__ConvolverNode_number_of_inputs_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15892,7 +15892,7 @@ fn wire__web_audio_api__node__ConvolverNode_number_of_inputs_impl(
     )
 }
 fn wire__web_audio_api__node__ConvolverNode_number_of_outputs_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15942,7 +15942,7 @@ fn wire__web_audio_api__node__ConvolverNode_number_of_outputs_impl(
     )
 }
 fn wire__web_audio_api__node__ConvolverNode_registration_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15992,7 +15992,7 @@ fn wire__web_audio_api__node__ConvolverNode_registration_impl(
     )
 }
 fn wire__web_audio_api__node__ConvolverNode_set_buffer_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16043,7 +16043,7 @@ fn wire__web_audio_api__node__ConvolverNode_set_buffer_impl(
     )
 }
 fn wire__web_audio_api__node__ConvolverNode_set_channel_count_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16094,7 +16094,7 @@ fn wire__web_audio_api__node__ConvolverNode_set_channel_count_impl(
     )
 }
 fn wire__web_audio_api__node__ConvolverNode_set_channel_count_mode_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16145,7 +16145,7 @@ fn wire__web_audio_api__node__ConvolverNode_set_channel_count_mode_impl(
     )
 }
 fn wire__web_audio_api__node__ConvolverNode_set_channel_interpretation_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16198,7 +16198,7 @@ fn wire__web_audio_api__node__ConvolverNode_set_channel_interpretation_impl(
     )
 }
 fn wire__web_audio_api__node__ConvolverNode_set_normalize_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16249,7 +16249,7 @@ fn wire__web_audio_api__node__ConvolverNode_set_normalize_impl(
     )
 }
 fn wire__web_audio_api__node__DelayNode_channel_config_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16299,7 +16299,7 @@ fn wire__web_audio_api__node__DelayNode_channel_config_impl(
     )
 }
 fn wire__web_audio_api__node__DelayNode_channel_count_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16347,7 +16347,7 @@ fn wire__web_audio_api__node__DelayNode_channel_count_impl(
     )
 }
 fn wire__web_audio_api__node__DelayNode_channel_count_mode_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16397,7 +16397,7 @@ fn wire__web_audio_api__node__DelayNode_channel_count_mode_impl(
     )
 }
 fn wire__web_audio_api__node__DelayNode_channel_interpretation_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16447,7 +16447,7 @@ fn wire__web_audio_api__node__DelayNode_channel_interpretation_impl(
     )
 }
 fn wire__web_audio_api__node__DelayNode_clear_onprocessorerror_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16497,7 +16497,7 @@ fn wire__web_audio_api__node__DelayNode_clear_onprocessorerror_impl(
     )
 }
 fn wire__web_audio_api__node__DelayNode_context_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16547,7 +16547,7 @@ fn wire__web_audio_api__node__DelayNode_context_impl(
     )
 }
 fn wire__web_audio_api__node__DelayNode_disconnect_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16597,7 +16597,7 @@ fn wire__web_audio_api__node__DelayNode_disconnect_impl(
     )
 }
 fn wire__web_audio_api__node__DelayNode_disconnect_output_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16648,7 +16648,7 @@ fn wire__web_audio_api__node__DelayNode_disconnect_output_impl(
     )
 }
 fn wire__web_audio_api__node__DelayNode_frb_override_connect_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16706,7 +16706,7 @@ fn wire__web_audio_api__node__DelayNode_frb_override_connect_impl(
     )
 }
 fn wire__web_audio_api__node__DelayNode_number_of_inputs_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16754,7 +16754,7 @@ fn wire__web_audio_api__node__DelayNode_number_of_inputs_impl(
     )
 }
 fn wire__web_audio_api__node__DelayNode_number_of_outputs_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16802,7 +16802,7 @@ fn wire__web_audio_api__node__DelayNode_number_of_outputs_impl(
     )
 }
 fn wire__web_audio_api__node__DelayNode_registration_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16852,7 +16852,7 @@ fn wire__web_audio_api__node__DelayNode_registration_impl(
     )
 }
 fn wire__web_audio_api__node__DelayNode_set_channel_count_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16903,7 +16903,7 @@ fn wire__web_audio_api__node__DelayNode_set_channel_count_impl(
     )
 }
 fn wire__web_audio_api__node__DelayNode_set_channel_count_mode_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16954,7 +16954,7 @@ fn wire__web_audio_api__node__DelayNode_set_channel_count_mode_impl(
     )
 }
 fn wire__web_audio_api__node__DelayNode_set_channel_interpretation_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17005,7 +17005,7 @@ fn wire__web_audio_api__node__DelayNode_set_channel_interpretation_impl(
     )
 }
 fn wire__web_audio_api__node__DynamicsCompressorNode_channel_config_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17055,7 +17055,7 @@ fn wire__web_audio_api__node__DynamicsCompressorNode_channel_config_impl(
     )
 }
 fn wire__web_audio_api__node__DynamicsCompressorNode_channel_count_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17105,7 +17105,7 @@ fn wire__web_audio_api__node__DynamicsCompressorNode_channel_count_impl(
     )
 }
 fn wire__web_audio_api__node__DynamicsCompressorNode_channel_count_mode_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17155,7 +17155,7 @@ fn wire__web_audio_api__node__DynamicsCompressorNode_channel_count_mode_impl(
     )
 }
 fn wire__web_audio_api__node__DynamicsCompressorNode_channel_interpretation_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17207,7 +17207,7 @@ fn wire__web_audio_api__node__DynamicsCompressorNode_channel_interpretation_impl
     )
 }
 fn wire__web_audio_api__node__DynamicsCompressorNode_clear_onprocessorerror_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17259,7 +17259,7 @@ fn wire__web_audio_api__node__DynamicsCompressorNode_clear_onprocessorerror_impl
     )
 }
 fn wire__web_audio_api__node__DynamicsCompressorNode_context_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17309,7 +17309,7 @@ fn wire__web_audio_api__node__DynamicsCompressorNode_context_impl(
     )
 }
 fn wire__web_audio_api__node__DynamicsCompressorNode_disconnect_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17359,7 +17359,7 @@ fn wire__web_audio_api__node__DynamicsCompressorNode_disconnect_impl(
     )
 }
 fn wire__web_audio_api__node__DynamicsCompressorNode_disconnect_output_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17412,7 +17412,7 @@ fn wire__web_audio_api__node__DynamicsCompressorNode_disconnect_output_impl(
     )
 }
 fn wire__web_audio_api__node__DynamicsCompressorNode_frb_override_connect_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17472,7 +17472,7 @@ fn wire__web_audio_api__node__DynamicsCompressorNode_frb_override_connect_impl(
     )
 }
 fn wire__web_audio_api__node__DynamicsCompressorNode_number_of_inputs_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17522,7 +17522,7 @@ fn wire__web_audio_api__node__DynamicsCompressorNode_number_of_inputs_impl(
     )
 }
 fn wire__web_audio_api__node__DynamicsCompressorNode_number_of_outputs_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17572,7 +17572,7 @@ fn wire__web_audio_api__node__DynamicsCompressorNode_number_of_outputs_impl(
     )
 }
 fn wire__web_audio_api__node__DynamicsCompressorNode_reduction_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17622,7 +17622,7 @@ fn wire__web_audio_api__node__DynamicsCompressorNode_reduction_impl(
     )
 }
 fn wire__web_audio_api__node__DynamicsCompressorNode_registration_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17672,7 +17672,7 @@ fn wire__web_audio_api__node__DynamicsCompressorNode_registration_impl(
     )
 }
 fn wire__web_audio_api__node__DynamicsCompressorNode_set_channel_count_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17725,7 +17725,7 @@ fn wire__web_audio_api__node__DynamicsCompressorNode_set_channel_count_impl(
     )
 }
 fn wire__web_audio_api__node__DynamicsCompressorNode_set_channel_count_mode_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17778,7 +17778,7 @@ fn wire__web_audio_api__node__DynamicsCompressorNode_set_channel_count_mode_impl
     )
 }
 fn wire__web_audio_api__node__DynamicsCompressorNode_set_channel_interpretation_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17831,7 +17831,7 @@ fn wire__web_audio_api__node__DynamicsCompressorNode_set_channel_interpretation_
     )
 }
 fn wire__web_audio_api__node__GainNode_channel_config_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17881,7 +17881,7 @@ fn wire__web_audio_api__node__GainNode_channel_config_impl(
     )
 }
 fn wire__web_audio_api__node__GainNode_channel_count_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17929,7 +17929,7 @@ fn wire__web_audio_api__node__GainNode_channel_count_impl(
     )
 }
 fn wire__web_audio_api__node__GainNode_channel_count_mode_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17977,7 +17977,7 @@ fn wire__web_audio_api__node__GainNode_channel_count_mode_impl(
     )
 }
 fn wire__web_audio_api__node__GainNode_channel_interpretation_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18027,7 +18027,7 @@ fn wire__web_audio_api__node__GainNode_channel_interpretation_impl(
     )
 }
 fn wire__web_audio_api__node__GainNode_clear_onprocessorerror_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18077,7 +18077,7 @@ fn wire__web_audio_api__node__GainNode_clear_onprocessorerror_impl(
     )
 }
 fn wire__web_audio_api__node__GainNode_context_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18127,7 +18127,7 @@ fn wire__web_audio_api__node__GainNode_context_impl(
     )
 }
 fn wire__web_audio_api__node__GainNode_disconnect_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18177,7 +18177,7 @@ fn wire__web_audio_api__node__GainNode_disconnect_impl(
     )
 }
 fn wire__web_audio_api__node__GainNode_disconnect_output_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18228,7 +18228,7 @@ fn wire__web_audio_api__node__GainNode_disconnect_output_impl(
     )
 }
 fn wire__web_audio_api__node__GainNode_frb_override_connect_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18286,7 +18286,7 @@ fn wire__web_audio_api__node__GainNode_frb_override_connect_impl(
     )
 }
 fn wire__web_audio_api__node__GainNode_number_of_inputs_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18334,7 +18334,7 @@ fn wire__web_audio_api__node__GainNode_number_of_inputs_impl(
     )
 }
 fn wire__web_audio_api__node__GainNode_number_of_outputs_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18382,7 +18382,7 @@ fn wire__web_audio_api__node__GainNode_number_of_outputs_impl(
     )
 }
 fn wire__web_audio_api__node__GainNode_registration_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18432,7 +18432,7 @@ fn wire__web_audio_api__node__GainNode_registration_impl(
     )
 }
 fn wire__web_audio_api__node__GainNode_set_channel_count_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18483,7 +18483,7 @@ fn wire__web_audio_api__node__GainNode_set_channel_count_impl(
     )
 }
 fn wire__web_audio_api__node__GainNode_set_channel_count_mode_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18534,7 +18534,7 @@ fn wire__web_audio_api__node__GainNode_set_channel_count_mode_impl(
     )
 }
 fn wire__web_audio_api__node__GainNode_set_channel_interpretation_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18585,7 +18585,7 @@ fn wire__web_audio_api__node__GainNode_set_channel_interpretation_impl(
     )
 }
 fn wire__web_audio_api__node__IirFilterNode_channel_config_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18635,7 +18635,7 @@ fn wire__web_audio_api__node__IirFilterNode_channel_config_impl(
     )
 }
 fn wire__web_audio_api__node__IirFilterNode_channel_count_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18683,7 +18683,7 @@ fn wire__web_audio_api__node__IirFilterNode_channel_count_impl(
     )
 }
 fn wire__web_audio_api__node__IirFilterNode_channel_count_mode_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18733,7 +18733,7 @@ fn wire__web_audio_api__node__IirFilterNode_channel_count_mode_impl(
     )
 }
 fn wire__web_audio_api__node__IirFilterNode_channel_interpretation_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18783,7 +18783,7 @@ fn wire__web_audio_api__node__IirFilterNode_channel_interpretation_impl(
     )
 }
 fn wire__web_audio_api__node__IirFilterNode_clear_onprocessorerror_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18833,7 +18833,7 @@ fn wire__web_audio_api__node__IirFilterNode_clear_onprocessorerror_impl(
     )
 }
 fn wire__web_audio_api__node__IirFilterNode_context_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18883,7 +18883,7 @@ fn wire__web_audio_api__node__IirFilterNode_context_impl(
     )
 }
 fn wire__web_audio_api__node__IirFilterNode_disconnect_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18933,7 +18933,7 @@ fn wire__web_audio_api__node__IirFilterNode_disconnect_impl(
     )
 }
 fn wire__web_audio_api__node__IirFilterNode_disconnect_output_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18984,7 +18984,7 @@ fn wire__web_audio_api__node__IirFilterNode_disconnect_output_impl(
     )
 }
 fn wire__web_audio_api__node__IirFilterNode_frb_override_connect_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19044,7 +19044,7 @@ fn wire__web_audio_api__node__IirFilterNode_frb_override_connect_impl(
     )
 }
 fn wire__web_audio_api__node__IirFilterNode_number_of_inputs_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19094,7 +19094,7 @@ fn wire__web_audio_api__node__IirFilterNode_number_of_inputs_impl(
     )
 }
 fn wire__web_audio_api__node__IirFilterNode_number_of_outputs_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19144,7 +19144,7 @@ fn wire__web_audio_api__node__IirFilterNode_number_of_outputs_impl(
     )
 }
 fn wire__web_audio_api__node__IirFilterNode_registration_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19194,7 +19194,7 @@ fn wire__web_audio_api__node__IirFilterNode_registration_impl(
     )
 }
 fn wire__web_audio_api__node__IirFilterNode_set_channel_count_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19245,7 +19245,7 @@ fn wire__web_audio_api__node__IirFilterNode_set_channel_count_impl(
     )
 }
 fn wire__web_audio_api__node__IirFilterNode_set_channel_count_mode_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19296,7 +19296,7 @@ fn wire__web_audio_api__node__IirFilterNode_set_channel_count_mode_impl(
     )
 }
 fn wire__web_audio_api__node__IirFilterNode_set_channel_interpretation_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19349,7 +19349,7 @@ fn wire__web_audio_api__node__IirFilterNode_set_channel_interpretation_impl(
     )
 }
 fn wire__web_audio_api__node__MediaElementAudioSourceNode_channel_config_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19401,7 +19401,7 @@ fn wire__web_audio_api__node__MediaElementAudioSourceNode_channel_config_impl(
     )
 }
 fn wire__web_audio_api__node__MediaElementAudioSourceNode_channel_count_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19453,7 +19453,7 @@ fn wire__web_audio_api__node__MediaElementAudioSourceNode_channel_count_impl(
     )
 }
 fn wire__web_audio_api__node__MediaElementAudioSourceNode_channel_count_mode_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19507,7 +19507,7 @@ fn wire__web_audio_api__node__MediaElementAudioSourceNode_channel_count_mode_imp
     )
 }
 fn wire__web_audio_api__node__MediaElementAudioSourceNode_channel_interpretation_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19561,7 +19561,7 @@ fn wire__web_audio_api__node__MediaElementAudioSourceNode_channel_interpretation
     )
 }
 fn wire__web_audio_api__node__MediaElementAudioSourceNode_clear_onprocessorerror_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19615,7 +19615,7 @@ fn wire__web_audio_api__node__MediaElementAudioSourceNode_clear_onprocessorerror
     )
 }
 fn wire__web_audio_api__node__MediaElementAudioSourceNode_context_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19667,7 +19667,7 @@ fn wire__web_audio_api__node__MediaElementAudioSourceNode_context_impl(
     )
 }
 fn wire__web_audio_api__node__MediaElementAudioSourceNode_disconnect_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19719,7 +19719,7 @@ fn wire__web_audio_api__node__MediaElementAudioSourceNode_disconnect_impl(
     )
 }
 fn wire__web_audio_api__node__MediaElementAudioSourceNode_disconnect_output_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19774,7 +19774,7 @@ fn wire__web_audio_api__node__MediaElementAudioSourceNode_disconnect_output_impl
     )
 }
 fn wire__web_audio_api__node__MediaElementAudioSourceNode_frb_override_connect_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19836,7 +19836,7 @@ fn wire__web_audio_api__node__MediaElementAudioSourceNode_frb_override_connect_i
     )
 }
 fn wire__web_audio_api__node__MediaElementAudioSourceNode_number_of_inputs_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19890,7 +19890,7 @@ fn wire__web_audio_api__node__MediaElementAudioSourceNode_number_of_inputs_impl(
     )
 }
 fn wire__web_audio_api__node__MediaElementAudioSourceNode_number_of_outputs_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19944,7 +19944,7 @@ fn wire__web_audio_api__node__MediaElementAudioSourceNode_number_of_outputs_impl
     )
 }
 fn wire__web_audio_api__node__MediaElementAudioSourceNode_registration_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19996,7 +19996,7 @@ fn wire__web_audio_api__node__MediaElementAudioSourceNode_registration_impl(
     )
 }
 fn wire__web_audio_api__node__MediaElementAudioSourceNode_set_channel_count_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -20051,7 +20051,7 @@ fn wire__web_audio_api__node__MediaElementAudioSourceNode_set_channel_count_impl
     )
 }
 fn wire__web_audio_api__node__MediaElementAudioSourceNode_set_channel_count_mode_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -20106,7 +20106,7 @@ fn wire__web_audio_api__node__MediaElementAudioSourceNode_set_channel_count_mode
     )
 }
 fn wire__web_audio_api__node__MediaElementAudioSourceNode_set_channel_interpretation_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -20131,7 +20131,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
                 } })
 }
 fn wire__web_audio_api__node__MediaStreamAudioDestinationNode_channel_config_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -20185,7 +20185,7 @@ fn wire__web_audio_api__node__MediaStreamAudioDestinationNode_channel_config_imp
     )
 }
 fn wire__web_audio_api__node__MediaStreamAudioDestinationNode_channel_count_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -20239,7 +20239,7 @@ fn wire__web_audio_api__node__MediaStreamAudioDestinationNode_channel_count_impl
     )
 }
 fn wire__web_audio_api__node__MediaStreamAudioDestinationNode_channel_count_mode_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -20293,7 +20293,7 @@ fn wire__web_audio_api__node__MediaStreamAudioDestinationNode_channel_count_mode
     )
 }
 fn wire__web_audio_api__node__MediaStreamAudioDestinationNode_channel_interpretation_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -20317,7 +20317,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
                 } })
 }
 fn wire__web_audio_api__node__MediaStreamAudioDestinationNode_clear_onprocessorerror_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -20341,7 +20341,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
                 } })
 }
 fn wire__web_audio_api__node__MediaStreamAudioDestinationNode_context_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -20393,7 +20393,7 @@ fn wire__web_audio_api__node__MediaStreamAudioDestinationNode_context_impl(
     )
 }
 fn wire__web_audio_api__node__MediaStreamAudioDestinationNode_disconnect_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -20445,7 +20445,7 @@ fn wire__web_audio_api__node__MediaStreamAudioDestinationNode_disconnect_impl(
     )
 }
 fn wire__web_audio_api__node__MediaStreamAudioDestinationNode_disconnect_output_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -20500,7 +20500,7 @@ fn wire__web_audio_api__node__MediaStreamAudioDestinationNode_disconnect_output_
     )
 }
 fn wire__web_audio_api__node__MediaStreamAudioDestinationNode_frb_override_connect_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -20562,7 +20562,7 @@ fn wire__web_audio_api__node__MediaStreamAudioDestinationNode_frb_override_conne
     )
 }
 fn wire__web_audio_api__node__MediaStreamAudioDestinationNode_number_of_inputs_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -20616,7 +20616,7 @@ fn wire__web_audio_api__node__MediaStreamAudioDestinationNode_number_of_inputs_i
     )
 }
 fn wire__web_audio_api__node__MediaStreamAudioDestinationNode_number_of_outputs_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -20670,7 +20670,7 @@ fn wire__web_audio_api__node__MediaStreamAudioDestinationNode_number_of_outputs_
     )
 }
 fn wire__web_audio_api__node__MediaStreamAudioDestinationNode_registration_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -20724,7 +20724,7 @@ fn wire__web_audio_api__node__MediaStreamAudioDestinationNode_registration_impl(
     )
 }
 fn wire__web_audio_api__node__MediaStreamAudioDestinationNode_set_channel_count_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -20779,7 +20779,7 @@ fn wire__web_audio_api__node__MediaStreamAudioDestinationNode_set_channel_count_
     )
 }
 fn wire__web_audio_api__node__MediaStreamAudioDestinationNode_set_channel_count_mode_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -20804,7 +20804,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
                 } })
 }
 fn wire__web_audio_api__node__MediaStreamAudioDestinationNode_set_channel_interpretation_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -20829,7 +20829,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
                 } })
 }
 fn wire__web_audio_api__node__MediaStreamAudioDestinationNode_stream_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -20881,7 +20881,7 @@ fn wire__web_audio_api__node__MediaStreamAudioDestinationNode_stream_impl(
     )
 }
 fn wire__web_audio_api__node__MediaStreamAudioSourceNode_channel_config_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -20931,7 +20931,7 @@ fn wire__web_audio_api__node__MediaStreamAudioSourceNode_channel_config_impl(
     )
 }
 fn wire__web_audio_api__node__MediaStreamAudioSourceNode_channel_count_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -20981,7 +20981,7 @@ fn wire__web_audio_api__node__MediaStreamAudioSourceNode_channel_count_impl(
     )
 }
 fn wire__web_audio_api__node__MediaStreamAudioSourceNode_channel_count_mode_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -21033,7 +21033,7 @@ fn wire__web_audio_api__node__MediaStreamAudioSourceNode_channel_count_mode_impl
     )
 }
 fn wire__web_audio_api__node__MediaStreamAudioSourceNode_channel_interpretation_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -21085,7 +21085,7 @@ fn wire__web_audio_api__node__MediaStreamAudioSourceNode_channel_interpretation_
     )
 }
 fn wire__web_audio_api__node__MediaStreamAudioSourceNode_clear_onprocessorerror_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -21137,7 +21137,7 @@ fn wire__web_audio_api__node__MediaStreamAudioSourceNode_clear_onprocessorerror_
     )
 }
 fn wire__web_audio_api__node__MediaStreamAudioSourceNode_context_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -21187,7 +21187,7 @@ fn wire__web_audio_api__node__MediaStreamAudioSourceNode_context_impl(
     )
 }
 fn wire__web_audio_api__node__MediaStreamAudioSourceNode_disconnect_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -21237,7 +21237,7 @@ fn wire__web_audio_api__node__MediaStreamAudioSourceNode_disconnect_impl(
     )
 }
 fn wire__web_audio_api__node__MediaStreamAudioSourceNode_disconnect_output_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -21290,7 +21290,7 @@ fn wire__web_audio_api__node__MediaStreamAudioSourceNode_disconnect_output_impl(
     )
 }
 fn wire__web_audio_api__node__MediaStreamAudioSourceNode_frb_override_connect_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -21350,7 +21350,7 @@ fn wire__web_audio_api__node__MediaStreamAudioSourceNode_frb_override_connect_im
     )
 }
 fn wire__web_audio_api__node__MediaStreamAudioSourceNode_number_of_inputs_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -21400,7 +21400,7 @@ fn wire__web_audio_api__node__MediaStreamAudioSourceNode_number_of_inputs_impl(
     )
 }
 fn wire__web_audio_api__node__MediaStreamAudioSourceNode_number_of_outputs_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -21452,7 +21452,7 @@ fn wire__web_audio_api__node__MediaStreamAudioSourceNode_number_of_outputs_impl(
     )
 }
 fn wire__web_audio_api__node__MediaStreamAudioSourceNode_registration_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -21502,7 +21502,7 @@ fn wire__web_audio_api__node__MediaStreamAudioSourceNode_registration_impl(
     )
 }
 fn wire__web_audio_api__node__MediaStreamAudioSourceNode_set_channel_count_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -21555,7 +21555,7 @@ fn wire__web_audio_api__node__MediaStreamAudioSourceNode_set_channel_count_impl(
     )
 }
 fn wire__web_audio_api__node__MediaStreamAudioSourceNode_set_channel_count_mode_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -21608,7 +21608,7 @@ fn wire__web_audio_api__node__MediaStreamAudioSourceNode_set_channel_count_mode_
     )
 }
 fn wire__web_audio_api__node__MediaStreamAudioSourceNode_set_channel_interpretation_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -21661,7 +21661,7 @@ fn wire__web_audio_api__node__MediaStreamAudioSourceNode_set_channel_interpretat
     )
 }
 fn wire__web_audio_api__node__MediaStreamTrackAudioSourceNode_channel_config_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -21715,7 +21715,7 @@ fn wire__web_audio_api__node__MediaStreamTrackAudioSourceNode_channel_config_imp
     )
 }
 fn wire__web_audio_api__node__MediaStreamTrackAudioSourceNode_channel_count_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -21769,7 +21769,7 @@ fn wire__web_audio_api__node__MediaStreamTrackAudioSourceNode_channel_count_impl
     )
 }
 fn wire__web_audio_api__node__MediaStreamTrackAudioSourceNode_channel_count_mode_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -21823,7 +21823,7 @@ fn wire__web_audio_api__node__MediaStreamTrackAudioSourceNode_channel_count_mode
     )
 }
 fn wire__web_audio_api__node__MediaStreamTrackAudioSourceNode_channel_interpretation_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -21847,7 +21847,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
                 } })
 }
 fn wire__web_audio_api__node__MediaStreamTrackAudioSourceNode_clear_onprocessorerror_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -21871,7 +21871,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
                 } })
 }
 fn wire__web_audio_api__node__MediaStreamTrackAudioSourceNode_context_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -21923,7 +21923,7 @@ fn wire__web_audio_api__node__MediaStreamTrackAudioSourceNode_context_impl(
     )
 }
 fn wire__web_audio_api__node__MediaStreamTrackAudioSourceNode_disconnect_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -21975,7 +21975,7 @@ fn wire__web_audio_api__node__MediaStreamTrackAudioSourceNode_disconnect_impl(
     )
 }
 fn wire__web_audio_api__node__MediaStreamTrackAudioSourceNode_disconnect_output_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -22030,7 +22030,7 @@ fn wire__web_audio_api__node__MediaStreamTrackAudioSourceNode_disconnect_output_
     )
 }
 fn wire__web_audio_api__node__MediaStreamTrackAudioSourceNode_frb_override_connect_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -22092,7 +22092,7 @@ fn wire__web_audio_api__node__MediaStreamTrackAudioSourceNode_frb_override_conne
     )
 }
 fn wire__web_audio_api__node__MediaStreamTrackAudioSourceNode_number_of_inputs_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -22146,7 +22146,7 @@ fn wire__web_audio_api__node__MediaStreamTrackAudioSourceNode_number_of_inputs_i
     )
 }
 fn wire__web_audio_api__node__MediaStreamTrackAudioSourceNode_number_of_outputs_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -22200,7 +22200,7 @@ fn wire__web_audio_api__node__MediaStreamTrackAudioSourceNode_number_of_outputs_
     )
 }
 fn wire__web_audio_api__node__MediaStreamTrackAudioSourceNode_registration_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -22254,7 +22254,7 @@ fn wire__web_audio_api__node__MediaStreamTrackAudioSourceNode_registration_impl(
     )
 }
 fn wire__web_audio_api__node__MediaStreamTrackAudioSourceNode_set_channel_count_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -22309,7 +22309,7 @@ fn wire__web_audio_api__node__MediaStreamTrackAudioSourceNode_set_channel_count_
     )
 }
 fn wire__web_audio_api__node__MediaStreamTrackAudioSourceNode_set_channel_count_mode_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -22334,7 +22334,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
                 } })
 }
 fn wire__web_audio_api__node__MediaStreamTrackAudioSourceNode_set_channel_interpretation_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -22359,7 +22359,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
                 } })
 }
 fn wire__web_audio_api__node__OscillatorNode_channel_config_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -22409,7 +22409,7 @@ fn wire__web_audio_api__node__OscillatorNode_channel_config_impl(
     )
 }
 fn wire__web_audio_api__node__OscillatorNode_channel_count_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -22459,7 +22459,7 @@ fn wire__web_audio_api__node__OscillatorNode_channel_count_impl(
     )
 }
 fn wire__web_audio_api__node__OscillatorNode_channel_count_mode_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -22509,7 +22509,7 @@ fn wire__web_audio_api__node__OscillatorNode_channel_count_mode_impl(
     )
 }
 fn wire__web_audio_api__node__OscillatorNode_channel_interpretation_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -22559,7 +22559,7 @@ fn wire__web_audio_api__node__OscillatorNode_channel_interpretation_impl(
     )
 }
 fn wire__web_audio_api__node__OscillatorNode_clear_onended_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -22609,7 +22609,7 @@ fn wire__web_audio_api__node__OscillatorNode_clear_onended_impl(
     )
 }
 fn wire__web_audio_api__node__OscillatorNode_clear_onprocessorerror_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -22659,7 +22659,7 @@ fn wire__web_audio_api__node__OscillatorNode_clear_onprocessorerror_impl(
     )
 }
 fn wire__web_audio_api__node__OscillatorNode_context_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -22709,7 +22709,7 @@ fn wire__web_audio_api__node__OscillatorNode_context_impl(
     )
 }
 fn wire__web_audio_api__node__OscillatorNode_disconnect_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -22759,7 +22759,7 @@ fn wire__web_audio_api__node__OscillatorNode_disconnect_impl(
     )
 }
 fn wire__web_audio_api__node__OscillatorNode_disconnect_output_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -22812,7 +22812,7 @@ fn wire__web_audio_api__node__OscillatorNode_disconnect_output_impl(
     )
 }
 fn wire__web_audio_api__node__OscillatorNode_frb_override_connect_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -22872,7 +22872,7 @@ fn wire__web_audio_api__node__OscillatorNode_frb_override_connect_impl(
     )
 }
 fn wire__web_audio_api__node__OscillatorNode_number_of_inputs_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -22922,7 +22922,7 @@ fn wire__web_audio_api__node__OscillatorNode_number_of_inputs_impl(
     )
 }
 fn wire__web_audio_api__node__OscillatorNode_number_of_outputs_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -22972,7 +22972,7 @@ fn wire__web_audio_api__node__OscillatorNode_number_of_outputs_impl(
     )
 }
 fn wire__web_audio_api__node__OscillatorNode_registration_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -23022,7 +23022,7 @@ fn wire__web_audio_api__node__OscillatorNode_registration_impl(
     )
 }
 fn wire__web_audio_api__node__OscillatorNode_set_channel_count_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -23073,7 +23073,7 @@ fn wire__web_audio_api__node__OscillatorNode_set_channel_count_impl(
     )
 }
 fn wire__web_audio_api__node__OscillatorNode_set_channel_count_mode_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -23126,7 +23126,7 @@ fn wire__web_audio_api__node__OscillatorNode_set_channel_count_mode_impl(
     )
 }
 fn wire__web_audio_api__node__OscillatorNode_set_channel_interpretation_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -23179,7 +23179,7 @@ fn wire__web_audio_api__node__OscillatorNode_set_channel_interpretation_impl(
     )
 }
 fn wire__web_audio_api__node__OscillatorNode_set_periodic_wave_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -23233,7 +23233,7 @@ fn wire__web_audio_api__node__OscillatorNode_set_periodic_wave_impl(
     )
 }
 fn wire__web_audio_api__node__OscillatorNode_set_type_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -23284,7 +23284,7 @@ fn wire__web_audio_api__node__OscillatorNode_set_type_impl(
     )
 }
 fn wire__web_audio_api__node__OscillatorNode_start_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -23334,7 +23334,7 @@ fn wire__web_audio_api__node__OscillatorNode_start_impl(
     )
 }
 fn wire__web_audio_api__node__OscillatorNode_start_at_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -23385,7 +23385,7 @@ fn wire__web_audio_api__node__OscillatorNode_start_at_impl(
     )
 }
 fn wire__web_audio_api__node__OscillatorNode_stop_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -23435,7 +23435,7 @@ fn wire__web_audio_api__node__OscillatorNode_stop_impl(
     )
 }
 fn wire__web_audio_api__node__OscillatorNode_stop_at_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -23486,7 +23486,7 @@ fn wire__web_audio_api__node__OscillatorNode_stop_at_impl(
     )
 }
 fn wire__web_audio_api__node__OscillatorNode_type__impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -23534,7 +23534,7 @@ fn wire__web_audio_api__node__OscillatorNode_type__impl(
     )
 }
 fn wire__web_audio_api__node__PannerNode_channel_config_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -23584,7 +23584,7 @@ fn wire__web_audio_api__node__PannerNode_channel_config_impl(
     )
 }
 fn wire__web_audio_api__node__PannerNode_channel_count_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -23632,7 +23632,7 @@ fn wire__web_audio_api__node__PannerNode_channel_count_impl(
     )
 }
 fn wire__web_audio_api__node__PannerNode_channel_count_mode_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -23682,7 +23682,7 @@ fn wire__web_audio_api__node__PannerNode_channel_count_mode_impl(
     )
 }
 fn wire__web_audio_api__node__PannerNode_channel_interpretation_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -23732,7 +23732,7 @@ fn wire__web_audio_api__node__PannerNode_channel_interpretation_impl(
     )
 }
 fn wire__web_audio_api__node__PannerNode_clear_onprocessorerror_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -23782,7 +23782,7 @@ fn wire__web_audio_api__node__PannerNode_clear_onprocessorerror_impl(
     )
 }
 fn wire__web_audio_api__node__PannerNode_cone_inner_angle_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -23830,7 +23830,7 @@ fn wire__web_audio_api__node__PannerNode_cone_inner_angle_impl(
     )
 }
 fn wire__web_audio_api__node__PannerNode_cone_outer_angle_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -23878,7 +23878,7 @@ fn wire__web_audio_api__node__PannerNode_cone_outer_angle_impl(
     )
 }
 fn wire__web_audio_api__node__PannerNode_cone_outer_gain_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -23926,7 +23926,7 @@ fn wire__web_audio_api__node__PannerNode_cone_outer_gain_impl(
     )
 }
 fn wire__web_audio_api__node__PannerNode_context_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -23976,7 +23976,7 @@ fn wire__web_audio_api__node__PannerNode_context_impl(
     )
 }
 fn wire__web_audio_api__node__PannerNode_disconnect_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -24026,7 +24026,7 @@ fn wire__web_audio_api__node__PannerNode_disconnect_impl(
     )
 }
 fn wire__web_audio_api__node__PannerNode_disconnect_output_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -24077,7 +24077,7 @@ fn wire__web_audio_api__node__PannerNode_disconnect_output_impl(
     )
 }
 fn wire__web_audio_api__node__PannerNode_distance_model_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -24125,7 +24125,7 @@ fn wire__web_audio_api__node__PannerNode_distance_model_impl(
     )
 }
 fn wire__web_audio_api__node__PannerNode_frb_override_connect_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -24183,7 +24183,7 @@ fn wire__web_audio_api__node__PannerNode_frb_override_connect_impl(
     )
 }
 fn wire__web_audio_api__node__PannerNode_max_distance_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -24231,7 +24231,7 @@ fn wire__web_audio_api__node__PannerNode_max_distance_impl(
     )
 }
 fn wire__web_audio_api__node__PannerNode_number_of_inputs_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -24279,7 +24279,7 @@ fn wire__web_audio_api__node__PannerNode_number_of_inputs_impl(
     )
 }
 fn wire__web_audio_api__node__PannerNode_number_of_outputs_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -24329,7 +24329,7 @@ fn wire__web_audio_api__node__PannerNode_number_of_outputs_impl(
     )
 }
 fn wire__web_audio_api__node__PannerNode_panning_model_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -24377,7 +24377,7 @@ fn wire__web_audio_api__node__PannerNode_panning_model_impl(
     )
 }
 fn wire__web_audio_api__node__PannerNode_ref_distance_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -24425,7 +24425,7 @@ fn wire__web_audio_api__node__PannerNode_ref_distance_impl(
     )
 }
 fn wire__web_audio_api__node__PannerNode_registration_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -24475,7 +24475,7 @@ fn wire__web_audio_api__node__PannerNode_registration_impl(
     )
 }
 fn wire__web_audio_api__node__PannerNode_rolloff_factor_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -24523,7 +24523,7 @@ fn wire__web_audio_api__node__PannerNode_rolloff_factor_impl(
     )
 }
 fn wire__web_audio_api__node__PannerNode_set_channel_count_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -24574,7 +24574,7 @@ fn wire__web_audio_api__node__PannerNode_set_channel_count_impl(
     )
 }
 fn wire__web_audio_api__node__PannerNode_set_channel_count_mode_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -24625,7 +24625,7 @@ fn wire__web_audio_api__node__PannerNode_set_channel_count_mode_impl(
     )
 }
 fn wire__web_audio_api__node__PannerNode_set_channel_interpretation_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -24678,7 +24678,7 @@ fn wire__web_audio_api__node__PannerNode_set_channel_interpretation_impl(
     )
 }
 fn wire__web_audio_api__node__PannerNode_set_cone_inner_angle_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -24729,7 +24729,7 @@ fn wire__web_audio_api__node__PannerNode_set_cone_inner_angle_impl(
     )
 }
 fn wire__web_audio_api__node__PannerNode_set_cone_outer_angle_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -24780,7 +24780,7 @@ fn wire__web_audio_api__node__PannerNode_set_cone_outer_angle_impl(
     )
 }
 fn wire__web_audio_api__node__PannerNode_set_cone_outer_gain_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -24831,7 +24831,7 @@ fn wire__web_audio_api__node__PannerNode_set_cone_outer_gain_impl(
     )
 }
 fn wire__web_audio_api__node__PannerNode_set_distance_model_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -24882,7 +24882,7 @@ fn wire__web_audio_api__node__PannerNode_set_distance_model_impl(
     )
 }
 fn wire__web_audio_api__node__PannerNode_set_max_distance_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -24933,7 +24933,7 @@ fn wire__web_audio_api__node__PannerNode_set_max_distance_impl(
     )
 }
 fn wire__web_audio_api__node__PannerNode_set_orientation_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -24988,7 +24988,7 @@ fn wire__web_audio_api__node__PannerNode_set_orientation_impl(
     )
 }
 fn wire__web_audio_api__node__PannerNode_set_panning_model_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25039,7 +25039,7 @@ fn wire__web_audio_api__node__PannerNode_set_panning_model_impl(
     )
 }
 fn wire__web_audio_api__node__PannerNode_set_position_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25094,7 +25094,7 @@ fn wire__web_audio_api__node__PannerNode_set_position_impl(
     )
 }
 fn wire__web_audio_api__node__PannerNode_set_ref_distance_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25145,7 +25145,7 @@ fn wire__web_audio_api__node__PannerNode_set_ref_distance_impl(
     )
 }
 fn wire__web_audio_api__node__PannerNode_set_rolloff_factor_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25196,7 +25196,7 @@ fn wire__web_audio_api__node__PannerNode_set_rolloff_factor_impl(
     )
 }
 fn wire__web_audio_api__node__ScriptProcessorNode_buffer_size_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25246,7 +25246,7 @@ fn wire__web_audio_api__node__ScriptProcessorNode_buffer_size_impl(
     )
 }
 fn wire__web_audio_api__node__ScriptProcessorNode_channel_config_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25296,7 +25296,7 @@ fn wire__web_audio_api__node__ScriptProcessorNode_channel_config_impl(
     )
 }
 fn wire__web_audio_api__node__ScriptProcessorNode_channel_count_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25346,7 +25346,7 @@ fn wire__web_audio_api__node__ScriptProcessorNode_channel_count_impl(
     )
 }
 fn wire__web_audio_api__node__ScriptProcessorNode_channel_count_mode_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25396,7 +25396,7 @@ fn wire__web_audio_api__node__ScriptProcessorNode_channel_count_mode_impl(
     )
 }
 fn wire__web_audio_api__node__ScriptProcessorNode_channel_interpretation_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25446,7 +25446,7 @@ fn wire__web_audio_api__node__ScriptProcessorNode_channel_interpretation_impl(
     )
 }
 fn wire__web_audio_api__node__ScriptProcessorNode_clear_onaudioprocess_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25496,7 +25496,7 @@ fn wire__web_audio_api__node__ScriptProcessorNode_clear_onaudioprocess_impl(
     )
 }
 fn wire__web_audio_api__node__ScriptProcessorNode_clear_onprocessorerror_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25546,7 +25546,7 @@ fn wire__web_audio_api__node__ScriptProcessorNode_clear_onprocessorerror_impl(
     )
 }
 fn wire__web_audio_api__node__ScriptProcessorNode_context_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25596,7 +25596,7 @@ fn wire__web_audio_api__node__ScriptProcessorNode_context_impl(
     )
 }
 fn wire__web_audio_api__node__ScriptProcessorNode_disconnect_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25646,7 +25646,7 @@ fn wire__web_audio_api__node__ScriptProcessorNode_disconnect_impl(
     )
 }
 fn wire__web_audio_api__node__ScriptProcessorNode_disconnect_output_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25699,7 +25699,7 @@ fn wire__web_audio_api__node__ScriptProcessorNode_disconnect_output_impl(
     )
 }
 fn wire__web_audio_api__node__ScriptProcessorNode_frb_override_connect_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25759,7 +25759,7 @@ fn wire__web_audio_api__node__ScriptProcessorNode_frb_override_connect_impl(
     )
 }
 fn wire__web_audio_api__node__ScriptProcessorNode_number_of_inputs_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25809,7 +25809,7 @@ fn wire__web_audio_api__node__ScriptProcessorNode_number_of_inputs_impl(
     )
 }
 fn wire__web_audio_api__node__ScriptProcessorNode_number_of_outputs_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25859,7 +25859,7 @@ fn wire__web_audio_api__node__ScriptProcessorNode_number_of_outputs_impl(
     )
 }
 fn wire__web_audio_api__node__ScriptProcessorNode_registration_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25909,7 +25909,7 @@ fn wire__web_audio_api__node__ScriptProcessorNode_registration_impl(
     )
 }
 fn wire__web_audio_api__node__ScriptProcessorNode_set_channel_count_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25962,7 +25962,7 @@ fn wire__web_audio_api__node__ScriptProcessorNode_set_channel_count_impl(
     )
 }
 fn wire__web_audio_api__node__ScriptProcessorNode_set_channel_count_mode_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -26015,7 +26015,7 @@ fn wire__web_audio_api__node__ScriptProcessorNode_set_channel_count_mode_impl(
     )
 }
 fn wire__web_audio_api__node__ScriptProcessorNode_set_channel_interpretation_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -26068,7 +26068,7 @@ fn wire__web_audio_api__node__ScriptProcessorNode_set_channel_interpretation_imp
     )
 }
 fn wire__web_audio_api__node__StereoPannerNode_channel_config_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -26118,7 +26118,7 @@ fn wire__web_audio_api__node__StereoPannerNode_channel_config_impl(
     )
 }
 fn wire__web_audio_api__node__StereoPannerNode_channel_count_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -26168,7 +26168,7 @@ fn wire__web_audio_api__node__StereoPannerNode_channel_count_impl(
     )
 }
 fn wire__web_audio_api__node__StereoPannerNode_channel_count_mode_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -26218,7 +26218,7 @@ fn wire__web_audio_api__node__StereoPannerNode_channel_count_mode_impl(
     )
 }
 fn wire__web_audio_api__node__StereoPannerNode_channel_interpretation_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -26268,7 +26268,7 @@ fn wire__web_audio_api__node__StereoPannerNode_channel_interpretation_impl(
     )
 }
 fn wire__web_audio_api__node__StereoPannerNode_clear_onprocessorerror_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -26318,7 +26318,7 @@ fn wire__web_audio_api__node__StereoPannerNode_clear_onprocessorerror_impl(
     )
 }
 fn wire__web_audio_api__node__StereoPannerNode_context_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -26368,7 +26368,7 @@ fn wire__web_audio_api__node__StereoPannerNode_context_impl(
     )
 }
 fn wire__web_audio_api__node__StereoPannerNode_disconnect_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -26418,7 +26418,7 @@ fn wire__web_audio_api__node__StereoPannerNode_disconnect_impl(
     )
 }
 fn wire__web_audio_api__node__StereoPannerNode_disconnect_output_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -26471,7 +26471,7 @@ fn wire__web_audio_api__node__StereoPannerNode_disconnect_output_impl(
     )
 }
 fn wire__web_audio_api__node__StereoPannerNode_frb_override_connect_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -26531,7 +26531,7 @@ fn wire__web_audio_api__node__StereoPannerNode_frb_override_connect_impl(
     )
 }
 fn wire__web_audio_api__node__StereoPannerNode_number_of_inputs_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -26581,7 +26581,7 @@ fn wire__web_audio_api__node__StereoPannerNode_number_of_inputs_impl(
     )
 }
 fn wire__web_audio_api__node__StereoPannerNode_number_of_outputs_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -26631,7 +26631,7 @@ fn wire__web_audio_api__node__StereoPannerNode_number_of_outputs_impl(
     )
 }
 fn wire__web_audio_api__node__StereoPannerNode_registration_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -26681,7 +26681,7 @@ fn wire__web_audio_api__node__StereoPannerNode_registration_impl(
     )
 }
 fn wire__web_audio_api__node__StereoPannerNode_set_channel_count_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -26732,7 +26732,7 @@ fn wire__web_audio_api__node__StereoPannerNode_set_channel_count_impl(
     )
 }
 fn wire__web_audio_api__node__StereoPannerNode_set_channel_count_mode_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -26785,7 +26785,7 @@ fn wire__web_audio_api__node__StereoPannerNode_set_channel_count_mode_impl(
     )
 }
 fn wire__web_audio_api__node__StereoPannerNode_set_channel_interpretation_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -26838,7 +26838,7 @@ fn wire__web_audio_api__node__StereoPannerNode_set_channel_interpretation_impl(
     )
 }
 fn wire__web_audio_api__node__WaveShaperNode_channel_config_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -26888,7 +26888,7 @@ fn wire__web_audio_api__node__WaveShaperNode_channel_config_impl(
     )
 }
 fn wire__web_audio_api__node__WaveShaperNode_channel_count_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -26938,7 +26938,7 @@ fn wire__web_audio_api__node__WaveShaperNode_channel_count_impl(
     )
 }
 fn wire__web_audio_api__node__WaveShaperNode_channel_count_mode_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -26988,7 +26988,7 @@ fn wire__web_audio_api__node__WaveShaperNode_channel_count_mode_impl(
     )
 }
 fn wire__web_audio_api__node__WaveShaperNode_channel_interpretation_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -27038,7 +27038,7 @@ fn wire__web_audio_api__node__WaveShaperNode_channel_interpretation_impl(
     )
 }
 fn wire__web_audio_api__node__WaveShaperNode_clear_onprocessorerror_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -27088,7 +27088,7 @@ fn wire__web_audio_api__node__WaveShaperNode_clear_onprocessorerror_impl(
     )
 }
 fn wire__web_audio_api__node__WaveShaperNode_context_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -27138,7 +27138,7 @@ fn wire__web_audio_api__node__WaveShaperNode_context_impl(
     )
 }
 fn wire__web_audio_api__node__WaveShaperNode_disconnect_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -27188,7 +27188,7 @@ fn wire__web_audio_api__node__WaveShaperNode_disconnect_impl(
     )
 }
 fn wire__web_audio_api__node__WaveShaperNode_disconnect_output_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -27241,7 +27241,7 @@ fn wire__web_audio_api__node__WaveShaperNode_disconnect_output_impl(
     )
 }
 fn wire__web_audio_api__node__WaveShaperNode_frb_override_connect_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -27301,7 +27301,7 @@ fn wire__web_audio_api__node__WaveShaperNode_frb_override_connect_impl(
     )
 }
 fn wire__web_audio_api__node__WaveShaperNode_number_of_inputs_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -27351,7 +27351,7 @@ fn wire__web_audio_api__node__WaveShaperNode_number_of_inputs_impl(
     )
 }
 fn wire__web_audio_api__node__WaveShaperNode_number_of_outputs_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -27401,7 +27401,7 @@ fn wire__web_audio_api__node__WaveShaperNode_number_of_outputs_impl(
     )
 }
 fn wire__web_audio_api__node__WaveShaperNode_oversample_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -27449,7 +27449,7 @@ fn wire__web_audio_api__node__WaveShaperNode_oversample_impl(
     )
 }
 fn wire__web_audio_api__node__WaveShaperNode_registration_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -27499,7 +27499,7 @@ fn wire__web_audio_api__node__WaveShaperNode_registration_impl(
     )
 }
 fn wire__web_audio_api__node__WaveShaperNode_set_channel_count_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -27550,7 +27550,7 @@ fn wire__web_audio_api__node__WaveShaperNode_set_channel_count_impl(
     )
 }
 fn wire__web_audio_api__node__WaveShaperNode_set_channel_count_mode_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -27603,7 +27603,7 @@ fn wire__web_audio_api__node__WaveShaperNode_set_channel_count_mode_impl(
     )
 }
 fn wire__web_audio_api__node__WaveShaperNode_set_channel_interpretation_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -27656,7 +27656,7 @@ fn wire__web_audio_api__node__WaveShaperNode_set_channel_interpretation_impl(
     )
 }
 fn wire__web_audio_api__node__WaveShaperNode_set_curve_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -27707,7 +27707,7 @@ fn wire__web_audio_api__node__WaveShaperNode_set_curve_impl(
     )
 }
 fn wire__web_audio_api__node__WaveShaperNode_set_oversample_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -27762,7 +27762,7 @@ fn wire__web_audio_api__node__WaveShaperNode_set_oversample_impl(
     )
 }
 fn wire__web_audio_api__worklet__AudioWorkletNode_channel_config_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -27812,7 +27812,7 @@ fn wire__web_audio_api__worklet__AudioWorkletNode_channel_config_impl(
     )
 }
 fn wire__web_audio_api__worklet__AudioWorkletNode_channel_count_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -27862,7 +27862,7 @@ fn wire__web_audio_api__worklet__AudioWorkletNode_channel_count_impl(
     )
 }
 fn wire__web_audio_api__worklet__AudioWorkletNode_channel_count_mode_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -27912,7 +27912,7 @@ fn wire__web_audio_api__worklet__AudioWorkletNode_channel_count_mode_impl(
     )
 }
 fn wire__web_audio_api__worklet__AudioWorkletNode_channel_interpretation_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -27962,7 +27962,7 @@ fn wire__web_audio_api__worklet__AudioWorkletNode_channel_interpretation_impl(
     )
 }
 fn wire__web_audio_api__worklet__AudioWorkletNode_clear_onprocessorerror_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -28012,7 +28012,7 @@ fn wire__web_audio_api__worklet__AudioWorkletNode_clear_onprocessorerror_impl(
     )
 }
 fn wire__web_audio_api__worklet__AudioWorkletNode_context_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -28062,7 +28062,7 @@ fn wire__web_audio_api__worklet__AudioWorkletNode_context_impl(
     )
 }
 fn wire__web_audio_api__worklet__AudioWorkletNode_disconnect_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -28112,7 +28112,7 @@ fn wire__web_audio_api__worklet__AudioWorkletNode_disconnect_impl(
     )
 }
 fn wire__web_audio_api__worklet__AudioWorkletNode_disconnect_output_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -28165,7 +28165,7 @@ fn wire__web_audio_api__worklet__AudioWorkletNode_disconnect_output_impl(
     )
 }
 fn wire__web_audio_api__worklet__AudioWorkletNode_number_of_inputs_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -28215,7 +28215,7 @@ fn wire__web_audio_api__worklet__AudioWorkletNode_number_of_inputs_impl(
     )
 }
 fn wire__web_audio_api__worklet__AudioWorkletNode_number_of_outputs_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -28265,7 +28265,7 @@ fn wire__web_audio_api__worklet__AudioWorkletNode_number_of_outputs_impl(
     )
 }
 fn wire__web_audio_api__worklet__AudioWorkletNode_parameters_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -28315,7 +28315,7 @@ fn wire__web_audio_api__worklet__AudioWorkletNode_parameters_impl(
     )
 }
 fn wire__web_audio_api__worklet__AudioWorkletNode_registration_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -28365,7 +28365,7 @@ fn wire__web_audio_api__worklet__AudioWorkletNode_registration_impl(
     )
 }
 fn wire__web_audio_api__worklet__AudioWorkletNode_set_channel_count_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -28418,7 +28418,7 @@ fn wire__web_audio_api__worklet__AudioWorkletNode_set_channel_count_impl(
     )
 }
 fn wire__web_audio_api__worklet__AudioWorkletNode_set_channel_count_mode_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -28471,7 +28471,7 @@ fn wire__web_audio_api__worklet__AudioWorkletNode_set_channel_count_mode_impl(
     )
 }
 fn wire__web_audio_api__worklet__AudioWorkletNode_set_channel_interpretation_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
+    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -31554,7 +31554,7 @@ impl SseDecode for usize {
 
 fn pde_ffi_dispatcher_primary_impl(
     func_id: i32,
-    port: flutter_rust_bridge::for_generated::MessagePort,
+    port: flutter_rust_bridge::for_generated::DartNativeSendPort,
     ptr: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len: i32,
     data_len: i32,

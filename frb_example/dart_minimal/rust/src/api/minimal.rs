@@ -28,3 +28,7 @@ pub fn hello_func() {
     channel.post_message(&data).unwrap();
     flutter_rust_bridge::console_error!("rust hello_func after post_message");
 }
+
+pub fn func_type_fallible_panic_twin_normal() {
+    panic!("deliberate panic")
+}
