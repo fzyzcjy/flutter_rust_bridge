@@ -134,16 +134,6 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub fn new(inner: &'b mut TypeParser<'a>, context: &'c TypeParserParsingContext) -> Self {
         Self { inner, context }
     }
-
-    pub fn with_context<'z: 'a + 'b + 'c>(
-        &'z mut self,
-        context: &'c TypeParserParsingContext,
-    ) -> Self {
-        Self {
-            inner: self.inner,
-            context,
-        }
-    }
 }
 
 #[derive(Clone)]

@@ -16,7 +16,11 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         context_modifier: impl FnOnce(&TypeParserParsingContext) -> TypeParserParsingContext,
     ) -> anyhow::Result<MirType> {
         let new_context = context_modifier(self.context);
-        self.with_context(&new_context).parse_type(ty)
+        let mut self_with_context = Self {
+            inner: self.inner,
+            context: &new_context,
+        };
+        self_with_context.parse_type(ty)
     }
 
     fn parse_type_inner(&mut self, ty: &Type) -> anyhow::Result<MirType> {
