@@ -53,11 +53,11 @@ class GeneralizedFrbRustBinding {
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   PlatformPointer dartOpaqueDart2RustEncode(
           Object object, NativePortType dartHandlerPort) =>
-      _dart_opaque_dart2rust_encode(object, dartHandlerPort);
+      _dart_opaque_dart2rust_encode(object.jsify()!, dartHandlerPort);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   Object dartOpaqueRust2DartDecode(int ptr) =>
-      _dart_opaque_rust2dart_decode(ptr);
+      _dart_opaque_rust2dart_decode(ptr).dartify()!;
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   void dartOpaqueDropThreadBoxPersistentHandle(int ptr) =>
