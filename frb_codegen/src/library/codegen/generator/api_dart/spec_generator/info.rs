@@ -90,7 +90,7 @@ impl<'a> ApiDartGeneratorInfoTrait for DelegateApiDartGenerator<'a> {
                 MirTypePrimitive::U64
                 | MirTypePrimitive::I64
                 | MirTypePrimitive::Usize
-                | MirTypePrimitive::Isize => "int",
+                | MirTypePrimitive::Isize => "int".to_owned(),
                 // frb-coverage:ignore-start
                 _ => unreachable!(),
                 // frb-coverage:ignore-end
