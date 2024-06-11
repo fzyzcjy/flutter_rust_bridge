@@ -91,7 +91,7 @@ class RustLibWire implements BaseWire {
 
   void wire__crate__api__minimal__f(
           NativePortType port_, Object /* BigInt64Array */ arg) =>
-      wasmModule.wire__crate__api__minimal__f(port_, arg.jsify());
+      wasmModule.wire__crate__api__minimal__f(port_, arg.jsify()!);
 
   void wire__crate__api__minimal__init_app(NativePortType port_) =>
       wasmModule.wire__crate__api__minimal__init_app(port_);
