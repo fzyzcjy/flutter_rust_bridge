@@ -9,6 +9,7 @@ import 'api/async_misc.dart';
 import 'api/async_spawn.dart';
 import 'api/attribute.dart';
 import 'api/benchmark_misc.dart';
+import 'api/casted_primitive.dart';
 import 'api/chrono_type.dart';
 import 'api/comment.dart';
 import 'api/constructor.dart';
@@ -938,6 +939,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   String dco_decode_Backtrace(dynamic raw);
+
+  @protected
+  int dco_decode_CastedPrimitive_i_64(dynamic raw);
+
+  @protected
+  int dco_decode_CastedPrimitive_isize(dynamic raw);
+
+  @protected
+  int dco_decode_CastedPrimitive_u_64(dynamic raw);
+
+  @protected
+  int dco_decode_CastedPrimitive_usize(dynamic raw);
 
   @protected
   String dco_decode_Char(dynamic raw);
@@ -5062,6 +5075,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   String sse_decode_Backtrace(SseDeserializer deserializer);
+
+  @protected
+  int sse_decode_CastedPrimitive_i_64(SseDeserializer deserializer);
+
+  @protected
+  int sse_decode_CastedPrimitive_isize(SseDeserializer deserializer);
+
+  @protected
+  int sse_decode_CastedPrimitive_u_64(SseDeserializer deserializer);
+
+  @protected
+  int sse_decode_CastedPrimitive_usize(SseDeserializer deserializer);
 
   @protected
   String sse_decode_Char(SseDeserializer deserializer);
@@ -9583,6 +9608,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_Backtrace(String self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_CastedPrimitive_i_64(int self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_CastedPrimitive_isize(int self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_CastedPrimitive_u_64(int self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_CastedPrimitive_usize(int self, SseSerializer serializer);
 
   @protected
   void sse_encode_Char(String self, SseSerializer serializer);

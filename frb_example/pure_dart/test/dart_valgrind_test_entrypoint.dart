@@ -11,6 +11,7 @@ import 'api/array_test.dart' as array_test;
 import 'api/async_misc_test.dart' as async_misc_test;
 import 'api/async_spawn_test.dart' as async_spawn_test;
 import 'api/attribute_test.dart' as attribute_test;
+import 'api/casted_primitive_test.dart' as casted_primitive_test;
 import 'api/chrono_type_test.dart' as chrono_type_test;
 import 'api/comment_test.dart' as comment_test;
 import 'api/constructor_test.dart' as constructor_test;
@@ -439,6 +440,7 @@ Future<void> callFileEntrypoints() async {
   await async_misc_test.main(skipRustLibInit: true);
   await async_spawn_test.main(skipRustLibInit: true);
   await attribute_test.main(skipRustLibInit: true);
+  await casted_primitive_test.main(skipRustLibInit: true);
   await chrono_type_test.main(skipRustLibInit: true);
   await comment_test.main(skipRustLibInit: true);
   await constructor_test.main(skipRustLibInit: true);

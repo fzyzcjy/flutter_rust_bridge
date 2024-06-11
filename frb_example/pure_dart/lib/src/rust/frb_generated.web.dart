@@ -12,6 +12,7 @@ import 'api/async_misc.dart';
 import 'api/async_spawn.dart';
 import 'api/attribute.dart';
 import 'api/benchmark_misc.dart';
+import 'api/casted_primitive.dart';
 import 'api/chrono_type.dart';
 import 'api/comment.dart';
 import 'api/constructor.dart';
@@ -2308,6 +2309,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   String dco_decode_Backtrace(dynamic raw);
+
+  @protected
+  int dco_decode_CastedPrimitive_i_64(dynamic raw);
+
+  @protected
+  int dco_decode_CastedPrimitive_isize(dynamic raw);
+
+  @protected
+  int dco_decode_CastedPrimitive_u_64(dynamic raw);
+
+  @protected
+  int dco_decode_CastedPrimitive_usize(dynamic raw);
 
   @protected
   String dco_decode_Char(dynamic raw);
@@ -10820,6 +10833,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   String sse_decode_Backtrace(SseDeserializer deserializer);
+
+  @protected
+  int sse_decode_CastedPrimitive_i_64(SseDeserializer deserializer);
+
+  @protected
+  int sse_decode_CastedPrimitive_isize(SseDeserializer deserializer);
+
+  @protected
+  int sse_decode_CastedPrimitive_u_64(SseDeserializer deserializer);
+
+  @protected
+  int sse_decode_CastedPrimitive_usize(SseDeserializer deserializer);
 
   @protected
   String sse_decode_Char(SseDeserializer deserializer);
@@ -29300,6 +29325,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_Backtrace(String self, SseSerializer serializer);
 
   @protected
+  void sse_encode_CastedPrimitive_i_64(int self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_CastedPrimitive_isize(int self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_CastedPrimitive_u_64(int self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_CastedPrimitive_usize(int self, SseSerializer serializer);
+
+  @protected
   void sse_encode_Char(String self, SseSerializer serializer);
 
   @protected
@@ -37178,6 +37215,42 @@ class RustLibWire implements BaseWire {
       wire__crate__api__benchmark_misc__benchmark_void_semi_serialize() =>
           wasmModule
               .wire__crate__api__benchmark_misc__benchmark_void_semi_serialize();
+
+  void wire__crate__api__casted_primitive__casted_primitive_i64_twin_normal(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__casted_primitive__casted_primitive_i64_twin_normal(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__casted_primitive__casted_primitive_isize_twin_normal(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__casted_primitive__casted_primitive_isize_twin_normal(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__casted_primitive__casted_primitive_u64_twin_normal(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__casted_primitive__casted_primitive_u64_twin_normal(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__casted_primitive__casted_primitive_usize_twin_normal(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__casted_primitive__casted_primitive_usize_twin_normal(
+              port_, ptr_, rust_vec_len_, data_len_);
 
   void wire__crate__api__chrono_type__datetime_local_twin_normal(
           NativePortType port_, Object d) =>
@@ -59666,6 +59739,34 @@ class RustLibWasmModule {
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__benchmark_misc__benchmark_void_semi_serialize();
+
+  external void
+      wire__crate__api__casted_primitive__casted_primitive_i64_twin_normal(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__casted_primitive__casted_primitive_isize_twin_normal(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__casted_primitive__casted_primitive_u64_twin_normal(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__casted_primitive__casted_primitive_usize_twin_normal(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
 
   external void wire__crate__api__chrono_type__datetime_local_twin_normal(
       NativePortType port_, Object d);

@@ -4,6 +4,7 @@ pub mod async_misc;
 pub mod async_spawn;
 pub mod attribute;
 pub mod benchmark_misc;
+pub mod casted_primitive;
 pub mod chrono_type;
 pub mod comment;
 #[cfg(target_os = "non_existent_os")]
@@ -52,6 +53,5 @@ pub mod structure;
 pub mod tuple;
 pub mod type_alias;
 pub mod uuid_type;
-mod casted_primitive;
 
 pub fn function_at_api_mod_rs() {}
