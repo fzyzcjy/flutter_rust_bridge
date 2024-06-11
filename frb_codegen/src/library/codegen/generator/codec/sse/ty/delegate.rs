@@ -44,7 +44,13 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     generate_stream_sink_setup_and_serialize(mir, "self")
                 }
                 MirTypeDelegate::BigPrimitive(_) => "self.toString()".to_owned(),
-                MirTypeDelegate::CastedPrimitive(_) => "BigInt.from(self)".to_owned(),
+                MirTypeDelegate::CastedPrimitive(mir) => match mir.inner {
+                    MirTypePrimitive::Isize  | MirTypePrimitive::I64=> "sseEncodeCastedPrimitiveI64".to_owned(),
+                    MirTypePrimitive::Usize  | MirTypePrimitive::U64=> "sseEncodeCastedPrimitiveU64".to_owned(),
+                    // frb-coverage:ignore-start
+                    _ => unreachable!(),
+                    // frb-coverage:ignore-end
+                }
                 MirTypeDelegate::RustAutoOpaqueExplicit(_ir) => "self".to_owned(),
                 MirTypeDelegate::ProxyEnum(mir) => {
                     generate_proxy_enum_dart_encode(mir, self.context.as_api_dart_context())
