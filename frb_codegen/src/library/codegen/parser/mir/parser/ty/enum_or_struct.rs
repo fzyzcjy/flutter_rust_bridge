@@ -135,7 +135,9 @@ where
 
     fn compute_default_opaque(obj: &Obj) -> bool;
 
-    fn inner_mut(&mut self) -> &mut TypeParserWithContext<'_, '_, '_>;
+    fn inner_mut<'a>(&'a mut self) -> &'a mut TypeParserWithContext<'_, '_, '_>
+    where
+        Self: 'a;
 }
 
 #[derive(Clone, Debug, Default)]
