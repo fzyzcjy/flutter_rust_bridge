@@ -20,7 +20,7 @@ Future<void> initializeWasmModule({required String root}) async {
 }
 
 @JS('wasm_bindgen')
-external Future<dynamic> _jsWasmBindgen(String path);
+external Future<void> _jsWasmBindgen(String path);
 
 void _ensureCrossOriginIsolated() {
   switch (crossOriginIsolated) {
