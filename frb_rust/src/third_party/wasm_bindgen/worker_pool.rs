@@ -91,7 +91,7 @@ impl WorkerPool {
                             // panic
                             transfer[0].postMessage([FRB_ACTION_PANIC, err.toString()])
                         }} else {{
-                            console.log('flutter_rust_bridge: Caught error when receive_transfer_closure but fail to report')
+                            console.warn('flutter_rust_bridge: Caught error when receive_transfer_closure but fail to report')
                         }}
                         setTimeout(() => {{ throw err }})
                         postMessage(null)
