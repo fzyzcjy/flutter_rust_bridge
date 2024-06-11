@@ -24,18 +24,6 @@ impl<T: Transfer> Transfer for Option<T> {
     }
 }
 
-impl Transfer for String {
-    fn deserialize(value: &JsValue) -> Self {
-        value.as_string().unwrap()
-    }
-    fn serialize(self) -> JsValue {
-        self.into()
-    }
-    fn transferables(&self) -> Vec<JsValue> {
-        vec![self.into()]
-    }
-}
-
 // impl Transfer for PortLike {
 //     fn deserialize(value: &JsValue) -> Self {
 //         if let Some(name) = value.as_string() {
