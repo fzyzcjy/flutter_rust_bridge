@@ -86,6 +86,15 @@ impl<'a> ApiDartGeneratorInfoTrait for DelegateApiDartGenerator<'a> {
                 ApiDartGenerator::new(*mir.inner_ok.clone(), self.context).dart_api_type(),
             ),
             MirTypeDelegate::BigPrimitive(_) => "BigInt".to_owned(),
+            MirTypeDelegate::CastedPrimitive(mir) => match mir.inner {
+                MirTypePrimitive::U64
+                | MirTypePrimitive::I64
+                | MirTypePrimitive::Usize
+                | MirTypePrimitive::Isize => "int",
+                // frb-coverage:ignore-start
+                _ => unreachable!(),
+                // frb-coverage:ignore-end
+            },
             MirTypeDelegate::RustAutoOpaqueExplicit(mir) => {
                 ApiDartGenerator::new(mir.inner.clone(), self.context).dart_api_type()
             }
