@@ -27,14 +27,14 @@ class Int64List extends TypedList<BigInt> {
       : inner = $data.Int64List.sublistView(data, start, end);
 
   @override
-  int _dart2raw(Object? value) {
+  int outer2inner(Object? value) {
     if (value is BigInt) return value.toInt();
     if (value is int) return value;
     throw ArgumentError.value(value);
   }
 
   @override
-  BigInt _inner2outer(int value) => BigInt.from(value);
+  BigInt inner2outer(int value) => BigInt.from(value);
 
   @override
   Int64List operator +(Object other) {
@@ -74,7 +74,7 @@ class Uint64List extends TypedList<BigInt> {
   static const _minI64 = 0x8000000000000000;
 
   @override
-  BigInt _inner2outer(int value) {
+  BigInt inner2outer(int value) {
     if (value < 0) {
       // two's complement signed integer to unsigned bigint
       return _maxI64b + BigInt.from(value - _minI64) + BigInt.one;
@@ -83,7 +83,7 @@ class Uint64List extends TypedList<BigInt> {
   }
 
   @override
-  int _dart2raw(Object? value) {
+  int outer2inner(Object? value) {
     if (value is int) return value;
     if (value is BigInt) {
       if (value > _maxI64b) {

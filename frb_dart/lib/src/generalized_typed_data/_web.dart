@@ -21,10 +21,10 @@ class Int64List extends TypedList<BigInt> {
   Int64List.from(this.inner);
 
   @override
-  BigInt _inner2outer(Object? value) => jsBigIntToDartBigInt(value!);
+  BigInt inner2outer(Object? value) => jsBigIntToDartBigInt(value!);
 
   @override
-  Object? _outer2inner(Object? value) => _convertBigIntToJs(value!);
+  Object? outer2inner(Object? value) => _convertBigIntToJs(value!);
 
   /// Construct a list
   factory Int64List(int length) => Int64List.from(BigInt64Array(length));
@@ -52,10 +52,10 @@ class Uint64List extends TypedList<BigInt> {
   Uint64List.from(this.inner);
 
   @override
-  BigInt _inner2outer(Object? value) => jsBigIntToDartBigInt(value!);
+  BigInt inner2outer(Object? value) => jsBigIntToDartBigInt(value!);
 
   @override
-  Object? _outer2inner(Object? value) => _convertBigIntToJs(value!);
+  Object? outer2inner(Object? value) => _convertBigIntToJs(value!);
 
   /// Construct a list
   factory Uint64List(int length) => Uint64List.from(BigUint64Array(length));

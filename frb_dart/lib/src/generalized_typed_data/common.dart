@@ -1,6 +1,7 @@
 import 'dart:collection';
 
 import 'package:flutter_rust_bridge/src/exceptions.dart';
+import 'package:meta/meta.dart';
 
 /// {@macro flutter_rust_bridge.internal}
 abstract class TypedList<T, TInner> extends ListMixin<T> {
@@ -10,16 +11,20 @@ abstract class TypedList<T, TInner> extends ListMixin<T> {
   @override
   TypedList<T, TInner> operator +(Object other);
 
-  T _inner2outer(TInner value);
+  /// {@macro flutter_rust_bridge.internal}
+  @protected
+  T inner2outer(TInner value);
 
-  TInner _outer2inner(Object? value);
+  /// {@macro flutter_rust_bridge.internal}
+  @protected
+  TInner outer2inner(Object? value);
 
   @override
-  T operator [](int index) => _inner2outer(inner[index]);
+  T operator [](int index) => inner2outer(inner[index]);
 
   @override
   void operator []=(int index, Object? value) =>
-      inner[index] = _outer2inner(value);
+      inner[index] = outer2inner(value);
 
   @override
   int get length => inner.length;
