@@ -115,7 +115,7 @@ abstract class _SetAnyListMixin<T> extends ListMixin<T> {
 }
 
 abstract class _TypedList<T> extends _SetAnyListMixin<T> {
-  _TypedArray get _inner;
+  dynamic get _inner;
 
   /// How to cast a raw JS value to an acceptable Dart value.
   T _js2dart(Object? value);
@@ -150,14 +150,14 @@ abstract class _Int64OrUint64List extends _TypedList<BigInt> {
   }
 }
 
-@JS('TypedArray')
-abstract class _TypedArray {
-  external ByteBuffer get buffer;
-
-  external int length;
-
-  external BigInt at(int index);
-}
+// @JS('TypedArray')
+// abstract class _TypedArray {
+//   ByteBuffer get buffer;
+//
+//   abstract int length;
+//
+//   BigInt at(int index);
+// }
 
 extension on _TypedArray {
   operator []=(int index, Object? value) {
@@ -189,6 +189,15 @@ extension type JSBigInt64Array._(JSObject _) implements JSObject {
   factory JSBigInt64Array.sublistView(TypedData array,
           [int offset = 0, int? length]) =>
       JSBigInt64Array(array.buffer, offset, length);
+
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
+  external ByteBuffer get buffer;
+
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
+  external int length;
+
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
+  external BigInt at(int index);
 }
 
 /// An array whose element is BigUint64
@@ -211,4 +220,13 @@ extension type JSBigUint64Array._(JSObject _) implements JSObject {
   factory JSBigUint64Array.sublistView(TypedData array,
           [int offset = 0, int? length]) =>
       JSBigUint64Array(array.buffer, offset, length);
+
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
+  external ByteBuffer get buffer;
+
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
+  external int length;
+
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
+  external BigInt at(int index);
 }
