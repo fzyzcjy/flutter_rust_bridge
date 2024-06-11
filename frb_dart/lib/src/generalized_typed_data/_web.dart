@@ -1,10 +1,6 @@
-import 'dart:collection';
 import 'dart:typed_data' hide Int64List, Uint64List;
 
-import 'package:flutter_rust_bridge/src/exceptions.dart';
 import 'package:flutter_rust_bridge/src/generalized_typed_data/common.dart';
-import 'package:flutter_rust_bridge/src/generalized_typed_data/common.dart';
-import 'package:flutter_rust_bridge/src/platform_utils/_web.dart';
 
 Object _convertBigIntToJs(Object dart) {
   if (dart is int) return BigInt.from(dart);
@@ -35,20 +31,21 @@ class Int64List extends _Int64OrUint64List {
   Int64List.from(super.inner) : super.from();
 
   /// Construct a list
-  factory Int64List(int length) => Int64List.from(BigInt64Array(length));
+  factory Int64List(int length) =>
+      Int64List.from(List.filled(length, BigInt.zero));
 
   /// Construct a list
   factory Int64List.fromList(List<int> list) =>
-      Int64List.from(BigInt64Array.fromList(list));
+      Int64List.from(list.map(BigInt.from).toList());
 
-  /// Construct a list
-  factory Int64List.view(ByteBuffer buffer, [int offset = 0, int? length]) =>
-      Int64List.from(BigInt64Array.view(buffer, offset, length));
-
-  /// Construct a list
-  factory Int64List.sublistView(TypedData array,
-          [int offset = 0, int? length]) =>
-      Int64List.from(BigInt64Array.sublistView(array, offset, length));
+// /// Construct a list
+// factory Int64List.view(ByteBuffer buffer, [int offset = 0, int? length]) =>
+//     Int64List.from(BigInt64Array.view(buffer, offset, length));
+//
+// /// Construct a list
+// factory Int64List.sublistView(TypedData array,
+//         [int offset = 0, int? length]) =>
+//     Int64List.from(BigInt64Array.sublistView(array, offset, length));
 }
 
 /// A list whose elements are Uint64
@@ -57,20 +54,21 @@ class Uint64List extends _Int64OrUint64List {
   Uint64List.from(super.inner) : super.from();
 
   /// Construct a list
-  factory Uint64List(int length) => Uint64List.from(BigUint64Array(length));
+  factory Uint64List(int length) =>
+      Uint64List.from(List.filled(length, BigInt.zero));
 
   /// Construct a list
   factory Uint64List.fromList(List<int> list) =>
-      Uint64List.from(BigUint64Array.fromList(list));
+      Uint64List.from(list.map(BigInt.from).toList());
 
-  /// Construct a list
-  factory Uint64List.view(ByteBuffer buffer, [int offset = 0, int? length]) =>
-      Uint64List.from(BigUint64Array.view(buffer, offset, length));
-
-  /// Construct a list
-  factory Uint64List.sublistView(TypedData array,
-          [int offset = 0, int? length]) =>
-      Uint64List.from(BigUint64Array.sublistView(array, offset, length));
+// /// Construct a list
+// factory Uint64List.view(ByteBuffer buffer, [int offset = 0, int? length]) =>
+//     Uint64List.from(BigUint64Array.view(buffer, offset, length));
+//
+// /// Construct a list
+// factory Uint64List.sublistView(TypedData array,
+//         [int offset = 0, int? length]) =>
+//     Uint64List.from(BigUint64Array.sublistView(array, offset, length));
 }
 
 /// {@macro flutter_rust_bridge.internal}
