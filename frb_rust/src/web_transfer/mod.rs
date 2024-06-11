@@ -13,10 +13,10 @@ pub(crate) mod transfer_closure;
 #[macro_export]
 macro_rules! transfer {
     (|| $block:block) => {{
-        crate::transfer_raw!(None, || $block)
+        $crate::transfer_raw!(None, || $block)
     }};
     (|$($param:ident: $ty:ty),*| $block:block) => {{
-        crate::transfer_raw!(None, |($param)*| $block)
+        $crate::transfer_raw!(None, |($param)*| $block)
     }};
 }
 
