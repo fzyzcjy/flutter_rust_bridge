@@ -121,6 +121,7 @@ fn create_parsing_context(
         default_stream_sink_codec,
         default_rust_opaque_codec,
         owner: None,
+        direction: TODO,
         parse_mode,
     })
 }

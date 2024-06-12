@@ -25,6 +25,7 @@ pub(crate) fn parse(
         default_stream_sink_codec,
         default_rust_opaque_codec,
         owner: None,
+        direction: TODO,
         parse_mode,
     };
 

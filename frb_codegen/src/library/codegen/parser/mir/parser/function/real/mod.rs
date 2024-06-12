@@ -133,6 +133,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             default_stream_sink_codec,
             default_rust_opaque_codec,
             owner,
+            direction: TODO,
             parse_mode,
         };
 
