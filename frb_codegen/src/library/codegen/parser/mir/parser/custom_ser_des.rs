@@ -53,10 +53,14 @@ fn parse_function_inner(
     func: &HirFlatFunction,
     attr_ser_des: FrbAttributeSerDes,
     direction: Direction,
+    type_parser: &mut TypeParser,
 ) -> anyhow::Result<Info> {
     let sig = func.item_fn.sig();
     let input_ty = if_then_some!(let FnArg::Typed(pat_type) = vec_single(&sig.inputs).clone(), *pat_type.ty).unwrap();
     let output_ty = if_then_some!(let ReturnType::Type(_, ty) = sig.output.clone(), *ty).unwrap();
+
+    let input_ty = type_parser.parse_type(&input_ty, context)?;
+    let output_ty = type_parser.parse_type(&output_ty, context)?;
 
     Ok(Info {
         inner_type: TODO,
