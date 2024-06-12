@@ -187,8 +187,16 @@ impl FrbAttributes {
             .next()
     }
 
-    pub(crate) fn custom_ser_des(&self) -> Option<TODO> {
-        TODO
+    pub(crate) fn dart2rust(&self) -> Option<FrbAttributeSerDes> {
+        (self.0.iter())
+            .filter_map(|item| if_then_some!(let FrbAttribute::Dart2Rust(inner) = item, inner.clone()))
+            .next()
+    }
+
+    pub(crate) fn rust2dart(&self) -> Option<FrbAttributeSerDes> {
+        (self.0.iter())
+            .filter_map(|item| if_then_some!(let FrbAttribute::Rust2Dart(inner) = item, inner.clone()))
+            .next()
     }
 }
 
