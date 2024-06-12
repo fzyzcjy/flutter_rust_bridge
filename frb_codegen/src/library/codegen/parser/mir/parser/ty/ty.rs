@@ -16,7 +16,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         context_modifier: impl FnOnce(&TypeParserParsingContext) -> TypeParserParsingContext,
     ) -> anyhow::Result<MirType> {
         let new_context = context_modifier(self.context);
-        let mut self_with_context = Self {
+        let mut self_with_context = TypeParserWithContext {
             inner: self.inner,
             context: &new_context,
         };
