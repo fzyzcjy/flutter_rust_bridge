@@ -123,10 +123,10 @@ pub struct MirTypeDelegateCustomSerializer {
     pub inner_type: Box<MirType>,
     pub rust_api_type: Box<MirType>,
     pub dart_api_type: String,
-    pub codec_info: MirTypeDelegateCustomSerializerCodecInfo,
+    pub info: MirTypeDelegateCustomSerializerInfo,
 }
 
-pub struct MirTypeDelegateCustomSerializerCodecInfo {
+pub struct MirTypeDelegateCustomSerializerInfo {
     pub dart_encode: String,
     pub dart_decode: String,
     pub rust_encode_function: NamespacedName,
