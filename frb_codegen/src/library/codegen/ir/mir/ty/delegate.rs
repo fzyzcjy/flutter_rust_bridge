@@ -1,4 +1,5 @@
 use crate::codegen::generator::codec::structs::CodecMode;
+use crate::codegen::ir::mir::custom_serializer::MirCustomSerializer;
 use crate::codegen::ir::mir::ty::enumeration::{MirEnumIdent, MirTypeEnumRef};
 use crate::codegen::ir::mir::ty::general_list::{mir_list, MirTypeGeneralList};
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
@@ -120,17 +121,7 @@ pub struct MirTypeDelegateDynTraitVariant {
 }
 
 pub struct MirTypeDelegateCustomSerializer {
-    pub inner_type: Box<MirType>,
-    pub rust_api_type: Box<MirType>,
-    pub dart_api_type: String,
-    pub info: MirTypeDelegateCustomSerializerInfo,
-}
-
-pub struct MirTypeDelegateCustomSerializerInfo {
-    pub dart_encode: String,
-    pub dart_decode: String,
-    pub rust_encode_function: NamespacedName,
-    pub rust_decode_function: NamespacedName,
+    pub info: MirCustomSerializer,
 }
 }
 
