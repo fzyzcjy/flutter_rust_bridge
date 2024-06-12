@@ -24,22 +24,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   int dco_decode_i_32(dynamic raw);
 
   @protected
-  Uint64List dco_decode_list_prim_u_64_strict(dynamic raw);
-
-  @protected
-  BigInt dco_decode_u_64(dynamic raw);
-
-  @protected
   void dco_decode_unit(dynamic raw);
 
   @protected
   int sse_decode_i_32(SseDeserializer deserializer);
-
-  @protected
-  Uint64List sse_decode_list_prim_u_64_strict(SseDeserializer deserializer);
-
-  @protected
-  BigInt sse_decode_u_64(SseDeserializer deserializer);
 
   @protected
   void sse_decode_unit(SseDeserializer deserializer);
@@ -48,32 +36,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   bool sse_decode_bool(SseDeserializer deserializer);
 
   @protected
-  Object /* BigInt64Array */ cst_encode_list_prim_u_64_strict(Uint64List raw) {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.inner;
-  }
-
-  @protected
-  Object cst_encode_u_64(BigInt raw) {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    return castNativeBigInt(raw);
-  }
-
-  @protected
-  int cst_encode_i_32(int raw);
-
-  @protected
-  void cst_encode_unit(void raw);
-
-  @protected
   void sse_encode_i_32(int self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_list_prim_u_64_strict(
-      Uint64List self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_u_64(BigInt self, SseSerializer serializer);
 
   @protected
   void sse_encode_unit(void self, SseSerializer serializer);
@@ -86,14 +49,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
 class RustLibWire implements BaseWire {
   RustLibWire.fromExternalLibrary(ExternalLibrary lib);
-
-  void wire__crate__api__minimal__f(
-          NativePortType port_, Object /* BigInt64Array */ a) =>
-      wasmModule.wire__crate__api__minimal__f(port_, a);
-
-  void wire__crate__api__minimal__minimal_adder(
-          NativePortType port_, int a, int b) =>
-      wasmModule.wire__crate__api__minimal__minimal_adder(port_, a, b);
 }
 
 @JS('wasm_bindgen')
@@ -101,10 +56,4 @@ external RustLibWasmModule get wasmModule;
 
 @JS()
 @anonymous
-class RustLibWasmModule {
-  external void wire__crate__api__minimal__f(
-      NativePortType port_, Object /* BigInt64Array */ a);
-
-  external void wire__crate__api__minimal__minimal_adder(
-      NativePortType port_, int a, int b);
-}
+class RustLibWasmModule {}
