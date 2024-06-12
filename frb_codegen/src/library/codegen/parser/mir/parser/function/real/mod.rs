@@ -5,7 +5,7 @@ use crate::codegen::ir::mir::func::{
     MirFunc, MirFuncArgMode, MirFuncImplMode, MirFuncImplModeDartOnly, MirFuncInput, MirFuncMode,
     MirFuncOutput, MirFuncOwnerInfo, MirFuncOwnerInfoMethod, MirFuncOwnerInfoMethodMode,
 };
-use crate::codegen::ir::mir::skip::MirSkipReason::IgnoredFunctionGeneric;
+use crate::codegen::ir::mir::skip::MirSkipReason::{IgnoredFunctionGeneric, IgnoredSilently};
 use crate::codegen::ir::mir::skip::{MirSkip, MirSkipReason};
 use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
@@ -123,6 +123,9 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
         let src_lineno = func.item_fn.span().start().line;
         let attributes = FrbAttributes::parse(func.item_fn.attrs())?;
+        if attributes.dart2rust().is_some() || attributes.rust2dart().is_some() {
+            return Ok(create_output_skip(func, IgnoredSilently));
+        }
 
         let dart_name = parse_dart_name(&attributes, &func.item_fn.name());
 
