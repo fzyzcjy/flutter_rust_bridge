@@ -39,9 +39,11 @@ pub(crate) fn parse(
             default_stream_sink_codec: config.default_stream_sink_codec,
             default_rust_opaque_codec: config.default_rust_opaque_codec,
             parse_mode,
-        }
+        },
     )?;
-    type_parser.custom_ser_des_infos.extend(custom_ser_des_infos);
+    type_parser
+        .custom_ser_des_infos
+        .extend(custom_ser_des_infos);
 
     let (funcs_all, skipped_functions) = function::parse(
         config,
