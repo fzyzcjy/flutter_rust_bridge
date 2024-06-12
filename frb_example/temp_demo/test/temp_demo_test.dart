@@ -15,9 +15,6 @@ Future<void> run_packageweb() async {
 
   print('Dart call postMessage');
   messageChannel.port2.postMessage(12345.toJS);
-
-  print('Dart start sleeping');
-  await Future.delayed(const Duration(seconds: 1000000));
 }
 
 Future<void> run_darthtml() async {
@@ -31,12 +28,12 @@ Future<void> run_darthtml() async {
 
   print('Dart call postMessage');
   messageChannel.port2.postMessage(12345);
-
-  print('Dart start sleeping');
-  await Future.delayed(const Duration(seconds: 1000000));
 }
 
 Future<void> main() async {
   await run_packageweb();
   // await run_darthtml();
+
+  print('Dart start sleeping');
+  await Future.delayed(const Duration(seconds: 1000000));
 }
