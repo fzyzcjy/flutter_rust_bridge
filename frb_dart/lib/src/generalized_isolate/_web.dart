@@ -11,10 +11,10 @@ import 'package:flutter_rust_bridge/src/platform_types/_web.dart';
 String serializeNativePort(NativePortType port) => port.name;
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
-typedef MessagePort = _PortLike;
+typedef MessagePort = _WebPortLike;
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
-typedef SendPort = _PortLike;
+typedef SendPort = _WebPortLike;
 
 /// {@template flutter_rust_bridge.same_as_native}
 /// Web implementation of the one with same name in native.
@@ -54,13 +54,13 @@ class ReceivePort extends Stream<dynamic> {
 
 /// {@macro flutter_rust_bridge.same_as_native}
 class RawReceivePort {
-  final _Channel _channel;
+  final _WebChannel _channel;
 
   /// {@macro flutter_rust_bridge.same_as_native}
   factory RawReceivePort() => RawReceivePort._raw();
 
-  RawReceivePort._raw([_Channel? channel])
-      : _channel = channel ?? _Channel.messageChannel();
+  RawReceivePort._raw([_WebChannel? channel])
+      : _channel = channel ?? _WebChannel.messageChannel();
 
   /// {@macro flutter_rust_bridge.same_as_native}
   set handler(Function(dynamic) handler) {
@@ -78,36 +78,36 @@ class RawReceivePort {
 
 /// {@macro flutter_rust_bridge.internal}
 ReceivePort broadcastPort(String channelName) => ReceivePort._raw(
-    RawReceivePort._raw(_Channel.broadcastChannel(channelName)));
+    RawReceivePort._raw(_WebChannel.broadcastChannel(channelName)));
 
-abstract class _Channel {
+abstract class _WebChannel {
   SendPort get sendPort;
 
   SendPort get receivePort;
 
-  const _Channel();
+  const _WebChannel();
 
-  factory _Channel.messageChannel() = _MessageChannelWrapper;
+  factory _WebChannel.messageChannel() = _WebMessageChannelWrapper;
 
-  factory _Channel.broadcastChannel(String channelName) =
-      _BroadcastChannelWrapper;
+  factory _WebChannel.broadcastChannel(String channelName) =
+      _WebBroadcastChannelWrapper;
 }
 
-class _MessageChannelWrapper implements _Channel {
+class _WebMessageChannelWrapper implements _WebChannel {
   final channel = MessageChannel();
 
   @override
-  SendPort get sendPort => _PortLike._messagePort(channel.port2);
+  SendPort get sendPort => _WebPortLike._messagePort(channel.port2);
 
   @override
-  SendPort get receivePort => _PortLike._messagePort(channel.port1);
+  SendPort get receivePort => _WebPortLike._messagePort(channel.port1);
 }
 
-class _BroadcastChannelWrapper implements _Channel {
+class _WebBroadcastChannelWrapper implements _WebChannel {
   final BroadcastChannel _sendChannel;
   final BroadcastChannel _receiveChannel;
 
-  _BroadcastChannelWrapper(String channelName)
+  _WebBroadcastChannelWrapper(String channelName)
       // Note: It is *wrong* to reuse the same HTML BroadcastChannel object,
       // because HTML BroadcastChannel spec says that, the event will not be fired
       // at the object which sends it. Therefore, we need two different objects.
@@ -115,19 +115,20 @@ class _BroadcastChannelWrapper implements _Channel {
         _receiveChannel = BroadcastChannel(channelName);
 
   @override
-  SendPort get sendPort => _PortLike._broadcastChannel(_sendChannel);
+  SendPort get sendPort => _WebPortLike._broadcastChannel(_sendChannel);
 
   @override
-  SendPort get receivePort => _PortLike._broadcastChannel(_receiveChannel);
+  SendPort get receivePort => _WebPortLike._broadcastChannel(_receiveChannel);
 }
 
 /// {@macro flutter_rust_bridge.same_as_native}
-abstract class _PortLike {
-  const _PortLike._();
+abstract class _WebPortLike {
+  const _WebPortLike._();
 
-  factory _PortLike._messagePort(html.MessagePort port) = _MessagePortWrapper;
+  factory _WebPortLike._messagePort(html.MessagePort port) =
+      _MessagePortWrapper;
 
-  factory _PortLike._broadcastChannel(BroadcastChannel channel) =
+  factory _WebPortLike._broadcastChannel(BroadcastChannel channel) =
       _BroadcastPortWrapper;
 
   void _close();
@@ -139,7 +140,7 @@ abstract class _PortLike {
   static const _kMessageEvent = EventStreamProvider<MessageEvent>('message');
 }
 
-class _MessagePortWrapper extends _PortLike {
+class _MessagePortWrapper extends _WebPortLike {
   @override
   final html.MessagePort nativePort;
 
@@ -149,7 +150,7 @@ class _MessagePortWrapper extends _PortLike {
   void _close() => nativePort.close();
 }
 
-class _BroadcastPortWrapper extends _PortLike {
+class _BroadcastPortWrapper extends _WebPortLike {
   @override
   final html.BroadcastChannel nativePort;
 
