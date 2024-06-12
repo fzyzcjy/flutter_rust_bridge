@@ -10,9 +10,9 @@ impl DartSendPort {
         Self(todo!())
     }
 
-    pub fn post(&self, msg: impl IntoDart) -> bool {
+    pub fn post(&self, msg: impl IntoDart + Send) -> bool {
         // to test whether "send to another thread" can compile
-        let msg_boxed: Box<dyn BoxIntoDart> = Box::new(msg);
+        let msg_boxed: Box<dyn BoxIntoDart + Send> = Box::new(msg);
         std::thread::spawn(move || {
             let dart_abi = msg_boxed.box_into_dart();
             let _ = dart_abi;
