@@ -2,6 +2,7 @@ use crate::codegen::ir::mir::field::{MirField, MirFieldSettings};
 use crate::codegen::ir::mir::func::{MirFuncInput, MirFuncOwnerInfo};
 use crate::codegen::ir::mir::func::{MirFuncOwnerInfoMethod, OwnershipMode};
 use crate::codegen::ir::mir::ident::MirIdent;
+use crate::codegen::ir::mir::skip::MirSkipReason;
 use crate::codegen::ir::mir::ty::boxed::MirTypeBoxed;
 use crate::codegen::ir::mir::ty::delegate::{MirTypeDelegate, MirTypeDelegateProxyEnum};
 use crate::codegen::ir::mir::ty::MirType;
@@ -56,7 +57,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
         if ty.should_ignore(self.type_parser) {
             return Ok(FunctionPartialInfo {
-                ignore_func: true,
+                ignore_func: Some(MirSkipReason::IgnoreBecauseType),
                 ..Default::default()
             });
         }
@@ -69,7 +70,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         Ok(FunctionPartialInfo {
             inputs: vec![MirFuncInput {
                 inner: MirField {
-                    name: MirIdent::new(name),
+                    name: MirIdent::new(name, None),
                     ty,
                     is_final: true,
                     is_rust_public: None,

@@ -30,6 +30,21 @@ See below for an example.
 
 If you want the generated Dart class to be [`freezed`](https://pub.dev/packages/freezed) (which is like data-classes in other languages like Kotlin), simply put `#[frb(dart_metadata=("freezed"))]` and it will generate everything needed for you.
 
+## Rename fields
+
+The `#[frb(name = "...")]` can be utilized to change the Dart name of a struct field.
+For example:
+
+```rust
+#[frb]
+pub struct MyStruct {
+  #[frb(name = "dartFieldName")]
+  pub rust_field_name: Vec<u8>,
+}
+```
+
+It will give a Dart class with field `dartFieldName`.
+
 ## Example
 
 ### Example 1: Recursive fields

@@ -19,85 +19,28 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   });
 
   @protected
-  bool dco_decode_bool(dynamic raw);
-
-  @protected
-  MyTreeNodeTwinNormal dco_decode_box_autoadd_my_tree_node_twin_normal(
-      dynamic raw);
-
-  @protected
   int dco_decode_i_32(dynamic raw);
-
-  @protected
-  List<MyTreeNodeTwinNormal> dco_decode_list_my_tree_node_twin_normal(
-      dynamic raw);
-
-  @protected
-  Uint8List dco_decode_list_prim_u_8_strict(dynamic raw);
-
-  @protected
-  MyTreeNodeTwinNormal dco_decode_my_tree_node_twin_normal(dynamic raw);
-
-  @protected
-  int dco_decode_u_8(dynamic raw);
 
   @protected
   void dco_decode_unit(dynamic raw);
 
   @protected
-  bool sse_decode_bool(SseDeserializer deserializer);
-
-  @protected
-  MyTreeNodeTwinNormal sse_decode_box_autoadd_my_tree_node_twin_normal(
-      SseDeserializer deserializer);
-
-  @protected
   int sse_decode_i_32(SseDeserializer deserializer);
-
-  @protected
-  List<MyTreeNodeTwinNormal> sse_decode_list_my_tree_node_twin_normal(
-      SseDeserializer deserializer);
-
-  @protected
-  Uint8List sse_decode_list_prim_u_8_strict(SseDeserializer deserializer);
-
-  @protected
-  MyTreeNodeTwinNormal sse_decode_my_tree_node_twin_normal(
-      SseDeserializer deserializer);
-
-  @protected
-  int sse_decode_u_8(SseDeserializer deserializer);
 
   @protected
   void sse_decode_unit(SseDeserializer deserializer);
 
   @protected
-  void sse_encode_bool(bool self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_box_autoadd_my_tree_node_twin_normal(
-      MyTreeNodeTwinNormal self, SseSerializer serializer);
+  bool sse_decode_bool(SseDeserializer deserializer);
 
   @protected
   void sse_encode_i_32(int self, SseSerializer serializer);
 
   @protected
-  void sse_encode_list_my_tree_node_twin_normal(
-      List<MyTreeNodeTwinNormal> self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_list_prim_u_8_strict(
-      Uint8List self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_my_tree_node_twin_normal(
-      MyTreeNodeTwinNormal self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_u_8(int self, SseSerializer serializer);
-
-  @protected
   void sse_encode_unit(void self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_bool(bool self, SseSerializer serializer);
 }
 
 // Section: wire_class

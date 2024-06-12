@@ -44,12 +44,25 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     generate_stream_sink_setup_and_serialize(mir, "self")
                 }
                 MirTypeDelegate::BigPrimitive(_) => "self.toString()".to_owned(),
+                MirTypeDelegate::CastedPrimitive(mir) => {
+                    let postfix = match mir.inner {
+                        MirTypePrimitive::Isize | MirTypePrimitive::I64 => "I64",
+                        MirTypePrimitive::Usize | MirTypePrimitive::U64 => "U64",
+                        // frb-coverage:ignore-start
+                        _ => unreachable!(),
+                        // frb-coverage:ignore-end
+                    };
+                    format!("sseEncodeCastedPrimitive{postfix}(self)")
+                }
                 MirTypeDelegate::RustAutoOpaqueExplicit(_ir) => "self".to_owned(),
                 MirTypeDelegate::ProxyEnum(mir) => {
                     generate_proxy_enum_dart_encode(mir, self.context.as_api_dart_context())
                 }
                 MirTypeDelegate::DynTrait(mir) => {
                     generate_dyn_trait_dart_encode(mir, self.context.as_api_dart_context())
+                }
+                MirTypeDelegate::CustomSerDes(mir) => {
+                    mir.info.dart2rust.dart_code.replace("{}", "self")
                 }
             },
             Lang::RustLang(_) => match &self.mir {
@@ -97,7 +110,11 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 }
                 MirTypeDelegate::ProxyVariant(_)
                 | MirTypeDelegate::ProxyEnum(_)
-                | MirTypeDelegate::DynTrait(_) => return None,
+                | MirTypeDelegate::DynTrait(_)
+                | MirTypeDelegate::CastedPrimitive(_) => return None,
+                MirTypeDelegate::CustomSerDes(mir) => {
+                    format!("{}(self)", mir.info.rust2dart.rust_function.rust_style())
+                }
             },
         };
         Some(simple_delegate_encode(
@@ -155,9 +172,13 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                         return Some(format!("{};", lang.throw_unreachable("")));
                     }
                     MirTypeDelegate::BigPrimitive(_) => "BigInt.parse(inner)".to_owned(),
+                    MirTypeDelegate::CastedPrimitive(_) => "inner.toInt()".to_owned(),
                     MirTypeDelegate::RustAutoOpaqueExplicit(_ir) => "inner".to_owned(),
                     MirTypeDelegate::DynTrait(_) => {
                         return Some(format!("{};", lang.throw_unimplemented("")))
+                    }
+                    MirTypeDelegate::CustomSerDes(mir) => {
+                        mir.info.rust2dart.dart_code.replace("{}", "inner")
                     }
                 }
             }
@@ -203,7 +224,11 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 }
                 MirTypeDelegate::ProxyVariant(_)
                 | MirTypeDelegate::ProxyEnum(_)
-                | MirTypeDelegate::DynTrait(_) => return None,
+                | MirTypeDelegate::DynTrait(_)
+                | MirTypeDelegate::CastedPrimitive(_) => return None,
+                MirTypeDelegate::CustomSerDes(mir) => {
+                    format!("{}(inner)", mir.info.dart2rust.rust_function.rust_style())
+                }
             },
         };
 
