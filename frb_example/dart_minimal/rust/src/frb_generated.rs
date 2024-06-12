@@ -212,7 +212,7 @@ impl SseDecode for MessageWithCustomSerializerTwinNormal {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut inner = <String>::sse_decode(deserializer);
-        return crate::api::minimal::deserializer_my_type(self);
+        return crate::api::minimal::deserializer_my_type(inner);
     }
 }
 
@@ -363,4 +363,3 @@ pub use io::*;
 mod web;
 #[cfg(target_family = "wasm")]
 pub use web::*;
-use crate::api::minimal::MessageWithCustomSerializerTwinNormal;

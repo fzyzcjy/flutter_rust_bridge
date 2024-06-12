@@ -178,7 +178,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                         return Some(format!("{};", lang.throw_unimplemented("")))
                     }
                     MirTypeDelegate::CustomSerDes(mir) => {
-                        mir.info.rust2dart.dart_code.replace("{}", "self")
+                        mir.info.rust2dart.dart_code.replace("{}", "inner")
                     }
                 }
             }
@@ -227,7 +227,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 | MirTypeDelegate::DynTrait(_)
                 | MirTypeDelegate::CastedPrimitive(_) => return None,
                 MirTypeDelegate::CustomSerDes(mir) => {
-                    format!("{}(self)", mir.info.dart2rust.rust_function.rust_style())
+                    format!("{}(inner)", mir.info.dart2rust.rust_function.rust_style())
                 }
             },
         };
