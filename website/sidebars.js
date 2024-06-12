@@ -78,6 +78,7 @@ const sidebars = {
                                 },
                                 'guides/types/translatable/return',
                                 'guides/types/translatable/stream',
+                                'guides/types/translatable/custom',
                                 'guides/types/translatable/zero-copy',
                                 {
                                     type: 'category',
