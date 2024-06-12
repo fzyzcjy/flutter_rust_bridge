@@ -10,7 +10,8 @@ import 'package:meta/meta.dart' as meta;
 part 'attribute_twin_sync_sse.freezed.dart';
 
 // These types are ignored because they are not used by any `pub` functions: `IgnoredStructTwinSyncSse`, `StructWithOnlyIgnoredMethodTwinSyncSse`
-// These functions are ignored: `func_should_not_exist_in_dart_twin_sync_sse`, `method_should_not_exist_in_dart_twin_sync_sse`, `method_should_not_exist_in_dart_twin_sync_sse`
+// These functions are ignored (category: IgnoreBecauseExplicitAttribute): `func_should_not_exist_in_dart_twin_sync_sse`, `method_should_not_exist_in_dart_twin_sync_sse`
+// These functions are ignored (category: IgnoreBecauseOwnerTyShouldIgnore): `method_should_not_exist_in_dart_twin_sync_sse`
 
 void handleCustomizedStructTwinSyncSse({required CustomizedTwinSyncSse val}) =>
     RustLib.instance.api
