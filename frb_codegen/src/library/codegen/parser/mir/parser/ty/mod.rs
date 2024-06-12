@@ -23,6 +23,7 @@ use crate::utils::basic_code::general_code::GeneralDartCode;
 use crate::utils::namespace::Namespace;
 use std::collections::HashMap;
 use syn::Type;
+use syn::__private::str;
 
 pub(crate) mod array;
 pub(crate) mod concrete;
@@ -140,10 +141,20 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 pub(crate) struct TypeParserParsingContext {
     pub(crate) initiated_namespace: Namespace,
     pub(crate) func_attributes: FrbAttributes,
+    pub(crate) struct_or_enum_attributes: Option<FrbAttributes>,
     pub(crate) default_stream_sink_codec: CodecMode,
     pub(crate) default_rust_opaque_codec: RustOpaqueCodecMode,
     pub(crate) owner: Option<MirFuncOwnerInfo>,
     pub(crate) parse_mode: ParseMode,
+}
+
+impl TypeParserParsingContext {
+    pub(crate) fn with_struct_or_enum_attributes(&self, x: FrbAttributes) -> Self {
+        Self {
+            struct_or_enum_attributes: Some(x),
+            ..self.clone()
+        }
+    }
 }
 
 impl MirContext for TypeParser<'_> {

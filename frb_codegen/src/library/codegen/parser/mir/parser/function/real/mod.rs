@@ -132,6 +132,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         let create_context = |owner: Option<MirFuncOwnerInfo>| TypeParserParsingContext {
             initiated_namespace: func.namespace.clone(),
             func_attributes: attributes.clone(),
+            struct_or_enum_attributes: None,
             default_stream_sink_codec,
             default_rust_opaque_codec,
             owner,
