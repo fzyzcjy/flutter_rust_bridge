@@ -121,6 +121,7 @@ pub struct MirTypeDelegateDynTraitVariant {
 
 pub struct MirTypeDelegateCustomSerializer {
     pub inner: Box<MirType>,
+    pub dart_api_type: String,
 }
 }
 
