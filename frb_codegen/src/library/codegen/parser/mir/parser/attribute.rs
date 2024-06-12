@@ -4,6 +4,8 @@ use crate::codegen::ir::mir::default::MirDefaultValue;
 use crate::codegen::ir::mir::func::MirFuncAccessorMode;
 use crate::codegen::ir::mir::import::MirDartImport;
 use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
+use crate::codegen::parser::mir::parser::attribute::frb_keyword::default;
+use crate::codegen::parser::mir::parser::attribute::FrbAttribute::Default;
 use crate::if_then_some;
 use anyhow::Context;
 use itertools::Itertools;
@@ -216,6 +218,7 @@ mod frb_keyword {
     syn::custom_keyword!(name);
     syn::custom_keyword!(rust2dart);
     syn::custom_keyword!(dart2rust);
+    syn::custom_keyword!(dart_type);
 }
 
 struct FrbAttributesInner(Vec<FrbAttribute>);
@@ -577,9 +580,18 @@ impl Parse for FrbAttributeSerializer {
     fn parse(input: ParseStream) -> Result<Self> {
         let content;
         parenthesized!(content in input);
+
+        input.parse::<frb_keyword::dart_type>()?;
+        input.parse::<Token![=]>()?;
+        let dart_type = input.parse::<syn::LitStr>()?.value();
+
+        input.parse::<frb_keyword::dart_code>()?;
+        input.parse::<Token![=]>()?;
+        let dart_code = input.parse::<syn::LitStr>()?.value();
+
         Ok(Self {
-            dart_type: TODO,
-            dart_code: TODO,
+            dart_type,
+            dart_code,
         })
     }
 }
