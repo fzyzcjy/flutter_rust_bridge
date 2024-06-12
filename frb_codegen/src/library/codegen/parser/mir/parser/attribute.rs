@@ -214,6 +214,8 @@ mod frb_keyword {
     syn::custom_keyword!(default);
     syn::custom_keyword!(dart_code);
     syn::custom_keyword!(name);
+    syn::custom_keyword!(rust2dart);
+    syn::custom_keyword!(dart2rust);
 }
 
 struct FrbAttributesInner(Vec<FrbAttribute>);
@@ -255,6 +257,8 @@ enum FrbAttribute {
     Default(FrbAttributeDefaultValue),
     DartCode(FrbAttributeDartCode),
     Name(FrbAttributeName),
+    Dart2Rust(FrbAttributeSerializer),
+    Rust2Dart(FrbAttributeSerializer),
 }
 
 impl Parse for FrbAttribute {
@@ -559,12 +563,18 @@ impl Parse for FrbAttributeName {
     }
 }
 
+#[derive(Clone, Serialize, Eq, PartialEq, Debug)]
+pub(crate) struct FrbAttributeSerializer {
+    pub dart_type: String,
+    pub dart_code: String,
+}
+
 #[cfg(test)]
 mod tests {
     use crate::codegen::ir::mir::default::MirDefaultValue;
     use crate::codegen::parser::mir::parser::attribute::{
         FrbAttribute, FrbAttributeDartCode, FrbAttributeDefaultValue, FrbAttributeMirror,
-        FrbAttributeName, FrbAttributes, NamedOption,
+        FrbAttributeName, FrbAttributeSerializer, FrbAttributes, NamedOption,
     };
     use crate::if_then_some;
     use quote::quote;
@@ -731,6 +741,34 @@ mod tests {
             FrbAttributes(vec![FrbAttribute::Name(FrbAttributeName(
                 "operator <".to_owned()
             ))])
+        );
+        Ok(())
+    }
+
+    #[test]
+    fn test_rust2dart() -> anyhow::Result<()> {
+        let parsed =
+            parse(r###"#[frb(rust2dart(dart_type = "my_type", dart_code = "my_code"))]"###)?;
+        assert_eq!(
+            parsed,
+            FrbAttributes(vec![FrbAttribute::Rust2Dart(FrbAttributeSerializer {
+                dart_type: "my_type".to_owned(),
+                dart_code: "my_code".to_owned(),
+            })])
+        );
+        Ok(())
+    }
+
+    #[test]
+    fn test_dart2rust() -> anyhow::Result<()> {
+        let parsed =
+            parse(r###"#[frb(dart2rust(dart_type = "my_type", dart_code = "my_code"))]"###)?;
+        assert_eq!(
+            parsed,
+            FrbAttributes(vec![FrbAttribute::Dart2Rust(FrbAttributeSerializer {
+                dart_type: "my_type".to_owned(),
+                dart_code: "my_code".to_owned(),
+            })])
         );
         Ok(())
     }
