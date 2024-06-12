@@ -103,9 +103,12 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
                 io: Some("flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_decode(self.cst_decode())".into()),
                 ..Default::default()
             },
+            // Do not care about these unimplemented things
+            // frb-coverage:ignore-start
             MirTypeDelegate::ProxyVariant(_) | MirTypeDelegate::ProxyEnum(_) =>
                 Acc::distribute(Some(r#"unimplemented!("Not implemented in this codec, please use the other one")"#.to_string())),
             MirTypeDelegate::CastedPrimitive(_) | MirTypeDelegate::CustomSerDes(_) => Acc::distribute(None),
+            // frb-coverage:ignore-end
         }
     }
 
@@ -144,9 +147,12 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
             MirTypeDelegate::BigPrimitive(_) => "CstDecode::<String>::cst_decode(self).parse().unwrap()".into(),
             MirTypeDelegate::RustAutoOpaqueExplicit(_) =>
                 "flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_decode(self.cst_decode())".into(),
+            // Do not care about these unimplemented things
+            // frb-coverage:ignore-start
             MirTypeDelegate::ProxyVariant(_) | MirTypeDelegate::ProxyEnum(_) =>
                 r#"unimplemented!("Not implemented in this codec, please use the other one")"#.into(),
             MirTypeDelegate::CastedPrimitive(_) | MirTypeDelegate::CustomSerDes(_) => return None,
+            // frb-coverage:ignore-end
         })
     }
 
