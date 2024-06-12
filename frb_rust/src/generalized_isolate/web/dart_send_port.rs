@@ -33,7 +33,7 @@ fn mimic_send_to_another_thread(msg_creator: Box<dyn (FnOnce() -> Box<dyn BoxInt
     let (tx, mut rx) = tokio::sync::mpsc::unbounded_channel();
 
     // fake receiver
-    tokio::task::spawn(move || async {
+    std::thread::spawn(move || async {
         while let Some(msg_creator) = rx.recv().await {
             let msg: Box<dyn BoxIntoDart> = msg_creator();
             let dart_abi: DartAbi = msg.box_into_dart();
