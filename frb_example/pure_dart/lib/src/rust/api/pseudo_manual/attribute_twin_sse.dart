@@ -10,7 +10,8 @@ import 'package:meta/meta.dart' as meta;
 part 'attribute_twin_sse.freezed.dart';
 
 // These types are ignored because they are not used by any `pub` functions: `IgnoredStructTwinSse`, `StructWithOnlyIgnoredMethodTwinSse`
-// These functions are ignored: `func_should_not_exist_in_dart_twin_sse`, `method_should_not_exist_in_dart_twin_sse`, `method_should_not_exist_in_dart_twin_sse`
+// These functions are ignored (category: IgnoreBecauseExplicitAttribute): `func_should_not_exist_in_dart_twin_sse`, `method_should_not_exist_in_dart_twin_sse`
+// These functions are ignored (category: IgnoreBecauseOwnerTyShouldIgnore): `method_should_not_exist_in_dart_twin_sse`
 
 Future<void> handleCustomizedStructTwinSse({required CustomizedTwinSse val}) =>
     RustLib.instance.api

@@ -10,6 +10,7 @@ use crate::api::dart_code::*;
 use crate::api::dropping::*;
 use crate::api::dyn_trait::SimpleTraitForDynTwinNormal;
 use crate::api::dyn_trait::*;
+use crate::api::external_impl::*;
 use crate::api::impl_trait::SimpleTraitTwinNormal;
 use crate::api::impl_trait::*;
 use crate::api::method::*;
@@ -746,6 +747,20 @@ impl CstDecode<OpaqueTwoTwinSyncMoi> for usize {
         flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
             RustOpaqueMoi<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueTwoTwinSyncMoi>,
+            >,
+        >::cst_decode(
+            self
+        ))
+    }
+}
+impl CstDecode<SimpleOpaqueExternalStructWithMethod> for usize {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> SimpleOpaqueExternalStructWithMethod {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
+            RustOpaqueNom<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                    SimpleOpaqueExternalStructWithMethod,
+                >,
             >,
         >::cst_decode(
             self
@@ -2752,6 +2767,26 @@ impl
     ) -> RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueTwoTwinSyncMoi>>
     {
         decode_rust_opaque_moi(self as _)
+    }
+}
+impl
+    CstDecode<
+        RustOpaqueNom<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                SimpleOpaqueExternalStructWithMethod,
+            >,
+        >,
+    > for usize
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> RustOpaqueNom<
+        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+            SimpleOpaqueExternalStructWithMethod,
+        >,
+    > {
+        unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl
@@ -18078,6 +18113,21 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__exception__thro
     port_: i64,
 ) {
     wire__crate__api__exception__throw_anyhow_twin_normal_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__external_impl__SimpleOpaqueExternalStructWithMethod_new(
+    a: *mut wire_cst_list_prim_u_8_strict,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__external_impl__SimpleOpaqueExternalStructWithMethod_new_impl(a)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__external_impl__SimpleOpaqueExternalStructWithMethod_simple_external_method(
+    port_: i64,
+    that: usize,
+) {
+    wire__crate__api__external_impl__SimpleOpaqueExternalStructWithMethod_simple_external_method_impl(port_, that)
 }
 
 #[no_mangle]
@@ -45264,6 +45314,32 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueTwoTwinSyncSseMoi>>::decrement_strong_count(ptr as _);
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleOpaqueExternalStructWithMethod(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        StdArc::<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                SimpleOpaqueExternalStructWithMethod,
+            >,
+        >::increment_strong_count(ptr as _);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleOpaqueExternalStructWithMethod(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        StdArc::<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                SimpleOpaqueExternalStructWithMethod,
+            >,
+        >::decrement_strong_count(ptr as _);
+    }
 }
 
 #[no_mangle]
