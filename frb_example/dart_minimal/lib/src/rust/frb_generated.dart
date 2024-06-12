@@ -157,6 +157,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @protected
+  int dco_decode_CastedPrimitive_i_64(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    throw UnimplementedError(
+        'Not implemented in this codec, please use the other one');
+  }
+
+  @protected
+  int dco_decode_CastedPrimitive_u_64(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    throw UnimplementedError(
+        'Not implemented in this codec, please use the other one');
+  }
+
+  @protected
   String dco_decode_String(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return raw as String;
@@ -193,8 +207,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     if (arr.length != 3)
       throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
     return MyStruct(
-      a: dco_decode_i_64(arr[0]),
-      b: dco_decode_u_64(arr[1]),
+      a: dco_decode_CastedPrimitive_i_64(arr[0]),
+      b: dco_decode_CastedPrimitive_u_64(arr[1]),
       c: dco_decode_String(arr[2]),
     );
   }
@@ -215,6 +229,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void dco_decode_unit(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return;
+  }
+
+  @protected
+  int sse_decode_CastedPrimitive_i_64(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var inner = sse_decode_i_64(deserializer);
+    return inner.toInt();
+  }
+
+  @protected
+  int sse_decode_CastedPrimitive_u_64(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var inner = sse_decode_u_64(deserializer);
+    return inner.toInt();
   }
 
   @protected
@@ -252,8 +280,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   MyStruct sse_decode_my_struct(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    var var_a = sse_decode_i_64(deserializer);
-    var var_b = sse_decode_u_64(deserializer);
+    var var_a = sse_decode_CastedPrimitive_i_64(deserializer);
+    var var_b = sse_decode_CastedPrimitive_u_64(deserializer);
     var var_c = sse_decode_String(deserializer);
     return MyStruct(a: var_a, b: var_b, c: var_c);
   }
@@ -279,6 +307,18 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   bool sse_decode_bool(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return deserializer.buffer.getUint8() != 0;
+  }
+
+  @protected
+  void sse_encode_CastedPrimitive_i_64(int self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_i_64(sseEncodeCastedPrimitiveI64(self), serializer);
+  }
+
+  @protected
+  void sse_encode_CastedPrimitive_u_64(int self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_u_64(sseEncodeCastedPrimitiveU64(self), serializer);
   }
 
   @protected
@@ -317,8 +357,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   void sse_encode_my_struct(MyStruct self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_i_64(self.a, serializer);
-    sse_encode_u_64(self.b, serializer);
+    sse_encode_CastedPrimitive_i_64(self.a, serializer);
+    sse_encode_CastedPrimitive_u_64(self.b, serializer);
     sse_encode_String(self.c, serializer);
   }
 

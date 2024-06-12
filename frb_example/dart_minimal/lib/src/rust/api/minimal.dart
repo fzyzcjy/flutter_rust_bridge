@@ -13,8 +13,8 @@ Future<MyStruct> f({required MyStruct arg}) =>
     RustLib.instance.api.crateApiMinimalF(arg: arg);
 
 class MyStruct {
-  final PlatformInt64 a;
-  final BigInt b;
+  final int a;
+  final int b;
   final String c;
 
   const MyStruct({
