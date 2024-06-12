@@ -21,11 +21,23 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   });
 
   @protected
+  StructWithDartKeywordFieldTwinNormal
+      dco_decode_box_autoadd_struct_with_dart_keyword_field_twin_normal(
+          dynamic raw);
+
+  @protected
   StructWithFieldRenameTwinNormal
       dco_decode_box_autoadd_struct_with_field_rename_twin_normal(dynamic raw);
 
   @protected
   int dco_decode_i_32(dynamic raw);
+
+  @protected
+  PlatformInt64 dco_decode_i_64(dynamic raw);
+
+  @protected
+  StructWithDartKeywordFieldTwinNormal
+      dco_decode_struct_with_dart_keyword_field_twin_normal(dynamic raw);
 
   @protected
   StructWithFieldRenameTwinNormal
@@ -35,12 +47,25 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void dco_decode_unit(dynamic raw);
 
   @protected
+  StructWithDartKeywordFieldTwinNormal
+      sse_decode_box_autoadd_struct_with_dart_keyword_field_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
   StructWithFieldRenameTwinNormal
       sse_decode_box_autoadd_struct_with_field_rename_twin_normal(
           SseDeserializer deserializer);
 
   @protected
   int sse_decode_i_32(SseDeserializer deserializer);
+
+  @protected
+  PlatformInt64 sse_decode_i_64(SseDeserializer deserializer);
+
+  @protected
+  StructWithDartKeywordFieldTwinNormal
+      sse_decode_struct_with_dart_keyword_field_twin_normal(
+          SseDeserializer deserializer);
 
   @protected
   StructWithFieldRenameTwinNormal
@@ -54,10 +79,31 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   bool sse_decode_bool(SseDeserializer deserializer);
 
   @protected
+  List<dynamic>
+      cst_encode_box_autoadd_struct_with_dart_keyword_field_twin_normal(
+          StructWithDartKeywordFieldTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_struct_with_dart_keyword_field_twin_normal(raw);
+  }
+
+  @protected
   List<dynamic> cst_encode_box_autoadd_struct_with_field_rename_twin_normal(
       StructWithFieldRenameTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_struct_with_field_rename_twin_normal(raw);
+  }
+
+  @protected
+  Object cst_encode_i_64(PlatformInt64 raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return castNativeBigInt(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_struct_with_dart_keyword_field_twin_normal(
+      StructWithDartKeywordFieldTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [cst_encode_i_32(raw.class_), cst_encode_i_64(raw.interface_)];
   }
 
   @protected
@@ -74,11 +120,22 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void cst_encode_unit(void raw);
 
   @protected
+  void sse_encode_box_autoadd_struct_with_dart_keyword_field_twin_normal(
+      StructWithDartKeywordFieldTwinNormal self, SseSerializer serializer);
+
+  @protected
   void sse_encode_box_autoadd_struct_with_field_rename_twin_normal(
       StructWithFieldRenameTwinNormal self, SseSerializer serializer);
 
   @protected
   void sse_encode_i_32(int self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_i_64(PlatformInt64 self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_dart_keyword_field_twin_normal(
+      StructWithDartKeywordFieldTwinNormal self, SseSerializer serializer);
 
   @protected
   void sse_encode_struct_with_field_rename_twin_normal(
@@ -95,6 +152,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
 class RustLibWire implements BaseWire {
   RustLibWire.fromExternalLibrary(ExternalLibrary lib);
+
+  void wire__crate__api__minimal__func_for_struct_with_dart_keyword_field_twin_normal(
+          NativePortType port_, List<dynamic> arg) =>
+      wasmModule
+          .wire__crate__api__minimal__func_for_struct_with_dart_keyword_field_twin_normal(
+              port_, arg);
 
   void wire__crate__api__minimal__func_for_struct_with_field_rename_twin_normal(
           NativePortType port_, List<dynamic> arg) =>
@@ -116,6 +179,10 @@ external RustLibWasmModule get wasmModule;
 @JS()
 @anonymous
 class RustLibWasmModule {
+  external void
+      wire__crate__api__minimal__func_for_struct_with_dart_keyword_field_twin_normal(
+          NativePortType port_, List<dynamic> arg);
+
   external void
       wire__crate__api__minimal__func_for_struct_with_field_rename_twin_normal(
           NativePortType port_, List<dynamic> arg);

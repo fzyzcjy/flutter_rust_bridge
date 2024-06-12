@@ -16,6 +16,26 @@ flutter_rust_bridge::frb_generated_boilerplate_web!();
 
 // Section: dart2rust
 
+impl CstDecode<crate::api::minimal::StructWithDartKeywordFieldTwinNormal>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> crate::api::minimal::StructWithDartKeywordFieldTwinNormal {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        crate::api::minimal::StructWithDartKeywordFieldTwinNormal {
+            class: self_.get(0).cst_decode(),
+            interface: self_.get(1).cst_decode(),
+        }
+    }
+}
 impl CstDecode<crate::api::minimal::StructWithFieldRenameTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
@@ -40,6 +60,20 @@ impl CstDecode<i32> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValu
     fn cst_decode(self) -> i32 {
         self.unchecked_into_f64() as _
     }
+}
+impl CstDecode<i64> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> i64 {
+        ::std::convert::TryInto::<i64>::try_into(self).unwrap() as _
+    }
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__minimal__func_for_struct_with_dart_keyword_field_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire__crate__api__minimal__func_for_struct_with_dart_keyword_field_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]

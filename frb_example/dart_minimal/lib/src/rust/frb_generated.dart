@@ -57,7 +57,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.0.0-dev.38';
 
   @override
-  int get rustContentHash => 309815666;
+  int get rustContentHash => 1132682991;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -68,6 +68,10 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 }
 
 abstract class RustLibApi extends BaseApi {
+  Future<StructWithDartKeywordFieldTwinNormal>
+      crateApiMinimalFuncForStructWithDartKeywordFieldTwinNormal(
+          {required StructWithDartKeywordFieldTwinNormal arg});
+
   Future<StructWithFieldRenameTwinNormal>
       crateApiMinimalFuncForStructWithFieldRenameTwinNormal(
           {required StructWithFieldRenameTwinNormal arg});
@@ -84,6 +88,38 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     required super.generalizedFrbRustBinding,
     required super.portManager,
   });
+
+  @override
+  Future<StructWithDartKeywordFieldTwinNormal>
+      crateApiMinimalFuncForStructWithDartKeywordFieldTwinNormal(
+          {required StructWithDartKeywordFieldTwinNormal arg}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_box_autoadd_struct_with_dart_keyword_field_twin_normal(
+                arg);
+        return wire
+            .wire__crate__api__minimal__func_for_struct_with_dart_keyword_field_twin_normal(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_struct_with_dart_keyword_field_twin_normal,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiMinimalFuncForStructWithDartKeywordFieldTwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiMinimalFuncForStructWithDartKeywordFieldTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName: "func_for_struct_with_dart_keyword_field_twin_normal",
+            argNames: ["arg"],
+          );
 
   @override
   Future<StructWithFieldRenameTwinNormal>
@@ -161,6 +197,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @protected
+  StructWithDartKeywordFieldTwinNormal
+      dco_decode_box_autoadd_struct_with_dart_keyword_field_twin_normal(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return dco_decode_struct_with_dart_keyword_field_twin_normal(raw);
+  }
+
+  @protected
   StructWithFieldRenameTwinNormal
       dco_decode_box_autoadd_struct_with_field_rename_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -171,6 +215,25 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   int dco_decode_i_32(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return raw as int;
+  }
+
+  @protected
+  PlatformInt64 dco_decode_i_64(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return dcoDecodeI64(raw);
+  }
+
+  @protected
+  StructWithDartKeywordFieldTwinNormal
+      dco_decode_struct_with_dart_keyword_field_twin_normal(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return StructWithDartKeywordFieldTwinNormal(
+      class_: dco_decode_i_32(arr[0]),
+      interface_: dco_decode_i_64(arr[1]),
+    );
   }
 
   @protected
@@ -192,6 +255,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  StructWithDartKeywordFieldTwinNormal
+      sse_decode_box_autoadd_struct_with_dart_keyword_field_twin_normal(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return (sse_decode_struct_with_dart_keyword_field_twin_normal(
+        deserializer));
+  }
+
+  @protected
   StructWithFieldRenameTwinNormal
       sse_decode_box_autoadd_struct_with_field_rename_twin_normal(
           SseDeserializer deserializer) {
@@ -203,6 +275,23 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   int sse_decode_i_32(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return deserializer.buffer.getInt32();
+  }
+
+  @protected
+  PlatformInt64 sse_decode_i_64(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return deserializer.buffer.getPlatformInt64();
+  }
+
+  @protected
+  StructWithDartKeywordFieldTwinNormal
+      sse_decode_struct_with_dart_keyword_field_twin_normal(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var var_class_ = sse_decode_i_32(deserializer);
+    var var_interface_ = sse_decode_i_64(deserializer);
+    return StructWithDartKeywordFieldTwinNormal(
+        class_: var_class_, interface_: var_interface_);
   }
 
   @protected
@@ -238,6 +327,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void sse_encode_box_autoadd_struct_with_dart_keyword_field_twin_normal(
+      StructWithDartKeywordFieldTwinNormal self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_struct_with_dart_keyword_field_twin_normal(self, serializer);
+  }
+
+  @protected
   void sse_encode_box_autoadd_struct_with_field_rename_twin_normal(
       StructWithFieldRenameTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -248,6 +344,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void sse_encode_i_32(int self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     serializer.buffer.putInt32(self);
+  }
+
+  @protected
+  void sse_encode_i_64(PlatformInt64 self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    serializer.buffer.putPlatformInt64(self);
+  }
+
+  @protected
+  void sse_encode_struct_with_dart_keyword_field_twin_normal(
+      StructWithDartKeywordFieldTwinNormal self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_i_32(self.class_, serializer);
+    sse_encode_i_64(self.interface_, serializer);
   }
 
   @protected

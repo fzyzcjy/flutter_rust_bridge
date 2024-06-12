@@ -19,11 +19,23 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   });
 
   @protected
+  StructWithDartKeywordFieldTwinNormal
+      dco_decode_box_autoadd_struct_with_dart_keyword_field_twin_normal(
+          dynamic raw);
+
+  @protected
   StructWithFieldRenameTwinNormal
       dco_decode_box_autoadd_struct_with_field_rename_twin_normal(dynamic raw);
 
   @protected
   int dco_decode_i_32(dynamic raw);
+
+  @protected
+  PlatformInt64 dco_decode_i_64(dynamic raw);
+
+  @protected
+  StructWithDartKeywordFieldTwinNormal
+      dco_decode_struct_with_dart_keyword_field_twin_normal(dynamic raw);
 
   @protected
   StructWithFieldRenameTwinNormal
@@ -33,12 +45,25 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void dco_decode_unit(dynamic raw);
 
   @protected
+  StructWithDartKeywordFieldTwinNormal
+      sse_decode_box_autoadd_struct_with_dart_keyword_field_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
   StructWithFieldRenameTwinNormal
       sse_decode_box_autoadd_struct_with_field_rename_twin_normal(
           SseDeserializer deserializer);
 
   @protected
   int sse_decode_i_32(SseDeserializer deserializer);
+
+  @protected
+  PlatformInt64 sse_decode_i_64(SseDeserializer deserializer);
+
+  @protected
+  StructWithDartKeywordFieldTwinNormal
+      sse_decode_struct_with_dart_keyword_field_twin_normal(
+          SseDeserializer deserializer);
 
   @protected
   StructWithFieldRenameTwinNormal
@@ -52,6 +77,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   bool sse_decode_bool(SseDeserializer deserializer);
 
   @protected
+  ffi.Pointer<wire_cst_struct_with_dart_keyword_field_twin_normal>
+      cst_encode_box_autoadd_struct_with_dart_keyword_field_twin_normal(
+          StructWithDartKeywordFieldTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    final ptr =
+        wire.cst_new_box_autoadd_struct_with_dart_keyword_field_twin_normal();
+    cst_api_fill_to_wire_struct_with_dart_keyword_field_twin_normal(
+        raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
   ffi.Pointer<wire_cst_struct_with_field_rename_twin_normal>
       cst_encode_box_autoadd_struct_with_field_rename_twin_normal(
           StructWithFieldRenameTwinNormal raw) {
@@ -62,11 +99,35 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  int cst_encode_i_64(PlatformInt64 raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw.toInt();
+  }
+
+  @protected
+  void
+      cst_api_fill_to_wire_box_autoadd_struct_with_dart_keyword_field_twin_normal(
+          StructWithDartKeywordFieldTwinNormal apiObj,
+          ffi.Pointer<wire_cst_struct_with_dart_keyword_field_twin_normal>
+              wireObj) {
+    cst_api_fill_to_wire_struct_with_dart_keyword_field_twin_normal(
+        apiObj, wireObj.ref);
+  }
+
+  @protected
   void cst_api_fill_to_wire_box_autoadd_struct_with_field_rename_twin_normal(
       StructWithFieldRenameTwinNormal apiObj,
       ffi.Pointer<wire_cst_struct_with_field_rename_twin_normal> wireObj) {
     cst_api_fill_to_wire_struct_with_field_rename_twin_normal(
         apiObj, wireObj.ref);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_struct_with_dart_keyword_field_twin_normal(
+      StructWithDartKeywordFieldTwinNormal apiObj,
+      wire_cst_struct_with_dart_keyword_field_twin_normal wireObj) {
+    wireObj.class_ = cst_encode_i_32(apiObj.class_);
+    wireObj.interface = cst_encode_i_64(apiObj.interface_);
   }
 
   @protected
@@ -83,11 +144,22 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void cst_encode_unit(void raw);
 
   @protected
+  void sse_encode_box_autoadd_struct_with_dart_keyword_field_twin_normal(
+      StructWithDartKeywordFieldTwinNormal self, SseSerializer serializer);
+
+  @protected
   void sse_encode_box_autoadd_struct_with_field_rename_twin_normal(
       StructWithFieldRenameTwinNormal self, SseSerializer serializer);
 
   @protected
   void sse_encode_i_32(int self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_i_64(PlatformInt64 self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_dart_keyword_field_twin_normal(
+      StructWithDartKeywordFieldTwinNormal self, SseSerializer serializer);
 
   @protected
   void sse_encode_struct_with_field_rename_twin_normal(
@@ -140,6 +212,33 @@ class RustLibWire implements BaseWire {
           'store_dart_post_cobject');
   late final _store_dart_post_cobject = _store_dart_post_cobjectPtr
       .asFunction<void Function(DartPostCObjectFnType)>();
+
+  void
+      wire__crate__api__minimal__func_for_struct_with_dart_keyword_field_twin_normal(
+    int port_,
+    ffi.Pointer<wire_cst_struct_with_dart_keyword_field_twin_normal> arg,
+  ) {
+    return _wire__crate__api__minimal__func_for_struct_with_dart_keyword_field_twin_normal(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire__crate__api__minimal__func_for_struct_with_dart_keyword_field_twin_normalPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(
+                      ffi.Int64,
+                      ffi.Pointer<
+                          wire_cst_struct_with_dart_keyword_field_twin_normal>)>>(
+          'frbgen_frb_example_dart_minimal_wire__crate__api__minimal__func_for_struct_with_dart_keyword_field_twin_normal');
+  late final _wire__crate__api__minimal__func_for_struct_with_dart_keyword_field_twin_normal =
+      _wire__crate__api__minimal__func_for_struct_with_dart_keyword_field_twin_normalPtr
+          .asFunction<
+              void Function(
+                  int,
+                  ffi.Pointer<
+                      wire_cst_struct_with_dart_keyword_field_twin_normal>)>();
 
   void wire__crate__api__minimal__func_for_struct_with_field_rename_twin_normal(
     int port_,
@@ -201,6 +300,24 @@ class RustLibWire implements BaseWire {
       _wire__crate__api__minimal__minimal_adderPtr
           .asFunction<void Function(int, int, int)>();
 
+  ffi.Pointer<wire_cst_struct_with_dart_keyword_field_twin_normal>
+      cst_new_box_autoadd_struct_with_dart_keyword_field_twin_normal() {
+    return _cst_new_box_autoadd_struct_with_dart_keyword_field_twin_normal();
+  }
+
+  late final _cst_new_box_autoadd_struct_with_dart_keyword_field_twin_normalPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Pointer<
+                          wire_cst_struct_with_dart_keyword_field_twin_normal>
+                      Function()>>(
+          'frbgen_frb_example_dart_minimal_cst_new_box_autoadd_struct_with_dart_keyword_field_twin_normal');
+  late final _cst_new_box_autoadd_struct_with_dart_keyword_field_twin_normal =
+      _cst_new_box_autoadd_struct_with_dart_keyword_field_twin_normalPtr
+          .asFunction<
+              ffi.Pointer<wire_cst_struct_with_dart_keyword_field_twin_normal>
+                  Function()>();
+
   ffi.Pointer<wire_cst_struct_with_field_rename_twin_normal>
       cst_new_box_autoadd_struct_with_field_rename_twin_normal() {
     return _cst_new_box_autoadd_struct_with_field_rename_twin_normal();
@@ -235,6 +352,15 @@ typedef DartDartPostCObjectFnTypeFunction = bool Function(
     DartDartPort port_id, ffi.Pointer<ffi.Void> message);
 typedef DartPort = ffi.Int64;
 typedef DartDartPort = int;
+
+final class wire_cst_struct_with_dart_keyword_field_twin_normal
+    extends ffi.Struct {
+  @ffi.Int32()
+  external int class_;
+
+  @ffi.Int64()
+  external int interface1;
+}
 
 final class wire_cst_struct_with_field_rename_twin_normal extends ffi.Struct {
   @ffi.Int32()

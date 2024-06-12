@@ -23,7 +23,7 @@ pub fn func_for_struct_with_field_rename_twin_normal(
 
 pub struct StructWithDartKeywordFieldTwinNormal {
     pub class: i32,
-    pub int: i64,
+    pub interface: i64,
 }
 
 pub fn func_for_struct_with_dart_keyword_field_twin_normal(
