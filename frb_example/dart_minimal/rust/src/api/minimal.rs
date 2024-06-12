@@ -9,7 +9,6 @@ pub fn minimal_adder(a: i32, b: i32) -> i32 {
     a + b
 }
 
-#[frb]
 pub struct StructWithFieldRenameTwinNormal {
     #[frb(name = "renamed_field")]
     class: i32,
