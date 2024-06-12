@@ -35,7 +35,7 @@ class ReceivePort extends Stream<dynamic> {
     void Function()? onDone,
     bool? cancelOnError,
   }) {
-    return _rawReceivePort._receivePort.onMessage.map(_extractData).listen(
+    return _rawReceivePort._receivePort._onMessage.map(_extractData).listen(
           onData,
           onError: onError,
           onDone: onDone,
@@ -64,7 +64,7 @@ class RawReceivePort {
 
   /// {@macro flutter_rust_bridge.same_as_native}
   set handler(Function(dynamic) handler) {
-    _receivePort.onMessage.listen((event) => handler(event.data));
+    _receivePort._onMessage.listen((event) => handler(event.data));
   }
 
   /// {@macro flutter_rust_bridge.same_as_native}
@@ -133,28 +133,28 @@ abstract class _PortLike {
   void _close();
 
   /// {@macro flutter_rust_bridge.same_as_native}
-  html.EventTarget get nativePort;
+  html.EventTarget get _nativePort;
 
-  Stream<MessageEvent> get onMessage => _kMessageEvent.forTarget(nativePort);
+  Stream<MessageEvent> get _onMessage => _kMessageEvent.forTarget(_nativePort);
   static const _kMessageEvent = EventStreamProvider<MessageEvent>('message');
 }
 
 class _MessagePortWrapper extends _PortLike {
   @override
-  final html.MessagePort nativePort;
+  final html.MessagePort _nativePort;
 
-  _MessagePortWrapper(this.nativePort) : super._();
+  _MessagePortWrapper(this._nativePort) : super._();
 
   @override
-  void _close() => nativePort.close();
+  void _close() => _nativePort.close();
 }
 
 class _BroadcastPortWrapper extends _PortLike {
   @override
-  final html.BroadcastChannel nativePort;
+  final html.BroadcastChannel _nativePort;
 
-  _BroadcastPortWrapper(this.nativePort) : super._();
+  _BroadcastPortWrapper(this._nativePort) : super._();
 
   @override
-  void _close() => nativePort.close();
+  void _close() => _nativePort.close();
 }
