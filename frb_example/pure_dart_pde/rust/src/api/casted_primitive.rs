@@ -42,6 +42,7 @@ pub struct StructWithCastedPrimitiveTwinNormal {
     pub field_vec_u8: Vec<u8>,
 }
 
+#[frb(serialize)]
 pub fn function_for_struct_with_casted_primitive_twin_normal(
     arg: StructWithCastedPrimitiveTwinNormal,
 ) -> StructWithCastedPrimitiveTwinNormal {

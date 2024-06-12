@@ -19016,20 +19016,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  Object cst_encode_CastedPrimitive_i_64(int raw) {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    throw UnimplementedError(
-        'Not implemented in this codec, please use the other one');
-  }
-
-  @protected
-  Object cst_encode_CastedPrimitive_u_64(int raw) {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    throw UnimplementedError(
-        'Not implemented in this codec, please use the other one');
-  }
-
-  @protected
   String cst_encode_Char(String raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_String(raw);
@@ -21471,13 +21457,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       StructInLowerLevel raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_struct_in_lower_level(raw);
-  }
-
-  @protected
-  List<dynamic> cst_encode_box_autoadd_struct_with_casted_primitive_twin_normal(
-      StructWithCastedPrimitiveTwinNormal raw) {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    return cst_encode_struct_with_casted_primitive_twin_normal(raw);
   }
 
   @protected
@@ -26237,18 +26216,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<dynamic> cst_encode_struct_in_upper_level(StructInUpperLevel raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_usize(raw.upper)];
-  }
-
-  @protected
-  List<dynamic> cst_encode_struct_with_casted_primitive_twin_normal(
-      StructWithCastedPrimitiveTwinNormal raw) {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    return [
-      cst_encode_CastedPrimitive_i_64(raw.fieldI64),
-      cst_encode_CastedPrimitive_u_64(raw.fieldU64),
-      cst_encode_i_32(raw.fieldI32),
-      cst_encode_list_prim_u_8_strict(raw.fieldVecU8)
-    ];
   }
 
   @protected
@@ -37322,10 +37289,13 @@ class RustLibWire implements BaseWire {
               port_, ptr_, rust_vec_len_, data_len_);
 
   void wire__crate__api__casted_primitive__function_for_struct_with_casted_primitive_twin_normal(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
       wasmModule
           .wire__crate__api__casted_primitive__function_for_struct_with_casted_primitive_twin_normal(
-              port_, arg);
+              port_, ptr_, rust_vec_len_, data_len_);
 
   void wire__crate__api__chrono_type__datetime_local_twin_normal(
           NativePortType port_, Object d) =>
@@ -59852,7 +59822,10 @@ class RustLibWasmModule {
 
   external void
       wire__crate__api__casted_primitive__function_for_struct_with_casted_primitive_twin_normal(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
 
   external void wire__crate__api__chrono_type__datetime_local_twin_normal(
       NativePortType port_, Object d);
