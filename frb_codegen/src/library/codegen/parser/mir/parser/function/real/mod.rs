@@ -5,9 +5,7 @@ use crate::codegen::ir::mir::func::{
     MirFunc, MirFuncArgMode, MirFuncImplMode, MirFuncImplModeDartOnly, MirFuncInput, MirFuncMode,
     MirFuncOutput, MirFuncOwnerInfo, MirFuncOwnerInfoMethod, MirFuncOwnerInfoMethodMode,
 };
-use crate::codegen::ir::mir::skip::MirSkipReason::{
-    IgnoreBecauseExplicitAttribute, IgnoreBecauseFunctionGeneric, IgnoreSilently,
-};
+use crate::codegen::ir::mir::skip::MirSkipReason::{IgnoreBecauseExplicitAttribute, IgnoreBecauseFunctionGeneric, IgnoreBecauseOwnerTyShouldIgnore, IgnoreSilently};
 use crate::codegen::ir::mir::skip::{MirSkip, MirSkipReason};
 use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
@@ -214,6 +212,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         attributes: &FrbAttributes,
     ) -> anyhow::Result<OwnerInfoOrSkip> {
         use OwnerInfoOrSkip::*;
+        use MirSkipReason::*;
 
         match &func.owner {
             HirFlatFunctionOwner::Function => Ok(Info(MirFuncOwnerInfo::Function)),
@@ -224,7 +223,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                 let owner_ty = if let Some(x) = self.parse_method_owner_ty(impl_ty, context)? {
                     x
                 } else {
-                    return Ok(Skip(IgnoreMisc));
+                    return Ok(Skip(IgnoreBecauseParseMethodOwnerTy));
                 };
 
                 let trait_def = if let Some(trait_def_name) = trait_def_name {
@@ -232,14 +231,14 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                         Some(ans)
                     } else {
                         // If cannot find the trait, we directly skip the function currently
-                        return Ok(Skip(IgnoreMisc));
+                        return Ok(Skip(IgnoreBecauseParseOwnerCannotFindTrait));
                     }
                 } else {
                     None
                 };
 
                 if !is_allowed_owner(&owner_ty, attributes) {
-                    return Ok(Skip(IgnoreMisc));
+                    return Ok(Skip(IgnoreBecauseNotAllowedOwner));
                 }
 
                 self.parse_method_owner_inner(func, actual_method_dart_name, owner_ty, trait_def)
@@ -276,7 +275,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         };
 
         if owner_ty.should_ignore(self.type_parser) {
-            return Ok(Skip(IgnoreMisc));
+            return Ok(Skip(IgnoreBecauseOwnerTyShouldIgnore));
         }
 
         let actual_method_name = sig.ident.to_string();

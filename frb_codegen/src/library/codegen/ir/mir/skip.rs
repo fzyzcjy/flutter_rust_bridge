@@ -13,7 +13,10 @@ pub(crate) enum MirSkipReason {
     IgnoreBecauseTypeNotUsedByPub,
     IgnoreBecauseExplicitAttribute,
     IgnoreBecauseType,
-    IgnoreMisc,
+    IgnoreBecauseParseMethodOwnerTy,
+    IgnoreBecauseParseOwnerCannotFindTrait,
+    IgnoreBecauseNotAllowedOwner,
+    IgnoreBecauseOwnerTyShouldIgnore,
     IgnoreSilently,
     Err,
 }
