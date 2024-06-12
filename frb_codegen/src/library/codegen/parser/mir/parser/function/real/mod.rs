@@ -142,13 +142,11 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         };
 
         let is_owner_trait_def = matches!(func.owner, HirFlatFunctionOwner::TraitDef { .. });
-        let owner = if let Some(owner) =
-            self.parse_owner(func, &create_context(None), dart_name.clone(), &attributes)?
-        {
-            owner
-        } else {
-            return Ok(create_output_skip(func, IgnoreMisc));
-        };
+        let owner =
+            match self.parse_owner(func, &create_context(None), dart_name.clone(), &attributes)? {
+                OwnerInfoOrSkip::Info(info) => info,
+                OwnerInfoOrSkip::Skip(reason) => return Ok(create_output_skip(func, reason)),
+            };
 
         let func_name = parse_name(&func.item_fn.name(), &owner);
 
@@ -214,9 +212,11 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         context: &TypeParserParsingContext,
         actual_method_dart_name: Option<String>,
         attributes: &FrbAttributes,
-    ) -> anyhow::Result<Option<MirFuncOwnerInfo>> {
+    ) -> anyhow::Result<OwnerInfoOrSkip> {
+        use OwnerInfoOrSkip::*;
+
         match &func.owner {
-            HirFlatFunctionOwner::Function => Ok(Some(MirFuncOwnerInfo::Function)),
+            HirFlatFunctionOwner::Function => Ok(Info(MirFuncOwnerInfo::Function)),
             HirFlatFunctionOwner::StructOrEnum {
                 impl_ty,
                 trait_def_name,
@@ -224,7 +224,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                 let owner_ty = if let Some(x) = self.parse_method_owner_ty(impl_ty, context)? {
                     x
                 } else {
-                    return Ok(None);
+                    return Ok(Skip(IgnoreMisc));
                 };
 
                 let trait_def = if let Some(trait_def_name) = trait_def_name {
@@ -232,14 +232,14 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                         Some(ans)
                     } else {
                         // If cannot find the trait, we directly skip the function currently
-                        return Ok(None);
+                        return Ok(Skip(IgnoreMisc));
                     }
                 } else {
                     None
                 };
 
                 if !is_allowed_owner(&owner_ty, attributes) {
-                    return Ok(None);
+                    return Ok(Skip(IgnoreMisc));
                 }
 
                 self.parse_method_owner_inner(func, actual_method_dart_name, owner_ty, trait_def)
@@ -265,7 +265,9 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         actual_method_dart_name: Option<String>,
         owner_ty: MirType,
         trait_def: Option<MirTypeTraitDef>,
-    ) -> anyhow::Result<Option<MirFuncOwnerInfo>> {
+    ) -> anyhow::Result<OwnerInfoOrSkip> {
+        use OwnerInfoOrSkip::*;
+
         let sig = func.item_fn.sig();
         let mode = if matches!(sig.inputs.first(), Some(FnArg::Receiver(..))) {
             MirFuncOwnerInfoMethodMode::Instance
@@ -274,12 +276,12 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         };
 
         if owner_ty.should_ignore(self.type_parser) {
-            return Ok(None);
+            return Ok(Skip(IgnoreMisc));
         }
 
         let actual_method_name = sig.ident.to_string();
 
-        Ok(Some(MirFuncOwnerInfo::Method(MirFuncOwnerInfoMethod {
+        Ok(Info(MirFuncOwnerInfo::Method(MirFuncOwnerInfoMethod {
             owner_ty,
             actual_method_name,
             actual_method_dart_name,
@@ -306,6 +308,11 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         let syn_ty: Type = parse_str(&owner_ty_name)?;
         Ok(Some(self.type_parser.parse_type(&syn_ty, context)?))
     }
+}
+
+enum OwnerInfoOrSkip {
+    Info(MirFuncOwnerInfo),
+    Skip(MirSkipReason),
 }
 
 fn create_output_skip(func: &HirFlatFunction, reason: MirSkipReason) -> MirFuncOrSkip {
