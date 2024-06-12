@@ -1,10 +1,13 @@
 import 'dart:async';
 import 'dart:html' as html;
 
-import 'package:frb_example_dart_minimal/src/rust/frb_generated.dart';
-import 'package:js/js.dart';
+// import 'package:js/js.dart' as package_js;
+// import 'dart:js_interop' as dart_js_interop;
+import 'dart:js_interop' as dart_js_interop;
 
-@JS("wasm_bindgen.my_rust_function")
+import 'package:frb_example_dart_minimal/src/rust/frb_generated.dart';
+
+@dart_js_interop.JS("wasm_bindgen.my_rust_function")
 external void my_rust_function(dynamic message_port);
 
 Future<void> main() async {
