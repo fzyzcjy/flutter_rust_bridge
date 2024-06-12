@@ -13,12 +13,7 @@ import 'package:web/web.dart' as web;
 @dart_js_interop.JS("wasm_bindgen.my_rust_function")
 external void my_rust_function(web.EventTarget message_port);
 
-Future<void> main() async {
-  print('Action: Init rust (before)');
-  await RustLib.init();
-  print('Action: Init rust (after)');
-
-  print('Dart before call my_rust_function');
+Future<void> f() async {
   final messageChannel = web.MessageChannel();
 
   final _kMessageEvent =
@@ -27,14 +22,20 @@ Future<void> main() async {
       .forTarget(messageChannel.port1)
       .listen((event) => print('messageChannel.port1 see event $event'));
 
-  // messageChannel.port1.addEventListener(
-  //     'message', (data) => print('messageChannel.port1 see event $data'));
-
+  print('Dart before call my_rust_function');
   my_rust_function(messageChannel.port2);
   print('Dart after call my_rust_function');
 
   print('Dart start sleeping');
   await Future.delayed(const Duration(seconds: 1000000));
+}
+
+Future<void> main() async {
+  print('Action: Init rust (before)');
+  await RustLib.init();
+  print('Action: Init rust (after)');
+
+  await f();
 
   // print('Action: Configure tests (before)');
   // test('dart call minimalAdder', () async {
