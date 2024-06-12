@@ -1,19 +1,21 @@
 import 'dart:async';
+import 'dart:html' as html;
 import 'dart:js_interop' as dart_js_interop;
 
 import 'package:frb_example_dart_minimal/src/rust/frb_generated.dart';
+import 'package:js/js.dart' as package_js;
 import 'package:web/helpers.dart' as helpers;
-
-// import 'dart:html' as html;
-// import 'package:web/web.dart' as web;
-// import 'package:js/js.dart' as package_js;
-// import 'dart:js_interop' as dart_js_interop;
 import 'package:web/web.dart' as web;
 
 @dart_js_interop.JS("wasm_bindgen.my_rust_function")
-external void my_rust_function(web.EventTarget message_port);
+external void my_rust_function_packageweb(web.EventTarget message_port);
 
-Future<void> f() async {
+@package_js.JS("wasm_bindgen.my_rust_function")
+external void my_rust_function_darthtml(dynamic message_port);
+
+Future<void> run_packageweb() async {
+  print('run_packageweb start');
+ 
   final messageChannel = web.MessageChannel();
 
   final _kMessageEvent =
@@ -23,7 +25,25 @@ Future<void> f() async {
       .listen((event) => print('messageChannel.port1 see event $event'));
 
   print('Dart before call my_rust_function');
-  my_rust_function(messageChannel.port2);
+  my_rust_function_packageweb(messageChannel.port2);
+  print('Dart after call my_rust_function');
+
+  print('Dart start sleeping');
+  await Future.delayed(const Duration(seconds: 1000000));
+}
+
+Future<void> run_darthtml() async {
+  print('run_darthtml start');
+
+  final messageChannel = html.MessageChannel();
+
+  final _kMessageEvent = html.EventStreamProvider<html.MessageEvent>('message');
+  _kMessageEvent
+      .forTarget(messageChannel.port1)
+      .listen((event) => print('messageChannel.port1 see event $event'));
+
+  print('Dart before call my_rust_function');
+  my_rust_function_darthtml(messageChannel.port2);
   print('Dart after call my_rust_function');
 
   print('Dart start sleeping');
@@ -35,7 +55,8 @@ Future<void> main() async {
   await RustLib.init();
   print('Action: Init rust (after)');
 
-  await f();
+  // await run_packageweb();
+  await run_darthtml();
 
   // print('Action: Configure tests (before)');
   // test('dart call minimalAdder', () async {
