@@ -187,8 +187,8 @@ impl FrbAttributes {
             .next()
     }
 
-    pub(crate) fn custom_ser_des(&self) -> Option<()> {
-        todo!()
+    pub(crate) fn custom_ser_des(&self) -> Option<TODO> {
+        TODO
     }
 }
 
