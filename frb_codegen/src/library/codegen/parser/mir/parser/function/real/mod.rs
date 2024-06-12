@@ -5,7 +5,7 @@ use crate::codegen::ir::mir::func::{
     MirFunc, MirFuncArgMode, MirFuncImplMode, MirFuncImplModeDartOnly, MirFuncInput, MirFuncMode,
     MirFuncOutput, MirFuncOwnerInfo, MirFuncOwnerInfoMethod, MirFuncOwnerInfoMethodMode,
 };
-use crate::codegen::ir::mir::skip::MirSkipReason::IgnoredFunctionGeneric;
+use crate::codegen::ir::mir::skip::MirSkipReason::{IgnoredFunctionGeneric, IgnoredSilently};
 use crate::codegen::ir::mir::skip::{MirSkip, MirSkipReason};
 use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
@@ -23,7 +23,7 @@ use crate::codegen::parser::mir::ParseMode;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use crate::utils::namespace::{Namespace, NamespacedName};
 use anyhow::{bail, Context};
-use itertools::{concat, Itertools};
+use itertools::concat;
 use log::{debug, warn};
 use std::fmt::Debug;
 use syn::*;
@@ -42,9 +42,6 @@ pub(crate) fn parse(
 ) -> anyhow::Result<Vec<MirFuncOrSkip>> {
     let mut function_parser = FunctionParser::new(type_parser);
     (src_fns.iter())
-        // Sort to make things stable. The order of parsing functions will affect things like, e.g.,
-        // which file an opaque type is put in.
-        .sorted_by_key(|f| f.owner_and_name_for_dedup())
         .map(|f| {
             function_parser.parse_function(
                 f,
@@ -58,17 +55,17 @@ pub(crate) fn parse(
         .collect()
 }
 
-struct FunctionParser<'a, 'b> {
+pub(crate) struct FunctionParser<'a, 'b> {
     type_parser: &'a mut TypeParser<'b>,
 }
 
 impl<'a, 'b> FunctionParser<'a, 'b> {
-    fn new(type_parser: &'a mut TypeParser<'b>) -> Self {
+    pub(crate) fn new(type_parser: &'a mut TypeParser<'b>) -> Self {
         Self { type_parser }
     }
 
     #[allow(clippy::too_many_arguments)]
-    fn parse_function(
+    pub(crate) fn parse_function(
         &mut self,
         func: &HirFlatFunction,
         force_codec_mode_pack: &Option<CodecModePack>,
@@ -126,6 +123,9 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
         let src_lineno = func.item_fn.span().start().line;
         let attributes = FrbAttributes::parse(func.item_fn.attrs())?;
+        if attributes.dart2rust().is_some() || attributes.rust2dart().is_some() {
+            return Ok(create_output_skip(func, IgnoredSilently));
+        }
 
         let dart_name = parse_dart_name(&attributes, &func.item_fn.name());
 

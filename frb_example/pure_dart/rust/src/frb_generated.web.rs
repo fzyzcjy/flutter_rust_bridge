@@ -5,6 +5,7 @@
 
 use super::*;
 use crate::api::constructor::*;
+use crate::api::custom_ser_des::*;
 use crate::api::dart_code::*;
 use crate::api::dropping::*;
 use crate::api::dyn_trait::SimpleTraitForDynTwinNormal;
@@ -14286,6 +14287,21 @@ pub fn wire__crate__api__constructor__constructor_translatable_struct_twin_norma
 pub fn wire__crate__api__constructor__constructor_translatable_sync_struct_twin_normal_new(
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire__crate__api__constructor__constructor_translatable_sync_struct_twin_normal_new_impl()
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__custom_ser_des__function_using_type_with_custom_serializer(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire__crate__api__custom_ser_des__function_using_type_with_custom_serializer_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
 }
 
 #[wasm_bindgen]

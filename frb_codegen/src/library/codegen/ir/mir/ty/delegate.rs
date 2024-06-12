@@ -1,4 +1,5 @@
 use crate::codegen::generator::codec::structs::CodecMode;
+use crate::codegen::ir::mir::custom_ser_des::MirCustomSerDes;
 use crate::codegen::ir::mir::ty::enumeration::{MirEnumIdent, MirTypeEnumRef};
 use crate::codegen::ir::mir::ty::general_list::{mir_list, MirTypeGeneralList};
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
@@ -33,6 +34,7 @@ pub enum MirTypeDelegate {
     ProxyVariant(MirTypeDelegateProxyVariant),
     ProxyEnum(MirTypeDelegateProxyEnum),
     DynTrait(MirTypeDelegateDynTrait),
+    CustomSerDes(MirTypeDelegateCustomSerDes),
 }
 
 pub struct MirTypeDelegateArray {
@@ -117,6 +119,10 @@ pub struct MirTypeDelegateDynTraitData {
 pub struct MirTypeDelegateDynTraitVariant {
     pub ty: MirType,
 }
+
+pub struct MirTypeDelegateCustomSerDes {
+    pub info: MirCustomSerDes,
+}
 }
 
 impl MirTypeTrait for MirTypeDelegate {
@@ -178,6 +184,9 @@ impl MirTypeTrait for MirTypeDelegate {
             }
             MirTypeDelegate::ProxyEnum(mir) => {
                 format!("ProxyEnum_{}", mir.get_delegate().safe_ident())
+            }
+            MirTypeDelegate::CustomSerDes(mir) => {
+                format!("CustomSerializer_{}", mir.info.rust_api_type.safe_ident())
             }
         }
     }
@@ -245,6 +254,7 @@ impl MirTypeTrait for MirTypeDelegate {
             MirTypeDelegate::DynTrait(mir) => format!("dyn {}", mir.trait_def_name.name),
             MirTypeDelegate::ProxyVariant(mir) => mir.inner.rust_api_type(),
             MirTypeDelegate::ProxyEnum(mir) => mir.original.rust_api_type(),
+            MirTypeDelegate::CustomSerDes(mir) => mir.info.rust_api_type.rust_api_type(),
         }
     }
 
@@ -318,6 +328,7 @@ impl MirTypeDelegate {
             MirTypeDelegate::DynTrait(mir) => mir.get_delegate(),
             MirTypeDelegate::ProxyVariant(mir) => *mir.inner.clone(),
             MirTypeDelegate::ProxyEnum(mir) => mir.get_delegate(),
+            MirTypeDelegate::CustomSerDes(mir) => *mir.info.inner_type.clone(),
         }
     }
 }

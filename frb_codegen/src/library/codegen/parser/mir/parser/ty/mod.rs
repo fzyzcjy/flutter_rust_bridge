@@ -5,6 +5,7 @@ use crate::codegen::ir::early_generator::trait_def_info::IrEarlyGeneratorTraitDe
 use crate::codegen::ir::hir::flat::struct_or_enum::HirFlatEnum;
 use crate::codegen::ir::hir::flat::struct_or_enum::HirFlatStruct;
 use crate::codegen::ir::hir::flat::traits::HirFlatTrait;
+use crate::codegen::ir::mir::custom_ser_des::MirCustomSerDes;
 use crate::codegen::ir::mir::func::MirFuncOwnerInfo;
 use crate::codegen::ir::mir::pack::{MirEnumPool, MirStructPool};
 use crate::codegen::ir::mir::ty::enumeration::{MirEnum, MirEnumIdent};
@@ -27,6 +28,7 @@ use syn::__private::str;
 
 pub(crate) mod array;
 pub(crate) mod concrete;
+pub(crate) mod custom_ser_des;
 mod dart_fn;
 mod enum_or_struct;
 pub(crate) mod enumeration;
@@ -56,6 +58,7 @@ pub(crate) struct TypeParser<'a> {
     src_types: HashMap<String, Type>,
     pub(super) proxied_types: Vec<IrEarlyGeneratorProxiedType>,
     pub(super) trait_def_infos: Vec<IrEarlyGeneratorTraitDefInfo>,
+    pub(super) custom_ser_des_infos: Vec<MirCustomSerDes>,
     dart_code_of_type: HashMap<String, GeneralDartCode>,
     struct_parser_info: EnumOrStructParserInfo<MirStructIdent, MirStruct>,
     enum_parser_info: EnumOrStructParserInfo<MirEnumIdent, MirEnum>,
@@ -91,6 +94,7 @@ impl<'a> TypeParser<'a> {
             src_types,
             proxied_types,
             trait_def_infos,
+            custom_ser_des_infos: Default::default(),
             dart_code_of_type: HashMap::new(),
             struct_parser_info: EnumOrStructParserInfo::new(),
             enum_parser_info: EnumOrStructParserInfo::new(),
