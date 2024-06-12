@@ -28,6 +28,7 @@ use syn::__private::str;
 
 pub(crate) mod array;
 pub(crate) mod concrete;
+pub(crate) mod custom_ser_des;
 mod dart_fn;
 mod enum_or_struct;
 pub(crate) mod enumeration;
