@@ -21,6 +21,7 @@ pub(crate) fn parse(
     let context = TypeParserParsingContext {
         initiated_namespace: CrateName::self_crate().namespace(), // just a dummy value
         func_attributes: FrbAttributes::parse(&[])?,
+        struct_or_enum_attributes: None,
         default_stream_sink_codec,
         default_rust_opaque_codec,
         owner: None,

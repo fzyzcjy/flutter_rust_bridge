@@ -5,6 +5,7 @@ use crate::codegen::ir::early_generator::trait_def_info::IrEarlyGeneratorTraitDe
 use crate::codegen::ir::hir::flat::struct_or_enum::HirFlatEnum;
 use crate::codegen::ir::hir::flat::struct_or_enum::HirFlatStruct;
 use crate::codegen::ir::hir::flat::traits::HirFlatTrait;
+use crate::codegen::ir::mir::custom_ser_des::MirCustomSerDes;
 use crate::codegen::ir::mir::func::MirFuncOwnerInfo;
 use crate::codegen::ir::mir::pack::{MirEnumPool, MirStructPool};
 use crate::codegen::ir::mir::ty::enumeration::{MirEnum, MirEnumIdent};
@@ -23,9 +24,11 @@ use crate::utils::basic_code::general_code::GeneralDartCode;
 use crate::utils::namespace::Namespace;
 use std::collections::HashMap;
 use syn::Type;
+use syn::__private::str;
 
 pub(crate) mod array;
 pub(crate) mod concrete;
+pub(crate) mod custom_ser_des;
 mod dart_fn;
 mod enum_or_struct;
 pub(crate) mod enumeration;
@@ -55,6 +58,7 @@ pub(crate) struct TypeParser<'a> {
     src_types: HashMap<String, Type>,
     pub(super) proxied_types: Vec<IrEarlyGeneratorProxiedType>,
     pub(super) trait_def_infos: Vec<IrEarlyGeneratorTraitDefInfo>,
+    pub(super) custom_ser_des_infos: Vec<MirCustomSerDes>,
     dart_code_of_type: HashMap<String, GeneralDartCode>,
     struct_parser_info: EnumOrStructParserInfo<MirStructIdent, MirStruct>,
     enum_parser_info: EnumOrStructParserInfo<MirEnumIdent, MirEnum>,
@@ -90,6 +94,7 @@ impl<'a> TypeParser<'a> {
             src_types,
             proxied_types,
             trait_def_infos,
+            custom_ser_des_infos: Default::default(),
             dart_code_of_type: HashMap::new(),
             struct_parser_info: EnumOrStructParserInfo::new(),
             enum_parser_info: EnumOrStructParserInfo::new(),
@@ -136,13 +141,24 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     }
 }
 
+#[derive(Clone)]
 pub(crate) struct TypeParserParsingContext {
     pub(crate) initiated_namespace: Namespace,
     pub(crate) func_attributes: FrbAttributes,
+    pub(crate) struct_or_enum_attributes: Option<FrbAttributes>,
     pub(crate) default_stream_sink_codec: CodecMode,
     pub(crate) default_rust_opaque_codec: RustOpaqueCodecMode,
     pub(crate) owner: Option<MirFuncOwnerInfo>,
     pub(crate) parse_mode: ParseMode,
+}
+
+impl TypeParserParsingContext {
+    pub(crate) fn with_struct_or_enum_attributes(&self, x: FrbAttributes) -> Self {
+        Self {
+            struct_or_enum_attributes: Some(x),
+            ..self.clone()
+        }
+    }
 }
 
 impl MirContext for TypeParser<'_> {
