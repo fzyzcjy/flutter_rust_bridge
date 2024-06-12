@@ -7,7 +7,7 @@ extern "C" {
     ///
     /// Attempts to coerce [`JsValue`]s into this interface using [`dyn_into`][JsCast::dyn_into]
     /// or [`dyn_ref`][JsCast::dyn_ref] will fail at runtime.
-    #[derive(Clone, Debug)]
+    #[derive(Clone)]
     pub type PortLike;
     #[wasm_bindgen(method, catch, js_name = "postMessage")]
     pub fn post_message(this: &PortLike, value: &JsValue) -> Result<(), JsValue>;
