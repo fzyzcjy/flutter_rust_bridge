@@ -585,6 +585,8 @@ impl Parse for FrbAttributeSerializer {
         input.parse::<Token![=]>()?;
         let dart_type = input.parse::<syn::LitStr>()?.value();
 
+        input.parse::<Token![,]>()?;
+
         input.parse::<frb_keyword::dart_code>()?;
         input.parse::<Token![=]>()?;
         let dart_code = input.parse::<syn::LitStr>()?.value();
