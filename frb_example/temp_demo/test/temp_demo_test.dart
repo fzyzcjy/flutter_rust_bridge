@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:html' as html;
 import 'dart:js_interop' as dart_js_interop;
 
-import 'package:web/helpers.dart' as helpers;
 import 'package:web/web.dart' as web;
 
 Future<void> run_packageweb() async {
@@ -10,9 +9,7 @@ Future<void> run_packageweb() async {
 
   final messageChannel = web.MessageChannel();
 
-  final _kMessageEvent =
-      helpers.EventStreamProvider<web.MessageEvent>('message');
-  _kMessageEvent
+  web.EventStreamProvider<web.MessageEvent>('message')
       .forTarget(messageChannel.port1)
       .listen((event) => print('messageChannel.port1 see event ${event.data}'));
 
@@ -28,8 +25,7 @@ Future<void> run_darthtml() async {
 
   final messageChannel = html.MessageChannel();
 
-  final _kMessageEvent = html.EventStreamProvider<html.MessageEvent>('message');
-  _kMessageEvent
+  html.EventStreamProvider<html.MessageEvent>('message')
       .forTarget(messageChannel.port1)
       .listen((event) => print('messageChannel.port1 see event ${event.data}'));
 
@@ -41,6 +37,6 @@ Future<void> run_darthtml() async {
 }
 
 Future<void> main() async {
-  // await run_packageweb();
-  await run_darthtml();
+  await run_packageweb();
+  // await run_darthtml();
 }
