@@ -62,8 +62,8 @@ Future<void> main() async {
   await RustLib.init();
   print('Action: Init rust (after)');
 
-  await run_packageweb();
-  // await run_darthtml();
+  // await run_packageweb();
+  await run_darthtml();
 
   // print('Action: Configure tests (before)');
   // test('dart call minimalAdder', () async {
