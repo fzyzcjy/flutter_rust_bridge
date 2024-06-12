@@ -5,7 +5,9 @@ use crate::codegen::ir::mir::func::{
     MirFunc, MirFuncArgMode, MirFuncImplMode, MirFuncImplModeDartOnly, MirFuncInput, MirFuncMode,
     MirFuncOutput, MirFuncOwnerInfo, MirFuncOwnerInfoMethod, MirFuncOwnerInfoMethodMode,
 };
-use crate::codegen::ir::mir::skip::MirSkipReason::{IgnoredFunctionGeneric, IgnoredSilently};
+use crate::codegen::ir::mir::skip::MirSkipReason::{
+    IgnoredByAttribute, IgnoredFunctionGeneric, IgnoredSilently,
+};
 use crate::codegen::ir::mir::skip::{MirSkip, MirSkipReason};
 use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
@@ -151,7 +153,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         let func_name = parse_name(&func.item_fn.name(), &owner);
 
         if attributes.ignore() {
-            return Ok(create_output_skip(func, IgnoredMisc));
+            return Ok(create_output_skip(func, IgnoredByAttribute));
         }
 
         let context = create_context(Some(owner.clone()));
@@ -177,8 +179,8 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
         let impl_mode = compute_impl_mode(is_owner_trait_def, &func_name, &attributes, &output);
 
-        if info.ignore_func {
-            return Ok(create_output_skip(func, IgnoredMisc));
+        if let Some(ignore_func) = info.ignore_func {
+            return Ok(create_output_skip(func, ignore_func));
         }
 
         Ok(MirFuncOrSkip::Func(MirFunc {
@@ -342,7 +344,7 @@ struct FunctionPartialInfo {
     ok_output: Option<MirType>,
     error_output: Option<MirType>,
     mode: Option<MirFuncMode>,
-    ignore_func: bool,
+    ignore_func: Option<MirSkipReason>,
 }
 
 impl FunctionPartialInfo {
@@ -353,7 +355,8 @@ impl FunctionPartialInfo {
             error_output: merge_option(self.error_output, other.error_output)
                 .context("error_output type")?,
             mode: merge_option(self.mode, other.mode).context("mode")?,
-            ignore_func: self.ignore_func || other.ignore_func,
+            ignore_func: merge_option(self.ignore_func, other.ignore_func)
+                .context("ignore_func")?,
         })
     }
 }

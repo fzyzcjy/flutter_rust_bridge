@@ -15,6 +15,7 @@ use crate::if_then_some;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use anyhow::Context;
 use syn::*;
+use crate::codegen::ir::mir::skip::MirSkipReason;
 
 impl<'a, 'b> FunctionParser<'a, 'b> {
     pub(super) fn parse_fn_arg(
@@ -56,7 +57,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
         if ty.should_ignore(self.type_parser) {
             return Ok(FunctionPartialInfo {
-                ignore_func: true,
+                ignore_func: Some(MirSkipReason::IgnoredByType),
                 ..Default::default()
             });
         }
