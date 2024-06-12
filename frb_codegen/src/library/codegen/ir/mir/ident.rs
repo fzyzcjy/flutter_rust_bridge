@@ -4,7 +4,7 @@ use convert_case::{Case, Casing};
 crate::mir! {
 #[serde(transparent)]
 pub struct MirIdent {
-    pub raw: String,
+    raw: String,
 }
 }
 
