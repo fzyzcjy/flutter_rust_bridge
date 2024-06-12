@@ -142,7 +142,7 @@ pub(crate) fn compute_enum_variant_kind_struct_name(
     variant_name: &MirIdent,
 ) -> NamespacedName {
     let variant_namespace = enum_name.namespace.join(&enum_name.name);
-    NamespacedName::new(variant_namespace, variant_name.raw.clone())
+    NamespacedName::new(variant_namespace, variant_name.rust_style().to_owned())
 }
 
 struct EnumOrStructParserEnum<'a, 'b, 'c, 'd>(&'d mut TypeParserWithContext<'a, 'b, 'c>);
