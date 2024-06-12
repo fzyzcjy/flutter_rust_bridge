@@ -133,6 +133,7 @@ fn create_mir_field(ty: MirType, name: &str) -> MirField {
     MirField {
         ty,
         name: MirIdent::new(name.to_owned()),
+        dart_name: None,
         is_final: true,
         is_rust_public: None,
         comments: vec![],

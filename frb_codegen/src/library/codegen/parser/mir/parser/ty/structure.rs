@@ -91,6 +91,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             comments: parse_comments(&field.attrs),
             default: attributes.default_value(),
             settings: MirFieldSettings::default(),
+            dart_name: TODO,
         })
     }
 }

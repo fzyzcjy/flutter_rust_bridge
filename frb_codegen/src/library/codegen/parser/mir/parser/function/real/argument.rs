@@ -77,6 +77,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                     comments: parse_comments(attrs),
                     default: attributes.default_value(),
                     settings: MirFieldSettings::default(),
+                    dart_name: None,
                 },
                 ownership_mode,
             }],
