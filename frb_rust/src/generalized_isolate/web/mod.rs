@@ -7,16 +7,14 @@ pub use into_dart::*;
 pub use misc::*;
 
 #[derive(Debug, Clone)]
-pub struct DartSendPort(web_sys::BroadcastChannel);
+pub struct DartSendPort(i64);
 
 impl DartSendPort {
     pub fn new(native: DartNativeSendPort) -> Self {
-        Self(web_sys::BroadcastChannel::new(&native).unwrap())
+        Self(todo!())
     }
 
     pub fn post(&self, msg: impl IntoDart) -> bool {
-        (self.0.post_message(&msg.into_dart()))
-            .map_err(|err| crate::console_error!("error when DartSendPort.post: {:?}", err))
-            .is_ok()
+        todo!()
     }
 }
