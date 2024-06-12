@@ -20,11 +20,54 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     required super.portManager,
   });
 
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_ScalarValuePtr => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScalarValue;
+
+  @protected
+  ScalarValue
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScalarValue(
+          dynamic raw);
+
+  @protected
+  ScalarValue
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScalarValue(
+          dynamic raw);
+
+  @protected
+  ScalarValue
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScalarValue(
+          dynamic raw);
+
+  @protected
+  bool dco_decode_bool(dynamic raw);
+
   @protected
   int dco_decode_i_32(dynamic raw);
 
   @protected
   void dco_decode_unit(dynamic raw);
+
+  @protected
+  BigInt dco_decode_usize(dynamic raw);
+
+  @protected
+  ScalarValue
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScalarValue(
+          SseDeserializer deserializer);
+
+  @protected
+  ScalarValue
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScalarValue(
+          SseDeserializer deserializer);
+
+  @protected
+  ScalarValue
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScalarValue(
+          SseDeserializer deserializer);
+
+  @protected
+  bool sse_decode_bool(SseDeserializer deserializer);
 
   @protected
   int sse_decode_i_32(SseDeserializer deserializer);
@@ -33,7 +76,25 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_decode_unit(SseDeserializer deserializer);
 
   @protected
-  bool sse_decode_bool(SseDeserializer deserializer);
+  BigInt sse_decode_usize(SseDeserializer deserializer);
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScalarValue(
+          ScalarValue self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScalarValue(
+          ScalarValue self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScalarValue(
+          ScalarValue self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_bool(bool self, SseSerializer serializer);
 
   @protected
   void sse_encode_i_32(int self, SseSerializer serializer);
@@ -42,13 +103,25 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_unit(void self, SseSerializer serializer);
 
   @protected
-  void sse_encode_bool(bool self, SseSerializer serializer);
+  void sse_encode_usize(BigInt self, SseSerializer serializer);
 }
 
 // Section: wire_class
 
 class RustLibWire implements BaseWire {
   RustLibWire.fromExternalLibrary(ExternalLibrary lib);
+
+  void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScalarValue(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScalarValue(
+              ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScalarValue(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScalarValue(
+              ptr);
 }
 
 @JS('wasm_bindgen')
@@ -56,4 +129,12 @@ external RustLibWasmModule get wasmModule;
 
 @JS()
 @anonymous
-class RustLibWasmModule {}
+class RustLibWasmModule {
+  external void
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScalarValue(
+          dynamic ptr);
+
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScalarValue(
+          dynamic ptr);
+}
