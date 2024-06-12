@@ -1,7 +1,6 @@
 use crate::codegen::generator::codec::structs::{CodecMode, CodecModePack};
 use crate::codegen::ir::hir::flat::function::HirFlatFunction;
 use crate::codegen::ir::hir::flat::function::HirFlatFunctionOwner;
-use crate::codegen::ir::mir::custom_ser_des::MirCustomSerDes;
 use crate::codegen::ir::mir::func::{
     MirFunc, MirFuncArgMode, MirFuncImplMode, MirFuncImplModeDartOnly, MirFuncInput, MirFuncMode,
     MirFuncOutput, MirFuncOwnerInfo, MirFuncOwnerInfoMethod, MirFuncOwnerInfoMethodMode,
@@ -40,7 +39,6 @@ pub(crate) fn parse(
     type_parser: &mut TypeParser,
     config: &ParserMirInternalConfig,
     parse_mode: ParseMode,
-    custom_ser_des_arr: &[MirCustomSerDes],
 ) -> anyhow::Result<Vec<MirFuncOrSkip>> {
     let mut function_parser = FunctionParser::new(type_parser);
     (src_fns.iter())
