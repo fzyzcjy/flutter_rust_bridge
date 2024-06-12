@@ -66,10 +66,10 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         src_enum: &HirFlatEnum,
         variant: &Variant,
     ) -> anyhow::Result<MirEnumVariant> {
-        let variant_name = MirIdent::new(variant.ident.to_string());
+        let variant_name = MirIdent::new(variant.ident.to_string(), None);
         Ok(MirEnumVariant {
             name: variant_name.clone(),
-            wrapper_name: MirIdent::new(format!("{}_{}", src_enum.name.name, variant.ident)),
+            wrapper_name: MirIdent::new(format!("{}_{}", src_enum.name.name, variant.ident), None),
             comments: parse_comments(&variant.attrs),
             kind: match variant.fields.iter().next() {
                 None => MirVariantKind::Value,
@@ -118,6 +118,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                                 .as_ref()
                                 .map(ToString::to_string)
                                 .unwrap_or_else(|| format!("field{idx}")),
+                            None,
                         ),
                         ty: self.parse_type_with_context(&field.ty, |c| {
                             c.with_struct_or_enum_attributes(attributes.clone())
@@ -141,7 +142,7 @@ pub(crate) fn compute_enum_variant_kind_struct_name(
     variant_name: &MirIdent,
 ) -> NamespacedName {
     let variant_namespace = enum_name.namespace.join(&enum_name.name);
-    NamespacedName::new(variant_namespace, variant_name.raw.clone())
+    NamespacedName::new(variant_namespace, variant_name.rust_style().to_owned())
 }
 
 struct EnumOrStructParserEnum<'a, 'b, 'c, 'd>(&'d mut TypeParserWithContext<'a, 'b, 'c>);

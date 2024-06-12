@@ -70,7 +70,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         Ok(FunctionPartialInfo {
             inputs: vec![MirFuncInput {
                 inner: MirField {
-                    name: MirIdent::new(name),
+                    name: MirIdent::new(name, None),
                     ty,
                     is_final: true,
                     is_rust_public: None,
