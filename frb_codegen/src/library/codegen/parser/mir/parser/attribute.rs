@@ -186,6 +186,10 @@ impl FrbAttributes {
             .filter_map(|item| if_then_some!(let FrbAttribute::Name(inner) = item, inner.0.clone()))
             .next()
     }
+
+    pub(crate) fn custom_ser_des(&self) -> Option<TODO> {
+        TODO
+    }
 }
 
 mod frb_keyword {

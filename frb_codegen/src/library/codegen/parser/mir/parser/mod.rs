@@ -32,7 +32,9 @@ pub(crate) fn parse(
         parse_mode,
     )?;
 
-    let custom_ser_des_infos = custom_ser_des::parse(&mut type_parser)?;
+    let custom_ser_des_infos = custom_ser_des::parse(
+        &hir_flat.functions,
+        &mut type_parser)?;
     type_parser.custom_ser_des_infos.extend(custom_ser_des_infos);
 
     let (funcs_all, skipped_functions) = function::parse(
