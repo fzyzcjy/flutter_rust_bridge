@@ -1,14 +1,16 @@
 import 'dart:async';
-import 'dart:html' as html;
-
-// import 'package:js/js.dart' as package_js;
-// import 'dart:js_interop' as dart_js_interop;
 import 'dart:js_interop' as dart_js_interop;
 
 import 'package:frb_example_dart_minimal/src/rust/frb_generated.dart';
 
+// import 'dart:html' as html;
+// import 'package:web/web.dart' as web;
+// import 'package:js/js.dart' as package_js;
+// import 'dart:js_interop' as dart_js_interop;
+import 'package:web/web.dart' as web;
+
 @dart_js_interop.JS("wasm_bindgen.my_rust_function")
-external void my_rust_function(dynamic message_port);
+external void my_rust_function(dart_js_interop.JSObject message_port);
 
 Future<void> main() async {
   print('Action: Init rust (before)');
@@ -16,7 +18,7 @@ Future<void> main() async {
   print('Action: Init rust (after)');
 
   print('Dart before call my_rust_function');
-  final messageChannel = html.MessageChannel();
+  final messageChannel = web.MessageChannel();
   messageChannel.port1.addEventListener(
       'message', (data) => print('messageChannel.port1 see event $data'));
   my_rust_function(messageChannel.port2);
