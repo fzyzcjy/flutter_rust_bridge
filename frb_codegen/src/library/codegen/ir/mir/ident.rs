@@ -4,25 +4,25 @@ use convert_case::{Case, Casing};
 crate::mir! {
 #[serde(transparent)]
 pub struct MirIdent {
-    raw: String,
+    rust_style: String,
 }
 }
 
 impl MirIdent {
     pub fn new(raw: String) -> MirIdent {
-        MirIdent { raw }
+        MirIdent { rust_style: raw }
     }
 
     pub fn rust_style(&self) -> String {
-        self.raw.clone()
+        self.rust_style.clone()
     }
 
     pub fn c_style(&self) -> String {
-        convert_rust_to_c_style(&self.raw)
+        convert_rust_to_c_style(&self.rust_style)
     }
 
     pub fn dart_style(&self) -> String {
-        convert_rust_to_dart_style(&self.raw)
+        convert_rust_to_dart_style(&self.rust_style)
     }
 
     pub fn style(&self, lang: &Lang) -> String {
@@ -35,7 +35,7 @@ impl MirIdent {
 
 impl std::fmt::Display for MirIdent {
     fn fmt(&self, fmt: &mut std::fmt::Formatter<'_>) -> Result<(), std::fmt::Error> {
-        fmt.write_str(&self.raw)
+        fmt.write_str(&self.rust_style)
     }
 }
 
