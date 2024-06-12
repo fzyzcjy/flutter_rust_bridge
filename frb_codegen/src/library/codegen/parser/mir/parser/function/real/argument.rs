@@ -2,6 +2,7 @@ use crate::codegen::ir::mir::field::{MirField, MirFieldSettings};
 use crate::codegen::ir::mir::func::{MirFuncInput, MirFuncOwnerInfo};
 use crate::codegen::ir::mir::func::{MirFuncOwnerInfoMethod, OwnershipMode};
 use crate::codegen::ir::mir::ident::MirIdent;
+use crate::codegen::ir::mir::skip::MirSkipReason;
 use crate::codegen::ir::mir::ty::boxed::MirTypeBoxed;
 use crate::codegen::ir::mir::ty::delegate::{MirTypeDelegate, MirTypeDelegateProxyEnum};
 use crate::codegen::ir::mir::ty::MirType;
@@ -15,7 +16,6 @@ use crate::if_then_some;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use anyhow::Context;
 use syn::*;
-use crate::codegen::ir::mir::skip::MirSkipReason;
 
 impl<'a, 'b> FunctionParser<'a, 'b> {
     pub(super) fn parse_fn_arg(

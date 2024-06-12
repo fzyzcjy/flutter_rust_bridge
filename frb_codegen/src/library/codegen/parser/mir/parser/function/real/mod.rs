@@ -5,7 +5,10 @@ use crate::codegen::ir::mir::func::{
     MirFunc, MirFuncArgMode, MirFuncImplMode, MirFuncImplModeDartOnly, MirFuncInput, MirFuncMode,
     MirFuncOutput, MirFuncOwnerInfo, MirFuncOwnerInfoMethod, MirFuncOwnerInfoMethodMode,
 };
-use crate::codegen::ir::mir::skip::MirSkipReason::{IgnoreBecauseExplicitAttribute, IgnoreBecauseFunctionGeneric, IgnoreBecauseOwnerTyShouldIgnore, IgnoreSilently};
+use crate::codegen::ir::mir::skip::MirSkipReason::{
+    IgnoreBecauseExplicitAttribute, IgnoreBecauseFunctionGeneric, IgnoreBecauseOwnerTyShouldIgnore,
+    IgnoreSilently,
+};
 use crate::codegen::ir::mir::skip::{MirSkip, MirSkipReason};
 use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
@@ -211,8 +214,8 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         actual_method_dart_name: Option<String>,
         attributes: &FrbAttributes,
     ) -> anyhow::Result<OwnerInfoOrSkip> {
-        use OwnerInfoOrSkip::*;
         use MirSkipReason::*;
+        use OwnerInfoOrSkip::*;
 
         match &func.owner {
             HirFlatFunctionOwner::Function => Ok(Info(MirFuncOwnerInfo::Function)),
