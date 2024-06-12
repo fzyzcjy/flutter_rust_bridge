@@ -25,11 +25,11 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('dart call useImportedEnum()', () async {
     expect(
-      await useImportedEnumTwinRustAsyncSse(myEnum: MyEnum.False),
+      await useImportedEnumTwinRustAsyncSse(myEnum: MyEnum.false_),
       false,
     );
     expect(
-      await useImportedEnumTwinRustAsyncSse(myEnum: MyEnum.True),
+      await useImportedEnumTwinRustAsyncSse(myEnum: MyEnum.true_),
       true,
     );
   });

@@ -22,7 +22,7 @@ Future<void> _demoUsage() async {
   const options = AudioContextOptions(
     latencyHint: AudioContextLatencyCategory.balanced(),
     sinkId: '',
-    renderSizeHint: AudioContextRenderSizeCategory.Default,
+    renderSizeHint: AudioContextRenderSizeCategory.default_,
   );
   final context = AudioContext(options: options);
 
