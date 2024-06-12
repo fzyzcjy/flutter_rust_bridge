@@ -51,8 +51,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
     final ret = await mirrorStructStreamTwinRustAsync().first;
     _testAppSettings(ret.a);
     expect(ret.b.content, true);
-    expect(ret.c[0], MyEnum.true_);
-    expect(ret.c[1], MyEnum.false_);
+    expect(ret.c[0], MyEnum.True);
+    expect(ret.c[1], MyEnum.False);
     _testAppSettings(ret.d[0]);
     _testAppSettings(ret.d[1]);
   });

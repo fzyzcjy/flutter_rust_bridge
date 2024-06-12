@@ -31,57 +31,6 @@ Future<TupleStructWithTwoFieldTwinNormal> funcTupleStructWithTwoFieldTwinNormal(
     RustLib.instance.api
         .crateApiStructureFuncTupleStructWithTwoFieldTwinNormal(arg: arg);
 
-Future<StructWithFieldRenameTwinNormal> funcForStructWithFieldRenameTwinNormal(
-        {required StructWithFieldRenameTwinNormal arg}) =>
-    RustLib.instance.api
-        .crateApiStructureFuncForStructWithFieldRenameTwinNormal(arg: arg);
-
-Future<StructWithDartKeywordFieldTwinNormal>
-    funcForStructWithDartKeywordFieldTwinNormal(
-            {required StructWithDartKeywordFieldTwinNormal arg}) =>
-        RustLib.instance.api
-            .crateApiStructureFuncForStructWithDartKeywordFieldTwinNormal(
-                arg: arg);
-
-class StructWithDartKeywordFieldTwinNormal {
-  final int class_;
-  final PlatformInt64 interface_;
-
-  const StructWithDartKeywordFieldTwinNormal({
-    required this.class_,
-    required this.interface_,
-  });
-
-  @override
-  int get hashCode => class_.hashCode ^ interface_.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is StructWithDartKeywordFieldTwinNormal &&
-          runtimeType == other.runtimeType &&
-          class_ == other.class_ &&
-          interface_ == other.interface_;
-}
-
-class StructWithFieldRenameTwinNormal {
-  final int renamed_field;
-
-  const StructWithFieldRenameTwinNormal({
-    required this.renamed_field,
-  });
-
-  @override
-  int get hashCode => renamed_field.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is StructWithFieldRenameTwinNormal &&
-          runtimeType == other.runtimeType &&
-          renamed_field == other.renamed_field;
-}
-
 class StructWithOneFieldTwinNormal {
   final int a;
 

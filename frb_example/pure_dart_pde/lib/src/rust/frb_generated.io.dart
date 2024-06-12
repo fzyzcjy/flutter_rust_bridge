@@ -2483,21 +2483,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
-  StructWithDartKeywordFieldTwinNormal
-      dco_decode_box_autoadd_struct_with_dart_keyword_field_twin_normal(
-          dynamic raw);
-
-  @protected
-  StructWithDartKeywordFieldTwinRustAsync
-      dco_decode_box_autoadd_struct_with_dart_keyword_field_twin_rust_async(
-          dynamic raw);
-
-  @protected
-  StructWithDartKeywordFieldTwinSync
-      dco_decode_box_autoadd_struct_with_dart_keyword_field_twin_sync(
-          dynamic raw);
-
-  @protected
   StructWithEnumTwinNormal dco_decode_box_autoadd_struct_with_enum_twin_normal(
       dynamic raw);
 
@@ -2523,19 +2508,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   StructWithExplicitAutoOpaqueFieldTwinSync
       dco_decode_box_autoadd_struct_with_explicit_auto_opaque_field_twin_sync(
           dynamic raw);
-
-  @protected
-  StructWithFieldRenameTwinNormal
-      dco_decode_box_autoadd_struct_with_field_rename_twin_normal(dynamic raw);
-
-  @protected
-  StructWithFieldRenameTwinRustAsync
-      dco_decode_box_autoadd_struct_with_field_rename_twin_rust_async(
-          dynamic raw);
-
-  @protected
-  StructWithFieldRenameTwinSync
-      dco_decode_box_autoadd_struct_with_field_rename_twin_sync(dynamic raw);
 
   @protected
   StructWithGoodAndOpaqueFieldTwinNormal
@@ -4377,18 +4349,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_struct_with_custom_name_method_twin_normal(dynamic raw);
 
   @protected
-  StructWithDartKeywordFieldTwinNormal
-      dco_decode_struct_with_dart_keyword_field_twin_normal(dynamic raw);
-
-  @protected
-  StructWithDartKeywordFieldTwinRustAsync
-      dco_decode_struct_with_dart_keyword_field_twin_rust_async(dynamic raw);
-
-  @protected
-  StructWithDartKeywordFieldTwinSync
-      dco_decode_struct_with_dart_keyword_field_twin_sync(dynamic raw);
-
-  @protected
   StructWithEnumTwinNormal dco_decode_struct_with_enum_twin_normal(dynamic raw);
 
   @protected
@@ -4411,18 +4371,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   StructWithExplicitAutoOpaqueFieldTwinSync
       dco_decode_struct_with_explicit_auto_opaque_field_twin_sync(dynamic raw);
-
-  @protected
-  StructWithFieldRenameTwinNormal
-      dco_decode_struct_with_field_rename_twin_normal(dynamic raw);
-
-  @protected
-  StructWithFieldRenameTwinRustAsync
-      dco_decode_struct_with_field_rename_twin_rust_async(dynamic raw);
-
-  @protected
-  StructWithFieldRenameTwinSync dco_decode_struct_with_field_rename_twin_sync(
-      dynamic raw);
 
   @protected
   StructWithGoodAndOpaqueFieldTwinNormal
@@ -6785,21 +6733,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
-  StructWithDartKeywordFieldTwinNormal
-      sse_decode_box_autoadd_struct_with_dart_keyword_field_twin_normal(
-          SseDeserializer deserializer);
-
-  @protected
-  StructWithDartKeywordFieldTwinRustAsync
-      sse_decode_box_autoadd_struct_with_dart_keyword_field_twin_rust_async(
-          SseDeserializer deserializer);
-
-  @protected
-  StructWithDartKeywordFieldTwinSync
-      sse_decode_box_autoadd_struct_with_dart_keyword_field_twin_sync(
-          SseDeserializer deserializer);
-
-  @protected
   StructWithEnumTwinNormal sse_decode_box_autoadd_struct_with_enum_twin_normal(
       SseDeserializer deserializer);
 
@@ -6825,21 +6758,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   StructWithExplicitAutoOpaqueFieldTwinSync
       sse_decode_box_autoadd_struct_with_explicit_auto_opaque_field_twin_sync(
-          SseDeserializer deserializer);
-
-  @protected
-  StructWithFieldRenameTwinNormal
-      sse_decode_box_autoadd_struct_with_field_rename_twin_normal(
-          SseDeserializer deserializer);
-
-  @protected
-  StructWithFieldRenameTwinRustAsync
-      sse_decode_box_autoadd_struct_with_field_rename_twin_rust_async(
-          SseDeserializer deserializer);
-
-  @protected
-  StructWithFieldRenameTwinSync
-      sse_decode_box_autoadd_struct_with_field_rename_twin_sync(
           SseDeserializer deserializer);
 
   @protected
@@ -8942,21 +8860,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
-  StructWithDartKeywordFieldTwinNormal
-      sse_decode_struct_with_dart_keyword_field_twin_normal(
-          SseDeserializer deserializer);
-
-  @protected
-  StructWithDartKeywordFieldTwinRustAsync
-      sse_decode_struct_with_dart_keyword_field_twin_rust_async(
-          SseDeserializer deserializer);
-
-  @protected
-  StructWithDartKeywordFieldTwinSync
-      sse_decode_struct_with_dart_keyword_field_twin_sync(
-          SseDeserializer deserializer);
-
-  @protected
   StructWithEnumTwinNormal sse_decode_struct_with_enum_twin_normal(
       SseDeserializer deserializer);
 
@@ -8982,20 +8885,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   StructWithExplicitAutoOpaqueFieldTwinSync
       sse_decode_struct_with_explicit_auto_opaque_field_twin_sync(
           SseDeserializer deserializer);
-
-  @protected
-  StructWithFieldRenameTwinNormal
-      sse_decode_struct_with_field_rename_twin_normal(
-          SseDeserializer deserializer);
-
-  @protected
-  StructWithFieldRenameTwinRustAsync
-      sse_decode_struct_with_field_rename_twin_rust_async(
-          SseDeserializer deserializer);
-
-  @protected
-  StructWithFieldRenameTwinSync sse_decode_struct_with_field_rename_twin_sync(
-      SseDeserializer deserializer);
 
   @protected
   StructWithGoodAndOpaqueFieldTwinNormal
@@ -11414,18 +11303,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       StructWithCustomNameMethodTwinNormal self, SseSerializer serializer);
 
   @protected
-  void sse_encode_box_autoadd_struct_with_dart_keyword_field_twin_normal(
-      StructWithDartKeywordFieldTwinNormal self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_box_autoadd_struct_with_dart_keyword_field_twin_rust_async(
-      StructWithDartKeywordFieldTwinRustAsync self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_box_autoadd_struct_with_dart_keyword_field_twin_sync(
-      StructWithDartKeywordFieldTwinSync self, SseSerializer serializer);
-
-  @protected
   void sse_encode_box_autoadd_struct_with_enum_twin_normal(
       StructWithEnumTwinNormal self, SseSerializer serializer);
 
@@ -11452,18 +11329,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_box_autoadd_struct_with_explicit_auto_opaque_field_twin_sync(
       StructWithExplicitAutoOpaqueFieldTwinSync self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_box_autoadd_struct_with_field_rename_twin_normal(
-      StructWithFieldRenameTwinNormal self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_box_autoadd_struct_with_field_rename_twin_rust_async(
-      StructWithFieldRenameTwinRustAsync self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_box_autoadd_struct_with_field_rename_twin_sync(
-      StructWithFieldRenameTwinSync self, SseSerializer serializer);
 
   @protected
   void sse_encode_box_autoadd_struct_with_good_and_opaque_field_twin_normal(
@@ -13509,18 +13374,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       StructWithCustomNameMethodTwinNormal self, SseSerializer serializer);
 
   @protected
-  void sse_encode_struct_with_dart_keyword_field_twin_normal(
-      StructWithDartKeywordFieldTwinNormal self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_struct_with_dart_keyword_field_twin_rust_async(
-      StructWithDartKeywordFieldTwinRustAsync self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_struct_with_dart_keyword_field_twin_sync(
-      StructWithDartKeywordFieldTwinSync self, SseSerializer serializer);
-
-  @protected
   void sse_encode_struct_with_enum_twin_normal(
       StructWithEnumTwinNormal self, SseSerializer serializer);
 
@@ -13545,18 +13398,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_struct_with_explicit_auto_opaque_field_twin_sync(
       StructWithExplicitAutoOpaqueFieldTwinSync self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_struct_with_field_rename_twin_normal(
-      StructWithFieldRenameTwinNormal self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_struct_with_field_rename_twin_rust_async(
-      StructWithFieldRenameTwinRustAsync self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_struct_with_field_rename_twin_sync(
-      StructWithFieldRenameTwinSync self, SseSerializer serializer);
 
   @protected
   void sse_encode_struct_with_good_and_opaque_field_twin_normal(

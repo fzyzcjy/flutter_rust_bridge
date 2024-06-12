@@ -38,59 +38,6 @@ Future<
         .crateApiPseudoManualStructureTwinRustAsyncFuncTupleStructWithTwoFieldTwinRustAsync(
             arg: arg);
 
-Future<
-    StructWithFieldRenameTwinRustAsync> funcForStructWithFieldRenameTwinRustAsync(
-        {required StructWithFieldRenameTwinRustAsync arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualStructureTwinRustAsyncFuncForStructWithFieldRenameTwinRustAsync(
-            arg: arg);
-
-Future<StructWithDartKeywordFieldTwinRustAsync>
-    funcForStructWithDartKeywordFieldTwinRustAsync(
-            {required StructWithDartKeywordFieldTwinRustAsync arg}) =>
-        RustLib.instance.api
-            .crateApiPseudoManualStructureTwinRustAsyncFuncForStructWithDartKeywordFieldTwinRustAsync(
-                arg: arg);
-
-class StructWithDartKeywordFieldTwinRustAsync {
-  final int class_;
-  final PlatformInt64 interface_;
-
-  const StructWithDartKeywordFieldTwinRustAsync({
-    required this.class_,
-    required this.interface_,
-  });
-
-  @override
-  int get hashCode => class_.hashCode ^ interface_.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is StructWithDartKeywordFieldTwinRustAsync &&
-          runtimeType == other.runtimeType &&
-          class_ == other.class_ &&
-          interface_ == other.interface_;
-}
-
-class StructWithFieldRenameTwinRustAsync {
-  final int renamed_field;
-
-  const StructWithFieldRenameTwinRustAsync({
-    required this.renamed_field,
-  });
-
-  @override
-  int get hashCode => renamed_field.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is StructWithFieldRenameTwinRustAsync &&
-          runtimeType == other.runtimeType &&
-          renamed_field == other.renamed_field;
-}
-
 class StructWithOneFieldTwinRustAsync {
   final int a;
 

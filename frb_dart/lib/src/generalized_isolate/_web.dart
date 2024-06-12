@@ -6,23 +6,21 @@ import 'dart:html' as html;
 import 'dart:html' hide MessagePort;
 
 import 'package:flutter_rust_bridge/src/platform_types/_web.dart';
-import 'package:flutter_rust_bridge/src/platform_utils/_web.dart';
 
 /// {@macro flutter_rust_bridge.internal}
 String serializeNativePort(NativePortType port) => port.name;
 
-/// {@macro flutter_rust_bridge.only_for_generated_code}
-typedef MessagePort = _PortLike;
+/// {@macro flutter_rust_bridge.internal}
+ReceivePort broadcastPort(String channelName) => ReceivePort._raw(
+    RawReceivePort._raw(_WebChannel.broadcastChannel(channelName)));
 
-/// {@macro flutter_rust_bridge.only_for_generated_code}
-typedef SendPort = _PortLike;
-
-/// Web implementation of the `dart:isolate`'s ReceivePort.
+/// {@template flutter_rust_bridge.same_as_native}
+/// Web implementation of the one with same name in native.
+/// {@endtemplate}
 class ReceivePort extends Stream<dynamic> {
-  /// The receive port.
   final RawReceivePort _rawReceivePort;
 
-  /// Create a new receive port from an optional [RawReceivePort].
+  /// {@macro flutter_rust_bridge.same_as_native}
   factory ReceivePort() => ReceivePort._raw();
 
   ReceivePort._raw([RawReceivePort? rawReceivePort])
@@ -35,7 +33,7 @@ class ReceivePort extends Stream<dynamic> {
     void Function()? onDone,
     bool? cancelOnError,
   }) {
-    return _rawReceivePort._receivePort.onMessage.map(_extractData).listen(
+    return _rawReceivePort._webReceivePort._onMessage.map(_extractData).listen(
           onData,
           onError: onError,
           onDone: onDone,
@@ -45,69 +43,71 @@ class ReceivePort extends Stream<dynamic> {
 
   static dynamic _extractData(MessageEvent event) => event.data;
 
-  /// The send port.
+  /// {@macro flutter_rust_bridge.same_as_native}
   SendPort get sendPort => _rawReceivePort.sendPort;
 
-  /// Close the receive port, ignoring any further messages.
+  /// {@macro flutter_rust_bridge.same_as_native}
   void close() => _rawReceivePort.close();
 }
 
-/// Wrapper around a [MessageChannel].
+/// {@macro flutter_rust_bridge.same_as_native}
 class RawReceivePort {
-  /// The underlying message channel.
-  final _Channel _channel;
+  final _WebChannel _webChannel;
 
-  /// {@macro flutter_rust_bridge.only_for_generated_code}
+  /// {@macro flutter_rust_bridge.same_as_native}
   factory RawReceivePort() => RawReceivePort._raw();
 
-  RawReceivePort._raw([_Channel? channel])
-      : _channel = channel ?? _Channel.messageChannel();
+  RawReceivePort._raw([_WebChannel? channel])
+      : _webChannel = channel ?? _WebChannel.messageChannel();
 
+  /// {@macro flutter_rust_bridge.same_as_native}
   set handler(Function(dynamic) handler) {
-    _receivePort.onMessage.listen((event) => handler(event.data));
+    _webReceivePort._onMessage.listen((event) => handler(event.data));
   }
 
-  /// Close the receive port.
-  void close() => _channel.receivePort.close();
+  /// {@macro flutter_rust_bridge.same_as_native}
+  void close() => _webReceivePort._close();
 
-  /// The port to be used by other workers.
-  SendPort get sendPort => _channel.sendPort;
+  /// {@macro flutter_rust_bridge.same_as_native}
+  SendPort get sendPort => _webChannel._sendPort;
 
-  SendPort get _receivePort => _channel.receivePort;
+  _WebPortLike get _webReceivePort => _webChannel._receivePort;
 }
 
-/// {@macro flutter_rust_bridge.internal}
-ReceivePort broadcastPort(String channelName) => ReceivePort._raw(
-    RawReceivePort._raw(_Channel.broadcastChannel(channelName)));
+/// {@macro flutter_rust_bridge.same_as_native}
+class SendPort {
+  /// {@macro flutter_rust_bridge.same_as_native}
+  final html.EventTarget nativePort;
 
-abstract class _Channel {
-  SendPort get sendPort;
-
-  SendPort get receivePort;
-
-  const _Channel();
-
-  factory _Channel.messageChannel() = _MessageChannelWrapper;
-
-  factory _Channel.broadcastChannel(String channelName) =
-      _BroadcastChannelWrapper;
+  const SendPort._(this.nativePort);
 }
 
-class _MessageChannelWrapper implements _Channel {
-  final channel = MessageChannel();
+abstract class _WebChannel {
+  SendPort get _sendPort;
+
+  _WebPortLike get _receivePort;
+
+  factory _WebChannel.messageChannel() = _WebMessageChannel;
+
+  factory _WebChannel.broadcastChannel(String channelName) =
+      _WebBroadcastChannel;
+}
+
+class _WebMessageChannel implements _WebChannel {
+  final _channel = MessageChannel();
 
   @override
-  SendPort get sendPort => _PortLike.messagePort(channel.port2);
+  SendPort get _sendPort => SendPort._(_channel.port2);
 
   @override
-  SendPort get receivePort => _PortLike.messagePort(channel.port1);
+  _WebPortLike get _receivePort => _WebPortLike._messagePort(_channel.port1);
 }
 
-class _BroadcastChannelWrapper implements _Channel {
+class _WebBroadcastChannel implements _WebChannel {
   final BroadcastChannel _sendChannel;
   final BroadcastChannel _receiveChannel;
 
-  _BroadcastChannelWrapper(String channelName)
+  _WebBroadcastChannel(String channelName)
       // Note: It is *wrong* to reuse the same HTML BroadcastChannel object,
       // because HTML BroadcastChannel spec says that, the event will not be fired
       // at the object which sends it. Therefore, we need two different objects.
@@ -115,61 +115,48 @@ class _BroadcastChannelWrapper implements _Channel {
         _receiveChannel = BroadcastChannel(channelName);
 
   @override
-  SendPort get sendPort => _PortLike.broadcastChannel(_sendChannel);
+  SendPort get _sendPort => SendPort._(_sendChannel);
 
   @override
-  SendPort get receivePort => _PortLike.broadcastChannel(_receiveChannel);
+  _WebPortLike get _receivePort =>
+      _WebPortLike._broadcastChannel(_receiveChannel);
 }
 
-/// [html.MessagePort]'s interface.
-abstract class _PortLike {
-  const _PortLike._();
+/// {@macro flutter_rust_bridge.same_as_native}
+abstract class _WebPortLike {
+  const _WebPortLike._();
 
-  factory _PortLike.messagePort(html.MessagePort port) = _MessagePortWrapper;
+  factory _WebPortLike._messagePort(html.MessagePort port) = _WebMessagePort;
 
-  factory _PortLike.broadcastChannel(BroadcastChannel channel) =
-      _BroadcastPortWrapper;
+  factory _WebPortLike._broadcastChannel(BroadcastChannel channel) =
+      _WebBroadcastPort;
 
-  void postMessage(Object? value);
+  void _close();
 
-  void close();
+  /// {@macro flutter_rust_bridge.same_as_native}
+  html.EventTarget get _nativePort;
 
-  html.EventTarget get nativePort;
-
-  Stream<MessageEvent> get onMessage => _kMessageEvent.forTarget(nativePort);
+  Stream<MessageEvent> get _onMessage => _kMessageEvent.forTarget(_nativePort);
   static const _kMessageEvent = EventStreamProvider<MessageEvent>('message');
 }
 
-class _MessagePortWrapper extends _PortLike {
+class _WebMessagePort extends _WebPortLike {
   @override
-  final html.MessagePort nativePort;
+  final html.MessagePort _nativePort;
 
-  _MessagePortWrapper(this.nativePort) : super._();
-
-  @override
-  void postMessage(message, [List<Object>? transfer]) =>
-      nativePort.postMessage(message, transfer);
+  _WebMessagePort(this._nativePort) : super._();
 
   @override
-  void close() => nativePort.close();
+  void _close() => _nativePort.close();
 }
 
-class _BroadcastPortWrapper extends _PortLike {
+// Indeed a BroadcastChannel, not a Broadcast "Port"
+class _WebBroadcastPort extends _WebPortLike {
   @override
-  final html.BroadcastChannel nativePort;
+  final html.BroadcastChannel _nativePort;
 
-  _BroadcastPortWrapper(this.nativePort) : super._();
-
-  /// This presents a limitation of BroadcastChannel,
-  /// i.e. it cannot carry transferables and will unconditionally clone the items.
-  @override
-  void postMessage(message, [List<Object>? transfer]) {
-    if (transfer != null && transfer.isNotEmpty) {
-      jsConsoleWarn("Ignoring transferables for BroadcastPort:", transfer);
-    }
-    nativePort.postMessage(message ?? false);
-  }
+  _WebBroadcastPort(this._nativePort) : super._();
 
   @override
-  void close() => nativePort.close();
+  void _close() => _nativePort.close();
 }
