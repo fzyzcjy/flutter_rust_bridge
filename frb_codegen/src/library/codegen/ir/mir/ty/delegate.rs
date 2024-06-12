@@ -1,5 +1,4 @@
 use crate::codegen::generator::codec::structs::CodecMode;
-use crate::codegen::ir::mir::custom_ser_des::MirCustomSerDes;
 use crate::codegen::ir::mir::ty::enumeration::{MirEnumIdent, MirTypeEnumRef};
 use crate::codegen::ir::mir::ty::general_list::{mir_list, MirTypeGeneralList};
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
@@ -29,12 +28,10 @@ pub enum MirTypeDelegate {
     Set(MirTypeDelegateSet),
     StreamSink(MirTypeDelegateStreamSink),
     BigPrimitive(MirTypeDelegateBigPrimitive),
-    CastedPrimitive(MirTypeDelegateCastedPrimitive),
     RustAutoOpaqueExplicit(MirTypeDelegateRustAutoOpaqueExplicit),
     ProxyVariant(MirTypeDelegateProxyVariant),
     ProxyEnum(MirTypeDelegateProxyEnum),
     DynTrait(MirTypeDelegateDynTrait),
-    CustomSerDes(MirTypeDelegateCustomSerDes),
 }
 
 pub struct MirTypeDelegateArray {
@@ -84,10 +81,6 @@ pub enum MirTypeDelegateBigPrimitive {
     U128,
 }
 
-pub struct MirTypeDelegateCastedPrimitive {
-    pub inner: MirTypePrimitive,
-}
-
 pub struct MirTypeDelegateRustAutoOpaqueExplicit {
     pub inner: MirTypeRustOpaque,
     pub raw: MirRustAutoOpaqueRaw,
@@ -118,10 +111,6 @@ pub struct MirTypeDelegateDynTraitData {
 
 pub struct MirTypeDelegateDynTraitVariant {
     pub ty: MirType,
-}
-
-pub struct MirTypeDelegateCustomSerDes {
-    pub info: MirCustomSerDes,
 }
 }
 
@@ -168,9 +157,6 @@ impl MirTypeTrait for MirTypeDelegate {
                 format!("StreamSink_{}_{}", mir.inner_ok.safe_ident(), mir.codec)
             }
             MirTypeDelegate::BigPrimitive(mir) => mir.to_string(),
-            MirTypeDelegate::CastedPrimitive(mir) => {
-                format!("CastedPrimitive_{}", mir.inner.safe_ident())
-            }
             MirTypeDelegate::RustAutoOpaqueExplicit(mir) => {
                 format!("AutoExplicit_{}", mir.inner.safe_ident())
             }
@@ -184,9 +170,6 @@ impl MirTypeTrait for MirTypeDelegate {
             }
             MirTypeDelegate::ProxyEnum(mir) => {
                 format!("ProxyEnum_{}", mir.get_delegate().safe_ident())
-            }
-            MirTypeDelegate::CustomSerDes(mir) => {
-                format!("CustomSerializer_{}", mir.info.rust_api_type.safe_ident())
             }
         }
     }
@@ -247,14 +230,12 @@ impl MirTypeTrait for MirTypeDelegate {
                 MirTypeDelegateBigPrimitive::I128 => "i128".to_owned(),
                 MirTypeDelegateBigPrimitive::U128 => "u128".to_owned(),
             },
-            MirTypeDelegate::CastedPrimitive(mir) => mir.inner.rust_api_type(),
             MirTypeDelegate::RustAutoOpaqueExplicit(mir) => {
                 format!("RustAutoOpaque{}<{}>", mir.inner.codec, mir.raw.string)
             }
             MirTypeDelegate::DynTrait(mir) => format!("dyn {}", mir.trait_def_name.name),
             MirTypeDelegate::ProxyVariant(mir) => mir.inner.rust_api_type(),
             MirTypeDelegate::ProxyEnum(mir) => mir.original.rust_api_type(),
-            MirTypeDelegate::CustomSerDes(mir) => mir.info.rust_api_type.rust_api_type(),
         }
     }
 
@@ -282,7 +263,6 @@ impl MirTypeTrait for MirTypeDelegate {
                 | MirTypeDelegate::Char
                 | MirTypeDelegate::PrimitiveEnum(_)
                 | MirTypeDelegate::BigPrimitive(_)
-                | MirTypeDelegate::CastedPrimitive(_)
                 | MirTypeDelegate::RustAutoOpaqueExplicit(_)
         )
     }
@@ -323,12 +303,10 @@ impl MirTypeDelegate {
             MirTypeDelegate::Set(mir) => mir_list(*mir.inner.to_owned(), true),
             MirTypeDelegate::StreamSink(_) => MirType::Delegate(MirTypeDelegate::String),
             MirTypeDelegate::BigPrimitive(_) => MirType::Delegate(MirTypeDelegate::String),
-            MirTypeDelegate::CastedPrimitive(mir) => MirType::Primitive(mir.inner.clone()),
             MirTypeDelegate::RustAutoOpaqueExplicit(mir) => MirType::RustOpaque(mir.inner.clone()),
             MirTypeDelegate::DynTrait(mir) => mir.get_delegate(),
             MirTypeDelegate::ProxyVariant(mir) => *mir.inner.clone(),
             MirTypeDelegate::ProxyEnum(mir) => mir.get_delegate(),
-            MirTypeDelegate::CustomSerDes(mir) => *mir.info.inner_type.clone(),
         }
     }
 }

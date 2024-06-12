@@ -93,11 +93,11 @@ pub(crate) fn create_maybe_port_param(
 
 pub(crate) fn create_port_param(target: TargetOrCommon, crate_name: &str) -> ExternFuncParam {
     let rust_type = match target {
-        // NOTE Though in `io`, i64 == our DartNativeSendPort, but it will affect the cbindgen
+        // NOTE Though in `io`, i64 == our MessagePort, but it will affect the cbindgen
         // and ffigen and make code tricker, so we manually write down "i64" here.
         TargetOrCommon::Io => "i64".to_owned(),
         TargetOrCommon::Common | TargetOrCommon::Web => {
-            format!("{crate_name}::for_generated::DartNativeSendPort")
+            format!("{crate_name}::for_generated::MessagePort")
         }
     };
     ExternFuncParam {

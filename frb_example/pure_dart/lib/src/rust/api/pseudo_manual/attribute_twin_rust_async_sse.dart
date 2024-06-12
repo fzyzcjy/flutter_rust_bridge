@@ -10,8 +10,7 @@ import 'package:meta/meta.dart' as meta;
 part 'attribute_twin_rust_async_sse.freezed.dart';
 
 // These types are ignored because they are not used by any `pub` functions: `IgnoredStructTwinRustAsyncSse`, `StructWithOnlyIgnoredMethodTwinRustAsyncSse`
-// These functions are ignored (category: IgnoreBecauseExplicitAttribute): `func_should_not_exist_in_dart_twin_rust_async_sse`, `method_should_not_exist_in_dart_twin_rust_async_sse`
-// These functions are ignored (category: IgnoreBecauseOwnerTyShouldIgnore): `method_should_not_exist_in_dart_twin_rust_async_sse`
+// These functions are ignored: `func_should_not_exist_in_dart_twin_rust_async_sse`, `method_should_not_exist_in_dart_twin_rust_async_sse`, `method_should_not_exist_in_dart_twin_rust_async_sse`
 
 Future<void> handleCustomizedStructTwinRustAsyncSse(
         {required CustomizedTwinRustAsyncSse val}) =>

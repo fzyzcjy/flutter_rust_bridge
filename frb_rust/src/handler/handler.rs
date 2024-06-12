@@ -2,7 +2,7 @@ use crate::codec::sse::Dart2RustMessageSse;
 use crate::codec::BaseCodec;
 use crate::codec::Rust2DartMessageTrait;
 use crate::platform_types::DartAbi;
-use crate::platform_types::DartNativeSendPort;
+use crate::platform_types::MessagePort;
 use std::future::Future;
 
 /// Provide your own handler to customize how to execute your function calls, etc.
@@ -71,7 +71,7 @@ pub trait Handler {
 #[derive(Clone)]
 pub struct TaskInfo {
     /// A Dart `SendPort`. [None] if the mode is [FfiCallMode::Sync].
-    pub port: Option<DartNativeSendPort>,
+    pub port: Option<MessagePort>,
     /// Usually the name of the function.
     pub debug_name: &'static str,
     /// The call mode of this function.

@@ -129,15 +129,14 @@ fn compute_skips(item: &ApiDartOutputSpecItem) -> String {
         .into_group_map_by(|t| t.reason)
         .into_iter()
         .sorted_by_key(|(reason, _)| *reason)
-        .filter_map(|(reason, names)| {
-            reason.explanation_prefix().map(|explanation_prefix| {
-                format!(
-                    "// {explanation_prefix}: {}\n",
-                    (names.iter().map(|x| format!("`{}`", x.name.name)))
-                        .sorted()
-                        .join(", "),
-                )
-            })
+        .map(|(reason, names)| {
+            format!(
+                "// {}: {}\n",
+                reason.explanation_prefix(),
+                (names.iter().map(|x| format!("`{}`", x.name.name)))
+                    .sorted()
+                    .join(", "),
+            )
         })
         .join("")
 }

@@ -33,9 +33,6 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         let splayed_segments = splay_segments(&segments);
 
         if let Some(last_segment) = splayed_segments.last() {
-            if let Some(ans) = self.parse_type_path_data_custom_ser_des(last_segment)? {
-                return Ok(ans);
-            }
             if let Some(ans) = self.parse_type_path_data_primitive(last_segment)? {
                 return Ok(ans);
             }

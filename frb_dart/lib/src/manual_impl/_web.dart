@@ -22,9 +22,3 @@ Uint64List dcoDecodeUint64List(List<dynamic> raw) =>
 
 List<BigInt> _toListBigInt(List<dynamic> raw) =>
     raw.map((x) => jsBigIntToDartBigInt(x!)).toList();
-
-/// {@macro flutter_rust_bridge.only_for_generated_code}
-BigInt sseEncodeCastedPrimitiveI64(int raw) => BigInt.from(raw);
-
-/// {@macro flutter_rust_bridge.only_for_generated_code}
-BigInt sseEncodeCastedPrimitiveU64(int raw) => BigInt.from(raw);

@@ -115,10 +115,6 @@ impl FrbAttributes {
         self.any_eq(&FrbAttribute::External)
     }
 
-    pub(crate) fn type_64bit_int(&self) -> bool {
-        self.any_eq(&FrbAttribute::Type64bitInt)
-    }
-
     // pub(crate) fn generate_implementor_enum(&self) -> bool {
     //     self.any_eq(&FrbAttribute::GenerateImplEnum)
     // }
@@ -186,22 +182,6 @@ impl FrbAttributes {
             .filter_map(|item| if_then_some!(let FrbAttribute::Name(inner) = item, inner.0.clone()))
             .next()
     }
-
-    pub(crate) fn dart2rust(&self) -> Option<FrbAttributeSerDes> {
-        (self.0.iter())
-            .filter_map(
-                |item| if_then_some!(let FrbAttribute::Dart2Rust(inner) = item, inner.clone()),
-            )
-            .next()
-    }
-
-    pub(crate) fn rust2dart(&self) -> Option<FrbAttributeSerDes> {
-        (self.0.iter())
-            .filter_map(
-                |item| if_then_some!(let FrbAttribute::Rust2Dart(inner) = item, inner.clone()),
-            )
-            .next()
-    }
 }
 
 mod frb_keyword {
@@ -220,7 +200,6 @@ mod frb_keyword {
     syn::custom_keyword!(positional);
     syn::custom_keyword!(proxy);
     syn::custom_keyword!(external);
-    syn::custom_keyword!(type_64bit_int);
     syn::custom_keyword!(generate_implementor_enum);
     syn::custom_keyword!(rust_opaque_codec_moi);
     syn::custom_keyword!(serialize);
@@ -230,9 +209,6 @@ mod frb_keyword {
     syn::custom_keyword!(default);
     syn::custom_keyword!(dart_code);
     syn::custom_keyword!(name);
-    syn::custom_keyword!(rust2dart);
-    syn::custom_keyword!(dart2rust);
-    syn::custom_keyword!(dart_type);
 }
 
 struct FrbAttributesInner(Vec<FrbAttribute>);
@@ -264,7 +240,6 @@ enum FrbAttribute {
     Positional,
     Proxy,
     External,
-    Type64bitInt,
     // GenerateImplEnum,
     RustOpaqueCodecMoi,
     Serialize,
@@ -274,8 +249,6 @@ enum FrbAttribute {
     Default(FrbAttributeDefaultValue),
     DartCode(FrbAttributeDartCode),
     Name(FrbAttributeName),
-    Dart2Rust(FrbAttributeSerDes),
-    Rust2Dart(FrbAttributeSerDes),
 }
 
 impl Parse for FrbAttribute {
@@ -306,9 +279,6 @@ impl Parse for FrbAttribute {
             .or_else(|| parse_keyword::<positional, _>(input, &lookahead, positional, Positional))
             .or_else(|| parse_keyword::<proxy, _>(input, &lookahead, proxy, Proxy))
             .or_else(|| parse_keyword::<external, _>(input, &lookahead, external, External))
-            .or_else(|| {
-                parse_keyword::<type_64bit_int, _>(input, &lookahead, type_64bit_int, Type64bitInt)
-            })
             // .or_else(|| {
             //     parse_keyword::<generate_implementor_enum, _>(
             //         input,
@@ -335,27 +305,21 @@ impl Parse for FrbAttribute {
 
         Ok(if lookahead.peek(frb_keyword::mirror) {
             input.parse::<frb_keyword::mirror>()?;
-            input.parse().map(Mirror)?
+            input.parse().map(FrbAttribute::Mirror)?
         } else if lookahead.peek(frb_keyword::dart_metadata) {
-            input.parse().map(Metadata)?
+            input.parse().map(FrbAttribute::Metadata)?
         } else if lookahead.peek(default) {
             input.parse::<default>()?;
             input.parse::<Token![=]>()?;
-            input.parse().map(Default)?
+            input.parse().map(FrbAttribute::Default)?
         } else if lookahead.peek(dart_code) {
             input.parse::<dart_code>()?;
             input.parse::<Token![=]>()?;
-            input.parse().map(DartCode)?
+            input.parse().map(FrbAttribute::DartCode)?
         } else if lookahead.peek(name) {
             input.parse::<name>()?;
             input.parse::<Token![=]>()?;
-            input.parse().map(Name)?
-        } else if lookahead.peek(frb_keyword::dart2rust) {
-            input.parse::<frb_keyword::dart2rust>()?;
-            input.parse().map(Dart2Rust)?
-        } else if lookahead.peek(frb_keyword::rust2dart) {
-            input.parse::<frb_keyword::rust2dart>()?;
-            input.parse().map(Rust2Dart)?
+            input.parse().map(FrbAttribute::Name)?
         } else {
             return Err(lookahead.error());
         })
@@ -586,40 +550,12 @@ impl Parse for FrbAttributeName {
     }
 }
 
-#[derive(Clone, Serialize, Eq, PartialEq, Debug)]
-pub(crate) struct FrbAttributeSerDes {
-    pub dart_type: String,
-    pub dart_code: String,
-}
-
-impl Parse for FrbAttributeSerDes {
-    fn parse(input: ParseStream) -> Result<Self> {
-        let content;
-        parenthesized!(content in input);
-
-        content.parse::<frb_keyword::dart_type>()?;
-        content.parse::<Token![=]>()?;
-        let dart_type = content.parse::<syn::LitStr>()?.value();
-
-        content.parse::<Token![,]>()?;
-
-        content.parse::<frb_keyword::dart_code>()?;
-        content.parse::<Token![=]>()?;
-        let dart_code = content.parse::<syn::LitStr>()?.value();
-
-        Ok(Self {
-            dart_type,
-            dart_code,
-        })
-    }
-}
-
 #[cfg(test)]
 mod tests {
     use crate::codegen::ir::mir::default::MirDefaultValue;
     use crate::codegen::parser::mir::parser::attribute::{
         FrbAttribute, FrbAttributeDartCode, FrbAttributeDefaultValue, FrbAttributeMirror,
-        FrbAttributeName, FrbAttributeSerDes, FrbAttributes, NamedOption,
+        FrbAttributeName, FrbAttributes, NamedOption,
     };
     use crate::if_then_some;
     use quote::quote;
@@ -751,11 +687,6 @@ mod tests {
         simple_keyword_tester("external", FrbAttribute::External);
     }
 
-    #[test]
-    fn test_type_64bit_int() {
-        simple_keyword_tester("type_64bit_int", FrbAttribute::Type64bitInt);
-    }
-
     // #[test]
     // fn test_generate_implementor_enum() {
     //     simple_keyword_tester("generate_implementor_enum", FrbAttribute::GenerateImplEnum);
@@ -786,34 +717,6 @@ mod tests {
             FrbAttributes(vec![FrbAttribute::Name(FrbAttributeName(
                 "operator <".to_owned()
             ))])
-        );
-        Ok(())
-    }
-
-    #[test]
-    fn test_rust2dart() -> anyhow::Result<()> {
-        let parsed =
-            parse(r###"#[frb(rust2dart(dart_type = "my_type", dart_code = "my_code"))]"###)?;
-        assert_eq!(
-            parsed,
-            FrbAttributes(vec![FrbAttribute::Rust2Dart(FrbAttributeSerDes {
-                dart_type: "my_type".to_owned(),
-                dart_code: "my_code".to_owned(),
-            })])
-        );
-        Ok(())
-    }
-
-    #[test]
-    fn test_dart2rust() -> anyhow::Result<()> {
-        let parsed =
-            parse(r###"#[frb(dart2rust(dart_type = "my_type", dart_code = "my_code"))]"###)?;
-        assert_eq!(
-            parsed,
-            FrbAttributes(vec![FrbAttribute::Dart2Rust(FrbAttributeSerDes {
-                dart_type: "my_type".to_owned(),
-                dart_code: "my_code".to_owned(),
-            })])
         );
         Ok(())
     }

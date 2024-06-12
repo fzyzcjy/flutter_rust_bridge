@@ -27,7 +27,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
         await handleTypeAliasModelTwinSync(input: BigInt.from(42));
     expect(testModel.id.toInt(), 42);
     expect(testModel.name, "TestModel");
-    expect(testModel.aliasEnum, MyEnum.false_);
+    expect(testModel.aliasEnum, MyEnum.False);
     expect(testModel.aliasStruct.content, true);
   });
 }

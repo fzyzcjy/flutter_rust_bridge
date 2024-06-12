@@ -42,7 +42,7 @@ flutter_rust_bridge::frb_generated_default_handler!();
 // Section: wire_funcs
 
 fn wire__crate__api__minimal__init_app_impl(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -75,7 +75,7 @@ fn wire__crate__api__minimal__init_app_impl(
     )
 }
 fn wire__crate__api__minimal__minimal_adder_impl(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -131,7 +131,7 @@ impl SseDecode for bool {
 
 fn pde_ffi_dispatcher_primary_impl(
     func_id: i32,
-    port: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port: flutter_rust_bridge::for_generated::MessagePort,
     ptr: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len: i32,
     data_len: i32,

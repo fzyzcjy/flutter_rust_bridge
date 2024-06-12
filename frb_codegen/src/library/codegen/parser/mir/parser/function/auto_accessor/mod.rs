@@ -117,7 +117,6 @@ fn create_parsing_context(
     Ok(TypeParserParsingContext {
         initiated_namespace: struct_name.namespace.to_owned(),
         func_attributes: FrbAttributes::parse(&[])?,
-        struct_or_enum_attributes: None,
         default_stream_sink_codec,
         default_rust_opaque_codec,
         owner: None,

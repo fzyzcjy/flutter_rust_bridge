@@ -1,24 +1,20 @@
-use crate::generalized_isolate::DartSendPort;
+use crate::generalized_isolate::Channel;
 use crate::generalized_isolate::IntoDart;
 use crate::misc::logs::log_warn_or_println;
 use std::fmt;
 
 #[derive(Clone)]
 pub struct Rust2DartSender {
-    pub(crate) port: DartSendPort,
+    pub(crate) channel: Channel,
 }
 
 impl Rust2DartSender {
-    pub fn new(port: DartSendPort) -> Self {
-        Rust2DartSender { port }
+    pub fn new(channel: Channel) -> Self {
+        Rust2DartSender { channel }
     }
 
-    pub fn send<F, T>(&self, msg_creator: F) -> Result<(), Rust2DartSendError>
-    where
-        F: (FnOnce() -> T) + Send,
-        T: IntoDart,
-    {
-        if self.port.post(msg_creator) {
+    pub fn send(&self, msg: impl IntoDart) -> Result<(), Rust2DartSendError> {
+        if self.channel.post(msg) {
             Ok(())
         } else {
             Err(Rust2DartSendError)
@@ -27,13 +23,9 @@ impl Rust2DartSender {
 
     // the function signature is not covered while the whole body is covered - looks like a bug in coverage tool
     // frb-coverage:ignore-start
-    pub fn send_or_warn<F, T>(&self, msg_creator: F)
-    where
-        F: (FnOnce() -> T) + Send,
-        T: IntoDart,
-    {
+    pub fn send_or_warn(&self, msg: impl IntoDart) {
         // frb-coverage:ignore-end
-        if let Err(e) = self.send(msg_creator) {
+        if let Err(e) = self.send(msg) {
             log_warn_or_println(&format!("{e:?}"));
         }
     }

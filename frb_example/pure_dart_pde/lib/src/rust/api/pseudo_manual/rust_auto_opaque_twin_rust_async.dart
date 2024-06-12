@@ -8,7 +8,7 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'rust_auto_opaque_twin_rust_async.freezed.dart';
 
-// These functions are ignored (category: IgnoreBecauseNotAllowedOwner): `f`
+// These functions are ignored: `f`
 
 Future<void> rustAutoOpaqueArgOwnTwinRustAsync(
         {required NonCloneSimpleTwinRustAsync arg, required int expect}) =>

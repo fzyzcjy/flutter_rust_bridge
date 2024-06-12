@@ -15,10 +15,7 @@
           "default": null,
           "is_final": true,
           "is_rust_public": false,
-          "name": {
-            "dart_style": null,
-            "rust_style": "a"
-          },
+          "name": "a",
           "settings": {
             "is_in_mirrored_enum": false
           },

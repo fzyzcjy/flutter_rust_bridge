@@ -9,37 +9,5 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 Future<int> minimalAdder({required int a, required int b}) =>
     RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b);
 
-Future<MyTreeNodeTwinNormal> handleComplexStructTwinNormal(
-        {required MyTreeNodeTwinNormal s}) =>
-    RustLib.instance.api.crateApiMinimalHandleComplexStructTwinNormal(s: s);
-
-class MyTreeNodeTwinNormal {
-  final int valueI32;
-  final Uint8List valueVecU8;
-  final bool valueBoolean;
-  final List<MyTreeNodeTwinNormal> children;
-
-  const MyTreeNodeTwinNormal({
-    required this.valueI32,
-    required this.valueVecU8,
-    required this.valueBoolean,
-    required this.children,
-  });
-
-  @override
-  int get hashCode =>
-      valueI32.hashCode ^
-      valueVecU8.hashCode ^
-      valueBoolean.hashCode ^
-      children.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is MyTreeNodeTwinNormal &&
-          runtimeType == other.runtimeType &&
-          valueI32 == other.valueI32 &&
-          valueVecU8 == other.valueVecU8 &&
-          valueBoolean == other.valueBoolean &&
-          children == other.children;
-}
+Future<Uint64List> f({required Uint64List a}) =>
+    RustLib.instance.api.crateApiMinimalF(a: a);

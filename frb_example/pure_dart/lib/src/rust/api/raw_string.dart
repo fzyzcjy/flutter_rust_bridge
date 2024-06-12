@@ -16,19 +16,19 @@ Future<MoreThanJustOneRawStringStructTwinNormal>
 class MoreThanJustOneRawStringStructTwinNormal {
   final String regular;
   final String type;
-  final bool async_;
+  final bool async;
   final String another;
 
   const MoreThanJustOneRawStringStructTwinNormal({
     required this.regular,
     required this.type,
-    required this.async_,
+    required this.async,
     required this.another,
   });
 
   @override
   int get hashCode =>
-      regular.hashCode ^ type.hashCode ^ async_.hashCode ^ another.hashCode;
+      regular.hashCode ^ type.hashCode ^ async.hashCode ^ another.hashCode;
 
   @override
   bool operator ==(Object other) =>
@@ -37,7 +37,7 @@ class MoreThanJustOneRawStringStructTwinNormal {
           runtimeType == other.runtimeType &&
           regular == other.regular &&
           type == other.type &&
-          async_ == other.async_ &&
+          async == other.async &&
           another == other.another;
 }
 

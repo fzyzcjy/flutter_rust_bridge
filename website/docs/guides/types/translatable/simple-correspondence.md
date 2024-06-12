@@ -1,7 +1,6 @@
 # Simple correspondence
 
-Here is a brief glance showing what the code generator can generate (non-exhaustive). Some rows have hyper-links
-pointing to more detailed explanations.
+Here is a brief glance showing what the code generator can generate (non-exhaustive). Some rows have hyper-links pointing to more detailed explanations.
 
 | Rust                                                       | Dart                                                      |
 |------------------------------------------------------------|-----------------------------------------------------------|
@@ -24,10 +23,11 @@ pointing to more detailed explanations.
 | [`Result::Err`, panic](return)                             | `throw Exception`                                         |
 | `Box<T>`                                                   | `T`                                                       |
 | comments                                                   | same                                                      |
-| `i8`, `u8`, .., `usize`, `i128`, `u128`                    | [`int`, `BigInt`](detailed/primitive)                     |
+| `i8`, `u8`, .., `usize`                                    | `int`                                                     |
 | `f32`, `f64`                                               | `double`                                                  |
 | `bool`                                                     | `bool`                                                    |
-| `char`, `String`                                           | `String`                                                  |
+| `char`                                                     | `String`                                                  |
+| `String`                                                   | `String`                                                  |
 | `()`                                                       | `void`                                                    |
 | `type A = B`                                               | [type alias](detailed/alias)                              |
 | [`(T, U, ..)`](detailed/tuple)                             | [`(T, U, ..)`](https://dart.dev/language/records)         |
@@ -35,5 +35,4 @@ pointing to more detailed explanations.
 Types from `chrono` crate are supported as a feature, see [here](detailed/chrono).
 Types from `uuid` crate are supported as a feature, see [here](detailed/uuid).
 
-Raw strings are supported for struct field names. For example, you can have `struct S { r#type: i32 }`. In dart,
-the `r#` prefix will be correctly removed. They are not yet supported for function arguments.
+Raw strings are supported for struct field names. For example, you can have `struct S { r#type: i32 }`. In dart, the `r#` prefix will be correctly removed. They are not yet supported for function arguments.

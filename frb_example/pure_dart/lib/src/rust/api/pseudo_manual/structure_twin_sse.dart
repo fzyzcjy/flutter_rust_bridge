@@ -36,58 +36,6 @@ Future<TupleStructWithTwoFieldTwinSse> funcTupleStructWithTwoFieldTwinSse(
         .crateApiPseudoManualStructureTwinSseFuncTupleStructWithTwoFieldTwinSse(
             arg: arg);
 
-Future<StructWithFieldRenameTwinSse> funcForStructWithFieldRenameTwinSse(
-        {required StructWithFieldRenameTwinSse arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualStructureTwinSseFuncForStructWithFieldRenameTwinSse(
-            arg: arg);
-
-Future<
-    StructWithDartKeywordFieldTwinSse> funcForStructWithDartKeywordFieldTwinSse(
-        {required StructWithDartKeywordFieldTwinSse arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualStructureTwinSseFuncForStructWithDartKeywordFieldTwinSse(
-            arg: arg);
-
-class StructWithDartKeywordFieldTwinSse {
-  final int class_;
-  final PlatformInt64 interface_;
-
-  const StructWithDartKeywordFieldTwinSse({
-    required this.class_,
-    required this.interface_,
-  });
-
-  @override
-  int get hashCode => class_.hashCode ^ interface_.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is StructWithDartKeywordFieldTwinSse &&
-          runtimeType == other.runtimeType &&
-          class_ == other.class_ &&
-          interface_ == other.interface_;
-}
-
-class StructWithFieldRenameTwinSse {
-  final int renamed_field;
-
-  const StructWithFieldRenameTwinSse({
-    required this.renamed_field,
-  });
-
-  @override
-  int get hashCode => renamed_field.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is StructWithFieldRenameTwinSse &&
-          runtimeType == other.runtimeType &&
-          renamed_field == other.renamed_field;
-}
-
 class StructWithOneFieldTwinSse {
   final int a;
 

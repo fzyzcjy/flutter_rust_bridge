@@ -10,14 +10,8 @@
         {
           "comments": [],
           "kind": "Value",
-          "name": {
-            "dart_style": null,
-            "rust_style": "Apple"
-          },
-          "wrapper_name": {
-            "dart_style": null,
-            "rust_style": "EnumInAnotherFile_Apple"
-          }
+          "name": "Apple",
+          "wrapper_name": "EnumInAnotherFile_Apple"
         }
       ],
       "wrapper_name": null
@@ -45,10 +39,7 @@
             "default": null,
             "is_final": true,
             "is_rust_public": null,
-            "name": {
-              "dart_style": null,
-              "rust_style": "s"
-            },
+            "name": "s",
             "settings": {
               "is_in_mirrored_enum": false
             },
@@ -76,10 +67,7 @@
             "default": null,
             "is_final": true,
             "is_rust_public": null,
-            "name": {
-              "dart_style": null,
-              "rust_style": "e"
-            },
+            "name": "e",
             "settings": {
               "is_in_mirrored_enum": false
             },
@@ -127,10 +115,7 @@
           "default": null,
           "is_final": true,
           "is_rust_public": false,
-          "name": {
-            "dart_style": null,
-            "rust_style": "a"
-          },
+          "name": "a",
           "settings": {
             "is_in_mirrored_enum": false
           },

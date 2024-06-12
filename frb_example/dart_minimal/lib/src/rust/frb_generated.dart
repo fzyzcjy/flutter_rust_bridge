@@ -45,7 +45,9 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
       RustLibWire.fromExternalLibrary;
 
   @override
-  Future<void> executeRustInitializers() async {}
+  Future<void> executeRustInitializers() async {
+    await api.crateApiMinimalInitApp();
+  }
 
   @override
   ExternalLibraryLoaderConfig get defaultExternalLibraryLoaderConfig =>
@@ -55,7 +57,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.0.0-dev.38';
 
   @override
-  int get rustContentHash => 1483852093;
+  int get rustContentHash => 1895935609;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -66,8 +68,9 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 }
 
 abstract class RustLibApi extends BaseApi {
-  Future<MyTreeNodeTwinNormal> crateApiMinimalHandleComplexStructTwinNormal(
-      {required MyTreeNodeTwinNormal s});
+  Future<Uint64List> crateApiMinimalF({required Uint64List a});
+
+  Future<void> crateApiMinimalInitApp();
 
   Future<int> crateApiMinimalMinimalAdder({required int a, required int b});
 }
@@ -81,43 +84,58 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   });
 
   @override
-  Future<MyTreeNodeTwinNormal> crateApiMinimalHandleComplexStructTwinNormal(
-      {required MyTreeNodeTwinNormal s}) {
+  Future<Uint64List> crateApiMinimalF({required Uint64List a}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_box_autoadd_my_tree_node_twin_normal(s, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1, port: port_);
+        var arg0 = cst_encode_list_prim_u_64_strict(a);
+        return wire.wire__crate__api__minimal__f(port_, arg0);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_my_tree_node_twin_normal,
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_list_prim_u_64_strict,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiMinimalHandleComplexStructTwinNormalConstMeta,
-      argValues: [s],
+      constMeta: kCrateApiMinimalFConstMeta,
+      argValues: [a],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiMinimalHandleComplexStructTwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "handle_complex_struct_twin_normal",
-        argNames: ["s"],
+  TaskConstMeta get kCrateApiMinimalFConstMeta => const TaskConstMeta(
+        debugName: "f",
+        argNames: ["a"],
+      );
+
+  @override
+  Future<void> crateApiMinimalInitApp() {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        return wire.wire__crate__api__minimal__init_app(port_);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiMinimalInitAppConstMeta,
+      argValues: [],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiMinimalInitAppConstMeta => const TaskConstMeta(
+        debugName: "init_app",
+        argNames: [],
       );
 
   @override
   Future<int> crateApiMinimalMinimalAdder({required int a, required int b}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_i_32(a, serializer);
-        sse_encode_i_32(b, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 2, port: port_);
+        var arg0 = cst_encode_i_32(a);
+        var arg1 = cst_encode_i_32(b);
+        return wire.wire__crate__api__minimal__minimal_adder(port_, arg0, arg1);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_i_32,
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_i_32,
         decodeErrorData: null,
       ),
       constMeta: kCrateApiMinimalMinimalAdderConstMeta,
@@ -133,57 +151,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @protected
-  bool dco_decode_bool(dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return raw as bool;
-  }
-
-  @protected
-  MyTreeNodeTwinNormal dco_decode_box_autoadd_my_tree_node_twin_normal(
-      dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return dco_decode_my_tree_node_twin_normal(raw);
-  }
-
-  @protected
   int dco_decode_i_32(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return raw as int;
   }
 
   @protected
-  List<MyTreeNodeTwinNormal> dco_decode_list_my_tree_node_twin_normal(
-      dynamic raw) {
+  Uint64List dco_decode_list_prim_u_64_strict(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>)
-        .map(dco_decode_my_tree_node_twin_normal)
-        .toList();
+    return dcoDecodeUint64List(raw);
   }
 
   @protected
-  Uint8List dco_decode_list_prim_u_8_strict(dynamic raw) {
+  BigInt dco_decode_u_64(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return raw as Uint8List;
-  }
-
-  @protected
-  MyTreeNodeTwinNormal dco_decode_my_tree_node_twin_normal(dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
-    if (arr.length != 4)
-      throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
-    return MyTreeNodeTwinNormal(
-      valueI32: dco_decode_i_32(arr[0]),
-      valueVecU8: dco_decode_list_prim_u_8_strict(arr[1]),
-      valueBoolean: dco_decode_bool(arr[2]),
-      children: dco_decode_list_my_tree_node_twin_normal(arr[3]),
-    );
-  }
-
-  @protected
-  int dco_decode_u_8(dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return raw as int;
+    return dcoDecodeU64(raw);
   }
 
   @protected
@@ -193,63 +175,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  bool sse_decode_bool(SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return deserializer.buffer.getUint8() != 0;
-  }
-
-  @protected
-  MyTreeNodeTwinNormal sse_decode_box_autoadd_my_tree_node_twin_normal(
-      SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return (sse_decode_my_tree_node_twin_normal(deserializer));
-  }
-
-  @protected
   int sse_decode_i_32(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return deserializer.buffer.getInt32();
   }
 
   @protected
-  List<MyTreeNodeTwinNormal> sse_decode_list_my_tree_node_twin_normal(
-      SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-
-    var len_ = sse_decode_i_32(deserializer);
-    var ans_ = <MyTreeNodeTwinNormal>[];
-    for (var idx_ = 0; idx_ < len_; ++idx_) {
-      ans_.add(sse_decode_my_tree_node_twin_normal(deserializer));
-    }
-    return ans_;
-  }
-
-  @protected
-  Uint8List sse_decode_list_prim_u_8_strict(SseDeserializer deserializer) {
+  Uint64List sse_decode_list_prim_u_64_strict(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var len_ = sse_decode_i_32(deserializer);
-    return deserializer.buffer.getUint8List(len_);
+    return deserializer.buffer.getUint64List(len_);
   }
 
   @protected
-  MyTreeNodeTwinNormal sse_decode_my_tree_node_twin_normal(
-      SseDeserializer deserializer) {
+  BigInt sse_decode_u_64(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    var var_valueI32 = sse_decode_i_32(deserializer);
-    var var_valueVecU8 = sse_decode_list_prim_u_8_strict(deserializer);
-    var var_valueBoolean = sse_decode_bool(deserializer);
-    var var_children = sse_decode_list_my_tree_node_twin_normal(deserializer);
-    return MyTreeNodeTwinNormal(
-        valueI32: var_valueI32,
-        valueVecU8: var_valueVecU8,
-        valueBoolean: var_valueBoolean,
-        children: var_children);
-  }
-
-  @protected
-  int sse_decode_u_8(SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return deserializer.buffer.getUint8();
+    return deserializer.buffer.getBigUint64();
   }
 
   @protected
@@ -258,16 +199,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_bool(bool self, SseSerializer serializer) {
+  bool sse_decode_bool(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    serializer.buffer.putUint8(self ? 1 : 0);
+    return deserializer.buffer.getUint8() != 0;
   }
 
   @protected
-  void sse_encode_box_autoadd_my_tree_node_twin_normal(
-      MyTreeNodeTwinNormal self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_my_tree_node_twin_normal(self, serializer);
+  int cst_encode_i_32(int raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw;
+  }
+
+  @protected
+  void cst_encode_unit(void raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw;
   }
 
   @protected
@@ -277,41 +223,27 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_list_my_tree_node_twin_normal(
-      List<MyTreeNodeTwinNormal> self, SseSerializer serializer) {
+  void sse_encode_list_prim_u_64_strict(
+      Uint64List self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_i_32(self.length, serializer);
-    for (final item in self) {
-      sse_encode_my_tree_node_twin_normal(item, serializer);
-    }
+    serializer.buffer.putUint64List(self);
   }
 
   @protected
-  void sse_encode_list_prim_u_8_strict(
-      Uint8List self, SseSerializer serializer) {
+  void sse_encode_u_64(BigInt self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_i_32(self.length, serializer);
-    serializer.buffer.putUint8List(self);
-  }
-
-  @protected
-  void sse_encode_my_tree_node_twin_normal(
-      MyTreeNodeTwinNormal self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_i_32(self.valueI32, serializer);
-    sse_encode_list_prim_u_8_strict(self.valueVecU8, serializer);
-    sse_encode_bool(self.valueBoolean, serializer);
-    sse_encode_list_my_tree_node_twin_normal(self.children, serializer);
-  }
-
-  @protected
-  void sse_encode_u_8(int self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    serializer.buffer.putUint8(self);
+    serializer.buffer.putBigUint64(self);
   }
 
   @protected
   void sse_encode_unit(void self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
+  }
+
+  @protected
+  void sse_encode_bool(bool self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    serializer.buffer.putUint8(self ? 1 : 0);
   }
 }

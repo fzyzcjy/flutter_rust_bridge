@@ -13,26 +13,15 @@ pub(crate) mod transfer_closure;
 #[macro_export]
 macro_rules! transfer {
     (|| $block:block) => {{
-        $crate::transfer_raw!(None, || $block)
-    }};
-    (|$($param:ident: $ty:ty),*| $block:block) => {{
-        $crate::transfer_raw!(None, |($param)*| $block)
-    }};
-}
-
-#[doc(hidden)]
-#[macro_export]
-macro_rules! transfer_raw {
-    ($error_report_dart_send_port:expr, || $block:block) => {{
         #[cfg(not(target_family = "wasm"))]
         { move || $block }
 
         #[cfg(target_family = "wasm")]
         {
-            $crate::for_generated::TransferClosure::new(vec![], vec![], move |_: &[wasm_bindgen::JsValue]| $block, $error_report_dart_send_port)
+            $crate::for_generated::TransferClosure::new(vec![], vec![], move |_: &[wasm_bindgen::JsValue]| $block)
         }
     }};
-    ($error_report_dart_send_port:expr, |$($param:ident: $ty:ty),*| $block:block) => {{
+    (|$($param:ident: $ty:ty),*| $block:block) => {{
         #[cfg(not(target_family = "wasm"))]
         {
             move || $block
@@ -51,7 +40,7 @@ macro_rules! transfer_raw {
                 $block
             };
             let transferables = [$($param.transferables()),*].concat();
-            $crate::for_generated::TransferClosure::new(vec![$($param.serialize()),*], transferables, worker, $error_report_dart_send_port)
+            $crate::for_generated::TransferClosure::new(vec![$($param.serialize()),*], transferables, worker)
         }
     }};
 }

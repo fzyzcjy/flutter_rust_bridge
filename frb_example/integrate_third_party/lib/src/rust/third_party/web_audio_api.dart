@@ -10,7 +10,7 @@ import 'web_audio_api/node.dart';
 import 'web_audio_api/worklet.dart';
 
 // These types are ignored because they are not used by any `pub` functions: `AtomicF32`, `AtomicF64`, `ErrorEvent`, `MediaElement`, `MessagePort`
-// These functions are ignored (category: IgnoreBecauseOwnerTyShouldIgnore): `load`, `load`, `new`, `new`, `store`, `store`
+// These functions are ignored: `load`, `load`, `new`, `new`, `store`, `store`
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioBuffer>>
 abstract class AudioBuffer implements RustOpaqueInterface {

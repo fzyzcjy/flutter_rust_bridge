@@ -22,9 +22,3 @@ Int64List dcoDecodeInt64List($data.Int64List raw) => Int64List.raw(raw);
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 Uint64List dcoDecodeUint64List($data.Uint64List raw) => Uint64List.raw(raw);
-
-/// {@macro flutter_rust_bridge.only_for_generated_code}
-int sseEncodeCastedPrimitiveI64(int raw) => raw;
-
-/// {@macro flutter_rust_bridge.only_for_generated_code}
-BigInt sseEncodeCastedPrimitiveU64(int raw) => BigInt.from(raw);

@@ -10,26 +10,14 @@
         {
           "comments": [],
           "kind": "Value",
-          "name": {
-            "dart_style": null,
-            "rust_style": "A"
-          },
-          "wrapper_name": {
-            "dart_style": null,
-            "rust_style": "MyEnum_A"
-          }
+          "name": "A",
+          "wrapper_name": "MyEnum_A"
         },
         {
           "comments": [],
           "kind": "Value",
-          "name": {
-            "dart_style": null,
-            "rust_style": "B"
-          },
-          "wrapper_name": {
-            "dart_style": null,
-            "rust_style": "MyEnum_B"
-          }
+          "name": "B",
+          "wrapper_name": "MyEnum_B"
         }
       ],
       "wrapper_name": null
@@ -57,10 +45,7 @@
             "default": null,
             "is_final": true,
             "is_rust_public": null,
-            "name": {
-              "dart_style": null,
-              "rust_style": "that"
-            },
+            "name": "that",
             "settings": {
               "is_in_mirrored_enum": false
             },
@@ -183,10 +168,7 @@
             "default": null,
             "is_final": true,
             "is_rust_public": null,
-            "name": {
-              "dart_style": null,
-              "rust_style": "that"
-            },
+            "name": "that",
             "settings": {
               "is_in_mirrored_enum": false
             },

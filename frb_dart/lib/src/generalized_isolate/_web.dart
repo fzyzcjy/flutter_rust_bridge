@@ -2,52 +2,167 @@
 library html_isolate;
 
 import 'dart:async';
+import 'dart:html' as html;
+import 'dart:html' hide MessagePort;
 
 import 'package:flutter_rust_bridge/src/platform_types/_web.dart';
 
 /// {@macro flutter_rust_bridge.internal}
-String serializeNativePort(NativePortType port) => port.toString();
+String serializeNativePort(NativePortType port) => port.name;
 
-/// {@template flutter_rust_bridge.same_as_native}
-/// Web implementation of the one with same name in native.
-/// {@endtemplate}
-class ReceivePort extends StreamView<dynamic> {
-  /// {@macro flutter_rust_bridge.same_as_native}
-  ReceivePort() : super(throw UnimplementedError());
+/// {@macro flutter_rust_bridge.only_for_generated_code}
+typedef MessagePort = _PortLike;
 
-  /// {@macro flutter_rust_bridge.same_as_native}
-  SendPort get sendPort => throw UnimplementedError();
+/// {@macro flutter_rust_bridge.only_for_generated_code}
+typedef SendPort = _PortLike;
 
-  /// {@macro flutter_rust_bridge.same_as_native}
-  void close() => throw UnimplementedError();
-}
+/// Web implementation of the `dart:isolate`'s ReceivePort.
+class ReceivePort extends Stream<dynamic> {
+  /// The receive port.
+  final RawReceivePort _rawReceivePort;
 
-/// {@macro flutter_rust_bridge.same_as_native}
-class RawReceivePort {
-  /// {@macro flutter_rust_bridge.same_as_native}
-  set handler(void Function(dynamic) handler) {
-    throw UnimplementedError();
+  /// Create a new receive port from an optional [RawReceivePort].
+  factory ReceivePort() => ReceivePort._raw();
+
+  ReceivePort._raw([RawReceivePort? rawReceivePort])
+      : _rawReceivePort = rawReceivePort ?? RawReceivePort();
+
+  @override
+  StreamSubscription listen(
+    void Function(dynamic event)? onData, {
+    Function? onError,
+    void Function()? onDone,
+    bool? cancelOnError,
+  }) {
+    return _rawReceivePort._receivePort.onMessage.map(_extractData).listen(
+          onData,
+          onError: onError,
+          onDone: onDone,
+          cancelOnError: cancelOnError,
+        );
   }
 
-  /// {@macro flutter_rust_bridge.same_as_native}
-  void close() => throw UnimplementedError();
+  static dynamic _extractData(MessageEvent event) => event.data;
 
-  /// {@macro flutter_rust_bridge.same_as_native}
-  SendPort get sendPort => throw UnimplementedError();
+  /// The send port.
+  SendPort get sendPort => _rawReceivePort.sendPort;
+
+  /// Close the receive port, ignoring any further messages.
+  void close() => _rawReceivePort.close();
 }
 
-/// {@macro flutter_rust_bridge.same_as_native}
-class SendPort {
-  /// {@macro flutter_rust_bridge.same_as_native}
-  int get nativePort => _nativePort;
-  final int _nativePort;
+/// Wrapper around a [MessageChannel].
+class RawReceivePort {
+  /// The underlying message channel.
+  final _Channel _channel;
 
-  SendPort._(this._nativePort);
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
+  factory RawReceivePort() => RawReceivePort._raw();
+
+  RawReceivePort._raw([_Channel? channel])
+      : _channel = channel ?? _Channel.messageChannel();
+
+  set handler(Function(dynamic) handler) {
+    _receivePort.onMessage.listen((event) => handler(event.data));
+  }
+
+  /// Close the receive port.
+  void close() => _channel.receivePort.close();
+
+  /// The port to be used by other workers.
+  SendPort get sendPort => _channel.sendPort;
+
+  SendPort get _receivePort => _channel.receivePort;
 }
 
-// TODO
-// class _PortNameGenerator {
-//   static int _nextPort = 0;
-//
-//   static String create() => '__frb_port_${_nextPort++}';
-// }
+/// {@macro flutter_rust_bridge.internal}
+ReceivePort broadcastPort(String channelName) => ReceivePort._raw(
+    RawReceivePort._raw(_Channel.broadcastChannel(channelName)));
+
+abstract class _Channel {
+  SendPort get sendPort;
+
+  SendPort get receivePort;
+
+  const _Channel();
+
+  factory _Channel.messageChannel() = _MessageChannelWrapper;
+
+  factory _Channel.broadcastChannel(String channelName) =
+      _BroadcastChannelWrapper;
+}
+
+class _MessageChannelWrapper implements _Channel {
+  final channel = MessageChannel();
+
+  @override
+  SendPort get sendPort => _PortLike.messagePort(channel.port2);
+
+  @override
+  SendPort get receivePort => _PortLike.messagePort(channel.port1);
+}
+
+class _BroadcastChannelWrapper implements _Channel {
+  final BroadcastChannel _sendChannel;
+  final BroadcastChannel _receiveChannel;
+
+  _BroadcastChannelWrapper(String channelName)
+      // Note: It is *wrong* to reuse the same HTML BroadcastChannel object,
+      // because HTML BroadcastChannel spec says that, the event will not be fired
+      // at the object which sends it. Therefore, we need two different objects.
+      : _sendChannel = BroadcastChannel(channelName),
+        _receiveChannel = BroadcastChannel(channelName);
+
+  @override
+  SendPort get sendPort => _PortLike.broadcastChannel(_sendChannel);
+
+  @override
+  SendPort get receivePort => _PortLike.broadcastChannel(_receiveChannel);
+}
+
+/// [html.MessagePort]'s interface.
+abstract class _PortLike {
+  const _PortLike._();
+
+  factory _PortLike.messagePort(html.MessagePort port) = _MessagePortWrapper;
+
+  factory _PortLike.broadcastChannel(BroadcastChannel channel) =
+      _BroadcastPortWrapper;
+
+  void postMessage(Object? value);
+
+  void close();
+
+  html.EventTarget get nativePort;
+
+  Stream<MessageEvent> get onMessage => _kMessageEvent.forTarget(nativePort);
+  static const _kMessageEvent = EventStreamProvider<MessageEvent>('message');
+}
+
+class _MessagePortWrapper extends _PortLike {
+  @override
+  final html.MessagePort nativePort;
+
+  _MessagePortWrapper(this.nativePort) : super._();
+
+  @override
+  void postMessage(message) => nativePort.postMessage(message);
+
+  @override
+  void close() => nativePort.close();
+}
+
+class _BroadcastPortWrapper extends _PortLike {
+  @override
+  final html.BroadcastChannel nativePort;
+
+  _BroadcastPortWrapper(this.nativePort) : super._();
+
+  /// This presents a limitation of BroadcastChannel,
+  /// i.e. it cannot carry transferables and will unconditionally clone the items.
+  @override
+  void postMessage(message) => nativePort.postMessage(message ?? false);
+
+  @override
+  void close() => nativePort.close();
+}

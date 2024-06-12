@@ -8,8 +8,7 @@ import 'media_streams.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 // These types are ignored because they are not used by any `pub` functions: `DeviceId`, `MediaDeviceInfoKind`, `MediaDeviceInfo`, `MediaTrackConstraints`
-// These functions are ignored (category: IgnoreBecauseExplicitAttribute): `enumerate_devices_sync`
-// These functions are ignored (category: IgnoreBecauseOwnerTyShouldIgnore): `device_id`, `group_id`, `kind`, `label`
+// These functions are ignored: `device_id`, `enumerate_devices_sync`, `group_id`, `kind`, `label`
 
 /// Prompt for permission to use a media input (audio only)
 ///

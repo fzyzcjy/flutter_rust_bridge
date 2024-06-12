@@ -36,57 +36,6 @@ TupleStructWithTwoFieldTwinSync funcTupleStructWithTwoFieldTwinSync(
         .crateApiPseudoManualStructureTwinSyncFuncTupleStructWithTwoFieldTwinSync(
             arg: arg);
 
-StructWithFieldRenameTwinSync funcForStructWithFieldRenameTwinSync(
-        {required StructWithFieldRenameTwinSync arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualStructureTwinSyncFuncForStructWithFieldRenameTwinSync(
-            arg: arg);
-
-StructWithDartKeywordFieldTwinSync funcForStructWithDartKeywordFieldTwinSync(
-        {required StructWithDartKeywordFieldTwinSync arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualStructureTwinSyncFuncForStructWithDartKeywordFieldTwinSync(
-            arg: arg);
-
-class StructWithDartKeywordFieldTwinSync {
-  final int class_;
-  final PlatformInt64 interface_;
-
-  const StructWithDartKeywordFieldTwinSync({
-    required this.class_,
-    required this.interface_,
-  });
-
-  @override
-  int get hashCode => class_.hashCode ^ interface_.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is StructWithDartKeywordFieldTwinSync &&
-          runtimeType == other.runtimeType &&
-          class_ == other.class_ &&
-          interface_ == other.interface_;
-}
-
-class StructWithFieldRenameTwinSync {
-  final int renamed_field;
-
-  const StructWithFieldRenameTwinSync({
-    required this.renamed_field,
-  });
-
-  @override
-  int get hashCode => renamed_field.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is StructWithFieldRenameTwinSync &&
-          runtimeType == other.runtimeType &&
-          renamed_field == other.renamed_field;
-}
-
 class StructWithOneFieldTwinSync {
   final int a;
 

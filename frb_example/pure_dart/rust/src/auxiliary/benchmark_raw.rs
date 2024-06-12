@@ -40,7 +40,7 @@ pub extern "C" fn benchmark_raw_output_bytes(port: i64, message_id: i32, size: i
     #[cfg(not(target_arch = "wasm32"))]
     {
         use byteorder::{BigEndian, WriteBytesExt};
-        use flutter_rust_bridge::for_generated::DartSendPort;
+        use flutter_rust_bridge::for_generated::Channel;
         use flutter_rust_bridge::{IntoDart, ZeroCopyBuffer};
         use std::io::Cursor;
 
@@ -50,6 +50,6 @@ pub extern "C" fn benchmark_raw_output_bytes(port: i64, message_id: i32, size: i
             cursor.into_inner()
         };
 
-        DartSendPort::new(port).post(ZeroCopyBuffer(vec).into_dart());
+        Channel::new(port).post(ZeroCopyBuffer(vec).into_dart());
     }
 }

@@ -8,37 +8,30 @@ pub struct MirSkip {
 
 #[derive(Copy, PartialOrd, Ord)]
 pub(crate) enum MirSkipReason {
-    IgnoreBecauseFunctionNotPub,
-    IgnoreBecauseFunctionGeneric,
-    IgnoreBecauseTypeNotUsedByPub,
-    IgnoreBecauseExplicitAttribute,
-    IgnoreBecauseType,
-    IgnoreBecauseParseMethodOwnerTy,
-    IgnoreBecauseParseOwnerCannotFindTrait,
-    IgnoreBecauseNotAllowedOwner,
-    IgnoreBecauseOwnerTyShouldIgnore,
-    IgnoreSilently,
+    IgnoredFunctionNotPub,
+    IgnoredFunctionGeneric,
+    IgnoredTypeNotUsedByPub,
+    IgnoredMisc,
     Err,
 }
 }
 
 impl MirSkipReason {
-    pub(crate) fn explanation_prefix(&self) -> Option<String> {
-        Some(match self {
-            Self::IgnoreBecauseFunctionNotPub => {
-                "These functions are ignored because they are not marked as `pub`".to_owned()
+    pub(crate) fn explanation_prefix(&self) -> &'static str {
+        match self {
+            Self::IgnoredFunctionNotPub => {
+                "These functions are ignored because they are not marked as `pub`"
             }
-            Self::IgnoreBecauseFunctionGeneric => {
-                "These functions are ignored because they have generic arguments".to_owned()
+            Self::IgnoredFunctionGeneric => {
+                "These functions are ignored because they have generic arguments"
             }
-            Self::IgnoreBecauseTypeNotUsedByPub => {
-                "These types are ignored because they are not used by any `pub` functions".to_owned()
+            Self::IgnoredTypeNotUsedByPub => {
+                "These types are ignored because they are not used by any `pub` functions"
             }
-            Self::IgnoreSilently => return None,
+            Self::IgnoredMisc => "These functions are ignored",
             Self::Err => {
-                "These functions have error during generation (see debug logs or enable `stop_on_error: true` for more details)".to_owned()
+                "These functions have error during generation (see debug logs or enable `stop_on_error: true` for more details)"
             }
-            _ => format!("These functions are ignored (category: {:?})", self)
-        })
+        }
     }
 }

@@ -1,17 +1,14 @@
-use crate::platform_types::DartNativeSendPort;
-pub use allo_isolate::ZeroCopyBuffer;
 pub use allo_isolate::{IntoDart, IntoDartExceptPrimitive};
+pub type Channel = allo_isolate::Isolate;
+pub use allo_isolate::ZeroCopyBuffer;
 
-/// Roughly the `SendPort` in Dart
-#[derive(Debug, Clone)]
-pub struct DartSendPort(allo_isolate::Isolate);
+/// A channel that implements `Send`
+pub type SendableChannelHandle = Channel;
 
-impl DartSendPort {
-    pub fn new(native: DartNativeSendPort) -> Self {
-        Self(allo_isolate::Isolate::new(native))
-    }
+pub fn channel_to_handle(channel: &Channel) -> SendableChannelHandle {
+    channel.to_owned()
+}
 
-    pub fn post(&self, msg: impl IntoDart) -> bool {
-        self.0.post(msg)
-    }
+pub fn handle_to_channel(handle: &SendableChannelHandle) -> Channel {
+    handle.to_owned()
 }
