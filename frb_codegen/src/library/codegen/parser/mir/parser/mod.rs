@@ -34,7 +34,13 @@ pub(crate) fn parse(
 
     let custom_ser_des_infos = custom_ser_des::parse(
         &hir_flat.functions,
-        &mut type_parser)?;
+        &mut type_parser,
+        &custom_ser_des::PartialContext {
+            default_stream_sink_codec: config.default_stream_sink_codec,
+            default_rust_opaque_codec: config.default_rust_opaque_codec,
+            parse_mode,
+        }
+    )?;
     type_parser.custom_ser_des_infos.extend(custom_ser_des_infos);
 
     let (funcs_all, skipped_functions) = function::parse(

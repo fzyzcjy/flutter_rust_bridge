@@ -14,9 +14,9 @@ use itertools::Itertools;
 use syn::{FnArg, ReturnType};
 
 pub(crate) struct PartialContext {
-    default_stream_sink_codec: CodecMode,
-    default_rust_opaque_codec: RustOpaqueCodecMode,
-    parse_mode: ParseMode,
+    pub default_stream_sink_codec: CodecMode,
+    pub default_rust_opaque_codec: RustOpaqueCodecMode,
+    pub parse_mode: ParseMode,
 }
 
 pub(crate) fn parse(
