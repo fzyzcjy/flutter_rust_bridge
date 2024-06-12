@@ -8,6 +8,7 @@ crate::mir! {
 pub struct MirField {
     pub ty: MirType,
     pub name: MirIdent,
+    pub dart_name: Option<String>,
     pub is_final: bool,
     pub is_rust_public: Option<bool>,
     pub comments: Vec<MirComment>,
