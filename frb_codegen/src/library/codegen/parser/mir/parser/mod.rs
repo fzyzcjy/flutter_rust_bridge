@@ -1,4 +1,5 @@
 pub(crate) mod attribute;
+pub(crate) mod custom_ser_des;
 pub(crate) mod function;
 pub(crate) mod misc;
 pub(crate) mod trait_impl;
@@ -30,6 +31,8 @@ pub(crate) fn parse(
         config.default_rust_opaque_codec,
         parse_mode,
     )?;
+
+    let custom_ser_des_arr = custom_ser_des::parse(&mut type_parser)?;
 
     let (funcs_all, skipped_functions) = function::parse(
         config,
