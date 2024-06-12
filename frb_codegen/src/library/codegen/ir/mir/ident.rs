@@ -50,9 +50,7 @@ impl std::fmt::Display for MirIdent {
 fn convert_rust_to_c_style(raw: &str) -> String {
     let mut ans = raw.to_owned();
 
-    if let Some(stripped) = ans.strip_prefix("r#") {
-        ans = stripped.to_owned();
-    }
+    ans = strip_prefix_rhash(raw).to_owned();
 
     // match behavior of ffigen
     if &ans == "async" {
@@ -66,5 +64,9 @@ fn convert_rust_to_c_style(raw: &str) -> String {
 }
 
 fn convert_rust_to_dart_style(raw: &str) -> String {
-    (raw.strip_prefix("r#").unwrap_or(raw)).to_case(Case::Camel)
+    strip_prefix_rhash(raw).to_case(Case::Camel)
+}
+
+fn strip_prefix_rhash(raw: &str) -> &str {
+    raw.strip_prefix("r#").unwrap_or(raw)
 }
