@@ -5,7 +5,7 @@ use crate::codegen::ir::hir::misc::item_fn::GeneralizedItemFn;
 use crate::codegen::ir::hir::naive_flat::item::HirNaiveFlatItemMeta;
 use crate::if_then_some;
 use itertools::Itertools;
-use syn::{Attribute, ImplItem, ImplItemFn, ItemImpl};
+use syn::{ImplItem, ItemImpl};
 
 pub(crate) fn parse_syn_item_impl(
     target: &mut HirFlatPack,
@@ -29,8 +29,6 @@ fn parse_functions(
     meta: &HirNaiveFlatItemMeta,
     trait_def_name: &Option<String>,
 ) -> Vec<HirFlatFunction> {
-    let attrs_item_impl = item_impl.attrs;
-
     (item_impl.items.into_iter())
         .filter_map(|item| if_then_some!(let ImplItem::Fn(impl_item_fn) = item, impl_item_fn))
         .map(|impl_item_fn| HirFlatFunction {
@@ -39,15 +37,10 @@ fn parse_functions(
                 impl_ty: *item_impl.self_ty.clone(),
                 trait_def_name: trait_def_name.clone(),
             },
-            item_fn: GeneralizedItemFn::ImplItemFn(add_attrs(impl_item_fn, &attrs_item_impl)),
+            item_fn: GeneralizedItemFn::ImplItemFn(impl_item_fn),
             sources: meta.sources.clone(),
         })
         .collect_vec()
-}
-
-fn add_attrs(mut item: ImplItemFn, attrs: &[Attribute]) -> ImplItemFn {
-    item.attrs.extend(attrs.to_owned());
-    item
 }
 
 fn parse_trait_impl(item_impl: &ItemImpl, trait_name: &str) -> HirFlatTraitImpl {

@@ -6,15 +6,7 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<SimpleOpaqueExternalStructWithMethod>>
-abstract class SimpleOpaqueExternalStructWithMethod
-    implements RustOpaqueInterface {
-  factory SimpleOpaqueExternalStructWithMethod({required String a}) =>
-      RustLib.instance.api
-          .crateApiExternalImplSimpleOpaqueExternalStructWithMethodNew(a: a);
-
-  Future<String> simpleExternalMethod();
-}
+// These functions are ignored: `new`, `simple_external_method`
 
 class SimpleTranslatableExternalStructWithMethod {
   final String a;

@@ -23,10 +23,7 @@
             "default": null,
             "is_final": true,
             "is_rust_public": null,
-            "name": {
-              "dart_style": null,
-              "rust_style": "chrono_duration"
-            },
+            "name": "chrono_duration",
             "settings": {
               "is_in_mirrored_enum": false
             },
@@ -46,10 +43,7 @@
             "default": null,
             "is_final": true,
             "is_rust_public": null,
-            "name": {
-              "dart_style": null,
-              "rust_style": "uuid_uuid"
-            },
+            "name": "uuid_uuid",
             "settings": {
               "is_in_mirrored_enum": false
             },

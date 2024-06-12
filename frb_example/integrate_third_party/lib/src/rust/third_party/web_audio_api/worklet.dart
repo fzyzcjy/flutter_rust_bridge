@@ -9,7 +9,7 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 // These functions are ignored because they have generic arguments: `new`, `process`
 // These types are ignored because they are not used by any `pub` functions: `AudioParamValues`, `AudioWorkletNodeOptions`, `AudioWorkletRenderer`, `Processor`
-// These functions are ignored (category: IgnoreBecauseExplicitAttribute): `constructor`, `onmessage`, `port`
+// These functions are ignored: `constructor`, `onmessage`, `port`
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioWorkletNode>>
 abstract class AudioWorkletNode implements RustOpaqueInterface, AudioNode {

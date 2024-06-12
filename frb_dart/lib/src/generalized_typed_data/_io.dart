@@ -1,44 +1,19 @@
-import 'dart:collection';
 import 'dart:typed_data' as $data;
 
-import 'package:flutter_rust_bridge/src/exceptions.dart';
-
-abstract class _TypedList<T> extends ListMixin<T> {
-  List<int> get inner;
-
-  @override
-  _TypedList<T> operator +(Object other);
-
-  T _raw2dart(int value);
-
-  int _dart2raw(Object? value);
-
-  @override
-  T operator [](int index) => _raw2dart(inner[index]);
-
-  @override
-  void operator []=(int index, Object? value) =>
-      inner[index] = _dart2raw(value);
-
-  @override
-  int get length => inner.length;
-
-  @override
-  set length(int newLength) => throw const UnmodifiableTypedListException();
-}
+import 'package:flutter_rust_bridge/src/generalized_typed_data/common.dart';
 
 /// A strict version of [$data.Int64List] which always returns a [BigInt].
-class Int64List extends _TypedList<BigInt> {
+class Int64List extends TypedList<BigInt, int> {
   @override
   final $data.Int64List inner;
 
-  /// Construct a list from normal Int64List
-  Int64List.from(this.inner);
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
+  Int64List.raw(this.inner);
 
   /// Construct a list of the [length].
-  factory Int64List(int length) => Int64List.from($data.Int64List(length));
+  factory Int64List(int length) => Int64List.raw($data.Int64List(length));
 
-  /// Construct a list from `List<int>`.
+  /// Construct a list raw `List<int>`.
   Int64List.fromList(List<int> ints) : inner = $data.Int64List.fromList(ints);
 
   /// Construct a list view
@@ -50,14 +25,14 @@ class Int64List extends _TypedList<BigInt> {
       : inner = $data.Int64List.sublistView(data, start, end);
 
   @override
-  int _dart2raw(Object? value) {
+  int outer2inner(Object? value) {
     if (value is BigInt) return value.toInt();
     if (value is int) return value;
     throw ArgumentError.value(value);
   }
 
   @override
-  BigInt _raw2dart(int value) => BigInt.from(value);
+  BigInt inner2outer(int value) => BigInt.from(value);
 
   @override
   Int64List operator +(Object other) {
@@ -72,17 +47,17 @@ class Int64List extends _TypedList<BigInt> {
 }
 
 /// A strict version of [$data.Uint64List] which always returns a [BigInt].
-class Uint64List extends _TypedList<BigInt> {
+class Uint64List extends TypedList<BigInt, int> {
   @override
   final $data.Uint64List inner;
 
-  /// Construct a list from normal Int64List
-  Uint64List.from(this.inner);
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
+  Uint64List.raw(this.inner);
 
   /// Construct a list of the [length].
-  factory Uint64List(int length) => Uint64List.from($data.Uint64List(length));
+  factory Uint64List(int length) => Uint64List.raw($data.Uint64List(length));
 
-  /// Construct a list from `List<int>`.
+  /// Construct a list raw `List<int>`.
   Uint64List.fromList(List<int> ints) : inner = $data.Uint64List.fromList(ints);
 
   /// Construct a list view
@@ -97,7 +72,7 @@ class Uint64List extends _TypedList<BigInt> {
   static const _minI64 = 0x8000000000000000;
 
   @override
-  BigInt _raw2dart(int value) {
+  BigInt inner2outer(int value) {
     if (value < 0) {
       // two's complement signed integer to unsigned bigint
       return _maxI64b + BigInt.from(value - _minI64) + BigInt.one;
@@ -106,7 +81,7 @@ class Uint64List extends _TypedList<BigInt> {
   }
 
   @override
-  int _dart2raw(Object? value) {
+  int outer2inner(Object? value) {
     if (value is int) return value;
     if (value is BigInt) {
       if (value > _maxI64b) {

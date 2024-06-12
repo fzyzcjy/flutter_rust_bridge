@@ -2,7 +2,7 @@ use crate::codegen::ir::mir::default::MirDefaultValue;
 use crate::codegen::ir::mir::field::MirField;
 use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
 use crate::codegen::ir::mir::ty::MirType;
-use crate::utils::dart_keywords;
+use crate::utils::dart_keywords::make_string_keyword_safe;
 use convert_case::{Case, Casing};
 use std::borrow::Cow;
 
@@ -61,7 +61,7 @@ fn default_value_to_dart_style(value: &str) -> String {
             format!(
                 "{}.{}",
                 enum_name,
-                dart_keywords::escape(variant_name.to_case(Case::Camel))
+                make_string_keyword_safe(variant_name.to_string()).to_case(Case::Camel)
             )
         }
         _ => value.to_string(),

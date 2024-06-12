@@ -155,7 +155,7 @@ fn compute_skips(mir_pack: &MirPack, namespace: &Namespace) -> Vec<MirSkip> {
         .filter(|t| &t.namespace == namespace)
         .map(|name| MirSkip {
             name: name.clone(),
-            reason: MirSkipReason::IgnoreBecauseTypeNotUsedByPub,
+            reason: MirSkipReason::IgnoredTypeNotUsedByPub,
         })
         .collect_vec();
 
