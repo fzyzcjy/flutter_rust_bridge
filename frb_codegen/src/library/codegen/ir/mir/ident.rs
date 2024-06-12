@@ -48,9 +48,7 @@ impl std::fmt::Display for MirIdent {
 }
 
 fn convert_rust_to_c_style(raw: &str) -> String {
-    let mut ans = raw.to_owned();
-
-    ans = strip_prefix_rhash(raw).to_owned();
+    let mut ans = strip_prefix_rhash(raw).to_owned();
 
     // match behavior of ffigen
     if &ans == "async" {
