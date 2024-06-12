@@ -39,7 +39,11 @@ impl MirIdent {
 
 impl std::fmt::Display for MirIdent {
     fn fmt(&self, fmt: &mut std::fmt::Formatter<'_>) -> Result<(), std::fmt::Error> {
-        fmt.write_str(&self.rust_style)
+        fmt.write_str(&self.rust_style)?;
+        if let Some(dart_style) = &self.dart_style {
+            write!(fmt, "(dart_style={})", dart_style)?;
+        }
+        Ok(())
     }
 }
 
