@@ -1,5 +1,5 @@
 use crate::codegen::generator::codec::sse::lang::Lang;
-use crate::utils::cbindgen_keywords;
+use crate::utils::{cbindgen_keywords, dart_keywords};
 use convert_case::{Case, Casing};
 
 crate::mir! {
@@ -62,7 +62,9 @@ fn convert_rust_to_c_style(raw: &str) -> String {
 }
 
 fn convert_rust_to_dart_style(raw: &str) -> String {
-    strip_prefix_rhash(raw).to_case(Case::Camel)
+    let ans = strip_prefix_rhash(raw).to_case(Case::Camel);
+    let ans = dart_keywords::escape(ans);
+    ans
 }
 
 fn strip_prefix_rhash(raw: &str) -> &str {
