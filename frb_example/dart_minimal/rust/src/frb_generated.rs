@@ -124,8 +124,10 @@ impl SseDecode for i32 {
 impl SseDecode for crate::api::minimal::StructWithFieldRenameTwinNormal {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut var_class = <i32>::sse_decode(deserializer);
-        return crate::api::minimal::StructWithFieldRenameTwinNormal { class: var_class };
+        let mut var_renamed_field = <i32>::sse_decode(deserializer);
+        return crate::api::minimal::StructWithFieldRenameTwinNormal {
+            class: var_renamed_field,
+        };
     }
 }
 

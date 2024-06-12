@@ -6,33 +6,28 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
+Future<int> minimalAdder({required int a, required int b}) =>
+    RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b);
 
-            
+Future<StructWithFieldRenameTwinNormal> funcForStructWithFieldRenameTwinNormal(
+        {required StructWithFieldRenameTwinNormal arg}) =>
+    RustLib.instance.api
+        .crateApiMinimalFuncForStructWithFieldRenameTwinNormal(arg: arg);
 
-            Future<int> minimalAdder({required int a , required int b }) => RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b);
+class StructWithFieldRenameTwinNormal {
+  final int renamed_field;
 
-Future<StructWithFieldRenameTwinNormal> funcForStructWithFieldRenameTwinNormal({required StructWithFieldRenameTwinNormal arg }) => RustLib.instance.api.crateApiMinimalFuncForStructWithFieldRenameTwinNormal(arg: arg);
+  const StructWithFieldRenameTwinNormal({
+    required this.renamed_field,
+  });
 
-            class StructWithFieldRenameTwinNormal  {
-                final int class;
+  @override
+  int get hashCode => renamed_field.hashCode;
 
-                const StructWithFieldRenameTwinNormal({required this.class ,});
-
-                
-                
-
-                
-        @override
-        int get hashCode => class.hashCode;
-        
-
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is StructWithFieldRenameTwinNormal &&
-                runtimeType == other.runtimeType
-                && class == other.class;
-        
-            }
-            
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is StructWithFieldRenameTwinNormal &&
+          runtimeType == other.runtimeType &&
+          renamed_field == other.renamed_field;
+}

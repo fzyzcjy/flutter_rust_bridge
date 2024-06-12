@@ -10,206 +10,261 @@ import 'frb_generated.dart';
 import 'frb_generated.io.dart' if (dart.library.html) 'frb_generated.web.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
+/// Main entrypoint of the Rust API
+class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
+  @internal
+  static final instance = RustLib._();
 
-                /// Main entrypoint of the Rust API
-                class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
-                  @internal
-                  static final instance = RustLib._();
+  RustLib._();
 
-                  RustLib._();
+  /// Initialize flutter_rust_bridge
+  static Future<void> init({
+    RustLibApi? api,
+    BaseHandler? handler,
+    ExternalLibrary? externalLibrary,
+  }) async {
+    await instance.initImpl(
+      api: api,
+      handler: handler,
+      externalLibrary: externalLibrary,
+    );
+  }
 
-                  /// Initialize flutter_rust_bridge
-                  static Future<void> init({
-                    RustLibApi? api,
-                    BaseHandler? handler,
-                    ExternalLibrary? externalLibrary,
-                  }) async {
-                    await instance.initImpl(
-                      api: api,
-                      handler: handler,
-                      externalLibrary: externalLibrary,
-                    );
-                  }
-                  
-                  /// Dispose flutter_rust_bridge
-                  ///
-                  /// The call to this function is optional, since flutter_rust_bridge (and everything else)
-                  /// is automatically disposed when the app stops.
-                  static void dispose() => instance.disposeImpl();
+  /// Dispose flutter_rust_bridge
+  ///
+  /// The call to this function is optional, since flutter_rust_bridge (and everything else)
+  /// is automatically disposed when the app stops.
+  static void dispose() => instance.disposeImpl();
 
-                  @override
-                  ApiImplConstructor<RustLibApiImpl, RustLibWire> get apiImplConstructor => RustLibApiImpl.new;
+  @override
+  ApiImplConstructor<RustLibApiImpl, RustLibWire> get apiImplConstructor =>
+      RustLibApiImpl.new;
 
-                  @override
-                  WireConstructor<RustLibWire> get wireConstructor => RustLibWire.fromExternalLibrary;
-                  
-                  @override
-                  Future<void> executeRustInitializers() async {
-                    await api.crateApiMinimalInitApp();
+  @override
+  WireConstructor<RustLibWire> get wireConstructor =>
+      RustLibWire.fromExternalLibrary;
 
-                  }
+  @override
+  Future<void> executeRustInitializers() async {
+    await api.crateApiMinimalInitApp();
+  }
 
-                  @override
-                  ExternalLibraryLoaderConfig get defaultExternalLibraryLoaderConfig => kDefaultExternalLibraryLoaderConfig;
+  @override
+  ExternalLibraryLoaderConfig get defaultExternalLibraryLoaderConfig =>
+      kDefaultExternalLibraryLoaderConfig;
 
-                  @override
-                  String get codegenVersion => '2.0.0-dev.38';
+  @override
+  String get codegenVersion => '2.0.0-dev.38';
 
-                  @override
-                  int get rustContentHash => 309815666;
+  @override
+  int get rustContentHash => 309815666;
 
-                  static const kDefaultExternalLibraryLoaderConfig = ExternalLibraryLoaderConfig(
-                    stem: 'frb_example_dart_minimal',
-                    ioDirectory: 'rust/target/release/',
-                    webPrefix: 'pkg/',
-                  );
-                }
-                
+  static const kDefaultExternalLibraryLoaderConfig =
+      ExternalLibraryLoaderConfig(
+    stem: 'frb_example_dart_minimal',
+    ioDirectory: 'rust/target/release/',
+    webPrefix: 'pkg/',
+  );
+}
 
-                abstract class RustLibApi extends BaseApi {
-                  Future<StructWithFieldRenameTwinNormal> crateApiMinimalFuncForStructWithFieldRenameTwinNormal({required StructWithFieldRenameTwinNormal arg });
+abstract class RustLibApi extends BaseApi {
+  Future<StructWithFieldRenameTwinNormal>
+      crateApiMinimalFuncForStructWithFieldRenameTwinNormal(
+          {required StructWithFieldRenameTwinNormal arg});
 
-Future<void> crateApiMinimalInitApp();
+  Future<void> crateApiMinimalInitApp();
 
-Future<int> crateApiMinimalMinimalAdder({required int a , required int b });
+  Future<int> crateApiMinimalMinimalAdder({required int a, required int b});
+}
 
+class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
+  RustLibApiImpl({
+    required super.handler,
+    required super.wire,
+    required super.generalizedFrbRustBinding,
+    required super.portManager,
+  });
 
-                }
-                
+  @override
+  Future<StructWithFieldRenameTwinNormal>
+      crateApiMinimalFuncForStructWithFieldRenameTwinNormal(
+          {required StructWithFieldRenameTwinNormal arg}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_box_autoadd_struct_with_field_rename_twin_normal(arg);
+        return wire
+            .wire__crate__api__minimal__func_for_struct_with_field_rename_twin_normal(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_struct_with_field_rename_twin_normal,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiMinimalFuncForStructWithFieldRenameTwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+    ));
+  }
 
-                class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
-                  RustLibApiImpl({
-                    required super.handler,
-                    required super.wire,
-                    required super.generalizedFrbRustBinding,
-                    required super.portManager,
-                  });
-
-                  @override Future<StructWithFieldRenameTwinNormal> crateApiMinimalFuncForStructWithFieldRenameTwinNormal({required StructWithFieldRenameTwinNormal arg })  { return handler.executeNormal(NormalTask(
-            callFfi: (port_) {
-              var arg0 = cst_encode_box_autoadd_struct_with_field_rename_twin_normal(arg);
-            return wire.wire__crate__api__minimal__func_for_struct_with_field_rename_twin_normal(port_, arg0);
-            
-            },
-            codec: 
-        DcoCodec(
-          decodeSuccessData: dco_decode_struct_with_field_rename_twin_normal,
-          decodeErrorData: null,
-        )
-        ,
-            constMeta: kCrateApiMinimalFuncForStructWithFieldRenameTwinNormalConstMeta,
-            argValues: [arg],
-            apiImpl: this,
-        )); }
-
-
-        TaskConstMeta get kCrateApiMinimalFuncForStructWithFieldRenameTwinNormalConstMeta => const TaskConstMeta(
+  TaskConstMeta
+      get kCrateApiMinimalFuncForStructWithFieldRenameTwinNormalConstMeta =>
+          const TaskConstMeta(
             debugName: "func_for_struct_with_field_rename_twin_normal",
             argNames: ["arg"],
-        );
-        
+          );
 
-@override Future<void> crateApiMinimalInitApp()  { return handler.executeNormal(NormalTask(
-            callFfi: (port_) {
-              
-            return wire.wire__crate__api__minimal__init_app(port_);
-            
-            },
-            codec: 
-        DcoCodec(
-          decodeSuccessData: dco_decode_unit,
-          decodeErrorData: null,
-        )
-        ,
-            constMeta: kCrateApiMinimalInitAppConstMeta,
-            argValues: [],
-            apiImpl: this,
-        )); }
+  @override
+  Future<void> crateApiMinimalInitApp() {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        return wire.wire__crate__api__minimal__init_app(port_);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiMinimalInitAppConstMeta,
+      argValues: [],
+      apiImpl: this,
+    ));
+  }
 
+  TaskConstMeta get kCrateApiMinimalInitAppConstMeta => const TaskConstMeta(
+        debugName: "init_app",
+        argNames: [],
+      );
 
-        TaskConstMeta get kCrateApiMinimalInitAppConstMeta => const TaskConstMeta(
-            debugName: "init_app",
-            argNames: [],
-        );
-        
+  @override
+  Future<int> crateApiMinimalMinimalAdder({required int a, required int b}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_i_32(a);
+        var arg1 = cst_encode_i_32(b);
+        return wire.wire__crate__api__minimal__minimal_adder(port_, arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiMinimalMinimalAdderConstMeta,
+      argValues: [a, b],
+      apiImpl: this,
+    ));
+  }
 
-@override Future<int> crateApiMinimalMinimalAdder({required int a , required int b })  { return handler.executeNormal(NormalTask(
-            callFfi: (port_) {
-              var arg0 = cst_encode_i_32(a);
-var arg1 = cst_encode_i_32(b);
-            return wire.wire__crate__api__minimal__minimal_adder(port_, arg0, arg1);
-            
-            },
-            codec: 
-        DcoCodec(
-          decodeSuccessData: dco_decode_i_32,
-          decodeErrorData: null,
-        )
-        ,
-            constMeta: kCrateApiMinimalMinimalAdderConstMeta,
-            argValues: [a, b],
-            apiImpl: this,
-        )); }
+  TaskConstMeta get kCrateApiMinimalMinimalAdderConstMeta =>
+      const TaskConstMeta(
+        debugName: "minimal_adder",
+        argNames: ["a", "b"],
+      );
 
+  @protected
+  StructWithFieldRenameTwinNormal
+      dco_decode_box_autoadd_struct_with_field_rename_twin_normal(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return dco_decode_struct_with_field_rename_twin_normal(raw);
+  }
 
-        TaskConstMeta get kCrateApiMinimalMinimalAdderConstMeta => const TaskConstMeta(
-            debugName: "minimal_adder",
-            argNames: ["a", "b"],
-        );
-        
+  @protected
+  int dco_decode_i_32(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return raw as int;
+  }
 
+  @protected
+  StructWithFieldRenameTwinNormal
+      dco_decode_struct_with_field_rename_twin_normal(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return StructWithFieldRenameTwinNormal(
+      renamed_field: dco_decode_i_32(arr[0]),
+    );
+  }
 
+  @protected
+  void dco_decode_unit(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return;
+  }
 
-                  @protected StructWithFieldRenameTwinNormal dco_decode_box_autoadd_struct_with_field_rename_twin_normal(dynamic raw){ // Codec=Dco (DartCObject based), see doc to use other codecs
-return dco_decode_struct_with_field_rename_twin_normal(raw); }
+  @protected
+  StructWithFieldRenameTwinNormal
+      sse_decode_box_autoadd_struct_with_field_rename_twin_normal(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return (sse_decode_struct_with_field_rename_twin_normal(deserializer));
+  }
 
-@protected int dco_decode_i_32(dynamic raw){ // Codec=Dco (DartCObject based), see doc to use other codecs
-return raw as int; }
+  @protected
+  int sse_decode_i_32(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return deserializer.buffer.getInt32();
+  }
 
-@protected StructWithFieldRenameTwinNormal dco_decode_struct_with_field_rename_twin_normal(dynamic raw){ // Codec=Dco (DartCObject based), see doc to use other codecs
-final arr = raw as List<dynamic>;
-                if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
-                return StructWithFieldRenameTwinNormal(class: dco_decode_i_32(arr[0]),); }
+  @protected
+  StructWithFieldRenameTwinNormal
+      sse_decode_struct_with_field_rename_twin_normal(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var var_renamed_field = sse_decode_i_32(deserializer);
+    return StructWithFieldRenameTwinNormal(renamed_field: var_renamed_field);
+  }
 
-@protected void dco_decode_unit(dynamic raw){ // Codec=Dco (DartCObject based), see doc to use other codecs
-return; }
+  @protected
+  void sse_decode_unit(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+  }
 
-@protected StructWithFieldRenameTwinNormal sse_decode_box_autoadd_struct_with_field_rename_twin_normal(SseDeserializer deserializer){ // Codec=Sse (Serialization based), see doc to use other codecs
-return (sse_decode_struct_with_field_rename_twin_normal(deserializer)); }
+  @protected
+  bool sse_decode_bool(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return deserializer.buffer.getUint8() != 0;
+  }
 
-@protected int sse_decode_i_32(SseDeserializer deserializer){ // Codec=Sse (Serialization based), see doc to use other codecs
-return deserializer.buffer.getInt32(); }
+  @protected
+  int cst_encode_i_32(int raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw;
+  }
 
-@protected StructWithFieldRenameTwinNormal sse_decode_struct_with_field_rename_twin_normal(SseDeserializer deserializer){ // Codec=Sse (Serialization based), see doc to use other codecs
-var var_class = sse_decode_i_32(deserializer);
-return StructWithFieldRenameTwinNormal(class: var_class); }
+  @protected
+  void cst_encode_unit(void raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw;
+  }
 
-@protected void sse_decode_unit(SseDeserializer deserializer){ // Codec=Sse (Serialization based), see doc to use other codecs
- }
+  @protected
+  void sse_encode_box_autoadd_struct_with_field_rename_twin_normal(
+      StructWithFieldRenameTwinNormal self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_struct_with_field_rename_twin_normal(self, serializer);
+  }
 
-@protected bool sse_decode_bool(SseDeserializer deserializer){ // Codec=Sse (Serialization based), see doc to use other codecs
-return deserializer.buffer.getUint8() != 0; }
+  @protected
+  void sse_encode_i_32(int self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    serializer.buffer.putInt32(self);
+  }
 
-@protected int cst_encode_i_32(int raw){ // Codec=Cst (C-struct based), see doc to use other codecs
-return raw; }
+  @protected
+  void sse_encode_struct_with_field_rename_twin_normal(
+      StructWithFieldRenameTwinNormal self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_i_32(self.renamed_field, serializer);
+  }
 
-@protected void cst_encode_unit(void raw){ // Codec=Cst (C-struct based), see doc to use other codecs
-return raw; }
+  @protected
+  void sse_encode_unit(void self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+  }
 
-@protected void sse_encode_box_autoadd_struct_with_field_rename_twin_normal(StructWithFieldRenameTwinNormal self, SseSerializer serializer){ // Codec=Sse (Serialization based), see doc to use other codecs
-sse_encode_struct_with_field_rename_twin_normal(self, serializer); }
-
-@protected void sse_encode_i_32(int self, SseSerializer serializer){ // Codec=Sse (Serialization based), see doc to use other codecs
-serializer.buffer.putInt32(self); }
-
-@protected void sse_encode_struct_with_field_rename_twin_normal(StructWithFieldRenameTwinNormal self, SseSerializer serializer){ // Codec=Sse (Serialization based), see doc to use other codecs
-sse_encode_i_32(self.class, serializer);
- }
-
-@protected void sse_encode_unit(void self, SseSerializer serializer){ // Codec=Sse (Serialization based), see doc to use other codecs
- }
-
-@protected void sse_encode_bool(bool self, SseSerializer serializer){ // Codec=Sse (Serialization based), see doc to use other codecs
-serializer.buffer.putUint8(self ? 1 : 0); }
-                }
-                
+  @protected
+  void sse_encode_bool(bool self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    serializer.buffer.putUint8(self ? 1 : 0);
+  }
+}

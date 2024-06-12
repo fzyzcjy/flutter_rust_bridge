@@ -10,62 +10,95 @@ import 'dart:ffi' as ffi;
 import 'frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_io.dart';
 
+abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
+  RustLibApiImplPlatform({
+    required super.handler,
+    required super.wire,
+    required super.generalizedFrbRustBinding,
+    required super.portManager,
+  });
 
+  @protected
+  StructWithFieldRenameTwinNormal
+      dco_decode_box_autoadd_struct_with_field_rename_twin_normal(dynamic raw);
 
+  @protected
+  int dco_decode_i_32(dynamic raw);
 
-                abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
-                  RustLibApiImplPlatform({
-                    required super.handler,
-                    required super.wire,
-                    required super.generalizedFrbRustBinding,
-                    required super.portManager,
-                  });
+  @protected
+  StructWithFieldRenameTwinNormal
+      dco_decode_struct_with_field_rename_twin_normal(dynamic raw);
 
-                  
+  @protected
+  void dco_decode_unit(dynamic raw);
 
-                  @protected StructWithFieldRenameTwinNormal dco_decode_box_autoadd_struct_with_field_rename_twin_normal(dynamic raw);
+  @protected
+  StructWithFieldRenameTwinNormal
+      sse_decode_box_autoadd_struct_with_field_rename_twin_normal(
+          SseDeserializer deserializer);
 
-@protected int dco_decode_i_32(dynamic raw);
+  @protected
+  int sse_decode_i_32(SseDeserializer deserializer);
 
-@protected StructWithFieldRenameTwinNormal dco_decode_struct_with_field_rename_twin_normal(dynamic raw);
+  @protected
+  StructWithFieldRenameTwinNormal
+      sse_decode_struct_with_field_rename_twin_normal(
+          SseDeserializer deserializer);
 
-@protected void dco_decode_unit(dynamic raw);
+  @protected
+  void sse_decode_unit(SseDeserializer deserializer);
 
-@protected StructWithFieldRenameTwinNormal sse_decode_box_autoadd_struct_with_field_rename_twin_normal(SseDeserializer deserializer);
+  @protected
+  bool sse_decode_bool(SseDeserializer deserializer);
 
-@protected int sse_decode_i_32(SseDeserializer deserializer);
+  @protected
+  ffi.Pointer<wire_cst_struct_with_field_rename_twin_normal>
+      cst_encode_box_autoadd_struct_with_field_rename_twin_normal(
+          StructWithFieldRenameTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    final ptr = wire.cst_new_box_autoadd_struct_with_field_rename_twin_normal();
+    cst_api_fill_to_wire_struct_with_field_rename_twin_normal(raw, ptr.ref);
+    return ptr;
+  }
 
-@protected StructWithFieldRenameTwinNormal sse_decode_struct_with_field_rename_twin_normal(SseDeserializer deserializer);
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_struct_with_field_rename_twin_normal(
+      StructWithFieldRenameTwinNormal apiObj,
+      ffi.Pointer<wire_cst_struct_with_field_rename_twin_normal> wireObj) {
+    cst_api_fill_to_wire_struct_with_field_rename_twin_normal(
+        apiObj, wireObj.ref);
+  }
 
-@protected void sse_decode_unit(SseDeserializer deserializer);
+  @protected
+  void cst_api_fill_to_wire_struct_with_field_rename_twin_normal(
+      StructWithFieldRenameTwinNormal apiObj,
+      wire_cst_struct_with_field_rename_twin_normal wireObj) {
+    wireObj.class_ = cst_encode_i_32(apiObj.renamed_field);
+  }
 
-@protected bool sse_decode_bool(SseDeserializer deserializer);
+  @protected
+  int cst_encode_i_32(int raw);
 
-@protected ffi.Pointer<wire_cst_struct_with_field_rename_twin_normal> cst_encode_box_autoadd_struct_with_field_rename_twin_normal(StructWithFieldRenameTwinNormal raw){ // Codec=Cst (C-struct based), see doc to use other codecs
-final ptr = wire.cst_new_box_autoadd_struct_with_field_rename_twin_normal();
-                    cst_api_fill_to_wire_struct_with_field_rename_twin_normal(raw, ptr.ref);
-                    return ptr; }
+  @protected
+  void cst_encode_unit(void raw);
 
-@protected void cst_api_fill_to_wire_box_autoadd_struct_with_field_rename_twin_normal(StructWithFieldRenameTwinNormal apiObj, ffi.Pointer<wire_cst_struct_with_field_rename_twin_normal> wireObj){ cst_api_fill_to_wire_struct_with_field_rename_twin_normal(apiObj, wireObj.ref); }
+  @protected
+  void sse_encode_box_autoadd_struct_with_field_rename_twin_normal(
+      StructWithFieldRenameTwinNormal self, SseSerializer serializer);
 
-@protected void cst_api_fill_to_wire_struct_with_field_rename_twin_normal(StructWithFieldRenameTwinNormal apiObj, wire_cst_struct_with_field_rename_twin_normal wireObj){ wireObj.class_ = cst_encode_i_32(apiObj.class); }
+  @protected
+  void sse_encode_i_32(int self, SseSerializer serializer);
 
-@protected int cst_encode_i_32(int raw);
+  @protected
+  void sse_encode_struct_with_field_rename_twin_normal(
+      StructWithFieldRenameTwinNormal self, SseSerializer serializer);
 
-@protected void cst_encode_unit(void raw);
+  @protected
+  void sse_encode_unit(void self, SseSerializer serializer);
 
-@protected void sse_encode_box_autoadd_struct_with_field_rename_twin_normal(StructWithFieldRenameTwinNormal self, SseSerializer serializer);
-
-@protected void sse_encode_i_32(int self, SseSerializer serializer);
-
-@protected void sse_encode_struct_with_field_rename_twin_normal(StructWithFieldRenameTwinNormal self, SseSerializer serializer);
-
-@protected void sse_encode_unit(void self, SseSerializer serializer);
-
-@protected void sse_encode_bool(bool self, SseSerializer serializer);
-                }
-                
-
+  @protected
+  void sse_encode_bool(bool self, SseSerializer serializer);
+}
 
 // Section: wire_class
 
@@ -77,10 +110,9 @@ final ptr = wire.cst_new_box_autoadd_struct_with_field_rename_twin_normal();
 
 /// generated by flutter_rust_bridge
 class RustLibWire implements BaseWire {
+  factory RustLibWire.fromExternalLibrary(ExternalLibrary lib) =>
+      RustLibWire(lib.ffiDynamicLibrary);
 
-            factory RustLibWire.fromExternalLibrary(ExternalLibrary lib) =>
-              RustLibWire(lib.ffiDynamicLibrary);
-        
   /// Holds the symbol lookup function.
   final ffi.Pointer<T> Function<T extends ffi.NativeType>(String symbolName)
       _lookup;
@@ -195,10 +227,6 @@ class RustLibWire implements BaseWire {
       _dummy_method_to_enforce_bundlingPtr.asFunction<int Function()>();
 }
 
-
-
-
-
 typedef DartPostCObjectFnType
     = ffi.Pointer<ffi.NativeFunction<DartPostCObjectFnTypeFunction>>;
 typedef DartPostCObjectFnTypeFunction = ffi.Bool Function(
@@ -207,8 +235,6 @@ typedef DartDartPostCObjectFnTypeFunction = bool Function(
     DartDartPort port_id, ffi.Pointer<ffi.Void> message);
 typedef DartPort = ffi.Int64;
 typedef DartDartPort = int;
-
-
 
 final class wire_cst_struct_with_field_rename_twin_normal extends ffi.Struct {
   @ffi.Int32()
