@@ -20,7 +20,6 @@ typedef SendPort = _PortLike;
 /// Web implementation of the one with same name in native.
 /// {@endtemplate}
 class ReceivePort extends Stream<dynamic> {
-  /// The receive port.
   final RawReceivePort _rawReceivePort;
 
   /// {@macro flutter_rust_bridge.same_as_native}
@@ -98,10 +97,10 @@ class _MessageChannelWrapper implements _Channel {
   final channel = MessageChannel();
 
   @override
-  SendPort get sendPort => _PortLike.messagePort(channel.port2);
+  SendPort get sendPort => _PortLike._messagePort(channel.port2);
 
   @override
-  SendPort get receivePort => _PortLike.messagePort(channel.port1);
+  SendPort get receivePort => _PortLike._messagePort(channel.port1);
 }
 
 class _BroadcastChannelWrapper implements _Channel {
@@ -116,19 +115,19 @@ class _BroadcastChannelWrapper implements _Channel {
         _receiveChannel = BroadcastChannel(channelName);
 
   @override
-  SendPort get sendPort => _PortLike.broadcastChannel(_sendChannel);
+  SendPort get sendPort => _PortLike._broadcastChannel(_sendChannel);
 
   @override
-  SendPort get receivePort => _PortLike.broadcastChannel(_receiveChannel);
+  SendPort get receivePort => _PortLike._broadcastChannel(_receiveChannel);
 }
 
 /// {@macro flutter_rust_bridge.same_as_native}
 abstract class _PortLike {
   const _PortLike._();
 
-  factory _PortLike.messagePort(html.MessagePort port) = _MessagePortWrapper;
+  factory _PortLike._messagePort(html.MessagePort port) = _MessagePortWrapper;
 
-  factory _PortLike.broadcastChannel(BroadcastChannel channel) =
+  factory _PortLike._broadcastChannel(BroadcastChannel channel) =
       _BroadcastPortWrapper;
 
   void postMessage(Object? value);
