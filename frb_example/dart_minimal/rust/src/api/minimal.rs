@@ -8,11 +8,3 @@ pub fn init_app() {
 pub fn minimal_adder(a: i32, b: i32) -> i32 {
     a + b
 }
-
-pub use automerge::ScalarValue;
-
-#[frb(external)]
-impl ScalarValue {
-    #[frb(sync)]
-    pub fn is_str(&self) -> bool {}
-}
