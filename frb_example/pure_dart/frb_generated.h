@@ -3392,6 +3392,36 @@ void frbgen_frb_example_pure_dart_wire__crate__api__attribute__next_user_id_twin
 
 WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire__crate__api__benchmark_misc__benchmark_void_semi_serialize(void);
 
+void frbgen_frb_example_pure_dart_wire__crate__api__casted_primitive__casted_primitive_i64_twin_normal(int64_t port_,
+                                                                                                       uint8_t *ptr_,
+                                                                                                       int32_t rust_vec_len_,
+                                                                                                       int32_t data_len_);
+
+void frbgen_frb_example_pure_dart_wire__crate__api__casted_primitive__casted_primitive_isize_twin_normal(int64_t port_,
+                                                                                                         uint8_t *ptr_,
+                                                                                                         int32_t rust_vec_len_,
+                                                                                                         int32_t data_len_);
+
+void frbgen_frb_example_pure_dart_wire__crate__api__casted_primitive__casted_primitive_multi_arg_twin_normal(int64_t port_,
+                                                                                                             uint8_t *ptr_,
+                                                                                                             int32_t rust_vec_len_,
+                                                                                                             int32_t data_len_);
+
+void frbgen_frb_example_pure_dart_wire__crate__api__casted_primitive__casted_primitive_u64_twin_normal(int64_t port_,
+                                                                                                       uint8_t *ptr_,
+                                                                                                       int32_t rust_vec_len_,
+                                                                                                       int32_t data_len_);
+
+void frbgen_frb_example_pure_dart_wire__crate__api__casted_primitive__casted_primitive_usize_twin_normal(int64_t port_,
+                                                                                                         uint8_t *ptr_,
+                                                                                                         int32_t rust_vec_len_,
+                                                                                                         int32_t data_len_);
+
+void frbgen_frb_example_pure_dart_wire__crate__api__casted_primitive__function_for_struct_with_casted_primitive_twin_normal(int64_t port_,
+                                                                                                                            uint8_t *ptr_,
+                                                                                                                            int32_t rust_vec_len_,
+                                                                                                                            int32_t data_len_);
+
 void frbgen_frb_example_pure_dart_wire__crate__api__chrono_type__datetime_local_twin_normal(int64_t port_,
                                                                                             int64_t d);
 
@@ -15569,6 +15599,12 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__attribute__handle_customized_struct_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__attribute__next_user_id_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__benchmark_misc__benchmark_void_semi_serialize);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__casted_primitive__casted_primitive_i64_twin_normal);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__casted_primitive__casted_primitive_isize_twin_normal);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__casted_primitive__casted_primitive_multi_arg_twin_normal);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__casted_primitive__casted_primitive_u64_twin_normal);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__casted_primitive__casted_primitive_usize_twin_normal);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__casted_primitive__function_for_struct_with_casted_primitive_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__chrono_type__datetime_local_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__chrono_type__datetime_utc_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__chrono_type__duration_twin_normal);

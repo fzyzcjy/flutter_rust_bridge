@@ -28,6 +28,7 @@ pub enum MirTypeDelegate {
     Set(MirTypeDelegateSet),
     StreamSink(MirTypeDelegateStreamSink),
     BigPrimitive(MirTypeDelegateBigPrimitive),
+    CastedPrimitive(MirTypeDelegateCastedPrimitive),
     RustAutoOpaqueExplicit(MirTypeDelegateRustAutoOpaqueExplicit),
     ProxyVariant(MirTypeDelegateProxyVariant),
     ProxyEnum(MirTypeDelegateProxyEnum),
@@ -79,6 +80,10 @@ pub struct MirTypeDelegateStreamSink {
 pub enum MirTypeDelegateBigPrimitive {
     I128,
     U128,
+}
+
+pub struct MirTypeDelegateCastedPrimitive {
+    pub inner: MirTypePrimitive,
 }
 
 pub struct MirTypeDelegateRustAutoOpaqueExplicit {
@@ -157,6 +162,9 @@ impl MirTypeTrait for MirTypeDelegate {
                 format!("StreamSink_{}_{}", mir.inner_ok.safe_ident(), mir.codec)
             }
             MirTypeDelegate::BigPrimitive(mir) => mir.to_string(),
+            MirTypeDelegate::CastedPrimitive(mir) => {
+                format!("CastedPrimitive_{}", mir.inner.safe_ident())
+            }
             MirTypeDelegate::RustAutoOpaqueExplicit(mir) => {
                 format!("AutoExplicit_{}", mir.inner.safe_ident())
             }
@@ -230,6 +238,7 @@ impl MirTypeTrait for MirTypeDelegate {
                 MirTypeDelegateBigPrimitive::I128 => "i128".to_owned(),
                 MirTypeDelegateBigPrimitive::U128 => "u128".to_owned(),
             },
+            MirTypeDelegate::CastedPrimitive(mir) => mir.inner.rust_api_type(),
             MirTypeDelegate::RustAutoOpaqueExplicit(mir) => {
                 format!("RustAutoOpaque{}<{}>", mir.inner.codec, mir.raw.string)
             }
@@ -263,6 +272,7 @@ impl MirTypeTrait for MirTypeDelegate {
                 | MirTypeDelegate::Char
                 | MirTypeDelegate::PrimitiveEnum(_)
                 | MirTypeDelegate::BigPrimitive(_)
+                | MirTypeDelegate::CastedPrimitive(_)
                 | MirTypeDelegate::RustAutoOpaqueExplicit(_)
         )
     }
@@ -303,6 +313,7 @@ impl MirTypeDelegate {
             MirTypeDelegate::Set(mir) => mir_list(*mir.inner.to_owned(), true),
             MirTypeDelegate::StreamSink(_) => MirType::Delegate(MirTypeDelegate::String),
             MirTypeDelegate::BigPrimitive(_) => MirType::Delegate(MirTypeDelegate::String),
+            MirTypeDelegate::CastedPrimitive(mir) => MirType::Primitive(mir.inner.clone()),
             MirTypeDelegate::RustAutoOpaqueExplicit(mir) => MirType::RustOpaque(mir.inner.clone()),
             MirTypeDelegate::DynTrait(mir) => mir.get_delegate(),
             MirTypeDelegate::ProxyVariant(mir) => *mir.inner.clone(),

@@ -115,6 +115,10 @@ impl FrbAttributes {
         self.any_eq(&FrbAttribute::External)
     }
 
+    pub(crate) fn type_64bit_int(&self) -> bool {
+        self.any_eq(&FrbAttribute::Type64bitInt)
+    }
+
     // pub(crate) fn generate_implementor_enum(&self) -> bool {
     //     self.any_eq(&FrbAttribute::GenerateImplEnum)
     // }
@@ -200,6 +204,7 @@ mod frb_keyword {
     syn::custom_keyword!(positional);
     syn::custom_keyword!(proxy);
     syn::custom_keyword!(external);
+    syn::custom_keyword!(type_64bit_int);
     syn::custom_keyword!(generate_implementor_enum);
     syn::custom_keyword!(rust_opaque_codec_moi);
     syn::custom_keyword!(serialize);
@@ -240,6 +245,7 @@ enum FrbAttribute {
     Positional,
     Proxy,
     External,
+    Type64bitInt,
     // GenerateImplEnum,
     RustOpaqueCodecMoi,
     Serialize,
@@ -279,6 +285,9 @@ impl Parse for FrbAttribute {
             .or_else(|| parse_keyword::<positional, _>(input, &lookahead, positional, Positional))
             .or_else(|| parse_keyword::<proxy, _>(input, &lookahead, proxy, Proxy))
             .or_else(|| parse_keyword::<external, _>(input, &lookahead, external, External))
+            .or_else(|| {
+                parse_keyword::<type_64bit_int, _>(input, &lookahead, type_64bit_int, Type64bitInt)
+            })
             // .or_else(|| {
             //     parse_keyword::<generate_implementor_enum, _>(
             //         input,
@@ -685,6 +694,11 @@ mod tests {
     #[test]
     fn test_external() {
         simple_keyword_tester("external", FrbAttribute::External);
+    }
+
+    #[test]
+    fn test_type_64bit_int() {
+        simple_keyword_tester("type_64bit_int", FrbAttribute::Type64bitInt);
     }
 
     // #[test]

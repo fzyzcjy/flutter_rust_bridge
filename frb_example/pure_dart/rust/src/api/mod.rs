@@ -4,6 +4,7 @@ pub mod async_misc;
 pub mod async_spawn;
 pub mod attribute;
 pub mod benchmark_misc;
+pub mod casted_primitive;
 pub mod chrono_type;
 pub mod comment;
 #[cfg(target_os = "non_existent_os")]
