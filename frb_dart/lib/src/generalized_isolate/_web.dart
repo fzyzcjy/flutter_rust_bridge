@@ -11,9 +11,6 @@ import 'package:flutter_rust_bridge/src/platform_types/_web.dart';
 String serializeNativePort(NativePortType port) => port.name;
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
-typedef MessagePort = _WebPortLike;
-
-/// {@macro flutter_rust_bridge.only_for_generated_code}
 typedef SendPort = _WebPortLike;
 
 /// {@template flutter_rust_bridge.same_as_native}
