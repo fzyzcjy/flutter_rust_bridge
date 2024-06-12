@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:html' as html;
 import 'dart:js_interop' as dart_js_interop;
 
-import 'package:js/js.dart' as package_js;
 import 'package:web/helpers.dart' as helpers;
 import 'package:web/web.dart' as web;
 
