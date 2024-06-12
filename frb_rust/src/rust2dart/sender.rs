@@ -5,16 +5,16 @@ use std::fmt;
 
 #[derive(Clone)]
 pub struct Rust2DartSender {
-    pub(crate) channel: DartSendPort,
+    pub(crate) port: DartSendPort,
 }
 
 impl Rust2DartSender {
-    pub fn new(channel: DartSendPort) -> Self {
-        Rust2DartSender { channel }
+    pub fn new(port: DartSendPort) -> Self {
+        Rust2DartSender { port }
     }
 
     pub fn send(&self, msg: impl IntoDart) -> Result<(), Rust2DartSendError> {
-        if self.channel.post(msg) {
+        if self.port.post(msg) {
             Ok(())
         } else {
             Err(Rust2DartSendError)

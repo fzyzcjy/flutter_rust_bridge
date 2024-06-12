@@ -16,7 +16,8 @@ impl DartSendPort {
         F: (FnOnce() -> T) + Send,
         T: IntoDart,
     {
-        mimic_send_to_another_thread(Box::new(msg_creator));
+        mimic_send_to_another_thread(Box::new(move || Box::new(msg_creator())));
+
         // // to test whether "send to another thread" can compile
         // std::thread::spawn(move || {
         //     let msg = msg_creator();
@@ -29,8 +30,10 @@ impl DartSendPort {
     }
 }
 
-fn mimic_send_to_another_thread(msg_creator: Box<dyn (FnOnce() -> Box<dyn BoxIntoDart>) + Send>) {
-    let (tx, mut rx) = tokio::sync::mpsc::unbounded_channel();
+type MsgCreator = Box<dyn (FnOnce() -> Box<dyn BoxIntoDart>) + Send>;
+
+fn mimic_send_to_another_thread(msg_creator: MsgCreator) {
+    let (tx, mut rx) = tokio::sync::mpsc::unbounded_channel::<MsgCreator>();
 
     // fake receiver
     std::thread::spawn(move || async {
