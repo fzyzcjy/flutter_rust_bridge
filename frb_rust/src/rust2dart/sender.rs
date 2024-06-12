@@ -13,7 +13,7 @@ impl Rust2DartSender {
         Rust2DartSender { channel }
     }
 
-    pub fn send(&self, msg: impl IntoDart + Send + 'static) -> Result<(), Rust2DartSendError> {
+    pub fn send(&self, msg: impl IntoDart) -> Result<(), Rust2DartSendError> {
         if self.channel.post(msg) {
             Ok(())
         } else {
@@ -23,7 +23,7 @@ impl Rust2DartSender {
 
     // the function signature is not covered while the whole body is covered - looks like a bug in coverage tool
     // frb-coverage:ignore-start
-    pub fn send_or_warn(&self, msg: impl IntoDart + Send + 'static) {
+    pub fn send_or_warn(&self, msg: impl IntoDart) {
         // frb-coverage:ignore-end
         if let Err(e) = self.send(msg) {
             log_warn_or_println(&format!("{e:?}"));
