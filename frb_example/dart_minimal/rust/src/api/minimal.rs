@@ -26,8 +26,8 @@ pub fn handle_complex_struct_twin_normal(s: MyTreeNodeTwinNormal) -> MyTreeNodeT
     s
 }
 
-#[wasm_bindgen]
-pub fn rust_wasm_bindgen_func() {
-    flutter_rust_bridge::console_error!("rust_wasm_bindgen_func start");
-    flutter_rust_bridge::console_error!("rust_wasm_bindgen_func end");
-}
+// #[wasm_bindgen]
+// pub fn rust_wasm_bindgen_func() {
+//     flutter_rust_bridge::console_error!("rust_wasm_bindgen_func start");
+//     flutter_rust_bridge::console_error!("rust_wasm_bindgen_func end");
+// }
