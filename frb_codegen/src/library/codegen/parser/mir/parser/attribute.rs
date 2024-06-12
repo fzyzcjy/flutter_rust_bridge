@@ -335,8 +335,10 @@ impl Parse for FrbAttribute {
             input.parse::<Token![=]>()?;
             input.parse().map(Name)?
         } else if lookahead.peek(frb_keyword::dart2rust) {
+            input.parse::<frb_keyword::dart2rust>()?;
             input.parse().map(Dart2Rust)?
         } else if lookahead.peek(frb_keyword::rust2dart) {
+            input.parse::<frb_keyword::rust2dart>()?;
             input.parse().map(Rust2Dart)?
         } else {
             return Err(lookahead.error());
@@ -576,6 +578,8 @@ pub(crate) struct FrbAttributeSerializer {
 
 impl Parse for FrbAttributeSerializer {
     fn parse(input: ParseStream) -> Result<Self> {
+        log::warn!("hi {input:?}");
+
         let content;
         parenthesized!(content in input);
 
