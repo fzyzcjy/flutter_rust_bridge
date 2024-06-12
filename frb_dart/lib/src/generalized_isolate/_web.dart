@@ -133,28 +133,28 @@ abstract class _PortLike {
   void _close();
 
   /// {@macro flutter_rust_bridge.same_as_native}
-  html.EventTarget get _nativePort;
+  html.EventTarget get nativePort;
 
-  Stream<MessageEvent> get _onMessage => _kMessageEvent.forTarget(_nativePort);
+  Stream<MessageEvent> get _onMessage => _kMessageEvent.forTarget(nativePort);
   static const _kMessageEvent = EventStreamProvider<MessageEvent>('message');
 }
 
 class _MessagePortWrapper extends _PortLike {
   @override
-  final html.MessagePort _nativePort;
+  final html.MessagePort nativePort;
 
-  _MessagePortWrapper(this._nativePort) : super._();
+  _MessagePortWrapper(this.nativePort) : super._();
 
   @override
-  void _close() => _nativePort.close();
+  void _close() => nativePort.close();
 }
 
 class _BroadcastPortWrapper extends _PortLike {
   @override
-  final html.BroadcastChannel _nativePort;
+  final html.BroadcastChannel nativePort;
 
-  _BroadcastPortWrapper(this._nativePort) : super._();
+  _BroadcastPortWrapper(this.nativePort) : super._();
 
   @override
-  void _close() => _nativePort.close();
+  void _close() => nativePort.close();
 }
