@@ -1,20 +1,31 @@
+use crate::codegen::generator::codec::structs::CodecMode;
 use crate::codegen::ir::hir::flat::function::HirFlatFunction;
 use crate::codegen::ir::mir::custom_ser_des::{MirCustomSerDes, MirCustomSerDesHalf};
+use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::mir::parser::attribute::{FrbAttributeSerDes, FrbAttributes};
 use crate::codegen::parser::mir::parser::function;
-use crate::codegen::parser::mir::parser::ty::TypeParser;
+use crate::codegen::parser::mir::parser::ty::{TypeParser, TypeParserParsingContext};
+use crate::codegen::parser::mir::ParseMode;
 use crate::if_then_some;
+use crate::utils::crate_name::CrateName;
 use crate::utils::namespace::NamespacedName;
 use itertools::Itertools;
 use syn::{FnArg, ReturnType};
 
+pub(crate) struct PartialContext {
+    default_stream_sink_codec: CodecMode,
+    default_rust_opaque_codec: RustOpaqueCodecMode,
+    parse_mode: ParseMode,
+}
+
 pub(crate) fn parse(
     src_fns: &[HirFlatFunction],
     type_parser: &mut TypeParser,
+    partial_context: &PartialContext,
 ) -> anyhow::Result<Vec<MirCustomSerDes>> {
     let infos = (src_fns.iter())
-        .map(|f| parse_function(f))
+        .map(|f| parse_function(f, type_parser, partial_context))
         .collect::<anyhow::Result<Vec<_>>>()?
         .into_iter()
         .flatten();
@@ -28,7 +39,11 @@ pub(crate) fn parse(
     Ok(ans)
 }
 
-fn parse_function(func: &HirFlatFunction) -> anyhow::Result<Option<Info>> {
+fn parse_function(
+    func: &HirFlatFunction,
+    type_parser: &mut TypeParser,
+    partial_context: &PartialContext,
+) -> anyhow::Result<Option<Info>> {
     let attrs = FrbAttributes::parse(func.item_fn.attrs())?;
 
     if let Some(info) = attrs.dart2rust() {
@@ -36,6 +51,8 @@ fn parse_function(func: &HirFlatFunction) -> anyhow::Result<Option<Info>> {
             func,
             info,
             Direction::Dart2Rust,
+            type_parser,
+            partial_context,
         )?));
     }
     if let Some(info) = attrs.rust2dart() {
@@ -43,6 +60,8 @@ fn parse_function(func: &HirFlatFunction) -> anyhow::Result<Option<Info>> {
             func,
             info,
             Direction::Rust2Dart,
+            type_parser,
+            partial_context,
         )?));
     }
 
@@ -54,6 +73,7 @@ fn parse_function_inner(
     attr_ser_des: FrbAttributeSerDes,
     direction: Direction,
     type_parser: &mut TypeParser,
+    partial_context: &PartialContext,
 ) -> anyhow::Result<Info> {
     let sig = func.item_fn.sig();
     let input_ty =
@@ -61,8 +81,18 @@ fn parse_function_inner(
             .unwrap();
     let output_ty = if_then_some!(let ReturnType::Type(_, ty) = sig.output.clone(), *ty).unwrap();
 
-    let input_ty = Box::new(type_parser.parse_type(&input_ty, context)?);
-    let output_ty = Box::new(type_parser.parse_type(&output_ty, context)?);
+    let context = TypeParserParsingContext {
+        initiated_namespace: func.namespace.clone(),
+        func_attributes: FrbAttributes::parse(&[])?,
+        struct_or_enum_attributes: None,
+        owner: None,
+        default_stream_sink_codec: partial_context.default_stream_sink_codec,
+        default_rust_opaque_codec: partial_context.default_rust_opaque_codec,
+        parse_mode: partial_context.parse_mode,
+    };
+
+    let input_ty = Box::new(type_parser.parse_type(&input_ty, &context)?);
+    let output_ty = Box::new(type_parser.parse_type(&output_ty, &context)?);
 
     let (rust_api_type, inner_type) = match direction {
         Direction::Rust2Dart => (input_ty, output_ty),
