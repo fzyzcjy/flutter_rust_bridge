@@ -129,7 +129,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                         settings: MirFieldSettings {
                             is_in_mirrored_enum: src_enum.mirror,
                         },
-                        dart_name: TODO,
+                        dart_name: None,
                     })
                 })
                 .collect::<anyhow::Result<Vec<_>>>()?,
