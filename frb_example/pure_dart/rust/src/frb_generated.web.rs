@@ -83,18 +83,6 @@ impl CstDecode<backtrace::Backtrace> for String {
         unimplemented!()
     }
 }
-impl CstDecode<i64> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> i64 {
-        unimplemented!("Not implemented in this codec, please use the other one")
-    }
-}
-impl CstDecode<u64> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> u64 {
-        unimplemented!("Not implemented in this codec, please use the other one")
-    }
-}
 impl CstDecode<char> for String {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> char {

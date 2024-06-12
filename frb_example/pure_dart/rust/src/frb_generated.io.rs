@@ -1147,18 +1147,6 @@ impl CstDecode<backtrace::Backtrace> for *mut wire_cst_list_prim_u_8_strict {
         unimplemented!()
     }
 }
-impl CstDecode<i64> for i64 {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> i64 {
-        unimplemented!("Not implemented in this codec, please use the other one")
-    }
-}
-impl CstDecode<u64> for u64 {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> u64 {
-        unimplemented!("Not implemented in this codec, please use the other one")
-    }
-}
 impl CstDecode<char> for *mut wire_cst_list_prim_u_8_strict {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> char {
