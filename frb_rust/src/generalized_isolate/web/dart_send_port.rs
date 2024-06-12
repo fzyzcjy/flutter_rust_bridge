@@ -1,3 +1,4 @@
+use super::into_dart::IntoDart;
 use crate::for_generated::DartNativeSendPort;
 
 #[derive(Debug, Clone)]
