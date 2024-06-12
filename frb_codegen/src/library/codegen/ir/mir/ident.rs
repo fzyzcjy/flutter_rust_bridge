@@ -26,7 +26,7 @@ impl MirIdent {
     }
 
     pub fn dart_style(&self) -> String {
-        convert_rust_to_dart_style(&self.rust_style)
+        (self.dart_style.clone()).unwrap_or_else(|| convert_rust_to_dart_style(&self.rust_style))
     }
 
     pub fn style(&self, lang: &Lang) -> String {
