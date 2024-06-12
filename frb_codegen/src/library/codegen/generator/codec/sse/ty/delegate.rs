@@ -62,7 +62,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     generate_dyn_trait_dart_encode(mir, self.context.as_api_dart_context())
                 }
                 MirTypeDelegate::CustomSerDes(mir) => {
-                    mir.info.dart_encode.replace("{}", "self")
+                    mir.info.dart2rust.dart_code.replace("{}", "self")
                 }
             },
             Lang::RustLang(_) => match &self.mir {
@@ -113,7 +113,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 | MirTypeDelegate::DynTrait(_)
                 | MirTypeDelegate::CastedPrimitive(_) => return None,
                 MirTypeDelegate::CustomSerDes(mir) => {
-                    format!("{}(self)", mir.info.rust_encode_function.rust_style())
+                    format!("{}(self)", mir.info.rust2dart.rust_function.rust_style())
                 }
             },
         };
@@ -178,7 +178,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                         return Some(format!("{};", lang.throw_unimplemented("")))
                     }
                     MirTypeDelegate::CustomSerDes(mir) => {
-                        mir.info.dart_decode.replace("{}", "self")
+                        mir.info.rust2dart.dart_code.replace("{}", "self")
                     }
                 }
             }
@@ -227,7 +227,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 | MirTypeDelegate::DynTrait(_)
                 | MirTypeDelegate::CastedPrimitive(_) => return None,
                 MirTypeDelegate::CustomSerDes(mir) => {
-                    format!("{}(self)", mir.info.rust_decode_function.rust_style())
+                    format!("{}(self)", mir.info.dart2rust.rust_function.rust_style())
                 }
             },
         };

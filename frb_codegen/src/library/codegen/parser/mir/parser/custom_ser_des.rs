@@ -79,7 +79,7 @@ fn parse_function_inner(
     let sig = func.item_fn.sig();
 
     ensure!(sig.inputs.len() == 1);
-    let input_ty = if_then_some!(let FnArg::Typed(pat_type) = sig.inputs.first().clone(), *pat_type.ty).unwrap();
+    let input_ty = if_then_some!(let FnArg::Typed(pat_type) = sig.inputs.first().unwrap().clone(), *pat_type.ty).unwrap();
     let output_ty = if_then_some!(let ReturnType::Type(_, ty) = sig.output.clone(), *ty).unwrap();
 
     let context = TypeParserParsingContext {
