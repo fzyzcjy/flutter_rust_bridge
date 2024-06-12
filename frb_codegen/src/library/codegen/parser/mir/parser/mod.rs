@@ -40,6 +40,7 @@ pub(crate) fn parse(
         &mut type_parser,
         &structs_map,
         parse_mode,
+        &custom_ser_des_arr,
     )?;
 
     let (struct_pool, enum_pool, dart_code_of_type) = type_parser.consume();

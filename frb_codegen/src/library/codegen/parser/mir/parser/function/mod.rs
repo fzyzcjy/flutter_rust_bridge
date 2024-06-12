@@ -8,6 +8,7 @@ use crate::codegen::parser::mir::parser::ty::TypeParser;
 use crate::codegen::parser::mir::ParseMode;
 use itertools::{concat, Itertools};
 use std::collections::HashMap;
+use crate::codegen::ir::mir::custom_ser_des::MirCustomSerDes;
 
 pub(crate) mod auto_accessor;
 pub(crate) mod func_or_skip;
@@ -19,9 +20,10 @@ pub(crate) fn parse(
     type_parser: &mut TypeParser,
     src_structs: &HashMap<String, &HirFlatStruct>,
     parse_mode: ParseMode,
+    custom_ser_des_arr: &[MirCustomSerDes],
 ) -> anyhow::Result<(Vec<MirFunc>, Vec<MirSkip>)> {
     let items = concat([
-        real::parse(src_fns, type_parser, config, parse_mode)?,
+        real::parse(src_fns, type_parser, config, parse_mode, custom_ser_des_arr)?,
         auto_accessor::parse(config, src_structs, type_parser, parse_mode)?,
     ]);
     let (funcs, skips) = MirFuncOrSkip::split(items);
