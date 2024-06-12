@@ -7,6 +7,7 @@ use crate::codegen::parser::mir::parser::ty::TypeParser;
 use crate::if_then_some;
 use itertools::Itertools;
 use syn::{FnArg, ReturnType};
+use crate::utils::namespace::NamespacedName;
 
 pub(crate) fn parse(
     src_fns: &[HirFlatFunction],
@@ -49,11 +50,11 @@ fn parse_function(func: &HirFlatFunction) -> anyhow::Result<Option<Info>> {
 }
 
 fn parse_function_inner(
-    function: &HirFlatFunction,
+    func: &HirFlatFunction,
     attr_ser_des: FrbAttributeSerDes,
     direction: Direction,
 ) -> anyhow::Result<Info> {
-    let sig = function.item_fn.sig();
+    let sig = func.item_fn.sig();
     let input_ty = if_then_some!(let FnArg::Typed(pat_type) = vec_single(&sig.inputs).clone(), *pat_type.ty).unwrap();
     let output_ty = if_then_some!(let ReturnType::Type(_, ty) = sig.output.clone(), *ty).unwrap();
 
@@ -64,7 +65,7 @@ fn parse_function_inner(
         direction,
         half: MirCustomSerDesHalf {
             dart_code: attr_ser_des.dart_code,
-            rust_function: TODO,
+            rust_function: NamespacedName::new(func.namespace.clone(), func.item_fn.name()),
         },
     })
 }
