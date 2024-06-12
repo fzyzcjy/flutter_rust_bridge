@@ -19,6 +19,9 @@ Future<void> main() async {
   my_rust_function(messageChannel.port2);
   print('Dart after call my_rust_function');
 
+  print('Dart start sleeping');
+  await Future.delayed(const Duration(seconds: 1000000));
+
   // print('Action: Configure tests (before)');
   // test('dart call minimalAdder', () async {
   //   print('Action: Call rust (before)');
