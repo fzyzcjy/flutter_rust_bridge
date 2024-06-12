@@ -6,7 +6,7 @@ import 'dart:async';
 import 'package:flutter_rust_bridge/src/platform_types/_web.dart';
 
 /// {@macro flutter_rust_bridge.internal}
-String serializeNativePort(NativePortType port) => port;
+String serializeNativePort(NativePortType port) => port.toString();
 
 /// {@template flutter_rust_bridge.same_as_native}
 /// Web implementation of the one with same name in native.
