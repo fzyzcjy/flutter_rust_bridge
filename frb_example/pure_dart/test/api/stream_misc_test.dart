@@ -13,7 +13,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
     final stream = funcStreamRealisticTwinNormal(arg: 'hello');
     var cnt = 0;
     await for (final value in stream) {
-      debugPrint("output from func_stream's stream: $value");
+      print("output from func_stream's stream: $value");
       cnt++;
     }
     expect(cnt, 10);
