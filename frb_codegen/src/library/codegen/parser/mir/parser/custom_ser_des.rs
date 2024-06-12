@@ -19,19 +19,7 @@ pub(crate) fn parse(
     let ans = infos
         .into_group_map_by(|info| *info.rust_api_type.clone())
         .into_iter()
-        .map(|(_, pair)| {
-            assert_eq!(pair.len(), 2);
-            let a = &pair[0];
-            let b = &pair[1];
-
-            MirCustomSerDes {
-                inner_type: a.inner_type.clone(),
-                rust_api_type: a.rust_api_type.clone(),
-                dart_api_type: a.dart_api_type.clone(),
-                dart2rust: TODO,
-                rust2dart: TODO,
-            }
-        })
+        .map(|(_, pair)| merge_pair(pair))
         .collect_vec();
 
     Ok(ans)
@@ -73,6 +61,20 @@ fn parse_function_inner(
             rust_function: TODO,
         },
     })
+}
+
+fn merge_pair(pair: Vec<Info>) -> MirCustomSerDes {
+    assert_eq!(pair.len(), 2);
+    let a = &pair[0];
+    let b = &pair[1];
+
+    MirCustomSerDes {
+        inner_type: a.inner_type.clone(),
+        rust_api_type: a.rust_api_type.clone(),
+        dart_api_type: a.dart_api_type.clone(),
+        dart2rust: TODO,
+        rust2dart: TODO,
+    }
 }
 
 struct Info {
