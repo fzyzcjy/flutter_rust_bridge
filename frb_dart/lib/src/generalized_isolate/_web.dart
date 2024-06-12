@@ -69,7 +69,7 @@ class RawReceivePort {
   void close() => _webReceivePort._close();
 
   /// {@macro flutter_rust_bridge.same_as_native}
-  SendPort get sendPort => _webChannel.sendPort;
+  SendPort get sendPort => _webChannel._sendPort;
 
   _WebPortLike get _webReceivePort => _webChannel._receivePort;
 }
@@ -83,7 +83,7 @@ class SendPort {
 }
 
 abstract class _WebChannel {
-  SendPort get sendPort;
+  SendPort get _sendPort;
 
   _WebPortLike get _receivePort;
 
@@ -94,13 +94,13 @@ abstract class _WebChannel {
 }
 
 class _WebMessageChannel implements _WebChannel {
-  final channel = MessageChannel();
+  final _channel = MessageChannel();
 
   @override
-  SendPort get sendPort => SendPort._(channel.port2);
+  SendPort get _sendPort => SendPort._(_channel.port2);
 
   @override
-  _WebPortLike get _receivePort => _WebPortLike._messagePort(channel.port1);
+  _WebPortLike get _receivePort => _WebPortLike._messagePort(_channel.port1);
 }
 
 class _WebBroadcastChannel implements _WebChannel {
@@ -115,7 +115,7 @@ class _WebBroadcastChannel implements _WebChannel {
         _receiveChannel = BroadcastChannel(channelName);
 
   @override
-  SendPort get sendPort => SendPort._(_sendChannel);
+  SendPort get _sendPort => SendPort._(_sendChannel);
 
   @override
   _WebPortLike get _receivePort =>
@@ -134,29 +134,29 @@ abstract class _WebPortLike {
   void _close();
 
   /// {@macro flutter_rust_bridge.same_as_native}
-  html.EventTarget get nativePort;
+  html.EventTarget get _nativePort;
 
-  Stream<MessageEvent> get _onMessage => _kMessageEvent.forTarget(nativePort);
+  Stream<MessageEvent> get _onMessage => _kMessageEvent.forTarget(_nativePort);
   static const _kMessageEvent = EventStreamProvider<MessageEvent>('message');
 }
 
 class _WebMessagePort extends _WebPortLike {
   @override
-  final html.MessagePort nativePort;
+  final html.MessagePort _nativePort;
 
-  _WebMessagePort(this.nativePort) : super._();
+  _WebMessagePort(this._nativePort) : super._();
 
   @override
-  void _close() => nativePort.close();
+  void _close() => _nativePort.close();
 }
 
 // Indeed a BroadcastChannel, not a Broadcast "Port"
 class _WebBroadcastPort extends _WebPortLike {
   @override
-  final html.BroadcastChannel nativePort;
+  final html.BroadcastChannel _nativePort;
 
-  _WebBroadcastPort(this.nativePort) : super._();
+  _WebBroadcastPort(this._nativePort) : super._();
 
   @override
-  void _close() => nativePort.close();
+  void _close() => _nativePort.close();
 }
