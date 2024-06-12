@@ -64,9 +64,8 @@ fn parse_function_inner(
 }
 
 fn merge_pair(pair: Vec<Info>) -> MirCustomSerDes {
-    assert_eq!(pair.len(), 2);
-    let a = &pair[0];
-    let b = &pair[1];
+    let [a, b]: [Info; 2] = (pair.try_into())
+        .unwrap_or_else(|_| panic!("Expect a pair of serializer and deserializer"));
 
     MirCustomSerDes {
         inner_type: a.inner_type.clone(),
