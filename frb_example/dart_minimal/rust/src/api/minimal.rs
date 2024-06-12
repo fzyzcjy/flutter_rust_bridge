@@ -21,3 +21,9 @@ pub fn serializer_my_type(raw: MessageWithCustomSerializerTwinNormal) -> String 
 pub fn deserializer_my_type(raw: String) -> MessageWithCustomSerializerTwinNormal {
     MessageWithCustomSerializerTwinNormal(raw.parse().unwrap())
 }
+
+pub fn function_using_type_with_custom_serializer(
+    arg: MessageWithCustomSerializerTwinNormal,
+) -> MessageWithCustomSerializerTwinNormal {
+    arg
+}
