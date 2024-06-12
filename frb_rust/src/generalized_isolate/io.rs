@@ -2,6 +2,7 @@ use crate::platform_types::DartNativeSendPort;
 pub use allo_isolate::ZeroCopyBuffer;
 pub use allo_isolate::{IntoDart, IntoDartExceptPrimitive};
 
+/// Roughly the `SendPort` in Dart
 #[derive(Debug, Clone)]
 pub struct DartSendPort(allo_isolate::Isolate);
 
