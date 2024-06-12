@@ -1,3 +1,4 @@
+use crate::codegen::ir::mir::ty::delegate::{MirTypeDelegate, MirTypeDelegateCustomSerDes};
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::mir::parser::ty::unencodable::SplayedSegment;
 use crate::codegen::parser::mir::parser::ty::TypeParserWithContext;
@@ -7,6 +8,13 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         &mut self,
         last_segment: &SplayedSegment,
     ) -> anyhow::Result<Option<MirType>> {
-        TODO
+        // use HashMap etc later if too slow; here we use filter to remain flexibility of filtering strategy
+        Ok((self.inner.custom_ser_des_infos.iter())
+            .find(|info| info.inner_type == TODO)
+            .map(|info| {
+                MirType::Delegate(MirTypeDelegate::CustomSerDes(MirTypeDelegateCustomSerDes {
+                    info: info.to_owned(),
+                }))
+            }))
     }
 }
