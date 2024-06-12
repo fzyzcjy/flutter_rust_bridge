@@ -16,4 +16,9 @@ Future<void> main() async {
     print('Action: Call rust (after)');
   });
   print('Action: Configure tests (end)');
+
+  test('custom serializer', () async {
+    expect(
+        await functionUsingTypeWithCustomSerializer(arg: 123456789), 123456789);
+  });
 }
