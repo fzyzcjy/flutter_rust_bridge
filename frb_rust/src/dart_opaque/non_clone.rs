@@ -76,12 +76,14 @@ fn drop_thread_box_persistent_handle_via_port(
     let port = DartSendPort::new(dart_handler_port.to_owned());
     let ptr = new_leak_box_ptr(persistent_handle) as usize;
 
-    let msg = [
-        DartHandlerPortAction::DartOpaqueDrop.into_dart(),
-        ptr.into_dart(),
-    ];
+    let msg_creator = move || {
+        [
+            DartHandlerPortAction::DartOpaqueDrop.into_dart(),
+            ptr.into_dart(),
+        ]
+    };
 
-    if !port.post(msg) {
+    if !port.post(msg_creator) {
         // We do not care about the detailed error message
         // frb-coverage:ignore-start
         log_warn_or_println(
