@@ -9,7 +9,7 @@ pub struct TransferClosure<T> {
     pub(crate) data: Vec<T>,
     pub(crate) transfer: Vec<T>,
     pub(crate) closure: RawClosure<T>,
-    pub(crate) error_report_broadcast_channel_name: Option<String>,
+    pub(crate) error_report_dart_send_port: Option<i64>,
 }
 
 pub struct TransferClosurePayload<T> {
@@ -21,14 +21,14 @@ impl TransferClosure<JsValue> {
         data: Vec<JsValue>,
         transfer: Vec<JsValue>,
         closure: impl FnOnce(&[JsValue]) + Send + 'static,
-        error_report_broadcast_channel_name: Option<String>,
+        error_report_dart_send_port: Option<i64>,
     ) -> Self {
         let closure = Box::new(closure);
         Self {
             data,
             transfer,
             closure,
-            error_report_broadcast_channel_name,
+            error_report_dart_send_port,
         }
     }
 
@@ -44,7 +44,7 @@ impl TransferClosure<JsValue> {
 
         let data = Array::from_iter(self.data);
 
-        data.unshift(&JsValue::from(self.error_report_broadcast_channel_name));
+        data.unshift(&JsValue::from(self.error_report_dart_send_port));
 
         // The worker is responsible for cleaning up the leak here.
         let payload = Box::into_raw(Box::new(TransferClosurePayload { func: self.closure }));
