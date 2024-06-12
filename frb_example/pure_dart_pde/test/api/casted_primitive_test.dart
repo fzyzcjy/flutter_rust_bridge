@@ -6,6 +6,7 @@ import 'dart:typed_data';
 
 import 'package:frb_example_pure_dart_pde/src/rust/api/casted_primitive.dart';
 import 'package:frb_example_pure_dart_pde/src/rust/frb_generated.dart';
+import 'package:test/test.dart';
 
 import '../test_utils.dart';
 
@@ -21,7 +22,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   addTestsIdentityFunctionCall(
       castedPrimitiveUsizeTwinNormal, <int>[0, 1000000000]);
 
-  test('StructWithCastedPrimitiveTwinNormal', () {
+  test('StructWithCastedPrimitiveTwinNormal', () async {
     await functionForStructWithCastedPrimitiveTwinNormal(
       arg: StructWithCastedPrimitiveTwinNormal(
         fieldI64: 1000000000,
