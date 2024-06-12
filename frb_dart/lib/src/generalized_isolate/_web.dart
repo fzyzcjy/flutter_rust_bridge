@@ -16,6 +16,9 @@ class ReceivePort extends StreamView<dynamic> {
   ReceivePort() : super(throw UnimplementedError());
 
   /// {@macro flutter_rust_bridge.same_as_native}
+  SendPort get sendPort => throw UnimplementedError();
+
+  /// {@macro flutter_rust_bridge.same_as_native}
   void close() => throw UnimplementedError();
 }
 
