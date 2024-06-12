@@ -27,7 +27,7 @@ use itertools::concat;
 use log::{debug, warn};
 use std::fmt::Debug;
 use syn::*;
-use MirSkipReason::{IgnoreBecauseFunctionNotPub, IgnoreMisc};
+use MirSkipReason::IgnoreBecauseFunctionNotPub;
 use MirType::Primitive;
 
 pub(crate) mod argument;
