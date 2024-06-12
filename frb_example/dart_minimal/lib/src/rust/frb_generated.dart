@@ -83,13 +83,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<Uint64List> crateApiMinimalF({required Uint64List a}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_u_64_strict(a, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1, port: port_);
+        var arg0 = cst_encode_list_prim_u_64_strict(a);
+        return wire.wire__crate__api__minimal__f(port_, arg0);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_64_strict,
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_list_prim_u_64_strict,
         decodeErrorData: null,
       ),
       constMeta: kCrateApiMinimalFConstMeta,
@@ -107,14 +105,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<int> crateApiMinimalMinimalAdder({required int a, required int b}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_i_32(a, serializer);
-        sse_encode_i_32(b, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 2, port: port_);
+        var arg0 = cst_encode_i_32(a);
+        var arg1 = cst_encode_i_32(b);
+        return wire.wire__crate__api__minimal__minimal_adder(port_, arg0, arg1);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_i_32,
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_i_32,
         decodeErrorData: null,
       ),
       constMeta: kCrateApiMinimalMinimalAdderConstMeta,
@@ -181,6 +177,18 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   bool sse_decode_bool(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return deserializer.buffer.getUint8() != 0;
+  }
+
+  @protected
+  int cst_encode_i_32(int raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw;
+  }
+
+  @protected
+  void cst_encode_unit(void raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw;
   }
 
   @protected
