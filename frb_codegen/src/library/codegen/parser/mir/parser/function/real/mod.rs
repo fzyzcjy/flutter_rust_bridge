@@ -1,7 +1,6 @@
 use crate::codegen::generator::codec::structs::{CodecMode, CodecModePack};
 use crate::codegen::ir::hir::flat::function::HirFlatFunction;
 use crate::codegen::ir::hir::flat::function::HirFlatFunctionOwner;
-use crate::codegen::ir::mir::direction::MirDirection;
 use crate::codegen::ir::mir::func::{
     MirFunc, MirFuncArgMode, MirFuncImplMode, MirFuncImplModeDartOnly, MirFuncInput, MirFuncMode,
     MirFuncOutput, MirFuncOwnerInfo, MirFuncOwnerInfoMethod, MirFuncOwnerInfoMethodMode,
@@ -127,25 +126,21 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
         let dart_name = parse_dart_name(&attributes, &func.item_fn.name());
 
-        let create_context =
-            |owner: Option<MirFuncOwnerInfo>, direction: MirDirection| TypeParserParsingContext {
-                initiated_namespace: func.namespace.clone(),
-                func_attributes: attributes.clone(),
-                struct_or_enum_attributes: None,
-                default_stream_sink_codec,
-                default_rust_opaque_codec,
-                owner,
-                direction,
-                parse_mode,
-            };
+        let create_context = |owner: Option<MirFuncOwnerInfo>| TypeParserParsingContext {
+            initiated_namespace: func.namespace.clone(),
+            func_attributes: attributes.clone(),
+            struct_or_enum_attributes: None,
+            default_stream_sink_codec,
+            default_rust_opaque_codec,
+            owner,
+            direction: TODO,
+            parse_mode,
+        };
 
         let is_owner_trait_def = matches!(func.owner, HirFlatFunctionOwner::TraitDef { .. });
-        let owner = if let Some(owner) = self.parse_owner(
-            func,
-            &create_context(None, MirDirection::Dart2Rust),
-            dart_name.clone(),
-            &attributes,
-        )? {
+        let owner = if let Some(owner) =
+            self.parse_owner(func, &create_context(None), dart_name.clone(), &attributes)?
+        {
             owner
         } else {
             return Ok(create_output_skip(func, IgnoredMisc));
