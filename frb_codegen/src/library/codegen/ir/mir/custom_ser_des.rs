@@ -17,25 +17,3 @@ pub enum MirCustomSerDesDirection {
     Dart2Rust,
 }
 }
-
-impl MirCustomSerDes {
-    pub(crate) fn dart_encode(&self) -> &str {
-        assert_eq!(self.direction, MirCustomSerDesDirection::Dart2Rust);
-        &self.dart_code
-    }
-
-    pub(crate) fn dart_decode(&self) -> &str {
-        assert_eq!(self.direction, MirCustomSerDesDirection::Rust2Dart);
-        &self.dart_code
-    }
-
-    pub(crate) fn rust_encode_function(&self) -> &NamespacedName {
-        assert_eq!(self.direction, MirCustomSerDesDirection::Rust2Dart);
-        &self.rust_function
-    }
-
-    pub(crate) fn rust_decode_function(&self) -> &NamespacedName {
-        assert_eq!(self.direction, MirCustomSerDesDirection::Dart2Rust);
-        &self.rust_function
-    }
-}
