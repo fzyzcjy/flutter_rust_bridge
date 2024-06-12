@@ -5,7 +5,6 @@ use crate::codegen::ir::mir::func::MirFuncAccessorMode;
 use crate::codegen::ir::mir::import::MirDartImport;
 use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::parser::mir::parser::attribute::frb_keyword::default;
-use crate::codegen::parser::mir::parser::attribute::FrbAttribute::Default;
 use crate::if_then_some;
 use anyhow::Context;
 use itertools::Itertools;
