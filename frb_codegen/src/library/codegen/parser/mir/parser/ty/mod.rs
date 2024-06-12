@@ -25,7 +25,6 @@ use crate::utils::namespace::Namespace;
 use std::collections::HashMap;
 use syn::Type;
 use syn::__private::str;
-use crate::codegen::ir::mir::direction::MirDirection;
 
 pub(crate) mod array;
 pub(crate) mod concrete;
@@ -150,7 +149,6 @@ pub(crate) struct TypeParserParsingContext {
     pub(crate) default_stream_sink_codec: CodecMode,
     pub(crate) default_rust_opaque_codec: RustOpaqueCodecMode,
     pub(crate) owner: Option<MirFuncOwnerInfo>,
-    pub(crate) direction: MirDirection,
     pub(crate) parse_mode: ParseMode,
 }
 
