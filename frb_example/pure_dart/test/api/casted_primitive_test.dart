@@ -1,5 +1,7 @@
 // FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sync", "rustAsync", "sse", "sync sse", "rustAsync sse"]}
 
+import 'dart:typed_data';
+
 import 'package:frb_example_pure_dart/src/rust/api/casted_primitive.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 
@@ -21,7 +23,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
       fieldI64: 1000000000,
       fieldU64: 2000000000,
       fieldI32: 123456789,
-      fieldVecU8: [10, 20, 100],
+      fieldVecU8: Uint8List.fromList([10, 20, 100]),
     ),
   ]);
 }
