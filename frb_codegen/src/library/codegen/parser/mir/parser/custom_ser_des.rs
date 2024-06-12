@@ -4,7 +4,9 @@ use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::mir::parser::attribute::{FrbAttributeSerDes, FrbAttributes};
 use crate::codegen::parser::mir::parser::function;
 use crate::codegen::parser::mir::parser::ty::TypeParser;
+use crate::if_then_some;
 use itertools::Itertools;
+use syn::ReturnType;
 
 pub(crate) fn parse(
     src_fns: &[HirFlatFunction],
@@ -51,6 +53,9 @@ fn parse_function_inner(
     attr_ser_des: FrbAttributeSerDes,
     direction: Direction,
 ) -> anyhow::Result<Info> {
+    let sig = function.item_fn.sig();
+    let output_ty = if_then_some!(let ReturnType::Type(_, ty) = sig.output.clone(), *ty).unwrap();
+
     Ok(Info {
         inner_type: TODO,
         rust_api_type: TODO,
