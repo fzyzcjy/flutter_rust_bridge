@@ -42,9 +42,6 @@ pub(crate) fn parse(
 ) -> anyhow::Result<Vec<MirFuncOrSkip>> {
     let mut function_parser = FunctionParser::new(type_parser);
     (src_fns.iter())
-        // Sort to make things stable. The order of parsing functions will affect things like, e.g.,
-        // which file an opaque type is put in.
-        .sorted_by_key(|f| f.owner_and_name_for_dedup())
         .map(|f| {
             function_parser.parse_function(
                 f,
@@ -58,17 +55,17 @@ pub(crate) fn parse(
         .collect()
 }
 
-struct FunctionParser<'a, 'b> {
+pub(crate) struct FunctionParser<'a, 'b> {
     type_parser: &'a mut TypeParser<'b>,
 }
 
 impl<'a, 'b> FunctionParser<'a, 'b> {
-    fn new(type_parser: &'a mut TypeParser<'b>) -> Self {
+    pub(crate) fn new(type_parser: &'a mut TypeParser<'b>) -> Self {
         Self { type_parser }
     }
 
     #[allow(clippy::too_many_arguments)]
-    fn parse_function(
+    pub(crate) fn parse_function(
         &mut self,
         func: &HirFlatFunction,
         force_codec_mode_pack: &Option<CodecModePack>,
