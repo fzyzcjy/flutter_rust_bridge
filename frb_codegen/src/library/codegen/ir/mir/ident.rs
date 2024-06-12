@@ -1,16 +1,20 @@
 use crate::codegen::generator::codec::sse::lang::Lang;
 use crate::utils::cbindgen_keywords;
 use convert_case::{Case, Casing};
+
 crate::mir! {
-#[serde(transparent)]
 pub struct MirIdent {
     rust_style: String,
+    dart_style: Option<String>,
 }
 }
 
 impl MirIdent {
-    pub fn new(raw: String) -> MirIdent {
-        MirIdent { rust_style: raw }
+    pub fn new(rust_style: String, dart_style: Option<String>) -> MirIdent {
+        MirIdent {
+            rust_style,
+            dart_style,
+        }
     }
 
     pub fn rust_style(&self) -> String {
