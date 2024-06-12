@@ -10,6 +10,7 @@ use crate::codegen::parser::mir::ParseMode;
 use crate::if_then_some;
 use crate::utils::crate_name::CrateName;
 use crate::utils::namespace::NamespacedName;
+use anyhow::ensure;
 use itertools::Itertools;
 use syn::{FnArg, ReturnType};
 
@@ -76,9 +77,9 @@ fn parse_function_inner(
     partial_context: &PartialContext,
 ) -> anyhow::Result<Info> {
     let sig = func.item_fn.sig();
-    let input_ty =
-        if_then_some!(let FnArg::Typed(pat_type) = vec_single(&sig.inputs).clone(), *pat_type.ty)
-            .unwrap();
+
+    ensure!(sig.inputs.len() == 1);
+    let input_ty = if_then_some!(let FnArg::Typed(pat_type) = sig.inputs.first().clone(), *pat_type.ty).unwrap();
     let output_ty = if_then_some!(let ReturnType::Type(_, ty) = sig.output.clone(), *ty).unwrap();
 
     let context = TypeParserParsingContext {
@@ -109,11 +110,6 @@ fn parse_function_inner(
             rust_function: NamespacedName::new(func.namespace.clone(), func.item_fn.name()),
         },
     })
-}
-
-fn vec_single<T>(vec: &[T]) -> &T {
-    assert_eq!(vec.len(), 1);
-    &vec[0]
 }
 
 fn merge_pair(pair: Vec<Info>) -> MirCustomSerDes {
