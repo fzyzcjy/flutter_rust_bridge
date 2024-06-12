@@ -120,12 +120,13 @@ pub struct MirTypeDelegateDynTraitVariant {
 }
 
 pub struct MirTypeDelegateCustomSerializer {
-    pub inner: Box<MirType>,
-    pub info: MirTypeDelegateCustomSerializerInfo,
+    pub inner_type: Box<MirType>,
+    pub rust_api_type: Box<MirType>,
+    pub dart_api_type: String,
+    pub codec_info: MirTypeDelegateCustomSerializerCodecInfo,
 }
 
-pub struct MirTypeDelegateCustomSerializerInfo {
-    pub dart_api_type: String,
+pub struct MirTypeDelegateCustomSerializerCodecInfo {
     pub dart_encode: String,
     pub dart_decode: String,
     pub rust_encode_function: NamespacedName,
@@ -193,6 +194,9 @@ impl MirTypeTrait for MirTypeDelegate {
             MirTypeDelegate::ProxyEnum(mir) => {
                 format!("ProxyEnum_{}", mir.get_delegate().safe_ident())
             }
+            MirTypeDelegate::CustomSerializer(mir) => {
+                format!("CustomSerializer_{}", mir.inner.safe_ident())
+            }
         }
     }
 
@@ -259,6 +263,7 @@ impl MirTypeTrait for MirTypeDelegate {
             MirTypeDelegate::DynTrait(mir) => format!("dyn {}", mir.trait_def_name.name),
             MirTypeDelegate::ProxyVariant(mir) => mir.inner.rust_api_type(),
             MirTypeDelegate::ProxyEnum(mir) => mir.original.rust_api_type(),
+            MirTypeDelegate::CustomSerializer(mir) => mir.rust_api_type.rust_api_type(),
         }
     }
 
