@@ -79,47 +79,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   bool sse_decode_bool(SseDeserializer deserializer);
 
   @protected
-  List<dynamic>
-      cst_encode_box_autoadd_struct_with_dart_keyword_field_twin_normal(
-          StructWithDartKeywordFieldTwinNormal raw) {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    return cst_encode_struct_with_dart_keyword_field_twin_normal(raw);
-  }
-
-  @protected
-  List<dynamic> cst_encode_box_autoadd_struct_with_field_rename_twin_normal(
-      StructWithFieldRenameTwinNormal raw) {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    return cst_encode_struct_with_field_rename_twin_normal(raw);
-  }
-
-  @protected
-  Object cst_encode_i_64(PlatformInt64 raw) {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    return castNativeBigInt(raw);
-  }
-
-  @protected
-  List<dynamic> cst_encode_struct_with_dart_keyword_field_twin_normal(
-      StructWithDartKeywordFieldTwinNormal raw) {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_i_32(raw.class_), cst_encode_i_64(raw.interface_)];
-  }
-
-  @protected
-  List<dynamic> cst_encode_struct_with_field_rename_twin_normal(
-      StructWithFieldRenameTwinNormal raw) {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_i_32(raw.renamed_field)];
-  }
-
-  @protected
-  int cst_encode_i_32(int raw);
-
-  @protected
-  void cst_encode_unit(void raw);
-
-  @protected
   void sse_encode_box_autoadd_struct_with_dart_keyword_field_twin_normal(
       StructWithDartKeywordFieldTwinNormal self, SseSerializer serializer);
 
@@ -152,25 +111,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
 class RustLibWire implements BaseWire {
   RustLibWire.fromExternalLibrary(ExternalLibrary lib);
-
-  void wire__crate__api__minimal__func_for_struct_with_dart_keyword_field_twin_normal(
-          NativePortType port_, List<dynamic> arg) =>
-      wasmModule
-          .wire__crate__api__minimal__func_for_struct_with_dart_keyword_field_twin_normal(
-              port_, arg);
-
-  void wire__crate__api__minimal__func_for_struct_with_field_rename_twin_normal(
-          NativePortType port_, List<dynamic> arg) =>
-      wasmModule
-          .wire__crate__api__minimal__func_for_struct_with_field_rename_twin_normal(
-              port_, arg);
-
-  void wire__crate__api__minimal__init_app(NativePortType port_) =>
-      wasmModule.wire__crate__api__minimal__init_app(port_);
-
-  void wire__crate__api__minimal__minimal_adder(
-          NativePortType port_, int a, int b) =>
-      wasmModule.wire__crate__api__minimal__minimal_adder(port_, a, b);
 }
 
 @JS('wasm_bindgen')
@@ -178,17 +118,4 @@ external RustLibWasmModule get wasmModule;
 
 @JS()
 @anonymous
-class RustLibWasmModule {
-  external void
-      wire__crate__api__minimal__func_for_struct_with_dart_keyword_field_twin_normal(
-          NativePortType port_, List<dynamic> arg);
-
-  external void
-      wire__crate__api__minimal__func_for_struct_with_field_rename_twin_normal(
-          NativePortType port_, List<dynamic> arg);
-
-  external void wire__crate__api__minimal__init_app(NativePortType port_);
-
-  external void wire__crate__api__minimal__minimal_adder(
-      NativePortType port_, int a, int b);
-}
+class RustLibWasmModule {}
