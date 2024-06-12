@@ -4,7 +4,7 @@ use crate::platform_types::DartAbi;
 #[cfg(feature = "rust-async")]
 use crate::rust_auto_opaque::{inner::RustAutoOpaqueInner, RustAutoOpaqueBase};
 use crate::rust_opaque::RustOpaqueBase;
-use js_sys::{Array};
+use js_sys::Array;
 use std::collections::{HashMap, HashSet};
 use std::iter::FromIterator;
 use wasm_bindgen::JsValue;
