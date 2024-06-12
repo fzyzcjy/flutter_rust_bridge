@@ -18,7 +18,6 @@ pub fn decode_fancy_type(raw: String) -> FancyRustType { ... }
 ```
 
 The function names above are arbitrarily chosen.
-
 Then, whenever we are using `FancyType`, such as:
 
 ```rust
@@ -30,6 +29,8 @@ It will be automatically converted to:
 ```dart
 void f(FancyDartType a) { ... }
 ```
+
+And under the hood, the type will be encoded/decoded via the custom functions.
 
 ## Remarks
 
