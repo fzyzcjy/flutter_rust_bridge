@@ -87,6 +87,7 @@ impl WorkerPool {
                     try {{
                         wasm_bindgen.receive_transfer_closure(payload, transfer)
                     }} catch (err) {{
+                        console.warn('TODO: web worker_pool handle error, new version not implemented yet!!!')
                         if (error_report_broadcast_channel_name != null) {{
                             const channel = new BroadcastChannel(error_report_broadcast_channel_name);
                             channel.postMessage([FRB_ACTION_PANIC, err.toString()]);
