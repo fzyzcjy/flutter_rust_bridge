@@ -29,7 +29,7 @@ pub fn casted_primitive_usize_twin_normal(arg: usize) -> usize {
 #[frb(serialize)]
 #[frb(type_64bit_int)]
 pub fn casted_primitive_multi_arg_twin_normal(a: i32, b: i64, c: usize, d: i128) {
-    let _ = (a, b, c);
+    let _ = (a, b, c, d);
 }
 
 #[frb(type_64bit_int)]
