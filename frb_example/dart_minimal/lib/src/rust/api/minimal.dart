@@ -11,12 +11,6 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 Future<int> minimalAdder({required int a, required int b}) =>
     RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b);
 
-Future<String> serializerMyType({required int raw}) =>
-    RustLib.instance.api.crateApiMinimalSerializerMyType(raw: raw);
-
-Future<int> deserializerMyType({required String raw}) =>
-    RustLib.instance.api.crateApiMinimalDeserializerMyType(raw: raw);
-
 Future<int> functionUsingTypeWithCustomSerializer({required int arg}) =>
     RustLib.instance.api
         .crateApiMinimalFunctionUsingTypeWithCustomSerializer(arg: arg);
