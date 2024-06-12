@@ -13,8 +13,12 @@ impl Rust2DartSender {
         Rust2DartSender { port }
     }
 
-    pub fn send(&self, msg: impl IntoDart) -> Result<(), Rust2DartSendError> {
-        if self.port.post(msg) {
+    pub fn send<F, T>(&self, msg_creator: F) -> Result<(), Rust2DartSendError>
+    where
+        F: (FnOnce() -> T) + Send,
+        T: IntoDart,
+    {
+        if self.port.post(msg_creator) {
             Ok(())
         } else {
             Err(Rust2DartSendError)
@@ -23,9 +27,13 @@ impl Rust2DartSender {
 
     // the function signature is not covered while the whole body is covered - looks like a bug in coverage tool
     // frb-coverage:ignore-start
-    pub fn send_or_warn(&self, msg: impl IntoDart) {
+    pub fn send_or_warn<F, T>(&self, msg_creator: F)
+    where
+        F: (FnOnce() -> T) + Send,
+        T: IntoDart,
+    {
         // frb-coverage:ignore-end
-        if let Err(e) = self.send(msg) {
+        if let Err(e) = self.send(msg_creator) {
             log_warn_or_println(&format!("{e:?}"));
         }
     }
