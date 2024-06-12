@@ -57,7 +57,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
         if ty.should_ignore(self.type_parser) {
             return Ok(FunctionPartialInfo {
-                ignore_func: Some(MirSkipReason::IgnoredByType),
+                ignore_func: Some(MirSkipReason::IgnoreBecauseType),
                 ..Default::default()
             });
         }

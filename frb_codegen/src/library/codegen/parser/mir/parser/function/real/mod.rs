@@ -6,7 +6,7 @@ use crate::codegen::ir::mir::func::{
     MirFuncOutput, MirFuncOwnerInfo, MirFuncOwnerInfoMethod, MirFuncOwnerInfoMethodMode,
 };
 use crate::codegen::ir::mir::skip::MirSkipReason::{
-    IgnoredByAttribute, IgnoredFunctionGeneric, IgnoredSilently,
+    IgnoreBecauseExplicitAttribute, IgnoreBecauseFunctionGeneric, IgnoreSilently,
 };
 use crate::codegen::ir::mir::skip::{MirSkip, MirSkipReason};
 use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
@@ -29,7 +29,7 @@ use itertools::concat;
 use log::{debug, warn};
 use std::fmt::Debug;
 use syn::*;
-use MirSkipReason::{IgnoredFunctionNotPub, IgnoredMisc};
+use MirSkipReason::{IgnoreBecauseFunctionNotPub, IgnoreMisc};
 use MirType::Primitive;
 
 pub(crate) mod argument;
@@ -117,16 +117,16 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         debug!("parse_function function name: {:?}", func.item_fn.name());
 
         if func.is_public() == Some(false) {
-            return Ok(create_output_skip(func, IgnoredFunctionNotPub));
+            return Ok(create_output_skip(func, IgnoreBecauseFunctionNotPub));
         }
         if !func.item_fn.sig().generics.params.is_empty() {
-            return Ok(create_output_skip(func, IgnoredFunctionGeneric));
+            return Ok(create_output_skip(func, IgnoreBecauseFunctionGeneric));
         }
 
         let src_lineno = func.item_fn.span().start().line;
         let attributes = FrbAttributes::parse(func.item_fn.attrs())?;
         if attributes.dart2rust().is_some() || attributes.rust2dart().is_some() {
-            return Ok(create_output_skip(func, IgnoredSilently));
+            return Ok(create_output_skip(func, IgnoreSilently));
         }
 
         let dart_name = parse_dart_name(&attributes, &func.item_fn.name());
@@ -147,13 +147,13 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         {
             owner
         } else {
-            return Ok(create_output_skip(func, IgnoredMisc));
+            return Ok(create_output_skip(func, IgnoreMisc));
         };
 
         let func_name = parse_name(&func.item_fn.name(), &owner);
 
         if attributes.ignore() {
-            return Ok(create_output_skip(func, IgnoredByAttribute));
+            return Ok(create_output_skip(func, IgnoreBecauseExplicitAttribute));
         }
 
         let context = create_context(Some(owner.clone()));
