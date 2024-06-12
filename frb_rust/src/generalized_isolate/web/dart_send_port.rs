@@ -10,11 +10,17 @@ impl DartSendPort {
         Self(todo!())
     }
 
-    pub fn post(&self, msg: impl IntoDart + Send + 'static) -> bool {
+    pub fn post<F, T>(&self, msg_creator: F) -> bool
+    where
+        F: (FnOnce() -> T) + Send,
+        T: IntoDart,
+    {
         // to test whether "send to another thread" can compile
-        let msg_boxed: Box<dyn BoxIntoDart + Send> = Box::new(msg);
         std::thread::spawn(move || {
-            let dart_abi = msg_boxed.box_into_dart();
+            let msg = msg_creator();
+            let dart_abi = msg.into_dart();
+            // let msg_boxed: Box<dyn BoxIntoDart + Send> = Box::new(msg);
+            // let dart_abi = msg_boxed.box_into_dart();
             let _ = dart_abi;
         });
         todo!()
