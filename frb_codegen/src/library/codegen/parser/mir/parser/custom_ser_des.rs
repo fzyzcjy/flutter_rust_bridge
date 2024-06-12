@@ -5,9 +5,9 @@ use crate::codegen::parser::mir::parser::attribute::{FrbAttributeSerDes, FrbAttr
 use crate::codegen::parser::mir::parser::function;
 use crate::codegen::parser::mir::parser::ty::TypeParser;
 use crate::if_then_some;
+use crate::utils::namespace::NamespacedName;
 use itertools::Itertools;
 use syn::{FnArg, ReturnType};
-use crate::utils::namespace::NamespacedName;
 
 pub(crate) fn parse(
     src_fns: &[HirFlatFunction],
@@ -56,15 +56,22 @@ fn parse_function_inner(
     type_parser: &mut TypeParser,
 ) -> anyhow::Result<Info> {
     let sig = func.item_fn.sig();
-    let input_ty = if_then_some!(let FnArg::Typed(pat_type) = vec_single(&sig.inputs).clone(), *pat_type.ty).unwrap();
+    let input_ty =
+        if_then_some!(let FnArg::Typed(pat_type) = vec_single(&sig.inputs).clone(), *pat_type.ty)
+            .unwrap();
     let output_ty = if_then_some!(let ReturnType::Type(_, ty) = sig.output.clone(), *ty).unwrap();
 
-    let input_ty = type_parser.parse_type(&input_ty, context)?;
-    let output_ty = type_parser.parse_type(&output_ty, context)?;
+    let input_ty = Box::new(type_parser.parse_type(&input_ty, context)?);
+    let output_ty = Box::new(type_parser.parse_type(&output_ty, context)?);
+
+    let (rust_api_type, inner_type) = match direction {
+        Direction::Rust2Dart => (input_ty, output_ty),
+        Direction::Dart2Rust => (output_ty, input_ty),
+    };
 
     Ok(Info {
-        inner_type: TODO,
-        rust_api_type: TODO,
+        inner_type,
+        rust_api_type,
         dart_api_type: attr_ser_des.dart_type,
         direction,
         half: MirCustomSerDesHalf {
