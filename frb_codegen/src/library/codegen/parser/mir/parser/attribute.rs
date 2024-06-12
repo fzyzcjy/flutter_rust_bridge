@@ -318,21 +318,25 @@ impl Parse for FrbAttribute {
 
         Ok(if lookahead.peek(frb_keyword::mirror) {
             input.parse::<frb_keyword::mirror>()?;
-            input.parse().map(FrbAttribute::Mirror)?
+            input.parse().map(Mirror)?
         } else if lookahead.peek(frb_keyword::dart_metadata) {
-            input.parse().map(FrbAttribute::Metadata)?
+            input.parse().map(Metadata)?
         } else if lookahead.peek(default) {
             input.parse::<default>()?;
             input.parse::<Token![=]>()?;
-            input.parse().map(FrbAttribute::Default)?
+            input.parse().map(Default)?
         } else if lookahead.peek(dart_code) {
             input.parse::<dart_code>()?;
             input.parse::<Token![=]>()?;
-            input.parse().map(FrbAttribute::DartCode)?
+            input.parse().map(DartCode)?
         } else if lookahead.peek(name) {
             input.parse::<name>()?;
             input.parse::<Token![=]>()?;
-            input.parse().map(FrbAttribute::Name)?
+            input.parse().map(Name)?
+        } else if lookahead.peek(frb_keyword::dart2rust) {
+            input.parse().map(Dart2Rust)?
+        } else if lookahead.peek(frb_keyword::rust2dart) {
+            input.parse().map(Rust2Dart)?
         } else {
             return Err(lookahead.error());
         })
