@@ -132,8 +132,7 @@ fn compute_src_lineno_pseudo(struct_name: &NamespacedName, field: &MirField) -> 
 fn create_mir_field(ty: MirType, name: &str) -> MirField {
     MirField {
         ty,
-        name: MirIdent::new(name.to_owned()),
-        dart_name: None,
+        name: MirIdent::new(name.to_owned(), None),
         is_final: true,
         is_rust_public: None,
         comments: vec![],

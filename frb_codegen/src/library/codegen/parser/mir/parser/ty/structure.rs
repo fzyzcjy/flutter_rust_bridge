@@ -84,14 +84,13 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         })?;
         let attributes = FrbAttributes::parse(&field.attrs)?;
         Ok(MirField {
-            name: MirIdent::new(field_name),
+            name: MirIdent::new(field_name, attributes.name()),
             ty: field_type,
             is_final: !attributes.non_final(),
             is_rust_public: Some(matches!(field.vis, Visibility::Public(_))),
             comments: parse_comments(&field.attrs),
             default: attributes.default_value(),
             settings: MirFieldSettings::default(),
-            dart_name: attributes.name(),
         })
     }
 }
