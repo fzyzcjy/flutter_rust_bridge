@@ -6,7 +6,7 @@ use crate::codegen::parser::mir::parser::function;
 use crate::codegen::parser::mir::parser::ty::TypeParser;
 use crate::if_then_some;
 use itertools::Itertools;
-use syn::ReturnType;
+use syn::{FnArg, ReturnType};
 
 pub(crate) fn parse(
     src_fns: &[HirFlatFunction],
@@ -54,6 +54,7 @@ fn parse_function_inner(
     direction: Direction,
 ) -> anyhow::Result<Info> {
     let sig = function.item_fn.sig();
+    let input_ty = if_then_some!(let FnArg::Typed(pat_type) = vec_single(&sig.inputs).clone(), *pat_type.ty).unwrap();
     let output_ty = if_then_some!(let ReturnType::Type(_, ty) = sig.output.clone(), *ty).unwrap();
 
     Ok(Info {
@@ -66,6 +67,11 @@ fn parse_function_inner(
             rust_function: TODO,
         },
     })
+}
+
+fn vec_single<T>(vec: &[T]) -> &T {
+    assert_eq!(vec.len(), 1);
+    &vec[0]
 }
 
 fn merge_pair(pair: Vec<Info>) -> MirCustomSerDes {
