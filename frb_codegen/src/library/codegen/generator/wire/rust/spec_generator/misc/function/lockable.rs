@@ -78,7 +78,7 @@ fn generate_decode_statement(
     )
 }
 
-fn get_variable_name(field: &MirFuncInput) -> &str {
+fn get_variable_name(field: &MirFuncInput) -> String {
     field.inner.name.rust_style()
 }
 

@@ -13,8 +13,8 @@ impl MirIdent {
         MirIdent { raw }
     }
 
-    pub fn rust_style(&self) -> &str {
-        &self.raw
+    pub fn rust_style(&self) -> String {
+        self.raw.clone()
     }
 
     pub fn c_style(&self) -> String {
