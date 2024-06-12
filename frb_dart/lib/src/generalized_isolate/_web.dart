@@ -16,12 +16,14 @@ typedef MessagePort = _PortLike;
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 typedef SendPort = _PortLike;
 
-/// Web implementation of the `dart:isolate`'s ReceivePort.
+/// {@template flutter_rust_bridge.same_as_native}
+/// Web implementation of the one with same name in native.
+/// {@endtemplate}
 class ReceivePort extends Stream<dynamic> {
   /// The receive port.
   final RawReceivePort _rawReceivePort;
 
-  /// Create a new receive port from an optional [RawReceivePort].
+  /// {@macro flutter_rust_bridge.same_as_native}
   factory ReceivePort() => ReceivePort._raw();
 
   ReceivePort._raw([RawReceivePort? rawReceivePort])
@@ -44,32 +46,32 @@ class ReceivePort extends Stream<dynamic> {
 
   static dynamic _extractData(MessageEvent event) => event.data;
 
-  /// The send port.
+  /// {@macro flutter_rust_bridge.same_as_native}
   SendPort get sendPort => _rawReceivePort.sendPort;
 
-  /// Close the receive port, ignoring any further messages.
+  /// {@macro flutter_rust_bridge.same_as_native}
   void close() => _rawReceivePort.close();
 }
 
-/// Wrapper around a [MessageChannel].
+/// {@macro flutter_rust_bridge.same_as_native}
 class RawReceivePort {
-  /// The underlying message channel.
   final _Channel _channel;
 
-  /// {@macro flutter_rust_bridge.only_for_generated_code}
+  /// {@macro flutter_rust_bridge.same_as_native}
   factory RawReceivePort() => RawReceivePort._raw();
 
   RawReceivePort._raw([_Channel? channel])
       : _channel = channel ?? _Channel.messageChannel();
 
+  /// {@macro flutter_rust_bridge.same_as_native}
   set handler(Function(dynamic) handler) {
     _receivePort.onMessage.listen((event) => handler(event.data));
   }
 
-  /// Close the receive port.
+  /// {@macro flutter_rust_bridge.same_as_native}
   void close() => _channel.receivePort.close();
 
-  /// The port to be used by other workers.
+  /// {@macro flutter_rust_bridge.same_as_native}
   SendPort get sendPort => _channel.sendPort;
 
   SendPort get _receivePort => _channel.receivePort;
@@ -120,7 +122,7 @@ class _BroadcastChannelWrapper implements _Channel {
   SendPort get receivePort => _PortLike.broadcastChannel(_receiveChannel);
 }
 
-/// [html.MessagePort]'s interface.
+/// {@macro flutter_rust_bridge.same_as_native}
 abstract class _PortLike {
   const _PortLike._();
 
@@ -133,6 +135,7 @@ abstract class _PortLike {
 
   void close();
 
+  /// {@macro flutter_rust_bridge.same_as_native}
   html.EventTarget get nativePort;
 
   Stream<MessageEvent> get onMessage => _kMessageEvent.forTarget(nativePort);
