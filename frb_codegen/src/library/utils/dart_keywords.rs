@@ -1,10 +1,6 @@
 use anyhow::bail;
 use convert_case::{Case, Casing};
 
-/// If the given string is a Dart keyword, then
-/// convert it to PascalCase to avoid issues.
-/// If the string is not a keyword, then the original
-/// is returned.
 pub(crate) fn make_string_keyword_safe(input: String) -> String {
     if check_for_keywords(&[input.clone()]).is_err() {
         input.to_case(Case::Pascal)
