@@ -579,9 +579,6 @@ impl Parse for FrbAttributeSerializer {
         let content;
         parenthesized!(content in input);
 
-        let items = Punctuated::<NamedOption<TODO, syn::LitStr>, Token![,]>::parse_terminated(&content)?
-            .into_iter()
-            .collect();
         content.parse::<frb_keyword::dart_type>()?;
         content.parse::<Token![=]>()?;
         let dart_type = content.parse::<syn::LitStr>()?.value();
