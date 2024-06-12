@@ -9,7 +9,8 @@ impl DartSendPort {
         Self(todo!())
     }
 
-    pub fn post(&self, msg: impl IntoDart) -> bool {
+    pub fn post(&self, msg: impl IntoDart + Send) -> bool {
+        let msg_boxed = TODO;
         todo!()
     }
 }
