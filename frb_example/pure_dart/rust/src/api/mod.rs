@@ -11,6 +11,7 @@ pub mod comment;
 pub mod conditionally_compiled_module;
 pub mod constructor;
 pub mod custom_handler;
+pub mod custom_ser_des;
 pub mod customization;
 pub mod dart_code;
 pub mod dart_dynamic;
@@ -53,6 +54,5 @@ pub mod structure;
 pub mod tuple;
 pub mod type_alias;
 pub mod uuid_type;
-mod custom_ser_des;
 
 pub fn function_at_api_mod_rs() {}

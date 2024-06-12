@@ -11,6 +11,7 @@ pub mod comment;
 pub mod conditionally_compiled_module;
 pub mod constructor;
 pub mod custom_handler;
+pub mod custom_ser_des;
 pub mod customization;
 pub mod dart_code;
 pub mod dart_fn;

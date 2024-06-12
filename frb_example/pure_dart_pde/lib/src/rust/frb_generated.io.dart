@@ -13,6 +13,7 @@ import 'api/casted_primitive.dart';
 import 'api/chrono_type.dart';
 import 'api/comment.dart';
 import 'api/constructor.dart';
+import 'api/custom_ser_des.dart';
 import 'api/customization.dart';
 import 'api/dart_code.dart';
 import 'api/dart_fn.dart';
@@ -966,6 +967,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   DateTime dco_decode_Chrono_Utc(dynamic raw);
+
+  @protected
+  int dco_decode_CustomSerializer_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMessageWithCustomSerializerTwinNormal(
+      dynamic raw);
 
   @protected
   FutureOr<void> Function(Object)
@@ -5111,6 +5116,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   DateTime sse_decode_Chrono_Utc(SseDeserializer deserializer);
+
+  @protected
+  int sse_decode_CustomSerializer_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMessageWithCustomSerializerTwinNormal(
+      SseDeserializer deserializer);
 
   @protected
   Object sse_decode_DartOpaque(SseDeserializer deserializer);
@@ -9654,6 +9663,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_Chrono_Utc(DateTime self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_CustomSerializer_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMessageWithCustomSerializerTwinNormal(
+          int self, SseSerializer serializer);
 
   @protected
   void sse_encode_DartFn_Inputs_DartOpaque_Output_unit_AnyhowException(
