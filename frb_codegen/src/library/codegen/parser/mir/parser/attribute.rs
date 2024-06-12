@@ -581,15 +581,15 @@ impl Parse for FrbAttributeSerializer {
         let content;
         parenthesized!(content in input);
 
-        input.parse::<frb_keyword::dart_type>()?;
-        input.parse::<Token![=]>()?;
-        let dart_type = input.parse::<syn::LitStr>()?.value();
+        content.parse::<frb_keyword::dart_type>()?;
+        content.parse::<Token![=]>()?;
+        let dart_type = content.parse::<syn::LitStr>()?.value();
 
-        input.parse::<Token![,]>()?;
+        content.parse::<Token![,]>()?;
 
-        input.parse::<frb_keyword::dart_code>()?;
-        input.parse::<Token![=]>()?;
-        let dart_code = input.parse::<syn::LitStr>()?.value();
+        content.parse::<frb_keyword::dart_code>()?;
+        content.parse::<Token![=]>()?;
+        let dart_code = content.parse::<syn::LitStr>()?.value();
 
         Ok(Self {
             dart_type,
