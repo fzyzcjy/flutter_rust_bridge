@@ -19,12 +19,18 @@ pub(crate) fn parse(
     let ans = infos
         .into_group_map_by(|info| *info.rust_api_type.clone())
         .into_iter()
-        .map(|(_, pair)| MirCustomSerDes {
-            inner_type: TODO,
-            rust_api_type: TODO,
-            dart_api_type: TODO,
-            dart2rust: TODO,
-            rust2dart: TODO,
+        .map(|(_, pair)| {
+            assert_eq!(pair.len(), 2);
+            let a = &pair[0];
+            let b = &pair[1];
+
+            MirCustomSerDes {
+                inner_type: a.inner_type.clone(),
+                rust_api_type: a.rust_api_type.clone(),
+                dart_api_type: a.dart_api_type.clone(),
+                dart2rust: TODO,
+                rust2dart: TODO,
+            }
         })
         .collect_vec();
 
