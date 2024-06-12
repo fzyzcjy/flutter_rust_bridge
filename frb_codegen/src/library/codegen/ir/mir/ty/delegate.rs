@@ -33,6 +33,7 @@ pub enum MirTypeDelegate {
     ProxyVariant(MirTypeDelegateProxyVariant),
     ProxyEnum(MirTypeDelegateProxyEnum),
     DynTrait(MirTypeDelegateDynTrait),
+    CustomSerializer(MirTypeDelegateCustomSerializer),
 }
 
 pub struct MirTypeDelegateArray {
@@ -116,6 +117,10 @@ pub struct MirTypeDelegateDynTraitData {
 
 pub struct MirTypeDelegateDynTraitVariant {
     pub ty: MirType,
+}
+
+pub struct MirTypeDelegateCustomSerializer {
+    pub inner: Box<MirType>,
 }
 }
 
