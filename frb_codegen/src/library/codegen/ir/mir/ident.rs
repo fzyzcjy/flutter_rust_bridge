@@ -54,6 +54,9 @@ fn convert_rust_to_c_style(raw: &str) -> String {
     if &ans == "async" {
         ans = "async1".to_owned();
     }
+    if &ans == "interface" {
+        ans = "interface1".to_owned();
+    }
 
     // match behavior of cbindgen
     cbindgen_keywords::escape(&mut ans);
