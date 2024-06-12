@@ -1,4 +1,4 @@
-pub(crate) fn make_string_keyword_safe(input: String) -> String {
+pub(crate) fn escape(input: String) -> String {
     if DART_KEYWORDS.contains(&input.as_str()) {
         format!("{input}_")
     } else {
