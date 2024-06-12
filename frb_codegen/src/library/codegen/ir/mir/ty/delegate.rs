@@ -186,7 +186,7 @@ impl MirTypeTrait for MirTypeDelegate {
                 format!("ProxyEnum_{}", mir.get_delegate().safe_ident())
             }
             MirTypeDelegate::CustomSerializer(mir) => {
-                format!("CustomSerializer_{}", mir.rust_api_type.safe_ident())
+                format!("CustomSerializer_{}", mir.info.rust_api_type.safe_ident())
             }
         }
     }
@@ -254,7 +254,7 @@ impl MirTypeTrait for MirTypeDelegate {
             MirTypeDelegate::DynTrait(mir) => format!("dyn {}", mir.trait_def_name.name),
             MirTypeDelegate::ProxyVariant(mir) => mir.inner.rust_api_type(),
             MirTypeDelegate::ProxyEnum(mir) => mir.original.rust_api_type(),
-            MirTypeDelegate::CustomSerializer(mir) => mir.rust_api_type.rust_api_type(),
+            MirTypeDelegate::CustomSerializer(mir) => mir.info.rust_api_type.rust_api_type(),
         }
     }
 
@@ -328,7 +328,7 @@ impl MirTypeDelegate {
             MirTypeDelegate::DynTrait(mir) => mir.get_delegate(),
             MirTypeDelegate::ProxyVariant(mir) => *mir.inner.clone(),
             MirTypeDelegate::ProxyEnum(mir) => mir.get_delegate(),
-            MirTypeDelegate::CustomSerializer(mir) => *mir.inner_type.clone(),
+            MirTypeDelegate::CustomSerializer(mir) => *mir.info.inner_type.clone(),
         }
     }
 }
