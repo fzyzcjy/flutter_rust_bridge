@@ -4,11 +4,9 @@ use crate::codegen::ir::mir::custom_ser_des::{MirCustomSerDes, MirCustomSerDesHa
 use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::mir::parser::attribute::{FrbAttributeSerDes, FrbAttributes};
-use crate::codegen::parser::mir::parser::function;
 use crate::codegen::parser::mir::parser::ty::{TypeParser, TypeParserParsingContext};
 use crate::codegen::parser::mir::ParseMode;
 use crate::if_then_some;
-use crate::utils::crate_name::CrateName;
 use crate::utils::namespace::NamespacedName;
 use anyhow::ensure;
 use itertools::Itertools;
@@ -33,8 +31,8 @@ pub(crate) fn parse(
 
     let ans = infos
         .into_group_map_by(|info| *info.rust_api_type.clone())
-        .into_iter()
-        .map(|(_, pair)| merge_pair(pair))
+        .into_values()
+        .map(merge_pair)
         .collect_vec();
 
     Ok(ans)
