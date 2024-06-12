@@ -8,7 +8,8 @@ import 'package:web/helpers.dart' as helpers;
 import 'package:web/web.dart' as web;
 
 @dart_js_interop.JS("wasm_bindgen.my_rust_function")
-external void my_rust_function_packageweb(web.EventTarget message_port);
+external void my_rust_function_packageweb(web.MessagePort message_port);
+// external void my_rust_function_packageweb(web.EventTarget message_port);
 
 @package_js.JS("wasm_bindgen.my_rust_function")
 external void my_rust_function_darthtml(dynamic message_port);
@@ -22,7 +23,7 @@ Future<void> run_packageweb() async {
       helpers.EventStreamProvider<web.MessageEvent>('message');
   _kMessageEvent
       .forTarget(messageChannel.port1)
-      .listen((event) => print('messageChannel.port1 see event $event'));
+      .listen((event) => print('messageChannel.port1 see event ${event.data}'));
 
   print('Dart before call my_rust_function');
   my_rust_function_packageweb(messageChannel.port2);
@@ -40,7 +41,7 @@ Future<void> run_darthtml() async {
   final _kMessageEvent = html.EventStreamProvider<html.MessageEvent>('message');
   _kMessageEvent
       .forTarget(messageChannel.port1)
-      .listen((event) => print('messageChannel.port1 see event $event'));
+      .listen((event) => print('messageChannel.port1 see event ${event.data}'));
 
   print('Dart before call my_rust_function');
   my_rust_function_darthtml(messageChannel.port2);
