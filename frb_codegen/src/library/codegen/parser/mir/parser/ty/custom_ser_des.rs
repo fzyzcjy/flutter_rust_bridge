@@ -12,7 +12,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         // use HashMap etc later if too slow; here we use filter to remain flexibility of filtering strategy
         Ok((self.inner.custom_ser_des_infos.iter())
             .find(|info| {
-                &info.rust_api_type.rust_api_type() == last_segment.0 && info.direction == TODO
+                &info.rust_api_type.rust_api_type() == last_segment.0 && info.direction == self.context.direction
             })
             .map(|info| {
                 MirType::Delegate(MirTypeDelegate::CustomSerDes(MirTypeDelegateCustomSerDes {
