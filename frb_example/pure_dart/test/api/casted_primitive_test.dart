@@ -16,4 +16,12 @@ Future<void> main({bool skipRustLibInit = false}) async {
       castedPrimitiveIsizeTwinNormal, <int>[0, -1000000000, 1000000000]);
   addTestsIdentityFunctionCall(
       castedPrimitiveUsizeTwinNormal, <int>[0, 1000000000]);
+  addTestsIdentityFunctionCall(functionForStructWithCastedPrimitiveTwinNormal, [
+    StructWithCastedPrimitiveTwinNormal(
+      fieldI64: 1000000000,
+      fieldU64: 2000000000,
+      fieldI32: 123456789,
+      fieldVecU8: [10, 20, 100],
+    ),
+  ]);
 }
