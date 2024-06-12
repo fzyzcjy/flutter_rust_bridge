@@ -43,16 +43,16 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             // frb-coverage:ignore-end
         };
 
+        let attributes = FrbAttributes::parse(&src_struct.src.attrs)?;
+        let dart_metadata = attributes.dart_metadata();
+
         let fields = struct_fields
             .iter()
             .enumerate()
-            .map(|(idx, field)| self.parse_struct_field(idx, field))
+            .map(|(idx, field)| self.parse_struct_field(idx, field, &attributes))
             .collect::<anyhow::Result<Vec<_>>>()?;
 
         let comments = parse_comments(&src_struct.src.attrs);
-
-        let attributes = FrbAttributes::parse(&src_struct.src.attrs)?;
-        let dart_metadata = attributes.dart_metadata();
 
         let ignore = parse_struct_or_enum_should_ignore(src_struct, &name.namespace.crate_name());
 
@@ -69,12 +69,19 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         })
     }
 
-    fn parse_struct_field(&mut self, idx: usize, field: &Field) -> anyhow::Result<MirField> {
+    fn parse_struct_field(
+        &mut self,
+        idx: usize,
+        field: &Field,
+        attributes: &FrbAttributes,
+    ) -> anyhow::Result<MirField> {
         let field_name = field
             .ident
             .as_ref()
             .map_or(format!("field{idx}"), ToString::to_string);
-        let field_type = self.parse_type_with_context(&field.ty, |c|c.to_owned())?;
+        let field_type = self.parse_type_with_context(&field.ty, |c| {
+            c.with_struct_or_enum_attributes(attributes.clone())
+        })?;
         let attributes = FrbAttributes::parse(&field.attrs)?;
         Ok(MirField {
             name: MirIdent::new(field_name),
