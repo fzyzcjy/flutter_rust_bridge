@@ -127,7 +127,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       StructWithDartKeywordFieldTwinNormal apiObj,
       wire_cst_struct_with_dart_keyword_field_twin_normal wireObj) {
     wireObj.class_ = cst_encode_i_32(apiObj.class_);
-    wireObj.interface = cst_encode_i_64(apiObj.interface_);
+    wireObj.interface1 = cst_encode_i_64(apiObj.interface_);
   }
 
   @protected
