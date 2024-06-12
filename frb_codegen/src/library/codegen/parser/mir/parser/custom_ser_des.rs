@@ -25,3 +25,7 @@ pub(crate) fn parse(
 
     function::real::parse(&interest_src_fns)?;
 }
+
+fn parse_one() -> anyhow::Result<Option<MirCustomSerDes>> {
+    TODO;
+}
