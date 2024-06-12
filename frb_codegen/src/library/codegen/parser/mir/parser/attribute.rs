@@ -573,6 +573,17 @@ pub(crate) struct FrbAttributeSerializer {
     pub dart_code: String,
 }
 
+impl Parse for FrbAttributeSerializer {
+    fn parse(input: ParseStream) -> Result<Self> {
+        let content;
+        parenthesized!(content in input);
+        Ok(Self {
+            dart_type: TODO,
+            dart_code: TODO,
+        })
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use crate::codegen::ir::mir::default::MirDefaultValue;
