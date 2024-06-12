@@ -6,11 +6,5 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// These types are ignored because they are not used by any `pub` functions: `MessageWithCustomSerializerTwinNormal`
-
 Future<int> minimalAdder({required int a, required int b}) =>
     RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b);
-
-Future<int> functionUsingTypeWithCustomSerializer({required int arg}) =>
-    RustLib.instance.api
-        .crateApiMinimalFunctionUsingTypeWithCustomSerializer(arg: arg);
