@@ -13,3 +13,53 @@ use flutter_rust_bridge::{Handler, IntoIntoDart};
 // Section: boilerplate
 
 flutter_rust_bridge::frb_generated_boilerplate_web!();
+
+// Section: dart2rust
+
+impl CstDecode<crate::api::minimal::StructWithFieldRenameTwinNormal>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> crate::api::minimal::StructWithFieldRenameTwinNormal {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        crate::api::minimal::StructWithFieldRenameTwinNormal {
+            class: self_.get(0).cst_decode(),
+        }
+    }
+}
+impl CstDecode<i32> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> i32 {
+        self.unchecked_into_f64() as _
+    }
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__minimal__func_for_struct_with_field_rename_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire__crate__api__minimal__func_for_struct_with_field_rename_twin_normal_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__minimal__init_app(port_: flutter_rust_bridge::for_generated::MessagePort) {
+    wire__crate__api__minimal__init_app_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__minimal__minimal_adder(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    a: i32,
+    b: i32,
+) {
+    wire__crate__api__minimal__minimal_adder_impl(port_, a, b)
+}
