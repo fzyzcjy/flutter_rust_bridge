@@ -68,7 +68,7 @@ class RawReceivePort {
   }
 
   /// {@macro flutter_rust_bridge.same_as_native}
-  void close() => _channel.receivePort.close();
+  void close() => _channel.receivePort._close();
 
   /// {@macro flutter_rust_bridge.same_as_native}
   SendPort get sendPort => _channel.sendPort;
@@ -130,9 +130,7 @@ abstract class _PortLike {
   factory _PortLike._broadcastChannel(BroadcastChannel channel) =
       _BroadcastPortWrapper;
 
-  void postMessage(Object? value);
-
-  void close();
+  void _close();
 
   /// {@macro flutter_rust_bridge.same_as_native}
   html.EventTarget get nativePort;
@@ -148,10 +146,7 @@ class _MessagePortWrapper extends _PortLike {
   _MessagePortWrapper(this.nativePort) : super._();
 
   @override
-  void postMessage(message) => nativePort.postMessage(message);
-
-  @override
-  void close() => nativePort.close();
+  void _close() => nativePort.close();
 }
 
 class _BroadcastPortWrapper extends _PortLike {
@@ -160,11 +155,6 @@ class _BroadcastPortWrapper extends _PortLike {
 
   _BroadcastPortWrapper(this.nativePort) : super._();
 
-  /// This presents a limitation of BroadcastChannel,
-  /// i.e. it cannot carry transferables and will unconditionally clone the items.
   @override
-  void postMessage(message) => nativePort.postMessage(message ?? false);
-
-  @override
-  void close() => nativePort.close();
+  void _close() => nativePort.close();
 }
