@@ -1,6 +1,6 @@
 pub(crate) mod annotation;
 pub(crate) mod comment;
-pub(crate) mod custom_serializer;
+pub(crate) mod custom_ser_des;
 pub(crate) mod default;
 pub(crate) mod field;
 pub(crate) mod func;

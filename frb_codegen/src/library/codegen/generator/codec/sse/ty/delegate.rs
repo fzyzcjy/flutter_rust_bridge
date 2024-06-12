@@ -61,7 +61,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 MirTypeDelegate::DynTrait(mir) => {
                     generate_dyn_trait_dart_encode(mir, self.context.as_api_dart_context())
                 }
-                MirTypeDelegate::CustomSerializer(mir) => {
+                MirTypeDelegate::CustomSerDes(mir) => {
                     mir.info.dart_encode.replace("{}", "self")
                 }
             },
@@ -112,7 +112,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 | MirTypeDelegate::ProxyEnum(_)
                 | MirTypeDelegate::DynTrait(_)
                 | MirTypeDelegate::CastedPrimitive(_) => return None,
-                MirTypeDelegate::CustomSerializer(mir) => {
+                MirTypeDelegate::CustomSerDes(mir) => {
                     format!("{}(self)", mir.info.rust_encode_function.rust_style())
                 }
             },
@@ -177,7 +177,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     MirTypeDelegate::DynTrait(_) => {
                         return Some(format!("{};", lang.throw_unimplemented("")))
                     }
-                    MirTypeDelegate::CustomSerializer(mir) => {
+                    MirTypeDelegate::CustomSerDes(mir) => {
                         mir.info.dart_decode.replace("{}", "self")
                     }
                 }
@@ -226,7 +226,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 | MirTypeDelegate::ProxyEnum(_)
                 | MirTypeDelegate::DynTrait(_)
                 | MirTypeDelegate::CastedPrimitive(_) => return None,
-                MirTypeDelegate::CustomSerializer(mir) => {
+                MirTypeDelegate::CustomSerDes(mir) => {
                     format!("{}(self)", mir.info.rust_decode_function.rust_style())
                 }
             },

@@ -258,8 +258,8 @@ enum FrbAttribute {
     Default(FrbAttributeDefaultValue),
     DartCode(FrbAttributeDartCode),
     Name(FrbAttributeName),
-    Dart2Rust(FrbAttributeSerializer),
-    Rust2Dart(FrbAttributeSerializer),
+    Dart2Rust(FrbAttributeSerDes),
+    Rust2Dart(FrbAttributeSerDes),
 }
 
 impl Parse for FrbAttribute {
@@ -571,12 +571,12 @@ impl Parse for FrbAttributeName {
 }
 
 #[derive(Clone, Serialize, Eq, PartialEq, Debug)]
-pub(crate) struct FrbAttributeSerializer {
+pub(crate) struct FrbAttributeSerDes {
     pub dart_type: String,
     pub dart_code: String,
 }
 
-impl Parse for FrbAttributeSerializer {
+impl Parse for FrbAttributeSerDes {
     fn parse(input: ParseStream) -> Result<Self> {
         log::warn!("hi {input:?}");
 
@@ -605,7 +605,7 @@ mod tests {
     use crate::codegen::ir::mir::default::MirDefaultValue;
     use crate::codegen::parser::mir::parser::attribute::{
         FrbAttribute, FrbAttributeDartCode, FrbAttributeDefaultValue, FrbAttributeMirror,
-        FrbAttributeName, FrbAttributeSerializer, FrbAttributes, NamedOption,
+        FrbAttributeName, FrbAttributeSerDes, FrbAttributes, NamedOption,
     };
     use crate::if_then_some;
     use quote::quote;
@@ -782,7 +782,7 @@ mod tests {
             parse(r###"#[frb(rust2dart(dart_type = "my_type", dart_code = "my_code"))]"###)?;
         assert_eq!(
             parsed,
-            FrbAttributes(vec![FrbAttribute::Rust2Dart(FrbAttributeSerializer {
+            FrbAttributes(vec![FrbAttribute::Rust2Dart(FrbAttributeSerDes {
                 dart_type: "my_type".to_owned(),
                 dart_code: "my_code".to_owned(),
             })])
@@ -796,7 +796,7 @@ mod tests {
             parse(r###"#[frb(dart2rust(dart_type = "my_type", dart_code = "my_code"))]"###)?;
         assert_eq!(
             parsed,
-            FrbAttributes(vec![FrbAttribute::Dart2Rust(FrbAttributeSerializer {
+            FrbAttributes(vec![FrbAttribute::Dart2Rust(FrbAttributeSerDes {
                 dart_type: "my_type".to_owned(),
                 dart_code: "my_code".to_owned(),
             })])
