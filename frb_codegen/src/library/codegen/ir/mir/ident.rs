@@ -22,7 +22,7 @@ impl MirIdent {
     }
 
     pub fn dart_style(&self) -> String {
-        (self.raw.strip_prefix("r#").unwrap_or(self.raw.as_str())).to_case(Case::Camel)
+        convert_rust_to_dart_style(&self.raw)
     }
 
     pub fn style(&self, lang: &Lang) -> String {
@@ -55,4 +55,8 @@ fn convert_rust_to_c_style(raw: &str) -> String {
     cbindgen_keywords::escape(&mut ans);
 
     ans
+}
+
+fn convert_rust_to_dart_style(raw: &str) -> String {
+    (raw.strip_prefix("r#").unwrap_or(raw)).to_case(Case::Camel)
 }
