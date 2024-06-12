@@ -10,7 +10,25 @@ pub(crate) fn parse(
     src_fns: &[HirFlatFunction],
     type_parser: &mut TypeParser,
 ) -> anyhow::Result<Vec<MirCustomSerDes>> {
-    TODO
+    let infos = (src_fns.iter())
+        .map(|f| parse_function(f))
+        .collect::<anyhow::Result<Vec<_>>>()?
+        .into_iter()
+        .flatten();
+
+    let ans = infos
+        .into_group_map_by(|info| *info.rust_api_type.clone())
+        .into_iter()
+        .map(|(_, pair)| MirCustomSerDes {
+            inner_type: TODO,
+            rust_api_type: TODO,
+            dart_api_type: TODO,
+            dart2rust: TODO,
+            rust2dart: TODO,
+        })
+        .collect_vec();
+
+    Ok(ans)
 }
 
 fn parse_function(func: &HirFlatFunction) -> anyhow::Result<Option<Info>> {
