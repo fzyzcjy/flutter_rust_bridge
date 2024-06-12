@@ -21,56 +21,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   });
 
   @protected
-  StructWithDartKeywordFieldTwinNormal
-      dco_decode_box_autoadd_struct_with_dart_keyword_field_twin_normal(
-          dynamic raw);
-
-  @protected
-  StructWithFieldRenameTwinNormal
-      dco_decode_box_autoadd_struct_with_field_rename_twin_normal(dynamic raw);
-
-  @protected
   int dco_decode_i_32(dynamic raw);
-
-  @protected
-  PlatformInt64 dco_decode_i_64(dynamic raw);
-
-  @protected
-  StructWithDartKeywordFieldTwinNormal
-      dco_decode_struct_with_dart_keyword_field_twin_normal(dynamic raw);
-
-  @protected
-  StructWithFieldRenameTwinNormal
-      dco_decode_struct_with_field_rename_twin_normal(dynamic raw);
 
   @protected
   void dco_decode_unit(dynamic raw);
 
   @protected
-  StructWithDartKeywordFieldTwinNormal
-      sse_decode_box_autoadd_struct_with_dart_keyword_field_twin_normal(
-          SseDeserializer deserializer);
-
-  @protected
-  StructWithFieldRenameTwinNormal
-      sse_decode_box_autoadd_struct_with_field_rename_twin_normal(
-          SseDeserializer deserializer);
-
-  @protected
   int sse_decode_i_32(SseDeserializer deserializer);
-
-  @protected
-  PlatformInt64 sse_decode_i_64(SseDeserializer deserializer);
-
-  @protected
-  StructWithDartKeywordFieldTwinNormal
-      sse_decode_struct_with_dart_keyword_field_twin_normal(
-          SseDeserializer deserializer);
-
-  @protected
-  StructWithFieldRenameTwinNormal
-      sse_decode_struct_with_field_rename_twin_normal(
-          SseDeserializer deserializer);
 
   @protected
   void sse_decode_unit(SseDeserializer deserializer);
@@ -79,26 +36,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   bool sse_decode_bool(SseDeserializer deserializer);
 
   @protected
-  void sse_encode_box_autoadd_struct_with_dart_keyword_field_twin_normal(
-      StructWithDartKeywordFieldTwinNormal self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_box_autoadd_struct_with_field_rename_twin_normal(
-      StructWithFieldRenameTwinNormal self, SseSerializer serializer);
-
-  @protected
   void sse_encode_i_32(int self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_i_64(PlatformInt64 self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_struct_with_dart_keyword_field_twin_normal(
-      StructWithDartKeywordFieldTwinNormal self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_struct_with_field_rename_twin_normal(
-      StructWithFieldRenameTwinNormal self, SseSerializer serializer);
 
   @protected
   void sse_encode_unit(void self, SseSerializer serializer);

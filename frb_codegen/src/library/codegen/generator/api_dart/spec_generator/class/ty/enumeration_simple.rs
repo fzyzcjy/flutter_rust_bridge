@@ -3,8 +3,8 @@ use crate::codegen::generator::api_dart::spec_generator::misc::generate_dart_com
 use crate::codegen::ir::mir::ty::enumeration::{MirEnum, MirEnumVariant};
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
 use crate::utils::basic_code::dart_header_code::DartHeaderCode;
-use itertools::Itertools;
 use crate::utils::dart_keywords;
+use itertools::Itertools;
 
 impl<'a> EnumRefApiDartGenerator<'a> {
     pub(crate) fn generate_mode_simple(

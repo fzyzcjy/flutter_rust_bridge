@@ -7491,6 +7491,56 @@ impl CstDecode<crate::api::misc_no_twin_example_a::StructWithCustomNameMethodTwi
         )
     }
 }
+impl CstDecode<crate::api::structure::StructWithDartKeywordFieldTwinNormal>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> crate::api::structure::StructWithDartKeywordFieldTwinNormal {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        crate::api::structure::StructWithDartKeywordFieldTwinNormal {
+            class: self_.get(0).cst_decode(),
+            interface: self_.get(1).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::structure_twin_rust_async::StructWithDartKeywordFieldTwinRustAsync> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+            // Codec=Cst (C-struct based), see doc to use other codecs
+            fn cst_decode(self) -> crate::api::pseudo_manual::structure_twin_rust_async::StructWithDartKeywordFieldTwinRustAsync {
+                let self_ = self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>().unwrap();
+                assert_eq!(self_.length(), 2, "Expected 2 elements, got {}", self_.length());
+                crate::api::pseudo_manual::structure_twin_rust_async::StructWithDartKeywordFieldTwinRustAsync{class:  self_.get(0).cst_decode(),interface:  self_.get(1).cst_decode()}
+            }
+        }
+impl CstDecode<crate::api::pseudo_manual::structure_twin_sync::StructWithDartKeywordFieldTwinSync>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::structure_twin_sync::StructWithDartKeywordFieldTwinSync {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::structure_twin_sync::StructWithDartKeywordFieldTwinSync {
+            class: self_.get(0).cst_decode(),
+            interface: self_.get(1).cst_decode(),
+        }
+    }
+}
 impl CstDecode<crate::api::misc_example::StructWithEnumTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
@@ -7617,6 +7667,70 @@ impl CstDecode<crate::api::pseudo_manual::rust_auto_opaque_twin_sync_moi::Struct
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync_moi::StructWithExplicitAutoOpaqueFieldTwinSyncMoi{auto_opaque:  self_.get(0).cst_decode(),normal:  self_.get(1).cst_decode()}
             }
         }
+impl CstDecode<crate::api::structure::StructWithFieldRenameTwinNormal>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> crate::api::structure::StructWithFieldRenameTwinNormal {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        crate::api::structure::StructWithFieldRenameTwinNormal {
+            class: self_.get(0).cst_decode(),
+        }
+    }
+}
+impl
+    CstDecode<
+        crate::api::pseudo_manual::structure_twin_rust_async::StructWithFieldRenameTwinRustAsync,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::structure_twin_rust_async::StructWithFieldRenameTwinRustAsync
+    {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::structure_twin_rust_async::StructWithFieldRenameTwinRustAsync {
+            class: self_.get(0).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::structure_twin_sync::StructWithFieldRenameTwinSync>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::structure_twin_sync::StructWithFieldRenameTwinSync {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::structure_twin_sync::StructWithFieldRenameTwinSync {
+            class: self_.get(0).cst_decode(),
+        }
+    }
+}
 impl
     CstDecode<
         crate::api::pseudo_manual::rust_auto_opaque_twin_moi::StructWithGoodAndOpaqueFieldTwinMoi,
@@ -37873,6 +37987,22 @@ pub fn wire__crate__api__pseudo_manual__stream_twin_sse__stream_sink_inside_vec_
 }
 
 #[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__structure_twin_rust_async__func_for_struct_with_dart_keyword_field_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire__crate__api__pseudo_manual__structure_twin_rust_async__func_for_struct_with_dart_keyword_field_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__structure_twin_rust_async__func_for_struct_with_field_rename_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire__crate__api__pseudo_manual__structure_twin_rust_async__func_for_struct_with_field_rename_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__structure_twin_rust_async__func_struct_with_one_field_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
@@ -37910,6 +38040,26 @@ pub fn wire__crate__api__pseudo_manual__structure_twin_rust_async__func_tuple_st
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__structure_twin_rust_async__func_tuple_struct_with_two_field_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__structure_twin_rust_async_sse__func_for_struct_with_dart_keyword_field_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire__crate__api__pseudo_manual__structure_twin_rust_async_sse__func_for_struct_with_dart_keyword_field_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__structure_twin_rust_async_sse__func_for_struct_with_field_rename_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire__crate__api__pseudo_manual__structure_twin_rust_async_sse__func_for_struct_with_field_rename_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
@@ -37960,6 +38110,26 @@ pub fn wire__crate__api__pseudo_manual__structure_twin_rust_async_sse__func_tupl
     data_len_: i32,
 ) {
     wire__crate__api__pseudo_manual__structure_twin_rust_async_sse__func_tuple_struct_with_two_field_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__structure_twin_sse__func_for_struct_with_dart_keyword_field_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire__crate__api__pseudo_manual__structure_twin_sse__func_for_struct_with_dart_keyword_field_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__structure_twin_sse__func_for_struct_with_field_rename_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire__crate__api__pseudo_manual__structure_twin_sse__func_for_struct_with_field_rename_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
@@ -38028,6 +38198,20 @@ pub fn wire__crate__api__pseudo_manual__structure_twin_sse__func_tuple_struct_wi
 }
 
 #[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__structure_twin_sync__func_for_struct_with_dart_keyword_field_twin_sync(
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__pseudo_manual__structure_twin_sync__func_for_struct_with_dart_keyword_field_twin_sync_impl(arg)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__structure_twin_sync__func_for_struct_with_field_rename_twin_sync(
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__pseudo_manual__structure_twin_sync__func_for_struct_with_field_rename_twin_sync_impl(arg)
+}
+
+#[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__structure_twin_sync__func_struct_with_one_field_twin_sync(
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
@@ -38066,6 +38250,24 @@ pub fn wire__crate__api__pseudo_manual__structure_twin_sync__func_tuple_struct_w
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire__crate__api__pseudo_manual__structure_twin_sync__func_tuple_struct_with_two_field_twin_sync_impl(arg)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__structure_twin_sync_sse__func_for_struct_with_dart_keyword_field_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire__crate__api__pseudo_manual__structure_twin_sync_sse__func_for_struct_with_dart_keyword_field_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__structure_twin_sync_sse__func_for_struct_with_field_rename_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire__crate__api__pseudo_manual__structure_twin_sync_sse__func_for_struct_with_field_rename_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
@@ -39207,6 +39409,24 @@ pub fn wire__crate__api__stream_misc__stream_sink_dart_async_twin_normal(
     sink: String,
 ) {
     wire__crate__api__stream_misc__stream_sink_dart_async_twin_normal_impl(port_, sink)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__structure__func_for_struct_with_dart_keyword_field_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire__crate__api__structure__func_for_struct_with_dart_keyword_field_twin_normal_impl(
+        port_, arg,
+    )
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__structure__func_for_struct_with_field_rename_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire__crate__api__structure__func_for_struct_with_field_rename_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
