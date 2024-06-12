@@ -290,19 +290,20 @@ macro_rules! impl_into_dart_for_primitive {
 impl_into_dart_for_primitive!(i8 u8 i16 u16 i32 u32 f32 f64);
 
 macro_rules! delegate_big_buffers {
-    ($($buf:ty => $buffer:ty)*) => {$(
+    ($($buf:ty)*) => {$(
         impl IntoDart for $buf {
             fn into_dart(self) -> DartAbi {
-                let buf: &[i32] = bytemuck::cast_slice(&self[..]);
-                let buf = Int32Array::from(buf);
-                <$buffer>::new(&buf.buffer()).into()
+                into_dart_iterator(self.into_iter())
+                // let buf: &[i32] = bytemuck::cast_slice(&self[..]);
+                // let buf = Int32Array::from(buf);
+                // <$buffer>::new(&buf.buffer()).into()
             }
         }
     )*};
 }
 delegate_big_buffers! {
-    Vec<i64> => BigInt64Array
-    Vec<u64> => BigUint64Array
+    Vec<i64>
+    Vec<u64>
 }
 
 macro_rules! impl_into_dart_for_tuple {
