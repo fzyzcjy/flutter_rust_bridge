@@ -25,6 +25,9 @@ Future<void> run_packageweb() async {
       .forTarget(messageChannel.port1)
       .listen((event) => print('messageChannel.port1 see event ${event.data}'));
 
+  print('Dart call postMessage (not Rust!)');
+  messageChannel.port2.postMessage(12345.toJS);
+
   print('Dart before call my_rust_function');
   my_rust_function_packageweb(messageChannel.port2);
   print('Dart after call my_rust_function');
@@ -42,6 +45,9 @@ Future<void> run_darthtml() async {
   _kMessageEvent
       .forTarget(messageChannel.port1)
       .listen((event) => print('messageChannel.port1 see event ${event.data}'));
+
+  print('Dart call postMessage (not Rust!)');
+  messageChannel.port2.postMessage(12345);
 
   print('Dart before call my_rust_function');
   my_rust_function_darthtml(messageChannel.port2);
