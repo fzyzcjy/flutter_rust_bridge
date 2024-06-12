@@ -23,7 +23,7 @@ use crate::codegen::parser::mir::ParseMode;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use crate::utils::namespace::{Namespace, NamespacedName};
 use anyhow::{bail, Context};
-use itertools::{concat, Itertools};
+use itertools::concat;
 use log::{debug, warn};
 use std::fmt::Debug;
 use syn::*;
