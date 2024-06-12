@@ -10,8 +10,9 @@ import 'package:flutter_rust_bridge/src/platform_types/_web.dart';
 /// {@macro flutter_rust_bridge.internal}
 String serializeNativePort(NativePortType port) => port.name;
 
-/// {@macro flutter_rust_bridge.only_for_generated_code}
-typedef SendPort = _WebPortLike;
+/// {@macro flutter_rust_bridge.internal}
+ReceivePort broadcastPort(String channelName) => ReceivePort._raw(
+    RawReceivePort._raw(_WebChannel.broadcastChannel(channelName)));
 
 /// {@template flutter_rust_bridge.same_as_native}
 /// Web implementation of the one with same name in native.
@@ -73,9 +74,13 @@ class RawReceivePort {
   _WebPortLike get _webReceivePort => _webChannel._receivePort;
 }
 
-/// {@macro flutter_rust_bridge.internal}
-ReceivePort broadcastPort(String channelName) => ReceivePort._raw(
-    RawReceivePort._raw(_WebChannel.broadcastChannel(channelName)));
+/// {@macro flutter_rust_bridge.same_as_native}
+class SendPort {
+  /// {@macro flutter_rust_bridge.same_as_native}
+  final html.EventTarget nativePort;
+
+  const SendPort._(this.nativePort);
+}
 
 abstract class _WebChannel {
   SendPort get sendPort;
@@ -92,7 +97,7 @@ class _WebMessageChannel implements _WebChannel {
   final channel = MessageChannel();
 
   @override
-  SendPort get sendPort => _WebPortLike._messagePort(channel.port2);
+  SendPort get sendPort => SendPort._(channel.port2);
 
   @override
   _WebPortLike get _receivePort => _WebPortLike._messagePort(channel.port1);
@@ -110,7 +115,7 @@ class _WebBroadcastChannel implements _WebChannel {
         _receiveChannel = BroadcastChannel(channelName);
 
   @override
-  SendPort get sendPort => _WebPortLike._broadcastChannel(_sendChannel);
+  SendPort get sendPort => SendPort._(_sendChannel);
 
   @override
   _WebPortLike get _receivePort =>
