@@ -83,6 +83,18 @@ impl CstDecode<backtrace::Backtrace> for String {
         unimplemented!()
     }
 }
+impl CstDecode<i64> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> i64 {
+        unimplemented!("Not implemented in this codec, please use the other one")
+    }
+}
+impl CstDecode<u64> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> u64 {
+        unimplemented!("Not implemented in this codec, please use the other one")
+    }
+}
 impl CstDecode<char> for String {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> char {
@@ -7407,6 +7419,28 @@ impl CstDecode<crate::deliberate_name_conflict::StructInUpperLevel>
         }
     }
 }
+impl CstDecode<crate::api::casted_primitive::StructWithCastedPrimitiveTwinNormal>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> crate::api::casted_primitive::StructWithCastedPrimitiveTwinNormal {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            4,
+            "Expected 4 elements, got {}",
+            self_.length()
+        );
+        crate::api::casted_primitive::StructWithCastedPrimitiveTwinNormal {
+            field_i64: self_.get(0).cst_decode(),
+            field_u64: self_.get(1).cst_decode(),
+            field_i32: self_.get(2).cst_decode(),
+            field_vec_u8: self_.get(3).cst_decode(),
+        }
+    }
+}
 impl CstDecode<crate::api::comment::StructWithCommentsTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
@@ -9727,6 +9761,18 @@ impl CstDecode<backtrace::Backtrace> for flutter_rust_bridge::for_generated::was
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> backtrace::Backtrace {
         unimplemented!()
+    }
+}
+impl CstDecode<i64> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> i64 {
+        unimplemented!("Not implemented in this codec, please use the other one")
+    }
+}
+impl CstDecode<u64> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> u64 {
+        unimplemented!("Not implemented in this codec, please use the other one")
     }
 }
 impl CstDecode<char> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
@@ -14035,6 +14081,21 @@ pub fn wire__crate__api__casted_primitive__casted_primitive_isize_twin_normal(
 }
 
 #[wasm_bindgen]
+pub fn wire__crate__api__casted_primitive__casted_primitive_multi_arg_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire__crate__api__casted_primitive__casted_primitive_multi_arg_twin_normal_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[wasm_bindgen]
 pub fn wire__crate__api__casted_primitive__casted_primitive_u64_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -14061,6 +14122,16 @@ pub fn wire__crate__api__casted_primitive__casted_primitive_usize_twin_normal(
         ptr_,
         rust_vec_len_,
         data_len_,
+    )
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__casted_primitive__function_for_struct_with_casted_primitive_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire__crate__api__casted_primitive__function_for_struct_with_casted_primitive_twin_normal_impl(
+        port_, arg,
     )
 }
 

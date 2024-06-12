@@ -1147,6 +1147,18 @@ impl CstDecode<backtrace::Backtrace> for *mut wire_cst_list_prim_u_8_strict {
         unimplemented!()
     }
 }
+impl CstDecode<i64> for i64 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> i64 {
+        unimplemented!("Not implemented in this codec, please use the other one")
+    }
+}
+impl CstDecode<u64> for u64 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> u64 {
+        unimplemented!("Not implemented in this codec, please use the other one")
+    }
+}
 impl CstDecode<char> for *mut wire_cst_list_prim_u_8_strict {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> char {
@@ -6186,6 +6198,18 @@ impl CstDecode<crate::api::deliberate_name_conflict::StructInLowerLevel>
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::deliberate_name_conflict::StructInLowerLevel>::cst_decode(*wrap)
             .into()
+    }
+}
+impl CstDecode<crate::api::casted_primitive::StructWithCastedPrimitiveTwinNormal>
+    for *mut wire_cst_struct_with_casted_primitive_twin_normal
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> crate::api::casted_primitive::StructWithCastedPrimitiveTwinNormal {
+        let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+        CstDecode::<crate::api::casted_primitive::StructWithCastedPrimitiveTwinNormal>::cst_decode(
+            *wrap,
+        )
+        .into()
     }
 }
 impl CstDecode<crate::api::comment::StructWithCommentsTwinNormal>
@@ -11934,6 +11958,19 @@ impl CstDecode<crate::deliberate_name_conflict::StructInUpperLevel>
         }
     }
 }
+impl CstDecode<crate::api::casted_primitive::StructWithCastedPrimitiveTwinNormal>
+    for wire_cst_struct_with_casted_primitive_twin_normal
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> crate::api::casted_primitive::StructWithCastedPrimitiveTwinNormal {
+        crate::api::casted_primitive::StructWithCastedPrimitiveTwinNormal {
+            field_i64: self.field_i64.cst_decode(),
+            field_u64: self.field_u64.cst_decode(),
+            field_i32: self.field_i32.cst_decode(),
+            field_vec_u8: self.field_vec_u8.cst_decode(),
+        }
+    }
+}
 impl CstDecode<crate::api::comment::StructWithCommentsTwinNormal>
     for wire_cst_struct_with_comments_twin_normal
 {
@@ -16106,6 +16143,21 @@ impl Default for wire_cst_struct_in_upper_level {
         Self::new_with_null_ptr()
     }
 }
+impl NewWithNullPtr for wire_cst_struct_with_casted_primitive_twin_normal {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            field_i64: Default::default(),
+            field_u64: Default::default(),
+            field_i32: Default::default(),
+            field_vec_u8: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_struct_with_casted_primitive_twin_normal {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
 impl NewWithNullPtr for wire_cst_struct_with_comments_twin_normal {
     fn new_with_null_ptr() -> Self {
         Self {
@@ -17028,6 +17080,21 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__casted_primitiv
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__casted_primitive__casted_primitive_multi_arg_twin_normal(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire__crate__api__casted_primitive__casted_primitive_multi_arg_twin_normal_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__casted_primitive__casted_primitive_u64_twin_normal(
     port_: i64,
     ptr_: *mut u8,
@@ -17054,6 +17121,16 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__casted_primitiv
         ptr_,
         rust_vec_len_,
         data_len_,
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__casted_primitive__function_for_struct_with_casted_primitive_twin_normal(
+    port_: i64,
+    arg: *mut wire_cst_struct_with_casted_primitive_twin_normal,
+) {
+    wire__crate__api__casted_primitive__function_for_struct_with_casted_primitive_twin_normal_impl(
+        port_, arg,
     )
 }
 
@@ -47402,6 +47479,14 @@ pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_box_autoadd_struct_in_low
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_box_autoadd_struct_with_casted_primitive_twin_normal(
+) -> *mut wire_cst_struct_with_casted_primitive_twin_normal {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(
+        wire_cst_struct_with_casted_primitive_twin_normal::new_with_null_ptr(),
+    )
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_box_autoadd_struct_with_comments_twin_normal(
 ) -> *mut wire_cst_struct_with_comments_twin_normal {
     flutter_rust_bridge::for_generated::new_leak_box_ptr(
@@ -53426,6 +53511,14 @@ pub struct wire_cst_struct_in_lower_level {
 #[derive(Clone, Copy)]
 pub struct wire_cst_struct_in_upper_level {
     upper: usize,
+}
+#[repr(C)]
+#[derive(Clone, Copy)]
+pub struct wire_cst_struct_with_casted_primitive_twin_normal {
+    field_i64: i64,
+    field_u64: u64,
+    field_i32: i32,
+    field_vec_u8: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]

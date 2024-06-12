@@ -2439,6 +2439,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   StructInLowerLevel dco_decode_box_autoadd_struct_in_lower_level(dynamic raw);
 
   @protected
+  StructWithCastedPrimitiveTwinNormal
+      dco_decode_box_autoadd_struct_with_casted_primitive_twin_normal(
+          dynamic raw);
+
+  @protected
   StructWithCommentsTwinNormal
       dco_decode_box_autoadd_struct_with_comments_twin_normal(dynamic raw);
 
@@ -4300,6 +4305,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   StructInUpperLevel dco_decode_struct_in_upper_level(dynamic raw);
+
+  @protected
+  StructWithCastedPrimitiveTwinNormal
+      dco_decode_struct_with_casted_primitive_twin_normal(dynamic raw);
 
   @protected
   StructWithCommentsTwinNormal dco_decode_struct_with_comments_twin_normal(
@@ -6658,6 +6667,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  StructWithCastedPrimitiveTwinNormal
+      sse_decode_box_autoadd_struct_with_casted_primitive_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
   StructWithCommentsTwinNormal
       sse_decode_box_autoadd_struct_with_comments_twin_normal(
           SseDeserializer deserializer);
@@ -8780,6 +8794,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   StructInUpperLevel sse_decode_struct_in_upper_level(
       SseDeserializer deserializer);
+
+  @protected
+  StructWithCastedPrimitiveTwinNormal
+      sse_decode_struct_with_casted_primitive_twin_normal(
+          SseDeserializer deserializer);
 
   @protected
   StructWithCommentsTwinNormal sse_decode_struct_with_comments_twin_normal(
@@ -11203,6 +11222,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       StructInLowerLevel self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_struct_with_casted_primitive_twin_normal(
+      StructWithCastedPrimitiveTwinNormal self, SseSerializer serializer);
+
+  @protected
   void sse_encode_box_autoadd_struct_with_comments_twin_normal(
       StructWithCommentsTwinNormal self, SseSerializer serializer);
 
@@ -13268,6 +13291,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_struct_in_upper_level(
       StructInUpperLevel self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_casted_primitive_twin_normal(
+      StructWithCastedPrimitiveTwinNormal self, SseSerializer serializer);
 
   @protected
   void sse_encode_struct_with_comments_twin_normal(
