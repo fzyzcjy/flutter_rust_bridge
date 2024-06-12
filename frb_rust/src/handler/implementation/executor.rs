@@ -147,11 +147,11 @@ impl ExecuteNormalOrAsyncUtils {
     {
         match ret {
             Ok(result) => {
-                sender.send_or_warn(result.into_dart_abi());
+                sender.send_or_warn(move || result.into_dart_abi());
             }
             Err(error) => {
                 el.on_error(Error::CustomError);
-                sender.send_or_warn(error.into_dart_abi());
+                sender.send_or_warn(move || error.into_dart_abi());
             }
         };
     }
