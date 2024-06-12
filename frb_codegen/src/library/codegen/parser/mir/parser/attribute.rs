@@ -590,8 +590,6 @@ pub(crate) struct FrbAttributeSerDes {
 
 impl Parse for FrbAttributeSerDes {
     fn parse(input: ParseStream) -> Result<Self> {
-        log::warn!("hi {input:?}");
-
         let content;
         parenthesized!(content in input);
 
