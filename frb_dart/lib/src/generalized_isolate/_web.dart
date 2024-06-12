@@ -2,86 +2,49 @@
 library html_isolate;
 
 import 'dart:async';
-import 'dart:html' as html;
-import 'dart:html' hide MessagePort;
 
 import 'package:flutter_rust_bridge/src/platform_types/_web.dart';
 
 /// {@macro flutter_rust_bridge.internal}
 String serializeNativePort(NativePortType port) => port;
 
-/// Web implementation of the `dart:isolate`'s ReceivePort.
-class ReceivePort extends Stream<dynamic> {
-  /// The receive port.
-  final RawReceivePort _rawReceivePort;
+/// {@template flutter_rust_bridge.same_as_native}
+/// Web implementation of the one with same name in native.
+/// {@endtemplate}
+class ReceivePort extends StreamView<dynamic> {
+  /// {@macro flutter_rust_bridge.same_as_native}
+  ReceivePort() : super(throw UnimplementedError());
 
-  /// Create a new receive port from an optional [RawReceivePort].
-  ReceivePort() : _rawReceivePort = RawReceivePort();
-
-  @override
-  StreamSubscription listen(
-    void Function(dynamic event)? onData, {
-    Function? onError,
-    void Function()? onDone,
-    bool? cancelOnError,
-  }) {
-    return _rawReceivePort._onMessage.map(_extractData).listen(
-          onData,
-          onError: onError,
-          onDone: onDone,
-          cancelOnError: cancelOnError,
-        );
-  }
-
-  static dynamic _extractData(MessageEvent event) => event.data;
-
-  /// The send port.
-  SendPort get sendPort => _rawReceivePort.sendPort;
-
-  /// Close the receive port, ignoring any further messages.
-  void close() => _rawReceivePort.close();
+  /// {@macro flutter_rust_bridge.same_as_native}
+  void close() => throw UnimplementedError();
 }
 
-/// Web implementation of the `dart:isolate`'s RawReceivePort.
+/// {@macro flutter_rust_bridge.same_as_native}
 class RawReceivePort {
-  // Note: It is *wrong* to reuse the same HTML BroadcastChannel object
-  // for both sending and receiving, because HTML BroadcastChannel spec says
-  // that, the event will not be fired at the object which sends it.
-  /// The underlying message channel.
-  final BroadcastChannel _receiveChannel;
-
-  /// {@macro flutter_rust_bridge.only_for_generated_code}
-  RawReceivePort()
-      : _receiveChannel = html.BroadcastChannel(_PortNameGenerator.create());
-
-  set handler(Function(dynamic) handler) {
-    _onMessage.listen((event) => handler(event.data));
+  /// {@macro flutter_rust_bridge.same_as_native}
+  set handler(void Function(dynamic) handler) {
+    throw UnimplementedError();
   }
 
-  /// Close the receive port.
-  void close() => _receiveChannel.close();
+  /// {@macro flutter_rust_bridge.same_as_native}
+  void close() => throw UnimplementedError();
 
-  /// The port to be used by other workers.
-  SendPort get sendPort => SendPort._(_receiveChannel.name!);
-
-  Stream<MessageEvent> get _onMessage =>
-      _kMessageEvent.forTarget(_receiveChannel);
+  /// {@macro flutter_rust_bridge.same_as_native}
+  SendPort get sendPort => throw UnimplementedError();
 }
 
-const _kMessageEvent = EventStreamProvider<MessageEvent>('message');
-
-/// {@macro flutter_rust_bridge.only_for_generated_code}
+/// {@macro flutter_rust_bridge.same_as_native}
 class SendPort {
-  final String _broadcastChannelName;
+  /// {@macro flutter_rust_bridge.same_as_native}
+  int get nativePort => _nativePort;
+  final int _nativePort;
 
-  SendPort._(this._broadcastChannelName);
-
-  /// {@macro flutter_rust_bridge.only_for_generated_code}
-  String get nativePort => _broadcastChannelName;
+  SendPort._(this._nativePort);
 }
 
-class _PortNameGenerator {
-  static int _nextPort = 0;
-
-  static String create() => '__frb_port_${_nextPort++}';
-}
+// TODO
+// class _PortNameGenerator {
+//   static int _nextPort = 0;
+//
+//   static String create() => '__frb_port_${_nextPort++}';
+// }
