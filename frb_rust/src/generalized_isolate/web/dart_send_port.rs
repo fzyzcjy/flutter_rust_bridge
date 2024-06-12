@@ -14,7 +14,7 @@ impl DartSendPort {
         // to test whether "send to another thread" can compile
         let msg_boxed: Box<dyn BoxIntoDart> = Box::new(msg);
         std::thread::spawn(move || {
-            let dart_abi = msg_boxed.into_dart();
+            let dart_abi = msg_boxed.box_into_dart();
             let _ = dart_abi;
         });
         todo!()
