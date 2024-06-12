@@ -66,7 +66,7 @@ class RawReceivePort {
   }
 
   /// {@macro flutter_rust_bridge.same_as_native}
-  void close() => _webChannel._receivePort._close();
+  void close() => _webReceivePort._close();
 
   /// {@macro flutter_rust_bridge.same_as_native}
   SendPort get sendPort => _webChannel.sendPort;
