@@ -66,13 +66,18 @@ fn parse_function_inner(
 fn merge_pair(pair: Vec<Info>) -> MirCustomSerDes {
     let [a, b]: [Info; 2] = (pair.try_into())
         .unwrap_or_else(|_| panic!("Expect a pair of serializer and deserializer"));
+    let (dart2rust, rust2dart) = if a.direction == Direction::Dart2Rust {
+        (a, b)
+    } else {
+        (b, a)
+    };
 
     MirCustomSerDes {
-        inner_type: a.inner_type.clone(),
-        rust_api_type: a.rust_api_type.clone(),
-        dart_api_type: a.dart_api_type.clone(),
-        dart2rust: TODO,
-        rust2dart: TODO,
+        inner_type: dart2rust.inner_type.clone(),
+        rust_api_type: dart2rust.rust_api_type.clone(),
+        dart_api_type: dart2rust.dart_api_type.clone(),
+        dart2rust: dart2rust.half,
+        rust2dart: rust2dart.half,
     }
 }
 
