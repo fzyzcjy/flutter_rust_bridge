@@ -105,7 +105,7 @@ fn reconstruct_dart_wire_type_from_raw_repr(ty: &str) -> String {
     let real_ty = if is_rust_pointer(ty) {
         "int"
     } else {
-        "dynamic"
+        "JSAny?"
     };
     format!("{real_ty} /* {ty} */")
 }
