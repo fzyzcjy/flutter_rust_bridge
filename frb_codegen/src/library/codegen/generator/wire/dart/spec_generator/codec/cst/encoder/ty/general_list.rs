@@ -41,7 +41,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for GeneralListWireDartCodecCstGe
             )),
             web: self.context.config.web_enabled.then(|| {
                 format!(
-                    "return raw.map(cst_encode_{}).toList();",
+                    "return raw.map(cst_encode_{}).toList().jsify();",
                     self.mir.inner.safe_ident()
                 )
             }),
@@ -52,7 +52,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for GeneralListWireDartCodecCstGe
     fn dart_wire_type(&self, target: Target) -> String {
         match target {
             Target::Io => format!("ffi.Pointer<wire_cst_{}>", self.mir.safe_ident()),
-            Target::Web => "List<JSAny?>".into(),
+            Target::Web => "JSAny?".into(),
         }
     }
 }
