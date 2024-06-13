@@ -30,6 +30,8 @@ Future<void> _modifySdkMinVersion({required String package}) async {
   final contentRaw = loadYaml(file.readAsStringSync());
   final content = jsonDecode(jsonEncode(contentRaw));
 
+  // Lower the version since the custom compiled Dart SDK is done before,
+  // and we do not really need new sdk version when on native platform.
   content['environment']['sdk'] = '>=3.2.0';
   file.writeAsStringSync(jsonEncode(content));
 }
