@@ -37704,7 +37704,7 @@ class RustLibWire implements BaseWire {
       wasmModule.wire__crate__api__attribute__next_user_id_twin_normal(
           port_, user_id);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__benchmark_misc__benchmark_void_semi_serialize() =>
           wasmModule
               .wire__crate__api__benchmark_misc__benchmark_void_semi_serialize();
@@ -37843,14 +37843,14 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__comment__struct_with_comments_twin_normal_static_method_twin_normal(
               port_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_check(
               int that) =>
           wasmModule
               .wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_check(
                   that);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_get_one(
               int that) =>
           wasmModule
@@ -37863,33 +37863,33 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_new(
               port_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_set_one(
               int that, String one) =>
           wasmModule
               .wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_set_one(
                   that, one);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__constructor__ConstructorOpaqueSyncStructTwinNormal_check(
               int that) =>
           wasmModule
               .wire__crate__api__constructor__ConstructorOpaqueSyncStructTwinNormal_check(
                   that);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__constructor__ConstructorOpaqueSyncStructTwinNormal_get_one(
               int that) =>
           wasmModule
               .wire__crate__api__constructor__ConstructorOpaqueSyncStructTwinNormal_get_one(
                   that);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__constructor__ConstructorOpaqueSyncStructTwinNormal_new() =>
           wasmModule
               .wire__crate__api__constructor__ConstructorOpaqueSyncStructTwinNormal_new();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__constructor__ConstructorOpaqueSyncStructTwinNormal_set_one(
               int that, String one) =>
           wasmModule
@@ -37902,7 +37902,7 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__constructor__constructor_translatable_struct_twin_normal_new(
               port_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__constructor__constructor_translatable_sync_struct_twin_normal_new() =>
           wasmModule
               .wire__crate__api__constructor__constructor_translatable_sync_struct_twin_normal_new();
@@ -38090,35 +38090,35 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__dart_opaque__set_static_dart_opaque_twin_normal(
               port_, id, opaque);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__dart_opaque_sync__sync_accept_dart_opaque_twin_normal(
               PlatformPointer opaque) =>
           wasmModule
               .wire__crate__api__dart_opaque_sync__sync_accept_dart_opaque_twin_normal(
                   opaque);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__dart_opaque_sync__sync_loopback_twin_normal(
               PlatformPointer opaque) =>
           wasmModule
               .wire__crate__api__dart_opaque_sync__sync_loopback_twin_normal(
                   opaque);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__dart_opaque_sync__sync_option_dart_opaque_twin_normal(
               PlatformPointer opaque) =>
           wasmModule
               .wire__crate__api__dart_opaque_sync__sync_option_dart_opaque_twin_normal(
                   opaque);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__dart_opaque_sync__sync_option_loopback_twin_normal(
               PlatformPointer? opaque) =>
           wasmModule
               .wire__crate__api__dart_opaque_sync__sync_option_loopback_twin_normal(
                   opaque);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__dart_opaque_sync__unwrap_dart_opaque_twin_normal(
               PlatformPointer opaque) =>
           wasmModule
@@ -38163,14 +38163,14 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__dyn_trait__StructOneWithTraitForDynTwinNormal_create_twin_normal(
               port_, ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__dyn_trait__StructOneWithTraitForDynTwinNormal_get_one(
               int that) =>
           wasmModule
               .wire__crate__api__dyn_trait__StructOneWithTraitForDynTwinNormal_get_one(
                   that);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__dyn_trait__StructOneWithTraitForDynTwinNormal_set_one(
               int that, int one) =>
           wasmModule
@@ -38195,14 +38195,14 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__dyn_trait__StructTwoWithTraitForDynTwinNormal_create_twin_normal(
               port_, ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__dyn_trait__StructTwoWithTraitForDynTwinNormal_get_two(
               int that) =>
           wasmModule
               .wire__crate__api__dyn_trait__StructTwoWithTraitForDynTwinNormal_get_two(
                   that);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__dyn_trait__StructTwoWithTraitForDynTwinNormal_set_two(
               int that, int two) =>
           wasmModule
@@ -38287,7 +38287,7 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__event_listener__close_event_listener_twin_normal(
               port_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__event_listener__create_event_sync_twin_normal(
               String address, String payload) =>
           wasmModule
@@ -38481,7 +38481,7 @@ class RustLibWire implements BaseWire {
           NativePortType port_) =>
       wasmModule.wire__crate__api__exception__throw_anyhow_twin_normal(port_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__external_impl__SimpleOpaqueExternalStructWithMethod_new(
               String a) =>
           wasmModule
@@ -38524,14 +38524,14 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__external_type_in_crate__use_imported_struct_twin_normal(
               port_, my_struct);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__impl_trait__StructOneWithTraitTwinNormal_get_one(
               int that) =>
           wasmModule
               .wire__crate__api__impl_trait__StructOneWithTraitTwinNormal_get_one(
                   that);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__impl_trait__StructOneWithTraitTwinNormal_set_one(
               int that, int one) =>
           wasmModule
@@ -38556,14 +38556,14 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__impl_trait__StructOneWithTraitTwinNormal_simple_trait_fn_with_default_impl_twin_normal(
               port_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__impl_trait__StructTwoWithTraitTwinNormal_get_two(
               int that) =>
           wasmModule
               .wire__crate__api__impl_trait__StructTwoWithTraitTwinNormal_get_two(
                   that);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__impl_trait__StructTwoWithTraitTwinNormal_set_two(
               int that, int two) =>
           wasmModule
@@ -38980,84 +38980,84 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_dummy_function_twin_normal(
               port_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_deliberate_bad_field_a(
               int that) =>
           wasmModule
               .wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_deliberate_bad_field_a(
                   that);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_deliberate_bad_field_b(
               int that) =>
           wasmModule
               .wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_deliberate_bad_field_b(
                   that);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_deliberate_bad_field_c(
               int that) =>
           wasmModule
               .wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_deliberate_bad_field_c(
                   that);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_good_field_a(
               int that) =>
           wasmModule
               .wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_good_field_a(
                   that);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_good_field_b(
               int that) =>
           wasmModule
               .wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_good_field_b(
                   that);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_good_field_c(
               int that) =>
           wasmModule
               .wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_good_field_c(
                   that);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_deliberate_bad_field_a(
               int that, Uint8List deliberate_bad_field_a) =>
           wasmModule
               .wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_deliberate_bad_field_a(
                   that, deliberate_bad_field_a);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_deliberate_bad_field_b(
               int that, int deliberate_bad_field_b) =>
           wasmModule
               .wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_deliberate_bad_field_b(
                   that, deliberate_bad_field_b);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_deliberate_bad_field_c(
               int that, List<dynamic> deliberate_bad_field_c) =>
           wasmModule
               .wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_deliberate_bad_field_c(
                   that, deliberate_bad_field_c);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_good_field_a(
               int that, String good_field_a) =>
           wasmModule
               .wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_good_field_a(
                   that, good_field_a);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_good_field_b(
               int that, int good_field_b) =>
           wasmModule
               .wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_good_field_b(
                   that, good_field_b);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_good_field_c(
               int that, int good_field_c) =>
           wasmModule
@@ -39076,14 +39076,14 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_get_item_contents_twin_normal(
               port_, that);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_get_name(
               int that) =>
           wasmModule
               .wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_get_name(
                   that);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_set_name(
               int that, String name) =>
           wasmModule
@@ -39108,33 +39108,33 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__misc_no_twin_example_a__StructWithImplBlockInMultiFile_method_in_b(
               port_, that);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__misc_no_twin_example_a__StructWithSimpleSetterTwinNormal_get_something(
               int that) =>
           wasmModule
               .wire__crate__api__misc_no_twin_example_a__StructWithSimpleSetterTwinNormal_get_something(
                   that);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__misc_no_twin_example_a__StructWithSimpleSetterTwinNormal_new() =>
           wasmModule
               .wire__crate__api__misc_no_twin_example_a__StructWithSimpleSetterTwinNormal_new();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__misc_no_twin_example_a__StructWithSimpleSetterTwinNormal_set_something(
               int that, int value) =>
           wasmModule
               .wire__crate__api__misc_no_twin_example_a__StructWithSimpleSetterTwinNormal_set_something(
                   that, value);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__misc_no_twin_example_a__StructWithSimpleSetterTwinNormal_simple_getter(
               int that) =>
           wasmModule
               .wire__crate__api__misc_no_twin_example_a__StructWithSimpleSetterTwinNormal_simple_getter(
                   that);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__misc_no_twin_example_a__StructWithSimpleSetterTwinNormal_simple_setter(
               int that, int value) =>
           wasmModule
@@ -39171,7 +39171,7 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__misc_no_twin_example_a__same_function_name_in_different_files(
               port_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__misc_no_twin_example_a__struct_with_custom_name_method_twin_normal_method_with_custom_name_twin_normal(
               List<dynamic> that) =>
           wasmModule
@@ -39617,80 +39617,80 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__array_twin_sse__use_msgid_twin_sse(
               port_, ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__array_twin_sync__boxed_blob_twin_sync(
               Uint8List blob) =>
           wasmModule
               .wire__crate__api__pseudo_manual__array_twin_sync__boxed_blob_twin_sync(
                   blob);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__array_twin_sync__func_test_id_twin_sync(
               List<dynamic> id) =>
           wasmModule
               .wire__crate__api__pseudo_manual__array_twin_sync__func_test_id_twin_sync(
                   id);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__array_twin_sync__get_array_twin_sync() =>
           wasmModule
               .wire__crate__api__pseudo_manual__array_twin_sync__get_array_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__array_twin_sync__get_complex_array_twin_sync() =>
           wasmModule
               .wire__crate__api__pseudo_manual__array_twin_sync__get_complex_array_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__array_twin_sync__last_number_twin_sync(
               Float64List array) =>
           wasmModule
               .wire__crate__api__pseudo_manual__array_twin_sync__last_number_twin_sync(
                   array);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__array_twin_sync__nested_id_twin_sync(
               List<dynamic> id) =>
           wasmModule
               .wire__crate__api__pseudo_manual__array_twin_sync__nested_id_twin_sync(
                   id);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__array_twin_sync__new_msgid_twin_sync(
               Uint8List id) =>
           wasmModule
               .wire__crate__api__pseudo_manual__array_twin_sync__new_msgid_twin_sync(
                   id);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__array_twin_sync__return_boxed_feed_id_twin_sync(
               Uint8List id) =>
           wasmModule
               .wire__crate__api__pseudo_manual__array_twin_sync__return_boxed_feed_id_twin_sync(
                   id);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__array_twin_sync__return_boxed_raw_feed_id_twin_sync(
               List<dynamic> id) =>
           wasmModule
               .wire__crate__api__pseudo_manual__array_twin_sync__return_boxed_raw_feed_id_twin_sync(
                   id);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__array_twin_sync__use_boxed_blob_twin_sync(
               List<dynamic> blob) =>
           wasmModule
               .wire__crate__api__pseudo_manual__array_twin_sync__use_boxed_blob_twin_sync(
                   blob);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__array_twin_sync__use_msgid_twin_sync(
               List<dynamic> id) =>
           wasmModule
               .wire__crate__api__pseudo_manual__array_twin_sync__use_msgid_twin_sync(
                   id);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__array_twin_sync_sse__boxed_blob_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -39699,7 +39699,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__array_twin_sync_sse__boxed_blob_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__array_twin_sync_sse__func_test_id_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -39708,7 +39708,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__array_twin_sync_sse__func_test_id_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__array_twin_sync_sse__get_array_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -39717,7 +39717,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__array_twin_sync_sse__get_array_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__array_twin_sync_sse__get_complex_array_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -39726,7 +39726,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__array_twin_sync_sse__get_complex_array_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__array_twin_sync_sse__last_number_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -39735,7 +39735,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__array_twin_sync_sse__last_number_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__array_twin_sync_sse__nested_id_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -39744,7 +39744,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__array_twin_sync_sse__nested_id_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__array_twin_sync_sse__new_msgid_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -39753,7 +39753,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__array_twin_sync_sse__new_msgid_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__array_twin_sync_sse__return_boxed_feed_id_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -39762,7 +39762,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__array_twin_sync_sse__return_boxed_feed_id_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__array_twin_sync_sse__return_boxed_raw_feed_id_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -39771,7 +39771,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__array_twin_sync_sse__return_boxed_raw_feed_id_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__array_twin_sync_sse__use_boxed_blob_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -39780,7 +39780,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__array_twin_sync_sse__use_boxed_blob_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__array_twin_sync_sse__use_msgid_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -39855,21 +39855,21 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__attribute_twin_sse__next_user_id_twin_sse(
               port_, ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__attribute_twin_sync__handle_customized_struct_twin_sync(
               List<dynamic> val) =>
           wasmModule
               .wire__crate__api__pseudo_manual__attribute_twin_sync__handle_customized_struct_twin_sync(
                   val);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__attribute_twin_sync__next_user_id_twin_sync(
               List<dynamic> user_id) =>
           wasmModule
               .wire__crate__api__pseudo_manual__attribute_twin_sync__next_user_id_twin_sync(
                   user_id);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__attribute_twin_sync_sse__handle_customized_struct_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -39878,7 +39878,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__attribute_twin_sync_sse__handle_customized_struct_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__attribute_twin_sync_sse__next_user_id_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -40487,119 +40487,119 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__basic_list_twin_sse__example_basic_list_type_u8_twin_sse(
               port_, ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_basic_general_enum_twin_sync_twin_sync(
               List<dynamic> arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_basic_general_enum_twin_sync_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_basic_primitive_enum_twin_sync_twin_sync(
               List<dynamic> arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_basic_primitive_enum_twin_sync_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_basic_struct_twin_sync_twin_sync(
               List<dynamic> arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_basic_struct_twin_sync_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_bool_twin_sync(
               List<dynamic> arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_bool_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_bytes_twin_sync(
               List<dynamic> arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_bytes_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_f32_twin_sync(
               List<double> arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_f32_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_f64_twin_sync(
               List<double> arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_f64_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_i16_twin_sync(
               List<int> arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_i16_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_i32_twin_sync(
               List<int> arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_i32_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_i64_twin_sync(
               JSAny /* BigInt64Array */ arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_i64_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_i8_twin_sync(
               List<int> arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_i8_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_string_twin_sync(
               List<dynamic> arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_string_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_u16_twin_sync(
               List<int> arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_u16_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_u32_twin_sync(
               List<int> arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_u32_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_u64_twin_sync(
               JSAny /* BigInt64Array */ arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_u64_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_u8_twin_sync(
               List<int> arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_u8_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_list_twin_sync_sse__example_basic_list_type_basic_general_enum_twin_sync_sse_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -40608,7 +40608,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_list_twin_sync_sse__example_basic_list_type_basic_general_enum_twin_sync_sse_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_list_twin_sync_sse__example_basic_list_type_basic_primitive_enum_twin_sync_sse_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -40617,7 +40617,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_list_twin_sync_sse__example_basic_list_type_basic_primitive_enum_twin_sync_sse_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_list_twin_sync_sse__example_basic_list_type_basic_struct_twin_sync_sse_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -40626,7 +40626,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_list_twin_sync_sse__example_basic_list_type_basic_struct_twin_sync_sse_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_list_twin_sync_sse__example_basic_list_type_bool_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -40635,7 +40635,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_list_twin_sync_sse__example_basic_list_type_bool_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_list_twin_sync_sse__example_basic_list_type_bytes_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -40644,7 +40644,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_list_twin_sync_sse__example_basic_list_type_bytes_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_list_twin_sync_sse__example_basic_list_type_f32_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -40653,7 +40653,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_list_twin_sync_sse__example_basic_list_type_f32_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_list_twin_sync_sse__example_basic_list_type_f64_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -40662,7 +40662,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_list_twin_sync_sse__example_basic_list_type_f64_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_list_twin_sync_sse__example_basic_list_type_i16_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -40671,7 +40671,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_list_twin_sync_sse__example_basic_list_type_i16_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_list_twin_sync_sse__example_basic_list_type_i32_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -40680,7 +40680,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_list_twin_sync_sse__example_basic_list_type_i32_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_list_twin_sync_sse__example_basic_list_type_i64_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -40689,7 +40689,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_list_twin_sync_sse__example_basic_list_type_i64_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_list_twin_sync_sse__example_basic_list_type_i8_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -40698,7 +40698,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_list_twin_sync_sse__example_basic_list_type_i8_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_list_twin_sync_sse__example_basic_list_type_string_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -40707,7 +40707,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_list_twin_sync_sse__example_basic_list_type_string_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_list_twin_sync_sse__example_basic_list_type_u16_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -40716,7 +40716,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_list_twin_sync_sse__example_basic_list_type_u16_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_list_twin_sync_sse__example_basic_list_type_u32_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -40725,7 +40725,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_list_twin_sync_sse__example_basic_list_type_u32_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_list_twin_sync_sse__example_basic_list_type_u64_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -40734,7 +40734,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_list_twin_sync_sse__example_basic_list_type_u64_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_list_twin_sync_sse__example_basic_list_type_u8_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -41343,147 +41343,147 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__basic_map_twin_sse__example_basic_map_type_usize_twin_sse(
               port_, ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_basic_general_enum_twin_sync_twin_sync(
               List<dynamic> arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_basic_general_enum_twin_sync_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_basic_primitive_enum_twin_sync_twin_sync(
               List<dynamic> arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_basic_primitive_enum_twin_sync_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_basic_struct_twin_sync_twin_sync(
               List<dynamic> arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_basic_struct_twin_sync_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_bool_twin_sync(
               List<dynamic> arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_bool_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_bytes_twin_sync(
               List<dynamic> arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_bytes_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_f32_twin_sync(
               List<dynamic> arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_f32_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_f64_twin_sync(
               List<dynamic> arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_f64_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_i128_twin_sync(
               List<dynamic> arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_i128_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_i16_twin_sync(
               List<dynamic> arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_i16_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_i32_twin_sync(
               List<dynamic> arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_i32_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_i64_twin_sync(
               List<dynamic> arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_i64_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_i8_twin_sync(
               List<dynamic> arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_i8_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_isize_twin_sync(
               List<dynamic> arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_isize_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_string_twin_sync(
               List<dynamic> arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_string_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_u128_twin_sync(
               List<dynamic> arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_u128_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_u16_twin_sync(
               List<dynamic> arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_u16_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_u32_twin_sync(
               List<dynamic> arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_u32_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_u64_twin_sync(
               List<dynamic> arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_u64_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_u8_twin_sync(
               List<dynamic> arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_u8_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_usize_twin_sync(
               List<dynamic> arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_usize_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_map_twin_sync_sse__example_basic_map_type_basic_general_enum_twin_sync_sse_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -41492,7 +41492,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_map_twin_sync_sse__example_basic_map_type_basic_general_enum_twin_sync_sse_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_map_twin_sync_sse__example_basic_map_type_basic_primitive_enum_twin_sync_sse_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -41501,7 +41501,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_map_twin_sync_sse__example_basic_map_type_basic_primitive_enum_twin_sync_sse_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_map_twin_sync_sse__example_basic_map_type_basic_struct_twin_sync_sse_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -41510,7 +41510,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_map_twin_sync_sse__example_basic_map_type_basic_struct_twin_sync_sse_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_map_twin_sync_sse__example_basic_map_type_bool_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -41519,7 +41519,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_map_twin_sync_sse__example_basic_map_type_bool_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_map_twin_sync_sse__example_basic_map_type_bytes_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -41528,7 +41528,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_map_twin_sync_sse__example_basic_map_type_bytes_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_map_twin_sync_sse__example_basic_map_type_f32_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -41537,7 +41537,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_map_twin_sync_sse__example_basic_map_type_f32_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_map_twin_sync_sse__example_basic_map_type_f64_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -41546,7 +41546,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_map_twin_sync_sse__example_basic_map_type_f64_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_map_twin_sync_sse__example_basic_map_type_i128_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -41555,7 +41555,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_map_twin_sync_sse__example_basic_map_type_i128_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_map_twin_sync_sse__example_basic_map_type_i16_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -41564,7 +41564,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_map_twin_sync_sse__example_basic_map_type_i16_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_map_twin_sync_sse__example_basic_map_type_i32_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -41573,7 +41573,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_map_twin_sync_sse__example_basic_map_type_i32_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_map_twin_sync_sse__example_basic_map_type_i64_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -41582,7 +41582,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_map_twin_sync_sse__example_basic_map_type_i64_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_map_twin_sync_sse__example_basic_map_type_i8_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -41591,7 +41591,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_map_twin_sync_sse__example_basic_map_type_i8_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_map_twin_sync_sse__example_basic_map_type_isize_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -41600,7 +41600,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_map_twin_sync_sse__example_basic_map_type_isize_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_map_twin_sync_sse__example_basic_map_type_string_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -41609,7 +41609,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_map_twin_sync_sse__example_basic_map_type_string_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_map_twin_sync_sse__example_basic_map_type_u128_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -41618,7 +41618,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_map_twin_sync_sse__example_basic_map_type_u128_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_map_twin_sync_sse__example_basic_map_type_u16_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -41627,7 +41627,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_map_twin_sync_sse__example_basic_map_type_u16_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_map_twin_sync_sse__example_basic_map_type_u32_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -41636,7 +41636,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_map_twin_sync_sse__example_basic_map_type_u32_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_map_twin_sync_sse__example_basic_map_type_u64_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -41645,7 +41645,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_map_twin_sync_sse__example_basic_map_type_u64_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_map_twin_sync_sse__example_basic_map_type_u8_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -41654,7 +41654,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_map_twin_sync_sse__example_basic_map_type_u8_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_map_twin_sync_sse__example_basic_map_type_usize_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -42263,147 +42263,147 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__basic_optional_twin_sse__example_basic_optional_type_usize_twin_sse(
               port_, ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_basic_general_enum_twin_sync_twin_sync(
               List<dynamic>? arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_basic_general_enum_twin_sync_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_basic_primitive_enum_twin_sync_twin_sync(
               int? arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_basic_primitive_enum_twin_sync_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_basic_struct_twin_sync_twin_sync(
               List<dynamic>? arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_basic_struct_twin_sync_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_bool_twin_sync(
               bool? arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_bool_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_bytes_twin_sync(
               Uint8List? arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_bytes_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_f32_twin_sync(
               double? arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_f32_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_f64_twin_sync(
               double? arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_f64_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_i128_twin_sync(
               String? arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_i128_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_i16_twin_sync(
               int? arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_i16_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_i32_twin_sync(
               int? arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_i32_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_i64_twin_sync(
               Object? arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_i64_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_i8_twin_sync(
               int? arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_i8_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_isize_twin_sync(
               Object? arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_isize_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_string_twin_sync(
               String? arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_string_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_u128_twin_sync(
               String? arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_u128_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_u16_twin_sync(
               int? arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_u16_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_u32_twin_sync(
               int? arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_u32_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_u64_twin_sync(
               Object? arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_u64_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_u8_twin_sync(
               int? arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_u8_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_usize_twin_sync(
               Object? arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_usize_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync_sse__example_basic_optional_type_basic_general_enum_twin_sync_sse_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -42412,7 +42412,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_optional_twin_sync_sse__example_basic_optional_type_basic_general_enum_twin_sync_sse_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync_sse__example_basic_optional_type_basic_primitive_enum_twin_sync_sse_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -42421,7 +42421,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_optional_twin_sync_sse__example_basic_optional_type_basic_primitive_enum_twin_sync_sse_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync_sse__example_basic_optional_type_basic_struct_twin_sync_sse_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -42430,7 +42430,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_optional_twin_sync_sse__example_basic_optional_type_basic_struct_twin_sync_sse_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync_sse__example_basic_optional_type_bool_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -42439,7 +42439,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_optional_twin_sync_sse__example_basic_optional_type_bool_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync_sse__example_basic_optional_type_bytes_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -42448,7 +42448,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_optional_twin_sync_sse__example_basic_optional_type_bytes_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync_sse__example_basic_optional_type_f32_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -42457,7 +42457,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_optional_twin_sync_sse__example_basic_optional_type_f32_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync_sse__example_basic_optional_type_f64_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -42466,7 +42466,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_optional_twin_sync_sse__example_basic_optional_type_f64_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync_sse__example_basic_optional_type_i128_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -42475,7 +42475,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_optional_twin_sync_sse__example_basic_optional_type_i128_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync_sse__example_basic_optional_type_i16_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -42484,7 +42484,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_optional_twin_sync_sse__example_basic_optional_type_i16_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync_sse__example_basic_optional_type_i32_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -42493,7 +42493,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_optional_twin_sync_sse__example_basic_optional_type_i32_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync_sse__example_basic_optional_type_i64_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -42502,7 +42502,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_optional_twin_sync_sse__example_basic_optional_type_i64_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync_sse__example_basic_optional_type_i8_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -42511,7 +42511,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_optional_twin_sync_sse__example_basic_optional_type_i8_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync_sse__example_basic_optional_type_isize_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -42520,7 +42520,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_optional_twin_sync_sse__example_basic_optional_type_isize_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync_sse__example_basic_optional_type_string_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -42529,7 +42529,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_optional_twin_sync_sse__example_basic_optional_type_string_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync_sse__example_basic_optional_type_u128_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -42538,7 +42538,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_optional_twin_sync_sse__example_basic_optional_type_u128_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync_sse__example_basic_optional_type_u16_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -42547,7 +42547,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_optional_twin_sync_sse__example_basic_optional_type_u16_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync_sse__example_basic_optional_type_u32_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -42556,7 +42556,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_optional_twin_sync_sse__example_basic_optional_type_u32_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync_sse__example_basic_optional_type_u64_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -42565,7 +42565,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_optional_twin_sync_sse__example_basic_optional_type_u64_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync_sse__example_basic_optional_type_u8_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -42574,7 +42574,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_optional_twin_sync_sse__example_basic_optional_type_u8_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync_sse__example_basic_optional_type_usize_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -43063,147 +43063,147 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__basic_twin_sse__example_basic_type_usize_twin_sse(
               port_, ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_basic_general_enum_twin_sync_twin_sync(
               List<dynamic> arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_basic_general_enum_twin_sync_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_basic_primitive_enum_twin_sync_twin_sync(
               int arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_basic_primitive_enum_twin_sync_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_basic_struct_twin_sync_twin_sync(
               List<dynamic> arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_basic_struct_twin_sync_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_bool_twin_sync(
               bool arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_bool_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_bytes_twin_sync(
               List<int> arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_bytes_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_f32_twin_sync(
               double arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_f32_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_f64_twin_sync(
               double arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_f64_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i128_twin_sync(
               String arg, String expect) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i128_twin_sync(
                   arg, expect);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i16_twin_sync(
               int arg, String expect) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i16_twin_sync(
                   arg, expect);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i32_twin_sync(
               int arg, String expect) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i32_twin_sync(
                   arg, expect);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i64_twin_sync(
               Object arg, String expect) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i64_twin_sync(
                   arg, expect);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i8_twin_sync(
               int arg, String expect) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i8_twin_sync(
                   arg, expect);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_isize_twin_sync(
               Object arg, String expect) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_isize_twin_sync(
                   arg, expect);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_string_twin_sync(
               String arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_string_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u128_twin_sync(
               String arg, String expect) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u128_twin_sync(
                   arg, expect);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u16_twin_sync(
               int arg, String expect) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u16_twin_sync(
                   arg, expect);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u32_twin_sync(
               int arg, String expect) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u32_twin_sync(
                   arg, expect);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u64_twin_sync(
               Object arg, String expect) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u64_twin_sync(
                   arg, expect);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u8_twin_sync(
               int arg, String expect) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u8_twin_sync(
                   arg, expect);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_usize_twin_sync(
               Object arg, String expect) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_usize_twin_sync(
                   arg, expect);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_basic_general_enum_twin_sync_sse_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -43212,7 +43212,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_basic_general_enum_twin_sync_sse_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_basic_primitive_enum_twin_sync_sse_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -43221,7 +43221,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_basic_primitive_enum_twin_sync_sse_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_basic_struct_twin_sync_sse_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -43230,7 +43230,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_basic_struct_twin_sync_sse_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_bool_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -43239,7 +43239,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_bool_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_bytes_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -43248,7 +43248,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_bytes_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_f32_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -43257,7 +43257,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_f32_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_f64_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -43266,7 +43266,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_f64_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_i128_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -43275,7 +43275,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_i128_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_i16_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -43284,7 +43284,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_i16_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_i32_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -43293,7 +43293,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_i32_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_i64_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -43302,7 +43302,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_i64_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_i8_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -43311,7 +43311,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_i8_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_isize_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -43320,7 +43320,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_isize_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_string_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -43329,7 +43329,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_string_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_u128_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -43338,7 +43338,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_u128_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_u16_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -43347,7 +43347,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_u16_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_u32_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -43356,7 +43356,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_u32_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_u64_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -43365,7 +43365,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_u64_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_u8_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -43374,7 +43374,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_u8_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_usize_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -43833,110 +43833,110 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__benchmark_api_twin_sse__benchmark_void_twin_sse(
               port_, ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_binary_tree_input_json_twin_sync(
               String raw) =>
           wasmModule
               .wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_binary_tree_input_json_twin_sync(
                   raw);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_binary_tree_input_protobuf_twin_sync(
               List<int> raw) =>
           wasmModule
               .wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_binary_tree_input_protobuf_twin_sync(
                   raw);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_binary_tree_input_twin_sync(
               List<dynamic> tree) =>
           wasmModule
               .wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_binary_tree_input_twin_sync(
                   tree);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_binary_tree_output_json_twin_sync(
               int depth) =>
           wasmModule
               .wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_binary_tree_output_json_twin_sync(
                   depth);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_binary_tree_output_protobuf_twin_sync(
               int depth) =>
           wasmModule
               .wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_binary_tree_output_protobuf_twin_sync(
                   depth);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_binary_tree_output_twin_sync(
               int depth) =>
           wasmModule
               .wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_binary_tree_output_twin_sync(
                   depth);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_blob_input_json_twin_sync(
               String raw) =>
           wasmModule
               .wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_blob_input_json_twin_sync(
                   raw);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_blob_input_protobuf_twin_sync(
               List<int> raw) =>
           wasmModule
               .wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_blob_input_protobuf_twin_sync(
                   raw);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_blob_input_twin_sync(
               List<dynamic> blob) =>
           wasmModule
               .wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_blob_input_twin_sync(
                   blob);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_blob_output_json_twin_sync(
               int size) =>
           wasmModule
               .wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_blob_output_json_twin_sync(
                   size);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_blob_output_protobuf_twin_sync(
               int size) =>
           wasmModule
               .wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_blob_output_protobuf_twin_sync(
                   size);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_blob_output_twin_sync(
               int size) =>
           wasmModule
               .wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_blob_output_twin_sync(
                   size);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_input_bytes_twin_sync(
               List<int> bytes) =>
           wasmModule
               .wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_input_bytes_twin_sync(
                   bytes);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_output_bytes_twin_sync(
               int size) =>
           wasmModule
               .wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_output_bytes_twin_sync(
                   size);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_void_twin_sync() =>
           wasmModule
               .wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_void_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync_sse__benchmark_binary_tree_input_json_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -43945,7 +43945,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__benchmark_api_twin_sync_sse__benchmark_binary_tree_input_json_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync_sse__benchmark_binary_tree_input_protobuf_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -43954,7 +43954,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__benchmark_api_twin_sync_sse__benchmark_binary_tree_input_protobuf_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync_sse__benchmark_binary_tree_input_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -43963,7 +43963,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__benchmark_api_twin_sync_sse__benchmark_binary_tree_input_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync_sse__benchmark_binary_tree_output_json_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -43972,7 +43972,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__benchmark_api_twin_sync_sse__benchmark_binary_tree_output_json_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync_sse__benchmark_binary_tree_output_protobuf_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -43981,7 +43981,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__benchmark_api_twin_sync_sse__benchmark_binary_tree_output_protobuf_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync_sse__benchmark_binary_tree_output_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -43990,7 +43990,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__benchmark_api_twin_sync_sse__benchmark_binary_tree_output_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync_sse__benchmark_blob_input_json_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -43999,7 +43999,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__benchmark_api_twin_sync_sse__benchmark_blob_input_json_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync_sse__benchmark_blob_input_protobuf_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -44008,7 +44008,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__benchmark_api_twin_sync_sse__benchmark_blob_input_protobuf_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync_sse__benchmark_blob_input_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -44017,7 +44017,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__benchmark_api_twin_sync_sse__benchmark_blob_input_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync_sse__benchmark_blob_output_json_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -44026,7 +44026,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__benchmark_api_twin_sync_sse__benchmark_blob_output_json_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync_sse__benchmark_blob_output_protobuf_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -44035,7 +44035,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__benchmark_api_twin_sync_sse__benchmark_blob_output_protobuf_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync_sse__benchmark_blob_output_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -44044,7 +44044,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__benchmark_api_twin_sync_sse__benchmark_blob_output_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync_sse__benchmark_input_bytes_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -44053,7 +44053,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__benchmark_api_twin_sync_sse__benchmark_input_bytes_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync_sse__benchmark_output_bytes_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -44062,7 +44062,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__benchmark_api_twin_sync_sse__benchmark_output_bytes_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync_sse__benchmark_void_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -44311,73 +44311,73 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__chrono_type_twin_sse__test_precise_chrono_twin_sse(
               port_, ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__chrono_type_twin_sync__datetime_local_twin_sync(
               Object d) =>
           wasmModule
               .wire__crate__api__pseudo_manual__chrono_type_twin_sync__datetime_local_twin_sync(
                   d);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__chrono_type_twin_sync__datetime_utc_twin_sync(
               Object d) =>
           wasmModule
               .wire__crate__api__pseudo_manual__chrono_type_twin_sync__datetime_utc_twin_sync(
                   d);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__chrono_type_twin_sync__duration_twin_sync(
               Object d) =>
           wasmModule
               .wire__crate__api__pseudo_manual__chrono_type_twin_sync__duration_twin_sync(
                   d);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__chrono_type_twin_sync__handle_durations_twin_sync(
               List<dynamic> durations, Object since) =>
           wasmModule
               .wire__crate__api__pseudo_manual__chrono_type_twin_sync__handle_durations_twin_sync(
                   durations, since);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__chrono_type_twin_sync__handle_timestamps_twin_sync(
               List<dynamic> timestamps, Object epoch) =>
           wasmModule
               .wire__crate__api__pseudo_manual__chrono_type_twin_sync__handle_timestamps_twin_sync(
                   timestamps, epoch);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__chrono_type_twin_sync__how_long_does_it_take_twin_sync(
               List<dynamic> mine) =>
           wasmModule
               .wire__crate__api__pseudo_manual__chrono_type_twin_sync__how_long_does_it_take_twin_sync(
                   mine);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__chrono_type_twin_sync__naivedatetime_twin_sync(
               Object d) =>
           wasmModule
               .wire__crate__api__pseudo_manual__chrono_type_twin_sync__naivedatetime_twin_sync(
                   d);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__chrono_type_twin_sync__optional_empty_datetime_utc_twin_sync(
               Object? d) =>
           wasmModule
               .wire__crate__api__pseudo_manual__chrono_type_twin_sync__optional_empty_datetime_utc_twin_sync(
                   d);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__chrono_type_twin_sync__test_chrono_twin_sync() =>
           wasmModule
               .wire__crate__api__pseudo_manual__chrono_type_twin_sync__test_chrono_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__chrono_type_twin_sync__test_precise_chrono_twin_sync() =>
           wasmModule
               .wire__crate__api__pseudo_manual__chrono_type_twin_sync__test_precise_chrono_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__chrono_type_twin_sync_sse__datetime_local_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -44386,7 +44386,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__chrono_type_twin_sync_sse__datetime_local_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__chrono_type_twin_sync_sse__datetime_utc_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -44395,7 +44395,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__chrono_type_twin_sync_sse__datetime_utc_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__chrono_type_twin_sync_sse__duration_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -44404,7 +44404,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__chrono_type_twin_sync_sse__duration_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__chrono_type_twin_sync_sse__handle_durations_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -44413,7 +44413,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__chrono_type_twin_sync_sse__handle_durations_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__chrono_type_twin_sync_sse__handle_timestamps_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -44422,7 +44422,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__chrono_type_twin_sync_sse__handle_timestamps_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__chrono_type_twin_sync_sse__how_long_does_it_take_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -44431,7 +44431,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__chrono_type_twin_sync_sse__how_long_does_it_take_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__chrono_type_twin_sync_sse__naivedatetime_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -44440,7 +44440,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__chrono_type_twin_sync_sse__naivedatetime_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__chrono_type_twin_sync_sse__optional_empty_datetime_utc_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -44449,7 +44449,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__chrono_type_twin_sync_sse__optional_empty_datetime_utc_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__chrono_type_twin_sync_sse__test_chrono_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -44458,7 +44458,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__chrono_type_twin_sync_sse__test_chrono_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__chrono_type_twin_sync_sse__test_precise_chrono_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -44587,34 +44587,34 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__comment_twin_sse__struct_with_comments_twin_sse_static_method_twin_sse(
               port_, ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__comment_twin_sync__function_with_comments_slash_star_star_twin_sync() =>
           wasmModule
               .wire__crate__api__pseudo_manual__comment_twin_sync__function_with_comments_slash_star_star_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__comment_twin_sync__function_with_comments_triple_slash_multi_line_twin_sync() =>
           wasmModule
               .wire__crate__api__pseudo_manual__comment_twin_sync__function_with_comments_triple_slash_multi_line_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__comment_twin_sync__function_with_comments_triple_slash_single_line_twin_sync() =>
           wasmModule
               .wire__crate__api__pseudo_manual__comment_twin_sync__function_with_comments_triple_slash_single_line_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__comment_twin_sync__struct_with_comments_twin_sync_instance_method_twin_sync(
               List<dynamic> that) =>
           wasmModule
               .wire__crate__api__pseudo_manual__comment_twin_sync__struct_with_comments_twin_sync_instance_method_twin_sync(
                   that);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__comment_twin_sync__struct_with_comments_twin_sync_static_method_twin_sync() =>
           wasmModule
               .wire__crate__api__pseudo_manual__comment_twin_sync__struct_with_comments_twin_sync_static_method_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__comment_twin_sync_sse__function_with_comments_slash_star_star_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -44623,7 +44623,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__comment_twin_sync_sse__function_with_comments_slash_star_star_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__comment_twin_sync_sse__function_with_comments_triple_slash_multi_line_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -44632,7 +44632,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__comment_twin_sync_sse__function_with_comments_triple_slash_multi_line_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__comment_twin_sync_sse__function_with_comments_triple_slash_single_line_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -44641,7 +44641,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__comment_twin_sync_sse__function_with_comments_triple_slash_single_line_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__comment_twin_sync_sse__struct_with_comments_twin_sync_sse_instance_method_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -44650,7 +44650,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__comment_twin_sync_sse__struct_with_comments_twin_sync_sse_instance_method_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__comment_twin_sync_sse__struct_with_comments_twin_sync_sse_static_method_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -44665,7 +44665,7 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__dart_dynamic_twin_rust_async__return_dart_dynamic_twin_rust_async(
               port_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__dart_dynamic_twin_sync__return_dart_dynamic_twin_sync() =>
           wasmModule
               .wire__crate__api__pseudo_manual__dart_dynamic_twin_sync__return_dart_dynamic_twin_sync();
@@ -44890,7 +44890,7 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__dart_fn_twin_sse__rust_call_dart_with_dart_opaque_result_twin_sse(
               port_, ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__dart_opaque_sync_twin_sse__sync_accept_dart_opaque_twin_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -44899,7 +44899,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__dart_opaque_sync_twin_sse__sync_accept_dart_opaque_twin_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__dart_opaque_sync_twin_sse__sync_loopback_twin_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -44908,7 +44908,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__dart_opaque_sync_twin_sse__sync_loopback_twin_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__dart_opaque_sync_twin_sse__sync_option_dart_opaque_twin_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -44917,7 +44917,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__dart_opaque_sync_twin_sse__sync_option_dart_opaque_twin_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__dart_opaque_sync_twin_sse__sync_option_loopback_twin_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -44926,7 +44926,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__dart_opaque_sync_twin_sse__sync_option_loopback_twin_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__dart_opaque_sync_twin_sse__unwrap_dart_opaque_twin_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -45321,119 +45321,119 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__dart_opaque_twin_sse__set_static_dart_opaque_twin_sse(
               port_, ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync__async_accept_dart_opaque_twin_sync(
               PlatformPointer opaque) =>
           wasmModule
               .wire__crate__api__pseudo_manual__dart_opaque_twin_sync__async_accept_dart_opaque_twin_sync(
                   opaque);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync__clone_dart_opaque_twin_sync(
               PlatformPointer opaque) =>
           wasmModule
               .wire__crate__api__pseudo_manual__dart_opaque_twin_sync__clone_dart_opaque_twin_sync(
                   opaque);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync__create_enum_dart_opaque_twin_sync(
               PlatformPointer opaque) =>
           wasmModule
               .wire__crate__api__pseudo_manual__dart_opaque_twin_sync__create_enum_dart_opaque_twin_sync(
                   opaque);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync__create_nested_dart_opaque_twin_sync(
               PlatformPointer opaque1, PlatformPointer opaque2) =>
           wasmModule
               .wire__crate__api__pseudo_manual__dart_opaque_twin_sync__create_nested_dart_opaque_twin_sync(
                   opaque1, opaque2);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync__drop_static_dart_opaque_twin_sync(
               int id) =>
           wasmModule
               .wire__crate__api__pseudo_manual__dart_opaque_twin_sync__drop_static_dart_opaque_twin_sync(
                   id);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync__get_enum_dart_opaque_twin_sync(
               List<dynamic> opaque) =>
           wasmModule
               .wire__crate__api__pseudo_manual__dart_opaque_twin_sync__get_enum_dart_opaque_twin_sync(
                   opaque);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync__get_nested_dart_opaque_twin_sync(
               List<dynamic> opaque) =>
           wasmModule
               .wire__crate__api__pseudo_manual__dart_opaque_twin_sync__get_nested_dart_opaque_twin_sync(
                   opaque);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync__loop_back_array_get_twin_sync(
               List<dynamic> opaque) =>
           wasmModule
               .wire__crate__api__pseudo_manual__dart_opaque_twin_sync__loop_back_array_get_twin_sync(
                   opaque);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync__loop_back_array_twin_sync(
               PlatformPointer opaque) =>
           wasmModule
               .wire__crate__api__pseudo_manual__dart_opaque_twin_sync__loop_back_array_twin_sync(
                   opaque);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync__loop_back_option_get_twin_sync(
               PlatformPointer? opaque) =>
           wasmModule
               .wire__crate__api__pseudo_manual__dart_opaque_twin_sync__loop_back_option_get_twin_sync(
                   opaque);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync__loop_back_option_twin_sync(
               PlatformPointer opaque) =>
           wasmModule
               .wire__crate__api__pseudo_manual__dart_opaque_twin_sync__loop_back_option_twin_sync(
                   opaque);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync__loop_back_twin_sync(
               PlatformPointer opaque) =>
           wasmModule
               .wire__crate__api__pseudo_manual__dart_opaque_twin_sync__loop_back_twin_sync(
                   opaque);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync__loop_back_vec_get_twin_sync(
               List<dynamic> opaque) =>
           wasmModule
               .wire__crate__api__pseudo_manual__dart_opaque_twin_sync__loop_back_vec_get_twin_sync(
                   opaque);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync__loop_back_vec_twin_sync(
               PlatformPointer opaque) =>
           wasmModule
               .wire__crate__api__pseudo_manual__dart_opaque_twin_sync__loop_back_vec_twin_sync(
                   opaque);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync__panic_unwrap_dart_opaque_twin_sync(
               PlatformPointer opaque) =>
           wasmModule
               .wire__crate__api__pseudo_manual__dart_opaque_twin_sync__panic_unwrap_dart_opaque_twin_sync(
                   opaque);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync__set_static_dart_opaque_twin_sync(
               int id, PlatformPointer opaque) =>
           wasmModule
               .wire__crate__api__pseudo_manual__dart_opaque_twin_sync__set_static_dart_opaque_twin_sync(
                   id, opaque);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync_sse__async_accept_dart_opaque_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -45442,7 +45442,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__dart_opaque_twin_sync_sse__async_accept_dart_opaque_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync_sse__clone_dart_opaque_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -45451,7 +45451,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__dart_opaque_twin_sync_sse__clone_dart_opaque_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync_sse__create_enum_dart_opaque_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -45460,7 +45460,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__dart_opaque_twin_sync_sse__create_enum_dart_opaque_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync_sse__create_nested_dart_opaque_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -45469,7 +45469,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__dart_opaque_twin_sync_sse__create_nested_dart_opaque_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync_sse__drop_static_dart_opaque_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -45478,7 +45478,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__dart_opaque_twin_sync_sse__drop_static_dart_opaque_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync_sse__get_enum_dart_opaque_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -45487,7 +45487,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__dart_opaque_twin_sync_sse__get_enum_dart_opaque_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync_sse__get_nested_dart_opaque_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -45496,7 +45496,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__dart_opaque_twin_sync_sse__get_nested_dart_opaque_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync_sse__loop_back_array_get_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -45505,7 +45505,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__dart_opaque_twin_sync_sse__loop_back_array_get_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync_sse__loop_back_array_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -45514,7 +45514,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__dart_opaque_twin_sync_sse__loop_back_array_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync_sse__loop_back_option_get_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -45523,7 +45523,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__dart_opaque_twin_sync_sse__loop_back_option_get_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync_sse__loop_back_option_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -45532,7 +45532,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__dart_opaque_twin_sync_sse__loop_back_option_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync_sse__loop_back_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -45541,7 +45541,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__dart_opaque_twin_sync_sse__loop_back_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync_sse__loop_back_vec_get_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -45550,7 +45550,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__dart_opaque_twin_sync_sse__loop_back_vec_get_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync_sse__loop_back_vec_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -45559,7 +45559,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__dart_opaque_twin_sync_sse__loop_back_vec_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync_sse__panic_unwrap_dart_opaque_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -45568,7 +45568,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__dart_opaque_twin_sync_sse__panic_unwrap_dart_opaque_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync_sse__set_static_dart_opaque_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -45673,31 +45673,31 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__dropping_twin_sse__DroppableTwinSse_simple_method_twin_sse(
               port_, ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__dropping_twin_sync__DroppableTwinSync_create_stream_twin_sync(
               int that, String sink) =>
           wasmModule
               .wire__crate__api__pseudo_manual__dropping_twin_sync__DroppableTwinSync_create_stream_twin_sync(
                   that, sink);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__dropping_twin_sync__DroppableTwinSync_get_drop_count_twin_sync() =>
           wasmModule
               .wire__crate__api__pseudo_manual__dropping_twin_sync__DroppableTwinSync_get_drop_count_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__dropping_twin_sync__DroppableTwinSync_new_twin_sync() =>
           wasmModule
               .wire__crate__api__pseudo_manual__dropping_twin_sync__DroppableTwinSync_new_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__dropping_twin_sync__DroppableTwinSync_simple_method_twin_sync(
               int that) =>
           wasmModule
               .wire__crate__api__pseudo_manual__dropping_twin_sync__DroppableTwinSync_simple_method_twin_sync(
                   that);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__dropping_twin_sync_sse__DroppableTwinSyncSse_create_stream_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -45706,7 +45706,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__dropping_twin_sync_sse__DroppableTwinSyncSse_create_stream_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__dropping_twin_sync_sse__DroppableTwinSyncSse_get_drop_count_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -45715,7 +45715,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__dropping_twin_sync_sse__DroppableTwinSyncSse_get_drop_count_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__dropping_twin_sync_sse__DroppableTwinSyncSse_new_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -45724,7 +45724,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__dropping_twin_sync_sse__DroppableTwinSyncSse_new_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__dropping_twin_sync_sse__DroppableTwinSyncSse_simple_method_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -45973,77 +45973,77 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__enumeration_twin_sse__print_note_twin_sse(
               port_, ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__enumeration_twin_sync__func_enum_simple_twin_sync(
               int arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__enumeration_twin_sync__func_enum_simple_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__enumeration_twin_sync__func_enum_with_discriminant_twin_sync(
               int arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__enumeration_twin_sync__func_enum_with_discriminant_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__enumeration_twin_sync__func_enum_with_item_mixed_twin_sync(
               List<dynamic> arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__enumeration_twin_sync__func_enum_with_item_mixed_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__enumeration_twin_sync__func_enum_with_item_struct_twin_sync(
               List<dynamic> arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__enumeration_twin_sync__func_enum_with_item_struct_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__enumeration_twin_sync__func_enum_with_item_tuple_twin_sync(
               List<dynamic> arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__enumeration_twin_sync__func_enum_with_item_tuple_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__enumeration_twin_sync__handle_enum_parameter_twin_sync(
               int weekday) =>
           wasmModule
               .wire__crate__api__pseudo_manual__enumeration_twin_sync__handle_enum_parameter_twin_sync(
                   weekday);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__enumeration_twin_sync__handle_enum_struct_twin_sync(
               List<dynamic> val) =>
           wasmModule
               .wire__crate__api__pseudo_manual__enumeration_twin_sync__handle_enum_struct_twin_sync(
                   val);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__enumeration_twin_sync__handle_return_enum_twin_sync(
               String input) =>
           wasmModule
               .wire__crate__api__pseudo_manual__enumeration_twin_sync__handle_return_enum_twin_sync(
                   input);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__enumeration_twin_sync__multiply_by_ten_twin_sync(
               List<dynamic> measure) =>
           wasmModule
               .wire__crate__api__pseudo_manual__enumeration_twin_sync__multiply_by_ten_twin_sync(
                   measure);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__enumeration_twin_sync__print_note_twin_sync(
               List<dynamic> note) =>
           wasmModule
               .wire__crate__api__pseudo_manual__enumeration_twin_sync__print_note_twin_sync(
                   note);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__enumeration_twin_sync_sse__func_enum_simple_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -46052,7 +46052,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__enumeration_twin_sync_sse__func_enum_simple_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__enumeration_twin_sync_sse__func_enum_with_discriminant_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -46061,7 +46061,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__enumeration_twin_sync_sse__func_enum_with_discriminant_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__enumeration_twin_sync_sse__func_enum_with_item_mixed_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -46070,7 +46070,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__enumeration_twin_sync_sse__func_enum_with_item_mixed_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__enumeration_twin_sync_sse__func_enum_with_item_struct_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -46079,7 +46079,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__enumeration_twin_sync_sse__func_enum_with_item_struct_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__enumeration_twin_sync_sse__func_enum_with_item_tuple_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -46088,7 +46088,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__enumeration_twin_sync_sse__func_enum_with_item_tuple_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__enumeration_twin_sync_sse__handle_enum_parameter_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -46097,7 +46097,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__enumeration_twin_sync_sse__handle_enum_parameter_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__enumeration_twin_sync_sse__handle_enum_struct_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -46106,7 +46106,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__enumeration_twin_sync_sse__handle_enum_struct_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__enumeration_twin_sync_sse__handle_return_enum_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -46115,7 +46115,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__enumeration_twin_sync_sse__handle_return_enum_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__enumeration_twin_sync_sse__multiply_by_ten_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -46124,7 +46124,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__enumeration_twin_sync_sse__multiply_by_ten_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__enumeration_twin_sync_sse__print_note_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -46925,174 +46925,174 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__exception_twin_sse__throw_anyhow_twin_sse(
               port_, ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__custom_enum_error_panic_twin_sync() =>
           wasmModule
               .wire__crate__api__pseudo_manual__exception_twin_sync__custom_enum_error_panic_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__custom_enum_error_return_error_twin_sync() =>
           wasmModule
               .wire__crate__api__pseudo_manual__exception_twin_sync__custom_enum_error_return_error_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__custom_enum_error_return_ok_twin_sync(
               int arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__exception_twin_sync__custom_enum_error_return_ok_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__custom_nested_error_return_error_twin_sync(
               List<dynamic> arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__exception_twin_sync__custom_nested_error_return_error_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__custom_struct_error_return_error_twin_sync(
               List<dynamic> arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__exception_twin_sync__custom_struct_error_return_error_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__custom_struct_twin_sync_new_twin_sync(
               String message) =>
           wasmModule
               .wire__crate__api__pseudo_manual__exception_twin_sync__custom_struct_twin_sync_new_twin_sync(
                   message);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__custom_struct_twin_sync_nonstatic_return_custom_struct_error_twin_sync(
               List<dynamic> that) =>
           wasmModule
               .wire__crate__api__pseudo_manual__exception_twin_sync__custom_struct_twin_sync_nonstatic_return_custom_struct_error_twin_sync(
                   that);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__custom_struct_twin_sync_nonstatic_return_custom_struct_ok_twin_sync(
               List<dynamic> that) =>
           wasmModule
               .wire__crate__api__pseudo_manual__exception_twin_sync__custom_struct_twin_sync_nonstatic_return_custom_struct_ok_twin_sync(
                   that);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__custom_struct_twin_sync_static_return_custom_struct_error_twin_sync() =>
           wasmModule
               .wire__crate__api__pseudo_manual__exception_twin_sync__custom_struct_twin_sync_static_return_custom_struct_error_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__custom_struct_twin_sync_static_return_custom_struct_ok_twin_sync() =>
           wasmModule
               .wire__crate__api__pseudo_manual__exception_twin_sync__custom_struct_twin_sync_static_return_custom_struct_ok_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__func_return_error_twin_sync() =>
           wasmModule
               .wire__crate__api__pseudo_manual__exception_twin_sync__func_return_error_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__func_type_fallible_panic_twin_sync() =>
           wasmModule
               .wire__crate__api__pseudo_manual__exception_twin_sync__func_type_fallible_panic_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__func_type_infallible_panic_twin_sync() =>
           wasmModule
               .wire__crate__api__pseudo_manual__exception_twin_sync__func_type_infallible_panic_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__panic_with_custom_result_twin_sync() =>
           wasmModule
               .wire__crate__api__pseudo_manual__exception_twin_sync__panic_with_custom_result_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__return_custom_nested_error_1_twin_sync() =>
           wasmModule
               .wire__crate__api__pseudo_manual__exception_twin_sync__return_custom_nested_error_1_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__return_custom_nested_error_1_variant1_twin_sync() =>
           wasmModule
               .wire__crate__api__pseudo_manual__exception_twin_sync__return_custom_nested_error_1_variant1_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__return_custom_nested_error_2_twin_sync() =>
           wasmModule
               .wire__crate__api__pseudo_manual__exception_twin_sync__return_custom_nested_error_2_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__return_custom_struct_error_twin_sync() =>
           wasmModule
               .wire__crate__api__pseudo_manual__exception_twin_sync__return_custom_struct_error_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__return_custom_struct_ok_twin_sync() =>
           wasmModule
               .wire__crate__api__pseudo_manual__exception_twin_sync__return_custom_struct_ok_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__return_err_custom_error_twin_sync() =>
           wasmModule
               .wire__crate__api__pseudo_manual__exception_twin_sync__return_err_custom_error_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__return_error_variant_twin_sync(
               int variant) =>
           wasmModule
               .wire__crate__api__pseudo_manual__exception_twin_sync__return_error_variant_twin_sync(
                   variant);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__return_ok_custom_error_twin_sync() =>
           wasmModule
               .wire__crate__api__pseudo_manual__exception_twin_sync__return_ok_custom_error_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__some_struct_twin_sync_new_twin_sync(
               int value) =>
           wasmModule
               .wire__crate__api__pseudo_manual__exception_twin_sync__some_struct_twin_sync_new_twin_sync(
                   value);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__some_struct_twin_sync_non_static_return_err_custom_error_twin_sync(
               List<dynamic> that) =>
           wasmModule
               .wire__crate__api__pseudo_manual__exception_twin_sync__some_struct_twin_sync_non_static_return_err_custom_error_twin_sync(
                   that);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__some_struct_twin_sync_non_static_return_ok_custom_error_twin_sync(
               List<dynamic> that) =>
           wasmModule
               .wire__crate__api__pseudo_manual__exception_twin_sync__some_struct_twin_sync_non_static_return_ok_custom_error_twin_sync(
                   that);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__some_struct_twin_sync_static_return_err_custom_error_twin_sync() =>
           wasmModule
               .wire__crate__api__pseudo_manual__exception_twin_sync__some_struct_twin_sync_static_return_err_custom_error_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__some_struct_twin_sync_static_return_ok_custom_error_twin_sync() =>
           wasmModule
               .wire__crate__api__pseudo_manual__exception_twin_sync__some_struct_twin_sync_static_return_ok_custom_error_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__stream_sink_throw_anyhow_twin_sync(
               String _sink) =>
           wasmModule
               .wire__crate__api__pseudo_manual__exception_twin_sync__stream_sink_throw_anyhow_twin_sync(
                   _sink);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__throw_anyhow_twin_sync() =>
           wasmModule
               .wire__crate__api__pseudo_manual__exception_twin_sync__throw_anyhow_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__exception_twin_sync_sse__custom_enum_error_panic_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -47101,7 +47101,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__exception_twin_sync_sse__custom_enum_error_panic_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__exception_twin_sync_sse__custom_enum_error_return_error_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -47110,7 +47110,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__exception_twin_sync_sse__custom_enum_error_return_error_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__exception_twin_sync_sse__custom_enum_error_return_ok_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -47119,7 +47119,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__exception_twin_sync_sse__custom_enum_error_return_ok_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__exception_twin_sync_sse__custom_nested_error_return_error_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -47128,7 +47128,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__exception_twin_sync_sse__custom_nested_error_return_error_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__exception_twin_sync_sse__custom_struct_error_return_error_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -47137,7 +47137,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__exception_twin_sync_sse__custom_struct_error_return_error_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__exception_twin_sync_sse__custom_struct_twin_sync_sse_new_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -47146,7 +47146,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__exception_twin_sync_sse__custom_struct_twin_sync_sse_new_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__exception_twin_sync_sse__custom_struct_twin_sync_sse_nonstatic_return_custom_struct_error_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -47155,7 +47155,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__exception_twin_sync_sse__custom_struct_twin_sync_sse_nonstatic_return_custom_struct_error_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__exception_twin_sync_sse__custom_struct_twin_sync_sse_nonstatic_return_custom_struct_ok_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -47164,7 +47164,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__exception_twin_sync_sse__custom_struct_twin_sync_sse_nonstatic_return_custom_struct_ok_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__exception_twin_sync_sse__custom_struct_twin_sync_sse_static_return_custom_struct_error_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -47173,7 +47173,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__exception_twin_sync_sse__custom_struct_twin_sync_sse_static_return_custom_struct_error_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__exception_twin_sync_sse__custom_struct_twin_sync_sse_static_return_custom_struct_ok_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -47182,7 +47182,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__exception_twin_sync_sse__custom_struct_twin_sync_sse_static_return_custom_struct_ok_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__exception_twin_sync_sse__func_return_error_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -47191,7 +47191,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__exception_twin_sync_sse__func_return_error_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__exception_twin_sync_sse__func_type_fallible_panic_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -47200,7 +47200,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__exception_twin_sync_sse__func_type_fallible_panic_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__exception_twin_sync_sse__func_type_infallible_panic_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -47209,7 +47209,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__exception_twin_sync_sse__func_type_infallible_panic_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__exception_twin_sync_sse__panic_with_custom_result_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -47218,7 +47218,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__exception_twin_sync_sse__panic_with_custom_result_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__exception_twin_sync_sse__return_custom_nested_error_1_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -47227,7 +47227,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__exception_twin_sync_sse__return_custom_nested_error_1_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__exception_twin_sync_sse__return_custom_nested_error_1_variant1_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -47236,7 +47236,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__exception_twin_sync_sse__return_custom_nested_error_1_variant1_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__exception_twin_sync_sse__return_custom_nested_error_2_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -47245,7 +47245,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__exception_twin_sync_sse__return_custom_nested_error_2_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__exception_twin_sync_sse__return_custom_struct_error_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -47254,7 +47254,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__exception_twin_sync_sse__return_custom_struct_error_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__exception_twin_sync_sse__return_custom_struct_ok_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -47263,7 +47263,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__exception_twin_sync_sse__return_custom_struct_ok_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__exception_twin_sync_sse__return_err_custom_error_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -47272,7 +47272,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__exception_twin_sync_sse__return_err_custom_error_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__exception_twin_sync_sse__return_error_variant_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -47281,7 +47281,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__exception_twin_sync_sse__return_error_variant_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__exception_twin_sync_sse__return_ok_custom_error_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -47290,7 +47290,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__exception_twin_sync_sse__return_ok_custom_error_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__exception_twin_sync_sse__some_struct_twin_sync_sse_new_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -47299,7 +47299,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__exception_twin_sync_sse__some_struct_twin_sync_sse_new_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__exception_twin_sync_sse__some_struct_twin_sync_sse_non_static_return_err_custom_error_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -47308,7 +47308,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__exception_twin_sync_sse__some_struct_twin_sync_sse_non_static_return_err_custom_error_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__exception_twin_sync_sse__some_struct_twin_sync_sse_non_static_return_ok_custom_error_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -47317,7 +47317,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__exception_twin_sync_sse__some_struct_twin_sync_sse_non_static_return_ok_custom_error_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__exception_twin_sync_sse__some_struct_twin_sync_sse_static_return_err_custom_error_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -47326,7 +47326,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__exception_twin_sync_sse__some_struct_twin_sync_sse_static_return_err_custom_error_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__exception_twin_sync_sse__some_struct_twin_sync_sse_static_return_ok_custom_error_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -47335,7 +47335,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__exception_twin_sync_sse__some_struct_twin_sync_sse_static_return_ok_custom_error_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__exception_twin_sync_sse__stream_sink_throw_anyhow_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -47344,7 +47344,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__exception_twin_sync_sse__stream_sink_throw_anyhow_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__exception_twin_sync_sse__throw_anyhow_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -47449,31 +47449,31 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__external_type_in_crate_twin_sse__use_imported_struct_twin_sse(
               port_, ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__external_type_in_crate_twin_sync__call_new_module_system_twin_sync() =>
           wasmModule
               .wire__crate__api__pseudo_manual__external_type_in_crate_twin_sync__call_new_module_system_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__external_type_in_crate_twin_sync__call_old_module_system_twin_sync() =>
           wasmModule
               .wire__crate__api__pseudo_manual__external_type_in_crate_twin_sync__call_old_module_system_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__external_type_in_crate_twin_sync__use_imported_enum_twin_sync(
               int my_enum) =>
           wasmModule
               .wire__crate__api__pseudo_manual__external_type_in_crate_twin_sync__use_imported_enum_twin_sync(
                   my_enum);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__external_type_in_crate_twin_sync__use_imported_struct_twin_sync(
               List<dynamic> my_struct) =>
           wasmModule
               .wire__crate__api__pseudo_manual__external_type_in_crate_twin_sync__use_imported_struct_twin_sync(
                   my_struct);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__external_type_in_crate_twin_sync_sse__call_new_module_system_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -47482,7 +47482,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__external_type_in_crate_twin_sync_sse__call_new_module_system_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__external_type_in_crate_twin_sync_sse__call_old_module_system_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -47491,7 +47491,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__external_type_in_crate_twin_sync_sse__call_old_module_system_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__external_type_in_crate_twin_sync_sse__use_imported_enum_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -47500,7 +47500,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__external_type_in_crate_twin_sync_sse__use_imported_enum_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__external_type_in_crate_twin_sync_sse__use_imported_struct_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -47509,14 +47509,14 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__external_type_in_crate_twin_sync_sse__use_imported_struct_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructOneWithTraitTwinSse_get_one(
               int that) =>
           wasmModule
               .wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructOneWithTraitTwinSse_get_one(
                   that);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructOneWithTraitTwinSse_set_one(
               int that, int one) =>
           wasmModule
@@ -47541,14 +47541,14 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructOneWithTraitTwinSse_simple_trait_fn_with_default_impl_twin_sse(
               port_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructTwoWithTraitTwinSse_get_two(
               int that) =>
           wasmModule
               .wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructTwoWithTraitTwinSse_get_two(
                   that);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructTwoWithTraitTwinSse_set_two(
               int that, int two) =>
           wasmModule
@@ -47573,14 +47573,14 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructTwoWithTraitTwinSse_simple_trait_fn_with_default_impl_twin_sse(
               port_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructOneWithTraitTwinSync_get_one(
               int that) =>
           wasmModule
               .wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructOneWithTraitTwinSync_get_one(
                   that);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructOneWithTraitTwinSync_set_one(
               int that, int one) =>
           wasmModule
@@ -47605,14 +47605,14 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructOneWithTraitTwinSync_simple_trait_fn_with_default_impl_twin_sync(
               port_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructTwoWithTraitTwinSync_get_two(
               int that) =>
           wasmModule
               .wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructTwoWithTraitTwinSync_get_two(
                   that);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructTwoWithTraitTwinSync_set_two(
               int that, int two) =>
           wasmModule
@@ -47637,14 +47637,14 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructTwoWithTraitTwinSync_simple_trait_fn_with_default_impl_twin_sync(
               port_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructOneWithTraitTwinSyncSse_get_one(
               int that) =>
           wasmModule
               .wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructOneWithTraitTwinSyncSse_get_one(
                   that);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructOneWithTraitTwinSyncSse_set_one(
               int that, int one) =>
           wasmModule
@@ -47669,14 +47669,14 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructOneWithTraitTwinSyncSse_simple_trait_fn_with_default_impl_twin_sync_sse(
               port_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructTwoWithTraitTwinSyncSse_get_two(
               int that) =>
           wasmModule
               .wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructTwoWithTraitTwinSyncSse_get_two(
                   that);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructTwoWithTraitTwinSyncSse_set_two(
               int that, int two) =>
           wasmModule
@@ -47893,63 +47893,63 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__map_and_set_twin_sse__func_hash_set_string_twin_sse(
               port_, ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_map_i32_i32_twin_sync(
               List<dynamic> arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_map_i32_i32_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_map_string_bytes_twin_sync(
               List<dynamic> arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_map_string_bytes_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_map_string_complex_enum_twin_sync(
               List<dynamic> arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_map_string_complex_enum_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_map_string_simple_enum_twin_sync(
               List<dynamic> arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_map_string_simple_enum_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_map_string_string_twin_sync(
               List<dynamic> arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_map_string_string_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_map_string_struct_twin_sync(
               List<dynamic> arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_map_string_struct_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_set_i32_twin_sync(
               Int32List arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_set_i32_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_set_string_twin_sync(
               List<dynamic> arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_set_string_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__map_and_set_twin_sync_sse__func_hash_map_i32_i32_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -47958,7 +47958,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__map_and_set_twin_sync_sse__func_hash_map_i32_i32_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__map_and_set_twin_sync_sse__func_hash_map_string_bytes_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -47967,7 +47967,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__map_and_set_twin_sync_sse__func_hash_map_string_bytes_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__map_and_set_twin_sync_sse__func_hash_map_string_complex_enum_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -47976,7 +47976,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__map_and_set_twin_sync_sse__func_hash_map_string_complex_enum_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__map_and_set_twin_sync_sse__func_hash_map_string_simple_enum_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -47985,7 +47985,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__map_and_set_twin_sync_sse__func_hash_map_string_simple_enum_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__map_and_set_twin_sync_sse__func_hash_map_string_string_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -47994,7 +47994,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__map_and_set_twin_sync_sse__func_hash_map_string_string_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__map_and_set_twin_sync_sse__func_hash_map_string_struct_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -48003,7 +48003,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__map_and_set_twin_sync_sse__func_hash_map_string_struct_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__map_and_set_twin_sync_sse__func_hash_set_i32_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -48012,7 +48012,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__map_and_set_twin_sync_sse__func_hash_set_i32_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__map_and_set_twin_sync_sse__func_hash_set_string_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -48553,157 +48553,157 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__method_twin_sse__sum_with_twin_sse_sum_twin_sse(
               port_, ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__StaticGetterOnlyTwinSync_static_getter_twin_sync() =>
           wasmModule
               .wire__crate__api__pseudo_manual__method_twin_sync__StaticGetterOnlyTwinSync_static_getter_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__concatenate_with_twin_sync_concatenate_static_twin_sync(
               String a, String b) =>
           wasmModule
               .wire__crate__api__pseudo_manual__method_twin_sync__concatenate_with_twin_sync_concatenate_static_twin_sync(
                   a, b);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__concatenate_with_twin_sync_concatenate_twin_sync(
               List<dynamic> that, String b) =>
           wasmModule
               .wire__crate__api__pseudo_manual__method_twin_sync__concatenate_with_twin_sync_concatenate_twin_sync(
                   that, b);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__concatenate_with_twin_sync_handle_some_static_stream_sink_single_arg_twin_sync(
               String sink) =>
           wasmModule
               .wire__crate__api__pseudo_manual__method_twin_sync__concatenate_with_twin_sync_handle_some_static_stream_sink_single_arg_twin_sync(
                   sink);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__concatenate_with_twin_sync_handle_some_static_stream_sink_twin_sync(
               int key, int max, String sink) =>
           wasmModule
               .wire__crate__api__pseudo_manual__method_twin_sync__concatenate_with_twin_sync_handle_some_static_stream_sink_twin_sync(
                   key, max, sink);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__concatenate_with_twin_sync_handle_some_stream_sink_at_1_twin_sync(
               List<dynamic> that, String sink) =>
           wasmModule
               .wire__crate__api__pseudo_manual__method_twin_sync__concatenate_with_twin_sync_handle_some_stream_sink_at_1_twin_sync(
                   that, sink);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__concatenate_with_twin_sync_handle_some_stream_sink_twin_sync(
               List<dynamic> that, int key, int max, String sink) =>
           wasmModule
               .wire__crate__api__pseudo_manual__method_twin_sync__concatenate_with_twin_sync_handle_some_stream_sink_twin_sync(
                   that, key, max, sink);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__concatenate_with_twin_sync_new_twin_sync(
               String a) =>
           wasmModule
               .wire__crate__api__pseudo_manual__method_twin_sync__concatenate_with_twin_sync_new_twin_sync(
                   a);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__concatenate_with_twin_sync_simple_getter_twin_sync(
               List<dynamic> that) =>
           wasmModule
               .wire__crate__api__pseudo_manual__method_twin_sync__concatenate_with_twin_sync_simple_getter_twin_sync(
                   that);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__get_sum_array_twin_sync(
               int a, int b, int c) =>
           wasmModule
               .wire__crate__api__pseudo_manual__method_twin_sync__get_sum_array_twin_sync(
                   a, b, c);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__get_sum_struct_twin_sync() =>
           wasmModule
               .wire__crate__api__pseudo_manual__method_twin_sync__get_sum_struct_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__my_callable_twin_sync_call(
               List<dynamic> that, String two) =>
           wasmModule
               .wire__crate__api__pseudo_manual__method_twin_sync__my_callable_twin_sync_call(
                   that, two);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__simple_enum_twin_sync_return_self_twin_sync(
               String one) =>
           wasmModule
               .wire__crate__api__pseudo_manual__method_twin_sync__simple_enum_twin_sync_return_self_twin_sync(
                   one);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__simple_enum_twin_sync_simple_method_twin_sync(
               List<dynamic> that) =>
           wasmModule
               .wire__crate__api__pseudo_manual__method_twin_sync__simple_enum_twin_sync_simple_method_twin_sync(
                   that);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__simple_primitive_enum_twin_sync_simple_method_twin_sync(
               int that) =>
           wasmModule
               .wire__crate__api__pseudo_manual__method_twin_sync__simple_primitive_enum_twin_sync_simple_method_twin_sync(
                   that);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__simple_struct_twin_sync_arg_self_twin_sync(
               List<dynamic> a, List<dynamic> b) =>
           wasmModule
               .wire__crate__api__pseudo_manual__method_twin_sync__simple_struct_twin_sync_arg_self_twin_sync(
                   a, b);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__simple_struct_twin_sync_receiver_borrow_twin_sync(
               List<dynamic> that) =>
           wasmModule
               .wire__crate__api__pseudo_manual__method_twin_sync__simple_struct_twin_sync_receiver_borrow_twin_sync(
                   that);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__simple_struct_twin_sync_receiver_own_twin_sync(
               List<dynamic> that) =>
           wasmModule
               .wire__crate__api__pseudo_manual__method_twin_sync__simple_struct_twin_sync_receiver_own_twin_sync(
                   that);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__simple_struct_twin_sync_return_self_twin_sync(
               String one) =>
           wasmModule
               .wire__crate__api__pseudo_manual__method_twin_sync__simple_struct_twin_sync_return_self_twin_sync(
                   one);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__simple_struct_twin_sync_vec_self_twin_sync(
               List<dynamic> arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__method_twin_sync__simple_struct_twin_sync_vec_self_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__static_only_twin_sync_static_method_twin_sync(
               int a) =>
           wasmModule
               .wire__crate__api__pseudo_manual__method_twin_sync__static_only_twin_sync_static_method_twin_sync(
                   a);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__sum_with_twin_sync_sum_twin_sync(
               List<dynamic> that, int y, int z) =>
           wasmModule
               .wire__crate__api__pseudo_manual__method_twin_sync__sum_with_twin_sync_sum_twin_sync(
                   that, y, z);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__method_twin_sync_sse__StaticGetterOnlyTwinSyncSse_static_getter_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -48712,7 +48712,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__method_twin_sync_sse__StaticGetterOnlyTwinSyncSse_static_getter_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__method_twin_sync_sse__concatenate_with_twin_sync_sse_concatenate_static_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -48721,7 +48721,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__method_twin_sync_sse__concatenate_with_twin_sync_sse_concatenate_static_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__method_twin_sync_sse__concatenate_with_twin_sync_sse_concatenate_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -48730,7 +48730,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__method_twin_sync_sse__concatenate_with_twin_sync_sse_concatenate_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__method_twin_sync_sse__concatenate_with_twin_sync_sse_handle_some_static_stream_sink_single_arg_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -48739,7 +48739,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__method_twin_sync_sse__concatenate_with_twin_sync_sse_handle_some_static_stream_sink_single_arg_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__method_twin_sync_sse__concatenate_with_twin_sync_sse_handle_some_static_stream_sink_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -48748,7 +48748,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__method_twin_sync_sse__concatenate_with_twin_sync_sse_handle_some_static_stream_sink_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__method_twin_sync_sse__concatenate_with_twin_sync_sse_handle_some_stream_sink_at_1_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -48757,7 +48757,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__method_twin_sync_sse__concatenate_with_twin_sync_sse_handle_some_stream_sink_at_1_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__method_twin_sync_sse__concatenate_with_twin_sync_sse_handle_some_stream_sink_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -48766,7 +48766,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__method_twin_sync_sse__concatenate_with_twin_sync_sse_handle_some_stream_sink_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__method_twin_sync_sse__concatenate_with_twin_sync_sse_new_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -48775,7 +48775,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__method_twin_sync_sse__concatenate_with_twin_sync_sse_new_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__method_twin_sync_sse__concatenate_with_twin_sync_sse_simple_getter_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -48784,7 +48784,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__method_twin_sync_sse__concatenate_with_twin_sync_sse_simple_getter_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__method_twin_sync_sse__get_sum_array_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -48793,7 +48793,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__method_twin_sync_sse__get_sum_array_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__method_twin_sync_sse__get_sum_struct_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -48802,7 +48802,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__method_twin_sync_sse__get_sum_struct_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__method_twin_sync_sse__my_callable_twin_sync_sse_call(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -48811,7 +48811,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__method_twin_sync_sse__my_callable_twin_sync_sse_call(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__method_twin_sync_sse__simple_enum_twin_sync_sse_return_self_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -48820,7 +48820,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__method_twin_sync_sse__simple_enum_twin_sync_sse_return_self_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__method_twin_sync_sse__simple_enum_twin_sync_sse_simple_method_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -48829,7 +48829,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__method_twin_sync_sse__simple_enum_twin_sync_sse_simple_method_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__method_twin_sync_sse__simple_primitive_enum_twin_sync_sse_simple_method_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -48838,7 +48838,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__method_twin_sync_sse__simple_primitive_enum_twin_sync_sse_simple_method_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__method_twin_sync_sse__simple_struct_twin_sync_sse_arg_self_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -48847,7 +48847,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__method_twin_sync_sse__simple_struct_twin_sync_sse_arg_self_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__method_twin_sync_sse__simple_struct_twin_sync_sse_receiver_borrow_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -48856,7 +48856,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__method_twin_sync_sse__simple_struct_twin_sync_sse_receiver_borrow_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__method_twin_sync_sse__simple_struct_twin_sync_sse_receiver_own_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -48865,7 +48865,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__method_twin_sync_sse__simple_struct_twin_sync_sse_receiver_own_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__method_twin_sync_sse__simple_struct_twin_sync_sse_return_self_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -48874,7 +48874,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__method_twin_sync_sse__simple_struct_twin_sync_sse_return_self_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__method_twin_sync_sse__simple_struct_twin_sync_sse_vec_self_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -48883,7 +48883,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__method_twin_sync_sse__simple_struct_twin_sync_sse_vec_self_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__method_twin_sync_sse__static_only_twin_sync_sse_static_method_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -48892,7 +48892,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__method_twin_sync_sse__static_only_twin_sync_sse_static_method_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__method_twin_sync_sse__sum_with_twin_sync_sse_sum_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -49525,169 +49525,169 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__mirror_twin_sse__test_raw_string_mirrored_twin_sse(
               port_, ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__mirror_twin_sync__app_settings_stream_twin_sync(
               String sink) =>
           wasmModule
               .wire__crate__api__pseudo_manual__mirror_twin_sync__app_settings_stream_twin_sync(
                   sink);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__mirror_twin_sync__app_settings_vec_stream_twin_sync(
               String sink) =>
           wasmModule
               .wire__crate__api__pseudo_manual__mirror_twin_sync__app_settings_vec_stream_twin_sync(
                   sink);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__mirror_twin_sync__first_number_twin_sync(
               List<dynamic> nums) =>
           wasmModule
               .wire__crate__api__pseudo_manual__mirror_twin_sync__first_number_twin_sync(
                   nums);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__mirror_twin_sync__first_sequence_twin_sync(
               List<dynamic> seqs) =>
           wasmModule
               .wire__crate__api__pseudo_manual__mirror_twin_sync__first_sequence_twin_sync(
                   seqs);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__mirror_twin_sync__get_app_settings_twin_sync() =>
           wasmModule
               .wire__crate__api__pseudo_manual__mirror_twin_sync__get_app_settings_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__mirror_twin_sync__get_fallible_app_settings_twin_sync() =>
           wasmModule
               .wire__crate__api__pseudo_manual__mirror_twin_sync__get_fallible_app_settings_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__mirror_twin_sync__get_message_twin_sync() =>
           wasmModule
               .wire__crate__api__pseudo_manual__mirror_twin_sync__get_message_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__mirror_twin_sync__is_app_embedded_twin_sync(
               List<dynamic> app_settings) =>
           wasmModule
               .wire__crate__api__pseudo_manual__mirror_twin_sync__is_app_embedded_twin_sync(
                   app_settings);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__mirror_twin_sync__mirror_array_enum_stream_twin_sync(
               String sink) =>
           wasmModule
               .wire__crate__api__pseudo_manual__mirror_twin_sync__mirror_array_enum_stream_twin_sync(
                   sink);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__mirror_twin_sync__mirror_enum_stream_twin_sync(
               String sink) =>
           wasmModule
               .wire__crate__api__pseudo_manual__mirror_twin_sync__mirror_enum_stream_twin_sync(
                   sink);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__mirror_twin_sync__mirror_map_enum_stream_twin_sync(
               String sink) =>
           wasmModule
               .wire__crate__api__pseudo_manual__mirror_twin_sync__mirror_map_enum_stream_twin_sync(
                   sink);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__mirror_twin_sync__mirror_option_enum_stream_twin_sync(
               String sink) =>
           wasmModule
               .wire__crate__api__pseudo_manual__mirror_twin_sync__mirror_option_enum_stream_twin_sync(
                   sink);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__mirror_twin_sync__mirror_set_enum_stream_twin_sync(
               String sink) =>
           wasmModule
               .wire__crate__api__pseudo_manual__mirror_twin_sync__mirror_set_enum_stream_twin_sync(
                   sink);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__mirror_twin_sync__mirror_struct_stream_twin_sync(
               String sink) =>
           wasmModule
               .wire__crate__api__pseudo_manual__mirror_twin_sync__mirror_struct_stream_twin_sync(
                   sink);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__mirror_twin_sync__mirror_tuple_stream_twin_sync(
               String sink) =>
           wasmModule
               .wire__crate__api__pseudo_manual__mirror_twin_sync__mirror_tuple_stream_twin_sync(
                   sink);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__mirror_twin_sync__mirror_vec_enum_stream_twin_sync(
               String sink) =>
           wasmModule
               .wire__crate__api__pseudo_manual__mirror_twin_sync__mirror_vec_enum_stream_twin_sync(
                   sink);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__mirror_twin_sync__repeat_number_twin_sync(
               int num, Object times) =>
           wasmModule
               .wire__crate__api__pseudo_manual__mirror_twin_sync__repeat_number_twin_sync(
                   num, times);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__mirror_twin_sync__repeat_sequence_twin_sync(
               int seq, Object times) =>
           wasmModule
               .wire__crate__api__pseudo_manual__mirror_twin_sync__repeat_sequence_twin_sync(
                   seq, times);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__mirror_twin_sync__test_contains_mirrored_sub_struct_twin_sync() =>
           wasmModule
               .wire__crate__api__pseudo_manual__mirror_twin_sync__test_contains_mirrored_sub_struct_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__mirror_twin_sync__test_fallible_of_raw_string_mirrored_twin_sync() =>
           wasmModule
               .wire__crate__api__pseudo_manual__mirror_twin_sync__test_fallible_of_raw_string_mirrored_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__mirror_twin_sync__test_hashmap_with_mirrored_value_twin_sync() =>
           wasmModule
               .wire__crate__api__pseudo_manual__mirror_twin_sync__test_hashmap_with_mirrored_value_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__mirror_twin_sync__test_list_of_nested_enums_mirrored_twin_sync() =>
           wasmModule
               .wire__crate__api__pseudo_manual__mirror_twin_sync__test_list_of_nested_enums_mirrored_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__mirror_twin_sync__test_list_of_raw_nested_string_mirrored_twin_sync() =>
           wasmModule
               .wire__crate__api__pseudo_manual__mirror_twin_sync__test_list_of_raw_nested_string_mirrored_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__mirror_twin_sync__test_nested_raw_string_mirrored_twin_sync() =>
           wasmModule
               .wire__crate__api__pseudo_manual__mirror_twin_sync__test_nested_raw_string_mirrored_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__mirror_twin_sync__test_raw_string_enum_mirrored_twin_sync(
               bool nested) =>
           wasmModule
               .wire__crate__api__pseudo_manual__mirror_twin_sync__test_raw_string_enum_mirrored_twin_sync(
                   nested);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__mirror_twin_sync__test_raw_string_mirrored_twin_sync() =>
           wasmModule
               .wire__crate__api__pseudo_manual__mirror_twin_sync__test_raw_string_mirrored_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__mirror_twin_sync_sse__app_settings_stream_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -49696,7 +49696,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__mirror_twin_sync_sse__app_settings_stream_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__mirror_twin_sync_sse__app_settings_vec_stream_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -49705,7 +49705,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__mirror_twin_sync_sse__app_settings_vec_stream_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__mirror_twin_sync_sse__first_number_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -49714,7 +49714,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__mirror_twin_sync_sse__first_number_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__mirror_twin_sync_sse__first_sequence_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -49723,7 +49723,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__mirror_twin_sync_sse__first_sequence_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__mirror_twin_sync_sse__get_app_settings_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -49732,7 +49732,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__mirror_twin_sync_sse__get_app_settings_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__mirror_twin_sync_sse__get_fallible_app_settings_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -49741,7 +49741,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__mirror_twin_sync_sse__get_fallible_app_settings_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__mirror_twin_sync_sse__get_message_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -49750,7 +49750,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__mirror_twin_sync_sse__get_message_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__mirror_twin_sync_sse__is_app_embedded_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -49759,7 +49759,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__mirror_twin_sync_sse__is_app_embedded_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__mirror_twin_sync_sse__mirror_array_enum_stream_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -49768,7 +49768,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__mirror_twin_sync_sse__mirror_array_enum_stream_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__mirror_twin_sync_sse__mirror_enum_stream_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -49777,7 +49777,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__mirror_twin_sync_sse__mirror_enum_stream_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__mirror_twin_sync_sse__mirror_map_enum_stream_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -49786,7 +49786,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__mirror_twin_sync_sse__mirror_map_enum_stream_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__mirror_twin_sync_sse__mirror_option_enum_stream_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -49795,7 +49795,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__mirror_twin_sync_sse__mirror_option_enum_stream_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__mirror_twin_sync_sse__mirror_set_enum_stream_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -49804,7 +49804,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__mirror_twin_sync_sse__mirror_set_enum_stream_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__mirror_twin_sync_sse__mirror_struct_stream_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -49813,7 +49813,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__mirror_twin_sync_sse__mirror_struct_stream_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__mirror_twin_sync_sse__mirror_tuple_stream_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -49822,7 +49822,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__mirror_twin_sync_sse__mirror_tuple_stream_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__mirror_twin_sync_sse__mirror_vec_enum_stream_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -49831,7 +49831,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__mirror_twin_sync_sse__mirror_vec_enum_stream_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__mirror_twin_sync_sse__repeat_number_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -49840,7 +49840,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__mirror_twin_sync_sse__repeat_number_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__mirror_twin_sync_sse__repeat_sequence_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -49849,7 +49849,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__mirror_twin_sync_sse__repeat_sequence_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__mirror_twin_sync_sse__test_contains_mirrored_sub_struct_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -49858,7 +49858,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__mirror_twin_sync_sse__test_contains_mirrored_sub_struct_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__mirror_twin_sync_sse__test_fallible_of_raw_string_mirrored_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -49867,7 +49867,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__mirror_twin_sync_sse__test_fallible_of_raw_string_mirrored_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__mirror_twin_sync_sse__test_hashmap_with_mirrored_value_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -49876,7 +49876,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__mirror_twin_sync_sse__test_hashmap_with_mirrored_value_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__mirror_twin_sync_sse__test_list_of_nested_enums_mirrored_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -49885,7 +49885,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__mirror_twin_sync_sse__test_list_of_nested_enums_mirrored_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__mirror_twin_sync_sse__test_list_of_raw_nested_string_mirrored_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -49894,7 +49894,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__mirror_twin_sync_sse__test_list_of_raw_nested_string_mirrored_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__mirror_twin_sync_sse__test_nested_raw_string_mirrored_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -49903,7 +49903,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__mirror_twin_sync_sse__test_nested_raw_string_mirrored_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__mirror_twin_sync_sse__test_raw_string_enum_mirrored_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -49912,7 +49912,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__mirror_twin_sync_sse__test_raw_string_enum_mirrored_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__mirror_twin_sync_sse__test_raw_string_mirrored_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -50185,82 +50185,82 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__misc_example_twin_sse__test_struct_with_enum_twin_sse(
               port_, ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__misc_example_twin_sync__handle_big_buffers_twin_sync() =>
           wasmModule
               .wire__crate__api__pseudo_manual__misc_example_twin_sync__handle_big_buffers_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__misc_example_twin_sync__handle_char_twin_sync(
               String arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__misc_example_twin_sync__handle_char_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__misc_example_twin_sync__handle_complex_struct_twin_sync(
               List<dynamic> s) =>
           wasmModule
               .wire__crate__api__pseudo_manual__misc_example_twin_sync__handle_complex_struct_twin_sync(
                   s);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__misc_example_twin_sync__handle_nested_struct_twin_sync(
               List<dynamic> s) =>
           wasmModule
               .wire__crate__api__pseudo_manual__misc_example_twin_sync__handle_nested_struct_twin_sync(
                   s);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__misc_example_twin_sync__handle_string_twin_sync(
               String s) =>
           wasmModule
               .wire__crate__api__pseudo_manual__misc_example_twin_sync__handle_string_twin_sync(
                   s);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__misc_example_twin_sync__handle_struct_twin_sync(
               List<dynamic> arg, List<dynamic> boxed) =>
           wasmModule
               .wire__crate__api__pseudo_manual__misc_example_twin_sync__handle_struct_twin_sync(
                   arg, boxed);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__misc_example_twin_sync__handle_vec_u8_twin_sync(
               List<int> v) =>
           wasmModule
               .wire__crate__api__pseudo_manual__misc_example_twin_sync__handle_vec_u8_twin_sync(
                   v);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__misc_example_twin_sync__list_of_primitive_enums_twin_sync(
               List<dynamic> weekdays) =>
           wasmModule
               .wire__crate__api__pseudo_manual__misc_example_twin_sync__list_of_primitive_enums_twin_sync(
                   weekdays);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__misc_example_twin_sync__positional_arguments_twin_sync(
               int a, int b) =>
           wasmModule
               .wire__crate__api__pseudo_manual__misc_example_twin_sync__positional_arguments_twin_sync(
                   a, b);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__misc_example_twin_sync__test_abc_enum_twin_sync(
               List<dynamic> abc) =>
           wasmModule
               .wire__crate__api__pseudo_manual__misc_example_twin_sync__test_abc_enum_twin_sync(
                   abc);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__misc_example_twin_sync__test_struct_with_enum_twin_sync(
               List<dynamic> se) =>
           wasmModule
               .wire__crate__api__pseudo_manual__misc_example_twin_sync__test_struct_with_enum_twin_sync(
                   se);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__handle_big_buffers_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -50269,7 +50269,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__handle_big_buffers_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__handle_char_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -50278,7 +50278,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__handle_char_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__handle_complex_struct_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -50287,7 +50287,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__handle_complex_struct_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__handle_nested_struct_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -50296,7 +50296,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__handle_nested_struct_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__handle_string_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -50305,7 +50305,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__handle_string_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__handle_struct_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -50314,7 +50314,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__handle_struct_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__handle_vec_u8_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -50323,7 +50323,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__handle_vec_u8_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__list_of_primitive_enums_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -50332,7 +50332,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__list_of_primitive_enums_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__positional_arguments_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -50341,7 +50341,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__positional_arguments_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__test_abc_enum_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -50350,7 +50350,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__test_abc_enum_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__test_struct_with_enum_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -50455,33 +50455,33 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__misc_type_twin_sse__handle_string_list_twin_sse(
               port_, ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__misc_type_twin_sync__empty_struct_twin_sync(
               List<dynamic> empty) =>
           wasmModule
               .wire__crate__api__pseudo_manual__misc_type_twin_sync__empty_struct_twin_sync(
                   empty);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__misc_type_twin_sync__func_return_unit_twin_sync() =>
           wasmModule
               .wire__crate__api__pseudo_manual__misc_type_twin_sync__func_return_unit_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__misc_type_twin_sync__handle_list_of_struct_twin_sync(
               List<dynamic> l) =>
           wasmModule
               .wire__crate__api__pseudo_manual__misc_type_twin_sync__handle_list_of_struct_twin_sync(
                   l);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__misc_type_twin_sync__handle_string_list_twin_sync(
               List<dynamic> names) =>
           wasmModule
               .wire__crate__api__pseudo_manual__misc_type_twin_sync__handle_string_list_twin_sync(
                   names);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__misc_type_twin_sync_sse__empty_struct_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -50490,7 +50490,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__misc_type_twin_sync_sse__empty_struct_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__misc_type_twin_sync_sse__func_return_unit_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -50499,7 +50499,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__misc_type_twin_sync_sse__func_return_unit_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__misc_type_twin_sync_sse__handle_list_of_struct_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -50508,7 +50508,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__misc_type_twin_sync_sse__handle_list_of_struct_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__misc_type_twin_sync_sse__handle_string_list_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -50541,14 +50541,14 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__newtype_pattern_twin_sse__handle_newtype_twin_sse(
               port_, ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__newtype_pattern_twin_sync__handle_newtype_twin_sync(
               List<dynamic> arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__newtype_pattern_twin_sync__handle_newtype_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__newtype_pattern_twin_sync_sse__handle_newtype_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -50585,14 +50585,14 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__optional_primitive_misc_twin_sse__primitive_optional_types_twin_sse(
               port_, ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__optional_primitive_misc_twin_sync__primitive_optional_types_twin_sync(
               int? my_i32, Object? my_i64, double? my_f64, bool? my_bool) =>
           wasmModule
               .wire__crate__api__pseudo_manual__optional_primitive_misc_twin_sync__primitive_optional_types_twin_sync(
                   my_i32, my_i64, my_f64, my_bool);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__optional_primitive_misc_twin_sync_sse__primitive_optional_types_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -50752,14 +50752,14 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__optional_twin_sse__handle_vec_of_opts_twin_sse(
               port_, ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__optional_twin_sync__handle_increment_boxed_optional_twin_sync(
               double? opt) =>
           wasmModule
               .wire__crate__api__pseudo_manual__optional_twin_sync__handle_increment_boxed_optional_twin_sync(
                   opt);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__optional_twin_sync__handle_option_box_arguments_twin_sync(
               int? i8box,
               int? u8box,
@@ -50772,35 +50772,35 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__optional_twin_sync__handle_option_box_arguments_twin_sync(
                   i8box, u8box, i32box, i64box, f64box, boolbox, structbox);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__optional_twin_sync__handle_optional_increment_twin_sync(
               List<dynamic>? opt) =>
           wasmModule
               .wire__crate__api__pseudo_manual__optional_twin_sync__handle_optional_increment_twin_sync(
                   opt);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__optional_twin_sync__handle_optional_return_twin_sync(
               double left, double right) =>
           wasmModule
               .wire__crate__api__pseudo_manual__optional_twin_sync__handle_optional_return_twin_sync(
                   left, right);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__optional_twin_sync__handle_optional_struct_twin_sync(
               String? document) =>
           wasmModule
               .wire__crate__api__pseudo_manual__optional_twin_sync__handle_optional_struct_twin_sync(
                   document);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__optional_twin_sync__handle_vec_of_opts_twin_sync(
               List<dynamic> opt) =>
           wasmModule
               .wire__crate__api__pseudo_manual__optional_twin_sync__handle_vec_of_opts_twin_sync(
                   opt);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__optional_twin_sync_sse__handle_increment_boxed_optional_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -50809,7 +50809,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__optional_twin_sync_sse__handle_increment_boxed_optional_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__optional_twin_sync_sse__handle_option_box_arguments_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -50818,7 +50818,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__optional_twin_sync_sse__handle_option_box_arguments_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__optional_twin_sync_sse__handle_optional_increment_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -50827,7 +50827,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__optional_twin_sync_sse__handle_optional_increment_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__optional_twin_sync_sse__handle_optional_return_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -50836,7 +50836,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__optional_twin_sync_sse__handle_optional_return_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__optional_twin_sync_sse__handle_optional_struct_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -50845,7 +50845,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__optional_twin_sync_sse__handle_optional_struct_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__optional_twin_sync_sse__handle_vec_of_opts_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -50998,49 +50998,49 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__ownership_twin_sse__borrow_struct_twin_sse(
               port_, ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__ownership_twin_sync__borrow_i32_twin_sync(
               int arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__ownership_twin_sync__borrow_i32_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__ownership_twin_sync__borrow_slice_string_twin_sync(
               List<dynamic> arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__ownership_twin_sync__borrow_slice_string_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__ownership_twin_sync__borrow_slice_u8_twin_sync(
               List<int> arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__ownership_twin_sync__borrow_slice_u8_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__ownership_twin_sync__borrow_str_twin_sync(
               String arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__ownership_twin_sync__borrow_str_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__ownership_twin_sync__borrow_string_twin_sync(
               String arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__ownership_twin_sync__borrow_string_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__ownership_twin_sync__borrow_struct_twin_sync(
               List<dynamic> arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__ownership_twin_sync__borrow_struct_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__ownership_twin_sync_sse__borrow_i32_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -51049,7 +51049,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__ownership_twin_sync_sse__borrow_i32_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__ownership_twin_sync_sse__borrow_slice_string_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -51058,7 +51058,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__ownership_twin_sync_sse__borrow_slice_string_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__ownership_twin_sync_sse__borrow_slice_u8_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -51067,7 +51067,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__ownership_twin_sync_sse__borrow_slice_u8_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__ownership_twin_sync_sse__borrow_str_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -51076,7 +51076,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__ownership_twin_sync_sse__borrow_str_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__ownership_twin_sync_sse__borrow_string_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -51085,7 +51085,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__ownership_twin_sync_sse__borrow_string_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__ownership_twin_sync_sse__borrow_struct_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -51118,14 +51118,14 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__primitive_list_misc_twin_sse__handle_vec_of_primitive_twin_sse(
               port_, ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__primitive_list_misc_twin_sync__handle_vec_of_primitive_twin_sync(
               int n) =>
           wasmModule
               .wire__crate__api__pseudo_manual__primitive_list_misc_twin_sync__handle_vec_of_primitive_twin_sync(
                   n);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__primitive_list_misc_twin_sync_sse__handle_vec_of_primitive_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -51186,21 +51186,21 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__primitive_misc_twin_sse__primitive_u32_twin_sse(
               port_, ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__primitive_misc_twin_sync__primitive_types_twin_sync(
               int my_i32, Object my_i64, double my_f64, bool my_bool) =>
           wasmModule
               .wire__crate__api__pseudo_manual__primitive_misc_twin_sync__primitive_types_twin_sync(
                   my_i32, my_i64, my_f64, my_bool);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__primitive_misc_twin_sync__primitive_u32_twin_sync(
               int my_u32) =>
           wasmModule
               .wire__crate__api__pseudo_manual__primitive_misc_twin_sync__primitive_u32_twin_sync(
                   my_u32);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__primitive_misc_twin_sync_sse__primitive_types_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -51209,7 +51209,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__primitive_misc_twin_sync_sse__primitive_types_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__primitive_misc_twin_sync_sse__primitive_u32_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -51266,17 +51266,17 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__raw_string_twin_sse__test_raw_string_item_struct_twin_sse(
               port_, ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__raw_string_twin_sync__test_more_than_just_one_raw_string_struct_twin_sync() =>
           wasmModule
               .wire__crate__api__pseudo_manual__raw_string_twin_sync__test_more_than_just_one_raw_string_struct_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__raw_string_twin_sync__test_raw_string_item_struct_twin_sync() =>
           wasmModule
               .wire__crate__api__pseudo_manual__raw_string_twin_sync__test_raw_string_item_struct_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__raw_string_twin_sync_sse__test_more_than_just_one_raw_string_struct_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -51285,7 +51285,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__raw_string_twin_sync_sse__test_more_than_just_one_raw_string_struct_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__raw_string_twin_sync_sse__test_raw_string_item_struct_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -51366,14 +51366,14 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__NonCloneSimpleTwinMoi_static_method_return_own_twin_moi(
               port_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi_get_good(
               int that) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi_get_good(
                   that);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi_set_good(
               int that, String good) =>
           wasmModule
@@ -51638,14 +51638,14 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__NonCloneSimpleTwinRustAsync_static_method_return_own_twin_rust_async(
               port_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync_get_good(
               int that) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync_get_good(
                   that);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync_set_good(
               int that, String good) =>
           wasmModule
@@ -51910,14 +51910,14 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__NonCloneSimpleTwinRustAsyncMoi_static_method_return_own_twin_rust_async_moi(
               port_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi_get_good(
               int that) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi_get_good(
                   that);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi_set_good(
               int that, String good) =>
           wasmModule
@@ -52218,14 +52218,14 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__NonCloneSimpleTwinRustAsyncSse_static_method_return_own_twin_rust_async_sse(
               port_, ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse_get_good(
               int that) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse_get_good(
                   that);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse_set_good(
               int that, String good) =>
           wasmModule
@@ -52619,14 +52619,14 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__NonCloneSimpleTwinRustAsyncSseMoi_static_method_return_own_twin_rust_async_sse_moi(
               port_, ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi_get_good(
               int that) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi_get_good(
                   that);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi_set_good(
               int that, String good) =>
           wasmModule
@@ -53020,14 +53020,14 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__NonCloneSimpleTwinSse_static_method_return_own_twin_sse(
               port_, ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSse_get_good(
               int that) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSse_get_good(
                   that);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSse_set_good(
               int that, String good) =>
           wasmModule
@@ -53421,14 +53421,14 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__NonCloneSimpleTwinSseMoi_static_method_return_own_twin_sse_moi(
               port_, ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi_get_good(
               int that) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi_get_good(
                   that);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi_set_good(
               int that, String good) =>
           wasmModule
@@ -53714,581 +53714,581 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto_opaque_two_args_twin_sse_moi(
               port_, ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_instance_method_arg_borrow_twin_sync(
               int that) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_instance_method_arg_borrow_twin_sync(
                   that);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_instance_method_arg_mut_borrow_twin_sync(
               int that) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_instance_method_arg_mut_borrow_twin_sync(
                   that);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_instance_method_arg_own_twin_sync(
               int that) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_instance_method_arg_own_twin_sync(
                   that);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_instance_method_getter_twin_sync(
               int that) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_instance_method_getter_twin_sync(
                   that);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_instance_method_return_own_twin_sync(
               int that) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_instance_method_return_own_twin_sync(
                   that);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_new_custom_name_twin_sync() =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_new_custom_name_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_new_twin_sync() =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_new_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_new_with_result_twin_sync() =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_new_with_result_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_static_method_arg_borrow_twin_sync(
               int arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_static_method_arg_borrow_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_static_method_arg_mut_borrow_twin_sync(
               int arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_static_method_arg_mut_borrow_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_static_method_arg_own_twin_sync(
               int arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_static_method_arg_own_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_static_method_return_own_twin_sync() =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_static_method_return_own_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_get_good(
               int that) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_get_good(
                   that);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_set_good(
               int that, String good) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_set_good(
                   that, good);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_arg_borrow_twin_sync(
               int arg, int expect) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_arg_borrow_twin_sync(
                   arg, expect);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_arg_mut_borrow_twin_sync(
               int arg, int expect, int adder) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_arg_mut_borrow_twin_sync(
                   arg, expect, adder);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_arg_own_and_return_own_twin_sync(
               int arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_arg_own_and_return_own_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_arg_own_twin_sync(
               int arg, int expect) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_arg_own_twin_sync(
                   arg, expect);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_arg_vec_own_twin_sync(
               List<dynamic> arg, List<int> expect) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_arg_vec_own_twin_sync(
                   arg, expect);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_borrow_and_borrow_twin_sync(
               int a, int b) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_borrow_and_borrow_twin_sync(
                   a, b);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_borrow_and_mut_borrow_twin_sync(
               int borrow, int mut_borrow) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_borrow_and_mut_borrow_twin_sync(
                   borrow, mut_borrow);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_callable_arg_twin_sync(
               int arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_callable_arg_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_callable_return_twin_sync() =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_callable_return_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_dummy_twin_sync(
               int a, int b) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_dummy_twin_sync(
                   a, b);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_enum_arg_borrow_twin_sync(
               int arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_enum_arg_borrow_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_enum_return_own_twin_sync() =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_enum_return_own_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sync(
               List<dynamic> arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sync() =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sync() =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_explicit_arg_twin_sync(
               int arg, int expect) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_explicit_arg_twin_sync(
                   arg, expect);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_explicit_return_struct_twin_sync() =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_explicit_return_struct_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_explicit_return_twin_sync(
               int initial) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_explicit_return_twin_sync(
                   initial);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_explicit_struct_twin_sync(
               List<dynamic> arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_explicit_struct_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_normal_and_opaque_arg_twin_sync(
               int a, String b) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_normal_and_opaque_arg_twin_sync(
                   a, b);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_plus_sign_arg_twin_sync(
               int arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_plus_sign_arg_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_plus_sign_return_twin_sync() =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_plus_sign_return_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_return_opaque_one_and_two_twin_sync() =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_return_opaque_one_and_two_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_return_opaque_two_twin_sync() =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_return_opaque_two_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_return_own_twin_sync(
               int initial) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_return_own_twin_sync(
                   initial);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_return_vec_own_twin_sync() =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_return_vec_own_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_sleep_twin_sync(
               int apple, int orange) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_sleep_twin_sync(
                   apple, orange);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_stream_sink_twin_sync(
               String sink) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_stream_sink_twin_sync(
                   sink);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync(
               List<dynamic> arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync() =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_two_args_twin_sync(
               int a, int b) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_two_args_twin_sync(
                   a, b);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__NonCloneSimpleTwinSyncMoi_instance_method_arg_borrow_twin_sync_moi(
               int that) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__NonCloneSimpleTwinSyncMoi_instance_method_arg_borrow_twin_sync_moi(
                   that);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__NonCloneSimpleTwinSyncMoi_instance_method_arg_mut_borrow_twin_sync_moi(
               int that) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__NonCloneSimpleTwinSyncMoi_instance_method_arg_mut_borrow_twin_sync_moi(
                   that);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__NonCloneSimpleTwinSyncMoi_instance_method_arg_own_twin_sync_moi(
               int that) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__NonCloneSimpleTwinSyncMoi_instance_method_arg_own_twin_sync_moi(
                   that);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__NonCloneSimpleTwinSyncMoi_instance_method_getter_twin_sync_moi(
               int that) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__NonCloneSimpleTwinSyncMoi_instance_method_getter_twin_sync_moi(
                   that);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__NonCloneSimpleTwinSyncMoi_instance_method_return_own_twin_sync_moi(
               int that) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__NonCloneSimpleTwinSyncMoi_instance_method_return_own_twin_sync_moi(
                   that);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__NonCloneSimpleTwinSyncMoi_new_custom_name_twin_sync_moi() =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__NonCloneSimpleTwinSyncMoi_new_custom_name_twin_sync_moi();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__NonCloneSimpleTwinSyncMoi_new_twin_sync_moi() =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__NonCloneSimpleTwinSyncMoi_new_twin_sync_moi();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__NonCloneSimpleTwinSyncMoi_new_with_result_twin_sync_moi() =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__NonCloneSimpleTwinSyncMoi_new_with_result_twin_sync_moi();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__NonCloneSimpleTwinSyncMoi_static_method_arg_borrow_twin_sync_moi(
               int arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__NonCloneSimpleTwinSyncMoi_static_method_arg_borrow_twin_sync_moi(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__NonCloneSimpleTwinSyncMoi_static_method_arg_mut_borrow_twin_sync_moi(
               int arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__NonCloneSimpleTwinSyncMoi_static_method_arg_mut_borrow_twin_sync_moi(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__NonCloneSimpleTwinSyncMoi_static_method_arg_own_twin_sync_moi(
               int arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__NonCloneSimpleTwinSyncMoi_static_method_arg_own_twin_sync_moi(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__NonCloneSimpleTwinSyncMoi_static_method_return_own_twin_sync_moi() =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__NonCloneSimpleTwinSyncMoi_static_method_return_own_twin_sync_moi();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi_get_good(
               int that) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi_get_good(
                   that);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi_set_good(
               int that, String good) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi_set_good(
                   that, good);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_arg_borrow_twin_sync_moi(
               int arg, int expect) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_arg_borrow_twin_sync_moi(
                   arg, expect);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_arg_mut_borrow_twin_sync_moi(
               int arg, int expect, int adder) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_arg_mut_borrow_twin_sync_moi(
                   arg, expect, adder);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_arg_own_and_return_own_twin_sync_moi(
               int arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_arg_own_and_return_own_twin_sync_moi(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_arg_own_twin_sync_moi(
               int arg, int expect) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_arg_own_twin_sync_moi(
                   arg, expect);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_arg_vec_own_twin_sync_moi(
               List<dynamic> arg, List<int> expect) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_arg_vec_own_twin_sync_moi(
                   arg, expect);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_borrow_and_borrow_twin_sync_moi(
               int a, int b) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_borrow_and_borrow_twin_sync_moi(
                   a, b);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_borrow_and_mut_borrow_twin_sync_moi(
               int borrow, int mut_borrow) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_borrow_and_mut_borrow_twin_sync_moi(
                   borrow, mut_borrow);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_callable_arg_twin_sync_moi(
               int arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_callable_arg_twin_sync_moi(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_callable_return_twin_sync_moi() =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_callable_return_twin_sync_moi();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_dummy_twin_sync_moi(
               int a, int b) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_dummy_twin_sync_moi(
                   a, b);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_enum_arg_borrow_twin_sync_moi(
               int arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_enum_arg_borrow_twin_sync_moi(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_enum_return_own_twin_sync_moi() =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_enum_return_own_twin_sync_moi();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sync_moi(
               List<dynamic> arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sync_moi(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sync_moi() =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sync_moi();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sync_moi() =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sync_moi();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_explicit_arg_twin_sync_moi(
               int arg, int expect) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_explicit_arg_twin_sync_moi(
                   arg, expect);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_explicit_return_struct_twin_sync_moi() =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_explicit_return_struct_twin_sync_moi();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_explicit_return_twin_sync_moi(
               int initial) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_explicit_return_twin_sync_moi(
                   initial);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_explicit_struct_twin_sync_moi(
               List<dynamic> arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_explicit_struct_twin_sync_moi(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_normal_and_opaque_arg_twin_sync_moi(
               int a, String b) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_normal_and_opaque_arg_twin_sync_moi(
                   a, b);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_plus_sign_arg_twin_sync_moi(
               int arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_plus_sign_arg_twin_sync_moi(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_plus_sign_return_twin_sync_moi() =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_plus_sign_return_twin_sync_moi();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_return_opaque_one_and_two_twin_sync_moi() =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_return_opaque_one_and_two_twin_sync_moi();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_return_opaque_two_twin_sync_moi() =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_return_opaque_two_twin_sync_moi();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_return_own_twin_sync_moi(
               int initial) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_return_own_twin_sync_moi(
                   initial);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_return_vec_own_twin_sync_moi() =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_return_vec_own_twin_sync_moi();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_sleep_twin_sync_moi(
               int apple, int orange) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_sleep_twin_sync_moi(
                   apple, orange);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_stream_sink_twin_sync_moi(
               String sink) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_stream_sink_twin_sync_moi(
                   sink);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync_moi(
               List<dynamic> arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync_moi(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync_moi() =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync_moi();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_two_args_twin_sync_moi(
               int a, int b) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_two_args_twin_sync_moi(
                   a, b);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__NonCloneSimpleTwinSyncSse_instance_method_arg_borrow_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54297,7 +54297,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__NonCloneSimpleTwinSyncSse_instance_method_arg_borrow_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__NonCloneSimpleTwinSyncSse_instance_method_arg_mut_borrow_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54306,7 +54306,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__NonCloneSimpleTwinSyncSse_instance_method_arg_mut_borrow_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__NonCloneSimpleTwinSyncSse_instance_method_arg_own_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54315,7 +54315,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__NonCloneSimpleTwinSyncSse_instance_method_arg_own_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__NonCloneSimpleTwinSyncSse_instance_method_getter_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54324,7 +54324,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__NonCloneSimpleTwinSyncSse_instance_method_getter_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__NonCloneSimpleTwinSyncSse_instance_method_return_own_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54333,7 +54333,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__NonCloneSimpleTwinSyncSse_instance_method_return_own_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__NonCloneSimpleTwinSyncSse_new_custom_name_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54342,7 +54342,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__NonCloneSimpleTwinSyncSse_new_custom_name_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__NonCloneSimpleTwinSyncSse_new_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54351,7 +54351,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__NonCloneSimpleTwinSyncSse_new_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__NonCloneSimpleTwinSyncSse_new_with_result_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54360,7 +54360,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__NonCloneSimpleTwinSyncSse_new_with_result_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__NonCloneSimpleTwinSyncSse_static_method_arg_borrow_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54369,7 +54369,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__NonCloneSimpleTwinSyncSse_static_method_arg_borrow_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__NonCloneSimpleTwinSyncSse_static_method_arg_mut_borrow_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54378,7 +54378,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__NonCloneSimpleTwinSyncSse_static_method_arg_mut_borrow_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__NonCloneSimpleTwinSyncSse_static_method_arg_own_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54387,7 +54387,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__NonCloneSimpleTwinSyncSse_static_method_arg_own_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__NonCloneSimpleTwinSyncSse_static_method_return_own_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54396,21 +54396,21 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__NonCloneSimpleTwinSyncSse_static_method_return_own_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse_get_good(
               int that) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse_get_good(
                   that);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse_set_good(
               int that, String good) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse_set_good(
                   that, good);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_arg_borrow_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54419,7 +54419,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_arg_borrow_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_arg_mut_borrow_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54428,7 +54428,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_arg_mut_borrow_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_arg_own_and_return_own_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54437,7 +54437,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_arg_own_and_return_own_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_arg_own_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54446,7 +54446,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_arg_own_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_arg_vec_own_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54455,7 +54455,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_arg_vec_own_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_borrow_and_borrow_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54464,7 +54464,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_borrow_and_borrow_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_borrow_and_mut_borrow_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54473,7 +54473,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_borrow_and_mut_borrow_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_callable_arg_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54482,7 +54482,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_callable_arg_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_callable_return_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54491,7 +54491,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_callable_return_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_dummy_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54500,7 +54500,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_dummy_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_enum_arg_borrow_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54509,7 +54509,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_enum_arg_borrow_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_enum_return_own_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54518,7 +54518,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_enum_return_own_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54527,7 +54527,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54536,7 +54536,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54545,7 +54545,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_explicit_arg_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54554,7 +54554,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_explicit_arg_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_explicit_return_struct_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54563,7 +54563,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_explicit_return_struct_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_explicit_return_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54572,7 +54572,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_explicit_return_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_explicit_struct_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54581,7 +54581,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_explicit_struct_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_normal_and_opaque_arg_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54590,7 +54590,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_normal_and_opaque_arg_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_plus_sign_arg_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54599,7 +54599,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_plus_sign_arg_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_plus_sign_return_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54608,7 +54608,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_plus_sign_return_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_return_opaque_one_and_two_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54617,7 +54617,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_return_opaque_one_and_two_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_return_opaque_two_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54626,7 +54626,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_return_opaque_two_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_return_own_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54635,7 +54635,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_return_own_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_return_vec_own_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54644,7 +54644,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_return_vec_own_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_sleep_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54653,7 +54653,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_sleep_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_stream_sink_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54662,7 +54662,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_stream_sink_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54671,7 +54671,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54680,7 +54680,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_two_args_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54689,7 +54689,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_two_args_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__NonCloneSimpleTwinSyncSseMoi_instance_method_arg_borrow_twin_sync_sse_moi(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54698,7 +54698,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__NonCloneSimpleTwinSyncSseMoi_instance_method_arg_borrow_twin_sync_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__NonCloneSimpleTwinSyncSseMoi_instance_method_arg_mut_borrow_twin_sync_sse_moi(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54707,7 +54707,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__NonCloneSimpleTwinSyncSseMoi_instance_method_arg_mut_borrow_twin_sync_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__NonCloneSimpleTwinSyncSseMoi_instance_method_arg_own_twin_sync_sse_moi(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54716,7 +54716,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__NonCloneSimpleTwinSyncSseMoi_instance_method_arg_own_twin_sync_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__NonCloneSimpleTwinSyncSseMoi_instance_method_getter_twin_sync_sse_moi(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54725,7 +54725,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__NonCloneSimpleTwinSyncSseMoi_instance_method_getter_twin_sync_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__NonCloneSimpleTwinSyncSseMoi_instance_method_return_own_twin_sync_sse_moi(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54734,7 +54734,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__NonCloneSimpleTwinSyncSseMoi_instance_method_return_own_twin_sync_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__NonCloneSimpleTwinSyncSseMoi_new_custom_name_twin_sync_sse_moi(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54743,7 +54743,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__NonCloneSimpleTwinSyncSseMoi_new_custom_name_twin_sync_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__NonCloneSimpleTwinSyncSseMoi_new_twin_sync_sse_moi(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54752,7 +54752,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__NonCloneSimpleTwinSyncSseMoi_new_twin_sync_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__NonCloneSimpleTwinSyncSseMoi_new_with_result_twin_sync_sse_moi(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54761,7 +54761,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__NonCloneSimpleTwinSyncSseMoi_new_with_result_twin_sync_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__NonCloneSimpleTwinSyncSseMoi_static_method_arg_borrow_twin_sync_sse_moi(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54770,7 +54770,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__NonCloneSimpleTwinSyncSseMoi_static_method_arg_borrow_twin_sync_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__NonCloneSimpleTwinSyncSseMoi_static_method_arg_mut_borrow_twin_sync_sse_moi(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54779,7 +54779,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__NonCloneSimpleTwinSyncSseMoi_static_method_arg_mut_borrow_twin_sync_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__NonCloneSimpleTwinSyncSseMoi_static_method_arg_own_twin_sync_sse_moi(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54788,7 +54788,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__NonCloneSimpleTwinSyncSseMoi_static_method_arg_own_twin_sync_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__NonCloneSimpleTwinSyncSseMoi_static_method_return_own_twin_sync_sse_moi(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54797,21 +54797,21 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__NonCloneSimpleTwinSyncSseMoi_static_method_return_own_twin_sync_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi_get_good(
               int that) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi_get_good(
                   that);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi_set_good(
               int that, String good) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi_set_good(
                   that, good);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_arg_borrow_twin_sync_sse_moi(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54820,7 +54820,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_arg_borrow_twin_sync_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_arg_mut_borrow_twin_sync_sse_moi(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54829,7 +54829,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_arg_mut_borrow_twin_sync_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_arg_own_and_return_own_twin_sync_sse_moi(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54838,7 +54838,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_arg_own_and_return_own_twin_sync_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_arg_own_twin_sync_sse_moi(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54847,7 +54847,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_arg_own_twin_sync_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_arg_vec_own_twin_sync_sse_moi(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54856,7 +54856,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_arg_vec_own_twin_sync_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_borrow_and_borrow_twin_sync_sse_moi(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54865,7 +54865,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_borrow_and_borrow_twin_sync_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_borrow_and_mut_borrow_twin_sync_sse_moi(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54874,7 +54874,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_borrow_and_mut_borrow_twin_sync_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_callable_arg_twin_sync_sse_moi(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54883,7 +54883,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_callable_arg_twin_sync_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_callable_return_twin_sync_sse_moi(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54892,7 +54892,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_callable_return_twin_sync_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_dummy_twin_sync_sse_moi(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54901,7 +54901,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_dummy_twin_sync_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_enum_arg_borrow_twin_sync_sse_moi(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54910,7 +54910,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_enum_arg_borrow_twin_sync_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_enum_return_own_twin_sync_sse_moi(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54919,7 +54919,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_enum_return_own_twin_sync_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sync_sse_moi(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54928,7 +54928,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sync_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sync_sse_moi(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54937,7 +54937,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sync_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sync_sse_moi(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54946,7 +54946,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sync_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_explicit_arg_twin_sync_sse_moi(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54955,7 +54955,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_explicit_arg_twin_sync_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_explicit_return_struct_twin_sync_sse_moi(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54964,7 +54964,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_explicit_return_struct_twin_sync_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_explicit_return_twin_sync_sse_moi(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54973,7 +54973,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_explicit_return_twin_sync_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_explicit_struct_twin_sync_sse_moi(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54982,7 +54982,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_explicit_struct_twin_sync_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_normal_and_opaque_arg_twin_sync_sse_moi(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -54991,7 +54991,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_normal_and_opaque_arg_twin_sync_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_plus_sign_arg_twin_sync_sse_moi(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -55000,7 +55000,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_plus_sign_arg_twin_sync_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_plus_sign_return_twin_sync_sse_moi(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -55009,7 +55009,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_plus_sign_return_twin_sync_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_return_opaque_one_and_two_twin_sync_sse_moi(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -55018,7 +55018,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_return_opaque_one_and_two_twin_sync_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_return_opaque_two_twin_sync_sse_moi(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -55027,7 +55027,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_return_opaque_two_twin_sync_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_return_own_twin_sync_sse_moi(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -55036,7 +55036,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_return_own_twin_sync_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_return_vec_own_twin_sync_sse_moi(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -55045,7 +55045,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_return_vec_own_twin_sync_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_sleep_twin_sync_sse_moi(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -55054,7 +55054,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_sleep_twin_sync_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_stream_sink_twin_sync_sse_moi(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -55063,7 +55063,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_stream_sink_twin_sync_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync_sse_moi(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -55072,7 +55072,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync_sse_moi(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -55081,7 +55081,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_two_args_twin_sync_sse_moi(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -55090,27 +55090,27 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_two_args_twin_sync_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_sync_twin_moi__frb_sync_generator_test_twin_moi() =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_opaque_sync_twin_moi__frb_sync_generator_test_twin_moi();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_sync_twin_moi__sync_create_non_clone_twin_moi() =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_opaque_sync_twin_moi__sync_create_non_clone_twin_moi();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_sync_twin_moi__sync_create_opaque_twin_moi() =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_opaque_sync_twin_moi__sync_create_opaque_twin_moi();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_sync_twin_moi__sync_option_rust_opaque_twin_moi() =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_opaque_sync_twin_moi__sync_option_rust_opaque_twin_moi();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_sync_twin_sse__frb_sync_generator_test_twin_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -55119,7 +55119,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_opaque_sync_twin_sse__frb_sync_generator_test_twin_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_sync_twin_sse__sync_create_non_clone_twin_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -55128,7 +55128,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_opaque_sync_twin_sse__sync_create_non_clone_twin_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_sync_twin_sse__sync_create_opaque_twin_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -55137,7 +55137,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_opaque_sync_twin_sse__sync_create_opaque_twin_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_sync_twin_sse__sync_option_rust_opaque_twin_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -55146,7 +55146,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_opaque_sync_twin_sse__sync_option_rust_opaque_twin_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_sync_twin_sse_moi__frb_sync_generator_test_twin_sse_moi(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -55155,7 +55155,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_opaque_sync_twin_sse_moi__frb_sync_generator_test_twin_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_sync_twin_sse_moi__sync_create_non_clone_twin_sse_moi(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -55164,7 +55164,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_opaque_sync_twin_sse_moi__sync_create_non_clone_twin_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_sync_twin_sse_moi__sync_create_opaque_twin_sse_moi(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -55173,7 +55173,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_opaque_sync_twin_sse_moi__sync_create_opaque_twin_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_sync_twin_sse_moi__sync_option_rust_opaque_twin_sse_moi(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -55992,193 +55992,193 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__rust_opaque_twin_sse_moi__unwrap_rust_opaque_twin_sse_moi(
               port_, ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync__create_array_opaque_enum_twin_sync() =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync__create_array_opaque_enum_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync__create_nested_opaque_twin_sync() =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync__create_nested_opaque_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync__create_opaque_twin_sync() =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync__create_opaque_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync__create_option_opaque_twin_sync(
               int? opaque) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync__create_option_opaque_twin_sync(
                   opaque);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync__frb_generator_test_twin_sync() =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync__frb_generator_test_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync__opaque_array_run_twin_sync(
               List<dynamic> data) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync__opaque_array_run_twin_sync(
                   data);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync__opaque_array_twin_sync() =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync__opaque_array_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync__opaque_vec_run_twin_sync(
               List<dynamic> data) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync__opaque_vec_run_twin_sync(
                   data);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync__opaque_vec_twin_sync() =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync__opaque_vec_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync__run_enum_opaque_twin_sync(
               List<dynamic> opaque) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync__run_enum_opaque_twin_sync(
                   opaque);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync__run_nested_opaque_twin_sync(
               List<dynamic> opaque) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync__run_nested_opaque_twin_sync(
                   opaque);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync__run_non_clone_twin_sync(
               int clone) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync__run_non_clone_twin_sync(
                   clone);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync__run_opaque_twin_sync(
               int opaque) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync__run_opaque_twin_sync(
                   opaque);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync__run_opaque_with_delay_twin_sync(
               int opaque) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync__run_opaque_with_delay_twin_sync(
                   opaque);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync__unwrap_rust_opaque_twin_sync(
               int opaque) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync__unwrap_rust_opaque_twin_sync(
                   opaque);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__create_array_opaque_enum_twin_sync_moi() =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__create_array_opaque_enum_twin_sync_moi();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__create_nested_opaque_twin_sync_moi() =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__create_nested_opaque_twin_sync_moi();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__create_opaque_twin_sync_moi() =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__create_opaque_twin_sync_moi();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__create_option_opaque_twin_sync_moi(
               int? opaque) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__create_option_opaque_twin_sync_moi(
                   opaque);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__frb_generator_test_twin_sync_moi() =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__frb_generator_test_twin_sync_moi();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__opaque_array_run_twin_sync_moi(
               List<dynamic> data) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__opaque_array_run_twin_sync_moi(
                   data);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__opaque_array_twin_sync_moi() =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__opaque_array_twin_sync_moi();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__opaque_vec_run_twin_sync_moi(
               List<dynamic> data) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__opaque_vec_run_twin_sync_moi(
                   data);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__opaque_vec_twin_sync_moi() =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__opaque_vec_twin_sync_moi();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__run_enum_opaque_twin_sync_moi(
               List<dynamic> opaque) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__run_enum_opaque_twin_sync_moi(
                   opaque);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__run_nested_opaque_twin_sync_moi(
               List<dynamic> opaque) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__run_nested_opaque_twin_sync_moi(
                   opaque);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__run_non_clone_twin_sync_moi(
               int clone) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__run_non_clone_twin_sync_moi(
                   clone);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__run_opaque_twin_sync_moi(
               int opaque) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__run_opaque_twin_sync_moi(
                   opaque);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__run_opaque_with_delay_twin_sync_moi(
               int opaque) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__run_opaque_with_delay_twin_sync_moi(
                   opaque);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__unwrap_rust_opaque_twin_sync_moi(
               int opaque) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__unwrap_rust_opaque_twin_sync_moi(
                   opaque);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse__create_array_opaque_enum_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -56187,7 +56187,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse__create_array_opaque_enum_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse__create_nested_opaque_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -56196,7 +56196,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse__create_nested_opaque_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse__create_opaque_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -56205,7 +56205,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse__create_opaque_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse__create_option_opaque_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -56214,7 +56214,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse__create_option_opaque_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse__frb_generator_test_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -56223,7 +56223,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse__frb_generator_test_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse__opaque_array_run_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -56232,7 +56232,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse__opaque_array_run_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse__opaque_array_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -56241,7 +56241,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse__opaque_array_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse__opaque_vec_run_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -56250,7 +56250,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse__opaque_vec_run_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse__opaque_vec_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -56259,7 +56259,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse__opaque_vec_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse__run_enum_opaque_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -56268,7 +56268,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse__run_enum_opaque_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse__run_nested_opaque_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -56277,7 +56277,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse__run_nested_opaque_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse__run_non_clone_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -56286,7 +56286,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse__run_non_clone_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse__run_opaque_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -56295,7 +56295,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse__run_opaque_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse__run_opaque_with_delay_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -56304,7 +56304,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse__run_opaque_with_delay_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse__unwrap_rust_opaque_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -56313,7 +56313,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse__unwrap_rust_opaque_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse_moi__create_array_opaque_enum_twin_sync_sse_moi(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -56322,7 +56322,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse_moi__create_array_opaque_enum_twin_sync_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse_moi__create_nested_opaque_twin_sync_sse_moi(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -56331,7 +56331,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse_moi__create_nested_opaque_twin_sync_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse_moi__create_opaque_twin_sync_sse_moi(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -56340,7 +56340,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse_moi__create_opaque_twin_sync_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse_moi__create_option_opaque_twin_sync_sse_moi(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -56349,7 +56349,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse_moi__create_option_opaque_twin_sync_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse_moi__frb_generator_test_twin_sync_sse_moi(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -56358,7 +56358,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse_moi__frb_generator_test_twin_sync_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse_moi__opaque_array_run_twin_sync_sse_moi(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -56367,7 +56367,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse_moi__opaque_array_run_twin_sync_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse_moi__opaque_array_twin_sync_sse_moi(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -56376,7 +56376,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse_moi__opaque_array_twin_sync_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse_moi__opaque_vec_run_twin_sync_sse_moi(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -56385,7 +56385,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse_moi__opaque_vec_run_twin_sync_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse_moi__opaque_vec_twin_sync_sse_moi(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -56394,7 +56394,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse_moi__opaque_vec_twin_sync_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse_moi__run_enum_opaque_twin_sync_sse_moi(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -56403,7 +56403,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse_moi__run_enum_opaque_twin_sync_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse_moi__run_nested_opaque_twin_sync_sse_moi(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -56412,7 +56412,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse_moi__run_nested_opaque_twin_sync_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse_moi__run_non_clone_twin_sync_sse_moi(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -56421,7 +56421,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse_moi__run_non_clone_twin_sync_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse_moi__run_opaque_twin_sync_sse_moi(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -56430,7 +56430,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse_moi__run_opaque_twin_sync_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse_moi__run_opaque_with_delay_twin_sync_sse_moi(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -56439,7 +56439,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse_moi__run_opaque_with_delay_twin_sync_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse_moi__unwrap_rust_opaque_twin_sync_sse_moi(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -56472,14 +56472,14 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__simple_twin_sse__simple_adder_twin_sse(
               port_, ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__simple_twin_sync__simple_adder_twin_sync(
               int a, int b) =>
           wasmModule
               .wire__crate__api__pseudo_manual__simple_twin_sync__simple_adder_twin_sync(
                   a, b);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__simple_twin_sync_sse__simple_adder_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -56938,56 +56938,56 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__structure_twin_sse__func_tuple_struct_with_two_field_twin_sse(
               port_, ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__structure_twin_sync__func_for_struct_with_dart_keyword_field_twin_sync(
               List<dynamic> arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__structure_twin_sync__func_for_struct_with_dart_keyword_field_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__structure_twin_sync__func_for_struct_with_field_rename_twin_sync(
               List<dynamic> arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__structure_twin_sync__func_for_struct_with_field_rename_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__structure_twin_sync__func_struct_with_one_field_twin_sync(
               List<dynamic> arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__structure_twin_sync__func_struct_with_one_field_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__structure_twin_sync__func_struct_with_two_field_twin_sync(
               List<dynamic> arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__structure_twin_sync__func_struct_with_two_field_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__structure_twin_sync__func_struct_with_zero_field_twin_sync(
               List<dynamic> arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__structure_twin_sync__func_struct_with_zero_field_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__structure_twin_sync__func_tuple_struct_with_one_field_twin_sync(
               List<dynamic> arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__structure_twin_sync__func_tuple_struct_with_one_field_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__structure_twin_sync__func_tuple_struct_with_two_field_twin_sync(
               List<dynamic> arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__structure_twin_sync__func_tuple_struct_with_two_field_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__structure_twin_sync_sse__func_for_struct_with_dart_keyword_field_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -56996,7 +56996,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__structure_twin_sync_sse__func_for_struct_with_dart_keyword_field_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__structure_twin_sync_sse__func_for_struct_with_field_rename_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -57005,7 +57005,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__structure_twin_sync_sse__func_for_struct_with_field_rename_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__structure_twin_sync_sse__func_struct_with_one_field_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -57014,7 +57014,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__structure_twin_sync_sse__func_struct_with_one_field_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__structure_twin_sync_sse__func_struct_with_two_field_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -57023,7 +57023,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__structure_twin_sync_sse__func_struct_with_two_field_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__structure_twin_sync_sse__func_struct_with_zero_field_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -57032,7 +57032,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__structure_twin_sync_sse__func_struct_with_zero_field_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__structure_twin_sync_sse__func_tuple_struct_with_one_field_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -57041,7 +57041,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__structure_twin_sync_sse__func_tuple_struct_with_one_field_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__structure_twin_sync_sse__func_tuple_struct_with_two_field_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -57098,21 +57098,21 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__tuple_twin_sse__test_tuple_twin_sse(
               port_, ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__tuple_twin_sync__test_tuple_2_twin_sync(
               List<dynamic> value) =>
           wasmModule
               .wire__crate__api__pseudo_manual__tuple_twin_sync__test_tuple_2_twin_sync(
                   value);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__tuple_twin_sync__test_tuple_twin_sync(
               List<dynamic>? value) =>
           wasmModule
               .wire__crate__api__pseudo_manual__tuple_twin_sync__test_tuple_twin_sync(
                   value);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__tuple_twin_sync_sse__test_tuple_2_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -57121,7 +57121,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__tuple_twin_sync_sse__test_tuple_2_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__tuple_twin_sync_sse__test_tuple_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -57202,28 +57202,28 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__type_alias_twin_sse__handle_type_nest_alias_id_twin_sse(
               port_, ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__type_alias_twin_sync__handle_type_alias_id_twin_sync(
               Object input) =>
           wasmModule
               .wire__crate__api__pseudo_manual__type_alias_twin_sync__handle_type_alias_id_twin_sync(
                   input);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__type_alias_twin_sync__handle_type_alias_model_twin_sync(
               Object input) =>
           wasmModule
               .wire__crate__api__pseudo_manual__type_alias_twin_sync__handle_type_alias_model_twin_sync(
                   input);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__type_alias_twin_sync__handle_type_nest_alias_id_twin_sync(
               Object input) =>
           wasmModule
               .wire__crate__api__pseudo_manual__type_alias_twin_sync__handle_type_nest_alias_id_twin_sync(
                   input);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__type_alias_twin_sync_sse__handle_type_alias_id_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -57232,7 +57232,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__type_alias_twin_sync_sse__handle_type_alias_id_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__type_alias_twin_sync_sse__handle_type_alias_model_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -57241,7 +57241,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__type_alias_twin_sync_sse__handle_type_alias_model_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__type_alias_twin_sync_sse__handle_type_nest_alias_id_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -57322,28 +57322,28 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__uuid_type_twin_sse__handle_uuids_twin_sse(
               port_, ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__uuid_type_twin_sync__handle_nested_uuids_twin_sync(
               List<dynamic> ids) =>
           wasmModule
               .wire__crate__api__pseudo_manual__uuid_type_twin_sync__handle_nested_uuids_twin_sync(
                   ids);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__uuid_type_twin_sync__handle_uuid_twin_sync(
               Uint8List id) =>
           wasmModule
               .wire__crate__api__pseudo_manual__uuid_type_twin_sync__handle_uuid_twin_sync(
                   id);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__uuid_type_twin_sync__handle_uuids_twin_sync(
               List<dynamic> ids) =>
           wasmModule
               .wire__crate__api__pseudo_manual__uuid_type_twin_sync__handle_uuids_twin_sync(
                   ids);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__uuid_type_twin_sync_sse__handle_nested_uuids_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -57352,7 +57352,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__uuid_type_twin_sync_sse__handle_nested_uuids_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__uuid_type_twin_sync_sse__handle_uuid_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -57361,7 +57361,7 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__uuid_type_twin_sync_sse__handle_uuid_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__uuid_type_twin_sync_sse__handle_uuids_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
@@ -57454,14 +57454,14 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_static_method_return_own_twin_normal(
               port_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_get_good(
               int that) =>
           wasmModule
               .wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_get_good(
                   that);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_set_good(
               int that, String good) =>
           wasmModule
@@ -57731,22 +57731,22 @@ class RustLibWire implements BaseWire {
       wasmModule.wire__crate__api__rust_opaque__unwrap_rust_opaque_twin_normal(
           port_, opaque);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__rust_opaque_sync__frb_sync_generator_test_twin_normal() =>
           wasmModule
               .wire__crate__api__rust_opaque_sync__frb_sync_generator_test_twin_normal();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__rust_opaque_sync__sync_create_non_clone_twin_normal() =>
           wasmModule
               .wire__crate__api__rust_opaque_sync__sync_create_non_clone_twin_normal();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__rust_opaque_sync__sync_create_opaque_twin_normal() =>
           wasmModule
               .wire__crate__api__rust_opaque_sync__sync_create_opaque_twin_normal();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__rust_opaque_sync__sync_option_rust_opaque_twin_normal() =>
           wasmModule
               .wire__crate__api__rust_opaque_sync__sync_option_rust_opaque_twin_normal();
@@ -60364,7 +60364,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
   external void wire__crate__api__attribute__next_user_id_twin_normal(
       NativePortType port_, List<dynamic> user_id);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__benchmark_misc__benchmark_void_semi_serialize();
 
   external void
@@ -60461,11 +60461,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
       wire__crate__api__comment__struct_with_comments_twin_normal_static_method_twin_normal(
           NativePortType port_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_check(
           int that);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_get_one(
           int that);
 
@@ -60473,22 +60473,22 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
       wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_new(
           NativePortType port_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_set_one(
           int that, String one);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__constructor__ConstructorOpaqueSyncStructTwinNormal_check(
           int that);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__constructor__ConstructorOpaqueSyncStructTwinNormal_get_one(
           int that);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__constructor__ConstructorOpaqueSyncStructTwinNormal_new();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__constructor__ConstructorOpaqueSyncStructTwinNormal_set_one(
           int that, String one);
 
@@ -60496,7 +60496,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
       wire__crate__api__constructor__constructor_translatable_struct_twin_normal_new(
           NativePortType port_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__constructor__constructor_translatable_sync_struct_twin_normal_new();
 
   external void
@@ -60620,23 +60620,23 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
       wire__crate__api__dart_opaque__set_static_dart_opaque_twin_normal(
           NativePortType port_, int id, PlatformPointer opaque);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__dart_opaque_sync__sync_accept_dart_opaque_twin_normal(
           PlatformPointer opaque);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__dart_opaque_sync__sync_loopback_twin_normal(
           PlatformPointer opaque);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__dart_opaque_sync__sync_option_dart_opaque_twin_normal(
           PlatformPointer opaque);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__dart_opaque_sync__sync_option_loopback_twin_normal(
           PlatformPointer? opaque);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__dart_opaque_sync__unwrap_dart_opaque_twin_normal(
           PlatformPointer opaque);
 
@@ -60665,11 +60665,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__dyn_trait__StructOneWithTraitForDynTwinNormal_get_one(
           int that);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__dyn_trait__StructOneWithTraitForDynTwinNormal_set_one(
           int that, int one);
 
@@ -60687,11 +60687,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__dyn_trait__StructTwoWithTraitForDynTwinNormal_get_two(
           int that);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__dyn_trait__StructTwoWithTraitForDynTwinNormal_set_two(
           int that, int two);
 
@@ -60747,7 +60747,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
       wire__crate__api__event_listener__close_event_listener_twin_normal(
           NativePortType port_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__event_listener__create_event_sync_twin_normal(
           String address, String payload);
 
@@ -60874,7 +60874,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
   external void wire__crate__api__exception__throw_anyhow_twin_normal(
       NativePortType port_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__external_impl__SimpleOpaqueExternalStructWithMethod_new(
           String a);
 
@@ -60902,11 +60902,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
       wire__crate__api__external_type_in_crate__use_imported_struct_twin_normal(
           NativePortType port_, List<dynamic> my_struct);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__impl_trait__StructOneWithTraitTwinNormal_get_one(
           int that);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__impl_trait__StructOneWithTraitTwinNormal_set_one(
           int that, int one);
 
@@ -60922,11 +60922,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
       wire__crate__api__impl_trait__StructOneWithTraitTwinNormal_simple_trait_fn_with_default_impl_twin_normal(
           NativePortType port_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__impl_trait__StructTwoWithTraitTwinNormal_get_two(
           int that);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__impl_trait__StructTwoWithTraitTwinNormal_set_two(
           int that, int two);
 
@@ -61194,51 +61194,51 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
       wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_dummy_function_twin_normal(
           NativePortType port_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_deliberate_bad_field_a(
           int that);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_deliberate_bad_field_b(
           int that);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_deliberate_bad_field_c(
           int that);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_good_field_a(
           int that);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_good_field_b(
           int that);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_good_field_c(
           int that);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_deliberate_bad_field_a(
           int that, Uint8List deliberate_bad_field_a);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_deliberate_bad_field_b(
           int that, int deliberate_bad_field_b);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_deliberate_bad_field_c(
           int that, List<dynamic> deliberate_bad_field_c);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_good_field_a(
           int that, String good_field_a);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_good_field_b(
           int that, int good_field_b);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_good_field_c(
           int that, int good_field_c);
 
@@ -61250,11 +61250,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
       wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_get_item_contents_twin_normal(
           NativePortType port_, int that);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_get_name(
           int that);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_set_name(
           int that, String name);
 
@@ -61270,22 +61270,22 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
       wire__crate__api__misc_no_twin_example_a__StructWithImplBlockInMultiFile_method_in_b(
           NativePortType port_, int that);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__misc_no_twin_example_a__StructWithSimpleSetterTwinNormal_get_something(
           int that);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__misc_no_twin_example_a__StructWithSimpleSetterTwinNormal_new();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__misc_no_twin_example_a__StructWithSimpleSetterTwinNormal_set_something(
           int that, int value);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__misc_no_twin_example_a__StructWithSimpleSetterTwinNormal_simple_getter(
           int that);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__misc_no_twin_example_a__StructWithSimpleSetterTwinNormal_simple_setter(
           int that, int value);
 
@@ -61309,7 +61309,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
       wire__crate__api__misc_no_twin_example_a__same_function_name_in_different_files(
           NativePortType port_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__misc_no_twin_example_a__struct_with_custom_name_method_twin_normal_method_with_custom_name_twin_normal(
           List<dynamic> that);
 
@@ -61630,109 +61630,109 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__array_twin_sync__boxed_blob_twin_sync(
           Uint8List blob);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__array_twin_sync__func_test_id_twin_sync(
           List<dynamic> id);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__array_twin_sync__get_array_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__array_twin_sync__get_complex_array_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__array_twin_sync__last_number_twin_sync(
           Float64List array);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__array_twin_sync__nested_id_twin_sync(
           List<dynamic> id);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__array_twin_sync__new_msgid_twin_sync(
           Uint8List id);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__array_twin_sync__return_boxed_feed_id_twin_sync(
           Uint8List id);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__array_twin_sync__return_boxed_raw_feed_id_twin_sync(
           List<dynamic> id);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__array_twin_sync__use_boxed_blob_twin_sync(
           List<dynamic> blob);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__array_twin_sync__use_msgid_twin_sync(
           List<dynamic> id);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__array_twin_sync_sse__boxed_blob_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__array_twin_sync_sse__func_test_id_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__array_twin_sync_sse__get_array_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__array_twin_sync_sse__get_complex_array_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__array_twin_sync_sse__last_number_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__array_twin_sync_sse__nested_id_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__array_twin_sync_sse__new_msgid_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__array_twin_sync_sse__return_boxed_feed_id_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__array_twin_sync_sse__return_boxed_raw_feed_id_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__array_twin_sync_sse__use_boxed_blob_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__array_twin_sync_sse__use_msgid_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
@@ -61788,21 +61788,21 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__attribute_twin_sync__handle_customized_struct_twin_sync(
           List<dynamic> val);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__attribute_twin_sync__next_user_id_twin_sync(
           List<dynamic> user_id);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__attribute_twin_sync_sse__handle_customized_struct_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__attribute_twin_sync_sse__next_user_id_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
@@ -62240,161 +62240,161 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_basic_general_enum_twin_sync_twin_sync(
           List<dynamic> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_basic_primitive_enum_twin_sync_twin_sync(
           List<dynamic> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_basic_struct_twin_sync_twin_sync(
           List<dynamic> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_bool_twin_sync(
           List<dynamic> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_bytes_twin_sync(
           List<dynamic> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_f32_twin_sync(
           List<double> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_f64_twin_sync(
           List<double> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_i16_twin_sync(
           List<int> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_i32_twin_sync(
           List<int> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_i64_twin_sync(
           JSAny /* BigInt64Array */ arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_i8_twin_sync(
           List<int> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_string_twin_sync(
           List<dynamic> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_u16_twin_sync(
           List<int> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_u32_twin_sync(
           List<int> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_u64_twin_sync(
           JSAny /* BigInt64Array */ arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_u8_twin_sync(
           List<int> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_list_twin_sync_sse__example_basic_list_type_basic_general_enum_twin_sync_sse_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_list_twin_sync_sse__example_basic_list_type_basic_primitive_enum_twin_sync_sse_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_list_twin_sync_sse__example_basic_list_type_basic_struct_twin_sync_sse_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_list_twin_sync_sse__example_basic_list_type_bool_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_list_twin_sync_sse__example_basic_list_type_bytes_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_list_twin_sync_sse__example_basic_list_type_f32_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_list_twin_sync_sse__example_basic_list_type_f64_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_list_twin_sync_sse__example_basic_list_type_i16_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_list_twin_sync_sse__example_basic_list_type_i32_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_list_twin_sync_sse__example_basic_list_type_i64_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_list_twin_sync_sse__example_basic_list_type_i8_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_list_twin_sync_sse__example_basic_list_type_string_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_list_twin_sync_sse__example_basic_list_type_u16_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_list_twin_sync_sse__example_basic_list_type_u32_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_list_twin_sync_sse__example_basic_list_type_u64_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_list_twin_sync_sse__example_basic_list_type_u8_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
@@ -62840,201 +62840,201 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_basic_general_enum_twin_sync_twin_sync(
           List<dynamic> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_basic_primitive_enum_twin_sync_twin_sync(
           List<dynamic> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_basic_struct_twin_sync_twin_sync(
           List<dynamic> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_bool_twin_sync(
           List<dynamic> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_bytes_twin_sync(
           List<dynamic> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_f32_twin_sync(
           List<dynamic> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_f64_twin_sync(
           List<dynamic> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_i128_twin_sync(
           List<dynamic> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_i16_twin_sync(
           List<dynamic> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_i32_twin_sync(
           List<dynamic> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_i64_twin_sync(
           List<dynamic> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_i8_twin_sync(
           List<dynamic> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_isize_twin_sync(
           List<dynamic> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_string_twin_sync(
           List<dynamic> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_u128_twin_sync(
           List<dynamic> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_u16_twin_sync(
           List<dynamic> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_u32_twin_sync(
           List<dynamic> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_u64_twin_sync(
           List<dynamic> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_u8_twin_sync(
           List<dynamic> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_usize_twin_sync(
           List<dynamic> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_map_twin_sync_sse__example_basic_map_type_basic_general_enum_twin_sync_sse_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_map_twin_sync_sse__example_basic_map_type_basic_primitive_enum_twin_sync_sse_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_map_twin_sync_sse__example_basic_map_type_basic_struct_twin_sync_sse_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_map_twin_sync_sse__example_basic_map_type_bool_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_map_twin_sync_sse__example_basic_map_type_bytes_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_map_twin_sync_sse__example_basic_map_type_f32_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_map_twin_sync_sse__example_basic_map_type_f64_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_map_twin_sync_sse__example_basic_map_type_i128_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_map_twin_sync_sse__example_basic_map_type_i16_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_map_twin_sync_sse__example_basic_map_type_i32_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_map_twin_sync_sse__example_basic_map_type_i64_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_map_twin_sync_sse__example_basic_map_type_i8_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_map_twin_sync_sse__example_basic_map_type_isize_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_map_twin_sync_sse__example_basic_map_type_string_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_map_twin_sync_sse__example_basic_map_type_u128_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_map_twin_sync_sse__example_basic_map_type_u16_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_map_twin_sync_sse__example_basic_map_type_u32_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_map_twin_sync_sse__example_basic_map_type_u64_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_map_twin_sync_sse__example_basic_map_type_u8_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_map_twin_sync_sse__example_basic_map_type_usize_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
@@ -63480,201 +63480,201 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_basic_general_enum_twin_sync_twin_sync(
           List<dynamic>? arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_basic_primitive_enum_twin_sync_twin_sync(
           int? arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_basic_struct_twin_sync_twin_sync(
           List<dynamic>? arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_bool_twin_sync(
           bool? arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_bytes_twin_sync(
           Uint8List? arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_f32_twin_sync(
           double? arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_f64_twin_sync(
           double? arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_i128_twin_sync(
           String? arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_i16_twin_sync(
           int? arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_i32_twin_sync(
           int? arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_i64_twin_sync(
           Object? arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_i8_twin_sync(
           int? arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_isize_twin_sync(
           Object? arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_string_twin_sync(
           String? arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_u128_twin_sync(
           String? arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_u16_twin_sync(
           int? arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_u32_twin_sync(
           int? arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_u64_twin_sync(
           Object? arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_u8_twin_sync(
           int? arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_usize_twin_sync(
           Object? arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync_sse__example_basic_optional_type_basic_general_enum_twin_sync_sse_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync_sse__example_basic_optional_type_basic_primitive_enum_twin_sync_sse_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync_sse__example_basic_optional_type_basic_struct_twin_sync_sse_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync_sse__example_basic_optional_type_bool_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync_sse__example_basic_optional_type_bytes_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync_sse__example_basic_optional_type_f32_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync_sse__example_basic_optional_type_f64_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync_sse__example_basic_optional_type_i128_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync_sse__example_basic_optional_type_i16_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync_sse__example_basic_optional_type_i32_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync_sse__example_basic_optional_type_i64_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync_sse__example_basic_optional_type_i8_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync_sse__example_basic_optional_type_isize_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync_sse__example_basic_optional_type_string_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync_sse__example_basic_optional_type_u128_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync_sse__example_basic_optional_type_u16_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync_sse__example_basic_optional_type_u32_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync_sse__example_basic_optional_type_u64_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync_sse__example_basic_optional_type_u8_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync_sse__example_basic_optional_type_usize_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
@@ -64040,201 +64040,201 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_basic_general_enum_twin_sync_twin_sync(
           List<dynamic> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_basic_primitive_enum_twin_sync_twin_sync(
           int arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_basic_struct_twin_sync_twin_sync(
           List<dynamic> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_bool_twin_sync(
           bool arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_bytes_twin_sync(
           List<int> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_f32_twin_sync(
           double arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_f64_twin_sync(
           double arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i128_twin_sync(
           String arg, String expect);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i16_twin_sync(
           int arg, String expect);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i32_twin_sync(
           int arg, String expect);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i64_twin_sync(
           Object arg, String expect);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i8_twin_sync(
           int arg, String expect);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_isize_twin_sync(
           Object arg, String expect);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_string_twin_sync(
           String arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u128_twin_sync(
           String arg, String expect);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u16_twin_sync(
           int arg, String expect);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u32_twin_sync(
           int arg, String expect);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u64_twin_sync(
           Object arg, String expect);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u8_twin_sync(
           int arg, String expect);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_usize_twin_sync(
           Object arg, String expect);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_basic_general_enum_twin_sync_sse_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_basic_primitive_enum_twin_sync_sse_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_basic_struct_twin_sync_sse_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_bool_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_bytes_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_f32_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_f64_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_i128_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_i16_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_i32_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_i64_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_i8_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_isize_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_string_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_u128_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_u16_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_u32_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_u64_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_u8_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_usize_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
@@ -64570,150 +64570,150 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_binary_tree_input_json_twin_sync(
           String raw);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_binary_tree_input_protobuf_twin_sync(
           List<int> raw);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_binary_tree_input_twin_sync(
           List<dynamic> tree);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_binary_tree_output_json_twin_sync(
           int depth);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_binary_tree_output_protobuf_twin_sync(
           int depth);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_binary_tree_output_twin_sync(
           int depth);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_blob_input_json_twin_sync(
           String raw);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_blob_input_protobuf_twin_sync(
           List<int> raw);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_blob_input_twin_sync(
           List<dynamic> blob);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_blob_output_json_twin_sync(
           int size);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_blob_output_protobuf_twin_sync(
           int size);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_blob_output_twin_sync(
           int size);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_input_bytes_twin_sync(
           List<int> bytes);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_output_bytes_twin_sync(
           int size);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_void_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync_sse__benchmark_binary_tree_input_json_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync_sse__benchmark_binary_tree_input_protobuf_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync_sse__benchmark_binary_tree_input_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync_sse__benchmark_binary_tree_output_json_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync_sse__benchmark_binary_tree_output_protobuf_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync_sse__benchmark_binary_tree_output_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync_sse__benchmark_blob_input_json_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync_sse__benchmark_blob_input_protobuf_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync_sse__benchmark_blob_input_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync_sse__benchmark_blob_output_json_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync_sse__benchmark_blob_output_protobuf_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync_sse__benchmark_blob_output_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync_sse__benchmark_input_bytes_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync_sse__benchmark_output_bytes_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync_sse__benchmark_void_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
@@ -64899,99 +64899,99 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__chrono_type_twin_sync__datetime_local_twin_sync(
           Object d);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__chrono_type_twin_sync__datetime_utc_twin_sync(
           Object d);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__chrono_type_twin_sync__duration_twin_sync(
           Object d);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__chrono_type_twin_sync__handle_durations_twin_sync(
           List<dynamic> durations, Object since);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__chrono_type_twin_sync__handle_timestamps_twin_sync(
           List<dynamic> timestamps, Object epoch);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__chrono_type_twin_sync__how_long_does_it_take_twin_sync(
           List<dynamic> mine);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__chrono_type_twin_sync__naivedatetime_twin_sync(
           Object d);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__chrono_type_twin_sync__optional_empty_datetime_utc_twin_sync(
           Object? d);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__chrono_type_twin_sync__test_chrono_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__chrono_type_twin_sync__test_precise_chrono_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__chrono_type_twin_sync_sse__datetime_local_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__chrono_type_twin_sync_sse__datetime_utc_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__chrono_type_twin_sync_sse__duration_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__chrono_type_twin_sync_sse__handle_durations_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__chrono_type_twin_sync_sse__handle_timestamps_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__chrono_type_twin_sync_sse__how_long_does_it_take_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__chrono_type_twin_sync_sse__naivedatetime_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__chrono_type_twin_sync_sse__optional_empty_datetime_utc_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__chrono_type_twin_sync_sse__test_chrono_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__chrono_type_twin_sync_sse__test_precise_chrono_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
@@ -65087,47 +65087,47 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__comment_twin_sync__function_with_comments_slash_star_star_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__comment_twin_sync__function_with_comments_triple_slash_multi_line_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__comment_twin_sync__function_with_comments_triple_slash_single_line_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__comment_twin_sync__struct_with_comments_twin_sync_instance_method_twin_sync(
           List<dynamic> that);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__comment_twin_sync__struct_with_comments_twin_sync_static_method_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__comment_twin_sync_sse__function_with_comments_slash_star_star_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__comment_twin_sync_sse__function_with_comments_triple_slash_multi_line_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__comment_twin_sync_sse__function_with_comments_triple_slash_single_line_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__comment_twin_sync_sse__struct_with_comments_twin_sync_sse_instance_method_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__comment_twin_sync_sse__struct_with_comments_twin_sync_sse_static_method_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
@@ -65137,7 +65137,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
       wire__crate__api__pseudo_manual__dart_dynamic_twin_rust_async__return_dart_dynamic_twin_rust_async(
           NativePortType port_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__dart_dynamic_twin_sync__return_dart_dynamic_twin_sync();
 
   external void
@@ -65306,31 +65306,31 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__dart_opaque_sync_twin_sse__sync_accept_dart_opaque_twin_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__dart_opaque_sync_twin_sse__sync_loopback_twin_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__dart_opaque_sync_twin_sse__sync_option_dart_opaque_twin_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__dart_opaque_sync_twin_sse__sync_option_loopback_twin_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__dart_opaque_sync_twin_sse__unwrap_dart_opaque_twin_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
@@ -65626,161 +65626,161 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync__async_accept_dart_opaque_twin_sync(
           PlatformPointer opaque);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync__clone_dart_opaque_twin_sync(
           PlatformPointer opaque);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync__create_enum_dart_opaque_twin_sync(
           PlatformPointer opaque);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync__create_nested_dart_opaque_twin_sync(
           PlatformPointer opaque1, PlatformPointer opaque2);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync__drop_static_dart_opaque_twin_sync(
           int id);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync__get_enum_dart_opaque_twin_sync(
           List<dynamic> opaque);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync__get_nested_dart_opaque_twin_sync(
           List<dynamic> opaque);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync__loop_back_array_get_twin_sync(
           List<dynamic> opaque);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync__loop_back_array_twin_sync(
           PlatformPointer opaque);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync__loop_back_option_get_twin_sync(
           PlatformPointer? opaque);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync__loop_back_option_twin_sync(
           PlatformPointer opaque);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync__loop_back_twin_sync(
           PlatformPointer opaque);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync__loop_back_vec_get_twin_sync(
           List<dynamic> opaque);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync__loop_back_vec_twin_sync(
           PlatformPointer opaque);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync__panic_unwrap_dart_opaque_twin_sync(
           PlatformPointer opaque);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync__set_static_dart_opaque_twin_sync(
           int id, PlatformPointer opaque);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync_sse__async_accept_dart_opaque_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync_sse__clone_dart_opaque_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync_sse__create_enum_dart_opaque_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync_sse__create_nested_dart_opaque_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync_sse__drop_static_dart_opaque_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync_sse__get_enum_dart_opaque_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync_sse__get_nested_dart_opaque_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync_sse__loop_back_array_get_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync_sse__loop_back_array_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync_sse__loop_back_option_get_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync_sse__loop_back_option_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync_sse__loop_back_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync_sse__loop_back_vec_get_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync_sse__loop_back_vec_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync_sse__panic_unwrap_dart_opaque_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync_sse__set_static_dart_opaque_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
@@ -65858,39 +65858,39 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__dropping_twin_sync__DroppableTwinSync_create_stream_twin_sync(
           int that, String sink);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__dropping_twin_sync__DroppableTwinSync_get_drop_count_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__dropping_twin_sync__DroppableTwinSync_new_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__dropping_twin_sync__DroppableTwinSync_simple_method_twin_sync(
           int that);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__dropping_twin_sync_sse__DroppableTwinSyncSse_create_stream_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__dropping_twin_sync_sse__DroppableTwinSyncSse_get_drop_count_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__dropping_twin_sync_sse__DroppableTwinSyncSse_new_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__dropping_twin_sync_sse__DroppableTwinSyncSse_simple_method_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
@@ -66076,101 +66076,101 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__enumeration_twin_sync__func_enum_simple_twin_sync(
           int arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__enumeration_twin_sync__func_enum_with_discriminant_twin_sync(
           int arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__enumeration_twin_sync__func_enum_with_item_mixed_twin_sync(
           List<dynamic> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__enumeration_twin_sync__func_enum_with_item_struct_twin_sync(
           List<dynamic> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__enumeration_twin_sync__func_enum_with_item_tuple_twin_sync(
           List<dynamic> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__enumeration_twin_sync__handle_enum_parameter_twin_sync(
           int weekday);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__enumeration_twin_sync__handle_enum_struct_twin_sync(
           List<dynamic> val);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__enumeration_twin_sync__handle_return_enum_twin_sync(
           String input);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__enumeration_twin_sync__multiply_by_ten_twin_sync(
           List<dynamic> measure);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__enumeration_twin_sync__print_note_twin_sync(
           List<dynamic> note);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__enumeration_twin_sync_sse__func_enum_simple_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__enumeration_twin_sync_sse__func_enum_with_discriminant_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__enumeration_twin_sync_sse__func_enum_with_item_mixed_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__enumeration_twin_sync_sse__func_enum_with_item_struct_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__enumeration_twin_sync_sse__func_enum_with_item_tuple_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__enumeration_twin_sync_sse__handle_enum_parameter_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__enumeration_twin_sync_sse__handle_enum_struct_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__enumeration_twin_sync_sse__handle_return_enum_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__enumeration_twin_sync_sse__multiply_by_ten_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__enumeration_twin_sync_sse__print_note_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
@@ -66770,273 +66770,273 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__custom_enum_error_panic_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__custom_enum_error_return_error_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__custom_enum_error_return_ok_twin_sync(
           int arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__custom_nested_error_return_error_twin_sync(
           List<dynamic> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__custom_struct_error_return_error_twin_sync(
           List<dynamic> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__custom_struct_twin_sync_new_twin_sync(
           String message);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__custom_struct_twin_sync_nonstatic_return_custom_struct_error_twin_sync(
           List<dynamic> that);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__custom_struct_twin_sync_nonstatic_return_custom_struct_ok_twin_sync(
           List<dynamic> that);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__custom_struct_twin_sync_static_return_custom_struct_error_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__custom_struct_twin_sync_static_return_custom_struct_ok_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__func_return_error_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__func_type_fallible_panic_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__func_type_infallible_panic_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__panic_with_custom_result_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__return_custom_nested_error_1_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__return_custom_nested_error_1_variant1_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__return_custom_nested_error_2_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__return_custom_struct_error_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__return_custom_struct_ok_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__return_err_custom_error_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__return_error_variant_twin_sync(
           int variant);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__return_ok_custom_error_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__some_struct_twin_sync_new_twin_sync(
           int value);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__some_struct_twin_sync_non_static_return_err_custom_error_twin_sync(
           List<dynamic> that);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__some_struct_twin_sync_non_static_return_ok_custom_error_twin_sync(
           List<dynamic> that);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__some_struct_twin_sync_static_return_err_custom_error_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__some_struct_twin_sync_static_return_ok_custom_error_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__stream_sink_throw_anyhow_twin_sync(
           String _sink);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__throw_anyhow_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__exception_twin_sync_sse__custom_enum_error_panic_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__exception_twin_sync_sse__custom_enum_error_return_error_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__exception_twin_sync_sse__custom_enum_error_return_ok_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__exception_twin_sync_sse__custom_nested_error_return_error_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__exception_twin_sync_sse__custom_struct_error_return_error_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__exception_twin_sync_sse__custom_struct_twin_sync_sse_new_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__exception_twin_sync_sse__custom_struct_twin_sync_sse_nonstatic_return_custom_struct_error_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__exception_twin_sync_sse__custom_struct_twin_sync_sse_nonstatic_return_custom_struct_ok_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__exception_twin_sync_sse__custom_struct_twin_sync_sse_static_return_custom_struct_error_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__exception_twin_sync_sse__custom_struct_twin_sync_sse_static_return_custom_struct_ok_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__exception_twin_sync_sse__func_return_error_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__exception_twin_sync_sse__func_type_fallible_panic_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__exception_twin_sync_sse__func_type_infallible_panic_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__exception_twin_sync_sse__panic_with_custom_result_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__exception_twin_sync_sse__return_custom_nested_error_1_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__exception_twin_sync_sse__return_custom_nested_error_1_variant1_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__exception_twin_sync_sse__return_custom_nested_error_2_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__exception_twin_sync_sse__return_custom_struct_error_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__exception_twin_sync_sse__return_custom_struct_ok_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__exception_twin_sync_sse__return_err_custom_error_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__exception_twin_sync_sse__return_error_variant_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__exception_twin_sync_sse__return_ok_custom_error_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__exception_twin_sync_sse__some_struct_twin_sync_sse_new_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__exception_twin_sync_sse__some_struct_twin_sync_sse_non_static_return_err_custom_error_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__exception_twin_sync_sse__some_struct_twin_sync_sse_non_static_return_ok_custom_error_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__exception_twin_sync_sse__some_struct_twin_sync_sse_static_return_err_custom_error_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__exception_twin_sync_sse__some_struct_twin_sync_sse_static_return_ok_custom_error_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__exception_twin_sync_sse__stream_sink_throw_anyhow_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__exception_twin_sync_sse__throw_anyhow_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
@@ -67114,49 +67114,49 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__external_type_in_crate_twin_sync__call_new_module_system_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__external_type_in_crate_twin_sync__call_old_module_system_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__external_type_in_crate_twin_sync__use_imported_enum_twin_sync(
           int my_enum);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__external_type_in_crate_twin_sync__use_imported_struct_twin_sync(
           List<dynamic> my_struct);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__external_type_in_crate_twin_sync_sse__call_new_module_system_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__external_type_in_crate_twin_sync_sse__call_old_module_system_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__external_type_in_crate_twin_sync_sse__use_imported_enum_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__external_type_in_crate_twin_sync_sse__use_imported_struct_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructOneWithTraitTwinSse_get_one(
           int that);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructOneWithTraitTwinSse_set_one(
           int that, int one);
 
@@ -67172,11 +67172,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
       wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructOneWithTraitTwinSse_simple_trait_fn_with_default_impl_twin_sse(
           NativePortType port_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructTwoWithTraitTwinSse_get_two(
           int that);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructTwoWithTraitTwinSse_set_two(
           int that, int two);
 
@@ -67192,11 +67192,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
       wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructTwoWithTraitTwinSse_simple_trait_fn_with_default_impl_twin_sse(
           NativePortType port_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructOneWithTraitTwinSync_get_one(
           int that);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructOneWithTraitTwinSync_set_one(
           int that, int one);
 
@@ -67212,11 +67212,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
       wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructOneWithTraitTwinSync_simple_trait_fn_with_default_impl_twin_sync(
           NativePortType port_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructTwoWithTraitTwinSync_get_two(
           int that);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructTwoWithTraitTwinSync_set_two(
           int that, int two);
 
@@ -67232,11 +67232,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
       wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructTwoWithTraitTwinSync_simple_trait_fn_with_default_impl_twin_sync(
           NativePortType port_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructOneWithTraitTwinSyncSse_get_one(
           int that);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructOneWithTraitTwinSyncSse_set_one(
           int that, int one);
 
@@ -67252,11 +67252,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
       wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructOneWithTraitTwinSyncSse_simple_trait_fn_with_default_impl_twin_sync_sse(
           NativePortType port_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructTwoWithTraitTwinSyncSse_get_two(
           int that);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructTwoWithTraitTwinSyncSse_set_two(
           int that, int two);
 
@@ -67416,81 +67416,81 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_map_i32_i32_twin_sync(
           List<dynamic> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_map_string_bytes_twin_sync(
           List<dynamic> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_map_string_complex_enum_twin_sync(
           List<dynamic> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_map_string_simple_enum_twin_sync(
           List<dynamic> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_map_string_string_twin_sync(
           List<dynamic> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_map_string_struct_twin_sync(
           List<dynamic> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_set_i32_twin_sync(
           Int32List arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_set_string_twin_sync(
           List<dynamic> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__map_and_set_twin_sync_sse__func_hash_map_i32_i32_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__map_and_set_twin_sync_sse__func_hash_map_string_bytes_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__map_and_set_twin_sync_sse__func_hash_map_string_complex_enum_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__map_and_set_twin_sync_sse__func_hash_map_string_simple_enum_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__map_and_set_twin_sync_sse__func_hash_map_string_string_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__map_and_set_twin_sync_sse__func_hash_map_string_struct_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__map_and_set_twin_sync_sse__func_hash_set_i32_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__map_and_set_twin_sync_sse__func_hash_set_string_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
@@ -67896,219 +67896,219 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__StaticGetterOnlyTwinSync_static_getter_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__concatenate_with_twin_sync_concatenate_static_twin_sync(
           String a, String b);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__concatenate_with_twin_sync_concatenate_twin_sync(
           List<dynamic> that, String b);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__concatenate_with_twin_sync_handle_some_static_stream_sink_single_arg_twin_sync(
           String sink);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__concatenate_with_twin_sync_handle_some_static_stream_sink_twin_sync(
           int key, int max, String sink);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__concatenate_with_twin_sync_handle_some_stream_sink_at_1_twin_sync(
           List<dynamic> that, String sink);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__concatenate_with_twin_sync_handle_some_stream_sink_twin_sync(
           List<dynamic> that, int key, int max, String sink);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__concatenate_with_twin_sync_new_twin_sync(
           String a);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__concatenate_with_twin_sync_simple_getter_twin_sync(
           List<dynamic> that);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__get_sum_array_twin_sync(
           int a, int b, int c);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__get_sum_struct_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__my_callable_twin_sync_call(
           List<dynamic> that, String two);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__simple_enum_twin_sync_return_self_twin_sync(
           String one);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__simple_enum_twin_sync_simple_method_twin_sync(
           List<dynamic> that);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__simple_primitive_enum_twin_sync_simple_method_twin_sync(
           int that);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__simple_struct_twin_sync_arg_self_twin_sync(
           List<dynamic> a, List<dynamic> b);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__simple_struct_twin_sync_receiver_borrow_twin_sync(
           List<dynamic> that);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__simple_struct_twin_sync_receiver_own_twin_sync(
           List<dynamic> that);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__simple_struct_twin_sync_return_self_twin_sync(
           String one);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__simple_struct_twin_sync_vec_self_twin_sync(
           List<dynamic> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__static_only_twin_sync_static_method_twin_sync(
           int a);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__sum_with_twin_sync_sum_twin_sync(
           List<dynamic> that, int y, int z);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__method_twin_sync_sse__StaticGetterOnlyTwinSyncSse_static_getter_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__method_twin_sync_sse__concatenate_with_twin_sync_sse_concatenate_static_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__method_twin_sync_sse__concatenate_with_twin_sync_sse_concatenate_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__method_twin_sync_sse__concatenate_with_twin_sync_sse_handle_some_static_stream_sink_single_arg_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__method_twin_sync_sse__concatenate_with_twin_sync_sse_handle_some_static_stream_sink_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__method_twin_sync_sse__concatenate_with_twin_sync_sse_handle_some_stream_sink_at_1_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__method_twin_sync_sse__concatenate_with_twin_sync_sse_handle_some_stream_sink_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__method_twin_sync_sse__concatenate_with_twin_sync_sse_new_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__method_twin_sync_sse__concatenate_with_twin_sync_sse_simple_getter_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__method_twin_sync_sse__get_sum_array_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__method_twin_sync_sse__get_sum_struct_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__method_twin_sync_sse__my_callable_twin_sync_sse_call(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__method_twin_sync_sse__simple_enum_twin_sync_sse_return_self_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__method_twin_sync_sse__simple_enum_twin_sync_sse_simple_method_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__method_twin_sync_sse__simple_primitive_enum_twin_sync_sse_simple_method_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__method_twin_sync_sse__simple_struct_twin_sync_sse_arg_self_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__method_twin_sync_sse__simple_struct_twin_sync_sse_receiver_borrow_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__method_twin_sync_sse__simple_struct_twin_sync_sse_receiver_own_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__method_twin_sync_sse__simple_struct_twin_sync_sse_return_self_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__method_twin_sync_sse__simple_struct_twin_sync_sse_vec_self_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__method_twin_sync_sse__static_only_twin_sync_sse_static_method_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__method_twin_sync_sse__sum_with_twin_sync_sse_sum_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
@@ -68582,251 +68582,251 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__mirror_twin_sync__app_settings_stream_twin_sync(
           String sink);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__mirror_twin_sync__app_settings_vec_stream_twin_sync(
           String sink);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__mirror_twin_sync__first_number_twin_sync(
           List<dynamic> nums);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__mirror_twin_sync__first_sequence_twin_sync(
           List<dynamic> seqs);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__mirror_twin_sync__get_app_settings_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__mirror_twin_sync__get_fallible_app_settings_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__mirror_twin_sync__get_message_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__mirror_twin_sync__is_app_embedded_twin_sync(
           List<dynamic> app_settings);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__mirror_twin_sync__mirror_array_enum_stream_twin_sync(
           String sink);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__mirror_twin_sync__mirror_enum_stream_twin_sync(
           String sink);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__mirror_twin_sync__mirror_map_enum_stream_twin_sync(
           String sink);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__mirror_twin_sync__mirror_option_enum_stream_twin_sync(
           String sink);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__mirror_twin_sync__mirror_set_enum_stream_twin_sync(
           String sink);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__mirror_twin_sync__mirror_struct_stream_twin_sync(
           String sink);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__mirror_twin_sync__mirror_tuple_stream_twin_sync(
           String sink);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__mirror_twin_sync__mirror_vec_enum_stream_twin_sync(
           String sink);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__mirror_twin_sync__repeat_number_twin_sync(
           int num, Object times);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__mirror_twin_sync__repeat_sequence_twin_sync(
           int seq, Object times);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__mirror_twin_sync__test_contains_mirrored_sub_struct_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__mirror_twin_sync__test_fallible_of_raw_string_mirrored_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__mirror_twin_sync__test_hashmap_with_mirrored_value_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__mirror_twin_sync__test_list_of_nested_enums_mirrored_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__mirror_twin_sync__test_list_of_raw_nested_string_mirrored_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__mirror_twin_sync__test_nested_raw_string_mirrored_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__mirror_twin_sync__test_raw_string_enum_mirrored_twin_sync(
           bool nested);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__mirror_twin_sync__test_raw_string_mirrored_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__mirror_twin_sync_sse__app_settings_stream_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__mirror_twin_sync_sse__app_settings_vec_stream_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__mirror_twin_sync_sse__first_number_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__mirror_twin_sync_sse__first_sequence_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__mirror_twin_sync_sse__get_app_settings_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__mirror_twin_sync_sse__get_fallible_app_settings_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__mirror_twin_sync_sse__get_message_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__mirror_twin_sync_sse__is_app_embedded_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__mirror_twin_sync_sse__mirror_array_enum_stream_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__mirror_twin_sync_sse__mirror_enum_stream_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__mirror_twin_sync_sse__mirror_map_enum_stream_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__mirror_twin_sync_sse__mirror_option_enum_stream_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__mirror_twin_sync_sse__mirror_set_enum_stream_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__mirror_twin_sync_sse__mirror_struct_stream_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__mirror_twin_sync_sse__mirror_tuple_stream_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__mirror_twin_sync_sse__mirror_vec_enum_stream_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__mirror_twin_sync_sse__repeat_number_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__mirror_twin_sync_sse__repeat_sequence_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__mirror_twin_sync_sse__test_contains_mirrored_sub_struct_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__mirror_twin_sync_sse__test_fallible_of_raw_string_mirrored_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__mirror_twin_sync_sse__test_hashmap_with_mirrored_value_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__mirror_twin_sync_sse__test_list_of_nested_enums_mirrored_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__mirror_twin_sync_sse__test_list_of_raw_nested_string_mirrored_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__mirror_twin_sync_sse__test_nested_raw_string_mirrored_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__mirror_twin_sync_sse__test_raw_string_enum_mirrored_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__mirror_twin_sync_sse__test_raw_string_mirrored_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
@@ -69030,110 +69030,110 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__misc_example_twin_sync__handle_big_buffers_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__misc_example_twin_sync__handle_char_twin_sync(
           String arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__misc_example_twin_sync__handle_complex_struct_twin_sync(
           List<dynamic> s);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__misc_example_twin_sync__handle_nested_struct_twin_sync(
           List<dynamic> s);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__misc_example_twin_sync__handle_string_twin_sync(
           String s);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__misc_example_twin_sync__handle_struct_twin_sync(
           List<dynamic> arg, List<dynamic> boxed);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__misc_example_twin_sync__handle_vec_u8_twin_sync(
           List<int> v);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__misc_example_twin_sync__list_of_primitive_enums_twin_sync(
           List<dynamic> weekdays);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__misc_example_twin_sync__positional_arguments_twin_sync(
           int a, int b);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__misc_example_twin_sync__test_abc_enum_twin_sync(
           List<dynamic> abc);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__misc_example_twin_sync__test_struct_with_enum_twin_sync(
           List<dynamic> se);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__handle_big_buffers_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__handle_char_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__handle_complex_struct_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__handle_nested_struct_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__handle_string_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__handle_struct_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__handle_vec_u8_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__list_of_primitive_enums_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__positional_arguments_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__test_abc_enum_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__test_struct_with_enum_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
@@ -69211,40 +69211,40 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__misc_type_twin_sync__empty_struct_twin_sync(
           List<dynamic> empty);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__misc_type_twin_sync__func_return_unit_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__misc_type_twin_sync__handle_list_of_struct_twin_sync(
           List<dynamic> l);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__misc_type_twin_sync__handle_string_list_twin_sync(
           List<dynamic> names);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__misc_type_twin_sync_sse__empty_struct_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__misc_type_twin_sync_sse__func_return_unit_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__misc_type_twin_sync_sse__handle_list_of_struct_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__misc_type_twin_sync_sse__handle_string_list_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
@@ -69268,11 +69268,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__newtype_pattern_twin_sync__handle_newtype_twin_sync(
           List<dynamic> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__newtype_pattern_twin_sync_sse__handle_newtype_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
@@ -69300,11 +69300,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__optional_primitive_misc_twin_sync__primitive_optional_types_twin_sync(
           int? my_i32, Object? my_i64, double? my_f64, bool? my_bool);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__optional_primitive_misc_twin_sync_sse__primitive_optional_types_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
@@ -69425,11 +69425,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__optional_twin_sync__handle_increment_boxed_optional_twin_sync(
           double? opt);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__optional_twin_sync__handle_option_box_arguments_twin_sync(
           int? i8box,
           int? u8box,
@@ -69439,53 +69439,53 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           bool? boolbox,
           List<dynamic>? structbox);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__optional_twin_sync__handle_optional_increment_twin_sync(
           List<dynamic>? opt);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__optional_twin_sync__handle_optional_return_twin_sync(
           double left, double right);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__optional_twin_sync__handle_optional_struct_twin_sync(
           String? document);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__optional_twin_sync__handle_vec_of_opts_twin_sync(
           List<dynamic> opt);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__optional_twin_sync_sse__handle_increment_boxed_optional_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__optional_twin_sync_sse__handle_option_box_arguments_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__optional_twin_sync_sse__handle_optional_increment_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__optional_twin_sync_sse__handle_optional_return_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__optional_twin_sync_sse__handle_optional_struct_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__optional_twin_sync_sse__handle_vec_of_opts_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
@@ -69599,61 +69599,61 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__ownership_twin_sync__borrow_i32_twin_sync(
           int arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__ownership_twin_sync__borrow_slice_string_twin_sync(
           List<dynamic> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__ownership_twin_sync__borrow_slice_u8_twin_sync(
           List<int> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__ownership_twin_sync__borrow_str_twin_sync(
           String arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__ownership_twin_sync__borrow_string_twin_sync(
           String arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__ownership_twin_sync__borrow_struct_twin_sync(
           List<dynamic> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__ownership_twin_sync_sse__borrow_i32_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__ownership_twin_sync_sse__borrow_slice_string_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__ownership_twin_sync_sse__borrow_slice_u8_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__ownership_twin_sync_sse__borrow_str_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__ownership_twin_sync_sse__borrow_string_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__ownership_twin_sync_sse__borrow_struct_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
@@ -69677,11 +69677,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__primitive_list_misc_twin_sync__handle_vec_of_primitive_twin_sync(
           int n);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__primitive_list_misc_twin_sync_sse__handle_vec_of_primitive_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
@@ -69727,21 +69727,21 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__primitive_misc_twin_sync__primitive_types_twin_sync(
           int my_i32, Object my_i64, double my_f64, bool my_bool);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__primitive_misc_twin_sync__primitive_u32_twin_sync(
           int my_u32);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__primitive_misc_twin_sync_sse__primitive_types_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__primitive_misc_twin_sync_sse__primitive_u32_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
@@ -69783,19 +69783,19 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__raw_string_twin_sync__test_more_than_just_one_raw_string_struct_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__raw_string_twin_sync__test_raw_string_item_struct_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__raw_string_twin_sync_sse__test_more_than_just_one_raw_string_struct_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__raw_string_twin_sync_sse__test_raw_string_item_struct_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
@@ -69849,11 +69849,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__NonCloneSimpleTwinMoi_static_method_return_own_twin_moi(
           NativePortType port_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi_get_good(
           int that);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi_set_good(
           int that, String good);
 
@@ -70029,11 +70029,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__NonCloneSimpleTwinRustAsync_static_method_return_own_twin_rust_async(
           NativePortType port_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync_get_good(
           int that);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync_set_good(
           int that, String good);
 
@@ -70209,11 +70209,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__NonCloneSimpleTwinRustAsyncMoi_static_method_return_own_twin_rust_async_moi(
           NativePortType port_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi_get_good(
           int that);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi_set_good(
           int that, String good);
 
@@ -70425,11 +70425,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse_get_good(
           int that);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse_set_good(
           int that, String good);
 
@@ -70734,11 +70734,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi_get_good(
           int that);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi_set_good(
           int that, String good);
 
@@ -71043,11 +71043,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSse_get_good(
           int that);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSse_set_good(
           int that, String good);
 
@@ -71352,11 +71352,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi_get_good(
           int that);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi_set_good(
           int that, String good);
 
@@ -71577,925 +71577,925 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_instance_method_arg_borrow_twin_sync(
           int that);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_instance_method_arg_mut_borrow_twin_sync(
           int that);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_instance_method_arg_own_twin_sync(
           int that);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_instance_method_getter_twin_sync(
           int that);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_instance_method_return_own_twin_sync(
           int that);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_new_custom_name_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_new_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_new_with_result_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_static_method_arg_borrow_twin_sync(
           int arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_static_method_arg_mut_borrow_twin_sync(
           int arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_static_method_arg_own_twin_sync(
           int arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_static_method_return_own_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_get_good(
           int that);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_set_good(
           int that, String good);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_arg_borrow_twin_sync(
           int arg, int expect);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_arg_mut_borrow_twin_sync(
           int arg, int expect, int adder);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_arg_own_and_return_own_twin_sync(
           int arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_arg_own_twin_sync(
           int arg, int expect);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_arg_vec_own_twin_sync(
           List<dynamic> arg, List<int> expect);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_borrow_and_borrow_twin_sync(
           int a, int b);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_borrow_and_mut_borrow_twin_sync(
           int borrow, int mut_borrow);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_callable_arg_twin_sync(
           int arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_callable_return_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_dummy_twin_sync(
           int a, int b);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_enum_arg_borrow_twin_sync(
           int arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_enum_return_own_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sync(
           List<dynamic> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_explicit_arg_twin_sync(
           int arg, int expect);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_explicit_return_struct_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_explicit_return_twin_sync(
           int initial);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_explicit_struct_twin_sync(
           List<dynamic> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_normal_and_opaque_arg_twin_sync(
           int a, String b);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_plus_sign_arg_twin_sync(
           int arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_plus_sign_return_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_return_opaque_one_and_two_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_return_opaque_two_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_return_own_twin_sync(
           int initial);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_return_vec_own_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_sleep_twin_sync(
           int apple, int orange);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_stream_sink_twin_sync(
           String sink);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync(
           List<dynamic> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_two_args_twin_sync(
           int a, int b);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__NonCloneSimpleTwinSyncMoi_instance_method_arg_borrow_twin_sync_moi(
           int that);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__NonCloneSimpleTwinSyncMoi_instance_method_arg_mut_borrow_twin_sync_moi(
           int that);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__NonCloneSimpleTwinSyncMoi_instance_method_arg_own_twin_sync_moi(
           int that);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__NonCloneSimpleTwinSyncMoi_instance_method_getter_twin_sync_moi(
           int that);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__NonCloneSimpleTwinSyncMoi_instance_method_return_own_twin_sync_moi(
           int that);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__NonCloneSimpleTwinSyncMoi_new_custom_name_twin_sync_moi();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__NonCloneSimpleTwinSyncMoi_new_twin_sync_moi();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__NonCloneSimpleTwinSyncMoi_new_with_result_twin_sync_moi();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__NonCloneSimpleTwinSyncMoi_static_method_arg_borrow_twin_sync_moi(
           int arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__NonCloneSimpleTwinSyncMoi_static_method_arg_mut_borrow_twin_sync_moi(
           int arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__NonCloneSimpleTwinSyncMoi_static_method_arg_own_twin_sync_moi(
           int arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__NonCloneSimpleTwinSyncMoi_static_method_return_own_twin_sync_moi();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi_get_good(
           int that);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi_set_good(
           int that, String good);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_arg_borrow_twin_sync_moi(
           int arg, int expect);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_arg_mut_borrow_twin_sync_moi(
           int arg, int expect, int adder);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_arg_own_and_return_own_twin_sync_moi(
           int arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_arg_own_twin_sync_moi(
           int arg, int expect);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_arg_vec_own_twin_sync_moi(
           List<dynamic> arg, List<int> expect);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_borrow_and_borrow_twin_sync_moi(
           int a, int b);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_borrow_and_mut_borrow_twin_sync_moi(
           int borrow, int mut_borrow);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_callable_arg_twin_sync_moi(
           int arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_callable_return_twin_sync_moi();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_dummy_twin_sync_moi(
           int a, int b);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_enum_arg_borrow_twin_sync_moi(
           int arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_enum_return_own_twin_sync_moi();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sync_moi(
           List<dynamic> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sync_moi();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sync_moi();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_explicit_arg_twin_sync_moi(
           int arg, int expect);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_explicit_return_struct_twin_sync_moi();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_explicit_return_twin_sync_moi(
           int initial);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_explicit_struct_twin_sync_moi(
           List<dynamic> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_normal_and_opaque_arg_twin_sync_moi(
           int a, String b);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_plus_sign_arg_twin_sync_moi(
           int arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_plus_sign_return_twin_sync_moi();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_return_opaque_one_and_two_twin_sync_moi();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_return_opaque_two_twin_sync_moi();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_return_own_twin_sync_moi(
           int initial);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_return_vec_own_twin_sync_moi();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_sleep_twin_sync_moi(
           int apple, int orange);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_stream_sink_twin_sync_moi(
           String sink);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync_moi(
           List<dynamic> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync_moi();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_two_args_twin_sync_moi(
           int a, int b);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__NonCloneSimpleTwinSyncSse_instance_method_arg_borrow_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__NonCloneSimpleTwinSyncSse_instance_method_arg_mut_borrow_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__NonCloneSimpleTwinSyncSse_instance_method_arg_own_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__NonCloneSimpleTwinSyncSse_instance_method_getter_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__NonCloneSimpleTwinSyncSse_instance_method_return_own_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__NonCloneSimpleTwinSyncSse_new_custom_name_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__NonCloneSimpleTwinSyncSse_new_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__NonCloneSimpleTwinSyncSse_new_with_result_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__NonCloneSimpleTwinSyncSse_static_method_arg_borrow_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__NonCloneSimpleTwinSyncSse_static_method_arg_mut_borrow_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__NonCloneSimpleTwinSyncSse_static_method_arg_own_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__NonCloneSimpleTwinSyncSse_static_method_return_own_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse_get_good(
           int that);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse_set_good(
           int that, String good);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_arg_borrow_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_arg_mut_borrow_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_arg_own_and_return_own_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_arg_own_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_arg_vec_own_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_borrow_and_borrow_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_borrow_and_mut_borrow_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_callable_arg_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_callable_return_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_dummy_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_enum_arg_borrow_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_enum_return_own_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_explicit_arg_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_explicit_return_struct_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_explicit_return_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_explicit_struct_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_normal_and_opaque_arg_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_plus_sign_arg_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_plus_sign_return_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_return_opaque_one_and_two_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_return_opaque_two_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_return_own_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_return_vec_own_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_sleep_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_stream_sink_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__rust_auto_opaque_two_args_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__NonCloneSimpleTwinSyncSseMoi_instance_method_arg_borrow_twin_sync_sse_moi(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__NonCloneSimpleTwinSyncSseMoi_instance_method_arg_mut_borrow_twin_sync_sse_moi(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__NonCloneSimpleTwinSyncSseMoi_instance_method_arg_own_twin_sync_sse_moi(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__NonCloneSimpleTwinSyncSseMoi_instance_method_getter_twin_sync_sse_moi(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__NonCloneSimpleTwinSyncSseMoi_instance_method_return_own_twin_sync_sse_moi(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__NonCloneSimpleTwinSyncSseMoi_new_custom_name_twin_sync_sse_moi(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__NonCloneSimpleTwinSyncSseMoi_new_twin_sync_sse_moi(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__NonCloneSimpleTwinSyncSseMoi_new_with_result_twin_sync_sse_moi(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__NonCloneSimpleTwinSyncSseMoi_static_method_arg_borrow_twin_sync_sse_moi(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__NonCloneSimpleTwinSyncSseMoi_static_method_arg_mut_borrow_twin_sync_sse_moi(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__NonCloneSimpleTwinSyncSseMoi_static_method_arg_own_twin_sync_sse_moi(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__NonCloneSimpleTwinSyncSseMoi_static_method_return_own_twin_sync_sse_moi(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi_get_good(
           int that);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi_set_good(
           int that, String good);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_arg_borrow_twin_sync_sse_moi(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_arg_mut_borrow_twin_sync_sse_moi(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_arg_own_and_return_own_twin_sync_sse_moi(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_arg_own_twin_sync_sse_moi(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_arg_vec_own_twin_sync_sse_moi(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_borrow_and_borrow_twin_sync_sse_moi(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_borrow_and_mut_borrow_twin_sync_sse_moi(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_callable_arg_twin_sync_sse_moi(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_callable_return_twin_sync_sse_moi(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_dummy_twin_sync_sse_moi(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_enum_arg_borrow_twin_sync_sse_moi(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_enum_return_own_twin_sync_sse_moi(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sync_sse_moi(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sync_sse_moi(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sync_sse_moi(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_explicit_arg_twin_sync_sse_moi(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_explicit_return_struct_twin_sync_sse_moi(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_explicit_return_twin_sync_sse_moi(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_explicit_struct_twin_sync_sse_moi(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_normal_and_opaque_arg_twin_sync_sse_moi(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_plus_sign_arg_twin_sync_sse_moi(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_plus_sign_return_twin_sync_sse_moi(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_return_opaque_one_and_two_twin_sync_sse_moi(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_return_opaque_two_twin_sync_sse_moi(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_return_own_twin_sync_sse_moi(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_return_vec_own_twin_sync_sse_moi(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_sleep_twin_sync_sse_moi(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_stream_sink_twin_sync_sse_moi(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync_sse_moi(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync_sse_moi(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_two_args_twin_sync_sse_moi(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_sync_twin_moi__frb_sync_generator_test_twin_moi();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_sync_twin_moi__sync_create_non_clone_twin_moi();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_sync_twin_moi__sync_create_opaque_twin_moi();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_sync_twin_moi__sync_option_rust_opaque_twin_moi();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_sync_twin_sse__frb_sync_generator_test_twin_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_sync_twin_sse__sync_create_non_clone_twin_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_sync_twin_sse__sync_create_opaque_twin_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_sync_twin_sse__sync_option_rust_opaque_twin_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_sync_twin_sse_moi__frb_sync_generator_test_twin_sse_moi(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_sync_twin_sse_moi__sync_create_non_clone_twin_sse_moi(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_sync_twin_sse_moi__sync_create_opaque_twin_sse_moi(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_sync_twin_sse_moi__sync_option_rust_opaque_twin_sse_moi(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
@@ -73101,289 +73101,289 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync__create_array_opaque_enum_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync__create_nested_opaque_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync__create_opaque_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync__create_option_opaque_twin_sync(
           int? opaque);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync__frb_generator_test_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync__opaque_array_run_twin_sync(
           List<dynamic> data);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync__opaque_array_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync__opaque_vec_run_twin_sync(
           List<dynamic> data);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync__opaque_vec_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync__run_enum_opaque_twin_sync(
           List<dynamic> opaque);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync__run_nested_opaque_twin_sync(
           List<dynamic> opaque);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync__run_non_clone_twin_sync(
           int clone);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync__run_opaque_twin_sync(
           int opaque);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync__run_opaque_with_delay_twin_sync(
           int opaque);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync__unwrap_rust_opaque_twin_sync(
           int opaque);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__create_array_opaque_enum_twin_sync_moi();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__create_nested_opaque_twin_sync_moi();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__create_opaque_twin_sync_moi();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__create_option_opaque_twin_sync_moi(
           int? opaque);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__frb_generator_test_twin_sync_moi();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__opaque_array_run_twin_sync_moi(
           List<dynamic> data);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__opaque_array_twin_sync_moi();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__opaque_vec_run_twin_sync_moi(
           List<dynamic> data);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__opaque_vec_twin_sync_moi();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__run_enum_opaque_twin_sync_moi(
           List<dynamic> opaque);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__run_nested_opaque_twin_sync_moi(
           List<dynamic> opaque);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__run_non_clone_twin_sync_moi(
           int clone);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__run_opaque_twin_sync_moi(
           int opaque);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__run_opaque_with_delay_twin_sync_moi(
           int opaque);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__unwrap_rust_opaque_twin_sync_moi(
           int opaque);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse__create_array_opaque_enum_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse__create_nested_opaque_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse__create_opaque_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse__create_option_opaque_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse__frb_generator_test_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse__opaque_array_run_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse__opaque_array_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse__opaque_vec_run_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse__opaque_vec_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse__run_enum_opaque_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse__run_nested_opaque_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse__run_non_clone_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse__run_opaque_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse__run_opaque_with_delay_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse__unwrap_rust_opaque_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse_moi__create_array_opaque_enum_twin_sync_sse_moi(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse_moi__create_nested_opaque_twin_sync_sse_moi(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse_moi__create_opaque_twin_sync_sse_moi(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse_moi__create_option_opaque_twin_sync_sse_moi(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse_moi__frb_generator_test_twin_sync_sse_moi(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse_moi__opaque_array_run_twin_sync_sse_moi(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse_moi__opaque_array_twin_sync_sse_moi(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse_moi__opaque_vec_run_twin_sync_sse_moi(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse_moi__opaque_vec_twin_sync_sse_moi(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse_moi__run_enum_opaque_twin_sync_sse_moi(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse_moi__run_nested_opaque_twin_sync_sse_moi(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse_moi__run_non_clone_twin_sync_sse_moi(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse_moi__run_opaque_twin_sync_sse_moi(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse_moi__run_opaque_with_delay_twin_sync_sse_moi(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse_moi__unwrap_rust_opaque_twin_sync_sse_moi(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
@@ -73407,11 +73407,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__simple_twin_sync__simple_adder_twin_sync(
           int a, int b);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__simple_twin_sync_sse__simple_adder_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
@@ -73755,71 +73755,71 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__structure_twin_sync__func_for_struct_with_dart_keyword_field_twin_sync(
           List<dynamic> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__structure_twin_sync__func_for_struct_with_field_rename_twin_sync(
           List<dynamic> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__structure_twin_sync__func_struct_with_one_field_twin_sync(
           List<dynamic> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__structure_twin_sync__func_struct_with_two_field_twin_sync(
           List<dynamic> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__structure_twin_sync__func_struct_with_zero_field_twin_sync(
           List<dynamic> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__structure_twin_sync__func_tuple_struct_with_one_field_twin_sync(
           List<dynamic> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__structure_twin_sync__func_tuple_struct_with_two_field_twin_sync(
           List<dynamic> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__structure_twin_sync_sse__func_for_struct_with_dart_keyword_field_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__structure_twin_sync_sse__func_for_struct_with_field_rename_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__structure_twin_sync_sse__func_struct_with_one_field_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__structure_twin_sync_sse__func_struct_with_two_field_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__structure_twin_sync_sse__func_struct_with_zero_field_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__structure_twin_sync_sse__func_tuple_struct_with_one_field_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__structure_twin_sync_sse__func_tuple_struct_with_two_field_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
@@ -73861,21 +73861,21 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__tuple_twin_sync__test_tuple_2_twin_sync(
           List<dynamic> value);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__tuple_twin_sync__test_tuple_twin_sync(
           List<dynamic>? value);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__tuple_twin_sync_sse__test_tuple_2_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__tuple_twin_sync_sse__test_tuple_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
@@ -73935,31 +73935,31 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__type_alias_twin_sync__handle_type_alias_id_twin_sync(
           Object input);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__type_alias_twin_sync__handle_type_alias_model_twin_sync(
           Object input);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__type_alias_twin_sync__handle_type_nest_alias_id_twin_sync(
           Object input);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__type_alias_twin_sync_sse__handle_type_alias_id_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__type_alias_twin_sync_sse__handle_type_alias_model_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__type_alias_twin_sync_sse__handle_type_nest_alias_id_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
@@ -74019,31 +74019,31 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__uuid_type_twin_sync__handle_nested_uuids_twin_sync(
           List<dynamic> ids);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__uuid_type_twin_sync__handle_uuid_twin_sync(
           Uint8List id);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__uuid_type_twin_sync__handle_uuids_twin_sync(
           List<dynamic> ids);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__uuid_type_twin_sync_sse__handle_nested_uuids_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__uuid_type_twin_sync_sse__handle_uuid_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__uuid_type_twin_sync_sse__handle_uuids_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
@@ -74105,11 +74105,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
       wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_static_method_return_own_twin_normal(
           NativePortType port_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_get_good(
           int that);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_set_good(
           int that, String good);
 
@@ -74284,16 +74284,16 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
   external void wire__crate__api__rust_opaque__unwrap_rust_opaque_twin_normal(
       NativePortType port_, int opaque);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__rust_opaque_sync__frb_sync_generator_test_twin_normal();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__rust_opaque_sync__sync_create_non_clone_twin_normal();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__rust_opaque_sync__sync_create_opaque_twin_normal();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__rust_opaque_sync__sync_option_rust_opaque_twin_normal();
 
   external void wire__crate__api__simple__simple_adder_twin_normal(
