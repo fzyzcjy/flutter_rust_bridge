@@ -1,10 +1,11 @@
-import 'dart:typed_data';
 import 'dart:js_interop';
+import 'dart:typed_data';
 
 import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
+import 'package:web/web.dart' as web;
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
-typedef NativePortType = dynamic;
+typedef NativePortType = web.EventTarget;
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 typedef WireSyncRust2DartDco = List<dynamic>;
