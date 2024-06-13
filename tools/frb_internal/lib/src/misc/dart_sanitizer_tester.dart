@@ -27,7 +27,9 @@ Future<void> run(TestDartSanitizerConfig config) async {
 Future<void> _modifySdkMinVersion({required String package}) async {
   print('Action: modifySdkMinVersion');
   final file = File('${exec.pwd}$package/pubspec.yaml');
-  final content = loadYaml(file.readAsStringSync());
+  final contentRaw = loadYaml(file.readAsStringSync());
+  final content = jsonDecode(jsonEncode(contentRaw));
+
   content['environment']['sdk'] = '>=3.2.0';
   file.writeAsStringSync(jsonEncode(content));
 }
