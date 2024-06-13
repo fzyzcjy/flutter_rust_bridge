@@ -96,7 +96,8 @@ Future<void> _runPubGetIfNotRunYetRaw(String package) async {
 }
 
 Future<void> runPubGet(String package) async {
-  final mode = kDartModeOfPackage[package]!;
+  final mode = kDartModeOfPackage[package] ??
+      (throw UnimplementedError('runPubGet see unknown package $package'));
   final cmd = switch (mode) {
     DartMode.dart => 'dart --enable-experiment=native-assets',
     DartMode.flutter => 'flutter',
