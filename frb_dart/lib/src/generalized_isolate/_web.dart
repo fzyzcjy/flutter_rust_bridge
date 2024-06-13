@@ -38,12 +38,15 @@ class ReceivePort extends Stream<dynamic> {
     void Function()? onDone,
     bool? cancelOnError,
   }) {
-    return _rawReceivePort._webReceivePort._onMessage.map(_extractData).listen(
-          onData,
-          onError: onError,
-          onDone: onDone,
-          cancelOnError: cancelOnError,
-        );
+    final subscription =
+        _rawReceivePort._webReceivePort._onMessage.map(_extractData).listen(
+              onData,
+              onError: onError,
+              onDone: onDone,
+              cancelOnError: cancelOnError,
+            );
+    _rawReceivePort._webReceivePort._start();
+    return subscription;
   }
 
   static dynamic _extractData(web.MessageEvent event) => event.data;
@@ -68,6 +71,7 @@ class RawReceivePort {
   /// {@macro flutter_rust_bridge.same_as_native}
   set handler(Function(dynamic) handler) {
     _webReceivePort._onMessage.listen((event) => handler(event.data));
+    _webReceivePort._start();
   }
 
   /// {@macro flutter_rust_bridge.same_as_native}
@@ -136,6 +140,8 @@ abstract class _WebPortLike {
   factory _WebPortLike._broadcastChannel(web.BroadcastChannel channel) =
       _WebBroadcastPort;
 
+  void _start();
+
   void _close();
 
   /// {@macro flutter_rust_bridge.same_as_native}
@@ -154,6 +160,9 @@ class _WebMessagePort extends _WebPortLike {
   _WebMessagePort(this._nativePort) : super._();
 
   @override
+  void _start() => _nativePort.start();
+
+  @override
   void _close() => _nativePort.close();
 }
 
@@ -163,6 +172,9 @@ class _WebBroadcastPort extends _WebPortLike {
   final web.BroadcastChannel _nativePort;
 
   _WebBroadcastPort(this._nativePort) : super._();
+
+  @override
+  void _start() {}
 
   @override
   void _close() => _nativePort.close();
