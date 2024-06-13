@@ -17,12 +17,11 @@ JSAny? jsEval(String script) => _Function(script)();
 @JS()
 external bool? get crossOriginIsolated;
 
+@JS('BigInt')
+external JSBigInt _jsBigInt(String raw);
+
 /// {@macro flutter_rust_bridge.only_for_generated_code}
-// @JS('BigInt')
-JSAny castNativeBigInt(Object? value) {
-  throw UnimplementedError(
-      'castNativeBigInt($value) runtimeType=${value.runtimeType}');
-}
+JSAny castNativeBigInt(BigInt value) => _jsBigInt(value.toString());
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 BigInt jsBigIntToDartBigInt(Object raw) {
