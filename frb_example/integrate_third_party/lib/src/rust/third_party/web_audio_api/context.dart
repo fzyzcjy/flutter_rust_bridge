@@ -816,7 +816,7 @@ class AudioContextOptions {
 /// Currently, only the default value is available
 enum AudioContextRenderSizeCategory {
   /// The default value of 128 frames
-  Default,
+  default_,
   ;
 }
 

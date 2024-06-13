@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:async/async.dart';
 import 'package:flutter_rust_bridge/src/codec/base.dart';
 import 'package:flutter_rust_bridge/src/generalized_isolate/generalized_isolate.dart';
+import 'package:flutter_rust_bridge/src/utils/port_generator.dart';
 
 /// The Rust `StreamSink<T>` on the Dart side.
 class RustStreamSink<T> {
@@ -26,7 +27,8 @@ class _State<T> {
 }
 
 _State<T> _setup<T>(BaseCodec<T, dynamic, dynamic> codec) {
-  final receivePort = ReceivePort();
+  final portName = ExecuteStreamPortGenerator.create('RustStreamSink');
+  final receivePort = broadcastPort(portName);
 
   final Stream<T> rawStream = () async* {
     try {

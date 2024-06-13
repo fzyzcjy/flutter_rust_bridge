@@ -1,9 +1,11 @@
-use crate::codegen::ir::mir::ty::delegate::{MirTypeDelegate, MirTypeDelegateBigPrimitive};
+use crate::codegen::ir::mir::ty::delegate::{
+    MirTypeDelegate, MirTypeDelegateBigPrimitive, MirTypeDelegateCastedPrimitive,
+};
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::ir::mir::ty::MirType::Primitive;
 use crate::codegen::parser::mir::parser::ty::unencodable::SplayedSegment;
-use crate::codegen::parser::mir::parser::ty::TypeParserWithContext;
+use crate::codegen::parser::mir::parser::ty::{TypeParserParsingContext, TypeParserWithContext};
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_path_data_primitive(
@@ -12,8 +14,8 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     ) -> anyhow::Result<Option<MirType>> {
         Ok(Some(match last_segment {
             // TODO: change to "if let guard" https://github.com/rust-lang/rust/issues/51114
-            (name, []) if matches!(parse_primitive(name), Some(..)) => {
-                Primitive(parse_primitive(name).unwrap())
+            (name, []) if matches!(parse_primitive(name, self.context), Some(..)) => {
+                parse_primitive(name, self.context).unwrap()
             }
             (name, []) if matches!(parse_big_primitive(name), Some(..)) => {
                 parse_big_primitive(name).unwrap()
@@ -24,7 +26,11 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     }
 }
 
-fn parse_primitive(s: &str) -> Option<MirTypePrimitive> {
+fn parse_primitive(s: &str, context: &TypeParserParsingContext) -> Option<MirType> {
+    parse_primitive_raw(s).map(|primitive| transform_primitive(primitive, context))
+}
+
+fn parse_primitive_raw(s: &str) -> Option<MirTypePrimitive> {
     Some(match s {
         "u8" => MirTypePrimitive::U8,
         "i8" => MirTypePrimitive::I8,
@@ -42,6 +48,28 @@ fn parse_primitive(s: &str) -> Option<MirTypePrimitive> {
         "isize" => MirTypePrimitive::Isize,
         _ => return None,
     })
+}
+
+fn transform_primitive(inner: MirTypePrimitive, context: &TypeParserParsingContext) -> MirType {
+    if context.func_attributes.type_64bit_int()
+        || (context.struct_or_enum_attributes.as_ref())
+            .map(|x| x.type_64bit_int())
+            .unwrap_or_default()
+    {
+        match inner {
+            MirTypePrimitive::U64
+            | MirTypePrimitive::I64
+            | MirTypePrimitive::Usize
+            | MirTypePrimitive::Isize => {
+                return MirType::Delegate(MirTypeDelegate::CastedPrimitive(
+                    MirTypeDelegateCastedPrimitive { inner },
+                ))
+            }
+            _ => {}
+        }
+    }
+
+    Primitive(inner)
 }
 
 fn parse_big_primitive(s: &str) -> Option<MirType> {

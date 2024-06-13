@@ -1,4 +1,4 @@
-use crate::platform_types::DartNativeSendPort;
+use crate::platform_types::SendableMessagePortHandle;
 use std::sync::Arc;
 
 /// cbindgen:ignore
@@ -35,7 +35,10 @@ pub struct DartOpaque {
 }
 
 impl DartOpaque {
-    pub fn new(handle: GeneralizedDartHandle, dart_handler_port: DartNativeSendPort) -> Self {
+    pub fn new(
+        handle: GeneralizedDartHandle,
+        dart_handler_port: SendableMessagePortHandle,
+    ) -> Self {
         Self {
             arc: Arc::new(DartOpaqueNonClone::new(handle, dart_handler_port)),
         }
@@ -63,7 +66,7 @@ impl DartOpaque {
         }
     }
 
-    pub(crate) fn dart_handler_port(&self) -> &DartNativeSendPort {
+    pub(crate) fn dart_handler_port(&self) -> &SendableMessagePortHandle {
         self.arc.dart_handler_port()
     }
 }

@@ -51,7 +51,7 @@ macro_rules! frb_generated_web_extern_func {
         #[wasm_bindgen]
         pub fn frb_pde_ffi_dispatcher_primary(
             func_id: i32,
-            port_: $crate::for_generated::DartNativeSendPort,
+            port_: $crate::for_generated::MessagePort,
             ptr_: $crate::for_generated::PlatformGeneralizedUint8ListPtr,
             rust_vec_len_: i32,
             data_len_: i32,

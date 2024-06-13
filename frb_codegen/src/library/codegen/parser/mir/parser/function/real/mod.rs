@@ -5,7 +5,10 @@ use crate::codegen::ir::mir::func::{
     MirFunc, MirFuncArgMode, MirFuncImplMode, MirFuncImplModeDartOnly, MirFuncInput, MirFuncMode,
     MirFuncOutput, MirFuncOwnerInfo, MirFuncOwnerInfoMethod, MirFuncOwnerInfoMethodMode,
 };
-use crate::codegen::ir::mir::skip::MirSkipReason::IgnoredFunctionGeneric;
+use crate::codegen::ir::mir::skip::MirSkipReason::{
+    IgnoreBecauseExplicitAttribute, IgnoreBecauseFunctionGeneric, IgnoreBecauseOwnerTyShouldIgnore,
+    IgnoreSilently,
+};
 use crate::codegen::ir::mir::skip::{MirSkip, MirSkipReason};
 use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
@@ -23,11 +26,11 @@ use crate::codegen::parser::mir::ParseMode;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use crate::utils::namespace::{Namespace, NamespacedName};
 use anyhow::{bail, Context};
-use itertools::{concat, Itertools};
+use itertools::concat;
 use log::{debug, warn};
 use std::fmt::Debug;
 use syn::*;
-use MirSkipReason::{IgnoredFunctionNotPub, IgnoredMisc};
+use MirSkipReason::IgnoreBecauseFunctionNotPub;
 use MirType::Primitive;
 
 pub(crate) mod argument;
@@ -42,9 +45,6 @@ pub(crate) fn parse(
 ) -> anyhow::Result<Vec<MirFuncOrSkip>> {
     let mut function_parser = FunctionParser::new(type_parser);
     (src_fns.iter())
-        // Sort to make things stable. The order of parsing functions will affect things like, e.g.,
-        // which file an opaque type is put in.
-        .sorted_by_key(|f| f.owner_and_name_for_dedup())
         .map(|f| {
             function_parser.parse_function(
                 f,
@@ -58,17 +58,17 @@ pub(crate) fn parse(
         .collect()
 }
 
-struct FunctionParser<'a, 'b> {
+pub(crate) struct FunctionParser<'a, 'b> {
     type_parser: &'a mut TypeParser<'b>,
 }
 
 impl<'a, 'b> FunctionParser<'a, 'b> {
-    fn new(type_parser: &'a mut TypeParser<'b>) -> Self {
+    pub(crate) fn new(type_parser: &'a mut TypeParser<'b>) -> Self {
         Self { type_parser }
     }
 
     #[allow(clippy::too_many_arguments)]
-    fn parse_function(
+    pub(crate) fn parse_function(
         &mut self,
         func: &HirFlatFunction,
         force_codec_mode_pack: &Option<CodecModePack>,
@@ -118,20 +118,24 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         debug!("parse_function function name: {:?}", func.item_fn.name());
 
         if func.is_public() == Some(false) {
-            return Ok(create_output_skip(func, IgnoredFunctionNotPub));
+            return Ok(create_output_skip(func, IgnoreBecauseFunctionNotPub));
         }
         if !func.item_fn.sig().generics.params.is_empty() {
-            return Ok(create_output_skip(func, IgnoredFunctionGeneric));
+            return Ok(create_output_skip(func, IgnoreBecauseFunctionGeneric));
         }
 
         let src_lineno = func.item_fn.span().start().line;
         let attributes = FrbAttributes::parse(func.item_fn.attrs())?;
+        if attributes.dart2rust().is_some() || attributes.rust2dart().is_some() {
+            return Ok(create_output_skip(func, IgnoreSilently));
+        }
 
         let dart_name = parse_dart_name(&attributes, &func.item_fn.name());
 
         let create_context = |owner: Option<MirFuncOwnerInfo>| TypeParserParsingContext {
             initiated_namespace: func.namespace.clone(),
             func_attributes: attributes.clone(),
+            struct_or_enum_attributes: None,
             default_stream_sink_codec,
             default_rust_opaque_codec,
             owner,
@@ -139,18 +143,16 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         };
 
         let is_owner_trait_def = matches!(func.owner, HirFlatFunctionOwner::TraitDef { .. });
-        let owner = if let Some(owner) =
-            self.parse_owner(func, &create_context(None), dart_name.clone(), &attributes)?
-        {
-            owner
-        } else {
-            return Ok(create_output_skip(func, IgnoredMisc));
-        };
+        let owner =
+            match self.parse_owner(func, &create_context(None), dart_name.clone(), &attributes)? {
+                OwnerInfoOrSkip::Info(info) => info,
+                OwnerInfoOrSkip::Skip(reason) => return Ok(create_output_skip(func, reason)),
+            };
 
         let func_name = parse_name(&func.item_fn.name(), &owner);
 
         if attributes.ignore() {
-            return Ok(create_output_skip(func, IgnoredMisc));
+            return Ok(create_output_skip(func, IgnoreBecauseExplicitAttribute));
         }
 
         let context = create_context(Some(owner.clone()));
@@ -176,8 +178,8 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
         let impl_mode = compute_impl_mode(is_owner_trait_def, &func_name, &attributes, &output);
 
-        if info.ignore_func {
-            return Ok(create_output_skip(func, IgnoredMisc));
+        if let Some(ignore_func) = info.ignore_func {
+            return Ok(create_output_skip(func, ignore_func));
         }
 
         Ok(MirFuncOrSkip::Func(MirFunc {
@@ -211,9 +213,12 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         context: &TypeParserParsingContext,
         actual_method_dart_name: Option<String>,
         attributes: &FrbAttributes,
-    ) -> anyhow::Result<Option<MirFuncOwnerInfo>> {
+    ) -> anyhow::Result<OwnerInfoOrSkip> {
+        use MirSkipReason::*;
+        use OwnerInfoOrSkip::*;
+
         match &func.owner {
-            HirFlatFunctionOwner::Function => Ok(Some(MirFuncOwnerInfo::Function)),
+            HirFlatFunctionOwner::Function => Ok(Info(MirFuncOwnerInfo::Function)),
             HirFlatFunctionOwner::StructOrEnum {
                 impl_ty,
                 trait_def_name,
@@ -221,7 +226,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                 let owner_ty = if let Some(x) = self.parse_method_owner_ty(impl_ty, context)? {
                     x
                 } else {
-                    return Ok(None);
+                    return Ok(Skip(IgnoreBecauseParseMethodOwnerTy));
                 };
 
                 let trait_def = if let Some(trait_def_name) = trait_def_name {
@@ -229,14 +234,14 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                         Some(ans)
                     } else {
                         // If cannot find the trait, we directly skip the function currently
-                        return Ok(None);
+                        return Ok(Skip(IgnoreBecauseParseOwnerCannotFindTrait));
                     }
                 } else {
                     None
                 };
 
                 if !is_allowed_owner(&owner_ty, attributes) {
-                    return Ok(None);
+                    return Ok(Skip(IgnoreBecauseNotAllowedOwner));
                 }
 
                 self.parse_method_owner_inner(func, actual_method_dart_name, owner_ty, trait_def)
@@ -262,7 +267,9 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         actual_method_dart_name: Option<String>,
         owner_ty: MirType,
         trait_def: Option<MirTypeTraitDef>,
-    ) -> anyhow::Result<Option<MirFuncOwnerInfo>> {
+    ) -> anyhow::Result<OwnerInfoOrSkip> {
+        use OwnerInfoOrSkip::*;
+
         let sig = func.item_fn.sig();
         let mode = if matches!(sig.inputs.first(), Some(FnArg::Receiver(..))) {
             MirFuncOwnerInfoMethodMode::Instance
@@ -271,12 +278,12 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         };
 
         if owner_ty.should_ignore(self.type_parser) {
-            return Ok(None);
+            return Ok(Skip(IgnoreBecauseOwnerTyShouldIgnore));
         }
 
         let actual_method_name = sig.ident.to_string();
 
-        Ok(Some(MirFuncOwnerInfo::Method(MirFuncOwnerInfoMethod {
+        Ok(Info(MirFuncOwnerInfo::Method(MirFuncOwnerInfoMethod {
             owner_ty,
             actual_method_name,
             actual_method_dart_name,
@@ -303,6 +310,11 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         let syn_ty: Type = parse_str(&owner_ty_name)?;
         Ok(Some(self.type_parser.parse_type(&syn_ty, context)?))
     }
+}
+
+enum OwnerInfoOrSkip {
+    Info(MirFuncOwnerInfo),
+    Skip(MirSkipReason),
 }
 
 fn create_output_skip(func: &HirFlatFunction, reason: MirSkipReason) -> MirFuncOrSkip {
@@ -341,7 +353,7 @@ struct FunctionPartialInfo {
     ok_output: Option<MirType>,
     error_output: Option<MirType>,
     mode: Option<MirFuncMode>,
-    ignore_func: bool,
+    ignore_func: Option<MirSkipReason>,
 }
 
 impl FunctionPartialInfo {
@@ -352,7 +364,8 @@ impl FunctionPartialInfo {
             error_output: merge_option(self.error_output, other.error_output)
                 .context("error_output type")?,
             mode: merge_option(self.mode, other.mode).context("mode")?,
-            ignore_func: self.ignore_func || other.ignore_func,
+            ignore_func: merge_option(self.ignore_func, other.ignore_func)
+                .context("ignore_func")?,
         })
     }
 }

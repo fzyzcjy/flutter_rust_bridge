@@ -1,28 +1,32 @@
 use crate::codegen::generator::codec::sse::lang::Lang;
-use crate::utils::cbindgen_keywords;
+use crate::utils::{cbindgen_keywords, dart_keywords};
 use convert_case::{Case, Casing};
+
 crate::mir! {
-#[serde(transparent)]
 pub struct MirIdent {
-    pub raw: String,
+    rust_style: String,
+    dart_style: Option<String>,
 }
 }
 
 impl MirIdent {
-    pub fn new(raw: String) -> MirIdent {
-        MirIdent { raw }
+    pub fn new(rust_style: String, dart_style: Option<String>) -> MirIdent {
+        MirIdent {
+            rust_style,
+            dart_style,
+        }
     }
 
-    pub fn rust_style(&self) -> &str {
-        &self.raw
+    pub fn rust_style(&self) -> String {
+        self.rust_style.clone()
     }
 
     pub fn c_style(&self) -> String {
-        convert_rust_to_c_style(&self.raw)
+        convert_rust_to_c_style(&self.rust_style)
     }
 
     pub fn dart_style(&self) -> String {
-        (self.raw.strip_prefix("r#").unwrap_or(self.raw.as_str())).to_case(Case::Camel)
+        (self.dart_style.clone()).unwrap_or_else(|| convert_rust_to_dart_style(&self.rust_style))
     }
 
     pub fn style(&self, lang: &Lang) -> String {
@@ -35,24 +39,37 @@ impl MirIdent {
 
 impl std::fmt::Display for MirIdent {
     fn fmt(&self, fmt: &mut std::fmt::Formatter<'_>) -> Result<(), std::fmt::Error> {
-        fmt.write_str(&self.raw)
+        fmt.write_str(&self.rust_style)?;
+        if let Some(dart_style) = &self.dart_style {
+            write!(fmt, "(dart_style={})", dart_style)?;
+        }
+        Ok(())
     }
 }
 
 fn convert_rust_to_c_style(raw: &str) -> String {
-    let mut ans = raw.to_owned();
-
-    if let Some(stripped) = ans.strip_prefix("r#") {
-        ans = stripped.to_owned();
-    }
+    let mut ans = strip_prefix_rhash(raw).to_owned();
 
     // match behavior of ffigen
     if &ans == "async" {
         ans = "async1".to_owned();
+    }
+    if &ans == "interface" {
+        ans = "interface1".to_owned();
     }
 
     // match behavior of cbindgen
     cbindgen_keywords::escape(&mut ans);
 
     ans
+}
+
+fn convert_rust_to_dart_style(raw: &str) -> String {
+    let ans = strip_prefix_rhash(raw).to_case(Case::Camel);
+
+    dart_keywords::escape(ans)
+}
+
+fn strip_prefix_rhash(raw: &str) -> &str {
+    raw.strip_prefix("r#").unwrap_or(raw)
 }

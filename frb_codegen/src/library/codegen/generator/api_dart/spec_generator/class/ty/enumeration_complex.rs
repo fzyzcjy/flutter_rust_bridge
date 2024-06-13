@@ -130,7 +130,7 @@ impl<'a> EnumRefApiDartGenerator<'a> {
 
     fn generate_implements_exception(&self, variant: &MirEnumVariant) -> &str {
         let has_backtrace = matches!(&variant.kind,
-            MirVariantKind::Struct(MirStruct {is_fields_named: true, fields, ..}) if fields.iter().any(|field| field.name.raw == BACKTRACE_IDENT));
+            MirVariantKind::Struct(MirStruct {is_fields_named: true, fields, ..}) if fields.iter().any(|field| field.name.rust_style() == BACKTRACE_IDENT));
         if self.mir.is_exception && has_backtrace {
             "@Implements<FrbBacktracedException>()"
         } else {

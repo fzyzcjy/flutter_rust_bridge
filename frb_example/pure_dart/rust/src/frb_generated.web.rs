@@ -5,10 +5,12 @@
 
 use super::*;
 use crate::api::constructor::*;
+use crate::api::custom_ser_des::*;
 use crate::api::dart_code::*;
 use crate::api::dropping::*;
 use crate::api::dyn_trait::SimpleTraitForDynTwinNormal;
 use crate::api::dyn_trait::*;
+use crate::api::external_impl::*;
 use crate::api::impl_trait::SimpleTraitTwinNormal;
 use crate::api::impl_trait::*;
 use crate::api::method::*;
@@ -7489,6 +7491,56 @@ impl CstDecode<crate::api::misc_no_twin_example_a::StructWithCustomNameMethodTwi
         )
     }
 }
+impl CstDecode<crate::api::structure::StructWithDartKeywordFieldTwinNormal>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> crate::api::structure::StructWithDartKeywordFieldTwinNormal {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        crate::api::structure::StructWithDartKeywordFieldTwinNormal {
+            class: self_.get(0).cst_decode(),
+            interface: self_.get(1).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::structure_twin_rust_async::StructWithDartKeywordFieldTwinRustAsync> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+            // Codec=Cst (C-struct based), see doc to use other codecs
+            fn cst_decode(self) -> crate::api::pseudo_manual::structure_twin_rust_async::StructWithDartKeywordFieldTwinRustAsync {
+                let self_ = self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>().unwrap();
+                assert_eq!(self_.length(), 2, "Expected 2 elements, got {}", self_.length());
+                crate::api::pseudo_manual::structure_twin_rust_async::StructWithDartKeywordFieldTwinRustAsync{class:  self_.get(0).cst_decode(),interface:  self_.get(1).cst_decode()}
+            }
+        }
+impl CstDecode<crate::api::pseudo_manual::structure_twin_sync::StructWithDartKeywordFieldTwinSync>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::structure_twin_sync::StructWithDartKeywordFieldTwinSync {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::structure_twin_sync::StructWithDartKeywordFieldTwinSync {
+            class: self_.get(0).cst_decode(),
+            interface: self_.get(1).cst_decode(),
+        }
+    }
+}
 impl CstDecode<crate::api::misc_example::StructWithEnumTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
@@ -7615,6 +7667,70 @@ impl CstDecode<crate::api::pseudo_manual::rust_auto_opaque_twin_sync_moi::Struct
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync_moi::StructWithExplicitAutoOpaqueFieldTwinSyncMoi{auto_opaque:  self_.get(0).cst_decode(),normal:  self_.get(1).cst_decode()}
             }
         }
+impl CstDecode<crate::api::structure::StructWithFieldRenameTwinNormal>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> crate::api::structure::StructWithFieldRenameTwinNormal {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        crate::api::structure::StructWithFieldRenameTwinNormal {
+            class: self_.get(0).cst_decode(),
+        }
+    }
+}
+impl
+    CstDecode<
+        crate::api::pseudo_manual::structure_twin_rust_async::StructWithFieldRenameTwinRustAsync,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::structure_twin_rust_async::StructWithFieldRenameTwinRustAsync
+    {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::structure_twin_rust_async::StructWithFieldRenameTwinRustAsync {
+            class: self_.get(0).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::structure_twin_sync::StructWithFieldRenameTwinSync>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::structure_twin_sync::StructWithFieldRenameTwinSync {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::structure_twin_sync::StructWithFieldRenameTwinSync {
+            class: self_.get(0).cst_decode(),
+        }
+    }
+}
 impl
     CstDecode<
         crate::api::pseudo_manual::rust_auto_opaque_twin_moi::StructWithGoodAndOpaqueFieldTwinMoi,
@@ -9269,6 +9385,22 @@ impl CstDecode<OpaqueTwoTwinSyncMoi> for flutter_rust_bridge::for_generated::was
         flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
             RustOpaqueMoi<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueTwoTwinSyncMoi>,
+            >,
+        >::cst_decode(
+            self
+        ))
+    }
+}
+impl CstDecode<SimpleOpaqueExternalStructWithMethod>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> SimpleOpaqueExternalStructWithMethod {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
+            RustOpaqueNom<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                    SimpleOpaqueExternalStructWithMethod,
+                >,
             >,
         >::cst_decode(
             self
@@ -11822,6 +11954,30 @@ impl
 impl
     CstDecode<
         RustOpaqueNom<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                SimpleOpaqueExternalStructWithMethod,
+            >,
+        >,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> RustOpaqueNom<
+        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+            SimpleOpaqueExternalStructWithMethod,
+        >,
+    > {
+        #[cfg(target_pointer_width = "64")]
+        {
+            compile_error!("64-bit pointers are not supported.");
+        }
+        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
+    }
+}
+impl
+    CstDecode<
+        RustOpaqueNom<
             flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StaticGetterOnlyTwinNormal>,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
@@ -13850,14 +14006,14 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync::WeekdaysTwinSy
 
 #[wasm_bindgen]
 pub fn wire__crate__api__function_at_api_mod_rs(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__function_at_api_mod_rs_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__array__boxed_blob_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     blob: Box<[u8]>,
 ) {
     wire__crate__api__array__boxed_blob_twin_normal_impl(port_, blob)
@@ -13865,7 +14021,7 @@ pub fn wire__crate__api__array__boxed_blob_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__array__func_test_id_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     id: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__array__func_test_id_twin_normal_impl(port_, id)
@@ -13873,21 +14029,21 @@ pub fn wire__crate__api__array__func_test_id_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__array__get_array_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__array__get_array_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__array__get_complex_array_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__array__get_complex_array_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__array__last_number_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     array: Box<[f64]>,
 ) {
     wire__crate__api__array__last_number_twin_normal_impl(port_, array)
@@ -13895,7 +14051,7 @@ pub fn wire__crate__api__array__last_number_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__array__nested_id_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     id: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__array__nested_id_twin_normal_impl(port_, id)
@@ -13903,7 +14059,7 @@ pub fn wire__crate__api__array__nested_id_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__array__new_msgid_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     id: Box<[u8]>,
 ) {
     wire__crate__api__array__new_msgid_twin_normal_impl(port_, id)
@@ -13911,7 +14067,7 @@ pub fn wire__crate__api__array__new_msgid_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__array__return_boxed_feed_id_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     id: Box<[u8]>,
 ) {
     wire__crate__api__array__return_boxed_feed_id_twin_normal_impl(port_, id)
@@ -13919,7 +14075,7 @@ pub fn wire__crate__api__array__return_boxed_feed_id_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__array__return_boxed_raw_feed_id_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     id: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__array__return_boxed_raw_feed_id_twin_normal_impl(port_, id)
@@ -13927,7 +14083,7 @@ pub fn wire__crate__api__array__return_boxed_raw_feed_id_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__array__use_boxed_blob_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     blob: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__array__use_boxed_blob_twin_normal_impl(port_, blob)
@@ -13935,7 +14091,7 @@ pub fn wire__crate__api__array__use_boxed_blob_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__array__use_msgid_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     id: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__array__use_msgid_twin_normal_impl(port_, id)
@@ -13943,7 +14099,7 @@ pub fn wire__crate__api__array__use_msgid_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__async_misc__func_async_simple_add_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     a: i32,
     b: i32,
 ) {
@@ -13952,14 +14108,14 @@ pub fn wire__crate__api__async_misc__func_async_simple_add_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__async_misc__func_async_void_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__async_misc__func_async_void_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__async_spawn__simple_use_async_spawn(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: String,
 ) {
     wire__crate__api__async_spawn__simple_use_async_spawn_impl(port_, arg)
@@ -13967,7 +14123,7 @@ pub fn wire__crate__api__async_spawn__simple_use_async_spawn(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__async_spawn__simple_use_async_spawn_blocking(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: String,
 ) {
     wire__crate__api__async_spawn__simple_use_async_spawn_blocking_impl(port_, arg)
@@ -13975,7 +14131,7 @@ pub fn wire__crate__api__async_spawn__simple_use_async_spawn_blocking(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__async_spawn__simple_use_async_spawn_local(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: String,
     sink: String,
 ) {
@@ -13984,7 +14140,7 @@ pub fn wire__crate__api__async_spawn__simple_use_async_spawn_local(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__attribute__handle_customized_struct_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     val: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__attribute__handle_customized_struct_twin_normal_impl(port_, val)
@@ -13992,7 +14148,7 @@ pub fn wire__crate__api__attribute__handle_customized_struct_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__attribute__next_user_id_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     user_id: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__attribute__next_user_id_twin_normal_impl(port_, user_id)
@@ -14005,8 +14161,98 @@ pub fn wire__crate__api__benchmark_misc__benchmark_void_semi_serialize(
 }
 
 #[wasm_bindgen]
+pub fn wire__crate__api__casted_primitive__casted_primitive_i64_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire__crate__api__casted_primitive__casted_primitive_i64_twin_normal_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__casted_primitive__casted_primitive_isize_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire__crate__api__casted_primitive__casted_primitive_isize_twin_normal_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__casted_primitive__casted_primitive_multi_arg_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire__crate__api__casted_primitive__casted_primitive_multi_arg_twin_normal_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__casted_primitive__casted_primitive_u64_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire__crate__api__casted_primitive__casted_primitive_u64_twin_normal_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__casted_primitive__casted_primitive_usize_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire__crate__api__casted_primitive__casted_primitive_usize_twin_normal_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__casted_primitive__function_for_struct_with_casted_primitive_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire__crate__api__casted_primitive__function_for_struct_with_casted_primitive_twin_normal_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[wasm_bindgen]
 pub fn wire__crate__api__chrono_type__datetime_local_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     d: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__chrono_type__datetime_local_twin_normal_impl(port_, d)
@@ -14014,7 +14260,7 @@ pub fn wire__crate__api__chrono_type__datetime_local_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__chrono_type__datetime_utc_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     d: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__chrono_type__datetime_utc_twin_normal_impl(port_, d)
@@ -14022,7 +14268,7 @@ pub fn wire__crate__api__chrono_type__datetime_utc_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__chrono_type__duration_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     d: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__chrono_type__duration_twin_normal_impl(port_, d)
@@ -14030,7 +14276,7 @@ pub fn wire__crate__api__chrono_type__duration_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__chrono_type__handle_durations_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     durations: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     since: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
@@ -14039,7 +14285,7 @@ pub fn wire__crate__api__chrono_type__handle_durations_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__chrono_type__handle_timestamps_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     timestamps: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     epoch: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
@@ -14048,7 +14294,7 @@ pub fn wire__crate__api__chrono_type__handle_timestamps_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__chrono_type__how_long_does_it_take_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     mine: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__chrono_type__how_long_does_it_take_twin_normal_impl(port_, mine)
@@ -14056,7 +14302,7 @@ pub fn wire__crate__api__chrono_type__how_long_does_it_take_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__chrono_type__naivedatetime_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     d: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__chrono_type__naivedatetime_twin_normal_impl(port_, d)
@@ -14064,7 +14310,7 @@ pub fn wire__crate__api__chrono_type__naivedatetime_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__chrono_type__optional_empty_datetime_utc_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     d: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__chrono_type__optional_empty_datetime_utc_twin_normal_impl(port_, d)
@@ -14072,28 +14318,28 @@ pub fn wire__crate__api__chrono_type__optional_empty_datetime_utc_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__chrono_type__test_chrono_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__chrono_type__test_chrono_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__chrono_type__test_precise_chrono_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__chrono_type__test_precise_chrono_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__comment__function_with_comments_slash_star_star_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__comment__function_with_comments_slash_star_star_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__comment__function_with_comments_triple_slash_multi_line_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__comment__function_with_comments_triple_slash_multi_line_twin_normal_impl(
         port_,
@@ -14102,7 +14348,7 @@ pub fn wire__crate__api__comment__function_with_comments_triple_slash_multi_line
 
 #[wasm_bindgen]
 pub fn wire__crate__api__comment__function_with_comments_triple_slash_single_line_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__comment__function_with_comments_triple_slash_single_line_twin_normal_impl(
         port_,
@@ -14111,7 +14357,7 @@ pub fn wire__crate__api__comment__function_with_comments_triple_slash_single_lin
 
 #[wasm_bindgen]
 pub fn wire__crate__api__comment__struct_with_comments_twin_normal_instance_method_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__comment__struct_with_comments_twin_normal_instance_method_twin_normal_impl(
@@ -14121,7 +14367,7 @@ pub fn wire__crate__api__comment__struct_with_comments_twin_normal_instance_meth
 
 #[wasm_bindgen]
 pub fn wire__crate__api__comment__struct_with_comments_twin_normal_static_method_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__comment__struct_with_comments_twin_normal_static_method_twin_normal_impl(
         port_,
@@ -14144,7 +14390,7 @@ pub fn wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_get_one(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_new(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_new_impl(port_)
 }
@@ -14187,7 +14433,7 @@ pub fn wire__crate__api__constructor__ConstructorOpaqueSyncStructTwinNormal_set_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__constructor__constructor_translatable_struct_twin_normal_new(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__constructor__constructor_translatable_struct_twin_normal_new_impl(port_)
 }
@@ -14199,36 +14445,51 @@ pub fn wire__crate__api__constructor__constructor_translatable_sync_struct_twin_
 }
 
 #[wasm_bindgen]
+pub fn wire__crate__api__custom_ser_des__function_using_type_with_custom_serializer(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire__crate__api__custom_ser_des__function_using_type_with_custom_serializer_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[wasm_bindgen]
 pub fn wire__crate__api__customization__check_init_done(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__customization__check_init_done_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__customization__init_app(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__customization__init_app_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__customization__my_init_one(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__customization__my_init_one_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__customization__my_init_two(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__customization__my_init_two_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__dart_code__OpaqueStructWithDartCodeTwinNormal_normal_method_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__dart_code__OpaqueStructWithDartCodeTwinNormal_normal_method_twin_normal_impl(
@@ -14238,7 +14499,7 @@ pub fn wire__crate__api__dart_code__OpaqueStructWithDartCodeTwinNormal_normal_me
 
 #[wasm_bindgen]
 pub fn wire__crate__api__dart_code__translatable_struct_with_dart_code_twin_normal_normal_method_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__dart_code__translatable_struct_with_dart_code_twin_normal_normal_method_twin_normal_impl(port_, that)
@@ -14246,14 +14507,14 @@ pub fn wire__crate__api__dart_code__translatable_struct_with_dart_code_twin_norm
 
 #[wasm_bindgen]
 pub fn wire__crate__api__dart_dynamic__return_dart_dynamic_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__dart_dynamic__return_dart_dynamic_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__dart_fn__rust_call_dart_loopback_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__dart_fn__rust_call_dart_loopback_twin_normal_impl(port_, callback)
@@ -14261,7 +14522,7 @@ pub fn wire__crate__api__dart_fn__rust_call_dart_loopback_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__dart_fn__rust_call_dart_multi_times_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     num_times: i32,
 ) {
@@ -14272,7 +14533,7 @@ pub fn wire__crate__api__dart_fn__rust_call_dart_multi_times_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__dart_fn__rust_call_dart_one_arg_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__dart_fn__rust_call_dart_one_arg_twin_normal_impl(port_, callback)
@@ -14280,7 +14541,7 @@ pub fn wire__crate__api__dart_fn__rust_call_dart_one_arg_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__dart_fn__rust_call_dart_return_result_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     expect_output: Option<String>,
 ) {
@@ -14293,7 +14554,7 @@ pub fn wire__crate__api__dart_fn__rust_call_dart_return_result_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__dart_fn__rust_call_dart_return_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__dart_fn__rust_call_dart_return_twin_normal_impl(port_, callback)
@@ -14301,7 +14562,7 @@ pub fn wire__crate__api__dart_fn__rust_call_dart_return_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__dart_fn__rust_call_dart_simple_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__dart_fn__rust_call_dart_simple_twin_normal_impl(port_, callback)
@@ -14309,7 +14570,7 @@ pub fn wire__crate__api__dart_fn__rust_call_dart_simple_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__dart_fn__rust_call_dart_two_args_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__dart_fn__rust_call_dart_two_args_twin_normal_impl(port_, callback)
@@ -14317,7 +14578,7 @@ pub fn wire__crate__api__dart_fn__rust_call_dart_two_args_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__dart_fn__rust_call_dart_with_dart_opaque_arg_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     input: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
@@ -14328,7 +14589,7 @@ pub fn wire__crate__api__dart_fn__rust_call_dart_with_dart_opaque_arg_twin_norma
 
 #[wasm_bindgen]
 pub fn wire__crate__api__dart_fn__rust_call_dart_with_dart_opaque_result_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__dart_fn__rust_call_dart_with_dart_opaque_result_twin_normal_impl(
@@ -14338,7 +14599,7 @@ pub fn wire__crate__api__dart_fn__rust_call_dart_with_dart_opaque_result_twin_no
 
 #[wasm_bindgen]
 pub fn wire__crate__api__dart_opaque__async_accept_dart_opaque_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__dart_opaque__async_accept_dart_opaque_twin_normal_impl(port_, opaque)
@@ -14346,7 +14607,7 @@ pub fn wire__crate__api__dart_opaque__async_accept_dart_opaque_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__dart_opaque__clone_dart_opaque_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__dart_opaque__clone_dart_opaque_twin_normal_impl(port_, opaque)
@@ -14354,7 +14615,7 @@ pub fn wire__crate__api__dart_opaque__clone_dart_opaque_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__dart_opaque__create_enum_dart_opaque_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__dart_opaque__create_enum_dart_opaque_twin_normal_impl(port_, opaque)
@@ -14362,7 +14623,7 @@ pub fn wire__crate__api__dart_opaque__create_enum_dart_opaque_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__dart_opaque__create_nested_dart_opaque_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     opaque1: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     opaque2: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
@@ -14373,7 +14634,7 @@ pub fn wire__crate__api__dart_opaque__create_nested_dart_opaque_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__dart_opaque__drop_static_dart_opaque_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     id: i32,
 ) {
     wire__crate__api__dart_opaque__drop_static_dart_opaque_twin_normal_impl(port_, id)
@@ -14381,7 +14642,7 @@ pub fn wire__crate__api__dart_opaque__drop_static_dart_opaque_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__dart_opaque__get_enum_dart_opaque_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__dart_opaque__get_enum_dart_opaque_twin_normal_impl(port_, opaque)
@@ -14389,7 +14650,7 @@ pub fn wire__crate__api__dart_opaque__get_enum_dart_opaque_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__dart_opaque__get_nested_dart_opaque_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__dart_opaque__get_nested_dart_opaque_twin_normal_impl(port_, opaque)
@@ -14397,7 +14658,7 @@ pub fn wire__crate__api__dart_opaque__get_nested_dart_opaque_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__dart_opaque__loop_back_array_get_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__dart_opaque__loop_back_array_get_twin_normal_impl(port_, opaque)
@@ -14405,7 +14666,7 @@ pub fn wire__crate__api__dart_opaque__loop_back_array_get_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__dart_opaque__loop_back_array_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__dart_opaque__loop_back_array_twin_normal_impl(port_, opaque)
@@ -14413,7 +14674,7 @@ pub fn wire__crate__api__dart_opaque__loop_back_array_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__dart_opaque__loop_back_option_get_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__dart_opaque__loop_back_option_get_twin_normal_impl(port_, opaque)
@@ -14421,7 +14682,7 @@ pub fn wire__crate__api__dart_opaque__loop_back_option_get_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__dart_opaque__loop_back_option_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__dart_opaque__loop_back_option_twin_normal_impl(port_, opaque)
@@ -14429,7 +14690,7 @@ pub fn wire__crate__api__dart_opaque__loop_back_option_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__dart_opaque__loop_back_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__dart_opaque__loop_back_twin_normal_impl(port_, opaque)
@@ -14437,7 +14698,7 @@ pub fn wire__crate__api__dart_opaque__loop_back_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__dart_opaque__loop_back_vec_get_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__dart_opaque__loop_back_vec_get_twin_normal_impl(port_, opaque)
@@ -14445,7 +14706,7 @@ pub fn wire__crate__api__dart_opaque__loop_back_vec_get_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__dart_opaque__loop_back_vec_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__dart_opaque__loop_back_vec_twin_normal_impl(port_, opaque)
@@ -14453,7 +14714,7 @@ pub fn wire__crate__api__dart_opaque__loop_back_vec_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__dart_opaque__panic_unwrap_dart_opaque_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__dart_opaque__panic_unwrap_dart_opaque_twin_normal_impl(port_, opaque)
@@ -14461,7 +14722,7 @@ pub fn wire__crate__api__dart_opaque__panic_unwrap_dart_opaque_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__dart_opaque__set_static_dart_opaque_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     id: i32,
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
@@ -14505,7 +14766,7 @@ pub fn wire__crate__api__dart_opaque_sync__unwrap_dart_opaque_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__deliberate_name_conflict__test_duplicated_module_names(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     s: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__deliberate_name_conflict__test_duplicated_module_names_impl(port_, s)
@@ -14513,7 +14774,7 @@ pub fn wire__crate__api__deliberate_name_conflict__test_duplicated_module_names(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__dropping__DroppableTwinNormal_create_stream(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     sink: String,
 ) {
@@ -14522,21 +14783,21 @@ pub fn wire__crate__api__dropping__DroppableTwinNormal_create_stream(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__dropping__DroppableTwinNormal_get_drop_count_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__dropping__DroppableTwinNormal_get_drop_count_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__dropping__DroppableTwinNormal_new_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__dropping__DroppableTwinNormal_new_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__dropping__DroppableTwinNormal_simple_method_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__dropping__DroppableTwinNormal_simple_method_twin_normal_impl(port_, that)
@@ -14544,7 +14805,7 @@ pub fn wire__crate__api__dropping__DroppableTwinNormal_simple_method_twin_normal
 
 #[wasm_bindgen]
 pub fn wire__crate__api__dyn_trait__StructOneWithTraitForDynTwinNormal_create_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14574,7 +14835,7 @@ pub fn wire__crate__api__dyn_trait__StructOneWithTraitForDynTwinNormal_set_one(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__dyn_trait__StructOneWithTraitForDynTwinNormal_simple_method_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14589,7 +14850,7 @@ pub fn wire__crate__api__dyn_trait__StructOneWithTraitForDynTwinNormal_simple_me
 
 #[wasm_bindgen]
 pub fn wire__crate__api__dyn_trait__StructTwoWithTraitForDynTwinNormal_create_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14619,7 +14880,7 @@ pub fn wire__crate__api__dyn_trait__StructTwoWithTraitForDynTwinNormal_set_two(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__dyn_trait__StructTwoWithTraitForDynTwinNormal_simple_method_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14634,7 +14895,7 @@ pub fn wire__crate__api__dyn_trait__StructTwoWithTraitForDynTwinNormal_simple_me
 
 #[wasm_bindgen]
 pub fn wire__crate__api__dyn_trait__func_arg_dyn_trait_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14649,7 +14910,7 @@ pub fn wire__crate__api__dyn_trait__func_arg_dyn_trait_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__enumeration__func_enum_simple_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: i32,
 ) {
     wire__crate__api__enumeration__func_enum_simple_twin_normal_impl(port_, arg)
@@ -14657,7 +14918,7 @@ pub fn wire__crate__api__enumeration__func_enum_simple_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__enumeration__func_enum_with_discriminant_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: i32,
 ) {
     wire__crate__api__enumeration__func_enum_with_discriminant_twin_normal_impl(port_, arg)
@@ -14665,7 +14926,7 @@ pub fn wire__crate__api__enumeration__func_enum_with_discriminant_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__enumeration__func_enum_with_item_mixed_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__enumeration__func_enum_with_item_mixed_twin_normal_impl(port_, arg)
@@ -14673,7 +14934,7 @@ pub fn wire__crate__api__enumeration__func_enum_with_item_mixed_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__enumeration__func_enum_with_item_struct_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__enumeration__func_enum_with_item_struct_twin_normal_impl(port_, arg)
@@ -14681,7 +14942,7 @@ pub fn wire__crate__api__enumeration__func_enum_with_item_struct_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__enumeration__func_enum_with_item_tuple_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__enumeration__func_enum_with_item_tuple_twin_normal_impl(port_, arg)
@@ -14689,7 +14950,7 @@ pub fn wire__crate__api__enumeration__func_enum_with_item_tuple_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__enumeration__handle_enum_parameter_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     weekday: i32,
 ) {
     wire__crate__api__enumeration__handle_enum_parameter_twin_normal_impl(port_, weekday)
@@ -14697,7 +14958,7 @@ pub fn wire__crate__api__enumeration__handle_enum_parameter_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__enumeration__handle_enum_struct_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     val: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__enumeration__handle_enum_struct_twin_normal_impl(port_, val)
@@ -14705,7 +14966,7 @@ pub fn wire__crate__api__enumeration__handle_enum_struct_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__enumeration__handle_return_enum_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     input: String,
 ) {
     wire__crate__api__enumeration__handle_return_enum_twin_normal_impl(port_, input)
@@ -14713,7 +14974,7 @@ pub fn wire__crate__api__enumeration__handle_return_enum_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__enumeration__multiply_by_ten_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     measure: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__enumeration__multiply_by_ten_twin_normal_impl(port_, measure)
@@ -14721,7 +14982,7 @@ pub fn wire__crate__api__enumeration__multiply_by_ten_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__enumeration__print_note_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     note: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__enumeration__print_note_twin_normal_impl(port_, note)
@@ -14729,7 +14990,7 @@ pub fn wire__crate__api__enumeration__print_note_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__event_listener__close_event_listener_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__event_listener__close_event_listener_twin_normal_impl(port_)
 }
@@ -14744,7 +15005,7 @@ pub fn wire__crate__api__event_listener__create_event_sync_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__event_listener__create_event_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     address: String,
     payload: String,
 ) {
@@ -14753,7 +15014,7 @@ pub fn wire__crate__api__event_listener__create_event_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__event_listener__event_twin_normal_as_string_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__event_listener__event_twin_normal_as_string_twin_normal_impl(port_, that)
@@ -14761,7 +15022,7 @@ pub fn wire__crate__api__event_listener__event_twin_normal_as_string_twin_normal
 
 #[wasm_bindgen]
 pub fn wire__crate__api__event_listener__register_event_listener_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     listener: String,
 ) {
     wire__crate__api__event_listener__register_event_listener_twin_normal_impl(port_, listener)
@@ -14769,21 +15030,21 @@ pub fn wire__crate__api__event_listener__register_event_listener_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__exception__custom_enum_error_panic_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__exception__custom_enum_error_panic_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__exception__custom_enum_error_return_error_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__exception__custom_enum_error_return_error_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__exception__custom_enum_error_return_ok_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: u32,
 ) {
     wire__crate__api__exception__custom_enum_error_return_ok_twin_normal_impl(port_, arg)
@@ -14791,7 +15052,7 @@ pub fn wire__crate__api__exception__custom_enum_error_return_ok_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__exception__custom_nested_error_return_error_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__exception__custom_nested_error_return_error_twin_normal_impl(port_, arg)
@@ -14799,7 +15060,7 @@ pub fn wire__crate__api__exception__custom_nested_error_return_error_twin_normal
 
 #[wasm_bindgen]
 pub fn wire__crate__api__exception__custom_struct_error_return_error_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__exception__custom_struct_error_return_error_twin_normal_impl(port_, arg)
@@ -14807,7 +15068,7 @@ pub fn wire__crate__api__exception__custom_struct_error_return_error_twin_normal
 
 #[wasm_bindgen]
 pub fn wire__crate__api__exception__custom_struct_twin_normal_new_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     message: String,
 ) {
     wire__crate__api__exception__custom_struct_twin_normal_new_twin_normal_impl(port_, message)
@@ -14815,7 +15076,7 @@ pub fn wire__crate__api__exception__custom_struct_twin_normal_new_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__exception__custom_struct_twin_normal_nonstatic_return_custom_struct_error_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__exception__custom_struct_twin_normal_nonstatic_return_custom_struct_error_twin_normal_impl(port_, that)
@@ -14823,7 +15084,7 @@ pub fn wire__crate__api__exception__custom_struct_twin_normal_nonstatic_return_c
 
 #[wasm_bindgen]
 pub fn wire__crate__api__exception__custom_struct_twin_normal_nonstatic_return_custom_struct_ok_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__exception__custom_struct_twin_normal_nonstatic_return_custom_struct_ok_twin_normal_impl(port_, that)
@@ -14831,91 +15092,91 @@ pub fn wire__crate__api__exception__custom_struct_twin_normal_nonstatic_return_c
 
 #[wasm_bindgen]
 pub fn wire__crate__api__exception__custom_struct_twin_normal_static_return_custom_struct_error_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__exception__custom_struct_twin_normal_static_return_custom_struct_error_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__exception__custom_struct_twin_normal_static_return_custom_struct_ok_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__exception__custom_struct_twin_normal_static_return_custom_struct_ok_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__exception__func_return_error_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__exception__func_return_error_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__exception__func_type_fallible_panic_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__exception__func_type_fallible_panic_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__exception__func_type_infallible_panic_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__exception__func_type_infallible_panic_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__exception__panic_with_custom_result_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__exception__panic_with_custom_result_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__exception__return_custom_nested_error_1_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__exception__return_custom_nested_error_1_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__exception__return_custom_nested_error_1_variant1_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__exception__return_custom_nested_error_1_variant1_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__exception__return_custom_nested_error_2_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__exception__return_custom_nested_error_2_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__exception__return_custom_struct_error_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__exception__return_custom_struct_error_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__exception__return_custom_struct_ok_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__exception__return_custom_struct_ok_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__exception__return_err_custom_error_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__exception__return_err_custom_error_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__exception__return_error_variant_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     variant: u32,
 ) {
     wire__crate__api__exception__return_error_variant_twin_normal_impl(port_, variant)
@@ -14923,14 +15184,14 @@ pub fn wire__crate__api__exception__return_error_variant_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__exception__return_ok_custom_error_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__exception__return_ok_custom_error_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__exception__some_struct_twin_normal_new_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     value: u32,
 ) {
     wire__crate__api__exception__some_struct_twin_normal_new_twin_normal_impl(port_, value)
@@ -14938,7 +15199,7 @@ pub fn wire__crate__api__exception__some_struct_twin_normal_new_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__exception__some_struct_twin_normal_non_static_return_err_custom_error_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__exception__some_struct_twin_normal_non_static_return_err_custom_error_twin_normal_impl(port_, that)
@@ -14946,7 +15207,7 @@ pub fn wire__crate__api__exception__some_struct_twin_normal_non_static_return_er
 
 #[wasm_bindgen]
 pub fn wire__crate__api__exception__some_struct_twin_normal_non_static_return_ok_custom_error_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__exception__some_struct_twin_normal_non_static_return_ok_custom_error_twin_normal_impl(port_, that)
@@ -14954,21 +15215,21 @@ pub fn wire__crate__api__exception__some_struct_twin_normal_non_static_return_ok
 
 #[wasm_bindgen]
 pub fn wire__crate__api__exception__some_struct_twin_normal_static_return_err_custom_error_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__exception__some_struct_twin_normal_static_return_err_custom_error_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__exception__some_struct_twin_normal_static_return_ok_custom_error_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__exception__some_struct_twin_normal_static_return_ok_custom_error_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__exception__stream_sink_throw_anyhow_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     _sink: String,
 ) {
     wire__crate__api__exception__stream_sink_throw_anyhow_twin_normal_impl(port_, _sink)
@@ -14976,14 +15237,29 @@ pub fn wire__crate__api__exception__stream_sink_throw_anyhow_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__exception__throw_anyhow_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__exception__throw_anyhow_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
+pub fn wire__crate__api__external_impl__SimpleOpaqueExternalStructWithMethod_new(
+    a: String,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__external_impl__SimpleOpaqueExternalStructWithMethod_new_impl(a)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__external_impl__SimpleOpaqueExternalStructWithMethod_simple_external_method(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire__crate__api__external_impl__SimpleOpaqueExternalStructWithMethod_simple_external_method_impl(port_, that)
+}
+
+#[wasm_bindgen]
 pub fn wire__crate__api__external_impl__simple_translatable_external_struct_with_method_simple_external_method(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__external_impl__simple_translatable_external_struct_with_method_simple_external_method_impl(port_, that)
@@ -14991,21 +15267,21 @@ pub fn wire__crate__api__external_impl__simple_translatable_external_struct_with
 
 #[wasm_bindgen]
 pub fn wire__crate__api__external_type_in_crate__call_new_module_system_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__external_type_in_crate__call_new_module_system_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__external_type_in_crate__call_old_module_system_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__external_type_in_crate__call_old_module_system_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__external_type_in_crate__use_imported_enum_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     my_enum: i32,
 ) {
     wire__crate__api__external_type_in_crate__use_imported_enum_twin_normal_impl(port_, my_enum)
@@ -15013,7 +15289,7 @@ pub fn wire__crate__api__external_type_in_crate__use_imported_enum_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__external_type_in_crate__use_imported_struct_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     my_struct: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__external_type_in_crate__use_imported_struct_twin_normal_impl(port_, my_struct)
@@ -15036,7 +15312,7 @@ pub fn wire__crate__api__impl_trait__StructOneWithTraitTwinNormal_set_one(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__impl_trait__StructOneWithTraitTwinNormal_simple_trait_fn_receiver_borrow_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__impl_trait__StructOneWithTraitTwinNormal_simple_trait_fn_receiver_borrow_twin_normal_impl(port_, that)
@@ -15044,7 +15320,7 @@ pub fn wire__crate__api__impl_trait__StructOneWithTraitTwinNormal_simple_trait_f
 
 #[wasm_bindgen]
 pub fn wire__crate__api__impl_trait__StructOneWithTraitTwinNormal_simple_trait_fn_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     value: i32,
 ) {
     wire__crate__api__impl_trait__StructOneWithTraitTwinNormal_simple_trait_fn_twin_normal_impl(
@@ -15054,7 +15330,7 @@ pub fn wire__crate__api__impl_trait__StructOneWithTraitTwinNormal_simple_trait_f
 
 #[wasm_bindgen]
 pub fn wire__crate__api__impl_trait__StructOneWithTraitTwinNormal_simple_trait_fn_with_default_impl_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__impl_trait__StructOneWithTraitTwinNormal_simple_trait_fn_with_default_impl_twin_normal_impl(port_)
 }
@@ -15076,7 +15352,7 @@ pub fn wire__crate__api__impl_trait__StructTwoWithTraitTwinNormal_set_two(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__impl_trait__StructTwoWithTraitTwinNormal_simple_trait_fn_receiver_borrow_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__impl_trait__StructTwoWithTraitTwinNormal_simple_trait_fn_receiver_borrow_twin_normal_impl(port_, that)
@@ -15084,7 +15360,7 @@ pub fn wire__crate__api__impl_trait__StructTwoWithTraitTwinNormal_simple_trait_f
 
 #[wasm_bindgen]
 pub fn wire__crate__api__impl_trait__StructTwoWithTraitTwinNormal_simple_trait_fn_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     value: i32,
 ) {
     wire__crate__api__impl_trait__StructTwoWithTraitTwinNormal_simple_trait_fn_twin_normal_impl(
@@ -15094,21 +15370,21 @@ pub fn wire__crate__api__impl_trait__StructTwoWithTraitTwinNormal_simple_trait_f
 
 #[wasm_bindgen]
 pub fn wire__crate__api__impl_trait__StructTwoWithTraitTwinNormal_simple_trait_fn_with_default_impl_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__impl_trait__StructTwoWithTraitTwinNormal_simple_trait_fn_with_default_impl_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__inside_macro__another_macro_struct_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__inside_macro__another_macro_struct_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__inside_macro__func_macro_struct_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__inside_macro__func_macro_struct_twin_normal_impl(port_, arg)
@@ -15116,7 +15392,7 @@ pub fn wire__crate__api__inside_macro__func_macro_struct_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__map_and_set__func_hash_map_i32_i32_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__map_and_set__func_hash_map_i32_i32_twin_normal_impl(port_, arg)
@@ -15124,7 +15400,7 @@ pub fn wire__crate__api__map_and_set__func_hash_map_i32_i32_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__map_and_set__func_hash_map_string_bytes_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__map_and_set__func_hash_map_string_bytes_twin_normal_impl(port_, arg)
@@ -15132,7 +15408,7 @@ pub fn wire__crate__api__map_and_set__func_hash_map_string_bytes_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__map_and_set__func_hash_map_string_complex_enum_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__map_and_set__func_hash_map_string_complex_enum_twin_normal_impl(port_, arg)
@@ -15140,7 +15416,7 @@ pub fn wire__crate__api__map_and_set__func_hash_map_string_complex_enum_twin_nor
 
 #[wasm_bindgen]
 pub fn wire__crate__api__map_and_set__func_hash_map_string_simple_enum_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__map_and_set__func_hash_map_string_simple_enum_twin_normal_impl(port_, arg)
@@ -15148,7 +15424,7 @@ pub fn wire__crate__api__map_and_set__func_hash_map_string_simple_enum_twin_norm
 
 #[wasm_bindgen]
 pub fn wire__crate__api__map_and_set__func_hash_map_string_string_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__map_and_set__func_hash_map_string_string_twin_normal_impl(port_, arg)
@@ -15156,7 +15432,7 @@ pub fn wire__crate__api__map_and_set__func_hash_map_string_string_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__map_and_set__func_hash_map_string_struct_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__map_and_set__func_hash_map_string_struct_twin_normal_impl(port_, arg)
@@ -15164,7 +15440,7 @@ pub fn wire__crate__api__map_and_set__func_hash_map_string_struct_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__map_and_set__func_hash_set_i32_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: Box<[i32]>,
 ) {
     wire__crate__api__map_and_set__func_hash_set_i32_twin_normal_impl(port_, arg)
@@ -15172,7 +15448,7 @@ pub fn wire__crate__api__map_and_set__func_hash_set_i32_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__map_and_set__func_hash_set_string_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__map_and_set__func_hash_set_string_twin_normal_impl(port_, arg)
@@ -15180,14 +15456,14 @@ pub fn wire__crate__api__map_and_set__func_hash_set_string_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__method__StaticGetterOnlyTwinNormal_static_getter_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__method__StaticGetterOnlyTwinNormal_static_getter_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__method__concatenate_with_twin_normal_concatenate_static_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     a: String,
     b: String,
 ) {
@@ -15198,7 +15474,7 @@ pub fn wire__crate__api__method__concatenate_with_twin_normal_concatenate_static
 
 #[wasm_bindgen]
 pub fn wire__crate__api__method__concatenate_with_twin_normal_concatenate_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     b: String,
 ) {
@@ -15209,7 +15485,7 @@ pub fn wire__crate__api__method__concatenate_with_twin_normal_concatenate_twin_n
 
 #[wasm_bindgen]
 pub fn wire__crate__api__method__concatenate_with_twin_normal_handle_some_static_stream_sink_single_arg_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     sink: String,
 ) {
     wire__crate__api__method__concatenate_with_twin_normal_handle_some_static_stream_sink_single_arg_twin_normal_impl(port_, sink)
@@ -15217,7 +15493,7 @@ pub fn wire__crate__api__method__concatenate_with_twin_normal_handle_some_static
 
 #[wasm_bindgen]
 pub fn wire__crate__api__method__concatenate_with_twin_normal_handle_some_static_stream_sink_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     key: u32,
     max: u32,
     sink: String,
@@ -15227,7 +15503,7 @@ pub fn wire__crate__api__method__concatenate_with_twin_normal_handle_some_static
 
 #[wasm_bindgen]
 pub fn wire__crate__api__method__concatenate_with_twin_normal_handle_some_stream_sink_at_1_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     sink: String,
 ) {
@@ -15236,7 +15512,7 @@ pub fn wire__crate__api__method__concatenate_with_twin_normal_handle_some_stream
 
 #[wasm_bindgen]
 pub fn wire__crate__api__method__concatenate_with_twin_normal_handle_some_stream_sink_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     key: u32,
     max: u32,
@@ -15249,7 +15525,7 @@ pub fn wire__crate__api__method__concatenate_with_twin_normal_handle_some_stream
 
 #[wasm_bindgen]
 pub fn wire__crate__api__method__concatenate_with_twin_normal_new_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     a: String,
 ) {
     wire__crate__api__method__concatenate_with_twin_normal_new_twin_normal_impl(port_, a)
@@ -15257,7 +15533,7 @@ pub fn wire__crate__api__method__concatenate_with_twin_normal_new_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__method__concatenate_with_twin_normal_simple_getter_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__method__concatenate_with_twin_normal_simple_getter_twin_normal_impl(
@@ -15267,7 +15543,7 @@ pub fn wire__crate__api__method__concatenate_with_twin_normal_simple_getter_twin
 
 #[wasm_bindgen]
 pub fn wire__crate__api__method__get_sum_array_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     a: u32,
     b: u32,
     c: u32,
@@ -15277,14 +15553,14 @@ pub fn wire__crate__api__method__get_sum_array_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__method__get_sum_struct_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__method__get_sum_struct_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__method__my_callable_twin_normal_call(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     two: String,
 ) {
@@ -15293,7 +15569,7 @@ pub fn wire__crate__api__method__my_callable_twin_normal_call(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__method__simple_enum_twin_normal_return_self_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     one: String,
 ) {
     wire__crate__api__method__simple_enum_twin_normal_return_self_twin_normal_impl(port_, one)
@@ -15301,7 +15577,7 @@ pub fn wire__crate__api__method__simple_enum_twin_normal_return_self_twin_normal
 
 #[wasm_bindgen]
 pub fn wire__crate__api__method__simple_enum_twin_normal_simple_method_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__method__simple_enum_twin_normal_simple_method_twin_normal_impl(port_, that)
@@ -15309,7 +15585,7 @@ pub fn wire__crate__api__method__simple_enum_twin_normal_simple_method_twin_norm
 
 #[wasm_bindgen]
 pub fn wire__crate__api__method__simple_primitive_enum_twin_normal_simple_method_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: i32,
 ) {
     wire__crate__api__method__simple_primitive_enum_twin_normal_simple_method_twin_normal_impl(
@@ -15319,7 +15595,7 @@ pub fn wire__crate__api__method__simple_primitive_enum_twin_normal_simple_method
 
 #[wasm_bindgen]
 pub fn wire__crate__api__method__simple_struct_twin_normal_arg_self_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     a: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     b: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
@@ -15328,7 +15604,7 @@ pub fn wire__crate__api__method__simple_struct_twin_normal_arg_self_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__method__simple_struct_twin_normal_receiver_borrow_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__method__simple_struct_twin_normal_receiver_borrow_twin_normal_impl(
@@ -15338,7 +15614,7 @@ pub fn wire__crate__api__method__simple_struct_twin_normal_receiver_borrow_twin_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__method__simple_struct_twin_normal_receiver_own_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__method__simple_struct_twin_normal_receiver_own_twin_normal_impl(port_, that)
@@ -15346,7 +15622,7 @@ pub fn wire__crate__api__method__simple_struct_twin_normal_receiver_own_twin_nor
 
 #[wasm_bindgen]
 pub fn wire__crate__api__method__simple_struct_twin_normal_return_self_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     one: String,
 ) {
     wire__crate__api__method__simple_struct_twin_normal_return_self_twin_normal_impl(port_, one)
@@ -15354,7 +15630,7 @@ pub fn wire__crate__api__method__simple_struct_twin_normal_return_self_twin_norm
 
 #[wasm_bindgen]
 pub fn wire__crate__api__method__simple_struct_twin_normal_vec_self_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__method__simple_struct_twin_normal_vec_self_twin_normal_impl(port_, arg)
@@ -15362,7 +15638,7 @@ pub fn wire__crate__api__method__simple_struct_twin_normal_vec_self_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__method__static_only_twin_normal_static_method_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     a: i32,
 ) {
     wire__crate__api__method__static_only_twin_normal_static_method_twin_normal_impl(port_, a)
@@ -15370,7 +15646,7 @@ pub fn wire__crate__api__method__static_only_twin_normal_static_method_twin_norm
 
 #[wasm_bindgen]
 pub fn wire__crate__api__method__sum_with_twin_normal_sum_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     y: u32,
     z: u32,
@@ -15380,7 +15656,7 @@ pub fn wire__crate__api__method__sum_with_twin_normal_sum_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__mirror__app_settings_stream_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     sink: String,
 ) {
     wire__crate__api__mirror__app_settings_stream_twin_normal_impl(port_, sink)
@@ -15388,7 +15664,7 @@ pub fn wire__crate__api__mirror__app_settings_stream_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__mirror__app_settings_vec_stream_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     sink: String,
 ) {
     wire__crate__api__mirror__app_settings_vec_stream_twin_normal_impl(port_, sink)
@@ -15396,7 +15672,7 @@ pub fn wire__crate__api__mirror__app_settings_vec_stream_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__mirror__first_number_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     nums: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__mirror__first_number_twin_normal_impl(port_, nums)
@@ -15404,7 +15680,7 @@ pub fn wire__crate__api__mirror__first_number_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__mirror__first_sequence_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     seqs: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__mirror__first_sequence_twin_normal_impl(port_, seqs)
@@ -15412,28 +15688,28 @@ pub fn wire__crate__api__mirror__first_sequence_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__mirror__get_app_settings_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__mirror__get_app_settings_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__mirror__get_fallible_app_settings_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__mirror__get_fallible_app_settings_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__mirror__get_message_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__mirror__get_message_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__mirror__is_app_embedded_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     app_settings: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__mirror__is_app_embedded_twin_normal_impl(port_, app_settings)
@@ -15441,7 +15717,7 @@ pub fn wire__crate__api__mirror__is_app_embedded_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__mirror__mirror_array_enum_stream_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     sink: String,
 ) {
     wire__crate__api__mirror__mirror_array_enum_stream_twin_normal_impl(port_, sink)
@@ -15449,7 +15725,7 @@ pub fn wire__crate__api__mirror__mirror_array_enum_stream_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__mirror__mirror_enum_stream_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     sink: String,
 ) {
     wire__crate__api__mirror__mirror_enum_stream_twin_normal_impl(port_, sink)
@@ -15457,7 +15733,7 @@ pub fn wire__crate__api__mirror__mirror_enum_stream_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__mirror__mirror_map_enum_stream_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     sink: String,
 ) {
     wire__crate__api__mirror__mirror_map_enum_stream_twin_normal_impl(port_, sink)
@@ -15465,7 +15741,7 @@ pub fn wire__crate__api__mirror__mirror_map_enum_stream_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__mirror__mirror_option_enum_stream_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     sink: String,
 ) {
     wire__crate__api__mirror__mirror_option_enum_stream_twin_normal_impl(port_, sink)
@@ -15473,7 +15749,7 @@ pub fn wire__crate__api__mirror__mirror_option_enum_stream_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__mirror__mirror_set_enum_stream_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     sink: String,
 ) {
     wire__crate__api__mirror__mirror_set_enum_stream_twin_normal_impl(port_, sink)
@@ -15481,7 +15757,7 @@ pub fn wire__crate__api__mirror__mirror_set_enum_stream_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__mirror__mirror_struct_stream_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     sink: String,
 ) {
     wire__crate__api__mirror__mirror_struct_stream_twin_normal_impl(port_, sink)
@@ -15489,7 +15765,7 @@ pub fn wire__crate__api__mirror__mirror_struct_stream_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__mirror__mirror_tuple_stream_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     sink: String,
 ) {
     wire__crate__api__mirror__mirror_tuple_stream_twin_normal_impl(port_, sink)
@@ -15497,7 +15773,7 @@ pub fn wire__crate__api__mirror__mirror_tuple_stream_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__mirror__mirror_vec_enum_stream_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     sink: String,
 ) {
     wire__crate__api__mirror__mirror_vec_enum_stream_twin_normal_impl(port_, sink)
@@ -15505,7 +15781,7 @@ pub fn wire__crate__api__mirror__mirror_vec_enum_stream_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__mirror__repeat_number_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     num: i32,
     times: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
@@ -15514,7 +15790,7 @@ pub fn wire__crate__api__mirror__repeat_number_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__mirror__repeat_sequence_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     seq: i32,
     times: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
@@ -15523,49 +15799,49 @@ pub fn wire__crate__api__mirror__repeat_sequence_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__mirror__test_contains_mirrored_sub_struct_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__mirror__test_contains_mirrored_sub_struct_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__mirror__test_fallible_of_raw_string_mirrored_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__mirror__test_fallible_of_raw_string_mirrored_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__mirror__test_hashmap_with_mirrored_value_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__mirror__test_hashmap_with_mirrored_value_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__mirror__test_list_of_nested_enums_mirrored_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__mirror__test_list_of_nested_enums_mirrored_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__mirror__test_list_of_raw_nested_string_mirrored_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__mirror__test_list_of_raw_nested_string_mirrored_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__mirror__test_nested_raw_string_mirrored_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__mirror__test_nested_raw_string_mirrored_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__mirror__test_raw_string_enum_mirrored_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     nested: bool,
 ) {
     wire__crate__api__mirror__test_raw_string_enum_mirrored_twin_normal_impl(port_, nested)
@@ -15573,21 +15849,21 @@ pub fn wire__crate__api__mirror__test_raw_string_enum_mirrored_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__mirror__test_raw_string_mirrored_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__mirror__test_raw_string_mirrored_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__misc_example__handle_big_buffers_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__misc_example__handle_big_buffers_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__misc_example__handle_char_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: String,
 ) {
     wire__crate__api__misc_example__handle_char_twin_normal_impl(port_, arg)
@@ -15595,7 +15871,7 @@ pub fn wire__crate__api__misc_example__handle_char_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__misc_example__handle_complex_struct_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     s: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__misc_example__handle_complex_struct_twin_normal_impl(port_, s)
@@ -15603,7 +15879,7 @@ pub fn wire__crate__api__misc_example__handle_complex_struct_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__misc_example__handle_nested_struct_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     s: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__misc_example__handle_nested_struct_twin_normal_impl(port_, s)
@@ -15611,7 +15887,7 @@ pub fn wire__crate__api__misc_example__handle_nested_struct_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__misc_example__handle_string_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     s: String,
 ) {
     wire__crate__api__misc_example__handle_string_twin_normal_impl(port_, s)
@@ -15619,7 +15895,7 @@ pub fn wire__crate__api__misc_example__handle_string_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__misc_example__handle_struct_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     boxed: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
@@ -15628,7 +15904,7 @@ pub fn wire__crate__api__misc_example__handle_struct_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__misc_example__handle_vec_u8_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     v: Box<[u8]>,
 ) {
     wire__crate__api__misc_example__handle_vec_u8_twin_normal_impl(port_, v)
@@ -15636,7 +15912,7 @@ pub fn wire__crate__api__misc_example__handle_vec_u8_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__misc_example__list_of_primitive_enums_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     weekdays: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__misc_example__list_of_primitive_enums_twin_normal_impl(port_, weekdays)
@@ -15644,7 +15920,7 @@ pub fn wire__crate__api__misc_example__list_of_primitive_enums_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__misc_example__positional_arguments_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     a: i32,
     b: i32,
 ) {
@@ -15653,7 +15929,7 @@ pub fn wire__crate__api__misc_example__positional_arguments_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__misc_example__test_abc_enum_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     abc: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__misc_example__test_abc_enum_twin_normal_impl(port_, abc)
@@ -15661,7 +15937,7 @@ pub fn wire__crate__api__misc_example__test_abc_enum_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__misc_example__test_struct_with_enum_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     se: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__misc_example__test_struct_with_enum_twin_normal_impl(port_, se)
@@ -15669,7 +15945,7 @@ pub fn wire__crate__api__misc_example__test_struct_with_enum_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_dummy_function_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_dummy_function_twin_normal_impl(port_)
 }
@@ -15766,14 +16042,14 @@ pub fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNo
 
 #[wasm_bindgen]
 pub fn wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_create_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_create_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_get_item_contents_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_get_item_contents_twin_normal_impl(port_, that)
@@ -15798,7 +16074,7 @@ pub fn wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNor
 
 #[wasm_bindgen]
 pub fn wire__crate__api__misc_no_twin_example_a__StructInMiscNoTwinExampleA_sample_function_a(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__misc_no_twin_example_a__StructInMiscNoTwinExampleA_sample_function_a_impl(
@@ -15808,7 +16084,7 @@ pub fn wire__crate__api__misc_no_twin_example_a__StructInMiscNoTwinExampleA_samp
 
 #[wasm_bindgen]
 pub fn wire__crate__api__misc_no_twin_example_a__StructWithImplBlockInMultiFile_method_in_a(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__misc_no_twin_example_a__StructWithImplBlockInMultiFile_method_in_a_impl(
@@ -15818,7 +16094,7 @@ pub fn wire__crate__api__misc_no_twin_example_a__StructWithImplBlockInMultiFile_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__misc_no_twin_example_a__StructWithImplBlockInMultiFile_method_in_b(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__misc_no_twin_example_a__StructWithImplBlockInMultiFile_method_in_b_impl(
@@ -15872,7 +16148,7 @@ pub fn wire__crate__api__misc_no_twin_example_a__StructWithSimpleSetterTwinNorma
 
 #[wasm_bindgen]
 pub fn wire__crate__api__misc_no_twin_example_a__function_with_arg_type_name_override(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     a: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__misc_no_twin_example_a__function_with_arg_type_name_override_impl(port_, a)
@@ -15880,21 +16156,21 @@ pub fn wire__crate__api__misc_no_twin_example_a__function_with_arg_type_name_ove
 
 #[wasm_bindgen]
 pub fn wire__crate__api__misc_no_twin_example_a__function_with_custom_name_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__misc_no_twin_example_a__function_with_custom_name_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__misc_no_twin_example_a__item_container_solution_two_twin_normal_create_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__misc_no_twin_example_a__item_container_solution_two_twin_normal_create_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__misc_no_twin_example_a__item_container_solution_two_twin_normal_get_item_contents_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__misc_no_twin_example_a__item_container_solution_two_twin_normal_get_item_contents_twin_normal_impl(port_, that)
@@ -15902,7 +16178,7 @@ pub fn wire__crate__api__misc_no_twin_example_a__item_container_solution_two_twi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__misc_no_twin_example_a__same_function_name_in_different_files(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__misc_no_twin_example_a__same_function_name_in_different_files_impl(port_)
 }
@@ -15916,7 +16192,7 @@ pub fn wire__crate__api__misc_no_twin_example_a__struct_with_custom_name_method_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__misc_no_twin_example_a__struct_with_impl_block_in_another_file_f(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__misc_no_twin_example_a__struct_with_impl_block_in_another_file_f_impl(
@@ -15926,7 +16202,7 @@ pub fn wire__crate__api__misc_no_twin_example_a__struct_with_impl_block_in_anoth
 
 #[wasm_bindgen]
 pub fn wire__crate__api__misc_no_twin_example_b__StructInMiscNoTwinExampleB_get_struct_in_misc_no_twin_example_a(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__misc_no_twin_example_b__StructInMiscNoTwinExampleB_get_struct_in_misc_no_twin_example_a_impl(port_, that)
@@ -15934,7 +16210,7 @@ pub fn wire__crate__api__misc_no_twin_example_b__StructInMiscNoTwinExampleB_get_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__misc_no_twin_example_b__StructInMiscNoTwinExampleB_sample_function_b(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__misc_no_twin_example_b__StructInMiscNoTwinExampleB_sample_function_b_impl(
@@ -15944,14 +16220,14 @@ pub fn wire__crate__api__misc_no_twin_example_b__StructInMiscNoTwinExampleB_samp
 
 #[wasm_bindgen]
 pub fn wire__crate__api__misc_no_twin_example_b__same_function_name_in_different_files(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__misc_no_twin_example_b__same_function_name_in_different_files_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__misc_type__empty_struct_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     empty: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__misc_type__empty_struct_twin_normal_impl(port_, empty)
@@ -15959,14 +16235,14 @@ pub fn wire__crate__api__misc_type__empty_struct_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__misc_type__func_return_unit_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__misc_type__func_return_unit_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__misc_type__handle_list_of_struct_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     l: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__misc_type__handle_list_of_struct_twin_normal_impl(port_, l)
@@ -15974,7 +16250,7 @@ pub fn wire__crate__api__misc_type__handle_list_of_struct_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__misc_type__handle_string_list_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     names: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__misc_type__handle_string_list_twin_normal_impl(port_, names)
@@ -15982,7 +16258,7 @@ pub fn wire__crate__api__misc_type__handle_string_list_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__newtype_pattern__handle_newtype_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__newtype_pattern__handle_newtype_twin_normal_impl(port_, arg)
@@ -15990,7 +16266,7 @@ pub fn wire__crate__api__newtype_pattern__handle_newtype_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__optional__handle_increment_boxed_optional_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     opt: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__optional__handle_increment_boxed_optional_twin_normal_impl(port_, opt)
@@ -15998,7 +16274,7 @@ pub fn wire__crate__api__optional__handle_increment_boxed_optional_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__optional__handle_option_box_arguments_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     i8box: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     u8box: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     i32box: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
@@ -16014,7 +16290,7 @@ pub fn wire__crate__api__optional__handle_option_box_arguments_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__optional__handle_optional_increment_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     opt: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__optional__handle_optional_increment_twin_normal_impl(port_, opt)
@@ -16022,7 +16298,7 @@ pub fn wire__crate__api__optional__handle_optional_increment_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__optional__handle_optional_return_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     left: f64,
     right: f64,
 ) {
@@ -16031,7 +16307,7 @@ pub fn wire__crate__api__optional__handle_optional_return_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__optional__handle_optional_struct_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     document: Option<String>,
 ) {
     wire__crate__api__optional__handle_optional_struct_twin_normal_impl(port_, document)
@@ -16039,7 +16315,7 @@ pub fn wire__crate__api__optional__handle_optional_struct_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__optional__handle_vec_of_opts_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     opt: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__optional__handle_vec_of_opts_twin_normal_impl(port_, opt)
@@ -16047,7 +16323,7 @@ pub fn wire__crate__api__optional__handle_vec_of_opts_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__optional_primitive_misc__primitive_optional_types_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     my_i32: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     my_i64: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     my_f64: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
@@ -16060,7 +16336,7 @@ pub fn wire__crate__api__optional_primitive_misc__primitive_optional_types_twin_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__ownership__borrow_i32_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: i32,
 ) {
     wire__crate__api__ownership__borrow_i32_twin_normal_impl(port_, arg)
@@ -16068,7 +16344,7 @@ pub fn wire__crate__api__ownership__borrow_i32_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__ownership__borrow_slice_string_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__ownership__borrow_slice_string_twin_normal_impl(port_, arg)
@@ -16076,7 +16352,7 @@ pub fn wire__crate__api__ownership__borrow_slice_string_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__ownership__borrow_slice_u8_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: Box<[u8]>,
 ) {
     wire__crate__api__ownership__borrow_slice_u8_twin_normal_impl(port_, arg)
@@ -16084,7 +16360,7 @@ pub fn wire__crate__api__ownership__borrow_slice_u8_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__ownership__borrow_str_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: String,
 ) {
     wire__crate__api__ownership__borrow_str_twin_normal_impl(port_, arg)
@@ -16092,7 +16368,7 @@ pub fn wire__crate__api__ownership__borrow_str_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__ownership__borrow_string_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: String,
 ) {
     wire__crate__api__ownership__borrow_string_twin_normal_impl(port_, arg)
@@ -16100,7 +16376,7 @@ pub fn wire__crate__api__ownership__borrow_string_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__ownership__borrow_struct_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__ownership__borrow_struct_twin_normal_impl(port_, arg)
@@ -16108,7 +16384,7 @@ pub fn wire__crate__api__ownership__borrow_struct_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__primitive_list_misc__handle_vec_of_primitive_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     n: i32,
 ) {
     wire__crate__api__primitive_list_misc__handle_vec_of_primitive_twin_normal_impl(port_, n)
@@ -16116,7 +16392,7 @@ pub fn wire__crate__api__primitive_list_misc__handle_vec_of_primitive_twin_norma
 
 #[wasm_bindgen]
 pub fn wire__crate__api__primitive_misc__primitive_types_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     my_i32: i32,
     my_i64: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     my_f64: f64,
@@ -16129,7 +16405,7 @@ pub fn wire__crate__api__primitive_misc__primitive_types_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__primitive_misc__primitive_u32_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     my_u32: u32,
 ) {
     wire__crate__api__primitive_misc__primitive_u32_twin_normal_impl(port_, my_u32)
@@ -16137,7 +16413,7 @@ pub fn wire__crate__api__primitive_misc__primitive_u32_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__proxy__MyAudioParamTwinNormal_create_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16152,7 +16428,7 @@ pub fn wire__crate__api__proxy__MyAudioParamTwinNormal_create_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__proxy__MyAudioParamTwinNormal_my_method_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16167,7 +16443,7 @@ pub fn wire__crate__api__proxy__MyAudioParamTwinNormal_my_method_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__proxy__MyNodeTwinNormal_create_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16182,7 +16458,7 @@ pub fn wire__crate__api__proxy__MyNodeTwinNormal_create_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__array_twin_rust_async__boxed_blob_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     blob: Box<[u8]>,
 ) {
     wire__crate__api__pseudo_manual__array_twin_rust_async__boxed_blob_twin_rust_async_impl(
@@ -16192,7 +16468,7 @@ pub fn wire__crate__api__pseudo_manual__array_twin_rust_async__boxed_blob_twin_r
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__array_twin_rust_async__func_test_id_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     id: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__array_twin_rust_async__func_test_id_twin_rust_async_impl(
@@ -16202,14 +16478,14 @@ pub fn wire__crate__api__pseudo_manual__array_twin_rust_async__func_test_id_twin
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__array_twin_rust_async__get_array_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__array_twin_rust_async__get_array_twin_rust_async_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__array_twin_rust_async__get_complex_array_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__array_twin_rust_async__get_complex_array_twin_rust_async_impl(
         port_,
@@ -16218,7 +16494,7 @@ pub fn wire__crate__api__pseudo_manual__array_twin_rust_async__get_complex_array
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__array_twin_rust_async__last_number_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     array: Box<[f64]>,
 ) {
     wire__crate__api__pseudo_manual__array_twin_rust_async__last_number_twin_rust_async_impl(
@@ -16228,7 +16504,7 @@ pub fn wire__crate__api__pseudo_manual__array_twin_rust_async__last_number_twin_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__array_twin_rust_async__nested_id_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     id: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__array_twin_rust_async__nested_id_twin_rust_async_impl(
@@ -16238,7 +16514,7 @@ pub fn wire__crate__api__pseudo_manual__array_twin_rust_async__nested_id_twin_ru
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__array_twin_rust_async__new_msgid_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     id: Box<[u8]>,
 ) {
     wire__crate__api__pseudo_manual__array_twin_rust_async__new_msgid_twin_rust_async_impl(
@@ -16248,7 +16524,7 @@ pub fn wire__crate__api__pseudo_manual__array_twin_rust_async__new_msgid_twin_ru
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__array_twin_rust_async__return_boxed_feed_id_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     id: Box<[u8]>,
 ) {
     wire__crate__api__pseudo_manual__array_twin_rust_async__return_boxed_feed_id_twin_rust_async_impl(port_, id)
@@ -16256,7 +16532,7 @@ pub fn wire__crate__api__pseudo_manual__array_twin_rust_async__return_boxed_feed
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__array_twin_rust_async__return_boxed_raw_feed_id_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     id: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__array_twin_rust_async__return_boxed_raw_feed_id_twin_rust_async_impl(port_, id)
@@ -16264,7 +16540,7 @@ pub fn wire__crate__api__pseudo_manual__array_twin_rust_async__return_boxed_raw_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__array_twin_rust_async__use_boxed_blob_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     blob: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__array_twin_rust_async__use_boxed_blob_twin_rust_async_impl(
@@ -16274,7 +16550,7 @@ pub fn wire__crate__api__pseudo_manual__array_twin_rust_async__use_boxed_blob_tw
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__array_twin_rust_async__use_msgid_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     id: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__array_twin_rust_async__use_msgid_twin_rust_async_impl(
@@ -16284,7 +16560,7 @@ pub fn wire__crate__api__pseudo_manual__array_twin_rust_async__use_msgid_twin_ru
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__array_twin_rust_async_sse__boxed_blob_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16299,7 +16575,7 @@ pub fn wire__crate__api__pseudo_manual__array_twin_rust_async_sse__boxed_blob_tw
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__array_twin_rust_async_sse__func_test_id_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16309,7 +16585,7 @@ pub fn wire__crate__api__pseudo_manual__array_twin_rust_async_sse__func_test_id_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__array_twin_rust_async_sse__get_array_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16324,7 +16600,7 @@ pub fn wire__crate__api__pseudo_manual__array_twin_rust_async_sse__get_array_twi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__array_twin_rust_async_sse__get_complex_array_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16334,7 +16610,7 @@ pub fn wire__crate__api__pseudo_manual__array_twin_rust_async_sse__get_complex_a
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__array_twin_rust_async_sse__last_number_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16349,7 +16625,7 @@ pub fn wire__crate__api__pseudo_manual__array_twin_rust_async_sse__last_number_t
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__array_twin_rust_async_sse__nested_id_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16364,7 +16640,7 @@ pub fn wire__crate__api__pseudo_manual__array_twin_rust_async_sse__nested_id_twi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__array_twin_rust_async_sse__new_msgid_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16379,7 +16655,7 @@ pub fn wire__crate__api__pseudo_manual__array_twin_rust_async_sse__new_msgid_twi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__array_twin_rust_async_sse__return_boxed_feed_id_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16389,7 +16665,7 @@ pub fn wire__crate__api__pseudo_manual__array_twin_rust_async_sse__return_boxed_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__array_twin_rust_async_sse__return_boxed_raw_feed_id_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16399,7 +16675,7 @@ pub fn wire__crate__api__pseudo_manual__array_twin_rust_async_sse__return_boxed_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__array_twin_rust_async_sse__use_boxed_blob_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16409,7 +16685,7 @@ pub fn wire__crate__api__pseudo_manual__array_twin_rust_async_sse__use_boxed_blo
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__array_twin_rust_async_sse__use_msgid_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16424,7 +16700,7 @@ pub fn wire__crate__api__pseudo_manual__array_twin_rust_async_sse__use_msgid_twi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__array_twin_sse__boxed_blob_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16439,7 +16715,7 @@ pub fn wire__crate__api__pseudo_manual__array_twin_sse__boxed_blob_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__array_twin_sse__func_test_id_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16454,7 +16730,7 @@ pub fn wire__crate__api__pseudo_manual__array_twin_sse__func_test_id_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__array_twin_sse__get_array_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16469,7 +16745,7 @@ pub fn wire__crate__api__pseudo_manual__array_twin_sse__get_array_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__array_twin_sse__get_complex_array_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16484,7 +16760,7 @@ pub fn wire__crate__api__pseudo_manual__array_twin_sse__get_complex_array_twin_s
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__array_twin_sse__last_number_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16499,7 +16775,7 @@ pub fn wire__crate__api__pseudo_manual__array_twin_sse__last_number_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__array_twin_sse__nested_id_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16514,7 +16790,7 @@ pub fn wire__crate__api__pseudo_manual__array_twin_sse__nested_id_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__array_twin_sse__new_msgid_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16529,7 +16805,7 @@ pub fn wire__crate__api__pseudo_manual__array_twin_sse__new_msgid_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__array_twin_sse__return_boxed_feed_id_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16544,7 +16820,7 @@ pub fn wire__crate__api__pseudo_manual__array_twin_sse__return_boxed_feed_id_twi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__array_twin_sse__return_boxed_raw_feed_id_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16559,7 +16835,7 @@ pub fn wire__crate__api__pseudo_manual__array_twin_sse__return_boxed_raw_feed_id
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__array_twin_sse__use_boxed_blob_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16574,7 +16850,7 @@ pub fn wire__crate__api__pseudo_manual__array_twin_sse__use_boxed_blob_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__array_twin_sse__use_msgid_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16803,7 +17079,7 @@ pub fn wire__crate__api__pseudo_manual__array_twin_sync_sse__use_msgid_twin_sync
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__async_misc_twin_sse__func_async_simple_add_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16818,7 +17094,7 @@ pub fn wire__crate__api__pseudo_manual__async_misc_twin_sse__func_async_simple_a
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__async_misc_twin_sse__func_async_void_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16833,7 +17109,7 @@ pub fn wire__crate__api__pseudo_manual__async_misc_twin_sse__func_async_void_twi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__attribute_twin_rust_async__handle_customized_struct_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     val: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__attribute_twin_rust_async__handle_customized_struct_twin_rust_async_impl(port_, val)
@@ -16841,7 +17117,7 @@ pub fn wire__crate__api__pseudo_manual__attribute_twin_rust_async__handle_custom
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__attribute_twin_rust_async__next_user_id_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     user_id: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__attribute_twin_rust_async__next_user_id_twin_rust_async_impl(
@@ -16851,7 +17127,7 @@ pub fn wire__crate__api__pseudo_manual__attribute_twin_rust_async__next_user_id_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__attribute_twin_rust_async_sse__handle_customized_struct_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16861,7 +17137,7 @@ pub fn wire__crate__api__pseudo_manual__attribute_twin_rust_async_sse__handle_cu
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__attribute_twin_rust_async_sse__next_user_id_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16871,7 +17147,7 @@ pub fn wire__crate__api__pseudo_manual__attribute_twin_rust_async_sse__next_user
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__attribute_twin_sse__handle_customized_struct_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16886,7 +17162,7 @@ pub fn wire__crate__api__pseudo_manual__attribute_twin_sse__handle_customized_st
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__attribute_twin_sse__next_user_id_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16939,7 +17215,7 @@ pub fn wire__crate__api__pseudo_manual__attribute_twin_sync_sse__next_user_id_tw
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic__example_basic_type_basic_general_enum_twin_normal_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic__example_basic_type_basic_general_enum_twin_normal_twin_normal_impl(port_, arg)
@@ -16947,7 +17223,7 @@ pub fn wire__crate__api__pseudo_manual__basic__example_basic_type_basic_general_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic__example_basic_type_basic_primitive_enum_twin_normal_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: i32,
 ) {
     wire__crate__api__pseudo_manual__basic__example_basic_type_basic_primitive_enum_twin_normal_twin_normal_impl(port_, arg)
@@ -16955,7 +17231,7 @@ pub fn wire__crate__api__pseudo_manual__basic__example_basic_type_basic_primitiv
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic__example_basic_type_basic_struct_twin_normal_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic__example_basic_type_basic_struct_twin_normal_twin_normal_impl(port_, arg)
@@ -16963,7 +17239,7 @@ pub fn wire__crate__api__pseudo_manual__basic__example_basic_type_basic_struct_t
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic__example_basic_type_bool_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: bool,
 ) {
     wire__crate__api__pseudo_manual__basic__example_basic_type_bool_twin_normal_impl(port_, arg)
@@ -16971,7 +17247,7 @@ pub fn wire__crate__api__pseudo_manual__basic__example_basic_type_bool_twin_norm
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic__example_basic_type_bytes_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: Box<[u8]>,
 ) {
     wire__crate__api__pseudo_manual__basic__example_basic_type_bytes_twin_normal_impl(port_, arg)
@@ -16979,7 +17255,7 @@ pub fn wire__crate__api__pseudo_manual__basic__example_basic_type_bytes_twin_nor
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic__example_basic_type_f32_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: f32,
 ) {
     wire__crate__api__pseudo_manual__basic__example_basic_type_f32_twin_normal_impl(port_, arg)
@@ -16987,7 +17263,7 @@ pub fn wire__crate__api__pseudo_manual__basic__example_basic_type_f32_twin_norma
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic__example_basic_type_f64_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: f64,
 ) {
     wire__crate__api__pseudo_manual__basic__example_basic_type_f64_twin_normal_impl(port_, arg)
@@ -16995,7 +17271,7 @@ pub fn wire__crate__api__pseudo_manual__basic__example_basic_type_f64_twin_norma
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic__example_basic_type_i128_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: String,
     expect: String,
 ) {
@@ -17006,7 +17282,7 @@ pub fn wire__crate__api__pseudo_manual__basic__example_basic_type_i128_twin_norm
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic__example_basic_type_i16_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: i16,
     expect: String,
 ) {
@@ -17017,7 +17293,7 @@ pub fn wire__crate__api__pseudo_manual__basic__example_basic_type_i16_twin_norma
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic__example_basic_type_i32_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: i32,
     expect: String,
 ) {
@@ -17028,7 +17304,7 @@ pub fn wire__crate__api__pseudo_manual__basic__example_basic_type_i32_twin_norma
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic__example_basic_type_i64_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     expect: String,
 ) {
@@ -17039,7 +17315,7 @@ pub fn wire__crate__api__pseudo_manual__basic__example_basic_type_i64_twin_norma
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic__example_basic_type_i8_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: i8,
     expect: String,
 ) {
@@ -17050,7 +17326,7 @@ pub fn wire__crate__api__pseudo_manual__basic__example_basic_type_i8_twin_normal
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic__example_basic_type_isize_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     expect: String,
 ) {
@@ -17061,7 +17337,7 @@ pub fn wire__crate__api__pseudo_manual__basic__example_basic_type_isize_twin_nor
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic__example_basic_type_string_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: String,
 ) {
     wire__crate__api__pseudo_manual__basic__example_basic_type_string_twin_normal_impl(port_, arg)
@@ -17069,7 +17345,7 @@ pub fn wire__crate__api__pseudo_manual__basic__example_basic_type_string_twin_no
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic__example_basic_type_u128_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: String,
     expect: String,
 ) {
@@ -17080,7 +17356,7 @@ pub fn wire__crate__api__pseudo_manual__basic__example_basic_type_u128_twin_norm
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic__example_basic_type_u16_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: u16,
     expect: String,
 ) {
@@ -17091,7 +17367,7 @@ pub fn wire__crate__api__pseudo_manual__basic__example_basic_type_u16_twin_norma
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic__example_basic_type_u32_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: u32,
     expect: String,
 ) {
@@ -17102,7 +17378,7 @@ pub fn wire__crate__api__pseudo_manual__basic__example_basic_type_u32_twin_norma
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic__example_basic_type_u64_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     expect: String,
 ) {
@@ -17113,7 +17389,7 @@ pub fn wire__crate__api__pseudo_manual__basic__example_basic_type_u64_twin_norma
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic__example_basic_type_u8_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: u8,
     expect: String,
 ) {
@@ -17124,7 +17400,7 @@ pub fn wire__crate__api__pseudo_manual__basic__example_basic_type_u8_twin_normal
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic__example_basic_type_usize_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     expect: String,
 ) {
@@ -17135,7 +17411,7 @@ pub fn wire__crate__api__pseudo_manual__basic__example_basic_type_usize_twin_nor
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_basic_general_enum_twin_normal_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_basic_general_enum_twin_normal_twin_normal_impl(port_, arg)
@@ -17143,7 +17419,7 @@ pub fn wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_basi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_basic_primitive_enum_twin_normal_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_basic_primitive_enum_twin_normal_twin_normal_impl(port_, arg)
@@ -17151,7 +17427,7 @@ pub fn wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_basi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_basic_struct_twin_normal_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_basic_struct_twin_normal_twin_normal_impl(port_, arg)
@@ -17159,7 +17435,7 @@ pub fn wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_basi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_bool_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_bool_twin_normal_impl(
@@ -17169,7 +17445,7 @@ pub fn wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_bool
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_bytes_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_bytes_twin_normal_impl(
@@ -17179,7 +17455,7 @@ pub fn wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_byte
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_f32_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: Box<[f32]>,
 ) {
     wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_f32_twin_normal_impl(
@@ -17189,7 +17465,7 @@ pub fn wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_f32_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_f64_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: Box<[f64]>,
 ) {
     wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_f64_twin_normal_impl(
@@ -17199,7 +17475,7 @@ pub fn wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_f64_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_i16_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: Box<[i16]>,
 ) {
     wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_i16_twin_normal_impl(
@@ -17209,7 +17485,7 @@ pub fn wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_i16_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_i32_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: Box<[i32]>,
 ) {
     wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_i32_twin_normal_impl(
@@ -17219,7 +17495,7 @@ pub fn wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_i32_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_i64_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: Box<[i64]>,
 ) {
     wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_i64_twin_normal_impl(
@@ -17229,7 +17505,7 @@ pub fn wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_i64_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_i8_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: Box<[i8]>,
 ) {
     wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_i8_twin_normal_impl(
@@ -17239,7 +17515,7 @@ pub fn wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_i8_t
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_string_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_string_twin_normal_impl(
@@ -17249,7 +17525,7 @@ pub fn wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_stri
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_u16_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: Box<[u16]>,
 ) {
     wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_u16_twin_normal_impl(
@@ -17259,7 +17535,7 @@ pub fn wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_u16_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_u32_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: Box<[u32]>,
 ) {
     wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_u32_twin_normal_impl(
@@ -17269,7 +17545,7 @@ pub fn wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_u32_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_u64_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: Box<[u64]>,
 ) {
     wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_u64_twin_normal_impl(
@@ -17279,7 +17555,7 @@ pub fn wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_u64_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_u8_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: Box<[u8]>,
 ) {
     wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_u8_twin_normal_impl(
@@ -17289,7 +17565,7 @@ pub fn wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_u8_t
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_basic_general_enum_twin_rust_async_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_basic_general_enum_twin_rust_async_twin_rust_async_impl(port_, arg)
@@ -17297,7 +17573,7 @@ pub fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_basic_primitive_enum_twin_rust_async_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_basic_primitive_enum_twin_rust_async_twin_rust_async_impl(port_, arg)
@@ -17305,7 +17581,7 @@ pub fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_basic_struct_twin_rust_async_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_basic_struct_twin_rust_async_twin_rust_async_impl(port_, arg)
@@ -17313,7 +17589,7 @@ pub fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_bool_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_bool_twin_rust_async_impl(port_, arg)
@@ -17321,7 +17597,7 @@ pub fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_bytes_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_bytes_twin_rust_async_impl(port_, arg)
@@ -17329,7 +17605,7 @@ pub fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_f32_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: Box<[f32]>,
 ) {
     wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_f32_twin_rust_async_impl(port_, arg)
@@ -17337,7 +17613,7 @@ pub fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_f64_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: Box<[f64]>,
 ) {
     wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_f64_twin_rust_async_impl(port_, arg)
@@ -17345,7 +17621,7 @@ pub fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_i16_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: Box<[i16]>,
 ) {
     wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_i16_twin_rust_async_impl(port_, arg)
@@ -17353,7 +17629,7 @@ pub fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_i32_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: Box<[i32]>,
 ) {
     wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_i32_twin_rust_async_impl(port_, arg)
@@ -17361,7 +17637,7 @@ pub fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_i64_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: Box<[i64]>,
 ) {
     wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_i64_twin_rust_async_impl(port_, arg)
@@ -17369,7 +17645,7 @@ pub fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_i8_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: Box<[i8]>,
 ) {
     wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_i8_twin_rust_async_impl(port_, arg)
@@ -17377,7 +17653,7 @@ pub fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_string_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_string_twin_rust_async_impl(port_, arg)
@@ -17385,7 +17661,7 @@ pub fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_u16_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: Box<[u16]>,
 ) {
     wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_u16_twin_rust_async_impl(port_, arg)
@@ -17393,7 +17669,7 @@ pub fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_u32_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: Box<[u32]>,
 ) {
     wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_u32_twin_rust_async_impl(port_, arg)
@@ -17401,7 +17677,7 @@ pub fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_u64_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: Box<[u64]>,
 ) {
     wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_u64_twin_rust_async_impl(port_, arg)
@@ -17409,7 +17685,7 @@ pub fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_u8_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: Box<[u8]>,
 ) {
     wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_u8_twin_rust_async_impl(port_, arg)
@@ -17417,7 +17693,7 @@ pub fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async_sse__example_basic_list_type_basic_general_enum_twin_rust_async_sse_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17427,7 +17703,7 @@ pub fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async_sse__example_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async_sse__example_basic_list_type_basic_primitive_enum_twin_rust_async_sse_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17437,7 +17713,7 @@ pub fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async_sse__example_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async_sse__example_basic_list_type_basic_struct_twin_rust_async_sse_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17447,7 +17723,7 @@ pub fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async_sse__example_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async_sse__example_basic_list_type_bool_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17457,7 +17733,7 @@ pub fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async_sse__example_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async_sse__example_basic_list_type_bytes_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17467,7 +17743,7 @@ pub fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async_sse__example_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async_sse__example_basic_list_type_f32_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17477,7 +17753,7 @@ pub fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async_sse__example_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async_sse__example_basic_list_type_f64_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17487,7 +17763,7 @@ pub fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async_sse__example_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async_sse__example_basic_list_type_i16_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17497,7 +17773,7 @@ pub fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async_sse__example_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async_sse__example_basic_list_type_i32_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17507,7 +17783,7 @@ pub fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async_sse__example_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async_sse__example_basic_list_type_i64_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17517,7 +17793,7 @@ pub fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async_sse__example_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async_sse__example_basic_list_type_i8_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17527,7 +17803,7 @@ pub fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async_sse__example_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async_sse__example_basic_list_type_string_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17537,7 +17813,7 @@ pub fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async_sse__example_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async_sse__example_basic_list_type_u16_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17547,7 +17823,7 @@ pub fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async_sse__example_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async_sse__example_basic_list_type_u32_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17557,7 +17833,7 @@ pub fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async_sse__example_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async_sse__example_basic_list_type_u64_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17567,7 +17843,7 @@ pub fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async_sse__example_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async_sse__example_basic_list_type_u8_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17577,7 +17853,7 @@ pub fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async_sse__example_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_list_twin_sse__example_basic_list_type_basic_general_enum_twin_sse_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17587,7 +17863,7 @@ pub fn wire__crate__api__pseudo_manual__basic_list_twin_sse__example_basic_list_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_list_twin_sse__example_basic_list_type_basic_primitive_enum_twin_sse_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17597,7 +17873,7 @@ pub fn wire__crate__api__pseudo_manual__basic_list_twin_sse__example_basic_list_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_list_twin_sse__example_basic_list_type_basic_struct_twin_sse_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17607,7 +17883,7 @@ pub fn wire__crate__api__pseudo_manual__basic_list_twin_sse__example_basic_list_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_list_twin_sse__example_basic_list_type_bool_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17622,7 +17898,7 @@ pub fn wire__crate__api__pseudo_manual__basic_list_twin_sse__example_basic_list_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_list_twin_sse__example_basic_list_type_bytes_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17632,7 +17908,7 @@ pub fn wire__crate__api__pseudo_manual__basic_list_twin_sse__example_basic_list_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_list_twin_sse__example_basic_list_type_f32_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17647,7 +17923,7 @@ pub fn wire__crate__api__pseudo_manual__basic_list_twin_sse__example_basic_list_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_list_twin_sse__example_basic_list_type_f64_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17662,7 +17938,7 @@ pub fn wire__crate__api__pseudo_manual__basic_list_twin_sse__example_basic_list_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_list_twin_sse__example_basic_list_type_i16_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17677,7 +17953,7 @@ pub fn wire__crate__api__pseudo_manual__basic_list_twin_sse__example_basic_list_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_list_twin_sse__example_basic_list_type_i32_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17692,7 +17968,7 @@ pub fn wire__crate__api__pseudo_manual__basic_list_twin_sse__example_basic_list_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_list_twin_sse__example_basic_list_type_i64_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17707,7 +17983,7 @@ pub fn wire__crate__api__pseudo_manual__basic_list_twin_sse__example_basic_list_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_list_twin_sse__example_basic_list_type_i8_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17722,7 +17998,7 @@ pub fn wire__crate__api__pseudo_manual__basic_list_twin_sse__example_basic_list_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_list_twin_sse__example_basic_list_type_string_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17732,7 +18008,7 @@ pub fn wire__crate__api__pseudo_manual__basic_list_twin_sse__example_basic_list_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_list_twin_sse__example_basic_list_type_u16_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17747,7 +18023,7 @@ pub fn wire__crate__api__pseudo_manual__basic_list_twin_sse__example_basic_list_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_list_twin_sse__example_basic_list_type_u32_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17762,7 +18038,7 @@ pub fn wire__crate__api__pseudo_manual__basic_list_twin_sse__example_basic_list_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_list_twin_sse__example_basic_list_type_u64_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17777,7 +18053,7 @@ pub fn wire__crate__api__pseudo_manual__basic_list_twin_sse__example_basic_list_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_list_twin_sse__example_basic_list_type_u8_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18052,7 +18328,7 @@ pub fn wire__crate__api__pseudo_manual__basic_list_twin_sync_sse__example_basic_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_basic_general_enum_twin_normal_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_basic_general_enum_twin_normal_twin_normal_impl(port_, arg)
@@ -18060,7 +18336,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_basic_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_basic_primitive_enum_twin_normal_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_basic_primitive_enum_twin_normal_twin_normal_impl(port_, arg)
@@ -18068,7 +18344,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_basic_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_basic_struct_twin_normal_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_basic_struct_twin_normal_twin_normal_impl(port_, arg)
@@ -18076,7 +18352,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_basic_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_bool_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_bool_twin_normal_impl(
@@ -18086,7 +18362,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_bool_t
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_bytes_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_bytes_twin_normal_impl(
@@ -18096,7 +18372,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_bytes_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_f32_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_f32_twin_normal_impl(
@@ -18106,7 +18382,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_f32_tw
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_f64_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_f64_twin_normal_impl(
@@ -18116,7 +18392,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_f64_tw
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_i128_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_i128_twin_normal_impl(
@@ -18126,7 +18402,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_i128_t
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_i16_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_i16_twin_normal_impl(
@@ -18136,7 +18412,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_i16_tw
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_i32_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_i32_twin_normal_impl(
@@ -18146,7 +18422,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_i32_tw
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_i64_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_i64_twin_normal_impl(
@@ -18156,7 +18432,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_i64_tw
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_i8_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_i8_twin_normal_impl(
@@ -18166,7 +18442,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_i8_twi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_isize_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_isize_twin_normal_impl(
@@ -18176,7 +18452,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_isize_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_string_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_string_twin_normal_impl(
@@ -18186,7 +18462,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_string
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_u128_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_u128_twin_normal_impl(
@@ -18196,7 +18472,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_u128_t
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_u16_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_u16_twin_normal_impl(
@@ -18206,7 +18482,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_u16_tw
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_u32_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_u32_twin_normal_impl(
@@ -18216,7 +18492,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_u32_tw
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_u64_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_u64_twin_normal_impl(
@@ -18226,7 +18502,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_u64_tw
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_u8_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_u8_twin_normal_impl(
@@ -18236,7 +18512,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_u8_twi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_usize_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_usize_twin_normal_impl(
@@ -18246,7 +18522,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_usize_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_basic_general_enum_twin_rust_async_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_basic_general_enum_twin_rust_async_twin_rust_async_impl(port_, arg)
@@ -18254,7 +18530,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_basic_primitive_enum_twin_rust_async_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_basic_primitive_enum_twin_rust_async_twin_rust_async_impl(port_, arg)
@@ -18262,7 +18538,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_basic_struct_twin_rust_async_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_basic_struct_twin_rust_async_twin_rust_async_impl(port_, arg)
@@ -18270,7 +18546,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_bool_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_bool_twin_rust_async_impl(port_, arg)
@@ -18278,7 +18554,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_bytes_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_bytes_twin_rust_async_impl(port_, arg)
@@ -18286,7 +18562,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_f32_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_f32_twin_rust_async_impl(port_, arg)
@@ -18294,7 +18570,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_f64_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_f64_twin_rust_async_impl(port_, arg)
@@ -18302,7 +18578,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_i128_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_i128_twin_rust_async_impl(port_, arg)
@@ -18310,7 +18586,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_i16_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_i16_twin_rust_async_impl(port_, arg)
@@ -18318,7 +18594,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_i32_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_i32_twin_rust_async_impl(port_, arg)
@@ -18326,7 +18602,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_i64_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_i64_twin_rust_async_impl(port_, arg)
@@ -18334,7 +18610,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_i8_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_i8_twin_rust_async_impl(port_, arg)
@@ -18342,7 +18618,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_isize_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_isize_twin_rust_async_impl(port_, arg)
@@ -18350,7 +18626,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_string_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_string_twin_rust_async_impl(port_, arg)
@@ -18358,7 +18634,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_u128_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_u128_twin_rust_async_impl(port_, arg)
@@ -18366,7 +18642,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_u16_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_u16_twin_rust_async_impl(port_, arg)
@@ -18374,7 +18650,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_u32_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_u32_twin_rust_async_impl(port_, arg)
@@ -18382,7 +18658,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_u64_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_u64_twin_rust_async_impl(port_, arg)
@@ -18390,7 +18666,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_u8_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_u8_twin_rust_async_impl(port_, arg)
@@ -18398,7 +18674,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_usize_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_usize_twin_rust_async_impl(port_, arg)
@@ -18406,7 +18682,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async_sse__example_basic_map_type_basic_general_enum_twin_rust_async_sse_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18416,7 +18692,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async_sse__example_b
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async_sse__example_basic_map_type_basic_primitive_enum_twin_rust_async_sse_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18426,7 +18702,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async_sse__example_b
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async_sse__example_basic_map_type_basic_struct_twin_rust_async_sse_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18436,7 +18712,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async_sse__example_b
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async_sse__example_basic_map_type_bool_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18446,7 +18722,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async_sse__example_b
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async_sse__example_basic_map_type_bytes_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18456,7 +18732,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async_sse__example_b
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async_sse__example_basic_map_type_f32_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18466,7 +18742,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async_sse__example_b
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async_sse__example_basic_map_type_f64_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18476,7 +18752,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async_sse__example_b
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async_sse__example_basic_map_type_i128_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18486,7 +18762,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async_sse__example_b
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async_sse__example_basic_map_type_i16_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18496,7 +18772,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async_sse__example_b
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async_sse__example_basic_map_type_i32_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18506,7 +18782,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async_sse__example_b
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async_sse__example_basic_map_type_i64_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18516,7 +18792,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async_sse__example_b
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async_sse__example_basic_map_type_i8_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18526,7 +18802,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async_sse__example_b
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async_sse__example_basic_map_type_isize_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18536,7 +18812,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async_sse__example_b
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async_sse__example_basic_map_type_string_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18546,7 +18822,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async_sse__example_b
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async_sse__example_basic_map_type_u128_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18556,7 +18832,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async_sse__example_b
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async_sse__example_basic_map_type_u16_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18566,7 +18842,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async_sse__example_b
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async_sse__example_basic_map_type_u32_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18576,7 +18852,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async_sse__example_b
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async_sse__example_basic_map_type_u64_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18586,7 +18862,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async_sse__example_b
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async_sse__example_basic_map_type_u8_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18596,7 +18872,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async_sse__example_b
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async_sse__example_basic_map_type_usize_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18606,7 +18882,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async_sse__example_b
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map_twin_sse__example_basic_map_type_basic_general_enum_twin_sse_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18616,7 +18892,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map_twin_sse__example_basic_map_ty
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map_twin_sse__example_basic_map_type_basic_primitive_enum_twin_sse_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18626,7 +18902,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map_twin_sse__example_basic_map_ty
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map_twin_sse__example_basic_map_type_basic_struct_twin_sse_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18636,7 +18912,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map_twin_sse__example_basic_map_ty
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map_twin_sse__example_basic_map_type_bool_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18651,7 +18927,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map_twin_sse__example_basic_map_ty
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map_twin_sse__example_basic_map_type_bytes_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18666,7 +18942,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map_twin_sse__example_basic_map_ty
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map_twin_sse__example_basic_map_type_f32_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18681,7 +18957,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map_twin_sse__example_basic_map_ty
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map_twin_sse__example_basic_map_type_f64_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18696,7 +18972,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map_twin_sse__example_basic_map_ty
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map_twin_sse__example_basic_map_type_i128_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18711,7 +18987,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map_twin_sse__example_basic_map_ty
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map_twin_sse__example_basic_map_type_i16_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18726,7 +19002,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map_twin_sse__example_basic_map_ty
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map_twin_sse__example_basic_map_type_i32_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18741,7 +19017,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map_twin_sse__example_basic_map_ty
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map_twin_sse__example_basic_map_type_i64_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18756,7 +19032,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map_twin_sse__example_basic_map_ty
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map_twin_sse__example_basic_map_type_i8_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18771,7 +19047,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map_twin_sse__example_basic_map_ty
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map_twin_sse__example_basic_map_type_isize_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18786,7 +19062,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map_twin_sse__example_basic_map_ty
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map_twin_sse__example_basic_map_type_string_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18801,7 +19077,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map_twin_sse__example_basic_map_ty
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map_twin_sse__example_basic_map_type_u128_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18816,7 +19092,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map_twin_sse__example_basic_map_ty
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map_twin_sse__example_basic_map_type_u16_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18831,7 +19107,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map_twin_sse__example_basic_map_ty
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map_twin_sse__example_basic_map_type_u32_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18846,7 +19122,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map_twin_sse__example_basic_map_ty
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map_twin_sse__example_basic_map_type_u64_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18861,7 +19137,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map_twin_sse__example_basic_map_ty
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map_twin_sse__example_basic_map_type_u8_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18876,7 +19152,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map_twin_sse__example_basic_map_ty
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_map_twin_sse__example_basic_map_type_usize_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19237,7 +19513,7 @@ pub fn wire__crate__api__pseudo_manual__basic_map_twin_sync_sse__example_basic_m
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_basic_general_enum_twin_normal_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_basic_general_enum_twin_normal_twin_normal_impl(port_, arg)
@@ -19245,7 +19521,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_t
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_basic_primitive_enum_twin_normal_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_basic_primitive_enum_twin_normal_twin_normal_impl(port_, arg)
@@ -19253,7 +19529,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_t
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_basic_struct_twin_normal_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_basic_struct_twin_normal_twin_normal_impl(port_, arg)
@@ -19261,7 +19537,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_t
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_bool_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_bool_twin_normal_impl(port_, arg)
@@ -19269,7 +19545,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_t
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_bytes_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: Option<Box<[u8]>>,
 ) {
     wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_bytes_twin_normal_impl(port_, arg)
@@ -19277,7 +19553,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_t
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_f32_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_f32_twin_normal_impl(port_, arg)
@@ -19285,7 +19561,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_t
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_f64_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_f64_twin_normal_impl(port_, arg)
@@ -19293,7 +19569,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_t
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_i128_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: Option<String>,
 ) {
     wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_i128_twin_normal_impl(port_, arg)
@@ -19301,7 +19577,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_t
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_i16_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_i16_twin_normal_impl(port_, arg)
@@ -19309,7 +19585,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_t
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_i32_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_i32_twin_normal_impl(port_, arg)
@@ -19317,7 +19593,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_t
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_i64_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_i64_twin_normal_impl(port_, arg)
@@ -19325,7 +19601,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_t
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_i8_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_i8_twin_normal_impl(
@@ -19335,7 +19611,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_t
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_isize_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_isize_twin_normal_impl(port_, arg)
@@ -19343,7 +19619,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_t
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_string_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: Option<String>,
 ) {
     wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_string_twin_normal_impl(port_, arg)
@@ -19351,7 +19627,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_t
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_u128_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: Option<String>,
 ) {
     wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_u128_twin_normal_impl(port_, arg)
@@ -19359,7 +19635,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_t
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_u16_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_u16_twin_normal_impl(port_, arg)
@@ -19367,7 +19643,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_t
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_u32_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_u32_twin_normal_impl(port_, arg)
@@ -19375,7 +19651,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_t
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_u64_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_u64_twin_normal_impl(port_, arg)
@@ -19383,7 +19659,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_t
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_u8_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_u8_twin_normal_impl(
@@ -19393,7 +19669,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_t
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_usize_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_usize_twin_normal_impl(port_, arg)
@@ -19401,7 +19677,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_t
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_basic_general_enum_twin_rust_async_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_basic_general_enum_twin_rust_async_twin_rust_async_impl(port_, arg)
@@ -19409,7 +19685,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_basic_primitive_enum_twin_rust_async_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_basic_primitive_enum_twin_rust_async_twin_rust_async_impl(port_, arg)
@@ -19417,7 +19693,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_basic_struct_twin_rust_async_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_basic_struct_twin_rust_async_twin_rust_async_impl(port_, arg)
@@ -19425,7 +19701,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_bool_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_bool_twin_rust_async_impl(port_, arg)
@@ -19433,7 +19709,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_bytes_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: Option<Box<[u8]>>,
 ) {
     wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_bytes_twin_rust_async_impl(port_, arg)
@@ -19441,7 +19717,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_f32_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_f32_twin_rust_async_impl(port_, arg)
@@ -19449,7 +19725,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_f64_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_f64_twin_rust_async_impl(port_, arg)
@@ -19457,7 +19733,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_i128_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: Option<String>,
 ) {
     wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_i128_twin_rust_async_impl(port_, arg)
@@ -19465,7 +19741,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_i16_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_i16_twin_rust_async_impl(port_, arg)
@@ -19473,7 +19749,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_i32_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_i32_twin_rust_async_impl(port_, arg)
@@ -19481,7 +19757,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_i64_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_i64_twin_rust_async_impl(port_, arg)
@@ -19489,7 +19765,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_i8_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_i8_twin_rust_async_impl(port_, arg)
@@ -19497,7 +19773,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_isize_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_isize_twin_rust_async_impl(port_, arg)
@@ -19505,7 +19781,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_string_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: Option<String>,
 ) {
     wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_string_twin_rust_async_impl(port_, arg)
@@ -19513,7 +19789,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_u128_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: Option<String>,
 ) {
     wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_u128_twin_rust_async_impl(port_, arg)
@@ -19521,7 +19797,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_u16_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_u16_twin_rust_async_impl(port_, arg)
@@ -19529,7 +19805,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_u32_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_u32_twin_rust_async_impl(port_, arg)
@@ -19537,7 +19813,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_u64_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_u64_twin_rust_async_impl(port_, arg)
@@ -19545,7 +19821,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_u8_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_u8_twin_rust_async_impl(port_, arg)
@@ -19553,7 +19829,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_usize_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_usize_twin_rust_async_impl(port_, arg)
@@ -19561,7 +19837,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async_sse__example_basic_optional_type_basic_general_enum_twin_rust_async_sse_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19571,7 +19847,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async_sse__exam
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async_sse__example_basic_optional_type_basic_primitive_enum_twin_rust_async_sse_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19581,7 +19857,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async_sse__exam
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async_sse__example_basic_optional_type_basic_struct_twin_rust_async_sse_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19591,7 +19867,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async_sse__exam
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async_sse__example_basic_optional_type_bool_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19601,7 +19877,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async_sse__exam
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async_sse__example_basic_optional_type_bytes_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19611,7 +19887,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async_sse__exam
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async_sse__example_basic_optional_type_f32_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19621,7 +19897,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async_sse__exam
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async_sse__example_basic_optional_type_f64_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19631,7 +19907,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async_sse__exam
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async_sse__example_basic_optional_type_i128_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19641,7 +19917,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async_sse__exam
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async_sse__example_basic_optional_type_i16_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19651,7 +19927,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async_sse__exam
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async_sse__example_basic_optional_type_i32_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19661,7 +19937,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async_sse__exam
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async_sse__example_basic_optional_type_i64_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19671,7 +19947,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async_sse__exam
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async_sse__example_basic_optional_type_i8_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19681,7 +19957,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async_sse__exam
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async_sse__example_basic_optional_type_isize_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19691,7 +19967,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async_sse__exam
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async_sse__example_basic_optional_type_string_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19701,7 +19977,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async_sse__exam
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async_sse__example_basic_optional_type_u128_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19711,7 +19987,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async_sse__exam
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async_sse__example_basic_optional_type_u16_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19721,7 +19997,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async_sse__exam
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async_sse__example_basic_optional_type_u32_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19731,7 +20007,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async_sse__exam
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async_sse__example_basic_optional_type_u64_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19741,7 +20017,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async_sse__exam
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async_sse__example_basic_optional_type_u8_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19751,7 +20027,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async_sse__exam
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async_sse__example_basic_optional_type_usize_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19761,7 +20037,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async_sse__exam
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional_twin_sse__example_basic_optional_type_basic_general_enum_twin_sse_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19771,7 +20047,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional_twin_sse__example_basic_o
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional_twin_sse__example_basic_optional_type_basic_primitive_enum_twin_sse_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19781,7 +20057,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional_twin_sse__example_basic_o
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional_twin_sse__example_basic_optional_type_basic_struct_twin_sse_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19791,7 +20067,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional_twin_sse__example_basic_o
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional_twin_sse__example_basic_optional_type_bool_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19801,7 +20077,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional_twin_sse__example_basic_o
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional_twin_sse__example_basic_optional_type_bytes_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19811,7 +20087,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional_twin_sse__example_basic_o
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional_twin_sse__example_basic_optional_type_f32_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19821,7 +20097,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional_twin_sse__example_basic_o
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional_twin_sse__example_basic_optional_type_f64_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19831,7 +20107,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional_twin_sse__example_basic_o
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional_twin_sse__example_basic_optional_type_i128_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19841,7 +20117,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional_twin_sse__example_basic_o
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional_twin_sse__example_basic_optional_type_i16_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19851,7 +20127,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional_twin_sse__example_basic_o
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional_twin_sse__example_basic_optional_type_i32_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19861,7 +20137,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional_twin_sse__example_basic_o
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional_twin_sse__example_basic_optional_type_i64_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19871,7 +20147,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional_twin_sse__example_basic_o
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional_twin_sse__example_basic_optional_type_i8_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19881,7 +20157,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional_twin_sse__example_basic_o
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional_twin_sse__example_basic_optional_type_isize_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19891,7 +20167,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional_twin_sse__example_basic_o
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional_twin_sse__example_basic_optional_type_string_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19901,7 +20177,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional_twin_sse__example_basic_o
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional_twin_sse__example_basic_optional_type_u128_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19911,7 +20187,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional_twin_sse__example_basic_o
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional_twin_sse__example_basic_optional_type_u16_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19921,7 +20197,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional_twin_sse__example_basic_o
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional_twin_sse__example_basic_optional_type_u32_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19931,7 +20207,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional_twin_sse__example_basic_o
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional_twin_sse__example_basic_optional_type_u64_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19941,7 +20217,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional_twin_sse__example_basic_o
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional_twin_sse__example_basic_optional_type_u8_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19951,7 +20227,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional_twin_sse__example_basic_o
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_optional_twin_sse__example_basic_optional_type_usize_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -20281,7 +20557,7 @@ pub fn wire__crate__api__pseudo_manual__basic_optional_twin_sync_sse__example_ba
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_basic_general_enum_twin_rust_async_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_basic_general_enum_twin_rust_async_twin_rust_async_impl(port_, arg)
@@ -20289,7 +20565,7 @@ pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_typ
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_basic_primitive_enum_twin_rust_async_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: i32,
 ) {
     wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_basic_primitive_enum_twin_rust_async_twin_rust_async_impl(port_, arg)
@@ -20297,7 +20573,7 @@ pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_typ
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_basic_struct_twin_rust_async_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_basic_struct_twin_rust_async_twin_rust_async_impl(port_, arg)
@@ -20305,7 +20581,7 @@ pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_typ
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_bool_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: bool,
 ) {
     wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_bool_twin_rust_async_impl(port_, arg)
@@ -20313,7 +20589,7 @@ pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_typ
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_bytes_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: Box<[u8]>,
 ) {
     wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_bytes_twin_rust_async_impl(port_, arg)
@@ -20321,7 +20597,7 @@ pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_typ
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_f32_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: f32,
 ) {
     wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_f32_twin_rust_async_impl(port_, arg)
@@ -20329,7 +20605,7 @@ pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_typ
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_f64_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: f64,
 ) {
     wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_f64_twin_rust_async_impl(port_, arg)
@@ -20337,7 +20613,7 @@ pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_typ
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_i128_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: String,
     expect: String,
 ) {
@@ -20346,7 +20622,7 @@ pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_typ
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_i16_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: i16,
     expect: String,
 ) {
@@ -20355,7 +20631,7 @@ pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_typ
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_i32_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: i32,
     expect: String,
 ) {
@@ -20364,7 +20640,7 @@ pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_typ
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_i64_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     expect: String,
 ) {
@@ -20373,7 +20649,7 @@ pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_typ
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_i8_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: i8,
     expect: String,
 ) {
@@ -20382,7 +20658,7 @@ pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_typ
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_isize_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     expect: String,
 ) {
@@ -20391,7 +20667,7 @@ pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_typ
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_string_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: String,
 ) {
     wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_string_twin_rust_async_impl(port_, arg)
@@ -20399,7 +20675,7 @@ pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_typ
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_u128_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: String,
     expect: String,
 ) {
@@ -20408,7 +20684,7 @@ pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_typ
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_u16_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: u16,
     expect: String,
 ) {
@@ -20417,7 +20693,7 @@ pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_typ
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_u32_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: u32,
     expect: String,
 ) {
@@ -20426,7 +20702,7 @@ pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_typ
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_u64_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     expect: String,
 ) {
@@ -20435,7 +20711,7 @@ pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_typ
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_u8_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: u8,
     expect: String,
 ) {
@@ -20444,7 +20720,7 @@ pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_typ
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_usize_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     expect: String,
 ) {
@@ -20453,7 +20729,7 @@ pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_typ
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async_sse__example_basic_type_basic_general_enum_twin_rust_async_sse_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -20463,7 +20739,7 @@ pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async_sse__example_basic
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async_sse__example_basic_type_basic_primitive_enum_twin_rust_async_sse_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -20473,7 +20749,7 @@ pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async_sse__example_basic
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async_sse__example_basic_type_basic_struct_twin_rust_async_sse_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -20483,7 +20759,7 @@ pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async_sse__example_basic
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async_sse__example_basic_type_bool_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -20493,7 +20769,7 @@ pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async_sse__example_basic
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async_sse__example_basic_type_bytes_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -20503,7 +20779,7 @@ pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async_sse__example_basic
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async_sse__example_basic_type_f32_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -20513,7 +20789,7 @@ pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async_sse__example_basic
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async_sse__example_basic_type_f64_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -20523,7 +20799,7 @@ pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async_sse__example_basic
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async_sse__example_basic_type_i128_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -20533,7 +20809,7 @@ pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async_sse__example_basic
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async_sse__example_basic_type_i16_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -20543,7 +20819,7 @@ pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async_sse__example_basic
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async_sse__example_basic_type_i32_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -20553,7 +20829,7 @@ pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async_sse__example_basic
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async_sse__example_basic_type_i64_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -20563,7 +20839,7 @@ pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async_sse__example_basic
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async_sse__example_basic_type_i8_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -20573,7 +20849,7 @@ pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async_sse__example_basic
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async_sse__example_basic_type_isize_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -20583,7 +20859,7 @@ pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async_sse__example_basic
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async_sse__example_basic_type_string_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -20593,7 +20869,7 @@ pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async_sse__example_basic
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async_sse__example_basic_type_u128_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -20603,7 +20879,7 @@ pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async_sse__example_basic
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async_sse__example_basic_type_u16_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -20613,7 +20889,7 @@ pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async_sse__example_basic
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async_sse__example_basic_type_u32_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -20623,7 +20899,7 @@ pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async_sse__example_basic
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async_sse__example_basic_type_u64_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -20633,7 +20909,7 @@ pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async_sse__example_basic
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async_sse__example_basic_type_u8_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -20643,7 +20919,7 @@ pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async_sse__example_basic
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async_sse__example_basic_type_usize_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -20653,7 +20929,7 @@ pub fn wire__crate__api__pseudo_manual__basic_twin_rust_async_sse__example_basic
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_sse__example_basic_type_basic_general_enum_twin_sse_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -20663,7 +20939,7 @@ pub fn wire__crate__api__pseudo_manual__basic_twin_sse__example_basic_type_basic
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_sse__example_basic_type_basic_primitive_enum_twin_sse_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -20673,7 +20949,7 @@ pub fn wire__crate__api__pseudo_manual__basic_twin_sse__example_basic_type_basic
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_sse__example_basic_type_basic_struct_twin_sse_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -20683,7 +20959,7 @@ pub fn wire__crate__api__pseudo_manual__basic_twin_sse__example_basic_type_basic
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_sse__example_basic_type_bool_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -20698,7 +20974,7 @@ pub fn wire__crate__api__pseudo_manual__basic_twin_sse__example_basic_type_bool_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_sse__example_basic_type_bytes_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -20713,7 +20989,7 @@ pub fn wire__crate__api__pseudo_manual__basic_twin_sse__example_basic_type_bytes
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_sse__example_basic_type_f32_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -20728,7 +21004,7 @@ pub fn wire__crate__api__pseudo_manual__basic_twin_sse__example_basic_type_f32_t
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_sse__example_basic_type_f64_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -20743,7 +21019,7 @@ pub fn wire__crate__api__pseudo_manual__basic_twin_sse__example_basic_type_f64_t
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_sse__example_basic_type_i128_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -20758,7 +21034,7 @@ pub fn wire__crate__api__pseudo_manual__basic_twin_sse__example_basic_type_i128_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_sse__example_basic_type_i16_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -20773,7 +21049,7 @@ pub fn wire__crate__api__pseudo_manual__basic_twin_sse__example_basic_type_i16_t
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_sse__example_basic_type_i32_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -20788,7 +21064,7 @@ pub fn wire__crate__api__pseudo_manual__basic_twin_sse__example_basic_type_i32_t
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_sse__example_basic_type_i64_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -20803,7 +21079,7 @@ pub fn wire__crate__api__pseudo_manual__basic_twin_sse__example_basic_type_i64_t
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_sse__example_basic_type_i8_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -20818,7 +21094,7 @@ pub fn wire__crate__api__pseudo_manual__basic_twin_sse__example_basic_type_i8_tw
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_sse__example_basic_type_isize_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -20833,7 +21109,7 @@ pub fn wire__crate__api__pseudo_manual__basic_twin_sse__example_basic_type_isize
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_sse__example_basic_type_string_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -20848,7 +21124,7 @@ pub fn wire__crate__api__pseudo_manual__basic_twin_sse__example_basic_type_strin
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_sse__example_basic_type_u128_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -20863,7 +21139,7 @@ pub fn wire__crate__api__pseudo_manual__basic_twin_sse__example_basic_type_u128_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_sse__example_basic_type_u16_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -20878,7 +21154,7 @@ pub fn wire__crate__api__pseudo_manual__basic_twin_sse__example_basic_type_u16_t
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_sse__example_basic_type_u32_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -20893,7 +21169,7 @@ pub fn wire__crate__api__pseudo_manual__basic_twin_sse__example_basic_type_u32_t
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_sse__example_basic_type_u64_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -20908,7 +21184,7 @@ pub fn wire__crate__api__pseudo_manual__basic_twin_sse__example_basic_type_u64_t
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_sse__example_basic_type_u8_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -20923,7 +21199,7 @@ pub fn wire__crate__api__pseudo_manual__basic_twin_sse__example_basic_type_u8_tw
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__basic_twin_sse__example_basic_type_usize_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -21346,7 +21622,7 @@ pub fn wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__benchmark_api__benchmark_binary_tree_input_json_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     raw: String,
 ) {
     wire__crate__api__pseudo_manual__benchmark_api__benchmark_binary_tree_input_json_twin_normal_impl(port_, raw)
@@ -21354,7 +21630,7 @@ pub fn wire__crate__api__pseudo_manual__benchmark_api__benchmark_binary_tree_inp
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__benchmark_api__benchmark_binary_tree_input_protobuf_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     raw: Box<[u8]>,
 ) {
     wire__crate__api__pseudo_manual__benchmark_api__benchmark_binary_tree_input_protobuf_twin_normal_impl(port_, raw)
@@ -21362,7 +21638,7 @@ pub fn wire__crate__api__pseudo_manual__benchmark_api__benchmark_binary_tree_inp
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__benchmark_api__benchmark_binary_tree_input_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     tree: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__benchmark_api__benchmark_binary_tree_input_twin_normal_impl(
@@ -21372,7 +21648,7 @@ pub fn wire__crate__api__pseudo_manual__benchmark_api__benchmark_binary_tree_inp
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__benchmark_api__benchmark_binary_tree_output_json_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     depth: i32,
 ) {
     wire__crate__api__pseudo_manual__benchmark_api__benchmark_binary_tree_output_json_twin_normal_impl(port_, depth)
@@ -21380,7 +21656,7 @@ pub fn wire__crate__api__pseudo_manual__benchmark_api__benchmark_binary_tree_out
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__benchmark_api__benchmark_binary_tree_output_protobuf_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     depth: i32,
 ) {
     wire__crate__api__pseudo_manual__benchmark_api__benchmark_binary_tree_output_protobuf_twin_normal_impl(port_, depth)
@@ -21388,7 +21664,7 @@ pub fn wire__crate__api__pseudo_manual__benchmark_api__benchmark_binary_tree_out
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__benchmark_api__benchmark_binary_tree_output_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     depth: i32,
 ) {
     wire__crate__api__pseudo_manual__benchmark_api__benchmark_binary_tree_output_twin_normal_impl(
@@ -21398,7 +21674,7 @@ pub fn wire__crate__api__pseudo_manual__benchmark_api__benchmark_binary_tree_out
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__benchmark_api__benchmark_blob_input_json_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     raw: String,
 ) {
     wire__crate__api__pseudo_manual__benchmark_api__benchmark_blob_input_json_twin_normal_impl(
@@ -21408,7 +21684,7 @@ pub fn wire__crate__api__pseudo_manual__benchmark_api__benchmark_blob_input_json
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__benchmark_api__benchmark_blob_input_protobuf_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     raw: Box<[u8]>,
 ) {
     wire__crate__api__pseudo_manual__benchmark_api__benchmark_blob_input_protobuf_twin_normal_impl(
@@ -21418,7 +21694,7 @@ pub fn wire__crate__api__pseudo_manual__benchmark_api__benchmark_blob_input_prot
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__benchmark_api__benchmark_blob_input_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     blob: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__benchmark_api__benchmark_blob_input_twin_normal_impl(
@@ -21428,7 +21704,7 @@ pub fn wire__crate__api__pseudo_manual__benchmark_api__benchmark_blob_input_twin
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__benchmark_api__benchmark_blob_output_json_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     size: i32,
 ) {
     wire__crate__api__pseudo_manual__benchmark_api__benchmark_blob_output_json_twin_normal_impl(
@@ -21438,7 +21714,7 @@ pub fn wire__crate__api__pseudo_manual__benchmark_api__benchmark_blob_output_jso
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__benchmark_api__benchmark_blob_output_protobuf_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     size: i32,
 ) {
     wire__crate__api__pseudo_manual__benchmark_api__benchmark_blob_output_protobuf_twin_normal_impl(
@@ -21448,7 +21724,7 @@ pub fn wire__crate__api__pseudo_manual__benchmark_api__benchmark_blob_output_pro
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__benchmark_api__benchmark_blob_output_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     size: i32,
 ) {
     wire__crate__api__pseudo_manual__benchmark_api__benchmark_blob_output_twin_normal_impl(
@@ -21458,7 +21734,7 @@ pub fn wire__crate__api__pseudo_manual__benchmark_api__benchmark_blob_output_twi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__benchmark_api__benchmark_input_bytes_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     bytes: Box<[u8]>,
 ) {
     wire__crate__api__pseudo_manual__benchmark_api__benchmark_input_bytes_twin_normal_impl(
@@ -21468,7 +21744,7 @@ pub fn wire__crate__api__pseudo_manual__benchmark_api__benchmark_input_bytes_twi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__benchmark_api__benchmark_output_bytes_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     size: i32,
 ) {
     wire__crate__api__pseudo_manual__benchmark_api__benchmark_output_bytes_twin_normal_impl(
@@ -21478,14 +21754,14 @@ pub fn wire__crate__api__pseudo_manual__benchmark_api__benchmark_output_bytes_tw
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__benchmark_api__benchmark_void_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__benchmark_api__benchmark_void_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_binary_tree_input_json_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     raw: String,
 ) {
     wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_binary_tree_input_json_twin_rust_async_impl(port_, raw)
@@ -21493,7 +21769,7 @@ pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_binary_tree_input_protobuf_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     raw: Box<[u8]>,
 ) {
     wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_binary_tree_input_protobuf_twin_rust_async_impl(port_, raw)
@@ -21501,7 +21777,7 @@ pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_binary_tree_input_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     tree: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_binary_tree_input_twin_rust_async_impl(port_, tree)
@@ -21509,7 +21785,7 @@ pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_binary_tree_output_json_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     depth: i32,
 ) {
     wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_binary_tree_output_json_twin_rust_async_impl(port_, depth)
@@ -21517,7 +21793,7 @@ pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_binary_tree_output_protobuf_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     depth: i32,
 ) {
     wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_binary_tree_output_protobuf_twin_rust_async_impl(port_, depth)
@@ -21525,7 +21801,7 @@ pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_binary_tree_output_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     depth: i32,
 ) {
     wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_binary_tree_output_twin_rust_async_impl(port_, depth)
@@ -21533,7 +21809,7 @@ pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_blob_input_json_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     raw: String,
 ) {
     wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_blob_input_json_twin_rust_async_impl(port_, raw)
@@ -21541,7 +21817,7 @@ pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_blob_input_protobuf_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     raw: Box<[u8]>,
 ) {
     wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_blob_input_protobuf_twin_rust_async_impl(port_, raw)
@@ -21549,7 +21825,7 @@ pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_blob_input_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     blob: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_blob_input_twin_rust_async_impl(port_, blob)
@@ -21557,7 +21833,7 @@ pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_blob_output_json_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     size: i32,
 ) {
     wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_blob_output_json_twin_rust_async_impl(port_, size)
@@ -21565,7 +21841,7 @@ pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_blob_output_protobuf_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     size: i32,
 ) {
     wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_blob_output_protobuf_twin_rust_async_impl(port_, size)
@@ -21573,7 +21849,7 @@ pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_blob_output_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     size: i32,
 ) {
     wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_blob_output_twin_rust_async_impl(port_, size)
@@ -21581,7 +21857,7 @@ pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_input_bytes_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     bytes: Box<[u8]>,
 ) {
     wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_input_bytes_twin_rust_async_impl(port_, bytes)
@@ -21589,7 +21865,7 @@ pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_output_bytes_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     size: i32,
 ) {
     wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_output_bytes_twin_rust_async_impl(port_, size)
@@ -21597,14 +21873,14 @@ pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_void_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_void_twin_rust_async_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async_sse__benchmark_binary_tree_input_json_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -21614,7 +21890,7 @@ pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async_sse__bench
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async_sse__benchmark_binary_tree_input_protobuf_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -21624,7 +21900,7 @@ pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async_sse__bench
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async_sse__benchmark_binary_tree_input_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -21634,7 +21910,7 @@ pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async_sse__bench
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async_sse__benchmark_binary_tree_output_json_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -21644,7 +21920,7 @@ pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async_sse__bench
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async_sse__benchmark_binary_tree_output_protobuf_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -21654,7 +21930,7 @@ pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async_sse__bench
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async_sse__benchmark_binary_tree_output_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -21664,7 +21940,7 @@ pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async_sse__bench
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async_sse__benchmark_blob_input_json_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -21674,7 +21950,7 @@ pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async_sse__bench
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async_sse__benchmark_blob_input_protobuf_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -21684,7 +21960,7 @@ pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async_sse__bench
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async_sse__benchmark_blob_input_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -21694,7 +21970,7 @@ pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async_sse__bench
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async_sse__benchmark_blob_output_json_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -21704,7 +21980,7 @@ pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async_sse__bench
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async_sse__benchmark_blob_output_protobuf_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -21714,7 +21990,7 @@ pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async_sse__bench
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async_sse__benchmark_blob_output_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -21724,7 +22000,7 @@ pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async_sse__bench
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async_sse__benchmark_input_bytes_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -21734,7 +22010,7 @@ pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async_sse__bench
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async_sse__benchmark_output_bytes_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -21744,7 +22020,7 @@ pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async_sse__bench
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async_sse__benchmark_void_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -21754,7 +22030,7 @@ pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async_sse__bench
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_sse__benchmark_binary_tree_input_json_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -21764,7 +22040,7 @@ pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_sse__benchmark_binary
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_sse__benchmark_binary_tree_input_protobuf_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -21774,7 +22050,7 @@ pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_sse__benchmark_binary
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_sse__benchmark_binary_tree_input_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -21784,7 +22060,7 @@ pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_sse__benchmark_binary
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_sse__benchmark_binary_tree_output_json_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -21794,7 +22070,7 @@ pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_sse__benchmark_binary
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_sse__benchmark_binary_tree_output_protobuf_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -21804,7 +22080,7 @@ pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_sse__benchmark_binary
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_sse__benchmark_binary_tree_output_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -21814,7 +22090,7 @@ pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_sse__benchmark_binary
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_sse__benchmark_blob_input_json_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -21829,7 +22105,7 @@ pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_sse__benchmark_blob_i
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_sse__benchmark_blob_input_protobuf_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -21839,7 +22115,7 @@ pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_sse__benchmark_blob_i
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_sse__benchmark_blob_input_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -21854,7 +22130,7 @@ pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_sse__benchmark_blob_i
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_sse__benchmark_blob_output_json_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -21864,7 +22140,7 @@ pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_sse__benchmark_blob_o
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_sse__benchmark_blob_output_protobuf_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -21874,7 +22150,7 @@ pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_sse__benchmark_blob_o
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_sse__benchmark_blob_output_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -21889,7 +22165,7 @@ pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_sse__benchmark_blob_o
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_sse__benchmark_input_bytes_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -21904,7 +22180,7 @@ pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_sse__benchmark_input_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_sse__benchmark_output_bytes_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -21919,7 +22195,7 @@ pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_sse__benchmark_output
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_sse__benchmark_void_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -22185,7 +22461,7 @@ pub fn wire__crate__api__pseudo_manual__benchmark_api_twin_sync_sse__benchmark_v
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__datetime_local_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     d: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__datetime_local_twin_rust_async_impl(port_, d)
@@ -22193,7 +22469,7 @@ pub fn wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__datetime_lo
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__datetime_utc_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     d: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__datetime_utc_twin_rust_async_impl(
@@ -22203,7 +22479,7 @@ pub fn wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__datetime_ut
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__duration_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     d: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__duration_twin_rust_async_impl(
@@ -22213,7 +22489,7 @@ pub fn wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__duration_tw
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__handle_durations_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     durations: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     since: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
@@ -22222,7 +22498,7 @@ pub fn wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__handle_dura
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__handle_timestamps_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     timestamps: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     epoch: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
@@ -22231,7 +22507,7 @@ pub fn wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__handle_time
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__how_long_does_it_take_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     mine: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__how_long_does_it_take_twin_rust_async_impl(port_, mine)
@@ -22239,7 +22515,7 @@ pub fn wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__how_long_do
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__naivedatetime_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     d: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__naivedatetime_twin_rust_async_impl(
@@ -22249,7 +22525,7 @@ pub fn wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__naivedateti
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__optional_empty_datetime_utc_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     d: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__optional_empty_datetime_utc_twin_rust_async_impl(port_, d)
@@ -22257,7 +22533,7 @@ pub fn wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__optional_em
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__test_chrono_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__test_chrono_twin_rust_async_impl(
         port_,
@@ -22266,14 +22542,14 @@ pub fn wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__test_chrono
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__test_precise_chrono_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__test_precise_chrono_twin_rust_async_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__chrono_type_twin_rust_async_sse__datetime_local_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -22283,7 +22559,7 @@ pub fn wire__crate__api__pseudo_manual__chrono_type_twin_rust_async_sse__datetim
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__chrono_type_twin_rust_async_sse__datetime_utc_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -22293,7 +22569,7 @@ pub fn wire__crate__api__pseudo_manual__chrono_type_twin_rust_async_sse__datetim
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__chrono_type_twin_rust_async_sse__duration_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -22303,7 +22579,7 @@ pub fn wire__crate__api__pseudo_manual__chrono_type_twin_rust_async_sse__duratio
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__chrono_type_twin_rust_async_sse__handle_durations_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -22313,7 +22589,7 @@ pub fn wire__crate__api__pseudo_manual__chrono_type_twin_rust_async_sse__handle_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__chrono_type_twin_rust_async_sse__handle_timestamps_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -22323,7 +22599,7 @@ pub fn wire__crate__api__pseudo_manual__chrono_type_twin_rust_async_sse__handle_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__chrono_type_twin_rust_async_sse__how_long_does_it_take_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -22333,7 +22609,7 @@ pub fn wire__crate__api__pseudo_manual__chrono_type_twin_rust_async_sse__how_lon
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__chrono_type_twin_rust_async_sse__naivedatetime_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -22343,7 +22619,7 @@ pub fn wire__crate__api__pseudo_manual__chrono_type_twin_rust_async_sse__naiveda
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__chrono_type_twin_rust_async_sse__optional_empty_datetime_utc_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -22353,7 +22629,7 @@ pub fn wire__crate__api__pseudo_manual__chrono_type_twin_rust_async_sse__optiona
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__chrono_type_twin_rust_async_sse__test_chrono_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -22363,7 +22639,7 @@ pub fn wire__crate__api__pseudo_manual__chrono_type_twin_rust_async_sse__test_ch
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__chrono_type_twin_rust_async_sse__test_precise_chrono_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -22373,7 +22649,7 @@ pub fn wire__crate__api__pseudo_manual__chrono_type_twin_rust_async_sse__test_pr
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__chrono_type_twin_sse__datetime_local_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -22388,7 +22664,7 @@ pub fn wire__crate__api__pseudo_manual__chrono_type_twin_sse__datetime_local_twi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__chrono_type_twin_sse__datetime_utc_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -22403,7 +22679,7 @@ pub fn wire__crate__api__pseudo_manual__chrono_type_twin_sse__datetime_utc_twin_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__chrono_type_twin_sse__duration_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -22418,7 +22694,7 @@ pub fn wire__crate__api__pseudo_manual__chrono_type_twin_sse__duration_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__chrono_type_twin_sse__handle_durations_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -22433,7 +22709,7 @@ pub fn wire__crate__api__pseudo_manual__chrono_type_twin_sse__handle_durations_t
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__chrono_type_twin_sse__handle_timestamps_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -22448,7 +22724,7 @@ pub fn wire__crate__api__pseudo_manual__chrono_type_twin_sse__handle_timestamps_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__chrono_type_twin_sse__how_long_does_it_take_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -22463,7 +22739,7 @@ pub fn wire__crate__api__pseudo_manual__chrono_type_twin_sse__how_long_does_it_t
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__chrono_type_twin_sse__naivedatetime_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -22478,7 +22754,7 @@ pub fn wire__crate__api__pseudo_manual__chrono_type_twin_sse__naivedatetime_twin
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__chrono_type_twin_sse__optional_empty_datetime_utc_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -22493,7 +22769,7 @@ pub fn wire__crate__api__pseudo_manual__chrono_type_twin_sse__optional_empty_dat
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__chrono_type_twin_sse__test_chrono_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -22508,7 +22784,7 @@ pub fn wire__crate__api__pseudo_manual__chrono_type_twin_sse__test_chrono_twin_s
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__chrono_type_twin_sse__test_precise_chrono_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -22717,28 +22993,28 @@ pub fn wire__crate__api__pseudo_manual__chrono_type_twin_sync_sse__test_precise_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__comment_twin_rust_async__function_with_comments_slash_star_star_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__comment_twin_rust_async__function_with_comments_slash_star_star_twin_rust_async_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__comment_twin_rust_async__function_with_comments_triple_slash_multi_line_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__comment_twin_rust_async__function_with_comments_triple_slash_multi_line_twin_rust_async_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__comment_twin_rust_async__function_with_comments_triple_slash_single_line_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__comment_twin_rust_async__function_with_comments_triple_slash_single_line_twin_rust_async_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__comment_twin_rust_async__struct_with_comments_twin_rust_async_instance_method_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__comment_twin_rust_async__struct_with_comments_twin_rust_async_instance_method_twin_rust_async_impl(port_, that)
@@ -22746,14 +23022,14 @@ pub fn wire__crate__api__pseudo_manual__comment_twin_rust_async__struct_with_com
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__comment_twin_rust_async__struct_with_comments_twin_rust_async_static_method_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__comment_twin_rust_async__struct_with_comments_twin_rust_async_static_method_twin_rust_async_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__comment_twin_rust_async_sse__function_with_comments_slash_star_star_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -22763,7 +23039,7 @@ pub fn wire__crate__api__pseudo_manual__comment_twin_rust_async_sse__function_wi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__comment_twin_rust_async_sse__function_with_comments_triple_slash_multi_line_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -22773,7 +23049,7 @@ pub fn wire__crate__api__pseudo_manual__comment_twin_rust_async_sse__function_wi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__comment_twin_rust_async_sse__function_with_comments_triple_slash_single_line_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -22783,7 +23059,7 @@ pub fn wire__crate__api__pseudo_manual__comment_twin_rust_async_sse__function_wi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__comment_twin_rust_async_sse__struct_with_comments_twin_rust_async_sse_instance_method_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -22793,7 +23069,7 @@ pub fn wire__crate__api__pseudo_manual__comment_twin_rust_async_sse__struct_with
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__comment_twin_rust_async_sse__struct_with_comments_twin_rust_async_sse_static_method_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -22803,7 +23079,7 @@ pub fn wire__crate__api__pseudo_manual__comment_twin_rust_async_sse__struct_with
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__comment_twin_sse__function_with_comments_slash_star_star_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -22813,7 +23089,7 @@ pub fn wire__crate__api__pseudo_manual__comment_twin_sse__function_with_comments
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__comment_twin_sse__function_with_comments_triple_slash_multi_line_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -22823,7 +23099,7 @@ pub fn wire__crate__api__pseudo_manual__comment_twin_sse__function_with_comments
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__comment_twin_sse__function_with_comments_triple_slash_single_line_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -22833,7 +23109,7 @@ pub fn wire__crate__api__pseudo_manual__comment_twin_sse__function_with_comments
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__comment_twin_sse__struct_with_comments_twin_sse_instance_method_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -22843,7 +23119,7 @@ pub fn wire__crate__api__pseudo_manual__comment_twin_sse__struct_with_comments_t
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__comment_twin_sse__struct_with_comments_twin_sse_static_method_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -22929,7 +23205,7 @@ pub fn wire__crate__api__pseudo_manual__comment_twin_sync_sse__struct_with_comme
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_dynamic_twin_rust_async__return_dart_dynamic_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__dart_dynamic_twin_rust_async__return_dart_dynamic_twin_rust_async_impl(port_)
 }
@@ -22942,7 +23218,7 @@ pub fn wire__crate__api__pseudo_manual__dart_dynamic_twin_sync__return_dart_dyna
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_loopback_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_loopback_twin_rust_async_impl(port_, callback)
@@ -22950,7 +23226,7 @@ pub fn wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_multi_times_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     num_times: i32,
 ) {
@@ -22959,7 +23235,7 @@ pub fn wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_one_arg_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_one_arg_twin_rust_async_impl(port_, callback)
@@ -22967,7 +23243,7 @@ pub fn wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_return_result_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     expect_output: Option<String>,
 ) {
@@ -22976,7 +23252,7 @@ pub fn wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_return_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_return_twin_rust_async_impl(port_, callback)
@@ -22984,7 +23260,7 @@ pub fn wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_simple_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_simple_twin_rust_async_impl(port_, callback)
@@ -22992,7 +23268,7 @@ pub fn wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_two_args_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_two_args_twin_rust_async_impl(port_, callback)
@@ -23000,7 +23276,7 @@ pub fn wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_with_dart_opaque_arg_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     input: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
@@ -23009,7 +23285,7 @@ pub fn wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_with_dart_opaque_result_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_with_dart_opaque_result_twin_rust_async_impl(port_, callback)
@@ -23017,7 +23293,7 @@ pub fn wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_fn_twin_rust_async_sse__rust_call_dart_loopback_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -23027,7 +23303,7 @@ pub fn wire__crate__api__pseudo_manual__dart_fn_twin_rust_async_sse__rust_call_d
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_fn_twin_rust_async_sse__rust_call_dart_multi_times_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -23037,7 +23313,7 @@ pub fn wire__crate__api__pseudo_manual__dart_fn_twin_rust_async_sse__rust_call_d
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_fn_twin_rust_async_sse__rust_call_dart_one_arg_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -23047,7 +23323,7 @@ pub fn wire__crate__api__pseudo_manual__dart_fn_twin_rust_async_sse__rust_call_d
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_fn_twin_rust_async_sse__rust_call_dart_return_result_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -23057,7 +23333,7 @@ pub fn wire__crate__api__pseudo_manual__dart_fn_twin_rust_async_sse__rust_call_d
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_fn_twin_rust_async_sse__rust_call_dart_return_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -23067,7 +23343,7 @@ pub fn wire__crate__api__pseudo_manual__dart_fn_twin_rust_async_sse__rust_call_d
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_fn_twin_rust_async_sse__rust_call_dart_simple_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -23077,7 +23353,7 @@ pub fn wire__crate__api__pseudo_manual__dart_fn_twin_rust_async_sse__rust_call_d
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_fn_twin_rust_async_sse__rust_call_dart_two_args_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -23087,7 +23363,7 @@ pub fn wire__crate__api__pseudo_manual__dart_fn_twin_rust_async_sse__rust_call_d
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_fn_twin_rust_async_sse__rust_call_dart_with_dart_opaque_arg_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -23097,7 +23373,7 @@ pub fn wire__crate__api__pseudo_manual__dart_fn_twin_rust_async_sse__rust_call_d
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_fn_twin_rust_async_sse__rust_call_dart_with_dart_opaque_result_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -23107,7 +23383,7 @@ pub fn wire__crate__api__pseudo_manual__dart_fn_twin_rust_async_sse__rust_call_d
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_fn_twin_sse__rust_call_dart_loopback_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -23122,7 +23398,7 @@ pub fn wire__crate__api__pseudo_manual__dart_fn_twin_sse__rust_call_dart_loopbac
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_fn_twin_sse__rust_call_dart_multi_times_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -23137,7 +23413,7 @@ pub fn wire__crate__api__pseudo_manual__dart_fn_twin_sse__rust_call_dart_multi_t
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_fn_twin_sse__rust_call_dart_one_arg_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -23152,7 +23428,7 @@ pub fn wire__crate__api__pseudo_manual__dart_fn_twin_sse__rust_call_dart_one_arg
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_fn_twin_sse__rust_call_dart_return_result_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -23167,7 +23443,7 @@ pub fn wire__crate__api__pseudo_manual__dart_fn_twin_sse__rust_call_dart_return_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_fn_twin_sse__rust_call_dart_return_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -23182,7 +23458,7 @@ pub fn wire__crate__api__pseudo_manual__dart_fn_twin_sse__rust_call_dart_return_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_fn_twin_sse__rust_call_dart_simple_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -23197,7 +23473,7 @@ pub fn wire__crate__api__pseudo_manual__dart_fn_twin_sse__rust_call_dart_simple_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_fn_twin_sse__rust_call_dart_two_args_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -23212,7 +23488,7 @@ pub fn wire__crate__api__pseudo_manual__dart_fn_twin_sse__rust_call_dart_two_arg
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_fn_twin_sse__rust_call_dart_with_dart_opaque_arg_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -23222,7 +23498,7 @@ pub fn wire__crate__api__pseudo_manual__dart_fn_twin_sse__rust_call_dart_with_da
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_fn_twin_sse__rust_call_dart_with_dart_opaque_result_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -23289,7 +23565,7 @@ pub fn wire__crate__api__pseudo_manual__dart_opaque_sync_twin_sse__unwrap_dart_o
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__async_accept_dart_opaque_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__async_accept_dart_opaque_twin_rust_async_impl(port_, opaque)
@@ -23297,7 +23573,7 @@ pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__async_accep
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__clone_dart_opaque_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__clone_dart_opaque_twin_rust_async_impl(port_, opaque)
@@ -23305,7 +23581,7 @@ pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__clone_dart_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__create_enum_dart_opaque_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__create_enum_dart_opaque_twin_rust_async_impl(port_, opaque)
@@ -23313,7 +23589,7 @@ pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__create_enum
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__create_nested_dart_opaque_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     opaque1: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     opaque2: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
@@ -23322,7 +23598,7 @@ pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__create_nest
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__drop_static_dart_opaque_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     id: i32,
 ) {
     wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__drop_static_dart_opaque_twin_rust_async_impl(port_, id)
@@ -23330,7 +23606,7 @@ pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__drop_static
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__get_enum_dart_opaque_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__get_enum_dart_opaque_twin_rust_async_impl(port_, opaque)
@@ -23338,7 +23614,7 @@ pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__get_enum_da
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__get_nested_dart_opaque_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__get_nested_dart_opaque_twin_rust_async_impl(port_, opaque)
@@ -23346,7 +23622,7 @@ pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__get_nested_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__loop_back_array_get_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__loop_back_array_get_twin_rust_async_impl(port_, opaque)
@@ -23354,7 +23630,7 @@ pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__loop_back_a
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__loop_back_array_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__loop_back_array_twin_rust_async_impl(port_, opaque)
@@ -23362,7 +23638,7 @@ pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__loop_back_a
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__loop_back_option_get_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__loop_back_option_get_twin_rust_async_impl(port_, opaque)
@@ -23370,7 +23646,7 @@ pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__loop_back_o
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__loop_back_option_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__loop_back_option_twin_rust_async_impl(port_, opaque)
@@ -23378,7 +23654,7 @@ pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__loop_back_o
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__loop_back_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__loop_back_twin_rust_async_impl(
@@ -23388,7 +23664,7 @@ pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__loop_back_t
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__loop_back_vec_get_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__loop_back_vec_get_twin_rust_async_impl(port_, opaque)
@@ -23396,7 +23672,7 @@ pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__loop_back_v
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__loop_back_vec_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__loop_back_vec_twin_rust_async_impl(
@@ -23406,7 +23682,7 @@ pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__loop_back_v
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__panic_unwrap_dart_opaque_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__panic_unwrap_dart_opaque_twin_rust_async_impl(port_, opaque)
@@ -23414,7 +23690,7 @@ pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__panic_unwra
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__set_static_dart_opaque_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     id: i32,
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
@@ -23423,7 +23699,7 @@ pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__set_static_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async_sse__async_accept_dart_opaque_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -23433,7 +23709,7 @@ pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async_sse__async_a
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async_sse__clone_dart_opaque_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -23443,7 +23719,7 @@ pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async_sse__clone_d
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async_sse__create_enum_dart_opaque_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -23453,7 +23729,7 @@ pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async_sse__create_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async_sse__create_nested_dart_opaque_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -23463,7 +23739,7 @@ pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async_sse__create_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async_sse__drop_static_dart_opaque_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -23473,7 +23749,7 @@ pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async_sse__drop_st
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async_sse__get_enum_dart_opaque_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -23483,7 +23759,7 @@ pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async_sse__get_enu
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async_sse__get_nested_dart_opaque_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -23493,7 +23769,7 @@ pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async_sse__get_nes
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async_sse__loop_back_array_get_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -23503,7 +23779,7 @@ pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async_sse__loop_ba
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async_sse__loop_back_array_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -23513,7 +23789,7 @@ pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async_sse__loop_ba
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async_sse__loop_back_option_get_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -23523,7 +23799,7 @@ pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async_sse__loop_ba
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async_sse__loop_back_option_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -23533,7 +23809,7 @@ pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async_sse__loop_ba
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async_sse__loop_back_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -23543,7 +23819,7 @@ pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async_sse__loop_ba
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async_sse__loop_back_vec_get_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -23553,7 +23829,7 @@ pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async_sse__loop_ba
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async_sse__loop_back_vec_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -23563,7 +23839,7 @@ pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async_sse__loop_ba
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async_sse__panic_unwrap_dart_opaque_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -23573,7 +23849,7 @@ pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async_sse__panic_u
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async_sse__set_static_dart_opaque_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -23583,7 +23859,7 @@ pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async_sse__set_sta
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_sse__async_accept_dart_opaque_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -23598,7 +23874,7 @@ pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_sse__async_accept_dart_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_sse__clone_dart_opaque_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -23613,7 +23889,7 @@ pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_sse__clone_dart_opaque_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_sse__create_enum_dart_opaque_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -23628,7 +23904,7 @@ pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_sse__create_enum_dart_o
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_sse__create_nested_dart_opaque_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -23643,7 +23919,7 @@ pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_sse__create_nested_dart
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_sse__drop_static_dart_opaque_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -23658,7 +23934,7 @@ pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_sse__drop_static_dart_o
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_sse__get_enum_dart_opaque_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -23673,7 +23949,7 @@ pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_sse__get_enum_dart_opaq
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_sse__get_nested_dart_opaque_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -23688,7 +23964,7 @@ pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_sse__get_nested_dart_op
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_sse__loop_back_array_get_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -23703,7 +23979,7 @@ pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_sse__loop_back_array_ge
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_sse__loop_back_array_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -23718,7 +23994,7 @@ pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_sse__loop_back_array_tw
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_sse__loop_back_option_get_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -23733,7 +24009,7 @@ pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_sse__loop_back_option_g
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_sse__loop_back_option_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -23748,7 +24024,7 @@ pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_sse__loop_back_option_t
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_sse__loop_back_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -23763,7 +24039,7 @@ pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_sse__loop_back_twin_sse
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_sse__loop_back_vec_get_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -23778,7 +24054,7 @@ pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_sse__loop_back_vec_get_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_sse__loop_back_vec_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -23793,7 +24069,7 @@ pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_sse__loop_back_vec_twin
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_sse__panic_unwrap_dart_opaque_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -23808,7 +24084,7 @@ pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_sse__panic_unwrap_dart_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_sse__set_static_dart_opaque_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -24125,7 +24401,7 @@ pub fn wire__crate__api__pseudo_manual__dart_opaque_twin_sync_sse__set_static_da
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dropping_twin_rust_async__DroppableTwinRustAsync_create_stream_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     sink: String,
 ) {
@@ -24134,21 +24410,21 @@ pub fn wire__crate__api__pseudo_manual__dropping_twin_rust_async__DroppableTwinR
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dropping_twin_rust_async__DroppableTwinRustAsync_get_drop_count_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__dropping_twin_rust_async__DroppableTwinRustAsync_get_drop_count_twin_rust_async_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dropping_twin_rust_async__DroppableTwinRustAsync_new_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__dropping_twin_rust_async__DroppableTwinRustAsync_new_twin_rust_async_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dropping_twin_rust_async__DroppableTwinRustAsync_simple_method_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__dropping_twin_rust_async__DroppableTwinRustAsync_simple_method_twin_rust_async_impl(port_, that)
@@ -24156,7 +24432,7 @@ pub fn wire__crate__api__pseudo_manual__dropping_twin_rust_async__DroppableTwinR
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dropping_twin_rust_async_sse__DroppableTwinRustAsyncSse_create_stream_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -24166,7 +24442,7 @@ pub fn wire__crate__api__pseudo_manual__dropping_twin_rust_async_sse__DroppableT
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dropping_twin_rust_async_sse__DroppableTwinRustAsyncSse_get_drop_count_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -24176,7 +24452,7 @@ pub fn wire__crate__api__pseudo_manual__dropping_twin_rust_async_sse__DroppableT
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dropping_twin_rust_async_sse__DroppableTwinRustAsyncSse_new_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -24186,7 +24462,7 @@ pub fn wire__crate__api__pseudo_manual__dropping_twin_rust_async_sse__DroppableT
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dropping_twin_rust_async_sse__DroppableTwinRustAsyncSse_simple_method_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -24196,7 +24472,7 @@ pub fn wire__crate__api__pseudo_manual__dropping_twin_rust_async_sse__DroppableT
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dropping_twin_sse__DroppableTwinSse_create_stream_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -24211,7 +24487,7 @@ pub fn wire__crate__api__pseudo_manual__dropping_twin_sse__DroppableTwinSse_crea
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dropping_twin_sse__DroppableTwinSse_get_drop_count_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -24221,7 +24497,7 @@ pub fn wire__crate__api__pseudo_manual__dropping_twin_sse__DroppableTwinSse_get_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dropping_twin_sse__DroppableTwinSse_new_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -24236,7 +24512,7 @@ pub fn wire__crate__api__pseudo_manual__dropping_twin_sse__DroppableTwinSse_new_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__dropping_twin_sse__DroppableTwinSse_simple_method_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -24314,7 +24590,7 @@ pub fn wire__crate__api__pseudo_manual__dropping_twin_sync_sse__DroppableTwinSyn
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__enumeration_twin_rust_async__func_enum_simple_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: i32,
 ) {
     wire__crate__api__pseudo_manual__enumeration_twin_rust_async__func_enum_simple_twin_rust_async_impl(port_, arg)
@@ -24322,7 +24598,7 @@ pub fn wire__crate__api__pseudo_manual__enumeration_twin_rust_async__func_enum_s
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__enumeration_twin_rust_async__func_enum_with_discriminant_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: i32,
 ) {
     wire__crate__api__pseudo_manual__enumeration_twin_rust_async__func_enum_with_discriminant_twin_rust_async_impl(port_, arg)
@@ -24330,7 +24606,7 @@ pub fn wire__crate__api__pseudo_manual__enumeration_twin_rust_async__func_enum_w
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__enumeration_twin_rust_async__func_enum_with_item_mixed_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__enumeration_twin_rust_async__func_enum_with_item_mixed_twin_rust_async_impl(port_, arg)
@@ -24338,7 +24614,7 @@ pub fn wire__crate__api__pseudo_manual__enumeration_twin_rust_async__func_enum_w
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__enumeration_twin_rust_async__func_enum_with_item_struct_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__enumeration_twin_rust_async__func_enum_with_item_struct_twin_rust_async_impl(port_, arg)
@@ -24346,7 +24622,7 @@ pub fn wire__crate__api__pseudo_manual__enumeration_twin_rust_async__func_enum_w
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__enumeration_twin_rust_async__func_enum_with_item_tuple_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__enumeration_twin_rust_async__func_enum_with_item_tuple_twin_rust_async_impl(port_, arg)
@@ -24354,7 +24630,7 @@ pub fn wire__crate__api__pseudo_manual__enumeration_twin_rust_async__func_enum_w
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__enumeration_twin_rust_async__handle_enum_parameter_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     weekday: i32,
 ) {
     wire__crate__api__pseudo_manual__enumeration_twin_rust_async__handle_enum_parameter_twin_rust_async_impl(port_, weekday)
@@ -24362,7 +24638,7 @@ pub fn wire__crate__api__pseudo_manual__enumeration_twin_rust_async__handle_enum
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__enumeration_twin_rust_async__handle_enum_struct_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     val: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__enumeration_twin_rust_async__handle_enum_struct_twin_rust_async_impl(port_, val)
@@ -24370,7 +24646,7 @@ pub fn wire__crate__api__pseudo_manual__enumeration_twin_rust_async__handle_enum
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__enumeration_twin_rust_async__handle_return_enum_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     input: String,
 ) {
     wire__crate__api__pseudo_manual__enumeration_twin_rust_async__handle_return_enum_twin_rust_async_impl(port_, input)
@@ -24378,7 +24654,7 @@ pub fn wire__crate__api__pseudo_manual__enumeration_twin_rust_async__handle_retu
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__enumeration_twin_rust_async__multiply_by_ten_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     measure: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__enumeration_twin_rust_async__multiply_by_ten_twin_rust_async_impl(port_, measure)
@@ -24386,7 +24662,7 @@ pub fn wire__crate__api__pseudo_manual__enumeration_twin_rust_async__multiply_by
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__enumeration_twin_rust_async__print_note_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     note: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__enumeration_twin_rust_async__print_note_twin_rust_async_impl(
@@ -24396,7 +24672,7 @@ pub fn wire__crate__api__pseudo_manual__enumeration_twin_rust_async__print_note_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__enumeration_twin_rust_async_sse__func_enum_simple_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -24406,7 +24682,7 @@ pub fn wire__crate__api__pseudo_manual__enumeration_twin_rust_async_sse__func_en
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__enumeration_twin_rust_async_sse__func_enum_with_discriminant_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -24416,7 +24692,7 @@ pub fn wire__crate__api__pseudo_manual__enumeration_twin_rust_async_sse__func_en
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__enumeration_twin_rust_async_sse__func_enum_with_item_mixed_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -24426,7 +24702,7 @@ pub fn wire__crate__api__pseudo_manual__enumeration_twin_rust_async_sse__func_en
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__enumeration_twin_rust_async_sse__func_enum_with_item_struct_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -24436,7 +24712,7 @@ pub fn wire__crate__api__pseudo_manual__enumeration_twin_rust_async_sse__func_en
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__enumeration_twin_rust_async_sse__func_enum_with_item_tuple_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -24446,7 +24722,7 @@ pub fn wire__crate__api__pseudo_manual__enumeration_twin_rust_async_sse__func_en
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__enumeration_twin_rust_async_sse__handle_enum_parameter_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -24456,7 +24732,7 @@ pub fn wire__crate__api__pseudo_manual__enumeration_twin_rust_async_sse__handle_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__enumeration_twin_rust_async_sse__handle_enum_struct_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -24466,7 +24742,7 @@ pub fn wire__crate__api__pseudo_manual__enumeration_twin_rust_async_sse__handle_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__enumeration_twin_rust_async_sse__handle_return_enum_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -24476,7 +24752,7 @@ pub fn wire__crate__api__pseudo_manual__enumeration_twin_rust_async_sse__handle_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__enumeration_twin_rust_async_sse__multiply_by_ten_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -24486,7 +24762,7 @@ pub fn wire__crate__api__pseudo_manual__enumeration_twin_rust_async_sse__multipl
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__enumeration_twin_rust_async_sse__print_note_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -24496,7 +24772,7 @@ pub fn wire__crate__api__pseudo_manual__enumeration_twin_rust_async_sse__print_n
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__enumeration_twin_sse__func_enum_simple_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -24511,7 +24787,7 @@ pub fn wire__crate__api__pseudo_manual__enumeration_twin_sse__func_enum_simple_t
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__enumeration_twin_sse__func_enum_with_discriminant_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -24526,7 +24802,7 @@ pub fn wire__crate__api__pseudo_manual__enumeration_twin_sse__func_enum_with_dis
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__enumeration_twin_sse__func_enum_with_item_mixed_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -24541,7 +24817,7 @@ pub fn wire__crate__api__pseudo_manual__enumeration_twin_sse__func_enum_with_ite
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__enumeration_twin_sse__func_enum_with_item_struct_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -24556,7 +24832,7 @@ pub fn wire__crate__api__pseudo_manual__enumeration_twin_sse__func_enum_with_ite
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__enumeration_twin_sse__func_enum_with_item_tuple_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -24571,7 +24847,7 @@ pub fn wire__crate__api__pseudo_manual__enumeration_twin_sse__func_enum_with_ite
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__enumeration_twin_sse__handle_enum_parameter_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -24586,7 +24862,7 @@ pub fn wire__crate__api__pseudo_manual__enumeration_twin_sse__handle_enum_parame
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__enumeration_twin_sse__handle_enum_struct_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -24601,7 +24877,7 @@ pub fn wire__crate__api__pseudo_manual__enumeration_twin_sse__handle_enum_struct
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__enumeration_twin_sse__handle_return_enum_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -24616,7 +24892,7 @@ pub fn wire__crate__api__pseudo_manual__enumeration_twin_sse__handle_return_enum
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__enumeration_twin_sse__multiply_by_ten_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -24631,7 +24907,7 @@ pub fn wire__crate__api__pseudo_manual__enumeration_twin_sse__multiply_by_ten_tw
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__enumeration_twin_sse__print_note_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -24824,14 +25100,14 @@ pub fn wire__crate__api__pseudo_manual__enumeration_twin_sync_sse__print_note_tw
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__event_listener_twin_rust_async__close_event_listener_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__event_listener_twin_rust_async__close_event_listener_twin_rust_async_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__event_listener_twin_rust_async__create_event_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     address: String,
     payload: String,
 ) {
@@ -24840,7 +25116,7 @@ pub fn wire__crate__api__pseudo_manual__event_listener_twin_rust_async__create_e
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__event_listener_twin_rust_async__event_twin_rust_async_as_string_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__event_listener_twin_rust_async__event_twin_rust_async_as_string_twin_rust_async_impl(port_, that)
@@ -24848,7 +25124,7 @@ pub fn wire__crate__api__pseudo_manual__event_listener_twin_rust_async__event_tw
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__event_listener_twin_rust_async__register_event_listener_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     listener: String,
 ) {
     wire__crate__api__pseudo_manual__event_listener_twin_rust_async__register_event_listener_twin_rust_async_impl(port_, listener)
@@ -24856,7 +25132,7 @@ pub fn wire__crate__api__pseudo_manual__event_listener_twin_rust_async__register
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__event_listener_twin_rust_async_sse__close_event_listener_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -24866,7 +25142,7 @@ pub fn wire__crate__api__pseudo_manual__event_listener_twin_rust_async_sse__clos
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__event_listener_twin_rust_async_sse__create_event_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -24876,7 +25152,7 @@ pub fn wire__crate__api__pseudo_manual__event_listener_twin_rust_async_sse__crea
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__event_listener_twin_rust_async_sse__event_twin_rust_async_sse_as_string_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -24886,7 +25162,7 @@ pub fn wire__crate__api__pseudo_manual__event_listener_twin_rust_async_sse__even
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__event_listener_twin_rust_async_sse__register_event_listener_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -24896,7 +25172,7 @@ pub fn wire__crate__api__pseudo_manual__event_listener_twin_rust_async_sse__regi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__event_listener_twin_sse__close_event_listener_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -24911,7 +25187,7 @@ pub fn wire__crate__api__pseudo_manual__event_listener_twin_sse__close_event_lis
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__event_listener_twin_sse__create_event_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -24926,7 +25202,7 @@ pub fn wire__crate__api__pseudo_manual__event_listener_twin_sse__create_event_tw
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__event_listener_twin_sse__event_twin_sse_as_string_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -24941,7 +25217,7 @@ pub fn wire__crate__api__pseudo_manual__event_listener_twin_sse__event_twin_sse_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__event_listener_twin_sse__register_event_listener_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -24956,21 +25232,21 @@ pub fn wire__crate__api__pseudo_manual__event_listener_twin_sse__register_event_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async__custom_enum_error_panic_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__exception_twin_rust_async__custom_enum_error_panic_twin_rust_async_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async__custom_enum_error_return_error_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__exception_twin_rust_async__custom_enum_error_return_error_twin_rust_async_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async__custom_enum_error_return_ok_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: u32,
 ) {
     wire__crate__api__pseudo_manual__exception_twin_rust_async__custom_enum_error_return_ok_twin_rust_async_impl(port_, arg)
@@ -24978,7 +25254,7 @@ pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async__custom_enum_e
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async__custom_nested_error_return_error_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__exception_twin_rust_async__custom_nested_error_return_error_twin_rust_async_impl(port_, arg)
@@ -24986,7 +25262,7 @@ pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async__custom_nested
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async__custom_struct_error_return_error_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__exception_twin_rust_async__custom_struct_error_return_error_twin_rust_async_impl(port_, arg)
@@ -24994,7 +25270,7 @@ pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async__custom_struct
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async__custom_struct_twin_rust_async_new_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     message: String,
 ) {
     wire__crate__api__pseudo_manual__exception_twin_rust_async__custom_struct_twin_rust_async_new_twin_rust_async_impl(port_, message)
@@ -25002,7 +25278,7 @@ pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async__custom_struct
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async__custom_struct_twin_rust_async_nonstatic_return_custom_struct_error_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__exception_twin_rust_async__custom_struct_twin_rust_async_nonstatic_return_custom_struct_error_twin_rust_async_impl(port_, that)
@@ -25010,7 +25286,7 @@ pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async__custom_struct
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async__custom_struct_twin_rust_async_nonstatic_return_custom_struct_ok_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__exception_twin_rust_async__custom_struct_twin_rust_async_nonstatic_return_custom_struct_ok_twin_rust_async_impl(port_, that)
@@ -25018,91 +25294,91 @@ pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async__custom_struct
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async__custom_struct_twin_rust_async_static_return_custom_struct_error_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__exception_twin_rust_async__custom_struct_twin_rust_async_static_return_custom_struct_error_twin_rust_async_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async__custom_struct_twin_rust_async_static_return_custom_struct_ok_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__exception_twin_rust_async__custom_struct_twin_rust_async_static_return_custom_struct_ok_twin_rust_async_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async__func_return_error_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__exception_twin_rust_async__func_return_error_twin_rust_async_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async__func_type_fallible_panic_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__exception_twin_rust_async__func_type_fallible_panic_twin_rust_async_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async__func_type_infallible_panic_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__exception_twin_rust_async__func_type_infallible_panic_twin_rust_async_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async__panic_with_custom_result_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__exception_twin_rust_async__panic_with_custom_result_twin_rust_async_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async__return_custom_nested_error_1_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__exception_twin_rust_async__return_custom_nested_error_1_twin_rust_async_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async__return_custom_nested_error_1_variant1_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__exception_twin_rust_async__return_custom_nested_error_1_variant1_twin_rust_async_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async__return_custom_nested_error_2_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__exception_twin_rust_async__return_custom_nested_error_2_twin_rust_async_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async__return_custom_struct_error_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__exception_twin_rust_async__return_custom_struct_error_twin_rust_async_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async__return_custom_struct_ok_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__exception_twin_rust_async__return_custom_struct_ok_twin_rust_async_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async__return_err_custom_error_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__exception_twin_rust_async__return_err_custom_error_twin_rust_async_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async__return_error_variant_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     variant: u32,
 ) {
     wire__crate__api__pseudo_manual__exception_twin_rust_async__return_error_variant_twin_rust_async_impl(port_, variant)
@@ -25110,14 +25386,14 @@ pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async__return_error_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async__return_ok_custom_error_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__exception_twin_rust_async__return_ok_custom_error_twin_rust_async_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async__some_struct_twin_rust_async_new_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     value: u32,
 ) {
     wire__crate__api__pseudo_manual__exception_twin_rust_async__some_struct_twin_rust_async_new_twin_rust_async_impl(port_, value)
@@ -25125,7 +25401,7 @@ pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async__some_struct_t
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async__some_struct_twin_rust_async_non_static_return_err_custom_error_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__exception_twin_rust_async__some_struct_twin_rust_async_non_static_return_err_custom_error_twin_rust_async_impl(port_, that)
@@ -25133,7 +25409,7 @@ pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async__some_struct_t
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async__some_struct_twin_rust_async_non_static_return_ok_custom_error_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__exception_twin_rust_async__some_struct_twin_rust_async_non_static_return_ok_custom_error_twin_rust_async_impl(port_, that)
@@ -25141,21 +25417,21 @@ pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async__some_struct_t
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async__some_struct_twin_rust_async_static_return_err_custom_error_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__exception_twin_rust_async__some_struct_twin_rust_async_static_return_err_custom_error_twin_rust_async_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async__some_struct_twin_rust_async_static_return_ok_custom_error_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__exception_twin_rust_async__some_struct_twin_rust_async_static_return_ok_custom_error_twin_rust_async_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async__stream_sink_throw_anyhow_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     _sink: String,
 ) {
     wire__crate__api__pseudo_manual__exception_twin_rust_async__stream_sink_throw_anyhow_twin_rust_async_impl(port_, _sink)
@@ -25163,7 +25439,7 @@ pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async__stream_sink_t
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async__throw_anyhow_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__exception_twin_rust_async__throw_anyhow_twin_rust_async_impl(
         port_,
@@ -25172,7 +25448,7 @@ pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async__throw_anyhow_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async_sse__custom_enum_error_panic_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25182,7 +25458,7 @@ pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async_sse__custom_en
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async_sse__custom_enum_error_return_error_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25192,7 +25468,7 @@ pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async_sse__custom_en
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async_sse__custom_enum_error_return_ok_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25202,7 +25478,7 @@ pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async_sse__custom_en
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async_sse__custom_nested_error_return_error_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25212,7 +25488,7 @@ pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async_sse__custom_ne
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async_sse__custom_struct_error_return_error_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25222,7 +25498,7 @@ pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async_sse__custom_st
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async_sse__custom_struct_twin_rust_async_sse_new_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25232,7 +25508,7 @@ pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async_sse__custom_st
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async_sse__custom_struct_twin_rust_async_sse_nonstatic_return_custom_struct_error_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25242,7 +25518,7 @@ pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async_sse__custom_st
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async_sse__custom_struct_twin_rust_async_sse_nonstatic_return_custom_struct_ok_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25252,7 +25528,7 @@ pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async_sse__custom_st
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async_sse__custom_struct_twin_rust_async_sse_static_return_custom_struct_error_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25262,7 +25538,7 @@ pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async_sse__custom_st
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async_sse__custom_struct_twin_rust_async_sse_static_return_custom_struct_ok_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25272,7 +25548,7 @@ pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async_sse__custom_st
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async_sse__func_return_error_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25282,7 +25558,7 @@ pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async_sse__func_retu
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async_sse__func_type_fallible_panic_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25292,7 +25568,7 @@ pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async_sse__func_type
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async_sse__func_type_infallible_panic_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25302,7 +25578,7 @@ pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async_sse__func_type
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async_sse__panic_with_custom_result_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25312,7 +25588,7 @@ pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async_sse__panic_wit
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async_sse__return_custom_nested_error_1_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25322,7 +25598,7 @@ pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async_sse__return_cu
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async_sse__return_custom_nested_error_1_variant1_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25332,7 +25608,7 @@ pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async_sse__return_cu
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async_sse__return_custom_nested_error_2_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25342,7 +25618,7 @@ pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async_sse__return_cu
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async_sse__return_custom_struct_error_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25352,7 +25628,7 @@ pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async_sse__return_cu
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async_sse__return_custom_struct_ok_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25362,7 +25638,7 @@ pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async_sse__return_cu
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async_sse__return_err_custom_error_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25372,7 +25648,7 @@ pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async_sse__return_er
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async_sse__return_error_variant_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25382,7 +25658,7 @@ pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async_sse__return_er
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async_sse__return_ok_custom_error_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25392,7 +25668,7 @@ pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async_sse__return_ok
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async_sse__some_struct_twin_rust_async_sse_new_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25402,7 +25678,7 @@ pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async_sse__some_stru
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async_sse__some_struct_twin_rust_async_sse_non_static_return_err_custom_error_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25412,7 +25688,7 @@ pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async_sse__some_stru
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async_sse__some_struct_twin_rust_async_sse_non_static_return_ok_custom_error_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25422,7 +25698,7 @@ pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async_sse__some_stru
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async_sse__some_struct_twin_rust_async_sse_static_return_err_custom_error_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25432,7 +25708,7 @@ pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async_sse__some_stru
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async_sse__some_struct_twin_rust_async_sse_static_return_ok_custom_error_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25442,7 +25718,7 @@ pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async_sse__some_stru
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async_sse__stream_sink_throw_anyhow_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25452,7 +25728,7 @@ pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async_sse__stream_si
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async_sse__throw_anyhow_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25462,7 +25738,7 @@ pub fn wire__crate__api__pseudo_manual__exception_twin_rust_async_sse__throw_any
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_sse__custom_enum_error_panic_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25477,7 +25753,7 @@ pub fn wire__crate__api__pseudo_manual__exception_twin_sse__custom_enum_error_pa
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_sse__custom_enum_error_return_error_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25487,7 +25763,7 @@ pub fn wire__crate__api__pseudo_manual__exception_twin_sse__custom_enum_error_re
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_sse__custom_enum_error_return_ok_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25502,7 +25778,7 @@ pub fn wire__crate__api__pseudo_manual__exception_twin_sse__custom_enum_error_re
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_sse__custom_nested_error_return_error_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25512,7 +25788,7 @@ pub fn wire__crate__api__pseudo_manual__exception_twin_sse__custom_nested_error_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_sse__custom_struct_error_return_error_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25522,7 +25798,7 @@ pub fn wire__crate__api__pseudo_manual__exception_twin_sse__custom_struct_error_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_sse__custom_struct_twin_sse_new_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25537,7 +25813,7 @@ pub fn wire__crate__api__pseudo_manual__exception_twin_sse__custom_struct_twin_s
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_sse__custom_struct_twin_sse_nonstatic_return_custom_struct_error_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25547,7 +25823,7 @@ pub fn wire__crate__api__pseudo_manual__exception_twin_sse__custom_struct_twin_s
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_sse__custom_struct_twin_sse_nonstatic_return_custom_struct_ok_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25557,7 +25833,7 @@ pub fn wire__crate__api__pseudo_manual__exception_twin_sse__custom_struct_twin_s
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_sse__custom_struct_twin_sse_static_return_custom_struct_error_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25567,7 +25843,7 @@ pub fn wire__crate__api__pseudo_manual__exception_twin_sse__custom_struct_twin_s
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_sse__custom_struct_twin_sse_static_return_custom_struct_ok_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25577,7 +25853,7 @@ pub fn wire__crate__api__pseudo_manual__exception_twin_sse__custom_struct_twin_s
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_sse__func_return_error_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25592,7 +25868,7 @@ pub fn wire__crate__api__pseudo_manual__exception_twin_sse__func_return_error_tw
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_sse__func_type_fallible_panic_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25607,7 +25883,7 @@ pub fn wire__crate__api__pseudo_manual__exception_twin_sse__func_type_fallible_p
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_sse__func_type_infallible_panic_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25622,7 +25898,7 @@ pub fn wire__crate__api__pseudo_manual__exception_twin_sse__func_type_infallible
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_sse__panic_with_custom_result_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25637,7 +25913,7 @@ pub fn wire__crate__api__pseudo_manual__exception_twin_sse__panic_with_custom_re
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_sse__return_custom_nested_error_1_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25652,7 +25928,7 @@ pub fn wire__crate__api__pseudo_manual__exception_twin_sse__return_custom_nested
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_sse__return_custom_nested_error_1_variant1_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25662,7 +25938,7 @@ pub fn wire__crate__api__pseudo_manual__exception_twin_sse__return_custom_nested
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_sse__return_custom_nested_error_2_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25677,7 +25953,7 @@ pub fn wire__crate__api__pseudo_manual__exception_twin_sse__return_custom_nested
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_sse__return_custom_struct_error_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25692,7 +25968,7 @@ pub fn wire__crate__api__pseudo_manual__exception_twin_sse__return_custom_struct
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_sse__return_custom_struct_ok_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25707,7 +25983,7 @@ pub fn wire__crate__api__pseudo_manual__exception_twin_sse__return_custom_struct
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_sse__return_err_custom_error_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25722,7 +25998,7 @@ pub fn wire__crate__api__pseudo_manual__exception_twin_sse__return_err_custom_er
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_sse__return_error_variant_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25737,7 +26013,7 @@ pub fn wire__crate__api__pseudo_manual__exception_twin_sse__return_error_variant
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_sse__return_ok_custom_error_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25752,7 +26028,7 @@ pub fn wire__crate__api__pseudo_manual__exception_twin_sse__return_ok_custom_err
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_sse__some_struct_twin_sse_new_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25767,7 +26043,7 @@ pub fn wire__crate__api__pseudo_manual__exception_twin_sse__some_struct_twin_sse
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_sse__some_struct_twin_sse_non_static_return_err_custom_error_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25777,7 +26053,7 @@ pub fn wire__crate__api__pseudo_manual__exception_twin_sse__some_struct_twin_sse
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_sse__some_struct_twin_sse_non_static_return_ok_custom_error_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25787,7 +26063,7 @@ pub fn wire__crate__api__pseudo_manual__exception_twin_sse__some_struct_twin_sse
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_sse__some_struct_twin_sse_static_return_err_custom_error_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25797,7 +26073,7 @@ pub fn wire__crate__api__pseudo_manual__exception_twin_sse__some_struct_twin_sse
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_sse__some_struct_twin_sse_static_return_ok_custom_error_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25807,7 +26083,7 @@ pub fn wire__crate__api__pseudo_manual__exception_twin_sse__some_struct_twin_sse
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_sse__stream_sink_throw_anyhow_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -25822,7 +26098,7 @@ pub fn wire__crate__api__pseudo_manual__exception_twin_sse__stream_sink_throw_an
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__exception_twin_sse__throw_anyhow_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -26303,21 +26579,21 @@ pub fn wire__crate__api__pseudo_manual__exception_twin_sync_sse__throw_anyhow_tw
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__external_type_in_crate_twin_rust_async__call_new_module_system_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__external_type_in_crate_twin_rust_async__call_new_module_system_twin_rust_async_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__external_type_in_crate_twin_rust_async__call_old_module_system_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__external_type_in_crate_twin_rust_async__call_old_module_system_twin_rust_async_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__external_type_in_crate_twin_rust_async__use_imported_enum_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     my_enum: i32,
 ) {
     wire__crate__api__pseudo_manual__external_type_in_crate_twin_rust_async__use_imported_enum_twin_rust_async_impl(port_, my_enum)
@@ -26325,7 +26601,7 @@ pub fn wire__crate__api__pseudo_manual__external_type_in_crate_twin_rust_async__
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__external_type_in_crate_twin_rust_async__use_imported_struct_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     my_struct: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__external_type_in_crate_twin_rust_async__use_imported_struct_twin_rust_async_impl(port_, my_struct)
@@ -26333,7 +26609,7 @@ pub fn wire__crate__api__pseudo_manual__external_type_in_crate_twin_rust_async__
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__external_type_in_crate_twin_rust_async_sse__call_new_module_system_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -26343,7 +26619,7 @@ pub fn wire__crate__api__pseudo_manual__external_type_in_crate_twin_rust_async_s
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__external_type_in_crate_twin_rust_async_sse__call_old_module_system_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -26353,7 +26629,7 @@ pub fn wire__crate__api__pseudo_manual__external_type_in_crate_twin_rust_async_s
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__external_type_in_crate_twin_rust_async_sse__use_imported_enum_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -26363,7 +26639,7 @@ pub fn wire__crate__api__pseudo_manual__external_type_in_crate_twin_rust_async_s
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__external_type_in_crate_twin_rust_async_sse__use_imported_struct_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -26373,7 +26649,7 @@ pub fn wire__crate__api__pseudo_manual__external_type_in_crate_twin_rust_async_s
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__external_type_in_crate_twin_sse__call_new_module_system_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -26383,7 +26659,7 @@ pub fn wire__crate__api__pseudo_manual__external_type_in_crate_twin_sse__call_ne
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__external_type_in_crate_twin_sse__call_old_module_system_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -26393,7 +26669,7 @@ pub fn wire__crate__api__pseudo_manual__external_type_in_crate_twin_sse__call_ol
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__external_type_in_crate_twin_sse__use_imported_enum_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -26403,7 +26679,7 @@ pub fn wire__crate__api__pseudo_manual__external_type_in_crate_twin_sse__use_imp
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__external_type_in_crate_twin_sse__use_imported_struct_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -26494,7 +26770,7 @@ pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructOneWithTraitT
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructOneWithTraitTwinSse_simple_trait_fn_receiver_borrow_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructOneWithTraitTwinSse_simple_trait_fn_receiver_borrow_twin_sse_impl(port_, that)
@@ -26502,7 +26778,7 @@ pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructOneWithTraitT
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructOneWithTraitTwinSse_simple_trait_fn_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     value: i32,
 ) {
     wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructOneWithTraitTwinSse_simple_trait_fn_twin_sse_impl(port_, value)
@@ -26510,7 +26786,7 @@ pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructOneWithTraitT
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructOneWithTraitTwinSse_simple_trait_fn_with_default_impl_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructOneWithTraitTwinSse_simple_trait_fn_with_default_impl_twin_sse_impl(port_)
 }
@@ -26536,7 +26812,7 @@ pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructTwoWithTraitT
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructTwoWithTraitTwinSse_simple_trait_fn_receiver_borrow_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructTwoWithTraitTwinSse_simple_trait_fn_receiver_borrow_twin_sse_impl(port_, that)
@@ -26544,7 +26820,7 @@ pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructTwoWithTraitT
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructTwoWithTraitTwinSse_simple_trait_fn_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     value: i32,
 ) {
     wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructTwoWithTraitTwinSse_simple_trait_fn_twin_sse_impl(port_, value)
@@ -26552,7 +26828,7 @@ pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructTwoWithTraitT
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructTwoWithTraitTwinSse_simple_trait_fn_with_default_impl_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructTwoWithTraitTwinSse_simple_trait_fn_with_default_impl_twin_sse_impl(port_)
 }
@@ -26578,7 +26854,7 @@ pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructOneWithTrait
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructOneWithTraitTwinSync_simple_trait_fn_receiver_borrow_twin_sync(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructOneWithTraitTwinSync_simple_trait_fn_receiver_borrow_twin_sync_impl(port_, that)
@@ -26586,7 +26862,7 @@ pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructOneWithTrait
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructOneWithTraitTwinSync_simple_trait_fn_twin_sync(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     value: i32,
 ) {
     wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructOneWithTraitTwinSync_simple_trait_fn_twin_sync_impl(port_, value)
@@ -26594,7 +26870,7 @@ pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructOneWithTrait
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructOneWithTraitTwinSync_simple_trait_fn_with_default_impl_twin_sync(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructOneWithTraitTwinSync_simple_trait_fn_with_default_impl_twin_sync_impl(port_)
 }
@@ -26620,7 +26896,7 @@ pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructTwoWithTrait
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructTwoWithTraitTwinSync_simple_trait_fn_receiver_borrow_twin_sync(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructTwoWithTraitTwinSync_simple_trait_fn_receiver_borrow_twin_sync_impl(port_, that)
@@ -26628,7 +26904,7 @@ pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructTwoWithTrait
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructTwoWithTraitTwinSync_simple_trait_fn_twin_sync(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     value: i32,
 ) {
     wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructTwoWithTraitTwinSync_simple_trait_fn_twin_sync_impl(port_, value)
@@ -26636,7 +26912,7 @@ pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructTwoWithTrait
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructTwoWithTraitTwinSync_simple_trait_fn_with_default_impl_twin_sync(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructTwoWithTraitTwinSync_simple_trait_fn_with_default_impl_twin_sync_impl(port_)
 }
@@ -26658,7 +26934,7 @@ pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructOneWithT
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructOneWithTraitTwinSyncSse_simple_trait_fn_receiver_borrow_twin_sync_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructOneWithTraitTwinSyncSse_simple_trait_fn_receiver_borrow_twin_sync_sse_impl(port_, that)
@@ -26666,7 +26942,7 @@ pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructOneWithT
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructOneWithTraitTwinSyncSse_simple_trait_fn_twin_sync_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     value: i32,
 ) {
     wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructOneWithTraitTwinSyncSse_simple_trait_fn_twin_sync_sse_impl(port_, value)
@@ -26674,7 +26950,7 @@ pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructOneWithT
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructOneWithTraitTwinSyncSse_simple_trait_fn_with_default_impl_twin_sync_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructOneWithTraitTwinSyncSse_simple_trait_fn_with_default_impl_twin_sync_sse_impl(port_)
 }
@@ -26696,7 +26972,7 @@ pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructTwoWithT
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructTwoWithTraitTwinSyncSse_simple_trait_fn_receiver_borrow_twin_sync_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructTwoWithTraitTwinSyncSse_simple_trait_fn_receiver_borrow_twin_sync_sse_impl(port_, that)
@@ -26704,7 +26980,7 @@ pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructTwoWithT
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructTwoWithTraitTwinSyncSse_simple_trait_fn_twin_sync_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     value: i32,
 ) {
     wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructTwoWithTraitTwinSyncSse_simple_trait_fn_twin_sync_sse_impl(port_, value)
@@ -26712,14 +26988,14 @@ pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructTwoWithT
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructTwoWithTraitTwinSyncSse_simple_trait_fn_with_default_impl_twin_sync_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructTwoWithTraitTwinSyncSse_simple_trait_fn_with_default_impl_twin_sync_sse_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_map_i32_i32_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_map_i32_i32_twin_rust_async_impl(port_, arg)
@@ -26727,7 +27003,7 @@ pub fn wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_m
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_map_string_bytes_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_map_string_bytes_twin_rust_async_impl(port_, arg)
@@ -26735,7 +27011,7 @@ pub fn wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_m
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_map_string_complex_enum_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_map_string_complex_enum_twin_rust_async_impl(port_, arg)
@@ -26743,7 +27019,7 @@ pub fn wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_m
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_map_string_simple_enum_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_map_string_simple_enum_twin_rust_async_impl(port_, arg)
@@ -26751,7 +27027,7 @@ pub fn wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_m
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_map_string_string_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_map_string_string_twin_rust_async_impl(port_, arg)
@@ -26759,7 +27035,7 @@ pub fn wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_m
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_map_string_struct_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_map_string_struct_twin_rust_async_impl(port_, arg)
@@ -26767,7 +27043,7 @@ pub fn wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_m
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_set_i32_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: Box<[i32]>,
 ) {
     wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_set_i32_twin_rust_async_impl(port_, arg)
@@ -26775,7 +27051,7 @@ pub fn wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_s
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_set_string_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_set_string_twin_rust_async_impl(port_, arg)
@@ -26783,7 +27059,7 @@ pub fn wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_s
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__map_and_set_twin_rust_async_sse__func_hash_map_i32_i32_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -26793,7 +27069,7 @@ pub fn wire__crate__api__pseudo_manual__map_and_set_twin_rust_async_sse__func_ha
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__map_and_set_twin_rust_async_sse__func_hash_map_string_bytes_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -26803,7 +27079,7 @@ pub fn wire__crate__api__pseudo_manual__map_and_set_twin_rust_async_sse__func_ha
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__map_and_set_twin_rust_async_sse__func_hash_map_string_complex_enum_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -26813,7 +27089,7 @@ pub fn wire__crate__api__pseudo_manual__map_and_set_twin_rust_async_sse__func_ha
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__map_and_set_twin_rust_async_sse__func_hash_map_string_simple_enum_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -26823,7 +27099,7 @@ pub fn wire__crate__api__pseudo_manual__map_and_set_twin_rust_async_sse__func_ha
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__map_and_set_twin_rust_async_sse__func_hash_map_string_string_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -26833,7 +27109,7 @@ pub fn wire__crate__api__pseudo_manual__map_and_set_twin_rust_async_sse__func_ha
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__map_and_set_twin_rust_async_sse__func_hash_map_string_struct_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -26843,7 +27119,7 @@ pub fn wire__crate__api__pseudo_manual__map_and_set_twin_rust_async_sse__func_ha
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__map_and_set_twin_rust_async_sse__func_hash_set_i32_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -26853,7 +27129,7 @@ pub fn wire__crate__api__pseudo_manual__map_and_set_twin_rust_async_sse__func_ha
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__map_and_set_twin_rust_async_sse__func_hash_set_string_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -26863,7 +27139,7 @@ pub fn wire__crate__api__pseudo_manual__map_and_set_twin_rust_async_sse__func_ha
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__map_and_set_twin_sse__func_hash_map_i32_i32_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -26878,7 +27154,7 @@ pub fn wire__crate__api__pseudo_manual__map_and_set_twin_sse__func_hash_map_i32_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__map_and_set_twin_sse__func_hash_map_string_bytes_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -26893,7 +27169,7 @@ pub fn wire__crate__api__pseudo_manual__map_and_set_twin_sse__func_hash_map_stri
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__map_and_set_twin_sse__func_hash_map_string_complex_enum_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -26903,7 +27179,7 @@ pub fn wire__crate__api__pseudo_manual__map_and_set_twin_sse__func_hash_map_stri
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__map_and_set_twin_sse__func_hash_map_string_simple_enum_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -26913,7 +27189,7 @@ pub fn wire__crate__api__pseudo_manual__map_and_set_twin_sse__func_hash_map_stri
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__map_and_set_twin_sse__func_hash_map_string_string_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -26928,7 +27204,7 @@ pub fn wire__crate__api__pseudo_manual__map_and_set_twin_sse__func_hash_map_stri
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__map_and_set_twin_sse__func_hash_map_string_struct_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -26943,7 +27219,7 @@ pub fn wire__crate__api__pseudo_manual__map_and_set_twin_sse__func_hash_map_stri
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__map_and_set_twin_sse__func_hash_set_i32_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -26958,7 +27234,7 @@ pub fn wire__crate__api__pseudo_manual__map_and_set_twin_sse__func_hash_set_i32_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__map_and_set_twin_sse__func_hash_set_string_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -27107,14 +27383,14 @@ pub fn wire__crate__api__pseudo_manual__map_and_set_twin_sync_sse__func_hash_set
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__method_twin_rust_async__StaticGetterOnlyTwinRustAsync_static_getter_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__method_twin_rust_async__StaticGetterOnlyTwinRustAsync_static_getter_twin_rust_async_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__method_twin_rust_async__concatenate_with_twin_rust_async_concatenate_static_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     a: String,
     b: String,
 ) {
@@ -27123,7 +27399,7 @@ pub fn wire__crate__api__pseudo_manual__method_twin_rust_async__concatenate_with
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__method_twin_rust_async__concatenate_with_twin_rust_async_concatenate_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     b: String,
 ) {
@@ -27132,7 +27408,7 @@ pub fn wire__crate__api__pseudo_manual__method_twin_rust_async__concatenate_with
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__method_twin_rust_async__concatenate_with_twin_rust_async_handle_some_static_stream_sink_single_arg_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     sink: String,
 ) {
     wire__crate__api__pseudo_manual__method_twin_rust_async__concatenate_with_twin_rust_async_handle_some_static_stream_sink_single_arg_twin_rust_async_impl(port_, sink)
@@ -27140,7 +27416,7 @@ pub fn wire__crate__api__pseudo_manual__method_twin_rust_async__concatenate_with
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__method_twin_rust_async__concatenate_with_twin_rust_async_handle_some_static_stream_sink_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     key: u32,
     max: u32,
     sink: String,
@@ -27150,7 +27426,7 @@ pub fn wire__crate__api__pseudo_manual__method_twin_rust_async__concatenate_with
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__method_twin_rust_async__concatenate_with_twin_rust_async_handle_some_stream_sink_at_1_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     sink: String,
 ) {
@@ -27159,7 +27435,7 @@ pub fn wire__crate__api__pseudo_manual__method_twin_rust_async__concatenate_with
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__method_twin_rust_async__concatenate_with_twin_rust_async_handle_some_stream_sink_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     key: u32,
     max: u32,
@@ -27170,7 +27446,7 @@ pub fn wire__crate__api__pseudo_manual__method_twin_rust_async__concatenate_with
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__method_twin_rust_async__concatenate_with_twin_rust_async_new_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     a: String,
 ) {
     wire__crate__api__pseudo_manual__method_twin_rust_async__concatenate_with_twin_rust_async_new_twin_rust_async_impl(port_, a)
@@ -27178,7 +27454,7 @@ pub fn wire__crate__api__pseudo_manual__method_twin_rust_async__concatenate_with
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__method_twin_rust_async__concatenate_with_twin_rust_async_simple_getter_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__method_twin_rust_async__concatenate_with_twin_rust_async_simple_getter_twin_rust_async_impl(port_, that)
@@ -27186,7 +27462,7 @@ pub fn wire__crate__api__pseudo_manual__method_twin_rust_async__concatenate_with
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__method_twin_rust_async__get_sum_array_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     a: u32,
     b: u32,
     c: u32,
@@ -27198,7 +27474,7 @@ pub fn wire__crate__api__pseudo_manual__method_twin_rust_async__get_sum_array_tw
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__method_twin_rust_async__get_sum_struct_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__method_twin_rust_async__get_sum_struct_twin_rust_async_impl(
         port_,
@@ -27207,7 +27483,7 @@ pub fn wire__crate__api__pseudo_manual__method_twin_rust_async__get_sum_struct_t
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__method_twin_rust_async__my_callable_twin_rust_async_call(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     two: String,
 ) {
@@ -27218,7 +27494,7 @@ pub fn wire__crate__api__pseudo_manual__method_twin_rust_async__my_callable_twin
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__method_twin_rust_async__simple_enum_twin_rust_async_return_self_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     one: String,
 ) {
     wire__crate__api__pseudo_manual__method_twin_rust_async__simple_enum_twin_rust_async_return_self_twin_rust_async_impl(port_, one)
@@ -27226,7 +27502,7 @@ pub fn wire__crate__api__pseudo_manual__method_twin_rust_async__simple_enum_twin
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__method_twin_rust_async__simple_enum_twin_rust_async_simple_method_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__method_twin_rust_async__simple_enum_twin_rust_async_simple_method_twin_rust_async_impl(port_, that)
@@ -27234,7 +27510,7 @@ pub fn wire__crate__api__pseudo_manual__method_twin_rust_async__simple_enum_twin
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__method_twin_rust_async__simple_primitive_enum_twin_rust_async_simple_method_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: i32,
 ) {
     wire__crate__api__pseudo_manual__method_twin_rust_async__simple_primitive_enum_twin_rust_async_simple_method_twin_rust_async_impl(port_, that)
@@ -27242,7 +27518,7 @@ pub fn wire__crate__api__pseudo_manual__method_twin_rust_async__simple_primitive
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__method_twin_rust_async__simple_struct_twin_rust_async_arg_self_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     a: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     b: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
@@ -27251,7 +27527,7 @@ pub fn wire__crate__api__pseudo_manual__method_twin_rust_async__simple_struct_tw
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__method_twin_rust_async__simple_struct_twin_rust_async_receiver_borrow_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__method_twin_rust_async__simple_struct_twin_rust_async_receiver_borrow_twin_rust_async_impl(port_, that)
@@ -27259,7 +27535,7 @@ pub fn wire__crate__api__pseudo_manual__method_twin_rust_async__simple_struct_tw
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__method_twin_rust_async__simple_struct_twin_rust_async_receiver_own_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__method_twin_rust_async__simple_struct_twin_rust_async_receiver_own_twin_rust_async_impl(port_, that)
@@ -27267,7 +27543,7 @@ pub fn wire__crate__api__pseudo_manual__method_twin_rust_async__simple_struct_tw
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__method_twin_rust_async__simple_struct_twin_rust_async_return_self_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     one: String,
 ) {
     wire__crate__api__pseudo_manual__method_twin_rust_async__simple_struct_twin_rust_async_return_self_twin_rust_async_impl(port_, one)
@@ -27275,7 +27551,7 @@ pub fn wire__crate__api__pseudo_manual__method_twin_rust_async__simple_struct_tw
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__method_twin_rust_async__simple_struct_twin_rust_async_vec_self_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__method_twin_rust_async__simple_struct_twin_rust_async_vec_self_twin_rust_async_impl(port_, arg)
@@ -27283,7 +27559,7 @@ pub fn wire__crate__api__pseudo_manual__method_twin_rust_async__simple_struct_tw
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__method_twin_rust_async__static_only_twin_rust_async_static_method_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     a: i32,
 ) {
     wire__crate__api__pseudo_manual__method_twin_rust_async__static_only_twin_rust_async_static_method_twin_rust_async_impl(port_, a)
@@ -27291,7 +27567,7 @@ pub fn wire__crate__api__pseudo_manual__method_twin_rust_async__static_only_twin
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__method_twin_rust_async__sum_with_twin_rust_async_sum_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     y: u32,
     z: u32,
@@ -27301,7 +27577,7 @@ pub fn wire__crate__api__pseudo_manual__method_twin_rust_async__sum_with_twin_ru
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__method_twin_rust_async_sse__StaticGetterOnlyTwinRustAsyncSse_static_getter_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -27311,7 +27587,7 @@ pub fn wire__crate__api__pseudo_manual__method_twin_rust_async_sse__StaticGetter
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__method_twin_rust_async_sse__concatenate_with_twin_rust_async_sse_concatenate_static_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -27321,7 +27597,7 @@ pub fn wire__crate__api__pseudo_manual__method_twin_rust_async_sse__concatenate_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__method_twin_rust_async_sse__concatenate_with_twin_rust_async_sse_concatenate_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -27331,7 +27607,7 @@ pub fn wire__crate__api__pseudo_manual__method_twin_rust_async_sse__concatenate_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__method_twin_rust_async_sse__concatenate_with_twin_rust_async_sse_handle_some_static_stream_sink_single_arg_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -27341,7 +27617,7 @@ pub fn wire__crate__api__pseudo_manual__method_twin_rust_async_sse__concatenate_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__method_twin_rust_async_sse__concatenate_with_twin_rust_async_sse_handle_some_static_stream_sink_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -27351,7 +27627,7 @@ pub fn wire__crate__api__pseudo_manual__method_twin_rust_async_sse__concatenate_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__method_twin_rust_async_sse__concatenate_with_twin_rust_async_sse_handle_some_stream_sink_at_1_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -27361,7 +27637,7 @@ pub fn wire__crate__api__pseudo_manual__method_twin_rust_async_sse__concatenate_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__method_twin_rust_async_sse__concatenate_with_twin_rust_async_sse_handle_some_stream_sink_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -27371,7 +27647,7 @@ pub fn wire__crate__api__pseudo_manual__method_twin_rust_async_sse__concatenate_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__method_twin_rust_async_sse__concatenate_with_twin_rust_async_sse_new_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -27381,7 +27657,7 @@ pub fn wire__crate__api__pseudo_manual__method_twin_rust_async_sse__concatenate_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__method_twin_rust_async_sse__concatenate_with_twin_rust_async_sse_simple_getter_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -27391,7 +27667,7 @@ pub fn wire__crate__api__pseudo_manual__method_twin_rust_async_sse__concatenate_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__method_twin_rust_async_sse__get_sum_array_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -27401,7 +27677,7 @@ pub fn wire__crate__api__pseudo_manual__method_twin_rust_async_sse__get_sum_arra
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__method_twin_rust_async_sse__get_sum_struct_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -27411,7 +27687,7 @@ pub fn wire__crate__api__pseudo_manual__method_twin_rust_async_sse__get_sum_stru
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__method_twin_rust_async_sse__my_callable_twin_rust_async_sse_call(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -27421,7 +27697,7 @@ pub fn wire__crate__api__pseudo_manual__method_twin_rust_async_sse__my_callable_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__method_twin_rust_async_sse__simple_enum_twin_rust_async_sse_return_self_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -27431,7 +27707,7 @@ pub fn wire__crate__api__pseudo_manual__method_twin_rust_async_sse__simple_enum_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__method_twin_rust_async_sse__simple_enum_twin_rust_async_sse_simple_method_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -27441,7 +27717,7 @@ pub fn wire__crate__api__pseudo_manual__method_twin_rust_async_sse__simple_enum_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__method_twin_rust_async_sse__simple_primitive_enum_twin_rust_async_sse_simple_method_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -27451,7 +27727,7 @@ pub fn wire__crate__api__pseudo_manual__method_twin_rust_async_sse__simple_primi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__method_twin_rust_async_sse__simple_struct_twin_rust_async_sse_arg_self_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -27461,7 +27737,7 @@ pub fn wire__crate__api__pseudo_manual__method_twin_rust_async_sse__simple_struc
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__method_twin_rust_async_sse__simple_struct_twin_rust_async_sse_receiver_borrow_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -27471,7 +27747,7 @@ pub fn wire__crate__api__pseudo_manual__method_twin_rust_async_sse__simple_struc
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__method_twin_rust_async_sse__simple_struct_twin_rust_async_sse_receiver_own_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -27481,7 +27757,7 @@ pub fn wire__crate__api__pseudo_manual__method_twin_rust_async_sse__simple_struc
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__method_twin_rust_async_sse__simple_struct_twin_rust_async_sse_return_self_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -27491,7 +27767,7 @@ pub fn wire__crate__api__pseudo_manual__method_twin_rust_async_sse__simple_struc
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__method_twin_rust_async_sse__simple_struct_twin_rust_async_sse_vec_self_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -27501,7 +27777,7 @@ pub fn wire__crate__api__pseudo_manual__method_twin_rust_async_sse__simple_struc
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__method_twin_rust_async_sse__static_only_twin_rust_async_sse_static_method_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -27511,7 +27787,7 @@ pub fn wire__crate__api__pseudo_manual__method_twin_rust_async_sse__static_only_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__method_twin_rust_async_sse__sum_with_twin_rust_async_sse_sum_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -27521,7 +27797,7 @@ pub fn wire__crate__api__pseudo_manual__method_twin_rust_async_sse__sum_with_twi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__method_twin_sse__StaticGetterOnlyTwinSse_static_getter_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -27531,7 +27807,7 @@ pub fn wire__crate__api__pseudo_manual__method_twin_sse__StaticGetterOnlyTwinSse
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__method_twin_sse__concatenate_with_twin_sse_concatenate_static_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -27541,7 +27817,7 @@ pub fn wire__crate__api__pseudo_manual__method_twin_sse__concatenate_with_twin_s
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__method_twin_sse__concatenate_with_twin_sse_concatenate_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -27551,7 +27827,7 @@ pub fn wire__crate__api__pseudo_manual__method_twin_sse__concatenate_with_twin_s
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__method_twin_sse__concatenate_with_twin_sse_handle_some_static_stream_sink_single_arg_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -27561,7 +27837,7 @@ pub fn wire__crate__api__pseudo_manual__method_twin_sse__concatenate_with_twin_s
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__method_twin_sse__concatenate_with_twin_sse_handle_some_static_stream_sink_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -27571,7 +27847,7 @@ pub fn wire__crate__api__pseudo_manual__method_twin_sse__concatenate_with_twin_s
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__method_twin_sse__concatenate_with_twin_sse_handle_some_stream_sink_at_1_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -27581,7 +27857,7 @@ pub fn wire__crate__api__pseudo_manual__method_twin_sse__concatenate_with_twin_s
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__method_twin_sse__concatenate_with_twin_sse_handle_some_stream_sink_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -27591,7 +27867,7 @@ pub fn wire__crate__api__pseudo_manual__method_twin_sse__concatenate_with_twin_s
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__method_twin_sse__concatenate_with_twin_sse_new_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -27606,7 +27882,7 @@ pub fn wire__crate__api__pseudo_manual__method_twin_sse__concatenate_with_twin_s
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__method_twin_sse__concatenate_with_twin_sse_simple_getter_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -27616,7 +27892,7 @@ pub fn wire__crate__api__pseudo_manual__method_twin_sse__concatenate_with_twin_s
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__method_twin_sse__get_sum_array_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -27631,7 +27907,7 @@ pub fn wire__crate__api__pseudo_manual__method_twin_sse__get_sum_array_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__method_twin_sse__get_sum_struct_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -27646,7 +27922,7 @@ pub fn wire__crate__api__pseudo_manual__method_twin_sse__get_sum_struct_twin_sse
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__method_twin_sse__my_callable_twin_sse_call(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -27661,7 +27937,7 @@ pub fn wire__crate__api__pseudo_manual__method_twin_sse__my_callable_twin_sse_ca
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__method_twin_sse__simple_enum_twin_sse_return_self_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -27676,7 +27952,7 @@ pub fn wire__crate__api__pseudo_manual__method_twin_sse__simple_enum_twin_sse_re
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__method_twin_sse__simple_enum_twin_sse_simple_method_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -27686,7 +27962,7 @@ pub fn wire__crate__api__pseudo_manual__method_twin_sse__simple_enum_twin_sse_si
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__method_twin_sse__simple_primitive_enum_twin_sse_simple_method_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -27696,7 +27972,7 @@ pub fn wire__crate__api__pseudo_manual__method_twin_sse__simple_primitive_enum_t
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__method_twin_sse__simple_struct_twin_sse_arg_self_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -27711,7 +27987,7 @@ pub fn wire__crate__api__pseudo_manual__method_twin_sse__simple_struct_twin_sse_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__method_twin_sse__simple_struct_twin_sse_receiver_borrow_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -27721,7 +27997,7 @@ pub fn wire__crate__api__pseudo_manual__method_twin_sse__simple_struct_twin_sse_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__method_twin_sse__simple_struct_twin_sse_receiver_own_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -27731,7 +28007,7 @@ pub fn wire__crate__api__pseudo_manual__method_twin_sse__simple_struct_twin_sse_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__method_twin_sse__simple_struct_twin_sse_return_self_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -27741,7 +28017,7 @@ pub fn wire__crate__api__pseudo_manual__method_twin_sse__simple_struct_twin_sse_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__method_twin_sse__simple_struct_twin_sse_vec_self_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -27756,7 +28032,7 @@ pub fn wire__crate__api__pseudo_manual__method_twin_sse__simple_struct_twin_sse_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__method_twin_sse__static_only_twin_sse_static_method_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -27766,7 +28042,7 @@ pub fn wire__crate__api__pseudo_manual__method_twin_sse__static_only_twin_sse_st
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__method_twin_sse__sum_with_twin_sse_sum_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -28161,7 +28437,7 @@ pub fn wire__crate__api__pseudo_manual__method_twin_sync_sse__sum_with_twin_sync
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__app_settings_stream_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     sink: String,
 ) {
     wire__crate__api__pseudo_manual__mirror_twin_rust_async__app_settings_stream_twin_rust_async_impl(port_, sink)
@@ -28169,7 +28445,7 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__app_settings_str
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__app_settings_vec_stream_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     sink: String,
 ) {
     wire__crate__api__pseudo_manual__mirror_twin_rust_async__app_settings_vec_stream_twin_rust_async_impl(port_, sink)
@@ -28177,7 +28453,7 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__app_settings_vec
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__first_number_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     nums: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__mirror_twin_rust_async__first_number_twin_rust_async_impl(
@@ -28187,7 +28463,7 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__first_number_twi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__first_sequence_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     seqs: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__mirror_twin_rust_async__first_sequence_twin_rust_async_impl(
@@ -28197,7 +28473,7 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__first_sequence_t
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__get_app_settings_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__mirror_twin_rust_async__get_app_settings_twin_rust_async_impl(
         port_,
@@ -28206,21 +28482,21 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__get_app_settings
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__get_fallible_app_settings_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__mirror_twin_rust_async__get_fallible_app_settings_twin_rust_async_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__get_message_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__mirror_twin_rust_async__get_message_twin_rust_async_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__is_app_embedded_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     app_settings: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__mirror_twin_rust_async__is_app_embedded_twin_rust_async_impl(
@@ -28231,7 +28507,7 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__is_app_embedded_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__mirror_array_enum_stream_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     sink: String,
 ) {
     wire__crate__api__pseudo_manual__mirror_twin_rust_async__mirror_array_enum_stream_twin_rust_async_impl(port_, sink)
@@ -28239,7 +28515,7 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__mirror_array_enu
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__mirror_enum_stream_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     sink: String,
 ) {
     wire__crate__api__pseudo_manual__mirror_twin_rust_async__mirror_enum_stream_twin_rust_async_impl(
@@ -28249,7 +28525,7 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__mirror_enum_stre
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__mirror_map_enum_stream_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     sink: String,
 ) {
     wire__crate__api__pseudo_manual__mirror_twin_rust_async__mirror_map_enum_stream_twin_rust_async_impl(port_, sink)
@@ -28257,7 +28533,7 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__mirror_map_enum_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__mirror_option_enum_stream_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     sink: String,
 ) {
     wire__crate__api__pseudo_manual__mirror_twin_rust_async__mirror_option_enum_stream_twin_rust_async_impl(port_, sink)
@@ -28265,7 +28541,7 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__mirror_option_en
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__mirror_set_enum_stream_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     sink: String,
 ) {
     wire__crate__api__pseudo_manual__mirror_twin_rust_async__mirror_set_enum_stream_twin_rust_async_impl(port_, sink)
@@ -28273,7 +28549,7 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__mirror_set_enum_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__mirror_struct_stream_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     sink: String,
 ) {
     wire__crate__api__pseudo_manual__mirror_twin_rust_async__mirror_struct_stream_twin_rust_async_impl(port_, sink)
@@ -28281,7 +28557,7 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__mirror_struct_st
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__mirror_tuple_stream_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     sink: String,
 ) {
     wire__crate__api__pseudo_manual__mirror_twin_rust_async__mirror_tuple_stream_twin_rust_async_impl(port_, sink)
@@ -28289,7 +28565,7 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__mirror_tuple_str
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__mirror_vec_enum_stream_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     sink: String,
 ) {
     wire__crate__api__pseudo_manual__mirror_twin_rust_async__mirror_vec_enum_stream_twin_rust_async_impl(port_, sink)
@@ -28297,7 +28573,7 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__mirror_vec_enum_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__repeat_number_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     num: i32,
     times: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
@@ -28308,7 +28584,7 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__repeat_number_tw
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__repeat_sequence_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     seq: i32,
     times: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
@@ -28319,49 +28595,49 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__repeat_sequence_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__test_contains_mirrored_sub_struct_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__mirror_twin_rust_async__test_contains_mirrored_sub_struct_twin_rust_async_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__test_fallible_of_raw_string_mirrored_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__mirror_twin_rust_async__test_fallible_of_raw_string_mirrored_twin_rust_async_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__test_hashmap_with_mirrored_value_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__mirror_twin_rust_async__test_hashmap_with_mirrored_value_twin_rust_async_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__test_list_of_nested_enums_mirrored_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__mirror_twin_rust_async__test_list_of_nested_enums_mirrored_twin_rust_async_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__test_list_of_raw_nested_string_mirrored_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__mirror_twin_rust_async__test_list_of_raw_nested_string_mirrored_twin_rust_async_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__test_nested_raw_string_mirrored_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__mirror_twin_rust_async__test_nested_raw_string_mirrored_twin_rust_async_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__test_raw_string_enum_mirrored_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     nested: bool,
 ) {
     wire__crate__api__pseudo_manual__mirror_twin_rust_async__test_raw_string_enum_mirrored_twin_rust_async_impl(port_, nested)
@@ -28369,14 +28645,14 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__test_raw_string_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__test_raw_string_mirrored_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__mirror_twin_rust_async__test_raw_string_mirrored_twin_rust_async_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async_sse__app_settings_stream_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -28386,7 +28662,7 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async_sse__app_settings
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async_sse__app_settings_vec_stream_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -28396,7 +28672,7 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async_sse__app_settings
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async_sse__first_number_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -28406,7 +28682,7 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async_sse__first_number
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async_sse__first_sequence_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -28416,7 +28692,7 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async_sse__first_sequen
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async_sse__get_app_settings_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -28426,7 +28702,7 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async_sse__get_app_sett
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async_sse__get_fallible_app_settings_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -28436,7 +28712,7 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async_sse__get_fallible
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async_sse__get_message_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -28446,7 +28722,7 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async_sse__get_message_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async_sse__is_app_embedded_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -28456,7 +28732,7 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async_sse__is_app_embed
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async_sse__mirror_array_enum_stream_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -28466,7 +28742,7 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async_sse__mirror_array
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async_sse__mirror_enum_stream_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -28476,7 +28752,7 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async_sse__mirror_enum_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async_sse__mirror_map_enum_stream_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -28486,7 +28762,7 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async_sse__mirror_map_e
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async_sse__mirror_option_enum_stream_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -28496,7 +28772,7 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async_sse__mirror_optio
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async_sse__mirror_set_enum_stream_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -28506,7 +28782,7 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async_sse__mirror_set_e
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async_sse__mirror_struct_stream_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -28516,7 +28792,7 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async_sse__mirror_struc
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async_sse__mirror_tuple_stream_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -28526,7 +28802,7 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async_sse__mirror_tuple
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async_sse__mirror_vec_enum_stream_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -28536,7 +28812,7 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async_sse__mirror_vec_e
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async_sse__repeat_number_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -28546,7 +28822,7 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async_sse__repeat_numbe
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async_sse__repeat_sequence_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -28556,7 +28832,7 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async_sse__repeat_seque
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async_sse__test_contains_mirrored_sub_struct_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -28566,7 +28842,7 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async_sse__test_contain
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async_sse__test_fallible_of_raw_string_mirrored_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -28576,7 +28852,7 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async_sse__test_fallibl
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async_sse__test_hashmap_with_mirrored_value_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -28586,7 +28862,7 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async_sse__test_hashmap
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async_sse__test_list_of_nested_enums_mirrored_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -28596,7 +28872,7 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async_sse__test_list_of
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async_sse__test_list_of_raw_nested_string_mirrored_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -28606,7 +28882,7 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async_sse__test_list_of
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async_sse__test_nested_raw_string_mirrored_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -28616,7 +28892,7 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async_sse__test_nested_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async_sse__test_raw_string_enum_mirrored_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -28626,7 +28902,7 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async_sse__test_raw_str
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async_sse__test_raw_string_mirrored_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -28636,7 +28912,7 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_rust_async_sse__test_raw_str
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_sse__app_settings_stream_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -28651,7 +28927,7 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_sse__app_settings_stream_twi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_sse__app_settings_vec_stream_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -28666,7 +28942,7 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_sse__app_settings_vec_stream
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_sse__first_number_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -28681,7 +28957,7 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_sse__first_number_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_sse__first_sequence_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -28696,7 +28972,7 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_sse__first_sequence_twin_sse
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_sse__get_app_settings_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -28711,7 +28987,7 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_sse__get_app_settings_twin_s
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_sse__get_fallible_app_settings_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -28726,7 +29002,7 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_sse__get_fallible_app_settin
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_sse__get_message_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -28741,7 +29017,7 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_sse__get_message_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_sse__is_app_embedded_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -28756,7 +29032,7 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_sse__is_app_embedded_twin_ss
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_sse__mirror_array_enum_stream_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -28771,7 +29047,7 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_sse__mirror_array_enum_strea
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_sse__mirror_enum_stream_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -28786,7 +29062,7 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_sse__mirror_enum_stream_twin
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_sse__mirror_map_enum_stream_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -28801,7 +29077,7 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_sse__mirror_map_enum_stream_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_sse__mirror_option_enum_stream_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -28816,7 +29092,7 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_sse__mirror_option_enum_stre
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_sse__mirror_set_enum_stream_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -28831,7 +29107,7 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_sse__mirror_set_enum_stream_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_sse__mirror_struct_stream_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -28846,7 +29122,7 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_sse__mirror_struct_stream_tw
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_sse__mirror_tuple_stream_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -28861,7 +29137,7 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_sse__mirror_tuple_stream_twi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_sse__mirror_vec_enum_stream_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -28876,7 +29152,7 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_sse__mirror_vec_enum_stream_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_sse__repeat_number_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -28891,7 +29167,7 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_sse__repeat_number_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_sse__repeat_sequence_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -28906,7 +29182,7 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_sse__repeat_sequence_twin_ss
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_sse__test_contains_mirrored_sub_struct_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -28916,7 +29192,7 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_sse__test_contains_mirrored_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_sse__test_fallible_of_raw_string_mirrored_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -28926,7 +29202,7 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_sse__test_fallible_of_raw_st
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_sse__test_hashmap_with_mirrored_value_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -28941,7 +29217,7 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_sse__test_hashmap_with_mirro
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_sse__test_list_of_nested_enums_mirrored_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -28951,7 +29227,7 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_sse__test_list_of_nested_enu
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_sse__test_list_of_raw_nested_string_mirrored_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -28961,7 +29237,7 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_sse__test_list_of_raw_nested
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_sse__test_nested_raw_string_mirrored_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -28976,7 +29252,7 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_sse__test_nested_raw_string_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_sse__test_raw_string_enum_mirrored_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -28991,7 +29267,7 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_sse__test_raw_string_enum_mi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__mirror_twin_sse__test_raw_string_mirrored_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -29474,14 +29750,14 @@ pub fn wire__crate__api__pseudo_manual__mirror_twin_sync_sse__test_raw_string_mi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__misc_example_twin_rust_async__handle_big_buffers_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__misc_example_twin_rust_async__handle_big_buffers_twin_rust_async_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__misc_example_twin_rust_async__handle_char_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: String,
 ) {
     wire__crate__api__pseudo_manual__misc_example_twin_rust_async__handle_char_twin_rust_async_impl(
@@ -29491,7 +29767,7 @@ pub fn wire__crate__api__pseudo_manual__misc_example_twin_rust_async__handle_cha
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__misc_example_twin_rust_async__handle_complex_struct_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     s: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__misc_example_twin_rust_async__handle_complex_struct_twin_rust_async_impl(port_, s)
@@ -29499,7 +29775,7 @@ pub fn wire__crate__api__pseudo_manual__misc_example_twin_rust_async__handle_com
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__misc_example_twin_rust_async__handle_nested_struct_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     s: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__misc_example_twin_rust_async__handle_nested_struct_twin_rust_async_impl(port_, s)
@@ -29507,7 +29783,7 @@ pub fn wire__crate__api__pseudo_manual__misc_example_twin_rust_async__handle_nes
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__misc_example_twin_rust_async__handle_string_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     s: String,
 ) {
     wire__crate__api__pseudo_manual__misc_example_twin_rust_async__handle_string_twin_rust_async_impl(port_, s)
@@ -29515,7 +29791,7 @@ pub fn wire__crate__api__pseudo_manual__misc_example_twin_rust_async__handle_str
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__misc_example_twin_rust_async__handle_struct_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     boxed: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
@@ -29524,7 +29800,7 @@ pub fn wire__crate__api__pseudo_manual__misc_example_twin_rust_async__handle_str
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__misc_example_twin_rust_async__handle_vec_u8_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     v: Box<[u8]>,
 ) {
     wire__crate__api__pseudo_manual__misc_example_twin_rust_async__handle_vec_u8_twin_rust_async_impl(port_, v)
@@ -29532,7 +29808,7 @@ pub fn wire__crate__api__pseudo_manual__misc_example_twin_rust_async__handle_vec
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__misc_example_twin_rust_async__list_of_primitive_enums_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     weekdays: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__misc_example_twin_rust_async__list_of_primitive_enums_twin_rust_async_impl(port_, weekdays)
@@ -29540,7 +29816,7 @@ pub fn wire__crate__api__pseudo_manual__misc_example_twin_rust_async__list_of_pr
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__misc_example_twin_rust_async__positional_arguments_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     a: i32,
     b: i32,
 ) {
@@ -29549,7 +29825,7 @@ pub fn wire__crate__api__pseudo_manual__misc_example_twin_rust_async__positional
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__misc_example_twin_rust_async__test_abc_enum_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     abc: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__misc_example_twin_rust_async__test_abc_enum_twin_rust_async_impl(port_, abc)
@@ -29557,7 +29833,7 @@ pub fn wire__crate__api__pseudo_manual__misc_example_twin_rust_async__test_abc_e
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__misc_example_twin_rust_async__test_struct_with_enum_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     se: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__misc_example_twin_rust_async__test_struct_with_enum_twin_rust_async_impl(port_, se)
@@ -29565,7 +29841,7 @@ pub fn wire__crate__api__pseudo_manual__misc_example_twin_rust_async__test_struc
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__misc_example_twin_rust_async_sse__handle_big_buffers_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -29575,7 +29851,7 @@ pub fn wire__crate__api__pseudo_manual__misc_example_twin_rust_async_sse__handle
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__misc_example_twin_rust_async_sse__handle_char_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -29585,7 +29861,7 @@ pub fn wire__crate__api__pseudo_manual__misc_example_twin_rust_async_sse__handle
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__misc_example_twin_rust_async_sse__handle_complex_struct_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -29595,7 +29871,7 @@ pub fn wire__crate__api__pseudo_manual__misc_example_twin_rust_async_sse__handle
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__misc_example_twin_rust_async_sse__handle_nested_struct_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -29605,7 +29881,7 @@ pub fn wire__crate__api__pseudo_manual__misc_example_twin_rust_async_sse__handle
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__misc_example_twin_rust_async_sse__handle_string_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -29615,7 +29891,7 @@ pub fn wire__crate__api__pseudo_manual__misc_example_twin_rust_async_sse__handle
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__misc_example_twin_rust_async_sse__handle_struct_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -29625,7 +29901,7 @@ pub fn wire__crate__api__pseudo_manual__misc_example_twin_rust_async_sse__handle
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__misc_example_twin_rust_async_sse__handle_vec_u8_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -29635,7 +29911,7 @@ pub fn wire__crate__api__pseudo_manual__misc_example_twin_rust_async_sse__handle
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__misc_example_twin_rust_async_sse__list_of_primitive_enums_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -29645,7 +29921,7 @@ pub fn wire__crate__api__pseudo_manual__misc_example_twin_rust_async_sse__list_o
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__misc_example_twin_rust_async_sse__positional_arguments_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -29655,7 +29931,7 @@ pub fn wire__crate__api__pseudo_manual__misc_example_twin_rust_async_sse__positi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__misc_example_twin_rust_async_sse__test_abc_enum_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -29665,7 +29941,7 @@ pub fn wire__crate__api__pseudo_manual__misc_example_twin_rust_async_sse__test_a
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__misc_example_twin_rust_async_sse__test_struct_with_enum_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -29675,7 +29951,7 @@ pub fn wire__crate__api__pseudo_manual__misc_example_twin_rust_async_sse__test_s
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__misc_example_twin_sse__handle_big_buffers_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -29690,7 +29966,7 @@ pub fn wire__crate__api__pseudo_manual__misc_example_twin_sse__handle_big_buffer
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__misc_example_twin_sse__handle_char_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -29705,7 +29981,7 @@ pub fn wire__crate__api__pseudo_manual__misc_example_twin_sse__handle_char_twin_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__misc_example_twin_sse__handle_complex_struct_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -29720,7 +29996,7 @@ pub fn wire__crate__api__pseudo_manual__misc_example_twin_sse__handle_complex_st
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__misc_example_twin_sse__handle_nested_struct_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -29735,7 +30011,7 @@ pub fn wire__crate__api__pseudo_manual__misc_example_twin_sse__handle_nested_str
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__misc_example_twin_sse__handle_string_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -29750,7 +30026,7 @@ pub fn wire__crate__api__pseudo_manual__misc_example_twin_sse__handle_string_twi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__misc_example_twin_sse__handle_struct_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -29765,7 +30041,7 @@ pub fn wire__crate__api__pseudo_manual__misc_example_twin_sse__handle_struct_twi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__misc_example_twin_sse__handle_vec_u8_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -29780,7 +30056,7 @@ pub fn wire__crate__api__pseudo_manual__misc_example_twin_sse__handle_vec_u8_twi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__misc_example_twin_sse__list_of_primitive_enums_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -29795,7 +30071,7 @@ pub fn wire__crate__api__pseudo_manual__misc_example_twin_sse__list_of_primitive
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__misc_example_twin_sse__positional_arguments_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -29810,7 +30086,7 @@ pub fn wire__crate__api__pseudo_manual__misc_example_twin_sse__positional_argume
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__misc_example_twin_sse__test_abc_enum_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -29825,7 +30101,7 @@ pub fn wire__crate__api__pseudo_manual__misc_example_twin_sse__test_abc_enum_twi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__misc_example_twin_sse__test_struct_with_enum_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -30045,7 +30321,7 @@ pub fn wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__test_struct_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__misc_type_twin_rust_async__empty_struct_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     empty: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__misc_type_twin_rust_async__empty_struct_twin_rust_async_impl(
@@ -30055,14 +30331,14 @@ pub fn wire__crate__api__pseudo_manual__misc_type_twin_rust_async__empty_struct_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__misc_type_twin_rust_async__func_return_unit_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__misc_type_twin_rust_async__func_return_unit_twin_rust_async_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__misc_type_twin_rust_async__handle_list_of_struct_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     l: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__misc_type_twin_rust_async__handle_list_of_struct_twin_rust_async_impl(port_, l)
@@ -30070,7 +30346,7 @@ pub fn wire__crate__api__pseudo_manual__misc_type_twin_rust_async__handle_list_o
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__misc_type_twin_rust_async__handle_string_list_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     names: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__misc_type_twin_rust_async__handle_string_list_twin_rust_async_impl(port_, names)
@@ -30078,7 +30354,7 @@ pub fn wire__crate__api__pseudo_manual__misc_type_twin_rust_async__handle_string
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__misc_type_twin_rust_async_sse__empty_struct_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -30088,7 +30364,7 @@ pub fn wire__crate__api__pseudo_manual__misc_type_twin_rust_async_sse__empty_str
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__misc_type_twin_rust_async_sse__func_return_unit_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -30098,7 +30374,7 @@ pub fn wire__crate__api__pseudo_manual__misc_type_twin_rust_async_sse__func_retu
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__misc_type_twin_rust_async_sse__handle_list_of_struct_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -30108,7 +30384,7 @@ pub fn wire__crate__api__pseudo_manual__misc_type_twin_rust_async_sse__handle_li
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__misc_type_twin_rust_async_sse__handle_string_list_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -30118,7 +30394,7 @@ pub fn wire__crate__api__pseudo_manual__misc_type_twin_rust_async_sse__handle_st
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__misc_type_twin_sse__empty_struct_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -30133,7 +30409,7 @@ pub fn wire__crate__api__pseudo_manual__misc_type_twin_sse__empty_struct_twin_ss
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__misc_type_twin_sse__func_return_unit_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -30148,7 +30424,7 @@ pub fn wire__crate__api__pseudo_manual__misc_type_twin_sse__func_return_unit_twi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__misc_type_twin_sse__handle_list_of_struct_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -30163,7 +30439,7 @@ pub fn wire__crate__api__pseudo_manual__misc_type_twin_sse__handle_list_of_struc
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__misc_type_twin_sse__handle_string_list_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -30253,7 +30529,7 @@ pub fn wire__crate__api__pseudo_manual__misc_type_twin_sync_sse__handle_string_l
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__newtype_pattern_twin_rust_async__handle_newtype_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__newtype_pattern_twin_rust_async__handle_newtype_twin_rust_async_impl(port_, arg)
@@ -30261,7 +30537,7 @@ pub fn wire__crate__api__pseudo_manual__newtype_pattern_twin_rust_async__handle_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__newtype_pattern_twin_rust_async_sse__handle_newtype_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -30271,7 +30547,7 @@ pub fn wire__crate__api__pseudo_manual__newtype_pattern_twin_rust_async_sse__han
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__newtype_pattern_twin_sse__handle_newtype_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -30302,7 +30578,7 @@ pub fn wire__crate__api__pseudo_manual__newtype_pattern_twin_sync_sse__handle_ne
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__optional_primitive_misc_twin_rust_async__primitive_optional_types_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     my_i32: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     my_i64: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     my_f64: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
@@ -30313,7 +30589,7 @@ pub fn wire__crate__api__pseudo_manual__optional_primitive_misc_twin_rust_async_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__optional_primitive_misc_twin_rust_async_sse__primitive_optional_types_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -30323,7 +30599,7 @@ pub fn wire__crate__api__pseudo_manual__optional_primitive_misc_twin_rust_async_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__optional_primitive_misc_twin_sse__primitive_optional_types_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -30352,7 +30628,7 @@ pub fn wire__crate__api__pseudo_manual__optional_primitive_misc_twin_sync_sse__p
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__optional_twin_rust_async__handle_increment_boxed_optional_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     opt: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__optional_twin_rust_async__handle_increment_boxed_optional_twin_rust_async_impl(port_, opt)
@@ -30360,7 +30636,7 @@ pub fn wire__crate__api__pseudo_manual__optional_twin_rust_async__handle_increme
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__optional_twin_rust_async__handle_option_box_arguments_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     i8box: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     u8box: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     i32box: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
@@ -30374,7 +30650,7 @@ pub fn wire__crate__api__pseudo_manual__optional_twin_rust_async__handle_option_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__optional_twin_rust_async__handle_optional_increment_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     opt: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__optional_twin_rust_async__handle_optional_increment_twin_rust_async_impl(port_, opt)
@@ -30382,7 +30658,7 @@ pub fn wire__crate__api__pseudo_manual__optional_twin_rust_async__handle_optiona
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__optional_twin_rust_async__handle_optional_return_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     left: f64,
     right: f64,
 ) {
@@ -30391,7 +30667,7 @@ pub fn wire__crate__api__pseudo_manual__optional_twin_rust_async__handle_optiona
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__optional_twin_rust_async__handle_optional_struct_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     document: Option<String>,
 ) {
     wire__crate__api__pseudo_manual__optional_twin_rust_async__handle_optional_struct_twin_rust_async_impl(port_, document)
@@ -30399,7 +30675,7 @@ pub fn wire__crate__api__pseudo_manual__optional_twin_rust_async__handle_optiona
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__optional_twin_rust_async__handle_vec_of_opts_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     opt: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__optional_twin_rust_async__handle_vec_of_opts_twin_rust_async_impl(port_, opt)
@@ -30407,7 +30683,7 @@ pub fn wire__crate__api__pseudo_manual__optional_twin_rust_async__handle_vec_of_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__optional_twin_rust_async_sse__handle_increment_boxed_optional_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -30417,7 +30693,7 @@ pub fn wire__crate__api__pseudo_manual__optional_twin_rust_async_sse__handle_inc
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__optional_twin_rust_async_sse__handle_option_box_arguments_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -30427,7 +30703,7 @@ pub fn wire__crate__api__pseudo_manual__optional_twin_rust_async_sse__handle_opt
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__optional_twin_rust_async_sse__handle_optional_increment_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -30437,7 +30713,7 @@ pub fn wire__crate__api__pseudo_manual__optional_twin_rust_async_sse__handle_opt
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__optional_twin_rust_async_sse__handle_optional_return_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -30447,7 +30723,7 @@ pub fn wire__crate__api__pseudo_manual__optional_twin_rust_async_sse__handle_opt
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__optional_twin_rust_async_sse__handle_optional_struct_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -30457,7 +30733,7 @@ pub fn wire__crate__api__pseudo_manual__optional_twin_rust_async_sse__handle_opt
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__optional_twin_rust_async_sse__handle_vec_of_opts_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -30467,7 +30743,7 @@ pub fn wire__crate__api__pseudo_manual__optional_twin_rust_async_sse__handle_vec
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__optional_twin_sse__handle_increment_boxed_optional_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -30477,7 +30753,7 @@ pub fn wire__crate__api__pseudo_manual__optional_twin_sse__handle_increment_boxe
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__optional_twin_sse__handle_option_box_arguments_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -30492,7 +30768,7 @@ pub fn wire__crate__api__pseudo_manual__optional_twin_sse__handle_option_box_arg
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__optional_twin_sse__handle_optional_increment_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -30507,7 +30783,7 @@ pub fn wire__crate__api__pseudo_manual__optional_twin_sse__handle_optional_incre
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__optional_twin_sse__handle_optional_return_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -30522,7 +30798,7 @@ pub fn wire__crate__api__pseudo_manual__optional_twin_sse__handle_optional_retur
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__optional_twin_sse__handle_optional_struct_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -30537,7 +30813,7 @@ pub fn wire__crate__api__pseudo_manual__optional_twin_sse__handle_optional_struc
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__optional_twin_sse__handle_vec_of_opts_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -30667,7 +30943,7 @@ pub fn wire__crate__api__pseudo_manual__optional_twin_sync_sse__handle_vec_of_op
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__ownership_twin_rust_async__borrow_i32_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: i32,
 ) {
     wire__crate__api__pseudo_manual__ownership_twin_rust_async__borrow_i32_twin_rust_async_impl(
@@ -30677,7 +30953,7 @@ pub fn wire__crate__api__pseudo_manual__ownership_twin_rust_async__borrow_i32_tw
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__ownership_twin_rust_async__borrow_slice_string_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__ownership_twin_rust_async__borrow_slice_string_twin_rust_async_impl(port_, arg)
@@ -30685,7 +30961,7 @@ pub fn wire__crate__api__pseudo_manual__ownership_twin_rust_async__borrow_slice_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__ownership_twin_rust_async__borrow_slice_u8_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: Box<[u8]>,
 ) {
     wire__crate__api__pseudo_manual__ownership_twin_rust_async__borrow_slice_u8_twin_rust_async_impl(
@@ -30695,7 +30971,7 @@ pub fn wire__crate__api__pseudo_manual__ownership_twin_rust_async__borrow_slice_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__ownership_twin_rust_async__borrow_str_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: String,
 ) {
     wire__crate__api__pseudo_manual__ownership_twin_rust_async__borrow_str_twin_rust_async_impl(
@@ -30705,7 +30981,7 @@ pub fn wire__crate__api__pseudo_manual__ownership_twin_rust_async__borrow_str_tw
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__ownership_twin_rust_async__borrow_string_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: String,
 ) {
     wire__crate__api__pseudo_manual__ownership_twin_rust_async__borrow_string_twin_rust_async_impl(
@@ -30715,7 +30991,7 @@ pub fn wire__crate__api__pseudo_manual__ownership_twin_rust_async__borrow_string
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__ownership_twin_rust_async__borrow_struct_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__ownership_twin_rust_async__borrow_struct_twin_rust_async_impl(
@@ -30725,7 +31001,7 @@ pub fn wire__crate__api__pseudo_manual__ownership_twin_rust_async__borrow_struct
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__ownership_twin_rust_async_sse__borrow_i32_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -30735,7 +31011,7 @@ pub fn wire__crate__api__pseudo_manual__ownership_twin_rust_async_sse__borrow_i3
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__ownership_twin_rust_async_sse__borrow_slice_string_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -30745,7 +31021,7 @@ pub fn wire__crate__api__pseudo_manual__ownership_twin_rust_async_sse__borrow_sl
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__ownership_twin_rust_async_sse__borrow_slice_u8_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -30755,7 +31031,7 @@ pub fn wire__crate__api__pseudo_manual__ownership_twin_rust_async_sse__borrow_sl
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__ownership_twin_rust_async_sse__borrow_str_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -30765,7 +31041,7 @@ pub fn wire__crate__api__pseudo_manual__ownership_twin_rust_async_sse__borrow_st
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__ownership_twin_rust_async_sse__borrow_string_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -30775,7 +31051,7 @@ pub fn wire__crate__api__pseudo_manual__ownership_twin_rust_async_sse__borrow_st
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__ownership_twin_rust_async_sse__borrow_struct_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -30785,7 +31061,7 @@ pub fn wire__crate__api__pseudo_manual__ownership_twin_rust_async_sse__borrow_st
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__ownership_twin_sse__borrow_i32_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -30800,7 +31076,7 @@ pub fn wire__crate__api__pseudo_manual__ownership_twin_sse__borrow_i32_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__ownership_twin_sse__borrow_slice_string_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -30815,7 +31091,7 @@ pub fn wire__crate__api__pseudo_manual__ownership_twin_sse__borrow_slice_string_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__ownership_twin_sse__borrow_slice_u8_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -30830,7 +31106,7 @@ pub fn wire__crate__api__pseudo_manual__ownership_twin_sse__borrow_slice_u8_twin
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__ownership_twin_sse__borrow_str_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -30845,7 +31121,7 @@ pub fn wire__crate__api__pseudo_manual__ownership_twin_sse__borrow_str_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__ownership_twin_sse__borrow_string_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -30860,7 +31136,7 @@ pub fn wire__crate__api__pseudo_manual__ownership_twin_sse__borrow_string_twin_s
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__ownership_twin_sse__borrow_struct_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -30995,7 +31271,7 @@ pub fn wire__crate__api__pseudo_manual__ownership_twin_sync_sse__borrow_struct_t
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__primitive_list_misc_twin_rust_async__handle_vec_of_primitive_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     n: i32,
 ) {
     wire__crate__api__pseudo_manual__primitive_list_misc_twin_rust_async__handle_vec_of_primitive_twin_rust_async_impl(port_, n)
@@ -31003,7 +31279,7 @@ pub fn wire__crate__api__pseudo_manual__primitive_list_misc_twin_rust_async__han
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__primitive_list_misc_twin_rust_async_sse__handle_vec_of_primitive_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -31013,7 +31289,7 @@ pub fn wire__crate__api__pseudo_manual__primitive_list_misc_twin_rust_async_sse_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__primitive_list_misc_twin_sse__handle_vec_of_primitive_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -31039,7 +31315,7 @@ pub fn wire__crate__api__pseudo_manual__primitive_list_misc_twin_sync_sse__handl
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__primitive_misc_twin_rust_async__primitive_types_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     my_i32: i32,
     my_i64: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     my_f64: f64,
@@ -31050,7 +31326,7 @@ pub fn wire__crate__api__pseudo_manual__primitive_misc_twin_rust_async__primitiv
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__primitive_misc_twin_rust_async__primitive_u32_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     my_u32: u32,
 ) {
     wire__crate__api__pseudo_manual__primitive_misc_twin_rust_async__primitive_u32_twin_rust_async_impl(port_, my_u32)
@@ -31058,7 +31334,7 @@ pub fn wire__crate__api__pseudo_manual__primitive_misc_twin_rust_async__primitiv
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__primitive_misc_twin_rust_async_sse__primitive_types_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -31068,7 +31344,7 @@ pub fn wire__crate__api__pseudo_manual__primitive_misc_twin_rust_async_sse__prim
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__primitive_misc_twin_rust_async_sse__primitive_u32_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -31078,7 +31354,7 @@ pub fn wire__crate__api__pseudo_manual__primitive_misc_twin_rust_async_sse__prim
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__primitive_misc_twin_sse__primitive_types_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -31093,7 +31369,7 @@ pub fn wire__crate__api__pseudo_manual__primitive_misc_twin_sse__primitive_types
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__primitive_misc_twin_sse__primitive_u32_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -31149,21 +31425,21 @@ pub fn wire__crate__api__pseudo_manual__primitive_misc_twin_sync_sse__primitive_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__raw_string_twin_rust_async__test_more_than_just_one_raw_string_struct_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__raw_string_twin_rust_async__test_more_than_just_one_raw_string_struct_twin_rust_async_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__raw_string_twin_rust_async__test_raw_string_item_struct_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__raw_string_twin_rust_async__test_raw_string_item_struct_twin_rust_async_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__raw_string_twin_rust_async_sse__test_more_than_just_one_raw_string_struct_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -31173,7 +31449,7 @@ pub fn wire__crate__api__pseudo_manual__raw_string_twin_rust_async_sse__test_mor
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__raw_string_twin_rust_async_sse__test_raw_string_item_struct_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -31183,7 +31459,7 @@ pub fn wire__crate__api__pseudo_manual__raw_string_twin_rust_async_sse__test_raw
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__raw_string_twin_sse__test_more_than_just_one_raw_string_struct_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -31193,7 +31469,7 @@ pub fn wire__crate__api__pseudo_manual__raw_string_twin_sse__test_more_than_just
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__raw_string_twin_sse__test_raw_string_item_struct_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -31238,7 +31514,7 @@ pub fn wire__crate__api__pseudo_manual__raw_string_twin_sync_sse__test_raw_strin
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__NonCloneSimpleTwinMoi_instance_method_arg_borrow_twin_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__NonCloneSimpleTwinMoi_instance_method_arg_borrow_twin_moi_impl(port_, that)
@@ -31246,7 +31522,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__NonCloneSimpl
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__NonCloneSimpleTwinMoi_instance_method_arg_mut_borrow_twin_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__NonCloneSimpleTwinMoi_instance_method_arg_mut_borrow_twin_moi_impl(port_, that)
@@ -31254,7 +31530,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__NonCloneSimpl
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__NonCloneSimpleTwinMoi_instance_method_arg_own_twin_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__NonCloneSimpleTwinMoi_instance_method_arg_own_twin_moi_impl(port_, that)
@@ -31262,7 +31538,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__NonCloneSimpl
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__NonCloneSimpleTwinMoi_instance_method_getter_twin_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__NonCloneSimpleTwinMoi_instance_method_getter_twin_moi_impl(port_, that)
@@ -31270,7 +31546,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__NonCloneSimpl
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__NonCloneSimpleTwinMoi_instance_method_return_own_twin_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__NonCloneSimpleTwinMoi_instance_method_return_own_twin_moi_impl(port_, that)
@@ -31278,28 +31554,28 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__NonCloneSimpl
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__NonCloneSimpleTwinMoi_new_custom_name_twin_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__NonCloneSimpleTwinMoi_new_custom_name_twin_moi_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__NonCloneSimpleTwinMoi_new_twin_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__NonCloneSimpleTwinMoi_new_twin_moi_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__NonCloneSimpleTwinMoi_new_with_result_twin_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__NonCloneSimpleTwinMoi_new_with_result_twin_moi_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__NonCloneSimpleTwinMoi_static_method_arg_borrow_twin_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__NonCloneSimpleTwinMoi_static_method_arg_borrow_twin_moi_impl(port_, arg)
@@ -31307,7 +31583,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__NonCloneSimpl
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__NonCloneSimpleTwinMoi_static_method_arg_mut_borrow_twin_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__NonCloneSimpleTwinMoi_static_method_arg_mut_borrow_twin_moi_impl(port_, arg)
@@ -31315,7 +31591,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__NonCloneSimpl
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__NonCloneSimpleTwinMoi_static_method_arg_own_twin_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__NonCloneSimpleTwinMoi_static_method_arg_own_twin_moi_impl(port_, arg)
@@ -31323,7 +31599,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__NonCloneSimpl
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__NonCloneSimpleTwinMoi_static_method_return_own_twin_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__NonCloneSimpleTwinMoi_static_method_return_own_twin_moi_impl(port_)
 }
@@ -31345,7 +31621,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__StructWithGoo
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_arg_borrow_twin_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     expect: i32,
 ) {
@@ -31354,7 +31630,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opa
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_arg_mut_borrow_twin_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     expect: i32,
     adder: i32,
@@ -31364,7 +31640,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opa
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_arg_own_and_return_own_twin_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_arg_own_and_return_own_twin_moi_impl(port_, arg)
@@ -31372,7 +31648,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opa
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_arg_own_twin_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     expect: i32,
 ) {
@@ -31381,7 +31657,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opa
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_arg_vec_own_twin_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     expect: Box<[i32]>,
 ) {
@@ -31390,7 +31666,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opa
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_borrow_and_borrow_twin_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     a: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     b: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
@@ -31399,7 +31675,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opa
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_borrow_and_mut_borrow_twin_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     borrow: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     mut_borrow: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
@@ -31408,7 +31684,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opa
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_callable_arg_twin_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_callable_arg_twin_moi_impl(port_, arg)
@@ -31416,14 +31692,14 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opa
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_callable_return_twin_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_callable_return_twin_moi_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_dummy_twin_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     a: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     b: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
@@ -31434,7 +31710,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opa
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_enum_arg_borrow_twin_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_enum_arg_borrow_twin_moi_impl(port_, arg)
@@ -31442,14 +31718,14 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opa
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_enum_return_own_twin_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_enum_return_own_twin_moi_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_moi_impl(port_, arg)
@@ -31457,21 +31733,21 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opa
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_moi_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_moi_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_explicit_arg_twin_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     expect: i32,
 ) {
@@ -31480,14 +31756,14 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opa
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_explicit_return_struct_twin_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_explicit_return_struct_twin_moi_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_explicit_return_twin_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     initial: i32,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_explicit_return_twin_moi_impl(port_, initial)
@@ -31495,7 +31771,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opa
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_explicit_struct_twin_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_explicit_struct_twin_moi_impl(port_, arg)
@@ -31503,7 +31779,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opa
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_normal_and_opaque_arg_twin_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     a: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     b: String,
 ) {
@@ -31512,7 +31788,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opa
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_plus_sign_arg_twin_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_plus_sign_arg_twin_moi_impl(port_, arg)
@@ -31520,28 +31796,28 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opa
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_plus_sign_return_twin_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_plus_sign_return_twin_moi_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_return_opaque_one_and_two_twin_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_return_opaque_one_and_two_twin_moi_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_return_opaque_two_twin_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_return_opaque_two_twin_moi_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_return_own_twin_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     initial: i32,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_return_own_twin_moi_impl(port_, initial)
@@ -31549,14 +31825,14 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opa
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_return_vec_own_twin_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_return_vec_own_twin_moi_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_sleep_twin_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     apple: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     orange: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
@@ -31567,7 +31843,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opa
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_stream_sink_twin_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     sink: String,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_stream_sink_twin_moi_impl(port_, sink)
@@ -31575,7 +31851,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opa
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_moi_impl(port_, arg)
@@ -31583,14 +31859,14 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opa
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_moi_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_two_args_twin_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     a: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     b: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
@@ -31599,7 +31875,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opa
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__NonCloneSimpleTwinRustAsync_instance_method_arg_borrow_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__NonCloneSimpleTwinRustAsync_instance_method_arg_borrow_twin_rust_async_impl(port_, that)
@@ -31607,7 +31883,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__NonClo
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__NonCloneSimpleTwinRustAsync_instance_method_arg_mut_borrow_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__NonCloneSimpleTwinRustAsync_instance_method_arg_mut_borrow_twin_rust_async_impl(port_, that)
@@ -31615,7 +31891,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__NonClo
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__NonCloneSimpleTwinRustAsync_instance_method_arg_own_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__NonCloneSimpleTwinRustAsync_instance_method_arg_own_twin_rust_async_impl(port_, that)
@@ -31623,7 +31899,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__NonClo
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__NonCloneSimpleTwinRustAsync_instance_method_getter_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__NonCloneSimpleTwinRustAsync_instance_method_getter_twin_rust_async_impl(port_, that)
@@ -31631,7 +31907,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__NonClo
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__NonCloneSimpleTwinRustAsync_instance_method_return_own_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__NonCloneSimpleTwinRustAsync_instance_method_return_own_twin_rust_async_impl(port_, that)
@@ -31639,28 +31915,28 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__NonClo
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__NonCloneSimpleTwinRustAsync_new_custom_name_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__NonCloneSimpleTwinRustAsync_new_custom_name_twin_rust_async_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__NonCloneSimpleTwinRustAsync_new_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__NonCloneSimpleTwinRustAsync_new_twin_rust_async_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__NonCloneSimpleTwinRustAsync_new_with_result_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__NonCloneSimpleTwinRustAsync_new_with_result_twin_rust_async_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__NonCloneSimpleTwinRustAsync_static_method_arg_borrow_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__NonCloneSimpleTwinRustAsync_static_method_arg_borrow_twin_rust_async_impl(port_, arg)
@@ -31668,7 +31944,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__NonClo
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__NonCloneSimpleTwinRustAsync_static_method_arg_mut_borrow_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__NonCloneSimpleTwinRustAsync_static_method_arg_mut_borrow_twin_rust_async_impl(port_, arg)
@@ -31676,7 +31952,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__NonClo
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__NonCloneSimpleTwinRustAsync_static_method_arg_own_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__NonCloneSimpleTwinRustAsync_static_method_arg_own_twin_rust_async_impl(port_, arg)
@@ -31684,7 +31960,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__NonClo
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__NonCloneSimpleTwinRustAsync_static_method_return_own_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__NonCloneSimpleTwinRustAsync_static_method_return_own_twin_rust_async_impl(port_)
 }
@@ -31706,7 +31982,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__Struct
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_arg_borrow_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     expect: i32,
 ) {
@@ -31715,7 +31991,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_a
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_arg_mut_borrow_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     expect: i32,
     adder: i32,
@@ -31725,7 +32001,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_a
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_arg_own_and_return_own_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_arg_own_and_return_own_twin_rust_async_impl(port_, arg)
@@ -31733,7 +32009,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_a
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_arg_own_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     expect: i32,
 ) {
@@ -31742,7 +32018,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_a
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_arg_vec_own_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     expect: Box<[i32]>,
 ) {
@@ -31751,7 +32027,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_a
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_borrow_and_borrow_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     a: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     b: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
@@ -31760,7 +32036,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_a
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_borrow_and_mut_borrow_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     borrow: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     mut_borrow: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
@@ -31769,7 +32045,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_a
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_callable_arg_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_callable_arg_twin_rust_async_impl(port_, arg)
@@ -31777,14 +32053,14 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_a
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_callable_return_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_callable_return_twin_rust_async_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_dummy_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     a: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     b: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
@@ -31793,7 +32069,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_a
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_enum_arg_borrow_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_enum_arg_borrow_twin_rust_async_impl(port_, arg)
@@ -31801,14 +32077,14 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_a
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_enum_return_own_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_enum_return_own_twin_rust_async_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_rust_async_impl(port_, arg)
@@ -31816,21 +32092,21 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_a
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_rust_async_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_rust_async_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_explicit_arg_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     expect: i32,
 ) {
@@ -31839,14 +32115,14 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_a
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_explicit_return_struct_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_explicit_return_struct_twin_rust_async_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_explicit_return_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     initial: i32,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_explicit_return_twin_rust_async_impl(port_, initial)
@@ -31854,7 +32130,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_a
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_explicit_struct_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_explicit_struct_twin_rust_async_impl(port_, arg)
@@ -31862,7 +32138,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_a
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_normal_and_opaque_arg_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     a: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     b: String,
 ) {
@@ -31871,7 +32147,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_a
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_plus_sign_arg_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_plus_sign_arg_twin_rust_async_impl(port_, arg)
@@ -31879,28 +32155,28 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_a
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_plus_sign_return_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_plus_sign_return_twin_rust_async_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_return_opaque_one_and_two_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_return_opaque_one_and_two_twin_rust_async_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_return_opaque_two_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_return_opaque_two_twin_rust_async_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_return_own_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     initial: i32,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_return_own_twin_rust_async_impl(port_, initial)
@@ -31908,14 +32184,14 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_a
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_return_vec_own_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_return_vec_own_twin_rust_async_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_sleep_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     apple: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     orange: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
@@ -31924,7 +32200,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_a
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_stream_sink_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     sink: String,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_stream_sink_twin_rust_async_impl(port_, sink)
@@ -31932,7 +32208,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_a
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_rust_async_impl(port_, arg)
@@ -31940,14 +32216,14 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_a
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_rust_async_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_two_args_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     a: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     b: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
@@ -31956,7 +32232,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_a
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__NonCloneSimpleTwinRustAsyncMoi_instance_method_arg_borrow_twin_rust_async_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__NonCloneSimpleTwinRustAsyncMoi_instance_method_arg_borrow_twin_rust_async_moi_impl(port_, that)
@@ -31964,7 +32240,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__No
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__NonCloneSimpleTwinRustAsyncMoi_instance_method_arg_mut_borrow_twin_rust_async_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__NonCloneSimpleTwinRustAsyncMoi_instance_method_arg_mut_borrow_twin_rust_async_moi_impl(port_, that)
@@ -31972,7 +32248,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__No
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__NonCloneSimpleTwinRustAsyncMoi_instance_method_arg_own_twin_rust_async_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__NonCloneSimpleTwinRustAsyncMoi_instance_method_arg_own_twin_rust_async_moi_impl(port_, that)
@@ -31980,7 +32256,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__No
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__NonCloneSimpleTwinRustAsyncMoi_instance_method_getter_twin_rust_async_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__NonCloneSimpleTwinRustAsyncMoi_instance_method_getter_twin_rust_async_moi_impl(port_, that)
@@ -31988,7 +32264,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__No
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__NonCloneSimpleTwinRustAsyncMoi_instance_method_return_own_twin_rust_async_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__NonCloneSimpleTwinRustAsyncMoi_instance_method_return_own_twin_rust_async_moi_impl(port_, that)
@@ -31996,28 +32272,28 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__No
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__NonCloneSimpleTwinRustAsyncMoi_new_custom_name_twin_rust_async_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__NonCloneSimpleTwinRustAsyncMoi_new_custom_name_twin_rust_async_moi_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__NonCloneSimpleTwinRustAsyncMoi_new_twin_rust_async_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__NonCloneSimpleTwinRustAsyncMoi_new_twin_rust_async_moi_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__NonCloneSimpleTwinRustAsyncMoi_new_with_result_twin_rust_async_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__NonCloneSimpleTwinRustAsyncMoi_new_with_result_twin_rust_async_moi_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__NonCloneSimpleTwinRustAsyncMoi_static_method_arg_borrow_twin_rust_async_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__NonCloneSimpleTwinRustAsyncMoi_static_method_arg_borrow_twin_rust_async_moi_impl(port_, arg)
@@ -32025,7 +32301,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__No
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__NonCloneSimpleTwinRustAsyncMoi_static_method_arg_mut_borrow_twin_rust_async_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__NonCloneSimpleTwinRustAsyncMoi_static_method_arg_mut_borrow_twin_rust_async_moi_impl(port_, arg)
@@ -32033,7 +32309,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__No
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__NonCloneSimpleTwinRustAsyncMoi_static_method_arg_own_twin_rust_async_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__NonCloneSimpleTwinRustAsyncMoi_static_method_arg_own_twin_rust_async_moi_impl(port_, arg)
@@ -32041,7 +32317,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__No
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__NonCloneSimpleTwinRustAsyncMoi_static_method_return_own_twin_rust_async_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__NonCloneSimpleTwinRustAsyncMoi_static_method_return_own_twin_rust_async_moi_impl(port_)
 }
@@ -32063,7 +32339,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__St
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_arg_borrow_twin_rust_async_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     expect: i32,
 ) {
@@ -32072,7 +32348,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__ru
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_arg_mut_borrow_twin_rust_async_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     expect: i32,
     adder: i32,
@@ -32082,7 +32358,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__ru
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_arg_own_and_return_own_twin_rust_async_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_arg_own_and_return_own_twin_rust_async_moi_impl(port_, arg)
@@ -32090,7 +32366,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__ru
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_arg_own_twin_rust_async_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     expect: i32,
 ) {
@@ -32099,7 +32375,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__ru
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_arg_vec_own_twin_rust_async_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     expect: Box<[i32]>,
 ) {
@@ -32108,7 +32384,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__ru
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_borrow_and_borrow_twin_rust_async_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     a: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     b: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
@@ -32117,7 +32393,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__ru
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_borrow_and_mut_borrow_twin_rust_async_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     borrow: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     mut_borrow: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
@@ -32126,7 +32402,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__ru
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_callable_arg_twin_rust_async_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_callable_arg_twin_rust_async_moi_impl(port_, arg)
@@ -32134,14 +32410,14 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__ru
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_callable_return_twin_rust_async_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_callable_return_twin_rust_async_moi_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_dummy_twin_rust_async_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     a: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     b: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
@@ -32150,7 +32426,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__ru
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_enum_arg_borrow_twin_rust_async_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_enum_arg_borrow_twin_rust_async_moi_impl(port_, arg)
@@ -32158,14 +32434,14 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__ru
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_enum_return_own_twin_rust_async_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_enum_return_own_twin_rust_async_moi_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_rust_async_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_rust_async_moi_impl(port_, arg)
@@ -32173,21 +32449,21 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__ru
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_rust_async_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_rust_async_moi_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_rust_async_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_rust_async_moi_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_explicit_arg_twin_rust_async_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     expect: i32,
 ) {
@@ -32196,14 +32472,14 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__ru
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_explicit_return_struct_twin_rust_async_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_explicit_return_struct_twin_rust_async_moi_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_explicit_return_twin_rust_async_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     initial: i32,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_explicit_return_twin_rust_async_moi_impl(port_, initial)
@@ -32211,7 +32487,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__ru
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_explicit_struct_twin_rust_async_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_explicit_struct_twin_rust_async_moi_impl(port_, arg)
@@ -32219,7 +32495,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__ru
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_normal_and_opaque_arg_twin_rust_async_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     a: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     b: String,
 ) {
@@ -32228,7 +32504,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__ru
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_plus_sign_arg_twin_rust_async_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_plus_sign_arg_twin_rust_async_moi_impl(port_, arg)
@@ -32236,28 +32512,28 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__ru
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_plus_sign_return_twin_rust_async_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_plus_sign_return_twin_rust_async_moi_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_return_opaque_one_and_two_twin_rust_async_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_return_opaque_one_and_two_twin_rust_async_moi_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_return_opaque_two_twin_rust_async_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_return_opaque_two_twin_rust_async_moi_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_return_own_twin_rust_async_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     initial: i32,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_return_own_twin_rust_async_moi_impl(port_, initial)
@@ -32265,14 +32541,14 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__ru
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_return_vec_own_twin_rust_async_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_return_vec_own_twin_rust_async_moi_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_sleep_twin_rust_async_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     apple: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     orange: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
@@ -32281,7 +32557,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__ru
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_stream_sink_twin_rust_async_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     sink: String,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_stream_sink_twin_rust_async_moi_impl(port_, sink)
@@ -32289,7 +32565,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__ru
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_rust_async_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_rust_async_moi_impl(port_, arg)
@@ -32297,14 +32573,14 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__ru
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_rust_async_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_rust_async_moi_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_two_args_twin_rust_async_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     a: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     b: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
@@ -32313,7 +32589,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__ru
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__NonCloneSimpleTwinRustAsyncSse_instance_method_arg_borrow_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -32323,7 +32599,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__No
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__NonCloneSimpleTwinRustAsyncSse_instance_method_arg_mut_borrow_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -32333,7 +32609,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__No
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__NonCloneSimpleTwinRustAsyncSse_instance_method_arg_own_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -32343,7 +32619,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__No
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__NonCloneSimpleTwinRustAsyncSse_instance_method_getter_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -32353,7 +32629,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__No
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__NonCloneSimpleTwinRustAsyncSse_instance_method_return_own_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -32363,7 +32639,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__No
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__NonCloneSimpleTwinRustAsyncSse_new_custom_name_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -32373,7 +32649,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__No
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__NonCloneSimpleTwinRustAsyncSse_new_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -32383,7 +32659,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__No
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__NonCloneSimpleTwinRustAsyncSse_new_with_result_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -32393,7 +32669,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__No
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__NonCloneSimpleTwinRustAsyncSse_static_method_arg_borrow_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -32403,7 +32679,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__No
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__NonCloneSimpleTwinRustAsyncSse_static_method_arg_mut_borrow_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -32413,7 +32689,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__No
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__NonCloneSimpleTwinRustAsyncSse_static_method_arg_own_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -32423,7 +32699,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__No
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__NonCloneSimpleTwinRustAsyncSse_static_method_return_own_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -32448,7 +32724,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__St
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__rust_auto_opaque_arg_borrow_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -32458,7 +32734,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__ru
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__rust_auto_opaque_arg_mut_borrow_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -32468,7 +32744,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__ru
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__rust_auto_opaque_arg_own_and_return_own_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -32478,7 +32754,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__ru
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__rust_auto_opaque_arg_own_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -32488,7 +32764,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__ru
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__rust_auto_opaque_arg_vec_own_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -32498,7 +32774,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__ru
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__rust_auto_opaque_borrow_and_borrow_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -32508,7 +32784,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__ru
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__rust_auto_opaque_borrow_and_mut_borrow_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -32518,7 +32794,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__ru
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__rust_auto_opaque_callable_arg_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -32528,7 +32804,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__ru
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__rust_auto_opaque_callable_return_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -32538,7 +32814,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__ru
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__rust_auto_opaque_dummy_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -32548,7 +32824,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__ru
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__rust_auto_opaque_enum_arg_borrow_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -32558,7 +32834,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__ru
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__rust_auto_opaque_enum_return_own_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -32568,7 +32844,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__ru
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -32578,7 +32854,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__ru
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -32588,7 +32864,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__ru
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -32598,7 +32874,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__ru
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__rust_auto_opaque_explicit_arg_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -32608,7 +32884,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__ru
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__rust_auto_opaque_explicit_return_struct_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -32618,7 +32894,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__ru
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__rust_auto_opaque_explicit_return_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -32628,7 +32904,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__ru
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__rust_auto_opaque_explicit_struct_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -32638,7 +32914,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__ru
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__rust_auto_opaque_normal_and_opaque_arg_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -32648,7 +32924,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__ru
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__rust_auto_opaque_plus_sign_arg_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -32658,7 +32934,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__ru
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__rust_auto_opaque_plus_sign_return_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -32668,7 +32944,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__ru
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__rust_auto_opaque_return_opaque_one_and_two_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -32678,7 +32954,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__ru
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__rust_auto_opaque_return_opaque_two_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -32688,7 +32964,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__ru
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__rust_auto_opaque_return_own_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -32698,7 +32974,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__ru
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__rust_auto_opaque_return_vec_own_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -32708,7 +32984,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__ru
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__rust_auto_opaque_sleep_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -32718,7 +32994,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__ru
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__rust_auto_opaque_stream_sink_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -32728,7 +33004,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__ru
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -32738,7 +33014,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__ru
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -32748,7 +33024,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__ru
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__rust_auto_opaque_two_args_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -32758,7 +33034,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__ru
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__NonCloneSimpleTwinRustAsyncSseMoi_instance_method_arg_borrow_twin_rust_async_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -32768,7 +33044,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__NonCloneSimpleTwinRustAsyncSseMoi_instance_method_arg_mut_borrow_twin_rust_async_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -32778,7 +33054,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__NonCloneSimpleTwinRustAsyncSseMoi_instance_method_arg_own_twin_rust_async_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -32788,7 +33064,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__NonCloneSimpleTwinRustAsyncSseMoi_instance_method_getter_twin_rust_async_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -32798,7 +33074,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__NonCloneSimpleTwinRustAsyncSseMoi_instance_method_return_own_twin_rust_async_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -32808,7 +33084,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__NonCloneSimpleTwinRustAsyncSseMoi_new_custom_name_twin_rust_async_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -32818,7 +33094,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__NonCloneSimpleTwinRustAsyncSseMoi_new_twin_rust_async_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -32828,7 +33104,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__NonCloneSimpleTwinRustAsyncSseMoi_new_with_result_twin_rust_async_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -32838,7 +33114,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__NonCloneSimpleTwinRustAsyncSseMoi_static_method_arg_borrow_twin_rust_async_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -32848,7 +33124,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__NonCloneSimpleTwinRustAsyncSseMoi_static_method_arg_mut_borrow_twin_rust_async_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -32858,7 +33134,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__NonCloneSimpleTwinRustAsyncSseMoi_static_method_arg_own_twin_rust_async_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -32868,7 +33144,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__NonCloneSimpleTwinRustAsyncSseMoi_static_method_return_own_twin_rust_async_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -32893,7 +33169,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__rust_auto_opaque_arg_borrow_twin_rust_async_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -32903,7 +33179,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__rust_auto_opaque_arg_mut_borrow_twin_rust_async_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -32913,7 +33189,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__rust_auto_opaque_arg_own_and_return_own_twin_rust_async_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -32923,7 +33199,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__rust_auto_opaque_arg_own_twin_rust_async_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -32933,7 +33209,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__rust_auto_opaque_arg_vec_own_twin_rust_async_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -32943,7 +33219,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__rust_auto_opaque_borrow_and_borrow_twin_rust_async_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -32953,7 +33229,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__rust_auto_opaque_borrow_and_mut_borrow_twin_rust_async_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -32963,7 +33239,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__rust_auto_opaque_callable_arg_twin_rust_async_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -32973,7 +33249,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__rust_auto_opaque_callable_return_twin_rust_async_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -32983,7 +33259,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__rust_auto_opaque_dummy_twin_rust_async_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -32993,7 +33269,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__rust_auto_opaque_enum_arg_borrow_twin_rust_async_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33003,7 +33279,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__rust_auto_opaque_enum_return_own_twin_rust_async_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33013,7 +33289,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_rust_async_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33023,7 +33299,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_rust_async_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33033,7 +33309,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_rust_async_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33043,7 +33319,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__rust_auto_opaque_explicit_arg_twin_rust_async_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33053,7 +33329,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__rust_auto_opaque_explicit_return_struct_twin_rust_async_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33063,7 +33339,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__rust_auto_opaque_explicit_return_twin_rust_async_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33073,7 +33349,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__rust_auto_opaque_explicit_struct_twin_rust_async_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33083,7 +33359,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__rust_auto_opaque_normal_and_opaque_arg_twin_rust_async_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33093,7 +33369,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__rust_auto_opaque_plus_sign_arg_twin_rust_async_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33103,7 +33379,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__rust_auto_opaque_plus_sign_return_twin_rust_async_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33113,7 +33389,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__rust_auto_opaque_return_opaque_one_and_two_twin_rust_async_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33123,7 +33399,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__rust_auto_opaque_return_opaque_two_twin_rust_async_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33133,7 +33409,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__rust_auto_opaque_return_own_twin_rust_async_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33143,7 +33419,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__rust_auto_opaque_return_vec_own_twin_rust_async_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33153,7 +33429,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__rust_auto_opaque_sleep_twin_rust_async_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33163,7 +33439,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__rust_auto_opaque_stream_sink_twin_rust_async_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33173,7 +33449,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_rust_async_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33183,7 +33459,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_rust_async_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33193,7 +33469,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__rust_auto_opaque_two_args_twin_rust_async_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33203,7 +33479,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__NonCloneSimpleTwinSse_instance_method_arg_borrow_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33213,7 +33489,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__NonCloneSimpl
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__NonCloneSimpleTwinSse_instance_method_arg_mut_borrow_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33223,7 +33499,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__NonCloneSimpl
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__NonCloneSimpleTwinSse_instance_method_arg_own_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33233,7 +33509,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__NonCloneSimpl
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__NonCloneSimpleTwinSse_instance_method_getter_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33243,7 +33519,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__NonCloneSimpl
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__NonCloneSimpleTwinSse_instance_method_return_own_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33253,7 +33529,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__NonCloneSimpl
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__NonCloneSimpleTwinSse_new_custom_name_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33263,7 +33539,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__NonCloneSimpl
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__NonCloneSimpleTwinSse_new_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33273,7 +33549,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__NonCloneSimpl
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__NonCloneSimpleTwinSse_new_with_result_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33283,7 +33559,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__NonCloneSimpl
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__NonCloneSimpleTwinSse_static_method_arg_borrow_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33293,7 +33569,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__NonCloneSimpl
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__NonCloneSimpleTwinSse_static_method_arg_mut_borrow_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33303,7 +33579,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__NonCloneSimpl
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__NonCloneSimpleTwinSse_static_method_arg_own_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33313,7 +33589,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__NonCloneSimpl
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__NonCloneSimpleTwinSse_static_method_return_own_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33338,7 +33614,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__StructWithGoo
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opaque_arg_borrow_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33348,7 +33624,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opa
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opaque_arg_mut_borrow_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33358,7 +33634,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opa
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opaque_arg_own_and_return_own_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33368,7 +33644,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opa
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opaque_arg_own_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33378,7 +33654,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opa
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opaque_arg_vec_own_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33388,7 +33664,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opa
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opaque_borrow_and_borrow_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33398,7 +33674,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opa
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opaque_borrow_and_mut_borrow_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33408,7 +33684,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opa
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opaque_callable_arg_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33418,7 +33694,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opa
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opaque_callable_return_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33428,7 +33704,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opa
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opaque_dummy_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33443,7 +33719,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opa
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opaque_enum_arg_borrow_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33453,7 +33729,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opa
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opaque_enum_return_own_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33463,7 +33739,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opa
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33473,7 +33749,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opa
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33483,7 +33759,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opa
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33493,7 +33769,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opa
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opaque_explicit_arg_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33503,7 +33779,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opa
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opaque_explicit_return_struct_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33513,7 +33789,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opa
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opaque_explicit_return_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33523,7 +33799,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opa
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opaque_explicit_struct_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33533,7 +33809,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opa
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opaque_normal_and_opaque_arg_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33543,7 +33819,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opa
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opaque_plus_sign_arg_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33553,7 +33829,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opa
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opaque_plus_sign_return_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33563,7 +33839,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opa
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opaque_return_opaque_one_and_two_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33573,7 +33849,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opa
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opaque_return_opaque_two_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33583,7 +33859,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opa
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opaque_return_own_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33593,7 +33869,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opa
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opaque_return_vec_own_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33603,7 +33879,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opa
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opaque_sleep_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33618,7 +33894,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opa
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opaque_stream_sink_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33628,7 +33904,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opa
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33638,7 +33914,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opa
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33648,7 +33924,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opa
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opaque_two_args_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33658,7 +33934,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opa
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__NonCloneSimpleTwinSseMoi_instance_method_arg_borrow_twin_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33668,7 +33944,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__NonCloneS
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__NonCloneSimpleTwinSseMoi_instance_method_arg_mut_borrow_twin_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33678,7 +33954,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__NonCloneS
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__NonCloneSimpleTwinSseMoi_instance_method_arg_own_twin_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33688,7 +33964,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__NonCloneS
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__NonCloneSimpleTwinSseMoi_instance_method_getter_twin_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33698,7 +33974,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__NonCloneS
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__NonCloneSimpleTwinSseMoi_instance_method_return_own_twin_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33708,7 +33984,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__NonCloneS
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__NonCloneSimpleTwinSseMoi_new_custom_name_twin_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33718,7 +33994,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__NonCloneS
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__NonCloneSimpleTwinSseMoi_new_twin_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33728,7 +34004,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__NonCloneS
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__NonCloneSimpleTwinSseMoi_new_with_result_twin_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33738,7 +34014,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__NonCloneS
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__NonCloneSimpleTwinSseMoi_static_method_arg_borrow_twin_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33748,7 +34024,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__NonCloneS
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__NonCloneSimpleTwinSseMoi_static_method_arg_mut_borrow_twin_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33758,7 +34034,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__NonCloneS
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__NonCloneSimpleTwinSseMoi_static_method_arg_own_twin_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33768,7 +34044,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__NonCloneS
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__NonCloneSimpleTwinSseMoi_static_method_return_own_twin_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33793,7 +34069,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__StructWit
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto_opaque_arg_borrow_twin_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33803,7 +34079,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto_opaque_arg_mut_borrow_twin_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33813,7 +34089,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto_opaque_arg_own_and_return_own_twin_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33823,7 +34099,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto_opaque_arg_own_twin_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33833,7 +34109,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto_opaque_arg_vec_own_twin_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33843,7 +34119,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto_opaque_borrow_and_borrow_twin_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33853,7 +34129,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto_opaque_borrow_and_mut_borrow_twin_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33863,7 +34139,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto_opaque_callable_arg_twin_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33873,7 +34149,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto_opaque_callable_return_twin_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33883,7 +34159,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto_opaque_dummy_twin_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33893,7 +34169,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto_opaque_enum_arg_borrow_twin_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33903,7 +34179,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto_opaque_enum_return_own_twin_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33913,7 +34189,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33923,7 +34199,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33933,7 +34209,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33943,7 +34219,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto_opaque_explicit_arg_twin_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33953,7 +34229,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto_opaque_explicit_return_struct_twin_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33963,7 +34239,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto_opaque_explicit_return_twin_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33973,7 +34249,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto_opaque_explicit_struct_twin_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33983,7 +34259,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto_opaque_normal_and_opaque_arg_twin_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -33993,7 +34269,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto_opaque_plus_sign_arg_twin_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -34003,7 +34279,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto_opaque_plus_sign_return_twin_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -34013,7 +34289,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto_opaque_return_opaque_one_and_two_twin_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -34023,7 +34299,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto_opaque_return_opaque_two_twin_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -34033,7 +34309,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto_opaque_return_own_twin_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -34043,7 +34319,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto_opaque_return_vec_own_twin_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -34053,7 +34329,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto_opaque_sleep_twin_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -34063,7 +34339,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto_opaque_stream_sink_twin_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -34073,7 +34349,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -34083,7 +34359,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -34093,7 +34369,7 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto_opaque_two_args_twin_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -35640,7 +35916,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_sync_twin_sse_moi__sync_opti
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_moi__create_array_opaque_enum_twin_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__rust_opaque_twin_moi__create_array_opaque_enum_twin_moi_impl(
         port_,
@@ -35649,21 +35925,21 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_moi__create_array_opaqu
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_moi__create_nested_opaque_twin_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__rust_opaque_twin_moi__create_nested_opaque_twin_moi_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_moi__create_opaque_twin_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__rust_opaque_twin_moi__create_opaque_twin_moi_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_moi__create_option_opaque_twin_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_opaque_twin_moi__create_option_opaque_twin_moi_impl(
@@ -35673,14 +35949,14 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_moi__create_option_opaq
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_moi__frb_generator_test_twin_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__rust_opaque_twin_moi__frb_generator_test_twin_moi_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_moi__opaque_array_run_twin_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     data: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_opaque_twin_moi__opaque_array_run_twin_moi_impl(
@@ -35690,14 +35966,14 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_moi__opaque_array_run_t
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_moi__opaque_array_twin_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__rust_opaque_twin_moi__opaque_array_twin_moi_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_moi__opaque_vec_run_twin_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     data: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_opaque_twin_moi__opaque_vec_run_twin_moi_impl(port_, data)
@@ -35705,14 +35981,14 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_moi__opaque_vec_run_twi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_moi__opaque_vec_twin_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__rust_opaque_twin_moi__opaque_vec_twin_moi_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_moi__run_enum_opaque_twin_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_opaque_twin_moi__run_enum_opaque_twin_moi_impl(
@@ -35722,7 +35998,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_moi__run_enum_opaque_tw
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_moi__run_nested_opaque_twin_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_opaque_twin_moi__run_nested_opaque_twin_moi_impl(
@@ -35732,7 +36008,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_moi__run_nested_opaque_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_moi__run_non_clone_twin_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     clone: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_opaque_twin_moi__run_non_clone_twin_moi_impl(port_, clone)
@@ -35740,7 +36016,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_moi__run_non_clone_twin
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_moi__run_opaque_twin_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_opaque_twin_moi__run_opaque_twin_moi_impl(port_, opaque)
@@ -35748,7 +36024,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_moi__run_opaque_twin_mo
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_moi__run_opaque_with_delay_twin_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_opaque_twin_moi__run_opaque_with_delay_twin_moi_impl(
@@ -35758,7 +36034,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_moi__run_opaque_with_de
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_moi__unwrap_rust_opaque_twin_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_opaque_twin_moi__unwrap_rust_opaque_twin_moi_impl(
@@ -35768,21 +36044,21 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_moi__unwrap_rust_opaque
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__create_array_opaque_enum_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__create_array_opaque_enum_twin_rust_async_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__create_nested_opaque_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__create_nested_opaque_twin_rust_async_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__create_opaque_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__create_opaque_twin_rust_async_impl(
         port_,
@@ -35791,7 +36067,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__create_opaq
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__create_option_opaque_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__create_option_opaque_twin_rust_async_impl(port_, opaque)
@@ -35799,14 +36075,14 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__create_opti
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__frb_generator_test_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__frb_generator_test_twin_rust_async_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__opaque_array_run_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     data: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__opaque_array_run_twin_rust_async_impl(port_, data)
@@ -35814,7 +36090,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__opaque_arra
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__opaque_array_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__opaque_array_twin_rust_async_impl(
         port_,
@@ -35823,7 +36099,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__opaque_arra
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__opaque_vec_run_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     data: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__opaque_vec_run_twin_rust_async_impl(port_, data)
@@ -35831,7 +36107,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__opaque_vec_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__opaque_vec_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__opaque_vec_twin_rust_async_impl(
         port_,
@@ -35840,7 +36116,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__opaque_vec_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__run_enum_opaque_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__run_enum_opaque_twin_rust_async_impl(port_, opaque)
@@ -35848,7 +36124,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__run_enum_op
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__run_nested_opaque_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__run_nested_opaque_twin_rust_async_impl(port_, opaque)
@@ -35856,7 +36132,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__run_nested_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__run_non_clone_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     clone: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__run_non_clone_twin_rust_async_impl(
@@ -35866,7 +36142,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__run_non_clo
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__run_opaque_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__run_opaque_twin_rust_async_impl(
@@ -35876,7 +36152,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__run_opaque_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__run_opaque_with_delay_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__run_opaque_with_delay_twin_rust_async_impl(port_, opaque)
@@ -35884,7 +36160,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__run_opaque_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__unwrap_rust_opaque_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__unwrap_rust_opaque_twin_rust_async_impl(port_, opaque)
@@ -35892,28 +36168,28 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__unwrap_rust
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__create_array_opaque_enum_twin_rust_async_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__create_array_opaque_enum_twin_rust_async_moi_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__create_nested_opaque_twin_rust_async_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__create_nested_opaque_twin_rust_async_moi_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__create_opaque_twin_rust_async_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__create_opaque_twin_rust_async_moi_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__create_option_opaque_twin_rust_async_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__create_option_opaque_twin_rust_async_moi_impl(port_, opaque)
@@ -35921,14 +36197,14 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__create_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__frb_generator_test_twin_rust_async_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__frb_generator_test_twin_rust_async_moi_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__opaque_array_run_twin_rust_async_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     data: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__opaque_array_run_twin_rust_async_moi_impl(port_, data)
@@ -35936,14 +36212,14 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__opaque_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__opaque_array_twin_rust_async_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__opaque_array_twin_rust_async_moi_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__opaque_vec_run_twin_rust_async_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     data: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__opaque_vec_run_twin_rust_async_moi_impl(port_, data)
@@ -35951,14 +36227,14 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__opaque_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__opaque_vec_twin_rust_async_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__opaque_vec_twin_rust_async_moi_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__run_enum_opaque_twin_rust_async_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__run_enum_opaque_twin_rust_async_moi_impl(port_, opaque)
@@ -35966,7 +36242,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__run_enu
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__run_nested_opaque_twin_rust_async_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__run_nested_opaque_twin_rust_async_moi_impl(port_, opaque)
@@ -35974,7 +36250,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__run_nes
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__run_non_clone_twin_rust_async_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     clone: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__run_non_clone_twin_rust_async_moi_impl(port_, clone)
@@ -35982,7 +36258,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__run_non
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__run_opaque_twin_rust_async_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__run_opaque_twin_rust_async_moi_impl(port_, opaque)
@@ -35990,7 +36266,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__run_opa
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__run_opaque_with_delay_twin_rust_async_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__run_opaque_with_delay_twin_rust_async_moi_impl(port_, opaque)
@@ -35998,7 +36274,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__run_opa
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__unwrap_rust_opaque_twin_rust_async_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__unwrap_rust_opaque_twin_rust_async_moi_impl(port_, opaque)
@@ -36006,7 +36282,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__unwrap_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse__create_array_opaque_enum_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -36016,7 +36292,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse__create_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse__create_nested_opaque_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -36026,7 +36302,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse__create_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse__create_opaque_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -36036,7 +36312,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse__create_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse__create_option_opaque_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -36046,7 +36322,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse__create_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse__frb_generator_test_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -36056,7 +36332,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse__frb_gen
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse__opaque_array_run_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -36066,7 +36342,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse__opaque_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse__opaque_array_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -36076,7 +36352,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse__opaque_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse__opaque_vec_run_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -36086,7 +36362,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse__opaque_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse__opaque_vec_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -36096,7 +36372,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse__opaque_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse__run_enum_opaque_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -36106,7 +36382,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse__run_enu
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse__run_nested_opaque_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -36116,7 +36392,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse__run_nes
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse__run_non_clone_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -36126,7 +36402,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse__run_non
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse__run_opaque_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -36136,7 +36412,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse__run_opa
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse__run_opaque_with_delay_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -36146,7 +36422,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse__run_opa
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse__unwrap_rust_opaque_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -36156,7 +36432,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse__unwrap_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse_moi__create_array_opaque_enum_twin_rust_async_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -36166,7 +36442,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse_moi__cre
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse_moi__create_nested_opaque_twin_rust_async_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -36176,7 +36452,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse_moi__cre
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse_moi__create_opaque_twin_rust_async_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -36186,7 +36462,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse_moi__cre
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse_moi__create_option_opaque_twin_rust_async_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -36196,7 +36472,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse_moi__cre
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse_moi__frb_generator_test_twin_rust_async_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -36206,7 +36482,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse_moi__frb
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse_moi__opaque_array_run_twin_rust_async_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -36216,7 +36492,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse_moi__opa
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse_moi__opaque_array_twin_rust_async_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -36226,7 +36502,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse_moi__opa
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse_moi__opaque_vec_run_twin_rust_async_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -36236,7 +36512,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse_moi__opa
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse_moi__opaque_vec_twin_rust_async_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -36246,7 +36522,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse_moi__opa
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse_moi__run_enum_opaque_twin_rust_async_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -36256,7 +36532,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse_moi__run
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse_moi__run_nested_opaque_twin_rust_async_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -36266,7 +36542,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse_moi__run
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse_moi__run_non_clone_twin_rust_async_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -36276,7 +36552,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse_moi__run
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse_moi__run_opaque_twin_rust_async_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -36286,7 +36562,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse_moi__run
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse_moi__run_opaque_with_delay_twin_rust_async_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -36296,7 +36572,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse_moi__run
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse_moi__unwrap_rust_opaque_twin_rust_async_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -36306,7 +36582,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse_moi__unw
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sse__create_array_opaque_enum_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -36321,7 +36597,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sse__create_array_opaqu
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sse__create_nested_opaque_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -36336,7 +36612,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sse__create_nested_opaq
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sse__create_opaque_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -36351,7 +36627,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sse__create_opaque_twin
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sse__create_option_opaque_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -36366,7 +36642,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sse__create_option_opaq
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sse__frb_generator_test_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -36381,7 +36657,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sse__frb_generator_test
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sse__opaque_array_run_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -36396,7 +36672,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sse__opaque_array_run_t
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sse__opaque_array_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -36411,7 +36687,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sse__opaque_array_twin_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sse__opaque_vec_run_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -36426,7 +36702,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sse__opaque_vec_run_twi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sse__opaque_vec_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -36441,7 +36717,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sse__opaque_vec_twin_ss
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sse__run_enum_opaque_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -36456,7 +36732,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sse__run_enum_opaque_tw
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sse__run_nested_opaque_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -36471,7 +36747,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sse__run_nested_opaque_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sse__run_non_clone_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -36486,7 +36762,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sse__run_non_clone_twin
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sse__run_opaque_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -36501,7 +36777,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sse__run_opaque_twin_ss
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sse__run_opaque_with_delay_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -36516,7 +36792,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sse__run_opaque_with_de
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sse__unwrap_rust_opaque_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -36531,7 +36807,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sse__unwrap_rust_opaque
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sse_moi__create_array_opaque_enum_twin_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -36541,7 +36817,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sse_moi__create_array_o
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sse_moi__create_nested_opaque_twin_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -36551,7 +36827,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sse_moi__create_nested_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sse_moi__create_opaque_twin_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -36566,7 +36842,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sse_moi__create_opaque_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sse_moi__create_option_opaque_twin_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -36576,7 +36852,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sse_moi__create_option_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sse_moi__frb_generator_test_twin_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -36591,7 +36867,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sse_moi__frb_generator_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sse_moi__opaque_array_run_twin_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -36606,7 +36882,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sse_moi__opaque_array_r
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sse_moi__opaque_array_twin_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -36621,7 +36897,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sse_moi__opaque_array_t
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sse_moi__opaque_vec_run_twin_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -36636,7 +36912,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sse_moi__opaque_vec_run
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sse_moi__opaque_vec_twin_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -36651,7 +36927,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sse_moi__opaque_vec_twi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sse_moi__run_enum_opaque_twin_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -36666,7 +36942,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sse_moi__run_enum_opaqu
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sse_moi__run_nested_opaque_twin_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -36681,7 +36957,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sse_moi__run_nested_opa
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sse_moi__run_non_clone_twin_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -36696,7 +36972,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sse_moi__run_non_clone_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sse_moi__run_opaque_twin_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -36711,7 +36987,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sse_moi__run_opaque_twi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sse_moi__run_opaque_with_delay_twin_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -36721,7 +36997,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sse_moi__run_opaque_wit
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sse_moi__unwrap_rust_opaque_twin_sse_moi(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -37259,7 +37535,7 @@ pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse_moi__unwrap_ru
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__simple_twin_rust_async__simple_adder_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     a: i32,
     b: i32,
 ) {
@@ -37270,7 +37546,7 @@ pub fn wire__crate__api__pseudo_manual__simple_twin_rust_async__simple_adder_twi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__simple_twin_rust_async_sse__simple_adder_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -37280,7 +37556,7 @@ pub fn wire__crate__api__pseudo_manual__simple_twin_rust_async_sse__simple_adder
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__simple_twin_sse__simple_adder_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -37316,7 +37592,7 @@ pub fn wire__crate__api__pseudo_manual__simple_twin_sync_sse__simple_adder_twin_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__stream_misc_twin_sse__func_stream_realistic_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -37331,7 +37607,7 @@ pub fn wire__crate__api__pseudo_manual__stream_misc_twin_sse__func_stream_realis
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__stream_misc_twin_sse__stream_sink_dart_async_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -37346,7 +37622,7 @@ pub fn wire__crate__api__pseudo_manual__stream_misc_twin_sse__stream_sink_dart_a
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__stream_twin_rust_async__func_stream_add_value_and_error_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     sink: String,
 ) {
     wire__crate__api__pseudo_manual__stream_twin_rust_async__func_stream_add_value_and_error_twin_rust_async_impl(port_, sink)
@@ -37354,7 +37630,7 @@ pub fn wire__crate__api__pseudo_manual__stream_twin_rust_async__func_stream_add_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__stream_twin_rust_async__func_stream_return_error_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     _sink: String,
 ) {
     wire__crate__api__pseudo_manual__stream_twin_rust_async__func_stream_return_error_twin_rust_async_impl(port_, _sink)
@@ -37362,7 +37638,7 @@ pub fn wire__crate__api__pseudo_manual__stream_twin_rust_async__func_stream_retu
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__stream_twin_rust_async__func_stream_return_panic_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     _sink: String,
 ) {
     wire__crate__api__pseudo_manual__stream_twin_rust_async__func_stream_return_panic_twin_rust_async_impl(port_, _sink)
@@ -37370,7 +37646,7 @@ pub fn wire__crate__api__pseudo_manual__stream_twin_rust_async__func_stream_retu
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__stream_twin_rust_async__func_stream_sink_arg_position_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     a: u32,
     b: u32,
     c: String,
@@ -37380,7 +37656,7 @@ pub fn wire__crate__api__pseudo_manual__stream_twin_rust_async__func_stream_sink
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__stream_twin_rust_async__handle_stream_of_struct_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     _sink: String,
 ) {
     wire__crate__api__pseudo_manual__stream_twin_rust_async__handle_stream_of_struct_twin_rust_async_impl(port_, _sink)
@@ -37388,7 +37664,7 @@ pub fn wire__crate__api__pseudo_manual__stream_twin_rust_async__handle_stream_of
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__stream_twin_rust_async__handle_stream_sink_at_1_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     key: u32,
     max: u32,
     sink: String,
@@ -37398,7 +37674,7 @@ pub fn wire__crate__api__pseudo_manual__stream_twin_rust_async__handle_stream_si
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__stream_twin_rust_async__handle_stream_sink_at_2_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     key: u32,
     sink: String,
     max: u32,
@@ -37408,7 +37684,7 @@ pub fn wire__crate__api__pseudo_manual__stream_twin_rust_async__handle_stream_si
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__stream_twin_rust_async__handle_stream_sink_at_3_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     sink: String,
     key: u32,
     max: u32,
@@ -37418,7 +37694,7 @@ pub fn wire__crate__api__pseudo_manual__stream_twin_rust_async__handle_stream_si
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__stream_twin_rust_async__stream_sink_fixed_sized_primitive_array_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     sink: String,
 ) {
     wire__crate__api__pseudo_manual__stream_twin_rust_async__stream_sink_fixed_sized_primitive_array_twin_rust_async_impl(port_, sink)
@@ -37426,7 +37702,7 @@ pub fn wire__crate__api__pseudo_manual__stream_twin_rust_async__stream_sink_fixe
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__stream_twin_rust_async__stream_sink_inside_struct_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__stream_twin_rust_async__stream_sink_inside_struct_twin_rust_async_impl(port_, arg)
@@ -37434,7 +37710,7 @@ pub fn wire__crate__api__pseudo_manual__stream_twin_rust_async__stream_sink_insi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__stream_twin_rust_async__stream_sink_inside_vec_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__stream_twin_rust_async__stream_sink_inside_vec_twin_rust_async_impl(port_, arg)
@@ -37442,7 +37718,7 @@ pub fn wire__crate__api__pseudo_manual__stream_twin_rust_async__stream_sink_insi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__stream_twin_rust_async_sse__func_stream_add_value_and_error_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -37452,7 +37728,7 @@ pub fn wire__crate__api__pseudo_manual__stream_twin_rust_async_sse__func_stream_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__stream_twin_rust_async_sse__func_stream_return_error_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -37462,7 +37738,7 @@ pub fn wire__crate__api__pseudo_manual__stream_twin_rust_async_sse__func_stream_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__stream_twin_rust_async_sse__func_stream_return_panic_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -37472,7 +37748,7 @@ pub fn wire__crate__api__pseudo_manual__stream_twin_rust_async_sse__func_stream_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__stream_twin_rust_async_sse__func_stream_sink_arg_position_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -37482,7 +37758,7 @@ pub fn wire__crate__api__pseudo_manual__stream_twin_rust_async_sse__func_stream_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__stream_twin_rust_async_sse__handle_stream_of_struct_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -37492,7 +37768,7 @@ pub fn wire__crate__api__pseudo_manual__stream_twin_rust_async_sse__handle_strea
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__stream_twin_rust_async_sse__handle_stream_sink_at_1_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -37502,7 +37778,7 @@ pub fn wire__crate__api__pseudo_manual__stream_twin_rust_async_sse__handle_strea
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__stream_twin_rust_async_sse__handle_stream_sink_at_2_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -37512,7 +37788,7 @@ pub fn wire__crate__api__pseudo_manual__stream_twin_rust_async_sse__handle_strea
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__stream_twin_rust_async_sse__handle_stream_sink_at_3_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -37522,7 +37798,7 @@ pub fn wire__crate__api__pseudo_manual__stream_twin_rust_async_sse__handle_strea
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__stream_twin_rust_async_sse__stream_sink_fixed_sized_primitive_array_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -37532,7 +37808,7 @@ pub fn wire__crate__api__pseudo_manual__stream_twin_rust_async_sse__stream_sink_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__stream_twin_rust_async_sse__stream_sink_inside_struct_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -37542,7 +37818,7 @@ pub fn wire__crate__api__pseudo_manual__stream_twin_rust_async_sse__stream_sink_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__stream_twin_rust_async_sse__stream_sink_inside_vec_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -37552,7 +37828,7 @@ pub fn wire__crate__api__pseudo_manual__stream_twin_rust_async_sse__stream_sink_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__stream_twin_sse__func_stream_add_value_and_error_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -37567,7 +37843,7 @@ pub fn wire__crate__api__pseudo_manual__stream_twin_sse__func_stream_add_value_a
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__stream_twin_sse__func_stream_return_error_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -37582,7 +37858,7 @@ pub fn wire__crate__api__pseudo_manual__stream_twin_sse__func_stream_return_erro
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__stream_twin_sse__func_stream_return_panic_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -37597,7 +37873,7 @@ pub fn wire__crate__api__pseudo_manual__stream_twin_sse__func_stream_return_pani
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__stream_twin_sse__func_stream_sink_arg_position_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -37612,7 +37888,7 @@ pub fn wire__crate__api__pseudo_manual__stream_twin_sse__func_stream_sink_arg_po
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__stream_twin_sse__handle_stream_of_struct_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -37627,7 +37903,7 @@ pub fn wire__crate__api__pseudo_manual__stream_twin_sse__handle_stream_of_struct
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__stream_twin_sse__handle_stream_sink_at_1_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -37642,7 +37918,7 @@ pub fn wire__crate__api__pseudo_manual__stream_twin_sse__handle_stream_sink_at_1
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__stream_twin_sse__handle_stream_sink_at_2_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -37657,7 +37933,7 @@ pub fn wire__crate__api__pseudo_manual__stream_twin_sse__handle_stream_sink_at_2
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__stream_twin_sse__handle_stream_sink_at_3_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -37672,7 +37948,7 @@ pub fn wire__crate__api__pseudo_manual__stream_twin_sse__handle_stream_sink_at_3
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__stream_twin_sse__stream_sink_fixed_sized_primitive_array_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -37682,7 +37958,7 @@ pub fn wire__crate__api__pseudo_manual__stream_twin_sse__stream_sink_fixed_sized
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__stream_twin_sse__stream_sink_inside_struct_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -37697,7 +37973,7 @@ pub fn wire__crate__api__pseudo_manual__stream_twin_sse__stream_sink_inside_stru
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__stream_twin_sse__stream_sink_inside_vec_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -37711,8 +37987,24 @@ pub fn wire__crate__api__pseudo_manual__stream_twin_sse__stream_sink_inside_vec_
 }
 
 #[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__structure_twin_rust_async__func_for_struct_with_dart_keyword_field_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire__crate__api__pseudo_manual__structure_twin_rust_async__func_for_struct_with_dart_keyword_field_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__structure_twin_rust_async__func_for_struct_with_field_rename_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire__crate__api__pseudo_manual__structure_twin_rust_async__func_for_struct_with_field_rename_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__structure_twin_rust_async__func_struct_with_one_field_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__structure_twin_rust_async__func_struct_with_one_field_twin_rust_async_impl(port_, arg)
@@ -37720,7 +38012,7 @@ pub fn wire__crate__api__pseudo_manual__structure_twin_rust_async__func_struct_w
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__structure_twin_rust_async__func_struct_with_two_field_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__structure_twin_rust_async__func_struct_with_two_field_twin_rust_async_impl(port_, arg)
@@ -37728,7 +38020,7 @@ pub fn wire__crate__api__pseudo_manual__structure_twin_rust_async__func_struct_w
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__structure_twin_rust_async__func_struct_with_zero_field_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__structure_twin_rust_async__func_struct_with_zero_field_twin_rust_async_impl(port_, arg)
@@ -37736,7 +38028,7 @@ pub fn wire__crate__api__pseudo_manual__structure_twin_rust_async__func_struct_w
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__structure_twin_rust_async__func_tuple_struct_with_one_field_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__structure_twin_rust_async__func_tuple_struct_with_one_field_twin_rust_async_impl(port_, arg)
@@ -37744,15 +38036,35 @@ pub fn wire__crate__api__pseudo_manual__structure_twin_rust_async__func_tuple_st
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__structure_twin_rust_async__func_tuple_struct_with_two_field_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__structure_twin_rust_async__func_tuple_struct_with_two_field_twin_rust_async_impl(port_, arg)
 }
 
 #[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__structure_twin_rust_async_sse__func_for_struct_with_dart_keyword_field_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire__crate__api__pseudo_manual__structure_twin_rust_async_sse__func_for_struct_with_dart_keyword_field_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__structure_twin_rust_async_sse__func_for_struct_with_field_rename_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire__crate__api__pseudo_manual__structure_twin_rust_async_sse__func_for_struct_with_field_rename_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__structure_twin_rust_async_sse__func_struct_with_one_field_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -37762,7 +38074,7 @@ pub fn wire__crate__api__pseudo_manual__structure_twin_rust_async_sse__func_stru
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__structure_twin_rust_async_sse__func_struct_with_two_field_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -37772,7 +38084,7 @@ pub fn wire__crate__api__pseudo_manual__structure_twin_rust_async_sse__func_stru
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__structure_twin_rust_async_sse__func_struct_with_zero_field_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -37782,7 +38094,7 @@ pub fn wire__crate__api__pseudo_manual__structure_twin_rust_async_sse__func_stru
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__structure_twin_rust_async_sse__func_tuple_struct_with_one_field_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -37792,7 +38104,7 @@ pub fn wire__crate__api__pseudo_manual__structure_twin_rust_async_sse__func_tupl
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__structure_twin_rust_async_sse__func_tuple_struct_with_two_field_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -37801,8 +38113,28 @@ pub fn wire__crate__api__pseudo_manual__structure_twin_rust_async_sse__func_tupl
 }
 
 #[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__structure_twin_sse__func_for_struct_with_dart_keyword_field_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire__crate__api__pseudo_manual__structure_twin_sse__func_for_struct_with_dart_keyword_field_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__structure_twin_sse__func_for_struct_with_field_rename_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire__crate__api__pseudo_manual__structure_twin_sse__func_for_struct_with_field_rename_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__structure_twin_sse__func_struct_with_one_field_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -37817,7 +38149,7 @@ pub fn wire__crate__api__pseudo_manual__structure_twin_sse__func_struct_with_one
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__structure_twin_sse__func_struct_with_two_field_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -37832,7 +38164,7 @@ pub fn wire__crate__api__pseudo_manual__structure_twin_sse__func_struct_with_two
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__structure_twin_sse__func_struct_with_zero_field_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -37847,7 +38179,7 @@ pub fn wire__crate__api__pseudo_manual__structure_twin_sse__func_struct_with_zer
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__structure_twin_sse__func_tuple_struct_with_one_field_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -37857,12 +38189,26 @@ pub fn wire__crate__api__pseudo_manual__structure_twin_sse__func_tuple_struct_wi
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__structure_twin_sse__func_tuple_struct_with_two_field_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) {
     wire__crate__api__pseudo_manual__structure_twin_sse__func_tuple_struct_with_two_field_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__structure_twin_sync__func_for_struct_with_dart_keyword_field_twin_sync(
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__pseudo_manual__structure_twin_sync__func_for_struct_with_dart_keyword_field_twin_sync_impl(arg)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__structure_twin_sync__func_for_struct_with_field_rename_twin_sync(
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__pseudo_manual__structure_twin_sync__func_for_struct_with_field_rename_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
@@ -37904,6 +38250,24 @@ pub fn wire__crate__api__pseudo_manual__structure_twin_sync__func_tuple_struct_w
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire__crate__api__pseudo_manual__structure_twin_sync__func_tuple_struct_with_two_field_twin_sync_impl(arg)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__structure_twin_sync_sse__func_for_struct_with_dart_keyword_field_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire__crate__api__pseudo_manual__structure_twin_sync_sse__func_for_struct_with_dart_keyword_field_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__structure_twin_sync_sse__func_for_struct_with_field_rename_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire__crate__api__pseudo_manual__structure_twin_sync_sse__func_for_struct_with_field_rename_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
@@ -37953,7 +38317,7 @@ pub fn wire__crate__api__pseudo_manual__structure_twin_sync_sse__func_tuple_stru
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__tuple_twin_rust_async__test_tuple_2_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     value: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__tuple_twin_rust_async__test_tuple_2_twin_rust_async_impl(
@@ -37963,7 +38327,7 @@ pub fn wire__crate__api__pseudo_manual__tuple_twin_rust_async__test_tuple_2_twin
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__tuple_twin_rust_async__test_tuple_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     value: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__tuple_twin_rust_async__test_tuple_twin_rust_async_impl(
@@ -37973,7 +38337,7 @@ pub fn wire__crate__api__pseudo_manual__tuple_twin_rust_async__test_tuple_twin_r
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__tuple_twin_rust_async_sse__test_tuple_2_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -37983,7 +38347,7 @@ pub fn wire__crate__api__pseudo_manual__tuple_twin_rust_async_sse__test_tuple_2_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__tuple_twin_rust_async_sse__test_tuple_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -37998,7 +38362,7 @@ pub fn wire__crate__api__pseudo_manual__tuple_twin_rust_async_sse__test_tuple_tw
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__tuple_twin_sse__test_tuple_2_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -38013,7 +38377,7 @@ pub fn wire__crate__api__pseudo_manual__tuple_twin_sse__test_tuple_2_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__tuple_twin_sse__test_tuple_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -38068,7 +38432,7 @@ pub fn wire__crate__api__pseudo_manual__tuple_twin_sync_sse__test_tuple_twin_syn
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__type_alias_twin_rust_async__handle_type_alias_id_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     input: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__type_alias_twin_rust_async__handle_type_alias_id_twin_rust_async_impl(port_, input)
@@ -38076,7 +38440,7 @@ pub fn wire__crate__api__pseudo_manual__type_alias_twin_rust_async__handle_type_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__type_alias_twin_rust_async__handle_type_alias_model_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     input: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__type_alias_twin_rust_async__handle_type_alias_model_twin_rust_async_impl(port_, input)
@@ -38084,7 +38448,7 @@ pub fn wire__crate__api__pseudo_manual__type_alias_twin_rust_async__handle_type_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__type_alias_twin_rust_async__handle_type_nest_alias_id_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     input: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__type_alias_twin_rust_async__handle_type_nest_alias_id_twin_rust_async_impl(port_, input)
@@ -38092,7 +38456,7 @@ pub fn wire__crate__api__pseudo_manual__type_alias_twin_rust_async__handle_type_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__type_alias_twin_rust_async_sse__handle_type_alias_id_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -38102,7 +38466,7 @@ pub fn wire__crate__api__pseudo_manual__type_alias_twin_rust_async_sse__handle_t
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__type_alias_twin_rust_async_sse__handle_type_alias_model_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -38112,7 +38476,7 @@ pub fn wire__crate__api__pseudo_manual__type_alias_twin_rust_async_sse__handle_t
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__type_alias_twin_rust_async_sse__handle_type_nest_alias_id_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -38122,7 +38486,7 @@ pub fn wire__crate__api__pseudo_manual__type_alias_twin_rust_async_sse__handle_t
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__type_alias_twin_sse__handle_type_alias_id_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -38137,7 +38501,7 @@ pub fn wire__crate__api__pseudo_manual__type_alias_twin_sse__handle_type_alias_i
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__type_alias_twin_sse__handle_type_alias_model_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -38152,7 +38516,7 @@ pub fn wire__crate__api__pseudo_manual__type_alias_twin_sse__handle_type_alias_m
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__type_alias_twin_sse__handle_type_nest_alias_id_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -38221,7 +38585,7 @@ pub fn wire__crate__api__pseudo_manual__type_alias_twin_sync_sse__handle_type_ne
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__uuid_type_twin_rust_async__handle_nested_uuids_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ids: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__uuid_type_twin_rust_async__handle_nested_uuids_twin_rust_async_impl(port_, ids)
@@ -38229,7 +38593,7 @@ pub fn wire__crate__api__pseudo_manual__uuid_type_twin_rust_async__handle_nested
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__uuid_type_twin_rust_async__handle_uuid_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     id: Box<[u8]>,
 ) {
     wire__crate__api__pseudo_manual__uuid_type_twin_rust_async__handle_uuid_twin_rust_async_impl(
@@ -38239,7 +38603,7 @@ pub fn wire__crate__api__pseudo_manual__uuid_type_twin_rust_async__handle_uuid_t
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__uuid_type_twin_rust_async__handle_uuids_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ids: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__pseudo_manual__uuid_type_twin_rust_async__handle_uuids_twin_rust_async_impl(
@@ -38249,7 +38613,7 @@ pub fn wire__crate__api__pseudo_manual__uuid_type_twin_rust_async__handle_uuids_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__uuid_type_twin_rust_async_sse__handle_nested_uuids_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -38259,7 +38623,7 @@ pub fn wire__crate__api__pseudo_manual__uuid_type_twin_rust_async_sse__handle_ne
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__uuid_type_twin_rust_async_sse__handle_uuid_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -38269,7 +38633,7 @@ pub fn wire__crate__api__pseudo_manual__uuid_type_twin_rust_async_sse__handle_uu
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__uuid_type_twin_rust_async_sse__handle_uuids_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -38279,7 +38643,7 @@ pub fn wire__crate__api__pseudo_manual__uuid_type_twin_rust_async_sse__handle_uu
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__uuid_type_twin_sse__handle_nested_uuids_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -38294,7 +38658,7 @@ pub fn wire__crate__api__pseudo_manual__uuid_type_twin_sse__handle_nested_uuids_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__uuid_type_twin_sse__handle_uuid_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -38309,7 +38673,7 @@ pub fn wire__crate__api__pseudo_manual__uuid_type_twin_sse__handle_uuid_twin_sse
 
 #[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__uuid_type_twin_sse__handle_uuids_twin_sse(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -38384,21 +38748,21 @@ pub fn wire__crate__api__pseudo_manual__uuid_type_twin_sync_sse__handle_uuids_tw
 
 #[wasm_bindgen]
 pub fn wire__crate__api__raw_string__test_more_than_just_one_raw_string_struct_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__raw_string__test_more_than_just_one_raw_string_struct_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__raw_string__test_raw_string_item_struct_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__raw_string__test_raw_string_item_struct_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_instance_method_arg_borrow_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_instance_method_arg_borrow_twin_normal_impl(port_, that)
@@ -38406,7 +38770,7 @@ pub fn wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_instance_met
 
 #[wasm_bindgen]
 pub fn wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow_twin_normal_impl(port_, that)
@@ -38414,7 +38778,7 @@ pub fn wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_instance_met
 
 #[wasm_bindgen]
 pub fn wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_instance_method_arg_own_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_instance_method_arg_own_twin_normal_impl(port_, that)
@@ -38422,7 +38786,7 @@ pub fn wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_instance_met
 
 #[wasm_bindgen]
 pub fn wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_instance_method_getter_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_instance_method_getter_twin_normal_impl(port_, that)
@@ -38430,7 +38794,7 @@ pub fn wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_instance_met
 
 #[wasm_bindgen]
 pub fn wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_instance_method_return_own_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_instance_method_return_own_twin_normal_impl(port_, that)
@@ -38438,7 +38802,7 @@ pub fn wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_instance_met
 
 #[wasm_bindgen]
 pub fn wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_new_custom_name_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_new_custom_name_twin_normal_impl(
         port_,
@@ -38447,14 +38811,14 @@ pub fn wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_new_custom_n
 
 #[wasm_bindgen]
 pub fn wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_new_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_new_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_new_with_result_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_new_with_result_twin_normal_impl(
         port_,
@@ -38463,7 +38827,7 @@ pub fn wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_new_with_res
 
 #[wasm_bindgen]
 pub fn wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_static_method_arg_borrow_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_static_method_arg_borrow_twin_normal_impl(port_, arg)
@@ -38471,7 +38835,7 @@ pub fn wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_static_metho
 
 #[wasm_bindgen]
 pub fn wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_static_method_arg_mut_borrow_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_static_method_arg_mut_borrow_twin_normal_impl(port_, arg)
@@ -38479,7 +38843,7 @@ pub fn wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_static_metho
 
 #[wasm_bindgen]
 pub fn wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_static_method_arg_own_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_static_method_arg_own_twin_normal_impl(port_, arg)
@@ -38487,7 +38851,7 @@ pub fn wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_static_metho
 
 #[wasm_bindgen]
 pub fn wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_static_method_return_own_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_static_method_return_own_twin_normal_impl(port_)
 }
@@ -38509,7 +38873,7 @@ pub fn wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOp
 
 #[wasm_bindgen]
 pub fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_arg_borrow_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     expect: i32,
 ) {
@@ -38520,7 +38884,7 @@ pub fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_arg_borrow_twin_norm
 
 #[wasm_bindgen]
 pub fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_arg_mut_borrow_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     expect: i32,
     adder: i32,
@@ -38532,7 +38896,7 @@ pub fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_arg_mut_borrow_twin_
 
 #[wasm_bindgen]
 pub fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_arg_own_and_return_own_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__rust_auto_opaque__rust_auto_opaque_arg_own_and_return_own_twin_normal_impl(
@@ -38542,7 +38906,7 @@ pub fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_arg_own_and_return_o
 
 #[wasm_bindgen]
 pub fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_arg_own_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     expect: i32,
 ) {
@@ -38553,7 +38917,7 @@ pub fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_arg_own_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_arg_vec_own_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     expect: Box<[i32]>,
 ) {
@@ -38564,7 +38928,7 @@ pub fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_arg_vec_own_twin_nor
 
 #[wasm_bindgen]
 pub fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_borrow_and_borrow_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     a: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     b: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
@@ -38575,7 +38939,7 @@ pub fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_borrow_and_borrow_tw
 
 #[wasm_bindgen]
 pub fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_borrow_and_mut_borrow_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     borrow: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     mut_borrow: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
@@ -38586,7 +38950,7 @@ pub fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_borrow_and_mut_borro
 
 #[wasm_bindgen]
 pub fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_callable_arg_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__rust_auto_opaque__rust_auto_opaque_callable_arg_twin_normal_impl(port_, arg)
@@ -38594,14 +38958,14 @@ pub fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_callable_arg_twin_no
 
 #[wasm_bindgen]
 pub fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_callable_return_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__rust_auto_opaque__rust_auto_opaque_callable_return_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_dummy_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     a: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     b: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
@@ -38610,7 +38974,7 @@ pub fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_dummy_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_enum_arg_borrow_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__rust_auto_opaque__rust_auto_opaque_enum_arg_borrow_twin_normal_impl(
@@ -38620,14 +38984,14 @@ pub fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_enum_arg_borrow_twin
 
 #[wasm_bindgen]
 pub fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_enum_return_own_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__rust_auto_opaque__rust_auto_opaque_enum_return_own_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__rust_auto_opaque__rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_normal_impl(port_, arg)
@@ -38635,21 +38999,21 @@ pub fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_enum_with_good_and_o
 
 #[wasm_bindgen]
 pub fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__rust_auto_opaque__rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__rust_auto_opaque__rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_explicit_arg_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     expect: i32,
 ) {
@@ -38660,7 +39024,7 @@ pub fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_explicit_arg_twin_no
 
 #[wasm_bindgen]
 pub fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_explicit_return_struct_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__rust_auto_opaque__rust_auto_opaque_explicit_return_struct_twin_normal_impl(
         port_,
@@ -38669,7 +39033,7 @@ pub fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_explicit_return_stru
 
 #[wasm_bindgen]
 pub fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_explicit_return_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     initial: i32,
 ) {
     wire__crate__api__rust_auto_opaque__rust_auto_opaque_explicit_return_twin_normal_impl(
@@ -38679,7 +39043,7 @@ pub fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_explicit_return_twin
 
 #[wasm_bindgen]
 pub fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_explicit_struct_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__rust_auto_opaque__rust_auto_opaque_explicit_struct_twin_normal_impl(
@@ -38689,7 +39053,7 @@ pub fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_explicit_struct_twin
 
 #[wasm_bindgen]
 pub fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_normal_and_opaque_arg_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     a: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     b: String,
 ) {
@@ -38700,7 +39064,7 @@ pub fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_normal_and_opaque_ar
 
 #[wasm_bindgen]
 pub fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_plus_sign_arg_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__rust_auto_opaque__rust_auto_opaque_plus_sign_arg_twin_normal_impl(port_, arg)
@@ -38708,14 +39072,14 @@ pub fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_plus_sign_arg_twin_n
 
 #[wasm_bindgen]
 pub fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_plus_sign_return_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__rust_auto_opaque__rust_auto_opaque_plus_sign_return_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_return_opaque_one_and_two_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__rust_auto_opaque__rust_auto_opaque_return_opaque_one_and_two_twin_normal_impl(
         port_,
@@ -38724,14 +39088,14 @@ pub fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_return_opaque_one_an
 
 #[wasm_bindgen]
 pub fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_return_opaque_two_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__rust_auto_opaque__rust_auto_opaque_return_opaque_two_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_return_own_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     initial: i32,
 ) {
     wire__crate__api__rust_auto_opaque__rust_auto_opaque_return_own_twin_normal_impl(port_, initial)
@@ -38739,14 +39103,14 @@ pub fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_return_own_twin_norm
 
 #[wasm_bindgen]
 pub fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_return_vec_own_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__rust_auto_opaque__rust_auto_opaque_return_vec_own_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_sleep_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     apple: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     orange: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
@@ -38757,7 +39121,7 @@ pub fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_sleep_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_stream_sink_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     sink: String,
 ) {
     wire__crate__api__rust_auto_opaque__rust_auto_opaque_stream_sink_twin_normal_impl(port_, sink)
@@ -38765,7 +39129,7 @@ pub fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_stream_sink_twin_nor
 
 #[wasm_bindgen]
 pub fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__rust_auto_opaque__rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_normal_impl(port_, arg)
@@ -38773,14 +39137,14 @@ pub fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_struct_with_good_and
 
 #[wasm_bindgen]
 pub fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__rust_auto_opaque__rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_two_args_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     a: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     b: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
@@ -38789,28 +39153,28 @@ pub fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_two_args_twin_normal
 
 #[wasm_bindgen]
 pub fn wire__crate__api__rust_opaque__create_array_opaque_enum_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__rust_opaque__create_array_opaque_enum_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__rust_opaque__create_nested_opaque_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__rust_opaque__create_nested_opaque_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__rust_opaque__create_opaque_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__rust_opaque__create_opaque_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__rust_opaque__create_option_opaque_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__rust_opaque__create_option_opaque_twin_normal_impl(port_, opaque)
@@ -38818,14 +39182,14 @@ pub fn wire__crate__api__rust_opaque__create_option_opaque_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__rust_opaque__frb_generator_test_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__rust_opaque__frb_generator_test_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__rust_opaque__opaque_array_run_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     data: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__rust_opaque__opaque_array_run_twin_normal_impl(port_, data)
@@ -38833,14 +39197,14 @@ pub fn wire__crate__api__rust_opaque__opaque_array_run_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__rust_opaque__opaque_array_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__rust_opaque__opaque_array_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__rust_opaque__opaque_vec_run_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     data: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__rust_opaque__opaque_vec_run_twin_normal_impl(port_, data)
@@ -38848,14 +39212,14 @@ pub fn wire__crate__api__rust_opaque__opaque_vec_run_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__rust_opaque__opaque_vec_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__rust_opaque__opaque_vec_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__rust_opaque__run_enum_opaque_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__rust_opaque__run_enum_opaque_twin_normal_impl(port_, opaque)
@@ -38863,7 +39227,7 @@ pub fn wire__crate__api__rust_opaque__run_enum_opaque_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__rust_opaque__run_nested_opaque_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__rust_opaque__run_nested_opaque_twin_normal_impl(port_, opaque)
@@ -38871,7 +39235,7 @@ pub fn wire__crate__api__rust_opaque__run_nested_opaque_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__rust_opaque__run_non_clone_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     clone: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__rust_opaque__run_non_clone_twin_normal_impl(port_, clone)
@@ -38879,7 +39243,7 @@ pub fn wire__crate__api__rust_opaque__run_non_clone_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__rust_opaque__run_opaque_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__rust_opaque__run_opaque_twin_normal_impl(port_, opaque)
@@ -38887,7 +39251,7 @@ pub fn wire__crate__api__rust_opaque__run_opaque_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__rust_opaque__run_opaque_with_delay_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__rust_opaque__run_opaque_with_delay_twin_normal_impl(port_, opaque)
@@ -38895,7 +39259,7 @@ pub fn wire__crate__api__rust_opaque__run_opaque_with_delay_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__rust_opaque__unwrap_rust_opaque_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__rust_opaque__unwrap_rust_opaque_twin_normal_impl(port_, opaque)
@@ -38927,7 +39291,7 @@ pub fn wire__crate__api__rust_opaque_sync__sync_option_rust_opaque_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__simple__simple_adder_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     a: i32,
     b: i32,
 ) {
@@ -38936,7 +39300,7 @@ pub fn wire__crate__api__simple__simple_adder_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__stream__func_stream_add_value_and_error_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     sink: String,
 ) {
     wire__crate__api__stream__func_stream_add_value_and_error_twin_normal_impl(port_, sink)
@@ -38944,7 +39308,7 @@ pub fn wire__crate__api__stream__func_stream_add_value_and_error_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__stream__func_stream_return_error_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     _sink: String,
 ) {
     wire__crate__api__stream__func_stream_return_error_twin_normal_impl(port_, _sink)
@@ -38952,7 +39316,7 @@ pub fn wire__crate__api__stream__func_stream_return_error_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__stream__func_stream_return_panic_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     _sink: String,
 ) {
     wire__crate__api__stream__func_stream_return_panic_twin_normal_impl(port_, _sink)
@@ -38960,7 +39324,7 @@ pub fn wire__crate__api__stream__func_stream_return_panic_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__stream__func_stream_sink_arg_position_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     a: u32,
     b: u32,
     c: String,
@@ -38970,7 +39334,7 @@ pub fn wire__crate__api__stream__func_stream_sink_arg_position_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__stream__handle_stream_of_struct_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     _sink: String,
 ) {
     wire__crate__api__stream__handle_stream_of_struct_twin_normal_impl(port_, _sink)
@@ -38978,7 +39342,7 @@ pub fn wire__crate__api__stream__handle_stream_of_struct_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__stream__handle_stream_sink_at_1_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     key: u32,
     max: u32,
     sink: String,
@@ -38988,7 +39352,7 @@ pub fn wire__crate__api__stream__handle_stream_sink_at_1_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__stream__handle_stream_sink_at_2_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     key: u32,
     sink: String,
     max: u32,
@@ -38998,7 +39362,7 @@ pub fn wire__crate__api__stream__handle_stream_sink_at_2_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__stream__handle_stream_sink_at_3_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     sink: String,
     key: u32,
     max: u32,
@@ -39008,7 +39372,7 @@ pub fn wire__crate__api__stream__handle_stream_sink_at_3_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__stream__stream_sink_fixed_sized_primitive_array_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     sink: String,
 ) {
     wire__crate__api__stream__stream_sink_fixed_sized_primitive_array_twin_normal_impl(port_, sink)
@@ -39016,7 +39380,7 @@ pub fn wire__crate__api__stream__stream_sink_fixed_sized_primitive_array_twin_no
 
 #[wasm_bindgen]
 pub fn wire__crate__api__stream__stream_sink_inside_struct_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__stream__stream_sink_inside_struct_twin_normal_impl(port_, arg)
@@ -39024,7 +39388,7 @@ pub fn wire__crate__api__stream__stream_sink_inside_struct_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__stream__stream_sink_inside_vec_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__stream__stream_sink_inside_vec_twin_normal_impl(port_, arg)
@@ -39032,7 +39396,7 @@ pub fn wire__crate__api__stream__stream_sink_inside_vec_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__stream_misc__func_stream_realistic_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     sink: String,
     arg: String,
 ) {
@@ -39041,15 +39405,33 @@ pub fn wire__crate__api__stream_misc__func_stream_realistic_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__stream_misc__stream_sink_dart_async_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     sink: String,
 ) {
     wire__crate__api__stream_misc__stream_sink_dart_async_twin_normal_impl(port_, sink)
 }
 
 #[wasm_bindgen]
+pub fn wire__crate__api__structure__func_for_struct_with_dart_keyword_field_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire__crate__api__structure__func_for_struct_with_dart_keyword_field_twin_normal_impl(
+        port_, arg,
+    )
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__structure__func_for_struct_with_field_rename_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire__crate__api__structure__func_for_struct_with_field_rename_twin_normal_impl(port_, arg)
+}
+
+#[wasm_bindgen]
 pub fn wire__crate__api__structure__func_struct_with_one_field_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__structure__func_struct_with_one_field_twin_normal_impl(port_, arg)
@@ -39057,7 +39439,7 @@ pub fn wire__crate__api__structure__func_struct_with_one_field_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__structure__func_struct_with_two_field_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__structure__func_struct_with_two_field_twin_normal_impl(port_, arg)
@@ -39065,7 +39447,7 @@ pub fn wire__crate__api__structure__func_struct_with_two_field_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__structure__func_struct_with_zero_field_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__structure__func_struct_with_zero_field_twin_normal_impl(port_, arg)
@@ -39073,7 +39455,7 @@ pub fn wire__crate__api__structure__func_struct_with_zero_field_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__structure__func_tuple_struct_with_one_field_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__structure__func_tuple_struct_with_one_field_twin_normal_impl(port_, arg)
@@ -39081,7 +39463,7 @@ pub fn wire__crate__api__structure__func_tuple_struct_with_one_field_twin_normal
 
 #[wasm_bindgen]
 pub fn wire__crate__api__structure__func_tuple_struct_with_two_field_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__structure__func_tuple_struct_with_two_field_twin_normal_impl(port_, arg)
@@ -39089,7 +39471,7 @@ pub fn wire__crate__api__structure__func_tuple_struct_with_two_field_twin_normal
 
 #[wasm_bindgen]
 pub fn wire__crate__api__tuple__test_tuple_2_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     value: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__tuple__test_tuple_2_twin_normal_impl(port_, value)
@@ -39097,7 +39479,7 @@ pub fn wire__crate__api__tuple__test_tuple_2_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__tuple__test_tuple_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     value: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__tuple__test_tuple_twin_normal_impl(port_, value)
@@ -39105,7 +39487,7 @@ pub fn wire__crate__api__tuple__test_tuple_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__type_alias__handle_type_alias_id_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     input: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__type_alias__handle_type_alias_id_twin_normal_impl(port_, input)
@@ -39113,7 +39495,7 @@ pub fn wire__crate__api__type_alias__handle_type_alias_id_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__type_alias__handle_type_alias_model_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     input: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__type_alias__handle_type_alias_model_twin_normal_impl(port_, input)
@@ -39121,7 +39503,7 @@ pub fn wire__crate__api__type_alias__handle_type_alias_model_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__type_alias__handle_type_nest_alias_id_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     input: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__type_alias__handle_type_nest_alias_id_twin_normal_impl(port_, input)
@@ -39129,7 +39511,7 @@ pub fn wire__crate__api__type_alias__handle_type_nest_alias_id_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__uuid_type__handle_nested_uuids_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ids: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__uuid_type__handle_nested_uuids_twin_normal_impl(port_, ids)
@@ -39137,7 +39519,7 @@ pub fn wire__crate__api__uuid_type__handle_nested_uuids_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__uuid_type__handle_uuid_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     id: Box<[u8]>,
 ) {
     wire__crate__api__uuid_type__handle_uuid_twin_normal_impl(port_, id)
@@ -39145,7 +39527,7 @@ pub fn wire__crate__api__uuid_type__handle_uuid_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire__crate__api__uuid_type__handle_uuids_twin_normal(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ids: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__uuid_type__handle_uuids_twin_normal_impl(port_, ids)
@@ -42145,6 +42527,32 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueTwoTwinSyncSseMoi>>::decrement_strong_count(ptr as _);
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleOpaqueExternalStructWithMethod(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        StdArc::<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                SimpleOpaqueExternalStructWithMethod,
+            >,
+        >::increment_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleOpaqueExternalStructWithMethod(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        StdArc::<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                SimpleOpaqueExternalStructWithMethod,
+            >,
+        >::decrement_strong_count(ptr as _);
+    }
 }
 
 #[wasm_bindgen]

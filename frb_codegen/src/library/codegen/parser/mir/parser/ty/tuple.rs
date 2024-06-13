@@ -49,7 +49,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                     .enumerate()
                     .map(|(idx, ty)| MirField {
                         ty: ty.clone(),
-                        name: MirIdent::new(format!("field{idx}")),
+                        name: MirIdent::new(format!("field{idx}"), None),
                         is_final: true,
                         is_rust_public: None,
                         comments: vec![],

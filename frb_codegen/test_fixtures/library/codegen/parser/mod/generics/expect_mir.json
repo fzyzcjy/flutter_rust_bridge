@@ -19,7 +19,10 @@
                   "default": null,
                   "is_final": true,
                   "is_rust_public": false,
-                  "name": "field0",
+                  "name": {
+                    "dart_style": null,
+                    "rust_style": "field0"
+                  },
                   "settings": {
                     "is_in_mirrored_enum": false
                   },
@@ -57,8 +60,14 @@
               "wrapper_name": null
             }
           },
-          "name": "One",
-          "wrapper_name": "MyGenericEnum_One"
+          "name": {
+            "dart_style": null,
+            "rust_style": "One"
+          },
+          "wrapper_name": {
+            "dart_style": null,
+            "rust_style": "MyGenericEnum_One"
+          }
         },
         {
           "comments": [],
@@ -72,7 +81,10 @@
                   "default": null,
                   "is_final": true,
                   "is_rust_public": false,
-                  "name": "field0",
+                  "name": {
+                    "dart_style": null,
+                    "rust_style": "field0"
+                  },
                   "settings": {
                     "is_in_mirrored_enum": false
                   },
@@ -110,8 +122,14 @@
               "wrapper_name": null
             }
           },
-          "name": "Two",
-          "wrapper_name": "MyGenericEnum_Two"
+          "name": {
+            "dart_style": null,
+            "rust_style": "Two"
+          },
+          "wrapper_name": {
+            "dart_style": null,
+            "rust_style": "MyGenericEnum_Two"
+          }
         }
       ],
       "wrapper_name": null
@@ -139,7 +157,10 @@
             "default": null,
             "is_final": true,
             "is_rust_public": null,
-            "name": "arg",
+            "name": {
+              "dart_style": null,
+              "rust_style": "arg"
+            },
             "settings": {
               "is_in_mirrored_enum": false
             },
@@ -205,7 +226,10 @@
             "default": null,
             "is_final": true,
             "is_rust_public": null,
-            "name": "arg",
+            "name": {
+              "dart_style": null,
+              "rust_style": "arg"
+            },
             "settings": {
               "is_in_mirrored_enum": false
             },
@@ -271,7 +295,10 @@
             "default": null,
             "is_final": true,
             "is_rust_public": null,
-            "name": "arg",
+            "name": {
+              "dart_style": null,
+              "rust_style": "arg"
+            },
             "settings": {
               "is_in_mirrored_enum": false
             },
@@ -337,7 +364,10 @@
             "default": null,
             "is_final": true,
             "is_rust_public": null,
-            "name": "arg",
+            "name": {
+              "dart_style": null,
+              "rust_style": "arg"
+            },
             "settings": {
               "is_in_mirrored_enum": false
             },
@@ -403,7 +433,10 @@
             "default": null,
             "is_final": true,
             "is_rust_public": null,
-            "name": "arg",
+            "name": {
+              "dart_style": null,
+              "rust_style": "arg"
+            },
             "settings": {
               "is_in_mirrored_enum": false
             },
@@ -462,7 +495,10 @@
           "default": null,
           "is_final": true,
           "is_rust_public": false,
-          "name": "generic_field",
+          "name": {
+            "dart_style": null,
+            "rust_style": "generic_field"
+          },
           "settings": {
             "is_in_mirrored_enum": false
           },
@@ -496,7 +532,10 @@
           "default": null,
           "is_final": true,
           "is_rust_public": false,
-          "name": "generic_boxed_field",
+          "name": {
+            "dart_style": null,
+            "rust_style": "generic_boxed_field"
+          },
           "settings": {
             "is_in_mirrored_enum": false
           },
@@ -530,7 +569,10 @@
           "default": null,
           "is_final": true,
           "is_rust_public": false,
-          "name": "normal_field",
+          "name": {
+            "dart_style": null,
+            "rust_style": "normal_field"
+          },
           "settings": {
             "is_in_mirrored_enum": false
           },

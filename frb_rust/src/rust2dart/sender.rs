@@ -1,15 +1,15 @@
-use crate::generalized_isolate::DartSendPort;
+use crate::generalized_isolate::Channel;
 use crate::generalized_isolate::IntoDart;
 use crate::misc::logs::log_warn_or_println;
 use std::fmt;
 
 #[derive(Clone)]
 pub struct Rust2DartSender {
-    pub(crate) channel: DartSendPort,
+    pub(crate) channel: Channel,
 }
 
 impl Rust2DartSender {
-    pub fn new(channel: DartSendPort) -> Self {
+    pub fn new(channel: Channel) -> Self {
         Rust2DartSender { channel }
     }
 
