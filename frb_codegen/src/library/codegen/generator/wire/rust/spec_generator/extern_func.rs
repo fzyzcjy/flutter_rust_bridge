@@ -13,7 +13,7 @@ use serde::Serialize;
 pub(crate) struct ExternFunc {
     pub(crate) partial_func_name: String,
     pub(crate) params: Vec<ExternFuncParam>,
-    pub(crate) return_type: Option<ExternFuncReturnType>,
+    pub(crate) return_type: Option<String>,
     pub(crate) body: String,
     pub(crate) target: Target,
     pub(crate) needs_ffigen: bool,
@@ -22,12 +22,6 @@ pub(crate) struct ExternFunc {
 #[derive(Clone, Debug, Serialize, PartialEq, Eq)]
 pub(crate) struct ExternFuncParam {
     pub(crate) name: String,
-    pub(crate) rust_type: String,
-    pub(crate) dart_type: String,
-}
-
-#[derive(Clone, Debug, Serialize, PartialEq, Eq)]
-pub(crate) struct ExternFuncReturnType {
     pub(crate) rust_type: String,
     pub(crate) dart_type: String,
 }
