@@ -14,8 +14,6 @@ void store_dart_post_cobject(DartPostCObjectFnType ptr);
 // EXTRA END
 typedef struct _Dart_Handle* Dart_Handle;
 
-void frbgen_frb_example_dart_minimal_wire__crate__api__minimal__f(int64_t port_, uintptr_t a);
-
 void frbgen_frb_example_dart_minimal_wire__crate__api__minimal__init_app(int64_t port_);
 
 void frbgen_frb_example_dart_minimal_wire__crate__api__minimal__minimal_adder(int64_t port_,
@@ -23,7 +21,6 @@ void frbgen_frb_example_dart_minimal_wire__crate__api__minimal__minimal_adder(in
                                                                               int32_t b);
 static int64_t dummy_method_to_enforce_bundling(void) {
     int64_t dummy_var = 0;
-    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_dart_minimal_wire__crate__api__minimal__f);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_dart_minimal_wire__crate__api__minimal__init_app);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_dart_minimal_wire__crate__api__minimal__minimal_adder);
     dummy_var ^= ((int64_t) (void*) store_dart_post_cobject);

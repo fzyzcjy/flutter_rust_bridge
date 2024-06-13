@@ -8,6 +8,3 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<int> minimalAdder({required int a, required int b}) =>
     RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b);
-
-Future<BigInt> f({required BigInt a}) =>
-    RustLib.instance.api.crateApiMinimalF(a: a);
