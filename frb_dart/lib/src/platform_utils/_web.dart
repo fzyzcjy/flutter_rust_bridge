@@ -1,23 +1,14 @@
-import 'package:js/js.dart';
-import 'package:js/js_util.dart';
-
-/// {@macro flutter_rust_bridge.only_for_generated_code}
-@JS('Number')
-external int castInt(Object? value);
-
-/// {@macro flutter_rust_bridge.internal}
-@JS('console.warn')
-external void jsConsoleWarn([a, b, c, d, e, f, g, h, i]);
+import 'dart:js_interop';
 
 @JS('Function')
-class _Function {
-  external dynamic call();
-
+extension type _Function._(JSObject _) implements JSObject {
   external factory _Function(String script);
+
+  external JSAny? call();
 }
 
 /// {@macro flutter_rust_bridge.internal}
-dynamic jsEval(String script) => _Function(script)();
+JSAny? jsEval(String script) => _Function(script)();
 
 /// Whether the web platform has been isolated by COOP and COEP headers,
 /// and is capable of sharing buffers between workers.
@@ -26,11 +17,22 @@ dynamic jsEval(String script) => _Function(script)();
 @JS()
 external bool? get crossOriginIsolated;
 
-/// {@macro flutter_rust_bridge.only_for_generated_code}
 @JS('BigInt')
-external Object castNativeBigInt(Object? value);
+external JSBigInt _jsBigInt(String raw);
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
-BigInt jsBigIntToDartBigInt(Object bigInt) {
-  return BigInt.parse(callMethod(bigInt, 'toString', const []));
+JSAny castNativeBigInt(BigInt value) => _jsBigInt(value.toString());
+
+/// {@macro flutter_rust_bridge.only_for_generated_code}
+BigInt jsBigIntToDartBigInt(Object raw) {
+  if (raw is int) return BigInt.from(raw);
+
+  final jsAny = raw.jsify();
+  if (jsAny.isA<JSBigInt>()) {
+    final jsBigInt = jsAny as JSBigInt;
+    return BigInt.parse(jsBigInt.toString());
+  }
+
+  throw Exception(
+      'jsBigIntToDartBigInt see unexpected type=${raw.runtimeType} value=$raw');
 }

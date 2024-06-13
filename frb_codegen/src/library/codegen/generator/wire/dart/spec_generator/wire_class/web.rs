@@ -56,7 +56,7 @@ fn generate_wasm_module_class(
     format!(
         "@JS('wasm_bindgen') external {wasm_module_name} get wasmModule;
 
-        @JS() @anonymous class {wasm_module_name} {{
+        @JS() @anonymous extension type {wasm_module_name}._(JSObject _) implements JSObject {{
             {body}
         }}
         "
@@ -102,11 +102,7 @@ fn generate_method(func: &ExternFunc) -> MethodInfo {
 /// safely assume the `dynamic` or `Object` type instead.
 fn reconstruct_dart_wire_type_from_raw_repr(ty: &str) -> String {
     let ty = ty.trim();
-    let real_ty = if is_rust_pointer(ty) {
-        "int"
-    } else {
-        "dynamic"
-    };
+    let real_ty = if is_rust_pointer(ty) { "int" } else { "JSAny?" };
     format!("{real_ty} /* {ty} */")
 }
 

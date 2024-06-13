@@ -1,4 +1,4 @@
-use build_target::{self, Family};
+use build_target::Family;
 
 fn main() {
     if let Ok(Family::Wasm) = build_target::target_family() {

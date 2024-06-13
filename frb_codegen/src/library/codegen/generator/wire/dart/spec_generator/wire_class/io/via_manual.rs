@@ -53,7 +53,7 @@ fn generate_func(func: &ExternFunc, c_symbol_prefix: &str) -> String {
             == (ExternFuncParam {
                 name: "ptr".to_string(),
                 rust_type: "*const std::ffi::c_void".to_owned(),
-                dart_type: "dynamic".to_string(),
+                dart_type: "int".to_string(),
             })
     {
         let name = &func.partial_func_name;

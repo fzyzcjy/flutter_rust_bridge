@@ -1,26 +1,26 @@
 import 'dart:async';
-import 'dart:html';
+import 'dart:js_interop';
 
 import 'package:flutter_rust_bridge/src/exceptions.dart';
 import 'package:flutter_rust_bridge/src/platform_utils/_web.dart';
-import 'package:js/js.dart';
+import 'package:web/web.dart' as web;
 
 /// {@macro flutter_rust_bridge.internal}
 Future<void> initializeWasmModule({required String root}) async {
   _ensureCrossOriginIsolated();
 
-  final script = ScriptElement()..src = '$root.js';
-  document.head!.append(script);
+  final script = web.HTMLScriptElement()..src = '$root.js';
+  web.document.head!.append(script);
 
   await script.onLoad.first;
 
   jsEval('window.wasm_bindgen = wasm_bindgen');
 
-  await promiseToFuture(_jsWasmBindgen('${root}_bg.wasm'));
+  await _jsWasmBindgen('${root}_bg.wasm').toDart;
 }
 
 @JS('wasm_bindgen')
-external dynamic get _jsWasmBindgen;
+external JSPromise _jsWasmBindgen(String path);
 
 void _ensureCrossOriginIsolated() {
   switch (crossOriginIsolated) {
@@ -29,8 +29,9 @@ void _ensureCrossOriginIsolated() {
     case true:
       return;
     case null:
-      jsConsoleWarn(
-          'Warning: crossOriginIsolated is null, browser might not support buffer sharing.');
+      web.console.warn(
+          'Warning: crossOriginIsolated is null, browser might not support buffer sharing.'
+              .toJS);
       return;
   }
 }

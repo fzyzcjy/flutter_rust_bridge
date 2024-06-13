@@ -1,4 +1,4 @@
-import 'dart:typed_data';
+import 'dart:js_interop';
 
 import 'package:flutter_rust_bridge/src/generalized_uint8list/adapted_uint8list.dart';
 
@@ -6,4 +6,4 @@ import 'package:flutter_rust_bridge/src/generalized_uint8list/adapted_uint8list.
 typedef PlatformGeneralizedUint8List = AdaptedUint8List;
 
 /// {@macro flutter_rust_bridge.internal}
-typedef PlatformGeneralizedUint8ListPtr = Uint8List;
+typedef PlatformGeneralizedUint8ListPtr = JSUint8Array;

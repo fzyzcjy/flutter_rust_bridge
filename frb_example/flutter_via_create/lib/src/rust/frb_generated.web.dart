@@ -81,4 +81,4 @@ external RustLibWasmModule get wasmModule;
 
 @JS()
 @anonymous
-class RustLibWasmModule {}
+extension type RustLibWasmModule._(JSObject _) implements JSObject {}
