@@ -3,11 +3,17 @@ library html_isolate;
 
 import 'dart:async';
 
-import 'package:flutter_rust_bridge/src/platform_types/_web.dart';
+import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_web.dart';
 import 'package:web/web.dart' as web;
 
 /// {@macro flutter_rust_bridge.internal}
-String serializeNativePort(NativePortType port) => port.name;
+String serializeNativePort(NativePortType port) {
+  if (port.isA<web.BroadcastChannel>()) {
+    return (port as web.BroadcastChannel).name;
+  }
+  throw UnimplementedError(
+      "serializeNativePort see unknown port=$port (type=${port.runtimeType})");
+}
 
 /// {@macro flutter_rust_bridge.internal}
 ReceivePort broadcastPort(String channelName) => ReceivePort._raw(
