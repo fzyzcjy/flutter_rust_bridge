@@ -6,11 +6,13 @@
 // Static analysis wrongly picks the IO variant, thus ignore this
 // ignore_for_file: argument_type_not_assignable
 
-import 'api/minimal.dart';
 import 'dart:async';
 import 'dart:convert';
-import 'frb_generated.dart';
+
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_web.dart';
+
+import 'api/minimal.dart';
+import 'frb_generated.dart';
 
 abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   RustLibApiImplPlatform({
@@ -78,15 +80,15 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<JSAny?> cst_encode_box_autoadd_my_enum(MyEnum raw) {
+  JSAny? cst_encode_box_autoadd_my_enum(MyEnum raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return cst_encode_my_enum(raw);
+    return cst_encode_my_enum(raw).jsify();
   }
 
   @protected
-  List<JSAny?> cst_encode_list_String(List<String> raw) {
+  JSAny? cst_encode_list_String(List<String> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_String).toList();
+    return raw.map(cst_encode_String).toList().jsify();
   }
 
   @protected
@@ -96,13 +98,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<JSAny?> cst_encode_my_enum(MyEnum raw) {
+  JSAny? cst_encode_my_enum(MyEnum raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is MyEnum_A) {
-      return [0, cst_encode_String(raw.field0)];
+      return [0, cst_encode_String(raw.field0)].jsify();
     }
     if (raw is MyEnum_B) {
-      return [1];
+      return [1].jsify();
     }
 
     throw Exception('unreachable');
@@ -151,8 +153,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 class RustLibWire implements BaseWire {
   RustLibWire.fromExternalLibrary(ExternalLibrary lib);
 
-  void wire__crate__api__minimal__f(
-          NativePortType port_, List<JSAny?> a, List<JSAny?> b) =>
+  void wire__crate__api__minimal__f(NativePortType port_, JSAny? a, JSAny? b) =>
       wasmModule.wire__crate__api__minimal__f(port_, a, b);
 
   void wire__crate__api__minimal__init_app(NativePortType port_) =>
@@ -170,7 +171,7 @@ external RustLibWasmModule get wasmModule;
 @anonymous
 extension type RustLibWasmModule._(JSObject _) implements JSObject {
   external void wire__crate__api__minimal__f(
-      NativePortType port_, List<JSAny?> a, List<JSAny?> b);
+      NativePortType port_, JSAny? a, JSAny? b);
 
   external void wire__crate__api__minimal__init_app(NativePortType port_);
 
