@@ -52,7 +52,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for GeneralListWireDartCodecCstGe
     fn dart_wire_type(&self, target: Target) -> String {
         match target {
             Target::Io => format!("ffi.Pointer<wire_cst_{}>", self.mir.safe_ident()),
-            Target::Web => "List<dynamic>".into(),
+            Target::Web => "List<JSAny?>".into(),
         }
     }
 }
