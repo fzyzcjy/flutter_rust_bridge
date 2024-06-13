@@ -81,23 +81,23 @@ final exec = SimpleExecutor(
 /// But there seems to be a bug currently.
 /// Temporary workaround before https://github.com/dart-lang/sdk/issues/54160 is fixed.
 Future<void> runPubGetIfNotRunYet(String package) async {
-  await _runPubGetIfNotRunYetRaw(package);
+  final mode = kDartModeOfPackage[package]!;
+
+  await _runPubGetIfNotRunYetRaw(package, mode);
 
   final packageCargokitBuildTool = '$package/rust_builder/cargokit/build_tool';
-  await _runPubGetIfNotRunYetRaw(packageCargokitBuildTool);
+  await _runPubGetIfNotRunYetRaw(packageCargokitBuildTool, mode);
 }
 
-Future<void> _runPubGetIfNotRunYetRaw(String package) async {
+Future<void> _runPubGetIfNotRunYetRaw(String package, DartMode mode) async {
   final dirPackage = '${exec.pwd}/$package';
   if ((await Directory(dirPackage).exists()) &&
       (!await Directory('$dirPackage/.dart_tool').exists())) {
-    await runPubGet(package);
+    await runPubGet(package, mode);
   }
 }
 
-Future<void> runPubGet(String package) async {
-  final mode = kDartModeOfPackage[package] ??
-      (throw UnimplementedError('runPubGet see unknown package $package'));
+Future<void> runPubGet(String package, DartMode mode) async {
   final cmd = switch (mode) {
     DartMode.dart => 'dart --enable-experiment=native-assets',
     DartMode.flutter => 'flutter',
