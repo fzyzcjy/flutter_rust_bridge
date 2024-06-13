@@ -19,7 +19,7 @@ external bool? get crossOriginIsolated;
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 // @JS('BigInt')
-Object castNativeBigInt(Object? value) {
+JSAny castNativeBigInt(Object? value) {
   throw UnimplementedError(
       'castNativeBigInt($value) runtimeType=${value.runtimeType}');
 }
