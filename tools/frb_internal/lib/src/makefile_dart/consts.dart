@@ -81,8 +81,6 @@ final exec = SimpleExecutor(
 /// But there seems to be a bug currently.
 /// Temporary workaround before https://github.com/dart-lang/sdk/issues/54160 is fixed.
 Future<void> runPubGetIfNotRunYet(String package) async {
-  final mode = kDartModeOfPackage[package]!;
-
   await _runPubGetIfNotRunYetRaw(package);
 
   final packageCargokitBuildTool = '$package/rust_builder/cargokit/build_tool';
