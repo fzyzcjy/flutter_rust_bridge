@@ -57,13 +57,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for PrimitiveListWireDartCodecCst
             Target::Io => {
                 format!("ffi.Pointer<wire_cst_{}>", self.mir.safe_ident())
             }
-            Target::Web => match self.mir.primitive {
-                MirTypePrimitive::I64 | MirTypePrimitive::U64 => {
-                    "JSAny /* BigInt64Array */".to_owned()
-                }
-                _ => ApiDartGenerator::new(self.mir.clone(), self.context.as_api_dart_context())
-                    .dart_api_type(),
-            },
+            Target::Web => "JSAny".to_owned(),
         }
     }
 }
