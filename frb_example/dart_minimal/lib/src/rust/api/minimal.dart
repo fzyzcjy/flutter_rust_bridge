@@ -9,23 +9,5 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 Future<int> minimalAdder({required int a, required int b}) =>
     RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b);
 
-Future<void> f({required MyStruct a, required List<String> b}) =>
-    RustLib.instance.api.crateApiMinimalF(a: a, b: b);
-
-class MyStruct {
-  final String field;
-
-  const MyStruct({
-    required this.field,
-  });
-
-  @override
-  int get hashCode => field.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is MyStruct &&
-          runtimeType == other.runtimeType &&
-          field == other.field;
-}
+Future<void> f({required List<int> a}) =>
+    RustLib.instance.api.crateApiMinimalF(a: a);

@@ -43,8 +43,7 @@ flutter_rust_bridge::frb_generated_default_handler!();
 
 fn wire__crate__api__minimal__f_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    a: impl CstDecode<crate::api::minimal::MyStruct>,
-    b: impl CstDecode<Vec<String>>,
+    a: impl CstDecode<Vec<u8>>,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -54,11 +53,10 @@ fn wire__crate__api__minimal__f_impl(
         },
         move || {
             let api_a = a.cst_decode();
-            let api_b = b.cst_decode();
             move |context| {
                 transform_result_dco((move || {
                     Result::<_, ()>::Ok({
-                        crate::api::minimal::f(api_a, api_b);
+                        crate::api::minimal::f(api_a);
                     })
                 })())
             }
@@ -122,30 +120,10 @@ impl CstDecode<u8> for u8 {
         self
     }
 }
-impl SseDecode for String {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <Vec<u8>>::sse_decode(deserializer);
-        return String::from_utf8(inner).unwrap();
-    }
-}
-
 impl SseDecode for i32 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         deserializer.cursor.read_i32::<NativeEndian>().unwrap()
-    }
-}
-
-impl SseDecode for Vec<String> {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
-        for idx_ in 0..len_ {
-            ans_.push(<String>::sse_decode(deserializer));
-        }
-        return ans_;
     }
 }
 
@@ -158,14 +136,6 @@ impl SseDecode for Vec<u8> {
             ans_.push(<u8>::sse_decode(deserializer));
         }
         return ans_;
-    }
-}
-
-impl SseDecode for crate::api::minimal::MyStruct {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut var_field = <String>::sse_decode(deserializer);
-        return crate::api::minimal::MyStruct { field: var_field };
     }
 }
 
@@ -215,42 +185,10 @@ fn pde_ffi_dispatcher_sync_impl(
 
 // Section: rust2dart
 
-// Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for crate::api::minimal::MyStruct {
-    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-        [self.field.into_into_dart().into_dart()].into_dart()
-    }
-}
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for crate::api::minimal::MyStruct {}
-impl flutter_rust_bridge::IntoIntoDart<crate::api::minimal::MyStruct>
-    for crate::api::minimal::MyStruct
-{
-    fn into_into_dart(self) -> crate::api::minimal::MyStruct {
-        self
-    }
-}
-
-impl SseEncode for String {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <Vec<u8>>::sse_encode(self.into_bytes(), serializer);
-    }
-}
-
 impl SseEncode for i32 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         serializer.cursor.write_i32::<NativeEndian>(self).unwrap();
-    }
-}
-
-impl SseEncode for Vec<String> {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <i32>::sse_encode(self.len() as _, serializer);
-        for item in self {
-            <String>::sse_encode(item, serializer);
-        }
     }
 }
 
@@ -261,13 +199,6 @@ impl SseEncode for Vec<u8> {
         for item in self {
             <u8>::sse_encode(item, serializer);
         }
-    }
-}
-
-impl SseEncode for crate::api::minimal::MyStruct {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <String>::sse_encode(self.field, serializer);
     }
 }
 

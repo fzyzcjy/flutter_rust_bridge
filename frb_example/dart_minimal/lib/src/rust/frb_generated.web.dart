@@ -21,22 +21,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   });
 
   @protected
-  String dco_decode_String(dynamic raw);
-
-  @protected
-  MyStruct dco_decode_box_autoadd_my_struct(dynamic raw);
-
-  @protected
   int dco_decode_i_32(dynamic raw);
 
   @protected
-  List<String> dco_decode_list_String(dynamic raw);
+  List<int> dco_decode_list_prim_u_8_loose(dynamic raw);
 
   @protected
   Uint8List dco_decode_list_prim_u_8_strict(dynamic raw);
-
-  @protected
-  MyStruct dco_decode_my_struct(dynamic raw);
 
   @protected
   int dco_decode_u_8(dynamic raw);
@@ -45,22 +36,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void dco_decode_unit(dynamic raw);
 
   @protected
-  String sse_decode_String(SseDeserializer deserializer);
-
-  @protected
-  MyStruct sse_decode_box_autoadd_my_struct(SseDeserializer deserializer);
-
-  @protected
   int sse_decode_i_32(SseDeserializer deserializer);
 
   @protected
-  List<String> sse_decode_list_String(SseDeserializer deserializer);
+  List<int> sse_decode_list_prim_u_8_loose(SseDeserializer deserializer);
 
   @protected
   Uint8List sse_decode_list_prim_u_8_strict(SseDeserializer deserializer);
-
-  @protected
-  MyStruct sse_decode_my_struct(SseDeserializer deserializer);
 
   @protected
   int sse_decode_u_8(SseDeserializer deserializer);
@@ -72,33 +54,15 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   bool sse_decode_bool(SseDeserializer deserializer);
 
   @protected
-  String cst_encode_String(String raw) {
+  List<int> cst_encode_list_prim_u_8_loose(List<int> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw;
-  }
-
-  @protected
-  JSAny cst_encode_box_autoadd_my_struct(MyStruct raw) {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    return cst_encode_my_struct(raw);
-  }
-
-  @protected
-  JSAny cst_encode_list_String(List<String> raw) {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_String).toList().jsify()!;
   }
 
   @protected
   Uint8List cst_encode_list_prim_u_8_strict(Uint8List raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw;
-  }
-
-  @protected
-  JSAny cst_encode_my_struct(MyStruct raw) {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_String(raw.field)].jsify()!;
   }
 
   @protected
@@ -111,24 +75,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void cst_encode_unit(void raw);
 
   @protected
-  void sse_encode_String(String self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_box_autoadd_my_struct(
-      MyStruct self, SseSerializer serializer);
-
-  @protected
   void sse_encode_i_32(int self, SseSerializer serializer);
 
   @protected
-  void sse_encode_list_String(List<String> self, SseSerializer serializer);
+  void sse_encode_list_prim_u_8_loose(List<int> self, SseSerializer serializer);
 
   @protected
   void sse_encode_list_prim_u_8_strict(
       Uint8List self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_my_struct(MyStruct self, SseSerializer serializer);
 
   @protected
   void sse_encode_u_8(int self, SseSerializer serializer);
@@ -145,8 +99,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 class RustLibWire implements BaseWire {
   RustLibWire.fromExternalLibrary(ExternalLibrary lib);
 
-  void wire__crate__api__minimal__f(NativePortType port_, JSAny a, JSAny b) =>
-      wasmModule.wire__crate__api__minimal__f(port_, a, b);
+  void wire__crate__api__minimal__f(NativePortType port_, List<int> a) =>
+      wasmModule.wire__crate__api__minimal__f(port_, a);
 
   void wire__crate__api__minimal__init_app(NativePortType port_) =>
       wasmModule.wire__crate__api__minimal__init_app(port_);
@@ -162,8 +116,7 @@ external RustLibWasmModule get wasmModule;
 @JS()
 @anonymous
 extension type RustLibWasmModule._(JSObject _) implements JSObject {
-  external void wire__crate__api__minimal__f(
-      NativePortType port_, JSAny a, JSAny b);
+  external void wire__crate__api__minimal__f(NativePortType port_, List<int> a);
 
   external void wire__crate__api__minimal__init_app(NativePortType port_);
 

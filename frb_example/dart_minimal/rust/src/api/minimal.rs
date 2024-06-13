@@ -10,8 +10,4 @@ pub fn minimal_adder(a: i32, b: i32) -> i32 {
 }
 
 // TODO temp
-pub struct MyStruct {
-    pub field: String,
-}
-
-pub fn f(a: MyStruct, b: Vec<String>) {}
+pub fn f(a: Vec<u8>) {}

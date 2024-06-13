@@ -19,22 +19,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   });
 
   @protected
-  String dco_decode_String(dynamic raw);
-
-  @protected
-  MyStruct dco_decode_box_autoadd_my_struct(dynamic raw);
-
-  @protected
   int dco_decode_i_32(dynamic raw);
 
   @protected
-  List<String> dco_decode_list_String(dynamic raw);
+  List<int> dco_decode_list_prim_u_8_loose(dynamic raw);
 
   @protected
   Uint8List dco_decode_list_prim_u_8_strict(dynamic raw);
-
-  @protected
-  MyStruct dco_decode_my_struct(dynamic raw);
 
   @protected
   int dco_decode_u_8(dynamic raw);
@@ -43,22 +34,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void dco_decode_unit(dynamic raw);
 
   @protected
-  String sse_decode_String(SseDeserializer deserializer);
-
-  @protected
-  MyStruct sse_decode_box_autoadd_my_struct(SseDeserializer deserializer);
-
-  @protected
   int sse_decode_i_32(SseDeserializer deserializer);
 
   @protected
-  List<String> sse_decode_list_String(SseDeserializer deserializer);
+  List<int> sse_decode_list_prim_u_8_loose(SseDeserializer deserializer);
 
   @protected
   Uint8List sse_decode_list_prim_u_8_strict(SseDeserializer deserializer);
-
-  @protected
-  MyStruct sse_decode_my_struct(SseDeserializer deserializer);
 
   @protected
   int sse_decode_u_8(SseDeserializer deserializer);
@@ -70,27 +52,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   bool sse_decode_bool(SseDeserializer deserializer);
 
   @protected
-  ffi.Pointer<wire_cst_list_prim_u_8_strict> cst_encode_String(String raw) {
+  ffi.Pointer<wire_cst_list_prim_u_8_loose> cst_encode_list_prim_u_8_loose(
+      List<int> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return cst_encode_list_prim_u_8_strict(utf8.encoder.convert(raw));
-  }
-
-  @protected
-  ffi.Pointer<wire_cst_my_struct> cst_encode_box_autoadd_my_struct(
-      MyStruct raw) {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    final ptr = wire.cst_new_box_autoadd_my_struct();
-    cst_api_fill_to_wire_my_struct(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_cst_list_String> cst_encode_list_String(List<String> raw) {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    final ans = wire.cst_new_list_String(raw.length);
-    for (var i = 0; i < raw.length; ++i) {
-      ans.ref.ptr[i] = cst_encode_String(raw[i]);
-    }
+    final ans = wire.cst_new_list_prim_u_8_loose(raw.length);
+    ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
     return ans;
   }
 
@@ -104,18 +70,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  void cst_api_fill_to_wire_box_autoadd_my_struct(
-      MyStruct apiObj, ffi.Pointer<wire_cst_my_struct> wireObj) {
-    cst_api_fill_to_wire_my_struct(apiObj, wireObj.ref);
-  }
-
-  @protected
-  void cst_api_fill_to_wire_my_struct(
-      MyStruct apiObj, wire_cst_my_struct wireObj) {
-    wireObj.field = cst_encode_String(apiObj.field);
-  }
-
-  @protected
   int cst_encode_i_32(int raw);
 
   @protected
@@ -125,24 +79,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void cst_encode_unit(void raw);
 
   @protected
-  void sse_encode_String(String self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_box_autoadd_my_struct(
-      MyStruct self, SseSerializer serializer);
-
-  @protected
   void sse_encode_i_32(int self, SseSerializer serializer);
 
   @protected
-  void sse_encode_list_String(List<String> self, SseSerializer serializer);
+  void sse_encode_list_prim_u_8_loose(List<int> self, SseSerializer serializer);
 
   @protected
   void sse_encode_list_prim_u_8_strict(
       Uint8List self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_my_struct(MyStruct self, SseSerializer serializer);
 
   @protected
   void sse_encode_u_8(int self, SseSerializer serializer);
@@ -197,25 +141,22 @@ class RustLibWire implements BaseWire {
 
   void wire__crate__api__minimal__f(
     int port_,
-    ffi.Pointer<wire_cst_my_struct> a,
-    ffi.Pointer<wire_cst_list_String> b,
+    ffi.Pointer<wire_cst_list_prim_u_8_loose> a,
   ) {
     return _wire__crate__api__minimal__f(
       port_,
       a,
-      b,
     );
   }
 
   late final _wire__crate__api__minimal__fPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Pointer<wire_cst_my_struct>,
-                  ffi.Pointer<wire_cst_list_String>)>>(
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_loose>)>>(
       'frbgen_frb_example_dart_minimal_wire__crate__api__minimal__f');
   late final _wire__crate__api__minimal__f =
       _wire__crate__api__minimal__fPtr.asFunction<
-          void Function(int, ffi.Pointer<wire_cst_my_struct>,
-              ffi.Pointer<wire_cst_list_String>)>();
+          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_loose>)>();
 
   void wire__crate__api__minimal__init_app(
     int port_,
@@ -251,30 +192,20 @@ class RustLibWire implements BaseWire {
       _wire__crate__api__minimal__minimal_adderPtr
           .asFunction<void Function(int, int, int)>();
 
-  ffi.Pointer<wire_cst_my_struct> cst_new_box_autoadd_my_struct() {
-    return _cst_new_box_autoadd_my_struct();
-  }
-
-  late final _cst_new_box_autoadd_my_structPtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_cst_my_struct> Function()>>(
-          'frbgen_frb_example_dart_minimal_cst_new_box_autoadd_my_struct');
-  late final _cst_new_box_autoadd_my_struct = _cst_new_box_autoadd_my_structPtr
-      .asFunction<ffi.Pointer<wire_cst_my_struct> Function()>();
-
-  ffi.Pointer<wire_cst_list_String> cst_new_list_String(
+  ffi.Pointer<wire_cst_list_prim_u_8_loose> cst_new_list_prim_u_8_loose(
     int len,
   ) {
-    return _cst_new_list_String(
+    return _cst_new_list_prim_u_8_loose(
       len,
     );
   }
 
-  late final _cst_new_list_StringPtr = _lookup<
+  late final _cst_new_list_prim_u_8_loosePtr = _lookup<
           ffi.NativeFunction<
-              ffi.Pointer<wire_cst_list_String> Function(ffi.Int32)>>(
-      'frbgen_frb_example_dart_minimal_cst_new_list_String');
-  late final _cst_new_list_String = _cst_new_list_StringPtr
-      .asFunction<ffi.Pointer<wire_cst_list_String> Function(int)>();
+              ffi.Pointer<wire_cst_list_prim_u_8_loose> Function(ffi.Int32)>>(
+      'frbgen_frb_example_dart_minimal_cst_new_list_prim_u_8_loose');
+  late final _cst_new_list_prim_u_8_loose = _cst_new_list_prim_u_8_loosePtr
+      .asFunction<ffi.Pointer<wire_cst_list_prim_u_8_loose> Function(int)>();
 
   ffi.Pointer<wire_cst_list_prim_u_8_strict> cst_new_list_prim_u_8_strict(
     int len,
@@ -311,19 +242,15 @@ typedef DartDartPostCObjectFnTypeFunction = bool Function(
 typedef DartPort = ffi.Int64;
 typedef DartDartPort = int;
 
-final class wire_cst_list_prim_u_8_strict extends ffi.Struct {
+final class wire_cst_list_prim_u_8_loose extends ffi.Struct {
   external ffi.Pointer<ffi.Uint8> ptr;
 
   @ffi.Int32()
   external int len;
 }
 
-final class wire_cst_my_struct extends ffi.Struct {
-  external ffi.Pointer<wire_cst_list_prim_u_8_strict> field;
-}
-
-final class wire_cst_list_String extends ffi.Struct {
-  external ffi.Pointer<ffi.Pointer<wire_cst_list_prim_u_8_strict>> ptr;
+final class wire_cst_list_prim_u_8_strict extends ffi.Struct {
+  external ffi.Pointer<ffi.Uint8> ptr;
 
   @ffi.Int32()
   external int len;

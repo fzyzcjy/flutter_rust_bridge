@@ -14,23 +14,18 @@ void store_dart_post_cobject(DartPostCObjectFnType ptr);
 // EXTRA END
 typedef struct _Dart_Handle* Dart_Handle;
 
+typedef struct wire_cst_list_prim_u_8_loose {
+  uint8_t *ptr;
+  int32_t len;
+} wire_cst_list_prim_u_8_loose;
+
 typedef struct wire_cst_list_prim_u_8_strict {
   uint8_t *ptr;
   int32_t len;
 } wire_cst_list_prim_u_8_strict;
 
-typedef struct wire_cst_my_struct {
-  struct wire_cst_list_prim_u_8_strict *field;
-} wire_cst_my_struct;
-
-typedef struct wire_cst_list_String {
-  struct wire_cst_list_prim_u_8_strict **ptr;
-  int32_t len;
-} wire_cst_list_String;
-
 void frbgen_frb_example_dart_minimal_wire__crate__api__minimal__f(int64_t port_,
-                                                                  struct wire_cst_my_struct *a,
-                                                                  struct wire_cst_list_String *b);
+                                                                  struct wire_cst_list_prim_u_8_loose *a);
 
 void frbgen_frb_example_dart_minimal_wire__crate__api__minimal__init_app(int64_t port_);
 
@@ -38,15 +33,12 @@ void frbgen_frb_example_dart_minimal_wire__crate__api__minimal__minimal_adder(in
                                                                               int32_t a,
                                                                               int32_t b);
 
-struct wire_cst_my_struct *frbgen_frb_example_dart_minimal_cst_new_box_autoadd_my_struct(void);
-
-struct wire_cst_list_String *frbgen_frb_example_dart_minimal_cst_new_list_String(int32_t len);
+struct wire_cst_list_prim_u_8_loose *frbgen_frb_example_dart_minimal_cst_new_list_prim_u_8_loose(int32_t len);
 
 struct wire_cst_list_prim_u_8_strict *frbgen_frb_example_dart_minimal_cst_new_list_prim_u_8_strict(int32_t len);
 static int64_t dummy_method_to_enforce_bundling(void) {
     int64_t dummy_var = 0;
-    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_dart_minimal_cst_new_box_autoadd_my_struct);
-    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_dart_minimal_cst_new_list_String);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_dart_minimal_cst_new_list_prim_u_8_loose);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_dart_minimal_cst_new_list_prim_u_8_strict);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_dart_minimal_wire__crate__api__minimal__f);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_dart_minimal_wire__crate__api__minimal__init_app);
