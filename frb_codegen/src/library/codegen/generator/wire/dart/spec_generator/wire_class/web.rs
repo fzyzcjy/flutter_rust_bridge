@@ -109,7 +109,7 @@ fn generate_method(func: &ExternFunc) -> MethodInfo {
 //     };
 //     format!("{real_ty} /* {ty} */")
 // }
-//
-// fn is_rust_pointer(ty: &str) -> bool {
-//     ty.starts_with("*mut") || ty.starts_with("*const")
-// }
+
+fn is_rust_pointer(ty: &str) -> bool {
+    ty.starts_with("*mut") || ty.starts_with("*const")
+}
