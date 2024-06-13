@@ -1,16 +1,20 @@
 // ignore_for_file: avoid_print
 
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/test.dart';
 import 'package:path/path.dart' as path;
+import 'package:yaml/yaml.dart';
 
 // for rust san also ref
 // * https://doc.rust-lang.org/beta/unstable-book/compiler-flags/sanitizer.html
 // * https://github.com/japaric/rust-san
 Future<void> run(TestDartSanitizerConfig config) async {
+  await _modifySdkMinVersion(package: config.package);
+
   await runPubGetIfNotRunYet(config.package);
 
   if (config.package == 'frb_example/deliberate_bad') {
@@ -18,6 +22,14 @@ Future<void> run(TestDartSanitizerConfig config) async {
   } else {
     await _runEntrypoint(config);
   }
+}
+
+Future<void> _modifySdkMinVersion({required String package}) async {
+  print('Action: modifySdkMinVersion');
+  final file = File('${exec.pwd}$package/pubspec.yaml');
+  final content = loadYaml(file.readAsStringSync());
+  content['environment']['sdk'] = '>=3.2.0';
+  file.writeAsStringSync(jsonEncode(content));
 }
 
 Future<void> _runEntrypoint(TestDartSanitizerConfig config) async {
