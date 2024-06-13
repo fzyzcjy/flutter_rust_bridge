@@ -78,13 +78,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_my_enum(MyEnum raw) {
+  List<JSAny?> cst_encode_box_autoadd_my_enum(MyEnum raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_my_enum(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_list_String(List<String> raw) {
+  List<JSAny?> cst_encode_list_String(List<String> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_String).toList();
   }
@@ -96,7 +96,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic> cst_encode_my_enum(MyEnum raw) {
+  List<JSAny?> cst_encode_my_enum(MyEnum raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is MyEnum_A) {
       return [0, cst_encode_String(raw.field0)];
@@ -152,7 +152,7 @@ class RustLibWire implements BaseWire {
   RustLibWire.fromExternalLibrary(ExternalLibrary lib);
 
   void wire__crate__api__minimal__f(
-          NativePortType port_, List<dynamic> a, List<dynamic> b) =>
+          NativePortType port_, List<JSAny?> a, List<JSAny?> b) =>
       wasmModule.wire__crate__api__minimal__f(port_, a, b);
 
   void wire__crate__api__minimal__init_app(NativePortType port_) =>
@@ -170,7 +170,7 @@ external RustLibWasmModule get wasmModule;
 @anonymous
 extension type RustLibWasmModule._(JSObject _) implements JSObject {
   external void wire__crate__api__minimal__f(
-      NativePortType port_, List<dynamic> a, List<dynamic> b);
+      NativePortType port_, List<JSAny?> a, List<JSAny?> b);
 
   external void wire__crate__api__minimal__init_app(NativePortType port_);
 
