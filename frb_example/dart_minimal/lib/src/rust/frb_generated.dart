@@ -57,7 +57,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.0.0-dev.38';
 
   @override
-  int get rustContentHash => 1895935609;
+  int get rustContentHash => -2065769085;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -68,11 +68,17 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 }
 
 abstract class RustLibApi extends BaseApi {
-  Future<Uint64List> crateApiMinimalF({required Uint64List arg});
+  Future<int> crateApiMinimalSF({required S that, required int a});
 
   Future<void> crateApiMinimalInitApp();
 
   Future<int> crateApiMinimalMinimalAdder({required int a, required int b});
+
+  RustArcIncrementStrongCountFnType get rust_arc_increment_strong_count_S;
+
+  RustArcDecrementStrongCountFnType get rust_arc_decrement_strong_count_S;
+
+  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_SPtr;
 }
 
 class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
@@ -84,25 +90,28 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   });
 
   @override
-  Future<Uint64List> crateApiMinimalF({required Uint64List arg}) {
+  Future<int> crateApiMinimalSF({required S that, required int a}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_list_prim_u_64_strict(arg);
-        return wire.wire__crate__api__minimal__f(port_, arg0);
+        var arg0 =
+            cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerS(
+                that);
+        var arg1 = cst_encode_i_32(a);
+        return wire.wire__crate__api__minimal__S_f(port_, arg0, arg1);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_u_64_strict,
+        decodeSuccessData: dco_decode_i_32,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiMinimalFConstMeta,
-      argValues: [arg],
+      constMeta: kCrateApiMinimalSfConstMeta,
+      argValues: [that, a],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiMinimalFConstMeta => const TaskConstMeta(
-        debugName: "f",
-        argNames: ["arg"],
+  TaskConstMeta get kCrateApiMinimalSfConstMeta => const TaskConstMeta(
+        debugName: "S_f",
+        argNames: ["that", "a"],
       );
 
   @override
@@ -150,22 +159,37 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         argNames: ["a", "b"],
       );
 
+  RustArcIncrementStrongCountFnType get rust_arc_increment_strong_count_S => wire
+      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerS;
+
+  RustArcDecrementStrongCountFnType get rust_arc_decrement_strong_count_S => wire
+      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerS;
+
+  @protected
+  S dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerS(
+      dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return SImpl.frbInternalDcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  S dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerS(
+      dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return SImpl.frbInternalDcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  S dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerS(
+      dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return SImpl.frbInternalDcoDecode(raw as List<dynamic>);
+  }
+
   @protected
   int dco_decode_i_32(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return raw as int;
-  }
-
-  @protected
-  Uint64List dco_decode_list_prim_u_64_strict(dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return dcoDecodeUint64List(raw);
-  }
-
-  @protected
-  BigInt dco_decode_u_64(dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return dcoDecodeU64(raw);
   }
 
   @protected
@@ -175,22 +199,39 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  BigInt dco_decode_usize(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return dcoDecodeU64(raw);
+  }
+
+  @protected
+  S sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerS(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return SImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  S sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerS(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return SImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  S sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerS(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return SImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   int sse_decode_i_32(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return deserializer.buffer.getInt32();
-  }
-
-  @protected
-  Uint64List sse_decode_list_prim_u_64_strict(SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    var len_ = sse_decode_i_32(deserializer);
-    return deserializer.buffer.getUint64List(len_);
-  }
-
-  @protected
-  BigInt sse_decode_u_64(SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return deserializer.buffer.getBigUint64();
   }
 
   @protected
@@ -199,9 +240,39 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  BigInt sse_decode_usize(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return deserializer.buffer.getBigUint64();
+  }
+
+  @protected
   bool sse_decode_bool(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return deserializer.buffer.getUint8() != 0;
+  }
+
+  @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerS(
+      S raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+// ignore: invalid_use_of_internal_member
+    return (raw as SImpl).frbInternalCstEncode(move: true);
+  }
+
+  @protected
+  int cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerS(
+      S raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+// ignore: invalid_use_of_internal_member
+    return (raw as SImpl).frbInternalCstEncode(move: false);
+  }
+
+  @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerS(
+      S raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+// ignore: invalid_use_of_internal_member
+    return (raw as SImpl).frbInternalCstEncode();
   }
 
   @protected
@@ -217,23 +288,36 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerS(
+          S self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as SImpl).frbInternalSseEncode(move: true), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerS(
+          S self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as SImpl).frbInternalSseEncode(move: false), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerS(
+          S self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as SImpl).frbInternalSseEncode(move: null), serializer);
+  }
+
+  @protected
   void sse_encode_i_32(int self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     serializer.buffer.putInt32(self);
-  }
-
-  @protected
-  void sse_encode_list_prim_u_64_strict(
-      Uint64List self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_i_32(self.length, serializer);
-    serializer.buffer.putUint64List(self);
-  }
-
-  @protected
-  void sse_encode_u_64(BigInt self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    serializer.buffer.putBigUint64(self);
   }
 
   @protected
@@ -242,8 +326,37 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void sse_encode_usize(BigInt self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    serializer.buffer.putBigUint64(self);
+  }
+
+  @protected
   void sse_encode_bool(bool self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     serializer.buffer.putUint8(self ? 1 : 0);
   }
+}
+
+@sealed
+class SImpl extends RustOpaque implements S {
+  // Not to be used by end users
+  SImpl.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  SImpl.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount:
+        RustLib.instance.api.rust_arc_increment_strong_count_S,
+    rustArcDecrementStrongCount:
+        RustLib.instance.api.rust_arc_decrement_strong_count_S,
+    rustArcDecrementStrongCountPtr:
+        RustLib.instance.api.rust_arc_decrement_strong_count_SPtr,
+  );
+
+  Future<int> f({required int a}) =>
+      RustLib.instance.api.crateApiMinimalSF(that: this, a: a);
 }

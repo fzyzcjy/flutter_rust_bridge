@@ -18,47 +18,71 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     required super.portManager,
   });
 
+  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_SPtr => wire
+      ._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSPtr;
+
+  @protected
+  S dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerS(
+      dynamic raw);
+
+  @protected
+  S dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerS(
+      dynamic raw);
+
+  @protected
+  S dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerS(
+      dynamic raw);
+
   @protected
   int dco_decode_i_32(dynamic raw);
-
-  @protected
-  Uint64List dco_decode_list_prim_u_64_strict(dynamic raw);
-
-  @protected
-  BigInt dco_decode_u_64(dynamic raw);
 
   @protected
   void dco_decode_unit(dynamic raw);
 
   @protected
+  BigInt dco_decode_usize(dynamic raw);
+
+  @protected
+  S sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerS(
+      SseDeserializer deserializer);
+
+  @protected
+  S sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerS(
+      SseDeserializer deserializer);
+
+  @protected
+  S sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerS(
+      SseDeserializer deserializer);
+
+  @protected
   int sse_decode_i_32(SseDeserializer deserializer);
-
-  @protected
-  Uint64List sse_decode_list_prim_u_64_strict(SseDeserializer deserializer);
-
-  @protected
-  BigInt sse_decode_u_64(SseDeserializer deserializer);
 
   @protected
   void sse_decode_unit(SseDeserializer deserializer);
 
   @protected
+  BigInt sse_decode_usize(SseDeserializer deserializer);
+
+  @protected
   bool sse_decode_bool(SseDeserializer deserializer);
 
   @protected
-  ffi.Pointer<wire_cst_list_prim_u_64_strict> cst_encode_list_prim_u_64_strict(
-      Uint64List raw) {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    final ans = wire.cst_new_list_prim_u_64_strict(raw.length);
-    ans.ref.ptr.asTypedList(raw.length).setAll(0, raw.inner);
-    return ans;
-  }
-
-  @protected
-  int cst_encode_u_64(BigInt raw) {
+  int cst_encode_usize(BigInt raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.toSigned(64).toInt();
   }
+
+  @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerS(
+      S raw);
+
+  @protected
+  int cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerS(
+      S raw);
+
+  @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerS(
+      S raw);
 
   @protected
   int cst_encode_i_32(int raw);
@@ -67,17 +91,28 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void cst_encode_unit(void raw);
 
   @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerS(
+          S self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerS(
+          S self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerS(
+          S self, SseSerializer serializer);
+
+  @protected
   void sse_encode_i_32(int self, SseSerializer serializer);
 
   @protected
-  void sse_encode_list_prim_u_64_strict(
-      Uint64List self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_u_64(BigInt self, SseSerializer serializer);
-
-  @protected
   void sse_encode_unit(void self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_usize(BigInt self, SseSerializer serializer);
 
   @protected
   void sse_encode_bool(bool self, SseSerializer serializer);
@@ -124,24 +159,25 @@ class RustLibWire implements BaseWire {
   late final _store_dart_post_cobject = _store_dart_post_cobjectPtr
       .asFunction<void Function(DartPostCObjectFnType)>();
 
-  void wire__crate__api__minimal__f(
+  void wire__crate__api__minimal__S_f(
     int port_,
-    ffi.Pointer<wire_cst_list_prim_u_64_strict> arg,
+    int that,
+    int a,
   ) {
-    return _wire__crate__api__minimal__f(
+    return _wire__crate__api__minimal__S_f(
       port_,
-      arg,
+      that,
+      a,
     );
   }
 
-  late final _wire__crate__api__minimal__fPtr = _lookup<
+  late final _wire__crate__api__minimal__S_fPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_64_strict>)>>(
-      'frbgen_frb_example_dart_minimal_wire__crate__api__minimal__f');
-  late final _wire__crate__api__minimal__f =
-      _wire__crate__api__minimal__fPtr.asFunction<
-          void Function(int, ffi.Pointer<wire_cst_list_prim_u_64_strict>)>();
+              ffi.Void Function(ffi.Int64, ffi.UintPtr, ffi.Int32)>>(
+      'frbgen_frb_example_dart_minimal_wire__crate__api__minimal__S_f');
+  late final _wire__crate__api__minimal__S_f =
+      _wire__crate__api__minimal__S_fPtr
+          .asFunction<void Function(int, int, int)>();
 
   void wire__crate__api__minimal__init_app(
     int port_,
@@ -177,20 +213,37 @@ class RustLibWire implements BaseWire {
       _wire__crate__api__minimal__minimal_adderPtr
           .asFunction<void Function(int, int, int)>();
 
-  ffi.Pointer<wire_cst_list_prim_u_64_strict> cst_new_list_prim_u_64_strict(
-    int len,
+  void
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerS(
+    ffi.Pointer<ffi.Void> ptr,
   ) {
-    return _cst_new_list_prim_u_64_strict(
-      len,
+    return _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerS(
+      ptr,
     );
   }
 
-  late final _cst_new_list_prim_u_64_strictPtr = _lookup<
-          ffi.NativeFunction<
-              ffi.Pointer<wire_cst_list_prim_u_64_strict> Function(ffi.Int32)>>(
-      'frbgen_frb_example_dart_minimal_cst_new_list_prim_u_64_strict');
-  late final _cst_new_list_prim_u_64_strict = _cst_new_list_prim_u_64_strictPtr
-      .asFunction<ffi.Pointer<wire_cst_list_prim_u_64_strict> Function(int)>();
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'frbgen_frb_example_dart_minimal_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerS');
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerS =
+      _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerS(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerS(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'frbgen_frb_example_dart_minimal_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerS');
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerS =
+      _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
   int dummy_method_to_enforce_bundling() {
     return _dummy_method_to_enforce_bundling();
@@ -211,10 +264,3 @@ typedef DartDartPostCObjectFnTypeFunction = bool Function(
     DartDartPort port_id, ffi.Pointer<ffi.Void> message);
 typedef DartPort = ffi.Int64;
 typedef DartDartPort = int;
-
-final class wire_cst_list_prim_u_64_strict extends ffi.Struct {
-  external ffi.Pointer<ffi.Uint64> ptr;
-
-  @ffi.Int32()
-  external int len;
-}
