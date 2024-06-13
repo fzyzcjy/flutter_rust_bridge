@@ -56,7 +56,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 class RustLibWire implements BaseWire {
   RustLibWire.fromExternalLibrary(ExternalLibrary lib);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__minimal__f() =>
           wasmModule.wire__crate__api__minimal__f();
 
@@ -74,7 +74,7 @@ external RustLibWasmModule get wasmModule;
 @JS()
 @anonymous
 extension type RustLibWasmModule._(JSObject _) implements JSObject {
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__minimal__f();
 
   external void wire__crate__api__minimal__init_app(NativePortType port_);
