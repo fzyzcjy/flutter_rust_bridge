@@ -19279,25 +19279,25 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  Object cst_encode_Chrono_Duration(Duration raw) {
+  JSAny cst_encode_Chrono_Duration(Duration raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_i_64(BigInt.from(raw.inMilliseconds));
   }
 
   @protected
-  Object cst_encode_Chrono_Local(DateTime raw) {
+  JSAny cst_encode_Chrono_Local(DateTime raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_i_64(BigInt.from(raw.millisecondsSinceEpoch));
   }
 
   @protected
-  Object cst_encode_Chrono_Naive(DateTime raw) {
+  JSAny cst_encode_Chrono_Naive(DateTime raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_i_64(BigInt.from(raw.millisecondsSinceEpoch));
   }
 
   @protected
-  Object cst_encode_Chrono_Utc(DateTime raw) {
+  JSAny cst_encode_Chrono_Utc(DateTime raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_i_64(BigInt.from(raw.millisecondsSinceEpoch));
   }
@@ -19643,7 +19643,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  Int32List cst_encode_Set_i_32(Set<int> raw) {
+  JSAny cst_encode_Set_i_32(Set<int> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_prim_i_32_strict(Int32List.fromList(raw.toList()));
   }
@@ -20012,7 +20012,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  Uint8List cst_encode_Uuid(UuidValue raw) {
+  JSAny cst_encode_Uuid(UuidValue raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_prim_u_8_strict(raw.toBytes());
   }
@@ -20458,19 +20458,19 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  Object cst_encode_box_autoadd_Chrono_Duration(Duration raw) {
+  JSAny cst_encode_box_autoadd_Chrono_Duration(Duration raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_Chrono_Duration(raw);
   }
 
   @protected
-  Object cst_encode_box_autoadd_Chrono_Naive(DateTime raw) {
+  JSAny cst_encode_box_autoadd_Chrono_Naive(DateTime raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_Chrono_Naive(raw);
   }
 
   @protected
-  Object cst_encode_box_autoadd_Chrono_Utc(DateTime raw) {
+  JSAny cst_encode_box_autoadd_Chrono_Utc(DateTime raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_Chrono_Utc(raw);
   }
@@ -21251,7 +21251,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  Object cst_encode_box_autoadd_i_64(PlatformInt64 raw) {
+  JSAny cst_encode_box_autoadd_i_64(PlatformInt64 raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_i_64(raw);
   }
@@ -21263,7 +21263,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  Object cst_encode_box_autoadd_isize(PlatformInt64 raw) {
+  JSAny cst_encode_box_autoadd_isize(PlatformInt64 raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_isize(raw);
   }
@@ -22019,7 +22019,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  Object cst_encode_box_autoadd_u_64(BigInt raw) {
+  JSAny cst_encode_box_autoadd_u_64(BigInt raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_u_64(raw);
   }
@@ -22050,7 +22050,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  Object cst_encode_box_autoadd_usize(BigInt raw) {
+  JSAny cst_encode_box_autoadd_usize(BigInt raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_usize(raw);
   }
@@ -22188,7 +22188,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  Object cst_encode_box_i_64(PlatformInt64 raw) {
+  JSAny cst_encode_box_i_64(PlatformInt64 raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_i_64(raw);
   }
@@ -22249,13 +22249,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  Uint8List cst_encode_box_u_8_array_1600(U8Array1600 raw) {
+  JSAny cst_encode_box_u_8_array_1600(U8Array1600 raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_u_8_array_1600(raw);
   }
 
   @protected
-  Uint8List cst_encode_box_u_8_array_8(U8Array8 raw) {
+  JSAny cst_encode_box_u_8_array_8(U8Array8 raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_u_8_array_8(raw);
   }
@@ -23457,9 +23457,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  Float64List cst_encode_f_64_array_16(F64Array16 raw) {
+  JSAny cst_encode_f_64_array_16(F64Array16 raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return Float64List.fromList(raw);
+    return Float64List.fromList(raw).jsify()!;
   }
 
   @protected
@@ -23539,19 +23539,19 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  Int32List cst_encode_i_32_array_2(I32Array2 raw) {
+  JSAny cst_encode_i_32_array_2(I32Array2 raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return Int32List.fromList(raw);
+    return Int32List.fromList(raw).jsify()!;
   }
 
   @protected
-  Object cst_encode_i_64(PlatformInt64 raw) {
+  JSAny cst_encode_i_64(PlatformInt64 raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return castNativeBigInt(raw);
   }
 
   @protected
-  Object cst_encode_isize(PlatformInt64 raw) {
+  JSAny cst_encode_isize(PlatformInt64 raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return castNativeBigInt(raw);
   }
@@ -24191,111 +24191,111 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<double> cst_encode_list_prim_f_32_loose(List<double> raw) {
+  JSAny cst_encode_list_prim_f_32_loose(List<double> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw;
+    return raw.jsify()!;
   }
 
   @protected
-  Float32List cst_encode_list_prim_f_32_strict(Float32List raw) {
+  JSAny cst_encode_list_prim_f_32_strict(Float32List raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw;
+    return raw.jsify()!;
   }
 
   @protected
-  List<double> cst_encode_list_prim_f_64_loose(List<double> raw) {
+  JSAny cst_encode_list_prim_f_64_loose(List<double> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw;
+    return raw.jsify()!;
   }
 
   @protected
-  Float64List cst_encode_list_prim_f_64_strict(Float64List raw) {
+  JSAny cst_encode_list_prim_f_64_strict(Float64List raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw;
+    return raw.jsify()!;
   }
 
   @protected
-  List<int> cst_encode_list_prim_i_16_loose(List<int> raw) {
+  JSAny cst_encode_list_prim_i_16_loose(List<int> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw;
+    return raw.jsify()!;
   }
 
   @protected
-  Int16List cst_encode_list_prim_i_16_strict(Int16List raw) {
+  JSAny cst_encode_list_prim_i_16_strict(Int16List raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw;
+    return raw.jsify()!;
   }
 
   @protected
-  List<int> cst_encode_list_prim_i_32_loose(List<int> raw) {
+  JSAny cst_encode_list_prim_i_32_loose(List<int> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw;
+    return raw.jsify()!;
   }
 
   @protected
-  Int32List cst_encode_list_prim_i_32_strict(Int32List raw) {
+  JSAny cst_encode_list_prim_i_32_strict(Int32List raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw;
+    return raw.jsify()!;
   }
 
   @protected
-  JSAny /* BigInt64Array */ cst_encode_list_prim_i_64_strict(Int64List raw) {
+  JSAny cst_encode_list_prim_i_64_strict(Int64List raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.inner.jsify()!;
   }
 
   @protected
-  List<int> cst_encode_list_prim_i_8_loose(List<int> raw) {
+  JSAny cst_encode_list_prim_i_8_loose(List<int> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw;
+    return raw.jsify()!;
   }
 
   @protected
-  Int8List cst_encode_list_prim_i_8_strict(Int8List raw) {
+  JSAny cst_encode_list_prim_i_8_strict(Int8List raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw;
+    return raw.jsify()!;
   }
 
   @protected
-  List<int> cst_encode_list_prim_u_16_loose(List<int> raw) {
+  JSAny cst_encode_list_prim_u_16_loose(List<int> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw;
+    return raw.jsify()!;
   }
 
   @protected
-  Uint16List cst_encode_list_prim_u_16_strict(Uint16List raw) {
+  JSAny cst_encode_list_prim_u_16_strict(Uint16List raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw;
+    return raw.jsify()!;
   }
 
   @protected
-  List<int> cst_encode_list_prim_u_32_loose(List<int> raw) {
+  JSAny cst_encode_list_prim_u_32_loose(List<int> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw;
+    return raw.jsify()!;
   }
 
   @protected
-  Uint32List cst_encode_list_prim_u_32_strict(Uint32List raw) {
+  JSAny cst_encode_list_prim_u_32_strict(Uint32List raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw;
+    return raw.jsify()!;
   }
 
   @protected
-  JSAny /* BigInt64Array */ cst_encode_list_prim_u_64_strict(Uint64List raw) {
+  JSAny cst_encode_list_prim_u_64_strict(Uint64List raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.inner.jsify()!;
   }
 
   @protected
-  List<int> cst_encode_list_prim_u_8_loose(List<int> raw) {
+  JSAny cst_encode_list_prim_u_8_loose(List<int> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw;
+    return raw.jsify()!;
   }
 
   @protected
-  Uint8List cst_encode_list_prim_u_8_strict(Uint8List raw) {
+  JSAny cst_encode_list_prim_u_8_strict(Uint8List raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw;
+    return raw.jsify()!;
   }
 
   @protected
@@ -25179,19 +25179,19 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  Object? cst_encode_opt_box_autoadd_Chrono_Duration(Duration? raw) {
+  JSAny? cst_encode_opt_box_autoadd_Chrono_Duration(Duration? raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_box_autoadd_Chrono_Duration(raw);
   }
 
   @protected
-  Object? cst_encode_opt_box_autoadd_Chrono_Naive(DateTime? raw) {
+  JSAny? cst_encode_opt_box_autoadd_Chrono_Naive(DateTime? raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_box_autoadd_Chrono_Naive(raw);
   }
 
   @protected
-  Object? cst_encode_opt_box_autoadd_Chrono_Utc(DateTime? raw) {
+  JSAny? cst_encode_opt_box_autoadd_Chrono_Utc(DateTime? raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_box_autoadd_Chrono_Utc(raw);
   }
@@ -25472,7 +25472,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  Object? cst_encode_opt_box_autoadd_i_64(PlatformInt64? raw) {
+  JSAny? cst_encode_opt_box_autoadd_i_64(PlatformInt64? raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_box_autoadd_i_64(raw);
   }
@@ -25484,7 +25484,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  Object? cst_encode_opt_box_autoadd_isize(PlatformInt64? raw) {
+  JSAny? cst_encode_opt_box_autoadd_isize(PlatformInt64? raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_box_autoadd_isize(raw);
   }
@@ -25557,7 +25557,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  Object? cst_encode_opt_box_autoadd_u_64(BigInt? raw) {
+  JSAny? cst_encode_opt_box_autoadd_u_64(BigInt? raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_box_autoadd_u_64(raw);
   }
@@ -25569,7 +25569,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  Object? cst_encode_opt_box_autoadd_usize(BigInt? raw) {
+  JSAny? cst_encode_opt_box_autoadd_usize(BigInt? raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_box_autoadd_usize(raw);
   }
@@ -25669,7 +25669,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  Object? cst_encode_opt_box_i_64(PlatformInt64? raw) {
+  JSAny? cst_encode_opt_box_i_64(PlatformInt64? raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_box_i_64(raw);
   }
@@ -25753,31 +25753,31 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  Float32List? cst_encode_opt_list_prim_f_32_strict(Float32List? raw) {
+  JSAny? cst_encode_opt_list_prim_f_32_strict(Float32List? raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_list_prim_f_32_strict(raw);
   }
 
   @protected
-  Float64List? cst_encode_opt_list_prim_f_64_strict(Float64List? raw) {
+  JSAny? cst_encode_opt_list_prim_f_64_strict(Float64List? raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_list_prim_f_64_strict(raw);
   }
 
   @protected
-  Int32List? cst_encode_opt_list_prim_i_32_strict(Int32List? raw) {
+  JSAny? cst_encode_opt_list_prim_i_32_strict(Int32List? raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_list_prim_i_32_strict(raw);
   }
 
   @protected
-  Int8List? cst_encode_opt_list_prim_i_8_strict(Int8List? raw) {
+  JSAny? cst_encode_opt_list_prim_i_8_strict(Int8List? raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_list_prim_i_8_strict(raw);
   }
 
   @protected
-  Uint8List? cst_encode_opt_list_prim_u_8_strict(Uint8List? raw) {
+  JSAny? cst_encode_opt_list_prim_u_8_strict(Uint8List? raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_list_prim_u_8_strict(raw);
   }
@@ -27010,39 +27010,39 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  Object cst_encode_u_64(BigInt raw) {
+  JSAny cst_encode_u_64(BigInt raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return castNativeBigInt(raw);
   }
 
   @protected
-  Uint8List cst_encode_u_8_array_1600(U8Array1600 raw) {
+  JSAny cst_encode_u_8_array_1600(U8Array1600 raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return Uint8List.fromList(raw);
+    return Uint8List.fromList(raw).jsify()!;
   }
 
   @protected
-  Uint8List cst_encode_u_8_array_2(U8Array2 raw) {
+  JSAny cst_encode_u_8_array_2(U8Array2 raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return Uint8List.fromList(raw);
+    return Uint8List.fromList(raw).jsify()!;
   }
 
   @protected
-  Uint8List cst_encode_u_8_array_32(U8Array32 raw) {
+  JSAny cst_encode_u_8_array_32(U8Array32 raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return Uint8List.fromList(raw);
+    return Uint8List.fromList(raw).jsify()!;
   }
 
   @protected
-  Uint8List cst_encode_u_8_array_5(U8Array5 raw) {
+  JSAny cst_encode_u_8_array_5(U8Array5 raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return Uint8List.fromList(raw);
+    return Uint8List.fromList(raw).jsify()!;
   }
 
   @protected
-  Uint8List cst_encode_u_8_array_8(U8Array8 raw) {
+  JSAny cst_encode_u_8_array_8(U8Array8 raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return Uint8List.fromList(raw);
+    return Uint8List.fromList(raw).jsify()!;
   }
 
   @protected
@@ -27064,7 +27064,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  Object cst_encode_usize(BigInt raw) {
+  JSAny cst_encode_usize(BigInt raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return castNativeBigInt(raw);
   }
@@ -37579,7 +37579,7 @@ class RustLibWire implements BaseWire {
       wasmModule.wire__crate__api__function_at_api_mod_rs(port_);
 
   void wire__crate__api__array__boxed_blob_twin_normal(
-          NativePortType port_, Uint8List blob) =>
+          NativePortType port_, JSAny blob) =>
       wasmModule.wire__crate__api__array__boxed_blob_twin_normal(port_, blob);
 
   void wire__crate__api__array__func_test_id_twin_normal(
@@ -37594,7 +37594,7 @@ class RustLibWire implements BaseWire {
       wasmModule.wire__crate__api__array__get_complex_array_twin_normal(port_);
 
   void wire__crate__api__array__last_number_twin_normal(
-          NativePortType port_, Float64List array) =>
+          NativePortType port_, JSAny array) =>
       wasmModule.wire__crate__api__array__last_number_twin_normal(port_, array);
 
   void wire__crate__api__array__nested_id_twin_normal(
@@ -37602,11 +37602,11 @@ class RustLibWire implements BaseWire {
       wasmModule.wire__crate__api__array__nested_id_twin_normal(port_, id);
 
   void wire__crate__api__array__new_msgid_twin_normal(
-          NativePortType port_, Uint8List id) =>
+          NativePortType port_, JSAny id) =>
       wasmModule.wire__crate__api__array__new_msgid_twin_normal(port_, id);
 
   void wire__crate__api__array__return_boxed_feed_id_twin_normal(
-          NativePortType port_, Uint8List id) =>
+          NativePortType port_, JSAny id) =>
       wasmModule.wire__crate__api__array__return_boxed_feed_id_twin_normal(
           port_, id);
 
@@ -37721,26 +37721,26 @@ class RustLibWire implements BaseWire {
               port_, ptr_, rust_vec_len_, data_len_);
 
   void wire__crate__api__chrono_type__datetime_local_twin_normal(
-          NativePortType port_, Object d) =>
+          NativePortType port_, JSAny d) =>
       wasmModule.wire__crate__api__chrono_type__datetime_local_twin_normal(
           port_, d);
 
   void wire__crate__api__chrono_type__datetime_utc_twin_normal(
-          NativePortType port_, Object d) =>
+          NativePortType port_, JSAny d) =>
       wasmModule.wire__crate__api__chrono_type__datetime_utc_twin_normal(
           port_, d);
 
   void wire__crate__api__chrono_type__duration_twin_normal(
-          NativePortType port_, Object d) =>
+          NativePortType port_, JSAny d) =>
       wasmModule.wire__crate__api__chrono_type__duration_twin_normal(port_, d);
 
   void wire__crate__api__chrono_type__handle_durations_twin_normal(
-          NativePortType port_, JSAny durations, Object since) =>
+          NativePortType port_, JSAny durations, JSAny since) =>
       wasmModule.wire__crate__api__chrono_type__handle_durations_twin_normal(
           port_, durations, since);
 
   void wire__crate__api__chrono_type__handle_timestamps_twin_normal(
-          NativePortType port_, JSAny timestamps, Object epoch) =>
+          NativePortType port_, JSAny timestamps, JSAny epoch) =>
       wasmModule.wire__crate__api__chrono_type__handle_timestamps_twin_normal(
           port_, timestamps, epoch);
 
@@ -37751,12 +37751,12 @@ class RustLibWire implements BaseWire {
               port_, mine);
 
   void wire__crate__api__chrono_type__naivedatetime_twin_normal(
-          NativePortType port_, Object d) =>
+          NativePortType port_, JSAny d) =>
       wasmModule.wire__crate__api__chrono_type__naivedatetime_twin_normal(
           port_, d);
 
   void wire__crate__api__chrono_type__optional_empty_datetime_utc_twin_normal(
-          NativePortType port_, Object? d) =>
+          NativePortType port_, JSAny? d) =>
       wasmModule
           .wire__crate__api__chrono_type__optional_empty_datetime_utc_twin_normal(
               port_, d);
@@ -38593,7 +38593,7 @@ class RustLibWire implements BaseWire {
               port_, arg);
 
   void wire__crate__api__map_and_set__func_hash_set_i32_twin_normal(
-          NativePortType port_, Int32List arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule.wire__crate__api__map_and_set__func_hash_set_i32_twin_normal(
           port_, arg);
 
@@ -38811,12 +38811,12 @@ class RustLibWire implements BaseWire {
           port_, sink);
 
   void wire__crate__api__mirror__repeat_number_twin_normal(
-          NativePortType port_, int num, Object times) =>
+          NativePortType port_, int num, JSAny times) =>
       wasmModule.wire__crate__api__mirror__repeat_number_twin_normal(
           port_, num, times);
 
   void wire__crate__api__mirror__repeat_sequence_twin_normal(
-          NativePortType port_, int seq, Object times) =>
+          NativePortType port_, int seq, JSAny times) =>
       wasmModule.wire__crate__api__mirror__repeat_sequence_twin_normal(
           port_, seq, times);
 
@@ -38900,7 +38900,7 @@ class RustLibWire implements BaseWire {
           port_, arg, boxed);
 
   void wire__crate__api__misc_example__handle_vec_u8_twin_normal(
-          NativePortType port_, List<int> v) =>
+          NativePortType port_, JSAny v) =>
       wasmModule.wire__crate__api__misc_example__handle_vec_u8_twin_normal(
           port_, v);
 
@@ -38977,7 +38977,7 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_deliberate_bad_field_a(
-              int that, Uint8List deliberate_bad_field_a) =>
+              int that, JSAny deliberate_bad_field_a) =>
           wasmModule
               .wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_deliberate_bad_field_a(
                   that, deliberate_bad_field_a);
@@ -39191,7 +39191,7 @@ class RustLibWire implements BaseWire {
           int? i8box,
           int? u8box,
           int? i32box,
-          Object? i64box,
+          JSAny? i64box,
           double? f64box,
           bool? boolbox,
           JSAny? structbox) =>
@@ -39223,7 +39223,7 @@ class RustLibWire implements BaseWire {
   void wire__crate__api__optional_primitive_misc__primitive_optional_types_twin_normal(
           NativePortType port_,
           int? my_i32,
-          Object? my_i64,
+          JSAny? my_i64,
           double? my_f64,
           bool? my_bool) =>
       wasmModule
@@ -39241,7 +39241,7 @@ class RustLibWire implements BaseWire {
           port_, arg);
 
   void wire__crate__api__ownership__borrow_slice_u8_twin_normal(
-          NativePortType port_, List<int> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule.wire__crate__api__ownership__borrow_slice_u8_twin_normal(
           port_, arg);
 
@@ -39269,7 +39269,7 @@ class RustLibWire implements BaseWire {
   void wire__crate__api__primitive_misc__primitive_types_twin_normal(
           NativePortType port_,
           int my_i32,
-          Object my_i64,
+          JSAny my_i64,
           double my_f64,
           bool my_bool) =>
       wasmModule.wire__crate__api__primitive_misc__primitive_types_twin_normal(
@@ -39307,7 +39307,7 @@ class RustLibWire implements BaseWire {
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire__crate__api__pseudo_manual__array_twin_rust_async__boxed_blob_twin_rust_async(
-          NativePortType port_, Uint8List blob) =>
+          NativePortType port_, JSAny blob) =>
       wasmModule
           .wire__crate__api__pseudo_manual__array_twin_rust_async__boxed_blob_twin_rust_async(
               port_, blob);
@@ -39331,7 +39331,7 @@ class RustLibWire implements BaseWire {
               port_);
 
   void wire__crate__api__pseudo_manual__array_twin_rust_async__last_number_twin_rust_async(
-          NativePortType port_, Float64List array) =>
+          NativePortType port_, JSAny array) =>
       wasmModule
           .wire__crate__api__pseudo_manual__array_twin_rust_async__last_number_twin_rust_async(
               port_, array);
@@ -39343,13 +39343,13 @@ class RustLibWire implements BaseWire {
               port_, id);
 
   void wire__crate__api__pseudo_manual__array_twin_rust_async__new_msgid_twin_rust_async(
-          NativePortType port_, Uint8List id) =>
+          NativePortType port_, JSAny id) =>
       wasmModule
           .wire__crate__api__pseudo_manual__array_twin_rust_async__new_msgid_twin_rust_async(
               port_, id);
 
   void wire__crate__api__pseudo_manual__array_twin_rust_async__return_boxed_feed_id_twin_rust_async(
-          NativePortType port_, Uint8List id) =>
+          NativePortType port_, JSAny id) =>
       wasmModule
           .wire__crate__api__pseudo_manual__array_twin_rust_async__return_boxed_feed_id_twin_rust_async(
               port_, id);
@@ -39572,7 +39572,7 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__array_twin_sync__boxed_blob_twin_sync(
-              Uint8List blob) =>
+              JSAny blob) =>
           wasmModule
               .wire__crate__api__pseudo_manual__array_twin_sync__boxed_blob_twin_sync(
                   blob);
@@ -39596,7 +39596,7 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__array_twin_sync__last_number_twin_sync(
-              Float64List array) =>
+              JSAny array) =>
           wasmModule
               .wire__crate__api__pseudo_manual__array_twin_sync__last_number_twin_sync(
                   array);
@@ -39610,14 +39610,14 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__array_twin_sync__new_msgid_twin_sync(
-              Uint8List id) =>
+              JSAny id) =>
           wasmModule
               .wire__crate__api__pseudo_manual__array_twin_sync__new_msgid_twin_sync(
                   id);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__array_twin_sync__return_boxed_feed_id_twin_sync(
-              Uint8List id) =>
+              JSAny id) =>
           wasmModule
               .wire__crate__api__pseudo_manual__array_twin_sync__return_boxed_feed_id_twin_sync(
                   id);
@@ -39865,7 +39865,7 @@ class RustLibWire implements BaseWire {
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic__example_basic_type_bytes_twin_normal(
-          NativePortType port_, List<int> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic__example_basic_type_bytes_twin_normal(
               port_, arg);
@@ -39901,7 +39901,7 @@ class RustLibWire implements BaseWire {
               port_, arg, expect);
 
   void wire__crate__api__pseudo_manual__basic__example_basic_type_i64_twin_normal(
-          NativePortType port_, Object arg, String expect) =>
+          NativePortType port_, JSAny arg, String expect) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic__example_basic_type_i64_twin_normal(
               port_, arg, expect);
@@ -39913,7 +39913,7 @@ class RustLibWire implements BaseWire {
               port_, arg, expect);
 
   void wire__crate__api__pseudo_manual__basic__example_basic_type_isize_twin_normal(
-          NativePortType port_, Object arg, String expect) =>
+          NativePortType port_, JSAny arg, String expect) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic__example_basic_type_isize_twin_normal(
               port_, arg, expect);
@@ -39943,7 +39943,7 @@ class RustLibWire implements BaseWire {
               port_, arg, expect);
 
   void wire__crate__api__pseudo_manual__basic__example_basic_type_u64_twin_normal(
-          NativePortType port_, Object arg, String expect) =>
+          NativePortType port_, JSAny arg, String expect) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic__example_basic_type_u64_twin_normal(
               port_, arg, expect);
@@ -39955,7 +39955,7 @@ class RustLibWire implements BaseWire {
               port_, arg, expect);
 
   void wire__crate__api__pseudo_manual__basic__example_basic_type_usize_twin_normal(
-          NativePortType port_, Object arg, String expect) =>
+          NativePortType port_, JSAny arg, String expect) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic__example_basic_type_usize_twin_normal(
               port_, arg, expect);
@@ -39991,37 +39991,37 @@ class RustLibWire implements BaseWire {
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_f32_twin_normal(
-          NativePortType port_, List<double> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_f32_twin_normal(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_f64_twin_normal(
-          NativePortType port_, List<double> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_f64_twin_normal(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_i16_twin_normal(
-          NativePortType port_, List<int> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_i16_twin_normal(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_i32_twin_normal(
-          NativePortType port_, List<int> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_i32_twin_normal(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_i64_twin_normal(
-          NativePortType port_, JSAny /* BigInt64Array */ arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_i64_twin_normal(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_i8_twin_normal(
-          NativePortType port_, List<int> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_i8_twin_normal(
               port_, arg);
@@ -40033,25 +40033,25 @@ class RustLibWire implements BaseWire {
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_u16_twin_normal(
-          NativePortType port_, List<int> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_u16_twin_normal(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_u32_twin_normal(
-          NativePortType port_, List<int> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_u32_twin_normal(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_u64_twin_normal(
-          NativePortType port_, JSAny /* BigInt64Array */ arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_u64_twin_normal(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_u8_twin_normal(
-          NativePortType port_, List<int> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_u8_twin_normal(
               port_, arg);
@@ -40087,37 +40087,37 @@ class RustLibWire implements BaseWire {
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_f32_twin_rust_async(
-          NativePortType port_, List<double> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_f32_twin_rust_async(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_f64_twin_rust_async(
-          NativePortType port_, List<double> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_f64_twin_rust_async(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_i16_twin_rust_async(
-          NativePortType port_, List<int> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_i16_twin_rust_async(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_i32_twin_rust_async(
-          NativePortType port_, List<int> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_i32_twin_rust_async(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_i64_twin_rust_async(
-          NativePortType port_, JSAny /* BigInt64Array */ arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_i64_twin_rust_async(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_i8_twin_rust_async(
-          NativePortType port_, List<int> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_i8_twin_rust_async(
               port_, arg);
@@ -40129,25 +40129,25 @@ class RustLibWire implements BaseWire {
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_u16_twin_rust_async(
-          NativePortType port_, List<int> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_u16_twin_rust_async(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_u32_twin_rust_async(
-          NativePortType port_, List<int> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_u32_twin_rust_async(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_u64_twin_rust_async(
-          NativePortType port_, JSAny /* BigInt64Array */ arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_u64_twin_rust_async(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_u8_twin_rust_async(
-          NativePortType port_, List<int> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_u8_twin_rust_async(
               port_, arg);
@@ -40477,42 +40477,42 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_f32_twin_sync(
-              List<double> arg) =>
+              JSAny arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_f32_twin_sync(
                   arg);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_f64_twin_sync(
-              List<double> arg) =>
+              JSAny arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_f64_twin_sync(
                   arg);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_i16_twin_sync(
-              List<int> arg) =>
+              JSAny arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_i16_twin_sync(
                   arg);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_i32_twin_sync(
-              List<int> arg) =>
+              JSAny arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_i32_twin_sync(
                   arg);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_i64_twin_sync(
-              JSAny /* BigInt64Array */ arg) =>
+              JSAny arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_i64_twin_sync(
                   arg);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_i8_twin_sync(
-              List<int> arg) =>
+              JSAny arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_i8_twin_sync(
                   arg);
@@ -40526,28 +40526,28 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_u16_twin_sync(
-              List<int> arg) =>
+              JSAny arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_u16_twin_sync(
                   arg);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_u32_twin_sync(
-              List<int> arg) =>
+              JSAny arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_u32_twin_sync(
                   arg);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_u64_twin_sync(
-              JSAny /* BigInt64Array */ arg) =>
+              JSAny arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_u64_twin_sync(
                   arg);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_u8_twin_sync(
-              List<int> arg) =>
+              JSAny arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_u8_twin_sync(
                   arg);
@@ -41641,7 +41641,7 @@ class RustLibWire implements BaseWire {
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_bytes_twin_normal(
-          NativePortType port_, Uint8List? arg) =>
+          NativePortType port_, JSAny? arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_bytes_twin_normal(
               port_, arg);
@@ -41677,7 +41677,7 @@ class RustLibWire implements BaseWire {
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_i64_twin_normal(
-          NativePortType port_, Object? arg) =>
+          NativePortType port_, JSAny? arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_i64_twin_normal(
               port_, arg);
@@ -41689,7 +41689,7 @@ class RustLibWire implements BaseWire {
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_isize_twin_normal(
-          NativePortType port_, Object? arg) =>
+          NativePortType port_, JSAny? arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_isize_twin_normal(
               port_, arg);
@@ -41719,7 +41719,7 @@ class RustLibWire implements BaseWire {
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_u64_twin_normal(
-          NativePortType port_, Object? arg) =>
+          NativePortType port_, JSAny? arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_u64_twin_normal(
               port_, arg);
@@ -41731,7 +41731,7 @@ class RustLibWire implements BaseWire {
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_usize_twin_normal(
-          NativePortType port_, Object? arg) =>
+          NativePortType port_, JSAny? arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_usize_twin_normal(
               port_, arg);
@@ -41761,7 +41761,7 @@ class RustLibWire implements BaseWire {
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_bytes_twin_rust_async(
-          NativePortType port_, Uint8List? arg) =>
+          NativePortType port_, JSAny? arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_bytes_twin_rust_async(
               port_, arg);
@@ -41797,7 +41797,7 @@ class RustLibWire implements BaseWire {
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_i64_twin_rust_async(
-          NativePortType port_, Object? arg) =>
+          NativePortType port_, JSAny? arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_i64_twin_rust_async(
               port_, arg);
@@ -41809,7 +41809,7 @@ class RustLibWire implements BaseWire {
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_isize_twin_rust_async(
-          NativePortType port_, Object? arg) =>
+          NativePortType port_, JSAny? arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_isize_twin_rust_async(
               port_, arg);
@@ -41839,7 +41839,7 @@ class RustLibWire implements BaseWire {
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_u64_twin_rust_async(
-          NativePortType port_, Object? arg) =>
+          NativePortType port_, JSAny? arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_u64_twin_rust_async(
               port_, arg);
@@ -41851,7 +41851,7 @@ class RustLibWire implements BaseWire {
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_usize_twin_rust_async(
-          NativePortType port_, Object? arg) =>
+          NativePortType port_, JSAny? arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_usize_twin_rust_async(
               port_, arg);
@@ -42246,7 +42246,7 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_bytes_twin_sync(
-              Uint8List? arg) =>
+              JSAny? arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_bytes_twin_sync(
                   arg);
@@ -42288,7 +42288,7 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_i64_twin_sync(
-              Object? arg) =>
+              JSAny? arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_i64_twin_sync(
                   arg);
@@ -42302,7 +42302,7 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_isize_twin_sync(
-              Object? arg) =>
+              JSAny? arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_isize_twin_sync(
                   arg);
@@ -42337,7 +42337,7 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_u64_twin_sync(
-              Object? arg) =>
+              JSAny? arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_u64_twin_sync(
                   arg);
@@ -42351,7 +42351,7 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_usize_twin_sync(
-              Object? arg) =>
+              JSAny? arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_usize_twin_sync(
                   arg);
@@ -42561,7 +42561,7 @@ class RustLibWire implements BaseWire {
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_bytes_twin_rust_async(
-          NativePortType port_, List<int> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_bytes_twin_rust_async(
               port_, arg);
@@ -42597,7 +42597,7 @@ class RustLibWire implements BaseWire {
               port_, arg, expect);
 
   void wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_i64_twin_rust_async(
-          NativePortType port_, Object arg, String expect) =>
+          NativePortType port_, JSAny arg, String expect) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_i64_twin_rust_async(
               port_, arg, expect);
@@ -42609,7 +42609,7 @@ class RustLibWire implements BaseWire {
               port_, arg, expect);
 
   void wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_isize_twin_rust_async(
-          NativePortType port_, Object arg, String expect) =>
+          NativePortType port_, JSAny arg, String expect) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_isize_twin_rust_async(
               port_, arg, expect);
@@ -42639,7 +42639,7 @@ class RustLibWire implements BaseWire {
               port_, arg, expect);
 
   void wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_u64_twin_rust_async(
-          NativePortType port_, Object arg, String expect) =>
+          NativePortType port_, JSAny arg, String expect) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_u64_twin_rust_async(
               port_, arg, expect);
@@ -42651,7 +42651,7 @@ class RustLibWire implements BaseWire {
               port_, arg, expect);
 
   void wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_usize_twin_rust_async(
-          NativePortType port_, Object arg, String expect) =>
+          NativePortType port_, JSAny arg, String expect) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_usize_twin_rust_async(
               port_, arg, expect);
@@ -43046,7 +43046,7 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_bytes_twin_sync(
-              List<int> arg) =>
+              JSAny arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_bytes_twin_sync(
                   arg);
@@ -43088,7 +43088,7 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i64_twin_sync(
-              Object arg, String expect) =>
+              JSAny arg, String expect) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i64_twin_sync(
                   arg, expect);
@@ -43102,7 +43102,7 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_isize_twin_sync(
-              Object arg, String expect) =>
+              JSAny arg, String expect) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_isize_twin_sync(
                   arg, expect);
@@ -43137,7 +43137,7 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u64_twin_sync(
-              Object arg, String expect) =>
+              JSAny arg, String expect) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u64_twin_sync(
                   arg, expect);
@@ -43151,7 +43151,7 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_usize_twin_sync(
-              Object arg, String expect) =>
+              JSAny arg, String expect) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_usize_twin_sync(
                   arg, expect);
@@ -43343,7 +43343,7 @@ class RustLibWire implements BaseWire {
               port_, raw);
 
   void wire__crate__api__pseudo_manual__benchmark_api__benchmark_binary_tree_input_protobuf_twin_normal(
-          NativePortType port_, List<int> raw) =>
+          NativePortType port_, JSAny raw) =>
       wasmModule
           .wire__crate__api__pseudo_manual__benchmark_api__benchmark_binary_tree_input_protobuf_twin_normal(
               port_, raw);
@@ -43379,7 +43379,7 @@ class RustLibWire implements BaseWire {
               port_, raw);
 
   void wire__crate__api__pseudo_manual__benchmark_api__benchmark_blob_input_protobuf_twin_normal(
-          NativePortType port_, List<int> raw) =>
+          NativePortType port_, JSAny raw) =>
       wasmModule
           .wire__crate__api__pseudo_manual__benchmark_api__benchmark_blob_input_protobuf_twin_normal(
               port_, raw);
@@ -43409,7 +43409,7 @@ class RustLibWire implements BaseWire {
               port_, size);
 
   void wire__crate__api__pseudo_manual__benchmark_api__benchmark_input_bytes_twin_normal(
-          NativePortType port_, List<int> bytes) =>
+          NativePortType port_, JSAny bytes) =>
       wasmModule
           .wire__crate__api__pseudo_manual__benchmark_api__benchmark_input_bytes_twin_normal(
               port_, bytes);
@@ -43433,7 +43433,7 @@ class RustLibWire implements BaseWire {
               port_, raw);
 
   void wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_binary_tree_input_protobuf_twin_rust_async(
-          NativePortType port_, List<int> raw) =>
+          NativePortType port_, JSAny raw) =>
       wasmModule
           .wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_binary_tree_input_protobuf_twin_rust_async(
               port_, raw);
@@ -43469,7 +43469,7 @@ class RustLibWire implements BaseWire {
               port_, raw);
 
   void wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_blob_input_protobuf_twin_rust_async(
-          NativePortType port_, List<int> raw) =>
+          NativePortType port_, JSAny raw) =>
       wasmModule
           .wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_blob_input_protobuf_twin_rust_async(
               port_, raw);
@@ -43499,7 +43499,7 @@ class RustLibWire implements BaseWire {
               port_, size);
 
   void wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_input_bytes_twin_rust_async(
-          NativePortType port_, List<int> bytes) =>
+          NativePortType port_, JSAny bytes) =>
       wasmModule
           .wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_input_bytes_twin_rust_async(
               port_, bytes);
@@ -43795,7 +43795,7 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_binary_tree_input_protobuf_twin_sync(
-              List<int> raw) =>
+              JSAny raw) =>
           wasmModule
               .wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_binary_tree_input_protobuf_twin_sync(
                   raw);
@@ -43837,7 +43837,7 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_blob_input_protobuf_twin_sync(
-              List<int> raw) =>
+              JSAny raw) =>
           wasmModule
               .wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_blob_input_protobuf_twin_sync(
                   raw);
@@ -43872,7 +43872,7 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_input_bytes_twin_sync(
-              List<int> bytes) =>
+              JSAny bytes) =>
           wasmModule
               .wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_input_bytes_twin_sync(
                   bytes);
@@ -44025,31 +44025,31 @@ class RustLibWire implements BaseWire {
                   ptr_, rust_vec_len_, data_len_);
 
   void wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__datetime_local_twin_rust_async(
-          NativePortType port_, Object d) =>
+          NativePortType port_, JSAny d) =>
       wasmModule
           .wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__datetime_local_twin_rust_async(
               port_, d);
 
   void wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__datetime_utc_twin_rust_async(
-          NativePortType port_, Object d) =>
+          NativePortType port_, JSAny d) =>
       wasmModule
           .wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__datetime_utc_twin_rust_async(
               port_, d);
 
   void wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__duration_twin_rust_async(
-          NativePortType port_, Object d) =>
+          NativePortType port_, JSAny d) =>
       wasmModule
           .wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__duration_twin_rust_async(
               port_, d);
 
   void wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__handle_durations_twin_rust_async(
-          NativePortType port_, JSAny durations, Object since) =>
+          NativePortType port_, JSAny durations, JSAny since) =>
       wasmModule
           .wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__handle_durations_twin_rust_async(
               port_, durations, since);
 
   void wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__handle_timestamps_twin_rust_async(
-          NativePortType port_, JSAny timestamps, Object epoch) =>
+          NativePortType port_, JSAny timestamps, JSAny epoch) =>
       wasmModule
           .wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__handle_timestamps_twin_rust_async(
               port_, timestamps, epoch);
@@ -44061,13 +44061,13 @@ class RustLibWire implements BaseWire {
               port_, mine);
 
   void wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__naivedatetime_twin_rust_async(
-          NativePortType port_, Object d) =>
+          NativePortType port_, JSAny d) =>
       wasmModule
           .wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__naivedatetime_twin_rust_async(
               port_, d);
 
   void wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__optional_empty_datetime_utc_twin_rust_async(
-          NativePortType port_, Object? d) =>
+          NativePortType port_, JSAny? d) =>
       wasmModule
           .wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__optional_empty_datetime_utc_twin_rust_async(
               port_, d);
@@ -44266,35 +44266,35 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__chrono_type_twin_sync__datetime_local_twin_sync(
-              Object d) =>
+              JSAny d) =>
           wasmModule
               .wire__crate__api__pseudo_manual__chrono_type_twin_sync__datetime_local_twin_sync(
                   d);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__chrono_type_twin_sync__datetime_utc_twin_sync(
-              Object d) =>
+              JSAny d) =>
           wasmModule
               .wire__crate__api__pseudo_manual__chrono_type_twin_sync__datetime_utc_twin_sync(
                   d);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__chrono_type_twin_sync__duration_twin_sync(
-              Object d) =>
+              JSAny d) =>
           wasmModule
               .wire__crate__api__pseudo_manual__chrono_type_twin_sync__duration_twin_sync(
                   d);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__chrono_type_twin_sync__handle_durations_twin_sync(
-              JSAny durations, Object since) =>
+              JSAny durations, JSAny since) =>
           wasmModule
               .wire__crate__api__pseudo_manual__chrono_type_twin_sync__handle_durations_twin_sync(
                   durations, since);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__chrono_type_twin_sync__handle_timestamps_twin_sync(
-              JSAny timestamps, Object epoch) =>
+              JSAny timestamps, JSAny epoch) =>
           wasmModule
               .wire__crate__api__pseudo_manual__chrono_type_twin_sync__handle_timestamps_twin_sync(
                   timestamps, epoch);
@@ -44308,14 +44308,14 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__chrono_type_twin_sync__naivedatetime_twin_sync(
-              Object d) =>
+              JSAny d) =>
           wasmModule
               .wire__crate__api__pseudo_manual__chrono_type_twin_sync__naivedatetime_twin_sync(
                   d);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__chrono_type_twin_sync__optional_empty_datetime_utc_twin_sync(
-              Object? d) =>
+              JSAny? d) =>
           wasmModule
               .wire__crate__api__pseudo_manual__chrono_type_twin_sync__optional_empty_datetime_utc_twin_sync(
                   d);
@@ -47691,7 +47691,7 @@ class RustLibWire implements BaseWire {
               port_, arg);
 
   void wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_set_i32_twin_rust_async(
-          NativePortType port_, Int32List arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_set_i32_twin_rust_async(
               port_, arg);
@@ -47890,7 +47890,7 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_set_i32_twin_sync(
-              Int32List arg) =>
+              JSAny arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_set_i32_twin_sync(
                   arg);
@@ -48947,13 +48947,13 @@ class RustLibWire implements BaseWire {
               port_, sink);
 
   void wire__crate__api__pseudo_manual__mirror_twin_rust_async__repeat_number_twin_rust_async(
-          NativePortType port_, int num, Object times) =>
+          NativePortType port_, int num, JSAny times) =>
       wasmModule
           .wire__crate__api__pseudo_manual__mirror_twin_rust_async__repeat_number_twin_rust_async(
               port_, num, times);
 
   void wire__crate__api__pseudo_manual__mirror_twin_rust_async__repeat_sequence_twin_rust_async(
-          NativePortType port_, int seq, Object times) =>
+          NativePortType port_, int seq, JSAny times) =>
       wasmModule
           .wire__crate__api__pseudo_manual__mirror_twin_rust_async__repeat_sequence_twin_rust_async(
               port_, seq, times);
@@ -49582,14 +49582,14 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__mirror_twin_sync__repeat_number_twin_sync(
-              int num, Object times) =>
+              int num, JSAny times) =>
           wasmModule
               .wire__crate__api__pseudo_manual__mirror_twin_sync__repeat_number_twin_sync(
                   num, times);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__mirror_twin_sync__repeat_sequence_twin_sync(
-              int seq, Object times) =>
+              int seq, JSAny times) =>
           wasmModule
               .wire__crate__api__pseudo_manual__mirror_twin_sync__repeat_sequence_twin_sync(
                   seq, times);
@@ -49907,7 +49907,7 @@ class RustLibWire implements BaseWire {
               port_, arg, boxed);
 
   void wire__crate__api__pseudo_manual__misc_example_twin_rust_async__handle_vec_u8_twin_rust_async(
-          NativePortType port_, List<int> v) =>
+          NativePortType port_, JSAny v) =>
       wasmModule
           .wire__crate__api__pseudo_manual__misc_example_twin_rust_async__handle_vec_u8_twin_rust_async(
               port_, v);
@@ -50176,7 +50176,7 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__misc_example_twin_sync__handle_vec_u8_twin_sync(
-              List<int> v) =>
+              JSAny v) =>
           wasmModule
               .wire__crate__api__pseudo_manual__misc_example_twin_sync__handle_vec_u8_twin_sync(
                   v);
@@ -50509,7 +50509,7 @@ class RustLibWire implements BaseWire {
   void wire__crate__api__pseudo_manual__optional_primitive_misc_twin_rust_async__primitive_optional_types_twin_rust_async(
           NativePortType port_,
           int? my_i32,
-          Object? my_i64,
+          JSAny? my_i64,
           double? my_f64,
           bool? my_bool) =>
       wasmModule
@@ -50536,7 +50536,7 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__optional_primitive_misc_twin_sync__primitive_optional_types_twin_sync(
-              int? my_i32, Object? my_i64, double? my_f64, bool? my_bool) =>
+              int? my_i32, JSAny? my_i64, double? my_f64, bool? my_bool) =>
           wasmModule
               .wire__crate__api__pseudo_manual__optional_primitive_misc_twin_sync__primitive_optional_types_twin_sync(
                   my_i32, my_i64, my_f64, my_bool);
@@ -50561,7 +50561,7 @@ class RustLibWire implements BaseWire {
           int? i8box,
           int? u8box,
           int? i32box,
-          Object? i64box,
+          JSAny? i64box,
           double? f64box,
           bool? boolbox,
           JSAny? structbox) =>
@@ -50713,7 +50713,7 @@ class RustLibWire implements BaseWire {
               int? i8box,
               int? u8box,
               int? i32box,
-              Object? i64box,
+              JSAny? i64box,
               double? f64box,
               bool? boolbox,
               JSAny? structbox) =>
@@ -50816,7 +50816,7 @@ class RustLibWire implements BaseWire {
               port_, arg);
 
   void wire__crate__api__pseudo_manual__ownership_twin_rust_async__borrow_slice_u8_twin_rust_async(
-          NativePortType port_, List<int> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__ownership_twin_rust_async__borrow_slice_u8_twin_rust_async(
               port_, arg);
@@ -50963,7 +50963,7 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__ownership_twin_sync__borrow_slice_u8_twin_sync(
-              List<int> arg) =>
+              JSAny arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__ownership_twin_sync__borrow_slice_u8_twin_sync(
                   arg);
@@ -51086,7 +51086,7 @@ class RustLibWire implements BaseWire {
   void wire__crate__api__pseudo_manual__primitive_misc_twin_rust_async__primitive_types_twin_rust_async(
           NativePortType port_,
           int my_i32,
-          Object my_i64,
+          JSAny my_i64,
           double my_f64,
           bool my_bool) =>
       wasmModule
@@ -51137,7 +51137,7 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__primitive_misc_twin_sync__primitive_types_twin_sync(
-              int my_i32, Object my_i64, double my_f64, bool my_bool) =>
+              int my_i32, JSAny my_i64, double my_f64, bool my_bool) =>
           wasmModule
               .wire__crate__api__pseudo_manual__primitive_misc_twin_sync__primitive_types_twin_sync(
                   my_i32, my_i64, my_f64, my_bool);
@@ -51354,7 +51354,7 @@ class RustLibWire implements BaseWire {
               port_, arg, expect);
 
   void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_arg_vec_own_twin_moi(
-          NativePortType port_, JSAny arg, List<int> expect) =>
+          NativePortType port_, JSAny arg, JSAny expect) =>
       wasmModule
           .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_arg_vec_own_twin_moi(
               port_, arg, expect);
@@ -51626,7 +51626,7 @@ class RustLibWire implements BaseWire {
               port_, arg, expect);
 
   void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_arg_vec_own_twin_rust_async(
-          NativePortType port_, JSAny arg, List<int> expect) =>
+          NativePortType port_, JSAny arg, JSAny expect) =>
       wasmModule
           .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_arg_vec_own_twin_rust_async(
               port_, arg, expect);
@@ -51898,7 +51898,7 @@ class RustLibWire implements BaseWire {
               port_, arg, expect);
 
   void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_arg_vec_own_twin_rust_async_moi(
-          NativePortType port_, JSAny arg, List<int> expect) =>
+          NativePortType port_, JSAny arg, JSAny expect) =>
       wasmModule
           .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_arg_vec_own_twin_rust_async_moi(
               port_, arg, expect);
@@ -53783,7 +53783,7 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_arg_vec_own_twin_sync(
-              JSAny arg, List<int> expect) =>
+              JSAny arg, JSAny expect) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_arg_vec_own_twin_sync(
                   arg, expect);
@@ -54070,7 +54070,7 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_arg_vec_own_twin_sync_moi(
-              JSAny arg, List<int> expect) =>
+              JSAny arg, JSAny expect) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_arg_vec_own_twin_sync_moi(
                   arg, expect);
@@ -57080,19 +57080,19 @@ class RustLibWire implements BaseWire {
                   ptr_, rust_vec_len_, data_len_);
 
   void wire__crate__api__pseudo_manual__type_alias_twin_rust_async__handle_type_alias_id_twin_rust_async(
-          NativePortType port_, Object input) =>
+          NativePortType port_, JSAny input) =>
       wasmModule
           .wire__crate__api__pseudo_manual__type_alias_twin_rust_async__handle_type_alias_id_twin_rust_async(
               port_, input);
 
   void wire__crate__api__pseudo_manual__type_alias_twin_rust_async__handle_type_alias_model_twin_rust_async(
-          NativePortType port_, Object input) =>
+          NativePortType port_, JSAny input) =>
       wasmModule
           .wire__crate__api__pseudo_manual__type_alias_twin_rust_async__handle_type_alias_model_twin_rust_async(
               port_, input);
 
   void wire__crate__api__pseudo_manual__type_alias_twin_rust_async__handle_type_nest_alias_id_twin_rust_async(
-          NativePortType port_, Object input) =>
+          NativePortType port_, JSAny input) =>
       wasmModule
           .wire__crate__api__pseudo_manual__type_alias_twin_rust_async__handle_type_nest_alias_id_twin_rust_async(
               port_, input);
@@ -57153,21 +57153,21 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__type_alias_twin_sync__handle_type_alias_id_twin_sync(
-              Object input) =>
+              JSAny input) =>
           wasmModule
               .wire__crate__api__pseudo_manual__type_alias_twin_sync__handle_type_alias_id_twin_sync(
                   input);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__type_alias_twin_sync__handle_type_alias_model_twin_sync(
-              Object input) =>
+              JSAny input) =>
           wasmModule
               .wire__crate__api__pseudo_manual__type_alias_twin_sync__handle_type_alias_model_twin_sync(
                   input);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__type_alias_twin_sync__handle_type_nest_alias_id_twin_sync(
-              Object input) =>
+              JSAny input) =>
           wasmModule
               .wire__crate__api__pseudo_manual__type_alias_twin_sync__handle_type_nest_alias_id_twin_sync(
                   input);
@@ -57206,7 +57206,7 @@ class RustLibWire implements BaseWire {
               port_, ids);
 
   void wire__crate__api__pseudo_manual__uuid_type_twin_rust_async__handle_uuid_twin_rust_async(
-          NativePortType port_, Uint8List id) =>
+          NativePortType port_, JSAny id) =>
       wasmModule
           .wire__crate__api__pseudo_manual__uuid_type_twin_rust_async__handle_uuid_twin_rust_async(
               port_, id);
@@ -57280,7 +57280,7 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__uuid_type_twin_sync__handle_uuid_twin_sync(
-              Uint8List id) =>
+              JSAny id) =>
           wasmModule
               .wire__crate__api__pseudo_manual__uuid_type_twin_sync__handle_uuid_twin_sync(
                   id);
@@ -57442,7 +57442,7 @@ class RustLibWire implements BaseWire {
               port_, arg, expect);
 
   void wire__crate__api__rust_auto_opaque__rust_auto_opaque_arg_vec_own_twin_normal(
-          NativePortType port_, JSAny arg, List<int> expect) =>
+          NativePortType port_, JSAny arg, JSAny expect) =>
       wasmModule
           .wire__crate__api__rust_auto_opaque__rust_auto_opaque_arg_vec_own_twin_normal(
               port_, arg, expect);
@@ -57828,18 +57828,18 @@ class RustLibWire implements BaseWire {
       wasmModule.wire__crate__api__tuple__test_tuple_twin_normal(port_, value);
 
   void wire__crate__api__type_alias__handle_type_alias_id_twin_normal(
-          NativePortType port_, Object input) =>
+          NativePortType port_, JSAny input) =>
       wasmModule.wire__crate__api__type_alias__handle_type_alias_id_twin_normal(
           port_, input);
 
   void wire__crate__api__type_alias__handle_type_alias_model_twin_normal(
-          NativePortType port_, Object input) =>
+          NativePortType port_, JSAny input) =>
       wasmModule
           .wire__crate__api__type_alias__handle_type_alias_model_twin_normal(
               port_, input);
 
   void wire__crate__api__type_alias__handle_type_nest_alias_id_twin_normal(
-          NativePortType port_, Object input) =>
+          NativePortType port_, JSAny input) =>
       wasmModule
           .wire__crate__api__type_alias__handle_type_nest_alias_id_twin_normal(
               port_, input);
@@ -57850,7 +57850,7 @@ class RustLibWire implements BaseWire {
           port_, ids);
 
   void wire__crate__api__uuid_type__handle_uuid_twin_normal(
-          NativePortType port_, Uint8List id) =>
+          NativePortType port_, JSAny id) =>
       wasmModule.wire__crate__api__uuid_type__handle_uuid_twin_normal(
           port_, id);
 
@@ -60259,7 +60259,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
   external void wire__crate__api__function_at_api_mod_rs(NativePortType port_);
 
   external void wire__crate__api__array__boxed_blob_twin_normal(
-      NativePortType port_, Uint8List blob);
+      NativePortType port_, JSAny blob);
 
   external void wire__crate__api__array__func_test_id_twin_normal(
       NativePortType port_, JSAny id);
@@ -60271,16 +60271,16 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
       NativePortType port_);
 
   external void wire__crate__api__array__last_number_twin_normal(
-      NativePortType port_, Float64List array);
+      NativePortType port_, JSAny array);
 
   external void wire__crate__api__array__nested_id_twin_normal(
       NativePortType port_, JSAny id);
 
   external void wire__crate__api__array__new_msgid_twin_normal(
-      NativePortType port_, Uint8List id);
+      NativePortType port_, JSAny id);
 
   external void wire__crate__api__array__return_boxed_feed_id_twin_normal(
-      NativePortType port_, Uint8List id);
+      NativePortType port_, JSAny id);
 
   external void wire__crate__api__array__return_boxed_raw_feed_id_twin_normal(
       NativePortType port_, JSAny id);
@@ -60359,30 +60359,30 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int data_len_);
 
   external void wire__crate__api__chrono_type__datetime_local_twin_normal(
-      NativePortType port_, Object d);
+      NativePortType port_, JSAny d);
 
   external void wire__crate__api__chrono_type__datetime_utc_twin_normal(
-      NativePortType port_, Object d);
+      NativePortType port_, JSAny d);
 
   external void wire__crate__api__chrono_type__duration_twin_normal(
-      NativePortType port_, Object d);
+      NativePortType port_, JSAny d);
 
   external void wire__crate__api__chrono_type__handle_durations_twin_normal(
-      NativePortType port_, JSAny durations, Object since);
+      NativePortType port_, JSAny durations, JSAny since);
 
   external void wire__crate__api__chrono_type__handle_timestamps_twin_normal(
-      NativePortType port_, JSAny timestamps, Object epoch);
+      NativePortType port_, JSAny timestamps, JSAny epoch);
 
   external void
       wire__crate__api__chrono_type__how_long_does_it_take_twin_normal(
           NativePortType port_, JSAny mine);
 
   external void wire__crate__api__chrono_type__naivedatetime_twin_normal(
-      NativePortType port_, Object d);
+      NativePortType port_, JSAny d);
 
   external void
       wire__crate__api__chrono_type__optional_empty_datetime_utc_twin_normal(
-          NativePortType port_, Object? d);
+          NativePortType port_, JSAny? d);
 
   external void wire__crate__api__chrono_type__test_chrono_twin_normal(
       NativePortType port_);
@@ -60923,7 +60923,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           NativePortType port_, JSAny arg);
 
   external void wire__crate__api__map_and_set__func_hash_set_i32_twin_normal(
-      NativePortType port_, Int32List arg);
+      NativePortType port_, JSAny arg);
 
   external void wire__crate__api__map_and_set__func_hash_set_string_twin_normal(
       NativePortType port_, JSAny arg);
@@ -61061,10 +61061,10 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
       NativePortType port_, String sink);
 
   external void wire__crate__api__mirror__repeat_number_twin_normal(
-      NativePortType port_, int num, Object times);
+      NativePortType port_, int num, JSAny times);
 
   external void wire__crate__api__mirror__repeat_sequence_twin_normal(
-      NativePortType port_, int seq, Object times);
+      NativePortType port_, int seq, JSAny times);
 
   external void
       wire__crate__api__mirror__test_contains_mirrored_sub_struct_twin_normal(
@@ -61118,7 +61118,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
       NativePortType port_, JSAny arg, JSAny boxed);
 
   external void wire__crate__api__misc_example__handle_vec_u8_twin_normal(
-      NativePortType port_, List<int> v);
+      NativePortType port_, JSAny v);
 
   external void
       wire__crate__api__misc_example__list_of_primitive_enums_twin_normal(
@@ -61165,7 +61165,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_deliberate_bad_field_a(
-          int that, Uint8List deliberate_bad_field_a);
+          int that, JSAny deliberate_bad_field_a);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_deliberate_bad_field_b(
@@ -61299,7 +61299,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int? i8box,
           int? u8box,
           int? i32box,
-          Object? i64box,
+          JSAny? i64box,
           double? f64box,
           bool? boolbox,
           JSAny? structbox);
@@ -61321,7 +61321,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
       wire__crate__api__optional_primitive_misc__primitive_optional_types_twin_normal(
           NativePortType port_,
           int? my_i32,
-          Object? my_i64,
+          JSAny? my_i64,
           double? my_f64,
           bool? my_bool);
 
@@ -61332,7 +61332,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
       NativePortType port_, JSAny arg);
 
   external void wire__crate__api__ownership__borrow_slice_u8_twin_normal(
-      NativePortType port_, List<int> arg);
+      NativePortType port_, JSAny arg);
 
   external void wire__crate__api__ownership__borrow_str_twin_normal(
       NativePortType port_, String arg);
@@ -61350,7 +61350,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
   external void wire__crate__api__primitive_misc__primitive_types_twin_normal(
       NativePortType port_,
       int my_i32,
-      Object my_i64,
+      JSAny my_i64,
       double my_f64,
       bool my_bool);
 
@@ -61379,7 +61379,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__array_twin_rust_async__boxed_blob_twin_rust_async(
-          NativePortType port_, Uint8List blob);
+          NativePortType port_, JSAny blob);
 
   external void
       wire__crate__api__pseudo_manual__array_twin_rust_async__func_test_id_twin_rust_async(
@@ -61395,7 +61395,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__array_twin_rust_async__last_number_twin_rust_async(
-          NativePortType port_, Float64List array);
+          NativePortType port_, JSAny array);
 
   external void
       wire__crate__api__pseudo_manual__array_twin_rust_async__nested_id_twin_rust_async(
@@ -61403,11 +61403,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__array_twin_rust_async__new_msgid_twin_rust_async(
-          NativePortType port_, Uint8List id);
+          NativePortType port_, JSAny id);
 
   external void
       wire__crate__api__pseudo_manual__array_twin_rust_async__return_boxed_feed_id_twin_rust_async(
-          NativePortType port_, Uint8List id);
+          NativePortType port_, JSAny id);
 
   external void
       wire__crate__api__pseudo_manual__array_twin_rust_async__return_boxed_raw_feed_id_twin_rust_async(
@@ -61577,7 +61577,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__array_twin_sync__boxed_blob_twin_sync(
-          Uint8List blob);
+          JSAny blob);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__array_twin_sync__func_test_id_twin_sync(
@@ -61591,7 +61591,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__array_twin_sync__last_number_twin_sync(
-          Float64List array);
+          JSAny array);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__array_twin_sync__nested_id_twin_sync(
@@ -61599,11 +61599,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__array_twin_sync__new_msgid_twin_sync(
-          Uint8List id);
+          JSAny id);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__array_twin_sync__return_boxed_feed_id_twin_sync(
-          Uint8List id);
+          JSAny id);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__array_twin_sync__return_boxed_raw_feed_id_twin_sync(
@@ -61771,7 +61771,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__basic__example_basic_type_bytes_twin_normal(
-          NativePortType port_, List<int> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic__example_basic_type_f32_twin_normal(
@@ -61795,7 +61795,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__basic__example_basic_type_i64_twin_normal(
-          NativePortType port_, Object arg, String expect);
+          NativePortType port_, JSAny arg, String expect);
 
   external void
       wire__crate__api__pseudo_manual__basic__example_basic_type_i8_twin_normal(
@@ -61803,7 +61803,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__basic__example_basic_type_isize_twin_normal(
-          NativePortType port_, Object arg, String expect);
+          NativePortType port_, JSAny arg, String expect);
 
   external void
       wire__crate__api__pseudo_manual__basic__example_basic_type_string_twin_normal(
@@ -61823,7 +61823,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__basic__example_basic_type_u64_twin_normal(
-          NativePortType port_, Object arg, String expect);
+          NativePortType port_, JSAny arg, String expect);
 
   external void
       wire__crate__api__pseudo_manual__basic__example_basic_type_u8_twin_normal(
@@ -61831,7 +61831,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__basic__example_basic_type_usize_twin_normal(
-          NativePortType port_, Object arg, String expect);
+          NativePortType port_, JSAny arg, String expect);
 
   external void
       wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_basic_general_enum_twin_normal_twin_normal(
@@ -61855,27 +61855,27 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_f32_twin_normal(
-          NativePortType port_, List<double> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_f64_twin_normal(
-          NativePortType port_, List<double> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_i16_twin_normal(
-          NativePortType port_, List<int> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_i32_twin_normal(
-          NativePortType port_, List<int> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_i64_twin_normal(
-          NativePortType port_, JSAny /* BigInt64Array */ arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_i8_twin_normal(
-          NativePortType port_, List<int> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_string_twin_normal(
@@ -61883,19 +61883,19 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_u16_twin_normal(
-          NativePortType port_, List<int> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_u32_twin_normal(
-          NativePortType port_, List<int> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_u64_twin_normal(
-          NativePortType port_, JSAny /* BigInt64Array */ arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_u8_twin_normal(
-          NativePortType port_, List<int> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_basic_general_enum_twin_rust_async_twin_rust_async(
@@ -61919,27 +61919,27 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_f32_twin_rust_async(
-          NativePortType port_, List<double> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_f64_twin_rust_async(
-          NativePortType port_, List<double> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_i16_twin_rust_async(
-          NativePortType port_, List<int> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_i32_twin_rust_async(
-          NativePortType port_, List<int> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_i64_twin_rust_async(
-          NativePortType port_, JSAny /* BigInt64Array */ arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_i8_twin_rust_async(
-          NativePortType port_, List<int> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_string_twin_rust_async(
@@ -61947,19 +61947,19 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_u16_twin_rust_async(
-          NativePortType port_, List<int> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_u32_twin_rust_async(
-          NativePortType port_, List<int> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_u64_twin_rust_async(
-          NativePortType port_, JSAny /* BigInt64Array */ arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_u8_twin_rust_async(
-          NativePortType port_, List<int> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_list_twin_rust_async_sse__example_basic_list_type_basic_general_enum_twin_rust_async_sse_twin_rust_async_sse(
@@ -62207,27 +62207,27 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_f32_twin_sync(
-          List<double> arg);
+          JSAny arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_f64_twin_sync(
-          List<double> arg);
+          JSAny arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_i16_twin_sync(
-          List<int> arg);
+          JSAny arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_i32_twin_sync(
-          List<int> arg);
+          JSAny arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_i64_twin_sync(
-          JSAny /* BigInt64Array */ arg);
+          JSAny arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_i8_twin_sync(
-          List<int> arg);
+          JSAny arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_string_twin_sync(
@@ -62235,19 +62235,19 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_u16_twin_sync(
-          List<int> arg);
+          JSAny arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_u32_twin_sync(
-          List<int> arg);
+          JSAny arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_u64_twin_sync(
-          JSAny /* BigInt64Array */ arg);
+          JSAny arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_u8_twin_sync(
-          List<int> arg);
+          JSAny arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_list_twin_sync_sse__example_basic_list_type_basic_general_enum_twin_sync_sse_twin_sync_sse(
@@ -63003,7 +63003,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_bytes_twin_normal(
-          NativePortType port_, Uint8List? arg);
+          NativePortType port_, JSAny? arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_f32_twin_normal(
@@ -63027,7 +63027,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_i64_twin_normal(
-          NativePortType port_, Object? arg);
+          NativePortType port_, JSAny? arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_i8_twin_normal(
@@ -63035,7 +63035,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_isize_twin_normal(
-          NativePortType port_, Object? arg);
+          NativePortType port_, JSAny? arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_string_twin_normal(
@@ -63055,7 +63055,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_u64_twin_normal(
-          NativePortType port_, Object? arg);
+          NativePortType port_, JSAny? arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_u8_twin_normal(
@@ -63063,7 +63063,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_usize_twin_normal(
-          NativePortType port_, Object? arg);
+          NativePortType port_, JSAny? arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_basic_general_enum_twin_rust_async_twin_rust_async(
@@ -63083,7 +63083,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_bytes_twin_rust_async(
-          NativePortType port_, Uint8List? arg);
+          NativePortType port_, JSAny? arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_f32_twin_rust_async(
@@ -63107,7 +63107,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_i64_twin_rust_async(
-          NativePortType port_, Object? arg);
+          NativePortType port_, JSAny? arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_i8_twin_rust_async(
@@ -63115,7 +63115,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_isize_twin_rust_async(
-          NativePortType port_, Object? arg);
+          NativePortType port_, JSAny? arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_string_twin_rust_async(
@@ -63135,7 +63135,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_u64_twin_rust_async(
-          NativePortType port_, Object? arg);
+          NativePortType port_, JSAny? arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_u8_twin_rust_async(
@@ -63143,7 +63143,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_usize_twin_rust_async(
-          NativePortType port_, Object? arg);
+          NativePortType port_, JSAny? arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_optional_twin_rust_async_sse__example_basic_optional_type_basic_general_enum_twin_rust_async_sse_twin_rust_async_sse(
@@ -63443,7 +63443,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_bytes_twin_sync(
-          Uint8List? arg);
+          JSAny? arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_f32_twin_sync(
@@ -63467,7 +63467,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_i64_twin_sync(
-          Object? arg);
+          JSAny? arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_i8_twin_sync(
@@ -63475,7 +63475,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_isize_twin_sync(
-          Object? arg);
+          JSAny? arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_string_twin_sync(
@@ -63495,7 +63495,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_u64_twin_sync(
-          Object? arg);
+          JSAny? arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_u8_twin_sync(
@@ -63503,7 +63503,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_usize_twin_sync(
-          Object? arg);
+          JSAny? arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync_sse__example_basic_optional_type_basic_general_enum_twin_sync_sse_twin_sync_sse(
@@ -63643,7 +63643,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_bytes_twin_rust_async(
-          NativePortType port_, List<int> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_f32_twin_rust_async(
@@ -63667,7 +63667,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_i64_twin_rust_async(
-          NativePortType port_, Object arg, String expect);
+          NativePortType port_, JSAny arg, String expect);
 
   external void
       wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_i8_twin_rust_async(
@@ -63675,7 +63675,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_isize_twin_rust_async(
-          NativePortType port_, Object arg, String expect);
+          NativePortType port_, JSAny arg, String expect);
 
   external void
       wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_string_twin_rust_async(
@@ -63695,7 +63695,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_u64_twin_rust_async(
-          NativePortType port_, Object arg, String expect);
+          NativePortType port_, JSAny arg, String expect);
 
   external void
       wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_u8_twin_rust_async(
@@ -63703,7 +63703,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_usize_twin_rust_async(
-          NativePortType port_, Object arg, String expect);
+          NativePortType port_, JSAny arg, String expect);
 
   external void
       wire__crate__api__pseudo_manual__basic_twin_rust_async_sse__example_basic_type_basic_general_enum_twin_rust_async_sse_twin_rust_async_sse(
@@ -64003,7 +64003,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_bytes_twin_sync(
-          List<int> arg);
+          JSAny arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_f32_twin_sync(
@@ -64027,7 +64027,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i64_twin_sync(
-          Object arg, String expect);
+          JSAny arg, String expect);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i8_twin_sync(
@@ -64035,7 +64035,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_isize_twin_sync(
-          Object arg, String expect);
+          JSAny arg, String expect);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_string_twin_sync(
@@ -64055,7 +64055,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u64_twin_sync(
-          Object arg, String expect);
+          JSAny arg, String expect);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u8_twin_sync(
@@ -64063,7 +64063,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_usize_twin_sync(
-          Object arg, String expect);
+          JSAny arg, String expect);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_basic_general_enum_twin_sync_sse_twin_sync_sse(
@@ -64191,7 +64191,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__benchmark_api__benchmark_binary_tree_input_protobuf_twin_normal(
-          NativePortType port_, List<int> raw);
+          NativePortType port_, JSAny raw);
 
   external void
       wire__crate__api__pseudo_manual__benchmark_api__benchmark_binary_tree_input_twin_normal(
@@ -64215,7 +64215,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__benchmark_api__benchmark_blob_input_protobuf_twin_normal(
-          NativePortType port_, List<int> raw);
+          NativePortType port_, JSAny raw);
 
   external void
       wire__crate__api__pseudo_manual__benchmark_api__benchmark_blob_input_twin_normal(
@@ -64235,7 +64235,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__benchmark_api__benchmark_input_bytes_twin_normal(
-          NativePortType port_, List<int> bytes);
+          NativePortType port_, JSAny bytes);
 
   external void
       wire__crate__api__pseudo_manual__benchmark_api__benchmark_output_bytes_twin_normal(
@@ -64251,7 +64251,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_binary_tree_input_protobuf_twin_rust_async(
-          NativePortType port_, List<int> raw);
+          NativePortType port_, JSAny raw);
 
   external void
       wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_binary_tree_input_twin_rust_async(
@@ -64275,7 +64275,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_blob_input_protobuf_twin_rust_async(
-          NativePortType port_, List<int> raw);
+          NativePortType port_, JSAny raw);
 
   external void
       wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_blob_input_twin_rust_async(
@@ -64295,7 +64295,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_input_bytes_twin_rust_async(
-          NativePortType port_, List<int> bytes);
+          NativePortType port_, JSAny bytes);
 
   external void
       wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_output_bytes_twin_rust_async(
@@ -64521,7 +64521,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_binary_tree_input_protobuf_twin_sync(
-          List<int> raw);
+          JSAny raw);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_binary_tree_input_twin_sync(
@@ -64545,7 +64545,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_blob_input_protobuf_twin_sync(
-          List<int> raw);
+          JSAny raw);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_blob_input_twin_sync(
@@ -64565,7 +64565,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_input_bytes_twin_sync(
-          List<int> bytes);
+          JSAny bytes);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_output_bytes_twin_sync(
@@ -64666,23 +64666,23 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__datetime_local_twin_rust_async(
-          NativePortType port_, Object d);
+          NativePortType port_, JSAny d);
 
   external void
       wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__datetime_utc_twin_rust_async(
-          NativePortType port_, Object d);
+          NativePortType port_, JSAny d);
 
   external void
       wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__duration_twin_rust_async(
-          NativePortType port_, Object d);
+          NativePortType port_, JSAny d);
 
   external void
       wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__handle_durations_twin_rust_async(
-          NativePortType port_, JSAny durations, Object since);
+          NativePortType port_, JSAny durations, JSAny since);
 
   external void
       wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__handle_timestamps_twin_rust_async(
-          NativePortType port_, JSAny timestamps, Object epoch);
+          NativePortType port_, JSAny timestamps, JSAny epoch);
 
   external void
       wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__how_long_does_it_take_twin_rust_async(
@@ -64690,11 +64690,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__naivedatetime_twin_rust_async(
-          NativePortType port_, Object d);
+          NativePortType port_, JSAny d);
 
   external void
       wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__optional_empty_datetime_utc_twin_rust_async(
-          NativePortType port_, Object? d);
+          NativePortType port_, JSAny? d);
 
   external void
       wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__test_chrono_twin_rust_async(
@@ -64846,23 +64846,23 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__chrono_type_twin_sync__datetime_local_twin_sync(
-          Object d);
+          JSAny d);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__chrono_type_twin_sync__datetime_utc_twin_sync(
-          Object d);
+          JSAny d);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__chrono_type_twin_sync__duration_twin_sync(
-          Object d);
+          JSAny d);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__chrono_type_twin_sync__handle_durations_twin_sync(
-          JSAny durations, Object since);
+          JSAny durations, JSAny since);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__chrono_type_twin_sync__handle_timestamps_twin_sync(
-          JSAny timestamps, Object epoch);
+          JSAny timestamps, JSAny epoch);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__chrono_type_twin_sync__how_long_does_it_take_twin_sync(
@@ -64870,11 +64870,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__chrono_type_twin_sync__naivedatetime_twin_sync(
-          Object d);
+          JSAny d);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__chrono_type_twin_sync__optional_empty_datetime_utc_twin_sync(
-          Object? d);
+          JSAny? d);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__chrono_type_twin_sync__test_chrono_twin_sync();
@@ -67243,7 +67243,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_set_i32_twin_rust_async(
-          NativePortType port_, Int32List arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_set_string_twin_rust_async(
@@ -67387,7 +67387,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_set_i32_twin_sync(
-          Int32List arg);
+          JSAny arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_set_string_twin_sync(
@@ -68121,11 +68121,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__mirror_twin_rust_async__repeat_number_twin_rust_async(
-          NativePortType port_, int num, Object times);
+          NativePortType port_, int num, JSAny times);
 
   external void
       wire__crate__api__pseudo_manual__mirror_twin_rust_async__repeat_sequence_twin_rust_async(
-          NativePortType port_, int seq, Object times);
+          NativePortType port_, int seq, JSAny times);
 
   external void
       wire__crate__api__pseudo_manual__mirror_twin_rust_async__test_contains_mirrored_sub_struct_twin_rust_async(
@@ -68586,11 +68586,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__mirror_twin_sync__repeat_number_twin_sync(
-          int num, Object times);
+          int num, JSAny times);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__mirror_twin_sync__repeat_sequence_twin_sync(
-          int seq, Object times);
+          int seq, JSAny times);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__mirror_twin_sync__test_contains_mirrored_sub_struct_twin_sync();
@@ -68799,7 +68799,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__misc_example_twin_rust_async__handle_vec_u8_twin_rust_async(
-          NativePortType port_, List<int> v);
+          NativePortType port_, JSAny v);
 
   external void
       wire__crate__api__pseudo_manual__misc_example_twin_rust_async__list_of_primitive_enums_twin_rust_async(
@@ -68996,7 +68996,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__misc_example_twin_sync__handle_vec_u8_twin_sync(
-          List<int> v);
+          JSAny v);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__misc_example_twin_sync__list_of_primitive_enums_twin_sync(
@@ -69223,7 +69223,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
       wire__crate__api__pseudo_manual__optional_primitive_misc_twin_rust_async__primitive_optional_types_twin_rust_async(
           NativePortType port_,
           int? my_i32,
-          Object? my_i64,
+          JSAny? my_i64,
           double? my_f64,
           bool? my_bool);
 
@@ -69243,7 +69243,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__optional_primitive_misc_twin_sync__primitive_optional_types_twin_sync(
-          int? my_i32, Object? my_i64, double? my_f64, bool? my_bool);
+          int? my_i32, JSAny? my_i64, double? my_f64, bool? my_bool);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__optional_primitive_misc_twin_sync_sse__primitive_optional_types_twin_sync_sse(
@@ -69261,7 +69261,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int? i8box,
           int? u8box,
           int? i32box,
-          Object? i64box,
+          JSAny? i64box,
           double? f64box,
           bool? boolbox,
           JSAny? structbox);
@@ -69375,7 +69375,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int? i8box,
           int? u8box,
           int? i32box,
-          Object? i64box,
+          JSAny? i64box,
           double? f64box,
           bool? boolbox,
           JSAny? structbox);
@@ -69442,7 +69442,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__ownership_twin_rust_async__borrow_slice_u8_twin_rust_async(
-          NativePortType port_, List<int> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__ownership_twin_rust_async__borrow_str_twin_rust_async(
@@ -69550,7 +69550,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__ownership_twin_sync__borrow_slice_u8_twin_sync(
-          List<int> arg);
+          JSAny arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__ownership_twin_sync__borrow_str_twin_sync(
@@ -69632,7 +69632,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
       wire__crate__api__pseudo_manual__primitive_misc_twin_rust_async__primitive_types_twin_rust_async(
           NativePortType port_,
           int my_i32,
-          Object my_i64,
+          JSAny my_i64,
           double my_f64,
           bool my_bool);
 
@@ -69670,7 +69670,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__primitive_misc_twin_sync__primitive_types_twin_sync(
-          int my_i32, Object my_i64, double my_f64, bool my_bool);
+          int my_i32, JSAny my_i64, double my_f64, bool my_bool);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__primitive_misc_twin_sync__primitive_u32_twin_sync(
@@ -69816,7 +69816,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_arg_vec_own_twin_moi(
-          NativePortType port_, JSAny arg, List<int> expect);
+          NativePortType port_, JSAny arg, JSAny expect);
 
   external void
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_borrow_and_borrow_twin_moi(
@@ -69996,7 +69996,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_arg_vec_own_twin_rust_async(
-          NativePortType port_, JSAny arg, List<int> expect);
+          NativePortType port_, JSAny arg, JSAny expect);
 
   external void
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_borrow_and_borrow_twin_rust_async(
@@ -70176,7 +70176,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_arg_vec_own_twin_rust_async_moi(
-          NativePortType port_, JSAny arg, List<int> expect);
+          NativePortType port_, JSAny arg, JSAny expect);
 
   external void
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_borrow_and_borrow_twin_rust_async_moi(
@@ -71588,7 +71588,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_arg_vec_own_twin_sync(
-          JSAny arg, List<int> expect);
+          JSAny arg, JSAny expect);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_borrow_and_borrow_twin_sync(
@@ -71754,7 +71754,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_arg_vec_own_twin_sync_moi(
-          JSAny arg, List<int> expect);
+          JSAny arg, JSAny expect);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_borrow_and_borrow_twin_sync_moi(
@@ -73824,15 +73824,15 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__type_alias_twin_rust_async__handle_type_alias_id_twin_rust_async(
-          NativePortType port_, Object input);
+          NativePortType port_, JSAny input);
 
   external void
       wire__crate__api__pseudo_manual__type_alias_twin_rust_async__handle_type_alias_model_twin_rust_async(
-          NativePortType port_, Object input);
+          NativePortType port_, JSAny input);
 
   external void
       wire__crate__api__pseudo_manual__type_alias_twin_rust_async__handle_type_nest_alias_id_twin_rust_async(
-          NativePortType port_, Object input);
+          NativePortType port_, JSAny input);
 
   external void
       wire__crate__api__pseudo_manual__type_alias_twin_rust_async_sse__handle_type_alias_id_twin_rust_async_sse(
@@ -73878,15 +73878,15 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__type_alias_twin_sync__handle_type_alias_id_twin_sync(
-          Object input);
+          JSAny input);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__type_alias_twin_sync__handle_type_alias_model_twin_sync(
-          Object input);
+          JSAny input);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__type_alias_twin_sync__handle_type_nest_alias_id_twin_sync(
-          Object input);
+          JSAny input);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__type_alias_twin_sync_sse__handle_type_alias_id_twin_sync_sse(
@@ -73912,7 +73912,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__uuid_type_twin_rust_async__handle_uuid_twin_rust_async(
-          NativePortType port_, Uint8List id);
+          NativePortType port_, JSAny id);
 
   external void
       wire__crate__api__pseudo_manual__uuid_type_twin_rust_async__handle_uuids_twin_rust_async(
@@ -73966,7 +73966,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__uuid_type_twin_sync__handle_uuid_twin_sync(
-          Uint8List id);
+          JSAny id);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__uuid_type_twin_sync__handle_uuids_twin_sync(
@@ -74072,7 +74072,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__rust_auto_opaque__rust_auto_opaque_arg_vec_own_twin_normal(
-          NativePortType port_, JSAny arg, List<int> expect);
+          NativePortType port_, JSAny arg, JSAny expect);
 
   external void
       wire__crate__api__rust_auto_opaque__rust_auto_opaque_borrow_and_borrow_twin_normal(
@@ -74319,21 +74319,21 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
       NativePortType port_, JSAny? value);
 
   external void wire__crate__api__type_alias__handle_type_alias_id_twin_normal(
-      NativePortType port_, Object input);
+      NativePortType port_, JSAny input);
 
   external void
       wire__crate__api__type_alias__handle_type_alias_model_twin_normal(
-          NativePortType port_, Object input);
+          NativePortType port_, JSAny input);
 
   external void
       wire__crate__api__type_alias__handle_type_nest_alias_id_twin_normal(
-          NativePortType port_, Object input);
+          NativePortType port_, JSAny input);
 
   external void wire__crate__api__uuid_type__handle_nested_uuids_twin_normal(
       NativePortType port_, JSAny ids);
 
   external void wire__crate__api__uuid_type__handle_uuid_twin_normal(
-      NativePortType port_, Uint8List id);
+      NativePortType port_, JSAny id);
 
   external void wire__crate__api__uuid_type__handle_uuids_twin_normal(
       NativePortType port_, JSAny ids);
