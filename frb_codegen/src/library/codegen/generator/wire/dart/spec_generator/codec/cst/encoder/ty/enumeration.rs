@@ -106,7 +106,7 @@ fn generate_encode_body_variant(index: usize, variant: &MirEnumVariant) -> Strin
     .join("");
     format!(
         "if (raw is {variant}) {{
-            return [{index} {fields}].jsify();
+            return [{index} {fields}].jsify()!;
         }}",
         variant = variant.wrapper_name.rust_style(),
     )

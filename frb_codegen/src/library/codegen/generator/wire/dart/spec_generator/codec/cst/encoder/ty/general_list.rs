@@ -41,7 +41,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for GeneralListWireDartCodecCstGe
             )),
             web: self.context.config.web_enabled.then(|| {
                 format!(
-                    "return raw.map(cst_encode_{}).toList().jsify();",
+                    "return raw.map(cst_encode_{}).toList().jsify()!;",
                     self.mir.inner.safe_ident()
                 )
             }),
