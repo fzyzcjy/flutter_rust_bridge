@@ -15,7 +15,7 @@ import 'package:yaml/yaml.dart';
 Future<void> run(TestDartSanitizerConfig config) async {
   await _lowerSdkMinVersion(package: config.package);
 
-  await runPubGetIfNotRunYet(config.package);
+  await runPubGet(config.package);
 
   if (config.package == 'frb_example/deliberate_bad') {
     await _runPackageDeliberateBad(config);

@@ -83,20 +83,25 @@ final exec = SimpleExecutor(
 Future<void> runPubGetIfNotRunYet(String package) async {
   final mode = kDartModeOfPackage[package]!;
 
-  await _runPubGetIfNotRunYetRaw(package, mode);
+  await _runPubGetIfNotRunYetRaw(package);
 
   final packageCargokitBuildTool = '$package/rust_builder/cargokit/build_tool';
-  await _runPubGetIfNotRunYetRaw(packageCargokitBuildTool, mode);
+  await _runPubGetIfNotRunYetRaw(packageCargokitBuildTool);
 }
 
-Future<void> _runPubGetIfNotRunYetRaw(String package, DartMode mode) async {
+Future<void> _runPubGetIfNotRunYetRaw(String package) async {
   final dirPackage = '${exec.pwd}/$package';
   if ((await Directory(dirPackage).exists()) &&
       (!await Directory('$dirPackage/.dart_tool').exists())) {
-    final cmd = switch (mode) {
-      DartMode.dart => 'dart --enable-experiment=native-assets',
-      DartMode.flutter => 'flutter',
-    };
-    await exec('$cmd pub get', relativePwd: package);
+    await runPubGet(package);
   }
+}
+
+Future<void> runPubGet(String package) async {
+  final mode = kDartModeOfPackage[package]!;
+  final cmd = switch (mode) {
+    DartMode.dart => 'dart --enable-experiment=native-assets',
+    DartMode.flutter => 'flutter',
+  };
+  await exec('$cmd pub get', relativePwd: package);
 }
