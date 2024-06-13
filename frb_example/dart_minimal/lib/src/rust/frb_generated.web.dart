@@ -69,7 +69,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   bool sse_decode_bool(SseDeserializer deserializer);
 
   @protected
-  JSAny cst_encode_usize(BigInt raw) {
+  Object cst_encode_usize(BigInt raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return castNativeBigInt(raw);
   }
