@@ -47,22 +47,20 @@ impl CstDecode<u64> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValu
 
 #[wasm_bindgen]
 pub fn wire__crate__api__minimal__f(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: Box<[u64]>,
 ) {
     wire__crate__api__minimal__f_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire__crate__api__minimal__init_app(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
-) {
+pub fn wire__crate__api__minimal__init_app(port_: flutter_rust_bridge::for_generated::MessagePort) {
     wire__crate__api__minimal__init_app_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__minimal__minimal_adder(
-    port_: flutter_rust_bridge::for_generated::DartNativeSendPort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     a: i32,
     b: i32,
 ) {

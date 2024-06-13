@@ -6,13 +6,11 @@
 // Static analysis wrongly picks the IO variant, thus ignore this
 // ignore_for_file: argument_type_not_assignable
 
+import 'api/minimal.dart';
 import 'dart:async';
 import 'dart:convert';
-
-import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_web.dart';
-
-import 'api/minimal.dart';
 import 'frb_generated.dart';
+import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_web.dart';
 
 abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   RustLibApiImplPlatform({
@@ -50,7 +48,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   bool sse_decode_bool(SseDeserializer deserializer);
 
   @protected
-  Object /* BigInt64Array */ cst_encode_list_prim_u_64_strict(Uint64List raw) {
+  JSAny /* BigInt64Array */ cst_encode_list_prim_u_64_strict(Uint64List raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.inner;
   }
@@ -90,8 +88,8 @@ class RustLibWire implements BaseWire {
   RustLibWire.fromExternalLibrary(ExternalLibrary lib);
 
   void wire__crate__api__minimal__f(
-          NativePortType port_, Object /* BigInt64Array */ arg) =>
-      wasmModule.wire__crate__api__minimal__f(port_, arg.jsify()!);
+          NativePortType port_, JSAny /* BigInt64Array */ arg) =>
+      wasmModule.wire__crate__api__minimal__f(port_, arg);
 
   void wire__crate__api__minimal__init_app(NativePortType port_) =>
       wasmModule.wire__crate__api__minimal__init_app(port_);
