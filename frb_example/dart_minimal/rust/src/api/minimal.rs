@@ -10,5 +10,9 @@ pub fn minimal_adder(a: i32, b: i32) -> i32 {
 }
 
 // TODO temp
-#[frb(sync)]
-pub fn f() {}
+pub enum MyEnum {
+    A(String),
+    B,
+}
+
+pub fn f(a: MyEnum, b: Vec<String>) {}

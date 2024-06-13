@@ -19,13 +19,49 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   });
 
   @protected
+  String dco_decode_String(dynamic raw);
+
+  @protected
+  MyEnum dco_decode_box_autoadd_my_enum(dynamic raw);
+
+  @protected
   int dco_decode_i_32(dynamic raw);
+
+  @protected
+  List<String> dco_decode_list_String(dynamic raw);
+
+  @protected
+  Uint8List dco_decode_list_prim_u_8_strict(dynamic raw);
+
+  @protected
+  MyEnum dco_decode_my_enum(dynamic raw);
+
+  @protected
+  int dco_decode_u_8(dynamic raw);
 
   @protected
   void dco_decode_unit(dynamic raw);
 
   @protected
+  String sse_decode_String(SseDeserializer deserializer);
+
+  @protected
+  MyEnum sse_decode_box_autoadd_my_enum(SseDeserializer deserializer);
+
+  @protected
   int sse_decode_i_32(SseDeserializer deserializer);
+
+  @protected
+  List<String> sse_decode_list_String(SseDeserializer deserializer);
+
+  @protected
+  Uint8List sse_decode_list_prim_u_8_strict(SseDeserializer deserializer);
+
+  @protected
+  MyEnum sse_decode_my_enum(SseDeserializer deserializer);
+
+  @protected
+  int sse_decode_u_8(SseDeserializer deserializer);
 
   @protected
   void sse_decode_unit(SseDeserializer deserializer);
@@ -34,13 +70,88 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   bool sse_decode_bool(SseDeserializer deserializer);
 
   @protected
+  ffi.Pointer<wire_cst_list_prim_u_8_strict> cst_encode_String(String raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_list_prim_u_8_strict(utf8.encoder.convert(raw));
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_my_enum> cst_encode_box_autoadd_my_enum(MyEnum raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    final ptr = wire.cst_new_box_autoadd_my_enum();
+    cst_api_fill_to_wire_my_enum(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_list_String> cst_encode_list_String(List<String> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    final ans = wire.cst_new_list_String(raw.length);
+    for (var i = 0; i < raw.length; ++i) {
+      ans.ref.ptr[i] = cst_encode_String(raw[i]);
+    }
+    return ans;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_list_prim_u_8_strict> cst_encode_list_prim_u_8_strict(
+      Uint8List raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    final ans = wire.cst_new_list_prim_u_8_strict(raw.length);
+    ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
+    return ans;
+  }
+
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_my_enum(
+      MyEnum apiObj, ffi.Pointer<wire_cst_my_enum> wireObj) {
+    cst_api_fill_to_wire_my_enum(apiObj, wireObj.ref);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_my_enum(MyEnum apiObj, wire_cst_my_enum wireObj) {
+    if (apiObj is MyEnum_A) {
+      var pre_field0 = cst_encode_String(apiObj.field0);
+      wireObj.tag = 0;
+      wireObj.kind.A.field0 = pre_field0;
+      return;
+    }
+    if (apiObj is MyEnum_B) {
+      wireObj.tag = 1;
+      return;
+    }
+  }
+
+  @protected
   int cst_encode_i_32(int raw);
+
+  @protected
+  int cst_encode_u_8(int raw);
 
   @protected
   void cst_encode_unit(void raw);
 
   @protected
+  void sse_encode_String(String self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_my_enum(MyEnum self, SseSerializer serializer);
+
+  @protected
   void sse_encode_i_32(int self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_String(List<String> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_prim_u_8_strict(
+      Uint8List self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_my_enum(MyEnum self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_u_8(int self, SseSerializer serializer);
 
   @protected
   void sse_encode_unit(void self, SseSerializer serializer);
@@ -90,15 +201,27 @@ class RustLibWire implements BaseWire {
   late final _store_dart_post_cobject = _store_dart_post_cobjectPtr
       .asFunction<void Function(DartPostCObjectFnType)>();
 
-  WireSyncRust2DartDco wire__crate__api__minimal__f() {
-    return _wire__crate__api__minimal__f();
+  void wire__crate__api__minimal__f(
+    int port_,
+    ffi.Pointer<wire_cst_my_enum> a,
+    ffi.Pointer<wire_cst_list_String> b,
+  ) {
+    return _wire__crate__api__minimal__f(
+      port_,
+      a,
+      b,
+    );
   }
 
-  late final _wire__crate__api__minimal__fPtr =
-      _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function()>>(
-          'frbgen_frb_example_dart_minimal_wire__crate__api__minimal__f');
-  late final _wire__crate__api__minimal__f = _wire__crate__api__minimal__fPtr
-      .asFunction<WireSyncRust2DartDco Function()>();
+  late final _wire__crate__api__minimal__fPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(ffi.Int64, ffi.Pointer<wire_cst_my_enum>,
+                  ffi.Pointer<wire_cst_list_String>)>>(
+      'frbgen_frb_example_dart_minimal_wire__crate__api__minimal__f');
+  late final _wire__crate__api__minimal__f =
+      _wire__crate__api__minimal__fPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_my_enum>,
+              ffi.Pointer<wire_cst_list_String>)>();
 
   void wire__crate__api__minimal__init_app(
     int port_,
@@ -134,6 +257,46 @@ class RustLibWire implements BaseWire {
       _wire__crate__api__minimal__minimal_adderPtr
           .asFunction<void Function(int, int, int)>();
 
+  ffi.Pointer<wire_cst_my_enum> cst_new_box_autoadd_my_enum() {
+    return _cst_new_box_autoadd_my_enum();
+  }
+
+  late final _cst_new_box_autoadd_my_enumPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_cst_my_enum> Function()>>(
+          'frbgen_frb_example_dart_minimal_cst_new_box_autoadd_my_enum');
+  late final _cst_new_box_autoadd_my_enum = _cst_new_box_autoadd_my_enumPtr
+      .asFunction<ffi.Pointer<wire_cst_my_enum> Function()>();
+
+  ffi.Pointer<wire_cst_list_String> cst_new_list_String(
+    int len,
+  ) {
+    return _cst_new_list_String(
+      len,
+    );
+  }
+
+  late final _cst_new_list_StringPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<wire_cst_list_String> Function(ffi.Int32)>>(
+      'frbgen_frb_example_dart_minimal_cst_new_list_String');
+  late final _cst_new_list_String = _cst_new_list_StringPtr
+      .asFunction<ffi.Pointer<wire_cst_list_String> Function(int)>();
+
+  ffi.Pointer<wire_cst_list_prim_u_8_strict> cst_new_list_prim_u_8_strict(
+    int len,
+  ) {
+    return _cst_new_list_prim_u_8_strict(
+      len,
+    );
+  }
+
+  late final _cst_new_list_prim_u_8_strictPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<wire_cst_list_prim_u_8_strict> Function(ffi.Int32)>>(
+      'frbgen_frb_example_dart_minimal_cst_new_list_prim_u_8_strict');
+  late final _cst_new_list_prim_u_8_strict = _cst_new_list_prim_u_8_strictPtr
+      .asFunction<ffi.Pointer<wire_cst_list_prim_u_8_strict> Function(int)>();
+
   int dummy_method_to_enforce_bundling() {
     return _dummy_method_to_enforce_bundling();
   }
@@ -153,3 +316,32 @@ typedef DartDartPostCObjectFnTypeFunction = bool Function(
     DartDartPort port_id, ffi.Pointer<ffi.Void> message);
 typedef DartPort = ffi.Int64;
 typedef DartDartPort = int;
+
+final class wire_cst_list_prim_u_8_strict extends ffi.Struct {
+  external ffi.Pointer<ffi.Uint8> ptr;
+
+  @ffi.Int32()
+  external int len;
+}
+
+final class wire_cst_MyEnum_A extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8_strict> field0;
+}
+
+final class MyEnumKind extends ffi.Union {
+  external wire_cst_MyEnum_A A;
+}
+
+final class wire_cst_my_enum extends ffi.Struct {
+  @ffi.Int32()
+  external int tag;
+
+  external MyEnumKind kind;
+}
+
+final class wire_cst_list_String extends ffi.Struct {
+  external ffi.Pointer<ffi.Pointer<wire_cst_list_prim_u_8_strict>> ptr;
+
+  @ffi.Int32()
+  external int len;
+}
