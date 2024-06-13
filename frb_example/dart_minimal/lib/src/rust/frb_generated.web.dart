@@ -54,13 +54,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   bool sse_decode_bool(SseDeserializer deserializer);
 
   @protected
-  List<int> cst_encode_list_prim_u_8_loose(List<int> raw) {
+  JSAny cst_encode_list_prim_u_8_loose(List<int> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw;
   }
 
   @protected
-  Uint8List cst_encode_list_prim_u_8_strict(Uint8List raw) {
+  JSAny cst_encode_list_prim_u_8_strict(Uint8List raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw;
   }
@@ -99,7 +99,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 class RustLibWire implements BaseWire {
   RustLibWire.fromExternalLibrary(ExternalLibrary lib);
 
-  void wire__crate__api__minimal__f(NativePortType port_, List<int> a) =>
+  void wire__crate__api__minimal__f(NativePortType port_, JSAny a) =>
       wasmModule.wire__crate__api__minimal__f(port_, a);
 
   void wire__crate__api__minimal__init_app(NativePortType port_) =>
@@ -116,7 +116,7 @@ external RustLibWasmModule get wasmModule;
 @JS()
 @anonymous
 extension type RustLibWasmModule._(JSObject _) implements JSObject {
-  external void wire__crate__api__minimal__f(NativePortType port_, List<int> a);
+  external void wire__crate__api__minimal__f(NativePortType port_, JSAny a);
 
   external void wire__crate__api__minimal__init_app(NativePortType port_);
 
