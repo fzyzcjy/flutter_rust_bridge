@@ -127,8 +127,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 class RustLibWire implements BaseWire {
   RustLibWire.fromExternalLibrary(ExternalLibrary lib);
 
-  void wire__crate__api__minimal__S_f(
-          NativePortType port_, Object that, int a) =>
+  void wire__crate__api__minimal__S_f(NativePortType port_, int that, int a) =>
       wasmModule.wire__crate__api__minimal__S_f(port_, that, a);
 
   void wire__crate__api__minimal__init_app(NativePortType port_) =>
@@ -158,7 +157,7 @@ external RustLibWasmModule get wasmModule;
 @anonymous
 extension type RustLibWasmModule._(JSObject _) implements JSObject {
   external void wire__crate__api__minimal__S_f(
-      NativePortType port_, Object that, int a);
+      NativePortType port_, int that, int a);
 
   external void wire__crate__api__minimal__init_app(NativePortType port_);
 
