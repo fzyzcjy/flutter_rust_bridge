@@ -26,7 +26,10 @@ Future<void> run(TestDartSanitizerConfig config) async {
 
 Future<void> _modifySdkMinVersion({required String package}) async {
   print('Action: modifySdkMinVersion');
-  final file = File('${exec.pwd}$package/pubspec.yaml');
+
+  final path = '${exec.pwd}$package/pubspec.yaml';
+  final file = File(path);
+
   final contentRaw = loadYaml(file.readAsStringSync());
   final content = jsonDecode(jsonEncode(contentRaw));
 
@@ -34,6 +37,9 @@ Future<void> _modifySdkMinVersion({required String package}) async {
   // and we do not really need new sdk version when on native platform.
   content['environment']['sdk'] = '>=3.2.0';
   file.writeAsStringSync(jsonEncode(content));
+ 
+  print(
+      'After modifySdkMinVersion content of path=$path is: ${file.readAsStringSync()}');
 }
 
 Future<void> _runEntrypoint(TestDartSanitizerConfig config) async {
