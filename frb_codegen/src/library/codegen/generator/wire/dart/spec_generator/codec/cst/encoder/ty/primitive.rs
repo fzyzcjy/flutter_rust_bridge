@@ -30,7 +30,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for PrimitiveWireDartCodecCstGene
             | MirTypePrimitive::Isize
             | MirTypePrimitive::Usize => match target {
                 Target::Io => "int".into(),
-                Target::Web => "Object".into(),
+                Target::Web => "JSAny".into(),
             },
             _ => ApiDartGenerator::new(self.mir.clone(), self.context.as_api_dart_context())
                 .dart_api_type(),
