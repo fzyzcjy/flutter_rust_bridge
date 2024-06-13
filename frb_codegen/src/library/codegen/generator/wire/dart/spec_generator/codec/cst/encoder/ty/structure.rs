@@ -22,7 +22,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for StructRefWireDartCodecCstGene
     }
 
     fn dart_wire_type(&self, target: Target) -> String {
-        dart_wire_type_from_rust_wire_type_or_web(self, target, "List<dynamic>".into())
+        dart_wire_type_from_rust_wire_type_or_web(self, target, "JSAny?".into())
     }
 }
 
