@@ -1,11 +1,5 @@
 import 'dart:js_interop';
 
-/// {@macro flutter_rust_bridge.only_for_generated_code}
-// @JS('Number')
-int castInt(Object? value) {
-  throw UnimplementedError('castInt($value) runtimeType=${value.runtimeType}');
-}
-
 @JS('Function')
 extension type _Function._(JSObject _) implements JSObject {
   external factory _Function(String script);
