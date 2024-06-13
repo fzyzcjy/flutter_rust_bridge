@@ -25,11 +25,14 @@ JSAny castNativeBigInt(BigInt value) => _jsBigInt(value.toString());
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 BigInt jsBigIntToDartBigInt(Object raw) {
+  if (raw is int) return BigInt.from(raw);
+
   final jsAny = raw.jsify();
   if (jsAny.isA<JSBigInt>()) {
     final jsBigInt = jsAny as JSBigInt;
     return BigInt.parse(jsBigInt.toString());
   }
+
   throw Exception(
       'jsBigIntToDartBigInt see unexpected type=${raw.runtimeType} value=$raw');
 }
