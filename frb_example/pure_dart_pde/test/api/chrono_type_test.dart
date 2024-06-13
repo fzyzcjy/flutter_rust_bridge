@@ -91,8 +91,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('Combined Chrono types', () async {
     final test = await testChronoTwinNormal();
-    expect(castInt(test.dt!.millisecondsSinceEpoch), castInt(1631297333000));
-    expect(castInt(test.dt2!.millisecondsSinceEpoch), castInt(1631297333000));
+    expect(test.dt!.millisecondsSinceEpoch, 1631297333000);
+    expect(test.dt2!.millisecondsSinceEpoch, 1631297333000);
     expect(test.du, Duration(hours: 4));
   });
 
