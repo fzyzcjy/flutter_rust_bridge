@@ -9,7 +9,4 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 Future<int> minimalAdder({required int a, required int b}) =>
     RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b);
 
-// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<S>>
-abstract class S implements RustOpaqueInterface {
-  Future<int> f({required int a});
-}
+void f() => RustLib.instance.api.crateApiMinimalF();

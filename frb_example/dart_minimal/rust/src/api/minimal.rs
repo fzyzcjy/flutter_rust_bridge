@@ -10,11 +10,5 @@ pub fn minimal_adder(a: i32, b: i32) -> i32 {
 }
 
 // TODO temp
-#[frb(opaque)]
-pub struct S;
-
-impl S {
-    pub fn f(&mut self, a: i32) -> i32 {
-        a
-    }
-}
+#[frb(sync)]
+pub fn f() {}

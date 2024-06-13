@@ -4,7 +4,6 @@
 // Section: imports
 
 use super::*;
-use crate::api::minimal::*;
 use flutter_rust_bridge::for_generated::byteorder::{NativeEndian, ReadBytesExt, WriteBytesExt};
 use flutter_rust_bridge::for_generated::{transform_result_dco, Lockable};
 use flutter_rust_bridge::{Handler, IntoIntoDart};
@@ -13,36 +12,10 @@ use flutter_rust_bridge::{Handler, IntoIntoDart};
 
 flutter_rust_bridge::frb_generated_boilerplate_io!();
 
-// Section: dart2rust
-
-impl CstDecode<S> for usize {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> S {
-        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
-            RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<S>>,
-        >::cst_decode(
-            self
-        ))
-    }
-}
-impl CstDecode<RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<S>>>
-    for usize
-{
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<S>> {
-        unsafe { decode_rust_opaque_nom(self as _) }
-    }
-}
-
 #[no_mangle]
-pub extern "C" fn frbgen_frb_example_dart_minimal_wire__crate__api__minimal__S_f(
-    port_: i64,
-    that: usize,
-    a: i32,
-) {
-    wire__crate__api__minimal__S_f_impl(port_, that, a)
+pub extern "C" fn frbgen_frb_example_dart_minimal_wire__crate__api__minimal__f(
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__minimal__f_impl()
 }
 
 #[no_mangle]
@@ -57,22 +30,4 @@ pub extern "C" fn frbgen_frb_example_dart_minimal_wire__crate__api__minimal__min
     b: i32,
 ) {
     wire__crate__api__minimal__minimal_adder_impl(port_, a, b)
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_dart_minimal_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerS(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        StdArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<S>>::increment_strong_count(ptr as _);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_dart_minimal_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerS(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        StdArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<S>>::decrement_strong_count(ptr as _);
-    }
 }
