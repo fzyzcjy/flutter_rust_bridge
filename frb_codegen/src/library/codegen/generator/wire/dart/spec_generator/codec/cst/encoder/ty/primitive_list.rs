@@ -44,7 +44,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for PrimitiveListWireDartCodecCst
             web: Some(
                 match self.mir.primitive {
                     MirTypePrimitive::I64 | MirTypePrimitive::U64 => "return raw.inner.jsify()!;",
-                    _ => "return raw;",
+                    _ => "return raw.jsify()!;",
                 }
                 .into(),
             ),
