@@ -78,15 +78,15 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  JSAny? cst_encode_box_autoadd_my_struct(MyStruct raw) {
+  JSAny cst_encode_box_autoadd_my_struct(MyStruct raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_my_struct(raw);
   }
 
   @protected
-  JSAny? cst_encode_list_String(List<String> raw) {
+  JSAny cst_encode_list_String(List<String> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_String).toList().jsify();
+    return raw.map(cst_encode_String).toList().jsify()!;
   }
 
   @protected
@@ -96,9 +96,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  JSAny? cst_encode_my_struct(MyStruct raw) {
+  JSAny cst_encode_my_struct(MyStruct raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_String(raw.field)].jsify();
+    return [cst_encode_String(raw.field)].jsify()!;
   }
 
   @protected
@@ -145,7 +145,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 class RustLibWire implements BaseWire {
   RustLibWire.fromExternalLibrary(ExternalLibrary lib);
 
-  void wire__crate__api__minimal__f(NativePortType port_, JSAny? a, JSAny? b) =>
+  void wire__crate__api__minimal__f(NativePortType port_, JSAny a, JSAny b) =>
       wasmModule.wire__crate__api__minimal__f(port_, a, b);
 
   void wire__crate__api__minimal__init_app(NativePortType port_) =>
@@ -163,7 +163,7 @@ external RustLibWasmModule get wasmModule;
 @anonymous
 extension type RustLibWasmModule._(JSObject _) implements JSObject {
   external void wire__crate__api__minimal__f(
-      NativePortType port_, JSAny? a, JSAny? b);
+      NativePortType port_, JSAny a, JSAny b);
 
   external void wire__crate__api__minimal__init_app(NativePortType port_);
 

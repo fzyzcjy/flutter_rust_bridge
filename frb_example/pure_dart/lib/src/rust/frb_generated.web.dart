@@ -19303,7 +19303,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic> cst_encode_DartOpaque_array_1(ObjectArray1 raw) {
+  JSAny cst_encode_DartOpaque_array_1(ObjectArray1 raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_DartOpaque(raw);
   }
@@ -19315,14 +19315,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic> cst_encode_Map_String_String(Map<String, String> raw) {
+  JSAny cst_encode_Map_String_String(Map<String, String> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_string_string(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
 
   @protected
-  List<dynamic> cst_encode_Map_String_enum_simple_twin_normal(
+  JSAny cst_encode_Map_String_enum_simple_twin_normal(
       Map<String, EnumSimpleTwinNormal> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_string_enum_simple_twin_normal(
@@ -19330,7 +19330,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic> cst_encode_Map_String_enum_simple_twin_rust_async(
+  JSAny cst_encode_Map_String_enum_simple_twin_rust_async(
       Map<String, EnumSimpleTwinRustAsync> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_string_enum_simple_twin_rust_async(
@@ -19338,7 +19338,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic> cst_encode_Map_String_enum_simple_twin_sync(
+  JSAny cst_encode_Map_String_enum_simple_twin_sync(
       Map<String, EnumSimpleTwinSync> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_string_enum_simple_twin_sync(
@@ -19346,15 +19346,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic> cst_encode_Map_String_hash_map_value(
-      Map<String, HashMapValue> raw) {
+  JSAny cst_encode_Map_String_hash_map_value(Map<String, HashMapValue> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_string_hash_map_value(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
 
   @protected
-  List<dynamic> cst_encode_Map_String_kitchen_sink_twin_normal(
+  JSAny cst_encode_Map_String_kitchen_sink_twin_normal(
       Map<String, KitchenSinkTwinNormal> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_string_kitchen_sink_twin_normal(
@@ -19362,7 +19361,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic> cst_encode_Map_String_kitchen_sink_twin_rust_async(
+  JSAny cst_encode_Map_String_kitchen_sink_twin_rust_async(
       Map<String, KitchenSinkTwinRustAsync> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_string_kitchen_sink_twin_rust_async(
@@ -19370,7 +19369,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic> cst_encode_Map_String_kitchen_sink_twin_sync(
+  JSAny cst_encode_Map_String_kitchen_sink_twin_sync(
       Map<String, KitchenSinkTwinSync> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_string_kitchen_sink_twin_sync(
@@ -19378,43 +19377,42 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic> cst_encode_Map_String_list_prim_u_8_strict(
-      Map<String, Uint8List> raw) {
+  JSAny cst_encode_Map_String_list_prim_u_8_strict(Map<String, Uint8List> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_string_list_prim_u_8_strict(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
 
   @protected
-  List<dynamic> cst_encode_Map_String_my_size(Map<String, MySize> raw) {
+  JSAny cst_encode_Map_String_my_size(Map<String, MySize> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_string_my_size(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
 
   @protected
-  List<dynamic> cst_encode_Map_i_32_I128(Map<int, BigInt> raw) {
+  JSAny cst_encode_Map_i_32_I128(Map<int, BigInt> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_i_128(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
 
   @protected
-  List<dynamic> cst_encode_Map_i_32_String(Map<int, String> raw) {
+  JSAny cst_encode_Map_i_32_String(Map<int, String> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_string(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
 
   @protected
-  List<dynamic> cst_encode_Map_i_32_U128(Map<int, BigInt> raw) {
+  JSAny cst_encode_Map_i_32_U128(Map<int, BigInt> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_u_128(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
 
   @protected
-  List<dynamic> cst_encode_Map_i_32_basic_general_enum_twin_normal(
+  JSAny cst_encode_Map_i_32_basic_general_enum_twin_normal(
       Map<int, BasicGeneralEnumTwinNormal> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_basic_general_enum_twin_normal(
@@ -19422,7 +19420,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic> cst_encode_Map_i_32_basic_general_enum_twin_rust_async(
+  JSAny cst_encode_Map_i_32_basic_general_enum_twin_rust_async(
       Map<int, BasicGeneralEnumTwinRustAsync> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_basic_general_enum_twin_rust_async(
@@ -19430,7 +19428,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic> cst_encode_Map_i_32_basic_general_enum_twin_sync(
+  JSAny cst_encode_Map_i_32_basic_general_enum_twin_sync(
       Map<int, BasicGeneralEnumTwinSync> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_basic_general_enum_twin_sync(
@@ -19438,7 +19436,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic> cst_encode_Map_i_32_basic_primitive_enum_twin_normal(
+  JSAny cst_encode_Map_i_32_basic_primitive_enum_twin_normal(
       Map<int, BasicPrimitiveEnumTwinNormal> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_basic_primitive_enum_twin_normal(
@@ -19446,7 +19444,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic> cst_encode_Map_i_32_basic_primitive_enum_twin_rust_async(
+  JSAny cst_encode_Map_i_32_basic_primitive_enum_twin_rust_async(
       Map<int, BasicPrimitiveEnumTwinRustAsync> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_basic_primitive_enum_twin_rust_async(
@@ -19454,7 +19452,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic> cst_encode_Map_i_32_basic_primitive_enum_twin_sync(
+  JSAny cst_encode_Map_i_32_basic_primitive_enum_twin_sync(
       Map<int, BasicPrimitiveEnumTwinSync> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_basic_primitive_enum_twin_sync(
@@ -19462,7 +19460,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic> cst_encode_Map_i_32_basic_struct_twin_normal(
+  JSAny cst_encode_Map_i_32_basic_struct_twin_normal(
       Map<int, BasicStructTwinNormal> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_basic_struct_twin_normal(
@@ -19470,7 +19468,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic> cst_encode_Map_i_32_basic_struct_twin_rust_async(
+  JSAny cst_encode_Map_i_32_basic_struct_twin_rust_async(
       Map<int, BasicStructTwinRustAsync> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_basic_struct_twin_rust_async(
@@ -19478,7 +19476,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic> cst_encode_Map_i_32_basic_struct_twin_sync(
+  JSAny cst_encode_Map_i_32_basic_struct_twin_sync(
       Map<int, BasicStructTwinSync> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_basic_struct_twin_sync(
@@ -19486,162 +19484,160 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic> cst_encode_Map_i_32_bool(Map<int, bool> raw) {
+  JSAny cst_encode_Map_i_32_bool(Map<int, bool> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_bool(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
 
   @protected
-  List<dynamic> cst_encode_Map_i_32_f_32(Map<int, double> raw) {
+  JSAny cst_encode_Map_i_32_f_32(Map<int, double> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_f_32(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
 
   @protected
-  List<dynamic> cst_encode_Map_i_32_f_64(Map<int, double> raw) {
+  JSAny cst_encode_Map_i_32_f_64(Map<int, double> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_f_64(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
 
   @protected
-  List<dynamic> cst_encode_Map_i_32_i_16(Map<int, int> raw) {
+  JSAny cst_encode_Map_i_32_i_16(Map<int, int> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_i_16(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
 
   @protected
-  List<dynamic> cst_encode_Map_i_32_i_32(Map<int, int> raw) {
+  JSAny cst_encode_Map_i_32_i_32(Map<int, int> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_i_32(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
 
   @protected
-  List<dynamic> cst_encode_Map_i_32_i_64(Map<int, PlatformInt64> raw) {
+  JSAny cst_encode_Map_i_32_i_64(Map<int, PlatformInt64> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_i_64(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
 
   @protected
-  List<dynamic> cst_encode_Map_i_32_i_8(Map<int, int> raw) {
+  JSAny cst_encode_Map_i_32_i_8(Map<int, int> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_i_8(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
 
   @protected
-  List<dynamic> cst_encode_Map_i_32_isize(Map<int, PlatformInt64> raw) {
+  JSAny cst_encode_Map_i_32_isize(Map<int, PlatformInt64> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_isize(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
 
   @protected
-  List<dynamic> cst_encode_Map_i_32_list_prim_u_8_strict(
-      Map<int, Uint8List> raw) {
+  JSAny cst_encode_Map_i_32_list_prim_u_8_strict(Map<int, Uint8List> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_list_prim_u_8_strict(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
 
   @protected
-  List<dynamic> cst_encode_Map_i_32_u_16(Map<int, int> raw) {
+  JSAny cst_encode_Map_i_32_u_16(Map<int, int> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_u_16(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
 
   @protected
-  List<dynamic> cst_encode_Map_i_32_u_32(Map<int, int> raw) {
+  JSAny cst_encode_Map_i_32_u_32(Map<int, int> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_u_32(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
 
   @protected
-  List<dynamic> cst_encode_Map_i_32_u_64(Map<int, BigInt> raw) {
+  JSAny cst_encode_Map_i_32_u_64(Map<int, BigInt> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_u_64(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
 
   @protected
-  List<dynamic> cst_encode_Map_i_32_u_8(Map<int, int> raw) {
+  JSAny cst_encode_Map_i_32_u_8(Map<int, int> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_u_8(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
 
   @protected
-  List<dynamic> cst_encode_Map_i_32_usize(Map<int, BigInt> raw) {
+  JSAny cst_encode_Map_i_32_usize(Map<int, BigInt> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_usize(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
 
   @protected
-  List<dynamic> cst_encode_Map_u_8_application_mode(
-      Map<int, ApplicationMode> raw) {
+  JSAny cst_encode_Map_u_8_application_mode(Map<int, ApplicationMode> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_u_8_application_mode(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
 
   @protected
-  List<dynamic> cst_encode_RustOpaque_HideDataTwinMoi_array_2(
+  JSAny cst_encode_RustOpaque_HideDataTwinMoi_array_2(
       HideDataTwinMoiArray2 raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_RustOpaque_HideDataTwinMoi(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_RustOpaque_HideDataTwinNormal_array_2(
+  JSAny cst_encode_RustOpaque_HideDataTwinNormal_array_2(
       HideDataTwinNormalArray2 raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_RustOpaque_HideDataTwinNormal(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_RustOpaque_HideDataTwinRustAsyncMoi_array_2(
+  JSAny cst_encode_RustOpaque_HideDataTwinRustAsyncMoi_array_2(
       HideDataTwinRustAsyncMoiArray2 raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_RustOpaque_HideDataTwinRustAsyncMoi(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_RustOpaque_HideDataTwinRustAsync_array_2(
+  JSAny cst_encode_RustOpaque_HideDataTwinRustAsync_array_2(
       HideDataTwinRustAsyncArray2 raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_RustOpaque_HideDataTwinRustAsync(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_RustOpaque_HideDataTwinSyncMoi_array_2(
+  JSAny cst_encode_RustOpaque_HideDataTwinSyncMoi_array_2(
       HideDataTwinSyncMoiArray2 raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_RustOpaque_HideDataTwinSyncMoi(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_RustOpaque_HideDataTwinSync_array_2(
+  JSAny cst_encode_RustOpaque_HideDataTwinSync_array_2(
       HideDataTwinSyncArray2 raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_RustOpaque_HideDataTwinSync(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_Set_String(Set<String> raw) {
+  JSAny cst_encode_Set_String(Set<String> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_String(raw.toList());
   }
 
   @protected
-  List<dynamic> cst_encode_Set_application_mode(Set<ApplicationMode> raw) {
+  JSAny cst_encode_Set_application_mode(Set<ApplicationMode> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_application_mode(raw.toList());
   }
@@ -20022,141 +20018,143 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic> cst_encode_a_twin_normal(ATwinNormal raw) {
+  JSAny cst_encode_a_twin_normal(ATwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_String(raw.a)];
+    return [cst_encode_String(raw.a)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_a_twin_rust_async(ATwinRustAsync raw) {
+  JSAny cst_encode_a_twin_rust_async(ATwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_String(raw.a)];
+    return [cst_encode_String(raw.a)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_a_twin_sync(ATwinSync raw) {
+  JSAny cst_encode_a_twin_sync(ATwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_String(raw.a)];
+    return [cst_encode_String(raw.a)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_abc_twin_normal(AbcTwinNormal raw) {
+  JSAny cst_encode_abc_twin_normal(AbcTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is AbcTwinNormal_A) {
-      return [0, cst_encode_box_autoadd_a_twin_normal(raw.field0)];
+      return [0, cst_encode_box_autoadd_a_twin_normal(raw.field0)].jsify()!;
     }
     if (raw is AbcTwinNormal_B) {
-      return [1, cst_encode_box_autoadd_b_twin_normal(raw.field0)];
+      return [1, cst_encode_box_autoadd_b_twin_normal(raw.field0)].jsify()!;
     }
     if (raw is AbcTwinNormal_C) {
-      return [2, cst_encode_box_autoadd_c_twin_normal(raw.field0)];
+      return [2, cst_encode_box_autoadd_c_twin_normal(raw.field0)].jsify()!;
     }
     if (raw is AbcTwinNormal_JustInt) {
-      return [3, cst_encode_i_32(raw.field0)];
+      return [3, cst_encode_i_32(raw.field0)].jsify()!;
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> cst_encode_abc_twin_rust_async(AbcTwinRustAsync raw) {
+  JSAny cst_encode_abc_twin_rust_async(AbcTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is AbcTwinRustAsync_A) {
-      return [0, cst_encode_box_autoadd_a_twin_rust_async(raw.field0)];
+      return [0, cst_encode_box_autoadd_a_twin_rust_async(raw.field0)].jsify()!;
     }
     if (raw is AbcTwinRustAsync_B) {
-      return [1, cst_encode_box_autoadd_b_twin_rust_async(raw.field0)];
+      return [1, cst_encode_box_autoadd_b_twin_rust_async(raw.field0)].jsify()!;
     }
     if (raw is AbcTwinRustAsync_C) {
-      return [2, cst_encode_box_autoadd_c_twin_rust_async(raw.field0)];
+      return [2, cst_encode_box_autoadd_c_twin_rust_async(raw.field0)].jsify()!;
     }
     if (raw is AbcTwinRustAsync_JustInt) {
-      return [3, cst_encode_i_32(raw.field0)];
+      return [3, cst_encode_i_32(raw.field0)].jsify()!;
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> cst_encode_abc_twin_sync(AbcTwinSync raw) {
+  JSAny cst_encode_abc_twin_sync(AbcTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is AbcTwinSync_A) {
-      return [0, cst_encode_box_autoadd_a_twin_sync(raw.field0)];
+      return [0, cst_encode_box_autoadd_a_twin_sync(raw.field0)].jsify()!;
     }
     if (raw is AbcTwinSync_B) {
-      return [1, cst_encode_box_autoadd_b_twin_sync(raw.field0)];
+      return [1, cst_encode_box_autoadd_b_twin_sync(raw.field0)].jsify()!;
     }
     if (raw is AbcTwinSync_C) {
-      return [2, cst_encode_box_autoadd_c_twin_sync(raw.field0)];
+      return [2, cst_encode_box_autoadd_c_twin_sync(raw.field0)].jsify()!;
     }
     if (raw is AbcTwinSync_JustInt) {
-      return [3, cst_encode_i_32(raw.field0)];
+      return [3, cst_encode_i_32(raw.field0)].jsify()!;
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> cst_encode_another_macro_struct_twin_normal(
+  JSAny cst_encode_another_macro_struct_twin_normal(
       AnotherMacroStructTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_i_32(raw.data), cst_encode_i_32(raw.nonFinalData)];
+    return [cst_encode_i_32(raw.data), cst_encode_i_32(raw.nonFinalData)]
+        .jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_another_twin_normal(AnotherTwinNormal raw) {
+  JSAny cst_encode_another_twin_normal(AnotherTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_String(raw.a)];
+    return [cst_encode_String(raw.a)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_another_twin_rust_async(AnotherTwinRustAsync raw) {
+  JSAny cst_encode_another_twin_rust_async(AnotherTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_String(raw.a)];
+    return [cst_encode_String(raw.a)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_another_twin_sync(AnotherTwinSync raw) {
+  JSAny cst_encode_another_twin_sync(AnotherTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_String(raw.a)];
+    return [cst_encode_String(raw.a)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_application_env(ApplicationEnv raw) {
+  JSAny cst_encode_application_env(ApplicationEnv raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_list_application_env_var(raw.vars)];
+    return [cst_encode_list_application_env_var(raw.vars)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_application_env_var(ApplicationEnvVar raw) {
+  JSAny cst_encode_application_env_var(ApplicationEnvVar raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_String(raw.field0), cst_encode_bool(raw.field1)];
+    return [cst_encode_String(raw.field0), cst_encode_bool(raw.field1)]
+        .jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_application_message(ApplicationMessage raw) {
+  JSAny cst_encode_application_message(ApplicationMessage raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is ApplicationMessage_DisplayMessage) {
-      return [0, cst_encode_String(raw.field0)];
+      return [0, cst_encode_String(raw.field0)].jsify()!;
     }
     if (raw is ApplicationMessage_RenderPixel) {
-      return [1, cst_encode_i_32(raw.x), cst_encode_i_32(raw.y)];
+      return [1, cst_encode_i_32(raw.x), cst_encode_i_32(raw.y)].jsify()!;
     }
     if (raw is ApplicationMessage_Exit) {
-      return [2];
+      return [2].jsify()!;
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> cst_encode_application_mode_array_2(ApplicationModeArray2 raw) {
+  JSAny cst_encode_application_mode_array_2(ApplicationModeArray2 raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_application_mode(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_application_settings(ApplicationSettings raw) {
+  JSAny cst_encode_application_settings(ApplicationSettings raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_String(raw.name),
@@ -20164,33 +20162,31 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_application_mode(raw.mode),
       cst_encode_box_application_env(raw.env),
       cst_encode_opt_box_autoadd_application_env(raw.envOptional)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_attribute_twin_normal(AttributeTwinNormal raw) {
+  JSAny cst_encode_attribute_twin_normal(AttributeTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_String(raw.key), cst_encode_String(raw.value)];
+    return [cst_encode_String(raw.key), cst_encode_String(raw.value)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_attribute_twin_rust_async(
-      AttributeTwinRustAsync raw) {
+  JSAny cst_encode_attribute_twin_rust_async(AttributeTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_String(raw.key), cst_encode_String(raw.value)];
+    return [cst_encode_String(raw.key), cst_encode_String(raw.value)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_attribute_twin_sync(AttributeTwinSync raw) {
+  JSAny cst_encode_attribute_twin_sync(AttributeTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_String(raw.key), cst_encode_String(raw.value)];
+    return [cst_encode_String(raw.key), cst_encode_String(raw.value)].jsify()!;
   }
 
   @protected
-  List<dynamic>
-      cst_encode_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_my_audio_param_twin_normal_proxy_enum(
-          Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum
-              raw) {
+  JSAny cst_encode_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_my_audio_param_twin_normal_proxy_enum(
+      Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum
+          raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw
         is Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant0) {
@@ -20198,7 +20194,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
         0,
         cst_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNodeTwinNormal(
             raw.field0)
-      ];
+      ].jsify()!;
     }
     if (raw
         is Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant1) {
@@ -20206,213 +20202,209 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
         1,
         cst_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNodeTwinNormal(
             raw.field0)
-      ];
+      ].jsify()!;
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> cst_encode_b_twin_normal(BTwinNormal raw) {
+  JSAny cst_encode_b_twin_normal(BTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_i_32(raw.b)];
+    return [cst_encode_i_32(raw.b)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_b_twin_rust_async(BTwinRustAsync raw) {
+  JSAny cst_encode_b_twin_rust_async(BTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_i_32(raw.b)];
+    return [cst_encode_i_32(raw.b)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_b_twin_sync(BTwinSync raw) {
+  JSAny cst_encode_b_twin_sync(BTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_i_32(raw.b)];
+    return [cst_encode_i_32(raw.b)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_basic_general_enum_twin_normal(
+  JSAny cst_encode_basic_general_enum_twin_normal(
       BasicGeneralEnumTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is BasicGeneralEnumTwinNormal_Apple) {
-      return [0, cst_encode_String(raw.field)];
+      return [0, cst_encode_String(raw.field)].jsify()!;
     }
     if (raw is BasicGeneralEnumTwinNormal_Orange) {
-      return [1];
+      return [1].jsify()!;
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> cst_encode_basic_general_enum_twin_rust_async(
+  JSAny cst_encode_basic_general_enum_twin_rust_async(
       BasicGeneralEnumTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is BasicGeneralEnumTwinRustAsync_Apple) {
-      return [0, cst_encode_String(raw.field)];
+      return [0, cst_encode_String(raw.field)].jsify()!;
     }
     if (raw is BasicGeneralEnumTwinRustAsync_Orange) {
-      return [1];
+      return [1].jsify()!;
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> cst_encode_basic_general_enum_twin_sync(
-      BasicGeneralEnumTwinSync raw) {
+  JSAny cst_encode_basic_general_enum_twin_sync(BasicGeneralEnumTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is BasicGeneralEnumTwinSync_Apple) {
-      return [0, cst_encode_String(raw.field)];
+      return [0, cst_encode_String(raw.field)].jsify()!;
     }
     if (raw is BasicGeneralEnumTwinSync_Orange) {
-      return [1];
+      return [1].jsify()!;
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> cst_encode_basic_struct_twin_normal(BasicStructTwinNormal raw) {
+  JSAny cst_encode_basic_struct_twin_normal(BasicStructTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_opt_String(raw.apple),
       cst_encode_opt_box_autoadd_i_32(raw.orange)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_basic_struct_twin_rust_async(
-      BasicStructTwinRustAsync raw) {
+  JSAny cst_encode_basic_struct_twin_rust_async(BasicStructTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_opt_String(raw.apple),
       cst_encode_opt_box_autoadd_i_32(raw.orange)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_basic_struct_twin_sync(BasicStructTwinSync raw) {
+  JSAny cst_encode_basic_struct_twin_sync(BasicStructTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_opt_String(raw.apple),
       cst_encode_opt_box_autoadd_i_32(raw.orange)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_benchmark_binary_tree_twin_normal(
+  JSAny cst_encode_benchmark_binary_tree_twin_normal(
       BenchmarkBinaryTreeTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_String(raw.name),
       cst_encode_opt_box_benchmark_binary_tree_twin_normal(raw.left),
       cst_encode_opt_box_benchmark_binary_tree_twin_normal(raw.right)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_benchmark_binary_tree_twin_rust_async(
+  JSAny cst_encode_benchmark_binary_tree_twin_rust_async(
       BenchmarkBinaryTreeTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_String(raw.name),
       cst_encode_opt_box_benchmark_binary_tree_twin_rust_async(raw.left),
       cst_encode_opt_box_benchmark_binary_tree_twin_rust_async(raw.right)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_benchmark_binary_tree_twin_sync(
+  JSAny cst_encode_benchmark_binary_tree_twin_sync(
       BenchmarkBinaryTreeTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_String(raw.name),
       cst_encode_opt_box_benchmark_binary_tree_twin_sync(raw.left),
       cst_encode_opt_box_benchmark_binary_tree_twin_sync(raw.right)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_benchmark_blob_twin_normal(
-      BenchmarkBlobTwinNormal raw) {
+  JSAny cst_encode_benchmark_blob_twin_normal(BenchmarkBlobTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_list_prim_u_8_strict(raw.first),
       cst_encode_list_prim_u_8_strict(raw.second),
       cst_encode_list_prim_u_8_strict(raw.third)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_benchmark_blob_twin_rust_async(
+  JSAny cst_encode_benchmark_blob_twin_rust_async(
       BenchmarkBlobTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_list_prim_u_8_strict(raw.first),
       cst_encode_list_prim_u_8_strict(raw.second),
       cst_encode_list_prim_u_8_strict(raw.third)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_benchmark_blob_twin_sync(BenchmarkBlobTwinSync raw) {
+  JSAny cst_encode_benchmark_blob_twin_sync(BenchmarkBlobTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_list_prim_u_8_strict(raw.first),
       cst_encode_list_prim_u_8_strict(raw.second),
       cst_encode_list_prim_u_8_strict(raw.third)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_big_buffers_twin_normal(BigBuffersTwinNormal raw) {
+  JSAny cst_encode_big_buffers_twin_normal(BigBuffersTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_list_prim_i_64_strict(raw.int64),
       cst_encode_list_prim_u_64_strict(raw.uint64)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_big_buffers_twin_rust_async(
-      BigBuffersTwinRustAsync raw) {
+  JSAny cst_encode_big_buffers_twin_rust_async(BigBuffersTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_list_prim_i_64_strict(raw.int64),
       cst_encode_list_prim_u_64_strict(raw.uint64)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_big_buffers_twin_sync(BigBuffersTwinSync raw) {
+  JSAny cst_encode_big_buffers_twin_sync(BigBuffersTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_list_prim_i_64_strict(raw.int64),
       cst_encode_list_prim_u_64_strict(raw.uint64)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_blob_twin_normal(BlobTwinNormal raw) {
+  JSAny cst_encode_blob_twin_normal(BlobTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_u_8_array_1600(raw.field0)];
+    return [cst_encode_u_8_array_1600(raw.field0)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_blob_twin_rust_async(BlobTwinRustAsync raw) {
+  JSAny cst_encode_blob_twin_rust_async(BlobTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_u_8_array_1600(raw.field0)];
+    return [cst_encode_u_8_array_1600(raw.field0)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_blob_twin_sync(BlobTwinSync raw) {
+  JSAny cst_encode_blob_twin_sync(BlobTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_u_8_array_1600(raw.field0)];
+    return [cst_encode_u_8_array_1600(raw.field0)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_box_application_env(ApplicationEnv raw) {
+  JSAny cst_encode_box_application_env(ApplicationEnv raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_application_env(raw);
   }
@@ -20544,44 +20536,43 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_a_twin_normal(ATwinNormal raw) {
+  JSAny cst_encode_box_autoadd_a_twin_normal(ATwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_a_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_a_twin_rust_async(ATwinRustAsync raw) {
+  JSAny cst_encode_box_autoadd_a_twin_rust_async(ATwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_a_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_a_twin_sync(ATwinSync raw) {
+  JSAny cst_encode_box_autoadd_a_twin_sync(ATwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_a_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_abc_twin_normal(AbcTwinNormal raw) {
+  JSAny cst_encode_box_autoadd_abc_twin_normal(AbcTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_abc_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_abc_twin_rust_async(
-      AbcTwinRustAsync raw) {
+  JSAny cst_encode_box_autoadd_abc_twin_rust_async(AbcTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_abc_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_abc_twin_sync(AbcTwinSync raw) {
+  JSAny cst_encode_box_autoadd_abc_twin_sync(AbcTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_abc_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_application_env(ApplicationEnv raw) {
+  JSAny cst_encode_box_autoadd_application_env(ApplicationEnv raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_application_env(raw);
   }
@@ -20593,77 +20584,73 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_application_settings(
-      ApplicationSettings raw) {
+  JSAny cst_encode_box_autoadd_application_settings(ApplicationSettings raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_application_settings(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_attribute_twin_normal(
-      AttributeTwinNormal raw) {
+  JSAny cst_encode_box_autoadd_attribute_twin_normal(AttributeTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_attribute_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_attribute_twin_rust_async(
+  JSAny cst_encode_box_autoadd_attribute_twin_rust_async(
       AttributeTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_attribute_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_attribute_twin_sync(
-      AttributeTwinSync raw) {
+  JSAny cst_encode_box_autoadd_attribute_twin_sync(AttributeTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_attribute_twin_sync(raw);
   }
 
   @protected
-  List<dynamic>
-      cst_encode_box_autoadd_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_my_audio_param_twin_normal_proxy_enum(
-          Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum
-              raw) {
+  JSAny cst_encode_box_autoadd_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_my_audio_param_twin_normal_proxy_enum(
+      Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum
+          raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_my_audio_param_twin_normal_proxy_enum(
         raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_b_twin_normal(BTwinNormal raw) {
+  JSAny cst_encode_box_autoadd_b_twin_normal(BTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_b_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_b_twin_rust_async(BTwinRustAsync raw) {
+  JSAny cst_encode_box_autoadd_b_twin_rust_async(BTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_b_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_b_twin_sync(BTwinSync raw) {
+  JSAny cst_encode_box_autoadd_b_twin_sync(BTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_b_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_basic_general_enum_twin_normal(
+  JSAny cst_encode_box_autoadd_basic_general_enum_twin_normal(
       BasicGeneralEnumTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_basic_general_enum_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_basic_general_enum_twin_rust_async(
+  JSAny cst_encode_box_autoadd_basic_general_enum_twin_rust_async(
       BasicGeneralEnumTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_basic_general_enum_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_basic_general_enum_twin_sync(
+  JSAny cst_encode_box_autoadd_basic_general_enum_twin_sync(
       BasicGeneralEnumTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_basic_general_enum_twin_sync(raw);
@@ -20691,63 +20678,62 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_basic_struct_twin_normal(
+  JSAny cst_encode_box_autoadd_basic_struct_twin_normal(
       BasicStructTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_basic_struct_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_basic_struct_twin_rust_async(
+  JSAny cst_encode_box_autoadd_basic_struct_twin_rust_async(
       BasicStructTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_basic_struct_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_basic_struct_twin_sync(
-      BasicStructTwinSync raw) {
+  JSAny cst_encode_box_autoadd_basic_struct_twin_sync(BasicStructTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_basic_struct_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_benchmark_binary_tree_twin_normal(
+  JSAny cst_encode_box_autoadd_benchmark_binary_tree_twin_normal(
       BenchmarkBinaryTreeTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_benchmark_binary_tree_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_benchmark_binary_tree_twin_rust_async(
+  JSAny cst_encode_box_autoadd_benchmark_binary_tree_twin_rust_async(
       BenchmarkBinaryTreeTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_benchmark_binary_tree_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_benchmark_binary_tree_twin_sync(
+  JSAny cst_encode_box_autoadd_benchmark_binary_tree_twin_sync(
       BenchmarkBinaryTreeTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_benchmark_binary_tree_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_benchmark_blob_twin_normal(
+  JSAny cst_encode_box_autoadd_benchmark_blob_twin_normal(
       BenchmarkBlobTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_benchmark_blob_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_benchmark_blob_twin_rust_async(
+  JSAny cst_encode_box_autoadd_benchmark_blob_twin_rust_async(
       BenchmarkBlobTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_benchmark_blob_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_benchmark_blob_twin_sync(
+  JSAny cst_encode_box_autoadd_benchmark_blob_twin_sync(
       BenchmarkBlobTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_benchmark_blob_twin_sync(raw);
@@ -20760,431 +20746,421 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_c_twin_normal(CTwinNormal raw) {
+  JSAny cst_encode_box_autoadd_c_twin_normal(CTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_c_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_c_twin_rust_async(CTwinRustAsync raw) {
+  JSAny cst_encode_box_autoadd_c_twin_rust_async(CTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_c_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_c_twin_sync(CTwinSync raw) {
+  JSAny cst_encode_box_autoadd_c_twin_sync(CTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_c_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_concatenate_with_twin_normal(
+  JSAny cst_encode_box_autoadd_concatenate_with_twin_normal(
       ConcatenateWithTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_concatenate_with_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_concatenate_with_twin_rust_async(
+  JSAny cst_encode_box_autoadd_concatenate_with_twin_rust_async(
       ConcatenateWithTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_concatenate_with_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_concatenate_with_twin_sync(
+  JSAny cst_encode_box_autoadd_concatenate_with_twin_sync(
       ConcatenateWithTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_concatenate_with_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_custom_nested_error_2_twin_normal(
+  JSAny cst_encode_box_autoadd_custom_nested_error_2_twin_normal(
       CustomNestedError2TwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_custom_nested_error_2_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_custom_nested_error_2_twin_rust_async(
+  JSAny cst_encode_box_autoadd_custom_nested_error_2_twin_rust_async(
       CustomNestedError2TwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_custom_nested_error_2_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_custom_nested_error_2_twin_sync(
+  JSAny cst_encode_box_autoadd_custom_nested_error_2_twin_sync(
       CustomNestedError2TwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_custom_nested_error_2_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_custom_nested_error_inner_twin_normal(
+  JSAny cst_encode_box_autoadd_custom_nested_error_inner_twin_normal(
       CustomNestedErrorInnerTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_custom_nested_error_inner_twin_normal(raw);
   }
 
   @protected
-  List<dynamic>
-      cst_encode_box_autoadd_custom_nested_error_inner_twin_rust_async(
-          CustomNestedErrorInnerTwinRustAsync raw) {
+  JSAny cst_encode_box_autoadd_custom_nested_error_inner_twin_rust_async(
+      CustomNestedErrorInnerTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_custom_nested_error_inner_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_custom_nested_error_inner_twin_sync(
+  JSAny cst_encode_box_autoadd_custom_nested_error_inner_twin_sync(
       CustomNestedErrorInnerTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_custom_nested_error_inner_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_custom_nested_error_outer_twin_normal(
+  JSAny cst_encode_box_autoadd_custom_nested_error_outer_twin_normal(
       CustomNestedErrorOuterTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_custom_nested_error_outer_twin_normal(raw);
   }
 
   @protected
-  List<dynamic>
-      cst_encode_box_autoadd_custom_nested_error_outer_twin_rust_async(
-          CustomNestedErrorOuterTwinRustAsync raw) {
+  JSAny cst_encode_box_autoadd_custom_nested_error_outer_twin_rust_async(
+      CustomNestedErrorOuterTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_custom_nested_error_outer_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_custom_nested_error_outer_twin_sync(
+  JSAny cst_encode_box_autoadd_custom_nested_error_outer_twin_sync(
       CustomNestedErrorOuterTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_custom_nested_error_outer_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_custom_struct_error_twin_normal(
+  JSAny cst_encode_box_autoadd_custom_struct_error_twin_normal(
       CustomStructErrorTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_custom_struct_error_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_custom_struct_error_twin_rust_async(
+  JSAny cst_encode_box_autoadd_custom_struct_error_twin_rust_async(
       CustomStructErrorTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_custom_struct_error_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_custom_struct_error_twin_sync(
+  JSAny cst_encode_box_autoadd_custom_struct_error_twin_sync(
       CustomStructErrorTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_custom_struct_error_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_custom_struct_twin_normal(
+  JSAny cst_encode_box_autoadd_custom_struct_twin_normal(
       CustomStructTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_custom_struct_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_custom_struct_twin_rust_async(
+  JSAny cst_encode_box_autoadd_custom_struct_twin_rust_async(
       CustomStructTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_custom_struct_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_custom_struct_twin_sync(
+  JSAny cst_encode_box_autoadd_custom_struct_twin_sync(
       CustomStructTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_custom_struct_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_customized_twin_normal(
+  JSAny cst_encode_box_autoadd_customized_twin_normal(
       CustomizedTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_customized_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_customized_twin_rust_async(
+  JSAny cst_encode_box_autoadd_customized_twin_rust_async(
       CustomizedTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_customized_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_customized_twin_sync(
-      CustomizedTwinSync raw) {
+  JSAny cst_encode_box_autoadd_customized_twin_sync(CustomizedTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_customized_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_dart_opaque_nested_twin_normal(
+  JSAny cst_encode_box_autoadd_dart_opaque_nested_twin_normal(
       DartOpaqueNestedTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_dart_opaque_nested_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_dart_opaque_nested_twin_rust_async(
+  JSAny cst_encode_box_autoadd_dart_opaque_nested_twin_rust_async(
       DartOpaqueNestedTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_dart_opaque_nested_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_dart_opaque_nested_twin_sync(
+  JSAny cst_encode_box_autoadd_dart_opaque_nested_twin_sync(
       DartOpaqueNestedTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_dart_opaque_nested_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_element_twin_normal(
-      ElementTwinNormal raw) {
+  JSAny cst_encode_box_autoadd_element_twin_normal(ElementTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_element_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_element_twin_rust_async(
+  JSAny cst_encode_box_autoadd_element_twin_rust_async(
       ElementTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_element_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_element_twin_sync(ElementTwinSync raw) {
+  JSAny cst_encode_box_autoadd_element_twin_sync(ElementTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_element_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_empty_twin_normal(EmptyTwinNormal raw) {
+  JSAny cst_encode_box_autoadd_empty_twin_normal(EmptyTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_empty_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_empty_twin_rust_async(
-      EmptyTwinRustAsync raw) {
+  JSAny cst_encode_box_autoadd_empty_twin_rust_async(EmptyTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_empty_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_empty_twin_sync(EmptyTwinSync raw) {
+  JSAny cst_encode_box_autoadd_empty_twin_sync(EmptyTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_empty_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_enum_dart_opaque_twin_normal(
+  JSAny cst_encode_box_autoadd_enum_dart_opaque_twin_normal(
       EnumDartOpaqueTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_enum_dart_opaque_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_enum_dart_opaque_twin_rust_async(
+  JSAny cst_encode_box_autoadd_enum_dart_opaque_twin_rust_async(
       EnumDartOpaqueTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_enum_dart_opaque_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_enum_dart_opaque_twin_sync(
+  JSAny cst_encode_box_autoadd_enum_dart_opaque_twin_sync(
       EnumDartOpaqueTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_enum_dart_opaque_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_enum_opaque_twin_moi(
-      EnumOpaqueTwinMoi raw) {
+  JSAny cst_encode_box_autoadd_enum_opaque_twin_moi(EnumOpaqueTwinMoi raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_enum_opaque_twin_moi(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_enum_opaque_twin_normal(
+  JSAny cst_encode_box_autoadd_enum_opaque_twin_normal(
       EnumOpaqueTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_enum_opaque_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_enum_opaque_twin_rust_async(
+  JSAny cst_encode_box_autoadd_enum_opaque_twin_rust_async(
       EnumOpaqueTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_enum_opaque_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_enum_opaque_twin_rust_async_moi(
+  JSAny cst_encode_box_autoadd_enum_opaque_twin_rust_async_moi(
       EnumOpaqueTwinRustAsyncMoi raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_enum_opaque_twin_rust_async_moi(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_enum_opaque_twin_sync(
-      EnumOpaqueTwinSync raw) {
+  JSAny cst_encode_box_autoadd_enum_opaque_twin_sync(EnumOpaqueTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_enum_opaque_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_enum_opaque_twin_sync_moi(
+  JSAny cst_encode_box_autoadd_enum_opaque_twin_sync_moi(
       EnumOpaqueTwinSyncMoi raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_enum_opaque_twin_sync_moi(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_enum_with_good_and_opaque_twin_moi(
+  JSAny cst_encode_box_autoadd_enum_with_good_and_opaque_twin_moi(
       EnumWithGoodAndOpaqueTwinMoi raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_enum_with_good_and_opaque_twin_moi(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_enum_with_good_and_opaque_twin_normal(
+  JSAny cst_encode_box_autoadd_enum_with_good_and_opaque_twin_normal(
       EnumWithGoodAndOpaqueTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_enum_with_good_and_opaque_twin_normal(raw);
   }
 
   @protected
-  List<dynamic>
-      cst_encode_box_autoadd_enum_with_good_and_opaque_twin_rust_async(
-          EnumWithGoodAndOpaqueTwinRustAsync raw) {
+  JSAny cst_encode_box_autoadd_enum_with_good_and_opaque_twin_rust_async(
+      EnumWithGoodAndOpaqueTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_enum_with_good_and_opaque_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic>
-      cst_encode_box_autoadd_enum_with_good_and_opaque_twin_rust_async_moi(
-          EnumWithGoodAndOpaqueTwinRustAsyncMoi raw) {
+  JSAny cst_encode_box_autoadd_enum_with_good_and_opaque_twin_rust_async_moi(
+      EnumWithGoodAndOpaqueTwinRustAsyncMoi raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_enum_with_good_and_opaque_twin_rust_async_moi(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_enum_with_good_and_opaque_twin_sync(
+  JSAny cst_encode_box_autoadd_enum_with_good_and_opaque_twin_sync(
       EnumWithGoodAndOpaqueTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_enum_with_good_and_opaque_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_enum_with_good_and_opaque_twin_sync_moi(
+  JSAny cst_encode_box_autoadd_enum_with_good_and_opaque_twin_sync_moi(
       EnumWithGoodAndOpaqueTwinSyncMoi raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_enum_with_good_and_opaque_twin_sync_moi(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_enum_with_item_mixed_twin_normal(
+  JSAny cst_encode_box_autoadd_enum_with_item_mixed_twin_normal(
       EnumWithItemMixedTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_enum_with_item_mixed_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_enum_with_item_mixed_twin_rust_async(
+  JSAny cst_encode_box_autoadd_enum_with_item_mixed_twin_rust_async(
       EnumWithItemMixedTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_enum_with_item_mixed_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_enum_with_item_mixed_twin_sync(
+  JSAny cst_encode_box_autoadd_enum_with_item_mixed_twin_sync(
       EnumWithItemMixedTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_enum_with_item_mixed_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_enum_with_item_struct_twin_normal(
+  JSAny cst_encode_box_autoadd_enum_with_item_struct_twin_normal(
       EnumWithItemStructTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_enum_with_item_struct_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_enum_with_item_struct_twin_rust_async(
+  JSAny cst_encode_box_autoadd_enum_with_item_struct_twin_rust_async(
       EnumWithItemStructTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_enum_with_item_struct_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_enum_with_item_struct_twin_sync(
+  JSAny cst_encode_box_autoadd_enum_with_item_struct_twin_sync(
       EnumWithItemStructTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_enum_with_item_struct_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_enum_with_item_tuple_twin_normal(
+  JSAny cst_encode_box_autoadd_enum_with_item_tuple_twin_normal(
       EnumWithItemTupleTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_enum_with_item_tuple_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_enum_with_item_tuple_twin_rust_async(
+  JSAny cst_encode_box_autoadd_enum_with_item_tuple_twin_rust_async(
       EnumWithItemTupleTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_enum_with_item_tuple_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_enum_with_item_tuple_twin_sync(
+  JSAny cst_encode_box_autoadd_enum_with_item_tuple_twin_sync(
       EnumWithItemTupleTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_enum_with_item_tuple_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_event_twin_normal(EventTwinNormal raw) {
+  JSAny cst_encode_box_autoadd_event_twin_normal(EventTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_event_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_event_twin_rust_async(
-      EventTwinRustAsync raw) {
+  JSAny cst_encode_box_autoadd_event_twin_rust_async(EventTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_event_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_exotic_optionals_twin_normal(
+  JSAny cst_encode_box_autoadd_exotic_optionals_twin_normal(
       ExoticOptionalsTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_exotic_optionals_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_exotic_optionals_twin_rust_async(
+  JSAny cst_encode_box_autoadd_exotic_optionals_twin_rust_async(
       ExoticOptionalsTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_exotic_optionals_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_exotic_optionals_twin_sync(
+  JSAny cst_encode_box_autoadd_exotic_optionals_twin_sync(
       ExoticOptionalsTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_exotic_optionals_twin_sync(raw);
@@ -21203,63 +21179,61 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_feature_chrono_twin_normal(
+  JSAny cst_encode_box_autoadd_feature_chrono_twin_normal(
       FeatureChronoTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_feature_chrono_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_feature_chrono_twin_rust_async(
+  JSAny cst_encode_box_autoadd_feature_chrono_twin_rust_async(
       FeatureChronoTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_feature_chrono_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_feature_chrono_twin_sync(
+  JSAny cst_encode_box_autoadd_feature_chrono_twin_sync(
       FeatureChronoTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_feature_chrono_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_feature_uuid_twin_normal(
+  JSAny cst_encode_box_autoadd_feature_uuid_twin_normal(
       FeatureUuidTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_feature_uuid_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_feature_uuid_twin_rust_async(
+  JSAny cst_encode_box_autoadd_feature_uuid_twin_rust_async(
       FeatureUuidTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_feature_uuid_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_feature_uuid_twin_sync(
-      FeatureUuidTwinSync raw) {
+  JSAny cst_encode_box_autoadd_feature_uuid_twin_sync(FeatureUuidTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_feature_uuid_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_feed_id_twin_normal(
-      FeedIdTwinNormal raw) {
+  JSAny cst_encode_box_autoadd_feed_id_twin_normal(FeedIdTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_feed_id_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_feed_id_twin_rust_async(
+  JSAny cst_encode_box_autoadd_feed_id_twin_rust_async(
       FeedIdTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_feed_id_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_feed_id_twin_sync(FeedIdTwinSync raw) {
+  JSAny cst_encode_box_autoadd_feed_id_twin_sync(FeedIdTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_feed_id_twin_sync(raw);
   }
@@ -21295,502 +21269,480 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_item_container_solution_two_twin_normal(
+  JSAny cst_encode_box_autoadd_item_container_solution_two_twin_normal(
       ItemContainerSolutionTwoTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_item_container_solution_two_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_kitchen_sink_twin_normal(
+  JSAny cst_encode_box_autoadd_kitchen_sink_twin_normal(
       KitchenSinkTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_kitchen_sink_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_kitchen_sink_twin_rust_async(
+  JSAny cst_encode_box_autoadd_kitchen_sink_twin_rust_async(
       KitchenSinkTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_kitchen_sink_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_kitchen_sink_twin_sync(
-      KitchenSinkTwinSync raw) {
+  JSAny cst_encode_box_autoadd_kitchen_sink_twin_sync(KitchenSinkTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_kitchen_sink_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_list_of_nested_raw_string_mirrored(
+  JSAny cst_encode_box_autoadd_list_of_nested_raw_string_mirrored(
       ListOfNestedRawStringMirrored raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_of_nested_raw_string_mirrored(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_macro_struct(MacroStruct raw) {
+  JSAny cst_encode_box_autoadd_macro_struct(MacroStruct raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_macro_struct(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_measure_twin_normal(
-      MeasureTwinNormal raw) {
+  JSAny cst_encode_box_autoadd_measure_twin_normal(MeasureTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_measure_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_measure_twin_rust_async(
+  JSAny cst_encode_box_autoadd_measure_twin_rust_async(
       MeasureTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_measure_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_measure_twin_sync(MeasureTwinSync raw) {
+  JSAny cst_encode_box_autoadd_measure_twin_sync(MeasureTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_measure_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_message_id_twin_normal(
-      MessageIdTwinNormal raw) {
+  JSAny cst_encode_box_autoadd_message_id_twin_normal(MessageIdTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_message_id_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_message_id_twin_rust_async(
+  JSAny cst_encode_box_autoadd_message_id_twin_rust_async(
       MessageIdTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_message_id_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_message_id_twin_sync(
-      MessageIdTwinSync raw) {
+  JSAny cst_encode_box_autoadd_message_id_twin_sync(MessageIdTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_message_id_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_my_callable_twin_normal(
+  JSAny cst_encode_box_autoadd_my_callable_twin_normal(
       MyCallableTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_my_callable_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_my_callable_twin_rust_async(
+  JSAny cst_encode_box_autoadd_my_callable_twin_rust_async(
       MyCallableTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_my_callable_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_my_callable_twin_sync(
-      MyCallableTwinSync raw) {
+  JSAny cst_encode_box_autoadd_my_callable_twin_sync(MyCallableTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_my_callable_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_my_nested_struct_twin_normal(
+  JSAny cst_encode_box_autoadd_my_nested_struct_twin_normal(
       MyNestedStructTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_my_nested_struct_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_my_nested_struct_twin_rust_async(
+  JSAny cst_encode_box_autoadd_my_nested_struct_twin_rust_async(
       MyNestedStructTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_my_nested_struct_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_my_nested_struct_twin_sync(
+  JSAny cst_encode_box_autoadd_my_nested_struct_twin_sync(
       MyNestedStructTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_my_nested_struct_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_my_size(MySize raw) {
+  JSAny cst_encode_box_autoadd_my_size(MySize raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_my_size(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_my_struct(MyStruct raw) {
+  JSAny cst_encode_box_autoadd_my_struct(MyStruct raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_my_struct(raw);
   }
 
   @protected
-  List<dynamic>
-      cst_encode_box_autoadd_my_struct_containing_stream_sink_twin_normal(
-          MyStructContainingStreamSinkTwinNormal raw) {
+  JSAny cst_encode_box_autoadd_my_struct_containing_stream_sink_twin_normal(
+      MyStructContainingStreamSinkTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_my_struct_containing_stream_sink_twin_normal(raw);
   }
 
   @protected
-  List<dynamic>
-      cst_encode_box_autoadd_my_struct_containing_stream_sink_twin_rust_async(
-          MyStructContainingStreamSinkTwinRustAsync raw) {
+  JSAny cst_encode_box_autoadd_my_struct_containing_stream_sink_twin_rust_async(
+      MyStructContainingStreamSinkTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_my_struct_containing_stream_sink_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_my_tree_node_twin_normal(
+  JSAny cst_encode_box_autoadd_my_tree_node_twin_normal(
       MyTreeNodeTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_my_tree_node_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_my_tree_node_twin_rust_async(
+  JSAny cst_encode_box_autoadd_my_tree_node_twin_rust_async(
       MyTreeNodeTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_my_tree_node_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_my_tree_node_twin_sync(
-      MyTreeNodeTwinSync raw) {
+  JSAny cst_encode_box_autoadd_my_tree_node_twin_sync(MyTreeNodeTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_my_tree_node_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_nested_raw_string_mirrored(
+  JSAny cst_encode_box_autoadd_nested_raw_string_mirrored(
       NestedRawStringMirrored raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_nested_raw_string_mirrored(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_new_type_int_twin_normal(
+  JSAny cst_encode_box_autoadd_new_type_int_twin_normal(
       NewTypeIntTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_new_type_int_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_new_type_int_twin_rust_async(
+  JSAny cst_encode_box_autoadd_new_type_int_twin_rust_async(
       NewTypeIntTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_new_type_int_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_new_type_int_twin_sync(
-      NewTypeIntTwinSync raw) {
+  JSAny cst_encode_box_autoadd_new_type_int_twin_sync(NewTypeIntTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_new_type_int_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_note_twin_normal(NoteTwinNormal raw) {
+  JSAny cst_encode_box_autoadd_note_twin_normal(NoteTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_note_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_note_twin_rust_async(
-      NoteTwinRustAsync raw) {
+  JSAny cst_encode_box_autoadd_note_twin_rust_async(NoteTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_note_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_note_twin_sync(NoteTwinSync raw) {
+  JSAny cst_encode_box_autoadd_note_twin_sync(NoteTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_note_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_numbers(Numbers raw) {
+  JSAny cst_encode_box_autoadd_numbers(Numbers raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_numbers(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_opaque_nested_twin_moi(
-      OpaqueNestedTwinMoi raw) {
+  JSAny cst_encode_box_autoadd_opaque_nested_twin_moi(OpaqueNestedTwinMoi raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_opaque_nested_twin_moi(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_opaque_nested_twin_normal(
+  JSAny cst_encode_box_autoadd_opaque_nested_twin_normal(
       OpaqueNestedTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_opaque_nested_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_opaque_nested_twin_rust_async(
+  JSAny cst_encode_box_autoadd_opaque_nested_twin_rust_async(
       OpaqueNestedTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_opaque_nested_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_opaque_nested_twin_rust_async_moi(
+  JSAny cst_encode_box_autoadd_opaque_nested_twin_rust_async_moi(
       OpaqueNestedTwinRustAsyncMoi raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_opaque_nested_twin_rust_async_moi(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_opaque_nested_twin_sync(
+  JSAny cst_encode_box_autoadd_opaque_nested_twin_sync(
       OpaqueNestedTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_opaque_nested_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_opaque_nested_twin_sync_moi(
+  JSAny cst_encode_box_autoadd_opaque_nested_twin_sync_moi(
       OpaqueNestedTwinSyncMoi raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_opaque_nested_twin_sync_moi(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_opt_vecs_twin_normal(
-      OptVecsTwinNormal raw) {
+  JSAny cst_encode_box_autoadd_opt_vecs_twin_normal(OptVecsTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_opt_vecs_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_opt_vecs_twin_rust_async(
+  JSAny cst_encode_box_autoadd_opt_vecs_twin_rust_async(
       OptVecsTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_opt_vecs_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_opt_vecs_twin_sync(OptVecsTwinSync raw) {
+  JSAny cst_encode_box_autoadd_opt_vecs_twin_sync(OptVecsTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_opt_vecs_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_raw_string_mirrored(
-      RawStringMirrored raw) {
+  JSAny cst_encode_box_autoadd_raw_string_mirrored(RawStringMirrored raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_raw_string_mirrored(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_record_string_i_32((String, int) raw) {
+  JSAny cst_encode_box_autoadd_record_string_i_32((String, int) raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_record_string_i_32(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_sequences(Sequences raw) {
+  JSAny cst_encode_box_autoadd_sequences(Sequences raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_sequences(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_simple_enum_twin_normal(
+  JSAny cst_encode_box_autoadd_simple_enum_twin_normal(
       SimpleEnumTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_simple_enum_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_simple_enum_twin_rust_async(
+  JSAny cst_encode_box_autoadd_simple_enum_twin_rust_async(
       SimpleEnumTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_simple_enum_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_simple_enum_twin_sync(
-      SimpleEnumTwinSync raw) {
+  JSAny cst_encode_box_autoadd_simple_enum_twin_sync(SimpleEnumTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_simple_enum_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_simple_struct_for_borrow_twin_normal(
+  JSAny cst_encode_box_autoadd_simple_struct_for_borrow_twin_normal(
       SimpleStructForBorrowTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_simple_struct_for_borrow_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_simple_struct_for_borrow_twin_rust_async(
+  JSAny cst_encode_box_autoadd_simple_struct_for_borrow_twin_rust_async(
       SimpleStructForBorrowTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_simple_struct_for_borrow_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_simple_struct_for_borrow_twin_sync(
+  JSAny cst_encode_box_autoadd_simple_struct_for_borrow_twin_sync(
       SimpleStructForBorrowTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_simple_struct_for_borrow_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_simple_struct_twin_normal(
+  JSAny cst_encode_box_autoadd_simple_struct_twin_normal(
       SimpleStructTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_simple_struct_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_simple_struct_twin_rust_async(
+  JSAny cst_encode_box_autoadd_simple_struct_twin_rust_async(
       SimpleStructTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_simple_struct_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_simple_struct_twin_sync(
+  JSAny cst_encode_box_autoadd_simple_struct_twin_sync(
       SimpleStructTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_simple_struct_twin_sync(raw);
   }
 
   @protected
-  List<dynamic>
-      cst_encode_box_autoadd_simple_trait_for_dyn_twin_normal_implementor(
-          SimpleTraitForDynTwinNormalImplementor raw) {
+  JSAny cst_encode_box_autoadd_simple_trait_for_dyn_twin_normal_implementor(
+      SimpleTraitForDynTwinNormalImplementor raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_simple_trait_for_dyn_twin_normal_implementor(raw);
   }
 
   @protected
-  List<dynamic>
-      cst_encode_box_autoadd_simple_translatable_external_struct_with_method(
-          SimpleTranslatableExternalStructWithMethod raw) {
+  JSAny cst_encode_box_autoadd_simple_translatable_external_struct_with_method(
+      SimpleTranslatableExternalStructWithMethod raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_simple_translatable_external_struct_with_method(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_some_struct_twin_normal(
+  JSAny cst_encode_box_autoadd_some_struct_twin_normal(
       SomeStructTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_some_struct_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_some_struct_twin_rust_async(
+  JSAny cst_encode_box_autoadd_some_struct_twin_rust_async(
       SomeStructTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_some_struct_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_some_struct_twin_sync(
-      SomeStructTwinSync raw) {
+  JSAny cst_encode_box_autoadd_some_struct_twin_sync(SomeStructTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_some_struct_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_struct_in_lower_level(
-      StructInLowerLevel raw) {
+  JSAny cst_encode_box_autoadd_struct_in_lower_level(StructInLowerLevel raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_struct_in_lower_level(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_struct_with_comments_twin_normal(
+  JSAny cst_encode_box_autoadd_struct_with_comments_twin_normal(
       StructWithCommentsTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_struct_with_comments_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_struct_with_comments_twin_rust_async(
+  JSAny cst_encode_box_autoadd_struct_with_comments_twin_rust_async(
       StructWithCommentsTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_struct_with_comments_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_struct_with_comments_twin_sync(
+  JSAny cst_encode_box_autoadd_struct_with_comments_twin_sync(
       StructWithCommentsTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_struct_with_comments_twin_sync(raw);
   }
 
   @protected
-  List<dynamic>
-      cst_encode_box_autoadd_struct_with_custom_name_method_twin_normal(
-          StructWithCustomNameMethodTwinNormal raw) {
+  JSAny cst_encode_box_autoadd_struct_with_custom_name_method_twin_normal(
+      StructWithCustomNameMethodTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_struct_with_custom_name_method_twin_normal(raw);
   }
 
   @protected
-  List<dynamic>
-      cst_encode_box_autoadd_struct_with_dart_keyword_field_twin_normal(
-          StructWithDartKeywordFieldTwinNormal raw) {
+  JSAny cst_encode_box_autoadd_struct_with_dart_keyword_field_twin_normal(
+      StructWithDartKeywordFieldTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_struct_with_dart_keyword_field_twin_normal(raw);
   }
 
   @protected
-  List<dynamic>
-      cst_encode_box_autoadd_struct_with_dart_keyword_field_twin_rust_async(
-          StructWithDartKeywordFieldTwinRustAsync raw) {
+  JSAny cst_encode_box_autoadd_struct_with_dart_keyword_field_twin_rust_async(
+      StructWithDartKeywordFieldTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_struct_with_dart_keyword_field_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_struct_with_dart_keyword_field_twin_sync(
+  JSAny cst_encode_box_autoadd_struct_with_dart_keyword_field_twin_sync(
       StructWithDartKeywordFieldTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_struct_with_dart_keyword_field_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_struct_with_enum_twin_normal(
+  JSAny cst_encode_box_autoadd_struct_with_enum_twin_normal(
       StructWithEnumTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_struct_with_enum_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_struct_with_enum_twin_rust_async(
+  JSAny cst_encode_box_autoadd_struct_with_enum_twin_rust_async(
       StructWithEnumTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_struct_with_enum_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_struct_with_enum_twin_sync(
+  JSAny cst_encode_box_autoadd_struct_with_enum_twin_sync(
       StructWithEnumTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_struct_with_enum_twin_sync(raw);
   }
 
   @protected
-  List<dynamic>
-      cst_encode_box_autoadd_struct_with_explicit_auto_opaque_field_twin_moi(
-          StructWithExplicitAutoOpaqueFieldTwinMoi raw) {
+  JSAny cst_encode_box_autoadd_struct_with_explicit_auto_opaque_field_twin_moi(
+      StructWithExplicitAutoOpaqueFieldTwinMoi raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_struct_with_explicit_auto_opaque_field_twin_moi(raw);
   }
 
   @protected
-  List<dynamic>
+  JSAny
       cst_encode_box_autoadd_struct_with_explicit_auto_opaque_field_twin_normal(
           StructWithExplicitAutoOpaqueFieldTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
@@ -21798,7 +21750,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic>
+  JSAny
       cst_encode_box_autoadd_struct_with_explicit_auto_opaque_field_twin_rust_async(
           StructWithExplicitAutoOpaqueFieldTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
@@ -21807,7 +21759,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic>
+  JSAny
       cst_encode_box_autoadd_struct_with_explicit_auto_opaque_field_twin_rust_async_moi(
           StructWithExplicitAutoOpaqueFieldTwinRustAsyncMoi raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
@@ -21816,15 +21768,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic>
-      cst_encode_box_autoadd_struct_with_explicit_auto_opaque_field_twin_sync(
-          StructWithExplicitAutoOpaqueFieldTwinSync raw) {
+  JSAny cst_encode_box_autoadd_struct_with_explicit_auto_opaque_field_twin_sync(
+      StructWithExplicitAutoOpaqueFieldTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_struct_with_explicit_auto_opaque_field_twin_sync(raw);
   }
 
   @protected
-  List<dynamic>
+  JSAny
       cst_encode_box_autoadd_struct_with_explicit_auto_opaque_field_twin_sync_moi(
           StructWithExplicitAutoOpaqueFieldTwinSyncMoi raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
@@ -21832,44 +21783,42 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_struct_with_field_rename_twin_normal(
+  JSAny cst_encode_box_autoadd_struct_with_field_rename_twin_normal(
       StructWithFieldRenameTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_struct_with_field_rename_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_struct_with_field_rename_twin_rust_async(
+  JSAny cst_encode_box_autoadd_struct_with_field_rename_twin_rust_async(
       StructWithFieldRenameTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_struct_with_field_rename_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_struct_with_field_rename_twin_sync(
+  JSAny cst_encode_box_autoadd_struct_with_field_rename_twin_sync(
       StructWithFieldRenameTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_struct_with_field_rename_twin_sync(raw);
   }
 
   @protected
-  List<dynamic>
-      cst_encode_box_autoadd_struct_with_good_and_opaque_field_twin_moi(
-          StructWithGoodAndOpaqueFieldTwinMoi raw) {
+  JSAny cst_encode_box_autoadd_struct_with_good_and_opaque_field_twin_moi(
+      StructWithGoodAndOpaqueFieldTwinMoi raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_struct_with_good_and_opaque_field_twin_moi(raw);
   }
 
   @protected
-  List<dynamic>
-      cst_encode_box_autoadd_struct_with_good_and_opaque_field_twin_normal(
-          StructWithGoodAndOpaqueFieldTwinNormal raw) {
+  JSAny cst_encode_box_autoadd_struct_with_good_and_opaque_field_twin_normal(
+      StructWithGoodAndOpaqueFieldTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_struct_with_good_and_opaque_field_twin_normal(raw);
   }
 
   @protected
-  List<dynamic>
+  JSAny
       cst_encode_box_autoadd_struct_with_good_and_opaque_field_twin_rust_async(
           StructWithGoodAndOpaqueFieldTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
@@ -21877,7 +21826,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic>
+  JSAny
       cst_encode_box_autoadd_struct_with_good_and_opaque_field_twin_rust_async_moi(
           StructWithGoodAndOpaqueFieldTwinRustAsyncMoi raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
@@ -21886,23 +21835,21 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic>
-      cst_encode_box_autoadd_struct_with_good_and_opaque_field_twin_sync(
-          StructWithGoodAndOpaqueFieldTwinSync raw) {
+  JSAny cst_encode_box_autoadd_struct_with_good_and_opaque_field_twin_sync(
+      StructWithGoodAndOpaqueFieldTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_struct_with_good_and_opaque_field_twin_sync(raw);
   }
 
   @protected
-  List<dynamic>
-      cst_encode_box_autoadd_struct_with_good_and_opaque_field_twin_sync_moi(
-          StructWithGoodAndOpaqueFieldTwinSyncMoi raw) {
+  JSAny cst_encode_box_autoadd_struct_with_good_and_opaque_field_twin_sync_moi(
+      StructWithGoodAndOpaqueFieldTwinSyncMoi raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_struct_with_good_and_opaque_field_twin_sync_moi(raw);
   }
 
   @protected
-  List<dynamic>
+  JSAny
       cst_encode_box_autoadd_struct_with_impl_block_in_another_file_dependency(
           StructWithImplBlockInAnotherFileDependency raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
@@ -21910,155 +21857,150 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_struct_with_one_field_twin_normal(
+  JSAny cst_encode_box_autoadd_struct_with_one_field_twin_normal(
       StructWithOneFieldTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_struct_with_one_field_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_struct_with_one_field_twin_rust_async(
+  JSAny cst_encode_box_autoadd_struct_with_one_field_twin_rust_async(
       StructWithOneFieldTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_struct_with_one_field_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_struct_with_one_field_twin_sync(
+  JSAny cst_encode_box_autoadd_struct_with_one_field_twin_sync(
       StructWithOneFieldTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_struct_with_one_field_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_struct_with_two_field_twin_normal(
+  JSAny cst_encode_box_autoadd_struct_with_two_field_twin_normal(
       StructWithTwoFieldTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_struct_with_two_field_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_struct_with_two_field_twin_rust_async(
+  JSAny cst_encode_box_autoadd_struct_with_two_field_twin_rust_async(
       StructWithTwoFieldTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_struct_with_two_field_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_struct_with_two_field_twin_sync(
+  JSAny cst_encode_box_autoadd_struct_with_two_field_twin_sync(
       StructWithTwoFieldTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_struct_with_two_field_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_struct_with_zero_field_twin_normal(
+  JSAny cst_encode_box_autoadd_struct_with_zero_field_twin_normal(
       StructWithZeroFieldTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_struct_with_zero_field_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_struct_with_zero_field_twin_rust_async(
+  JSAny cst_encode_box_autoadd_struct_with_zero_field_twin_rust_async(
       StructWithZeroFieldTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_struct_with_zero_field_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_struct_with_zero_field_twin_sync(
+  JSAny cst_encode_box_autoadd_struct_with_zero_field_twin_sync(
       StructWithZeroFieldTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_struct_with_zero_field_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_sum_with_twin_normal(
-      SumWithTwinNormal raw) {
+  JSAny cst_encode_box_autoadd_sum_with_twin_normal(SumWithTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_sum_with_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_sum_with_twin_rust_async(
+  JSAny cst_encode_box_autoadd_sum_with_twin_rust_async(
       SumWithTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_sum_with_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_sum_with_twin_sync(SumWithTwinSync raw) {
+  JSAny cst_encode_box_autoadd_sum_with_twin_sync(SumWithTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_sum_with_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_test_id_twin_normal(
-      TestIdTwinNormal raw) {
+  JSAny cst_encode_box_autoadd_test_id_twin_normal(TestIdTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_test_id_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_test_id_twin_rust_async(
+  JSAny cst_encode_box_autoadd_test_id_twin_rust_async(
       TestIdTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_test_id_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_test_id_twin_sync(TestIdTwinSync raw) {
+  JSAny cst_encode_box_autoadd_test_id_twin_sync(TestIdTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_test_id_twin_sync(raw);
   }
 
   @protected
-  List<dynamic>
-      cst_encode_box_autoadd_translatable_struct_with_dart_code_twin_normal(
-          TranslatableStructWithDartCodeTwinNormal raw) {
+  JSAny cst_encode_box_autoadd_translatable_struct_with_dart_code_twin_normal(
+      TranslatableStructWithDartCodeTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_translatable_struct_with_dart_code_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_tuple_struct_with_one_field_twin_normal(
+  JSAny cst_encode_box_autoadd_tuple_struct_with_one_field_twin_normal(
       TupleStructWithOneFieldTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_tuple_struct_with_one_field_twin_normal(raw);
   }
 
   @protected
-  List<dynamic>
-      cst_encode_box_autoadd_tuple_struct_with_one_field_twin_rust_async(
-          TupleStructWithOneFieldTwinRustAsync raw) {
+  JSAny cst_encode_box_autoadd_tuple_struct_with_one_field_twin_rust_async(
+      TupleStructWithOneFieldTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_tuple_struct_with_one_field_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_tuple_struct_with_one_field_twin_sync(
+  JSAny cst_encode_box_autoadd_tuple_struct_with_one_field_twin_sync(
       TupleStructWithOneFieldTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_tuple_struct_with_one_field_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_tuple_struct_with_two_field_twin_normal(
+  JSAny cst_encode_box_autoadd_tuple_struct_with_two_field_twin_normal(
       TupleStructWithTwoFieldTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_tuple_struct_with_two_field_twin_normal(raw);
   }
 
   @protected
-  List<dynamic>
-      cst_encode_box_autoadd_tuple_struct_with_two_field_twin_rust_async(
-          TupleStructWithTwoFieldTwinRustAsync raw) {
+  JSAny cst_encode_box_autoadd_tuple_struct_with_two_field_twin_rust_async(
+      TupleStructWithTwoFieldTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_tuple_struct_with_two_field_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_tuple_struct_with_two_field_twin_sync(
+  JSAny cst_encode_box_autoadd_tuple_struct_with_two_field_twin_sync(
       TupleStructWithTwoFieldTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_tuple_struct_with_two_field_twin_sync(raw);
@@ -22089,21 +22031,20 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_user_id_twin_normal(
-      UserIdTwinNormal raw) {
+  JSAny cst_encode_box_autoadd_user_id_twin_normal(UserIdTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_user_id_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_user_id_twin_rust_async(
+  JSAny cst_encode_box_autoadd_user_id_twin_rust_async(
       UserIdTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_user_id_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_user_id_twin_sync(UserIdTwinSync raw) {
+  JSAny cst_encode_box_autoadd_user_id_twin_sync(UserIdTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_user_id_twin_sync(raw);
   }
@@ -22134,40 +22075,40 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic> cst_encode_box_benchmark_binary_tree_twin_normal(
+  JSAny cst_encode_box_benchmark_binary_tree_twin_normal(
       BenchmarkBinaryTreeTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_benchmark_binary_tree_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_benchmark_binary_tree_twin_rust_async(
+  JSAny cst_encode_box_benchmark_binary_tree_twin_rust_async(
       BenchmarkBinaryTreeTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_benchmark_binary_tree_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_benchmark_binary_tree_twin_sync(
+  JSAny cst_encode_box_benchmark_binary_tree_twin_sync(
       BenchmarkBinaryTreeTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_benchmark_binary_tree_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_blob_twin_normal(BlobTwinNormal raw) {
+  JSAny cst_encode_box_blob_twin_normal(BlobTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_blob_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_blob_twin_rust_async(BlobTwinRustAsync raw) {
+  JSAny cst_encode_box_blob_twin_rust_async(BlobTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_blob_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_blob_twin_sync(BlobTwinSync raw) {
+  JSAny cst_encode_box_blob_twin_sync(BlobTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_blob_twin_sync(raw);
   }
@@ -22179,41 +22120,39 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic> cst_encode_box_distance_twin_normal(DistanceTwinNormal raw) {
+  JSAny cst_encode_box_distance_twin_normal(DistanceTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_distance_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_distance_twin_rust_async(
-      DistanceTwinRustAsync raw) {
+  JSAny cst_encode_box_distance_twin_rust_async(DistanceTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_distance_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_distance_twin_sync(DistanceTwinSync raw) {
+  JSAny cst_encode_box_distance_twin_sync(DistanceTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_distance_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_exotic_optionals_twin_normal(
+  JSAny cst_encode_box_exotic_optionals_twin_normal(
       ExoticOptionalsTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_exotic_optionals_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_exotic_optionals_twin_rust_async(
+  JSAny cst_encode_box_exotic_optionals_twin_rust_async(
       ExoticOptionalsTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_exotic_optionals_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_exotic_optionals_twin_sync(
-      ExoticOptionalsTwinSync raw) {
+  JSAny cst_encode_box_exotic_optionals_twin_sync(ExoticOptionalsTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_exotic_optionals_twin_sync(raw);
   }
@@ -22225,20 +22164,19 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic> cst_encode_box_feed_id_twin_normal(FeedIdTwinNormal raw) {
+  JSAny cst_encode_box_feed_id_twin_normal(FeedIdTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_feed_id_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_feed_id_twin_rust_async(
-      FeedIdTwinRustAsync raw) {
+  JSAny cst_encode_box_feed_id_twin_rust_async(FeedIdTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_feed_id_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_feed_id_twin_sync(FeedIdTwinSync raw) {
+  JSAny cst_encode_box_feed_id_twin_sync(FeedIdTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_feed_id_twin_sync(raw);
   }
@@ -22262,45 +22200,44 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic> cst_encode_box_kitchen_sink_twin_normal(
-      KitchenSinkTwinNormal raw) {
+  JSAny cst_encode_box_kitchen_sink_twin_normal(KitchenSinkTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_kitchen_sink_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_kitchen_sink_twin_rust_async(
+  JSAny cst_encode_box_kitchen_sink_twin_rust_async(
       KitchenSinkTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_kitchen_sink_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_kitchen_sink_twin_sync(KitchenSinkTwinSync raw) {
+  JSAny cst_encode_box_kitchen_sink_twin_sync(KitchenSinkTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_kitchen_sink_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_my_size(MySize raw) {
+  JSAny cst_encode_box_my_size(MySize raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_my_size(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_speed_twin_normal(SpeedTwinNormal raw) {
+  JSAny cst_encode_box_speed_twin_normal(SpeedTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_speed_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_speed_twin_rust_async(SpeedTwinRustAsync raw) {
+  JSAny cst_encode_box_speed_twin_rust_async(SpeedTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_speed_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_box_speed_twin_sync(SpeedTwinSync raw) {
+  JSAny cst_encode_box_speed_twin_sync(SpeedTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_speed_twin_sync(raw);
   }
@@ -22342,90 +22279,88 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic> cst_encode_c_twin_normal(CTwinNormal raw) {
+  JSAny cst_encode_c_twin_normal(CTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_bool(raw.c)];
+    return [cst_encode_bool(raw.c)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_c_twin_rust_async(CTwinRustAsync raw) {
+  JSAny cst_encode_c_twin_rust_async(CTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_bool(raw.c)];
+    return [cst_encode_bool(raw.c)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_c_twin_sync(CTwinSync raw) {
+  JSAny cst_encode_c_twin_sync(CTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_bool(raw.c)];
+    return [cst_encode_bool(raw.c)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_concatenate_with_twin_normal(
-      ConcatenateWithTwinNormal raw) {
+  JSAny cst_encode_concatenate_with_twin_normal(ConcatenateWithTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_String(raw.a)];
+    return [cst_encode_String(raw.a)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_concatenate_with_twin_rust_async(
+  JSAny cst_encode_concatenate_with_twin_rust_async(
       ConcatenateWithTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_String(raw.a)];
+    return [cst_encode_String(raw.a)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_concatenate_with_twin_sync(
-      ConcatenateWithTwinSync raw) {
+  JSAny cst_encode_concatenate_with_twin_sync(ConcatenateWithTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_String(raw.a)];
+    return [cst_encode_String(raw.a)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_constructor_translatable_struct_twin_normal(
+  JSAny cst_encode_constructor_translatable_struct_twin_normal(
       ConstructorTranslatableStructTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_String(raw.one)];
+    return [cst_encode_String(raw.one)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_constructor_translatable_sync_struct_twin_normal(
+  JSAny cst_encode_constructor_translatable_sync_struct_twin_normal(
       ConstructorTranslatableSyncStructTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_String(raw.one)];
+    return [cst_encode_String(raw.one)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_contains_mirrored_sub_struct_twin_normal(
+  JSAny cst_encode_contains_mirrored_sub_struct_twin_normal(
       ContainsMirroredSubStructTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_raw_string_mirrored(raw.test),
       cst_encode_another_twin_normal(raw.test2)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_contains_mirrored_sub_struct_twin_rust_async(
+  JSAny cst_encode_contains_mirrored_sub_struct_twin_rust_async(
       ContainsMirroredSubStructTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_raw_string_mirrored(raw.test),
       cst_encode_another_twin_rust_async(raw.test2)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_contains_mirrored_sub_struct_twin_sync(
+  JSAny cst_encode_contains_mirrored_sub_struct_twin_sync(
       ContainsMirroredSubStructTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_raw_string_mirrored(raw.test),
       cst_encode_another_twin_sync(raw.test2)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_custom_enum_error_twin_normal(
+  JSAny cst_encode_custom_enum_error_twin_normal(
       CustomEnumErrorTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is CustomEnumErrorTwinNormal_One) {
@@ -22433,21 +22368,21 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
         0,
         cst_encode_String(raw.message),
         cst_encode_Backtrace(raw.backtrace)
-      ];
+      ].jsify()!;
     }
     if (raw is CustomEnumErrorTwinNormal_Two) {
       return [
         1,
         cst_encode_u_32(raw.message),
         cst_encode_Backtrace(raw.backtrace)
-      ];
+      ].jsify()!;
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> cst_encode_custom_enum_error_twin_rust_async(
+  JSAny cst_encode_custom_enum_error_twin_rust_async(
       CustomEnumErrorTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is CustomEnumErrorTwinRustAsync_One) {
@@ -22455,999 +22390,1004 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
         0,
         cst_encode_String(raw.message),
         cst_encode_Backtrace(raw.backtrace)
-      ];
+      ].jsify()!;
     }
     if (raw is CustomEnumErrorTwinRustAsync_Two) {
       return [
         1,
         cst_encode_u_32(raw.message),
         cst_encode_Backtrace(raw.backtrace)
-      ];
+      ].jsify()!;
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> cst_encode_custom_enum_error_twin_sync(
-      CustomEnumErrorTwinSync raw) {
+  JSAny cst_encode_custom_enum_error_twin_sync(CustomEnumErrorTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is CustomEnumErrorTwinSync_One) {
       return [
         0,
         cst_encode_String(raw.message),
         cst_encode_Backtrace(raw.backtrace)
-      ];
+      ].jsify()!;
     }
     if (raw is CustomEnumErrorTwinSync_Two) {
       return [
         1,
         cst_encode_u_32(raw.message),
         cst_encode_Backtrace(raw.backtrace)
-      ];
+      ].jsify()!;
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> cst_encode_custom_error_twin_normal(CustomErrorTwinNormal raw) {
+  JSAny cst_encode_custom_error_twin_normal(CustomErrorTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is CustomErrorTwinNormal_Error0) {
-      return [0, cst_encode_String(raw.e), cst_encode_Backtrace(raw.backtrace)];
+      return [0, cst_encode_String(raw.e), cst_encode_Backtrace(raw.backtrace)]
+          .jsify()!;
     }
     if (raw is CustomErrorTwinNormal_Error1) {
-      return [1, cst_encode_u_32(raw.e), cst_encode_Backtrace(raw.backtrace)];
+      return [1, cst_encode_u_32(raw.e), cst_encode_Backtrace(raw.backtrace)]
+          .jsify()!;
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> cst_encode_custom_error_twin_rust_async(
-      CustomErrorTwinRustAsync raw) {
+  JSAny cst_encode_custom_error_twin_rust_async(CustomErrorTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is CustomErrorTwinRustAsync_Error0) {
-      return [0, cst_encode_String(raw.e), cst_encode_Backtrace(raw.backtrace)];
+      return [0, cst_encode_String(raw.e), cst_encode_Backtrace(raw.backtrace)]
+          .jsify()!;
     }
     if (raw is CustomErrorTwinRustAsync_Error1) {
-      return [1, cst_encode_u_32(raw.e), cst_encode_Backtrace(raw.backtrace)];
+      return [1, cst_encode_u_32(raw.e), cst_encode_Backtrace(raw.backtrace)]
+          .jsify()!;
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> cst_encode_custom_error_twin_sync(CustomErrorTwinSync raw) {
+  JSAny cst_encode_custom_error_twin_sync(CustomErrorTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is CustomErrorTwinSync_Error0) {
-      return [0, cst_encode_String(raw.e), cst_encode_Backtrace(raw.backtrace)];
+      return [0, cst_encode_String(raw.e), cst_encode_Backtrace(raw.backtrace)]
+          .jsify()!;
     }
     if (raw is CustomErrorTwinSync_Error1) {
-      return [1, cst_encode_u_32(raw.e), cst_encode_Backtrace(raw.backtrace)];
+      return [1, cst_encode_u_32(raw.e), cst_encode_Backtrace(raw.backtrace)]
+          .jsify()!;
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> cst_encode_custom_nested_error_1_twin_normal(
+  JSAny cst_encode_custom_nested_error_1_twin_normal(
       CustomNestedError1TwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is CustomNestedError1TwinNormal_CustomNested1) {
-      return [0, cst_encode_String(raw.field0)];
+      return [0, cst_encode_String(raw.field0)].jsify()!;
     }
     if (raw is CustomNestedError1TwinNormal_ErrorNested) {
       return [
         1,
         cst_encode_box_autoadd_custom_nested_error_2_twin_normal(raw.field0)
-      ];
+      ].jsify()!;
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> cst_encode_custom_nested_error_1_twin_rust_async(
+  JSAny cst_encode_custom_nested_error_1_twin_rust_async(
       CustomNestedError1TwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is CustomNestedError1TwinRustAsync_CustomNested1) {
-      return [0, cst_encode_String(raw.field0)];
+      return [0, cst_encode_String(raw.field0)].jsify()!;
     }
     if (raw is CustomNestedError1TwinRustAsync_ErrorNested) {
       return [
         1,
         cst_encode_box_autoadd_custom_nested_error_2_twin_rust_async(raw.field0)
-      ];
+      ].jsify()!;
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> cst_encode_custom_nested_error_1_twin_sync(
+  JSAny cst_encode_custom_nested_error_1_twin_sync(
       CustomNestedError1TwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is CustomNestedError1TwinSync_CustomNested1) {
-      return [0, cst_encode_String(raw.field0)];
+      return [0, cst_encode_String(raw.field0)].jsify()!;
     }
     if (raw is CustomNestedError1TwinSync_ErrorNested) {
       return [
         1,
         cst_encode_box_autoadd_custom_nested_error_2_twin_sync(raw.field0)
-      ];
+      ].jsify()!;
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> cst_encode_custom_nested_error_2_twin_normal(
+  JSAny cst_encode_custom_nested_error_2_twin_normal(
       CustomNestedError2TwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is CustomNestedError2TwinNormal_CustomNested2) {
-      return [0, cst_encode_String(raw.field0)];
+      return [0, cst_encode_String(raw.field0)].jsify()!;
     }
     if (raw is CustomNestedError2TwinNormal_CustomNested2Number) {
-      return [1, cst_encode_u_32(raw.field0)];
+      return [1, cst_encode_u_32(raw.field0)].jsify()!;
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> cst_encode_custom_nested_error_2_twin_rust_async(
+  JSAny cst_encode_custom_nested_error_2_twin_rust_async(
       CustomNestedError2TwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is CustomNestedError2TwinRustAsync_CustomNested2) {
-      return [0, cst_encode_String(raw.field0)];
+      return [0, cst_encode_String(raw.field0)].jsify()!;
     }
     if (raw is CustomNestedError2TwinRustAsync_CustomNested2Number) {
-      return [1, cst_encode_u_32(raw.field0)];
+      return [1, cst_encode_u_32(raw.field0)].jsify()!;
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> cst_encode_custom_nested_error_2_twin_sync(
+  JSAny cst_encode_custom_nested_error_2_twin_sync(
       CustomNestedError2TwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is CustomNestedError2TwinSync_CustomNested2) {
-      return [0, cst_encode_String(raw.field0)];
+      return [0, cst_encode_String(raw.field0)].jsify()!;
     }
     if (raw is CustomNestedError2TwinSync_CustomNested2Number) {
-      return [1, cst_encode_u_32(raw.field0)];
+      return [1, cst_encode_u_32(raw.field0)].jsify()!;
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> cst_encode_custom_nested_error_inner_twin_normal(
+  JSAny cst_encode_custom_nested_error_inner_twin_normal(
       CustomNestedErrorInnerTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is CustomNestedErrorInnerTwinNormal_Three) {
-      return [0, cst_encode_String(raw.field0)];
+      return [0, cst_encode_String(raw.field0)].jsify()!;
     }
     if (raw is CustomNestedErrorInnerTwinNormal_Four) {
-      return [1, cst_encode_u_32(raw.field0)];
+      return [1, cst_encode_u_32(raw.field0)].jsify()!;
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> cst_encode_custom_nested_error_inner_twin_rust_async(
+  JSAny cst_encode_custom_nested_error_inner_twin_rust_async(
       CustomNestedErrorInnerTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is CustomNestedErrorInnerTwinRustAsync_Three) {
-      return [0, cst_encode_String(raw.field0)];
+      return [0, cst_encode_String(raw.field0)].jsify()!;
     }
     if (raw is CustomNestedErrorInnerTwinRustAsync_Four) {
-      return [1, cst_encode_u_32(raw.field0)];
+      return [1, cst_encode_u_32(raw.field0)].jsify()!;
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> cst_encode_custom_nested_error_inner_twin_sync(
+  JSAny cst_encode_custom_nested_error_inner_twin_sync(
       CustomNestedErrorInnerTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is CustomNestedErrorInnerTwinSync_Three) {
-      return [0, cst_encode_String(raw.field0)];
+      return [0, cst_encode_String(raw.field0)].jsify()!;
     }
     if (raw is CustomNestedErrorInnerTwinSync_Four) {
-      return [1, cst_encode_u_32(raw.field0)];
+      return [1, cst_encode_u_32(raw.field0)].jsify()!;
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> cst_encode_custom_nested_error_outer_twin_normal(
+  JSAny cst_encode_custom_nested_error_outer_twin_normal(
       CustomNestedErrorOuterTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is CustomNestedErrorOuterTwinNormal_One) {
-      return [0, cst_encode_String(raw.field0)];
+      return [0, cst_encode_String(raw.field0)].jsify()!;
     }
     if (raw is CustomNestedErrorOuterTwinNormal_Two) {
       return [
         1,
         cst_encode_box_autoadd_custom_nested_error_inner_twin_normal(raw.field0)
-      ];
+      ].jsify()!;
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> cst_encode_custom_nested_error_outer_twin_rust_async(
+  JSAny cst_encode_custom_nested_error_outer_twin_rust_async(
       CustomNestedErrorOuterTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is CustomNestedErrorOuterTwinRustAsync_One) {
-      return [0, cst_encode_String(raw.field0)];
+      return [0, cst_encode_String(raw.field0)].jsify()!;
     }
     if (raw is CustomNestedErrorOuterTwinRustAsync_Two) {
       return [
         1,
         cst_encode_box_autoadd_custom_nested_error_inner_twin_rust_async(
             raw.field0)
-      ];
+      ].jsify()!;
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> cst_encode_custom_nested_error_outer_twin_sync(
+  JSAny cst_encode_custom_nested_error_outer_twin_sync(
       CustomNestedErrorOuterTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is CustomNestedErrorOuterTwinSync_One) {
-      return [0, cst_encode_String(raw.field0)];
+      return [0, cst_encode_String(raw.field0)].jsify()!;
     }
     if (raw is CustomNestedErrorOuterTwinSync_Two) {
       return [
         1,
         cst_encode_box_autoadd_custom_nested_error_inner_twin_sync(raw.field0)
-      ];
+      ].jsify()!;
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> cst_encode_custom_struct_error_another_twin_normal(
+  JSAny cst_encode_custom_struct_error_another_twin_normal(
       CustomStructErrorAnotherTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_String(raw.message)];
+    return [cst_encode_String(raw.message)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_custom_struct_error_another_twin_rust_async(
+  JSAny cst_encode_custom_struct_error_another_twin_rust_async(
       CustomStructErrorAnotherTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_String(raw.message)];
+    return [cst_encode_String(raw.message)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_custom_struct_error_another_twin_sync(
+  JSAny cst_encode_custom_struct_error_another_twin_sync(
       CustomStructErrorAnotherTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_String(raw.message)];
+    return [cst_encode_String(raw.message)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_custom_struct_error_twin_normal(
+  JSAny cst_encode_custom_struct_error_twin_normal(
       CustomStructErrorTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_String(raw.a)];
+    return [cst_encode_String(raw.a)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_custom_struct_error_twin_rust_async(
+  JSAny cst_encode_custom_struct_error_twin_rust_async(
       CustomStructErrorTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_String(raw.a)];
+    return [cst_encode_String(raw.a)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_custom_struct_error_twin_sync(
+  JSAny cst_encode_custom_struct_error_twin_sync(
       CustomStructErrorTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_String(raw.a)];
+    return [cst_encode_String(raw.a)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_custom_struct_twin_normal(
-      CustomStructTwinNormal raw) {
+  JSAny cst_encode_custom_struct_twin_normal(CustomStructTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_String(raw.message)];
+    return [cst_encode_String(raw.message)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_custom_struct_twin_rust_async(
+  JSAny cst_encode_custom_struct_twin_rust_async(
       CustomStructTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_String(raw.message)];
+    return [cst_encode_String(raw.message)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_custom_struct_twin_sync(CustomStructTwinSync raw) {
+  JSAny cst_encode_custom_struct_twin_sync(CustomStructTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_String(raw.message)];
+    return [cst_encode_String(raw.message)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_customized_twin_normal(CustomizedTwinNormal raw) {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    return [
-      cst_encode_String(raw.finalField),
-      cst_encode_opt_String(raw.nonFinalField)
-    ];
-  }
-
-  @protected
-  List<dynamic> cst_encode_customized_twin_rust_async(
-      CustomizedTwinRustAsync raw) {
+  JSAny cst_encode_customized_twin_normal(CustomizedTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_String(raw.finalField),
       cst_encode_opt_String(raw.nonFinalField)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_customized_twin_sync(CustomizedTwinSync raw) {
+  JSAny cst_encode_customized_twin_rust_async(CustomizedTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_String(raw.finalField),
       cst_encode_opt_String(raw.nonFinalField)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_dart_opaque_nested_twin_normal(
+  JSAny cst_encode_customized_twin_sync(CustomizedTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [
+      cst_encode_String(raw.finalField),
+      cst_encode_opt_String(raw.nonFinalField)
+    ].jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_dart_opaque_nested_twin_normal(
       DartOpaqueNestedTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [
-      cst_encode_DartOpaque(raw.first),
-      cst_encode_DartOpaque(raw.second)
-    ];
+    return [cst_encode_DartOpaque(raw.first), cst_encode_DartOpaque(raw.second)]
+        .jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_dart_opaque_nested_twin_rust_async(
+  JSAny cst_encode_dart_opaque_nested_twin_rust_async(
       DartOpaqueNestedTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [
-      cst_encode_DartOpaque(raw.first),
-      cst_encode_DartOpaque(raw.second)
-    ];
+    return [cst_encode_DartOpaque(raw.first), cst_encode_DartOpaque(raw.second)]
+        .jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_dart_opaque_nested_twin_sync(
-      DartOpaqueNestedTwinSync raw) {
+  JSAny cst_encode_dart_opaque_nested_twin_sync(DartOpaqueNestedTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [
-      cst_encode_DartOpaque(raw.first),
-      cst_encode_DartOpaque(raw.second)
-    ];
+    return [cst_encode_DartOpaque(raw.first), cst_encode_DartOpaque(raw.second)]
+        .jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_demo_struct_for_rust_call_dart_twin_normal(
+  JSAny cst_encode_demo_struct_for_rust_call_dart_twin_normal(
       DemoStructForRustCallDartTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_String(raw.name)];
+    return [cst_encode_String(raw.name)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_demo_struct_for_rust_call_dart_twin_rust_async(
+  JSAny cst_encode_demo_struct_for_rust_call_dart_twin_rust_async(
       DemoStructForRustCallDartTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_String(raw.name)];
+    return [cst_encode_String(raw.name)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_distance_twin_normal(DistanceTwinNormal raw) {
+  JSAny cst_encode_distance_twin_normal(DistanceTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is DistanceTwinNormal_Unknown) {
-      return [0];
+      return [0].jsify()!;
     }
     if (raw is DistanceTwinNormal_Map) {
-      return [1, cst_encode_f_64(raw.field0)];
+      return [1, cst_encode_f_64(raw.field0)].jsify()!;
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> cst_encode_distance_twin_rust_async(DistanceTwinRustAsync raw) {
+  JSAny cst_encode_distance_twin_rust_async(DistanceTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is DistanceTwinRustAsync_Unknown) {
-      return [0];
+      return [0].jsify()!;
     }
     if (raw is DistanceTwinRustAsync_Map) {
-      return [1, cst_encode_f_64(raw.field0)];
+      return [1, cst_encode_f_64(raw.field0)].jsify()!;
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> cst_encode_distance_twin_sync(DistanceTwinSync raw) {
+  JSAny cst_encode_distance_twin_sync(DistanceTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is DistanceTwinSync_Unknown) {
-      return [0];
+      return [0].jsify()!;
     }
     if (raw is DistanceTwinSync_Map) {
-      return [1, cst_encode_f_64(raw.field0)];
+      return [1, cst_encode_f_64(raw.field0)].jsify()!;
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> cst_encode_element_twin_normal(ElementTwinNormal raw) {
+  JSAny cst_encode_element_twin_normal(ElementTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_opt_String(raw.tag),
       cst_encode_opt_String(raw.text),
       cst_encode_opt_list_attribute_twin_normal(raw.attributes),
       cst_encode_opt_list_element_twin_normal(raw.children)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_element_twin_rust_async(ElementTwinRustAsync raw) {
+  JSAny cst_encode_element_twin_rust_async(ElementTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_opt_String(raw.tag),
       cst_encode_opt_String(raw.text),
       cst_encode_opt_list_attribute_twin_rust_async(raw.attributes),
       cst_encode_opt_list_element_twin_rust_async(raw.children)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_element_twin_sync(ElementTwinSync raw) {
+  JSAny cst_encode_element_twin_sync(ElementTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_opt_String(raw.tag),
       cst_encode_opt_String(raw.text),
       cst_encode_opt_list_attribute_twin_sync(raw.attributes),
       cst_encode_opt_list_element_twin_sync(raw.children)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_empty_twin_normal(EmptyTwinNormal raw) {
+  JSAny cst_encode_empty_twin_normal(EmptyTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [];
+    return [].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_empty_twin_rust_async(EmptyTwinRustAsync raw) {
+  JSAny cst_encode_empty_twin_rust_async(EmptyTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [];
+    return [].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_empty_twin_sync(EmptyTwinSync raw) {
+  JSAny cst_encode_empty_twin_sync(EmptyTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [];
+    return [].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_enum_dart_opaque_twin_normal(
-      EnumDartOpaqueTwinNormal raw) {
+  JSAny cst_encode_enum_dart_opaque_twin_normal(EnumDartOpaqueTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is EnumDartOpaqueTwinNormal_Primitive) {
-      return [0, cst_encode_i_32(raw.field0)];
+      return [0, cst_encode_i_32(raw.field0)].jsify()!;
     }
     if (raw is EnumDartOpaqueTwinNormal_Opaque) {
-      return [1, cst_encode_DartOpaque(raw.field0)];
+      return [1, cst_encode_DartOpaque(raw.field0)].jsify()!;
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> cst_encode_enum_dart_opaque_twin_rust_async(
+  JSAny cst_encode_enum_dart_opaque_twin_rust_async(
       EnumDartOpaqueTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is EnumDartOpaqueTwinRustAsync_Primitive) {
-      return [0, cst_encode_i_32(raw.field0)];
+      return [0, cst_encode_i_32(raw.field0)].jsify()!;
     }
     if (raw is EnumDartOpaqueTwinRustAsync_Opaque) {
-      return [1, cst_encode_DartOpaque(raw.field0)];
+      return [1, cst_encode_DartOpaque(raw.field0)].jsify()!;
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> cst_encode_enum_dart_opaque_twin_sync(
-      EnumDartOpaqueTwinSync raw) {
+  JSAny cst_encode_enum_dart_opaque_twin_sync(EnumDartOpaqueTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is EnumDartOpaqueTwinSync_Primitive) {
-      return [0, cst_encode_i_32(raw.field0)];
+      return [0, cst_encode_i_32(raw.field0)].jsify()!;
     }
     if (raw is EnumDartOpaqueTwinSync_Opaque) {
-      return [1, cst_encode_DartOpaque(raw.field0)];
+      return [1, cst_encode_DartOpaque(raw.field0)].jsify()!;
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> cst_encode_enum_opaque_twin_moi(EnumOpaqueTwinMoi raw) {
+  JSAny cst_encode_enum_opaque_twin_moi(EnumOpaqueTwinMoi raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is EnumOpaqueTwinMoi_Struct) {
-      return [0, cst_encode_RustOpaque_HideDataTwinMoi(raw.field0)];
+      return [0, cst_encode_RustOpaque_HideDataTwinMoi(raw.field0)].jsify()!;
     }
     if (raw is EnumOpaqueTwinMoi_Primitive) {
-      return [1, cst_encode_RustOpaque_i16(raw.field0)];
+      return [1, cst_encode_RustOpaque_i16(raw.field0)].jsify()!;
     }
     if (raw is EnumOpaqueTwinMoi_TraitObj) {
-      return [2, cst_encode_RustOpaque_BoxdynDartDebugTwinMoi(raw.field0)];
+      return [2, cst_encode_RustOpaque_BoxdynDartDebugTwinMoi(raw.field0)]
+          .jsify()!;
     }
     if (raw is EnumOpaqueTwinMoi_Mutex) {
-      return [3, cst_encode_RustOpaque_MutexHideDataTwinMoi(raw.field0)];
+      return [3, cst_encode_RustOpaque_MutexHideDataTwinMoi(raw.field0)]
+          .jsify()!;
     }
     if (raw is EnumOpaqueTwinMoi_RwLock) {
-      return [4, cst_encode_RustOpaque_RwLockHideDataTwinMoi(raw.field0)];
+      return [4, cst_encode_RustOpaque_RwLockHideDataTwinMoi(raw.field0)]
+          .jsify()!;
     }
     if (raw is EnumOpaqueTwinMoi_Nothing) {
-      return [5];
+      return [5].jsify()!;
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> cst_encode_enum_opaque_twin_moi_array_5(
-      EnumOpaqueTwinMoiArray5 raw) {
+  JSAny cst_encode_enum_opaque_twin_moi_array_5(EnumOpaqueTwinMoiArray5 raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_enum_opaque_twin_moi(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_enum_opaque_twin_normal(EnumOpaqueTwinNormal raw) {
+  JSAny cst_encode_enum_opaque_twin_normal(EnumOpaqueTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is EnumOpaqueTwinNormal_Struct) {
-      return [0, cst_encode_RustOpaque_HideDataTwinNormal(raw.field0)];
+      return [0, cst_encode_RustOpaque_HideDataTwinNormal(raw.field0)].jsify()!;
     }
     if (raw is EnumOpaqueTwinNormal_Primitive) {
-      return [1, cst_encode_RustOpaque_i32(raw.field0)];
+      return [1, cst_encode_RustOpaque_i32(raw.field0)].jsify()!;
     }
     if (raw is EnumOpaqueTwinNormal_TraitObj) {
-      return [2, cst_encode_RustOpaque_BoxdynDartDebugTwinNormal(raw.field0)];
+      return [2, cst_encode_RustOpaque_BoxdynDartDebugTwinNormal(raw.field0)]
+          .jsify()!;
     }
     if (raw is EnumOpaqueTwinNormal_Mutex) {
-      return [3, cst_encode_RustOpaque_MutexHideDataTwinNormal(raw.field0)];
+      return [3, cst_encode_RustOpaque_MutexHideDataTwinNormal(raw.field0)]
+          .jsify()!;
     }
     if (raw is EnumOpaqueTwinNormal_RwLock) {
-      return [4, cst_encode_RustOpaque_RwLockHideDataTwinNormal(raw.field0)];
+      return [4, cst_encode_RustOpaque_RwLockHideDataTwinNormal(raw.field0)]
+          .jsify()!;
     }
     if (raw is EnumOpaqueTwinNormal_Nothing) {
-      return [5];
+      return [5].jsify()!;
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> cst_encode_enum_opaque_twin_normal_array_5(
+  JSAny cst_encode_enum_opaque_twin_normal_array_5(
       EnumOpaqueTwinNormalArray5 raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_enum_opaque_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_enum_opaque_twin_rust_async(
-      EnumOpaqueTwinRustAsync raw) {
+  JSAny cst_encode_enum_opaque_twin_rust_async(EnumOpaqueTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is EnumOpaqueTwinRustAsync_Struct) {
-      return [0, cst_encode_RustOpaque_HideDataTwinRustAsync(raw.field0)];
+      return [0, cst_encode_RustOpaque_HideDataTwinRustAsync(raw.field0)]
+          .jsify()!;
     }
     if (raw is EnumOpaqueTwinRustAsync_Primitive) {
-      return [1, cst_encode_RustOpaque_i32(raw.field0)];
+      return [1, cst_encode_RustOpaque_i32(raw.field0)].jsify()!;
     }
     if (raw is EnumOpaqueTwinRustAsync_TraitObj) {
-      return [
-        2,
-        cst_encode_RustOpaque_BoxdynDartDebugTwinRustAsync(raw.field0)
-      ];
+      return [2, cst_encode_RustOpaque_BoxdynDartDebugTwinRustAsync(raw.field0)]
+          .jsify()!;
     }
     if (raw is EnumOpaqueTwinRustAsync_Mutex) {
-      return [3, cst_encode_RustOpaque_MutexHideDataTwinRustAsync(raw.field0)];
+      return [3, cst_encode_RustOpaque_MutexHideDataTwinRustAsync(raw.field0)]
+          .jsify()!;
     }
     if (raw is EnumOpaqueTwinRustAsync_RwLock) {
-      return [4, cst_encode_RustOpaque_RwLockHideDataTwinRustAsync(raw.field0)];
+      return [4, cst_encode_RustOpaque_RwLockHideDataTwinRustAsync(raw.field0)]
+          .jsify()!;
     }
     if (raw is EnumOpaqueTwinRustAsync_Nothing) {
-      return [5];
+      return [5].jsify()!;
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> cst_encode_enum_opaque_twin_rust_async_array_5(
+  JSAny cst_encode_enum_opaque_twin_rust_async_array_5(
       EnumOpaqueTwinRustAsyncArray5 raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_enum_opaque_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_enum_opaque_twin_rust_async_moi(
+  JSAny cst_encode_enum_opaque_twin_rust_async_moi(
       EnumOpaqueTwinRustAsyncMoi raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is EnumOpaqueTwinRustAsyncMoi_Struct) {
-      return [0, cst_encode_RustOpaque_HideDataTwinRustAsyncMoi(raw.field0)];
+      return [0, cst_encode_RustOpaque_HideDataTwinRustAsyncMoi(raw.field0)]
+          .jsify()!;
     }
     if (raw is EnumOpaqueTwinRustAsyncMoi_Primitive) {
-      return [1, cst_encode_RustOpaque_i16(raw.field0)];
+      return [1, cst_encode_RustOpaque_i16(raw.field0)].jsify()!;
     }
     if (raw is EnumOpaqueTwinRustAsyncMoi_TraitObj) {
       return [
         2,
         cst_encode_RustOpaque_BoxdynDartDebugTwinRustAsyncMoi(raw.field0)
-      ];
+      ].jsify()!;
     }
     if (raw is EnumOpaqueTwinRustAsyncMoi_Mutex) {
       return [
         3,
         cst_encode_RustOpaque_MutexHideDataTwinRustAsyncMoi(raw.field0)
-      ];
+      ].jsify()!;
     }
     if (raw is EnumOpaqueTwinRustAsyncMoi_RwLock) {
       return [
         4,
         cst_encode_RustOpaque_RwLockHideDataTwinRustAsyncMoi(raw.field0)
-      ];
+      ].jsify()!;
     }
     if (raw is EnumOpaqueTwinRustAsyncMoi_Nothing) {
-      return [5];
+      return [5].jsify()!;
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> cst_encode_enum_opaque_twin_rust_async_moi_array_5(
+  JSAny cst_encode_enum_opaque_twin_rust_async_moi_array_5(
       EnumOpaqueTwinRustAsyncMoiArray5 raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_enum_opaque_twin_rust_async_moi(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_enum_opaque_twin_sync(EnumOpaqueTwinSync raw) {
+  JSAny cst_encode_enum_opaque_twin_sync(EnumOpaqueTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is EnumOpaqueTwinSync_Struct) {
-      return [0, cst_encode_RustOpaque_HideDataTwinSync(raw.field0)];
+      return [0, cst_encode_RustOpaque_HideDataTwinSync(raw.field0)].jsify()!;
     }
     if (raw is EnumOpaqueTwinSync_Primitive) {
-      return [1, cst_encode_RustOpaque_i32(raw.field0)];
+      return [1, cst_encode_RustOpaque_i32(raw.field0)].jsify()!;
     }
     if (raw is EnumOpaqueTwinSync_TraitObj) {
-      return [2, cst_encode_RustOpaque_BoxdynDartDebugTwinSync(raw.field0)];
+      return [2, cst_encode_RustOpaque_BoxdynDartDebugTwinSync(raw.field0)]
+          .jsify()!;
     }
     if (raw is EnumOpaqueTwinSync_Mutex) {
-      return [3, cst_encode_RustOpaque_MutexHideDataTwinSync(raw.field0)];
+      return [3, cst_encode_RustOpaque_MutexHideDataTwinSync(raw.field0)]
+          .jsify()!;
     }
     if (raw is EnumOpaqueTwinSync_RwLock) {
-      return [4, cst_encode_RustOpaque_RwLockHideDataTwinSync(raw.field0)];
+      return [4, cst_encode_RustOpaque_RwLockHideDataTwinSync(raw.field0)]
+          .jsify()!;
     }
     if (raw is EnumOpaqueTwinSync_Nothing) {
-      return [5];
+      return [5].jsify()!;
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> cst_encode_enum_opaque_twin_sync_array_5(
-      EnumOpaqueTwinSyncArray5 raw) {
+  JSAny cst_encode_enum_opaque_twin_sync_array_5(EnumOpaqueTwinSyncArray5 raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_enum_opaque_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_enum_opaque_twin_sync_moi(
-      EnumOpaqueTwinSyncMoi raw) {
+  JSAny cst_encode_enum_opaque_twin_sync_moi(EnumOpaqueTwinSyncMoi raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is EnumOpaqueTwinSyncMoi_Struct) {
-      return [0, cst_encode_RustOpaque_HideDataTwinSyncMoi(raw.field0)];
+      return [0, cst_encode_RustOpaque_HideDataTwinSyncMoi(raw.field0)]
+          .jsify()!;
     }
     if (raw is EnumOpaqueTwinSyncMoi_Primitive) {
-      return [1, cst_encode_RustOpaque_i16(raw.field0)];
+      return [1, cst_encode_RustOpaque_i16(raw.field0)].jsify()!;
     }
     if (raw is EnumOpaqueTwinSyncMoi_TraitObj) {
-      return [2, cst_encode_RustOpaque_BoxdynDartDebugTwinSyncMoi(raw.field0)];
+      return [2, cst_encode_RustOpaque_BoxdynDartDebugTwinSyncMoi(raw.field0)]
+          .jsify()!;
     }
     if (raw is EnumOpaqueTwinSyncMoi_Mutex) {
-      return [3, cst_encode_RustOpaque_MutexHideDataTwinSyncMoi(raw.field0)];
+      return [3, cst_encode_RustOpaque_MutexHideDataTwinSyncMoi(raw.field0)]
+          .jsify()!;
     }
     if (raw is EnumOpaqueTwinSyncMoi_RwLock) {
-      return [4, cst_encode_RustOpaque_RwLockHideDataTwinSyncMoi(raw.field0)];
+      return [4, cst_encode_RustOpaque_RwLockHideDataTwinSyncMoi(raw.field0)]
+          .jsify()!;
     }
     if (raw is EnumOpaqueTwinSyncMoi_Nothing) {
-      return [5];
+      return [5].jsify()!;
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> cst_encode_enum_opaque_twin_sync_moi_array_5(
+  JSAny cst_encode_enum_opaque_twin_sync_moi_array_5(
       EnumOpaqueTwinSyncMoiArray5 raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_enum_opaque_twin_sync_moi(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_enum_with_good_and_opaque_twin_moi(
+  JSAny cst_encode_enum_with_good_and_opaque_twin_moi(
       EnumWithGoodAndOpaqueTwinMoi raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is EnumWithGoodAndOpaqueTwinMoi_Good) {
-      return [0, cst_encode_String(raw.field0)];
+      return [0, cst_encode_String(raw.field0)].jsify()!;
     }
     if (raw is EnumWithGoodAndOpaqueTwinMoi_Opaque) {
       return [
         1,
         cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
             raw.field0)
-      ];
+      ].jsify()!;
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> cst_encode_enum_with_good_and_opaque_twin_normal(
+  JSAny cst_encode_enum_with_good_and_opaque_twin_normal(
       EnumWithGoodAndOpaqueTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is EnumWithGoodAndOpaqueTwinNormal_Good) {
-      return [0, cst_encode_String(raw.field0)];
+      return [0, cst_encode_String(raw.field0)].jsify()!;
     }
     if (raw is EnumWithGoodAndOpaqueTwinNormal_Opaque) {
       return [
         1,
         cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
             raw.field0)
-      ];
+      ].jsify()!;
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> cst_encode_enum_with_good_and_opaque_twin_rust_async(
+  JSAny cst_encode_enum_with_good_and_opaque_twin_rust_async(
       EnumWithGoodAndOpaqueTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is EnumWithGoodAndOpaqueTwinRustAsync_Good) {
-      return [0, cst_encode_String(raw.field0)];
+      return [0, cst_encode_String(raw.field0)].jsify()!;
     }
     if (raw is EnumWithGoodAndOpaqueTwinRustAsync_Opaque) {
       return [
         1,
         cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
             raw.field0)
-      ];
+      ].jsify()!;
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> cst_encode_enum_with_good_and_opaque_twin_rust_async_moi(
+  JSAny cst_encode_enum_with_good_and_opaque_twin_rust_async_moi(
       EnumWithGoodAndOpaqueTwinRustAsyncMoi raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is EnumWithGoodAndOpaqueTwinRustAsyncMoi_Good) {
-      return [0, cst_encode_String(raw.field0)];
+      return [0, cst_encode_String(raw.field0)].jsify()!;
     }
     if (raw is EnumWithGoodAndOpaqueTwinRustAsyncMoi_Opaque) {
       return [
         1,
         cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
             raw.field0)
-      ];
+      ].jsify()!;
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> cst_encode_enum_with_good_and_opaque_twin_sync(
+  JSAny cst_encode_enum_with_good_and_opaque_twin_sync(
       EnumWithGoodAndOpaqueTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is EnumWithGoodAndOpaqueTwinSync_Good) {
-      return [0, cst_encode_String(raw.field0)];
+      return [0, cst_encode_String(raw.field0)].jsify()!;
     }
     if (raw is EnumWithGoodAndOpaqueTwinSync_Opaque) {
       return [
         1,
         cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
             raw.field0)
-      ];
+      ].jsify()!;
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> cst_encode_enum_with_good_and_opaque_twin_sync_moi(
+  JSAny cst_encode_enum_with_good_and_opaque_twin_sync_moi(
       EnumWithGoodAndOpaqueTwinSyncMoi raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is EnumWithGoodAndOpaqueTwinSyncMoi_Good) {
-      return [0, cst_encode_String(raw.field0)];
+      return [0, cst_encode_String(raw.field0)].jsify()!;
     }
     if (raw is EnumWithGoodAndOpaqueTwinSyncMoi_Opaque) {
       return [
         1,
         cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
             raw.field0)
-      ];
+      ].jsify()!;
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> cst_encode_enum_with_item_mixed_twin_normal(
+  JSAny cst_encode_enum_with_item_mixed_twin_normal(
       EnumWithItemMixedTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is EnumWithItemMixedTwinNormal_A) {
-      return [0];
+      return [0].jsify()!;
     }
     if (raw is EnumWithItemMixedTwinNormal_B) {
-      return [1, cst_encode_list_prim_u_8_strict(raw.field0)];
+      return [1, cst_encode_list_prim_u_8_strict(raw.field0)].jsify()!;
     }
     if (raw is EnumWithItemMixedTwinNormal_C) {
-      return [2, cst_encode_String(raw.cField)];
+      return [2, cst_encode_String(raw.cField)].jsify()!;
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> cst_encode_enum_with_item_mixed_twin_rust_async(
+  JSAny cst_encode_enum_with_item_mixed_twin_rust_async(
       EnumWithItemMixedTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is EnumWithItemMixedTwinRustAsync_A) {
-      return [0];
+      return [0].jsify()!;
     }
     if (raw is EnumWithItemMixedTwinRustAsync_B) {
-      return [1, cst_encode_list_prim_u_8_strict(raw.field0)];
+      return [1, cst_encode_list_prim_u_8_strict(raw.field0)].jsify()!;
     }
     if (raw is EnumWithItemMixedTwinRustAsync_C) {
-      return [2, cst_encode_String(raw.cField)];
+      return [2, cst_encode_String(raw.cField)].jsify()!;
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> cst_encode_enum_with_item_mixed_twin_sync(
+  JSAny cst_encode_enum_with_item_mixed_twin_sync(
       EnumWithItemMixedTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is EnumWithItemMixedTwinSync_A) {
-      return [0];
+      return [0].jsify()!;
     }
     if (raw is EnumWithItemMixedTwinSync_B) {
-      return [1, cst_encode_list_prim_u_8_strict(raw.field0)];
+      return [1, cst_encode_list_prim_u_8_strict(raw.field0)].jsify()!;
     }
     if (raw is EnumWithItemMixedTwinSync_C) {
-      return [2, cst_encode_String(raw.cField)];
+      return [2, cst_encode_String(raw.cField)].jsify()!;
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> cst_encode_enum_with_item_struct_twin_normal(
+  JSAny cst_encode_enum_with_item_struct_twin_normal(
       EnumWithItemStructTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is EnumWithItemStructTwinNormal_A) {
-      return [0, cst_encode_list_prim_u_8_strict(raw.aField)];
+      return [0, cst_encode_list_prim_u_8_strict(raw.aField)].jsify()!;
     }
     if (raw is EnumWithItemStructTwinNormal_B) {
-      return [1, cst_encode_list_prim_i_32_strict(raw.bField)];
+      return [1, cst_encode_list_prim_i_32_strict(raw.bField)].jsify()!;
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> cst_encode_enum_with_item_struct_twin_rust_async(
+  JSAny cst_encode_enum_with_item_struct_twin_rust_async(
       EnumWithItemStructTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is EnumWithItemStructTwinRustAsync_A) {
-      return [0, cst_encode_list_prim_u_8_strict(raw.aField)];
+      return [0, cst_encode_list_prim_u_8_strict(raw.aField)].jsify()!;
     }
     if (raw is EnumWithItemStructTwinRustAsync_B) {
-      return [1, cst_encode_list_prim_i_32_strict(raw.bField)];
+      return [1, cst_encode_list_prim_i_32_strict(raw.bField)].jsify()!;
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> cst_encode_enum_with_item_struct_twin_sync(
+  JSAny cst_encode_enum_with_item_struct_twin_sync(
       EnumWithItemStructTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is EnumWithItemStructTwinSync_A) {
-      return [0, cst_encode_list_prim_u_8_strict(raw.aField)];
+      return [0, cst_encode_list_prim_u_8_strict(raw.aField)].jsify()!;
     }
     if (raw is EnumWithItemStructTwinSync_B) {
-      return [1, cst_encode_list_prim_i_32_strict(raw.bField)];
+      return [1, cst_encode_list_prim_i_32_strict(raw.bField)].jsify()!;
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> cst_encode_enum_with_item_tuple_twin_normal(
+  JSAny cst_encode_enum_with_item_tuple_twin_normal(
       EnumWithItemTupleTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is EnumWithItemTupleTwinNormal_A) {
-      return [0, cst_encode_list_prim_u_8_strict(raw.field0)];
+      return [0, cst_encode_list_prim_u_8_strict(raw.field0)].jsify()!;
     }
     if (raw is EnumWithItemTupleTwinNormal_B) {
-      return [1, cst_encode_list_prim_i_32_strict(raw.field0)];
+      return [1, cst_encode_list_prim_i_32_strict(raw.field0)].jsify()!;
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> cst_encode_enum_with_item_tuple_twin_rust_async(
+  JSAny cst_encode_enum_with_item_tuple_twin_rust_async(
       EnumWithItemTupleTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is EnumWithItemTupleTwinRustAsync_A) {
-      return [0, cst_encode_list_prim_u_8_strict(raw.field0)];
+      return [0, cst_encode_list_prim_u_8_strict(raw.field0)].jsify()!;
     }
     if (raw is EnumWithItemTupleTwinRustAsync_B) {
-      return [1, cst_encode_list_prim_i_32_strict(raw.field0)];
+      return [1, cst_encode_list_prim_i_32_strict(raw.field0)].jsify()!;
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> cst_encode_enum_with_item_tuple_twin_sync(
+  JSAny cst_encode_enum_with_item_tuple_twin_sync(
       EnumWithItemTupleTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is EnumWithItemTupleTwinSync_A) {
-      return [0, cst_encode_list_prim_u_8_strict(raw.field0)];
+      return [0, cst_encode_list_prim_u_8_strict(raw.field0)].jsify()!;
     }
     if (raw is EnumWithItemTupleTwinSync_B) {
-      return [1, cst_encode_list_prim_i_32_strict(raw.field0)];
+      return [1, cst_encode_list_prim_i_32_strict(raw.field0)].jsify()!;
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> cst_encode_event_twin_normal(EventTwinNormal raw) {
+  JSAny cst_encode_event_twin_normal(EventTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_String(raw.address), cst_encode_String(raw.payload)];
+    return [cst_encode_String(raw.address), cst_encode_String(raw.payload)]
+        .jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_event_twin_rust_async(EventTwinRustAsync raw) {
+  JSAny cst_encode_event_twin_rust_async(EventTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_String(raw.address), cst_encode_String(raw.payload)];
+    return [cst_encode_String(raw.address), cst_encode_String(raw.payload)]
+        .jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_exotic_optionals_twin_normal(
-      ExoticOptionalsTwinNormal raw) {
+  JSAny cst_encode_exotic_optionals_twin_normal(ExoticOptionalsTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_opt_box_autoadd_i_32(raw.int32),
@@ -23466,11 +23406,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_opt_list_opt_box_autoadd_attribute_twin_normal(
           raw.nullableAttributes),
       cst_encode_opt_box_autoadd_new_type_int_twin_normal(raw.newtypeint)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_exotic_optionals_twin_rust_async(
+  JSAny cst_encode_exotic_optionals_twin_rust_async(
       ExoticOptionalsTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
@@ -23490,12 +23430,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_opt_list_opt_box_autoadd_attribute_twin_rust_async(
           raw.nullableAttributes),
       cst_encode_opt_box_autoadd_new_type_int_twin_rust_async(raw.newtypeint)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_exotic_optionals_twin_sync(
-      ExoticOptionalsTwinSync raw) {
+  JSAny cst_encode_exotic_optionals_twin_sync(ExoticOptionalsTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_opt_box_autoadd_i_32(raw.int32),
@@ -23514,7 +23453,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_opt_list_opt_box_autoadd_attribute_twin_sync(
           raw.nullableAttributes),
       cst_encode_opt_box_autoadd_new_type_int_twin_sync(raw.newtypeint)
-    ];
+    ].jsify()!;
   }
 
   @protected
@@ -23524,19 +23463,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic> cst_encode_feature_chrono_twin_normal(
-      FeatureChronoTwinNormal raw) {
+  JSAny cst_encode_feature_chrono_twin_normal(FeatureChronoTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_Chrono_Utc(raw.utc),
       cst_encode_Chrono_Local(raw.local),
       cst_encode_Chrono_Duration(raw.duration),
       cst_encode_Chrono_Naive(raw.naive)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_feature_chrono_twin_rust_async(
+  JSAny cst_encode_feature_chrono_twin_rust_async(
       FeatureChronoTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
@@ -23544,61 +23482,60 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_Chrono_Local(raw.local),
       cst_encode_Chrono_Duration(raw.duration),
       cst_encode_Chrono_Naive(raw.naive)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_feature_chrono_twin_sync(FeatureChronoTwinSync raw) {
+  JSAny cst_encode_feature_chrono_twin_sync(FeatureChronoTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_Chrono_Utc(raw.utc),
       cst_encode_Chrono_Local(raw.local),
       cst_encode_Chrono_Duration(raw.duration),
       cst_encode_Chrono_Naive(raw.naive)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_feature_uuid_twin_normal(FeatureUuidTwinNormal raw) {
+  JSAny cst_encode_feature_uuid_twin_normal(FeatureUuidTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_Uuid(raw.one)];
+    return [cst_encode_Uuid(raw.one)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_feature_uuid_twin_rust_async(
-      FeatureUuidTwinRustAsync raw) {
+  JSAny cst_encode_feature_uuid_twin_rust_async(FeatureUuidTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_Uuid(raw.one)];
+    return [cst_encode_Uuid(raw.one)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_feature_uuid_twin_sync(FeatureUuidTwinSync raw) {
+  JSAny cst_encode_feature_uuid_twin_sync(FeatureUuidTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_Uuid(raw.one)];
+    return [cst_encode_Uuid(raw.one)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_feed_id_twin_normal(FeedIdTwinNormal raw) {
+  JSAny cst_encode_feed_id_twin_normal(FeedIdTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_u_8_array_8(raw.field0)];
+    return [cst_encode_u_8_array_8(raw.field0)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_feed_id_twin_rust_async(FeedIdTwinRustAsync raw) {
+  JSAny cst_encode_feed_id_twin_rust_async(FeedIdTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_u_8_array_8(raw.field0)];
+    return [cst_encode_u_8_array_8(raw.field0)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_feed_id_twin_sync(FeedIdTwinSync raw) {
+  JSAny cst_encode_feed_id_twin_sync(FeedIdTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_u_8_array_8(raw.field0)];
+    return [cst_encode_u_8_array_8(raw.field0)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_hash_map_value(HashMapValue raw) {
+  JSAny cst_encode_hash_map_value(HashMapValue raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_String(raw.inner)];
+    return [cst_encode_String(raw.inner)].jsify()!;
   }
 
   @protected
@@ -23620,21 +23557,21 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic> cst_encode_item_container_solution_two_twin_normal(
+  JSAny cst_encode_item_container_solution_two_twin_normal(
       ItemContainerSolutionTwoTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_String(raw.name),
       cst_encode_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
           raw.items)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_kitchen_sink_twin_normal(KitchenSinkTwinNormal raw) {
+  JSAny cst_encode_kitchen_sink_twin_normal(KitchenSinkTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is KitchenSinkTwinNormal_Empty) {
-      return [0];
+      return [0].jsify()!;
     }
     if (raw is KitchenSinkTwinNormal_Primitives) {
       return [
@@ -23642,38 +23579,37 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
         cst_encode_i_32(raw.int32),
         cst_encode_f_64(raw.float64),
         cst_encode_bool(raw.boolean)
-      ];
+      ].jsify()!;
     }
     if (raw is KitchenSinkTwinNormal_Nested) {
       return [
         2,
         cst_encode_i_32(raw.field0),
         cst_encode_box_kitchen_sink_twin_normal(raw.field1)
-      ];
+      ].jsify()!;
     }
     if (raw is KitchenSinkTwinNormal_Optional) {
       return [
         3,
         cst_encode_opt_box_autoadd_i_32(raw.field0),
         cst_encode_opt_box_autoadd_i_32(raw.field1)
-      ];
+      ].jsify()!;
     }
     if (raw is KitchenSinkTwinNormal_Buffer) {
-      return [4, cst_encode_list_prim_u_8_strict(raw.field0)];
+      return [4, cst_encode_list_prim_u_8_strict(raw.field0)].jsify()!;
     }
     if (raw is KitchenSinkTwinNormal_Enums) {
-      return [5, cst_encode_weekdays_twin_normal(raw.field0)];
+      return [5, cst_encode_weekdays_twin_normal(raw.field0)].jsify()!;
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> cst_encode_kitchen_sink_twin_rust_async(
-      KitchenSinkTwinRustAsync raw) {
+  JSAny cst_encode_kitchen_sink_twin_rust_async(KitchenSinkTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is KitchenSinkTwinRustAsync_Empty) {
-      return [0];
+      return [0].jsify()!;
     }
     if (raw is KitchenSinkTwinRustAsync_Primitives) {
       return [
@@ -23681,37 +23617,37 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
         cst_encode_i_32(raw.int32),
         cst_encode_f_64(raw.float64),
         cst_encode_bool(raw.boolean)
-      ];
+      ].jsify()!;
     }
     if (raw is KitchenSinkTwinRustAsync_Nested) {
       return [
         2,
         cst_encode_i_32(raw.field0),
         cst_encode_box_kitchen_sink_twin_rust_async(raw.field1)
-      ];
+      ].jsify()!;
     }
     if (raw is KitchenSinkTwinRustAsync_Optional) {
       return [
         3,
         cst_encode_opt_box_autoadd_i_32(raw.field0),
         cst_encode_opt_box_autoadd_i_32(raw.field1)
-      ];
+      ].jsify()!;
     }
     if (raw is KitchenSinkTwinRustAsync_Buffer) {
-      return [4, cst_encode_list_prim_u_8_strict(raw.field0)];
+      return [4, cst_encode_list_prim_u_8_strict(raw.field0)].jsify()!;
     }
     if (raw is KitchenSinkTwinRustAsync_Enums) {
-      return [5, cst_encode_weekdays_twin_rust_async(raw.field0)];
+      return [5, cst_encode_weekdays_twin_rust_async(raw.field0)].jsify()!;
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> cst_encode_kitchen_sink_twin_sync(KitchenSinkTwinSync raw) {
+  JSAny cst_encode_kitchen_sink_twin_sync(KitchenSinkTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is KitchenSinkTwinSync_Empty) {
-      return [0];
+      return [0].jsify()!;
     }
     if (raw is KitchenSinkTwinSync_Primitives) {
       return [
@@ -23719,512 +23655,539 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
         cst_encode_i_32(raw.int32),
         cst_encode_f_64(raw.float64),
         cst_encode_bool(raw.boolean)
-      ];
+      ].jsify()!;
     }
     if (raw is KitchenSinkTwinSync_Nested) {
       return [
         2,
         cst_encode_i_32(raw.field0),
         cst_encode_box_kitchen_sink_twin_sync(raw.field1)
-      ];
+      ].jsify()!;
     }
     if (raw is KitchenSinkTwinSync_Optional) {
       return [
         3,
         cst_encode_opt_box_autoadd_i_32(raw.field0),
         cst_encode_opt_box_autoadd_i_32(raw.field1)
-      ];
+      ].jsify()!;
     }
     if (raw is KitchenSinkTwinSync_Buffer) {
-      return [4, cst_encode_list_prim_u_8_strict(raw.field0)];
+      return [4, cst_encode_list_prim_u_8_strict(raw.field0)].jsify()!;
     }
     if (raw is KitchenSinkTwinSync_Enums) {
-      return [5, cst_encode_weekdays_twin_sync(raw.field0)];
+      return [5, cst_encode_weekdays_twin_sync(raw.field0)].jsify()!;
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic>
+  JSAny
       cst_encode_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
           List<OpaqueItemTwinNormal> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw
         .map(
             cst_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal)
-        .toList();
+        .toList()
+        .jsify()!;
   }
 
   @protected
-  List<dynamic>
+  JSAny
       cst_encode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
           List<NonCloneSimpleTwinMoi> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw
         .map(
             cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi)
-        .toList();
+        .toList()
+        .jsify()!;
   }
 
   @protected
-  List<dynamic>
+  JSAny
       cst_encode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
           List<NonCloneSimpleTwinNormal> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw
         .map(
             cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal)
-        .toList();
+        .toList()
+        .jsify()!;
   }
 
   @protected
-  List<dynamic>
+  JSAny
       cst_encode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
           List<NonCloneSimpleTwinRustAsync> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw
         .map(
             cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync)
-        .toList();
+        .toList()
+        .jsify()!;
   }
 
   @protected
-  List<dynamic>
+  JSAny
       cst_encode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
           List<NonCloneSimpleTwinRustAsyncMoi> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw
         .map(
             cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi)
-        .toList();
+        .toList()
+        .jsify()!;
   }
 
   @protected
-  List<dynamic>
+  JSAny
       cst_encode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
           List<NonCloneSimpleTwinSync> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw
         .map(
             cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync)
-        .toList();
+        .toList()
+        .jsify()!;
   }
 
   @protected
-  List<dynamic>
+  JSAny
       cst_encode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
           List<NonCloneSimpleTwinSyncMoi> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw
         .map(
             cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi)
-        .toList();
+        .toList()
+        .jsify()!;
   }
 
   @protected
-  List<dynamic>
+  JSAny
       cst_encode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
           List<OpaqueItemTwinNormal> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw
         .map(
             cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal)
-        .toList();
+        .toList()
+        .jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_Chrono_Duration(List<Duration> raw) {
+  JSAny cst_encode_list_Chrono_Duration(List<Duration> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_Chrono_Duration).toList();
+    return raw.map(cst_encode_Chrono_Duration).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_Chrono_Local(List<DateTime> raw) {
+  JSAny cst_encode_list_Chrono_Local(List<DateTime> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_Chrono_Local).toList();
+    return raw.map(cst_encode_Chrono_Local).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_Chrono_Naive(List<DateTime> raw) {
+  JSAny cst_encode_list_Chrono_Naive(List<DateTime> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_Chrono_Naive).toList();
+    return raw.map(cst_encode_Chrono_Naive).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_DartOpaque(List<Object> raw) {
+  JSAny cst_encode_list_DartOpaque(List<Object> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_DartOpaque).toList();
+    return raw.map(cst_encode_DartOpaque).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_RustOpaque_HideDataTwinMoi(
-      List<HideDataTwinMoi> raw) {
+  JSAny cst_encode_list_RustOpaque_HideDataTwinMoi(List<HideDataTwinMoi> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_RustOpaque_HideDataTwinMoi).toList();
+    return raw.map(cst_encode_RustOpaque_HideDataTwinMoi).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_RustOpaque_HideDataTwinNormal(
+  JSAny cst_encode_list_RustOpaque_HideDataTwinNormal(
       List<HideDataTwinNormal> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_RustOpaque_HideDataTwinNormal).toList();
+    return raw.map(cst_encode_RustOpaque_HideDataTwinNormal).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_RustOpaque_HideDataTwinRustAsync(
+  JSAny cst_encode_list_RustOpaque_HideDataTwinRustAsync(
       List<HideDataTwinRustAsync> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_RustOpaque_HideDataTwinRustAsync).toList();
+    return raw
+        .map(cst_encode_RustOpaque_HideDataTwinRustAsync)
+        .toList()
+        .jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_RustOpaque_HideDataTwinRustAsyncMoi(
+  JSAny cst_encode_list_RustOpaque_HideDataTwinRustAsyncMoi(
       List<HideDataTwinRustAsyncMoi> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_RustOpaque_HideDataTwinRustAsyncMoi).toList();
+    return raw
+        .map(cst_encode_RustOpaque_HideDataTwinRustAsyncMoi)
+        .toList()
+        .jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_RustOpaque_HideDataTwinSync(
+  JSAny cst_encode_list_RustOpaque_HideDataTwinSync(
       List<HideDataTwinSync> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_RustOpaque_HideDataTwinSync).toList();
+    return raw.map(cst_encode_RustOpaque_HideDataTwinSync).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_RustOpaque_HideDataTwinSyncMoi(
+  JSAny cst_encode_list_RustOpaque_HideDataTwinSyncMoi(
       List<HideDataTwinSyncMoi> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_RustOpaque_HideDataTwinSyncMoi).toList();
+    return raw.map(cst_encode_RustOpaque_HideDataTwinSyncMoi).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_StreamSink_i_32_Dco(
-      List<RustStreamSink<int>> raw) {
+  JSAny cst_encode_list_StreamSink_i_32_Dco(List<RustStreamSink<int>> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_StreamSink_i_32_Dco).toList();
+    return raw.map(cst_encode_StreamSink_i_32_Dco).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_String(List<String> raw) {
+  JSAny cst_encode_list_String(List<String> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_String).toList();
+    return raw.map(cst_encode_String).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_Uuid(List<UuidValue> raw) {
+  JSAny cst_encode_list_Uuid(List<UuidValue> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_Uuid).toList();
+    return raw.map(cst_encode_Uuid).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_application_env_var(
-      List<ApplicationEnvVar> raw) {
+  JSAny cst_encode_list_application_env_var(List<ApplicationEnvVar> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_application_env_var).toList();
+    return raw.map(cst_encode_application_env_var).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_application_mode(List<ApplicationMode> raw) {
+  JSAny cst_encode_list_application_mode(List<ApplicationMode> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_application_mode).toList();
+    return raw.map(cst_encode_application_mode).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_application_settings(
-      List<ApplicationSettings> raw) {
+  JSAny cst_encode_list_application_settings(List<ApplicationSettings> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_application_settings).toList();
+    return raw.map(cst_encode_application_settings).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_attribute_twin_normal(
-      List<AttributeTwinNormal> raw) {
+  JSAny cst_encode_list_attribute_twin_normal(List<AttributeTwinNormal> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_attribute_twin_normal).toList();
+    return raw.map(cst_encode_attribute_twin_normal).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_attribute_twin_rust_async(
+  JSAny cst_encode_list_attribute_twin_rust_async(
       List<AttributeTwinRustAsync> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_attribute_twin_rust_async).toList();
+    return raw.map(cst_encode_attribute_twin_rust_async).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_attribute_twin_sync(
-      List<AttributeTwinSync> raw) {
+  JSAny cst_encode_list_attribute_twin_sync(List<AttributeTwinSync> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_attribute_twin_sync).toList();
+    return raw.map(cst_encode_attribute_twin_sync).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_basic_general_enum_twin_normal(
+  JSAny cst_encode_list_basic_general_enum_twin_normal(
       List<BasicGeneralEnumTwinNormal> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_basic_general_enum_twin_normal).toList();
+    return raw.map(cst_encode_basic_general_enum_twin_normal).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_basic_general_enum_twin_rust_async(
+  JSAny cst_encode_list_basic_general_enum_twin_rust_async(
       List<BasicGeneralEnumTwinRustAsync> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_basic_general_enum_twin_rust_async).toList();
+    return raw
+        .map(cst_encode_basic_general_enum_twin_rust_async)
+        .toList()
+        .jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_basic_general_enum_twin_sync(
+  JSAny cst_encode_list_basic_general_enum_twin_sync(
       List<BasicGeneralEnumTwinSync> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_basic_general_enum_twin_sync).toList();
+    return raw.map(cst_encode_basic_general_enum_twin_sync).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_basic_primitive_enum_twin_normal(
+  JSAny cst_encode_list_basic_primitive_enum_twin_normal(
       List<BasicPrimitiveEnumTwinNormal> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_basic_primitive_enum_twin_normal).toList();
+    return raw
+        .map(cst_encode_basic_primitive_enum_twin_normal)
+        .toList()
+        .jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_basic_primitive_enum_twin_rust_async(
+  JSAny cst_encode_list_basic_primitive_enum_twin_rust_async(
       List<BasicPrimitiveEnumTwinRustAsync> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_basic_primitive_enum_twin_rust_async).toList();
+    return raw
+        .map(cst_encode_basic_primitive_enum_twin_rust_async)
+        .toList()
+        .jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_basic_primitive_enum_twin_sync(
+  JSAny cst_encode_list_basic_primitive_enum_twin_sync(
       List<BasicPrimitiveEnumTwinSync> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_basic_primitive_enum_twin_sync).toList();
+    return raw.map(cst_encode_basic_primitive_enum_twin_sync).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_basic_struct_twin_normal(
+  JSAny cst_encode_list_basic_struct_twin_normal(
       List<BasicStructTwinNormal> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_basic_struct_twin_normal).toList();
+    return raw.map(cst_encode_basic_struct_twin_normal).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_basic_struct_twin_rust_async(
+  JSAny cst_encode_list_basic_struct_twin_rust_async(
       List<BasicStructTwinRustAsync> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_basic_struct_twin_rust_async).toList();
+    return raw.map(cst_encode_basic_struct_twin_rust_async).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_basic_struct_twin_sync(
-      List<BasicStructTwinSync> raw) {
+  JSAny cst_encode_list_basic_struct_twin_sync(List<BasicStructTwinSync> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_basic_struct_twin_sync).toList();
+    return raw.map(cst_encode_basic_struct_twin_sync).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_bool(List<bool> raw) {
+  JSAny cst_encode_list_bool(List<bool> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_bool).toList();
+    return raw.map(cst_encode_bool).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_element_twin_normal(
-      List<ElementTwinNormal> raw) {
+  JSAny cst_encode_list_element_twin_normal(List<ElementTwinNormal> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_element_twin_normal).toList();
+    return raw.map(cst_encode_element_twin_normal).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_element_twin_rust_async(
+  JSAny cst_encode_list_element_twin_rust_async(
       List<ElementTwinRustAsync> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_element_twin_rust_async).toList();
+    return raw.map(cst_encode_element_twin_rust_async).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_element_twin_sync(List<ElementTwinSync> raw) {
+  JSAny cst_encode_list_element_twin_sync(List<ElementTwinSync> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_element_twin_sync).toList();
+    return raw.map(cst_encode_element_twin_sync).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_enum_opaque_twin_moi(
-      List<EnumOpaqueTwinMoi> raw) {
+  JSAny cst_encode_list_enum_opaque_twin_moi(List<EnumOpaqueTwinMoi> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_enum_opaque_twin_moi).toList();
+    return raw.map(cst_encode_enum_opaque_twin_moi).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_enum_opaque_twin_normal(
+  JSAny cst_encode_list_enum_opaque_twin_normal(
       List<EnumOpaqueTwinNormal> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_enum_opaque_twin_normal).toList();
+    return raw.map(cst_encode_enum_opaque_twin_normal).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_enum_opaque_twin_rust_async(
+  JSAny cst_encode_list_enum_opaque_twin_rust_async(
       List<EnumOpaqueTwinRustAsync> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_enum_opaque_twin_rust_async).toList();
+    return raw.map(cst_encode_enum_opaque_twin_rust_async).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_enum_opaque_twin_rust_async_moi(
+  JSAny cst_encode_list_enum_opaque_twin_rust_async_moi(
       List<EnumOpaqueTwinRustAsyncMoi> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_enum_opaque_twin_rust_async_moi).toList();
+    return raw
+        .map(cst_encode_enum_opaque_twin_rust_async_moi)
+        .toList()
+        .jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_enum_opaque_twin_sync(
-      List<EnumOpaqueTwinSync> raw) {
+  JSAny cst_encode_list_enum_opaque_twin_sync(List<EnumOpaqueTwinSync> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_enum_opaque_twin_sync).toList();
+    return raw.map(cst_encode_enum_opaque_twin_sync).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_enum_opaque_twin_sync_moi(
+  JSAny cst_encode_list_enum_opaque_twin_sync_moi(
       List<EnumOpaqueTwinSyncMoi> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_enum_opaque_twin_sync_moi).toList();
+    return raw.map(cst_encode_enum_opaque_twin_sync_moi).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_list_prim_u_8_strict(List<Uint8List> raw) {
+  JSAny cst_encode_list_list_prim_u_8_strict(List<Uint8List> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_list_prim_u_8_strict).toList();
+    return raw.map(cst_encode_list_prim_u_8_strict).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_my_enum(List<MyEnum> raw) {
+  JSAny cst_encode_list_my_enum(List<MyEnum> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_my_enum).toList();
+    return raw.map(cst_encode_my_enum).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_my_size(List<MySize> raw) {
+  JSAny cst_encode_list_my_size(List<MySize> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_my_size).toList();
+    return raw.map(cst_encode_my_size).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_my_tree_node_twin_normal(
+  JSAny cst_encode_list_my_tree_node_twin_normal(
       List<MyTreeNodeTwinNormal> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_my_tree_node_twin_normal).toList();
+    return raw.map(cst_encode_my_tree_node_twin_normal).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_my_tree_node_twin_rust_async(
+  JSAny cst_encode_list_my_tree_node_twin_rust_async(
       List<MyTreeNodeTwinRustAsync> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_my_tree_node_twin_rust_async).toList();
+    return raw.map(cst_encode_my_tree_node_twin_rust_async).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_my_tree_node_twin_sync(
-      List<MyTreeNodeTwinSync> raw) {
+  JSAny cst_encode_list_my_tree_node_twin_sync(List<MyTreeNodeTwinSync> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_my_tree_node_twin_sync).toList();
+    return raw.map(cst_encode_my_tree_node_twin_sync).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_nested_raw_string_mirrored(
+  JSAny cst_encode_list_nested_raw_string_mirrored(
       List<NestedRawStringMirrored> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_nested_raw_string_mirrored).toList();
+    return raw.map(cst_encode_nested_raw_string_mirrored).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_of_nested_raw_string_mirrored(
+  JSAny cst_encode_list_of_nested_raw_string_mirrored(
       ListOfNestedRawStringMirrored raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_list_nested_raw_string_mirrored(raw.raw)];
+    return [cst_encode_list_nested_raw_string_mirrored(raw.raw)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_opt_String(List<String?> raw) {
+  JSAny cst_encode_list_opt_String(List<String?> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_opt_String).toList();
+    return raw.map(cst_encode_opt_String).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_opt_box_autoadd_attribute_twin_normal(
+  JSAny cst_encode_list_opt_box_autoadd_attribute_twin_normal(
       List<AttributeTwinNormal?> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_opt_box_autoadd_attribute_twin_normal).toList();
+    return raw
+        .map(cst_encode_opt_box_autoadd_attribute_twin_normal)
+        .toList()
+        .jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_opt_box_autoadd_attribute_twin_rust_async(
+  JSAny cst_encode_list_opt_box_autoadd_attribute_twin_rust_async(
       List<AttributeTwinRustAsync?> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw
         .map(cst_encode_opt_box_autoadd_attribute_twin_rust_async)
-        .toList();
+        .toList()
+        .jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_opt_box_autoadd_attribute_twin_sync(
+  JSAny cst_encode_list_opt_box_autoadd_attribute_twin_sync(
       List<AttributeTwinSync?> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_opt_box_autoadd_attribute_twin_sync).toList();
+    return raw
+        .map(cst_encode_opt_box_autoadd_attribute_twin_sync)
+        .toList()
+        .jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_opt_box_autoadd_i_32(List<int?> raw) {
+  JSAny cst_encode_list_opt_box_autoadd_i_32(List<int?> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_opt_box_autoadd_i_32).toList();
+    return raw.map(cst_encode_opt_box_autoadd_i_32).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_opt_box_autoadd_weekdays_twin_normal(
+  JSAny cst_encode_list_opt_box_autoadd_weekdays_twin_normal(
       List<WeekdaysTwinNormal?> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_opt_box_autoadd_weekdays_twin_normal).toList();
+    return raw
+        .map(cst_encode_opt_box_autoadd_weekdays_twin_normal)
+        .toList()
+        .jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_opt_box_autoadd_weekdays_twin_rust_async(
+  JSAny cst_encode_list_opt_box_autoadd_weekdays_twin_rust_async(
       List<WeekdaysTwinRustAsync?> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw
         .map(cst_encode_opt_box_autoadd_weekdays_twin_rust_async)
-        .toList();
+        .toList()
+        .jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_opt_box_autoadd_weekdays_twin_sync(
+  JSAny cst_encode_list_opt_box_autoadd_weekdays_twin_sync(
       List<WeekdaysTwinSync?> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_opt_box_autoadd_weekdays_twin_sync).toList();
+    return raw
+        .map(cst_encode_opt_box_autoadd_weekdays_twin_sync)
+        .toList()
+        .jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_opt_list_prim_i_32_strict(
-      List<Int32List?> raw) {
+  JSAny cst_encode_list_opt_list_prim_i_32_strict(List<Int32List?> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_opt_list_prim_i_32_strict).toList();
+    return raw.map(cst_encode_opt_list_prim_i_32_strict).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_point_twin_normal(List<PointTwinNormal> raw) {
+  JSAny cst_encode_list_point_twin_normal(List<PointTwinNormal> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_point_twin_normal).toList();
+    return raw.map(cst_encode_point_twin_normal).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_point_twin_rust_async(
-      List<PointTwinRustAsync> raw) {
+  JSAny cst_encode_list_point_twin_rust_async(List<PointTwinRustAsync> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_point_twin_rust_async).toList();
+    return raw.map(cst_encode_point_twin_rust_async).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_point_twin_sync(List<PointTwinSync> raw) {
+  JSAny cst_encode_list_point_twin_sync(List<PointTwinSync> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_point_twin_sync).toList();
+    return raw.map(cst_encode_point_twin_sync).toList().jsify()!;
   }
 
   @protected
@@ -24336,478 +24299,499 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic> cst_encode_list_raw_string_enum_mirrored(
+  JSAny cst_encode_list_raw_string_enum_mirrored(
       List<RawStringEnumMirrored> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_raw_string_enum_mirrored).toList();
+    return raw.map(cst_encode_raw_string_enum_mirrored).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_raw_string_mirrored(
-      List<RawStringMirrored> raw) {
+  JSAny cst_encode_list_raw_string_mirrored(List<RawStringMirrored> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_raw_string_mirrored).toList();
+    return raw.map(cst_encode_raw_string_mirrored).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_record_i_32_basic_general_enum_twin_normal(
+  JSAny cst_encode_list_record_i_32_basic_general_enum_twin_normal(
       List<(int, BasicGeneralEnumTwinNormal)> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw
         .map(cst_encode_record_i_32_basic_general_enum_twin_normal)
-        .toList();
+        .toList()
+        .jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_record_i_32_basic_general_enum_twin_rust_async(
+  JSAny cst_encode_list_record_i_32_basic_general_enum_twin_rust_async(
       List<(int, BasicGeneralEnumTwinRustAsync)> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw
         .map(cst_encode_record_i_32_basic_general_enum_twin_rust_async)
-        .toList();
+        .toList()
+        .jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_record_i_32_basic_general_enum_twin_sync(
+  JSAny cst_encode_list_record_i_32_basic_general_enum_twin_sync(
       List<(int, BasicGeneralEnumTwinSync)> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw
         .map(cst_encode_record_i_32_basic_general_enum_twin_sync)
-        .toList();
+        .toList()
+        .jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_record_i_32_basic_primitive_enum_twin_normal(
+  JSAny cst_encode_list_record_i_32_basic_primitive_enum_twin_normal(
       List<(int, BasicPrimitiveEnumTwinNormal)> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw
         .map(cst_encode_record_i_32_basic_primitive_enum_twin_normal)
-        .toList();
+        .toList()
+        .jsify()!;
   }
 
   @protected
-  List<dynamic>
-      cst_encode_list_record_i_32_basic_primitive_enum_twin_rust_async(
-          List<(int, BasicPrimitiveEnumTwinRustAsync)> raw) {
+  JSAny cst_encode_list_record_i_32_basic_primitive_enum_twin_rust_async(
+      List<(int, BasicPrimitiveEnumTwinRustAsync)> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw
         .map(cst_encode_record_i_32_basic_primitive_enum_twin_rust_async)
-        .toList();
+        .toList()
+        .jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_record_i_32_basic_primitive_enum_twin_sync(
+  JSAny cst_encode_list_record_i_32_basic_primitive_enum_twin_sync(
       List<(int, BasicPrimitiveEnumTwinSync)> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw
         .map(cst_encode_record_i_32_basic_primitive_enum_twin_sync)
-        .toList();
+        .toList()
+        .jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_record_i_32_basic_struct_twin_normal(
+  JSAny cst_encode_list_record_i_32_basic_struct_twin_normal(
       List<(int, BasicStructTwinNormal)> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_record_i_32_basic_struct_twin_normal).toList();
+    return raw
+        .map(cst_encode_record_i_32_basic_struct_twin_normal)
+        .toList()
+        .jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_record_i_32_basic_struct_twin_rust_async(
+  JSAny cst_encode_list_record_i_32_basic_struct_twin_rust_async(
       List<(int, BasicStructTwinRustAsync)> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw
         .map(cst_encode_record_i_32_basic_struct_twin_rust_async)
-        .toList();
+        .toList()
+        .jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_record_i_32_basic_struct_twin_sync(
+  JSAny cst_encode_list_record_i_32_basic_struct_twin_sync(
       List<(int, BasicStructTwinSync)> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_record_i_32_basic_struct_twin_sync).toList();
+    return raw
+        .map(cst_encode_record_i_32_basic_struct_twin_sync)
+        .toList()
+        .jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_record_i_32_bool(List<(int, bool)> raw) {
+  JSAny cst_encode_list_record_i_32_bool(List<(int, bool)> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_record_i_32_bool).toList();
+    return raw.map(cst_encode_record_i_32_bool).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_record_i_32_f_32(List<(int, double)> raw) {
+  JSAny cst_encode_list_record_i_32_f_32(List<(int, double)> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_record_i_32_f_32).toList();
+    return raw.map(cst_encode_record_i_32_f_32).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_record_i_32_f_64(List<(int, double)> raw) {
+  JSAny cst_encode_list_record_i_32_f_64(List<(int, double)> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_record_i_32_f_64).toList();
+    return raw.map(cst_encode_record_i_32_f_64).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_record_i_32_i_128(List<(int, BigInt)> raw) {
+  JSAny cst_encode_list_record_i_32_i_128(List<(int, BigInt)> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_record_i_32_i_128).toList();
+    return raw.map(cst_encode_record_i_32_i_128).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_record_i_32_i_16(List<(int, int)> raw) {
+  JSAny cst_encode_list_record_i_32_i_16(List<(int, int)> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_record_i_32_i_16).toList();
+    return raw.map(cst_encode_record_i_32_i_16).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_record_i_32_i_32(List<(int, int)> raw) {
+  JSAny cst_encode_list_record_i_32_i_32(List<(int, int)> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_record_i_32_i_32).toList();
+    return raw.map(cst_encode_record_i_32_i_32).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_record_i_32_i_64(
-      List<(int, PlatformInt64)> raw) {
+  JSAny cst_encode_list_record_i_32_i_64(List<(int, PlatformInt64)> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_record_i_32_i_64).toList();
+    return raw.map(cst_encode_record_i_32_i_64).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_record_i_32_i_8(List<(int, int)> raw) {
+  JSAny cst_encode_list_record_i_32_i_8(List<(int, int)> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_record_i_32_i_8).toList();
+    return raw.map(cst_encode_record_i_32_i_8).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_record_i_32_isize(
-      List<(int, PlatformInt64)> raw) {
+  JSAny cst_encode_list_record_i_32_isize(List<(int, PlatformInt64)> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_record_i_32_isize).toList();
+    return raw.map(cst_encode_record_i_32_isize).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_record_i_32_list_prim_u_8_strict(
+  JSAny cst_encode_list_record_i_32_list_prim_u_8_strict(
       List<(int, Uint8List)> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_record_i_32_list_prim_u_8_strict).toList();
+    return raw
+        .map(cst_encode_record_i_32_list_prim_u_8_strict)
+        .toList()
+        .jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_record_i_32_string(List<(int, String)> raw) {
+  JSAny cst_encode_list_record_i_32_string(List<(int, String)> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_record_i_32_string).toList();
+    return raw.map(cst_encode_record_i_32_string).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_record_i_32_u_128(List<(int, BigInt)> raw) {
+  JSAny cst_encode_list_record_i_32_u_128(List<(int, BigInt)> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_record_i_32_u_128).toList();
+    return raw.map(cst_encode_record_i_32_u_128).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_record_i_32_u_16(List<(int, int)> raw) {
+  JSAny cst_encode_list_record_i_32_u_16(List<(int, int)> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_record_i_32_u_16).toList();
+    return raw.map(cst_encode_record_i_32_u_16).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_record_i_32_u_32(List<(int, int)> raw) {
+  JSAny cst_encode_list_record_i_32_u_32(List<(int, int)> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_record_i_32_u_32).toList();
+    return raw.map(cst_encode_record_i_32_u_32).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_record_i_32_u_64(List<(int, BigInt)> raw) {
+  JSAny cst_encode_list_record_i_32_u_64(List<(int, BigInt)> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_record_i_32_u_64).toList();
+    return raw.map(cst_encode_record_i_32_u_64).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_record_i_32_u_8(List<(int, int)> raw) {
+  JSAny cst_encode_list_record_i_32_u_8(List<(int, int)> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_record_i_32_u_8).toList();
+    return raw.map(cst_encode_record_i_32_u_8).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_record_i_32_usize(List<(int, BigInt)> raw) {
+  JSAny cst_encode_list_record_i_32_usize(List<(int, BigInt)> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_record_i_32_usize).toList();
+    return raw.map(cst_encode_record_i_32_usize).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_record_string_enum_simple_twin_normal(
+  JSAny cst_encode_list_record_string_enum_simple_twin_normal(
       List<(String, EnumSimpleTwinNormal)> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_record_string_enum_simple_twin_normal).toList();
+    return raw
+        .map(cst_encode_record_string_enum_simple_twin_normal)
+        .toList()
+        .jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_record_string_enum_simple_twin_rust_async(
+  JSAny cst_encode_list_record_string_enum_simple_twin_rust_async(
       List<(String, EnumSimpleTwinRustAsync)> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw
         .map(cst_encode_record_string_enum_simple_twin_rust_async)
-        .toList();
+        .toList()
+        .jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_record_string_enum_simple_twin_sync(
+  JSAny cst_encode_list_record_string_enum_simple_twin_sync(
       List<(String, EnumSimpleTwinSync)> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_record_string_enum_simple_twin_sync).toList();
+    return raw
+        .map(cst_encode_record_string_enum_simple_twin_sync)
+        .toList()
+        .jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_record_string_hash_map_value(
+  JSAny cst_encode_list_record_string_hash_map_value(
       List<(String, HashMapValue)> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_record_string_hash_map_value).toList();
+    return raw.map(cst_encode_record_string_hash_map_value).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_record_string_i_32(List<(String, int)> raw) {
+  JSAny cst_encode_list_record_string_i_32(List<(String, int)> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_record_string_i_32).toList();
+    return raw.map(cst_encode_record_string_i_32).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_record_string_kitchen_sink_twin_normal(
+  JSAny cst_encode_list_record_string_kitchen_sink_twin_normal(
       List<(String, KitchenSinkTwinNormal)> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_record_string_kitchen_sink_twin_normal).toList();
+    return raw
+        .map(cst_encode_record_string_kitchen_sink_twin_normal)
+        .toList()
+        .jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_record_string_kitchen_sink_twin_rust_async(
+  JSAny cst_encode_list_record_string_kitchen_sink_twin_rust_async(
       List<(String, KitchenSinkTwinRustAsync)> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw
         .map(cst_encode_record_string_kitchen_sink_twin_rust_async)
-        .toList();
+        .toList()
+        .jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_record_string_kitchen_sink_twin_sync(
+  JSAny cst_encode_list_record_string_kitchen_sink_twin_sync(
       List<(String, KitchenSinkTwinSync)> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_record_string_kitchen_sink_twin_sync).toList();
+    return raw
+        .map(cst_encode_record_string_kitchen_sink_twin_sync)
+        .toList()
+        .jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_record_string_list_prim_u_8_strict(
+  JSAny cst_encode_list_record_string_list_prim_u_8_strict(
       List<(String, Uint8List)> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_record_string_list_prim_u_8_strict).toList();
+    return raw
+        .map(cst_encode_record_string_list_prim_u_8_strict)
+        .toList()
+        .jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_record_string_my_size(
-      List<(String, MySize)> raw) {
+  JSAny cst_encode_list_record_string_my_size(List<(String, MySize)> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_record_string_my_size).toList();
+    return raw.map(cst_encode_record_string_my_size).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_record_string_string(
-      List<(String, String)> raw) {
+  JSAny cst_encode_list_record_string_string(List<(String, String)> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_record_string_string).toList();
+    return raw.map(cst_encode_record_string_string).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_record_u_8_application_mode(
+  JSAny cst_encode_list_record_u_8_application_mode(
       List<(int, ApplicationMode)> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_record_u_8_application_mode).toList();
+    return raw.map(cst_encode_record_u_8_application_mode).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_simple_struct_twin_normal(
+  JSAny cst_encode_list_simple_struct_twin_normal(
       List<SimpleStructTwinNormal> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_simple_struct_twin_normal).toList();
+    return raw.map(cst_encode_simple_struct_twin_normal).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_simple_struct_twin_rust_async(
+  JSAny cst_encode_list_simple_struct_twin_rust_async(
       List<SimpleStructTwinRustAsync> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_simple_struct_twin_rust_async).toList();
+    return raw.map(cst_encode_simple_struct_twin_rust_async).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_simple_struct_twin_sync(
+  JSAny cst_encode_list_simple_struct_twin_sync(
       List<SimpleStructTwinSync> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_simple_struct_twin_sync).toList();
+    return raw.map(cst_encode_simple_struct_twin_sync).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_sum_with_twin_normal(
-      List<SumWithTwinNormal> raw) {
+  JSAny cst_encode_list_sum_with_twin_normal(List<SumWithTwinNormal> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_sum_with_twin_normal).toList();
+    return raw.map(cst_encode_sum_with_twin_normal).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_sum_with_twin_rust_async(
+  JSAny cst_encode_list_sum_with_twin_rust_async(
       List<SumWithTwinRustAsync> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_sum_with_twin_rust_async).toList();
+    return raw.map(cst_encode_sum_with_twin_rust_async).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_sum_with_twin_sync(List<SumWithTwinSync> raw) {
+  JSAny cst_encode_list_sum_with_twin_sync(List<SumWithTwinSync> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_sum_with_twin_sync).toList();
+    return raw.map(cst_encode_sum_with_twin_sync).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_test_id_twin_normal(
-      List<TestIdTwinNormal> raw) {
+  JSAny cst_encode_list_test_id_twin_normal(List<TestIdTwinNormal> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_test_id_twin_normal).toList();
+    return raw.map(cst_encode_test_id_twin_normal).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_test_id_twin_rust_async(
-      List<TestIdTwinRustAsync> raw) {
+  JSAny cst_encode_list_test_id_twin_rust_async(List<TestIdTwinRustAsync> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_test_id_twin_rust_async).toList();
+    return raw.map(cst_encode_test_id_twin_rust_async).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_test_id_twin_sync(List<TestIdTwinSync> raw) {
+  JSAny cst_encode_list_test_id_twin_sync(List<TestIdTwinSync> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_test_id_twin_sync).toList();
+    return raw.map(cst_encode_test_id_twin_sync).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_weekdays_twin_normal(
-      List<WeekdaysTwinNormal> raw) {
+  JSAny cst_encode_list_weekdays_twin_normal(List<WeekdaysTwinNormal> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_weekdays_twin_normal).toList();
+    return raw.map(cst_encode_weekdays_twin_normal).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_weekdays_twin_rust_async(
+  JSAny cst_encode_list_weekdays_twin_rust_async(
       List<WeekdaysTwinRustAsync> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_weekdays_twin_rust_async).toList();
+    return raw.map(cst_encode_weekdays_twin_rust_async).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_list_weekdays_twin_sync(List<WeekdaysTwinSync> raw) {
+  JSAny cst_encode_list_weekdays_twin_sync(List<WeekdaysTwinSync> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_weekdays_twin_sync).toList();
+    return raw.map(cst_encode_weekdays_twin_sync).toList().jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_log_2_twin_normal(Log2TwinNormal raw) {
+  JSAny cst_encode_log_2_twin_normal(Log2TwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_u_32(raw.key), cst_encode_String(raw.value)];
+    return [cst_encode_u_32(raw.key), cst_encode_String(raw.value)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_log_2_twin_rust_async(Log2TwinRustAsync raw) {
+  JSAny cst_encode_log_2_twin_rust_async(Log2TwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_u_32(raw.key), cst_encode_String(raw.value)];
+    return [cst_encode_u_32(raw.key), cst_encode_String(raw.value)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_log_2_twin_sync(Log2TwinSync raw) {
+  JSAny cst_encode_log_2_twin_sync(Log2TwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_u_32(raw.key), cst_encode_String(raw.value)];
+    return [cst_encode_u_32(raw.key), cst_encode_String(raw.value)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_log_twin_normal(LogTwinNormal raw) {
+  JSAny cst_encode_log_twin_normal(LogTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_u_32(raw.key), cst_encode_u_32(raw.value)];
+    return [cst_encode_u_32(raw.key), cst_encode_u_32(raw.value)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_log_twin_rust_async(LogTwinRustAsync raw) {
+  JSAny cst_encode_log_twin_rust_async(LogTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_u_32(raw.key), cst_encode_u_32(raw.value)];
+    return [cst_encode_u_32(raw.key), cst_encode_u_32(raw.value)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_macro_struct(MacroStruct raw) {
+  JSAny cst_encode_macro_struct(MacroStruct raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_i_32(raw.data)];
+    return [cst_encode_i_32(raw.data)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_measure_twin_normal(MeasureTwinNormal raw) {
+  JSAny cst_encode_measure_twin_normal(MeasureTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is MeasureTwinNormal_Speed) {
-      return [0, cst_encode_box_speed_twin_normal(raw.field0)];
+      return [0, cst_encode_box_speed_twin_normal(raw.field0)].jsify()!;
     }
     if (raw is MeasureTwinNormal_Distance) {
-      return [1, cst_encode_box_distance_twin_normal(raw.field0)];
+      return [1, cst_encode_box_distance_twin_normal(raw.field0)].jsify()!;
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> cst_encode_measure_twin_rust_async(MeasureTwinRustAsync raw) {
+  JSAny cst_encode_measure_twin_rust_async(MeasureTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is MeasureTwinRustAsync_Speed) {
-      return [0, cst_encode_box_speed_twin_rust_async(raw.field0)];
+      return [0, cst_encode_box_speed_twin_rust_async(raw.field0)].jsify()!;
     }
     if (raw is MeasureTwinRustAsync_Distance) {
-      return [1, cst_encode_box_distance_twin_rust_async(raw.field0)];
+      return [1, cst_encode_box_distance_twin_rust_async(raw.field0)].jsify()!;
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> cst_encode_measure_twin_sync(MeasureTwinSync raw) {
+  JSAny cst_encode_measure_twin_sync(MeasureTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is MeasureTwinSync_Speed) {
-      return [0, cst_encode_box_speed_twin_sync(raw.field0)];
+      return [0, cst_encode_box_speed_twin_sync(raw.field0)].jsify()!;
     }
     if (raw is MeasureTwinSync_Distance) {
-      return [1, cst_encode_box_distance_twin_sync(raw.field0)];
+      return [1, cst_encode_box_distance_twin_sync(raw.field0)].jsify()!;
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> cst_encode_message_id_twin_normal(MessageIdTwinNormal raw) {
+  JSAny cst_encode_message_id_twin_normal(MessageIdTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_u_8_array_32(raw.field0)];
+    return [cst_encode_u_8_array_32(raw.field0)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_message_id_twin_rust_async(
-      MessageIdTwinRustAsync raw) {
+  JSAny cst_encode_message_id_twin_rust_async(MessageIdTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_u_8_array_32(raw.field0)];
+    return [cst_encode_u_8_array_32(raw.field0)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_message_id_twin_sync(MessageIdTwinSync raw) {
+  JSAny cst_encode_message_id_twin_sync(MessageIdTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_u_8_array_32(raw.field0)];
+    return [cst_encode_u_8_array_32(raw.field0)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_mirror_struct_twin_normal(
-      MirrorStructTwinNormal raw) {
+  JSAny cst_encode_mirror_struct_twin_normal(MirrorStructTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_application_settings(raw.a),
       cst_encode_my_struct(raw.b),
       cst_encode_list_my_enum(raw.c),
       cst_encode_list_application_settings(raw.d)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_mirror_struct_twin_rust_async(
+  JSAny cst_encode_mirror_struct_twin_rust_async(
       MirrorStructTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
@@ -24815,22 +24799,22 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_my_struct(raw.b),
       cst_encode_list_my_enum(raw.c),
       cst_encode_list_application_settings(raw.d)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_mirror_struct_twin_sync(MirrorStructTwinSync raw) {
+  JSAny cst_encode_mirror_struct_twin_sync(MirrorStructTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_application_settings(raw.a),
       cst_encode_my_struct(raw.b),
       cst_encode_list_my_enum(raw.c),
       cst_encode_list_application_settings(raw.d)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_more_than_just_one_raw_string_struct_twin_normal(
+  JSAny cst_encode_more_than_just_one_raw_string_struct_twin_normal(
       MoreThanJustOneRawStringStructTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
@@ -24838,11 +24822,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_String(raw.type),
       cst_encode_bool(raw.async_),
       cst_encode_String(raw.another)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_more_than_just_one_raw_string_struct_twin_rust_async(
+  JSAny cst_encode_more_than_just_one_raw_string_struct_twin_rust_async(
       MoreThanJustOneRawStringStructTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
@@ -24850,11 +24834,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_String(raw.type),
       cst_encode_bool(raw.async_),
       cst_encode_String(raw.another)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_more_than_just_one_raw_string_struct_twin_sync(
+  JSAny cst_encode_more_than_just_one_raw_string_struct_twin_sync(
       MoreThanJustOneRawStringStructTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
@@ -24862,259 +24846,252 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_String(raw.type),
       cst_encode_bool(raw.async_),
       cst_encode_String(raw.another)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_my_callable_twin_normal(MyCallableTwinNormal raw) {
+  JSAny cst_encode_my_callable_twin_normal(MyCallableTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_String(raw.one)];
+    return [cst_encode_String(raw.one)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_my_callable_twin_rust_async(
-      MyCallableTwinRustAsync raw) {
+  JSAny cst_encode_my_callable_twin_rust_async(MyCallableTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_String(raw.one)];
+    return [cst_encode_String(raw.one)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_my_callable_twin_sync(MyCallableTwinSync raw) {
+  JSAny cst_encode_my_callable_twin_sync(MyCallableTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_String(raw.one)];
+    return [cst_encode_String(raw.one)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_my_nested_struct_twin_normal(
-      MyNestedStructTwinNormal raw) {
+  JSAny cst_encode_my_nested_struct_twin_normal(MyNestedStructTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_my_tree_node_twin_normal(raw.treeNode),
       cst_encode_weekdays_twin_normal(raw.weekday)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_my_nested_struct_twin_rust_async(
+  JSAny cst_encode_my_nested_struct_twin_rust_async(
       MyNestedStructTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_my_tree_node_twin_rust_async(raw.treeNode),
       cst_encode_weekdays_twin_rust_async(raw.weekday)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_my_nested_struct_twin_sync(
-      MyNestedStructTwinSync raw) {
+  JSAny cst_encode_my_nested_struct_twin_sync(MyNestedStructTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_my_tree_node_twin_sync(raw.treeNode),
       cst_encode_weekdays_twin_sync(raw.weekday)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_my_size(MySize raw) {
+  JSAny cst_encode_my_size(MySize raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_i_32(raw.width), cst_encode_i_32(raw.height)];
+    return [cst_encode_i_32(raw.width), cst_encode_i_32(raw.height)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_my_stream_entry_twin_normal(
-      MyStreamEntryTwinNormal raw) {
+  JSAny cst_encode_my_stream_entry_twin_normal(MyStreamEntryTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_String(raw.hello)];
+    return [cst_encode_String(raw.hello)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_my_stream_entry_twin_rust_async(
+  JSAny cst_encode_my_stream_entry_twin_rust_async(
       MyStreamEntryTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_String(raw.hello)];
+    return [cst_encode_String(raw.hello)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_my_struct(MyStruct raw) {
+  JSAny cst_encode_my_struct(MyStruct raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_bool(raw.content)];
+    return [cst_encode_bool(raw.content)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_my_struct_containing_stream_sink_twin_normal(
+  JSAny cst_encode_my_struct_containing_stream_sink_twin_normal(
       MyStructContainingStreamSinkTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_i_32(raw.a), cst_encode_StreamSink_i_32_Dco(raw.b)];
+    return [cst_encode_i_32(raw.a), cst_encode_StreamSink_i_32_Dco(raw.b)]
+        .jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_my_struct_containing_stream_sink_twin_rust_async(
+  JSAny cst_encode_my_struct_containing_stream_sink_twin_rust_async(
       MyStructContainingStreamSinkTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_i_32(raw.a), cst_encode_StreamSink_i_32_Dco(raw.b)];
+    return [cst_encode_i_32(raw.a), cst_encode_StreamSink_i_32_Dco(raw.b)]
+        .jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_my_tree_node_twin_normal(MyTreeNodeTwinNormal raw) {
+  JSAny cst_encode_my_tree_node_twin_normal(MyTreeNodeTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_i_32(raw.valueI32),
       cst_encode_list_prim_u_8_strict(raw.valueVecU8),
       cst_encode_bool(raw.valueBoolean),
       cst_encode_list_my_tree_node_twin_normal(raw.children)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_my_tree_node_twin_rust_async(
-      MyTreeNodeTwinRustAsync raw) {
+  JSAny cst_encode_my_tree_node_twin_rust_async(MyTreeNodeTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_i_32(raw.valueI32),
       cst_encode_list_prim_u_8_strict(raw.valueVecU8),
       cst_encode_bool(raw.valueBoolean),
       cst_encode_list_my_tree_node_twin_rust_async(raw.children)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_my_tree_node_twin_sync(MyTreeNodeTwinSync raw) {
+  JSAny cst_encode_my_tree_node_twin_sync(MyTreeNodeTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_i_32(raw.valueI32),
       cst_encode_list_prim_u_8_strict(raw.valueVecU8),
       cst_encode_bool(raw.valueBoolean),
       cst_encode_list_my_tree_node_twin_sync(raw.children)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_nested_raw_string_mirrored(
-      NestedRawStringMirrored raw) {
+  JSAny cst_encode_nested_raw_string_mirrored(NestedRawStringMirrored raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_raw_string_mirrored(raw.raw)];
+    return [cst_encode_raw_string_mirrored(raw.raw)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_new_simple_struct(NewSimpleStruct raw) {
+  JSAny cst_encode_new_simple_struct(NewSimpleStruct raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_i_32(raw.field)];
+    return [cst_encode_i_32(raw.field)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_new_type_int_twin_normal(NewTypeIntTwinNormal raw) {
+  JSAny cst_encode_new_type_int_twin_normal(NewTypeIntTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_i_64(raw.field0)];
+    return [cst_encode_i_64(raw.field0)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_new_type_int_twin_rust_async(
-      NewTypeIntTwinRustAsync raw) {
+  JSAny cst_encode_new_type_int_twin_rust_async(NewTypeIntTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_i_64(raw.field0)];
+    return [cst_encode_i_64(raw.field0)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_new_type_int_twin_sync(NewTypeIntTwinSync raw) {
+  JSAny cst_encode_new_type_int_twin_sync(NewTypeIntTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_i_64(raw.field0)];
+    return [cst_encode_i_64(raw.field0)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_note_twin_normal(NoteTwinNormal raw) {
+  JSAny cst_encode_note_twin_normal(NoteTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_box_weekdays_twin_normal(raw.day),
       cst_encode_String(raw.body)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_note_twin_rust_async(NoteTwinRustAsync raw) {
+  JSAny cst_encode_note_twin_rust_async(NoteTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_box_weekdays_twin_rust_async(raw.day),
       cst_encode_String(raw.body)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_note_twin_sync(NoteTwinSync raw) {
+  JSAny cst_encode_note_twin_sync(NoteTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_box_weekdays_twin_sync(raw.day),
       cst_encode_String(raw.body)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_numbers(Numbers raw) {
+  JSAny cst_encode_numbers(Numbers raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_list_prim_i_32_strict(raw.field0)];
+    return [cst_encode_list_prim_i_32_strict(raw.field0)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_old_simple_struct(OldSimpleStruct raw) {
+  JSAny cst_encode_old_simple_struct(OldSimpleStruct raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_i_32(raw.field)];
+    return [cst_encode_i_32(raw.field)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_opaque_nested_twin_moi(OpaqueNestedTwinMoi raw) {
+  JSAny cst_encode_opaque_nested_twin_moi(OpaqueNestedTwinMoi raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_RustOpaque_HideDataTwinMoi(raw.first),
       cst_encode_RustOpaque_HideDataTwinMoi(raw.second)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_opaque_nested_twin_normal(
-      OpaqueNestedTwinNormal raw) {
+  JSAny cst_encode_opaque_nested_twin_normal(OpaqueNestedTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_RustOpaque_HideDataTwinNormal(raw.first),
       cst_encode_RustOpaque_HideDataTwinNormal(raw.second)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_opaque_nested_twin_rust_async(
+  JSAny cst_encode_opaque_nested_twin_rust_async(
       OpaqueNestedTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_RustOpaque_HideDataTwinRustAsync(raw.first),
       cst_encode_RustOpaque_HideDataTwinRustAsync(raw.second)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_opaque_nested_twin_rust_async_moi(
+  JSAny cst_encode_opaque_nested_twin_rust_async_moi(
       OpaqueNestedTwinRustAsyncMoi raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_RustOpaque_HideDataTwinRustAsyncMoi(raw.first),
       cst_encode_RustOpaque_HideDataTwinRustAsyncMoi(raw.second)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_opaque_nested_twin_sync(OpaqueNestedTwinSync raw) {
+  JSAny cst_encode_opaque_nested_twin_sync(OpaqueNestedTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_RustOpaque_HideDataTwinSync(raw.first),
       cst_encode_RustOpaque_HideDataTwinSync(raw.second)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_opaque_nested_twin_sync_moi(
-      OpaqueNestedTwinSyncMoi raw) {
+  JSAny cst_encode_opaque_nested_twin_sync_moi(OpaqueNestedTwinSyncMoi raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_RustOpaque_HideDataTwinSyncMoi(raw.first),
       cst_encode_RustOpaque_HideDataTwinSyncMoi(raw.second)
-    ];
+    ].jsify()!;
   }
 
   @protected
@@ -25298,8 +25275,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic>? cst_encode_opt_box_autoadd_application_env(
-      ApplicationEnv? raw) {
+  JSAny? cst_encode_opt_box_autoadd_application_env(ApplicationEnv? raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_box_autoadd_application_env(raw);
   }
@@ -25311,7 +25287,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic>? cst_encode_opt_box_autoadd_attribute_twin_normal(
+  JSAny? cst_encode_opt_box_autoadd_attribute_twin_normal(
       AttributeTwinNormal? raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null
@@ -25320,7 +25296,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic>? cst_encode_opt_box_autoadd_attribute_twin_rust_async(
+  JSAny? cst_encode_opt_box_autoadd_attribute_twin_rust_async(
       AttributeTwinRustAsync? raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null
@@ -25329,14 +25305,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic>? cst_encode_opt_box_autoadd_attribute_twin_sync(
+  JSAny? cst_encode_opt_box_autoadd_attribute_twin_sync(
       AttributeTwinSync? raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_box_autoadd_attribute_twin_sync(raw);
   }
 
   @protected
-  List<dynamic>? cst_encode_opt_box_autoadd_basic_general_enum_twin_normal(
+  JSAny? cst_encode_opt_box_autoadd_basic_general_enum_twin_normal(
       BasicGeneralEnumTwinNormal? raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null
@@ -25345,7 +25321,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic>? cst_encode_opt_box_autoadd_basic_general_enum_twin_rust_async(
+  JSAny? cst_encode_opt_box_autoadd_basic_general_enum_twin_rust_async(
       BasicGeneralEnumTwinRustAsync? raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null
@@ -25354,7 +25330,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic>? cst_encode_opt_box_autoadd_basic_general_enum_twin_sync(
+  JSAny? cst_encode_opt_box_autoadd_basic_general_enum_twin_sync(
       BasicGeneralEnumTwinSync? raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null
@@ -25390,7 +25366,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic>? cst_encode_opt_box_autoadd_basic_struct_twin_normal(
+  JSAny? cst_encode_opt_box_autoadd_basic_struct_twin_normal(
       BasicStructTwinNormal? raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null
@@ -25399,7 +25375,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic>? cst_encode_opt_box_autoadd_basic_struct_twin_rust_async(
+  JSAny? cst_encode_opt_box_autoadd_basic_struct_twin_rust_async(
       BasicStructTwinRustAsync? raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null
@@ -25408,7 +25384,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic>? cst_encode_opt_box_autoadd_basic_struct_twin_sync(
+  JSAny? cst_encode_opt_box_autoadd_basic_struct_twin_sync(
       BasicStructTwinSync? raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null
@@ -25423,14 +25399,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic>? cst_encode_opt_box_autoadd_element_twin_normal(
+  JSAny? cst_encode_opt_box_autoadd_element_twin_normal(
       ElementTwinNormal? raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_box_autoadd_element_twin_normal(raw);
   }
 
   @protected
-  List<dynamic>? cst_encode_opt_box_autoadd_element_twin_rust_async(
+  JSAny? cst_encode_opt_box_autoadd_element_twin_rust_async(
       ElementTwinRustAsync? raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null
@@ -25439,14 +25415,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic>? cst_encode_opt_box_autoadd_element_twin_sync(
-      ElementTwinSync? raw) {
+  JSAny? cst_encode_opt_box_autoadd_element_twin_sync(ElementTwinSync? raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_box_autoadd_element_twin_sync(raw);
   }
 
   @protected
-  List<dynamic>? cst_encode_opt_box_autoadd_exotic_optionals_twin_normal(
+  JSAny? cst_encode_opt_box_autoadd_exotic_optionals_twin_normal(
       ExoticOptionalsTwinNormal? raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null
@@ -25455,7 +25430,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic>? cst_encode_opt_box_autoadd_exotic_optionals_twin_rust_async(
+  JSAny? cst_encode_opt_box_autoadd_exotic_optionals_twin_rust_async(
       ExoticOptionalsTwinRustAsync? raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null
@@ -25464,7 +25439,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic>? cst_encode_opt_box_autoadd_exotic_optionals_twin_sync(
+  JSAny? cst_encode_opt_box_autoadd_exotic_optionals_twin_sync(
       ExoticOptionalsTwinSync? raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null
@@ -25515,14 +25490,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic>? cst_encode_opt_box_autoadd_measure_twin_normal(
+  JSAny? cst_encode_opt_box_autoadd_measure_twin_normal(
       MeasureTwinNormal? raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_box_autoadd_measure_twin_normal(raw);
   }
 
   @protected
-  List<dynamic>? cst_encode_opt_box_autoadd_measure_twin_rust_async(
+  JSAny? cst_encode_opt_box_autoadd_measure_twin_rust_async(
       MeasureTwinRustAsync? raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null
@@ -25531,14 +25506,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic>? cst_encode_opt_box_autoadd_measure_twin_sync(
-      MeasureTwinSync? raw) {
+  JSAny? cst_encode_opt_box_autoadd_measure_twin_sync(MeasureTwinSync? raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_box_autoadd_measure_twin_sync(raw);
   }
 
   @protected
-  List<dynamic>? cst_encode_opt_box_autoadd_new_type_int_twin_normal(
+  JSAny? cst_encode_opt_box_autoadd_new_type_int_twin_normal(
       NewTypeIntTwinNormal? raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null
@@ -25547,7 +25521,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic>? cst_encode_opt_box_autoadd_new_type_int_twin_rust_async(
+  JSAny? cst_encode_opt_box_autoadd_new_type_int_twin_rust_async(
       NewTypeIntTwinRustAsync? raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null
@@ -25556,7 +25530,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic>? cst_encode_opt_box_autoadd_new_type_int_twin_sync(
+  JSAny? cst_encode_opt_box_autoadd_new_type_int_twin_sync(
       NewTypeIntTwinSync? raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null
@@ -25565,8 +25539,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic>? cst_encode_opt_box_autoadd_record_string_i_32(
-      (String, int)? raw) {
+  JSAny? cst_encode_opt_box_autoadd_record_string_i_32((String, int)? raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_box_autoadd_record_string_i_32(raw);
   }
@@ -25626,7 +25599,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic>? cst_encode_opt_box_benchmark_binary_tree_twin_normal(
+  JSAny? cst_encode_opt_box_benchmark_binary_tree_twin_normal(
       BenchmarkBinaryTreeTwinNormal? raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null
@@ -25635,7 +25608,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic>? cst_encode_opt_box_benchmark_binary_tree_twin_rust_async(
+  JSAny? cst_encode_opt_box_benchmark_binary_tree_twin_rust_async(
       BenchmarkBinaryTreeTwinRustAsync? raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null
@@ -25644,7 +25617,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic>? cst_encode_opt_box_benchmark_binary_tree_twin_sync(
+  JSAny? cst_encode_opt_box_benchmark_binary_tree_twin_sync(
       BenchmarkBinaryTreeTwinSync? raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null
@@ -25659,7 +25632,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic>? cst_encode_opt_box_exotic_optionals_twin_normal(
+  JSAny? cst_encode_opt_box_exotic_optionals_twin_normal(
       ExoticOptionalsTwinNormal? raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null
@@ -25668,7 +25641,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic>? cst_encode_opt_box_exotic_optionals_twin_rust_async(
+  JSAny? cst_encode_opt_box_exotic_optionals_twin_rust_async(
       ExoticOptionalsTwinRustAsync? raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null
@@ -25677,7 +25650,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic>? cst_encode_opt_box_exotic_optionals_twin_sync(
+  JSAny? cst_encode_opt_box_exotic_optionals_twin_sync(
       ExoticOptionalsTwinSync? raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_box_exotic_optionals_twin_sync(raw);
@@ -25714,49 +25687,46 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic>? cst_encode_opt_list_attribute_twin_normal(
+  JSAny? cst_encode_opt_list_attribute_twin_normal(
       List<AttributeTwinNormal>? raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_list_attribute_twin_normal(raw);
   }
 
   @protected
-  List<dynamic>? cst_encode_opt_list_attribute_twin_rust_async(
+  JSAny? cst_encode_opt_list_attribute_twin_rust_async(
       List<AttributeTwinRustAsync>? raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_list_attribute_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic>? cst_encode_opt_list_attribute_twin_sync(
-      List<AttributeTwinSync>? raw) {
+  JSAny? cst_encode_opt_list_attribute_twin_sync(List<AttributeTwinSync>? raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_list_attribute_twin_sync(raw);
   }
 
   @protected
-  List<dynamic>? cst_encode_opt_list_element_twin_normal(
-      List<ElementTwinNormal>? raw) {
+  JSAny? cst_encode_opt_list_element_twin_normal(List<ElementTwinNormal>? raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_list_element_twin_normal(raw);
   }
 
   @protected
-  List<dynamic>? cst_encode_opt_list_element_twin_rust_async(
+  JSAny? cst_encode_opt_list_element_twin_rust_async(
       List<ElementTwinRustAsync>? raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_list_element_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic>? cst_encode_opt_list_element_twin_sync(
-      List<ElementTwinSync>? raw) {
+  JSAny? cst_encode_opt_list_element_twin_sync(List<ElementTwinSync>? raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_list_element_twin_sync(raw);
   }
 
   @protected
-  List<dynamic>? cst_encode_opt_list_opt_box_autoadd_attribute_twin_normal(
+  JSAny? cst_encode_opt_list_opt_box_autoadd_attribute_twin_normal(
       List<AttributeTwinNormal?>? raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null
@@ -25765,7 +25735,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic>? cst_encode_opt_list_opt_box_autoadd_attribute_twin_rust_async(
+  JSAny? cst_encode_opt_list_opt_box_autoadd_attribute_twin_rust_async(
       List<AttributeTwinRustAsync?>? raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null
@@ -25774,7 +25744,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic>? cst_encode_opt_list_opt_box_autoadd_attribute_twin_sync(
+  JSAny? cst_encode_opt_list_opt_box_autoadd_attribute_twin_sync(
       List<AttributeTwinSync?>? raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null
@@ -25813,134 +25783,134 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic> cst_encode_opt_vecs_twin_normal(OptVecsTwinNormal raw) {
+  JSAny cst_encode_opt_vecs_twin_normal(OptVecsTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_list_opt_box_autoadd_i_32(raw.i32),
       cst_encode_list_opt_box_autoadd_weekdays_twin_normal(raw.enums),
       cst_encode_list_opt_String(raw.strings),
       cst_encode_list_opt_list_prim_i_32_strict(raw.buffers)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_opt_vecs_twin_rust_async(OptVecsTwinRustAsync raw) {
+  JSAny cst_encode_opt_vecs_twin_rust_async(OptVecsTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_list_opt_box_autoadd_i_32(raw.i32),
       cst_encode_list_opt_box_autoadd_weekdays_twin_rust_async(raw.enums),
       cst_encode_list_opt_String(raw.strings),
       cst_encode_list_opt_list_prim_i_32_strict(raw.buffers)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_opt_vecs_twin_sync(OptVecsTwinSync raw) {
+  JSAny cst_encode_opt_vecs_twin_sync(OptVecsTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_list_opt_box_autoadd_i_32(raw.i32),
       cst_encode_list_opt_box_autoadd_weekdays_twin_sync(raw.enums),
       cst_encode_list_opt_String(raw.strings),
       cst_encode_list_opt_list_prim_i_32_strict(raw.buffers)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_point_twin_normal(PointTwinNormal raw) {
+  JSAny cst_encode_point_twin_normal(PointTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_f_32(raw.x), cst_encode_f_32(raw.y)];
+    return [cst_encode_f_32(raw.x), cst_encode_f_32(raw.y)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_point_twin_normal_array_2(
-      PointTwinNormalArray2 raw) {
+  JSAny cst_encode_point_twin_normal_array_2(PointTwinNormalArray2 raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_point_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_point_twin_rust_async(PointTwinRustAsync raw) {
+  JSAny cst_encode_point_twin_rust_async(PointTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_f_32(raw.x), cst_encode_f_32(raw.y)];
+    return [cst_encode_f_32(raw.x), cst_encode_f_32(raw.y)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_point_twin_rust_async_array_2(
-      PointTwinRustAsyncArray2 raw) {
+  JSAny cst_encode_point_twin_rust_async_array_2(PointTwinRustAsyncArray2 raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_point_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_point_twin_sync(PointTwinSync raw) {
+  JSAny cst_encode_point_twin_sync(PointTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_f_32(raw.x), cst_encode_f_32(raw.y)];
+    return [cst_encode_f_32(raw.x), cst_encode_f_32(raw.y)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_point_twin_sync_array_2(PointTwinSyncArray2 raw) {
+  JSAny cst_encode_point_twin_sync_array_2(PointTwinSyncArray2 raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_point_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_raw_string_enum_mirrored(RawStringEnumMirrored raw) {
+  JSAny cst_encode_raw_string_enum_mirrored(RawStringEnumMirrored raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is RawStringEnumMirrored_Raw) {
-      return [0, cst_encode_box_autoadd_raw_string_mirrored(raw.field0)];
+      return [0, cst_encode_box_autoadd_raw_string_mirrored(raw.field0)]
+          .jsify()!;
     }
     if (raw is RawStringEnumMirrored_Nested) {
-      return [1, cst_encode_box_autoadd_nested_raw_string_mirrored(raw.field0)];
+      return [1, cst_encode_box_autoadd_nested_raw_string_mirrored(raw.field0)]
+          .jsify()!;
     }
     if (raw is RawStringEnumMirrored_ListOfNested) {
       return [
         2,
         cst_encode_box_autoadd_list_of_nested_raw_string_mirrored(raw.field0)
-      ];
+      ].jsify()!;
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> cst_encode_raw_string_item_struct_twin_normal(
+  JSAny cst_encode_raw_string_item_struct_twin_normal(
       RawStringItemStructTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_String(raw.type)];
+    return [cst_encode_String(raw.type)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_raw_string_item_struct_twin_rust_async(
+  JSAny cst_encode_raw_string_item_struct_twin_rust_async(
       RawStringItemStructTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_String(raw.type)];
+    return [cst_encode_String(raw.type)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_raw_string_item_struct_twin_sync(
+  JSAny cst_encode_raw_string_item_struct_twin_sync(
       RawStringItemStructTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_String(raw.type)];
+    return [cst_encode_String(raw.type)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_raw_string_mirrored(RawStringMirrored raw) {
+  JSAny cst_encode_raw_string_mirrored(RawStringMirrored raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_String(raw.value)];
+    return [cst_encode_String(raw.value)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_record_application_settings_raw_string_enum_mirrored(
+  JSAny cst_encode_record_application_settings_raw_string_enum_mirrored(
       (ApplicationSettings, RawStringEnumMirrored) raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_application_settings(raw.$1),
       cst_encode_raw_string_enum_mirrored(raw.$2)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic>
+  JSAny
       cst_encode_record_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_opaque_one_twin_moi_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_opaque_two_twin_moi(
           (OpaqueOneTwinMoi, OpaqueTwoTwinMoi) raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
@@ -25949,11 +25919,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           raw.$1),
       cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinMoi(
           raw.$2)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic>
+  JSAny
       cst_encode_record_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_opaque_one_twin_normal_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_opaque_two_twin_normal(
           (OpaqueOneTwinNormal, OpaqueTwoTwinNormal) raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
@@ -25962,11 +25932,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           raw.$1),
       cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinNormal(
           raw.$2)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic>
+  JSAny
       cst_encode_record_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_opaque_one_twin_rust_async_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_opaque_two_twin_rust_async(
           (OpaqueOneTwinRustAsync, OpaqueTwoTwinRustAsync) raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
@@ -25975,11 +25945,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           raw.$1),
       cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinRustAsync(
           raw.$2)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic>
+  JSAny
       cst_encode_record_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_opaque_one_twin_rust_async_moi_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_opaque_two_twin_rust_async_moi(
           (OpaqueOneTwinRustAsyncMoi, OpaqueTwoTwinRustAsyncMoi) raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
@@ -25988,11 +25958,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           raw.$1),
       cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinRustAsyncMoi(
           raw.$2)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic>
+  JSAny
       cst_encode_record_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_opaque_one_twin_sync_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_opaque_two_twin_sync(
           (OpaqueOneTwinSync, OpaqueTwoTwinSync) raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
@@ -26001,11 +25971,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           raw.$1),
       cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinSync(
           raw.$2)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic>
+  JSAny
       cst_encode_record_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_opaque_one_twin_sync_moi_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_opaque_two_twin_sync_moi(
           (OpaqueOneTwinSyncMoi, OpaqueTwoTwinSyncMoi) raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
@@ -26014,387 +25984,384 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           raw.$1),
       cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinSyncMoi(
           raw.$2)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_record_i_32_basic_general_enum_twin_normal(
+  JSAny cst_encode_record_i_32_basic_general_enum_twin_normal(
       (int, BasicGeneralEnumTwinNormal) raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_i_32(raw.$1),
       cst_encode_basic_general_enum_twin_normal(raw.$2)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_record_i_32_basic_general_enum_twin_rust_async(
+  JSAny cst_encode_record_i_32_basic_general_enum_twin_rust_async(
       (int, BasicGeneralEnumTwinRustAsync) raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_i_32(raw.$1),
       cst_encode_basic_general_enum_twin_rust_async(raw.$2)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_record_i_32_basic_general_enum_twin_sync(
+  JSAny cst_encode_record_i_32_basic_general_enum_twin_sync(
       (int, BasicGeneralEnumTwinSync) raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_i_32(raw.$1),
       cst_encode_basic_general_enum_twin_sync(raw.$2)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_record_i_32_basic_primitive_enum_twin_normal(
+  JSAny cst_encode_record_i_32_basic_primitive_enum_twin_normal(
       (int, BasicPrimitiveEnumTwinNormal) raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_i_32(raw.$1),
       cst_encode_basic_primitive_enum_twin_normal(raw.$2)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_record_i_32_basic_primitive_enum_twin_rust_async(
+  JSAny cst_encode_record_i_32_basic_primitive_enum_twin_rust_async(
       (int, BasicPrimitiveEnumTwinRustAsync) raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_i_32(raw.$1),
       cst_encode_basic_primitive_enum_twin_rust_async(raw.$2)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_record_i_32_basic_primitive_enum_twin_sync(
+  JSAny cst_encode_record_i_32_basic_primitive_enum_twin_sync(
       (int, BasicPrimitiveEnumTwinSync) raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_i_32(raw.$1),
       cst_encode_basic_primitive_enum_twin_sync(raw.$2)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_record_i_32_basic_struct_twin_normal(
+  JSAny cst_encode_record_i_32_basic_struct_twin_normal(
       (int, BasicStructTwinNormal) raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_i_32(raw.$1),
       cst_encode_basic_struct_twin_normal(raw.$2)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_record_i_32_basic_struct_twin_rust_async(
+  JSAny cst_encode_record_i_32_basic_struct_twin_rust_async(
       (int, BasicStructTwinRustAsync) raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_i_32(raw.$1),
       cst_encode_basic_struct_twin_rust_async(raw.$2)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_record_i_32_basic_struct_twin_sync(
+  JSAny cst_encode_record_i_32_basic_struct_twin_sync(
       (int, BasicStructTwinSync) raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_i_32(raw.$1), cst_encode_basic_struct_twin_sync(raw.$2)];
+    return [cst_encode_i_32(raw.$1), cst_encode_basic_struct_twin_sync(raw.$2)]
+        .jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_record_i_32_bool((int, bool) raw) {
+  JSAny cst_encode_record_i_32_bool((int, bool) raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_i_32(raw.$1), cst_encode_bool(raw.$2)];
+    return [cst_encode_i_32(raw.$1), cst_encode_bool(raw.$2)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_record_i_32_f_32((int, double) raw) {
+  JSAny cst_encode_record_i_32_f_32((int, double) raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_i_32(raw.$1), cst_encode_f_32(raw.$2)];
+    return [cst_encode_i_32(raw.$1), cst_encode_f_32(raw.$2)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_record_i_32_f_64((int, double) raw) {
+  JSAny cst_encode_record_i_32_f_64((int, double) raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_i_32(raw.$1), cst_encode_f_64(raw.$2)];
+    return [cst_encode_i_32(raw.$1), cst_encode_f_64(raw.$2)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_record_i_32_i_128((int, BigInt) raw) {
+  JSAny cst_encode_record_i_32_i_128((int, BigInt) raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_i_32(raw.$1), cst_encode_I128(raw.$2)];
+    return [cst_encode_i_32(raw.$1), cst_encode_I128(raw.$2)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_record_i_32_i_16((int, int) raw) {
+  JSAny cst_encode_record_i_32_i_16((int, int) raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_i_32(raw.$1), cst_encode_i_16(raw.$2)];
+    return [cst_encode_i_32(raw.$1), cst_encode_i_16(raw.$2)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_record_i_32_i_32((int, int) raw) {
+  JSAny cst_encode_record_i_32_i_32((int, int) raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_i_32(raw.$1), cst_encode_i_32(raw.$2)];
+    return [cst_encode_i_32(raw.$1), cst_encode_i_32(raw.$2)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_record_i_32_i_64((int, PlatformInt64) raw) {
+  JSAny cst_encode_record_i_32_i_64((int, PlatformInt64) raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_i_32(raw.$1), cst_encode_i_64(raw.$2)];
+    return [cst_encode_i_32(raw.$1), cst_encode_i_64(raw.$2)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_record_i_32_i_8((int, int) raw) {
+  JSAny cst_encode_record_i_32_i_8((int, int) raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_i_32(raw.$1), cst_encode_i_8(raw.$2)];
+    return [cst_encode_i_32(raw.$1), cst_encode_i_8(raw.$2)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_record_i_32_isize((int, PlatformInt64) raw) {
+  JSAny cst_encode_record_i_32_isize((int, PlatformInt64) raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_i_32(raw.$1), cst_encode_isize(raw.$2)];
+    return [cst_encode_i_32(raw.$1), cst_encode_isize(raw.$2)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_record_i_32_list_prim_u_8_strict(
-      (int, Uint8List) raw) {
+  JSAny cst_encode_record_i_32_list_prim_u_8_strict((int, Uint8List) raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_i_32(raw.$1), cst_encode_list_prim_u_8_strict(raw.$2)];
+    return [cst_encode_i_32(raw.$1), cst_encode_list_prim_u_8_strict(raw.$2)]
+        .jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_record_i_32_string((int, String) raw) {
+  JSAny cst_encode_record_i_32_string((int, String) raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_i_32(raw.$1), cst_encode_String(raw.$2)];
+    return [cst_encode_i_32(raw.$1), cst_encode_String(raw.$2)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_record_i_32_u_128((int, BigInt) raw) {
+  JSAny cst_encode_record_i_32_u_128((int, BigInt) raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_i_32(raw.$1), cst_encode_U128(raw.$2)];
+    return [cst_encode_i_32(raw.$1), cst_encode_U128(raw.$2)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_record_i_32_u_16((int, int) raw) {
+  JSAny cst_encode_record_i_32_u_16((int, int) raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_i_32(raw.$1), cst_encode_u_16(raw.$2)];
+    return [cst_encode_i_32(raw.$1), cst_encode_u_16(raw.$2)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_record_i_32_u_32((int, int) raw) {
+  JSAny cst_encode_record_i_32_u_32((int, int) raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_i_32(raw.$1), cst_encode_u_32(raw.$2)];
+    return [cst_encode_i_32(raw.$1), cst_encode_u_32(raw.$2)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_record_i_32_u_64((int, BigInt) raw) {
+  JSAny cst_encode_record_i_32_u_64((int, BigInt) raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_i_32(raw.$1), cst_encode_u_64(raw.$2)];
+    return [cst_encode_i_32(raw.$1), cst_encode_u_64(raw.$2)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_record_i_32_u_8((int, int) raw) {
+  JSAny cst_encode_record_i_32_u_8((int, int) raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_i_32(raw.$1), cst_encode_u_8(raw.$2)];
+    return [cst_encode_i_32(raw.$1), cst_encode_u_8(raw.$2)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_record_i_32_usize((int, BigInt) raw) {
+  JSAny cst_encode_record_i_32_usize((int, BigInt) raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_i_32(raw.$1), cst_encode_usize(raw.$2)];
+    return [cst_encode_i_32(raw.$1), cst_encode_usize(raw.$2)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_record_string_enum_simple_twin_normal(
+  JSAny cst_encode_record_string_enum_simple_twin_normal(
       (String, EnumSimpleTwinNormal) raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_String(raw.$1),
       cst_encode_enum_simple_twin_normal(raw.$2)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_record_string_enum_simple_twin_rust_async(
+  JSAny cst_encode_record_string_enum_simple_twin_rust_async(
       (String, EnumSimpleTwinRustAsync) raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_String(raw.$1),
       cst_encode_enum_simple_twin_rust_async(raw.$2)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_record_string_enum_simple_twin_sync(
+  JSAny cst_encode_record_string_enum_simple_twin_sync(
       (String, EnumSimpleTwinSync) raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [
-      cst_encode_String(raw.$1),
-      cst_encode_enum_simple_twin_sync(raw.$2)
-    ];
+    return [cst_encode_String(raw.$1), cst_encode_enum_simple_twin_sync(raw.$2)]
+        .jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_record_string_hash_map_value(
-      (String, HashMapValue) raw) {
+  JSAny cst_encode_record_string_hash_map_value((String, HashMapValue) raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_String(raw.$1), cst_encode_hash_map_value(raw.$2)];
+    return [cst_encode_String(raw.$1), cst_encode_hash_map_value(raw.$2)]
+        .jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_record_string_i_32((String, int) raw) {
+  JSAny cst_encode_record_string_i_32((String, int) raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_String(raw.$1), cst_encode_i_32(raw.$2)];
+    return [cst_encode_String(raw.$1), cst_encode_i_32(raw.$2)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_record_string_kitchen_sink_twin_normal(
+  JSAny cst_encode_record_string_kitchen_sink_twin_normal(
       (String, KitchenSinkTwinNormal) raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_String(raw.$1),
       cst_encode_kitchen_sink_twin_normal(raw.$2)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_record_string_kitchen_sink_twin_rust_async(
+  JSAny cst_encode_record_string_kitchen_sink_twin_rust_async(
       (String, KitchenSinkTwinRustAsync) raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_String(raw.$1),
       cst_encode_kitchen_sink_twin_rust_async(raw.$2)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_record_string_kitchen_sink_twin_sync(
+  JSAny cst_encode_record_string_kitchen_sink_twin_sync(
       (String, KitchenSinkTwinSync) raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_String(raw.$1),
       cst_encode_kitchen_sink_twin_sync(raw.$2)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_record_string_list_prim_u_8_strict(
-      (String, Uint8List) raw) {
+  JSAny cst_encode_record_string_list_prim_u_8_strict((String, Uint8List) raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_String(raw.$1), cst_encode_list_prim_u_8_strict(raw.$2)];
+    return [cst_encode_String(raw.$1), cst_encode_list_prim_u_8_strict(raw.$2)]
+        .jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_record_string_my_size((String, MySize) raw) {
+  JSAny cst_encode_record_string_my_size((String, MySize) raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_String(raw.$1), cst_encode_my_size(raw.$2)];
+    return [cst_encode_String(raw.$1), cst_encode_my_size(raw.$2)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_record_string_string((String, String) raw) {
+  JSAny cst_encode_record_string_string((String, String) raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_String(raw.$1), cst_encode_String(raw.$2)];
+    return [cst_encode_String(raw.$1), cst_encode_String(raw.$2)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_record_u_8_application_mode(
-      (int, ApplicationMode) raw) {
+  JSAny cst_encode_record_u_8_application_mode((int, ApplicationMode) raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_u_8(raw.$1), cst_encode_application_mode(raw.$2)];
+    return [cst_encode_u_8(raw.$1), cst_encode_application_mode(raw.$2)]
+        .jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_sequences(Sequences raw) {
+  JSAny cst_encode_sequences(Sequences raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_list_prim_i_32_strict(raw.field0)];
+    return [cst_encode_list_prim_i_32_strict(raw.field0)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_simple_enum_twin_normal(SimpleEnumTwinNormal raw) {
+  JSAny cst_encode_simple_enum_twin_normal(SimpleEnumTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is SimpleEnumTwinNormal_First) {
-      return [0];
+      return [0].jsify()!;
     }
     if (raw is SimpleEnumTwinNormal_Second) {
-      return [1, cst_encode_String(raw.field0)];
+      return [1, cst_encode_String(raw.field0)].jsify()!;
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> cst_encode_simple_enum_twin_rust_async(
-      SimpleEnumTwinRustAsync raw) {
+  JSAny cst_encode_simple_enum_twin_rust_async(SimpleEnumTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is SimpleEnumTwinRustAsync_First) {
-      return [0];
+      return [0].jsify()!;
     }
     if (raw is SimpleEnumTwinRustAsync_Second) {
-      return [1, cst_encode_String(raw.field0)];
+      return [1, cst_encode_String(raw.field0)].jsify()!;
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> cst_encode_simple_enum_twin_sync(SimpleEnumTwinSync raw) {
+  JSAny cst_encode_simple_enum_twin_sync(SimpleEnumTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is SimpleEnumTwinSync_First) {
-      return [0];
+      return [0].jsify()!;
     }
     if (raw is SimpleEnumTwinSync_Second) {
-      return [1, cst_encode_String(raw.field0)];
+      return [1, cst_encode_String(raw.field0)].jsify()!;
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> cst_encode_simple_struct_for_borrow_twin_normal(
+  JSAny cst_encode_simple_struct_for_borrow_twin_normal(
       SimpleStructForBorrowTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_String(raw.one)];
+    return [cst_encode_String(raw.one)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_simple_struct_for_borrow_twin_rust_async(
+  JSAny cst_encode_simple_struct_for_borrow_twin_rust_async(
       SimpleStructForBorrowTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_String(raw.one)];
+    return [cst_encode_String(raw.one)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_simple_struct_for_borrow_twin_sync(
+  JSAny cst_encode_simple_struct_for_borrow_twin_sync(
       SimpleStructForBorrowTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_String(raw.one)];
+    return [cst_encode_String(raw.one)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_simple_struct_twin_normal(
-      SimpleStructTwinNormal raw) {
+  JSAny cst_encode_simple_struct_twin_normal(SimpleStructTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_String(raw.one)];
+    return [cst_encode_String(raw.one)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_simple_struct_twin_rust_async(
+  JSAny cst_encode_simple_struct_twin_rust_async(
       SimpleStructTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_String(raw.one)];
+    return [cst_encode_String(raw.one)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_simple_struct_twin_sync(SimpleStructTwinSync raw) {
+  JSAny cst_encode_simple_struct_twin_sync(SimpleStructTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_String(raw.one)];
+    return [cst_encode_String(raw.one)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_simple_trait_for_dyn_twin_normal_implementor(
+  JSAny cst_encode_simple_trait_for_dyn_twin_normal_implementor(
       SimpleTraitForDynTwinNormalImplementor raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is SimpleTraitForDynTwinNormalImplementor_Variant0) {
@@ -26402,285 +26369,282 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
         0,
         cst_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitForDynTwinNormal(
             raw.field0)
-      ];
+      ].jsify()!;
     }
     if (raw is SimpleTraitForDynTwinNormalImplementor_Variant1) {
       return [
         1,
         cst_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitForDynTwinNormal(
             raw.field0)
-      ];
+      ].jsify()!;
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> cst_encode_simple_translatable_external_struct_with_method(
+  JSAny cst_encode_simple_translatable_external_struct_with_method(
       SimpleTranslatableExternalStructWithMethod raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_String(raw.a)];
+    return [cst_encode_String(raw.a)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_some_struct_twin_normal(SomeStructTwinNormal raw) {
+  JSAny cst_encode_some_struct_twin_normal(SomeStructTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_u_32(raw.value)];
+    return [cst_encode_u_32(raw.value)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_some_struct_twin_rust_async(
-      SomeStructTwinRustAsync raw) {
+  JSAny cst_encode_some_struct_twin_rust_async(SomeStructTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_u_32(raw.value)];
+    return [cst_encode_u_32(raw.value)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_some_struct_twin_sync(SomeStructTwinSync raw) {
+  JSAny cst_encode_some_struct_twin_sync(SomeStructTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_u_32(raw.value)];
+    return [cst_encode_u_32(raw.value)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_speed_twin_normal(SpeedTwinNormal raw) {
+  JSAny cst_encode_speed_twin_normal(SpeedTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is SpeedTwinNormal_Unknown) {
-      return [0];
+      return [0].jsify()!;
     }
     if (raw is SpeedTwinNormal_GPS) {
-      return [1, cst_encode_f_64(raw.field0)];
+      return [1, cst_encode_f_64(raw.field0)].jsify()!;
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> cst_encode_speed_twin_rust_async(SpeedTwinRustAsync raw) {
+  JSAny cst_encode_speed_twin_rust_async(SpeedTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is SpeedTwinRustAsync_Unknown) {
-      return [0];
+      return [0].jsify()!;
     }
     if (raw is SpeedTwinRustAsync_GPS) {
-      return [1, cst_encode_f_64(raw.field0)];
+      return [1, cst_encode_f_64(raw.field0)].jsify()!;
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> cst_encode_speed_twin_sync(SpeedTwinSync raw) {
+  JSAny cst_encode_speed_twin_sync(SpeedTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is SpeedTwinSync_Unknown) {
-      return [0];
+      return [0].jsify()!;
     }
     if (raw is SpeedTwinSync_GPS) {
-      return [1, cst_encode_f_64(raw.field0)];
+      return [1, cst_encode_f_64(raw.field0)].jsify()!;
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> cst_encode_static_only_twin_normal(StaticOnlyTwinNormal raw) {
+  JSAny cst_encode_static_only_twin_normal(StaticOnlyTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_String(raw.one)];
+    return [cst_encode_String(raw.one)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_static_only_twin_rust_async(
-      StaticOnlyTwinRustAsync raw) {
+  JSAny cst_encode_static_only_twin_rust_async(StaticOnlyTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_String(raw.one)];
+    return [cst_encode_String(raw.one)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_static_only_twin_sync(StaticOnlyTwinSync raw) {
+  JSAny cst_encode_static_only_twin_sync(StaticOnlyTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_String(raw.one)];
+    return [cst_encode_String(raw.one)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_struct_in_lower_level(StructInLowerLevel raw) {
+  JSAny cst_encode_struct_in_lower_level(StructInLowerLevel raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_struct_in_upper_level(raw.inner)];
+    return [cst_encode_struct_in_upper_level(raw.inner)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_struct_in_upper_level(StructInUpperLevel raw) {
+  JSAny cst_encode_struct_in_upper_level(StructInUpperLevel raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_usize(raw.upper)];
+    return [cst_encode_usize(raw.upper)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_struct_with_comments_twin_normal(
+  JSAny cst_encode_struct_with_comments_twin_normal(
       StructWithCommentsTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_i_32(raw.fieldWithComments)];
+    return [cst_encode_i_32(raw.fieldWithComments)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_struct_with_comments_twin_rust_async(
+  JSAny cst_encode_struct_with_comments_twin_rust_async(
       StructWithCommentsTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_i_32(raw.fieldWithComments)];
+    return [cst_encode_i_32(raw.fieldWithComments)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_struct_with_comments_twin_sync(
+  JSAny cst_encode_struct_with_comments_twin_sync(
       StructWithCommentsTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_i_32(raw.fieldWithComments)];
+    return [cst_encode_i_32(raw.fieldWithComments)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_struct_with_custom_name_method_twin_normal(
+  JSAny cst_encode_struct_with_custom_name_method_twin_normal(
       StructWithCustomNameMethodTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_i_32(raw.field0)];
+    return [cst_encode_i_32(raw.field0)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_struct_with_dart_keyword_field_twin_normal(
+  JSAny cst_encode_struct_with_dart_keyword_field_twin_normal(
       StructWithDartKeywordFieldTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_i_32(raw.class_), cst_encode_i_64(raw.interface_)];
+    return [cst_encode_i_32(raw.class_), cst_encode_i_64(raw.interface_)]
+        .jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_struct_with_dart_keyword_field_twin_rust_async(
+  JSAny cst_encode_struct_with_dart_keyword_field_twin_rust_async(
       StructWithDartKeywordFieldTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_i_32(raw.class_), cst_encode_i_64(raw.interface_)];
+    return [cst_encode_i_32(raw.class_), cst_encode_i_64(raw.interface_)]
+        .jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_struct_with_dart_keyword_field_twin_sync(
+  JSAny cst_encode_struct_with_dart_keyword_field_twin_sync(
       StructWithDartKeywordFieldTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_i_32(raw.class_), cst_encode_i_64(raw.interface_)];
+    return [cst_encode_i_32(raw.class_), cst_encode_i_64(raw.interface_)]
+        .jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_struct_with_enum_twin_normal(
-      StructWithEnumTwinNormal raw) {
+  JSAny cst_encode_struct_with_enum_twin_normal(StructWithEnumTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_abc_twin_normal(raw.abc1),
       cst_encode_abc_twin_normal(raw.abc2)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_struct_with_enum_twin_rust_async(
+  JSAny cst_encode_struct_with_enum_twin_rust_async(
       StructWithEnumTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_abc_twin_rust_async(raw.abc1),
       cst_encode_abc_twin_rust_async(raw.abc2)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_struct_with_enum_twin_sync(
-      StructWithEnumTwinSync raw) {
+  JSAny cst_encode_struct_with_enum_twin_sync(StructWithEnumTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_abc_twin_sync(raw.abc1),
       cst_encode_abc_twin_sync(raw.abc2)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_struct_with_explicit_auto_opaque_field_twin_moi(
+  JSAny cst_encode_struct_with_explicit_auto_opaque_field_twin_moi(
       StructWithExplicitAutoOpaqueFieldTwinMoi raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
           raw.autoOpaque),
       cst_encode_i_32(raw.normal)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_struct_with_explicit_auto_opaque_field_twin_normal(
+  JSAny cst_encode_struct_with_explicit_auto_opaque_field_twin_normal(
       StructWithExplicitAutoOpaqueFieldTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
           raw.autoOpaque),
       cst_encode_i_32(raw.normal)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic>
-      cst_encode_struct_with_explicit_auto_opaque_field_twin_rust_async(
-          StructWithExplicitAutoOpaqueFieldTwinRustAsync raw) {
+  JSAny cst_encode_struct_with_explicit_auto_opaque_field_twin_rust_async(
+      StructWithExplicitAutoOpaqueFieldTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
           raw.autoOpaque),
       cst_encode_i_32(raw.normal)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic>
-      cst_encode_struct_with_explicit_auto_opaque_field_twin_rust_async_moi(
-          StructWithExplicitAutoOpaqueFieldTwinRustAsyncMoi raw) {
+  JSAny cst_encode_struct_with_explicit_auto_opaque_field_twin_rust_async_moi(
+      StructWithExplicitAutoOpaqueFieldTwinRustAsyncMoi raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
           raw.autoOpaque),
       cst_encode_i_32(raw.normal)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_struct_with_explicit_auto_opaque_field_twin_sync(
+  JSAny cst_encode_struct_with_explicit_auto_opaque_field_twin_sync(
       StructWithExplicitAutoOpaqueFieldTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
           raw.autoOpaque),
       cst_encode_i_32(raw.normal)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_struct_with_explicit_auto_opaque_field_twin_sync_moi(
+  JSAny cst_encode_struct_with_explicit_auto_opaque_field_twin_sync_moi(
       StructWithExplicitAutoOpaqueFieldTwinSyncMoi raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
           raw.autoOpaque),
       cst_encode_i_32(raw.normal)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_struct_with_field_rename_twin_normal(
+  JSAny cst_encode_struct_with_field_rename_twin_normal(
       StructWithFieldRenameTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_i_32(raw.renamed_field)];
+    return [cst_encode_i_32(raw.renamed_field)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_struct_with_field_rename_twin_rust_async(
+  JSAny cst_encode_struct_with_field_rename_twin_rust_async(
       StructWithFieldRenameTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_i_32(raw.renamed_field)];
+    return [cst_encode_i_32(raw.renamed_field)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_struct_with_field_rename_twin_sync(
+  JSAny cst_encode_struct_with_field_rename_twin_sync(
       StructWithFieldRenameTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_i_32(raw.renamed_field)];
+    return [cst_encode_i_32(raw.renamed_field)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_struct_with_good_and_opaque_field_twin_moi(
+  JSAny cst_encode_struct_with_good_and_opaque_field_twin_moi(
       StructWithGoodAndOpaqueFieldTwinMoi raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
@@ -26689,11 +26653,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           raw.opaque),
       cst_encode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
           raw.optionOpaque)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_struct_with_good_and_opaque_field_twin_normal(
+  JSAny cst_encode_struct_with_good_and_opaque_field_twin_normal(
       StructWithGoodAndOpaqueFieldTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
@@ -26702,11 +26666,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           raw.opaque),
       cst_encode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
           raw.optionOpaque)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_struct_with_good_and_opaque_field_twin_rust_async(
+  JSAny cst_encode_struct_with_good_and_opaque_field_twin_rust_async(
       StructWithGoodAndOpaqueFieldTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
@@ -26715,13 +26679,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           raw.opaque),
       cst_encode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
           raw.optionOpaque)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic>
-      cst_encode_struct_with_good_and_opaque_field_twin_rust_async_moi(
-          StructWithGoodAndOpaqueFieldTwinRustAsyncMoi raw) {
+  JSAny cst_encode_struct_with_good_and_opaque_field_twin_rust_async_moi(
+      StructWithGoodAndOpaqueFieldTwinRustAsyncMoi raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_String(raw.good),
@@ -26729,11 +26692,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           raw.opaque),
       cst_encode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
           raw.optionOpaque)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_struct_with_good_and_opaque_field_twin_sync(
+  JSAny cst_encode_struct_with_good_and_opaque_field_twin_sync(
       StructWithGoodAndOpaqueFieldTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
@@ -26742,11 +26705,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           raw.opaque),
       cst_encode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
           raw.optionOpaque)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_struct_with_good_and_opaque_field_twin_sync_moi(
+  JSAny cst_encode_struct_with_good_and_opaque_field_twin_sync_moi(
       StructWithGoodAndOpaqueFieldTwinSyncMoi raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
@@ -26755,301 +26718,295 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           raw.opaque),
       cst_encode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
           raw.optionOpaque)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_struct_with_hash_map(StructWithHashMap raw) {
+  JSAny cst_encode_struct_with_hash_map(StructWithHashMap raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_Map_String_hash_map_value(raw.map)];
+    return [cst_encode_Map_String_hash_map_value(raw.map)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_struct_with_impl_block_in_another_file(
+  JSAny cst_encode_struct_with_impl_block_in_another_file(
       StructWithImplBlockInAnotherFile raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [];
+    return [].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_struct_with_impl_block_in_another_file_dependency(
+  JSAny cst_encode_struct_with_impl_block_in_another_file_dependency(
       StructWithImplBlockInAnotherFileDependency raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [];
+    return [].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_struct_with_one_field_twin_normal(
+  JSAny cst_encode_struct_with_one_field_twin_normal(
       StructWithOneFieldTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_i_32(raw.a)];
+    return [cst_encode_i_32(raw.a)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_struct_with_one_field_twin_rust_async(
+  JSAny cst_encode_struct_with_one_field_twin_rust_async(
       StructWithOneFieldTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_i_32(raw.a)];
+    return [cst_encode_i_32(raw.a)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_struct_with_one_field_twin_sync(
+  JSAny cst_encode_struct_with_one_field_twin_sync(
       StructWithOneFieldTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_i_32(raw.a)];
+    return [cst_encode_i_32(raw.a)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_struct_with_two_field_twin_normal(
+  JSAny cst_encode_struct_with_two_field_twin_normal(
       StructWithTwoFieldTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_i_32(raw.a), cst_encode_i_32(raw.b)];
+    return [cst_encode_i_32(raw.a), cst_encode_i_32(raw.b)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_struct_with_two_field_twin_rust_async(
+  JSAny cst_encode_struct_with_two_field_twin_rust_async(
       StructWithTwoFieldTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_i_32(raw.a), cst_encode_i_32(raw.b)];
+    return [cst_encode_i_32(raw.a), cst_encode_i_32(raw.b)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_struct_with_two_field_twin_sync(
+  JSAny cst_encode_struct_with_two_field_twin_sync(
       StructWithTwoFieldTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_i_32(raw.a), cst_encode_i_32(raw.b)];
+    return [cst_encode_i_32(raw.a), cst_encode_i_32(raw.b)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_struct_with_zero_field_twin_normal(
+  JSAny cst_encode_struct_with_zero_field_twin_normal(
       StructWithZeroFieldTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [];
+    return [].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_struct_with_zero_field_twin_rust_async(
+  JSAny cst_encode_struct_with_zero_field_twin_rust_async(
       StructWithZeroFieldTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [];
+    return [].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_struct_with_zero_field_twin_sync(
+  JSAny cst_encode_struct_with_zero_field_twin_sync(
       StructWithZeroFieldTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [];
+    return [].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_sum_with_twin_normal(SumWithTwinNormal raw) {
+  JSAny cst_encode_sum_with_twin_normal(SumWithTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_u_32(raw.x)];
+    return [cst_encode_u_32(raw.x)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_sum_with_twin_normal_array_3(
-      SumWithTwinNormalArray3 raw) {
+  JSAny cst_encode_sum_with_twin_normal_array_3(SumWithTwinNormalArray3 raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_sum_with_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_sum_with_twin_rust_async(SumWithTwinRustAsync raw) {
+  JSAny cst_encode_sum_with_twin_rust_async(SumWithTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_u_32(raw.x)];
+    return [cst_encode_u_32(raw.x)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_sum_with_twin_rust_async_array_3(
+  JSAny cst_encode_sum_with_twin_rust_async_array_3(
       SumWithTwinRustAsyncArray3 raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_sum_with_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_sum_with_twin_sync(SumWithTwinSync raw) {
+  JSAny cst_encode_sum_with_twin_sync(SumWithTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_u_32(raw.x)];
+    return [cst_encode_u_32(raw.x)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_sum_with_twin_sync_array_3(
-      SumWithTwinSyncArray3 raw) {
+  JSAny cst_encode_sum_with_twin_sync_array_3(SumWithTwinSyncArray3 raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_sum_with_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_test_chrono_twin_normal(TestChronoTwinNormal raw) {
+  JSAny cst_encode_test_chrono_twin_normal(TestChronoTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_opt_box_autoadd_Chrono_Utc(raw.dt),
       cst_encode_opt_box_autoadd_Chrono_Naive(raw.dt2),
       cst_encode_opt_box_autoadd_Chrono_Duration(raw.du)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_test_chrono_twin_rust_async(
-      TestChronoTwinRustAsync raw) {
+  JSAny cst_encode_test_chrono_twin_rust_async(TestChronoTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_opt_box_autoadd_Chrono_Utc(raw.dt),
       cst_encode_opt_box_autoadd_Chrono_Naive(raw.dt2),
       cst_encode_opt_box_autoadd_Chrono_Duration(raw.du)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_test_chrono_twin_sync(TestChronoTwinSync raw) {
+  JSAny cst_encode_test_chrono_twin_sync(TestChronoTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_opt_box_autoadd_Chrono_Utc(raw.dt),
       cst_encode_opt_box_autoadd_Chrono_Naive(raw.dt2),
       cst_encode_opt_box_autoadd_Chrono_Duration(raw.du)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_test_id_twin_normal(TestIdTwinNormal raw) {
+  JSAny cst_encode_test_id_twin_normal(TestIdTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_i_32_array_2(raw.field0)];
+    return [cst_encode_i_32_array_2(raw.field0)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_test_id_twin_normal_array_2(
-      TestIdTwinNormalArray2 raw) {
+  JSAny cst_encode_test_id_twin_normal_array_2(TestIdTwinNormalArray2 raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_test_id_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_test_id_twin_normal_array_4(
-      TestIdTwinNormalArray4 raw) {
+  JSAny cst_encode_test_id_twin_normal_array_4(TestIdTwinNormalArray4 raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_test_id_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_test_id_twin_rust_async(TestIdTwinRustAsync raw) {
+  JSAny cst_encode_test_id_twin_rust_async(TestIdTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_i_32_array_2(raw.field0)];
+    return [cst_encode_i_32_array_2(raw.field0)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_test_id_twin_rust_async_array_2(
+  JSAny cst_encode_test_id_twin_rust_async_array_2(
       TestIdTwinRustAsyncArray2 raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_test_id_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_test_id_twin_rust_async_array_4(
+  JSAny cst_encode_test_id_twin_rust_async_array_4(
       TestIdTwinRustAsyncArray4 raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_test_id_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_test_id_twin_sync(TestIdTwinSync raw) {
+  JSAny cst_encode_test_id_twin_sync(TestIdTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_i_32_array_2(raw.field0)];
+    return [cst_encode_i_32_array_2(raw.field0)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_test_id_twin_sync_array_2(TestIdTwinSyncArray2 raw) {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    return cst_encode_list_test_id_twin_sync(raw);
-  }
-
-  @protected
-  List<dynamic> cst_encode_test_id_twin_sync_array_4(TestIdTwinSyncArray4 raw) {
+  JSAny cst_encode_test_id_twin_sync_array_2(TestIdTwinSyncArray2 raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_test_id_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> cst_encode_test_model_twin_normal(TestModelTwinNormal raw) {
+  JSAny cst_encode_test_id_twin_sync_array_4(TestIdTwinSyncArray4 raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_list_test_id_twin_sync(raw);
+  }
+
+  @protected
+  JSAny cst_encode_test_model_twin_normal(TestModelTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_u_64(raw.id),
       cst_encode_String(raw.name),
       cst_encode_my_enum(raw.aliasEnum),
       cst_encode_my_struct(raw.aliasStruct)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_test_model_twin_rust_async(
-      TestModelTwinRustAsync raw) {
+  JSAny cst_encode_test_model_twin_rust_async(TestModelTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_u_64(raw.id),
       cst_encode_String(raw.name),
       cst_encode_my_enum(raw.aliasEnum),
       cst_encode_my_struct(raw.aliasStruct)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_test_model_twin_sync(TestModelTwinSync raw) {
+  JSAny cst_encode_test_model_twin_sync(TestModelTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_u_64(raw.id),
       cst_encode_String(raw.name),
       cst_encode_my_enum(raw.aliasEnum),
       cst_encode_my_struct(raw.aliasStruct)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_translatable_struct_with_dart_code_twin_normal(
+  JSAny cst_encode_translatable_struct_with_dart_code_twin_normal(
       TranslatableStructWithDartCodeTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_i_32(raw.a)];
+    return [cst_encode_i_32(raw.a)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_tuple_struct_with_one_field_twin_normal(
+  JSAny cst_encode_tuple_struct_with_one_field_twin_normal(
       TupleStructWithOneFieldTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_i_32(raw.field0)];
+    return [cst_encode_i_32(raw.field0)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_tuple_struct_with_one_field_twin_rust_async(
+  JSAny cst_encode_tuple_struct_with_one_field_twin_rust_async(
       TupleStructWithOneFieldTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_i_32(raw.field0)];
+    return [cst_encode_i_32(raw.field0)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_tuple_struct_with_one_field_twin_sync(
+  JSAny cst_encode_tuple_struct_with_one_field_twin_sync(
       TupleStructWithOneFieldTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_i_32(raw.field0)];
+    return [cst_encode_i_32(raw.field0)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_tuple_struct_with_two_field_twin_normal(
+  JSAny cst_encode_tuple_struct_with_two_field_twin_normal(
       TupleStructWithTwoFieldTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_i_32(raw.field0), cst_encode_i_32(raw.field1)];
+    return [cst_encode_i_32(raw.field0), cst_encode_i_32(raw.field1)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_tuple_struct_with_two_field_twin_rust_async(
+  JSAny cst_encode_tuple_struct_with_two_field_twin_rust_async(
       TupleStructWithTwoFieldTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_i_32(raw.field0), cst_encode_i_32(raw.field1)];
+    return [cst_encode_i_32(raw.field0), cst_encode_i_32(raw.field1)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_tuple_struct_with_two_field_twin_sync(
+  JSAny cst_encode_tuple_struct_with_two_field_twin_sync(
       TupleStructWithTwoFieldTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_i_32(raw.field0), cst_encode_i_32(raw.field1)];
+    return [cst_encode_i_32(raw.field0), cst_encode_i_32(raw.field1)].jsify()!;
   }
 
   @protected
@@ -27089,21 +27046,21 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic> cst_encode_user_id_twin_normal(UserIdTwinNormal raw) {
+  JSAny cst_encode_user_id_twin_normal(UserIdTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_u_32(raw.value)];
+    return [cst_encode_u_32(raw.value)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_user_id_twin_rust_async(UserIdTwinRustAsync raw) {
+  JSAny cst_encode_user_id_twin_rust_async(UserIdTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_u_32(raw.value)];
+    return [cst_encode_u_32(raw.value)].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_user_id_twin_sync(UserIdTwinSync raw) {
+  JSAny cst_encode_user_id_twin_sync(UserIdTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_u_32(raw.value)];
+    return [cst_encode_u_32(raw.value)].jsify()!;
   }
 
   @protected
@@ -27113,7 +27070,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic> cst_encode_vec_of_primitive_pack_twin_normal(
+  JSAny cst_encode_vec_of_primitive_pack_twin_normal(
       VecOfPrimitivePackTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
@@ -27128,11 +27085,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_list_prim_f_32_strict(raw.float32List),
       cst_encode_list_prim_f_64_strict(raw.float64List),
       cst_encode_list_bool(raw.boolList)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_vec_of_primitive_pack_twin_rust_async(
+  JSAny cst_encode_vec_of_primitive_pack_twin_rust_async(
       VecOfPrimitivePackTwinRustAsync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
@@ -27147,11 +27104,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_list_prim_f_32_strict(raw.float32List),
       cst_encode_list_prim_f_64_strict(raw.float64List),
       cst_encode_list_bool(raw.boolList)
-    ];
+    ].jsify()!;
   }
 
   @protected
-  List<dynamic> cst_encode_vec_of_primitive_pack_twin_sync(
+  JSAny cst_encode_vec_of_primitive_pack_twin_sync(
       VecOfPrimitivePackTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
@@ -27166,7 +27123,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_list_prim_f_32_strict(raw.float32List),
       cst_encode_list_prim_f_64_strict(raw.float64List),
       cst_encode_list_bool(raw.boolList)
-    ];
+    ].jsify()!;
   }
 
   @protected
@@ -37626,7 +37583,7 @@ class RustLibWire implements BaseWire {
       wasmModule.wire__crate__api__array__boxed_blob_twin_normal(port_, blob);
 
   void wire__crate__api__array__func_test_id_twin_normal(
-          NativePortType port_, List<dynamic> id) =>
+          NativePortType port_, JSAny id) =>
       wasmModule.wire__crate__api__array__func_test_id_twin_normal(port_, id);
 
   void wire__crate__api__array__get_array_twin_normal(NativePortType port_) =>
@@ -37641,7 +37598,7 @@ class RustLibWire implements BaseWire {
       wasmModule.wire__crate__api__array__last_number_twin_normal(port_, array);
 
   void wire__crate__api__array__nested_id_twin_normal(
-          NativePortType port_, List<dynamic> id) =>
+          NativePortType port_, JSAny id) =>
       wasmModule.wire__crate__api__array__nested_id_twin_normal(port_, id);
 
   void wire__crate__api__array__new_msgid_twin_normal(
@@ -37654,17 +37611,17 @@ class RustLibWire implements BaseWire {
           port_, id);
 
   void wire__crate__api__array__return_boxed_raw_feed_id_twin_normal(
-          NativePortType port_, List<dynamic> id) =>
+          NativePortType port_, JSAny id) =>
       wasmModule.wire__crate__api__array__return_boxed_raw_feed_id_twin_normal(
           port_, id);
 
   void wire__crate__api__array__use_boxed_blob_twin_normal(
-          NativePortType port_, List<dynamic> blob) =>
+          NativePortType port_, JSAny blob) =>
       wasmModule.wire__crate__api__array__use_boxed_blob_twin_normal(
           port_, blob);
 
   void wire__crate__api__array__use_msgid_twin_normal(
-          NativePortType port_, List<dynamic> id) =>
+          NativePortType port_, JSAny id) =>
       wasmModule.wire__crate__api__array__use_msgid_twin_normal(port_, id);
 
   void wire__crate__api__async_misc__func_async_simple_add_twin_normal(
@@ -37694,13 +37651,13 @@ class RustLibWire implements BaseWire {
           port_, arg, sink);
 
   void wire__crate__api__attribute__handle_customized_struct_twin_normal(
-          NativePortType port_, List<dynamic> val) =>
+          NativePortType port_, JSAny val) =>
       wasmModule
           .wire__crate__api__attribute__handle_customized_struct_twin_normal(
               port_, val);
 
   void wire__crate__api__attribute__next_user_id_twin_normal(
-          NativePortType port_, List<dynamic> user_id) =>
+          NativePortType port_, JSAny user_id) =>
       wasmModule.wire__crate__api__attribute__next_user_id_twin_normal(
           port_, user_id);
 
@@ -37778,17 +37735,17 @@ class RustLibWire implements BaseWire {
       wasmModule.wire__crate__api__chrono_type__duration_twin_normal(port_, d);
 
   void wire__crate__api__chrono_type__handle_durations_twin_normal(
-          NativePortType port_, List<dynamic> durations, Object since) =>
+          NativePortType port_, JSAny durations, Object since) =>
       wasmModule.wire__crate__api__chrono_type__handle_durations_twin_normal(
           port_, durations, since);
 
   void wire__crate__api__chrono_type__handle_timestamps_twin_normal(
-          NativePortType port_, List<dynamic> timestamps, Object epoch) =>
+          NativePortType port_, JSAny timestamps, Object epoch) =>
       wasmModule.wire__crate__api__chrono_type__handle_timestamps_twin_normal(
           port_, timestamps, epoch);
 
   void wire__crate__api__chrono_type__how_long_does_it_take_twin_normal(
-          NativePortType port_, List<dynamic> mine) =>
+          NativePortType port_, JSAny mine) =>
       wasmModule
           .wire__crate__api__chrono_type__how_long_does_it_take_twin_normal(
               port_, mine);
@@ -37832,7 +37789,7 @@ class RustLibWire implements BaseWire {
               port_);
 
   void wire__crate__api__comment__struct_with_comments_twin_normal_instance_method_twin_normal(
-          NativePortType port_, List<dynamic> that) =>
+          NativePortType port_, JSAny that) =>
       wasmModule
           .wire__crate__api__comment__struct_with_comments_twin_normal_instance_method_twin_normal(
               port_, that);
@@ -37935,7 +37892,7 @@ class RustLibWire implements BaseWire {
               port_, that);
 
   void wire__crate__api__dart_code__translatable_struct_with_dart_code_twin_normal_normal_method_twin_normal(
-          NativePortType port_, List<dynamic> that) =>
+          NativePortType port_, JSAny that) =>
       wasmModule
           .wire__crate__api__dart_code__translatable_struct_with_dart_code_twin_normal_normal_method_twin_normal(
               port_, that);
@@ -38031,19 +37988,19 @@ class RustLibWire implements BaseWire {
               port_, id);
 
   void wire__crate__api__dart_opaque__get_enum_dart_opaque_twin_normal(
-          NativePortType port_, List<dynamic> opaque) =>
+          NativePortType port_, JSAny opaque) =>
       wasmModule
           .wire__crate__api__dart_opaque__get_enum_dart_opaque_twin_normal(
               port_, opaque);
 
   void wire__crate__api__dart_opaque__get_nested_dart_opaque_twin_normal(
-          NativePortType port_, List<dynamic> opaque) =>
+          NativePortType port_, JSAny opaque) =>
       wasmModule
           .wire__crate__api__dart_opaque__get_nested_dart_opaque_twin_normal(
               port_, opaque);
 
   void wire__crate__api__dart_opaque__loop_back_array_get_twin_normal(
-          NativePortType port_, List<dynamic> opaque) =>
+          NativePortType port_, JSAny opaque) =>
       wasmModule.wire__crate__api__dart_opaque__loop_back_array_get_twin_normal(
           port_, opaque);
 
@@ -38069,7 +38026,7 @@ class RustLibWire implements BaseWire {
           port_, opaque);
 
   void wire__crate__api__dart_opaque__loop_back_vec_get_twin_normal(
-          NativePortType port_, List<dynamic> opaque) =>
+          NativePortType port_, JSAny opaque) =>
       wasmModule.wire__crate__api__dart_opaque__loop_back_vec_get_twin_normal(
           port_, opaque);
 
@@ -38126,7 +38083,7 @@ class RustLibWire implements BaseWire {
                   opaque);
 
   void wire__crate__api__deliberate_name_conflict__test_duplicated_module_names(
-          NativePortType port_, List<dynamic> s) =>
+          NativePortType port_, JSAny s) =>
       wasmModule
           .wire__crate__api__deliberate_name_conflict__test_duplicated_module_names(
               port_, s);
@@ -38238,19 +38195,19 @@ class RustLibWire implements BaseWire {
               port_, arg);
 
   void wire__crate__api__enumeration__func_enum_with_item_mixed_twin_normal(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__enumeration__func_enum_with_item_mixed_twin_normal(
               port_, arg);
 
   void wire__crate__api__enumeration__func_enum_with_item_struct_twin_normal(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__enumeration__func_enum_with_item_struct_twin_normal(
               port_, arg);
 
   void wire__crate__api__enumeration__func_enum_with_item_tuple_twin_normal(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__enumeration__func_enum_with_item_tuple_twin_normal(
               port_, arg);
@@ -38262,7 +38219,7 @@ class RustLibWire implements BaseWire {
               port_, weekday);
 
   void wire__crate__api__enumeration__handle_enum_struct_twin_normal(
-          NativePortType port_, List<dynamic> val) =>
+          NativePortType port_, JSAny val) =>
       wasmModule.wire__crate__api__enumeration__handle_enum_struct_twin_normal(
           port_, val);
 
@@ -38272,12 +38229,12 @@ class RustLibWire implements BaseWire {
           port_, input);
 
   void wire__crate__api__enumeration__multiply_by_ten_twin_normal(
-          NativePortType port_, List<dynamic> measure) =>
+          NativePortType port_, JSAny measure) =>
       wasmModule.wire__crate__api__enumeration__multiply_by_ten_twin_normal(
           port_, measure);
 
   void wire__crate__api__enumeration__print_note_twin_normal(
-          NativePortType port_, List<dynamic> note) =>
+          NativePortType port_, JSAny note) =>
       wasmModule.wire__crate__api__enumeration__print_note_twin_normal(
           port_, note);
 
@@ -38300,7 +38257,7 @@ class RustLibWire implements BaseWire {
           port_, address, payload);
 
   void wire__crate__api__event_listener__event_twin_normal_as_string_twin_normal(
-          NativePortType port_, List<dynamic> that) =>
+          NativePortType port_, JSAny that) =>
       wasmModule
           .wire__crate__api__event_listener__event_twin_normal_as_string_twin_normal(
               port_, that);
@@ -38330,13 +38287,13 @@ class RustLibWire implements BaseWire {
               port_, arg);
 
   void wire__crate__api__exception__custom_nested_error_return_error_twin_normal(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__exception__custom_nested_error_return_error_twin_normal(
               port_, arg);
 
   void wire__crate__api__exception__custom_struct_error_return_error_twin_normal(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__exception__custom_struct_error_return_error_twin_normal(
               port_, arg);
@@ -38348,13 +38305,13 @@ class RustLibWire implements BaseWire {
               port_, message);
 
   void wire__crate__api__exception__custom_struct_twin_normal_nonstatic_return_custom_struct_error_twin_normal(
-          NativePortType port_, List<dynamic> that) =>
+          NativePortType port_, JSAny that) =>
       wasmModule
           .wire__crate__api__exception__custom_struct_twin_normal_nonstatic_return_custom_struct_error_twin_normal(
               port_, that);
 
   void wire__crate__api__exception__custom_struct_twin_normal_nonstatic_return_custom_struct_ok_twin_normal(
-          NativePortType port_, List<dynamic> that) =>
+          NativePortType port_, JSAny that) =>
       wasmModule
           .wire__crate__api__exception__custom_struct_twin_normal_nonstatic_return_custom_struct_ok_twin_normal(
               port_, that);
@@ -38448,13 +38405,13 @@ class RustLibWire implements BaseWire {
               port_, value);
 
   void wire__crate__api__exception__some_struct_twin_normal_non_static_return_err_custom_error_twin_normal(
-          NativePortType port_, List<dynamic> that) =>
+          NativePortType port_, JSAny that) =>
       wasmModule
           .wire__crate__api__exception__some_struct_twin_normal_non_static_return_err_custom_error_twin_normal(
               port_, that);
 
   void wire__crate__api__exception__some_struct_twin_normal_non_static_return_ok_custom_error_twin_normal(
-          NativePortType port_, List<dynamic> that) =>
+          NativePortType port_, JSAny that) =>
       wasmModule
           .wire__crate__api__exception__some_struct_twin_normal_non_static_return_ok_custom_error_twin_normal(
               port_, that);
@@ -38495,7 +38452,7 @@ class RustLibWire implements BaseWire {
               port_, that);
 
   void wire__crate__api__external_impl__simple_translatable_external_struct_with_method_simple_external_method(
-          NativePortType port_, List<dynamic> that) =>
+          NativePortType port_, JSAny that) =>
       wasmModule
           .wire__crate__api__external_impl__simple_translatable_external_struct_with_method_simple_external_method(
               port_, that);
@@ -38519,7 +38476,7 @@ class RustLibWire implements BaseWire {
               port_, my_enum);
 
   void wire__crate__api__external_type_in_crate__use_imported_struct_twin_normal(
-          NativePortType port_, List<dynamic> my_struct) =>
+          NativePortType port_, JSAny my_struct) =>
       wasmModule
           .wire__crate__api__external_type_in_crate__use_imported_struct_twin_normal(
               port_, my_struct);
@@ -38595,42 +38552,42 @@ class RustLibWire implements BaseWire {
               port_);
 
   void wire__crate__api__inside_macro__func_macro_struct_twin_normal(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule.wire__crate__api__inside_macro__func_macro_struct_twin_normal(
           port_, arg);
 
   void wire__crate__api__map_and_set__func_hash_map_i32_i32_twin_normal(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__map_and_set__func_hash_map_i32_i32_twin_normal(
               port_, arg);
 
   void wire__crate__api__map_and_set__func_hash_map_string_bytes_twin_normal(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__map_and_set__func_hash_map_string_bytes_twin_normal(
               port_, arg);
 
   void wire__crate__api__map_and_set__func_hash_map_string_complex_enum_twin_normal(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__map_and_set__func_hash_map_string_complex_enum_twin_normal(
               port_, arg);
 
   void wire__crate__api__map_and_set__func_hash_map_string_simple_enum_twin_normal(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__map_and_set__func_hash_map_string_simple_enum_twin_normal(
               port_, arg);
 
   void wire__crate__api__map_and_set__func_hash_map_string_string_twin_normal(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__map_and_set__func_hash_map_string_string_twin_normal(
               port_, arg);
 
   void wire__crate__api__map_and_set__func_hash_map_string_struct_twin_normal(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__map_and_set__func_hash_map_string_struct_twin_normal(
               port_, arg);
@@ -38641,7 +38598,7 @@ class RustLibWire implements BaseWire {
           port_, arg);
 
   void wire__crate__api__map_and_set__func_hash_set_string_twin_normal(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__map_and_set__func_hash_set_string_twin_normal(
               port_, arg);
@@ -38659,7 +38616,7 @@ class RustLibWire implements BaseWire {
               port_, a, b);
 
   void wire__crate__api__method__concatenate_with_twin_normal_concatenate_twin_normal(
-          NativePortType port_, List<dynamic> that, String b) =>
+          NativePortType port_, JSAny that, String b) =>
       wasmModule
           .wire__crate__api__method__concatenate_with_twin_normal_concatenate_twin_normal(
               port_, that, b);
@@ -38677,17 +38634,13 @@ class RustLibWire implements BaseWire {
               port_, key, max, sink);
 
   void wire__crate__api__method__concatenate_with_twin_normal_handle_some_stream_sink_at_1_twin_normal(
-          NativePortType port_, List<dynamic> that, String sink) =>
+          NativePortType port_, JSAny that, String sink) =>
       wasmModule
           .wire__crate__api__method__concatenate_with_twin_normal_handle_some_stream_sink_at_1_twin_normal(
               port_, that, sink);
 
   void wire__crate__api__method__concatenate_with_twin_normal_handle_some_stream_sink_twin_normal(
-          NativePortType port_,
-          List<dynamic> that,
-          int key,
-          int max,
-          String sink) =>
+          NativePortType port_, JSAny that, int key, int max, String sink) =>
       wasmModule
           .wire__crate__api__method__concatenate_with_twin_normal_handle_some_stream_sink_twin_normal(
               port_, that, key, max, sink);
@@ -38699,7 +38652,7 @@ class RustLibWire implements BaseWire {
               port_, a);
 
   void wire__crate__api__method__concatenate_with_twin_normal_simple_getter_twin_normal(
-          NativePortType port_, List<dynamic> that) =>
+          NativePortType port_, JSAny that) =>
       wasmModule
           .wire__crate__api__method__concatenate_with_twin_normal_simple_getter_twin_normal(
               port_, that);
@@ -38714,7 +38667,7 @@ class RustLibWire implements BaseWire {
       wasmModule.wire__crate__api__method__get_sum_struct_twin_normal(port_);
 
   void wire__crate__api__method__my_callable_twin_normal_call(
-          NativePortType port_, List<dynamic> that, String two) =>
+          NativePortType port_, JSAny that, String two) =>
       wasmModule.wire__crate__api__method__my_callable_twin_normal_call(
           port_, that, two);
 
@@ -38725,7 +38678,7 @@ class RustLibWire implements BaseWire {
               port_, one);
 
   void wire__crate__api__method__simple_enum_twin_normal_simple_method_twin_normal(
-          NativePortType port_, List<dynamic> that) =>
+          NativePortType port_, JSAny that) =>
       wasmModule
           .wire__crate__api__method__simple_enum_twin_normal_simple_method_twin_normal(
               port_, that);
@@ -38737,19 +38690,19 @@ class RustLibWire implements BaseWire {
               port_, that);
 
   void wire__crate__api__method__simple_struct_twin_normal_arg_self_twin_normal(
-          NativePortType port_, List<dynamic> a, List<dynamic> b) =>
+          NativePortType port_, JSAny a, JSAny b) =>
       wasmModule
           .wire__crate__api__method__simple_struct_twin_normal_arg_self_twin_normal(
               port_, a, b);
 
   void wire__crate__api__method__simple_struct_twin_normal_receiver_borrow_twin_normal(
-          NativePortType port_, List<dynamic> that) =>
+          NativePortType port_, JSAny that) =>
       wasmModule
           .wire__crate__api__method__simple_struct_twin_normal_receiver_borrow_twin_normal(
               port_, that);
 
   void wire__crate__api__method__simple_struct_twin_normal_receiver_own_twin_normal(
-          NativePortType port_, List<dynamic> that) =>
+          NativePortType port_, JSAny that) =>
       wasmModule
           .wire__crate__api__method__simple_struct_twin_normal_receiver_own_twin_normal(
               port_, that);
@@ -38761,7 +38714,7 @@ class RustLibWire implements BaseWire {
               port_, one);
 
   void wire__crate__api__method__simple_struct_twin_normal_vec_self_twin_normal(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__method__simple_struct_twin_normal_vec_self_twin_normal(
               port_, arg);
@@ -38773,7 +38726,7 @@ class RustLibWire implements BaseWire {
               port_, a);
 
   void wire__crate__api__method__sum_with_twin_normal_sum_twin_normal(
-          NativePortType port_, List<dynamic> that, int y, int z) =>
+          NativePortType port_, JSAny that, int y, int z) =>
       wasmModule.wire__crate__api__method__sum_with_twin_normal_sum_twin_normal(
           port_, that, y, z);
 
@@ -38788,12 +38741,12 @@ class RustLibWire implements BaseWire {
           port_, sink);
 
   void wire__crate__api__mirror__first_number_twin_normal(
-          NativePortType port_, List<dynamic> nums) =>
+          NativePortType port_, JSAny nums) =>
       wasmModule.wire__crate__api__mirror__first_number_twin_normal(
           port_, nums);
 
   void wire__crate__api__mirror__first_sequence_twin_normal(
-          NativePortType port_, List<dynamic> seqs) =>
+          NativePortType port_, JSAny seqs) =>
       wasmModule.wire__crate__api__mirror__first_sequence_twin_normal(
           port_, seqs);
 
@@ -38812,7 +38765,7 @@ class RustLibWire implements BaseWire {
       wasmModule.wire__crate__api__mirror__get_message_twin_normal(port_);
 
   void wire__crate__api__mirror__is_app_embedded_twin_normal(
-          NativePortType port_, List<dynamic> app_settings) =>
+          NativePortType port_, JSAny app_settings) =>
       wasmModule.wire__crate__api__mirror__is_app_embedded_twin_normal(
           port_, app_settings);
 
@@ -38925,13 +38878,13 @@ class RustLibWire implements BaseWire {
           port_, arg);
 
   void wire__crate__api__misc_example__handle_complex_struct_twin_normal(
-          NativePortType port_, List<dynamic> s) =>
+          NativePortType port_, JSAny s) =>
       wasmModule
           .wire__crate__api__misc_example__handle_complex_struct_twin_normal(
               port_, s);
 
   void wire__crate__api__misc_example__handle_nested_struct_twin_normal(
-          NativePortType port_, List<dynamic> s) =>
+          NativePortType port_, JSAny s) =>
       wasmModule
           .wire__crate__api__misc_example__handle_nested_struct_twin_normal(
               port_, s);
@@ -38942,7 +38895,7 @@ class RustLibWire implements BaseWire {
           port_, s);
 
   void wire__crate__api__misc_example__handle_struct_twin_normal(
-          NativePortType port_, List<dynamic> arg, List<dynamic> boxed) =>
+          NativePortType port_, JSAny arg, JSAny boxed) =>
       wasmModule.wire__crate__api__misc_example__handle_struct_twin_normal(
           port_, arg, boxed);
 
@@ -38952,7 +38905,7 @@ class RustLibWire implements BaseWire {
           port_, v);
 
   void wire__crate__api__misc_example__list_of_primitive_enums_twin_normal(
-          NativePortType port_, List<dynamic> weekdays) =>
+          NativePortType port_, JSAny weekdays) =>
       wasmModule
           .wire__crate__api__misc_example__list_of_primitive_enums_twin_normal(
               port_, weekdays);
@@ -38964,12 +38917,12 @@ class RustLibWire implements BaseWire {
               port_, a, b);
 
   void wire__crate__api__misc_example__test_abc_enum_twin_normal(
-          NativePortType port_, List<dynamic> abc) =>
+          NativePortType port_, JSAny abc) =>
       wasmModule.wire__crate__api__misc_example__test_abc_enum_twin_normal(
           port_, abc);
 
   void wire__crate__api__misc_example__test_struct_with_enum_twin_normal(
-          NativePortType port_, List<dynamic> se) =>
+          NativePortType port_, JSAny se) =>
       wasmModule
           .wire__crate__api__misc_example__test_struct_with_enum_twin_normal(
               port_, se);
@@ -39038,7 +38991,7 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_deliberate_bad_field_c(
-              int that, List<dynamic> deliberate_bad_field_c) =>
+              int that, JSAny deliberate_bad_field_c) =>
           wasmModule
               .wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_deliberate_bad_field_c(
                   that, deliberate_bad_field_c);
@@ -39160,7 +39113,7 @@ class RustLibWire implements BaseWire {
               port_);
 
   void wire__crate__api__misc_no_twin_example_a__item_container_solution_two_twin_normal_get_item_contents_twin_normal(
-          NativePortType port_, List<dynamic> that) =>
+          NativePortType port_, JSAny that) =>
       wasmModule
           .wire__crate__api__misc_no_twin_example_a__item_container_solution_two_twin_normal_get_item_contents_twin_normal(
               port_, that);
@@ -39173,13 +39126,13 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__misc_no_twin_example_a__struct_with_custom_name_method_twin_normal_method_with_custom_name_twin_normal(
-              List<dynamic> that) =>
+              JSAny that) =>
           wasmModule
               .wire__crate__api__misc_no_twin_example_a__struct_with_custom_name_method_twin_normal_method_with_custom_name_twin_normal(
                   that);
 
   void wire__crate__api__misc_no_twin_example_a__struct_with_impl_block_in_another_file_f(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__misc_no_twin_example_a__struct_with_impl_block_in_another_file_f(
               port_, arg);
@@ -39203,7 +39156,7 @@ class RustLibWire implements BaseWire {
               port_);
 
   void wire__crate__api__misc_type__empty_struct_twin_normal(
-          NativePortType port_, List<dynamic> empty) =>
+          NativePortType port_, JSAny empty) =>
       wasmModule.wire__crate__api__misc_type__empty_struct_twin_normal(
           port_, empty);
 
@@ -39213,17 +39166,17 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__misc_type__func_return_unit_twin_normal(port_);
 
   void wire__crate__api__misc_type__handle_list_of_struct_twin_normal(
-          NativePortType port_, List<dynamic> l) =>
+          NativePortType port_, JSAny l) =>
       wasmModule.wire__crate__api__misc_type__handle_list_of_struct_twin_normal(
           port_, l);
 
   void wire__crate__api__misc_type__handle_string_list_twin_normal(
-          NativePortType port_, List<dynamic> names) =>
+          NativePortType port_, JSAny names) =>
       wasmModule.wire__crate__api__misc_type__handle_string_list_twin_normal(
           port_, names);
 
   void wire__crate__api__newtype_pattern__handle_newtype_twin_normal(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule.wire__crate__api__newtype_pattern__handle_newtype_twin_normal(
           port_, arg);
 
@@ -39241,13 +39194,13 @@ class RustLibWire implements BaseWire {
           Object? i64box,
           double? f64box,
           bool? boolbox,
-          List<dynamic>? structbox) =>
+          JSAny? structbox) =>
       wasmModule
           .wire__crate__api__optional__handle_option_box_arguments_twin_normal(
               port_, i8box, u8box, i32box, i64box, f64box, boolbox, structbox);
 
   void wire__crate__api__optional__handle_optional_increment_twin_normal(
-          NativePortType port_, List<dynamic>? opt) =>
+          NativePortType port_, JSAny? opt) =>
       wasmModule
           .wire__crate__api__optional__handle_optional_increment_twin_normal(
               port_, opt);
@@ -39263,7 +39216,7 @@ class RustLibWire implements BaseWire {
           port_, document);
 
   void wire__crate__api__optional__handle_vec_of_opts_twin_normal(
-          NativePortType port_, List<dynamic> opt) =>
+          NativePortType port_, JSAny opt) =>
       wasmModule.wire__crate__api__optional__handle_vec_of_opts_twin_normal(
           port_, opt);
 
@@ -39283,7 +39236,7 @@ class RustLibWire implements BaseWire {
           port_, arg);
 
   void wire__crate__api__ownership__borrow_slice_string_twin_normal(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule.wire__crate__api__ownership__borrow_slice_string_twin_normal(
           port_, arg);
 
@@ -39303,7 +39256,7 @@ class RustLibWire implements BaseWire {
           port_, arg);
 
   void wire__crate__api__ownership__borrow_struct_twin_normal(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule.wire__crate__api__ownership__borrow_struct_twin_normal(
           port_, arg);
 
@@ -39360,7 +39313,7 @@ class RustLibWire implements BaseWire {
               port_, blob);
 
   void wire__crate__api__pseudo_manual__array_twin_rust_async__func_test_id_twin_rust_async(
-          NativePortType port_, List<dynamic> id) =>
+          NativePortType port_, JSAny id) =>
       wasmModule
           .wire__crate__api__pseudo_manual__array_twin_rust_async__func_test_id_twin_rust_async(
               port_, id);
@@ -39384,7 +39337,7 @@ class RustLibWire implements BaseWire {
               port_, array);
 
   void wire__crate__api__pseudo_manual__array_twin_rust_async__nested_id_twin_rust_async(
-          NativePortType port_, List<dynamic> id) =>
+          NativePortType port_, JSAny id) =>
       wasmModule
           .wire__crate__api__pseudo_manual__array_twin_rust_async__nested_id_twin_rust_async(
               port_, id);
@@ -39402,19 +39355,19 @@ class RustLibWire implements BaseWire {
               port_, id);
 
   void wire__crate__api__pseudo_manual__array_twin_rust_async__return_boxed_raw_feed_id_twin_rust_async(
-          NativePortType port_, List<dynamic> id) =>
+          NativePortType port_, JSAny id) =>
       wasmModule
           .wire__crate__api__pseudo_manual__array_twin_rust_async__return_boxed_raw_feed_id_twin_rust_async(
               port_, id);
 
   void wire__crate__api__pseudo_manual__array_twin_rust_async__use_boxed_blob_twin_rust_async(
-          NativePortType port_, List<dynamic> blob) =>
+          NativePortType port_, JSAny blob) =>
       wasmModule
           .wire__crate__api__pseudo_manual__array_twin_rust_async__use_boxed_blob_twin_rust_async(
               port_, blob);
 
   void wire__crate__api__pseudo_manual__array_twin_rust_async__use_msgid_twin_rust_async(
-          NativePortType port_, List<dynamic> id) =>
+          NativePortType port_, JSAny id) =>
       wasmModule
           .wire__crate__api__pseudo_manual__array_twin_rust_async__use_msgid_twin_rust_async(
               port_, id);
@@ -39626,7 +39579,7 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__array_twin_sync__func_test_id_twin_sync(
-              List<dynamic> id) =>
+              JSAny id) =>
           wasmModule
               .wire__crate__api__pseudo_manual__array_twin_sync__func_test_id_twin_sync(
                   id);
@@ -39650,7 +39603,7 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__array_twin_sync__nested_id_twin_sync(
-              List<dynamic> id) =>
+              JSAny id) =>
           wasmModule
               .wire__crate__api__pseudo_manual__array_twin_sync__nested_id_twin_sync(
                   id);
@@ -39671,21 +39624,21 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__array_twin_sync__return_boxed_raw_feed_id_twin_sync(
-              List<dynamic> id) =>
+              JSAny id) =>
           wasmModule
               .wire__crate__api__pseudo_manual__array_twin_sync__return_boxed_raw_feed_id_twin_sync(
                   id);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__array_twin_sync__use_boxed_blob_twin_sync(
-              List<dynamic> blob) =>
+              JSAny blob) =>
           wasmModule
               .wire__crate__api__pseudo_manual__array_twin_sync__use_boxed_blob_twin_sync(
                   blob);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__array_twin_sync__use_msgid_twin_sync(
-              List<dynamic> id) =>
+              JSAny id) =>
           wasmModule
               .wire__crate__api__pseudo_manual__array_twin_sync__use_msgid_twin_sync(
                   id);
@@ -39808,13 +39761,13 @@ class RustLibWire implements BaseWire {
               port_, ptr_, rust_vec_len_, data_len_);
 
   void wire__crate__api__pseudo_manual__attribute_twin_rust_async__handle_customized_struct_twin_rust_async(
-          NativePortType port_, List<dynamic> val) =>
+          NativePortType port_, JSAny val) =>
       wasmModule
           .wire__crate__api__pseudo_manual__attribute_twin_rust_async__handle_customized_struct_twin_rust_async(
               port_, val);
 
   void wire__crate__api__pseudo_manual__attribute_twin_rust_async__next_user_id_twin_rust_async(
-          NativePortType port_, List<dynamic> user_id) =>
+          NativePortType port_, JSAny user_id) =>
       wasmModule
           .wire__crate__api__pseudo_manual__attribute_twin_rust_async__next_user_id_twin_rust_async(
               port_, user_id);
@@ -39857,14 +39810,14 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__attribute_twin_sync__handle_customized_struct_twin_sync(
-              List<dynamic> val) =>
+              JSAny val) =>
           wasmModule
               .wire__crate__api__pseudo_manual__attribute_twin_sync__handle_customized_struct_twin_sync(
                   val);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__attribute_twin_sync__next_user_id_twin_sync(
-              List<dynamic> user_id) =>
+              JSAny user_id) =>
           wasmModule
               .wire__crate__api__pseudo_manual__attribute_twin_sync__next_user_id_twin_sync(
                   user_id);
@@ -39888,7 +39841,7 @@ class RustLibWire implements BaseWire {
                   ptr_, rust_vec_len_, data_len_);
 
   void wire__crate__api__pseudo_manual__basic__example_basic_type_basic_general_enum_twin_normal_twin_normal(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic__example_basic_type_basic_general_enum_twin_normal_twin_normal(
               port_, arg);
@@ -39900,7 +39853,7 @@ class RustLibWire implements BaseWire {
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic__example_basic_type_basic_struct_twin_normal_twin_normal(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic__example_basic_type_basic_struct_twin_normal_twin_normal(
               port_, arg);
@@ -40008,31 +39961,31 @@ class RustLibWire implements BaseWire {
               port_, arg, expect);
 
   void wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_basic_general_enum_twin_normal_twin_normal(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_basic_general_enum_twin_normal_twin_normal(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_basic_primitive_enum_twin_normal_twin_normal(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_basic_primitive_enum_twin_normal_twin_normal(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_basic_struct_twin_normal_twin_normal(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_basic_struct_twin_normal_twin_normal(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_bool_twin_normal(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_bool_twin_normal(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_bytes_twin_normal(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_bytes_twin_normal(
               port_, arg);
@@ -40074,7 +40027,7 @@ class RustLibWire implements BaseWire {
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_string_twin_normal(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_string_twin_normal(
               port_, arg);
@@ -40104,31 +40057,31 @@ class RustLibWire implements BaseWire {
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_basic_general_enum_twin_rust_async_twin_rust_async(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_basic_general_enum_twin_rust_async_twin_rust_async(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_basic_primitive_enum_twin_rust_async_twin_rust_async(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_basic_primitive_enum_twin_rust_async_twin_rust_async(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_basic_struct_twin_rust_async_twin_rust_async(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_basic_struct_twin_rust_async_twin_rust_async(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_bool_twin_rust_async(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_bool_twin_rust_async(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_bytes_twin_rust_async(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_bytes_twin_rust_async(
               port_, arg);
@@ -40170,7 +40123,7 @@ class RustLibWire implements BaseWire {
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_string_twin_rust_async(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_string_twin_rust_async(
               port_, arg);
@@ -40489,35 +40442,35 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_basic_general_enum_twin_sync_twin_sync(
-              List<dynamic> arg) =>
+              JSAny arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_basic_general_enum_twin_sync_twin_sync(
                   arg);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_basic_primitive_enum_twin_sync_twin_sync(
-              List<dynamic> arg) =>
+              JSAny arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_basic_primitive_enum_twin_sync_twin_sync(
                   arg);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_basic_struct_twin_sync_twin_sync(
-              List<dynamic> arg) =>
+              JSAny arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_basic_struct_twin_sync_twin_sync(
                   arg);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_bool_twin_sync(
-              List<dynamic> arg) =>
+              JSAny arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_bool_twin_sync(
                   arg);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_bytes_twin_sync(
-              List<dynamic> arg) =>
+              JSAny arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_bytes_twin_sync(
                   arg);
@@ -40566,7 +40519,7 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_string_twin_sync(
-              List<dynamic> arg) =>
+              JSAny arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_string_twin_sync(
                   arg);
@@ -40744,241 +40697,241 @@ class RustLibWire implements BaseWire {
                   ptr_, rust_vec_len_, data_len_);
 
   void wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_basic_general_enum_twin_normal_twin_normal(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_basic_general_enum_twin_normal_twin_normal(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_basic_primitive_enum_twin_normal_twin_normal(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_basic_primitive_enum_twin_normal_twin_normal(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_basic_struct_twin_normal_twin_normal(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_basic_struct_twin_normal_twin_normal(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_bool_twin_normal(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_bool_twin_normal(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_bytes_twin_normal(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_bytes_twin_normal(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_f32_twin_normal(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_f32_twin_normal(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_f64_twin_normal(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_f64_twin_normal(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_i128_twin_normal(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_i128_twin_normal(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_i16_twin_normal(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_i16_twin_normal(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_i32_twin_normal(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_i32_twin_normal(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_i64_twin_normal(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_i64_twin_normal(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_i8_twin_normal(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_i8_twin_normal(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_isize_twin_normal(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_isize_twin_normal(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_string_twin_normal(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_string_twin_normal(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_u128_twin_normal(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_u128_twin_normal(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_u16_twin_normal(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_u16_twin_normal(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_u32_twin_normal(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_u32_twin_normal(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_u64_twin_normal(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_u64_twin_normal(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_u8_twin_normal(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_u8_twin_normal(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_usize_twin_normal(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_usize_twin_normal(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_basic_general_enum_twin_rust_async_twin_rust_async(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_basic_general_enum_twin_rust_async_twin_rust_async(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_basic_primitive_enum_twin_rust_async_twin_rust_async(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_basic_primitive_enum_twin_rust_async_twin_rust_async(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_basic_struct_twin_rust_async_twin_rust_async(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_basic_struct_twin_rust_async_twin_rust_async(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_bool_twin_rust_async(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_bool_twin_rust_async(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_bytes_twin_rust_async(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_bytes_twin_rust_async(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_f32_twin_rust_async(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_f32_twin_rust_async(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_f64_twin_rust_async(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_f64_twin_rust_async(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_i128_twin_rust_async(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_i128_twin_rust_async(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_i16_twin_rust_async(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_i16_twin_rust_async(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_i32_twin_rust_async(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_i32_twin_rust_async(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_i64_twin_rust_async(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_i64_twin_rust_async(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_i8_twin_rust_async(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_i8_twin_rust_async(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_isize_twin_rust_async(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_isize_twin_rust_async(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_string_twin_rust_async(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_string_twin_rust_async(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_u128_twin_rust_async(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_u128_twin_rust_async(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_u16_twin_rust_async(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_u16_twin_rust_async(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_u32_twin_rust_async(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_u32_twin_rust_async(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_u64_twin_rust_async(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_u64_twin_rust_async(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_u8_twin_rust_async(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_u8_twin_rust_async(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_usize_twin_rust_async(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_usize_twin_rust_async(
               port_, arg);
@@ -41345,140 +41298,140 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_basic_general_enum_twin_sync_twin_sync(
-              List<dynamic> arg) =>
+              JSAny arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_basic_general_enum_twin_sync_twin_sync(
                   arg);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_basic_primitive_enum_twin_sync_twin_sync(
-              List<dynamic> arg) =>
+              JSAny arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_basic_primitive_enum_twin_sync_twin_sync(
                   arg);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_basic_struct_twin_sync_twin_sync(
-              List<dynamic> arg) =>
+              JSAny arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_basic_struct_twin_sync_twin_sync(
                   arg);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_bool_twin_sync(
-              List<dynamic> arg) =>
+              JSAny arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_bool_twin_sync(
                   arg);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_bytes_twin_sync(
-              List<dynamic> arg) =>
+              JSAny arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_bytes_twin_sync(
                   arg);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_f32_twin_sync(
-              List<dynamic> arg) =>
+              JSAny arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_f32_twin_sync(
                   arg);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_f64_twin_sync(
-              List<dynamic> arg) =>
+              JSAny arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_f64_twin_sync(
                   arg);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_i128_twin_sync(
-              List<dynamic> arg) =>
+              JSAny arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_i128_twin_sync(
                   arg);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_i16_twin_sync(
-              List<dynamic> arg) =>
+              JSAny arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_i16_twin_sync(
                   arg);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_i32_twin_sync(
-              List<dynamic> arg) =>
+              JSAny arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_i32_twin_sync(
                   arg);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_i64_twin_sync(
-              List<dynamic> arg) =>
+              JSAny arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_i64_twin_sync(
                   arg);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_i8_twin_sync(
-              List<dynamic> arg) =>
+              JSAny arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_i8_twin_sync(
                   arg);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_isize_twin_sync(
-              List<dynamic> arg) =>
+              JSAny arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_isize_twin_sync(
                   arg);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_string_twin_sync(
-              List<dynamic> arg) =>
+              JSAny arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_string_twin_sync(
                   arg);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_u128_twin_sync(
-              List<dynamic> arg) =>
+              JSAny arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_u128_twin_sync(
                   arg);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_u16_twin_sync(
-              List<dynamic> arg) =>
+              JSAny arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_u16_twin_sync(
                   arg);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_u32_twin_sync(
-              List<dynamic> arg) =>
+              JSAny arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_u32_twin_sync(
                   arg);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_u64_twin_sync(
-              List<dynamic> arg) =>
+              JSAny arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_u64_twin_sync(
                   arg);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_u8_twin_sync(
-              List<dynamic> arg) =>
+              JSAny arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_u8_twin_sync(
                   arg);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_usize_twin_sync(
-              List<dynamic> arg) =>
+              JSAny arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_usize_twin_sync(
                   arg);
@@ -41664,7 +41617,7 @@ class RustLibWire implements BaseWire {
                   ptr_, rust_vec_len_, data_len_);
 
   void wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_basic_general_enum_twin_normal_twin_normal(
-          NativePortType port_, List<dynamic>? arg) =>
+          NativePortType port_, JSAny? arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_basic_general_enum_twin_normal_twin_normal(
               port_, arg);
@@ -41676,7 +41629,7 @@ class RustLibWire implements BaseWire {
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_basic_struct_twin_normal_twin_normal(
-          NativePortType port_, List<dynamic>? arg) =>
+          NativePortType port_, JSAny? arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_basic_struct_twin_normal_twin_normal(
               port_, arg);
@@ -41784,7 +41737,7 @@ class RustLibWire implements BaseWire {
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_basic_general_enum_twin_rust_async_twin_rust_async(
-          NativePortType port_, List<dynamic>? arg) =>
+          NativePortType port_, JSAny? arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_basic_general_enum_twin_rust_async_twin_rust_async(
               port_, arg);
@@ -41796,7 +41749,7 @@ class RustLibWire implements BaseWire {
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_basic_struct_twin_rust_async_twin_rust_async(
-          NativePortType port_, List<dynamic>? arg) =>
+          NativePortType port_, JSAny? arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_basic_struct_twin_rust_async_twin_rust_async(
               port_, arg);
@@ -42265,7 +42218,7 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_basic_general_enum_twin_sync_twin_sync(
-              List<dynamic>? arg) =>
+              JSAny? arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_basic_general_enum_twin_sync_twin_sync(
                   arg);
@@ -42279,7 +42232,7 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_basic_struct_twin_sync_twin_sync(
-              List<dynamic>? arg) =>
+              JSAny? arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_basic_struct_twin_sync_twin_sync(
                   arg);
@@ -42584,7 +42537,7 @@ class RustLibWire implements BaseWire {
                   ptr_, rust_vec_len_, data_len_);
 
   void wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_basic_general_enum_twin_rust_async_twin_rust_async(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_basic_general_enum_twin_rust_async_twin_rust_async(
               port_, arg);
@@ -42596,7 +42549,7 @@ class RustLibWire implements BaseWire {
               port_, arg);
 
   void wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_basic_struct_twin_rust_async_twin_rust_async(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_basic_struct_twin_rust_async_twin_rust_async(
               port_, arg);
@@ -43065,7 +43018,7 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_basic_general_enum_twin_sync_twin_sync(
-              List<dynamic> arg) =>
+              JSAny arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_basic_general_enum_twin_sync_twin_sync(
                   arg);
@@ -43079,7 +43032,7 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_basic_struct_twin_sync_twin_sync(
-              List<dynamic> arg) =>
+              JSAny arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_basic_struct_twin_sync_twin_sync(
                   arg);
@@ -43396,7 +43349,7 @@ class RustLibWire implements BaseWire {
               port_, raw);
 
   void wire__crate__api__pseudo_manual__benchmark_api__benchmark_binary_tree_input_twin_normal(
-          NativePortType port_, List<dynamic> tree) =>
+          NativePortType port_, JSAny tree) =>
       wasmModule
           .wire__crate__api__pseudo_manual__benchmark_api__benchmark_binary_tree_input_twin_normal(
               port_, tree);
@@ -43432,7 +43385,7 @@ class RustLibWire implements BaseWire {
               port_, raw);
 
   void wire__crate__api__pseudo_manual__benchmark_api__benchmark_blob_input_twin_normal(
-          NativePortType port_, List<dynamic> blob) =>
+          NativePortType port_, JSAny blob) =>
       wasmModule
           .wire__crate__api__pseudo_manual__benchmark_api__benchmark_blob_input_twin_normal(
               port_, blob);
@@ -43486,7 +43439,7 @@ class RustLibWire implements BaseWire {
               port_, raw);
 
   void wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_binary_tree_input_twin_rust_async(
-          NativePortType port_, List<dynamic> tree) =>
+          NativePortType port_, JSAny tree) =>
       wasmModule
           .wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_binary_tree_input_twin_rust_async(
               port_, tree);
@@ -43522,7 +43475,7 @@ class RustLibWire implements BaseWire {
               port_, raw);
 
   void wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_blob_input_twin_rust_async(
-          NativePortType port_, List<dynamic> blob) =>
+          NativePortType port_, JSAny blob) =>
       wasmModule
           .wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_blob_input_twin_rust_async(
               port_, blob);
@@ -43849,7 +43802,7 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_binary_tree_input_twin_sync(
-              List<dynamic> tree) =>
+              JSAny tree) =>
           wasmModule
               .wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_binary_tree_input_twin_sync(
                   tree);
@@ -43891,7 +43844,7 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_blob_input_twin_sync(
-              List<dynamic> blob) =>
+              JSAny blob) =>
           wasmModule
               .wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_blob_input_twin_sync(
                   blob);
@@ -44090,19 +44043,19 @@ class RustLibWire implements BaseWire {
               port_, d);
 
   void wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__handle_durations_twin_rust_async(
-          NativePortType port_, List<dynamic> durations, Object since) =>
+          NativePortType port_, JSAny durations, Object since) =>
       wasmModule
           .wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__handle_durations_twin_rust_async(
               port_, durations, since);
 
   void wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__handle_timestamps_twin_rust_async(
-          NativePortType port_, List<dynamic> timestamps, Object epoch) =>
+          NativePortType port_, JSAny timestamps, Object epoch) =>
       wasmModule
           .wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__handle_timestamps_twin_rust_async(
               port_, timestamps, epoch);
 
   void wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__how_long_does_it_take_twin_rust_async(
-          NativePortType port_, List<dynamic> mine) =>
+          NativePortType port_, JSAny mine) =>
       wasmModule
           .wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__how_long_does_it_take_twin_rust_async(
               port_, mine);
@@ -44334,21 +44287,21 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__chrono_type_twin_sync__handle_durations_twin_sync(
-              List<dynamic> durations, Object since) =>
+              JSAny durations, Object since) =>
           wasmModule
               .wire__crate__api__pseudo_manual__chrono_type_twin_sync__handle_durations_twin_sync(
                   durations, since);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__chrono_type_twin_sync__handle_timestamps_twin_sync(
-              List<dynamic> timestamps, Object epoch) =>
+              JSAny timestamps, Object epoch) =>
           wasmModule
               .wire__crate__api__pseudo_manual__chrono_type_twin_sync__handle_timestamps_twin_sync(
                   timestamps, epoch);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__chrono_type_twin_sync__how_long_does_it_take_twin_sync(
-              List<dynamic> mine) =>
+              JSAny mine) =>
           wasmModule
               .wire__crate__api__pseudo_manual__chrono_type_twin_sync__how_long_does_it_take_twin_sync(
                   mine);
@@ -44486,7 +44439,7 @@ class RustLibWire implements BaseWire {
               port_);
 
   void wire__crate__api__pseudo_manual__comment_twin_rust_async__struct_with_comments_twin_rust_async_instance_method_twin_rust_async(
-          NativePortType port_, List<dynamic> that) =>
+          NativePortType port_, JSAny that) =>
       wasmModule
           .wire__crate__api__pseudo_manual__comment_twin_rust_async__struct_with_comments_twin_rust_async_instance_method_twin_rust_async(
               port_, that);
@@ -44604,7 +44557,7 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__comment_twin_sync__struct_with_comments_twin_sync_instance_method_twin_sync(
-              List<dynamic> that) =>
+              JSAny that) =>
           wasmModule
               .wire__crate__api__pseudo_manual__comment_twin_sync__struct_with_comments_twin_sync_instance_method_twin_sync(
                   that);
@@ -44968,19 +44921,19 @@ class RustLibWire implements BaseWire {
               port_, id);
 
   void wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__get_enum_dart_opaque_twin_rust_async(
-          NativePortType port_, List<dynamic> opaque) =>
+          NativePortType port_, JSAny opaque) =>
       wasmModule
           .wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__get_enum_dart_opaque_twin_rust_async(
               port_, opaque);
 
   void wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__get_nested_dart_opaque_twin_rust_async(
-          NativePortType port_, List<dynamic> opaque) =>
+          NativePortType port_, JSAny opaque) =>
       wasmModule
           .wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__get_nested_dart_opaque_twin_rust_async(
               port_, opaque);
 
   void wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__loop_back_array_get_twin_rust_async(
-          NativePortType port_, List<dynamic> opaque) =>
+          NativePortType port_, JSAny opaque) =>
       wasmModule
           .wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__loop_back_array_get_twin_rust_async(
               port_, opaque);
@@ -45010,7 +44963,7 @@ class RustLibWire implements BaseWire {
               port_, opaque);
 
   void wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__loop_back_vec_get_twin_rust_async(
-          NativePortType port_, List<dynamic> opaque) =>
+          NativePortType port_, JSAny opaque) =>
       wasmModule
           .wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__loop_back_vec_get_twin_rust_async(
               port_, opaque);
@@ -45358,21 +45311,21 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync__get_enum_dart_opaque_twin_sync(
-              List<dynamic> opaque) =>
+              JSAny opaque) =>
           wasmModule
               .wire__crate__api__pseudo_manual__dart_opaque_twin_sync__get_enum_dart_opaque_twin_sync(
                   opaque);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync__get_nested_dart_opaque_twin_sync(
-              List<dynamic> opaque) =>
+              JSAny opaque) =>
           wasmModule
               .wire__crate__api__pseudo_manual__dart_opaque_twin_sync__get_nested_dart_opaque_twin_sync(
                   opaque);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync__loop_back_array_get_twin_sync(
-              List<dynamic> opaque) =>
+              JSAny opaque) =>
           wasmModule
               .wire__crate__api__pseudo_manual__dart_opaque_twin_sync__loop_back_array_get_twin_sync(
                   opaque);
@@ -45407,7 +45360,7 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync__loop_back_vec_get_twin_sync(
-              List<dynamic> opaque) =>
+              JSAny opaque) =>
           wasmModule
               .wire__crate__api__pseudo_manual__dart_opaque_twin_sync__loop_back_vec_get_twin_sync(
                   opaque);
@@ -45746,19 +45699,19 @@ class RustLibWire implements BaseWire {
               port_, arg);
 
   void wire__crate__api__pseudo_manual__enumeration_twin_rust_async__func_enum_with_item_mixed_twin_rust_async(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__enumeration_twin_rust_async__func_enum_with_item_mixed_twin_rust_async(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__enumeration_twin_rust_async__func_enum_with_item_struct_twin_rust_async(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__enumeration_twin_rust_async__func_enum_with_item_struct_twin_rust_async(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__enumeration_twin_rust_async__func_enum_with_item_tuple_twin_rust_async(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__enumeration_twin_rust_async__func_enum_with_item_tuple_twin_rust_async(
               port_, arg);
@@ -45770,7 +45723,7 @@ class RustLibWire implements BaseWire {
               port_, weekday);
 
   void wire__crate__api__pseudo_manual__enumeration_twin_rust_async__handle_enum_struct_twin_rust_async(
-          NativePortType port_, List<dynamic> val) =>
+          NativePortType port_, JSAny val) =>
       wasmModule
           .wire__crate__api__pseudo_manual__enumeration_twin_rust_async__handle_enum_struct_twin_rust_async(
               port_, val);
@@ -45782,13 +45735,13 @@ class RustLibWire implements BaseWire {
               port_, input);
 
   void wire__crate__api__pseudo_manual__enumeration_twin_rust_async__multiply_by_ten_twin_rust_async(
-          NativePortType port_, List<dynamic> measure) =>
+          NativePortType port_, JSAny measure) =>
       wasmModule
           .wire__crate__api__pseudo_manual__enumeration_twin_rust_async__multiply_by_ten_twin_rust_async(
               port_, measure);
 
   void wire__crate__api__pseudo_manual__enumeration_twin_rust_async__print_note_twin_rust_async(
-          NativePortType port_, List<dynamic> note) =>
+          NativePortType port_, JSAny note) =>
       wasmModule
           .wire__crate__api__pseudo_manual__enumeration_twin_rust_async__print_note_twin_rust_async(
               port_, note);
@@ -45989,21 +45942,21 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__enumeration_twin_sync__func_enum_with_item_mixed_twin_sync(
-              List<dynamic> arg) =>
+              JSAny arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__enumeration_twin_sync__func_enum_with_item_mixed_twin_sync(
                   arg);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__enumeration_twin_sync__func_enum_with_item_struct_twin_sync(
-              List<dynamic> arg) =>
+              JSAny arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__enumeration_twin_sync__func_enum_with_item_struct_twin_sync(
                   arg);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__enumeration_twin_sync__func_enum_with_item_tuple_twin_sync(
-              List<dynamic> arg) =>
+              JSAny arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__enumeration_twin_sync__func_enum_with_item_tuple_twin_sync(
                   arg);
@@ -46017,7 +45970,7 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__enumeration_twin_sync__handle_enum_struct_twin_sync(
-              List<dynamic> val) =>
+              JSAny val) =>
           wasmModule
               .wire__crate__api__pseudo_manual__enumeration_twin_sync__handle_enum_struct_twin_sync(
                   val);
@@ -46031,14 +45984,14 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__enumeration_twin_sync__multiply_by_ten_twin_sync(
-              List<dynamic> measure) =>
+              JSAny measure) =>
           wasmModule
               .wire__crate__api__pseudo_manual__enumeration_twin_sync__multiply_by_ten_twin_sync(
                   measure);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__enumeration_twin_sync__print_note_twin_sync(
-              List<dynamic> note) =>
+              JSAny note) =>
           wasmModule
               .wire__crate__api__pseudo_manual__enumeration_twin_sync__print_note_twin_sync(
                   note);
@@ -46146,7 +46099,7 @@ class RustLibWire implements BaseWire {
               port_, address, payload);
 
   void wire__crate__api__pseudo_manual__event_listener_twin_rust_async__event_twin_rust_async_as_string_twin_rust_async(
-          NativePortType port_, List<dynamic> that) =>
+          NativePortType port_, JSAny that) =>
       wasmModule
           .wire__crate__api__pseudo_manual__event_listener_twin_rust_async__event_twin_rust_async_as_string_twin_rust_async(
               port_, that);
@@ -46248,13 +46201,13 @@ class RustLibWire implements BaseWire {
               port_, arg);
 
   void wire__crate__api__pseudo_manual__exception_twin_rust_async__custom_nested_error_return_error_twin_rust_async(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__exception_twin_rust_async__custom_nested_error_return_error_twin_rust_async(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__exception_twin_rust_async__custom_struct_error_return_error_twin_rust_async(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__exception_twin_rust_async__custom_struct_error_return_error_twin_rust_async(
               port_, arg);
@@ -46266,13 +46219,13 @@ class RustLibWire implements BaseWire {
               port_, message);
 
   void wire__crate__api__pseudo_manual__exception_twin_rust_async__custom_struct_twin_rust_async_nonstatic_return_custom_struct_error_twin_rust_async(
-          NativePortType port_, List<dynamic> that) =>
+          NativePortType port_, JSAny that) =>
       wasmModule
           .wire__crate__api__pseudo_manual__exception_twin_rust_async__custom_struct_twin_rust_async_nonstatic_return_custom_struct_error_twin_rust_async(
               port_, that);
 
   void wire__crate__api__pseudo_manual__exception_twin_rust_async__custom_struct_twin_rust_async_nonstatic_return_custom_struct_ok_twin_rust_async(
-          NativePortType port_, List<dynamic> that) =>
+          NativePortType port_, JSAny that) =>
       wasmModule
           .wire__crate__api__pseudo_manual__exception_twin_rust_async__custom_struct_twin_rust_async_nonstatic_return_custom_struct_ok_twin_rust_async(
               port_, that);
@@ -46368,13 +46321,13 @@ class RustLibWire implements BaseWire {
               port_, value);
 
   void wire__crate__api__pseudo_manual__exception_twin_rust_async__some_struct_twin_rust_async_non_static_return_err_custom_error_twin_rust_async(
-          NativePortType port_, List<dynamic> that) =>
+          NativePortType port_, JSAny that) =>
       wasmModule
           .wire__crate__api__pseudo_manual__exception_twin_rust_async__some_struct_twin_rust_async_non_static_return_err_custom_error_twin_rust_async(
               port_, that);
 
   void wire__crate__api__pseudo_manual__exception_twin_rust_async__some_struct_twin_rust_async_non_static_return_ok_custom_error_twin_rust_async(
-          NativePortType port_, List<dynamic> that) =>
+          NativePortType port_, JSAny that) =>
       wasmModule
           .wire__crate__api__pseudo_manual__exception_twin_rust_async__some_struct_twin_rust_async_non_static_return_ok_custom_error_twin_rust_async(
               port_, that);
@@ -46944,14 +46897,14 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__custom_nested_error_return_error_twin_sync(
-              List<dynamic> arg) =>
+              JSAny arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__exception_twin_sync__custom_nested_error_return_error_twin_sync(
                   arg);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__custom_struct_error_return_error_twin_sync(
-              List<dynamic> arg) =>
+              JSAny arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__exception_twin_sync__custom_struct_error_return_error_twin_sync(
                   arg);
@@ -46965,14 +46918,14 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__custom_struct_twin_sync_nonstatic_return_custom_struct_error_twin_sync(
-              List<dynamic> that) =>
+              JSAny that) =>
           wasmModule
               .wire__crate__api__pseudo_manual__exception_twin_sync__custom_struct_twin_sync_nonstatic_return_custom_struct_error_twin_sync(
                   that);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__custom_struct_twin_sync_nonstatic_return_custom_struct_ok_twin_sync(
-              List<dynamic> that) =>
+              JSAny that) =>
           wasmModule
               .wire__crate__api__pseudo_manual__exception_twin_sync__custom_struct_twin_sync_nonstatic_return_custom_struct_ok_twin_sync(
                   that);
@@ -47058,14 +47011,14 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__some_struct_twin_sync_non_static_return_err_custom_error_twin_sync(
-              List<dynamic> that) =>
+              JSAny that) =>
           wasmModule
               .wire__crate__api__pseudo_manual__exception_twin_sync__some_struct_twin_sync_non_static_return_err_custom_error_twin_sync(
                   that);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__some_struct_twin_sync_non_static_return_ok_custom_error_twin_sync(
-              List<dynamic> that) =>
+              JSAny that) =>
           wasmModule
               .wire__crate__api__pseudo_manual__exception_twin_sync__some_struct_twin_sync_non_static_return_ok_custom_error_twin_sync(
                   that);
@@ -47372,7 +47325,7 @@ class RustLibWire implements BaseWire {
               port_, my_enum);
 
   void wire__crate__api__pseudo_manual__external_type_in_crate_twin_rust_async__use_imported_struct_twin_rust_async(
-          NativePortType port_, List<dynamic> my_struct) =>
+          NativePortType port_, JSAny my_struct) =>
       wasmModule
           .wire__crate__api__pseudo_manual__external_type_in_crate_twin_rust_async__use_imported_struct_twin_rust_async(
               port_, my_struct);
@@ -47468,7 +47421,7 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__external_type_in_crate_twin_sync__use_imported_struct_twin_sync(
-              List<dynamic> my_struct) =>
+              JSAny my_struct) =>
           wasmModule
               .wire__crate__api__pseudo_manual__external_type_in_crate_twin_sync__use_imported_struct_twin_sync(
                   my_struct);
@@ -47702,37 +47655,37 @@ class RustLibWire implements BaseWire {
               port_);
 
   void wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_map_i32_i32_twin_rust_async(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_map_i32_i32_twin_rust_async(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_map_string_bytes_twin_rust_async(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_map_string_bytes_twin_rust_async(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_map_string_complex_enum_twin_rust_async(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_map_string_complex_enum_twin_rust_async(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_map_string_simple_enum_twin_rust_async(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_map_string_simple_enum_twin_rust_async(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_map_string_string_twin_rust_async(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_map_string_string_twin_rust_async(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_map_string_struct_twin_rust_async(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_map_string_struct_twin_rust_async(
               port_, arg);
@@ -47744,7 +47697,7 @@ class RustLibWire implements BaseWire {
               port_, arg);
 
   void wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_set_string_twin_rust_async(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_set_string_twin_rust_async(
               port_, arg);
@@ -47895,42 +47848,42 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_map_i32_i32_twin_sync(
-              List<dynamic> arg) =>
+              JSAny arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_map_i32_i32_twin_sync(
                   arg);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_map_string_bytes_twin_sync(
-              List<dynamic> arg) =>
+              JSAny arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_map_string_bytes_twin_sync(
                   arg);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_map_string_complex_enum_twin_sync(
-              List<dynamic> arg) =>
+              JSAny arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_map_string_complex_enum_twin_sync(
                   arg);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_map_string_simple_enum_twin_sync(
-              List<dynamic> arg) =>
+              JSAny arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_map_string_simple_enum_twin_sync(
                   arg);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_map_string_string_twin_sync(
-              List<dynamic> arg) =>
+              JSAny arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_map_string_string_twin_sync(
                   arg);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_map_string_struct_twin_sync(
-              List<dynamic> arg) =>
+              JSAny arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_map_string_struct_twin_sync(
                   arg);
@@ -47944,7 +47897,7 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_set_string_twin_sync(
-              List<dynamic> arg) =>
+              JSAny arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_set_string_twin_sync(
                   arg);
@@ -48034,7 +47987,7 @@ class RustLibWire implements BaseWire {
               port_, a, b);
 
   void wire__crate__api__pseudo_manual__method_twin_rust_async__concatenate_with_twin_rust_async_concatenate_twin_rust_async(
-          NativePortType port_, List<dynamic> that, String b) =>
+          NativePortType port_, JSAny that, String b) =>
       wasmModule
           .wire__crate__api__pseudo_manual__method_twin_rust_async__concatenate_with_twin_rust_async_concatenate_twin_rust_async(
               port_, that, b);
@@ -48052,17 +48005,13 @@ class RustLibWire implements BaseWire {
               port_, key, max, sink);
 
   void wire__crate__api__pseudo_manual__method_twin_rust_async__concatenate_with_twin_rust_async_handle_some_stream_sink_at_1_twin_rust_async(
-          NativePortType port_, List<dynamic> that, String sink) =>
+          NativePortType port_, JSAny that, String sink) =>
       wasmModule
           .wire__crate__api__pseudo_manual__method_twin_rust_async__concatenate_with_twin_rust_async_handle_some_stream_sink_at_1_twin_rust_async(
               port_, that, sink);
 
   void wire__crate__api__pseudo_manual__method_twin_rust_async__concatenate_with_twin_rust_async_handle_some_stream_sink_twin_rust_async(
-          NativePortType port_,
-          List<dynamic> that,
-          int key,
-          int max,
-          String sink) =>
+          NativePortType port_, JSAny that, int key, int max, String sink) =>
       wasmModule
           .wire__crate__api__pseudo_manual__method_twin_rust_async__concatenate_with_twin_rust_async_handle_some_stream_sink_twin_rust_async(
               port_, that, key, max, sink);
@@ -48074,7 +48023,7 @@ class RustLibWire implements BaseWire {
               port_, a);
 
   void wire__crate__api__pseudo_manual__method_twin_rust_async__concatenate_with_twin_rust_async_simple_getter_twin_rust_async(
-          NativePortType port_, List<dynamic> that) =>
+          NativePortType port_, JSAny that) =>
       wasmModule
           .wire__crate__api__pseudo_manual__method_twin_rust_async__concatenate_with_twin_rust_async_simple_getter_twin_rust_async(
               port_, that);
@@ -48092,7 +48041,7 @@ class RustLibWire implements BaseWire {
               port_);
 
   void wire__crate__api__pseudo_manual__method_twin_rust_async__my_callable_twin_rust_async_call(
-          NativePortType port_, List<dynamic> that, String two) =>
+          NativePortType port_, JSAny that, String two) =>
       wasmModule
           .wire__crate__api__pseudo_manual__method_twin_rust_async__my_callable_twin_rust_async_call(
               port_, that, two);
@@ -48104,7 +48053,7 @@ class RustLibWire implements BaseWire {
               port_, one);
 
   void wire__crate__api__pseudo_manual__method_twin_rust_async__simple_enum_twin_rust_async_simple_method_twin_rust_async(
-          NativePortType port_, List<dynamic> that) =>
+          NativePortType port_, JSAny that) =>
       wasmModule
           .wire__crate__api__pseudo_manual__method_twin_rust_async__simple_enum_twin_rust_async_simple_method_twin_rust_async(
               port_, that);
@@ -48116,19 +48065,19 @@ class RustLibWire implements BaseWire {
               port_, that);
 
   void wire__crate__api__pseudo_manual__method_twin_rust_async__simple_struct_twin_rust_async_arg_self_twin_rust_async(
-          NativePortType port_, List<dynamic> a, List<dynamic> b) =>
+          NativePortType port_, JSAny a, JSAny b) =>
       wasmModule
           .wire__crate__api__pseudo_manual__method_twin_rust_async__simple_struct_twin_rust_async_arg_self_twin_rust_async(
               port_, a, b);
 
   void wire__crate__api__pseudo_manual__method_twin_rust_async__simple_struct_twin_rust_async_receiver_borrow_twin_rust_async(
-          NativePortType port_, List<dynamic> that) =>
+          NativePortType port_, JSAny that) =>
       wasmModule
           .wire__crate__api__pseudo_manual__method_twin_rust_async__simple_struct_twin_rust_async_receiver_borrow_twin_rust_async(
               port_, that);
 
   void wire__crate__api__pseudo_manual__method_twin_rust_async__simple_struct_twin_rust_async_receiver_own_twin_rust_async(
-          NativePortType port_, List<dynamic> that) =>
+          NativePortType port_, JSAny that) =>
       wasmModule
           .wire__crate__api__pseudo_manual__method_twin_rust_async__simple_struct_twin_rust_async_receiver_own_twin_rust_async(
               port_, that);
@@ -48140,7 +48089,7 @@ class RustLibWire implements BaseWire {
               port_, one);
 
   void wire__crate__api__pseudo_manual__method_twin_rust_async__simple_struct_twin_rust_async_vec_self_twin_rust_async(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__method_twin_rust_async__simple_struct_twin_rust_async_vec_self_twin_rust_async(
               port_, arg);
@@ -48152,7 +48101,7 @@ class RustLibWire implements BaseWire {
               port_, a);
 
   void wire__crate__api__pseudo_manual__method_twin_rust_async__sum_with_twin_rust_async_sum_twin_rust_async(
-          NativePortType port_, List<dynamic> that, int y, int z) =>
+          NativePortType port_, JSAny that, int y, int z) =>
       wasmModule
           .wire__crate__api__pseudo_manual__method_twin_rust_async__sum_with_twin_rust_async_sum_twin_rust_async(
               port_, that, y, z);
@@ -48567,7 +48516,7 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__concatenate_with_twin_sync_concatenate_twin_sync(
-              List<dynamic> that, String b) =>
+              JSAny that, String b) =>
           wasmModule
               .wire__crate__api__pseudo_manual__method_twin_sync__concatenate_with_twin_sync_concatenate_twin_sync(
                   that, b);
@@ -48588,14 +48537,14 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__concatenate_with_twin_sync_handle_some_stream_sink_at_1_twin_sync(
-              List<dynamic> that, String sink) =>
+              JSAny that, String sink) =>
           wasmModule
               .wire__crate__api__pseudo_manual__method_twin_sync__concatenate_with_twin_sync_handle_some_stream_sink_at_1_twin_sync(
                   that, sink);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__concatenate_with_twin_sync_handle_some_stream_sink_twin_sync(
-              List<dynamic> that, int key, int max, String sink) =>
+              JSAny that, int key, int max, String sink) =>
           wasmModule
               .wire__crate__api__pseudo_manual__method_twin_sync__concatenate_with_twin_sync_handle_some_stream_sink_twin_sync(
                   that, key, max, sink);
@@ -48609,7 +48558,7 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__concatenate_with_twin_sync_simple_getter_twin_sync(
-              List<dynamic> that) =>
+              JSAny that) =>
           wasmModule
               .wire__crate__api__pseudo_manual__method_twin_sync__concatenate_with_twin_sync_simple_getter_twin_sync(
                   that);
@@ -48628,7 +48577,7 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__my_callable_twin_sync_call(
-              List<dynamic> that, String two) =>
+              JSAny that, String two) =>
           wasmModule
               .wire__crate__api__pseudo_manual__method_twin_sync__my_callable_twin_sync_call(
                   that, two);
@@ -48642,7 +48591,7 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__simple_enum_twin_sync_simple_method_twin_sync(
-              List<dynamic> that) =>
+              JSAny that) =>
           wasmModule
               .wire__crate__api__pseudo_manual__method_twin_sync__simple_enum_twin_sync_simple_method_twin_sync(
                   that);
@@ -48656,21 +48605,21 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__simple_struct_twin_sync_arg_self_twin_sync(
-              List<dynamic> a, List<dynamic> b) =>
+              JSAny a, JSAny b) =>
           wasmModule
               .wire__crate__api__pseudo_manual__method_twin_sync__simple_struct_twin_sync_arg_self_twin_sync(
                   a, b);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__simple_struct_twin_sync_receiver_borrow_twin_sync(
-              List<dynamic> that) =>
+              JSAny that) =>
           wasmModule
               .wire__crate__api__pseudo_manual__method_twin_sync__simple_struct_twin_sync_receiver_borrow_twin_sync(
                   that);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__simple_struct_twin_sync_receiver_own_twin_sync(
-              List<dynamic> that) =>
+              JSAny that) =>
           wasmModule
               .wire__crate__api__pseudo_manual__method_twin_sync__simple_struct_twin_sync_receiver_own_twin_sync(
                   that);
@@ -48684,7 +48633,7 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__simple_struct_twin_sync_vec_self_twin_sync(
-              List<dynamic> arg) =>
+              JSAny arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__method_twin_sync__simple_struct_twin_sync_vec_self_twin_sync(
                   arg);
@@ -48698,7 +48647,7 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__sum_with_twin_sync_sum_twin_sync(
-              List<dynamic> that, int y, int z) =>
+              JSAny that, int y, int z) =>
           wasmModule
               .wire__crate__api__pseudo_manual__method_twin_sync__sum_with_twin_sync_sum_twin_sync(
                   that, y, z);
@@ -48914,13 +48863,13 @@ class RustLibWire implements BaseWire {
               port_, sink);
 
   void wire__crate__api__pseudo_manual__mirror_twin_rust_async__first_number_twin_rust_async(
-          NativePortType port_, List<dynamic> nums) =>
+          NativePortType port_, JSAny nums) =>
       wasmModule
           .wire__crate__api__pseudo_manual__mirror_twin_rust_async__first_number_twin_rust_async(
               port_, nums);
 
   void wire__crate__api__pseudo_manual__mirror_twin_rust_async__first_sequence_twin_rust_async(
-          NativePortType port_, List<dynamic> seqs) =>
+          NativePortType port_, JSAny seqs) =>
       wasmModule
           .wire__crate__api__pseudo_manual__mirror_twin_rust_async__first_sequence_twin_rust_async(
               port_, seqs);
@@ -48944,7 +48893,7 @@ class RustLibWire implements BaseWire {
               port_);
 
   void wire__crate__api__pseudo_manual__mirror_twin_rust_async__is_app_embedded_twin_rust_async(
-          NativePortType port_, List<dynamic> app_settings) =>
+          NativePortType port_, JSAny app_settings) =>
       wasmModule
           .wire__crate__api__pseudo_manual__mirror_twin_rust_async__is_app_embedded_twin_rust_async(
               port_, app_settings);
@@ -49541,14 +49490,14 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__mirror_twin_sync__first_number_twin_sync(
-              List<dynamic> nums) =>
+              JSAny nums) =>
           wasmModule
               .wire__crate__api__pseudo_manual__mirror_twin_sync__first_number_twin_sync(
                   nums);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__mirror_twin_sync__first_sequence_twin_sync(
-              List<dynamic> seqs) =>
+              JSAny seqs) =>
           wasmModule
               .wire__crate__api__pseudo_manual__mirror_twin_sync__first_sequence_twin_sync(
                   seqs);
@@ -49570,7 +49519,7 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__mirror_twin_sync__is_app_embedded_twin_sync(
-              List<dynamic> app_settings) =>
+              JSAny app_settings) =>
           wasmModule
               .wire__crate__api__pseudo_manual__mirror_twin_sync__is_app_embedded_twin_sync(
                   app_settings);
@@ -49934,13 +49883,13 @@ class RustLibWire implements BaseWire {
               port_, arg);
 
   void wire__crate__api__pseudo_manual__misc_example_twin_rust_async__handle_complex_struct_twin_rust_async(
-          NativePortType port_, List<dynamic> s) =>
+          NativePortType port_, JSAny s) =>
       wasmModule
           .wire__crate__api__pseudo_manual__misc_example_twin_rust_async__handle_complex_struct_twin_rust_async(
               port_, s);
 
   void wire__crate__api__pseudo_manual__misc_example_twin_rust_async__handle_nested_struct_twin_rust_async(
-          NativePortType port_, List<dynamic> s) =>
+          NativePortType port_, JSAny s) =>
       wasmModule
           .wire__crate__api__pseudo_manual__misc_example_twin_rust_async__handle_nested_struct_twin_rust_async(
               port_, s);
@@ -49952,7 +49901,7 @@ class RustLibWire implements BaseWire {
               port_, s);
 
   void wire__crate__api__pseudo_manual__misc_example_twin_rust_async__handle_struct_twin_rust_async(
-          NativePortType port_, List<dynamic> arg, List<dynamic> boxed) =>
+          NativePortType port_, JSAny arg, JSAny boxed) =>
       wasmModule
           .wire__crate__api__pseudo_manual__misc_example_twin_rust_async__handle_struct_twin_rust_async(
               port_, arg, boxed);
@@ -49964,7 +49913,7 @@ class RustLibWire implements BaseWire {
               port_, v);
 
   void wire__crate__api__pseudo_manual__misc_example_twin_rust_async__list_of_primitive_enums_twin_rust_async(
-          NativePortType port_, List<dynamic> weekdays) =>
+          NativePortType port_, JSAny weekdays) =>
       wasmModule
           .wire__crate__api__pseudo_manual__misc_example_twin_rust_async__list_of_primitive_enums_twin_rust_async(
               port_, weekdays);
@@ -49976,13 +49925,13 @@ class RustLibWire implements BaseWire {
               port_, a, b);
 
   void wire__crate__api__pseudo_manual__misc_example_twin_rust_async__test_abc_enum_twin_rust_async(
-          NativePortType port_, List<dynamic> abc) =>
+          NativePortType port_, JSAny abc) =>
       wasmModule
           .wire__crate__api__pseudo_manual__misc_example_twin_rust_async__test_abc_enum_twin_rust_async(
               port_, abc);
 
   void wire__crate__api__pseudo_manual__misc_example_twin_rust_async__test_struct_with_enum_twin_rust_async(
-          NativePortType port_, List<dynamic> se) =>
+          NativePortType port_, JSAny se) =>
       wasmModule
           .wire__crate__api__pseudo_manual__misc_example_twin_rust_async__test_struct_with_enum_twin_rust_async(
               port_, se);
@@ -50199,14 +50148,14 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__misc_example_twin_sync__handle_complex_struct_twin_sync(
-              List<dynamic> s) =>
+              JSAny s) =>
           wasmModule
               .wire__crate__api__pseudo_manual__misc_example_twin_sync__handle_complex_struct_twin_sync(
                   s);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__misc_example_twin_sync__handle_nested_struct_twin_sync(
-              List<dynamic> s) =>
+              JSAny s) =>
           wasmModule
               .wire__crate__api__pseudo_manual__misc_example_twin_sync__handle_nested_struct_twin_sync(
                   s);
@@ -50220,7 +50169,7 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__misc_example_twin_sync__handle_struct_twin_sync(
-              List<dynamic> arg, List<dynamic> boxed) =>
+              JSAny arg, JSAny boxed) =>
           wasmModule
               .wire__crate__api__pseudo_manual__misc_example_twin_sync__handle_struct_twin_sync(
                   arg, boxed);
@@ -50234,7 +50183,7 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__misc_example_twin_sync__list_of_primitive_enums_twin_sync(
-              List<dynamic> weekdays) =>
+              JSAny weekdays) =>
           wasmModule
               .wire__crate__api__pseudo_manual__misc_example_twin_sync__list_of_primitive_enums_twin_sync(
                   weekdays);
@@ -50248,14 +50197,14 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__misc_example_twin_sync__test_abc_enum_twin_sync(
-              List<dynamic> abc) =>
+              JSAny abc) =>
           wasmModule
               .wire__crate__api__pseudo_manual__misc_example_twin_sync__test_abc_enum_twin_sync(
                   abc);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__misc_example_twin_sync__test_struct_with_enum_twin_sync(
-              List<dynamic> se) =>
+              JSAny se) =>
           wasmModule
               .wire__crate__api__pseudo_manual__misc_example_twin_sync__test_struct_with_enum_twin_sync(
                   se);
@@ -50360,7 +50309,7 @@ class RustLibWire implements BaseWire {
                   ptr_, rust_vec_len_, data_len_);
 
   void wire__crate__api__pseudo_manual__misc_type_twin_rust_async__empty_struct_twin_rust_async(
-          NativePortType port_, List<dynamic> empty) =>
+          NativePortType port_, JSAny empty) =>
       wasmModule
           .wire__crate__api__pseudo_manual__misc_type_twin_rust_async__empty_struct_twin_rust_async(
               port_, empty);
@@ -50372,13 +50321,13 @@ class RustLibWire implements BaseWire {
               port_);
 
   void wire__crate__api__pseudo_manual__misc_type_twin_rust_async__handle_list_of_struct_twin_rust_async(
-          NativePortType port_, List<dynamic> l) =>
+          NativePortType port_, JSAny l) =>
       wasmModule
           .wire__crate__api__pseudo_manual__misc_type_twin_rust_async__handle_list_of_struct_twin_rust_async(
               port_, l);
 
   void wire__crate__api__pseudo_manual__misc_type_twin_rust_async__handle_string_list_twin_rust_async(
-          NativePortType port_, List<dynamic> names) =>
+          NativePortType port_, JSAny names) =>
       wasmModule
           .wire__crate__api__pseudo_manual__misc_type_twin_rust_async__handle_string_list_twin_rust_async(
               port_, names);
@@ -50457,7 +50406,7 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__misc_type_twin_sync__empty_struct_twin_sync(
-              List<dynamic> empty) =>
+              JSAny empty) =>
           wasmModule
               .wire__crate__api__pseudo_manual__misc_type_twin_sync__empty_struct_twin_sync(
                   empty);
@@ -50469,14 +50418,14 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__misc_type_twin_sync__handle_list_of_struct_twin_sync(
-              List<dynamic> l) =>
+              JSAny l) =>
           wasmModule
               .wire__crate__api__pseudo_manual__misc_type_twin_sync__handle_list_of_struct_twin_sync(
                   l);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__misc_type_twin_sync__handle_string_list_twin_sync(
-              List<dynamic> names) =>
+              JSAny names) =>
           wasmModule
               .wire__crate__api__pseudo_manual__misc_type_twin_sync__handle_string_list_twin_sync(
                   names);
@@ -50518,7 +50467,7 @@ class RustLibWire implements BaseWire {
                   ptr_, rust_vec_len_, data_len_);
 
   void wire__crate__api__pseudo_manual__newtype_pattern_twin_rust_async__handle_newtype_twin_rust_async(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__newtype_pattern_twin_rust_async__handle_newtype_twin_rust_async(
               port_, arg);
@@ -50543,7 +50492,7 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__newtype_pattern_twin_sync__handle_newtype_twin_sync(
-              List<dynamic> arg) =>
+              JSAny arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__newtype_pattern_twin_sync__handle_newtype_twin_sync(
                   arg);
@@ -50615,13 +50564,13 @@ class RustLibWire implements BaseWire {
           Object? i64box,
           double? f64box,
           bool? boolbox,
-          List<dynamic>? structbox) =>
+          JSAny? structbox) =>
       wasmModule
           .wire__crate__api__pseudo_manual__optional_twin_rust_async__handle_option_box_arguments_twin_rust_async(
               port_, i8box, u8box, i32box, i64box, f64box, boolbox, structbox);
 
   void wire__crate__api__pseudo_manual__optional_twin_rust_async__handle_optional_increment_twin_rust_async(
-          NativePortType port_, List<dynamic>? opt) =>
+          NativePortType port_, JSAny? opt) =>
       wasmModule
           .wire__crate__api__pseudo_manual__optional_twin_rust_async__handle_optional_increment_twin_rust_async(
               port_, opt);
@@ -50639,7 +50588,7 @@ class RustLibWire implements BaseWire {
               port_, document);
 
   void wire__crate__api__pseudo_manual__optional_twin_rust_async__handle_vec_of_opts_twin_rust_async(
-          NativePortType port_, List<dynamic> opt) =>
+          NativePortType port_, JSAny opt) =>
       wasmModule
           .wire__crate__api__pseudo_manual__optional_twin_rust_async__handle_vec_of_opts_twin_rust_async(
               port_, opt);
@@ -50767,14 +50716,14 @@ class RustLibWire implements BaseWire {
               Object? i64box,
               double? f64box,
               bool? boolbox,
-              List<dynamic>? structbox) =>
+              JSAny? structbox) =>
           wasmModule
               .wire__crate__api__pseudo_manual__optional_twin_sync__handle_option_box_arguments_twin_sync(
                   i8box, u8box, i32box, i64box, f64box, boolbox, structbox);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__optional_twin_sync__handle_optional_increment_twin_sync(
-              List<dynamic>? opt) =>
+              JSAny? opt) =>
           wasmModule
               .wire__crate__api__pseudo_manual__optional_twin_sync__handle_optional_increment_twin_sync(
                   opt);
@@ -50795,7 +50744,7 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__optional_twin_sync__handle_vec_of_opts_twin_sync(
-              List<dynamic> opt) =>
+              JSAny opt) =>
           wasmModule
               .wire__crate__api__pseudo_manual__optional_twin_sync__handle_vec_of_opts_twin_sync(
                   opt);
@@ -50861,7 +50810,7 @@ class RustLibWire implements BaseWire {
               port_, arg);
 
   void wire__crate__api__pseudo_manual__ownership_twin_rust_async__borrow_slice_string_twin_rust_async(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__ownership_twin_rust_async__borrow_slice_string_twin_rust_async(
               port_, arg);
@@ -50885,7 +50834,7 @@ class RustLibWire implements BaseWire {
               port_, arg);
 
   void wire__crate__api__pseudo_manual__ownership_twin_rust_async__borrow_struct_twin_rust_async(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__ownership_twin_rust_async__borrow_struct_twin_rust_async(
               port_, arg);
@@ -51007,7 +50956,7 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__ownership_twin_sync__borrow_slice_string_twin_sync(
-              List<dynamic> arg) =>
+              JSAny arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__ownership_twin_sync__borrow_slice_string_twin_sync(
                   arg);
@@ -51035,7 +50984,7 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__ownership_twin_sync__borrow_struct_twin_sync(
-              List<dynamic> arg) =>
+              JSAny arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__ownership_twin_sync__borrow_struct_twin_sync(
                   arg);
@@ -51405,7 +51354,7 @@ class RustLibWire implements BaseWire {
               port_, arg, expect);
 
   void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_arg_vec_own_twin_moi(
-          NativePortType port_, List<dynamic> arg, List<int> expect) =>
+          NativePortType port_, JSAny arg, List<int> expect) =>
       wasmModule
           .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_arg_vec_own_twin_moi(
               port_, arg, expect);
@@ -51453,7 +51402,7 @@ class RustLibWire implements BaseWire {
               port_);
 
   void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_moi(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_moi(
               port_, arg);
@@ -51489,7 +51438,7 @@ class RustLibWire implements BaseWire {
               port_, initial);
 
   void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_explicit_struct_twin_moi(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_explicit_struct_twin_moi(
               port_, arg);
@@ -51549,7 +51498,7 @@ class RustLibWire implements BaseWire {
               port_, sink);
 
   void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_moi(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_moi(
               port_, arg);
@@ -51677,7 +51626,7 @@ class RustLibWire implements BaseWire {
               port_, arg, expect);
 
   void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_arg_vec_own_twin_rust_async(
-          NativePortType port_, List<dynamic> arg, List<int> expect) =>
+          NativePortType port_, JSAny arg, List<int> expect) =>
       wasmModule
           .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_arg_vec_own_twin_rust_async(
               port_, arg, expect);
@@ -51725,7 +51674,7 @@ class RustLibWire implements BaseWire {
               port_);
 
   void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_rust_async(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_rust_async(
               port_, arg);
@@ -51761,7 +51710,7 @@ class RustLibWire implements BaseWire {
               port_, initial);
 
   void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_explicit_struct_twin_rust_async(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_explicit_struct_twin_rust_async(
               port_, arg);
@@ -51821,7 +51770,7 @@ class RustLibWire implements BaseWire {
               port_, sink);
 
   void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_rust_async(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_rust_async(
               port_, arg);
@@ -51949,7 +51898,7 @@ class RustLibWire implements BaseWire {
               port_, arg, expect);
 
   void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_arg_vec_own_twin_rust_async_moi(
-          NativePortType port_, List<dynamic> arg, List<int> expect) =>
+          NativePortType port_, JSAny arg, List<int> expect) =>
       wasmModule
           .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_arg_vec_own_twin_rust_async_moi(
               port_, arg, expect);
@@ -51997,7 +51946,7 @@ class RustLibWire implements BaseWire {
               port_);
 
   void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_rust_async_moi(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_rust_async_moi(
               port_, arg);
@@ -52033,7 +51982,7 @@ class RustLibWire implements BaseWire {
               port_, initial);
 
   void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_explicit_struct_twin_rust_async_moi(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_explicit_struct_twin_rust_async_moi(
               port_, arg);
@@ -52093,7 +52042,7 @@ class RustLibWire implements BaseWire {
               port_, sink);
 
   void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_rust_async_moi(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_rust_async_moi(
               port_, arg);
@@ -53834,7 +53783,7 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_arg_vec_own_twin_sync(
-              List<dynamic> arg, List<int> expect) =>
+              JSAny arg, List<int> expect) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_arg_vec_own_twin_sync(
                   arg, expect);
@@ -53886,7 +53835,7 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sync(
-              List<dynamic> arg) =>
+              JSAny arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sync(
                   arg);
@@ -53922,7 +53871,7 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_explicit_struct_twin_sync(
-              List<dynamic> arg) =>
+              JSAny arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_explicit_struct_twin_sync(
                   arg);
@@ -53984,7 +53933,7 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync(
-              List<dynamic> arg) =>
+              JSAny arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync(
                   arg);
@@ -54121,7 +54070,7 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_arg_vec_own_twin_sync_moi(
-              List<dynamic> arg, List<int> expect) =>
+              JSAny arg, List<int> expect) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_arg_vec_own_twin_sync_moi(
                   arg, expect);
@@ -54173,7 +54122,7 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sync_moi(
-              List<dynamic> arg) =>
+              JSAny arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sync_moi(
                   arg);
@@ -54209,7 +54158,7 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_explicit_struct_twin_sync_moi(
-              List<dynamic> arg) =>
+              JSAny arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_explicit_struct_twin_sync_moi(
                   arg);
@@ -54271,7 +54220,7 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync_moi(
-              List<dynamic> arg) =>
+              JSAny arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync_moi(
                   arg);
@@ -55213,7 +55162,7 @@ class RustLibWire implements BaseWire {
               port_);
 
   void wire__crate__api__pseudo_manual__rust_opaque_twin_moi__opaque_array_run_twin_moi(
-          NativePortType port_, List<dynamic> data) =>
+          NativePortType port_, JSAny data) =>
       wasmModule
           .wire__crate__api__pseudo_manual__rust_opaque_twin_moi__opaque_array_run_twin_moi(
               port_, data);
@@ -55225,7 +55174,7 @@ class RustLibWire implements BaseWire {
               port_);
 
   void wire__crate__api__pseudo_manual__rust_opaque_twin_moi__opaque_vec_run_twin_moi(
-          NativePortType port_, List<dynamic> data) =>
+          NativePortType port_, JSAny data) =>
       wasmModule
           .wire__crate__api__pseudo_manual__rust_opaque_twin_moi__opaque_vec_run_twin_moi(
               port_, data);
@@ -55237,13 +55186,13 @@ class RustLibWire implements BaseWire {
               port_);
 
   void wire__crate__api__pseudo_manual__rust_opaque_twin_moi__run_enum_opaque_twin_moi(
-          NativePortType port_, List<dynamic> opaque) =>
+          NativePortType port_, JSAny opaque) =>
       wasmModule
           .wire__crate__api__pseudo_manual__rust_opaque_twin_moi__run_enum_opaque_twin_moi(
               port_, opaque);
 
   void wire__crate__api__pseudo_manual__rust_opaque_twin_moi__run_nested_opaque_twin_moi(
-          NativePortType port_, List<dynamic> opaque) =>
+          NativePortType port_, JSAny opaque) =>
       wasmModule
           .wire__crate__api__pseudo_manual__rust_opaque_twin_moi__run_nested_opaque_twin_moi(
               port_, opaque);
@@ -55303,7 +55252,7 @@ class RustLibWire implements BaseWire {
               port_);
 
   void wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__opaque_array_run_twin_rust_async(
-          NativePortType port_, List<dynamic> data) =>
+          NativePortType port_, JSAny data) =>
       wasmModule
           .wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__opaque_array_run_twin_rust_async(
               port_, data);
@@ -55315,7 +55264,7 @@ class RustLibWire implements BaseWire {
               port_);
 
   void wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__opaque_vec_run_twin_rust_async(
-          NativePortType port_, List<dynamic> data) =>
+          NativePortType port_, JSAny data) =>
       wasmModule
           .wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__opaque_vec_run_twin_rust_async(
               port_, data);
@@ -55327,13 +55276,13 @@ class RustLibWire implements BaseWire {
               port_);
 
   void wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__run_enum_opaque_twin_rust_async(
-          NativePortType port_, List<dynamic> opaque) =>
+          NativePortType port_, JSAny opaque) =>
       wasmModule
           .wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__run_enum_opaque_twin_rust_async(
               port_, opaque);
 
   void wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__run_nested_opaque_twin_rust_async(
-          NativePortType port_, List<dynamic> opaque) =>
+          NativePortType port_, JSAny opaque) =>
       wasmModule
           .wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__run_nested_opaque_twin_rust_async(
               port_, opaque);
@@ -55393,7 +55342,7 @@ class RustLibWire implements BaseWire {
               port_);
 
   void wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__opaque_array_run_twin_rust_async_moi(
-          NativePortType port_, List<dynamic> data) =>
+          NativePortType port_, JSAny data) =>
       wasmModule
           .wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__opaque_array_run_twin_rust_async_moi(
               port_, data);
@@ -55405,7 +55354,7 @@ class RustLibWire implements BaseWire {
               port_);
 
   void wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__opaque_vec_run_twin_rust_async_moi(
-          NativePortType port_, List<dynamic> data) =>
+          NativePortType port_, JSAny data) =>
       wasmModule
           .wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__opaque_vec_run_twin_rust_async_moi(
               port_, data);
@@ -55417,13 +55366,13 @@ class RustLibWire implements BaseWire {
               port_);
 
   void wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__run_enum_opaque_twin_rust_async_moi(
-          NativePortType port_, List<dynamic> opaque) =>
+          NativePortType port_, JSAny opaque) =>
       wasmModule
           .wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__run_enum_opaque_twin_rust_async_moi(
               port_, opaque);
 
   void wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__run_nested_opaque_twin_rust_async_moi(
-          NativePortType port_, List<dynamic> opaque) =>
+          NativePortType port_, JSAny opaque) =>
       wasmModule
           .wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__run_nested_opaque_twin_rust_async_moi(
               port_, opaque);
@@ -56021,7 +55970,7 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync__opaque_array_run_twin_sync(
-              List<dynamic> data) =>
+              JSAny data) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync__opaque_array_run_twin_sync(
                   data);
@@ -56033,7 +55982,7 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync__opaque_vec_run_twin_sync(
-              List<dynamic> data) =>
+              JSAny data) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync__opaque_vec_run_twin_sync(
                   data);
@@ -56045,14 +55994,14 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync__run_enum_opaque_twin_sync(
-              List<dynamic> opaque) =>
+              JSAny opaque) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync__run_enum_opaque_twin_sync(
                   opaque);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync__run_nested_opaque_twin_sync(
-              List<dynamic> opaque) =>
+              JSAny opaque) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync__run_nested_opaque_twin_sync(
                   opaque);
@@ -56114,7 +56063,7 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__opaque_array_run_twin_sync_moi(
-              List<dynamic> data) =>
+              JSAny data) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__opaque_array_run_twin_sync_moi(
                   data);
@@ -56126,7 +56075,7 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__opaque_vec_run_twin_sync_moi(
-              List<dynamic> data) =>
+              JSAny data) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__opaque_vec_run_twin_sync_moi(
                   data);
@@ -56138,14 +56087,14 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__run_enum_opaque_twin_sync_moi(
-              List<dynamic> opaque) =>
+              JSAny opaque) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__run_enum_opaque_twin_sync_moi(
                   opaque);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__run_nested_opaque_twin_sync_moi(
-              List<dynamic> opaque) =>
+              JSAny opaque) =>
           wasmModule
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__run_nested_opaque_twin_sync_moi(
                   opaque);
@@ -56561,13 +56510,13 @@ class RustLibWire implements BaseWire {
               port_, sink);
 
   void wire__crate__api__pseudo_manual__stream_twin_rust_async__stream_sink_inside_struct_twin_rust_async(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__stream_twin_rust_async__stream_sink_inside_struct_twin_rust_async(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__stream_twin_rust_async__stream_sink_inside_vec_twin_rust_async(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__stream_twin_rust_async__stream_sink_inside_vec_twin_rust_async(
               port_, arg);
@@ -56771,43 +56720,43 @@ class RustLibWire implements BaseWire {
               port_, ptr_, rust_vec_len_, data_len_);
 
   void wire__crate__api__pseudo_manual__structure_twin_rust_async__func_for_struct_with_dart_keyword_field_twin_rust_async(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__structure_twin_rust_async__func_for_struct_with_dart_keyword_field_twin_rust_async(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__structure_twin_rust_async__func_for_struct_with_field_rename_twin_rust_async(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__structure_twin_rust_async__func_for_struct_with_field_rename_twin_rust_async(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__structure_twin_rust_async__func_struct_with_one_field_twin_rust_async(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__structure_twin_rust_async__func_struct_with_one_field_twin_rust_async(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__structure_twin_rust_async__func_struct_with_two_field_twin_rust_async(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__structure_twin_rust_async__func_struct_with_two_field_twin_rust_async(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__structure_twin_rust_async__func_struct_with_zero_field_twin_rust_async(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__structure_twin_rust_async__func_struct_with_zero_field_twin_rust_async(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__structure_twin_rust_async__func_tuple_struct_with_one_field_twin_rust_async(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__structure_twin_rust_async__func_tuple_struct_with_one_field_twin_rust_async(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__structure_twin_rust_async__func_tuple_struct_with_two_field_twin_rust_async(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__pseudo_manual__structure_twin_rust_async__func_tuple_struct_with_two_field_twin_rust_async(
               port_, arg);
@@ -56940,49 +56889,49 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__structure_twin_sync__func_for_struct_with_dart_keyword_field_twin_sync(
-              List<dynamic> arg) =>
+              JSAny arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__structure_twin_sync__func_for_struct_with_dart_keyword_field_twin_sync(
                   arg);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__structure_twin_sync__func_for_struct_with_field_rename_twin_sync(
-              List<dynamic> arg) =>
+              JSAny arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__structure_twin_sync__func_for_struct_with_field_rename_twin_sync(
                   arg);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__structure_twin_sync__func_struct_with_one_field_twin_sync(
-              List<dynamic> arg) =>
+              JSAny arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__structure_twin_sync__func_struct_with_one_field_twin_sync(
                   arg);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__structure_twin_sync__func_struct_with_two_field_twin_sync(
-              List<dynamic> arg) =>
+              JSAny arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__structure_twin_sync__func_struct_with_two_field_twin_sync(
                   arg);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__structure_twin_sync__func_struct_with_zero_field_twin_sync(
-              List<dynamic> arg) =>
+              JSAny arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__structure_twin_sync__func_struct_with_zero_field_twin_sync(
                   arg);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__structure_twin_sync__func_tuple_struct_with_one_field_twin_sync(
-              List<dynamic> arg) =>
+              JSAny arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__structure_twin_sync__func_tuple_struct_with_one_field_twin_sync(
                   arg);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__structure_twin_sync__func_tuple_struct_with_two_field_twin_sync(
-              List<dynamic> arg) =>
+              JSAny arg) =>
           wasmModule
               .wire__crate__api__pseudo_manual__structure_twin_sync__func_tuple_struct_with_two_field_twin_sync(
                   arg);
@@ -57051,13 +57000,13 @@ class RustLibWire implements BaseWire {
                   ptr_, rust_vec_len_, data_len_);
 
   void wire__crate__api__pseudo_manual__tuple_twin_rust_async__test_tuple_2_twin_rust_async(
-          NativePortType port_, List<dynamic> value) =>
+          NativePortType port_, JSAny value) =>
       wasmModule
           .wire__crate__api__pseudo_manual__tuple_twin_rust_async__test_tuple_2_twin_rust_async(
               port_, value);
 
   void wire__crate__api__pseudo_manual__tuple_twin_rust_async__test_tuple_twin_rust_async(
-          NativePortType port_, List<dynamic>? value) =>
+          NativePortType port_, JSAny? value) =>
       wasmModule
           .wire__crate__api__pseudo_manual__tuple_twin_rust_async__test_tuple_twin_rust_async(
               port_, value);
@@ -57100,14 +57049,14 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__tuple_twin_sync__test_tuple_2_twin_sync(
-              List<dynamic> value) =>
+              JSAny value) =>
           wasmModule
               .wire__crate__api__pseudo_manual__tuple_twin_sync__test_tuple_2_twin_sync(
                   value);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__tuple_twin_sync__test_tuple_twin_sync(
-              List<dynamic>? value) =>
+              JSAny? value) =>
           wasmModule
               .wire__crate__api__pseudo_manual__tuple_twin_sync__test_tuple_twin_sync(
                   value);
@@ -57251,7 +57200,7 @@ class RustLibWire implements BaseWire {
                   ptr_, rust_vec_len_, data_len_);
 
   void wire__crate__api__pseudo_manual__uuid_type_twin_rust_async__handle_nested_uuids_twin_rust_async(
-          NativePortType port_, List<dynamic> ids) =>
+          NativePortType port_, JSAny ids) =>
       wasmModule
           .wire__crate__api__pseudo_manual__uuid_type_twin_rust_async__handle_nested_uuids_twin_rust_async(
               port_, ids);
@@ -57263,7 +57212,7 @@ class RustLibWire implements BaseWire {
               port_, id);
 
   void wire__crate__api__pseudo_manual__uuid_type_twin_rust_async__handle_uuids_twin_rust_async(
-          NativePortType port_, List<dynamic> ids) =>
+          NativePortType port_, JSAny ids) =>
       wasmModule
           .wire__crate__api__pseudo_manual__uuid_type_twin_rust_async__handle_uuids_twin_rust_async(
               port_, ids);
@@ -57324,7 +57273,7 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__uuid_type_twin_sync__handle_nested_uuids_twin_sync(
-              List<dynamic> ids) =>
+              JSAny ids) =>
           wasmModule
               .wire__crate__api__pseudo_manual__uuid_type_twin_sync__handle_nested_uuids_twin_sync(
                   ids);
@@ -57338,7 +57287,7 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__uuid_type_twin_sync__handle_uuids_twin_sync(
-              List<dynamic> ids) =>
+              JSAny ids) =>
           wasmModule
               .wire__crate__api__pseudo_manual__uuid_type_twin_sync__handle_uuids_twin_sync(
                   ids);
@@ -57493,7 +57442,7 @@ class RustLibWire implements BaseWire {
               port_, arg, expect);
 
   void wire__crate__api__rust_auto_opaque__rust_auto_opaque_arg_vec_own_twin_normal(
-          NativePortType port_, List<dynamic> arg, List<int> expect) =>
+          NativePortType port_, JSAny arg, List<int> expect) =>
       wasmModule
           .wire__crate__api__rust_auto_opaque__rust_auto_opaque_arg_vec_own_twin_normal(
               port_, arg, expect);
@@ -57541,7 +57490,7 @@ class RustLibWire implements BaseWire {
               port_);
 
   void wire__crate__api__rust_auto_opaque__rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_normal(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__rust_auto_opaque__rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_normal(
               port_, arg);
@@ -57577,7 +57526,7 @@ class RustLibWire implements BaseWire {
               port_, initial);
 
   void wire__crate__api__rust_auto_opaque__rust_auto_opaque_explicit_struct_twin_normal(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__rust_auto_opaque__rust_auto_opaque_explicit_struct_twin_normal(
               port_, arg);
@@ -57637,7 +57586,7 @@ class RustLibWire implements BaseWire {
               port_, sink);
 
   void wire__crate__api__rust_auto_opaque__rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_normal(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__rust_auto_opaque__rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_normal(
               port_, arg);
@@ -57683,7 +57632,7 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__rust_opaque__frb_generator_test_twin_normal(port_);
 
   void wire__crate__api__rust_opaque__opaque_array_run_twin_normal(
-          NativePortType port_, List<dynamic> data) =>
+          NativePortType port_, JSAny data) =>
       wasmModule.wire__crate__api__rust_opaque__opaque_array_run_twin_normal(
           port_, data);
 
@@ -57692,7 +57641,7 @@ class RustLibWire implements BaseWire {
       wasmModule.wire__crate__api__rust_opaque__opaque_array_twin_normal(port_);
 
   void wire__crate__api__rust_opaque__opaque_vec_run_twin_normal(
-          NativePortType port_, List<dynamic> data) =>
+          NativePortType port_, JSAny data) =>
       wasmModule.wire__crate__api__rust_opaque__opaque_vec_run_twin_normal(
           port_, data);
 
@@ -57701,12 +57650,12 @@ class RustLibWire implements BaseWire {
       wasmModule.wire__crate__api__rust_opaque__opaque_vec_twin_normal(port_);
 
   void wire__crate__api__rust_opaque__run_enum_opaque_twin_normal(
-          NativePortType port_, List<dynamic> opaque) =>
+          NativePortType port_, JSAny opaque) =>
       wasmModule.wire__crate__api__rust_opaque__run_enum_opaque_twin_normal(
           port_, opaque);
 
   void wire__crate__api__rust_opaque__run_nested_opaque_twin_normal(
-          NativePortType port_, List<dynamic> opaque) =>
+          NativePortType port_, JSAny opaque) =>
       wasmModule.wire__crate__api__rust_opaque__run_nested_opaque_twin_normal(
           port_, opaque);
 
@@ -57805,13 +57754,13 @@ class RustLibWire implements BaseWire {
               port_, sink);
 
   void wire__crate__api__stream__stream_sink_inside_struct_twin_normal(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__stream__stream_sink_inside_struct_twin_normal(
               port_, arg);
 
   void wire__crate__api__stream__stream_sink_inside_vec_twin_normal(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule.wire__crate__api__stream__stream_sink_inside_vec_twin_normal(
           port_, arg);
 
@@ -57828,54 +57777,54 @@ class RustLibWire implements BaseWire {
               port_, sink);
 
   void wire__crate__api__structure__func_for_struct_with_dart_keyword_field_twin_normal(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__structure__func_for_struct_with_dart_keyword_field_twin_normal(
               port_, arg);
 
   void wire__crate__api__structure__func_for_struct_with_field_rename_twin_normal(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__structure__func_for_struct_with_field_rename_twin_normal(
               port_, arg);
 
   void wire__crate__api__structure__func_struct_with_one_field_twin_normal(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__structure__func_struct_with_one_field_twin_normal(
               port_, arg);
 
   void wire__crate__api__structure__func_struct_with_two_field_twin_normal(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__structure__func_struct_with_two_field_twin_normal(
               port_, arg);
 
   void wire__crate__api__structure__func_struct_with_zero_field_twin_normal(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__structure__func_struct_with_zero_field_twin_normal(
               port_, arg);
 
   void wire__crate__api__structure__func_tuple_struct_with_one_field_twin_normal(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__structure__func_tuple_struct_with_one_field_twin_normal(
               port_, arg);
 
   void wire__crate__api__structure__func_tuple_struct_with_two_field_twin_normal(
-          NativePortType port_, List<dynamic> arg) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__structure__func_tuple_struct_with_two_field_twin_normal(
               port_, arg);
 
   void wire__crate__api__tuple__test_tuple_2_twin_normal(
-          NativePortType port_, List<dynamic> value) =>
+          NativePortType port_, JSAny value) =>
       wasmModule.wire__crate__api__tuple__test_tuple_2_twin_normal(
           port_, value);
 
   void wire__crate__api__tuple__test_tuple_twin_normal(
-          NativePortType port_, List<dynamic>? value) =>
+          NativePortType port_, JSAny? value) =>
       wasmModule.wire__crate__api__tuple__test_tuple_twin_normal(port_, value);
 
   void wire__crate__api__type_alias__handle_type_alias_id_twin_normal(
@@ -57896,7 +57845,7 @@ class RustLibWire implements BaseWire {
               port_, input);
 
   void wire__crate__api__uuid_type__handle_nested_uuids_twin_normal(
-          NativePortType port_, List<dynamic> ids) =>
+          NativePortType port_, JSAny ids) =>
       wasmModule.wire__crate__api__uuid_type__handle_nested_uuids_twin_normal(
           port_, ids);
 
@@ -57906,7 +57855,7 @@ class RustLibWire implements BaseWire {
           port_, id);
 
   void wire__crate__api__uuid_type__handle_uuids_twin_normal(
-          NativePortType port_, List<dynamic> ids) =>
+          NativePortType port_, JSAny ids) =>
       wasmModule.wire__crate__api__uuid_type__handle_uuids_twin_normal(
           port_, ids);
 
@@ -60313,7 +60262,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
       NativePortType port_, Uint8List blob);
 
   external void wire__crate__api__array__func_test_id_twin_normal(
-      NativePortType port_, List<dynamic> id);
+      NativePortType port_, JSAny id);
 
   external void wire__crate__api__array__get_array_twin_normal(
       NativePortType port_);
@@ -60325,7 +60274,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
       NativePortType port_, Float64List array);
 
   external void wire__crate__api__array__nested_id_twin_normal(
-      NativePortType port_, List<dynamic> id);
+      NativePortType port_, JSAny id);
 
   external void wire__crate__api__array__new_msgid_twin_normal(
       NativePortType port_, Uint8List id);
@@ -60334,13 +60283,13 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
       NativePortType port_, Uint8List id);
 
   external void wire__crate__api__array__return_boxed_raw_feed_id_twin_normal(
-      NativePortType port_, List<dynamic> id);
+      NativePortType port_, JSAny id);
 
   external void wire__crate__api__array__use_boxed_blob_twin_normal(
-      NativePortType port_, List<dynamic> blob);
+      NativePortType port_, JSAny blob);
 
   external void wire__crate__api__array__use_msgid_twin_normal(
-      NativePortType port_, List<dynamic> id);
+      NativePortType port_, JSAny id);
 
   external void wire__crate__api__async_misc__func_async_simple_add_twin_normal(
       NativePortType port_, int a, int b);
@@ -60359,10 +60308,10 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__attribute__handle_customized_struct_twin_normal(
-          NativePortType port_, List<dynamic> val);
+          NativePortType port_, JSAny val);
 
   external void wire__crate__api__attribute__next_user_id_twin_normal(
-      NativePortType port_, List<dynamic> user_id);
+      NativePortType port_, JSAny user_id);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__benchmark_misc__benchmark_void_semi_serialize();
@@ -60419,14 +60368,14 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
       NativePortType port_, Object d);
 
   external void wire__crate__api__chrono_type__handle_durations_twin_normal(
-      NativePortType port_, List<dynamic> durations, Object since);
+      NativePortType port_, JSAny durations, Object since);
 
   external void wire__crate__api__chrono_type__handle_timestamps_twin_normal(
-      NativePortType port_, List<dynamic> timestamps, Object epoch);
+      NativePortType port_, JSAny timestamps, Object epoch);
 
   external void
       wire__crate__api__chrono_type__how_long_does_it_take_twin_normal(
-          NativePortType port_, List<dynamic> mine);
+          NativePortType port_, JSAny mine);
 
   external void wire__crate__api__chrono_type__naivedatetime_twin_normal(
       NativePortType port_, Object d);
@@ -60455,7 +60404,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__comment__struct_with_comments_twin_normal_instance_method_twin_normal(
-          NativePortType port_, List<dynamic> that);
+          NativePortType port_, JSAny that);
 
   external void
       wire__crate__api__comment__struct_with_comments_twin_normal_static_method_twin_normal(
@@ -60523,7 +60472,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__dart_code__translatable_struct_with_dart_code_twin_normal_normal_method_twin_normal(
-          NativePortType port_, List<dynamic> that);
+          NativePortType port_, JSAny that);
 
   external void wire__crate__api__dart_dynamic__return_dart_dynamic_twin_normal(
       NativePortType port_);
@@ -60585,14 +60534,14 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           NativePortType port_, int id);
 
   external void wire__crate__api__dart_opaque__get_enum_dart_opaque_twin_normal(
-      NativePortType port_, List<dynamic> opaque);
+      NativePortType port_, JSAny opaque);
 
   external void
       wire__crate__api__dart_opaque__get_nested_dart_opaque_twin_normal(
-          NativePortType port_, List<dynamic> opaque);
+          NativePortType port_, JSAny opaque);
 
   external void wire__crate__api__dart_opaque__loop_back_array_get_twin_normal(
-      NativePortType port_, List<dynamic> opaque);
+      NativePortType port_, JSAny opaque);
 
   external void wire__crate__api__dart_opaque__loop_back_array_twin_normal(
       NativePortType port_, PlatformPointer opaque);
@@ -60607,7 +60556,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
       NativePortType port_, PlatformPointer opaque);
 
   external void wire__crate__api__dart_opaque__loop_back_vec_get_twin_normal(
-      NativePortType port_, List<dynamic> opaque);
+      NativePortType port_, JSAny opaque);
 
   external void wire__crate__api__dart_opaque__loop_back_vec_twin_normal(
       NativePortType port_, PlatformPointer opaque);
@@ -60642,7 +60591,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__deliberate_name_conflict__test_duplicated_module_names(
-          NativePortType port_, List<dynamic> s);
+          NativePortType port_, JSAny s);
 
   external void wire__crate__api__dropping__DroppableTwinNormal_create_stream(
       NativePortType port_, int that, String sink);
@@ -60717,31 +60666,31 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__enumeration__func_enum_with_item_mixed_twin_normal(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__enumeration__func_enum_with_item_struct_twin_normal(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__enumeration__func_enum_with_item_tuple_twin_normal(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__enumeration__handle_enum_parameter_twin_normal(
           NativePortType port_, int weekday);
 
   external void wire__crate__api__enumeration__handle_enum_struct_twin_normal(
-      NativePortType port_, List<dynamic> val);
+      NativePortType port_, JSAny val);
 
   external void wire__crate__api__enumeration__handle_return_enum_twin_normal(
       NativePortType port_, String input);
 
   external void wire__crate__api__enumeration__multiply_by_ten_twin_normal(
-      NativePortType port_, List<dynamic> measure);
+      NativePortType port_, JSAny measure);
 
   external void wire__crate__api__enumeration__print_note_twin_normal(
-      NativePortType port_, List<dynamic> note);
+      NativePortType port_, JSAny note);
 
   external void
       wire__crate__api__event_listener__close_event_listener_twin_normal(
@@ -60756,7 +60705,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__event_listener__event_twin_normal_as_string_twin_normal(
-          NativePortType port_, List<dynamic> that);
+          NativePortType port_, JSAny that);
 
   external void
       wire__crate__api__event_listener__register_event_listener_twin_normal(
@@ -60776,11 +60725,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__exception__custom_nested_error_return_error_twin_normal(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__exception__custom_struct_error_return_error_twin_normal(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__exception__custom_struct_twin_normal_new_twin_normal(
@@ -60788,11 +60737,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__exception__custom_struct_twin_normal_nonstatic_return_custom_struct_error_twin_normal(
-          NativePortType port_, List<dynamic> that);
+          NativePortType port_, JSAny that);
 
   external void
       wire__crate__api__exception__custom_struct_twin_normal_nonstatic_return_custom_struct_ok_twin_normal(
-          NativePortType port_, List<dynamic> that);
+          NativePortType port_, JSAny that);
 
   external void
       wire__crate__api__exception__custom_struct_twin_normal_static_return_custom_struct_error_twin_normal(
@@ -60853,11 +60802,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__exception__some_struct_twin_normal_non_static_return_err_custom_error_twin_normal(
-          NativePortType port_, List<dynamic> that);
+          NativePortType port_, JSAny that);
 
   external void
       wire__crate__api__exception__some_struct_twin_normal_non_static_return_ok_custom_error_twin_normal(
-          NativePortType port_, List<dynamic> that);
+          NativePortType port_, JSAny that);
 
   external void
       wire__crate__api__exception__some_struct_twin_normal_static_return_err_custom_error_twin_normal(
@@ -60884,7 +60833,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__external_impl__simple_translatable_external_struct_with_method_simple_external_method(
-          NativePortType port_, List<dynamic> that);
+          NativePortType port_, JSAny that);
 
   external void
       wire__crate__api__external_type_in_crate__call_new_module_system_twin_normal(
@@ -60900,7 +60849,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__external_type_in_crate__use_imported_struct_twin_normal(
-          NativePortType port_, List<dynamic> my_struct);
+          NativePortType port_, JSAny my_struct);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__impl_trait__StructOneWithTraitTwinNormal_get_one(
@@ -60947,37 +60896,37 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           NativePortType port_);
 
   external void wire__crate__api__inside_macro__func_macro_struct_twin_normal(
-      NativePortType port_, List<dynamic> arg);
+      NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__map_and_set__func_hash_map_i32_i32_twin_normal(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__map_and_set__func_hash_map_string_bytes_twin_normal(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__map_and_set__func_hash_map_string_complex_enum_twin_normal(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__map_and_set__func_hash_map_string_simple_enum_twin_normal(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__map_and_set__func_hash_map_string_string_twin_normal(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__map_and_set__func_hash_map_string_struct_twin_normal(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void wire__crate__api__map_and_set__func_hash_set_i32_twin_normal(
       NativePortType port_, Int32List arg);
 
   external void wire__crate__api__map_and_set__func_hash_set_string_twin_normal(
-      NativePortType port_, List<dynamic> arg);
+      NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__method__StaticGetterOnlyTwinNormal_static_getter_twin_normal(
@@ -60989,7 +60938,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__method__concatenate_with_twin_normal_concatenate_twin_normal(
-          NativePortType port_, List<dynamic> that, String b);
+          NativePortType port_, JSAny that, String b);
 
   external void
       wire__crate__api__method__concatenate_with_twin_normal_handle_some_static_stream_sink_single_arg_twin_normal(
@@ -61001,15 +60950,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__method__concatenate_with_twin_normal_handle_some_stream_sink_at_1_twin_normal(
-          NativePortType port_, List<dynamic> that, String sink);
+          NativePortType port_, JSAny that, String sink);
 
   external void
       wire__crate__api__method__concatenate_with_twin_normal_handle_some_stream_sink_twin_normal(
-          NativePortType port_,
-          List<dynamic> that,
-          int key,
-          int max,
-          String sink);
+          NativePortType port_, JSAny that, int key, int max, String sink);
 
   external void
       wire__crate__api__method__concatenate_with_twin_normal_new_twin_normal(
@@ -61017,7 +60962,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__method__concatenate_with_twin_normal_simple_getter_twin_normal(
-          NativePortType port_, List<dynamic> that);
+          NativePortType port_, JSAny that);
 
   external void wire__crate__api__method__get_sum_array_twin_normal(
       NativePortType port_, int a, int b, int c);
@@ -61026,7 +60971,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
       NativePortType port_);
 
   external void wire__crate__api__method__my_callable_twin_normal_call(
-      NativePortType port_, List<dynamic> that, String two);
+      NativePortType port_, JSAny that, String two);
 
   external void
       wire__crate__api__method__simple_enum_twin_normal_return_self_twin_normal(
@@ -61034,7 +60979,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__method__simple_enum_twin_normal_simple_method_twin_normal(
-          NativePortType port_, List<dynamic> that);
+          NativePortType port_, JSAny that);
 
   external void
       wire__crate__api__method__simple_primitive_enum_twin_normal_simple_method_twin_normal(
@@ -61042,15 +60987,15 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__method__simple_struct_twin_normal_arg_self_twin_normal(
-          NativePortType port_, List<dynamic> a, List<dynamic> b);
+          NativePortType port_, JSAny a, JSAny b);
 
   external void
       wire__crate__api__method__simple_struct_twin_normal_receiver_borrow_twin_normal(
-          NativePortType port_, List<dynamic> that);
+          NativePortType port_, JSAny that);
 
   external void
       wire__crate__api__method__simple_struct_twin_normal_receiver_own_twin_normal(
-          NativePortType port_, List<dynamic> that);
+          NativePortType port_, JSAny that);
 
   external void
       wire__crate__api__method__simple_struct_twin_normal_return_self_twin_normal(
@@ -61058,14 +61003,14 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__method__simple_struct_twin_normal_vec_self_twin_normal(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__method__static_only_twin_normal_static_method_twin_normal(
           NativePortType port_, int a);
 
   external void wire__crate__api__method__sum_with_twin_normal_sum_twin_normal(
-      NativePortType port_, List<dynamic> that, int y, int z);
+      NativePortType port_, JSAny that, int y, int z);
 
   external void wire__crate__api__mirror__app_settings_stream_twin_normal(
       NativePortType port_, String sink);
@@ -61074,10 +61019,10 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
       NativePortType port_, String sink);
 
   external void wire__crate__api__mirror__first_number_twin_normal(
-      NativePortType port_, List<dynamic> nums);
+      NativePortType port_, JSAny nums);
 
   external void wire__crate__api__mirror__first_sequence_twin_normal(
-      NativePortType port_, List<dynamic> seqs);
+      NativePortType port_, JSAny seqs);
 
   external void wire__crate__api__mirror__get_app_settings_twin_normal(
       NativePortType port_);
@@ -61089,7 +61034,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
       NativePortType port_);
 
   external void wire__crate__api__mirror__is_app_embedded_twin_normal(
-      NativePortType port_, List<dynamic> app_settings);
+      NativePortType port_, JSAny app_settings);
 
   external void wire__crate__api__mirror__mirror_array_enum_stream_twin_normal(
       NativePortType port_, String sink);
@@ -61160,35 +61105,35 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__misc_example__handle_complex_struct_twin_normal(
-          NativePortType port_, List<dynamic> s);
+          NativePortType port_, JSAny s);
 
   external void
       wire__crate__api__misc_example__handle_nested_struct_twin_normal(
-          NativePortType port_, List<dynamic> s);
+          NativePortType port_, JSAny s);
 
   external void wire__crate__api__misc_example__handle_string_twin_normal(
       NativePortType port_, String s);
 
   external void wire__crate__api__misc_example__handle_struct_twin_normal(
-      NativePortType port_, List<dynamic> arg, List<dynamic> boxed);
+      NativePortType port_, JSAny arg, JSAny boxed);
 
   external void wire__crate__api__misc_example__handle_vec_u8_twin_normal(
       NativePortType port_, List<int> v);
 
   external void
       wire__crate__api__misc_example__list_of_primitive_enums_twin_normal(
-          NativePortType port_, List<dynamic> weekdays);
+          NativePortType port_, JSAny weekdays);
 
   external void
       wire__crate__api__misc_example__positional_arguments_twin_normal(
           NativePortType port_, int a, int b);
 
   external void wire__crate__api__misc_example__test_abc_enum_twin_normal(
-      NativePortType port_, List<dynamic> abc);
+      NativePortType port_, JSAny abc);
 
   external void
       wire__crate__api__misc_example__test_struct_with_enum_twin_normal(
-          NativePortType port_, List<dynamic> se);
+          NativePortType port_, JSAny se);
 
   external void
       wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_dummy_function_twin_normal(
@@ -61228,7 +61173,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_deliberate_bad_field_c(
-          int that, List<dynamic> deliberate_bad_field_c);
+          int that, JSAny deliberate_bad_field_c);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_good_field_a(
@@ -61303,7 +61248,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__misc_no_twin_example_a__item_container_solution_two_twin_normal_get_item_contents_twin_normal(
-          NativePortType port_, List<dynamic> that);
+          NativePortType port_, JSAny that);
 
   external void
       wire__crate__api__misc_no_twin_example_a__same_function_name_in_different_files(
@@ -61311,11 +61256,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__misc_no_twin_example_a__struct_with_custom_name_method_twin_normal_method_with_custom_name_twin_normal(
-          List<dynamic> that);
+          JSAny that);
 
   external void
       wire__crate__api__misc_no_twin_example_a__struct_with_impl_block_in_another_file_f(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__misc_no_twin_example_b__StructInMiscNoTwinExampleB_get_struct_in_misc_no_twin_example_a(
@@ -61330,19 +61275,19 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           NativePortType port_);
 
   external void wire__crate__api__misc_type__empty_struct_twin_normal(
-      NativePortType port_, List<dynamic> empty);
+      NativePortType port_, JSAny empty);
 
   external void wire__crate__api__misc_type__func_return_unit_twin_normal(
       NativePortType port_);
 
   external void wire__crate__api__misc_type__handle_list_of_struct_twin_normal(
-      NativePortType port_, List<dynamic> l);
+      NativePortType port_, JSAny l);
 
   external void wire__crate__api__misc_type__handle_string_list_twin_normal(
-      NativePortType port_, List<dynamic> names);
+      NativePortType port_, JSAny names);
 
   external void wire__crate__api__newtype_pattern__handle_newtype_twin_normal(
-      NativePortType port_, List<dynamic> arg);
+      NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__optional__handle_increment_boxed_optional_twin_normal(
@@ -61357,11 +61302,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           Object? i64box,
           double? f64box,
           bool? boolbox,
-          List<dynamic>? structbox);
+          JSAny? structbox);
 
   external void
       wire__crate__api__optional__handle_optional_increment_twin_normal(
-          NativePortType port_, List<dynamic>? opt);
+          NativePortType port_, JSAny? opt);
 
   external void wire__crate__api__optional__handle_optional_return_twin_normal(
       NativePortType port_, double left, double right);
@@ -61370,7 +61315,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
       NativePortType port_, String? document);
 
   external void wire__crate__api__optional__handle_vec_of_opts_twin_normal(
-      NativePortType port_, List<dynamic> opt);
+      NativePortType port_, JSAny opt);
 
   external void
       wire__crate__api__optional_primitive_misc__primitive_optional_types_twin_normal(
@@ -61384,7 +61329,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
       NativePortType port_, int arg);
 
   external void wire__crate__api__ownership__borrow_slice_string_twin_normal(
-      NativePortType port_, List<dynamic> arg);
+      NativePortType port_, JSAny arg);
 
   external void wire__crate__api__ownership__borrow_slice_u8_twin_normal(
       NativePortType port_, List<int> arg);
@@ -61396,7 +61341,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
       NativePortType port_, String arg);
 
   external void wire__crate__api__ownership__borrow_struct_twin_normal(
-      NativePortType port_, List<dynamic> arg);
+      NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__primitive_list_misc__handle_vec_of_primitive_twin_normal(
@@ -61438,7 +61383,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__array_twin_rust_async__func_test_id_twin_rust_async(
-          NativePortType port_, List<dynamic> id);
+          NativePortType port_, JSAny id);
 
   external void
       wire__crate__api__pseudo_manual__array_twin_rust_async__get_array_twin_rust_async(
@@ -61454,7 +61399,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__array_twin_rust_async__nested_id_twin_rust_async(
-          NativePortType port_, List<dynamic> id);
+          NativePortType port_, JSAny id);
 
   external void
       wire__crate__api__pseudo_manual__array_twin_rust_async__new_msgid_twin_rust_async(
@@ -61466,15 +61411,15 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__array_twin_rust_async__return_boxed_raw_feed_id_twin_rust_async(
-          NativePortType port_, List<dynamic> id);
+          NativePortType port_, JSAny id);
 
   external void
       wire__crate__api__pseudo_manual__array_twin_rust_async__use_boxed_blob_twin_rust_async(
-          NativePortType port_, List<dynamic> blob);
+          NativePortType port_, JSAny blob);
 
   external void
       wire__crate__api__pseudo_manual__array_twin_rust_async__use_msgid_twin_rust_async(
-          NativePortType port_, List<dynamic> id);
+          NativePortType port_, JSAny id);
 
   external void
       wire__crate__api__pseudo_manual__array_twin_rust_async_sse__boxed_blob_twin_rust_async_sse(
@@ -61636,7 +61581,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__array_twin_sync__func_test_id_twin_sync(
-          List<dynamic> id);
+          JSAny id);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__array_twin_sync__get_array_twin_sync();
@@ -61650,7 +61595,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__array_twin_sync__nested_id_twin_sync(
-          List<dynamic> id);
+          JSAny id);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__array_twin_sync__new_msgid_twin_sync(
@@ -61662,15 +61607,15 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__array_twin_sync__return_boxed_raw_feed_id_twin_sync(
-          List<dynamic> id);
+          JSAny id);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__array_twin_sync__use_boxed_blob_twin_sync(
-          List<dynamic> blob);
+          JSAny blob);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__array_twin_sync__use_msgid_twin_sync(
-          List<dynamic> id);
+          JSAny id);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__array_twin_sync_sse__boxed_blob_twin_sync_sse(
@@ -61754,11 +61699,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__attribute_twin_rust_async__handle_customized_struct_twin_rust_async(
-          NativePortType port_, List<dynamic> val);
+          NativePortType port_, JSAny val);
 
   external void
       wire__crate__api__pseudo_manual__attribute_twin_rust_async__next_user_id_twin_rust_async(
-          NativePortType port_, List<dynamic> user_id);
+          NativePortType port_, JSAny user_id);
 
   external void
       wire__crate__api__pseudo_manual__attribute_twin_rust_async_sse__handle_customized_struct_twin_rust_async_sse(
@@ -61790,11 +61735,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__attribute_twin_sync__handle_customized_struct_twin_sync(
-          List<dynamic> val);
+          JSAny val);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__attribute_twin_sync__next_user_id_twin_sync(
-          List<dynamic> user_id);
+          JSAny user_id);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__attribute_twin_sync_sse__handle_customized_struct_twin_sync_sse(
@@ -61810,7 +61755,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__basic__example_basic_type_basic_general_enum_twin_normal_twin_normal(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic__example_basic_type_basic_primitive_enum_twin_normal_twin_normal(
@@ -61818,7 +61763,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__basic__example_basic_type_basic_struct_twin_normal_twin_normal(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic__example_basic_type_bool_twin_normal(
@@ -61890,23 +61835,23 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_basic_general_enum_twin_normal_twin_normal(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_basic_primitive_enum_twin_normal_twin_normal(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_basic_struct_twin_normal_twin_normal(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_bool_twin_normal(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_bytes_twin_normal(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_f32_twin_normal(
@@ -61934,7 +61879,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_string_twin_normal(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_u16_twin_normal(
@@ -61954,23 +61899,23 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_basic_general_enum_twin_rust_async_twin_rust_async(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_basic_primitive_enum_twin_rust_async_twin_rust_async(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_basic_struct_twin_rust_async_twin_rust_async(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_bool_twin_rust_async(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_bytes_twin_rust_async(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_f32_twin_rust_async(
@@ -61998,7 +61943,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_string_twin_rust_async(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_u16_twin_rust_async(
@@ -62242,23 +62187,23 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_basic_general_enum_twin_sync_twin_sync(
-          List<dynamic> arg);
+          JSAny arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_basic_primitive_enum_twin_sync_twin_sync(
-          List<dynamic> arg);
+          JSAny arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_basic_struct_twin_sync_twin_sync(
-          List<dynamic> arg);
+          JSAny arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_bool_twin_sync(
-          List<dynamic> arg);
+          JSAny arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_bytes_twin_sync(
-          List<dynamic> arg);
+          JSAny arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_f32_twin_sync(
@@ -62286,7 +62231,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_string_twin_sync(
-          List<dynamic> arg);
+          JSAny arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_u16_twin_sync(
@@ -62402,163 +62347,163 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_basic_general_enum_twin_normal_twin_normal(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_basic_primitive_enum_twin_normal_twin_normal(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_basic_struct_twin_normal_twin_normal(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_bool_twin_normal(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_bytes_twin_normal(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_f32_twin_normal(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_f64_twin_normal(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_i128_twin_normal(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_i16_twin_normal(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_i32_twin_normal(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_i64_twin_normal(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_i8_twin_normal(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_isize_twin_normal(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_string_twin_normal(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_u128_twin_normal(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_u16_twin_normal(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_u32_twin_normal(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_u64_twin_normal(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_u8_twin_normal(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_usize_twin_normal(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_basic_general_enum_twin_rust_async_twin_rust_async(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_basic_primitive_enum_twin_rust_async_twin_rust_async(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_basic_struct_twin_rust_async_twin_rust_async(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_bool_twin_rust_async(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_bytes_twin_rust_async(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_f32_twin_rust_async(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_f64_twin_rust_async(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_i128_twin_rust_async(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_i16_twin_rust_async(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_i32_twin_rust_async(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_i64_twin_rust_async(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_i8_twin_rust_async(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_isize_twin_rust_async(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_string_twin_rust_async(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_u128_twin_rust_async(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_u16_twin_rust_async(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_u32_twin_rust_async(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_u64_twin_rust_async(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_u8_twin_rust_async(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map_type_usize_twin_rust_async(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_map_twin_rust_async_sse__example_basic_map_type_basic_general_enum_twin_rust_async_sse_twin_rust_async_sse(
@@ -62842,83 +62787,83 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_basic_general_enum_twin_sync_twin_sync(
-          List<dynamic> arg);
+          JSAny arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_basic_primitive_enum_twin_sync_twin_sync(
-          List<dynamic> arg);
+          JSAny arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_basic_struct_twin_sync_twin_sync(
-          List<dynamic> arg);
+          JSAny arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_bool_twin_sync(
-          List<dynamic> arg);
+          JSAny arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_bytes_twin_sync(
-          List<dynamic> arg);
+          JSAny arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_f32_twin_sync(
-          List<dynamic> arg);
+          JSAny arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_f64_twin_sync(
-          List<dynamic> arg);
+          JSAny arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_i128_twin_sync(
-          List<dynamic> arg);
+          JSAny arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_i16_twin_sync(
-          List<dynamic> arg);
+          JSAny arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_i32_twin_sync(
-          List<dynamic> arg);
+          JSAny arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_i64_twin_sync(
-          List<dynamic> arg);
+          JSAny arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_i8_twin_sync(
-          List<dynamic> arg);
+          JSAny arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_isize_twin_sync(
-          List<dynamic> arg);
+          JSAny arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_string_twin_sync(
-          List<dynamic> arg);
+          JSAny arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_u128_twin_sync(
-          List<dynamic> arg);
+          JSAny arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_u16_twin_sync(
-          List<dynamic> arg);
+          JSAny arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_u32_twin_sync(
-          List<dynamic> arg);
+          JSAny arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_u64_twin_sync(
-          List<dynamic> arg);
+          JSAny arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_u8_twin_sync(
-          List<dynamic> arg);
+          JSAny arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_usize_twin_sync(
-          List<dynamic> arg);
+          JSAny arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__basic_map_twin_sync_sse__example_basic_map_type_basic_general_enum_twin_sync_sse_twin_sync_sse(
@@ -63042,7 +62987,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_basic_general_enum_twin_normal_twin_normal(
-          NativePortType port_, List<dynamic>? arg);
+          NativePortType port_, JSAny? arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_basic_primitive_enum_twin_normal_twin_normal(
@@ -63050,7 +62995,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_basic_struct_twin_normal_twin_normal(
-          NativePortType port_, List<dynamic>? arg);
+          NativePortType port_, JSAny? arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_bool_twin_normal(
@@ -63122,7 +63067,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_basic_general_enum_twin_rust_async_twin_rust_async(
-          NativePortType port_, List<dynamic>? arg);
+          NativePortType port_, JSAny? arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_basic_primitive_enum_twin_rust_async_twin_rust_async(
@@ -63130,7 +63075,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_basic_struct_twin_rust_async_twin_rust_async(
-          NativePortType port_, List<dynamic>? arg);
+          NativePortType port_, JSAny? arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basic_optional_type_bool_twin_rust_async(
@@ -63482,7 +63427,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_basic_general_enum_twin_sync_twin_sync(
-          List<dynamic>? arg);
+          JSAny? arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_basic_primitive_enum_twin_sync_twin_sync(
@@ -63490,7 +63435,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_basic_struct_twin_sync_twin_sync(
-          List<dynamic>? arg);
+          JSAny? arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_optional_type_bool_twin_sync(
@@ -63682,7 +63627,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_basic_general_enum_twin_rust_async_twin_rust_async(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_basic_primitive_enum_twin_rust_async_twin_rust_async(
@@ -63690,7 +63635,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_basic_struct_twin_rust_async_twin_rust_async(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_bool_twin_rust_async(
@@ -64042,7 +63987,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_basic_general_enum_twin_sync_twin_sync(
-          List<dynamic> arg);
+          JSAny arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_basic_primitive_enum_twin_sync_twin_sync(
@@ -64050,7 +63995,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_basic_struct_twin_sync_twin_sync(
-          List<dynamic> arg);
+          JSAny arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_bool_twin_sync(
@@ -64250,7 +64195,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__benchmark_api__benchmark_binary_tree_input_twin_normal(
-          NativePortType port_, List<dynamic> tree);
+          NativePortType port_, JSAny tree);
 
   external void
       wire__crate__api__pseudo_manual__benchmark_api__benchmark_binary_tree_output_json_twin_normal(
@@ -64274,7 +64219,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__benchmark_api__benchmark_blob_input_twin_normal(
-          NativePortType port_, List<dynamic> blob);
+          NativePortType port_, JSAny blob);
 
   external void
       wire__crate__api__pseudo_manual__benchmark_api__benchmark_blob_output_json_twin_normal(
@@ -64310,7 +64255,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_binary_tree_input_twin_rust_async(
-          NativePortType port_, List<dynamic> tree);
+          NativePortType port_, JSAny tree);
 
   external void
       wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_binary_tree_output_json_twin_rust_async(
@@ -64334,7 +64279,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_blob_input_twin_rust_async(
-          NativePortType port_, List<dynamic> blob);
+          NativePortType port_, JSAny blob);
 
   external void
       wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_blob_output_json_twin_rust_async(
@@ -64580,7 +64525,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_binary_tree_input_twin_sync(
-          List<dynamic> tree);
+          JSAny tree);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_binary_tree_output_json_twin_sync(
@@ -64604,7 +64549,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_blob_input_twin_sync(
-          List<dynamic> blob);
+          JSAny blob);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_blob_output_json_twin_sync(
@@ -64733,15 +64678,15 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__handle_durations_twin_rust_async(
-          NativePortType port_, List<dynamic> durations, Object since);
+          NativePortType port_, JSAny durations, Object since);
 
   external void
       wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__handle_timestamps_twin_rust_async(
-          NativePortType port_, List<dynamic> timestamps, Object epoch);
+          NativePortType port_, JSAny timestamps, Object epoch);
 
   external void
       wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__how_long_does_it_take_twin_rust_async(
-          NativePortType port_, List<dynamic> mine);
+          NativePortType port_, JSAny mine);
 
   external void
       wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__naivedatetime_twin_rust_async(
@@ -64913,15 +64858,15 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__chrono_type_twin_sync__handle_durations_twin_sync(
-          List<dynamic> durations, Object since);
+          JSAny durations, Object since);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__chrono_type_twin_sync__handle_timestamps_twin_sync(
-          List<dynamic> timestamps, Object epoch);
+          JSAny timestamps, Object epoch);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__chrono_type_twin_sync__how_long_does_it_take_twin_sync(
-          List<dynamic> mine);
+          JSAny mine);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__chrono_type_twin_sync__naivedatetime_twin_sync(
@@ -65011,7 +64956,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__comment_twin_rust_async__struct_with_comments_twin_rust_async_instance_method_twin_rust_async(
-          NativePortType port_, List<dynamic> that);
+          NativePortType port_, JSAny that);
 
   external void
       wire__crate__api__pseudo_manual__comment_twin_rust_async__struct_with_comments_twin_rust_async_static_method_twin_rust_async(
@@ -65098,7 +65043,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__comment_twin_sync__struct_with_comments_twin_sync_instance_method_twin_sync(
-          List<dynamic> that);
+          JSAny that);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__comment_twin_sync__struct_with_comments_twin_sync_static_method_twin_sync();
@@ -65360,15 +65305,15 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__get_enum_dart_opaque_twin_rust_async(
-          NativePortType port_, List<dynamic> opaque);
+          NativePortType port_, JSAny opaque);
 
   external void
       wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__get_nested_dart_opaque_twin_rust_async(
-          NativePortType port_, List<dynamic> opaque);
+          NativePortType port_, JSAny opaque);
 
   external void
       wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__loop_back_array_get_twin_rust_async(
-          NativePortType port_, List<dynamic> opaque);
+          NativePortType port_, JSAny opaque);
 
   external void
       wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__loop_back_array_twin_rust_async(
@@ -65388,7 +65333,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__loop_back_vec_get_twin_rust_async(
-          NativePortType port_, List<dynamic> opaque);
+          NativePortType port_, JSAny opaque);
 
   external void
       wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__loop_back_vec_twin_rust_async(
@@ -65648,15 +65593,15 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync__get_enum_dart_opaque_twin_sync(
-          List<dynamic> opaque);
+          JSAny opaque);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync__get_nested_dart_opaque_twin_sync(
-          List<dynamic> opaque);
+          JSAny opaque);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync__loop_back_array_get_twin_sync(
-          List<dynamic> opaque);
+          JSAny opaque);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync__loop_back_array_twin_sync(
@@ -65676,7 +65621,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync__loop_back_vec_get_twin_sync(
-          List<dynamic> opaque);
+          JSAny opaque);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync__loop_back_vec_twin_sync(
@@ -65906,15 +65851,15 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__enumeration_twin_rust_async__func_enum_with_item_mixed_twin_rust_async(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__enumeration_twin_rust_async__func_enum_with_item_struct_twin_rust_async(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__enumeration_twin_rust_async__func_enum_with_item_tuple_twin_rust_async(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__enumeration_twin_rust_async__handle_enum_parameter_twin_rust_async(
@@ -65922,7 +65867,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__enumeration_twin_rust_async__handle_enum_struct_twin_rust_async(
-          NativePortType port_, List<dynamic> val);
+          NativePortType port_, JSAny val);
 
   external void
       wire__crate__api__pseudo_manual__enumeration_twin_rust_async__handle_return_enum_twin_rust_async(
@@ -65930,11 +65875,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__enumeration_twin_rust_async__multiply_by_ten_twin_rust_async(
-          NativePortType port_, List<dynamic> measure);
+          NativePortType port_, JSAny measure);
 
   external void
       wire__crate__api__pseudo_manual__enumeration_twin_rust_async__print_note_twin_rust_async(
-          NativePortType port_, List<dynamic> note);
+          NativePortType port_, JSAny note);
 
   external void
       wire__crate__api__pseudo_manual__enumeration_twin_rust_async_sse__func_enum_simple_twin_rust_async_sse(
@@ -66086,15 +66031,15 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__enumeration_twin_sync__func_enum_with_item_mixed_twin_sync(
-          List<dynamic> arg);
+          JSAny arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__enumeration_twin_sync__func_enum_with_item_struct_twin_sync(
-          List<dynamic> arg);
+          JSAny arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__enumeration_twin_sync__func_enum_with_item_tuple_twin_sync(
-          List<dynamic> arg);
+          JSAny arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__enumeration_twin_sync__handle_enum_parameter_twin_sync(
@@ -66102,7 +66047,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__enumeration_twin_sync__handle_enum_struct_twin_sync(
-          List<dynamic> val);
+          JSAny val);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__enumeration_twin_sync__handle_return_enum_twin_sync(
@@ -66110,11 +66055,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__enumeration_twin_sync__multiply_by_ten_twin_sync(
-          List<dynamic> measure);
+          JSAny measure);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__enumeration_twin_sync__print_note_twin_sync(
-          List<dynamic> note);
+          JSAny note);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__enumeration_twin_sync_sse__func_enum_simple_twin_sync_sse(
@@ -66186,7 +66131,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__event_listener_twin_rust_async__event_twin_rust_async_as_string_twin_rust_async(
-          NativePortType port_, List<dynamic> that);
+          NativePortType port_, JSAny that);
 
   external void
       wire__crate__api__pseudo_manual__event_listener_twin_rust_async__register_event_listener_twin_rust_async(
@@ -66262,11 +66207,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__exception_twin_rust_async__custom_nested_error_return_error_twin_rust_async(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__exception_twin_rust_async__custom_struct_error_return_error_twin_rust_async(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__exception_twin_rust_async__custom_struct_twin_rust_async_new_twin_rust_async(
@@ -66274,11 +66219,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__exception_twin_rust_async__custom_struct_twin_rust_async_nonstatic_return_custom_struct_error_twin_rust_async(
-          NativePortType port_, List<dynamic> that);
+          NativePortType port_, JSAny that);
 
   external void
       wire__crate__api__pseudo_manual__exception_twin_rust_async__custom_struct_twin_rust_async_nonstatic_return_custom_struct_ok_twin_rust_async(
-          NativePortType port_, List<dynamic> that);
+          NativePortType port_, JSAny that);
 
   external void
       wire__crate__api__pseudo_manual__exception_twin_rust_async__custom_struct_twin_rust_async_static_return_custom_struct_error_twin_rust_async(
@@ -66342,11 +66287,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__exception_twin_rust_async__some_struct_twin_rust_async_non_static_return_err_custom_error_twin_rust_async(
-          NativePortType port_, List<dynamic> that);
+          NativePortType port_, JSAny that);
 
   external void
       wire__crate__api__pseudo_manual__exception_twin_rust_async__some_struct_twin_rust_async_non_static_return_ok_custom_error_twin_rust_async(
-          NativePortType port_, List<dynamic> that);
+          NativePortType port_, JSAny that);
 
   external void
       wire__crate__api__pseudo_manual__exception_twin_rust_async__some_struct_twin_rust_async_static_return_err_custom_error_twin_rust_async(
@@ -66782,11 +66727,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__custom_nested_error_return_error_twin_sync(
-          List<dynamic> arg);
+          JSAny arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__custom_struct_error_return_error_twin_sync(
-          List<dynamic> arg);
+          JSAny arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__custom_struct_twin_sync_new_twin_sync(
@@ -66794,11 +66739,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__custom_struct_twin_sync_nonstatic_return_custom_struct_error_twin_sync(
-          List<dynamic> that);
+          JSAny that);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__custom_struct_twin_sync_nonstatic_return_custom_struct_ok_twin_sync(
-          List<dynamic> that);
+          JSAny that);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__custom_struct_twin_sync_static_return_custom_struct_error_twin_sync();
@@ -66849,11 +66794,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__some_struct_twin_sync_non_static_return_err_custom_error_twin_sync(
-          List<dynamic> that);
+          JSAny that);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__some_struct_twin_sync_non_static_return_ok_custom_error_twin_sync(
-          List<dynamic> that);
+          JSAny that);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__exception_twin_sync__some_struct_twin_sync_static_return_err_custom_error_twin_sync();
@@ -67056,7 +67001,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__external_type_in_crate_twin_rust_async__use_imported_struct_twin_rust_async(
-          NativePortType port_, List<dynamic> my_struct);
+          NativePortType port_, JSAny my_struct);
 
   external void
       wire__crate__api__pseudo_manual__external_type_in_crate_twin_rust_async_sse__call_new_module_system_twin_rust_async_sse(
@@ -67126,7 +67071,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__external_type_in_crate_twin_sync__use_imported_struct_twin_sync(
-          List<dynamic> my_struct);
+          JSAny my_struct);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__external_type_in_crate_twin_sync_sse__call_new_module_system_twin_sync_sse(
@@ -67274,27 +67219,27 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_map_i32_i32_twin_rust_async(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_map_string_bytes_twin_rust_async(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_map_string_complex_enum_twin_rust_async(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_map_string_simple_enum_twin_rust_async(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_map_string_string_twin_rust_async(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_map_string_struct_twin_rust_async(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_set_i32_twin_rust_async(
@@ -67302,7 +67247,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_set_string_twin_rust_async(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__map_and_set_twin_rust_async_sse__func_hash_map_i32_i32_twin_rust_async_sse(
@@ -67418,27 +67363,27 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_map_i32_i32_twin_sync(
-          List<dynamic> arg);
+          JSAny arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_map_string_bytes_twin_sync(
-          List<dynamic> arg);
+          JSAny arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_map_string_complex_enum_twin_sync(
-          List<dynamic> arg);
+          JSAny arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_map_string_simple_enum_twin_sync(
-          List<dynamic> arg);
+          JSAny arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_map_string_string_twin_sync(
-          List<dynamic> arg);
+          JSAny arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_map_string_struct_twin_sync(
-          List<dynamic> arg);
+          JSAny arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_set_i32_twin_sync(
@@ -67446,7 +67391,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_set_string_twin_sync(
-          List<dynamic> arg);
+          JSAny arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__map_and_set_twin_sync_sse__func_hash_map_i32_i32_twin_sync_sse(
@@ -67506,7 +67451,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__method_twin_rust_async__concatenate_with_twin_rust_async_concatenate_twin_rust_async(
-          NativePortType port_, List<dynamic> that, String b);
+          NativePortType port_, JSAny that, String b);
 
   external void
       wire__crate__api__pseudo_manual__method_twin_rust_async__concatenate_with_twin_rust_async_handle_some_static_stream_sink_single_arg_twin_rust_async(
@@ -67518,15 +67463,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__method_twin_rust_async__concatenate_with_twin_rust_async_handle_some_stream_sink_at_1_twin_rust_async(
-          NativePortType port_, List<dynamic> that, String sink);
+          NativePortType port_, JSAny that, String sink);
 
   external void
       wire__crate__api__pseudo_manual__method_twin_rust_async__concatenate_with_twin_rust_async_handle_some_stream_sink_twin_rust_async(
-          NativePortType port_,
-          List<dynamic> that,
-          int key,
-          int max,
-          String sink);
+          NativePortType port_, JSAny that, int key, int max, String sink);
 
   external void
       wire__crate__api__pseudo_manual__method_twin_rust_async__concatenate_with_twin_rust_async_new_twin_rust_async(
@@ -67534,7 +67475,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__method_twin_rust_async__concatenate_with_twin_rust_async_simple_getter_twin_rust_async(
-          NativePortType port_, List<dynamic> that);
+          NativePortType port_, JSAny that);
 
   external void
       wire__crate__api__pseudo_manual__method_twin_rust_async__get_sum_array_twin_rust_async(
@@ -67546,7 +67487,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__method_twin_rust_async__my_callable_twin_rust_async_call(
-          NativePortType port_, List<dynamic> that, String two);
+          NativePortType port_, JSAny that, String two);
 
   external void
       wire__crate__api__pseudo_manual__method_twin_rust_async__simple_enum_twin_rust_async_return_self_twin_rust_async(
@@ -67554,7 +67495,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__method_twin_rust_async__simple_enum_twin_rust_async_simple_method_twin_rust_async(
-          NativePortType port_, List<dynamic> that);
+          NativePortType port_, JSAny that);
 
   external void
       wire__crate__api__pseudo_manual__method_twin_rust_async__simple_primitive_enum_twin_rust_async_simple_method_twin_rust_async(
@@ -67562,15 +67503,15 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__method_twin_rust_async__simple_struct_twin_rust_async_arg_self_twin_rust_async(
-          NativePortType port_, List<dynamic> a, List<dynamic> b);
+          NativePortType port_, JSAny a, JSAny b);
 
   external void
       wire__crate__api__pseudo_manual__method_twin_rust_async__simple_struct_twin_rust_async_receiver_borrow_twin_rust_async(
-          NativePortType port_, List<dynamic> that);
+          NativePortType port_, JSAny that);
 
   external void
       wire__crate__api__pseudo_manual__method_twin_rust_async__simple_struct_twin_rust_async_receiver_own_twin_rust_async(
-          NativePortType port_, List<dynamic> that);
+          NativePortType port_, JSAny that);
 
   external void
       wire__crate__api__pseudo_manual__method_twin_rust_async__simple_struct_twin_rust_async_return_self_twin_rust_async(
@@ -67578,7 +67519,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__method_twin_rust_async__simple_struct_twin_rust_async_vec_self_twin_rust_async(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__method_twin_rust_async__static_only_twin_rust_async_static_method_twin_rust_async(
@@ -67586,7 +67527,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__method_twin_rust_async__sum_with_twin_rust_async_sum_twin_rust_async(
-          NativePortType port_, List<dynamic> that, int y, int z);
+          NativePortType port_, JSAny that, int y, int z);
 
   external void
       wire__crate__api__pseudo_manual__method_twin_rust_async_sse__StaticGetterOnlyTwinRustAsyncSse_static_getter_twin_rust_async_sse(
@@ -67905,7 +67846,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__concatenate_with_twin_sync_concatenate_twin_sync(
-          List<dynamic> that, String b);
+          JSAny that, String b);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__concatenate_with_twin_sync_handle_some_static_stream_sink_single_arg_twin_sync(
@@ -67917,11 +67858,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__concatenate_with_twin_sync_handle_some_stream_sink_at_1_twin_sync(
-          List<dynamic> that, String sink);
+          JSAny that, String sink);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__concatenate_with_twin_sync_handle_some_stream_sink_twin_sync(
-          List<dynamic> that, int key, int max, String sink);
+          JSAny that, int key, int max, String sink);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__concatenate_with_twin_sync_new_twin_sync(
@@ -67929,7 +67870,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__concatenate_with_twin_sync_simple_getter_twin_sync(
-          List<dynamic> that);
+          JSAny that);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__get_sum_array_twin_sync(
@@ -67940,7 +67881,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__my_callable_twin_sync_call(
-          List<dynamic> that, String two);
+          JSAny that, String two);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__simple_enum_twin_sync_return_self_twin_sync(
@@ -67948,7 +67889,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__simple_enum_twin_sync_simple_method_twin_sync(
-          List<dynamic> that);
+          JSAny that);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__simple_primitive_enum_twin_sync_simple_method_twin_sync(
@@ -67956,15 +67897,15 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__simple_struct_twin_sync_arg_self_twin_sync(
-          List<dynamic> a, List<dynamic> b);
+          JSAny a, JSAny b);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__simple_struct_twin_sync_receiver_borrow_twin_sync(
-          List<dynamic> that);
+          JSAny that);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__simple_struct_twin_sync_receiver_own_twin_sync(
-          List<dynamic> that);
+          JSAny that);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__simple_struct_twin_sync_return_self_twin_sync(
@@ -67972,7 +67913,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__simple_struct_twin_sync_vec_self_twin_sync(
-          List<dynamic> arg);
+          JSAny arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__static_only_twin_sync_static_method_twin_sync(
@@ -67980,7 +67921,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__sum_with_twin_sync_sum_twin_sync(
-          List<dynamic> that, int y, int z);
+          JSAny that, int y, int z);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__method_twin_sync_sse__StaticGetterOnlyTwinSyncSse_static_getter_twin_sync_sse(
@@ -68124,11 +68065,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__mirror_twin_rust_async__first_number_twin_rust_async(
-          NativePortType port_, List<dynamic> nums);
+          NativePortType port_, JSAny nums);
 
   external void
       wire__crate__api__pseudo_manual__mirror_twin_rust_async__first_sequence_twin_rust_async(
-          NativePortType port_, List<dynamic> seqs);
+          NativePortType port_, JSAny seqs);
 
   external void
       wire__crate__api__pseudo_manual__mirror_twin_rust_async__get_app_settings_twin_rust_async(
@@ -68144,7 +68085,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__mirror_twin_rust_async__is_app_embedded_twin_rust_async(
-          NativePortType port_, List<dynamic> app_settings);
+          NativePortType port_, JSAny app_settings);
 
   external void
       wire__crate__api__pseudo_manual__mirror_twin_rust_async__mirror_array_enum_stream_twin_rust_async(
@@ -68592,11 +68533,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__mirror_twin_sync__first_number_twin_sync(
-          List<dynamic> nums);
+          JSAny nums);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__mirror_twin_sync__first_sequence_twin_sync(
-          List<dynamic> seqs);
+          JSAny seqs);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__mirror_twin_sync__get_app_settings_twin_sync();
@@ -68609,7 +68550,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__mirror_twin_sync__is_app_embedded_twin_sync(
-          List<dynamic> app_settings);
+          JSAny app_settings);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__mirror_twin_sync__mirror_array_enum_stream_twin_sync(
@@ -68842,11 +68783,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__misc_example_twin_rust_async__handle_complex_struct_twin_rust_async(
-          NativePortType port_, List<dynamic> s);
+          NativePortType port_, JSAny s);
 
   external void
       wire__crate__api__pseudo_manual__misc_example_twin_rust_async__handle_nested_struct_twin_rust_async(
-          NativePortType port_, List<dynamic> s);
+          NativePortType port_, JSAny s);
 
   external void
       wire__crate__api__pseudo_manual__misc_example_twin_rust_async__handle_string_twin_rust_async(
@@ -68854,7 +68795,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__misc_example_twin_rust_async__handle_struct_twin_rust_async(
-          NativePortType port_, List<dynamic> arg, List<dynamic> boxed);
+          NativePortType port_, JSAny arg, JSAny boxed);
 
   external void
       wire__crate__api__pseudo_manual__misc_example_twin_rust_async__handle_vec_u8_twin_rust_async(
@@ -68862,7 +68803,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__misc_example_twin_rust_async__list_of_primitive_enums_twin_rust_async(
-          NativePortType port_, List<dynamic> weekdays);
+          NativePortType port_, JSAny weekdays);
 
   external void
       wire__crate__api__pseudo_manual__misc_example_twin_rust_async__positional_arguments_twin_rust_async(
@@ -68870,11 +68811,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__misc_example_twin_rust_async__test_abc_enum_twin_rust_async(
-          NativePortType port_, List<dynamic> abc);
+          NativePortType port_, JSAny abc);
 
   external void
       wire__crate__api__pseudo_manual__misc_example_twin_rust_async__test_struct_with_enum_twin_rust_async(
-          NativePortType port_, List<dynamic> se);
+          NativePortType port_, JSAny se);
 
   external void
       wire__crate__api__pseudo_manual__misc_example_twin_rust_async_sse__handle_big_buffers_twin_rust_async_sse(
@@ -69039,11 +68980,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__misc_example_twin_sync__handle_complex_struct_twin_sync(
-          List<dynamic> s);
+          JSAny s);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__misc_example_twin_sync__handle_nested_struct_twin_sync(
-          List<dynamic> s);
+          JSAny s);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__misc_example_twin_sync__handle_string_twin_sync(
@@ -69051,7 +68992,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__misc_example_twin_sync__handle_struct_twin_sync(
-          List<dynamic> arg, List<dynamic> boxed);
+          JSAny arg, JSAny boxed);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__misc_example_twin_sync__handle_vec_u8_twin_sync(
@@ -69059,7 +69000,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__misc_example_twin_sync__list_of_primitive_enums_twin_sync(
-          List<dynamic> weekdays);
+          JSAny weekdays);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__misc_example_twin_sync__positional_arguments_twin_sync(
@@ -69067,11 +69008,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__misc_example_twin_sync__test_abc_enum_twin_sync(
-          List<dynamic> abc);
+          JSAny abc);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__misc_example_twin_sync__test_struct_with_enum_twin_sync(
-          List<dynamic> se);
+          JSAny se);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__handle_big_buffers_twin_sync_sse(
@@ -69141,7 +69082,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__misc_type_twin_rust_async__empty_struct_twin_rust_async(
-          NativePortType port_, List<dynamic> empty);
+          NativePortType port_, JSAny empty);
 
   external void
       wire__crate__api__pseudo_manual__misc_type_twin_rust_async__func_return_unit_twin_rust_async(
@@ -69149,11 +69090,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__misc_type_twin_rust_async__handle_list_of_struct_twin_rust_async(
-          NativePortType port_, List<dynamic> l);
+          NativePortType port_, JSAny l);
 
   external void
       wire__crate__api__pseudo_manual__misc_type_twin_rust_async__handle_string_list_twin_rust_async(
-          NativePortType port_, List<dynamic> names);
+          NativePortType port_, JSAny names);
 
   external void
       wire__crate__api__pseudo_manual__misc_type_twin_rust_async_sse__empty_struct_twin_rust_async_sse(
@@ -69213,18 +69154,18 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__misc_type_twin_sync__empty_struct_twin_sync(
-          List<dynamic> empty);
+          JSAny empty);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__misc_type_twin_sync__func_return_unit_twin_sync();
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__misc_type_twin_sync__handle_list_of_struct_twin_sync(
-          List<dynamic> l);
+          JSAny l);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__misc_type_twin_sync__handle_string_list_twin_sync(
-          List<dynamic> names);
+          JSAny names);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__misc_type_twin_sync_sse__empty_struct_twin_sync_sse(
@@ -69252,7 +69193,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__newtype_pattern_twin_rust_async__handle_newtype_twin_rust_async(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__newtype_pattern_twin_rust_async_sse__handle_newtype_twin_rust_async_sse(
@@ -69270,7 +69211,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__newtype_pattern_twin_sync__handle_newtype_twin_sync(
-          List<dynamic> arg);
+          JSAny arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__newtype_pattern_twin_sync_sse__handle_newtype_twin_sync_sse(
@@ -69323,11 +69264,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           Object? i64box,
           double? f64box,
           bool? boolbox,
-          List<dynamic>? structbox);
+          JSAny? structbox);
 
   external void
       wire__crate__api__pseudo_manual__optional_twin_rust_async__handle_optional_increment_twin_rust_async(
-          NativePortType port_, List<dynamic>? opt);
+          NativePortType port_, JSAny? opt);
 
   external void
       wire__crate__api__pseudo_manual__optional_twin_rust_async__handle_optional_return_twin_rust_async(
@@ -69339,7 +69280,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__optional_twin_rust_async__handle_vec_of_opts_twin_rust_async(
-          NativePortType port_, List<dynamic> opt);
+          NativePortType port_, JSAny opt);
 
   external void
       wire__crate__api__pseudo_manual__optional_twin_rust_async_sse__handle_increment_boxed_optional_twin_rust_async_sse(
@@ -69437,11 +69378,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           Object? i64box,
           double? f64box,
           bool? boolbox,
-          List<dynamic>? structbox);
+          JSAny? structbox);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__optional_twin_sync__handle_optional_increment_twin_sync(
-          List<dynamic>? opt);
+          JSAny? opt);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__optional_twin_sync__handle_optional_return_twin_sync(
@@ -69453,7 +69394,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__optional_twin_sync__handle_vec_of_opts_twin_sync(
-          List<dynamic> opt);
+          JSAny opt);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__optional_twin_sync_sse__handle_increment_boxed_optional_twin_sync_sse(
@@ -69497,7 +69438,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__ownership_twin_rust_async__borrow_slice_string_twin_rust_async(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__ownership_twin_rust_async__borrow_slice_u8_twin_rust_async(
@@ -69513,7 +69454,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__ownership_twin_rust_async__borrow_struct_twin_rust_async(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__ownership_twin_rust_async_sse__borrow_i32_twin_rust_async_sse(
@@ -69605,7 +69546,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__ownership_twin_sync__borrow_slice_string_twin_sync(
-          List<dynamic> arg);
+          JSAny arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__ownership_twin_sync__borrow_slice_u8_twin_sync(
@@ -69621,7 +69562,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__ownership_twin_sync__borrow_struct_twin_sync(
-          List<dynamic> arg);
+          JSAny arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__ownership_twin_sync_sse__borrow_i32_twin_sync_sse(
@@ -69875,7 +69816,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_arg_vec_own_twin_moi(
-          NativePortType port_, List<dynamic> arg, List<int> expect);
+          NativePortType port_, JSAny arg, List<int> expect);
 
   external void
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_borrow_and_borrow_twin_moi(
@@ -69907,7 +69848,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_moi(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_moi(
@@ -69931,7 +69872,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_explicit_struct_twin_moi(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_normal_and_opaque_arg_twin_moi(
@@ -69971,7 +69912,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_moi(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_moi(
@@ -70055,7 +69996,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_arg_vec_own_twin_rust_async(
-          NativePortType port_, List<dynamic> arg, List<int> expect);
+          NativePortType port_, JSAny arg, List<int> expect);
 
   external void
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_borrow_and_borrow_twin_rust_async(
@@ -70087,7 +70028,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_rust_async(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_rust_async(
@@ -70111,7 +70052,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_explicit_struct_twin_rust_async(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_normal_and_opaque_arg_twin_rust_async(
@@ -70151,7 +70092,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_rust_async(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_rust_async(
@@ -70235,7 +70176,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_arg_vec_own_twin_rust_async_moi(
-          NativePortType port_, List<dynamic> arg, List<int> expect);
+          NativePortType port_, JSAny arg, List<int> expect);
 
   external void
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_borrow_and_borrow_twin_rust_async_moi(
@@ -70267,7 +70208,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_rust_async_moi(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_rust_async_moi(
@@ -70291,7 +70232,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_explicit_struct_twin_rust_async_moi(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_normal_and_opaque_arg_twin_rust_async_moi(
@@ -70331,7 +70272,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_rust_async_moi(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_rust_async_moi(
@@ -71647,7 +71588,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_arg_vec_own_twin_sync(
-          List<dynamic> arg, List<int> expect);
+          JSAny arg, List<int> expect);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_borrow_and_borrow_twin_sync(
@@ -71677,7 +71618,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sync(
-          List<dynamic> arg);
+          JSAny arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sync();
@@ -71698,7 +71639,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_explicit_struct_twin_sync(
-          List<dynamic> arg);
+          JSAny arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_normal_and_opaque_arg_twin_sync(
@@ -71734,7 +71675,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync(
-          List<dynamic> arg);
+          JSAny arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync();
@@ -71813,7 +71754,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_arg_vec_own_twin_sync_moi(
-          List<dynamic> arg, List<int> expect);
+          JSAny arg, List<int> expect);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_borrow_and_borrow_twin_sync_moi(
@@ -71843,7 +71784,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sync_moi(
-          List<dynamic> arg);
+          JSAny arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sync_moi();
@@ -71864,7 +71805,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_explicit_struct_twin_sync_moi(
-          List<dynamic> arg);
+          JSAny arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_normal_and_opaque_arg_twin_sync_moi(
@@ -71900,7 +71841,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync_moi(
-          List<dynamic> arg);
+          JSAny arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync_moi();
@@ -72523,7 +72464,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__rust_opaque_twin_moi__opaque_array_run_twin_moi(
-          NativePortType port_, List<dynamic> data);
+          NativePortType port_, JSAny data);
 
   external void
       wire__crate__api__pseudo_manual__rust_opaque_twin_moi__opaque_array_twin_moi(
@@ -72531,7 +72472,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__rust_opaque_twin_moi__opaque_vec_run_twin_moi(
-          NativePortType port_, List<dynamic> data);
+          NativePortType port_, JSAny data);
 
   external void
       wire__crate__api__pseudo_manual__rust_opaque_twin_moi__opaque_vec_twin_moi(
@@ -72539,11 +72480,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__rust_opaque_twin_moi__run_enum_opaque_twin_moi(
-          NativePortType port_, List<dynamic> opaque);
+          NativePortType port_, JSAny opaque);
 
   external void
       wire__crate__api__pseudo_manual__rust_opaque_twin_moi__run_nested_opaque_twin_moi(
-          NativePortType port_, List<dynamic> opaque);
+          NativePortType port_, JSAny opaque);
 
   external void
       wire__crate__api__pseudo_manual__rust_opaque_twin_moi__run_non_clone_twin_moi(
@@ -72583,7 +72524,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__opaque_array_run_twin_rust_async(
-          NativePortType port_, List<dynamic> data);
+          NativePortType port_, JSAny data);
 
   external void
       wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__opaque_array_twin_rust_async(
@@ -72591,7 +72532,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__opaque_vec_run_twin_rust_async(
-          NativePortType port_, List<dynamic> data);
+          NativePortType port_, JSAny data);
 
   external void
       wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__opaque_vec_twin_rust_async(
@@ -72599,11 +72540,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__run_enum_opaque_twin_rust_async(
-          NativePortType port_, List<dynamic> opaque);
+          NativePortType port_, JSAny opaque);
 
   external void
       wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__run_nested_opaque_twin_rust_async(
-          NativePortType port_, List<dynamic> opaque);
+          NativePortType port_, JSAny opaque);
 
   external void
       wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__run_non_clone_twin_rust_async(
@@ -72643,7 +72584,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__opaque_array_run_twin_rust_async_moi(
-          NativePortType port_, List<dynamic> data);
+          NativePortType port_, JSAny data);
 
   external void
       wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__opaque_array_twin_rust_async_moi(
@@ -72651,7 +72592,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__opaque_vec_run_twin_rust_async_moi(
-          NativePortType port_, List<dynamic> data);
+          NativePortType port_, JSAny data);
 
   external void
       wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__opaque_vec_twin_rust_async_moi(
@@ -72659,11 +72600,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__run_enum_opaque_twin_rust_async_moi(
-          NativePortType port_, List<dynamic> opaque);
+          NativePortType port_, JSAny opaque);
 
   external void
       wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__run_nested_opaque_twin_rust_async_moi(
-          NativePortType port_, List<dynamic> opaque);
+          NativePortType port_, JSAny opaque);
 
   external void
       wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__run_non_clone_twin_rust_async_moi(
@@ -73119,25 +73060,25 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync__opaque_array_run_twin_sync(
-          List<dynamic> data);
+          JSAny data);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync__opaque_array_twin_sync();
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync__opaque_vec_run_twin_sync(
-          List<dynamic> data);
+          JSAny data);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync__opaque_vec_twin_sync();
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync__run_enum_opaque_twin_sync(
-          List<dynamic> opaque);
+          JSAny opaque);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync__run_nested_opaque_twin_sync(
-          List<dynamic> opaque);
+          JSAny opaque);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync__run_non_clone_twin_sync(
@@ -73173,25 +73114,25 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__opaque_array_run_twin_sync_moi(
-          List<dynamic> data);
+          JSAny data);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__opaque_array_twin_sync_moi();
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__opaque_vec_run_twin_sync_moi(
-          List<dynamic> data);
+          JSAny data);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__opaque_vec_twin_sync_moi();
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__run_enum_opaque_twin_sync_moi(
-          List<dynamic> opaque);
+          JSAny opaque);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__run_nested_opaque_twin_sync_moi(
-          List<dynamic> opaque);
+          JSAny opaque);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__run_non_clone_twin_sync_moi(
@@ -73469,11 +73410,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__stream_twin_rust_async__stream_sink_inside_struct_twin_rust_async(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__stream_twin_rust_async__stream_sink_inside_vec_twin_rust_async(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__stream_twin_rust_async_sse__func_stream_add_value_and_error_twin_rust_async_sse(
@@ -73631,31 +73572,31 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__structure_twin_rust_async__func_for_struct_with_dart_keyword_field_twin_rust_async(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__structure_twin_rust_async__func_for_struct_with_field_rename_twin_rust_async(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__structure_twin_rust_async__func_struct_with_one_field_twin_rust_async(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__structure_twin_rust_async__func_struct_with_two_field_twin_rust_async(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__structure_twin_rust_async__func_struct_with_zero_field_twin_rust_async(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__structure_twin_rust_async__func_tuple_struct_with_one_field_twin_rust_async(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__structure_twin_rust_async__func_tuple_struct_with_two_field_twin_rust_async(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__pseudo_manual__structure_twin_rust_async_sse__func_for_struct_with_dart_keyword_field_twin_rust_async_sse(
@@ -73757,31 +73698,31 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__structure_twin_sync__func_for_struct_with_dart_keyword_field_twin_sync(
-          List<dynamic> arg);
+          JSAny arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__structure_twin_sync__func_for_struct_with_field_rename_twin_sync(
-          List<dynamic> arg);
+          JSAny arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__structure_twin_sync__func_struct_with_one_field_twin_sync(
-          List<dynamic> arg);
+          JSAny arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__structure_twin_sync__func_struct_with_two_field_twin_sync(
-          List<dynamic> arg);
+          JSAny arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__structure_twin_sync__func_struct_with_zero_field_twin_sync(
-          List<dynamic> arg);
+          JSAny arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__structure_twin_sync__func_tuple_struct_with_one_field_twin_sync(
-          List<dynamic> arg);
+          JSAny arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__structure_twin_sync__func_tuple_struct_with_two_field_twin_sync(
-          List<dynamic> arg);
+          JSAny arg);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__structure_twin_sync_sse__func_for_struct_with_dart_keyword_field_twin_sync_sse(
@@ -73827,11 +73768,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__tuple_twin_rust_async__test_tuple_2_twin_rust_async(
-          NativePortType port_, List<dynamic> value);
+          NativePortType port_, JSAny value);
 
   external void
       wire__crate__api__pseudo_manual__tuple_twin_rust_async__test_tuple_twin_rust_async(
-          NativePortType port_, List<dynamic>? value);
+          NativePortType port_, JSAny? value);
 
   external void
       wire__crate__api__pseudo_manual__tuple_twin_rust_async_sse__test_tuple_2_twin_rust_async_sse(
@@ -73863,11 +73804,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__tuple_twin_sync__test_tuple_2_twin_sync(
-          List<dynamic> value);
+          JSAny value);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__tuple_twin_sync__test_tuple_twin_sync(
-          List<dynamic>? value);
+          JSAny? value);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__tuple_twin_sync_sse__test_tuple_2_twin_sync_sse(
@@ -73967,7 +73908,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__uuid_type_twin_rust_async__handle_nested_uuids_twin_rust_async(
-          NativePortType port_, List<dynamic> ids);
+          NativePortType port_, JSAny ids);
 
   external void
       wire__crate__api__pseudo_manual__uuid_type_twin_rust_async__handle_uuid_twin_rust_async(
@@ -73975,7 +73916,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__uuid_type_twin_rust_async__handle_uuids_twin_rust_async(
-          NativePortType port_, List<dynamic> ids);
+          NativePortType port_, JSAny ids);
 
   external void
       wire__crate__api__pseudo_manual__uuid_type_twin_rust_async_sse__handle_nested_uuids_twin_rust_async_sse(
@@ -74021,7 +73962,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__uuid_type_twin_sync__handle_nested_uuids_twin_sync(
-          List<dynamic> ids);
+          JSAny ids);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__uuid_type_twin_sync__handle_uuid_twin_sync(
@@ -74029,7 +73970,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__uuid_type_twin_sync__handle_uuids_twin_sync(
-          List<dynamic> ids);
+          JSAny ids);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__uuid_type_twin_sync_sse__handle_nested_uuids_twin_sync_sse(
@@ -74131,7 +74072,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__rust_auto_opaque__rust_auto_opaque_arg_vec_own_twin_normal(
-          NativePortType port_, List<dynamic> arg, List<int> expect);
+          NativePortType port_, JSAny arg, List<int> expect);
 
   external void
       wire__crate__api__rust_auto_opaque__rust_auto_opaque_borrow_and_borrow_twin_normal(
@@ -74163,7 +74104,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__rust_auto_opaque__rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_normal(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__rust_auto_opaque__rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_normal(
@@ -74187,7 +74128,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__rust_auto_opaque__rust_auto_opaque_explicit_struct_twin_normal(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__rust_auto_opaque__rust_auto_opaque_normal_and_opaque_arg_twin_normal(
@@ -74227,7 +74168,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__rust_auto_opaque__rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_normal(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__rust_auto_opaque__rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_normal(
@@ -74254,22 +74195,22 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
       NativePortType port_);
 
   external void wire__crate__api__rust_opaque__opaque_array_run_twin_normal(
-      NativePortType port_, List<dynamic> data);
+      NativePortType port_, JSAny data);
 
   external void wire__crate__api__rust_opaque__opaque_array_twin_normal(
       NativePortType port_);
 
   external void wire__crate__api__rust_opaque__opaque_vec_run_twin_normal(
-      NativePortType port_, List<dynamic> data);
+      NativePortType port_, JSAny data);
 
   external void wire__crate__api__rust_opaque__opaque_vec_twin_normal(
       NativePortType port_);
 
   external void wire__crate__api__rust_opaque__run_enum_opaque_twin_normal(
-      NativePortType port_, List<dynamic> opaque);
+      NativePortType port_, JSAny opaque);
 
   external void wire__crate__api__rust_opaque__run_nested_opaque_twin_normal(
-      NativePortType port_, List<dynamic> opaque);
+      NativePortType port_, JSAny opaque);
 
   external void wire__crate__api__rust_opaque__run_non_clone_twin_normal(
       NativePortType port_, int clone);
@@ -74330,10 +74271,10 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           NativePortType port_, String sink);
 
   external void wire__crate__api__stream__stream_sink_inside_struct_twin_normal(
-      NativePortType port_, List<dynamic> arg);
+      NativePortType port_, JSAny arg);
 
   external void wire__crate__api__stream__stream_sink_inside_vec_twin_normal(
-      NativePortType port_, List<dynamic> arg);
+      NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__stream_misc__func_stream_realistic_twin_normal(
@@ -74345,37 +74286,37 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__structure__func_for_struct_with_dart_keyword_field_twin_normal(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__structure__func_for_struct_with_field_rename_twin_normal(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__structure__func_struct_with_one_field_twin_normal(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__structure__func_struct_with_two_field_twin_normal(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__structure__func_struct_with_zero_field_twin_normal(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__structure__func_tuple_struct_with_one_field_twin_normal(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__structure__func_tuple_struct_with_two_field_twin_normal(
-          NativePortType port_, List<dynamic> arg);
+          NativePortType port_, JSAny arg);
 
   external void wire__crate__api__tuple__test_tuple_2_twin_normal(
-      NativePortType port_, List<dynamic> value);
+      NativePortType port_, JSAny value);
 
   external void wire__crate__api__tuple__test_tuple_twin_normal(
-      NativePortType port_, List<dynamic>? value);
+      NativePortType port_, JSAny? value);
 
   external void wire__crate__api__type_alias__handle_type_alias_id_twin_normal(
       NativePortType port_, Object input);
@@ -74389,13 +74330,13 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           NativePortType port_, Object input);
 
   external void wire__crate__api__uuid_type__handle_nested_uuids_twin_normal(
-      NativePortType port_, List<dynamic> ids);
+      NativePortType port_, JSAny ids);
 
   external void wire__crate__api__uuid_type__handle_uuid_twin_normal(
       NativePortType port_, Uint8List id);
 
   external void wire__crate__api__uuid_type__handle_uuids_twin_normal(
-      NativePortType port_, List<dynamic> ids);
+      NativePortType port_, JSAny ids);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_BoxdynDartDebugTwinMoi(
