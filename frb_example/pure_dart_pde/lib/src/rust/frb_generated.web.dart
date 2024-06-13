@@ -14630,7 +14630,7 @@ external RustLibWasmModule get wasmModule;
 
 @JS()
 @anonymous
-class RustLibWasmModule {
+extension type RustLibWasmModule._(JSObject _) implements JSObject {
   external void
       rust_arc_increment_strong_count_RustOpaque_BoxdynDartDebugTwinNormal(
           dynamic ptr);
