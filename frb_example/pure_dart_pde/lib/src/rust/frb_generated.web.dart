@@ -13809,819 +13809,817 @@ class RustLibWire implements BaseWire {
   RustLibWire.fromExternalLibrary(ExternalLibrary lib);
 
   void rust_arc_increment_strong_count_RustOpaque_BoxdynDartDebugTwinNormal(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_increment_strong_count_RustOpaque_BoxdynDartDebugTwinNormal(
               ptr);
 
   void rust_arc_decrement_strong_count_RustOpaque_BoxdynDartDebugTwinNormal(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_BoxdynDartDebugTwinNormal(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_BoxdynDartDebugTwinRustAsync(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_increment_strong_count_RustOpaque_BoxdynDartDebugTwinRustAsync(
               ptr);
 
   void rust_arc_decrement_strong_count_RustOpaque_BoxdynDartDebugTwinRustAsync(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_BoxdynDartDebugTwinRustAsync(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_BoxdynDartDebugTwinSync(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_increment_strong_count_RustOpaque_BoxdynDartDebugTwinSync(
               ptr);
 
   void rust_arc_decrement_strong_count_RustOpaque_BoxdynDartDebugTwinSync(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_BoxdynDartDebugTwinSync(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_FrbOpaqueReturnTwinNormal(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_increment_strong_count_RustOpaque_FrbOpaqueReturnTwinNormal(
               ptr);
 
   void rust_arc_decrement_strong_count_RustOpaque_FrbOpaqueReturnTwinNormal(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_FrbOpaqueReturnTwinNormal(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_FrbOpaqueReturnTwinRustAsync(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_increment_strong_count_RustOpaque_FrbOpaqueReturnTwinRustAsync(
               ptr);
 
   void rust_arc_decrement_strong_count_RustOpaque_FrbOpaqueReturnTwinRustAsync(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_FrbOpaqueReturnTwinRustAsync(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_FrbOpaqueReturnTwinSync(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_increment_strong_count_RustOpaque_FrbOpaqueReturnTwinSync(
               ptr);
 
   void rust_arc_decrement_strong_count_RustOpaque_FrbOpaqueReturnTwinSync(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_FrbOpaqueReturnTwinSync(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_FrbOpaqueSyncReturnTwinNormal(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_increment_strong_count_RustOpaque_FrbOpaqueSyncReturnTwinNormal(
               ptr);
 
   void rust_arc_decrement_strong_count_RustOpaque_FrbOpaqueSyncReturnTwinNormal(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_FrbOpaqueSyncReturnTwinNormal(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_HideDataAnotherTwinNormal(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_increment_strong_count_RustOpaque_HideDataAnotherTwinNormal(
               ptr);
 
   void rust_arc_decrement_strong_count_RustOpaque_HideDataAnotherTwinNormal(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_HideDataAnotherTwinNormal(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_HideDataTwinNormal(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_increment_strong_count_RustOpaque_HideDataTwinNormal(ptr);
 
   void rust_arc_decrement_strong_count_RustOpaque_HideDataTwinNormal(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_HideDataTwinNormal(ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_HideDataTwinRustAsync(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_increment_strong_count_RustOpaque_HideDataTwinRustAsync(
               ptr);
 
   void rust_arc_decrement_strong_count_RustOpaque_HideDataTwinRustAsync(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_HideDataTwinRustAsync(
               ptr);
 
-  void rust_arc_increment_strong_count_RustOpaque_HideDataTwinSync(
-          dynamic ptr) =>
+  void rust_arc_increment_strong_count_RustOpaque_HideDataTwinSync(JSAny ptr) =>
       wasmModule
           .rust_arc_increment_strong_count_RustOpaque_HideDataTwinSync(ptr);
 
-  void rust_arc_decrement_strong_count_RustOpaque_HideDataTwinSync(
-          dynamic ptr) =>
+  void rust_arc_decrement_strong_count_RustOpaque_HideDataTwinSync(JSAny ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_HideDataTwinSync(ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_MutexHideDataTwinNormal(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_increment_strong_count_RustOpaque_MutexHideDataTwinNormal(
               ptr);
 
   void rust_arc_decrement_strong_count_RustOpaque_MutexHideDataTwinNormal(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_MutexHideDataTwinNormal(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_MutexHideDataTwinRustAsync(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_increment_strong_count_RustOpaque_MutexHideDataTwinRustAsync(
               ptr);
 
   void rust_arc_decrement_strong_count_RustOpaque_MutexHideDataTwinRustAsync(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_MutexHideDataTwinRustAsync(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_MutexHideDataTwinSync(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_increment_strong_count_RustOpaque_MutexHideDataTwinSync(
               ptr);
 
   void rust_arc_decrement_strong_count_RustOpaque_MutexHideDataTwinSync(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_MutexHideDataTwinSync(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_NonCloneDataTwinNormal(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_increment_strong_count_RustOpaque_NonCloneDataTwinNormal(
               ptr);
 
   void rust_arc_decrement_strong_count_RustOpaque_NonCloneDataTwinNormal(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_NonCloneDataTwinNormal(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_NonCloneDataTwinRustAsync(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_increment_strong_count_RustOpaque_NonCloneDataTwinRustAsync(
               ptr);
 
   void rust_arc_decrement_strong_count_RustOpaque_NonCloneDataTwinRustAsync(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_NonCloneDataTwinRustAsync(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_NonCloneDataTwinSync(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_increment_strong_count_RustOpaque_NonCloneDataTwinSync(ptr);
 
   void rust_arc_decrement_strong_count_RustOpaque_NonCloneDataTwinSync(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_NonCloneDataTwinSync(ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_RwLockHideDataTwinNormal(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_increment_strong_count_RustOpaque_RwLockHideDataTwinNormal(
               ptr);
 
   void rust_arc_decrement_strong_count_RustOpaque_RwLockHideDataTwinNormal(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_RwLockHideDataTwinNormal(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_RwLockHideDataTwinRustAsync(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_increment_strong_count_RustOpaque_RwLockHideDataTwinRustAsync(
               ptr);
 
   void rust_arc_decrement_strong_count_RustOpaque_RwLockHideDataTwinRustAsync(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_RwLockHideDataTwinRustAsync(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_RwLockHideDataTwinSync(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_increment_strong_count_RustOpaque_RwLockHideDataTwinSync(
               ptr);
 
   void rust_arc_decrement_strong_count_RustOpaque_RwLockHideDataTwinSync(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_RwLockHideDataTwinSync(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynAnySendSyncstatic(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynAnySendSyncstatic(
               ptr);
 
   void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynAnySendSyncstatic(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynAnySendSyncstatic(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynFnStringStringSendSync(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynFnStringStringSendSync(
               ptr);
 
   void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynFnStringStringSendSync(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynFnStringStringSendSync(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinNormalSendSync(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinNormalSendSync(
               ptr);
 
   void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinNormalSendSync(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinNormalSendSync(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinRustAsyncSendSync(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinRustAsyncSendSync(
               ptr);
 
   void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinRustAsyncSendSync(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinRustAsyncSendSync(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinSyncSendSync(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinSyncSendSync(
               ptr);
 
   void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinSyncSendSync(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinSyncSendSync(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueStructTwinNormal(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueStructTwinNormal(
               ptr);
 
   void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueStructTwinNormal(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueStructTwinNormal(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueSyncStructTwinNormal(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueSyncStructTwinNormal(
               ptr);
 
   void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueSyncStructTwinNormal(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueSyncStructTwinNormal(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
               ptr);
 
   void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinNormal(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinNormal(
               ptr);
 
   void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinNormal(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinNormal(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinRustAsync(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinRustAsync(
               ptr);
 
   void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinRustAsync(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinRustAsync(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinSync(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinSync(
               ptr);
 
   void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinSync(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinSync(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinNormal(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinNormal(
               ptr);
 
   void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinNormal(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinNormal(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinRustAsync(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinRustAsync(
               ptr);
 
   void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinRustAsync(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinRustAsync(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinSync(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinSync(
               ptr);
 
   void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinSync(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinSync(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerItemContainerSolutionOneTwinNormal(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerItemContainerSolutionOneTwinNormal(
               ptr);
 
   void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerItemContainerSolutionOneTwinNormal(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerItemContainerSolutionOneTwinNormal(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormal(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormal(
               ptr);
 
   void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormal(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormal(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNodeTwinNormal(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNodeTwinNormal(
               ptr);
 
   void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNodeTwinNormal(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNodeTwinNormal(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinNormal(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinNormal(
               ptr);
 
   void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinNormal(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinNormal(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinRustAsync(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinRustAsync(
               ptr);
 
   void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinRustAsync(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinRustAsync(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinSync(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinSync(
               ptr);
 
   void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinSync(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinSync(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
               ptr);
 
   void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
               ptr);
 
   void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
               ptr);
 
   void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
               ptr);
 
   void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueOneTwinNormal(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueOneTwinNormal(
               ptr);
 
   void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueOneTwinNormal(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueOneTwinNormal(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueOneTwinRustAsync(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueOneTwinRustAsync(
               ptr);
 
   void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueOneTwinRustAsync(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueOneTwinRustAsync(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueOneTwinSync(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueOneTwinSync(
               ptr);
 
   void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueOneTwinSync(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueOneTwinSync(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueStructWithDartCodeTwinNormal(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueStructWithDartCodeTwinNormal(
               ptr);
 
   void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueStructWithDartCodeTwinNormal(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueStructWithDartCodeTwinNormal(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinNormal(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinNormal(
               ptr);
 
   void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinNormal(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinNormal(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinRustAsync(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinRustAsync(
               ptr);
 
   void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinRustAsync(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinRustAsync(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinSync(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinSync(
               ptr);
 
   void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinSync(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinSync(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleOpaqueExternalStructWithMethod(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleOpaqueExternalStructWithMethod(
               ptr);
 
   void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleOpaqueExternalStructWithMethod(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleOpaqueExternalStructWithMethod(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStaticGetterOnlyTwinNormal(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStaticGetterOnlyTwinNormal(
               ptr);
 
   void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStaticGetterOnlyTwinNormal(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStaticGetterOnlyTwinNormal(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStaticGetterOnlyTwinRustAsync(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStaticGetterOnlyTwinRustAsync(
               ptr);
 
   void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStaticGetterOnlyTwinRustAsync(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStaticGetterOnlyTwinRustAsync(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStaticGetterOnlyTwinSync(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStaticGetterOnlyTwinSync(
               ptr);
 
   void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStaticGetterOnlyTwinSync(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStaticGetterOnlyTwinSync(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructInMiscNoTwinExampleA(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructInMiscNoTwinExampleA(
               ptr);
 
   void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructInMiscNoTwinExampleA(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructInMiscNoTwinExampleA(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructInMiscNoTwinExampleB(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructInMiscNoTwinExampleB(
               ptr);
 
   void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructInMiscNoTwinExampleB(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructInMiscNoTwinExampleB(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitForDynTwinNormal(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitForDynTwinNormal(
               ptr);
 
   void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitForDynTwinNormal(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitForDynTwinNormal(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinNormal(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinNormal(
               ptr);
 
   void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinNormal(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinNormal(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinSync(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinSync(
               ptr);
 
   void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinSync(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinSync(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitForDynTwinNormal(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitForDynTwinNormal(
               ptr);
 
   void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitForDynTwinNormal(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitForDynTwinNormal(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinNormal(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinNormal(
               ptr);
 
   void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinNormal(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinNormal(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinSync(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinSync(
               ptr);
 
   void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinSync(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinSync(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinNormal(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinNormal(
               ptr);
 
   void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinNormal(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinNormal(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync(
               ptr);
 
   void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSync(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSync(
               ptr);
 
   void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSync(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSync(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithImplBlockInMultiFile(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithImplBlockInMultiFile(
               ptr);
 
   void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithImplBlockInMultiFile(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithImplBlockInMultiFile(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
               ptr);
 
   void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
-          dynamic ptr) =>
+          JSAny ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
               ptr);
 
-  void rust_arc_increment_strong_count_RustOpaque_i32(dynamic ptr) =>
+  void rust_arc_increment_strong_count_RustOpaque_i32(JSAny ptr) =>
       wasmModule.rust_arc_increment_strong_count_RustOpaque_i32(ptr);
 
-  void rust_arc_decrement_strong_count_RustOpaque_i32(dynamic ptr) =>
+  void rust_arc_decrement_strong_count_RustOpaque_i32(JSAny ptr) =>
       wasmModule.rust_arc_decrement_strong_count_RustOpaque_i32(ptr);
 }
 
@@ -14633,543 +14631,543 @@ external RustLibWasmModule get wasmModule;
 extension type RustLibWasmModule._(JSObject _) implements JSObject {
   external void
       rust_arc_increment_strong_count_RustOpaque_BoxdynDartDebugTwinNormal(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_BoxdynDartDebugTwinNormal(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_BoxdynDartDebugTwinRustAsync(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_BoxdynDartDebugTwinRustAsync(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_BoxdynDartDebugTwinSync(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_BoxdynDartDebugTwinSync(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_FrbOpaqueReturnTwinNormal(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_FrbOpaqueReturnTwinNormal(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_FrbOpaqueReturnTwinRustAsync(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_FrbOpaqueReturnTwinRustAsync(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_FrbOpaqueReturnTwinSync(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_FrbOpaqueReturnTwinSync(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_FrbOpaqueSyncReturnTwinNormal(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_FrbOpaqueSyncReturnTwinNormal(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_HideDataAnotherTwinNormal(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_HideDataAnotherTwinNormal(
-          dynamic ptr);
+          JSAny ptr);
 
   external void rust_arc_increment_strong_count_RustOpaque_HideDataTwinNormal(
-      dynamic ptr);
+      JSAny ptr);
 
   external void rust_arc_decrement_strong_count_RustOpaque_HideDataTwinNormal(
-      dynamic ptr);
+      JSAny ptr);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_HideDataTwinRustAsync(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_HideDataTwinRustAsync(
-          dynamic ptr);
+          JSAny ptr);
 
   external void rust_arc_increment_strong_count_RustOpaque_HideDataTwinSync(
-      dynamic ptr);
+      JSAny ptr);
 
   external void rust_arc_decrement_strong_count_RustOpaque_HideDataTwinSync(
-      dynamic ptr);
+      JSAny ptr);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_MutexHideDataTwinNormal(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_MutexHideDataTwinNormal(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_MutexHideDataTwinRustAsync(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_MutexHideDataTwinRustAsync(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_MutexHideDataTwinSync(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_MutexHideDataTwinSync(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_NonCloneDataTwinNormal(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_NonCloneDataTwinNormal(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_NonCloneDataTwinRustAsync(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_NonCloneDataTwinRustAsync(
-          dynamic ptr);
+          JSAny ptr);
 
   external void rust_arc_increment_strong_count_RustOpaque_NonCloneDataTwinSync(
-      dynamic ptr);
+      JSAny ptr);
 
   external void rust_arc_decrement_strong_count_RustOpaque_NonCloneDataTwinSync(
-      dynamic ptr);
+      JSAny ptr);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_RwLockHideDataTwinNormal(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_RwLockHideDataTwinNormal(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_RwLockHideDataTwinRustAsync(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_RwLockHideDataTwinRustAsync(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_RwLockHideDataTwinSync(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_RwLockHideDataTwinSync(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynAnySendSyncstatic(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynAnySendSyncstatic(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynFnStringStringSendSync(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynFnStringStringSendSync(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinNormalSendSync(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinNormalSendSync(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinRustAsyncSendSync(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinRustAsyncSendSync(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinSyncSendSync(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinSyncSendSync(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueStructTwinNormal(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueStructTwinNormal(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueSyncStructTwinNormal(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueSyncStructTwinNormal(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinNormal(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinNormal(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinRustAsync(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinRustAsync(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinSync(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinSync(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinNormal(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinNormal(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinRustAsync(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinRustAsync(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinSync(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinSync(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerItemContainerSolutionOneTwinNormal(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerItemContainerSolutionOneTwinNormal(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormal(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormal(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNodeTwinNormal(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNodeTwinNormal(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinNormal(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinNormal(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinRustAsync(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinRustAsync(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinSync(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinSync(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueOneTwinNormal(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueOneTwinNormal(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueOneTwinRustAsync(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueOneTwinRustAsync(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueOneTwinSync(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueOneTwinSync(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueStructWithDartCodeTwinNormal(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueStructWithDartCodeTwinNormal(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinNormal(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinNormal(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinRustAsync(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinRustAsync(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinSync(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinSync(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleOpaqueExternalStructWithMethod(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleOpaqueExternalStructWithMethod(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStaticGetterOnlyTwinNormal(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStaticGetterOnlyTwinNormal(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStaticGetterOnlyTwinRustAsync(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStaticGetterOnlyTwinRustAsync(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStaticGetterOnlyTwinSync(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStaticGetterOnlyTwinSync(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructInMiscNoTwinExampleA(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructInMiscNoTwinExampleA(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructInMiscNoTwinExampleB(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructInMiscNoTwinExampleB(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitForDynTwinNormal(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitForDynTwinNormal(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinNormal(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinNormal(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinSync(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinSync(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitForDynTwinNormal(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitForDynTwinNormal(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinNormal(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinNormal(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinSync(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinSync(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinNormal(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinNormal(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSync(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSync(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithImplBlockInMultiFile(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithImplBlockInMultiFile(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
-          dynamic ptr);
+          JSAny ptr);
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
-          dynamic ptr);
+          JSAny ptr);
 
-  external void rust_arc_increment_strong_count_RustOpaque_i32(dynamic ptr);
+  external void rust_arc_increment_strong_count_RustOpaque_i32(JSAny ptr);
 
-  external void rust_arc_decrement_strong_count_RustOpaque_i32(dynamic ptr);
+  external void rust_arc_decrement_strong_count_RustOpaque_i32(JSAny ptr);
 }
