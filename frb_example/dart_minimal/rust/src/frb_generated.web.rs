@@ -16,47 +16,25 @@ flutter_rust_bridge::frb_generated_boilerplate_web!();
 
 // Section: dart2rust
 
-impl CstDecode<Vec<u8>> for Box<[u8]> {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> Vec<u8> {
-        self.into_vec()
-    }
-}
 impl CstDecode<i32> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> i32 {
         self.unchecked_into_f64() as _
     }
 }
-impl CstDecode<i64> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+impl CstDecode<usize> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> i64 {
-        ::std::convert::TryInto::<i64>::try_into(self).unwrap() as _
-    }
-}
-impl CstDecode<Vec<u8>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> Vec<u8> {
-        self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Uint8Array>()
-            .to_vec()
-            .into()
-    }
-}
-impl CstDecode<u8> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> u8 {
-        self.unchecked_into_f64() as _
+    fn cst_decode(self) -> usize {
+        ::std::convert::TryInto::<u64>::try_into(self).unwrap() as _
     }
 }
 
 #[wasm_bindgen]
 pub fn wire__crate__api__minimal__f(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    a: Box<[u8]>,
-    b: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-    c: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    a: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
-    wire__crate__api__minimal__f_impl(port_, a, b, c)
+    wire__crate__api__minimal__f_impl(port_, a)
 }
 
 #[wasm_bindgen]

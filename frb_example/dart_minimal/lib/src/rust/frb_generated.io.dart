@@ -19,157 +19,46 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   });
 
   @protected
-  int dco_decode_box_autoadd_i_32(dynamic raw);
-
-  @protected
-  PlatformInt64 dco_decode_box_autoadd_i_64(dynamic raw);
-
-  @protected
   int dco_decode_i_32(dynamic raw);
-
-  @protected
-  PlatformInt64 dco_decode_i_64(dynamic raw);
-
-  @protected
-  List<int> dco_decode_list_prim_u_8_loose(dynamic raw);
-
-  @protected
-  Uint8List dco_decode_list_prim_u_8_strict(dynamic raw);
-
-  @protected
-  int? dco_decode_opt_box_autoadd_i_32(dynamic raw);
-
-  @protected
-  PlatformInt64? dco_decode_opt_box_autoadd_i_64(dynamic raw);
-
-  @protected
-  int dco_decode_u_8(dynamic raw);
 
   @protected
   void dco_decode_unit(dynamic raw);
 
   @protected
-  int sse_decode_box_autoadd_i_32(SseDeserializer deserializer);
-
-  @protected
-  PlatformInt64 sse_decode_box_autoadd_i_64(SseDeserializer deserializer);
+  BigInt dco_decode_usize(dynamic raw);
 
   @protected
   int sse_decode_i_32(SseDeserializer deserializer);
 
   @protected
-  PlatformInt64 sse_decode_i_64(SseDeserializer deserializer);
-
-  @protected
-  List<int> sse_decode_list_prim_u_8_loose(SseDeserializer deserializer);
-
-  @protected
-  Uint8List sse_decode_list_prim_u_8_strict(SseDeserializer deserializer);
-
-  @protected
-  int? sse_decode_opt_box_autoadd_i_32(SseDeserializer deserializer);
-
-  @protected
-  PlatformInt64? sse_decode_opt_box_autoadd_i_64(SseDeserializer deserializer);
-
-  @protected
-  int sse_decode_u_8(SseDeserializer deserializer);
-
-  @protected
   void sse_decode_unit(SseDeserializer deserializer);
+
+  @protected
+  BigInt sse_decode_usize(SseDeserializer deserializer);
 
   @protected
   bool sse_decode_bool(SseDeserializer deserializer);
 
   @protected
-  ffi.Pointer<ffi.Int32> cst_encode_box_autoadd_i_32(int raw) {
+  int cst_encode_usize(BigInt raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return wire.cst_new_box_autoadd_i_32(cst_encode_i_32(raw));
-  }
-
-  @protected
-  ffi.Pointer<ffi.Int64> cst_encode_box_autoadd_i_64(PlatformInt64 raw) {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    return wire.cst_new_box_autoadd_i_64(cst_encode_i_64(raw));
-  }
-
-  @protected
-  int cst_encode_i_64(PlatformInt64 raw) {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.toInt();
-  }
-
-  @protected
-  ffi.Pointer<wire_cst_list_prim_u_8_loose> cst_encode_list_prim_u_8_loose(
-      List<int> raw) {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    final ans = wire.cst_new_list_prim_u_8_loose(raw.length);
-    ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
-    return ans;
-  }
-
-  @protected
-  ffi.Pointer<wire_cst_list_prim_u_8_strict> cst_encode_list_prim_u_8_strict(
-      Uint8List raw) {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    final ans = wire.cst_new_list_prim_u_8_strict(raw.length);
-    ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
-    return ans;
-  }
-
-  @protected
-  ffi.Pointer<ffi.Int32> cst_encode_opt_box_autoadd_i_32(int? raw) {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw == null ? ffi.nullptr : cst_encode_box_autoadd_i_32(raw);
-  }
-
-  @protected
-  ffi.Pointer<ffi.Int64> cst_encode_opt_box_autoadd_i_64(PlatformInt64? raw) {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw == null ? ffi.nullptr : cst_encode_box_autoadd_i_64(raw);
+    return raw.toSigned(64).toInt();
   }
 
   @protected
   int cst_encode_i_32(int raw);
 
   @protected
-  int cst_encode_u_8(int raw);
-
-  @protected
   void cst_encode_unit(void raw);
-
-  @protected
-  void sse_encode_box_autoadd_i_32(int self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_box_autoadd_i_64(
-      PlatformInt64 self, SseSerializer serializer);
 
   @protected
   void sse_encode_i_32(int self, SseSerializer serializer);
 
   @protected
-  void sse_encode_i_64(PlatformInt64 self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_list_prim_u_8_loose(List<int> self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_list_prim_u_8_strict(
-      Uint8List self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_opt_box_autoadd_i_32(int? self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_opt_box_autoadd_i_64(
-      PlatformInt64? self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_u_8(int self, SseSerializer serializer);
-
-  @protected
   void sse_encode_unit(void self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_usize(BigInt self, SseSerializer serializer);
 
   @protected
   void sse_encode_bool(bool self, SseSerializer serializer);
@@ -218,30 +107,19 @@ class RustLibWire implements BaseWire {
 
   void wire__crate__api__minimal__f(
     int port_,
-    ffi.Pointer<wire_cst_list_prim_u_8_loose> a,
-    ffi.Pointer<ffi.Int64> b,
-    ffi.Pointer<ffi.Int32> c,
+    int a,
   ) {
     return _wire__crate__api__minimal__f(
       port_,
       a,
-      b,
-      c,
     );
   }
 
-  late final _wire__crate__api__minimal__fPtr = _lookup<
-          ffi.NativeFunction<
-              ffi.Void Function(
-                  ffi.Int64,
-                  ffi.Pointer<wire_cst_list_prim_u_8_loose>,
-                  ffi.Pointer<ffi.Int64>,
-                  ffi.Pointer<ffi.Int32>)>>(
-      'frbgen_frb_example_dart_minimal_wire__crate__api__minimal__f');
+  late final _wire__crate__api__minimal__fPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr)>>(
+          'frbgen_frb_example_dart_minimal_wire__crate__api__minimal__f');
   late final _wire__crate__api__minimal__f =
-      _wire__crate__api__minimal__fPtr.asFunction<
-          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_loose>,
-              ffi.Pointer<ffi.Int64>, ffi.Pointer<ffi.Int32>)>();
+      _wire__crate__api__minimal__fPtr.asFunction<void Function(int, int)>();
 
   void wire__crate__api__minimal__init_app(
     int port_,
@@ -277,64 +155,6 @@ class RustLibWire implements BaseWire {
       _wire__crate__api__minimal__minimal_adderPtr
           .asFunction<void Function(int, int, int)>();
 
-  ffi.Pointer<ffi.Int32> cst_new_box_autoadd_i_32(
-    int value,
-  ) {
-    return _cst_new_box_autoadd_i_32(
-      value,
-    );
-  }
-
-  late final _cst_new_box_autoadd_i_32Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int32> Function(ffi.Int32)>>(
-          'frbgen_frb_example_dart_minimal_cst_new_box_autoadd_i_32');
-  late final _cst_new_box_autoadd_i_32 = _cst_new_box_autoadd_i_32Ptr
-      .asFunction<ffi.Pointer<ffi.Int32> Function(int)>();
-
-  ffi.Pointer<ffi.Int64> cst_new_box_autoadd_i_64(
-    int value,
-  ) {
-    return _cst_new_box_autoadd_i_64(
-      value,
-    );
-  }
-
-  late final _cst_new_box_autoadd_i_64Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int64> Function(ffi.Int64)>>(
-          'frbgen_frb_example_dart_minimal_cst_new_box_autoadd_i_64');
-  late final _cst_new_box_autoadd_i_64 = _cst_new_box_autoadd_i_64Ptr
-      .asFunction<ffi.Pointer<ffi.Int64> Function(int)>();
-
-  ffi.Pointer<wire_cst_list_prim_u_8_loose> cst_new_list_prim_u_8_loose(
-    int len,
-  ) {
-    return _cst_new_list_prim_u_8_loose(
-      len,
-    );
-  }
-
-  late final _cst_new_list_prim_u_8_loosePtr = _lookup<
-          ffi.NativeFunction<
-              ffi.Pointer<wire_cst_list_prim_u_8_loose> Function(ffi.Int32)>>(
-      'frbgen_frb_example_dart_minimal_cst_new_list_prim_u_8_loose');
-  late final _cst_new_list_prim_u_8_loose = _cst_new_list_prim_u_8_loosePtr
-      .asFunction<ffi.Pointer<wire_cst_list_prim_u_8_loose> Function(int)>();
-
-  ffi.Pointer<wire_cst_list_prim_u_8_strict> cst_new_list_prim_u_8_strict(
-    int len,
-  ) {
-    return _cst_new_list_prim_u_8_strict(
-      len,
-    );
-  }
-
-  late final _cst_new_list_prim_u_8_strictPtr = _lookup<
-          ffi.NativeFunction<
-              ffi.Pointer<wire_cst_list_prim_u_8_strict> Function(ffi.Int32)>>(
-      'frbgen_frb_example_dart_minimal_cst_new_list_prim_u_8_strict');
-  late final _cst_new_list_prim_u_8_strict = _cst_new_list_prim_u_8_strictPtr
-      .asFunction<ffi.Pointer<wire_cst_list_prim_u_8_strict> Function(int)>();
-
   int dummy_method_to_enforce_bundling() {
     return _dummy_method_to_enforce_bundling();
   }
@@ -354,17 +174,3 @@ typedef DartDartPostCObjectFnTypeFunction = bool Function(
     DartDartPort port_id, ffi.Pointer<ffi.Void> message);
 typedef DartPort = ffi.Int64;
 typedef DartDartPort = int;
-
-final class wire_cst_list_prim_u_8_loose extends ffi.Struct {
-  external ffi.Pointer<ffi.Uint8> ptr;
-
-  @ffi.Int32()
-  external int len;
-}
-
-final class wire_cst_list_prim_u_8_strict extends ffi.Struct {
-  external ffi.Pointer<ffi.Uint8> ptr;
-
-  @ffi.Int32()
-  external int len;
-}

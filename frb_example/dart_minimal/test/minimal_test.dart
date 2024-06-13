@@ -16,4 +16,8 @@ Future<void> main() async {
     print('Action: Call rust (after)');
   });
   print('Action: Configure tests (end)');
+
+  test('temp', () async {
+    expect(await f(a: BigInt.from(100)), BigInt.from(100));
+  });
 }

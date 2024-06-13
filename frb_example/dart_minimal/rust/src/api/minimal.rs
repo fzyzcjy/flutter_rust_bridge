@@ -10,4 +10,6 @@ pub fn minimal_adder(a: i32, b: i32) -> i32 {
 }
 
 // TODO temp
-pub fn f(a: Vec<u8>, b: Option<i64>, c: Option<i32>) {}
+pub fn f(a: usize) -> usize {
+    a
+}
