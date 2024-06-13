@@ -31,7 +31,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGener
                         length = array.length,
                     )),
                     web: Some(format!(
-                        "return {}.fromList(raw);",
+                        "return {}.fromList(raw).jsify()!;",
                         ApiDartGenerator::new(
                             array.get_delegate(),
                             self.context.as_api_dart_context()
