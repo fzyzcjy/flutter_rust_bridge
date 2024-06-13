@@ -13,7 +13,7 @@ import 'package:yaml/yaml.dart';
 // * https://doc.rust-lang.org/beta/unstable-book/compiler-flags/sanitizer.html
 // * https://github.com/japaric/rust-san
 Future<void> run(TestDartSanitizerConfig config) async {
-  await _modifySdkMinVersion(package: config.package);
+  await _lowerSdkMinVersion(package: config.package);
 
   await runPubGetIfNotRunYet(config.package);
 
@@ -24,10 +24,14 @@ Future<void> run(TestDartSanitizerConfig config) async {
   }
 }
 
-Future<void> _modifySdkMinVersion({required String package}) async {
-  print('Action: modifySdkMinVersion');
+Future<void> _lowerSdkMinVersion({required String package}) async {
+  await _modifySdkMinVersion(path: '${exec.pwd}$package/pubspec.yaml');
+  await _modifySdkMinVersion(path: '${exec.pwd}frb_dart/pubspec.yaml');
+}
 
-  final path = '${exec.pwd}$package/pubspec.yaml';
+Future<void> _modifySdkMinVersion({required String path}) async {
+  print('modifySdkMinVersion(path=$path)');
+
   final file = File(path);
 
   final contentRaw = loadYaml(file.readAsStringSync());
@@ -37,9 +41,8 @@ Future<void> _modifySdkMinVersion({required String package}) async {
   // and we do not really need new sdk version when on native platform.
   content['environment']['sdk'] = '>=3.2.0';
   file.writeAsStringSync(jsonEncode(content));
- 
-  print(
-      'After modifySdkMinVersion content of path=$path is: ${file.readAsStringSync()}');
+
+  print('modifySdkMinVersion path=$path content=${file.readAsStringSync()}');
 }
 
 Future<void> _runEntrypoint(TestDartSanitizerConfig config) async {
