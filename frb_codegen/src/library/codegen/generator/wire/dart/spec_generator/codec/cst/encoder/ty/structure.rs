@@ -65,7 +65,7 @@ impl<'a> GeneralizedStructGenerator<'a> {
                         )
                     })
                     .join(",");
-                format!("return [{}];", values)
+                format!("return [{}].jsify();", values)
             }),
             ..Default::default()
         }
