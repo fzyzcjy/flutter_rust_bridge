@@ -9,6 +9,8 @@ use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartG
 
 impl<'a> WireDartCodecCstGeneratorEncoderTrait for PrimitiveListWireDartCodecCstGenerator<'a> {
     fn generate_encode_func_body(&self) -> Acc<Option<String>> {
+        // We do not care about codecov of unsupported things
+        // frb-coverage:ignore-start
         if matches!(
             self.mir.primitive,
             MirTypePrimitive::Isize | MirTypePrimitive::Usize
@@ -17,6 +19,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for PrimitiveListWireDartCodecCst
                 "throw UnimplementedError('Not implemented in this codec');".to_owned(),
             ));
         }
+        // frb-coverage:ignore-end
 
         Acc {
             // NOTE Dart code *only* allocates memory. It never *release* memory by itself.
@@ -40,7 +43,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for PrimitiveListWireDartCodecCst
             )),
             web: Some(
                 match self.mir.primitive {
-                    MirTypePrimitive::I64 | MirTypePrimitive::U64 => "return raw.inner;",
+                    MirTypePrimitive::I64 | MirTypePrimitive::U64 => "return raw.inner.jsify();",
                     _ => "return raw;",
                 }
                 .into(),
