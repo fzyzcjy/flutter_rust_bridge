@@ -1,5 +1,19 @@
 # Changelog
 
+## 2.0.0-dev.39
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Do not create empty logs directory when not in verbose mode #2057
+* Automatically strip prefix set_/get_ when it is a setter/getter function #2058
+* Support adding errors to stream sink #2059
+* Support import statements in dart_code #2061
+* Add `#[frb(type_64bit_int)]` to pick preferred Dart big integer type #2065
+* Support user-defined custom serializers and deserializers #2067
+* Support attributes on impl block ; Improve ignore category message ; Fix external methods are wrong ignored #2069
+* Support `#[frb(name)]` on fields to rename them ; Automatically rename Dart field names if they conflict with Dart keywords #2070
+* Refactor internal code #2064 #2062
+* Migrate to new Dart web package #2063
+
 ## 2.0.0-dev.38
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
