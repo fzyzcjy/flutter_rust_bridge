@@ -5,21 +5,27 @@
 
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
-part 'minimal.freezed.dart';
 
 Future<int> minimalAdder({required int a, required int b}) =>
     RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b);
 
-Future<void> f({required MyEnum a, required List<String> b}) =>
+Future<void> f({required MyStruct a, required List<String> b}) =>
     RustLib.instance.api.crateApiMinimalF(a: a, b: b);
 
-@freezed
-sealed class MyEnum with _$MyEnum {
-  const MyEnum._();
+class MyStruct {
+  final String field;
 
-  const factory MyEnum.a(
-    String field0,
-  ) = MyEnum_A;
-  const factory MyEnum.b() = MyEnum_B;
+  const MyStruct({
+    required this.field,
+  });
+
+  @override
+  int get hashCode => field.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is MyStruct &&
+          runtimeType == other.runtimeType &&
+          field == other.field;
 }

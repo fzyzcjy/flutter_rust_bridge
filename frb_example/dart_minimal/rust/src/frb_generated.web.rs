@@ -38,16 +38,22 @@ impl CstDecode<Vec<u8>> for Box<[u8]> {
         self.into_vec()
     }
 }
-impl CstDecode<crate::api::minimal::MyEnum>
+impl CstDecode<crate::api::minimal::MyStruct>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> crate::api::minimal::MyEnum {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
-        match self_.get(0).unchecked_into_f64() as _ {
-            0 => crate::api::minimal::MyEnum::A(self_.get(1).cst_decode()),
-            1 => crate::api::minimal::MyEnum::B,
-            _ => unreachable!(),
+    fn cst_decode(self) -> crate::api::minimal::MyStruct {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        crate::api::minimal::MyStruct {
+            field: self_.get(0).cst_decode(),
         }
     }
 }

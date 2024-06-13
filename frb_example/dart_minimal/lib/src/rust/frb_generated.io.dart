@@ -22,7 +22,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   String dco_decode_String(dynamic raw);
 
   @protected
-  MyEnum dco_decode_box_autoadd_my_enum(dynamic raw);
+  MyStruct dco_decode_box_autoadd_my_struct(dynamic raw);
 
   @protected
   int dco_decode_i_32(dynamic raw);
@@ -34,7 +34,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   Uint8List dco_decode_list_prim_u_8_strict(dynamic raw);
 
   @protected
-  MyEnum dco_decode_my_enum(dynamic raw);
+  MyStruct dco_decode_my_struct(dynamic raw);
 
   @protected
   int dco_decode_u_8(dynamic raw);
@@ -46,7 +46,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   String sse_decode_String(SseDeserializer deserializer);
 
   @protected
-  MyEnum sse_decode_box_autoadd_my_enum(SseDeserializer deserializer);
+  MyStruct sse_decode_box_autoadd_my_struct(SseDeserializer deserializer);
 
   @protected
   int sse_decode_i_32(SseDeserializer deserializer);
@@ -58,7 +58,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   Uint8List sse_decode_list_prim_u_8_strict(SseDeserializer deserializer);
 
   @protected
-  MyEnum sse_decode_my_enum(SseDeserializer deserializer);
+  MyStruct sse_decode_my_struct(SseDeserializer deserializer);
 
   @protected
   int sse_decode_u_8(SseDeserializer deserializer);
@@ -76,10 +76,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<wire_cst_my_enum> cst_encode_box_autoadd_my_enum(MyEnum raw) {
+  ffi.Pointer<wire_cst_my_struct> cst_encode_box_autoadd_my_struct(
+      MyStruct raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    final ptr = wire.cst_new_box_autoadd_my_enum();
-    cst_api_fill_to_wire_my_enum(raw, ptr.ref);
+    final ptr = wire.cst_new_box_autoadd_my_struct();
+    cst_api_fill_to_wire_my_struct(raw, ptr.ref);
     return ptr;
   }
 
@@ -103,23 +104,15 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  void cst_api_fill_to_wire_box_autoadd_my_enum(
-      MyEnum apiObj, ffi.Pointer<wire_cst_my_enum> wireObj) {
-    cst_api_fill_to_wire_my_enum(apiObj, wireObj.ref);
+  void cst_api_fill_to_wire_box_autoadd_my_struct(
+      MyStruct apiObj, ffi.Pointer<wire_cst_my_struct> wireObj) {
+    cst_api_fill_to_wire_my_struct(apiObj, wireObj.ref);
   }
 
   @protected
-  void cst_api_fill_to_wire_my_enum(MyEnum apiObj, wire_cst_my_enum wireObj) {
-    if (apiObj is MyEnum_A) {
-      var pre_field0 = cst_encode_String(apiObj.field0);
-      wireObj.tag = 0;
-      wireObj.kind.A.field0 = pre_field0;
-      return;
-    }
-    if (apiObj is MyEnum_B) {
-      wireObj.tag = 1;
-      return;
-    }
+  void cst_api_fill_to_wire_my_struct(
+      MyStruct apiObj, wire_cst_my_struct wireObj) {
+    wireObj.field = cst_encode_String(apiObj.field);
   }
 
   @protected
@@ -135,7 +128,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_String(String self, SseSerializer serializer);
 
   @protected
-  void sse_encode_box_autoadd_my_enum(MyEnum self, SseSerializer serializer);
+  void sse_encode_box_autoadd_my_struct(
+      MyStruct self, SseSerializer serializer);
 
   @protected
   void sse_encode_i_32(int self, SseSerializer serializer);
@@ -148,7 +142,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       Uint8List self, SseSerializer serializer);
 
   @protected
-  void sse_encode_my_enum(MyEnum self, SseSerializer serializer);
+  void sse_encode_my_struct(MyStruct self, SseSerializer serializer);
 
   @protected
   void sse_encode_u_8(int self, SseSerializer serializer);
@@ -203,7 +197,7 @@ class RustLibWire implements BaseWire {
 
   void wire__crate__api__minimal__f(
     int port_,
-    ffi.Pointer<wire_cst_my_enum> a,
+    ffi.Pointer<wire_cst_my_struct> a,
     ffi.Pointer<wire_cst_list_String> b,
   ) {
     return _wire__crate__api__minimal__f(
@@ -215,12 +209,12 @@ class RustLibWire implements BaseWire {
 
   late final _wire__crate__api__minimal__fPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Pointer<wire_cst_my_enum>,
+              ffi.Void Function(ffi.Int64, ffi.Pointer<wire_cst_my_struct>,
                   ffi.Pointer<wire_cst_list_String>)>>(
       'frbgen_frb_example_dart_minimal_wire__crate__api__minimal__f');
   late final _wire__crate__api__minimal__f =
       _wire__crate__api__minimal__fPtr.asFunction<
-          void Function(int, ffi.Pointer<wire_cst_my_enum>,
+          void Function(int, ffi.Pointer<wire_cst_my_struct>,
               ffi.Pointer<wire_cst_list_String>)>();
 
   void wire__crate__api__minimal__init_app(
@@ -257,15 +251,15 @@ class RustLibWire implements BaseWire {
       _wire__crate__api__minimal__minimal_adderPtr
           .asFunction<void Function(int, int, int)>();
 
-  ffi.Pointer<wire_cst_my_enum> cst_new_box_autoadd_my_enum() {
-    return _cst_new_box_autoadd_my_enum();
+  ffi.Pointer<wire_cst_my_struct> cst_new_box_autoadd_my_struct() {
+    return _cst_new_box_autoadd_my_struct();
   }
 
-  late final _cst_new_box_autoadd_my_enumPtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_cst_my_enum> Function()>>(
-          'frbgen_frb_example_dart_minimal_cst_new_box_autoadd_my_enum');
-  late final _cst_new_box_autoadd_my_enum = _cst_new_box_autoadd_my_enumPtr
-      .asFunction<ffi.Pointer<wire_cst_my_enum> Function()>();
+  late final _cst_new_box_autoadd_my_structPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_cst_my_struct> Function()>>(
+          'frbgen_frb_example_dart_minimal_cst_new_box_autoadd_my_struct');
+  late final _cst_new_box_autoadd_my_struct = _cst_new_box_autoadd_my_structPtr
+      .asFunction<ffi.Pointer<wire_cst_my_struct> Function()>();
 
   ffi.Pointer<wire_cst_list_String> cst_new_list_String(
     int len,
@@ -324,19 +318,8 @@ final class wire_cst_list_prim_u_8_strict extends ffi.Struct {
   external int len;
 }
 
-final class wire_cst_MyEnum_A extends ffi.Struct {
-  external ffi.Pointer<wire_cst_list_prim_u_8_strict> field0;
-}
-
-final class MyEnumKind extends ffi.Union {
-  external wire_cst_MyEnum_A A;
-}
-
-final class wire_cst_my_enum extends ffi.Struct {
-  @ffi.Int32()
-  external int tag;
-
-  external MyEnumKind kind;
+final class wire_cst_my_struct extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8_strict> field;
 }
 
 final class wire_cst_list_String extends ffi.Struct {

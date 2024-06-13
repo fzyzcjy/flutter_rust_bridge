@@ -10,9 +10,8 @@ pub fn minimal_adder(a: i32, b: i32) -> i32 {
 }
 
 // TODO temp
-pub enum MyEnum {
-    A(String),
-    B,
+pub struct MyStruct {
+    pub field: String,
 }
 
-pub fn f(a: MyEnum, b: Vec<String>) {}
+pub fn f(a: MyStruct, b: Vec<String>) {}

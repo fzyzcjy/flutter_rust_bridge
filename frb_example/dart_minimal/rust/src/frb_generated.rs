@@ -43,7 +43,7 @@ flutter_rust_bridge::frb_generated_default_handler!();
 
 fn wire__crate__api__minimal__f_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    a: impl CstDecode<crate::api::minimal::MyEnum>,
+    a: impl CstDecode<crate::api::minimal::MyStruct>,
     b: impl CstDecode<Vec<String>>,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
@@ -161,22 +161,11 @@ impl SseDecode for Vec<u8> {
     }
 }
 
-impl SseDecode for crate::api::minimal::MyEnum {
+impl SseDecode for crate::api::minimal::MyStruct {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut tag_ = <i32>::sse_decode(deserializer);
-        match tag_ {
-            0 => {
-                let mut var_field0 = <String>::sse_decode(deserializer);
-                return crate::api::minimal::MyEnum::A(var_field0);
-            }
-            1 => {
-                return crate::api::minimal::MyEnum::B;
-            }
-            _ => {
-                unimplemented!("");
-            }
-        }
+        let mut var_field = <String>::sse_decode(deserializer);
+        return crate::api::minimal::MyStruct { field: var_field };
     }
 }
 
@@ -227,24 +216,16 @@ fn pde_ffi_dispatcher_sync_impl(
 // Section: rust2dart
 
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for crate::api::minimal::MyEnum {
+impl flutter_rust_bridge::IntoDart for crate::api::minimal::MyStruct {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-        match self {
-            crate::api::minimal::MyEnum::A(field0) => {
-                [0.into_dart(), field0.into_into_dart().into_dart()].into_dart()
-            }
-            crate::api::minimal::MyEnum::B => [1.into_dart()].into_dart(),
-            _ => {
-                unimplemented!("");
-            }
-        }
+        [self.field.into_into_dart().into_dart()].into_dart()
     }
 }
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for crate::api::minimal::MyEnum {}
-impl flutter_rust_bridge::IntoIntoDart<crate::api::minimal::MyEnum>
-    for crate::api::minimal::MyEnum
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for crate::api::minimal::MyStruct {}
+impl flutter_rust_bridge::IntoIntoDart<crate::api::minimal::MyStruct>
+    for crate::api::minimal::MyStruct
 {
-    fn into_into_dart(self) -> crate::api::minimal::MyEnum {
+    fn into_into_dart(self) -> crate::api::minimal::MyStruct {
         self
     }
 }
@@ -283,21 +264,10 @@ impl SseEncode for Vec<u8> {
     }
 }
 
-impl SseEncode for crate::api::minimal::MyEnum {
+impl SseEncode for crate::api::minimal::MyStruct {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        match self {
-            crate::api::minimal::MyEnum::A(field0) => {
-                <i32>::sse_encode(0, serializer);
-                <String>::sse_encode(field0, serializer);
-            }
-            crate::api::minimal::MyEnum::B => {
-                <i32>::sse_encode(1, serializer);
-            }
-            _ => {
-                unimplemented!("");
-            }
-        }
+        <String>::sse_encode(self.field, serializer);
     }
 }
 

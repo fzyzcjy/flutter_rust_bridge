@@ -21,11 +21,11 @@ impl CstDecode<String> for *mut wire_cst_list_prim_u_8_strict {
         String::from_utf8(vec).unwrap()
     }
 }
-impl CstDecode<crate::api::minimal::MyEnum> for *mut wire_cst_my_enum {
+impl CstDecode<crate::api::minimal::MyStruct> for *mut wire_cst_my_struct {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> crate::api::minimal::MyEnum {
+    fn cst_decode(self) -> crate::api::minimal::MyStruct {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
-        CstDecode::<crate::api::minimal::MyEnum>::cst_decode(*wrap).into()
+        CstDecode::<crate::api::minimal::MyStruct>::cst_decode(*wrap).into()
     }
 }
 impl CstDecode<Vec<String>> for *mut wire_cst_list_String {
@@ -47,28 +47,22 @@ impl CstDecode<Vec<u8>> for *mut wire_cst_list_prim_u_8_strict {
         }
     }
 }
-impl CstDecode<crate::api::minimal::MyEnum> for wire_cst_my_enum {
+impl CstDecode<crate::api::minimal::MyStruct> for wire_cst_my_struct {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> crate::api::minimal::MyEnum {
-        match self.tag {
-            0 => {
-                let ans = unsafe { self.kind.A };
-                crate::api::minimal::MyEnum::A(ans.field0.cst_decode())
-            }
-            1 => crate::api::minimal::MyEnum::B,
-            _ => unreachable!(),
+    fn cst_decode(self) -> crate::api::minimal::MyStruct {
+        crate::api::minimal::MyStruct {
+            field: self.field.cst_decode(),
         }
     }
 }
-impl NewWithNullPtr for wire_cst_my_enum {
+impl NewWithNullPtr for wire_cst_my_struct {
     fn new_with_null_ptr() -> Self {
         Self {
-            tag: -1,
-            kind: MyEnumKind { nil__: () },
+            field: core::ptr::null_mut(),
         }
     }
 }
-impl Default for wire_cst_my_enum {
+impl Default for wire_cst_my_struct {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
@@ -77,7 +71,7 @@ impl Default for wire_cst_my_enum {
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_dart_minimal_wire__crate__api__minimal__f(
     port_: i64,
-    a: *mut wire_cst_my_enum,
+    a: *mut wire_cst_my_struct,
     b: *mut wire_cst_list_String,
 ) {
     wire__crate__api__minimal__f_impl(port_, a, b)
@@ -98,9 +92,9 @@ pub extern "C" fn frbgen_frb_example_dart_minimal_wire__crate__api__minimal__min
 }
 
 #[no_mangle]
-pub extern "C" fn frbgen_frb_example_dart_minimal_cst_new_box_autoadd_my_enum(
-) -> *mut wire_cst_my_enum {
-    flutter_rust_bridge::for_generated::new_leak_box_ptr(wire_cst_my_enum::new_with_null_ptr())
+pub extern "C" fn frbgen_frb_example_dart_minimal_cst_new_box_autoadd_my_struct(
+) -> *mut wire_cst_my_struct {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(wire_cst_my_struct::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -142,18 +136,6 @@ pub struct wire_cst_list_prim_u_8_strict {
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
-pub struct wire_cst_my_enum {
-    tag: i32,
-    kind: MyEnumKind,
-}
-#[repr(C)]
-#[derive(Clone, Copy)]
-pub union MyEnumKind {
-    A: wire_cst_MyEnum_A,
-    nil__: (),
-}
-#[repr(C)]
-#[derive(Clone, Copy)]
-pub struct wire_cst_MyEnum_A {
-    field0: *mut wire_cst_list_prim_u_8_strict,
+pub struct wire_cst_my_struct {
+    field: *mut wire_cst_list_prim_u_8_strict,
 }

@@ -24,7 +24,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   String dco_decode_String(dynamic raw);
 
   @protected
-  MyEnum dco_decode_box_autoadd_my_enum(dynamic raw);
+  MyStruct dco_decode_box_autoadd_my_struct(dynamic raw);
 
   @protected
   int dco_decode_i_32(dynamic raw);
@@ -36,7 +36,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   Uint8List dco_decode_list_prim_u_8_strict(dynamic raw);
 
   @protected
-  MyEnum dco_decode_my_enum(dynamic raw);
+  MyStruct dco_decode_my_struct(dynamic raw);
 
   @protected
   int dco_decode_u_8(dynamic raw);
@@ -48,7 +48,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   String sse_decode_String(SseDeserializer deserializer);
 
   @protected
-  MyEnum sse_decode_box_autoadd_my_enum(SseDeserializer deserializer);
+  MyStruct sse_decode_box_autoadd_my_struct(SseDeserializer deserializer);
 
   @protected
   int sse_decode_i_32(SseDeserializer deserializer);
@@ -60,7 +60,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   Uint8List sse_decode_list_prim_u_8_strict(SseDeserializer deserializer);
 
   @protected
-  MyEnum sse_decode_my_enum(SseDeserializer deserializer);
+  MyStruct sse_decode_my_struct(SseDeserializer deserializer);
 
   @protected
   int sse_decode_u_8(SseDeserializer deserializer);
@@ -78,9 +78,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  JSAny? cst_encode_box_autoadd_my_enum(MyEnum raw) {
+  JSAny? cst_encode_box_autoadd_my_struct(MyStruct raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return cst_encode_my_enum(raw);
+    return cst_encode_my_struct(raw);
   }
 
   @protected
@@ -96,16 +96,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  JSAny? cst_encode_my_enum(MyEnum raw) {
+  JSAny? cst_encode_my_struct(MyStruct raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    if (raw is MyEnum_A) {
-      return [0, cst_encode_String(raw.field0)].jsify();
-    }
-    if (raw is MyEnum_B) {
-      return [1].jsify();
-    }
-
-    throw Exception('unreachable');
+    return [cst_encode_String(raw.field)].jsify();
   }
 
   @protected
@@ -121,7 +114,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_String(String self, SseSerializer serializer);
 
   @protected
-  void sse_encode_box_autoadd_my_enum(MyEnum self, SseSerializer serializer);
+  void sse_encode_box_autoadd_my_struct(
+      MyStruct self, SseSerializer serializer);
 
   @protected
   void sse_encode_i_32(int self, SseSerializer serializer);
@@ -134,7 +128,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       Uint8List self, SseSerializer serializer);
 
   @protected
-  void sse_encode_my_enum(MyEnum self, SseSerializer serializer);
+  void sse_encode_my_struct(MyStruct self, SseSerializer serializer);
 
   @protected
   void sse_encode_u_8(int self, SseSerializer serializer);

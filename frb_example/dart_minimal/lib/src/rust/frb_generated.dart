@@ -68,7 +68,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 }
 
 abstract class RustLibApi extends BaseApi {
-  Future<void> crateApiMinimalF({required MyEnum a, required List<String> b});
+  Future<void> crateApiMinimalF({required MyStruct a, required List<String> b});
 
   Future<void> crateApiMinimalInitApp();
 
@@ -84,10 +84,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   });
 
   @override
-  Future<void> crateApiMinimalF({required MyEnum a, required List<String> b}) {
+  Future<void> crateApiMinimalF(
+      {required MyStruct a, required List<String> b}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_box_autoadd_my_enum(a);
+        var arg0 = cst_encode_box_autoadd_my_struct(a);
         var arg1 = cst_encode_list_String(b);
         return wire.wire__crate__api__minimal__f(port_, arg0, arg1);
       },
@@ -158,9 +159,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  MyEnum dco_decode_box_autoadd_my_enum(dynamic raw) {
+  MyStruct dco_decode_box_autoadd_my_struct(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return dco_decode_my_enum(raw);
+    return dco_decode_my_struct(raw);
   }
 
   @protected
@@ -182,18 +183,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  MyEnum dco_decode_my_enum(dynamic raw) {
+  MyStruct dco_decode_my_struct(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
-      case 0:
-        return MyEnum_A(
-          dco_decode_String(raw[1]),
-        );
-      case 1:
-        return MyEnum_B();
-      default:
-        throw Exception("unreachable");
-    }
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return MyStruct(
+      field: dco_decode_String(arr[0]),
+    );
   }
 
   @protected
@@ -216,9 +213,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  MyEnum sse_decode_box_autoadd_my_enum(SseDeserializer deserializer) {
+  MyStruct sse_decode_box_autoadd_my_struct(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    return (sse_decode_my_enum(deserializer));
+    return (sse_decode_my_struct(deserializer));
   }
 
   @protected
@@ -247,19 +244,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  MyEnum sse_decode_my_enum(SseDeserializer deserializer) {
+  MyStruct sse_decode_my_struct(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-
-    var tag_ = sse_decode_i_32(deserializer);
-    switch (tag_) {
-      case 0:
-        var var_field0 = sse_decode_String(deserializer);
-        return MyEnum_A(var_field0);
-      case 1:
-        return MyEnum_B();
-      default:
-        throw UnimplementedError('');
-    }
+    var var_field = sse_decode_String(deserializer);
+    return MyStruct(field: var_field);
   }
 
   @protected
@@ -304,9 +292,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_box_autoadd_my_enum(MyEnum self, SseSerializer serializer) {
+  void sse_encode_box_autoadd_my_struct(
+      MyStruct self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_my_enum(self, serializer);
+    sse_encode_my_struct(self, serializer);
   }
 
   @protected
@@ -333,17 +322,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_my_enum(MyEnum self, SseSerializer serializer) {
+  void sse_encode_my_struct(MyStruct self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    switch (self) {
-      case MyEnum_A(field0: final field0):
-        sse_encode_i_32(0, serializer);
-        sse_encode_String(field0, serializer);
-      case MyEnum_B():
-        sse_encode_i_32(1, serializer);
-      default:
-        throw UnimplementedError('');
-    }
+    sse_encode_String(self.field, serializer);
   }
 
   @protected
