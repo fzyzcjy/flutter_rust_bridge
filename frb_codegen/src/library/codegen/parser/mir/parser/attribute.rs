@@ -19,9 +19,11 @@ pub(crate) struct FrbAttributes(Vec<FrbAttribute>);
 
 impl FrbAttributes {
     pub(crate) fn parse(attrs: &[Attribute]) -> anyhow::Result<Self> {
+        println!("hi {attrs:#?}");
         Ok(Self(
             attrs
                 .iter()
+                .map(transform_doc_comment)
                 .filter(|attr| {
                     attr.path().segments.last().unwrap().ident == METADATA_IDENT
                         // exclude the `#[frb]` case
@@ -202,6 +204,30 @@ impl FrbAttributes {
             )
             .next()
     }
+}
+
+fn transform_doc_comment(attr: &Attribute) -> Attribute {
+    if let Some(doc_comment) = extract_doc_comment(attr) {
+        return TODO;
+    }
+    attr.to_owned()
+}
+
+fn extract_doc_comment(attr: &Attribute) -> Option<String> {
+    if let Meta::NameValue(MetaNameValue {
+        path: Path { segments, .. },
+        value: Expr::Lit(ExprLit {
+            lit: Lit::Str(lit_str),
+            ..
+        }),
+        ..
+    }) = &attr.meta
+    {
+        if segments.len() == 1 && segments.first().unwrap().ident.to_string() == "doc" {
+            return Some(lit_str.value());
+        }
+    }
+    None
 }
 
 mod frb_keyword {
