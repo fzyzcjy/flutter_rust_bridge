@@ -124,7 +124,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         if func.is_public() == Some(false) {
             return Ok(create_output_skip(func, IgnoreBecauseFunctionNotPub));
         }
-        
+
         // If enable lifetime, the lifetime "generics" should be acceptable (though other generics still not)
         if !enable_lifetime && !func.item_fn.sig().generics.params.is_empty() {
             return Ok(create_output_skip(func, IgnoreBecauseFunctionGeneric));
