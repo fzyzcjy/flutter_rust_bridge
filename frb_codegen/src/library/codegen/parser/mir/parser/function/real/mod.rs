@@ -51,6 +51,7 @@ pub(crate) fn parse(
                 &config.force_codec_mode_pack,
                 config.default_stream_sink_codec,
                 config.default_rust_opaque_codec,
+                config.enable_lifetime,
                 parse_mode,
                 config.stop_on_error,
             )
@@ -74,6 +75,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         force_codec_mode_pack: &Option<CodecModePack>,
         default_stream_sink_codec: CodecMode,
         default_rust_opaque_codec: RustOpaqueCodecMode,
+        enable_lifetime: bool,
         parse_mode: ParseMode,
         stop_on_error: bool,
     ) -> anyhow::Result<MirFuncOrSkip> {
@@ -82,6 +84,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             force_codec_mode_pack,
             default_stream_sink_codec,
             default_rust_opaque_codec,
+            enable_lifetime,
             parse_mode,
         ) {
             Ok(output) => Ok(output),
@@ -113,6 +116,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         force_codec_mode_pack: &Option<CodecModePack>,
         default_stream_sink_codec: CodecMode,
         default_rust_opaque_codec: RustOpaqueCodecMode,
+        enable_lifetime: bool,
         parse_mode: ParseMode,
     ) -> anyhow::Result<MirFuncOrSkip> {
         debug!("parse_function function name: {:?}", func.item_fn.name());
@@ -120,7 +124,9 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         if func.is_public() == Some(false) {
             return Ok(create_output_skip(func, IgnoreBecauseFunctionNotPub));
         }
-        if !func.item_fn.sig().generics.params.is_empty() {
+        
+        // If enable lifetime, the lifetime "generics" should be acceptable (though other generics still not)
+        if !enable_lifetime && !func.item_fn.sig().generics.params.is_empty() {
             return Ok(create_output_skip(func, IgnoreBecauseFunctionGeneric));
         }
 
