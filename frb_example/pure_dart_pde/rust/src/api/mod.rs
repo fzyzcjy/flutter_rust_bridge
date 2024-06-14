@@ -18,7 +18,7 @@ pub mod dart_fn;
 pub mod dart_opaque;
 pub mod dart_opaque_sync;
 pub mod deliberate_name_conflict;
-#[flutter_rust_bridge::frb(ignore)]
+/// flutter_rust_bridge:ignore
 pub mod deliberately_ignored_module;
 pub mod dropping;
 pub mod dyn_trait;
