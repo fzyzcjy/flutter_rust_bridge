@@ -24,7 +24,7 @@ impl LifetimeTesterOneTwinNormal {
     }
 }
 
-impl LifetimeTesterTwoTwinNormal {
+impl LifetimeTesterTwoTwinNormal<'_> {
     pub fn greet(&self) -> String {
         self.one.0.to_string()
     }
