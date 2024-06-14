@@ -7,3 +7,5 @@ local: true
 
 # TODO temp
 full_dep: true
+
+rust_preamble: "// test for rust_preamble"
