@@ -29,6 +29,7 @@ pub(crate) fn parse(
         &mut type_parser,
         config.default_stream_sink_codec,
         config.default_rust_opaque_codec,
+        config.enable_lifetime,
         parse_mode,
     )?;
 
@@ -38,6 +39,7 @@ pub(crate) fn parse(
         &custom_ser_des::PartialContext {
             default_stream_sink_codec: config.default_stream_sink_codec,
             default_rust_opaque_codec: config.default_rust_opaque_codec,
+            enable_lifetime: config.enable_lifetime,
             parse_mode,
         },
     )?;

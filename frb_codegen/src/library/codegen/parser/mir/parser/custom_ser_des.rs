@@ -15,6 +15,7 @@ use syn::{FnArg, ReturnType};
 pub(crate) struct PartialContext {
     pub default_stream_sink_codec: CodecMode,
     pub default_rust_opaque_codec: RustOpaqueCodecMode,
+    pub enable_lifetime: bool,
     pub parse_mode: ParseMode,
 }
 
@@ -87,6 +88,7 @@ fn parse_function_inner(
         owner: None,
         default_stream_sink_codec: partial_context.default_stream_sink_codec,
         default_rust_opaque_codec: partial_context.default_rust_opaque_codec,
+        enable_lifetime: partial_context.enable_lifetime,
         parse_mode: partial_context.parse_mode,
     };
 
