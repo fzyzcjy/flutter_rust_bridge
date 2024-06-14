@@ -710,6 +710,13 @@ mod tests {
     }
 
     #[test]
+    fn test_unrelated_comments() -> anyhow::Result<()> {
+        let actual = parse("/// whatever_comment\n")?;
+        assert_eq!(actual, FrbAttributes(vec![]));
+        Ok(())
+    }
+
+    #[test]
     fn test_mirror() -> anyhow::Result<()> {
         let parsed = parse("#[frb(mirror(Apple, Orange))]")?;
         let paths = if_then_some!(let FrbAttribute::Mirror(FrbAttributeMirror(paths)) = &parsed.0[0], paths);
