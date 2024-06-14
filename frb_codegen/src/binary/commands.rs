@@ -92,6 +92,10 @@ pub(crate) struct GenerateCommandArgsPrimary {
     #[arg(long)]
     pub dart_preamble: Option<String>,
 
+    /// Raw header of output generated Rust code, pasted as-it-is.
+    #[arg(long)]
+    pub rust_preamble: Option<String>,
+
     /// The generated Dart enums will not have their variant names camelCased.
     #[arg(long)]
     pub no_dart_enums_style: bool,
