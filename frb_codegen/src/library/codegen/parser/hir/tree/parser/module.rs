@@ -1,6 +1,7 @@
 use crate::codegen::ir::hir::misc::visibility::HirVisibility;
 use crate::codegen::ir::hir::tree::module::{HirTreeModule, HirTreeModuleMeta};
 use crate::codegen::parser::hir::internal_config::ParserHirInternalConfig;
+use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
 use crate::utils::namespace::Namespace;
 use syn::ItemMod;
 
@@ -37,14 +38,15 @@ fn parse_syn_item_mod(
     namespace: &Namespace,
     parent_vis: &[HirVisibility],
 ) -> anyhow::Result<Option<HirTreeModule>> {
-    Ok(if let Some((_, items)) = item_mod.content {
-        let info = HirTreeModuleMeta {
-            parent_vis: parent_vis.to_owned(),
-            vis: (&item_mod.vis).into(),
-            namespace: namespace.join(&item_mod.ident.to_string()),
-        };
-        Some(parse_module(items, info, config)?)
-    } else {
-        None
-    })
+    if let Some((_, items)) = item_mod.content {
+        if !FrbAttributes::parse(&item_mod.attrs)?.ignore() {
+            let info = HirTreeModuleMeta {
+                parent_vis: parent_vis.to_owned(),
+                vis: (&item_mod.vis).into(),
+                namespace: namespace.join(&item_mod.ident.to_string()),
+            };
+            return Ok(Some(parse_module(items, info, config)?));
+        }
+    }
+    Ok(None)
 }
