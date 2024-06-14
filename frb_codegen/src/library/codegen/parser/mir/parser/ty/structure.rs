@@ -11,7 +11,7 @@ use crate::codegen::parser::mir::parser::ty::enum_or_struct::{
 };
 use crate::codegen::parser::mir::parser::ty::misc::parse_comments;
 use crate::codegen::parser::mir::parser::ty::unencodable::SplayedSegment;
-use crate::codegen::parser::mir::parser::ty::TypeParserWithContext;
+use crate::codegen::parser::mir::parser::ty::{TypeParserParsingContext, TypeParserWithContext};
 use crate::utils::basic_code::general_code::GeneralDartCode;
 use crate::utils::crate_name::CrateName;
 use crate::utils::namespace::{Namespace, NamespacedName};
@@ -54,7 +54,11 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
         let comments = parse_comments(&src_struct.src.attrs);
 
-        let ignore = parse_struct_or_enum_should_ignore(src_struct, &name.namespace.crate_name());
+        let ignore = parse_struct_or_enum_should_ignore(
+            src_struct,
+            &name.namespace.crate_name(),
+            self.context,
+        );
 
         Ok(MirStruct {
             name,
@@ -137,6 +141,10 @@ impl EnumOrStructParser<MirStructIdent, MirStruct, ItemStruct>
     ) -> anyhow::Result<MirType> {
         self.0
             .parse_type_rust_auto_opaque_implicit(namespace, ty, reason, override_ignore)
+    }
+
+    fn context(&self) -> &TypeParserParsingContext {
+        self.0.context
     }
 
     fn compute_default_opaque(obj: &MirStruct) -> bool {

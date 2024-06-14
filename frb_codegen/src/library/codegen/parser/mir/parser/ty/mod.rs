@@ -149,6 +149,7 @@ pub(crate) struct TypeParserParsingContext {
     pub(crate) default_stream_sink_codec: CodecMode,
     pub(crate) default_rust_opaque_codec: RustOpaqueCodecMode,
     pub(crate) owner: Option<MirFuncOwnerInfo>,
+    pub(crate) enable_lifetime: bool,
     pub(crate) parse_mode: ParseMode,
 }
 

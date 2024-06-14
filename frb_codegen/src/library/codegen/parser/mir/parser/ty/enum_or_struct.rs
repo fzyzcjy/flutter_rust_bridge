@@ -15,6 +15,7 @@ use std::collections::{HashMap, HashSet};
 use std::fmt::Debug;
 use std::hash::Hash;
 use syn::Type;
+use crate::codegen::parser::mir::parser::ty::TypeParserParsingContext;
 
 pub(super) trait EnumOrStructParser<Id, Obj, Item: SynItemStructOrEnum>
 where
@@ -116,6 +117,7 @@ where
             Some(parse_struct_or_enum_should_ignore(
                 src_object,
                 &namespaced_name.namespace.crate_name(),
+                self.context(),
             )),
         )
     }
@@ -142,6 +144,8 @@ where
         reason: Option<MirTypeRustAutoOpaqueImplicitReason>,
         override_ignore: Option<bool>,
     ) -> anyhow::Result<MirType>;
+
+    fn context(&self) -> &TypeParserParsingContext;
 
     fn compute_default_opaque(obj: &Obj) -> bool;
 }
@@ -178,6 +182,7 @@ fn compute_name_and_wrapper_name(
 pub(crate) fn parse_struct_or_enum_should_ignore<Item: SynItemStructOrEnum>(
     src_object: &HirFlatStructOrEnum<Item>,
     crate_name: &CrateName,
+    context: &TypeParserParsingContext,
 ) -> bool {
     let attrs = FrbAttributes::parse(src_object.src.attrs()).unwrap();
 
@@ -185,5 +190,6 @@ pub(crate) fn parse_struct_or_enum_should_ignore<Item: SynItemStructOrEnum>(
         // For third party crates, if a struct is not public, then it is impossible to utilize it,
         // thus we ignore it.
         || ((!crate_name.is_self_crate())  && src_object.visibility != HirVisibility::Public)
-        || !src_object.src.generics().params.is_empty()
+        // If enable lifetime, even if there is generics, it may be just lifetime generics, so we should not ignore them blindly
+        || (!context.enable_lifetime && !src_object.src.generics().params.is_empty())
 }
