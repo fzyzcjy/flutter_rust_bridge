@@ -210,9 +210,8 @@ impl FrbAttributes {
 
 fn transform_doc_comment(attr: &Attribute) -> anyhow::Result<Attribute> {
     if let Some(doc_comment) = extract_doc_comment(attr) {
-        if let Some(content) = doc_comment.trim().strip_prefix("frb:") {
-            syn::parse_str(content)?;
-            return TODO;
+        if let Some(inner) = doc_comment.trim().strip_prefix("frb:") {
+            return parse_syn_attribute(&format!("#[frb({inner})]"));
         }
     }
     Ok(attr.to_owned())
@@ -233,6 +232,12 @@ fn extract_doc_comment(attr: &Attribute) -> Option<String> {
         }
     }
     None
+}
+
+fn parse_syn_attribute(raw: &str) -> anyhow::Result<Attribute> {
+    let code = format!("{raw} fn f() {{}}");
+    let fn_ast: ItemFn = parse_str(&code)?;
+    Ok(fn_ast.attrs[0].to_owned())
 }
 
 mod frb_keyword {
