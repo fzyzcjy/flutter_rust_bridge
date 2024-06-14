@@ -8,7 +8,7 @@ pub(super) fn parse_module(
     items: Vec<syn::Item>,
     meta: HirTreeModuleMeta,
     config: &ParserHirInternalConfig,
-) -> anyhow::Result<HirTreeModule> {
+) -> anyhow::Result<Option<HirTreeModule>> {
     let mut output_items = vec![];
     let mut output_modules = vec![];
 
@@ -24,11 +24,11 @@ pub(super) fn parse_module(
         }
     }
 
-    Ok(HirTreeModule {
+    Ok(Some(HirTreeModule {
         meta,
         items: output_items,
         modules: output_modules,
-    })
+    }))
 }
 
 fn parse_syn_item_mod(
@@ -43,7 +43,7 @@ fn parse_syn_item_mod(
             vis: (&item_mod.vis).into(),
             namespace: namespace.join(&item_mod.ident.to_string()),
         };
-        Some(parse_module(items, info, config)?)
+        parse_module(items, info, config)?
     } else {
         None
     })
