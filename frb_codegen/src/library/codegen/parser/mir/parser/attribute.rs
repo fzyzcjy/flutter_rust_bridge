@@ -24,6 +24,8 @@ impl FrbAttributes {
             attrs
                 .iter()
                 .map(transform_doc_comment)
+                .collect::<anyhow::Result<Vec<_>>>()?
+                .into_iter()
                 .filter(|attr| {
                     attr.path().segments.last().unwrap().ident == METADATA_IDENT
                         // exclude the `#[frb]` case
@@ -206,11 +208,14 @@ impl FrbAttributes {
     }
 }
 
-fn transform_doc_comment(attr: &Attribute) -> Attribute {
+fn transform_doc_comment(attr: &Attribute) -> anyhow::Result<Attribute> {
     if let Some(doc_comment) = extract_doc_comment(attr) {
-        return TODO;
+        if let Some(content) = doc_comment.trim().strip_prefix("frb:") {
+            syn::parse_str(content)?;
+            return TODO;
+        }
     }
-    attr.to_owned()
+    Ok(attr.to_owned())
 }
 
 fn extract_doc_comment(attr: &Attribute) -> Option<String> {
