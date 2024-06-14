@@ -3,4 +3,3 @@ rust_root: .
 dart_output: .
 c_output: frb_generated.h
 dart_preamble: "// test for dart_preamble"
-rust_preamble: "// test for rust_preamble"
