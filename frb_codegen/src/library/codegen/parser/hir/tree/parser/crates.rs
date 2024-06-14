@@ -15,7 +15,7 @@ pub(crate) fn parse_crate(
         vis: HirVisibility::Public,
         namespace: crate_name.namespace(),
     };
-    let root_module = parse_module(file.items, info, config)?.unwrap();
+    let root_module = parse_module(file.items, info, config)?;
     Ok(HirTreeCrate {
         name: crate_name.to_owned(),
         root_module,
