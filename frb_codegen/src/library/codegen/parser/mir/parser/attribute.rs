@@ -19,7 +19,6 @@ pub(crate) struct FrbAttributes(Vec<FrbAttribute>);
 
 impl FrbAttributes {
     pub(crate) fn parse(attrs: &[Attribute]) -> anyhow::Result<Self> {
-        println!("hi {attrs:#?}");
         Ok(Self(
             attrs
                 .iter()
