@@ -148,6 +148,10 @@ pub(crate) struct GenerateCommandArgsPrimary {
     #[arg(long, hide = true)]
     pub local: bool,
 
+    /// Enable parsing types with lifetimes (e.g. references and borrows)
+    #[arg(long)]
+    pub enable_lifetime: bool,
+
     /// If having error when, for example, parsing a function, directly stop instead of continue and skip it
     #[arg(long)]
     pub stop_on_error: bool,
