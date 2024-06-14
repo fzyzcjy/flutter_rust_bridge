@@ -95,6 +95,7 @@ pub(super) fn parse(args: Args) -> anyhow::Result<GeneratorInternalConfig> {
                 has_ffigen: full_dep,
                 default_stream_sink_codec,
                 default_rust_opaque_codec,
+                rust_preamble: config.dart_preamble.clone().unwrap_or_default(),
             },
             c: GeneratorWireCInternalConfig {
                 enable: full_dep,
