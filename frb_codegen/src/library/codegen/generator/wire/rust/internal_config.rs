@@ -13,4 +13,5 @@ pub(crate) struct GeneratorWireRustInternalConfig {
     pub has_ffigen: bool,
     pub default_stream_sink_codec: CodecMode,
     pub default_rust_opaque_codec: RustOpaqueCodecMode,
+    pub rust_preamble: String,
 }

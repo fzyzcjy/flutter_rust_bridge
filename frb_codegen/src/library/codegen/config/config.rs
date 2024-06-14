@@ -17,6 +17,7 @@ pub struct Config {
     pub dart_entrypoint_class_name: Option<String>,
     pub dart_format_line_length: Option<u32>,
     pub dart_preamble: Option<String>,
+    pub rust_preamble: Option<String>,
     pub dart_enums_style: Option<bool>,
     pub add_mod_to_lib: Option<bool>,
     pub llvm_path: Option<Vec<String>>,

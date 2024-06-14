@@ -67,6 +67,8 @@ use flutter_rust_bridge::{Handler, IntoIntoDart};
 
 // Section: boilerplate
 
+// test for rust_preamble
+
 flutter_rust_bridge::frb_generated_boilerplate_io!();
 
 // Section: dart2rust

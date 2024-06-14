@@ -51,6 +51,7 @@ pub(crate) fn generate(
             context.config.default_stream_sink_codec,
             context.config.default_rust_opaque_codec,
             content_hash,
+            &context.config.rust_preamble,
         ),
         wire_funcs: (context.mir_pack.funcs_with_impl().iter())
             .map(|f| generate_wire_func(f, context))
@@ -160,7 +161,14 @@ fn generate_boilerplate(
     default_stream_sink_codec: CodecMode,
     default_rust_opaque_codec: RustOpaqueCodecMode,
     content_hash: i32,
+    rust_preamble: &str,
 ) -> Acc<Vec<WireRustOutputCode>> {
+    let rust_preamble_formatted = if rust_preamble.is_empty() {
+        "".to_owned()
+    } else {
+        format!("{rust_preamble}\n\n")
+    };
+
     Acc::new(|target| {
         match target {
             TargetOrCommon::Io | TargetOrCommon::Web => {
@@ -168,15 +176,14 @@ fn generate_boilerplate(
                     // generate_boilerplate_frb_initialize_rust(target).into(),
                     // generate_boilerplate_dart_fn_deliver_output(target).into(),
                     format!(
-                        "flutter_rust_bridge::frb_generated_boilerplate_{}!();",
+                        "{rust_preamble_formatted}flutter_rust_bridge::frb_generated_boilerplate_{}!();",
                         target.to_string().to_lowercase()
                     )
                     .into(),
                 ]
             }
             TargetOrCommon::Common => vec![format!(
-                r#"
-                flutter_rust_bridge::frb_generated_boilerplate!(
+                r#"{rust_preamble_formatted}flutter_rust_bridge::frb_generated_boilerplate!(
                     default_stream_sink_codec = {default_stream_sink_codec}Codec,
                     default_rust_opaque = RustOpaque{default_rust_opaque_codec},
                     default_rust_auto_opaque = RustAutoOpaque{default_rust_opaque_codec},

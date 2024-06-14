@@ -92,6 +92,7 @@
           "io": "{the-working-directory}/src/frb_generated.io.rs",
           "web": "{the-working-directory}/src/frb_generated.web.rs"
         },
+        "rust_preamble": "",
         "web_enabled": true
       }
     }
