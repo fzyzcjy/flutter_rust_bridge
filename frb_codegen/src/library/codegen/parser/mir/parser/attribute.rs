@@ -22,6 +22,9 @@ impl FrbAttributes {
         Ok(Self(
             attrs
                 .iter()
+                .map(transform_doc_comment)
+                .collect::<anyhow::Result<Vec<_>>>()?
+                .into_iter()
                 .filter(|attr| {
                     attr.path().segments.last().unwrap().ident == METADATA_IDENT
                         // exclude the `#[frb]` case
@@ -202,6 +205,38 @@ impl FrbAttributes {
             )
             .next()
     }
+}
+
+fn transform_doc_comment(attr: &Attribute) -> anyhow::Result<Attribute> {
+    if let Some(doc_comment) = extract_doc_comment(attr) {
+        if let Some(inner) = doc_comment.trim().strip_prefix("flutter_rust_bridge:") {
+            return parse_syn_attribute(&format!("#[frb({inner})]"));
+        }
+    }
+    Ok(attr.to_owned())
+}
+
+fn extract_doc_comment(attr: &Attribute) -> Option<String> {
+    if let Meta::NameValue(MetaNameValue {
+        path: Path { segments, .. },
+        value: Expr::Lit(ExprLit {
+            lit: Lit::Str(lit_str),
+            ..
+        }),
+        ..
+    }) = &attr.meta
+    {
+        if segments.len() == 1 && segments.first().unwrap().ident == "doc" {
+            return Some(lit_str.value());
+        }
+    }
+    None
+}
+
+fn parse_syn_attribute(raw: &str) -> anyhow::Result<Attribute> {
+    let code = format!("{raw} fn f() {{}}");
+    let fn_ast: ItemFn = parse_str(&code)?;
+    Ok(fn_ast.attrs[0].to_owned())
 }
 
 mod frb_keyword {
@@ -664,6 +699,20 @@ mod tests {
     fn test_empty_bracket() -> anyhow::Result<()> {
         let parsed = parse("#[frb()]")?;
         assert_eq!(parsed.0, vec![]);
+        Ok(())
+    }
+
+    #[test]
+    fn test_comments() -> anyhow::Result<()> {
+        let actual = parse("/// flutter_rust_bridge:ignore\n")?;
+        assert_eq!(actual, FrbAttributes(vec![FrbAttribute::Ignore]));
+        Ok(())
+    }
+
+    #[test]
+    fn test_unrelated_comments() -> anyhow::Result<()> {
+        let actual = parse("/// whatever_comment\n")?;
+        assert_eq!(actual, FrbAttributes(vec![]));
         Ok(())
     }
 
