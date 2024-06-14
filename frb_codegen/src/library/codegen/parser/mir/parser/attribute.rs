@@ -209,7 +209,7 @@ impl FrbAttributes {
 
 fn transform_doc_comment(attr: &Attribute) -> anyhow::Result<Attribute> {
     if let Some(doc_comment) = extract_doc_comment(attr) {
-        if let Some(inner) = doc_comment.trim().strip_prefix("frb:") {
+        if let Some(inner) = doc_comment.trim().strip_prefix("flutter_rust_bridge:") {
             return parse_syn_attribute(&format!("#[frb({inner})]"));
         }
     }
@@ -704,7 +704,7 @@ mod tests {
 
     #[test]
     fn test_comments() -> anyhow::Result<()> {
-        let actual = parse("/// frb:ignore\n")?;
+        let actual = parse("/// flutter_rust_bridge:ignore\n")?;
         assert_eq!(actual, FrbAttributes(vec![FrbAttribute::Ignore]));
         Ok(())
     }
