@@ -7,3 +7,4 @@ local: true
 
 # TODO temp
 #full_dep: true
+enable_lifetime: true
