@@ -19,6 +19,8 @@ pub mod dart_fn;
 pub mod dart_opaque;
 pub mod dart_opaque_sync;
 pub mod deliberate_name_conflict;
+#[flutter_rust_bridge::frb(ignore)]
+pub mod deliberately_ignored_module;
 pub mod dropping;
 pub mod dyn_trait;
 pub mod enumeration;
@@ -54,7 +56,5 @@ pub mod structure;
 pub mod tuple;
 pub mod type_alias;
 pub mod uuid_type;
-#[flutter_rust_bridge::frb(ignore)]
-pub mod deliberately_ignored_module;
 
 pub fn function_at_api_mod_rs() {}
