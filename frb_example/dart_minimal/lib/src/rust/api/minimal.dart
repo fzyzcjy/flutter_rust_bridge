@@ -6,5 +6,9 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
+// These functions are ignored because they have generic arguments: `compute_two`
+// These types are ignored because they are not used by any `pub` functions: `LifetimeTesterOneTwinNormal`, `LifetimeTesterTwoTwinNormal`
+// These functions are ignored (category: IgnoreBecauseOwnerTyShouldIgnore): `greet`
+
 Future<int> minimalAdder({required int a, required int b}) =>
     RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b);
