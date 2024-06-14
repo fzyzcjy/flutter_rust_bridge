@@ -6,8 +6,6 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// These functions are ignored (category: IgnoreBecauseOwnerTyShouldIgnore): `greet`
-
 Future<int> minimalAdder({required int a, required int b}) =>
     RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b);
 
@@ -17,4 +15,6 @@ abstract class LifetimeTesterOneTwinNormal implements RustOpaqueInterface {
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<LifetimeTesterTwoTwinNormal>>
-abstract class LifetimeTesterTwoTwinNormal implements RustOpaqueInterface {}
+abstract class LifetimeTesterTwoTwinNormal implements RustOpaqueInterface {
+  Future<String> greet();
+}
