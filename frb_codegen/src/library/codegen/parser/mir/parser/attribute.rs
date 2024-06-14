@@ -226,7 +226,7 @@ fn extract_doc_comment(attr: &Attribute) -> Option<String> {
         ..
     }) = &attr.meta
     {
-        if segments.len() == 1 && segments.first().unwrap().ident.to_string() == "doc" {
+        if segments.len() == 1 && segments.first().unwrap().ident == "doc" {
             return Some(lit_str.value());
         }
     }
