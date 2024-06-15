@@ -68,14 +68,15 @@ fn main() -> anyhow::Result<()> {
     let pack = build_pack(one.clone(), unrelated.clone())?;
 
     // test whether it is Send
-    std::thread::spawn(|| {
+    std::thread::spawn(move || {
         println!("inside another thread");
         println!("one(cloned) -> {:?}", &one);
         println!("pack -> {:?}", &pack);
         println!("pack.borrow_owner() -> {:?}", pack.borrow_owner());
         println!("pack.borrow_dependent() -> {:?}", pack.borrow_dependent());
     })
-    .join()?;
+    .join()
+    .unwrap();
 
     Ok(())
 }
