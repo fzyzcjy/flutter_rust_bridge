@@ -12,7 +12,7 @@ struct Two<'a> {
 type RwLockReadGuardOne<'a> = RwLockReadGuard<'a, One>;
 
 self_cell!(
-    struct Pack {
+    struct OneAndGuard {
         owner: Arc<RwLock<One>>,
 
         #[covariant]
@@ -22,9 +22,26 @@ self_cell!(
     impl {Debug}
 );
 
-fn build_pack() -> Pack {
+self_cell!(
+    struct OneAndGuardAndTwo {
+        owner: OneAndGuard,
+
+        #[covariant]
+        dependent: Two,
+    }
+
+    impl {Debug}
+);
+
+fn build_pack() -> OneAndGuardAndTwo {
     let one = Arc::new(RwLock::new(One("hello".to_owned())));
-    Pack::try_new(one, |one| Ok::<_, ()>(one.read().unwrap())).unwrap()
+    let one_and_guard = OneAndGuard::try_new(one, |one| Ok::<_, ()>(one.read().unwrap())).unwrap();
+    OneAndGuardAndTwo::try_new(one_and_guard, |one_and_guard| {
+        Ok::<_, ()>(Two {
+            one: one_and_guard.borrow_dependent(),
+        })
+    })
+    .unwrap()
 }
 
 fn main() {
