@@ -7,6 +7,7 @@ struct One(String);
 #[derive(Debug)]
 struct Two<'a> {
     one: &'a One,
+    unrelated: i32,
 }
 
 type RwLockReadGuardOne<'a> = RwLockReadGuard<'a, One>;
@@ -33,13 +34,17 @@ self_cell!(
     impl {Debug}
 );
 
-fn build_pack(one: Arc<RwLock<One>>) -> anyhow::Result<OneAndGuardAndTwo> {
+fn build_pack(
+    one: Arc<RwLock<One>>,
+    unrelated: Arc<RwLock<i32>>,
+) -> anyhow::Result<OneAndGuardAndTwo> {
     let one_and_guard = OneAndGuard::try_new(one, |one| {
         one.read().map_err(|_| anyhow::anyhow!("read lock failed"))
     })?;
     let one_and_guard_and_two = OneAndGuardAndTwo::try_new(one_and_guard, |one_and_guard| {
         anyhow::Ok(Two {
             one: one_and_guard.borrow_dependent(),
+            unrelated: *unrelated.read().unwrap(),
         })
     })?;
     Ok(one_and_guard_and_two)
@@ -47,7 +52,8 @@ fn build_pack(one: Arc<RwLock<One>>) -> anyhow::Result<OneAndGuardAndTwo> {
 
 fn main() -> anyhow::Result<()> {
     let one = Arc::new(RwLock::new(One("hello".to_owned())));
-    let pack = build_pack(one.clone())?;
+    let unrelated = Arc::new(RwLock::new(12345));
+    let pack = build_pack(one.clone(), unrelated.clone())?;
 
     println!("one(cloned) -> {:?}", &one);
     println!("pack -> {:?}", &pack);
