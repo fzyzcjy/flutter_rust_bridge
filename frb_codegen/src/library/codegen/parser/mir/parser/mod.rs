@@ -2,7 +2,7 @@ pub(crate) mod attribute;
 pub(crate) mod custom_ser_des;
 pub(crate) mod function;
 pub(crate) mod lifetime_extractor;
-mod lifetime_replacer;
+pub(crate) mod lifetime_replacer;
 pub(crate) mod misc;
 pub(crate) mod trait_impl;
 pub(crate) mod ty;

@@ -9,6 +9,8 @@ use regex::Regex;
 use serde::{Deserialize, Serialize, Serializer};
 use strum_macros::{Display, EnumIter};
 use syn::Type;
+use crate::codegen::parser::mir::parser::lifetime_extractor::LifetimeExtractor;
+use crate::codegen::parser::mir::parser::lifetime_replacer::replace_lifetimes_to_static;
 
 crate::mir! {
 pub struct MirTypeRustOpaque {
@@ -117,10 +119,16 @@ fn rust_type_to_sanitized_type(raw: &str, brief_name: bool) -> String {
     }
 
     let mut ans = raw.to_owned();
+
+    let lifetimes = LifetimeExtractor::extract_skipping_static(&ty);
+    ans = replace_lifetimes_to_static(&ans, &lifetimes);
+    
     ans = OPAQUE_FILTER.replace_all(&ans, "").to_string();
+
     if brief_name {
         ans = OPAQUE_BRIEF_NAME_FILTER.replace_all(&ans, "").to_string();
     }
+
     ans.replace(char_not_alphanumeric, "_")
         .to_case(Case::Pascal)
 }

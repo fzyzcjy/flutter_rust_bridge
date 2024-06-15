@@ -4,7 +4,7 @@ use crate::codegen::ir::mir::ty::rust_auto_opaque_implicit::{
 };
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::mir::parser::lifetime_extractor::LifetimeExtractor;
-use crate::codegen::parser::mir::parser::lifetime_replacer::replace_lifetime_to_static;
+use crate::codegen::parser::mir::parser::lifetime_replacer::replace_lifetimes_to_static;
 use crate::codegen::parser::mir::parser::ty::TypeParserWithContext;
 use syn::Type;
 
@@ -20,7 +20,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         if !lifetimes.is_empty() {
             let delegate_ty_str = format!(
                 "flutter_rust_bridge::for_generated::Lifetimeable<{}>",
-                replace_lifetime_to_static(ty_str, &lifetimes)
+                replace_lifetimes_to_static(ty_str, &lifetimes)
             );
 
             return Ok(MirType::Delegate(MirTypeDelegate::Lifetimeable(
