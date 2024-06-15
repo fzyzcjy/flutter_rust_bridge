@@ -1,6 +1,5 @@
 use self_cell::self_cell;
 use std::sync::Arc;
-use tokio::sync::broadcast::RwLock;
 use tokio::sync::{RwLock, RwLockReadGuard};
 
 #[derive(Debug)]
@@ -72,17 +71,20 @@ fn main() -> anyhow::Result<()> {
     // test whether it is Send and Sync
     let mut handles = vec![];
     for i in 0..2 {
+        let one_clone = one.clone();
         let pack_clone = pack.clone();
-        handles.push(std::thread::spawn(|| {
-            println!("[thread-{i}] one(cloned) -> {:?}", &one);
-            println!("[thread-{i}] pack -> {:?}", &pack);
+
+        handles.push(std::thread::spawn(move || {
+            let pack_clone_guard = pack_clone.blocking_read();
+            println!("[thread-{i}] one(cloned) -> {:?}", &one_clone);
+            println!("[thread-{i}] pack -> {:?}", &pack_clone_guard);
             println!(
                 "[thread-{i}] pack.borrow_owner() -> {:?}",
-                pack.borrow_owner()
+                pack_clone_guard.borrow_owner()
             );
             println!(
                 "[thread-{i}] pack.borrow_dependent() -> {:?}",
-                pack.borrow_dependent()
+                pack_clone_guard.borrow_dependent()
             );
         }));
     }
