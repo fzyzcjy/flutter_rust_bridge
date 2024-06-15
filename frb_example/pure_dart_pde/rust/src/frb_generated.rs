@@ -61,7 +61,7 @@ flutter_rust_bridge::frb_generated_boilerplate!(
     default_rust_auto_opaque = RustAutoOpaqueMoi,
 );
 pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "2.0.0-dev.39";
-pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = -263748021;
+pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = 395683424;
 
 // Section: executor
 
@@ -1359,6 +1359,105 @@ fn wire__crate__api__comment__struct_with_comments_twin_normal_static_method_twi
                     })())
                 } })
 }
+fn wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_auto_accessor_get_one_impl(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "ConstructorOpaqueStructTwinNormal_auto_accessor_get_one",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_that = <RustOpaqueMoi<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                    ConstructorOpaqueStructTwinNormal,
+                >,
+            >>::sse_decode(&mut deserializer);
+            deserializer.end();
+            transform_result_sse((move || {
+                let mut api_that_decoded = None;
+                let decode_indices_ =
+                    flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![
+                        flutter_rust_bridge::for_generated::LockableOrderInfo::new(
+                            &api_that, 0, false,
+                        ),
+                    ]);
+                for i in decode_indices_ {
+                    match i {
+                        0 => api_that_decoded = Some(api_that.lockable_decode_sync_ref()),
+                        _ => unreachable!(),
+                    }
+                }
+                let api_that = &*api_that_decoded.unwrap();
+                Result::<_, ()>::Ok(api_that.one.clone())
+            })())
+        },
+    )
+}
+fn wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_auto_accessor_set_one_impl(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "ConstructorOpaqueStructTwinNormal_auto_accessor_set_one",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_that = <RustOpaqueMoi<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                    ConstructorOpaqueStructTwinNormal,
+                >,
+            >>::sse_decode(&mut deserializer);
+            let api_one = <String>::sse_decode(&mut deserializer);
+            deserializer.end();
+            transform_result_sse((move || {
+                let mut api_that_decoded = None;
+                let decode_indices_ =
+                    flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![
+                        flutter_rust_bridge::for_generated::LockableOrderInfo::new(
+                            &api_that, 0, true,
+                        ),
+                    ]);
+                for i in decode_indices_ {
+                    match i {
+                        0 => api_that_decoded = Some(api_that.lockable_decode_sync_ref_mut()),
+                        _ => unreachable!(),
+                    }
+                }
+                let mut api_that = &mut *api_that_decoded.unwrap();
+                Result::<_, ()>::Ok({
+                    {
+                        api_that.one = api_one;
+                    };
+                })
+            })())
+        },
+    )
+}
 fn wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_check_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
@@ -1408,53 +1507,6 @@ fn wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_check_impl(
         },
     )
 }
-fn wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_get_one_impl(
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "ConstructorOpaqueStructTwinNormal_get_one",
-            port: None,
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
-        },
-        move || {
-            let message = unsafe {
-                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
-                    ptr_,
-                    rust_vec_len_,
-                    data_len_,
-                )
-            };
-            let mut deserializer =
-                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_that = <RustOpaqueMoi<
-                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
-                    ConstructorOpaqueStructTwinNormal,
-                >,
-            >>::sse_decode(&mut deserializer);
-            deserializer.end();
-            transform_result_sse((move || {
-                let mut api_that_decoded = None;
-                let decode_indices_ =
-                    flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![
-                        flutter_rust_bridge::for_generated::LockableOrderInfo::new(
-                            &api_that, 0, false,
-                        ),
-                    ]);
-                for i in decode_indices_ {
-                    match i {
-                        0 => api_that_decoded = Some(api_that.lockable_decode_sync_ref()),
-                        _ => unreachable!(),
-                    }
-                }
-                let api_that = &*api_that_decoded.unwrap();
-                Result::<_, ()>::Ok(api_that.one.clone())
-            })())
-        },
-    )
-}
 fn wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_new_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -1488,14 +1540,14 @@ fn wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_new_impl(
         },
     )
 }
-fn wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_set_one_impl(
+fn wire__crate__api__constructor__ConstructorOpaqueSyncStructTwinNormal_auto_accessor_get_one_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "ConstructorOpaqueStructTwinNormal_set_one",
+            debug_name: "ConstructorOpaqueSyncStructTwinNormal_auto_accessor_get_one",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -1511,7 +1563,54 @@ fn wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_set_one_impl
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_that = <RustOpaqueMoi<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
-                    ConstructorOpaqueStructTwinNormal,
+                    ConstructorOpaqueSyncStructTwinNormal,
+                >,
+            >>::sse_decode(&mut deserializer);
+            deserializer.end();
+            transform_result_sse((move || {
+                let mut api_that_decoded = None;
+                let decode_indices_ =
+                    flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![
+                        flutter_rust_bridge::for_generated::LockableOrderInfo::new(
+                            &api_that, 0, false,
+                        ),
+                    ]);
+                for i in decode_indices_ {
+                    match i {
+                        0 => api_that_decoded = Some(api_that.lockable_decode_sync_ref()),
+                        _ => unreachable!(),
+                    }
+                }
+                let api_that = &*api_that_decoded.unwrap();
+                Result::<_, ()>::Ok(api_that.one.clone())
+            })())
+        },
+    )
+}
+fn wire__crate__api__constructor__ConstructorOpaqueSyncStructTwinNormal_auto_accessor_set_one_impl(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "ConstructorOpaqueSyncStructTwinNormal_auto_accessor_set_one",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_that = <RustOpaqueMoi<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                    ConstructorOpaqueSyncStructTwinNormal,
                 >,
             >>::sse_decode(&mut deserializer);
             let api_one = <String>::sse_decode(&mut deserializer);
@@ -1589,53 +1688,6 @@ fn wire__crate__api__constructor__ConstructorOpaqueSyncStructTwinNormal_check_im
         },
     )
 }
-fn wire__crate__api__constructor__ConstructorOpaqueSyncStructTwinNormal_get_one_impl(
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "ConstructorOpaqueSyncStructTwinNormal_get_one",
-            port: None,
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
-        },
-        move || {
-            let message = unsafe {
-                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
-                    ptr_,
-                    rust_vec_len_,
-                    data_len_,
-                )
-            };
-            let mut deserializer =
-                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_that = <RustOpaqueMoi<
-                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
-                    ConstructorOpaqueSyncStructTwinNormal,
-                >,
-            >>::sse_decode(&mut deserializer);
-            deserializer.end();
-            transform_result_sse((move || {
-                let mut api_that_decoded = None;
-                let decode_indices_ =
-                    flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![
-                        flutter_rust_bridge::for_generated::LockableOrderInfo::new(
-                            &api_that, 0, false,
-                        ),
-                    ]);
-                for i in decode_indices_ {
-                    match i {
-                        0 => api_that_decoded = Some(api_that.lockable_decode_sync_ref()),
-                        _ => unreachable!(),
-                    }
-                }
-                let api_that = &*api_that_decoded.unwrap();
-                Result::<_, ()>::Ok(api_that.one.clone())
-            })())
-        },
-    )
-}
 fn wire__crate__api__constructor__ConstructorOpaqueSyncStructTwinNormal_new_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
@@ -1662,58 +1714,6 @@ fn wire__crate__api__constructor__ConstructorOpaqueSyncStructTwinNormal_new_impl
                 Result::<_, ()>::Ok(
                     crate::api::constructor::ConstructorOpaqueSyncStructTwinNormal::new(),
                 )
-            })())
-        },
-    )
-}
-fn wire__crate__api__constructor__ConstructorOpaqueSyncStructTwinNormal_set_one_impl(
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "ConstructorOpaqueSyncStructTwinNormal_set_one",
-            port: None,
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
-        },
-        move || {
-            let message = unsafe {
-                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
-                    ptr_,
-                    rust_vec_len_,
-                    data_len_,
-                )
-            };
-            let mut deserializer =
-                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_that = <RustOpaqueMoi<
-                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
-                    ConstructorOpaqueSyncStructTwinNormal,
-                >,
-            >>::sse_decode(&mut deserializer);
-            let api_one = <String>::sse_decode(&mut deserializer);
-            deserializer.end();
-            transform_result_sse((move || {
-                let mut api_that_decoded = None;
-                let decode_indices_ =
-                    flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![
-                        flutter_rust_bridge::for_generated::LockableOrderInfo::new(
-                            &api_that, 0, true,
-                        ),
-                    ]);
-                for i in decode_indices_ {
-                    match i {
-                        0 => api_that_decoded = Some(api_that.lockable_decode_sync_ref_mut()),
-                        _ => unreachable!(),
-                    }
-                }
-                let mut api_that = &mut *api_that_decoded.unwrap();
-                Result::<_, ()>::Ok({
-                    {
-                        api_that.one = api_one;
-                    };
-                })
             })())
         },
     )
@@ -3164,29 +3164,14 @@ fn wire__crate__api__dropping__DroppableTwinNormal_simple_method_twin_normal_imp
         },
     )
 }
-fn wire__crate__api__dyn_trait__StructOneWithTraitForDynTwinNormal_create_twin_normal_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "StructOneWithTraitForDynTwinNormal_create_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
-            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
-            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_one = <i32>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
-                    transform_result_sse((move ||  {
-                         Result::<_,()>::Ok(crate::api::dyn_trait::StructOneWithTraitForDynTwinNormal::create_twin_normal(api_one))
-                    })())
-                } })
-}
-fn wire__crate__api__dyn_trait__StructOneWithTraitForDynTwinNormal_get_one_impl(
+fn wire__crate__api__dyn_trait__StructOneWithTraitForDynTwinNormal_auto_accessor_get_one_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "StructOneWithTraitForDynTwinNormal_get_one",
+            debug_name: "StructOneWithTraitForDynTwinNormal_auto_accessor_get_one",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -3226,14 +3211,14 @@ fn wire__crate__api__dyn_trait__StructOneWithTraitForDynTwinNormal_get_one_impl(
         },
     )
 }
-fn wire__crate__api__dyn_trait__StructOneWithTraitForDynTwinNormal_set_one_impl(
+fn wire__crate__api__dyn_trait__StructOneWithTraitForDynTwinNormal_auto_accessor_set_one_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "StructOneWithTraitForDynTwinNormal_set_one",
+            debug_name: "StructOneWithTraitForDynTwinNormal_auto_accessor_set_one",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -3278,6 +3263,21 @@ fn wire__crate__api__dyn_trait__StructOneWithTraitForDynTwinNormal_set_one_impl(
         },
     )
 }
+fn wire__crate__api__dyn_trait__StructOneWithTraitForDynTwinNormal_create_twin_normal_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "StructOneWithTraitForDynTwinNormal_create_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_one = <i32>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
+                    transform_result_sse((move ||  {
+                         Result::<_,()>::Ok(crate::api::dyn_trait::StructOneWithTraitForDynTwinNormal::create_twin_normal(api_one))
+                    })())
+                } })
+}
 fn wire__crate__api__dyn_trait__StructOneWithTraitForDynTwinNormal_simple_method_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -3302,29 +3302,14 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
                     })())
                 } })
 }
-fn wire__crate__api__dyn_trait__StructTwoWithTraitForDynTwinNormal_create_twin_normal_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "StructTwoWithTraitForDynTwinNormal_create_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
-            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
-            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_two = <i32>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
-                    transform_result_sse((move ||  {
-                         Result::<_,()>::Ok(crate::api::dyn_trait::StructTwoWithTraitForDynTwinNormal::create_twin_normal(api_two))
-                    })())
-                } })
-}
-fn wire__crate__api__dyn_trait__StructTwoWithTraitForDynTwinNormal_get_two_impl(
+fn wire__crate__api__dyn_trait__StructTwoWithTraitForDynTwinNormal_auto_accessor_get_two_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "StructTwoWithTraitForDynTwinNormal_get_two",
+            debug_name: "StructTwoWithTraitForDynTwinNormal_auto_accessor_get_two",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -3364,14 +3349,14 @@ fn wire__crate__api__dyn_trait__StructTwoWithTraitForDynTwinNormal_get_two_impl(
         },
     )
 }
-fn wire__crate__api__dyn_trait__StructTwoWithTraitForDynTwinNormal_set_two_impl(
+fn wire__crate__api__dyn_trait__StructTwoWithTraitForDynTwinNormal_auto_accessor_set_two_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "StructTwoWithTraitForDynTwinNormal_set_two",
+            debug_name: "StructTwoWithTraitForDynTwinNormal_auto_accessor_set_two",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -3415,6 +3400,21 @@ fn wire__crate__api__dyn_trait__StructTwoWithTraitForDynTwinNormal_set_two_impl(
             })())
         },
     )
+}
+fn wire__crate__api__dyn_trait__StructTwoWithTraitForDynTwinNormal_create_twin_normal_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "StructTwoWithTraitForDynTwinNormal_create_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_two = <i32>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
+                    transform_result_sse((move ||  {
+                         Result::<_,()>::Ok(crate::api::dyn_trait::StructTwoWithTraitForDynTwinNormal::create_twin_normal(api_two))
+                    })())
+                } })
 }
 fn wire__crate__api__dyn_trait__StructTwoWithTraitForDynTwinNormal_simple_method_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
@@ -5017,14 +5017,14 @@ fn wire__crate__api__external_type_in_crate__use_imported_struct_twin_normal_imp
         },
     )
 }
-fn wire__crate__api__impl_trait__StructOneWithTraitTwinNormal_get_one_impl(
+fn wire__crate__api__impl_trait__StructOneWithTraitTwinNormal_auto_accessor_get_one_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "StructOneWithTraitTwinNormal_get_one",
+            debug_name: "StructOneWithTraitTwinNormal_auto_accessor_get_one",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -5064,14 +5064,14 @@ fn wire__crate__api__impl_trait__StructOneWithTraitTwinNormal_get_one_impl(
         },
     )
 }
-fn wire__crate__api__impl_trait__StructOneWithTraitTwinNormal_set_one_impl(
+fn wire__crate__api__impl_trait__StructOneWithTraitTwinNormal_auto_accessor_set_one_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "StructOneWithTraitTwinNormal_set_one",
+            debug_name: "StructOneWithTraitTwinNormal_auto_accessor_set_one",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -5170,14 +5170,14 @@ fn wire__crate__api__impl_trait__StructOneWithTraitTwinNormal_simple_trait_fn_wi
                     })())
                 } })
 }
-fn wire__crate__api__impl_trait__StructTwoWithTraitTwinNormal_get_two_impl(
+fn wire__crate__api__impl_trait__StructTwoWithTraitTwinNormal_auto_accessor_get_two_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "StructTwoWithTraitTwinNormal_get_two",
+            debug_name: "StructTwoWithTraitTwinNormal_auto_accessor_get_two",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -5217,14 +5217,14 @@ fn wire__crate__api__impl_trait__StructTwoWithTraitTwinNormal_get_two_impl(
         },
     )
 }
-fn wire__crate__api__impl_trait__StructTwoWithTraitTwinNormal_set_two_impl(
+fn wire__crate__api__impl_trait__StructTwoWithTraitTwinNormal_auto_accessor_set_two_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "StructTwoWithTraitTwinNormal_set_two",
+            debug_name: "StructTwoWithTraitTwinNormal_auto_accessor_set_two",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -7570,29 +7570,15 @@ fn wire__crate__api__misc_example__test_struct_with_enum_twin_normal_impl(
         },
     )
 }
-fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_dummy_function_twin_normal_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "DeliberateFailSanityCheckTwinNormal_dummy_function_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
-            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
-            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            deserializer.end(); move |context|  {
-                    transform_result_sse((move ||  {
-                         Result::<_,()>::Ok({ crate::api::misc_no_twin_example_a::DeliberateFailSanityCheckTwinNormal::dummy_function_twin_normal(); })
-                    })())
-                } })
-}
-fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_deliberate_bad_field_a_impl(
+fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_get_deliberate_bad_field_a_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "DeliberateFailSanityCheckTwinNormal_get_deliberate_bad_field_a",
+            debug_name:
+                "DeliberateFailSanityCheckTwinNormal_auto_accessor_get_deliberate_bad_field_a",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -7632,14 +7618,15 @@ fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal
         },
     )
 }
-fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_deliberate_bad_field_b_impl(
+fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_get_deliberate_bad_field_b_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "DeliberateFailSanityCheckTwinNormal_get_deliberate_bad_field_b",
+            debug_name:
+                "DeliberateFailSanityCheckTwinNormal_auto_accessor_get_deliberate_bad_field_b",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -7679,14 +7666,15 @@ fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal
         },
     )
 }
-fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_deliberate_bad_field_c_impl(
+fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_get_deliberate_bad_field_c_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "DeliberateFailSanityCheckTwinNormal_get_deliberate_bad_field_c",
+            debug_name:
+                "DeliberateFailSanityCheckTwinNormal_auto_accessor_get_deliberate_bad_field_c",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -7726,14 +7714,14 @@ fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal
         },
     )
 }
-fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_good_field_a_impl(
+fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_get_good_field_a_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "DeliberateFailSanityCheckTwinNormal_get_good_field_a",
+            debug_name: "DeliberateFailSanityCheckTwinNormal_auto_accessor_get_good_field_a",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -7773,14 +7761,14 @@ fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal
         },
     )
 }
-fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_good_field_b_impl(
+fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_get_good_field_b_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "DeliberateFailSanityCheckTwinNormal_get_good_field_b",
+            debug_name: "DeliberateFailSanityCheckTwinNormal_auto_accessor_get_good_field_b",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -7820,14 +7808,14 @@ fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal
         },
     )
 }
-fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_good_field_c_impl(
+fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_get_good_field_c_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "DeliberateFailSanityCheckTwinNormal_get_good_field_c",
+            debug_name: "DeliberateFailSanityCheckTwinNormal_auto_accessor_get_good_field_c",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -7867,14 +7855,15 @@ fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal
         },
     )
 }
-fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_deliberate_bad_field_a_impl(
+fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_set_deliberate_bad_field_a_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "DeliberateFailSanityCheckTwinNormal_set_deliberate_bad_field_a",
+            debug_name:
+                "DeliberateFailSanityCheckTwinNormal_auto_accessor_set_deliberate_bad_field_a",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -7919,14 +7908,15 @@ fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal
         },
     )
 }
-fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_deliberate_bad_field_b_impl(
+fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_set_deliberate_bad_field_b_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "DeliberateFailSanityCheckTwinNormal_set_deliberate_bad_field_b",
+            debug_name:
+                "DeliberateFailSanityCheckTwinNormal_auto_accessor_set_deliberate_bad_field_b",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -7971,14 +7961,15 @@ fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal
         },
     )
 }
-fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_deliberate_bad_field_c_impl(
+fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_set_deliberate_bad_field_c_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "DeliberateFailSanityCheckTwinNormal_set_deliberate_bad_field_c",
+            debug_name:
+                "DeliberateFailSanityCheckTwinNormal_auto_accessor_set_deliberate_bad_field_c",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -8024,14 +8015,14 @@ fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal
         },
     )
 }
-fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_good_field_a_impl(
+fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_set_good_field_a_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "DeliberateFailSanityCheckTwinNormal_set_good_field_a",
+            debug_name: "DeliberateFailSanityCheckTwinNormal_auto_accessor_set_good_field_a",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -8076,14 +8067,14 @@ fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal
         },
     )
 }
-fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_good_field_b_impl(
+fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_set_good_field_b_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "DeliberateFailSanityCheckTwinNormal_set_good_field_b",
+            debug_name: "DeliberateFailSanityCheckTwinNormal_auto_accessor_set_good_field_b",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -8128,14 +8119,14 @@ fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal
         },
     )
 }
-fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_good_field_c_impl(
+fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_set_good_field_c_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "DeliberateFailSanityCheckTwinNormal_set_good_field_c",
+            debug_name: "DeliberateFailSanityCheckTwinNormal_auto_accessor_set_good_field_c",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -8181,53 +8172,29 @@ fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal
         },
     )
 }
-fn wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_create_twin_normal_impl(
+fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_dummy_function_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "ItemContainerSolutionOneTwinNormal_create_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "DeliberateFailSanityCheckTwinNormal_dummy_function_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context|  {
                     transform_result_sse((move ||  {
-                         Result::<_,()>::Ok(crate::api::misc_no_twin_example_a::ItemContainerSolutionOneTwinNormal::create_twin_normal())
+                         Result::<_,()>::Ok({ crate::api::misc_no_twin_example_a::DeliberateFailSanityCheckTwinNormal::dummy_function_twin_normal(); })
                     })())
                 } })
 }
-fn wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_get_item_contents_twin_normal_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "ItemContainerSolutionOneTwinNormal_get_item_contents_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
-            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
-            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_that = <RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ItemContainerSolutionOneTwinNormal>>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
-                    transform_result_sse((move ||  {
-                        let mut api_that_decoded = None;
-let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![flutter_rust_bridge::for_generated::LockableOrderInfo::new(&api_that, 0, false)]);
-        for i in decode_indices_ {
-            match i {
-                0 => api_that_decoded = Some(api_that.lockable_decode_sync_ref()),
-                _ => unreachable!(),
-            }
-        }
-        let api_that = &*api_that_decoded.unwrap();
- Result::<_,()>::Ok(crate::api::misc_no_twin_example_a::ItemContainerSolutionOneTwinNormal::get_item_contents_twin_normal(api_that))
-                    })())
-                } })
-}
-fn wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_get_name_impl(
+fn wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_auto_accessor_get_name_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "ItemContainerSolutionOneTwinNormal_get_name",
+            debug_name: "ItemContainerSolutionOneTwinNormal_auto_accessor_get_name",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -8267,14 +8234,14 @@ fn wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_
         },
     )
 }
-fn wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_set_name_impl(
+fn wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_auto_accessor_set_name_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "ItemContainerSolutionOneTwinNormal_set_name",
+            debug_name: "ItemContainerSolutionOneTwinNormal_auto_accessor_set_name",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -8318,6 +8285,45 @@ fn wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_
             })())
         },
     )
+}
+fn wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_create_twin_normal_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "ItemContainerSolutionOneTwinNormal_create_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            deserializer.end(); move |context|  {
+                    transform_result_sse((move ||  {
+                         Result::<_,()>::Ok(crate::api::misc_no_twin_example_a::ItemContainerSolutionOneTwinNormal::create_twin_normal())
+                    })())
+                } })
+}
+fn wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_get_item_contents_twin_normal_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "ItemContainerSolutionOneTwinNormal_get_item_contents_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_that = <RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ItemContainerSolutionOneTwinNormal>>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
+                    transform_result_sse((move ||  {
+                        let mut api_that_decoded = None;
+let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![flutter_rust_bridge::for_generated::LockableOrderInfo::new(&api_that, 0, false)]);
+        for i in decode_indices_ {
+            match i {
+                0 => api_that_decoded = Some(api_that.lockable_decode_sync_ref()),
+                _ => unreachable!(),
+            }
+        }
+        let api_that = &*api_that_decoded.unwrap();
+ Result::<_,()>::Ok(crate::api::misc_no_twin_example_a::ItemContainerSolutionOneTwinNormal::get_item_contents_twin_normal(api_that))
+                    })())
+                } })
 }
 fn wire__crate__api__misc_no_twin_example_a__StructInMiscNoTwinExampleA_sample_function_a_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
@@ -17982,14 +17988,14 @@ fn wire__crate__api__pseudo_manual__external_type_in_crate_twin_sync__use_import
                      Result::<_,()>::Ok(crate::api::pseudo_manual::external_type_in_crate_twin_sync::use_imported_struct_twin_sync(api_my_struct))
                 })()) })
 }
-fn wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructOneWithTraitTwinSync_get_one_impl(
+fn wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructOneWithTraitTwinSync_auto_accessor_get_one_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "StructOneWithTraitTwinSync_get_one",
+            debug_name: "StructOneWithTraitTwinSync_auto_accessor_get_one",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -18027,14 +18033,14 @@ fn wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructOneWithTraitTwin
         },
     )
 }
-fn wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructOneWithTraitTwinSync_set_one_impl(
+fn wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructOneWithTraitTwinSync_auto_accessor_set_one_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "StructOneWithTraitTwinSync_set_one",
+            debug_name: "StructOneWithTraitTwinSync_auto_accessor_set_one",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -18131,14 +18137,14 @@ fn wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructOneWithTraitTwin
                     })())
                 } })
 }
-fn wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructTwoWithTraitTwinSync_get_two_impl(
+fn wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructTwoWithTraitTwinSync_auto_accessor_get_two_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "StructTwoWithTraitTwinSync_get_two",
+            debug_name: "StructTwoWithTraitTwinSync_auto_accessor_get_two",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -18176,14 +18182,14 @@ fn wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructTwoWithTraitTwin
         },
     )
 }
-fn wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructTwoWithTraitTwinSync_set_two_impl(
+fn wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructTwoWithTraitTwinSync_auto_accessor_set_two_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "StructTwoWithTraitTwinSync_set_two",
+            debug_name: "StructTwoWithTraitTwinSync_auto_accessor_set_two",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -21978,14 +21984,15 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__NonCloneSi
                     })().await)
                 } })
 }
-fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync_get_good_impl(
+fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync_auto_accessor_get_good_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync_get_good",
+            debug_name:
+                "StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync_auto_accessor_get_good",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -22025,14 +22032,15 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__StructWith
         },
     )
 }
-fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync_set_good_impl(
+fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync_auto_accessor_set_good_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync_set_good",
+            debug_name:
+                "StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync_auto_accessor_set_good",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -22827,14 +22835,14 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTw
                      Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::NonCloneSimpleTwinSync::static_method_return_own_twin_sync())
                 })()) })
 }
-fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_get_good_impl(
+fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_auto_accessor_get_good_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_get_good",
+            debug_name: "StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_auto_accessor_get_good",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -22874,14 +22882,14 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGoodAn
         },
     )
 }
-fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_set_good_impl(
+fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_auto_accessor_set_good_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_set_good",
+            debug_name: "StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_auto_accessor_set_good",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -25066,14 +25074,15 @@ fn wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_static_method_re
                     })())
                 } })
 }
-fn wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_get_good_impl(
+fn wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_auto_accessor_get_good_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_get_good",
+            debug_name:
+                "StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_auto_accessor_get_good",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -25113,14 +25122,15 @@ fn wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOption
         },
     )
 }
-fn wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_set_good_impl(
+fn wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_auto_accessor_set_good_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_set_good",
+            debug_name:
+                "StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_auto_accessor_set_good",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -38910,7 +38920,7 @@ fn pde_ffi_dispatcher_primary_impl(
 39 => wire__crate__api__comment__function_with_comments_triple_slash_single_line_twin_normal_impl(port, ptr, rust_vec_len, data_len),
 40 => wire__crate__api__comment__struct_with_comments_twin_normal_instance_method_twin_normal_impl(port, ptr, rust_vec_len, data_len),
 41 => wire__crate__api__comment__struct_with_comments_twin_normal_static_method_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-44 => wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_new_impl(port, ptr, rust_vec_len, data_len),
+45 => wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_new_impl(port, ptr, rust_vec_len, data_len),
 50 => wire__crate__api__constructor__constructor_translatable_struct_twin_normal_new_impl(port, ptr, rust_vec_len, data_len),
 52 => wire__crate__api__custom_ser_des__function_using_type_with_custom_serializer_impl(port, ptr, rust_vec_len, data_len),
 53 => wire__crate__api__customization__check_init_done_impl(port, ptr, rust_vec_len, data_len),
@@ -38949,9 +38959,9 @@ fn pde_ffi_dispatcher_primary_impl(
 91 => wire__crate__api__dropping__DroppableTwinNormal_get_drop_count_twin_normal_impl(port, ptr, rust_vec_len, data_len),
 92 => wire__crate__api__dropping__DroppableTwinNormal_new_twin_normal_impl(port, ptr, rust_vec_len, data_len),
 93 => wire__crate__api__dropping__DroppableTwinNormal_simple_method_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-94 => wire__crate__api__dyn_trait__StructOneWithTraitForDynTwinNormal_create_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+96 => wire__crate__api__dyn_trait__StructOneWithTraitForDynTwinNormal_create_twin_normal_impl(port, ptr, rust_vec_len, data_len),
 97 => wire__crate__api__dyn_trait__StructOneWithTraitForDynTwinNormal_simple_method_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-98 => wire__crate__api__dyn_trait__StructTwoWithTraitForDynTwinNormal_create_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+100 => wire__crate__api__dyn_trait__StructTwoWithTraitForDynTwinNormal_create_twin_normal_impl(port, ptr, rust_vec_len, data_len),
 101 => wire__crate__api__dyn_trait__StructTwoWithTraitForDynTwinNormal_simple_method_twin_normal_impl(port, ptr, rust_vec_len, data_len),
 103 => wire__crate__api__dyn_trait__func_arg_dyn_trait_twin_normal_impl(port, ptr, rust_vec_len, data_len),
 104 => wire__crate__api__enumeration__func_enum_simple_twin_normal_impl(port, ptr, rust_vec_len, data_len),
@@ -39078,9 +39088,9 @@ fn pde_ffi_dispatcher_primary_impl(
 234 => wire__crate__api__misc_example__positional_arguments_twin_normal_impl(port, ptr, rust_vec_len, data_len),
 235 => wire__crate__api__misc_example__test_abc_enum_twin_normal_impl(port, ptr, rust_vec_len, data_len),
 236 => wire__crate__api__misc_example__test_struct_with_enum_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-237 => wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_dummy_function_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-250 => wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_create_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-251 => wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_get_item_contents_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+249 => wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_dummy_function_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+252 => wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_create_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+253 => wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_get_item_contents_twin_normal_impl(port, ptr, rust_vec_len, data_len),
 254 => wire__crate__api__misc_no_twin_example_a__StructInMiscNoTwinExampleA_sample_function_a_impl(port, ptr, rust_vec_len, data_len),
 255 => wire__crate__api__misc_no_twin_example_a__StructWithImplBlockInMultiFile_method_in_a_impl(port, ptr, rust_vec_len, data_len),
 256 => wire__crate__api__misc_no_twin_example_a__StructWithImplBlockInMultiFile_method_in_b_impl(port, ptr, rust_vec_len, data_len),
@@ -39686,43 +39696,43 @@ fn pde_ffi_dispatcher_sync_impl(
     // Codec=Pde (Serialization + dispatch), see doc to use other codecs
     match func_id {
                         20 => wire__crate__api__benchmark_misc__benchmark_void_semi_serialize_impl(ptr, rust_vec_len, data_len),
-42 => wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_check_impl(ptr, rust_vec_len, data_len),
-43 => wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_get_one_impl(ptr, rust_vec_len, data_len),
-45 => wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_set_one_impl(ptr, rust_vec_len, data_len),
-46 => wire__crate__api__constructor__ConstructorOpaqueSyncStructTwinNormal_check_impl(ptr, rust_vec_len, data_len),
-47 => wire__crate__api__constructor__ConstructorOpaqueSyncStructTwinNormal_get_one_impl(ptr, rust_vec_len, data_len),
-48 => wire__crate__api__constructor__ConstructorOpaqueSyncStructTwinNormal_new_impl(ptr, rust_vec_len, data_len),
-49 => wire__crate__api__constructor__ConstructorOpaqueSyncStructTwinNormal_set_one_impl(ptr, rust_vec_len, data_len),
+42 => wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_auto_accessor_get_one_impl(ptr, rust_vec_len, data_len),
+43 => wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_auto_accessor_set_one_impl(ptr, rust_vec_len, data_len),
+44 => wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_check_impl(ptr, rust_vec_len, data_len),
+46 => wire__crate__api__constructor__ConstructorOpaqueSyncStructTwinNormal_auto_accessor_get_one_impl(ptr, rust_vec_len, data_len),
+47 => wire__crate__api__constructor__ConstructorOpaqueSyncStructTwinNormal_auto_accessor_set_one_impl(ptr, rust_vec_len, data_len),
+48 => wire__crate__api__constructor__ConstructorOpaqueSyncStructTwinNormal_check_impl(ptr, rust_vec_len, data_len),
+49 => wire__crate__api__constructor__ConstructorOpaqueSyncStructTwinNormal_new_impl(ptr, rust_vec_len, data_len),
 51 => wire__crate__api__constructor__constructor_translatable_sync_struct_twin_normal_new_impl(ptr, rust_vec_len, data_len),
 84 => wire__crate__api__dart_opaque_sync__sync_accept_dart_opaque_twin_normal_impl(ptr, rust_vec_len, data_len),
 85 => wire__crate__api__dart_opaque_sync__sync_loopback_twin_normal_impl(ptr, rust_vec_len, data_len),
 86 => wire__crate__api__dart_opaque_sync__sync_option_dart_opaque_twin_normal_impl(ptr, rust_vec_len, data_len),
 87 => wire__crate__api__dart_opaque_sync__sync_option_loopback_twin_normal_impl(ptr, rust_vec_len, data_len),
 88 => wire__crate__api__dart_opaque_sync__unwrap_dart_opaque_twin_normal_impl(ptr, rust_vec_len, data_len),
-95 => wire__crate__api__dyn_trait__StructOneWithTraitForDynTwinNormal_get_one_impl(ptr, rust_vec_len, data_len),
-96 => wire__crate__api__dyn_trait__StructOneWithTraitForDynTwinNormal_set_one_impl(ptr, rust_vec_len, data_len),
-99 => wire__crate__api__dyn_trait__StructTwoWithTraitForDynTwinNormal_get_two_impl(ptr, rust_vec_len, data_len),
-100 => wire__crate__api__dyn_trait__StructTwoWithTraitForDynTwinNormal_set_two_impl(ptr, rust_vec_len, data_len),
+94 => wire__crate__api__dyn_trait__StructOneWithTraitForDynTwinNormal_auto_accessor_get_one_impl(ptr, rust_vec_len, data_len),
+95 => wire__crate__api__dyn_trait__StructOneWithTraitForDynTwinNormal_auto_accessor_set_one_impl(ptr, rust_vec_len, data_len),
+98 => wire__crate__api__dyn_trait__StructTwoWithTraitForDynTwinNormal_auto_accessor_get_two_impl(ptr, rust_vec_len, data_len),
+99 => wire__crate__api__dyn_trait__StructTwoWithTraitForDynTwinNormal_auto_accessor_set_two_impl(ptr, rust_vec_len, data_len),
 115 => wire__crate__api__event_listener__create_event_sync_twin_normal_impl(ptr, rust_vec_len, data_len),
 148 => wire__crate__api__external_impl__SimpleOpaqueExternalStructWithMethod_new_impl(ptr, rust_vec_len, data_len),
-155 => wire__crate__api__impl_trait__StructOneWithTraitTwinNormal_get_one_impl(ptr, rust_vec_len, data_len),
-156 => wire__crate__api__impl_trait__StructOneWithTraitTwinNormal_set_one_impl(ptr, rust_vec_len, data_len),
-160 => wire__crate__api__impl_trait__StructTwoWithTraitTwinNormal_get_two_impl(ptr, rust_vec_len, data_len),
-161 => wire__crate__api__impl_trait__StructTwoWithTraitTwinNormal_set_two_impl(ptr, rust_vec_len, data_len),
-238 => wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_deliberate_bad_field_a_impl(ptr, rust_vec_len, data_len),
-239 => wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_deliberate_bad_field_b_impl(ptr, rust_vec_len, data_len),
-240 => wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_deliberate_bad_field_c_impl(ptr, rust_vec_len, data_len),
-241 => wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_good_field_a_impl(ptr, rust_vec_len, data_len),
-242 => wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_good_field_b_impl(ptr, rust_vec_len, data_len),
-243 => wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_good_field_c_impl(ptr, rust_vec_len, data_len),
-244 => wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_deliberate_bad_field_a_impl(ptr, rust_vec_len, data_len),
-245 => wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_deliberate_bad_field_b_impl(ptr, rust_vec_len, data_len),
-246 => wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_deliberate_bad_field_c_impl(ptr, rust_vec_len, data_len),
-247 => wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_good_field_a_impl(ptr, rust_vec_len, data_len),
-248 => wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_good_field_b_impl(ptr, rust_vec_len, data_len),
-249 => wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_good_field_c_impl(ptr, rust_vec_len, data_len),
-252 => wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_get_name_impl(ptr, rust_vec_len, data_len),
-253 => wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_set_name_impl(ptr, rust_vec_len, data_len),
+155 => wire__crate__api__impl_trait__StructOneWithTraitTwinNormal_auto_accessor_get_one_impl(ptr, rust_vec_len, data_len),
+156 => wire__crate__api__impl_trait__StructOneWithTraitTwinNormal_auto_accessor_set_one_impl(ptr, rust_vec_len, data_len),
+160 => wire__crate__api__impl_trait__StructTwoWithTraitTwinNormal_auto_accessor_get_two_impl(ptr, rust_vec_len, data_len),
+161 => wire__crate__api__impl_trait__StructTwoWithTraitTwinNormal_auto_accessor_set_two_impl(ptr, rust_vec_len, data_len),
+237 => wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_get_deliberate_bad_field_a_impl(ptr, rust_vec_len, data_len),
+238 => wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_get_deliberate_bad_field_b_impl(ptr, rust_vec_len, data_len),
+239 => wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_get_deliberate_bad_field_c_impl(ptr, rust_vec_len, data_len),
+240 => wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_get_good_field_a_impl(ptr, rust_vec_len, data_len),
+241 => wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_get_good_field_b_impl(ptr, rust_vec_len, data_len),
+242 => wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_get_good_field_c_impl(ptr, rust_vec_len, data_len),
+243 => wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_set_deliberate_bad_field_a_impl(ptr, rust_vec_len, data_len),
+244 => wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_set_deliberate_bad_field_b_impl(ptr, rust_vec_len, data_len),
+245 => wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_set_deliberate_bad_field_c_impl(ptr, rust_vec_len, data_len),
+246 => wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_set_good_field_a_impl(ptr, rust_vec_len, data_len),
+247 => wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_set_good_field_b_impl(ptr, rust_vec_len, data_len),
+248 => wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_set_good_field_c_impl(ptr, rust_vec_len, data_len),
+250 => wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_auto_accessor_get_name_impl(ptr, rust_vec_len, data_len),
+251 => wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_auto_accessor_set_name_impl(ptr, rust_vec_len, data_len),
 257 => wire__crate__api__misc_no_twin_example_a__StructWithSimpleSetterTwinNormal_get_something_impl(ptr, rust_vec_len, data_len),
 258 => wire__crate__api__misc_no_twin_example_a__StructWithSimpleSetterTwinNormal_new_impl(ptr, rust_vec_len, data_len),
 259 => wire__crate__api__misc_no_twin_example_a__StructWithSimpleSetterTwinNormal_set_something_impl(ptr, rust_vec_len, data_len),
@@ -39911,10 +39921,10 @@ fn pde_ffi_dispatcher_sync_impl(
 763 => wire__crate__api__pseudo_manual__external_type_in_crate_twin_sync__call_old_module_system_twin_sync_impl(ptr, rust_vec_len, data_len),
 764 => wire__crate__api__pseudo_manual__external_type_in_crate_twin_sync__use_imported_enum_twin_sync_impl(ptr, rust_vec_len, data_len),
 765 => wire__crate__api__pseudo_manual__external_type_in_crate_twin_sync__use_imported_struct_twin_sync_impl(ptr, rust_vec_len, data_len),
-766 => wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructOneWithTraitTwinSync_get_one_impl(ptr, rust_vec_len, data_len),
-767 => wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructOneWithTraitTwinSync_set_one_impl(ptr, rust_vec_len, data_len),
-771 => wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructTwoWithTraitTwinSync_get_two_impl(ptr, rust_vec_len, data_len),
-772 => wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructTwoWithTraitTwinSync_set_two_impl(ptr, rust_vec_len, data_len),
+766 => wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructOneWithTraitTwinSync_auto_accessor_get_one_impl(ptr, rust_vec_len, data_len),
+767 => wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructOneWithTraitTwinSync_auto_accessor_set_one_impl(ptr, rust_vec_len, data_len),
+771 => wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructTwoWithTraitTwinSync_auto_accessor_get_two_impl(ptr, rust_vec_len, data_len),
+772 => wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructTwoWithTraitTwinSync_auto_accessor_set_two_impl(ptr, rust_vec_len, data_len),
 787 => wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_map_i32_i32_twin_sync_impl(ptr, rust_vec_len, data_len),
 788 => wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_map_string_bytes_twin_sync_impl(ptr, rust_vec_len, data_len),
 789 => wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_map_string_complex_enum_twin_sync_impl(ptr, rust_vec_len, data_len),
@@ -40005,8 +40015,8 @@ fn pde_ffi_dispatcher_sync_impl(
 954 => wire__crate__api__pseudo_manual__primitive_misc_twin_sync__primitive_u32_twin_sync_impl(ptr, rust_vec_len, data_len),
 957 => wire__crate__api__pseudo_manual__raw_string_twin_sync__test_more_than_just_one_raw_string_struct_twin_sync_impl(ptr, rust_vec_len, data_len),
 958 => wire__crate__api__pseudo_manual__raw_string_twin_sync__test_raw_string_item_struct_twin_sync_impl(ptr, rust_vec_len, data_len),
-971 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync_get_good_impl(ptr, rust_vec_len, data_len),
-972 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync_set_good_impl(ptr, rust_vec_len, data_len),
+971 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync_auto_accessor_get_good_impl(ptr, rust_vec_len, data_len),
+972 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync_auto_accessor_set_good_impl(ptr, rust_vec_len, data_len),
 1005 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_instance_method_arg_borrow_twin_sync_impl(ptr, rust_vec_len, data_len),
 1006 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_instance_method_arg_mut_borrow_twin_sync_impl(ptr, rust_vec_len, data_len),
 1007 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_instance_method_arg_own_twin_sync_impl(ptr, rust_vec_len, data_len),
@@ -40019,8 +40029,8 @@ fn pde_ffi_dispatcher_sync_impl(
 1014 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_static_method_arg_mut_borrow_twin_sync_impl(ptr, rust_vec_len, data_len),
 1015 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_static_method_arg_own_twin_sync_impl(ptr, rust_vec_len, data_len),
 1016 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_static_method_return_own_twin_sync_impl(ptr, rust_vec_len, data_len),
-1017 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_get_good_impl(ptr, rust_vec_len, data_len),
-1018 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_set_good_impl(ptr, rust_vec_len, data_len),
+1017 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_auto_accessor_get_good_impl(ptr, rust_vec_len, data_len),
+1018 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_auto_accessor_set_good_impl(ptr, rust_vec_len, data_len),
 1020 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_arg_borrow_twin_sync_impl(ptr, rust_vec_len, data_len),
 1021 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_arg_mut_borrow_twin_sync_impl(ptr, rust_vec_len, data_len),
 1022 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_arg_own_and_return_own_twin_sync_impl(ptr, rust_vec_len, data_len),
@@ -40083,8 +40093,8 @@ fn pde_ffi_dispatcher_sync_impl(
 1121 => wire__crate__api__pseudo_manual__uuid_type_twin_sync__handle_nested_uuids_twin_sync_impl(ptr, rust_vec_len, data_len),
 1122 => wire__crate__api__pseudo_manual__uuid_type_twin_sync__handle_uuid_twin_sync_impl(ptr, rust_vec_len, data_len),
 1123 => wire__crate__api__pseudo_manual__uuid_type_twin_sync__handle_uuids_twin_sync_impl(ptr, rust_vec_len, data_len),
-1138 => wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_get_good_impl(ptr, rust_vec_len, data_len),
-1139 => wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_set_good_impl(ptr, rust_vec_len, data_len),
+1138 => wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_auto_accessor_get_good_impl(ptr, rust_vec_len, data_len),
+1139 => wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_auto_accessor_set_good_impl(ptr, rust_vec_len, data_len),
 1187 => wire__crate__api__rust_opaque_sync__frb_sync_generator_test_twin_normal_impl(ptr, rust_vec_len, data_len),
 1188 => wire__crate__api__rust_opaque_sync__sync_create_non_clone_twin_normal_impl(ptr, rust_vec_len, data_len),
 1189 => wire__crate__api__rust_opaque_sync__sync_create_opaque_twin_normal_impl(ptr, rust_vec_len, data_len),

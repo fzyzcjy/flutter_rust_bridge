@@ -14377,17 +14377,29 @@ pub fn wire__crate__api__comment__struct_with_comments_twin_normal_static_method
 }
 
 #[wasm_bindgen]
+pub fn wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_auto_accessor_get_one(
+    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_auto_accessor_get_one_impl(
+        that,
+    )
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_auto_accessor_set_one(
+    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    one: String,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_auto_accessor_set_one_impl(
+        that, one,
+    )
+}
+
+#[wasm_bindgen]
 pub fn wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_check(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_check_impl(that)
-}
-
-#[wasm_bindgen]
-pub fn wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_get_one(
-    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_get_one_impl(that)
 }
 
 #[wasm_bindgen]
@@ -14398,11 +14410,22 @@ pub fn wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_new(
 }
 
 #[wasm_bindgen]
-pub fn wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_set_one(
+pub fn wire__crate__api__constructor__ConstructorOpaqueSyncStructTwinNormal_auto_accessor_get_one(
+    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__constructor__ConstructorOpaqueSyncStructTwinNormal_auto_accessor_get_one_impl(
+        that,
+    )
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__constructor__ConstructorOpaqueSyncStructTwinNormal_auto_accessor_set_one(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     one: String,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_set_one_impl(that, one)
+    wire__crate__api__constructor__ConstructorOpaqueSyncStructTwinNormal_auto_accessor_set_one_impl(
+        that, one,
+    )
 }
 
 #[wasm_bindgen]
@@ -14413,24 +14436,9 @@ pub fn wire__crate__api__constructor__ConstructorOpaqueSyncStructTwinNormal_chec
 }
 
 #[wasm_bindgen]
-pub fn wire__crate__api__constructor__ConstructorOpaqueSyncStructTwinNormal_get_one(
-    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__constructor__ConstructorOpaqueSyncStructTwinNormal_get_one_impl(that)
-}
-
-#[wasm_bindgen]
 pub fn wire__crate__api__constructor__ConstructorOpaqueSyncStructTwinNormal_new(
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire__crate__api__constructor__ConstructorOpaqueSyncStructTwinNormal_new_impl()
-}
-
-#[wasm_bindgen]
-pub fn wire__crate__api__constructor__ConstructorOpaqueSyncStructTwinNormal_set_one(
-    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-    one: String,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__constructor__ConstructorOpaqueSyncStructTwinNormal_set_one_impl(that, one)
 }
 
 #[wasm_bindgen]
@@ -14806,6 +14814,23 @@ pub fn wire__crate__api__dropping__DroppableTwinNormal_simple_method_twin_normal
 }
 
 #[wasm_bindgen]
+pub fn wire__crate__api__dyn_trait__StructOneWithTraitForDynTwinNormal_auto_accessor_get_one(
+    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__dyn_trait__StructOneWithTraitForDynTwinNormal_auto_accessor_get_one_impl(that)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__dyn_trait__StructOneWithTraitForDynTwinNormal_auto_accessor_set_one(
+    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    one: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__dyn_trait__StructOneWithTraitForDynTwinNormal_auto_accessor_set_one_impl(
+        that, one,
+    )
+}
+
+#[wasm_bindgen]
 pub fn wire__crate__api__dyn_trait__StructOneWithTraitForDynTwinNormal_create_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -14818,21 +14843,6 @@ pub fn wire__crate__api__dyn_trait__StructOneWithTraitForDynTwinNormal_create_tw
         rust_vec_len_,
         data_len_,
     )
-}
-
-#[wasm_bindgen]
-pub fn wire__crate__api__dyn_trait__StructOneWithTraitForDynTwinNormal_get_one(
-    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__dyn_trait__StructOneWithTraitForDynTwinNormal_get_one_impl(that)
-}
-
-#[wasm_bindgen]
-pub fn wire__crate__api__dyn_trait__StructOneWithTraitForDynTwinNormal_set_one(
-    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-    one: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__dyn_trait__StructOneWithTraitForDynTwinNormal_set_one_impl(that, one)
 }
 
 #[wasm_bindgen]
@@ -14851,6 +14861,23 @@ pub fn wire__crate__api__dyn_trait__StructOneWithTraitForDynTwinNormal_simple_me
 }
 
 #[wasm_bindgen]
+pub fn wire__crate__api__dyn_trait__StructTwoWithTraitForDynTwinNormal_auto_accessor_get_two(
+    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__dyn_trait__StructTwoWithTraitForDynTwinNormal_auto_accessor_get_two_impl(that)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__dyn_trait__StructTwoWithTraitForDynTwinNormal_auto_accessor_set_two(
+    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    two: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__dyn_trait__StructTwoWithTraitForDynTwinNormal_auto_accessor_set_two_impl(
+        that, two,
+    )
+}
+
+#[wasm_bindgen]
 pub fn wire__crate__api__dyn_trait__StructTwoWithTraitForDynTwinNormal_create_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -14863,21 +14890,6 @@ pub fn wire__crate__api__dyn_trait__StructTwoWithTraitForDynTwinNormal_create_tw
         rust_vec_len_,
         data_len_,
     )
-}
-
-#[wasm_bindgen]
-pub fn wire__crate__api__dyn_trait__StructTwoWithTraitForDynTwinNormal_get_two(
-    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__dyn_trait__StructTwoWithTraitForDynTwinNormal_get_two_impl(that)
-}
-
-#[wasm_bindgen]
-pub fn wire__crate__api__dyn_trait__StructTwoWithTraitForDynTwinNormal_set_two(
-    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-    two: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__dyn_trait__StructTwoWithTraitForDynTwinNormal_set_two_impl(that, two)
 }
 
 #[wasm_bindgen]
@@ -15298,18 +15310,18 @@ pub fn wire__crate__api__external_type_in_crate__use_imported_struct_twin_normal
 }
 
 #[wasm_bindgen]
-pub fn wire__crate__api__impl_trait__StructOneWithTraitTwinNormal_get_one(
+pub fn wire__crate__api__impl_trait__StructOneWithTraitTwinNormal_auto_accessor_get_one(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__impl_trait__StructOneWithTraitTwinNormal_get_one_impl(that)
+    wire__crate__api__impl_trait__StructOneWithTraitTwinNormal_auto_accessor_get_one_impl(that)
 }
 
 #[wasm_bindgen]
-pub fn wire__crate__api__impl_trait__StructOneWithTraitTwinNormal_set_one(
+pub fn wire__crate__api__impl_trait__StructOneWithTraitTwinNormal_auto_accessor_set_one(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     one: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__impl_trait__StructOneWithTraitTwinNormal_set_one_impl(that, one)
+    wire__crate__api__impl_trait__StructOneWithTraitTwinNormal_auto_accessor_set_one_impl(that, one)
 }
 
 #[wasm_bindgen]
@@ -15338,18 +15350,18 @@ pub fn wire__crate__api__impl_trait__StructOneWithTraitTwinNormal_simple_trait_f
 }
 
 #[wasm_bindgen]
-pub fn wire__crate__api__impl_trait__StructTwoWithTraitTwinNormal_get_two(
+pub fn wire__crate__api__impl_trait__StructTwoWithTraitTwinNormal_auto_accessor_get_two(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__impl_trait__StructTwoWithTraitTwinNormal_get_two_impl(that)
+    wire__crate__api__impl_trait__StructTwoWithTraitTwinNormal_auto_accessor_get_two_impl(that)
 }
 
 #[wasm_bindgen]
-pub fn wire__crate__api__impl_trait__StructTwoWithTraitTwinNormal_set_two(
+pub fn wire__crate__api__impl_trait__StructTwoWithTraitTwinNormal_auto_accessor_set_two(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     two: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__impl_trait__StructTwoWithTraitTwinNormal_set_two_impl(that, two)
+    wire__crate__api__impl_trait__StructTwoWithTraitTwinNormal_auto_accessor_set_two_impl(that, two)
 }
 
 #[wasm_bindgen]
@@ -15946,6 +15958,96 @@ pub fn wire__crate__api__misc_example__test_struct_with_enum_twin_normal(
 }
 
 #[wasm_bindgen]
+pub fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_get_deliberate_bad_field_a(
+    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_get_deliberate_bad_field_a_impl(that)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_get_deliberate_bad_field_b(
+    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_get_deliberate_bad_field_b_impl(that)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_get_deliberate_bad_field_c(
+    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_get_deliberate_bad_field_c_impl(that)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_get_good_field_a(
+    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_get_good_field_a_impl(that)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_get_good_field_b(
+    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_get_good_field_b_impl(that)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_get_good_field_c(
+    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_get_good_field_c_impl(that)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_set_deliberate_bad_field_a(
+    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    deliberate_bad_field_a: Box<[u8]>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_set_deliberate_bad_field_a_impl(that, deliberate_bad_field_a)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_set_deliberate_bad_field_b(
+    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    deliberate_bad_field_b: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_set_deliberate_bad_field_b_impl(that, deliberate_bad_field_b)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_set_deliberate_bad_field_c(
+    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    deliberate_bad_field_c: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_set_deliberate_bad_field_c_impl(that, deliberate_bad_field_c)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_set_good_field_a(
+    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    good_field_a: String,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_set_good_field_a_impl(that, good_field_a)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_set_good_field_b(
+    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    good_field_b: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_set_good_field_b_impl(that, good_field_b)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_set_good_field_c(
+    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    good_field_c: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_set_good_field_c_impl(that, good_field_c)
+}
+
+#[wasm_bindgen]
 pub fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_dummy_function_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
@@ -15953,93 +16055,18 @@ pub fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNo
 }
 
 #[wasm_bindgen]
-pub fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_deliberate_bad_field_a(
+pub fn wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_auto_accessor_get_name(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_deliberate_bad_field_a_impl(that)
+    wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_auto_accessor_get_name_impl(that)
 }
 
 #[wasm_bindgen]
-pub fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_deliberate_bad_field_b(
+pub fn wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_auto_accessor_set_name(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    name: String,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_deliberate_bad_field_b_impl(that)
-}
-
-#[wasm_bindgen]
-pub fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_deliberate_bad_field_c(
-    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_deliberate_bad_field_c_impl(that)
-}
-
-#[wasm_bindgen]
-pub fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_good_field_a(
-    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_good_field_a_impl(that)
-}
-
-#[wasm_bindgen]
-pub fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_good_field_b(
-    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_good_field_b_impl(that)
-}
-
-#[wasm_bindgen]
-pub fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_good_field_c(
-    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_good_field_c_impl(that)
-}
-
-#[wasm_bindgen]
-pub fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_deliberate_bad_field_a(
-    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-    deliberate_bad_field_a: Box<[u8]>,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_deliberate_bad_field_a_impl(that, deliberate_bad_field_a)
-}
-
-#[wasm_bindgen]
-pub fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_deliberate_bad_field_b(
-    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-    deliberate_bad_field_b: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_deliberate_bad_field_b_impl(that, deliberate_bad_field_b)
-}
-
-#[wasm_bindgen]
-pub fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_deliberate_bad_field_c(
-    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-    deliberate_bad_field_c: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_deliberate_bad_field_c_impl(that, deliberate_bad_field_c)
-}
-
-#[wasm_bindgen]
-pub fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_good_field_a(
-    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-    good_field_a: String,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_good_field_a_impl(that, good_field_a)
-}
-
-#[wasm_bindgen]
-pub fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_good_field_b(
-    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-    good_field_b: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_good_field_b_impl(that, good_field_b)
-}
-
-#[wasm_bindgen]
-pub fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_good_field_c(
-    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-    good_field_c: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_good_field_c_impl(that, good_field_c)
+    wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_auto_accessor_set_name_impl(that, name)
 }
 
 #[wasm_bindgen]
@@ -16055,23 +16082,6 @@ pub fn wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNor
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_get_item_contents_twin_normal_impl(port_, that)
-}
-
-#[wasm_bindgen]
-pub fn wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_get_name(
-    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_get_name_impl(that)
-}
-
-#[wasm_bindgen]
-pub fn wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_set_name(
-    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-    name: String,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_set_name_impl(
-        that, name,
-    )
 }
 
 #[wasm_bindgen]
@@ -26752,22 +26762,18 @@ pub fn wire__crate__api__pseudo_manual__external_type_in_crate_twin_sync_sse__us
 }
 
 #[wasm_bindgen]
-pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructOneWithTraitTwinSse_get_one(
+pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructOneWithTraitTwinSse_auto_accessor_get_one(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructOneWithTraitTwinSse_get_one_impl(
-        that,
-    )
+    wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructOneWithTraitTwinSse_auto_accessor_get_one_impl(that)
 }
 
 #[wasm_bindgen]
-pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructOneWithTraitTwinSse_set_one(
+pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructOneWithTraitTwinSse_auto_accessor_set_one(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     one: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructOneWithTraitTwinSse_set_one_impl(
-        that, one,
-    )
+    wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructOneWithTraitTwinSse_auto_accessor_set_one_impl(that, one)
 }
 
 #[wasm_bindgen]
@@ -26794,22 +26800,18 @@ pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructOneWithTraitT
 }
 
 #[wasm_bindgen]
-pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructTwoWithTraitTwinSse_get_two(
+pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructTwoWithTraitTwinSse_auto_accessor_get_two(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructTwoWithTraitTwinSse_get_two_impl(
-        that,
-    )
+    wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructTwoWithTraitTwinSse_auto_accessor_get_two_impl(that)
 }
 
 #[wasm_bindgen]
-pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructTwoWithTraitTwinSse_set_two(
+pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructTwoWithTraitTwinSse_auto_accessor_set_two(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     two: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructTwoWithTraitTwinSse_set_two_impl(
-        that, two,
-    )
+    wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructTwoWithTraitTwinSse_auto_accessor_set_two_impl(that, two)
 }
 
 #[wasm_bindgen]
@@ -26836,22 +26838,18 @@ pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructTwoWithTraitT
 }
 
 #[wasm_bindgen]
-pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructOneWithTraitTwinSync_get_one(
+pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructOneWithTraitTwinSync_auto_accessor_get_one(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructOneWithTraitTwinSync_get_one_impl(
-        that,
-    )
+    wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructOneWithTraitTwinSync_auto_accessor_get_one_impl(that)
 }
 
 #[wasm_bindgen]
-pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructOneWithTraitTwinSync_set_one(
+pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructOneWithTraitTwinSync_auto_accessor_set_one(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     one: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructOneWithTraitTwinSync_set_one_impl(
-        that, one,
-    )
+    wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructOneWithTraitTwinSync_auto_accessor_set_one_impl(that, one)
 }
 
 #[wasm_bindgen]
@@ -26878,22 +26876,18 @@ pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructOneWithTrait
 }
 
 #[wasm_bindgen]
-pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructTwoWithTraitTwinSync_get_two(
+pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructTwoWithTraitTwinSync_auto_accessor_get_two(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructTwoWithTraitTwinSync_get_two_impl(
-        that,
-    )
+    wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructTwoWithTraitTwinSync_auto_accessor_get_two_impl(that)
 }
 
 #[wasm_bindgen]
-pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructTwoWithTraitTwinSync_set_two(
+pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructTwoWithTraitTwinSync_auto_accessor_set_two(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     two: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructTwoWithTraitTwinSync_set_two_impl(
-        that, two,
-    )
+    wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructTwoWithTraitTwinSync_auto_accessor_set_two_impl(that, two)
 }
 
 #[wasm_bindgen]
@@ -26920,18 +26914,18 @@ pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructTwoWithTrait
 }
 
 #[wasm_bindgen]
-pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructOneWithTraitTwinSyncSse_get_one(
+pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructOneWithTraitTwinSyncSse_auto_accessor_get_one(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructOneWithTraitTwinSyncSse_get_one_impl(that)
+    wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructOneWithTraitTwinSyncSse_auto_accessor_get_one_impl(that)
 }
 
 #[wasm_bindgen]
-pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructOneWithTraitTwinSyncSse_set_one(
+pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructOneWithTraitTwinSyncSse_auto_accessor_set_one(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     one: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructOneWithTraitTwinSyncSse_set_one_impl(that, one)
+    wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructOneWithTraitTwinSyncSse_auto_accessor_set_one_impl(that, one)
 }
 
 #[wasm_bindgen]
@@ -26958,18 +26952,18 @@ pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructOneWithT
 }
 
 #[wasm_bindgen]
-pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructTwoWithTraitTwinSyncSse_get_two(
+pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructTwoWithTraitTwinSyncSse_auto_accessor_get_two(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructTwoWithTraitTwinSyncSse_get_two_impl(that)
+    wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructTwoWithTraitTwinSyncSse_auto_accessor_get_two_impl(that)
 }
 
 #[wasm_bindgen]
-pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructTwoWithTraitTwinSyncSse_set_two(
+pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructTwoWithTraitTwinSyncSse_auto_accessor_set_two(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     two: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructTwoWithTraitTwinSyncSse_set_two_impl(that, two)
+    wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructTwoWithTraitTwinSyncSse_auto_accessor_set_two_impl(that, two)
 }
 
 #[wasm_bindgen]
@@ -31607,18 +31601,18 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__NonCloneSimpl
 }
 
 #[wasm_bindgen]
-pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi_get_good(
+pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi_auto_accessor_get_good(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi_get_good_impl(that)
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi_auto_accessor_get_good_impl(that)
 }
 
 #[wasm_bindgen]
-pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi_set_good(
+pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi_auto_accessor_set_good(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     good: String,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi_set_good_impl(that, good)
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi_auto_accessor_set_good_impl(that, good)
 }
 
 #[wasm_bindgen]
@@ -31968,18 +31962,18 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__NonClo
 }
 
 #[wasm_bindgen]
-pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync_get_good(
+pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync_auto_accessor_get_good(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync_get_good_impl(that)
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync_auto_accessor_get_good_impl(that)
 }
 
 #[wasm_bindgen]
-pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync_set_good(
+pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync_auto_accessor_set_good(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     good: String,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync_set_good_impl(that, good)
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync_auto_accessor_set_good_impl(that, good)
 }
 
 #[wasm_bindgen]
@@ -32325,18 +32319,18 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__No
 }
 
 #[wasm_bindgen]
-pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi_get_good(
+pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi_auto_accessor_get_good(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi_get_good_impl(that)
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi_auto_accessor_get_good_impl(that)
 }
 
 #[wasm_bindgen]
-pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi_set_good(
+pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi_auto_accessor_set_good(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     good: String,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi_set_good_impl(that, good)
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi_auto_accessor_set_good_impl(that, good)
 }
 
 #[wasm_bindgen]
@@ -32710,18 +32704,18 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__No
 }
 
 #[wasm_bindgen]
-pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse_get_good(
+pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse_auto_accessor_get_good(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse_get_good_impl(that)
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse_auto_accessor_get_good_impl(that)
 }
 
 #[wasm_bindgen]
-pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse_set_good(
+pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse_auto_accessor_set_good(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     good: String,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse_set_good_impl(that, good)
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse_auto_accessor_set_good_impl(that, good)
 }
 
 #[wasm_bindgen]
@@ -33155,18 +33149,18 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi
 }
 
 #[wasm_bindgen]
-pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi_get_good(
+pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi_auto_accessor_get_good(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi_get_good_impl(that)
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi_auto_accessor_get_good_impl(that)
 }
 
 #[wasm_bindgen]
-pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi_set_good(
+pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi_auto_accessor_set_good(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     good: String,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi_set_good_impl(that, good)
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi_auto_accessor_set_good_impl(that, good)
 }
 
 #[wasm_bindgen]
@@ -33600,18 +33594,18 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__NonCloneSimpl
 }
 
 #[wasm_bindgen]
-pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSse_get_good(
+pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSse_auto_accessor_get_good(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSse_get_good_impl(that)
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSse_auto_accessor_get_good_impl(that)
 }
 
 #[wasm_bindgen]
-pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSse_set_good(
+pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSse_auto_accessor_set_good(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     good: String,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSse_set_good_impl(that, good)
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSse_auto_accessor_set_good_impl(that, good)
 }
 
 #[wasm_bindgen]
@@ -34055,18 +34049,18 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__NonCloneS
 }
 
 #[wasm_bindgen]
-pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi_get_good(
+pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi_auto_accessor_get_good(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi_get_good_impl(that)
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi_auto_accessor_get_good_impl(that)
 }
 
 #[wasm_bindgen]
-pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi_set_good(
+pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi_auto_accessor_set_good(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     good: String,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi_set_good_impl(that, good)
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi_auto_accessor_set_good_impl(that, good)
 }
 
 #[wasm_bindgen]
@@ -34460,18 +34454,18 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimp
 }
 
 #[wasm_bindgen]
-pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_get_good(
+pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_auto_accessor_get_good(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_get_good_impl(that)
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_auto_accessor_get_good_impl(that)
 }
 
 #[wasm_bindgen]
-pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_set_good(
+pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_auto_accessor_set_good(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     good: String,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_set_good_impl(that, good)
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_auto_accessor_set_good_impl(that, good)
 }
 
 #[wasm_bindgen]
@@ -34774,18 +34768,18 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__NonClone
 }
 
 #[wasm_bindgen]
-pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi_get_good(
+pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi_auto_accessor_get_good(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi_get_good_impl(that)
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi_auto_accessor_get_good_impl(that)
 }
 
 #[wasm_bindgen]
-pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi_set_good(
+pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi_auto_accessor_set_good(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     good: String,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi_set_good_impl(that, good)
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi_auto_accessor_set_good_impl(that, good)
 }
 
 #[wasm_bindgen]
@@ -35116,18 +35110,18 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__NonClone
 }
 
 #[wasm_bindgen]
-pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse_get_good(
+pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse_auto_accessor_get_good(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse_get_good_impl(that)
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse_auto_accessor_get_good_impl(that)
 }
 
 #[wasm_bindgen]
-pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse_set_good(
+pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse_auto_accessor_set_good(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     good: String,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse_set_good_impl(that, good)
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse_auto_accessor_set_good_impl(that, good)
 }
 
 #[wasm_bindgen]
@@ -35518,18 +35512,18 @@ pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__NonC
 }
 
 #[wasm_bindgen]
-pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi_get_good(
+pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi_auto_accessor_get_good(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi_get_good_impl(that)
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi_auto_accessor_get_good_impl(that)
 }
 
 #[wasm_bindgen]
-pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi_set_good(
+pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi_auto_accessor_set_good(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     good: String,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi_set_good_impl(that, good)
+    wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi_auto_accessor_set_good_impl(that, good)
 }
 
 #[wasm_bindgen]
@@ -38859,18 +38853,18 @@ pub fn wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_static_metho
 }
 
 #[wasm_bindgen]
-pub fn wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_get_good(
+pub fn wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_auto_accessor_get_good(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_get_good_impl(that)
+    wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_auto_accessor_get_good_impl(that)
 }
 
 #[wasm_bindgen]
-pub fn wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_set_good(
+pub fn wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_auto_accessor_set_good(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     good: String,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_set_good_impl(that, good)
+    wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_auto_accessor_set_good_impl(that, good)
 }
 
 #[wasm_bindgen]

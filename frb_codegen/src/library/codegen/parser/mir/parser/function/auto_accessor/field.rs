@@ -28,7 +28,7 @@ pub(super) fn parse_auto_accessor_of_field(
     type_parser: &mut TypeParser,
     context: &TypeParserParsingContext,
 ) -> anyhow::Result<MirFuncAndSanityCheckInfo> {
-    let rust_method_name = format!("{}_{}", accessor_mode.verb_str(), field.name.rust_style());
+    let rust_method_name = format!("auto_accessor_{}_{}", accessor_mode.verb_str(), field.name.rust_style());
 
     let owner = MirFuncOwnerInfoMethod {
         owner_ty: ty_direct_parse.to_owned(),
