@@ -53,7 +53,7 @@ where
             if attrs_opaque == Some(true) {
                 debug!("Treat {name} as opaque since attribute says so");
                 return Ok(Some((
-                    self.parse_opaque(&namespaced_name, &src_object)?,
+                    self.parse_opaque(&namespaced_name, path, &src_object)?,
                     attrs,
                 )));
             }
@@ -76,7 +76,7 @@ where
             {
                 debug!("Treat {name} as opaque by compute_default_opaque");
                 return Ok(Some((
-                    self.parse_opaque(&namespaced_name, &src_object)?,
+                    self.parse_opaque(&namespaced_name, path, &src_object)?,
                     attrs,
                 )));
             }
@@ -111,11 +111,15 @@ where
     fn parse_opaque(
         &mut self,
         namespaced_name: &NamespacedName,
+        path: &syn::Path,
         src_object: &HirFlatStructOrEnum<Item>,
     ) -> anyhow::Result<MirType> {
         self.parse_type_rust_auto_opaque_implicit(
             Some(namespaced_name.namespace.clone()),
-            &syn::parse_str(&namespaced_name.name)?,
+            &Type::Path(TypePath {
+                path: path.to_owned(),
+                qself: None,
+            }),
             Some(MirTypeRustAutoOpaqueImplicitReason::StructOrEnumRequireOpaque),
             Some(parse_struct_or_enum_should_ignore(
                 src_object,
