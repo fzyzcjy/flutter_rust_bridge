@@ -85,12 +85,16 @@ fn wire__crate__api__minimal__LifetimeTesterOneTwinNormal_compute_two_impl(
                             _ => unreachable!(),
                         }
                     }
-                    let api_that = &*api_that_decoded.unwrap();
-                    let output_raw =
-                        crate::api::minimal::LifetimeTesterOneTwinNormal::compute_two(api_that);
+                    let api_that_decoded = api_that_decoded.unwrap();
+                    let output_raw = crate::api::minimal::LifetimeTesterOneTwinNormal::compute_two(
+                        &*api_that_decoded,
+                    );
                     let output = flutter_rust_bridge::for_generated::Lifetimeable::<
                         LifetimeTesterTwoTwinNormal<'static>,
-                    >::new();
+                    >::new(
+                        output_raw,
+                        vec![Box::new(api_that), Box::new(api_that_decoded)],
+                    );
                     Result::<_, ()>::Ok(output)
                 })())
             }
