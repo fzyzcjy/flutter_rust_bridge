@@ -153,6 +153,7 @@ pub(crate) struct TypeParserParsingContext {
     pub(crate) owner: Option<MirFuncOwnerInfo>,
     pub(crate) enable_lifetime: bool,
     pub(crate) parse_mode: ParseMode,
+    pub(crate) rust_output_path_namespace: Namespace,
 }
 
 impl TypeParserParsingContext {
