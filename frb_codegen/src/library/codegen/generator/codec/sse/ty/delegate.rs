@@ -109,11 +109,11 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     "flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_encode(self)"
                         .to_owned()
                 }
-                MirTypeDelegate::Lifetimeable(mir) => "TODO".to_owned(),
                 MirTypeDelegate::ProxyVariant(_)
                 | MirTypeDelegate::ProxyEnum(_)
                 | MirTypeDelegate::DynTrait(_)
-                | MirTypeDelegate::CastedPrimitive(_) => return None,
+                | MirTypeDelegate::CastedPrimitive(_)
+                | MirTypeDelegate::Lifetimeable(mir) => return None,
                 MirTypeDelegate::CustomSerDes(mir) => {
                     format!("{}(self)", mir.info.rust2dart.rust_function.rust_style())
                 }
@@ -225,11 +225,11 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     "flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_decode(inner)"
                         .to_owned()
                 }
-                MirTypeDelegate::Lifetimeable(mir) => "TODO".to_owned(),
                 MirTypeDelegate::ProxyVariant(_)
                 | MirTypeDelegate::ProxyEnum(_)
                 | MirTypeDelegate::DynTrait(_)
-                | MirTypeDelegate::CastedPrimitive(_) => return None,
+                | MirTypeDelegate::CastedPrimitive(_)
+                | MirTypeDelegate::Lifetimeable(mir) => return None,
                 MirTypeDelegate::CustomSerDes(mir) => {
                     format!("{}(inner)", mir.info.dart2rust.rust_function.rust_style())
                 }
