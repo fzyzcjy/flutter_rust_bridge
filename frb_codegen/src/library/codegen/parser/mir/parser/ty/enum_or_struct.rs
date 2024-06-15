@@ -16,7 +16,7 @@ use log::debug;
 use std::collections::{HashMap, HashSet};
 use std::fmt::Debug;
 use std::hash::Hash;
-use syn::Type;
+use syn::{Type, TypePath};
 
 pub(super) trait EnumOrStructParser<Id, Obj, Item: SynItemStructOrEnum>
 where
@@ -24,16 +24,18 @@ where
 {
     fn parse(
         &mut self,
+        type_path: &TypePath,
         last_segment: &SplayedSegment,
         override_opaque: Option<bool>,
     ) -> anyhow::Result<Option<MirType>> {
-        let output = self.parse_impl(last_segment, override_opaque)?;
+        let output = self.parse_impl(type_path, last_segment, override_opaque)?;
         self.handle_dart_code(&output);
         Ok(output.map(|(ty, _)| ty))
     }
 
     fn parse_impl(
         &mut self,
+        type_path: &TypePath,
         last_segment: &SplayedSegment,
         override_opaque: Option<bool>,
     ) -> anyhow::Result<Option<(MirType, FrbAttributes)>> {

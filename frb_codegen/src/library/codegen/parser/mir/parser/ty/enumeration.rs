@@ -23,14 +23,15 @@ use crate::if_then_some;
 use crate::utils::basic_code::general_code::GeneralDartCode;
 use crate::utils::namespace::{Namespace, NamespacedName};
 use std::collections::HashMap;
-use syn::{Attribute, Field, Ident, ItemEnum, Type, Variant, Visibility};
+use syn::{Attribute, Field, Ident, ItemEnum, Type, TypePath, Variant, Visibility};
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_path_data_enum(
         &mut self,
+        type_path: &TypePath,
         last_segment: &SplayedSegment,
     ) -> anyhow::Result<Option<MirType>> {
-        EnumOrStructParserEnum(self).parse(last_segment, None)
+        EnumOrStructParserEnum(self).parse(type_path, last_segment, None)
     }
 
     fn parse_enum(
@@ -49,7 +50,11 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
         let mode = compute_enum_mode(&raw_variants);
         let variants = maybe_field_wrap_box(raw_variants, mode);
-        let ignore = parse_struct_or_enum_should_ignore(src_enum, &name.namespace.crate_name(), self.context);
+        let ignore = parse_struct_or_enum_should_ignore(
+            src_enum,
+            &name.namespace.crate_name(),
+            self.context,
+        );
 
         Ok(MirEnum {
             name,
