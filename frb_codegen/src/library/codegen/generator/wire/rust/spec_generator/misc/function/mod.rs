@@ -15,6 +15,8 @@ use crate::codegen::ir::mir::ty::MirType;
 use crate::misc::consts::HANDLER_NAME;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
+use lazy_static::lazy_static;
+use regex::Regex;
 use std::convert::TryInto;
 
 pub(crate) fn generate_wire_func(
@@ -95,17 +97,25 @@ fn generate_code_inner_decode(func: &MirFunc) -> String {
 }
 
 fn generate_code_call_inner_func_result(func: &MirFunc, inner_func_args: Vec<String>) -> String {
-    let mut ans = (func.rust_call_code.clone()).unwrap_or_else(|| match &func.owner {
-        MirFuncOwnerInfo::Function => {
-            format!("{}({})", func.name.rust_style(), inner_func_args.join(", "))
-        }
-        MirFuncOwnerInfo::Method(method) => {
-            format!(
-                r"{}::{}({})",
-                method.owner_ty_name().unwrap().rust_style(),
-                method.actual_method_name,
-                inner_func_args.join(", ")
-            )
+    let mut ans = (func.rust_call_code.clone()).unwrap_or_else(|| {
+        match &func.owner {
+            MirFuncOwnerInfo::Function => {
+                format!("{}({})", func.name.rust_style(), inner_func_args.join(", "))
+            }
+            MirFuncOwnerInfo::Method(method) => {
+                let owner_ty_name = method.owner_ty_name().unwrap().rust_style();
+                // For simplicity, remove all generics currently
+                lazy_static! {
+                    static ref REGEX: Regex = Regex::new(r#"<(.+)>"#).unwrap();
+                }
+                let stripped_name = REGEX.replace(&owner_ty_name, "").to_string();
+
+                format!(
+                    r"{stripped_name}::{}({})",
+                    method.actual_method_name,
+                    inner_func_args.join(", ")
+                )
+            }
         }
     });
 
