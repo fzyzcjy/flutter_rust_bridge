@@ -33,21 +33,23 @@ self_cell!(
     impl {Debug}
 );
 
-fn build_pack() -> OneAndGuardAndTwo {
+fn build_pack() -> anyhow::Result<OneAndGuardAndTwo> {
     let one = Arc::new(RwLock::new(One("hello".to_owned())));
-    let one_and_guard = OneAndGuard::try_new(one, |one| Ok::<_, ()>(one.read().unwrap())).unwrap();
-    OneAndGuardAndTwo::try_new(one_and_guard, |one_and_guard| {
-        Ok::<_, ()>(Two {
+    let one_and_guard = OneAndGuard::try_new(one, |one| anyhow::Ok(one.read()?))?;
+    let one_and_guard_and_two = OneAndGuardAndTwo::try_new(one_and_guard, |one_and_guard| {
+        anyhow::Ok(Two {
             one: one_and_guard.borrow_dependent(),
         })
-    })
-    .unwrap()
+    })?;
+    Ok(one_and_guard_and_two)
 }
 
-fn main() {
-    let pack = build_pack();
+fn main() -> anyhow::Result<()> {
+    let pack = build_pack()?;
 
     println!("pack -> {:?}", &pack);
     println!("pack.borrow_owner() -> {:?}", pack.borrow_owner());
     println!("pack.borrow_dependent() -> {:?}", pack.borrow_dependent());
+
+    Ok(())
 }
