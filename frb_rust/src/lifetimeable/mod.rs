@@ -5,3 +5,12 @@ pub struct Lifetimeable<T> {
     value: T,
     dependencies: Vec<Box<dyn Any>>,
 }
+
+impl<T> Lifetimeable<T> {
+    pub fn new(value: T, dependencies: Vec<Box<dyn Any>>) -> Self {
+        Self {
+            value,
+            dependencies,
+        }
+    }
+}
