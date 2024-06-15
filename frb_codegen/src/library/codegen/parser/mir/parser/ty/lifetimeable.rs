@@ -25,13 +25,13 @@ fn extract_lifetimes(ty: &Type) -> Vec<String> {
     match ty {
         Type::Path(ty) => (ty.path.segments.iter())
             .filter_map(|segment| if_then_some!(let syn::PathArguments::AngleBracketed(inner) = &segment.arguments, inner))
-            .flat_map(parse_generic_arguments_lifetimes)
+            .flat_map(extract_generic_arguments_lifetimes)
             .collect_vec(),
         _ => vec![],
     }
 }
 
-pub(crate) fn parse_generic_arguments_lifetimes(
+fn extract_generic_arguments_lifetimes(
     args: &syn::AngleBracketedGenericArguments,
 ) -> Vec<String> {
     (args.args.iter())
