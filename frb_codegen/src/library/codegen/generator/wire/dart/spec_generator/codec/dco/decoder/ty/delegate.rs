@@ -81,11 +81,13 @@ impl<'a> WireDartCodecDcoGeneratorDecoderTrait for DelegateWireDartCodecDcoGener
                 "return Set.from(dco_decode_{}(raw));",
                 self.mir.get_delegate().safe_ident(),
             ),
-            MirTypeDelegate::StreamSink(_) /*| MirTypeDelegate::DynTrait(_)*/ => "throw UnimplementedError();".to_owned(),
+            MirTypeDelegate::StreamSink(_) | MirTypeDelegate::DynTrait(_) => "throw UnimplementedError();".to_owned(),
             MirTypeDelegate::BigPrimitive(_) => {
                 "return BigInt.parse(raw);".to_owned()
             }
-            MirTypeDelegate::RustAutoOpaqueExplicit(mir) => format!(r"return dco_decode_{}(raw);", mir.inner.safe_ident())
+            MirTypeDelegate::RustAutoOpaqueExplicit(mir) => format!(r"return dco_decode_{}(raw);", mir.inner.safe_ident()),
+            MirTypeDelegate::ProxyVariant(_) | MirTypeDelegate::ProxyEnum(_) | MirTypeDelegate::CastedPrimitive(_) | MirTypeDelegate::CustomSerDes(_) =>
+                "throw UnimplementedError('Not implemented in this codec, please use the other one');".into(),
         }
     }
 }

@@ -11,6 +11,17 @@ pub(crate) fn serialize_syn<T: ToTokens, S: Serializer>(
     quote::quote!(#value).to_string().serialize(s)
 }
 
+pub(crate) fn serialize_vec_syn<T: ToTokens, S: Serializer>(
+    values: &[T],
+    s: S,
+) -> Result<S::Ok, S::Error> {
+    let values = values
+        .iter()
+        .map(|value| quote::quote!(#value).to_string())
+        .collect_vec();
+    values.serialize(s)
+}
+
 // pub(crate) fn serialize_item_trait<S: Serializer>(x: &ItemTrait, s: S) -> Result<S::Ok, S::Error> {
 //     s.serialize_str(&format!("ItemTrait(ident={})", x.ident))
 // }

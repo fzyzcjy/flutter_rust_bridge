@@ -29,7 +29,7 @@ impl<'a> WireRustGeneratorMiscTrait for RustOpaqueWireRustGenerator<'a> {
                     params: vec![ExternFuncParam {
                         name: "ptr".to_owned(),
                         rust_type: "*const std::ffi::c_void".to_owned(),
-                        dart_type: "dynamic".into(),
+                        dart_type: "int".into(),
                     }
                     .clone()],
                     return_type: None,

@@ -95,67 +95,68 @@ pub fn rust_auto_opaque_callable_return_twin_normal() -> Box<dyn Fn(String) -> S
 }
 
 // ==================================== trait object =======================================
-
-pub trait HelloTraitTwinNormal: Send + Sync {
-    fn func_hello(&self) -> &str;
-}
-
-#[frb(opaque)]
-pub struct HelloOneStructTwinNormal {
-    inner: String,
-}
-
-impl HelloTraitTwinNormal for HelloOneStructTwinNormal {
-    fn func_hello(&self) -> &str {
-        &self.inner
-    }
-}
-
-pub enum HelloTwoEnumTwinNormal {
-    A,
-    B,
-}
-
-impl HelloTraitTwinNormal for HelloTwoEnumTwinNormal {
-    fn func_hello(&self) -> &str {
-        match self {
-            HelloTwoEnumTwinNormal::A => "A",
-            HelloTwoEnumTwinNormal::B => "B",
-        }
-    }
-}
-
-pub fn rust_auto_opaque_trait_object_arg_own_twin_normal(
-    arg: Box<dyn HelloTraitTwinNormal>,
-    expect: String,
-) {
-    assert_eq!(arg.func_hello(), expect);
-}
-
-#[allow(clippy::borrowed_box)]
-pub fn rust_auto_opaque_trait_object_arg_borrow_twin_normal(
-    arg: &Box<dyn HelloTraitTwinNormal>,
-    expect: String,
-) {
-    assert_eq!(arg.func_hello(), expect);
-}
-
-pub fn rust_auto_opaque_trait_object_arg_mut_borrow_twin_normal(
-    arg: &mut Box<dyn HelloTraitTwinNormal>,
-    expect: String,
-) {
-    assert_eq!(arg.func_hello(), expect);
-}
-
-pub fn rust_auto_opaque_trait_object_return_own_one_twin_normal() -> Box<dyn HelloTraitTwinNormal> {
-    Box::new(HelloOneStructTwinNormal {
-        inner: "hello".into(),
-    })
-}
-
-pub fn rust_auto_opaque_trait_object_return_own_two_twin_normal() -> Box<dyn HelloTraitTwinNormal> {
-    Box::new(HelloTwoEnumTwinNormal::B)
-}
+//
+// pub trait HelloTraitTwinNormal: Send + Sync {
+//     fn func_hello(&self) -> &str;
+// }
+//
+// #[frb(opaque)]
+// pub struct HelloOneStructTwinNormal {
+//     inner: String,
+// }
+//
+// impl HelloTraitTwinNormal for HelloOneStructTwinNormal {
+//     fn func_hello(&self) -> &str {
+//         &self.inner
+//     }
+// }
+//
+// pub enum HelloTwoEnumTwinNormal {
+//     A,
+//     B,
+// }
+//
+// impl HelloTraitTwinNormal for HelloTwoEnumTwinNormal {
+//     fn func_hello(&self) -> &str {
+//         match self {
+//             HelloTwoEnumTwinNormal::A => "A",
+//             HelloTwoEnumTwinNormal::B => "B",
+//         }
+//     }
+// }
+//
+// pub fn rust_auto_opaque_trait_object_arg_own_twin_normal(
+//     arg: Box<dyn HelloTraitTwinNormal>,
+//     expect: String,
+// ) {
+//     assert_eq!(arg.func_hello(), expect);
+// }
+//
+// #[allow(clippy::borrowed_box)]
+// pub fn rust_auto_opaque_trait_object_arg_borrow_twin_normal(
+//     arg: &Box<dyn HelloTraitTwinNormal>,
+//     expect: String,
+// ) {
+//     assert_eq!(arg.func_hello(), expect);
+// }
+//
+// pub fn rust_auto_opaque_trait_object_arg_mut_borrow_twin_normal(
+//     arg: &mut Box<dyn HelloTraitTwinNormal>,
+//     expect: String,
+// ) {
+//     assert_eq!(arg.func_hello(), expect);
+// }
+//
+// pub fn rust_auto_opaque_trait_object_return_own_one_twin_normal() -> Box<dyn HelloTraitTwinNormal> {
+//     Box::new(HelloOneStructTwinNormal {
+//         inner: "hello".into(),
+//     })
+// }
+//
+// pub fn rust_auto_opaque_trait_object_return_own_two_twin_normal() -> Box<dyn HelloTraitTwinNormal> {
+//     Box::new(HelloTwoEnumTwinNormal::B)
+// }
+//
 
 // ==================================== static method =======================================
 

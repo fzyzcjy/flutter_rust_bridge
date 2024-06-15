@@ -1,23 +1,48 @@
 // ignore_for_file: avoid_print
 
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/test.dart';
 import 'package:path/path.dart' as path;
+import 'package:yaml/yaml.dart';
 
 // for rust san also ref
 // * https://doc.rust-lang.org/beta/unstable-book/compiler-flags/sanitizer.html
 // * https://github.com/japaric/rust-san
 Future<void> run(TestDartSanitizerConfig config) async {
-  await runPubGetIfNotRunYet(config.package);
+  await _lowerSdkMinVersion(package: config.package);
+
+  await runPubGet(config.package, kDartModeOfPackage[config.package]!);
 
   if (config.package == 'frb_example/deliberate_bad') {
     await _runPackageDeliberateBad(config);
   } else {
     await _runEntrypoint(config);
   }
+}
+
+Future<void> _lowerSdkMinVersion({required String package}) async {
+  await _modifySdkMinVersion(path: '${exec.pwd}$package/pubspec.yaml');
+  await _modifySdkMinVersion(path: '${exec.pwd}frb_dart/pubspec.yaml');
+}
+
+Future<void> _modifySdkMinVersion({required String path}) async {
+  print('modifySdkMinVersion(path=$path)');
+
+  final file = File(path);
+
+  final contentRaw = loadYaml(file.readAsStringSync());
+  final content = jsonDecode(jsonEncode(contentRaw));
+
+  // Lower the version since the custom compiled Dart SDK is done before,
+  // and we do not really need new sdk version when on native platform.
+  content['environment']['sdk'] = '>=3.2.0';
+  file.writeAsStringSync(jsonEncode(content));
+
+  print('modifySdkMinVersion path=$path content=${file.readAsStringSync()}');
 }
 
 Future<void> _runEntrypoint(TestDartSanitizerConfig config) async {

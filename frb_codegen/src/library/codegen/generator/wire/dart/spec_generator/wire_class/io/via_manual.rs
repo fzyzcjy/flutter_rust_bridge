@@ -5,7 +5,7 @@ use crate::codegen::generator::wire::dart::spec_generator::wire_class::io::commo
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::{
     ExternFunc, ExternFuncParam,
 };
-use crate::utils::basic_code::DartBasicHeaderCode;
+use crate::utils::basic_code::dart_header_code::DartHeaderCode;
 use itertools::Itertools;
 
 pub(crate) fn generate(
@@ -35,7 +35,7 @@ pub(crate) fn generate(
         "
     );
     Ok(WireDartOutputCode {
-        header: DartBasicHeaderCode {
+        header: DartHeaderCode {
             import: "import 'dart:ffi' as ffi;\n".to_owned(),
             ..Default::default()
         },
@@ -53,7 +53,7 @@ fn generate_func(func: &ExternFunc, c_symbol_prefix: &str) -> String {
             == (ExternFuncParam {
                 name: "ptr".to_string(),
                 rust_type: "*const std::ffi::c_void".to_owned(),
-                dart_type: "dynamic".to_string(),
+                dart_type: "int".to_string(),
             })
     {
         let name = &func.partial_func_name;

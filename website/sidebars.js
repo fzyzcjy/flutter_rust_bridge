@@ -73,10 +73,12 @@ const sidebars = {
                                         'guides/types/translatable/detailed/map_set',
                                         'guides/types/translatable/detailed/chrono',
                                         'guides/types/translatable/detailed/uuid',
+                                        'guides/types/translatable/detailed/primitive',
                                     ],
                                 },
                                 'guides/types/translatable/return',
                                 'guides/types/translatable/stream',
+                                'guides/types/translatable/custom',
                                 'guides/types/translatable/zero-copy',
                                 {
                                     type: 'category',
@@ -130,6 +132,93 @@ const sidebars = {
                 },
                 {
                     type: 'category',
+                    label: 'Two-way Road',
+                    collapsed: true,
+                    link: {
+                        type: 'doc',
+                        id: 'guides/direction/index',
+                    },
+                    items: [
+                        'guides/direction/dart-call-rust',
+                        'guides/direction/rust-call-dart',
+                    ],
+                },
+                {
+                    type: 'category',
+                    label: 'Functions',
+                    collapsed: true,
+                    link: {
+                        type: 'doc',
+                        id: 'guides/functions/index',
+                    },
+                    items: [
+                        'guides/functions/overview',
+                        'guides/functions/methods',
+                        'guides/functions/callables',
+                        'guides/functions/properties',
+                        'guides/functions/constructors',
+                        'guides/functions/eq-hash',
+                        'guides/functions/ignoring',
+                        'guides/functions/renaming',
+                    ],
+                },
+                {
+                    type: 'category',
+                    label: 'Traits (base classes)',
+                    collapsed: true,
+                    link: {
+                        type: 'doc',
+                        id: 'guides/traits/index',
+                    },
+                    items: [
+                        'guides/traits/overview',
+                        'guides/traits/definitions',
+                        'guides/traits/implementations',
+                        'guides/traits/trait-objects',
+                    ],
+                },
+                {
+                    type: 'category',
+                    label: 'Translate third-party packages',
+                    collapsed: true,
+                    link: {
+                        type: 'doc',
+                        id: 'guides/third-party/index',
+                    },
+                    items: [
+                        'guides/third-party/overview',
+                        {
+                            type: 'category',
+                            label: 'Automatic',
+                            collapsed: true,
+                            link: {
+                                type: 'doc',
+                                id: 'guides/third-party/automatic/index',
+                            },
+                            items: [
+                                'guides/third-party/automatic/scanning',
+                                'guides/third-party/automatic/override-attributes',
+                                'guides/third-party/automatic/override-methods',
+                                'guides/third-party/automatic/tricks',
+                            ],
+                        },
+                        {
+                            type: 'category',
+                            label: 'Manual',
+                            collapsed: true,
+                            link: {
+                                type: 'doc',
+                                id: 'guides/third-party/manual/index',
+                            },
+                            items: [
+                                'guides/third-party/manual/methods',
+                                'guides/third-party/manual/types',
+                            ],
+                        },
+                    ],
+                },
+                {
+                    type: 'category',
                     label: 'Concurrency and async',
                     collapsed: true,
                     link: {
@@ -142,19 +231,6 @@ const sidebars = {
                         'guides/concurrency/async-rust',
                         'guides/concurrency/sync-dart',
                         'guides/concurrency/async-dart',
-                    ],
-                },
-                {
-                    type: 'category',
-                    label: 'Two-way Road',
-                    collapsed: true,
-                    link: {
-                        type: 'doc',
-                        id: 'guides/direction/index',
-                    },
-                    items: [
-                        'guides/direction/dart-call-rust',
-                        'guides/direction/rust-call-dart',
                     ],
                 },
                 {
@@ -188,25 +264,6 @@ const sidebars = {
                 },
                 {
                     type: 'category',
-                    label: 'Functions',
-                    collapsed: true,
-                    link: {
-                        type: 'doc',
-                        id: 'guides/functions/index',
-                    },
-                    items: [
-                        'guides/functions/overview',
-                        'guides/functions/methods',
-                        'guides/functions/callables',
-                        'guides/functions/properties',
-                        'guides/functions/constructors',
-                        'guides/functions/eq-hash',
-                        'guides/functions/ignoring',
-                        'guides/functions/renaming',
-                    ],
-                },
-                {
-                    type: 'category',
                     label: 'Miscellaneous',
                     collapsed: true,
                     link: {
@@ -218,10 +275,14 @@ const sidebars = {
                         'guides/miscellaneous/dart-code',
                         'guides/miscellaneous/codec',
                         'guides/miscellaneous/build-rs',
+                        'guides/miscellaneous/proxy',
                         'guides/miscellaneous/expanding-macros',
                         'guides/miscellaneous/default',
+                        'guides/miscellaneous/multi-input',
                         'guides/miscellaneous/pure-dart',
                         'guides/miscellaneous/isolates',
+                        'guides/miscellaneous/override-prefix',
+                        'guides/miscellaneous/dart-type-rename',
                         'guides/miscellaneous/attributes',
                         'guides/miscellaneous/safety',
                         'guides/miscellaneous/compatibility',

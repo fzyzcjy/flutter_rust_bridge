@@ -6,7 +6,6 @@ mod api;
 pub(crate) mod dart2rust_explicit;
 pub(crate) mod dart2rust_implicit;
 pub(crate) mod inner;
-mod order;
 pub(crate) mod rust2dart_common;
 pub(crate) mod rust2dart_explicit;
 

@@ -4,18 +4,19 @@ use crate::codegen::generator::api_dart::spec_generator::function::ApiDartGenera
 use crate::codegen::generator::api_dart::spec_generator::{
     ApiDartOutputSpec, ApiDartOutputSpecItem,
 };
+use crate::codegen::generator::misc::generate_code_header;
+use crate::codegen::generator::misc::path_texts::{PathText, PathTexts};
 use crate::codegen::generator::misc::target::TargetOrCommonMap;
-use crate::codegen::generator::misc::{generate_code_header, PathText, PathTexts};
-use crate::utils::basic_code::DartBasicHeaderCode;
+use crate::utils::basic_code::dart_header_code::DartHeaderCode;
+use crate::utils::basic_code::general_code::{GeneralCode, GeneralDartCode};
 use crate::utils::path_utils::path_to_string;
 use anyhow::Context;
-use itertools::Itertools;
+use itertools::{concat, Itertools};
 use pathdiff::diff_paths;
 use std::path::{Path, PathBuf};
 
 pub(super) struct ApiDartOutputText {
     pub(super) output_texts: PathTexts,
-    pub(super) output_extra_impl_text: String,
 }
 
 pub(super) fn generate(
@@ -26,29 +27,29 @@ pub(super) fn generate(
     //     Namespace::compute_common_prefix(&spec.namespaced_items.keys().collect_vec());
     // debug!("common_namespace_prefix={common_namespace_prefix:?}");
 
-    let path_texts = PathTexts(
-        spec.namespaced_items
-            .iter()
-            .map(|(namespace, item)| {
-                let dart_output_path =
-                    compute_path_from_namespace(&config.dart_decl_base_output_path, namespace);
-                let text =
-                    generate_end_api_text(&dart_output_path, &config.dart_impl_output_path, item)?;
-                Ok(PathText::new(dart_output_path, text))
-            })
-            .collect::<anyhow::Result<Vec<_>>>()?,
-    );
+    let normal_output_texts = (spec.namespaced_items.iter())
+        .map(|(namespace, item)| {
+            let dart_output_path =
+                compute_path_from_namespace(&config.dart_decl_base_output_path, namespace);
+            let text =
+                generate_end_api_text(&dart_output_path, &config.dart_impl_output_path, item)?;
+            Ok(PathText::new(dart_output_path, text))
+        })
+        .collect::<anyhow::Result<Vec<_>>>()?;
 
-    let extra_impl_text = spec
-        .namespaced_items
-        .values()
-        .flat_map(|item| item.extra_impl_code.clone())
-        .sorted()
-        .join("");
+    let extra_output_text = PathText {
+        path: config.dart_impl_output_path.common.clone(),
+        text: GeneralCode::Dart(GeneralDartCode {
+            body: (spec.namespaced_items.values())
+                .flat_map(|item| item.extra_impl_code.clone())
+                .sorted()
+                .join(""),
+            header: Default::default(),
+        }),
+    };
 
     Ok(ApiDartOutputText {
-        output_texts: path_texts,
-        output_extra_impl_text: extra_impl_text,
+        output_texts: PathTexts(concat([normal_output_texts, vec![extra_output_text]])),
     })
 }
 
@@ -56,7 +57,7 @@ fn generate_end_api_text(
     dart_output_path: &Path,
     dart_impl_output_path: &TargetOrCommonMap<PathBuf>,
     item: &ApiDartOutputSpecItem,
-) -> anyhow::Result<String> {
+) -> anyhow::Result<GeneralCode> {
     let funcs = item
         .funcs
         .iter()
@@ -73,7 +74,7 @@ fn generate_end_api_text(
     let path_frb_generated = path_to_string(&path_frb_generated)?.replace('\\', "/");
 
     let preamble = &item.preamble.as_str();
-    let mut header = DartBasicHeaderCode {
+    let mut header = DartHeaderCode {
         file_top: generate_code_header()
             + if !preamble.is_empty() {"\n\n"} else {""} + preamble
             + "\n\n// ignore_for_file: invalid_use_of_internal_member, unused_import, unnecessary_import\n",
@@ -87,7 +88,7 @@ fn generate_end_api_text(
     };
 
     if item.needs_freezed {
-        header += DartBasicHeaderCode {
+        header += DartHeaderCode {
             import: "import 'package:freezed_annotation/freezed_annotation.dart' hide protected;"
                 .into(),
             part: format!(
@@ -107,21 +108,20 @@ fn generate_end_api_text(
         header += c.header.clone();
     }
 
-    let header = header.all_code();
-
     let skips = compute_skips(item);
 
-    Ok(format!(
-        "
-        {header}
+    Ok(GeneralCode::Dart(GeneralDartCode {
+        header,
+        body: format!(
+            "
+            {skips}
 
-        {skips}
+            {funcs}
 
-        {funcs}
-
-        {classes}
-        ",
-    ))
+            {classes}
+            ",
+        ),
+    }))
 }
 
 fn compute_skips(item: &ApiDartOutputSpecItem) -> String {
@@ -129,14 +129,15 @@ fn compute_skips(item: &ApiDartOutputSpecItem) -> String {
         .into_group_map_by(|t| t.reason)
         .into_iter()
         .sorted_by_key(|(reason, _)| *reason)
-        .map(|(reason, names)| {
-            format!(
-                "// {}: {}\n",
-                reason.explanation_prefix(),
-                (names.iter().map(|x| format!("`{}`", x.name.name)))
-                    .sorted()
-                    .join(", "),
-            )
+        .filter_map(|(reason, names)| {
+            reason.explanation_prefix().map(|explanation_prefix| {
+                format!(
+                    "// {explanation_prefix}: {}\n",
+                    (names.iter().map(|x| format!("`{}`", x.name.name)))
+                        .sorted()
+                        .join(", "),
+                )
+            })
         })
         .join("")
 }

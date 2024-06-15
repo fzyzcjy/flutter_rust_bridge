@@ -1,6 +1,6 @@
 use crate::codegen::generator::codec::sse::ty::structure::GeneralizedStructGenerator;
 use crate::codegen::generator::codec::sse::ty::*;
-use crate::codegen::generator::misc::StructOrRecord;
+use crate::codegen::generator::misc::struct_or_record::StructOrRecord;
 
 impl<'a> CodecSseTyTrait for RecordCodecSseTy<'a> {
     fn generate_encode(&self, lang: &Lang) -> Option<String> {

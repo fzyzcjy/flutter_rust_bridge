@@ -27,7 +27,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(output, isA<MoreThanJustOneRawStringStructTwinRustAsync>());
     expect(output.regular, "regular");
     expect(output.type, "type");
-    expect(output.async, true);
+    expect(output.async_, true);
     expect(output.another, "another");
   });
 }

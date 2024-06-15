@@ -13,7 +13,7 @@ Options:
           If present, other options and flags will be ignored. Accepts the same options as the CLI, but uses snake_case keys.
 
   -r, --rust-input <RUST_INPUT>
-          Glob pattern of input Rust files
+          Input Rust files, such as `crate::api,crate::hello::world,another-third-party-crate`
 
   -d, --dart-output <DART_OUTPUT>
           Directory of output generated Dart code
@@ -38,6 +38,9 @@ Options:
 
       --dart-preamble <DART_PREAMBLE>
           Raw header of output generated Dart code, pasted as-it-is
+
+      --rust-preamble <RUST_PREAMBLE>
+          Raw header of output generated Rust code, pasted as-it-is
 
       --no-dart-enums-style
           The generated Dart enums will not have their variant names camelCased

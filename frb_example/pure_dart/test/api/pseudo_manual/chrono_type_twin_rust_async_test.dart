@@ -2,7 +2,6 @@
 // and is auto-generated from `chrono_type_test.dart` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
-import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/chrono_type_twin_rust_async.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
@@ -93,8 +92,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('Combined Chrono types', () async {
     final test = await testChronoTwinRustAsync();
-    expect(castInt(test.dt!.millisecondsSinceEpoch), castInt(1631297333000));
-    expect(castInt(test.dt2!.millisecondsSinceEpoch), castInt(1631297333000));
+    expect(test.dt!.millisecondsSinceEpoch, 1631297333000);
+    expect(test.dt2!.millisecondsSinceEpoch, 1631297333000);
     expect(test.du, Duration(hours: 4));
   });
 

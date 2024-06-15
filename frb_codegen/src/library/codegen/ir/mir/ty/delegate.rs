@@ -1,5 +1,6 @@
 use crate::codegen::generator::codec::structs::CodecMode;
-use crate::codegen::ir::mir::ty::enumeration::MirTypeEnumRef;
+use crate::codegen::ir::mir::custom_ser_des::MirCustomSerDes;
+use crate::codegen::ir::mir::ty::enumeration::{MirEnumIdent, MirTypeEnumRef};
 use crate::codegen::ir::mir::ty::general_list::{mir_list, MirTypeGeneralList};
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
 use crate::codegen::ir::mir::ty::primitive_list::MirTypePrimitiveList;
@@ -7,7 +8,7 @@ use crate::codegen::ir::mir::ty::record::MirTypeRecord;
 use crate::codegen::ir::mir::ty::rust_auto_opaque_implicit::MirRustAutoOpaqueRaw;
 use crate::codegen::ir::mir::ty::rust_opaque::MirTypeRustOpaque;
 use crate::codegen::ir::mir::ty::{MirContext, MirType, MirTypeTrait};
-use crate::utils::namespace::Namespace;
+use crate::utils::namespace::{Namespace, NamespacedName};
 
 crate::mir! {
 /// types that delegate to another type
@@ -28,8 +29,12 @@ pub enum MirTypeDelegate {
     Set(MirTypeDelegateSet),
     StreamSink(MirTypeDelegateStreamSink),
     BigPrimitive(MirTypeDelegateBigPrimitive),
+    CastedPrimitive(MirTypeDelegateCastedPrimitive),
     RustAutoOpaqueExplicit(MirTypeDelegateRustAutoOpaqueExplicit),
-    // DynTrait(MirTypeDelegateDynTrait),
+    ProxyVariant(MirTypeDelegateProxyVariant),
+    ProxyEnum(MirTypeDelegateProxyEnum),
+    DynTrait(MirTypeDelegateDynTrait),
+    CustomSerDes(MirTypeDelegateCustomSerDes),
 }
 
 pub struct MirTypeDelegateArray {
@@ -69,7 +74,8 @@ pub struct MirTypeDelegateSet {
 }
 
 pub struct MirTypeDelegateStreamSink {
-    pub inner: Box<MirType>,
+    pub inner_ok: Box<MirType>,
+    pub inner_err: Box<MirType>,
     pub codec: CodecMode,
 }
 
@@ -79,14 +85,45 @@ pub enum MirTypeDelegateBigPrimitive {
     U128,
 }
 
+pub struct MirTypeDelegateCastedPrimitive {
+    pub inner: MirTypePrimitive,
+}
+
 pub struct MirTypeDelegateRustAutoOpaqueExplicit {
     pub inner: MirTypeRustOpaque,
     pub raw: MirRustAutoOpaqueRaw,
 }
 
-// pub struct MirTypeDelegateDynTrait {
-//     pub trait_def_name: NamespacedName,
-// }
+pub struct MirTypeDelegateProxyVariant {
+    pub inner: Box<MirType>,
+    pub upstream: Box<MirType>,
+    pub upstream_method_name: String,
+}
+
+pub struct MirTypeDelegateProxyEnum {
+    pub original: Box<MirType>,
+    pub delegate_namespace: Namespace,
+    pub variants: Vec<MirTypeDelegateProxyVariant>,
+}
+
+pub struct MirTypeDelegateDynTrait {
+    pub trait_def_name: NamespacedName,
+    // `None` if and only if dummy mode
+    pub data: Option<MirTypeDelegateDynTraitData>,
+}
+
+pub struct MirTypeDelegateDynTraitData {
+    pub delegate_namespace: Namespace,
+    pub variants: Vec<MirTypeDelegateDynTraitVariant>,
+}
+
+pub struct MirTypeDelegateDynTraitVariant {
+    pub ty: MirType,
+}
+
+pub struct MirTypeDelegateCustomSerDes {
+    pub info: MirCustomSerDes,
+}
 }
 
 impl MirTypeTrait for MirTypeDelegate {
@@ -99,7 +136,10 @@ impl MirTypeTrait for MirTypeDelegate {
 
         #[allow(clippy::single_match)]
         match self {
-            Self::StreamSink(mir) => mir.inner.visit_types(f, mir_context),
+            Self::StreamSink(mir) => {
+                mir.inner_ok.visit_types(f, mir_context);
+                mir.inner_err.visit_types(f, mir_context);
+            }
             // ... others
             _ => {}
         }
@@ -126,12 +166,29 @@ impl MirTypeTrait for MirTypeDelegate {
             }
             MirTypeDelegate::Set(mir) => format!("Set_{}", mir.inner.safe_ident()),
             MirTypeDelegate::StreamSink(mir) => {
-                format!("StreamSink_{}_{}", mir.inner.safe_ident(), mir.codec)
+                format!("StreamSink_{}_{}", mir.inner_ok.safe_ident(), mir.codec)
             }
             MirTypeDelegate::BigPrimitive(mir) => mir.to_string(),
+            MirTypeDelegate::CastedPrimitive(mir) => {
+                format!("CastedPrimitive_{}", mir.inner.safe_ident())
+            }
             MirTypeDelegate::RustAutoOpaqueExplicit(mir) => {
                 format!("AutoExplicit_{}", mir.inner.safe_ident())
-            } // MirTypeDelegate::DynTrait(mir) => mir.safe_ident(),
+            }
+            MirTypeDelegate::DynTrait(mir) => mir.safe_ident(),
+            MirTypeDelegate::ProxyVariant(mir) => {
+                format!(
+                    "ProxyVariant_{}_{}",
+                    mir.upstream.safe_ident(),
+                    mir.upstream_method_name
+                )
+            }
+            MirTypeDelegate::ProxyEnum(mir) => {
+                format!("ProxyEnum_{}", mir.get_delegate().safe_ident())
+            }
+            MirTypeDelegate::CustomSerDes(mir) => {
+                format!("CustomSerializer_{}", mir.info.rust_api_type.safe_ident())
+            }
         }
     }
 
@@ -184,7 +241,7 @@ impl MirTypeTrait for MirTypeDelegate {
             MirTypeDelegate::StreamSink(mir) => {
                 format!(
                     "StreamSink<{},flutter_rust_bridge::for_generated::{codec}Codec>",
-                    mir.inner.rust_api_type(),
+                    mir.inner_ok.rust_api_type(),
                     codec = mir.codec,
                 )
             }
@@ -192,9 +249,14 @@ impl MirTypeTrait for MirTypeDelegate {
                 MirTypeDelegateBigPrimitive::I128 => "i128".to_owned(),
                 MirTypeDelegateBigPrimitive::U128 => "u128".to_owned(),
             },
+            MirTypeDelegate::CastedPrimitive(mir) => mir.inner.rust_api_type(),
             MirTypeDelegate::RustAutoOpaqueExplicit(mir) => {
                 format!("RustAutoOpaque{}<{}>", mir.inner.codec, mir.raw.string)
-            } // MirTypeDelegate::DynTrait(mir) => format!("dyn <{}>", mir.trait_def_name.name),
+            }
+            MirTypeDelegate::DynTrait(mir) => format!("dyn {}", mir.trait_def_name.name),
+            MirTypeDelegate::ProxyVariant(mir) => mir.inner.rust_api_type(),
+            MirTypeDelegate::ProxyEnum(mir) => mir.original.rust_api_type(),
+            MirTypeDelegate::CustomSerDes(mir) => mir.info.rust_api_type.rust_api_type(),
         }
     }
 
@@ -210,6 +272,7 @@ impl MirTypeTrait for MirTypeDelegate {
         match self {
             MirTypeDelegate::PrimitiveEnum(inner) => inner.mir.self_namespace(),
             MirTypeDelegate::Array(inner) => Some(inner.namespace.clone()),
+            MirTypeDelegate::ProxyVariant(inner) => inner.inner.self_namespace(),
             _ => None,
         }
     }
@@ -221,6 +284,7 @@ impl MirTypeTrait for MirTypeDelegate {
                 | MirTypeDelegate::Char
                 | MirTypeDelegate::PrimitiveEnum(_)
                 | MirTypeDelegate::BigPrimitive(_)
+                | MirTypeDelegate::CastedPrimitive(_)
                 | MirTypeDelegate::RustAutoOpaqueExplicit(_)
         )
     }
@@ -261,8 +325,12 @@ impl MirTypeDelegate {
             MirTypeDelegate::Set(mir) => mir_list(*mir.inner.to_owned(), true),
             MirTypeDelegate::StreamSink(_) => MirType::Delegate(MirTypeDelegate::String),
             MirTypeDelegate::BigPrimitive(_) => MirType::Delegate(MirTypeDelegate::String),
+            MirTypeDelegate::CastedPrimitive(mir) => MirType::Primitive(mir.inner.clone()),
             MirTypeDelegate::RustAutoOpaqueExplicit(mir) => MirType::RustOpaque(mir.inner.clone()),
-            // MirTypeDelegate::DynTrait(mir) => mir.inner(),
+            MirTypeDelegate::DynTrait(mir) => mir.get_delegate(),
+            MirTypeDelegate::ProxyVariant(mir) => *mir.inner.clone(),
+            MirTypeDelegate::ProxyEnum(mir) => mir.get_delegate(),
+            MirTypeDelegate::CustomSerDes(mir) => *mir.info.inner_type.clone(),
         }
     }
 }
@@ -304,26 +372,50 @@ impl MirTypeDelegateArray {
     }
 }
 
-// impl MirTypeDelegateDynTrait {
-//     pub fn inner(&self) -> MirType {
-//         MirType::EnumRef(self.inner_raw())
-//     }
-//
-//     pub fn inner_raw(&self) -> MirTypeEnumRef {
-//         MirTypeEnumRef {
-//             ident: MirEnumIdent(NamespacedName::new(
-//                 self.trait_def_name.namespace.clone(),
-//                 self.inner_enum_name(),
-//             )),
-//             is_exception: false,
-//         }
-//     }
-//
-//     pub(crate) fn inner_enum_name(&self) -> String {
-//         format!("{}DynImplEnum", self.trait_def_name.name)
-//     }
-//
-//     pub(crate) fn safe_ident(&self) -> String {
-//         format!("DynTrait_{}", self.trait_def_name.name)
-//     }
-// }
+impl MirTypeDelegateProxyEnum {
+    pub(crate) fn get_delegate(&self) -> MirType {
+        MirType::EnumRef(MirTypeEnumRef {
+            ident: MirEnumIdent(NamespacedName::new(
+                self.delegate_namespace.clone(),
+                self.delegate_enum_name(),
+            )),
+            is_exception: false,
+        })
+    }
+
+    pub(crate) fn delegate_enum_name(&self) -> String {
+        Self::delegate_enum_name_raw(&self.original)
+    }
+
+    pub(crate) fn delegate_enum_name_raw(original_ty: &MirType) -> String {
+        format!("{}ProxyEnum", original_ty.safe_ident())
+    }
+}
+
+impl MirTypeDelegateDynTrait {
+    pub fn get_delegate(&self) -> MirType {
+        if let Some(data) = &self.data {
+            MirType::EnumRef(MirTypeEnumRef {
+                ident: MirEnumIdent(NamespacedName::new(
+                    data.delegate_namespace.clone(),
+                    self.delegate_enum_name(),
+                )),
+                is_exception: false,
+            })
+        } else {
+            MirType::Primitive(MirTypePrimitive::Unit)
+        }
+    }
+
+    pub(crate) fn delegate_enum_name(&self) -> String {
+        format!("{}Implementor", self.trait_def_name.name)
+    }
+
+    pub(crate) fn safe_ident(&self) -> String {
+        format!("DynTrait_{}", self.trait_def_name.name)
+    }
+
+    pub(crate) fn data(&self) -> &MirTypeDelegateDynTraitData {
+        self.data.as_ref().unwrap()
+    }
+}

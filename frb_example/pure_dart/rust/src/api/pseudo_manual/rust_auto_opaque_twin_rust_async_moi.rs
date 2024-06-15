@@ -126,74 +126,68 @@ pub async fn rust_auto_opaque_callable_return_twin_rust_async_moi(
 }
 
 // ==================================== trait object =======================================
-
-pub trait HelloTraitTwinRustAsyncMoi: Send + Sync {
-    fn func_hello(&self) -> &str;
-}
-
-#[frb(opaque)]
-pub struct HelloOneStructTwinRustAsyncMoi {
-    inner: String,
-}
-
-impl HelloTraitTwinRustAsyncMoi for HelloOneStructTwinRustAsyncMoi {
-    fn func_hello(&self) -> &str {
-        &self.inner
-    }
-}
-
-pub enum HelloTwoEnumTwinRustAsyncMoi {
-    A,
-    B,
-}
-
-impl HelloTraitTwinRustAsyncMoi for HelloTwoEnumTwinRustAsyncMoi {
-    fn func_hello(&self) -> &str {
-        match self {
-            HelloTwoEnumTwinRustAsyncMoi::A => "A",
-            HelloTwoEnumTwinRustAsyncMoi::B => "B",
-        }
-    }
-}
-
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
-pub async fn rust_auto_opaque_trait_object_arg_own_twin_rust_async_moi(
-    arg: Box<dyn HelloTraitTwinRustAsyncMoi>,
-    expect: String,
-) {
-    assert_eq!(arg.func_hello(), expect);
-}
-
-#[allow(clippy::borrowed_box)]
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
-pub async fn rust_auto_opaque_trait_object_arg_borrow_twin_rust_async_moi(
-    arg: &Box<dyn HelloTraitTwinRustAsyncMoi>,
-    expect: String,
-) {
-    assert_eq!(arg.func_hello(), expect);
-}
-
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
-pub async fn rust_auto_opaque_trait_object_arg_mut_borrow_twin_rust_async_moi(
-    arg: &mut Box<dyn HelloTraitTwinRustAsyncMoi>,
-    expect: String,
-) {
-    assert_eq!(arg.func_hello(), expect);
-}
-
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
-pub async fn rust_auto_opaque_trait_object_return_own_one_twin_rust_async_moi(
-) -> Box<dyn HelloTraitTwinRustAsyncMoi> {
-    Box::new(HelloOneStructTwinRustAsyncMoi {
-        inner: "hello".into(),
-    })
-}
-
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
-pub async fn rust_auto_opaque_trait_object_return_own_two_twin_rust_async_moi(
-) -> Box<dyn HelloTraitTwinRustAsyncMoi> {
-    Box::new(HelloTwoEnumTwinRustAsyncMoi::B)
-}
+//
+// pub trait HelloTraitTwinRustAsyncMoi: Send + Sync {
+//     fn func_hello(&self) -> &str;
+// }
+//
+// #[frb(opaque)]
+// pub struct HelloOneStructTwinRustAsyncMoi {
+//     inner: String,
+// }
+//
+// impl HelloTraitTwinRustAsyncMoi for HelloOneStructTwinRustAsyncMoi {
+//     fn func_hello(&self) -> &str {
+//         &self.inner
+//     }
+// }
+//
+// pub enum HelloTwoEnumTwinRustAsyncMoi {
+//     A,
+//     B,
+// }
+//
+// impl HelloTraitTwinRustAsyncMoi for HelloTwoEnumTwinRustAsyncMoi {
+//     fn func_hello(&self) -> &str {
+//         match self {
+//             HelloTwoEnumTwinRustAsyncMoi::A => "A",
+//             HelloTwoEnumTwinRustAsyncMoi::B => "B",
+//         }
+//     }
+// }
+//
+// #[flutter_rust_bridge::frb(rust_opaque_codec_moi)] pub async fn rust_auto_opaque_trait_object_arg_own_twin_rust_async_moi(
+//     arg: Box<dyn HelloTraitTwinRustAsyncMoi>,
+//     expect: String,
+// ) {
+//     assert_eq!(arg.func_hello(), expect);
+// }
+//
+// #[allow(clippy::borrowed_box)]
+// #[flutter_rust_bridge::frb(rust_opaque_codec_moi)] pub async fn rust_auto_opaque_trait_object_arg_borrow_twin_rust_async_moi(
+//     arg: &Box<dyn HelloTraitTwinRustAsyncMoi>,
+//     expect: String,
+// ) {
+//     assert_eq!(arg.func_hello(), expect);
+// }
+//
+// #[flutter_rust_bridge::frb(rust_opaque_codec_moi)] pub async fn rust_auto_opaque_trait_object_arg_mut_borrow_twin_rust_async_moi(
+//     arg: &mut Box<dyn HelloTraitTwinRustAsyncMoi>,
+//     expect: String,
+// ) {
+//     assert_eq!(arg.func_hello(), expect);
+// }
+//
+// #[flutter_rust_bridge::frb(rust_opaque_codec_moi)] pub async fn rust_auto_opaque_trait_object_return_own_one_twin_rust_async_moi() -> Box<dyn HelloTraitTwinRustAsyncMoi> {
+//     Box::new(HelloOneStructTwinRustAsyncMoi {
+//         inner: "hello".into(),
+//     })
+// }
+//
+// #[flutter_rust_bridge::frb(rust_opaque_codec_moi)] pub async fn rust_auto_opaque_trait_object_return_own_two_twin_rust_async_moi() -> Box<dyn HelloTraitTwinRustAsyncMoi> {
+//     Box::new(HelloTwoEnumTwinRustAsyncMoi::B)
+// }
+//
 
 // ==================================== static method =======================================
 

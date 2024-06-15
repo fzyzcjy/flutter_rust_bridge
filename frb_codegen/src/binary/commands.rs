@@ -56,7 +56,7 @@ pub(crate) struct GenerateCommandArgsPrimary {
     #[arg(long)]
     pub config_file: Option<String>,
 
-    /// Glob pattern of input Rust files
+    /// Input Rust files, such as `crate::api,crate::hello::world,another-third-party-crate`
     #[arg(short, long)]
     pub rust_input: Option<String>,
 
@@ -91,6 +91,10 @@ pub(crate) struct GenerateCommandArgsPrimary {
     /// Raw header of output generated Dart code, pasted as-it-is.
     #[arg(long)]
     pub dart_preamble: Option<String>,
+
+    /// Raw header of output generated Rust code, pasted as-it-is.
+    #[arg(long)]
+    pub rust_preamble: Option<String>,
 
     /// The generated Dart enums will not have their variant names camelCased.
     #[arg(long)]

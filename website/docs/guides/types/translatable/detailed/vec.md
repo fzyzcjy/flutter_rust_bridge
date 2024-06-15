@@ -1,4 +1,4 @@
-# Vec and array
+# Vec, array, slice
 
 ## `Vec<u8>`, `Vec<i8>`, ...
 
@@ -15,6 +15,10 @@ Remark: `Vec<Box<T>>` is not supported yet though fixable ([#1072](https://githu
 ## `[T; N]`
 
 Since Dart does not have special treatment for static-sized arrays, it is converted to `List<T>` as well.
+
+## `&[T]`
+
+These types will be considered as `Vec<T>`.
 
 ## Example
 

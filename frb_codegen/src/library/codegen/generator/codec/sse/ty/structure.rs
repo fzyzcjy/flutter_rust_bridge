@@ -1,7 +1,7 @@
 use crate::codegen::generator::api_dart::spec_generator::class::method::dart_constructor_postfix;
 use crate::codegen::generator::codec::sse::ty::*;
-use crate::codegen::generator::misc::StructOrRecord;
-use crate::codegen::generator::misc::StructOrRecord::Struct;
+use crate::codegen::generator::misc::struct_or_record::StructOrRecord;
+use crate::codegen::generator::misc::struct_or_record::StructOrRecord::Struct;
 use crate::codegen::ir::mir::ty::structure::MirStruct;
 use crate::library::codegen::generator::codec::sse::lang::LangTrait;
 use itertools::Itertools;

@@ -23,7 +23,8 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for RustOpaqueWireDartCodecCstGen
 pub(super) fn rust_opaque_dart_wire_type(target: Target) -> String {
     match target {
         Target::Io => "int",
-        Target::Web => "Object",
+        // Target::Web => "Object",
+        Target::Web => "int",
     }
     .into()
 }

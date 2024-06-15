@@ -1,5 +1,5 @@
-use crate::basic_code_impl;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::{ExternClass, ExternFunc};
+use crate::simple_code_trait_impl;
 use itertools::Itertools;
 use serde::Serialize;
 use std::ops::AddAssign;
@@ -11,7 +11,7 @@ pub(crate) struct WireRustOutputCode {
     pub(crate) extern_classes: Vec<ExternClass>,
 }
 
-basic_code_impl!(WireRustOutputCode);
+simple_code_trait_impl!(WireRustOutputCode);
 
 impl WireRustOutputCode {
     pub(crate) fn all_code(&self, c_symbol_prefix: &str) -> String {

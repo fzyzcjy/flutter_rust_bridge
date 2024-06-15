@@ -11,15 +11,18 @@ import 'api/array_test.dart' as array_test;
 import 'api/async_misc_test.dart' as async_misc_test;
 import 'api/async_spawn_test.dart' as async_spawn_test;
 import 'api/attribute_test.dart' as attribute_test;
+import 'api/casted_primitive_test.dart' as casted_primitive_test;
 import 'api/chrono_type_test.dart' as chrono_type_test;
 import 'api/comment_test.dart' as comment_test;
 import 'api/constructor_test.dart' as constructor_test;
+import 'api/custom_ser_des_test.dart' as custom_ser_des_test;
 import 'api/customization_test.dart' as customization_test;
 import 'api/dart_code_test.dart' as dart_code_test;
 import 'api/dart_dynamic_test.dart' as dart_dynamic_test;
 import 'api/dart_fn_test.dart' as dart_fn_test;
 import 'api/dart_opaque_sync_test.dart' as dart_opaque_sync_test;
 import 'api/dart_opaque_test.dart' as dart_opaque_test;
+import 'api/dyn_trait_test.dart' as dyn_trait_test;
 import 'api/enumeration_test.dart' as enumeration_test;
 import 'api/event_listener_test.dart' as event_listener_test;
 import 'api/exception_test.dart' as exception_test;
@@ -40,6 +43,7 @@ import 'api/optional_test.dart' as optional_test;
 import 'api/ownership_test.dart' as ownership_test;
 import 'api/primitive_list_misc_test.dart' as primitive_list_misc_test;
 import 'api/primitive_misc_test.dart' as primitive_misc_test;
+import 'api/proxy_test.dart' as proxy_test;
 import 'api/pseudo_manual/array_twin_rust_async_sse_test.dart'
     as array_twin_rust_async_sse_test;
 import 'api/pseudo_manual/array_twin_rust_async_test.dart'
@@ -178,10 +182,6 @@ import 'api/pseudo_manual/external_type_in_crate_twin_sync_sse_test.dart'
     as external_type_in_crate_twin_sync_sse_test;
 import 'api/pseudo_manual/external_type_in_crate_twin_sync_test.dart'
     as external_type_in_crate_twin_sync_test;
-import 'api/pseudo_manual/impl_trait_twin_rust_async_sse_test.dart'
-    as impl_trait_twin_rust_async_sse_test;
-import 'api/pseudo_manual/impl_trait_twin_rust_async_test.dart'
-    as impl_trait_twin_rust_async_test;
 import 'api/pseudo_manual/impl_trait_twin_sse_test.dart'
     as impl_trait_twin_sse_test;
 import 'api/pseudo_manual/impl_trait_twin_sync_sse_test.dart'
@@ -441,15 +441,18 @@ Future<void> callFileEntrypoints() async {
   await async_misc_test.main(skipRustLibInit: true);
   await async_spawn_test.main(skipRustLibInit: true);
   await attribute_test.main(skipRustLibInit: true);
+  await casted_primitive_test.main(skipRustLibInit: true);
   await chrono_type_test.main(skipRustLibInit: true);
   await comment_test.main(skipRustLibInit: true);
   await constructor_test.main(skipRustLibInit: true);
+  await custom_ser_des_test.main(skipRustLibInit: true);
   await customization_test.main(skipRustLibInit: true);
   await dart_code_test.main(skipRustLibInit: true);
   await dart_dynamic_test.main(skipRustLibInit: true);
   await dart_fn_test.main(skipRustLibInit: true);
   await dart_opaque_sync_test.main(skipRustLibInit: true);
   await dart_opaque_test.main(skipRustLibInit: true);
+  await dyn_trait_test.main(skipRustLibInit: true);
   await enumeration_test.main(skipRustLibInit: true);
   await event_listener_test.main(skipRustLibInit: true);
   await exception_test.main(skipRustLibInit: true);
@@ -470,6 +473,7 @@ Future<void> callFileEntrypoints() async {
   await ownership_test.main(skipRustLibInit: true);
   await primitive_list_misc_test.main(skipRustLibInit: true);
   await primitive_misc_test.main(skipRustLibInit: true);
+  await proxy_test.main(skipRustLibInit: true);
   await array_twin_rust_async_sse_test.main(skipRustLibInit: true);
   await array_twin_rust_async_test.main(skipRustLibInit: true);
   await array_twin_sse_test.main(skipRustLibInit: true);
@@ -545,8 +549,6 @@ Future<void> callFileEntrypoints() async {
   await external_type_in_crate_twin_sse_test.main(skipRustLibInit: true);
   await external_type_in_crate_twin_sync_sse_test.main(skipRustLibInit: true);
   await external_type_in_crate_twin_sync_test.main(skipRustLibInit: true);
-  await impl_trait_twin_rust_async_sse_test.main(skipRustLibInit: true);
-  await impl_trait_twin_rust_async_test.main(skipRustLibInit: true);
   await impl_trait_twin_sse_test.main(skipRustLibInit: true);
   await impl_trait_twin_sync_sse_test.main(skipRustLibInit: true);
   await impl_trait_twin_sync_test.main(skipRustLibInit: true);

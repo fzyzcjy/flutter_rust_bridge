@@ -1,4 +1,4 @@
-use crate::codegen::generator::misc::PathTexts;
+use crate::codegen::generator::misc::path_texts::PathTexts;
 use crate::codegen::generator::wire::c::internal_config::GeneratorWireCInternalConfig;
 use crate::codegen::misc::GeneratorProgressBarPack;
 use serde::Serialize;

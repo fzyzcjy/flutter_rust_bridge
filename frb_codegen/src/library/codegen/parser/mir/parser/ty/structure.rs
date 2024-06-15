@@ -12,6 +12,7 @@ use crate::codegen::parser::mir::parser::ty::enum_or_struct::{
 use crate::codegen::parser::mir::parser::ty::misc::parse_comments;
 use crate::codegen::parser::mir::parser::ty::unencodable::SplayedSegment;
 use crate::codegen::parser::mir::parser::ty::TypeParserWithContext;
+use crate::utils::basic_code::general_code::GeneralDartCode;
 use crate::utils::crate_name::CrateName;
 use crate::utils::namespace::{Namespace, NamespacedName};
 use anyhow::bail;
@@ -42,16 +43,16 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             // frb-coverage:ignore-end
         };
 
+        let attributes = FrbAttributes::parse(&src_struct.src.attrs)?;
+        let dart_metadata = attributes.dart_metadata();
+
         let fields = struct_fields
             .iter()
             .enumerate()
-            .map(|(idx, field)| self.parse_struct_field(idx, field))
+            .map(|(idx, field)| self.parse_struct_field(idx, field, &attributes))
             .collect::<anyhow::Result<Vec<_>>>()?;
 
         let comments = parse_comments(&src_struct.src.attrs);
-
-        let attributes = FrbAttributes::parse(&src_struct.src.attrs)?;
-        let dart_metadata = attributes.dart_metadata();
 
         let ignore = parse_struct_or_enum_should_ignore(src_struct, &name.namespace.crate_name());
 
@@ -68,15 +69,22 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         })
     }
 
-    fn parse_struct_field(&mut self, idx: usize, field: &Field) -> anyhow::Result<MirField> {
+    fn parse_struct_field(
+        &mut self,
+        idx: usize,
+        field: &Field,
+        attributes: &FrbAttributes,
+    ) -> anyhow::Result<MirField> {
         let field_name = field
             .ident
             .as_ref()
             .map_or(format!("field{idx}"), ToString::to_string);
-        let field_type = self.parse_type(&field.ty)?;
+        let field_type = self.parse_type_with_context(&field.ty, |c| {
+            c.with_struct_or_enum_attributes(attributes.clone())
+        })?;
         let attributes = FrbAttributes::parse(&field.attrs)?;
         Ok(MirField {
-            name: MirIdent::new(field_name),
+            name: MirIdent::new(field_name, attributes.name()),
             ty: field_type,
             is_final: !attributes.non_final(),
             is_rust_public: Some(matches!(field.vis, Visibility::Public(_))),
@@ -116,7 +124,7 @@ impl EnumOrStructParser<MirStructIdent, MirStruct, ItemStruct>
         &mut self.0.inner.struct_parser_info
     }
 
-    fn dart_code_of_type(&mut self) -> &mut HashMap<String, String> {
+    fn dart_code_of_type(&mut self) -> &mut HashMap<String, GeneralDartCode> {
         &mut self.0.inner.dart_code_of_type
     }
 

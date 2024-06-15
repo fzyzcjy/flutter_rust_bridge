@@ -15,7 +15,7 @@ use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::ConfigDumpContent;
 use crate::library::codegen::generator::api_dart::spec_generator::class::ty::ApiDartGeneratorClassTrait;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
-use crate::utils::basic_code::DartBasicHeaderCode;
+use crate::utils::basic_code::dart_header_code::DartHeaderCode;
 use crate::utils::namespace::Namespace;
 use anyhow::Result;
 use itertools::{concat, Itertools};
@@ -41,7 +41,7 @@ pub(crate) struct ApiDartOutputSpecItem {
     pub funcs: Vec<ApiDartGeneratedFunction>,
     pub classes: Vec<ApiDartGeneratedClass>,
     pub extra_impl_code: Vec<String>,
-    pub imports: DartBasicHeaderCode,
+    pub imports: DartHeaderCode,
     pub preamble: String,
     pub skips: Vec<MirSkip>,
     pub needs_freezed: bool,
@@ -55,11 +55,8 @@ pub(crate) fn generate(
     let cache = MirPackComputedCache::compute(mir_pack);
     let context = ApiDartGeneratorContext { mir_pack, config };
 
-    dumper.dump(
-        GeneratorInfo,
-        "api_dart.json",
-        &generate_dump_info(&cache, context),
-    )?;
+    (dumper.with_content(GeneratorInfo))
+        .dump("api_dart.json", &generate_dump_info(&cache, context))?;
 
     let funcs_with_impl = mir_pack.funcs_with_impl();
     let grouped_funcs = (funcs_with_impl.iter()).into_group_map_by(|x| x.name.namespace.clone());
@@ -100,7 +97,7 @@ fn generate_item(
     funcs: &Option<&Vec<&MirFunc>>,
     context: ApiDartGeneratorContext,
 ) -> Result<ApiDartOutputSpecItem> {
-    let imports = DartBasicHeaderCode {
+    let imports = DartHeaderCode {
         import: generate_imports_which_types_and_funcs_use(
             namespace,
             namespaced_types,
@@ -158,7 +155,7 @@ fn compute_skips(mir_pack: &MirPack, namespace: &Namespace) -> Vec<MirSkip> {
         .filter(|t| &t.namespace == namespace)
         .map(|name| MirSkip {
             name: name.clone(),
-            reason: MirSkipReason::IgnoredTypeNotUsedByPub,
+            reason: MirSkipReason::IgnoreBecauseTypeNotUsedByPub,
         })
         .collect_vec();
 

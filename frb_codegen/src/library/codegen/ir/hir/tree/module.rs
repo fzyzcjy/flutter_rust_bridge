@@ -12,6 +12,8 @@ pub struct HirTreeModule {
     pub items: Vec<syn::Item>,
 }
 
+// This is surely used, but not counted by coverage tools
+// frb-coverage:ignore-start
 #[derive(Clone, Derivative, Serialize)]
 #[derivative(Debug)]
 pub struct HirTreeModuleMeta {
@@ -19,6 +21,7 @@ pub struct HirTreeModuleMeta {
     pub vis: HirVisibility,
     pub namespace: Namespace,
 }
+// frb-coverage:ignore-end
 
 impl HirTreeModule {
     // Have this method because also need get_mut etc

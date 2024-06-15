@@ -6,8 +6,8 @@ pub(crate) mod rust;
 use crate::codegen::config::internal_config::GeneratorWireInternalConfig;
 use crate::codegen::dumper::Dumper;
 use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig;
+use crate::codegen::generator::misc::path_texts::PathTexts;
 use crate::codegen::generator::misc::target::Target;
-use crate::codegen::generator::misc::PathTexts;
 use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGeneratorContext;
 use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGeneratorContext;
 use crate::codegen::ir::mir::pack::MirPack;
@@ -25,7 +25,6 @@ pub(crate) fn generate(
     config: &GeneratorWireInternalConfig,
     api_dart_config: &GeneratorApiDartInternalConfig,
     api_dart_actual_output_paths: &[PathBuf],
-    extra_impl_text: &str,
     dumper: &Dumper,
     progress_bar_pack: &GeneratorProgressBarPack,
 ) -> Result<GeneratorWireOutput> {
@@ -60,7 +59,6 @@ pub(crate) fn generate(
         wire_dart_generator_context,
         &c_output.c_file_content,
         api_dart_actual_output_paths,
-        extra_impl_text,
         &rust_output.extern_funcs,
         rust_output.content_hash,
         dumper,

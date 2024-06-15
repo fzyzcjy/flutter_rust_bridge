@@ -5,6 +5,9 @@ use quote::quote;
 use quote::ToTokens;
 use syn::{ImplItem, Item, ItemImpl};
 
+// This is surely executed - otherwise how can one use any `#[frb]` macro
+// but coverage tool does not think so, possibly because it is done in build time
+// frb-coverage:ignore-start
 pub(crate) fn handle_external_impl(attribute: TokenStream, item: TokenStream) -> TokenStream {
     if attribute.to_string() != ATTR_KEYWORD {
         return item;
@@ -73,3 +76,4 @@ fn convert_item(mut item_syn: syn::ItemImpl, dummy_struct_ty: syn::Type) -> Toke
 
 const ATTR_KEYWORD: &str = "external";
 const DUMMY_STRUCT_PREFIX: &str = "__external_impl__";
+// frb-coverage:ignore-end

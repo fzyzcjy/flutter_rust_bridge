@@ -31,7 +31,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGener
                         length = array.length,
                     )),
                     web: Some(format!(
-                        "return {}.fromList(raw);",
+                        "return {}.fromList(raw).jsify()!;",
                         ApiDartGenerator::new(
                             array.get_delegate(),
                             self.context.as_api_dart_context()
@@ -116,7 +116,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGener
             // ))),
             MirTypeDelegate::Backtrace
             | MirTypeDelegate::AnyhowException
-            /*| MirTypeDelegate::DynTrait(_)*/ => {
+            | MirTypeDelegate::DynTrait(_) => {
                 Acc::distribute(Some("throw UnimplementedError();".to_string()))
             }
             MirTypeDelegate::Map(_) => Acc::distribute(Some(format!(
@@ -140,6 +140,8 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGener
                 "return cst_encode_{}(raw);",
                 self.mir.get_delegate().safe_ident(),
             ))),
+            MirTypeDelegate::ProxyVariant(_) | MirTypeDelegate::ProxyEnum(_) | MirTypeDelegate::CastedPrimitive(_) | MirTypeDelegate::CustomSerDes(_) =>
+                Acc::distribute(Some("throw UnimplementedError('Not implemented in this codec, please use the other one');".to_string()))
         }
     }
 

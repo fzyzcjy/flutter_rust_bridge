@@ -7,6 +7,7 @@ use crate::codegen::generator::api_dart::spec_generator::class::ApiDartGenerated
 use crate::codegen::generator::api_dart::spec_generator::misc::{
     generate_dart_comments, generate_dart_metadata,
 };
+use crate::codegen::ir::mir::ty::MirType;
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
 
 impl<'a> ApiDartGeneratorClassTrait for StructRefApiDartGenerator<'a> {
@@ -20,13 +21,14 @@ impl<'a> ApiDartGeneratorClassTrait for StructRefApiDartGenerator<'a> {
         let class_name = &self.mir.ident.0.name;
 
         let methods = generate_api_methods(
-            &src.name,
+            &MirType::StructRef(self.mir.clone()),
             self.context,
             &GenerateApiMethodConfig::COMBINED,
             class_name,
         );
-        let extra_body =
+        let extra_code =
             generate_class_extra_body(self.mir_type(), &self.context.mir_pack.dart_code_of_type);
+        let extra_body = &extra_code.body;
 
         Some(ApiDartGeneratedClass {
             namespace: src.name.namespace.clone(),
@@ -38,7 +40,7 @@ impl<'a> ApiDartGeneratorClassTrait for StructRefApiDartGenerator<'a> {
                     &metadata,
                     &methods,
                     constructor_postfix,
-                    &extra_body,
+                    extra_body,
                     class_name,
                 )
             } else {
@@ -48,12 +50,12 @@ impl<'a> ApiDartGeneratorClassTrait for StructRefApiDartGenerator<'a> {
                     &metadata,
                     &methods,
                     constructor_postfix,
-                    &extra_body,
+                    extra_body,
                     class_name,
                 )
             },
             needs_freezed: src.using_freezed(),
-            header: methods.header,
+            header: methods.header + extra_code.header,
         })
     }
 }

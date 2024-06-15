@@ -1,6 +1,7 @@
 {
   "enums": [],
   "existing_handler": null,
+  "extra_rust_output_code": "",
   "functions": [
     {
       "item_fn": "GeneralizedItemFn(name=first_function, vis=Some(Visibility::Public(Pub)), attrs=[])",

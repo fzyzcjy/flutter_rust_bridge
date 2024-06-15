@@ -1,6 +1,6 @@
 use crate::codegen::config::internal_config::GeneratorInternalConfig;
 use crate::codegen::dumper::Dumper;
-use crate::codegen::generator::misc::PathTexts;
+use crate::codegen::generator::misc::path_texts::PathTexts;
 use crate::codegen::ir::mir::pack::MirPack;
 use crate::codegen::misc::GeneratorProgressBarPack;
 
@@ -27,13 +27,15 @@ pub(crate) fn generate(
         &config.wire,
         &config.api_dart,
         &api_dart_output.output_texts.paths(),
-        &api_dart_output.output_extra_impl_text,
         dumper,
         progress_bar_pack,
     )?;
 
+    let output_texts = wire_output.output_texts + api_dart_output.output_texts;
+    let output_texts = output_texts.merge();
+
     Ok(GeneratorOutput {
-        output_texts: api_dart_output.output_texts + wire_output.output_texts,
+        output_texts,
         dart_needs_freezed: api_dart_output.needs_freezed,
     })
 }

@@ -1,8 +1,8 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::target::TargetOrCommon;
-use crate::utils::basic_code::BasicCode;
+use crate::utils::basic_code::simple_code_trait::SimpleCodeTrait;
 
-pub(crate) fn section_header_comment<T: BasicCode>(
+pub(crate) fn section_header_comment<T: SimpleCodeTrait>(
     section_name: &str,
     item: &Acc<Vec<T>>,
 ) -> Acc<Vec<T>> {
@@ -21,9 +21,9 @@ pub(crate) fn section_header_comment_raw(section_name: &str) -> String {
     format!("\n\n// Section: {section_name}\n\n")
 }
 
-pub(crate) fn generate_text_respecting_web_flag(
-    raw: Acc<String>,
+pub(crate) fn generate_text_respecting_web_flag<T>(
+    raw: Acc<T>,
     web_enabled: bool,
-) -> Acc<Option<String>> {
+) -> Acc<Option<T>> {
     raw.map(|value, target| (target != TargetOrCommon::Web || web_enabled).then_some(value))
 }

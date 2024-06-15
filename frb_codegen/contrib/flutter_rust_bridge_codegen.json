@@ -1,15 +1,15 @@
 {
-    "version": "2.0.0-dev.37",
+    "version": "2.0.0-dev.39",
     "description": "High-level memory-safe binding generator for Flutter/Dart <-> Rust",
     "homepage": "https://fzyzcjy.github.io/flutter_rust_bridge/",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/fzyzcjy/flutter_rust_bridge/releases/download/v2.0.0-dev.37/flutter_rust_bridge_codegen-x86_64-pc-windows-msvc-v2.0.0-dev.37.zip",
+            "url": "https://github.com/fzyzcjy/flutter_rust_bridge/releases/download/v2.0.0-dev.39/flutter_rust_bridge_codegen-x86_64-pc-windows-msvc-v2.0.0-dev.39.zip",
             "hash": "Not Found"
         },
         "32bit": {
-            "url": "https://github.com/fzyzcjy/flutter_rust_bridge/releases/download/v2.0.0-dev.37/flutter_rust_bridge_codegen-i686-pc-windows-msvc-v2.0.0-dev.37.zip",
+            "url": "https://github.com/fzyzcjy/flutter_rust_bridge/releases/download/v2.0.0-dev.39/flutter_rust_bridge_codegen-i686-pc-windows-msvc-v2.0.0-dev.39.zip",
             "hash": "Not Found"
         }
     },

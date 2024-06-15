@@ -5,7 +5,7 @@ use crate::codegen::generator::misc::target::TargetOrCommon;
 use crate::codegen::generator::wire::rust::spec_generator::base::{
     WireRustGenerator, WireRustGeneratorContext,
 };
-use crate::codegen::generator::wire::rust::spec_generator::misc::wire_func::generate_wire_func;
+use crate::codegen::generator::wire::rust::spec_generator::misc::function::generate_wire_func;
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
 use crate::codegen::generator::wire::rust::MirPackComputedCache;
 use crate::codegen::ir::mir::func::MirFuncOwnerInfo;
@@ -19,9 +19,8 @@ use serde::Serialize;
 use sha1::{Digest, Sha1};
 use std::collections::HashSet;
 
+pub(crate) mod function;
 pub(crate) mod ty;
-pub(crate) mod wire_func;
-pub(crate) mod wire_func_rao;
 
 #[derive(Serialize)]
 pub(crate) struct WireRustOutputSpecMisc {
@@ -34,6 +33,7 @@ pub(crate) struct WireRustOutputSpecMisc {
     pub wrapper_structs: Acc<Vec<WireRustOutputCode>>,
     pub static_checks: Acc<Vec<WireRustOutputCode>>,
     pub related_funcs: Acc<Vec<WireRustOutputCode>>,
+    pub extra_from_parser: Acc<Vec<WireRustOutputCode>>,
     pub content_hash: i32,
 }
 
@@ -51,6 +51,7 @@ pub(crate) fn generate(
             context.config.default_stream_sink_codec,
             context.config.default_rust_opaque_codec,
             content_hash,
+            &context.config.rust_preamble,
         ),
         wire_funcs: (context.mir_pack.funcs_with_impl().iter())
             .map(|f| generate_wire_func(f, context))
@@ -66,6 +67,11 @@ pub(crate) fn generate(
             .iter()
             .map(|ty| WireRustGenerator::new(ty.clone(), context).generate_related_funcs())
             .collect(),
+        extra_from_parser: Acc::new_common(vec![WireRustOutputCode {
+            body: context.mir_pack.extra_rust_output_code.clone(),
+            extern_funcs: vec![],
+            extern_classes: vec![],
+        }]),
         content_hash,
     })
 }
@@ -111,7 +117,7 @@ fn generate_imports(
 
     // NOTE Do *not* use imports when possible, instead use fully specified name directly
     let static_imports = "use flutter_rust_bridge::{Handler, IntoIntoDart};
-use flutter_rust_bridge::for_generated::transform_result_dco;
+use flutter_rust_bridge::for_generated::{Lockable, transform_result_dco};
 use flutter_rust_bridge::for_generated::byteorder::{NativeEndian, WriteBytesExt, ReadBytesExt};";
 
     Acc::new(|target| {
@@ -155,7 +161,14 @@ fn generate_boilerplate(
     default_stream_sink_codec: CodecMode,
     default_rust_opaque_codec: RustOpaqueCodecMode,
     content_hash: i32,
+    rust_preamble: &str,
 ) -> Acc<Vec<WireRustOutputCode>> {
+    let rust_preamble_formatted = if rust_preamble.is_empty() {
+        "".to_owned()
+    } else {
+        format!("{rust_preamble}\n\n")
+    };
+
     Acc::new(|target| {
         match target {
             TargetOrCommon::Io | TargetOrCommon::Web => {
@@ -163,15 +176,14 @@ fn generate_boilerplate(
                     // generate_boilerplate_frb_initialize_rust(target).into(),
                     // generate_boilerplate_dart_fn_deliver_output(target).into(),
                     format!(
-                        "flutter_rust_bridge::frb_generated_boilerplate_{}!();",
+                        "{rust_preamble_formatted}flutter_rust_bridge::frb_generated_boilerplate_{}!();",
                         target.to_string().to_lowercase()
                     )
                     .into(),
                 ]
             }
             TargetOrCommon::Common => vec![format!(
-                r#"
-                flutter_rust_bridge::frb_generated_boilerplate!(
+                r#"{rust_preamble_formatted}flutter_rust_bridge::frb_generated_boilerplate!(
                     default_stream_sink_codec = {default_stream_sink_codec}Codec,
                     default_rust_opaque = RustOpaque{default_rust_opaque_codec},
                     default_rust_auto_opaque = RustAutoOpaque{default_rust_opaque_codec},

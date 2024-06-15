@@ -1,4 +1,4 @@
-use crate::codegen::generator::misc::PathTexts;
+use crate::codegen::generator::misc::path_texts::PathTexts;
 use crate::codegen::generator::wire::c::internal_config::GeneratorWireCInternalConfig;
 use crate::codegen::misc::GeneratorProgressBarPack;
 use crate::library::commands::cbindgen::{cbindgen, CbindgenArgs};
@@ -17,7 +17,7 @@ pub(crate) fn execute(
         .iter()
         .map(|rust_output_text| {
             temp_change_file(rust_output_text.path.clone(), |_| {
-                rust_output_text.text.clone()
+                rust_output_text.text.all_code()
             })
         })
         .collect::<anyhow::Result<Vec<_>>>()?;

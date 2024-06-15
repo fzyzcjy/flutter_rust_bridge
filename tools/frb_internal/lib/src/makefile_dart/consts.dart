@@ -93,10 +93,14 @@ Future<void> _runPubGetIfNotRunYetRaw(String package, DartMode mode) async {
   final dirPackage = '${exec.pwd}/$package';
   if ((await Directory(dirPackage).exists()) &&
       (!await Directory('$dirPackage/.dart_tool').exists())) {
-    final cmd = switch (mode) {
-      DartMode.dart => 'dart --enable-experiment=native-assets',
-      DartMode.flutter => 'flutter',
-    };
-    await exec('$cmd pub get', relativePwd: package);
+    await runPubGet(package, mode);
   }
+}
+
+Future<void> runPubGet(String package, DartMode mode) async {
+  final cmd = switch (mode) {
+    DartMode.dart => 'dart --enable-experiment=native-assets',
+    DartMode.flutter => 'flutter',
+  };
+  await exec('$cmd pub get', relativePwd: package);
 }

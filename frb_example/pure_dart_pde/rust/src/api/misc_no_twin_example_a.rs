@@ -56,6 +56,17 @@ impl StructWithSimpleSetterTwinNormal {
     pub fn simple_setter(&mut self, value: i32) {
         self.0 = value;
     }
+
+    // should auto strip prefix "get_" and "set_"
+    #[frb(getter, sync)]
+    pub fn get_something(&self) -> i32 {
+        self.0
+    }
+
+    #[frb(setter, sync)]
+    pub fn set_something(&mut self, value: i32) {
+        self.0 = value;
+    }
 }
 
 // #1937

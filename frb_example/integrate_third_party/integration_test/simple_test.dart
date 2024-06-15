@@ -22,7 +22,7 @@ Future<void> _demoUsage() async {
   const options = AudioContextOptions(
     latencyHint: AudioContextLatencyCategory.balanced(),
     sinkId: '',
-    renderSizeHint: AudioContextRenderSizeCategory.Default,
+    renderSizeHint: AudioContextRenderSizeCategory.default_,
   );
   final context = AudioContext(options: options);
 
@@ -33,12 +33,11 @@ Future<void> _demoUsage() async {
   await src.setBuffer(audioBuffer: buffer);
   await src.setLoop(value: true);
 
-  // TODO
-  // final biquad = context.createBiquadFilter();
-  // biquad.frequencyValue = 125;
-  //
-  // await src.connect(biquad);
-  // await biquad.connect(await context.destination());
+  final biquad = await context.createBiquadFilter();
+  biquad.frequency.setValue(value: 125);
+
+  await src.connect(dest: biquad);
+  await biquad.connect(dest: await context.destination());
 
   await src.start();
 

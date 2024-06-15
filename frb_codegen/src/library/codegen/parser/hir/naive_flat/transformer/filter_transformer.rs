@@ -31,8 +31,5 @@ fn is_self_crate(item: &HirNaiveFlatItem) -> bool {
 }
 
 fn is_early_skip_namespace(namespace: &Namespace, config: &ParserHirInternalConfig) -> bool {
-    (config.rust_input_namespace_pack)
-        .early_skip_namespace_prefixes
-        .iter()
-        .any(|prefix| prefix.is_prefix_of(namespace))
+    (config.rust_input_namespace_pack.rust_output_path_namespace).is_prefix_of(namespace)
 }

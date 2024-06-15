@@ -204,6 +204,8 @@ impl_into_into_dart_by_self!(wasm_bindgen::JsValue);
 impl_into_into_dart_by_self!(uuid::Uuid);
 #[cfg(feature = "backtrace")]
 impl_into_into_dart_by_self!(backtrace::Backtrace);
+#[cfg(feature = "anyhow")]
+impl_into_into_dart_by_self!(anyhow::Error);
 // TODO await upstream
 // impl_into_into_dart_by_self!(std::backtrace::Backtrace);
 

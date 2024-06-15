@@ -37,7 +37,6 @@ pub(crate) fn generate(
     context: WireDartGeneratorContext,
     c_file_content: &str,
     api_dart_actual_output_paths: &[PathBuf],
-    extra_impl_text: &str,
     rust_extern_funcs: &[ExternFunc],
     rust_content_hash: i32,
     dumper: &Dumper,
@@ -45,11 +44,8 @@ pub(crate) fn generate(
 ) -> anyhow::Result<WireDartOutputSpec> {
     let cache = MirPackComputedCache::compute(context.mir_pack);
 
-    dumper.dump(
-        GeneratorInfo,
-        "wire_dart.json",
-        &generate_dump_info(&cache, context),
-    )?;
+    (dumper.with_content(GeneratorInfo))
+        .dump("wire_dart.json", &generate_dump_info(&cache, context))?;
 
     Ok(WireDartOutputSpec {
         misc: misc::generate(
@@ -57,7 +53,6 @@ pub(crate) fn generate(
             &cache,
             c_file_content,
             api_dart_actual_output_paths,
-            extra_impl_text,
             rust_extern_funcs,
             rust_content_hash,
             progress_bar_pack,

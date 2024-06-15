@@ -11,11 +11,8 @@ use crate::codegen::ir::mir::ty::MirType;
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
-use crate::utils::basic_code::DartBasicHeaderCode;
-use crate::utils::namespace::NamespacedName;
-use itertools::Itertools;
-use lazy_static::lazy_static;
-use regex::Regex;
+use crate::utils::basic_code::dart_header_code::DartHeaderCode;
+use itertools::{concat, Itertools};
 
 impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
     fn generate_class(&self) -> Option<ApiDartGeneratedClass> {
@@ -33,11 +30,12 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
 
         let rust_api_type = self.mir.rust_api_type();
 
-        let extra_body =
+        let extra_code =
             generate_class_extra_body(self.mir_type(), &self.context.mir_pack.dart_code_of_type);
+        let extra_body = &extra_code.body;
 
-        let (maybe_impls, maybe_impls_header) =
-            generate_maybe_impls(&self.context.mir_pack.trait_impls, &self.mir, self.context);
+        let (impl_code, impl_header) =
+            generate_implements(&self.context.mir_pack.trait_impls, &self.mir, self.context);
 
         Some(ApiDartGeneratedClass {
             namespace: self.mir.namespace.clone(),
@@ -45,19 +43,15 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
             code: format!(
                 "
                 // Rust type: {rust_api_type}
-                abstract class {dart_api_type}{maybe_impls} {{
+                abstract class {dart_api_type} implements {impl_code} {{
                     {methods_str}
-
-                    void dispose();
-
-                    bool get isDisposed;
 
                     {extra_body}
                 }}
                 "
             ),
             needs_freezed: false,
-            header: methods.header + maybe_impls_header,
+            header: methods.header + impl_header + extra_code.header,
         })
     }
 
@@ -109,10 +103,9 @@ impl RustOpaqueApiDartGenerator<'_> {
         dart_class_name_postfix: &str,
     ) -> Info {
         let dart_api_type = ApiDartGenerator::new(self.mir.clone(), self.context).dart_api_type();
-        let type_query_name = compute_query_name(&self.mir);
 
         let methods = generate_api_methods(
-            &NamespacedName::new(self.mir.namespace.clone(), type_query_name.clone()),
+            &MirType::RustOpaque(self.mir.clone()),
             self.context,
             config,
             &format!("{dart_api_type}{dart_class_name_postfix}"),
@@ -130,20 +123,23 @@ struct Info {
     methods: GeneratedApiMethods,
 }
 
-fn compute_query_name(mir: &MirTypeRustOpaque) -> String {
-    lazy_static! {
-        static ref FILTER: Regex =
-            Regex::new(r"^flutter_rust_bridge::for_generated::RustAutoOpaqueInner<(.*)>$").unwrap();
-    }
-
-    FILTER.replace_all(&mir.inner.0, "$1").to_string()
-}
-
-fn generate_maybe_impls(
+fn generate_implements(
     all_trait_impls: &[MirTraitImpl],
     self_type: &MirTypeRustOpaque,
     context: ApiDartGeneratorContext,
-) -> (String, DartBasicHeaderCode) {
+) -> (String, DartHeaderCode) {
+    let (names, header) = generate_implements_traits(all_trait_impls, self_type, context);
+    (
+        concat([vec!["RustOpaqueInterface".to_owned()], names]).join(", "),
+        header,
+    )
+}
+
+fn generate_implements_traits(
+    all_trait_impls: &[MirTraitImpl],
+    self_type: &MirTypeRustOpaque,
+    context: ApiDartGeneratorContext,
+) -> (Vec<String>, DartHeaderCode) {
     let interest_trait_impls = all_trait_impls
         .iter()
         .filter(|x| {
@@ -153,13 +149,12 @@ fn generate_maybe_impls(
         .collect_vec();
 
     if interest_trait_impls.is_empty() {
-        return ("".to_owned(), Default::default());
+        return (vec![], Default::default());
     }
 
-    let combined_impls = (interest_trait_impls.iter())
+    let impl_names = (interest_trait_impls.iter())
         .map(|t| ApiDartGenerator::new(t.trait_ty.clone(), context).dart_api_type())
-        .join(", ");
-    let code = format!(" implements {}", combined_impls);
+        .collect_vec();
 
     let interest_trait_types = (interest_trait_impls.iter())
         .map(|x| MirType::TraitDef(x.trait_ty.clone()))
@@ -173,8 +168,8 @@ fn generate_maybe_impls(
     .unwrap();
 
     (
-        code,
-        DartBasicHeaderCode {
+        impl_names,
+        DartHeaderCode {
             import,
             ..Default::default()
         },

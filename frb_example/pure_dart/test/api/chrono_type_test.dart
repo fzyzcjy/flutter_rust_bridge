@@ -1,4 +1,3 @@
-import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:frb_example_pure_dart/src/rust/api/chrono_type.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
@@ -99,8 +98,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('Combined Chrono types', () async {
     final test = await testChronoTwinNormal();
-    expect(castInt(test.dt!.millisecondsSinceEpoch), castInt(1631297333000));
-    expect(castInt(test.dt2!.millisecondsSinceEpoch), castInt(1631297333000));
+    expect(test.dt!.millisecondsSinceEpoch, 1631297333000);
+    expect(test.dt2!.millisecondsSinceEpoch, 1631297333000);
     expect(test.du, Duration(hours: 4));
   });
 

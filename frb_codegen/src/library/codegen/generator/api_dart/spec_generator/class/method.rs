@@ -1,18 +1,23 @@
 use crate::codegen::generator::api_dart;
+use crate::codegen::generator::api_dart::spec_generator::class::proxy_variant;
 use crate::codegen::generator::api_dart::spec_generator::function::{
     compute_params_str, ApiDartGeneratedFunction, ApiDartGeneratedFunctionParam,
 };
 use crate::codegen::generator::api_dart::spec_generator::misc::generate_dart_comments;
 use crate::codegen::ir::mir::func::{
-    MirFunc, MirFuncAccessorMode, MirFuncArgMode, MirFuncDefaultConstructorMode, MirFuncOwnerInfo,
-    MirFuncOwnerInfoMethod, MirFuncOwnerInfoMethodMode,
+    MirFunc, MirFuncAccessorMode, MirFuncArgMode, MirFuncDefaultConstructorMode, MirFuncImplMode,
+    MirFuncImplModeDartOnly, MirFuncOwnerInfo, MirFuncOwnerInfoMethod, MirFuncOwnerInfoMethodMode,
 };
+use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
+use crate::codegen::ir::mir::ty::MirType;
 use crate::if_then_some;
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
-use crate::utils::basic_code::DartBasicHeaderCode;
+use crate::utils::basic_code::dart_header_code::DartHeaderCode;
 use crate::utils::namespace::NamespacedName;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
+use lazy_static::lazy_static;
+use regex::Regex;
 
 #[derive(Debug, Clone)]
 pub(crate) struct GenerateApiMethodConfig {
@@ -44,29 +49,53 @@ pub(crate) enum GenerateApiMethodMode {
 pub(crate) struct GeneratedApiMethods {
     pub(crate) num_methods: usize,
     pub(crate) code: String,
-    pub(crate) header: DartBasicHeaderCode,
+    pub(crate) header: DartHeaderCode,
 }
 
 struct GeneratedApiMethod {
     code: String,
-    header: DartBasicHeaderCode,
+    header: DartHeaderCode,
 }
 
 pub(crate) fn generate_api_methods(
-    generalized_class_name: &NamespacedName,
+    owner_ty: &MirType,
     context: ApiDartGeneratorContext,
     config: &GenerateApiMethodConfig,
     dart_class_name: &str,
 ) -> GeneratedApiMethods {
-    let methods =
-        get_methods_of_enum_or_struct(generalized_class_name, &context.mir_pack.funcs_all)
-            .iter()
-            .filter_map(|func| generate_api_method(func, context, config, dart_class_name))
-            .collect_vec();
+    let query_class_name = compute_class_name_for_querying_methods(owner_ty);
+    let methods = get_methods_of_ty(&query_class_name, &context.mir_pack.funcs_all)
+        .iter()
+        .filter_map(|func| generate_api_method(func, context, config, dart_class_name))
+        .collect_vec();
     GeneratedApiMethods {
         num_methods: methods.len(),
         code: methods.iter().map(|x| x.code.clone()).join("\n"),
         header: (methods.iter().map(|x| x.header.clone())).fold(Default::default(), |a, b| a + b),
+    }
+}
+
+fn compute_class_name_for_querying_methods(ty: &MirType) -> NamespacedName {
+    match ty {
+        MirType::EnumRef(ty) => ty.ident.0.clone(),
+        MirType::StructRef(ty) => ty.ident.0.clone(),
+        MirType::TraitDef(ty) => ty.name.clone(),
+        MirType::Delegate(MirTypeDelegate::ProxyVariant(ty)) => {
+            compute_class_name_for_querying_methods(&ty.inner)
+        }
+        MirType::RustAutoOpaqueImplicit(ty) => {
+            compute_class_name_for_querying_methods(&MirType::RustOpaque(ty.inner.clone()))
+        }
+        MirType::RustOpaque(ty) => {
+            lazy_static! {
+                static ref FILTER: Regex =
+                    Regex::new(r"^flutter_rust_bridge::for_generated::RustAutoOpaqueInner<(.*)>$")
+                        .unwrap();
+            }
+            let name = FILTER.replace_all(&ty.inner.0, "$1").to_string();
+            NamespacedName::new(ty.namespace.clone(), name)
+        }
+        _ => panic!("compute_query_class_name see unknown ty={ty:?}"),
     }
 }
 
@@ -83,17 +112,12 @@ pub(crate) fn dart_constructor_postfix(
 }
 
 fn has_default_dart_constructor(name: &NamespacedName, all_funcs: &[MirFunc]) -> bool {
-    get_methods_of_enum_or_struct(name, all_funcs)
-        .iter()
-        .any(|m| {
-            m.default_constructor_mode() == Some(MirFuncDefaultConstructorMode::DartConstructor)
-        })
+    get_methods_of_ty(name, all_funcs).iter().any(|m| {
+        m.default_constructor_mode() == Some(MirFuncDefaultConstructorMode::DartConstructor)
+    })
 }
 
-fn get_methods_of_enum_or_struct<'a>(
-    name: &NamespacedName,
-    all_funcs: &'a [MirFunc],
-) -> Vec<&'a MirFunc> {
+fn get_methods_of_ty<'a>(name: &NamespacedName, all_funcs: &'a [MirFunc]) -> Vec<&'a MirFunc> {
     (all_funcs.iter())
         .filter(|f| matches!(&f.owner, MirFuncOwnerInfo::Method(m) if m.owner_ty_name().as_ref() == Some(name)))
         .collect_vec()
@@ -232,20 +256,30 @@ fn generate_implementation(
     method_info: &MirFuncOwnerInfoMethod,
     params: &[ApiDartGeneratedFunctionParam],
 ) -> String {
-    let dart_entrypoint_class_name = &context.config.dart_entrypoint_class_name;
-    let dart_api_instance = format!("{dart_entrypoint_class_name}.instance.api");
+    match &func.impl_mode {
+        MirFuncImplMode::Normal => {
+            let dart_entrypoint_class_name = &context.config.dart_entrypoint_class_name;
+            let dart_api_instance = format!("{dart_entrypoint_class_name}.instance.api");
 
-    let func_name = func.name_dart_wire();
+            let func_name = func.name_dart_wire();
 
-    let arg_names = params
-        .iter()
-        .map(|x| format!("{name}: {name}", name = x.name_str))
-        .join(", ");
+            let arg_names = params
+                .iter()
+                .map(|x| format!("{name}: {name}", name = x.name_str))
+                .join(", ");
 
-    if method_info.mode == MirFuncOwnerInfoMethodMode::Static {
-        format!("{dart_api_instance}.{func_name}({arg_names})")
-    } else {
-        let extra_arg_name = func.inputs[0].inner.name.dart_style();
-        format!("{dart_api_instance}.{func_name}({extra_arg_name}: this, {arg_names})")
+            if method_info.mode == MirFuncOwnerInfoMethodMode::Static {
+                format!("{dart_api_instance}.{func_name}({arg_names})")
+            } else {
+                let extra_arg_name = func.inputs[0].inner.name.dart_style();
+                format!("{dart_api_instance}.{func_name}({extra_arg_name}: this, {arg_names})")
+            }
+        }
+        MirFuncImplMode::NoImpl => "should_not_reach_here".to_owned(),
+        MirFuncImplMode::DartOnly(inner) => match inner {
+            MirFuncImplModeDartOnly::CreateProxyVariant(inner) => {
+                proxy_variant::compute_func_implementation(inner, context, func.mode)
+            }
+        },
     }
 }

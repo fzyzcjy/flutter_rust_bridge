@@ -4,11 +4,11 @@ use crate::codegen::generator::wire::dart::spec_generator::codec::cst::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::ty::WireDartCodecCstGeneratorEncoderTrait;
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
 use crate::codegen::ir::mir::ty::MirTypeTrait;
-use crate::library::codegen::generator::api_dart::spec_generator::base::ApiDartGenerator;
-use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 
 impl<'a> WireDartCodecCstGeneratorEncoderTrait for PrimitiveListWireDartCodecCstGenerator<'a> {
     fn generate_encode_func_body(&self) -> Acc<Option<String>> {
+        // We do not care about codecov of unsupported things
+        // frb-coverage:ignore-start
         if matches!(
             self.mir.primitive,
             MirTypePrimitive::Isize | MirTypePrimitive::Usize
@@ -17,6 +17,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for PrimitiveListWireDartCodecCst
                 "throw UnimplementedError('Not implemented in this codec');".to_owned(),
             ));
         }
+        // frb-coverage:ignore-end
 
         Acc {
             // NOTE Dart code *only* allocates memory. It never *release* memory by itself.
@@ -40,8 +41,8 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for PrimitiveListWireDartCodecCst
             )),
             web: Some(
                 match self.mir.primitive {
-                    MirTypePrimitive::I64 | MirTypePrimitive::U64 => "return raw.inner;",
-                    _ => "return raw;",
+                    MirTypePrimitive::I64 | MirTypePrimitive::U64 => "return raw.inner.jsify()!;",
+                    _ => "return raw.jsify()!;",
                 }
                 .into(),
             ),
@@ -54,13 +55,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for PrimitiveListWireDartCodecCst
             Target::Io => {
                 format!("ffi.Pointer<wire_cst_{}>", self.mir.safe_ident())
             }
-            Target::Web => match self.mir.primitive {
-                MirTypePrimitive::I64 | MirTypePrimitive::U64 => {
-                    "Object /* BigInt64Array */".to_owned()
-                }
-                _ => ApiDartGenerator::new(self.mir.clone(), self.context.as_api_dart_context())
-                    .dart_api_type(),
-            },
+            Target::Web => "JSAny".to_owned(),
         }
     }
 }

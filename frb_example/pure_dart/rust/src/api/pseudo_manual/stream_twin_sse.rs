@@ -119,3 +119,14 @@ pub struct MyStructContainingStreamSinkTwinSse {
 pub fn stream_sink_inside_struct_twin_sse(arg: MyStructContainingStreamSinkTwinSse) {
     arg.b.add(arg.a).unwrap();
 }
+
+#[flutter_rust_bridge::frb(serialize)]
+pub fn func_stream_add_value_and_error_twin_sse(
+    sink: StreamSink<i32, flutter_rust_bridge::SseCodec>,
+) {
+    (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool()).execute(transfer!(|| {
+        sink.add(100).unwrap();
+        sink.add(200).unwrap();
+        sink.add_error(anyhow!("deliberate error")).unwrap();
+    }));
+}

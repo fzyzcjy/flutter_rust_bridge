@@ -1,7 +1,8 @@
 use crate::codegen::ir::mir::field::MirField;
 use crate::codegen::ir::mir::func::{
-    MirFunc, MirFuncAccessorMode, MirFuncArgMode, MirFuncInput, MirFuncMode, MirFuncOutput,
-    MirFuncOwnerInfo, MirFuncOwnerInfoMethod, MirFuncOwnerInfoMethodMode, OwnershipMode,
+    MirFunc, MirFuncAccessorMode, MirFuncArgMode, MirFuncImplMode, MirFuncInput, MirFuncMode,
+    MirFuncOutput, MirFuncOwnerInfo, MirFuncOwnerInfoMethod, MirFuncOwnerInfoMethodMode,
+    OwnershipMode,
 };
 use crate::codegen::ir::mir::ident::MirIdent;
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
@@ -27,12 +28,12 @@ pub(super) fn parse_auto_accessor_of_field(
     type_parser: &mut TypeParser,
     context: &TypeParserParsingContext,
 ) -> anyhow::Result<MirFuncAndSanityCheckInfo> {
-    let rust_method_name = format!("{}_{}", accessor_mode.verb_str(), field.name.raw);
+    let rust_method_name = format!("{}_{}", accessor_mode.verb_str(), field.name.rust_style());
 
     let owner = MirFuncOwnerInfoMethod {
         owner_ty: ty_direct_parse.to_owned(),
         actual_method_name: rust_method_name,
-        actual_method_dart_name: Some(field.name.raw.clone()),
+        actual_method_dart_name: Some(field.name.rust_style().to_owned()),
         mode: MirFuncOwnerInfoMethodMode::Instance,
         trait_def: None,
     };
@@ -46,7 +47,7 @@ pub(super) fn parse_auto_accessor_of_field(
     if accessor_mode == MirFuncAccessorMode::Setter {
         inputs.push(MirFuncInput {
             ownership_mode: None,
-            inner: create_mir_field(field.ty.clone(), &field.name.raw),
+            inner: create_mir_field(field.ty.clone(), &field.name.rust_style()),
         });
     }
 
@@ -86,7 +87,7 @@ pub(super) fn parse_auto_accessor_of_field(
             &config.force_codec_mode_pack,
         ),
         rust_call_code: Some(rust_call_code),
-        has_impl: true,
+        impl_mode: MirFuncImplMode::Normal,
         src_lineno_pseudo: compute_src_lineno_pseudo(struct_name, field),
     };
 
@@ -123,7 +124,7 @@ fn compute_self_arg(
 fn compute_src_lineno_pseudo(struct_name: &NamespacedName, field: &MirField) -> usize {
     let mut hasher = Sha1::new();
     hasher.update(struct_name.rust_style().as_bytes());
-    hasher.update(field.name.raw.as_bytes());
+    hasher.update(field.name.rust_style().as_bytes());
     let digest = hasher.finalize();
     usize::from_le_bytes(digest[..8].try_into().unwrap())
 }
@@ -131,7 +132,7 @@ fn compute_src_lineno_pseudo(struct_name: &NamespacedName, field: &MirField) -> 
 fn create_mir_field(ty: MirType, name: &str) -> MirField {
     MirField {
         ty,
-        name: MirIdent::new(name.to_owned()),
+        name: MirIdent::new(name.to_owned(), None),
         is_final: true,
         is_rust_public: None,
         comments: vec![],

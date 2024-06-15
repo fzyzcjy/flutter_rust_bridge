@@ -2,6 +2,7 @@
   "dart_code_of_type": {},
   "enum_pool": {},
   "existing_handler": null,
+  "extra_rust_output_code": "",
   "funcs_all": [],
   "skipped_functions": [],
   "struct_pool": {
@@ -14,7 +15,10 @@
           "default": null,
           "is_final": true,
           "is_rust_public": false,
-          "name": "a",
+          "name": {
+            "dart_style": null,
+            "rust_style": "a"
+          },
           "settings": {
             "is_in_mirrored_enum": false
           },

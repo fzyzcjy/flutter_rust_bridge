@@ -6,13 +6,12 @@ mod text_generator;
 use crate::codegen::dumper::internal_config::ConfigDumpContent;
 use crate::codegen::dumper::Dumper;
 use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig;
-use crate::codegen::generator::misc::PathTexts;
+use crate::codegen::generator::misc::path_texts::PathTexts;
 use crate::codegen::ir::mir::pack::MirPack;
 use anyhow::Result;
 
 pub(crate) struct GeneratorApiDartOutput {
     pub output_texts: PathTexts,
-    pub output_extra_impl_text: String,
     pub needs_freezed: bool,
 }
 
@@ -22,11 +21,11 @@ pub(crate) fn generate(
     dumper: &Dumper,
 ) -> Result<GeneratorApiDartOutput> {
     let spec = spec_generator::generate(mir_pack, config, dumper)?;
-    dumper.dump(ConfigDumpContent::GeneratorSpec, "api_dart.json", &spec)?;
+
+    (dumper.with_content(ConfigDumpContent::GeneratorSpec)).dump("api_dart.json", &spec)?;
 
     let text = text_generator::generate(&spec, config)?;
-    dumper.dump_path_texts(
-        ConfigDumpContent::GeneratorText,
+    (dumper.with_content(ConfigDumpContent::GeneratorText)).dump_path_texts(
         "api_dart",
         &text.output_texts,
         &config.dart_decl_base_output_path,
@@ -34,7 +33,6 @@ pub(crate) fn generate(
 
     Ok(GeneratorApiDartOutput {
         output_texts: text.output_texts,
-        output_extra_impl_text: text.output_extra_impl_text,
         needs_freezed: spec.namespaced_items.values().any(|x| x.needs_freezed),
     })
 }
@@ -61,6 +59,7 @@ mod tests {
             HashMap::from([
                 ("api.dart", "expect_output.dart"),
                 ("dep.dart", "expect_output2.dart"),
+                ("frb_generated.dart", "expect_output3.dart"),
             ]),
         )
     }
@@ -70,7 +69,10 @@ mod tests {
     fn test_functions() -> anyhow::Result<()> {
         body(
             "library/codegen/generator/api_dart/mod/functions",
-            HashMap::from([("api.dart", "expect_output.dart")]),
+            HashMap::from([
+                ("api.dart", "expect_output.dart"),
+                ("frb_generated.dart", "expect_output2.dart"),
+            ]),
         )
     }
 
@@ -83,21 +85,27 @@ mod tests {
         let internal_config = InternalConfig::parse(&config, &MetaConfig { watch: false })?;
         let mir_pack = crate::codegen::parser::parse(
             &internal_config.parser,
-            &Dumper(&Default::default()),
+            &Dumper::new(&Default::default()),
             &GeneratorProgressBarPack::new(),
         )?;
         let actual = generate(
             &mir_pack,
             &internal_config.generator.api_dart,
-            &Dumper(&Default::default()),
+            &Dumper::new(&Default::default()),
         )?;
 
         let output_texts = actual.output_texts;
-        assert_eq!(output_texts.0.len(), expect_outputs.len());
+        assert_eq!(
+            output_texts.0.len(),
+            expect_outputs.len(),
+            "output_texts={output_texts:?}"
+        );
         for path_text in output_texts.0 {
             let path = path_text.path.file_name().unwrap().to_str().unwrap();
             let expect_output = expect_outputs.get(path).unwrap();
-            let raw_text = (path_text.text).replace(env!("CARGO_PKG_VERSION"), "{VERSION}");
+            let raw_text = (path_text.text)
+                .all_code()
+                .replace(env!("CARGO_PKG_VERSION"), "{VERSION}");
             text_golden_test(raw_text, &test_fixture_dir.join(expect_output))?;
         }
 

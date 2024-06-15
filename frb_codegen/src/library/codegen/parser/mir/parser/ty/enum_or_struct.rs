@@ -6,6 +6,8 @@ use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
 use crate::codegen::parser::mir::parser::ty::unencodable::SplayedSegment;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
+use crate::utils::basic_code::general_code::GeneralDartCode;
+use crate::utils::basic_code::parser::parse_dart_code;
 use crate::utils::crate_name::CrateName;
 use crate::utils::namespace::{Namespace, NamespacedName};
 use log::debug;
@@ -88,13 +90,16 @@ where
                 return;
             }
 
+            let dart_code_typed = parse_dart_code(&dart_code);
+
             let keys = match ty {
                 MirType::RustAutoOpaqueImplicit(ty) => vec![ty.safe_ident(), ty.inner.safe_ident()],
                 ty => vec![ty.safe_ident()],
             };
 
             for key in keys {
-                self.dart_code_of_type().insert(key, dart_code.clone());
+                self.dart_code_of_type()
+                    .insert(key, dart_code_typed.clone());
             }
         }
     }
@@ -128,7 +133,7 @@ where
 
     fn parser_info(&mut self) -> &mut EnumOrStructParserInfo<Id, Obj>;
 
-    fn dart_code_of_type(&mut self) -> &mut HashMap<String, String>;
+    fn dart_code_of_type(&mut self) -> &mut HashMap<String, GeneralDartCode>;
 
     fn parse_type_rust_auto_opaque_implicit(
         &mut self,

@@ -10,20 +10,33 @@
         {
           "comments": [],
           "kind": "Value",
-          "name": "A",
-          "wrapper_name": "MyEnum_A"
+          "name": {
+            "dart_style": null,
+            "rust_style": "A"
+          },
+          "wrapper_name": {
+            "dart_style": null,
+            "rust_style": "MyEnum_A"
+          }
         },
         {
           "comments": [],
           "kind": "Value",
-          "name": "B",
-          "wrapper_name": "MyEnum_B"
+          "name": {
+            "dart_style": null,
+            "rust_style": "B"
+          },
+          "wrapper_name": {
+            "dart_style": null,
+            "rust_style": "MyEnum_B"
+          }
         }
       ],
       "wrapper_name": null
     }
   },
   "existing_handler": null,
+  "extra_rust_output_code": "",
   "funcs_all": [
     {
       "accessor": null,
@@ -34,8 +47,8 @@
       },
       "comments": [],
       "dart_name": null,
-      "has_impl": true,
       "id": 1,
+      "impl_mode": "Normal",
       "initializer": false,
       "inputs": [
         {
@@ -44,7 +57,10 @@
             "default": null,
             "is_final": true,
             "is_rust_public": null,
-            "name": "that",
+            "name": {
+              "dart_style": null,
+              "rust_style": "that"
+            },
             "settings": {
               "is_in_mirrored_enum": false
             },
@@ -109,8 +125,8 @@
       },
       "comments": [],
       "dart_name": null,
-      "has_impl": true,
       "id": 2,
+      "impl_mode": "Normal",
       "initializer": false,
       "inputs": [],
       "mode": "Normal",
@@ -157,8 +173,8 @@
       },
       "comments": [],
       "dart_name": null,
-      "has_impl": true,
       "id": 3,
+      "impl_mode": "Normal",
       "initializer": false,
       "inputs": [
         {
@@ -167,7 +183,10 @@
             "default": null,
             "is_final": true,
             "is_rust_public": null,
-            "name": "that",
+            "name": {
+              "dart_style": null,
+              "rust_style": "that"
+            },
             "settings": {
               "is_in_mirrored_enum": false
             },
@@ -229,8 +248,8 @@
       },
       "comments": [],
       "dart_name": null,
-      "has_impl": true,
       "id": 4,
+      "impl_mode": "Normal",
       "initializer": false,
       "inputs": [],
       "mode": "Normal",

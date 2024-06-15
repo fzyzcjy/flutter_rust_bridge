@@ -26,6 +26,7 @@ Future<void> generateRustMod(
 
   const kPrefixes = {
     'conditionally_compiled_module': '#[cfg(target_os = "non_existent_os")]',
+    'deliberately_ignored_module': '/// flutter_rust_bridge:ignore\n',
   };
 
   final lines = [

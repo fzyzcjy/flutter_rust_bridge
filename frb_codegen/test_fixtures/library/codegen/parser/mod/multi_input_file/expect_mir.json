@@ -2,6 +2,7 @@
   "dart_code_of_type": {},
   "enum_pool": {},
   "existing_handler": null,
+  "extra_rust_output_code": "",
   "funcs_all": [
     {
       "accessor": null,
@@ -12,8 +13,8 @@
       },
       "comments": [],
       "dart_name": null,
-      "has_impl": true,
       "id": 1,
+      "impl_mode": "Normal",
       "initializer": false,
       "inputs": [],
       "mode": "Normal",
@@ -40,8 +41,8 @@
       },
       "comments": [],
       "dart_name": null,
-      "has_impl": true,
       "id": 2,
+      "impl_mode": "Normal",
       "initializer": false,
       "inputs": [],
       "mode": "Normal",

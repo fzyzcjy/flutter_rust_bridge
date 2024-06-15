@@ -82,7 +82,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
             //         "let multiple: Vec<u8> = self.cst_decode(); flutter_rust_bridge::for_generated::decode_uuids(multiple)".into(),
             //     ),
             // ),
-            MirTypeDelegate::Backtrace | MirTypeDelegate::AnyhowException /*| MirTypeDelegate::DynTrait(_)*/ => Acc::new(|target| match target {
+            MirTypeDelegate::Backtrace | MirTypeDelegate::AnyhowException | MirTypeDelegate::DynTrait(_) => Acc::new(|target| match target {
                 TargetOrCommon::Common => None,
                 TargetOrCommon::Io | TargetOrCommon::Web => Some("unimplemented!()".into()),
             }),
@@ -105,6 +105,12 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
                 io: Some("flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_decode(self.cst_decode())".into()),
                 ..Default::default()
             },
+            // Do not care about these unimplemented things
+            // frb-coverage:ignore-start
+            MirTypeDelegate::ProxyVariant(_) | MirTypeDelegate::ProxyEnum(_) =>
+                Acc::distribute(Some(r#"unimplemented!("Not implemented in this codec, please use the other one")"#.to_string())),
+            MirTypeDelegate::CastedPrimitive(_) | MirTypeDelegate::CustomSerDes(_) => Acc::distribute(None),
+            // frb-coverage:ignore-end
         }
     }
 
@@ -134,7 +140,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
                 "self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Uint8Array>().to_vec().into_boxed_slice().cst_decode()"
                     .into()
             }
-            MirTypeDelegate::Backtrace | MirTypeDelegate::AnyhowException /*| MirTypeDelegate::DynTrait(_)*/ => "unimplemented!()".into(),
+            MirTypeDelegate::Backtrace | MirTypeDelegate::AnyhowException | MirTypeDelegate::DynTrait(_) => "unimplemented!()".into(),
             MirTypeDelegate::Array(array) => generate_decode_array(array)
                 .into(),
             MirTypeDelegate::Map(mir) => generate_decode_map(mir).into(),
@@ -143,6 +149,12 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
             MirTypeDelegate::BigPrimitive(_) => "CstDecode::<String>::cst_decode(self).parse().unwrap()".into(),
             MirTypeDelegate::RustAutoOpaqueExplicit(_) =>
                 "flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_decode(self.cst_decode())".into(),
+            // Do not care about these unimplemented things
+            // frb-coverage:ignore-start
+            MirTypeDelegate::ProxyVariant(_) | MirTypeDelegate::ProxyEnum(_) =>
+                r#"unimplemented!("Not implemented in this codec, please use the other one")"#.into(),
+            MirTypeDelegate::CastedPrimitive(_) | MirTypeDelegate::CustomSerDes(_) => return None,
+            // frb-coverage:ignore-end
         })
     }
 
