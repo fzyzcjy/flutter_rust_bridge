@@ -110,17 +110,18 @@ fn serialize_vec_syn<T: ToTokens, S: Serializer>(values: &[T], s: S) -> Result<S
     str.serialize(s)
 }
 
-fn rust_type_to_sanitized_type(rust: &str, brief_name: bool) -> String {
+fn rust_type_to_sanitized_type(raw: &str, brief_name: bool) -> String {
     lazy_static! {
         static ref OPAQUE_FILTER: Regex = Regex::new(r"((\bdyn|'static|\bDartSafe|\bRustAutoOpaqueInner|\bAssertUnwindSafe|\+ (Send|Sync|UnwindSafe|RefUnwindSafe))\b)|([a-zA-Z0-9_]+::)").unwrap();
         static ref OPAQUE_BRIEF_NAME_FILTER: Regex = Regex::new(r"(\bRwLock)\b").unwrap();
     }
 
-    let mut rust = OPAQUE_FILTER.replace_all(rust, "").to_string();
+    let mut ans = raw.to_owned();
+    ans = OPAQUE_FILTER.replace_all(&ans, "").to_string();
     if brief_name {
-        rust = OPAQUE_BRIEF_NAME_FILTER.replace_all(&rust, "").to_string();
+        ans = OPAQUE_BRIEF_NAME_FILTER.replace_all(&ans, "").to_string();
     }
-    rust.replace(char_not_alphanumeric, "_")
+    ans.replace(char_not_alphanumeric, "_")
         .to_case(Case::Pascal)
 }
 
