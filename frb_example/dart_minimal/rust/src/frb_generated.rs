@@ -86,9 +86,8 @@ fn wire__crate__api__minimal__LifetimeTesterOneTwinNormal_compute_two_impl(
                         }
                     }
                     let api_that = &*api_that_decoded.unwrap();
-                    Result::<_, ()>::Ok(
-                        crate::api::minimal::LifetimeTesterOneTwinNormal::compute_two(api_that),
-                    )
+                    let output_raw = crate::api::minimal::LifetimeTesterOneTwinNormal::compute_two(api_that);
+                    Result::<_, ()>::Ok(output_raw)
                 })())
             }
         },
