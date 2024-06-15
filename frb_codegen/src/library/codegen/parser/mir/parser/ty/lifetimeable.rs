@@ -26,7 +26,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                     api_type: Box::new(MirType::RustAutoOpaqueImplicit(original)),
                     delegate: Box::new(self.parse_type_rust_auto_opaque_implicit(
                         namespace,
-                        syn::parse_str(&delegate_ty_str)?,
+                        &syn::parse_str(&delegate_ty_str)?,
                         None,
                         None,
                     )?),
