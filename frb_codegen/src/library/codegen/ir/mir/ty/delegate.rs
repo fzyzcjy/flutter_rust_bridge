@@ -114,6 +114,7 @@ pub struct MirTypeDelegateDynTrait {
 
 pub struct MirTypeDelegateLifetimeable {
     pub api_type: Box<MirType>,
+    pub delegate: Box<MirType>,
 }
 
 pub struct MirTypeDelegateDynTraitData {
@@ -337,7 +338,7 @@ impl MirTypeDelegate {
             MirTypeDelegate::DynTrait(mir) => mir.get_delegate(),
             MirTypeDelegate::ProxyVariant(mir) => *mir.inner.clone(),
             MirTypeDelegate::ProxyEnum(mir) => mir.get_delegate(),
-            MirTypeDelegate::Lifetimeable(mir) => *mir.api_type.clone(),
+            MirTypeDelegate::Lifetimeable(mir) => *mir.delegate.clone(),
             MirTypeDelegate::CustomSerDes(mir) => *mir.info.inner_type.clone(),
         }
     }
