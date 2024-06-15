@@ -113,7 +113,7 @@ pub struct MirTypeDelegateDynTrait {
 }
 
 pub struct MirTypeDelegateLifetimeable {
-    pub rust_api_type: Box<MirType>,
+    pub api_type: Box<MirType>,
     pub delegate: Box<MirType>,
 }
 
@@ -192,7 +192,7 @@ impl MirTypeTrait for MirTypeDelegate {
                 format!("ProxyEnum_{}", mir.get_delegate().safe_ident())
             }
             MirTypeDelegate::Lifetimeable(mir) => {
-                format!("Lifetimeable_{}", mir.rust_api_type.safe_ident())
+                format!("Lifetimeable_{}", mir.api_type.safe_ident())
             }
             MirTypeDelegate::CustomSerDes(mir) => {
                 format!("CustomSerializer_{}", mir.info.rust_api_type.safe_ident())
@@ -263,7 +263,7 @@ impl MirTypeTrait for MirTypeDelegate {
             MirTypeDelegate::DynTrait(mir) => format!("dyn {}", mir.trait_def_name.name),
             MirTypeDelegate::ProxyVariant(mir) => mir.inner.rust_api_type(),
             MirTypeDelegate::ProxyEnum(mir) => mir.original.rust_api_type(),
-            MirTypeDelegate::Lifetimeable(mir) => mir.rust_api_type.rust_api_type(),
+            MirTypeDelegate::Lifetimeable(mir) => mir.api_type.rust_api_type(),
             MirTypeDelegate::CustomSerDes(mir) => mir.info.rust_api_type.rust_api_type(),
         }
     }
