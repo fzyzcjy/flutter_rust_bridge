@@ -34,6 +34,13 @@ self_cell!(
     impl {Debug}
 );
 
+fn compute<'a>(one: &'a One, unrelated: &i32) -> Two<'a> {
+    Two {
+        one,
+        unrelated: *unrelated,
+    }
+}
+
 fn build_pack(
     one: Arc<RwLock<One>>,
     unrelated: Arc<RwLock<i32>>,
@@ -42,10 +49,10 @@ fn build_pack(
         one.read().map_err(|_| anyhow::anyhow!("read lock failed"))
     })?;
     let one_and_guard_and_two = OneAndGuardAndTwo::try_new(one_and_guard, |one_and_guard| {
-        anyhow::Ok(Two {
-            one: one_and_guard.borrow_dependent(),
-            unrelated: *unrelated.read().unwrap(),
-        })
+        anyhow::Ok(compute(
+            one_and_guard.borrow_dependent(),
+            &*unrelated.read().unwrap(),
+        ))
     })?;
     Ok(one_and_guard_and_two)
 }
