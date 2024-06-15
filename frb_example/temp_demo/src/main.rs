@@ -47,8 +47,11 @@ fn build_pack(
 ) -> anyhow::Result<OneAndGuardAndTwo> {
     let mut unrelated_guard: Option<RwLockReadGuard<i32>> = None;
     let one_and_guard = OneAndGuard::try_new(one, |one| {
+        // do ordered unlocking here
         unrelated_guard = Some(unrelated.read().unwrap());
-        one.read().map_err(|_| anyhow::anyhow!("read lock failed"))
+        let one_guard = one.read().unwrap();
+
+        anyhow::Ok(one_guard)
     })?;
     let one_and_guard_and_two = OneAndGuardAndTwo::try_new(one_and_guard, |one_and_guard| {
         anyhow::Ok(compute(
