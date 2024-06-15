@@ -1611,6 +1611,7 @@ dependencies = [
  "anyhow",
  "ouroboros",
  "self_cell",
+ "tokio",
 ]
 
 [[package]]
