@@ -1,3 +1,5 @@
+pub(crate) mod lifetime_changer;
+
 use std::any::Any;
 
 pub struct Lifetimeable<T> {
