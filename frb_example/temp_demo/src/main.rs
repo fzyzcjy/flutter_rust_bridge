@@ -1,19 +1,36 @@
-use ouroboros::self_referencing;
-use std::sync::{Arc, RwLock, RwLockReadGuard};
+use self_cell::self_cell;
 
-#[self_referencing]
-struct MyStruct {
-    upstream_arg: Arc<RwLock<String>>,
-    #[borrows(upstream_arg)]
-    read_guard: RwLockReadGuard<'this, String>,
+#[derive(Debug, Eq, PartialEq)]
+struct Ast<'a>(pub Vec<&'a str>);
+
+self_cell!(
+    struct AstCell {
+        owner: String,
+
+        #[covariant]
+        dependent: Ast,
+    }
+
+    impl {Debug, Eq, PartialEq}
+);
+
+fn build_ast_cell(code: &str) -> AstCell {
+    // Create owning String on stack.
+    let pre_processed_code = code.trim().to_string();
+
+    // Move String into AstCell, then build Ast inplace.
+    AstCell::new(pre_processed_code, |code| {
+        Ast(code.split(' ').filter(|word| word.len() > 1).collect())
+    })
 }
 
 fn main() {
-    // let mut my_value = MyStructBuilder {
-    //     int_data: 42,
-    //     int_reference_builder: |int_data: &i32| int_data,
-    // }
-    // .build();
-    //
-    // println!("{:?}", my_value.borrow_int_data());
+    let ast_cell = build_ast_cell("fox = cat + dog");
+
+    println!("ast_cell -> {:?}", &ast_cell);
+    println!("ast_cell.borrow_owner() -> {:?}", ast_cell.borrow_owner());
+    println!(
+        "ast_cell.borrow_dependent().0[1] -> {:?}",
+        ast_cell.borrow_dependent().0[1]
+    );
 }

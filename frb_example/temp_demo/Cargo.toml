@@ -12,3 +12,4 @@ categories.workspace = true
 
 [dependencies]
 ouroboros = "0.18.4"
+self_cell = "1.0.4"
