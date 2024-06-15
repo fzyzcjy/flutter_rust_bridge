@@ -33,8 +33,7 @@ self_cell!(
     impl {Debug}
 );
 
-fn build_pack() -> anyhow::Result<OneAndGuardAndTwo> {
-    let one = Arc::new(RwLock::new(One("hello".to_owned())));
+fn build_pack(one: Arc<RwLock<One>>) -> anyhow::Result<OneAndGuardAndTwo> {
     let one_and_guard = OneAndGuard::try_new(one, |one| {
         one.read().map_err(|_| anyhow::anyhow!("read lock failed"))
     })?;
@@ -47,8 +46,10 @@ fn build_pack() -> anyhow::Result<OneAndGuardAndTwo> {
 }
 
 fn main() -> anyhow::Result<()> {
-    let pack = build_pack()?;
+    let one = Arc::new(RwLock::new(One("hello".to_owned())));
+    let pack = build_pack(one.clone())?;
 
+    println!("one(cloned) -> {:?}", &one);
     println!("pack -> {:?}", &pack);
     println!("pack.borrow_owner() -> {:?}", pack.borrow_owner());
     println!("pack.borrow_dependent() -> {:?}", pack.borrow_dependent());
