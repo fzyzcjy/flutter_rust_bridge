@@ -103,7 +103,7 @@ fn wire__crate__api__minimal__Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_br
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeTesterTwoTwinNormala_greet", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_that = <LifetimeTesterTwoTwinNormal < 'a >>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
+            let api_that = <flutter_rust_bridge :: for_generated :: Lifetimeable < LifetimeTesterTwoTwinNormal < 'static > >>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse((move ||  {
                          Result::<_,()>::Ok(crate::api::minimal::LifetimeTesterTwoTwinNormal ::greet(&api_that))
                     })())
