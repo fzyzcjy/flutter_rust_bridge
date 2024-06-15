@@ -56,7 +56,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
-  LifetimeTesterTwoTwinNormalA
+  LifetimeTesterTwoTwinNormal
       dco_decode_Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeTesterTwoTwinNormala(
           dynamic raw);
 
@@ -119,7 +119,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
-  LifetimeTesterTwoTwinNormalA
+  LifetimeTesterTwoTwinNormal
       sse_decode_Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeTesterTwoTwinNormala(
           SseDeserializer deserializer);
 
@@ -189,7 +189,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void
       sse_encode_Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeTesterTwoTwinNormala(
-          LifetimeTesterTwoTwinNormalA self, SseSerializer serializer);
+          LifetimeTesterTwoTwinNormal self, SseSerializer serializer);
 
   @protected
   void

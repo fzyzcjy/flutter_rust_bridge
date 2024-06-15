@@ -72,7 +72,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 }
 
 abstract class RustLibApi extends BaseApi {
-  Future<LifetimeTesterTwoTwinNormalA>
+  Future<LifetimeTesterTwoTwinNormal>
       crateApiMinimalLifetimeTesterOneTwinNormalComputeTwo(
           {required LifetimeTesterOneTwinNormal that});
 
@@ -120,7 +120,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   });
 
   @override
-  Future<LifetimeTesterTwoTwinNormalA>
+  Future<LifetimeTesterTwoTwinNormal>
       crateApiMinimalLifetimeTesterOneTwinNormalComputeTwo(
           {required LifetimeTesterOneTwinNormal that}) {
     return handler.executeNormal(NormalTask(
@@ -295,7 +295,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  LifetimeTesterTwoTwinNormalA
+  LifetimeTesterTwoTwinNormal
       dco_decode_Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeTesterTwoTwinNormala(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -413,7 +413,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  LifetimeTesterTwoTwinNormalA
+  LifetimeTesterTwoTwinNormal
       sse_decode_Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeTesterTwoTwinNormala(
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -554,7 +554,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   void
       sse_encode_Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeTesterTwoTwinNormala(
-          LifetimeTesterTwoTwinNormalA self, SseSerializer serializer) {
+          LifetimeTesterTwoTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerflutter_rust_bridgefor_generatedLifetimeableLifetimeTesterTwoTwinNormalstatic(
         TODO, serializer);
@@ -689,7 +689,7 @@ class LifetimeTesterOneTwinNormalImpl extends RustOpaque
         .rust_arc_decrement_strong_count_LifetimeTesterOneTwinNormalPtr,
   );
 
-  Future<LifetimeTesterTwoTwinNormalA> computeTwo() =>
+  Future<LifetimeTesterTwoTwinNormal> computeTwo() =>
       RustLib.instance.api.crateApiMinimalLifetimeTesterOneTwinNormalComputeTwo(
         that: this,
       );
