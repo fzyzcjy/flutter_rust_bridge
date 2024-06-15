@@ -105,6 +105,9 @@ impl<'a> ApiDartGeneratorInfoTrait for DelegateApiDartGenerator<'a> {
                 ApiDartGenerator::new(mir.original.clone(), self.context).dart_api_type()
             }
             MirTypeDelegate::DynTrait(mir) => mir.trait_def_name.name.clone(),
+            MirTypeDelegate::Lifetimeable(mir) => {
+                ApiDartGenerator::new(mir.inner.clone(), self.context).dart_api_type()
+            }
             MirTypeDelegate::CustomSerDes(mir) => mir.info.dart_api_type.clone(),
         }
     }

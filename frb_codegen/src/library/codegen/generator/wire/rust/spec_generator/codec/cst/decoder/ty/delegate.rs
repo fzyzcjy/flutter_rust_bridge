@@ -105,9 +105,12 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
             },
             // Do not care about these unimplemented things
             // frb-coverage:ignore-start
-            MirTypeDelegate::ProxyVariant(_) | MirTypeDelegate::ProxyEnum(_) =>
+            MirTypeDelegate::ProxyVariant(_)
+            | MirTypeDelegate::ProxyEnum(_) =>
                 Acc::distribute(Some(r#"unimplemented!("Not implemented in this codec, please use the other one")"#.to_string())),
-            MirTypeDelegate::CastedPrimitive(_) | MirTypeDelegate::CustomSerDes(_) => Acc::distribute(None),
+            MirTypeDelegate::CastedPrimitive(_)
+            | MirTypeDelegate::CustomSerDes(_)
+            | MirTypeDelegate::Lifetimeable(_) => Acc::distribute(None),
             // frb-coverage:ignore-end
         }
     }
@@ -151,7 +154,9 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
             // frb-coverage:ignore-start
             MirTypeDelegate::ProxyVariant(_) | MirTypeDelegate::ProxyEnum(_) =>
                 r#"unimplemented!("Not implemented in this codec, please use the other one")"#.into(),
-            MirTypeDelegate::CastedPrimitive(_) | MirTypeDelegate::CustomSerDes(_) => return None,
+            MirTypeDelegate::CastedPrimitive(_)
+            | MirTypeDelegate::CustomSerDes(_)
+            | MirTypeDelegate::Lifetimeable(_) => return None,
             // frb-coverage:ignore-end
         })
     }
