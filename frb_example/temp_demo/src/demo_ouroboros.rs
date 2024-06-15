@@ -8,4 +8,6 @@ pub struct LeafNodeIter {
     iter: std::slice::Iter<'this, String>,
 }
 
-pub fn main() {}
+pub fn main() -> anyhow::Result<()> {
+    Ok(())
+}
