@@ -67,7 +67,7 @@ flutter_rust_bridge::frb_generated_boilerplate!(
     default_rust_auto_opaque = RustAutoOpaqueMoi,
 );
 pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "2.0.0-dev.39";
-pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = 1150428884;
+pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = -1764045916;
 
 // Section: executor
 
@@ -1223,14 +1223,14 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
  Result::<_,()>::Ok(web_audio_api::AudioParam::value(api_that))
                 })()) })
 }
-fn wire__web_audio_api__AudioProcessingEvent_get_input_buffer_impl(
+fn wire__web_audio_api__AudioProcessingEvent_auto_accessor_get_input_buffer_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "AudioProcessingEvent_get_input_buffer",
+            debug_name: "AudioProcessingEvent_auto_accessor_get_input_buffer",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -1268,14 +1268,14 @@ fn wire__web_audio_api__AudioProcessingEvent_get_input_buffer_impl(
         },
     )
 }
-fn wire__web_audio_api__AudioProcessingEvent_get_output_buffer_impl(
+fn wire__web_audio_api__AudioProcessingEvent_auto_accessor_get_output_buffer_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "AudioProcessingEvent_get_output_buffer",
+            debug_name: "AudioProcessingEvent_auto_accessor_get_output_buffer",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -1313,14 +1313,14 @@ fn wire__web_audio_api__AudioProcessingEvent_get_output_buffer_impl(
         },
     )
 }
-fn wire__web_audio_api__AudioProcessingEvent_get_playback_time_impl(
+fn wire__web_audio_api__AudioProcessingEvent_auto_accessor_get_playback_time_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "AudioProcessingEvent_get_playback_time",
+            debug_name: "AudioProcessingEvent_auto_accessor_get_playback_time",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -1358,14 +1358,14 @@ fn wire__web_audio_api__AudioProcessingEvent_get_playback_time_impl(
         },
     )
 }
-fn wire__web_audio_api__AudioProcessingEvent_set_input_buffer_impl(
+fn wire__web_audio_api__AudioProcessingEvent_auto_accessor_set_input_buffer_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "AudioProcessingEvent_set_input_buffer",
+            debug_name: "AudioProcessingEvent_auto_accessor_set_input_buffer",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -1408,14 +1408,14 @@ fn wire__web_audio_api__AudioProcessingEvent_set_input_buffer_impl(
         },
     )
 }
-fn wire__web_audio_api__AudioProcessingEvent_set_output_buffer_impl(
+fn wire__web_audio_api__AudioProcessingEvent_auto_accessor_set_output_buffer_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "AudioProcessingEvent_set_output_buffer",
+            debug_name: "AudioProcessingEvent_auto_accessor_set_output_buffer",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -1458,14 +1458,14 @@ fn wire__web_audio_api__AudioProcessingEvent_set_output_buffer_impl(
         },
     )
 }
-fn wire__web_audio_api__AudioProcessingEvent_set_playback_time_impl(
+fn wire__web_audio_api__AudioProcessingEvent_auto_accessor_set_playback_time_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "AudioProcessingEvent_set_playback_time",
+            debug_name: "AudioProcessingEvent_auto_accessor_set_playback_time",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -1508,14 +1508,14 @@ fn wire__web_audio_api__AudioProcessingEvent_set_playback_time_impl(
         },
     )
 }
-fn wire__web_audio_api__AudioRenderCapacityEvent_get_average_load_impl(
+fn wire__web_audio_api__AudioRenderCapacityEvent_auto_accessor_get_average_load_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "AudioRenderCapacityEvent_get_average_load",
+            debug_name: "AudioRenderCapacityEvent_auto_accessor_get_average_load",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -1553,14 +1553,14 @@ fn wire__web_audio_api__AudioRenderCapacityEvent_get_average_load_impl(
         },
     )
 }
-fn wire__web_audio_api__AudioRenderCapacityEvent_get_event_impl(
+fn wire__web_audio_api__AudioRenderCapacityEvent_auto_accessor_get_event_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "AudioRenderCapacityEvent_get_event",
+            debug_name: "AudioRenderCapacityEvent_auto_accessor_get_event",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -1598,14 +1598,14 @@ fn wire__web_audio_api__AudioRenderCapacityEvent_get_event_impl(
         },
     )
 }
-fn wire__web_audio_api__AudioRenderCapacityEvent_get_peak_load_impl(
+fn wire__web_audio_api__AudioRenderCapacityEvent_auto_accessor_get_peak_load_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "AudioRenderCapacityEvent_get_peak_load",
+            debug_name: "AudioRenderCapacityEvent_auto_accessor_get_peak_load",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -1643,14 +1643,14 @@ fn wire__web_audio_api__AudioRenderCapacityEvent_get_peak_load_impl(
         },
     )
 }
-fn wire__web_audio_api__AudioRenderCapacityEvent_get_timestamp_impl(
+fn wire__web_audio_api__AudioRenderCapacityEvent_auto_accessor_get_timestamp_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "AudioRenderCapacityEvent_get_timestamp",
+            debug_name: "AudioRenderCapacityEvent_auto_accessor_get_timestamp",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -1688,14 +1688,14 @@ fn wire__web_audio_api__AudioRenderCapacityEvent_get_timestamp_impl(
         },
     )
 }
-fn wire__web_audio_api__AudioRenderCapacityEvent_get_underrun_ratio_impl(
+fn wire__web_audio_api__AudioRenderCapacityEvent_auto_accessor_get_underrun_ratio_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "AudioRenderCapacityEvent_get_underrun_ratio",
+            debug_name: "AudioRenderCapacityEvent_auto_accessor_get_underrun_ratio",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -1733,14 +1733,14 @@ fn wire__web_audio_api__AudioRenderCapacityEvent_get_underrun_ratio_impl(
         },
     )
 }
-fn wire__web_audio_api__AudioRenderCapacityEvent_set_average_load_impl(
+fn wire__web_audio_api__AudioRenderCapacityEvent_auto_accessor_set_average_load_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "AudioRenderCapacityEvent_set_average_load",
+            debug_name: "AudioRenderCapacityEvent_auto_accessor_set_average_load",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -1783,14 +1783,14 @@ fn wire__web_audio_api__AudioRenderCapacityEvent_set_average_load_impl(
         },
     )
 }
-fn wire__web_audio_api__AudioRenderCapacityEvent_set_event_impl(
+fn wire__web_audio_api__AudioRenderCapacityEvent_auto_accessor_set_event_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "AudioRenderCapacityEvent_set_event",
+            debug_name: "AudioRenderCapacityEvent_auto_accessor_set_event",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -1833,14 +1833,14 @@ fn wire__web_audio_api__AudioRenderCapacityEvent_set_event_impl(
         },
     )
 }
-fn wire__web_audio_api__AudioRenderCapacityEvent_set_peak_load_impl(
+fn wire__web_audio_api__AudioRenderCapacityEvent_auto_accessor_set_peak_load_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "AudioRenderCapacityEvent_set_peak_load",
+            debug_name: "AudioRenderCapacityEvent_auto_accessor_set_peak_load",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -1883,14 +1883,14 @@ fn wire__web_audio_api__AudioRenderCapacityEvent_set_peak_load_impl(
         },
     )
 }
-fn wire__web_audio_api__AudioRenderCapacityEvent_set_timestamp_impl(
+fn wire__web_audio_api__AudioRenderCapacityEvent_auto_accessor_set_timestamp_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "AudioRenderCapacityEvent_set_timestamp",
+            debug_name: "AudioRenderCapacityEvent_auto_accessor_set_timestamp",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -1933,14 +1933,14 @@ fn wire__web_audio_api__AudioRenderCapacityEvent_set_timestamp_impl(
         },
     )
 }
-fn wire__web_audio_api__AudioRenderCapacityEvent_set_underrun_ratio_impl(
+fn wire__web_audio_api__AudioRenderCapacityEvent_auto_accessor_set_underrun_ratio_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "AudioRenderCapacityEvent_set_underrun_ratio",
+            debug_name: "AudioRenderCapacityEvent_auto_accessor_set_underrun_ratio",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -2135,14 +2135,14 @@ fn wire__web_audio_api__AudioRenderCapacity_stop_impl(
         },
     )
 }
-fn wire__web_audio_api__OfflineAudioCompletionEvent_get_event_impl(
+fn wire__web_audio_api__OfflineAudioCompletionEvent_auto_accessor_get_event_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "OfflineAudioCompletionEvent_get_event",
+            debug_name: "OfflineAudioCompletionEvent_auto_accessor_get_event",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -2182,14 +2182,14 @@ fn wire__web_audio_api__OfflineAudioCompletionEvent_get_event_impl(
         },
     )
 }
-fn wire__web_audio_api__OfflineAudioCompletionEvent_get_rendered_buffer_impl(
+fn wire__web_audio_api__OfflineAudioCompletionEvent_auto_accessor_get_rendered_buffer_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "OfflineAudioCompletionEvent_get_rendered_buffer",
+            debug_name: "OfflineAudioCompletionEvent_auto_accessor_get_rendered_buffer",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -2229,14 +2229,14 @@ fn wire__web_audio_api__OfflineAudioCompletionEvent_get_rendered_buffer_impl(
         },
     )
 }
-fn wire__web_audio_api__OfflineAudioCompletionEvent_set_event_impl(
+fn wire__web_audio_api__OfflineAudioCompletionEvent_auto_accessor_set_event_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "OfflineAudioCompletionEvent_set_event",
+            debug_name: "OfflineAudioCompletionEvent_auto_accessor_set_event",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -2281,14 +2281,14 @@ fn wire__web_audio_api__OfflineAudioCompletionEvent_set_event_impl(
         },
     )
 }
-fn wire__web_audio_api__OfflineAudioCompletionEvent_set_rendered_buffer_impl(
+fn wire__web_audio_api__OfflineAudioCompletionEvent_auto_accessor_set_rendered_buffer_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "OfflineAudioCompletionEvent_set_rendered_buffer",
+            debug_name: "OfflineAudioCompletionEvent_auto_accessor_set_rendered_buffer",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -7576,14 +7576,14 @@ fn wire__web_audio_api__media_devices__get_user_media_sync_impl(
         },
     )
 }
-fn wire__web_audio_api__media_recorder__BlobEvent_get_blob_impl(
+fn wire__web_audio_api__media_recorder__BlobEvent_auto_accessor_get_blob_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "BlobEvent_get_blob",
+            debug_name: "BlobEvent_auto_accessor_get_blob",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -7621,14 +7621,14 @@ fn wire__web_audio_api__media_recorder__BlobEvent_get_blob_impl(
         },
     )
 }
-fn wire__web_audio_api__media_recorder__BlobEvent_get_event_impl(
+fn wire__web_audio_api__media_recorder__BlobEvent_auto_accessor_get_event_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "BlobEvent_get_event",
+            debug_name: "BlobEvent_auto_accessor_get_event",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -7666,14 +7666,14 @@ fn wire__web_audio_api__media_recorder__BlobEvent_get_event_impl(
         },
     )
 }
-fn wire__web_audio_api__media_recorder__BlobEvent_get_timecode_impl(
+fn wire__web_audio_api__media_recorder__BlobEvent_auto_accessor_get_timecode_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "BlobEvent_get_timecode",
+            debug_name: "BlobEvent_auto_accessor_get_timecode",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -7711,14 +7711,14 @@ fn wire__web_audio_api__media_recorder__BlobEvent_get_timecode_impl(
         },
     )
 }
-fn wire__web_audio_api__media_recorder__BlobEvent_set_blob_impl(
+fn wire__web_audio_api__media_recorder__BlobEvent_auto_accessor_set_blob_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "BlobEvent_set_blob",
+            debug_name: "BlobEvent_auto_accessor_set_blob",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -7761,14 +7761,14 @@ fn wire__web_audio_api__media_recorder__BlobEvent_set_blob_impl(
         },
     )
 }
-fn wire__web_audio_api__media_recorder__BlobEvent_set_event_impl(
+fn wire__web_audio_api__media_recorder__BlobEvent_auto_accessor_set_event_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "BlobEvent_set_event",
+            debug_name: "BlobEvent_auto_accessor_set_event",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -7811,14 +7811,14 @@ fn wire__web_audio_api__media_recorder__BlobEvent_set_event_impl(
         },
     )
 }
-fn wire__web_audio_api__media_recorder__BlobEvent_set_timecode_impl(
+fn wire__web_audio_api__media_recorder__BlobEvent_auto_accessor_set_timecode_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "BlobEvent_set_timecode",
+            debug_name: "BlobEvent_auto_accessor_set_timecode",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -32124,133 +32124,137 @@ fn pde_ffi_dispatcher_sync_impl(
     match func_id {
         70 => wire__web_audio_api__AudioParam_set_value_impl(ptr, rust_vec_len, data_len),
         73 => wire__web_audio_api__AudioParam_value_impl(ptr, rust_vec_len, data_len),
-        74 => wire__web_audio_api__AudioProcessingEvent_get_input_buffer_impl(
+        74 => wire__web_audio_api__AudioProcessingEvent_auto_accessor_get_input_buffer_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        75 => wire__web_audio_api__AudioProcessingEvent_get_output_buffer_impl(
+        75 => wire__web_audio_api__AudioProcessingEvent_auto_accessor_get_output_buffer_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        76 => wire__web_audio_api__AudioProcessingEvent_get_playback_time_impl(
+        76 => wire__web_audio_api__AudioProcessingEvent_auto_accessor_get_playback_time_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        77 => wire__web_audio_api__AudioProcessingEvent_set_input_buffer_impl(
+        77 => wire__web_audio_api__AudioProcessingEvent_auto_accessor_set_input_buffer_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        78 => wire__web_audio_api__AudioProcessingEvent_set_output_buffer_impl(
+        78 => wire__web_audio_api__AudioProcessingEvent_auto_accessor_set_output_buffer_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        79 => wire__web_audio_api__AudioProcessingEvent_set_playback_time_impl(
+        79 => wire__web_audio_api__AudioProcessingEvent_auto_accessor_set_playback_time_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        80 => wire__web_audio_api__AudioRenderCapacityEvent_get_average_load_impl(
+        80 => wire__web_audio_api__AudioRenderCapacityEvent_auto_accessor_get_average_load_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        81 => wire__web_audio_api__AudioRenderCapacityEvent_get_event_impl(
+        81 => wire__web_audio_api__AudioRenderCapacityEvent_auto_accessor_get_event_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        82 => wire__web_audio_api__AudioRenderCapacityEvent_get_peak_load_impl(
+        82 => wire__web_audio_api__AudioRenderCapacityEvent_auto_accessor_get_peak_load_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        83 => wire__web_audio_api__AudioRenderCapacityEvent_get_timestamp_impl(
+        83 => wire__web_audio_api__AudioRenderCapacityEvent_auto_accessor_get_timestamp_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        84 => wire__web_audio_api__AudioRenderCapacityEvent_get_underrun_ratio_impl(
+        84 => wire__web_audio_api__AudioRenderCapacityEvent_auto_accessor_get_underrun_ratio_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        85 => wire__web_audio_api__AudioRenderCapacityEvent_set_average_load_impl(
+        85 => wire__web_audio_api__AudioRenderCapacityEvent_auto_accessor_set_average_load_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        86 => wire__web_audio_api__AudioRenderCapacityEvent_set_event_impl(
+        86 => wire__web_audio_api__AudioRenderCapacityEvent_auto_accessor_set_event_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        87 => wire__web_audio_api__AudioRenderCapacityEvent_set_peak_load_impl(
+        87 => wire__web_audio_api__AudioRenderCapacityEvent_auto_accessor_set_peak_load_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        88 => wire__web_audio_api__AudioRenderCapacityEvent_set_timestamp_impl(
+        88 => wire__web_audio_api__AudioRenderCapacityEvent_auto_accessor_set_timestamp_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        89 => wire__web_audio_api__AudioRenderCapacityEvent_set_underrun_ratio_impl(
+        89 => wire__web_audio_api__AudioRenderCapacityEvent_auto_accessor_set_underrun_ratio_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        93 => wire__web_audio_api__OfflineAudioCompletionEvent_get_event_impl(
+        93 => wire__web_audio_api__OfflineAudioCompletionEvent_auto_accessor_get_event_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        94 => wire__web_audio_api__OfflineAudioCompletionEvent_get_rendered_buffer_impl(
+        94 => {
+            wire__web_audio_api__OfflineAudioCompletionEvent_auto_accessor_get_rendered_buffer_impl(
+                ptr,
+                rust_vec_len,
+                data_len,
+            )
+        }
+        95 => wire__web_audio_api__OfflineAudioCompletionEvent_auto_accessor_set_event_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        95 => wire__web_audio_api__OfflineAudioCompletionEvent_set_event_impl(
-            ptr,
-            rust_vec_len,
-            data_len,
-        ),
-        96 => wire__web_audio_api__OfflineAudioCompletionEvent_set_rendered_buffer_impl(
-            ptr,
-            rust_vec_len,
-            data_len,
-        ),
+        96 => {
+            wire__web_audio_api__OfflineAudioCompletionEvent_auto_accessor_set_rendered_buffer_impl(
+                ptr,
+                rust_vec_len,
+                data_len,
+            )
+        }
         129 => wire__web_audio_api__context__AudioContext_new_impl(ptr, rust_vec_len, data_len),
-        225 => wire__web_audio_api__media_recorder__BlobEvent_get_blob_impl(
+        225 => wire__web_audio_api__media_recorder__BlobEvent_auto_accessor_get_blob_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        226 => wire__web_audio_api__media_recorder__BlobEvent_get_event_impl(
+        226 => wire__web_audio_api__media_recorder__BlobEvent_auto_accessor_get_event_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        227 => wire__web_audio_api__media_recorder__BlobEvent_get_timecode_impl(
+        227 => wire__web_audio_api__media_recorder__BlobEvent_auto_accessor_get_timecode_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        228 => wire__web_audio_api__media_recorder__BlobEvent_set_blob_impl(
+        228 => wire__web_audio_api__media_recorder__BlobEvent_auto_accessor_set_blob_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        229 => wire__web_audio_api__media_recorder__BlobEvent_set_event_impl(
+        229 => wire__web_audio_api__media_recorder__BlobEvent_auto_accessor_set_event_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        230 => wire__web_audio_api__media_recorder__BlobEvent_set_timecode_impl(
+        230 => wire__web_audio_api__media_recorder__BlobEvent_auto_accessor_set_timecode_impl(
             ptr,
             rust_vec_len,
             data_len,

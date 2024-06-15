@@ -37801,17 +37801,24 @@ class RustLibWire implements BaseWire {
               port_);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_auto_accessor_get_one(
+              int that) =>
+          wasmModule
+              .wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_auto_accessor_get_one(
+                  that);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_auto_accessor_set_one(
+              int that, String one) =>
+          wasmModule
+              .wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_auto_accessor_set_one(
+                  that, one);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_check(
               int that) =>
           wasmModule
               .wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_check(
-                  that);
-
-  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_get_one(
-              int that) =>
-          wasmModule
-              .wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_get_one(
                   that);
 
   void wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_new(
@@ -37821,10 +37828,17 @@ class RustLibWire implements BaseWire {
               port_);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_set_one(
+      wire__crate__api__constructor__ConstructorOpaqueSyncStructTwinNormal_auto_accessor_get_one(
+              int that) =>
+          wasmModule
+              .wire__crate__api__constructor__ConstructorOpaqueSyncStructTwinNormal_auto_accessor_get_one(
+                  that);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__constructor__ConstructorOpaqueSyncStructTwinNormal_auto_accessor_set_one(
               int that, String one) =>
           wasmModule
-              .wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_set_one(
+              .wire__crate__api__constructor__ConstructorOpaqueSyncStructTwinNormal_auto_accessor_set_one(
                   that, one);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
@@ -37835,23 +37849,9 @@ class RustLibWire implements BaseWire {
                   that);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__constructor__ConstructorOpaqueSyncStructTwinNormal_get_one(
-              int that) =>
-          wasmModule
-              .wire__crate__api__constructor__ConstructorOpaqueSyncStructTwinNormal_get_one(
-                  that);
-
-  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__constructor__ConstructorOpaqueSyncStructTwinNormal_new() =>
           wasmModule
               .wire__crate__api__constructor__ConstructorOpaqueSyncStructTwinNormal_new();
-
-  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__constructor__ConstructorOpaqueSyncStructTwinNormal_set_one(
-              int that, String one) =>
-          wasmModule
-              .wire__crate__api__constructor__ConstructorOpaqueSyncStructTwinNormal_set_one(
-                  that, one);
 
   void wire__crate__api__constructor__constructor_translatable_struct_twin_normal_new(
           NativePortType port_) =>
@@ -38111,6 +38111,20 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__dropping__DroppableTwinNormal_simple_method_twin_normal(
               port_, that);
 
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__dyn_trait__StructOneWithTraitForDynTwinNormal_auto_accessor_get_one(
+              int that) =>
+          wasmModule
+              .wire__crate__api__dyn_trait__StructOneWithTraitForDynTwinNormal_auto_accessor_get_one(
+                  that);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__dyn_trait__StructOneWithTraitForDynTwinNormal_auto_accessor_set_one(
+              int that, int one) =>
+          wasmModule
+              .wire__crate__api__dyn_trait__StructOneWithTraitForDynTwinNormal_auto_accessor_set_one(
+                  that, one);
+
   void wire__crate__api__dyn_trait__StructOneWithTraitForDynTwinNormal_create_twin_normal(
           NativePortType port_,
           PlatformGeneralizedUint8ListPtr ptr_,
@@ -38119,20 +38133,6 @@ class RustLibWire implements BaseWire {
       wasmModule
           .wire__crate__api__dyn_trait__StructOneWithTraitForDynTwinNormal_create_twin_normal(
               port_, ptr_, rust_vec_len_, data_len_);
-
-  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__dyn_trait__StructOneWithTraitForDynTwinNormal_get_one(
-              int that) =>
-          wasmModule
-              .wire__crate__api__dyn_trait__StructOneWithTraitForDynTwinNormal_get_one(
-                  that);
-
-  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__dyn_trait__StructOneWithTraitForDynTwinNormal_set_one(
-              int that, int one) =>
-          wasmModule
-              .wire__crate__api__dyn_trait__StructOneWithTraitForDynTwinNormal_set_one(
-                  that, one);
 
   void wire__crate__api__dyn_trait__StructOneWithTraitForDynTwinNormal_simple_method_twin_normal(
           NativePortType port_,
@@ -38143,6 +38143,20 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__dyn_trait__StructOneWithTraitForDynTwinNormal_simple_method_twin_normal(
               port_, ptr_, rust_vec_len_, data_len_);
 
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__dyn_trait__StructTwoWithTraitForDynTwinNormal_auto_accessor_get_two(
+              int that) =>
+          wasmModule
+              .wire__crate__api__dyn_trait__StructTwoWithTraitForDynTwinNormal_auto_accessor_get_two(
+                  that);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__dyn_trait__StructTwoWithTraitForDynTwinNormal_auto_accessor_set_two(
+              int that, int two) =>
+          wasmModule
+              .wire__crate__api__dyn_trait__StructTwoWithTraitForDynTwinNormal_auto_accessor_set_two(
+                  that, two);
+
   void wire__crate__api__dyn_trait__StructTwoWithTraitForDynTwinNormal_create_twin_normal(
           NativePortType port_,
           PlatformGeneralizedUint8ListPtr ptr_,
@@ -38151,20 +38165,6 @@ class RustLibWire implements BaseWire {
       wasmModule
           .wire__crate__api__dyn_trait__StructTwoWithTraitForDynTwinNormal_create_twin_normal(
               port_, ptr_, rust_vec_len_, data_len_);
-
-  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__dyn_trait__StructTwoWithTraitForDynTwinNormal_get_two(
-              int that) =>
-          wasmModule
-              .wire__crate__api__dyn_trait__StructTwoWithTraitForDynTwinNormal_get_two(
-                  that);
-
-  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__dyn_trait__StructTwoWithTraitForDynTwinNormal_set_two(
-              int that, int two) =>
-          wasmModule
-              .wire__crate__api__dyn_trait__StructTwoWithTraitForDynTwinNormal_set_two(
-                  that, two);
 
   void wire__crate__api__dyn_trait__StructTwoWithTraitForDynTwinNormal_simple_method_twin_normal(
           NativePortType port_,
@@ -38482,17 +38482,17 @@ class RustLibWire implements BaseWire {
               port_, my_struct);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__impl_trait__StructOneWithTraitTwinNormal_get_one(
+      wire__crate__api__impl_trait__StructOneWithTraitTwinNormal_auto_accessor_get_one(
               int that) =>
           wasmModule
-              .wire__crate__api__impl_trait__StructOneWithTraitTwinNormal_get_one(
+              .wire__crate__api__impl_trait__StructOneWithTraitTwinNormal_auto_accessor_get_one(
                   that);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__impl_trait__StructOneWithTraitTwinNormal_set_one(
+      wire__crate__api__impl_trait__StructOneWithTraitTwinNormal_auto_accessor_set_one(
               int that, int one) =>
           wasmModule
-              .wire__crate__api__impl_trait__StructOneWithTraitTwinNormal_set_one(
+              .wire__crate__api__impl_trait__StructOneWithTraitTwinNormal_auto_accessor_set_one(
                   that, one);
 
   void wire__crate__api__impl_trait__StructOneWithTraitTwinNormal_simple_trait_fn_receiver_borrow_twin_normal(
@@ -38514,17 +38514,17 @@ class RustLibWire implements BaseWire {
               port_);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__impl_trait__StructTwoWithTraitTwinNormal_get_two(
+      wire__crate__api__impl_trait__StructTwoWithTraitTwinNormal_auto_accessor_get_two(
               int that) =>
           wasmModule
-              .wire__crate__api__impl_trait__StructTwoWithTraitTwinNormal_get_two(
+              .wire__crate__api__impl_trait__StructTwoWithTraitTwinNormal_auto_accessor_get_two(
                   that);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__impl_trait__StructTwoWithTraitTwinNormal_set_two(
+      wire__crate__api__impl_trait__StructTwoWithTraitTwinNormal_auto_accessor_set_two(
               int that, int two) =>
           wasmModule
-              .wire__crate__api__impl_trait__StructTwoWithTraitTwinNormal_set_two(
+              .wire__crate__api__impl_trait__StructTwoWithTraitTwinNormal_auto_accessor_set_two(
                   that, two);
 
   void wire__crate__api__impl_trait__StructTwoWithTraitTwinNormal_simple_trait_fn_receiver_borrow_twin_normal(
@@ -38927,6 +38927,90 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__misc_example__test_struct_with_enum_twin_normal(
               port_, se);
 
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_get_deliberate_bad_field_a(
+              int that) =>
+          wasmModule
+              .wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_get_deliberate_bad_field_a(
+                  that);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_get_deliberate_bad_field_b(
+              int that) =>
+          wasmModule
+              .wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_get_deliberate_bad_field_b(
+                  that);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_get_deliberate_bad_field_c(
+              int that) =>
+          wasmModule
+              .wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_get_deliberate_bad_field_c(
+                  that);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_get_good_field_a(
+              int that) =>
+          wasmModule
+              .wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_get_good_field_a(
+                  that);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_get_good_field_b(
+              int that) =>
+          wasmModule
+              .wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_get_good_field_b(
+                  that);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_get_good_field_c(
+              int that) =>
+          wasmModule
+              .wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_get_good_field_c(
+                  that);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_set_deliberate_bad_field_a(
+              int that, JSAny deliberate_bad_field_a) =>
+          wasmModule
+              .wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_set_deliberate_bad_field_a(
+                  that, deliberate_bad_field_a);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_set_deliberate_bad_field_b(
+              int that, int deliberate_bad_field_b) =>
+          wasmModule
+              .wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_set_deliberate_bad_field_b(
+                  that, deliberate_bad_field_b);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_set_deliberate_bad_field_c(
+              int that, JSAny deliberate_bad_field_c) =>
+          wasmModule
+              .wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_set_deliberate_bad_field_c(
+                  that, deliberate_bad_field_c);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_set_good_field_a(
+              int that, String good_field_a) =>
+          wasmModule
+              .wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_set_good_field_a(
+                  that, good_field_a);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_set_good_field_b(
+              int that, int good_field_b) =>
+          wasmModule
+              .wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_set_good_field_b(
+                  that, good_field_b);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_set_good_field_c(
+              int that, int good_field_c) =>
+          wasmModule
+              .wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_set_good_field_c(
+                  that, good_field_c);
+
   void wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_dummy_function_twin_normal(
           NativePortType port_) =>
       wasmModule
@@ -38934,88 +39018,18 @@ class RustLibWire implements BaseWire {
               port_);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_deliberate_bad_field_a(
+      wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_auto_accessor_get_name(
               int that) =>
           wasmModule
-              .wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_deliberate_bad_field_a(
+              .wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_auto_accessor_get_name(
                   that);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_deliberate_bad_field_b(
-              int that) =>
+      wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_auto_accessor_set_name(
+              int that, String name) =>
           wasmModule
-              .wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_deliberate_bad_field_b(
-                  that);
-
-  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_deliberate_bad_field_c(
-              int that) =>
-          wasmModule
-              .wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_deliberate_bad_field_c(
-                  that);
-
-  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_good_field_a(
-              int that) =>
-          wasmModule
-              .wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_good_field_a(
-                  that);
-
-  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_good_field_b(
-              int that) =>
-          wasmModule
-              .wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_good_field_b(
-                  that);
-
-  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_good_field_c(
-              int that) =>
-          wasmModule
-              .wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_good_field_c(
-                  that);
-
-  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_deliberate_bad_field_a(
-              int that, JSAny deliberate_bad_field_a) =>
-          wasmModule
-              .wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_deliberate_bad_field_a(
-                  that, deliberate_bad_field_a);
-
-  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_deliberate_bad_field_b(
-              int that, int deliberate_bad_field_b) =>
-          wasmModule
-              .wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_deliberate_bad_field_b(
-                  that, deliberate_bad_field_b);
-
-  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_deliberate_bad_field_c(
-              int that, JSAny deliberate_bad_field_c) =>
-          wasmModule
-              .wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_deliberate_bad_field_c(
-                  that, deliberate_bad_field_c);
-
-  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_good_field_a(
-              int that, String good_field_a) =>
-          wasmModule
-              .wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_good_field_a(
-                  that, good_field_a);
-
-  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_good_field_b(
-              int that, int good_field_b) =>
-          wasmModule
-              .wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_good_field_b(
-                  that, good_field_b);
-
-  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_good_field_c(
-              int that, int good_field_c) =>
-          wasmModule
-              .wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_good_field_c(
-                  that, good_field_c);
+              .wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_auto_accessor_set_name(
+                  that, name);
 
   void wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_create_twin_normal(
           NativePortType port_) =>
@@ -39028,20 +39042,6 @@ class RustLibWire implements BaseWire {
       wasmModule
           .wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_get_item_contents_twin_normal(
               port_, that);
-
-  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_get_name(
-              int that) =>
-          wasmModule
-              .wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_get_name(
-                  that);
-
-  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_set_name(
-              int that, String name) =>
-          wasmModule
-              .wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_set_name(
-                  that, name);
 
   void wire__crate__api__misc_no_twin_example_a__StructInMiscNoTwinExampleA_sample_function_a(
           NativePortType port_, int that) =>
@@ -47463,17 +47463,17 @@ class RustLibWire implements BaseWire {
                   ptr_, rust_vec_len_, data_len_);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructOneWithTraitTwinSse_get_one(
+      wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructOneWithTraitTwinSse_auto_accessor_get_one(
               int that) =>
           wasmModule
-              .wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructOneWithTraitTwinSse_get_one(
+              .wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructOneWithTraitTwinSse_auto_accessor_get_one(
                   that);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructOneWithTraitTwinSse_set_one(
+      wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructOneWithTraitTwinSse_auto_accessor_set_one(
               int that, int one) =>
           wasmModule
-              .wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructOneWithTraitTwinSse_set_one(
+              .wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructOneWithTraitTwinSse_auto_accessor_set_one(
                   that, one);
 
   void wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructOneWithTraitTwinSse_simple_trait_fn_receiver_borrow_twin_sse(
@@ -47495,17 +47495,17 @@ class RustLibWire implements BaseWire {
               port_);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructTwoWithTraitTwinSse_get_two(
+      wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructTwoWithTraitTwinSse_auto_accessor_get_two(
               int that) =>
           wasmModule
-              .wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructTwoWithTraitTwinSse_get_two(
+              .wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructTwoWithTraitTwinSse_auto_accessor_get_two(
                   that);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructTwoWithTraitTwinSse_set_two(
+      wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructTwoWithTraitTwinSse_auto_accessor_set_two(
               int that, int two) =>
           wasmModule
-              .wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructTwoWithTraitTwinSse_set_two(
+              .wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructTwoWithTraitTwinSse_auto_accessor_set_two(
                   that, two);
 
   void wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructTwoWithTraitTwinSse_simple_trait_fn_receiver_borrow_twin_sse(
@@ -47527,17 +47527,17 @@ class RustLibWire implements BaseWire {
               port_);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructOneWithTraitTwinSync_get_one(
+      wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructOneWithTraitTwinSync_auto_accessor_get_one(
               int that) =>
           wasmModule
-              .wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructOneWithTraitTwinSync_get_one(
+              .wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructOneWithTraitTwinSync_auto_accessor_get_one(
                   that);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructOneWithTraitTwinSync_set_one(
+      wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructOneWithTraitTwinSync_auto_accessor_set_one(
               int that, int one) =>
           wasmModule
-              .wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructOneWithTraitTwinSync_set_one(
+              .wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructOneWithTraitTwinSync_auto_accessor_set_one(
                   that, one);
 
   void wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructOneWithTraitTwinSync_simple_trait_fn_receiver_borrow_twin_sync(
@@ -47559,17 +47559,17 @@ class RustLibWire implements BaseWire {
               port_);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructTwoWithTraitTwinSync_get_two(
+      wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructTwoWithTraitTwinSync_auto_accessor_get_two(
               int that) =>
           wasmModule
-              .wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructTwoWithTraitTwinSync_get_two(
+              .wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructTwoWithTraitTwinSync_auto_accessor_get_two(
                   that);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructTwoWithTraitTwinSync_set_two(
+      wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructTwoWithTraitTwinSync_auto_accessor_set_two(
               int that, int two) =>
           wasmModule
-              .wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructTwoWithTraitTwinSync_set_two(
+              .wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructTwoWithTraitTwinSync_auto_accessor_set_two(
                   that, two);
 
   void wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructTwoWithTraitTwinSync_simple_trait_fn_receiver_borrow_twin_sync(
@@ -47591,17 +47591,17 @@ class RustLibWire implements BaseWire {
               port_);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructOneWithTraitTwinSyncSse_get_one(
+      wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructOneWithTraitTwinSyncSse_auto_accessor_get_one(
               int that) =>
           wasmModule
-              .wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructOneWithTraitTwinSyncSse_get_one(
+              .wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructOneWithTraitTwinSyncSse_auto_accessor_get_one(
                   that);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructOneWithTraitTwinSyncSse_set_one(
+      wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructOneWithTraitTwinSyncSse_auto_accessor_set_one(
               int that, int one) =>
           wasmModule
-              .wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructOneWithTraitTwinSyncSse_set_one(
+              .wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructOneWithTraitTwinSyncSse_auto_accessor_set_one(
                   that, one);
 
   void wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructOneWithTraitTwinSyncSse_simple_trait_fn_receiver_borrow_twin_sync_sse(
@@ -47623,17 +47623,17 @@ class RustLibWire implements BaseWire {
               port_);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructTwoWithTraitTwinSyncSse_get_two(
+      wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructTwoWithTraitTwinSyncSse_auto_accessor_get_two(
               int that) =>
           wasmModule
-              .wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructTwoWithTraitTwinSyncSse_get_two(
+              .wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructTwoWithTraitTwinSyncSse_auto_accessor_get_two(
                   that);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructTwoWithTraitTwinSyncSse_set_two(
+      wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructTwoWithTraitTwinSyncSse_auto_accessor_set_two(
               int that, int two) =>
           wasmModule
-              .wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructTwoWithTraitTwinSyncSse_set_two(
+              .wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructTwoWithTraitTwinSyncSse_auto_accessor_set_two(
                   that, two);
 
   void wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructTwoWithTraitTwinSyncSse_simple_trait_fn_receiver_borrow_twin_sync_sse(
@@ -51316,17 +51316,17 @@ class RustLibWire implements BaseWire {
               port_);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi_get_good(
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi_auto_accessor_get_good(
               int that) =>
           wasmModule
-              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi_get_good(
+              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi_auto_accessor_get_good(
                   that);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi_set_good(
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi_auto_accessor_set_good(
               int that, String good) =>
           wasmModule
-              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi_set_good(
+              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi_auto_accessor_set_good(
                   that, good);
 
   void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_arg_borrow_twin_moi(
@@ -51588,17 +51588,17 @@ class RustLibWire implements BaseWire {
               port_);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync_get_good(
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync_auto_accessor_get_good(
               int that) =>
           wasmModule
-              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync_get_good(
+              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync_auto_accessor_get_good(
                   that);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync_set_good(
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync_auto_accessor_set_good(
               int that, String good) =>
           wasmModule
-              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync_set_good(
+              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync_auto_accessor_set_good(
                   that, good);
 
   void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_arg_borrow_twin_rust_async(
@@ -51860,17 +51860,17 @@ class RustLibWire implements BaseWire {
               port_);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi_get_good(
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi_auto_accessor_get_good(
               int that) =>
           wasmModule
-              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi_get_good(
+              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi_auto_accessor_get_good(
                   that);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi_set_good(
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi_auto_accessor_set_good(
               int that, String good) =>
           wasmModule
-              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi_set_good(
+              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi_auto_accessor_set_good(
                   that, good);
 
   void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_arg_borrow_twin_rust_async_moi(
@@ -52168,17 +52168,17 @@ class RustLibWire implements BaseWire {
               port_, ptr_, rust_vec_len_, data_len_);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse_get_good(
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse_auto_accessor_get_good(
               int that) =>
           wasmModule
-              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse_get_good(
+              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse_auto_accessor_get_good(
                   that);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse_set_good(
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse_auto_accessor_set_good(
               int that, String good) =>
           wasmModule
-              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse_set_good(
+              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse_auto_accessor_set_good(
                   that, good);
 
   void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__rust_auto_opaque_arg_borrow_twin_rust_async_sse(
@@ -52569,17 +52569,17 @@ class RustLibWire implements BaseWire {
               port_, ptr_, rust_vec_len_, data_len_);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi_get_good(
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi_auto_accessor_get_good(
               int that) =>
           wasmModule
-              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi_get_good(
+              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi_auto_accessor_get_good(
                   that);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi_set_good(
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi_auto_accessor_set_good(
               int that, String good) =>
           wasmModule
-              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi_set_good(
+              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi_auto_accessor_set_good(
                   that, good);
 
   void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__rust_auto_opaque_arg_borrow_twin_rust_async_sse_moi(
@@ -52970,17 +52970,17 @@ class RustLibWire implements BaseWire {
               port_, ptr_, rust_vec_len_, data_len_);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSse_get_good(
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSse_auto_accessor_get_good(
               int that) =>
           wasmModule
-              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSse_get_good(
+              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSse_auto_accessor_get_good(
                   that);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSse_set_good(
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSse_auto_accessor_set_good(
               int that, String good) =>
           wasmModule
-              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSse_set_good(
+              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSse_auto_accessor_set_good(
                   that, good);
 
   void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opaque_arg_borrow_twin_sse(
@@ -53371,17 +53371,17 @@ class RustLibWire implements BaseWire {
               port_, ptr_, rust_vec_len_, data_len_);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi_get_good(
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi_auto_accessor_get_good(
               int that) =>
           wasmModule
-              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi_get_good(
+              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi_auto_accessor_get_good(
                   that);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi_set_good(
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi_auto_accessor_set_good(
               int that, String good) =>
           wasmModule
-              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi_set_good(
+              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi_auto_accessor_set_good(
                   that, good);
 
   void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto_opaque_arg_borrow_twin_sse_moi(
@@ -53740,17 +53740,17 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_static_method_return_own_twin_sync();
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_get_good(
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_auto_accessor_get_good(
               int that) =>
           wasmModule
-              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_get_good(
+              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_auto_accessor_get_good(
                   that);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_set_good(
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_auto_accessor_set_good(
               int that, String good) =>
           wasmModule
-              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_set_good(
+              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_auto_accessor_set_good(
                   that, good);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
@@ -54027,17 +54027,17 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__NonCloneSimpleTwinSyncMoi_static_method_return_own_twin_sync_moi();
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi_get_good(
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi_auto_accessor_get_good(
               int that) =>
           wasmModule
-              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi_get_good(
+              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi_auto_accessor_get_good(
                   that);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi_set_good(
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi_auto_accessor_set_good(
               int that, String good) =>
           wasmModule
-              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi_set_good(
+              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi_auto_accessor_set_good(
                   that, good);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
@@ -54346,17 +54346,17 @@ class RustLibWire implements BaseWire {
                   ptr_, rust_vec_len_, data_len_);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse_get_good(
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse_auto_accessor_get_good(
               int that) =>
           wasmModule
-              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse_get_good(
+              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse_auto_accessor_get_good(
                   that);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse_set_good(
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse_auto_accessor_set_good(
               int that, String good) =>
           wasmModule
-              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse_set_good(
+              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse_auto_accessor_set_good(
                   that, good);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
@@ -54747,17 +54747,17 @@ class RustLibWire implements BaseWire {
                   ptr_, rust_vec_len_, data_len_);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi_get_good(
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi_auto_accessor_get_good(
               int that) =>
           wasmModule
-              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi_get_good(
+              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi_auto_accessor_get_good(
                   that);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi_set_good(
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi_auto_accessor_set_good(
               int that, String good) =>
           wasmModule
-              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi_set_good(
+              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi_auto_accessor_set_good(
                   that, good);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
@@ -57404,17 +57404,17 @@ class RustLibWire implements BaseWire {
               port_);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_get_good(
+      wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_auto_accessor_get_good(
               int that) =>
           wasmModule
-              .wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_get_good(
+              .wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_auto_accessor_get_good(
                   that);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_set_good(
+      wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_auto_accessor_set_good(
               int that, String good) =>
           wasmModule
-              .wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_set_good(
+              .wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_auto_accessor_set_good(
                   that, good);
 
   void wire__crate__api__rust_auto_opaque__rust_auto_opaque_arg_borrow_twin_normal(
@@ -60411,11 +60411,15 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           NativePortType port_);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_check(
+      wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_auto_accessor_get_one(
           int that);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_get_one(
+      wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_auto_accessor_set_one(
+          int that, String one);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_check(
           int that);
 
   external void
@@ -60423,7 +60427,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           NativePortType port_);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_set_one(
+      wire__crate__api__constructor__ConstructorOpaqueSyncStructTwinNormal_auto_accessor_get_one(
+          int that);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__constructor__ConstructorOpaqueSyncStructTwinNormal_auto_accessor_set_one(
           int that, String one);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
@@ -60431,15 +60439,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int that);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__constructor__ConstructorOpaqueSyncStructTwinNormal_get_one(
-          int that);
-
-  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__constructor__ConstructorOpaqueSyncStructTwinNormal_new();
-
-  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__constructor__ConstructorOpaqueSyncStructTwinNormal_set_one(
-          int that, String one);
 
   external void
       wire__crate__api__constructor__constructor_translatable_struct_twin_normal_new(
@@ -60607,20 +60607,20 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
       wire__crate__api__dropping__DroppableTwinNormal_simple_method_twin_normal(
           NativePortType port_, int that);
 
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__dyn_trait__StructOneWithTraitForDynTwinNormal_auto_accessor_get_one(
+          int that);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__dyn_trait__StructOneWithTraitForDynTwinNormal_auto_accessor_set_one(
+          int that, int one);
+
   external void
       wire__crate__api__dyn_trait__StructOneWithTraitForDynTwinNormal_create_twin_normal(
           NativePortType port_,
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
-
-  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__dyn_trait__StructOneWithTraitForDynTwinNormal_get_one(
-          int that);
-
-  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__dyn_trait__StructOneWithTraitForDynTwinNormal_set_one(
-          int that, int one);
 
   external void
       wire__crate__api__dyn_trait__StructOneWithTraitForDynTwinNormal_simple_method_twin_normal(
@@ -60629,20 +60629,20 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int rust_vec_len_,
           int data_len_);
 
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__dyn_trait__StructTwoWithTraitForDynTwinNormal_auto_accessor_get_two(
+          int that);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__dyn_trait__StructTwoWithTraitForDynTwinNormal_auto_accessor_set_two(
+          int that, int two);
+
   external void
       wire__crate__api__dyn_trait__StructTwoWithTraitForDynTwinNormal_create_twin_normal(
           NativePortType port_,
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
-
-  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__dyn_trait__StructTwoWithTraitForDynTwinNormal_get_two(
-          int that);
-
-  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__dyn_trait__StructTwoWithTraitForDynTwinNormal_set_two(
-          int that, int two);
 
   external void
       wire__crate__api__dyn_trait__StructTwoWithTraitForDynTwinNormal_simple_method_twin_normal(
@@ -60852,11 +60852,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           NativePortType port_, JSAny my_struct);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__impl_trait__StructOneWithTraitTwinNormal_get_one(
+      wire__crate__api__impl_trait__StructOneWithTraitTwinNormal_auto_accessor_get_one(
           int that);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__impl_trait__StructOneWithTraitTwinNormal_set_one(
+      wire__crate__api__impl_trait__StructOneWithTraitTwinNormal_auto_accessor_set_one(
           int that, int one);
 
   external void
@@ -60872,11 +60872,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           NativePortType port_);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__impl_trait__StructTwoWithTraitTwinNormal_get_two(
+      wire__crate__api__impl_trait__StructTwoWithTraitTwinNormal_auto_accessor_get_two(
           int that);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__impl_trait__StructTwoWithTraitTwinNormal_set_two(
+      wire__crate__api__impl_trait__StructTwoWithTraitTwinNormal_auto_accessor_set_two(
           int that, int two);
 
   external void
@@ -61135,57 +61135,65 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
       wire__crate__api__misc_example__test_struct_with_enum_twin_normal(
           NativePortType port_, JSAny se);
 
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_get_deliberate_bad_field_a(
+          int that);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_get_deliberate_bad_field_b(
+          int that);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_get_deliberate_bad_field_c(
+          int that);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_get_good_field_a(
+          int that);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_get_good_field_b(
+          int that);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_get_good_field_c(
+          int that);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_set_deliberate_bad_field_a(
+          int that, JSAny deliberate_bad_field_a);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_set_deliberate_bad_field_b(
+          int that, int deliberate_bad_field_b);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_set_deliberate_bad_field_c(
+          int that, JSAny deliberate_bad_field_c);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_set_good_field_a(
+          int that, String good_field_a);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_set_good_field_b(
+          int that, int good_field_b);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_set_good_field_c(
+          int that, int good_field_c);
+
   external void
       wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_dummy_function_twin_normal(
           NativePortType port_);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_deliberate_bad_field_a(
+      wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_auto_accessor_get_name(
           int that);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_deliberate_bad_field_b(
-          int that);
-
-  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_deliberate_bad_field_c(
-          int that);
-
-  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_good_field_a(
-          int that);
-
-  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_good_field_b(
-          int that);
-
-  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_get_good_field_c(
-          int that);
-
-  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_deliberate_bad_field_a(
-          int that, JSAny deliberate_bad_field_a);
-
-  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_deliberate_bad_field_b(
-          int that, int deliberate_bad_field_b);
-
-  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_deliberate_bad_field_c(
-          int that, JSAny deliberate_bad_field_c);
-
-  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_good_field_a(
-          int that, String good_field_a);
-
-  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_good_field_b(
-          int that, int good_field_b);
-
-  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_set_good_field_c(
-          int that, int good_field_c);
+      wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_auto_accessor_set_name(
+          int that, String name);
 
   external void
       wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_create_twin_normal(
@@ -61194,14 +61202,6 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
   external void
       wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_get_item_contents_twin_normal(
           NativePortType port_, int that);
-
-  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_get_name(
-          int that);
-
-  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_set_name(
-          int that, String name);
 
   external void
       wire__crate__api__misc_no_twin_example_a__StructInMiscNoTwinExampleA_sample_function_a(
@@ -67098,11 +67098,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int data_len_);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructOneWithTraitTwinSse_get_one(
+      wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructOneWithTraitTwinSse_auto_accessor_get_one(
           int that);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructOneWithTraitTwinSse_set_one(
+      wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructOneWithTraitTwinSse_auto_accessor_set_one(
           int that, int one);
 
   external void
@@ -67118,11 +67118,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           NativePortType port_);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructTwoWithTraitTwinSse_get_two(
+      wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructTwoWithTraitTwinSse_auto_accessor_get_two(
           int that);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructTwoWithTraitTwinSse_set_two(
+      wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructTwoWithTraitTwinSse_auto_accessor_set_two(
           int that, int two);
 
   external void
@@ -67138,11 +67138,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           NativePortType port_);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructOneWithTraitTwinSync_get_one(
+      wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructOneWithTraitTwinSync_auto_accessor_get_one(
           int that);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructOneWithTraitTwinSync_set_one(
+      wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructOneWithTraitTwinSync_auto_accessor_set_one(
           int that, int one);
 
   external void
@@ -67158,11 +67158,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           NativePortType port_);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructTwoWithTraitTwinSync_get_two(
+      wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructTwoWithTraitTwinSync_auto_accessor_get_two(
           int that);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructTwoWithTraitTwinSync_set_two(
+      wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructTwoWithTraitTwinSync_auto_accessor_set_two(
           int that, int two);
 
   external void
@@ -67178,11 +67178,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           NativePortType port_);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructOneWithTraitTwinSyncSse_get_one(
+      wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructOneWithTraitTwinSyncSse_auto_accessor_get_one(
           int that);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructOneWithTraitTwinSyncSse_set_one(
+      wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructOneWithTraitTwinSyncSse_auto_accessor_set_one(
           int that, int one);
 
   external void
@@ -67198,11 +67198,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           NativePortType port_);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructTwoWithTraitTwinSyncSse_get_two(
+      wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructTwoWithTraitTwinSyncSse_auto_accessor_get_two(
           int that);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructTwoWithTraitTwinSyncSse_set_two(
+      wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__StructTwoWithTraitTwinSyncSse_auto_accessor_set_two(
           int that, int two);
 
   external void
@@ -69791,11 +69791,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           NativePortType port_);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi_get_good(
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi_auto_accessor_get_good(
           int that);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi_set_good(
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi_auto_accessor_set_good(
           int that, String good);
 
   external void
@@ -69971,11 +69971,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           NativePortType port_);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync_get_good(
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync_auto_accessor_get_good(
           int that);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync_set_good(
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync_auto_accessor_set_good(
           int that, String good);
 
   external void
@@ -70151,11 +70151,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           NativePortType port_);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi_get_good(
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi_auto_accessor_get_good(
           int that);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi_set_good(
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi_auto_accessor_set_good(
           int that, String good);
 
   external void
@@ -70367,11 +70367,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int data_len_);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse_get_good(
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse_auto_accessor_get_good(
           int that);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse_set_good(
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse_auto_accessor_set_good(
           int that, String good);
 
   external void
@@ -70676,11 +70676,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int data_len_);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi_get_good(
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi_auto_accessor_get_good(
           int that);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi_set_good(
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi_auto_accessor_set_good(
           int that, String good);
 
   external void
@@ -70985,11 +70985,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int data_len_);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSse_get_good(
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSse_auto_accessor_get_good(
           int that);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSse_set_good(
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSse_auto_accessor_set_good(
           int that, String good);
 
   external void
@@ -71294,11 +71294,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int data_len_);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi_get_good(
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi_auto_accessor_get_good(
           int that);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi_set_good(
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi_auto_accessor_set_good(
           int that, String good);
 
   external void
@@ -71563,11 +71563,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_static_method_return_own_twin_sync();
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_get_good(
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_auto_accessor_get_good(
           int that);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_set_good(
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_auto_accessor_set_good(
           int that, String good);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
@@ -71729,11 +71729,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__NonCloneSimpleTwinSyncMoi_static_method_return_own_twin_sync_moi();
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi_get_good(
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi_auto_accessor_get_good(
           int that);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi_set_good(
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi_auto_accessor_set_good(
           int that, String good);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
@@ -71923,11 +71923,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int data_len_);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse_get_good(
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse_auto_accessor_get_good(
           int that);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse_set_good(
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse_auto_accessor_set_good(
           int that, String good);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
@@ -72189,11 +72189,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int data_len_);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi_get_good(
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi_auto_accessor_get_good(
           int that);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi_set_good(
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi_auto_accessor_set_good(
           int that, String good);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
@@ -74047,11 +74047,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           NativePortType port_);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_get_good(
+      wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_auto_accessor_get_good(
           int that);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_set_good(
+      wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_auto_accessor_set_good(
           int that, String good);
 
   external void

@@ -196,7 +196,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.0.0-dev.39';
 
   @override
-  int get rustContentHash => -263748021;
+  int get rustContentHash => 395683424;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -321,30 +321,32 @@ abstract class RustLibApi extends BaseApi {
   Future<void>
       crateApiCommentStructWithCommentsTwinNormalStaticMethodTwinNormal();
 
-  void crateApiConstructorConstructorOpaqueStructTwinNormalCheck(
+  String crateApiConstructorConstructorOpaqueStructTwinNormalAutoAccessorGetOne(
       {required ConstructorOpaqueStructTwinNormal that});
 
-  String crateApiConstructorConstructorOpaqueStructTwinNormalGetOne(
+  void crateApiConstructorConstructorOpaqueStructTwinNormalAutoAccessorSetOne(
+      {required ConstructorOpaqueStructTwinNormal that, required String one});
+
+  void crateApiConstructorConstructorOpaqueStructTwinNormalCheck(
       {required ConstructorOpaqueStructTwinNormal that});
 
   Future<ConstructorOpaqueStructTwinNormal>
       crateApiConstructorConstructorOpaqueStructTwinNormalNew();
 
-  void crateApiConstructorConstructorOpaqueStructTwinNormalSetOne(
-      {required ConstructorOpaqueStructTwinNormal that, required String one});
+  String
+      crateApiConstructorConstructorOpaqueSyncStructTwinNormalAutoAccessorGetOne(
+          {required ConstructorOpaqueSyncStructTwinNormal that});
+
+  void
+      crateApiConstructorConstructorOpaqueSyncStructTwinNormalAutoAccessorSetOne(
+          {required ConstructorOpaqueSyncStructTwinNormal that,
+          required String one});
 
   void crateApiConstructorConstructorOpaqueSyncStructTwinNormalCheck(
       {required ConstructorOpaqueSyncStructTwinNormal that});
 
-  String crateApiConstructorConstructorOpaqueSyncStructTwinNormalGetOne(
-      {required ConstructorOpaqueSyncStructTwinNormal that});
-
   ConstructorOpaqueSyncStructTwinNormal
       crateApiConstructorConstructorOpaqueSyncStructTwinNormalNew();
-
-  void crateApiConstructorConstructorOpaqueSyncStructTwinNormalSetOne(
-      {required ConstructorOpaqueSyncStructTwinNormal that,
-      required String one});
 
   Future<ConstructorTranslatableStructTwinNormal>
       crateApiConstructorConstructorTranslatableStructTwinNormalNew();
@@ -480,29 +482,29 @@ abstract class RustLibApi extends BaseApi {
   Future<void> crateApiDroppingDroppableTwinNormalSimpleMethodTwinNormal(
       {required DroppableTwinNormal that});
 
+  int crateApiDynTraitStructOneWithTraitForDynTwinNormalAutoAccessorGetOne(
+      {required StructOneWithTraitForDynTwinNormal that});
+
+  void crateApiDynTraitStructOneWithTraitForDynTwinNormalAutoAccessorSetOne(
+      {required StructOneWithTraitForDynTwinNormal that, required int one});
+
   Future<StructOneWithTraitForDynTwinNormal>
       crateApiDynTraitStructOneWithTraitForDynTwinNormalCreateTwinNormal(
           {required int one});
-
-  int crateApiDynTraitStructOneWithTraitForDynTwinNormalGetOne(
-      {required StructOneWithTraitForDynTwinNormal that});
-
-  void crateApiDynTraitStructOneWithTraitForDynTwinNormalSetOne(
-      {required StructOneWithTraitForDynTwinNormal that, required int one});
 
   Future<int>
       crateApiDynTraitStructOneWithTraitForDynTwinNormalSimpleMethodTwinNormal(
           {required StructOneWithTraitForDynTwinNormal that});
 
+  int crateApiDynTraitStructTwoWithTraitForDynTwinNormalAutoAccessorGetTwo(
+      {required StructTwoWithTraitForDynTwinNormal that});
+
+  void crateApiDynTraitStructTwoWithTraitForDynTwinNormalAutoAccessorSetTwo(
+      {required StructTwoWithTraitForDynTwinNormal that, required int two});
+
   Future<StructTwoWithTraitForDynTwinNormal>
       crateApiDynTraitStructTwoWithTraitForDynTwinNormalCreateTwinNormal(
           {required int two});
-
-  int crateApiDynTraitStructTwoWithTraitForDynTwinNormalGetTwo(
-      {required StructTwoWithTraitForDynTwinNormal that});
-
-  void crateApiDynTraitStructTwoWithTraitForDynTwinNormalSetTwo(
-      {required StructTwoWithTraitForDynTwinNormal that, required int two});
 
   Future<int>
       crateApiDynTraitStructTwoWithTraitForDynTwinNormalSimpleMethodTwinNormal(
@@ -660,10 +662,10 @@ abstract class RustLibApi extends BaseApi {
   Future<bool> crateApiExternalTypeInCrateUseImportedStructTwinNormal(
       {required MyStruct myStruct});
 
-  int crateApiImplTraitStructOneWithTraitTwinNormalGetOne(
+  int crateApiImplTraitStructOneWithTraitTwinNormalAutoAccessorGetOne(
       {required StructOneWithTraitTwinNormal that});
 
-  void crateApiImplTraitStructOneWithTraitTwinNormalSetOne(
+  void crateApiImplTraitStructOneWithTraitTwinNormalAutoAccessorSetOne(
       {required StructOneWithTraitTwinNormal that, required int one});
 
   Future<int>
@@ -677,10 +679,10 @@ abstract class RustLibApi extends BaseApi {
   Future<int>
       crateApiImplTraitStructOneWithTraitTwinNormalSimpleTraitFnWithDefaultImplTwinNormal();
 
-  int crateApiImplTraitStructTwoWithTraitTwinNormalGetTwo(
+  int crateApiImplTraitStructTwoWithTraitTwinNormalAutoAccessorGetTwo(
       {required StructTwoWithTraitTwinNormal that});
 
-  void crateApiImplTraitStructTwoWithTraitTwinNormalSetTwo(
+  void crateApiImplTraitStructTwoWithTraitTwinNormalAutoAccessorSetTwo(
       {required StructTwoWithTraitTwinNormal that, required int two});
 
   Future<int>
@@ -899,61 +901,70 @@ abstract class RustLibApi extends BaseApi {
       crateApiMiscExampleTestStructWithEnumTwinNormal(
           {required StructWithEnumTwinNormal se});
 
-  Future<void>
-      crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalDummyFunctionTwinNormal();
-
   Uint8List
-      crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalGetDeliberateBadFieldA(
+      crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorGetDeliberateBadFieldA(
           {required DeliberateFailSanityCheckTwinNormal that});
 
   OpaqueItemTwinNormal
-      crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalGetDeliberateBadFieldB(
+      crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorGetDeliberateBadFieldB(
           {required DeliberateFailSanityCheckTwinNormal that});
 
   List<OpaqueItemTwinNormal>
-      crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalGetDeliberateBadFieldC(
+      crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorGetDeliberateBadFieldC(
           {required DeliberateFailSanityCheckTwinNormal that});
 
   String
-      crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalGetGoodFieldA(
+      crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorGetGoodFieldA(
           {required DeliberateFailSanityCheckTwinNormal that});
 
-  int crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalGetGoodFieldB(
+  int crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorGetGoodFieldB(
       {required DeliberateFailSanityCheckTwinNormal that});
 
   OpaqueItemTwinNormal
-      crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalGetGoodFieldC(
+      crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorGetGoodFieldC(
           {required DeliberateFailSanityCheckTwinNormal that});
 
   void
-      crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalSetDeliberateBadFieldA(
+      crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorSetDeliberateBadFieldA(
           {required DeliberateFailSanityCheckTwinNormal that,
           required Uint8List deliberateBadFieldA});
 
   void
-      crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalSetDeliberateBadFieldB(
+      crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorSetDeliberateBadFieldB(
           {required DeliberateFailSanityCheckTwinNormal that,
           required OpaqueItemTwinNormal deliberateBadFieldB});
 
   void
-      crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalSetDeliberateBadFieldC(
+      crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorSetDeliberateBadFieldC(
           {required DeliberateFailSanityCheckTwinNormal that,
           required List<OpaqueItemTwinNormal> deliberateBadFieldC});
 
   void
-      crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalSetGoodFieldA(
+      crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorSetGoodFieldA(
           {required DeliberateFailSanityCheckTwinNormal that,
           required String goodFieldA});
 
   void
-      crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalSetGoodFieldB(
+      crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorSetGoodFieldB(
           {required DeliberateFailSanityCheckTwinNormal that,
           required int goodFieldB});
 
   void
-      crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalSetGoodFieldC(
+      crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorSetGoodFieldC(
           {required DeliberateFailSanityCheckTwinNormal that,
           required OpaqueItemTwinNormal goodFieldC});
+
+  Future<void>
+      crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalDummyFunctionTwinNormal();
+
+  String
+      crateApiMiscNoTwinExampleAItemContainerSolutionOneTwinNormalAutoAccessorGetName(
+          {required ItemContainerSolutionOneTwinNormal that});
+
+  void
+      crateApiMiscNoTwinExampleAItemContainerSolutionOneTwinNormalAutoAccessorSetName(
+          {required ItemContainerSolutionOneTwinNormal that,
+          required String name});
 
   Future<ItemContainerSolutionOneTwinNormal>
       crateApiMiscNoTwinExampleAItemContainerSolutionOneTwinNormalCreateTwinNormal();
@@ -961,12 +972,6 @@ abstract class RustLibApi extends BaseApi {
   Future<Int32List>
       crateApiMiscNoTwinExampleAItemContainerSolutionOneTwinNormalGetItemContentsTwinNormal(
           {required ItemContainerSolutionOneTwinNormal that});
-
-  String crateApiMiscNoTwinExampleAItemContainerSolutionOneTwinNormalGetName(
-      {required ItemContainerSolutionOneTwinNormal that});
-
-  void crateApiMiscNoTwinExampleAItemContainerSolutionOneTwinNormalSetName(
-      {required ItemContainerSolutionOneTwinNormal that, required String name});
 
   Future<void>
       crateApiMiscNoTwinExampleAStructInMiscNoTwinExampleASampleFunctionA(
@@ -2809,11 +2814,12 @@ abstract class RustLibApi extends BaseApi {
   bool crateApiPseudoManualExternalTypeInCrateTwinSyncUseImportedStructTwinSync(
       {required MyStruct myStruct});
 
-  int crateApiPseudoManualImplTraitTwinSyncStructOneWithTraitTwinSyncGetOne(
+  int crateApiPseudoManualImplTraitTwinSyncStructOneWithTraitTwinSyncAutoAccessorGetOne(
       {required StructOneWithTraitTwinSync that});
 
-  void crateApiPseudoManualImplTraitTwinSyncStructOneWithTraitTwinSyncSetOne(
-      {required StructOneWithTraitTwinSync that, required int one});
+  void
+      crateApiPseudoManualImplTraitTwinSyncStructOneWithTraitTwinSyncAutoAccessorSetOne(
+          {required StructOneWithTraitTwinSync that, required int one});
 
   Future<int>
       crateApiPseudoManualImplTraitTwinSyncStructOneWithTraitTwinSyncSimpleTraitFnReceiverBorrowTwinSync(
@@ -2826,11 +2832,12 @@ abstract class RustLibApi extends BaseApi {
   Future<int>
       crateApiPseudoManualImplTraitTwinSyncStructOneWithTraitTwinSyncSimpleTraitFnWithDefaultImplTwinSync();
 
-  int crateApiPseudoManualImplTraitTwinSyncStructTwoWithTraitTwinSyncGetTwo(
+  int crateApiPseudoManualImplTraitTwinSyncStructTwoWithTraitTwinSyncAutoAccessorGetTwo(
       {required StructTwoWithTraitTwinSync that});
 
-  void crateApiPseudoManualImplTraitTwinSyncStructTwoWithTraitTwinSyncSetTwo(
-      {required StructTwoWithTraitTwinSync that, required int two});
+  void
+      crateApiPseudoManualImplTraitTwinSyncStructTwoWithTraitTwinSyncAutoAccessorSetTwo(
+          {required StructTwoWithTraitTwinSync that, required int two});
 
   Future<int>
       crateApiPseudoManualImplTraitTwinSyncStructTwoWithTraitTwinSyncSimpleTraitFnReceiverBorrowTwinSync(
@@ -3538,12 +3545,12 @@ abstract class RustLibApi extends BaseApi {
       crateApiPseudoManualRustAutoOpaqueTwinRustAsyncNonCloneSimpleTwinRustAsyncStaticMethodReturnOwnTwinRustAsync();
 
   String
-      crateApiPseudoManualRustAutoOpaqueTwinRustAsyncStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncGetGood(
+      crateApiPseudoManualRustAutoOpaqueTwinRustAsyncStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncAutoAccessorGetGood(
           {required StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync
               that});
 
   void
-      crateApiPseudoManualRustAutoOpaqueTwinRustAsyncStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSetGood(
+      crateApiPseudoManualRustAutoOpaqueTwinRustAsyncStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncAutoAccessorSetGood(
           {required StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync that,
           required String good});
 
@@ -3712,11 +3719,11 @@ abstract class RustLibApi extends BaseApi {
       crateApiPseudoManualRustAutoOpaqueTwinSyncNonCloneSimpleTwinSyncStaticMethodReturnOwnTwinSync();
 
   String
-      crateApiPseudoManualRustAutoOpaqueTwinSyncStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncGetGood(
+      crateApiPseudoManualRustAutoOpaqueTwinSyncStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncAutoAccessorGetGood(
           {required StructWithGoodAndOpaqueFieldWithoutOptionTwinSync that});
 
   void
-      crateApiPseudoManualRustAutoOpaqueTwinSyncStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSetGood(
+      crateApiPseudoManualRustAutoOpaqueTwinSyncStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncAutoAccessorSetGood(
           {required StructWithGoodAndOpaqueFieldWithoutOptionTwinSync that,
           required String good});
 
@@ -4143,11 +4150,11 @@ abstract class RustLibApi extends BaseApi {
       crateApiRustAutoOpaqueNonCloneSimpleTwinNormalStaticMethodReturnOwnTwinNormal();
 
   String
-      crateApiRustAutoOpaqueStructWithGoodAndOpaqueFieldWithoutOptionTwinNormalGetGood(
+      crateApiRustAutoOpaqueStructWithGoodAndOpaqueFieldWithoutOptionTwinNormalAutoAccessorGetGood(
           {required StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal that});
 
   void
-      crateApiRustAutoOpaqueStructWithGoodAndOpaqueFieldWithoutOptionTwinNormalSetGood(
+      crateApiRustAutoOpaqueStructWithGoodAndOpaqueFieldWithoutOptionTwinNormalAutoAccessorSetGood(
           {required StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal that,
           required String good});
 
@@ -6107,7 +6114,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
-  void crateApiConstructorConstructorOpaqueStructTwinNormalCheck(
+  String crateApiConstructorConstructorOpaqueStructTwinNormalAutoAccessorGetOne(
       {required ConstructorOpaqueStructTwinNormal that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
@@ -6115,6 +6122,65 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueStructTwinNormal(
             that, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 42)!;
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_String,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiConstructorConstructorOpaqueStructTwinNormalAutoAccessorGetOneConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiConstructorConstructorOpaqueStructTwinNormalAutoAccessorGetOneConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "ConstructorOpaqueStructTwinNormal_auto_accessor_get_one",
+            argNames: ["that"],
+          );
+
+  @override
+  void crateApiConstructorConstructorOpaqueStructTwinNormalAutoAccessorSetOne(
+      {required ConstructorOpaqueStructTwinNormal that, required String one}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueStructTwinNormal(
+            that, serializer);
+        sse_encode_String(one, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 43)!;
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiConstructorConstructorOpaqueStructTwinNormalAutoAccessorSetOneConstMeta,
+      argValues: [that, one],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiConstructorConstructorOpaqueStructTwinNormalAutoAccessorSetOneConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "ConstructorOpaqueStructTwinNormal_auto_accessor_set_one",
+            argNames: ["that", "one"],
+          );
+
+  @override
+  void crateApiConstructorConstructorOpaqueStructTwinNormalCheck(
+      {required ConstructorOpaqueStructTwinNormal that}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueStructTwinNormal(
+            that, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 44)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -6135,41 +6201,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
-  String crateApiConstructorConstructorOpaqueStructTwinNormalGetOne(
-      {required ConstructorOpaqueStructTwinNormal that}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueStructTwinNormal(
-            that, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 43)!;
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_String,
-        decodeErrorData: null,
-      ),
-      constMeta:
-          kCrateApiConstructorConstructorOpaqueStructTwinNormalGetOneConstMeta,
-      argValues: [that],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta
-      get kCrateApiConstructorConstructorOpaqueStructTwinNormalGetOneConstMeta =>
-          const TaskConstMeta(
-            debugName: "ConstructorOpaqueStructTwinNormal_get_one",
-            argNames: ["that"],
-          );
-
-  @override
   Future<ConstructorOpaqueStructTwinNormal>
       crateApiConstructorConstructorOpaqueStructTwinNormalNew() {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 44, port: port_);
+            funcId: 45, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -6191,31 +6229,64 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
-  void crateApiConstructorConstructorOpaqueStructTwinNormalSetOne(
-      {required ConstructorOpaqueStructTwinNormal that, required String one}) {
+  String
+      crateApiConstructorConstructorOpaqueSyncStructTwinNormalAutoAccessorGetOne(
+          {required ConstructorOpaqueSyncStructTwinNormal that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueStructTwinNormal(
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueSyncStructTwinNormal(
+            that, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 46)!;
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_String,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiConstructorConstructorOpaqueSyncStructTwinNormalAutoAccessorGetOneConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiConstructorConstructorOpaqueSyncStructTwinNormalAutoAccessorGetOneConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "ConstructorOpaqueSyncStructTwinNormal_auto_accessor_get_one",
+            argNames: ["that"],
+          );
+
+  @override
+  void
+      crateApiConstructorConstructorOpaqueSyncStructTwinNormalAutoAccessorSetOne(
+          {required ConstructorOpaqueSyncStructTwinNormal that,
+          required String one}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueSyncStructTwinNormal(
             that, serializer);
         sse_encode_String(one, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 45)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 47)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta:
-          kCrateApiConstructorConstructorOpaqueStructTwinNormalSetOneConstMeta,
+          kCrateApiConstructorConstructorOpaqueSyncStructTwinNormalAutoAccessorSetOneConstMeta,
       argValues: [that, one],
       apiImpl: this,
     ));
   }
 
   TaskConstMeta
-      get kCrateApiConstructorConstructorOpaqueStructTwinNormalSetOneConstMeta =>
+      get kCrateApiConstructorConstructorOpaqueSyncStructTwinNormalAutoAccessorSetOneConstMeta =>
           const TaskConstMeta(
-            debugName: "ConstructorOpaqueStructTwinNormal_set_one",
+            debugName:
+                "ConstructorOpaqueSyncStructTwinNormal_auto_accessor_set_one",
             argNames: ["that", "one"],
           );
 
@@ -6227,7 +6298,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueSyncStructTwinNormal(
             that, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 46)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 48)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -6248,40 +6319,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
-  String crateApiConstructorConstructorOpaqueSyncStructTwinNormalGetOne(
-      {required ConstructorOpaqueSyncStructTwinNormal that}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueSyncStructTwinNormal(
-            that, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 47)!;
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_String,
-        decodeErrorData: null,
-      ),
-      constMeta:
-          kCrateApiConstructorConstructorOpaqueSyncStructTwinNormalGetOneConstMeta,
-      argValues: [that],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta
-      get kCrateApiConstructorConstructorOpaqueSyncStructTwinNormalGetOneConstMeta =>
-          const TaskConstMeta(
-            debugName: "ConstructorOpaqueSyncStructTwinNormal_get_one",
-            argNames: ["that"],
-          );
-
-  @override
   ConstructorOpaqueSyncStructTwinNormal
       crateApiConstructorConstructorOpaqueSyncStructTwinNormalNew() {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 48)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 49)!;
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -6300,36 +6343,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           const TaskConstMeta(
             debugName: "ConstructorOpaqueSyncStructTwinNormal_new",
             argNames: [],
-          );
-
-  @override
-  void crateApiConstructorConstructorOpaqueSyncStructTwinNormalSetOne(
-      {required ConstructorOpaqueSyncStructTwinNormal that,
-      required String one}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueSyncStructTwinNormal(
-            that, serializer);
-        sse_encode_String(one, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 49)!;
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
-      ),
-      constMeta:
-          kCrateApiConstructorConstructorOpaqueSyncStructTwinNormalSetOneConstMeta,
-      argValues: [that, one],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta
-      get kCrateApiConstructorConstructorOpaqueSyncStructTwinNormalSetOneConstMeta =>
-          const TaskConstMeta(
-            debugName: "ConstructorOpaqueSyncStructTwinNormal_set_one",
-            argNames: ["that", "one"],
           );
 
   @override
@@ -7527,6 +7540,65 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
+  int crateApiDynTraitStructOneWithTraitForDynTwinNormalAutoAccessorGetOne(
+      {required StructOneWithTraitForDynTwinNormal that}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitForDynTwinNormal(
+            that, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 94)!;
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiDynTraitStructOneWithTraitForDynTwinNormalAutoAccessorGetOneConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiDynTraitStructOneWithTraitForDynTwinNormalAutoAccessorGetOneConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "StructOneWithTraitForDynTwinNormal_auto_accessor_get_one",
+            argNames: ["that"],
+          );
+
+  @override
+  void crateApiDynTraitStructOneWithTraitForDynTwinNormalAutoAccessorSetOne(
+      {required StructOneWithTraitForDynTwinNormal that, required int one}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitForDynTwinNormal(
+            that, serializer);
+        sse_encode_i_32(one, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 95)!;
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiDynTraitStructOneWithTraitForDynTwinNormalAutoAccessorSetOneConstMeta,
+      argValues: [that, one],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiDynTraitStructOneWithTraitForDynTwinNormalAutoAccessorSetOneConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "StructOneWithTraitForDynTwinNormal_auto_accessor_set_one",
+            argNames: ["that", "one"],
+          );
+
+  @override
   Future<StructOneWithTraitForDynTwinNormal>
       crateApiDynTraitStructOneWithTraitForDynTwinNormalCreateTwinNormal(
           {required int one}) {
@@ -7535,7 +7607,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_i_32(one, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 94, port: port_);
+            funcId: 96, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -7554,63 +7626,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           const TaskConstMeta(
             debugName: "StructOneWithTraitForDynTwinNormal_create_twin_normal",
             argNames: ["one"],
-          );
-
-  @override
-  int crateApiDynTraitStructOneWithTraitForDynTwinNormalGetOne(
-      {required StructOneWithTraitForDynTwinNormal that}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitForDynTwinNormal(
-            that, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 95)!;
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_i_32,
-        decodeErrorData: null,
-      ),
-      constMeta:
-          kCrateApiDynTraitStructOneWithTraitForDynTwinNormalGetOneConstMeta,
-      argValues: [that],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta
-      get kCrateApiDynTraitStructOneWithTraitForDynTwinNormalGetOneConstMeta =>
-          const TaskConstMeta(
-            debugName: "StructOneWithTraitForDynTwinNormal_get_one",
-            argNames: ["that"],
-          );
-
-  @override
-  void crateApiDynTraitStructOneWithTraitForDynTwinNormalSetOne(
-      {required StructOneWithTraitForDynTwinNormal that, required int one}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitForDynTwinNormal(
-            that, serializer);
-        sse_encode_i_32(one, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 96)!;
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
-      ),
-      constMeta:
-          kCrateApiDynTraitStructOneWithTraitForDynTwinNormalSetOneConstMeta,
-      argValues: [that, one],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta
-      get kCrateApiDynTraitStructOneWithTraitForDynTwinNormalSetOneConstMeta =>
-          const TaskConstMeta(
-            debugName: "StructOneWithTraitForDynTwinNormal_set_one",
-            argNames: ["that", "one"],
           );
 
   @override
@@ -7645,6 +7660,65 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
+  int crateApiDynTraitStructTwoWithTraitForDynTwinNormalAutoAccessorGetTwo(
+      {required StructTwoWithTraitForDynTwinNormal that}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitForDynTwinNormal(
+            that, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 98)!;
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiDynTraitStructTwoWithTraitForDynTwinNormalAutoAccessorGetTwoConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiDynTraitStructTwoWithTraitForDynTwinNormalAutoAccessorGetTwoConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "StructTwoWithTraitForDynTwinNormal_auto_accessor_get_two",
+            argNames: ["that"],
+          );
+
+  @override
+  void crateApiDynTraitStructTwoWithTraitForDynTwinNormalAutoAccessorSetTwo(
+      {required StructTwoWithTraitForDynTwinNormal that, required int two}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitForDynTwinNormal(
+            that, serializer);
+        sse_encode_i_32(two, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 99)!;
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiDynTraitStructTwoWithTraitForDynTwinNormalAutoAccessorSetTwoConstMeta,
+      argValues: [that, two],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiDynTraitStructTwoWithTraitForDynTwinNormalAutoAccessorSetTwoConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "StructTwoWithTraitForDynTwinNormal_auto_accessor_set_two",
+            argNames: ["that", "two"],
+          );
+
+  @override
   Future<StructTwoWithTraitForDynTwinNormal>
       crateApiDynTraitStructTwoWithTraitForDynTwinNormalCreateTwinNormal(
           {required int two}) {
@@ -7653,7 +7727,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_i_32(two, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 98, port: port_);
+            funcId: 100, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -7672,63 +7746,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           const TaskConstMeta(
             debugName: "StructTwoWithTraitForDynTwinNormal_create_twin_normal",
             argNames: ["two"],
-          );
-
-  @override
-  int crateApiDynTraitStructTwoWithTraitForDynTwinNormalGetTwo(
-      {required StructTwoWithTraitForDynTwinNormal that}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitForDynTwinNormal(
-            that, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 99)!;
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_i_32,
-        decodeErrorData: null,
-      ),
-      constMeta:
-          kCrateApiDynTraitStructTwoWithTraitForDynTwinNormalGetTwoConstMeta,
-      argValues: [that],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta
-      get kCrateApiDynTraitStructTwoWithTraitForDynTwinNormalGetTwoConstMeta =>
-          const TaskConstMeta(
-            debugName: "StructTwoWithTraitForDynTwinNormal_get_two",
-            argNames: ["that"],
-          );
-
-  @override
-  void crateApiDynTraitStructTwoWithTraitForDynTwinNormalSetTwo(
-      {required StructTwoWithTraitForDynTwinNormal that, required int two}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitForDynTwinNormal(
-            that, serializer);
-        sse_encode_i_32(two, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 100)!;
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
-      ),
-      constMeta:
-          kCrateApiDynTraitStructTwoWithTraitForDynTwinNormalSetTwoConstMeta,
-      argValues: [that, two],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta
-      get kCrateApiDynTraitStructTwoWithTraitForDynTwinNormalSetTwoConstMeta =>
-          const TaskConstMeta(
-            debugName: "StructTwoWithTraitForDynTwinNormal_set_two",
-            argNames: ["that", "two"],
           );
 
   @override
@@ -9169,7 +9186,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
-  int crateApiImplTraitStructOneWithTraitTwinNormalGetOne(
+  int crateApiImplTraitStructOneWithTraitTwinNormalAutoAccessorGetOne(
       {required StructOneWithTraitTwinNormal that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
@@ -9182,21 +9199,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_i_32,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiImplTraitStructOneWithTraitTwinNormalGetOneConstMeta,
+      constMeta:
+          kCrateApiImplTraitStructOneWithTraitTwinNormalAutoAccessorGetOneConstMeta,
       argValues: [that],
       apiImpl: this,
     ));
   }
 
   TaskConstMeta
-      get kCrateApiImplTraitStructOneWithTraitTwinNormalGetOneConstMeta =>
+      get kCrateApiImplTraitStructOneWithTraitTwinNormalAutoAccessorGetOneConstMeta =>
           const TaskConstMeta(
-            debugName: "StructOneWithTraitTwinNormal_get_one",
+            debugName: "StructOneWithTraitTwinNormal_auto_accessor_get_one",
             argNames: ["that"],
           );
 
   @override
-  void crateApiImplTraitStructOneWithTraitTwinNormalSetOne(
+  void crateApiImplTraitStructOneWithTraitTwinNormalAutoAccessorSetOne(
       {required StructOneWithTraitTwinNormal that, required int one}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
@@ -9210,16 +9228,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiImplTraitStructOneWithTraitTwinNormalSetOneConstMeta,
+      constMeta:
+          kCrateApiImplTraitStructOneWithTraitTwinNormalAutoAccessorSetOneConstMeta,
       argValues: [that, one],
       apiImpl: this,
     ));
   }
 
   TaskConstMeta
-      get kCrateApiImplTraitStructOneWithTraitTwinNormalSetOneConstMeta =>
+      get kCrateApiImplTraitStructOneWithTraitTwinNormalAutoAccessorSetOneConstMeta =>
           const TaskConstMeta(
-            debugName: "StructOneWithTraitTwinNormal_set_one",
+            debugName: "StructOneWithTraitTwinNormal_auto_accessor_set_one",
             argNames: ["that", "one"],
           );
 
@@ -9314,7 +9333,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
-  int crateApiImplTraitStructTwoWithTraitTwinNormalGetTwo(
+  int crateApiImplTraitStructTwoWithTraitTwinNormalAutoAccessorGetTwo(
       {required StructTwoWithTraitTwinNormal that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
@@ -9327,21 +9346,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_i_32,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiImplTraitStructTwoWithTraitTwinNormalGetTwoConstMeta,
+      constMeta:
+          kCrateApiImplTraitStructTwoWithTraitTwinNormalAutoAccessorGetTwoConstMeta,
       argValues: [that],
       apiImpl: this,
     ));
   }
 
   TaskConstMeta
-      get kCrateApiImplTraitStructTwoWithTraitTwinNormalGetTwoConstMeta =>
+      get kCrateApiImplTraitStructTwoWithTraitTwinNormalAutoAccessorGetTwoConstMeta =>
           const TaskConstMeta(
-            debugName: "StructTwoWithTraitTwinNormal_get_two",
+            debugName: "StructTwoWithTraitTwinNormal_auto_accessor_get_two",
             argNames: ["that"],
           );
 
   @override
-  void crateApiImplTraitStructTwoWithTraitTwinNormalSetTwo(
+  void crateApiImplTraitStructTwoWithTraitTwinNormalAutoAccessorSetTwo(
       {required StructTwoWithTraitTwinNormal that, required int two}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
@@ -9355,16 +9375,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiImplTraitStructTwoWithTraitTwinNormalSetTwoConstMeta,
+      constMeta:
+          kCrateApiImplTraitStructTwoWithTraitTwinNormalAutoAccessorSetTwoConstMeta,
       argValues: [that, two],
       apiImpl: this,
     ));
   }
 
   TaskConstMeta
-      get kCrateApiImplTraitStructTwoWithTraitTwinNormalSetTwoConstMeta =>
+      get kCrateApiImplTraitStructTwoWithTraitTwinNormalAutoAccessorSetTwoConstMeta =>
           const TaskConstMeta(
-            debugName: "StructTwoWithTraitTwinNormal_set_two",
+            debugName: "StructTwoWithTraitTwinNormal_auto_accessor_set_two",
             argNames: ["that", "two"],
           );
 
@@ -11353,13 +11374,390 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Uint8List
+      crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorGetDeliberateBadFieldA(
+          {required DeliberateFailSanityCheckTwinNormal that}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
+            that, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 237)!;
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_list_prim_u_8_strict,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorGetDeliberateBadFieldAConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorGetDeliberateBadFieldAConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "DeliberateFailSanityCheckTwinNormal_auto_accessor_get_deliberate_bad_field_a",
+            argNames: ["that"],
+          );
+
+  @override
+  OpaqueItemTwinNormal
+      crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorGetDeliberateBadFieldB(
+          {required DeliberateFailSanityCheckTwinNormal that}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
+            that, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 238)!;
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorGetDeliberateBadFieldBConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorGetDeliberateBadFieldBConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "DeliberateFailSanityCheckTwinNormal_auto_accessor_get_deliberate_bad_field_b",
+            argNames: ["that"],
+          );
+
+  @override
+  List<OpaqueItemTwinNormal>
+      crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorGetDeliberateBadFieldC(
+          {required DeliberateFailSanityCheckTwinNormal that}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
+            that, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 239)!;
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorGetDeliberateBadFieldCConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorGetDeliberateBadFieldCConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "DeliberateFailSanityCheckTwinNormal_auto_accessor_get_deliberate_bad_field_c",
+            argNames: ["that"],
+          );
+
+  @override
+  String
+      crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorGetGoodFieldA(
+          {required DeliberateFailSanityCheckTwinNormal that}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
+            that, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 240)!;
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_String,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorGetGoodFieldAConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorGetGoodFieldAConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "DeliberateFailSanityCheckTwinNormal_auto_accessor_get_good_field_a",
+            argNames: ["that"],
+          );
+
+  @override
+  int crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorGetGoodFieldB(
+      {required DeliberateFailSanityCheckTwinNormal that}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
+            that, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 241)!;
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorGetGoodFieldBConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorGetGoodFieldBConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "DeliberateFailSanityCheckTwinNormal_auto_accessor_get_good_field_b",
+            argNames: ["that"],
+          );
+
+  @override
+  OpaqueItemTwinNormal
+      crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorGetGoodFieldC(
+          {required DeliberateFailSanityCheckTwinNormal that}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
+            that, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 242)!;
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorGetGoodFieldCConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorGetGoodFieldCConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "DeliberateFailSanityCheckTwinNormal_auto_accessor_get_good_field_c",
+            argNames: ["that"],
+          );
+
+  @override
+  void
+      crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorSetDeliberateBadFieldA(
+          {required DeliberateFailSanityCheckTwinNormal that,
+          required Uint8List deliberateBadFieldA}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
+            that, serializer);
+        sse_encode_list_prim_u_8_strict(deliberateBadFieldA, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 243)!;
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorSetDeliberateBadFieldAConstMeta,
+      argValues: [that, deliberateBadFieldA],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorSetDeliberateBadFieldAConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "DeliberateFailSanityCheckTwinNormal_auto_accessor_set_deliberate_bad_field_a",
+            argNames: ["that", "deliberateBadFieldA"],
+          );
+
+  @override
+  void
+      crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorSetDeliberateBadFieldB(
+          {required DeliberateFailSanityCheckTwinNormal that,
+          required OpaqueItemTwinNormal deliberateBadFieldB}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
+            that, serializer);
+        sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
+            deliberateBadFieldB, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 244)!;
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorSetDeliberateBadFieldBConstMeta,
+      argValues: [that, deliberateBadFieldB],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorSetDeliberateBadFieldBConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "DeliberateFailSanityCheckTwinNormal_auto_accessor_set_deliberate_bad_field_b",
+            argNames: ["that", "deliberateBadFieldB"],
+          );
+
+  @override
+  void
+      crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorSetDeliberateBadFieldC(
+          {required DeliberateFailSanityCheckTwinNormal that,
+          required List<OpaqueItemTwinNormal> deliberateBadFieldC}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
+            that, serializer);
+        sse_encode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
+            deliberateBadFieldC, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 245)!;
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorSetDeliberateBadFieldCConstMeta,
+      argValues: [that, deliberateBadFieldC],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorSetDeliberateBadFieldCConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "DeliberateFailSanityCheckTwinNormal_auto_accessor_set_deliberate_bad_field_c",
+            argNames: ["that", "deliberateBadFieldC"],
+          );
+
+  @override
+  void
+      crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorSetGoodFieldA(
+          {required DeliberateFailSanityCheckTwinNormal that,
+          required String goodFieldA}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
+            that, serializer);
+        sse_encode_String(goodFieldA, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 246)!;
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorSetGoodFieldAConstMeta,
+      argValues: [that, goodFieldA],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorSetGoodFieldAConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "DeliberateFailSanityCheckTwinNormal_auto_accessor_set_good_field_a",
+            argNames: ["that", "goodFieldA"],
+          );
+
+  @override
+  void
+      crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorSetGoodFieldB(
+          {required DeliberateFailSanityCheckTwinNormal that,
+          required int goodFieldB}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
+            that, serializer);
+        sse_encode_i_32(goodFieldB, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 247)!;
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorSetGoodFieldBConstMeta,
+      argValues: [that, goodFieldB],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorSetGoodFieldBConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "DeliberateFailSanityCheckTwinNormal_auto_accessor_set_good_field_b",
+            argNames: ["that", "goodFieldB"],
+          );
+
+  @override
+  void
+      crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorSetGoodFieldC(
+          {required DeliberateFailSanityCheckTwinNormal that,
+          required OpaqueItemTwinNormal goodFieldC}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
+            that, serializer);
+        sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
+            goodFieldC, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 248)!;
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorSetGoodFieldCConstMeta,
+      argValues: [that, goodFieldC],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorSetGoodFieldCConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "DeliberateFailSanityCheckTwinNormal_auto_accessor_set_good_field_c",
+            argNames: ["that", "goodFieldC"],
+          );
+
+  @override
   Future<void>
       crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalDummyFunctionTwinNormal() {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 237, port: port_);
+            funcId: 249, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -11381,374 +11779,65 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
-  Uint8List
-      crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalGetDeliberateBadFieldA(
-          {required DeliberateFailSanityCheckTwinNormal that}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
-            that, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 238)!;
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_8_strict,
-        decodeErrorData: null,
-      ),
-      constMeta:
-          kCrateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalGetDeliberateBadFieldAConstMeta,
-      argValues: [that],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta
-      get kCrateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalGetDeliberateBadFieldAConstMeta =>
-          const TaskConstMeta(
-            debugName:
-                "DeliberateFailSanityCheckTwinNormal_get_deliberate_bad_field_a",
-            argNames: ["that"],
-          );
-
-  @override
-  OpaqueItemTwinNormal
-      crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalGetDeliberateBadFieldB(
-          {required DeliberateFailSanityCheckTwinNormal that}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
-            that, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 239)!;
-      },
-      codec: SseCodec(
-        decodeSuccessData:
-            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal,
-        decodeErrorData: null,
-      ),
-      constMeta:
-          kCrateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalGetDeliberateBadFieldBConstMeta,
-      argValues: [that],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta
-      get kCrateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalGetDeliberateBadFieldBConstMeta =>
-          const TaskConstMeta(
-            debugName:
-                "DeliberateFailSanityCheckTwinNormal_get_deliberate_bad_field_b",
-            argNames: ["that"],
-          );
-
-  @override
-  List<OpaqueItemTwinNormal>
-      crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalGetDeliberateBadFieldC(
-          {required DeliberateFailSanityCheckTwinNormal that}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
-            that, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 240)!;
-      },
-      codec: SseCodec(
-        decodeSuccessData:
-            sse_decode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal,
-        decodeErrorData: null,
-      ),
-      constMeta:
-          kCrateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalGetDeliberateBadFieldCConstMeta,
-      argValues: [that],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta
-      get kCrateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalGetDeliberateBadFieldCConstMeta =>
-          const TaskConstMeta(
-            debugName:
-                "DeliberateFailSanityCheckTwinNormal_get_deliberate_bad_field_c",
-            argNames: ["that"],
-          );
-
-  @override
   String
-      crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalGetGoodFieldA(
-          {required DeliberateFailSanityCheckTwinNormal that}) {
+      crateApiMiscNoTwinExampleAItemContainerSolutionOneTwinNormalAutoAccessorGetName(
+          {required ItemContainerSolutionOneTwinNormal that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerItemContainerSolutionOneTwinNormal(
             that, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 241)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 250)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_String,
         decodeErrorData: null,
       ),
       constMeta:
-          kCrateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalGetGoodFieldAConstMeta,
+          kCrateApiMiscNoTwinExampleAItemContainerSolutionOneTwinNormalAutoAccessorGetNameConstMeta,
       argValues: [that],
       apiImpl: this,
     ));
   }
 
   TaskConstMeta
-      get kCrateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalGetGoodFieldAConstMeta =>
+      get kCrateApiMiscNoTwinExampleAItemContainerSolutionOneTwinNormalAutoAccessorGetNameConstMeta =>
           const TaskConstMeta(
-            debugName: "DeliberateFailSanityCheckTwinNormal_get_good_field_a",
-            argNames: ["that"],
-          );
-
-  @override
-  int crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalGetGoodFieldB(
-      {required DeliberateFailSanityCheckTwinNormal that}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
-            that, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 242)!;
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_i_32,
-        decodeErrorData: null,
-      ),
-      constMeta:
-          kCrateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalGetGoodFieldBConstMeta,
-      argValues: [that],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta
-      get kCrateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalGetGoodFieldBConstMeta =>
-          const TaskConstMeta(
-            debugName: "DeliberateFailSanityCheckTwinNormal_get_good_field_b",
-            argNames: ["that"],
-          );
-
-  @override
-  OpaqueItemTwinNormal
-      crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalGetGoodFieldC(
-          {required DeliberateFailSanityCheckTwinNormal that}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
-            that, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 243)!;
-      },
-      codec: SseCodec(
-        decodeSuccessData:
-            sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal,
-        decodeErrorData: null,
-      ),
-      constMeta:
-          kCrateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalGetGoodFieldCConstMeta,
-      argValues: [that],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta
-      get kCrateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalGetGoodFieldCConstMeta =>
-          const TaskConstMeta(
-            debugName: "DeliberateFailSanityCheckTwinNormal_get_good_field_c",
+            debugName:
+                "ItemContainerSolutionOneTwinNormal_auto_accessor_get_name",
             argNames: ["that"],
           );
 
   @override
   void
-      crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalSetDeliberateBadFieldA(
-          {required DeliberateFailSanityCheckTwinNormal that,
-          required Uint8List deliberateBadFieldA}) {
+      crateApiMiscNoTwinExampleAItemContainerSolutionOneTwinNormalAutoAccessorSetName(
+          {required ItemContainerSolutionOneTwinNormal that,
+          required String name}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
+        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerItemContainerSolutionOneTwinNormal(
             that, serializer);
-        sse_encode_list_prim_u_8_strict(deliberateBadFieldA, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 244)!;
+        sse_encode_String(name, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 251)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta:
-          kCrateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalSetDeliberateBadFieldAConstMeta,
-      argValues: [that, deliberateBadFieldA],
+          kCrateApiMiscNoTwinExampleAItemContainerSolutionOneTwinNormalAutoAccessorSetNameConstMeta,
+      argValues: [that, name],
       apiImpl: this,
     ));
   }
 
   TaskConstMeta
-      get kCrateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalSetDeliberateBadFieldAConstMeta =>
+      get kCrateApiMiscNoTwinExampleAItemContainerSolutionOneTwinNormalAutoAccessorSetNameConstMeta =>
           const TaskConstMeta(
             debugName:
-                "DeliberateFailSanityCheckTwinNormal_set_deliberate_bad_field_a",
-            argNames: ["that", "deliberateBadFieldA"],
-          );
-
-  @override
-  void
-      crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalSetDeliberateBadFieldB(
-          {required DeliberateFailSanityCheckTwinNormal that,
-          required OpaqueItemTwinNormal deliberateBadFieldB}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
-            that, serializer);
-        sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
-            deliberateBadFieldB, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 245)!;
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
-      ),
-      constMeta:
-          kCrateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalSetDeliberateBadFieldBConstMeta,
-      argValues: [that, deliberateBadFieldB],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta
-      get kCrateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalSetDeliberateBadFieldBConstMeta =>
-          const TaskConstMeta(
-            debugName:
-                "DeliberateFailSanityCheckTwinNormal_set_deliberate_bad_field_b",
-            argNames: ["that", "deliberateBadFieldB"],
-          );
-
-  @override
-  void
-      crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalSetDeliberateBadFieldC(
-          {required DeliberateFailSanityCheckTwinNormal that,
-          required List<OpaqueItemTwinNormal> deliberateBadFieldC}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
-            that, serializer);
-        sse_encode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
-            deliberateBadFieldC, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 246)!;
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
-      ),
-      constMeta:
-          kCrateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalSetDeliberateBadFieldCConstMeta,
-      argValues: [that, deliberateBadFieldC],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta
-      get kCrateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalSetDeliberateBadFieldCConstMeta =>
-          const TaskConstMeta(
-            debugName:
-                "DeliberateFailSanityCheckTwinNormal_set_deliberate_bad_field_c",
-            argNames: ["that", "deliberateBadFieldC"],
-          );
-
-  @override
-  void
-      crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalSetGoodFieldA(
-          {required DeliberateFailSanityCheckTwinNormal that,
-          required String goodFieldA}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
-            that, serializer);
-        sse_encode_String(goodFieldA, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 247)!;
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
-      ),
-      constMeta:
-          kCrateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalSetGoodFieldAConstMeta,
-      argValues: [that, goodFieldA],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta
-      get kCrateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalSetGoodFieldAConstMeta =>
-          const TaskConstMeta(
-            debugName: "DeliberateFailSanityCheckTwinNormal_set_good_field_a",
-            argNames: ["that", "goodFieldA"],
-          );
-
-  @override
-  void
-      crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalSetGoodFieldB(
-          {required DeliberateFailSanityCheckTwinNormal that,
-          required int goodFieldB}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
-            that, serializer);
-        sse_encode_i_32(goodFieldB, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 248)!;
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
-      ),
-      constMeta:
-          kCrateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalSetGoodFieldBConstMeta,
-      argValues: [that, goodFieldB],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta
-      get kCrateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalSetGoodFieldBConstMeta =>
-          const TaskConstMeta(
-            debugName: "DeliberateFailSanityCheckTwinNormal_set_good_field_b",
-            argNames: ["that", "goodFieldB"],
-          );
-
-  @override
-  void
-      crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalSetGoodFieldC(
-          {required DeliberateFailSanityCheckTwinNormal that,
-          required OpaqueItemTwinNormal goodFieldC}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
-            that, serializer);
-        sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
-            goodFieldC, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 249)!;
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
-      ),
-      constMeta:
-          kCrateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalSetGoodFieldCConstMeta,
-      argValues: [that, goodFieldC],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta
-      get kCrateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalSetGoodFieldCConstMeta =>
-          const TaskConstMeta(
-            debugName: "DeliberateFailSanityCheckTwinNormal_set_good_field_c",
-            argNames: ["that", "goodFieldC"],
+                "ItemContainerSolutionOneTwinNormal_auto_accessor_set_name",
+            argNames: ["that", "name"],
           );
 
   @override
@@ -11758,7 +11847,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 250, port: port_);
+            funcId: 252, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -11789,7 +11878,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerItemContainerSolutionOneTwinNormal(
             that, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 251, port: port_);
+            funcId: 253, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_list_prim_i_32_strict,
@@ -11808,64 +11897,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             debugName:
                 "ItemContainerSolutionOneTwinNormal_get_item_contents_twin_normal",
             argNames: ["that"],
-          );
-
-  @override
-  String crateApiMiscNoTwinExampleAItemContainerSolutionOneTwinNormalGetName(
-      {required ItemContainerSolutionOneTwinNormal that}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerItemContainerSolutionOneTwinNormal(
-            that, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 252)!;
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_String,
-        decodeErrorData: null,
-      ),
-      constMeta:
-          kCrateApiMiscNoTwinExampleAItemContainerSolutionOneTwinNormalGetNameConstMeta,
-      argValues: [that],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta
-      get kCrateApiMiscNoTwinExampleAItemContainerSolutionOneTwinNormalGetNameConstMeta =>
-          const TaskConstMeta(
-            debugName: "ItemContainerSolutionOneTwinNormal_get_name",
-            argNames: ["that"],
-          );
-
-  @override
-  void crateApiMiscNoTwinExampleAItemContainerSolutionOneTwinNormalSetName(
-      {required ItemContainerSolutionOneTwinNormal that,
-      required String name}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerItemContainerSolutionOneTwinNormal(
-            that, serializer);
-        sse_encode_String(name, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 253)!;
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
-      ),
-      constMeta:
-          kCrateApiMiscNoTwinExampleAItemContainerSolutionOneTwinNormalSetNameConstMeta,
-      argValues: [that, name],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta
-      get kCrateApiMiscNoTwinExampleAItemContainerSolutionOneTwinNormalSetNameConstMeta =>
-          const TaskConstMeta(
-            debugName: "ItemContainerSolutionOneTwinNormal_set_name",
-            argNames: ["that", "name"],
           );
 
   @override
@@ -26373,7 +26404,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
-  int crateApiPseudoManualImplTraitTwinSyncStructOneWithTraitTwinSyncGetOne(
+  int crateApiPseudoManualImplTraitTwinSyncStructOneWithTraitTwinSyncAutoAccessorGetOne(
       {required StructOneWithTraitTwinSync that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
@@ -26387,22 +26418,23 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeErrorData: null,
       ),
       constMeta:
-          kCrateApiPseudoManualImplTraitTwinSyncStructOneWithTraitTwinSyncGetOneConstMeta,
+          kCrateApiPseudoManualImplTraitTwinSyncStructOneWithTraitTwinSyncAutoAccessorGetOneConstMeta,
       argValues: [that],
       apiImpl: this,
     ));
   }
 
   TaskConstMeta
-      get kCrateApiPseudoManualImplTraitTwinSyncStructOneWithTraitTwinSyncGetOneConstMeta =>
+      get kCrateApiPseudoManualImplTraitTwinSyncStructOneWithTraitTwinSyncAutoAccessorGetOneConstMeta =>
           const TaskConstMeta(
-            debugName: "StructOneWithTraitTwinSync_get_one",
+            debugName: "StructOneWithTraitTwinSync_auto_accessor_get_one",
             argNames: ["that"],
           );
 
   @override
-  void crateApiPseudoManualImplTraitTwinSyncStructOneWithTraitTwinSyncSetOne(
-      {required StructOneWithTraitTwinSync that, required int one}) {
+  void
+      crateApiPseudoManualImplTraitTwinSyncStructOneWithTraitTwinSyncAutoAccessorSetOne(
+          {required StructOneWithTraitTwinSync that, required int one}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -26416,16 +26448,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeErrorData: null,
       ),
       constMeta:
-          kCrateApiPseudoManualImplTraitTwinSyncStructOneWithTraitTwinSyncSetOneConstMeta,
+          kCrateApiPseudoManualImplTraitTwinSyncStructOneWithTraitTwinSyncAutoAccessorSetOneConstMeta,
       argValues: [that, one],
       apiImpl: this,
     ));
   }
 
   TaskConstMeta
-      get kCrateApiPseudoManualImplTraitTwinSyncStructOneWithTraitTwinSyncSetOneConstMeta =>
+      get kCrateApiPseudoManualImplTraitTwinSyncStructOneWithTraitTwinSyncAutoAccessorSetOneConstMeta =>
           const TaskConstMeta(
-            debugName: "StructOneWithTraitTwinSync_set_one",
+            debugName: "StructOneWithTraitTwinSync_auto_accessor_set_one",
             argNames: ["that", "one"],
           );
 
@@ -26519,7 +26551,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
-  int crateApiPseudoManualImplTraitTwinSyncStructTwoWithTraitTwinSyncGetTwo(
+  int crateApiPseudoManualImplTraitTwinSyncStructTwoWithTraitTwinSyncAutoAccessorGetTwo(
       {required StructTwoWithTraitTwinSync that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
@@ -26533,22 +26565,23 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeErrorData: null,
       ),
       constMeta:
-          kCrateApiPseudoManualImplTraitTwinSyncStructTwoWithTraitTwinSyncGetTwoConstMeta,
+          kCrateApiPseudoManualImplTraitTwinSyncStructTwoWithTraitTwinSyncAutoAccessorGetTwoConstMeta,
       argValues: [that],
       apiImpl: this,
     ));
   }
 
   TaskConstMeta
-      get kCrateApiPseudoManualImplTraitTwinSyncStructTwoWithTraitTwinSyncGetTwoConstMeta =>
+      get kCrateApiPseudoManualImplTraitTwinSyncStructTwoWithTraitTwinSyncAutoAccessorGetTwoConstMeta =>
           const TaskConstMeta(
-            debugName: "StructTwoWithTraitTwinSync_get_two",
+            debugName: "StructTwoWithTraitTwinSync_auto_accessor_get_two",
             argNames: ["that"],
           );
 
   @override
-  void crateApiPseudoManualImplTraitTwinSyncStructTwoWithTraitTwinSyncSetTwo(
-      {required StructTwoWithTraitTwinSync that, required int two}) {
+  void
+      crateApiPseudoManualImplTraitTwinSyncStructTwoWithTraitTwinSyncAutoAccessorSetTwo(
+          {required StructTwoWithTraitTwinSync that, required int two}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -26562,16 +26595,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeErrorData: null,
       ),
       constMeta:
-          kCrateApiPseudoManualImplTraitTwinSyncStructTwoWithTraitTwinSyncSetTwoConstMeta,
+          kCrateApiPseudoManualImplTraitTwinSyncStructTwoWithTraitTwinSyncAutoAccessorSetTwoConstMeta,
       argValues: [that, two],
       apiImpl: this,
     ));
   }
 
   TaskConstMeta
-      get kCrateApiPseudoManualImplTraitTwinSyncStructTwoWithTraitTwinSyncSetTwoConstMeta =>
+      get kCrateApiPseudoManualImplTraitTwinSyncStructTwoWithTraitTwinSyncAutoAccessorSetTwoConstMeta =>
           const TaskConstMeta(
-            debugName: "StructTwoWithTraitTwinSync_set_two",
+            debugName: "StructTwoWithTraitTwinSync_auto_accessor_set_two",
             argNames: ["that", "two"],
           );
 
@@ -32234,7 +32267,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   String
-      crateApiPseudoManualRustAutoOpaqueTwinRustAsyncStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncGetGood(
+      crateApiPseudoManualRustAutoOpaqueTwinRustAsyncStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncAutoAccessorGetGood(
           {required StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync
               that}) {
     return handler.executeSync(SyncTask(
@@ -32249,23 +32282,23 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeErrorData: null,
       ),
       constMeta:
-          kCrateApiPseudoManualRustAutoOpaqueTwinRustAsyncStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncGetGoodConstMeta,
+          kCrateApiPseudoManualRustAutoOpaqueTwinRustAsyncStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncAutoAccessorGetGoodConstMeta,
       argValues: [that],
       apiImpl: this,
     ));
   }
 
   TaskConstMeta
-      get kCrateApiPseudoManualRustAutoOpaqueTwinRustAsyncStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncGetGoodConstMeta =>
+      get kCrateApiPseudoManualRustAutoOpaqueTwinRustAsyncStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncAutoAccessorGetGoodConstMeta =>
           const TaskConstMeta(
             debugName:
-                "StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync_get_good",
+                "StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync_auto_accessor_get_good",
             argNames: ["that"],
           );
 
   @override
   void
-      crateApiPseudoManualRustAutoOpaqueTwinRustAsyncStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSetGood(
+      crateApiPseudoManualRustAutoOpaqueTwinRustAsyncStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncAutoAccessorSetGood(
           {required StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync that,
           required String good}) {
     return handler.executeSync(SyncTask(
@@ -32281,17 +32314,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeErrorData: null,
       ),
       constMeta:
-          kCrateApiPseudoManualRustAutoOpaqueTwinRustAsyncStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSetGoodConstMeta,
+          kCrateApiPseudoManualRustAutoOpaqueTwinRustAsyncStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncAutoAccessorSetGoodConstMeta,
       argValues: [that, good],
       apiImpl: this,
     ));
   }
 
   TaskConstMeta
-      get kCrateApiPseudoManualRustAutoOpaqueTwinRustAsyncStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSetGoodConstMeta =>
+      get kCrateApiPseudoManualRustAutoOpaqueTwinRustAsyncStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncAutoAccessorSetGoodConstMeta =>
           const TaskConstMeta(
             debugName:
-                "StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync_set_good",
+                "StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync_auto_accessor_set_good",
             argNames: ["that", "good"],
           );
 
@@ -33588,7 +33621,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   String
-      crateApiPseudoManualRustAutoOpaqueTwinSyncStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncGetGood(
+      crateApiPseudoManualRustAutoOpaqueTwinSyncStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncAutoAccessorGetGood(
           {required StructWithGoodAndOpaqueFieldWithoutOptionTwinSync that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
@@ -33602,23 +33635,23 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeErrorData: null,
       ),
       constMeta:
-          kCrateApiPseudoManualRustAutoOpaqueTwinSyncStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncGetGoodConstMeta,
+          kCrateApiPseudoManualRustAutoOpaqueTwinSyncStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncAutoAccessorGetGoodConstMeta,
       argValues: [that],
       apiImpl: this,
     ));
   }
 
   TaskConstMeta
-      get kCrateApiPseudoManualRustAutoOpaqueTwinSyncStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncGetGoodConstMeta =>
+      get kCrateApiPseudoManualRustAutoOpaqueTwinSyncStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncAutoAccessorGetGoodConstMeta =>
           const TaskConstMeta(
             debugName:
-                "StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_get_good",
+                "StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_auto_accessor_get_good",
             argNames: ["that"],
           );
 
   @override
   void
-      crateApiPseudoManualRustAutoOpaqueTwinSyncStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSetGood(
+      crateApiPseudoManualRustAutoOpaqueTwinSyncStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncAutoAccessorSetGood(
           {required StructWithGoodAndOpaqueFieldWithoutOptionTwinSync that,
           required String good}) {
     return handler.executeSync(SyncTask(
@@ -33634,17 +33667,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeErrorData: null,
       ),
       constMeta:
-          kCrateApiPseudoManualRustAutoOpaqueTwinSyncStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSetGoodConstMeta,
+          kCrateApiPseudoManualRustAutoOpaqueTwinSyncStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncAutoAccessorSetGoodConstMeta,
       argValues: [that, good],
       apiImpl: this,
     ));
   }
 
   TaskConstMeta
-      get kCrateApiPseudoManualRustAutoOpaqueTwinSyncStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSetGoodConstMeta =>
+      get kCrateApiPseudoManualRustAutoOpaqueTwinSyncStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncAutoAccessorSetGoodConstMeta =>
           const TaskConstMeta(
             debugName:
-                "StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_set_good",
+                "StructWithGoodAndOpaqueFieldWithoutOptionTwinSync_auto_accessor_set_good",
             argNames: ["that", "good"],
           );
 
@@ -37059,7 +37092,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   String
-      crateApiRustAutoOpaqueStructWithGoodAndOpaqueFieldWithoutOptionTwinNormalGetGood(
+      crateApiRustAutoOpaqueStructWithGoodAndOpaqueFieldWithoutOptionTwinNormalAutoAccessorGetGood(
           {required StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
@@ -37073,23 +37106,23 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeErrorData: null,
       ),
       constMeta:
-          kCrateApiRustAutoOpaqueStructWithGoodAndOpaqueFieldWithoutOptionTwinNormalGetGoodConstMeta,
+          kCrateApiRustAutoOpaqueStructWithGoodAndOpaqueFieldWithoutOptionTwinNormalAutoAccessorGetGoodConstMeta,
       argValues: [that],
       apiImpl: this,
     ));
   }
 
   TaskConstMeta
-      get kCrateApiRustAutoOpaqueStructWithGoodAndOpaqueFieldWithoutOptionTwinNormalGetGoodConstMeta =>
+      get kCrateApiRustAutoOpaqueStructWithGoodAndOpaqueFieldWithoutOptionTwinNormalAutoAccessorGetGoodConstMeta =>
           const TaskConstMeta(
             debugName:
-                "StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_get_good",
+                "StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_auto_accessor_get_good",
             argNames: ["that"],
           );
 
   @override
   void
-      crateApiRustAutoOpaqueStructWithGoodAndOpaqueFieldWithoutOptionTwinNormalSetGood(
+      crateApiRustAutoOpaqueStructWithGoodAndOpaqueFieldWithoutOptionTwinNormalAutoAccessorSetGood(
           {required StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal that,
           required String good}) {
     return handler.executeSync(SyncTask(
@@ -37105,17 +37138,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeErrorData: null,
       ),
       constMeta:
-          kCrateApiRustAutoOpaqueStructWithGoodAndOpaqueFieldWithoutOptionTwinNormalSetGoodConstMeta,
+          kCrateApiRustAutoOpaqueStructWithGoodAndOpaqueFieldWithoutOptionTwinNormalAutoAccessorSetGoodConstMeta,
       argValues: [that, good],
       apiImpl: this,
     ));
   }
 
   TaskConstMeta
-      get kCrateApiRustAutoOpaqueStructWithGoodAndOpaqueFieldWithoutOptionTwinNormalSetGoodConstMeta =>
+      get kCrateApiRustAutoOpaqueStructWithGoodAndOpaqueFieldWithoutOptionTwinNormalAutoAccessorSetGoodConstMeta =>
           const TaskConstMeta(
             debugName:
-                "StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_set_good",
+                "StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_auto_accessor_set_good",
             argNames: ["that", "good"],
           );
 
@@ -72185,19 +72218,19 @@ class ConstructorOpaqueStructTwinNormalImpl extends RustOpaque
         .rust_arc_decrement_strong_count_ConstructorOpaqueStructTwinNormalPtr,
   );
 
-  void check() => RustLib.instance.api
-          .crateApiConstructorConstructorOpaqueStructTwinNormalCheck(
-        that: this,
-      );
-
   String get one => RustLib.instance.api
-          .crateApiConstructorConstructorOpaqueStructTwinNormalGetOne(
+          .crateApiConstructorConstructorOpaqueStructTwinNormalAutoAccessorGetOne(
         that: this,
       );
 
   void set one(String one) => RustLib.instance.api
-      .crateApiConstructorConstructorOpaqueStructTwinNormalSetOne(
+      .crateApiConstructorConstructorOpaqueStructTwinNormalAutoAccessorSetOne(
           that: this, one: one);
+
+  void check() => RustLib.instance.api
+          .crateApiConstructorConstructorOpaqueStructTwinNormalCheck(
+        that: this,
+      );
 }
 
 @sealed
@@ -72222,19 +72255,19 @@ class ConstructorOpaqueSyncStructTwinNormalImpl extends RustOpaque
         .rust_arc_decrement_strong_count_ConstructorOpaqueSyncStructTwinNormalPtr,
   );
 
-  void check() => RustLib.instance.api
-          .crateApiConstructorConstructorOpaqueSyncStructTwinNormalCheck(
-        that: this,
-      );
-
   String get one => RustLib.instance.api
-          .crateApiConstructorConstructorOpaqueSyncStructTwinNormalGetOne(
+          .crateApiConstructorConstructorOpaqueSyncStructTwinNormalAutoAccessorGetOne(
         that: this,
       );
 
   void set one(String one) => RustLib.instance.api
-      .crateApiConstructorConstructorOpaqueSyncStructTwinNormalSetOne(
+      .crateApiConstructorConstructorOpaqueSyncStructTwinNormalAutoAccessorSetOne(
           that: this, one: one);
+
+  void check() => RustLib.instance.api
+          .crateApiConstructorConstructorOpaqueSyncStructTwinNormalCheck(
+        that: this,
+      );
 }
 
 @sealed
@@ -72260,61 +72293,61 @@ class DeliberateFailSanityCheckTwinNormalImpl extends RustOpaque
   );
 
   Uint8List get deliberateBadFieldA => RustLib.instance.api
-          .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalGetDeliberateBadFieldA(
+          .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorGetDeliberateBadFieldA(
         that: this,
       );
 
   OpaqueItemTwinNormal get deliberateBadFieldB => RustLib.instance.api
-          .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalGetDeliberateBadFieldB(
+          .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorGetDeliberateBadFieldB(
         that: this,
       );
 
   List<OpaqueItemTwinNormal> get deliberateBadFieldC => RustLib.instance.api
-          .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalGetDeliberateBadFieldC(
+          .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorGetDeliberateBadFieldC(
         that: this,
       );
 
   String get goodFieldA => RustLib.instance.api
-          .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalGetGoodFieldA(
+          .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorGetGoodFieldA(
         that: this,
       );
 
   int get goodFieldB => RustLib.instance.api
-          .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalGetGoodFieldB(
+          .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorGetGoodFieldB(
         that: this,
       );
 
   OpaqueItemTwinNormal get goodFieldC => RustLib.instance.api
-          .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalGetGoodFieldC(
+          .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorGetGoodFieldC(
         that: this,
       );
 
   void set deliberateBadFieldA(Uint8List deliberateBadFieldA) => RustLib
       .instance.api
-      .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalSetDeliberateBadFieldA(
+      .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorSetDeliberateBadFieldA(
           that: this, deliberateBadFieldA: deliberateBadFieldA);
 
   void set deliberateBadFieldB(OpaqueItemTwinNormal deliberateBadFieldB) => RustLib
       .instance.api
-      .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalSetDeliberateBadFieldB(
+      .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorSetDeliberateBadFieldB(
           that: this, deliberateBadFieldB: deliberateBadFieldB);
 
   void set deliberateBadFieldC(
           List<OpaqueItemTwinNormal> deliberateBadFieldC) =>
       RustLib.instance.api
-          .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalSetDeliberateBadFieldC(
+          .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorSetDeliberateBadFieldC(
               that: this, deliberateBadFieldC: deliberateBadFieldC);
 
   void set goodFieldA(String goodFieldA) => RustLib.instance.api
-      .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalSetGoodFieldA(
+      .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorSetGoodFieldA(
           that: this, goodFieldA: goodFieldA);
 
   void set goodFieldB(int goodFieldB) => RustLib.instance.api
-      .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalSetGoodFieldB(
+      .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorSetGoodFieldB(
           that: this, goodFieldB: goodFieldB);
 
   void set goodFieldC(OpaqueItemTwinNormal goodFieldC) => RustLib.instance.api
-      .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalSetGoodFieldC(
+      .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorSetGoodFieldC(
           that: this, goodFieldC: goodFieldC);
 }
 
@@ -72698,19 +72731,19 @@ class ItemContainerSolutionOneTwinNormalImpl extends RustOpaque
         .rust_arc_decrement_strong_count_ItemContainerSolutionOneTwinNormalPtr,
   );
 
-  Future<Int32List> getItemContentsTwinNormal() => RustLib.instance.api
-          .crateApiMiscNoTwinExampleAItemContainerSolutionOneTwinNormalGetItemContentsTwinNormal(
-        that: this,
-      );
-
   String get name => RustLib.instance.api
-          .crateApiMiscNoTwinExampleAItemContainerSolutionOneTwinNormalGetName(
+          .crateApiMiscNoTwinExampleAItemContainerSolutionOneTwinNormalAutoAccessorGetName(
         that: this,
       );
 
   void set name(String name) => RustLib.instance.api
-      .crateApiMiscNoTwinExampleAItemContainerSolutionOneTwinNormalSetName(
+      .crateApiMiscNoTwinExampleAItemContainerSolutionOneTwinNormalAutoAccessorSetName(
           that: this, name: name);
+
+  Future<Int32List> getItemContentsTwinNormal() => RustLib.instance.api
+          .crateApiMiscNoTwinExampleAItemContainerSolutionOneTwinNormalGetItemContentsTwinNormal(
+        that: this,
+      );
 }
 
 @sealed
@@ -73534,12 +73567,12 @@ class StructOneWithTraitForDynTwinNormalImpl extends RustOpaque
   );
 
   int get one => RustLib.instance.api
-          .crateApiDynTraitStructOneWithTraitForDynTwinNormalGetOne(
+          .crateApiDynTraitStructOneWithTraitForDynTwinNormalAutoAccessorGetOne(
         that: this,
       );
 
   void set one(int one) => RustLib.instance.api
-      .crateApiDynTraitStructOneWithTraitForDynTwinNormalSetOne(
+      .crateApiDynTraitStructOneWithTraitForDynTwinNormalAutoAccessorSetOne(
           that: this, one: one);
 
   Future<int> simpleMethodTwinNormal() => RustLib.instance.api
@@ -73569,13 +73602,13 @@ class StructOneWithTraitTwinNormalImpl extends RustOpaque
         .rust_arc_decrement_strong_count_StructOneWithTraitTwinNormalPtr,
   );
 
-  int get one =>
-      RustLib.instance.api.crateApiImplTraitStructOneWithTraitTwinNormalGetOne(
+  int get one => RustLib.instance.api
+          .crateApiImplTraitStructOneWithTraitTwinNormalAutoAccessorGetOne(
         that: this,
       );
 
-  void set one(int one) =>
-      RustLib.instance.api.crateApiImplTraitStructOneWithTraitTwinNormalSetOne(
+  void set one(int one) => RustLib.instance.api
+      .crateApiImplTraitStructOneWithTraitTwinNormalAutoAccessorSetOne(
           that: this, one: one);
 
   Future<int> simpleTraitFnReceiverBorrowTwinNormal() => RustLib.instance.api
@@ -73606,12 +73639,12 @@ class StructOneWithTraitTwinSyncImpl extends RustOpaque
   );
 
   int get one => RustLib.instance.api
-          .crateApiPseudoManualImplTraitTwinSyncStructOneWithTraitTwinSyncGetOne(
+          .crateApiPseudoManualImplTraitTwinSyncStructOneWithTraitTwinSyncAutoAccessorGetOne(
         that: this,
       );
 
   void set one(int one) => RustLib.instance.api
-      .crateApiPseudoManualImplTraitTwinSyncStructOneWithTraitTwinSyncSetOne(
+      .crateApiPseudoManualImplTraitTwinSyncStructOneWithTraitTwinSyncAutoAccessorSetOne(
           that: this, one: one);
 
   Future<int> simpleTraitFnReceiverBorrowTwinSync() => RustLib.instance.api
@@ -73643,12 +73676,12 @@ class StructTwoWithTraitForDynTwinNormalImpl extends RustOpaque
   );
 
   int get two => RustLib.instance.api
-          .crateApiDynTraitStructTwoWithTraitForDynTwinNormalGetTwo(
+          .crateApiDynTraitStructTwoWithTraitForDynTwinNormalAutoAccessorGetTwo(
         that: this,
       );
 
   void set two(int two) => RustLib.instance.api
-      .crateApiDynTraitStructTwoWithTraitForDynTwinNormalSetTwo(
+      .crateApiDynTraitStructTwoWithTraitForDynTwinNormalAutoAccessorSetTwo(
           that: this, two: two);
 
   Future<int> simpleMethodTwinNormal() => RustLib.instance.api
@@ -73678,13 +73711,13 @@ class StructTwoWithTraitTwinNormalImpl extends RustOpaque
         .rust_arc_decrement_strong_count_StructTwoWithTraitTwinNormalPtr,
   );
 
-  int get two =>
-      RustLib.instance.api.crateApiImplTraitStructTwoWithTraitTwinNormalGetTwo(
+  int get two => RustLib.instance.api
+          .crateApiImplTraitStructTwoWithTraitTwinNormalAutoAccessorGetTwo(
         that: this,
       );
 
-  void set two(int two) =>
-      RustLib.instance.api.crateApiImplTraitStructTwoWithTraitTwinNormalSetTwo(
+  void set two(int two) => RustLib.instance.api
+      .crateApiImplTraitStructTwoWithTraitTwinNormalAutoAccessorSetTwo(
           that: this, two: two);
 
   Future<int> simpleTraitFnReceiverBorrowTwinNormal() => RustLib.instance.api
@@ -73715,12 +73748,12 @@ class StructTwoWithTraitTwinSyncImpl extends RustOpaque
   );
 
   int get two => RustLib.instance.api
-          .crateApiPseudoManualImplTraitTwinSyncStructTwoWithTraitTwinSyncGetTwo(
+          .crateApiPseudoManualImplTraitTwinSyncStructTwoWithTraitTwinSyncAutoAccessorGetTwo(
         that: this,
       );
 
   void set two(int two) => RustLib.instance.api
-      .crateApiPseudoManualImplTraitTwinSyncStructTwoWithTraitTwinSyncSetTwo(
+      .crateApiPseudoManualImplTraitTwinSyncStructTwoWithTraitTwinSyncAutoAccessorSetTwo(
           that: this, two: two);
 
   Future<int> simpleTraitFnReceiverBorrowTwinSync() => RustLib.instance.api
@@ -73752,12 +73785,12 @@ class StructWithGoodAndOpaqueFieldWithoutOptionTwinNormalImpl extends RustOpaque
   );
 
   String get good => RustLib.instance.api
-          .crateApiRustAutoOpaqueStructWithGoodAndOpaqueFieldWithoutOptionTwinNormalGetGood(
+          .crateApiRustAutoOpaqueStructWithGoodAndOpaqueFieldWithoutOptionTwinNormalAutoAccessorGetGood(
         that: this,
       );
 
   void set good(String good) => RustLib.instance.api
-      .crateApiRustAutoOpaqueStructWithGoodAndOpaqueFieldWithoutOptionTwinNormalSetGood(
+      .crateApiRustAutoOpaqueStructWithGoodAndOpaqueFieldWithoutOptionTwinNormalAutoAccessorSetGood(
           that: this, good: good);
 }
 
@@ -73785,12 +73818,12 @@ class StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncImpl
   );
 
   String get good => RustLib.instance.api
-          .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncGetGood(
+          .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncAutoAccessorGetGood(
         that: this,
       );
 
   void set good(String good) => RustLib.instance.api
-      .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSetGood(
+      .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncAutoAccessorSetGood(
           that: this, good: good);
 }
 
@@ -73817,12 +73850,12 @@ class StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncImpl extends RustOpaque
   );
 
   String get good => RustLib.instance.api
-          .crateApiPseudoManualRustAutoOpaqueTwinSyncStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncGetGood(
+          .crateApiPseudoManualRustAutoOpaqueTwinSyncStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncAutoAccessorGetGood(
         that: this,
       );
 
   void set good(String good) => RustLib.instance.api
-      .crateApiPseudoManualRustAutoOpaqueTwinSyncStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSetGood(
+      .crateApiPseudoManualRustAutoOpaqueTwinSyncStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncAutoAccessorSetGood(
           that: this, good: good);
 }
 
