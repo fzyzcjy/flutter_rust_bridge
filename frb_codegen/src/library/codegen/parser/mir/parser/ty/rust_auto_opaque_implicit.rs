@@ -27,7 +27,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     ) -> Result<MirType> {
         let (inner, ownership_mode) = split_ownership_from_ty(ty);
         let (ans_raw, ans_inner) =
-            self.parse_type_rust_auto_opaque_common(inner, namespace.clone(), None)?;
+            self.parse_type_rust_auto_opaque_common(inner, namespace, None)?;
         let ans = MirTypeRustAutoOpaqueImplicit {
             ownership_mode,
             raw: ans_raw,
@@ -35,7 +35,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             ignore: override_ignore.unwrap_or(false),
             reason,
         };
-        self.parse_maybe_lifetimeable(ans, namespace)
+        self.parse_maybe_lifetimeable(ans)
     }
 
     pub(crate) fn parse_type_rust_auto_opaque_common(

@@ -6,14 +6,12 @@ use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::mir::parser::lifetime_extractor::LifetimeExtractor;
 use crate::codegen::parser::mir::parser::lifetime_replacer::replace_lifetime_to_static;
 use crate::codegen::parser::mir::parser::ty::TypeParserWithContext;
-use crate::utils::namespace::Namespace;
 use syn::Type;
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_maybe_lifetimeable(
         &mut self,
         original: MirTypeRustAutoOpaqueImplicit,
-        namespace: Option<Namespace>,
     ) -> anyhow::Result<MirType> {
         let ty_str = &original.raw.string;
         let ty: Type = syn::parse_str(ty_str)?;
