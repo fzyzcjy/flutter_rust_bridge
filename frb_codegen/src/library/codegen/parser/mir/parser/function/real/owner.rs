@@ -3,10 +3,7 @@ use crate::codegen::ir::mir::func::{
     MirFuncOwnerInfo, MirFuncOwnerInfoMethod, MirFuncOwnerInfoMethodMode,
 };
 use crate::codegen::ir::mir::skip::MirSkipReason;
-use crate::codegen::ir::mir::skip::MirSkipReason::{
-    IgnoreBecauseNotAllowedOwner, IgnoreBecauseOwnerTyShouldIgnore,
-    IgnoreBecauseParseMethodOwnerTy, IgnoreBecauseParseOwnerCannotFindTrait,
-};
+use crate::codegen::ir::mir::skip::MirSkipReason::IgnoreBecauseOwnerTyShouldIgnore;
 use crate::codegen::ir::mir::ty::trait_def::MirTypeTraitDef;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
@@ -16,7 +13,7 @@ use crate::codegen::parser::mir::parser::function::real::{
 use crate::codegen::parser::mir::parser::ty::trait_def::parse_type_trait;
 use crate::codegen::parser::mir::parser::ty::TypeParserParsingContext;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
-use syn::{parse_str, FnArg, Type};
+use syn::{FnArg, Type};
 
 impl<'a, 'b> FunctionParser<'a, 'b> {
     pub(super) fn parse_owner(
@@ -109,18 +106,19 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         impl_ty: &Type,
         context: &TypeParserParsingContext,
     ) -> anyhow::Result<Option<MirType>> {
-        let self_ty_path = if let Type::Path(self_ty_path) = impl_ty {
-            self_ty_path
-        } else {
-            return Ok(None);
-        };
-
-        // let owner_ty_name = external_impl::parse_name_or_original(
-        //     &(self_ty_path.path.segments.first().unwrap().ident).to_string(),
-        // )?;
-        let owner_ty_name = (self_ty_path.path.segments.first().unwrap().ident).to_string();
-        let syn_ty: Type = parse_str(&owner_ty_name)?;
-        Ok(Some(self.type_parser.parse_type(&syn_ty, context)?))
+        // let self_ty_path = if let Type::Path(self_ty_path) = impl_ty {
+        //     self_ty_path
+        // } else {
+        //     return Ok(None);
+        // };
+        //
+        // // let owner_ty_name = external_impl::parse_name_or_original(
+        // //     &(self_ty_path.path.segments.first().unwrap().ident).to_string(),
+        // // )?;
+        // let owner_ty_name = (self_ty_path.path.segments.first().unwrap().ident).to_string();
+        // let syn_ty: Type = parse_str(&owner_ty_name)?;
+        // Ok(Some(self.type_parser.parse_type(&syn_ty, context)?))
+        Ok(Some(self.type_parser.parse_type(impl_ty, context)?))
     }
 }
 

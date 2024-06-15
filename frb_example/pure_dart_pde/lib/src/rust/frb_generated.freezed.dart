@@ -500,7 +500,7 @@ abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqu
 
 /// @nodoc
 mixin _$SimpleTraitForDynTwinNormalImplementor {
-  Object get field0 => throw _privateConstructorUsedError;
+  SimpleTraitForDynTwinNormal get field0 => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(StructOneWithTraitForDynTwinNormal field0)
