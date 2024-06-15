@@ -10,8 +10,8 @@ struct WithOwnerGuard {
 }
 
 fn new(
-    owner: One,
-    guard_builder: impl for<'this> FnOnce(&'this One) -> RwLockReadGuard<'this, One>,
+    owner: Arc<RwLock<One>>,
+    guard_builder: impl for<'this> FnOnce(&'this RwLock<One>) -> RwLockReadGuard<'this, One>,
 ) -> WithOwnerGuard {
     TODO
 }
