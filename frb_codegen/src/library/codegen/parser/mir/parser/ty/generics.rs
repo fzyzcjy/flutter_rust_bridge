@@ -24,3 +24,14 @@ pub(crate) enum GenericsInfo {
     LifetimeOnly(Vec<syn::LifetimeParam>),
     Unsupported,
 }
+
+pub(crate) fn should_ignore_because_generics(
+    generics: &syn::Generics,
+    enable_lifetime: bool,
+) -> bool {
+    match parse_generics_info(generics) {
+        GenericsInfo::Empty => false,
+        GenericsInfo::LifetimeOnly(_) => !enable_lifetime,
+        GenericsInfo::Unsupported => true,
+    }
+}

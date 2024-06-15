@@ -4,7 +4,9 @@ use crate::codegen::ir::hir::misc::visibility::HirVisibility;
 use crate::codegen::ir::mir::ty::rust_auto_opaque_implicit::MirTypeRustAutoOpaqueImplicitReason;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
+use crate::codegen::parser::mir::parser::ty::generics::should_ignore_because_generics;
 use crate::codegen::parser::mir::parser::ty::unencodable::SplayedSegment;
+use crate::codegen::parser::mir::parser::ty::TypeParserParsingContext;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use crate::utils::basic_code::general_code::GeneralDartCode;
 use crate::utils::basic_code::parser::parse_dart_code;
@@ -15,7 +17,6 @@ use std::collections::{HashMap, HashSet};
 use std::fmt::Debug;
 use std::hash::Hash;
 use syn::Type;
-use crate::codegen::parser::mir::parser::ty::TypeParserParsingContext;
 
 pub(super) trait EnumOrStructParser<Id, Obj, Item: SynItemStructOrEnum>
 where
@@ -190,6 +191,5 @@ pub(crate) fn parse_struct_or_enum_should_ignore<Item: SynItemStructOrEnum>(
         // For third party crates, if a struct is not public, then it is impossible to utilize it,
         // thus we ignore it.
         || ((!crate_name.is_self_crate())  && src_object.visibility != HirVisibility::Public)
-        // If enable lifetime, even if there is generics, it may be just lifetime generics, so we should not ignore them blindly
-        || (!context.enable_lifetime && !src_object.src.generics().params.is_empty())
+        || should_ignore_because_generics(src_object.src.generics(), context.enable_lifetime)
 }

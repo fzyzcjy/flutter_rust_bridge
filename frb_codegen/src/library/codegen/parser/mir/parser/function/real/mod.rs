@@ -19,6 +19,7 @@ use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
 use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
 use crate::codegen::parser::mir::parser::function::func_or_skip::MirFuncOrSkip;
+use crate::codegen::parser::mir::parser::ty::generics::should_ignore_because_generics;
 use crate::codegen::parser::mir::parser::ty::misc::parse_comments;
 use crate::codegen::parser::mir::parser::ty::trait_def::parse_type_trait;
 use crate::codegen::parser::mir::parser::ty::{TypeParser, TypeParserParsingContext};
@@ -126,7 +127,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         }
 
         // If enable lifetime, the lifetime "generics" should be acceptable (though other generics still not)
-        if !enable_lifetime && !func.item_fn.sig().generics.params.is_empty() {
+        if should_ignore_because_generics(&func.item_fn.sig().generics, enable_lifetime) {
             return Ok(create_output_skip(func, IgnoreBecauseFunctionGeneric));
         }
 
