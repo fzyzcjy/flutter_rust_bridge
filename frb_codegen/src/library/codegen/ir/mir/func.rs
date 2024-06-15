@@ -206,6 +206,9 @@ pub(crate) fn compute_interest_name_of_owner_ty(owner_ty: &MirType) -> Option<Na
         MirType::RustAutoOpaqueImplicit(ty) => {
             NamespacedName::new(ty.self_namespace().unwrap(), ty.rust_api_type())
         }
+        MirType::Delegate(MirTypeDelegate::Lifetimeable(ty)) => {
+            return compute_interest_name_of_owner_ty(&ty.api_type)
+        }
         MirType::TraitDef(ty) => ty.name.clone(),
         _ => return None,
     })
