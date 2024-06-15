@@ -49,8 +49,8 @@ fn build_pack(
     let mut unrelated_guard: Option<RwLockReadGuard<i32>> = None;
     let one_and_guard = OneAndGuard::try_new(one, |one| {
         // do ordered unlocking here
-        unrelated_guard = Some(unrelated.read().unwrap());
-        let one_guard = one.read().unwrap();
+        unrelated_guard = Some(unrelated.blocking_read());
+        let one_guard = one.blocking_read();
 
         anyhow::Ok(one_guard)
     })?;
