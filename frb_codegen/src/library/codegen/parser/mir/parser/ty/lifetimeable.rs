@@ -13,7 +13,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         namespace: Option<Namespace>,
     ) -> anyhow::Result<MirType> {
         let ty: Type = syn::parse_str(&original.raw.string)?;
-        let lifetimes = LifetimeExtractor::extract(&ty);
+        let lifetimes = LifetimeExtractor::extract_skipping_static(&ty);
 
         if !lifetimes.is_empty() {
             return Ok(MirType::Delegate(MirTypeDelegate::Lifetimeable(

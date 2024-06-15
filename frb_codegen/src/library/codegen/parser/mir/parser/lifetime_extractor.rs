@@ -5,7 +5,15 @@ use crate::if_then_some;
 pub(crate) struct LifetimeExtractor;
 
 impl LifetimeExtractor {
-    pub(crate) fn extract(ty: &Type) -> Vec<String> {
+    pub(crate) fn extract_skipping_static(ty: &Type) -> Vec<String> {
+        const LIFETIME_STATIC: &str = "static";
+
+        (Self::extract(ty).into_iter())
+            .filter(|lifetime| lifetime != LIFETIME_STATIC)
+            .collect_vec()
+    }
+
+    fn extract(ty: &Type) -> Vec<String> {
         match ty {
             Type::Path(ty) => (ty.path.segments.iter())
                 .filter_map(|segment| if_then_some!(let syn::PathArguments::AngleBracketed(inner) = &segment.arguments, inner))
