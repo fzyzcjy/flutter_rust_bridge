@@ -9,9 +9,6 @@ struct WithOwner<T> {
     owners: Vec<Box<dyn Any>>,
 }
 
-fn new(
-    owner: Arc<RwLock<One>>,
-    guard_builder: impl for<'this> FnOnce(&'this Arc<RwLock<One>>) -> RwLockReadGuard<'this, One>,
-) {
+fn new<O, T>(owner: O, guard_builder: impl for<'this> FnOnce(&'this O) -> T<'this>) {
     TODO
 }
