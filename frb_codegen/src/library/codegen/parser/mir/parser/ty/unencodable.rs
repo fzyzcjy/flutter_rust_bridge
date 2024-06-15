@@ -1,4 +1,5 @@
 use crate::codegen::ir::mir::ty::rust_opaque::NameComponent;
+use crate::codegen::parser::mir::parser::ty::path_data::extract_path_data;
 use syn::Type;
 
 pub(crate) type SplayedSegment<'a> = (&'a str, &'a [Type]);
@@ -9,6 +10,12 @@ pub(crate) fn splay_segments(segments: &[NameComponent]) -> Vec<SplayedSegment> 
         .iter()
         .map(|NameComponent { ident, args }| (&ident[..], &args[..]))
         .collect()
+}
+
+pub(crate) fn splayed_segments_from_syn_path(
+    path: &syn::Path,
+) -> anyhow::Result<Vec<SplayedSegment>> {
+    Ok(splay_segments(&extract_path_data(path)?))
 }
 
 // TODO
