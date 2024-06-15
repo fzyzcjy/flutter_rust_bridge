@@ -67,10 +67,15 @@ fn main() -> anyhow::Result<()> {
     let unrelated = Arc::new(RwLock::new(12345));
     let pack = build_pack(one.clone(), unrelated.clone())?;
 
-    println!("one(cloned) -> {:?}", &one);
-    println!("pack -> {:?}", &pack);
-    println!("pack.borrow_owner() -> {:?}", pack.borrow_owner());
-    println!("pack.borrow_dependent() -> {:?}", pack.borrow_dependent());
+    // test whether it is Send
+    std::thread::spawn(|| {
+        println!("inside another thread");
+        println!("one(cloned) -> {:?}", &one);
+        println!("pack -> {:?}", &pack);
+        println!("pack.borrow_owner() -> {:?}", pack.borrow_owner());
+        println!("pack.borrow_dependent() -> {:?}", pack.borrow_dependent());
+    })
+    .join()?;
 
     Ok(())
 }
