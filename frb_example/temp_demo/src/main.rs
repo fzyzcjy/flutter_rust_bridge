@@ -1,5 +1,6 @@
 use self_cell::self_cell;
-use std::sync::{Arc, RwLock, RwLockReadGuard};
+use std::sync::Arc;
+use tokio::sync::{RwLock, RwLockReadGuard};
 
 #[derive(Debug)]
 struct One(String);
