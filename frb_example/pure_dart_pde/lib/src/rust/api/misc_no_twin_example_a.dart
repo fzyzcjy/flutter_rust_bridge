@@ -24,9 +24,6 @@ abstract class BoxAnyMyDartTypeRename implements RustOpaqueInterface {}
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<DeliberateFailSanityCheckTwinNormal>>
 abstract class DeliberateFailSanityCheckTwinNormal
     implements RustOpaqueInterface {
-  static Future<void> dummyFunctionTwinNormal() => RustLib.instance.api
-      .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalDummyFunctionTwinNormal();
-
   Uint8List get deliberateBadFieldA;
 
   OpaqueItemTwinNormal get deliberateBadFieldB;
@@ -50,20 +47,23 @@ abstract class DeliberateFailSanityCheckTwinNormal
   void set goodFieldB(int goodFieldB);
 
   void set goodFieldC(OpaqueItemTwinNormal goodFieldC);
+
+  static Future<void> dummyFunctionTwinNormal() => RustLib.instance.api
+      .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalDummyFunctionTwinNormal();
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ItemContainerSolutionOneTwinNormal>>
 abstract class ItemContainerSolutionOneTwinNormal
     implements RustOpaqueInterface {
+  String get name;
+
+  void set name(String name);
+
   static Future<ItemContainerSolutionOneTwinNormal> createTwinNormal() => RustLib
       .instance.api
       .crateApiMiscNoTwinExampleAItemContainerSolutionOneTwinNormalCreateTwinNormal();
 
   Future<Int32List> getItemContentsTwinNormal();
-
-  String get name;
-
-  void set name(String name);
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinNormal>>

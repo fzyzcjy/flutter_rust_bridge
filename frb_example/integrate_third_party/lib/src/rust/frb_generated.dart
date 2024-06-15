@@ -71,7 +71,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.0.0-dev.39';
 
   @override
-  int get rustContentHash => 1150428884;
+  int get rustContentHash => -1764045916;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -197,52 +197,52 @@ abstract class RustLibApi extends BaseApi {
 
   double webAudioApiAudioParamValue({required AudioParam that});
 
-  AudioBuffer webAudioApiAudioProcessingEventGetInputBuffer(
+  AudioBuffer webAudioApiAudioProcessingEventAutoAccessorGetInputBuffer(
       {required AudioProcessingEvent that});
 
-  AudioBuffer webAudioApiAudioProcessingEventGetOutputBuffer(
+  AudioBuffer webAudioApiAudioProcessingEventAutoAccessorGetOutputBuffer(
       {required AudioProcessingEvent that});
 
-  double webAudioApiAudioProcessingEventGetPlaybackTime(
+  double webAudioApiAudioProcessingEventAutoAccessorGetPlaybackTime(
       {required AudioProcessingEvent that});
 
-  void webAudioApiAudioProcessingEventSetInputBuffer(
+  void webAudioApiAudioProcessingEventAutoAccessorSetInputBuffer(
       {required AudioProcessingEvent that, required AudioBuffer inputBuffer});
 
-  void webAudioApiAudioProcessingEventSetOutputBuffer(
+  void webAudioApiAudioProcessingEventAutoAccessorSetOutputBuffer(
       {required AudioProcessingEvent that, required AudioBuffer outputBuffer});
 
-  void webAudioApiAudioProcessingEventSetPlaybackTime(
+  void webAudioApiAudioProcessingEventAutoAccessorSetPlaybackTime(
       {required AudioProcessingEvent that, required double playbackTime});
 
-  double webAudioApiAudioRenderCapacityEventGetAverageLoad(
+  double webAudioApiAudioRenderCapacityEventAutoAccessorGetAverageLoad(
       {required AudioRenderCapacityEvent that});
 
-  Event webAudioApiAudioRenderCapacityEventGetEvent(
+  Event webAudioApiAudioRenderCapacityEventAutoAccessorGetEvent(
       {required AudioRenderCapacityEvent that});
 
-  double webAudioApiAudioRenderCapacityEventGetPeakLoad(
+  double webAudioApiAudioRenderCapacityEventAutoAccessorGetPeakLoad(
       {required AudioRenderCapacityEvent that});
 
-  double webAudioApiAudioRenderCapacityEventGetTimestamp(
+  double webAudioApiAudioRenderCapacityEventAutoAccessorGetTimestamp(
       {required AudioRenderCapacityEvent that});
 
-  double webAudioApiAudioRenderCapacityEventGetUnderrunRatio(
+  double webAudioApiAudioRenderCapacityEventAutoAccessorGetUnderrunRatio(
       {required AudioRenderCapacityEvent that});
 
-  void webAudioApiAudioRenderCapacityEventSetAverageLoad(
+  void webAudioApiAudioRenderCapacityEventAutoAccessorSetAverageLoad(
       {required AudioRenderCapacityEvent that, required double averageLoad});
 
-  void webAudioApiAudioRenderCapacityEventSetEvent(
+  void webAudioApiAudioRenderCapacityEventAutoAccessorSetEvent(
       {required AudioRenderCapacityEvent that, required Event event});
 
-  void webAudioApiAudioRenderCapacityEventSetPeakLoad(
+  void webAudioApiAudioRenderCapacityEventAutoAccessorSetPeakLoad(
       {required AudioRenderCapacityEvent that, required double peakLoad});
 
-  void webAudioApiAudioRenderCapacityEventSetTimestamp(
+  void webAudioApiAudioRenderCapacityEventAutoAccessorSetTimestamp(
       {required AudioRenderCapacityEvent that, required double timestamp});
 
-  void webAudioApiAudioRenderCapacityEventSetUnderrunRatio(
+  void webAudioApiAudioRenderCapacityEventAutoAccessorSetUnderrunRatio(
       {required AudioRenderCapacityEvent that, required double underrunRatio});
 
   Future<void> webAudioApiAudioRenderCapacityClearOnupdate(
@@ -255,16 +255,17 @@ abstract class RustLibApi extends BaseApi {
   Future<void> webAudioApiAudioRenderCapacityStop(
       {required AudioRenderCapacity that});
 
-  Event webAudioApiOfflineAudioCompletionEventGetEvent(
+  Event webAudioApiOfflineAudioCompletionEventAutoAccessorGetEvent(
       {required OfflineAudioCompletionEvent that});
 
-  AudioBuffer webAudioApiOfflineAudioCompletionEventGetRenderedBuffer(
-      {required OfflineAudioCompletionEvent that});
+  AudioBuffer
+      webAudioApiOfflineAudioCompletionEventAutoAccessorGetRenderedBuffer(
+          {required OfflineAudioCompletionEvent that});
 
-  void webAudioApiOfflineAudioCompletionEventSetEvent(
+  void webAudioApiOfflineAudioCompletionEventAutoAccessorSetEvent(
       {required OfflineAudioCompletionEvent that, required Event event});
 
-  void webAudioApiOfflineAudioCompletionEventSetRenderedBuffer(
+  void webAudioApiOfflineAudioCompletionEventAutoAccessorSetRenderedBuffer(
       {required OfflineAudioCompletionEvent that,
       required AudioBuffer renderedBuffer});
 
@@ -643,20 +644,22 @@ abstract class RustLibApi extends BaseApi {
   Future<MediaStream> webAudioApiMediaDevicesGetUserMediaSync(
       {required MediaStreamConstraints constraints});
 
-  Uint8List webAudioApiMediaRecorderBlobEventGetBlob({required BlobEvent that});
-
-  Event webAudioApiMediaRecorderBlobEventGetEvent({required BlobEvent that});
-
-  double webAudioApiMediaRecorderBlobEventGetTimecode(
+  Uint8List webAudioApiMediaRecorderBlobEventAutoAccessorGetBlob(
       {required BlobEvent that});
 
-  void webAudioApiMediaRecorderBlobEventSetBlob(
+  Event webAudioApiMediaRecorderBlobEventAutoAccessorGetEvent(
+      {required BlobEvent that});
+
+  double webAudioApiMediaRecorderBlobEventAutoAccessorGetTimecode(
+      {required BlobEvent that});
+
+  void webAudioApiMediaRecorderBlobEventAutoAccessorSetBlob(
       {required BlobEvent that, required Uint8List blob});
 
-  void webAudioApiMediaRecorderBlobEventSetEvent(
+  void webAudioApiMediaRecorderBlobEventAutoAccessorSetEvent(
       {required BlobEvent that, required Event event});
 
-  void webAudioApiMediaRecorderBlobEventSetTimecode(
+  void webAudioApiMediaRecorderBlobEventAutoAccessorSetTimecode(
       {required BlobEvent that, required double timecode});
 
   Future<void> webAudioApiMediaRecorderMediaRecorderClearOndataavailable(
@@ -3361,7 +3364,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  AudioBuffer webAudioApiAudioProcessingEventGetInputBuffer(
+  AudioBuffer webAudioApiAudioProcessingEventAutoAccessorGetInputBuffer(
       {required AudioProcessingEvent that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
@@ -3375,20 +3378,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer,
         decodeErrorData: null,
       ),
-      constMeta: kWebAudioApiAudioProcessingEventGetInputBufferConstMeta,
+      constMeta:
+          kWebAudioApiAudioProcessingEventAutoAccessorGetInputBufferConstMeta,
       argValues: [that],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kWebAudioApiAudioProcessingEventGetInputBufferConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioProcessingEvent_get_input_buffer",
-        argNames: ["that"],
-      );
+  TaskConstMeta
+      get kWebAudioApiAudioProcessingEventAutoAccessorGetInputBufferConstMeta =>
+          const TaskConstMeta(
+            debugName: "AudioProcessingEvent_auto_accessor_get_input_buffer",
+            argNames: ["that"],
+          );
 
   @override
-  AudioBuffer webAudioApiAudioProcessingEventGetOutputBuffer(
+  AudioBuffer webAudioApiAudioProcessingEventAutoAccessorGetOutputBuffer(
       {required AudioProcessingEvent that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
@@ -3402,20 +3407,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer,
         decodeErrorData: null,
       ),
-      constMeta: kWebAudioApiAudioProcessingEventGetOutputBufferConstMeta,
+      constMeta:
+          kWebAudioApiAudioProcessingEventAutoAccessorGetOutputBufferConstMeta,
       argValues: [that],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kWebAudioApiAudioProcessingEventGetOutputBufferConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioProcessingEvent_get_output_buffer",
-        argNames: ["that"],
-      );
+  TaskConstMeta
+      get kWebAudioApiAudioProcessingEventAutoAccessorGetOutputBufferConstMeta =>
+          const TaskConstMeta(
+            debugName: "AudioProcessingEvent_auto_accessor_get_output_buffer",
+            argNames: ["that"],
+          );
 
   @override
-  double webAudioApiAudioProcessingEventGetPlaybackTime(
+  double webAudioApiAudioProcessingEventAutoAccessorGetPlaybackTime(
       {required AudioProcessingEvent that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
@@ -3428,20 +3435,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_f_64,
         decodeErrorData: null,
       ),
-      constMeta: kWebAudioApiAudioProcessingEventGetPlaybackTimeConstMeta,
+      constMeta:
+          kWebAudioApiAudioProcessingEventAutoAccessorGetPlaybackTimeConstMeta,
       argValues: [that],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kWebAudioApiAudioProcessingEventGetPlaybackTimeConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioProcessingEvent_get_playback_time",
-        argNames: ["that"],
-      );
+  TaskConstMeta
+      get kWebAudioApiAudioProcessingEventAutoAccessorGetPlaybackTimeConstMeta =>
+          const TaskConstMeta(
+            debugName: "AudioProcessingEvent_auto_accessor_get_playback_time",
+            argNames: ["that"],
+          );
 
   @override
-  void webAudioApiAudioProcessingEventSetInputBuffer(
+  void webAudioApiAudioProcessingEventAutoAccessorSetInputBuffer(
       {required AudioProcessingEvent that, required AudioBuffer inputBuffer}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
@@ -3456,20 +3465,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
-      constMeta: kWebAudioApiAudioProcessingEventSetInputBufferConstMeta,
+      constMeta:
+          kWebAudioApiAudioProcessingEventAutoAccessorSetInputBufferConstMeta,
       argValues: [that, inputBuffer],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kWebAudioApiAudioProcessingEventSetInputBufferConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioProcessingEvent_set_input_buffer",
-        argNames: ["that", "inputBuffer"],
-      );
+  TaskConstMeta
+      get kWebAudioApiAudioProcessingEventAutoAccessorSetInputBufferConstMeta =>
+          const TaskConstMeta(
+            debugName: "AudioProcessingEvent_auto_accessor_set_input_buffer",
+            argNames: ["that", "inputBuffer"],
+          );
 
   @override
-  void webAudioApiAudioProcessingEventSetOutputBuffer(
+  void webAudioApiAudioProcessingEventAutoAccessorSetOutputBuffer(
       {required AudioProcessingEvent that, required AudioBuffer outputBuffer}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
@@ -3484,20 +3495,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
-      constMeta: kWebAudioApiAudioProcessingEventSetOutputBufferConstMeta,
+      constMeta:
+          kWebAudioApiAudioProcessingEventAutoAccessorSetOutputBufferConstMeta,
       argValues: [that, outputBuffer],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kWebAudioApiAudioProcessingEventSetOutputBufferConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioProcessingEvent_set_output_buffer",
-        argNames: ["that", "outputBuffer"],
-      );
+  TaskConstMeta
+      get kWebAudioApiAudioProcessingEventAutoAccessorSetOutputBufferConstMeta =>
+          const TaskConstMeta(
+            debugName: "AudioProcessingEvent_auto_accessor_set_output_buffer",
+            argNames: ["that", "outputBuffer"],
+          );
 
   @override
-  void webAudioApiAudioProcessingEventSetPlaybackTime(
+  void webAudioApiAudioProcessingEventAutoAccessorSetPlaybackTime(
       {required AudioProcessingEvent that, required double playbackTime}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
@@ -3511,20 +3524,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
-      constMeta: kWebAudioApiAudioProcessingEventSetPlaybackTimeConstMeta,
+      constMeta:
+          kWebAudioApiAudioProcessingEventAutoAccessorSetPlaybackTimeConstMeta,
       argValues: [that, playbackTime],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kWebAudioApiAudioProcessingEventSetPlaybackTimeConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioProcessingEvent_set_playback_time",
-        argNames: ["that", "playbackTime"],
-      );
+  TaskConstMeta
+      get kWebAudioApiAudioProcessingEventAutoAccessorSetPlaybackTimeConstMeta =>
+          const TaskConstMeta(
+            debugName: "AudioProcessingEvent_auto_accessor_set_playback_time",
+            argNames: ["that", "playbackTime"],
+          );
 
   @override
-  double webAudioApiAudioRenderCapacityEventGetAverageLoad(
+  double webAudioApiAudioRenderCapacityEventAutoAccessorGetAverageLoad(
       {required AudioRenderCapacityEvent that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
@@ -3537,21 +3552,23 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_f_64,
         decodeErrorData: null,
       ),
-      constMeta: kWebAudioApiAudioRenderCapacityEventGetAverageLoadConstMeta,
+      constMeta:
+          kWebAudioApiAudioRenderCapacityEventAutoAccessorGetAverageLoadConstMeta,
       argValues: [that],
       apiImpl: this,
     ));
   }
 
   TaskConstMeta
-      get kWebAudioApiAudioRenderCapacityEventGetAverageLoadConstMeta =>
+      get kWebAudioApiAudioRenderCapacityEventAutoAccessorGetAverageLoadConstMeta =>
           const TaskConstMeta(
-            debugName: "AudioRenderCapacityEvent_get_average_load",
+            debugName:
+                "AudioRenderCapacityEvent_auto_accessor_get_average_load",
             argNames: ["that"],
           );
 
   @override
-  Event webAudioApiAudioRenderCapacityEventGetEvent(
+  Event webAudioApiAudioRenderCapacityEventAutoAccessorGetEvent(
       {required AudioRenderCapacityEvent that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
@@ -3565,20 +3582,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEvent,
         decodeErrorData: null,
       ),
-      constMeta: kWebAudioApiAudioRenderCapacityEventGetEventConstMeta,
+      constMeta:
+          kWebAudioApiAudioRenderCapacityEventAutoAccessorGetEventConstMeta,
       argValues: [that],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kWebAudioApiAudioRenderCapacityEventGetEventConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioRenderCapacityEvent_get_event",
-        argNames: ["that"],
-      );
+  TaskConstMeta
+      get kWebAudioApiAudioRenderCapacityEventAutoAccessorGetEventConstMeta =>
+          const TaskConstMeta(
+            debugName: "AudioRenderCapacityEvent_auto_accessor_get_event",
+            argNames: ["that"],
+          );
 
   @override
-  double webAudioApiAudioRenderCapacityEventGetPeakLoad(
+  double webAudioApiAudioRenderCapacityEventAutoAccessorGetPeakLoad(
       {required AudioRenderCapacityEvent that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
@@ -3591,20 +3610,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_f_64,
         decodeErrorData: null,
       ),
-      constMeta: kWebAudioApiAudioRenderCapacityEventGetPeakLoadConstMeta,
+      constMeta:
+          kWebAudioApiAudioRenderCapacityEventAutoAccessorGetPeakLoadConstMeta,
       argValues: [that],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kWebAudioApiAudioRenderCapacityEventGetPeakLoadConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioRenderCapacityEvent_get_peak_load",
-        argNames: ["that"],
-      );
+  TaskConstMeta
+      get kWebAudioApiAudioRenderCapacityEventAutoAccessorGetPeakLoadConstMeta =>
+          const TaskConstMeta(
+            debugName: "AudioRenderCapacityEvent_auto_accessor_get_peak_load",
+            argNames: ["that"],
+          );
 
   @override
-  double webAudioApiAudioRenderCapacityEventGetTimestamp(
+  double webAudioApiAudioRenderCapacityEventAutoAccessorGetTimestamp(
       {required AudioRenderCapacityEvent that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
@@ -3617,20 +3638,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_f_64,
         decodeErrorData: null,
       ),
-      constMeta: kWebAudioApiAudioRenderCapacityEventGetTimestampConstMeta,
+      constMeta:
+          kWebAudioApiAudioRenderCapacityEventAutoAccessorGetTimestampConstMeta,
       argValues: [that],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kWebAudioApiAudioRenderCapacityEventGetTimestampConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioRenderCapacityEvent_get_timestamp",
-        argNames: ["that"],
-      );
+  TaskConstMeta
+      get kWebAudioApiAudioRenderCapacityEventAutoAccessorGetTimestampConstMeta =>
+          const TaskConstMeta(
+            debugName: "AudioRenderCapacityEvent_auto_accessor_get_timestamp",
+            argNames: ["that"],
+          );
 
   @override
-  double webAudioApiAudioRenderCapacityEventGetUnderrunRatio(
+  double webAudioApiAudioRenderCapacityEventAutoAccessorGetUnderrunRatio(
       {required AudioRenderCapacityEvent that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
@@ -3643,21 +3666,23 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_f_64,
         decodeErrorData: null,
       ),
-      constMeta: kWebAudioApiAudioRenderCapacityEventGetUnderrunRatioConstMeta,
+      constMeta:
+          kWebAudioApiAudioRenderCapacityEventAutoAccessorGetUnderrunRatioConstMeta,
       argValues: [that],
       apiImpl: this,
     ));
   }
 
   TaskConstMeta
-      get kWebAudioApiAudioRenderCapacityEventGetUnderrunRatioConstMeta =>
+      get kWebAudioApiAudioRenderCapacityEventAutoAccessorGetUnderrunRatioConstMeta =>
           const TaskConstMeta(
-            debugName: "AudioRenderCapacityEvent_get_underrun_ratio",
+            debugName:
+                "AudioRenderCapacityEvent_auto_accessor_get_underrun_ratio",
             argNames: ["that"],
           );
 
   @override
-  void webAudioApiAudioRenderCapacityEventSetAverageLoad(
+  void webAudioApiAudioRenderCapacityEventAutoAccessorSetAverageLoad(
       {required AudioRenderCapacityEvent that, required double averageLoad}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
@@ -3671,21 +3696,23 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
-      constMeta: kWebAudioApiAudioRenderCapacityEventSetAverageLoadConstMeta,
+      constMeta:
+          kWebAudioApiAudioRenderCapacityEventAutoAccessorSetAverageLoadConstMeta,
       argValues: [that, averageLoad],
       apiImpl: this,
     ));
   }
 
   TaskConstMeta
-      get kWebAudioApiAudioRenderCapacityEventSetAverageLoadConstMeta =>
+      get kWebAudioApiAudioRenderCapacityEventAutoAccessorSetAverageLoadConstMeta =>
           const TaskConstMeta(
-            debugName: "AudioRenderCapacityEvent_set_average_load",
+            debugName:
+                "AudioRenderCapacityEvent_auto_accessor_set_average_load",
             argNames: ["that", "averageLoad"],
           );
 
   @override
-  void webAudioApiAudioRenderCapacityEventSetEvent(
+  void webAudioApiAudioRenderCapacityEventAutoAccessorSetEvent(
       {required AudioRenderCapacityEvent that, required Event event}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
@@ -3700,20 +3727,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
-      constMeta: kWebAudioApiAudioRenderCapacityEventSetEventConstMeta,
+      constMeta:
+          kWebAudioApiAudioRenderCapacityEventAutoAccessorSetEventConstMeta,
       argValues: [that, event],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kWebAudioApiAudioRenderCapacityEventSetEventConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioRenderCapacityEvent_set_event",
-        argNames: ["that", "event"],
-      );
+  TaskConstMeta
+      get kWebAudioApiAudioRenderCapacityEventAutoAccessorSetEventConstMeta =>
+          const TaskConstMeta(
+            debugName: "AudioRenderCapacityEvent_auto_accessor_set_event",
+            argNames: ["that", "event"],
+          );
 
   @override
-  void webAudioApiAudioRenderCapacityEventSetPeakLoad(
+  void webAudioApiAudioRenderCapacityEventAutoAccessorSetPeakLoad(
       {required AudioRenderCapacityEvent that, required double peakLoad}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
@@ -3727,20 +3756,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
-      constMeta: kWebAudioApiAudioRenderCapacityEventSetPeakLoadConstMeta,
+      constMeta:
+          kWebAudioApiAudioRenderCapacityEventAutoAccessorSetPeakLoadConstMeta,
       argValues: [that, peakLoad],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kWebAudioApiAudioRenderCapacityEventSetPeakLoadConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioRenderCapacityEvent_set_peak_load",
-        argNames: ["that", "peakLoad"],
-      );
+  TaskConstMeta
+      get kWebAudioApiAudioRenderCapacityEventAutoAccessorSetPeakLoadConstMeta =>
+          const TaskConstMeta(
+            debugName: "AudioRenderCapacityEvent_auto_accessor_set_peak_load",
+            argNames: ["that", "peakLoad"],
+          );
 
   @override
-  void webAudioApiAudioRenderCapacityEventSetTimestamp(
+  void webAudioApiAudioRenderCapacityEventAutoAccessorSetTimestamp(
       {required AudioRenderCapacityEvent that, required double timestamp}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
@@ -3754,20 +3785,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
-      constMeta: kWebAudioApiAudioRenderCapacityEventSetTimestampConstMeta,
+      constMeta:
+          kWebAudioApiAudioRenderCapacityEventAutoAccessorSetTimestampConstMeta,
       argValues: [that, timestamp],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kWebAudioApiAudioRenderCapacityEventSetTimestampConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioRenderCapacityEvent_set_timestamp",
-        argNames: ["that", "timestamp"],
-      );
+  TaskConstMeta
+      get kWebAudioApiAudioRenderCapacityEventAutoAccessorSetTimestampConstMeta =>
+          const TaskConstMeta(
+            debugName: "AudioRenderCapacityEvent_auto_accessor_set_timestamp",
+            argNames: ["that", "timestamp"],
+          );
 
   @override
-  void webAudioApiAudioRenderCapacityEventSetUnderrunRatio(
+  void webAudioApiAudioRenderCapacityEventAutoAccessorSetUnderrunRatio(
       {required AudioRenderCapacityEvent that, required double underrunRatio}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
@@ -3781,16 +3814,18 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
-      constMeta: kWebAudioApiAudioRenderCapacityEventSetUnderrunRatioConstMeta,
+      constMeta:
+          kWebAudioApiAudioRenderCapacityEventAutoAccessorSetUnderrunRatioConstMeta,
       argValues: [that, underrunRatio],
       apiImpl: this,
     ));
   }
 
   TaskConstMeta
-      get kWebAudioApiAudioRenderCapacityEventSetUnderrunRatioConstMeta =>
+      get kWebAudioApiAudioRenderCapacityEventAutoAccessorSetUnderrunRatioConstMeta =>
           const TaskConstMeta(
-            debugName: "AudioRenderCapacityEvent_set_underrun_ratio",
+            debugName:
+                "AudioRenderCapacityEvent_auto_accessor_set_underrun_ratio",
             argNames: ["that", "underrunRatio"],
           );
 
@@ -3879,7 +3914,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Event webAudioApiOfflineAudioCompletionEventGetEvent(
+  Event webAudioApiOfflineAudioCompletionEventAutoAccessorGetEvent(
       {required OfflineAudioCompletionEvent that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
@@ -3893,21 +3928,24 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEvent,
         decodeErrorData: null,
       ),
-      constMeta: kWebAudioApiOfflineAudioCompletionEventGetEventConstMeta,
+      constMeta:
+          kWebAudioApiOfflineAudioCompletionEventAutoAccessorGetEventConstMeta,
       argValues: [that],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kWebAudioApiOfflineAudioCompletionEventGetEventConstMeta =>
-      const TaskConstMeta(
-        debugName: "OfflineAudioCompletionEvent_get_event",
-        argNames: ["that"],
-      );
+  TaskConstMeta
+      get kWebAudioApiOfflineAudioCompletionEventAutoAccessorGetEventConstMeta =>
+          const TaskConstMeta(
+            debugName: "OfflineAudioCompletionEvent_auto_accessor_get_event",
+            argNames: ["that"],
+          );
 
   @override
-  AudioBuffer webAudioApiOfflineAudioCompletionEventGetRenderedBuffer(
-      {required OfflineAudioCompletionEvent that}) {
+  AudioBuffer
+      webAudioApiOfflineAudioCompletionEventAutoAccessorGetRenderedBuffer(
+          {required OfflineAudioCompletionEvent that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -3921,21 +3959,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeErrorData: null,
       ),
       constMeta:
-          kWebAudioApiOfflineAudioCompletionEventGetRenderedBufferConstMeta,
+          kWebAudioApiOfflineAudioCompletionEventAutoAccessorGetRenderedBufferConstMeta,
       argValues: [that],
       apiImpl: this,
     ));
   }
 
   TaskConstMeta
-      get kWebAudioApiOfflineAudioCompletionEventGetRenderedBufferConstMeta =>
+      get kWebAudioApiOfflineAudioCompletionEventAutoAccessorGetRenderedBufferConstMeta =>
           const TaskConstMeta(
-            debugName: "OfflineAudioCompletionEvent_get_rendered_buffer",
+            debugName:
+                "OfflineAudioCompletionEvent_auto_accessor_get_rendered_buffer",
             argNames: ["that"],
           );
 
   @override
-  void webAudioApiOfflineAudioCompletionEventSetEvent(
+  void webAudioApiOfflineAudioCompletionEventAutoAccessorSetEvent(
       {required OfflineAudioCompletionEvent that, required Event event}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
@@ -3950,20 +3989,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
-      constMeta: kWebAudioApiOfflineAudioCompletionEventSetEventConstMeta,
+      constMeta:
+          kWebAudioApiOfflineAudioCompletionEventAutoAccessorSetEventConstMeta,
       argValues: [that, event],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kWebAudioApiOfflineAudioCompletionEventSetEventConstMeta =>
-      const TaskConstMeta(
-        debugName: "OfflineAudioCompletionEvent_set_event",
-        argNames: ["that", "event"],
-      );
+  TaskConstMeta
+      get kWebAudioApiOfflineAudioCompletionEventAutoAccessorSetEventConstMeta =>
+          const TaskConstMeta(
+            debugName: "OfflineAudioCompletionEvent_auto_accessor_set_event",
+            argNames: ["that", "event"],
+          );
 
   @override
-  void webAudioApiOfflineAudioCompletionEventSetRenderedBuffer(
+  void webAudioApiOfflineAudioCompletionEventAutoAccessorSetRenderedBuffer(
       {required OfflineAudioCompletionEvent that,
       required AudioBuffer renderedBuffer}) {
     return handler.executeSync(SyncTask(
@@ -3980,16 +4021,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeErrorData: null,
       ),
       constMeta:
-          kWebAudioApiOfflineAudioCompletionEventSetRenderedBufferConstMeta,
+          kWebAudioApiOfflineAudioCompletionEventAutoAccessorSetRenderedBufferConstMeta,
       argValues: [that, renderedBuffer],
       apiImpl: this,
     ));
   }
 
   TaskConstMeta
-      get kWebAudioApiOfflineAudioCompletionEventSetRenderedBufferConstMeta =>
+      get kWebAudioApiOfflineAudioCompletionEventAutoAccessorSetRenderedBufferConstMeta =>
           const TaskConstMeta(
-            debugName: "OfflineAudioCompletionEvent_set_rendered_buffer",
+            debugName:
+                "OfflineAudioCompletionEvent_auto_accessor_set_rendered_buffer",
             argNames: ["that", "renderedBuffer"],
           );
 
@@ -7077,7 +7119,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Uint8List webAudioApiMediaRecorderBlobEventGetBlob(
+  Uint8List webAudioApiMediaRecorderBlobEventAutoAccessorGetBlob(
       {required BlobEvent that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
@@ -7090,20 +7132,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_list_prim_u_8_strict,
         decodeErrorData: null,
       ),
-      constMeta: kWebAudioApiMediaRecorderBlobEventGetBlobConstMeta,
+      constMeta: kWebAudioApiMediaRecorderBlobEventAutoAccessorGetBlobConstMeta,
       argValues: [that],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kWebAudioApiMediaRecorderBlobEventGetBlobConstMeta =>
-      const TaskConstMeta(
-        debugName: "BlobEvent_get_blob",
-        argNames: ["that"],
-      );
+  TaskConstMeta
+      get kWebAudioApiMediaRecorderBlobEventAutoAccessorGetBlobConstMeta =>
+          const TaskConstMeta(
+            debugName: "BlobEvent_auto_accessor_get_blob",
+            argNames: ["that"],
+          );
 
   @override
-  Event webAudioApiMediaRecorderBlobEventGetEvent({required BlobEvent that}) {
+  Event webAudioApiMediaRecorderBlobEventAutoAccessorGetEvent(
+      {required BlobEvent that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -7116,20 +7160,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEvent,
         decodeErrorData: null,
       ),
-      constMeta: kWebAudioApiMediaRecorderBlobEventGetEventConstMeta,
+      constMeta:
+          kWebAudioApiMediaRecorderBlobEventAutoAccessorGetEventConstMeta,
       argValues: [that],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kWebAudioApiMediaRecorderBlobEventGetEventConstMeta =>
-      const TaskConstMeta(
-        debugName: "BlobEvent_get_event",
-        argNames: ["that"],
-      );
+  TaskConstMeta
+      get kWebAudioApiMediaRecorderBlobEventAutoAccessorGetEventConstMeta =>
+          const TaskConstMeta(
+            debugName: "BlobEvent_auto_accessor_get_event",
+            argNames: ["that"],
+          );
 
   @override
-  double webAudioApiMediaRecorderBlobEventGetTimecode(
+  double webAudioApiMediaRecorderBlobEventAutoAccessorGetTimecode(
       {required BlobEvent that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
@@ -7142,20 +7188,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_f_64,
         decodeErrorData: null,
       ),
-      constMeta: kWebAudioApiMediaRecorderBlobEventGetTimecodeConstMeta,
+      constMeta:
+          kWebAudioApiMediaRecorderBlobEventAutoAccessorGetTimecodeConstMeta,
       argValues: [that],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kWebAudioApiMediaRecorderBlobEventGetTimecodeConstMeta =>
-      const TaskConstMeta(
-        debugName: "BlobEvent_get_timecode",
-        argNames: ["that"],
-      );
+  TaskConstMeta
+      get kWebAudioApiMediaRecorderBlobEventAutoAccessorGetTimecodeConstMeta =>
+          const TaskConstMeta(
+            debugName: "BlobEvent_auto_accessor_get_timecode",
+            argNames: ["that"],
+          );
 
   @override
-  void webAudioApiMediaRecorderBlobEventSetBlob(
+  void webAudioApiMediaRecorderBlobEventAutoAccessorSetBlob(
       {required BlobEvent that, required Uint8List blob}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
@@ -7169,20 +7217,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
-      constMeta: kWebAudioApiMediaRecorderBlobEventSetBlobConstMeta,
+      constMeta: kWebAudioApiMediaRecorderBlobEventAutoAccessorSetBlobConstMeta,
       argValues: [that, blob],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kWebAudioApiMediaRecorderBlobEventSetBlobConstMeta =>
-      const TaskConstMeta(
-        debugName: "BlobEvent_set_blob",
-        argNames: ["that", "blob"],
-      );
+  TaskConstMeta
+      get kWebAudioApiMediaRecorderBlobEventAutoAccessorSetBlobConstMeta =>
+          const TaskConstMeta(
+            debugName: "BlobEvent_auto_accessor_set_blob",
+            argNames: ["that", "blob"],
+          );
 
   @override
-  void webAudioApiMediaRecorderBlobEventSetEvent(
+  void webAudioApiMediaRecorderBlobEventAutoAccessorSetEvent(
       {required BlobEvent that, required Event event}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
@@ -7197,20 +7246,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
-      constMeta: kWebAudioApiMediaRecorderBlobEventSetEventConstMeta,
+      constMeta:
+          kWebAudioApiMediaRecorderBlobEventAutoAccessorSetEventConstMeta,
       argValues: [that, event],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kWebAudioApiMediaRecorderBlobEventSetEventConstMeta =>
-      const TaskConstMeta(
-        debugName: "BlobEvent_set_event",
-        argNames: ["that", "event"],
-      );
+  TaskConstMeta
+      get kWebAudioApiMediaRecorderBlobEventAutoAccessorSetEventConstMeta =>
+          const TaskConstMeta(
+            debugName: "BlobEvent_auto_accessor_set_event",
+            argNames: ["that", "event"],
+          );
 
   @override
-  void webAudioApiMediaRecorderBlobEventSetTimecode(
+  void webAudioApiMediaRecorderBlobEventAutoAccessorSetTimecode(
       {required BlobEvent that, required double timecode}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
@@ -7224,17 +7275,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
-      constMeta: kWebAudioApiMediaRecorderBlobEventSetTimecodeConstMeta,
+      constMeta:
+          kWebAudioApiMediaRecorderBlobEventAutoAccessorSetTimecodeConstMeta,
       argValues: [that, timecode],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kWebAudioApiMediaRecorderBlobEventSetTimecodeConstMeta =>
-      const TaskConstMeta(
-        debugName: "BlobEvent_set_timecode",
-        argNames: ["that", "timecode"],
-      );
+  TaskConstMeta
+      get kWebAudioApiMediaRecorderBlobEventAutoAccessorSetTimecodeConstMeta =>
+          const TaskConstMeta(
+            debugName: "BlobEvent_auto_accessor_set_timecode",
+            argNames: ["that", "timecode"],
+          );
 
   @override
   Future<void> webAudioApiMediaRecorderMediaRecorderClearOndataavailable(
@@ -28208,31 +28261,31 @@ class AudioProcessingEventImpl extends RustOpaque
         .instance.api.rust_arc_decrement_strong_count_AudioProcessingEventPtr,
   );
 
-  AudioBuffer get inputBuffer =>
-      RustLib.instance.api.webAudioApiAudioProcessingEventGetInputBuffer(
+  AudioBuffer get inputBuffer => RustLib.instance.api
+          .webAudioApiAudioProcessingEventAutoAccessorGetInputBuffer(
         that: this,
       );
 
-  AudioBuffer get outputBuffer =>
-      RustLib.instance.api.webAudioApiAudioProcessingEventGetOutputBuffer(
+  AudioBuffer get outputBuffer => RustLib.instance.api
+          .webAudioApiAudioProcessingEventAutoAccessorGetOutputBuffer(
         that: this,
       );
 
-  double get playbackTime =>
-      RustLib.instance.api.webAudioApiAudioProcessingEventGetPlaybackTime(
+  double get playbackTime => RustLib.instance.api
+          .webAudioApiAudioProcessingEventAutoAccessorGetPlaybackTime(
         that: this,
       );
 
-  void set inputBuffer(AudioBuffer inputBuffer) =>
-      RustLib.instance.api.webAudioApiAudioProcessingEventSetInputBuffer(
+  void set inputBuffer(AudioBuffer inputBuffer) => RustLib.instance.api
+      .webAudioApiAudioProcessingEventAutoAccessorSetInputBuffer(
           that: this, inputBuffer: inputBuffer);
 
-  void set outputBuffer(AudioBuffer outputBuffer) =>
-      RustLib.instance.api.webAudioApiAudioProcessingEventSetOutputBuffer(
+  void set outputBuffer(AudioBuffer outputBuffer) => RustLib.instance.api
+      .webAudioApiAudioProcessingEventAutoAccessorSetOutputBuffer(
           that: this, outputBuffer: outputBuffer);
 
-  void set playbackTime(double playbackTime) =>
-      RustLib.instance.api.webAudioApiAudioProcessingEventSetPlaybackTime(
+  void set playbackTime(double playbackTime) => RustLib.instance.api
+      .webAudioApiAudioProcessingEventAutoAccessorSetPlaybackTime(
           that: this, playbackTime: playbackTime);
 }
 
@@ -28257,48 +28310,49 @@ class AudioRenderCapacityEventImpl extends RustOpaque
         .rust_arc_decrement_strong_count_AudioRenderCapacityEventPtr,
   );
 
-  double get averageLoad =>
-      RustLib.instance.api.webAudioApiAudioRenderCapacityEventGetAverageLoad(
+  double get averageLoad => RustLib.instance.api
+          .webAudioApiAudioRenderCapacityEventAutoAccessorGetAverageLoad(
         that: this,
       );
 
-  Event get event =>
-      RustLib.instance.api.webAudioApiAudioRenderCapacityEventGetEvent(
+  Event get event => RustLib.instance.api
+          .webAudioApiAudioRenderCapacityEventAutoAccessorGetEvent(
         that: this,
       );
 
-  double get peakLoad =>
-      RustLib.instance.api.webAudioApiAudioRenderCapacityEventGetPeakLoad(
+  double get peakLoad => RustLib.instance.api
+          .webAudioApiAudioRenderCapacityEventAutoAccessorGetPeakLoad(
         that: this,
       );
 
-  double get timestamp =>
-      RustLib.instance.api.webAudioApiAudioRenderCapacityEventGetTimestamp(
+  double get timestamp => RustLib.instance.api
+          .webAudioApiAudioRenderCapacityEventAutoAccessorGetTimestamp(
         that: this,
       );
 
-  double get underrunRatio =>
-      RustLib.instance.api.webAudioApiAudioRenderCapacityEventGetUnderrunRatio(
+  double get underrunRatio => RustLib.instance.api
+          .webAudioApiAudioRenderCapacityEventAutoAccessorGetUnderrunRatio(
         that: this,
       );
 
-  void set averageLoad(double averageLoad) =>
-      RustLib.instance.api.webAudioApiAudioRenderCapacityEventSetAverageLoad(
+  void set averageLoad(double averageLoad) => RustLib.instance.api
+      .webAudioApiAudioRenderCapacityEventAutoAccessorSetAverageLoad(
           that: this, averageLoad: averageLoad);
 
   void set event(Event event) => RustLib.instance.api
-      .webAudioApiAudioRenderCapacityEventSetEvent(that: this, event: event);
+      .webAudioApiAudioRenderCapacityEventAutoAccessorSetEvent(
+          that: this, event: event);
 
-  void set peakLoad(double peakLoad) =>
-      RustLib.instance.api.webAudioApiAudioRenderCapacityEventSetPeakLoad(
+  void set peakLoad(double peakLoad) => RustLib.instance.api
+      .webAudioApiAudioRenderCapacityEventAutoAccessorSetPeakLoad(
           that: this, peakLoad: peakLoad);
 
-  void set timestamp(double timestamp) =>
-      RustLib.instance.api.webAudioApiAudioRenderCapacityEventSetTimestamp(
+  void set timestamp(double timestamp) => RustLib.instance.api
+      .webAudioApiAudioRenderCapacityEventAutoAccessorSetTimestamp(
           that: this, timestamp: timestamp);
 
-  void set underrunRatio(double underrunRatio) =>
-      RustLib.instance.api.webAudioApiAudioRenderCapacityEventSetUnderrunRatio(
+  void set underrunRatio(double underrunRatio) => RustLib.instance.api
+      .webAudioApiAudioRenderCapacityEventAutoAccessorSetUnderrunRatio(
           that: this, underrunRatio: underrunRatio);
 }
 
@@ -28629,28 +28683,30 @@ class BlobEventImpl extends RustOpaque implements BlobEvent {
   );
 
   Uint8List get blob =>
-      RustLib.instance.api.webAudioApiMediaRecorderBlobEventGetBlob(
+      RustLib.instance.api.webAudioApiMediaRecorderBlobEventAutoAccessorGetBlob(
         that: this,
       );
 
-  Event get event =>
-      RustLib.instance.api.webAudioApiMediaRecorderBlobEventGetEvent(
+  Event get event => RustLib.instance.api
+          .webAudioApiMediaRecorderBlobEventAutoAccessorGetEvent(
         that: this,
       );
 
-  double get timecode =>
-      RustLib.instance.api.webAudioApiMediaRecorderBlobEventGetTimecode(
+  double get timecode => RustLib.instance.api
+          .webAudioApiMediaRecorderBlobEventAutoAccessorGetTimecode(
         that: this,
       );
 
-  void set blob(Uint8List blob) => RustLib.instance.api
-      .webAudioApiMediaRecorderBlobEventSetBlob(that: this, blob: blob);
+  void set blob(Uint8List blob) =>
+      RustLib.instance.api.webAudioApiMediaRecorderBlobEventAutoAccessorSetBlob(
+          that: this, blob: blob);
 
   void set event(Event event) => RustLib.instance.api
-      .webAudioApiMediaRecorderBlobEventSetEvent(that: this, event: event);
+      .webAudioApiMediaRecorderBlobEventAutoAccessorSetEvent(
+          that: this, event: event);
 
-  void set timecode(double timecode) =>
-      RustLib.instance.api.webAudioApiMediaRecorderBlobEventSetTimecode(
+  void set timecode(double timecode) => RustLib.instance.api
+      .webAudioApiMediaRecorderBlobEventAutoAccessorSetTimecode(
           that: this, timecode: timecode);
 }
 
@@ -30589,21 +30645,22 @@ class OfflineAudioCompletionEventImpl extends RustOpaque
         .rust_arc_decrement_strong_count_OfflineAudioCompletionEventPtr,
   );
 
-  Event get event =>
-      RustLib.instance.api.webAudioApiOfflineAudioCompletionEventGetEvent(
+  Event get event => RustLib.instance.api
+          .webAudioApiOfflineAudioCompletionEventAutoAccessorGetEvent(
         that: this,
       );
 
   AudioBuffer get renderedBuffer => RustLib.instance.api
-          .webAudioApiOfflineAudioCompletionEventGetRenderedBuffer(
+          .webAudioApiOfflineAudioCompletionEventAutoAccessorGetRenderedBuffer(
         that: this,
       );
 
   void set event(Event event) => RustLib.instance.api
-      .webAudioApiOfflineAudioCompletionEventSetEvent(that: this, event: event);
+      .webAudioApiOfflineAudioCompletionEventAutoAccessorSetEvent(
+          that: this, event: event);
 
   void set renderedBuffer(AudioBuffer renderedBuffer) => RustLib.instance.api
-      .webAudioApiOfflineAudioCompletionEventSetRenderedBuffer(
+      .webAudioApiOfflineAudioCompletionEventAutoAccessorSetRenderedBuffer(
           that: this, renderedBuffer: renderedBuffer);
 }
 
