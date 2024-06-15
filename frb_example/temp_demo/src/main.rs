@@ -21,7 +21,7 @@ self_cell!(
 
 fn build_pack() -> Pack {
     let one = One("hello".to_owned());
-    Pack::new(one, |one| Two { one })
+    Pack::try_new(one, |one| Ok::<Two, ()>(Two { one })).unwrap()
 }
 
 fn main() {
