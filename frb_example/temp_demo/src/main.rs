@@ -1,4 +1,5 @@
 use self_cell::self_cell;
+use std::sync::{Arc, RwLock};
 
 #[derive(Debug)]
 struct One(String);
@@ -10,7 +11,7 @@ struct Two<'a> {
 
 self_cell!(
     struct Pack {
-        owner: One,
+        owner: Arc<RwLock<One>>,
 
         #[covariant]
         dependent: Two,
@@ -20,8 +21,8 @@ self_cell!(
 );
 
 fn build_pack() -> Pack {
-    let one = One("hello".to_owned());
-    Pack::try_new(one, |one| Ok::<Two, ()>(Two { one })).unwrap()
+    let one = Arc::new(RwLock::new(One("hello".to_owned())));
+    Pack::try_new(one, |one| Ok::<Two, ()>(panic!())).unwrap()
 }
 
 fn main() {
