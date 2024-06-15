@@ -50,7 +50,7 @@ fn split_vec_two(yoke_vec_two_wrapped: YokeVecTwoWrapped) -> Vec<YokeTwoWrapped>
     let len = yoke_vec_two_wrapped.get().0.len();
     ((0..len).into_iter())
         .map(|index| {
-            yoke_vec_two_wrapped.map_project_cloned(|x| x.0[index])
+            yoke_vec_two_wrapped.map_project_cloned(|x, _| TwoWrapped(x.0[index]))
         })
         .collect()
 }
