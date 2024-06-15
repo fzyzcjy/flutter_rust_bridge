@@ -8,3 +8,5 @@ crate-type = ["cdylib"]
 
 [dependencies]
 flutter_rust_bridge = { path = "../../../frb_rust" }
+# TODO temp
+ouroboros = "0.18.4"
