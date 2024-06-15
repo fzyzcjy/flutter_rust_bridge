@@ -45,13 +45,15 @@ fn build_pack(
     one: Arc<RwLock<One>>,
     unrelated: Arc<RwLock<i32>>,
 ) -> anyhow::Result<OneAndGuardAndTwo> {
+    let mut unrelated_guard: Option<RwLockReadGuard<i32>> = None;
     let one_and_guard = OneAndGuard::try_new(one, |one| {
+        unrelated_guard = Some(unrelated.read().unwrap());
         one.read().map_err(|_| anyhow::anyhow!("read lock failed"))
     })?;
     let one_and_guard_and_two = OneAndGuardAndTwo::try_new(one_and_guard, |one_and_guard| {
         anyhow::Ok(compute(
             one_and_guard.borrow_dependent(),
-            &*unrelated.read().unwrap(),
+            &*unrelated_guard.unwrap(),
         ))
     })?;
     Ok(one_and_guard_and_two)
