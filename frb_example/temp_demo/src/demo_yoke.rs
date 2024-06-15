@@ -1,21 +1,19 @@
+use crate::user_code::*;
 use std::borrow::Cow;
 use std::rc::Rc;
+use std::sync::Arc;
+use tokio::sync::{RwLock, RwLockReadGuard};
 use yoke::Yoke;
 
-fn load_object(filename: &str) -> Yoke<Cow<'static, [u8]>, Rc<[u8]>> {
-    let rc: Rc<[u8]> = load_from_cache(filename);
-    Yoke::<Cow<'static, [u8]>, Rc<[u8]>>::attach_to_cart(rc, |data: &[u8]| {
-        Cow::Borrowed(&data[1..3])
-    })
-}
-
-fn load_from_cache(_filename: &str) -> Rc<[u8]> {
-    Rc::new([1u8, 2, 3, 4, 5])
+fn load_object(filename: &str) -> Yoke<RwLockReadGuard<'static, One>, Arc<RwLock<One>>> {
+    let one: Arc<RwLock<One>> = Arc::new(RwLock::new(One("hi_one".to_owned())));
+    Yoke::attach_to_cart(one, |one: &RwLock<One>| one.blocking_read())
 }
 
 pub fn main() {
     let yoke = load_object("filename.bincode");
     println!("yoke={yoke:?}");
-    assert_eq!(&**yoke.get(), [2u8, 3]);
-    assert!(matches!(yoke.get(), &Cow::Borrowed(_)));
+    // TODO
+    // assert_eq!(&**yoke.get(), [2u8, 3]);
+    // assert!(matches!(yoke.get(), &Cow::Borrowed(_)));
 }
