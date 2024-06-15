@@ -85,7 +85,7 @@ fn wire__crate__api__minimal__LifetimeTesterOneTwinNormal_compute_two_impl(
                             _ => unreachable!(),
                         }
                     }
-                    let api_that_decoded = api_that_decoded.unwrap();
+                    let api_that_decoded = Arc::new(api_that_decoded.unwrap());
                     let output_raw = crate::api::minimal::LifetimeTesterOneTwinNormal::compute_two(
                         &*api_that_decoded,
                     );
@@ -93,7 +93,10 @@ fn wire__crate__api__minimal__LifetimeTesterOneTwinNormal_compute_two_impl(
                         LifetimeTesterTwoTwinNormal<'static>,
                     >::new(
                         output_raw,
-                        vec![Box::new(api_that), Box::new(api_that_decoded)],
+                        vec![
+                            Box::new(api_that.clone()),
+                            Box::new(api_that_decoded.clone()),
+                        ],
                     );
                     Result::<_, ()>::Ok(output)
                 })())
