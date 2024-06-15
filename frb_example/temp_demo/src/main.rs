@@ -1,36 +1,33 @@
 use self_cell::self_cell;
 
-#[derive(Debug, Eq, PartialEq)]
-struct Ast<'a>(pub Vec<&'a str>);
+#[derive(Debug)]
+struct One(String);
+
+#[derive(Debug)]
+struct Two<'a> {
+    one: &'a One,
+}
 
 self_cell!(
-    struct AstCell {
-        owner: String,
+    struct Pack {
+        owner: One,
 
         #[covariant]
-        dependent: Ast,
+        dependent: Two,
     }
 
-    impl {Debug, Eq, PartialEq}
+    impl {Debug}
 );
 
-fn build_ast_cell(code: &str) -> AstCell {
-    // Create owning String on stack.
-    let pre_processed_code = code.trim().to_string();
-
-    // Move String into AstCell, then build Ast inplace.
-    AstCell::new(pre_processed_code, |code| {
-        Ast(code.split(' ').filter(|word| word.len() > 1).collect())
-    })
+fn build_pack() -> Pack {
+    let one = One("hello".to_owned());
+    Pack::new(one, |one| Two { one })
 }
 
 fn main() {
-    let ast_cell = build_ast_cell("fox = cat + dog");
+    let pack = build_pack();
 
-    println!("ast_cell -> {:?}", &ast_cell);
-    println!("ast_cell.borrow_owner() -> {:?}", ast_cell.borrow_owner());
-    println!(
-        "ast_cell.borrow_dependent().0[1] -> {:?}",
-        ast_cell.borrow_dependent().0[1]
-    );
+    println!("pack -> {:?}", &pack);
+    println!("pack.borrow_owner() -> {:?}", pack.borrow_owner());
+    println!("pack.borrow_dependent() -> {:?}", pack.borrow_dependent());
 }
