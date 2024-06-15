@@ -148,12 +148,12 @@ pub(crate) struct TypeParserParsingContext {
     pub(crate) initiated_namespace: Namespace,
     pub(crate) func_attributes: FrbAttributes,
     pub(crate) struct_or_enum_attributes: Option<FrbAttributes>,
+    pub(crate) rust_output_path_namespace: Namespace,
     pub(crate) default_stream_sink_codec: CodecMode,
     pub(crate) default_rust_opaque_codec: RustOpaqueCodecMode,
     pub(crate) owner: Option<MirFuncOwnerInfo>,
     pub(crate) enable_lifetime: bool,
     pub(crate) parse_mode: ParseMode,
-    pub(crate) rust_output_path_namespace: Namespace,
 }
 
 impl TypeParserParsingContext {

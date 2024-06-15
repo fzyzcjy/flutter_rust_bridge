@@ -10,10 +10,12 @@ use crate::codegen::parser::mir::ParseMode;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use crate::utils::crate_name::CrateName;
 use itertools::Itertools;
+use crate::utils::namespace::Namespace;
 
 pub(crate) fn parse(
     hir_trait_impls: &[HirFlatTraitImpl],
     type_parser: &mut TypeParser,
+    rust_output_path_namespace: Namespace,
     default_stream_sink_codec: CodecMode,
     default_rust_opaque_codec: RustOpaqueCodecMode,
     enable_lifetime: bool,
@@ -23,6 +25,7 @@ pub(crate) fn parse(
         initiated_namespace: CrateName::self_crate().namespace(), // just a dummy value
         func_attributes: FrbAttributes::parse(&[])?,
         struct_or_enum_attributes: None,
+        rust_output_path_namespace,
         default_stream_sink_codec,
         default_rust_opaque_codec,
         owner: None,

@@ -9,6 +9,7 @@ use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
 use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
 use crate::codegen::parser::mir::parser::function::func_or_skip::MirFuncOrSkip;
 use crate::codegen::parser::mir::parser::misc::extract_src_types_in_paths;
+use crate::codegen::parser::mir::parser::ty::path_data::extract_path_data;
 use crate::codegen::parser::mir::parser::ty::unencodable::splay_segments;
 use crate::codegen::parser::mir::parser::ty::{
     TypeParser, TypeParserParsingContext, TypeParserWithContext,
@@ -16,11 +17,10 @@ use crate::codegen::parser::mir::parser::ty::{
 use crate::codegen::parser::mir::sanity_checker::auto_accessor_checker;
 use crate::codegen::parser::mir::ParseMode;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
-use crate::utils::namespace::NamespacedName;
+use crate::utils::namespace::{Namespace, NamespacedName};
 use field::parse_auto_accessor_of_field;
 use itertools::Itertools;
 use std::collections::HashMap;
-use crate::codegen::parser::mir::parser::ty::path_data::extract_path_data;
 
 pub(crate) fn parse(
     config: &ParserMirInternalConfig,
@@ -62,6 +62,7 @@ fn parse_auto_accessors_of_struct(
 ) -> anyhow::Result<Vec<MirFuncAndSanityCheckInfo>> {
     let context = create_parsing_context(
         struct_name,
+        config.rust_input_namespace_pack.rust_output_path_namespace.clone(),
         config.default_stream_sink_codec,
         config.default_rust_opaque_codec,
         config.enable_lifetime,
@@ -119,6 +120,7 @@ fn parse_auto_accessors_of_struct(
 
 fn create_parsing_context(
     struct_name: &NamespacedName,
+    rust_output_path_namespace: Namespace,
     default_stream_sink_codec: CodecMode,
     default_rust_opaque_codec: RustOpaqueCodecMode,
     enable_lifetime: bool,
@@ -128,6 +130,7 @@ fn create_parsing_context(
         initiated_namespace: struct_name.namespace.to_owned(),
         func_attributes: FrbAttributes::parse(&[])?,
         struct_or_enum_attributes: None,
+        rust_output_path_namespace,
         default_stream_sink_codec,
         default_rust_opaque_codec,
         owner: None,

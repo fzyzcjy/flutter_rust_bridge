@@ -27,7 +27,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                 MirTypeDelegateLifetimeable {
                     rust_api_type: Box::new(MirType::RustAutoOpaqueImplicit(original)),
                     delegate: Box::new(self.parse_type_rust_auto_opaque_implicit(
-                        self.context.rust_output_path_namespace,
+                        Some(self.context.rust_output_path_namespace.clone()),
                         &syn::parse_str(&delegate_ty_str)?,
                         None,
                         None,
