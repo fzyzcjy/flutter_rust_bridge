@@ -34,6 +34,7 @@ mod enum_or_struct;
 pub(crate) mod enumeration;
 pub(crate) mod external_impl;
 pub(crate) mod generics;
+pub(crate) mod lifetimeable;
 pub(crate) mod misc;
 pub(crate) mod optional;
 pub(crate) mod path;
