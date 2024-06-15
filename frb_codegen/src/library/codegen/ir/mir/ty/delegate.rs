@@ -113,7 +113,7 @@ pub struct MirTypeDelegateDynTrait {
 }
 
 pub struct MirTypeDelegateLifetimeable {
-    pub inner: MirType,
+    pub inner: Box<MirType>,
 }
 
 pub struct MirTypeDelegateDynTraitData {
