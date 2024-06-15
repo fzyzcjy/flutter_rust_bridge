@@ -28,10 +28,10 @@ use syn::{Attribute, Field, Ident, ItemEnum, Type, TypePath, Variant, Visibility
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_path_data_enum(
         &mut self,
-        type_path: &TypePath,
+        path: &syn::Path,
         last_segment: &SplayedSegment,
     ) -> anyhow::Result<Option<MirType>> {
-        EnumOrStructParserEnum(self).parse(type_path, last_segment, None)
+        EnumOrStructParserEnum(self).parse(path, last_segment, None)
     }
 
     fn parse_enum(

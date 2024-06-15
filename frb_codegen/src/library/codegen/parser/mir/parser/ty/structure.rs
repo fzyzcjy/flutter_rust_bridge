@@ -17,16 +17,16 @@ use crate::utils::crate_name::CrateName;
 use crate::utils::namespace::{Namespace, NamespacedName};
 use anyhow::bail;
 use std::collections::HashMap;
-use syn::{Field, Fields, FieldsNamed, FieldsUnnamed, ItemStruct, Type, TypePath, Visibility};
+use syn::{Field, Fields, FieldsNamed, FieldsUnnamed, ItemStruct, Type, Visibility};
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_path_data_struct(
         &mut self,
-        type_path: &TypePath,
+        path: &syn::Path,
         last_segment: &SplayedSegment,
         override_opaque: Option<bool>,
     ) -> anyhow::Result<Option<MirType>> {
-        EnumOrStructParserStruct(self).parse(type_path,last_segment, override_opaque)
+        EnumOrStructParserStruct(self).parse(path, last_segment, override_opaque)
     }
 
     fn parse_struct(

@@ -24,18 +24,18 @@ where
 {
     fn parse(
         &mut self,
-        type_path: &TypePath,
+        path: &syn::Path,
         last_segment: &SplayedSegment,
         override_opaque: Option<bool>,
     ) -> anyhow::Result<Option<MirType>> {
-        let output = self.parse_impl(type_path, last_segment, override_opaque)?;
+        let output = self.parse_impl(path, last_segment, override_opaque)?;
         self.handle_dart_code(&output);
         Ok(output.map(|(ty, _)| ty))
     }
 
     fn parse_impl(
         &mut self,
-        type_path: &TypePath,
+        path: &syn::Path,
         last_segment: &SplayedSegment,
         override_opaque: Option<bool>,
     ) -> anyhow::Result<Option<(MirType, FrbAttributes)>> {
