@@ -34,10 +34,25 @@ fn compute_guard(one: Arc<RwLock<One>>) -> Arc<YokeGuardOne> {
 fn compute_vec_two(guard_one: Arc<YokeGuardOne>) -> YokeVecTwoWrapped {
     Yoke::attach_to_cart(guard_one, |guard_one: &YokeGuardOne| {
         VecTwoWrapped(vec![
-            Two { one: guard_one.get().0.deref(), unrelated: "item1".to_string() },
-            Two { one: guard_one.get().0.deref(), unrelated: "item2".to_string() },
+            Two {
+                one: guard_one.get().0.deref(),
+                unrelated: "item1".to_string(),
+            },
+            Two {
+                one: guard_one.get().0.deref(),
+                unrelated: "item2".to_string(),
+            },
         ])
     })
+}
+
+fn split_vec_two(yoke_vec_two_wrapped: YokeVecTwoWrapped) -> Vec<YokeTwoWrapped> {
+    let len = yoke_vec_two_wrapped.get().0.len();
+    ((0..len).into_iter())
+        .map(|index| {
+            yoke_vec_two_wrapped.map_project_cloned(|x| x.0[index])
+        })
+        .collect()
 }
 
 pub fn main() {
