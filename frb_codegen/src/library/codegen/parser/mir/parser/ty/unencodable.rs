@@ -12,12 +12,6 @@ pub(crate) fn splay_segments(segments: &[NameComponent]) -> Vec<SplayedSegment> 
         .collect()
 }
 
-pub(crate) fn splayed_segments_from_syn_path(
-    path: &syn::Path,
-) -> anyhow::Result<Vec<SplayedSegment>> {
-    Ok(splay_segments(&extract_path_data(path)?))
-}
-
 // TODO
 // pub(crate) fn parse_path_type_to_unencodable(
 //     type_path: &TypePath,

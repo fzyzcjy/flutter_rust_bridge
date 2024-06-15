@@ -9,7 +9,7 @@ use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
 use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
 use crate::codegen::parser::mir::parser::function::func_or_skip::MirFuncOrSkip;
 use crate::codegen::parser::mir::parser::misc::extract_src_types_in_paths;
-use crate::codegen::parser::mir::parser::ty::unencodable::splayed_segments_from_syn_path;
+use crate::codegen::parser::mir::parser::ty::unencodable::splay_segments;
 use crate::codegen::parser::mir::parser::ty::{
     TypeParser, TypeParserParsingContext, TypeParserWithContext,
 };
@@ -20,6 +20,7 @@ use crate::utils::namespace::NamespacedName;
 use field::parse_auto_accessor_of_field;
 use itertools::Itertools;
 use std::collections::HashMap;
+use crate::codegen::parser::mir::parser::ty::path_data::extract_path_data;
 
 pub(crate) fn parse(
     config: &ParserMirInternalConfig,
@@ -81,10 +82,11 @@ fn parse_auto_accessors_of_struct(
     }
 
     let syn_path: syn::Path = syn::parse_str(&struct_name.name)?;
+    let syn_path_segments = extract_path_data(&syn_path)?;
     let ty_struct_ref = TypeParserWithContext::new(type_parser, &context)
         .parse_type_path_data_struct(
             &syn_path,
-            splayed_segments_from_syn_path(&syn_path)?.last().unwrap(),
+            splay_segments(&syn_path_segments).last().unwrap(),
             Some(false),
         );
     let ty_struct_ident = if let Ok(Some(MirType::StructRef(mir))) = ty_struct_ref {

@@ -1,8 +1,6 @@
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::mir::parser::ty::path_data::extract_path_data;
-use crate::codegen::parser::mir::parser::ty::unencodable::{
-    splay_segments, splayed_segments_from_syn_path,
-};
+use crate::codegen::parser::mir::parser::ty::unencodable::splay_segments;
 use crate::codegen::parser::mir::parser::ty::TypeParserWithContext;
 use anyhow::bail;
 use quote::ToTokens;
@@ -31,7 +29,8 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         type_path: &TypePath,
         path: &Path,
     ) -> anyhow::Result<MirType> {
-        let splayed_segments = splayed_segments_from_syn_path(path)?;
+        let segments = extract_path_data(path)?;
+        let splayed_segments = splay_segments(&segments);
 
         if let Some(last_segment) = splayed_segments.last() {
             if let Some(ans) = self.parse_type_path_data_custom_ser_des(last_segment)? {
