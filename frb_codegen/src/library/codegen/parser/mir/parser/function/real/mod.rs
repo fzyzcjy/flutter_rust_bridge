@@ -17,8 +17,8 @@ use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
 use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
 use crate::codegen::parser::mir::parser::function::func_or_skip::MirFuncOrSkip;
-use crate::codegen::parser::mir::parser::ty::generics::should_ignore_because_generics;
 use crate::codegen::parser::mir::parser::function::real::owner::OwnerInfoOrSkip;
+use crate::codegen::parser::mir::parser::ty::generics::should_ignore_because_generics;
 use crate::codegen::parser::mir::parser::ty::misc::parse_comments;
 use crate::codegen::parser::mir::parser::ty::{TypeParser, TypeParserParsingContext};
 use crate::codegen::parser::mir::ParseMode;
@@ -48,7 +48,10 @@ pub(crate) fn parse(
             function_parser.parse_function(
                 f,
                 &config.force_codec_mode_pack,
-                config.rust_input_namespace_pack.rust_output_path_namespace.clone(),
+                config
+                    .rust_input_namespace_pack
+                    .rust_output_path_namespace
+                    .clone(),
                 config.default_stream_sink_codec,
                 config.default_rust_opaque_codec,
                 config.enable_lifetime,
@@ -314,6 +317,9 @@ pub(crate) fn is_struct_or_enum_or_opaque_from_them(ty: &MirType) -> bool {
         | MirType::Delegate(MirTypeDelegate::PrimitiveEnum(_)) => true,
         MirType::RustAutoOpaqueImplicit(ty) => {
             ty.reason == Some(MirTypeRustAutoOpaqueImplicitReason::StructOrEnumRequireOpaque)
+        }
+        MirType::Delegate(MirTypeDelegate::Lifetimeable(ty)) => {
+            is_struct_or_enum_or_opaque_from_them(&ty.api_type)
         }
         _ => false,
     }
