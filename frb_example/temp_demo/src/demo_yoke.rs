@@ -22,8 +22,8 @@ fn compute_guard(one: Arc<RwLock<One>>) -> Arc<YokeGuardOne> {
 }
 
 fn compute_two(guard_one: Arc<YokeGuardOne>) -> YokeTwoWrapped {
-    Yoke::attach_to_cart(guard_one, |guard_one: &RwLockReadGuardOne| {
-        TwoWrapped(Two { one: guard_one.0.deref(), unrelated: "".to_string() })
+    Yoke::attach_to_cart(guard_one, |guard_one: &YokeGuardOne| {
+        TwoWrapped(Two { one: guard_one.get().0.deref(), unrelated: "".to_string() })
     })
 }
 
@@ -31,7 +31,9 @@ pub fn main() {
     let one: Arc<RwLock<One>> = Arc::new(RwLock::new(One("hi_one".to_owned())));
     let guard = compute_guard(one.clone());
     let two = compute_two(guard.clone());
-    println!("yoke={yoke:?}");
+    println!("one={one:?}");
+    println!("guard={guard:?}");
+    println!("two={two:?}");
     // TODO
     // assert_eq!(&**yoke.get(), [2u8, 3]);
     // assert!(matches!(yoke.get(), &Cow::Borrowed(_)));
