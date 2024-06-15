@@ -228,7 +228,6 @@ fn generate_signature(
     };
 
     if default_constructor_mode == Some(MirFuncDefaultConstructorMode::DartConstructor) {
-        let _owner_ty_name = method_info.owner_ty_name().unwrap().name;
         return format!("factory {dart_class_name}{func_params}");
     }
 
