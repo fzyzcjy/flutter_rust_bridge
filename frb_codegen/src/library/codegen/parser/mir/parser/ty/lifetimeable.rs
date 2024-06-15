@@ -3,6 +3,7 @@ use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::mir::parser::ty::TypeParserWithContext;
 use crate::if_then_some;
 use itertools::Itertools;
+use syn::fold::fold_lifetime;
 use syn::{GenericArgument, Type};
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
@@ -21,21 +22,26 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     }
 }
 
-fn extract_lifetimes(ty: &Type) -> Vec<String> {
-    match ty {
-        Type::Path(ty) => (ty.path.segments.iter())
-            .filter_map(|segment| if_then_some!(let syn::PathArguments::AngleBracketed(inner) = &segment.arguments, inner))
-            .flat_map(extract_generic_arguments_lifetimes)
-            .collect_vec(),
-        _ => vec![],
-    }
-}
+struct LifetimeExtractor;
 
-fn extract_generic_arguments_lifetimes(
-    args: &syn::AngleBracketedGenericArguments,
-) -> Vec<String> {
-    (args.args.iter())
-        .filter_map(|arg| if_then_some!(let GenericArgument::Lifetime(inner) = arg, inner))
-        .map(|lifetime| lifetime.ident.to_string())
-        .collect_vec()
+impl LifetimeExtractor {
+    fn extract(ty: &Type) -> Vec<String> {
+        match ty {
+            Type::Path(ty) => (ty.path.segments.iter())
+                .filter_map(|segment| if_then_some!(let syn::PathArguments::AngleBracketed(inner) = &segment.arguments, inner))
+                .flat_map(Self::extract_generic_arguments)
+                .collect_vec(),
+            _ => vec![],
+        }
+    }
+
+    fn extract_generic_arguments(args: &syn::AngleBracketedGenericArguments) -> Vec<String> {
+        (args.args.iter())
+            .flat_map(|arg| match arg {
+                GenericArgument::Lifetime(inner) => vec![inner.ident.to_string()],
+                GenericArgument::Type(inner) => Self::extract(inner),
+                _ => vec![],
+            })
+            .collect_vec()
+    }
 }
