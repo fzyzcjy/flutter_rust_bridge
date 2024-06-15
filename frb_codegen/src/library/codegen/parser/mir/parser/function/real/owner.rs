@@ -3,10 +3,7 @@ use crate::codegen::ir::mir::func::{
     MirFuncOwnerInfo, MirFuncOwnerInfoMethod, MirFuncOwnerInfoMethodMode,
 };
 use crate::codegen::ir::mir::skip::MirSkipReason;
-use crate::codegen::ir::mir::skip::MirSkipReason::{
-    IgnoreBecauseNotAllowedOwner, IgnoreBecauseOwnerTyShouldIgnore,
-    IgnoreBecauseParseMethodOwnerTy, IgnoreBecauseParseOwnerCannotFindTrait,
-};
+use crate::codegen::ir::mir::skip::MirSkipReason::IgnoreBecauseOwnerTyShouldIgnore;
 use crate::codegen::ir::mir::ty::trait_def::MirTypeTraitDef;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
@@ -16,7 +13,7 @@ use crate::codegen::parser::mir::parser::function::real::{
 use crate::codegen::parser::mir::parser::ty::trait_def::parse_type_trait;
 use crate::codegen::parser::mir::parser::ty::TypeParserParsingContext;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
-use syn::{parse_str, FnArg, Type};
+use syn::{FnArg, Type};
 
 impl<'a, 'b> FunctionParser<'a, 'b> {
     pub(super) fn parse_owner(

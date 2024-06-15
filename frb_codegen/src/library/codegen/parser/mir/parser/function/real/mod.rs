@@ -3,24 +3,22 @@ use crate::codegen::ir::hir::flat::function::HirFlatFunction;
 use crate::codegen::ir::hir::flat::function::HirFlatFunctionOwner;
 use crate::codegen::ir::mir::func::{
     MirFunc, MirFuncArgMode, MirFuncImplMode, MirFuncImplModeDartOnly, MirFuncInput, MirFuncMode,
-    MirFuncOutput, MirFuncOwnerInfo, MirFuncOwnerInfoMethod, MirFuncOwnerInfoMethodMode,
+    MirFuncOutput, MirFuncOwnerInfo, MirFuncOwnerInfoMethod,
 };
 use crate::codegen::ir::mir::skip::MirSkipReason::{
-    IgnoreBecauseExplicitAttribute, IgnoreBecauseFunctionGeneric, IgnoreBecauseOwnerTyShouldIgnore,
-    IgnoreSilently,
+    IgnoreBecauseExplicitAttribute, IgnoreBecauseFunctionGeneric, IgnoreSilently,
 };
 use crate::codegen::ir::mir::skip::{MirSkip, MirSkipReason};
 use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
 use crate::codegen::ir::mir::ty::rust_auto_opaque_implicit::MirTypeRustAutoOpaqueImplicitReason;
 use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
-use crate::codegen::ir::mir::ty::trait_def::MirTypeTraitDef;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
 use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
 use crate::codegen::parser::mir::parser::function::func_or_skip::MirFuncOrSkip;
+use crate::codegen::parser::mir::parser::function::real::owner::OwnerInfoOrSkip;
 use crate::codegen::parser::mir::parser::ty::misc::parse_comments;
-use crate::codegen::parser::mir::parser::ty::trait_def::parse_type_trait;
 use crate::codegen::parser::mir::parser::ty::{TypeParser, TypeParserParsingContext};
 use crate::codegen::parser::mir::ParseMode;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
@@ -29,15 +27,13 @@ use anyhow::{bail, Context};
 use itertools::concat;
 use log::{debug, warn};
 use std::fmt::Debug;
-use syn::*;
 use MirSkipReason::IgnoreBecauseFunctionNotPub;
 use MirType::Primitive;
-use crate::codegen::parser::mir::parser::function::real::owner::OwnerInfoOrSkip;
 
 pub(crate) mod argument;
 pub(crate) mod output;
-mod transformer;
 mod owner;
+mod transformer;
 
 pub(crate) fn parse(
     src_fns: &[HirFlatFunction],
@@ -208,7 +204,6 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             src_lineno_pseudo: src_lineno,
         }))
     }
-
 }
 
 fn create_output_skip(func: &HirFlatFunction, reason: MirSkipReason) -> MirFuncOrSkip {
