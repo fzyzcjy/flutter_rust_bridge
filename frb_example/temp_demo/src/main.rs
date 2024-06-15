@@ -6,9 +6,12 @@ use tokio::sync::{RwLock, RwLockReadGuard};
 struct One(String);
 
 #[derive(Debug)]
+struct Unrelated(String);
+
+#[derive(Debug)]
 struct Two<'a> {
     one: &'a One,
-    unrelated: i32,
+    unrelated: String,
 }
 
 type RwLockReadGuardOne<'a> = RwLockReadGuard<'a, One>;
@@ -35,18 +38,18 @@ self_cell!(
     impl {Debug}
 );
 
-fn compute<'a>(one: &'a One, unrelated: &i32) -> Two<'a> {
+fn compute<'a>(one: &'a One, unrelated: &Unrelated) -> Two<'a> {
     Two {
         one,
-        unrelated: *unrelated,
+        unrelated: unrelated.0.to_owned(),
     }
 }
 
 fn build_pack(
     one: Arc<RwLock<One>>,
-    unrelated: Arc<RwLock<i32>>,
+    unrelated: Arc<RwLock<Unrelated>>,
 ) -> anyhow::Result<Arc<RwLock<OneAndGuardAndTwo>>> {
-    let mut unrelated_guard: Option<RwLockReadGuard<i32>> = None;
+    let mut unrelated_guard: Option<RwLockReadGuard<Unrelated>> = None;
     let one_and_guard = OneAndGuard::try_new(one, |one| {
         // do ordered unlocking here
         unrelated_guard = Some(unrelated.blocking_read());
@@ -64,8 +67,8 @@ fn build_pack(
 }
 
 fn main() -> anyhow::Result<()> {
-    let one = Arc::new(RwLock::new(One("hello".to_owned())));
-    let unrelated = Arc::new(RwLock::new(12345));
+    let one = Arc::new(RwLock::new(One("hi_one".to_owned())));
+    let unrelated = Arc::new(RwLock::new(Unrelated("hi_unrelated".to_owned())));
     let pack = build_pack(one.clone(), unrelated.clone())?;
 
     // test whether it is Send and Sync
