@@ -16,7 +16,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         if !lifetimes.is_empty() {
             return Ok(MirType::Delegate(MirTypeDelegate::Lifetimeable(
                 MirTypeDelegateLifetimeable {
-                    inner: Box::new(MirType::RustAutoOpaqueImplicit(original)),
+                    api_type: Box::new(MirType::RustAutoOpaqueImplicit(original)),
                 },
             )));
         }
