@@ -337,7 +337,7 @@ impl MirTypeDelegate {
             MirTypeDelegate::DynTrait(mir) => mir.get_delegate(),
             MirTypeDelegate::ProxyVariant(mir) => *mir.inner.clone(),
             MirTypeDelegate::ProxyEnum(mir) => mir.get_delegate(),
-            MirTypeDelegate::Lifetimeable(mir) => *mir.inner.clone(),
+            MirTypeDelegate::Lifetimeable(mir) => mir.get_delegate(),
             MirTypeDelegate::CustomSerDes(mir) => *mir.info.inner_type.clone(),
         }
     }
@@ -425,5 +425,11 @@ impl MirTypeDelegateDynTrait {
 
     pub(crate) fn data(&self) -> &MirTypeDelegateDynTraitData {
         self.data.as_ref().unwrap()
+    }
+}
+
+impl MirTypeDelegateLifetimeable {
+    pub(crate) fn get_delegate(&self) -> MirType {
+        TODO
     }
 }
