@@ -17,6 +17,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             return Ok(MirType::Delegate(MirTypeDelegate::Lifetimeable(
                 MirTypeDelegateLifetimeable {
                     api_type: Box::new(MirType::RustAutoOpaqueImplicit(original)),
+                    delegate: Box::new(self.parse_type_rust_auto_opaque_implicit(TODO)?),
                 },
             )));
         }
