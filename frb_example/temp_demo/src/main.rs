@@ -35,7 +35,9 @@ self_cell!(
 
 fn build_pack() -> anyhow::Result<OneAndGuardAndTwo> {
     let one = Arc::new(RwLock::new(One("hello".to_owned())));
-    let one_and_guard = OneAndGuard::try_new(one, |one| anyhow::Ok(one.read()?))?;
+    let one_and_guard = OneAndGuard::try_new(one, |one| {
+        one.read().map_err(|_| anyhow::anyhow!("read lock failed"))
+    })?;
     let one_and_guard_and_two = OneAndGuardAndTwo::try_new(one_and_guard, |one_and_guard| {
         anyhow::Ok(Two {
             one: one_and_guard.borrow_dependent(),
