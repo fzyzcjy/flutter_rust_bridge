@@ -57,15 +57,20 @@ fn split_vec_two(yoke_vec_two_wrapped: YokeVecTwoWrapped) -> Vec<YokeTwoWrapped>
 
 pub fn main() {
     let one: Arc<RwLock<One>> = Arc::new(RwLock::new(One("hi_one".to_owned())));
-    let guard = compute_guard(one.clone());
-    let two = compute_vec_two(guard.clone());
     println!("one={one:?}");
+
+    let guard = compute_guard(one.clone());
     println!("guard={guard:?}");
-    println!("two={two:?}");
+
+    let vec_two_raw = compute_vec_two(guard.clone());
+    println!("vec_two_raw={vec_two_raw:?}");
+
+    let vec_two_split = split_vec_two(vec_two_raw);
+    println!("vec_two_split={vec_two_split:?}");
 
     drop(one);
     drop(guard);
-    println!("two(after drop others)={two:?}");
+    println!("vec_two_split(after drop others)={vec_two_split:?}");
 
     // TODO
     // assert_eq!(&**yoke.get(), [2u8, 3]);
