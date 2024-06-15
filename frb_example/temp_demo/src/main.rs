@@ -11,7 +11,9 @@ struct Unrelated(String);
 #[derive(Debug)]
 struct Two<'a> {
     one: &'a One,
-    unrelated: String,
+    // test: what if unrelated is indeed an owner?
+    unrelated: &'a Unrelated,
+    // unrelated: String,
 }
 
 type RwLockReadGuardOne<'a> = RwLockReadGuard<'a, One>;
@@ -41,7 +43,9 @@ self_cell!(
 fn compute<'a>(one: &'a One, unrelated: &Unrelated) -> Two<'a> {
     Two {
         one,
-        unrelated: unrelated.0.to_owned(),
+        // test: what if unrelated is indeed an owner?
+        unrelated,
+        // unrelated: unrelated.0.to_owned(),
     }
 }
 
