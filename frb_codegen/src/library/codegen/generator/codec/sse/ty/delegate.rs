@@ -113,7 +113,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 | MirTypeDelegate::ProxyEnum(_)
                 | MirTypeDelegate::DynTrait(_)
                 | MirTypeDelegate::CastedPrimitive(_)
-                | MirTypeDelegate::Lifetimeable(mir) => return None,
+                | MirTypeDelegate::Lifetimeable(_) => return None,
                 MirTypeDelegate::CustomSerDes(mir) => {
                     format!("{}(self)", mir.info.rust2dart.rust_function.rust_style())
                 }
@@ -229,7 +229,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 | MirTypeDelegate::ProxyEnum(_)
                 | MirTypeDelegate::DynTrait(_)
                 | MirTypeDelegate::CastedPrimitive(_)
-                | MirTypeDelegate::Lifetimeable(mir) => return None,
+                | MirTypeDelegate::Lifetimeable(_) => return None,
                 MirTypeDelegate::CustomSerDes(mir) => {
                     format!("{}(inner)", mir.info.dart2rust.rust_function.rust_style())
                 }
