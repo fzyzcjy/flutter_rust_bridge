@@ -24,7 +24,7 @@ self_cell!(
 
 fn build_pack() -> Pack {
     let one = Arc::new(RwLock::new(One("hello".to_owned())));
-    Pack::try_new(one, |one| one.read()).unwrap()
+    Pack::try_new(one, |one| Ok::<_, ()>(one.read().unwrap())).unwrap()
 }
 
 fn main() {
