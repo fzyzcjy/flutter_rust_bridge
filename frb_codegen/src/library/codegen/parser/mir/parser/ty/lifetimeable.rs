@@ -20,7 +20,11 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         let lifetimes = LifetimeExtractor::extract_skipping_static(&ty);
 
         if !lifetimes.is_empty() {
-            let delegate_ty_str = replace_lifetime_to_static(ty_str, &lifetimes);
+            let delegate_ty_str = format!(
+                "flutter_rust_bridge::for_generated::Lifetimeable<{}>",
+                replace_lifetime_to_static(ty_str, &lifetimes)
+            );
+
             return Ok(MirType::Delegate(MirTypeDelegate::Lifetimeable(
                 MirTypeDelegateLifetimeable {
                     api_type: Box::new(MirType::RustAutoOpaqueImplicit(original)),
