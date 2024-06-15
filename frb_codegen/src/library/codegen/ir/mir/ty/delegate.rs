@@ -34,6 +34,7 @@ pub enum MirTypeDelegate {
     ProxyVariant(MirTypeDelegateProxyVariant),
     ProxyEnum(MirTypeDelegateProxyEnum),
     DynTrait(MirTypeDelegateDynTrait),
+    Lifetimeable(MirTypeDelegateLifetimeable),
     CustomSerDes(MirTypeDelegateCustomSerDes),
 }
 
@@ -109,6 +110,9 @@ pub struct MirTypeDelegateDynTrait {
     pub trait_def_name: NamespacedName,
     // `None` if and only if dummy mode
     pub data: Option<MirTypeDelegateDynTraitData>,
+}
+
+pub struct MirTypeDelegateLifetimeable {
 }
 
 pub struct MirTypeDelegateDynTraitData {
