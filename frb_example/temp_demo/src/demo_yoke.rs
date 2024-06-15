@@ -14,6 +14,7 @@ struct TwoWrapped<'a>(Two<'a>);
 
 type YokeGuardOne = Yoke<RwLockReadGuardOne<'static>, Arc<RwLock<One>>>;
 type YokeTwoWrapped = Yoke<TwoWrapped<'static>, Arc<YokeGuardOne>>;
+type YokeVecTwoWrapped = Yoke<Vec<TwoWrapped<'static>>, Arc<YokeGuardOne>>;
 
 fn compute_guard(one: Arc<RwLock<One>>) -> Arc<YokeGuardOne> {
     Arc::new(Yoke::attach_to_cart(one, |one: &RwLock<One>| {
@@ -21,16 +22,25 @@ fn compute_guard(one: Arc<RwLock<One>>) -> Arc<YokeGuardOne> {
     }))
 }
 
-fn compute_two(guard_one: Arc<YokeGuardOne>) -> YokeTwoWrapped {
+// fn compute_two(guard_one: Arc<YokeGuardOne>) -> YokeTwoWrapped {
+//     Yoke::attach_to_cart(guard_one, |guard_one: &YokeGuardOne| {
+//         TwoWrapped(Two { one: guard_one.get().0.deref(), unrelated: "".to_string() })
+//     })
+// }
+
+fn compute_vec_two(guard_one: Arc<YokeGuardOne>) -> YokeVecTwoWrapped {
     Yoke::attach_to_cart(guard_one, |guard_one: &YokeGuardOne| {
-        TwoWrapped(Two { one: guard_one.get().0.deref(), unrelated: "".to_string() })
+        vec![
+            TwoWrapped(Two { one: guard_one.get().0.deref(), unrelated: "item1".to_string() }),
+            TwoWrapped(Two { one: guard_one.get().0.deref(), unrelated: "item2".to_string() }),
+        ]
     })
 }
 
 pub fn main() {
     let one: Arc<RwLock<One>> = Arc::new(RwLock::new(One("hi_one".to_owned())));
     let guard = compute_guard(one.clone());
-    let two = compute_two(guard.clone());
+    let two = compute_vec_two(guard.clone());
     println!("one={one:?}");
     println!("guard={guard:?}");
     println!("two={two:?}");
