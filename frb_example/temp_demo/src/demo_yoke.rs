@@ -3,11 +3,14 @@ use std::borrow::Cow;
 use std::rc::Rc;
 use std::sync::Arc;
 use tokio::sync::{RwLock, RwLockReadGuard};
-use yoke::Yoke;
+use yoke::{Yoke, Yokeable};
 
-fn load_object(filename: &str) -> Yoke<RwLockReadGuard<'static, One>, Arc<RwLock<One>>> {
+#[derive(Yokeable)]
+struct RwLockReadGuardOne<'a>(RwLockReadGuard<'a, One>);
+
+fn load_object(filename: &str) -> Yoke<RwLockReadGuardOne<'static>, Arc<RwLock<One>>> {
     let one: Arc<RwLock<One>> = Arc::new(RwLock::new(One("hi_one".to_owned())));
-    Yoke::attach_to_cart(one, |one: &RwLock<One>| one.blocking_read())
+    Yoke::attach_to_cart(one, |one: &RwLock<One>| RwLockReadGuardOne(one.blocking_read()))
 }
 
 pub fn main() {
