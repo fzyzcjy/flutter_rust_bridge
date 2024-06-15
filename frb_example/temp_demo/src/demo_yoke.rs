@@ -12,9 +12,12 @@ struct RwLockReadGuardOne<'a>(RwLockReadGuard<'a, One>);
 #[derive(Yokeable, Debug)]
 struct TwoWrapped<'a>(Two<'a>);
 
+#[derive(Yokeable, Debug)]
+struct VecTwoWrapped<'a>(Vec<Two<'a>>);
+
 type YokeGuardOne = Yoke<RwLockReadGuardOne<'static>, Arc<RwLock<One>>>;
 type YokeTwoWrapped = Yoke<TwoWrapped<'static>, Arc<YokeGuardOne>>;
-type YokeVecTwoWrapped = Yoke<Vec<TwoWrapped<'static>>, Arc<YokeGuardOne>>;
+type YokeVecTwoWrapped = Yoke<VecTwoWrapped<'static>, Arc<YokeGuardOne>>;
 
 fn compute_guard(one: Arc<RwLock<One>>) -> Arc<YokeGuardOne> {
     Arc::new(Yoke::attach_to_cart(one, |one: &RwLock<One>| {
@@ -30,10 +33,10 @@ fn compute_guard(one: Arc<RwLock<One>>) -> Arc<YokeGuardOne> {
 
 fn compute_vec_two(guard_one: Arc<YokeGuardOne>) -> YokeVecTwoWrapped {
     Yoke::attach_to_cart(guard_one, |guard_one: &YokeGuardOne| {
-        vec![
-            TwoWrapped(Two { one: guard_one.get().0.deref(), unrelated: "item1".to_string() }),
-            TwoWrapped(Two { one: guard_one.get().0.deref(), unrelated: "item2".to_string() }),
-        ]
+        VecTwoWrapped(vec![
+            Two { one: guard_one.get().0.deref(), unrelated: "item1".to_string() },
+            Two { one: guard_one.get().0.deref(), unrelated: "item2".to_string() },
+        ])
     })
 }
 
