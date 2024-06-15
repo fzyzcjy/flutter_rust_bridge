@@ -101,7 +101,9 @@ flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
     flutter_rust_bridge::for_generated::RustAutoOpaqueInner<LifetimeTesterOneTwinNormal>
 );
 flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
-    flutter_rust_bridge::for_generated::RustAutoOpaqueInner<LifetimeTesterTwoTwinNormal<'static>>
+    flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+        flutter_rust_bridge::for_generated::Lifetimeable<LifetimeTesterTwoTwinNormal<'static>>,
+    >
 );
 
 // Section: dart2rust
@@ -116,12 +118,16 @@ impl SseDecode for LifetimeTesterOneTwinNormal {
     }
 }
 
-impl SseDecode for LifetimeTesterTwoTwinNormal<'static> {
+impl SseDecode
+    for flutter_rust_bridge::for_generated::Lifetimeable<LifetimeTesterTwoTwinNormal<'static>>
+{
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut inner = <RustOpaqueMoi<
             flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
-                LifetimeTesterTwoTwinNormal<'static>,
+                flutter_rust_bridge::for_generated::Lifetimeable<
+                    LifetimeTesterTwoTwinNormal<'static>,
+                >,
             >,
         >>::sse_decode(deserializer);
         return flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(inner);
@@ -131,7 +137,9 @@ impl SseDecode for LifetimeTesterTwoTwinNormal<'static> {
 impl SseDecode for LifetimeTesterTwoTwinNormal<'a> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <LifetimeTesterTwoTwinNormal<'static>>::sse_decode(deserializer);
+        let mut inner = <flutter_rust_bridge::for_generated::Lifetimeable<
+            LifetimeTesterTwoTwinNormal<'static>,
+        >>::sse_decode(deserializer);
         return TODO;
     }
 }
@@ -151,7 +159,7 @@ impl SseDecode
 impl SseDecode
     for RustOpaqueMoi<
         flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
-            LifetimeTesterTwoTwinNormal<'static>,
+            flutter_rust_bridge::for_generated::Lifetimeable<LifetimeTesterTwoTwinNormal<'static>>,
         >,
     >
 {
@@ -242,21 +250,35 @@ impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<LifetimeTesterOneTwinNormal>>
 }
 
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for FrbWrapper<LifetimeTesterTwoTwinNormal<'static>> {
+impl flutter_rust_bridge::IntoDart
+    for FrbWrapper<
+        flutter_rust_bridge::for_generated::Lifetimeable<LifetimeTesterTwoTwinNormal<'static>>,
+    >
+{
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0)
             .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
-    for FrbWrapper<LifetimeTesterTwoTwinNormal<'static>>
+    for FrbWrapper<
+        flutter_rust_bridge::for_generated::Lifetimeable<LifetimeTesterTwoTwinNormal<'static>>,
+    >
 {
 }
 
-impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<LifetimeTesterTwoTwinNormal<'static>>>
-    for LifetimeTesterTwoTwinNormal<'static>
+impl
+    flutter_rust_bridge::IntoIntoDart<
+        FrbWrapper<
+            flutter_rust_bridge::for_generated::Lifetimeable<LifetimeTesterTwoTwinNormal<'static>>,
+        >,
+    > for flutter_rust_bridge::for_generated::Lifetimeable<LifetimeTesterTwoTwinNormal<'static>>
 {
-    fn into_into_dart(self) -> FrbWrapper<LifetimeTesterTwoTwinNormal<'static>> {
+    fn into_into_dart(
+        self,
+    ) -> FrbWrapper<
+        flutter_rust_bridge::for_generated::Lifetimeable<LifetimeTesterTwoTwinNormal<'static>>,
+    > {
         self.into()
     }
 }
@@ -273,12 +295,16 @@ impl SseEncode for LifetimeTesterOneTwinNormal {
     }
 }
 
-impl SseEncode for LifetimeTesterTwoTwinNormal<'static> {
+impl SseEncode
+    for flutter_rust_bridge::for_generated::Lifetimeable<LifetimeTesterTwoTwinNormal<'static>>
+{
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <RustOpaqueMoi<
             flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
-                LifetimeTesterTwoTwinNormal<'static>,
+                flutter_rust_bridge::for_generated::Lifetimeable<
+                    LifetimeTesterTwoTwinNormal<'static>,
+                >,
             >,
         >>::sse_encode(
             flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self),
@@ -290,7 +316,7 @@ impl SseEncode for LifetimeTesterTwoTwinNormal<'static> {
 impl SseEncode for LifetimeTesterTwoTwinNormal<'a> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <LifetimeTesterTwoTwinNormal<'static>>::sse_encode(TODO, serializer);
+        <flutter_rust_bridge :: for_generated :: Lifetimeable < LifetimeTesterTwoTwinNormal < 'static > >>::sse_encode(TODO, serializer);
     }
 }
 
@@ -310,7 +336,7 @@ impl SseEncode
 impl SseEncode
     for RustOpaqueMoi<
         flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
-            LifetimeTesterTwoTwinNormal<'static>,
+            flutter_rust_bridge::for_generated::Lifetimeable<LifetimeTesterTwoTwinNormal<'static>>,
         >,
     >
 {
