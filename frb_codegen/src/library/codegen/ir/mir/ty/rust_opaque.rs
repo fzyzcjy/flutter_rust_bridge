@@ -1,7 +1,6 @@
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
 use crate::codegen::ir::mir::ty::{MirContext, MirType, MirTypeTrait};
-use crate::codegen::parser::mir::parser::lifetime_extractor::LifetimeExtractor;
-use crate::codegen::parser::mir::parser::lifetime_replacer::replace_lifetimes_to_static;
+use crate::codegen::parser::mir::parser::lifetime_replacer::replace_all_lifetimes_to_static;
 use crate::utils::namespace::Namespace;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
@@ -120,9 +119,7 @@ fn rust_type_to_sanitized_type(raw: &str, brief_name: bool) -> String {
 
     let mut ans = raw.to_owned();
 
-    let ty: Type = syn::parse_str(raw).unwrap();
-    let lifetimes = LifetimeExtractor::extract_skipping_static(&ty);
-    ans = replace_lifetimes_to_static(&ans, &lifetimes);
+    ans = replace_all_lifetimes_to_static(&ans);
 
     ans = OPAQUE_FILTER.replace_all(&ans, "").to_string();
 
