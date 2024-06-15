@@ -34,6 +34,11 @@ pub fn main() {
     println!("one={one:?}");
     println!("guard={guard:?}");
     println!("two={two:?}");
+
+    drop(one);
+    drop(guard);
+    println!("two(after drop others)={two:?}");
+
     // TODO
     // assert_eq!(&**yoke.get(), [2u8, 3]);
     // assert!(matches!(yoke.get(), &Cow::Borrowed(_)));
