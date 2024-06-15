@@ -1,11 +1,12 @@
 use super::user_code::*;
-use ouroboros::macro_help::AliasableBox;
+use std::any::Any;
 use std::sync::Arc;
 use tokio::sync::{RwLock, RwLockReadGuard};
 
-struct SelfCell {
-    owner: Arc<RwLock<One>>,
-    dependent: AliasableBox<RwLockReadGuard<'static, One>>,
+struct WithOwner<T> {
+    // NOTE order of fields!
+    value: T,
+    owners: Vec<Box<dyn Any>>,
 }
 
 fn new(
