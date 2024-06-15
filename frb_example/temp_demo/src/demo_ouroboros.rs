@@ -1,11 +1,14 @@
+use super::user_code::*;
 use ouroboros::self_referencing;
+use std::sync::Arc;
+use tokio::sync::{RwLock, RwLockReadGuard};
 
 #[self_referencing]
-pub struct LeafNodeIter {
-    node: String,
-    #[borrows(node)]
+pub struct OneAndGuard {
+    one: Arc<RwLock<One>>,
+    #[borrows(one)]
     #[covariant]
-    iter: std::slice::Iter<'this, String>,
+    guard: RwLockReadGuard<'this, One>,
 }
 
 pub fn main() -> anyhow::Result<()> {
