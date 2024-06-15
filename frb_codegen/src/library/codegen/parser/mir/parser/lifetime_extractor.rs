@@ -1,13 +1,11 @@
+use crate::if_then_some;
 use itertools::Itertools;
 use syn::{GenericArgument, Type};
-use crate::if_then_some;
 
 pub(crate) struct LifetimeExtractor;
 
 impl LifetimeExtractor {
     pub(crate) fn extract_skipping_static(ty: &Type) -> Vec<String> {
-        const LIFETIME_STATIC: &str = "static";
-
         (Self::extract(ty).into_iter())
             .filter(|lifetime| lifetime != LIFETIME_STATIC)
             .collect_vec()
@@ -33,3 +31,5 @@ impl LifetimeExtractor {
             .collect_vec()
     }
 }
+
+pub(crate) const LIFETIME_STATIC: &str = "static";

@@ -5,6 +5,7 @@ pub(crate) mod lifetime_extractor;
 pub(crate) mod misc;
 pub(crate) mod trait_impl;
 pub(crate) mod ty;
+mod lifetime_replacer;
 
 use crate::codegen::ir::early_generator::pack::IrEarlyGeneratorPack;
 use crate::codegen::ir::mir::pack::MirPack;
