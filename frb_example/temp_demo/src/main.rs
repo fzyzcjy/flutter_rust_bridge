@@ -40,7 +40,7 @@ self_cell!(
     impl {Debug}
 );
 
-fn compute<'a>(one: &'a One, unrelated: &Unrelated) -> Two<'a> {
+fn compute<'a>(one: &'a One, unrelated: &'a Unrelated) -> Two<'a> {
     Two {
         one,
         // test: what if unrelated is indeed an owner?
