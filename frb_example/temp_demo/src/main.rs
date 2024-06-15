@@ -1,5 +1,6 @@
 use self_cell::self_cell;
 use std::sync::Arc;
+use tokio::sync::broadcast::RwLock;
 use tokio::sync::{RwLock, RwLockReadGuard};
 
 #[derive(Debug)]
@@ -45,7 +46,7 @@ fn compute<'a>(one: &'a One, unrelated: &i32) -> Two<'a> {
 fn build_pack(
     one: Arc<RwLock<One>>,
     unrelated: Arc<RwLock<i32>>,
-) -> anyhow::Result<OneAndGuardAndTwo> {
+) -> anyhow::Result<Arc<RwLock<OneAndGuardAndTwo>>> {
     let mut unrelated_guard: Option<RwLockReadGuard<i32>> = None;
     let one_and_guard = OneAndGuard::try_new(one, |one| {
         // do ordered unlocking here
@@ -60,7 +61,7 @@ fn build_pack(
             &*unrelated_guard.unwrap(),
         ))
     })?;
-    Ok(one_and_guard_and_two)
+    Ok(Arc::new(RwLock::new(one_and_guard_and_two)))
 }
 
 fn main() -> anyhow::Result<()> {
@@ -68,16 +69,27 @@ fn main() -> anyhow::Result<()> {
     let unrelated = Arc::new(RwLock::new(12345));
     let pack = build_pack(one.clone(), unrelated.clone())?;
 
-    // test whether it is Send
-    std::thread::spawn(move || {
-        println!("inside another thread");
-        println!("one(cloned) -> {:?}", &one);
-        println!("pack -> {:?}", &pack);
-        println!("pack.borrow_owner() -> {:?}", pack.borrow_owner());
-        println!("pack.borrow_dependent() -> {:?}", pack.borrow_dependent());
-    })
-    .join()
-    .unwrap();
+    // test whether it is Send and Sync
+    let mut handles = vec![];
+    for i in 0..2 {
+        let pack_clone = pack.clone();
+        handles.push(std::thread::spawn(|| {
+            println!("[thread-{i}] one(cloned) -> {:?}", &one);
+            println!("[thread-{i}] pack -> {:?}", &pack);
+            println!(
+                "[thread-{i}] pack.borrow_owner() -> {:?}",
+                pack.borrow_owner()
+            );
+            println!(
+                "[thread-{i}] pack.borrow_dependent() -> {:?}",
+                pack.borrow_dependent()
+            );
+        }));
+    }
+
+    for handle in handles {
+        handle.join().unwrap();
+    }
 
     Ok(())
 }
