@@ -1,4 +1,3 @@
-use crate::codegen::ir::mir::ty::MirType;
 use crate::utils::namespace::NamespacedName;
 
 crate::mir! {
@@ -16,7 +15,7 @@ pub(crate) enum MirSkipReason {
     IgnoreBecauseType,
     IgnoreBecauseParseMethodOwnerTy,
     IgnoreBecauseParseOwnerCannotFindTrait,
-    IgnoreBecauseNotAllowedOwner { owner_ty: MirType },
+    IgnoreBecauseNotAllowedOwner,
     IgnoreBecauseOwnerTyShouldIgnore,
     IgnoreSilently,
     Err,

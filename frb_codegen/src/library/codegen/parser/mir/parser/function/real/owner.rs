@@ -50,7 +50,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                 };
 
                 if !is_allowed_owner(&owner_ty, attributes) {
-                    return Ok(Skip(IgnoreBecauseNotAllowedOwner { owner_ty: owner_ty.clone() }));
+                    return Ok(Skip(IgnoreBecauseNotAllowedOwner));
                 }
 
                 self.parse_method_owner_inner(func, actual_method_dart_name, owner_ty, trait_def)
