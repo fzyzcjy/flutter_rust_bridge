@@ -1540,6 +1540,10 @@ dependencies = [
 ]
 
 [[package]]
+name = "temp_demo"
+version = "2.0.0-dev.39"
+
+[[package]]
 name = "tempfile"
 version = "3.7.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"

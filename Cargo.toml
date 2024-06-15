@@ -1,6 +1,6 @@
 [workspace]
 members = [
-  "frb_codegen",
+  "frb_codegen", "frb_example/temp_demo",
   "frb_macros",
   "frb_rust",
 ]
