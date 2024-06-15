@@ -61,7 +61,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 MirTypeDelegate::DynTrait(mir) => {
                     generate_dyn_trait_dart_encode(mir, self.context.as_api_dart_context())
                 }
-                MirTypeDelegate::Lifetimeable(_) => "self".to_owned(),
+                MirTypeDelegate::Lifetimeable(mir) => "TODO".to_owned(),
                 MirTypeDelegate::CustomSerDes(mir) => {
                     mir.info.dart2rust.dart_code.replace("{}", "self")
                 }
@@ -179,7 +179,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     MirTypeDelegate::DynTrait(_) => {
                         return Some(format!("{};", lang.throw_unimplemented("")))
                     }
-                    MirTypeDelegate::Lifetimeable(_) => "inner".to_owned(),
+                    MirTypeDelegate::Lifetimeable(mir) => "TODO".to_owned(),
                     MirTypeDelegate::CustomSerDes(mir) => {
                         mir.info.rust2dart.dart_code.replace("{}", "inner")
                     }
