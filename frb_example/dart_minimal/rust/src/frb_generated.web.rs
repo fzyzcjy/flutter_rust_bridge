@@ -44,19 +44,23 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
 }
 
 #[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeTesterTwoTwinNormala(
+pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeTesterTwoTwinNormalstatic(
     ptr: *const std::ffi::c_void,
 ) {
     MoiArc::<
-        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<LifetimeTesterTwoTwinNormal<'a>>,
+        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+            LifetimeTesterTwoTwinNormal<'static>,
+        >,
     >::increment_strong_count(ptr as _);
 }
 
 #[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeTesterTwoTwinNormala(
+pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeTesterTwoTwinNormalstatic(
     ptr: *const std::ffi::c_void,
 ) {
     MoiArc::<
-        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<LifetimeTesterTwoTwinNormal<'a>>,
+        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+            LifetimeTesterTwoTwinNormal<'static>,
+        >,
     >::decrement_strong_count(ptr as _);
 }
