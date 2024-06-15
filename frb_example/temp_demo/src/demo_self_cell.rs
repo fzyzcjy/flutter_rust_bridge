@@ -1,20 +1,7 @@
+use super::user_code::*;
 use self_cell::self_cell;
 use std::sync::Arc;
 use tokio::sync::{RwLock, RwLockReadGuard};
-
-#[derive(Debug)]
-struct One(String);
-
-#[derive(Debug)]
-struct Unrelated(String);
-
-#[derive(Debug)]
-struct Two<'a> {
-    one: &'a One,
-    // test: what if unrelated is indeed an owner?
-    // unrelated: &'a Unrelated,
-    unrelated: String,
-}
 
 type RwLockReadGuardOne<'a> = RwLockReadGuard<'a, One>;
 
