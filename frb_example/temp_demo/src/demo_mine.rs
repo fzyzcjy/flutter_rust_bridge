@@ -13,9 +13,10 @@ fn new(
     owner: Arc<RwLock<One>>,
     builder: impl for<'this> FnOnce(&'this RwLock<One>) -> RwLockReadGuard<'this, One>,
 ) -> WithOwnerGuard {
-    let owner_cloned = owner.clone();
+    let owner_illegal_static_reference = unsafe { ::ouroboros::macro_help::change_lifetime(&*owner) };
+    let owner2 = owner.clone();
     WithOwnerGuard {
-        value: builder(&owner),
-        owners: vec![Box::new(owner_cloned)],
+        value: builder(owner_illegal_static_reference),
+        owners: vec![Box::new(owner2)],
     }
 }
