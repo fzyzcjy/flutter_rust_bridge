@@ -50,12 +50,12 @@ pub fn lt_get_and_reset_logs_twin_normal() -> Vec<String> {
 #[frb(opaque)]
 #[derive(Debug)]
 pub struct LtOwnedStructTwinNormal {
-    sub: LtOwnedSubStructTwinNormal,
+    sub: LtSubStructTwinNormal,
 }
 
 #[frb(opaque)]
 #[derive(Debug)]
-pub struct LtOwnedSubStructTwinNormal {
+pub struct LtSubStructTwinNormal {
     value: String,
 }
 
@@ -85,7 +85,7 @@ impl Drop for LtOwnedStructTwinNormal {
     }
 }
 
-impl Drop for LtOwnedSubStructTwinNormal {
+impl Drop for LtSubStructTwinNormal {
     fn drop(&mut self) {
         LOGGER.log("LtOwnedSubStructTwinNormal.drop");
     }
@@ -114,7 +114,7 @@ impl Drop for LtTypeWithMultiOwnerTwinNormal {
 impl LtOwnedStructTwinNormal {
     pub fn create(value: String) -> Self {
         Self {
-            sub: LtOwnedSubStructTwinNormal { value },
+            sub: LtSubStructTwinNormal { value },
         }
     }
 
@@ -126,16 +126,16 @@ impl LtOwnedStructTwinNormal {
     }
 
     /// `fn f(x: &'a T) -> &'a S`
-    pub fn compute_sub_struct_twin_normal<'a>(&'a self) -> &'a LtOwnedSubStructTwinNormal {
+    pub fn compute_sub_struct_twin_normal<'a>(&'a self) -> &'a LtSubStructTwinNormal {
         &self.sub
     }
 
     /// The unrelated arg should not affect results
     pub fn compute_with_unrelated_borrowed_arg_twin_normal<'a>(
         &'a self,
-        unrelated_borrowed: &LtOwnedSubStructTwinNormal,
-        unrelated_owned: LtOwnedSubStructTwinNormal,
-    ) -> &'a LtOwnedSubStructTwinNormal {
+        unrelated_borrowed: &LtSubStructTwinNormal,
+        unrelated_owned: LtSubStructTwinNormal,
+    ) -> &'a LtSubStructTwinNormal {
         assert_eq!(&unrelated_borrowed.value, "hi");
         assert_eq!(&unrelated_owned.value, "hi");
         &self.sub
@@ -145,11 +145,11 @@ impl LtOwnedStructTwinNormal {
 /// Functions (other tests are mainly methods)
 pub fn lt_compute_with_lifetime_function_twin_normal<'a>(
     a: &'a LtOwnedStructTwinNormal,
-) -> &'a LtOwnedSubStructTwinNormal {
+) -> &'a LtSubStructTwinNormal {
     &a.sub
 }
 
-impl LtOwnedSubStructTwinNormal {
+impl LtSubStructTwinNormal {
     pub fn greet_borrow_self_twin_normal(&self) -> String {
         self.value.clone()
     }
@@ -200,8 +200,8 @@ impl LtTypeWithMultiOwnerTwinNormal<'_> {
     pub fn compute_with_multi_arg_having_lifetime_twin_normal<'a>(
         a: &'a LtOwnedStructTwinNormal,
         b: &'a LtOwnedStructTwinNormal,
-        unrelated_borrowed: &LtOwnedSubStructTwinNormal,
-        unrelated_owned: LtOwnedSubStructTwinNormal,
+        unrelated_borrowed: &LtSubStructTwinNormal,
+        unrelated_owned: LtSubStructTwinNormal,
     ) -> Self<'a> {
         assert_eq!(&unrelated_borrowed.value, "hi");
         assert_eq!(&unrelated_owned.value, "hi");

@@ -31,7 +31,7 @@ Future<void> main() async {
           <String>['LtOwnedStructTwinNormal.drop']);
     });
 
-    test('dispose ownedStruct - dispose typeWithLifetime', () async {
+    test('dispose ownedStruct - dispose subStruct', () async {
       final ownedStruct = await LtOwnedStructTwinNormal.create(value: 'a');
       final typeWithLifetime =
           await ownedStruct.computeTypeWithLifetimeTwinNormal();
@@ -49,7 +49,7 @@ Future<void> main() async {
       ]);
     });
 
-    test('dispose typeWithLifetime - dispose ownedStruct', () async {
+    test('dispose subStruct - dispose ownedStruct', () async {
       final ownedStruct = await LtOwnedStructTwinNormal.create(value: 'a');
       final typeWithLifetime =
           await ownedStruct.computeTypeWithLifetimeTwinNormal();
@@ -80,6 +80,20 @@ Future<void> main() async {
       // can still call
       expect(await typeWithLifetime.greetBorrowSelfTwinNormal(), 'a');
       expect(await typeWithLifetime.greetBorrowMutSelfTwinNormal(), 'a');
+    });
+
+    test('computeSubStructTwinNormal', () async {
+      final ownedStruct = await LtOwnedStructTwinNormal.create(value: 'a');
+      final subStruct = await ownedStruct.computeSubStructTwinNormal();
+
+      expect(await subStruct.greetBorrowSelfTwinNormal(), 'a');
+      expect(await subStruct.greetBorrowMutSelfTwinNormal(), 'a');
+
+      ownedStruct.dispose();
+
+      // can still call
+      expect(await subStruct.greetBorrowSelfTwinNormal(), 'a');
+      expect(await subStruct.greetBorrowMutSelfTwinNormal(), 'a');
     });
   });
 }
