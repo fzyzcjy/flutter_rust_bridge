@@ -92,8 +92,8 @@ abstract class RustLibApi extends BaseApi {
       crateApiMinimalLifetimeableAutoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstaticComputeWithMultiArgHavingLifetimeTwinNormal(
           {required LtOwnedStructTwinNormal a,
           required LtOwnedStructTwinNormal b,
-          required LtSubStructTwinNormal unrelatedBorrowed,
-          required LtSubStructTwinNormal unrelatedOwned});
+          required LtOwnedStructTwinNormal unrelatedBorrowed,
+          required LtOwnedStructTwinNormal unrelatedOwned});
 
   Future<List<String>>
       crateApiMinimalLifetimeableAutoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstaticGreetBorrowMutSelfTwinNormal(
@@ -110,8 +110,8 @@ abstract class RustLibApi extends BaseApi {
   Future<LtTypeWithLifetimeTwinNormal>
       crateApiMinimalLtOwnedStructTwinNormalComputeWithUnrelatedBorrowedArgTwinNormal(
           {required LtOwnedStructTwinNormal that,
-          required LtSubStructTwinNormal unrelatedBorrowed,
-          required LtSubStructTwinNormal unrelatedOwned});
+          required LtOwnedStructTwinNormal unrelatedBorrowed,
+          required LtOwnedStructTwinNormal unrelatedOwned});
 
   Future<LtOwnedStructTwinNormal> crateApiMinimalLtOwnedStructTwinNormalCreate(
       {required String value});
@@ -372,8 +372,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       crateApiMinimalLifetimeableAutoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstaticComputeWithMultiArgHavingLifetimeTwinNormal(
           {required LtOwnedStructTwinNormal a,
           required LtOwnedStructTwinNormal b,
-          required LtSubStructTwinNormal unrelatedBorrowed,
-          required LtSubStructTwinNormal unrelatedOwned}) {
+          required LtOwnedStructTwinNormal unrelatedBorrowed,
+          required LtOwnedStructTwinNormal unrelatedOwned}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -381,9 +381,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             a, serializer);
         sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtOwnedStructTwinNormal(
             b, serializer);
-        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtSubStructTwinNormal(
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtOwnedStructTwinNormal(
             unrelatedBorrowed, serializer);
-        sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtSubStructTwinNormal(
+        sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtOwnedStructTwinNormal(
             unrelatedOwned, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 6, port: port_);
@@ -506,16 +506,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<LtTypeWithLifetimeTwinNormal>
       crateApiMinimalLtOwnedStructTwinNormalComputeWithUnrelatedBorrowedArgTwinNormal(
           {required LtOwnedStructTwinNormal that,
-          required LtSubStructTwinNormal unrelatedBorrowed,
-          required LtSubStructTwinNormal unrelatedOwned}) {
+          required LtOwnedStructTwinNormal unrelatedBorrowed,
+          required LtOwnedStructTwinNormal unrelatedOwned}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtOwnedStructTwinNormal(
             that, serializer);
-        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtSubStructTwinNormal(
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtOwnedStructTwinNormal(
             unrelatedBorrowed, serializer);
-        sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtSubStructTwinNormal(
+        sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtOwnedStructTwinNormal(
             unrelatedOwned, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 10, port: port_);
@@ -1739,8 +1739,8 @@ class LtOwnedStructTwinNormalImpl extends RustOpaque
   /// The unrelated arg should not affect results
   Future<
       LtTypeWithLifetimeTwinNormal> computeWithUnrelatedBorrowedArgTwinNormal(
-          {required LtSubStructTwinNormal unrelatedBorrowed,
-          required LtSubStructTwinNormal unrelatedOwned}) =>
+          {required LtOwnedStructTwinNormal unrelatedBorrowed,
+          required LtOwnedStructTwinNormal unrelatedOwned}) =>
       RustLib.instance.api
           .crateApiMinimalLtOwnedStructTwinNormalComputeWithUnrelatedBorrowedArgTwinNormal(
               that: this,

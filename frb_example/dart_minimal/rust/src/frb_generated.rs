@@ -178,8 +178,8 @@ fn wire__crate__api__minimal__Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_br
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_a = <RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<LtOwnedStructTwinNormal>>>::sse_decode(&mut deserializer);
 let api_b = <RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<LtOwnedStructTwinNormal>>>::sse_decode(&mut deserializer);
-let api_unrelated_borrowed = <RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<LtSubStructTwinNormal>>>::sse_decode(&mut deserializer);
-let api_unrelated_owned = <LtSubStructTwinNormal>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
+let api_unrelated_borrowed = <RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<LtOwnedStructTwinNormal>>>::sse_decode(&mut deserializer);
+let api_unrelated_owned = <LtOwnedStructTwinNormal>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
                         let api_a_illegal_static_ref = unsafe {
             flutter_rust_bridge::for_generated::ouroboros_change_lifetime(&api_a)
@@ -297,8 +297,8 @@ fn wire__crate__api__minimal__LtOwnedStructTwinNormal_compute_with_unrelated_bor
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_that = <RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<LtOwnedStructTwinNormal>>>::sse_decode(&mut deserializer);
-let api_unrelated_borrowed = <RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<LtSubStructTwinNormal>>>::sse_decode(&mut deserializer);
-let api_unrelated_owned = <LtSubStructTwinNormal>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
+let api_unrelated_borrowed = <RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<LtOwnedStructTwinNormal>>>::sse_decode(&mut deserializer);
+let api_unrelated_owned = <LtOwnedStructTwinNormal>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
                         let api_that_illegal_static_ref = unsafe {
             flutter_rust_bridge::for_generated::ouroboros_change_lifetime(&api_that)
