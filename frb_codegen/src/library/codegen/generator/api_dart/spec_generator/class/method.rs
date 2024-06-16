@@ -8,17 +8,13 @@ use crate::codegen::ir::mir::func::{
     MirFunc, MirFuncAccessorMode, MirFuncArgMode, MirFuncDefaultConstructorMode, MirFuncImplMode,
     MirFuncImplModeDartOnly, MirFuncOwnerInfo, MirFuncOwnerInfoMethod, MirFuncOwnerInfoMethodMode,
 };
-use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::if_then_some;
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use crate::utils::basic_code::dart_header_code::DartHeaderCode;
-use crate::utils::namespace::NamespacedName;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
-use lazy_static::lazy_static;
-use regex::Regex;
 
 #[derive(Debug, Clone)]
 pub(crate) struct GenerateApiMethodConfig {
