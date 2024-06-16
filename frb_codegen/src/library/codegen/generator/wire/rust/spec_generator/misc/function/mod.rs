@@ -188,12 +188,14 @@ fn generate_code_closure(
         .to_string()
         .to_case(Case::Snake);
 
+    let code_inner = format!("{code_inner_decode} {code_call_inner_func_result}");
+
     match func.mode {
         MirFuncMode::Sync => {
             format!(
                 "{code_decode}
                 transform_result_{codec}((move || {{
-                    {code_inner_decode} {code_call_inner_func_result}
+                    {code_inner}
                 }})())"
             )
         }
@@ -203,7 +205,7 @@ fn generate_code_closure(
             format!(
                 "{code_decode} move |context| {maybe_async_move} {{
                     transform_result_{codec}((move || {maybe_async_move} {{
-                        {code_inner_decode} {code_call_inner_func_result}
+                        {code_inner}
                     }})(){maybe_await})
                 }}"
             )
