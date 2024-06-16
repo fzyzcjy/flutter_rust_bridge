@@ -97,8 +97,8 @@ Future<void> main() async {
           value: 'a', logger: simpleLogger);
       final typeWithLifetime =
           await ownedStruct.computeTypeWithLifetimeTwinNormal();
-      final nestedTypeWithLifetime = await typeWithLifetime
-          .computeNestedTypeWithLifetimeTwinNormal(arg: ownedStruct);
+      final nestedTypeWithLifetime =
+          await typeWithLifetime.computeNestedTypeWithLifetimeTwinNormal();
 
       ownedStruct.dispose();
       expect(simpleLogger.getAndReset(), <String>[
