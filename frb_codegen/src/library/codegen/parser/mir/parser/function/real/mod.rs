@@ -171,9 +171,14 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
         let context = create_context(Some(owner.clone()));
         let mut info = FunctionPartialInfo::default();
-        for sig_input in func.item_fn.sig().inputs.iter() {
-            info =
-                info.merge(self.parse_fn_arg(sig_input, &owner, &context, is_owner_trait_def)?)?;
+        for (i, sig_input) in func.item_fn.sig().inputs.iter().enumerate() {
+            info = info.merge(self.parse_fn_arg(
+                sig_input,
+                &owner,
+                &context,
+                is_owner_trait_def,
+                needs_extend_lifetime[i],
+            )?)?;
         }
         info =
             info.merge(self.parse_fn_output(func.item_fn.sig(), &owner, &context, &attributes)?)?;

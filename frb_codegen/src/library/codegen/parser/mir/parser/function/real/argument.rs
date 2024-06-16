@@ -24,6 +24,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         owner: &MirFuncOwnerInfo,
         context: &TypeParserParsingContext,
         is_owner_trait_def: bool,
+        needs_extend_lifetime: bool,
     ) -> anyhow::Result<FunctionPartialInfo> {
         let (ty_syn_raw, name) = match sig_input {
             FnArg::Typed(ref pat_type) => {
@@ -79,7 +80,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                     settings: MirFieldSettings::default(),
                 },
                 ownership_mode,
-                needs_extend_lifetime: TODO,
+                needs_extend_lifetime,
             }],
             ..Default::default()
         })
