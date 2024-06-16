@@ -117,7 +117,7 @@ fn parse_type_rust_auto_opaque_common_raw(
     Ok((
         MirRustAutoOpaqueRaw {
             string_with_original_lifetime,
-            string_with_replaced_lifetime: string_with_replaced_lifetime.clone(),
+            string_with_replaced_lifetime,
             segments: raw_segments,
         },
         MirTypeRustOpaque {
@@ -125,7 +125,7 @@ fn parse_type_rust_auto_opaque_common_raw(
             // TODO when all usages of a type do not require `&mut`, can drop this Mutex
             // TODO similarly, can use std instead of `tokio`'s lock
             inner: MirRustOpaqueInner(format!(
-                "flutter_rust_bridge::for_generated::RustAutoOpaqueInner<{string_with_replaced_lifetime}>"
+                "flutter_rust_bridge::for_generated::RustAutoOpaqueInner<{inner_str}>"
             )),
             codec,
             dart_api_type,
