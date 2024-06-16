@@ -56,5 +56,6 @@ pub mod structure;
 pub mod tuple;
 pub mod type_alias;
 pub mod uuid_type;
+mod lifetimeable;
 
 pub fn function_at_api_mod_rs() {}
