@@ -20,7 +20,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         let ty_str = &original.raw.string.with_original_lifetime();
         let ty: Type = syn::parse_str(ty_str)?;
 
-        let lifetimes = LifetimeExtractor::extract_skipping_static(&ty);
+        let lifetimes = LifetimeExtractor::extract_skipping_static_and_anonymous(&ty);
         if lifetimes.is_empty() {
             return Ok(MirType::RustAutoOpaqueImplicit(original));
         }

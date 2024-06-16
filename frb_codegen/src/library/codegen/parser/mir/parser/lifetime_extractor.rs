@@ -5,10 +5,10 @@ use syn::{GenericArgument, Type};
 pub(crate) struct LifetimeExtractor;
 
 impl LifetimeExtractor {
-    pub(crate) fn extract_skipping_static(ty: &Type) -> Vec<Lifetime> {
+    pub(crate) fn extract_skipping_static_and_anonymous(ty: &Type) -> Vec<Lifetime> {
         // log::debug!("extract_skipping_static ans={ans:?} ty={ty:?}");
         (Self::extract(ty).into_iter())
-            .filter(|lifetime| lifetime.0 != LIFETIME_STATIC)
+            .filter(|lifetime| lifetime.0 != LIFETIME_STATIC && lifetime.0 != LIFETIME_ANONYMOUS)
             .collect_vec()
     }
 
@@ -38,6 +38,7 @@ impl LifetimeExtractor {
 }
 
 pub(crate) const LIFETIME_STATIC: &str = "static";
+pub(crate) const LIFETIME_ANONYMOUS: &str = "_";
 
 // TODO maybe move
 #[derive(Debug, Clone, PartialEq, Eq, Hash)]

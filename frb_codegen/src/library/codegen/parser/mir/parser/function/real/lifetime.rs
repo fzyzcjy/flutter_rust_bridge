@@ -12,13 +12,13 @@ pub(crate) fn parse_function_lifetime(
 ) -> anyhow::Result<ParseFunctionLifetimeOutput> {
     let inputs_lifetimes = (sig.inputs.iter())
         .map(|x| {
-            Ok(LifetimeExtractor::extract_skipping_static(
+            Ok(LifetimeExtractor::extract_skipping_static_and_anonymous(
                 &parse_argument_ty_and_name(x, owner)?.0,
             ))
         })
         .collect::<anyhow::Result<Vec<_>>>()?;
     let output_lifetimes = match &sig.output {
-        ReturnType::Type(_, ty) => LifetimeExtractor::extract_skipping_static(ty),
+        ReturnType::Type(_, ty) => LifetimeExtractor::extract_skipping_static_and_anonymous(ty),
         ReturnType::Default => vec![],
     };
 
