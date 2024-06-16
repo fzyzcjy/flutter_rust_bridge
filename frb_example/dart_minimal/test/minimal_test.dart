@@ -82,18 +82,22 @@ Future<void> main() async {
       expect(await typeWithLifetime.greetBorrowMutSelfTwinNormal(), 'a');
     });
 
-    test('computeSubStructTwinNormal', () async {
+    test('computeWithUnrelatedBorrowedArgTwinNormal', () async {
       final ownedStruct = await LtOwnedStructTwinNormal.create(value: 'a');
-      final subStruct = await ownedStruct.computeSubStructTwinNormal();
+      final typeWithLifetime =
+          await ownedStruct.computeWithUnrelatedBorrowedArgTwinNormal(
+        unrelatedBorrowed: await LtOwnedStructTwinNormal.create(value: 'hi'),
+        unrelatedOwned: await LtOwnedStructTwinNormal.create(value: 'hi'),
+      );
 
-      expect(await subStruct.greetBorrowSelfTwinNormal(), 'a');
-      expect(await subStruct.greetBorrowMutSelfTwinNormal(), 'a');
+      expect(await typeWithLifetime.greetBorrowSelfTwinNormal(), 'a');
+      expect(await typeWithLifetime.greetBorrowMutSelfTwinNormal(), 'a');
 
       ownedStruct.dispose();
 
       // can still call
-      expect(await subStruct.greetBorrowSelfTwinNormal(), 'a');
-      expect(await subStruct.greetBorrowMutSelfTwinNormal(), 'a');
+      expect(await typeWithLifetime.greetBorrowSelfTwinNormal(), 'a');
+      expect(await typeWithLifetime.greetBorrowMutSelfTwinNormal(), 'a');
     });
   });
 }
