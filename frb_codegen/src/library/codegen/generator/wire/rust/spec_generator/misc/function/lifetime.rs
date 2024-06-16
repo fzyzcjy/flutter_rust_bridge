@@ -29,7 +29,7 @@ pub(super) fn generate_code_inner_decode(func: &MirFunc, inner: &str) -> String 
         })
         .join("");
 
-    format!("{object_static_ref}{inner}")
+    format!("{object_static_ref}{inner}{guard_static_ref}")
 }
 
 pub(super) fn generate_illegal_static_reference(var_name: &str) -> String {
