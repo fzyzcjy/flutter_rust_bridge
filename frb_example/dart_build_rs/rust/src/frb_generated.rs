@@ -65,10 +65,11 @@ fn wire__crate__api__minimal__init_app_impl(
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
             move |context| {
-                transform_result_sse((move || {
-                    Result::<_, ()>::Ok({
+                transform_result_sse::<_, ()>((move || {
+                    let output_ok = Result::<_, ()>::Ok({
                         crate::api::minimal::init_app();
-                    })
+                    })?;
+                    Ok(output_ok)
                 })())
             }
         },
@@ -100,8 +101,10 @@ fn wire__crate__api__minimal__minimal_adder_impl(
             let api_b = <i32>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| {
-                transform_result_sse((move || {
-                    Result::<_, ()>::Ok(crate::api::minimal::minimal_adder(api_a, api_b))
+                transform_result_sse::<_, ()>((move || {
+                    let output_ok =
+                        Result::<_, ()>::Ok(crate::api::minimal::minimal_adder(api_a, api_b))?;
+                    Ok(output_ok)
                 })())
             }
         },

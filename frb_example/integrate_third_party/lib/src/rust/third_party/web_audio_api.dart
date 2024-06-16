@@ -5,11 +5,12 @@
 
 import '../api/override_web_audio_api.dart';
 import '../frb_generated.dart';
+import '../web_audio_api.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'web_audio_api/node.dart';
 import 'web_audio_api/worklet.dart';
 
-// These types are ignored because they are not used by any `pub` functions: `AtomicF32`, `AtomicF64`, `ErrorEvent`, `MediaElement`, `MessagePort`
+// These types are ignored because they are not used by any `pub` functions: `AtomicF32`, `AtomicF64`, `ErrorEvent`, `MediaElement`
 // These functions are ignored (category: IgnoreBecauseOwnerTyShouldIgnore): `load`, `load`, `new`, `new`, `store`, `store`
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioBuffer>>
@@ -317,6 +318,15 @@ abstract class OfflineAudioCompletionEvent implements RustOpaqueInterface {
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<PeriodicWave>>
 abstract class PeriodicWave implements RustOpaqueInterface {}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<crate :: param :: AudioParam>>
+abstract class CrateParamAudioParam implements RustOpaqueInterface {}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<flutter_rust_bridge :: for_generated :: Lifetimeable < MessagePort < 'static > >>>
+abstract class MessagePort implements RustOpaqueInterface {
+  /// Unset the callback to run when a message arrives on the channel.
+  Future<void> clearOnmessage();
+}
 
 /// Options for constructing an [`AudioBuffer`]
 class AudioBufferOptions {

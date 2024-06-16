@@ -1735,6 +1735,68 @@ abstract class WaveShaperNode
   Future<void> setOversample({required OverSampleType oversample});
 }
 
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<node :: AnalyserNode>>
+abstract class NodeAnalyserNode implements RustOpaqueInterface {}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<node :: AudioBufferSourceNode>>
+abstract class NodeAudioBufferSourceNode implements RustOpaqueInterface {}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<node :: AudioDestinationNode>>
+abstract class NodeAudioDestinationNode implements RustOpaqueInterface {}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<node :: BiquadFilterNode>>
+abstract class NodeBiquadFilterNode implements RustOpaqueInterface {}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<node :: ChannelMergerNode>>
+abstract class NodeChannelMergerNode implements RustOpaqueInterface {}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<node :: ChannelSplitterNode>>
+abstract class NodeChannelSplitterNode implements RustOpaqueInterface {}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<node :: ConstantSourceNode>>
+abstract class NodeConstantSourceNode implements RustOpaqueInterface {}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<node :: ConvolverNode>>
+abstract class NodeConvolverNode implements RustOpaqueInterface {}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<node :: DelayNode>>
+abstract class NodeDelayNode implements RustOpaqueInterface {}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<node :: DynamicsCompressorNode>>
+abstract class NodeDynamicsCompressorNode implements RustOpaqueInterface {}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<node :: GainNode>>
+abstract class NodeGainNode implements RustOpaqueInterface {}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<node :: IIRFilterNode>>
+abstract class NodeIirFilterNode implements RustOpaqueInterface {}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<node :: MediaStreamAudioDestinationNode>>
+abstract class NodeMediaStreamAudioDestinationNode
+    implements RustOpaqueInterface {}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<node :: MediaStreamAudioSourceNode>>
+abstract class NodeMediaStreamAudioSourceNode implements RustOpaqueInterface {}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<node :: MediaStreamTrackAudioSourceNode>>
+abstract class NodeMediaStreamTrackAudioSourceNode
+    implements RustOpaqueInterface {}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<node :: OscillatorNode>>
+abstract class NodeOscillatorNode implements RustOpaqueInterface {}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<node :: PannerNode>>
+abstract class NodePannerNode implements RustOpaqueInterface {}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<node :: ScriptProcessorNode>>
+abstract class NodeScriptProcessorNode implements RustOpaqueInterface {}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<node :: StereoPannerNode>>
+abstract class NodeStereoPannerNode implements RustOpaqueInterface {}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<node :: WaveShaperNode>>
+abstract class NodeWaveShaperNode implements RustOpaqueInterface {}
+
 abstract class AudioNode {
   /// Config for up/down-mixing of input channels for this node.
   ///
