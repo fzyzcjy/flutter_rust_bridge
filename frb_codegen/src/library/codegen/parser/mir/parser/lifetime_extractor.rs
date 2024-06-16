@@ -6,9 +6,11 @@ pub(crate) struct LifetimeExtractor;
 
 impl LifetimeExtractor {
     pub(crate) fn extract_skipping_static(ty: &Type) -> Vec<Lifetime> {
-        (Self::extract(ty).into_iter())
+        let ans = (Self::extract(ty).into_iter())
             .filter(|lifetime| lifetime.0 != LIFETIME_STATIC)
-            .collect_vec()
+            .collect_vec();
+        log::warn!("extract_skipping_static ans={ans:?} ty={ty:?}");
+        ans
     }
 
     fn extract(ty: &Type) -> Vec<Lifetime> {
