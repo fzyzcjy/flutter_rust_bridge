@@ -145,7 +145,7 @@ fn syntheize_receiver_type(
     }
     ty_str += &method.owner_ty_raw;
 
-    Ok(parse_str::<Type>(&ty_str)?)
+    Ok(parse_str::<Type>(&ty_str).with_context(|| format!("ty_str={ty_str}"))?)
 }
 
 fn split_ownership_from_ty_except_ref_mut(
