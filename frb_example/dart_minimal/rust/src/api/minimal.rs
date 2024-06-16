@@ -125,28 +125,28 @@ impl LtOwnedStructTwinNormal {
         LtTypeWithLifetimeTwinNormal { field: self }
     }
 
-    /// `fn f(x: &'a T) -> &'a S`
-    pub fn compute_sub_struct_twin_normal<'a>(&'a self) -> &'a LtSubStructTwinNormal {
-        &self.sub
-    }
+    // /// `fn f(x: &'a T) -> &'a S`
+    // pub fn compute_sub_struct_twin_normal<'a>(&'a self) -> &'a LtSubStructTwinNormal {
+    //     &self.sub
+    // }
 
     /// The unrelated arg should not affect results
     pub fn compute_with_unrelated_borrowed_arg_twin_normal<'a>(
         &'a self,
         unrelated_borrowed: &LtSubStructTwinNormal,
         unrelated_owned: LtSubStructTwinNormal,
-    ) -> &'a LtSubStructTwinNormal {
+    ) -> LtTypeWithLifetimeTwinNormal<'a> {
         assert_eq!(&unrelated_borrowed.value, "hi");
         assert_eq!(&unrelated_owned.value, "hi");
-        &self.sub
+        LtTypeWithLifetimeTwinNormal { field: self }
     }
 }
 
 /// Functions (other tests are mainly methods)
 pub fn lt_compute_with_lifetime_function_twin_normal<'a>(
-    a: &'a LtOwnedStructTwinNormal,
-) -> &'a LtSubStructTwinNormal {
-    &a.sub
+    arg: &'a LtOwnedStructTwinNormal,
+) -> LtTypeWithLifetimeTwinNormal<'a> {
+    LtTypeWithLifetimeTwinNormal { field: arg }
 }
 
 impl LtSubStructTwinNormal {
