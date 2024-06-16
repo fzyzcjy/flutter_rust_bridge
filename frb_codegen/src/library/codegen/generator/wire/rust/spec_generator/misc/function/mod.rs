@@ -75,8 +75,10 @@ fn generate_inner_func_args(func: &MirFunc) -> Vec<String> {
     (func.inputs.iter())
         .map(|field| {
             let ownership = lockable::generate_inner_func_arg_ownership(field);
-            let inner = format!("{ownership}api_{name}", name = field.inner.name.rust_style());
-            lockable::generate_inner_func_arg(&inner, field)
+            let ans = format!("{ownership}api_{name}", name = field.inner.name.rust_style());
+            let ans = lockable::generate_inner_func_arg(&ans, field);
+            let ans = lifetime::generate_inner_func_arg(&ans, field);
+            ans
         })
         .collect_vec()
 }

@@ -3,7 +3,7 @@ use itertools::Itertools;
 
 pub(super) fn generate_code_inner_decode(func: &MirFunc, inner: &str) -> String {
     let interest_inputs = (func.inputs.iter())
-        .filter(|field| field.needs_extend_lifetime)
+        .filter(|field| is_interest_field(field))
         .collect_vec();
 
     let object_static_ref = (interest_inputs.iter())
@@ -40,6 +40,18 @@ pub(super) fn generate_illegal_static_reference(var_name: &str) -> String {
     )
 }
 
+fn is_interest_field(field: &MirFuncInput) -> bool {
+    field.needs_extend_lifetime
+}
+
 fn get_variable_name(field: &MirFuncInput) -> String {
     field.inner.name.rust_style()
+}
+
+pub(crate) fn generate_inner_func_arg(raw: &str, field: &MirFuncInput) -> String {
+    if is_interest_field(field) {
+        format!("{raw}_illegal_static_ref")
+    } else {
+        raw.to_owned()
+    }
 }
