@@ -71,10 +71,11 @@ fn generate_decode_statement(
 ) -> String {
     let mode = ownership_mode.to_string().to_case(Case::Snake);
     format!(
-        "api_{name}_guard = Some(api_{name}.lockable_decode_{syncness}_{mode}(){maybe_await})",
+        "api_{name}_guard = Some(api_{name}{maybe_illegal_static_ref}.lockable_decode_{syncness}_{mode}(){maybe_await})",
         name = get_variable_name(field),
         syncness = if func.rust_async { "async" } else { "sync" },
         maybe_await = if func.rust_async { ".await" } else { "" },
+        maybe_illegal_static_ref = if field.needs_extend_lifetime { "_illegal_static_ref" } else { "" },
     )
 }
 
