@@ -134,4 +134,12 @@ impl LtTypeWithMultiOwnerTwinNormal<'_> {
         assert_eq!(&unrelated_owned.value, "hi");
         Self { fields: vec![a, b] }
     }
+
+    pub fn greet_borrow_self_twin_normal(&self) -> Vec<String> {
+        self.fields.iter().map(|x| x.sub.value.clone()).collect()
+    }
+
+    pub fn greet_borrow_mut_self_twin_normal(&mut self) -> Vec<String> {
+        self.fields.iter().map(|x| x.sub.value.clone()).collect()
+    }
 }
