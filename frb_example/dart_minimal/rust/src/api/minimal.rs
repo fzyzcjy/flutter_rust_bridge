@@ -1,5 +1,6 @@
 #![allow(clippy::needless_lifetimes)]
 
+use flutter_rust_bridge::for_generated::lazy_static;
 use flutter_rust_bridge::frb;
 use std::sync::Mutex;
 
@@ -23,14 +24,22 @@ impl SimpleLogger {
         self.0.lock().unwrap().push(message);
     }
 
-    pub(crate) fn all(&self) -> Vec<String> {
-        self.0.lock().unwrap().clone()
+    pub(crate) fn get_and_reset(&self) -> Vec<String> {
+        self.0.lock().unwrap().drain(..).collect()
     }
 }
 
 // -------------------------------------------------------------------------------------------------
 
+lazy_static! {
+    static ref LOGGER: SimpleLogger = SimpleLogger::new();
+}
+
 /// Lt := Lifetime Testers
+pub fn lt_get_and_reset_logs_twin_normal() -> Vec<String> {
+    LOGGER.get_and_reset()
+}
+
 /// Try *NOT* to impl Clone for these types in order to ensure there are no extra clones
 #[frb(opaque)]
 #[derive(Debug)]
