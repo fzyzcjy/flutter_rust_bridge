@@ -171,13 +171,13 @@ impl LtTypeWithLifetimeTwinNormal<'_> {
     }
 
     /// Input lifetimeable and output another lifetimeable
-    pub fn compute_double_type_with_lifetime_twin_normal<'a>(
+    pub fn compute_nested_type_with_lifetime_twin_normal<'a>(
         &'a self,
     ) -> LtNestedTypeWithLifetimeTwinNormal<'a> {
         LtNestedTypeWithLifetimeTwinNormal { field: self }
     }
 
-    /// Input argument has type `T<'a>` (other tests mainly are `&'a T`
+    /// Input argument has type `T<'a>` (other tests mainly are `&'a T`)
     pub fn compute_arg_generic_lifetime_twin_normal<'a>(
         arg: LtTypeWithLifetimeTwinNormal<'a>,
     ) -> LtTypeWithLifetimeTwinNormal<'a> {

@@ -90,6 +90,27 @@ Future<void> main() async {
           await ltComputeWithLifetimeFunctionTwinNormal(arg: ownedStruct);
       await _testOwnedStructAndTypeWithLifetime(ownedStruct, typeWithLifetime);
     });
+
+    test('computeNestedTypeWithLifetimeTwinNormal', () async {
+      final ownedStruct = await LtOwnedStructTwinNormal.create(value: 'a');
+      final typeWithLifetime =
+          await ownedStruct.computeTypeWithLifetimeTwinNormal(arg: ownedStruct);
+      final nestedTypeWithLifetime = await typeWithLifetime
+          .computeNestedTypeWithLifetimeTwinNormal(arg: ownedStruct);
+
+      expect(await typeWithLifetime.greetBorrowSelfTwinNormal(), 'a');
+      expect(await typeWithLifetime.greetBorrowMutSelfTwinNormal(), 'a');
+
+      expect(await nestedTypeWithLifetime.greetBorrowSelfTwinNormal(), 'a');
+      expect(await nestedTypeWithLifetime.greetBorrowMutSelfTwinNormal(), 'a');
+
+      ownedStruct.dispose();
+      typeWithLifetime.dispose();
+
+      // can still call
+      expect(await nestedTypeWithLifetime.greetBorrowSelfTwinNormal(), 'a');
+      expect(await nestedTypeWithLifetime.greetBorrowMutSelfTwinNormal(), 'a');
+    });
   });
 }
 
