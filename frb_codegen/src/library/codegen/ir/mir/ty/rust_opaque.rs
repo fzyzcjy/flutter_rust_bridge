@@ -16,6 +16,7 @@ pub struct MirTypeRustOpaque {
     pub namespace: Namespace,
     pub inner: MirRustOpaqueInner,
     pub codec: RustOpaqueCodecMode,
+    pub dart_api_type: Option<String>,
     pub brief_name: bool,
 }
 
