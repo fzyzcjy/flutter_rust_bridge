@@ -1,4 +1,5 @@
 pub(crate) mod lockable;
+pub(crate) mod lifetime;
 
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::target::TargetOrCommon;
