@@ -24,7 +24,6 @@ use crate::utils::basic_code::general_code::GeneralDartCode;
 use crate::utils::namespace::Namespace;
 use std::collections::HashMap;
 use syn::Type;
-use syn::__private::str;
 
 pub(crate) mod array;
 pub(crate) mod concrete;
@@ -33,6 +32,8 @@ mod dart_fn;
 mod enum_or_struct;
 pub(crate) mod enumeration;
 pub(crate) mod external_impl;
+pub(crate) mod generics;
+pub(crate) mod lifetimeable;
 pub(crate) mod misc;
 pub(crate) mod optional;
 pub(crate) mod path;
@@ -146,9 +147,13 @@ pub(crate) struct TypeParserParsingContext {
     pub(crate) initiated_namespace: Namespace,
     pub(crate) func_attributes: FrbAttributes,
     pub(crate) struct_or_enum_attributes: Option<FrbAttributes>,
+    // TODO if still not used later, rm it
+    #[allow(dead_code)]
+    pub(crate) rust_output_path_namespace: Namespace,
     pub(crate) default_stream_sink_codec: CodecMode,
     pub(crate) default_rust_opaque_codec: RustOpaqueCodecMode,
     pub(crate) owner: Option<MirFuncOwnerInfo>,
+    pub(crate) enable_lifetime: bool,
     pub(crate) parse_mode: ParseMode,
 }
 

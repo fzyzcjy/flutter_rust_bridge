@@ -7,14 +7,16 @@ use crate::codegen::parser::mir::parser::attribute::{FrbAttributeSerDes, FrbAttr
 use crate::codegen::parser::mir::parser::ty::{TypeParser, TypeParserParsingContext};
 use crate::codegen::parser::mir::ParseMode;
 use crate::if_then_some;
-use crate::utils::namespace::NamespacedName;
+use crate::utils::namespace::{Namespace, NamespacedName};
 use anyhow::ensure;
 use itertools::Itertools;
 use syn::{FnArg, ReturnType};
 
 pub(crate) struct PartialContext {
+    pub rust_output_path_namespace: Namespace,
     pub default_stream_sink_codec: CodecMode,
     pub default_rust_opaque_codec: RustOpaqueCodecMode,
+    pub enable_lifetime: bool,
     pub parse_mode: ParseMode,
 }
 
@@ -85,8 +87,10 @@ fn parse_function_inner(
         func_attributes: FrbAttributes::parse(&[])?,
         struct_or_enum_attributes: None,
         owner: None,
+        rust_output_path_namespace: partial_context.rust_output_path_namespace.clone(),
         default_stream_sink_codec: partial_context.default_stream_sink_codec,
         default_rust_opaque_codec: partial_context.default_rust_opaque_codec,
+        enable_lifetime: partial_context.enable_lifetime,
         parse_mode: partial_context.parse_mode,
     };
 

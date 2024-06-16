@@ -36,6 +36,7 @@ pub(super) fn parse_auto_accessor_of_field(
 
     let owner = MirFuncOwnerInfoMethod {
         owner_ty: ty_direct_parse.to_owned(),
+        owner_ty_raw: struct_name.name.to_owned(),
         actual_method_name: rust_method_name,
         actual_method_dart_name: Some(field.name.rust_style().to_owned()),
         mode: MirFuncOwnerInfoMethodMode::Instance,
@@ -52,14 +53,15 @@ pub(super) fn parse_auto_accessor_of_field(
         inputs.push(MirFuncInput {
             ownership_mode: None,
             inner: create_mir_field(field.ty.clone(), &field.name.rust_style()),
+            needs_extend_lifetime: false,
         });
     }
 
     let field_name_rust = field.name.rust_style();
     let rust_call_code = match accessor_mode {
-        MirFuncAccessorMode::Getter => format!("api_that.{field_name_rust}.clone()"),
+        MirFuncAccessorMode::Getter => format!("api_that_guard.{field_name_rust}.clone()"),
         MirFuncAccessorMode::Setter => {
-            format!("{{ api_that.{field_name_rust} = api_{field_name_rust}; }}")
+            format!("{{ api_that_guard.{field_name_rust} = api_{field_name_rust}; }}")
         }
     };
 
@@ -122,6 +124,7 @@ fn compute_self_arg(
     Ok(MirFuncInput {
         ownership_mode,
         inner: create_mir_field(ty_interest, "that"),
+        needs_extend_lifetime: false,
     })
 }
 

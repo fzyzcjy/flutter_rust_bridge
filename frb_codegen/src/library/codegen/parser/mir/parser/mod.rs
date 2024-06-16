@@ -1,6 +1,8 @@
 pub(crate) mod attribute;
 pub(crate) mod custom_ser_des;
 pub(crate) mod function;
+pub(crate) mod lifetime_extractor;
+pub(crate) mod lifetime_replacer;
 pub(crate) mod misc;
 pub(crate) mod trait_impl;
 pub(crate) mod ty;
@@ -27,8 +29,13 @@ pub(crate) fn parse(
     let trait_impls = trait_impl::parse(
         &hir_flat.trait_impls,
         &mut type_parser,
+        config
+            .rust_input_namespace_pack
+            .rust_output_path_namespace
+            .clone(),
         config.default_stream_sink_codec,
         config.default_rust_opaque_codec,
+        config.enable_lifetime,
         parse_mode,
     )?;
 
@@ -36,8 +43,13 @@ pub(crate) fn parse(
         &hir_flat.functions,
         &mut type_parser,
         &custom_ser_des::PartialContext {
+            rust_output_path_namespace: config
+                .rust_input_namespace_pack
+                .rust_output_path_namespace
+                .clone(),
             default_stream_sink_codec: config.default_stream_sink_codec,
             default_rust_opaque_codec: config.default_rust_opaque_codec,
+            enable_lifetime: config.enable_lifetime,
             parse_mode,
         },
     )?;

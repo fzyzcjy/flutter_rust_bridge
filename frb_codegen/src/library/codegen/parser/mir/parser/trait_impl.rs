@@ -9,22 +9,27 @@ use crate::codegen::parser::mir::parser::ty::{TypeParser, TypeParserParsingConte
 use crate::codegen::parser::mir::ParseMode;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use crate::utils::crate_name::CrateName;
+use crate::utils::namespace::Namespace;
 use itertools::Itertools;
 
 pub(crate) fn parse(
     hir_trait_impls: &[HirFlatTraitImpl],
     type_parser: &mut TypeParser,
+    rust_output_path_namespace: Namespace,
     default_stream_sink_codec: CodecMode,
     default_rust_opaque_codec: RustOpaqueCodecMode,
+    enable_lifetime: bool,
     parse_mode: ParseMode,
 ) -> anyhow::Result<Vec<MirTraitImpl>> {
     let context = TypeParserParsingContext {
         initiated_namespace: CrateName::self_crate().namespace(), // just a dummy value
         func_attributes: FrbAttributes::parse(&[])?,
         struct_or_enum_attributes: None,
+        rust_output_path_namespace,
         default_stream_sink_codec,
         default_rust_opaque_codec,
         owner: None,
+        enable_lifetime,
         parse_mode,
     };
 

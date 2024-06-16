@@ -1,6 +1,8 @@
+pub(crate) mod lifetime;
 pub(crate) mod lockable;
 
 use crate::codegen::generator::acc::Acc;
+use crate::codegen::generator::codec::structs::CodecMode;
 use crate::codegen::generator::misc::target::TargetOrCommon;
 use crate::codegen::generator::wire::misc::has_port_argument;
 use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGeneratorContext;
@@ -12,9 +14,12 @@ use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRust
 use crate::codegen::ir::mir::func::{MirFunc, MirFuncMode, MirFuncOwnerInfo};
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
 use crate::codegen::ir::mir::ty::MirType;
+use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use crate::misc::consts::HANDLER_NAME;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
+use lazy_static::lazy_static;
+use regex::Regex;
 use std::convert::TryInto;
 
 pub(crate) fn generate_wire_func(
@@ -29,6 +34,7 @@ pub(crate) fn generate_wire_func(
     let code_decode = dart2rust_codec.generate_func_call_decode(func, context);
     let code_inner_decode = generate_code_inner_decode(func);
     let code_call_inner_func_result = generate_code_call_inner_func_result(func, inner_func_args);
+    let code_postprocess_inner_output = generate_code_postprocess_inner_output(func);
     let handler_func_name = generate_handler_func_name(func);
     let return_type = generate_return_type(func);
     let code_closure = generate_code_closure(
@@ -36,6 +42,7 @@ pub(crate) fn generate_wire_func(
         &code_decode,
         &code_inner_decode,
         &code_call_inner_func_result,
+        &code_postprocess_inner_output,
     );
     let func_name = wire_func_name(func);
 
@@ -72,7 +79,13 @@ fn generate_inner_func_args(func: &MirFunc) -> Vec<String> {
     (func.inputs.iter())
         .map(|field| {
             let ownership = lockable::generate_inner_func_arg_ownership(field);
-            format!("{ownership}api_{}", field.inner.name.rust_style())
+            let ans = format!(
+                "{ownership}api_{name}",
+                name = field.inner.name.rust_style()
+            );
+            let ans = lockable::generate_inner_func_arg(&ans, field);
+
+            lifetime::generate_inner_func_arg(&ans, field)
         })
         .collect_vec()
 }
@@ -91,21 +104,29 @@ fn generate_wrap_info_obj(func: &MirFunc) -> String {
 }
 
 fn generate_code_inner_decode(func: &MirFunc) -> String {
-    lockable::generate_code_inner_decode(func)
+    lifetime::generate_code_inner_decode(func, &lockable::generate_code_inner_decode(func))
 }
 
 fn generate_code_call_inner_func_result(func: &MirFunc, inner_func_args: Vec<String>) -> String {
-    let mut ans = (func.rust_call_code.clone()).unwrap_or_else(|| match &func.owner {
-        MirFuncOwnerInfo::Function => {
-            format!("{}({})", func.name.rust_style(), inner_func_args.join(", "))
-        }
-        MirFuncOwnerInfo::Method(method) => {
-            format!(
-                r"{}::{}({})",
-                method.owner_ty_name().unwrap().rust_style(),
-                method.actual_method_name,
-                inner_func_args.join(", ")
-            )
+    let mut ans = (func.rust_call_code.clone()).unwrap_or_else(|| {
+        match &func.owner {
+            MirFuncOwnerInfo::Function => {
+                format!("{}({})", func.name.rust_style(), inner_func_args.join(", "))
+            }
+            MirFuncOwnerInfo::Method(method) => {
+                let owner_ty_name = method.owner_ty_name().unwrap().rust_style();
+                // For simplicity, remove all generics currently
+                lazy_static! {
+                    static ref REGEX: Regex = Regex::new(r#"<(.+)>"#).unwrap();
+                }
+                let stripped_name = REGEX.replace_all(&owner_ty_name, "").to_string();
+
+                format!(
+                    r"{stripped_name}::{}({})",
+                    method.actual_method_name,
+                    inner_func_args.join(", ")
+                )
+            }
         }
     });
 
@@ -123,7 +144,13 @@ fn generate_code_call_inner_func_result(func: &MirFunc, inner_func_args: Vec<Str
         ans = format!("Result::<_,()>::Ok({ans})");
     }
 
+    ans = format!("let output_ok = {ans}?;");
+
     ans
+}
+
+fn generate_code_postprocess_inner_output(func: &MirFunc) -> String {
+    lifetime::generate_code_postprocess_inner_output(func)
 }
 
 fn generate_handler_func_name(func: &MirFunc) -> String {
@@ -167,17 +194,34 @@ fn generate_code_closure(
     code_decode: &str,
     code_inner_decode: &str,
     code_call_inner_func_result: &str,
+    code_postprocess_inner_output: &str,
 ) -> String {
-    let codec = (func.codec_mode_pack.rust2dart.delegate_or_self())
-        .to_string()
-        .to_case(Case::Snake);
+    let codec_mode = func.codec_mode_pack.rust2dart.delegate_or_self();
+    let codec = (codec_mode).to_string().to_case(Case::Snake);
+
+    let code_inner = format!(
+        "{code_inner_decode} {code_call_inner_func_result} {code_postprocess_inner_output} Ok(output_ok)"
+    );
+
+    let err_type = (func.output.error.as_ref())
+        .map(|e| e.rust_api_type())
+        .unwrap_or("()".to_owned());
+
+    let transform_result_func = format!(
+        "transform_result_{codec}::<{generic_prefix}, {err_type}>",
+        generic_prefix = match codec_mode {
+            CodecMode::Dco => "_, _",
+            CodecMode::Sse => "_",
+            _ => unreachable!(),
+        }
+    );
 
     match func.mode {
         MirFuncMode::Sync => {
             format!(
                 "{code_decode}
-                transform_result_{codec}((move || {{
-                    {code_inner_decode} {code_call_inner_func_result}
+                {transform_result_func}((move || {{
+                    {code_inner}
                 }})())"
             )
         }
@@ -186,8 +230,8 @@ fn generate_code_closure(
             let maybe_await = if func.rust_async { ".await" } else { "" };
             format!(
                 "{code_decode} move |context| {maybe_async_move} {{
-                    transform_result_{codec}((move || {maybe_async_move} {{
-                        {code_inner_decode} {code_call_inner_func_result}
+                    {transform_result_func}((move || {maybe_async_move} {{
+                        {code_inner}
                     }})(){maybe_await})
                 }}"
             )

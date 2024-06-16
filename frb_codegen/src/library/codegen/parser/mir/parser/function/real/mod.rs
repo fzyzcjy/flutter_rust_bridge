@@ -17,7 +17,9 @@ use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
 use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
 use crate::codegen::parser::mir::parser::function::func_or_skip::MirFuncOrSkip;
+use crate::codegen::parser::mir::parser::function::real::lifetime::parse_function_lifetime;
 use crate::codegen::parser::mir::parser::function::real::owner::OwnerInfoOrSkip;
+use crate::codegen::parser::mir::parser::ty::generics::should_ignore_because_generics;
 use crate::codegen::parser::mir::parser::ty::misc::parse_comments;
 use crate::codegen::parser::mir::parser::ty::{TypeParser, TypeParserParsingContext};
 use crate::codegen::parser::mir::ParseMode;
@@ -31,6 +33,7 @@ use MirSkipReason::IgnoreBecauseFunctionNotPub;
 use MirType::Primitive;
 
 pub(crate) mod argument;
+pub(super) mod lifetime;
 pub(crate) mod output;
 mod owner;
 mod transformer;
@@ -47,8 +50,13 @@ pub(crate) fn parse(
             function_parser.parse_function(
                 f,
                 &config.force_codec_mode_pack,
+                config
+                    .rust_input_namespace_pack
+                    .rust_output_path_namespace
+                    .clone(),
                 config.default_stream_sink_codec,
                 config.default_rust_opaque_codec,
+                config.enable_lifetime,
                 parse_mode,
                 config.stop_on_error,
             )
@@ -70,16 +78,20 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         &mut self,
         func: &HirFlatFunction,
         force_codec_mode_pack: &Option<CodecModePack>,
+        rust_output_path_namespace: Namespace,
         default_stream_sink_codec: CodecMode,
         default_rust_opaque_codec: RustOpaqueCodecMode,
+        enable_lifetime: bool,
         parse_mode: ParseMode,
         stop_on_error: bool,
     ) -> anyhow::Result<MirFuncOrSkip> {
         match self.parse_function_inner(
             func,
             force_codec_mode_pack,
+            rust_output_path_namespace,
             default_stream_sink_codec,
             default_rust_opaque_codec,
+            enable_lifetime,
             parse_mode,
         ) {
             Ok(output) => Ok(output),
@@ -109,8 +121,10 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         &mut self,
         func: &HirFlatFunction,
         force_codec_mode_pack: &Option<CodecModePack>,
+        rust_output_path_namespace: Namespace,
         default_stream_sink_codec: CodecMode,
         default_rust_opaque_codec: RustOpaqueCodecMode,
+        enable_lifetime: bool,
         parse_mode: ParseMode,
     ) -> anyhow::Result<MirFuncOrSkip> {
         debug!("parse_function function name: {:?}", func.item_fn.name());
@@ -118,7 +132,9 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         if func.is_public() == Some(false) {
             return Ok(create_output_skip(func, IgnoreBecauseFunctionNotPub));
         }
-        if !func.item_fn.sig().generics.params.is_empty() {
+
+        // If enable lifetime, the lifetime "generics" should be acceptable (though other generics still not)
+        if should_ignore_because_generics(&func.item_fn.sig().generics, enable_lifetime) {
             return Ok(create_output_skip(func, IgnoreBecauseFunctionGeneric));
         }
 
@@ -134,9 +150,11 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             initiated_namespace: func.namespace.clone(),
             func_attributes: attributes.clone(),
             struct_or_enum_attributes: None,
+            rust_output_path_namespace: rust_output_path_namespace.clone(),
             default_stream_sink_codec,
             default_rust_opaque_codec,
             owner,
+            enable_lifetime,
             parse_mode,
         };
 
@@ -153,11 +171,18 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             return Ok(create_output_skip(func, IgnoreBecauseExplicitAttribute));
         }
 
+        let lifetime_info = parse_function_lifetime(func.item_fn.sig(), &owner)?;
+
         let context = create_context(Some(owner.clone()));
         let mut info = FunctionPartialInfo::default();
-        for sig_input in func.item_fn.sig().inputs.iter() {
-            info =
-                info.merge(self.parse_fn_arg(sig_input, &owner, &context, is_owner_trait_def)?)?;
+        for (i, sig_input) in func.item_fn.sig().inputs.iter().enumerate() {
+            info = info.merge(self.parse_fn_arg(
+                sig_input,
+                &owner,
+                &context,
+                is_owner_trait_def,
+                lifetime_info.needs_extend_lifetime_per_arg[i],
+            )?)?;
         }
         info =
             info.merge(self.parse_fn_output(func.item_fn.sig(), &owner, &context, &attributes)?)?;
@@ -301,6 +326,9 @@ pub(crate) fn is_struct_or_enum_or_opaque_from_them(ty: &MirType) -> bool {
         | MirType::Delegate(MirTypeDelegate::PrimitiveEnum(_)) => true,
         MirType::RustAutoOpaqueImplicit(ty) => {
             ty.reason == Some(MirTypeRustAutoOpaqueImplicitReason::StructOrEnumRequireOpaque)
+        }
+        MirType::Delegate(MirTypeDelegate::Lifetimeable(ty)) => {
+            is_struct_or_enum_or_opaque_from_them(&ty.api_type)
         }
         _ => false,
     }

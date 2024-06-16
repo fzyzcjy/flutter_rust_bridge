@@ -18,6 +18,7 @@ pub(crate) mod ffi_binding;
 pub mod for_generated;
 pub(crate) mod generalized_arc;
 pub(crate) mod internal_generated;
+pub(crate) mod lifetimeable;
 pub(crate) mod lockable;
 #[doc(hidden)] // only to be used as `for_generated::rust_async`
 pub mod rust_async;

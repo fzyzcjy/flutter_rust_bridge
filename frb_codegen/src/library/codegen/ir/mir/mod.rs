@@ -6,6 +6,7 @@ pub(crate) mod field;
 pub(crate) mod func;
 pub(crate) mod ident;
 pub(crate) mod import;
+pub(crate) mod llfetime_aware_type;
 pub(crate) mod pack;
 pub(crate) mod skip;
 pub(crate) mod trait_impl;

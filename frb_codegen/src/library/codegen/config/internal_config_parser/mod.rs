@@ -110,6 +110,7 @@ impl InternalConfig {
                     default_stream_sink_codec,
                     default_rust_opaque_codec,
                     stop_on_error,
+                    enable_lifetime: config.enable_lifetime.unwrap_or_default(),
                 },
             },
             generator,

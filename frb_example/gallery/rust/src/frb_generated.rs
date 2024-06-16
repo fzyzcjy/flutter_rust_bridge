@@ -69,15 +69,16 @@ fn wire__crate__api__mandelbrot__draw_mandelbrot_impl(
             let api_num_threads = <i32>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| async move {
-                transform_result_sse(
+                transform_result_sse::<_, flutter_rust_bridge::for_generated::anyhow::Error>(
                     (move || async move {
-                        crate::api::mandelbrot::draw_mandelbrot(
+                        let output_ok = crate::api::mandelbrot::draw_mandelbrot(
                             api_image_size,
                             api_zoom_point,
                             api_scale,
                             api_num_threads,
                         )
-                        .await
+                        .await?;
+                        Ok(output_ok)
                     })()
                     .await,
                 )

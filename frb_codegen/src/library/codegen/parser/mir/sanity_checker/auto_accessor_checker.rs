@@ -33,6 +33,7 @@ pub(crate) struct SanityCheckHint {
 
 #[cfg(test)]
 mod tests {
+    use crate::codegen::ir::mir::llfetime_aware_type::MirLifetimeAwareType;
     use crate::codegen::ir::mir::ty::boxed::MirTypeBoxed;
     use crate::codegen::ir::mir::ty::dart_opaque::MirTypeDartOpaque;
     use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
@@ -56,8 +57,9 @@ mod tests {
 
         assert!(MirType::RustOpaque(MirTypeRustOpaque {
             namespace: Namespace::new_raw("".to_owned()),
-            inner: MirRustOpaqueInner("".to_owned()),
+            inner: MirRustOpaqueInner(MirLifetimeAwareType::new("".to_owned())),
             codec: RustOpaqueCodecMode::Nom,
+            dart_api_type: None,
             brief_name: true,
         })
         .cloned_getter_semantics_reasonable());

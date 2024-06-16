@@ -29,6 +29,10 @@ pub use crate::handler::handler::{TaskContext, TaskRetFutTrait};
 pub use crate::handler::implementation::error_listener::NoOpErrorListener;
 pub use crate::handler::implementation::executor::SimpleExecutor;
 pub use crate::handler::implementation::handler::SimpleHandler;
+pub use crate::lifetimeable::lifetime_changer::{
+    ouroboros_change_lifetime, ouroboros_change_lifetime_mut,
+};
+pub use crate::lifetimeable::Lifetimeable;
 #[cfg(feature = "rust-async")]
 pub use crate::lockable::{
     base::Lockable, order::LockableOrder, order_computer::lockable_compute_decode_order,

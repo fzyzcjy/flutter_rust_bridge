@@ -37,7 +37,7 @@ impl<'a> WireRustGeneratorMiscTrait for RustOpaqueWireRustGenerator<'a> {
                         &format!(
                             "{}::<{}>::{op}_strong_count(ptr as _);",
                             self.mir.codec.arc_ty(),
-                            &self.mir.inner.0,
+                            &self.mir.inner.0.with_static_lifetime(),
                         ),
                         self.mir.codec.needs_unsafe_block(),
                     ),
@@ -51,7 +51,7 @@ impl<'a> WireRustGeneratorMiscTrait for RustOpaqueWireRustGenerator<'a> {
         let common = if self.mir.codec == RustOpaqueCodecMode::Moi {
             format!(
                 "flutter_rust_bridge::frb_generated_moi_arc_impl_value!({});\n",
-                self.mir.inner.0
+                self.mir.inner.0.with_static_lifetime()
             )
         } else {
             "".to_owned()

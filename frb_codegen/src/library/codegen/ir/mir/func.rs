@@ -38,6 +38,7 @@ pub struct MirFunc {
 pub struct MirFuncInput {
     pub ownership_mode: Option<OwnershipMode>,
     pub inner: MirField,
+    pub needs_extend_lifetime: bool,
 }
 
 pub struct MirFuncOutput {
@@ -74,6 +75,7 @@ pub enum MirFuncOwnerInfo {
 
 pub struct MirFuncOwnerInfoMethod {
     pub(crate) owner_ty: MirType,
+    pub(crate) owner_ty_raw: String,
     pub(crate) actual_method_name: String,
     pub(crate) actual_method_dart_name: Option<String>,
     pub(crate) mode: MirFuncOwnerInfoMethodMode,
@@ -205,6 +207,9 @@ pub(crate) fn compute_interest_name_of_owner_ty(owner_ty: &MirType) -> Option<Na
         })) => mir.ident.0.clone(),
         MirType::RustAutoOpaqueImplicit(ty) => {
             NamespacedName::new(ty.self_namespace().unwrap(), ty.rust_api_type())
+        }
+        MirType::Delegate(MirTypeDelegate::Lifetimeable(ty)) => {
+            return compute_interest_name_of_owner_ty(&ty.api_type)
         }
         MirType::TraitDef(ty) => ty.name.clone(),
         _ => return None,
