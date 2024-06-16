@@ -19,15 +19,18 @@ Future<void> main() async {
 
   // ----------------------------------------------------------------
 
-  test('empty', () async {
-    final ownedStruct = await LtOwnedStructTwinNormal.create(value: 'a');
-    expect(ltGetAndResetLogsTwinNormal(), <String>[]);
-    ownedStruct.dispose();
-    expect(ltGetAndResetLogsTwinNormal(),
-        <String>['LtOwnedStructTwinNormal.drop']);
-  });
+  setUp(ltGetAndResetLogsTwinNormal);
 
   group('when to dispose and the dispose order', () {
+    test('dispose ownedStruct', () async {
+      final ownedStruct = await LtOwnedStructTwinNormal.create(value: 'a');
+      expect(ltGetAndResetLogsTwinNormal(), <String>[]);
+
+      ownedStruct.dispose();
+      expect(ltGetAndResetLogsTwinNormal(),
+          <String>['LtOwnedStructTwinNormal.drop']);
+    });
+
     test('dispose ownedStruct - dispose typeWithLifetime', () async {
       final ownedStruct = await LtOwnedStructTwinNormal.create(value: 'a');
       final typeWithLifetime =
