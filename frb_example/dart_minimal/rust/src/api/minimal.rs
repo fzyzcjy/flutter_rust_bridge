@@ -15,19 +15,19 @@ pub fn minimal_adder(a: i32, b: i32) -> i32 {
 // Try *NOT* to impl Clone to ensure there are no extra clones
 #[frb(opaque)]
 #[derive(Debug)]
-pub struct LtOneTwinNormal {
+pub struct LtFooTwinNormal {
     value: String,
 }
 
 // Try *NOT* to impl Clone to ensure there are no extra clones
 #[frb(opaque)]
 #[derive(Debug)]
-pub struct LtTwoTwinNormal<'a> {
-    one: &'a LtOneTwinNormal,
+pub struct LtBorrowFooTwinNormal<'a> {
+    foo: &'a LtFooTwinNormal,
 }
 
-impl LtOneTwinNormal {
-    pub fn compute_two_twin_normal(&self) -> LtTwoTwinNormal {
-        LtTwoTwinNormal { one: self }
+impl LtFooTwinNormal {
+    pub fn compute_borrow_foo_twin_normal(&self) -> LtBorrowFooTwinNormal {
+        LtBorrowFooTwinNormal { foo: self }
     }
 }
