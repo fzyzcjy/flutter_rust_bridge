@@ -2,7 +2,6 @@ pub(crate) mod dependency;
 pub(crate) mod lifetime_changer;
 
 use crate::lifetimeable::dependency::LifetimeableDependency;
-use std::any::Any;
 use std::ops;
 
 pub struct Lifetimeable<T> {
