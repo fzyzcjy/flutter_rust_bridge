@@ -20,7 +20,7 @@ impl LifetimeExtractor {
                 .flat_map(Self::extract_generic_arguments)
                 .collect_vec(),
             Type::Reference(ty) => concat([
-                ty.lifetime.iter().collect(),
+                ty.lifetime.iter().map(|x| x.into()).collect(),
                 Self::extract(&*ty.elem),
             ]),
             _ => vec![],
@@ -30,7 +30,7 @@ impl LifetimeExtractor {
     fn extract_generic_arguments(args: &syn::AngleBracketedGenericArguments) -> Vec<Lifetime> {
         (args.args.iter())
             .flat_map(|arg| match arg {
-                GenericArgument::Lifetime(inner) => vec![Lifetime(inner.ident.to_string())],
+                GenericArgument::Lifetime(inner) => vec![inner.into()],
                 GenericArgument::Type(inner) => Self::extract(inner),
                 _ => vec![],
             })
@@ -43,3 +43,9 @@ pub(crate) const LIFETIME_STATIC: &str = "static";
 // TODO maybe move
 #[derive(Debug, Clone, PartialEq, Eq, Hash)]
 pub(crate) struct Lifetime(pub String);
+
+impl From<&syn::Lifetime> for Lifetime {
+    fn from(value: &syn::Lifetime) -> Self {
+        Self(value.ident.to_string())
+    }
+}
