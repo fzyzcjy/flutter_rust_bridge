@@ -9,7 +9,7 @@ impl LifetimeExtractor {
         let ans = (Self::extract(ty).into_iter())
             .filter(|lifetime| lifetime.0 != LIFETIME_STATIC)
             .collect_vec();
-        log::warn!("extract_skipping_static ans={ans:?} ty={ty:?}");
+        // log::debug!("extract_skipping_static ans={ans:?} ty={ty:?}");
         ans
     }
 
