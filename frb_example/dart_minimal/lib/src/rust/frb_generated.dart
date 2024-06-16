@@ -516,4 +516,9 @@ class LifetimeTesterTwoTwinNormalImpl extends RustOpaque
     rustArcDecrementStrongCountPtr: RustLib.instance.api
         .rust_arc_decrement_strong_count_LifetimeTesterTwoTwinNormalPtr,
   );
+
+  Future<String> greet() => RustLib.instance.api
+          .crateApiMinimalLifetimeableAutoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerLifetimeTesterTwoTwinNormalstaticGreet(
+        that: this,
+      );
 }
