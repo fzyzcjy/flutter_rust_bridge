@@ -79,6 +79,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                     settings: MirFieldSettings::default(),
                 },
                 ownership_mode,
+                needs_extend_lifetime: TODO,
             }],
             ..Default::default()
         })

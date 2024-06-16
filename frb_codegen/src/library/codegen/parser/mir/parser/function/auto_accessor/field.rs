@@ -53,6 +53,7 @@ pub(super) fn parse_auto_accessor_of_field(
         inputs.push(MirFuncInput {
             ownership_mode: None,
             inner: create_mir_field(field.ty.clone(), &field.name.rust_style()),
+            needs_extend_lifetime: false,
         });
     }
 
@@ -123,6 +124,7 @@ fn compute_self_arg(
     Ok(MirFuncInput {
         ownership_mode,
         inner: create_mir_field(ty_interest, "that"),
+        needs_extend_lifetime: false,
     })
 }
 
