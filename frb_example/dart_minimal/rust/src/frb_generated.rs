@@ -91,11 +91,11 @@ fn wire__crate__api__minimal__LifetimeTesterOneTwinNormal_compute_two_impl(
                             _ => unreachable!(),
                         }
                     }
-                    let api_that = &*api_that_guard.unwrap();
+                    let api_that_guard = api_that_guard.unwrap();
                     let api_that_guard = Arc::new(api_that_guard);
-                    let api_guard_that_illegal_static_ref = unsafe {
+                    let api_that_guard_illegal_static_ref = unsafe {
                         flutter_rust_bridge::for_generated::ouroboros_change_lifetime(
-                            &api_guard_that,
+                            &api_that_guard,
                         )
                     };
                     Result::<_, ()>::Ok(
@@ -153,7 +153,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
                 _ => unreachable!(),
             }
         }
-        let api_that = &*api_that_guard.unwrap();
+        let api_that_guard = api_that_guard.unwrap();
  Result::<_,()>::Ok(crate::api::minimal::LifetimeTesterTwoTwinNormal ::greet(&api_that))
                     })())
                 } })
