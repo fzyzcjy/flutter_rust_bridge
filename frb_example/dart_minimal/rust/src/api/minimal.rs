@@ -20,7 +20,7 @@ pub struct LifetimeTesterTwoTwinNormal<'a> {
 impl LifetimeTesterOneTwinNormal {
     #[frb(sync)]
     pub fn new() -> Self {
-        Self("hi".to_owned());
+        Self("hi".to_owned())
     }
 
     #[allow(clippy::needless_lifetimes)]
