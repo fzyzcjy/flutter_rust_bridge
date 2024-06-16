@@ -57,7 +57,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.0.0-dev.39';
 
   @override
-  int get rustContentHash => 2095221642;
+  int get rustContentHash => 1535573962;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -68,6 +68,51 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 }
 
 abstract class RustLibApi extends BaseApi {
+  Future<String>
+      crateApiMinimalLifetimeableAutoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerLtNestedTypeWithLifetimeTwinNormalstaticGreetBorrowMutSelfTwinNormal(
+          {required LtNestedTypeWithLifetimeTwinNormal that});
+
+  Future<String>
+      crateApiMinimalLifetimeableAutoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerLtNestedTypeWithLifetimeTwinNormalstaticGreetBorrowSelfTwinNormal(
+          {required LtNestedTypeWithLifetimeTwinNormal that});
+
+  Future<LtTypeWithLifetimeTwinNormal>
+      crateApiMinimalLifetimeableAutoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerLtTypeWithLifetimeTwinNormalstaticComputeArgGenericLifetimeTwinNormal(
+          {required LtTypeWithLifetimeTwinNormal arg});
+
+  Future<String>
+      crateApiMinimalLifetimeableAutoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerLtTypeWithLifetimeTwinNormalstaticGreetBorrowMutSelfTwinNormal(
+          {required LtTypeWithLifetimeTwinNormal that});
+
+  Future<String>
+      crateApiMinimalLifetimeableAutoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerLtTypeWithLifetimeTwinNormalstaticGreetBorrowSelfTwinNormal(
+          {required LtTypeWithLifetimeTwinNormal that});
+
+  Future<LtTypeWithMultiDepTwinNormal>
+      crateApiMinimalLifetimeableAutoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstaticComputeWithMultiArgHavingLifetimeTwinNormal(
+          {required LtOwnedStructTwinNormal a,
+          required LtOwnedStructTwinNormal b,
+          required LtSubStructTwinNormal unrelatedBorrowed,
+          required LtSubStructTwinNormal unrelatedOwned});
+
+  Future<List<String>>
+      crateApiMinimalLifetimeableAutoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstaticGreetBorrowMutSelfTwinNormal(
+          {required LtTypeWithMultiDepTwinNormal that});
+
+  Future<List<String>>
+      crateApiMinimalLifetimeableAutoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstaticGreetBorrowSelfTwinNormal(
+          {required LtTypeWithMultiDepTwinNormal that});
+
+  Future<LtTypeWithLifetimeTwinNormal>
+      crateApiMinimalLtOwnedStructTwinNormalComputeTypeWithLifetimeTwinNormal(
+          {required LtOwnedStructTwinNormal that});
+
+  Future<LtTypeWithLifetimeTwinNormal>
+      crateApiMinimalLtOwnedStructTwinNormalComputeWithUnrelatedBorrowedArgTwinNormal(
+          {required LtOwnedStructTwinNormal that,
+          required LtSubStructTwinNormal unrelatedBorrowed,
+          required LtSubStructTwinNormal unrelatedOwned});
+
   Future<LtOwnedStructTwinNormal> crateApiMinimalLtOwnedStructTwinNormalCreate(
       {required String value});
 
@@ -89,7 +134,38 @@ abstract class RustLibApi extends BaseApi {
 
   Future<void> crateApiMinimalInitApp();
 
+  Future<LtTypeWithLifetimeTwinNormal>
+      crateApiMinimalLtComputeWithLifetimeFunctionTwinNormal(
+          {required LtOwnedStructTwinNormal arg});
+
   Future<int> crateApiMinimalMinimalAdder({required int a, required int b});
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_LtNestedTypeWithLifetimeTwinNormal;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_LtNestedTypeWithLifetimeTwinNormal;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_LtNestedTypeWithLifetimeTwinNormalPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_LtTypeWithLifetimeTwinNormal;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_LtTypeWithLifetimeTwinNormal;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_LtTypeWithLifetimeTwinNormalPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_LtTypeWithMultiDepTwinNormal;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_LtTypeWithMultiDepTwinNormal;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_LtTypeWithMultiDepTwinNormalPtr;
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_LtOwnedStructTwinNormal;
@@ -110,6 +186,15 @@ abstract class RustLibApi extends BaseApi {
       get rust_arc_decrement_strong_count_LtSubStructTwinNormalPtr;
 
   RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_LtTypeWithMultiDepTwinNormal;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_LtTypeWithMultiDepTwinNormal;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_LtTypeWithMultiDepTwinNormalPtr;
+
+  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_SimpleLogger;
 
   RustArcDecrementStrongCountFnType
@@ -127,6 +212,335 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   });
 
   @override
+  Future<String>
+      crateApiMinimalLifetimeableAutoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerLtNestedTypeWithLifetimeTwinNormalstaticGreetBorrowMutSelfTwinNormal(
+          {required LtNestedTypeWithLifetimeTwinNormal that}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Lifetimeable_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtNestedTypeWithLifetimeTwinNormalstatic(
+            that, serializer);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 1, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_String,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiMinimalLifetimeableAutoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerLtNestedTypeWithLifetimeTwinNormalstaticGreetBorrowMutSelfTwinNormalConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiMinimalLifetimeableAutoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerLtNestedTypeWithLifetimeTwinNormalstaticGreetBorrowMutSelfTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtNestedTypeWithLifetimeTwinNormalstatic_greet_borrow_mut_self_twin_normal",
+            argNames: ["that"],
+          );
+
+  @override
+  Future<String>
+      crateApiMinimalLifetimeableAutoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerLtNestedTypeWithLifetimeTwinNormalstaticGreetBorrowSelfTwinNormal(
+          {required LtNestedTypeWithLifetimeTwinNormal that}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtNestedTypeWithLifetimeTwinNormalstatic(
+            that, serializer);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 2, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_String,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiMinimalLifetimeableAutoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerLtNestedTypeWithLifetimeTwinNormalstaticGreetBorrowSelfTwinNormalConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiMinimalLifetimeableAutoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerLtNestedTypeWithLifetimeTwinNormalstaticGreetBorrowSelfTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtNestedTypeWithLifetimeTwinNormalstatic_greet_borrow_self_twin_normal",
+            argNames: ["that"],
+          );
+
+  @override
+  Future<LtTypeWithLifetimeTwinNormal>
+      crateApiMinimalLifetimeableAutoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerLtTypeWithLifetimeTwinNormalstaticComputeArgGenericLifetimeTwinNormal(
+          {required LtTypeWithLifetimeTwinNormal arg}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithLifetimeTwinNormalstatic(
+            arg, serializer);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 3, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithLifetimeTwinNormalstatic,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiMinimalLifetimeableAutoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerLtTypeWithLifetimeTwinNormalstaticComputeArgGenericLifetimeTwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiMinimalLifetimeableAutoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerLtTypeWithLifetimeTwinNormalstaticComputeArgGenericLifetimeTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithLifetimeTwinNormalstatic_compute_arg_generic_lifetime_twin_normal",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<String>
+      crateApiMinimalLifetimeableAutoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerLtTypeWithLifetimeTwinNormalstaticGreetBorrowMutSelfTwinNormal(
+          {required LtTypeWithLifetimeTwinNormal that}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Lifetimeable_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithLifetimeTwinNormalstatic(
+            that, serializer);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 4, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_String,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiMinimalLifetimeableAutoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerLtTypeWithLifetimeTwinNormalstaticGreetBorrowMutSelfTwinNormalConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiMinimalLifetimeableAutoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerLtTypeWithLifetimeTwinNormalstaticGreetBorrowMutSelfTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithLifetimeTwinNormalstatic_greet_borrow_mut_self_twin_normal",
+            argNames: ["that"],
+          );
+
+  @override
+  Future<String>
+      crateApiMinimalLifetimeableAutoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerLtTypeWithLifetimeTwinNormalstaticGreetBorrowSelfTwinNormal(
+          {required LtTypeWithLifetimeTwinNormal that}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithLifetimeTwinNormalstatic(
+            that, serializer);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 5, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_String,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiMinimalLifetimeableAutoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerLtTypeWithLifetimeTwinNormalstaticGreetBorrowSelfTwinNormalConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiMinimalLifetimeableAutoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerLtTypeWithLifetimeTwinNormalstaticGreetBorrowSelfTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithLifetimeTwinNormalstatic_greet_borrow_self_twin_normal",
+            argNames: ["that"],
+          );
+
+  @override
+  Future<LtTypeWithMultiDepTwinNormal>
+      crateApiMinimalLifetimeableAutoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstaticComputeWithMultiArgHavingLifetimeTwinNormal(
+          {required LtOwnedStructTwinNormal a,
+          required LtOwnedStructTwinNormal b,
+          required LtSubStructTwinNormal unrelatedBorrowed,
+          required LtSubStructTwinNormal unrelatedOwned}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtOwnedStructTwinNormal(
+            a, serializer);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtOwnedStructTwinNormal(
+            b, serializer);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtSubStructTwinNormal(
+            unrelatedBorrowed, serializer);
+        sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtSubStructTwinNormal(
+            unrelatedOwned, serializer);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 6, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstatic,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiMinimalLifetimeableAutoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstaticComputeWithMultiArgHavingLifetimeTwinNormalConstMeta,
+      argValues: [a, b, unrelatedBorrowed, unrelatedOwned],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiMinimalLifetimeableAutoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstaticComputeWithMultiArgHavingLifetimeTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstatic_compute_with_multi_arg_having_lifetime_twin_normal",
+            argNames: ["a", "b", "unrelatedBorrowed", "unrelatedOwned"],
+          );
+
+  @override
+  Future<List<String>>
+      crateApiMinimalLifetimeableAutoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstaticGreetBorrowMutSelfTwinNormal(
+          {required LtTypeWithMultiDepTwinNormal that}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Lifetimeable_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstatic(
+            that, serializer);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 7, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_list_String,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiMinimalLifetimeableAutoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstaticGreetBorrowMutSelfTwinNormalConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiMinimalLifetimeableAutoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstaticGreetBorrowMutSelfTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstatic_greet_borrow_mut_self_twin_normal",
+            argNames: ["that"],
+          );
+
+  @override
+  Future<List<String>>
+      crateApiMinimalLifetimeableAutoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstaticGreetBorrowSelfTwinNormal(
+          {required LtTypeWithMultiDepTwinNormal that}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstatic(
+            that, serializer);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 8, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_list_String,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiMinimalLifetimeableAutoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstaticGreetBorrowSelfTwinNormalConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiMinimalLifetimeableAutoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstaticGreetBorrowSelfTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstatic_greet_borrow_self_twin_normal",
+            argNames: ["that"],
+          );
+
+  @override
+  Future<LtTypeWithLifetimeTwinNormal>
+      crateApiMinimalLtOwnedStructTwinNormalComputeTypeWithLifetimeTwinNormal(
+          {required LtOwnedStructTwinNormal that}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtOwnedStructTwinNormal(
+            that, serializer);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 9, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithLifetimeTwinNormalstatic,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiMinimalLtOwnedStructTwinNormalComputeTypeWithLifetimeTwinNormalConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiMinimalLtOwnedStructTwinNormalComputeTypeWithLifetimeTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "LtOwnedStructTwinNormal_compute_type_with_lifetime_twin_normal",
+            argNames: ["that"],
+          );
+
+  @override
+  Future<LtTypeWithLifetimeTwinNormal>
+      crateApiMinimalLtOwnedStructTwinNormalComputeWithUnrelatedBorrowedArgTwinNormal(
+          {required LtOwnedStructTwinNormal that,
+          required LtSubStructTwinNormal unrelatedBorrowed,
+          required LtSubStructTwinNormal unrelatedOwned}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtOwnedStructTwinNormal(
+            that, serializer);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtSubStructTwinNormal(
+            unrelatedBorrowed, serializer);
+        sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtSubStructTwinNormal(
+            unrelatedOwned, serializer);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 10, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithLifetimeTwinNormalstatic,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiMinimalLtOwnedStructTwinNormalComputeWithUnrelatedBorrowedArgTwinNormalConstMeta,
+      argValues: [that, unrelatedBorrowed, unrelatedOwned],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiMinimalLtOwnedStructTwinNormalComputeWithUnrelatedBorrowedArgTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "LtOwnedStructTwinNormal_compute_with_unrelated_borrowed_arg_twin_normal",
+            argNames: ["that", "unrelatedBorrowed", "unrelatedOwned"],
+          );
+
+  @override
   Future<LtOwnedStructTwinNormal> crateApiMinimalLtOwnedStructTwinNormalCreate(
       {required String value}) {
     return handler.executeNormal(NormalTask(
@@ -134,7 +548,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_String(value, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1, port: port_);
+            funcId: 11, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -164,7 +578,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleLogger(
             logger, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 2, port: port_);
+            funcId: 12, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -195,7 +609,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtSubStructTwinNormal(
             that, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 3, port: port_);
+            funcId: 13, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_String,
@@ -225,7 +639,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtSubStructTwinNormal(
             that, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 4, port: port_);
+            funcId: 14, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_String,
@@ -254,7 +668,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleLogger(
             that, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 5, port: port_);
+            funcId: 15, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_list_String,
@@ -277,7 +691,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 6)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 16)!;
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -302,7 +716,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 7, port: port_);
+            funcId: 17, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -320,6 +734,37 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Future<LtTypeWithLifetimeTwinNormal>
+      crateApiMinimalLtComputeWithLifetimeFunctionTwinNormal(
+          {required LtOwnedStructTwinNormal arg}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtOwnedStructTwinNormal(
+            arg, serializer);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 18, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithLifetimeTwinNormalstatic,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiMinimalLtComputeWithLifetimeFunctionTwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiMinimalLtComputeWithLifetimeFunctionTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName: "lt_compute_with_lifetime_function_twin_normal",
+            argNames: ["arg"],
+          );
+
+  @override
   Future<int> crateApiMinimalMinimalAdder({required int a, required int b}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -327,7 +772,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_i_32(a, serializer);
         sse_encode_i_32(b, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 8, port: port_);
+            funcId: 19, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_i_32,
@@ -346,6 +791,30 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_LtNestedTypeWithLifetimeTwinNormal =>
+          wire.rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeableLtNestedTypeWithLifetimeTwinNormalstatic;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_LtNestedTypeWithLifetimeTwinNormal =>
+          wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeableLtNestedTypeWithLifetimeTwinNormalstatic;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_LtTypeWithLifetimeTwinNormal => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeableLtTypeWithLifetimeTwinNormalstatic;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_LtTypeWithLifetimeTwinNormal => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeableLtTypeWithLifetimeTwinNormalstatic;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_LtTypeWithMultiDepTwinNormal => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeableLtTypeWithMultiDepTwinNormalstatic;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_LtTypeWithMultiDepTwinNormal => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeableLtTypeWithMultiDepTwinNormalstatic;
+
+  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_LtOwnedStructTwinNormal => wire
           .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtOwnedStructTwinNormal;
 
@@ -362,12 +831,47 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtSubStructTwinNormal;
 
   RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_LtTypeWithMultiDepTwinNormal => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstatic;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_LtTypeWithMultiDepTwinNormal => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstatic;
+
+  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_SimpleLogger => wire
           .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleLogger;
 
   RustArcDecrementStrongCountFnType
       get rust_arc_decrement_strong_count_SimpleLogger => wire
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleLogger;
+
+  @protected
+  LtNestedTypeWithLifetimeTwinNormal
+      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeableLtNestedTypeWithLifetimeTwinNormalstatic(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeableLtNestedTypeWithLifetimeTwinNormalstatic(
+        raw);
+  }
+
+  @protected
+  LtTypeWithLifetimeTwinNormal
+      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeableLtTypeWithLifetimeTwinNormalstatic(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeableLtTypeWithLifetimeTwinNormalstatic(
+        raw);
+  }
+
+  @protected
+  LtTypeWithMultiDepTwinNormal
+      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeableLtTypeWithMultiDepTwinNormalstatic(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeableLtTypeWithMultiDepTwinNormalstatic(
+        raw);
+  }
 
   @protected
   LtOwnedStructTwinNormal
@@ -387,6 +891,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  LtTypeWithMultiDepTwinNormal
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstatic(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return LtTypeWithMultiDepTwinNormalImpl.frbInternalDcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
   SimpleLogger
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleLogger(
           dynamic raw) {
@@ -400,6 +913,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return LtSubStructTwinNormalImpl.frbInternalDcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  LtOwnedStructTwinNormal
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtOwnedStructTwinNormal(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return LtOwnedStructTwinNormalImpl.frbInternalDcoDecode(
+        raw as List<dynamic>);
   }
 
   @protected
@@ -419,6 +941,87 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  LtNestedTypeWithLifetimeTwinNormal
+      dco_decode_Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtNestedTypeWithLifetimeTwinNormalstatic(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    throw UnimplementedError(
+        'Not implemented in this codec, please use the other one');
+  }
+
+  @protected
+  LtTypeWithLifetimeTwinNormal
+      dco_decode_Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithLifetimeTwinNormalstatic(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    throw UnimplementedError(
+        'Not implemented in this codec, please use the other one');
+  }
+
+  @protected
+  LtTypeWithMultiDepTwinNormal
+      dco_decode_Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstatic(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    throw UnimplementedError(
+        'Not implemented in this codec, please use the other one');
+  }
+
+  @protected
+  LtNestedTypeWithLifetimeTwinNormal
+      dco_decode_Lifetimeable_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtNestedTypeWithLifetimeTwinNormalstatic(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    throw UnimplementedError(
+        'Not implemented in this codec, please use the other one');
+  }
+
+  @protected
+  LtTypeWithLifetimeTwinNormal
+      dco_decode_Lifetimeable_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithLifetimeTwinNormalstatic(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    throw UnimplementedError(
+        'Not implemented in this codec, please use the other one');
+  }
+
+  @protected
+  LtTypeWithMultiDepTwinNormal
+      dco_decode_Lifetimeable_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstatic(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    throw UnimplementedError(
+        'Not implemented in this codec, please use the other one');
+  }
+
+  @protected
+  LtNestedTypeWithLifetimeTwinNormal
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeableLtNestedTypeWithLifetimeTwinNormalstatic(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return LtNestedTypeWithLifetimeTwinNormalImpl.frbInternalDcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  LtTypeWithLifetimeTwinNormal
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeableLtTypeWithLifetimeTwinNormalstatic(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return LtTypeWithLifetimeTwinNormalImpl.frbInternalDcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  LtTypeWithMultiDepTwinNormal
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeableLtTypeWithMultiDepTwinNormalstatic(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return LtTypeWithMultiDepTwinNormalImpl.frbInternalDcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
   LtOwnedStructTwinNormal
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtOwnedStructTwinNormal(
           dynamic raw) {
@@ -433,6 +1036,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return LtSubStructTwinNormalImpl.frbInternalDcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  LtTypeWithMultiDepTwinNormal
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstatic(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return LtTypeWithMultiDepTwinNormalImpl.frbInternalDcoDecode(
+        raw as List<dynamic>);
   }
 
   @protected
@@ -486,6 +1098,39 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  LtNestedTypeWithLifetimeTwinNormal
+      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeableLtNestedTypeWithLifetimeTwinNormalstatic(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var inner =
+        sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeableLtNestedTypeWithLifetimeTwinNormalstatic(
+            deserializer);
+    return inner;
+  }
+
+  @protected
+  LtTypeWithLifetimeTwinNormal
+      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeableLtTypeWithLifetimeTwinNormalstatic(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var inner =
+        sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeableLtTypeWithLifetimeTwinNormalstatic(
+            deserializer);
+    return inner;
+  }
+
+  @protected
+  LtTypeWithMultiDepTwinNormal
+      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeableLtTypeWithMultiDepTwinNormalstatic(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var inner =
+        sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeableLtTypeWithMultiDepTwinNormalstatic(
+            deserializer);
+    return inner;
+  }
+
+  @protected
   LtOwnedStructTwinNormal
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtOwnedStructTwinNormal(
           SseDeserializer deserializer) {
@@ -500,6 +1145,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return LtSubStructTwinNormalImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  LtTypeWithMultiDepTwinNormal
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstatic(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return LtTypeWithMultiDepTwinNormalImpl.frbInternalSseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -522,6 +1176,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  LtOwnedStructTwinNormal
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtOwnedStructTwinNormal(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return LtOwnedStructTwinNormalImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   LtSubStructTwinNormal
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtSubStructTwinNormal(
           SseDeserializer deserializer) {
@@ -540,6 +1203,99 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  LtNestedTypeWithLifetimeTwinNormal
+      sse_decode_Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtNestedTypeWithLifetimeTwinNormalstatic(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var inner =
+        sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeableLtNestedTypeWithLifetimeTwinNormalstatic(
+            deserializer);
+    return inner;
+  }
+
+  @protected
+  LtTypeWithLifetimeTwinNormal
+      sse_decode_Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithLifetimeTwinNormalstatic(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var inner =
+        sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeableLtTypeWithLifetimeTwinNormalstatic(
+            deserializer);
+    return inner;
+  }
+
+  @protected
+  LtTypeWithMultiDepTwinNormal
+      sse_decode_Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstatic(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var inner =
+        sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeableLtTypeWithMultiDepTwinNormalstatic(
+            deserializer);
+    return inner;
+  }
+
+  @protected
+  LtNestedTypeWithLifetimeTwinNormal
+      sse_decode_Lifetimeable_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtNestedTypeWithLifetimeTwinNormalstatic(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var inner =
+        sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeableLtNestedTypeWithLifetimeTwinNormalstatic(
+            deserializer);
+    return inner;
+  }
+
+  @protected
+  LtTypeWithLifetimeTwinNormal
+      sse_decode_Lifetimeable_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithLifetimeTwinNormalstatic(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var inner =
+        sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeableLtTypeWithLifetimeTwinNormalstatic(
+            deserializer);
+    return inner;
+  }
+
+  @protected
+  LtTypeWithMultiDepTwinNormal
+      sse_decode_Lifetimeable_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstatic(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var inner =
+        sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeableLtTypeWithMultiDepTwinNormalstatic(
+            deserializer);
+    return inner;
+  }
+
+  @protected
+  LtNestedTypeWithLifetimeTwinNormal
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeableLtNestedTypeWithLifetimeTwinNormalstatic(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return LtNestedTypeWithLifetimeTwinNormalImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  LtTypeWithLifetimeTwinNormal
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeableLtTypeWithLifetimeTwinNormalstatic(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return LtTypeWithLifetimeTwinNormalImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  LtTypeWithMultiDepTwinNormal
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeableLtTypeWithMultiDepTwinNormalstatic(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return LtTypeWithMultiDepTwinNormalImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   LtOwnedStructTwinNormal
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtOwnedStructTwinNormal(
           SseDeserializer deserializer) {
@@ -554,6 +1310,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return LtSubStructTwinNormalImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  LtTypeWithMultiDepTwinNormal
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstatic(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return LtTypeWithMultiDepTwinNormalImpl.frbInternalSseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -623,6 +1388,33 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
+      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeableLtNestedTypeWithLifetimeTwinNormalstatic(
+          LtNestedTypeWithLifetimeTwinNormal self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeableLtNestedTypeWithLifetimeTwinNormalstatic(
+        self, serializer);
+  }
+
+  @protected
+  void
+      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeableLtTypeWithLifetimeTwinNormalstatic(
+          LtTypeWithLifetimeTwinNormal self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeableLtTypeWithLifetimeTwinNormalstatic(
+        self, serializer);
+  }
+
+  @protected
+  void
+      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeableLtTypeWithMultiDepTwinNormalstatic(
+          LtTypeWithMultiDepTwinNormal self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeableLtTypeWithMultiDepTwinNormalstatic(
+        self, serializer);
+  }
+
+  @protected
+  void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtOwnedStructTwinNormal(
           LtOwnedStructTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -638,6 +1430,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as LtSubStructTwinNormalImpl).frbInternalSseEncode(move: true),
+        serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstatic(
+          LtTypeWithMultiDepTwinNormal self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as LtTypeWithMultiDepTwinNormalImpl)
+            .frbInternalSseEncode(move: true),
         serializer);
   }
 
@@ -663,6 +1466,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtOwnedStructTwinNormal(
+          LtOwnedStructTwinNormal self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as LtOwnedStructTwinNormalImpl).frbInternalSseEncode(move: false),
+        serializer);
+  }
+
+  @protected
+  void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtSubStructTwinNormal(
           LtSubStructTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -683,6 +1496,93 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
+      sse_encode_Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtNestedTypeWithLifetimeTwinNormalstatic(
+          LtNestedTypeWithLifetimeTwinNormal self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeableLtNestedTypeWithLifetimeTwinNormalstatic(
+        self, serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithLifetimeTwinNormalstatic(
+          LtTypeWithLifetimeTwinNormal self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeableLtTypeWithLifetimeTwinNormalstatic(
+        self, serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstatic(
+          LtTypeWithMultiDepTwinNormal self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeableLtTypeWithMultiDepTwinNormalstatic(
+        self, serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Lifetimeable_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtNestedTypeWithLifetimeTwinNormalstatic(
+          LtNestedTypeWithLifetimeTwinNormal self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeableLtNestedTypeWithLifetimeTwinNormalstatic(
+        self, serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Lifetimeable_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithLifetimeTwinNormalstatic(
+          LtTypeWithLifetimeTwinNormal self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeableLtTypeWithLifetimeTwinNormalstatic(
+        self, serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Lifetimeable_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstatic(
+          LtTypeWithMultiDepTwinNormal self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeableLtTypeWithMultiDepTwinNormalstatic(
+        self, serializer);
+  }
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeableLtNestedTypeWithLifetimeTwinNormalstatic(
+          LtNestedTypeWithLifetimeTwinNormal self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as LtNestedTypeWithLifetimeTwinNormalImpl)
+            .frbInternalSseEncode(move: null),
+        serializer);
+  }
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeableLtTypeWithLifetimeTwinNormalstatic(
+          LtTypeWithLifetimeTwinNormal self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as LtTypeWithLifetimeTwinNormalImpl)
+            .frbInternalSseEncode(move: null),
+        serializer);
+  }
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeableLtTypeWithMultiDepTwinNormalstatic(
+          LtTypeWithMultiDepTwinNormal self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as LtTypeWithMultiDepTwinNormalImpl)
+            .frbInternalSseEncode(move: null),
+        serializer);
+  }
+
+  @protected
+  void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtOwnedStructTwinNormal(
           LtOwnedStructTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -698,6 +1598,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as LtSubStructTwinNormalImpl).frbInternalSseEncode(move: null),
+        serializer);
+  }
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstatic(
+          LtTypeWithMultiDepTwinNormal self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as LtTypeWithMultiDepTwinNormalImpl)
+            .frbInternalSseEncode(move: null),
         serializer);
   }
 
@@ -765,6 +1676,39 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 }
 
 @sealed
+class LtNestedTypeWithLifetimeTwinNormalImpl extends RustOpaque
+    implements LtNestedTypeWithLifetimeTwinNormal {
+  // Not to be used by end users
+  LtNestedTypeWithLifetimeTwinNormalImpl.frbInternalDcoDecode(
+      List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  LtNestedTypeWithLifetimeTwinNormalImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_LtNestedTypeWithLifetimeTwinNormal,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_LtNestedTypeWithLifetimeTwinNormal,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_LtNestedTypeWithLifetimeTwinNormalPtr,
+  );
+
+  Future<String> greetBorrowMutSelfTwinNormal() => RustLib.instance.api
+          .crateApiMinimalLifetimeableAutoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerLtNestedTypeWithLifetimeTwinNormalstaticGreetBorrowMutSelfTwinNormal(
+        that: this,
+      );
+
+  Future<String> greetBorrowSelfTwinNormal() => RustLib.instance.api
+          .crateApiMinimalLifetimeableAutoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerLtNestedTypeWithLifetimeTwinNormalstaticGreetBorrowSelfTwinNormal(
+        that: this,
+      );
+}
+
+@sealed
 class LtOwnedStructTwinNormalImpl extends RustOpaque
     implements LtOwnedStructTwinNormal {
   // Not to be used by end users
@@ -784,6 +1728,24 @@ class LtOwnedStructTwinNormalImpl extends RustOpaque
     rustArcDecrementStrongCountPtr: RustLib.instance.api
         .rust_arc_decrement_strong_count_LtOwnedStructTwinNormalPtr,
   );
+
+  /// `fn f(x: &'a T) -> S<'a>`
+  Future<LtTypeWithLifetimeTwinNormal> computeTypeWithLifetimeTwinNormal() =>
+      RustLib.instance.api
+          .crateApiMinimalLtOwnedStructTwinNormalComputeTypeWithLifetimeTwinNormal(
+        that: this,
+      );
+
+  /// The unrelated arg should not affect results
+  Future<
+      LtTypeWithLifetimeTwinNormal> computeWithUnrelatedBorrowedArgTwinNormal(
+          {required LtSubStructTwinNormal unrelatedBorrowed,
+          required LtSubStructTwinNormal unrelatedOwned}) =>
+      RustLib.instance.api
+          .crateApiMinimalLtOwnedStructTwinNormalComputeWithUnrelatedBorrowedArgTwinNormal(
+              that: this,
+              unrelatedBorrowed: unrelatedBorrowed,
+              unrelatedOwned: unrelatedOwned);
 }
 
 @sealed
@@ -814,6 +1776,104 @@ class LtSubStructTwinNormalImpl extends RustOpaque
 
   Future<String> greetBorrowSelfTwinNormal() => RustLib.instance.api
           .crateApiMinimalLtSubStructTwinNormalGreetBorrowSelfTwinNormal(
+        that: this,
+      );
+}
+
+@sealed
+class LtTypeWithLifetimeTwinNormalImpl extends RustOpaque
+    implements LtTypeWithLifetimeTwinNormal {
+  // Not to be used by end users
+  LtTypeWithLifetimeTwinNormalImpl.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  LtTypeWithLifetimeTwinNormalImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_LtTypeWithLifetimeTwinNormal,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_LtTypeWithLifetimeTwinNormal,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_LtTypeWithLifetimeTwinNormalPtr,
+  );
+
+  /// `&mut T` where T is lifetimeable
+  Future<String> greetBorrowMutSelfTwinNormal() => RustLib.instance.api
+          .crateApiMinimalLifetimeableAutoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerLtTypeWithLifetimeTwinNormalstaticGreetBorrowMutSelfTwinNormal(
+        that: this,
+      );
+
+  /// `&T` where T is lifetimeable
+  Future<String> greetBorrowSelfTwinNormal() => RustLib.instance.api
+          .crateApiMinimalLifetimeableAutoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerLtTypeWithLifetimeTwinNormalstaticGreetBorrowSelfTwinNormal(
+        that: this,
+      );
+}
+
+@sealed
+class LtTypeWithMultiDepTwinNormalImpl extends RustOpaque
+    implements LtTypeWithMultiDepTwinNormal {
+  // Not to be used by end users
+  LtTypeWithMultiDepTwinNormalImpl.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  LtTypeWithMultiDepTwinNormalImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_LtTypeWithMultiDepTwinNormal,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_LtTypeWithMultiDepTwinNormal,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_LtTypeWithMultiDepTwinNormalPtr,
+  );
+
+  Future<List<String>> greetBorrowMutSelfTwinNormal() => RustLib.instance.api
+          .crateApiMinimalLifetimeableAutoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstaticGreetBorrowMutSelfTwinNormal(
+        that: this,
+      );
+
+  Future<List<String>> greetBorrowSelfTwinNormal() => RustLib.instance.api
+          .crateApiMinimalLifetimeableAutoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstaticGreetBorrowSelfTwinNormal(
+        that: this,
+      );
+}
+
+@sealed
+class LtTypeWithMultiDepTwinNormalImpl extends RustOpaque
+    implements LtTypeWithMultiDepTwinNormal {
+  // Not to be used by end users
+  LtTypeWithMultiDepTwinNormalImpl.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  LtTypeWithMultiDepTwinNormalImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_LtTypeWithMultiDepTwinNormal,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_LtTypeWithMultiDepTwinNormal,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_LtTypeWithMultiDepTwinNormalPtr,
+  );
+
+  Future<List<String>> greetBorrowMutSelfTwinNormal() => RustLib.instance.api
+          .crateApiMinimalLifetimeableAutoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstaticGreetBorrowMutSelfTwinNormal(
+        that: this,
+      );
+
+  Future<List<String>> greetBorrowSelfTwinNormal() => RustLib.instance.api
+          .crateApiMinimalLifetimeableAutoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstaticGreetBorrowSelfTwinNormal(
         that: this,
       );
 }

@@ -14,6 +14,72 @@ use flutter_rust_bridge::{Handler, IntoIntoDart};
 flutter_rust_bridge::frb_generated_boilerplate_io!();
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_dart_minimal_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeableLtNestedTypeWithLifetimeTwinNormalstatic(
+    ptr: *const std::ffi::c_void,
+) {
+    MoiArc::<
+        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+            Lifetimeable<LtNestedTypeWithLifetimeTwinNormal<'static>>,
+        >,
+    >::increment_strong_count(ptr as _);
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_dart_minimal_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeableLtNestedTypeWithLifetimeTwinNormalstatic(
+    ptr: *const std::ffi::c_void,
+) {
+    MoiArc::<
+        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+            Lifetimeable<LtNestedTypeWithLifetimeTwinNormal<'static>>,
+        >,
+    >::decrement_strong_count(ptr as _);
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_dart_minimal_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeableLtTypeWithLifetimeTwinNormalstatic(
+    ptr: *const std::ffi::c_void,
+) {
+    MoiArc::<
+        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+            Lifetimeable<LtTypeWithLifetimeTwinNormal<'static>>,
+        >,
+    >::increment_strong_count(ptr as _);
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_dart_minimal_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeableLtTypeWithLifetimeTwinNormalstatic(
+    ptr: *const std::ffi::c_void,
+) {
+    MoiArc::<
+        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+            Lifetimeable<LtTypeWithLifetimeTwinNormal<'static>>,
+        >,
+    >::decrement_strong_count(ptr as _);
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_dart_minimal_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeableLtTypeWithMultiDepTwinNormalstatic(
+    ptr: *const std::ffi::c_void,
+) {
+    MoiArc::<
+        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+            Lifetimeable<LtTypeWithMultiDepTwinNormal<'static>>,
+        >,
+    >::increment_strong_count(ptr as _);
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_dart_minimal_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeableLtTypeWithMultiDepTwinNormalstatic(
+    ptr: *const std::ffi::c_void,
+) {
+    MoiArc::<
+        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+            Lifetimeable<LtTypeWithMultiDepTwinNormal<'static>>,
+        >,
+    >::decrement_strong_count(ptr as _);
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_dart_minimal_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtOwnedStructTwinNormal(
     ptr: *const std::ffi::c_void,
 ) {
@@ -39,6 +105,28 @@ pub extern "C" fn frbgen_frb_example_dart_minimal_rust_arc_decrement_strong_coun
     ptr: *const std::ffi::c_void,
 ) {
     MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<LtSubStructTwinNormal>>::decrement_strong_count(ptr as _);
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_dart_minimal_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstatic(
+    ptr: *const std::ffi::c_void,
+) {
+    MoiArc::<
+        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+            LtTypeWithMultiDepTwinNormal<'static>,
+        >,
+    >::increment_strong_count(ptr as _);
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_dart_minimal_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstatic(
+    ptr: *const std::ffi::c_void,
+) {
+    MoiArc::<
+        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+            LtTypeWithMultiDepTwinNormal<'static>,
+        >,
+    >::decrement_strong_count(ptr as _);
 }
 
 #[no_mangle]
