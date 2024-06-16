@@ -69,13 +69,14 @@ pub(super) fn generate_code_postprocess_inner_output(func: &MirFunc) -> String {
     let dependencies = (func.inputs.iter())
         .filter(|field| is_interest_field(field))
         .map(get_variable_name)
-        .flat_map(|field_name| {
-            vec![
-                format!("api_{field_name}"),
-                format!("api_{field_name}_guard"),
-            ]
+        .map(|field_name| {
+            format!(
+                "flutter_rust_bridge::for_generated::LifetimeableDependency::new_guard_lockable(
+                    Box::new(api_{field_name}_guard.clone()),
+                    Box::new(api_{field_name}.clone()),
+                )"
+            )
         })
-        .map(|var_name| format!("Box::new({var_name}.clone())"))
         .join(", ");
     format!(
         "let output_ok = RustAutoOpaque::new(Lifetimeable::new(output_ok, vec![{dependencies}]));"
