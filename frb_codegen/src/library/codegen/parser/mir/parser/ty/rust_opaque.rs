@@ -10,6 +10,7 @@ use quote::ToTokens;
 use std::collections::HashMap;
 use std::fmt::Debug;
 use syn::Type;
+use crate::codegen::ir::mir::llfetime_aware_type::MirLifetimeAwareType;
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_path_data_rust_opaque(
@@ -46,7 +47,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         );
         Ok(RustOpaque(MirTypeRustOpaque {
             namespace: info.namespace,
-            inner: MirRustOpaqueInner(ty_str),
+            inner: MirRustOpaqueInner(MirLifetimeAwareType::new(ty_str)),
             codec: info.codec,
             dart_api_type: None,
             brief_name: false,

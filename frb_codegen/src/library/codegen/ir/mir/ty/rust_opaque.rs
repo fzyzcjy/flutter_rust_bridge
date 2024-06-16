@@ -50,7 +50,7 @@ impl MirTypeRustOpaque {
     pub(crate) const DELEGATE_TYPE: MirType = MirType::Primitive(MirTypePrimitive::Usize);
 
     pub(crate) fn sanitized_type(&self) -> String {
-        rust_type_to_sanitized_type(&self.inner.0, self.brief_name)
+        rust_type_to_sanitized_type(&self.inner.0.with_static_lifetime(), self.brief_name)
     }
 }
 
@@ -68,7 +68,7 @@ impl MirTypeTrait for MirTypeRustOpaque {
     }
 
     fn rust_api_type(&self) -> String {
-        format!("RustOpaque{}<{}>", self.codec, self.inner.0)
+        format!("RustOpaque{}<{}>", self.codec, self.inner.0.with_static_lifetime())
     }
 
     fn self_namespace(&self) -> Option<Namespace> {
@@ -92,7 +92,7 @@ impl MirRustOpaqueInner {
         lazy_static! {
             static ref NEG_FILTER: Regex = Regex::new(r"[^a-zA-Z0-9_]").unwrap();
         }
-        NEG_FILTER.replace_all(&self.0, "").into_owned()
+        NEG_FILTER.replace_all(&self.0.with_static_lifetime(), "").into_owned()
     }
 }
 

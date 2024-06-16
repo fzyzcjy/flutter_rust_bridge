@@ -100,7 +100,7 @@ fn compute_class_name_for_querying_methods(ty: &MirType) -> NamespacedName {
                     Regex::new(r"^flutter_rust_bridge::for_generated::RustAutoOpaqueInner<(.*)>$")
                         .unwrap();
             }
-            let name = FILTER.replace_all(&ty.inner.0, "$1").to_string();
+            let name = FILTER.replace_all(&ty.inner.0.with_static_lifetime(), "$1").to_string();
             NamespacedName::new(ty.namespace.clone(), name)
         }
         _ => panic!("compute_query_class_name see unknown ty={ty:?}"),

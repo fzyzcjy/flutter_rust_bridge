@@ -43,7 +43,7 @@ impl MirTypeTrait for MirTypeRustAutoOpaqueImplicit {
     fn rust_api_type(&self) -> String {
         match self.ownership_mode {
             // Different mechanisms for Owned vs Ref/RefMut
-            OwnershipMode::Owned => self.raw.string_with_replaced_lifetime.clone(),
+            OwnershipMode::Owned => self.raw.with_static_lifetime().clone(),
             OwnershipMode::Ref | OwnershipMode::RefMut => self.inner.rust_api_type(),
         }
     }
