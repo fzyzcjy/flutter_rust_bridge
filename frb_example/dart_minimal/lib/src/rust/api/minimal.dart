@@ -6,20 +6,9 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-Future<int> minimalAdder({required int a, required int b}) =>
-    RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b);
-
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<LifetimeTesterOneTwinNormal>>
 abstract class LifetimeTesterOneTwinNormal implements RustOpaqueInterface {
   Future<LifetimeTesterTwoTwinNormalA> computeTwo();
-}
-
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<LifetimeTesterTwoTwinNormal < 'static >>>
-abstract class LifetimeTesterTwoTwinNormal implements RustOpaqueInterface {}
-
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<RAOTester>>
-abstract class RaoTester implements RustOpaqueInterface {
-  Future<void> funcForRao();
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<flutter_rust_bridge :: for_generated :: Lifetimeable < LifetimeTesterTwoTwinNormal < 'static > >>>
