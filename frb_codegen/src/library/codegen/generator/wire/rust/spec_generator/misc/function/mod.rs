@@ -202,11 +202,15 @@ fn generate_code_closure(
         "{code_inner_decode} {code_call_inner_func_result} {code_postprocess_inner_output} Ok(output_ok)"
     );
 
+    let err_type = (func.output.error.as_ref())
+        .map(|e| e.rust_api_type())
+        .unwrap_or("()".to_owned());
+
     match func.mode {
         MirFuncMode::Sync => {
             format!(
                 "{code_decode}
-                transform_result_{codec}((move || {{
+                transform_result_{codec}::<_, {err_type}>((move || {{
                     {code_inner}
                 }})())"
             )
@@ -216,7 +220,7 @@ fn generate_code_closure(
             let maybe_await = if func.rust_async { ".await" } else { "" };
             format!(
                 "{code_decode} move |context| {maybe_async_move} {{
-                    transform_result_{codec}((move || {maybe_async_move} {{
+                    transform_result_{codec}::<_, {err_type}>((move || {maybe_async_move} {{
                         {code_inner}
                     }})(){maybe_await})
                 }}"
