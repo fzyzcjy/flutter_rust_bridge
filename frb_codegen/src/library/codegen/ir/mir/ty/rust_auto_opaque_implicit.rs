@@ -16,7 +16,7 @@ pub struct MirTypeRustAutoOpaqueImplicit {
 
 /// Original type without any transformation
 pub struct MirRustAutoOpaqueRaw {
-    pub string: String,
+    pub string_with_replaced_lifetime: String,
     pub segments: Vec<NameComponent>,
 }
 
@@ -42,7 +42,7 @@ impl MirTypeTrait for MirTypeRustAutoOpaqueImplicit {
     fn rust_api_type(&self) -> String {
         match self.ownership_mode {
             // Different mechanisms for Owned vs Ref/RefMut
-            OwnershipMode::Owned => self.raw.string.clone(),
+            OwnershipMode::Owned => self.raw.string_with_replaced_lifetime.clone(),
             OwnershipMode::Ref | OwnershipMode::RefMut => self.inner.rust_api_type(),
         }
     }
