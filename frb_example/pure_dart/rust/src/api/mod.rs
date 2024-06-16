@@ -30,6 +30,7 @@ pub mod external_impl;
 pub mod external_type_in_crate;
 pub mod impl_trait;
 pub mod inside_macro;
+pub mod lifetimeable;
 pub mod map_and_set;
 pub mod method;
 pub mod mirror;
@@ -56,6 +57,5 @@ pub mod structure;
 pub mod tuple;
 pub mod type_alias;
 pub mod uuid_type;
-mod lifetimeable;
 
 pub fn function_at_api_mod_rs() {}
