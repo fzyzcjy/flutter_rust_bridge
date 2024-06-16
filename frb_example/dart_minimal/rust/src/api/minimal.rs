@@ -31,6 +31,7 @@ impl SimpleLogger {
         self.0.lock().unwrap().push(message.to_owned());
     }
 
+    #[frb(sync)]
     pub fn get_and_reset(&self) -> Vec<String> {
         self.0.lock().unwrap().drain(..).collect()
     }
