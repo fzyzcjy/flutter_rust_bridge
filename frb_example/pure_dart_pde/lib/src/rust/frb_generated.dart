@@ -198,7 +198,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.0.0-dev.39';
 
   @override
-  int get rustContentHash => 1410295838;
+  int get rustContentHash => 997343848;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -754,11 +754,11 @@ abstract class RustLibApi extends BaseApi {
           required LtOwnedStructTwinNormal unrelatedOwned});
 
   Future<LtOwnedStructTwinNormal>
-      crateApiLifetimeableLtOwnedStructTwinNormalCreate(
+      crateApiLifetimeableLtOwnedStructTwinNormalCreateTwinNormal(
           {required String value});
 
   Future<LtOwnedStructTwinNormal>
-      crateApiLifetimeableLtOwnedStructTwinNormalCreateWithLogger(
+      crateApiLifetimeableLtOwnedStructTwinNormalCreateWithLoggerTwinNormal(
           {required String value, required SimpleLogger logger});
 
   Future<String>
@@ -10136,7 +10136,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<LtOwnedStructTwinNormal>
-      crateApiLifetimeableLtOwnedStructTwinNormalCreate(
+      crateApiLifetimeableLtOwnedStructTwinNormalCreateTwinNormal(
           {required String value}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -10150,22 +10150,23 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtOwnedStructTwinNormal,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiLifetimeableLtOwnedStructTwinNormalCreateConstMeta,
+      constMeta:
+          kCrateApiLifetimeableLtOwnedStructTwinNormalCreateTwinNormalConstMeta,
       argValues: [value],
       apiImpl: this,
     ));
   }
 
   TaskConstMeta
-      get kCrateApiLifetimeableLtOwnedStructTwinNormalCreateConstMeta =>
+      get kCrateApiLifetimeableLtOwnedStructTwinNormalCreateTwinNormalConstMeta =>
           const TaskConstMeta(
-            debugName: "LtOwnedStructTwinNormal_create",
+            debugName: "LtOwnedStructTwinNormal_create_twin_normal",
             argNames: ["value"],
           );
 
   @override
   Future<LtOwnedStructTwinNormal>
-      crateApiLifetimeableLtOwnedStructTwinNormalCreateWithLogger(
+      crateApiLifetimeableLtOwnedStructTwinNormalCreateWithLoggerTwinNormal(
           {required String value, required SimpleLogger logger}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -10182,16 +10183,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeErrorData: null,
       ),
       constMeta:
-          kCrateApiLifetimeableLtOwnedStructTwinNormalCreateWithLoggerConstMeta,
+          kCrateApiLifetimeableLtOwnedStructTwinNormalCreateWithLoggerTwinNormalConstMeta,
       argValues: [value, logger],
       apiImpl: this,
     ));
   }
 
   TaskConstMeta
-      get kCrateApiLifetimeableLtOwnedStructTwinNormalCreateWithLoggerConstMeta =>
+      get kCrateApiLifetimeableLtOwnedStructTwinNormalCreateWithLoggerTwinNormalConstMeta =>
           const TaskConstMeta(
-            debugName: "LtOwnedStructTwinNormal_create_with_logger",
+            debugName: "LtOwnedStructTwinNormal_create_with_logger_twin_normal",
             argNames: ["value", "logger"],
           );
 

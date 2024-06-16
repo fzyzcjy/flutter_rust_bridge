@@ -63,7 +63,7 @@ flutter_rust_bridge::frb_generated_boilerplate!(
     default_rust_auto_opaque = RustAutoOpaqueMoi,
 );
 pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "2.0.0-dev.39";
-pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = 1410295838;
+pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = 997343848;
 
 // Section: executor
 
@@ -5920,7 +5920,7 @@ let api_that_guard = Arc::new(api_that_guard);
                     })())
                 } })
 }
-fn wire__crate__api__lifetimeable__LtOwnedStructTwinNormal_create_impl(
+fn wire__crate__api__lifetimeable__LtOwnedStructTwinNormal_create_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
@@ -5928,7 +5928,7 @@ fn wire__crate__api__lifetimeable__LtOwnedStructTwinNormal_create_impl(
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "LtOwnedStructTwinNormal_create",
+            debug_name: "LtOwnedStructTwinNormal_create_twin_normal",
             port: Some(port_),
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
         },
@@ -5947,63 +5947,8 @@ fn wire__crate__api__lifetimeable__LtOwnedStructTwinNormal_create_impl(
             move |context| {
                 transform_result_sse::<_, ()>((move || {
                     let output_ok = Result::<_, ()>::Ok(
-                        crate::api::lifetimeable::LtOwnedStructTwinNormal::create(api_value),
-                    )?;
-                    Ok(output_ok)
-                })())
-            }
-        },
-    )
-}
-fn wire__crate__api__lifetimeable__LtOwnedStructTwinNormal_create_with_logger_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "LtOwnedStructTwinNormal_create_with_logger",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
-        },
-        move || {
-            let message = unsafe {
-                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
-                    ptr_,
-                    rust_vec_len_,
-                    data_len_,
-                )
-            };
-            let mut deserializer =
-                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_value = <String>::sse_decode(&mut deserializer);
-            let api_logger = <RustOpaqueMoi<
-                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<SimpleLogger>,
-            >>::sse_decode(&mut deserializer);
-            deserializer.end();
-            move |context| {
-                transform_result_sse::<_, ()>((move || {
-                    let mut api_logger_guard = None;
-                    let decode_indices_ =
-                        flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![
-                            flutter_rust_bridge::for_generated::LockableOrderInfo::new(
-                                &api_logger,
-                                0,
-                                false,
-                            ),
-                        ]);
-                    for i in decode_indices_ {
-                        match i {
-                            0 => api_logger_guard = Some(api_logger.lockable_decode_sync_ref()),
-                            _ => unreachable!(),
-                        }
-                    }
-                    let api_logger_guard = api_logger_guard.unwrap();
-                    let output_ok = Result::<_, ()>::Ok(
-                        crate::api::lifetimeable::LtOwnedStructTwinNormal::create_with_logger(
+                        crate::api::lifetimeable::LtOwnedStructTwinNormal::create_twin_normal(
                             api_value,
-                            &*api_logger_guard,
                         ),
                     )?;
                     Ok(output_ok)
@@ -6011,6 +5956,31 @@ fn wire__crate__api__lifetimeable__LtOwnedStructTwinNormal_create_with_logger_im
             }
         },
     )
+}
+fn wire__crate__api__lifetimeable__LtOwnedStructTwinNormal_create_with_logger_twin_normal_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "LtOwnedStructTwinNormal_create_with_logger_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_value = <String>::sse_decode(&mut deserializer);
+let api_logger = <RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<SimpleLogger>>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
+                    transform_result_sse::<_, ()>((move ||  {
+                        let mut api_logger_guard = None;
+let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![flutter_rust_bridge::for_generated::LockableOrderInfo::new(&api_logger, 0, false)]);
+        for i in decode_indices_ {
+            match i {
+                0 => api_logger_guard = Some(api_logger.lockable_decode_sync_ref()),
+                _ => unreachable!(),
+            }
+        }
+        let api_logger_guard = api_logger_guard.unwrap();
+ let output_ok = Result::<_,()>::Ok(crate::api::lifetimeable::LtOwnedStructTwinNormal::create_with_logger_twin_normal(api_value, &*api_logger_guard))?;  Ok(output_ok)
+                    })())
+                } })
 }
 fn wire__crate__api__lifetimeable__LtSubStructTwinNormal_greet_borrow_mut_self_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
@@ -40807,8 +40777,8 @@ fn pde_ffi_dispatcher_primary_impl(
 178 => wire__crate__api__lifetimeable__Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstatic_greet_borrow_self_twin_normal_impl(port, ptr, rust_vec_len, data_len),
 179 => wire__crate__api__lifetimeable__LtOwnedStructTwinNormal_compute_type_with_lifetime_twin_normal_impl(port, ptr, rust_vec_len, data_len),
 180 => wire__crate__api__lifetimeable__LtOwnedStructTwinNormal_compute_with_unrelated_borrowed_arg_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-181 => wire__crate__api__lifetimeable__LtOwnedStructTwinNormal_create_impl(port, ptr, rust_vec_len, data_len),
-182 => wire__crate__api__lifetimeable__LtOwnedStructTwinNormal_create_with_logger_impl(port, ptr, rust_vec_len, data_len),
+181 => wire__crate__api__lifetimeable__LtOwnedStructTwinNormal_create_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+182 => wire__crate__api__lifetimeable__LtOwnedStructTwinNormal_create_with_logger_twin_normal_impl(port, ptr, rust_vec_len, data_len),
 183 => wire__crate__api__lifetimeable__LtSubStructTwinNormal_greet_borrow_mut_self_twin_normal_impl(port, ptr, rust_vec_len, data_len),
 184 => wire__crate__api__lifetimeable__LtSubStructTwinNormal_greet_borrow_self_twin_normal_impl(port, ptr, rust_vec_len, data_len),
 185 => wire__crate__api__lifetimeable__lt_compute_with_lifetime_function_twin_normal_impl(port, ptr, rust_vec_len, data_len),
