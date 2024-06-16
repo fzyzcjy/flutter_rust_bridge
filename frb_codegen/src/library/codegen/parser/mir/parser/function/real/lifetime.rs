@@ -33,7 +33,7 @@ pub(crate) fn parse_function_lifetime(
             })
             .collect_vec(),
     };
-    log::warn!("parse_function_lifetime name={name} inputs_lifetimes={inputs_lifetimes:?} output_lifetimes={output_lifetimes:?} ans={ans:?}", name = sig.ident);
+    log::debug!("parse_function_lifetime name={name} inputs_lifetimes={inputs_lifetimes:?} output_lifetimes={output_lifetimes:?} ans={ans:?}", name = sig.ident);
     Ok(ans)
 }
 
