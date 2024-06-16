@@ -11,23 +11,35 @@ pub fn minimal_adder(a: i32, b: i32) -> i32 {
 
 // ----------------------------------------------- tests -------------------------------------------------
 
-// Lt := Lifetime Testers
-// Try *NOT* to impl Clone to ensure there are no extra clones
+/// Lt := Lifetime Testers
+/// Try *NOT* to impl Clone for these types in order to ensure there are no extra clones
 #[frb(opaque)]
 #[derive(Debug)]
-pub struct LtFooTwinNormal {
+pub struct LtOwnedStructTwinNormal {
+    sub: LtOwnedSubStructTwinNormal,
+}
+
+#[frb(opaque)]
+#[derive(Debug)]
+pub struct LtOwnedSubStructTwinNormal {
     value: String,
 }
 
-// Try *NOT* to impl Clone to ensure there are no extra clones
 #[frb(opaque)]
 #[derive(Debug)]
-pub struct LtBarTwinNormal<'a> {
-    foo: &'a LtFooTwinNormal,
+pub struct LtTypeWithLifetimeTwinNormal<'a> {
+    foo: &'a LtOwnedStructTwinNormal,
 }
 
-impl LtFooTwinNormal {
-    pub fn compute_borrow_foo_twin_normal(&self) -> LtBarTwinNormal {
-        LtBarTwinNormal { foo: self }
+#[allow(clippy::needless_lifetimes)]
+impl LtOwnedStructTwinNormal {
+    pub fn compute_type_with_lifetime_twin_normal<'a>(
+        &'a self,
+    ) -> LtTypeWithLifetimeTwinNormal<'a> {
+        LtTypeWithLifetimeTwinNormal { foo: self }
+    }
+
+    pub fn compute_sub_struct_twin_normal<'a>(&'a self) -> &'a LtOwnedSubStructTwinNormal {
+        &self.sub
     }
 }
