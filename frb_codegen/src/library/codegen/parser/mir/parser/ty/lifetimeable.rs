@@ -13,6 +13,10 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         original: MirTypeRustAutoOpaqueImplicit,
         namespace: Option<Namespace>,
     ) -> anyhow::Result<MirType> {
+        if !self.context.enable_lifetime {
+            return Ok(MirType::RustAutoOpaqueImplicit(original));
+        }
+
         let ty_str = &original.raw.string.with_original_lifetime();
         let ty: Type = syn::parse_str(ty_str)?;
 
