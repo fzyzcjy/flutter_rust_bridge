@@ -100,19 +100,16 @@ pub(crate) fn generate_api_methods(
 // }
 
 // TODO move
-pub(crate) fn dart_constructor_postfix(
-    name: &NamespacedName,
-    all_funcs: &[MirFunc],
-) -> &'static str {
-    if has_default_dart_constructor(name, all_funcs) {
+pub(crate) fn dart_constructor_postfix(owner_ty: &MirType, all_funcs: &[MirFunc]) -> &'static str {
+    if has_default_dart_constructor(owner_ty, all_funcs) {
         ".raw"
     } else {
         ""
     }
 }
 
-fn has_default_dart_constructor(name: &NamespacedName, all_funcs: &[MirFunc]) -> bool {
-    get_methods_of_ty(name, all_funcs).iter().any(|m| {
+fn has_default_dart_constructor(owner_ty: &MirType, all_funcs: &[MirFunc]) -> bool {
+    get_methods_of_ty(owner_ty, all_funcs).iter().any(|m| {
         m.default_constructor_mode() == Some(MirFuncDefaultConstructorMode::DartConstructor)
     })
 }
