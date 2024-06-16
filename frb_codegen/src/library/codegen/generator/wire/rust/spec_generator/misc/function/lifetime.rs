@@ -2,8 +2,11 @@ use crate::codegen::ir::mir::func::{MirFunc, MirFuncInput};
 use itertools::Itertools;
 
 pub(super) fn generate_code_inner_decode(func: &MirFunc, inner: &str) -> String {
-    let object_create_static_ref = (func.inputs.iter())
+    let interest_inputs = (func.inputs.iter())
         .filter(|field| field.needs_extend_lifetime)
+        .collect_vec();
+
+    let object_create_static_ref = (interest_inputs.iter())
         .map(|field| {
             generate_illegal_static_reference(&format!(
                 "api_{name}",
