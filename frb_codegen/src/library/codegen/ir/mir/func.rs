@@ -40,6 +40,7 @@ pub struct MirFunc {
 pub struct MirFuncInput {
     pub ownership_mode: Option<OwnershipMode>,
     pub inner: MirField,
+    pub needs_extend_lifetime: bool,
 }
 
 pub struct MirFuncOutput {
