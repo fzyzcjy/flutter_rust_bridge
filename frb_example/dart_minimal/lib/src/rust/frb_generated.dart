@@ -446,7 +446,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var inner =
         sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerflutter_rust_bridgefor_generatedLifetimeableLifetimeTesterTwoTwinNormalstatic(
             deserializer);
-    return TODO;
+    return inner;
   }
 
   @protected
@@ -574,7 +574,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           LifetimeTesterTwoTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerflutter_rust_bridgefor_generatedLifetimeableLifetimeTesterTwoTwinNormalstatic(
-        TODO, serializer);
+        self, serializer);
   }
 
   @protected
