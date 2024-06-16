@@ -65,4 +65,21 @@ Future<void> main() async {
       ]);
     });
   });
+
+  group('features', () {
+    test('computeTypeWithLifetimeTwinNormal', () async {
+      final ownedStruct = await LtOwnedStructTwinNormal.create(value: 'a');
+      final typeWithLifetime =
+          await ownedStruct.computeTypeWithLifetimeTwinNormal();
+
+      expect(await typeWithLifetime.greetBorrowSelfTwinNormal(), 'a');
+      expect(await typeWithLifetime.greetBorrowMutSelfTwinNormal(), 'a');
+
+      ownedStruct.dispose();
+
+      // can still call
+      expect(await typeWithLifetime.greetBorrowSelfTwinNormal(), 'a');
+      expect(await typeWithLifetime.greetBorrowMutSelfTwinNormal(), 'a');
+    });
+  });
 }
