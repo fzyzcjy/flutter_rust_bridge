@@ -53,7 +53,13 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                     return Ok(Skip(IgnoreBecauseNotAllowedOwner));
                 }
 
-                self.parse_method_owner_inner(func, actual_method_dart_name, owner_ty, trait_def)
+                self.parse_method_owner_inner(
+                    func,
+                    actual_method_dart_name,
+                    owner_ty,
+                    TODO,
+                    trait_def,
+                )
             }
             HirFlatFunctionOwner::TraitDef { trait_def_name } => {
                 let trait_def = MirTypeTraitDef {
@@ -64,6 +70,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                     func,
                     actual_method_dart_name,
                     MirType::TraitDef(trait_def.clone()),
+                    TODO,
                     Some(trait_def),
                 )
             }
@@ -75,6 +82,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         func: &HirFlatFunction,
         actual_method_dart_name: Option<String>,
         owner_ty: MirType,
+        owner_ty_raw: &str,
         trait_def: Option<MirTypeTraitDef>,
     ) -> anyhow::Result<OwnerInfoOrSkip> {
         use OwnerInfoOrSkip::*;
@@ -94,6 +102,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
         Ok(Info(MirFuncOwnerInfo::Method(MirFuncOwnerInfoMethod {
             owner_ty,
+            owner_ty_raw: owner_ty_raw.to_owned(),
             actual_method_name,
             actual_method_dart_name,
             mode,
