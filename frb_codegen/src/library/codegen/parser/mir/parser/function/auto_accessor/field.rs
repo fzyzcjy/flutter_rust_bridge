@@ -59,9 +59,9 @@ pub(super) fn parse_auto_accessor_of_field(
 
     let field_name_rust = field.name.rust_style();
     let rust_call_code = match accessor_mode {
-        MirFuncAccessorMode::Getter => format!("api_that.{field_name_rust}.clone()"),
+        MirFuncAccessorMode::Getter => format!("api_that_guard.{field_name_rust}.clone()"),
         MirFuncAccessorMode::Setter => {
-            format!("{{ api_that.{field_name_rust} = api_{field_name_rust}; }}")
+            format!("{{ api_that_guard.{field_name_rust} = api_{field_name_rust}; }}")
         }
     };
 
