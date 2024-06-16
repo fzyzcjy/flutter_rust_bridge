@@ -101,6 +101,7 @@ fn compute_interest_field(ty: &MirType) -> Option<OwnershipMode> {
         MirType::Delegate(MirTypeDelegate::ProxyEnum(ty)) => compute_interest_field(&ty.original),
         // temporarily only support Ref
         MirType::Delegate(MirTypeDelegate::DynTrait(_)) => Some(OwnershipMode::Ref),
+        MirType::Delegate(MirTypeDelegate::Lifetimeable(_)) => Some(OwnershipMode::Ref),
         _ => None,
     }
 }
