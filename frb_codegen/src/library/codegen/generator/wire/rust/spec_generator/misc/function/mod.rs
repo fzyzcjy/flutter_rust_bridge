@@ -76,7 +76,10 @@ fn generate_inner_func_args(func: &MirFunc) -> Vec<String> {
     (func.inputs.iter())
         .map(|field| {
             let ownership = lockable::generate_inner_func_arg_ownership(field);
-            let ans = format!("{ownership}api_{name}", name = field.inner.name.rust_style());
+            let ans = format!(
+                "{ownership}api_{name}",
+                name = field.inner.name.rust_style()
+            );
             let ans = lockable::generate_inner_func_arg(&ans, field);
             let ans = lifetime::generate_inner_func_arg(&ans, field);
             ans
@@ -144,7 +147,7 @@ fn generate_code_call_inner_func_result(func: &MirFunc, inner_func_args: Vec<Str
 }
 
 fn generate_code_postprocess_inner_output(func: &MirFunc) -> String {
-    TODO
+    lockable::generate_code_postprocess_inner_output(func)
 }
 
 fn generate_handler_func_name(func: &MirFunc) -> String {
@@ -194,7 +197,9 @@ fn generate_code_closure(
         .to_string()
         .to_case(Case::Snake);
 
-    let code_inner = format!("{code_inner_decode} {code_call_inner_func_result} {code_postprocess_inner_output}");
+    let code_inner = format!(
+        "{code_inner_decode} {code_call_inner_func_result} {code_postprocess_inner_output} Ok(output_ok)"
+    );
 
     match func.mode {
         MirFuncMode::Sync => {
