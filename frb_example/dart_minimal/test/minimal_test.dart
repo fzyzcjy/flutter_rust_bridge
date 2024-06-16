@@ -16,4 +16,14 @@ Future<void> main() async {
     print('Action: Call rust (after)');
   });
   print('Action: Configure tests (end)');
+
+  // ----------------------------------------------------------------
+
+  test('empty', () async {
+    final ownedStruct = await LtOwnedStructTwinNormal.create();
+    expect(await ltGetAndResetLogsTwinNormal(), <String>[]);
+    ownedStruct.dispose();
+    expect(await ltGetAndResetLogsTwinNormal(),
+        <String>['LtOwnedStructTwinNormal.drop']);
+  });
 }
