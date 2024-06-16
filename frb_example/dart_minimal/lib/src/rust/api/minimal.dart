@@ -3,8 +3,9 @@
 
 // ignore_for_file: invalid_use_of_internal_member, unused_import, unnecessary_import
 
-import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
+
+import '../frb_generated.dart';
 
 // These functions are ignored because they are not marked as `pub`: `log`
 // These functions have error during generation (see debug logs or enable `stop_on_error: true` for more details): `compute_nested_type_with_lifetime_twin_normal`
