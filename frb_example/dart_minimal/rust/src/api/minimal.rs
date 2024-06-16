@@ -29,3 +29,9 @@ impl<'a> LifetimeTesterTwoTwinNormal<'a> {
         self.one.0.to_string()
     }
 }
+
+#[frb(opaque)]
+pub struct RAOTester;
+impl RAOTester {
+    pub fn func_for_rao(&self) {}
+}
