@@ -1,7 +1,6 @@
 use crate::codegen::generator::api_dart::spec_generator::class::method::dart_constructor_postfix;
 use crate::codegen::generator::wire::dart::spec_generator::codec::dco::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::codec::dco::decoder::ty::WireDartCodecDcoGeneratorDecoderTrait;
-use crate::codegen::ir::mir::ty::MirType;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use itertools::Itertools;
 
@@ -26,10 +25,8 @@ impl<'a> WireDartCodecDcoGeneratorDecoderTrait for StructRefWireDartCodecDcoGene
         let inner = inner.join("\n");
         let cast = "final arr = raw as List<dynamic>;".to_string();
         let safe_check = format!("if (arr.length != {}) throw Exception('unexpected arr length: expect {} but see ${{arr.length}}');", s.fields.len(), s.fields.len());
-        let ctor_postfix = dart_constructor_postfix(
-            &MirType::StructRef(self.mir.clone()),
-            &self.context.mir_pack.funcs_with_impl(),
-        );
+        let ctor_postfix =
+            dart_constructor_postfix(&s.name, &self.context.mir_pack.funcs_with_impl());
         format!(
             "{cast}
                 {safe_check}
