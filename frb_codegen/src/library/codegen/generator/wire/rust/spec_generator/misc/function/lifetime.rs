@@ -1,4 +1,6 @@
 use crate::codegen::ir::mir::func::{MirFunc, MirFuncInput};
+use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
+use crate::codegen::ir::mir::ty::MirType;
 use itertools::Itertools;
 
 pub(super) fn generate_code_inner_decode(func: &MirFunc, inner: &str) -> String {
@@ -57,8 +59,13 @@ pub(crate) fn generate_inner_func_arg(raw: &str, field: &MirFuncInput) -> String
 }
 
 pub(super) fn generate_code_postprocess_inner_output(func: &MirFunc) -> String {
-    if func.inputs.iter().any(|field| isin)
-    format!(
-        "let output_ok = {TODO}"
-    )
+    if !matches!(
+        &func.output.normal,
+        MirType::Delegate(MirTypeDelegate::Lifetimeable(_))
+    ) {
+        return "".to_owned();
+    }
+
+    let dependencies = TODO;
+    format!("let output_ok = RustAutoOpaque::new(flutter_rust_bridge::for_generated::Lifetimeablea::new(output_ok, {dependencies}));")
 }
