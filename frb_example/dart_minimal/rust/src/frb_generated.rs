@@ -103,13 +103,11 @@ fn wire__crate__api__minimal__LifetimeTesterOneTwinNormal_compute_two_impl(
                             api_that_guard_illegal_static_ref,
                         ),
                     )?;
-                    let output_ok = RustAutoOpaque::new(
-                        flutter_rust_bridge::for_generated::Lifetimeable::new(
+                    let output_ok =
+                        RustAutoOpaque::new(flutter_rust_bridge::for_generated::Lifetimeable::new(
                             output_ok,
-                            Box::new(api_that.clone()),
-                            Box::new(api_that_guard.clone()),
-                        ),
-                    );
+                            vec![Box::new(api_that.clone()), Box::new(api_that_guard.clone())],
+                        ));
                     Ok(output_ok)
                 })())
             }
