@@ -6,11 +6,11 @@ pub struct MirLifetimeAwareType {
 }
 
 impl MirLifetimeAwareType {
-    pub fn raw(&self) -> &str {
+    pub fn with_original_lifetime(&self) -> &str {
         &self.raw
     }
 
-    pub fn lifetime_replaced_static(&self) -> String {
-        replace_all_lifetimes_to_static(self.raw())
+    pub fn with_static_lifetime(&self) -> String {
+        replace_all_lifetimes_to_static(&self.raw)
     }
 }
