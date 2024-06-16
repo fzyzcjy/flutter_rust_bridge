@@ -3890,15 +3890,15 @@ void frbgen_frb_example_pure_dart_wire__crate__api__lifetimeable__LtOwnedStructT
                                                                                                                                           int32_t rust_vec_len_,
                                                                                                                                           int32_t data_len_);
 
-void frbgen_frb_example_pure_dart_wire__crate__api__lifetimeable__LtOwnedStructTwinNormal_create(int64_t port_,
-                                                                                                 uint8_t *ptr_,
-                                                                                                 int32_t rust_vec_len_,
-                                                                                                 int32_t data_len_);
-
-void frbgen_frb_example_pure_dart_wire__crate__api__lifetimeable__LtOwnedStructTwinNormal_create_with_logger(int64_t port_,
+void frbgen_frb_example_pure_dart_wire__crate__api__lifetimeable__LtOwnedStructTwinNormal_create_twin_normal(int64_t port_,
                                                                                                              uint8_t *ptr_,
                                                                                                              int32_t rust_vec_len_,
                                                                                                              int32_t data_len_);
+
+void frbgen_frb_example_pure_dart_wire__crate__api__lifetimeable__LtOwnedStructTwinNormal_create_with_logger_twin_normal(int64_t port_,
+                                                                                                                         uint8_t *ptr_,
+                                                                                                                         int32_t rust_vec_len_,
+                                                                                                                         int32_t data_len_);
 
 void frbgen_frb_example_pure_dart_wire__crate__api__lifetimeable__LtSubStructTwinNormal_greet_borrow_mut_self_twin_normal(int64_t port_,
                                                                                                                           uint8_t *ptr_,
@@ -16082,8 +16082,8 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__lifetimeable__Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstatic_greet_borrow_self_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__lifetimeable__LtOwnedStructTwinNormal_compute_type_with_lifetime_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__lifetimeable__LtOwnedStructTwinNormal_compute_with_unrelated_borrowed_arg_twin_normal);
-    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__lifetimeable__LtOwnedStructTwinNormal_create);
-    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__lifetimeable__LtOwnedStructTwinNormal_create_with_logger);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__lifetimeable__LtOwnedStructTwinNormal_create_twin_normal);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__lifetimeable__LtOwnedStructTwinNormal_create_with_logger_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__lifetimeable__LtSubStructTwinNormal_greet_borrow_mut_self_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__lifetimeable__LtSubStructTwinNormal_greet_borrow_self_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__lifetimeable__lt_compute_with_lifetime_function_twin_normal);

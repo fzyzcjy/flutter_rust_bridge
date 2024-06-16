@@ -15541,13 +15541,13 @@ pub fn wire__crate__api__lifetimeable__LtOwnedStructTwinNormal_compute_with_unre
 }
 
 #[wasm_bindgen]
-pub fn wire__crate__api__lifetimeable__LtOwnedStructTwinNormal_create(
+pub fn wire__crate__api__lifetimeable__LtOwnedStructTwinNormal_create_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) {
-    wire__crate__api__lifetimeable__LtOwnedStructTwinNormal_create_impl(
+    wire__crate__api__lifetimeable__LtOwnedStructTwinNormal_create_twin_normal_impl(
         port_,
         ptr_,
         rust_vec_len_,
@@ -15556,13 +15556,13 @@ pub fn wire__crate__api__lifetimeable__LtOwnedStructTwinNormal_create(
 }
 
 #[wasm_bindgen]
-pub fn wire__crate__api__lifetimeable__LtOwnedStructTwinNormal_create_with_logger(
+pub fn wire__crate__api__lifetimeable__LtOwnedStructTwinNormal_create_with_logger_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) {
-    wire__crate__api__lifetimeable__LtOwnedStructTwinNormal_create_with_logger_impl(
+    wire__crate__api__lifetimeable__LtOwnedStructTwinNormal_create_with_logger_twin_normal_impl(
         port_,
         ptr_,
         rust_vec_len_,

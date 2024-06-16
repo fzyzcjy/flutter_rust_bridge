@@ -39328,21 +39328,22 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__lifetimeable__LtOwnedStructTwinNormal_compute_with_unrelated_borrowed_arg_twin_normal(
               port_, ptr_, rust_vec_len_, data_len_);
 
-  void wire__crate__api__lifetimeable__LtOwnedStructTwinNormal_create(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire__crate__api__lifetimeable__LtOwnedStructTwinNormal_create(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire__crate__api__lifetimeable__LtOwnedStructTwinNormal_create_with_logger(
+  void wire__crate__api__lifetimeable__LtOwnedStructTwinNormal_create_twin_normal(
           NativePortType port_,
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule
-          .wire__crate__api__lifetimeable__LtOwnedStructTwinNormal_create_with_logger(
+          .wire__crate__api__lifetimeable__LtOwnedStructTwinNormal_create_twin_normal(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__lifetimeable__LtOwnedStructTwinNormal_create_with_logger_twin_normal(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__lifetimeable__LtOwnedStructTwinNormal_create_with_logger_twin_normal(
               port_, ptr_, rust_vec_len_, data_len_);
 
   void wire__crate__api__lifetimeable__LtSubStructTwinNormal_greet_borrow_mut_self_twin_normal(
@@ -62078,14 +62079,15 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int rust_vec_len_,
           int data_len_);
 
-  external void wire__crate__api__lifetimeable__LtOwnedStructTwinNormal_create(
-      NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_,
-      int rust_vec_len_,
-      int data_len_);
+  external void
+      wire__crate__api__lifetimeable__LtOwnedStructTwinNormal_create_twin_normal(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
 
   external void
-      wire__crate__api__lifetimeable__LtOwnedStructTwinNormal_create_with_logger(
+      wire__crate__api__lifetimeable__LtOwnedStructTwinNormal_create_with_logger_twin_normal(
           NativePortType port_,
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,

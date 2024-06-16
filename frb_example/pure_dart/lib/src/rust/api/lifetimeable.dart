@@ -74,14 +74,16 @@ abstract class LtOwnedStructTwinNormal implements RustOpaqueInterface {
           {required LtOwnedStructTwinNormal unrelatedBorrowed,
           required LtOwnedStructTwinNormal unrelatedOwned});
 
-  static Future<LtOwnedStructTwinNormal> create({required String value}) =>
+  static Future<LtOwnedStructTwinNormal> createTwinNormal(
+          {required String value}) =>
       RustLib.instance.api
-          .crateApiLifetimeableLtOwnedStructTwinNormalCreate(value: value);
+          .crateApiLifetimeableLtOwnedStructTwinNormalCreateTwinNormal(
+              value: value);
 
-  static Future<LtOwnedStructTwinNormal> createWithLogger(
+  static Future<LtOwnedStructTwinNormal> createWithLoggerTwinNormal(
           {required String value, required SimpleLogger logger}) =>
       RustLib.instance.api
-          .crateApiLifetimeableLtOwnedStructTwinNormalCreateWithLogger(
+          .crateApiLifetimeableLtOwnedStructTwinNormalCreateWithLoggerTwinNormal(
               value: value, logger: logger);
 }
 

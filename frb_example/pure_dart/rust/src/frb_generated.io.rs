@@ -18618,13 +18618,13 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__lifetimeable__L
 }
 
 #[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__lifetimeable__LtOwnedStructTwinNormal_create(
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__lifetimeable__LtOwnedStructTwinNormal_create_twin_normal(
     port_: i64,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
 ) {
-    wire__crate__api__lifetimeable__LtOwnedStructTwinNormal_create_impl(
+    wire__crate__api__lifetimeable__LtOwnedStructTwinNormal_create_twin_normal_impl(
         port_,
         ptr_,
         rust_vec_len_,
@@ -18633,13 +18633,13 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__lifetimeable__L
 }
 
 #[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__lifetimeable__LtOwnedStructTwinNormal_create_with_logger(
+pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__lifetimeable__LtOwnedStructTwinNormal_create_with_logger_twin_normal(
     port_: i64,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
 ) {
-    wire__crate__api__lifetimeable__LtOwnedStructTwinNormal_create_with_logger_impl(
+    wire__crate__api__lifetimeable__LtOwnedStructTwinNormal_create_with_logger_twin_normal_impl(
         port_,
         ptr_,
         rust_vec_len_,
