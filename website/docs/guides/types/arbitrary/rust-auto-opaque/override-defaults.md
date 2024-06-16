@@ -1,4 +1,4 @@
-# Override defaults
+# Override opaqueness
 
 By default, flutter_rust_bridge tries to infer whether a type is opaque or not automatically.
 To override the default behavior, please use `#[frb(opaque)]` and `#[frb(non_opaque)]`.
