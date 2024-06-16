@@ -1,5 +1,5 @@
-pub(crate) mod lockable;
 pub(crate) mod lifetime;
+pub(crate) mod lockable;
 
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::target::TargetOrCommon;
@@ -94,7 +94,7 @@ fn generate_wrap_info_obj(func: &MirFunc) -> String {
 }
 
 fn generate_code_inner_decode(func: &MirFunc) -> String {
-    lockable::generate_code_inner_decode(func)
+    lifetime::generate_code_inner_decode(func, &lockable::generate_code_inner_decode(func))
 }
 
 fn generate_code_call_inner_func_result(func: &MirFunc, inner_func_args: Vec<String>) -> String {
