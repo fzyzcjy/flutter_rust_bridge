@@ -26,19 +26,28 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         }))
     }
 
-    pub(crate) fn parse_rust_auto_opaque_explicit(
+    fn parse_rust_auto_opaque_explicit(
         &mut self,
         inner: &Type,
         namespace: Option<Namespace>,
         codec: Option<RustOpaqueCodecMode>,
     ) -> anyhow::Result<MirType> {
+        Ok(MirType::Delegate(MirTypeDelegate::RustAutoOpaqueExplicit(
+            self.parse_rust_auto_opaque_explicit_typed(inner, namespace, codec)?,
+        )))
+    }
+
+    pub(crate) fn parse_rust_auto_opaque_explicit_typed(
+        &mut self,
+        inner: &Type,
+        namespace: Option<Namespace>,
+        codec: Option<RustOpaqueCodecMode>,
+    ) -> anyhow::Result<MirTypeDelegateRustAutoOpaqueExplicit> {
         let (ans_raw, ans_inner) =
             self.parse_type_rust_auto_opaque_common(inner.clone(), namespace, codec)?;
-        Ok(MirType::Delegate(MirTypeDelegate::RustAutoOpaqueExplicit(
-            MirTypeDelegateRustAutoOpaqueExplicit {
-                raw: ans_raw,
-                inner: ans_inner,
-            },
-        )))
+        Ok(MirTypeDelegateRustAutoOpaqueExplicit {
+            raw: ans_raw,
+            inner: ans_inner,
+        })
     }
 }
