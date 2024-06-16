@@ -115,7 +115,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
 let api_arg_guard = Arc::new(api_arg_guard);
                 let api_arg_guard_illegal_static_ref = unsafe {
             flutter_rust_bridge::for_generated::ouroboros_change_lifetime(&api_arg_guard)
-        }; let output_ok = Result::<_,()>::Ok(crate::api::minimal::LtTypeWithLifetimeTwinNormal ::compute_arg_generic_lifetime_twin_normal(&*api_arg_guard_illegal_static_ref))?; let output_ok = RustAutoOpaque::new(Lifetimeable::new(output_ok, vec![Box::new(api_arg.clone()), Box::new(api_arg_guard.clone())])); Ok(output_ok)
+        }; let output_ok = Result::<_,()>::Ok(crate::api::minimal::LtTypeWithLifetimeTwinNormal ::compute_arg_generic_lifetime_twin_normal(&*&api_arg_guard_illegal_static_ref))?; let output_ok = RustAutoOpaque::new(Lifetimeable::new(output_ok, vec![Box::new(api_arg.clone()), Box::new(api_arg_guard.clone())])); Ok(output_ok)
                     })())
                 } })
 }
