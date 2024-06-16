@@ -77,5 +77,7 @@ pub(super) fn generate_code_postprocess_inner_output(func: &MirFunc) -> String {
         })
         .map(|var_name| format!("Box::new({var_name}.clone())"))
         .join(", ");
-    format!("let output_ok = RustAutoOpaque::new(Lifetimeable::new(output_ok, vec![{dependencies}]));")
+    format!(
+        "let output_ok = RustAutoOpaque::new(Lifetimeable::new(output_ok, vec![{dependencies}]));"
+    )
 }
