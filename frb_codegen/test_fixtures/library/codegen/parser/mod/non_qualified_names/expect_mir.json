@@ -38,6 +38,7 @@
               "type": "Delegate"
             }
           },
+          "needs_extend_lifetime": false,
           "ownership_mode": "Owned"
         },
         {
@@ -59,6 +60,7 @@
               "type": "Delegate"
             }
           },
+          "needs_extend_lifetime": false,
           "ownership_mode": "Owned"
         }
       ],
