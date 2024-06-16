@@ -24,6 +24,8 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                 "flutter_rust_bridge::for_generated::Lifetimeable<{}>",
                 replace_lifetimes_to_static(ty_str, &lifetimes)
             );
+            
+            let inner_dart_api_type = TODO;
 
             return Ok(MirType::Delegate(MirTypeDelegate::Lifetimeable(
                 MirTypeDelegateLifetimeable {
@@ -31,8 +33,8 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                     delegate: self.parse_rust_auto_opaque_explicit_typed(
                         &syn::parse_str(&delegate_ty_str)?,
                         namespace,
-                        // Some(self.context.rust_output_path_namespace.clone()),
                         None,
+                        Some(inner_dart_api_type),
                     )?,
                 },
             )));
