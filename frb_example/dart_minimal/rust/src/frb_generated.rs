@@ -34,7 +34,7 @@ flutter_rust_bridge::frb_generated_boilerplate!(
     default_rust_auto_opaque = RustAutoOpaqueMoi,
 );
 pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "2.0.0-dev.39";
-pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = 1535573962;
+pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = 660839085;
 
 // Section: executor
 
@@ -116,6 +116,35 @@ let api_arg_guard = Arc::new(api_arg_guard);
                 let api_arg_guard_illegal_static_ref = unsafe {
             flutter_rust_bridge::for_generated::ouroboros_change_lifetime(&api_arg_guard)
         }; let output_ok = Result::<_,()>::Ok(crate::api::minimal::LtTypeWithLifetimeTwinNormal ::compute_arg_generic_lifetime_twin_normal(&*api_arg_guard_illegal_static_ref))?; let output_ok = RustAutoOpaque::new(flutter_rust_bridge::for_generated::Lifetimeable::new(output_ok, vec![Box::new(api_arg.clone()), Box::new(api_arg_guard.clone())])); Ok(output_ok)
+                    })())
+                } })
+}
+fn wire__crate__api__minimal__Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithLifetimeTwinNormalstatic_compute_nested_type_with_lifetime_twin_normal_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithLifetimeTwinNormalstatic_compute_nested_type_with_lifetime_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_that = <RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner< Lifetimeable < LtTypeWithLifetimeTwinNormal < 'static > >>>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
+                    transform_result_sse::<_, ()>((move ||  {
+                        let api_that_illegal_static_ref = unsafe {
+            flutter_rust_bridge::for_generated::ouroboros_change_lifetime(&api_that)
+        };let mut api_that_guard = None;
+let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![flutter_rust_bridge::for_generated::LockableOrderInfo::new(&api_that, 0, false)]);
+        for i in decode_indices_ {
+            match i {
+                0 => api_that_guard = Some(api_that_illegal_static_ref.lockable_decode_sync_ref()),
+                _ => unreachable!(),
+            }
+        }
+        let api_that_guard = api_that_guard.unwrap();
+let api_that_guard = Arc::new(api_that_guard);
+                let api_that_guard_illegal_static_ref = unsafe {
+            flutter_rust_bridge::for_generated::ouroboros_change_lifetime(&api_that_guard)
+        }; let output_ok = Result::<_,()>::Ok(crate::api::minimal::LtTypeWithLifetimeTwinNormal ::compute_nested_type_with_lifetime_twin_normal(&*&api_that_guard_illegal_static_ref))?; let output_ok = RustAutoOpaque::new(flutter_rust_bridge::for_generated::Lifetimeable::new(output_ok, vec![Box::new(api_that.clone()), Box::new(api_that_guard.clone())])); Ok(output_ok)
                     })())
                 } })
 }
@@ -958,21 +987,22 @@ fn pde_ffi_dispatcher_primary_impl(
                         1 => wire__crate__api__minimal__Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtNestedTypeWithLifetimeTwinNormalstatic_greet_borrow_mut_self_twin_normal_impl(port, ptr, rust_vec_len, data_len),
 2 => wire__crate__api__minimal__Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtNestedTypeWithLifetimeTwinNormalstatic_greet_borrow_self_twin_normal_impl(port, ptr, rust_vec_len, data_len),
 3 => wire__crate__api__minimal__Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithLifetimeTwinNormalstatic_compute_arg_generic_lifetime_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-4 => wire__crate__api__minimal__Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithLifetimeTwinNormalstatic_greet_borrow_mut_self_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-5 => wire__crate__api__minimal__Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithLifetimeTwinNormalstatic_greet_borrow_self_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-6 => wire__crate__api__minimal__Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstatic_compute_with_multi_arg_having_lifetime_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-7 => wire__crate__api__minimal__Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstatic_greet_borrow_mut_self_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-8 => wire__crate__api__minimal__Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstatic_greet_borrow_self_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-9 => wire__crate__api__minimal__LtOwnedStructTwinNormal_compute_type_with_lifetime_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-10 => wire__crate__api__minimal__LtOwnedStructTwinNormal_compute_with_unrelated_borrowed_arg_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-11 => wire__crate__api__minimal__LtOwnedStructTwinNormal_create_impl(port, ptr, rust_vec_len, data_len),
-12 => wire__crate__api__minimal__LtOwnedStructTwinNormal_create_with_logger_impl(port, ptr, rust_vec_len, data_len),
-13 => wire__crate__api__minimal__LtSubStructTwinNormal_greet_borrow_mut_self_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-14 => wire__crate__api__minimal__LtSubStructTwinNormal_greet_borrow_self_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-15 => wire__crate__api__minimal__SimpleLogger_get_and_reset_impl(port, ptr, rust_vec_len, data_len),
-17 => wire__crate__api__minimal__init_app_impl(port, ptr, rust_vec_len, data_len),
-18 => wire__crate__api__minimal__lt_compute_with_lifetime_function_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-19 => wire__crate__api__minimal__minimal_adder_impl(port, ptr, rust_vec_len, data_len),
+4 => wire__crate__api__minimal__Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithLifetimeTwinNormalstatic_compute_nested_type_with_lifetime_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+5 => wire__crate__api__minimal__Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithLifetimeTwinNormalstatic_greet_borrow_mut_self_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+6 => wire__crate__api__minimal__Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithLifetimeTwinNormalstatic_greet_borrow_self_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+7 => wire__crate__api__minimal__Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstatic_compute_with_multi_arg_having_lifetime_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+8 => wire__crate__api__minimal__Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstatic_greet_borrow_mut_self_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+9 => wire__crate__api__minimal__Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstatic_greet_borrow_self_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+10 => wire__crate__api__minimal__LtOwnedStructTwinNormal_compute_type_with_lifetime_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+11 => wire__crate__api__minimal__LtOwnedStructTwinNormal_compute_with_unrelated_borrowed_arg_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+12 => wire__crate__api__minimal__LtOwnedStructTwinNormal_create_impl(port, ptr, rust_vec_len, data_len),
+13 => wire__crate__api__minimal__LtOwnedStructTwinNormal_create_with_logger_impl(port, ptr, rust_vec_len, data_len),
+14 => wire__crate__api__minimal__LtSubStructTwinNormal_greet_borrow_mut_self_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+15 => wire__crate__api__minimal__LtSubStructTwinNormal_greet_borrow_self_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+16 => wire__crate__api__minimal__SimpleLogger_get_and_reset_impl(port, ptr, rust_vec_len, data_len),
+18 => wire__crate__api__minimal__init_app_impl(port, ptr, rust_vec_len, data_len),
+19 => wire__crate__api__minimal__lt_compute_with_lifetime_function_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+20 => wire__crate__api__minimal__minimal_adder_impl(port, ptr, rust_vec_len, data_len),
                         _ => unreachable!(),
                     }
 }
@@ -985,7 +1015,7 @@ fn pde_ffi_dispatcher_sync_impl(
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     // Codec=Pde (Serialization + dispatch), see doc to use other codecs
     match func_id {
-        16 => wire__crate__api__minimal__SimpleLogger_new_impl(ptr, rust_vec_len, data_len),
+        17 => wire__crate__api__minimal__SimpleLogger_new_impl(ptr, rust_vec_len, data_len),
         _ => unreachable!(),
     }
 }
