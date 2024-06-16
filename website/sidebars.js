@@ -114,6 +114,7 @@ const sidebars = {
                                     },
                                     items: [
                                         'guides/types/arbitrary/rust-auto-opaque/overview',
+                                        'guides/types/arbitrary/rust-auto-opaque/lifetime',
                                         'guides/types/arbitrary/rust-auto-opaque/using-data',
                                         'guides/types/arbitrary/rust-auto-opaque/override-defaults',
                                         'guides/types/arbitrary/rust-auto-opaque/properties',
