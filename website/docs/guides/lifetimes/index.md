@@ -1,4 +1,4 @@
-# Lifetimes / Reference types
+# Return lifetimes / references
 
 ```mdx-code-block
 import DocCardList from '@theme/DocCardList';

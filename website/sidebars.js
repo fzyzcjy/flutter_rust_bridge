@@ -219,7 +219,7 @@ const sidebars = {
                 },
                 {
                     type: 'category',
-                    label: 'Lifetimes / Reference types',
+                    label: 'Return lifetimes / references',
                     collapsed: true,
                     link: {
                         type: 'doc',
