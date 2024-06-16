@@ -12,6 +12,7 @@ use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::if_then_some;
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
+use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use crate::utils::basic_code::dart_header_code::DartHeaderCode;
 use crate::utils::namespace::NamespacedName;
 use convert_case::{Case, Casing};
@@ -63,8 +64,8 @@ pub(crate) fn generate_api_methods(
     config: &GenerateApiMethodConfig,
     dart_class_name: &str,
 ) -> GeneratedApiMethods {
-    let query_class_name = compute_class_name_for_querying_methods(owner_ty);
-    let methods = get_methods_of_ty(&query_class_name, &context.mir_pack.funcs_all)
+    let query_class_name = compute_class_name_for_querying_methods(owner_ty, context);
+    let methods = get_methods_of_ty(&query_class_name, &context.mir_pack.funcs_all, context)
         .iter()
         .filter_map(|func| generate_api_method(func, context, config, dart_class_name))
         .collect_vec();
@@ -75,51 +76,70 @@ pub(crate) fn generate_api_methods(
     }
 }
 
-fn compute_class_name_for_querying_methods(ty: &MirType) -> NamespacedName {
-    match ty {
-        MirType::EnumRef(ty) => ty.ident.0.clone(),
-        MirType::StructRef(ty) => ty.ident.0.clone(),
-        MirType::TraitDef(ty) => ty.name.clone(),
-        MirType::Delegate(MirTypeDelegate::ProxyVariant(ty)) => {
-            compute_class_name_for_querying_methods(&ty.inner)
-        }
-        MirType::RustAutoOpaqueImplicit(ty) => {
-            compute_class_name_for_querying_methods(&MirType::RustOpaque(ty.inner.clone()))
-        }
-        MirType::RustOpaque(ty) => {
-            lazy_static! {
-                static ref FILTER: Regex =
-                    Regex::new(r"^flutter_rust_bridge::for_generated::RustAutoOpaqueInner<(.*)>$")
-                        .unwrap();
-            }
-            let name = FILTER.replace_all(&ty.inner.0, "$1").to_string();
-            NamespacedName::new(ty.namespace.clone(), name)
-        }
-        _ => panic!("compute_query_class_name see unknown ty={ty:?}"),
-    }
+fn compute_class_name_for_querying_methods(
+    ty: &MirType,
+    context: ApiDartGeneratorContext,
+) -> String {
+    ApiDartGenerator::new(ty.clone(), context).dart_api_type()
+    //     match ty {
+    //         MirType::EnumRef(ty) => ty.ident.0.clone(),
+    //         MirType::StructRef(ty) => ty.ident.0.clone(),
+    //         MirType::TraitDef(ty) => ty.name.clone(),
+    //         MirType::Delegate(MirTypeDelegate::ProxyVariant(ty)) => {
+    //             compute_class_name_for_querying_methods(&ty.inner)
+    //         }
+    //         MirType::RustAutoOpaqueImplicit(ty) => {
+    //             compute_class_name_for_querying_methods(&MirType::RustOpaque(ty.inner.clone()))
+    //         }
+    //         MirType::RustOpaque(ty) => {
+    //             lazy_static! {
+    //                 static ref FILTER: Regex =
+    //                     Regex::new(r"^flutter_rust_bridge::for_generated::RustAutoOpaqueInner<(.*)>$")
+    //                         .unwrap();
+    //             }
+    //             let name = FILTER.replace_all(&ty.inner.0, "$1").to_string();
+    //             NamespacedName::new(ty.namespace.clone(), name)
+    //         }
+    //         _ => panic!("compute_query_class_name see unknown ty={ty:?}"),
+    //     }
 }
 
 // TODO move
 pub(crate) fn dart_constructor_postfix(
-    name: &NamespacedName,
+    name: &str,
     all_funcs: &[MirFunc],
+    context: ApiDartGeneratorContext,
 ) -> &'static str {
-    if has_default_dart_constructor(name, all_funcs) {
+    if has_default_dart_constructor(name, all_funcs, context) {
         ".raw"
     } else {
         ""
     }
 }
 
-fn has_default_dart_constructor(name: &NamespacedName, all_funcs: &[MirFunc]) -> bool {
-    get_methods_of_ty(name, all_funcs).iter().any(|m| {
+fn has_default_dart_constructor(
+    name: &str,
+    all_funcs: &[MirFunc],
+    context: ApiDartGeneratorContext,
+) -> bool {
+    get_methods_of_ty(name, all_funcs, context).iter().any(|m| {
         m.default_constructor_mode() == Some(MirFuncDefaultConstructorMode::DartConstructor)
     })
 }
 
-fn get_methods_of_ty<'a>(name: &NamespacedName, all_funcs: &'a [MirFunc]) -> Vec<&'a MirFunc> {
+fn get_methods_of_ty<'a>(
+    name: &str,
+    all_funcs: &'a [MirFunc],
+    context: ApiDartGeneratorContext,
+) -> Vec<&'a MirFunc> {
     (all_funcs.iter())
-        .filter(|f| matches!(&f.owner, MirFuncOwnerInfo::Method(m) if m.owner_ty_name().as_ref() == Some(name)))
+        .filter(|f| {
+            matches!(
+                &f.owner, MirFuncOwnerInfo::Method(m)
+                // if m.owner_ty_name().as_ref() == Some(name)
+                if ApiDartGenerator::new(m.owner_ty.clone(), context).dart_api_type() == name
+            )
+        })
         .collect_vec()
 }
 
