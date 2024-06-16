@@ -1,14 +1,17 @@
-use crate::codegen::parser::mir::parser::lifetime_extractor::Lifetime;
+use crate::codegen::parser::mir::parser::lifetime_extractor::{Lifetime, LifetimeExtractor};
 use anyhow::ensure;
 use itertools::{concat, Itertools};
 use std::collections::HashSet;
-use syn::Signature;
+use syn::{ReturnType, Signature};
 
 pub(crate) fn parse_function_lifetime(
     sig: &Signature,
 ) -> anyhow::Result<ParseFunctionLifetimeOutput> {
     let inputs_lifetimes: Vec<Vec<Lifetime>> = (sig.inputs.iter()).map(|x| TODO).collect_vec();
-    let output_lifetimes: Vec<Lifetime> = TODO;
+    let output_lifetimes: Vec<Lifetime> = match &sig.output {
+        ReturnType::Type(_, ty) => LifetimeExtractor::extract_skipping_static(&*ty),
+        ReturnType::Default => vec![],
+    };
 
     ensure_one_lifetime(&inputs_lifetimes, &output_lifetimes)?;
 

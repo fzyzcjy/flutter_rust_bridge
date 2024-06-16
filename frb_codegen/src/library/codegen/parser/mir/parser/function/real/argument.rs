@@ -26,19 +26,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         is_owner_trait_def: bool,
         needs_extend_lifetime: bool,
     ) -> anyhow::Result<FunctionPartialInfo> {
-        let (ty_syn_raw, name) = match sig_input {
-            FnArg::Typed(ref pat_type) => {
-                (*pat_type.ty.clone(), parse_name_from_pat_type(pat_type)?)
-            }
-            FnArg::Receiver(ref receiver) => {
-                let method = if_then_some!(let MirFuncOwnerInfo::Method(method) = owner, method)
-                    .context("`self` must happen within methods")?;
-                (
-                    syntheize_receiver_type(receiver, method)?,
-                    "that".to_owned(),
-                )
-            }
-        };
+        let (ty_syn_raw, name) = parse_argument_ty_and_name(sig_input, owner);
 
         let force_split_ownership = is_owner_trait_def;
         let (ty_syn_without_ownership, ownership_mode_split) =
@@ -85,6 +73,23 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             ..Default::default()
         })
     }
+}
+
+pub(crate) fn parse_argument_ty_and_name(
+    sig_input: &FnArg,
+    owner: &MirFuncOwnerInfo,
+) -> (Type, String) {
+    match sig_input {
+        FnArg::Typed(ref pat_type) => (*pat_type.ty.clone(), parse_name_from_pat_type(pat_type)?),
+        FnArg::Receiver(ref receiver) => {
+            let method = if_then_some!(let MirFuncOwnerInfo::Method(method) = owner, method)
+                .context("`self` must happen within methods")?;
+            (
+                syntheize_receiver_type(receiver, method)?,
+                "that".to_owned(),
+            )
+        }
+    };
 }
 
 pub(crate) fn merge_ownership_into_ty(
