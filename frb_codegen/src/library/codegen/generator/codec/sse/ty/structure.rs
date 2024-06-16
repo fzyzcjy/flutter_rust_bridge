@@ -22,7 +22,6 @@ impl<'a> CodecSseTyTrait for StructRefCodecSseTy<'a> {
 impl<'a> StructRefCodecSseTy<'a> {
     fn new_generalized_generator(&self) -> GeneralizedStructGenerator {
         GeneralizedStructGenerator::new(
-            Some(self.mir.clone()),
             self.mir.get(self.context.mir_pack).clone(),
             self.context,
             Struct,
@@ -31,25 +30,15 @@ impl<'a> StructRefCodecSseTy<'a> {
 }
 
 pub(crate) struct GeneralizedStructGenerator<'a> {
-    mir: Option<MirTypeStructRef>,
+    mir: MirTypeStructRef,
     st: MirStruct,
     mode: StructOrRecord,
     context: CodecSseTyContext<'a>,
 }
 
 impl<'a> GeneralizedStructGenerator<'a> {
-    pub(crate) fn new(
-        mir: Option<MirTypeStructRef>,
-        st: MirStruct,
-        context: CodecSseTyContext<'a>,
-        mode: StructOrRecord,
-    ) -> Self {
-        Self {
-            mir,
-            st,
-            mode,
-            context,
-        }
+    pub(crate) fn new(st: MirStruct, context: CodecSseTyContext<'a>, mode: StructOrRecord) -> Self {
+        Self { st, mode, context }
     }
 
     pub(super) fn generate_encode(&self, lang: &Lang) -> String {
@@ -90,14 +79,10 @@ impl<'a> GeneralizedStructGenerator<'a> {
         let ctor = match self.mode {
             Struct => lang.call_constructor(
                 &override_struct_name.unwrap_or_else(|| self.st.name.style(lang)),
-                (self.mir.clone())
-                    .map(|mir| {
-                        dart_constructor_postfix(
-                            &MirType::StructRef(mir),
-                            &self.context.mir_pack.funcs_with_impl(),
-                        )
-                    })
-                    .unwrap_or_default(),
+                dart_constructor_postfix(
+                    &MirType::StructRef(self.mir.clone()),
+                    &self.context.mir_pack.funcs_with_impl(),
+                ),
                 &(self.st.fields.iter())
                     .map(|x| x.name.style(lang))
                     .collect_vec(),
