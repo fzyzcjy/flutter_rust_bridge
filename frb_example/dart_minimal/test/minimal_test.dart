@@ -16,4 +16,11 @@ Future<void> main() async {
     print('Action: Call rust (after)');
   });
   print('Action: Configure tests (end)');
+
+  test('temp', () async {
+    final foo = Foo();
+    final bar = await foo.computeBar();
+    foo.dispose();
+    bar.dispose();
+  });
 }
