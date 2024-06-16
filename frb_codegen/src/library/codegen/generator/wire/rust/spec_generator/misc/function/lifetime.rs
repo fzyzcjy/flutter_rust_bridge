@@ -3,6 +3,7 @@ use itertools::Itertools;
 
 pub(super) fn generate_code_inner_decode(func: &MirFunc, inner: &str) -> String {
     let object_create_static_ref = (func.inputs.iter())
+        .filter(|field| field.needs_extend_lifetime)
         .map(|field| {
             generate_illegal_static_reference(&format!(
                 "api_{name}",
