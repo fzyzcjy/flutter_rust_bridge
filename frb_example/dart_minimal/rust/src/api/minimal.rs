@@ -73,7 +73,7 @@ pub struct LtNestedTypeWithLifetimeTwinNormal<'a> {
 
 #[frb(opaque)]
 #[derive(Debug)]
-pub struct LtTypeWithMultiOwnerTwinNormal<'a> {
+pub struct LtTypeWithMultiDepTwinNormal<'a> {
     fields: Vec<&'a LtOwnedStructTwinNormal>,
 }
 
@@ -103,7 +103,7 @@ impl Drop for LtNestedTypeWithLifetimeTwinNormal {
     }
 }
 
-impl Drop for LtTypeWithMultiOwnerTwinNormal {
+impl Drop for LtTypeWithMultiDepTwinNormal {
     fn drop(&mut self) {
         LOGGER.log("LtTypeWithMultiOwnerTwinNormal.drop");
     }
@@ -195,7 +195,7 @@ impl LtNestedTypeWithLifetimeTwinNormal<'_> {
     }
 }
 
-impl LtTypeWithMultiOwnerTwinNormal<'_> {
+impl LtTypeWithMultiDepTwinNormal<'_> {
     /// Multiple input args have lifetime
     pub fn compute_with_multi_arg_having_lifetime_twin_normal<'a>(
         a: &'a LtOwnedStructTwinNormal,

@@ -156,6 +156,18 @@ Future<void> main() async {
       await _testNestedTypeWithLifetime(
           ownedStruct, typeWithLifetime, nestedTypeWithLifetime);
     });
+
+    test('computeWithMultiArgHavingLifetimeTwinNormal', () async {
+      final typeWithMultiDep = await LtTypeWithMultiDepTwinNormal
+          .computeWithMultiArgHavingLifetimeTwinNormal(
+        a: await LtOwnedStructTwinNormal.create(value: 'a'),
+        b: await LtOwnedStructTwinNormal.create(value: 'b'),
+        unrelatedBorrowed: await LtOwnedStructTwinNormal.create(value: 'hi'),
+        unrelatedOwned: await LtOwnedStructTwinNormal.create(value: 'hi'),
+      );
+      expect(await typeWithMultiDep.greetBorrowSelfTwinNormal(), 'a');
+      expect(await typeWithMultiDep.greetBorrowMutSelfTwinNormal(), 'a');
+    });
   });
 }
 
