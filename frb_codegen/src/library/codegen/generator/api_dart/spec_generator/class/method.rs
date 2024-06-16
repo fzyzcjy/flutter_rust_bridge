@@ -63,8 +63,8 @@ pub(crate) fn generate_api_methods(
     config: &GenerateApiMethodConfig,
     dart_class_name: &str,
 ) -> GeneratedApiMethods {
-    let query_class_name = compute_class_name_for_querying_methods(owner_ty);
-    let methods = get_methods_of_ty(&query_class_name, &context.mir_pack.funcs_all)
+    // let query_class_name = compute_class_name_for_querying_methods(owner_ty);
+    let methods = get_methods_of_ty(owner_ty, &context.mir_pack.funcs_all)
         .iter()
         .filter_map(|func| generate_api_method(func, context, config, dart_class_name))
         .collect_vec();
@@ -75,29 +75,29 @@ pub(crate) fn generate_api_methods(
     }
 }
 
-fn compute_class_name_for_querying_methods(ty: &MirType) -> NamespacedName {
-    match ty {
-        MirType::EnumRef(ty) => ty.ident.0.clone(),
-        MirType::StructRef(ty) => ty.ident.0.clone(),
-        MirType::TraitDef(ty) => ty.name.clone(),
-        MirType::Delegate(MirTypeDelegate::ProxyVariant(ty)) => {
-            compute_class_name_for_querying_methods(&ty.inner)
-        }
-        MirType::RustAutoOpaqueImplicit(ty) => {
-            compute_class_name_for_querying_methods(&MirType::RustOpaque(ty.inner.clone()))
-        }
-        MirType::RustOpaque(ty) => {
-            lazy_static! {
-                static ref FILTER: Regex =
-                    Regex::new(r"^flutter_rust_bridge::for_generated::RustAutoOpaqueInner<(.*)>$")
-                        .unwrap();
-            }
-            let name = FILTER.replace_all(&ty.inner.0, "$1").to_string();
-            NamespacedName::new(ty.namespace.clone(), name)
-        }
-        _ => panic!("compute_query_class_name see unknown ty={ty:?}"),
-    }
-}
+// fn compute_class_name_for_querying_methods(ty: &MirType) -> NamespacedName {
+//     match ty {
+//         MirType::EnumRef(ty) => ty.ident.0.clone(),
+//         MirType::StructRef(ty) => ty.ident.0.clone(),
+//         MirType::TraitDef(ty) => ty.name.clone(),
+//         MirType::Delegate(MirTypeDelegate::ProxyVariant(ty)) => {
+//             compute_class_name_for_querying_methods(&ty.inner)
+//         }
+//         MirType::RustAutoOpaqueImplicit(ty) => {
+//             compute_class_name_for_querying_methods(&MirType::RustOpaque(ty.inner.clone()))
+//         }
+//         MirType::RustOpaque(ty) => {
+//             lazy_static! {
+//                 static ref FILTER: Regex =
+//                     Regex::new(r"^flutter_rust_bridge::for_generated::RustAutoOpaqueInner<(.*)>$")
+//                         .unwrap();
+//             }
+//             let name = FILTER.replace_all(&ty.inner.0, "$1").to_string();
+//             NamespacedName::new(ty.namespace.clone(), name)
+//         }
+//         _ => panic!("compute_query_class_name see unknown ty={ty:?}"),
+//     }
+// }
 
 // TODO move
 pub(crate) fn dart_constructor_postfix(
@@ -117,9 +117,10 @@ fn has_default_dart_constructor(name: &NamespacedName, all_funcs: &[MirFunc]) ->
     })
 }
 
-fn get_methods_of_ty<'a>(name: &NamespacedName, all_funcs: &'a [MirFunc]) -> Vec<&'a MirFunc> {
+fn get_methods_of_ty<'a>(owner_ty: &MirType, all_funcs: &'a [MirFunc]) -> Vec<&'a MirFunc> {
     (all_funcs.iter())
-        .filter(|f| matches!(&f.owner, MirFuncOwnerInfo::Method(m) if m.owner_ty_name().as_ref() == Some(name)))
+        // .filter(|f| matches!(&f.owner, MirFuncOwnerInfo::Method(m) if m.owner_ty_name().as_ref() == Some(name)))
+        .filter(|f| matches!(&f.owner, MirFuncOwnerInfo::Method(m) if &m.owner_ty == owner_ty))
         .collect_vec()
 }
 
