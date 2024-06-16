@@ -47,8 +47,10 @@ pub(super) fn compute_rust_path_info(
 fn compute_rust_input_namespace_prefixes_raw(raw_rust_input: &str) -> Vec<Namespace> {
     raw_rust_input
         .split(',')
+        .map(|s| s.trim())
+        .filter(|s| !s.is_empty())
         .map(|s| Namespace::new_raw(s.to_owned()))
-        .collect_vec()
+        .collect()
 }
 
 fn tidy_rust_input_namespace_prefixes(raw: &[Namespace]) -> Vec<Namespace> {
@@ -88,4 +90,65 @@ fn compute_third_party_crate_names(
         .sorted()
         .map(|x| CrateName::new(x.to_owned()))
         .collect_vec()
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_compute_rust_input_namespace_prefixes_raw() {
+        assert_eq!(
+            compute_rust_input_namespace_prefixes_raw("module_b,module_a,"),
+            vec![
+                Namespace::new_raw("module_b".to_string()),
+                Namespace::new_raw("module_a".to_string())
+            ]
+        );
+
+        assert_eq!(
+            compute_rust_input_namespace_prefixes_raw("module_a,"),
+            vec![Namespace::new_raw("module_a".to_string())]
+        );
+
+        assert_eq!(
+            compute_rust_input_namespace_prefixes_raw("module_a,module_b"),
+            vec![
+                Namespace::new_raw("module_a".to_string()),
+                Namespace::new_raw("module_b".to_string())
+            ]
+        );
+
+        assert_eq!(
+            compute_rust_input_namespace_prefixes_raw("module_a, module_b"),
+            vec![
+                Namespace::new_raw("module_a".to_string()),
+                Namespace::new_raw("module_b".to_string())
+            ]
+        );
+
+        assert_eq!(
+            compute_rust_input_namespace_prefixes_raw("module_a , module_b"),
+            vec![
+                Namespace::new_raw("module_a".to_string()),
+                Namespace::new_raw("module_b".to_string())
+            ]
+        );
+
+        assert_eq!(
+            compute_rust_input_namespace_prefixes_raw("module_a ,module_b"),
+            vec![
+                Namespace::new_raw("module_a".to_string()),
+                Namespace::new_raw("module_b".to_string())
+            ]
+        );
+
+        assert_eq!(
+            compute_rust_input_namespace_prefixes_raw("module_a , module_b, "),
+            vec![
+                Namespace::new_raw("module_a".to_string()),
+                Namespace::new_raw("module_b".to_string())
+            ]
+        );
+    }
 }
