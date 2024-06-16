@@ -147,6 +147,8 @@ pub(crate) struct TypeParserParsingContext {
     pub(crate) initiated_namespace: Namespace,
     pub(crate) func_attributes: FrbAttributes,
     pub(crate) struct_or_enum_attributes: Option<FrbAttributes>,
+    // TODO if still not used later, rm it
+    #[allow(dead_code)]
     pub(crate) rust_output_path_namespace: Namespace,
     pub(crate) default_stream_sink_codec: CodecMode,
     pub(crate) default_rust_opaque_codec: RustOpaqueCodecMode,
