@@ -46,6 +46,7 @@ fn ensure_one_lifetime(
     Ok(())
 }
 
+#[derive(Debug)]
 pub(crate) struct ParseFunctionLifetimeOutput {
     pub needs_extend_lifetime_per_arg: Vec<bool>,
 }
