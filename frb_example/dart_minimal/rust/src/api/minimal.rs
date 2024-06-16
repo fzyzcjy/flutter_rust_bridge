@@ -13,15 +13,18 @@ pub fn minimal_adder(a: i32, b: i32) -> i32 {
     a + b
 }
 
-// ----------------------------------------------- tests -------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+// TODO move this to a separate file
+
 pub(crate) struct SimpleLogger(Mutex<Vec<String>>);
 
 impl SimpleLogger {
     pub(crate) fn new() -> Self {
         Self(Mutex::new(vec![]))
     }
-    pub(crate) fn log(&self, message: String) {
-        self.0.lock().unwrap().push(message);
+    pub(crate) fn log(&self, message: &str) {
+        self.0.lock().unwrap().push(message.to_owned());
     }
 
     pub(crate) fn get_and_reset(&self) -> Vec<String> {
@@ -39,6 +42,8 @@ lazy_static! {
 pub fn lt_get_and_reset_logs_twin_normal() -> Vec<String> {
     LOGGER.get_and_reset()
 }
+
+// --------------------------- struct definitions ---------------------------
 
 /// Try *NOT* to impl Clone for these types in order to ensure there are no extra clones
 #[frb(opaque)]
@@ -70,6 +75,40 @@ pub struct LtNestedTypeWithLifetimeTwinNormal<'a> {
 pub struct LtTypeWithMultiOwnerTwinNormal<'a> {
     fields: Vec<&'a LtOwnedStructTwinNormal>,
 }
+
+// --------------------------- drops ---------------------------
+
+impl Drop for LtOwnedStructTwinNormal {
+    fn drop(&mut self) {
+        LOGGER.log("LtOwnedStructTwinNormal.drop");
+    }
+}
+
+impl Drop for LtOwnedSubStructTwinNormal {
+    fn drop(&mut self) {
+        LOGGER.log("LtOwnedSubStructTwinNormal.drop");
+    }
+}
+
+impl Drop for LtTypeWithLifetimeTwinNormal {
+    fn drop(&mut self) {
+        LOGGER.log("LtTypeWithLifetimeTwinNormal.drop");
+    }
+}
+
+impl Drop for LtNestedTypeWithLifetimeTwinNormal {
+    fn drop(&mut self) {
+        LOGGER.log("LtNestedTypeWithLifetimeTwinNormal.drop");
+    }
+}
+
+impl Drop for LtTypeWithMultiOwnerTwinNormal {
+    fn drop(&mut self) {
+        LOGGER.log("LtTypeWithMultiOwnerTwinNormal.drop");
+    }
+}
+
+// --------------------------- methods ---------------------------
 
 impl LtOwnedStructTwinNormal {
     pub fn create(value: String) -> Self {
