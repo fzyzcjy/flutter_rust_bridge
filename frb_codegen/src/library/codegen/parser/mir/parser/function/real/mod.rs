@@ -171,7 +171,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             return Ok(create_output_skip(func, IgnoreBecauseExplicitAttribute));
         }
 
-        let lifetime_info = parse_function_lifetime(func.item_fn.sig())?;
+        let lifetime_info = parse_function_lifetime(func.item_fn.sig(), &owner)?;
 
         let context = create_context(Some(owner.clone()));
         let mut info = FunctionPartialInfo::default();

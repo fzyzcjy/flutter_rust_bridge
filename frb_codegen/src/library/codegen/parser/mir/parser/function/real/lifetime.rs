@@ -1,3 +1,5 @@
+use crate::codegen::ir::mir::func::MirFuncOwnerInfo;
+use crate::codegen::parser::mir::parser::function::real::argument::parse_argument_ty_and_name;
 use crate::codegen::parser::mir::parser::lifetime_extractor::{Lifetime, LifetimeExtractor};
 use anyhow::ensure;
 use itertools::{concat, Itertools};
@@ -6,8 +8,13 @@ use syn::{ReturnType, Signature};
 
 pub(crate) fn parse_function_lifetime(
     sig: &Signature,
+    owner: &MirFuncOwnerInfo,
 ) -> anyhow::Result<ParseFunctionLifetimeOutput> {
-    let inputs_lifetimes: Vec<Vec<Lifetime>> = (sig.inputs.iter()).map(|x| TODO).collect_vec();
+    let inputs_lifetimes: Vec<Vec<Lifetime>> = (sig.inputs.iter())
+        .map(|x| {
+            LifetimeExtractor::extract_skipping_static(&parse_argument_ty_and_name(x, owner).0)
+        })
+        .collect_vec();
     let output_lifetimes: Vec<Lifetime> = match &sig.output {
         ReturnType::Type(_, ty) => LifetimeExtractor::extract_skipping_static(&*ty),
         ReturnType::Default => vec![],
