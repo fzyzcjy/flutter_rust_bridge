@@ -11,4 +11,23 @@ pub fn minimal_adder(a: i32, b: i32) -> i32 {
 
 // ----------------------------------------------- tests -------------------------------------------------
 
+// Lt := Lifetime Testers
+// Try *NOT* to impl Clone to ensure there are no extra clones
+#[frb(opaque)]
+#[derive(Debug)]
+pub struct LtOneTwinNormal {
+    value: String,
+}
 
+// Try *NOT* to impl Clone to ensure there are no extra clones
+#[frb(opaque)]
+#[derive(Debug)]
+pub struct LtTwoTwinNormal<'a> {
+    one: &'a LtOneTwinNormal,
+}
+
+impl LtOneTwinNormal {
+    pub fn compute_two_twin_normal(&self) -> LtTwoTwinNormal {
+        LtTwoTwinNormal { one: self }
+    }
+}
