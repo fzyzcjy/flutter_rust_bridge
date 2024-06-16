@@ -16,8 +16,7 @@ pub struct MirTypeRustAutoOpaqueImplicit {
 
 /// Original type without any transformation
 pub struct MirRustAutoOpaqueRaw {
-    pub string_with_original_lifetime: String,
-    pub string_with_replaced_lifetime: String,
+    pub string: String,
     pub segments: Vec<NameComponent>,
 }
 

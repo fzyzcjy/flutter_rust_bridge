@@ -111,13 +111,9 @@ fn parse_type_rust_auto_opaque_common_raw(
         _ => vec![],
     };
 
-    let string_with_original_lifetime = inner_str.clone();
-    let string_with_replaced_lifetime = replace_all_lifetimes_to_static(&string_with_original_lifetime);
-
     Ok((
         MirRustAutoOpaqueRaw {
-            string_with_original_lifetime,
-            string_with_replaced_lifetime,
+            string: inner_str.clone(),
             segments: raw_segments,
         },
         MirTypeRustOpaque {
