@@ -20,10 +20,30 @@ Future<void> main() async {
   // ----------------------------------------------------------------
 
   test('empty', () async {
-    final ownedStruct = await LtOwnedStructTwinNormal.create();
+    final ownedStruct = await LtOwnedStructTwinNormal.create(value: 'a');
     expect(await ltGetAndResetLogsTwinNormal(), <String>[]);
     ownedStruct.dispose();
     expect(await ltGetAndResetLogsTwinNormal(),
         <String>['LtOwnedStructTwinNormal.drop']);
+  });
+
+  test('computeTypeWithLifetimeTwinNormal', () async {
+    final ownedStruct = await LtOwnedStructTwinNormal.create(value: 'a');
+    final typeWithLifetime =
+        await ownedStruct.computeTypeWithLifetimeTwinNormal();
+
+    ownedStruct.dispose();
+    // Do *not* really dispose ownedStruct
+    expect(await ltGetAndResetLogsTwinNormal(), <String>[]);
+
+    expect(await typeWithLifetime.greetBorrowSelfTwinNormal(), 'a');
+    expect(await typeWithLifetime.greetBorrowMutSelfTwinNormal(), 'a');
+
+    typeWithLifetime.dispose();
+    expect(await ltGetAndResetLogsTwinNormal(), <String>[
+      // NOTE order: Firstly the borrowed type, secondly the owned type
+      'LtTypeWithLifetimeTwinNormal.drop',
+      'LtOwnedStructTwinNormal.drop',
+    ]);
   });
 }
