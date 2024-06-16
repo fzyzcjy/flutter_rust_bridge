@@ -137,5 +137,5 @@ fn remove_ty_path_prefix(raw: &str) -> String {
     lazy_static! {
         static ref REGEX: Regex = Regex::new(r"[a-zA-Z0-9_ ]+::").unwrap();
     }
-    REGEX.replace(raw, "").to_string()
+    REGEX.replace_all(raw, "").to_string()
 }

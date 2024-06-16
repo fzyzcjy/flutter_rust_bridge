@@ -119,7 +119,7 @@ fn generate_code_call_inner_func_result(func: &MirFunc, inner_func_args: Vec<Str
                 lazy_static! {
                     static ref REGEX: Regex = Regex::new(r#"<(.+)>"#).unwrap();
                 }
-                let stripped_name = REGEX.replace(&owner_ty_name, "").to_string();
+                let stripped_name = REGEX.replace_all(&owner_ty_name, "").to_string();
 
                 format!(
                     r"{stripped_name}::{}({})",
