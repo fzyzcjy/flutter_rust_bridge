@@ -69,7 +69,7 @@ pub(super) fn generate_code_postprocess_inner_output(func: &MirFunc) -> String {
     let dependencies = (func.inputs.iter())
         .filter(|field| is_interest_field(field))
         .map(|field| get_variable_name(field))
-        .flat_map(|field_name| vec![field_name.clone(), format!("{field_name}_guard")])
+        .flat_map(|field_name| vec![format!("api_{field_name}"), format!("api_{field_name}_guard")])
         .map(|var_name| format!("Box::new({name}.clone())"))
         .join(", ");
     format!("let output_ok = RustAutoOpaque::new(flutter_rust_bridge::for_generated::Lifetimeablea::new(output_ok, {dependencies}));")
