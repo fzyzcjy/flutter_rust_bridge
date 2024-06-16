@@ -180,7 +180,7 @@ impl LtTypeWithLifetimeTwinNormal<'_> {
 
     /// Input argument has type `T<'a>` (other tests mainly are `&'a T`)
     pub fn compute_arg_generic_lifetime_twin_normal<'a>(
-        arg: LtTypeWithLifetimeTwinNormal<'a>,
+        arg: &LtTypeWithLifetimeTwinNormal<'a>,
     ) -> LtTypeWithLifetimeTwinNormal<'a> {
         LtTypeWithLifetimeTwinNormal { field: arg.field }
     }
