@@ -72,6 +72,9 @@ fn wire__crate__api__minimal__LifetimeTesterOneTwinNormal_compute_two_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
+                    let api_that_illegal_static_ref = unsafe {
+                        flutter_rust_bridge::for_generated::ouroboros_change_lifetime(&api_that)
+                    };
                     let mut api_that_guard = None;
                     let decode_indices_ =
                         flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![
@@ -81,7 +84,10 @@ fn wire__crate__api__minimal__LifetimeTesterOneTwinNormal_compute_two_impl(
                         ]);
                     for i in decode_indices_ {
                         match i {
-                            0 => api_that_guard = Some(api_that.lockable_decode_sync_ref()),
+                            0 => {
+                                api_that_guard =
+                                    Some(api_that_illegal_static_ref.lockable_decode_sync_ref())
+                            }
                             _ => unreachable!(),
                         }
                     }
