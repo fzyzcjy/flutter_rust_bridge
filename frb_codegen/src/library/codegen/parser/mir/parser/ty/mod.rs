@@ -66,6 +66,7 @@ pub(crate) struct TypeParser<'a> {
     rust_opaque_parser_info: RustOpaqueParserInfo,
     rust_auto_opaque_parser_info: RustAutoOpaqueParserInfo,
     array_parser_info: ArrayParserInfo,
+    has_logged_lifetimeable: bool,
 }
 
 impl<'a> TypeParser<'a> {
@@ -102,6 +103,7 @@ impl<'a> TypeParser<'a> {
             rust_opaque_parser_info: RustOpaqueParserInfo::default(),
             rust_auto_opaque_parser_info: RustAutoOpaqueParserInfo::default(),
             array_parser_info: Default::default(),
+            has_logged_lifetimeable: false,
         }
     }
 
