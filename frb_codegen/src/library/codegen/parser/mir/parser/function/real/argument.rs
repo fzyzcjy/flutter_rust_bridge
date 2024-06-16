@@ -14,6 +14,7 @@ use crate::codegen::parser::mir::parser::ty::rust_auto_opaque_implicit::split_ow
 use crate::codegen::parser::mir::parser::ty::{TypeParser, TypeParserParsingContext};
 use crate::if_then_some;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
+use crate::utils::syn_utils::ty_to_string;
 use anyhow::Context;
 use syn::*;
 
@@ -132,26 +133,20 @@ fn syntheize_receiver_type(
     receiver: &Receiver,
     method: &MirFuncOwnerInfoMethod,
 ) -> anyhow::Result<Type> {
-    let ty_str = format!(
-        "{}{}",
-        parse_receiver_ownership_mode(receiver).prefix(),
-        method.owner_ty_raw,
-        // method.owner_ty_name().context("no owner_ty_name")?.name.to_owned(),
-    );
+    let mut ty_str = "".to_owned();
+    if let Some(reference) = &receiver.reference {
+        ty_str += "&";
+        if let Some(lifetime) = &reference.1 {
+            ty_str += &lifetime.to_string();
+        }
+    }
+    if receiver.mutability.is_some() {
+        ty_str += " mut";
+    }
+    ty_str += &method.owner_ty_raw;
+
     Ok(parse_str::<Type>(&ty_str)?)
 }
-
-// fn parse_receiver_ownership_mode(receiver: &Receiver) -> OwnershipMode {
-//     if receiver.reference.is_some() {
-//         if receiver.mutability.is_some() {
-//             OwnershipMode::RefMut
-//         } else {
-//             OwnershipMode::Ref
-//         }
-//     } else {
-//         OwnershipMode::Owned
-//     }
-// }
 
 fn split_ownership_from_ty_except_ref_mut(
     ty_raw: &Type,
