@@ -1,4 +1,4 @@
-use crate::codegen::parser::mir::parser::lifetime_extractor::{LIFETIME_STATIC, LifetimeExtractor};
+use crate::codegen::parser::mir::parser::lifetime_extractor::{Lifetime, LIFETIME_STATIC, LifetimeExtractor};
 use regex::Regex;
 use syn::Type;
 
@@ -8,10 +8,10 @@ pub(crate) fn replace_all_lifetimes_to_static(ty_str: &str) -> String {
     replace_lifetimes_to_static(ty_str, &lifetimes)
 }
 
-pub(crate) fn replace_lifetimes_to_static(ty: &str, lifetimes: &[String]) -> String {
+pub(crate) fn replace_lifetimes_to_static(ty: &str, lifetimes: &[Lifetime]) -> String {
     let mut ans = ty.to_owned();
     for lifetime in lifetimes.iter() {
-        ans = replace_lifetime(&ans, lifetime, LIFETIME_STATIC);
+        ans = replace_lifetime(&ans, &lifetime.0, LIFETIME_STATIC);
     }
     ans
 }

@@ -1,8 +1,9 @@
+use crate::codegen::parser::mir::parser::lifetime_extractor::Lifetime;
 use syn::Signature;
 
 pub(crate) fn parse_function_lifetime(sig: &Signature) -> ParseFunctionLifetimeOutput {
-    let inputs_lifetimes: Vec<Vec<TODO>> = TODO;
-    let output_lifetimes: Vec<TODO> = TODO;
+    let inputs_lifetimes: Vec<Vec<Lifetime>> = etod;
+    let output_lifetimes: Vec<Lifetime> = TODO;
     todo!()
 }
 
