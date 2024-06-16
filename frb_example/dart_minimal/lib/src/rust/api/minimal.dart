@@ -98,7 +98,7 @@ abstract class LtSubStructTwinNormal implements RustOpaqueInterface {
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<SimpleLogger>>
 abstract class SimpleLogger implements RustOpaqueInterface {
-  Future<List<String>> getAndReset();
+  List<String> getAndReset();
 
   factory SimpleLogger() =>
       RustLib.instance.api.crateApiMinimalSimpleLoggerNew();

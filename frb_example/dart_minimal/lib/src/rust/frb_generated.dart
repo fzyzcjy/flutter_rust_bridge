@@ -131,7 +131,7 @@ abstract class RustLibApi extends BaseApi {
   Future<String> crateApiMinimalLtSubStructTwinNormalGreetBorrowSelfTwinNormal(
       {required LtSubStructTwinNormal that});
 
-  Future<List<String>> crateApiMinimalSimpleLoggerGetAndReset(
+  List<String> crateApiMinimalSimpleLoggerGetAndReset(
       {required SimpleLogger that});
 
   SimpleLogger crateApiMinimalSimpleLoggerNew();
@@ -687,15 +687,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
-  Future<List<String>> crateApiMinimalSimpleLoggerGetAndReset(
+  List<String> crateApiMinimalSimpleLoggerGetAndReset(
       {required SimpleLogger that}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleLogger(
             that, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 16, port: port_);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 16)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_list_String,
@@ -1833,7 +1832,7 @@ class SimpleLoggerImpl extends RustOpaque implements SimpleLogger {
         RustLib.instance.api.rust_arc_decrement_strong_count_SimpleLoggerPtr,
   );
 
-  Future<List<String>> getAndReset() =>
+  List<String> getAndReset() =>
       RustLib.instance.api.crateApiMinimalSimpleLoggerGetAndReset(
         that: this,
       );
