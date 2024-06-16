@@ -21,8 +21,8 @@ Future<void> main() async {
   test('temp', () async {
     final one = LifetimeTesterOneTwinNormal();
     final two = await one.computeTwo();
-    expect(two.greet(), 'hi');
+    expect(await two.greet(), 'hi');
     one.dispose();
-    expect(two.greet(), 'hi');
+    expect(await two.greet(), 'hi');
   });
 }
