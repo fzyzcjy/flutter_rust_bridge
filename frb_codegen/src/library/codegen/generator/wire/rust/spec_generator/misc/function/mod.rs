@@ -32,6 +32,7 @@ pub(crate) fn generate_wire_func(
     let code_decode = dart2rust_codec.generate_func_call_decode(func, context);
     let code_inner_decode = generate_code_inner_decode(func);
     let code_call_inner_func_result = generate_code_call_inner_func_result(func, inner_func_args);
+    let code_postprocess_inner_output = generate_code_postprocess_inner_output(func);
     let handler_func_name = generate_handler_func_name(func);
     let return_type = generate_return_type(func);
     let code_closure = generate_code_closure(
@@ -142,6 +143,10 @@ fn generate_code_call_inner_func_result(func: &MirFunc, inner_func_args: Vec<Str
     ans
 }
 
+fn generate_code_postprocess_inner_output(func: &MirFunc) -> String {
+    TODO
+}
+
 fn generate_handler_func_name(func: &MirFunc) -> String {
     let codec = format!(
         "flutter_rust_bridge::for_generated::{}Codec",
@@ -183,12 +188,13 @@ fn generate_code_closure(
     code_decode: &str,
     code_inner_decode: &str,
     code_call_inner_func_result: &str,
+    code_postprocess_inner_output: &str,
 ) -> String {
     let codec = (func.codec_mode_pack.rust2dart.delegate_or_self())
         .to_string()
         .to_case(Case::Snake);
 
-    let code_inner = format!("{code_inner_decode} {code_call_inner_func_result}");
+    let code_inner = format!("{code_inner_decode} {code_call_inner_func_result} {code_postprocess_inner_output}");
 
     match func.mode {
         MirFuncMode::Sync => {
