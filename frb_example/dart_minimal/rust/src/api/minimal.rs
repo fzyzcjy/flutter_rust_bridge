@@ -201,11 +201,11 @@ impl LtTypeWithMultiDepTwinNormal<'_> {
     pub fn compute_with_multi_arg_having_lifetime_twin_normal<'a>(
         a: &'a LtOwnedStructTwinNormal,
         b: &'a LtOwnedStructTwinNormal,
-        unrelated_borrowed: &LtSubStructTwinNormal,
-        unrelated_owned: LtSubStructTwinNormal,
+        unrelated_borrowed: &LtOwnedStructTwinNormal,
+        unrelated_owned: LtOwnedStructTwinNormal,
     ) -> Self<'a> {
-        assert_eq!(&unrelated_borrowed.value, "hi");
-        assert_eq!(&unrelated_owned.value, "hi");
+        assert_eq!(&unrelated_borrowed.sub.value, "hi");
+        assert_eq!(&unrelated_owned.sub.value, "hi");
         Self { fields: vec![a, b] }
     }
 
