@@ -10,6 +10,15 @@ pub(crate) fn parse_function_lifetime(
     let inputs_lifetimes: Vec<Vec<Lifetime>> = TODO;
     let output_lifetimes: Vec<Lifetime> = TODO;
 
+    ensure_one_lifetime(&inputs_lifetimes, &output_lifetimes)?;
+
+    todo!()
+}
+
+fn ensure_one_lifetime(
+    inputs_lifetimes: &[Vec<Lifetime>],
+    output_lifetimes: &[Lifetime],
+) -> anyhow::Result<()> {
     let all_lifetimes = (inputs_lifetimes.iter().flatten())
         .chain(output_lifetimes.iter())
         .collect::<HashSet<_>>();
@@ -18,8 +27,7 @@ pub(crate) fn parse_function_lifetime(
         "Only support <=1 lifetime specifiers yet, but see {:?}",
         all_lifetimes
     );
-
-    todo!()
+    Ok(())
 }
 
 pub(crate) struct ParseFunctionLifetimeOutput {
