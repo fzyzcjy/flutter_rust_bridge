@@ -22,12 +22,12 @@ pub struct LtFooTwinNormal {
 // Try *NOT* to impl Clone to ensure there are no extra clones
 #[frb(opaque)]
 #[derive(Debug)]
-pub struct LtBorrowFooTwinNormal<'a> {
+pub struct LtBarTwinNormal<'a> {
     foo: &'a LtFooTwinNormal,
 }
 
 impl LtFooTwinNormal {
-    pub fn compute_borrow_foo_twin_normal(&self) -> LtBorrowFooTwinNormal {
-        LtBorrowFooTwinNormal { foo: self }
+    pub fn compute_borrow_foo_twin_normal(&self) -> LtBarTwinNormal {
+        LtBarTwinNormal { foo: self }
     }
 }
