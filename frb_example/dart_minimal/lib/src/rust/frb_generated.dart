@@ -186,15 +186,6 @@ abstract class RustLibApi extends BaseApi {
       get rust_arc_decrement_strong_count_LtSubStructTwinNormalPtr;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_LtTypeWithMultiDepTwinNormal;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_LtTypeWithMultiDepTwinNormal;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_LtTypeWithMultiDepTwinNormalPtr;
-
-  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_SimpleLogger;
 
   RustArcDecrementStrongCountFnType
@@ -390,7 +381,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       },
       codec: SseCodec(
         decodeSuccessData:
-            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstatic,
+            sse_decode_Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstatic,
         decodeErrorData: null,
       ),
       constMeta:
@@ -831,14 +822,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtSubStructTwinNormal;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_LtTypeWithMultiDepTwinNormal => wire
-          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstatic;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_LtTypeWithMultiDepTwinNormal => wire
-          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstatic;
-
-  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_SimpleLogger => wire
           .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleLogger;
 
@@ -888,15 +871,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return LtSubStructTwinNormalImpl.frbInternalDcoDecode(raw as List<dynamic>);
-  }
-
-  @protected
-  LtTypeWithMultiDepTwinNormal
-      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstatic(
-          dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return LtTypeWithMultiDepTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
   }
 
   @protected
@@ -1039,15 +1013,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  LtTypeWithMultiDepTwinNormal
-      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstatic(
-          dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return LtTypeWithMultiDepTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
-  }
-
-  @protected
   SimpleLogger
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleLogger(
           dynamic raw) {
@@ -1145,15 +1110,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return LtSubStructTwinNormalImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
-  }
-
-  @protected
-  LtTypeWithMultiDepTwinNormal
-      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstatic(
-          SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return LtTypeWithMultiDepTwinNormalImpl.frbInternalSseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -1314,15 +1270,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  LtTypeWithMultiDepTwinNormal
-      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstatic(
-          SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return LtTypeWithMultiDepTwinNormalImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
-  }
-
-  @protected
   SimpleLogger
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleLogger(
           SseDeserializer deserializer) {
@@ -1430,17 +1377,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as LtSubStructTwinNormalImpl).frbInternalSseEncode(move: true),
-        serializer);
-  }
-
-  @protected
-  void
-      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstatic(
-          LtTypeWithMultiDepTwinNormal self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_usize(
-        (self as LtTypeWithMultiDepTwinNormalImpl)
-            .frbInternalSseEncode(move: true),
         serializer);
   }
 
@@ -1598,17 +1534,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as LtSubStructTwinNormalImpl).frbInternalSseEncode(move: null),
-        serializer);
-  }
-
-  @protected
-  void
-      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstatic(
-          LtTypeWithMultiDepTwinNormal self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_usize(
-        (self as LtTypeWithMultiDepTwinNormalImpl)
-            .frbInternalSseEncode(move: null),
         serializer);
   }
 
@@ -1810,38 +1735,6 @@ class LtTypeWithLifetimeTwinNormalImpl extends RustOpaque
   /// `&T` where T is lifetimeable
   Future<String> greetBorrowSelfTwinNormal() => RustLib.instance.api
           .crateApiMinimalLifetimeableAutoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerLtTypeWithLifetimeTwinNormalstaticGreetBorrowSelfTwinNormal(
-        that: this,
-      );
-}
-
-@sealed
-class LtTypeWithMultiDepTwinNormalImpl extends RustOpaque
-    implements LtTypeWithMultiDepTwinNormal {
-  // Not to be used by end users
-  LtTypeWithMultiDepTwinNormalImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  LtTypeWithMultiDepTwinNormalImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_LtTypeWithMultiDepTwinNormal,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_LtTypeWithMultiDepTwinNormal,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_LtTypeWithMultiDepTwinNormalPtr,
-  );
-
-  Future<List<String>> greetBorrowMutSelfTwinNormal() => RustLib.instance.api
-          .crateApiMinimalLifetimeableAutoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstaticGreetBorrowMutSelfTwinNormal(
-        that: this,
-      );
-
-  Future<List<String>> greetBorrowSelfTwinNormal() => RustLib.instance.api
-          .crateApiMinimalLifetimeableAutoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstaticGreetBorrowSelfTwinNormal(
         that: this,
       );
 }

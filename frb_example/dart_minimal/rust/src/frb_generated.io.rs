@@ -108,28 +108,6 @@ pub extern "C" fn frbgen_frb_example_dart_minimal_rust_arc_decrement_strong_coun
 }
 
 #[no_mangle]
-pub extern "C" fn frbgen_frb_example_dart_minimal_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstatic(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<
-        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
-            LtTypeWithMultiDepTwinNormal<'static>,
-        >,
-    >::increment_strong_count(ptr as _);
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_dart_minimal_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstatic(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<
-        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
-            LtTypeWithMultiDepTwinNormal<'static>,
-        >,
-    >::decrement_strong_count(ptr as _);
-}
-
-#[no_mangle]
 pub extern "C" fn frbgen_frb_example_dart_minimal_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleLogger(
     ptr: *const std::ffi::c_void,
 ) {

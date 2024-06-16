@@ -206,7 +206,7 @@ let api_a_guard = Arc::new(api_a_guard);
         };let api_b_guard = Arc::new(api_b_guard);
                 let api_b_guard_illegal_static_ref = unsafe {
             flutter_rust_bridge::for_generated::ouroboros_change_lifetime(&api_b_guard)
-        }; let output_ok = Result::<_,()>::Ok(crate::api::minimal::LtTypeWithMultiDepTwinNormal ::compute_with_multi_arg_having_lifetime_twin_normal(&*api_a_guard_illegal_static_ref, &*api_b_guard_illegal_static_ref, &*api_unrelated_borrowed_guard, api_unrelated_owned))?;  Ok(output_ok)
+        }; let output_ok = Result::<_,()>::Ok(crate::api::minimal::LtTypeWithMultiDepTwinNormal ::compute_with_multi_arg_having_lifetime_twin_normal(&*api_a_guard_illegal_static_ref, &*api_b_guard_illegal_static_ref, &*api_unrelated_borrowed_guard, api_unrelated_owned))?; let output_ok = RustAutoOpaque::new(flutter_rust_bridge::for_generated::Lifetimeable::new(output_ok, vec![Box::new(api_a.clone()), Box::new(api_a_guard.clone()), Box::new(api_b.clone()), Box::new(api_b_guard.clone())])); Ok(output_ok)
                     })())
                 } })
 }
@@ -734,9 +734,6 @@ flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
     flutter_rust_bridge::for_generated::RustAutoOpaqueInner<LtSubStructTwinNormal>
 );
 flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
-    flutter_rust_bridge::for_generated::RustAutoOpaqueInner<LtTypeWithMultiDepTwinNormal<'static>>
-);
-flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
     flutter_rust_bridge::for_generated::RustAutoOpaqueInner<SimpleLogger>
 );
 
@@ -793,18 +790,6 @@ impl SseDecode for LtSubStructTwinNormal {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut inner = <RustOpaqueMoi<
             flutter_rust_bridge::for_generated::RustAutoOpaqueInner<LtSubStructTwinNormal>,
-        >>::sse_decode(deserializer);
-        return flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(inner);
-    }
-}
-
-impl SseDecode for LtTypeWithMultiDepTwinNormal<'static> {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <RustOpaqueMoi<
-            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
-                LtTypeWithMultiDepTwinNormal<'static>,
-            >,
         >>::sse_decode(deserializer);
         return flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(inner);
     }
@@ -877,20 +862,6 @@ impl SseDecode
 impl SseDecode
     for RustOpaqueMoi<
         flutter_rust_bridge::for_generated::RustAutoOpaqueInner<LtSubStructTwinNormal>,
-    >
-{
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <usize>::sse_decode(deserializer);
-        return decode_rust_opaque_moi(inner);
-    }
-}
-
-impl SseDecode
-    for RustOpaqueMoi<
-        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
-            LtTypeWithMultiDepTwinNormal<'static>,
-        >,
     >
 {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -1062,26 +1033,6 @@ impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<LtSubStructTwinNormal>>
 }
 
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for FrbWrapper<LtTypeWithMultiDepTwinNormal<'static>> {
-    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0)
-            .into_dart()
-    }
-}
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
-    for FrbWrapper<LtTypeWithMultiDepTwinNormal<'static>>
-{
-}
-
-impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<LtTypeWithMultiDepTwinNormal<'static>>>
-    for LtTypeWithMultiDepTwinNormal<'static>
-{
-    fn into_into_dart(self) -> FrbWrapper<LtTypeWithMultiDepTwinNormal<'static>> {
-        self.into()
-    }
-}
-
-// Codec=Dco (DartCObject based), see doc to use other codecs
 impl flutter_rust_bridge::IntoDart for FrbWrapper<SimpleLogger> {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0)
@@ -1162,20 +1113,6 @@ impl SseEncode for LtSubStructTwinNormal {
     }
 }
 
-impl SseEncode for LtTypeWithMultiDepTwinNormal<'static> {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <RustOpaqueMoi<
-            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
-                LtTypeWithMultiDepTwinNormal<'static>,
-            >,
-        >>::sse_encode(
-            flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self),
-            serializer,
-        );
-    }
-}
-
 impl SseEncode for SimpleLogger {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -1244,21 +1181,6 @@ impl SseEncode
 impl SseEncode
     for RustOpaqueMoi<
         flutter_rust_bridge::for_generated::RustAutoOpaqueInner<LtSubStructTwinNormal>,
-    >
-{
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        let (ptr, size) = self.sse_encode_raw();
-        <usize>::sse_encode(ptr, serializer);
-        <i32>::sse_encode(size, serializer);
-    }
-}
-
-impl SseEncode
-    for RustOpaqueMoi<
-        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
-            LtTypeWithMultiDepTwinNormal<'static>,
-        >,
     >
 {
     // Codec=Sse (Serialization based), see doc to use other codecs

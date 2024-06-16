@@ -93,27 +93,6 @@ abstract class LtSubStructTwinNormal implements RustOpaqueInterface {
   Future<String> greetBorrowSelfTwinNormal();
 }
 
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<LtTypeWithMultiDepTwinNormal < 'static >>>
-abstract class LtTypeWithMultiDepTwinNormal implements RustOpaqueInterface {
-  /// Multiple input args have lifetime
-  static Future<
-      LtTypeWithMultiDepTwinNormal> computeWithMultiArgHavingLifetimeTwinNormal(
-          {required LtOwnedStructTwinNormal a,
-          required LtOwnedStructTwinNormal b,
-          required LtOwnedStructTwinNormal unrelatedBorrowed,
-          required LtOwnedStructTwinNormal unrelatedOwned}) =>
-      RustLib.instance.api
-          .crateApiMinimalLifetimeableAutoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstaticComputeWithMultiArgHavingLifetimeTwinNormal(
-              a: a,
-              b: b,
-              unrelatedBorrowed: unrelatedBorrowed,
-              unrelatedOwned: unrelatedOwned);
-
-  Future<List<String>> greetBorrowMutSelfTwinNormal();
-
-  Future<List<String>> greetBorrowSelfTwinNormal();
-}
-
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<SimpleLogger>>
 abstract class SimpleLogger implements RustOpaqueInterface {
   Future<List<String>> getAndReset();
