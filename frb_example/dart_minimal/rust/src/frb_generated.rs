@@ -54,15 +54,15 @@ fn wire__crate__api__minimal__Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_br
             let api_that = <RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Lifetimeable < LtNestedTypeWithLifetimeTwinNormal < 'static > >>>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
                         let mut api_that_guard = None;
-let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![flutter_rust_bridge::for_generated::LockableOrderInfo::new(&api_that, 0, false)]);
+let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![flutter_rust_bridge::for_generated::LockableOrderInfo::new(&api_that, 0, true)]);
         for i in decode_indices_ {
             match i {
-                0 => api_that_guard = Some(api_that.lockable_decode_sync_ref()),
+                0 => api_that_guard = Some(api_that.lockable_decode_sync_ref_mut()),
                 _ => unreachable!(),
             }
         }
-        let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(crate::api::minimal::LtNestedTypeWithLifetimeTwinNormal ::greet_borrow_mut_self_twin_normal(&*api_that_guard))?;  Ok(output_ok)
+        let mut api_that_guard = api_that_guard.unwrap();
+ let output_ok = Result::<_,()>::Ok(crate::api::minimal::LtNestedTypeWithLifetimeTwinNormal ::greet_borrow_mut_self_twin_normal(&mut *api_that_guard))?;  Ok(output_ok)
                     })())
                 } })
 }
@@ -160,15 +160,15 @@ fn wire__crate__api__minimal__Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_br
             let api_that = <RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Lifetimeable < LtTypeWithLifetimeTwinNormal < 'static > >>>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
                         let mut api_that_guard = None;
-let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![flutter_rust_bridge::for_generated::LockableOrderInfo::new(&api_that, 0, false)]);
+let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![flutter_rust_bridge::for_generated::LockableOrderInfo::new(&api_that, 0, true)]);
         for i in decode_indices_ {
             match i {
-                0 => api_that_guard = Some(api_that.lockable_decode_sync_ref()),
+                0 => api_that_guard = Some(api_that.lockable_decode_sync_ref_mut()),
                 _ => unreachable!(),
             }
         }
-        let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(crate::api::minimal::LtTypeWithLifetimeTwinNormal ::greet_borrow_mut_self_twin_normal(&*api_that_guard))?;  Ok(output_ok)
+        let mut api_that_guard = api_that_guard.unwrap();
+ let output_ok = Result::<_,()>::Ok(crate::api::minimal::LtTypeWithLifetimeTwinNormal ::greet_borrow_mut_self_twin_normal(&mut *api_that_guard))?;  Ok(output_ok)
                     })())
                 } })
 }
@@ -251,15 +251,15 @@ fn wire__crate__api__minimal__Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_br
             let api_that = <RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Lifetimeable < LtTypeWithMultiDepTwinNormal < 'static > >>>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
                         let mut api_that_guard = None;
-let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![flutter_rust_bridge::for_generated::LockableOrderInfo::new(&api_that, 0, false)]);
+let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![flutter_rust_bridge::for_generated::LockableOrderInfo::new(&api_that, 0, true)]);
         for i in decode_indices_ {
             match i {
-                0 => api_that_guard = Some(api_that.lockable_decode_sync_ref()),
+                0 => api_that_guard = Some(api_that.lockable_decode_sync_ref_mut()),
                 _ => unreachable!(),
             }
         }
-        let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(crate::api::minimal::LtTypeWithMultiDepTwinNormal ::greet_borrow_mut_self_twin_normal(&*api_that_guard))?;  Ok(output_ok)
+        let mut api_that_guard = api_that_guard.unwrap();
+ let output_ok = Result::<_,()>::Ok(crate::api::minimal::LtTypeWithMultiDepTwinNormal ::greet_borrow_mut_self_twin_normal(&mut *api_that_guard))?;  Ok(output_ok)
                     })())
                 } })
 }
