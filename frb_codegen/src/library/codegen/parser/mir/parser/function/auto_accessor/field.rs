@@ -36,7 +36,7 @@ pub(super) fn parse_auto_accessor_of_field(
 
     let owner = MirFuncOwnerInfoMethod {
         owner_ty: ty_direct_parse.to_owned(),
-        owner_ty_raw: TODO,
+        owner_ty_raw: struct_name.name.to_owned(),
         actual_method_name: rust_method_name,
         actual_method_dart_name: Some(field.name.rust_style().to_owned()),
         mode: MirFuncOwnerInfoMethodMode::Instance,
