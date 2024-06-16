@@ -141,17 +141,17 @@ fn syntheize_receiver_type(
     Ok(parse_str::<Type>(&ty_str)?)
 }
 
-fn parse_receiver_ownership_mode(receiver: &Receiver) -> OwnershipMode {
-    if receiver.reference.is_some() {
-        if receiver.mutability.is_some() {
-            OwnershipMode::RefMut
-        } else {
-            OwnershipMode::Ref
-        }
-    } else {
-        OwnershipMode::Owned
-    }
-}
+// fn parse_receiver_ownership_mode(receiver: &Receiver) -> OwnershipMode {
+//     if receiver.reference.is_some() {
+//         if receiver.mutability.is_some() {
+//             OwnershipMode::RefMut
+//         } else {
+//             OwnershipMode::Ref
+//         }
+//     } else {
+//         OwnershipMode::Owned
+//     }
+// }
 
 fn split_ownership_from_ty_except_ref_mut(
     ty_raw: &Type,
