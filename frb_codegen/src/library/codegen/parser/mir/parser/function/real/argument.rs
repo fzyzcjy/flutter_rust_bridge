@@ -14,7 +14,6 @@ use crate::codegen::parser::mir::parser::ty::rust_auto_opaque_implicit::split_ow
 use crate::codegen::parser::mir::parser::ty::{TypeParser, TypeParserParsingContext};
 use crate::if_then_some;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
-use crate::utils::syn_utils::ty_to_string;
 use anyhow::Context;
 use syn::*;
 
@@ -146,7 +145,7 @@ fn syntheize_receiver_type(
     ty_str += " ";
     ty_str += &method.owner_ty_raw;
 
-    Ok(parse_str::<Type>(&ty_str).with_context(|| format!("ty_str={ty_str}"))?)
+    parse_str::<Type>(&ty_str).with_context(|| format!("ty_str={ty_str}"))
 }
 
 fn split_ownership_from_ty_except_ref_mut(

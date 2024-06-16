@@ -1,5 +1,4 @@
 use crate::codegen::ir::mir::ty::rust_opaque::NameComponent;
-use crate::codegen::parser::mir::parser::ty::path_data::extract_path_data;
 use syn::Type;
 
 pub(crate) type SplayedSegment<'a> = (&'a str, &'a [Type]);

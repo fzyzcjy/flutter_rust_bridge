@@ -62,7 +62,10 @@ fn parse_auto_accessors_of_struct(
 ) -> anyhow::Result<Vec<MirFuncAndSanityCheckInfo>> {
     let context = create_parsing_context(
         struct_name,
-        config.rust_input_namespace_pack.rust_output_path_namespace.clone(),
+        config
+            .rust_input_namespace_pack
+            .rust_output_path_namespace
+            .clone(),
         config.default_stream_sink_codec,
         config.default_rust_opaque_codec,
         config.enable_lifetime,

@@ -6,11 +6,10 @@ pub(crate) struct LifetimeExtractor;
 
 impl LifetimeExtractor {
     pub(crate) fn extract_skipping_static(ty: &Type) -> Vec<Lifetime> {
-        let ans = (Self::extract(ty).into_iter())
-            .filter(|lifetime| lifetime.0 != LIFETIME_STATIC)
-            .collect_vec();
         // log::debug!("extract_skipping_static ans={ans:?} ty={ty:?}");
-        ans
+        (Self::extract(ty).into_iter())
+            .filter(|lifetime| lifetime.0 != LIFETIME_STATIC)
+            .collect_vec()
     }
 
     fn extract(ty: &Type) -> Vec<Lifetime> {
@@ -21,7 +20,7 @@ impl LifetimeExtractor {
                 .collect_vec(),
             Type::Reference(ty) => concat([
                 ty.lifetime.iter().map(|x| x.into()).collect(),
-                Self::extract(&*ty.elem),
+                Self::extract(&ty.elem),
             ]),
             _ => vec![],
         }

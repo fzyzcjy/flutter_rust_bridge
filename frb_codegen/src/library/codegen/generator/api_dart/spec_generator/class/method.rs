@@ -76,35 +76,35 @@ fn compute_class_name_for_querying_methods(
     ty: &MirType,
     context: ApiDartGeneratorContext,
 ) -> String {
-    ApiDartGenerator::new(ty.clone(), context).dart_api_type()    // match ty {
-    //     MirType::EnumRef(ty) => ty.ident.0.clone(),
-    //     MirType::StructRef(ty) => ty.ident.0.clone(),
-    //     MirType::TraitDef(ty) => ty.name.clone(),
-    //     MirType::Delegate(MirTypeDelegate::ProxyVariant(ty)) => {
-    //         compute_class_name_for_querying_methods(&ty.inner)
-    //     }
-    //     MirType::Delegate(MirTypeDelegate::Lifetimeable(ty)) => {
-    //         compute_class_name_for_querying_methods(&MirType::Delegate(
-    //             MirTypeDelegate::RustAutoOpaqueExplicit(ty.delegate.clone()),
-    //         ))
-    //     }
-    //     MirType::Delegate(MirTypeDelegate::RustAutoOpaqueExplicit(ty)) => {
-    //         compute_class_name_for_querying_methods(&MirType::RustOpaque(ty.inner.clone()))
-    //     }
-    //     MirType::RustAutoOpaqueImplicit(ty) => {
-    //         compute_class_name_for_querying_methods(&MirType::RustOpaque(ty.inner.clone()))
-    //     }
-    //     MirType::RustOpaque(ty) => {
-    //         lazy_static! {
-    //             static ref FILTER: Regex =
-    //                 Regex::new(r"^flutter_rust_bridge::for_generated::RustAutoOpaqueInner<(.*)>$")
-    //                     .unwrap();
-    //         }
-    //         let name = FILTER.replace_all(&ty.inner.0.with_static_lifetime(), "$1").to_string();
-    //         NamespacedName::new(ty.namespace.clone(), name)
-    //     }
-    //     _ => panic!("compute_query_class_name see unknown ty={ty:?}"),
-    // }
+    ApiDartGenerator::new(ty.clone(), context).dart_api_type() // match ty {
+                                                               //     MirType::EnumRef(ty) => ty.ident.0.clone(),
+                                                               //     MirType::StructRef(ty) => ty.ident.0.clone(),
+                                                               //     MirType::TraitDef(ty) => ty.name.clone(),
+                                                               //     MirType::Delegate(MirTypeDelegate::ProxyVariant(ty)) => {
+                                                               //         compute_class_name_for_querying_methods(&ty.inner)
+                                                               //     }
+                                                               //     MirType::Delegate(MirTypeDelegate::Lifetimeable(ty)) => {
+                                                               //         compute_class_name_for_querying_methods(&MirType::Delegate(
+                                                               //             MirTypeDelegate::RustAutoOpaqueExplicit(ty.delegate.clone()),
+                                                               //         ))
+                                                               //     }
+                                                               //     MirType::Delegate(MirTypeDelegate::RustAutoOpaqueExplicit(ty)) => {
+                                                               //         compute_class_name_for_querying_methods(&MirType::RustOpaque(ty.inner.clone()))
+                                                               //     }
+                                                               //     MirType::RustAutoOpaqueImplicit(ty) => {
+                                                               //         compute_class_name_for_querying_methods(&MirType::RustOpaque(ty.inner.clone()))
+                                                               //     }
+                                                               //     MirType::RustOpaque(ty) => {
+                                                               //         lazy_static! {
+                                                               //             static ref FILTER: Regex =
+                                                               //                 Regex::new(r"^flutter_rust_bridge::for_generated::RustAutoOpaqueInner<(.*)>$")
+                                                               //                     .unwrap();
+                                                               //         }
+                                                               //         let name = FILTER.replace_all(&ty.inner.0.with_static_lifetime(), "$1").to_string();
+                                                               //         NamespacedName::new(ty.namespace.clone(), name)
+                                                               //     }
+                                                               //     _ => panic!("compute_query_class_name see unknown ty={ty:?}"),
+                                                               // }
 }
 
 // TODO move

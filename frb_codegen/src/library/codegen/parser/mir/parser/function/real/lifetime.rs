@@ -2,7 +2,7 @@ use crate::codegen::ir::mir::func::MirFuncOwnerInfo;
 use crate::codegen::parser::mir::parser::function::real::argument::parse_argument_ty_and_name;
 use crate::codegen::parser::mir::parser::lifetime_extractor::{Lifetime, LifetimeExtractor};
 use anyhow::ensure;
-use itertools::{concat, Itertools};
+use itertools::Itertools;
 use std::collections::HashSet;
 use syn::{ReturnType, Signature};
 
@@ -18,7 +18,7 @@ pub(crate) fn parse_function_lifetime(
         })
         .collect::<anyhow::Result<Vec<_>>>()?;
     let output_lifetimes = match &sig.output {
-        ReturnType::Type(_, ty) => LifetimeExtractor::extract_skipping_static(&*ty),
+        ReturnType::Type(_, ty) => LifetimeExtractor::extract_skipping_static(ty),
         ReturnType::Default => vec![],
     };
 

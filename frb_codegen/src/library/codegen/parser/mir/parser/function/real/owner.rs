@@ -13,8 +13,8 @@ use crate::codegen::parser::mir::parser::function::real::{
 use crate::codegen::parser::mir::parser::ty::trait_def::parse_type_trait;
 use crate::codegen::parser::mir::parser::ty::TypeParserParsingContext;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
-use syn::{FnArg, Type};
 use crate::utils::syn_utils::ty_to_string;
+use syn::{FnArg, Type};
 
 impl<'a, 'b> FunctionParser<'a, 'b> {
     pub(super) fn parse_owner(

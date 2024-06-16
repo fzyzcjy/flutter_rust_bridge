@@ -1,3 +1,4 @@
+use crate::codegen::ir::mir::llfetime_aware_type::MirLifetimeAwareType;
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
 use crate::codegen::ir::mir::ty::{MirContext, MirType, MirTypeTrait};
 use crate::utils::namespace::Namespace;
@@ -9,7 +10,6 @@ use regex::Regex;
 use serde::{Deserialize, Serialize, Serializer};
 use strum_macros::{Display, EnumIter};
 use syn::Type;
-use crate::codegen::ir::mir::llfetime_aware_type::MirLifetimeAwareType;
 
 crate::mir! {
 pub struct MirTypeRustOpaque {
@@ -68,7 +68,11 @@ impl MirTypeTrait for MirTypeRustOpaque {
     }
 
     fn rust_api_type(&self) -> String {
-        format!("RustOpaque{}<{}>", self.codec, self.inner.0.with_static_lifetime())
+        format!(
+            "RustOpaque{}<{}>",
+            self.codec,
+            self.inner.0.with_static_lifetime()
+        )
     }
 
     fn self_namespace(&self) -> Option<Namespace> {
@@ -92,7 +96,9 @@ impl MirRustOpaqueInner {
         lazy_static! {
             static ref NEG_FILTER: Regex = Regex::new(r"[^a-zA-Z0-9_]").unwrap();
         }
-        NEG_FILTER.replace_all(&self.0.with_static_lifetime(), "").into_owned()
+        NEG_FILTER
+            .replace_all(&self.0.with_static_lifetime(), "")
+            .into_owned()
     }
 }
 

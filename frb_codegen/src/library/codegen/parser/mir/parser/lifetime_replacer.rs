@@ -1,4 +1,6 @@
-use crate::codegen::parser::mir::parser::lifetime_extractor::{Lifetime, LIFETIME_STATIC, LifetimeExtractor};
+use crate::codegen::parser::mir::parser::lifetime_extractor::{
+    Lifetime, LifetimeExtractor, LIFETIME_STATIC,
+};
 use regex::Regex;
 use syn::Type;
 

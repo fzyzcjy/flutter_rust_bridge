@@ -1,3 +1,4 @@
+use crate::codegen::ir::mir::llfetime_aware_type::MirLifetimeAwareType;
 use crate::codegen::ir::mir::ty::rust_opaque::{
     MirRustOpaqueInner, MirTypeRustOpaque, RustOpaqueCodecMode,
 };
@@ -10,7 +11,6 @@ use quote::ToTokens;
 use std::collections::HashMap;
 use std::fmt::Debug;
 use syn::Type;
-use crate::codegen::ir::mir::llfetime_aware_type::MirLifetimeAwareType;
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_path_data_rust_opaque(

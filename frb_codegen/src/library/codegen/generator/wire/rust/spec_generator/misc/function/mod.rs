@@ -84,8 +84,8 @@ fn generate_inner_func_args(func: &MirFunc) -> Vec<String> {
                 name = field.inner.name.rust_style()
             );
             let ans = lockable::generate_inner_func_arg(&ans, field);
-            let ans = lifetime::generate_inner_func_arg(&ans, field);
-            ans
+
+            lifetime::generate_inner_func_arg(&ans, field)
         })
         .collect_vec()
 }

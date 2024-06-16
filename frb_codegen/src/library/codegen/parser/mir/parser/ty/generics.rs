@@ -2,7 +2,7 @@ use crate::if_then_some;
 use itertools::Itertools;
 
 pub(crate) fn parse_generics_info(generics: &syn::Generics) -> GenericsInfo {
-    if generics.params.len() == 0 {
+    if generics.params.is_empty() {
         return GenericsInfo::Empty;
     }
 

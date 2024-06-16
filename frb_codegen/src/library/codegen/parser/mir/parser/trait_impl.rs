@@ -9,8 +9,8 @@ use crate::codegen::parser::mir::parser::ty::{TypeParser, TypeParserParsingConte
 use crate::codegen::parser::mir::ParseMode;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use crate::utils::crate_name::CrateName;
-use itertools::Itertools;
 use crate::utils::namespace::Namespace;
+use itertools::Itertools;
 
 pub(crate) fn parse(
     hir_trait_impls: &[HirFlatTraitImpl],

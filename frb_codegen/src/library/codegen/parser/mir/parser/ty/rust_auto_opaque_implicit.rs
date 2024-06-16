@@ -1,4 +1,5 @@
 use crate::codegen::ir::mir::func::OwnershipMode;
+use crate::codegen::ir::mir::llfetime_aware_type::MirLifetimeAwareType;
 use crate::codegen::ir::mir::ty::rust_auto_opaque_implicit::{
     MirRustAutoOpaqueRaw, MirTypeRustAutoOpaqueImplicit, MirTypeRustAutoOpaqueImplicitReason,
 };
@@ -15,9 +16,6 @@ use crate::utils::namespace::Namespace;
 use anyhow::Result;
 use quote::ToTokens;
 use syn::Type;
-use MirType::RustAutoOpaqueImplicit;
-use crate::codegen::ir::mir::llfetime_aware_type::MirLifetimeAwareType;
-use crate::codegen::parser::mir::parser::lifetime_replacer::replace_all_lifetimes_to_static;
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_rust_auto_opaque_implicit(
@@ -76,7 +74,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     ) -> Result<MirType> {
         self.parse_type_rust_auto_opaque_implicit(
             ty_raw.self_namespace(),
-            &syn::parse_str(&transform(&ty_raw.raw.string.with_original_lifetime()))?,
+            &syn::parse_str(&transform(ty_raw.raw.string.with_original_lifetime()))?,
             None,
             None,
         )
