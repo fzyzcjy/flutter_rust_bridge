@@ -39,6 +39,7 @@ lazy_static! {
 }
 
 /// Lt := Lifetime Testers
+#[frb(sync)]
 pub fn lt_get_and_reset_logs_twin_normal() -> Vec<String> {
     LOGGER.get_and_reset()
 }
