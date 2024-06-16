@@ -98,11 +98,11 @@ fn wire__crate__api__minimal__LifetimeTesterOneTwinNormal_compute_two_impl(
                             &api_that_guard,
                         )
                     };
-                    Result::<_, ()>::Ok(
+                    let output_ = Result::<_, ()>::Ok(
                         crate::api::minimal::LifetimeTesterOneTwinNormal::compute_two(
                             api_that_guard_illegal_static_ref,
                         ),
-                    )
+                    );
                 })())
             }
         },
@@ -131,7 +131,8 @@ fn wire__crate__api__minimal__LifetimeTesterOneTwinNormal_new_impl(
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
             transform_result_sse((move || {
-                Result::<_, ()>::Ok(crate::api::minimal::LifetimeTesterOneTwinNormal::new())
+                let output_ =
+                    Result::<_, ()>::Ok(crate::api::minimal::LifetimeTesterOneTwinNormal::new());
             })())
         },
     )
@@ -156,7 +157,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- Result::<_,()>::Ok(crate::api::minimal::LifetimeTesterTwoTwinNormal ::greet(&api_that_guard))
+ let output_ = Result::<_,()>::Ok(crate::api::minimal::LifetimeTesterTwoTwinNormal ::greet(&api_that_guard));
                     })())
                 } })
 }
