@@ -1,4 +1,4 @@
-mod dependency;
+pub(crate) mod dependency;
 pub(crate) mod lifetime_changer;
 
 use crate::lifetimeable::dependency::LifetimeableDependency;
