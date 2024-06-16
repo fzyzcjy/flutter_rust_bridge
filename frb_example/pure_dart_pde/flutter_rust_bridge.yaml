@@ -11,6 +11,8 @@ rust_preamble: "// test for rust_preamble"
 # To help developing flutter_rust_bridge; normal users usually do not set this
 stop_on_error: true
 
+enable_lifetime: true
+
 # only for development of flutter_rust_bridge, not for normal users (dump all debug information)
 dump_all: true
 # only for development of flutter_rust_bridge, not for normal users (use local dependency)

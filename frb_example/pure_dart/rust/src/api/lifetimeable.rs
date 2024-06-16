@@ -2,8 +2,8 @@
 
 #![allow(clippy::needless_lifetimes)]
 
-use flutter_rust_bridge::frb;
 use crate::api::misc_no_twin_example_a::SimpleLogger;
+use flutter_rust_bridge::frb;
 
 // --------------------------- struct definitions ---------------------------
 

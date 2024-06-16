@@ -87,6 +87,7 @@ pub mod external_type_in_crate_twin_sync_sse;
 pub mod impl_trait_twin_sse;
 pub mod impl_trait_twin_sync;
 pub mod impl_trait_twin_sync_sse;
+pub mod lifetimeable_twin_sync;
 pub mod map_and_set_twin_rust_async;
 pub mod map_and_set_twin_rust_async_sse;
 pub mod map_and_set_twin_sse;

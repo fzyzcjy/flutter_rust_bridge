@@ -7,6 +7,8 @@ import '../frb_generated.dart';
 import 'misc_no_twin_example_b.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
+// These functions are ignored because they are not marked as `pub`: `log`
+
 Future<void> sameFunctionNameInDifferentFiles() => RustLib.instance.api
     .crateApiMiscNoTwinExampleASameFunctionNameInDifferentFiles();
 
@@ -68,6 +70,14 @@ abstract class ItemContainerSolutionOneTwinNormal
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinNormal>>
 abstract class OpaqueItemTwinNormal implements RustOpaqueInterface {}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<SimpleLogger>>
+abstract class SimpleLogger implements RustOpaqueInterface {
+  List<String> getAndReset();
+
+  factory SimpleLogger() =>
+      RustLib.instance.api.crateApiMiscNoTwinExampleASimpleLoggerNew();
+}
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructInMiscNoTwinExampleA>>
 abstract class StructInMiscNoTwinExampleA implements RustOpaqueInterface {
