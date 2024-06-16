@@ -27,8 +27,10 @@ Future<void> main() async {
       expect(simpleLogger.getAndReset(), <String>[]);
 
       ownedStruct.dispose();
-      expect(
-          simpleLogger.getAndReset(), <String>['LtOwnedStructTwinNormal.drop']);
+      expect(simpleLogger.getAndReset(), <String>[
+        'LtOwnedStructTwinNormal.drop',
+        'LtOwnedSubStructTwinNormal.drop',
+      ]);
     });
 
     test('dispose ownedStruct - dispose typeWithLifetime', () async {
@@ -48,6 +50,7 @@ Future<void> main() async {
         // NOTE order: Firstly the borrowed type, secondly the owned type
         'LtTypeWithLifetimeTwinNormal.drop',
         'LtOwnedStructTwinNormal.drop',
+        'LtOwnedSubStructTwinNormal.drop',
       ]);
     });
 
@@ -66,6 +69,7 @@ Future<void> main() async {
       ownedStruct.dispose();
       expect(simpleLogger.getAndReset(), <String>[
         'LtOwnedStructTwinNormal.drop',
+        'LtOwnedSubStructTwinNormal.drop',
       ]);
     });
 
@@ -86,6 +90,7 @@ Future<void> main() async {
         // NOTE order: Firstly the borrowed type, secondly the owned type
         'LtTypeWithLifetimeTwinNormal.drop',
         'LtOwnedStructTwinNormal.drop',
+        'LtOwnedSubStructTwinNormal.drop',
       ]);
     });
 
@@ -116,6 +121,7 @@ Future<void> main() async {
         'LtNestedTypeWithLifetimeTwinNormal.drop',
         'LtTypeWithLifetimeTwinNormal.drop',
         'LtOwnedStructTwinNormal.drop',
+        'LtOwnedSubStructTwinNormal.drop',
       ]);
     });
   });
