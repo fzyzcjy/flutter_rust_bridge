@@ -117,7 +117,7 @@ Future<void> main() async {
       final ownedStruct = await LtOwnedStructTwinNormal.create(value: 'a');
       final typeWithLifetime =
           await ownedStruct.computeTypeWithLifetimeTwinNormal();
-      await _testOwnedStructAndTypeWithLifetime(ownedStruct, typeWithLifetime);
+      await _testTypeWithLifetime(ownedStruct, typeWithLifetime);
     });
 
     test('computeWithUnrelatedBorrowedArgTwinNormal', () async {
@@ -127,40 +127,39 @@ Future<void> main() async {
         unrelatedBorrowed: await LtOwnedStructTwinNormal.create(value: 'hi'),
         unrelatedOwned: await LtOwnedStructTwinNormal.create(value: 'hi'),
       );
-      await _testOwnedStructAndTypeWithLifetime(ownedStruct, typeWithLifetime);
+      await _testTypeWithLifetime(ownedStruct, typeWithLifetime);
     });
 
     test('ltComputeWithLifetimeFunctionTwinNormal', () async {
       final ownedStruct = await LtOwnedStructTwinNormal.create(value: 'a');
       final typeWithLifetime =
           await ltComputeWithLifetimeFunctionTwinNormal(arg: ownedStruct);
-      await _testOwnedStructAndTypeWithLifetime(ownedStruct, typeWithLifetime);
+      await _testTypeWithLifetime(ownedStruct, typeWithLifetime);
     });
 
     test('computeNestedTypeWithLifetimeTwinNormal', () async {
       final ownedStruct = await LtOwnedStructTwinNormal.create(value: 'a');
       final typeWithLifetime =
+          await ownedStruct.computeTypeWithLifetimeTwinNormal();
+      final nestedTypeWithLifetime =
+          await typeWithLifetime.computeNestedTypeWithLifetimeTwinNormal();
+      await _testNestedTypeWithLifetime(
+          ownedStruct, typeWithLifetime, nestedTypeWithLifetime);
+    });
+
+    test('computeArgGenericLifetimeTwinNormal', () async {
+      final ownedStruct = await LtOwnedStructTwinNormal.create(value: 'a');
+      final typeWithLifetime =
           await ownedStruct.computeTypeWithLifetimeTwinNormal(arg: ownedStruct);
-      final nestedTypeWithLifetime = await typeWithLifetime
-          .computeNestedTypeWithLifetimeTwinNormal(arg: ownedStruct);
-
-      expect(await typeWithLifetime.greetBorrowSelfTwinNormal(), 'a');
-      expect(await typeWithLifetime.greetBorrowMutSelfTwinNormal(), 'a');
-
-      expect(await nestedTypeWithLifetime.greetBorrowSelfTwinNormal(), 'a');
-      expect(await nestedTypeWithLifetime.greetBorrowMutSelfTwinNormal(), 'a');
-
-      ownedStruct.dispose();
-      typeWithLifetime.dispose();
-
-      // can still call
-      expect(await nestedTypeWithLifetime.greetBorrowSelfTwinNormal(), 'a');
-      expect(await nestedTypeWithLifetime.greetBorrowMutSelfTwinNormal(), 'a');
+      final nestedTypeWithLifetime = await LtTypeWithLifetimeTwinNormal
+          .computeArgGenericLifetimeTwinNormal(arg: typeWithLifetime);
+      await _testNestedTypeWithLifetime(
+          ownedStruct, typeWithLifetime, nestedTypeWithLifetime);
     });
   });
 }
 
-Future<void> _testOwnedStructAndTypeWithLifetime(
+Future<void> _testTypeWithLifetime(
   LtOwnedStructTwinNormal ownedStruct,
   LtTypeWithLifetimeTwinNormal typeWithLifetime,
 ) async {
@@ -169,4 +168,23 @@ Future<void> _testOwnedStructAndTypeWithLifetime(
   ownedStruct.dispose();
   expect(await typeWithLifetime.greetBorrowSelfTwinNormal(), 'a');
   expect(await typeWithLifetime.greetBorrowMutSelfTwinNormal(), 'a');
+}
+
+Future<void> _testNestedTypeWithLifetime(
+  LtOwnedStructTwinNormal ownedStruct,
+  LtTypeWithLifetimeTwinNormal typeWithLifetime,
+  LtNestedTypeWithLifetimeTwinNormal nestedTypeWithLifetime,
+) async {
+  expect(await typeWithLifetime.greetBorrowSelfTwinNormal(), 'a');
+  expect(await typeWithLifetime.greetBorrowMutSelfTwinNormal(), 'a');
+
+  expect(await nestedTypeWithLifetime.greetBorrowSelfTwinNormal(), 'a');
+  expect(await nestedTypeWithLifetime.greetBorrowMutSelfTwinNormal(), 'a');
+
+  ownedStruct.dispose();
+  typeWithLifetime.dispose();
+
+  // can still call
+  expect(await nestedTypeWithLifetime.greetBorrowSelfTwinNormal(), 'a');
+  expect(await nestedTypeWithLifetime.greetBorrowMutSelfTwinNormal(), 'a');
 }
