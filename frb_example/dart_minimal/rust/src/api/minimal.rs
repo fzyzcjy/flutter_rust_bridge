@@ -100,7 +100,16 @@ impl Drop for LtNestedTypeWithLifetimeTwinNormal {
 // --------------------------- methods ---------------------------
 
 impl LtOwnedStructTwinNormal {
-    pub fn create(value: String, logger: &SimpleLogger) -> Self {
+    pub fn create(value: String) -> Self {
+        Self {
+            sub: LtSubStructTwinNormal {
+                value,
+                logger: SimpleLogger::new(),
+            },
+        }
+    }
+
+    pub fn create_with_logger(value: String, logger: &SimpleLogger) -> Self {
         Self {
             sub: LtSubStructTwinNormal {
                 value,
