@@ -1,13 +1,6 @@
 # Alternatives
 
-## Direct approach
-
-`flutter_rust_bridge` does support types with borrowing and lifetime like `struct MyStruct<'a> { ... }`,
-or functions that return types with lifetimes such as references.
-Please refer to [this page](../types/arbitrary/rust-auto-opaque/lifetime) for details.
-
-For completeness, below we discuss alternative approaches, which are useful in some scenarios.
-(They are originally documented because at that time the lifetime had not been supported.)
+In addition to directly using the feature, sometimes the following alternative approaches are also helpful.
 
 ## Proxy
 
