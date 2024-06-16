@@ -143,6 +143,7 @@ fn syntheize_receiver_type(
     if receiver.mutability.is_some() {
         ty_str += " mut";
     }
+    ty_str += " ";
     ty_str += &method.owner_ty_raw;
 
     Ok(parse_str::<Type>(&ty_str).with_context(|| format!("ty_str={ty_str}"))?)
