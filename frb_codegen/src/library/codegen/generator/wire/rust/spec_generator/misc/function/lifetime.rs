@@ -6,7 +6,7 @@ pub(super) fn generate_code_inner_decode(func: &MirFunc, inner: &str) -> String 
         .filter(|field| field.needs_extend_lifetime)
         .collect_vec();
 
-    let object_create_static_ref = (interest_inputs.iter())
+    let object_static_ref = (interest_inputs.iter())
         .map(|field| {
             generate_illegal_static_reference(&format!(
                 "api_{name}",
@@ -15,7 +15,21 @@ pub(super) fn generate_code_inner_decode(func: &MirFunc, inner: &str) -> String 
         })
         .join("");
 
-    format!("{object_create_static_ref}{inner}")
+    let guard_static_ref = (interest_inputs.iter())
+        .map(|field| {
+            let static_ref = generate_illegal_static_reference(&format!(
+                "api_guard_{name}",
+                name = get_variable_name(field)
+            ));
+            format!(
+                "let api_{name}_guard = Arc::new(api_{name}_guard);
+                {static_ref}",
+                name = get_variable_name(field)
+            )
+        })
+        .join("");
+
+    format!("{object_static_ref}{inner}")
 }
 
 pub(super) fn generate_illegal_static_reference(var_name: &str) -> String {
