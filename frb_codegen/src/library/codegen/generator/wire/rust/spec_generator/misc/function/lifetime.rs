@@ -54,7 +54,7 @@ pub(crate) fn generate_inner_func_arg(raw: &str, field: &MirFuncInput) -> String
     if is_interest_field(field) {
         format!("{raw}_illegal_static_ref")
     } else {
-        raw.to_owned()
+        format!("&*{raw}")
     }
 }
 
