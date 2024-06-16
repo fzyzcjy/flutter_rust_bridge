@@ -81,7 +81,7 @@ fn generate_decode_variant(
             )
         }
         MirVariantKind::Struct(st) => {
-            GeneralizedStructGenerator::new(st.clone(), context, StructOrRecord::Struct)
+            GeneralizedStructGenerator::new(None, st.clone(), context, StructOrRecord::Struct)
                 .generate_decode(
                     lang,
                     Some(format!("{enum_name_str}{enum_sep}{}", st.name.name)),
