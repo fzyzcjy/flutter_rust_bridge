@@ -87,7 +87,7 @@ fn get_variable_name(field: &MirFuncInput) -> String {
 fn filter_interest_fields(func: &MirFunc) -> Vec<FieldInfo> {
     (func.inputs.iter())
         .filter_map(|field| {
-            compute_interest_field(&field.inner.ty).map(|ownership_mode| FieldInfo {
+            compute_interest_field_ownership_mode(&field.inner.ty).map(|ownership_mode| FieldInfo {
                 field,
                 ownership_mode,
             })
@@ -95,12 +95,12 @@ fn filter_interest_fields(func: &MirFunc) -> Vec<FieldInfo> {
         .collect_vec()
 }
 
-fn compute_interest_field(ty: &MirType) -> Option<OwnershipMode> {
+fn compute_interest_field_ownership_mode(ty: &MirType) -> Option<OwnershipMode> {
     match &ty {
         MirType::RustAutoOpaqueImplicit(ty) if ty.ownership_mode != OwnershipMode::Owned => {
             Some(ty.ownership_mode)
         }
-        MirType::Delegate(MirTypeDelegate::ProxyEnum(ty)) => compute_interest_field(&ty.original),
+        MirType::Delegate(MirTypeDelegate::ProxyEnum(ty)) => compute_interest_field_ownership_mode(&ty.original),
         // temporarily only support Ref
         MirType::Delegate(MirTypeDelegate::DynTrait(_)) => Some(OwnershipMode::Ref),
         MirType::Delegate(MirTypeDelegate::Lifetimeable(_)) => Some(OwnershipMode::Ref),
@@ -125,7 +125,7 @@ pub(crate) fn generate_inner_func_arg_ownership(field: &MirFuncInput) -> String 
 }
 
 pub(crate) fn generate_inner_func_arg(raw: &str, field: &MirFuncInput) -> String {
-    if compute_interest_field(&field.inner.ty).is_some() {
+    if compute_interest_field_ownership_mode(&field.inner.ty).is_some() {
         format!("{raw}_guard")
     } else {
         raw.to_owned()
