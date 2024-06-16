@@ -11,8 +11,11 @@ Future<int> minimalAdder({required int a, required int b}) =>
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<LifetimeTesterOneTwinNormal>>
 abstract class LifetimeTesterOneTwinNormal implements RustOpaqueInterface {
-  Future<LifetimeTesterTwoTwinNormal> computeTwo();
+  Future<LifetimeTesterTwoTwinNormalA> computeTwo();
 }
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<LifetimeTesterTwoTwinNormal < 'static >>>
+abstract class LifetimeTesterTwoTwinNormal implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<RAOTester>>
 abstract class RaoTester implements RustOpaqueInterface {
@@ -20,4 +23,4 @@ abstract class RaoTester implements RustOpaqueInterface {
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<flutter_rust_bridge :: for_generated :: Lifetimeable < LifetimeTesterTwoTwinNormal < 'static > >>>
-abstract class LifetimeTesterTwoTwinNormal implements RustOpaqueInterface {}
+abstract class LifetimeTesterTwoTwinNormalA implements RustOpaqueInterface {}
