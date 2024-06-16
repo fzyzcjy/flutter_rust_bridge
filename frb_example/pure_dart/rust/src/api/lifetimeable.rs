@@ -1,4 +1,4 @@
-// FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["rustAsync", "sse", "sync sse", "rustAsync sse"], "addCode": "use crate::api::misc_no_twin_example_a::SimpleLogger;", "removeCode": ["use crate::api::pseudo_manual::misc_no_twin_example_a_twin_sync::SimpleLogger;"]}
+// FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["rustAsync", "sse", "sync sse", "rustAsync sse"], "replaceCode": {"misc_no_twin_example_a_twin_sync": "misc_no_twin_example_a"}}
 
 #![allow(clippy::needless_lifetimes)]
 
