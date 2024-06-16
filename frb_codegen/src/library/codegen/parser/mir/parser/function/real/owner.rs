@@ -14,6 +14,7 @@ use crate::codegen::parser::mir::parser::ty::trait_def::parse_type_trait;
 use crate::codegen::parser::mir::parser::ty::TypeParserParsingContext;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use syn::{FnArg, Type};
+use crate::utils::syn_utils::ty_to_string;
 
 impl<'a, 'b> FunctionParser<'a, 'b> {
     pub(super) fn parse_owner(
@@ -57,7 +58,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                     func,
                     actual_method_dart_name,
                     owner_ty,
-                    TODO,
+                    &ty_to_string(impl_ty),
                     trait_def,
                 )
             }
@@ -70,7 +71,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                     func,
                     actual_method_dart_name,
                     MirType::TraitDef(trait_def.clone()),
-                    TODO,
+                    &trait_def_name.name,
                     Some(trait_def),
                 )
             }
