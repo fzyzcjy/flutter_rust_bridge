@@ -105,7 +105,9 @@ fn compute_interest_field_ownership_mode(ty: &MirType) -> Option<OwnershipMode> 
         }
         // temporarily only support Ref
         MirType::Delegate(MirTypeDelegate::DynTrait(_)) => Some(OwnershipMode::Ref),
-        MirType::Delegate(MirTypeDelegate::Lifetimeable(_)) => Some(OwnershipMode::Ref),
+        MirType::Delegate(MirTypeDelegate::Lifetimeable(mir)) => {
+            compute_interest_field_ownership_mode(&*mir.api_type)
+        }
         _ => None,
     }
 }
