@@ -39,12 +39,14 @@ pub struct LtDoubleTypeWithLifetimeTwinNormal<'a> {
 
 #[allow(clippy::needless_lifetimes)]
 impl LtOwnedStructTwinNormal {
+    /// `fn f(x: &'a T) -> S<'a>`
     pub fn compute_type_with_lifetime_twin_normal<'a>(
         &'a self,
     ) -> LtTypeWithLifetimeTwinNormal<'a> {
         LtTypeWithLifetimeTwinNormal { field: self }
     }
 
+    /// `fn f(x: &'a T) -> &'a S`
     pub fn compute_sub_struct_twin_normal<'a>(&'a self) -> &'a LtOwnedSubStructTwinNormal {
         &self.sub
     }
@@ -62,14 +64,17 @@ impl LtOwnedSubStructTwinNormal {
 
 #[allow(clippy::needless_lifetimes)]
 impl LtTypeWithLifetimeTwinNormal<'_> {
+    /// `&T` where T is lifetimeable
     pub fn greet_borrow_self_twin_normal(&self) -> String {
         self.field.sub.value.clone()
     }
 
+    /// `&mut T` where T is lifetimeable
     pub fn greet_borrow_mut_self_twin_normal(&mut self) -> String {
         self.field.sub.value.clone()
     }
 
+    /// Input lifetimeable and output another lifetimeable
     pub fn compute_double_type_with_lifetime_twin_normal<'a>(
         &'a self,
     ) -> LtDoubleTypeWithLifetimeTwinNormal<'a> {
