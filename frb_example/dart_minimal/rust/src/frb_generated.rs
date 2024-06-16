@@ -23,7 +23,7 @@
 
 use crate::api::minimal::*;
 use flutter_rust_bridge::for_generated::byteorder::{NativeEndian, ReadBytesExt, WriteBytesExt};
-use flutter_rust_bridge::for_generated::{transform_result_dco, Lockable};
+use flutter_rust_bridge::for_generated::{transform_result_dco, Lifetimeable, Lockable};
 use flutter_rust_bridge::{Handler, IntoIntoDart};
 
 // Section: boilerplate
@@ -51,7 +51,7 @@ fn wire__crate__api__minimal__Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_br
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtNestedTypeWithLifetimeTwinNormalstatic_greet_borrow_mut_self_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_that = <RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner< Lifetimeable < LtNestedTypeWithLifetimeTwinNormal < 'static > >>>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
+            let api_that = <RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Lifetimeable < LtNestedTypeWithLifetimeTwinNormal < 'static > >>>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
                         let mut api_that_guard = None;
 let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![flutter_rust_bridge::for_generated::LockableOrderInfo::new(&api_that, 0, false)]);
@@ -75,7 +75,7 @@ fn wire__crate__api__minimal__Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_br
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtNestedTypeWithLifetimeTwinNormalstatic_greet_borrow_self_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_that = <RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner< Lifetimeable < LtNestedTypeWithLifetimeTwinNormal < 'static > >>>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
+            let api_that = <RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Lifetimeable < LtNestedTypeWithLifetimeTwinNormal < 'static > >>>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
                         let mut api_that_guard = None;
 let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![flutter_rust_bridge::for_generated::LockableOrderInfo::new(&api_that, 0, false)]);
@@ -99,7 +99,7 @@ fn wire__crate__api__minimal__Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_br
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithLifetimeTwinNormalstatic_compute_arg_generic_lifetime_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_arg = <RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner< Lifetimeable < LtTypeWithLifetimeTwinNormal < 'static > >>>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
+            let api_arg = <RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Lifetimeable < LtTypeWithLifetimeTwinNormal < 'static > >>>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
                         let api_arg_illegal_static_ref = unsafe {
             flutter_rust_bridge::for_generated::ouroboros_change_lifetime(&api_arg)
@@ -115,7 +115,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
 let api_arg_guard = Arc::new(api_arg_guard);
                 let api_arg_guard_illegal_static_ref = unsafe {
             flutter_rust_bridge::for_generated::ouroboros_change_lifetime(&api_arg_guard)
-        }; let output_ok = Result::<_,()>::Ok(crate::api::minimal::LtTypeWithLifetimeTwinNormal ::compute_arg_generic_lifetime_twin_normal(&*api_arg_guard_illegal_static_ref))?; let output_ok = RustAutoOpaque::new(flutter_rust_bridge::for_generated::Lifetimeable::new(output_ok, vec![Box::new(api_arg.clone()), Box::new(api_arg_guard.clone())])); Ok(output_ok)
+        }; let output_ok = Result::<_,()>::Ok(crate::api::minimal::LtTypeWithLifetimeTwinNormal ::compute_arg_generic_lifetime_twin_normal(&*api_arg_guard_illegal_static_ref))?; let output_ok = RustAutoOpaque::new(Lifetimeable::new(output_ok, vec![Box::new(api_arg.clone()), Box::new(api_arg_guard.clone())])); Ok(output_ok)
                     })())
                 } })
 }
@@ -128,7 +128,7 @@ fn wire__crate__api__minimal__Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_br
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithLifetimeTwinNormalstatic_compute_nested_type_with_lifetime_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_that = <RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner< Lifetimeable < LtTypeWithLifetimeTwinNormal < 'static > >>>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
+            let api_that = <RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Lifetimeable < LtTypeWithLifetimeTwinNormal < 'static > >>>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
                         let api_that_illegal_static_ref = unsafe {
             flutter_rust_bridge::for_generated::ouroboros_change_lifetime(&api_that)
@@ -144,7 +144,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
 let api_that_guard = Arc::new(api_that_guard);
                 let api_that_guard_illegal_static_ref = unsafe {
             flutter_rust_bridge::for_generated::ouroboros_change_lifetime(&api_that_guard)
-        }; let output_ok = Result::<_,()>::Ok(crate::api::minimal::LtTypeWithLifetimeTwinNormal ::compute_nested_type_with_lifetime_twin_normal(&*&api_that_guard_illegal_static_ref))?; let output_ok = RustAutoOpaque::new(flutter_rust_bridge::for_generated::Lifetimeable::new(output_ok, vec![Box::new(api_that.clone()), Box::new(api_that_guard.clone())])); Ok(output_ok)
+        }; let output_ok = Result::<_,()>::Ok(crate::api::minimal::LtTypeWithLifetimeTwinNormal ::compute_nested_type_with_lifetime_twin_normal(&*&api_that_guard_illegal_static_ref))?; let output_ok = RustAutoOpaque::new(Lifetimeable::new(output_ok, vec![Box::new(api_that.clone()), Box::new(api_that_guard.clone())])); Ok(output_ok)
                     })())
                 } })
 }
@@ -157,7 +157,7 @@ fn wire__crate__api__minimal__Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_br
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithLifetimeTwinNormalstatic_greet_borrow_mut_self_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_that = <RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner< Lifetimeable < LtTypeWithLifetimeTwinNormal < 'static > >>>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
+            let api_that = <RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Lifetimeable < LtTypeWithLifetimeTwinNormal < 'static > >>>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
                         let mut api_that_guard = None;
 let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![flutter_rust_bridge::for_generated::LockableOrderInfo::new(&api_that, 0, false)]);
@@ -181,7 +181,7 @@ fn wire__crate__api__minimal__Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_br
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithLifetimeTwinNormalstatic_greet_borrow_self_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_that = <RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner< Lifetimeable < LtTypeWithLifetimeTwinNormal < 'static > >>>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
+            let api_that = <RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Lifetimeable < LtTypeWithLifetimeTwinNormal < 'static > >>>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
                         let mut api_that_guard = None;
 let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![flutter_rust_bridge::for_generated::LockableOrderInfo::new(&api_that, 0, false)]);
@@ -235,7 +235,7 @@ let api_a_guard = Arc::new(api_a_guard);
         };let api_b_guard = Arc::new(api_b_guard);
                 let api_b_guard_illegal_static_ref = unsafe {
             flutter_rust_bridge::for_generated::ouroboros_change_lifetime(&api_b_guard)
-        }; let output_ok = Result::<_,()>::Ok(crate::api::minimal::LtTypeWithMultiDepTwinNormal ::compute_with_multi_arg_having_lifetime_twin_normal(&*api_a_guard_illegal_static_ref, &*api_b_guard_illegal_static_ref, &*api_unrelated_borrowed_guard, api_unrelated_owned))?; let output_ok = RustAutoOpaque::new(flutter_rust_bridge::for_generated::Lifetimeable::new(output_ok, vec![Box::new(api_a.clone()), Box::new(api_a_guard.clone()), Box::new(api_b.clone()), Box::new(api_b_guard.clone())])); Ok(output_ok)
+        }; let output_ok = Result::<_,()>::Ok(crate::api::minimal::LtTypeWithMultiDepTwinNormal ::compute_with_multi_arg_having_lifetime_twin_normal(&*api_a_guard_illegal_static_ref, &*api_b_guard_illegal_static_ref, &*api_unrelated_borrowed_guard, api_unrelated_owned))?; let output_ok = RustAutoOpaque::new(Lifetimeable::new(output_ok, vec![Box::new(api_a.clone()), Box::new(api_a_guard.clone()), Box::new(api_b.clone()), Box::new(api_b_guard.clone())])); Ok(output_ok)
                     })())
                 } })
 }
@@ -248,7 +248,7 @@ fn wire__crate__api__minimal__Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_br
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstatic_greet_borrow_mut_self_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_that = <RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner< Lifetimeable < LtTypeWithMultiDepTwinNormal < 'static > >>>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
+            let api_that = <RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Lifetimeable < LtTypeWithMultiDepTwinNormal < 'static > >>>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
                         let mut api_that_guard = None;
 let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![flutter_rust_bridge::for_generated::LockableOrderInfo::new(&api_that, 0, false)]);
@@ -272,7 +272,7 @@ fn wire__crate__api__minimal__Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_br
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstatic_greet_borrow_self_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_that = <RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner< Lifetimeable < LtTypeWithMultiDepTwinNormal < 'static > >>>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
+            let api_that = <RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Lifetimeable < LtTypeWithMultiDepTwinNormal < 'static > >>>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
                         let mut api_that_guard = None;
 let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![flutter_rust_bridge::for_generated::LockableOrderInfo::new(&api_that, 0, false)]);
@@ -312,7 +312,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
 let api_that_guard = Arc::new(api_that_guard);
                 let api_that_guard_illegal_static_ref = unsafe {
             flutter_rust_bridge::for_generated::ouroboros_change_lifetime(&api_that_guard)
-        }; let output_ok = Result::<_,()>::Ok(crate::api::minimal::LtOwnedStructTwinNormal::compute_type_with_lifetime_twin_normal(&*api_that_guard_illegal_static_ref))?; let output_ok = RustAutoOpaque::new(flutter_rust_bridge::for_generated::Lifetimeable::new(output_ok, vec![Box::new(api_that.clone()), Box::new(api_that_guard.clone())])); Ok(output_ok)
+        }; let output_ok = Result::<_,()>::Ok(crate::api::minimal::LtOwnedStructTwinNormal::compute_type_with_lifetime_twin_normal(&*api_that_guard_illegal_static_ref))?; let output_ok = RustAutoOpaque::new(Lifetimeable::new(output_ok, vec![Box::new(api_that.clone()), Box::new(api_that_guard.clone())])); Ok(output_ok)
                     })())
                 } })
 }
@@ -346,7 +346,7 @@ let api_unrelated_borrowed_guard = api_unrelated_borrowed_guard.unwrap();
 let api_that_guard = Arc::new(api_that_guard);
                 let api_that_guard_illegal_static_ref = unsafe {
             flutter_rust_bridge::for_generated::ouroboros_change_lifetime(&api_that_guard)
-        }; let output_ok = Result::<_,()>::Ok(crate::api::minimal::LtOwnedStructTwinNormal::compute_with_unrelated_borrowed_arg_twin_normal(&*api_that_guard_illegal_static_ref, &*api_unrelated_borrowed_guard, api_unrelated_owned))?; let output_ok = RustAutoOpaque::new(flutter_rust_bridge::for_generated::Lifetimeable::new(output_ok, vec![Box::new(api_that.clone()), Box::new(api_that_guard.clone())])); Ok(output_ok)
+        }; let output_ok = Result::<_,()>::Ok(crate::api::minimal::LtOwnedStructTwinNormal::compute_with_unrelated_borrowed_arg_twin_normal(&*api_that_guard_illegal_static_ref, &*api_unrelated_borrowed_guard, api_unrelated_owned))?; let output_ok = RustAutoOpaque::new(Lifetimeable::new(output_ok, vec![Box::new(api_that.clone()), Box::new(api_that_guard.clone())])); Ok(output_ok)
                     })())
                 } })
 }
@@ -692,11 +692,10 @@ fn wire__crate__api__minimal__lt_compute_with_lifetime_function_twin_normal_impl
                             &*api_arg_guard_illegal_static_ref,
                         ),
                     )?;
-                    let output_ok =
-                        RustAutoOpaque::new(flutter_rust_bridge::for_generated::Lifetimeable::new(
-                            output_ok,
-                            vec![Box::new(api_arg.clone()), Box::new(api_arg_guard.clone())],
-                        ));
+                    let output_ok = RustAutoOpaque::new(Lifetimeable::new(
+                        output_ok,
+                        vec![Box::new(api_arg.clone()), Box::new(api_arg_guard.clone())],
+                    ));
                     Ok(output_ok)
                 })())
             }
