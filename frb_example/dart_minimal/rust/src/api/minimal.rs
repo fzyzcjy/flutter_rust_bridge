@@ -28,7 +28,13 @@ pub struct LtOwnedSubStructTwinNormal {
 #[frb(opaque)]
 #[derive(Debug)]
 pub struct LtTypeWithLifetimeTwinNormal<'a> {
-    foo: &'a LtOwnedStructTwinNormal,
+    field: &'a LtOwnedStructTwinNormal,
+}
+
+#[frb(opaque)]
+#[derive(Debug)]
+pub struct LtDoubleTypeWithLifetimeTwinNormal<'a> {
+    field: &'a LtTypeWithLifetimeTwinNormal<'a>,
 }
 
 #[allow(clippy::needless_lifetimes)]
@@ -36,7 +42,7 @@ impl LtOwnedStructTwinNormal {
     pub fn compute_type_with_lifetime_twin_normal<'a>(
         &'a self,
     ) -> LtTypeWithLifetimeTwinNormal<'a> {
-        LtTypeWithLifetimeTwinNormal { foo: self }
+        LtTypeWithLifetimeTwinNormal { field: self }
     }
 
     pub fn compute_sub_struct_twin_normal<'a>(&'a self) -> &'a LtOwnedSubStructTwinNormal {
@@ -54,12 +60,29 @@ impl LtOwnedSubStructTwinNormal {
     }
 }
 
+#[allow(clippy::needless_lifetimes)]
 impl LtTypeWithLifetimeTwinNormal<'_> {
     pub fn greet_borrow_self_twin_normal(&self) -> String {
-        self.foo.sub.value.clone()
+        self.field.sub.value.clone()
     }
 
     pub fn greet_borrow_mut_self_twin_normal(&mut self) -> String {
-        self.foo.sub.value.clone()
+        self.field.sub.value.clone()
+    }
+
+    pub fn compute_double_type_with_lifetime_twin_normal<'a>(
+        &'a self,
+    ) -> LtDoubleTypeWithLifetimeTwinNormal<'a> {
+        LtDoubleTypeWithLifetimeTwinNormal { field: self }
+    }
+}
+
+impl LtDoubleTypeWithLifetimeTwinNormal<'_> {
+    pub fn greet_borrow_self_twin_normal(&self) -> String {
+        self.field.field.sub.value.clone()
+    }
+
+    pub fn greet_borrow_mut_self_twin_normal(&mut self) -> String {
+        self.field.field.sub.value.clone()
     }
 }
