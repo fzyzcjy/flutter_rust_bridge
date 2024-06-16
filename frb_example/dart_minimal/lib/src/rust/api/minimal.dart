@@ -8,8 +8,8 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<LifetimeTesterOneTwinNormal>>
 abstract class LifetimeTesterOneTwinNormal implements RustOpaqueInterface {
-  Future<LifetimeTesterTwoTwinNormalA> computeTwo();
+  Future<LifetimeTesterTwoTwinNormal> computeTwo();
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<flutter_rust_bridge :: for_generated :: Lifetimeable < LifetimeTesterTwoTwinNormal < 'static > >>>
-abstract class LifetimeTesterTwoTwinNormalA implements RustOpaqueInterface {}
+abstract class LifetimeTesterTwoTwinNormal implements RustOpaqueInterface {}

@@ -66,7 +66,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 }
 
 abstract class RustLibApi extends BaseApi {
-  Future<LifetimeTesterTwoTwinNormalA>
+  Future<LifetimeTesterTwoTwinNormal>
       crateApiMinimalLifetimeTesterOneTwinNormalComputeTwo(
           {required LifetimeTesterOneTwinNormal that});
 
@@ -80,13 +80,13 @@ abstract class RustLibApi extends BaseApi {
       get rust_arc_decrement_strong_count_LifetimeTesterOneTwinNormalPtr;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_LifetimeTesterTwoTwinNormalA;
+      get rust_arc_increment_strong_count_LifetimeTesterTwoTwinNormal;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_LifetimeTesterTwoTwinNormalA;
+      get rust_arc_decrement_strong_count_LifetimeTesterTwoTwinNormal;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_LifetimeTesterTwoTwinNormalAPtr;
+      get rust_arc_decrement_strong_count_LifetimeTesterTwoTwinNormalPtr;
 }
 
 class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
@@ -98,7 +98,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   });
 
   @override
-  Future<LifetimeTesterTwoTwinNormalA>
+  Future<LifetimeTesterTwoTwinNormal>
       crateApiMinimalLifetimeTesterOneTwinNormalComputeTwo(
           {required LifetimeTesterOneTwinNormal that}) {
     return handler.executeNormal(NormalTask(
@@ -111,7 +111,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       },
       codec: SseCodec(
         decodeSuccessData:
-            sse_decode_Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeTesterTwoTwinNormala,
+            sse_decode_Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeTesterTwoTwinNormalstatic,
         decodeErrorData: null,
       ),
       constMeta: kCrateApiMinimalLifetimeTesterOneTwinNormalComputeTwoConstMeta,
@@ -136,15 +136,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeTesterOneTwinNormal;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_LifetimeTesterTwoTwinNormalA => wire
+      get rust_arc_increment_strong_count_LifetimeTesterTwoTwinNormal => wire
           .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerflutter_rust_bridgefor_generatedLifetimeableLifetimeTesterTwoTwinNormalstatic;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_LifetimeTesterTwoTwinNormalA => wire
+      get rust_arc_decrement_strong_count_LifetimeTesterTwoTwinNormal => wire
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerflutter_rust_bridgefor_generatedLifetimeableLifetimeTesterTwoTwinNormalstatic;
 
   @protected
-  LifetimeTesterTwoTwinNormalA
+  LifetimeTesterTwoTwinNormal
       dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerflutter_rust_bridgefor_generatedLifetimeableLifetimeTesterTwoTwinNormalstatic(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -171,8 +171,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  LifetimeTesterTwoTwinNormalA
-      dco_decode_Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeTesterTwoTwinNormala(
+  LifetimeTesterTwoTwinNormal
+      dco_decode_Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeTesterTwoTwinNormalstatic(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     throw UnimplementedError(
@@ -189,11 +189,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  LifetimeTesterTwoTwinNormalA
+  LifetimeTesterTwoTwinNormal
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerflutter_rust_bridgefor_generatedLifetimeableLifetimeTesterTwoTwinNormalstatic(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return LifetimeTesterTwoTwinNormalAImpl.frbInternalDcoDecode(
+    return LifetimeTesterTwoTwinNormalImpl.frbInternalDcoDecode(
         raw as List<dynamic>);
   }
 
@@ -210,7 +210,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  LifetimeTesterTwoTwinNormalA
+  LifetimeTesterTwoTwinNormal
       sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerflutter_rust_bridgefor_generatedLifetimeableLifetimeTesterTwoTwinNormalstatic(
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -239,8 +239,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  LifetimeTesterTwoTwinNormalA
-      sse_decode_Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeTesterTwoTwinNormala(
+  LifetimeTesterTwoTwinNormal
+      sse_decode_Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeTesterTwoTwinNormalstatic(
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner =
@@ -259,11 +259,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  LifetimeTesterTwoTwinNormalA
+  LifetimeTesterTwoTwinNormal
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerflutter_rust_bridgefor_generatedLifetimeableLifetimeTesterTwoTwinNormalstatic(
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    return LifetimeTesterTwoTwinNormalAImpl.frbInternalSseDecode(
+    return LifetimeTesterTwoTwinNormalImpl.frbInternalSseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -293,7 +293,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   void
       sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerflutter_rust_bridgefor_generatedLifetimeableLifetimeTesterTwoTwinNormalstatic(
-          LifetimeTesterTwoTwinNormalA self, SseSerializer serializer) {
+          LifetimeTesterTwoTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerflutter_rust_bridgefor_generatedLifetimeableLifetimeTesterTwoTwinNormalstatic(
         self, serializer);
@@ -323,8 +323,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-      sse_encode_Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeTesterTwoTwinNormala(
-          LifetimeTesterTwoTwinNormalA self, SseSerializer serializer) {
+      sse_encode_Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeTesterTwoTwinNormalstatic(
+          LifetimeTesterTwoTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerflutter_rust_bridgefor_generatedLifetimeableLifetimeTesterTwoTwinNormalstatic(
         self, serializer);
@@ -344,10 +344,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerflutter_rust_bridgefor_generatedLifetimeableLifetimeTesterTwoTwinNormalstatic(
-          LifetimeTesterTwoTwinNormalA self, SseSerializer serializer) {
+          LifetimeTesterTwoTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as LifetimeTesterTwoTwinNormalAImpl)
+        (self as LifetimeTesterTwoTwinNormalImpl)
             .frbInternalSseEncode(move: null),
         serializer);
   }
@@ -397,30 +397,30 @@ class LifetimeTesterOneTwinNormalImpl extends RustOpaque
         .rust_arc_decrement_strong_count_LifetimeTesterOneTwinNormalPtr,
   );
 
-  Future<LifetimeTesterTwoTwinNormalA> computeTwo() =>
+  Future<LifetimeTesterTwoTwinNormal> computeTwo() =>
       RustLib.instance.api.crateApiMinimalLifetimeTesterOneTwinNormalComputeTwo(
         that: this,
       );
 }
 
 @sealed
-class LifetimeTesterTwoTwinNormalAImpl extends RustOpaque
-    implements LifetimeTesterTwoTwinNormalA {
+class LifetimeTesterTwoTwinNormalImpl extends RustOpaque
+    implements LifetimeTesterTwoTwinNormal {
   // Not to be used by end users
-  LifetimeTesterTwoTwinNormalAImpl.frbInternalDcoDecode(List<dynamic> wire)
+  LifetimeTesterTwoTwinNormalImpl.frbInternalDcoDecode(List<dynamic> wire)
       : super.frbInternalDcoDecode(wire, _kStaticData);
 
   // Not to be used by end users
-  LifetimeTesterTwoTwinNormalAImpl.frbInternalSseDecode(
+  LifetimeTesterTwoTwinNormalImpl.frbInternalSseDecode(
       BigInt ptr, int externalSizeOnNative)
       : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_LifetimeTesterTwoTwinNormalA,
+        .rust_arc_increment_strong_count_LifetimeTesterTwoTwinNormal,
     rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_LifetimeTesterTwoTwinNormalA,
+        .rust_arc_decrement_strong_count_LifetimeTesterTwoTwinNormal,
     rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_LifetimeTesterTwoTwinNormalAPtr,
+        .rust_arc_decrement_strong_count_LifetimeTesterTwoTwinNormalPtr,
   );
 }
