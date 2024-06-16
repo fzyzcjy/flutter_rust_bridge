@@ -123,3 +123,11 @@ pub(crate) fn generate_inner_func_arg_ownership(field: &MirFuncInput) -> String 
             .to_owned(),
     }
 }
+
+pub(crate) fn generate_inner_func_arg(raw: &str, field: &MirFuncInput) -> String {
+    if compute_interest_field(&field.inner.ty).is_some() {
+        format!("{raw}_guard")
+    } else {
+        raw.to_owned()
+    }
+}
