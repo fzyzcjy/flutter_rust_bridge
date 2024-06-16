@@ -55,7 +55,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.0.0-dev.39';
 
   @override
-  int get rustContentHash => -1733396059;
+  int get rustContentHash => 665744798;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -69,6 +69,8 @@ abstract class RustLibApi extends BaseApi {
   Future<LifetimeTesterTwoTwinNormal>
       crateApiMinimalLifetimeTesterOneTwinNormalComputeTwo(
           {required LifetimeTesterOneTwinNormal that});
+
+  LifetimeTesterOneTwinNormal crateApiMinimalLifetimeTesterOneTwinNormalNew();
 
   Future<String>
       crateApiMinimalLifetimeableAutoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerLifetimeTesterTwoTwinNormalstaticGreet(
@@ -132,6 +134,30 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
+  LifetimeTesterOneTwinNormal crateApiMinimalLifetimeTesterOneTwinNormalNew() {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 2)!;
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeTesterOneTwinNormal,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiMinimalLifetimeTesterOneTwinNormalNewConstMeta,
+      argValues: [],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiMinimalLifetimeTesterOneTwinNormalNewConstMeta =>
+      const TaskConstMeta(
+        debugName: "LifetimeTesterOneTwinNormal_new",
+        argNames: [],
+      );
+
+  @override
   Future<String>
       crateApiMinimalLifetimeableAutoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerLifetimeTesterTwoTwinNormalstaticGreet(
           {required LifetimeTesterTwoTwinNormal that}) {
@@ -141,7 +167,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeTesterTwoTwinNormalstatic(
             that, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 2, port: port_);
+            funcId: 3, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_String,
