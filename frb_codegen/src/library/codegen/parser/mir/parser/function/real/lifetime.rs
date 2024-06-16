@@ -1,4 +1,6 @@
-pub(crate) fn parse_function_lifetime() -> ParseFunctionLifetimeOutput {
+use syn::Signature;
+
+pub(crate) fn parse_function_lifetime(sig: &Signature) -> ParseFunctionLifetimeOutput {
     todo!()
 }
 
