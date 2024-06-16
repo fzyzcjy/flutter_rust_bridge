@@ -16,9 +16,8 @@ void main() {
 // but only to test code generator functionality.
 //
 // The following is adapted from `web-audio-api`'s readme demo.
-//
 // ignore: unused_element
-Future<void> _demoUsage() async {
+Future<void> _rustWebAudioApiReadmeDemoUsage() async {
   const options = AudioContextOptions(
     latencyHint: AudioContextLatencyCategory.balanced(),
     sinkId: '',
@@ -42,4 +41,10 @@ Future<void> _demoUsage() async {
   await src.start();
 
   await Future.delayed(const Duration(seconds: 4));
+}
+
+// The following is adapted from this demo:
+// https://developer.mozilla.org/zh-CN/docs/Web/API/Web_Audio_API/Using_Web_Audio_API
+Future<void> _mdnUsingWebAudioApiDemoUsage() async {
+  // TODO
 }
