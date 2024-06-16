@@ -1466,7 +1466,7 @@ fn wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_auto_accesso
                     }
                 }
                 let api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok(api_that.one.clone())?;
+                let output_ok = Result::<_, ()>::Ok(api_that_guard.one.clone())?;
                 Ok(output_ok)
             })())
         },
@@ -1517,7 +1517,7 @@ fn wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_auto_accesso
                 let mut api_that_guard = api_that_guard.unwrap();
                 let output_ok = Result::<_, ()>::Ok({
                     {
-                        api_that.one = api_one;
+                        api_that_guard.one = api_one;
                     };
                 })?;
                 Ok(output_ok)
@@ -1653,7 +1653,7 @@ fn wire__crate__api__constructor__ConstructorOpaqueSyncStructTwinNormal_auto_acc
                     }
                 }
                 let api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok(api_that.one.clone())?;
+                let output_ok = Result::<_, ()>::Ok(api_that_guard.one.clone())?;
                 Ok(output_ok)
             })())
         },
@@ -1704,7 +1704,7 @@ fn wire__crate__api__constructor__ConstructorOpaqueSyncStructTwinNormal_auto_acc
                 let mut api_that_guard = api_that_guard.unwrap();
                 let output_ok = Result::<_, ()>::Ok({
                     {
-                        api_that.one = api_one;
+                        api_that_guard.one = api_one;
                     };
                 })?;
                 Ok(output_ok)
@@ -3367,7 +3367,7 @@ fn wire__crate__api__dyn_trait__StructOneWithTraitForDynTwinNormal_auto_accessor
                     }
                 }
                 let api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok(api_that.one.clone())?;
+                let output_ok = Result::<_, ()>::Ok(api_that_guard.one.clone())?;
                 Ok(output_ok)
             })())
         },
@@ -3418,7 +3418,7 @@ fn wire__crate__api__dyn_trait__StructOneWithTraitForDynTwinNormal_auto_accessor
                 let mut api_that_guard = api_that_guard.unwrap();
                 let output_ok = Result::<_, ()>::Ok({
                     {
-                        api_that.one = api_one;
+                        api_that_guard.one = api_one;
                     };
                 })?;
                 Ok(output_ok)
@@ -3507,7 +3507,7 @@ fn wire__crate__api__dyn_trait__StructTwoWithTraitForDynTwinNormal_auto_accessor
                     }
                 }
                 let api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok(api_that.two.clone())?;
+                let output_ok = Result::<_, ()>::Ok(api_that_guard.two.clone())?;
                 Ok(output_ok)
             })())
         },
@@ -3558,7 +3558,7 @@ fn wire__crate__api__dyn_trait__StructTwoWithTraitForDynTwinNormal_auto_accessor
                 let mut api_that_guard = api_that_guard.unwrap();
                 let output_ok = Result::<_, ()>::Ok({
                     {
-                        api_that.two = api_two;
+                        api_that_guard.two = api_two;
                     };
                 })?;
                 Ok(output_ok)
@@ -5273,7 +5273,7 @@ fn wire__crate__api__impl_trait__StructOneWithTraitTwinNormal_auto_accessor_get_
                     }
                 }
                 let api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok(api_that.one.clone())?;
+                let output_ok = Result::<_, ()>::Ok(api_that_guard.one.clone())?;
                 Ok(output_ok)
             })())
         },
@@ -5324,7 +5324,7 @@ fn wire__crate__api__impl_trait__StructOneWithTraitTwinNormal_auto_accessor_set_
                 let mut api_that_guard = api_that_guard.unwrap();
                 let output_ok = Result::<_, ()>::Ok({
                     {
-                        api_that.one = api_one;
+                        api_that_guard.one = api_one;
                     };
                 })?;
                 Ok(output_ok)
@@ -5428,7 +5428,7 @@ fn wire__crate__api__impl_trait__StructTwoWithTraitTwinNormal_auto_accessor_get_
                     }
                 }
                 let api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok(api_that.two.clone())?;
+                let output_ok = Result::<_, ()>::Ok(api_that_guard.two.clone())?;
                 Ok(output_ok)
             })())
         },
@@ -5479,7 +5479,7 @@ fn wire__crate__api__impl_trait__StructTwoWithTraitTwinNormal_auto_accessor_set_
                 let mut api_that_guard = api_that_guard.unwrap();
                 let output_ok = Result::<_, ()>::Ok({
                     {
-                        api_that.two = api_two;
+                        api_that_guard.two = api_two;
                     };
                 })?;
                 Ok(output_ok)
@@ -7936,7 +7936,7 @@ fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal
                     }
                 }
                 let api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok(api_that.deliberate_bad_field_a.clone())?;
+                let output_ok = Result::<_, ()>::Ok(api_that_guard.deliberate_bad_field_a.clone())?;
                 Ok(output_ok)
             })())
         },
@@ -7985,7 +7985,7 @@ fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal
                     }
                 }
                 let api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok(api_that.deliberate_bad_field_b.clone())?;
+                let output_ok = Result::<_, ()>::Ok(api_that_guard.deliberate_bad_field_b.clone())?;
                 Ok(output_ok)
             })())
         },
@@ -8034,7 +8034,7 @@ fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal
                     }
                 }
                 let api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok(api_that.deliberate_bad_field_c.clone())?;
+                let output_ok = Result::<_, ()>::Ok(api_that_guard.deliberate_bad_field_c.clone())?;
                 Ok(output_ok)
             })())
         },
@@ -8082,7 +8082,7 @@ fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal
                     }
                 }
                 let api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok(api_that.good_field_a.clone())?;
+                let output_ok = Result::<_, ()>::Ok(api_that_guard.good_field_a.clone())?;
                 Ok(output_ok)
             })())
         },
@@ -8130,7 +8130,7 @@ fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal
                     }
                 }
                 let api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok(api_that.good_field_b.clone())?;
+                let output_ok = Result::<_, ()>::Ok(api_that_guard.good_field_b.clone())?;
                 Ok(output_ok)
             })())
         },
@@ -8178,7 +8178,7 @@ fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal
                     }
                 }
                 let api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok(api_that.good_field_c.clone())?;
+                let output_ok = Result::<_, ()>::Ok(api_that_guard.good_field_c.clone())?;
                 Ok(output_ok)
             })())
         },
@@ -8230,7 +8230,7 @@ fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal
                 let mut api_that_guard = api_that_guard.unwrap();
                 let output_ok = Result::<_, ()>::Ok({
                     {
-                        api_that.deliberate_bad_field_a = api_deliberate_bad_field_a;
+                        api_that_guard.deliberate_bad_field_a = api_deliberate_bad_field_a;
                     };
                 })?;
                 Ok(output_ok)
@@ -8284,7 +8284,7 @@ fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal
                 let mut api_that_guard = api_that_guard.unwrap();
                 let output_ok = Result::<_, ()>::Ok({
                     {
-                        api_that.deliberate_bad_field_b = api_deliberate_bad_field_b;
+                        api_that_guard.deliberate_bad_field_b = api_deliberate_bad_field_b;
                     };
                 })?;
                 Ok(output_ok)
@@ -8339,7 +8339,7 @@ fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal
                 let mut api_that_guard = api_that_guard.unwrap();
                 let output_ok = Result::<_, ()>::Ok({
                     {
-                        api_that.deliberate_bad_field_c = api_deliberate_bad_field_c;
+                        api_that_guard.deliberate_bad_field_c = api_deliberate_bad_field_c;
                     };
                 })?;
                 Ok(output_ok)
@@ -8392,7 +8392,7 @@ fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal
                 let mut api_that_guard = api_that_guard.unwrap();
                 let output_ok = Result::<_, ()>::Ok({
                     {
-                        api_that.good_field_a = api_good_field_a;
+                        api_that_guard.good_field_a = api_good_field_a;
                     };
                 })?;
                 Ok(output_ok)
@@ -8445,7 +8445,7 @@ fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal
                 let mut api_that_guard = api_that_guard.unwrap();
                 let output_ok = Result::<_, ()>::Ok({
                     {
-                        api_that.good_field_b = api_good_field_b;
+                        api_that_guard.good_field_b = api_good_field_b;
                     };
                 })?;
                 Ok(output_ok)
@@ -8499,7 +8499,7 @@ fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal
                 let mut api_that_guard = api_that_guard.unwrap();
                 let output_ok = Result::<_, ()>::Ok({
                     {
-                        api_that.good_field_c = api_good_field_c;
+                        api_that_guard.good_field_c = api_good_field_c;
                     };
                 })?;
                 Ok(output_ok)
@@ -8564,7 +8564,7 @@ fn wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_
                     }
                 }
                 let api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok(api_that.name.clone())?;
+                let output_ok = Result::<_, ()>::Ok(api_that_guard.name.clone())?;
                 Ok(output_ok)
             })())
         },
@@ -8615,7 +8615,7 @@ fn wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_
                 let mut api_that_guard = api_that_guard.unwrap();
                 let output_ok = Result::<_, ()>::Ok({
                     {
-                        api_that.name = api_name;
+                        api_that_guard.name = api_name;
                     };
                 })?;
                 Ok(output_ok)
@@ -18366,7 +18366,7 @@ fn wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructOneWithTraitTwin
                     }
                 }
                 let api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok(api_that.one.clone())?;
+                let output_ok = Result::<_, ()>::Ok(api_that_guard.one.clone())?;
                 Ok(output_ok)
             })())
         },
@@ -18415,7 +18415,7 @@ fn wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructOneWithTraitTwin
                 let mut api_that_guard = api_that_guard.unwrap();
                 let output_ok = Result::<_, ()>::Ok({
                     {
-                        api_that.one = api_one;
+                        api_that_guard.one = api_one;
                     };
                 })?;
                 Ok(output_ok)
@@ -18517,7 +18517,7 @@ fn wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructTwoWithTraitTwin
                     }
                 }
                 let api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok(api_that.two.clone())?;
+                let output_ok = Result::<_, ()>::Ok(api_that_guard.two.clone())?;
                 Ok(output_ok)
             })())
         },
@@ -18566,7 +18566,7 @@ fn wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructTwoWithTraitTwin
                 let mut api_that_guard = api_that_guard.unwrap();
                 let output_ok = Result::<_, ()>::Ok({
                     {
-                        api_that.two = api_two;
+                        api_that_guard.two = api_two;
                     };
                 })?;
                 Ok(output_ok)
@@ -22396,7 +22396,7 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__StructWith
                     }
                 }
                 let api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok(api_that.good.clone())?;
+                let output_ok = Result::<_, ()>::Ok(api_that_guard.good.clone())?;
                 Ok(output_ok)
             })())
         },
@@ -22448,7 +22448,7 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__StructWith
                 let mut api_that_guard = api_that_guard.unwrap();
                 let output_ok = Result::<_, ()>::Ok({
                     {
-                        api_that.good = api_good;
+                        api_that_guard.good = api_good;
                     };
                 })?;
                 Ok(output_ok)
@@ -23248,7 +23248,7 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGoodAn
                     }
                 }
                 let api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok(api_that.good.clone())?;
+                let output_ok = Result::<_, ()>::Ok(api_that_guard.good.clone())?;
                 Ok(output_ok)
             })())
         },
@@ -23299,7 +23299,7 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGoodAn
                 let mut api_that_guard = api_that_guard.unwrap();
                 let output_ok = Result::<_, ()>::Ok({
                     {
-                        api_that.good = api_good;
+                        api_that_guard.good = api_good;
                     };
                 })?;
                 Ok(output_ok)
@@ -25478,7 +25478,7 @@ fn wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOption
                     }
                 }
                 let api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok(api_that.good.clone())?;
+                let output_ok = Result::<_, ()>::Ok(api_that_guard.good.clone())?;
                 Ok(output_ok)
             })())
         },
@@ -25530,7 +25530,7 @@ fn wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOption
                 let mut api_that_guard = api_that_guard.unwrap();
                 let output_ok = Result::<_, ()>::Ok({
                     {
-                        api_that.good = api_good;
+                        api_that_guard.good = api_good;
                     };
                 })?;
                 Ok(output_ok)
