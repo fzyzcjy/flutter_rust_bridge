@@ -35,13 +35,18 @@ pub struct LtTypeWithLifetimeTwinNormal<'a> {
 
 #[frb(opaque)]
 #[derive(Debug)]
-pub struct LtDoubleTypeWithLifetimeTwinNormal<'a> {
+pub struct LtNestedTypeWithLifetimeTwinNormal<'a> {
     field: &'a LtTypeWithLifetimeTwinNormal<'a>,
 }
 
+#[frb(opaque)]
+#[derive(Debug)]
+pub struct LtTypeWithMultiOwnerTwinNormal<'a> {
+    fields: Vec<&'a LtOwnedStructTwinNormal>,
+}
+
 impl LtOwnedStructTwinNormal {
-    #[frb(sync)]
-    pub fn new(value: String) -> Self {
+    pub fn create(value: String) -> Self {
         Self {
             sub: LtOwnedSubStructTwinNormal { value },
         }
@@ -102,17 +107,31 @@ impl LtTypeWithLifetimeTwinNormal<'_> {
     /// Input lifetimeable and output another lifetimeable
     pub fn compute_double_type_with_lifetime_twin_normal<'a>(
         &'a self,
-    ) -> LtDoubleTypeWithLifetimeTwinNormal<'a> {
-        LtDoubleTypeWithLifetimeTwinNormal { field: self }
+    ) -> LtNestedTypeWithLifetimeTwinNormal<'a> {
+        LtNestedTypeWithLifetimeTwinNormal { field: self }
     }
 }
 
-impl LtDoubleTypeWithLifetimeTwinNormal<'_> {
+impl LtNestedTypeWithLifetimeTwinNormal<'_> {
     pub fn greet_borrow_self_twin_normal(&self) -> String {
         self.field.field.sub.value.clone()
     }
 
     pub fn greet_borrow_mut_self_twin_normal(&mut self) -> String {
         self.field.field.sub.value.clone()
+    }
+}
+
+impl LtTypeWithMultiOwnerTwinNormal<'_> {
+    /// Multiple input args have lifetime
+    pub fn compute_with_multi_arg_having_lifetime_twin_normal<'a>(
+        a: &'a LtOwnedStructTwinNormal,
+        b: &'a LtOwnedStructTwinNormal,
+        unrelated_borrowed: &LtOwnedSubStructTwinNormal,
+        unrelated_owned: LtOwnedSubStructTwinNormal,
+    ) -> Self<'a> {
+        assert_eq!(&unrelated_borrowed.value, "hi");
+        assert_eq!(&unrelated_owned.value, "hi");
+        Self { fields: vec![a, b] }
     }
 }
