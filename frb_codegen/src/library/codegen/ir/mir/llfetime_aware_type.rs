@@ -6,6 +6,10 @@ pub struct MirLifetimeAwareType {
 }
 
 impl MirLifetimeAwareType {
+    pub fn new(raw: String) -> Self {
+        Self { raw }
+    }
+
     pub fn with_original_lifetime(&self) -> &str {
         &self.raw
     }

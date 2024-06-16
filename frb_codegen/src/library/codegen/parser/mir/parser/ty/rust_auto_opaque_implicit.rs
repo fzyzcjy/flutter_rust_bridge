@@ -16,6 +16,7 @@ use anyhow::Result;
 use quote::ToTokens;
 use syn::Type;
 use MirType::RustAutoOpaqueImplicit;
+use crate::codegen::ir::mir::llfetime_aware_type::MirLifetimeAwareType;
 use crate::codegen::parser::mir::parser::lifetime_replacer::replace_all_lifetimes_to_static;
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
@@ -113,16 +114,16 @@ fn parse_type_rust_auto_opaque_common_raw(
 
     Ok((
         MirRustAutoOpaqueRaw {
-            string: inner_str.clone(),
+            string: MirLifetimeAwareType::new(inner_str.clone()),
             segments: raw_segments,
         },
         MirTypeRustOpaque {
             namespace,
             // TODO when all usages of a type do not require `&mut`, can drop this Mutex
             // TODO similarly, can use std instead of `tokio`'s lock
-            inner: MirRustOpaqueInner(format!(
+            inner: MirRustOpaqueInner(MirLifetimeAwareType::new(format!(
                 "flutter_rust_bridge::for_generated::RustAutoOpaqueInner<{inner_str}>"
-            )),
+            ))),
             codec,
             dart_api_type,
             brief_name: true,
