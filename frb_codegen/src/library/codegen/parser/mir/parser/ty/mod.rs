@@ -24,7 +24,6 @@ use crate::utils::basic_code::general_code::GeneralDartCode;
 use crate::utils::namespace::Namespace;
 use std::collections::HashMap;
 use syn::Type;
-use syn::__private::str;
 
 pub(crate) mod array;
 pub(crate) mod concrete;
