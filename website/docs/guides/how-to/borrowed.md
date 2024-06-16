@@ -1,11 +1,13 @@
 # Borrowed types
 
-flutter_rust_bridge does not yet support types with *arbitrary* borrowing and lifetime
-like `struct MyStruct<'a> { ... }`,
-or functions that return arbitrary reference types,
-since this has not been a blocker for users and there are alternative approaches.
-However, if you do need to have this feature, feel free to open an issue and we can discuss/implement it!
-Below, we discuss several approaches for some scenarios.
+## Direct approach
+
+`flutter_rust_bridge` does support types with borrowing and lifetime like `struct MyStruct<'a> { ... }`,
+or functions that return types with lifetimes such as references.
+Please refer to [this page](../types/arbitrary/rust-auto-opaque/lifetime) for details.
+
+For completeness, below we discuss alternative approaches, which are useful in some scenarios.
+(They are originally documented because at that time the lifetime had not been supported.)
 
 ## Proxy
 
