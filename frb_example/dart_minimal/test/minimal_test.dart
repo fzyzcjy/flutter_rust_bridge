@@ -71,12 +71,7 @@ Future<void> main() async {
       final ownedStruct = await LtOwnedStructTwinNormal.create(value: 'a');
       final typeWithLifetime =
           await ownedStruct.computeTypeWithLifetimeTwinNormal();
-
-      expect(await typeWithLifetime.greetBorrowSelfTwinNormal(), 'a');
-      expect(await typeWithLifetime.greetBorrowMutSelfTwinNormal(), 'a');
-      ownedStruct.dispose();
-      expect(await typeWithLifetime.greetBorrowSelfTwinNormal(), 'a');
-      expect(await typeWithLifetime.greetBorrowMutSelfTwinNormal(), 'a');
+      await _testOwnedStructAndTypeWithLifetime(ownedStruct, typeWithLifetime);
     });
 
     test('computeWithUnrelatedBorrowedArgTwinNormal', () async {
@@ -86,12 +81,25 @@ Future<void> main() async {
         unrelatedBorrowed: await LtOwnedStructTwinNormal.create(value: 'hi'),
         unrelatedOwned: await LtOwnedStructTwinNormal.create(value: 'hi'),
       );
+      await _testOwnedStructAndTypeWithLifetime(ownedStruct, typeWithLifetime);
+    });
 
-      expect(await typeWithLifetime.greetBorrowSelfTwinNormal(), 'a');
-      expect(await typeWithLifetime.greetBorrowMutSelfTwinNormal(), 'a');
-      ownedStruct.dispose();
-      expect(await typeWithLifetime.greetBorrowSelfTwinNormal(), 'a');
-      expect(await typeWithLifetime.greetBorrowMutSelfTwinNormal(), 'a');
+    test('ltComputeWithLifetimeFunctionTwinNormal', () async {
+      final ownedStruct = await LtOwnedStructTwinNormal.create(value: 'a');
+      final typeWithLifetime =
+          await ltComputeWithLifetimeFunctionTwinNormal(arg: ownedStruct);
+      await _testOwnedStructAndTypeWithLifetime(ownedStruct, typeWithLifetime);
     });
   });
+}
+
+Future<void> _testOwnedStructAndTypeWithLifetime(
+  LtOwnedStructTwinNormal ownedStruct,
+  LtTypeWithLifetimeTwinNormal typeWithLifetime,
+) async {
+  expect(await typeWithLifetime.greetBorrowSelfTwinNormal(), 'a');
+  expect(await typeWithLifetime.greetBorrowMutSelfTwinNormal(), 'a');
+  ownedStruct.dispose();
+  expect(await typeWithLifetime.greetBorrowSelfTwinNormal(), 'a');
+  expect(await typeWithLifetime.greetBorrowMutSelfTwinNormal(), 'a');
 }
