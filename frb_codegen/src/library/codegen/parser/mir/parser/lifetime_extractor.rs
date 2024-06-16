@@ -38,6 +38,7 @@ impl LifetimeExtractor {
 }
 
 pub(crate) const LIFETIME_STATIC: &str = "static";
+pub(crate) const LIFETIME_ANONYMOUS: &str = "_";
 
 // TODO maybe move
 #[derive(Debug, Clone, PartialEq, Eq, Hash)]
@@ -46,6 +47,10 @@ pub(crate) struct Lifetime(pub String);
 impl Lifetime {
     pub(crate) fn is_static(&self) -> bool {
         self.0 == LIFETIME_STATIC
+    }
+
+    pub(crate) fn is_anonymous(&self) -> bool {
+        self.0 == LIFETIME_ANONYMOUS
     }
 }
 
