@@ -147,7 +147,7 @@ fn generate_code_call_inner_func_result(func: &MirFunc, inner_func_args: Vec<Str
 }
 
 fn generate_code_postprocess_inner_output(func: &MirFunc) -> String {
-    lockable::generate_code_postprocess_inner_output(func)
+    lifetime::generate_code_postprocess_inner_output(func)
 }
 
 fn generate_handler_func_name(func: &MirFunc) -> String {

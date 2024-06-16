@@ -55,3 +55,10 @@ pub(crate) fn generate_inner_func_arg(raw: &str, field: &MirFuncInput) -> String
         raw.to_owned()
     }
 }
+
+pub(super) fn generate_code_postprocess_inner_output(func: &MirFunc) -> String {
+    if func.inputs.iter().any(|field| isin)
+    format!(
+        "let output_ok = {TODO}"
+    )
+}
