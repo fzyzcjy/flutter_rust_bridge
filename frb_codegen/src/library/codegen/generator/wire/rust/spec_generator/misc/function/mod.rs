@@ -40,6 +40,7 @@ pub(crate) fn generate_wire_func(
         &code_decode,
         &code_inner_decode,
         &code_call_inner_func_result,
+        &code_postprocess_inner_output,
     );
     let func_name = wire_func_name(func);
 
