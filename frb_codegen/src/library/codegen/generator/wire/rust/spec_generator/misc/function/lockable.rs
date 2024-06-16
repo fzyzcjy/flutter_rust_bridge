@@ -40,13 +40,14 @@ pub(crate) fn generate_code_inner_decode(func: &MirFunc) -> String {
 
     let unwraps = (interest_fields.iter())
         .map(|info| {
-            let mutability = if info.ownership_mode == OwnershipMode::RefMut {
-                "mut "
-            } else {
-                ""
-            };
+            // let mutability = if info.ownership_mode == OwnershipMode::RefMut {
+            //     "mut "
+            // } else {
+            //     ""
+            // };
+            // "let {mutability}api_{name} = &{mutability}*api_{name}_guard.unwrap();\n",
             format!(
-                "let {mutability}api_{name} = &{mutability}*api_{name}_guard.unwrap();\n",
+                "let {mutability}api_{name}_guard = api_{name}_guard.unwrap();\n",
                 name = get_variable_name(info.field),
             )
         })
