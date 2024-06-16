@@ -258,7 +258,7 @@ impl MirTypeTrait for MirTypeDelegate {
             },
             MirTypeDelegate::CastedPrimitive(mir) => mir.inner.rust_api_type(),
             MirTypeDelegate::RustAutoOpaqueExplicit(mir) => {
-                format!("RustAutoOpaque{}<{}>", mir.inner.codec, mir.raw.with_static_lifetime())
+                format!("RustAutoOpaque{}<{}>", mir.inner.codec, mir.raw.string.with_static_lifetime())
             }
             MirTypeDelegate::DynTrait(mir) => format!("dyn {}", mir.trait_def_name.name),
             MirTypeDelegate::ProxyVariant(mir) => mir.inner.rust_api_type(),

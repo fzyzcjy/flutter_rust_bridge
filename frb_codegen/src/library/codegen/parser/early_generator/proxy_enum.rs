@@ -82,7 +82,7 @@ fn generate_proxy_enum(
 
 fn compute_deref_target(ty: &MirType) -> String {
     match ty {
-        MirType::RustAutoOpaqueImplicit(ty) => ty.raw.with_static_lifetime().clone(),
+        MirType::RustAutoOpaqueImplicit(ty) => ty.raw.string.with_static_lifetime().clone(),
         _ => unimplemented!(),
     }
 }
