@@ -72,11 +72,7 @@ fn wire__crate__api__minimal__LifetimeTesterOneTwinNormal_compute_two_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
-                    let api_that_illegal_static_reference = unsafe {
-                        flutter_rust_bridge::for_generated::ouroboros_change_lifetime(&api_that)
-                    };
-
-                    let mut api_that_guard = None;
+                    let mut api_that_decoded = None;
                     let decode_indices_ =
                         flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![
                             flutter_rust_bridge::for_generated::LockableOrderInfo::new(
@@ -85,30 +81,14 @@ fn wire__crate__api__minimal__LifetimeTesterOneTwinNormal_compute_two_impl(
                         ]);
                     for i in decode_indices_ {
                         match i {
-                            0 => {
-                                api_that_guard = Some(
-                                    api_that_illegal_static_reference.lockable_decode_sync_ref(),
-                                )
-                            }
+                            0 => api_that_decoded = Some(api_that.lockable_decode_sync_ref()),
                             _ => unreachable!(),
                         }
                     }
-                    let api_that_guard = Arc::new(api_that_guard.unwrap());
-                    let api_that_guard_illegal_static_reference = unsafe {
-                        flutter_rust_bridge::for_generated::ouroboros_change_lifetime(
-                            &*api_that_guard,
-                        )
-                    };
-                    let output_raw = crate::api::minimal::LifetimeTesterOneTwinNormal::compute_two(
-                        api_that_guard_illegal_static_reference,
-                    );
-                    let output = RustAutoOpaque::new(flutter_rust_bridge::for_generated::Lifetimeable::<
-                        LifetimeTesterTwoTwinNormal<'static>,
-                    >::new(
-                        output_raw,
-                        vec![Box::new(api_that.clone()), Box::new(api_that_guard.clone())],
-                    ));
-                    Result::<_, ()>::Ok(output)
+                    let api_that = &*api_that_decoded.unwrap();
+                    Result::<_, ()>::Ok(
+                        crate::api::minimal::LifetimeTesterOneTwinNormal::compute_two(api_that),
+                    )
                 })())
             }
         },
