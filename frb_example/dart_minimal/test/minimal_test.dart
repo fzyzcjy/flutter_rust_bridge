@@ -74,10 +74,7 @@ Future<void> main() async {
 
       expect(await typeWithLifetime.greetBorrowSelfTwinNormal(), 'a');
       expect(await typeWithLifetime.greetBorrowMutSelfTwinNormal(), 'a');
-
       ownedStruct.dispose();
-
-      // can still call
       expect(await typeWithLifetime.greetBorrowSelfTwinNormal(), 'a');
       expect(await typeWithLifetime.greetBorrowMutSelfTwinNormal(), 'a');
     });
@@ -92,10 +89,7 @@ Future<void> main() async {
 
       expect(await typeWithLifetime.greetBorrowSelfTwinNormal(), 'a');
       expect(await typeWithLifetime.greetBorrowMutSelfTwinNormal(), 'a');
-
       ownedStruct.dispose();
-
-      // can still call
       expect(await typeWithLifetime.greetBorrowSelfTwinNormal(), 'a');
       expect(await typeWithLifetime.greetBorrowMutSelfTwinNormal(), 'a');
     });
