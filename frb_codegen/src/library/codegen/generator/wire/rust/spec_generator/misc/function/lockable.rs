@@ -100,7 +100,9 @@ fn compute_interest_field_ownership_mode(ty: &MirType) -> Option<OwnershipMode> 
         MirType::RustAutoOpaqueImplicit(ty) if ty.ownership_mode != OwnershipMode::Owned => {
             Some(ty.ownership_mode)
         }
-        MirType::Delegate(MirTypeDelegate::ProxyEnum(ty)) => compute_interest_field_ownership_mode(&ty.original),
+        MirType::Delegate(MirTypeDelegate::ProxyEnum(ty)) => {
+            compute_interest_field_ownership_mode(&ty.original)
+        }
         // temporarily only support Ref
         MirType::Delegate(MirTypeDelegate::DynTrait(_)) => Some(OwnershipMode::Ref),
         MirType::Delegate(MirTypeDelegate::Lifetimeable(_)) => Some(OwnershipMode::Ref),
@@ -125,8 +127,13 @@ pub(crate) fn generate_inner_func_arg_ownership(field: &MirFuncInput) -> String 
 }
 
 pub(crate) fn generate_inner_func_arg(raw: &str, field: &MirFuncInput) -> String {
-    if compute_interest_field_ownership_mode(&field.inner.ty).is_some() {
-        format!("{raw}_guard")
+    if let Some(ownership_mode) = compute_interest_field_ownership_mode(&field.inner.ty).is_some() {
+        let mutability = if ownership_mode == OwnershipMode::RefMut {
+            "mut "
+        } else {
+            ""
+        };
+        format!("&{mutability}*{raw}_guard")
     } else {
         raw.to_owned()
     }
