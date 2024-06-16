@@ -127,7 +127,7 @@ pub(crate) fn generate_inner_func_arg_ownership(field: &MirFuncInput) -> String 
 }
 
 pub(crate) fn generate_inner_func_arg(raw: &str, field: &MirFuncInput) -> String {
-    if let Some(ownership_mode) = compute_interest_field_ownership_mode(&field.inner.ty).is_some() {
+    if let Some(ownership_mode) = compute_interest_field_ownership_mode(&field.inner.ty) {
         let mutability = if ownership_mode == OwnershipMode::RefMut {
             "mut "
         } else {
