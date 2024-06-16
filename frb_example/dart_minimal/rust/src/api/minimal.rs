@@ -1,3 +1,5 @@
+#![allow(clippy::needless_lifetimes)]
+
 use flutter_rust_bridge::frb;
 
 #[frb(init)]
@@ -37,7 +39,6 @@ pub struct LtDoubleTypeWithLifetimeTwinNormal<'a> {
     field: &'a LtTypeWithLifetimeTwinNormal<'a>,
 }
 
-#[allow(clippy::needless_lifetimes)]
 impl LtOwnedStructTwinNormal {
     #[frb(sync)]
     pub fn new(value: String) -> Self {
@@ -61,11 +62,20 @@ impl LtOwnedStructTwinNormal {
     /// The unrelated arg should not affect results
     pub fn compute_with_unrelated_borrowed_arg_twin_normal<'a>(
         &'a self,
-        unrelated: &LtOwnedSubStructTwinNormal,
+        unrelated_borrowed: &LtOwnedSubStructTwinNormal,
+        unrelated_owned: LtOwnedSubStructTwinNormal,
     ) -> &'a LtOwnedSubStructTwinNormal {
-        assert_eq!(&unrelated.value, "hi");
+        assert_eq!(&unrelated_borrowed.value, "hi");
+        assert_eq!(&unrelated_owned.value, "hi");
         &self.sub
     }
+}
+
+/// Functions (other tests are mainly methods)
+pub fn lt_compute_with_lifetime_function_twin_normal<'a>(
+    a: &'a LtOwnedStructTwinNormal,
+) -> &'a LtOwnedSubStructTwinNormal {
+    &a.sub
 }
 
 impl LtOwnedSubStructTwinNormal {
@@ -78,7 +88,6 @@ impl LtOwnedSubStructTwinNormal {
     }
 }
 
-#[allow(clippy::needless_lifetimes)]
 impl LtTypeWithLifetimeTwinNormal<'_> {
     /// `&T` where T is lifetimeable
     pub fn greet_borrow_self_twin_normal(&self) -> String {
