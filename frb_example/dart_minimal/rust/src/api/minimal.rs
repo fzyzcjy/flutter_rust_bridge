@@ -1,6 +1,7 @@
 #![allow(clippy::needless_lifetimes)]
 
 use flutter_rust_bridge::frb;
+use std::sync::Mutex;
 
 #[frb(init)]
 pub fn init_app() {
@@ -12,6 +13,22 @@ pub fn minimal_adder(a: i32, b: i32) -> i32 {
 }
 
 // ----------------------------------------------- tests -------------------------------------------------
+pub(crate) struct SimpleLogger(Mutex<Vec<String>>);
+
+impl SimpleLogger {
+    pub(crate) fn new() -> Self {
+        Self(Mutex::new(vec![]))
+    }
+    pub(crate) fn log(&self, message: String) {
+        self.0.lock().unwrap().push(message);
+    }
+
+    pub(crate) fn all(&self) -> Vec<String> {
+        self.0.lock().unwrap().clone()
+    }
+}
+
+// -------------------------------------------------------------------------------------------------
 
 /// Lt := Lifetime Testers
 /// Try *NOT* to impl Clone for these types in order to ensure there are no extra clones
