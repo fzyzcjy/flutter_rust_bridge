@@ -360,7 +360,7 @@ dependencies = [
 
 [[package]]
 name = "flutter_rust_bridge"
-version = "2.0.0-dev.39"
+version = "2.0.0-dev.40"
 dependencies = [
  "allo-isolate",
  "android_logger",
@@ -385,7 +385,7 @@ dependencies = [
 
 [[package]]
 name = "flutter_rust_bridge_macros"
-version = "2.0.0-dev.39"
+version = "2.0.0-dev.40"
 dependencies = [
  "hex",
  "md-5",
