@@ -14,7 +14,9 @@ use crate::codegen::parser::mir::parser::ty::rust_opaque::{
 use crate::codegen::parser::mir::parser::ty::TypeParserWithContext;
 use crate::utils::namespace::Namespace;
 use anyhow::Result;
+use lazy_static::lazy_static;
 use quote::ToTokens;
+use regex::Regex;
 use syn::Type;
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
@@ -103,7 +105,7 @@ fn parse_type_rust_auto_opaque_common_raw(
     codec: RustOpaqueCodecMode,
     dart_api_type: Option<String>,
 ) -> Result<(MirRustAutoOpaqueRaw, MirTypeRustOpaque)> {
-    let inner_str = inner.to_token_stream().to_string();
+    let inner_str = remove_ty_path_prefix(&inner.to_token_stream().to_string());
 
     let raw_segments = match inner {
         Type::Path(inner) => extract_path_data(&inner.path)?,
@@ -127,4 +129,13 @@ fn parse_type_rust_auto_opaque_common_raw(
             brief_name: true,
         },
     ))
+}
+
+/// e.g. `a::b::C` -> `C`
+fn remove_ty_path_prefix(raw: &str) -> String {
+    // Currently only via simple regex; can utilize syn tree later
+    lazy_static! {
+        static ref REGEX: Regex = Regex::new(r"[a-zA-Z0-9_ ]+::").unwrap();
+    }
+    REGEX.replace(raw, "").to_string()
 }
