@@ -104,7 +104,7 @@ fn wire__crate__api__minimal__minimal_adder_impl(
             move |context| {
                 transform_result_sse::<_, ()>((move || {
                     let output_ok =
-                        Result::<_, ()>::Ok(crate::api::minimal::minimal_adder(&*api_a, &*api_b))?;
+                        Result::<_, ()>::Ok(crate::api::minimal::minimal_adder(api_a, api_b))?;
                     Ok(output_ok)
                 })())
             }
