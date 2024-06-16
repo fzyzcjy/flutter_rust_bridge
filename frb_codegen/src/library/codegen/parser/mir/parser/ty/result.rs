@@ -39,7 +39,7 @@ fn parse_type_result(args: &[MirType]) -> anyhow::Result<ResultTypeInfo> {
         || args.iter().any(|x| {
             if let MirType::RustAutoOpaqueImplicit(inner) = x {
                 // Indeed `anyhow :: Error`, but we stripped the prefixes
-                return inner.raw.string.with_static_lifetime() == "Error";
+                return inner.raw.string.with_static_lifetime().trim() == "Error";
             }
             false
         });
