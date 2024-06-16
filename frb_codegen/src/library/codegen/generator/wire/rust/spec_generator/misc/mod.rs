@@ -91,7 +91,11 @@ clippy::let_and_return,
 clippy::too_many_arguments,
 clippy::match_single_binding,
 clippy::clone_on_copy,
-clippy::let_unit_value
+clippy::let_unit_value,
+clippy::deref_addrof,
+clippy::explicit_auto_deref,
+clippy::borrow_deref_ref,
+clippy::needless_borrow
 )]"#;
 
 fn generate_imports(
@@ -117,7 +121,7 @@ fn generate_imports(
 
     // NOTE Do *not* use imports when possible, instead use fully specified name directly
     let static_imports = "use flutter_rust_bridge::{Handler, IntoIntoDart};
-use flutter_rust_bridge::for_generated::{Lockable, transform_result_dco};
+use flutter_rust_bridge::for_generated::{Lockable, transform_result_dco, Lifetimeable};
 use flutter_rust_bridge::for_generated::byteorder::{NativeEndian, WriteBytesExt, ReadBytesExt};";
 
     Acc::new(|target| {

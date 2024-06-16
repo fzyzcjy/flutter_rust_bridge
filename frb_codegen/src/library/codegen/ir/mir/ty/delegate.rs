@@ -5,7 +5,9 @@ use crate::codegen::ir::mir::ty::general_list::{mir_list, MirTypeGeneralList};
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
 use crate::codegen::ir::mir::ty::primitive_list::MirTypePrimitiveList;
 use crate::codegen::ir::mir::ty::record::MirTypeRecord;
-use crate::codegen::ir::mir::ty::rust_auto_opaque_implicit::MirRustAutoOpaqueRaw;
+use crate::codegen::ir::mir::ty::rust_auto_opaque_implicit::{
+    MirRustAutoOpaqueRaw, MirTypeRustAutoOpaqueImplicit,
+};
 use crate::codegen::ir::mir::ty::rust_opaque::MirTypeRustOpaque;
 use crate::codegen::ir::mir::ty::{MirContext, MirType, MirTypeTrait};
 use crate::utils::namespace::{Namespace, NamespacedName};
@@ -113,7 +115,7 @@ pub struct MirTypeDelegateDynTrait {
 }
 
 pub struct MirTypeDelegateLifetimeable {
-    pub api_type: Box<MirType>,
+    pub api_type: MirTypeRustAutoOpaqueImplicit,
     pub delegate: MirTypeDelegateRustAutoOpaqueExplicit,
 }
 

@@ -32,7 +32,10 @@
                       "inner": {
                         "brief_name": true,
                         "codec": "Nom",
-                        "inner": "flutter_rust_bridge::for_generated::RustAutoOpaqueInner<A>",
+                        "dart_api_type": null,
+                        "inner": {
+                          "raw": "flutter_rust_bridge::for_generated::RustAutoOpaqueInner<A>"
+                        },
                         "namespace": "crate::api"
                       },
                       "ownership_mode": "Owned",
@@ -43,7 +46,9 @@
                             "ident": "A"
                           }
                         ],
-                        "string": "A"
+                        "string": {
+                          "raw": "A"
+                        }
                       },
                       "reason": null
                     },
@@ -94,7 +99,10 @@
                       "inner": {
                         "brief_name": true,
                         "codec": "Nom",
-                        "inner": "flutter_rust_bridge::for_generated::RustAutoOpaqueInner<B>",
+                        "dart_api_type": null,
+                        "inner": {
+                          "raw": "flutter_rust_bridge::for_generated::RustAutoOpaqueInner<B>"
+                        },
                         "namespace": "crate::api"
                       },
                       "ownership_mode": "Owned",
@@ -105,7 +113,9 @@
                             "ident": "B"
                           }
                         ],
-                        "string": "B"
+                        "string": {
+                          "raw": "B"
+                        }
                       },
                       "reason": null
                     },
@@ -170,25 +180,31 @@
                 "inner": {
                   "brief_name": true,
                   "codec": "Nom",
-                  "inner": "flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyGenericEnum>",
+                  "dart_api_type": null,
+                  "inner": {
+                    "raw": "flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyGenericEnum < bool >>"
+                  },
                   "namespace": "crate::api"
                 },
                 "ownership_mode": "Owned",
                 "raw": {
                   "segments": [
                     {
-                      "args": "",
+                      "args": "bool",
                       "ident": "MyGenericEnum"
                     }
                   ],
-                  "string": "MyGenericEnum"
+                  "string": {
+                    "raw": "MyGenericEnum < bool >"
+                  }
                 },
                 "reason": null
               },
-              "safe_ident": "Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyGenericEnum",
+              "safe_ident": "Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyGenericEnumbool",
               "type": "RustAutoOpaque"
             }
           },
+          "needs_extend_lifetime": false,
           "ownership_mode": null
         }
       ],
@@ -239,25 +255,31 @@
                 "inner": {
                   "brief_name": true,
                   "codec": "Nom",
-                  "inner": "flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyGenericEnum>",
+                  "dart_api_type": null,
+                  "inner": {
+                    "raw": "flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyGenericEnum < String >>"
+                  },
                   "namespace": "crate::api"
                 },
                 "ownership_mode": "Owned",
                 "raw": {
                   "segments": [
                     {
-                      "args": "",
+                      "args": "String",
                       "ident": "MyGenericEnum"
                     }
                   ],
-                  "string": "MyGenericEnum"
+                  "string": {
+                    "raw": "MyGenericEnum < String >"
+                  }
                 },
                 "reason": null
               },
-              "safe_ident": "Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyGenericEnum",
+              "safe_ident": "Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyGenericEnumString",
               "type": "RustAutoOpaque"
             }
           },
+          "needs_extend_lifetime": false,
           "ownership_mode": null
         }
       ],
@@ -308,25 +330,31 @@
                 "inner": {
                   "brief_name": true,
                   "codec": "Nom",
-                  "inner": "flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyGenericStruct>",
+                  "dart_api_type": null,
+                  "inner": {
+                    "raw": "flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyGenericStruct < bool >>"
+                  },
                   "namespace": "crate::api"
                 },
                 "ownership_mode": "Owned",
                 "raw": {
                   "segments": [
                     {
-                      "args": "",
+                      "args": "bool",
                       "ident": "MyGenericStruct"
                     }
                   ],
-                  "string": "MyGenericStruct"
+                  "string": {
+                    "raw": "MyGenericStruct < bool >"
+                  }
                 },
                 "reason": null
               },
-              "safe_ident": "Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyGenericStruct",
+              "safe_ident": "Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyGenericStructbool",
               "type": "RustAutoOpaque"
             }
           },
+          "needs_extend_lifetime": false,
           "ownership_mode": null
         }
       ],
@@ -377,25 +405,31 @@
                 "inner": {
                   "brief_name": true,
                   "codec": "Nom",
-                  "inner": "flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyGenericStruct>",
+                  "dart_api_type": null,
+                  "inner": {
+                    "raw": "flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyGenericStruct < String >>"
+                  },
                   "namespace": "crate::api"
                 },
                 "ownership_mode": "Owned",
                 "raw": {
                   "segments": [
                     {
-                      "args": "",
+                      "args": "String",
                       "ident": "MyGenericStruct"
                     }
                   ],
-                  "string": "MyGenericStruct"
+                  "string": {
+                    "raw": "MyGenericStruct < String >"
+                  }
                 },
                 "reason": null
               },
-              "safe_ident": "Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyGenericStruct",
+              "safe_ident": "Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyGenericStructString",
               "type": "RustAutoOpaque"
             }
           },
+          "needs_extend_lifetime": false,
           "ownership_mode": null
         }
       ],
@@ -446,25 +480,31 @@
                 "inner": {
                   "brief_name": true,
                   "codec": "Nom",
-                  "inner": "flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyGenericStruct>",
+                  "dart_api_type": null,
+                  "inner": {
+                    "raw": "flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyGenericStruct < String >>"
+                  },
                   "namespace": "crate::api"
                 },
                 "ownership_mode": "Owned",
                 "raw": {
                   "segments": [
                     {
-                      "args": "",
+                      "args": "String",
                       "ident": "MyGenericStruct"
                     }
                   ],
-                  "string": "MyGenericStruct"
+                  "string": {
+                    "raw": "MyGenericStruct < String >"
+                  }
                 },
                 "reason": null
               },
-              "safe_ident": "Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyGenericStruct",
+              "safe_ident": "Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyGenericStructString",
               "type": "RustAutoOpaque"
             }
           },
+          "needs_extend_lifetime": false,
           "ownership_mode": null
         }
       ],
@@ -508,7 +548,10 @@
               "inner": {
                 "brief_name": true,
                 "codec": "Nom",
-                "inner": "flutter_rust_bridge::for_generated::RustAutoOpaqueInner<T>",
+                "dart_api_type": null,
+                "inner": {
+                  "raw": "flutter_rust_bridge::for_generated::RustAutoOpaqueInner<T>"
+                },
                 "namespace": "crate::api"
               },
               "ownership_mode": "Owned",
@@ -519,7 +562,9 @@
                     "ident": "T"
                   }
                 ],
-                "string": "T"
+                "string": {
+                  "raw": "T"
+                }
               },
               "reason": null
             },
@@ -545,7 +590,10 @@
               "inner": {
                 "brief_name": true,
                 "codec": "Nom",
-                "inner": "flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box < T >>",
+                "dart_api_type": null,
+                "inner": {
+                  "raw": "flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box < T >>"
+                },
                 "namespace": "crate::api"
               },
               "ownership_mode": "Owned",
@@ -556,7 +604,9 @@
                     "ident": "Box"
                   }
                 ],
-                "string": "Box < T >"
+                "string": {
+                  "raw": "Box < T >"
+                }
               },
               "reason": null
             },

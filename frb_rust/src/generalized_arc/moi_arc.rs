@@ -117,14 +117,22 @@ macro_rules! frb_generated_moi_arc_def {
             }
 
             pub fn decrement_strong_count(raw: usize) {
-                Self::decrement_strong_count_raw(raw, &mut T::get_pool().write().unwrap())
+                let mut pool = T::get_pool().write().unwrap();
+                let object = Self::decrement_strong_count_raw(raw, &mut pool);
+                drop(pool);
+                drop(object);
             }
 
-            fn decrement_strong_count_raw(raw: usize, pool: &mut MoiArcPoolInner<T>) {
+            fn decrement_strong_count_raw(
+                raw: usize,
+                pool: &mut MoiArcPoolInner<T>,
+            ) -> Option<MoiArcPoolValue<T>> {
                 let value = pool.map.get_mut(&raw).unwrap();
                 value.ref_count -= 1;
                 if value.ref_count == 0 {
-                    pool.map.remove(&raw).unwrap();
+                    pool.map.remove(&raw)
+                } else {
+                    None
                 }
             }
         }

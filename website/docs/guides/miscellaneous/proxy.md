@@ -38,7 +38,7 @@ However, if we add `#[frb(proxy)]` to the `fn`, then it will work well.
 
 ### Remark: Alternative solutions
 
-As is mentioned in [this page](../how-to/borrowed), one alternative solution is to use `clone`:
+As is mentioned in [this page](../lifetimes/alternatives), one alternative solution is to use `clone`:
 
 ```rust
 pub fn get_my_sub_struct(&self) -> MySubStruct {

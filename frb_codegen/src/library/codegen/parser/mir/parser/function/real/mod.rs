@@ -328,7 +328,9 @@ pub(crate) fn is_struct_or_enum_or_opaque_from_them(ty: &MirType) -> bool {
             ty.reason == Some(MirTypeRustAutoOpaqueImplicitReason::StructOrEnumRequireOpaque)
         }
         MirType::Delegate(MirTypeDelegate::Lifetimeable(ty)) => {
-            is_struct_or_enum_or_opaque_from_them(&ty.api_type)
+            is_struct_or_enum_or_opaque_from_them(&MirType::RustAutoOpaqueImplicit(
+                ty.api_type.clone(),
+            ))
         }
         _ => false,
     }

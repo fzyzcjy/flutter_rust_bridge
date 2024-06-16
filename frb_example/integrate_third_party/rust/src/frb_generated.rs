@@ -16,7 +16,11 @@
     clippy::too_many_arguments,
     clippy::match_single_binding,
     clippy::clone_on_copy,
-    clippy::let_unit_value
+    clippy::let_unit_value,
+    clippy::deref_addrof,
+    clippy::explicit_auto_deref,
+    clippy::borrow_deref_ref,
+    clippy::needless_borrow
 )]
 
 // Section: imports
@@ -46,7 +50,7 @@ use crate::api::override_web_audio_api::StereoPannerNodeExt;
 use crate::api::override_web_audio_api::WaveShaperNodeExt;
 use crate::api::simple::*;
 use flutter_rust_bridge::for_generated::byteorder::{NativeEndian, ReadBytesExt, WriteBytesExt};
-use flutter_rust_bridge::for_generated::{transform_result_dco, Lockable};
+use flutter_rust_bridge::for_generated::{transform_result_dco, Lifetimeable, Lockable};
 use flutter_rust_bridge::{Handler, IntoIntoDart};
 use web_audio_api::context::BaseAudioContext;
 use web_audio_api::context::*;

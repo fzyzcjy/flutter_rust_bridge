@@ -8,7 +8,7 @@ impl LifetimeExtractor {
     pub(crate) fn extract_skipping_static(ty: &Type) -> Vec<Lifetime> {
         // log::debug!("extract_skipping_static ans={ans:?} ty={ty:?}");
         (Self::extract(ty).into_iter())
-            .filter(|lifetime| lifetime.0 != LIFETIME_STATIC)
+            .filter(|lifetime| !lifetime.is_static())
             .collect_vec()
     }
 
@@ -38,10 +38,21 @@ impl LifetimeExtractor {
 }
 
 pub(crate) const LIFETIME_STATIC: &str = "static";
+pub(crate) const LIFETIME_ANONYMOUS: &str = "_";
 
 // TODO maybe move
 #[derive(Debug, Clone, PartialEq, Eq, Hash)]
 pub(crate) struct Lifetime(pub String);
+
+impl Lifetime {
+    pub(crate) fn is_static(&self) -> bool {
+        self.0 == LIFETIME_STATIC
+    }
+
+    pub(crate) fn is_anonymous(&self) -> bool {
+        self.0 == LIFETIME_ANONYMOUS
+    }
+}
 
 impl From<&syn::Lifetime> for Lifetime {
     fn from(value: &syn::Lifetime) -> Self {

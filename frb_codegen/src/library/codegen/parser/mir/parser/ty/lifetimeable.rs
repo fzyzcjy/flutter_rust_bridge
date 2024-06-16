@@ -14,6 +14,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         namespace: Option<Namespace>,
     ) -> anyhow::Result<MirType> {
         if !self.context.enable_lifetime {
+            self.maybe_log_not_enable_lifetime();
             return Ok(MirType::RustAutoOpaqueImplicit(original));
         }
 
@@ -26,7 +27,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         }
 
         let delegate_ty_str = format!(
-            "flutter_rust_bridge::for_generated::Lifetimeable<{}>",
+            "Lifetimeable<{}>",
             replace_lifetimes_to_static(ty_str, &lifetimes)
         );
 
@@ -34,7 +35,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
         Ok(MirType::Delegate(MirTypeDelegate::Lifetimeable(
             MirTypeDelegateLifetimeable {
-                api_type: Box::new(MirType::RustAutoOpaqueImplicit(original)),
+                api_type: original,
                 delegate: self.parse_rust_auto_opaque_explicit_typed(
                     &syn::parse_str(&delegate_ty_str)?,
                     namespace,
@@ -43,5 +44,13 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                 )?,
             },
         )))
+    }
+
+    fn maybe_log_not_enable_lifetime(&mut self) {
+        if !self.inner.has_logged_lifetimeable {
+            log::info!("To handle some types, `enable_lifetime: true` may need to be set. \
+            Please visit https://fzyzcjy.github.io/flutter_rust_bridge/guides/lifetimes for more details");
+        }
+        self.inner.has_logged_lifetimeable = true;
     }
 }

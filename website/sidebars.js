@@ -219,6 +219,22 @@ const sidebars = {
                 },
                 {
                     type: 'category',
+                    label: 'Lifetimes / Return references',
+                    collapsed: true,
+                    link: {
+                        type: 'doc',
+                        id: 'guides/lifetimes/index',
+                    },
+                    items: [
+                        'guides/lifetimes/overview',
+                        'guides/lifetimes/type-with-lifetimes',
+                        'guides/lifetimes/return-references',
+                        'guides/lifetimes/concurrent-borrows',
+                        'guides/lifetimes/alternatives',
+                    ],
+                },
+                {
+                    type: 'category',
                     label: 'Concurrency and async',
                     collapsed: true,
                     link: {
@@ -275,6 +291,7 @@ const sidebars = {
                         'guides/miscellaneous/dart-code',
                         'guides/miscellaneous/codec',
                         'guides/miscellaneous/build-rs',
+                        'guides/miscellaneous/ignoring',
                         'guides/miscellaneous/proxy',
                         'guides/miscellaneous/expanding-macros',
                         'guides/miscellaneous/default',
@@ -327,7 +344,6 @@ const sidebars = {
                         'guides/how-to/regression',
                         'guides/how-to/object-pool',
                         'guides/how-to/gitignore',
-                        'guides/how-to/borrowed',
                         'guides/how-to/rust-compilation',
                         'guides/how-to/cargo-workspaces',
                     ],

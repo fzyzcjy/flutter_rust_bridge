@@ -4,7 +4,7 @@ use crate::codegen::parser::mir::parser::lifetime_extractor::{Lifetime, Lifetime
 use anyhow::ensure;
 use itertools::Itertools;
 use std::collections::HashSet;
-use syn::{ReturnType, Signature};
+use syn::{ReturnType, Signature, Type};
 
 pub(crate) fn parse_function_lifetime(
     sig: &Signature,
@@ -12,13 +12,13 @@ pub(crate) fn parse_function_lifetime(
 ) -> anyhow::Result<ParseFunctionLifetimeOutput> {
     let inputs_lifetimes = (sig.inputs.iter())
         .map(|x| {
-            Ok(LifetimeExtractor::extract_skipping_static(
+            Ok(extract_lifetime_skipping_static_and_anonymous(
                 &parse_argument_ty_and_name(x, owner)?.0,
             ))
         })
         .collect::<anyhow::Result<Vec<_>>>()?;
     let output_lifetimes = match &sig.output {
-        ReturnType::Type(_, ty) => LifetimeExtractor::extract_skipping_static(ty),
+        ReturnType::Type(_, ty) => extract_lifetime_skipping_static_and_anonymous(ty),
         ReturnType::Default => vec![],
     };
 
@@ -35,6 +35,12 @@ pub(crate) fn parse_function_lifetime(
     };
     log::debug!("parse_function_lifetime name={name} inputs_lifetimes={inputs_lifetimes:?} output_lifetimes={output_lifetimes:?} ans={ans:?}", name = sig.ident);
     Ok(ans)
+}
+
+fn extract_lifetime_skipping_static_and_anonymous(ty: &Type) -> Vec<Lifetime> {
+    (LifetimeExtractor::extract_skipping_static(ty).into_iter())
+        .filter(|x| !x.is_anonymous())
+        .collect_vec()
 }
 
 fn ensure_one_lifetime(

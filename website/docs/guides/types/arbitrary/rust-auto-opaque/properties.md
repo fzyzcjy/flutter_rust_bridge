@@ -1,4 +1,4 @@
-# Properties
+# Properties (Accessors)
 
 The `pub` fields of an opaque struct will be automatically translated,
 such that it can be used as if it is a normal field.

@@ -1,5 +1,15 @@
 # Changelog
 
+## 2.0.0-dev.40
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Support returning types with non-static lifetime (i.e. borrowed types / reference types) #2088 #2093
+* Loosen config field `rust_input` syntax with delimit `,` #2092 (thanks @dbsxdbsx)
+* Add prefix for automatically generated get/set methods of `#[frb(opaque)]` types to avoid conflicting with existing methods #2090 (thanks @dbsxdbsx)
+* Support adding arbitrary code in generated Rust file via rust_preamble config #2086
+* Support ignoring a whole module by `#[frb(ignore)]` on module #2085
+* Support `/// frb:...` #2085
+
 ## 2.0.0-dev.39
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
