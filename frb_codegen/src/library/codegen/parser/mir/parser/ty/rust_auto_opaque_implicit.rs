@@ -75,7 +75,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     ) -> Result<MirType> {
         self.parse_type_rust_auto_opaque_implicit(
             ty_raw.self_namespace(),
-            &syn::parse_str(&transform(&ty_raw.raw.string_with_replaced_lifetime))?,
+            &syn::parse_str(&transform(&ty_raw.raw.string.with_static_lifetime()))?,
             None,
             None,
         )
