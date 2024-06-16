@@ -33,7 +33,7 @@ impl<'a> WireRustGeneratorMiscTrait for DelegateWireRustGenerator<'a> {
         match &self.mir {
             MirTypeDelegate::ProxyEnum(mir) => Some(mir.get_delegate().rust_api_type()),
             MirTypeDelegate::DynTrait(mir) => Some(mir.get_delegate().rust_api_type()),
-            MirTypeDelegate::Lifetimeable(mir) => Some(mir.delegate.rust_api_type()),
+            MirTypeDelegate::Lifetimeable(mir) => Some(mir.delegate.inner.rust_api_type()),
             _ => None,
         }
     }
