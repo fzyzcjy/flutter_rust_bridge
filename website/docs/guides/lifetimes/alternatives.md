@@ -10,7 +10,7 @@ Please refer to [this page](../miscellaneous/proxy) for more details.
 ## Shared ownership
 
 One alternative approach is to use shared ownership.
-For example, for the example above, we can rewrite as:
+For example, we can write something like:
 
 ```rust
 struct MyStruct {
