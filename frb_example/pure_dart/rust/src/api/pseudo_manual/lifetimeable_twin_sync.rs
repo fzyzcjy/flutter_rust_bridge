@@ -2,11 +2,11 @@
 // and is auto-generated from `lifetimeable.rs` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
-// FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["rustAsync", "sse", "sync sse", "rustAsync sse"]}
+// FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["rustAsync", "sse", "sync sse", "rustAsync sse"], "replaceCode": {"misc_no_twin_example_a": "misc_no_twin_example_a"}}
 
 #![allow(clippy::needless_lifetimes)]
 
-use crate::api::pseudo_manual::misc_no_twin_example_a_twin_sync::SimpleLogger;
+use crate::api::pseudo_manual::misc_no_twin_example_a::SimpleLogger;
 use flutter_rust_bridge::frb;
 
 // --------------------------- struct definitions ---------------------------

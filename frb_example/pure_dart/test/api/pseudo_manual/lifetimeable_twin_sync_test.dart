@@ -2,12 +2,12 @@
 // and is auto-generated from `lifetimeable_test.dart` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
-// FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["rustAsync", "sse", "sync sse", "rustAsync sse"]}
+// FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["rustAsync", "sse", "sync sse", "rustAsync sse"], "replaceCode": {"misc_no_twin_example_a": "misc_no_twin_example_a"}}
 
 import 'dart:async';
 
 import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/lifetimeable_twin_sync.dart';
-import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/misc_no_twin_example_a_twin_sync.dart';
+import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/misc_no_twin_example_a.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
 
