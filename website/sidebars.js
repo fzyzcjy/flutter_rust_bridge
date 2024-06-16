@@ -227,6 +227,7 @@ const sidebars = {
                     },
                     items: [
                         'guides/lifetimes/overview',
+                        'guides/lifetimes/alternatives',
                     ],
                 },
                 {
@@ -340,7 +341,6 @@ const sidebars = {
                         'guides/how-to/regression',
                         'guides/how-to/object-pool',
                         'guides/how-to/gitignore',
-                        'guides/how-to/borrowed',
                         'guides/how-to/rust-compilation',
                         'guides/how-to/cargo-workspaces',
                     ],

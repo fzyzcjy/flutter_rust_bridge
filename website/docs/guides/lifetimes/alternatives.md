@@ -1,4 +1,4 @@
-# Borrowed types
+# Alternatives
 
 ## Direct approach
 
