@@ -207,11 +207,13 @@ fn generate_code_closure(
         .map(|e| e.rust_api_type())
         .unwrap_or("()".to_owned());
 
+    let transform_result_func = format!("transform_result_{codec}::<_, {err_type}>");
+
     match func.mode {
         MirFuncMode::Sync => {
             format!(
                 "{code_decode}
-                transform_result_{codec}::<_, {err_type}>((move || {{
+                {transform_result_func}((move || {{
                     {code_inner}
                 }})())"
             )
@@ -221,7 +223,7 @@ fn generate_code_closure(
             let maybe_await = if func.rust_async { ".await" } else { "" };
             format!(
                 "{code_decode} move |context| {maybe_async_move} {{
-                    transform_result_{codec}::<_, {err_type}>((move || {maybe_async_move} {{
+                    {transform_result_func}((move || {maybe_async_move} {{
                         {code_inner}
                     }})(){maybe_await})
                 }}"
