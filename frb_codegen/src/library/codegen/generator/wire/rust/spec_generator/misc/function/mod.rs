@@ -2,6 +2,7 @@ pub(crate) mod lifetime;
 pub(crate) mod lockable;
 
 use crate::codegen::generator::acc::Acc;
+use crate::codegen::generator::codec::structs::CodecMode;
 use crate::codegen::generator::misc::target::TargetOrCommon;
 use crate::codegen::generator::wire::misc::has_port_argument;
 use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGeneratorContext;
@@ -195,9 +196,8 @@ fn generate_code_closure(
     code_call_inner_func_result: &str,
     code_postprocess_inner_output: &str,
 ) -> String {
-    let codec = (func.codec_mode_pack.rust2dart.delegate_or_self())
-        .to_string()
-        .to_case(Case::Snake);
+    let codec_mode = func.codec_mode_pack.rust2dart.delegate_or_self();
+    let codec = (codec_mode).to_string().to_case(Case::Snake);
 
     let code_inner = format!(
         "{code_inner_decode} {code_call_inner_func_result} {code_postprocess_inner_output} Ok(output_ok)"
@@ -207,7 +207,14 @@ fn generate_code_closure(
         .map(|e| e.rust_api_type())
         .unwrap_or("()".to_owned());
 
-    let transform_result_func = format!("transform_result_{codec}::<_, {err_type}>");
+    let transform_result_func = format!(
+        "transform_result_{codec}::<{generic_prefix}, {err_type}>",
+        generic_prefix = match codec_mode {
+            CodecMode::Dco => "_, _",
+            CodecMode::Sse => "_",
+            _ => unreachable!(),
+        }
+    );
 
     match func.mode {
         MirFuncMode::Sync => {
