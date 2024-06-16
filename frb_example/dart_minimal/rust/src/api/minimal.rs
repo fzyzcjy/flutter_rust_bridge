@@ -29,19 +29,3 @@ impl<'a> LifetimeTesterTwoTwinNormal<'a> {
         self.one.0.to_string()
     }
 }
-
-#[frb(opaque)]
-pub struct ProxyTesterA {
-    b: ProxyTesterB,
-}
-#[frb(opaque)]
-pub struct ProxyTesterB;
-impl ProxyTesterA {
-    #[frb(proxy)]
-    pub fn b(&self) -> &ProxyTesterB {
-        &self.b
-    }
-}
-impl ProxyTesterB {
-    pub fn f(&self) {}
-}
