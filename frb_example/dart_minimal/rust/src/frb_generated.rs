@@ -102,12 +102,12 @@ fn wire__crate__api__minimal__LifetimeTesterOneTwinNormal_compute_two_impl(
                     let output_raw = crate::api::minimal::LifetimeTesterOneTwinNormal::compute_two(
                         api_that_guard_illegal_static_reference,
                     );
-                    let output = flutter_rust_bridge::for_generated::Lifetimeable::<
+                    let output = RustAutoOpaque::new(flutter_rust_bridge::for_generated::Lifetimeable::<
                         LifetimeTesterTwoTwinNormal<'static>,
                     >::new(
                         output_raw,
                         vec![Box::new(api_that.clone()), Box::new(api_that_guard.clone())],
-                    );
+                    ));
                     Result::<_, ()>::Ok(output)
                 })())
             }
