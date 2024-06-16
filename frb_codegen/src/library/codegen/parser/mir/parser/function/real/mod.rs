@@ -17,6 +17,7 @@ use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
 use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
 use crate::codegen::parser::mir::parser::function::func_or_skip::MirFuncOrSkip;
+use crate::codegen::parser::mir::parser::function::real::lifetime::parse_function_lifetime;
 use crate::codegen::parser::mir::parser::function::real::owner::OwnerInfoOrSkip;
 use crate::codegen::parser::mir::parser::ty::generics::should_ignore_because_generics;
 use crate::codegen::parser::mir::parser::ty::misc::parse_comments;
@@ -32,6 +33,7 @@ use MirSkipReason::IgnoreBecauseFunctionNotPub;
 use MirType::Primitive;
 
 pub(crate) mod argument;
+pub(super) mod lifetime;
 pub(crate) mod output;
 mod owner;
 mod transformer;
@@ -169,6 +171,8 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             return Ok(create_output_skip(func, IgnoreBecauseExplicitAttribute));
         }
 
+        let lifetime_info = parse_function_lifetime();
+
         let context = create_context(Some(owner.clone()));
         let mut info = FunctionPartialInfo::default();
         for (i, sig_input) in func.item_fn.sig().inputs.iter().enumerate() {
@@ -177,7 +181,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                 &owner,
                 &context,
                 is_owner_trait_def,
-                needs_extend_lifetime[i],
+                lifetime_info.needs_extend_lifetime_per_arg[i],
             )?)?;
         }
         info =
