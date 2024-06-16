@@ -32,7 +32,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
         let inner_dart_api_type = original.inner.sanitized_type();
 
-        return Ok(MirType::Delegate(MirTypeDelegate::Lifetimeable(
+        Ok(MirType::Delegate(MirTypeDelegate::Lifetimeable(
             MirTypeDelegateLifetimeable {
                 api_type: Box::new(MirType::RustAutoOpaqueImplicit(original)),
                 delegate: self.parse_rust_auto_opaque_explicit_typed(
@@ -42,6 +42,6 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                     Some(inner_dart_api_type),
                 )?,
             },
-        )));
+        )))
     }
 }

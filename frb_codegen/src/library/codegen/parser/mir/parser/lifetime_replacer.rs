@@ -20,5 +20,7 @@ pub(crate) fn replace_lifetimes_to_static(ty: &str, lifetimes: &[Lifetime]) -> S
 
 fn replace_lifetime(ty: &str, lifetime_src: &str, lifetime_dst: &str) -> String {
     let regex = Regex::new(&format!("'{lifetime_src}[^a-zA-Z]")).unwrap();
-    regex.replace_all(ty, &format!("'{lifetime_dst}")).to_string()
+    regex
+        .replace_all(ty, &format!("'{lifetime_dst}"))
+        .to_string()
 }
