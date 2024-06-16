@@ -206,7 +206,7 @@ impl LtTypeWithMultiDepTwinNormal<'_> {
     ) -> LtTypeWithMultiDepTwinNormal<'a> {
         assert_eq!(&unrelated_borrowed.sub.value, "hi");
         assert_eq!(&unrelated_owned.sub.value, "hi");
-        Self { fields: vec![a, b] }
+        LtTypeWithMultiDepTwinNormal { fields: vec![a, b] }
     }
 
     pub fn greet_borrow_self_twin_normal(&self) -> Vec<String> {
