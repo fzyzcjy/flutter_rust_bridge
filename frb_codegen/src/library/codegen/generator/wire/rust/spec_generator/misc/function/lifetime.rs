@@ -1,7 +1,9 @@
 use crate::codegen::ir::mir::func::MirFunc;
 
 pub(super) fn generate_code_inner_decode(func: &MirFunc, inner: &str) -> String {
-
+    format!(
+        "{inner}"
+    )
 }
 
 pub(super) fn generate_illegal_static_reference(var_name: &str) -> String {
