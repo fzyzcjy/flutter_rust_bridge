@@ -103,6 +103,14 @@ fn wire__crate__api__minimal__LifetimeTesterOneTwinNormal_compute_two_impl(
                             api_that_guard_illegal_static_ref,
                         ),
                     )?;
+                    let output_ok = RustAutoOpaque::new(
+                        flutter_rust_bridge::for_generated::Lifetimeablea::new(
+                            output_ok,
+                            Box::new(api_that.clone()),
+                            Box::new(api_that_guard.clone()),
+                        ),
+                    );
+                    Ok(output_ok)
                 })())
             }
         },
@@ -133,6 +141,7 @@ fn wire__crate__api__minimal__LifetimeTesterOneTwinNormal_new_impl(
             transform_result_sse((move || {
                 let output_ok =
                     Result::<_, ()>::Ok(crate::api::minimal::LifetimeTesterOneTwinNormal::new())?;
+                Ok(output_ok)
             })())
         },
     )
@@ -157,7 +166,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(crate::api::minimal::LifetimeTesterTwoTwinNormal ::greet(&api_that_guard))?;
+ let output_ok = Result::<_,()>::Ok(crate::api::minimal::LifetimeTesterTwoTwinNormal ::greet(&api_that_guard))?;  Ok(output_ok)
                     })())
                 } })
 }
