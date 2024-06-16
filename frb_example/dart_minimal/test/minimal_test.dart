@@ -180,8 +180,8 @@ Future<void> main() async {
         unrelatedBorrowed: await LtOwnedStructTwinNormal.create(value: 'hi'),
         unrelatedOwned: await LtOwnedStructTwinNormal.create(value: 'hi'),
       );
-      expect(await typeWithMultiDep.greetBorrowSelfTwinNormal(), 'a');
-      expect(await typeWithMultiDep.greetBorrowMutSelfTwinNormal(), 'a');
+      expect(await typeWithMultiDep.greetBorrowSelfTwinNormal(), ['a', 'b']);
+      expect(await typeWithMultiDep.greetBorrowMutSelfTwinNormal(), ['a', 'b']);
     });
   });
 }
