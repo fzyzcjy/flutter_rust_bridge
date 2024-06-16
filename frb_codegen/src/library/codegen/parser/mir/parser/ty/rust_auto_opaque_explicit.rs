@@ -33,7 +33,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         codec: Option<RustOpaqueCodecMode>,
     ) -> anyhow::Result<MirType> {
         Ok(MirType::Delegate(MirTypeDelegate::RustAutoOpaqueExplicit(
-            self.parse_rust_auto_opaque_explicit_typed(inner, namespace, codec)?,
+            self.parse_rust_auto_opaque_explicit_typed(inner, namespace, codec, None)?,
         )))
     }
 
@@ -42,9 +42,10 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         inner: &Type,
         namespace: Option<Namespace>,
         codec: Option<RustOpaqueCodecMode>,
+        dart_api_type: Option<String>,
     ) -> anyhow::Result<MirTypeDelegateRustAutoOpaqueExplicit> {
         let (ans_raw, ans_inner) =
-            self.parse_type_rust_auto_opaque_common(inner.clone(), namespace, codec)?;
+            self.parse_type_rust_auto_opaque_common(inner.clone(), namespace, codec, dart_api_type)?;
         Ok(MirTypeDelegateRustAutoOpaqueExplicit {
             raw: ans_raw,
             inner: ans_inner,

@@ -27,7 +27,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     ) -> Result<MirType> {
         let (inner, ownership_mode) = split_ownership_from_ty(ty);
         let (ans_raw, ans_inner) =
-            self.parse_type_rust_auto_opaque_common(inner, namespace.clone(), None)?;
+            self.parse_type_rust_auto_opaque_common(inner, namespace.clone(), None, None)?;
         let ans = MirTypeRustAutoOpaqueImplicit {
             ownership_mode,
             raw: ans_raw,
@@ -43,10 +43,11 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         inner: Type,
         namespace: Option<Namespace>,
         codec: Option<RustOpaqueCodecMode>,
+        dart_api_type: Option<String>,
     ) -> Result<(MirRustAutoOpaqueRaw, MirTypeRustOpaque)> {
         let inner_str = inner.to_token_stream().to_string();
         let info = self.get_or_insert_rust_auto_opaque_info(&inner_str, namespace, codec);
-        parse_type_rust_auto_opaque_common_raw(inner, info.namespace, info.codec)
+        parse_type_rust_auto_opaque_common_raw(inner, info.namespace, info.codec, dart_api_type)
     }
 
     fn get_or_insert_rust_auto_opaque_info(
@@ -96,10 +97,11 @@ pub(crate) fn split_ownership_from_ty(ty: &Type) -> (Type, OwnershipMode) {
     }
 }
 
-pub(crate) fn parse_type_rust_auto_opaque_common_raw(
+fn parse_type_rust_auto_opaque_common_raw(
     inner: Type,
     namespace: Namespace,
     codec: RustOpaqueCodecMode,
+    dart_api_type: Option<String>,
 ) -> Result<(MirRustAutoOpaqueRaw, MirTypeRustOpaque)> {
     let inner_str = inner.to_token_stream().to_string();
 
@@ -121,6 +123,7 @@ pub(crate) fn parse_type_rust_auto_opaque_common_raw(
                 "flutter_rust_bridge::for_generated::RustAutoOpaqueInner<{inner_str}>"
             )),
             codec,
+            dart_api_type,
             brief_name: true,
         },
     ))

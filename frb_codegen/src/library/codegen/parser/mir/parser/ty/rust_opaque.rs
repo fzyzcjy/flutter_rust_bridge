@@ -48,6 +48,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             namespace: info.namespace,
             inner: MirRustOpaqueInner(ty_str),
             codec: info.codec,
+            dart_api_type: None,
             brief_name: false,
         }))
     }
