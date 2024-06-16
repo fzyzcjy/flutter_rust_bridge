@@ -92,6 +92,12 @@ fn wire__crate__api__minimal__LifetimeTesterOneTwinNormal_compute_two_impl(
                         }
                     }
                     let api_that = &*api_that_guard.unwrap();
+                    let api_that_guard = Arc::new(api_that_guard);
+                    let api_guard_that_illegal_static_ref = unsafe {
+                        flutter_rust_bridge::for_generated::ouroboros_change_lifetime(
+                            &api_guard_that,
+                        )
+                    };
                     Result::<_, ()>::Ok(
                         crate::api::minimal::LifetimeTesterOneTwinNormal::compute_two(api_that),
                     )
