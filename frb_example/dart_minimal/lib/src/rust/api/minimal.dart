@@ -6,5 +6,38 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
+// These functions are ignored because they are not marked as `pub`: `log`
+// These functions are ignored because they have generic arguments: `compute_arg_generic_lifetime_twin_normal`, `compute_nested_type_with_lifetime_twin_normal`, `compute_type_with_lifetime_twin_normal`, `compute_with_multi_arg_having_lifetime_twin_normal`, `compute_with_unrelated_borrowed_arg_twin_normal`, `lt_compute_with_lifetime_function_twin_normal`
+// These types are ignored because they are not used by any `pub` functions: `LtNestedTypeWithLifetimeTwinNormal`, `LtTypeWithLifetimeTwinNormal`, `LtTypeWithMultiDepTwinNormal`
+// These functions are ignored (category: IgnoreBecauseOwnerTyShouldIgnore): `greet_borrow_mut_self_twin_normal`, `greet_borrow_mut_self_twin_normal`, `greet_borrow_mut_self_twin_normal`, `greet_borrow_self_twin_normal`, `greet_borrow_self_twin_normal`, `greet_borrow_self_twin_normal`
+
 Future<int> minimalAdder({required int a, required int b}) =>
     RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b);
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<LtOwnedStructTwinNormal>>
+abstract class LtOwnedStructTwinNormal implements RustOpaqueInterface {
+  static Future<LtOwnedStructTwinNormal> create({required String value}) =>
+      RustLib.instance.api
+          .crateApiMinimalLtOwnedStructTwinNormalCreate(value: value);
+
+  static Future<LtOwnedStructTwinNormal> createWithLogger(
+          {required String value, required SimpleLogger logger}) =>
+      RustLib.instance.api
+          .crateApiMinimalLtOwnedStructTwinNormalCreateWithLogger(
+              value: value, logger: logger);
+}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<LtSubStructTwinNormal>>
+abstract class LtSubStructTwinNormal implements RustOpaqueInterface {
+  Future<String> greetBorrowMutSelfTwinNormal();
+
+  Future<String> greetBorrowSelfTwinNormal();
+}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<SimpleLogger>>
+abstract class SimpleLogger implements RustOpaqueInterface {
+  Future<List<String>> getAndReset();
+
+  factory SimpleLogger() =>
+      RustLib.instance.api.crateApiMinimalSimpleLoggerNew();
+}
