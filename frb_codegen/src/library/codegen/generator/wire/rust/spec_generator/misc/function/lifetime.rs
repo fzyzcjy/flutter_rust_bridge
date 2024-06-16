@@ -18,7 +18,7 @@ pub(super) fn generate_code_inner_decode(func: &MirFunc, inner: &str) -> String 
     let guard_static_ref = (interest_inputs.iter())
         .map(|field| {
             let static_ref = generate_illegal_static_reference(&format!(
-                "api_guard_{name}",
+                "api_{name}_guard",
                 name = get_variable_name(field)
             ));
             format!(
