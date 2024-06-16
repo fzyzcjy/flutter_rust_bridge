@@ -7,12 +7,15 @@ use syn::Signature;
 pub(crate) fn parse_function_lifetime(
     sig: &Signature,
 ) -> anyhow::Result<ParseFunctionLifetimeOutput> {
+    let num_inputs = sig.inputs.len();
     let inputs_lifetimes: Vec<Vec<Lifetime>> = TODO;
     let output_lifetimes: Vec<Lifetime> = TODO;
 
     ensure_one_lifetime(&inputs_lifetimes, &output_lifetimes)?;
 
-    todo!()
+    Ok(ParseFunctionLifetimeOutput {
+        needs_extend_lifetime_per_arg: (0..num_inputs).map(|index| TODO).collect_vec(),
+    })
 }
 
 fn ensure_one_lifetime(
