@@ -43,3 +43,23 @@ impl LtOwnedStructTwinNormal {
         &self.sub
     }
 }
+
+impl LtOwnedSubStructTwinNormal {
+    pub fn greet_borrow_self_twin_normal(&self) -> String {
+        self.value.clone()
+    }
+
+    pub fn greet_borrow_mut_self_twin_normal(&mut self) -> String {
+        self.value.clone()
+    }
+}
+
+impl LtTypeWithLifetimeTwinNormal<'_> {
+    pub fn greet_borrow_self_twin_normal(&self) -> String {
+        self.foo.sub.value.clone()
+    }
+
+    pub fn greet_borrow_mut_self_twin_normal(&mut self) -> String {
+        self.foo.sub.value.clone()
+    }
+}
