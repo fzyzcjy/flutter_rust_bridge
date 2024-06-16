@@ -22,6 +22,7 @@ pub fn minimal_adder(a: i32, b: i32) -> i32 {
 pub struct SimpleLogger(Arc<Mutex<Vec<String>>>);
 
 impl SimpleLogger {
+    #[frb(sync)]
     pub fn new() -> Self {
         Self(Arc::new(Mutex::new(vec![])))
     }
@@ -30,7 +31,7 @@ impl SimpleLogger {
         self.0.lock().unwrap().push(message.to_owned());
     }
 
-    pub fn get(&self) -> Vec<String> {
+    pub fn get_and_reset(&self) -> Vec<String> {
         self.0.lock().unwrap().drain(..).collect()
     }
 }

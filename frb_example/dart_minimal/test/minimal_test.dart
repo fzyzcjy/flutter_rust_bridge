@@ -19,30 +19,32 @@ Future<void> main() async {
 
   // ----------------------------------------------------------------
 
-  setUp(ltGetAndResetLogsTwinNormal);
-
   group('when to dispose and the dispose order', () {
     test('dispose ownedStruct', () async {
-      final ownedStruct = await LtOwnedStructTwinNormal.create(value: 'a');
-      expect(ltGetAndResetLogsTwinNormal(), <String>[]);
+      final simpleLogger = SimpleLogger();
+      final ownedStruct = await LtOwnedStructTwinNormal.createWithLogger(
+          value: 'a', logger: simpleLogger);
+      expect(simpleLogger.getAndReset(), <String>[]);
 
       ownedStruct.dispose();
-      expect(ltGetAndResetLogsTwinNormal(),
-          <String>['LtOwnedStructTwinNormal.drop']);
+      expect(
+          simpleLogger.getAndReset(), <String>['LtOwnedStructTwinNormal.drop']);
     });
 
     test('dispose ownedStruct - dispose typeWithLifetime', () async {
-      final ownedStruct = await LtOwnedStructTwinNormal.create(value: 'a');
+      final simpleLogger = SimpleLogger();
+      final ownedStruct = await LtOwnedStructTwinNormal.createWithLogger(
+          value: 'a', logger: simpleLogger);
       final typeWithLifetime =
           await ownedStruct.computeTypeWithLifetimeTwinNormal();
 
       ownedStruct.dispose();
-      expect(ltGetAndResetLogsTwinNormal(), <String>[
+      expect(simpleLogger.getAndReset(), <String>[
         // Do *not* really dispose ownedStruct
       ]);
 
       typeWithLifetime.dispose();
-      expect(ltGetAndResetLogsTwinNormal(), <String>[
+      expect(simpleLogger.getAndReset(), <String>[
         // NOTE order: Firstly the borrowed type, secondly the owned type
         'LtTypeWithLifetimeTwinNormal.drop',
         'LtOwnedStructTwinNormal.drop',
@@ -50,33 +52,37 @@ Future<void> main() async {
     });
 
     test('dispose typeWithLifetime - dispose ownedStruct', () async {
-      final ownedStruct = await LtOwnedStructTwinNormal.create(value: 'a');
+      final simpleLogger = SimpleLogger();
+      final ownedStruct = await LtOwnedStructTwinNormal.createWithLogger(
+          value: 'a', logger: simpleLogger);
       final typeWithLifetime =
           await ownedStruct.computeTypeWithLifetimeTwinNormal();
 
       typeWithLifetime.dispose();
-      expect(ltGetAndResetLogsTwinNormal(), <String>[
+      expect(simpleLogger.getAndReset(), <String>[
         'LtTypeWithLifetimeTwinNormal.drop',
       ]);
 
       ownedStruct.dispose();
-      expect(ltGetAndResetLogsTwinNormal(), <String>[
+      expect(simpleLogger.getAndReset(), <String>[
         'LtOwnedStructTwinNormal.drop',
       ]);
     });
 
     test('dispose ownedStruct - dispose typeWithLifetime', () async {
-      final ownedStruct = await LtOwnedStructTwinNormal.create(value: 'a');
+      final simpleLogger = SimpleLogger();
+      final ownedStruct = await LtOwnedStructTwinNormal.createWithLogger(
+          value: 'a', logger: simpleLogger);
       final typeWithLifetime =
           await ownedStruct.computeTypeWithLifetimeTwinNormal();
 
       ownedStruct.dispose();
-      expect(ltGetAndResetLogsTwinNormal(), <String>[
+      expect(simpleLogger.getAndReset(), <String>[
         // Do *not* really dispose ownedStruct
       ]);
 
       typeWithLifetime.dispose();
-      expect(ltGetAndResetLogsTwinNormal(), <String>[
+      expect(simpleLogger.getAndReset(), <String>[
         // NOTE order: Firstly the borrowed type, secondly the owned type
         'LtTypeWithLifetimeTwinNormal.drop',
         'LtOwnedStructTwinNormal.drop',
@@ -86,24 +92,26 @@ Future<void> main() async {
     test(
         'dispose ownedStruct - dispose typeWithLifetime - dispose nestedTypeWithLifetime',
         () async {
-      final ownedStruct = await LtOwnedStructTwinNormal.create(value: 'a');
+      final simpleLogger = SimpleLogger();
+      final ownedStruct = await LtOwnedStructTwinNormal.createWithLogger(
+          value: 'a', logger: simpleLogger);
       final typeWithLifetime =
           await ownedStruct.computeTypeWithLifetimeTwinNormal();
       final nestedTypeWithLifetime = await typeWithLifetime
           .computeNestedTypeWithLifetimeTwinNormal(arg: ownedStruct);
 
       ownedStruct.dispose();
-      expect(ltGetAndResetLogsTwinNormal(), <String>[
+      expect(simpleLogger.getAndReset(), <String>[
         // Do *not* really dispose
       ]);
 
       typeWithLifetime.dispose();
-      expect(ltGetAndResetLogsTwinNormal(), <String>[
+      expect(simpleLogger.getAndReset(), <String>[
         // Do *not* really dispose
       ]);
 
       nestedTypeWithLifetime.dispose();
-      expect(ltGetAndResetLogsTwinNormal(), <String>[
+      expect(simpleLogger.getAndReset(), <String>[
         // NOTE the order
         'LtNestedTypeWithLifetimeTwinNormal.drop',
         'LtTypeWithLifetimeTwinNormal.drop',
