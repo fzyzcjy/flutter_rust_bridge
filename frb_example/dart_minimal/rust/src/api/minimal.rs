@@ -17,7 +17,6 @@ pub fn minimal_adder(a: i32, b: i32) -> i32 {
 
 // TODO move this to a separate file
 
-#[derive(Debug)]
 pub(crate) struct SimpleLogger(Mutex<Vec<String>>);
 
 impl SimpleLogger {
@@ -35,6 +34,16 @@ impl SimpleLogger {
 
 // -------------------------------------------------------------------------------------------------
 
+lazy_static! {
+    static ref LOGGER: SimpleLogger = SimpleLogger::new();
+}
+
+/// Lt := Lifetime Testers
+#[frb(sync)]
+pub fn lt_get_and_reset_logs_twin_normal() -> Vec<String> {
+    LOGGER.get_and_reset()
+}
+
 // --------------------------- struct definitions ---------------------------
 
 /// Try *NOT* to impl Clone for these types in order to ensure there are no extra clones
@@ -48,7 +57,6 @@ pub struct LtOwnedStructTwinNormal {
 #[derive(Debug)]
 pub struct LtSubStructTwinNormal {
     value: String,
-    logger: SimpleLogger,
 }
 
 #[frb(opaque)]
@@ -73,25 +81,31 @@ pub struct LtTypeWithMultiDepTwinNormal<'a> {
 
 impl Drop for LtOwnedStructTwinNormal {
     fn drop(&mut self) {
-        self.sub.logger.log("LtOwnedStructTwinNormal.drop");
+        LOGGER.log("LtOwnedStructTwinNormal.drop");
     }
 }
 
 impl Drop for LtSubStructTwinNormal {
     fn drop(&mut self) {
-        self.logger.log("LtOwnedSubStructTwinNormal.drop");
+        LOGGER.log("LtOwnedSubStructTwinNormal.drop");
     }
 }
 
 impl Drop for LtTypeWithLifetimeTwinNormal {
     fn drop(&mut self) {
-        (self.field.sub.logger).log("LtTypeWithLifetimeTwinNormal.drop");
+        LOGGER.log("LtTypeWithLifetimeTwinNormal.drop");
     }
 }
 
 impl Drop for LtNestedTypeWithLifetimeTwinNormal {
     fn drop(&mut self) {
-        (self.field.field.sub.logger).log("LtNestedTypeWithLifetimeTwinNormal.drop");
+        LOGGER.log("LtNestedTypeWithLifetimeTwinNormal.drop");
+    }
+}
+
+impl Drop for LtTypeWithMultiDepTwinNormal {
+    fn drop(&mut self) {
+        LOGGER.log("LtTypeWithMultiOwnerTwinNormal.drop");
     }
 }
 
@@ -100,10 +114,7 @@ impl Drop for LtNestedTypeWithLifetimeTwinNormal {
 impl LtOwnedStructTwinNormal {
     pub fn create(value: String) -> Self {
         Self {
-            sub: LtSubStructTwinNormal {
-                value,
-                logger: SimpleLogger::new(),
-            },
+            sub: LtSubStructTwinNormal { value },
         }
     }
 
