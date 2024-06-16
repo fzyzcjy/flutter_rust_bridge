@@ -71,7 +71,7 @@ impl Drop for LtNestedTypeWithLifetimeTwinNormal<'_> {
 
 impl LtOwnedStructTwinNormal {
     #[frb(serialize)]
-    pub fn create(value: String) -> Self {
+    pub fn create_twin_normal(value: String) -> Self {
         Self {
             sub: LtSubStructTwinNormal {
                 value,
@@ -81,7 +81,7 @@ impl LtOwnedStructTwinNormal {
     }
 
     #[frb(serialize)]
-    pub fn create_with_logger(value: String, logger: &SimpleLogger) -> Self {
+    pub fn create_with_logger_twin_normal(value: String, logger: &SimpleLogger) -> Self {
         Self {
             sub: LtSubStructTwinNormal {
                 value,

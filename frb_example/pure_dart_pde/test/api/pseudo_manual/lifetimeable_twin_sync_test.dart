@@ -19,7 +19,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   group('when to dispose and the dispose order', () {
     test('dispose ownedStruct', () async {
       final simpleLogger = SimpleLogger();
-      final ownedStruct = await LtOwnedStructTwinSync.createWithLogger(
+      final ownedStruct = await LtOwnedStructTwinSync.createWithLoggerTwinSync(
           value: 'a', logger: simpleLogger);
       expect(simpleLogger.getAndReset(), <String>[]);
 
@@ -32,7 +32,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
     test('dispose ownedStruct - dispose typeWithLifetime', () async {
       final simpleLogger = SimpleLogger();
-      final ownedStruct = await LtOwnedStructTwinSync.createWithLogger(
+      final ownedStruct = await LtOwnedStructTwinSync.createWithLoggerTwinSync(
           value: 'a', logger: simpleLogger);
       final typeWithLifetime =
           await ownedStruct.computeTypeWithLifetimeTwinSync();
@@ -53,7 +53,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
     test('dispose typeWithLifetime - dispose ownedStruct', () async {
       final simpleLogger = SimpleLogger();
-      final ownedStruct = await LtOwnedStructTwinSync.createWithLogger(
+      final ownedStruct = await LtOwnedStructTwinSync.createWithLoggerTwinSync(
           value: 'a', logger: simpleLogger);
       final typeWithLifetime =
           await ownedStruct.computeTypeWithLifetimeTwinSync();
@@ -72,7 +72,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
     test('dispose ownedStruct - dispose typeWithLifetime', () async {
       final simpleLogger = SimpleLogger();
-      final ownedStruct = await LtOwnedStructTwinSync.createWithLogger(
+      final ownedStruct = await LtOwnedStructTwinSync.createWithLoggerTwinSync(
           value: 'a', logger: simpleLogger);
       final typeWithLifetime =
           await ownedStruct.computeTypeWithLifetimeTwinSync();
@@ -95,7 +95,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
         'dispose ownedStruct - dispose typeWithLifetime - dispose nestedTypeWithLifetime',
         () async {
       final simpleLogger = SimpleLogger();
-      final ownedStruct = await LtOwnedStructTwinSync.createWithLogger(
+      final ownedStruct = await LtOwnedStructTwinSync.createWithLoggerTwinSync(
           value: 'a', logger: simpleLogger);
       final typeWithLifetime =
           await ownedStruct.computeTypeWithLifetimeTwinSync();
@@ -125,31 +125,36 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   group('features', () {
     test('computeTypeWithLifetimeTwinSync', () async {
-      final ownedStruct = await LtOwnedStructTwinSync.create(value: 'a');
+      final ownedStruct =
+          await LtOwnedStructTwinSync.createTwinSync(value: 'a');
       final typeWithLifetime =
           await ownedStruct.computeTypeWithLifetimeTwinSync();
       await _testTypeWithLifetime(ownedStruct, typeWithLifetime);
     });
 
     test('computeWithUnrelatedBorrowedArgTwinSync', () async {
-      final ownedStruct = await LtOwnedStructTwinSync.create(value: 'a');
+      final ownedStruct =
+          await LtOwnedStructTwinSync.createTwinSync(value: 'a');
       final typeWithLifetime =
           await ownedStruct.computeWithUnrelatedBorrowedArgTwinSync(
-        unrelatedBorrowed: await LtOwnedStructTwinSync.create(value: 'hi'),
-        unrelatedOwned: await LtOwnedStructTwinSync.create(value: 'hi'),
+        unrelatedBorrowed:
+            await LtOwnedStructTwinSync.createTwinSync(value: 'hi'),
+        unrelatedOwned: await LtOwnedStructTwinSync.createTwinSync(value: 'hi'),
       );
       await _testTypeWithLifetime(ownedStruct, typeWithLifetime);
     });
 
     test('ltComputeWithLifetimeFunctionTwinSync', () async {
-      final ownedStruct = await LtOwnedStructTwinSync.create(value: 'a');
+      final ownedStruct =
+          await LtOwnedStructTwinSync.createTwinSync(value: 'a');
       final typeWithLifetime =
           await ltComputeWithLifetimeFunctionTwinSync(arg: ownedStruct);
       await _testTypeWithLifetime(ownedStruct, typeWithLifetime);
     });
 
     test('computeNestedTypeWithLifetimeTwinSync', () async {
-      final ownedStruct = await LtOwnedStructTwinSync.create(value: 'a');
+      final ownedStruct =
+          await LtOwnedStructTwinSync.createTwinSync(value: 'a');
       final typeWithLifetime =
           await ownedStruct.computeTypeWithLifetimeTwinSync();
       final nestedTypeWithLifetime =
@@ -159,7 +164,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
     });
 
     test('computeArgGenericLifetimeTwinSync', () async {
-      final ownedStruct = await LtOwnedStructTwinSync.create(value: 'a');
+      final ownedStruct =
+          await LtOwnedStructTwinSync.createTwinSync(value: 'a');
       final typeWithLifetime =
           await ownedStruct.computeTypeWithLifetimeTwinSync();
       final anotherTypeWithLifetime =
@@ -179,10 +185,11 @@ Future<void> main({bool skipRustLibInit = false}) async {
     test('computeWithMultiArgHavingLifetimeTwinSync', () async {
       final typeWithMultiDep = await LtTypeWithMultiDepTwinSync
           .computeWithMultiArgHavingLifetimeTwinSync(
-        a: await LtOwnedStructTwinSync.create(value: 'a'),
-        b: await LtOwnedStructTwinSync.create(value: 'b'),
-        unrelatedBorrowed: await LtOwnedStructTwinSync.create(value: 'hi'),
-        unrelatedOwned: await LtOwnedStructTwinSync.create(value: 'hi'),
+        a: await LtOwnedStructTwinSync.createTwinSync(value: 'a'),
+        b: await LtOwnedStructTwinSync.createTwinSync(value: 'b'),
+        unrelatedBorrowed:
+            await LtOwnedStructTwinSync.createTwinSync(value: 'hi'),
+        unrelatedOwned: await LtOwnedStructTwinSync.createTwinSync(value: 'hi'),
       );
       expect(await typeWithMultiDep.greetBorrowSelfTwinSync(), ['a', 'b']);
       expect(await typeWithMultiDep.greetBorrowMutSelfTwinSync(), ['a', 'b']);
