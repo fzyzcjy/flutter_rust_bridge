@@ -100,7 +100,7 @@ fn wire__crate__api__minimal__LifetimeTesterOneTwinNormal_compute_two_impl(
                     };
                     Result::<_, ()>::Ok(
                         crate::api::minimal::LifetimeTesterOneTwinNormal::compute_two(
-                            api_that_guard,
+                            api_that_guard_illegal_static_ref,
                         ),
                     )
                 })())
