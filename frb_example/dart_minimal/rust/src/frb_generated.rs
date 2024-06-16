@@ -52,66 +52,31 @@ fn wire__crate__api__minimal__Foo_compute_bar_impl(
     rust_vec_len_: i32,
     data_len_: i32,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "Foo_compute_bar",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
-        },
-        move || {
-            let message = unsafe {
-                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
-                    ptr_,
-                    rust_vec_len_,
-                    data_len_,
-                )
-            };
-            let mut deserializer =
-                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_that = <RustOpaqueMoi<
-                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Foo>,
-            >>::sse_decode(&mut deserializer);
-            deserializer.end();
-            move |context| {
-                transform_result_sse::<_, ()>((move || {
-                    let api_that_illegal_static_ref = unsafe {
-                        flutter_rust_bridge::for_generated::ouroboros_change_lifetime(&api_that)
-                    };
-                    let mut api_that_guard = None;
-                    let decode_indices_ =
-                        flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![
-                            flutter_rust_bridge::for_generated::LockableOrderInfo::new(
-                                &api_that, 0, false,
-                            ),
-                        ]);
-                    for i in decode_indices_ {
-                        match i {
-                            0 => {
-                                api_that_guard =
-                                    Some(api_that_illegal_static_ref.lockable_decode_sync_ref())
-                            }
-                            _ => unreachable!(),
-                        }
-                    }
-                    let api_that_guard = api_that_guard.unwrap();
-                    let api_that_guard = Arc::new(api_that_guard);
-                    let api_that_guard_illegal_static_ref = unsafe {
-                        flutter_rust_bridge::for_generated::ouroboros_change_lifetime(
-                            &api_that_guard,
-                        )
-                    };
-                    let output_ok = Result::<_, ()>::Ok(crate::api::minimal::Foo::compute_bar(
-                        &*api_that_guard_illegal_static_ref,
-                    ))?;
-                    let output_ok = RustAutoOpaque::new(Lifetimeable::new(
-                        output_ok,
-                        vec![Box::new(api_that.clone()), Box::new(api_that_guard.clone())],
-                    ));
-                    Ok(output_ok)
-                })())
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "Foo_compute_bar", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_that = <RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Foo>>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
+                    transform_result_sse::<_, ()>((move ||  {
+                        let api_that_illegal_static_ref = unsafe {
+            flutter_rust_bridge::for_generated::ouroboros_change_lifetime(&api_that)
+        };let mut api_that_guard = None;
+let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![flutter_rust_bridge::for_generated::LockableOrderInfo::new(&api_that, 0, false)]);
+        for i in decode_indices_ {
+            match i {
+                0 => api_that_guard = Some(api_that_illegal_static_ref.lockable_decode_sync_ref()),
+                _ => unreachable!(),
             }
-        },
-    )
+        }
+        let api_that_guard = api_that_guard.unwrap();
+let api_that_guard = Arc::new(api_that_guard);
+                let api_that_guard_illegal_static_ref = unsafe {
+            flutter_rust_bridge::for_generated::ouroboros_change_lifetime(&api_that_guard)
+        }; let output_ok = Result::<_,()>::Ok(crate::api::minimal::Foo::compute_bar(&*api_that_guard_illegal_static_ref))?; let output_ok = RustAutoOpaque::new(Lifetimeable::new(output_ok, vec![flutter_rust_bridge::for_generated::LifetimeableDependency::new_guard_lockable(
+                    Box::new(api_that_guard.clone()),
+                    Box::new(api_that.clone()),
+                )])); Ok(output_ok)
+                    })())
+                } })
 }
 fn wire__crate__api__minimal__Foo_new_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
