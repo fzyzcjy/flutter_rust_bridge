@@ -88,6 +88,9 @@ fn compute_class_name_for_querying_methods(ty: &MirType) -> NamespacedName {
                 MirTypeDelegate::RustAutoOpaqueExplicit(ty.delegate.clone()),
             ))
         }
+        MirType::Delegate(MirTypeDelegate::RustAutoOpaqueExplicit(ty)) => {
+            compute_class_name_for_querying_methods(&MirType::RustOpaque(ty.inner.clone()))
+        }
         MirType::RustAutoOpaqueImplicit(ty) => {
             compute_class_name_for_querying_methods(&MirType::RustOpaque(ty.inner.clone()))
         }
