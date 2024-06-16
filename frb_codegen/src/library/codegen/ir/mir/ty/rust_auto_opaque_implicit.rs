@@ -1,5 +1,6 @@
 use super::rust_opaque::RUST_OPAQUE_AS_PRIMITIVE;
 use crate::codegen::ir::mir::func::OwnershipMode;
+use crate::codegen::ir::mir::llfetime_aware_type::MirLifetimeAwareType;
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
 use crate::codegen::ir::mir::ty::rust_opaque::{MirTypeRustOpaque, NameComponent};
 use crate::codegen::ir::mir::ty::{MirContext, MirType, MirTypeTrait};
@@ -16,7 +17,7 @@ pub struct MirTypeRustAutoOpaqueImplicit {
 
 /// Original type without any transformation
 pub struct MirRustAutoOpaqueRaw {
-    pub string: String,
+    pub string: MirLifetimeAwareType,
     pub segments: Vec<NameComponent>,
 }
 

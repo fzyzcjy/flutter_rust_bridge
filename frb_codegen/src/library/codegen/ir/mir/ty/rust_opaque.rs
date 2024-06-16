@@ -9,6 +9,7 @@ use regex::Regex;
 use serde::{Deserialize, Serialize, Serializer};
 use strum_macros::{Display, EnumIter};
 use syn::Type;
+use crate::codegen::ir::mir::llfetime_aware_type::MirLifetimeAwareType;
 
 crate::mir! {
 pub struct MirTypeRustOpaque {
@@ -19,7 +20,7 @@ pub struct MirTypeRustOpaque {
     pub brief_name: bool,
 }
 
-pub struct MirRustOpaqueInner(pub String);
+pub struct MirRustOpaqueInner(pub MirLifetimeAwareType);
 }
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Deserialize, Hash, Display, EnumIter)]
