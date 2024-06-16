@@ -117,7 +117,7 @@ fn generate_imports(
 
     // NOTE Do *not* use imports when possible, instead use fully specified name directly
     let static_imports = "use flutter_rust_bridge::{Handler, IntoIntoDart};
-use flutter_rust_bridge::for_generated::{Lockable, transform_result_dco};
+use flutter_rust_bridge::for_generated::{Lockable, transform_result_dco, Lifetimeable};
 use flutter_rust_bridge::for_generated::byteorder::{NativeEndian, WriteBytesExt, ReadBytesExt};";
 
     Acc::new(|target| {

@@ -26,7 +26,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         }
 
         let delegate_ty_str = format!(
-            "flutter_rust_bridge::for_generated::Lifetimeable<{}>",
+            "Lifetimeable<{}>",
             replace_lifetimes_to_static(ty_str, &lifetimes)
         );
 
