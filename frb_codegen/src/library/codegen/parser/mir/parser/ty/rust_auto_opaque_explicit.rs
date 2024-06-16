@@ -26,7 +26,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         }))
     }
 
-    fn parse_rust_auto_opaque_explicit(
+    pub(crate) fn parse_rust_auto_opaque_explicit(
         &mut self,
         inner: &Type,
         namespace: Option<Namespace>,
