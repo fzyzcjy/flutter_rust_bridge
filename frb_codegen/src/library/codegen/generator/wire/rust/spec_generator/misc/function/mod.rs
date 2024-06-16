@@ -137,7 +137,7 @@ fn generate_code_call_inner_func_result(func: &MirFunc, inner_func_args: Vec<Str
         ans = format!("Result::<_,()>::Ok({ans})");
     }
 
-    ans = format!("let output_ = {ans};");
+    ans = format!("let output_ok = {ans}?;");
 
     ans
 }
