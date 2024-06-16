@@ -219,7 +219,7 @@ const sidebars = {
                 },
                 {
                     type: 'category',
-                    label: 'Return lifetimes / references',
+                    label: 'Lifetimes / Return references',
                     collapsed: true,
                     link: {
                         type: 'doc',
@@ -227,6 +227,9 @@ const sidebars = {
                     },
                     items: [
                         'guides/lifetimes/overview',
+                        'guides/lifetimes/type-with-lifetimes',
+                        'guides/lifetimes/return-references',
+                        'guides/lifetimes/concurrent-borrows',
                         'guides/lifetimes/alternatives',
                     ],
                 },

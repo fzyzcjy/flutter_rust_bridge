@@ -1,8 +1,7 @@
 # Overview
 
 :::info
-This page *only* discusses a type with lifetimes that appears as a *return value*.
-Having references in arguments (such as `fn f(a: &Sth)`) is already supported long ago,
+References in arguments (such as `fn f(a: &Foo, b: &mut Bar)`) is already supported long ago,
 and is not the feature discussed here.
 :::
 
@@ -15,8 +14,5 @@ If you want to discuss anything, feel free to open an issue on GitHub.
 :::
 
 Returning types with lifetimes are supported in `flutter_rust_bridge`.
-This includes the common scenario to return a reference type.
-
 Currently, I have only implemented a subset of the features that I hope to implement,
-but the rest should be usually workaround-able. 
-Please visit the "limitations and workarounds" page for more details.
+but the rest should be usually workaround-able, and is discussed in later pages.
