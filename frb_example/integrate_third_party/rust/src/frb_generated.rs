@@ -16,7 +16,11 @@
     clippy::too_many_arguments,
     clippy::match_single_binding,
     clippy::clone_on_copy,
-    clippy::let_unit_value
+    clippy::let_unit_value,
+    clippy::deref_addrof,
+    clippy::explicit_auto_deref,
+    clippy::borrow_deref_ref,
+    clippy::needless_borrow
 )]
 
 // Section: imports
