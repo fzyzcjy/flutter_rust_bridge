@@ -201,54 +201,7 @@ abstract class EnumWithGoodAndOpaqueWithoutOptionTwinRustAsync
 abstract class NonCloneSimpleEnumTwinRustAsync implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleTwinRustAsync>>
-abstract class NonCloneSimpleTwinRustAsync implements RustOpaqueInterface {
-  Future<void> instanceMethodArgBorrowTwinRustAsync();
-
-  Future<void> instanceMethodArgMutBorrowTwinRustAsync();
-
-  Future<void> instanceMethodArgOwnTwinRustAsync();
-
-  Future<int> get instanceMethodGetterTwinRustAsync;
-
-  Future<NonCloneSimpleTwinRustAsync> instanceMethodReturnOwnTwinRustAsync();
-
-  /// named constructor
-  static Future<NonCloneSimpleTwinRustAsync> newCustomNameTwinRustAsync() =>
-      RustLib.instance.api
-          .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncNonCloneSimpleTwinRustAsyncNewCustomNameTwinRustAsync();
-
-  /// unnamed constructor
-  static Future<NonCloneSimpleTwinRustAsync> newTwinRustAsync() => RustLib
-      .instance.api
-      .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncNonCloneSimpleTwinRustAsyncNewTwinRustAsync();
-
-  /// constructor with Result
-  static Future<NonCloneSimpleTwinRustAsync> newWithResultTwinRustAsync() =>
-      RustLib.instance.api
-          .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncNonCloneSimpleTwinRustAsyncNewWithResultTwinRustAsync();
-
-  static Future<void> staticMethodArgBorrowTwinRustAsync(
-          {required NonCloneSimpleTwinRustAsync arg}) =>
-      RustLib.instance.api
-          .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncNonCloneSimpleTwinRustAsyncStaticMethodArgBorrowTwinRustAsync(
-              arg: arg);
-
-  static Future<void> staticMethodArgMutBorrowTwinRustAsync(
-          {required NonCloneSimpleTwinRustAsync arg}) =>
-      RustLib.instance.api
-          .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncNonCloneSimpleTwinRustAsyncStaticMethodArgMutBorrowTwinRustAsync(
-              arg: arg);
-
-  static Future<void> staticMethodArgOwnTwinRustAsync(
-          {required NonCloneSimpleTwinRustAsync arg}) =>
-      RustLib.instance.api
-          .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncNonCloneSimpleTwinRustAsyncStaticMethodArgOwnTwinRustAsync(
-              arg: arg);
-
-  static Future<NonCloneSimpleTwinRustAsync>
-      staticMethodReturnOwnTwinRustAsync() => RustLib.instance.api
-          .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncNonCloneSimpleTwinRustAsyncStaticMethodReturnOwnTwinRustAsync();
-}
+abstract class NonCloneSimpleTwinRustAsync implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueOneTwinRustAsync>>
 abstract class OpaqueOneTwinRustAsync implements RustOpaqueInterface {}
@@ -258,11 +211,7 @@ abstract class OpaqueTwoTwinRustAsync implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync>>
 abstract class StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync
-    implements RustOpaqueInterface {
-  String get good;
-
-  void set good(String good);
-}
+    implements RustOpaqueInterface {}
 
 abstract class MyTraitTwinRustAsync {
   Future<void> f();

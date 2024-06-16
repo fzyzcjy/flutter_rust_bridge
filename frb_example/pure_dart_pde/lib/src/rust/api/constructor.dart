@@ -8,31 +8,11 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ConstructorOpaqueStructTwinNormal>>
 abstract class ConstructorOpaqueStructTwinNormal
-    implements RustOpaqueInterface {
-  String get one;
-
-  void set one(String one);
-
-  void check();
-
-  // HINT: Make it `#[frb(sync)]` to let it become the default constructor of Dart class.
-  static Future<ConstructorOpaqueStructTwinNormal> newInstance() =>
-      RustLib.instance.api
-          .crateApiConstructorConstructorOpaqueStructTwinNormalNew();
-}
+    implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ConstructorOpaqueSyncStructTwinNormal>>
 abstract class ConstructorOpaqueSyncStructTwinNormal
-    implements RustOpaqueInterface {
-  String get one;
-
-  void set one(String one);
-
-  void check();
-
-  factory ConstructorOpaqueSyncStructTwinNormal() => RustLib.instance.api
-      .crateApiConstructorConstructorOpaqueSyncStructTwinNormalNew();
-}
+    implements RustOpaqueInterface {}
 
 class ConstructorTranslatableStructTwinNormal {
   final String one;

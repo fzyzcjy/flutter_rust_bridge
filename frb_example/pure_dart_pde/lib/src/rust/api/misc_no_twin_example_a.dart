@@ -23,77 +23,24 @@ abstract class BoxAnyMyDartTypeRename implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<DeliberateFailSanityCheckTwinNormal>>
 abstract class DeliberateFailSanityCheckTwinNormal
-    implements RustOpaqueInterface {
-  Uint8List get deliberateBadFieldA;
-
-  OpaqueItemTwinNormal get deliberateBadFieldB;
-
-  List<OpaqueItemTwinNormal> get deliberateBadFieldC;
-
-  String get goodFieldA;
-
-  int get goodFieldB;
-
-  OpaqueItemTwinNormal get goodFieldC;
-
-  void set deliberateBadFieldA(Uint8List deliberateBadFieldA);
-
-  void set deliberateBadFieldB(OpaqueItemTwinNormal deliberateBadFieldB);
-
-  void set deliberateBadFieldC(List<OpaqueItemTwinNormal> deliberateBadFieldC);
-
-  void set goodFieldA(String goodFieldA);
-
-  void set goodFieldB(int goodFieldB);
-
-  void set goodFieldC(OpaqueItemTwinNormal goodFieldC);
-
-  static Future<void> dummyFunctionTwinNormal() => RustLib.instance.api
-      .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalDummyFunctionTwinNormal();
-}
+    implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ItemContainerSolutionOneTwinNormal>>
 abstract class ItemContainerSolutionOneTwinNormal
-    implements RustOpaqueInterface {
-  String get name;
-
-  void set name(String name);
-
-  static Future<ItemContainerSolutionOneTwinNormal> createTwinNormal() => RustLib
-      .instance.api
-      .crateApiMiscNoTwinExampleAItemContainerSolutionOneTwinNormalCreateTwinNormal();
-
-  Future<Int32List> getItemContentsTwinNormal();
-}
+    implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinNormal>>
 abstract class OpaqueItemTwinNormal implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructInMiscNoTwinExampleA>>
-abstract class StructInMiscNoTwinExampleA implements RustOpaqueInterface {
-  Future<void> sampleFunctionA();
-}
+abstract class StructInMiscNoTwinExampleA implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructWithImplBlockInMultiFile>>
-abstract class StructWithImplBlockInMultiFile implements RustOpaqueInterface {
-  Future<void> methodInA();
-
-  Future<void> methodInB();
-}
+abstract class StructWithImplBlockInMultiFile implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructWithSimpleSetterTwinNormal>>
-abstract class StructWithSimpleSetterTwinNormal implements RustOpaqueInterface {
-  int get something;
-
-  factory StructWithSimpleSetterTwinNormal() => RustLib.instance.api
-      .crateApiMiscNoTwinExampleAStructWithSimpleSetterTwinNormalNew();
-
-  void set something(int value);
-
-  int get simpleGetter;
-
-  void set simpleSetter(int value);
-}
+abstract class StructWithSimpleSetterTwinNormal
+    implements RustOpaqueInterface {}
 
 class ItemContainerSolutionTwoTwinNormal {
   String name;

@@ -188,54 +188,7 @@ abstract class EnumWithGoodAndOpaqueWithoutOptionTwinNormal
 abstract class NonCloneSimpleEnumTwinNormal implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleTwinNormal>>
-abstract class NonCloneSimpleTwinNormal implements RustOpaqueInterface {
-  Future<void> instanceMethodArgBorrowTwinNormal();
-
-  Future<void> instanceMethodArgMutBorrowTwinNormal();
-
-  Future<void> instanceMethodArgOwnTwinNormal();
-
-  Future<int> get instanceMethodGetterTwinNormal;
-
-  Future<NonCloneSimpleTwinNormal> instanceMethodReturnOwnTwinNormal();
-
-  /// named constructor
-  static Future<NonCloneSimpleTwinNormal> newCustomNameTwinNormal() => RustLib
-      .instance.api
-      .crateApiRustAutoOpaqueNonCloneSimpleTwinNormalNewCustomNameTwinNormal();
-
-  /// unnamed constructor
-  static Future<NonCloneSimpleTwinNormal> newTwinNormal() =>
-      RustLib.instance.api
-          .crateApiRustAutoOpaqueNonCloneSimpleTwinNormalNewTwinNormal();
-
-  /// constructor with Result
-  static Future<NonCloneSimpleTwinNormal> newWithResultTwinNormal() => RustLib
-      .instance.api
-      .crateApiRustAutoOpaqueNonCloneSimpleTwinNormalNewWithResultTwinNormal();
-
-  static Future<void> staticMethodArgBorrowTwinNormal(
-          {required NonCloneSimpleTwinNormal arg}) =>
-      RustLib.instance.api
-          .crateApiRustAutoOpaqueNonCloneSimpleTwinNormalStaticMethodArgBorrowTwinNormal(
-              arg: arg);
-
-  static Future<void> staticMethodArgMutBorrowTwinNormal(
-          {required NonCloneSimpleTwinNormal arg}) =>
-      RustLib.instance.api
-          .crateApiRustAutoOpaqueNonCloneSimpleTwinNormalStaticMethodArgMutBorrowTwinNormal(
-              arg: arg);
-
-  static Future<void> staticMethodArgOwnTwinNormal(
-          {required NonCloneSimpleTwinNormal arg}) =>
-      RustLib.instance.api
-          .crateApiRustAutoOpaqueNonCloneSimpleTwinNormalStaticMethodArgOwnTwinNormal(
-              arg: arg);
-
-  static Future<NonCloneSimpleTwinNormal> staticMethodReturnOwnTwinNormal() =>
-      RustLib.instance.api
-          .crateApiRustAutoOpaqueNonCloneSimpleTwinNormalStaticMethodReturnOwnTwinNormal();
-}
+abstract class NonCloneSimpleTwinNormal implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueOneTwinNormal>>
 abstract class OpaqueOneTwinNormal implements RustOpaqueInterface {}
@@ -245,11 +198,7 @@ abstract class OpaqueTwoTwinNormal implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal>>
 abstract class StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal
-    implements RustOpaqueInterface {
-  String get good;
-
-  void set good(String good);
-}
+    implements RustOpaqueInterface {}
 
 abstract class MyTraitTwinNormal {
   Future<void> f();

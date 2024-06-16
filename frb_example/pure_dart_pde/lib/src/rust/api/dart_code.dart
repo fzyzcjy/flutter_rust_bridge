@@ -10,8 +10,6 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueStructWithDartCodeTwinNormal>>
 abstract class OpaqueStructWithDartCodeTwinNormal
     implements RustOpaqueInterface {
-  Future<int> normalMethodTwinNormal();
-
   static int get dartCodeGetter => 123;
 }
 

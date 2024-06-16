@@ -9,14 +9,4 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 // These types are ignored because they are not used by any `pub` functions: `DROP_COUNT`
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<DroppableTwinNormal>>
-abstract class DroppableTwinNormal implements RustOpaqueInterface {
-  Stream<int> createStream();
-
-  static Future<int> getDropCountTwinNormal() => RustLib.instance.api
-      .crateApiDroppingDroppableTwinNormalGetDropCountTwinNormal();
-
-  static Future<DroppableTwinNormal> newTwinNormal() =>
-      RustLib.instance.api.crateApiDroppingDroppableTwinNormalNewTwinNormal();
-
-  Future<void> simpleMethodTwinNormal();
-}
+abstract class DroppableTwinNormal implements RustOpaqueInterface {}

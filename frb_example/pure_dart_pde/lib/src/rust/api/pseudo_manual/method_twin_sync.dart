@@ -18,10 +18,7 @@ SumWithTwinSyncArray3 getSumArrayTwinSync(
         a: a, b: b, c: c);
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StaticGetterOnlyTwinSync>>
-abstract class StaticGetterOnlyTwinSync implements RustOpaqueInterface {
-  static int get staticGetterTwinSync => RustLib.instance.api
-      .crateApiPseudoManualMethodTwinSyncStaticGetterOnlyTwinSyncStaticGetterTwinSync();
-}
+abstract class StaticGetterOnlyTwinSync implements RustOpaqueInterface {}
 
 class ConcatenateWithTwinSync {
   final String a;
@@ -149,11 +146,6 @@ enum SimplePrimitiveEnumTwinSync {
   first,
   second,
   ;
-
-  int simpleMethodTwinSync() => RustLib.instance.api
-          .crateApiPseudoManualMethodTwinSyncSimplePrimitiveEnumTwinSyncSimpleMethodTwinSync(
-        that: this,
-      );
 }
 
 class SimpleStructTwinSync {

@@ -8,13 +8,7 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<SimpleOpaqueExternalStructWithMethod>>
 abstract class SimpleOpaqueExternalStructWithMethod
-    implements RustOpaqueInterface {
-  factory SimpleOpaqueExternalStructWithMethod({required String a}) =>
-      RustLib.instance.api
-          .crateApiExternalImplSimpleOpaqueExternalStructWithMethodNew(a: a);
-
-  Future<String> simpleExternalMethod();
-}
+    implements RustOpaqueInterface {}
 
 class SimpleTranslatableExternalStructWithMethod {
   final String a;
