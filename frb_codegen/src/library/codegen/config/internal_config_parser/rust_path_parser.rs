@@ -47,8 +47,10 @@ pub(super) fn compute_rust_path_info(
 fn compute_rust_input_namespace_prefixes_raw(raw_rust_input: &str) -> Vec<Namespace> {
     raw_rust_input
         .split(',')
+        .map(|s| s.trim())
+        .filter(|s| !s.is_empty())
         .map(|s| Namespace::new_raw(s.to_owned()))
-        .collect_vec()
+        .collect()
 }
 
 fn tidy_rust_input_namespace_prefixes(raw: &[Namespace]) -> Vec<Namespace> {
