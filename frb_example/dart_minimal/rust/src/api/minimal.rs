@@ -39,6 +39,13 @@ pub struct LtDoubleTypeWithLifetimeTwinNormal<'a> {
 
 #[allow(clippy::needless_lifetimes)]
 impl LtOwnedStructTwinNormal {
+    #[frb(sync)]
+    pub fn new(value: String) -> Self {
+        Self {
+            sub: LtOwnedSubStructTwinNormal { value },
+        }
+    }
+
     /// `fn f(x: &'a T) -> S<'a>`
     pub fn compute_type_with_lifetime_twin_normal<'a>(
         &'a self,
@@ -48,6 +55,15 @@ impl LtOwnedStructTwinNormal {
 
     /// `fn f(x: &'a T) -> &'a S`
     pub fn compute_sub_struct_twin_normal<'a>(&'a self) -> &'a LtOwnedSubStructTwinNormal {
+        &self.sub
+    }
+
+    /// The unrelated arg should not affect results
+    pub fn compute_with_unrelated_borrowed_arg_twin_normal<'a>(
+        &'a self,
+        unrelated: &LtOwnedSubStructTwinNormal,
+    ) -> &'a LtOwnedSubStructTwinNormal {
+        assert_eq!(&unrelated.value, "hi");
         &self.sub
     }
 }
