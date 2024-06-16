@@ -2,7 +2,7 @@
 
 use flutter_rust_bridge::for_generated::lazy_static;
 use flutter_rust_bridge::frb;
-use std::sync::Mutex;
+use std::sync::{Arc, Mutex};
 
 #[frb(init)]
 pub fn init_app() {
@@ -15,34 +15,27 @@ pub fn minimal_adder(a: i32, b: i32) -> i32 {
 
 // -------------------------------------------------------------------------------------------------
 
-// TODO move this to a separate file
+// TODO move this to a separate file that has *no* auto twin
 
-pub(crate) struct SimpleLogger(Mutex<Vec<String>>);
+#[derive(Debug, Clone)]
+#[frb(opaque)]
+pub struct SimpleLogger(Arc<Mutex<Vec<String>>>);
 
 impl SimpleLogger {
-    pub(crate) fn new() -> Self {
-        Self(Mutex::new(vec![]))
+    pub fn new() -> Self {
+        Self(Arc::new(Mutex::new(vec![])))
     }
+
     pub(crate) fn log(&self, message: &str) {
         self.0.lock().unwrap().push(message.to_owned());
     }
 
-    pub(crate) fn get_and_reset(&self) -> Vec<String> {
+    pub fn get(&self) -> Vec<String> {
         self.0.lock().unwrap().drain(..).collect()
     }
 }
 
 // -------------------------------------------------------------------------------------------------
-
-lazy_static! {
-    static ref LOGGER: SimpleLogger = SimpleLogger::new();
-}
-
-/// Lt := Lifetime Testers
-#[frb(sync)]
-pub fn lt_get_and_reset_logs_twin_normal() -> Vec<String> {
-    LOGGER.get_and_reset()
-}
 
 // --------------------------- struct definitions ---------------------------
 
@@ -57,6 +50,7 @@ pub struct LtOwnedStructTwinNormal {
 #[derive(Debug)]
 pub struct LtSubStructTwinNormal {
     value: String,
+    logger: SimpleLogger,
 }
 
 #[frb(opaque)]
@@ -81,40 +75,37 @@ pub struct LtTypeWithMultiDepTwinNormal<'a> {
 
 impl Drop for LtOwnedStructTwinNormal {
     fn drop(&mut self) {
-        LOGGER.log("LtOwnedStructTwinNormal.drop");
+        self.sub.logger.log("LtOwnedStructTwinNormal.drop");
     }
 }
 
 impl Drop for LtSubStructTwinNormal {
     fn drop(&mut self) {
-        LOGGER.log("LtOwnedSubStructTwinNormal.drop");
+        self.logger.log("LtOwnedSubStructTwinNormal.drop");
     }
 }
 
 impl Drop for LtTypeWithLifetimeTwinNormal {
     fn drop(&mut self) {
-        LOGGER.log("LtTypeWithLifetimeTwinNormal.drop");
+        (self.field.sub.logger).log("LtTypeWithLifetimeTwinNormal.drop");
     }
 }
 
 impl Drop for LtNestedTypeWithLifetimeTwinNormal {
     fn drop(&mut self) {
-        LOGGER.log("LtNestedTypeWithLifetimeTwinNormal.drop");
-    }
-}
-
-impl Drop for LtTypeWithMultiDepTwinNormal {
-    fn drop(&mut self) {
-        LOGGER.log("LtTypeWithMultiOwnerTwinNormal.drop");
+        (self.field.field.sub.logger).log("LtNestedTypeWithLifetimeTwinNormal.drop");
     }
 }
 
 // --------------------------- methods ---------------------------
 
 impl LtOwnedStructTwinNormal {
-    pub fn create(value: String) -> Self {
+    pub fn create(value: String, logger: &SimpleLogger) -> Self {
         Self {
-            sub: LtSubStructTwinNormal { value },
+            sub: LtSubStructTwinNormal {
+                value,
+                logger: logger.clone(),
+            },
         }
     }
 
