@@ -15,7 +15,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         original: MirTypeRustAutoOpaqueImplicit,
         namespace: Option<Namespace>,
     ) -> anyhow::Result<MirType> {
-        let ty_str = &original.raw.string_with_replaced_lifetime;
+        let ty_str = &original.raw.string_with_original_lifetime;
         let ty: Type = syn::parse_str(ty_str)?;
         let lifetimes = LifetimeExtractor::extract_skipping_static(&ty);
 
