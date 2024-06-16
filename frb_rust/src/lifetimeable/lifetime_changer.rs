@@ -10,6 +10,8 @@ pub unsafe fn ouroboros_change_lifetime<'old, 'new: 'old, T: 'new>(data: &'old T
 /// # Safety
 ///
 /// Please refer to `change_lifetime`
-pub unsafe fn ouroboros_change_lifetime_mut<'old, 'new: 'old, T: 'new>(data: &'old mut T) -> &'new mut T {
+pub unsafe fn ouroboros_change_lifetime_mut<'old, 'new: 'old, T: 'new>(
+    data: &'old mut T,
+) -> &'new mut T {
     &mut *(data as *mut _)
 }

@@ -1,12 +1,12 @@
 pub(crate) mod lifetime_changer;
 
-use crate::for_generated::{BaseArc, RustOpaqueBase};
 use std::any::Any;
 use std::ops;
 
 pub struct Lifetimeable<T> {
     // NOTE: The borrowed value must be *before* the dependency values to have correct *drop order*
     value: T,
+    #[allow(dead_code)]
     dependencies: Vec<Box<dyn Any + Send + Sync>>,
 }
 
