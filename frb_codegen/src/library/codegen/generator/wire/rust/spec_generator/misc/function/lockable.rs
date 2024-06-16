@@ -13,7 +13,7 @@ pub(crate) fn generate_code_inner_decode(func: &MirFunc) -> String {
     let declarations = (interest_fields.iter())
         .map(|info| {
             format!(
-                "let mut api_{name}_decoded = None;\n",
+                "let mut api_{name}_guard = None;\n",
                 name = get_variable_name(info.field)
             )
         })
@@ -46,7 +46,7 @@ pub(crate) fn generate_code_inner_decode(func: &MirFunc) -> String {
                 ""
             };
             format!(
-                "let {mutability}api_{name} = &{mutability}*api_{name}_decoded.unwrap();\n",
+                "let {mutability}api_{name} = &{mutability}*api_{name}_guard.unwrap();\n",
                 name = get_variable_name(info.field),
             )
         })
@@ -71,7 +71,7 @@ fn generate_decode_statement(
 ) -> String {
     let mode = ownership_mode.to_string().to_case(Case::Snake);
     format!(
-        "api_{name}_decoded = Some(api_{name}.lockable_decode_{syncness}_{mode}(){maybe_await})",
+        "api_{name}_guard = Some(api_{name}.lockable_decode_{syncness}_{mode}(){maybe_await})",
         name = get_variable_name(field),
         syncness = if func.rust_async { "async" } else { "sync" },
         maybe_await = if func.rust_async { ".await" } else { "" },
