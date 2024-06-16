@@ -26,7 +26,11 @@ pub(crate) fn parse_function_lifetime(
 
     let ans = ParseFunctionLifetimeOutput {
         needs_extend_lifetime_per_arg: (inputs_lifetimes.iter())
-            .map(|input_lifetimes| !output_lifetimes.is_empty() && !input_lifetimes.is_empty())
+            .map(|input_lifetimes| {
+                output_lifetimes
+                    .iter()
+                    .any(|output_lifetime| input_lifetimes.contains(output_lifetime))
+            })
             .collect_vec(),
     };
     log::warn!("parse_function_lifetime name={name} inputs_lifetimes={inputs_lifetimes:?} output_lifetimes={output_lifetimes:?} ans={ans:?}", name = sig.ident);
