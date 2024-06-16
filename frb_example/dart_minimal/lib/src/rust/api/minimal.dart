@@ -11,5 +11,8 @@ abstract class LifetimeTesterOneTwinNormal implements RustOpaqueInterface {
   Future<LifetimeTesterTwoTwinNormal> computeTwo();
 }
 
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<LifetimeTesterTwoTwinNormal < 'static >>>
+abstract class LifetimeTesterTwoTwinNormal implements RustOpaqueInterface {}
+
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<flutter_rust_bridge :: for_generated :: Lifetimeable < LifetimeTesterTwoTwinNormal < 'static > >>>
 abstract class LifetimeTesterTwoTwinNormal implements RustOpaqueInterface {}
