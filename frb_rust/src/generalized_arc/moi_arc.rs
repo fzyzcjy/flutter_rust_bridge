@@ -123,7 +123,10 @@ macro_rules! frb_generated_moi_arc_def {
                 drop(object);
             }
 
-            fn decrement_strong_count_raw(raw: usize, pool: &mut MoiArcPoolInner<T>) -> Option<MoiArcPoolValue<T>> {
+            fn decrement_strong_count_raw(
+                raw: usize,
+                pool: &mut MoiArcPoolInner<T>,
+            ) -> Option<MoiArcPoolValue<T>> {
                 let value = pool.map.get_mut(&raw).unwrap();
                 value.ref_count -= 1;
                 if value.ref_count == 0 {
