@@ -18,6 +18,11 @@ pub struct LifetimeTesterTwoTwinNormal<'a> {
 }
 
 impl LifetimeTesterOneTwinNormal {
+    #[frb(sync)]
+    pub fn new() -> Self {
+        Self("hi".to_owned());
+    }
+
     #[allow(clippy::needless_lifetimes)]
     pub fn compute_two<'a>(&'a self) -> LifetimeTesterTwoTwinNormal<'a> {
         LifetimeTesterTwoTwinNormal { one: self }

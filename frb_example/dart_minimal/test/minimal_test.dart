@@ -9,11 +9,18 @@ Future<void> main() async {
   await RustLib.init();
   print('Action: Init rust (after)');
 
-  print('Action: Configure tests (before)');
-  test('dart call minimalAdder', () async {
-    print('Action: Call rust (before)');
-    expect(await minimalAdder(a: 100, b: 200), 300);
-    print('Action: Call rust (after)');
+  // TODO temp
+  // print('Action: Configure tests (before)');
+  // test('dart call minimalAdder', () async {
+  //   print('Action: Call rust (before)');
+  //   expect(await minimalAdder(a: 100, b: 200), 300);
+  //   print('Action: Call rust (after)');
+  // });
+  // print('Action: Configure tests (end)');
+
+  test('temp', () async {
+    final one = LifetimeTesterOneTwinNormal();
+    final two = await one.computeTwo();
+    expect(two.greet(), 'hi');
   });
-  print('Action: Configure tests (end)');
 }
