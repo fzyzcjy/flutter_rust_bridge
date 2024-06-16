@@ -72,5 +72,5 @@ pub(super) fn generate_code_postprocess_inner_output(func: &MirFunc) -> String {
         .flat_map(|field_name| vec![format!("api_{field_name}"), format!("api_{field_name}_guard")])
         .map(|var_name| format!("Box::new({var_name}.clone())"))
         .join(", ");
-    format!("let output_ok = RustAutoOpaque::new(flutter_rust_bridge::for_generated::Lifetimeablea::new(output_ok, {dependencies}));")
+    format!("let output_ok = RustAutoOpaque::new(flutter_rust_bridge::for_generated::Lifetimeable::new(output_ok, {dependencies}));")
 }
