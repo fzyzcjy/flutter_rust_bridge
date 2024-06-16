@@ -71,7 +71,7 @@ fn wire__crate__api__minimal__LifetimeTesterOneTwinNormal_compute_two_impl(
             >>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| {
-                transform_result_sse((move || {
+                transform_result_sse::<_, ()>((move || {
                     let api_that_illegal_static_ref = unsafe {
                         flutter_rust_bridge::for_generated::ouroboros_change_lifetime(&api_that)
                     };
@@ -136,7 +136,7 @@ fn wire__crate__api__minimal__LifetimeTesterOneTwinNormal_new_impl(
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
-            transform_result_sse((move || {
+            transform_result_sse::<_, ()>((move || {
                 let output_ok =
                     Result::<_, ()>::Ok(crate::api::minimal::LifetimeTesterOneTwinNormal::new())?;
                 Ok(output_ok)
@@ -154,7 +154,7 @@ fn wire__crate__api__minimal__Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_br
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_that = <RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<flutter_rust_bridge :: for_generated :: Lifetimeable < LifetimeTesterTwoTwinNormal < 'static > >>>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
-                    transform_result_sse((move ||  {
+                    transform_result_sse::<_, ()>((move ||  {
                         let mut api_that_guard = None;
 let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![flutter_rust_bridge::for_generated::LockableOrderInfo::new(&api_that, 0, false)]);
         for i in decode_indices_ {
