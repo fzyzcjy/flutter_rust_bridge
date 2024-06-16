@@ -158,11 +158,18 @@ Future<void> main() async {
     test('computeArgGenericLifetimeTwinNormal', () async {
       final ownedStruct = await LtOwnedStructTwinNormal.create(value: 'a');
       final typeWithLifetime =
-          await ownedStruct.computeTypeWithLifetimeTwinNormal(arg: ownedStruct);
-      final nestedTypeWithLifetime = await LtTypeWithLifetimeTwinNormal
+          await ownedStruct.computeTypeWithLifetimeTwinNormal();
+      final anotherTypeWithLifetime = await LtTypeWithLifetimeTwinNormal
           .computeArgGenericLifetimeTwinNormal(arg: typeWithLifetime);
-      await _testNestedTypeWithLifetime(
-          ownedStruct, typeWithLifetime, nestedTypeWithLifetime);
+
+      expect(await anotherTypeWithLifetime.greetBorrowSelfTwinNormal(), 'a');
+      expect(await anotherTypeWithLifetime.greetBorrowMutSelfTwinNormal(), 'a');
+
+      ownedStruct.dispose();
+      typeWithLifetime.dispose();
+
+      expect(await anotherTypeWithLifetime.greetBorrowSelfTwinNormal(), 'a');
+      expect(await anotherTypeWithLifetime.greetBorrowMutSelfTwinNormal(), 'a');
     });
 
     test('computeWithMultiArgHavingLifetimeTwinNormal', () async {
