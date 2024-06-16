@@ -10,12 +10,14 @@ pub(crate) fn parse_function_lifetime(
     sig: &Signature,
     owner: &MirFuncOwnerInfo,
 ) -> anyhow::Result<ParseFunctionLifetimeOutput> {
-    let inputs_lifetimes: Vec<Vec<Lifetime>> = (sig.inputs.iter())
+    let inputs_lifetimes = (sig.inputs.iter())
         .map(|x| {
-            LifetimeExtractor::extract_skipping_static(&parse_argument_ty_and_name(x, owner).0)
+            Ok(LifetimeExtractor::extract_skipping_static(
+                &parse_argument_ty_and_name(x, owner)?.0,
+            ))
         })
-        .collect_vec();
-    let output_lifetimes: Vec<Lifetime> = match &sig.output {
+        .collect::<anyhow::Result<Vec<_>>>()?;
+    let output_lifetimes = match &sig.output {
         ReturnType::Type(_, ty) => LifetimeExtractor::extract_skipping_static(&*ty),
         ReturnType::Default => vec![],
     };
