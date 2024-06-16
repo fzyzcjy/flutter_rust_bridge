@@ -86,13 +86,13 @@ impl Drop for LtSubStructTwinNormal {
     }
 }
 
-impl Drop for LtTypeWithLifetimeTwinNormal {
+impl Drop for LtTypeWithLifetimeTwinNormal<'_> {
     fn drop(&mut self) {
         (self.field.sub.logger).log("LtTypeWithLifetimeTwinNormal.drop");
     }
 }
 
-impl Drop for LtNestedTypeWithLifetimeTwinNormal {
+impl Drop for LtNestedTypeWithLifetimeTwinNormal<'_> {
     fn drop(&mut self) {
         (self.field.field.sub.logger).log("LtNestedTypeWithLifetimeTwinNormal.drop");
     }
