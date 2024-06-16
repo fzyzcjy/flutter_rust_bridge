@@ -76,6 +76,7 @@ pub enum MirFuncOwnerInfo {
 
 pub struct MirFuncOwnerInfoMethod {
     pub(crate) owner_ty: MirType,
+    pub(crate) owner_ty_raw: String,
     pub(crate) actual_method_name: String,
     pub(crate) actual_method_dart_name: Option<String>,
     pub(crate) mode: MirFuncOwnerInfoMethodMode,
