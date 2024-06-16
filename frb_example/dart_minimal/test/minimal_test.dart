@@ -31,7 +31,7 @@ Future<void> main() async {
           <String>['LtOwnedStructTwinNormal.drop']);
     });
 
-    test('dispose ownedStruct - dispose subStruct', () async {
+    test('dispose ownedStruct - dispose typeWithLifetime', () async {
       final ownedStruct = await LtOwnedStructTwinNormal.create(value: 'a');
       final typeWithLifetime =
           await ownedStruct.computeTypeWithLifetimeTwinNormal();
@@ -49,7 +49,7 @@ Future<void> main() async {
       ]);
     });
 
-    test('dispose subStruct - dispose ownedStruct', () async {
+    test('dispose typeWithLifetime - dispose ownedStruct', () async {
       final ownedStruct = await LtOwnedStructTwinNormal.create(value: 'a');
       final typeWithLifetime =
           await ownedStruct.computeTypeWithLifetimeTwinNormal();
@@ -61,6 +61,52 @@ Future<void> main() async {
 
       ownedStruct.dispose();
       expect(ltGetAndResetLogsTwinNormal(), <String>[
+        'LtOwnedStructTwinNormal.drop',
+      ]);
+    });
+
+    test('dispose ownedStruct - dispose typeWithLifetime', () async {
+      final ownedStruct = await LtOwnedStructTwinNormal.create(value: 'a');
+      final typeWithLifetime =
+          await ownedStruct.computeTypeWithLifetimeTwinNormal();
+
+      ownedStruct.dispose();
+      expect(ltGetAndResetLogsTwinNormal(), <String>[
+        // Do *not* really dispose ownedStruct
+      ]);
+
+      typeWithLifetime.dispose();
+      expect(ltGetAndResetLogsTwinNormal(), <String>[
+        // NOTE order: Firstly the borrowed type, secondly the owned type
+        'LtTypeWithLifetimeTwinNormal.drop',
+        'LtOwnedStructTwinNormal.drop',
+      ]);
+    });
+
+    test(
+        'dispose ownedStruct - dispose typeWithLifetime - dispose nestedTypeWithLifetime',
+        () async {
+      final ownedStruct = await LtOwnedStructTwinNormal.create(value: 'a');
+      final typeWithLifetime =
+          await ownedStruct.computeTypeWithLifetimeTwinNormal();
+      final nestedTypeWithLifetime = await typeWithLifetime
+          .computeNestedTypeWithLifetimeTwinNormal(arg: ownedStruct);
+
+      ownedStruct.dispose();
+      expect(ltGetAndResetLogsTwinNormal(), <String>[
+        // Do *not* really dispose
+      ]);
+
+      typeWithLifetime.dispose();
+      expect(ltGetAndResetLogsTwinNormal(), <String>[
+        // Do *not* really dispose
+      ]);
+
+      nestedTypeWithLifetime.dispose();
+      expect(ltGetAndResetLogsTwinNormal(), <String>[
+        // NOTE the order
+        'LtNestedTypeWithLifetimeTwinNormal.drop',
+        'LtTypeWithLifetimeTwinNormal.drop',
         'LtOwnedStructTwinNormal.drop',
       ]);
     });
