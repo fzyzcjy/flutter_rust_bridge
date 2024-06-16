@@ -119,8 +119,8 @@ class _Duplicator {
             (annotation.addCode ?? '') +
             generator.generateDuplicateCode(
                 _handleFileContent(fileContent), mode);
-        for (final x in annotation.removeCode) {
-          outputText = outputText.replaceAll(x, '');
+        for (final entry in annotation.replaceCode.entries) {
+          outputText = outputText.replaceAll(entry.key, entry.value);
         }
 
         final targetPath = generator.interestDir
@@ -164,14 +164,14 @@ String _handleFileContent(String content) {
 class Annotation {
   final List<DuplicatorMode> forbiddenDuplicatorModes;
   final String? addCode;
-  final List<String> removeCode;
+  final Map<String, String> replaceCode;
   final bool enableAll;
   final bool skipPde;
 
   const Annotation({
     this.forbiddenDuplicatorModes = const [],
     this.addCode,
-    this.removeCode = const [],
+    this.replaceCode = const {},
     this.enableAll = false,
     this.skipPde = false,
   });
@@ -193,9 +193,9 @@ class Annotation {
               .map((x) => DuplicatorMode.parse(x as String))
               .toList(),
       addCode: data['addCode'] as String?,
-      removeCode: ((data['removeCode'] as List<dynamic>?) ?? <String>[])
-          .map((x) => x as String)
-          .toList(),
+      replaceCode: ((data['replaceCode'] as Map<dynamic, dynamic>?) ??
+              <dynamic, dynamic>{})
+          .map((k, v) => MapEntry(k as String, v as String)),
       enableAll: data['enableAll'] as bool? ?? false,
       skipPde: data['skipPde'] as bool? ?? false,
     );
