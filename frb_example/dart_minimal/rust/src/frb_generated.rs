@@ -34,7 +34,7 @@ flutter_rust_bridge::frb_generated_boilerplate!(
     default_rust_auto_opaque = RustAutoOpaqueMoi,
 );
 pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "2.0.0-dev.39";
-pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = 1961911154;
+pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = -1858785023;
 
 // Section: executor
 
@@ -118,6 +118,30 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
                     })())
                 } })
 }
+fn wire__crate__api__minimal__ProxyTesterB_f_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "ProxyTesterB_f", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_that = <crate::frb_generated::Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxyTesterBProxyEnum>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
+                    transform_result_sse((move ||  {
+                        let mut api_that_decoded = None;
+let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![flutter_rust_bridge::for_generated::LockableOrderInfo::new(&api_that, 0, false)]);
+        for i in decode_indices_ {
+            match i {
+                0 => api_that_decoded = Some(api_that.lockable_decode_sync_ref()),
+                _ => unreachable!(),
+            }
+        }
+        let api_that = &*api_that_decoded.unwrap();
+ Result::<_,()>::Ok({ crate::api::minimal::ProxyTesterB::f(api_that); })
+                    })())
+                } })
+}
 fn wire__crate__api__minimal__init_app_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -191,18 +215,171 @@ flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
     flutter_rust_bridge::for_generated::RustAutoOpaqueInner<LifetimeTesterOneTwinNormal>
 );
 flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
+    flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ProxyTesterA>
+);
+flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
+    flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ProxyTesterB>
+);
+flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
     flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
         flutter_rust_bridge::for_generated::Lifetimeable<LifetimeTesterTwoTwinNormal<'static>>,
     >
 );
 
+// Section: extra_from_parser
+
+pub enum Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxyTesterBProxyEnum
+{
+    Variant0(RustAutoOpaque<ProxyTesterA>),
+}
+
+pub fn frb_internal_no_impl_dummy_function_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxyTesterBProxyEnum(
+    a: Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxyTesterBProxyEnum,
+) {
+}
+
+impl Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxyTesterBProxyEnum {
+    pub fn blocking_read(&self) -> Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxyTesterBProxyEnumRwLockReadGuard{
+        match self {
+            Self::Variant0(inner) => Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxyTesterBProxyEnumRwLockReadGuard::Variant0(inner.blocking_read()),
+
+        }
+    }
+
+    pub fn blocking_write(&self) -> Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxyTesterBProxyEnumRwLockWriteGuard{
+        unreachable!()
+    }
+
+    pub async fn read(&self) -> Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxyTesterBProxyEnumRwLockReadGuard{
+        match self {
+            Self::Variant0(inner) => Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxyTesterBProxyEnumRwLockReadGuard::Variant0(inner.read().await),
+
+        }
+    }
+
+    pub async fn write(&self) -> Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxyTesterBProxyEnumRwLockWriteGuard{
+        unreachable!()
+    }
+}
+
+impl Lockable
+    for Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxyTesterBProxyEnum
+{
+    type RwLockReadGuard<'a> = Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxyTesterBProxyEnumRwLockReadGuard<'a>;
+    type RwLockWriteGuard<'a> = Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxyTesterBProxyEnumRwLockWriteGuard<'a>;
+
+    fn lockable_order(&self) -> flutter_rust_bridge::for_generated::LockableOrder {
+        match self {
+            Self::Variant0(inner) => {
+                flutter_rust_bridge::for_generated::rust_auto_opaque_lockable_order(inner)
+            }
+        }
+    }
+
+    fn lockable_decode_sync_ref(&self) -> Self::RwLockReadGuard<'_> {
+        self.blocking_read()
+    }
+
+    fn lockable_decode_sync_ref_mut(&self) -> Self::RwLockWriteGuard<'_> {
+        self.blocking_write()
+    }
+
+    fn lockable_decode_async_ref<'a>(
+        &'a self,
+    ) -> std::pin::Pin<Box<dyn std::future::Future<Output = Self::RwLockReadGuard<'_>> + Send + 'a>>
+    where
+        Self: Sync + 'a,
+    {
+        Box::pin(async move { self.read().await })
+    }
+
+    fn lockable_decode_async_ref_mut<'a>(
+        &'a self,
+    ) -> std::pin::Pin<Box<dyn std::future::Future<Output = Self::RwLockWriteGuard<'_>> + Send + 'a>>
+    where
+        Self: Sync + 'a,
+    {
+        Box::pin(async move { self.write().await })
+    }
+}
+
+pub enum Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxyTesterBProxyEnumRwLockReadGuard<
+    'a,
+> {
+    Variant0(flutter_rust_bridge::for_generated::rust_async::RwLockReadGuard<'a, ProxyTesterA>),
+}
+
+impl std::ops::Deref for Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxyTesterBProxyEnumRwLockReadGuard<'_> {
+            type Target = ProxyTesterB;
+
+            fn deref(&self) -> &Self::Target {
+                match self {
+            Self::Variant0(inner) => inner.deref().b(),
+
+        }
+            }
+        }
+
+pub enum Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxyTesterBProxyEnumRwLockWriteGuard<
+    'a,
+> {
+    Variant0(flutter_rust_bridge::for_generated::rust_async::RwLockWriteGuard<'a, ProxyTesterA>),
+}
+
+impl std::ops::Deref for Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxyTesterBProxyEnumRwLockWriteGuard<'_> {
+            type Target = ProxyTesterB;
+
+            fn deref(&self) -> &Self::Target {
+                match self {
+            Self::Variant0(inner) => inner.deref().b(),
+
+        }
+            }
+        }
+
+impl std::ops::DerefMut for Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxyTesterBProxyEnumRwLockWriteGuard<'_> {
+                fn deref_mut(&mut self) -> &mut Self::Target {
+                    unreachable!()
+                }
+            }
+
 // Section: dart2rust
+
+impl SseDecode for RustAutoOpaqueMoi<ProxyTesterA> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <RustOpaqueMoi<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ProxyTesterA>,
+        >>::sse_decode(deserializer);
+        return flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_decode(inner);
+    }
+}
 
 impl SseDecode for LifetimeTesterOneTwinNormal {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut inner = <RustOpaqueMoi<
             flutter_rust_bridge::for_generated::RustAutoOpaqueInner<LifetimeTesterOneTwinNormal>,
+        >>::sse_decode(deserializer);
+        return flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(inner);
+    }
+}
+
+impl SseDecode for ProxyTesterA {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <RustOpaqueMoi<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ProxyTesterA>,
+        >>::sse_decode(deserializer);
+        return flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(inner);
+    }
+}
+
+impl SseDecode for ProxyTesterB {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <RustOpaqueMoi<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ProxyTesterB>,
         >>::sse_decode(deserializer);
         return flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(inner);
     }
@@ -237,6 +414,26 @@ impl SseDecode
 }
 
 impl SseDecode
+    for RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ProxyTesterA>>
+{
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return decode_rust_opaque_moi(inner);
+    }
+}
+
+impl SseDecode
+    for RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ProxyTesterB>>
+{
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return decode_rust_opaque_moi(inner);
+    }
+}
+
+impl SseDecode
     for RustOpaqueMoi<
         flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
             flutter_rust_bridge::for_generated::Lifetimeable<LifetimeTesterTwoTwinNormal<'static>>,
@@ -257,6 +454,14 @@ impl SseDecode for String {
         return String::from_utf8(inner).unwrap();
     }
 }
+
+impl SseDecode for crate::frb_generated::Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxyTesterBProxyEnum {
+                    // Codec=Sse (Serialization based), see doc to use other codecs
+                    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {let mut tag_ = <i32>::sse_decode(deserializer);
+            match tag_ {0 => { let mut var_field0 = <RustAutoOpaqueMoi<ProxyTesterA>>::sse_decode(deserializer);
+return crate::frb_generated::Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxyTesterBProxyEnum::Variant0(var_field0); }
+ _ => { unimplemented!(""); }}}
+                }
 
 impl SseDecode for i32 {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -314,8 +519,9 @@ fn pde_ffi_dispatcher_primary_impl(
     match func_id {
                         1 => wire__crate__api__minimal__LifetimeTesterOneTwinNormal_compute_two_impl(port, ptr, rust_vec_len, data_len),
 2 => wire__crate__api__minimal__Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeTesterTwoTwinNormala_greet_impl(port, ptr, rust_vec_len, data_len),
-3 => wire__crate__api__minimal__init_app_impl(port, ptr, rust_vec_len, data_len),
-4 => wire__crate__api__minimal__minimal_adder_impl(port, ptr, rust_vec_len, data_len),
+4 => wire__crate__api__minimal__ProxyTesterB_f_impl(port, ptr, rust_vec_len, data_len),
+5 => wire__crate__api__minimal__init_app_impl(port, ptr, rust_vec_len, data_len),
+6 => wire__crate__api__minimal__minimal_adder_impl(port, ptr, rust_vec_len, data_len),
                         _ => unreachable!(),
                     }
 }
@@ -355,6 +561,36 @@ impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<LifetimeTesterOneTwinNormal>>
 }
 
 // Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for FrbWrapper<ProxyTesterA> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for FrbWrapper<ProxyTesterA> {}
+
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<ProxyTesterA>> for ProxyTesterA {
+    fn into_into_dart(self) -> FrbWrapper<ProxyTesterA> {
+        self.into()
+    }
+}
+
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for FrbWrapper<ProxyTesterB> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for FrbWrapper<ProxyTesterB> {}
+
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<ProxyTesterB>> for ProxyTesterB {
+    fn into_into_dart(self) -> FrbWrapper<ProxyTesterB> {
+        self.into()
+    }
+}
+
+// Codec=Dco (DartCObject based), see doc to use other codecs
 impl flutter_rust_bridge::IntoDart
     for FrbWrapper<
         flutter_rust_bridge::for_generated::Lifetimeable<LifetimeTesterTwoTwinNormal<'static>>,
@@ -388,6 +624,28 @@ impl
     }
 }
 
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for crate::frb_generated::Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxyTesterBProxyEnum {
+                fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+                    match self {crate::frb_generated::Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxyTesterBProxyEnum::Variant0(field0) => { [0.into_dart(),
+field0.into_into_dart().into_dart()].into_dart() }
+ _ => { unimplemented!(""); }}
+                }
+            }
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for crate::frb_generated::Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxyTesterBProxyEnum {}
+impl flutter_rust_bridge::IntoIntoDart<crate::frb_generated::Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxyTesterBProxyEnum> for crate::frb_generated::Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxyTesterBProxyEnum {
+            fn into_into_dart(self) -> crate::frb_generated::Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxyTesterBProxyEnum {
+                self
+            }
+        }
+
+impl SseEncode for RustAutoOpaqueMoi<ProxyTesterA> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ProxyTesterA>>>::sse_encode(flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_encode(self), serializer);
+    }
+}
+
 impl SseEncode for LifetimeTesterOneTwinNormal {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -397,6 +655,20 @@ impl SseEncode for LifetimeTesterOneTwinNormal {
             flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self),
             serializer,
         );
+    }
+}
+
+impl SseEncode for ProxyTesterA {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ProxyTesterA>>>::sse_encode(flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self), serializer);
+    }
+}
+
+impl SseEncode for ProxyTesterB {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ProxyTesterB>>>::sse_encode(flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self), serializer);
     }
 }
 
@@ -432,6 +704,28 @@ impl SseEncode
 }
 
 impl SseEncode
+    for RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ProxyTesterA>>
+{
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode
+    for RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ProxyTesterB>>
+{
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode
     for RustOpaqueMoi<
         flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
             flutter_rust_bridge::for_generated::Lifetimeable<LifetimeTesterTwoTwinNormal<'static>>,
@@ -452,6 +746,13 @@ impl SseEncode for String {
         <Vec<u8>>::sse_encode(self.into_bytes(), serializer);
     }
 }
+
+impl SseEncode for crate::frb_generated::Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxyTesterBProxyEnum {
+                    // Codec=Sse (Serialization based), see doc to use other codecs
+                    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {match self {crate::frb_generated::Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxyTesterBProxyEnum::Variant0(field0) => { <i32>::sse_encode(0, serializer); <RustAutoOpaqueMoi<ProxyTesterA>>::sse_encode(field0, serializer);
+ }
+ _ => { unimplemented!(""); }}}
+                }
 
 impl SseEncode for i32 {
     // Codec=Sse (Serialization based), see doc to use other codecs
