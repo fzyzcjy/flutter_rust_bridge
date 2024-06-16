@@ -72217,6 +72217,20 @@ class ConstructorOpaqueStructTwinNormalImpl extends RustOpaque
     rustArcDecrementStrongCountPtr: RustLib.instance.api
         .rust_arc_decrement_strong_count_ConstructorOpaqueStructTwinNormalPtr,
   );
+
+  String get one => RustLib.instance.api
+          .crateApiConstructorConstructorOpaqueStructTwinNormalAutoAccessorGetOne(
+        that: this,
+      );
+
+  void set one(String one) => RustLib.instance.api
+      .crateApiConstructorConstructorOpaqueStructTwinNormalAutoAccessorSetOne(
+          that: this, one: one);
+
+  void check() => RustLib.instance.api
+          .crateApiConstructorConstructorOpaqueStructTwinNormalCheck(
+        that: this,
+      );
 }
 
 @sealed
@@ -72240,6 +72254,20 @@ class ConstructorOpaqueSyncStructTwinNormalImpl extends RustOpaque
     rustArcDecrementStrongCountPtr: RustLib.instance.api
         .rust_arc_decrement_strong_count_ConstructorOpaqueSyncStructTwinNormalPtr,
   );
+
+  String get one => RustLib.instance.api
+          .crateApiConstructorConstructorOpaqueSyncStructTwinNormalAutoAccessorGetOne(
+        that: this,
+      );
+
+  void set one(String one) => RustLib.instance.api
+      .crateApiConstructorConstructorOpaqueSyncStructTwinNormalAutoAccessorSetOne(
+          that: this, one: one);
+
+  void check() => RustLib.instance.api
+          .crateApiConstructorConstructorOpaqueSyncStructTwinNormalCheck(
+        that: this,
+      );
 }
 
 @sealed
@@ -72263,6 +72291,64 @@ class DeliberateFailSanityCheckTwinNormalImpl extends RustOpaque
     rustArcDecrementStrongCountPtr: RustLib.instance.api
         .rust_arc_decrement_strong_count_DeliberateFailSanityCheckTwinNormalPtr,
   );
+
+  Uint8List get deliberateBadFieldA => RustLib.instance.api
+          .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorGetDeliberateBadFieldA(
+        that: this,
+      );
+
+  OpaqueItemTwinNormal get deliberateBadFieldB => RustLib.instance.api
+          .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorGetDeliberateBadFieldB(
+        that: this,
+      );
+
+  List<OpaqueItemTwinNormal> get deliberateBadFieldC => RustLib.instance.api
+          .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorGetDeliberateBadFieldC(
+        that: this,
+      );
+
+  String get goodFieldA => RustLib.instance.api
+          .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorGetGoodFieldA(
+        that: this,
+      );
+
+  int get goodFieldB => RustLib.instance.api
+          .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorGetGoodFieldB(
+        that: this,
+      );
+
+  OpaqueItemTwinNormal get goodFieldC => RustLib.instance.api
+          .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorGetGoodFieldC(
+        that: this,
+      );
+
+  void set deliberateBadFieldA(Uint8List deliberateBadFieldA) => RustLib
+      .instance.api
+      .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorSetDeliberateBadFieldA(
+          that: this, deliberateBadFieldA: deliberateBadFieldA);
+
+  void set deliberateBadFieldB(OpaqueItemTwinNormal deliberateBadFieldB) => RustLib
+      .instance.api
+      .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorSetDeliberateBadFieldB(
+          that: this, deliberateBadFieldB: deliberateBadFieldB);
+
+  void set deliberateBadFieldC(
+          List<OpaqueItemTwinNormal> deliberateBadFieldC) =>
+      RustLib.instance.api
+          .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorSetDeliberateBadFieldC(
+              that: this, deliberateBadFieldC: deliberateBadFieldC);
+
+  void set goodFieldA(String goodFieldA) => RustLib.instance.api
+      .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorSetGoodFieldA(
+          that: this, goodFieldA: goodFieldA);
+
+  void set goodFieldB(int goodFieldB) => RustLib.instance.api
+      .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorSetGoodFieldB(
+          that: this, goodFieldB: goodFieldB);
+
+  void set goodFieldC(OpaqueItemTwinNormal goodFieldC) => RustLib.instance.api
+      .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorSetGoodFieldC(
+          that: this, goodFieldC: goodFieldC);
 }
 
 @sealed
@@ -72285,6 +72371,16 @@ class DroppableTwinNormalImpl extends RustOpaque
     rustArcDecrementStrongCountPtr: RustLib
         .instance.api.rust_arc_decrement_strong_count_DroppableTwinNormalPtr,
   );
+
+  Stream<int> createStream() =>
+      RustLib.instance.api.crateApiDroppingDroppableTwinNormalCreateStream(
+        that: this,
+      );
+
+  Future<void> simpleMethodTwinNormal() => RustLib.instance.api
+          .crateApiDroppingDroppableTwinNormalSimpleMethodTwinNormal(
+        that: this,
+      );
 }
 
 @sealed
@@ -72307,6 +72403,16 @@ class DroppableTwinRustAsyncImpl extends RustOpaque
     rustArcDecrementStrongCountPtr: RustLib
         .instance.api.rust_arc_decrement_strong_count_DroppableTwinRustAsyncPtr,
   );
+
+  Stream<int> createStreamTwinRustAsync() => RustLib.instance.api
+          .crateApiPseudoManualDroppingTwinRustAsyncDroppableTwinRustAsyncCreateStreamTwinRustAsync(
+        that: this,
+      );
+
+  Future<void> simpleMethodTwinRustAsync() => RustLib.instance.api
+          .crateApiPseudoManualDroppingTwinRustAsyncDroppableTwinRustAsyncSimpleMethodTwinRustAsync(
+        that: this,
+      );
 }
 
 @sealed
@@ -72328,6 +72434,16 @@ class DroppableTwinSyncImpl extends RustOpaque implements DroppableTwinSync {
     rustArcDecrementStrongCountPtr: RustLib
         .instance.api.rust_arc_decrement_strong_count_DroppableTwinSyncPtr,
   );
+
+  Stream<int> createStreamTwinSync() => RustLib.instance.api
+          .crateApiPseudoManualDroppingTwinSyncDroppableTwinSyncCreateStreamTwinSync(
+        that: this,
+      );
+
+  void simpleMethodTwinSync() => RustLib.instance.api
+          .crateApiPseudoManualDroppingTwinSyncDroppableTwinSyncSimpleMethodTwinSync(
+        that: this,
+      );
 }
 
 @sealed
@@ -72614,6 +72730,20 @@ class ItemContainerSolutionOneTwinNormalImpl extends RustOpaque
     rustArcDecrementStrongCountPtr: RustLib.instance.api
         .rust_arc_decrement_strong_count_ItemContainerSolutionOneTwinNormalPtr,
   );
+
+  String get name => RustLib.instance.api
+          .crateApiMiscNoTwinExampleAItemContainerSolutionOneTwinNormalAutoAccessorGetName(
+        that: this,
+      );
+
+  void set name(String name) => RustLib.instance.api
+      .crateApiMiscNoTwinExampleAItemContainerSolutionOneTwinNormalAutoAccessorSetName(
+          that: this, name: name);
+
+  Future<Int32List> getItemContentsTwinNormal() => RustLib.instance.api
+          .crateApiMiscNoTwinExampleAItemContainerSolutionOneTwinNormalGetItemContentsTwinNormal(
+        that: this,
+      );
 }
 
 @sealed
@@ -72702,6 +72832,11 @@ class MyAudioParamTwinNormalImpl extends RustOpaque
     rustArcDecrementStrongCountPtr: RustLib
         .instance.api.rust_arc_decrement_strong_count_MyAudioParamTwinNormalPtr,
   );
+
+  Future<String> myMethodTwinNormal() => RustLib.instance.api
+          .crateApiProxyMyAudioParamTwinNormalMyMethodTwinNormal(
+        that: this,
+      );
 }
 
 @sealed
@@ -72723,6 +72858,14 @@ class MyNodeTwinNormalImpl extends RustOpaque implements MyNodeTwinNormal {
     rustArcDecrementStrongCountPtr: RustLib
         .instance.api.rust_arc_decrement_strong_count_MyNodeTwinNormalPtr,
   );
+
+  Future<MyAudioParamTwinNormal> paramOneTwinNormal() => Future.value(
+      MyAudioParamTwinNormalProxyVariantMyNodeTwinNormalParamOneTwinNormal(
+          this));
+
+  Future<MyAudioParamTwinNormal> paramTwoTwinNormal() => Future.value(
+      MyAudioParamTwinNormalProxyVariantMyNodeTwinNormalParamTwoTwinNormal(
+          this));
 }
 
 @sealed
@@ -72877,6 +73020,32 @@ class NonCloneSimpleTwinNormalImpl extends RustOpaque
     rustArcDecrementStrongCountPtr: RustLib.instance.api
         .rust_arc_decrement_strong_count_NonCloneSimpleTwinNormalPtr,
   );
+
+  Future<void> instanceMethodArgBorrowTwinNormal() => RustLib.instance.api
+          .crateApiRustAutoOpaqueNonCloneSimpleTwinNormalInstanceMethodArgBorrowTwinNormal(
+        that: this,
+      );
+
+  Future<void> instanceMethodArgMutBorrowTwinNormal() => RustLib.instance.api
+          .crateApiRustAutoOpaqueNonCloneSimpleTwinNormalInstanceMethodArgMutBorrowTwinNormal(
+        that: this,
+      );
+
+  Future<void> instanceMethodArgOwnTwinNormal() => RustLib.instance.api
+          .crateApiRustAutoOpaqueNonCloneSimpleTwinNormalInstanceMethodArgOwnTwinNormal(
+        that: this,
+      );
+
+  Future<int> get instanceMethodGetterTwinNormal => RustLib.instance.api
+          .crateApiRustAutoOpaqueNonCloneSimpleTwinNormalInstanceMethodGetterTwinNormal(
+        that: this,
+      );
+
+  Future<NonCloneSimpleTwinNormal> instanceMethodReturnOwnTwinNormal() =>
+      RustLib.instance.api
+          .crateApiRustAutoOpaqueNonCloneSimpleTwinNormalInstanceMethodReturnOwnTwinNormal(
+        that: this,
+      );
 }
 
 @sealed
@@ -72899,6 +73068,32 @@ class NonCloneSimpleTwinRustAsyncImpl extends RustOpaque
     rustArcDecrementStrongCountPtr: RustLib.instance.api
         .rust_arc_decrement_strong_count_NonCloneSimpleTwinRustAsyncPtr,
   );
+
+  Future<void> instanceMethodArgBorrowTwinRustAsync() => RustLib.instance.api
+          .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncNonCloneSimpleTwinRustAsyncInstanceMethodArgBorrowTwinRustAsync(
+        that: this,
+      );
+
+  Future<void> instanceMethodArgMutBorrowTwinRustAsync() => RustLib.instance.api
+          .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncNonCloneSimpleTwinRustAsyncInstanceMethodArgMutBorrowTwinRustAsync(
+        that: this,
+      );
+
+  Future<void> instanceMethodArgOwnTwinRustAsync() => RustLib.instance.api
+          .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncNonCloneSimpleTwinRustAsyncInstanceMethodArgOwnTwinRustAsync(
+        that: this,
+      );
+
+  Future<int> get instanceMethodGetterTwinRustAsync => RustLib.instance.api
+          .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncNonCloneSimpleTwinRustAsyncInstanceMethodGetterTwinRustAsync(
+        that: this,
+      );
+
+  Future<NonCloneSimpleTwinRustAsync> instanceMethodReturnOwnTwinRustAsync() =>
+      RustLib.instance.api
+          .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncNonCloneSimpleTwinRustAsyncInstanceMethodReturnOwnTwinRustAsync(
+        that: this,
+      );
 }
 
 @sealed
@@ -72921,6 +73116,32 @@ class NonCloneSimpleTwinSyncImpl extends RustOpaque
     rustArcDecrementStrongCountPtr: RustLib
         .instance.api.rust_arc_decrement_strong_count_NonCloneSimpleTwinSyncPtr,
   );
+
+  void instanceMethodArgBorrowTwinSync() => RustLib.instance.api
+          .crateApiPseudoManualRustAutoOpaqueTwinSyncNonCloneSimpleTwinSyncInstanceMethodArgBorrowTwinSync(
+        that: this,
+      );
+
+  void instanceMethodArgMutBorrowTwinSync() => RustLib.instance.api
+          .crateApiPseudoManualRustAutoOpaqueTwinSyncNonCloneSimpleTwinSyncInstanceMethodArgMutBorrowTwinSync(
+        that: this,
+      );
+
+  void instanceMethodArgOwnTwinSync() => RustLib.instance.api
+          .crateApiPseudoManualRustAutoOpaqueTwinSyncNonCloneSimpleTwinSyncInstanceMethodArgOwnTwinSync(
+        that: this,
+      );
+
+  int get instanceMethodGetterTwinSync => RustLib.instance.api
+          .crateApiPseudoManualRustAutoOpaqueTwinSyncNonCloneSimpleTwinSyncInstanceMethodGetterTwinSync(
+        that: this,
+      );
+
+  NonCloneSimpleTwinSync instanceMethodReturnOwnTwinSync() =>
+      RustLib.instance.api
+          .crateApiPseudoManualRustAutoOpaqueTwinSyncNonCloneSimpleTwinSyncInstanceMethodReturnOwnTwinSync(
+        that: this,
+      );
 }
 
 @sealed
@@ -73031,6 +73252,11 @@ class OpaqueStructWithDartCodeTwinNormalImpl extends RustOpaque
     rustArcDecrementStrongCountPtr: RustLib.instance.api
         .rust_arc_decrement_strong_count_OpaqueStructWithDartCodeTwinNormalPtr,
   );
+
+  Future<int> normalMethodTwinNormal() => RustLib.instance.api
+          .crateApiDartCodeOpaqueStructWithDartCodeTwinNormalNormalMethodTwinNormal(
+        that: this,
+      );
 }
 
 @sealed
@@ -73185,6 +73411,11 @@ class SimpleOpaqueExternalStructWithMethodImpl extends RustOpaque
     rustArcDecrementStrongCountPtr: RustLib.instance.api
         .rust_arc_decrement_strong_count_SimpleOpaqueExternalStructWithMethodPtr,
   );
+
+  Future<String> simpleExternalMethod() => RustLib.instance.api
+          .crateApiExternalImplSimpleOpaqueExternalStructWithMethodSimpleExternalMethod(
+        that: this,
+      );
 }
 
 @sealed
@@ -73273,6 +73504,11 @@ class StructInMiscNoTwinExampleAImpl extends RustOpaque
     rustArcDecrementStrongCountPtr: RustLib.instance.api
         .rust_arc_decrement_strong_count_StructInMiscNoTwinExampleAPtr,
   );
+
+  Future<void> sampleFunctionA() => RustLib.instance.api
+          .crateApiMiscNoTwinExampleAStructInMiscNoTwinExampleASampleFunctionA(
+        that: this,
+      );
 }
 
 @sealed
@@ -73295,6 +73531,17 @@ class StructInMiscNoTwinExampleBImpl extends RustOpaque
     rustArcDecrementStrongCountPtr: RustLib.instance.api
         .rust_arc_decrement_strong_count_StructInMiscNoTwinExampleBPtr,
   );
+
+  Future<StructInMiscNoTwinExampleA> getStructInMiscNoTwinExampleA() =>
+      RustLib.instance.api
+          .crateApiMiscNoTwinExampleBStructInMiscNoTwinExampleBGetStructInMiscNoTwinExampleA(
+        that: this,
+      );
+
+  Future<void> sampleFunctionB() => RustLib.instance.api
+          .crateApiMiscNoTwinExampleBStructInMiscNoTwinExampleBSampleFunctionB(
+        that: this,
+      );
 }
 
 @sealed
@@ -73318,6 +73565,20 @@ class StructOneWithTraitForDynTwinNormalImpl extends RustOpaque
     rustArcDecrementStrongCountPtr: RustLib.instance.api
         .rust_arc_decrement_strong_count_StructOneWithTraitForDynTwinNormalPtr,
   );
+
+  int get one => RustLib.instance.api
+          .crateApiDynTraitStructOneWithTraitForDynTwinNormalAutoAccessorGetOne(
+        that: this,
+      );
+
+  void set one(int one) => RustLib.instance.api
+      .crateApiDynTraitStructOneWithTraitForDynTwinNormalAutoAccessorSetOne(
+          that: this, one: one);
+
+  Future<int> simpleMethodTwinNormal() => RustLib.instance.api
+          .crateApiDynTraitStructOneWithTraitForDynTwinNormalSimpleMethodTwinNormal(
+        that: this,
+      );
 }
 
 @sealed
@@ -73340,6 +73601,20 @@ class StructOneWithTraitTwinNormalImpl extends RustOpaque
     rustArcDecrementStrongCountPtr: RustLib.instance.api
         .rust_arc_decrement_strong_count_StructOneWithTraitTwinNormalPtr,
   );
+
+  int get one => RustLib.instance.api
+          .crateApiImplTraitStructOneWithTraitTwinNormalAutoAccessorGetOne(
+        that: this,
+      );
+
+  void set one(int one) => RustLib.instance.api
+      .crateApiImplTraitStructOneWithTraitTwinNormalAutoAccessorSetOne(
+          that: this, one: one);
+
+  Future<int> simpleTraitFnReceiverBorrowTwinNormal() => RustLib.instance.api
+          .crateApiImplTraitStructOneWithTraitTwinNormalSimpleTraitFnReceiverBorrowTwinNormal(
+        that: this,
+      );
 }
 
 @sealed
@@ -73362,6 +73637,20 @@ class StructOneWithTraitTwinSyncImpl extends RustOpaque
     rustArcDecrementStrongCountPtr: RustLib.instance.api
         .rust_arc_decrement_strong_count_StructOneWithTraitTwinSyncPtr,
   );
+
+  int get one => RustLib.instance.api
+          .crateApiPseudoManualImplTraitTwinSyncStructOneWithTraitTwinSyncAutoAccessorGetOne(
+        that: this,
+      );
+
+  void set one(int one) => RustLib.instance.api
+      .crateApiPseudoManualImplTraitTwinSyncStructOneWithTraitTwinSyncAutoAccessorSetOne(
+          that: this, one: one);
+
+  Future<int> simpleTraitFnReceiverBorrowTwinSync() => RustLib.instance.api
+          .crateApiPseudoManualImplTraitTwinSyncStructOneWithTraitTwinSyncSimpleTraitFnReceiverBorrowTwinSync(
+        that: this,
+      );
 }
 
 @sealed
@@ -73385,6 +73674,20 @@ class StructTwoWithTraitForDynTwinNormalImpl extends RustOpaque
     rustArcDecrementStrongCountPtr: RustLib.instance.api
         .rust_arc_decrement_strong_count_StructTwoWithTraitForDynTwinNormalPtr,
   );
+
+  int get two => RustLib.instance.api
+          .crateApiDynTraitStructTwoWithTraitForDynTwinNormalAutoAccessorGetTwo(
+        that: this,
+      );
+
+  void set two(int two) => RustLib.instance.api
+      .crateApiDynTraitStructTwoWithTraitForDynTwinNormalAutoAccessorSetTwo(
+          that: this, two: two);
+
+  Future<int> simpleMethodTwinNormal() => RustLib.instance.api
+          .crateApiDynTraitStructTwoWithTraitForDynTwinNormalSimpleMethodTwinNormal(
+        that: this,
+      );
 }
 
 @sealed
@@ -73407,6 +73710,20 @@ class StructTwoWithTraitTwinNormalImpl extends RustOpaque
     rustArcDecrementStrongCountPtr: RustLib.instance.api
         .rust_arc_decrement_strong_count_StructTwoWithTraitTwinNormalPtr,
   );
+
+  int get two => RustLib.instance.api
+          .crateApiImplTraitStructTwoWithTraitTwinNormalAutoAccessorGetTwo(
+        that: this,
+      );
+
+  void set two(int two) => RustLib.instance.api
+      .crateApiImplTraitStructTwoWithTraitTwinNormalAutoAccessorSetTwo(
+          that: this, two: two);
+
+  Future<int> simpleTraitFnReceiverBorrowTwinNormal() => RustLib.instance.api
+          .crateApiImplTraitStructTwoWithTraitTwinNormalSimpleTraitFnReceiverBorrowTwinNormal(
+        that: this,
+      );
 }
 
 @sealed
@@ -73429,6 +73746,20 @@ class StructTwoWithTraitTwinSyncImpl extends RustOpaque
     rustArcDecrementStrongCountPtr: RustLib.instance.api
         .rust_arc_decrement_strong_count_StructTwoWithTraitTwinSyncPtr,
   );
+
+  int get two => RustLib.instance.api
+          .crateApiPseudoManualImplTraitTwinSyncStructTwoWithTraitTwinSyncAutoAccessorGetTwo(
+        that: this,
+      );
+
+  void set two(int two) => RustLib.instance.api
+      .crateApiPseudoManualImplTraitTwinSyncStructTwoWithTraitTwinSyncAutoAccessorSetTwo(
+          that: this, two: two);
+
+  Future<int> simpleTraitFnReceiverBorrowTwinSync() => RustLib.instance.api
+          .crateApiPseudoManualImplTraitTwinSyncStructTwoWithTraitTwinSyncSimpleTraitFnReceiverBorrowTwinSync(
+        that: this,
+      );
 }
 
 @sealed
@@ -73452,6 +73783,15 @@ class StructWithGoodAndOpaqueFieldWithoutOptionTwinNormalImpl extends RustOpaque
     rustArcDecrementStrongCountPtr: RustLib.instance.api
         .rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldWithoutOptionTwinNormalPtr,
   );
+
+  String get good => RustLib.instance.api
+          .crateApiRustAutoOpaqueStructWithGoodAndOpaqueFieldWithoutOptionTwinNormalAutoAccessorGetGood(
+        that: this,
+      );
+
+  void set good(String good) => RustLib.instance.api
+      .crateApiRustAutoOpaqueStructWithGoodAndOpaqueFieldWithoutOptionTwinNormalAutoAccessorSetGood(
+          that: this, good: good);
 }
 
 @sealed
@@ -73476,6 +73816,15 @@ class StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncImpl
     rustArcDecrementStrongCountPtr: RustLib.instance.api
         .rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncPtr,
   );
+
+  String get good => RustLib.instance.api
+          .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncAutoAccessorGetGood(
+        that: this,
+      );
+
+  void set good(String good) => RustLib.instance.api
+      .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncAutoAccessorSetGood(
+          that: this, good: good);
 }
 
 @sealed
@@ -73499,6 +73848,15 @@ class StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncImpl extends RustOpaque
     rustArcDecrementStrongCountPtr: RustLib.instance.api
         .rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncPtr,
   );
+
+  String get good => RustLib.instance.api
+          .crateApiPseudoManualRustAutoOpaqueTwinSyncStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncAutoAccessorGetGood(
+        that: this,
+      );
+
+  void set good(String good) => RustLib.instance.api
+      .crateApiPseudoManualRustAutoOpaqueTwinSyncStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncAutoAccessorSetGood(
+          that: this, good: good);
 }
 
 @sealed
@@ -73521,6 +73879,16 @@ class StructWithImplBlockInMultiFileImpl extends RustOpaque
     rustArcDecrementStrongCountPtr: RustLib.instance.api
         .rust_arc_decrement_strong_count_StructWithImplBlockInMultiFilePtr,
   );
+
+  Future<void> methodInA() => RustLib.instance.api
+          .crateApiMiscNoTwinExampleAStructWithImplBlockInMultiFileMethodInA(
+        that: this,
+      );
+
+  Future<void> methodInB() => RustLib.instance.api
+          .crateApiMiscNoTwinExampleAStructWithImplBlockInMultiFileMethodInB(
+        that: this,
+      );
 }
 
 @sealed
@@ -73543,6 +73911,24 @@ class StructWithSimpleSetterTwinNormalImpl extends RustOpaque
     rustArcDecrementStrongCountPtr: RustLib.instance.api
         .rust_arc_decrement_strong_count_StructWithSimpleSetterTwinNormalPtr,
   );
+
+  int get something => RustLib.instance.api
+          .crateApiMiscNoTwinExampleAStructWithSimpleSetterTwinNormalGetSomething(
+        that: this,
+      );
+
+  void set something(int value) => RustLib.instance.api
+      .crateApiMiscNoTwinExampleAStructWithSimpleSetterTwinNormalSetSomething(
+          that: this, value: value);
+
+  int get simpleGetter => RustLib.instance.api
+          .crateApiMiscNoTwinExampleAStructWithSimpleSetterTwinNormalSimpleGetter(
+        that: this,
+      );
+
+  void set simpleSetter(int value) => RustLib.instance.api
+      .crateApiMiscNoTwinExampleAStructWithSimpleSetterTwinNormalSimpleSetter(
+          that: this, value: value);
 }
 
 class MyAudioParamTwinNormalProxyVariantMyNodeTwinNormalParamOneTwinNormal
@@ -73552,6 +73938,11 @@ class MyAudioParamTwinNormalProxyVariantMyNodeTwinNormalParamOneTwinNormal
 
   MyAudioParamTwinNormalProxyVariantMyNodeTwinNormalParamOneTwinNormal(
       this._upstream);
+
+  Future<String> myMethodTwinNormal() => RustLib.instance.api
+          .crateApiProxyMyAudioParamTwinNormalMyMethodTwinNormal(
+        that: this,
+      );
 }
 
 class MyAudioParamTwinNormalProxyVariantMyNodeTwinNormalParamTwoTwinNormal
@@ -73561,4 +73952,9 @@ class MyAudioParamTwinNormalProxyVariantMyNodeTwinNormalParamTwoTwinNormal
 
   MyAudioParamTwinNormalProxyVariantMyNodeTwinNormalParamTwoTwinNormal(
       this._upstream);
+
+  Future<String> myMethodTwinNormal() => RustLib.instance.api
+          .crateApiProxyMyAudioParamTwinNormalMyMethodTwinNormal(
+        that: this,
+      );
 }

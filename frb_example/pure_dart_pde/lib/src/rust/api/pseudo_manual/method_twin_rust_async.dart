@@ -19,7 +19,10 @@ Future<SumWithTwinRustAsyncArray3> getSumArrayTwinRustAsync(
             a: a, b: b, c: c);
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StaticGetterOnlyTwinRustAsync>>
-abstract class StaticGetterOnlyTwinRustAsync implements RustOpaqueInterface {}
+abstract class StaticGetterOnlyTwinRustAsync implements RustOpaqueInterface {
+  static Future<int> get staticGetterTwinRustAsync => RustLib.instance.api
+      .crateApiPseudoManualMethodTwinRustAsyncStaticGetterOnlyTwinRustAsyncStaticGetterTwinRustAsync();
+}
 
 class ConcatenateWithTwinRustAsync {
   final String a;
@@ -150,6 +153,11 @@ enum SimplePrimitiveEnumTwinRustAsync {
   first,
   second,
   ;
+
+  Future<int> simpleMethodTwinRustAsync() => RustLib.instance.api
+          .crateApiPseudoManualMethodTwinRustAsyncSimplePrimitiveEnumTwinRustAsyncSimpleMethodTwinRustAsync(
+        that: this,
+      );
 }
 
 class SimpleStructTwinRustAsync {

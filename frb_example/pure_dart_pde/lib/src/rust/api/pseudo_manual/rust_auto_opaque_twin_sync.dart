@@ -195,7 +195,51 @@ abstract class EnumWithGoodAndOpaqueWithoutOptionTwinSync
 abstract class NonCloneSimpleEnumTwinSync implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleTwinSync>>
-abstract class NonCloneSimpleTwinSync implements RustOpaqueInterface {}
+abstract class NonCloneSimpleTwinSync implements RustOpaqueInterface {
+  void instanceMethodArgBorrowTwinSync();
+
+  void instanceMethodArgMutBorrowTwinSync();
+
+  void instanceMethodArgOwnTwinSync();
+
+  int get instanceMethodGetterTwinSync;
+
+  NonCloneSimpleTwinSync instanceMethodReturnOwnTwinSync();
+
+  /// named constructor
+  static NonCloneSimpleTwinSync newCustomNameTwinSync() => RustLib.instance.api
+      .crateApiPseudoManualRustAutoOpaqueTwinSyncNonCloneSimpleTwinSyncNewCustomNameTwinSync();
+
+  /// unnamed constructor
+  static NonCloneSimpleTwinSync newTwinSync() => RustLib.instance.api
+      .crateApiPseudoManualRustAutoOpaqueTwinSyncNonCloneSimpleTwinSyncNewTwinSync();
+
+  /// constructor with Result
+  static NonCloneSimpleTwinSync newWithResultTwinSync() => RustLib.instance.api
+      .crateApiPseudoManualRustAutoOpaqueTwinSyncNonCloneSimpleTwinSyncNewWithResultTwinSync();
+
+  static void staticMethodArgBorrowTwinSync(
+          {required NonCloneSimpleTwinSync arg}) =>
+      RustLib.instance.api
+          .crateApiPseudoManualRustAutoOpaqueTwinSyncNonCloneSimpleTwinSyncStaticMethodArgBorrowTwinSync(
+              arg: arg);
+
+  static void staticMethodArgMutBorrowTwinSync(
+          {required NonCloneSimpleTwinSync arg}) =>
+      RustLib.instance.api
+          .crateApiPseudoManualRustAutoOpaqueTwinSyncNonCloneSimpleTwinSyncStaticMethodArgMutBorrowTwinSync(
+              arg: arg);
+
+  static void staticMethodArgOwnTwinSync(
+          {required NonCloneSimpleTwinSync arg}) =>
+      RustLib.instance.api
+          .crateApiPseudoManualRustAutoOpaqueTwinSyncNonCloneSimpleTwinSyncStaticMethodArgOwnTwinSync(
+              arg: arg);
+
+  static NonCloneSimpleTwinSync staticMethodReturnOwnTwinSync() => RustLib
+      .instance.api
+      .crateApiPseudoManualRustAutoOpaqueTwinSyncNonCloneSimpleTwinSyncStaticMethodReturnOwnTwinSync();
+}
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueOneTwinSync>>
 abstract class OpaqueOneTwinSync implements RustOpaqueInterface {}
@@ -205,7 +249,11 @@ abstract class OpaqueTwoTwinSync implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructWithGoodAndOpaqueFieldWithoutOptionTwinSync>>
 abstract class StructWithGoodAndOpaqueFieldWithoutOptionTwinSync
-    implements RustOpaqueInterface {}
+    implements RustOpaqueInterface {
+  String get good;
+
+  void set good(String good);
+}
 
 abstract class MyTraitTwinSync {
   Future<void> f();

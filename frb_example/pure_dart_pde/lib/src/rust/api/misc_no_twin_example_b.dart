@@ -11,7 +11,11 @@ Future<void> sameFunctionNameInDifferentFiles() => RustLib.instance.api
     .crateApiMiscNoTwinExampleBSameFunctionNameInDifferentFiles();
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructInMiscNoTwinExampleB>>
-abstract class StructInMiscNoTwinExampleB implements RustOpaqueInterface {}
+abstract class StructInMiscNoTwinExampleB implements RustOpaqueInterface {
+  Future<StructInMiscNoTwinExampleA> getStructInMiscNoTwinExampleA();
+
+  Future<void> sampleFunctionB();
+}
 
 class StructWithImplBlockInAnotherFileDependency {
   const StructWithImplBlockInAnotherFileDependency();
