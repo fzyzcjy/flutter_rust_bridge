@@ -1,5 +1,5 @@
 use crate::if_then_some;
-use itertools::Itertools;
+use itertools::{concat, Itertools};
 use syn::{GenericArgument, Type};
 
 pub(crate) struct LifetimeExtractor;
@@ -19,6 +19,10 @@ impl LifetimeExtractor {
                 .filter_map(|segment| if_then_some!(let syn::PathArguments::AngleBracketed(inner) = &segment.arguments, inner))
                 .flat_map(Self::extract_generic_arguments)
                 .collect_vec(),
+            Type::Reference(ty) => concat([
+                ty.lifetime.iter().collect(),
+                Self::extract(&*ty.elem),
+            ]),
             _ => vec![],
         }
     }
