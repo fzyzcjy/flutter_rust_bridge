@@ -1,7 +1,7 @@
 use crate::api::media_element::MyMediaElement;
 use extend::ext;
 use flutter_rust_bridge::for_generated::anyhow;
-use flutter_rust_bridge::DartFnFuture;
+use flutter_rust_bridge::{DartFnFuture, frb};
 use web_audio_api::context::{AudioContext, BaseAudioContext};
 use web_audio_api::node::*;
 use web_audio_api::{AudioBuffer, AudioParam, Event};
@@ -75,3 +75,11 @@ handle_audio_node_trait_impls_override!(PannerNode);
 handle_audio_node_trait_impls_override!(ScriptProcessorNode);
 handle_audio_node_trait_impls_override!(StereoPannerNode);
 handle_audio_node_trait_impls_override!(WaveShaperNode);
+
+#[ext]
+pub impl Event {
+    #[frb(sync, getter)]
+    pub fn type_(&self) -> String {
+        self.type_.to_owned()
+    }
+}
