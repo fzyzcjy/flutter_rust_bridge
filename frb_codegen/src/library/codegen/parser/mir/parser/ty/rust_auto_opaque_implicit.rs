@@ -70,7 +70,9 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     }
 
     fn compute_rust_auto_opaque_namespace(&mut self, namespace: Option<Namespace>) -> Namespace {
-        namespace.unwrap_or(self.context.initiated_namespace.clone())
+        namespace
+            .or_else(|| TODO)
+            .unwrap_or(self.context.initiated_namespace.clone())
     }
 
     pub(crate) fn transform_rust_auto_opaque(
