@@ -84,33 +84,33 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 
 abstract class RustLibApi extends BaseApi {
   Future<double> crateApiMediaElementMyMediaElementCurrentTime(
-      {required MyMediaElement that});
+      {required MediaElement that});
 
   Future<bool> crateApiMediaElementMyMediaElementLoop(
-      {required MyMediaElement that});
+      {required MediaElement that});
 
-  MyMediaElement crateApiMediaElementMyMediaElementNew({required String file});
+  MediaElement crateApiMediaElementMyMediaElementNew({required String file});
 
   Future<void> crateApiMediaElementMyMediaElementPause(
-      {required MyMediaElement that});
+      {required MediaElement that});
 
   Future<bool> crateApiMediaElementMyMediaElementPaused(
-      {required MyMediaElement that});
+      {required MediaElement that});
 
   Future<void> crateApiMediaElementMyMediaElementPlay(
-      {required MyMediaElement that});
+      {required MediaElement that});
 
   Future<double> crateApiMediaElementMyMediaElementPlaybackRate(
-      {required MyMediaElement that});
+      {required MediaElement that});
 
   Future<void> crateApiMediaElementMyMediaElementSetCurrentTime(
-      {required MyMediaElement that, required double value});
+      {required MediaElement that, required double value});
 
   Future<void> crateApiMediaElementMyMediaElementSetLoop(
-      {required MyMediaElement that, required bool value});
+      {required MediaElement that, required bool value});
 
   Future<void> crateApiMediaElementMyMediaElementSetPlaybackRate(
-      {required MyMediaElement that, required double value});
+      {required MediaElement that, required double value});
 
   Future<void> crateApiSimpleF({required DummyStruct a});
 
@@ -408,7 +408,7 @@ abstract class RustLibApi extends BaseApi {
 
   Future<MediaElementAudioSourceNode>
       webAudioApiContextAudioContextFrbOverrideCreateMediaElementSource(
-          {required AudioContext that, required MyMediaElement mediaElement});
+          {required AudioContext that, required MediaElement mediaElement});
 
   Future<AudioBuffer>
       webAudioApiContextAudioContextFrbOverrideDecodeAudioDataSync(
@@ -2252,13 +2252,12 @@ abstract class RustLibApi extends BaseApi {
       get rust_arc_decrement_strong_count_MediaStreamTrackAudioSourceNodePtr;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_MyMediaElement;
+      get rust_arc_increment_strong_count_MediaElement;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_MyMediaElement;
+      get rust_arc_decrement_strong_count_MediaElement;
 
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_MyMediaElementPtr;
+  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_MediaElementPtr;
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_OfflineAudioCompletionEvent;
@@ -2341,7 +2340,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<double> crateApiMediaElementMyMediaElementCurrentTime(
-      {required MyMediaElement that}) {
+      {required MediaElement that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -2368,7 +2367,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<bool> crateApiMediaElementMyMediaElementLoop(
-      {required MyMediaElement that}) {
+      {required MediaElement that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -2394,7 +2393,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  MyMediaElement crateApiMediaElementMyMediaElementNew({required String file}) {
+  MediaElement crateApiMediaElementMyMediaElementNew({required String file}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -2420,7 +2419,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> crateApiMediaElementMyMediaElementPause(
-      {required MyMediaElement that}) {
+      {required MediaElement that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -2447,7 +2446,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<bool> crateApiMediaElementMyMediaElementPaused(
-      {required MyMediaElement that}) {
+      {required MediaElement that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -2474,7 +2473,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> crateApiMediaElementMyMediaElementPlay(
-      {required MyMediaElement that}) {
+      {required MediaElement that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -2501,7 +2500,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<double> crateApiMediaElementMyMediaElementPlaybackRate(
-      {required MyMediaElement that}) {
+      {required MediaElement that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -2528,7 +2527,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> crateApiMediaElementMyMediaElementSetCurrentTime(
-      {required MyMediaElement that, required double value}) {
+      {required MediaElement that, required double value}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -2557,7 +2556,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> crateApiMediaElementMyMediaElementSetLoop(
-      {required MyMediaElement that, required bool value}) {
+      {required MediaElement that, required bool value}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -2585,7 +2584,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> crateApiMediaElementMyMediaElementSetPlaybackRate(
-      {required MyMediaElement that, required double value}) {
+      {required MediaElement that, required double value}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -5251,7 +5250,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<MediaElementAudioSourceNode>
       webAudioApiContextAudioContextFrbOverrideCreateMediaElementSource(
-          {required AudioContext that, required MyMediaElement mediaElement}) {
+          {required AudioContext that, required MediaElement mediaElement}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -19409,11 +19408,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrackAudioSourceNode;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_MyMediaElement => wire
+      get rust_arc_increment_strong_count_MediaElement => wire
           .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_MyMediaElement => wire
+      get rust_arc_decrement_strong_count_MediaElement => wire
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement;
 
   RustArcIncrementStrongCountFnType
@@ -19975,11 +19974,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  MyMediaElement
+  MediaElement
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return MyMediaElementImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return MediaElementImpl.frbInternalDcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -20121,11 +20120,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  MyMediaElement
+  MediaElement
       dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return MyMediaElementImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return MediaElementImpl.frbInternalDcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -20418,11 +20417,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  MyMediaElement
+  MediaElement
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return MyMediaElementImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return MediaElementImpl.frbInternalDcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -21067,11 +21066,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  MyMediaElement
+  MediaElement
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return MyMediaElementImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return MediaElementImpl.frbInternalDcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -22522,11 +22521,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  MyMediaElement
+  MediaElement
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement(
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    return MyMediaElementImpl.frbInternalSseDecode(
+    return MediaElementImpl.frbInternalSseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -22684,11 +22683,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  MyMediaElement
+  MediaElement
       sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement(
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    return MyMediaElementImpl.frbInternalSseDecode(
+    return MediaElementImpl.frbInternalSseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -23008,11 +23007,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  MyMediaElement
+  MediaElement
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement(
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    return MyMediaElementImpl.frbInternalSseDecode(
+    return MediaElementImpl.frbInternalSseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -23656,11 +23655,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  MyMediaElement
+  MediaElement
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement(
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    return MyMediaElementImpl.frbInternalSseDecode(
+    return MediaElementImpl.frbInternalSseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -25013,10 +25012,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement(
-          MyMediaElement self, SseSerializer serializer) {
+          MediaElement self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as MyMediaElementImpl).frbInternalSseEncode(move: true),
+        (self as MediaElementImpl).frbInternalSseEncode(move: true),
         serializer);
   }
 
@@ -25193,10 +25192,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   void
       sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement(
-          MyMediaElement self, SseSerializer serializer) {
+          MediaElement self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as MyMediaElementImpl).frbInternalSseEncode(move: false),
+        (self as MediaElementImpl).frbInternalSseEncode(move: false),
         serializer);
   }
 
@@ -25556,10 +25555,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement(
-          MyMediaElement self, SseSerializer serializer) {
+          MediaElement self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as MyMediaElementImpl).frbInternalSseEncode(move: false),
+        (self as MediaElementImpl).frbInternalSseEncode(move: false),
         serializer);
   }
 
@@ -26446,10 +26445,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement(
-          MyMediaElement self, SseSerializer serializer) {
+          MediaElement self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as MyMediaElementImpl).frbInternalSseEncode(move: null),
+        (self as MediaElementImpl).frbInternalSseEncode(move: null),
         serializer);
   }
 
@@ -28152,7 +28151,7 @@ class AudioContextImpl extends RustOpaque implements AudioContext {
       );
 
   Future<MediaElementAudioSourceNode> createMediaElementSource(
-          {required MyMediaElement mediaElement}) =>
+          {required MediaElement mediaElement}) =>
       RustLib.instance.api
           .webAudioApiContextAudioContextFrbOverrideCreateMediaElementSource(
               that: this, mediaElement: mediaElement);
@@ -30595,6 +30594,67 @@ class MediaElementAudioSourceNodeImpl extends RustOpaque
 }
 
 @sealed
+class MediaElementImpl extends RustOpaque implements MediaElement {
+  // Not to be used by end users
+  MediaElementImpl.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  MediaElementImpl.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount:
+        RustLib.instance.api.rust_arc_increment_strong_count_MediaElement,
+    rustArcDecrementStrongCount:
+        RustLib.instance.api.rust_arc_decrement_strong_count_MediaElement,
+    rustArcDecrementStrongCountPtr:
+        RustLib.instance.api.rust_arc_decrement_strong_count_MediaElementPtr,
+  );
+
+  Future<double> currentTime() =>
+      RustLib.instance.api.crateApiMediaElementMyMediaElementCurrentTime(
+        that: this,
+      );
+
+  Future<bool> loop() =>
+      RustLib.instance.api.crateApiMediaElementMyMediaElementLoop(
+        that: this,
+      );
+
+  Future<void> pause() =>
+      RustLib.instance.api.crateApiMediaElementMyMediaElementPause(
+        that: this,
+      );
+
+  Future<bool> paused() =>
+      RustLib.instance.api.crateApiMediaElementMyMediaElementPaused(
+        that: this,
+      );
+
+  Future<void> play() =>
+      RustLib.instance.api.crateApiMediaElementMyMediaElementPlay(
+        that: this,
+      );
+
+  Future<double> playbackRate() =>
+      RustLib.instance.api.crateApiMediaElementMyMediaElementPlaybackRate(
+        that: this,
+      );
+
+  Future<void> setCurrentTime({required double value}) =>
+      RustLib.instance.api.crateApiMediaElementMyMediaElementSetCurrentTime(
+          that: this, value: value);
+
+  Future<void> setLoop({required bool value}) => RustLib.instance.api
+      .crateApiMediaElementMyMediaElementSetLoop(that: this, value: value);
+
+  Future<void> setPlaybackRate({required double value}) =>
+      RustLib.instance.api.crateApiMediaElementMyMediaElementSetPlaybackRate(
+          that: this, value: value);
+}
+
+@sealed
 class MediaRecorderImpl extends RustOpaque implements MediaRecorder {
   // Not to be used by end users
   MediaRecorderImpl.frbInternalDcoDecode(List<dynamic> wire)
@@ -31093,67 +31153,6 @@ class MediaStreamTrackImpl extends RustOpaque implements MediaStreamTrack {
       RustLib.instance.api.webAudioApiMediaStreamsMediaStreamTrackReadyState(
         that: this,
       );
-}
-
-@sealed
-class MyMediaElementImpl extends RustOpaque implements MyMediaElement {
-  // Not to be used by end users
-  MyMediaElementImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  MyMediaElementImpl.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount:
-        RustLib.instance.api.rust_arc_increment_strong_count_MyMediaElement,
-    rustArcDecrementStrongCount:
-        RustLib.instance.api.rust_arc_decrement_strong_count_MyMediaElement,
-    rustArcDecrementStrongCountPtr:
-        RustLib.instance.api.rust_arc_decrement_strong_count_MyMediaElementPtr,
-  );
-
-  Future<double> currentTime() =>
-      RustLib.instance.api.crateApiMediaElementMyMediaElementCurrentTime(
-        that: this,
-      );
-
-  Future<bool> loop() =>
-      RustLib.instance.api.crateApiMediaElementMyMediaElementLoop(
-        that: this,
-      );
-
-  Future<void> pause() =>
-      RustLib.instance.api.crateApiMediaElementMyMediaElementPause(
-        that: this,
-      );
-
-  Future<bool> paused() =>
-      RustLib.instance.api.crateApiMediaElementMyMediaElementPaused(
-        that: this,
-      );
-
-  Future<void> play() =>
-      RustLib.instance.api.crateApiMediaElementMyMediaElementPlay(
-        that: this,
-      );
-
-  Future<double> playbackRate() =>
-      RustLib.instance.api.crateApiMediaElementMyMediaElementPlaybackRate(
-        that: this,
-      );
-
-  Future<void> setCurrentTime({required double value}) =>
-      RustLib.instance.api.crateApiMediaElementMyMediaElementSetCurrentTime(
-          that: this, value: value);
-
-  Future<void> setLoop({required bool value}) => RustLib.instance.api
-      .crateApiMediaElementMyMediaElementSetLoop(that: this, value: value);
-
-  Future<void> setPlaybackRate({required double value}) =>
-      RustLib.instance.api.crateApiMediaElementMyMediaElementSetPlaybackRate(
-          that: this, value: value);
 }
 
 @sealed

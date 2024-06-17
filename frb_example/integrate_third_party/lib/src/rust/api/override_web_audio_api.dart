@@ -20,7 +20,7 @@ abstract class AudioBufferSourceNodeExt {
 
 abstract class AudioContextExt {
   Future<MediaElementAudioSourceNode> createMediaElementSource(
-      {required MyMediaElement mediaElement});
+      {required MediaElement mediaElement});
 
   Future<AudioBuffer> decodeAudioDataSync({required String inputPath});
 }

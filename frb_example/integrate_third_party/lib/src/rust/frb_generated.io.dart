@@ -159,7 +159,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           wire._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrackAudioSourceNodePtr;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_MyMediaElementPtr => wire
+      get rust_arc_decrement_strong_count_MediaElementPtr => wire
           ._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElementPtr;
 
   CrossPlatformFinalizerArg
@@ -482,7 +482,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
-  MyMediaElement
+  MediaElement
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement(
           dynamic raw);
 
@@ -572,7 +572,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
-  MyMediaElement
+  MediaElement
       dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement(
           dynamic raw);
 
@@ -752,7 +752,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
-  MyMediaElement
+  MediaElement
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement(
           dynamic raw);
 
@@ -1130,7 +1130,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
-  MyMediaElement
+  MediaElement
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement(
           dynamic raw);
 
@@ -1709,7 +1709,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
-  MyMediaElement
+  MediaElement
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement(
           SseDeserializer deserializer);
 
@@ -1799,7 +1799,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
-  MyMediaElement
+  MediaElement
       sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement(
           SseDeserializer deserializer);
 
@@ -1979,7 +1979,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
-  MyMediaElement
+  MediaElement
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement(
           SseDeserializer deserializer);
 
@@ -2357,7 +2357,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
-  MyMediaElement
+  MediaElement
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement(
           SseDeserializer deserializer);
 
@@ -2863,7 +2863,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement(
-          MyMediaElement self, SseSerializer serializer);
+          MediaElement self, SseSerializer serializer);
 
   @protected
   void
@@ -2953,7 +2953,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void
       sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement(
-          MyMediaElement self, SseSerializer serializer);
+          MediaElement self, SseSerializer serializer);
 
   @protected
   void
@@ -3133,7 +3133,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement(
-          MyMediaElement self, SseSerializer serializer);
+          MediaElement self, SseSerializer serializer);
 
   @protected
   void
@@ -3511,7 +3511,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement(
-          MyMediaElement self, SseSerializer serializer);
+          MediaElement self, SseSerializer serializer);
 
   @protected
   void

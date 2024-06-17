@@ -170,7 +170,7 @@ abstract class AudioContext
   Future<AudioDestinationNode> destination();
 
   Future<MediaElementAudioSourceNode> createMediaElementSource(
-      {required MyMediaElement mediaElement});
+      {required MediaElement mediaElement});
 
   Future<AudioBuffer> decodeAudioDataSync({required String inputPath});
 

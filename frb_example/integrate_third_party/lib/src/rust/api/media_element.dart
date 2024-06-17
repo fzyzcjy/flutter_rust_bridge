@@ -7,12 +7,12 @@ import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyMediaElement>>
-abstract class MyMediaElement implements RustOpaqueInterface {
+abstract class MediaElement implements RustOpaqueInterface {
   Future<double> currentTime();
 
   Future<bool> loop();
 
-  factory MyMediaElement({required String file}) =>
+  factory MediaElement({required String file}) =>
       RustLib.instance.api.crateApiMediaElementMyMediaElementNew(file: file);
 
   Future<void> pause();
