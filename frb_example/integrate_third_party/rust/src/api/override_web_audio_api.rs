@@ -64,7 +64,7 @@ handle_audio_node_trait_impls_override!(WaveShaperNode);
 pub impl AudioParam {
     fn frb_override_set_onprocessorerror(
         &self,
-        callback: impl Fn(String) -> DartFnFuture<()>,
+        callback: impl Fn(String) -> DartFnFuture<()> + Send + 'static,
     ) {
         self.set_onprocessorerror(Box::new(|event| {
             flutter_rust_bridge::spawn(async move {
