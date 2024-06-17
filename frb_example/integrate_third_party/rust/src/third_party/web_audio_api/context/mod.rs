@@ -14,6 +14,15 @@ impl AudioContext {
 
     #[frb(ignore)]
     pub fn resume() {}
+
+    #[frb(ignore)]
+    pub fn base() {}
+}
+
+#[frb(external)]
+pub trait AudioContext {
+    #[frb(ignore)]
+    pub fn base() {}
 }
 
 #[frb(non_opaque)]
