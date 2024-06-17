@@ -60,7 +60,7 @@ handle_audio_node_trait_impls_override!(ScriptProcessorNode);
 handle_audio_node_trait_impls_override!(StereoPannerNode);
 handle_audio_node_trait_impls_override!(WaveShaperNode);
 
-#[ext]
+#[ext(name = AudioParamSetOnprocessorErrorExt)]
 pub impl AudioParam {
     fn frb_override_set_onprocessorerror(
         &self,
