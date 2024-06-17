@@ -145,6 +145,11 @@ abstract class MediaStreamTrackAudioSourceNodeExt {
       {required FutureOr<void> Function(String) callback});
 }
 
+abstract class OfflineAudioContextExt {
+  Future<void> setOnComplete(
+      {required FutureOr<void> Function(OfflineAudioCompletionEvent) callback});
+}
+
 abstract class OscillatorNodeExt {
   Future<void> connect({required AudioNode dest});
 

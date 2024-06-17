@@ -397,7 +397,7 @@ abstract class ConcreteBaseAudioContext
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OfflineAudioContext>>
 abstract class OfflineAudioContext
-    implements RustOpaqueInterface, BaseAudioContext {
+    implements RustOpaqueInterface, BaseAudioContext, OfflineAudioContextExt {
   /// Unset the callback to run when the rendering has completed
   Future<void> clearOncomplete();
 
@@ -535,6 +535,9 @@ abstract class OfflineAudioContext
 
   /// The sample rate (in sample-frames per second) at which the `AudioContext` handles audio.
   Future<double> sampleRate();
+
+  Future<void> setOnComplete(
+      {required FutureOr<void> Function(OfflineAudioCompletionEvent) callback});
 
   /// Given the current connections and scheduled changes, starts rendering audio.
   ///

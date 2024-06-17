@@ -807,6 +807,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  FutureOr<void> Function(OfflineAudioCompletionEvent)
+      dco_decode_DartFn_Inputs_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioCompletionEvent_Output_unit_AnyhowException(
+          dynamic raw);
+
+  @protected
   FutureOr<void> Function(String)
       dco_decode_DartFn_Inputs_String_Output_unit_AnyhowException(dynamic raw);
 
@@ -1276,6 +1281,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   MediaStreamTrackAudioSourceNodeExt
       dco_decode_TraitDef_MediaStreamTrackAudioSourceNodeExt(dynamic raw);
+
+  @protected
+  OfflineAudioContextExt dco_decode_TraitDef_OfflineAudioContextExt(
+      dynamic raw);
 
   @protected
   OscillatorNodeExt dco_decode_TraitDef_OscillatorNodeExt(dynamic raw);
@@ -3221,6 +3230,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_DartFn_Inputs_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEvent_Output_unit_AnyhowException(
           FutureOr<void> Function(Event) self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_DartFn_Inputs_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioCompletionEvent_Output_unit_AnyhowException(
+          FutureOr<void> Function(OfflineAudioCompletionEvent) self,
+          SseSerializer serializer);
 
   @protected
   void sse_encode_DartFn_Inputs_String_Output_unit_AnyhowException(
