@@ -25,6 +25,7 @@
 
 // Section: imports
 
+use crate::api::media_element::*;
 use crate::api::override_web_audio_api::AnalyserNodeExt;
 use crate::api::override_web_audio_api::AudioBufferSourceNodeExt;
 use crate::api::override_web_audio_api::AudioContextExt;
@@ -71,7 +72,7 @@ flutter_rust_bridge::frb_generated_boilerplate!(
     default_rust_auto_opaque = RustAutoOpaqueMoi,
 );
 pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "2.0.0-dev.40";
-pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = -1911065487;
+pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = 1046629278;
 
 // Section: executor
 
@@ -79,6 +80,477 @@ flutter_rust_bridge::frb_generated_default_handler!();
 
 // Section: wire_funcs
 
+fn wire__crate__api__media_element__MyMediaElement_current_time_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "MyMediaElement_current_time",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_that = <RustOpaqueMoi<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyMediaElement>,
+            >>::sse_decode(&mut deserializer);
+            deserializer.end();
+            move |context| {
+                transform_result_sse::<_, ()>((move || {
+                    let mut api_that_guard = None;
+                    let decode_indices_ =
+                        flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![
+                            flutter_rust_bridge::for_generated::LockableOrderInfo::new(
+                                &api_that, 0, false,
+                            ),
+                        ]);
+                    for i in decode_indices_ {
+                        match i {
+                            0 => api_that_guard = Some(api_that.lockable_decode_sync_ref()),
+                            _ => unreachable!(),
+                        }
+                    }
+                    let api_that_guard = api_that_guard.unwrap();
+                    let output_ok = Result::<_, ()>::Ok(
+                        crate::api::media_element::MyMediaElement::current_time(&*api_that_guard),
+                    )?;
+                    Ok(output_ok)
+                })())
+            }
+        },
+    )
+}
+fn wire__crate__api__media_element__MyMediaElement_loop__impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "MyMediaElement_loop_",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_that = <RustOpaqueMoi<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyMediaElement>,
+            >>::sse_decode(&mut deserializer);
+            deserializer.end();
+            move |context| {
+                transform_result_sse::<_, ()>((move || {
+                    let mut api_that_guard = None;
+                    let decode_indices_ =
+                        flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![
+                            flutter_rust_bridge::for_generated::LockableOrderInfo::new(
+                                &api_that, 0, false,
+                            ),
+                        ]);
+                    for i in decode_indices_ {
+                        match i {
+                            0 => api_that_guard = Some(api_that.lockable_decode_sync_ref()),
+                            _ => unreachable!(),
+                        }
+                    }
+                    let api_that_guard = api_that_guard.unwrap();
+                    let output_ok = Result::<_, ()>::Ok(
+                        crate::api::media_element::MyMediaElement::loop_(&*api_that_guard),
+                    )?;
+                    Ok(output_ok)
+                })())
+            }
+        },
+    )
+}
+fn wire__crate__api__media_element__MyMediaElement_pause_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "MyMediaElement_pause",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_that = <RustOpaqueMoi<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyMediaElement>,
+            >>::sse_decode(&mut deserializer);
+            deserializer.end();
+            move |context| {
+                transform_result_sse::<_, ()>((move || {
+                    let mut api_that_guard = None;
+                    let decode_indices_ =
+                        flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![
+                            flutter_rust_bridge::for_generated::LockableOrderInfo::new(
+                                &api_that, 0, false,
+                            ),
+                        ]);
+                    for i in decode_indices_ {
+                        match i {
+                            0 => api_that_guard = Some(api_that.lockable_decode_sync_ref()),
+                            _ => unreachable!(),
+                        }
+                    }
+                    let api_that_guard = api_that_guard.unwrap();
+                    let output_ok = Result::<_, ()>::Ok({
+                        crate::api::media_element::MyMediaElement::pause(&*api_that_guard);
+                    })?;
+                    Ok(output_ok)
+                })())
+            }
+        },
+    )
+}
+fn wire__crate__api__media_element__MyMediaElement_paused_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "MyMediaElement_paused",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_that = <RustOpaqueMoi<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyMediaElement>,
+            >>::sse_decode(&mut deserializer);
+            deserializer.end();
+            move |context| {
+                transform_result_sse::<_, ()>((move || {
+                    let mut api_that_guard = None;
+                    let decode_indices_ =
+                        flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![
+                            flutter_rust_bridge::for_generated::LockableOrderInfo::new(
+                                &api_that, 0, false,
+                            ),
+                        ]);
+                    for i in decode_indices_ {
+                        match i {
+                            0 => api_that_guard = Some(api_that.lockable_decode_sync_ref()),
+                            _ => unreachable!(),
+                        }
+                    }
+                    let api_that_guard = api_that_guard.unwrap();
+                    let output_ok = Result::<_, ()>::Ok(
+                        crate::api::media_element::MyMediaElement::paused(&*api_that_guard),
+                    )?;
+                    Ok(output_ok)
+                })())
+            }
+        },
+    )
+}
+fn wire__crate__api__media_element__MyMediaElement_play_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "MyMediaElement_play",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_that = <RustOpaqueMoi<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyMediaElement>,
+            >>::sse_decode(&mut deserializer);
+            deserializer.end();
+            move |context| {
+                transform_result_sse::<_, ()>((move || {
+                    let mut api_that_guard = None;
+                    let decode_indices_ =
+                        flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![
+                            flutter_rust_bridge::for_generated::LockableOrderInfo::new(
+                                &api_that, 0, false,
+                            ),
+                        ]);
+                    for i in decode_indices_ {
+                        match i {
+                            0 => api_that_guard = Some(api_that.lockable_decode_sync_ref()),
+                            _ => unreachable!(),
+                        }
+                    }
+                    let api_that_guard = api_that_guard.unwrap();
+                    let output_ok = Result::<_, ()>::Ok({
+                        crate::api::media_element::MyMediaElement::play(&*api_that_guard);
+                    })?;
+                    Ok(output_ok)
+                })())
+            }
+        },
+    )
+}
+fn wire__crate__api__media_element__MyMediaElement_playback_rate_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "MyMediaElement_playback_rate",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_that = <RustOpaqueMoi<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyMediaElement>,
+            >>::sse_decode(&mut deserializer);
+            deserializer.end();
+            move |context| {
+                transform_result_sse::<_, ()>((move || {
+                    let mut api_that_guard = None;
+                    let decode_indices_ =
+                        flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![
+                            flutter_rust_bridge::for_generated::LockableOrderInfo::new(
+                                &api_that, 0, false,
+                            ),
+                        ]);
+                    for i in decode_indices_ {
+                        match i {
+                            0 => api_that_guard = Some(api_that.lockable_decode_sync_ref()),
+                            _ => unreachable!(),
+                        }
+                    }
+                    let api_that_guard = api_that_guard.unwrap();
+                    let output_ok = Result::<_, ()>::Ok(
+                        crate::api::media_element::MyMediaElement::playback_rate(&*api_that_guard),
+                    )?;
+                    Ok(output_ok)
+                })())
+            }
+        },
+    )
+}
+fn wire__crate__api__media_element__MyMediaElement_set_current_time_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "MyMediaElement_set_current_time",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_that = <RustOpaqueMoi<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyMediaElement>,
+            >>::sse_decode(&mut deserializer);
+            let api_value = <f64>::sse_decode(&mut deserializer);
+            deserializer.end();
+            move |context| {
+                transform_result_sse::<_, ()>((move || {
+                    let mut api_that_guard = None;
+                    let decode_indices_ =
+                        flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![
+                            flutter_rust_bridge::for_generated::LockableOrderInfo::new(
+                                &api_that, 0, false,
+                            ),
+                        ]);
+                    for i in decode_indices_ {
+                        match i {
+                            0 => api_that_guard = Some(api_that.lockable_decode_sync_ref()),
+                            _ => unreachable!(),
+                        }
+                    }
+                    let api_that_guard = api_that_guard.unwrap();
+                    let output_ok = Result::<_, ()>::Ok({
+                        crate::api::media_element::MyMediaElement::set_current_time(
+                            &*api_that_guard,
+                            api_value,
+                        );
+                    })?;
+                    Ok(output_ok)
+                })())
+            }
+        },
+    )
+}
+fn wire__crate__api__media_element__MyMediaElement_set_loop_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "MyMediaElement_set_loop",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_that = <RustOpaqueMoi<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyMediaElement>,
+            >>::sse_decode(&mut deserializer);
+            let api_value = <bool>::sse_decode(&mut deserializer);
+            deserializer.end();
+            move |context| {
+                transform_result_sse::<_, ()>((move || {
+                    let mut api_that_guard = None;
+                    let decode_indices_ =
+                        flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![
+                            flutter_rust_bridge::for_generated::LockableOrderInfo::new(
+                                &api_that, 0, false,
+                            ),
+                        ]);
+                    for i in decode_indices_ {
+                        match i {
+                            0 => api_that_guard = Some(api_that.lockable_decode_sync_ref()),
+                            _ => unreachable!(),
+                        }
+                    }
+                    let api_that_guard = api_that_guard.unwrap();
+                    let output_ok = Result::<_, ()>::Ok({
+                        crate::api::media_element::MyMediaElement::set_loop(
+                            &*api_that_guard,
+                            api_value,
+                        );
+                    })?;
+                    Ok(output_ok)
+                })())
+            }
+        },
+    )
+}
+fn wire__crate__api__media_element__MyMediaElement_set_playback_rate_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "MyMediaElement_set_playback_rate",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_that = <RustOpaqueMoi<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyMediaElement>,
+            >>::sse_decode(&mut deserializer);
+            let api_value = <f64>::sse_decode(&mut deserializer);
+            deserializer.end();
+            move |context| {
+                transform_result_sse::<_, ()>((move || {
+                    let mut api_that_guard = None;
+                    let decode_indices_ =
+                        flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![
+                            flutter_rust_bridge::for_generated::LockableOrderInfo::new(
+                                &api_that, 0, false,
+                            ),
+                        ]);
+                    for i in decode_indices_ {
+                        match i {
+                            0 => api_that_guard = Some(api_that.lockable_decode_sync_ref()),
+                            _ => unreachable!(),
+                        }
+                    }
+                    let api_that_guard = api_that_guard.unwrap();
+                    let output_ok = Result::<_, ()>::Ok({
+                        crate::api::media_element::MyMediaElement::set_playback_rate(
+                            &*api_that_guard,
+                            api_value,
+                        );
+                    })?;
+                    Ok(output_ok)
+                })())
+            }
+        },
+    )
+}
 fn wire__crate__api__simple__f_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -2172,466 +2644,6 @@ fn wire__web_audio_api__AudioRenderCapacity_stop_impl(
                     let api_that_guard = api_that_guard.unwrap();
                     let output_ok = Result::<_, ()>::Ok({
                         web_audio_api::AudioRenderCapacity::stop(&*api_that_guard);
-                    })?;
-                    Ok(output_ok)
-                })())
-            }
-        },
-    )
-}
-fn wire__web_audio_api__MediaElement_current_time_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "MediaElement_current_time",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
-        },
-        move || {
-            let message = unsafe {
-                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
-                    ptr_,
-                    rust_vec_len_,
-                    data_len_,
-                )
-            };
-            let mut deserializer =
-                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_that = <RustOpaqueMoi<
-                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaElement>,
-            >>::sse_decode(&mut deserializer);
-            deserializer.end();
-            move |context| {
-                transform_result_sse::<_, ()>((move || {
-                    let mut api_that_guard = None;
-                    let decode_indices_ =
-                        flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![
-                            flutter_rust_bridge::for_generated::LockableOrderInfo::new(
-                                &api_that, 0, false,
-                            ),
-                        ]);
-                    for i in decode_indices_ {
-                        match i {
-                            0 => api_that_guard = Some(api_that.lockable_decode_sync_ref()),
-                            _ => unreachable!(),
-                        }
-                    }
-                    let api_that_guard = api_that_guard.unwrap();
-                    let output_ok = Result::<_, ()>::Ok(
-                        web_audio_api::MediaElement::current_time(&*api_that_guard),
-                    )?;
-                    Ok(output_ok)
-                })())
-            }
-        },
-    )
-}
-fn wire__web_audio_api__MediaElement_loop__impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "MediaElement_loop_",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
-        },
-        move || {
-            let message = unsafe {
-                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
-                    ptr_,
-                    rust_vec_len_,
-                    data_len_,
-                )
-            };
-            let mut deserializer =
-                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_that = <RustOpaqueMoi<
-                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaElement>,
-            >>::sse_decode(&mut deserializer);
-            deserializer.end();
-            move |context| {
-                transform_result_sse::<_, ()>((move || {
-                    let mut api_that_guard = None;
-                    let decode_indices_ =
-                        flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![
-                            flutter_rust_bridge::for_generated::LockableOrderInfo::new(
-                                &api_that, 0, false,
-                            ),
-                        ]);
-                    for i in decode_indices_ {
-                        match i {
-                            0 => api_that_guard = Some(api_that.lockable_decode_sync_ref()),
-                            _ => unreachable!(),
-                        }
-                    }
-                    let api_that_guard = api_that_guard.unwrap();
-                    let output_ok =
-                        Result::<_, ()>::Ok(web_audio_api::MediaElement::loop_(&*api_that_guard))?;
-                    Ok(output_ok)
-                })())
-            }
-        },
-    )
-}
-fn wire__web_audio_api__MediaElement_pause_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "MediaElement_pause",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
-        },
-        move || {
-            let message = unsafe {
-                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
-                    ptr_,
-                    rust_vec_len_,
-                    data_len_,
-                )
-            };
-            let mut deserializer =
-                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_that = <RustOpaqueMoi<
-                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaElement>,
-            >>::sse_decode(&mut deserializer);
-            deserializer.end();
-            move |context| {
-                transform_result_sse::<_, ()>((move || {
-                    let mut api_that_guard = None;
-                    let decode_indices_ =
-                        flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![
-                            flutter_rust_bridge::for_generated::LockableOrderInfo::new(
-                                &api_that, 0, false,
-                            ),
-                        ]);
-                    for i in decode_indices_ {
-                        match i {
-                            0 => api_that_guard = Some(api_that.lockable_decode_sync_ref()),
-                            _ => unreachable!(),
-                        }
-                    }
-                    let api_that_guard = api_that_guard.unwrap();
-                    let output_ok = Result::<_, ()>::Ok({
-                        web_audio_api::MediaElement::pause(&*api_that_guard);
-                    })?;
-                    Ok(output_ok)
-                })())
-            }
-        },
-    )
-}
-fn wire__web_audio_api__MediaElement_paused_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "MediaElement_paused",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
-        },
-        move || {
-            let message = unsafe {
-                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
-                    ptr_,
-                    rust_vec_len_,
-                    data_len_,
-                )
-            };
-            let mut deserializer =
-                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_that = <RustOpaqueMoi<
-                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaElement>,
-            >>::sse_decode(&mut deserializer);
-            deserializer.end();
-            move |context| {
-                transform_result_sse::<_, ()>((move || {
-                    let mut api_that_guard = None;
-                    let decode_indices_ =
-                        flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![
-                            flutter_rust_bridge::for_generated::LockableOrderInfo::new(
-                                &api_that, 0, false,
-                            ),
-                        ]);
-                    for i in decode_indices_ {
-                        match i {
-                            0 => api_that_guard = Some(api_that.lockable_decode_sync_ref()),
-                            _ => unreachable!(),
-                        }
-                    }
-                    let api_that_guard = api_that_guard.unwrap();
-                    let output_ok =
-                        Result::<_, ()>::Ok(web_audio_api::MediaElement::paused(&*api_that_guard))?;
-                    Ok(output_ok)
-                })())
-            }
-        },
-    )
-}
-fn wire__web_audio_api__MediaElement_play_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "MediaElement_play",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
-        },
-        move || {
-            let message = unsafe {
-                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
-                    ptr_,
-                    rust_vec_len_,
-                    data_len_,
-                )
-            };
-            let mut deserializer =
-                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_that = <RustOpaqueMoi<
-                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaElement>,
-            >>::sse_decode(&mut deserializer);
-            deserializer.end();
-            move |context| {
-                transform_result_sse::<_, ()>((move || {
-                    let mut api_that_guard = None;
-                    let decode_indices_ =
-                        flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![
-                            flutter_rust_bridge::for_generated::LockableOrderInfo::new(
-                                &api_that, 0, false,
-                            ),
-                        ]);
-                    for i in decode_indices_ {
-                        match i {
-                            0 => api_that_guard = Some(api_that.lockable_decode_sync_ref()),
-                            _ => unreachable!(),
-                        }
-                    }
-                    let api_that_guard = api_that_guard.unwrap();
-                    let output_ok = Result::<_, ()>::Ok({
-                        web_audio_api::MediaElement::play(&*api_that_guard);
-                    })?;
-                    Ok(output_ok)
-                })())
-            }
-        },
-    )
-}
-fn wire__web_audio_api__MediaElement_playback_rate_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "MediaElement_playback_rate",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
-        },
-        move || {
-            let message = unsafe {
-                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
-                    ptr_,
-                    rust_vec_len_,
-                    data_len_,
-                )
-            };
-            let mut deserializer =
-                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_that = <RustOpaqueMoi<
-                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaElement>,
-            >>::sse_decode(&mut deserializer);
-            deserializer.end();
-            move |context| {
-                transform_result_sse::<_, ()>((move || {
-                    let mut api_that_guard = None;
-                    let decode_indices_ =
-                        flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![
-                            flutter_rust_bridge::for_generated::LockableOrderInfo::new(
-                                &api_that, 0, false,
-                            ),
-                        ]);
-                    for i in decode_indices_ {
-                        match i {
-                            0 => api_that_guard = Some(api_that.lockable_decode_sync_ref()),
-                            _ => unreachable!(),
-                        }
-                    }
-                    let api_that_guard = api_that_guard.unwrap();
-                    let output_ok = Result::<_, ()>::Ok(
-                        web_audio_api::MediaElement::playback_rate(&*api_that_guard),
-                    )?;
-                    Ok(output_ok)
-                })())
-            }
-        },
-    )
-}
-fn wire__web_audio_api__MediaElement_set_current_time_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "MediaElement_set_current_time",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
-        },
-        move || {
-            let message = unsafe {
-                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
-                    ptr_,
-                    rust_vec_len_,
-                    data_len_,
-                )
-            };
-            let mut deserializer =
-                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_that = <RustOpaqueMoi<
-                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaElement>,
-            >>::sse_decode(&mut deserializer);
-            let api_value = <f64>::sse_decode(&mut deserializer);
-            deserializer.end();
-            move |context| {
-                transform_result_sse::<_, ()>((move || {
-                    let mut api_that_guard = None;
-                    let decode_indices_ =
-                        flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![
-                            flutter_rust_bridge::for_generated::LockableOrderInfo::new(
-                                &api_that, 0, false,
-                            ),
-                        ]);
-                    for i in decode_indices_ {
-                        match i {
-                            0 => api_that_guard = Some(api_that.lockable_decode_sync_ref()),
-                            _ => unreachable!(),
-                        }
-                    }
-                    let api_that_guard = api_that_guard.unwrap();
-                    let output_ok = Result::<_, ()>::Ok({
-                        web_audio_api::MediaElement::set_current_time(&*api_that_guard, api_value);
-                    })?;
-                    Ok(output_ok)
-                })())
-            }
-        },
-    )
-}
-fn wire__web_audio_api__MediaElement_set_loop_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "MediaElement_set_loop",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
-        },
-        move || {
-            let message = unsafe {
-                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
-                    ptr_,
-                    rust_vec_len_,
-                    data_len_,
-                )
-            };
-            let mut deserializer =
-                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_that = <RustOpaqueMoi<
-                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaElement>,
-            >>::sse_decode(&mut deserializer);
-            let api_value = <bool>::sse_decode(&mut deserializer);
-            deserializer.end();
-            move |context| {
-                transform_result_sse::<_, ()>((move || {
-                    let mut api_that_guard = None;
-                    let decode_indices_ =
-                        flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![
-                            flutter_rust_bridge::for_generated::LockableOrderInfo::new(
-                                &api_that, 0, false,
-                            ),
-                        ]);
-                    for i in decode_indices_ {
-                        match i {
-                            0 => api_that_guard = Some(api_that.lockable_decode_sync_ref()),
-                            _ => unreachable!(),
-                        }
-                    }
-                    let api_that_guard = api_that_guard.unwrap();
-                    let output_ok = Result::<_, ()>::Ok({
-                        web_audio_api::MediaElement::set_loop(&*api_that_guard, api_value);
-                    })?;
-                    Ok(output_ok)
-                })())
-            }
-        },
-    )
-}
-fn wire__web_audio_api__MediaElement_set_playback_rate_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "MediaElement_set_playback_rate",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
-        },
-        move || {
-            let message = unsafe {
-                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
-                    ptr_,
-                    rust_vec_len_,
-                    data_len_,
-                )
-            };
-            let mut deserializer =
-                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_that = <RustOpaqueMoi<
-                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaElement>,
-            >>::sse_decode(&mut deserializer);
-            let api_value = <f64>::sse_decode(&mut deserializer);
-            deserializer.end();
-            move |context| {
-                transform_result_sse::<_, ()>((move || {
-                    let mut api_that_guard = None;
-                    let decode_indices_ =
-                        flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![
-                            flutter_rust_bridge::for_generated::LockableOrderInfo::new(
-                                &api_that, 0, false,
-                            ),
-                        ]);
-                    for i in decode_indices_ {
-                        match i {
-                            0 => api_that_guard = Some(api_that.lockable_decode_sync_ref()),
-                            _ => unreachable!(),
-                        }
-                    }
-                    let api_that_guard = api_that_guard.unwrap();
-                    let output_ok = Result::<_, ()>::Ok({
-                        web_audio_api::MediaElement::set_playback_rate(&*api_that_guard, api_value);
                     })?;
                     Ok(output_ok)
                 })())
@@ -30148,9 +30160,6 @@ flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
     flutter_rust_bridge::for_generated::RustAutoOpaqueInner<IIRFilterNode>
 );
 flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
-    flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaElement>
-);
-flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
     flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaElementAudioSourceNode>
 );
 flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
@@ -30173,6 +30182,9 @@ flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
 );
 flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
     flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaStreamTrackAudioSourceNode>
+);
+flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
+    flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyMediaElement>
 );
 flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
     flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OfflineAudioCompletionEvent>
@@ -31853,16 +31865,6 @@ impl SseDecode for IIRFilterNode {
     }
 }
 
-impl SseDecode for MediaElement {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <RustOpaqueMoi<
-            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaElement>,
-        >>::sse_decode(deserializer);
-        return flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(inner);
-    }
-}
-
 impl SseDecode for MediaElementAudioSourceNode {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -31942,6 +31944,16 @@ impl SseDecode for MediaStreamTrackAudioSourceNode {
             flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
                 MediaStreamTrackAudioSourceNode,
             >,
+        >>::sse_decode(deserializer);
+        return flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(inner);
+    }
+}
+
+impl SseDecode for MyMediaElement {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <RustOpaqueMoi<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyMediaElement>,
         >>::sse_decode(deserializer);
         return flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(inner);
     }
@@ -32296,16 +32308,6 @@ impl SseDecode
 }
 
 impl SseDecode
-    for RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaElement>>
-{
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <usize>::sse_decode(deserializer);
-        return decode_rust_opaque_moi(inner);
-    }
-}
-
-impl SseDecode
     for RustOpaqueMoi<
         flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaElementAudioSourceNode>,
     >
@@ -32387,6 +32389,16 @@ impl SseDecode
     for RustOpaqueMoi<
         flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaStreamTrackAudioSourceNode>,
     >
+{
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return decode_rust_opaque_moi(inner);
+    }
+}
+
+impl SseDecode
+    for RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyMediaElement>>
 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -33080,55 +33092,55 @@ fn pde_ffi_dispatcher_primary_impl(
 ) {
     // Codec=Pde (Serialization + dispatch), see doc to use other codecs
     match func_id {
-                        24 => wire__crate__api__simple__f_impl(port, ptr, rust_vec_len, data_len),
-25 => wire__crate__api__simple__init_app_impl(port, ptr, rust_vec_len, data_len),
-28 => wire__web_audio_api__AudioBuffer_duration_impl(port, ptr, rust_vec_len, data_len),
-29 => wire__web_audio_api__AudioBuffer_from_impl(port, ptr, rust_vec_len, data_len),
-30 => wire__web_audio_api__AudioBuffer_get_channel_data_impl(port, ptr, rust_vec_len, data_len),
-31 => wire__web_audio_api__AudioBuffer_get_channel_data_mut_impl(port, ptr, rust_vec_len, data_len),
-32 => wire__web_audio_api__AudioBuffer_length_impl(port, ptr, rust_vec_len, data_len),
-33 => wire__web_audio_api__AudioBuffer_new_impl(port, ptr, rust_vec_len, data_len),
-34 => wire__web_audio_api__AudioBuffer_number_of_channels_impl(port, ptr, rust_vec_len, data_len),
-35 => wire__web_audio_api__AudioBuffer_sample_rate_impl(port, ptr, rust_vec_len, data_len),
-45 => wire__web_audio_api__AudioParam_automation_rate_impl(port, ptr, rust_vec_len, data_len),
-46 => wire__web_audio_api__AudioParam_cancel_and_hold_at_time_impl(port, ptr, rust_vec_len, data_len),
-47 => wire__web_audio_api__AudioParam_cancel_scheduled_values_impl(port, ptr, rust_vec_len, data_len),
-48 => wire__web_audio_api__AudioParam_channel_config_impl(port, ptr, rust_vec_len, data_len),
-49 => wire__web_audio_api__AudioParam_channel_count_impl(port, ptr, rust_vec_len, data_len),
-50 => wire__web_audio_api__AudioParam_channel_count_mode_impl(port, ptr, rust_vec_len, data_len),
-51 => wire__web_audio_api__AudioParam_channel_interpretation_impl(port, ptr, rust_vec_len, data_len),
-52 => wire__web_audio_api__AudioParam_clear_onprocessorerror_impl(port, ptr, rust_vec_len, data_len),
-53 => wire__web_audio_api__AudioParam_context_impl(port, ptr, rust_vec_len, data_len),
-54 => wire__web_audio_api__AudioParam_default_value_impl(port, ptr, rust_vec_len, data_len),
-55 => wire__web_audio_api__AudioParam_disconnect_impl(port, ptr, rust_vec_len, data_len),
-56 => wire__web_audio_api__AudioParam_disconnect_output_impl(port, ptr, rust_vec_len, data_len),
-57 => wire__web_audio_api__AudioParam_exponential_ramp_to_value_at_time_impl(port, ptr, rust_vec_len, data_len),
-58 => wire__web_audio_api__AudioParam_frb_override_connect_impl(port, ptr, rust_vec_len, data_len),
-59 => wire__web_audio_api__AudioParam_linear_ramp_to_value_at_time_impl(port, ptr, rust_vec_len, data_len),
-60 => wire__web_audio_api__AudioParam_max_value_impl(port, ptr, rust_vec_len, data_len),
-61 => wire__web_audio_api__AudioParam_min_value_impl(port, ptr, rust_vec_len, data_len),
-62 => wire__web_audio_api__AudioParam_number_of_inputs_impl(port, ptr, rust_vec_len, data_len),
-63 => wire__web_audio_api__AudioParam_number_of_outputs_impl(port, ptr, rust_vec_len, data_len),
-64 => wire__web_audio_api__AudioParam_registration_impl(port, ptr, rust_vec_len, data_len),
-65 => wire__web_audio_api__AudioParam_set_automation_rate_impl(port, ptr, rust_vec_len, data_len),
-66 => wire__web_audio_api__AudioParam_set_channel_count_impl(port, ptr, rust_vec_len, data_len),
-67 => wire__web_audio_api__AudioParam_set_channel_count_mode_impl(port, ptr, rust_vec_len, data_len),
-68 => wire__web_audio_api__AudioParam_set_channel_interpretation_impl(port, ptr, rust_vec_len, data_len),
-69 => wire__web_audio_api__AudioParam_set_target_at_time_impl(port, ptr, rust_vec_len, data_len),
-71 => wire__web_audio_api__AudioParam_set_value_at_time_impl(port, ptr, rust_vec_len, data_len),
-72 => wire__web_audio_api__AudioParam_set_value_curve_at_time_impl(port, ptr, rust_vec_len, data_len),
-90 => wire__web_audio_api__AudioRenderCapacity_clear_onupdate_impl(port, ptr, rust_vec_len, data_len),
-91 => wire__web_audio_api__AudioRenderCapacity_start_impl(port, ptr, rust_vec_len, data_len),
-92 => wire__web_audio_api__AudioRenderCapacity_stop_impl(port, ptr, rust_vec_len, data_len),
-93 => wire__web_audio_api__MediaElement_current_time_impl(port, ptr, rust_vec_len, data_len),
-94 => wire__web_audio_api__MediaElement_loop__impl(port, ptr, rust_vec_len, data_len),
-95 => wire__web_audio_api__MediaElement_pause_impl(port, ptr, rust_vec_len, data_len),
-96 => wire__web_audio_api__MediaElement_paused_impl(port, ptr, rust_vec_len, data_len),
-97 => wire__web_audio_api__MediaElement_play_impl(port, ptr, rust_vec_len, data_len),
-98 => wire__web_audio_api__MediaElement_playback_rate_impl(port, ptr, rust_vec_len, data_len),
-99 => wire__web_audio_api__MediaElement_set_current_time_impl(port, ptr, rust_vec_len, data_len),
-100 => wire__web_audio_api__MediaElement_set_loop_impl(port, ptr, rust_vec_len, data_len),
-101 => wire__web_audio_api__MediaElement_set_playback_rate_impl(port, ptr, rust_vec_len, data_len),
+                        1 => wire__crate__api__media_element__MyMediaElement_current_time_impl(port, ptr, rust_vec_len, data_len),
+2 => wire__crate__api__media_element__MyMediaElement_loop__impl(port, ptr, rust_vec_len, data_len),
+3 => wire__crate__api__media_element__MyMediaElement_pause_impl(port, ptr, rust_vec_len, data_len),
+4 => wire__crate__api__media_element__MyMediaElement_paused_impl(port, ptr, rust_vec_len, data_len),
+5 => wire__crate__api__media_element__MyMediaElement_play_impl(port, ptr, rust_vec_len, data_len),
+6 => wire__crate__api__media_element__MyMediaElement_playback_rate_impl(port, ptr, rust_vec_len, data_len),
+7 => wire__crate__api__media_element__MyMediaElement_set_current_time_impl(port, ptr, rust_vec_len, data_len),
+8 => wire__crate__api__media_element__MyMediaElement_set_loop_impl(port, ptr, rust_vec_len, data_len),
+9 => wire__crate__api__media_element__MyMediaElement_set_playback_rate_impl(port, ptr, rust_vec_len, data_len),
+33 => wire__crate__api__simple__f_impl(port, ptr, rust_vec_len, data_len),
+34 => wire__crate__api__simple__init_app_impl(port, ptr, rust_vec_len, data_len),
+37 => wire__web_audio_api__AudioBuffer_duration_impl(port, ptr, rust_vec_len, data_len),
+38 => wire__web_audio_api__AudioBuffer_from_impl(port, ptr, rust_vec_len, data_len),
+39 => wire__web_audio_api__AudioBuffer_get_channel_data_impl(port, ptr, rust_vec_len, data_len),
+40 => wire__web_audio_api__AudioBuffer_get_channel_data_mut_impl(port, ptr, rust_vec_len, data_len),
+41 => wire__web_audio_api__AudioBuffer_length_impl(port, ptr, rust_vec_len, data_len),
+42 => wire__web_audio_api__AudioBuffer_new_impl(port, ptr, rust_vec_len, data_len),
+43 => wire__web_audio_api__AudioBuffer_number_of_channels_impl(port, ptr, rust_vec_len, data_len),
+44 => wire__web_audio_api__AudioBuffer_sample_rate_impl(port, ptr, rust_vec_len, data_len),
+54 => wire__web_audio_api__AudioParam_automation_rate_impl(port, ptr, rust_vec_len, data_len),
+55 => wire__web_audio_api__AudioParam_cancel_and_hold_at_time_impl(port, ptr, rust_vec_len, data_len),
+56 => wire__web_audio_api__AudioParam_cancel_scheduled_values_impl(port, ptr, rust_vec_len, data_len),
+57 => wire__web_audio_api__AudioParam_channel_config_impl(port, ptr, rust_vec_len, data_len),
+58 => wire__web_audio_api__AudioParam_channel_count_impl(port, ptr, rust_vec_len, data_len),
+59 => wire__web_audio_api__AudioParam_channel_count_mode_impl(port, ptr, rust_vec_len, data_len),
+60 => wire__web_audio_api__AudioParam_channel_interpretation_impl(port, ptr, rust_vec_len, data_len),
+61 => wire__web_audio_api__AudioParam_clear_onprocessorerror_impl(port, ptr, rust_vec_len, data_len),
+62 => wire__web_audio_api__AudioParam_context_impl(port, ptr, rust_vec_len, data_len),
+63 => wire__web_audio_api__AudioParam_default_value_impl(port, ptr, rust_vec_len, data_len),
+64 => wire__web_audio_api__AudioParam_disconnect_impl(port, ptr, rust_vec_len, data_len),
+65 => wire__web_audio_api__AudioParam_disconnect_output_impl(port, ptr, rust_vec_len, data_len),
+66 => wire__web_audio_api__AudioParam_exponential_ramp_to_value_at_time_impl(port, ptr, rust_vec_len, data_len),
+67 => wire__web_audio_api__AudioParam_frb_override_connect_impl(port, ptr, rust_vec_len, data_len),
+68 => wire__web_audio_api__AudioParam_linear_ramp_to_value_at_time_impl(port, ptr, rust_vec_len, data_len),
+69 => wire__web_audio_api__AudioParam_max_value_impl(port, ptr, rust_vec_len, data_len),
+70 => wire__web_audio_api__AudioParam_min_value_impl(port, ptr, rust_vec_len, data_len),
+71 => wire__web_audio_api__AudioParam_number_of_inputs_impl(port, ptr, rust_vec_len, data_len),
+72 => wire__web_audio_api__AudioParam_number_of_outputs_impl(port, ptr, rust_vec_len, data_len),
+73 => wire__web_audio_api__AudioParam_registration_impl(port, ptr, rust_vec_len, data_len),
+74 => wire__web_audio_api__AudioParam_set_automation_rate_impl(port, ptr, rust_vec_len, data_len),
+75 => wire__web_audio_api__AudioParam_set_channel_count_impl(port, ptr, rust_vec_len, data_len),
+76 => wire__web_audio_api__AudioParam_set_channel_count_mode_impl(port, ptr, rust_vec_len, data_len),
+77 => wire__web_audio_api__AudioParam_set_channel_interpretation_impl(port, ptr, rust_vec_len, data_len),
+78 => wire__web_audio_api__AudioParam_set_target_at_time_impl(port, ptr, rust_vec_len, data_len),
+80 => wire__web_audio_api__AudioParam_set_value_at_time_impl(port, ptr, rust_vec_len, data_len),
+81 => wire__web_audio_api__AudioParam_set_value_curve_at_time_impl(port, ptr, rust_vec_len, data_len),
+99 => wire__web_audio_api__AudioRenderCapacity_clear_onupdate_impl(port, ptr, rust_vec_len, data_len),
+100 => wire__web_audio_api__AudioRenderCapacity_start_impl(port, ptr, rust_vec_len, data_len),
+101 => wire__web_audio_api__AudioRenderCapacity_stop_impl(port, ptr, rust_vec_len, data_len),
 106 => wire__web_audio_api__context__AudioContext_base_impl(port, ptr, rust_vec_len, data_len),
 107 => wire__web_audio_api__context__AudioContext_base_latency_impl(port, ptr, rust_vec_len, data_len),
 108 => wire__web_audio_api__context__AudioContext_clear_onsinkchange_impl(port, ptr, rust_vec_len, data_len),
@@ -33650,84 +33662,84 @@ fn pde_ffi_dispatcher_sync_impl(
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     // Codec=Pde (Serialization + dispatch), see doc to use other codecs
     match func_id {
-        70 => wire__web_audio_api__AudioParam_set_value_impl(ptr, rust_vec_len, data_len),
-        73 => wire__web_audio_api__AudioParam_value_impl(ptr, rust_vec_len, data_len),
-        74 => wire__web_audio_api__AudioProcessingEvent_auto_accessor_get_input_buffer_impl(
+        79 => wire__web_audio_api__AudioParam_set_value_impl(ptr, rust_vec_len, data_len),
+        82 => wire__web_audio_api__AudioParam_value_impl(ptr, rust_vec_len, data_len),
+        83 => wire__web_audio_api__AudioProcessingEvent_auto_accessor_get_input_buffer_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        75 => wire__web_audio_api__AudioProcessingEvent_auto_accessor_get_output_buffer_impl(
+        84 => wire__web_audio_api__AudioProcessingEvent_auto_accessor_get_output_buffer_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        76 => wire__web_audio_api__AudioProcessingEvent_auto_accessor_get_playback_time_impl(
+        85 => wire__web_audio_api__AudioProcessingEvent_auto_accessor_get_playback_time_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        77 => wire__web_audio_api__AudioProcessingEvent_auto_accessor_set_input_buffer_impl(
+        86 => wire__web_audio_api__AudioProcessingEvent_auto_accessor_set_input_buffer_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        78 => wire__web_audio_api__AudioProcessingEvent_auto_accessor_set_output_buffer_impl(
+        87 => wire__web_audio_api__AudioProcessingEvent_auto_accessor_set_output_buffer_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        79 => wire__web_audio_api__AudioProcessingEvent_auto_accessor_set_playback_time_impl(
+        88 => wire__web_audio_api__AudioProcessingEvent_auto_accessor_set_playback_time_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        80 => wire__web_audio_api__AudioRenderCapacityEvent_auto_accessor_get_average_load_impl(
+        89 => wire__web_audio_api__AudioRenderCapacityEvent_auto_accessor_get_average_load_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        81 => wire__web_audio_api__AudioRenderCapacityEvent_auto_accessor_get_event_impl(
+        90 => wire__web_audio_api__AudioRenderCapacityEvent_auto_accessor_get_event_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        82 => wire__web_audio_api__AudioRenderCapacityEvent_auto_accessor_get_peak_load_impl(
+        91 => wire__web_audio_api__AudioRenderCapacityEvent_auto_accessor_get_peak_load_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        83 => wire__web_audio_api__AudioRenderCapacityEvent_auto_accessor_get_timestamp_impl(
+        92 => wire__web_audio_api__AudioRenderCapacityEvent_auto_accessor_get_timestamp_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        84 => wire__web_audio_api__AudioRenderCapacityEvent_auto_accessor_get_underrun_ratio_impl(
+        93 => wire__web_audio_api__AudioRenderCapacityEvent_auto_accessor_get_underrun_ratio_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        85 => wire__web_audio_api__AudioRenderCapacityEvent_auto_accessor_set_average_load_impl(
+        94 => wire__web_audio_api__AudioRenderCapacityEvent_auto_accessor_set_average_load_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        86 => wire__web_audio_api__AudioRenderCapacityEvent_auto_accessor_set_event_impl(
+        95 => wire__web_audio_api__AudioRenderCapacityEvent_auto_accessor_set_event_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        87 => wire__web_audio_api__AudioRenderCapacityEvent_auto_accessor_set_peak_load_impl(
+        96 => wire__web_audio_api__AudioRenderCapacityEvent_auto_accessor_set_peak_load_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        88 => wire__web_audio_api__AudioRenderCapacityEvent_auto_accessor_set_timestamp_impl(
+        97 => wire__web_audio_api__AudioRenderCapacityEvent_auto_accessor_set_timestamp_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        89 => wire__web_audio_api__AudioRenderCapacityEvent_auto_accessor_set_underrun_ratio_impl(
+        98 => wire__web_audio_api__AudioRenderCapacityEvent_auto_accessor_set_underrun_ratio_impl(
             ptr,
             rust_vec_len,
             data_len,
@@ -34204,21 +34216,6 @@ impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<IIRFilterNode>> for IIRFilterN
 }
 
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for FrbWrapper<MediaElement> {
-    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0)
-            .into_dart()
-    }
-}
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for FrbWrapper<MediaElement> {}
-
-impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<MediaElement>> for MediaElement {
-    fn into_into_dart(self) -> FrbWrapper<MediaElement> {
-        self.into()
-    }
-}
-
-// Codec=Dco (DartCObject based), see doc to use other codecs
 impl flutter_rust_bridge::IntoDart for FrbWrapper<MediaElementAudioSourceNode> {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0)
@@ -34359,6 +34356,21 @@ impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<MediaStreamTrackAudioSourceNod
     for MediaStreamTrackAudioSourceNode
 {
     fn into_into_dart(self) -> FrbWrapper<MediaStreamTrackAudioSourceNode> {
+        self.into()
+    }
+}
+
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for FrbWrapper<MyMediaElement> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for FrbWrapper<MyMediaElement> {}
+
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<MyMediaElement>> for MyMediaElement {
+    fn into_into_dart(self) -> FrbWrapper<MyMediaElement> {
         self.into()
     }
 }
@@ -35479,13 +35491,6 @@ impl SseEncode for IIRFilterNode {
     }
 }
 
-impl SseEncode for MediaElement {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaElement>>>::sse_encode(flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self), serializer);
-    }
-}
-
 impl SseEncode for MediaElementAudioSourceNode {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -35568,6 +35573,13 @@ impl SseEncode for MediaStreamTrackAudioSourceNode {
             flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self),
             serializer,
         );
+    }
+}
+
+impl SseEncode for MyMediaElement {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyMediaElement>>>::sse_encode(flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self), serializer);
     }
 }
 
@@ -35927,17 +35939,6 @@ impl SseEncode
 }
 
 impl SseEncode
-    for RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaElement>>
-{
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        let (ptr, size) = self.sse_encode_raw();
-        <usize>::sse_encode(ptr, serializer);
-        <i32>::sse_encode(size, serializer);
-    }
-}
-
-impl SseEncode
     for RustOpaqueMoi<
         flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaElementAudioSourceNode>,
     >
@@ -36026,6 +36027,17 @@ impl SseEncode
     for RustOpaqueMoi<
         flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaStreamTrackAudioSourceNode>,
     >
+{
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode
+    for RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyMediaElement>>
 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
