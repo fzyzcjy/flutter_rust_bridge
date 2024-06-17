@@ -3,6 +3,7 @@
 
 // ignore_for_file: invalid_use_of_internal_member, unused_import, unnecessary_import
 
+import '../../api/media_element.dart';
 import '../../api/override_web_audio_api.dart';
 import '../../frb_generated.dart';
 import '../web_audio_api.dart';
@@ -167,6 +168,9 @@ abstract class AudioContext
   /// Returns an `AudioDestinationNode` representing the final destination of all audio in the
   /// context. It can be thought of as the audio-rendering device.
   Future<AudioDestinationNode> destination();
+
+  Future<MediaElementAudioSourceNode> createMediaElementSource(
+      {required MyMediaElement mediaElement});
 
   Future<AudioBuffer> decodeAudioDataSync({required String inputPath});
 

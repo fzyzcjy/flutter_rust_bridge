@@ -7,6 +7,7 @@ import '../frb_generated.dart';
 import '../third_party/web_audio_api.dart';
 import '../third_party/web_audio_api/node.dart';
 import '../third_party/web_audio_api/worklet.dart';
+import 'media_element.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 abstract class AnalyserNodeExt {
@@ -18,6 +19,9 @@ abstract class AudioBufferSourceNodeExt {
 }
 
 abstract class AudioContextExt {
+  Future<MediaElementAudioSourceNode> createMediaElementSource(
+      {required MyMediaElement mediaElement});
+
   Future<AudioBuffer> decodeAudioDataSync({required String inputPath});
 }
 
