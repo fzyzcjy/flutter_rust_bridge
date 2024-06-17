@@ -121,15 +121,3 @@ pub impl WaveShaperNode {
         self.curve().map(|x| x.to_owned())
     }
 }
-
-#[ext(name = AnalyserNodeMiscExt)]
-pub impl AnalyserNode {
-    fn frb_override_get_float_time_domain_data() {}
-
-    fn frb_override_get_byte_time_domain_data() {}
-
-    fn frb_override_get_float_frequency_data() {}
-
-    fn frb_override_get_byte_frequency_data() {}
-}
-
