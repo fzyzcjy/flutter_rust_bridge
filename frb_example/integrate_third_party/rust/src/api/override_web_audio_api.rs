@@ -1,7 +1,7 @@
 use crate::api::media_element::MyMediaElement;
 use extend::ext;
 use flutter_rust_bridge::for_generated::anyhow;
-use flutter_rust_bridge::{DartFnFuture, frb};
+use flutter_rust_bridge::{frb, DartFnFuture};
 use web_audio_api::context::{AudioContext, BaseAudioContext};
 use web_audio_api::node::*;
 use web_audio_api::{AudioBuffer, AudioParam, Event};
@@ -22,6 +22,11 @@ pub impl AudioContext {
         media_element: &mut MyMediaElement,
     ) -> MediaElementAudioSourceNode {
         self.create_media_element_source(&mut media_element.0.lock().unwrap())
+    }
+
+    fn set_sink_id(&self, sink_id: String) -> anyhow::Result<()> {
+        self.set_sink_id_sync(sink_id)
+            .map_err(|e| anyhow::anyhow!("{:?}", e))
     }
 
     fn set_on_state_change(&self, callback: impl Fn(Event) -> DartFnFuture<()> + Send + 'static) {

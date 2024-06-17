@@ -31,8 +31,7 @@ impl MyMediaElement {
     #[frb(sync)]
     pub fn new(file: String) -> anyhow::Result<MyMediaElement> {
         Ok(MyMediaElement(Mutex::new(
-            web_audio_api::MediaElement::new(file)
-                .map_err(|err| anyhow::anyhow!("MediaElement.new failed: {:?}", err))?,
+            web_audio_api::MediaElement::new(file).map_err(|err| anyhow::anyhow!("{:?}", err))?,
         )))
     }
 }
