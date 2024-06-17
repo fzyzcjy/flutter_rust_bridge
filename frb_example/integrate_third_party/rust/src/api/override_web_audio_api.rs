@@ -32,6 +32,17 @@ macro_rules! handle_audio_node_trait_impls_override {
             fn frb_override_connect(&self, dest: &dyn AudioNode) {
                 self.connect(dest);
             }
+
+            fn frb_override_set_onprocessorerror(
+                &self,
+                callback: impl Fn(String) -> DartFnFuture<()> + Send + 'static,
+            ) {
+                self.set_onprocessorerror(Box::new(|event| {
+                    flutter_rust_bridge::spawn(async move {
+                        callback(event.message).await;
+                    });
+                }))
+            }
         }
     };
 }
@@ -58,18 +69,3 @@ handle_audio_node_trait_impls_override!(PannerNode);
 handle_audio_node_trait_impls_override!(ScriptProcessorNode);
 handle_audio_node_trait_impls_override!(StereoPannerNode);
 handle_audio_node_trait_impls_override!(WaveShaperNode);
-
-// TODO use macro
-#[ext(name = GainNodeSetOnprocessorErrorExt)]
-pub impl GainNode {
-    fn frb_override_set_onprocessorerror(
-        &self,
-        callback: impl Fn(String) -> DartFnFuture<()> + Send + 'static,
-    ) {
-        self.set_onprocessorerror(Box::new(|event| {
-            flutter_rust_bridge::spawn(async move {
-                callback(event.message).await;
-            });
-        }))
-    }
-}
