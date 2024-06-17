@@ -45,7 +45,7 @@ where
         if let Some(src_object) = self.src_objects().get(*name) {
             let src_object = (*src_object).clone();
 
-            let namespace = self.parse_namespace(*name).unwrap();
+            let namespace = self.parse_namespace(name).unwrap();
             let namespaced_name = NamespacedName::new(namespace, name.to_string());
 
             let attrs = FrbAttributes::parse(src_object.src.attrs())?;
@@ -88,7 +88,8 @@ where
     }
 
     fn parse_namespace(&mut self, name: &str) -> Option<Namespace> {
-        self.src_objects().get(name)
+        self.src_objects()
+            .get(name)
             .map(|object| object.name.namespace.clone())
     }
 

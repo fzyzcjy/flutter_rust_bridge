@@ -4,9 +4,9 @@ use flutter_rust_bridge::for_generated::anyhow;
 use flutter_rust_bridge::{frb, DartFnFuture};
 use std::sync::Arc;
 use web_audio_api::context::{AudioContext, BaseAudioContext, OfflineAudioContext};
+use web_audio_api::media_streams::{MediaStream, MediaStreamTrack};
 use web_audio_api::node::*;
 use web_audio_api::{AudioBuffer, AudioParam, Event, OfflineAudioCompletionEvent};
-use web_audio_api::media_streams::{MediaStream, MediaStreamTrack};
 
 #[ext]
 pub impl AudioContext {

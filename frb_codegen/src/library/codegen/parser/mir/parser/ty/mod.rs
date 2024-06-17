@@ -35,6 +35,7 @@ pub(crate) mod external_impl;
 pub(crate) mod generics;
 pub(crate) mod lifetimeable;
 pub(crate) mod misc;
+mod namespace;
 pub(crate) mod optional;
 pub(crate) mod path;
 pub(crate) mod path_data;
@@ -51,7 +52,6 @@ pub(crate) mod tuple;
 #[allow(clippy::module_inception)]
 pub(crate) mod ty;
 pub(crate) mod unencodable;
-mod namespace;
 
 pub(crate) struct TypeParser<'a> {
     src_structs: HashMap<String, &'a HirFlatStruct>,

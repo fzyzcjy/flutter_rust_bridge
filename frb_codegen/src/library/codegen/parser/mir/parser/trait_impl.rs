@@ -12,6 +12,7 @@ use crate::utils::crate_name::CrateName;
 use crate::utils::namespace::Namespace;
 use itertools::Itertools;
 
+#[allow(clippy::too_many_arguments)]
 pub(crate) fn parse(
     hir_trait_impls: &[HirFlatTraitImpl],
     type_parser: &mut TypeParser,
