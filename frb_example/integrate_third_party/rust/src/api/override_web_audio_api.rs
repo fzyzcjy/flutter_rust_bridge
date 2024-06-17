@@ -107,10 +107,10 @@ macro_rules! handle_audio_scheduled_source_node_trait_impls_override {
             // NOTE: The original name was `set_onended` and here the new name has `_`
             fn set_on_ended(
                 &self,
-                callback: impl Fn(String) -> DartFnFuture<()> + Send + 'static,
+                callback: impl Fn(Event) -> DartFnFuture<()> + Send + 'static,
             ) {
                 self.set_onended(Box::new(|event| {
-                    flutter_rust_bridge::spawn(async move { callback(event.message).await });
+                    flutter_rust_bridge::spawn(async move { callback(event).await });
                 }))
             }
         }
