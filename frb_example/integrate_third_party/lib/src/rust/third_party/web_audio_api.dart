@@ -9,7 +9,7 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'web_audio_api/node.dart';
 import 'web_audio_api/worklet.dart';
 
-// These types are ignored because they are not used by any `pub` functions: `AtomicF32`, `AtomicF64`, `ErrorEvent`, `MediaElement`, `MessagePort`
+// These types are ignored because they are not used by any `pub` functions: `AtomicF32`, `AtomicF64`, `ErrorEvent`, `MessagePort`
 // These functions are ignored (category: IgnoreBecauseOwnerTyShouldIgnore): `load`, `load`, `new`, `new`, `store`, `store`
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioBuffer>>
@@ -303,6 +303,27 @@ abstract class AudioRenderCapacityEvent implements RustOpaqueInterface {
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Event>>
 abstract class Event implements RustOpaqueInterface {}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaElement>>
+abstract class MediaElement implements RustOpaqueInterface {
+  Future<double> currentTime();
+
+  Future<bool> loop();
+
+  Future<void> pause();
+
+  Future<bool> paused();
+
+  Future<void> play();
+
+  Future<double> playbackRate();
+
+  Future<void> setCurrentTime({required double value});
+
+  Future<void> setLoop({required bool value});
+
+  Future<void> setPlaybackRate({required double value});
+}
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OfflineAudioCompletionEvent>>
 abstract class OfflineAudioCompletionEvent implements RustOpaqueInterface {
