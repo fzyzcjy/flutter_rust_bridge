@@ -72,7 +72,7 @@ macro_rules! handle_audio_node_trait_impls_marker {
         impl $name {
             // Please refer to comments in `AudioNode`
             #[frb(ignore)]
-            fn context() {}
+            pub fn context() {}
             #[frb(ignore)]
             pub fn set_onprocessorerror() {}
             #[frb(ignore)]
