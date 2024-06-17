@@ -29,6 +29,9 @@ abstract class AudioContextExt {
       {required MediaElement mediaElement});
 
   Future<AudioBuffer> decodeAudioDataSync({required String inputPath});
+
+  Future<void> setOnStateChange(
+      {required FutureOr<void> Function(Event) callback});
 }
 
 abstract class AudioDestinationNodeExt {

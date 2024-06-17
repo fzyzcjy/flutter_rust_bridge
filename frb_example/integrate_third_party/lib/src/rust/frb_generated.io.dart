@@ -792,6 +792,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  FutureOr<void> Function(Event)
+      dco_decode_DartFn_Inputs_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEvent_Output_unit_AnyhowException(
+          dynamic raw);
+
+  @protected
   FutureOr<void> Function(String)
       dco_decode_DartFn_Inputs_String_Output_unit_AnyhowException(dynamic raw);
 
@@ -3179,6 +3184,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerWaveShaperNode(
           WaveShaperNode self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_DartFn_Inputs_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEvent_Output_unit_AnyhowException(
+          FutureOr<void> Function(Event) self, SseSerializer serializer);
 
   @protected
   void sse_encode_DartFn_Inputs_String_Output_unit_AnyhowException(
