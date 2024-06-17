@@ -27,6 +27,9 @@ impl AudioBuffer {
 
 #[frb(external)]
 impl AudioParam {
+    #[frb(ignore)]
+    pub fn set_onprocessorerror() {}
+
     #[frb(sync, getter)]
     pub fn value() {}
 
