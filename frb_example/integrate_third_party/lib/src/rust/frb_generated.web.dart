@@ -1289,6 +1289,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_TraitDef_MediaStreamAudioSourceNodeExt(dynamic raw);
 
   @protected
+  MediaStreamExt dco_decode_TraitDef_MediaStreamExt(dynamic raw);
+
+  @protected
   MediaStreamTrackAudioSourceNodeExt
       dco_decode_TraitDef_MediaStreamTrackAudioSourceNodeExt(dynamic raw);
 

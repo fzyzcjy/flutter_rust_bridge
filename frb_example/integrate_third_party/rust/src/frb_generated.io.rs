@@ -23,6 +23,7 @@ use crate::api::override_web_audio_api::IIRFilterNodeExt;
 use crate::api::override_web_audio_api::MediaElementAudioSourceNodeExt;
 use crate::api::override_web_audio_api::MediaStreamAudioDestinationNodeExt;
 use crate::api::override_web_audio_api::MediaStreamAudioSourceNodeExt;
+use crate::api::override_web_audio_api::MediaStreamExt;
 use crate::api::override_web_audio_api::MediaStreamTrackAudioSourceNodeExt;
 use crate::api::override_web_audio_api::OfflineAudioContextExt;
 use crate::api::override_web_audio_api::OscillatorNodeExt;

@@ -5,6 +5,7 @@
 
 import '../frb_generated.dart';
 import '../third_party/web_audio_api.dart';
+import '../third_party/web_audio_api/media_streams.dart';
 import '../third_party/web_audio_api/node.dart';
 import '../third_party/web_audio_api/worklet.dart';
 import 'media_element.dart';
@@ -136,6 +137,10 @@ abstract class MediaStreamAudioSourceNodeExt {
 
   Future<void> setOnProcessorError(
       {required FutureOr<void> Function(String) callback});
+}
+
+abstract class MediaStreamExt {
+  Future<List<MediaStreamTrack>> getTracks();
 }
 
 abstract class MediaStreamTrackAudioSourceNodeExt {
