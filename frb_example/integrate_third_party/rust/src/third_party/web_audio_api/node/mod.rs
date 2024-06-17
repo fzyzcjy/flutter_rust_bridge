@@ -49,9 +49,8 @@ impl WaveShaperNode {
 #[frb(external)]
 #[frb(generate_implementor_enum)]
 pub trait AudioNode {
-    // TODO
-    // #[frb(ignore)]
-    // fn set_onprocessorerror();
+    #[frb(ignore)]
+    fn set_onprocessorerror();
     #[frb(ignore)]
     fn connect_from_output_to_input();
     #[frb(ignore)]
