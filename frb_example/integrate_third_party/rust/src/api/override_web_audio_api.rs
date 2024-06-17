@@ -84,7 +84,7 @@ handle_audio_node_trait_impls_override!(WaveShaperNode);
 #[ext]
 pub impl Event {
     #[frb(sync, getter)]
-    pub fn type_(&self) -> String {
+    fn type_(&self) -> String {
         self.type_.to_owned()
     }
 }
