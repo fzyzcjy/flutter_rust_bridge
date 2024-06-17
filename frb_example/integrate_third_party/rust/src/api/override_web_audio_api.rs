@@ -6,6 +6,7 @@ use std::sync::Arc;
 use web_audio_api::context::{AudioContext, BaseAudioContext, OfflineAudioContext};
 use web_audio_api::node::*;
 use web_audio_api::{AudioBuffer, AudioParam, Event, OfflineAudioCompletionEvent};
+use web_audio_api::media_streams::{MediaStream, MediaStreamTrack};
 
 #[ext]
 pub impl AudioContext {
@@ -104,6 +105,13 @@ pub impl Event {
     #[frb(sync, getter)]
     fn type_(&self) -> String {
         self.type_.to_owned()
+    }
+}
+
+#[ext]
+pub impl MediaStream {
+    fn frb_override_get_tracks(&self) -> Vec<MediaStreamTrack> {
+        self.get_tracks().to_owned()
     }
 }
 
