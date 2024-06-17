@@ -182,6 +182,7 @@ mod tests {
                 default_rust_opaque_codec: RustOpaqueCodecMode::Nom,
                 stop_on_error: true,
                 enable_lifetime: false,
+                type_64bit_int: false,
             },
         };
 

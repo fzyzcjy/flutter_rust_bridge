@@ -36,6 +36,7 @@ pub(crate) fn parse(
         config.default_stream_sink_codec,
         config.default_rust_opaque_codec,
         config.enable_lifetime,
+        config.type_64bit_int,
         parse_mode,
     )?;
 
@@ -50,6 +51,7 @@ pub(crate) fn parse(
             default_stream_sink_codec: config.default_stream_sink_codec,
             default_rust_opaque_codec: config.default_rust_opaque_codec,
             enable_lifetime: config.enable_lifetime,
+            type_64bit_int: config.type_64bit_int,
             parse_mode,
         },
     )?;

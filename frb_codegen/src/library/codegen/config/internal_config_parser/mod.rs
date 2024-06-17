@@ -111,6 +111,7 @@ impl InternalConfig {
                     default_rust_opaque_codec,
                     stop_on_error,
                     enable_lifetime: config.enable_lifetime.unwrap_or_default(),
+                    type_64bit_int: config.type_64bit_int.unwrap_or_default(),
                 },
             },
             generator,

@@ -17,6 +17,7 @@ pub(crate) struct PartialContext {
     pub default_stream_sink_codec: CodecMode,
     pub default_rust_opaque_codec: RustOpaqueCodecMode,
     pub enable_lifetime: bool,
+    pub type_64bit_int: bool,
     pub parse_mode: ParseMode,
 }
 
@@ -91,6 +92,7 @@ fn parse_function_inner(
         default_stream_sink_codec: partial_context.default_stream_sink_codec,
         default_rust_opaque_codec: partial_context.default_rust_opaque_codec,
         enable_lifetime: partial_context.enable_lifetime,
+        type_64bit_int: partial_context.type_64bit_int,
         parse_mode: partial_context.parse_mode,
     };
 
