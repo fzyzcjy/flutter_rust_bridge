@@ -5,6 +5,7 @@ use flutter_rust_bridge::for_generated::anyhow;
 use web_audio_api::context::{AudioContext, BaseAudioContext};
 use web_audio_api::node::*;
 use web_audio_api::{AudioBuffer, AudioParam};
+use flutter_rust_bridge::DartFnFuture;
 
 #[ext]
 pub impl AudioContext {
@@ -63,8 +64,11 @@ handle_audio_node_trait_impls_override!(WaveShaperNode);
 pub impl AudioParam {
     fn frb_override_set_onprocessorerror(
         &self,
-        callback: Box<dyn FnOnce(ErrorEvent) + Send + 'static>,
+        callback: impl Fn(String) -> DartFnFuture<()>,
     ) {
-        self.set_onprocessorerror(callback)
+        self.set_onprocessorerror(Box::new(|event| {
+            // TODO spawn the future
+            callback(event.message);
+        }))
     }
 }
