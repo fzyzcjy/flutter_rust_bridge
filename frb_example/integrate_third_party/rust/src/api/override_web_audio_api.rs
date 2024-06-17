@@ -68,7 +68,7 @@ pub impl AudioParam {
     ) {
         self.set_onprocessorerror(Box::new(|event| {
             flutter_rust_bridge::spawn(async move {
-                callback(event.message);
+                callback(event.message).await;
             });
         }))
     }
