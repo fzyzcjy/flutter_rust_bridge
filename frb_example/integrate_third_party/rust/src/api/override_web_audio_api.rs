@@ -1,10 +1,10 @@
 use crate::api::media_element::MyMediaElement;
 use extend::ext;
 use flutter_rust_bridge::for_generated::anyhow;
+use flutter_rust_bridge::DartFnFuture;
 use web_audio_api::context::{AudioContext, BaseAudioContext};
 use web_audio_api::node::*;
-use web_audio_api::{AudioBuffer, AudioParam};
-use flutter_rust_bridge::DartFnFuture;
+use web_audio_api::{AudioBuffer, AudioParam, Event};
 
 #[ext]
 pub impl AudioContext {
@@ -23,6 +23,12 @@ pub impl AudioContext {
     ) -> MediaElementAudioSourceNode {
         self.create_media_element_source(&mut media_element.0.lock().unwrap())
     }
+
+    fn set_on_state_change(&self, callback: impl Fn(Event) -> DartFnFuture<()> + Send + 'static) {
+        self.set_onstatechange(|event| {
+            flutter_rust_bridge::spawn(async move { callback(event).await });
+        })
+    }
 }
 
 macro_rules! handle_audio_node_trait_impls_override {
@@ -40,9 +46,7 @@ macro_rules! handle_audio_node_trait_impls_override {
                 callback: impl Fn(String) -> DartFnFuture<()> + Send + 'static,
             ) {
                 self.set_onprocessorerror(Box::new(|event| {
-                    flutter_rust_bridge::spawn(async move {
-                        callback(event.message).await;
-                    });
+                    flutter_rust_bridge::spawn(async move { callback(event.message).await });
                 }))
             }
         }
