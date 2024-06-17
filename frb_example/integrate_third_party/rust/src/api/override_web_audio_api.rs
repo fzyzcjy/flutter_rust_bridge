@@ -100,6 +100,27 @@ handle_audio_node_trait_impls_override!(ScriptProcessorNode);
 handle_audio_node_trait_impls_override!(StereoPannerNode);
 handle_audio_node_trait_impls_override!(WaveShaperNode);
 
+macro_rules! handle_audio_scheduled_source_node_trait_impls_override {
+    ($name:ident) => {
+        #[ext]
+        pub impl $name {
+            // NOTE: The original name was `set_onended` and here the new name has `_`
+            fn set_on_ended(
+                &self,
+                callback: impl Fn(String) -> DartFnFuture<()> + Send + 'static,
+            ) {
+                self.set_onended(Box::new(|event| {
+                    flutter_rust_bridge::spawn(async move { callback(event.message).await });
+                }))
+            }
+        }
+    };
+}
+
+handle_audio_scheduled_source_node_trait_impls_override!(ConstantSourceNode);
+handle_audio_scheduled_source_node_trait_impls_override!(OscillatorNode);
+handle_audio_scheduled_source_node_trait_impls_override!(AudioBufferSourceNode);
+
 #[ext]
 pub impl Event {
     #[frb(sync, getter)]
