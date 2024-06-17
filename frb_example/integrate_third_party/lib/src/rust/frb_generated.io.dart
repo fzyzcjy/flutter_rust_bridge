@@ -1292,6 +1292,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   WaveShaperNodeExt dco_decode_TraitDef_WaveShaperNodeExt(dynamic raw);
 
   @protected
+  WaveShaperNodeMiscExt dco_decode_TraitDef_WaveShaperNodeMiscExt(dynamic raw);
+
+  @protected
   AudioBufferOptions dco_decode_audio_buffer_options(dynamic raw);
 
   @protected

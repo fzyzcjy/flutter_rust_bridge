@@ -29,6 +29,7 @@ use crate::api::override_web_audio_api::PannerNodeExt;
 use crate::api::override_web_audio_api::ScriptProcessorNodeExt;
 use crate::api::override_web_audio_api::StereoPannerNodeExt;
 use crate::api::override_web_audio_api::WaveShaperNodeExt;
+use crate::api::override_web_audio_api::WaveShaperNodeMiscExt;
 use crate::api::simple::*;
 use flutter_rust_bridge::for_generated::byteorder::{NativeEndian, ReadBytesExt, WriteBytesExt};
 use flutter_rust_bridge::for_generated::{transform_result_dco, Lifetimeable, Lockable};

@@ -179,3 +179,7 @@ abstract class WaveShaperNodeExt {
   Future<void> setOnProcessorError(
       {required FutureOr<void> Function(String) callback});
 }
+
+abstract class WaveShaperNodeMiscExt {
+  Future<Float32List?> curve();
+}

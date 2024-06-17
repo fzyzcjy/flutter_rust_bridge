@@ -1634,7 +1634,11 @@ abstract class StereoPannerNode
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<WaveShaperNode>>
 abstract class WaveShaperNode
-    implements RustOpaqueInterface, AudioNode, WaveShaperNodeExt {
+    implements
+        RustOpaqueInterface,
+        AudioNode,
+        WaveShaperNodeExt,
+        WaveShaperNodeMiscExt {
   /// Config for up/down-mixing of input channels for this node.
   ///
   /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
@@ -1667,6 +1671,8 @@ abstract class WaveShaperNode
   Future<void> disconnectOutput({required int output});
 
   Future<void> connect({required AudioNode dest});
+
+  Future<Float32List?> curve();
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
   Future<int> numberOfInputs();

@@ -15,13 +15,11 @@ part 'context.freezed.dart';
 
 // These functions are ignored because they have generic arguments: `decode_audio_data_sync`, `decode_audio_data_sync`, `decode_audio_data_sync`, `set_onstatechange`, `set_onstatechange`, `set_onstatechange`, `set_onstatechange`
 // These types are ignored because they are not used by any `pub` functions: `AudioNodeId`
+// These functions are ignored (category: IgnoreBecauseExplicitAttribute): `base`, `base`, `base`, `base`
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioContext>>
 abstract class AudioContext
     implements RustOpaqueInterface, AudioContextExt, BaseAudioContext {
-  /// Returns the [`BaseAudioContext`] concrete type associated with this `AudioContext`
-  Future<void> base();
-
   /// This represents the number of seconds of processing latency incurred by
   /// the `AudioContext` passing the audio from the `AudioDestinationNode`
   /// to the audio subsystem.
@@ -282,9 +280,6 @@ abstract class AudioParamId implements RustOpaqueInterface {}
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ConcreteBaseAudioContext>>
 abstract class ConcreteBaseAudioContext
     implements RustOpaqueInterface, BaseAudioContext {
-  /// Returns the [`BaseAudioContext`] concrete type associated with this `AudioContext`
-  Future<void> base();
-
   /// Unset the callback to run when the state of the AudioContext has changed
   Future<void> clearOnstatechange();
 
@@ -403,9 +398,6 @@ abstract class ConcreteBaseAudioContext
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OfflineAudioContext>>
 abstract class OfflineAudioContext
     implements RustOpaqueInterface, BaseAudioContext {
-  /// Returns the [`BaseAudioContext`] concrete type associated with this `AudioContext`
-  Future<void> base();
-
   /// Unset the callback to run when the rendering has completed
   Future<void> clearOncomplete();
 
@@ -618,9 +610,6 @@ abstract class OfflineAudioContext
 }
 
 abstract class BaseAudioContext {
-  /// Returns the [`BaseAudioContext`] concrete type associated with this `AudioContext`
-  Future<void> base();
-
   /// Unset the callback to run when the state of the AudioContext has changed
   Future<void> clearOnstatechange();
 
