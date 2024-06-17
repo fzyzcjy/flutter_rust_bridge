@@ -7,6 +7,9 @@ impl AudioWorkletNode {
     pub fn port() {}
 
     #[frb(ignore)]
+    pub fn set_onprocessorerror() {}
+
+    #[frb(ignore)]
     pub fn disconnect_dest() {}
 
     #[frb(ignore)]
