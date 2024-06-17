@@ -885,7 +885,12 @@ abstract class DynamicsCompressorNode
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<GainNode>>
-abstract class GainNode implements RustOpaqueInterface, AudioNode, GainNodeExt {
+abstract class GainNode
+    implements
+        RustOpaqueInterface,
+        AudioNode,
+        GainNodeExt,
+        GainNodeSetOnprocessorErrorExt {
   /// Config for up/down-mixing of input channels for this node.
   ///
   /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.

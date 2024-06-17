@@ -35,11 +35,6 @@ abstract class AudioParamExt {
   Future<void> connect({required AudioNode dest});
 }
 
-abstract class AudioParamSetOnprocessorErrorExt {
-  Future<void> setOnprocessorerror(
-      {required FutureOr<void> Function(String) callback});
-}
-
 abstract class BiquadFilterNodeExt {
   Future<void> connect({required AudioNode dest});
 }
@@ -70,6 +65,11 @@ abstract class DynamicsCompressorNodeExt {
 
 abstract class GainNodeExt {
   Future<void> connect({required AudioNode dest});
+}
+
+abstract class GainNodeSetOnprocessorErrorExt {
+  Future<void> setOnprocessorerror(
+      {required FutureOr<void> Function(String) callback});
 }
 
 abstract class IIRFilterNodeExt {
