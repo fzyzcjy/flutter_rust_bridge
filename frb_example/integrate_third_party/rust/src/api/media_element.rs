@@ -1,11 +1,12 @@
 use delegate_attr::delegate;
 use flutter_rust_bridge::frb;
 
+// TODO: Dart rename `MyMediaElement` -> `MediaElement`
 #[frb(opaque)]
-pub struct MediaElement(web_audio_api::MediaElement);
+pub struct MyMediaElement(web_audio_api::MediaElement);
 
 #[delegate(self.0)]
-impl MediaElement {
+impl MyMediaElement {
     pub fn current_time(&self) -> f64 {}
 
     pub fn set_current_time(&self, value: f64) {}
