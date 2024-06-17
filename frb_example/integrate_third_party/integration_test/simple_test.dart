@@ -45,6 +45,30 @@ Future<void> _rustWebAudioApiReadmeDemoUsage() async {
 
 // The following is adapted from this demo:
 // https://developer.mozilla.org/zh-CN/docs/Web/API/Web_Audio_API/Using_Web_Audio_API
+// https://github.com/mdn/webaudio-examples/blob/main/audio-basics/index.html
+// ignore: unused_element
 Future<void> _mdnUsingWebAudioApiDemoUsage() async {
-  // TODO
+  // TODO default options
+  const options = AudioContextOptions(
+    latencyHint: AudioContextLatencyCategory.balanced(),
+    sinkId: '',
+    renderSizeHint: AudioContextRenderSizeCategory.default_,
+  );
+  final audioContext = AudioContext(options: options);
+
+  final track = await audioContext.createMediaElementSource(audioElement);
+
+  final gainNode = await audioContext.createGain();
+  gainNode.gain.setValue(value: 1.2345);
+
+  final panner = await audioContext.createStereoPanner();
+  panner.pan.setValue(value: 1.2345);
+
+  await track.connect(dest: gainNode);
+  await gainNode.connect(dest: panner);
+  await panner.connect(dest: await audioContext.destination());
+
+  await audioContext.resume();
+  await audioContext.play();
+  await audioContext.pause();
 }
