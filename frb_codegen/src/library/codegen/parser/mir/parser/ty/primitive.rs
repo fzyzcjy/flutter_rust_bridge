@@ -51,7 +51,8 @@ fn parse_primitive_raw(s: &str) -> Option<MirTypePrimitive> {
 }
 
 fn transform_primitive(inner: MirTypePrimitive, context: &TypeParserParsingContext) -> MirType {
-    if context.func_attributes.type_64bit_int()
+    if context.type_64bit_int
+        || context.func_attributes.type_64bit_int()
         || (context.struct_or_enum_attributes.as_ref())
             .map(|x| x.type_64bit_int())
             .unwrap_or_default()
