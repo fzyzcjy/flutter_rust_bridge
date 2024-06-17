@@ -6,6 +6,7 @@
 import '../../api/override_web_audio_api.dart';
 import '../../frb_generated.dart';
 import '../web_audio_api.dart';
+import 'media_streams.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'worklet.dart';
 
@@ -1119,7 +1120,7 @@ abstract class MediaStreamAudioDestinationNode
 
   /// A [`MediaStream`] producing audio buffers with the same number of channels as the node
   /// itself
-  Future<void> stream();
+  Future<MediaStream> stream();
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaStreamAudioSourceNode>>
