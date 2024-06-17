@@ -56,6 +56,7 @@ Future<void> _mdnUsingWebAudioApiDemoUsage() async {
   );
   final audioContext = AudioContext(options: options);
 
+  final audioElement = MediaElement();
   final track = await audioContext.createMediaElementSource(audioElement);
 
   final gainNode = await audioContext.createGain();
@@ -69,6 +70,7 @@ Future<void> _mdnUsingWebAudioApiDemoUsage() async {
   await panner.connect(dest: await audioContext.destination());
 
   await audioContext.resumeSync();
-  await audioContext.play();
-  await audioContext.pause();
+
+  await audioElement.play();
+  await audioElement.pause();
 }
