@@ -67,8 +67,9 @@ pub impl AudioParam {
         callback: impl Fn(String) -> DartFnFuture<()>,
     ) {
         self.set_onprocessorerror(Box::new(|event| {
-            // TODO spawn the future
-            callback(event.message);
+            flutter_rust_bridge::spawn(async move {
+                callback(event.message);
+            });
         }))
     }
 }
