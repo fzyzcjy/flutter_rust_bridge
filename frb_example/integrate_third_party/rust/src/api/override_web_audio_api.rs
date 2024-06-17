@@ -1,8 +1,8 @@
-use std::sync::Arc;
 use crate::api::media_element::MyMediaElement;
 use extend::ext;
 use flutter_rust_bridge::for_generated::anyhow;
 use flutter_rust_bridge::{frb, DartFnFuture};
+use std::sync::Arc;
 use web_audio_api::context::{AudioContext, BaseAudioContext};
 use web_audio_api::node::*;
 use web_audio_api::{AudioBuffer, AudioParam, Event};
@@ -30,7 +30,10 @@ pub impl AudioContext {
             .map_err(|e| anyhow::anyhow!("{:?}", e))
     }
 
-    fn set_on_state_change(&self, callback: impl Fn(Event) -> DartFnFuture<()> + Send + Sync + 'static) {
+    fn set_on_state_change(
+        &self,
+        callback: impl Fn(Event) -> DartFnFuture<()> + Send + Sync + 'static,
+    ) {
         let callback = Arc::new(callback);
         self.set_onstatechange(move |event| {
             let callback_cloned = callback.clone();
@@ -89,5 +92,12 @@ pub impl Event {
     #[frb(sync, getter)]
     fn type_(&self) -> String {
         self.type_.to_owned()
+    }
+}
+
+#[ext(name = WaveShaperNodeMiscExt)]
+pub impl WaveShaperNode {
+    pub fn frb_override_curve(&self) -> Option<Vec<f32>> {
+        self.curve().map(|x| x.to_owned())
     }
 }
