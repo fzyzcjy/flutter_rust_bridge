@@ -77,7 +77,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         self.parse_type_rust_auto_opaque_implicit(
             ty_raw.self_namespace(),
             &syn::parse_str(&transform(ty_raw.raw.string.with_original_lifetime()))?,
-            None,
+            ty_raw.reason,
             None,
         )
     }
