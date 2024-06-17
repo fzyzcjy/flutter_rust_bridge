@@ -59,8 +59,8 @@ handle_audio_node_trait_impls_override!(ScriptProcessorNode);
 handle_audio_node_trait_impls_override!(StereoPannerNode);
 handle_audio_node_trait_impls_override!(WaveShaperNode);
 
-#[ext(name = AudioParamSetOnprocessorErrorExt)]
-pub impl AudioParam {
+#[ext(name = GainNodeSetOnprocessorErrorExt)]
+pub impl GainNode {
     fn frb_override_set_onprocessorerror(
         &self,
         callback: impl Fn(String) -> DartFnFuture<()> + Send + 'static,
