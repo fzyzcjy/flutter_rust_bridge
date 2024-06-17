@@ -57,8 +57,9 @@ Future<void> _mdnUsingWebAudioApiDemoUsage() async {
   );
   final audioContext = AudioContext(options: options);
 
-  final audioElement = MyMediaElement();
-  final track = await audioContext.createMediaElementSource(audioElement);
+  final audioElement = MyMediaElement(file: 'some_file_here');
+  final track =
+      await audioContext.createMediaElementSource(mediaElement: audioElement);
 
   final gainNode = await audioContext.createGain();
   gainNode.gain.value = 1.2345;
