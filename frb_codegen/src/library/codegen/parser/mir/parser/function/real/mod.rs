@@ -127,7 +127,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         enable_lifetime: bool,
         parse_mode: ParseMode,
     ) -> anyhow::Result<MirFuncOrSkip> {
-        log::warn!("parse_function function name: {:?}", func.item_fn.name());
+        debug!("parse_function function name: {:?}", func.item_fn.name());
 
         if func.is_public() == Some(false) {
             return Ok(create_output_skip(func, IgnoreBecauseFunctionNotPub));

@@ -9,7 +9,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type(&mut self, ty: &Type) -> anyhow::Result<MirType> {
         let resolve_ty = self.resolve_alias(ty);
         let ans = self.parse_type_inner(&resolve_ty)?;
-        log::warn!("TypeParserWithContext.parse_type ty={} ans={ans:?}", ty_to_string(ty));
+        log::debug!("TypeParserWithContext.parse_type ty={} ans={ans:?}", ty_to_string(ty));
         Ok(ans)
     }
 
