@@ -1,11 +1,12 @@
+use std::sync::Mutex;
 use delegate_attr::delegate;
 use flutter_rust_bridge::frb;
 
 // TODO: Dart rename `MyMediaElement` -> `MediaElement`
 #[frb(opaque)]
-pub struct MyMediaElement(web_audio_api::MediaElement);
+pub struct MyMediaElement(Mutex<web_audio_api::MediaElement>);
 
-#[delegate(self.0)]
+#[delegate(self.0.lock().unwrap())]
 impl MyMediaElement {
     pub fn current_time(&self) -> f64 {}
 
