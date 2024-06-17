@@ -109,7 +109,7 @@ pub impl Event {
 
 #[ext(name = WaveShaperNodeMiscExt)]
 pub impl WaveShaperNode {
-    pub fn frb_override_curve(&self) -> Option<Vec<f32>> {
+    fn frb_override_curve(&self) -> Option<Vec<f32>> {
         self.curve().map(|x| x.to_owned())
     }
 }
