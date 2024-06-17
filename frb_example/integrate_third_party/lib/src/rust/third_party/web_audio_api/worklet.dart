@@ -20,7 +20,7 @@ abstract class AudioWorkletNode implements RustOpaqueInterface, AudioNode {
 
   /// Represents an integer used to determine how many channels are used when up-mixing and
   /// down-mixing connections to any inputs to the node.
-  Future<BigInt> channelCount();
+  Future<int> channelCount();
 
   /// Represents an enumerated value describing the way channels must be matched between the
   /// node's inputs and outputs.
@@ -46,13 +46,13 @@ abstract class AudioWorkletNode implements RustOpaqueInterface, AudioNode {
   ///
   /// This function will panic when
   /// - if the output port is out of bounds for this node
-  Future<void> disconnectOutput({required BigInt output});
+  Future<void> disconnectOutput({required int output});
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
-  Future<BigInt> numberOfInputs();
+  Future<int> numberOfInputs();
 
   /// The number of outputs coming out of the AudioNode.
-  Future<BigInt> numberOfOutputs();
+  Future<int> numberOfOutputs();
 
   /// Collection of AudioParam objects with associated names of this node
   ///
@@ -66,7 +66,7 @@ abstract class AudioWorkletNode implements RustOpaqueInterface, AudioNode {
   Future<void> registration();
 
   /// Update the `channel_count` attribute
-  Future<void> setChannelCount({required BigInt v});
+  Future<void> setChannelCount({required int v});
 
   /// Update the `channel_count_mode` attribute
   Future<void> setChannelCountMode({required ChannelCountMode v});

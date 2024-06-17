@@ -24,7 +24,7 @@ abstract class AnalyserNode
 
   /// Represents an integer used to determine how many channels are used when up-mixing and
   /// down-mixing connections to any inputs to the node.
-  Future<BigInt> channelCount();
+  Future<int> channelCount();
 
   /// Represents an enumerated value describing the way channels must be matched between the
   /// node's inputs and outputs.
@@ -50,14 +50,14 @@ abstract class AnalyserNode
   ///
   /// This function will panic when
   /// - if the output port is out of bounds for this node
-  Future<void> disconnectOutput({required BigInt output});
+  Future<void> disconnectOutput({required int output});
 
   /// The size of the FFT used for frequency-domain analysis (in sample-frames)
   ///
   /// # Panics
   ///
   /// This method may panic if the lock to the inner analyser is poisoned
-  Future<BigInt> fftSize();
+  Future<int> fftSize();
 
   Future<void> connect({required AudioNode dest});
 
@@ -66,7 +66,7 @@ abstract class AnalyserNode
   /// # Panics
   ///
   /// This method may panic if the lock to the inner analyser is poisoned
-  Future<BigInt> frequencyBinCount();
+  Future<int> frequencyBinCount();
 
   /// Maximum power value in the scaling range for the FFT analysis data for
   /// conversion to unsigned byte values. The default value is -30.
@@ -85,10 +85,10 @@ abstract class AnalyserNode
   Future<double> minDecibels();
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
-  Future<BigInt> numberOfInputs();
+  Future<int> numberOfInputs();
 
   /// The number of outputs coming out of the AudioNode.
-  Future<BigInt> numberOfOutputs();
+  Future<int> numberOfOutputs();
 
   /// Handle of the associated [`BaseAudioContext`](crate::context::BaseAudioContext).
   ///
@@ -96,7 +96,7 @@ abstract class AnalyserNode
   Future<void> registration();
 
   /// Update the `channel_count` attribute
-  Future<void> setChannelCount({required BigInt v});
+  Future<void> setChannelCount({required int v});
 
   /// Update the `channel_count_mode` attribute
   Future<void> setChannelCountMode({required ChannelCountMode v});
@@ -109,7 +109,7 @@ abstract class AnalyserNode
   /// # Panics
   ///
   /// This function panics if fft_size is not a power of two or not in the range [32, 32768]
-  Future<void> setFftSize({required BigInt fftSize});
+  Future<void> setFftSize({required int fftSize});
 
   /// Set max decibels
   ///
@@ -161,7 +161,7 @@ abstract class AudioBufferSourceNode
 
   /// Represents an integer used to determine how many channels are used when up-mixing and
   /// down-mixing connections to any inputs to the node.
-  Future<BigInt> channelCount();
+  Future<int> channelCount();
 
   /// Represents an enumerated value describing the way channels must be matched between the
   /// node's inputs and outputs.
@@ -196,7 +196,7 @@ abstract class AudioBufferSourceNode
   ///
   /// This function will panic when
   /// - if the output port is out of bounds for this node
-  Future<void> disconnectOutput({required BigInt output});
+  Future<void> disconnectOutput({required int output});
 
   Future<void> connect({required AudioNode dest});
 
@@ -210,10 +210,10 @@ abstract class AudioBufferSourceNode
   Future<double> loopStart();
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
-  Future<BigInt> numberOfInputs();
+  Future<int> numberOfInputs();
 
   /// The number of outputs coming out of the AudioNode.
-  Future<BigInt> numberOfOutputs();
+  Future<int> numberOfOutputs();
 
   /// K-rate [`AudioParam`] that defines the speed at which the [`AudioBuffer`]
   /// will be played, e.g.:
@@ -245,7 +245,7 @@ abstract class AudioBufferSourceNode
   Future<void> setBuffer({required AudioBuffer audioBuffer});
 
   /// Update the `channel_count` attribute
-  Future<void> setChannelCount({required BigInt v});
+  Future<void> setChannelCount({required int v});
 
   /// Update the `channel_count_mode` attribute
   Future<void> setChannelCountMode({required ChannelCountMode v});
@@ -319,7 +319,7 @@ abstract class AudioDestinationNode
 
   /// Represents an integer used to determine how many channels are used when up-mixing and
   /// down-mixing connections to any inputs to the node.
-  Future<BigInt> channelCount();
+  Future<int> channelCount();
 
   /// Represents an enumerated value describing the way channels must be matched between the
   /// node's inputs and outputs.
@@ -345,20 +345,20 @@ abstract class AudioDestinationNode
   ///
   /// This function will panic when
   /// - if the output port is out of bounds for this node
-  Future<void> disconnectOutput({required BigInt output});
+  Future<void> disconnectOutput({required int output});
 
   Future<void> connect({required AudioNode dest});
 
   /// The maximum number of channels that the channelCount attribute can be set to (the max
   /// number of channels that the hardware is capable of supporting).
   /// <https://www.w3.org/TR/webaudio/#dom-audiodestinationnode-maxchannelcount>
-  Future<BigInt> maxChannelCount();
+  Future<int> maxChannelCount();
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
-  Future<BigInt> numberOfInputs();
+  Future<int> numberOfInputs();
 
   /// The number of outputs coming out of the AudioNode.
-  Future<BigInt> numberOfOutputs();
+  Future<int> numberOfOutputs();
 
   /// Handle of the associated [`BaseAudioContext`](crate::context::BaseAudioContext).
   ///
@@ -366,7 +366,7 @@ abstract class AudioDestinationNode
   Future<void> registration();
 
   /// Update the `channel_count` attribute
-  Future<void> setChannelCount({required BigInt v});
+  Future<void> setChannelCount({required int v});
 
   /// Update the `channel_count_mode` attribute
   Future<void> setChannelCountMode({required ChannelCountMode v});
@@ -388,7 +388,7 @@ abstract class BiquadFilterNode
 
   /// Represents an integer used to determine how many channels are used when up-mixing and
   /// down-mixing connections to any inputs to the node.
-  Future<BigInt> channelCount();
+  Future<int> channelCount();
 
   /// Represents an enumerated value describing the way channels must be matched between the
   /// node's inputs and outputs.
@@ -417,7 +417,7 @@ abstract class BiquadFilterNode
   ///
   /// This function will panic when
   /// - if the output port is out of bounds for this node
-  Future<void> disconnectOutput({required BigInt output});
+  Future<void> disconnectOutput({required int output});
 
   Future<void> connect({required AudioNode dest});
 
@@ -428,10 +428,10 @@ abstract class BiquadFilterNode
   AudioParam get gain;
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
-  Future<BigInt> numberOfInputs();
+  Future<int> numberOfInputs();
 
   /// The number of outputs coming out of the AudioNode.
-  Future<BigInt> numberOfOutputs();
+  Future<int> numberOfOutputs();
 
   /// Returns the Q audio parameter
   AudioParam get q;
@@ -442,7 +442,7 @@ abstract class BiquadFilterNode
   Future<void> registration();
 
   /// Update the `channel_count` attribute
-  Future<void> setChannelCount({required BigInt v});
+  Future<void> setChannelCount({required int v});
 
   /// Update the `channel_count_mode` attribute
   Future<void> setChannelCountMode({required ChannelCountMode v});
@@ -474,7 +474,7 @@ abstract class ChannelMergerNode
 
   /// Represents an integer used to determine how many channels are used when up-mixing and
   /// down-mixing connections to any inputs to the node.
-  Future<BigInt> channelCount();
+  Future<int> channelCount();
 
   /// Represents an enumerated value describing the way channels must be matched between the
   /// node's inputs and outputs.
@@ -500,15 +500,15 @@ abstract class ChannelMergerNode
   ///
   /// This function will panic when
   /// - if the output port is out of bounds for this node
-  Future<void> disconnectOutput({required BigInt output});
+  Future<void> disconnectOutput({required int output});
 
   Future<void> connect({required AudioNode dest});
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
-  Future<BigInt> numberOfInputs();
+  Future<int> numberOfInputs();
 
   /// The number of outputs coming out of the AudioNode.
-  Future<BigInt> numberOfOutputs();
+  Future<int> numberOfOutputs();
 
   /// Handle of the associated [`BaseAudioContext`](crate::context::BaseAudioContext).
   ///
@@ -516,7 +516,7 @@ abstract class ChannelMergerNode
   Future<void> registration();
 
   /// Update the `channel_count` attribute
-  Future<void> setChannelCount({required BigInt v});
+  Future<void> setChannelCount({required int v});
 
   /// Update the `channel_count_mode` attribute
   Future<void> setChannelCountMode({required ChannelCountMode v});
@@ -538,7 +538,7 @@ abstract class ChannelSplitterNode
 
   /// Represents an integer used to determine how many channels are used when up-mixing and
   /// down-mixing connections to any inputs to the node.
-  Future<BigInt> channelCount();
+  Future<int> channelCount();
 
   /// Represents an enumerated value describing the way channels must be matched between the
   /// node's inputs and outputs.
@@ -564,15 +564,15 @@ abstract class ChannelSplitterNode
   ///
   /// This function will panic when
   /// - if the output port is out of bounds for this node
-  Future<void> disconnectOutput({required BigInt output});
+  Future<void> disconnectOutput({required int output});
 
   Future<void> connect({required AudioNode dest});
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
-  Future<BigInt> numberOfInputs();
+  Future<int> numberOfInputs();
 
   /// The number of outputs coming out of the AudioNode.
-  Future<BigInt> numberOfOutputs();
+  Future<int> numberOfOutputs();
 
   /// Handle of the associated [`BaseAudioContext`](crate::context::BaseAudioContext).
   ///
@@ -580,7 +580,7 @@ abstract class ChannelSplitterNode
   Future<void> registration();
 
   /// Update the `channel_count` attribute
-  Future<void> setChannelCount({required BigInt v});
+  Future<void> setChannelCount({required int v});
 
   /// Update the `channel_count_mode` attribute
   Future<void> setChannelCountMode({required ChannelCountMode v});
@@ -606,7 +606,7 @@ abstract class ConstantSourceNode
 
   /// Represents an integer used to determine how many channels are used when up-mixing and
   /// down-mixing connections to any inputs to the node.
-  Future<BigInt> channelCount();
+  Future<int> channelCount();
 
   /// Represents an enumerated value describing the way channels must be matched between the
   /// node's inputs and outputs.
@@ -635,15 +635,15 @@ abstract class ConstantSourceNode
   ///
   /// This function will panic when
   /// - if the output port is out of bounds for this node
-  Future<void> disconnectOutput({required BigInt output});
+  Future<void> disconnectOutput({required int output});
 
   Future<void> connect({required AudioNode dest});
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
-  Future<BigInt> numberOfInputs();
+  Future<int> numberOfInputs();
 
   /// The number of outputs coming out of the AudioNode.
-  Future<BigInt> numberOfOutputs();
+  Future<int> numberOfOutputs();
 
   AudioParam get offset;
 
@@ -653,7 +653,7 @@ abstract class ConstantSourceNode
   Future<void> registration();
 
   /// Update the `channel_count` attribute
-  Future<void> setChannelCount({required BigInt v});
+  Future<void> setChannelCount({required int v});
 
   /// Update the `channel_count_mode` attribute
   Future<void> setChannelCountMode({required ChannelCountMode v});
@@ -703,7 +703,7 @@ abstract class ConvolverNode
 
   /// Represents an integer used to determine how many channels are used when up-mixing and
   /// down-mixing connections to any inputs to the node.
-  Future<BigInt> channelCount();
+  Future<int> channelCount();
 
   /// Represents an enumerated value describing the way channels must be matched between the
   /// node's inputs and outputs.
@@ -729,7 +729,7 @@ abstract class ConvolverNode
   ///
   /// This function will panic when
   /// - if the output port is out of bounds for this node
-  Future<void> disconnectOutput({required BigInt output});
+  Future<void> disconnectOutput({required int output});
 
   Future<void> connect({required AudioNode dest});
 
@@ -737,10 +737,10 @@ abstract class ConvolverNode
   Future<bool> normalize();
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
-  Future<BigInt> numberOfInputs();
+  Future<int> numberOfInputs();
 
   /// The number of outputs coming out of the AudioNode.
-  Future<BigInt> numberOfOutputs();
+  Future<int> numberOfOutputs();
 
   /// Handle of the associated [`BaseAudioContext`](crate::context::BaseAudioContext).
   ///
@@ -756,7 +756,7 @@ abstract class ConvolverNode
   Future<void> setBuffer({required AudioBuffer buffer});
 
   /// Update the `channel_count` attribute
-  Future<void> setChannelCount({required BigInt v});
+  Future<void> setChannelCount({required int v});
 
   /// Update the `channel_count_mode` attribute
   Future<void> setChannelCountMode({required ChannelCountMode v});
@@ -781,7 +781,7 @@ abstract class DelayNode
 
   /// Represents an integer used to determine how many channels are used when up-mixing and
   /// down-mixing connections to any inputs to the node.
-  Future<BigInt> channelCount();
+  Future<int> channelCount();
 
   /// Represents an enumerated value describing the way channels must be matched between the
   /// node's inputs and outputs.
@@ -810,15 +810,15 @@ abstract class DelayNode
   ///
   /// This function will panic when
   /// - if the output port is out of bounds for this node
-  Future<void> disconnectOutput({required BigInt output});
+  Future<void> disconnectOutput({required int output});
 
   Future<void> connect({required AudioNode dest});
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
-  Future<BigInt> numberOfInputs();
+  Future<int> numberOfInputs();
 
   /// The number of outputs coming out of the AudioNode.
-  Future<BigInt> numberOfOutputs();
+  Future<int> numberOfOutputs();
 
   /// Handle of the associated [`BaseAudioContext`](crate::context::BaseAudioContext).
   ///
@@ -826,7 +826,7 @@ abstract class DelayNode
   Future<void> registration();
 
   /// Update the `channel_count` attribute
-  Future<void> setChannelCount({required BigInt v});
+  Future<void> setChannelCount({required int v});
 
   /// Update the `channel_count_mode` attribute
   Future<void> setChannelCountMode({required ChannelCountMode v});
@@ -850,7 +850,7 @@ abstract class DynamicsCompressorNode
 
   /// Represents an integer used to determine how many channels are used when up-mixing and
   /// down-mixing connections to any inputs to the node.
-  Future<BigInt> channelCount();
+  Future<int> channelCount();
 
   /// Represents an enumerated value describing the way channels must be matched between the
   /// node's inputs and outputs.
@@ -876,17 +876,17 @@ abstract class DynamicsCompressorNode
   ///
   /// This function will panic when
   /// - if the output port is out of bounds for this node
-  Future<void> disconnectOutput({required BigInt output});
+  Future<void> disconnectOutput({required int output});
 
   Future<void> connect({required AudioNode dest});
 
   AudioParam get knee;
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
-  Future<BigInt> numberOfInputs();
+  Future<int> numberOfInputs();
 
   /// The number of outputs coming out of the AudioNode.
-  Future<BigInt> numberOfOutputs();
+  Future<int> numberOfOutputs();
 
   AudioParam get ratio;
 
@@ -900,7 +900,7 @@ abstract class DynamicsCompressorNode
   AudioParam get release;
 
   /// Update the `channel_count` attribute
-  Future<void> setChannelCount({required BigInt v});
+  Future<void> setChannelCount({required int v});
 
   /// Update the `channel_count_mode` attribute
   Future<void> setChannelCountMode({required ChannelCountMode v});
@@ -923,7 +923,7 @@ abstract class GainNode implements RustOpaqueInterface, AudioNode, GainNodeExt {
 
   /// Represents an integer used to determine how many channels are used when up-mixing and
   /// down-mixing connections to any inputs to the node.
-  Future<BigInt> channelCount();
+  Future<int> channelCount();
 
   /// Represents an enumerated value describing the way channels must be matched between the
   /// node's inputs and outputs.
@@ -949,17 +949,17 @@ abstract class GainNode implements RustOpaqueInterface, AudioNode, GainNodeExt {
   ///
   /// This function will panic when
   /// - if the output port is out of bounds for this node
-  Future<void> disconnectOutput({required BigInt output});
+  Future<void> disconnectOutput({required int output});
 
   Future<void> connect({required AudioNode dest});
 
   AudioParam get gain;
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
-  Future<BigInt> numberOfInputs();
+  Future<int> numberOfInputs();
 
   /// The number of outputs coming out of the AudioNode.
-  Future<BigInt> numberOfOutputs();
+  Future<int> numberOfOutputs();
 
   /// Handle of the associated [`BaseAudioContext`](crate::context::BaseAudioContext).
   ///
@@ -967,7 +967,7 @@ abstract class GainNode implements RustOpaqueInterface, AudioNode, GainNodeExt {
   Future<void> registration();
 
   /// Update the `channel_count` attribute
-  Future<void> setChannelCount({required BigInt v});
+  Future<void> setChannelCount({required int v});
 
   /// Update the `channel_count_mode` attribute
   Future<void> setChannelCountMode({required ChannelCountMode v});
@@ -989,7 +989,7 @@ abstract class IirFilterNode
 
   /// Represents an integer used to determine how many channels are used when up-mixing and
   /// down-mixing connections to any inputs to the node.
-  Future<BigInt> channelCount();
+  Future<int> channelCount();
 
   /// Represents an enumerated value describing the way channels must be matched between the
   /// node's inputs and outputs.
@@ -1015,15 +1015,15 @@ abstract class IirFilterNode
   ///
   /// This function will panic when
   /// - if the output port is out of bounds for this node
-  Future<void> disconnectOutput({required BigInt output});
+  Future<void> disconnectOutput({required int output});
 
   Future<void> connect({required AudioNode dest});
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
-  Future<BigInt> numberOfInputs();
+  Future<int> numberOfInputs();
 
   /// The number of outputs coming out of the AudioNode.
-  Future<BigInt> numberOfOutputs();
+  Future<int> numberOfOutputs();
 
   /// Handle of the associated [`BaseAudioContext`](crate::context::BaseAudioContext).
   ///
@@ -1031,7 +1031,7 @@ abstract class IirFilterNode
   Future<void> registration();
 
   /// Update the `channel_count` attribute
-  Future<void> setChannelCount({required BigInt v});
+  Future<void> setChannelCount({required int v});
 
   /// Update the `channel_count_mode` attribute
   Future<void> setChannelCountMode({required ChannelCountMode v});
@@ -1053,7 +1053,7 @@ abstract class MediaElementAudioSourceNode
 
   /// Represents an integer used to determine how many channels are used when up-mixing and
   /// down-mixing connections to any inputs to the node.
-  Future<BigInt> channelCount();
+  Future<int> channelCount();
 
   /// Represents an enumerated value describing the way channels must be matched between the
   /// node's inputs and outputs.
@@ -1079,15 +1079,15 @@ abstract class MediaElementAudioSourceNode
   ///
   /// This function will panic when
   /// - if the output port is out of bounds for this node
-  Future<void> disconnectOutput({required BigInt output});
+  Future<void> disconnectOutput({required int output});
 
   Future<void> connect({required AudioNode dest});
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
-  Future<BigInt> numberOfInputs();
+  Future<int> numberOfInputs();
 
   /// The number of outputs coming out of the AudioNode.
-  Future<BigInt> numberOfOutputs();
+  Future<int> numberOfOutputs();
 
   /// Handle of the associated [`BaseAudioContext`](crate::context::BaseAudioContext).
   ///
@@ -1095,7 +1095,7 @@ abstract class MediaElementAudioSourceNode
   Future<void> registration();
 
   /// Update the `channel_count` attribute
-  Future<void> setChannelCount({required BigInt v});
+  Future<void> setChannelCount({required int v});
 
   /// Update the `channel_count_mode` attribute
   Future<void> setChannelCountMode({required ChannelCountMode v});
@@ -1120,7 +1120,7 @@ abstract class MediaStreamAudioDestinationNode
 
   /// Represents an integer used to determine how many channels are used when up-mixing and
   /// down-mixing connections to any inputs to the node.
-  Future<BigInt> channelCount();
+  Future<int> channelCount();
 
   /// Represents an enumerated value describing the way channels must be matched between the
   /// node's inputs and outputs.
@@ -1146,15 +1146,15 @@ abstract class MediaStreamAudioDestinationNode
   ///
   /// This function will panic when
   /// - if the output port is out of bounds for this node
-  Future<void> disconnectOutput({required BigInt output});
+  Future<void> disconnectOutput({required int output});
 
   Future<void> connect({required AudioNode dest});
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
-  Future<BigInt> numberOfInputs();
+  Future<int> numberOfInputs();
 
   /// The number of outputs coming out of the AudioNode.
-  Future<BigInt> numberOfOutputs();
+  Future<int> numberOfOutputs();
 
   /// Handle of the associated [`BaseAudioContext`](crate::context::BaseAudioContext).
   ///
@@ -1162,7 +1162,7 @@ abstract class MediaStreamAudioDestinationNode
   Future<void> registration();
 
   /// Update the `channel_count` attribute
-  Future<void> setChannelCount({required BigInt v});
+  Future<void> setChannelCount({required int v});
 
   /// Update the `channel_count_mode` attribute
   Future<void> setChannelCountMode({required ChannelCountMode v});
@@ -1188,7 +1188,7 @@ abstract class MediaStreamAudioSourceNode
 
   /// Represents an integer used to determine how many channels are used when up-mixing and
   /// down-mixing connections to any inputs to the node.
-  Future<BigInt> channelCount();
+  Future<int> channelCount();
 
   /// Represents an enumerated value describing the way channels must be matched between the
   /// node's inputs and outputs.
@@ -1214,15 +1214,15 @@ abstract class MediaStreamAudioSourceNode
   ///
   /// This function will panic when
   /// - if the output port is out of bounds for this node
-  Future<void> disconnectOutput({required BigInt output});
+  Future<void> disconnectOutput({required int output});
 
   Future<void> connect({required AudioNode dest});
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
-  Future<BigInt> numberOfInputs();
+  Future<int> numberOfInputs();
 
   /// The number of outputs coming out of the AudioNode.
-  Future<BigInt> numberOfOutputs();
+  Future<int> numberOfOutputs();
 
   /// Handle of the associated [`BaseAudioContext`](crate::context::BaseAudioContext).
   ///
@@ -1230,7 +1230,7 @@ abstract class MediaStreamAudioSourceNode
   Future<void> registration();
 
   /// Update the `channel_count` attribute
-  Future<void> setChannelCount({required BigInt v});
+  Future<void> setChannelCount({required int v});
 
   /// Update the `channel_count_mode` attribute
   Future<void> setChannelCountMode({required ChannelCountMode v});
@@ -1255,7 +1255,7 @@ abstract class MediaStreamTrackAudioSourceNode
 
   /// Represents an integer used to determine how many channels are used when up-mixing and
   /// down-mixing connections to any inputs to the node.
-  Future<BigInt> channelCount();
+  Future<int> channelCount();
 
   /// Represents an enumerated value describing the way channels must be matched between the
   /// node's inputs and outputs.
@@ -1281,15 +1281,15 @@ abstract class MediaStreamTrackAudioSourceNode
   ///
   /// This function will panic when
   /// - if the output port is out of bounds for this node
-  Future<void> disconnectOutput({required BigInt output});
+  Future<void> disconnectOutput({required int output});
 
   Future<void> connect({required AudioNode dest});
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
-  Future<BigInt> numberOfInputs();
+  Future<int> numberOfInputs();
 
   /// The number of outputs coming out of the AudioNode.
-  Future<BigInt> numberOfOutputs();
+  Future<int> numberOfOutputs();
 
   /// Handle of the associated [`BaseAudioContext`](crate::context::BaseAudioContext).
   ///
@@ -1297,7 +1297,7 @@ abstract class MediaStreamTrackAudioSourceNode
   Future<void> registration();
 
   /// Update the `channel_count` attribute
-  Future<void> setChannelCount({required BigInt v});
+  Future<void> setChannelCount({required int v});
 
   /// Update the `channel_count_mode` attribute
   Future<void> setChannelCountMode({required ChannelCountMode v});
@@ -1323,7 +1323,7 @@ abstract class OscillatorNode
 
   /// Represents an integer used to determine how many channels are used when up-mixing and
   /// down-mixing connections to any inputs to the node.
-  Future<BigInt> channelCount();
+  Future<int> channelCount();
 
   /// Represents an enumerated value describing the way channels must be matched between the
   /// node's inputs and outputs.
@@ -1360,7 +1360,7 @@ abstract class OscillatorNode
   ///
   /// This function will panic when
   /// - if the output port is out of bounds for this node
-  Future<void> disconnectOutput({required BigInt output});
+  Future<void> disconnectOutput({required int output});
 
   Future<void> connect({required AudioNode dest});
 
@@ -1371,10 +1371,10 @@ abstract class OscillatorNode
   AudioParam get frequency;
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
-  Future<BigInt> numberOfInputs();
+  Future<int> numberOfInputs();
 
   /// The number of outputs coming out of the AudioNode.
-  Future<BigInt> numberOfOutputs();
+  Future<int> numberOfOutputs();
 
   /// Handle of the associated [`BaseAudioContext`](crate::context::BaseAudioContext).
   ///
@@ -1382,7 +1382,7 @@ abstract class OscillatorNode
   Future<void> registration();
 
   /// Update the `channel_count` attribute
-  Future<void> setChannelCount({required BigInt v});
+  Future<void> setChannelCount({required int v});
 
   /// Update the `channel_count_mode` attribute
   Future<void> setChannelCountMode({required ChannelCountMode v});
@@ -1452,7 +1452,7 @@ abstract class PannerNode
 
   /// Represents an integer used to determine how many channels are used when up-mixing and
   /// down-mixing connections to any inputs to the node.
-  Future<BigInt> channelCount();
+  Future<int> channelCount();
 
   /// Represents an enumerated value describing the way channels must be matched between the
   /// node's inputs and outputs.
@@ -1484,7 +1484,7 @@ abstract class PannerNode
   ///
   /// This function will panic when
   /// - if the output port is out of bounds for this node
-  Future<void> disconnectOutput({required BigInt output});
+  Future<void> disconnectOutput({required int output});
 
   Future<DistanceModelType> distanceModel();
 
@@ -1493,10 +1493,10 @@ abstract class PannerNode
   Future<double> maxDistance();
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
-  Future<BigInt> numberOfInputs();
+  Future<int> numberOfInputs();
 
   /// The number of outputs coming out of the AudioNode.
-  Future<BigInt> numberOfOutputs();
+  Future<int> numberOfOutputs();
 
   AudioParam get orientationX;
 
@@ -1522,7 +1522,7 @@ abstract class PannerNode
   Future<double> rolloffFactor();
 
   /// Update the `channel_count` attribute
-  Future<void> setChannelCount({required BigInt v});
+  Future<void> setChannelCount({required int v});
 
   /// Update the `channel_count_mode` attribute
   Future<void> setChannelCountMode({required ChannelCountMode v});
@@ -1579,7 +1579,7 @@ abstract class PannerNode
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ScriptProcessorNode>>
 abstract class ScriptProcessorNode
     implements RustOpaqueInterface, AudioNode, ScriptProcessorNodeExt {
-  Future<BigInt> bufferSize();
+  Future<int> bufferSize();
 
   /// Config for up/down-mixing of input channels for this node.
   ///
@@ -1588,7 +1588,7 @@ abstract class ScriptProcessorNode
 
   /// Represents an integer used to determine how many channels are used when up-mixing and
   /// down-mixing connections to any inputs to the node.
-  Future<BigInt> channelCount();
+  Future<int> channelCount();
 
   /// Represents an enumerated value describing the way channels must be matched between the
   /// node's inputs and outputs.
@@ -1617,15 +1617,15 @@ abstract class ScriptProcessorNode
   ///
   /// This function will panic when
   /// - if the output port is out of bounds for this node
-  Future<void> disconnectOutput({required BigInt output});
+  Future<void> disconnectOutput({required int output});
 
   Future<void> connect({required AudioNode dest});
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
-  Future<BigInt> numberOfInputs();
+  Future<int> numberOfInputs();
 
   /// The number of outputs coming out of the AudioNode.
-  Future<BigInt> numberOfOutputs();
+  Future<int> numberOfOutputs();
 
   /// Handle of the associated [`BaseAudioContext`](crate::context::BaseAudioContext).
   ///
@@ -1633,7 +1633,7 @@ abstract class ScriptProcessorNode
   Future<void> registration();
 
   /// Update the `channel_count` attribute
-  Future<void> setChannelCount({required BigInt v});
+  Future<void> setChannelCount({required int v});
 
   /// Update the `channel_count_mode` attribute
   Future<void> setChannelCountMode({required ChannelCountMode v});
@@ -1655,7 +1655,7 @@ abstract class StereoPannerNode
 
   /// Represents an integer used to determine how many channels are used when up-mixing and
   /// down-mixing connections to any inputs to the node.
-  Future<BigInt> channelCount();
+  Future<int> channelCount();
 
   /// Represents an enumerated value describing the way channels must be matched between the
   /// node's inputs and outputs.
@@ -1681,15 +1681,15 @@ abstract class StereoPannerNode
   ///
   /// This function will panic when
   /// - if the output port is out of bounds for this node
-  Future<void> disconnectOutput({required BigInt output});
+  Future<void> disconnectOutput({required int output});
 
   Future<void> connect({required AudioNode dest});
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
-  Future<BigInt> numberOfInputs();
+  Future<int> numberOfInputs();
 
   /// The number of outputs coming out of the AudioNode.
-  Future<BigInt> numberOfOutputs();
+  Future<int> numberOfOutputs();
 
   /// Returns the pan audio parameter
   AudioParam get pan;
@@ -1700,7 +1700,7 @@ abstract class StereoPannerNode
   Future<void> registration();
 
   /// Update the `channel_count` attribute
-  Future<void> setChannelCount({required BigInt v});
+  Future<void> setChannelCount({required int v});
 
   /// Update the `channel_count_mode` attribute
   Future<void> setChannelCountMode({required ChannelCountMode v});
@@ -1722,7 +1722,7 @@ abstract class WaveShaperNode
 
   /// Represents an integer used to determine how many channels are used when up-mixing and
   /// down-mixing connections to any inputs to the node.
-  Future<BigInt> channelCount();
+  Future<int> channelCount();
 
   /// Represents an enumerated value describing the way channels must be matched between the
   /// node's inputs and outputs.
@@ -1748,15 +1748,15 @@ abstract class WaveShaperNode
   ///
   /// This function will panic when
   /// - if the output port is out of bounds for this node
-  Future<void> disconnectOutput({required BigInt output});
+  Future<void> disconnectOutput({required int output});
 
   Future<void> connect({required AudioNode dest});
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
-  Future<BigInt> numberOfInputs();
+  Future<int> numberOfInputs();
 
   /// The number of outputs coming out of the AudioNode.
-  Future<BigInt> numberOfOutputs();
+  Future<int> numberOfOutputs();
 
   /// Returns the `oversample` faactor of this node
   Future<OverSampleType> oversample();
@@ -1767,7 +1767,7 @@ abstract class WaveShaperNode
   Future<void> registration();
 
   /// Update the `channel_count` attribute
-  Future<void> setChannelCount({required BigInt v});
+  Future<void> setChannelCount({required int v});
 
   /// Update the `channel_count_mode` attribute
   Future<void> setChannelCountMode({required ChannelCountMode v});
@@ -1806,7 +1806,7 @@ abstract class AudioNode {
 
   /// Represents an integer used to determine how many channels are used when up-mixing and
   /// down-mixing connections to any inputs to the node.
-  Future<BigInt> channelCount();
+  Future<int> channelCount();
 
   /// Represents an enumerated value describing the way channels must be matched between the
   /// node's inputs and outputs.
@@ -1832,13 +1832,13 @@ abstract class AudioNode {
   ///
   /// This function will panic when
   /// - if the output port is out of bounds for this node
-  Future<void> disconnectOutput({required BigInt output});
+  Future<void> disconnectOutput({required int output});
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
-  Future<BigInt> numberOfInputs();
+  Future<int> numberOfInputs();
 
   /// The number of outputs coming out of the AudioNode.
-  Future<BigInt> numberOfOutputs();
+  Future<int> numberOfOutputs();
 
   /// Handle of the associated [`BaseAudioContext`](crate::context::BaseAudioContext).
   ///
@@ -1846,7 +1846,7 @@ abstract class AudioNode {
   Future<void> registration();
 
   /// Update the `channel_count` attribute
-  Future<void> setChannelCount({required BigInt v});
+  Future<void> setChannelCount({required int v});
 
   /// Update the `channel_count_mode` attribute
   Future<void> setChannelCountMode({required ChannelCountMode v});
