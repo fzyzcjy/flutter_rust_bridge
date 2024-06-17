@@ -3,9 +3,9 @@ use extend::ext;
 use flutter_rust_bridge::for_generated::anyhow;
 use flutter_rust_bridge::{frb, DartFnFuture};
 use std::sync::Arc;
-use web_audio_api::context::{AudioContext, BaseAudioContext};
+use web_audio_api::context::{AudioContext, BaseAudioContext, OfflineAudioContext};
 use web_audio_api::node::*;
-use web_audio_api::{AudioBuffer, AudioParam, Event};
+use web_audio_api::{AudioBuffer, AudioParam, Event, OfflineAudioCompletionEvent};
 
 #[ext]
 pub impl AudioContext {
@@ -38,6 +38,18 @@ pub impl AudioContext {
         self.set_onstatechange(move |event| {
             let callback_cloned = callback.clone();
             flutter_rust_bridge::spawn(async move { callback_cloned(event).await });
+        })
+    }
+}
+
+#[ext]
+pub impl OfflineAudioContext {
+    fn set_on_complete(
+        &self,
+        callback: impl Fn(OfflineAudioCompletionEvent) -> DartFnFuture<()> + Send + Sync + 'static,
+    ) {
+        self.set_oncomplete(move |event| {
+            flutter_rust_bridge::spawn(async move { callback(event).await });
         })
     }
 }
