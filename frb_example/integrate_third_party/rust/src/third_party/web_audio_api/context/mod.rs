@@ -20,9 +20,9 @@ impl AudioContext {
 }
 
 #[frb(external)]
-pub trait AudioContext {
+pub trait BaseAudioContext {
     #[frb(ignore)]
-    pub fn base() {}
+    fn base() {}
 }
 
 #[frb(non_opaque)]
