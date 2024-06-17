@@ -1,4 +1,5 @@
 use crate::api::media_element::MyMediaElement;
+use crate::third_party::web_audio_api::ErrorEvent;
 use extend::ext;
 use flutter_rust_bridge::for_generated::anyhow;
 use web_audio_api::context::{AudioContext, BaseAudioContext};
@@ -57,3 +58,13 @@ handle_audio_node_trait_impls_override!(PannerNode);
 handle_audio_node_trait_impls_override!(ScriptProcessorNode);
 handle_audio_node_trait_impls_override!(StereoPannerNode);
 handle_audio_node_trait_impls_override!(WaveShaperNode);
+
+#[ext]
+pub impl AudioParam {
+    fn frb_override_set_onprocessorerror(
+        &self,
+        callback: Box<dyn FnOnce(ErrorEvent) + Send + 'static>,
+    ) {
+        self.set_onprocessorerror(callback)
+    }
+}
