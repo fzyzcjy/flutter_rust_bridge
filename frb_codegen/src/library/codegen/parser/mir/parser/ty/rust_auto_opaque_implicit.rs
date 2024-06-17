@@ -61,7 +61,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         self.inner.rust_auto_opaque_parser_info.get_or_insert(
             inner.to_owned(),
             RustOpaqueParserTypeInfo::new(
-                self.compute_rust_auto_opaque_namespace(namespace),
+                self.compute_rust_auto_opaque_namespace(inner, namespace),
                 codec
                     .or(self.context.func_attributes.rust_opaque_codec())
                     .unwrap_or(self.context.default_rust_opaque_codec),
@@ -69,7 +69,11 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         )
     }
 
-    fn compute_rust_auto_opaque_namespace(&mut self, namespace: Option<Namespace>) -> Namespace {
+    fn compute_rust_auto_opaque_namespace(
+        &mut self,
+        inner: &str,
+        namespace: Option<Namespace>,
+    ) -> Namespace {
         namespace
             .or_else(|| TODO)
             .unwrap_or(self.context.initiated_namespace.clone())
