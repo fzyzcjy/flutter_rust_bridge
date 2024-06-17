@@ -32,6 +32,8 @@ abstract class AudioContextExt {
 
   Future<void> setOnStateChange(
       {required FutureOr<void> Function(Event) callback});
+
+  Future<void> setSinkId({required String sinkId});
 }
 
 abstract class AudioDestinationNodeExt {
@@ -95,6 +97,10 @@ abstract class DynamicsCompressorNodeExt {
 
   Future<void> setOnProcessorError(
       {required FutureOr<void> Function(String) callback});
+}
+
+abstract class EventExt {
+  String get type;
 }
 
 abstract class GainNodeExt {

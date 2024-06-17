@@ -709,6 +709,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  Event
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEvent(
+          dynamic raw);
+
+  @protected
   GainNode
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGainNode(
           dynamic raw);
@@ -1243,6 +1248,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   DynamicsCompressorNodeExt dco_decode_TraitDef_DynamicsCompressorNodeExt(
       dynamic raw);
+
+  @protected
+  EventExt dco_decode_TraitDef_EventExt(dynamic raw);
 
   @protected
   GainNodeExt dco_decode_TraitDef_GainNodeExt(dynamic raw);
@@ -1945,6 +1953,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   DynamicsCompressorNode
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode(
+          SseDeserializer deserializer);
+
+  @protected
+  Event
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEvent(
           SseDeserializer deserializer);
 
   @protected
@@ -3101,6 +3114,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode(
           DynamicsCompressorNode self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEvent(
+          Event self, SseSerializer serializer);
 
   @protected
   void

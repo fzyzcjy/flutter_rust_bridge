@@ -3,16 +3,14 @@
 
 // ignore_for_file: invalid_use_of_internal_member, unused_import, unnecessary_import
 
-import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
-
 import '../../api/media_element.dart';
 import '../../api/override_web_audio_api.dart';
 import '../../frb_generated.dart';
 import '../web_audio_api.dart';
 import 'media_streams.dart';
 import 'node.dart';
-
+import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
+import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'context.freezed.dart';
 
 // These functions are ignored because they have generic arguments: `decode_audio_data_sync`, `decode_audio_data_sync`, `decode_audio_data_sync`, `set_onstatechange`, `set_onstatechange`, `set_onstatechange`, `set_onstatechange`
@@ -235,6 +233,8 @@ abstract class AudioContext
 
   Future<void> setOnStateChange(
       {required FutureOr<void> Function(Event) callback});
+
+  Future<void> setSinkId({required String sinkId});
 
   /// Identifier or the information of the current audio output device.
   ///

@@ -305,7 +305,9 @@ abstract class AudioRenderCapacityEvent implements RustOpaqueInterface {
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Event>>
-abstract class Event implements RustOpaqueInterface {}
+abstract class Event implements RustOpaqueInterface, EventExt {
+  String get type;
+}
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OfflineAudioCompletionEvent>>
 abstract class OfflineAudioCompletionEvent implements RustOpaqueInterface {

@@ -17,6 +17,7 @@ use crate::api::override_web_audio_api::ConstantSourceNodeExt;
 use crate::api::override_web_audio_api::ConvolverNodeExt;
 use crate::api::override_web_audio_api::DelayNodeExt;
 use crate::api::override_web_audio_api::DynamicsCompressorNodeExt;
+use crate::api::override_web_audio_api::EventExt;
 use crate::api::override_web_audio_api::GainNodeExt;
 use crate::api::override_web_audio_api::IIRFilterNodeExt;
 use crate::api::override_web_audio_api::MediaElementAudioSourceNodeExt;
