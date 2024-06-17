@@ -1,4 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:frb_example_integrate_third_party/src/rust/api/media_element.dart';
 import 'package:frb_example_integrate_third_party/src/rust/frb_generated.dart';
 import 'package:frb_example_integrate_third_party/src/rust/third_party/web_audio_api/context.dart';
 import 'package:integration_test/integration_test.dart';
@@ -56,7 +57,7 @@ Future<void> _mdnUsingWebAudioApiDemoUsage() async {
   );
   final audioContext = AudioContext(options: options);
 
-  final audioElement = MediaElement();
+  final audioElement = MyMediaElement();
   final track = await audioContext.createMediaElementSource(audioElement);
 
   final gainNode = await audioContext.createGain();
