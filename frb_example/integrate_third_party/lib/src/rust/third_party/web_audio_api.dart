@@ -206,9 +206,6 @@ abstract class AudioParam
   /// Update the `channel_interpretation` attribute
   Future<void> setChannelInterpretation({required ChannelInterpretation v});
 
-  Future<void> setOnProcessorError(
-      {required FutureOr<void> Function(String) callback});
-
   /// Start exponentially approaching the target value at the given time with
   /// a rate having the given time constant.
   ///

@@ -11,7 +11,7 @@ import 'worklet.dart';
 
 // These functions are ignored because they have generic arguments: `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect`, `connect`, `connect`, `set_onended`, `set_onended`, `set_onended`, `set_onended`
 // These types are ignored because they are not used by any `pub` functions: `AnalyserOptions`, `AudioBufferSourceOptions`, `AudioNodeOptions`, `BiquadFilterOptions`, `ChannelConfig`, `ChannelMergerOptions`, `ChannelSplitterOptions`, `ConstantSourceOptions`, `ConvolverOptions`, `DelayOptions`, `DynamicsCompressorOptions`, `GainOptions`, `IIRFilterOptions`, `MediaElementAudioSourceOptions`, `MediaStreamAudioSourceOptions`, `MediaStreamRenderer`, `MediaStreamTrackAudioSourceOptions`, `OscillatorOptions`, `PannerOptions`, `ScriptProcessorOptions`, `StereoPannerOptions`, `WaveShaperOptions`
-// These functions are ignored (category: IgnoreBecauseExplicitAttribute): `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`
+// These functions are ignored (category: IgnoreBecauseExplicitAttribute): `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `set_onprocessorerror`, `set_onprocessorerror`
 // These functions are ignored (category: IgnoreBecauseNotAllowedOwner): `channel_config`, `channel_count_mode`, `channel_count`, `channel_interpretation`, `clear_onprocessorerror`, `context`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output`, `disconnect_dest`, `disconnect_output`, `disconnect`, `number_of_inputs`, `number_of_outputs`, `registration`, `set_channel_count_mode`, `set_channel_count`, `set_channel_interpretation`, `set_onprocessorerror`
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AnalyserNode>>
@@ -126,9 +126,6 @@ abstract class AnalyserNode
   /// This function panics if the value is set to a value more than or equal
   /// to max decibels.
   Future<void> setMinDecibels({required double value});
-
-  Future<void> setOnProcessorError(
-      {required FutureOr<void> Function(String) callback});
 
   /// Set smoothing time constant
   ///
@@ -259,9 +256,6 @@ abstract class AudioBufferSourceNode
 
   Future<void> setLoopStart({required double value});
 
-  Future<void> setOnProcessorError(
-      {required FutureOr<void> Function(String) callback});
-
   /// Play immediately
   ///
   /// # Panics
@@ -373,9 +367,6 @@ abstract class AudioDestinationNode
 
   /// Update the `channel_interpretation` attribute
   Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
-  Future<void> setOnProcessorError(
-      {required FutureOr<void> Function(String) callback});
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<BiquadFilterNode>>
@@ -450,9 +441,6 @@ abstract class BiquadFilterNode
   /// Update the `channel_interpretation` attribute
   Future<void> setChannelInterpretation({required ChannelInterpretation v});
 
-  Future<void> setOnProcessorError(
-      {required FutureOr<void> Function(String) callback});
-
   /// biquad filter type setter
   ///
   /// # Arguments
@@ -523,9 +511,6 @@ abstract class ChannelMergerNode
 
   /// Update the `channel_interpretation` attribute
   Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
-  Future<void> setOnProcessorError(
-      {required FutureOr<void> Function(String) callback});
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ChannelSplitterNode>>
@@ -587,9 +572,6 @@ abstract class ChannelSplitterNode
 
   /// Update the `channel_interpretation` attribute
   Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
-  Future<void> setOnProcessorError(
-      {required FutureOr<void> Function(String) callback});
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ConstantSourceNode>>
@@ -660,9 +642,6 @@ abstract class ConstantSourceNode
 
   /// Update the `channel_interpretation` attribute
   Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
-  Future<void> setOnProcessorError(
-      {required FutureOr<void> Function(String) callback});
 
   /// Play immediately
   ///
@@ -766,9 +745,6 @@ abstract class ConvolverNode
 
   /// Update the `normalize` setting. This will only have an effect when `set_buffer` is called.
   Future<void> setNormalize({required bool value});
-
-  Future<void> setOnProcessorError(
-      {required FutureOr<void> Function(String) callback});
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<DelayNode>>
@@ -833,9 +809,6 @@ abstract class DelayNode
 
   /// Update the `channel_interpretation` attribute
   Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
-  Future<void> setOnProcessorError(
-      {required FutureOr<void> Function(String) callback});
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<DynamicsCompressorNode>>
@@ -908,9 +881,6 @@ abstract class DynamicsCompressorNode
   /// Update the `channel_interpretation` attribute
   Future<void> setChannelInterpretation({required ChannelInterpretation v});
 
-  Future<void> setOnProcessorError(
-      {required FutureOr<void> Function(String) callback});
-
   AudioParam get threshold;
 }
 
@@ -974,9 +944,6 @@ abstract class GainNode implements RustOpaqueInterface, AudioNode, GainNodeExt {
 
   /// Update the `channel_interpretation` attribute
   Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
-  Future<void> setOnProcessorError(
-      {required FutureOr<void> Function(String) callback});
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<IIRFilterNode>>
@@ -1038,9 +1005,6 @@ abstract class IirFilterNode
 
   /// Update the `channel_interpretation` attribute
   Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
-  Future<void> setOnProcessorError(
-      {required FutureOr<void> Function(String) callback});
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaElementAudioSourceNode>>
@@ -1102,9 +1066,6 @@ abstract class MediaElementAudioSourceNode
 
   /// Update the `channel_interpretation` attribute
   Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
-  Future<void> setOnProcessorError(
-      {required FutureOr<void> Function(String) callback});
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaStreamAudioDestinationNode>>
@@ -1170,9 +1131,6 @@ abstract class MediaStreamAudioDestinationNode
   /// Update the `channel_interpretation` attribute
   Future<void> setChannelInterpretation({required ChannelInterpretation v});
 
-  Future<void> setOnProcessorError(
-      {required FutureOr<void> Function(String) callback});
-
   /// A [`MediaStream`] producing audio buffers with the same number of channels as the node
   /// itself
   Future<void> stream();
@@ -1237,9 +1195,6 @@ abstract class MediaStreamAudioSourceNode
 
   /// Update the `channel_interpretation` attribute
   Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
-  Future<void> setOnProcessorError(
-      {required FutureOr<void> Function(String) callback});
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaStreamTrackAudioSourceNode>>
@@ -1304,9 +1259,6 @@ abstract class MediaStreamTrackAudioSourceNode
 
   /// Update the `channel_interpretation` attribute
   Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
-  Future<void> setOnProcessorError(
-      {required FutureOr<void> Function(String) callback});
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OscillatorNode>>
@@ -1389,9 +1341,6 @@ abstract class OscillatorNode
 
   /// Update the `channel_interpretation` attribute
   Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
-  Future<void> setOnProcessorError(
-      {required FutureOr<void> Function(String) callback});
 
   /// Sets a `PeriodicWave` which describes a waveform to be used by the oscillator.
   ///
@@ -1550,9 +1499,6 @@ abstract class PannerNode
   /// Panics if the provided value is negative.
   Future<void> setMaxDistance({required double value});
 
-  Future<void> setOnProcessorError(
-      {required FutureOr<void> Function(String) callback});
-
   Future<void> setOrientation(
       {required double x, required double y, required double z});
 
@@ -1640,9 +1586,6 @@ abstract class ScriptProcessorNode
 
   /// Update the `channel_interpretation` attribute
   Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
-  Future<void> setOnProcessorError(
-      {required FutureOr<void> Function(String) callback});
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StereoPannerNode>>
@@ -1707,9 +1650,6 @@ abstract class StereoPannerNode
 
   /// Update the `channel_interpretation` attribute
   Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
-  Future<void> setOnProcessorError(
-      {required FutureOr<void> Function(String) callback});
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<WaveShaperNode>>
@@ -1786,9 +1726,6 @@ abstract class WaveShaperNode
   /// Panics if a curve has already been given to the source (though `new` or through
   /// `set_curve`)
   Future<void> setCurve({required List<double> curve});
-
-  Future<void> setOnProcessorError(
-      {required FutureOr<void> Function(String) callback});
 
   /// set the `oversample` factor of this node
   ///
