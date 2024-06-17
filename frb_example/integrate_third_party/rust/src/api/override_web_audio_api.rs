@@ -29,9 +29,9 @@ pub impl AudioContext {
             .map_err(|e| anyhow::anyhow!("{:?}", e))
     }
 
-    fn set_on_state_change(&self, callback: impl Fn(Event) -> DartFnFuture<()> + Send + 'static) {
-        self.set_onstatechange(|event| {
-            flutter_rust_bridge::spawn(async move { callback(event).await });
+    fn set_on_state_change(&self, callback: impl Fn(Event) -> DartFnFuture<()> + Send + Sync + 'static) {
+        self.set_onstatechange(move |event| {
+            flutter_rust_bridge::spawn(async { callback(event).await });
         })
     }
 }
