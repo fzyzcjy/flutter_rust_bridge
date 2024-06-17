@@ -1,3 +1,4 @@
+use std::sync::Arc;
 use crate::api::media_element::MyMediaElement;
 use extend::ext;
 use flutter_rust_bridge::for_generated::anyhow;
@@ -30,8 +31,10 @@ pub impl AudioContext {
     }
 
     fn set_on_state_change(&self, callback: impl Fn(Event) -> DartFnFuture<()> + Send + Sync + 'static) {
+        let callback = Arc::new(callback);
         self.set_onstatechange(move |event| {
-            flutter_rust_bridge::spawn(async { callback(event).await });
+            let callback_cloned = callback.clone();
+            flutter_rust_bridge::spawn(async move { callback_cloned(event).await });
         })
     }
 }
