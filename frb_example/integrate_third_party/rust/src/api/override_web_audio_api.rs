@@ -33,7 +33,9 @@ macro_rules! handle_audio_node_trait_impls_override {
                 self.connect(dest);
             }
 
-            fn frb_override_set_onprocessorerror(
+            // NOTE: The `set_onprocessorerror` by web-audio-api is ignored,
+            // while this one has a different name (note the "_")
+            fn set_on_processor_error(
                 &self,
                 callback: impl Fn(String) -> DartFnFuture<()> + Send + 'static,
             ) {
