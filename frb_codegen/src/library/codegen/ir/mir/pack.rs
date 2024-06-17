@@ -121,7 +121,7 @@ impl DistinctTypeGatherer {
         self.ans
             .into_iter()
             // make the output change less when input change
-            .sorted_by_key(|ty| ty.safe_ident())
+            .sorted_by_cached_key(|ty| ty.safe_ident())
             .collect()
     }
 }
