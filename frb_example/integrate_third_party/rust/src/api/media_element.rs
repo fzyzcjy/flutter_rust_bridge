@@ -4,7 +4,7 @@ use std::sync::Mutex;
 
 // TODO: Dart rename `MyMediaElement` -> `MediaElement`
 #[frb(opaque)]
-pub struct MyMediaElement(Mutex<web_audio_api::MediaElement>);
+pub struct MyMediaElement(pub(crate) Mutex<web_audio_api::MediaElement>);
 
 #[delegate(self.0.lock().unwrap())]
 impl MyMediaElement {

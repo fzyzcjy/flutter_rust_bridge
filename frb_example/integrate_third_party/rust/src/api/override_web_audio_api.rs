@@ -1,9 +1,10 @@
 // use crate::frb_generated::AudioNodeImplementor;
+use crate::api::media_element::MyMediaElement;
 use extend::ext;
 use flutter_rust_bridge::for_generated::anyhow;
 use web_audio_api::context::{AudioContext, BaseAudioContext};
 use web_audio_api::node::*;
-use web_audio_api::{AudioBuffer, AudioParam};
+use web_audio_api::{node, AudioBuffer, AudioParam, MediaElement};
 
 #[ext]
 pub impl AudioContext {
@@ -14,6 +15,13 @@ pub impl AudioContext {
         let input = std::fs::File::open(input_path)?;
         self.decode_audio_data_sync(input)
             .map_err(|e| anyhow::anyhow!("{:?}", e))
+    }
+
+    fn frb_override_create_media_element_source(
+        &self,
+        media_element: &mut MyMediaElement,
+    ) -> MediaElementAudioSourceNode {
+        self.create_media_element_source(&mut media_element.0.lock().unwrap())
     }
 }
 
