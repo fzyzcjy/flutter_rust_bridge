@@ -25,6 +25,10 @@ abstract class AudioBufferSourceNodeExt {
       {required FutureOr<void> Function(String) callback});
 }
 
+abstract class AudioBufferSourceNodeScheduledSourceNodeMiscExt {
+  Future<void> setOnEnded({required FutureOr<void> Function(Event) callback});
+}
+
 abstract class AudioContextExt {
   Future<MediaElementAudioSourceNode> createMediaElementSource(
       {required MediaElement mediaElement});
@@ -77,6 +81,10 @@ abstract class ConstantSourceNodeExt {
 
   Future<void> setOnProcessorError(
       {required FutureOr<void> Function(String) callback});
+}
+
+abstract class ConstantSourceNodeScheduledSourceNodeMiscExt {
+  Future<void> setOnEnded({required FutureOr<void> Function(Event) callback});
 }
 
 abstract class ConvolverNodeExt {
@@ -160,6 +168,10 @@ abstract class OscillatorNodeExt {
 
   Future<void> setOnProcessorError(
       {required FutureOr<void> Function(String) callback});
+}
+
+abstract class OscillatorNodeScheduledSourceNodeMiscExt {
+  Future<void> setOnEnded({required FutureOr<void> Function(Event) callback});
 }
 
 abstract class PannerNodeExt {

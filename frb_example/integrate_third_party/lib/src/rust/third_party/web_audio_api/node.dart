@@ -149,6 +149,7 @@ abstract class AudioBufferSourceNode
     implements
         RustOpaqueInterface,
         AudioBufferSourceNodeExt,
+        AudioBufferSourceNodeScheduledSourceNodeMiscExt,
         AudioNode,
         AudioScheduledSourceNode {
   /// Config for up/down-mixing of input channels for this node.
@@ -251,6 +252,8 @@ abstract class AudioBufferSourceNode
   Future<void> setLoopEnd({required double value});
 
   Future<void> setLoopStart({required double value});
+
+  Future<void> setOnEnded({required FutureOr<void> Function(Event) callback});
 
   Future<void> setOnProcessorError(
       {required FutureOr<void> Function(String) callback});
@@ -575,7 +578,8 @@ abstract class ConstantSourceNode
         RustOpaqueInterface,
         AudioNode,
         AudioScheduledSourceNode,
-        ConstantSourceNodeExt {
+        ConstantSourceNodeExt,
+        ConstantSourceNodeScheduledSourceNodeMiscExt {
   /// Config for up/down-mixing of input channels for this node.
   ///
   /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
@@ -633,6 +637,8 @@ abstract class ConstantSourceNode
 
   /// Update the `channel_interpretation` attribute
   Future<void> setChannelInterpretation({required ChannelInterpretation v});
+
+  Future<void> setOnEnded({required FutureOr<void> Function(Event) callback});
 
   Future<void> setOnProcessorError(
       {required FutureOr<void> Function(String) callback});
@@ -1252,7 +1258,8 @@ abstract class OscillatorNode
         RustOpaqueInterface,
         AudioNode,
         AudioScheduledSourceNode,
-        OscillatorNodeExt {
+        OscillatorNodeExt,
+        OscillatorNodeScheduledSourceNodeMiscExt {
   /// Config for up/down-mixing of input channels for this node.
   ///
   /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
@@ -1322,6 +1329,8 @@ abstract class OscillatorNode
 
   /// Update the `channel_interpretation` attribute
   Future<void> setChannelInterpretation({required ChannelInterpretation v});
+
+  Future<void> setOnEnded({required FutureOr<void> Function(Event) callback});
 
   Future<void> setOnProcessorError(
       {required FutureOr<void> Function(String) callback});

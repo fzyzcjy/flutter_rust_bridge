@@ -1222,6 +1222,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  AudioBufferSourceNodeScheduledSourceNodeMiscExt
+      dco_decode_TraitDef_AudioBufferSourceNodeScheduledSourceNodeMiscExt(
+          dynamic raw);
+
+  @protected
   AudioContextExt dco_decode_TraitDef_AudioContextExt(dynamic raw);
 
   @protected
@@ -1256,6 +1261,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   ConstantSourceNodeExt dco_decode_TraitDef_ConstantSourceNodeExt(dynamic raw);
+
+  @protected
+  ConstantSourceNodeScheduledSourceNodeMiscExt
+      dco_decode_TraitDef_ConstantSourceNodeScheduledSourceNodeMiscExt(
+          dynamic raw);
 
   @protected
   ConvolverNodeExt dco_decode_TraitDef_ConvolverNodeExt(dynamic raw);
@@ -1301,6 +1311,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   OscillatorNodeExt dco_decode_TraitDef_OscillatorNodeExt(dynamic raw);
+
+  @protected
+  OscillatorNodeScheduledSourceNodeMiscExt
+      dco_decode_TraitDef_OscillatorNodeScheduledSourceNodeMiscExt(dynamic raw);
 
   @protected
   PannerNodeExt dco_decode_TraitDef_PannerNodeExt(dynamic raw);
