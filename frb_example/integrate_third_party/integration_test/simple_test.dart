@@ -57,7 +57,7 @@ Future<void> _mdnUsingWebAudioApiDemoUsage() async {
   );
   final audioContext = AudioContext(options: options);
 
-  final audioElement = MyMediaElement(file: 'some_file_here');
+  final audioElement = MediaElement(file: 'some_file_here');
   final track =
       await audioContext.createMediaElementSource(mediaElement: audioElement);
 
