@@ -88,12 +88,3 @@ pub impl Event {
         self.type_.to_owned()
     }
 }
-
-#[ext]
-pub impl AudioScheduledSourceNode {
-    fn set_on_ended(&self, callback: impl Fn(Event) -> DartFnFuture<()> + Send + 'static) {
-        self.set_onended(|event| {
-            flutter_rust_bridge::spawn(async move { callback(event).await });
-        })
-    }
-}
