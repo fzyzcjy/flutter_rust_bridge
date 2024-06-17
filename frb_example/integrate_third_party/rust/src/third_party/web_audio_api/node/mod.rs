@@ -71,12 +71,6 @@ pub trait AudioNode {
     fn disconnect_dest_from_output_to_input();
 }
 
-#[frb(external)]
-pub trait AudioScheduledSourceNode {
-    #[frb(ignore)]
-    fn set_onended();
-}
-
 #[macro_export]
 macro_rules! handle_audio_node_trait_impls_marker {
     ($name:ident) => {
@@ -120,20 +114,6 @@ handle_audio_node_trait_impls_marker!(PannerNode);
 handle_audio_node_trait_impls_marker!(ScriptProcessorNode);
 handle_audio_node_trait_impls_marker!(StereoPannerNode);
 handle_audio_node_trait_impls_marker!(WaveShaperNode);
-
-macro_rules! handle_audio_scheduled_source_node_trait_impls_marker {
-    ($name:ident) => {
-        #[frb(external)]
-        impl $name {
-            #[frb(ignore)]
-            pub fn set_onended() {}
-        }
-    };
-}
-
-handle_audio_scheduled_source_node_trait_impls_marker!(ConstantSourceNode);
-handle_audio_scheduled_source_node_trait_impls_marker!(OscillatorNode);
-handle_audio_scheduled_source_node_trait_impls_marker!(AudioBufferSourceNode);
 
 #[macro_export]
 macro_rules! handle_getter_audio_param {
