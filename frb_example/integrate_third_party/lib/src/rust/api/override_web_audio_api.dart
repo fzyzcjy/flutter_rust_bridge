@@ -10,6 +10,8 @@ import '../third_party/web_audio_api/worklet.dart';
 import 'media_element.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
+// These functions are ignored (category: IgnoreBecauseExplicitAttribute): `frb_override_set_onprocessorerror`
+
 abstract class AnalyserNodeExt {
   Future<void> connect({required AudioNode dest});
 }
@@ -31,6 +33,9 @@ abstract class AudioDestinationNodeExt {
 
 abstract class AudioParamExt {
   Future<void> connect({required AudioNode dest});
+
+  Future<void> setOnprocessorerror(
+      {required FutureOr<void> Function(String) callback});
 }
 
 abstract class BiquadFilterNodeExt {
