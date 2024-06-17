@@ -68,7 +68,7 @@ Future<void> _mdnUsingWebAudioApiDemoUsage() async {
   await gainNode.connect(dest: panner);
   await panner.connect(dest: await audioContext.destination());
 
-  await audioContext.resume();
+  await audioContext.resumeSync();
   await audioContext.play();
   await audioContext.pause();
 }
