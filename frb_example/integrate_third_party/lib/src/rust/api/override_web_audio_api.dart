@@ -10,14 +10,18 @@ import '../third_party/web_audio_api/worklet.dart';
 import 'media_element.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// These functions are ignored (category: IgnoreBecauseExplicitAttribute): `frb_override_set_onprocessorerror`
-
 abstract class AnalyserNodeExt {
   Future<void> connect({required AudioNode dest});
+
+  Future<void> setOnProcessorError(
+      {required FutureOr<void> Function(String) callback});
 }
 
 abstract class AudioBufferSourceNodeExt {
   Future<void> connect({required AudioNode dest});
+
+  Future<void> setOnProcessorError(
+      {required FutureOr<void> Function(String) callback});
 }
 
 abstract class AudioContextExt {
@@ -29,85 +33,140 @@ abstract class AudioContextExt {
 
 abstract class AudioDestinationNodeExt {
   Future<void> connect({required AudioNode dest});
+
+  Future<void> setOnProcessorError(
+      {required FutureOr<void> Function(String) callback});
 }
 
 abstract class AudioParamExt {
   Future<void> connect({required AudioNode dest});
+
+  Future<void> setOnProcessorError(
+      {required FutureOr<void> Function(String) callback});
 }
 
 abstract class BiquadFilterNodeExt {
   Future<void> connect({required AudioNode dest});
+
+  Future<void> setOnProcessorError(
+      {required FutureOr<void> Function(String) callback});
 }
 
 abstract class ChannelMergerNodeExt {
   Future<void> connect({required AudioNode dest});
+
+  Future<void> setOnProcessorError(
+      {required FutureOr<void> Function(String) callback});
 }
 
 abstract class ChannelSplitterNodeExt {
   Future<void> connect({required AudioNode dest});
+
+  Future<void> setOnProcessorError(
+      {required FutureOr<void> Function(String) callback});
 }
 
 abstract class ConstantSourceNodeExt {
   Future<void> connect({required AudioNode dest});
+
+  Future<void> setOnProcessorError(
+      {required FutureOr<void> Function(String) callback});
 }
 
 abstract class ConvolverNodeExt {
   Future<void> connect({required AudioNode dest});
+
+  Future<void> setOnProcessorError(
+      {required FutureOr<void> Function(String) callback});
 }
 
 abstract class DelayNodeExt {
   Future<void> connect({required AudioNode dest});
+
+  Future<void> setOnProcessorError(
+      {required FutureOr<void> Function(String) callback});
 }
 
 abstract class DynamicsCompressorNodeExt {
   Future<void> connect({required AudioNode dest});
+
+  Future<void> setOnProcessorError(
+      {required FutureOr<void> Function(String) callback});
 }
 
 abstract class GainNodeExt {
   Future<void> connect({required AudioNode dest});
-}
 
-abstract class GainNodeSetOnprocessorErrorExt {
-  Future<void> setOnprocessorerror(
+  Future<void> setOnProcessorError(
       {required FutureOr<void> Function(String) callback});
 }
 
 abstract class IIRFilterNodeExt {
   Future<void> connect({required AudioNode dest});
+
+  Future<void> setOnProcessorError(
+      {required FutureOr<void> Function(String) callback});
 }
 
 abstract class MediaElementAudioSourceNodeExt {
   Future<void> connect({required AudioNode dest});
+
+  Future<void> setOnProcessorError(
+      {required FutureOr<void> Function(String) callback});
 }
 
 abstract class MediaStreamAudioDestinationNodeExt {
   Future<void> connect({required AudioNode dest});
+
+  Future<void> setOnProcessorError(
+      {required FutureOr<void> Function(String) callback});
 }
 
 abstract class MediaStreamAudioSourceNodeExt {
   Future<void> connect({required AudioNode dest});
+
+  Future<void> setOnProcessorError(
+      {required FutureOr<void> Function(String) callback});
 }
 
 abstract class MediaStreamTrackAudioSourceNodeExt {
   Future<void> connect({required AudioNode dest});
+
+  Future<void> setOnProcessorError(
+      {required FutureOr<void> Function(String) callback});
 }
 
 abstract class OscillatorNodeExt {
   Future<void> connect({required AudioNode dest});
+
+  Future<void> setOnProcessorError(
+      {required FutureOr<void> Function(String) callback});
 }
 
 abstract class PannerNodeExt {
   Future<void> connect({required AudioNode dest});
+
+  Future<void> setOnProcessorError(
+      {required FutureOr<void> Function(String) callback});
 }
 
 abstract class ScriptProcessorNodeExt {
   Future<void> connect({required AudioNode dest});
+
+  Future<void> setOnProcessorError(
+      {required FutureOr<void> Function(String) callback});
 }
 
 abstract class StereoPannerNodeExt {
   Future<void> connect({required AudioNode dest});
+
+  Future<void> setOnProcessorError(
+      {required FutureOr<void> Function(String) callback});
 }
 
 abstract class WaveShaperNodeExt {
   Future<void> connect({required AudioNode dest});
+
+  Future<void> setOnProcessorError(
+      {required FutureOr<void> Function(String) callback});
 }

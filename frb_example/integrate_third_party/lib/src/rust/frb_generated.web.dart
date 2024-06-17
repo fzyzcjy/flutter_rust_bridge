@@ -1243,10 +1243,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   GainNodeExt dco_decode_TraitDef_GainNodeExt(dynamic raw);
 
   @protected
-  GainNodeSetOnprocessorErrorExt
-      dco_decode_TraitDef_GainNodeSetOnprocessorErrorExt(dynamic raw);
-
-  @protected
   IIRFilterNodeExt dco_decode_TraitDef_IIRFilterNodeExt(dynamic raw);
 
   @protected
