@@ -47,6 +47,12 @@ impl WaveShaperNode {
 }
 
 #[frb(external)]
+impl MediaStreamAudioDestinationNode {
+    #[frb(proxy)]
+    pub fn stream() {}
+}
+
+#[frb(external)]
 #[frb(generate_implementor_enum)]
 pub trait AudioNode {
     // This returns borrowed type, but users usually already has the context (otherwise they seem
