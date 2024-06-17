@@ -40,9 +40,6 @@ impl AudioParam {
 #[frb(ignore)]
 pub struct ErrorEvent;
 
-#[frb(ignore)]
-pub struct MediaElement;
-
 handle_audio_node_trait_impls_marker!(AudioParam);
 
 handle_getter_audio_param!(AudioListener; position_x, position_y, position_z, forward_x, forward_y, forward_z, up_x, up_y, up_z);
