@@ -33,7 +33,7 @@ Future<void> _rustWebAudioApiReadmeDemoUsage() async {
   await src.setLoop(value: true);
 
   final biquad = await context.createBiquadFilter();
-  biquad.frequency.setValue(value: 125);
+  biquad.frequency.value = 125;
 
   await src.connect(dest: biquad);
   await biquad.connect(dest: await context.destination());
@@ -59,10 +59,10 @@ Future<void> _mdnUsingWebAudioApiDemoUsage() async {
   final track = await audioContext.createMediaElementSource(audioElement);
 
   final gainNode = await audioContext.createGain();
-  gainNode.gain.setValue(value: 1.2345);
+  gainNode.gain.value = 1.2345;
 
   final panner = await audioContext.createStereoPanner();
-  panner.pan.setValue(value: 1.2345);
+  panner.pan.value = 1.2345;
 
   await track.connect(dest: gainNode);
   await gainNode.connect(dest: panner);
