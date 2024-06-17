@@ -51,6 +51,7 @@ pub(crate) mod tuple;
 #[allow(clippy::module_inception)]
 pub(crate) mod ty;
 pub(crate) mod unencodable;
+mod namespace;
 
 pub(crate) struct TypeParser<'a> {
     src_structs: HashMap<String, &'a HirFlatStruct>,
