@@ -1,6 +1,5 @@
 pub mod context;
 pub mod media_devices;
-pub mod media_element;
 pub mod node;
 pub mod worklet;
 
