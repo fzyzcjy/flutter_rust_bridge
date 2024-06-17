@@ -95,7 +95,11 @@ abstract class AudioListener implements RustOpaqueInterface {
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioParam>>
 abstract class AudioParam
-    implements RustOpaqueInterface, AudioNode, AudioParamExt, AudioParamExt {
+    implements
+        RustOpaqueInterface,
+        AudioNode,
+        AudioParamExt,
+        AudioParamSetOnprocessorErrorExt {
   /// Current value of the automation rate of the AudioParam
   Future<AutomationRate> automationRate();
 

@@ -1207,6 +1207,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   AudioParamExt dco_decode_TraitDef_AudioParamExt(dynamic raw);
 
   @protected
+  AudioParamSetOnprocessorErrorExt
+      dco_decode_TraitDef_AudioParamSetOnprocessorErrorExt(dynamic raw);
+
+  @protected
   AudioScheduledSourceNode dco_decode_TraitDef_AudioScheduledSourceNode(
       dynamic raw);
 

@@ -21229,6 +21229,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  AudioParamSetOnprocessorErrorExt
+      dco_decode_TraitDef_AudioParamSetOnprocessorErrorExt(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    throw UnimplementedError();
+  }
+
+  @protected
   AudioScheduledSourceNode dco_decode_TraitDef_AudioScheduledSourceNode(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs

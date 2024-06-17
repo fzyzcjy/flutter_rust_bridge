@@ -33,7 +33,9 @@ abstract class AudioDestinationNodeExt {
 
 abstract class AudioParamExt {
   Future<void> connect({required AudioNode dest});
+}
 
+abstract class AudioParamSetOnprocessorErrorExt {
   Future<void> setOnprocessorerror(
       {required FutureOr<void> Function(String) callback});
 }
