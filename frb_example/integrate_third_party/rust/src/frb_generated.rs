@@ -31017,6 +31017,131 @@ impl std::ops::DerefMut for AudioNodeImplementorRwLockWriteGuard<'_> {
     }
 }
 
+pub enum Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnum
+{
+    Variant0(RustAutoOpaque<MediaStreamAudioDestinationNode>),
+}
+
+pub fn frb_internal_no_impl_dummy_function_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnum(
+    a: Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnum,
+) {
+}
+
+impl Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnum {
+    pub fn blocking_read(&self) -> Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnumRwLockReadGuard{
+        match self {
+            Self::Variant0(inner) => Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnumRwLockReadGuard::Variant0(inner.blocking_read()),
+
+        }
+    }
+
+    pub fn blocking_write(&self) -> Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnumRwLockWriteGuard{
+        unreachable!()
+    }
+
+    pub async fn read(&self) -> Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnumRwLockReadGuard{
+        match self {
+            Self::Variant0(inner) => Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnumRwLockReadGuard::Variant0(inner.read().await),
+
+        }
+    }
+
+    pub async fn write(&self) -> Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnumRwLockWriteGuard{
+        unreachable!()
+    }
+}
+
+impl Lockable
+    for Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnum
+{
+    type RwLockReadGuard<'a> = Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnumRwLockReadGuard<'a>;
+    type RwLockWriteGuard<'a> = Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnumRwLockWriteGuard<'a>;
+
+    fn lockable_order(&self) -> flutter_rust_bridge::for_generated::LockableOrder {
+        match self {
+            Self::Variant0(inner) => {
+                flutter_rust_bridge::for_generated::rust_auto_opaque_lockable_order(inner)
+            }
+        }
+    }
+
+    fn lockable_decode_sync_ref(&self) -> Self::RwLockReadGuard<'_> {
+        self.blocking_read()
+    }
+
+    fn lockable_decode_sync_ref_mut(&self) -> Self::RwLockWriteGuard<'_> {
+        self.blocking_write()
+    }
+
+    fn lockable_decode_async_ref<'a>(
+        &'a self,
+    ) -> std::pin::Pin<Box<dyn std::future::Future<Output = Self::RwLockReadGuard<'_>> + Send + 'a>>
+    where
+        Self: Sync + 'a,
+    {
+        Box::pin(async move { self.read().await })
+    }
+
+    fn lockable_decode_async_ref_mut<'a>(
+        &'a self,
+    ) -> std::pin::Pin<Box<dyn std::future::Future<Output = Self::RwLockWriteGuard<'_>> + Send + 'a>>
+    where
+        Self: Sync + 'a,
+    {
+        Box::pin(async move { self.write().await })
+    }
+}
+
+pub enum Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnumRwLockReadGuard<
+    'a,
+> {
+    Variant0(
+        flutter_rust_bridge::for_generated::rust_async::RwLockReadGuard<
+            'a,
+            MediaStreamAudioDestinationNode,
+        >,
+    ),
+}
+
+impl std::ops::Deref for Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnumRwLockReadGuard<'_> {
+            type Target = MediaStream;
+
+            fn deref(&self) -> &Self::Target {
+                match self {
+            Self::Variant0(inner) => inner.deref().stream(),
+
+        }
+            }
+        }
+
+pub enum Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnumRwLockWriteGuard<
+    'a,
+> {
+    Variant0(
+        flutter_rust_bridge::for_generated::rust_async::RwLockWriteGuard<
+            'a,
+            MediaStreamAudioDestinationNode,
+        >,
+    ),
+}
+
+impl std::ops::Deref for Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnumRwLockWriteGuard<'_> {
+            type Target = MediaStream;
+
+            fn deref(&self) -> &Self::Target {
+                match self {
+            Self::Variant0(inner) => inner.deref().stream(),
+
+        }
+            }
+        }
+
+impl std::ops::DerefMut for Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnumRwLockWriteGuard<'_> {
+                fn deref_mut(&mut self) -> &mut Self::Target {
+                    unreachable!()
+                }
+            }
+
 pub enum Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum
 {
     Variant0(RustAutoOpaque<AudioBufferSourceNode>),
@@ -31504,131 +31629,6 @@ Self::Variant31(inner) => inner.deref().pan(),
         }
 
 impl std::ops::DerefMut for Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnumRwLockWriteGuard<'_> {
-                fn deref_mut(&mut self) -> &mut Self::Target {
-                    unreachable!()
-                }
-            }
-
-pub enum Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnum
-{
-    Variant0(RustAutoOpaque<MediaStreamAudioDestinationNode>),
-}
-
-pub fn frb_internal_no_impl_dummy_function_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnum(
-    a: Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnum,
-) {
-}
-
-impl Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnum {
-    pub fn blocking_read(&self) -> Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnumRwLockReadGuard{
-        match self {
-            Self::Variant0(inner) => Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnumRwLockReadGuard::Variant0(inner.blocking_read()),
-
-        }
-    }
-
-    pub fn blocking_write(&self) -> Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnumRwLockWriteGuard{
-        unreachable!()
-    }
-
-    pub async fn read(&self) -> Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnumRwLockReadGuard{
-        match self {
-            Self::Variant0(inner) => Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnumRwLockReadGuard::Variant0(inner.read().await),
-
-        }
-    }
-
-    pub async fn write(&self) -> Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnumRwLockWriteGuard{
-        unreachable!()
-    }
-}
-
-impl Lockable
-    for Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnum
-{
-    type RwLockReadGuard<'a> = Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnumRwLockReadGuard<'a>;
-    type RwLockWriteGuard<'a> = Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnumRwLockWriteGuard<'a>;
-
-    fn lockable_order(&self) -> flutter_rust_bridge::for_generated::LockableOrder {
-        match self {
-            Self::Variant0(inner) => {
-                flutter_rust_bridge::for_generated::rust_auto_opaque_lockable_order(inner)
-            }
-        }
-    }
-
-    fn lockable_decode_sync_ref(&self) -> Self::RwLockReadGuard<'_> {
-        self.blocking_read()
-    }
-
-    fn lockable_decode_sync_ref_mut(&self) -> Self::RwLockWriteGuard<'_> {
-        self.blocking_write()
-    }
-
-    fn lockable_decode_async_ref<'a>(
-        &'a self,
-    ) -> std::pin::Pin<Box<dyn std::future::Future<Output = Self::RwLockReadGuard<'_>> + Send + 'a>>
-    where
-        Self: Sync + 'a,
-    {
-        Box::pin(async move { self.read().await })
-    }
-
-    fn lockable_decode_async_ref_mut<'a>(
-        &'a self,
-    ) -> std::pin::Pin<Box<dyn std::future::Future<Output = Self::RwLockWriteGuard<'_>> + Send + 'a>>
-    where
-        Self: Sync + 'a,
-    {
-        Box::pin(async move { self.write().await })
-    }
-}
-
-pub enum Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnumRwLockReadGuard<
-    'a,
-> {
-    Variant0(
-        flutter_rust_bridge::for_generated::rust_async::RwLockReadGuard<
-            'a,
-            MediaStreamAudioDestinationNode,
-        >,
-    ),
-}
-
-impl std::ops::Deref for Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnumRwLockReadGuard<'_> {
-            type Target = MediaStream;
-
-            fn deref(&self) -> &Self::Target {
-                match self {
-            Self::Variant0(inner) => inner.deref().stream(),
-
-        }
-            }
-        }
-
-pub enum Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnumRwLockWriteGuard<
-    'a,
-> {
-    Variant0(
-        flutter_rust_bridge::for_generated::rust_async::RwLockWriteGuard<
-            'a,
-            MediaStreamAudioDestinationNode,
-        >,
-    ),
-}
-
-impl std::ops::Deref for Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnumRwLockWriteGuard<'_> {
-            type Target = MediaStream;
-
-            fn deref(&self) -> &Self::Target {
-                match self {
-            Self::Variant0(inner) => inner.deref().stream(),
-
-        }
-            }
-        }
-
-impl std::ops::DerefMut for Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnumRwLockWriteGuard<'_> {
                 fn deref_mut(&mut self) -> &mut Self::Target {
                     unreachable!()
                 }
