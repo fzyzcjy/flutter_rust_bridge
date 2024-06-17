@@ -69,20 +69,20 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 
 abstract class RustLibApi extends BaseApi {
   Future<void> crateApiMinimalStructBeforeRenameDummyFunction(
-      {required StructBeforeRename that});
+      {required StructAfterRename that});
 
   Future<void> crateApiMinimalInitApp();
 
   Future<int> crateApiMinimalMinimalAdder({required int a, required int b});
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_StructBeforeRename;
+      get rust_arc_increment_strong_count_StructAfterRename;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_StructBeforeRename;
+      get rust_arc_decrement_strong_count_StructAfterRename;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_StructBeforeRenamePtr;
+      get rust_arc_decrement_strong_count_StructAfterRenamePtr;
 }
 
 class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
@@ -95,7 +95,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> crateApiMinimalStructBeforeRenameDummyFunction(
-      {required StructBeforeRename that}) {
+      {required StructAfterRename that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -170,35 +170,35 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_StructBeforeRename => wire
+      get rust_arc_increment_strong_count_StructAfterRename => wire
           .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructBeforeRename;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_StructBeforeRename => wire
+      get rust_arc_decrement_strong_count_StructAfterRename => wire
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructBeforeRename;
 
   @protected
-  StructBeforeRename
+  StructAfterRename
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructBeforeRename(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return StructBeforeRenameImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return StructAfterRenameImpl.frbInternalDcoDecode(raw as List<dynamic>);
   }
 
   @protected
-  StructBeforeRename
+  StructAfterRename
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructBeforeRename(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return StructBeforeRenameImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return StructAfterRenameImpl.frbInternalDcoDecode(raw as List<dynamic>);
   }
 
   @protected
-  StructBeforeRename
+  StructAfterRename
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructBeforeRename(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return StructBeforeRenameImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return StructAfterRenameImpl.frbInternalDcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -220,29 +220,29 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  StructBeforeRename
+  StructAfterRename
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructBeforeRename(
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    return StructBeforeRenameImpl.frbInternalSseDecode(
+    return StructAfterRenameImpl.frbInternalSseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  StructBeforeRename
+  StructAfterRename
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructBeforeRename(
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    return StructBeforeRenameImpl.frbInternalSseDecode(
+    return StructAfterRenameImpl.frbInternalSseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  StructBeforeRename
+  StructAfterRename
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructBeforeRename(
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    return StructBeforeRenameImpl.frbInternalSseDecode(
+    return StructAfterRenameImpl.frbInternalSseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -272,30 +272,30 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructBeforeRename(
-          StructBeforeRename self, SseSerializer serializer) {
+          StructAfterRename self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as StructBeforeRenameImpl).frbInternalSseEncode(move: true),
+        (self as StructAfterRenameImpl).frbInternalSseEncode(move: true),
         serializer);
   }
 
   @protected
   void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructBeforeRename(
-          StructBeforeRename self, SseSerializer serializer) {
+          StructAfterRename self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as StructBeforeRenameImpl).frbInternalSseEncode(move: false),
+        (self as StructAfterRenameImpl).frbInternalSseEncode(move: false),
         serializer);
   }
 
   @protected
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructBeforeRename(
-          StructBeforeRename self, SseSerializer serializer) {
+          StructAfterRename self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as StructBeforeRenameImpl).frbInternalSseEncode(move: null),
+        (self as StructAfterRenameImpl).frbInternalSseEncode(move: null),
         serializer);
   }
 
@@ -324,23 +324,23 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 }
 
 @sealed
-class StructBeforeRenameImpl extends RustOpaque implements StructBeforeRename {
+class StructAfterRenameImpl extends RustOpaque implements StructAfterRename {
   // Not to be used by end users
-  StructBeforeRenameImpl.frbInternalDcoDecode(List<dynamic> wire)
+  StructAfterRenameImpl.frbInternalDcoDecode(List<dynamic> wire)
       : super.frbInternalDcoDecode(wire, _kStaticData);
 
   // Not to be used by end users
-  StructBeforeRenameImpl.frbInternalSseDecode(
+  StructAfterRenameImpl.frbInternalSseDecode(
       BigInt ptr, int externalSizeOnNative)
       : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount:
-        RustLib.instance.api.rust_arc_increment_strong_count_StructBeforeRename,
+        RustLib.instance.api.rust_arc_increment_strong_count_StructAfterRename,
     rustArcDecrementStrongCount:
-        RustLib.instance.api.rust_arc_decrement_strong_count_StructBeforeRename,
+        RustLib.instance.api.rust_arc_decrement_strong_count_StructAfterRename,
     rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_StructBeforeRenamePtr,
+        .instance.api.rust_arc_decrement_strong_count_StructAfterRenamePtr,
   );
 
   Future<void> dummyFunction() =>

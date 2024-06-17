@@ -19,21 +19,21 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   });
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_StructBeforeRenamePtr => wire
+      get rust_arc_decrement_strong_count_StructAfterRenamePtr => wire
           ._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructBeforeRenamePtr;
 
   @protected
-  StructBeforeRename
+  StructAfterRename
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructBeforeRename(
           dynamic raw);
 
   @protected
-  StructBeforeRename
+  StructAfterRename
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructBeforeRename(
           dynamic raw);
 
   @protected
-  StructBeforeRename
+  StructAfterRename
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructBeforeRename(
           dynamic raw);
 
@@ -47,17 +47,17 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   BigInt dco_decode_usize(dynamic raw);
 
   @protected
-  StructBeforeRename
+  StructAfterRename
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructBeforeRename(
           SseDeserializer deserializer);
 
   @protected
-  StructBeforeRename
+  StructAfterRename
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructBeforeRename(
           SseDeserializer deserializer);
 
   @protected
-  StructBeforeRename
+  StructAfterRename
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructBeforeRename(
           SseDeserializer deserializer);
 
@@ -76,17 +76,17 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructBeforeRename(
-          StructBeforeRename self, SseSerializer serializer);
+          StructAfterRename self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructBeforeRename(
-          StructBeforeRename self, SseSerializer serializer);
+          StructAfterRename self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructBeforeRename(
-          StructBeforeRename self, SseSerializer serializer);
+          StructAfterRename self, SseSerializer serializer);
 
   @protected
   void sse_encode_i_32(int self, SseSerializer serializer);

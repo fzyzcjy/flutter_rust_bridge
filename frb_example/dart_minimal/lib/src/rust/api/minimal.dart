@@ -10,6 +10,6 @@ Future<int> minimalAdder({required int a, required int b}) =>
     RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b);
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructBeforeRename>>
-abstract class StructBeforeRename implements RustOpaqueInterface {
+abstract class StructAfterRename implements RustOpaqueInterface {
   Future<void> dummyFunction();
 }
