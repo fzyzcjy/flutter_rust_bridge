@@ -12,6 +12,9 @@ abstract class MyMediaElement implements RustOpaqueInterface {
 
   Future<bool> loop();
 
+  factory MyMediaElement({required String file}) =>
+      RustLib.instance.api.crateApiMediaElementMyMediaElementNew(file: file);
+
   Future<void> pause();
 
   Future<bool> paused();
