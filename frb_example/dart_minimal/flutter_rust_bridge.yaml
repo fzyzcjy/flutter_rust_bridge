@@ -7,8 +7,5 @@ local: true
 
 # TODO temp
 #full_dep: true
-enable_lifetime: true
+#enable_lifetime: true
 #stop_on_error: true
-
-dart_type_rename:
-  StructBeforeRename: StructAfterRename
