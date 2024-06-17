@@ -1,6 +1,6 @@
-use std::sync::Mutex;
 use delegate_attr::delegate;
 use flutter_rust_bridge::frb;
+use std::sync::Mutex;
 
 // TODO: Dart rename `MyMediaElement` -> `MediaElement`
 #[frb(opaque)]
@@ -25,4 +25,13 @@ impl MyMediaElement {
     pub fn playback_rate(&self) -> f64 {}
 
     pub fn set_playback_rate(&self, value: f64) {}
+}
+
+impl MyMediaElement {
+    #[frb(sync)]
+    pub fn new(file: String) -> anyhow::Result<MyMediaElement> {
+        Ok(MyMediaElement(Mutex::new(
+            web_audio_api::MediaElement::new(file)?,
+        )))
+    }
 }
