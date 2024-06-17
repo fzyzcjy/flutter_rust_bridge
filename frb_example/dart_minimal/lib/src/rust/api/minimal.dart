@@ -9,12 +9,7 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 Future<int> minimalAdder({required int a, required int b}) =>
     RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b);
 
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Foo>>
-abstract class Foo implements RustOpaqueInterface {
-  Future<Bar> computeBar();
-
-  factory Foo() => RustLib.instance.api.crateApiMinimalFooNew();
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructBeforeRename>>
+abstract class StructBeforeRename implements RustOpaqueInterface {
+  Future<void> dummyFunction();
 }
-
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Lifetimeable < Bar < 'static > >>>
-abstract class Bar implements RustOpaqueInterface {}

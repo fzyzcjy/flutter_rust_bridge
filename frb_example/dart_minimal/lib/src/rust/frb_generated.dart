@@ -57,7 +57,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.0.0-dev.40';
 
   @override
-  int get rustContentHash => -1862032358;
+  int get rustContentHash => -2005500458;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -68,25 +68,21 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 }
 
 abstract class RustLibApi extends BaseApi {
-  Future<Bar> crateApiMinimalFooComputeBar({required Foo that});
-
-  Foo crateApiMinimalFooNew();
+  Future<void> crateApiMinimalStructBeforeRenameDummyFunction(
+      {required StructBeforeRename that});
 
   Future<void> crateApiMinimalInitApp();
 
   Future<int> crateApiMinimalMinimalAdder({required int a, required int b});
 
-  RustArcIncrementStrongCountFnType get rust_arc_increment_strong_count_Foo;
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_StructBeforeRename;
 
-  RustArcDecrementStrongCountFnType get rust_arc_decrement_strong_count_Foo;
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_StructBeforeRename;
 
-  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_FooPtr;
-
-  RustArcIncrementStrongCountFnType get rust_arc_increment_strong_count_Bar;
-
-  RustArcDecrementStrongCountFnType get rust_arc_decrement_strong_count_Bar;
-
-  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_BarPtr;
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_StructBeforeRenamePtr;
 }
 
 class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
@@ -98,53 +94,30 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   });
 
   @override
-  Future<Bar> crateApiMinimalFooComputeBar({required Foo that}) {
+  Future<void> crateApiMinimalStructBeforeRenameDummyFunction(
+      {required StructBeforeRename that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerFoo(
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructBeforeRename(
             that, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData:
-            sse_decode_Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBarstatic,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiMinimalFooComputeBarConstMeta,
+      constMeta: kCrateApiMinimalStructBeforeRenameDummyFunctionConstMeta,
       argValues: [that],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiMinimalFooComputeBarConstMeta =>
+  TaskConstMeta get kCrateApiMinimalStructBeforeRenameDummyFunctionConstMeta =>
       const TaskConstMeta(
-        debugName: "Foo_compute_bar",
+        debugName: "StructBeforeRename_dummy_function",
         argNames: ["that"],
-      );
-
-  @override
-  Foo crateApiMinimalFooNew() {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 2)!;
-      },
-      codec: SseCodec(
-        decodeSuccessData:
-            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerFoo,
-        decodeErrorData: null,
-      ),
-      constMeta: kCrateApiMinimalFooNewConstMeta,
-      argValues: [],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta get kCrateApiMinimalFooNewConstMeta => const TaskConstMeta(
-        debugName: "Foo_new",
-        argNames: [],
       );
 
   @override
@@ -153,7 +126,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 3, port: port_);
+            funcId: 2, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -178,7 +151,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_i_32(a, serializer);
         sse_encode_i_32(b, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 4, port: port_);
+            funcId: 3, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_i_32,
@@ -196,60 +169,36 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         argNames: ["a", "b"],
       );
 
-  RustArcIncrementStrongCountFnType get rust_arc_increment_strong_count_Foo => wire
-      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerFoo;
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_StructBeforeRename => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructBeforeRename;
 
-  RustArcDecrementStrongCountFnType get rust_arc_decrement_strong_count_Foo => wire
-      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerFoo;
-
-  RustArcIncrementStrongCountFnType get rust_arc_increment_strong_count_Bar => wire
-      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeableBarstatic;
-
-  RustArcDecrementStrongCountFnType get rust_arc_decrement_strong_count_Bar => wire
-      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeableBarstatic;
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_StructBeforeRename => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructBeforeRename;
 
   @protected
-  Bar dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeableBarstatic(
-      dynamic raw) {
+  StructBeforeRename
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructBeforeRename(
+          dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeableBarstatic(
-        raw);
+    return StructBeforeRenameImpl.frbInternalDcoDecode(raw as List<dynamic>);
   }
 
   @protected
-  Foo dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerFoo(
-      dynamic raw) {
+  StructBeforeRename
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructBeforeRename(
+          dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return FooImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return StructBeforeRenameImpl.frbInternalDcoDecode(raw as List<dynamic>);
   }
 
   @protected
-  Foo dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerFoo(
-      dynamic raw) {
+  StructBeforeRename
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructBeforeRename(
+          dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return FooImpl.frbInternalDcoDecode(raw as List<dynamic>);
-  }
-
-  @protected
-  Bar dco_decode_Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBarstatic(
-      dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    throw UnimplementedError(
-        'Not implemented in this codec, please use the other one');
-  }
-
-  @protected
-  Foo dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerFoo(
-      dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return FooImpl.frbInternalDcoDecode(raw as List<dynamic>);
-  }
-
-  @protected
-  Bar dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeableBarstatic(
-      dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return BarImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return StructBeforeRenameImpl.frbInternalDcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -271,54 +220,29 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  Bar sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeableBarstatic(
-      SseDeserializer deserializer) {
+  StructBeforeRename
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructBeforeRename(
+          SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    var inner =
-        sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeableBarstatic(
-            deserializer);
-    return inner;
-  }
-
-  @protected
-  Foo sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerFoo(
-      SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return FooImpl.frbInternalSseDecode(
+    return StructBeforeRenameImpl.frbInternalSseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  Foo sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerFoo(
-      SseDeserializer deserializer) {
+  StructBeforeRename
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructBeforeRename(
+          SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    return FooImpl.frbInternalSseDecode(
+    return StructBeforeRenameImpl.frbInternalSseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  Bar sse_decode_Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBarstatic(
-      SseDeserializer deserializer) {
+  StructBeforeRename
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructBeforeRename(
+          SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    var inner =
-        sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeableBarstatic(
-            deserializer);
-    return inner;
-  }
-
-  @protected
-  Foo sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerFoo(
-      SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return FooImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
-  }
-
-  @protected
-  Bar sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeableBarstatic(
-      SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return BarImpl.frbInternalSseDecode(
+    return StructBeforeRenameImpl.frbInternalSseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -347,56 +271,32 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeableBarstatic(
-          Bar self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeableBarstatic(
-        self, serializer);
-  }
-
-  @protected
-  void
-      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerFoo(
-          Foo self, SseSerializer serializer) {
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructBeforeRename(
+          StructBeforeRename self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as FooImpl).frbInternalSseEncode(move: true), serializer);
+        (self as StructBeforeRenameImpl).frbInternalSseEncode(move: true),
+        serializer);
   }
 
   @protected
   void
-      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerFoo(
-          Foo self, SseSerializer serializer) {
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructBeforeRename(
+          StructBeforeRename self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as FooImpl).frbInternalSseEncode(move: false), serializer);
+        (self as StructBeforeRenameImpl).frbInternalSseEncode(move: false),
+        serializer);
   }
 
   @protected
   void
-      sse_encode_Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBarstatic(
-          Bar self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeableBarstatic(
-        self, serializer);
-  }
-
-  @protected
-  void
-      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerFoo(
-          Foo self, SseSerializer serializer) {
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructBeforeRename(
+          StructBeforeRename self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as FooImpl).frbInternalSseEncode(move: null), serializer);
-  }
-
-  @protected
-  void
-      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLifetimeableBarstatic(
-          Bar self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_usize(
-        (self as BarImpl).frbInternalSseEncode(move: null), serializer);
+        (self as StructBeforeRenameImpl).frbInternalSseEncode(move: null),
+        serializer);
   }
 
   @protected
@@ -424,45 +324,27 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 }
 
 @sealed
-class BarImpl extends RustOpaque implements Bar {
+class StructBeforeRenameImpl extends RustOpaque implements StructBeforeRename {
   // Not to be used by end users
-  BarImpl.frbInternalDcoDecode(List<dynamic> wire)
+  StructBeforeRenameImpl.frbInternalDcoDecode(List<dynamic> wire)
       : super.frbInternalDcoDecode(wire, _kStaticData);
 
   // Not to be used by end users
-  BarImpl.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
+  StructBeforeRenameImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
       : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount:
-        RustLib.instance.api.rust_arc_increment_strong_count_Bar,
+        RustLib.instance.api.rust_arc_increment_strong_count_StructBeforeRename,
     rustArcDecrementStrongCount:
-        RustLib.instance.api.rust_arc_decrement_strong_count_Bar,
-    rustArcDecrementStrongCountPtr:
-        RustLib.instance.api.rust_arc_decrement_strong_count_BarPtr,
-  );
-}
-
-@sealed
-class FooImpl extends RustOpaque implements Foo {
-  // Not to be used by end users
-  FooImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  FooImpl.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount:
-        RustLib.instance.api.rust_arc_increment_strong_count_Foo,
-    rustArcDecrementStrongCount:
-        RustLib.instance.api.rust_arc_decrement_strong_count_Foo,
-    rustArcDecrementStrongCountPtr:
-        RustLib.instance.api.rust_arc_decrement_strong_count_FooPtr,
+        RustLib.instance.api.rust_arc_decrement_strong_count_StructBeforeRename,
+    rustArcDecrementStrongCountPtr: RustLib
+        .instance.api.rust_arc_decrement_strong_count_StructBeforeRenamePtr,
   );
 
-  Future<Bar> computeBar() => RustLib.instance.api.crateApiMinimalFooComputeBar(
+  Future<void> dummyFunction() =>
+      RustLib.instance.api.crateApiMinimalStructBeforeRenameDummyFunction(
         that: this,
       );
 }
