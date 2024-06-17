@@ -67,8 +67,6 @@ macro_rules! handle_audio_node_trait_impls_marker {
         #[frb(external)]
         impl $name {
             #[frb(ignore)]
-            pub fn set_onprocessorerror() {}
-            #[frb(ignore)]
             pub fn connect_from_output_to_input() {}
             #[frb(ignore)]
             pub fn disconnect_dest() {}
