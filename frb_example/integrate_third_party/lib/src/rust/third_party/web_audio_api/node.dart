@@ -11,7 +11,7 @@ import 'worklet.dart';
 
 // These functions are ignored because they have generic arguments: `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect`, `connect`, `connect`, `set_onended`, `set_onended`, `set_onended`, `set_onended`
 // These types are ignored because they are not used by any `pub` functions: `AnalyserOptions`, `AudioBufferSourceOptions`, `AudioNodeOptions`, `BiquadFilterOptions`, `ChannelConfig`, `ChannelMergerOptions`, `ChannelSplitterOptions`, `ConstantSourceOptions`, `ConvolverOptions`, `DelayOptions`, `DynamicsCompressorOptions`, `GainOptions`, `IIRFilterOptions`, `MediaElementAudioSourceOptions`, `MediaStreamAudioSourceOptions`, `MediaStreamRenderer`, `MediaStreamTrackAudioSourceOptions`, `OscillatorOptions`, `PannerOptions`, `ScriptProcessorOptions`, `StereoPannerOptions`, `WaveShaperOptions`
-// These functions are ignored (category: IgnoreBecauseExplicitAttribute): `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`
+// These functions are ignored (category: IgnoreBecauseExplicitAttribute): `context`, `context`, `context`, `context`, `context`, `context`, `context`, `context`, `context`, `context`, `context`, `context`, `context`, `context`, `context`, `context`, `context`, `context`, `context`, `context`, `context`, `context`, `context`, `context`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`
 // These functions are ignored (category: IgnoreBecauseNotAllowedOwner): `channel_config`, `channel_count_mode`, `channel_count`, `channel_interpretation`, `clear_onprocessorerror`, `context`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output`, `disconnect_dest`, `disconnect_output`, `disconnect`, `number_of_inputs`, `number_of_outputs`, `registration`, `set_channel_count_mode`, `set_channel_count`, `set_channel_interpretation`, `set_onprocessorerror`
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AnalyserNode>>
@@ -36,10 +36,6 @@ abstract class AnalyserNode
 
   /// Unset the callback to run when an unhandled exception occurs in the audio processor.
   Future<void> clearOnprocessorerror();
-
-  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
-  /// AudioNode.
-  Future<void> context();
 
   /// Disconnects all outgoing connections from the AudioNode.
   Future<void> disconnect();
@@ -176,10 +172,6 @@ abstract class AudioBufferSourceNode
 
   /// Unset the callback to run when an unhandled exception occurs in the audio processor.
   Future<void> clearOnprocessorerror();
-
-  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
-  /// AudioNode.
-  Future<void> context();
 
   /// K-rate [`AudioParam`] that defines a pitch transposition of the file,
   /// expressed in cents
@@ -332,10 +324,6 @@ abstract class AudioDestinationNode
   /// Unset the callback to run when an unhandled exception occurs in the audio processor.
   Future<void> clearOnprocessorerror();
 
-  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
-  /// AudioNode.
-  Future<void> context();
-
   /// Disconnects all outgoing connections from the AudioNode.
   Future<void> disconnect();
 
@@ -400,10 +388,6 @@ abstract class BiquadFilterNode
 
   /// Unset the callback to run when an unhandled exception occurs in the audio processor.
   Future<void> clearOnprocessorerror();
-
-  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
-  /// AudioNode.
-  Future<void> context();
 
   /// Returns the detune audio parameter
   AudioParam get detune;
@@ -487,10 +471,6 @@ abstract class ChannelMergerNode
   /// Unset the callback to run when an unhandled exception occurs in the audio processor.
   Future<void> clearOnprocessorerror();
 
-  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
-  /// AudioNode.
-  Future<void> context();
-
   /// Disconnects all outgoing connections from the AudioNode.
   Future<void> disconnect();
 
@@ -550,10 +530,6 @@ abstract class ChannelSplitterNode
 
   /// Unset the callback to run when an unhandled exception occurs in the audio processor.
   Future<void> clearOnprocessorerror();
-
-  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
-  /// AudioNode.
-  Future<void> context();
 
   /// Disconnects all outgoing connections from the AudioNode.
   Future<void> disconnect();
@@ -621,10 +597,6 @@ abstract class ConstantSourceNode
 
   /// Unset the callback to run when an unhandled exception occurs in the audio processor.
   Future<void> clearOnprocessorerror();
-
-  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
-  /// AudioNode.
-  Future<void> context();
 
   /// Disconnects all outgoing connections from the AudioNode.
   Future<void> disconnect();
@@ -716,10 +688,6 @@ abstract class ConvolverNode
   /// Unset the callback to run when an unhandled exception occurs in the audio processor.
   Future<void> clearOnprocessorerror();
 
-  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
-  /// AudioNode.
-  Future<void> context();
-
   /// Disconnects all outgoing connections from the AudioNode.
   Future<void> disconnect();
 
@@ -794,10 +762,6 @@ abstract class DelayNode
   /// Unset the callback to run when an unhandled exception occurs in the audio processor.
   Future<void> clearOnprocessorerror();
 
-  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
-  /// AudioNode.
-  Future<void> context();
-
   /// A-rate [`AudioParam`] representing the amount of delay (in seconds) to apply.
   AudioParam get delayTime;
 
@@ -862,10 +826,6 @@ abstract class DynamicsCompressorNode
 
   /// Unset the callback to run when an unhandled exception occurs in the audio processor.
   Future<void> clearOnprocessorerror();
-
-  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
-  /// AudioNode.
-  Future<void> context();
 
   /// Disconnects all outgoing connections from the AudioNode.
   Future<void> disconnect();
@@ -936,10 +896,6 @@ abstract class GainNode implements RustOpaqueInterface, AudioNode, GainNodeExt {
   /// Unset the callback to run when an unhandled exception occurs in the audio processor.
   Future<void> clearOnprocessorerror();
 
-  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
-  /// AudioNode.
-  Future<void> context();
-
   /// Disconnects all outgoing connections from the AudioNode.
   Future<void> disconnect();
 
@@ -1002,10 +958,6 @@ abstract class IirFilterNode
   /// Unset the callback to run when an unhandled exception occurs in the audio processor.
   Future<void> clearOnprocessorerror();
 
-  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
-  /// AudioNode.
-  Future<void> context();
-
   /// Disconnects all outgoing connections from the AudioNode.
   Future<void> disconnect();
 
@@ -1065,10 +1017,6 @@ abstract class MediaElementAudioSourceNode
 
   /// Unset the callback to run when an unhandled exception occurs in the audio processor.
   Future<void> clearOnprocessorerror();
-
-  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
-  /// AudioNode.
-  Future<void> context();
 
   /// Disconnects all outgoing connections from the AudioNode.
   Future<void> disconnect();
@@ -1132,10 +1080,6 @@ abstract class MediaStreamAudioDestinationNode
 
   /// Unset the callback to run when an unhandled exception occurs in the audio processor.
   Future<void> clearOnprocessorerror();
-
-  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
-  /// AudioNode.
-  Future<void> context();
 
   /// Disconnects all outgoing connections from the AudioNode.
   Future<void> disconnect();
@@ -1201,10 +1145,6 @@ abstract class MediaStreamAudioSourceNode
   /// Unset the callback to run when an unhandled exception occurs in the audio processor.
   Future<void> clearOnprocessorerror();
 
-  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
-  /// AudioNode.
-  Future<void> context();
-
   /// Disconnects all outgoing connections from the AudioNode.
   Future<void> disconnect();
 
@@ -1267,10 +1207,6 @@ abstract class MediaStreamTrackAudioSourceNode
 
   /// Unset the callback to run when an unhandled exception occurs in the audio processor.
   Future<void> clearOnprocessorerror();
-
-  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
-  /// AudioNode.
-  Future<void> context();
 
   /// Disconnects all outgoing connections from the AudioNode.
   Future<void> disconnect();
@@ -1338,10 +1274,6 @@ abstract class OscillatorNode
 
   /// Unset the callback to run when an unhandled exception occurs in the audio processor.
   Future<void> clearOnprocessorerror();
-
-  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
-  /// AudioNode.
-  Future<void> context();
 
   /// A-rate [`AudioParam`] that defines a transposition according to the
   /// frequency, expressed in cents.
@@ -1470,10 +1402,6 @@ abstract class PannerNode
   Future<double> coneOuterAngle();
 
   Future<double> coneOuterGain();
-
-  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
-  /// AudioNode.
-  Future<void> context();
 
   /// Disconnects all outgoing connections from the AudioNode.
   Future<void> disconnect();
@@ -1604,10 +1532,6 @@ abstract class ScriptProcessorNode
   /// Unset the callback to run when an unhandled exception occurs in the audio processor.
   Future<void> clearOnprocessorerror();
 
-  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
-  /// AudioNode.
-  Future<void> context();
-
   /// Disconnects all outgoing connections from the AudioNode.
   Future<void> disconnect();
 
@@ -1667,10 +1591,6 @@ abstract class StereoPannerNode
 
   /// Unset the callback to run when an unhandled exception occurs in the audio processor.
   Future<void> clearOnprocessorerror();
-
-  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
-  /// AudioNode.
-  Future<void> context();
 
   /// Disconnects all outgoing connections from the AudioNode.
   Future<void> disconnect();
@@ -1734,10 +1654,6 @@ abstract class WaveShaperNode
 
   /// Unset the callback to run when an unhandled exception occurs in the audio processor.
   Future<void> clearOnprocessorerror();
-
-  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
-  /// AudioNode.
-  Future<void> context();
 
   /// Disconnects all outgoing connections from the AudioNode.
   Future<void> disconnect();
@@ -1818,10 +1734,6 @@ abstract class AudioNode {
 
   /// Unset the callback to run when an unhandled exception occurs in the audio processor.
   Future<void> clearOnprocessorerror();
-
-  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
-  /// AudioNode.
-  Future<void> context();
 
   /// Disconnects all outgoing connections from the AudioNode.
   Future<void> disconnect();

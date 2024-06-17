@@ -136,10 +136,6 @@ abstract class AudioParam
   /// Unset the callback to run when an unhandled exception occurs in the audio processor.
   Future<void> clearOnprocessorerror();
 
-  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
-  /// AudioNode.
-  Future<void> context();
-
   Future<double> defaultValue();
 
   /// Disconnects all outgoing connections from the AudioNode.

@@ -33,10 +33,6 @@ abstract class AudioWorkletNode implements RustOpaqueInterface, AudioNode {
   /// Unset the callback to run when an unhandled exception occurs in the audio processor.
   Future<void> clearOnprocessorerror();
 
-  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
-  /// AudioNode.
-  Future<void> context();
-
   /// Disconnects all outgoing connections from the AudioNode.
   Future<void> disconnect();
 
