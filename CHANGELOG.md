@@ -6,7 +6,7 @@
 * Auto skip methods in trait definitions that has Self as inputs because it cannot be translated to Dart #2099
 * Add type_64bit_int to config #2096
 * Improve namespace choices for opaque types #2096
-* Hint users when having references in output type and improve docs #2100
+* Hint users when having references in output type, hint when wrong rust_input, and improve docs #2100
 * Improve warning message #2098
 * Experiment more about translating whole audio crate#2096
 * Improve internal code #2096
