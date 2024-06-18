@@ -17,21 +17,20 @@ use crate::if_then_some;
 use anyhow::{bail, Context};
 use itertools::Itertools;
 use syn::{parse_str, Type};
-use crate::codegen::parser::mir::parser::ty::ty_or_skip::MirTypeOrSkip;
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_path_data_concrete(
         &mut self,
         last_segment: &SplayedSegment,
         splayed_segments: &[SplayedSegment],
-    ) -> anyhow::Result<Option<MirTypeOrSkip>> {
+    ) -> anyhow::Result<Option<MirType>> {
         let non_last_segments = (splayed_segments.split_last().unwrap().1.iter())
             .map(|segment| segment.0)
             .join("::");
         let check_prefix =
             |matcher: &str| non_last_segments == matcher || non_last_segments.is_empty();
 
-        Ok(Some(MirTypeOrSkip::Type(match last_segment {
+        Ok(Some(match last_segment {
             ("Self", []) => self.parse_type_self()?,
 
             ("Duration", []) if check_prefix("chrono") => Delegate(MirTypeDelegate::Time(MirTypeDelegateTime::Duration)),
@@ -97,7 +96,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             })),
 
             _ => return Ok(None),
-        })))
+        }))
     }
 
     fn parse_type_self(&mut self) -> anyhow::Result<MirType> {

@@ -18,7 +18,6 @@ use crate::utils::namespace::{Namespace, NamespacedName};
 use anyhow::bail;
 use std::collections::HashMap;
 use syn::{Field, Fields, FieldsNamed, FieldsUnnamed, ItemStruct, Type, Visibility};
-use crate::codegen::parser::mir::parser::ty::ty_or_skip::MirTypeOrSkip;
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_path_data_struct(
@@ -26,7 +25,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         path: &syn::Path,
         last_segment: &SplayedSegment,
         override_opaque: Option<bool>,
-    ) -> anyhow::Result<Option<MirTypeOrSkip>> {
+    ) -> anyhow::Result<Option<MirType>> {
         EnumOrStructParserStruct(self).parse(path, last_segment, override_opaque)
     }
 
