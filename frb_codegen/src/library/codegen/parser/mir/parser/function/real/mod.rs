@@ -6,7 +6,8 @@ use crate::codegen::ir::mir::func::{
     MirFuncOutput, MirFuncOwnerInfo, MirFuncOwnerInfoMethod,
 };
 use crate::codegen::ir::mir::skip::MirSkipReason::{
-    IgnoreBecauseExplicitAttribute, IgnoreBecauseFunctionGeneric, IgnoreSilently,
+    IgnoreBecauseExplicitAttribute, IgnoreBecauseFunctionGeneric, IgnoreBecauseSelfTypeNotAllowed,
+    IgnoreSilently,
 };
 use crate::codegen::ir::mir::skip::{MirSkip, MirSkipReason};
 use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
@@ -206,6 +207,10 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             &attributes,
         )?)?;
         info = self.transform_fn_info(info);
+
+        if TODO {
+            return Ok(create_output_skip(func, IgnoreBecauseSelfTypeNotAllowed));
+        }
 
         let codec_mode_pack = compute_codec_mode_pack(&attributes, force_codec_mode_pack);
         let mode = compute_func_mode(&attributes, &info);
