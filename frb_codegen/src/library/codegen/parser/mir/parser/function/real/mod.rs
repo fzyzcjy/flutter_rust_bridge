@@ -209,7 +209,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         )?)?;
         info = self.transform_fn_info(info);
 
-        if info.inputs.iter().any(has_ty_self_not_allowed) {
+        if info.inputs.iter().any(|x| has_ty_self_not_allowed(&x.inner.ty, self.type_parser)) {
             return Ok(create_output_skip(func, IgnoreBecauseSelfTypeNotAllowed));
         }
 
@@ -403,7 +403,7 @@ fn parse_dart_name(attributes: &FrbAttributes, func_name_raw: &str) -> Option<St
     })
 }
 
-fn has_ty_self_not_allowed(ty: &MirType) -> bool {
+fn has_ty_self_not_allowed(ty: &MirType, type_parser: &TypeParser) -> bool {
     let mut seen = false;
     ty.visit_types(&mut |inner_ty| {
         seen |= matches!(
@@ -411,6 +411,6 @@ fn has_ty_self_not_allowed(ty: &MirType) -> bool {
             MirType::Placeholder(MirTypePlaceholder::SelfButNotAllowed)
         );
         false
-    });
+    }, type_parser);
     seen
 }
