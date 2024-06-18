@@ -40,10 +40,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
-  MyTraitWithSelfTwinNormal dco_decode_TraitDef_MyTraitWithSelfTwinNormal(
-      dynamic raw);
-
-  @protected
   int dco_decode_i_32(dynamic raw);
 
   @protected

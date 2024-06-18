@@ -8,7 +8,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for PlaceholderWireDartCodecCstGe
         Acc::distribute(None)
     }
 
-    fn dart_wire_type(&self, target: Target) -> String {
+    fn dart_wire_type(&self, _target: Target) -> String {
         "NOT_USED".to_owned()
     }
 }

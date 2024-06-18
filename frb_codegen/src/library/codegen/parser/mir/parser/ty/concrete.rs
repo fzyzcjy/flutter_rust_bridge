@@ -15,7 +15,7 @@ use crate::codegen::parser::mir::parser::ty::path_data::extract_path_data;
 use crate::codegen::parser::mir::parser::ty::unencodable::{splay_segments, SplayedSegment};
 use crate::codegen::parser::mir::parser::ty::TypeParserWithContext;
 use crate::if_then_some;
-use anyhow::{bail, ensure, Context};
+use anyhow::{bail, Context};
 use itertools::Itertools;
 use syn::{parse_str, Type};
 

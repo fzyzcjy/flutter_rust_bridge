@@ -257,8 +257,8 @@ fn pde_ffi_dispatcher_primary_impl(
             rust_vec_len,
             data_len,
         ),
-        3 => wire__crate__api__minimal__init_app_impl(port, ptr, rust_vec_len, data_len),
-        4 => wire__crate__api__minimal__minimal_adder_impl(port, ptr, rust_vec_len, data_len),
+        2 => wire__crate__api__minimal__init_app_impl(port, ptr, rust_vec_len, data_len),
+        3 => wire__crate__api__minimal__minimal_adder_impl(port, ptr, rust_vec_len, data_len),
         _ => unreachable!(),
     }
 }

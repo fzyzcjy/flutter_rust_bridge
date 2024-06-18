@@ -6,6 +6,7 @@ mod dynamic;
 mod enumeration;
 mod general_list;
 mod optional;
+mod placeholder;
 mod primitive;
 mod primitive_list;
 mod record;
@@ -13,7 +14,6 @@ mod rust_auto_opaque_implicit;
 mod rust_opaque;
 mod structure;
 mod trait_def;
-mod placeholder;
 
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::target::Target;
