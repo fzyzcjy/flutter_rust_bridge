@@ -33,6 +33,7 @@ pub(crate) fn parse(
         owner: None,
         enable_lifetime,
         type_64bit_int,
+        forbid_type_self: false,
         parse_mode,
     };
 
