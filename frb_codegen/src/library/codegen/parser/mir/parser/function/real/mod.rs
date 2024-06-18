@@ -207,7 +207,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                         Ok(create_output_skip(func, IgnoreBecauseSelfTypeNotAllowed))
                     } else {
                         Err(e)
-                    };
+                    }
                 }
             };
             info = info.merge(arg_info)?;

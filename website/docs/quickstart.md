@@ -102,7 +102,7 @@ Please refer to [this page](guides/miscellaneous/pure-dart).
 <TabItem value="Flutter Package">
 
 To create a publishable Flutter package instead of a Flutter app,
-please refer to [this page](manual/integrate/cargokit).
+please refer to TODO.
 
 </TabItem>
 

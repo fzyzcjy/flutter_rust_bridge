@@ -5,7 +5,7 @@ use crate::codegen::parser::mir::internal_config::RustInputNamespacePack;
 use crate::utils::crate_name::CrateName;
 use crate::utils::namespace::Namespace;
 use crate::utils::path_utils::canonicalize_with_error_message;
-use anyhow::{Context};
+use anyhow::{ensure, Context};
 use itertools::Itertools;
 use std::path::{Path, PathBuf};
 
