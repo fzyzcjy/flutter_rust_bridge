@@ -147,6 +147,7 @@ impl Serialize for MirType {
             MirType::EnumRef(inner) => ser::<S, _>(&mut state, "EnumRef", inner),
             MirType::GeneralList(inner) => ser::<S, _>(&mut state, "GeneralList", inner),
             MirType::Optional(inner) => ser::<S, _>(&mut state, "Optional", inner),
+            MirType::Placeholder(inner) => ser::<S, _>(&mut state, "Placeholder", inner),
             MirType::Primitive(inner) => ser::<S, _>(&mut state, "Primitive", inner),
             MirType::PrimitiveList(inner) => ser::<S, _>(&mut state, "PrimitiveList", inner),
             MirType::Record(inner) => ser::<S, _>(&mut state, "Record", inner),

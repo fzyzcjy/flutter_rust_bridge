@@ -28,7 +28,7 @@ pub fn is_js_value(ty: &MirType) -> bool {
         MirType::Optional(inner) => is_js_value(&inner.inner),
         MirType::Primitive(_) | MirType::PrimitiveList(_) => false,
         // frb-coverage:ignore-start
-        MirType::Dynamic(_) | MirType::TraitDef(_) => unreachable!(),
+        MirType::Dynamic(_) | MirType::TraitDef(_) | MirType::Placeholder(_) => unreachable!(),
         // frb-coverage:ignore-end
     }
 }

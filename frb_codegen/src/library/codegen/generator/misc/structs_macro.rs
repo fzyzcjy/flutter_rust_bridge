@@ -16,6 +16,7 @@ macro_rules! codegen_generator_structs {
             EnumRef,
             GeneralList,
             Optional,
+            Placeholder,
             Primitive,
             PrimitiveList,
             Record,
@@ -35,6 +36,7 @@ macro_rules! codegen_generator_structs {
         use $crate::codegen::ir::mir::ty::enumeration::MirTypeEnumRef;
         use $crate::codegen::ir::mir::ty::general_list::MirTypeGeneralList;
         use $crate::codegen::ir::mir::ty::optional::MirTypeOptional;
+        use $crate::codegen::ir::mir::ty::placeholder::MirTypePlaceholder;
         use $crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
         use $crate::codegen::ir::mir::ty::primitive_list::MirTypePrimitiveList;
         use $crate::codegen::ir::mir::ty::record::MirTypeRecord;
