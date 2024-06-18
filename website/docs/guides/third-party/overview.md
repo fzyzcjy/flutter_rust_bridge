@@ -9,8 +9,8 @@ To implement this automatic approach,
 flutter_rust_bridge has to correctly understand arbitrarily fancy Rust code in third party crate.
 Therefore, as can be expected, there must be cases that it cannot parse yet, and usually results in compilation errors.
 
-If you see any problems, feel free create an issue!
-I am happy to solve it; even if something is really too fancy to solve, you can fallback to the manual approach.
+If you see any problems, feel free create an issue, and I am happy to solve it!
+Even if something is really too fancy to solve, you can fallback to the manual approach below.
 
 This part may also not follow semver yet, i.e. may have breaking changes, because of its nature and it is very new.
 But the breaking changes are usually easy to migrate.
