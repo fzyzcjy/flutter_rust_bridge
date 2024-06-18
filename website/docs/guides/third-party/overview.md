@@ -4,6 +4,18 @@ What if we want to use an existing third-party Rust package?
 
 ## The automatic approach
 
+:::info
+To implement this automatic approach,
+flutter_rust_bridge has to correctly understand arbitrarily fancy Rust code in third party crate.
+Therefore, as can be expected, there must be cases that it cannot parse yet, and usually results in compilation errors.
+
+If you see any problems, feel free create an issue!
+I am happy to solve it; even if something is really too fancy to solve, you can fallback to the manual approach.
+
+This part may also not follow semver yet, i.e. may have breaking changes, because of its nature and it is very new.
+But the breaking changes are usually easy to migrate.
+:::
+
 `flutter_rust_bridge` can automatically scan a whole third party Rust crate and directly generate everything.
 Of course, you are free to customize things as well.
 In this chapter, we will go through the details step by step.

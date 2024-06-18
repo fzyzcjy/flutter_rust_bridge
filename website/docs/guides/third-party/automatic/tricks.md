@@ -2,6 +2,11 @@
 
 This page discusses some tricks that may be helpful when working with external crates.
 
+## Wrappers
+
+Sometimes, such as when needing to modify the third party struct definition itself,
+the [wrappers](../manual/wrappers) approach can be useful.
+
 ## Injecting Dart code
 
 The [`#[frb(dart_code)]`](../../miscellaneous/dart-code) feature can be utilized when we want to inject anything into the generated Dart code.

@@ -1,4 +1,4 @@
-# Methods
+# External methods
 
 :::info
 Third-party packages can be converted automatically; only use the feature in this page when the automation is unwanted.

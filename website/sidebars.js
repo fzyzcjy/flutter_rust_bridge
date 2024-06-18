@@ -211,8 +211,9 @@ const sidebars = {
                                 id: 'guides/third-party/manual/index',
                             },
                             items: [
-                                'guides/third-party/manual/methods',
-                                'guides/third-party/manual/types',
+                                'guides/third-party/manual/external-methods',
+                                'guides/third-party/manual/external-types',
+                                'guides/third-party/manual/wrappers',
                             ],
                         },
                     ],
