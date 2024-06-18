@@ -31,7 +31,6 @@ impl<'a> ApiDartGeneratorClassTrait for DartOpaqueApiDartGenerator<'a> {}
 impl<'a> ApiDartGeneratorClassTrait for DynamicApiDartGenerator<'a> {}
 impl<'a> ApiDartGeneratorClassTrait for GeneralListApiDartGenerator<'a> {}
 impl<'a> ApiDartGeneratorClassTrait for OptionalApiDartGenerator<'a> {}
-impl<'a> ApiDartGeneratorClassTrait for PlaceholderApiDartGenerator<'a> {}
 impl<'a> ApiDartGeneratorClassTrait for PrimitiveApiDartGenerator<'a> {}
 impl<'a> ApiDartGeneratorClassTrait for PrimitiveListApiDartGenerator<'a> {}
 impl<'a> ApiDartGeneratorClassTrait for RecordApiDartGenerator<'a> {}

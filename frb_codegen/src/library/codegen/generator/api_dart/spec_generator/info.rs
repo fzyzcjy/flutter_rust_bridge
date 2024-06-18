@@ -168,12 +168,6 @@ impl<'a> ApiDartGeneratorInfoTrait for OptionalApiDartGenerator<'a> {
     }
 }
 
-impl<'a> ApiDartGeneratorInfoTrait for PlaceholderApiDartGenerator<'a> {
-    fn dart_api_type(&self) -> String {
-        "NOT_USED".to_owned()
-    }
-}
-
 impl<'a> ApiDartGeneratorInfoTrait for PrimitiveApiDartGenerator<'a> {
     fn dart_api_type(&self) -> String {
         match &self.mir {

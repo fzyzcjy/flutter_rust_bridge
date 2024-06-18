@@ -93,7 +93,6 @@ fn parse_function_inner(
         default_rust_opaque_codec: partial_context.default_rust_opaque_codec,
         enable_lifetime: partial_context.enable_lifetime,
         type_64bit_int: partial_context.type_64bit_int,
-        forbid_type_self: false,
         parse_mode: partial_context.parse_mode,
     };
 

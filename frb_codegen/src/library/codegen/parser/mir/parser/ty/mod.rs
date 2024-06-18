@@ -158,7 +158,6 @@ pub(crate) struct TypeParserParsingContext {
     pub(crate) owner: Option<MirFuncOwnerInfo>,
     pub(crate) enable_lifetime: bool,
     pub(crate) type_64bit_int: bool,
-    pub(crate) forbid_type_self: bool,
     pub(crate) parse_mode: ParseMode,
 }
 

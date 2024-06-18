@@ -6,7 +6,6 @@ pub(crate) mod dynamic;
 pub(crate) mod enumeration;
 pub(crate) mod general_list;
 pub(crate) mod optional;
-pub(crate) mod placeholder;
 pub(crate) mod primitive;
 pub(crate) mod primitive_list;
 pub(crate) mod record;
@@ -37,7 +36,6 @@ pub enum MirType {
     EnumRef(enumeration::MirTypeEnumRef),
     GeneralList(general_list::MirTypeGeneralList),
     Optional(optional::MirTypeOptional),
-    Placeholder(placeholder::MirTypePlaceholder),
     Primitive(primitive::MirTypePrimitive),
     PrimitiveList(primitive_list::MirTypePrimitiveList),
     Record(record::MirTypeRecord),
@@ -147,7 +145,6 @@ impl Serialize for MirType {
             MirType::EnumRef(inner) => ser::<S, _>(&mut state, "EnumRef", inner),
             MirType::GeneralList(inner) => ser::<S, _>(&mut state, "GeneralList", inner),
             MirType::Optional(inner) => ser::<S, _>(&mut state, "Optional", inner),
-            MirType::Placeholder(inner) => ser::<S, _>(&mut state, "Placeholder", inner),
             MirType::Primitive(inner) => ser::<S, _>(&mut state, "Primitive", inner),
             MirType::PrimitiveList(inner) => ser::<S, _>(&mut state, "PrimitiveList", inner),
             MirType::Record(inner) => ser::<S, _>(&mut state, "Record", inner),

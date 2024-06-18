@@ -141,7 +141,6 @@ fn create_parsing_context(
         owner: None,
         enable_lifetime,
         type_64bit_int,
-        forbid_type_self: false,
         parse_mode,
     })
 }

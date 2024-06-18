@@ -46,23 +46,3 @@ impl SimpleTraitTwinSse for StructTwoWithTraitTwinSse {
         self.two * 2
     }
 }
-
-// #2089
-pub trait MyTraitWithSelfTwinSse {
-    fn method_with_bad_self_twin_sse(&self, another: &Self);
-
-    fn method_with_good_self_twin_sse(&self) -> Self;
-}
-
-#[frb(opaque)]
-pub struct MyImplTraitWithSelfTwinSse;
-
-impl MyTraitWithSelfTwinSse for MyImplTraitWithSelfTwinSse {
-    fn method_with_bad_self_twin_sse(&self, another: &Self) {
-        let _ = another;
-    }
-
-    fn method_with_good_self_twin_sse(&self) -> Self {
-        Self
-    }
-}
