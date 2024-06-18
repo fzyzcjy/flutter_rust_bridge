@@ -1,6 +1,6 @@
-# frb_example_flutter_package
+# frb_example_flutter_package_example
 
-A new Flutter project.
+Demonstrates how to use the plugin.
 
 ## Getting Started
 

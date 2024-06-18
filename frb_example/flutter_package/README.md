@@ -1,1 +1,5 @@
-Please ignore this folder, which is just glue to build Rust with Flutter.
+## Flutter package example for `flutter_rust_bridge`
+
+Example of making a Flutter package.
+
+Please visit the main documentation or open an issue for more information.
