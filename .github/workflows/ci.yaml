@@ -923,7 +923,7 @@ jobs:
       matrix:
         package:
           - frb_example--flutter_via_create
-          - frb_example--flutter_package--example
+          # no `frb_example--flutter_package--example` yet
           # no `frb_example--flutter_via_integrate` since it is similar to `flutter_via_create`
           - frb_example--gallery
 

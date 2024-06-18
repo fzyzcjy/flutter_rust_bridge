@@ -93,8 +93,12 @@ Future<void> runPubGetIfNotRunYet(String package) async {
 
   await _runPubGetIfNotRunYetRaw(package, mode);
 
-  final packageCargokitBuildTool = '$package/rust_builder/cargokit/build_tool';
-  await _runPubGetIfNotRunYetRaw(packageCargokitBuildTool, mode);
+  for (final extraPackage in [
+    '$package/rust_builder/cargokit/build_tool',
+    '$package/cargokit/build_tool',
+  ]) {
+    await _runPubGetIfNotRunYetRaw(extraPackage, mode);
+  }
 }
 
 Future<void> _runPubGetIfNotRunYetRaw(String package, DartMode mode) async {
