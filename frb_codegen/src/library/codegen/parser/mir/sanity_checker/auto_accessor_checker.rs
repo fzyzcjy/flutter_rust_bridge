@@ -2,7 +2,7 @@ use crate::codegen::ir::mir::field::MirField;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use crate::utils::namespace::NamespacedName;
 use itertools::Itertools;
-use log::warn;
+use log::info;
 
 pub(crate) fn check_field(
     struct_name: &NamespacedName,
@@ -18,7 +18,7 @@ pub(crate) fn report(hints: &[SanityCheckHint]) {
         return;
     }
 
-    warn!(
+    info!(
         "To use the automatically generated getters of the following fields of opaque types, \
         it is suggested to read https://fzyzcjy.github.io/flutter_rust_bridge/guides/types/arbitrary/rust-auto-opaque/properties to know more details. \
         (Related fields: {})",

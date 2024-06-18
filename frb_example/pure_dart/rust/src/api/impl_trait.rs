@@ -42,3 +42,23 @@ impl SimpleTraitTwinNormal for StructTwoWithTraitTwinNormal {
         self.two * 2
     }
 }
+
+// #2089
+pub trait MyTraitWithSelfTwinNormal {
+    fn method_with_bad_self_twin_normal(&self, another: &Self);
+
+    fn method_with_good_self_twin_normal(&self) -> Self;
+}
+
+#[frb(opaque)]
+pub struct MyImplTraitWithSelfTwinNormal;
+
+impl MyTraitWithSelfTwinNormal for MyImplTraitWithSelfTwinNormal {
+    fn method_with_bad_self_twin_normal(&self, another: &Self) {
+        let _ = another;
+    }
+
+    fn method_with_good_self_twin_normal(&self) -> Self {
+        Self
+    }
+}

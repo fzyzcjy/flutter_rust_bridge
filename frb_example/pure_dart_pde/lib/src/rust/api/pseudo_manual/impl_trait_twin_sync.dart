@@ -6,6 +6,17 @@
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
+// These functions are ignored (category: IgnoreBecauseSelfTypeNotAllowed): `method_with_bad_self_twin_sync`
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyImplTraitWithSelfTwinSync>>
+abstract class MyImplTraitWithSelfTwinSync
+    implements RustOpaqueInterface, MyTraitWithSelfTwinSync {
+  Future<void> methodWithBadSelfTwinSync(
+      {required MyImplTraitWithSelfTwinSync another});
+
+  Future<MyImplTraitWithSelfTwinSync> methodWithGoodSelfTwinSync();
+}
+
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructOneWithTraitTwinSync>>
 abstract class StructOneWithTraitTwinSync
     implements RustOpaqueInterface, SimpleTraitTwinSync {
@@ -44,6 +55,10 @@ abstract class StructTwoWithTraitTwinSync
   static Future<int> simpleTraitFnWithDefaultImplTwinSync() => RustLib
       .instance.api
       .crateApiPseudoManualImplTraitTwinSyncStructTwoWithTraitTwinSyncSimpleTraitFnWithDefaultImplTwinSync();
+}
+
+abstract class MyTraitWithSelfTwinSync {
+  Future<MyTraitWithSelfTwinSync> methodWithGoodSelfTwinSync();
 }
 
 abstract class SimpleTraitTwinSync {

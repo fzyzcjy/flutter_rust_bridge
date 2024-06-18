@@ -6,6 +6,17 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
+// These functions are ignored (category: IgnoreBecauseSelfTypeNotAllowed): `method_with_bad_self_twin_normal`
+
+// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyImplTraitWithSelfTwinNormal>>
+abstract class MyImplTraitWithSelfTwinNormal
+    implements RustOpaqueInterface, MyTraitWithSelfTwinNormal {
+  Future<void> methodWithBadSelfTwinNormal(
+      {required MyImplTraitWithSelfTwinNormal another});
+
+  Future<MyImplTraitWithSelfTwinNormal> methodWithGoodSelfTwinNormal();
+}
+
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructOneWithTraitTwinNormal>>
 abstract class StructOneWithTraitTwinNormal
     implements RustOpaqueInterface, SimpleTraitTwinNormal {
@@ -44,6 +55,10 @@ abstract class StructTwoWithTraitTwinNormal
   static Future<int> simpleTraitFnWithDefaultImplTwinNormal() => RustLib
       .instance.api
       .crateApiImplTraitStructTwoWithTraitTwinNormalSimpleTraitFnWithDefaultImplTwinNormal();
+}
+
+abstract class MyTraitWithSelfTwinNormal {
+  Future<MyTraitWithSelfTwinNormal> methodWithGoodSelfTwinNormal();
 }
 
 abstract class SimpleTraitTwinNormal {

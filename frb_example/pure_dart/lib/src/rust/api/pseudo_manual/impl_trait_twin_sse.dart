@@ -6,6 +6,17 @@
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
+// These functions are ignored (category: IgnoreBecauseSelfTypeNotAllowed): `method_with_bad_self_twin_sse`
+
+// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyImplTraitWithSelfTwinSse>>
+abstract class MyImplTraitWithSelfTwinSse
+    implements RustOpaqueInterface, MyTraitWithSelfTwinSse {
+  Future<void> methodWithBadSelfTwinSse(
+      {required MyImplTraitWithSelfTwinSse another});
+
+  Future<MyImplTraitWithSelfTwinSse> methodWithGoodSelfTwinSse();
+}
+
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructOneWithTraitTwinSse>>
 abstract class StructOneWithTraitTwinSse
     implements RustOpaqueInterface, SimpleTraitTwinSse {
@@ -44,6 +55,10 @@ abstract class StructTwoWithTraitTwinSse
   static Future<int> simpleTraitFnWithDefaultImplTwinSse() => RustLib
       .instance.api
       .crateApiPseudoManualImplTraitTwinSseStructTwoWithTraitTwinSseSimpleTraitFnWithDefaultImplTwinSse();
+}
+
+abstract class MyTraitWithSelfTwinSse {
+  Future<MyTraitWithSelfTwinSse> methodWithGoodSelfTwinSse();
 }
 
 abstract class SimpleTraitTwinSse {
