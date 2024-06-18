@@ -69,6 +69,7 @@ const kDartModeOfPackage = {
   'frb_example/flutter_via_create': DartMode.flutter,
   'frb_example/flutter_via_integrate': DartMode.flutter,
   'frb_example/flutter_package': DartMode.flutter,
+  'frb_example/flutter_package/example': DartMode.flutter,
   'frb_example/gallery': DartMode.flutter,
 };
 
