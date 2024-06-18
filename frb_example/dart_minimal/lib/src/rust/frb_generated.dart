@@ -57,7 +57,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.0.0-dev.40';
 
   @override
-  int get rustContentHash => -126551886;
+  int get rustContentHash => 223549786;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -68,9 +68,14 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 }
 
 abstract class RustLibApi extends BaseApi {
-  Future<void> crateApiMinimalMyImplTraitWithSelfTwinNormalMethodTwinNormal(
-      {required MyImplTraitWithSelfTwinNormal that,
-      required MyImplTraitWithSelfTwinNormal another});
+  Future<void>
+      crateApiMinimalMyImplTraitWithSelfTwinNormalMethodWithBadSelfTwinNormal(
+          {required MyImplTraitWithSelfTwinNormal that,
+          required MyImplTraitWithSelfTwinNormal another});
+
+  Future<MyImplTraitWithSelfTwinNormal>
+      crateApiMinimalMyImplTraitWithSelfTwinNormalMethodWithGoodSelfTwinNormal(
+          {required MyImplTraitWithSelfTwinNormal that});
 
   Future<void> crateApiMinimalInitApp();
 
@@ -95,9 +100,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   });
 
   @override
-  Future<void> crateApiMinimalMyImplTraitWithSelfTwinNormalMethodTwinNormal(
-      {required MyImplTraitWithSelfTwinNormal that,
-      required MyImplTraitWithSelfTwinNormal another}) {
+  Future<void>
+      crateApiMinimalMyImplTraitWithSelfTwinNormalMethodWithBadSelfTwinNormal(
+          {required MyImplTraitWithSelfTwinNormal that,
+          required MyImplTraitWithSelfTwinNormal another}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -113,17 +119,50 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeErrorData: null,
       ),
       constMeta:
-          kCrateApiMinimalMyImplTraitWithSelfTwinNormalMethodTwinNormalConstMeta,
+          kCrateApiMinimalMyImplTraitWithSelfTwinNormalMethodWithBadSelfTwinNormalConstMeta,
       argValues: [that, another],
       apiImpl: this,
     ));
   }
 
   TaskConstMeta
-      get kCrateApiMinimalMyImplTraitWithSelfTwinNormalMethodTwinNormalConstMeta =>
+      get kCrateApiMinimalMyImplTraitWithSelfTwinNormalMethodWithBadSelfTwinNormalConstMeta =>
           const TaskConstMeta(
-            debugName: "MyImplTraitWithSelfTwinNormal_method_twin_normal",
+            debugName:
+                "MyImplTraitWithSelfTwinNormal_method_with_bad_self_twin_normal",
             argNames: ["that", "another"],
+          );
+
+  @override
+  Future<MyImplTraitWithSelfTwinNormal>
+      crateApiMinimalMyImplTraitWithSelfTwinNormalMethodWithGoodSelfTwinNormal(
+          {required MyImplTraitWithSelfTwinNormal that}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyImplTraitWithSelfTwinNormal(
+            that, serializer);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 2, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyImplTraitWithSelfTwinNormal,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiMinimalMyImplTraitWithSelfTwinNormalMethodWithGoodSelfTwinNormalConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiMinimalMyImplTraitWithSelfTwinNormalMethodWithGoodSelfTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "MyImplTraitWithSelfTwinNormal_method_with_good_self_twin_normal",
+            argNames: ["that"],
           );
 
   @override
@@ -132,7 +171,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 3, port: port_);
+            funcId: 4, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -157,7 +196,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_i_32(a, serializer);
         sse_encode_i_32(b, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 4, port: port_);
+            funcId: 5, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_i_32,
@@ -363,9 +402,15 @@ class MyImplTraitWithSelfTwinNormalImpl extends RustOpaque
         .rust_arc_decrement_strong_count_MyImplTraitWithSelfTwinNormalPtr,
   );
 
-  Future<void> methodTwinNormal(
+  Future<void> methodWithBadSelfTwinNormal(
           {required MyImplTraitWithSelfTwinNormal another}) =>
       RustLib.instance.api
-          .crateApiMinimalMyImplTraitWithSelfTwinNormalMethodTwinNormal(
+          .crateApiMinimalMyImplTraitWithSelfTwinNormalMethodWithBadSelfTwinNormal(
               that: this, another: another);
+
+  Future<MyImplTraitWithSelfTwinNormal> methodWithGoodSelfTwinNormal() =>
+      RustLib.instance.api
+          .crateApiMinimalMyImplTraitWithSelfTwinNormalMethodWithGoodSelfTwinNormal(
+        that: this,
+      );
 }
