@@ -8,23 +8,3 @@ pub fn init_app() {
 pub fn minimal_adder(a: i32, b: i32) -> i32 {
     a + b
 }
-
-// #2089
-pub trait MyTraitWithSelfTwinNormal {
-    fn method_with_bad_self_twin_normal(&self, another: &Self);
-
-    fn method_with_good_self_twin_normal(&self) -> Self;
-}
-
-#[frb(opaque)]
-pub struct MyImplTraitWithSelfTwinNormal;
-
-impl MyTraitWithSelfTwinNormal for MyImplTraitWithSelfTwinNormal {
-    fn method_with_bad_self_twin_normal(&self, another: &Self) {
-        let _ = another;
-    }
-
-    fn method_with_good_self_twin_normal(&self) -> Self {
-        Self
-    }
-}
