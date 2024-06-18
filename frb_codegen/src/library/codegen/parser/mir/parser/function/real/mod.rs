@@ -184,7 +184,10 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
         let lifetime_info = parse_function_lifetime(func.item_fn.sig(), &owner)?;
 
-        let context_input = create_context(Some(owner.clone()), TODO);
+        let context_input = create_context(
+            Some(owner.clone()),
+            should_forbid_type_self_for_inputs(&owner),
+        );
         let context_output = create_context(Some(owner.clone()), false);
         let mut info = FunctionPartialInfo::default();
         for (i, sig_input) in func.item_fn.sig().inputs.iter().enumerate() {
@@ -245,6 +248,14 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             src_lineno_pseudo: src_lineno,
         }))
     }
+}
+
+fn should_forbid_type_self_for_inputs(owner: &MirFuncOwnerInfo) -> bool {
+    if let MirFuncOwnerInfo::Method(method) = owner {
+        // #2089
+        return TODO;
+    }
+    false
 }
 
 fn create_output_skip(func: &HirFlatFunction, reason: MirSkipReason) -> MirFuncOrSkip {
