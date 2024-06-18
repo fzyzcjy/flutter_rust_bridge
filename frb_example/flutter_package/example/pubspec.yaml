@@ -11,7 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.6
-  rust_lib_frb_example_flutter_package:
+  frb_example_flutter_package:
     path: ../
 
 dev_dependencies:
