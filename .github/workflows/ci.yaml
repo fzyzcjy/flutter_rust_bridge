@@ -755,7 +755,7 @@ jobs:
       matrix:
         package:
           - frb_example--flutter_via_create
-          - frb_example--flutter_package
+          - frb_example--flutter_package--example
           # no `frb_example--flutter_via_integrate` since it is similar to `flutter_via_create`
         device:
           - "pixel"
@@ -821,7 +821,7 @@ jobs:
       matrix:
         package:
           - frb_example--flutter_via_create
-          - frb_example--flutter_package
+          - frb_example--flutter_package--example
           # no `frb_example--flutter_via_integrate` since it is similar to `flutter_via_create`
         device:
           - "iPad (10th generation) Simulator (17.2)"
