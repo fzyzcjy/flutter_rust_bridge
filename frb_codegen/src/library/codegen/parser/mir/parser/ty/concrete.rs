@@ -101,7 +101,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     }
 
     fn parse_type_self(&mut self) -> anyhow::Result<MirType> {
-        if !self.context.allow_type_self {
+        if self.context.forbid_type_self {
             return Ok(MirType::Placeholder(MirTypePlaceholder::SelfButNotAllowed));
         }
 
