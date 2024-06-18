@@ -1,4 +1,4 @@
-use crate::codegen::ir::hir::flat::component::HirFlatComponentTrait;
+use crate::codegen::ir::hir::flat::component::HirFlatComponent;
 use crate::codegen::ir::hir::misc::generation_source::HirGenerationSource;
 use crate::codegen::ir::hir::misc::syn_item_struct_or_enum::SynItemStructOrEnum;
 use crate::codegen::ir::hir::misc::visibility::HirVisibility;
@@ -22,7 +22,7 @@ pub struct HirFlatStructOrEnum<Item: SynItemStructOrEnum> {
 }
 // frb-coverage:ignore-end
 
-impl<Item: SynItemStructOrEnum> HirFlatComponentTrait<NamespacedName> for HirFlatStructOrEnum<Item> {
+impl<Item: SynItemStructOrEnum> HirFlatComponent<NamespacedName> for HirFlatStructOrEnum<Item> {
     fn sort_key(&self) -> NamespacedName {
         self.name.clone()
     }

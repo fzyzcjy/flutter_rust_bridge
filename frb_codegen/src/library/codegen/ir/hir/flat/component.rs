@@ -1,3 +1,3 @@
-pub(crate) trait HirFlatComponentTrait<SK: Ord> {
+pub(crate) trait HirFlatComponent<SK: Ord> {
     fn sort_key(&self) -> SK;
 }
