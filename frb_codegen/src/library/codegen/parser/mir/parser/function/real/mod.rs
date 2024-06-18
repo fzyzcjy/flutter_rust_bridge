@@ -209,11 +209,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         )?)?;
         info = self.transform_fn_info(info);
 
-        if info
-            .inputs
-            .iter()
-            .any(|x| has_ty_self_not_allowed(&x.inner.ty, self.type_parser))
-        {
+        if (info.inputs.iter()).any(|x| has_ty_self_not_allowed(&x.inner.ty, self.type_parser)) {
             return Ok(create_output_skip(func, IgnoreBecauseSelfTypeNotAllowed));
         }
 
