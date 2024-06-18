@@ -872,13 +872,13 @@ jobs:
 
           - image: windows-2019
             platform: windows
-            package: frb_example--flutter_package
+            package: frb_example--flutter_package--example
           - image: macos-13
             platform: macos
-            package: frb_example--flutter_package
+            package: frb_example--flutter_package--example
           - image: ubuntu-latest
             platform: linux
-            package: frb_example--flutter_package
+            package: frb_example--flutter_package--example
 
           # only slightly test `flutter_via_integrate` since quite similar to `flutter_via_create`
           - image: ubuntu-latest
@@ -923,7 +923,7 @@ jobs:
       matrix:
         package:
           - frb_example--flutter_via_create
-          - frb_example--flutter_package
+          - frb_example--flutter_package--example
           # no `frb_example--flutter_via_integrate` since it is similar to `flutter_via_create`
           - frb_example--gallery
 
