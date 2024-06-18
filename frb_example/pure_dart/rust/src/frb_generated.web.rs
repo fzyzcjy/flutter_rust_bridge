@@ -11,6 +11,7 @@ use crate::api::dropping::*;
 use crate::api::dyn_trait::SimpleTraitForDynTwinNormal;
 use crate::api::dyn_trait::*;
 use crate::api::external_impl::*;
+use crate::api::impl_trait::MyTraitWithSelfTwinNormal;
 use crate::api::impl_trait::SimpleTraitTwinNormal;
 use crate::api::impl_trait::*;
 use crate::api::lifetimeable::*;
@@ -23,10 +24,13 @@ use crate::api::pseudo_manual::dropping_twin_rust_async_sse::*;
 use crate::api::pseudo_manual::dropping_twin_sse::*;
 use crate::api::pseudo_manual::dropping_twin_sync::*;
 use crate::api::pseudo_manual::dropping_twin_sync_sse::*;
+use crate::api::pseudo_manual::impl_trait_twin_sse::MyTraitWithSelfTwinSse;
 use crate::api::pseudo_manual::impl_trait_twin_sse::SimpleTraitTwinSse;
 use crate::api::pseudo_manual::impl_trait_twin_sse::*;
+use crate::api::pseudo_manual::impl_trait_twin_sync::MyTraitWithSelfTwinSync;
 use crate::api::pseudo_manual::impl_trait_twin_sync::SimpleTraitTwinSync;
 use crate::api::pseudo_manual::impl_trait_twin_sync::*;
+use crate::api::pseudo_manual::impl_trait_twin_sync_sse::MyTraitWithSelfTwinSyncSse;
 use crate::api::pseudo_manual::impl_trait_twin_sync_sse::SimpleTraitTwinSyncSse;
 use crate::api::pseudo_manual::impl_trait_twin_sync_sse::*;
 use crate::api::pseudo_manual::lifetimeable_twin_sync::*;
@@ -9035,6 +9039,68 @@ impl CstDecode<ItemContainerSolutionOneTwinNormal>
         ))
     }
 }
+impl CstDecode<MyImplTraitWithSelfTwinNormal>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> MyImplTraitWithSelfTwinNormal {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
+            RustOpaqueNom<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                    MyImplTraitWithSelfTwinNormal,
+                >,
+            >,
+        >::cst_decode(
+            self
+        ))
+    }
+}
+impl CstDecode<MyImplTraitWithSelfTwinSse>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> MyImplTraitWithSelfTwinSse {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
+            RustOpaqueNom<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyImplTraitWithSelfTwinSse>,
+            >,
+        >::cst_decode(
+            self
+        ))
+    }
+}
+impl CstDecode<MyImplTraitWithSelfTwinSync>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> MyImplTraitWithSelfTwinSync {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
+            RustOpaqueNom<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                    MyImplTraitWithSelfTwinSync,
+                >,
+            >,
+        >::cst_decode(
+            self
+        ))
+    }
+}
+impl CstDecode<MyImplTraitWithSelfTwinSyncSse>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> MyImplTraitWithSelfTwinSyncSse {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
+            RustOpaqueNom<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                    MyImplTraitWithSelfTwinSyncSse,
+                >,
+            >,
+        >::cst_decode(
+            self
+        ))
+    }
+}
 impl CstDecode<NonCloneSimpleEnumTwinMoi>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
@@ -11436,6 +11502,86 @@ impl
         self,
     ) -> RustOpaqueNom<
         flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ItemContainerSolutionOneTwinNormal>,
+    > {
+        #[cfg(target_pointer_width = "64")]
+        {
+            compile_error!("64-bit pointers are not supported.");
+        }
+        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
+    }
+}
+impl
+    CstDecode<
+        RustOpaqueNom<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyImplTraitWithSelfTwinNormal>,
+        >,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> RustOpaqueNom<
+        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyImplTraitWithSelfTwinNormal>,
+    > {
+        #[cfg(target_pointer_width = "64")]
+        {
+            compile_error!("64-bit pointers are not supported.");
+        }
+        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
+    }
+}
+impl
+    CstDecode<
+        RustOpaqueNom<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyImplTraitWithSelfTwinSse>,
+        >,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> RustOpaqueNom<
+        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyImplTraitWithSelfTwinSse>,
+    > {
+        #[cfg(target_pointer_width = "64")]
+        {
+            compile_error!("64-bit pointers are not supported.");
+        }
+        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
+    }
+}
+impl
+    CstDecode<
+        RustOpaqueNom<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyImplTraitWithSelfTwinSync>,
+        >,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> RustOpaqueNom<
+        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyImplTraitWithSelfTwinSync>,
+    > {
+        #[cfg(target_pointer_width = "64")]
+        {
+            compile_error!("64-bit pointers are not supported.");
+        }
+        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
+    }
+}
+impl
+    CstDecode<
+        RustOpaqueNom<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyImplTraitWithSelfTwinSyncSse>,
+        >,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> RustOpaqueNom<
+        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyImplTraitWithSelfTwinSyncSse>,
     > {
         #[cfg(target_pointer_width = "64")]
         {
@@ -15333,6 +15479,23 @@ pub fn wire__crate__api__external_type_in_crate__use_imported_struct_twin_normal
     my_struct: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__external_type_in_crate__use_imported_struct_twin_normal_impl(port_, my_struct)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__impl_trait__MyImplTraitWithSelfTwinNormal_method_with_bad_self_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    another: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire__crate__api__impl_trait__MyImplTraitWithSelfTwinNormal_method_with_bad_self_twin_normal_impl(port_, that, another)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__impl_trait__MyImplTraitWithSelfTwinNormal_method_with_good_self_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire__crate__api__impl_trait__MyImplTraitWithSelfTwinNormal_method_with_good_self_twin_normal_impl(port_, that)
 }
 
 #[wasm_bindgen]
@@ -26986,6 +27149,23 @@ pub fn wire__crate__api__pseudo_manual__external_type_in_crate_twin_sync_sse__us
 }
 
 #[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sse__MyImplTraitWithSelfTwinSse_method_with_bad_self_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    another: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire__crate__api__pseudo_manual__impl_trait_twin_sse__MyImplTraitWithSelfTwinSse_method_with_bad_self_twin_sse_impl(port_, that, another)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sse__MyImplTraitWithSelfTwinSse_method_with_good_self_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire__crate__api__pseudo_manual__impl_trait_twin_sse__MyImplTraitWithSelfTwinSse_method_with_good_self_twin_sse_impl(port_, that)
+}
+
+#[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructOneWithTraitTwinSse_auto_accessor_get_one(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
@@ -27062,6 +27242,23 @@ pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sse__StructTwoWithTraitT
 }
 
 #[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sync__MyImplTraitWithSelfTwinSync_method_with_bad_self_twin_sync(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    another: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire__crate__api__pseudo_manual__impl_trait_twin_sync__MyImplTraitWithSelfTwinSync_method_with_bad_self_twin_sync_impl(port_, that, another)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sync__MyImplTraitWithSelfTwinSync_method_with_good_self_twin_sync(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire__crate__api__pseudo_manual__impl_trait_twin_sync__MyImplTraitWithSelfTwinSync_method_with_good_self_twin_sync_impl(port_, that)
+}
+
+#[wasm_bindgen]
 pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructOneWithTraitTwinSync_auto_accessor_get_one(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
@@ -27135,6 +27332,23 @@ pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructTwoWithTrait
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructTwoWithTraitTwinSync_simple_trait_fn_with_default_impl_twin_sync_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__MyImplTraitWithSelfTwinSyncSse_method_with_bad_self_twin_sync_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    another: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__MyImplTraitWithSelfTwinSyncSse_method_with_bad_self_twin_sync_sse_impl(port_, that, another)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__MyImplTraitWithSelfTwinSyncSse_method_with_good_self_twin_sync_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire__crate__api__pseudo_manual__impl_trait_twin_sync_sse__MyImplTraitWithSelfTwinSyncSse_method_with_good_self_twin_sync_sse_impl(port_, that)
 }
 
 #[wasm_bindgen]
@@ -42242,6 +42456,90 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
 ) {
     unsafe {
         StdArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyAudioParamTwinNormal>>::decrement_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyImplTraitWithSelfTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        StdArc::<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyImplTraitWithSelfTwinNormal>,
+        >::increment_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyImplTraitWithSelfTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        StdArc::<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyImplTraitWithSelfTwinNormal>,
+        >::decrement_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyImplTraitWithSelfTwinSse(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        StdArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyImplTraitWithSelfTwinSse>>::increment_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyImplTraitWithSelfTwinSse(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        StdArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyImplTraitWithSelfTwinSse>>::decrement_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyImplTraitWithSelfTwinSync(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        StdArc::<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyImplTraitWithSelfTwinSync>,
+        >::increment_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyImplTraitWithSelfTwinSync(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        StdArc::<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyImplTraitWithSelfTwinSync>,
+        >::decrement_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyImplTraitWithSelfTwinSyncSse(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        StdArc::<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyImplTraitWithSelfTwinSyncSse>,
+        >::increment_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyImplTraitWithSelfTwinSyncSse(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        StdArc::<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyImplTraitWithSelfTwinSyncSse>,
+        >::decrement_strong_count(ptr as _);
     }
 }
 
