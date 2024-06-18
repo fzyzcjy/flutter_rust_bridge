@@ -8,6 +8,7 @@ use crate::codegen::ir::mir::ty::delegate::{
 };
 use crate::codegen::ir::mir::ty::dynamic::MirTypeDynamic;
 use crate::codegen::ir::mir::ty::general_list::mir_list;
+use crate::codegen::ir::mir::ty::placeholder::MirTypePlaceholder;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::ir::mir::ty::MirType::{Boxed, DartOpaque, Delegate, Dynamic};
 use crate::codegen::parser::mir::parser::ty::path_data::extract_path_data;
@@ -100,6 +101,10 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     }
 
     fn parse_type_self(&mut self) -> anyhow::Result<MirType> {
+        if self.context.forbid_type_self {
+            return Ok(MirType::Placeholder(MirTypePlaceholder::SelfButNotAllowed));
+        }
+
         let enum_or_struct_name = if_then_some!(
             let MirFuncOwnerInfo::Method(info) = self.context.owner.as_ref().context("owner is null")?,
             info.owner_ty_name().context("owner_ty_name is null")?.name.clone()
