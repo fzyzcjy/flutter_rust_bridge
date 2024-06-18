@@ -4,6 +4,7 @@ use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::mir::parser::lifetime_extractor::LifetimeExtractor;
 use crate::codegen::parser::mir::parser::lifetime_replacer::replace_lifetimes_to_static;
 use crate::codegen::parser::mir::parser::ty::TypeParserWithContext;
+use crate::codegen::parser::mir::ParseMode;
 use crate::utils::namespace::Namespace;
 use syn::Type;
 
@@ -47,7 +48,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     }
 
     fn maybe_log_not_enable_lifetime(&mut self) {
-        if !self.inner.has_logged_lifetimeable {
+        if !self.inner.has_logged_lifetimeable && self.context.parse_mode != ParseMode::Early {
             log::info!("To handle some types, `enable_lifetime: true` may need to be set. \
             Please visit https://fzyzcjy.github.io/flutter_rust_bridge/guides/lifetimes for more details");
         }

@@ -41,12 +41,14 @@ pub(crate) fn parse(
         .flatten()
         .collect_vec();
 
-    auto_accessor_checker::report(
-        &infos
-            .iter()
-            .flat_map(|x| x.sanity_check_hint.clone())
-            .collect_vec(),
-    );
+    if parse_mode != ParseMode::Early {
+        auto_accessor_checker::report(
+            &infos
+                .iter()
+                .flat_map(|x| x.sanity_check_hint.clone())
+                .collect_vec(),
+        );
+    }
 
     Ok(infos
         .into_iter()
