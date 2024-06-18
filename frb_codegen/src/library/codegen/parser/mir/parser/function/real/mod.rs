@@ -11,7 +11,6 @@ use crate::codegen::ir::mir::skip::MirSkipReason::{
 };
 use crate::codegen::ir::mir::skip::{MirSkip, MirSkipReason};
 use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
-use crate::codegen::ir::mir::ty::placeholder::MirTypePlaceholder;
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
 use crate::codegen::ir::mir::ty::rust_auto_opaque_implicit::MirTypeRustAutoOpaqueImplicitReason;
 use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
@@ -21,6 +20,7 @@ use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
 use crate::codegen::parser::mir::parser::function::func_or_skip::MirFuncOrSkip;
 use crate::codegen::parser::mir::parser::function::real::lifetime::parse_function_lifetime;
 use crate::codegen::parser::mir::parser::function::real::owner::OwnerInfoOrSkip;
+use crate::codegen::parser::mir::parser::ty::concrete::ERROR_MESSAGE_FORBID_TYPE_SELF;
 use crate::codegen::parser::mir::parser::ty::generics::should_ignore_because_generics;
 use crate::codegen::parser::mir::parser::ty::misc::parse_comments;
 use crate::codegen::parser::mir::parser::ty::{TypeParser, TypeParserParsingContext};
@@ -193,13 +193,24 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         let context_output = create_context(Some(owner.clone()), false);
         let mut info = FunctionPartialInfo::default();
         for (i, sig_input) in func.item_fn.sig().inputs.iter().enumerate() {
-            info = info.merge(self.parse_fn_arg(
+            let arg_info = match self.parse_fn_arg(
                 sig_input,
                 &owner,
                 &context_input,
                 is_owner_trait_def,
                 lifetime_info.needs_extend_lifetime_per_arg[i],
-            )?)?;
+            ) {
+                Ok(x) => x,
+                Err(e) => {
+                    // TODO later use real error enums
+                    return if e.to_string().contains(ERROR_MESSAGE_FORBID_TYPE_SELF) {
+                        Ok(create_output_skip(func, IgnoreBecauseSelfTypeNotAllowed))
+                    } else {
+                        Err(e)
+                    }
+                }
+            };
+            info = info.merge(arg_info)?;
         }
         info = info.merge(self.parse_fn_output(
             func.item_fn.sig(),
@@ -208,12 +219,6 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             &attributes,
         )?)?;
         info = self.transform_fn_info(info);
-
-        if (info.inputs.iter())
-            .any(|x| has_ty_self_not_allowed(&x.inner.ty, self.type_parser, parse_mode))
-        {
-            return Ok(create_output_skip(func, IgnoreBecauseSelfTypeNotAllowed));
-        }
 
         let codec_mode_pack = compute_codec_mode_pack(&attributes, force_codec_mode_pack);
         let mode = compute_func_mode(&attributes, &info);
@@ -403,24 +408,4 @@ fn parse_dart_name(attributes: &FrbAttributes, func_name_raw: &str) -> Option<St
                 .map(ToString::to_string)
         })
     })
-}
-
-fn has_ty_self_not_allowed(ty: &MirType, type_parser: &TypeParser, parse_mode: ParseMode) -> bool {
-    if parse_mode == ParseMode::Early {
-        // Cannot do `visit_types` in this stage
-        return false;
-    }
-
-    let mut seen = false;
-    ty.visit_types(
-        &mut |inner_ty| {
-            seen |= matches!(
-                inner_ty,
-                MirType::Placeholder(MirTypePlaceholder::SelfButNotAllowed)
-            );
-            false
-        },
-        type_parser,
-    );
-    seen
 }
