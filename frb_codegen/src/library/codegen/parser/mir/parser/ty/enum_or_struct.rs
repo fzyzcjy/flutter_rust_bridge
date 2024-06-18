@@ -45,8 +45,8 @@ where
         if let Some(src_object) = self.src_objects().get(*name) {
             let src_object = (*src_object).clone();
 
-            let namespace = &src_object.name.namespace;
-            let namespaced_name = NamespacedName::new(namespace.clone(), name.to_string());
+            let namespace = self.parse_namespace(name).unwrap();
+            let namespaced_name = NamespacedName::new(namespace, name.to_string());
 
             let attrs = FrbAttributes::parse(src_object.src.attrs())?;
             let attrs_opaque = override_opaque.or(attrs.opaque());
@@ -85,6 +85,12 @@ where
         }
 
         Ok(None)
+    }
+
+    fn parse_namespace(&mut self, name: &str) -> Option<Namespace> {
+        self.src_objects()
+            .get(name)
+            .map(|object| object.name.namespace.clone())
     }
 
     fn handle_dart_code(&mut self, raw_output: &Option<(MirType, FrbAttributes)>) {

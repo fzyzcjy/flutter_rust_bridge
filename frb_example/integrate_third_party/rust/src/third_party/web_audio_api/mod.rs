@@ -1,6 +1,5 @@
 pub mod context;
 pub mod media_devices;
-pub mod media_element;
 pub mod node;
 pub mod worklet;
 
@@ -28,14 +27,10 @@ impl AudioBuffer {
 
 #[frb(external)]
 impl AudioParam {
-    #[frb(ignore)]
-    pub fn set_onprocessorerror() {}
-
     #[frb(sync, getter)]
     pub fn value() {}
 
-    // TODO make it setter later
-    #[frb(sync)]
+    #[frb(sync, setter)]
     pub fn set_value() {}
 }
 

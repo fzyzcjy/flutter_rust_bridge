@@ -58,10 +58,13 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         namespace: Option<Namespace>,
         codec: Option<RustOpaqueCodecMode>,
     ) -> RustOpaqueParserTypeInfo {
+        let effective_namespace = namespace
+            .or_else(|| self.parse_namespace_by_name(inner))
+            .unwrap_or(self.context.initiated_namespace.clone());
         self.inner.rust_auto_opaque_parser_info.get_or_insert(
             inner.to_owned(),
             RustOpaqueParserTypeInfo::new(
-                namespace.unwrap_or(self.context.initiated_namespace.clone()),
+                effective_namespace,
                 codec
                     .or(self.context.func_attributes.rust_opaque_codec())
                     .unwrap_or(self.context.default_rust_opaque_codec),
@@ -77,6 +80,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         self.parse_type_rust_auto_opaque_implicit(
             ty_raw.self_namespace(),
             &syn::parse_str(&transform(ty_raw.raw.string.with_original_lifetime()))?,
+            // ty_raw.reason, // this may be more reasonable (but does not affect downstream steps currently)
             None,
             None,
         )

@@ -39,7 +39,7 @@ abstract class AudioBuffer implements RustOpaqueInterface {
   ///
   /// This function will panic if:
   /// - the given channel number is greater than or equal to the given number of channels.
-  Future<void> getChannelData({required BigInt channelNumber});
+  Future<void> getChannelData({required int channelNumber});
 
   /// Return a mutable slice of the underlying data of the channel
   ///
@@ -47,10 +47,10 @@ abstract class AudioBuffer implements RustOpaqueInterface {
   ///
   /// This function will panic if:
   /// - the given channel number is greater than or equal to the given number of channels.
-  Future<void> getChannelDataMut({required BigInt channelNumber});
+  Future<void> getChannelDataMut({required int channelNumber});
 
   /// Number of samples per channel in this `AudioBuffer`
-  Future<BigInt> length();
+  Future<int> length();
 
   // HINT: Make it `#[frb(sync)]` to let it become the default constructor of Dart class.
   /// Allocate a silent audiobuffer with [`AudioBufferOptions`]
@@ -66,7 +66,7 @@ abstract class AudioBuffer implements RustOpaqueInterface {
       RustLib.instance.api.webAudioApiAudioBufferNew(options: options);
 
   /// Number of channels in this `AudioBuffer`
-  Future<BigInt> numberOfChannels();
+  Future<int> numberOfChannels();
 
   /// Sample rate of this `AudioBuffer` in Hertz
   Future<double> sampleRate();
@@ -123,7 +123,7 @@ abstract class AudioParam
 
   /// Represents an integer used to determine how many channels are used when up-mixing and
   /// down-mixing connections to any inputs to the node.
-  Future<BigInt> channelCount();
+  Future<int> channelCount();
 
   /// Represents an enumerated value describing the way channels must be matched between the
   /// node's inputs and outputs.
@@ -136,10 +136,6 @@ abstract class AudioParam
   /// Unset the callback to run when an unhandled exception occurs in the audio processor.
   Future<void> clearOnprocessorerror();
 
-  /// The [`BaseAudioContext`](crate::context::BaseAudioContext) concrete type which owns this
-  /// AudioNode.
-  Future<void> context();
-
   Future<double> defaultValue();
 
   /// Disconnects all outgoing connections from the AudioNode.
@@ -151,7 +147,7 @@ abstract class AudioParam
   ///
   /// This function will panic when
   /// - if the output port is out of bounds for this node
-  Future<void> disconnectOutput({required BigInt output});
+  Future<void> disconnectOutput({required int output});
 
   /// Schedules an exponential continuous change in parameter value from the
   /// previous scheduled parameter value to the given value.
@@ -180,10 +176,10 @@ abstract class AudioParam
   Future<double> minValue();
 
   /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
-  Future<BigInt> numberOfInputs();
+  Future<int> numberOfInputs();
 
   /// The number of outputs coming out of the AudioNode.
-  Future<BigInt> numberOfOutputs();
+  Future<int> numberOfOutputs();
 
   /// Handle of the associated [`BaseAudioContext`](crate::context::BaseAudioContext).
   ///
@@ -198,13 +194,16 @@ abstract class AudioParam
   Future<void> setAutomationRate({required AutomationRate value});
 
   /// Update the `channel_count` attribute
-  Future<void> setChannelCount({required BigInt v});
+  Future<void> setChannelCount({required int v});
 
   /// Update the `channel_count_mode` attribute
   Future<void> setChannelCountMode({required ChannelCountMode v});
 
   /// Update the `channel_interpretation` attribute
   Future<void> setChannelInterpretation({required ChannelInterpretation v});
+
+  Future<void> setOnProcessorError(
+      {required FutureOr<void> Function(String) callback});
 
   /// Start exponentially approaching the target value at the given time with
   /// a rate having the given time constant.
@@ -223,7 +222,7 @@ abstract class AudioParam
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
-  void setValue({required double value});
+  void set value(double value);
 
   /// Schedules a parameter value change at the given time.
   ///
@@ -302,7 +301,9 @@ abstract class AudioRenderCapacityEvent implements RustOpaqueInterface {
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Event>>
-abstract class Event implements RustOpaqueInterface {}
+abstract class Event implements RustOpaqueInterface, EventExt {
+  String get type;
+}
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OfflineAudioCompletionEvent>>
 abstract class OfflineAudioCompletionEvent implements RustOpaqueInterface {
@@ -321,10 +322,10 @@ abstract class PeriodicWave implements RustOpaqueInterface {}
 /// Options for constructing an [`AudioBuffer`]
 class AudioBufferOptions {
   /// The number of channels for the buffer
-  final BigInt numberOfChannels;
+  final int numberOfChannels;
 
   /// The length in sample frames of the buffer
-  final BigInt length;
+  final int length;
 
   /// The sample rate in Hz for the buffer
   final double sampleRate;

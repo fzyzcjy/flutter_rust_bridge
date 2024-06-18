@@ -69,6 +69,7 @@ fn parse_auto_accessors_of_struct(
         config.default_stream_sink_codec,
         config.default_rust_opaque_codec,
         config.enable_lifetime,
+        config.type_64bit_int,
         parse_mode,
     )?;
 
@@ -127,6 +128,7 @@ fn create_parsing_context(
     default_stream_sink_codec: CodecMode,
     default_rust_opaque_codec: RustOpaqueCodecMode,
     enable_lifetime: bool,
+    type_64bit_int: bool,
     parse_mode: ParseMode,
 ) -> anyhow::Result<TypeParserParsingContext> {
     Ok(TypeParserParsingContext {
@@ -138,6 +140,7 @@ fn create_parsing_context(
         default_rust_opaque_codec,
         owner: None,
         enable_lifetime,
+        type_64bit_int,
         parse_mode,
     })
 }

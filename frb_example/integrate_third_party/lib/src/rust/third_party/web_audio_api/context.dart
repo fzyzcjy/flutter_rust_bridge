@@ -3,6 +3,7 @@
 
 // ignore_for_file: invalid_use_of_internal_member, unused_import, unnecessary_import
 
+import '../../api/media_element.dart';
 import '../../api/override_web_audio_api.dart';
 import '../../frb_generated.dart';
 import '../web_audio_api.dart';
@@ -14,13 +15,11 @@ part 'context.freezed.dart';
 
 // These functions are ignored because they have generic arguments: `decode_audio_data_sync`, `decode_audio_data_sync`, `decode_audio_data_sync`, `set_onstatechange`, `set_onstatechange`, `set_onstatechange`, `set_onstatechange`
 // These types are ignored because they are not used by any `pub` functions: `AudioNodeId`
+// These functions are ignored (category: IgnoreBecauseExplicitAttribute): `base`, `base`, `base`, `base`
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioContext>>
 abstract class AudioContext
     implements RustOpaqueInterface, AudioContextExt, BaseAudioContext {
-  /// Returns the [`BaseAudioContext`] concrete type associated with this `AudioContext`
-  Future<void> base();
-
   /// This represents the number of seconds of processing latency incurred by
   /// the `AudioContext` passing the audio from the `AudioDestinationNode`
   /// to the audio subsystem.
@@ -74,20 +73,19 @@ abstract class AudioContext
   /// Note: In most cases you will want the sample rate to match the current
   /// audio context sample rate.
   Future<AudioBuffer> createBuffer(
-      {required BigInt numberOfChannels,
-      required BigInt length,
+      {required int numberOfChannels,
+      required int length,
       required double sampleRate});
 
   /// Creates an `AudioBufferSourceNode`
   Future<AudioBufferSourceNode> createBufferSource();
 
   /// Creates a `ChannelMergerNode`
-  Future<ChannelMergerNode> createChannelMerger(
-      {required BigInt numberOfInputs});
+  Future<ChannelMergerNode> createChannelMerger({required int numberOfInputs});
 
   /// Creates a `ChannelSplitterNode`
   Future<ChannelSplitterNode> createChannelSplitter(
-      {required BigInt numberOfOutputs});
+      {required int numberOfOutputs});
 
   /// Creates an `ConstantSourceNode`, a source representing a constant value
   Future<ConstantSourceNode> createConstantSource();
@@ -150,9 +148,9 @@ abstract class AudioContext
   /// - the number of input and output channels are both zero
   /// - either of the channel counts exceed [`crate::MAX_CHANNELS`]
   Future<ScriptProcessorNode> createScriptProcessor(
-      {required BigInt bufferSize,
-      required BigInt numberOfInputChannels,
-      required BigInt numberOfOutputChannels});
+      {required int bufferSize,
+      required int numberOfInputChannels,
+      required int numberOfOutputChannels});
 
   /// Creates an `StereoPannerNode` to pan a stereo output
   Future<StereoPannerNode> createStereoPanner();
@@ -167,6 +165,9 @@ abstract class AudioContext
   /// Returns an `AudioDestinationNode` representing the final destination of all audio in the
   /// context. It can be thought of as the audio-rendering device.
   Future<AudioDestinationNode> destination();
+
+  Future<MediaElementAudioSourceNode> createMediaElementSource(
+      {required MediaElement mediaElement});
 
   Future<AudioBuffer> decodeAudioDataSync({required String inputPath});
 
@@ -227,6 +228,11 @@ abstract class AudioContext
   /// The sample rate (in sample-frames per second) at which the `AudioContext` handles audio.
   Future<double> sampleRate();
 
+  Future<void> setOnStateChange(
+      {required FutureOr<void> Function(Event) callback});
+
+  Future<void> setSinkId({required String sinkId});
+
   /// Identifier or the information of the current audio output device.
   ///
   /// The initial value is `""`, which means the default audio output device.
@@ -274,9 +280,6 @@ abstract class AudioParamId implements RustOpaqueInterface {}
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ConcreteBaseAudioContext>>
 abstract class ConcreteBaseAudioContext
     implements RustOpaqueInterface, BaseAudioContext {
-  /// Returns the [`BaseAudioContext`] concrete type associated with this `AudioContext`
-  Future<void> base();
-
   /// Unset the callback to run when the state of the AudioContext has changed
   Future<void> clearOnstatechange();
 
@@ -299,20 +302,19 @@ abstract class ConcreteBaseAudioContext
   /// Note: In most cases you will want the sample rate to match the current
   /// audio context sample rate.
   Future<AudioBuffer> createBuffer(
-      {required BigInt numberOfChannels,
-      required BigInt length,
+      {required int numberOfChannels,
+      required int length,
       required double sampleRate});
 
   /// Creates an `AudioBufferSourceNode`
   Future<AudioBufferSourceNode> createBufferSource();
 
   /// Creates a `ChannelMergerNode`
-  Future<ChannelMergerNode> createChannelMerger(
-      {required BigInt numberOfInputs});
+  Future<ChannelMergerNode> createChannelMerger({required int numberOfInputs});
 
   /// Creates a `ChannelSplitterNode`
   Future<ChannelSplitterNode> createChannelSplitter(
-      {required BigInt numberOfOutputs});
+      {required int numberOfOutputs});
 
   /// Creates an `ConstantSourceNode`, a source representing a constant value
   Future<ConstantSourceNode> createConstantSource();
@@ -362,9 +364,9 @@ abstract class ConcreteBaseAudioContext
   /// - the number of input and output channels are both zero
   /// - either of the channel counts exceed [`crate::MAX_CHANNELS`]
   Future<ScriptProcessorNode> createScriptProcessor(
-      {required BigInt bufferSize,
-      required BigInt numberOfInputChannels,
-      required BigInt numberOfOutputChannels});
+      {required int bufferSize,
+      required int numberOfInputChannels,
+      required int numberOfOutputChannels});
 
   /// Creates an `StereoPannerNode` to pan a stereo output
   Future<StereoPannerNode> createStereoPanner();
@@ -395,10 +397,7 @@ abstract class ConcreteBaseAudioContext
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OfflineAudioContext>>
 abstract class OfflineAudioContext
-    implements RustOpaqueInterface, BaseAudioContext {
-  /// Returns the [`BaseAudioContext`] concrete type associated with this `AudioContext`
-  Future<void> base();
-
+    implements RustOpaqueInterface, BaseAudioContext, OfflineAudioContextExt {
   /// Unset the callback to run when the rendering has completed
   Future<void> clearOncomplete();
 
@@ -424,20 +423,19 @@ abstract class OfflineAudioContext
   /// Note: In most cases you will want the sample rate to match the current
   /// audio context sample rate.
   Future<AudioBuffer> createBuffer(
-      {required BigInt numberOfChannels,
-      required BigInt length,
+      {required int numberOfChannels,
+      required int length,
       required double sampleRate});
 
   /// Creates an `AudioBufferSourceNode`
   Future<AudioBufferSourceNode> createBufferSource();
 
   /// Creates a `ChannelMergerNode`
-  Future<ChannelMergerNode> createChannelMerger(
-      {required BigInt numberOfInputs});
+  Future<ChannelMergerNode> createChannelMerger({required int numberOfInputs});
 
   /// Creates a `ChannelSplitterNode`
   Future<ChannelSplitterNode> createChannelSplitter(
-      {required BigInt numberOfOutputs});
+      {required int numberOfOutputs});
 
   /// Creates an `ConstantSourceNode`, a source representing a constant value
   Future<ConstantSourceNode> createConstantSource();
@@ -487,9 +485,9 @@ abstract class OfflineAudioContext
   /// - the number of input and output channels are both zero
   /// - either of the channel counts exceed [`crate::MAX_CHANNELS`]
   Future<ScriptProcessorNode> createScriptProcessor(
-      {required BigInt bufferSize,
-      required BigInt numberOfInputChannels,
-      required BigInt numberOfOutputChannels});
+      {required int bufferSize,
+      required int numberOfInputChannels,
+      required int numberOfOutputChannels});
 
   /// Creates an `StereoPannerNode` to pan a stereo output
   Future<StereoPannerNode> createStereoPanner();
@@ -506,7 +504,7 @@ abstract class OfflineAudioContext
   Future<AudioDestinationNode> destination();
 
   /// get the length of rendering audio buffer
-  Future<BigInt> length();
+  Future<int> length();
 
   /// Returns the `AudioListener` which is used for 3D spatialization
   Future<AudioListener> listener();
@@ -520,8 +518,8 @@ abstract class OfflineAudioContext
   /// * `length` - length of the rendering audio buffer
   /// * `sample_rate` - output sample rate
   static Future<OfflineAudioContext> newInstance(
-          {required BigInt numberOfChannels,
-          required BigInt length,
+          {required int numberOfChannels,
+          required int length,
           required double sampleRate}) =>
       RustLib.instance.api.webAudioApiContextOfflineAudioContextNew(
           numberOfChannels: numberOfChannels,
@@ -537,6 +535,9 @@ abstract class OfflineAudioContext
 
   /// The sample rate (in sample-frames per second) at which the `AudioContext` handles audio.
   Future<double> sampleRate();
+
+  Future<void> setOnComplete(
+      {required FutureOr<void> Function(OfflineAudioCompletionEvent) callback});
 
   /// Given the current connections and scheduled changes, starts rendering audio.
   ///
@@ -612,9 +613,6 @@ abstract class OfflineAudioContext
 }
 
 abstract class BaseAudioContext {
-  /// Returns the [`BaseAudioContext`] concrete type associated with this `AudioContext`
-  Future<void> base();
-
   /// Unset the callback to run when the state of the AudioContext has changed
   Future<void> clearOnstatechange();
 
@@ -637,20 +635,19 @@ abstract class BaseAudioContext {
   /// Note: In most cases you will want the sample rate to match the current
   /// audio context sample rate.
   Future<AudioBuffer> createBuffer(
-      {required BigInt numberOfChannels,
-      required BigInt length,
+      {required int numberOfChannels,
+      required int length,
       required double sampleRate});
 
   /// Creates an `AudioBufferSourceNode`
   Future<AudioBufferSourceNode> createBufferSource();
 
   /// Creates a `ChannelMergerNode`
-  Future<ChannelMergerNode> createChannelMerger(
-      {required BigInt numberOfInputs});
+  Future<ChannelMergerNode> createChannelMerger({required int numberOfInputs});
 
   /// Creates a `ChannelSplitterNode`
   Future<ChannelSplitterNode> createChannelSplitter(
-      {required BigInt numberOfOutputs});
+      {required int numberOfOutputs});
 
   /// Creates an `ConstantSourceNode`, a source representing a constant value
   Future<ConstantSourceNode> createConstantSource();
@@ -700,9 +697,9 @@ abstract class BaseAudioContext {
   /// - the number of input and output channels are both zero
   /// - either of the channel counts exceed [`crate::MAX_CHANNELS`]
   Future<ScriptProcessorNode> createScriptProcessor(
-      {required BigInt bufferSize,
-      required BigInt numberOfInputChannels,
-      required BigInt numberOfOutputChannels});
+      {required int bufferSize,
+      required int numberOfInputChannels,
+      required int numberOfOutputChannels});
 
   /// Creates an `StereoPannerNode` to pan a stereo output
   Future<StereoPannerNode> createStereoPanner();

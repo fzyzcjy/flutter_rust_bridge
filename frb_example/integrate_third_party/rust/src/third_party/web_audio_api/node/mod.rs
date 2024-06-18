@@ -47,8 +47,18 @@ impl WaveShaperNode {
 }
 
 #[frb(external)]
+impl MediaStreamAudioDestinationNode {
+    #[frb(proxy)]
+    pub fn stream() {}
+}
+
+#[frb(external)]
 #[frb(generate_implementor_enum)]
 pub trait AudioNode {
+    // This returns borrowed type, but users usually already has the context (otherwise they seem
+    // cannot create this node). Thus, we ignore this function currently.
+    #[frb(ignore)]
+    fn context();
     #[frb(ignore)]
     fn set_onprocessorerror();
     #[frb(ignore)]
@@ -66,6 +76,9 @@ macro_rules! handle_audio_node_trait_impls_marker {
     ($name:ident) => {
         #[frb(external)]
         impl $name {
+            // Please refer to comments in `AudioNode`
+            #[frb(ignore)]
+            pub fn context() {}
             #[frb(ignore)]
             pub fn set_onprocessorerror() {}
             #[frb(ignore)]

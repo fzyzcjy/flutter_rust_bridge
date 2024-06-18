@@ -3,7 +3,9 @@
 
 // ignore_for_file: invalid_use_of_internal_member, unused_import, unnecessary_import
 
+import '../../api/override_web_audio_api.dart';
 import '../../frb_generated.dart';
+import 'node.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 // These functions are ignored because they have generic arguments: `from_iter`
@@ -11,13 +13,13 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 // These functions have error during generation (see debug logs or enable `stop_on_error: true` for more details): `iter`
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaStream>>
-abstract class MediaStream implements RustOpaqueInterface {
+abstract class MediaStream implements RustOpaqueInterface, MediaStreamExt {
+  Future<List<MediaStreamTrack>> getTracks();
+
   static Future<MediaStream> fromTracks(
           {required List<MediaStreamTrack> tracks}) =>
       RustLib.instance.api
           .webAudioApiMediaStreamsMediaStreamFromTracks(tracks: tracks);
-
-  Future<void> getTracks();
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaStreamTrack>>

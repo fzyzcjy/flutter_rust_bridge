@@ -35,6 +35,7 @@ pub(crate) mod external_impl;
 pub(crate) mod generics;
 pub(crate) mod lifetimeable;
 pub(crate) mod misc;
+mod namespace;
 pub(crate) mod optional;
 pub(crate) mod path;
 pub(crate) mod path_data;
@@ -156,6 +157,7 @@ pub(crate) struct TypeParserParsingContext {
     pub(crate) default_rust_opaque_codec: RustOpaqueCodecMode,
     pub(crate) owner: Option<MirFuncOwnerInfo>,
     pub(crate) enable_lifetime: bool,
+    pub(crate) type_64bit_int: bool,
     pub(crate) parse_mode: ParseMode,
 }
 

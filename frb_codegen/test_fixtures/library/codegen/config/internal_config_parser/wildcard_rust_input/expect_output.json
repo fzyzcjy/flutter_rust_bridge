@@ -122,7 +122,8 @@
         ],
         "rust_output_path_namespace": "crate::frb_generated"
       },
-      "stop_on_error": false
+      "stop_on_error": false,
+      "type_64bit_int": false
     }
   },
   "polisher": {

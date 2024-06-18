@@ -1,9 +1,12 @@
-// use crate::frb_generated::AudioNodeImplementor;
+use crate::api::media_element::MyMediaElement;
 use extend::ext;
 use flutter_rust_bridge::for_generated::anyhow;
-use web_audio_api::context::{AudioContext, BaseAudioContext};
+use flutter_rust_bridge::{frb, DartFnFuture};
+use std::sync::Arc;
+use web_audio_api::context::{AudioContext, BaseAudioContext, OfflineAudioContext};
+use web_audio_api::media_streams::{MediaStream, MediaStreamTrack};
 use web_audio_api::node::*;
-use web_audio_api::{AudioBuffer, AudioParam};
+use web_audio_api::{AudioBuffer, AudioParam, Event, OfflineAudioCompletionEvent};
 
 #[ext]
 pub impl AudioContext {
@@ -15,6 +18,41 @@ pub impl AudioContext {
         self.decode_audio_data_sync(input)
             .map_err(|e| anyhow::anyhow!("{:?}", e))
     }
+
+    fn frb_override_create_media_element_source(
+        &self,
+        media_element: &mut MyMediaElement,
+    ) -> MediaElementAudioSourceNode {
+        self.create_media_element_source(&mut media_element.0.lock().unwrap())
+    }
+
+    fn set_sink_id(&self, sink_id: String) -> anyhow::Result<()> {
+        self.set_sink_id_sync(sink_id)
+            .map_err(|e| anyhow::anyhow!("{:?}", e))
+    }
+
+    fn set_on_state_change(
+        &self,
+        callback: impl Fn(Event) -> DartFnFuture<()> + Send + Sync + 'static,
+    ) {
+        let callback = Arc::new(callback);
+        self.set_onstatechange(move |event| {
+            let callback_cloned = callback.clone();
+            flutter_rust_bridge::spawn(async move { callback_cloned(event).await });
+        })
+    }
+}
+
+#[ext]
+pub impl OfflineAudioContext {
+    fn set_on_complete(
+        &self,
+        callback: impl Fn(OfflineAudioCompletionEvent) -> DartFnFuture<()> + Send + Sync + 'static,
+    ) {
+        self.set_oncomplete(move |event| {
+            flutter_rust_bridge::spawn(async move { callback(event).await });
+        })
+    }
 }
 
 macro_rules! handle_audio_node_trait_impls_override {
@@ -23,6 +61,17 @@ macro_rules! handle_audio_node_trait_impls_override {
         pub impl $name {
             fn frb_override_connect(&self, dest: &dyn AudioNode) {
                 self.connect(dest);
+            }
+
+            // NOTE: The `set_onprocessorerror` by web-audio-api is ignored,
+            // while this one has a different name (note the "_")
+            fn set_on_processor_error(
+                &self,
+                callback: impl Fn(String) -> DartFnFuture<()> + Send + 'static,
+            ) {
+                self.set_onprocessorerror(Box::new(|event| {
+                    flutter_rust_bridge::spawn(async move { callback(event.message).await });
+                }))
             }
         }
     };
@@ -50,3 +99,48 @@ handle_audio_node_trait_impls_override!(PannerNode);
 handle_audio_node_trait_impls_override!(ScriptProcessorNode);
 handle_audio_node_trait_impls_override!(StereoPannerNode);
 handle_audio_node_trait_impls_override!(WaveShaperNode);
+
+macro_rules! handle_audio_scheduled_source_node_trait_impls_override {
+    ($name:ident) => {
+        paste::paste! {
+            #[ext(name=[<$name ScheduledSourceNodeMiscExt>])]
+            pub impl $name {
+                // NOTE: The original name was `set_onended` and here the new name has `_`
+                fn set_on_ended(
+                    &self,
+                    callback: impl Fn(Event) -> DartFnFuture<()> + Send + 'static,
+                ) {
+                    self.set_onended(Box::new(|event| {
+                        flutter_rust_bridge::spawn(async move { callback(event).await });
+                    }))
+                }
+            }
+        }
+    };
+}
+
+handle_audio_scheduled_source_node_trait_impls_override!(ConstantSourceNode);
+handle_audio_scheduled_source_node_trait_impls_override!(OscillatorNode);
+handle_audio_scheduled_source_node_trait_impls_override!(AudioBufferSourceNode);
+
+#[ext]
+pub impl Event {
+    #[frb(sync, getter)]
+    fn type_(&self) -> String {
+        self.type_.to_owned()
+    }
+}
+
+#[ext]
+pub impl MediaStream {
+    fn frb_override_get_tracks(&self) -> Vec<MediaStreamTrack> {
+        self.get_tracks().to_owned()
+    }
+}
+
+#[ext(name = WaveShaperNodeMiscExt)]
+pub impl WaveShaperNode {
+    fn frb_override_curve(&self) -> Option<Vec<f32>> {
+        self.curve().map(|x| x.to_owned())
+    }
+}

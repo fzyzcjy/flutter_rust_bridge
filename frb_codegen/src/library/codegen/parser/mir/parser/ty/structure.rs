@@ -29,6 +29,10 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         EnumOrStructParserStruct(self).parse(path, last_segment, override_opaque)
     }
 
+    pub(crate) fn parse_struct_namespace(&mut self, name: &str) -> Option<Namespace> {
+        EnumOrStructParserStruct(self).parse_namespace(name)
+    }
+
     fn parse_struct(
         &mut self,
         src_struct: &HirFlatStruct,

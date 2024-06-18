@@ -4,8 +4,10 @@
 // Section: imports
 
 use super::*;
+use crate::api::media_element::*;
 use crate::api::override_web_audio_api::AnalyserNodeExt;
 use crate::api::override_web_audio_api::AudioBufferSourceNodeExt;
+use crate::api::override_web_audio_api::AudioBufferSourceNodeScheduledSourceNodeMiscExt;
 use crate::api::override_web_audio_api::AudioContextExt;
 use crate::api::override_web_audio_api::AudioDestinationNodeExt;
 use crate::api::override_web_audio_api::AudioParamExt;
@@ -13,20 +15,26 @@ use crate::api::override_web_audio_api::BiquadFilterNodeExt;
 use crate::api::override_web_audio_api::ChannelMergerNodeExt;
 use crate::api::override_web_audio_api::ChannelSplitterNodeExt;
 use crate::api::override_web_audio_api::ConstantSourceNodeExt;
+use crate::api::override_web_audio_api::ConstantSourceNodeScheduledSourceNodeMiscExt;
 use crate::api::override_web_audio_api::ConvolverNodeExt;
 use crate::api::override_web_audio_api::DelayNodeExt;
 use crate::api::override_web_audio_api::DynamicsCompressorNodeExt;
+use crate::api::override_web_audio_api::EventExt;
 use crate::api::override_web_audio_api::GainNodeExt;
 use crate::api::override_web_audio_api::IIRFilterNodeExt;
 use crate::api::override_web_audio_api::MediaElementAudioSourceNodeExt;
 use crate::api::override_web_audio_api::MediaStreamAudioDestinationNodeExt;
 use crate::api::override_web_audio_api::MediaStreamAudioSourceNodeExt;
+use crate::api::override_web_audio_api::MediaStreamExt;
 use crate::api::override_web_audio_api::MediaStreamTrackAudioSourceNodeExt;
+use crate::api::override_web_audio_api::OfflineAudioContextExt;
 use crate::api::override_web_audio_api::OscillatorNodeExt;
+use crate::api::override_web_audio_api::OscillatorNodeScheduledSourceNodeMiscExt;
 use crate::api::override_web_audio_api::PannerNodeExt;
 use crate::api::override_web_audio_api::ScriptProcessorNodeExt;
 use crate::api::override_web_audio_api::StereoPannerNodeExt;
 use crate::api::override_web_audio_api::WaveShaperNodeExt;
+use crate::api::override_web_audio_api::WaveShaperNodeMiscExt;
 use crate::api::simple::*;
 use flutter_rust_bridge::for_generated::byteorder::{NativeEndian, ReadBytesExt, WriteBytesExt};
 use flutter_rust_bridge::for_generated::wasm_bindgen;
@@ -530,6 +538,20 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     MoiArc::<
         flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaStreamTrackAudioSourceNode>,
     >::decrement_strong_count(ptr as _);
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement(
+    ptr: *const std::ffi::c_void,
+) {
+    MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyMediaElement>>::increment_strong_count(ptr as _);
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement(
+    ptr: *const std::ffi::c_void,
+) {
+    MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyMediaElement>>::decrement_strong_count(ptr as _);
 }
 
 #[wasm_bindgen]

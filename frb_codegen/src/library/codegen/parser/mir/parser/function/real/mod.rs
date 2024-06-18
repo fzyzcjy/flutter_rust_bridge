@@ -57,6 +57,7 @@ pub(crate) fn parse(
                 config.default_stream_sink_codec,
                 config.default_rust_opaque_codec,
                 config.enable_lifetime,
+                config.type_64bit_int,
                 parse_mode,
                 config.stop_on_error,
             )
@@ -82,6 +83,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         default_stream_sink_codec: CodecMode,
         default_rust_opaque_codec: RustOpaqueCodecMode,
         enable_lifetime: bool,
+        type_64bit_int: bool,
         parse_mode: ParseMode,
         stop_on_error: bool,
     ) -> anyhow::Result<MirFuncOrSkip> {
@@ -92,6 +94,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             default_stream_sink_codec,
             default_rust_opaque_codec,
             enable_lifetime,
+            type_64bit_int,
             parse_mode,
         ) {
             Ok(output) => Ok(output),
@@ -125,6 +128,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         default_stream_sink_codec: CodecMode,
         default_rust_opaque_codec: RustOpaqueCodecMode,
         enable_lifetime: bool,
+        type_64bit_int: bool,
         parse_mode: ParseMode,
     ) -> anyhow::Result<MirFuncOrSkip> {
         debug!("parse_function function name: {:?}", func.item_fn.name());
@@ -155,6 +159,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             default_rust_opaque_codec,
             owner,
             enable_lifetime,
+            type_64bit_int,
             parse_mode,
         };
 

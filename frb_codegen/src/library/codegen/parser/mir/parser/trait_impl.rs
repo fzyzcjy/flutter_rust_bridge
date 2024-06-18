@@ -12,6 +12,7 @@ use crate::utils::crate_name::CrateName;
 use crate::utils::namespace::Namespace;
 use itertools::Itertools;
 
+#[allow(clippy::too_many_arguments)]
 pub(crate) fn parse(
     hir_trait_impls: &[HirFlatTraitImpl],
     type_parser: &mut TypeParser,
@@ -19,6 +20,7 @@ pub(crate) fn parse(
     default_stream_sink_codec: CodecMode,
     default_rust_opaque_codec: RustOpaqueCodecMode,
     enable_lifetime: bool,
+    type_64bit_int: bool,
     parse_mode: ParseMode,
 ) -> anyhow::Result<Vec<MirTraitImpl>> {
     let context = TypeParserParsingContext {
@@ -30,6 +32,7 @@ pub(crate) fn parse(
         default_rust_opaque_codec,
         owner: None,
         enable_lifetime,
+        type_64bit_int,
         parse_mode,
     };
 
