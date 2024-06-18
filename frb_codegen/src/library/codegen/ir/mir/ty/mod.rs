@@ -6,6 +6,7 @@ pub(crate) mod dynamic;
 pub(crate) mod enumeration;
 pub(crate) mod general_list;
 pub(crate) mod optional;
+pub(crate) mod placeholder;
 pub(crate) mod primitive;
 pub(crate) mod primitive_list;
 pub(crate) mod record;
@@ -36,6 +37,7 @@ pub enum MirType {
     EnumRef(enumeration::MirTypeEnumRef),
     GeneralList(general_list::MirTypeGeneralList),
     Optional(optional::MirTypeOptional),
+    Placeholder(placeholder::MirTypePlaceholder),
     Primitive(primitive::MirTypePrimitive),
     PrimitiveList(primitive_list::MirTypePrimitiveList),
     Record(record::MirTypeRecord),
