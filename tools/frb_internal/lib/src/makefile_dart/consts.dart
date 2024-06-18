@@ -73,6 +73,10 @@ const kDartModeOfPackage = {
   'frb_example/gallery': DartMode.flutter,
 };
 
+const kBuildWebPackageReplacer = {
+  'frb_example/flutter_package/example': 'frb_example/flutter_package',
+};
+
 final exec = SimpleExecutor(
   env: {
     'CARGO_TERM_COLOR': 'always',
