@@ -69,9 +69,10 @@ fn transform_component_raw<T: Debug + Clone + Serialize, K: Eq + Hash + Debug>(
             assert!(!items_of_key.is_empty());
 
             if items_of_key.len() > 1 {
-                log::warn!(
+                log::info!(
                     "There are still multiple objects with same key after merging, \
-                    thus randomly pick one (key={key:?}, objects={})",
+                    thus randomly pick one. This is an issue only if this object is indeed used. \
+                    (key={key:?}, objects={})",
                     (items_of_key.iter())
                         .map(|x| serde_json::to_string(x).unwrap())
                         .join(", "),
