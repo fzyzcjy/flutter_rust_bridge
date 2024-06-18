@@ -199,6 +199,7 @@ const sidebars = {
                                 'guides/third-party/automatic/scanning',
                                 'guides/third-party/automatic/override-attributes',
                                 'guides/third-party/automatic/override-methods',
+                                'guides/third-party/automatic/third-party-modifiable',
                                 'guides/third-party/automatic/tricks',
                             ],
                         },
