@@ -14,7 +14,7 @@ use crate::codegen::parser::mir::parser::ty::path_data::extract_path_data;
 use crate::codegen::parser::mir::parser::ty::unencodable::{splay_segments, SplayedSegment};
 use crate::codegen::parser::mir::parser::ty::TypeParserWithContext;
 use crate::if_then_some;
-use anyhow::{bail, ensure, Context};
+use anyhow::{bail, Context};
 use itertools::Itertools;
 use syn::{parse_str, Type};
 
@@ -100,13 +100,6 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     }
 
     fn parse_type_self(&mut self) -> anyhow::Result<MirType> {
-        // This will stop the whole generator and tell the users, so we do not care about testing it
-        // frb-coverage:ignore-start
-        if let Some(reason) = self.context.forbid_type_self_reason {
-            bail!("`Self` is not allowed at this place ({reason})");
-        }
-        // frb-coverage:ignore-end
-
         let enum_or_struct_name = if_then_some!(
             let MirFuncOwnerInfo::Method(info) = self.context.owner.as_ref().context("owner is null")?,
             info.owner_ty_name().context("owner_ty_name is null")?.name.clone()
