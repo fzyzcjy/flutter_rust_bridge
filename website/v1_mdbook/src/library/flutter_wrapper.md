@@ -72,9 +72,9 @@ WasmModule createLibraryImpl() {
 import 'package:library_name/library_name.dart';
 import 'ffi/stub.dart'
     if (dart.library.io) 'ffi/io.dart'
-    if (dart.library.html) 'ffi/web.dart';
+    if (dart.library.js_interop) 'ffi/web.dart';
 
-LibraryName createLib() => 
+LibraryName createLib() =>
     createWrapper(createLibraryImpl());
 ```
 5. Run `melos bs`
