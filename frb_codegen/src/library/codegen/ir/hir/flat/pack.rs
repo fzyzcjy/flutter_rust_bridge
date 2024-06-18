@@ -1,4 +1,4 @@
-use crate::codegen::ir::hir::flat::component::HirFlatComponent;
+use crate::codegen::ir::hir::flat::component::HirFlatComponentTrait;
 use crate::codegen::ir::hir::flat::function::HirFlatFunction;
 use crate::codegen::ir::hir::flat::struct_or_enum::{HirFlatEnum, HirFlatStruct};
 use crate::codegen::ir::hir::flat::trait_impl::HirFlatTraitImpl;
@@ -30,5 +30,5 @@ impl HirFlatPack {
 }
 
 pub(crate) trait HirFlatPackComponentVisitor {
-    fn visit<SK: Ord, T: HirFlatComponent<SK>>(&self, items: &mut Vec<T>);
+    fn visit<SK: Ord, T: HirFlatComponentTrait<SK>>(&self, items: &mut Vec<T>);
 }
