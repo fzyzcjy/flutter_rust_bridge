@@ -99,6 +99,13 @@ Please refer to [this page](guides/miscellaneous/pure-dart).
 
 </TabItem>
 
+<TabItem value="Flutter Package">
+
+To create a publishable Flutter package instead of a Flutter app,
+please refer to TODO.
+
+</TabItem>
+
 <TabItem value="More approaches">
 
 Please visit [this page](manual/integrate/overview).
