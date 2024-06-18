@@ -5,7 +5,7 @@ use crate::codegen::parser::mir::internal_config::RustInputNamespacePack;
 use crate::utils::crate_name::CrateName;
 use crate::utils::namespace::Namespace;
 use crate::utils::path_utils::canonicalize_with_error_message;
-use anyhow::Context;
+use anyhow::{ensure, Context};
 use itertools::Itertools;
 use std::path::{Path, PathBuf};
 
@@ -23,6 +23,7 @@ pub(super) fn compute_rust_path_info(
 ) -> anyhow::Result<RustInputInfo> {
     let rust_input_namespace_prefixes_raw =
         compute_rust_input_namespace_prefixes_raw(&migrated_rust_input.rust_input);
+    sanity_check_rust_input_namespace_prefixes(&rust_input_namespace_prefixes_raw);
     let rust_crate_dir = compute_rust_crate_dir(base_dir, &migrated_rust_input.rust_root)?;
     let rust_output_path = compute_rust_output_path(config_rust_output, base_dir, &rust_crate_dir)?;
 
@@ -42,6 +43,17 @@ pub(super) fn compute_rust_path_info(
         },
         rust_output_path,
     })
+}
+
+fn sanity_check_rust_input_namespace_prefixes(rust_input_namespace_prefixes_raw: &[Namespace]) {
+    if !(rust_input_namespace_prefixes_raw.iter()).any(|x| x.joined_path.contains("crate")) {
+        // We do not care about codecov for this, since it is just a sanity check warning
+        // frb-coverage:ignore-start
+        log::warn!(
+            "Reminder: `rust_input` field usually looks like `crate::api`, but no `crate` word is detected. \
+            This is not a problem if the first-party crate is really not scanned.");
+        // frb-coverage:ignore-end
+    }
 }
 
 fn compute_rust_input_namespace_prefixes_raw(raw_rust_input: &str) -> Vec<Namespace> {
