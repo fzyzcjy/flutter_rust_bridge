@@ -51,6 +51,6 @@ android {
 
 apply from: "../cargokit/gradle/plugin.gradle"
 cargokit {
-    manifestDir = "../../rust"
+    manifestDir = "../rust"
     libname = "frb_example_flutter_package"
 }
