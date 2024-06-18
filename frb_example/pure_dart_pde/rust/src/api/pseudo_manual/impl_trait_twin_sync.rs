@@ -48,3 +48,23 @@ impl SimpleTraitTwinSync for StructTwoWithTraitTwinSync {
         self.two * 2
     }
 }
+
+// #2089
+pub trait MyTraitWithSelfTwinSync {
+    fn method_with_bad_self_twin_sync(&self, another: &Self);
+
+    fn method_with_good_self_twin_sync(&self) -> Self;
+}
+
+#[frb(opaque)]
+pub struct MyImplTraitWithSelfTwinSync;
+
+impl MyTraitWithSelfTwinSync for MyImplTraitWithSelfTwinSync {
+    fn method_with_bad_self_twin_sync(&self, another: &Self) {
+        let _ = another;
+    }
+
+    fn method_with_good_self_twin_sync(&self) -> Self {
+        Self
+    }
+}
