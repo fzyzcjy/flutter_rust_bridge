@@ -1,0 +1,22 @@
+PODS:
+  - FlutterMacOS (1.0.0)
+  - frb_example_flutter_package (0.0.1):
+    - FlutterMacOS
+
+DEPENDENCIES:
+  - FlutterMacOS (from `Flutter/ephemeral`)
+  - frb_example_flutter_package (from `Flutter/ephemeral/.symlinks/plugins/frb_example_flutter_package/macos`)
+
+EXTERNAL SOURCES:
+  FlutterMacOS:
+    :path: Flutter/ephemeral
+  frb_example_flutter_package:
+    :path: Flutter/ephemeral/.symlinks/plugins/frb_example_flutter_package/macos
+
+SPEC CHECKSUMS:
+  FlutterMacOS: 8f6f14fa908a6fb3fba0cd85dbd81ec4b251fb24
+  frb_example_flutter_package: 83c1f48edd057b5bfeb177a3ec7028bed954b93d
+
+PODFILE CHECKSUM: 236401fc2c932af29a9fcf0e97baeeb2d750d367
+
+COCOAPODS: 1.11.3
