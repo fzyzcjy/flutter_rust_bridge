@@ -65,7 +65,7 @@ class FrbExampleFlutterPackage extends BaseEntrypoint<
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
-    stem: 'rust_lib_frb_example_flutter_package',
+    stem: 'frb_example_flutter_package',
     ioDirectory: 'rust/target/release/',
     webPrefix: 'pkg/',
   );
