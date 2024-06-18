@@ -6,12 +6,13 @@ use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::ir::mir::ty::MirType::Primitive;
 use crate::codegen::parser::mir::parser::ty::unencodable::SplayedSegment;
 use crate::codegen::parser::mir::parser::ty::{TypeParserParsingContext, TypeParserWithContext};
+use crate::codegen::parser::mir::parser::ty::ty_or_skip::MirTypeOrSkip;
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_path_data_primitive(
         &mut self,
         last_segment: &SplayedSegment,
-    ) -> anyhow::Result<Option<MirType>> {
+    ) -> anyhow::Result<Option<MirTypeOrSkip>> {
         Ok(Some(match last_segment {
             // TODO: change to "if let guard" https://github.com/rust-lang/rust/issues/51114
             (name, []) if matches!(parse_primitive(name, self.context), Some(..)) => {

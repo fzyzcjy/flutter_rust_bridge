@@ -4,6 +4,7 @@ use crate::codegen::parser::mir::parser::ty::{TypeParserParsingContext, TypePars
 use crate::utils::syn_utils::ty_to_string;
 use anyhow::Context;
 use syn::Type;
+use crate::codegen::parser::mir::parser::ty::ty_or_skip::MirTypeOrSkip;
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type(&mut self, ty: &Type) -> anyhow::Result<MirType> {
@@ -29,7 +30,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         self_with_context.parse_type(ty)
     }
 
-    fn parse_type_inner(&mut self, ty: &Type) -> anyhow::Result<MirType> {
+    fn parse_type_inner(&mut self, ty: &Type) -> anyhow::Result<MirTypeOrSkip> {
         Ok(match ty.clone() {
             Type::Path(x) => self.parse_type_path(&x)?,
             Type::Array(x) => self.parse_type_array(&x)?,

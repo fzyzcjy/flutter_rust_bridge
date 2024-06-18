@@ -21,3 +21,9 @@ impl MirTypeOrSkip {
         }
     }
 }
+
+impl From<MirType> for MirTypeOrSkip {
+    fn from(value: MirType) -> Self {
+        Self::Type(value)
+    }
+}
