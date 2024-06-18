@@ -229,7 +229,7 @@ const sidebars = {
                         'guides/lifetimes/overview',
                         'guides/lifetimes/type-with-lifetimes',
                         'guides/lifetimes/return-references',
-                        'guides/lifetimes/concurrent-borrows',
+                        'guides/lifetimes/multi-borrows',
                         'guides/lifetimes/alternatives',
                     ],
                 },

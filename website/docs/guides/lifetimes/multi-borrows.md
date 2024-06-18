@@ -1,4 +1,4 @@
-# Concurrent borrows
+# Multi borrows
 
 Suppose we have `fn f(foo: &Foo) -> &Bar { .. }`.
 Then, before the `Bar` object is disposed (or is garbage collected),
