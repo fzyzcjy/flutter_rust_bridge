@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:frb_example_flutter_package/src/rust/api/simple.dart';
-import 'package:frb_example_flutter_package/src/rust/frb_generated.dart';
+import 'package:frb_example_flutter_package/frb_example_flutter_package.dart';
 
 Future<void> main() async {
-  await RustLib.init();
+  await FrbExampleFlutterPackage.init();
   runApp(const MyApp());
 }
 
