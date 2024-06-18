@@ -100,9 +100,9 @@ packages:
     source: hosted
     version: "3.0.2"
   flutter_rust_bridge:
-    dependency: "direct main"
+    dependency: transitive
     description:
-      path: "../../frb_dart"
+      path: "../../../frb_dart"
       relative: true
     source: path
     version: "2.0.0-dev.40"
@@ -111,6 +111,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  frb_example_flutter_package:
+    dependency: "direct main"
+    description:
+      path: ".."
+      relative: true
+    source: path
+    version: "0.0.1"
   fuchsia_remote_debug_protocol:
     dependency: transitive
     description: flutter
@@ -209,13 +216,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.0.2"
-  rust_lib_frb_example_flutter_package:
-    dependency: "direct main"
-    description:
-      path: rust_builder
-      relative: true
-    source: path
-    version: "0.0.1"
   sky_engine:
     dependency: transitive
     description: flutter
