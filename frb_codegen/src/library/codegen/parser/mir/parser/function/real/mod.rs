@@ -252,8 +252,10 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
 fn should_forbid_type_self_for_inputs(owner: &MirFuncOwnerInfo) -> bool {
     if let MirFuncOwnerInfo::Method(method) = owner {
-        // #2089
-        return TODO;
+        if matches!(method.owner_ty, MirType::TraitDef(_)) {
+            // #2089
+            return true;
+        }
     }
     false
 }
