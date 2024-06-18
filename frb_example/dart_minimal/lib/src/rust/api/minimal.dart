@@ -6,7 +6,7 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// These functions are ignored (category: IgnoreBecauseSelfTypeNotAllowed): `method_twin_normal`
+// These functions are ignored (category: IgnoreBecauseSelfTypeNotAllowed): `method_with_bad_self_twin_normal`
 
 Future<int> minimalAdder({required int a, required int b}) =>
     RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b);
@@ -14,6 +14,12 @@ Future<int> minimalAdder({required int a, required int b}) =>
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyImplTraitWithSelfTwinNormal>>
 abstract class MyImplTraitWithSelfTwinNormal
     implements RustOpaqueInterface, MyTraitWithSelfTwinNormal {
-  Future<void> methodTwinNormal(
+  Future<void> methodWithBadSelfTwinNormal(
       {required MyImplTraitWithSelfTwinNormal another});
+
+  Future<MyImplTraitWithSelfTwinNormal> methodWithGoodSelfTwinNormal();
+}
+
+abstract class MyTraitWithSelfTwinNormal {
+  Future<MyTraitWithSelfTwinNormal> methodWithGoodSelfTwinNormal();
 }
