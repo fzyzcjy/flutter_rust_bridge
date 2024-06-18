@@ -1,4 +1,4 @@
-use crate::codegen::ir::hir::flat::component::{HirFlatComponentBase, HirFlatComponentTrait};
+use crate::codegen::ir::hir::flat::component::HirFlatComponentTrait;
 use crate::codegen::ir::hir::misc::generation_source::HirGenerationSource;
 use crate::codegen::ir::hir::misc::item_fn::GeneralizedItemFn;
 use crate::codegen::ir::hir::misc::serializers::serialize_generalized_item_fn;
@@ -11,7 +11,6 @@ use syn::Visibility;
 
 #[derive(Debug, Clone, Serialize)]
 pub(crate) struct HirFlatFunction {
-    pub(crate) base: HirFlatComponentBase,
     pub(crate) namespace: Namespace,
     pub(crate) owner: HirFlatFunctionOwner,
     pub(crate) sources: Vec<HirGenerationSource>,
@@ -20,10 +19,6 @@ pub(crate) struct HirFlatFunction {
 }
 
 impl HirFlatComponentTrait<SimpleOwnerAndName> for HirFlatFunction {
-    fn base_mut(&mut self) -> &mut HirFlatComponentBase {
-        &mut self.base
-    }
-
     fn sort_key(&self) -> SimpleOwnerAndName {
         self.owner_and_name_for_dedup()
     }

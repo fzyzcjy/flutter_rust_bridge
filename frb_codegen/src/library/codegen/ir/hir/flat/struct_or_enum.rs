@@ -1,4 +1,4 @@
-use crate::codegen::ir::hir::flat::component::{HirFlatComponentBase, HirFlatComponentTrait};
+use crate::codegen::ir::hir::flat::component::HirFlatComponentTrait;
 use crate::codegen::ir::hir::misc::generation_source::HirGenerationSource;
 use crate::codegen::ir::hir::misc::syn_item_struct_or_enum::SynItemStructOrEnum;
 use crate::codegen::ir::hir::misc::visibility::HirVisibility;
@@ -12,7 +12,6 @@ use syn::{ItemEnum, ItemStruct};
 #[derive(Clone, Derivative, Serialize)]
 #[derivative(Debug)]
 pub struct HirFlatStructOrEnum<Item: SynItemStructOrEnum> {
-    pub(crate) base: HirFlatComponentBase,
     pub(crate) name: NamespacedName,
     pub(crate) visibility: HirVisibility,
     pub(crate) sources: Vec<HirGenerationSource>,
@@ -24,10 +23,6 @@ pub struct HirFlatStructOrEnum<Item: SynItemStructOrEnum> {
 // frb-coverage:ignore-end
 
 impl<Item: SynItemStructOrEnum> HirFlatComponentTrait<NamespacedName> for HirFlatStructOrEnum<Item> {
-    fn base_mut(&mut self) -> &mut HirFlatComponentBase {
-        &mut self.base
-    }
-
     fn sort_key(&self) -> NamespacedName {
         self.name.clone()
     }
