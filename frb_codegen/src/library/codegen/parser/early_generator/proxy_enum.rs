@@ -25,7 +25,7 @@ pub(crate) fn generate(
 
     let proxy_variants = (distinct_types.iter())
         .filter_map(|ty| if_then_some!(let MirType::Delegate(MirTypeDelegate::ProxyVariant(inner)) = ty, inner.clone()))
-        .sorted_by_cached_key(|x| x.safe_ident())
+        .sorted_by_cached_key(|x| x.inner.safe_ident())
         .collect_vec();
 
     let output_namespace = &(config_mir.rust_input_namespace_pack).rust_output_path_namespace;
@@ -65,6 +65,10 @@ fn compute_proxied_types(
 fn generate_proxy_enum(
     proxy_variants: &[&MirTypeDelegateProxyVariant],
 ) -> anyhow::Result<Vec<InjectExtraCodeBlock>> {
+    let proxy_variants = (proxy_variants.iter())
+        .sorted_by_cached_key(|x| x.inner.safe_ident())
+        .collect_vec();
+
     let proxy_enum_ty = *proxy_variants[0].inner.clone();
 
     let enum_name = MirTypeDelegateProxyEnum::delegate_enum_name_raw(&proxy_enum_ty);
