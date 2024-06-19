@@ -1,6 +1,6 @@
 # Changelog
 
-## 2.0.0.dev-41
+## 2.0.0-dev.41
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
 * Use dart.library.js_interop rather than dart.library.html #2113 (thanks @aran)
