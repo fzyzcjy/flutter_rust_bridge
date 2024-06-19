@@ -1,7 +1,7 @@
 mod proxy_enum;
+mod sorter;
 pub(crate) mod trait_impl_enum;
 pub(crate) mod utils;
-mod sorter;
 
 use crate::codegen::dumper::Dumper;
 use crate::codegen::ir::early_generator::pack::IrEarlyGeneratorPack;
