@@ -1,4 +1,5 @@
 mod proxy_enum;
+mod sorter;
 pub(crate) mod trait_impl_enum;
 pub(crate) mod utils;
 
@@ -31,6 +32,9 @@ pub(crate) fn execute(
 
     proxy_enum::generate(&mut pack, &tentative_mir_pack, config_mir)?;
     dumper.dump("3_proxy_enum.json", &pack)?;
+
+    sorter::generate(&mut pack);
+    dumper.dump("3_sorter.json", &pack)?;
 
     Ok(pack)
 }
