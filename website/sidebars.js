@@ -160,6 +160,7 @@ const sidebars = {
                         'guides/functions/eq-hash',
                         'guides/functions/ignoring',
                         'guides/functions/renaming',
+                        'guides/functions/default-params',
                     ],
                 },
                 {
@@ -263,6 +264,7 @@ const sidebars = {
                         'guides/custom/codegen',
                         'guides/custom/rust',
                         'guides/custom/dart',
+                        'guides/custom/attributes',
                     ],
                 },
                 {
@@ -282,6 +284,25 @@ const sidebars = {
                 },
                 {
                     type: 'category',
+                    label: 'Misc Features',
+                    collapsed: true,
+                    link: {
+                        type: 'doc',
+                        id: 'guides/misc-features/index',
+                    },
+                    items: [
+                        'guides/misc-features/dart-code',
+                        'guides/misc-features/preambles',
+                        'guides/misc-features/proxy',
+                        'guides/misc-features/multi-input',
+                        'guides/misc-features/dart-type-rename',
+                        'guides/misc-features/ignoring',
+                        'guides/misc-features/override-prefix',
+                        'guides/misc-features/build-rs',
+                    ],
+                },
+                {
+                    type: 'category',
                     label: 'Miscellaneous',
                     collapsed: true,
                     link: {
@@ -290,19 +311,10 @@ const sidebars = {
                     },
                     items: [
                         'guides/miscellaneous/directory',
-                        'guides/miscellaneous/dart-code',
                         'guides/miscellaneous/codec',
-                        'guides/miscellaneous/build-rs',
-                        'guides/miscellaneous/ignoring',
-                        'guides/miscellaneous/proxy',
                         'guides/miscellaneous/expanding-macros',
-                        'guides/miscellaneous/default',
-                        'guides/miscellaneous/multi-input',
                         'guides/miscellaneous/pure-dart',
                         'guides/miscellaneous/isolates',
-                        'guides/miscellaneous/override-prefix',
-                        'guides/miscellaneous/dart-type-rename',
-                        'guides/miscellaneous/attributes',
                         'guides/miscellaneous/safety',
                         'guides/miscellaneous/compatibility',
                         'guides/miscellaneous/deployment',

@@ -11,4 +11,4 @@ The line above means we want to both scan `src/api` folder in our crate and scan
 
 For crate with `-` in the name, we can write `interesting-third-party-crate-name`
 
-Please refer to [this page](../../miscellaneous/multi-input) for more details of the configuration.
+Please refer to [this page](../../misc-features/multi-input) for more details of the configuration.

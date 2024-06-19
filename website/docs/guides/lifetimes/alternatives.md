@@ -5,7 +5,7 @@ In addition to directly using the feature, sometimes the following alternative a
 ## Proxy
 
 The proxy feature can be utilized when the borrowed type is indeed a field of struct or something like that.
-Please refer to [this page](../miscellaneous/proxy) for more details.
+Please refer to [this page](../misc-features/proxy) for more details.
 
 ## Shared ownership
 

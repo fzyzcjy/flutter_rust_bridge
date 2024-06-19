@@ -9,7 +9,7 @@ the [wrappers](../manual/wrappers) approach can be useful.
 
 ## Injecting Dart code
 
-The [`#[frb(dart_code)]`](../../miscellaneous/dart-code) feature can be utilized when we want to inject anything into the generated Dart code.
+The [`#[frb(dart_code)]`](../../misc-features/dart-code) feature can be utilized when we want to inject anything into the generated Dart code.
 For example, we can add a method to an auto-generated Dart class.
 
 ## Using Rust macros
@@ -25,6 +25,6 @@ After that, we can remove the `ignore`s and handle them (e.g. by [overriding met
 
 ## Using proxies
 
-The [proxy](../../miscellaneous/proxy) feature can be utilized when we need to return a reference type,
+The [proxy](../../misc-features/proxy) feature can be utilized when we need to return a reference type,
 especially when returning something like the reference to a struct field.
 Please refer to that page for more details.
