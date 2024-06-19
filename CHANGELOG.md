@@ -3,6 +3,7 @@
 ## Unreleased
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Use dart.library.js_interop rather than dart.library.html #2113 (thanks @aran)
 * Auto skip methods in trait definitions that has Self as inputs because it cannot be translated to Dart #2099
 * Add type_64bit_int to config #2096
 * Improve namespace choices for opaque types #2096
