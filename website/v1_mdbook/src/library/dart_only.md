@@ -244,7 +244,7 @@ cat << EOF >> lib/src/ffi.dart
 import 'bridge_generated.dart';
 import 'ffi/stub.dart'
     if (dart.library.io) 'ffi/io.dart'
-    if (dart.library.html) 'ffi/web.dart';
+    if (dart.library.js_interop) 'ffi/web.dart';
 
 $DART_CLASS_NAME? _wrapper;
 
