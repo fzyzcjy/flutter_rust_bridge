@@ -5,6 +5,7 @@ pub(crate) mod utils;
 use crate::codegen::dumper::Dumper;
 use crate::codegen::ir::early_generator::pack::IrEarlyGeneratorPack;
 use crate::codegen::ir::hir::flat::pack::HirFlatPack;
+use crate::codegen::parser::hir::flat::transformer::sort_transformer::sort_hir_flat_pack;
 use crate::codegen::parser::mir;
 use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
 
@@ -31,6 +32,9 @@ pub(crate) fn execute(
 
     proxy_enum::generate(&mut pack, &tentative_mir_pack, config_mir)?;
     dumper.dump("3_proxy_enum.json", &pack)?;
+
+    sort_hir_flat_pack(&mut pack.hir_flat_pack);
+    dumper.dump("3_sort_hir_flat_pack.json", &pack)?;
 
     Ok(pack)
 }
