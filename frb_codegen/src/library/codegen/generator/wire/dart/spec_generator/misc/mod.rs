@@ -115,7 +115,7 @@ fn generate_boilerplate(
                     "
                     {universal_imports}
                     import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-                    import 'frb_generated.io.dart' if (dart.library.html) 'frb_generated.web.dart';
+                    import 'frb_generated.io.dart' if (dart.library.js_interop) 'frb_generated.web.dart';
                     "
                 ),
                 ..Default::default()
@@ -141,7 +141,7 @@ fn generate_boilerplate(
                       externalLibrary: externalLibrary,
                     );
                   }}
-                  
+
                   /// Dispose flutter_rust_bridge
                   ///
                   /// The call to this function is optional, since flutter_rust_bridge (and everything else)
@@ -153,7 +153,7 @@ fn generate_boilerplate(
 
                   @override
                   WireConstructor<{wire_class_name}> get wireConstructor => {wire_class_name}.fromExternalLibrary;
-                  
+
                   @override
                   Future<void> executeRustInitializers() async {{
                     {execute_rust_initializers}
