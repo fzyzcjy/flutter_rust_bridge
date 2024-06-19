@@ -1,4 +1,4 @@
-# Parameter defaults
+# Default parameters
 
 Dart allows default values for function and constructor parameters, and you can achieve the same effect using `#[frb(default)]`. The syntax is as follows:
 
@@ -7,6 +7,8 @@ Dart allows default values for function and constructor parameters, and you can 
   Note that this is run in the *constant context*, so classes can only be constructed if they are preceded with `const`.
 
 This will be translated to either a default value annotation, or Freezed's `@Default` in the case of enum constructor parameters.
+
+## Example
 
 ```rust
 pub enum Answer { Yes, No }

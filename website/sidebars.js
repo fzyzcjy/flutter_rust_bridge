@@ -160,6 +160,7 @@ const sidebars = {
                         'guides/functions/eq-hash',
                         'guides/functions/ignoring',
                         'guides/functions/renaming',
+                        'guides/functions/default-params',
                     ],
                 },
                 {
@@ -289,20 +290,22 @@ const sidebars = {
                         id: 'guides/miscellaneous/index',
                     },
                     items: [
-                        'guides/miscellaneous/directory',
+                        // things like features
                         'guides/miscellaneous/dart-code',
+                        'guides/miscellaneous/proxy',
+                        'guides/miscellaneous/multi-input',
+                        'guides/miscellaneous/dart-type-rename',
+                        'guides/miscellaneous/attributes',
+
+                        // things like explanations
+                        'guides/miscellaneous/directory',
                         'guides/miscellaneous/codec',
                         'guides/miscellaneous/build-rs',
                         'guides/miscellaneous/ignoring',
-                        'guides/miscellaneous/proxy',
                         'guides/miscellaneous/expanding-macros',
-                        'guides/miscellaneous/default',
-                        'guides/miscellaneous/multi-input',
                         'guides/miscellaneous/pure-dart',
                         'guides/miscellaneous/isolates',
                         'guides/miscellaneous/override-prefix',
-                        'guides/miscellaneous/dart-type-rename',
-                        'guides/miscellaneous/attributes',
                         'guides/miscellaneous/safety',
                         'guides/miscellaneous/compatibility',
                         'guides/miscellaneous/deployment',
