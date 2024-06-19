@@ -7,7 +7,7 @@ import 'package:test/test.dart';
 final i64maxb = BigInt.parse('0x7FFFFFFFFFFFFFFF');
 final i64minb = BigInt.parse('-0x8000000000000000');
 final u64maxb = BigInt.parse('0xFFFFFFFFFFFFFFFF');
-const isWeb = bool.fromEnvironment('dart.library.html');
+const isWeb = bool.fromEnvironment('dart.library.js_interop');
 
 void main() {
   group('big lists', () {
