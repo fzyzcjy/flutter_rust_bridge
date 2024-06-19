@@ -11,7 +11,7 @@ How is the example below implemented?
 Shortly speaking,
 the `#[ext]` macro (which implements the "extension trait pattern") automatically generates a trait and an implementation,
 which `flutter_rust_bridge` picks up.
-Then, the [`frb_override_` prefix](../../miscellaneous/override-prefix) is recognized to automatically rename and override the original function.
+Then, the [`frb_override_` prefix](../../misc-features/override-prefix) is recognized to automatically rename and override the original function.
 
 ## Example
 
