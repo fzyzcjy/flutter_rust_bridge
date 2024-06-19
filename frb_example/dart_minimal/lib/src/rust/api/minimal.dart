@@ -4,7 +4,10 @@
 // ignore_for_file: invalid_use_of_internal_member, unused_import, unnecessary_import
 
 import '../frb_generated.dart';
+import '../lib.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
+import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
+part 'minimal.freezed.dart';
 
 Future<int> minimalAdder({required int a, required int b}) =>
     RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b);
@@ -12,5 +15,20 @@ Future<int> minimalAdder({required int a, required int b}) =>
 Future<SpecificMetadata> myFunc({required SpecificMetadata a}) =>
     RustLib.instance.api.crateApiMinimalMyFunc(a: a);
 
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<SpecificMetadata>>
-abstract class SpecificMetadata implements RustOpaqueInterface {}
+@freezed
+sealed class SpecificMetadata with _$SpecificMetadata {
+  const SpecificMetadata._();
+
+  const factory SpecificMetadata.image({
+    required int width,
+    required int height,
+    required RatioU32 pixelAspect,
+  }) = SpecificMetadata_Image;
+  const factory SpecificMetadata.video({
+    required int width,
+    required int height,
+    required RatioU32 pixelAspect,
+    required BigInt numberOfFrames,
+    required BigDecimal framesPerSecond,
+  }) = SpecificMetadata_Video;
+}

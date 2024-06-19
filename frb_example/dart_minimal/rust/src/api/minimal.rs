@@ -11,6 +11,7 @@ pub fn minimal_adder(a: i32, b: i32) -> i32 {
     a + b
 }
 
+#[frb(non_opaque)]
 #[derive(Clone, Debug)]
 pub enum SpecificMetadata {
     Image {

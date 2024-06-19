@@ -9,6 +9,7 @@ import 'dart:convert';
 import 'frb_generated.dart';
 import 'frb_generated.io.dart'
     if (dart.library.js_interop) 'frb_generated.web.dart';
+import 'lib.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 /// Main entrypoint of the Rust API
@@ -76,13 +77,20 @@ abstract class RustLibApi extends BaseApi {
   Future<SpecificMetadata> crateApiMinimalMyFunc({required SpecificMetadata a});
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_SpecificMetadata;
+      get rust_arc_increment_strong_count_BigDecimal;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_SpecificMetadata;
+      get rust_arc_decrement_strong_count_BigDecimal;
 
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_SpecificMetadataPtr;
+  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_BigDecimalPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_RatioU32;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_RatioU32;
+
+  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_RatioU32Ptr;
 }
 
 class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
@@ -148,14 +156,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSpecificMetadata(
-            a, serializer);
+        sse_encode_box_autoadd_specific_metadata(a, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 3, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData:
-            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSpecificMetadata,
+        decodeSuccessData: sse_decode_specific_metadata,
         decodeErrorData: null,
       ),
       constMeta: kCrateApiMinimalMyFuncConstMeta,
@@ -170,31 +176,96 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_SpecificMetadata => wire
-          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSpecificMetadata;
+      get rust_arc_increment_strong_count_BigDecimal => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBigDecimal;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_SpecificMetadata => wire
-          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSpecificMetadata;
+      get rust_arc_decrement_strong_count_BigDecimal => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBigDecimal;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_RatioU32 => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRatiou32;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_RatioU32 => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRatiou32;
 
   @protected
-  SpecificMetadata
-      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSpecificMetadata(
+  BigDecimal
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBigDecimal(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return SpecificMetadataImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return BigDecimalImpl.frbInternalDcoDecode(raw as List<dynamic>);
   }
 
   @protected
-  SpecificMetadata
-      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSpecificMetadata(
+  RatioU32
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRatiou32(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return SpecificMetadataImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return RatioU32Impl.frbInternalDcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BigDecimal
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBigDecimal(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return BigDecimalImpl.frbInternalDcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  RatioU32
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRatiou32(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return RatioU32Impl.frbInternalDcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  SpecificMetadata dco_decode_box_autoadd_specific_metadata(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return dco_decode_specific_metadata(raw);
   }
 
   @protected
   int dco_decode_i_32(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return raw as int;
+  }
+
+  @protected
+  SpecificMetadata dco_decode_specific_metadata(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    switch (raw[0]) {
+      case 0:
+        return SpecificMetadata_Image(
+          width: dco_decode_u_32(raw[1]),
+          height: dco_decode_u_32(raw[2]),
+          pixelAspect:
+              dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRatiou32(
+                  raw[3]),
+        );
+      case 1:
+        return SpecificMetadata_Video(
+          width: dco_decode_u_32(raw[1]),
+          height: dco_decode_u_32(raw[2]),
+          pixelAspect:
+              dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRatiou32(
+                  raw[3]),
+          numberOfFrames: dco_decode_usize(raw[4]),
+          framesPerSecond:
+              dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBigDecimal(
+                  raw[5]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  int dco_decode_u_32(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return raw as int;
   }
@@ -212,27 +283,93 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  SpecificMetadata
-      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSpecificMetadata(
+  BigDecimal
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBigDecimal(
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    return SpecificMetadataImpl.frbInternalSseDecode(
+    return BigDecimalImpl.frbInternalSseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  SpecificMetadata
-      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSpecificMetadata(
+  RatioU32
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRatiou32(
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    return SpecificMetadataImpl.frbInternalSseDecode(
+    return RatioU32Impl.frbInternalSseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  BigDecimal
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBigDecimal(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return BigDecimalImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  RatioU32
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRatiou32(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return RatioU32Impl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  SpecificMetadata sse_decode_box_autoadd_specific_metadata(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return (sse_decode_specific_metadata(deserializer));
   }
 
   @protected
   int sse_decode_i_32(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return deserializer.buffer.getInt32();
+  }
+
+  @protected
+  SpecificMetadata sse_decode_specific_metadata(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+
+    var tag_ = sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        var var_width = sse_decode_u_32(deserializer);
+        var var_height = sse_decode_u_32(deserializer);
+        var var_pixelAspect =
+            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRatiou32(
+                deserializer);
+        return SpecificMetadata_Image(
+            width: var_width, height: var_height, pixelAspect: var_pixelAspect);
+      case 1:
+        var var_width = sse_decode_u_32(deserializer);
+        var var_height = sse_decode_u_32(deserializer);
+        var var_pixelAspect =
+            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRatiou32(
+                deserializer);
+        var var_numberOfFrames = sse_decode_usize(deserializer);
+        var var_framesPerSecond =
+            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBigDecimal(
+                deserializer);
+        return SpecificMetadata_Video(
+            width: var_width,
+            height: var_height,
+            pixelAspect: var_pixelAspect,
+            numberOfFrames: var_numberOfFrames,
+            framesPerSecond: var_framesPerSecond);
+      default:
+        throw UnimplementedError('');
+    }
+  }
+
+  @protected
+  int sse_decode_u_32(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return deserializer.buffer.getUint32();
   }
 
   @protected
@@ -254,28 +391,92 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSpecificMetadata(
-          SpecificMetadata self, SseSerializer serializer) {
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBigDecimal(
+          BigDecimal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as SpecificMetadataImpl).frbInternalSseEncode(move: true),
-        serializer);
+        (self as BigDecimalImpl).frbInternalSseEncode(move: true), serializer);
   }
 
   @protected
   void
-      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSpecificMetadata(
-          SpecificMetadata self, SseSerializer serializer) {
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRatiou32(
+          RatioU32 self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as SpecificMetadataImpl).frbInternalSseEncode(move: null),
-        serializer);
+        (self as RatioU32Impl).frbInternalSseEncode(move: true), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBigDecimal(
+          BigDecimal self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as BigDecimalImpl).frbInternalSseEncode(move: null), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRatiou32(
+          RatioU32 self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as RatioU32Impl).frbInternalSseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_specific_metadata(
+      SpecificMetadata self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_specific_metadata(self, serializer);
   }
 
   @protected
   void sse_encode_i_32(int self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     serializer.buffer.putInt32(self);
+  }
+
+  @protected
+  void sse_encode_specific_metadata(
+      SpecificMetadata self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    switch (self) {
+      case SpecificMetadata_Image(
+          width: final width,
+          height: final height,
+          pixelAspect: final pixelAspect
+        ):
+        sse_encode_i_32(0, serializer);
+        sse_encode_u_32(width, serializer);
+        sse_encode_u_32(height, serializer);
+        sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRatiou32(
+            pixelAspect, serializer);
+      case SpecificMetadata_Video(
+          width: final width,
+          height: final height,
+          pixelAspect: final pixelAspect,
+          numberOfFrames: final numberOfFrames,
+          framesPerSecond: final framesPerSecond
+        ):
+        sse_encode_i_32(1, serializer);
+        sse_encode_u_32(width, serializer);
+        sse_encode_u_32(height, serializer);
+        sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRatiou32(
+            pixelAspect, serializer);
+        sse_encode_usize(numberOfFrames, serializer);
+        sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBigDecimal(
+            framesPerSecond, serializer);
+      default:
+        throw UnimplementedError('');
+    }
+  }
+
+  @protected
+  void sse_encode_u_32(int self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    serializer.buffer.putUint32(self);
   }
 
   @protected
@@ -297,22 +498,41 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 }
 
 @sealed
-class SpecificMetadataImpl extends RustOpaque implements SpecificMetadata {
+class BigDecimalImpl extends RustOpaque implements BigDecimal {
   // Not to be used by end users
-  SpecificMetadataImpl.frbInternalDcoDecode(List<dynamic> wire)
+  BigDecimalImpl.frbInternalDcoDecode(List<dynamic> wire)
       : super.frbInternalDcoDecode(wire, _kStaticData);
 
   // Not to be used by end users
-  SpecificMetadataImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
+  BigDecimalImpl.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
       : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount:
-        RustLib.instance.api.rust_arc_increment_strong_count_SpecificMetadata,
+        RustLib.instance.api.rust_arc_increment_strong_count_BigDecimal,
     rustArcDecrementStrongCount:
-        RustLib.instance.api.rust_arc_decrement_strong_count_SpecificMetadata,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_SpecificMetadataPtr,
+        RustLib.instance.api.rust_arc_decrement_strong_count_BigDecimal,
+    rustArcDecrementStrongCountPtr:
+        RustLib.instance.api.rust_arc_decrement_strong_count_BigDecimalPtr,
+  );
+}
+
+@sealed
+class RatioU32Impl extends RustOpaque implements RatioU32 {
+  // Not to be used by end users
+  RatioU32Impl.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  RatioU32Impl.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount:
+        RustLib.instance.api.rust_arc_increment_strong_count_RatioU32,
+    rustArcDecrementStrongCount:
+        RustLib.instance.api.rust_arc_decrement_strong_count_RatioU32,
+    rustArcDecrementStrongCountPtr:
+        RustLib.instance.api.rust_arc_decrement_strong_count_RatioU32Ptr,
   );
 }

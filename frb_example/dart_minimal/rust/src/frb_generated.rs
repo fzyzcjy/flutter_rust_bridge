@@ -25,7 +25,7 @@
 
 // Section: imports
 
-use crate::api::minimal::*;
+use crate::*;
 use flutter_rust_bridge::for_generated::byteorder::{NativeEndian, ReadBytesExt, WriteBytesExt};
 use flutter_rust_bridge::for_generated::{transform_result_dco, Lifetimeable, Lockable};
 use flutter_rust_bridge::{Handler, IntoIntoDart};
@@ -137,7 +137,7 @@ fn wire__crate__api__minimal__my_func_impl(
             };
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_a = <SpecificMetadata>::sse_decode(&mut deserializer);
+            let api_a = <crate::api::minimal::SpecificMetadata>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
@@ -152,23 +152,46 @@ fn wire__crate__api__minimal__my_func_impl(
 // Section: related_funcs
 
 flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
-    flutter_rust_bridge::for_generated::RustAutoOpaqueInner<SpecificMetadata>
+    flutter_rust_bridge::for_generated::RustAutoOpaqueInner<BigDecimal>
+);
+flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
+    flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Ratio<u32>>
 );
 
 // Section: dart2rust
 
-impl SseDecode for SpecificMetadata {
+impl SseDecode for BigDecimal {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut inner = <RustOpaqueMoi<
-            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<SpecificMetadata>,
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<BigDecimal>,
+        >>::sse_decode(deserializer);
+        return flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(inner);
+    }
+}
+
+impl SseDecode for Ratio<u32> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <RustOpaqueMoi<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Ratio<u32>>,
         >>::sse_decode(deserializer);
         return flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(inner);
     }
 }
 
 impl SseDecode
-    for RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<SpecificMetadata>>
+    for RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<BigDecimal>>
+{
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return decode_rust_opaque_moi(inner);
+    }
+}
+
+impl SseDecode
+    for RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Ratio<u32>>>
 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -181,6 +204,49 @@ impl SseDecode for i32 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         deserializer.cursor.read_i32::<NativeEndian>().unwrap()
+    }
+}
+
+impl SseDecode for crate::api::minimal::SpecificMetadata {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut tag_ = <i32>::sse_decode(deserializer);
+        match tag_ {
+            0 => {
+                let mut var_width = <u32>::sse_decode(deserializer);
+                let mut var_height = <u32>::sse_decode(deserializer);
+                let mut var_pixelAspect = <Ratio<u32>>::sse_decode(deserializer);
+                return crate::api::minimal::SpecificMetadata::Image {
+                    width: var_width,
+                    height: var_height,
+                    pixel_aspect: var_pixelAspect,
+                };
+            }
+            1 => {
+                let mut var_width = <u32>::sse_decode(deserializer);
+                let mut var_height = <u32>::sse_decode(deserializer);
+                let mut var_pixelAspect = <Ratio<u32>>::sse_decode(deserializer);
+                let mut var_numberOfFrames = <usize>::sse_decode(deserializer);
+                let mut var_framesPerSecond = <BigDecimal>::sse_decode(deserializer);
+                return crate::api::minimal::SpecificMetadata::Video {
+                    width: var_width,
+                    height: var_height,
+                    pixel_aspect: var_pixelAspect,
+                    number_of_frames: var_numberOfFrames,
+                    frames_per_second: var_framesPerSecond,
+                };
+            }
+            _ => {
+                unimplemented!("");
+            }
+        }
+    }
+}
+
+impl SseDecode for u32 {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        deserializer.cursor.read_u32::<NativeEndian>().unwrap()
     }
 }
 
@@ -234,29 +300,110 @@ fn pde_ffi_dispatcher_sync_impl(
 // Section: rust2dart
 
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for FrbWrapper<SpecificMetadata> {
+impl flutter_rust_bridge::IntoDart for FrbWrapper<BigDecimal> {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0)
             .into_dart()
     }
 }
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for FrbWrapper<SpecificMetadata> {}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for FrbWrapper<BigDecimal> {}
 
-impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<SpecificMetadata>> for SpecificMetadata {
-    fn into_into_dart(self) -> FrbWrapper<SpecificMetadata> {
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<BigDecimal>> for BigDecimal {
+    fn into_into_dart(self) -> FrbWrapper<BigDecimal> {
         self.into()
     }
 }
 
-impl SseEncode for SpecificMetadata {
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for FrbWrapper<Ratio<u32>> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for FrbWrapper<Ratio<u32>> {}
+
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<Ratio<u32>>> for Ratio<u32> {
+    fn into_into_dart(self) -> FrbWrapper<Ratio<u32>> {
+        self.into()
+    }
+}
+
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for crate::api::minimal::SpecificMetadata {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        match self {
+            crate::api::minimal::SpecificMetadata::Image {
+                width,
+                height,
+                pixel_aspect,
+            } => [
+                0.into_dart(),
+                width.into_into_dart().into_dart(),
+                height.into_into_dart().into_dart(),
+                pixel_aspect.into_into_dart().into_dart(),
+            ]
+            .into_dart(),
+            crate::api::minimal::SpecificMetadata::Video {
+                width,
+                height,
+                pixel_aspect,
+                number_of_frames,
+                frames_per_second,
+            } => [
+                1.into_dart(),
+                width.into_into_dart().into_dart(),
+                height.into_into_dart().into_dart(),
+                pixel_aspect.into_into_dart().into_dart(),
+                number_of_frames.into_into_dart().into_dart(),
+                frames_per_second.into_into_dart().into_dart(),
+            ]
+            .into_dart(),
+            _ => {
+                unimplemented!("");
+            }
+        }
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::minimal::SpecificMetadata
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<crate::api::minimal::SpecificMetadata>
+    for crate::api::minimal::SpecificMetadata
+{
+    fn into_into_dart(self) -> crate::api::minimal::SpecificMetadata {
+        self
+    }
+}
+
+impl SseEncode for BigDecimal {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<SpecificMetadata>>>::sse_encode(flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self), serializer);
+        <RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<BigDecimal>>>::sse_encode(flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self), serializer);
+    }
+}
+
+impl SseEncode for Ratio<u32> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Ratio < u32 >>>>::sse_encode(flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self), serializer);
     }
 }
 
 impl SseEncode
-    for RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<SpecificMetadata>>
+    for RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<BigDecimal>>
+{
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode
+    for RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Ratio<u32>>>
 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -270,6 +417,48 @@ impl SseEncode for i32 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         serializer.cursor.write_i32::<NativeEndian>(self).unwrap();
+    }
+}
+
+impl SseEncode for crate::api::minimal::SpecificMetadata {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        match self {
+            crate::api::minimal::SpecificMetadata::Image {
+                width,
+                height,
+                pixel_aspect,
+            } => {
+                <i32>::sse_encode(0, serializer);
+                <u32>::sse_encode(width, serializer);
+                <u32>::sse_encode(height, serializer);
+                <Ratio<u32>>::sse_encode(pixel_aspect, serializer);
+            }
+            crate::api::minimal::SpecificMetadata::Video {
+                width,
+                height,
+                pixel_aspect,
+                number_of_frames,
+                frames_per_second,
+            } => {
+                <i32>::sse_encode(1, serializer);
+                <u32>::sse_encode(width, serializer);
+                <u32>::sse_encode(height, serializer);
+                <Ratio<u32>>::sse_encode(pixel_aspect, serializer);
+                <usize>::sse_encode(number_of_frames, serializer);
+                <BigDecimal>::sse_encode(frames_per_second, serializer);
+            }
+            _ => {
+                unimplemented!("");
+            }
+        }
+    }
+}
+
+impl SseEncode for u32 {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        serializer.cursor.write_u32::<NativeEndian>(self).unwrap();
     }
 }
 
