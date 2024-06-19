@@ -7,6 +7,8 @@ and it gains privilege to override other existing methods (i.e. remove methods w
 This is helpful when wanting to override existing methods,
 and also helpful when the name conflicts (such as in `#[ext]`).
 
+We may extend this to other things as well in the future, such as struct names.
+
 ## Example
 
 ```rust
