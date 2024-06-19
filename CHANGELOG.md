@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 2.0.0.dev-41
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
 * Use dart.library.js_interop rather than dart.library.html #2113 (thanks @aran)
@@ -11,6 +11,7 @@
 * Improve warning message #2098
 * Experiment more about translating whole audio crate#2096
 * Improve internal code #2096
+* Make generated output sorted when using proxy_enum and trait_impl #2115
 
 ## 2.0.0-dev.40
 
