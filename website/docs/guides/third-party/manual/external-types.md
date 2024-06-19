@@ -1,34 +1,29 @@
-# Types
+# External types
 
 :::info
 Third-party packages can be converted automatically; only use the feature in this page when the automation is unwanted.
 :::
 
-Consider the types in other crates.
-The feature is called "mirroring". In short, you need to define the type again mirroring the external type that you want
-to use. That definition is only used at code-generation time to tell `flutter_rust_bridge` type information. To see
-exact grammar, have a look at the example below.
+This page shows how to use translatable types defined in third party crates in an manual approach - the "mirroring" feature.
+
+This boilerplate is only needed for translatable types.
+For [arbitrary types](../../types/arbitrary), everything is automatic.
+
+In short, you need to define the type again mirroring the external type that you want
+to use. That definition is only used at code-generation time to tell `flutter_rust_bridge` type information.
+
+## Remarks
 
 No need to worry whether this breaks the DRY principle, or what happens when you accidentally write down a wrong field.
-This is because *compile errors will happen* if your mirrored type is not exactly same as the original type.
-
-In order to use methods of externals types, please refer to the sibling page.
+This is because compile errors will happen if your mirrored type is not exactly same as the original type.
 
 When multiple structs have the same fields, you can mirror them *once* using grammar
 like `#[frb(mirror(FirstStruct, SecondStruct, ThirdStruct))]`.
 
-Remark: This mirroring boilerplate is only needed for translatable types.
-For [arbitrary types](../../types/arbitrary), everything is automatic.
-
-Remark: When it comes to types in other crates,
+When it comes to types in other crates,
 [serde](https://crates.io/crates/serde) also has a similar developer-facing API,
 requiring users to write down the details of the remote struct:
 https://serde.rs/remote-derive.html.
-
-Some information can also be found in
-[#352](https://github.com/fzyzcjy/flutter_rust_bridge/pull/352)
-and
-[#619](https://github.com/fzyzcjy/flutter_rust_bridge/pull/619).
 
 ## Example
 

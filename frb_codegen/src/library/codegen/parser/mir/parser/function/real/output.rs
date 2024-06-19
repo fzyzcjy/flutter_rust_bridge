@@ -19,9 +19,10 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         attributes: &FrbAttributes,
     ) -> anyhow::Result<FunctionPartialInfo> {
         Ok(match &sig.output {
-            ReturnType::Type(_, ty) => remove_reference_type(remove_primitive_unit(
-                self.parse_fn_output_type(ty, owner, context, attributes)?,
-            )),
+            ReturnType::Type(_, ty) => remove_reference_type(
+                remove_primitive_unit(self.parse_fn_output_type(ty, owner, context, attributes)?),
+                &sig.ident.to_string(),
+            ),
             ReturnType::Default => Default::default(),
         })
     }
@@ -56,14 +57,20 @@ fn remove_primitive_unit(info: FunctionPartialInfo) -> FunctionPartialInfo {
     info
 }
 
-fn remove_reference_type(info: FunctionPartialInfo) -> FunctionPartialInfo {
+fn remove_reference_type(
+    info: FunctionPartialInfo,
+    debug_function_name: &str,
+) -> FunctionPartialInfo {
     if let Some(MirType::RustAutoOpaqueImplicit(MirTypeRustAutoOpaqueImplicit {
         ownership_mode,
         ..
     })) = &info.ok_output
     {
         if *ownership_mode != OwnershipMode::Owned {
-            log::debug!("remove_reference_type: detect output type is a reference, thus set to unit (info={:?})", info);
+            log::info!(
+                "Output type of `{debug_function_name}` is a reference, thus currently set to unit type. \
+                The \"lifetimes\" section in doc may be interesting."
+            );
             return FunctionPartialInfo {
                 ok_output: None,
                 ..info

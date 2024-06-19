@@ -50,7 +50,8 @@ you can also fill in your config under the `flutter_rust_bridge` entry in `pubsp
 ```yaml
 # put this somewhere in your pubspec.yaml
 flutter_rust_bridge:
-  rust_input: rust/src/api/**/*.rs
+  rust_input: crate::api
+  rust_root: rust/
   dart_output: lib/src/rust
   # ...
 ```

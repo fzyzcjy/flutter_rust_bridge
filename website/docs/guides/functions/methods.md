@@ -4,7 +4,7 @@ In addition to standard functions,
 there is support for structs with methods. Both static methods, and non-static methods are supported.
 No special syntax is needed, and just write normal `impl YourStruct { pub fn your_method() {} }`.
 
-For methods in other crates, please refer to [this page](../third-party/manual/types) and the more general [feature](../third-party).
+For methods in other crates, please refer to [this page](../third-party/manual/external-types) and the more general [feature](../third-party).
 
 ## Example
 
@@ -39,5 +39,5 @@ Remark: If you are curious about `Future`, have a look at [this](../concurrency/
 
 ### Example 2: Methods in external crates
 
-The documentation was moved to [this page](../third-party/manual/types).
+The documentation was moved to [this page](../third-party/manual/external-types).
 The new feature - automatically scanning a whole third party package - may also be helpful and is discussed [here](../third-party).
