@@ -8,3 +8,9 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<int> minimalAdder({required int a, required int b}) =>
     RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b);
+
+Future<SpecificMetadata> myFunc({required SpecificMetadata a}) =>
+    RustLib.instance.api.crateApiMinimalMyFunc(a: a);
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<SpecificMetadata>>
+abstract class SpecificMetadata implements RustOpaqueInterface {}
