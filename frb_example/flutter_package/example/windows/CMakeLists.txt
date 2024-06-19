@@ -1,10 +1,10 @@
 # Project-level configuration.
 cmake_minimum_required(VERSION 3.14)
-project(frb_example_flutter_package LANGUAGES CXX)
+project(frb_example_flutter_package_example LANGUAGES CXX)
 
 # The name of the executable created for the application. Change this to change
 # the on-disk name of your application.
-set(BINARY_NAME "frb_example_flutter_package")
+set(BINARY_NAME "frb_example_flutter_package_example")
 
 # Explicitly opt in to modern CMake behaviors to avoid warnings with recent
 # versions of CMake.

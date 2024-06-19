@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="frb_example_flutter_package"
+        android:label="frb_example_flutter_package_example"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

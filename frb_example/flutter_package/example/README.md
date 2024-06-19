@@ -1,6 +1,6 @@
 # frb_example_flutter_package_example
 
-Demonstrates how to use the plugin.
+Demonstrates how to use the frb_example_flutter_package plugin.
 
 ## Getting Started
 
