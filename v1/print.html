@@ -2298,7 +2298,7 @@ cat &lt;&lt; EOF &gt;&gt; lib/src/ffi.dart
 import 'bridge_generated.dart';
 import 'ffi/stub.dart'
     if (dart.library.io) 'ffi/io.dart'
-    if (dart.library.html) 'ffi/web.dart';
+    if (dart.library.js_interop) 'ffi/web.dart';
 
 $DART_CLASS_NAME? _wrapper;
 
@@ -2455,9 +2455,9 @@ WasmModule createLibraryImpl() {
 import 'package:library_name/library_name.dart';
 import 'ffi/stub.dart'
     if (dart.library.io) 'ffi/io.dart'
-    if (dart.library.html) 'ffi/web.dart';
+    if (dart.library.js_interop) 'ffi/web.dart';
 
-LibraryName createLib() =&gt; 
+LibraryName createLib() =&gt;
     createWrapper(createLibraryImpl());
 </code></pre>
 <ol start="5">
@@ -4059,7 +4059,7 @@ Usage: flutter_rust_bridge_codegen [OPTIONS] --rust-input &lt;RUST_INPUT&gt;... 
 Arguments:
   [CONFIG_FILE]
           Path to a YAML config file.
-          
+
           If present, other options and flags will be ignored. Accepts the same options as the CLI, but uses snake_case keys.
 
 Options:
@@ -4089,7 +4089,7 @@ Options:
 
       --dart-format-line-length &lt;DART_FORMAT_LINE_LENGTH&gt;
           Line length for Dart formatting
-          
+
           [default: 80]
 
       --dart-enums-style
@@ -4115,8 +4115,8 @@ Options:
 
       --extra-headers &lt;EXTRA_HEADERS&gt;
           extra_headers is used to add dependencies header
-          
-          Note that when no_use_bridge_in_method=true and extra_headers is not set, the default is `import 'ffi.io.dart' if (dart.library.html) 'ffi.web.dart'`.
+
+          Note that when no_use_bridge_in_method=true and extra_headers is not set, the default is `import 'ffi.io.dart' if (dart.library.js_interop) 'ffi.web.dart'`.
 
   -v, --verbose
           Show debug messages
@@ -4132,7 +4132,7 @@ Options:
 
       --dump [&lt;DUMP&gt;...]
           A list of data to be dumped. If specified without a value, defaults to all
-          
+
           [possible values: config, ir]
 
       --no-dart3
