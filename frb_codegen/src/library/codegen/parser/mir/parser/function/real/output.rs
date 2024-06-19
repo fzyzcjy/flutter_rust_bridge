@@ -7,6 +7,7 @@ use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
 use crate::codegen::parser::mir::parser::function::real::{FunctionParser, FunctionPartialInfo};
 use crate::codegen::parser::mir::parser::ty::result::parse_type_maybe_result;
 use crate::codegen::parser::mir::parser::ty::TypeParserParsingContext;
+use crate::codegen::parser::mir::ParseMode;
 use anyhow::bail;
 use syn::*;
 
@@ -21,6 +22,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         Ok(match &sig.output {
             ReturnType::Type(_, ty) => remove_reference_type(
                 remove_primitive_unit(self.parse_fn_output_type(ty, owner, context, attributes)?),
+                context.parse_mode,
                 &sig.ident.to_string(),
             ),
             ReturnType::Default => Default::default(),
@@ -59,6 +61,7 @@ fn remove_primitive_unit(info: FunctionPartialInfo) -> FunctionPartialInfo {
 
 fn remove_reference_type(
     info: FunctionPartialInfo,
+    debug_parse_mode: ParseMode,
     debug_function_name: &str,
 ) -> FunctionPartialInfo {
     if let Some(MirType::RustAutoOpaqueImplicit(MirTypeRustAutoOpaqueImplicit {
@@ -67,10 +70,12 @@ fn remove_reference_type(
     })) = &info.ok_output
     {
         if *ownership_mode != OwnershipMode::Owned {
-            log::info!(
-                "Output type of `{debug_function_name}` is a reference, thus currently set to unit type. \
-                The \"lifetimes\" section in doc may be interesting."
-            );
+            if debug_parse_mode != ParseMode::Early {
+                log::info!(
+                    "Output type of `{debug_function_name}` is a reference, thus currently set to unit type. \
+                    The \"lifetimes\" section in doc may be interesting."
+                );
+            }
             return FunctionPartialInfo {
                 ok_output: None,
                 ..info
