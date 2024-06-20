@@ -43,3 +43,50 @@ pub struct Config {
 pub struct MetaConfig {
     pub watch: bool,
 }
+
+macro_rules! generate_merge {
+    ($($field:ident,)*) => (
+        impl Config {
+            pub(crate) fn merge(priority_high: Self, priority_low: Self) -> Self {
+                Self {
+                    $(
+                        $field: priority_high.$field.or(priority_low.$field),
+                    )*
+                }
+            }
+        }
+    );
+}
+
+generate_merge!(
+    base_dir,
+    rust_input,
+    dart_output,
+    c_output,
+    duplicated_c_output,
+    rust_root,
+    rust_output,
+    dart_entrypoint_class_name,
+    dart_format_line_length,
+    dart_preamble,
+    rust_preamble,
+    dart_enums_style,
+    add_mod_to_lib,
+    llvm_path,
+    llvm_compiler_opts,
+    dart_root,
+    build_runner,
+    extra_headers,
+    web,
+    deps_check,
+    dart3,
+    full_dep,
+    local,
+    default_external_library_loader_web_prefix,
+    dart_type_rename,
+    enable_lifetime,
+    type_64bit_int,
+    stop_on_error,
+    dump,
+    dump_all,
+);
