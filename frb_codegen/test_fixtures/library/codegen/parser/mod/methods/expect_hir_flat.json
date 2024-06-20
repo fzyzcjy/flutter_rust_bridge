@@ -1,5 +1,14 @@
 {
-  "enums": [],
+  "enums": [
+    {
+      "mirror": false,
+      "name": "crate::api/MyEnum",
+      "sources": [
+        "Normal"
+      ],
+      "visibility": "Public"
+    }
+  ],
   "existing_handler": null,
   "extra_rust_output_code": "",
   "functions": [
@@ -57,7 +66,16 @@
     }
   ],
   "skips": [],
-  "structs": [],
+  "structs": [
+    {
+      "mirror": false,
+      "name": "crate::api/MyStruct",
+      "sources": [
+        "Normal"
+      ],
+      "visibility": "Public"
+    }
+  ],
   "trait_impls": [],
   "traits": [],
   "types": []
