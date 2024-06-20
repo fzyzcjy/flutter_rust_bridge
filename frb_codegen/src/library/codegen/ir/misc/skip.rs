@@ -13,6 +13,7 @@ pub(crate) enum IrSkipReason {
     IgnoreBecauseFunctionNotPub,
     IgnoreBecauseFunctionGeneric,
     IgnoreBecauseTypeNotUsedByPub,
+    IgnoreBecauseNotDefinedTrait,
     IgnoreBecauseExplicitAttribute,
     IgnoreBecauseType,
     IgnoreBecauseParseMethodOwnerTy,
@@ -36,6 +37,9 @@ impl IrSkipReason {
             }
             Self::IgnoreBecauseTypeNotUsedByPub => {
                 "These types are ignored because they are not used by any `pub` functions".to_owned()
+            }
+            Self::IgnoreBecauseNotDefinedTrait => {
+                "These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore)".to_owned()
             }
             Self::IgnoreSilently => return None,
             Self::Err => {

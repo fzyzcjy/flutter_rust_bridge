@@ -17,7 +17,7 @@ pub(crate) fn transform(mut pack: HirFlatPack) -> anyhow::Result<HirFlatPack> {
                 } else {
                     IrValueOrSkip::Skip(IrSkip {
                         name: NamespacedName::new(f.namespace.clone(), f.item_fn.name()),
-                        reason: IrSkipReason::TODO,
+                        reason: IrSkipReason::IgnoreBecauseNotDefinedTrait,
                     })
                 }
             })
