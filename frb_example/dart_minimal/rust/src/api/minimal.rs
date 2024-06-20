@@ -8,24 +8,3 @@ pub fn init_app() {
 pub fn minimal_adder(a: i32, b: i32) -> i32 {
     a + b
 }
-
-use flutter_rust_bridge::for_generated::anyhow;
-
-#[frb(opaque)]
-pub struct MyStructWithTryFromTwinNormal(String);
-
-// #2103
-impl TryFrom<String> for MyStructWithTryFromTwinNormal {
-    type Error = anyhow::Error;
-
-    #[frb]
-    fn try_from(value: String) -> anyhow::Result<Self> {
-        Ok(Self(value))
-    }
-}
-
-impl MyStructWithTryFromTwinNormal {
-    pub fn value_twin_normal(&self) -> String {
-        self.0.to_owned()
-    }
-}

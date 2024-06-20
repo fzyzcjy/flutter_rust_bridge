@@ -26,6 +26,11 @@ Future<void> main({bool skipRustLibInit = false}) async {
         42);
   });
 
+  test('MyStructWithTryFromTwinNormal', () async {
+    final object = await MyStructWithTryFromTwinNormal.tryFrom(value: 'hello');
+    expect(await object.valueTwinNormal(), 'hello');
+  });
+
   // test('use generated implementor', () async {
   //   final object =
   //       await StructOneWithTraitForDynTwinNormal.createTwinNormal(one: 100);
