@@ -16,4 +16,9 @@ Future<void> main() async {
     print('Action: Call rust (after)');
   });
   print('Action: Configure tests (end)');
+
+  test('MyStructWithTryFromTwinNormal', () async {
+    final object = await MyStructWithTryFromTwinNormal.tryFrom(value: 'hello');
+    expect(await object.valueTwinNormal(), 'hello');
+  });
 }

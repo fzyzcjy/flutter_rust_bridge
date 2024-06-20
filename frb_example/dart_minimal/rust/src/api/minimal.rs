@@ -18,8 +18,14 @@ pub struct MyStructWithTryFromTwinNormal(String);
 impl TryFrom<String> for MyStructWithTryFromTwinNormal {
     type Error = anyhow::Error;
 
-    #[frb(sync)]
+    #[frb]
     fn try_from(value: String) -> anyhow::Result<Self> {
         Ok(Self(value))
+    }
+}
+
+impl MyStructWithTryFromTwinNormal {
+    pub fn value_twin_normal(&self) -> String {
+        self.0.to_owned()
     }
 }
