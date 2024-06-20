@@ -1,8 +1,8 @@
-use crate::utils::namespace::NamespacedName;
+use crate::utils::namespace::Namespace;
 
 crate::mir! {
 pub struct IrSkip {
-    pub name: NamespacedName,
+    pub namespace: Namespace,
     pub reason: IrSkipReason,
 }
 
