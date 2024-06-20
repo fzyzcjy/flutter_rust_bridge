@@ -83,7 +83,7 @@ mod tests {
         set_cwd_test_fixture("binary/commands_parser/flutter_rust_bridge_yaml")?;
 
         let config = run_command_line(vec!["", "generate"])?;
-        assert_eq!(config.rust_input, "crate::hello".to_string());
+        assert_eq!(config.rust_input.unwrap(), "crate::hello".to_string());
         assert!(!config.dart3.unwrap());
 
         Ok(())
@@ -96,7 +96,7 @@ mod tests {
         set_cwd_test_fixture("binary/commands_parser/pubspec_yaml")?;
 
         let config = run_command_line(vec!["", "generate"])?;
-        assert_eq!(config.rust_input, "crate::hello".to_string());
+        assert_eq!(config.rust_input.unwrap(), "crate::hello".to_string());
         assert!(!config.dart3.unwrap());
 
         Ok(())
@@ -128,7 +128,7 @@ mod tests {
         set_cwd_test_fixture("binary/commands_parser/config_file")?;
 
         let config = run_command_line(vec!["", "generate", "--config-file", "hello.yaml"])?;
-        assert_eq!(config.rust_input, "crate::hello".to_string());
+        assert_eq!(config.rust_input.unwrap(), "crate::hello".to_string());
         assert!(!config.dart3.unwrap());
 
         Ok(())
@@ -174,7 +174,7 @@ mod tests {
         ];
         let config = run_command_line(common_args.clone()).expect("failed to parse cli args");
         assert_eq!(config.dart3, Some(true));
-        assert_eq!(config.rust_input, "crate::hello".to_string());
+        assert_eq!(config.rust_input.unwrap(), "crate::hello".to_string());
         assert_eq!(
             run_command_line(concat([common_args.clone(), vec!["--no-dart3"]]))
                 .expect("failed to parse cli args")
@@ -190,7 +190,7 @@ mod tests {
         set_cwd_test_fixture("binary/commands_parser/flutter_rust_bridge_yaml")?;
 
         let config = run_command_line(vec!["", "generate", "--llvm-path", "/my/path"])?;
-        assert_eq!(config.rust_input, "crate::hello".to_string());
+        assert_eq!(config.rust_input.unwrap(), "crate::hello".to_string());
         assert!(!config.dart3.unwrap());
         assert_eq!(config.llvm_path, Some(vec!["/my/path".to_owned()]));
 
