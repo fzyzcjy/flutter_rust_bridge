@@ -64,7 +64,12 @@ fn parse_pub_use_from_item(item: &syn::Item) -> Vec<PubUseInfo> {
 
 fn parse_pub_use_from_use_tree(tree: &UseTree) -> Vec<PubUseInfo> {
     match tree {
-        UseTree::Path(inner) => parse_pub_use_from_use_tree(&*inner.tree).map(|inner_output| TODO),
+        UseTree::Path(inner) => (parse_pub_use_from_use_tree(&*inner.tree).into_iter())
+            .map(|x| PubUseInfo {
+                namespace: namespace_add_prefix(&x.namespace, &inner.ident.to_string()),
+                name_filters: x.name_filters,
+            })
+            .collect_vec(),
         UseTree::Name(inner) => TODO,
         UseTree::Glob(inner) => TODO,
         UseTree::Group(inner) => TODO,
@@ -72,6 +77,10 @@ fn parse_pub_use_from_use_tree(tree: &UseTree) -> Vec<PubUseInfo> {
         UseTree::Rename(_) => None, // Not supported yet
                                     // frb-coverage:ignore-end
     }
+}
+
+fn namespace_add_prefix(namespace: &Namespace, prefix: &str) -> Namespace {
+    Namespace::new_raw(format!("{prefix}::{}", namespace.joined_path))
 }
 
 #[derive(Debug, Clone, Eq, PartialEq)]
