@@ -70,9 +70,17 @@ fn parse_pub_use_from_use_tree(tree: &UseTree) -> Vec<PubUseInfo> {
                 name_filters: x.name_filters,
             })
             .collect_vec(),
-        UseTree::Name(inner) => TODO,
-        UseTree::Glob(inner) => TODO,
-        UseTree::Group(inner) => TODO,
+        UseTree::Name(inner) => vec![PubUseInfo {
+            namespace: Namespace::new(vec![]),
+            name_filters: Some(vec![inner.ident.to_string()]),
+        }],
+        UseTree::Glob(inner) => vec![PubUseInfo {
+            namespace: Namespace::new(vec![]),
+            name_filters: None,
+        }],
+        UseTree::Group(inner) => (inner.items.iter())
+            .flat_map(|x| parse_pub_use_from_use_tree(x))
+            .collect_vec(),
         // Not supported yet
         // frb-coverage:ignore-start
         UseTree::Rename(_) => vec![],
