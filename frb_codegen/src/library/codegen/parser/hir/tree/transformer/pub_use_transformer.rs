@@ -67,16 +67,16 @@ fn parse_pub_use_from_use_tree(tree: &UseTree) -> Vec<PubUseInfo> {
         UseTree::Path(inner) => (parse_pub_use_from_use_tree(&inner.tree).into_iter())
             .map(|x| PubUseInfo {
                 namespace: namespace_add_prefix(&x.namespace, &inner.ident.to_string()),
-                name_filters: x.name_filters,
+                name_filter: x.name_filter,
             })
             .collect_vec(),
         UseTree::Name(inner) => vec![PubUseInfo {
             namespace: Namespace::new(vec![]),
-            name_filters: Some(vec![inner.ident.to_string()]),
+            name_filter: Some(inner.ident.to_string()),
         }],
         UseTree::Glob(_) => vec![PubUseInfo {
             namespace: Namespace::new(vec![]),
-            name_filters: None,
+            name_filter: None,
         }],
         UseTree::Group(inner) => (inner.items.iter())
             .flat_map(parse_pub_use_from_use_tree)
@@ -97,7 +97,7 @@ fn namespace_add_prefix(namespace: &Namespace, prefix: &str) -> Namespace {
 #[derive(Debug, Clone, Eq, PartialEq)]
 struct PubUseInfo {
     namespace: Namespace,
-    name_filters: Option<Vec<String>>,
+    name_filter: Option<String>,
 }
 
 impl PubUseInfo {
@@ -105,7 +105,7 @@ impl PubUseInfo {
     // frb-coverage:ignore-start
     fn is_interest_name(&self, name: &str) -> bool {
         // frb-coverage:ignore-end
-        if let Some(name_filters) = &self.name_filters {
+        if let Some(name_filters) = &self.name_filter {
             name_filters.contains(&name.to_owned())
         } else {
             true
@@ -213,7 +213,7 @@ mod tests {
             "pub use one::two::*;",
             vec![PubUseInfo {
                 namespace: Namespace::new_raw("one::two".to_owned()),
-                name_filters: None,
+                name_filter: None,
             }],
         );
 
@@ -221,7 +221,7 @@ mod tests {
             "pub use one::two::Three;",
             vec![PubUseInfo {
                 namespace: Namespace::new_raw("one::two".to_owned()),
-                name_filters: Some(vec!["Three".to_owned()]),
+                name_filter: Some(vec!["Three".to_owned()]),
             }],
         );
 
@@ -230,7 +230,7 @@ mod tests {
             "pub use one::two::{x, y, z};",
             vec![PubUseInfo {
                 namespace: Namespace::new_raw("one::two".to_owned()),
-                name_filters: Some(vec!["x".to_owned(), "y".to_owned(), "z".to_owned()]),
+                name_filter: Some(vec!["x".to_owned(), "y".to_owned(), "z".to_owned()]),
             }],
         );
 
@@ -240,11 +240,11 @@ mod tests {
             vec![
                 PubUseInfo {
                     namespace: Namespace::new_raw("one::two".to_owned()),
-                    name_filters: Some(vec!["x".to_owned()]),
+                    name_filter: Some(vec!["x".to_owned()]),
                 },
                 PubUseInfo {
                     namespace: Namespace::new_raw("one::two::u".to_owned()),
-                    name_filters: Some(vec!["v".to_owned(), "w".to_owned()]),
+                    name_filter: Some(vec!["v".to_owned(), "w".to_owned()]),
                 },
             ],
         );
