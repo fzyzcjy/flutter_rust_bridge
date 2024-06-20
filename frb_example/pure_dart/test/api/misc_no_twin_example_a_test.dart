@@ -38,4 +38,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
     obj.something = 200;
     expect(obj.something, 200);
   });
+
+  test('MyStructWithTryFromTwinNormal', () async {
+    final object = await MyStructWithTryFromTwinNormal.tryFrom(value: 'hello');
+    expect(await object.valueTwinNormal(), 'hello');
+  });
 }

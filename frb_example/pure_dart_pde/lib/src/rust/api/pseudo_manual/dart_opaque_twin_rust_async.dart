@@ -9,6 +9,8 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'dart_opaque_twin_rust_async.freezed.dart';
 
+// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `deref`, `initialize`
+
 Future<String> asyncAcceptDartOpaqueTwinRustAsync({required Object opaque}) =>
     RustLib.instance.api
         .crateApiPseudoManualDartOpaqueTwinRustAsyncAsyncAcceptDartOpaqueTwinRustAsync(

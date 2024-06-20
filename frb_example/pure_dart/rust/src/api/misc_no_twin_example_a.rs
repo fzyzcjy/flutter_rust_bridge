@@ -153,3 +153,22 @@ impl SimpleLogger {
         self.0.lock().unwrap().drain(..).collect()
     }
 }
+
+#[frb(opaque)]
+pub struct MyStructWithTryFromTwinNormal(String);
+
+// #2103
+impl TryFrom<String> for MyStructWithTryFromTwinNormal {
+    type Error = flutter_rust_bridge::for_generated::anyhow::Error;
+
+    #[frb]
+    fn try_from(value: String) -> flutter_rust_bridge::for_generated::anyhow::Result<Self> {
+        Ok(Self(value))
+    }
+}
+
+impl MyStructWithTryFromTwinNormal {
+    pub fn value_twin_normal(&self) -> String {
+        self.0.to_owned()
+    }
+}

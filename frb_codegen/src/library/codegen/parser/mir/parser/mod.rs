@@ -88,6 +88,7 @@ pub(crate) fn parse(
 
     ans.skips = compute_skips(
         &ans,
+        ir_pack,
         structs_map,
         enums_map,
         &config.rust_input_namespace_pack,
@@ -101,6 +102,7 @@ pub(crate) fn parse(
 
 fn compute_skips(
     pack: &MirPack,
+    ir_pack: &IrEarlyGeneratorPack,
     structs_map: HashMap<String, &HirFlatStruct>,
     enums_map: HashMap<String, &HirFlatEnum>,
     rust_input_namespace_pack: &RustInputNamespacePack,
@@ -114,7 +116,11 @@ fn compute_skips(
         })
         .collect_vec();
 
-    Ok(concat([unused_types_skip, funcs_skip]))
+    Ok(concat([
+        ir_pack.hir_flat_pack.skips.clone(),
+        unused_types_skip,
+        funcs_skip,
+    ]))
 }
 
 // TODO rm

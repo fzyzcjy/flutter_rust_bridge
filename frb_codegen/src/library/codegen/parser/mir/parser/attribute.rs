@@ -25,14 +25,14 @@ impl FrbAttributes {
                 .map(transform_doc_comment)
                 .collect::<anyhow::Result<Vec<_>>>()?
                 .into_iter()
-                .filter(|attr| {
-                    attr.path().segments.last().unwrap().ident == METADATA_IDENT
-                        // exclude the `#[frb]` case
-                        && !matches!(attr.meta, Meta::Path(_))
-                })
+                .filter(|attr| attr.path().segments.last().unwrap().ident == METADATA_IDENT)
                 .map(|attr| {
-                    attr.parse_args::<FrbAttributesInner>()
-                        .with_context(|| format!("attr={:?}", quote::quote!(#attr).to_string()))
+                    if matches!(attr.meta, Meta::Path(_)) {
+                        Ok(FrbAttributesInner(vec![FrbAttribute::Noop]))
+                    } else {
+                        attr.parse_args::<FrbAttributesInner>()
+                            .with_context(|| format!("attr={:?}", quote::quote!(#attr).to_string()))
+                    }
                 })
                 .collect::<anyhow::Result<Vec<_>>>()?
                 .into_iter()
@@ -56,6 +56,10 @@ impl FrbAttributes {
             // frb-coverage:ignore-end
         }
         candidates.last().map(|item| item.to_mir_default_value())
+    }
+
+    pub(crate) fn is_empty(&self) -> bool {
+        self.0.is_empty()
     }
 
     pub(crate) fn non_final(&self) -> bool {
@@ -274,11 +278,13 @@ struct FrbAttributesInner(Vec<FrbAttribute>);
 
 impl Parse for FrbAttributesInner {
     fn parse(input: ParseStream) -> Result<Self> {
-        Ok(Self(
-            Punctuated::<FrbAttribute, Token![,]>::parse_terminated(input)?
-                .into_iter()
-                .collect(),
-        ))
+        let mut items = Punctuated::<FrbAttribute, Token![,]>::parse_terminated(input)?
+            .into_iter()
+            .collect_vec();
+        if items.is_empty() {
+            items = vec![FrbAttribute::Noop];
+        }
+        Ok(Self(items))
     }
 }
 
@@ -311,6 +317,7 @@ enum FrbAttribute {
     Name(FrbAttributeName),
     Dart2Rust(FrbAttributeSerDes),
     Rust2Dart(FrbAttributeSerDes),
+    Noop,
 }
 
 impl Parse for FrbAttribute {
@@ -691,14 +698,14 @@ mod tests {
     #[test]
     fn test_empty() -> anyhow::Result<()> {
         let parsed = parse("#[frb]")?;
-        assert_eq!(parsed.0, vec![]);
+        assert_eq!(parsed.0, vec![FrbAttribute::Noop]);
         Ok(())
     }
 
     #[test]
     fn test_empty_bracket() -> anyhow::Result<()> {
         let parsed = parse("#[frb()]")?;
-        assert_eq!(parsed.0, vec![]);
+        assert_eq!(parsed.0, vec![FrbAttribute::Noop]);
         Ok(())
     }
 

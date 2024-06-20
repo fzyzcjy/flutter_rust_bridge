@@ -5,9 +5,9 @@ use crate::codegen::ir::hir::flat::struct_or_enum::HirFlatStruct;
 use crate::codegen::ir::mir::func::{MirFunc, MirFuncAccessorMode, OwnershipMode};
 use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::ir::mir::ty::{MirContext, MirType};
+use crate::codegen::ir::misc::skip::{IrValueOrSkip, MirFuncOrSkip};
 use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
 use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
-use crate::codegen::parser::mir::parser::function::func_or_skip::MirFuncOrSkip;
 use crate::codegen::parser::mir::parser::misc::extract_src_types_in_paths;
 use crate::codegen::parser::mir::parser::ty::path_data::extract_path_data;
 use crate::codegen::parser::mir::parser::ty::unencodable::splay_segments;
@@ -52,7 +52,7 @@ pub(crate) fn parse(
 
     Ok(infos
         .into_iter()
-        .map(|x| MirFuncOrSkip::Func(x.mir_func))
+        .map(|x| IrValueOrSkip::Value(x.mir_func))
         .collect_vec())
 }
 

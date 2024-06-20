@@ -14,12 +14,10 @@ use crate::codegen::ir::misc::skip::IrSkipReason::{
     IgnoreBecauseExplicitAttribute, IgnoreBecauseFunctionGeneric, IgnoreBecauseSelfTypeNotAllowed,
     IgnoreSilently,
 };
-use crate::codegen::ir::misc::skip::{IrSkip, IrSkipReason};
+use crate::codegen::ir::misc::skip::{IrSkip, IrSkipReason, IrValueOrSkip, MirFuncOrSkip};
 use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
 use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
-use crate::codegen::parser::mir::parser::function::func_or_skip::MirFuncOrSkip;
 use crate::codegen::parser::mir::parser::function::real::lifetime::parse_function_lifetime;
-use crate::codegen::parser::mir::parser::function::real::owner::OwnerInfoOrSkip;
 use crate::codegen::parser::mir::parser::ty::concrete::ERROR_MESSAGE_FORBID_TYPE_SELF;
 use crate::codegen::parser::mir::parser::ty::generics::should_ignore_because_generics;
 use crate::codegen::parser::mir::parser::ty::misc::parse_comments;
@@ -174,8 +172,8 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             dart_name.clone(),
             &attributes,
         )? {
-            OwnerInfoOrSkip::Info(info) => info,
-            OwnerInfoOrSkip::Skip(reason) => return Ok(create_output_skip(func, reason)),
+            IrValueOrSkip::Value(info) => info,
+            IrValueOrSkip::Skip(reason) => return Ok(create_output_skip(func, reason)),
         };
 
         let func_name = parse_name(&func.item_fn.name(), &owner);
@@ -237,7 +235,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             return Ok(create_output_skip(func, ignore_func));
         }
 
-        Ok(MirFuncOrSkip::Func(MirFunc {
+        Ok(IrValueOrSkip::Value(MirFunc {
             name: NamespacedName::new(namespace_refined, func_name),
             dart_name,
             id: None, // to be filled later
@@ -274,7 +272,7 @@ fn should_forbid_type_self_for_inputs(owner: &MirFuncOwnerInfo) -> bool {
 }
 
 fn create_output_skip(func: &HirFlatFunction, reason: IrSkipReason) -> MirFuncOrSkip {
-    MirFuncOrSkip::Skip(IrSkip {
+    IrValueOrSkip::Skip(IrSkip {
         name: NamespacedName::new(func.namespace.clone(), func.item_fn.name().to_string()),
         reason,
     })

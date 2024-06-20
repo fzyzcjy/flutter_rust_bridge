@@ -10,6 +10,7 @@ import 'package:meta/meta.dart' as meta;
 part 'attribute_twin_rust_async_sse.freezed.dart';
 
 // These types are ignored because they are not used by any `pub` functions: `IgnoredStructTwinRustAsyncSse`, `StructWithOnlyIgnoredMethodTwinRustAsyncSse`
+// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `fmt`
 // These functions are ignored (category: IgnoreBecauseExplicitAttribute): `func_should_not_exist_in_dart_twin_rust_async_sse`, `method_should_not_exist_in_dart_twin_rust_async_sse`
 // These functions are ignored (category: IgnoreBecauseOwnerTyShouldIgnore): `method_should_not_exist_in_dart_twin_rust_async_sse`
 
