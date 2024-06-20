@@ -56,6 +56,9 @@ impl Namespace {
     }
 
     pub fn path(&self) -> Vec<&str> {
+        if self.joined_path.is_empty() {
+            return vec![];
+        }
         self.joined_path.split(Self::SEP).collect()
     }
 
