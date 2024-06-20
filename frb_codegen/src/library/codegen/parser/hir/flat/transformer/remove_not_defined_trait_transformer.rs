@@ -24,7 +24,7 @@ pub(crate) fn transform(mut pack: HirFlatPack) -> anyhow::Result<HirFlatPack> {
             .collect_vec(),
     );
     pack.functions = funcs;
-    pack.skips += skips;
+    pack.skips.extend(skips);
 
     Ok(pack)
 }
