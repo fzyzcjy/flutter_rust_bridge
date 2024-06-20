@@ -35,7 +35,7 @@ fn should_retain(f: &HirFlatFunction, good_trait_names: &HashSet<String>) -> boo
         ..
     } = &f.owner
     {
-        good_trait_names.contains(trait_def_name)
+        good_trait_names.contains(trait_def_name) || TODO
     } else {
         true
     }
