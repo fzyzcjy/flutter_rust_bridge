@@ -58,8 +58,8 @@ impl FrbAttributes {
         candidates.last().map(|item| item.to_mir_default_value())
     }
 
-    pub(crate) fn len(&self) -> usize {
-        self.0.len()
+    pub(crate) fn is_empty(&self) -> bool {
+        self.0.is_empty()
     }
 
     pub(crate) fn non_final(&self) -> bool {

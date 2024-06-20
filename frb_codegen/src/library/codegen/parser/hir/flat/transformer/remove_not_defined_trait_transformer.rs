@@ -45,5 +45,5 @@ fn should_retain(f: &HirFlatFunction, good_trait_names: &HashSet<String>) -> boo
 // https://github.com/fzyzcjy/flutter_rust_bridge/issues/2103#issuecomment-2178061684
 fn has_frb_attributes(f: &HirFlatFunction) -> bool {
     let attrs = FrbAttributes::parse(f.item_fn.attrs()).unwrap();
-    attrs.len() > 0
+    !attrs.is_empty()
 }
