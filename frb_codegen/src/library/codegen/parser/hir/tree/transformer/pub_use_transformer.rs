@@ -31,7 +31,7 @@ fn transform_module(module: &mut HirTreeModule) -> anyhow::Result<()> {
 
 fn parse_pub_use_from_items(items: &[syn::Item]) -> Vec<PubUseInfo> {
     (items.iter())
-        .filter_map(parse_pub_use_from_item)
+        .flat_map(parse_pub_use_from_item)
         .collect_vec()
 }
 
