@@ -11,14 +11,14 @@ pub(crate) fn compute_codegen_config(args: GenerateCommandArgsPrimary) -> Result
 
     if let Some(config_file) = &args.config_file {
         debug!("compute_codegen_config: mode=config_file");
-        let config_from_args = compute_codegen_config_from_naive_command_args(args)?;
+        let config_from_args = compute_codegen_config_from_naive_command_args(args);
         let config_from_file =
             Config::from_config_file(config_file)?.context("Cannot find config_file")?;
         return Ok(merge_config(config_from_args, config_from_file));
     }
 
     debug!("compute_codegen_config: mode=from_naive_generate_command_args");
-    let config_from_args = compute_codegen_config_from_naive_command_args(args)?;
+    let config_from_args = compute_codegen_config_from_naive_command_args(args);
     let config_from_file = Config::from_files_auto()?;
     return Ok(merge_config(config_from_args, config_from_file));
 }
@@ -29,8 +29,8 @@ pub(crate) fn compute_codegen_meta_config(args: &GenerateCommandArgs) -> MetaCon
 
 fn compute_codegen_config_from_naive_command_args(
     args: GenerateCommandArgsPrimary,
-) -> Result<Config> {
-    Ok(Config {
+) -> Config {
+    Config {
         base_dir: None,
         rust_input: args.rust_input.context("rust_input is required")?,
         dart_output: args.dart_output.context("dart_output is required")?,
@@ -61,7 +61,7 @@ fn compute_codegen_config_from_naive_command_args(
         stop_on_error: Some(args.stop_on_error),
         dump: args.dump,
         dump_all: Some(args.dump_all),
-    })
+    }
 }
 
 fn merge_config(priority_high: Config, priority_low: Config) -> Config {
