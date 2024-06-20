@@ -2,6 +2,7 @@ use crate::codegen::ir::hir::tree::module::HirTreeModule;
 use crate::codegen::ir::hir::tree::pack::HirTreePack;
 use crate::utils::namespace::Namespace;
 use itertools::Itertools;
+use syn::UseTree;
 
 pub(crate) fn transform(mut pack: HirTreePack) -> anyhow::Result<HirTreePack> {
     for hir_crate in pack.crates.iter_mut() {
@@ -30,41 +31,73 @@ fn transform_module(module: &mut HirTreeModule) -> anyhow::Result<()> {
 
 fn parse_pub_use_from_items(items: &[syn::Item]) -> Vec<PubUseInfo> {
     (items.iter())
-        .filter_map(parse_pub_use_from_item)
+        .flat_map(parse_pub_use_from_item)
         .collect_vec()
 }
 
 // the function signature is not covered while the whole body is covered - looks like a bug in coverage tool
 // frb-coverage:ignore-start
-fn parse_pub_use_from_item(item: &syn::Item) -> Option<PubUseInfo> {
+fn parse_pub_use_from_item(item: &syn::Item) -> Vec<PubUseInfo> {
     // frb-coverage:ignore-end
     if let syn::Item::Use(item_use) = item {
         if matches!(item_use.vis, syn::Visibility::Public(_)) {
-            let tree = &item_use.tree;
-            let tree_string = quote::quote!(#tree).to_string().replace(' ', "");
-            let tree_parts = tree_string.split(Namespace::SEP).collect_vec();
-            let name_filters = match *tree_parts.last().unwrap() {
-                "*" => None,
-                x => Some(vec![x.to_string()]),
-            };
-
-            return Some(PubUseInfo {
-                namespace: Namespace::new(
-                    (tree_parts[..tree_parts.len() - 1].iter())
-                        .map(ToString::to_string)
-                        .collect_vec(),
-                ),
-                name_filters,
-            });
+            return parse_pub_use_from_use_tree(&item_use.tree);
+            // let tree_string = quote::quote!(#tree).to_string().replace(' ', "");
+            // let tree_parts = tree_string.split(Namespace::SEP).collect_vec();
+            // let name_filters = match *tree_parts.last().unwrap() {
+            //     "*" => None,
+            //     x => Some(vec![x.to_string()]),
+            // };
+            //
+            // return Some(PubUseInfo {
+            //     namespace: Namespace::new(
+            //         (tree_parts[..tree_parts.len() - 1].iter())
+            //             .map(ToString::to_string)
+            //             .collect_vec(),
+            //     ),
+            //     name_filters,
+            // });
         }
     }
-    None
+    vec![]
 }
 
-#[derive(Debug, Clone)]
+fn parse_pub_use_from_use_tree(tree: &UseTree) -> Vec<PubUseInfo> {
+    match tree {
+        UseTree::Path(inner) => (parse_pub_use_from_use_tree(&inner.tree).into_iter())
+            .map(|x| PubUseInfo {
+                namespace: namespace_add_prefix(&x.namespace, &inner.ident.to_string()),
+                name_filter: x.name_filter,
+            })
+            .collect_vec(),
+        UseTree::Name(inner) => vec![PubUseInfo {
+            namespace: Namespace::new(vec![]),
+            name_filter: Some(inner.ident.to_string()),
+        }],
+        UseTree::Glob(_) => vec![PubUseInfo {
+            namespace: Namespace::new(vec![]),
+            name_filter: None,
+        }],
+        UseTree::Group(inner) => (inner.items.iter())
+            .flat_map(parse_pub_use_from_use_tree)
+            .collect_vec(),
+        // Not supported yet
+        // frb-coverage:ignore-start
+        UseTree::Rename(_) => vec![],
+        // frb-coverage:ignore-end
+    }
+}
+
+fn namespace_add_prefix(namespace: &Namespace, prefix: &str) -> Namespace {
+    let mut chunks = vec![prefix.to_owned()];
+    chunks.extend(namespace.path().iter().map(|x| x.to_string()));
+    Namespace::new(chunks)
+}
+
+#[derive(Debug, Clone, Eq, PartialEq)]
 struct PubUseInfo {
     namespace: Namespace,
-    name_filters: Option<Vec<String>>,
+    name_filter: Option<String>,
 }
 
 impl PubUseInfo {
@@ -72,7 +105,7 @@ impl PubUseInfo {
     // frb-coverage:ignore-start
     fn is_interest_name(&self, name: &str) -> bool {
         // frb-coverage:ignore-end
-        if let Some(name_filters) = &self.name_filters {
+        if let Some(name_filters) = &self.name_filter {
             name_filters.contains(&name.to_owned())
         } else {
             true
@@ -161,5 +194,73 @@ pub(crate) fn is_localized_definition(item: &syn::Item) -> bool {
         | syn::Item::Trait(_) => true,
         // e.g. `syn::Item::Impl` should *not* be affected
         _ => false,
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    pub fn test_parse_pub_use_from_item() {
+        fn body(code: &str, expect: Vec<PubUseInfo>) {
+            let item: syn::Item = syn::parse_str(code).unwrap();
+            let actual = parse_pub_use_from_item(&item);
+            assert_eq!(actual, expect);
+        }
+
+        body(
+            "pub use one::two::*;",
+            vec![PubUseInfo {
+                namespace: Namespace::new_raw("one::two".to_owned()),
+                name_filter: None,
+            }],
+        );
+
+        body(
+            "pub use one::two::Three;",
+            vec![PubUseInfo {
+                namespace: Namespace::new_raw("one::two".to_owned()),
+                name_filter: Some("Three".to_owned()),
+            }],
+        );
+
+        // https://github.com/fzyzcjy/flutter_rust_bridge/issues/2102#issuecomment-2179595124
+        body(
+            "pub use one::two::{x, y, z};",
+            vec![
+                PubUseInfo {
+                    namespace: Namespace::new_raw("one::two".to_owned()),
+                    name_filter: Some("x".to_owned()),
+                },
+                PubUseInfo {
+                    namespace: Namespace::new_raw("one::two".to_owned()),
+                    name_filter: Some("y".to_owned()),
+                },
+                PubUseInfo {
+                    namespace: Namespace::new_raw("one::two".to_owned()),
+                    name_filter: Some("z".to_owned()),
+                },
+            ],
+        );
+
+        // https://github.com/fzyzcjy/flutter_rust_bridge/issues/2102#issuecomment-2179595124
+        body(
+            "pub use one::two::{x, u::{v, w}};",
+            vec![
+                PubUseInfo {
+                    namespace: Namespace::new_raw("one::two".to_owned()),
+                    name_filter: Some("x".to_owned()),
+                },
+                PubUseInfo {
+                    namespace: Namespace::new_raw("one::two::u".to_owned()),
+                    name_filter: Some("v".to_owned()),
+                },
+                PubUseInfo {
+                    namespace: Namespace::new_raw("one::two::u".to_owned()),
+                    name_filter: Some("w".to_owned()),
+                },
+            ],
+        );
     }
 }

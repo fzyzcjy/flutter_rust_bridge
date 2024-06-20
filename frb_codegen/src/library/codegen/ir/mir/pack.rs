@@ -1,10 +1,10 @@
 use crate::codegen::generator::codec::structs::CodecMode;
 use crate::codegen::ir::mir::func::{MirFunc, MirFuncImplMode};
-use crate::codegen::ir::mir::skip::MirSkip;
 use crate::codegen::ir::mir::trait_impl::MirTraitImpl;
 use crate::codegen::ir::mir::ty::enumeration::{MirEnum, MirEnumIdent};
 use crate::codegen::ir::mir::ty::structure::{MirStruct, MirStructIdent};
 use crate::codegen::ir::mir::ty::MirType;
+use crate::codegen::ir::misc::skip::IrSkip;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use crate::utils::basic_code::general_code::GeneralDartCode;
 use crate::utils::namespace::NamespacedName;
@@ -22,8 +22,7 @@ pub struct MirPack {
     pub enum_pool: MirEnumPool,
     pub dart_code_of_type: HashMap<String, GeneralDartCode>,
     pub existing_handler: Option<NamespacedName>,
-    pub unused_types: Vec<NamespacedName>,
-    pub skipped_functions: Vec<MirSkip>,
+    pub skips: Vec<IrSkip>,
     pub trait_impls: Vec<MirTraitImpl>,
     pub extra_rust_output_code: String,
 }

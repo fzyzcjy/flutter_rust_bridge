@@ -1,10 +1,10 @@
 use crate::codegen::ir::mir::func::MirFunc;
-use crate::codegen::ir::mir::skip::MirSkip;
+use crate::codegen::ir::misc::skip::IrSkip;
 use itertools::Itertools;
 
 pub(crate) enum MirFuncOrSkip {
     Func(MirFunc),
-    Skip(MirSkip),
+    Skip(IrSkip),
 }
 
 impl MirFuncOrSkip {
@@ -15,14 +15,14 @@ impl MirFuncOrSkip {
         }
     }
 
-    pub(crate) fn skip(self) -> MirSkip {
+    pub(crate) fn skip(self) -> IrSkip {
         match self {
             Self::Skip(inner) => inner,
             _ => unreachable!(),
         }
     }
 
-    pub(crate) fn split(items: Vec<MirFuncOrSkip>) -> (Vec<MirFunc>, Vec<MirSkip>) {
+    pub(crate) fn split(items: Vec<MirFuncOrSkip>) -> (Vec<MirFunc>, Vec<IrSkip>) {
         let (funcs, skips): (Vec<_>, Vec<_>) =
             (items.into_iter()).partition(|item| matches!(item, MirFuncOrSkip::Func(_)));
         let funcs = funcs.into_iter().map(|x| x.func()).collect_vec();

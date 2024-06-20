@@ -1,13 +1,13 @@
 use crate::utils::namespace::NamespacedName;
 
 crate::mir! {
-pub struct MirSkip {
+pub struct IrSkip {
     pub name: NamespacedName,
-    pub reason: MirSkipReason,
+    pub reason: IrSkipReason,
 }
 
 #[derive(Copy, PartialOrd, Ord)]
-pub(crate) enum MirSkipReason {
+pub(crate) enum IrSkipReason {
     IgnoreBecauseFunctionNotPub,
     IgnoreBecauseFunctionGeneric,
     IgnoreBecauseTypeNotUsedByPub,
@@ -23,7 +23,7 @@ pub(crate) enum MirSkipReason {
 }
 }
 
-impl MirSkipReason {
+impl IrSkipReason {
     pub(crate) fn explanation_prefix(&self) -> Option<String> {
         Some(match self {
             Self::IgnoreBecauseFunctionNotPub => {

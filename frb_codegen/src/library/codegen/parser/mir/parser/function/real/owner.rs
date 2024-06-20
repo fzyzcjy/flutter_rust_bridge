@@ -2,10 +2,10 @@ use crate::codegen::ir::hir::flat::function::{HirFlatFunction, HirFlatFunctionOw
 use crate::codegen::ir::mir::func::{
     MirFuncOwnerInfo, MirFuncOwnerInfoMethod, MirFuncOwnerInfoMethodMode,
 };
-use crate::codegen::ir::mir::skip::MirSkipReason;
-use crate::codegen::ir::mir::skip::MirSkipReason::IgnoreBecauseOwnerTyShouldIgnore;
 use crate::codegen::ir::mir::ty::trait_def::MirTypeTraitDef;
 use crate::codegen::ir::mir::ty::MirType;
+use crate::codegen::ir::misc::skip::IrSkipReason;
+use crate::codegen::ir::misc::skip::IrSkipReason::IgnoreBecauseOwnerTyShouldIgnore;
 use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
 use crate::codegen::parser::mir::parser::function::real::{
     is_struct_or_enum_or_opaque_from_them, FunctionParser,
@@ -24,7 +24,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         actual_method_dart_name: Option<String>,
         attributes: &FrbAttributes,
     ) -> anyhow::Result<OwnerInfoOrSkip> {
-        use crate::library::codegen::ir::mir::skip::MirSkipReason::*;
+        use crate::library::codegen::ir::misc::skip::IrSkipReason::*;
         use OwnerInfoOrSkip::*;
 
         match &func.owner {
@@ -134,7 +134,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
 pub(super) enum OwnerInfoOrSkip {
     Info(MirFuncOwnerInfo),
-    Skip(MirSkipReason),
+    Skip(IrSkipReason),
 }
 
 fn is_allowed_owner(owner_ty: &MirType, attributes: &FrbAttributes) -> bool {
