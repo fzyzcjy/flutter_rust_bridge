@@ -4,7 +4,16 @@
   "existing_handler": null,
   "extra_rust_output_code": "",
   "funcs_all": [],
-  "skipped_functions": [],
+  "skips": [
+    {
+      "name": "crate::api/UnusedStruct",
+      "reason": "IgnoreBecauseTypeNotUsedByPub"
+    },
+    {
+      "name": "crate::api/UnusedEnum",
+      "reason": "IgnoreBecauseTypeNotUsedByPub"
+    }
+  ],
   "struct_pool": {
     "crate::api/UnusedStruct": {
       "comments": [],
@@ -37,9 +46,5 @@
       "wrapper_name": null
     }
   },
-  "trait_impls": [],
-  "unused_types": [
-    "crate::api/UnusedStruct",
-    "crate::api/UnusedEnum"
-  ]
+  "trait_impls": []
 }

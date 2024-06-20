@@ -524,7 +524,7 @@
       "stream_dart_await": false
     }
   ],
-  "skipped_functions": [],
+  "skips": [],
   "struct_pool": {
     "crate::api/MyGenericStruct": {
       "comments": [],
@@ -641,6 +641,5 @@
       "wrapper_name": null
     }
   },
-  "trait_impls": [],
-  "unused_types": []
+  "trait_impls": []
 }
