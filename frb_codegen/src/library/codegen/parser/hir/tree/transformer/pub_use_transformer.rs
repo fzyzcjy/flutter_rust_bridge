@@ -192,7 +192,7 @@ mod tests {
 
     #[test]
     pub fn test_parse_pub_use_from_item() {
-        fn body(code: &str, expect: Option<PubUseInfo>) {
+        fn body(code: &str, expect: Vec<PubUseInfo>) {
             let item: syn::Item = syn::parse_str(code).unwrap();
             let actual = parse_pub_use_from_item(&item);
             assert_eq!(actual, expect);
@@ -200,27 +200,27 @@ mod tests {
 
         body(
             "pub use one::two::*;",
-            Some(PubUseInfo {
+            vec![PubUseInfo {
                 namespace: Namespace::new_raw("one::two".to_owned()),
                 name_filters: None,
-            }),
+            }],
         );
 
         body(
             "pub use one::two::Three;",
-            Some(PubUseInfo {
+            vec![PubUseInfo {
                 namespace: Namespace::new_raw("one::two".to_owned()),
                 name_filters: Some(vec!["Three".to_owned()]),
-            }),
+            }],
         );
 
         // https://github.com/fzyzcjy/flutter_rust_bridge/issues/2102#issuecomment-2179595124
         body(
             "pub use one::two::{x, y, z};",
-            Some(PubUseInfo {
+            vec![PubUseInfo {
                 namespace: Namespace::new_raw("one::two".to_owned()),
                 name_filters: Some(vec!["x".to_owned(), "y".to_owned(), "z".to_owned()]),
-            }),
+            }],
         );
     }
 }
