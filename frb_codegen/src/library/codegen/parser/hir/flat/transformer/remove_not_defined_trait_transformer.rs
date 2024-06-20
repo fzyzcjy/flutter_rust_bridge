@@ -1,4 +1,4 @@
-use crate::codegen::ir::hir::flat::function::HirFlatFunctionOwner;
+use crate::codegen::ir::hir::flat::function::{HirFlatFunction, HirFlatFunctionOwner};
 use crate::codegen::ir::hir::flat::pack::HirFlatPack;
 use crate::codegen::ir::misc::skip::IrValueOrSkip;
 use itertools::Itertools;
@@ -10,15 +10,11 @@ pub(crate) fn transform(mut pack: HirFlatPack) -> anyhow::Result<HirFlatPack> {
 
     let (funcs, skips) = IrValueOrSkip::split(
         (pack.functions.drain(..))
-            .filter(|f| {
-                if let HirFlatFunctionOwner::StructOrEnum {
-                    trait_def_name: Some(trait_def_name),
-                    ..
-                } = &f.owner
-                {
-                    good_trait_names.contains(trait_def_name)
+            .map(|f| {
+                if should_retain(&f, &good_trait_names) {
+                    IrValueOrSkip::Value(f)
                 } else {
-                    true
+                    IrValueOrSkip::Skip(TODO)
                 }
             })
             .collect_vec(),
@@ -27,4 +23,16 @@ pub(crate) fn transform(mut pack: HirFlatPack) -> anyhow::Result<HirFlatPack> {
     pack.skips += skips;
 
     Ok(pack)
+}
+
+fn should_retain(f: &HirFlatFunction, good_trait_names: &HashSet<String>) -> bool {
+    if let HirFlatFunctionOwner::StructOrEnum {
+        trait_def_name: Some(trait_def_name),
+        ..
+    } = &f.owner
+    {
+        good_trait_names.contains(trait_def_name)
+    } else {
+        true
+    }
 }
