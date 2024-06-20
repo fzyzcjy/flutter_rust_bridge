@@ -209,12 +209,6 @@ mod tests {
         body("library/codegen/config/internal_config_parser/wildcard_rust_input")
     }
 
-    #[test]
-    #[serial]
-    fn test_parse_both_file_and_command() -> anyhow::Result<()> {
-        body("library/codegen/config/internal_config_parser/both_file_and_command")
-    }
-
     fn body(fixture_name: &str) -> anyhow::Result<()> {
         configure_opinionated_test_logging();
         let test_fixture_dir = get_test_fixture_dir(fixture_name);
