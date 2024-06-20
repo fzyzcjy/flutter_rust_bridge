@@ -41,6 +41,9 @@ impl IrSkipReason {
             Self::IgnoreBecauseNotDefinedTrait => {
                 "These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore)".to_owned()
             }
+            Self::IgnoreBecauseParseOwnerCannotFindTrait => {
+                "These function are ignored because cannot find trait when parsing owner (put an empty `#[frb]` on it to unignore)".to_owned()
+            }
             Self::IgnoreSilently => return None,
             Self::Err => {
                 "These functions have error during generation (see debug logs or enable `stop_on_error: true` for more details)".to_owned()
