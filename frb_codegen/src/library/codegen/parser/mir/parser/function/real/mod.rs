@@ -18,7 +18,6 @@ use crate::codegen::ir::misc::skip::{IrSkip, IrSkipReason, IrValueOrSkip};
 use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
 use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
 use crate::codegen::parser::mir::parser::function::real::lifetime::parse_function_lifetime;
-use crate::codegen::parser::mir::parser::function::real::owner::OwnerInfoOrSkip;
 use crate::codegen::parser::mir::parser::ty::concrete::ERROR_MESSAGE_FORBID_TYPE_SELF;
 use crate::codegen::parser::mir::parser::ty::generics::should_ignore_because_generics;
 use crate::codegen::parser::mir::parser::ty::misc::parse_comments;
@@ -173,8 +172,8 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             dart_name.clone(),
             &attributes,
         )? {
-            OwnerInfoOrSkip::Info(info) => info,
-            OwnerInfoOrSkip::Skip(reason) => return Ok(create_output_skip(func, reason)),
+            IrValueOrSkip::Value(info) => info,
+            IrValueOrSkip::Skip(reason) => return Ok(create_output_skip(func, reason)),
         };
 
         let func_name = parse_name(&func.item_fn.name(), &owner);
