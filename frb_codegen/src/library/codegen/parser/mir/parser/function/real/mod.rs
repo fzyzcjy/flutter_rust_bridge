@@ -14,10 +14,9 @@ use crate::codegen::ir::misc::skip::IrSkipReason::{
     IgnoreBecauseExplicitAttribute, IgnoreBecauseFunctionGeneric, IgnoreBecauseSelfTypeNotAllowed,
     IgnoreSilently,
 };
-use crate::codegen::ir::misc::skip::{IrSkip, IrSkipReason};
+use crate::codegen::ir::misc::skip::{IrSkip, IrSkipReason, IrValueOrSkip};
 use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
 use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
-use crate::codegen::parser::mir::parser::function::func_or_skip::MirFuncOrSkip;
 use crate::codegen::parser::mir::parser::function::real::lifetime::parse_function_lifetime;
 use crate::codegen::parser::mir::parser::function::real::owner::OwnerInfoOrSkip;
 use crate::codegen::parser::mir::parser::ty::concrete::ERROR_MESSAGE_FORBID_TYPE_SELF;
@@ -45,7 +44,7 @@ pub(crate) fn parse(
     type_parser: &mut TypeParser,
     config: &ParserMirInternalConfig,
     parse_mode: ParseMode,
-) -> anyhow::Result<Vec<MirFuncOrSkip>> {
+) -> anyhow::Result<Vec<IrValueOrSkip<MirFunc>>> {
     let mut function_parser = FunctionParser::new(type_parser);
     (src_fns.iter())
         .map(|f| {
@@ -88,7 +87,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         type_64bit_int: bool,
         parse_mode: ParseMode,
         stop_on_error: bool,
-    ) -> anyhow::Result<MirFuncOrSkip> {
+    ) -> anyhow::Result<IrValueOrSkip<MirFunc>> {
         match self.parse_function_inner(
             func,
             force_codec_mode_pack,
@@ -132,7 +131,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         enable_lifetime: bool,
         type_64bit_int: bool,
         parse_mode: ParseMode,
-    ) -> anyhow::Result<MirFuncOrSkip> {
+    ) -> anyhow::Result<IrValueOrSkip<MirFunc>> {
         debug!("parse_function function name: {:?}", func.item_fn.name());
 
         if func.is_public() == Some(false) {
@@ -237,7 +236,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             return Ok(create_output_skip(func, ignore_func));
         }
 
-        Ok(MirFuncOrSkip::Func(MirFunc {
+        Ok(IrValueOrSkip::Value(MirFunc {
             name: NamespacedName::new(namespace_refined, func_name),
             dart_name,
             id: None, // to be filled later
@@ -273,8 +272,8 @@ fn should_forbid_type_self_for_inputs(owner: &MirFuncOwnerInfo) -> bool {
     false
 }
 
-fn create_output_skip(func: &HirFlatFunction, reason: IrSkipReason) -> MirFuncOrSkip {
-    MirFuncOrSkip::Skip(IrSkip {
+fn create_output_skip(func: &HirFlatFunction, reason: IrSkipReason) -> IrValueOrSkip<MirFunc> {
+    IrValueOrSkip::Skip(IrSkip {
         name: NamespacedName::new(func.namespace.clone(), func.item_fn.name().to_string()),
         reason,
     })

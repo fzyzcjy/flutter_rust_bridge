@@ -1,4 +1,6 @@
+use crate::codegen::ir::mir::func::MirFunc;
 use crate::utils::namespace::NamespacedName;
+use itertools::Itertools;
 
 crate::mir! {
 pub struct IrSkip {
@@ -41,5 +43,34 @@ impl IrSkipReason {
             }
             _ => format!("These functions are ignored (category: {:?})", self)
         })
+    }
+}
+
+pub(crate) enum IrValueOrSkip<T> {
+    Value(T),
+    Skip(IrSkip),
+}
+
+impl<T> IrValueOrSkip<T> {
+    pub(crate) fn value(self) -> T {
+        match self {
+            Self::Value(inner) => inner,
+            _ => unreachable!(),
+        }
+    }
+
+    pub(crate) fn skip(self) -> IrSkip {
+        match self {
+            Self::Skip(inner) => inner,
+            _ => unreachable!(),
+        }
+    }
+
+    pub(crate) fn split(items: Vec<IrValueOrSkip<T>>) -> (Vec<T>, Vec<IrSkip>) {
+        let (values, skips): (Vec<_>, Vec<_>) =
+            (items.into_iter()).partition(|item| matches!(item, IrValueOrSkip::Value(_)));
+        let values = values.into_iter().map(|x| x.value()).collect_vec();
+        let skips = skips.into_iter().map(|x| x.skip()).collect_vec();
+        (values, skips)
     }
 }

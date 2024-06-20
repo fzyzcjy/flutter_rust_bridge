@@ -7,7 +7,6 @@ use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::ir::mir::ty::{MirContext, MirType};
 use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
 use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
-use crate::codegen::parser::mir::parser::function::func_or_skip::MirFuncOrSkip;
 use crate::codegen::parser::mir::parser::misc::extract_src_types_in_paths;
 use crate::codegen::parser::mir::parser::ty::path_data::extract_path_data;
 use crate::codegen::parser::mir::parser::ty::unencodable::splay_segments;
@@ -21,13 +20,14 @@ use crate::utils::namespace::{Namespace, NamespacedName};
 use field::parse_auto_accessor_of_field;
 use itertools::Itertools;
 use std::collections::HashMap;
+use crate::codegen::ir::misc::skip::IrValueOrSkip;
 
 pub(crate) fn parse(
     config: &ParserMirInternalConfig,
     src_structs: &HashMap<String, &HirFlatStruct>,
     type_parser: &mut TypeParser,
     parse_mode: ParseMode,
-) -> anyhow::Result<Vec<MirFuncOrSkip>> {
+) -> anyhow::Result<Vec<IrValueOrSkip<MirFunc>>> {
     let src_structs_in_paths =
         extract_src_types_in_paths(src_structs, &config.rust_input_namespace_pack)?;
 
@@ -52,7 +52,7 @@ pub(crate) fn parse(
 
     Ok(infos
         .into_iter()
-        .map(|x| MirFuncOrSkip::Func(x.mir_func))
+        .map(|x| IrValueOrSkip::Value(x.mir_func))
         .collect_vec())
 }
 
