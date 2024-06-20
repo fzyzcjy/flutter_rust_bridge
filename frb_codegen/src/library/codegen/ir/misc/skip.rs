@@ -46,12 +46,12 @@ impl IrSkipReason {
     }
 }
 
-pub(crate) enum IrValueOrSkip<T> {
+pub(crate) enum IrValueOrSkip<T, S> {
     Value(T),
-    Skip(IrSkip),
+    Skip(S),
 }
 
-impl<T> IrValueOrSkip<T> {
+impl<T, S> IrValueOrSkip<T, S> {
     pub(crate) fn value(self) -> T {
         match self {
             Self::Value(inner) => inner,
@@ -59,14 +59,14 @@ impl<T> IrValueOrSkip<T> {
         }
     }
 
-    pub(crate) fn skip(self) -> IrSkip {
+    pub(crate) fn skip(self) -> S {
         match self {
             Self::Skip(inner) => inner,
             _ => unreachable!(),
         }
     }
 
-    pub(crate) fn split(items: Vec<IrValueOrSkip<T>>) -> (Vec<T>, Vec<IrSkip>) {
+    pub(crate) fn split(items: Vec<Self>) -> (Vec<T>, Vec<S>) {
         let (values, skips): (Vec<_>, Vec<_>) =
             (items.into_iter()).partition(|item| matches!(item, IrValueOrSkip::Value(_)));
         let values = values.into_iter().map(|x| x.value()).collect_vec();
