@@ -106,8 +106,7 @@ fn compute_skips(
     rust_input_namespace_pack: &RustInputNamespacePack,
     funcs_skip: Vec<IrSkip>,
 ) -> anyhow::Result<Vec<IrSkip>> {
-    let unused_types =
-        get_unused_types(&pack, &structs_map, &enums_map, rust_input_namespace_pack)?;
+    let unused_types = get_unused_types(pack, &structs_map, &enums_map, rust_input_namespace_pack)?;
     let unused_types_skip = (unused_types.into_iter())
         .map(|name| IrSkip {
             name: name.clone(),

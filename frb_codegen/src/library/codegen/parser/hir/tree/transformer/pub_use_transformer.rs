@@ -1,7 +1,7 @@
 use crate::codegen::ir::hir::tree::module::HirTreeModule;
 use crate::codegen::ir::hir::tree::pack::HirTreePack;
 use crate::utils::namespace::Namespace;
-use itertools::{concat, Itertools};
+use itertools::Itertools;
 use syn::UseTree;
 
 pub(crate) fn transform(mut pack: HirTreePack) -> anyhow::Result<HirTreePack> {
@@ -64,7 +64,7 @@ fn parse_pub_use_from_item(item: &syn::Item) -> Vec<PubUseInfo> {
 
 fn parse_pub_use_from_use_tree(tree: &UseTree) -> Vec<PubUseInfo> {
     match tree {
-        UseTree::Path(inner) => (parse_pub_use_from_use_tree(&*inner.tree).into_iter())
+        UseTree::Path(inner) => (parse_pub_use_from_use_tree(&inner.tree).into_iter())
             .map(|x| PubUseInfo {
                 namespace: namespace_add_prefix(&x.namespace, &inner.ident.to_string()),
                 name_filters: x.name_filters,
@@ -79,7 +79,7 @@ fn parse_pub_use_from_use_tree(tree: &UseTree) -> Vec<PubUseInfo> {
             name_filters: None,
         }],
         UseTree::Group(inner) => (inner.items.iter())
-            .flat_map(|x| parse_pub_use_from_use_tree(x))
+            .flat_map(parse_pub_use_from_use_tree)
             .collect_vec(),
         // Not supported yet
         // frb-coverage:ignore-start
@@ -89,7 +89,9 @@ fn parse_pub_use_from_use_tree(tree: &UseTree) -> Vec<PubUseInfo> {
 }
 
 fn namespace_add_prefix(namespace: &Namespace, prefix: &str) -> Namespace {
-    Namespace::new_raw(format!("{prefix}::{}", namespace.joined_path))
+    let mut chunks = vec![prefix.to_owned()];
+    chunks.extend(namespace.path().iter().map(|x| x.to_string()));
+    Namespace::new(chunks)
 }
 
 #[derive(Debug, Clone, Eq, PartialEq)]

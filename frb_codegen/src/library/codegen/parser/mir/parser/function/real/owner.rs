@@ -2,10 +2,10 @@ use crate::codegen::ir::hir::flat::function::{HirFlatFunction, HirFlatFunctionOw
 use crate::codegen::ir::mir::func::{
     MirFuncOwnerInfo, MirFuncOwnerInfoMethod, MirFuncOwnerInfoMethodMode,
 };
-use crate::codegen::ir::misc::skip::IrSkipReason;
-use crate::codegen::ir::misc::skip::IrSkipReason::IgnoreBecauseOwnerTyShouldIgnore;
 use crate::codegen::ir::mir::ty::trait_def::MirTypeTraitDef;
 use crate::codegen::ir::mir::ty::MirType;
+use crate::codegen::ir::misc::skip::IrSkipReason;
+use crate::codegen::ir::misc::skip::IrSkipReason::IgnoreBecauseOwnerTyShouldIgnore;
 use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
 use crate::codegen::parser::mir::parser::function::real::{
     is_struct_or_enum_or_opaque_from_them, FunctionParser,
