@@ -74,7 +74,7 @@ fn parse_pub_use_from_use_tree(tree: &UseTree) -> Vec<PubUseInfo> {
             namespace: Namespace::new(vec![]),
             name_filters: Some(vec![inner.ident.to_string()]),
         }],
-        UseTree::Glob(inner) => vec![PubUseInfo {
+        UseTree::Glob(_) => vec![PubUseInfo {
             namespace: Namespace::new(vec![]),
             name_filters: None,
         }],
