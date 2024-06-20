@@ -315,6 +315,7 @@ enum FrbAttribute {
     Name(FrbAttributeName),
     Dart2Rust(FrbAttributeSerDes),
     Rust2Dart(FrbAttributeSerDes),
+    Noop,
 }
 
 impl Parse for FrbAttribute {
