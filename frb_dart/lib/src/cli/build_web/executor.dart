@@ -169,10 +169,19 @@ Future<void> _executeWasmPack(BuildWebArgs args,
     // if (config.cliOpts.features != null) '--features=${config.cliOpts.features}'
   ], env: {
     'RUSTUP_TOOLCHAIN': args.wasmPackRustupToolchain ?? 'nightly',
-    'RUSTFLAGS': args.wasmPackRustflags ??
-        '-C target-feature=+atomics,+bulk-memory,+mutable-globals',
+    'RUSTFLAGS': _computeRustflags(argsOverride: args.wasmPackRustflags),
     if (stdout.supportsAnsiEscapes) 'CARGO_TERM_COLOR': 'always',
   });
+}
+
+String _computeRustflags({required String? argsOverride}) {
+  const kDefault = '-C target-feature=+atomics,+bulk-memory,+mutable-globals';
+  if (argsOverride == null) return kDefault;
+  if (!argsOverride.contains(kDefault)) {
+    print(
+        'WARN: RUSTFLAGS will be `$argsOverride`, which does not contain the default one `$kDefault`');
+  }
+  return argsOverride;
 }
 
 Future<void> _executeWasmBindgen(BuildWebArgs args,
