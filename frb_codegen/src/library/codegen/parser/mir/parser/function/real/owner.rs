@@ -42,8 +42,12 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                     if let Some(ans) = parse_type_trait(trait_def_name, self.type_parser) {
                         Some(ans)
                     } else {
-                        // If cannot find the trait, we directly skip the function currently
-                        return Ok(IrValueOrSkip::Skip(IgnoreBecauseParseOwnerCannotFindTrait));
+                        if TODO {
+                            // If cannot find the trait, we directly skip the function currently
+                            return Ok(IrValueOrSkip::Skip(IgnoreBecauseParseOwnerCannotFindTrait));
+                        } else {
+                            None
+                        }
                     }
                 } else {
                     None
@@ -98,14 +102,16 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
         let actual_method_name = sig.ident.to_string();
 
-        Ok(IrValueOrSkip::Value(MirFuncOwnerInfo::Method(MirFuncOwnerInfoMethod {
-            owner_ty,
-            owner_ty_raw: owner_ty_raw.to_owned(),
-            actual_method_name,
-            actual_method_dart_name,
-            mode,
-            trait_def,
-        })))
+        Ok(IrValueOrSkip::Value(MirFuncOwnerInfo::Method(
+            MirFuncOwnerInfoMethod {
+                owner_ty,
+                owner_ty_raw: owner_ty_raw.to_owned(),
+                actual_method_name,
+                actual_method_dart_name,
+                mode,
+                trait_def,
+            },
+        )))
     }
 
     fn parse_method_owner_ty(
