@@ -222,5 +222,20 @@ mod tests {
                 name_filters: Some(vec!["x".to_owned(), "y".to_owned(), "z".to_owned()]),
             }],
         );
+
+        // https://github.com/fzyzcjy/flutter_rust_bridge/issues/2102#issuecomment-2179595124
+        body(
+            "pub use one::two::{x, u::{v, w}};",
+            vec![
+                PubUseInfo {
+                    namespace: Namespace::new_raw("one::two".to_owned()),
+                    name_filters: Some(vec!["x".to_owned()]),
+                },
+                PubUseInfo {
+                    namespace: Namespace::new_raw("one::two::u".to_owned()),
+                    name_filters: Some(vec!["v".to_owned(), "w".to_owned()]),
+                },
+            ],
+        );
     }
 }
