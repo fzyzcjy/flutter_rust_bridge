@@ -1,5 +1,7 @@
 use crate::codegen::ir::hir::misc::generation_source::HirGenerationSource;
-use crate::codegen::ir::hir::naive_flat::item::{HirNaiveFlatItem, HirNaiveFlatItemMeta, HirNaiveFlatItemVis};
+use crate::codegen::ir::hir::naive_flat::item::{
+    HirNaiveFlatItem, HirNaiveFlatItemMeta, HirNaiveFlatItemVis,
+};
 use crate::codegen::ir::hir::naive_flat::pack::HirNaiveFlatPack;
 use crate::codegen::misc::SELF_CRATE_THIRD_PARTY_NAMESPACE;
 use crate::utils::namespace::Namespace;
