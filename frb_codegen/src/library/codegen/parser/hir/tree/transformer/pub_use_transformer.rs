@@ -71,7 +71,10 @@ fn parse_pub_use_from_use_tree(
             &*inner.tree,
             concat([prefix_paths, vec![inner.ident.to_string()]]),
         ),
-        UseTree::Name(inner) => {}
+        UseTree::Name(inner) => Some(PubUseInfo {
+            namespace: Namespace::new(prefix_paths),
+            name_filters: Some(vec![inner.ident.to_string()]),
+        }),
         UseTree::Glob(inner) => {}
         UseTree::Group(inner) => {}
         // frb-coverage:ignore-start
