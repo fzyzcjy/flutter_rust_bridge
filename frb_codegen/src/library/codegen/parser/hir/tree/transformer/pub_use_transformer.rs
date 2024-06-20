@@ -41,7 +41,7 @@ fn parse_pub_use_from_item(item: &syn::Item) -> Option<PubUseInfo> {
     // frb-coverage:ignore-end
     if let syn::Item::Use(item_use) = item {
         if matches!(item_use.vis, syn::Visibility::Public(_)) {
-            return parse_pub_use_from_use_tree(&item_use.tree, vec![]);
+            return parse_pub_use_from_use_tree(&item_use.tree);
             // let tree_string = quote::quote!(#tree).to_string().replace(' ', "");
             // let tree_parts = tree_string.split(Namespace::SEP).collect_vec();
             // let name_filters = match *tree_parts.last().unwrap() {
@@ -62,21 +62,12 @@ fn parse_pub_use_from_item(item: &syn::Item) -> Option<PubUseInfo> {
     None
 }
 
-fn parse_pub_use_from_use_tree(
-    tree: &syn::UseTree,
-    prefix_paths: Vec<String>,
-) -> Option<PubUseInfo> {
+fn parse_pub_use_from_use_tree(tree: &UseTree) -> Option<PubUseInfo> {
     match tree {
-        UseTree::Path(inner) => parse_pub_use_from_use_tree(
-            &*inner.tree,
-            concat([prefix_paths, vec![inner.ident.to_string()]]),
-        ),
-        UseTree::Name(inner) => Some(PubUseInfo {
-            namespace: Namespace::new(prefix_paths),
-            name_filters: Some(vec![inner.ident.to_string()]),
-        }),
-        UseTree::Glob(inner) => {}
-        UseTree::Group(inner) => {}
+        UseTree::Path(inner) => parse_pub_use_from_use_tree(&*inner.tree).map(|inner_output| TODO),
+        UseTree::Name(inner) => TODO,
+        UseTree::Glob(inner) => TODO,
+        UseTree::Group(inner) => TODO,
         // frb-coverage:ignore-start
         UseTree::Rename(_) => None, // Not supported yet
                                     // frb-coverage:ignore-end
