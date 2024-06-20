@@ -23,7 +23,7 @@ pub struct MirPack {
     pub dart_code_of_type: HashMap<String, GeneralDartCode>,
     pub existing_handler: Option<NamespacedName>,
     pub unused_types: Vec<NamespacedName>,
-    pub skipped_functions: Vec<MirSkip>,
+    pub skips: Vec<MirSkip>,
     pub trait_impls: Vec<MirTraitImpl>,
     pub extra_rust_output_code: String,
 }

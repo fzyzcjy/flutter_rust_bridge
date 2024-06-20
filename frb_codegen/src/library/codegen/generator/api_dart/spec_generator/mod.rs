@@ -159,10 +159,10 @@ fn compute_skips(mir_pack: &MirPack, namespace: &Namespace) -> Vec<MirSkip> {
         })
         .collect_vec();
 
-    let skipped_functions = (mir_pack.skipped_functions.iter())
+    let skips = (mir_pack.skips.iter())
         .filter(|t| &t.name.namespace == namespace)
         .cloned()
         .collect_vec();
 
-    concat([unused_types, skipped_functions])
+    concat([unused_types, skips])
 }

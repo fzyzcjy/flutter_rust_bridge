@@ -76,7 +76,7 @@ pub(crate) fn parse(
         dart_code_of_type,
         existing_handler: hir_flat.existing_handler.clone(),
         unused_types: vec![],
-        skipped_functions,
+        skips: skipped_functions,
         trait_impls,
         extra_rust_output_code: hir_flat.extra_rust_output_code.clone(),
     };
