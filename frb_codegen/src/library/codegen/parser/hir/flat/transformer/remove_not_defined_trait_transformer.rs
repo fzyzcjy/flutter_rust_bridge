@@ -1,6 +1,7 @@
 use crate::codegen::ir::hir::flat::function::{HirFlatFunction, HirFlatFunctionOwner};
 use crate::codegen::ir::hir::flat::pack::HirFlatPack;
-use crate::codegen::ir::misc::skip::IrValueOrSkip;
+use crate::codegen::ir::misc::skip::{IrSkip, IrSkipReason, IrValueOrSkip};
+use crate::utils::namespace::NamespacedName;
 use itertools::Itertools;
 use std::collections::HashSet;
 
@@ -14,7 +15,10 @@ pub(crate) fn transform(mut pack: HirFlatPack) -> anyhow::Result<HirFlatPack> {
                 if should_retain(&f, &good_trait_names) {
                     IrValueOrSkip::Value(f)
                 } else {
-                    IrValueOrSkip::Skip(TODO)
+                    IrValueOrSkip::Skip(IrSkip {
+                        name: NamespacedName::new(f.namespace.clone(), f.item_fn.name()),
+                        reason: IrSkipReason::TODO,
+                    })
                 }
             })
             .collect_vec(),
