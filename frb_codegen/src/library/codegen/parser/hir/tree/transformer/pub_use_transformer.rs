@@ -221,17 +221,27 @@ mod tests {
             "pub use one::two::Three;",
             vec![PubUseInfo {
                 namespace: Namespace::new_raw("one::two".to_owned()),
-                name_filter: Some(vec!["Three".to_owned()]),
+                name_filter: Some("Three".to_owned()),
             }],
         );
 
         // https://github.com/fzyzcjy/flutter_rust_bridge/issues/2102#issuecomment-2179595124
         body(
             "pub use one::two::{x, y, z};",
-            vec![PubUseInfo {
-                namespace: Namespace::new_raw("one::two".to_owned()),
-                name_filter: Some(vec!["x".to_owned(), "y".to_owned(), "z".to_owned()]),
-            }],
+            vec![
+                PubUseInfo {
+                    namespace: Namespace::new_raw("one::two".to_owned()),
+                    name_filter: Some("x".to_owned()),
+                },
+                PubUseInfo {
+                    namespace: Namespace::new_raw("one::two".to_owned()),
+                    name_filter: Some("y".to_owned()),
+                },
+                PubUseInfo {
+                    namespace: Namespace::new_raw("one::two".to_owned()),
+                    name_filter: Some("z".to_owned()),
+                },
+            ],
         );
 
         // https://github.com/fzyzcjy/flutter_rust_bridge/issues/2102#issuecomment-2179595124
@@ -240,11 +250,15 @@ mod tests {
             vec![
                 PubUseInfo {
                     namespace: Namespace::new_raw("one::two".to_owned()),
-                    name_filter: Some(vec!["x".to_owned()]),
+                    name_filter: Some("x".to_owned()),
                 },
                 PubUseInfo {
                     namespace: Namespace::new_raw("one::two::u".to_owned()),
-                    name_filter: Some(vec!["v".to_owned(), "w".to_owned()]),
+                    name_filter: Some("v".to_owned()),
+                },
+                PubUseInfo {
+                    namespace: Namespace::new_raw("one::two::u".to_owned()),
+                    name_filter: Some("w".to_owned()),
                 },
             ],
         );
