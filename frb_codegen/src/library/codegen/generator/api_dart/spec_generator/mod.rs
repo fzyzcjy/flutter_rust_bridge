@@ -10,7 +10,7 @@ use crate::codegen::generator::api_dart::spec_generator::misc::generate_imports_
 use crate::codegen::generator::api_dart::spec_generator::sanity_checker::sanity_check_class_name_duplicates;
 use crate::codegen::ir::mir::func::{MirFunc, MirFuncOwnerInfo};
 use crate::codegen::ir::mir::pack::{MirPack, MirPackComputedCache};
-use crate::codegen::ir::mir::skip::{MirSkip, MirSkipReason};
+use crate::codegen::ir::mir::skip::{IrSkip, IrSkipReason};
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::ConfigDumpContent;
 use crate::library::codegen::generator::api_dart::spec_generator::class::ty::ApiDartGeneratorClassTrait;
@@ -43,7 +43,7 @@ pub(crate) struct ApiDartOutputSpecItem {
     pub extra_impl_code: Vec<String>,
     pub imports: DartHeaderCode,
     pub preamble: String,
-    pub skips: Vec<MirSkip>,
+    pub skips: Vec<IrSkip>,
     pub needs_freezed: bool,
 }
 
@@ -150,7 +150,7 @@ fn generate_item(
     })
 }
 
-fn compute_skips(mir_pack: &MirPack, namespace: &Namespace) -> Vec<MirSkip> {
+fn compute_skips(mir_pack: &MirPack, namespace: &Namespace) -> Vec<IrSkip> {
     (mir_pack.skips.iter())
         .filter(|t| &t.name.namespace == namespace)
         .sorted_by_cached_key(|x| x.name.clone())

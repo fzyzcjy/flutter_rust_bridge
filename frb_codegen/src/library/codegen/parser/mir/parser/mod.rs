@@ -10,7 +10,7 @@ pub(crate) mod ty;
 use crate::codegen::ir::early_generator::pack::IrEarlyGeneratorPack;
 use crate::codegen::ir::hir::flat::struct_or_enum::{HirFlatEnum, HirFlatStruct};
 use crate::codegen::ir::mir::pack::MirPack;
-use crate::codegen::ir::mir::skip::{MirSkip, MirSkipReason};
+use crate::codegen::ir::mir::skip::{IrSkip, IrSkipReason};
 use crate::codegen::parser::mir::internal_config::{
     ParserMirInternalConfig, RustInputNamespacePack,
 };
@@ -104,14 +104,14 @@ fn compute_skips(
     structs_map: HashMap<String, &HirFlatStruct>,
     enums_map: HashMap<String, &HirFlatEnum>,
     rust_input_namespace_pack: &RustInputNamespacePack,
-    funcs_skip: Vec<MirSkip>,
-) -> anyhow::Result<Vec<MirSkip>> {
+    funcs_skip: Vec<IrSkip>,
+) -> anyhow::Result<Vec<IrSkip>> {
     let unused_types =
         get_unused_types(&pack, &structs_map, &enums_map, rust_input_namespace_pack)?;
     let unused_types_skip = (unused_types.into_iter())
-        .map(|name| MirSkip {
+        .map(|name| IrSkip {
             name: name.clone(),
-            reason: MirSkipReason::IgnoreBecauseTypeNotUsedByPub,
+            reason: IrSkipReason::IgnoreBecauseTypeNotUsedByPub,
         })
         .collect_vec();
 

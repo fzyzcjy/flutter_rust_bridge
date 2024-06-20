@@ -5,11 +5,11 @@ use crate::codegen::ir::mir::func::{
     MirFunc, MirFuncArgMode, MirFuncImplMode, MirFuncImplModeDartOnly, MirFuncInput, MirFuncMode,
     MirFuncOutput, MirFuncOwnerInfo, MirFuncOwnerInfoMethod,
 };
-use crate::codegen::ir::mir::skip::MirSkipReason::{
+use crate::codegen::ir::mir::skip::IrSkipReason::{
     IgnoreBecauseExplicitAttribute, IgnoreBecauseFunctionGeneric, IgnoreBecauseSelfTypeNotAllowed,
     IgnoreSilently,
 };
-use crate::codegen::ir::mir::skip::{MirSkip, MirSkipReason};
+use crate::codegen::ir::mir::skip::{IrSkip, IrSkipReason};
 use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
 use crate::codegen::ir::mir::ty::rust_auto_opaque_implicit::MirTypeRustAutoOpaqueImplicitReason;
@@ -31,7 +31,7 @@ use anyhow::{bail, Context};
 use itertools::concat;
 use log::{debug, warn};
 use std::fmt::Debug;
-use MirSkipReason::IgnoreBecauseFunctionNotPub;
+use IrSkipReason::IgnoreBecauseFunctionNotPub;
 use MirType::Primitive;
 
 pub(crate) mod argument;
@@ -114,7 +114,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                         func.item_fn.name(),
                         err
                     );
-                    Ok(create_output_skip(func, MirSkipReason::Err))
+                    Ok(create_output_skip(func, IrSkipReason::Err))
                 }
                 // frb-coverage:ignore-end
             }
@@ -273,8 +273,8 @@ fn should_forbid_type_self_for_inputs(owner: &MirFuncOwnerInfo) -> bool {
     false
 }
 
-fn create_output_skip(func: &HirFlatFunction, reason: MirSkipReason) -> MirFuncOrSkip {
-    MirFuncOrSkip::Skip(MirSkip {
+fn create_output_skip(func: &HirFlatFunction, reason: IrSkipReason) -> MirFuncOrSkip {
+    MirFuncOrSkip::Skip(IrSkip {
         name: NamespacedName::new(func.namespace.clone(), func.item_fn.name().to_string()),
         reason,
     })
@@ -309,7 +309,7 @@ struct FunctionPartialInfo {
     ok_output: Option<MirType>,
     error_output: Option<MirType>,
     mode: Option<MirFuncMode>,
-    ignore_func: Option<MirSkipReason>,
+    ignore_func: Option<IrSkipReason>,
 }
 
 impl FunctionPartialInfo {
