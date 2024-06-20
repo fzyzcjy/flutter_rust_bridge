@@ -151,18 +151,9 @@ fn generate_item(
 }
 
 fn compute_skips(mir_pack: &MirPack, namespace: &Namespace) -> Vec<MirSkip> {
-    let unused_types = (mir_pack.unused_types.iter())
-        .filter(|t| &t.namespace == namespace)
-        .map(|name| MirSkip {
-            name: name.clone(),
-            reason: MirSkipReason::IgnoreBecauseTypeNotUsedByPub,
-        })
-        .collect_vec();
-
-    let skips = (mir_pack.skips.iter())
+    (mir_pack.skips.iter())
         .filter(|t| &t.name.namespace == namespace)
+        .sorted_by_cached_key(|x| x.name.clone())
         .cloned()
-        .collect_vec();
-
-    concat([unused_types, skips])
+        .collect_vec()
 }

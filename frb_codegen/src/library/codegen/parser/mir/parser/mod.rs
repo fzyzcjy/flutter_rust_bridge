@@ -10,7 +10,7 @@ pub(crate) mod ty;
 use crate::codegen::ir::early_generator::pack::IrEarlyGeneratorPack;
 use crate::codegen::ir::hir::flat::struct_or_enum::{HirFlatEnum, HirFlatStruct};
 use crate::codegen::ir::mir::pack::MirPack;
-use crate::codegen::ir::mir::skip::MirSkip;
+use crate::codegen::ir::mir::skip::{MirSkip, MirSkipReason};
 use crate::codegen::parser::mir::internal_config::{
     ParserMirInternalConfig, RustInputNamespacePack,
 };
@@ -18,6 +18,7 @@ use crate::codegen::parser::mir::parser::ty::TypeParser;
 use crate::codegen::parser::mir::sanity_checker::opaque_inside_translatable_checker::check_opaque_inside_translatable;
 use crate::codegen::parser::mir::sanity_checker::unused_checker::get_unused_types;
 use crate::codegen::parser::mir::ParseMode;
+use itertools::{concat, Itertools};
 use std::collections::HashMap;
 
 pub(crate) fn parse(
@@ -64,7 +65,7 @@ pub(crate) fn parse(
         .custom_ser_des_infos
         .extend(custom_ser_des_infos);
 
-    let (funcs_all, skipped_functions) = function::parse(
+    let (funcs_all, funcs_skip) = function::parse(
         config,
         &hir_flat.functions,
         &mut type_parser,
@@ -90,6 +91,7 @@ pub(crate) fn parse(
         structs_map,
         enums_map,
         &config.rust_input_namespace_pack,
+        funcs_skip,
     )?;
 
     check_opaque_inside_translatable(&ans);
@@ -102,11 +104,18 @@ fn compute_skips(
     structs_map: HashMap<String, &HirFlatStruct>,
     enums_map: HashMap<String, &HirFlatEnum>,
     rust_input_namespace_pack: &RustInputNamespacePack,
+    funcs_skip: Vec<MirSkip>,
 ) -> anyhow::Result<Vec<MirSkip>> {
     let unused_types =
         get_unused_types(&pack, &structs_map, &enums_map, rust_input_namespace_pack)?;
+    let unused_types_skip = (unused_types.into_iter())
+        .map(|name| MirSkip {
+            name: name.clone(),
+            reason: MirSkipReason::IgnoreBecauseTypeNotUsedByPub,
+        })
+        .collect_vec();
 
-    Ok(TODO)
+    Ok(concat([unused_types_skip, funcs_skip]))
 }
 
 // TODO rm
