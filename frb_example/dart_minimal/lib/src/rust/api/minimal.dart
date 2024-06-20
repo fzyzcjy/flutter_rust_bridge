@@ -11,7 +11,10 @@ Future<int> minimalAdder({required int a, required int b}) =>
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyStructWithTryFromTwinNormal>>
 abstract class MyStructWithTryFromTwinNormal implements RustOpaqueInterface {
-  static MyStructWithTryFromTwinNormal tryFrom({required String value}) =>
+  static Future<MyStructWithTryFromTwinNormal> tryFrom(
+          {required String value}) =>
       RustLib.instance.api
           .crateApiMinimalMyStructWithTryFromTwinNormalTryFrom(value: value);
+
+  Future<String> valueTwinNormal();
 }

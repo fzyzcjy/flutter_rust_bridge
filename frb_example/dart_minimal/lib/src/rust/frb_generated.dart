@@ -58,7 +58,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.0.0-dev.41';
 
   @override
-  int get rustContentHash => -1475620998;
+  int get rustContentHash => -1831128524;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -69,9 +69,12 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 }
 
 abstract class RustLibApi extends BaseApi {
-  MyStructWithTryFromTwinNormal
+  Future<MyStructWithTryFromTwinNormal>
       crateApiMinimalMyStructWithTryFromTwinNormalTryFrom(
           {required String value});
+
+  Future<String> crateApiMinimalMyStructWithTryFromTwinNormalValueTwinNormal(
+      {required MyStructWithTryFromTwinNormal that});
 
   Future<void> crateApiMinimalInitApp();
 
@@ -96,14 +99,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   });
 
   @override
-  MyStructWithTryFromTwinNormal
+  Future<MyStructWithTryFromTwinNormal>
       crateApiMinimalMyStructWithTryFromTwinNormalTryFrom(
           {required String value}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_String(value, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1)!;
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 1, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -124,12 +128,41 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
+  Future<String> crateApiMinimalMyStructWithTryFromTwinNormalValueTwinNormal(
+      {required MyStructWithTryFromTwinNormal that}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStructWithTryFromTwinNormal(
+            that, serializer);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 2, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_String,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiMinimalMyStructWithTryFromTwinNormalValueTwinNormalConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiMinimalMyStructWithTryFromTwinNormalValueTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName: "MyStructWithTryFromTwinNormal_value_twin_normal",
+            argNames: ["that"],
+          );
+
+  @override
   Future<void> crateApiMinimalInitApp() {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 2, port: port_);
+            funcId: 3, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -154,7 +187,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_i_32(a, serializer);
         sse_encode_i_32(b, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 3, port: port_);
+            funcId: 4, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_i_32,
@@ -189,6 +222,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   MyStructWithTryFromTwinNormal
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStructWithTryFromTwinNormal(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return MyStructWithTryFromTwinNormalImpl.frbInternalDcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  MyStructWithTryFromTwinNormal
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStructWithTryFromTwinNormal(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return MyStructWithTryFromTwinNormalImpl.frbInternalDcoDecode(
@@ -250,6 +292,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   MyStructWithTryFromTwinNormal
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStructWithTryFromTwinNormal(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return MyStructWithTryFromTwinNormalImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  MyStructWithTryFromTwinNormal
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStructWithTryFromTwinNormal(
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return MyStructWithTryFromTwinNormalImpl.frbInternalSseDecode(
@@ -328,6 +379,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStructWithTryFromTwinNormal(
+          MyStructWithTryFromTwinNormal self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as MyStructWithTryFromTwinNormalImpl)
+            .frbInternalSseEncode(move: false),
+        serializer);
+  }
+
+  @protected
+  void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStructWithTryFromTwinNormal(
           MyStructWithTryFromTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -401,4 +463,9 @@ class MyStructWithTryFromTwinNormalImpl extends RustOpaque
     rustArcDecrementStrongCountPtr: RustLib.instance.api
         .rust_arc_decrement_strong_count_MyStructWithTryFromTwinNormalPtr,
   );
+
+  Future<String> valueTwinNormal() => RustLib.instance.api
+          .crateApiMinimalMyStructWithTryFromTwinNormalValueTwinNormal(
+        that: this,
+      );
 }
