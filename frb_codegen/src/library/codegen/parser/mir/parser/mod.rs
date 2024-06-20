@@ -8,12 +8,17 @@ pub(crate) mod trait_impl;
 pub(crate) mod ty;
 
 use crate::codegen::ir::early_generator::pack::IrEarlyGeneratorPack;
+use crate::codegen::ir::hir::flat::struct_or_enum::{HirFlatEnum, HirFlatStruct};
 use crate::codegen::ir::mir::pack::MirPack;
-use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
+use crate::codegen::ir::mir::skip::MirSkip;
+use crate::codegen::parser::mir::internal_config::{
+    ParserMirInternalConfig, RustInputNamespacePack,
+};
 use crate::codegen::parser::mir::parser::ty::TypeParser;
 use crate::codegen::parser::mir::sanity_checker::opaque_inside_translatable_checker::check_opaque_inside_translatable;
 use crate::codegen::parser::mir::sanity_checker::unused_checker::get_unused_types;
 use crate::codegen::parser::mir::ParseMode;
+use std::collections::HashMap;
 
 pub(crate) fn parse(
     config: &ParserMirInternalConfig,
@@ -75,22 +80,33 @@ pub(crate) fn parse(
         enum_pool,
         dart_code_of_type,
         existing_handler: hir_flat.existing_handler.clone(),
-        unused_types: vec![],
-        skips: skipped_functions,
+        skips: vec![],
         trait_impls,
         extra_rust_output_code: hir_flat.extra_rust_output_code.clone(),
     };
 
-    ans.unused_types = get_unused_types(
+    ans.skips = compute_skips(
         &ans,
-        &structs_map,
-        &enums_map,
+        structs_map,
+        enums_map,
         &config.rust_input_namespace_pack,
     )?;
 
     check_opaque_inside_translatable(&ans);
 
     Ok(ans)
+}
+
+fn compute_skips(
+    pack: &MirPack,
+    structs_map: HashMap<String, &HirFlatStruct>,
+    enums_map: HashMap<String, &HirFlatEnum>,
+    rust_input_namespace_pack: &RustInputNamespacePack,
+) -> anyhow::Result<Vec<MirSkip>> {
+    let unused_types =
+        get_unused_types(&pack, &structs_map, &enums_map, rust_input_namespace_pack)?;
+
+    Ok(TODO)
 }
 
 // TODO rm
