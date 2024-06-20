@@ -5,6 +5,7 @@ use crate::codegen::ir::hir::flat::struct_or_enum::HirFlatStruct;
 use crate::codegen::ir::mir::func::{MirFunc, MirFuncAccessorMode, OwnershipMode};
 use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::ir::mir::ty::{MirContext, MirType};
+use crate::codegen::ir::misc::skip::{IrValueOrSkip, MirFuncOrSkip};
 use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
 use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
 use crate::codegen::parser::mir::parser::misc::extract_src_types_in_paths;
@@ -20,7 +21,6 @@ use crate::utils::namespace::{Namespace, NamespacedName};
 use field::parse_auto_accessor_of_field;
 use itertools::Itertools;
 use std::collections::HashMap;
-use crate::codegen::ir::misc::skip::{IrValueOrSkip, MirFuncOrSkip};
 
 pub(crate) fn parse(
     config: &ParserMirInternalConfig,
