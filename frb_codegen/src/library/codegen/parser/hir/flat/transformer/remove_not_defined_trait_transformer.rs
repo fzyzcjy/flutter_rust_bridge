@@ -1,6 +1,7 @@
 use crate::codegen::ir::hir::flat::function::{HirFlatFunction, HirFlatFunctionOwner};
 use crate::codegen::ir::hir::flat::pack::HirFlatPack;
 use crate::codegen::ir::misc::skip::{IrSkip, IrSkipReason, IrValueOrSkip};
+use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
 use crate::utils::namespace::NamespacedName;
 use itertools::Itertools;
 use std::collections::HashSet;
@@ -35,8 +36,14 @@ fn should_retain(f: &HirFlatFunction, good_trait_names: &HashSet<String>) -> boo
         ..
     } = &f.owner
     {
-        good_trait_names.contains(trait_def_name) || TODO
+        good_trait_names.contains(trait_def_name) || has_frb_attributes(f)
     } else {
         true
     }
+}
+
+// https://github.com/fzyzcjy/flutter_rust_bridge/issues/2103#issuecomment-2178061684
+fn has_frb_attributes(f: &HirFlatFunction) -> bool {
+    let attrs = FrbAttributes::parse(f.item_fn.attrs()).unwrap();
+    attrs.len() > 0
 }

@@ -58,6 +58,10 @@ impl FrbAttributes {
         candidates.last().map(|item| item.to_mir_default_value())
     }
 
+    pub(crate) fn len(&self) -> usize {
+        self.0.len()
+    }
+
     pub(crate) fn non_final(&self) -> bool {
         self.any_eq(&FrbAttribute::NonFinal)
     }
@@ -691,14 +695,14 @@ mod tests {
     #[test]
     fn test_empty() -> anyhow::Result<()> {
         let parsed = parse("#[frb]")?;
-        assert_eq!(parsed.0, vec![]);
+        assert_eq!(parsed.0, vec![FrbAttribute::Noop]);
         Ok(())
     }
 
     #[test]
     fn test_empty_bracket() -> anyhow::Result<()> {
         let parsed = parse("#[frb()]")?;
-        assert_eq!(parsed.0, vec![]);
+        assert_eq!(parsed.0, vec![FrbAttribute::Noop]);
         Ok(())
     }
 
