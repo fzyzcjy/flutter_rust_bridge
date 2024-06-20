@@ -22,7 +22,6 @@ pub struct MirPack {
     pub enum_pool: MirEnumPool,
     pub dart_code_of_type: HashMap<String, GeneralDartCode>,
     pub existing_handler: Option<NamespacedName>,
-    pub unused_types: Vec<NamespacedName>,
     pub skips: Vec<MirSkip>,
     pub trait_impls: Vec<MirTraitImpl>,
     pub extra_rust_output_code: String,
