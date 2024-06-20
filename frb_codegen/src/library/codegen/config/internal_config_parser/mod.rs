@@ -50,7 +50,7 @@ impl InternalConfig {
             &config.rust_output,
         )?;
 
-        let dart_output_dir = canonicalize_with_error_message(&base_dir.join(&dart_output))?;
+        let dart_output_dir = canonicalize_with_error_message(&base_dir.join(dart_output))?;
         let dart_output_path_pack =
             dart_path_parser::compute_dart_output_path_pack(&dart_output_dir)?;
 

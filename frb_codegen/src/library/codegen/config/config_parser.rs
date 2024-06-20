@@ -1,6 +1,6 @@
 use crate::codegen::config::config::Config;
 use crate::utils::path_utils::path_to_string;
-use anyhow::{bail, Context, Error};
+use anyhow::{Context, Error};
 use log::debug;
 use std::fs;
 use std::path::PathBuf;

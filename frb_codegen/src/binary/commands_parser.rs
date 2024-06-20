@@ -1,7 +1,6 @@
 use crate::binary::commands::{GenerateCommandArgs, GenerateCommandArgsPrimary};
-use anyhow::{ensure, Context, Result};
+use anyhow::{Context, Result};
 use lib_flutter_rust_bridge_codegen::codegen::{Config, MetaConfig};
-use log::debug;
 
 pub(crate) fn compute_codegen_config(args: GenerateCommandArgsPrimary) -> Result<Config> {
     let config_from_file = if let Some(config_file) = &args.config_file {
@@ -12,7 +11,7 @@ pub(crate) fn compute_codegen_config(args: GenerateCommandArgsPrimary) -> Result
 
     let config_from_args = compute_codegen_config_from_naive_command_args(args);
 
-    return Ok(Config::merge(config_from_args, config_from_file));
+    Ok(Config::merge(config_from_args, config_from_file))
 }
 
 pub(crate) fn compute_codegen_meta_config(args: &GenerateCommandArgs) -> MetaConfig {
@@ -21,12 +20,12 @@ pub(crate) fn compute_codegen_meta_config(args: &GenerateCommandArgs) -> MetaCon
 
 fn compute_codegen_config_from_naive_command_args(args: GenerateCommandArgsPrimary) -> Config {
     fn positive_bool_arg(x: bool) -> Option<bool> {
-        x.then(|| true)
+        x.then_some(true)
     }
 
     // arg like "no_something"
     fn negative_bool_arg(x: bool) -> Option<bool> {
-        x.then(|| false)
+        x.then_some(false)
     }
 
     Config {
