@@ -25,14 +25,14 @@ impl FrbAttributes {
                 .map(transform_doc_comment)
                 .collect::<anyhow::Result<Vec<_>>>()?
                 .into_iter()
-                .filter(|attr| {
-                    attr.path().segments.last().unwrap().ident == METADATA_IDENT
-                        // exclude the `#[frb]` case
-                        && !matches!(attr.meta, Meta::Path(_))
-                })
+                .filter(|attr| attr.path().segments.last().unwrap().ident == METADATA_IDENT)
                 .map(|attr| {
-                    attr.parse_args::<FrbAttributesInner>()
-                        .with_context(|| format!("attr={:?}", quote::quote!(#attr).to_string()))
+                    if matches!(attr.meta, Meta::Path(_)) {
+                        Ok(FrbAttributesInner(vec![FrbAttribute::Noop]))
+                    } else {
+                        attr.parse_args::<FrbAttributesInner>()
+                            .with_context(|| format!("attr={:?}", quote::quote!(#attr).to_string()))
+                    }
                 })
                 .collect::<anyhow::Result<Vec<_>>>()?
                 .into_iter()
