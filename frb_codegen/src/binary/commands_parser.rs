@@ -196,6 +196,20 @@ mod tests {
         );
     }
 
+    #[test]
+    #[serial]
+    fn test_compute_codegen_config_from_both_file_and_command_line() -> anyhow::Result<()> {
+        configure_opinionated_test_logging();
+        set_cwd_test_fixture("binary/commands_parser/flutter_rust_bridge_yaml")?;
+
+        let config = run_command_line(vec!["", "generate", "--llvm-path", "/my/path"])?;
+        assert_eq!(config.rust_input, "crate::hello".to_string());
+        assert!(!config.dart3.unwrap());
+        assert!(config.llvm_path, Some(vec!["/my/path"]));
+
+        Ok(())
+    }
+
     fn run_command_line(args: Vec<&'static str>) -> anyhow::Result<codegen::Config> {
         let cli = Cli::parse_from(args);
         let args = if_then_some!(let Commands::Generate(args) = cli.command, args).unwrap();
