@@ -27,9 +27,16 @@ pub(crate) fn compute_codegen_meta_config(args: &GenerateCommandArgs) -> MetaCon
     MetaConfig { watch: args.watch }
 }
 
-fn compute_codegen_config_from_naive_command_args(
-    args: GenerateCommandArgsPrimary,
-) -> Config {
+fn compute_codegen_config_from_naive_command_args(args: GenerateCommandArgsPrimary) -> Config {
+    fn positive_bool_arg(x: bool) -> Option<bool> {
+        x.then(|| true)
+    }
+
+    // arg like "no_something"
+    fn negative_bool_arg(x: bool) -> Option<bool> {
+        x.then(|| false)
+    }
+
     Config {
         base_dir: None,
         rust_input: args.rust_input,
@@ -42,25 +49,25 @@ fn compute_codegen_config_from_naive_command_args(
         dart_format_line_length: args.dart_format_line_length,
         dart_preamble: args.dart_preamble,
         rust_preamble: args.rust_preamble,
-        dart_enums_style: Some(!args.no_dart_enums_style),
-        add_mod_to_lib: Some(!args.no_add_mod_to_lib),
+        dart_enums_style: negative_bool_arg(args.no_dart_enums_style),
+        add_mod_to_lib: negative_bool_arg(args.no_add_mod_to_lib),
         llvm_path: args.llvm_path,
         llvm_compiler_opts: args.llvm_compiler_opts,
         dart_root: args.dart_root,
-        build_runner: Some(!args.no_build_runner),
+        build_runner: negative_bool_arg(args.no_build_runner),
         extra_headers: args.extra_headers,
-        web: Some(!args.no_web),
-        deps_check: Some(!args.no_deps_check),
-        dart3: Some(!args.no_dart3),
-        full_dep: Some(args.full_dep),
-        local: Some(args.local),
+        web: negative_bool_arg(args.no_web),
+        deps_check: negative_bool_arg(args.no_deps_check),
+        dart3: negative_bool_arg(args.no_dart3),
+        full_dep: positive_bool_arg(args.full_dep),
+        local: positive_bool_arg(args.local),
         default_external_library_loader_web_prefix: args.default_external_library_loader_web_prefix,
         dart_type_rename: None, // complex type, not supported on command line yet
-        enable_lifetime: Some(args.enable_lifetime),
-        type_64bit_int: Some(args.type_64bit_int),
-        stop_on_error: Some(args.stop_on_error),
+        enable_lifetime: positive_bool_arg(args.enable_lifetime),
+        type_64bit_int: positive_bool_arg(args.type_64bit_int),
+        stop_on_error: positive_bool_arg(args.stop_on_error),
         dump: args.dump,
-        dump_all: Some(args.dump_all),
+        dump_all: positive_bool_arg(args.dump_all),
     }
 }
 
