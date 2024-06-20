@@ -86,14 +86,16 @@ pub(crate) fn parse(
         extra_rust_output_code: hir_flat.extra_rust_output_code.clone(),
     };
 
-    ans.skips = compute_skips(
-        &ans,
-        ir_pack,
-        structs_map,
-        enums_map,
-        &config.rust_input_namespace_pack,
-        funcs_skip,
-    )?;
+    if parse_mode != ParseMode::Early {
+        ans.skips = compute_skips(
+            &ans,
+            ir_pack,
+            structs_map,
+            enums_map,
+            &config.rust_input_namespace_pack,
+            funcs_skip,
+        )?;
+    }
 
     check_opaque_inside_translatable(&ans);
 
