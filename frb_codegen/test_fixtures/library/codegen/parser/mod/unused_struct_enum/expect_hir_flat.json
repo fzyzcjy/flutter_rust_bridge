@@ -12,6 +12,7 @@
   "existing_handler": null,
   "extra_rust_output_code": "",
   "functions": [],
+  "skips": [],
   "structs": [
     {
       "mirror": false,
