@@ -2,24 +2,7 @@
   "enums": [],
   "existing_handler": null,
   "extra_rust_output_code": "",
-  "functions": [
-    {
-      "item_fn": "GeneralizedItemFn(name=func_1, vis=Some(Visibility::Public(Pub)), attrs=[])",
-      "namespace": "crate::api",
-      "owner": "Function",
-      "sources": [
-        "Normal"
-      ]
-    },
-    {
-      "item_fn": "GeneralizedItemFn(name=func_anyhow_result, vis=Some(Visibility::Public(Pub)), attrs=[])",
-      "namespace": "crate::api",
-      "owner": "Function",
-      "sources": [
-        "Normal"
-      ]
-    }
-  ],
+  "functions": [],
   "skips": [],
   "structs": [],
   "trait_impls": [],

@@ -4,47 +4,7 @@
   "existing_handler": null,
   "extra_rust_output_code": "",
   "funcs_all": [],
-  "skips": [
-    {
-      "name": "crate::api/UnusedStruct",
-      "reason": "IgnoreBecauseTypeNotUsedByPub"
-    },
-    {
-      "name": "crate::api/UnusedEnum",
-      "reason": "IgnoreBecauseTypeNotUsedByPub"
-    }
-  ],
-  "struct_pool": {
-    "crate::api/UnusedStruct": {
-      "comments": [],
-      "dart_metadata": [],
-      "fields": [
-        {
-          "comments": [],
-          "default": null,
-          "is_final": true,
-          "is_rust_public": false,
-          "name": {
-            "dart_style": null,
-            "rust_style": "a"
-          },
-          "settings": {
-            "is_in_mirrored_enum": false
-          },
-          "ty": {
-            "data": "String",
-            "safe_ident": "String",
-            "type": "Delegate"
-          }
-        }
-      ],
-      "generate_eq": true,
-      "generate_hash": true,
-      "ignore": false,
-      "is_fields_named": true,
-      "name": "crate::api/UnusedStruct",
-      "wrapper_name": null
-    }
-  },
+  "skips": [],
+  "struct_pool": {},
   "trait_impls": []
 }

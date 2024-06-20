@@ -3,36 +3,7 @@
   "enum_pool": {},
   "existing_handler": null,
   "extra_rust_output_code": "",
-  "funcs_all": [
-    {
-      "accessor": null,
-      "arg_mode": "Named",
-      "codec_mode_pack": {
-        "dart2rust": "Cst",
-        "rust2dart": "Dco"
-      },
-      "comments": [],
-      "dart_name": null,
-      "id": 1,
-      "impl_mode": "Normal",
-      "initializer": false,
-      "inputs": [],
-      "mode": "Normal",
-      "name": "crate::api/first_function",
-      "output": {
-        "error": null,
-        "normal": {
-          "data": "Unit",
-          "safe_ident": "unit",
-          "type": "Primitive"
-        }
-      },
-      "owner": "Function",
-      "rust_async": false,
-      "rust_call_code": null,
-      "stream_dart_await": false
-    }
-  ],
+  "funcs_all": [],
   "skips": [],
   "struct_pool": {},
   "trait_impls": []

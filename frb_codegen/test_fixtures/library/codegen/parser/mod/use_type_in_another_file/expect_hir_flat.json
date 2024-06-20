@@ -1,37 +1,10 @@
 {
-  "enums": [
-    {
-      "mirror": false,
-      "name": "crate::another_file/EnumInAnotherFile",
-      "sources": [
-        "Normal"
-      ],
-      "visibility": "Public"
-    }
-  ],
+  "enums": [],
   "existing_handler": null,
   "extra_rust_output_code": "",
-  "functions": [
-    {
-      "item_fn": "GeneralizedItemFn(name=func_one, vis=Some(Visibility::Public(Pub)), attrs=[])",
-      "namespace": "crate::api",
-      "owner": "Function",
-      "sources": [
-        "Normal"
-      ]
-    }
-  ],
+  "functions": [],
   "skips": [],
-  "structs": [
-    {
-      "mirror": false,
-      "name": "crate::another_file/StructInAnotherFile",
-      "sources": [
-        "Normal"
-      ],
-      "visibility": "Public"
-    }
-  ],
+  "structs": [],
   "trait_impls": [],
   "traits": [],
   "types": []
