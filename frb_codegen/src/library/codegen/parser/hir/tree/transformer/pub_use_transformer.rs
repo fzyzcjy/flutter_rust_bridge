@@ -2,6 +2,7 @@ use crate::codegen::ir::hir::tree::module::HirTreeModule;
 use crate::codegen::ir::hir::tree::pack::HirTreePack;
 use crate::utils::namespace::Namespace;
 use itertools::Itertools;
+use syn::UseTree;
 
 pub(crate) fn transform(mut pack: HirTreePack) -> anyhow::Result<HirTreePack> {
     for hir_crate in pack.crates.iter_mut() {
@@ -40,7 +41,7 @@ fn parse_pub_use_from_item(item: &syn::Item) -> Option<PubUseInfo> {
     // frb-coverage:ignore-end
     if let syn::Item::Use(item_use) = item {
         if matches!(item_use.vis, syn::Visibility::Public(_)) {
-            return Some(parse_pub_use_from_use_tree(&item_use.tree));
+            return parse_pub_use_from_use_tree(&item_use.tree);
             // let tree_string = quote::quote!(#tree).to_string().replace(' ', "");
             // let tree_parts = tree_string.split(Namespace::SEP).collect_vec();
             // let name_filters = match *tree_parts.last().unwrap() {
@@ -61,8 +62,16 @@ fn parse_pub_use_from_item(item: &syn::Item) -> Option<PubUseInfo> {
     None
 }
 
-fn parse_pub_use_from_use_tree(tree: &syn::UseTree) -> PubUseInfo {
-    TODO
+fn parse_pub_use_from_use_tree(tree: &syn::UseTree) -> Option<PubUseInfo> {
+    match tree {
+        UseTree::Path(_) => {}
+        UseTree::Name(_) => {}
+        UseTree::Glob(_) => {}
+        UseTree::Group(_) => {}
+        // frb-coverage:ignore-start
+        UseTree::Rename(_) => None, // Not supported yet
+        // frb-coverage:ignore-end
+    }
 }
 
 #[derive(Debug, Clone, Eq, PartialEq)]
