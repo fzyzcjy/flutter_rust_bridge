@@ -32,8 +32,13 @@ impl InternalConfig {
             .unwrap_or(std::env::current_dir()?);
         debug!("InternalConfig.parse base_dir={base_dir:?}");
 
+        let rust_input = (config.rust_input.clone())
+            .expect("Please provide `rust_input` (via config file or command line)");
+        let dart_output = (config.dart_output.clone())
+            .expect("Please provide `dart_output` (via config file or command line)");
+
         let migrated_rust_input =
-            rust_path_migrator::migrate_rust_input_config(&config.rust_root, &config.rust_input)?;
+            rust_path_migrator::migrate_rust_input_config(&config.rust_root, &rust_input)?;
         let RustInputInfo {
             rust_crate_dir,
             third_party_crate_names,
@@ -45,7 +50,7 @@ impl InternalConfig {
             &config.rust_output,
         )?;
 
-        let dart_output_dir = canonicalize_with_error_message(&base_dir.join(&config.dart_output))?;
+        let dart_output_dir = canonicalize_with_error_message(&base_dir.join(&dart_output))?;
         let dart_output_path_pack =
             dart_path_parser::compute_dart_output_path_pack(&dart_output_dir)?;
 
