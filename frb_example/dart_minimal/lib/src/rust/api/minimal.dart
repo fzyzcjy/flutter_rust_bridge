@@ -6,8 +6,12 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// These types are ignored because they are not used by any `pub` functions: `MyStructWithTryFromTwinNormal`
-// These function are ignored because cannot find trait when parsing owner (put an empty `#[frb]` on it to unignore): `try_from`
-
 Future<int> minimalAdder({required int a, required int b}) =>
     RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b);
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyStructWithTryFromTwinNormal>>
+abstract class MyStructWithTryFromTwinNormal implements RustOpaqueInterface {
+  static MyStructWithTryFromTwinNormal tryFrom({required String value}) =>
+      RustLib.instance.api
+          .crateApiMinimalMyStructWithTryFromTwinNormalTryFrom(value: value);
+}
