@@ -205,7 +205,7 @@ mod tests {
         let config = run_command_line(vec!["", "generate", "--llvm-path", "/my/path"])?;
         assert_eq!(config.rust_input, "crate::hello".to_string());
         assert!(!config.dart3.unwrap());
-        assert!(config.llvm_path, Some(vec!["/my/path"]));
+        assert_eq!(config.llvm_path, Some(vec!["/my/path".to_owned()]));
 
         Ok(())
     }
