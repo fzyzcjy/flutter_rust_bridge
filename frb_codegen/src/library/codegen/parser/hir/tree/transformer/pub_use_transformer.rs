@@ -177,18 +177,18 @@ mod tests {
         }
 
         body(
-            "pub use one::two::Three;",
-            Some(PubUseInfo {
-                namespace: Namespace::new_raw("one::two".to_owned()),
-                name_filters: Some(vec!["Three".to_owned()]),
-            }),
-        );
-
-        body(
             "pub use one::two::*;",
             Some(PubUseInfo {
                 namespace: Namespace::new_raw("one::two".to_owned()),
                 name_filters: None,
+            }),
+        );
+
+        body(
+            "pub use one::two::Three;",
+            Some(PubUseInfo {
+                namespace: Namespace::new_raw("one::two".to_owned()),
+                name_filters: Some(vec!["Three".to_owned()]),
             }),
         );
     }
