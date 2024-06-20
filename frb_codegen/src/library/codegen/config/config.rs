@@ -8,8 +8,8 @@ use std::collections::HashMap;
 #[serde(deny_unknown_fields)]
 pub struct Config {
     pub base_dir: Option<String>,
-    pub rust_input: String,
-    pub dart_output: String,
+    pub rust_input: Option<String>,
+    pub dart_output: Option<String>,
     pub c_output: Option<String>,
     pub duplicated_c_output: Option<Vec<String>>,
     pub rust_root: Option<String>,

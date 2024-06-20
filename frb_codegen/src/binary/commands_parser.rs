@@ -32,8 +32,8 @@ fn compute_codegen_config_from_naive_command_args(
 ) -> Config {
     Config {
         base_dir: None,
-        rust_input: args.rust_input.context("rust_input is required")?,
-        dart_output: args.dart_output.context("dart_output is required")?,
+        rust_input: args.rust_input,
+        dart_output: args.dart_output,
         c_output: args.c_output,
         duplicated_c_output: args.duplicated_c_output,
         rust_root: args.rust_root,
