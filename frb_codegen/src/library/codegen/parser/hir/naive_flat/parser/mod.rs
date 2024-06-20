@@ -1,5 +1,7 @@
 use crate::codegen::ir::hir::misc::generation_source::HirGenerationSource;
-use crate::codegen::ir::hir::naive_flat::item::{HirNaiveFlatItem, HirNaiveFlatItemMeta};
+use crate::codegen::ir::hir::naive_flat::item::{
+    HirNaiveFlatItem, HirNaiveFlatItemMeta, HirNaiveFlatItemVis,
+};
 use crate::codegen::ir::hir::naive_flat::pack::HirNaiveFlatPack;
 use crate::codegen::ir::hir::tree::module::HirTreeModule;
 use crate::codegen::ir::hir::tree::pack::HirTreePack;
@@ -17,7 +19,13 @@ fn flatten_module(module: HirTreeModule, target: &mut Vec<HirNaiveFlatItem>) {
         meta: HirNaiveFlatItemMeta {
             namespace: module.meta.namespace.clone(),
             sources: vec![HirGenerationSource::Normal],
-            is_module_public: module.meta.is_public(),
+            vis: if module.meta.is_public() {
+                HirNaiveFlatItemVis::Public
+            } else if module.meta.is_private() {
+                HirNaiveFlatItemVis::Private
+            } else {
+                HirNaiveFlatItemVis::Others
+            },
         },
         item,
     }));

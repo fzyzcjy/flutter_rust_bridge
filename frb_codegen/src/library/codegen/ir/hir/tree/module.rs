@@ -55,4 +55,8 @@ impl HirTreeModuleMeta {
     pub(crate) fn is_public(&self) -> bool {
         (self.parent_and_self_vis().iter()).all(|x| *x == HirVisibility::Public)
     }
+
+    pub(crate) fn is_private(&self) -> bool {
+        (self.parent_and_self_vis().iter()).any(|x| *x == HirVisibility::Inherited)
+    }
 }
