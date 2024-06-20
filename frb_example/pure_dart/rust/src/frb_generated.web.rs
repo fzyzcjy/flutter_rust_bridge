@@ -9101,6 +9101,22 @@ impl CstDecode<MyImplTraitWithSelfTwinSyncSse>
         ))
     }
 }
+impl CstDecode<MyStructWithTryFromTwinNormal>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> MyStructWithTryFromTwinNormal {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
+            RustOpaqueNom<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                    MyStructWithTryFromTwinNormal,
+                >,
+            >,
+        >::cst_decode(
+            self
+        ))
+    }
+}
 impl CstDecode<NonCloneSimpleEnumTwinMoi>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
@@ -11600,6 +11616,26 @@ impl
         self,
     ) -> RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyNodeTwinNormal>>
     {
+        #[cfg(target_pointer_width = "64")]
+        {
+            compile_error!("64-bit pointers are not supported.");
+        }
+        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
+    }
+}
+impl
+    CstDecode<
+        RustOpaqueNom<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyStructWithTryFromTwinNormal>,
+        >,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> RustOpaqueNom<
+        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyStructWithTryFromTwinNormal>,
+    > {
         #[cfg(target_pointer_width = "64")]
         {
             compile_error!("64-bit pointers are not supported.");
@@ -16456,6 +16492,26 @@ pub fn wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNor
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_get_item_contents_twin_normal_impl(port_, that)
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__misc_no_twin_example_a__MyStructWithTryFromTwinNormal_try_from(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    value: String,
+) {
+    wire__crate__api__misc_no_twin_example_a__MyStructWithTryFromTwinNormal_try_from_impl(
+        port_, value,
+    )
+}
+
+#[wasm_bindgen]
+pub fn wire__crate__api__misc_no_twin_example_a__MyStructWithTryFromTwinNormal_value_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire__crate__api__misc_no_twin_example_a__MyStructWithTryFromTwinNormal_value_twin_normal_impl(
+        port_, that,
+    )
 }
 
 #[wasm_bindgen]
@@ -42558,6 +42614,28 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
 ) {
     unsafe {
         StdArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyNodeTwinNormal>>::decrement_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStructWithTryFromTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        StdArc::<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyStructWithTryFromTwinNormal>,
+        >::increment_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStructWithTryFromTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        StdArc::<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyStructWithTryFromTwinNormal>,
+        >::decrement_strong_count(ptr as _);
     }
 }
 

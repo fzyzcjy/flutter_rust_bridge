@@ -7,6 +7,8 @@ import '../frb_generated.dart';
 import 'misc_no_twin_example_a.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
+// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `drop`, `drop`, `drop`, `drop`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`
+
 /// Functions (other tests are mainly methods)
 Future<LtTypeWithLifetimeTwinNormal> ltComputeWithLifetimeFunctionTwinNormal(
         {required LtOwnedStructTwinNormal arg}) =>

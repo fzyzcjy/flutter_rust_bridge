@@ -861,6 +861,20 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
 }
 
 #[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStructWithTryFromTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyStructWithTryFromTwinNormal>>::increment_strong_count(ptr as _);
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStructWithTryFromTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyStructWithTryFromTwinNormal>>::decrement_strong_count(ptr as _);
+}
+
+#[wasm_bindgen]
 pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinNormal(
     ptr: *const std::ffi::c_void,
 ) {

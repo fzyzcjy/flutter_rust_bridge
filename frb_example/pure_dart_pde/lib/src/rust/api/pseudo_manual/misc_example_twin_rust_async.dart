@@ -11,6 +11,7 @@ part 'misc_example_twin_rust_async.freezed.dart';
 
 // These functions are ignored because they are not marked as `pub`: `visibility_restricted_func_twin_rust_async`
 // These types are ignored because they are not used by any `pub` functions: `MySizeFreezedTwinRustAsync`
+// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `clone`, `clone`, `fmt`, `fmt`, `fmt`, `fmt`
 
 Future<MyTreeNodeTwinRustAsync> handleComplexStructTwinRustAsync(
         {required MyTreeNodeTwinRustAsync s}) =>
