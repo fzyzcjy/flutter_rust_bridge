@@ -61,7 +61,7 @@ fn parse_pub_use_from_item(item: &syn::Item) -> Option<PubUseInfo> {
     None
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Eq, PartialEq)]
 struct PubUseInfo {
     namespace: Namespace,
     name_filters: Option<Vec<String>>,
@@ -161,5 +161,35 @@ pub(crate) fn is_localized_definition(item: &syn::Item) -> bool {
         | syn::Item::Trait(_) => true,
         // e.g. `syn::Item::Impl` should *not* be affected
         _ => false,
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    pub fn test_parse_pub_use_from_item() {
+        fn body(code: &str, expect: Option<PubUseInfo>) {
+            let item: syn::Item = syn::parse_str(code).unwrap();
+            let actual = parse_pub_use_from_item(&item);
+            assert_eq!(actual, expect);
+        }
+
+        body(
+            "pub use one::two::Three;",
+            Some(PubUseInfo {
+                namespace: Namespace::new_raw("one::two".to_owned()),
+                name_filters: Some(vec!["Three".to_owned()]),
+            }),
+        );
+
+        body(
+            "pub use one::two::*;",
+            Some(PubUseInfo {
+                namespace: Namespace::new_raw("one::two".to_owned()),
+                name_filters: None,
+            }),
+        );
     }
 }
