@@ -73,9 +73,10 @@ fn parse_pub_use_from_use_tree(tree: &UseTree) -> Vec<PubUseInfo> {
         UseTree::Name(inner) => TODO,
         UseTree::Glob(inner) => TODO,
         UseTree::Group(inner) => TODO,
+        // Not supported yet
         // frb-coverage:ignore-start
-        UseTree::Rename(_) => None, // Not supported yet
-                                    // frb-coverage:ignore-end
+        UseTree::Rename(_) => vec![],
+        // frb-coverage:ignore-end
     }
 }
 
