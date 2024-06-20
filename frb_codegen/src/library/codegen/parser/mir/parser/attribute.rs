@@ -278,11 +278,13 @@ struct FrbAttributesInner(Vec<FrbAttribute>);
 
 impl Parse for FrbAttributesInner {
     fn parse(input: ParseStream) -> Result<Self> {
-        Ok(Self(
-            Punctuated::<FrbAttribute, Token![,]>::parse_terminated(input)?
-                .into_iter()
-                .collect(),
-        ))
+        let mut items = Punctuated::<FrbAttribute, Token![,]>::parse_terminated(input)?
+            .into_iter()
+            .collect_vec();
+        if items.is_empty() {
+            items = vec![FrbAttribute::Noop];
+        }
+        Ok(Self(items))
     }
 }
 
