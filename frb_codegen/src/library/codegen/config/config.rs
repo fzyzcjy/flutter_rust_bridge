@@ -47,7 +47,9 @@ pub struct MetaConfig {
 macro_rules! generate_merge {
     ($($field:ident,)*) => (
         impl Config {
-            pub(crate) fn merge(priority_high: Self, priority_low: Self) -> Self {
+            // Only used internally
+            #[doc(hidden)]
+            pub fn merge(priority_high: Self, priority_low: Self) -> Self {
                 Self {
                     $(
                         $field: priority_high.$field.or(priority_low.$field),

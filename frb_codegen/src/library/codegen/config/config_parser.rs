@@ -10,7 +10,9 @@ impl Config {
         Self::from_files_auto_option()?.context("Fail to find any configuration file")
     }
 
-    pub(crate) fn from_files_auto_option() -> anyhow::Result<Option<Self>> {
+    // Only used internally
+    #[doc(hidden)]
+    pub fn from_files_auto_option() -> anyhow::Result<Option<Self>> {
         const PUBSPEC_LOCATION: &str = "pubspec.yaml";
 
         if let Some(config) = Self::from_config_files()? {
