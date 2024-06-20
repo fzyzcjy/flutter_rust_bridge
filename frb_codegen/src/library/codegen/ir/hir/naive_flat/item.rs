@@ -18,7 +18,7 @@ pub(crate) struct HirNaiveFlatItemMeta {
     pub vis: HirNaiveFlatItemVis,
 }
 
-#[derive(Clone, Debug, Derivative, Serialize)]
+#[derive(Clone, Debug, Derivative, Serialize, Eq, PartialEq)]
 pub(crate) enum HirNaiveFlatItemVis {
     Public,
     Private,
