@@ -5,7 +5,7 @@ use crate::codegen::ir::mir::func::{
 use crate::codegen::ir::mir::ty::trait_def::MirTypeTraitDef;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::ir::misc::skip::IrSkipReason::IgnoreBecauseOwnerTyShouldIgnore;
-use crate::codegen::ir::misc::skip::{IrSkipReason, IrValueOrSkip};
+use crate::codegen::ir::misc::skip::{IrSkipReason, IrValueOrSkip, MirFuncOrSkip};
 use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
 use crate::codegen::parser::mir::parser::function::real::{
     is_struct_or_enum_or_opaque_from_them, FunctionParser,
@@ -23,7 +23,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         context: &TypeParserParsingContext,
         actual_method_dart_name: Option<String>,
         attributes: &FrbAttributes,
-    ) -> anyhow::Result<IrValueOrSkip<MirFuncOwnerInfo>> {
+    ) -> anyhow::Result<IrValueOrSkip<MirFuncOwnerInfo, IrSkipReason>> {
         use crate::library::codegen::ir::misc::skip::IrSkipReason::*;
 
         match &func.owner {
@@ -84,7 +84,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         owner_ty: MirType,
         owner_ty_raw: &str,
         trait_def: Option<MirTypeTraitDef>,
-    ) -> anyhow::Result<IrValueOrSkip<MirFuncOwnerInfo>> {
+    ) -> anyhow::Result<IrValueOrSkip<MirFuncOwnerInfo, IrSkipReason>> {
         let sig = func.item_fn.sig();
         let mode = if matches!(sig.inputs.first(), Some(FnArg::Receiver(..))) {
             MirFuncOwnerInfoMethodMode::Instance

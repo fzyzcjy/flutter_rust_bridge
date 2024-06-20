@@ -20,14 +20,14 @@ use crate::utils::namespace::{Namespace, NamespacedName};
 use field::parse_auto_accessor_of_field;
 use itertools::Itertools;
 use std::collections::HashMap;
-use crate::codegen::ir::misc::skip::IrValueOrSkip;
+use crate::codegen::ir::misc::skip::{IrValueOrSkip, MirFuncOrSkip};
 
 pub(crate) fn parse(
     config: &ParserMirInternalConfig,
     src_structs: &HashMap<String, &HirFlatStruct>,
     type_parser: &mut TypeParser,
     parse_mode: ParseMode,
-) -> anyhow::Result<Vec<IrValueOrSkip<MirFunc>>> {
+) -> anyhow::Result<Vec<MirFuncOrSkip>> {
     let src_structs_in_paths =
         extract_src_types_in_paths(src_structs, &config.rust_input_namespace_pack)?;
 

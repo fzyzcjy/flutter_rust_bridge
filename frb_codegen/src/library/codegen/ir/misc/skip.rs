@@ -74,3 +74,5 @@ impl<T, S> IrValueOrSkip<T, S> {
         (values, skips)
     }
 }
+
+pub type MirFuncOrSkip = IrValueOrSkip<MirFunc, IrSkip>;
