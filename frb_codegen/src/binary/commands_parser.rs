@@ -11,28 +11,16 @@ pub(crate) fn compute_codegen_config(args: GenerateCommandArgsPrimary) -> Result
 
     if let Some(config_file) = &args.config_file {
         debug!("compute_codegen_config: mode=config_file");
-        ensure!(
-            GenerateCommandArgsPrimary {
-                config_file: None,
-                ..args.clone()
-            } == Default::default(),
-            // This will stop the whole generator and tell the users, so we do not care about testing it
-            // frb-coverage:ignore-start
-            "Cannot use command line args and config file at the same time",
-            // frb-coverage:ignore-end
-        );
-        return Config::from_config_file(config_file)?.context("Cannot find config_file");
+        let config_from_args = compute_codegen_config_from_naive_command_args(args)?;
+        let config_from_file =
+            Config::from_config_file(config_file)?.context("Cannot find config_file")?;
+        return Ok(merge_config(config_from_args, config_from_file));
     }
 
     debug!("compute_codegen_config: mode=from_naive_generate_command_args");
-    ensure!(
-        Config::from_files_auto().is_err(),
-        // This will stop the whole generator and tell the users, so we do not care about testing it
-        // frb-coverage:ignore-start
-        "Cannot use command line args and config file at the same time",
-        // frb-coverage:ignore-end
-    );
-    compute_codegen_config_from_naive_command_args(args)
+    let config_from_args = compute_codegen_config_from_naive_command_args(args)?;
+    let config_from_file = Config::from_files_auto()?;
+    return Ok(merge_config(config_from_args, config_from_file));
 }
 
 pub(crate) fn compute_codegen_meta_config(args: &GenerateCommandArgs) -> MetaConfig {
@@ -74,6 +62,10 @@ fn compute_codegen_config_from_naive_command_args(
         dump: args.dump,
         dump_all: Some(args.dump_all),
     })
+}
+
+fn merge_config(priority_high: Config, priority_low: Config) -> Config {
+    TODO
 }
 
 #[cfg(test)]
