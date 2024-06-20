@@ -37,7 +37,7 @@ fn parse_pub_use_from_items(items: &[syn::Item]) -> Vec<PubUseInfo> {
 
 // the function signature is not covered while the whole body is covered - looks like a bug in coverage tool
 // frb-coverage:ignore-start
-fn parse_pub_use_from_item(item: &syn::Item) -> Option<PubUseInfo> {
+fn parse_pub_use_from_item(item: &syn::Item) -> Vec<PubUseInfo> {
     // frb-coverage:ignore-end
     if let syn::Item::Use(item_use) = item {
         if matches!(item_use.vis, syn::Visibility::Public(_)) {
@@ -59,10 +59,10 @@ fn parse_pub_use_from_item(item: &syn::Item) -> Option<PubUseInfo> {
             // });
         }
     }
-    None
+    vec![]
 }
 
-fn parse_pub_use_from_use_tree(tree: &UseTree) -> Option<PubUseInfo> {
+fn parse_pub_use_from_use_tree(tree: &UseTree) -> Vec<PubUseInfo> {
     match tree {
         UseTree::Path(inner) => parse_pub_use_from_use_tree(&*inner.tree).map(|inner_output| TODO),
         UseTree::Name(inner) => TODO,
