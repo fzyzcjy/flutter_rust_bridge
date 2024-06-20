@@ -4,6 +4,14 @@ use lib_flutter_rust_bridge_codegen::codegen::{Config, MetaConfig};
 use log::debug;
 
 pub(crate) fn compute_codegen_config(args: GenerateCommandArgsPrimary) -> Result<Config> {
+    let config_from_file = if let Some(config_file) = &args.config_file {
+        Config::from_config_file(config_file)?.context("Cannot find config_file")?
+    } else {
+        Config::from_files_auto_option()?.unwrap_or_default()
+    };
+
+    let config_from_args = compute_codegen_config_from_naive_command_args(args);
+
     if args == Default::default() {
         debug!("compute_codegen_config: mode=from_files_auto");
         return Config::from_files_auto();

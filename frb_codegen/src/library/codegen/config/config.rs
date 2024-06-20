@@ -4,7 +4,7 @@ use std::collections::HashMap;
 
 /// Configuration for code generation
 /// Refer to `GenerateCommandArgs` for documentations
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Default)]
 #[serde(deny_unknown_fields)]
 pub struct Config {
     pub base_dir: Option<String>,
