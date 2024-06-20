@@ -173,7 +173,7 @@ mod tests {
             "hello.h",
         ];
         let config = run_command_line(common_args.clone()).expect("failed to parse cli args");
-        assert_eq!(config.dart3, Some(true));
+        assert_eq!(config.dart3, None);
         assert_eq!(config.rust_input.unwrap(), "crate::hello".to_string());
         assert_eq!(
             run_command_line(concat([common_args.clone(), vec!["--no-dart3"]]))
