@@ -15,5 +15,13 @@ pub(crate) struct HirNaiveFlatItem {
 pub(crate) struct HirNaiveFlatItemMeta {
     pub namespace: Namespace,
     pub sources: Vec<HirGenerationSource>,
-    pub is_module_public: bool,
+    pub vis: HirNaiveFlatItemVis,
+}
+
+#[derive(Clone, Debug, Derivative, Serialize)]
+pub(crate) enum HirNaiveFlatItemVis {
+    Public,
+    Private,
+    /// Not completely public, not completely private
+    Others,
 }
