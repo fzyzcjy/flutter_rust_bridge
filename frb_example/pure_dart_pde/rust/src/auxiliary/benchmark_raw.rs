@@ -1,6 +1,7 @@
 // AUTO-GENERATED FROM frb_example/pure_dart, DO NOT EDIT
 
 #![allow(non_camel_case_types)]
+#![allow(clippy::missing_safety_doc)]
 
 use crate::api::pseudo_manual::benchmark_api::benchmark_input_bytes_twin_normal;
 use flutter_rust_bridge::for_generated::{new_leak_vec_ptr, vec_from_leak_ptr};
