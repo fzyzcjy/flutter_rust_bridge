@@ -42,8 +42,9 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                     if let Some(ans) = parse_type_trait(trait_def_name, self.type_parser) {
                         Some(ans)
                     } else {
-                        if TODO {
-                            // If cannot find the trait, we directly skip the function currently
+                        // If cannot find the trait and there is no things like `#[frb]` marker,
+                        // we directly skip the function currently
+                        if attributes.is_empty() {
                             return Ok(IrValueOrSkip::Skip(IgnoreBecauseParseOwnerCannotFindTrait));
                         } else {
                             None
