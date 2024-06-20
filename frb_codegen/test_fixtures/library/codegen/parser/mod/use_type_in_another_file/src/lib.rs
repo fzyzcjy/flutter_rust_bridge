@@ -1,2 +1,2 @@
-mod another_file;
+pub mod another_file;
 pub mod api;
