@@ -1,5 +1,15 @@
 # Changelog
 
+## 2.0.0-dev.42
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Support brackets and nesting in pub use (such as pub use `a::{b, x::{y,z}}`) #2120
+* Support providing configuration both by command line and by config file at the same time #2119
+* Tell user reasons when skipping traits #2121
+* Update default template comments #2118
+* Allow using arbitrary frb attribute as an indicator to include an item #2121
+* Improve hints when user specify custom wasm-pack-rustflags but does not contain default one #2122
+
 ## 2.0.0-dev.41
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.

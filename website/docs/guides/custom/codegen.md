@@ -4,6 +4,9 @@
 
 It is equivalent to provide a parameter using the three approaches below.
 
+In addition, you can provide configs by both configuration file / pubspec.yaml and command line at the same time.
+The latter takes precedence when in conflict.
+
 ### Configuration file
 
 The suggested mode to run `flutter_rust_bridge_codegen`,

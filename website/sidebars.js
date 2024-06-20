@@ -295,6 +295,7 @@ const sidebars = {
                         'guides/misc-features/preambles',
                         'guides/misc-features/proxy',
                         'guides/misc-features/multi-input',
+                        'guides/misc-features/modules',
                         'guides/misc-features/dart-type-rename',
                         'guides/misc-features/ignoring',
                         'guides/misc-features/override-prefix',
