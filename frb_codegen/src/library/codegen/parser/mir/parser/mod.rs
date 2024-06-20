@@ -10,7 +10,7 @@ pub(crate) mod ty;
 use crate::codegen::ir::early_generator::pack::IrEarlyGeneratorPack;
 use crate::codegen::ir::hir::flat::struct_or_enum::{HirFlatEnum, HirFlatStruct};
 use crate::codegen::ir::mir::pack::MirPack;
-use crate::codegen::ir::mir::skip::{IrSkip, IrSkipReason};
+use crate::codegen::ir::misc::skip::{IrSkip, IrSkipReason};
 use crate::codegen::parser::mir::internal_config::{
     ParserMirInternalConfig, RustInputNamespacePack,
 };

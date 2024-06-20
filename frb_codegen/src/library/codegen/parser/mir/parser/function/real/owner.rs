@@ -2,8 +2,8 @@ use crate::codegen::ir::hir::flat::function::{HirFlatFunction, HirFlatFunctionOw
 use crate::codegen::ir::mir::func::{
     MirFuncOwnerInfo, MirFuncOwnerInfoMethod, MirFuncOwnerInfoMethodMode,
 };
-use crate::codegen::ir::mir::skip::IrSkipReason;
-use crate::codegen::ir::mir::skip::IrSkipReason::IgnoreBecauseOwnerTyShouldIgnore;
+use crate::codegen::ir::misc::skip::IrSkipReason;
+use crate::codegen::ir::misc::skip::IrSkipReason::IgnoreBecauseOwnerTyShouldIgnore;
 use crate::codegen::ir::mir::ty::trait_def::MirTypeTraitDef;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
@@ -24,7 +24,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         actual_method_dart_name: Option<String>,
         attributes: &FrbAttributes,
     ) -> anyhow::Result<OwnerInfoOrSkip> {
-        use crate::library::codegen::ir::mir::skip::IrSkipReason::*;
+        use crate::library::codegen::ir::misc::skip::IrSkipReason::*;
         use OwnerInfoOrSkip::*;
 
         match &func.owner {

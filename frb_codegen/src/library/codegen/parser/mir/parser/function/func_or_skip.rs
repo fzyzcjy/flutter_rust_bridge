@@ -1,5 +1,5 @@
 use crate::codegen::ir::mir::func::MirFunc;
-use crate::codegen::ir::mir::skip::IrSkip;
+use crate::codegen::ir::misc::skip::IrSkip;
 use itertools::Itertools;
 
 pub(crate) enum MirFuncOrSkip {

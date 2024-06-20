@@ -1,7 +1,7 @@
 use crate::codegen::ir::hir::flat::function::HirFlatFunction;
 use crate::codegen::ir::hir::flat::struct_or_enum::HirFlatStruct;
 use crate::codegen::ir::mir::func::MirFunc;
-use crate::codegen::ir::mir::skip::IrSkip;
+use crate::codegen::ir::misc::skip::IrSkip;
 use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
 use crate::codegen::parser::mir::parser::function::func_or_skip::MirFuncOrSkip;
 use crate::codegen::parser::mir::parser::ty::TypeParser;
