@@ -1,6 +1,13 @@
 #[flutter_rust_bridge::frb(sync)] // Synchronous mode for simplicity of the demo
 pub fn greet(name: String) -> String {
-    format!("Hello, {name}!")
+    greet_inner(name);
+}
+
+#[inline(never)]
+pub fn greet_inner(name: String) -> String {
+    let a = name.len();
+    let b = a * a + a;
+    format!("Hello, {name}! a={a} b={b}")
 }
 
 #[flutter_rust_bridge::frb(init)]
