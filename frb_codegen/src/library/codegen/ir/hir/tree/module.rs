@@ -3,12 +3,13 @@ use crate::utils::namespace::Namespace;
 use derivative::Derivative;
 use itertools::concat;
 use serde::Serialize;
+use crate::codegen::ir::hir::misc::serializers::serialize_vec_syn;
 
 #[derive(Clone, Debug, Serialize)]
 pub struct HirTreeModule {
     pub meta: HirTreeModuleMeta,
     pub modules: Vec<HirTreeModule>,
-    #[serde(skip_serializing)]
+    #[serde(serialize_with = "serialize_vec_syn")]
     pub items: Vec<syn::Item>,
 }
 
