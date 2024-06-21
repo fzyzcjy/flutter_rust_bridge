@@ -54,8 +54,7 @@ Please visit [this page](https://fzyzcjy.github.io/flutter_rust_bridge/guides/mi
 Create a working Flutter + Rust app and see it live, by running:
 
 ```shell
-cargo install 'flutter_rust_bridge_codegen@^2.0.0-dev.0' && \
-    flutter_rust_bridge_codegen create my_app && cd my_app && flutter run
+cargo install flutter_rust_bridge_codegen && flutter_rust_bridge_codegen create my_app && cd my_app && flutter run
 ```
 
 <details>
