@@ -6,7 +6,7 @@ For example, to make a function synchronous on Dart side, we can put `#[frb(sync
 ## Specify attributes as comments
 
 Not only can we write down `#[frb(something)]`,
-but we can also write comments `/// frb:something` to do the same thing.
+but we can also write comments `/// flutter_rust_bridge:something` to do the same thing.
 
 The latter is especially useful when the former cannot be used,
 such as when the target is a `mod`, or when the crate does not have dependency on `flutter_rust_bridge`.
@@ -19,7 +19,7 @@ But this can be easily spotted since it will have compile-time messages.
 ### Example
 
 ```rust
-/// frb:ignore
+/// flutter_rust_bridge:ignore
 pub fn f() {}
 ```
 

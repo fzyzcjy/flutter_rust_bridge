@@ -7,4 +7,4 @@ then this page discusses some tricks for such scenario.
 
 There is no need to [override attributes](override-attributes) in this case.
 Indeed, just follow [this guide](../../custom/attributes) and write down something like 
-`/// frb:whatever_attribute` in the third-party crate.
+`/// flutter_rust_bridge:whatever_attribute` in the third-party crate.
