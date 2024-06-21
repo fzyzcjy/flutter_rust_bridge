@@ -1,3 +1,3 @@
 pub mod minimal;
-/// frb:ignore
+/// flutter_rust_bridge:ignore
 mod time;
