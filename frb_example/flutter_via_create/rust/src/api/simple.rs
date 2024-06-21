@@ -3,6 +3,7 @@ pub fn greet(name: String) -> String {
     greet_inner(name);
 }
 
+#[no_mangle]
 #[inline(never)]
 pub fn greet_inner(name: String) -> String {
     let a = name.len();
