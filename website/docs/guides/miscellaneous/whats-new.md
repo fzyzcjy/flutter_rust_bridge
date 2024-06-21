@@ -1,5 +1,9 @@
 # What's new in V2
 
+## Upgrade guide
+
+To upgrade, please refer to [the upgrade guide](upgrade/v2).
+
 ## Changelog
 
 :::tip
@@ -9,15 +13,25 @@ where there are lists of features (advantages) and a quick show-me-the-code.
 
 ### Primary changes
 
-* **Rapid setup**: Only a one-liner command to integrate into your project.
-* **Arbitrary types**: Use arbitrary Rust and Dart types without manual intervention, even if they are not serializable or non-clone (previously need some manual intervention).
-* **Async Rust**: Support asynchronous Rust (`async fn`), in addition to sync Rust / async Dart / sync Dart.
-* **Rust call Dart**: Allow Rust to call Dart functions (previously only allow Dart to call Rust).
-* **Support whole folders as inputs**: Previously only support one single file (e.g. `api.rs`).
-* **Use libraries/tools in Flutter/Rust**: All existing libraries, Flutter debuggers, ... Nothing to stop you from using them.
-* **New codec**: A new codec, `SSE`, which is several times faster under typical workload.
+* From 1.x to 2.0.0-dev.0:
+  * **Rapid setup**: Only a one-liner command to integrate into your project.
+  * **Arbitrary types**: Use arbitrary Rust and Dart types without manual intervention, even if they are not serializable or non-clone (previously need some manual intervention).
+  * **Async Rust**: Support asynchronous Rust (`async fn`), in addition to sync Rust / async Dart / sync Dart.
+  * **Rust call Dart**: Allow Rust to call Dart functions (previously only allow Dart to call Rust).
+  * **Support whole folders as inputs**: Previously only support one single file (e.g. `api.rs`).
+  * **Use libraries/tools in Flutter/Rust**: All existing libraries, Flutter debuggers, ... Nothing to stop you from using them.
+* From 2.0.0-dev.0 to 2.0.0:
+  * **Parsing third-party packages**: Scan and use existing Rust packages in Dart (experimental).
+  * **Lifetimes**: Support returning types with lifetime specifiers (experimental).
+  * **Traits**: Support traits as base classes and trait objects.
+  * **New codec**: A new codec, `SSE`, which is several times faster under some workloads.
+  * **Others (>200 PRs)**: Auto and manual accessors, object proxies, user-defined serializers, developer experience, deadlock-free auto locking, Rust initializers, included batteries, renaming and ignoring, improving streams, more types, ...
 
 ### More changes
+
+#### From 1.x to 2.0.0-dev.0
+
+<details>
 
 * Overhaul the whole internal codebase
     * Making it clear / modualized / elegant, enabling quick development of future features
@@ -42,6 +56,8 @@ where there are lists of features (advantages) and a quick show-me-the-code.
 * Automatically install `cargo expand` if not installed.
 * Fix bugs.
 
-## Upgrade guide
+</details>
 
-To upgrade, please refer to [the upgrade guide](upgrade/v2).
+#### From 2.0.0-dev.0 to 2.0.0
+
+Please refer to the CHANGELOG for >200 PRs.
