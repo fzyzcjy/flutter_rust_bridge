@@ -30,8 +30,8 @@ jobs:
         codegen_install_mode:
           - cargo-install
           - cargo-binstall
-          - scoop
-          - homebrew
+          # - scoop # TODO enable after 2.0.0 stable release
+          # - homebrew # TODO enable after 2.0.0 stable release
         exclude:
           - { image: windows-2019, codegen_install_mode: homebrew }
           - { image: macos-11, codegen_install_mode: scoop }
