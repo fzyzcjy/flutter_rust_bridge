@@ -8,7 +8,7 @@ import TabItem from '@theme/TabItem';
 If you like to setup in one command:
 
 ```shell
-cargo install 'flutter_rust_bridge_codegen@^2.0.0-dev.0' && flutter_rust_bridge_codegen create my_app && cd my_app && flutter run
+cargo install flutter_rust_bridge_codegen && flutter_rust_bridge_codegen create my_app && cd my_app && flutter run
 ```
 
 :::
@@ -24,7 +24,7 @@ install `flutter_rust_bridge` using any method:
 <TabItem value="Default">
 
 ```shell
-cargo install 'flutter_rust_bridge_codegen@^2.0.0-dev.0'
+cargo install flutter_rust_bridge_codegen
 ```
 
 </TabItem>
@@ -32,16 +32,14 @@ cargo install 'flutter_rust_bridge_codegen@^2.0.0-dev.0'
 <TabItem value="Cargo-Binstall">
 
 ```shell
-cargo binstall 'flutter_rust_bridge_codegen@^2.0.0-dev.0'
+cargo binstall flutter_rust_bridge_codegen
 ```
 
 </TabItem>
 
-<TabItem value="Scoop">
+<!--
 
-:::caution
-It installs v1 instead of v2.0.0-dev.x currently, so please wait a bit until the v2.0.0 stable is released :)
-:::
+<TabItem value="Scoop">
 
 <small>Remark: Thanks @Desdaemon for scripts to publish to brew/scoop</small>
 
@@ -54,10 +52,6 @@ scoop install flutter_rust_bridge_codegen
 
 <TabItem value="Homebrew">
 
-:::caution
-It installs v1 instead of v2.0.0-dev.x currently, so please wait a bit until the v2.0.0 stable is released :)
-:::
-
 <small>Remark: Thanks @Desdaemon for scripts to publish to brew/scoop</small>
 
 ```shell
@@ -65,6 +59,8 @@ brew install desdaemon/repo/flutter_rust_bridge_codegen
 ```
 
 </TabItem>
+
+-->
 
 </Tabs>
 
