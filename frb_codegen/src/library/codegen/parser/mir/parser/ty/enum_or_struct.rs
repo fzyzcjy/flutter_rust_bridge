@@ -66,7 +66,15 @@ where
                     &src_object.name.name,
                     src_object.mirror,
                 );
-                let parsed_object = self.parse_inner_impl(&src_object, name, wrapper_name)?;
+                let parsed_object = self
+                    .parse_inner_impl(&src_object, name.clone(), wrapper_name)
+                    .map_err(|e| {
+                        // Because this will cause the object not inserted into object_pool, thus may be confusing in later stages
+                        log::info!(
+                            "Skip parsing enum_or_struct `{name:?}` because of error (e={e:?})"
+                        );
+                        e
+                    })?;
                 (self.parser_info().object_pool).insert(ident.clone(), parsed_object);
             }
 
