@@ -16,27 +16,31 @@
 ## What's new in V2
 
 <details>
-<summary>Click to expand</summary>
+<summary>Tap to expand</summary>
 
-* **Rapid setup**: Only a one-liner command to integrate into your project.
-* **Arbitrary types**: Use arbitrary Rust and Dart types without manual intervention, even if they are not serializable or non-clone (previously need some manual intervention).
-* **Async Rust**: Support asynchronous Rust (`async fn`), in addition to sync Rust / async Dart / sync Dart.
-* **Rust call Dart**: Allow Rust to call Dart functions (previously only allow Dart to call Rust).
-* **Support whole folders as inputs**: Previously only support one single file (e.g. `api.rs`).
-* **Use libraries/tools in Flutter/Rust**: All existing libraries, Flutter debuggers, ... Nothing to stop you from using them.
-* **New codec**: A new codec, `SSE`, which is several times faster under typical workload.
+* From 1.x to 2.0.0-dev.0:
+    * **Rapid setup**: Only a one-liner command to integrate into your project.
+    * **Arbitrary types**: Use arbitrary Rust and Dart types without manual intervention, even if they are not serializable or non-clone (previously need some manual intervention).
+    * **Async Rust**: Support asynchronous Rust (`async fn`), in addition to sync Rust / async Dart / sync Dart.
+    * **Rust call Dart**: Allow Rust to call Dart functions (previously only allow Dart to call Rust).
+    * **Support whole folders as inputs**: Previously only support one single file (e.g. `api.rs`).
+    * **Use libraries/tools in Flutter/Rust**: All existing libraries, Flutter debuggers, ... Nothing to stop you from using them.
+* From 2.0.0-dev.0 to 2.0.0:
+    * **Parsing third-party packages**: Scan and use existing Rust packages in Dart (experimental).
+    * **Lifetimes**: Support returning types with lifetime specifiers (experimental).
+    * **Traits**: Support traits as base classes and trait objects.
+    * **New codec**: A new codec, `SSE`, which is several times faster under some workloads.
+    * **Others (>200 PRs)**: Auto and manual accessors, object proxies, user-defined serializers, developer experience, deadlock-free auto locking, Rust initializers, included batteries, renaming and ignoring, improving streams, more types, ...
 
 Please visit [this page](https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new) for more information and update guide.
-
-I want to keep it in beta for a while (though CI has all passed), to allow publishing API breaking changes, and hear your thoughts and suggestions about it!
 
 </details>
 
 ## 🍀 What's this?
 
-* Just write down some ***normal*** Rust code (even with arbitrary types, closure, `&mut`, async, etc)
+* Just write down ***normal*** Rust code (even with arbitrary types, closure, `&mut`, async, traits, etc)
 * And call it from Flutter, as if Rust code is ***normal*** Flutter code
-* The bridge will generate all needed glues in between
+* The bridge will generate all glues in between
 
 ## 📚 Quickstart
 
@@ -47,41 +51,60 @@ cargo install 'flutter_rust_bridge_codegen@^2.0.0-dev.0' && \
     flutter_rust_bridge_codegen create my_app && cd my_app && flutter run
 ```
 
+<details>
+<summary>Expand optional steps</summary>
+
 **(Optional)** Edit `rust/src/api/simple.rs` (e.g. `Hello` -> `Hi`), then see the change by:
 
 ```shell
 flutter_rust_bridge_codegen generate && flutter run
 ```
 
+</details>
+
 For more elaborated quickstart, please visit [this page](https://fzyzcjy.github.io/flutter_rust_bridge/quickstart).
 
 ## 🚀 Advantages
 
-<img width="400" align="right" src="https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/website/misc/advantages.png?raw=true" />
+<img width="360" align="right" src="https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/website/misc/advantages.png?raw=true" />
 
 ### 1. Officially `Flutter Favorite`
 
-This package is [officially Flutter Favorite](https://docs.flutter.dev/packages-and-plugins/favorites), and is in the first batch of 7 packages at its [rebooting](https://medium.com/flutter/whats-new-in-flutter-3-16-dba6cb1015d1).
+This package is [officially Flutter Favorite](https://medium.com/flutter/progress-of-the-flutter-package-ecosystem-17cded9a0703), and is in the first batch of 7 packages at its rebooting. ([another link](https://medium.com/flutter/whats-new-in-flutter-3-16-dba6cb1015d1))
 
 ### 2. Simplicity
+
+<details>
+<summary>(Tap to expand) Rapid setup, Write your code naturally, Use libraries/tools in Flutter/Rust, Battery included</summary>
 
 * **Rapid setup**: Only a one-liner command to integrate into your project.
 * **Write your code naturally**: Use your intuition and write the code you want. The bridge understands many advanced grammars (see below), allowing seamless calling Rust from Dart.
 * **Use libraries/tools in Flutter/Rust**: All existing libraries, Flutter debuggers, ... Nothing to stop you from using them.
 * **Battery included**: Even small things like logging and enable backtraces are configured in the starter kit.
 
+</details>
+
 ### 3. Powerfulness
+
+<details>
+<summary>(Tap to expand) Arbitrary types, Async & sync, Two-way road, Auto-translatable types, Parsing third-party packages, Auto safety, Customizable & bare-metal mode, Cross-platform, ...</summary>
 
 * **Arbitrary types**: Use arbitrary Rust and Dart types without manual intervention, even if they are not serializable or non-clone.
 * **Async & sync** x Rust & Dart: Multi modes for various needs - Async Dart to avoid blocking the main thread, sync Dart for places needed (e.g. Widget.build); async Rust for IO bound tasks, thread pools for CPU-heavy computations.
 * **Two-way road**: Not only can Dart call Rust - Rust can also call Dart.
 * **Auto-translatable types**: Lots of types can be further translated to Dart native types, e.g. complex `enum`s and `struct`s, zero-copy big arrays, errors (`Result`), and `Stream`s (iterator).
+* **Parsing third-party packages**: Scan and use existing Rust packages in Dart (experimental).
 * **Auto safety**: Focus on your code, and forget memory safety, malloc/free, or undefined behavior completely.
 * **Customizable & bare-metal mode**: Provide sensible defaults, but everything (loader, handler, ...) can be customized. You can even throw all away and only use the bare minimum calling.
 * **Cross-platform**: Support Android, iOS, Windows, Linux, MacOS, and Web.
 * Other features, e.g. support whole folders as input, pure-Dart compatible, instance and static methods, ...
 
+</details>
+
 ### 4. Reliability
+
+<details>
+<summary>(Tap to expand) Solid CI, Used by many people, Easy to review, Fast, Hackable, Ask questions</summary>
 
 * **Solid CI**: Valgrind & sanitizers (ASAN/MSAN/LSAN) for memory/UB-related bugs, testing per platform per mode, benchmarking, test coverage, post-release, etc, all guaranteed by CI.
 * **Used by many people**: See [here](https://fzyzcjy.github.io/flutter_rust_bridge/guides/users) for an incomplete list.
@@ -90,10 +113,12 @@ This package is [officially Flutter Favorite](https://docs.flutter.dev/packages-
 * **Hackable**: If (for whatever reason) you want to hack the source, there are contributor guides, code is modular, and the execution logic is intuitive.
 * **Ask questions**: Feel free to ask questions in the issue tracker, and I usually reply within hours (if not sleeping).
 
+</details>
+
 ### Why Flutter + Rust?
 
 <details>
-<summary>Click to expand</summary>
+<summary>Tap to expand</summary>
 
 Firstly, super briefly introduce each component (you can find much more in a lot of blogs and posts):
 
@@ -111,56 +136,54 @@ Typical scenarios to combine them include:
 
 </details>
 
-## 🧭 Show me the code
+## ✨ Show me the code
 
-### Example 1: Simple
+### Example 1
 
 Simple Rust...
 
 ```rust
-fn f(a: String, b: Vec<String>) -> MyStruct { ... }
+fn f(a: String, b: Vec<MyEnum>) -> MyStruct { ... }
 ```
 
 ...called from Dart, without manual intervention.
 
 ```dart
-print(f(a: 'Hello', b: ['Tom']));
+print(f(a: 'Hello', b: [MyEnum.c('Tom')]));
 ```
 
-### Example 2: Show off skills ;)
+### Example 2
 
-Let's see how fancy we can support:
+Suppose we implement a word dictionary in Rust:
 
 ```rust
 // ↱ Arbitrarily fancy Rust types
-struct Garden { land: whatever::fancy::Land }
-
-// ↱ Complex but auto-translatable
-enum Tree { A { name: (String, i32), children: Option<Vec<Tree>> }, B }
+pub struct WordDict { .. }
 
 // ↱ Support functions & methods
-impl Garden {
-    // ↱ Allow async & sync Rust
-    async fn plant(
-        // ↱ Support T/&T/&mut T
-        &mut self,
-        tree: Tree,
-        // ↱ Rust can also call Dart
-        chooser: impl Fn(String) -> bool,
-        // ↱ Error translation ; zero copy
-    ) -> Result<Vec<u8>, FancyError> {
-        ...
-    }
+impl WordDict {
+    //          ↱ Can call Dart back                 ↱ Translate errors
+    pub fn open(chooser: impl Fn(String) -> bool) -> Result<WordDict> { .. }
+
+    // ↱ Support async & sync Dart; property getter
+    #[frb(sync, getter)]
+    //          ↱ Support T/&T/&mut T
+    pub fn size(&self) -> u32 { .. }
+
+    //  ↱ Allow async & sync                    ↱ Support stream (iterator)
+    pub async fn search(&self, keyword: String, sink: StreamSink<String>) { .. }
 }
 ```
 
 Still seamlessly call in Dart:
 
 ```dart
-var tree = Tree.a(('x', 42), [Tree.b()]);
-// ↱ Async & sync Dart
-print(await garden.plant(tree, (a) => true));
+final dict = await WordDict.open((situation) => true);
+print(dict.size);
+await for (final value in dict.search('something')) { print(value); }
 ```
+
+There are still many features not covered here, such as parsing third party packages, lifetimes, traits, auto accessors, proxies, etc.
 
 ## 💡 Documentation
 
