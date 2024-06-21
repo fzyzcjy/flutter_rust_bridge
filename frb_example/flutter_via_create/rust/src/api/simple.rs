@@ -1,6 +1,6 @@
 #[flutter_rust_bridge::frb(sync)] // Synchronous mode for simplicity of the demo
 pub fn greet(name: String) -> String {
-    greet_inner(name);
+    greet_inner(name)
 }
 
 #[no_mangle]
