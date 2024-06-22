@@ -80,27 +80,19 @@ fn generate_text_from_merged_code(
     core_code: &Acc<String>,
 ) -> anyhow::Result<Acc<Option<String>>> {
     Ok(generate_text_respecting_web_flag(
-        Acc {
-            common: generate_text_common(&core_code.common, config)?,
-            io: core_code.io.clone(),
-            web: core_code.web.clone(),
-        },
+        core_code.clone(),
         config.web_enabled,
     ))
 }
 
-fn merge_rust_acc_into_one_file(acc: Acc<Option<String>>, web_enabled: bool) -> String {
+fn merge_rust_acc_into_one_file(acc: Acc<Option<String>>) -> String {
     let common = acc.common.unwrap_or_default();
     let io = (acc.io.as_ref())
         .map(|x| generate_inline_mod(x, Target::Io))
         .unwrap_or_default();
-    let web = if web_enabled {
-        (acc.web.as_ref())
-            .map(|x| generate_inline_mod(x, Target::Web))
-            .unwrap_or_default()
-    } else {
-        "".into()
-    };
+    let web = (acc.web.as_ref())
+        .map(|x| generate_inline_mod(x, Target::Web))
+        .unwrap_or_default();
 
     format!(
         "{common}
