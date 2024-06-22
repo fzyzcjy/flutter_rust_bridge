@@ -96,7 +96,7 @@ pub(super) fn parse_auto_accessor_of_field(
             &config.force_codec_mode_pack,
         ),
         rust_call_code: Some(rust_call_code),
-        rust_aop_after: (ty_struct.ui_state)
+        rust_aop_after: (ty_struct.ui_state && accessor_mode == MirFuncAccessorMode::Setter)
             .then(|| UI_MUTATION_FUNCTION_RUST_AOP_AFTER.to_owned()),
         impl_mode: MirFuncImplMode::Normal,
         src_lineno_pseudo: compute_src_lineno_pseudo(struct_name, field),
