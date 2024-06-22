@@ -209,6 +209,14 @@ impl FrbAttributes {
             )
             .next()
     }
+
+    pub(crate) fn ui_state(&self) -> bool {
+        self.any_eq(&FrbAttribute::UiState)
+    }
+
+    pub(crate) fn ui_mutation(&self) -> bool {
+        self.any_eq(&FrbAttribute::UiMutation)
+    }
 }
 
 fn transform_doc_comment(attr: &Attribute) -> anyhow::Result<Attribute> {
@@ -272,6 +280,8 @@ mod frb_keyword {
     syn::custom_keyword!(rust2dart);
     syn::custom_keyword!(dart2rust);
     syn::custom_keyword!(dart_type);
+    syn::custom_keyword!(ui_state);
+    syn::custom_keyword!(ui_mutation);
 }
 
 struct FrbAttributesInner(Vec<FrbAttribute>);
@@ -318,6 +328,8 @@ enum FrbAttribute {
     Dart2Rust(FrbAttributeSerDes),
     Rust2Dart(FrbAttributeSerDes),
     Noop,
+    UiState,
+    UiMutation,
 }
 
 impl Parse for FrbAttribute {
@@ -370,7 +382,10 @@ impl Parse for FrbAttribute {
             .or_else(|| parse_keyword::<serialize, _>(input, &lookahead, serialize, Serialize))
             .or_else(|| {
                 parse_keyword::<semi_serialize, _>(input, &lookahead, semi_serialize, SemiSerialize)
-            });
+            })
+            .or_else(|| parse_keyword::<ui_state, _>(input, &lookahead, ui_state, UiState))
+            .or_else(|| parse_keyword::<ui_mutation, _>(input, &lookahead, ui_mutation, UiMutation))
+            ;
         if let Some(keyword_output) = keyword_output {
             return keyword_output;
         }
@@ -891,6 +906,16 @@ mod tests {
         let value = if_then_some!(let FrbAttribute::Default(value) = &parsed.0[0], value).unwrap();
         assert!(matches!(value, FrbAttributeDefaultValue::Str(_)));
         Ok(())
+    }
+
+    #[test]
+    fn test_ui_state() {
+        simple_keyword_tester("ui_state", FrbAttribute::UiState);
+    }
+
+    #[test]
+    fn test_ui_mutation() {
+        simple_keyword_tester("ui_state", FrbAttribute::UiMutation);
     }
 
     // Mirror(FrbAttributeMirror),
