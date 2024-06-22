@@ -114,7 +114,8 @@ fn generate_imports(
         .flat_map(|ty| WireRustGenerator::new(ty.clone(), context).generate_imports())
         .flatten()
         .filter(|namespace| namespace != &output_namespace)
-        .collect::<HashSet<Namespace>>()
+        .map(|namespace| format!("use {}::*", namespace.joined_path))
+        .collect::<HashSet<String>>()
         .into_iter()
         .join("\n");
 
