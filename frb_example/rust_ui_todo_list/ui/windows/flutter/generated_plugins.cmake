@@ -6,7 +6,7 @@ list(APPEND FLUTTER_PLUGIN_LIST
 )
 
 list(APPEND FLUTTER_FFI_PLUGIN_LIST
-  rust_lib_frb_example_rust_ui_counter
+  rust_lib_frb_example_rust_ui_todo_list
 )
 
 set(PLUGIN_BUNDLED_LIBRARIES)

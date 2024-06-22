@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:frb_example_rust_ui_counter/src/rust/frb_generated.dart';
+import 'package:frb_example_rust_ui_todo_list/src/rust/frb_generated.dart';
 import 'package:integration_test/integration_test.dart';
 
 void main() {

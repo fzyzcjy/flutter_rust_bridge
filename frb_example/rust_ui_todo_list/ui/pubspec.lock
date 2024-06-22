@@ -217,7 +217,7 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.0.2"
-  rust_lib_frb_example_rust_ui_counter:
+  rust_lib_frb_example_rust_ui_todo_list:
     dependency: "direct main"
     description:
       path: rust_builder

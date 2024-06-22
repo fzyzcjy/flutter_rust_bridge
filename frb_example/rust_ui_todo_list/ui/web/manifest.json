@@ -1,6 +1,6 @@
 {
-    "name": "frb_example_rust_ui_counter",
-    "short_name": "frb_example_rust_ui_counter",
+    "name": "frb_example_rust_ui_todo_list",
+    "short_name": "frb_example_rust_ui_todo_list",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:frb_example_rust_ui_counter/src/rust/api/app.dart';
-import 'package:frb_example_rust_ui_counter/src/rust/frb_generated.dart';
+import 'package:frb_example_rust_ui_todo_list/src/rust/api/app.dart';
+import 'package:frb_example_rust_ui_todo_list/src/rust/frb_generated.dart';
 import 'package:styled_widget/styled_widget.dart';
 
 void main() => runRustApp(body: body, state: RustState.new);

@@ -1,10 +1,10 @@
 # Project-level configuration.
 cmake_minimum_required(VERSION 3.14)
-project(frb_example_rust_ui_counter LANGUAGES CXX)
+project(frb_example_rust_ui_todo_list LANGUAGES CXX)
 
 # The name of the executable created for the application. Change this to change
 # the on-disk name of your application.
-set(BINARY_NAME "frb_example_rust_ui_counter")
+set(BINARY_NAME "frb_example_rust_ui_todo_list")
 
 # Explicitly opt in to modern CMake behaviors to avoid warnings with recent
 # versions of CMake.
