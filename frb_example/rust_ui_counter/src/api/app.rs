@@ -1,3 +1,5 @@
+use flutter_rust_bridge::frb;
+
 #[frb(ui_state)]
 pub struct RustState {
     pub count: i32,
