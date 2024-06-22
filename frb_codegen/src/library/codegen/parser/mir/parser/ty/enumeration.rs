@@ -114,6 +114,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             ignore: attributes.ignore(),
             generate_hash: true,
             generate_eq: true,
+            ui_state: attributes.ui_state(),
             comments: parse_comments(attrs),
             fields: variant
                 .fields

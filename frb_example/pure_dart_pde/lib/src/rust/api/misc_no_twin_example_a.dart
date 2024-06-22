@@ -39,17 +39,17 @@ abstract class DeliberateFailSanityCheckTwinNormal
 
   OpaqueItemTwinNormal get goodFieldC;
 
-  void set deliberateBadFieldA(Uint8List deliberateBadFieldA);
+  set deliberateBadFieldA(Uint8List deliberateBadFieldA);
 
-  void set deliberateBadFieldB(OpaqueItemTwinNormal deliberateBadFieldB);
+  set deliberateBadFieldB(OpaqueItemTwinNormal deliberateBadFieldB);
 
-  void set deliberateBadFieldC(List<OpaqueItemTwinNormal> deliberateBadFieldC);
+  set deliberateBadFieldC(List<OpaqueItemTwinNormal> deliberateBadFieldC);
 
-  void set goodFieldA(String goodFieldA);
+  set goodFieldA(String goodFieldA);
 
-  void set goodFieldB(int goodFieldB);
+  set goodFieldB(int goodFieldB);
 
-  void set goodFieldC(OpaqueItemTwinNormal goodFieldC);
+  set goodFieldC(OpaqueItemTwinNormal goodFieldC);
 
   static Future<void> dummyFunctionTwinNormal() => RustLib.instance.api
       .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalDummyFunctionTwinNormal();
@@ -60,7 +60,7 @@ abstract class ItemContainerSolutionOneTwinNormal
     implements RustOpaqueInterface {
   String get name;
 
-  void set name(String name);
+  set name(String name);
 
   static Future<ItemContainerSolutionOneTwinNormal> createTwinNormal() => RustLib
       .instance.api
@@ -110,11 +110,11 @@ abstract class StructWithSimpleSetterTwinNormal implements RustOpaqueInterface {
   factory StructWithSimpleSetterTwinNormal() => RustLib.instance.api
       .crateApiMiscNoTwinExampleAStructWithSimpleSetterTwinNormalNew();
 
-  void set something(int value);
+  set something(int value);
 
   int get simpleGetter;
 
-  void set simpleSetter(int value);
+  set simpleSetter(int value);
 }
 
 class ItemContainerSolutionTwoTwinNormal {

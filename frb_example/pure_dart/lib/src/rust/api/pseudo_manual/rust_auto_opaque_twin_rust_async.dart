@@ -257,7 +257,7 @@ abstract class StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync
     implements RustOpaqueInterface {
   String get good;
 
-  void set good(String good);
+  set good(String good);
 }
 
 abstract class MyTraitTwinRustAsync {

@@ -10,6 +10,7 @@ use std::collections::HashMap;
 
 pub(crate) mod auto_accessor;
 pub(crate) mod real;
+pub(crate) mod ui_related;
 
 pub(crate) fn parse(
     config: &ParserMirInternalConfig,

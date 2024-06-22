@@ -18,6 +18,7 @@ use crate::codegen::ir::misc::skip::{IrSkip, IrSkipReason, IrValueOrSkip, MirFun
 use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
 use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
 use crate::codegen::parser::mir::parser::function::real::lifetime::parse_function_lifetime;
+use crate::codegen::parser::mir::parser::function::ui_related::UI_MUTATION_FUNCTION_RUST_AOP_AFTER;
 use crate::codegen::parser::mir::parser::ty::concrete::ERROR_MESSAGE_FORBID_TYPE_SELF;
 use crate::codegen::parser::mir::parser::ty::generics::should_ignore_because_generics;
 use crate::codegen::parser::mir::parser::ty::misc::parse_comments;
@@ -260,6 +261,8 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             comments: parse_comments(func.item_fn.attrs()),
             codec_mode_pack,
             rust_call_code: None,
+            rust_aop_after: (attributes.ui_mutation())
+                .then(|| UI_MUTATION_FUNCTION_RUST_AOP_AFTER.to_owned()),
             impl_mode,
             src_lineno_pseudo: src_lineno,
         }))

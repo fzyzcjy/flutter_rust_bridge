@@ -9,12 +9,13 @@ use crate::codegen::generator::wire::rust::spec_generator::misc::ty::WireRustGen
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
 use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::ir::mir::ty::MirTypeTrait;
+use crate::utils::namespace::Namespace;
 use itertools::Itertools;
 
 impl<'a> WireRustGeneratorMiscTrait for RustOpaqueWireRustGenerator<'a> {
-    fn generate_imports(&self) -> Option<Vec<String>> {
+    fn generate_imports(&self) -> Option<Vec<Namespace>> {
         // To expose the `pub use`s inside that file
-        Some(vec![format!("use {}::*;", self.mir.namespace.joined_path)])
+        Some(vec![self.mir.namespace.clone()])
     }
 
     fn generate_related_funcs(&self) -> Acc<WireRustOutputCode> {

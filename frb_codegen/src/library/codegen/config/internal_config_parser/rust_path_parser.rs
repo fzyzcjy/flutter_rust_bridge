@@ -1,11 +1,9 @@
-use crate::codegen::config::internal_config_parser::dart_path_parser::compute_path_map;
 use crate::codegen::config::internal_config_parser::rust_path_migrator::ConfigRustRootAndRustInput;
-use crate::codegen::generator::misc::target::TargetOrCommonMap;
 use crate::codegen::parser::mir::internal_config::RustInputNamespacePack;
 use crate::utils::crate_name::CrateName;
 use crate::utils::namespace::Namespace;
 use crate::utils::path_utils::canonicalize_with_error_message;
-use anyhow::Context;
+use anyhow::ensure;
 use itertools::Itertools;
 use std::path::{Path, PathBuf};
 
@@ -13,7 +11,7 @@ pub(super) struct RustInputInfo {
     pub rust_crate_dir: PathBuf,
     pub third_party_crate_names: Vec<CrateName>,
     pub rust_input_namespace_pack: RustInputNamespacePack,
-    pub rust_output_path: TargetOrCommonMap<PathBuf>,
+    pub rust_output_path: PathBuf,
 }
 
 pub(super) fn compute_rust_path_info(
@@ -28,7 +26,7 @@ pub(super) fn compute_rust_path_info(
     let rust_output_path = compute_rust_output_path(config_rust_output, base_dir, &rust_crate_dir)?;
 
     let rust_output_path_namespace =
-        Namespace::new_from_rust_crate_path(&rust_output_path.common, &rust_crate_dir)?;
+        Namespace::new_from_rust_crate_path(&rust_output_path, &rust_crate_dir)?;
 
     Ok(RustInputInfo {
         rust_crate_dir,
@@ -79,12 +77,21 @@ fn compute_rust_output_path(
     config_rust_output: &Option<String>,
     base_dir: &Path,
     rust_crate_dir: &Path,
-) -> anyhow::Result<TargetOrCommonMap<PathBuf>> {
-    let path_common = base_dir.join(
+) -> anyhow::Result<PathBuf> {
+    let ans = base_dir.join(
         (config_rust_output.clone().map(PathBuf::from))
             .unwrap_or_else(|| fallback_rust_output_path(rust_crate_dir)),
     );
-    compute_path_map(&path_common).context("rust_output: is wrong: ")
+
+    // We do not care about codecov for this, since it is just a sanity check warning
+    // frb-coverage:ignore-start
+    ensure!(
+        ans.extension().is_some(),
+        "Rust output path needs to include the file name."
+    );
+    // frb-coverage:ignore-end
+
+    Ok(ans)
 }
 
 fn fallback_rust_output_path(rust_crate_dir: &Path) -> PathBuf {

@@ -15,7 +15,7 @@ abstract class StructOneWithTraitForDynTwinNormal
     implements RustOpaqueInterface, SimpleTraitForDynTwinNormal {
   int get one;
 
-  void set one(int one);
+  set one(int one);
 
   static Future<StructOneWithTraitForDynTwinNormal> createTwinNormal(
           {required int one}) =>
@@ -31,7 +31,7 @@ abstract class StructTwoWithTraitForDynTwinNormal
     implements RustOpaqueInterface, SimpleTraitForDynTwinNormal {
   int get two;
 
-  void set two(int two);
+  set two(int two);
 
   static Future<StructTwoWithTraitForDynTwinNormal> createTwinNormal(
           {required int two}) =>

@@ -75327,7 +75327,7 @@ class ConstructorOpaqueStructTwinNormalImpl extends RustOpaque
         that: this,
       );
 
-  void set one(String one) => RustLib.instance.api
+  set one(String one) => RustLib.instance.api
       .crateApiConstructorConstructorOpaqueStructTwinNormalAutoAccessorSetOne(
           that: this, one: one);
 
@@ -75364,7 +75364,7 @@ class ConstructorOpaqueSyncStructTwinNormalImpl extends RustOpaque
         that: this,
       );
 
-  void set one(String one) => RustLib.instance.api
+  set one(String one) => RustLib.instance.api
       .crateApiConstructorConstructorOpaqueSyncStructTwinNormalAutoAccessorSetOne(
           that: this, one: one);
 
@@ -75426,31 +75426,29 @@ class DeliberateFailSanityCheckTwinNormalImpl extends RustOpaque
         that: this,
       );
 
-  void set deliberateBadFieldA(Uint8List deliberateBadFieldA) => RustLib
-      .instance.api
+  set deliberateBadFieldA(Uint8List deliberateBadFieldA) => RustLib.instance.api
       .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorSetDeliberateBadFieldA(
           that: this, deliberateBadFieldA: deliberateBadFieldA);
 
-  void set deliberateBadFieldB(OpaqueItemTwinNormal deliberateBadFieldB) => RustLib
+  set deliberateBadFieldB(OpaqueItemTwinNormal deliberateBadFieldB) => RustLib
       .instance.api
       .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorSetDeliberateBadFieldB(
           that: this, deliberateBadFieldB: deliberateBadFieldB);
 
-  void set deliberateBadFieldC(
-          List<OpaqueItemTwinNormal> deliberateBadFieldC) =>
+  set deliberateBadFieldC(List<OpaqueItemTwinNormal> deliberateBadFieldC) =>
       RustLib.instance.api
           .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorSetDeliberateBadFieldC(
               that: this, deliberateBadFieldC: deliberateBadFieldC);
 
-  void set goodFieldA(String goodFieldA) => RustLib.instance.api
+  set goodFieldA(String goodFieldA) => RustLib.instance.api
       .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorSetGoodFieldA(
           that: this, goodFieldA: goodFieldA);
 
-  void set goodFieldB(int goodFieldB) => RustLib.instance.api
+  set goodFieldB(int goodFieldB) => RustLib.instance.api
       .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorSetGoodFieldB(
           that: this, goodFieldB: goodFieldB);
 
-  void set goodFieldC(OpaqueItemTwinNormal goodFieldC) => RustLib.instance.api
+  set goodFieldC(OpaqueItemTwinNormal goodFieldC) => RustLib.instance.api
       .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalAutoAccessorSetGoodFieldC(
           that: this, goodFieldC: goodFieldC);
 }
@@ -75840,7 +75838,7 @@ class ItemContainerSolutionOneTwinNormalImpl extends RustOpaque
         that: this,
       );
 
-  void set name(String name) => RustLib.instance.api
+  set name(String name) => RustLib.instance.api
       .crateApiMiscNoTwinExampleAItemContainerSolutionOneTwinNormalAutoAccessorSetName(
           that: this, name: name);
 
@@ -77149,7 +77147,7 @@ class StructOneWithTraitForDynTwinNormalImpl extends RustOpaque
         that: this,
       );
 
-  void set one(int one) => RustLib.instance.api
+  set one(int one) => RustLib.instance.api
       .crateApiDynTraitStructOneWithTraitForDynTwinNormalAutoAccessorSetOne(
           that: this, one: one);
 
@@ -77185,7 +77183,7 @@ class StructOneWithTraitTwinNormalImpl extends RustOpaque
         that: this,
       );
 
-  void set one(int one) => RustLib.instance.api
+  set one(int one) => RustLib.instance.api
       .crateApiImplTraitStructOneWithTraitTwinNormalAutoAccessorSetOne(
           that: this, one: one);
 
@@ -77221,7 +77219,7 @@ class StructOneWithTraitTwinSyncImpl extends RustOpaque
         that: this,
       );
 
-  void set one(int one) => RustLib.instance.api
+  set one(int one) => RustLib.instance.api
       .crateApiPseudoManualImplTraitTwinSyncStructOneWithTraitTwinSyncAutoAccessorSetOne(
           that: this, one: one);
 
@@ -77258,7 +77256,7 @@ class StructTwoWithTraitForDynTwinNormalImpl extends RustOpaque
         that: this,
       );
 
-  void set two(int two) => RustLib.instance.api
+  set two(int two) => RustLib.instance.api
       .crateApiDynTraitStructTwoWithTraitForDynTwinNormalAutoAccessorSetTwo(
           that: this, two: two);
 
@@ -77294,7 +77292,7 @@ class StructTwoWithTraitTwinNormalImpl extends RustOpaque
         that: this,
       );
 
-  void set two(int two) => RustLib.instance.api
+  set two(int two) => RustLib.instance.api
       .crateApiImplTraitStructTwoWithTraitTwinNormalAutoAccessorSetTwo(
           that: this, two: two);
 
@@ -77330,7 +77328,7 @@ class StructTwoWithTraitTwinSyncImpl extends RustOpaque
         that: this,
       );
 
-  void set two(int two) => RustLib.instance.api
+  set two(int two) => RustLib.instance.api
       .crateApiPseudoManualImplTraitTwinSyncStructTwoWithTraitTwinSyncAutoAccessorSetTwo(
           that: this, two: two);
 
@@ -77367,7 +77365,7 @@ class StructWithGoodAndOpaqueFieldWithoutOptionTwinNormalImpl extends RustOpaque
         that: this,
       );
 
-  void set good(String good) => RustLib.instance.api
+  set good(String good) => RustLib.instance.api
       .crateApiRustAutoOpaqueStructWithGoodAndOpaqueFieldWithoutOptionTwinNormalAutoAccessorSetGood(
           that: this, good: good);
 }
@@ -77400,7 +77398,7 @@ class StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncImpl
         that: this,
       );
 
-  void set good(String good) => RustLib.instance.api
+  set good(String good) => RustLib.instance.api
       .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncAutoAccessorSetGood(
           that: this, good: good);
 }
@@ -77432,7 +77430,7 @@ class StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncImpl extends RustOpaque
         that: this,
       );
 
-  void set good(String good) => RustLib.instance.api
+  set good(String good) => RustLib.instance.api
       .crateApiPseudoManualRustAutoOpaqueTwinSyncStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncAutoAccessorSetGood(
           that: this, good: good);
 }
@@ -77495,7 +77493,7 @@ class StructWithSimpleSetterTwinNormalImpl extends RustOpaque
         that: this,
       );
 
-  void set something(int value) => RustLib.instance.api
+  set something(int value) => RustLib.instance.api
       .crateApiMiscNoTwinExampleAStructWithSimpleSetterTwinNormalSetSomething(
           that: this, value: value);
 
@@ -77504,7 +77502,7 @@ class StructWithSimpleSetterTwinNormalImpl extends RustOpaque
         that: this,
       );
 
-  void set simpleSetter(int value) => RustLib.instance.api
+  set simpleSetter(int value) => RustLib.instance.api
       .crateApiMiscNoTwinExampleAStructWithSimpleSetterTwinNormalSimpleSetter(
           that: this, value: value);
 }

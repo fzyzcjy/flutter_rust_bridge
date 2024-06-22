@@ -6,6 +6,7 @@ use crate::codegen::ir::mir::func::{
 };
 use crate::codegen::ir::mir::ident::MirIdent;
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
+use crate::codegen::ir::mir::ty::structure::MirStruct;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
 use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
@@ -14,11 +15,13 @@ use crate::codegen::parser::mir::parser::function::real::argument::merge_ownersh
 use crate::codegen::parser::mir::parser::function::real::{
     compute_codec_mode_pack, parse_effective_function_name_of_method,
 };
+use crate::codegen::parser::mir::parser::function::ui_related::UI_MUTATION_FUNCTION_RUST_AOP_AFTER;
 use crate::codegen::parser::mir::parser::ty::{TypeParser, TypeParserParsingContext};
 use crate::codegen::parser::mir::sanity_checker::auto_accessor_checker;
 use crate::utils::namespace::NamespacedName;
 use sha1::{Digest, Sha1};
 
+#[allow(clippy::too_many_arguments)]
 pub(super) fn parse_auto_accessor_of_field(
     config: &ParserMirInternalConfig,
     struct_name: &NamespacedName,
@@ -27,6 +30,7 @@ pub(super) fn parse_auto_accessor_of_field(
     ty_direct_parse: &MirType,
     type_parser: &mut TypeParser,
     context: &TypeParserParsingContext,
+    ty_struct: &MirStruct,
 ) -> anyhow::Result<MirFuncAndSanityCheckInfo> {
     let rust_method_name = format!(
         "auto_accessor_{}_{}",
@@ -93,6 +97,8 @@ pub(super) fn parse_auto_accessor_of_field(
             &config.force_codec_mode_pack,
         ),
         rust_call_code: Some(rust_call_code),
+        rust_aop_after: (ty_struct.ui_state && accessor_mode == MirFuncAccessorMode::Setter)
+            .then(|| UI_MUTATION_FUNCTION_RUST_AOP_AFTER.to_owned()),
         impl_mode: MirFuncImplMode::Normal,
         src_lineno_pseudo: compute_src_lineno_pseudo(struct_name, field),
     };

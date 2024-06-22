@@ -22,7 +22,7 @@ abstract class StructOneWithTraitTwinSse
     implements RustOpaqueInterface, SimpleTraitTwinSse {
   int get one;
 
-  void set one(int one);
+  set one(int one);
 
   Future<int> simpleTraitFnReceiverBorrowTwinSse();
 
@@ -42,7 +42,7 @@ abstract class StructTwoWithTraitTwinSse
     implements RustOpaqueInterface, SimpleTraitTwinSse {
   int get two;
 
-  void set two(int two);
+  set two(int two);
 
   Future<int> simpleTraitFnReceiverBorrowTwinSse();
 

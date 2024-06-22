@@ -22,7 +22,7 @@ abstract class StructOneWithTraitTwinSync
     implements RustOpaqueInterface, SimpleTraitTwinSync {
   int get one;
 
-  void set one(int one);
+  set one(int one);
 
   Future<int> simpleTraitFnReceiverBorrowTwinSync();
 
@@ -42,7 +42,7 @@ abstract class StructTwoWithTraitTwinSync
     implements RustOpaqueInterface, SimpleTraitTwinSync {
   int get two;
 
-  void set two(int two);
+  set two(int two);
 
   Future<int> simpleTraitFnReceiverBorrowTwinSync();
 

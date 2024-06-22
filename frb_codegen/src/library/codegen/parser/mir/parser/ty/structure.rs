@@ -74,6 +74,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             ignore,
             generate_hash: attributes.generate_hash(),
             generate_eq: attributes.generate_eq(),
+            ui_state: attributes.ui_state(),
             comments,
         })
     }

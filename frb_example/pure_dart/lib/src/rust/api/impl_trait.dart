@@ -22,7 +22,7 @@ abstract class StructOneWithTraitTwinNormal
     implements RustOpaqueInterface, SimpleTraitTwinNormal {
   int get one;
 
-  void set one(int one);
+  set one(int one);
 
   Future<int> simpleTraitFnReceiverBorrowTwinNormal();
 
@@ -42,7 +42,7 @@ abstract class StructTwoWithTraitTwinNormal
     implements RustOpaqueInterface, SimpleTraitTwinNormal {
   int get two;
 
-  void set two(int two);
+  set two(int two);
 
   Future<int> simpleTraitFnReceiverBorrowTwinNormal();
 

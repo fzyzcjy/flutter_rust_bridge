@@ -1,6 +1,7 @@
 mod proxy_enum;
 mod sorter;
 pub(crate) mod trait_impl_enum;
+pub(crate) mod ui_related;
 pub(crate) mod utils;
 
 use crate::codegen::dumper::Dumper;
@@ -33,8 +34,11 @@ pub(crate) fn execute(
     proxy_enum::generate(&mut pack, &tentative_mir_pack, config_mir)?;
     dumper.dump("3_proxy_enum.json", &pack)?;
 
+    ui_related::generate(&mut pack, config_mir)?;
+    dumper.dump("4_ui_related.json", &pack)?;
+
     sorter::generate(&mut pack);
-    dumper.dump("3_sorter.json", &pack)?;
+    dumper.dump("5_sorter.json", &pack)?;
 
     Ok(pack)
 }

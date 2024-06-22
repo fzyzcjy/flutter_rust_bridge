@@ -43,6 +43,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                 ignore: false,
                 generate_hash: true,
                 generate_eq: true,
+                ui_state: false,
                 comments: vec![],
                 fields: values
                     .iter()

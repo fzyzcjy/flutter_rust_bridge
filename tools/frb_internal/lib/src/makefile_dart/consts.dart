@@ -13,6 +13,8 @@ const kRustPackagesAllowWeb = [
   'frb_example/flutter_via_create/rust',
   'frb_example/flutter_via_integrate/rust',
   'frb_example/flutter_package/rust',
+  'frb_example/rust_ui_counter',
+  'frb_example/rust_ui_todo_list',
   'frb_example/gallery/rust',
 ];
 
@@ -39,6 +41,8 @@ const kDartExamplePackages = [
   'frb_example/deliberate_bad',
   'frb_example/integrate_third_party',
   'frb_example/flutter_package',
+  'frb_example/rust_ui_counter/ui',
+  'frb_example/rust_ui_todo_list/ui',
   ...kDartExampleIntegratePackages,
   'frb_example/gallery',
 ];
@@ -70,6 +74,8 @@ const kDartModeOfPackage = {
   'frb_example/flutter_via_integrate': DartMode.flutter,
   'frb_example/flutter_package': DartMode.flutter,
   'frb_example/flutter_package/example': DartMode.flutter,
+  'frb_example/rust_ui_counter/ui': DartMode.flutter,
+  'frb_example/rust_ui_todo_list/ui': DartMode.flutter,
   'frb_example/gallery': DartMode.flutter,
 };
 
