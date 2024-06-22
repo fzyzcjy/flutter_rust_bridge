@@ -7,7 +7,10 @@ pub struct RustState {
 
 impl RustState {
     pub fn new() -> Self {
-        Self { count: 100 }
+        Self {
+            count: 100,
+            base_state: Default::default(),
+        }
     }
 
     #[frb(ui_mutation)]
