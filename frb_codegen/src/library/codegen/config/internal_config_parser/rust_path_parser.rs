@@ -1,4 +1,3 @@
-
 use crate::codegen::config::internal_config_parser::rust_path_migrator::ConfigRustRootAndRustInput;
 
 use crate::codegen::parser::mir::internal_config::RustInputNamespacePack;
@@ -6,6 +5,7 @@ use crate::utils::crate_name::CrateName;
 use crate::utils::namespace::Namespace;
 use crate::utils::path_utils::canonicalize_with_error_message;
 
+use anyhow::ensure;
 use itertools::Itertools;
 use std::path::{Path, PathBuf};
 
@@ -80,10 +80,20 @@ fn compute_rust_output_path(
     base_dir: &Path,
     rust_crate_dir: &Path,
 ) -> anyhow::Result<PathBuf> {
-    Ok(base_dir.join(
+    let ans = base_dir.join(
         (config_rust_output.clone().map(PathBuf::from))
             .unwrap_or_else(|| fallback_rust_output_path(rust_crate_dir)),
-    ))
+    );
+
+    // We do not care about codecov for this, since it is just a sanity check warning
+    // frb-coverage:ignore-start
+    ensure!(
+        ans.extension().is_some(),
+        "Rust output path needs to include the file name."
+    );
+    // frb-coverage:ignore-end
+
+    Ok(ans)
 }
 
 fn fallback_rust_output_path(rust_crate_dir: &Path) -> PathBuf {
