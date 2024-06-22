@@ -8,6 +8,7 @@ use crate::codegen::generator::wire::dart::spec_generator::base::{
 };
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFunc;
+use crate::codegen::ir::mir::func::MirFuncMode;
 use crate::codegen::ir::mir::pack::MirPackComputedCache;
 use crate::codegen::misc::GeneratorProgressBarPack;
 use crate::library::codegen::generator::wire::dart::spec_generator::misc::ty::WireDartGeneratorMiscTrait;
@@ -102,7 +103,17 @@ fn generate_boilerplate(
 
     let execute_rust_initializers = (context.mir_pack.funcs_with_impl().iter())
         .filter(|f| f.initializer)
-        .map(|f| format!("await api.{}();\n", f.name_dart_wire()))
+        .map(|f| {
+            format!(
+                "{maybe_await}api.{name}();\n",
+                maybe_await = if f.mode == MirFuncMode::Normal {
+                    "await "
+                } else {
+                    ""
+                },
+                name = f.name_dart_wire()
+            )
+        })
         .join("");
 
     let codegen_version = env!("CARGO_PKG_VERSION");
