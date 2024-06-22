@@ -51,6 +51,6 @@ android {
 
 apply from: "../cargokit/gradle/plugin.gradle"
 cargokit {
-    manifestDir = "../../rust"
+    manifestDir = "../../../"
     libname = "rust_lib_frb_example_rust_ui_counter"
 }
