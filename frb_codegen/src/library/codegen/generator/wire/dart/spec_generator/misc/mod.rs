@@ -30,6 +30,7 @@ pub(crate) struct WireDartOutputSpecMisc {
     pub(crate) boilerplate: Acc<Vec<WireDartOutputCode>>,
     pub(crate) api_impl_normal_functions: Vec<WireDartOutputCode>,
     pub(crate) extra_functions: Acc<Vec<WireDartOutputCode>>,
+    pub(crate) extra_from_parser: Acc<Vec<WireDartOutputCode>>,
 }
 
 #[allow(clippy::too_many_arguments)]
@@ -64,6 +65,11 @@ pub(crate) fn generate(
         extra_functions: (cache.distinct_types.iter())
             .flat_map(|ty| WireDartGenerator::new(ty.clone(), context).generate_extra_functions())
             .collect(),
+        extra_from_parser: Acc::new_common(vec![WireDartOutputCode {
+            header: context.mir_pack.extra_dart_output_code.header.clone(),
+            body: context.mir_pack.extra_dart_output_code.body.clone(),
+            ..Default::default()
+        }]),
     })
 }
 

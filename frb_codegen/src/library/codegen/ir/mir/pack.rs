@@ -25,7 +25,7 @@ pub struct MirPack {
     pub skips: Vec<IrSkip>,
     pub trait_impls: Vec<MirTraitImpl>,
     pub extra_rust_output_code: String,
-    pub extra_dart_output_code: String,
+    pub extra_dart_output_code: GeneralDartCode,
 }
 
 impl MirPack {

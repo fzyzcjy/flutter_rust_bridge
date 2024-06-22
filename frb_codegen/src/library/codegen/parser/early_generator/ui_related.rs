@@ -4,6 +4,8 @@ use crate::codegen::parser::hir::flat::extra_code_injector::{
 };
 use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
 use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
+use crate::utils::basic_code::general_code::GeneralDartCode;
+use crate::utils::basic_code::parser::parse_dart_code;
 
 pub(crate) fn generate(
     pack: &mut IrEarlyGeneratorPack,
@@ -23,7 +25,7 @@ pub(crate) fn generate(
         }],
     )?;
 
-    pack.hir_flat_pack.extra_dart_output_code += &generate_dart_boilerplate();
+    pack.hir_flat_pack.extra_dart_output_code += parse_dart_code(&generate_dart_boilerplate());
 
     Ok(())
 }
