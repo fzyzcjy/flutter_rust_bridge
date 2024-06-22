@@ -11,7 +11,7 @@ pub(crate) fn handle( item: proc_macro::TokenStream) -> proc_macro::TokenStream 
     if let syn::Fields::Named(ref mut fields) = ast.fields {
         fields.named.push(
             syn::Field::parse_named
-                .parse2(quote! { pub a: String })
+                .parse2(quote! { pub(crate) base_state: crate::frb_generated::BaseState })
                 .unwrap(),
         );
     }
