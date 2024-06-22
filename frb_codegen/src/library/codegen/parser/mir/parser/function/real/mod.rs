@@ -58,6 +58,7 @@ pub(crate) fn parse(
                 config.default_rust_opaque_codec,
                 config.enable_lifetime,
                 config.type_64bit_int,
+                config.default_dart_async,
                 parse_mode,
                 config.stop_on_error,
             )
