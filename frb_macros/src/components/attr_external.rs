@@ -9,10 +9,6 @@ use syn::{ImplItem, Item, ItemImpl};
 // but coverage tool does not think so, possibly because it is done in build time
 // frb-coverage:ignore-start
 pub(crate) fn handle_attr_external(attribute: TokenStream, item: TokenStream) -> TokenStream {
-    if attribute.to_string() != ATTR_KEYWORD {
-        return item;
-    }
-
     let item_string = item.to_string();
     let encoded_original_item =
         create_frb_encoded_comment(&format!("#[frb({})]{}", attribute, &item_string));
@@ -74,6 +70,5 @@ fn convert_item(mut item_syn: syn::ItemImpl, dummy_struct_ty: syn::Type) -> Toke
     item_syn.to_token_stream()
 }
 
-const ATTR_KEYWORD: &str = "external";
 const DUMMY_STRUCT_PREFIX: &str = "__external_impl__";
 // frb-coverage:ignore-end

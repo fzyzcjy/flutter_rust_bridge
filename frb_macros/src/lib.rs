@@ -16,11 +16,14 @@ use proc_macro::TokenStream;
 #[proc_macro_attribute]
 pub fn frb(attribute: TokenStream, item: TokenStream) -> TokenStream {
     let attribute_encoded = create_frb_encoded_comment(&format!("#[frb({attribute})]"));
-    let attribute_proc_macro2 = attribute.into();
+    let attribute_str = attribute.to_string();
+    let attribute_proc_macro2: proc_macro2::TokenStream = attribute.into();
 
     let item_converted = item.into();
-    let item_converted = handle_attr_external(attribute_proc_macro2.clone(), item_converted);
-    let item_converted = handle_attr_ui_state(attribute_proc_macro2.clone(), item_converted);
+    let item_converted = match attribute_str.as_ref() {
+        ATTR_KEYWORD_EXTERNAL => handle_attr_external(attribute_proc_macro2.clone(), item_converted),
+        _ => item_converted,
+    };
     let item_converted = convert_frb_attr_to_encoded_form(item_converted);
 
     (quote::quote! {
@@ -30,3 +33,5 @@ pub fn frb(attribute: TokenStream, item: TokenStream) -> TokenStream {
     .into()
 }
 // frb-coverage:ignore-end
+
+const ATTR_KEYWORD_EXTERNAL: &str = "external";
