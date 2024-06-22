@@ -8,7 +8,7 @@ use std::path::PathBuf;
 pub(crate) struct GeneratorWireRustInternalConfig {
     pub rust_crate_dir: PathBuf,
     pub web_enabled: bool,
-    pub rust_output_path: TargetOrCommonMap<PathBuf>,
+    pub rust_output_path: PathBuf,
     pub c_symbol_prefix: String,
     pub has_ffigen: bool,
     pub default_stream_sink_codec: CodecMode,

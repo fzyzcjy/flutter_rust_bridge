@@ -104,7 +104,7 @@ fn generate_imports(
     context: WireRustGeneratorContext,
 ) -> Acc<Vec<WireRustOutputCode>> {
     let output_namespace = Namespace::new_from_rust_crate_path(
-        &context.config.rust_output_path.common,
+        &context.config.rust_output_path,
         &context.config.rust_crate_dir,
     )
     .unwrap();

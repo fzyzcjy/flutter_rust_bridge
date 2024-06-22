@@ -6,7 +6,7 @@ use std::path::{Path, PathBuf};
 pub(super) fn parse(
     meta_config: &MetaConfig,
     rust_crate_dir: &Path,
-    rust_output_path: &TargetOrCommonMap<PathBuf>,
+    rust_output_path: &Path,
 ) -> anyhow::Result<ControllerInternalConfig> {
     let watching_paths = vec![
         // The whole crate needs to be watched, because e.g. when a struct definition changes

@@ -13,7 +13,7 @@ pub(super) struct RustInputInfo {
     pub rust_crate_dir: PathBuf,
     pub third_party_crate_names: Vec<CrateName>,
     pub rust_input_namespace_pack: RustInputNamespacePack,
-    pub rust_output_path: TargetOrCommonMap<PathBuf>,
+    pub rust_output_path: PathBuf,
 }
 
 pub(super) fn compute_rust_path_info(
@@ -79,7 +79,7 @@ fn compute_rust_output_path(
     config_rust_output: &Option<String>,
     base_dir: &Path,
     rust_crate_dir: &Path,
-) -> anyhow::Result<TargetOrCommonMap<PathBuf>> {
+) -> anyhow::Result<PathBuf> {
     let path_common = base_dir.join(
         (config_rust_output.clone().map(PathBuf::from))
             .unwrap_or_else(|| fallback_rust_output_path(rust_crate_dir)),

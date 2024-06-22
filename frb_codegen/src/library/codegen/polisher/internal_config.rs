@@ -11,7 +11,7 @@ pub(crate) struct PolisherInternalConfig {
     pub web_enabled: bool,
     pub dart_root: PathBuf,
     pub rust_crate_dir: PathBuf,
-    pub rust_output_path: TargetOrCommonMap<PathBuf>,
+    pub rust_output_path: PathBuf,
     pub c_output_path: Option<PathBuf>,
     pub enable_auto_upgrade: bool,
 }
