@@ -113,7 +113,7 @@ fn generate_imports(
         .iter()
         .flat_map(|ty| WireRustGenerator::new(ty.clone(), context).generate_imports())
         .flatten()
-        .filter(|namespace| namespace != output_namespace)
+        .filter(|namespace| namespace != &output_namespace)
         .collect::<HashSet<Namespace>>()
         .into_iter()
         .join("\n");
