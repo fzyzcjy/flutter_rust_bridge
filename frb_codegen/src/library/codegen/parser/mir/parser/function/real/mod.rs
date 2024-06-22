@@ -219,8 +219,9 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         info = self.transform_fn_info(info);
 
         let codec_mode_pack = compute_codec_mode_pack(&attributes, force_codec_mode_pack);
-        let mode = compute_func_mode(&attributes, &info);
-        let stream_dart_await = attributes.stream_dart_await() && !attributes.sync();
+        let dart_async = !attributes.sync(); // TODO
+        let mode = compute_func_mode(dart_async, &info);
+        let stream_dart_await = attributes.stream_dart_await() && dart_async;
         let namespace_refined = refine_namespace(&owner).unwrap_or(func.namespace.clone());
         let accessor = attributes.accessor();
 
@@ -278,11 +279,11 @@ fn create_output_skip(func: &HirFlatFunction, reason: IrSkipReason) -> MirFuncOr
     })
 }
 
-fn compute_func_mode(attributes: &FrbAttributes, info: &FunctionPartialInfo) -> MirFuncMode {
-    info.mode.unwrap_or(if attributes.sync() {
-        MirFuncMode::Sync
-    } else {
+fn compute_func_mode(dart_async: bool, info: &FunctionPartialInfo) -> MirFuncMode {
+    info.mode.unwrap_or(if dart_async {
         MirFuncMode::Normal
+    } else {
+        MirFuncMode::Sync
     })
 }
 
