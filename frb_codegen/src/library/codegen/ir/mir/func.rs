@@ -29,6 +29,7 @@ pub struct MirFunc {
     pub comments: Vec<MirComment>,
     pub codec_mode_pack: CodecModePack,
     pub rust_call_code: Option<String>,
+    pub rust_aop_after: Option<String>,
     pub impl_mode: MirFuncImplMode,
     // Currently, we use serde only for tests. Since lineno can be unstable, we skip this field for comparison
     #[serde(skip_serializing)]

@@ -260,6 +260,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             comments: parse_comments(func.item_fn.attrs()),
             codec_mode_pack,
             rust_call_code: None,
+            rust_aop_after: TODO,
             impl_mode,
             src_lineno_pseudo: src_lineno,
         }))
