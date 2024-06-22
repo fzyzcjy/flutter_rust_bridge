@@ -13,7 +13,7 @@ pub(super) fn parse(
         // in a non-input file, it may still cause the generated code to change.
         rust_crate_dir.join("src"),
     ];
-    let exclude_paths = rust_output_path.clone().into_vec();
+    let exclude_paths = vec![rust_output_path.to_owned()];
 
     Ok(ControllerInternalConfig {
         watch: meta_config.watch,

@@ -28,7 +28,7 @@ pub(super) fn compute_rust_path_info(
     let rust_output_path = compute_rust_output_path(config_rust_output, base_dir, &rust_crate_dir)?;
 
     let rust_output_path_namespace =
-        Namespace::new_from_rust_crate_path(&rust_output_path.common, &rust_crate_dir)?;
+        Namespace::new_from_rust_crate_path(&rust_output_path, &rust_crate_dir)?;
 
     Ok(RustInputInfo {
         rust_crate_dir,
@@ -80,11 +80,10 @@ fn compute_rust_output_path(
     base_dir: &Path,
     rust_crate_dir: &Path,
 ) -> anyhow::Result<PathBuf> {
-    let path_common = base_dir.join(
+    Ok(base_dir.join(
         (config_rust_output.clone().map(PathBuf::from))
             .unwrap_or_else(|| fallback_rust_output_path(rust_crate_dir)),
-    );
-    compute_path_map(&path_common).context("rust_output: is wrong: ")
+    ))
 }
 
 fn fallback_rust_output_path(rust_crate_dir: &Path) -> PathBuf {

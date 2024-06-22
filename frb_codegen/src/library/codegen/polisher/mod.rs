@@ -141,7 +141,7 @@ fn execute_try_add_mod_to_lib(config: &PolisherInternalConfig) {
     if config.add_mod_to_lib {
         try_add_mod_to_lib(
             &config.rust_crate_dir,
-            &config.rust_output_path[TargetOrCommon::Common],
+            &config.rust_output_path,
         );
     }
 }
