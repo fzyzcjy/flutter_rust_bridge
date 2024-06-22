@@ -11,7 +11,7 @@ pub(crate) fn handle( item: proc_macro::TokenStream) -> proc_macro::TokenStream 
     if let syn::Fields::Named(ref mut fields) = ast.fields {
         fields.named.push(
             syn::Field::parse_named
-                .parse2(quote! { pub(crate) base_state: crate::frb_generated::BaseState })
+                .parse2(quote! { pub(crate) base_state: crate::frb_generated::BaseRustState })
                 .unwrap(),
         );
     }
@@ -22,7 +22,7 @@ pub(crate) fn handle( item: proc_macro::TokenStream) -> proc_macro::TokenStream 
         #ast
 
         impl #struct_ident {
-            pub fn set_base_state(&mut self, base_state: crate::frb_generated::BaseState) {
+            pub fn set_base_state(&mut self, base_state: crate::frb_generated::BaseRustState) {
                 self.base_state = base_state;
             }
         }

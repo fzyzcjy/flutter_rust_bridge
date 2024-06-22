@@ -40,13 +40,13 @@ fn generate_boilerplate() -> String {
     r#"
 #[flutter_rust_bridge::frb(opaque)]
 #[derive(Default)]
-pub struct BaseState {
+pub struct BaseRustState {
     notify_ui: Option<StreamSink<()>>,
 }
 
-impl BaseState {
+impl BaseRustState {
     #[flutter_rust_bridge::frb(sync)]
-    pub fn new() -> Self {
+    pub fn empty() -> Self {
         Self { notify_ui: None }
     }
 
