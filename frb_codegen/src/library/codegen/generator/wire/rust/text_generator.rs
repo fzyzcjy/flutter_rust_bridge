@@ -89,40 +89,23 @@ fn generate_text_from_merged_code(
     ))
 }
 
-fn generate_text_common(
-    core_code_common: &str,
-    config: &GeneratorWireRustInternalConfig,
-) -> anyhow::Result<String> {
-    let mod_io = generate_text_common_mod_declaration("io", config, Target::Io)?;
-
-    let mod_web = if config.web_enabled {
-        generate_text_common_mod_declaration("web", config, Target::Web)?
-    } else {
-        "".into()
-    };
-
-    Ok(format!(
-        "{core_code_common}
-        {mod_io}
-        {mod_web}
-        ",
-    ))
-}
-
-fn merge_rust_acc_into_one_file(acc: Acc<Option<String>>) -> String {
+fn merge_rust_acc_into_one_file(acc: Acc<Option<String>>, web_enabled: bool) -> String {
     let common = acc.common.unwrap_or_default();
     let io = (acc.io.as_ref())
         .map(|x| generate_inline_mod(x, Target::Io))
         .unwrap_or_default();
-    let web = (acc.web.as_ref())
-        .map(|x| generate_inline_mod(x, Target::Web))
-        .unwrap_or_default();
+    let web = if web_enabled {
+        (acc.web.as_ref())
+            .map(|x| generate_inline_mod(x, Target::Web))
+            .unwrap_or_default()
+    } else {
+        "".into()
+    };
 
     format!(
         "{common}
         {io}
-        {web}
-        "
+        {web}"
     )
 }
 
