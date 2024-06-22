@@ -109,6 +109,7 @@
       "third_party_crate_names": []
     },
     "mir": {
+      "default_dart_async": true,
       "default_rust_opaque_codec": "Moi",
       "default_stream_sink_codec": "Sse",
       "enable_lifetime": false,
