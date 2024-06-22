@@ -13,7 +13,7 @@ use strum::IntoEnumIterator;
 // Call it "text", not "code", because the whole codegen is generating code,
 // and we want to emphasize we are generating final output text here.
 pub(super) struct WireRustOutputText {
-    pub(super) text: Acc<Option<String>>,
+    pub(super) text: String,
     pub(super) extern_funcs: Vec<ExternFunc>,
 }
 
