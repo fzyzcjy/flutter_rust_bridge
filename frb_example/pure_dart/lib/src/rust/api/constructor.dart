@@ -11,7 +11,7 @@ abstract class ConstructorOpaqueStructTwinNormal
     implements RustOpaqueInterface {
   String get one;
 
-  void set one(String one);
+  set one(String one);
 
   void check();
 
@@ -26,7 +26,7 @@ abstract class ConstructorOpaqueSyncStructTwinNormal
     implements RustOpaqueInterface {
   String get one;
 
-  void set one(String one);
+  set one(String one);
 
   void check();
 
