@@ -32,10 +32,11 @@ pub(super) fn generate(
             .collect(),
     });
 
-    let text = generate_text_from_merged_code(
+    let text_acc = generate_text_from_merged_code(
         config,
         &(merged_code.clone()).map(|code, _| code.all_code(&config.c_symbol_prefix)),
     )?;
+    let text = merge_rust_acc_into_one_file(text_acc);
 
     let extern_funcs = compute_extern_funcs(merged_code);
 
@@ -108,11 +109,26 @@ fn generate_text_common(
     ))
 }
 
-fn generate_text_common_mod_declaration(
-    name: &str,
-    config: &GeneratorWireRustInternalConfig,
-    target: Target,
-) -> anyhow::Result<String> {
+fn merge_rust_acc_into_one_file(acc: Acc<Option<String>>) -> String {
+    let common = acc.common.unwrap_or_default();
+    let io = (acc.io.as_ref())
+        .map(|x| generate_inline_mod(x, Target::Io))
+        .unwrap_or_default();
+    let web = (acc.web.as_ref())
+        .map(|x| generate_inline_mod(x, Target::Web))
+        .unwrap_or_default();
+
+    format!(
+        "{common}
+        {io}
+        {web}
+        "
+    )
+}
+
+fn generate_inline_mod(mod_body: &str, target: Target) -> String {
+    let name = target.to_string().to_lowercase();
+
     let prelude = match target {
         Target::Io => "",
         Target::Web => "/// cbindgen:ignore",
@@ -123,20 +139,15 @@ fn generate_text_common_mod_declaration(
         Target::Web => r#"target_family = "wasm""#,
     };
 
-    let mod_filename = config.rust_output_path[target.into()]
-        .file_name()
-        .unwrap()
-        .to_str()
-        .unwrap();
-
-    Ok(format!(
+    format!(
         "
         {prelude}
         #[cfg({cfg})]
-        #[path = \"{mod_filename}\"]
-        mod {name};
+        mod {name} {{
+            {mod_body}
+        }}
         #[cfg({cfg})]
         pub use {name}::*;
         "
-    ))
+    )
 }
