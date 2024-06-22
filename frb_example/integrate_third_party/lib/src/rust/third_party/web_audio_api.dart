@@ -222,7 +222,7 @@ abstract class AudioParam
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
-  void set value(double value);
+  set value(double value);
 
   /// Schedules a parameter value change at the given time.
   ///
@@ -258,11 +258,11 @@ abstract class AudioProcessingEvent implements RustOpaqueInterface {
 
   double get playbackTime;
 
-  void set inputBuffer(AudioBuffer inputBuffer);
+  set inputBuffer(AudioBuffer inputBuffer);
 
-  void set outputBuffer(AudioBuffer outputBuffer);
+  set outputBuffer(AudioBuffer outputBuffer);
 
-  void set playbackTime(double playbackTime);
+  set playbackTime(double playbackTime);
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioRenderCapacity>>
@@ -289,15 +289,15 @@ abstract class AudioRenderCapacityEvent implements RustOpaqueInterface {
 
   double get underrunRatio;
 
-  void set averageLoad(double averageLoad);
+  set averageLoad(double averageLoad);
 
-  void set event(Event event);
+  set event(Event event);
 
-  void set peakLoad(double peakLoad);
+  set peakLoad(double peakLoad);
 
-  void set timestamp(double timestamp);
+  set timestamp(double timestamp);
 
-  void set underrunRatio(double underrunRatio);
+  set underrunRatio(double underrunRatio);
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Event>>
@@ -311,9 +311,9 @@ abstract class OfflineAudioCompletionEvent implements RustOpaqueInterface {
 
   AudioBuffer get renderedBuffer;
 
-  void set event(Event event);
+  set event(Event event);
 
-  void set renderedBuffer(AudioBuffer renderedBuffer);
+  set renderedBuffer(AudioBuffer renderedBuffer);
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<PeriodicWave>>

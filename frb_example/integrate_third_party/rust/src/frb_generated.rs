@@ -1063,7 +1063,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(web_audio_api::AudioParam::automation_rate(&*api_that_guard))?;  Ok(output_ok)
+ let output_ok = Result::<_,()>::Ok(web_audio_api::AudioParam::automation_rate(&*api_that_guard))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -1088,7 +1088,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok({ web_audio_api::AudioParam::cancel_and_hold_at_time(&*api_that_guard, api_cancel_time); })?;  Ok(output_ok)
+ let output_ok = Result::<_,()>::Ok({ web_audio_api::AudioParam::cancel_and_hold_at_time(&*api_that_guard, api_cancel_time); })?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -1113,7 +1113,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok({ web_audio_api::AudioParam::cancel_scheduled_values(&*api_that_guard, api_cancel_time); })?;  Ok(output_ok)
+ let output_ok = Result::<_,()>::Ok({ web_audio_api::AudioParam::cancel_scheduled_values(&*api_that_guard, api_cancel_time); })?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -1137,7 +1137,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok({ web_audio_api::AudioParam::channel_config(&*api_that_guard); })?;  Ok(output_ok)
+ let output_ok = Result::<_,()>::Ok({ web_audio_api::AudioParam::channel_config(&*api_that_guard); })?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -1161,7 +1161,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(web_audio_api::AudioParam::channel_count(&*api_that_guard))?;  Ok(output_ok)
+ let output_ok = Result::<_,()>::Ok(web_audio_api::AudioParam::channel_count(&*api_that_guard))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -1185,7 +1185,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(web_audio_api::AudioParam::channel_count_mode(&*api_that_guard))?;  Ok(output_ok)
+ let output_ok = Result::<_,()>::Ok(web_audio_api::AudioParam::channel_count_mode(&*api_that_guard))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -1209,7 +1209,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(web_audio_api::AudioParam::channel_interpretation(&*api_that_guard))?;  Ok(output_ok)
+ let output_ok = Result::<_,()>::Ok(web_audio_api::AudioParam::channel_interpretation(&*api_that_guard))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -1233,7 +1233,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok({ web_audio_api::AudioParam::clear_onprocessorerror(&*api_that_guard); })?;  Ok(output_ok)
+ let output_ok = Result::<_,()>::Ok({ web_audio_api::AudioParam::clear_onprocessorerror(&*api_that_guard); })?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -1257,7 +1257,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(web_audio_api::AudioParam::default_value(&*api_that_guard))?;  Ok(output_ok)
+ let output_ok = Result::<_,()>::Ok(web_audio_api::AudioParam::default_value(&*api_that_guard))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -1281,7 +1281,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok({ web_audio_api::AudioParam::disconnect(&*api_that_guard); })?;  Ok(output_ok)
+ let output_ok = Result::<_,()>::Ok({ web_audio_api::AudioParam::disconnect(&*api_that_guard); })?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -1306,7 +1306,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok({ web_audio_api::AudioParam::disconnect_output(&*api_that_guard, api_output); })?;  Ok(output_ok)
+ let output_ok = Result::<_,()>::Ok({ web_audio_api::AudioParam::disconnect_output(&*api_that_guard, api_output); })?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -1332,7 +1332,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok({ web_audio_api::AudioParam::exponential_ramp_to_value_at_time(&*api_that_guard, api_value, api_end_time); })?;  Ok(output_ok)
+ let output_ok = Result::<_,()>::Ok({ web_audio_api::AudioParam::exponential_ramp_to_value_at_time(&*api_that_guard, api_value, api_end_time); })?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -1360,7 +1360,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
         }
         let api_that_guard = api_that_guard.unwrap();
 let api_dest_guard = api_dest_guard.unwrap();
- let output_ok = Result::<_,()>::Ok({ web_audio_api::AudioParam::frb_override_connect(&*api_that_guard, &*api_dest_guard); })?;  Ok(output_ok)
+ let output_ok = Result::<_,()>::Ok({ web_audio_api::AudioParam::frb_override_connect(&*api_that_guard, &*api_dest_guard); })?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -1386,7 +1386,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok({ web_audio_api::AudioParam::linear_ramp_to_value_at_time(&*api_that_guard, api_value, api_end_time); })?;  Ok(output_ok)
+ let output_ok = Result::<_,()>::Ok({ web_audio_api::AudioParam::linear_ramp_to_value_at_time(&*api_that_guard, api_value, api_end_time); })?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -1410,7 +1410,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(web_audio_api::AudioParam::max_value(&*api_that_guard))?;  Ok(output_ok)
+ let output_ok = Result::<_,()>::Ok(web_audio_api::AudioParam::max_value(&*api_that_guard))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -1434,7 +1434,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(web_audio_api::AudioParam::min_value(&*api_that_guard))?;  Ok(output_ok)
+ let output_ok = Result::<_,()>::Ok(web_audio_api::AudioParam::min_value(&*api_that_guard))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -1458,7 +1458,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(web_audio_api::AudioParam::number_of_inputs(&*api_that_guard))?;  Ok(output_ok)
+ let output_ok = Result::<_,()>::Ok(web_audio_api::AudioParam::number_of_inputs(&*api_that_guard))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -1482,7 +1482,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(web_audio_api::AudioParam::number_of_outputs(&*api_that_guard))?;  Ok(output_ok)
+ let output_ok = Result::<_,()>::Ok(web_audio_api::AudioParam::number_of_outputs(&*api_that_guard))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -1506,7 +1506,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok({ web_audio_api::AudioParam::registration(&*api_that_guard); })?;  Ok(output_ok)
+ let output_ok = Result::<_,()>::Ok({ web_audio_api::AudioParam::registration(&*api_that_guard); })?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -1531,7 +1531,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok({ web_audio_api::AudioParam::set_automation_rate(&*api_that_guard, api_value); })?;  Ok(output_ok)
+ let output_ok = Result::<_,()>::Ok({ web_audio_api::AudioParam::set_automation_rate(&*api_that_guard, api_value); })?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -1556,7 +1556,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok({ web_audio_api::AudioParam::set_channel_count(&*api_that_guard, api_v); })?;  Ok(output_ok)
+ let output_ok = Result::<_,()>::Ok({ web_audio_api::AudioParam::set_channel_count(&*api_that_guard, api_v); })?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -1581,7 +1581,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok({ web_audio_api::AudioParam::set_channel_count_mode(&*api_that_guard, api_v); })?;  Ok(output_ok)
+ let output_ok = Result::<_,()>::Ok({ web_audio_api::AudioParam::set_channel_count_mode(&*api_that_guard, api_v); })?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -1606,7 +1606,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok({ web_audio_api::AudioParam::set_channel_interpretation(&*api_that_guard, api_v); })?;  Ok(output_ok)
+ let output_ok = Result::<_,()>::Ok({ web_audio_api::AudioParam::set_channel_interpretation(&*api_that_guard, api_v); })?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -1631,7 +1631,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok({ web_audio_api::AudioParam::set_on_processor_error(&*api_that_guard, api_callback); })?;  Ok(output_ok)
+ let output_ok = Result::<_,()>::Ok({ web_audio_api::AudioParam::set_on_processor_error(&*api_that_guard, api_callback); })?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -1658,7 +1658,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok({ web_audio_api::AudioParam::set_target_at_time(&*api_that_guard, api_value, api_start_time, api_time_constant); })?;  Ok(output_ok)
+ let output_ok = Result::<_,()>::Ok({ web_audio_api::AudioParam::set_target_at_time(&*api_that_guard, api_value, api_start_time, api_time_constant); })?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -1682,7 +1682,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok({ web_audio_api::AudioParam::set_value(&*api_that_guard, api_value); })?;  Ok(output_ok)
+ let output_ok = Result::<_,()>::Ok({ web_audio_api::AudioParam::set_value(&*api_that_guard, api_value); })?;   Ok(output_ok)
                 })()) })
 }
 fn wire__web_audio_api__AudioParam_set_value_at_time_impl(
@@ -1707,7 +1707,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok({ web_audio_api::AudioParam::set_value_at_time(&*api_that_guard, api_value, api_start_time); })?;  Ok(output_ok)
+ let output_ok = Result::<_,()>::Ok({ web_audio_api::AudioParam::set_value_at_time(&*api_that_guard, api_value, api_start_time); })?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -1734,7 +1734,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok({ web_audio_api::AudioParam::set_value_curve_at_time(&*api_that_guard, &api_values, api_start_time, api_duration); })?;  Ok(output_ok)
+ let output_ok = Result::<_,()>::Ok({ web_audio_api::AudioParam::set_value_curve_at_time(&*api_that_guard, &api_values, api_start_time, api_duration); })?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -1757,7 +1757,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(web_audio_api::AudioParam::value(&*api_that_guard))?;  Ok(output_ok)
+ let output_ok = Result::<_,()>::Ok(web_audio_api::AudioParam::value(&*api_that_guard))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__web_audio_api__AudioProcessingEvent_auto_accessor_get_input_buffer_impl(
@@ -3986,7 +3986,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
         }
         let api_that_guard = api_that_guard.unwrap();
 let api_media_guard = api_media_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(web_audio_api::context::AudioContext::create_media_stream_source(&*api_that_guard, &*api_media_guard))?;  Ok(output_ok)
+ let output_ok = Result::<_,()>::Ok(web_audio_api::context::AudioContext::create_media_stream_source(&*api_that_guard, &*api_media_guard))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -4499,7 +4499,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
         }
         let api_that_guard = api_that_guard.unwrap();
 let mut api_media_element_guard = api_media_element_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(web_audio_api::context::AudioContext::frb_override_create_media_element_source(&*api_that_guard, &mut *api_media_element_guard))?;  Ok(output_ok)
+ let output_ok = Result::<_,()>::Ok(web_audio_api::context::AudioContext::frb_override_create_media_element_source(&*api_that_guard, &mut *api_media_element_guard))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -4524,7 +4524,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = web_audio_api::context::AudioContext::frb_override_decode_audio_data_sync(&*api_that_guard, api_input_path)?;  Ok(output_ok)
+ let output_ok = web_audio_api::context::AudioContext::frb_override_decode_audio_data_sync(&*api_that_guard, api_input_path)?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -4836,7 +4836,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok({ web_audio_api::context::AudioContext::set_on_state_change(&*api_that_guard, api_callback); })?;  Ok(output_ok)
+ let output_ok = Result::<_,()>::Ok({ web_audio_api::context::AudioContext::set_on_state_change(&*api_that_guard, api_callback); })?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -5732,7 +5732,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(web_audio_api::context::ConcreteBaseAudioContext::create_dynamics_compressor(&*api_that_guard))?;  Ok(output_ok)
+ let output_ok = Result::<_,()>::Ok(web_audio_api::context::ConcreteBaseAudioContext::create_dynamics_compressor(&*api_that_guard))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -8019,7 +8019,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok({ web_audio_api::context::OfflineAudioContext::set_on_complete(&*api_that_guard, api_callback); })?;  Ok(output_ok)
+ let output_ok = Result::<_,()>::Ok({ web_audio_api::context::OfflineAudioContext::set_on_complete(&*api_that_guard, api_callback); })?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -8754,7 +8754,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_stream_guard = api_stream_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(web_audio_api::media_recorder::MediaRecorder::new(&*api_stream_guard))?;  Ok(output_ok)
+ let output_ok = Result::<_,()>::Ok(web_audio_api::media_recorder::MediaRecorder::new(&*api_stream_guard))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -8984,7 +8984,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(web_audio_api::media_streams::MediaStream::frb_override_get_tracks(&*api_that_guard))?;  Ok(output_ok)
+ let output_ok = Result::<_,()>::Ok(web_audio_api::media_streams::MediaStream::frb_override_get_tracks(&*api_that_guard))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -11547,7 +11547,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok({ web_audio_api::node::AudioBufferSourceNode::set_on_ended(&*api_that_guard, api_callback); })?;  Ok(output_ok)
+ let output_ok = Result::<_,()>::Ok({ web_audio_api::node::AudioBufferSourceNode::set_on_ended(&*api_that_guard, api_callback); })?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -11794,7 +11794,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let mut api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok({ web_audio_api::node::AudioBufferSourceNode::start_at_with_offset_and_duration(&mut *api_that_guard, api_start, api_offset, api_duration); })?;  Ok(output_ok)
+ let output_ok = Result::<_,()>::Ok({ web_audio_api::node::AudioBufferSourceNode::start_at_with_offset_and_duration(&mut *api_that_guard, api_start, api_offset, api_duration); })?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -16106,7 +16106,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok({ web_audio_api::node::ConstantSourceNode::set_on_ended(&*api_that_guard, api_callback); })?;  Ok(output_ok)
+ let output_ok = Result::<_,()>::Ok({ web_audio_api::node::ConstantSourceNode::set_on_ended(&*api_that_guard, api_callback); })?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -21348,7 +21348,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok({ web_audio_api::node::MediaElementAudioSourceNode::set_channel_interpretation(&*api_that_guard, api_v); })?;  Ok(output_ok)
+ let output_ok = Result::<_,()>::Ok({ web_audio_api::node::MediaElementAudioSourceNode::set_channel_interpretation(&*api_that_guard, api_v); })?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -21596,7 +21596,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(web_audio_api::node::MediaStreamAudioDestinationNode::channel_interpretation(&*api_that_guard))?;  Ok(output_ok)
+ let output_ok = Result::<_,()>::Ok(web_audio_api::node::MediaStreamAudioDestinationNode::channel_interpretation(&*api_that_guard))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -21620,7 +21620,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok({ web_audio_api::node::MediaStreamAudioDestinationNode::clear_onprocessorerror(&*api_that_guard); })?;  Ok(output_ok)
+ let output_ok = Result::<_,()>::Ok({ web_audio_api::node::MediaStreamAudioDestinationNode::clear_onprocessorerror(&*api_that_guard); })?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -22043,7 +22043,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok({ web_audio_api::node::MediaStreamAudioDestinationNode::set_channel_count_mode(&*api_that_guard, api_v); })?;  Ok(output_ok)
+ let output_ok = Result::<_,()>::Ok({ web_audio_api::node::MediaStreamAudioDestinationNode::set_channel_count_mode(&*api_that_guard, api_v); })?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -22068,7 +22068,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok({ web_audio_api::node::MediaStreamAudioDestinationNode::set_channel_interpretation(&*api_that_guard, api_v); })?;  Ok(output_ok)
+ let output_ok = Result::<_,()>::Ok({ web_audio_api::node::MediaStreamAudioDestinationNode::set_channel_interpretation(&*api_that_guard, api_v); })?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -22093,7 +22093,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok({ web_audio_api::node::MediaStreamAudioDestinationNode::set_on_processor_error(&*api_that_guard, api_callback); })?;  Ok(output_ok)
+ let output_ok = Result::<_,()>::Ok({ web_audio_api::node::MediaStreamAudioDestinationNode::set_on_processor_error(&*api_that_guard, api_callback); })?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -23098,7 +23098,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(web_audio_api::node::MediaStreamTrackAudioSourceNode::channel_interpretation(&*api_that_guard))?;  Ok(output_ok)
+ let output_ok = Result::<_,()>::Ok(web_audio_api::node::MediaStreamTrackAudioSourceNode::channel_interpretation(&*api_that_guard))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -23122,7 +23122,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok({ web_audio_api::node::MediaStreamTrackAudioSourceNode::clear_onprocessorerror(&*api_that_guard); })?;  Ok(output_ok)
+ let output_ok = Result::<_,()>::Ok({ web_audio_api::node::MediaStreamTrackAudioSourceNode::clear_onprocessorerror(&*api_that_guard); })?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -23545,7 +23545,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok({ web_audio_api::node::MediaStreamTrackAudioSourceNode::set_channel_count_mode(&*api_that_guard, api_v); })?;  Ok(output_ok)
+ let output_ok = Result::<_,()>::Ok({ web_audio_api::node::MediaStreamTrackAudioSourceNode::set_channel_count_mode(&*api_that_guard, api_v); })?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -23570,7 +23570,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok({ web_audio_api::node::MediaStreamTrackAudioSourceNode::set_channel_interpretation(&*api_that_guard, api_v); })?;  Ok(output_ok)
+ let output_ok = Result::<_,()>::Ok({ web_audio_api::node::MediaStreamTrackAudioSourceNode::set_channel_interpretation(&*api_that_guard, api_v); })?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -23595,7 +23595,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok({ web_audio_api::node::MediaStreamTrackAudioSourceNode::set_on_processor_error(&*api_that_guard, api_callback); })?;  Ok(output_ok)
+ let output_ok = Result::<_,()>::Ok({ web_audio_api::node::MediaStreamTrackAudioSourceNode::set_on_processor_error(&*api_that_guard, api_callback); })?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -24416,7 +24416,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok({ web_audio_api::node::OscillatorNode::set_on_ended(&*api_that_guard, api_callback); })?;  Ok(output_ok)
+ let output_ok = Result::<_,()>::Ok({ web_audio_api::node::OscillatorNode::set_on_ended(&*api_that_guard, api_callback); })?;   Ok(output_ok)
                     })())
                 } })
 }
