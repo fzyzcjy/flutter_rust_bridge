@@ -16,8 +16,11 @@ use proc_macro::TokenStream;
 #[proc_macro_attribute]
 pub fn frb(attribute: TokenStream, item: TokenStream) -> TokenStream {
     let attribute_encoded = create_frb_encoded_comment(&format!("#[frb({attribute})]"));
-    let item_converted =
-        convert_frb_attr_to_encoded_form(handle_attr_external(attribute.into(), item.into()));
+
+    let item_converted = item.into();
+    let item_converted = handle_attr_external(attribute.into(), item_converted);
+    let item_converted = convert_frb_attr_to_encoded_form(item_converted);
+
     (quote::quote! {
         #attribute_encoded
         #item_converted
