@@ -97,6 +97,9 @@ impl FrbAttributes {
             Some(true)
         } else if self.any_eq(&FrbAttribute::NonOpaque) {
             Some(false)
+        } else if self.ui_state() {
+            // When `#[frb(ui_state)]`, auto infer `#[frb(opaque)]`
+            Some(true)
         } else {
             None
         }
