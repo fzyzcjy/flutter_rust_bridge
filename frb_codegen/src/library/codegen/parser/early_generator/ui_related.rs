@@ -37,8 +37,15 @@ fn should_enable_ui(pack: &mut IrEarlyGeneratorPack) -> anyhow::Result<bool> {
 }
 
 fn generate_boilerplate() -> String {
-    r#"
+    r###"
 #[flutter_rust_bridge::frb(opaque)]
+#[flutter_rust_bridge::frb(dart_code = r#"
+    factory BaseRustState({required void Function() onMutate}) {
+        final object = BaseRustState.empty();
+        object.createNotifyUiStream().listen((_) => onMutate());
+        return object;
+    }
+"#)]
 #[derive(Default)]
 pub struct BaseRustState {
     notify_ui: Option<StreamSink<()>>,
@@ -60,6 +67,6 @@ impl BaseRustState {
         self.notify_ui.as_ref().unwrap().add(()).unwrap()
     }
 }
-    "#
+    "###
     .to_owned()
 }
