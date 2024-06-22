@@ -38,8 +38,6 @@ fn should_enable_ui(pack: &mut IrEarlyGeneratorPack) -> anyhow::Result<bool> {
 
 fn generate_boilerplate() -> String {
     r#"
-use crate::frb_generated::StreamSink;
-
 #[flutter_rust_bridge::frb(opaque)]
 #[derive(Default)]
 pub struct BaseState {
