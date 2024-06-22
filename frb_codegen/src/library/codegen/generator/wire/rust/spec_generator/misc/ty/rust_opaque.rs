@@ -9,8 +9,8 @@ use crate::codegen::generator::wire::rust::spec_generator::misc::ty::WireRustGen
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
 use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::ir::mir::ty::MirTypeTrait;
-use itertools::Itertools;
 use crate::utils::namespace::Namespace;
+use itertools::Itertools;
 
 impl<'a> WireRustGeneratorMiscTrait for RustOpaqueWireRustGenerator<'a> {
     fn generate_imports(&self) -> Option<Vec<Namespace>> {

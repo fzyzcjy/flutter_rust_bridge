@@ -232,7 +232,11 @@ fn generate_signature(
     let is_static_method = method_info.mode == MirFuncOwnerInfoMethodMode::Static;
     let maybe_static = if is_static_method { "static" } else { "" };
     let (return_type, func_params, maybe_accessor) = match func.accessor {
-        Some(MirFuncAccessorMode::Getter) => (api_dart_func.func_return_type.as_ref(), "".to_owned(), "get"),
+        Some(MirFuncAccessorMode::Getter) => (
+            api_dart_func.func_return_type.as_ref(),
+            "".to_owned(),
+            "get",
+        ),
         Some(MirFuncAccessorMode::Setter) => (
             "",
             // TODO: merge with below

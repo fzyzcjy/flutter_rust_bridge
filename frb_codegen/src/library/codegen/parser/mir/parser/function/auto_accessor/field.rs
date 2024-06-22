@@ -21,6 +21,7 @@ use crate::codegen::parser::mir::sanity_checker::auto_accessor_checker;
 use crate::utils::namespace::NamespacedName;
 use sha1::{Digest, Sha1};
 
+#[allow(clippy::too_many_arguments)]
 pub(super) fn parse_auto_accessor_of_field(
     config: &ParserMirInternalConfig,
     struct_name: &NamespacedName,

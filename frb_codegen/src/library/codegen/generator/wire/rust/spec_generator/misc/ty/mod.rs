@@ -18,8 +18,8 @@ mod trait_def;
 
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
-use enum_dispatch::enum_dispatch;
 use crate::utils::namespace::Namespace;
+use enum_dispatch::enum_dispatch;
 
 #[enum_dispatch]
 pub(crate) trait WireRustGeneratorMiscTrait {
