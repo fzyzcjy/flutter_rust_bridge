@@ -870,7 +870,7 @@ class RustStateImpl extends RustOpaque implements RustState {
         that: this,
       );
 
-  void set count(int count) => RustLib.instance.api
+  set count(int count) => RustLib.instance.api
       .crateApiAppRustStateAutoAccessorSetCount(that: this, count: count);
 
   void increment() => RustLib.instance.api.crateApiAppRustStateIncrement(

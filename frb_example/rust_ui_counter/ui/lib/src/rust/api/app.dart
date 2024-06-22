@@ -10,7 +10,7 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 abstract class RustState implements RustOpaqueInterface {
   int get count;
 
-  void set count(int count);
+  set count(int count);
 
   void increment();
 
