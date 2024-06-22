@@ -121,6 +121,8 @@ class _MyAppState extends State<_MyApp> {
 
   @override
   Widget build(BuildContext context) {
+    // We can allow users to customize MaterialApp/Scaffold by exposing another argument
+    // like `Widget Function() app`; but for simplicity let's customize the `body` by default.
     return MaterialApp(
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
