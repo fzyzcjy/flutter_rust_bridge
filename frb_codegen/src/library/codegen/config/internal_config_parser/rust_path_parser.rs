@@ -1,10 +1,8 @@
 use crate::codegen::config::internal_config_parser::rust_path_migrator::ConfigRustRootAndRustInput;
-
 use crate::codegen::parser::mir::internal_config::RustInputNamespacePack;
 use crate::utils::crate_name::CrateName;
 use crate::utils::namespace::Namespace;
 use crate::utils::path_utils::canonicalize_with_error_message;
-
 use anyhow::ensure;
 use itertools::Itertools;
 use std::path::{Path, PathBuf};

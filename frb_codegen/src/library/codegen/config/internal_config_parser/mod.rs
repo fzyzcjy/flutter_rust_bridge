@@ -244,7 +244,9 @@ mod tests {
 
         assert!(result.is_err());
         let error = result.err().unwrap();
-        assert!(error.to_string().contains("Rust output path needs to include the file name."));
+        assert!(error
+            .to_string()
+            .contains("Rust output path needs to include the file name."));
         Ok(())
     }
 }

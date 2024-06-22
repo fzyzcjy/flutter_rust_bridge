@@ -4,7 +4,6 @@ use crate::codegen::config::internal_config::{
 use crate::codegen::config::internal_config_parser::dart_path_parser::DartOutputPathPack;
 use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig;
 use crate::codegen::generator::codec::structs::CodecMode;
-
 use crate::codegen::generator::wire::c::internal_config::GeneratorWireCInternalConfig;
 use crate::codegen::generator::wire::dart::internal_config::{
     DartOutputClassNamePack, GeneratorWireDartDefaultExternalLibraryLoaderInternalConfig,

@@ -47,12 +47,6 @@ impl RustState {
     }
 }
 
-impl Default for RustState {
-    fn default() -> Self {
-        Self::new()
-    }
-}
-
 impl RustState {
     pub fn new() -> Self {
         Self {

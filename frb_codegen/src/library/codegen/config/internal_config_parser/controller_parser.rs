@@ -1,7 +1,6 @@
 use crate::codegen::config::internal_config::ControllerInternalConfig;
-
 use crate::codegen::MetaConfig;
-use std::path::{Path};
+use std::path::Path;
 
 pub(super) fn parse(
     meta_config: &MetaConfig,
