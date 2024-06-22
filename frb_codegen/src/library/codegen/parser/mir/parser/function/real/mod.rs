@@ -31,6 +31,7 @@ use log::{debug, warn};
 use std::fmt::Debug;
 use IrSkipReason::IgnoreBecauseFunctionNotPub;
 use MirType::Primitive;
+use crate::codegen::parser::mir::parser::function::ui_related::UI_MUTATION_FUNCTION_RUST_AOP_AFTER;
 
 pub(crate) mod argument;
 pub(super) mod lifetime;
@@ -260,7 +261,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             comments: parse_comments(func.item_fn.attrs()),
             codec_mode_pack,
             rust_call_code: None,
-            rust_aop_after: TODO,
+            rust_aop_after: TODO.then(|| UI_MUTATION_FUNCTION_RUST_AOP_AFTER),
             impl_mode,
             src_lineno_pseudo: src_lineno,
         }))

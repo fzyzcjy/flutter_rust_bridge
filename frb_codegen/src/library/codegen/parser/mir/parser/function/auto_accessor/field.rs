@@ -18,6 +18,7 @@ use crate::codegen::parser::mir::parser::ty::{TypeParser, TypeParserParsingConte
 use crate::codegen::parser::mir::sanity_checker::auto_accessor_checker;
 use crate::utils::namespace::NamespacedName;
 use sha1::{Digest, Sha1};
+use crate::codegen::parser::mir::parser::function::ui_related::UI_MUTATION_FUNCTION_RUST_AOP_AFTER;
 
 pub(super) fn parse_auto_accessor_of_field(
     config: &ParserMirInternalConfig,
@@ -93,7 +94,7 @@ pub(super) fn parse_auto_accessor_of_field(
             &config.force_codec_mode_pack,
         ),
         rust_call_code: Some(rust_call_code),
-        rust_aop_after: TODO,
+        rust_aop_after: TODO.then(|| UI_MUTATION_FUNCTION_RUST_AOP_AFTER),
         impl_mode: MirFuncImplMode::Normal,
         src_lineno_pseudo: compute_src_lineno_pseudo(struct_name, field),
     };
