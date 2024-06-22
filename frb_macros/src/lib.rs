@@ -19,11 +19,10 @@ pub fn frb(attribute: TokenStream, item: TokenStream) -> TokenStream {
     let attribute_str = attribute.to_string();
     let attribute_proc_macro2: proc_macro2::TokenStream = attribute.into();
 
-    let item_converted = item.into();
     let item_converted = match attribute_str.as_ref() {
-        ATTR_KEYWORD_EXTERNAL => attr_external::handle(attribute_proc_macro2.clone(), item_converted),
-        ATTR_KEYWORD_UI_STATE => attr_ui_state::handle(attribute_proc_macro2.clone(), item_converted),
-        _ => item_converted,
+        ATTR_KEYWORD_EXTERNAL => attr_external::handle(attribute_proc_macro2.clone(), item.into()),
+        ATTR_KEYWORD_UI_STATE => attr_ui_state::handle(attribute_proc_macro2.clone(), item),
+        _ => item.into(),
     };
     let item_converted = convert_frb_attr_to_encoded_form(item_converted);
 
