@@ -23,7 +23,7 @@ pub(crate) fn generate(
         }],
     )?;
 
-    pack.hir_flat_pack.extra_dart_output_code += generate_dart_boilerplate();
+    pack.hir_flat_pack.extra_dart_output_code += &generate_dart_boilerplate();
 
     Ok(())
 }

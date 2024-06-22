@@ -84,6 +84,7 @@ pub(crate) fn parse(
         skips: vec![],
         trait_impls,
         extra_rust_output_code: hir_flat.extra_rust_output_code.clone(),
+        extra_dart_output_code: hir_flat.extra_dart_output_code.clone(),
     };
 
     ans.skips = compute_skips(
