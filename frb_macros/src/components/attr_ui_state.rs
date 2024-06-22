@@ -15,6 +15,17 @@ pub(crate) fn handle( item: proc_macro::TokenStream) -> proc_macro::TokenStream 
                 .unwrap(),
         );
     }
-    (quote! { #ast }).into()
+
+    let struct_ident = &ast.ident;
+
+    (quote! {
+        #ast
+
+        impl #struct_ident {
+            pub fn set_base_state(&mut self, base_state: crate::frb_generated::BaseState) {
+                self.base_state = base_state;
+            }
+        }
+    }).into()
 }
 // frb-coverage:ignore-end
