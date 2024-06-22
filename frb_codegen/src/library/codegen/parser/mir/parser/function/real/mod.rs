@@ -58,6 +58,7 @@ pub(crate) fn parse(
                 config.default_rust_opaque_codec,
                 config.enable_lifetime,
                 config.type_64bit_int,
+                config.default_dart_async,
                 parse_mode,
                 config.stop_on_error,
             )
@@ -84,6 +85,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         default_rust_opaque_codec: RustOpaqueCodecMode,
         enable_lifetime: bool,
         type_64bit_int: bool,
+        default_dart_async: bool,
         parse_mode: ParseMode,
         stop_on_error: bool,
     ) -> anyhow::Result<MirFuncOrSkip> {
@@ -95,6 +97,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             default_rust_opaque_codec,
             enable_lifetime,
             type_64bit_int,
+            default_dart_async,
             parse_mode,
         ) {
             Ok(output) => Ok(output),
@@ -129,6 +132,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         default_rust_opaque_codec: RustOpaqueCodecMode,
         enable_lifetime: bool,
         type_64bit_int: bool,
+        default_dart_async: bool,
         parse_mode: ParseMode,
     ) -> anyhow::Result<MirFuncOrSkip> {
         debug!("parse_function function name: {:?}", func.item_fn.name());
@@ -219,8 +223,9 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         info = self.transform_fn_info(info);
 
         let codec_mode_pack = compute_codec_mode_pack(&attributes, force_codec_mode_pack);
-        let mode = compute_func_mode(&attributes, &info);
-        let stream_dart_await = attributes.stream_dart_await() && !attributes.sync();
+        let dart_async = compute_dart_async(&attributes, default_dart_async);
+        let mode = compute_func_mode(dart_async, &info);
+        let stream_dart_await = attributes.stream_dart_await() && dart_async;
         let namespace_refined = refine_namespace(&owner).unwrap_or(func.namespace.clone());
         let accessor = attributes.accessor();
 
@@ -261,6 +266,14 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
     }
 }
 
+fn compute_dart_async(attributes: &FrbAttributes, default_dart_async: bool) -> bool {
+    if attributes.sync() {
+        false
+    } else {
+        default_dart_async
+    }
+}
+
 fn should_forbid_type_self_for_inputs(owner: &MirFuncOwnerInfo) -> bool {
     if let MirFuncOwnerInfo::Method(method) = owner {
         if matches!(method.owner_ty, MirType::TraitDef(_)) {
@@ -278,11 +291,11 @@ fn create_output_skip(func: &HirFlatFunction, reason: IrSkipReason) -> MirFuncOr
     })
 }
 
-fn compute_func_mode(attributes: &FrbAttributes, info: &FunctionPartialInfo) -> MirFuncMode {
-    info.mode.unwrap_or(if attributes.sync() {
-        MirFuncMode::Sync
-    } else {
+fn compute_func_mode(dart_async: bool, info: &FunctionPartialInfo) -> MirFuncMode {
+    info.mode.unwrap_or(if dart_async {
         MirFuncMode::Normal
+    } else {
+        MirFuncMode::Sync
     })
 }
 

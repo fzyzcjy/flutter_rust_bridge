@@ -56,6 +56,7 @@ fn compute_codegen_config_from_naive_command_args(args: GenerateCommandArgsPrima
         dart_type_rename: None, // complex type, not supported on command line yet
         enable_lifetime: positive_bool_arg(args.enable_lifetime),
         type_64bit_int: positive_bool_arg(args.type_64bit_int),
+        default_dart_async: negative_bool_arg(args.no_default_dart_async),
         stop_on_error: positive_bool_arg(args.stop_on_error),
         dump: args.dump,
         dump_all: positive_bool_arg(args.dump_all),
