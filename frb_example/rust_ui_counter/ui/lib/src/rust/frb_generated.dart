@@ -63,7 +63,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.0.0';
 
   @override
-  int get rustContentHash => 1328048065;
+  int get rustContentHash => 2133554269;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -84,6 +84,9 @@ abstract class RustLibApi extends BaseApi {
   void crateApiAppRustStateIncrement({required RustState that});
 
   RustState crateApiAppRustStateNew();
+
+  void crateApiAppRustStateSetBaseState(
+      {required RustState that, required BaseRustState baseState});
 
   Stream<void> crateFrbGeneratedBaseRustStateCreateNotifyUiStream(
       {required BaseRustState that});
@@ -239,6 +242,34 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  void crateApiAppRustStateSetBaseState(
+      {required RustState that, required BaseRustState baseState}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustState(
+            that, serializer);
+        sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBaseRustState(
+            baseState, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 6)!;
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiAppRustStateSetBaseStateConstMeta,
+      argValues: [that, baseState],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiAppRustStateSetBaseStateConstMeta =>
+      const TaskConstMeta(
+        debugName: "RustState_set_base_state",
+        argNames: ["that", "baseState"],
+      );
+
+  @override
   Stream<void> crateFrbGeneratedBaseRustStateCreateNotifyUiStream(
       {required BaseRustState that}) {
     final sink = RustStreamSink<void>();
@@ -248,7 +279,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBaseRustState(
             that, serializer);
         sse_encode_StreamSink_unit_Sse(sink, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 6)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 7)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -273,7 +304,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 7)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 8)!;
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -845,4 +876,7 @@ class RustStateImpl extends RustOpaque implements RustState {
   void increment() => RustLib.instance.api.crateApiAppRustStateIncrement(
         that: this,
       );
+
+  void setBaseState({required BaseRustState baseState}) => RustLib.instance.api
+      .crateApiAppRustStateSetBaseState(that: this, baseState: baseState);
 }

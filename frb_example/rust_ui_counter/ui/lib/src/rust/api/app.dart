@@ -15,4 +15,6 @@ abstract class RustState implements RustOpaqueInterface {
   void increment();
 
   factory RustState() => RustLib.instance.api.crateApiAppRustStateNew();
+
+  void setBaseState({required BaseRustState baseState});
 }
