@@ -2,10 +2,10 @@
 
 mod components;
 
-use crate::components::attr_external::handle_attr_external;
 use crate::components::converter::convert_frb_attr_to_encoded_form;
 use crate::components::encoder::create_frb_encoded_comment;
 use proc_macro::TokenStream;
+use crate::components::{attr_external, attr_ui_state};
 
 /// Attribute to guide code generation.
 ///
@@ -21,7 +21,8 @@ pub fn frb(attribute: TokenStream, item: TokenStream) -> TokenStream {
 
     let item_converted = item.into();
     let item_converted = match attribute_str.as_ref() {
-        ATTR_KEYWORD_EXTERNAL => handle_attr_external(attribute_proc_macro2.clone(), item_converted),
+        ATTR_KEYWORD_EXTERNAL => attr_external::handle(attribute_proc_macro2.clone(), item_converted),
+        ATTR_KEYWORD_UI_STATE => attr_ui_state::handle(attribute_proc_macro2.clone(), item_converted),
         _ => item_converted,
     };
     let item_converted = convert_frb_attr_to_encoded_form(item_converted);
@@ -35,3 +36,4 @@ pub fn frb(attribute: TokenStream, item: TokenStream) -> TokenStream {
 // frb-coverage:ignore-end
 
 const ATTR_KEYWORD_EXTERNAL: &str = "external";
+const ATTR_KEYWORD_UI_STATE: &str = "ui_state";

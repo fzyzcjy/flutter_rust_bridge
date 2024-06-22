@@ -8,7 +8,7 @@ use syn::{ImplItem, Item, ItemImpl};
 // This is surely executed - otherwise how can one use any `#[frb]` macro
 // but coverage tool does not think so, possibly because it is done in build time
 // frb-coverage:ignore-start
-pub(crate) fn handle_attr_external(attribute: TokenStream, item: TokenStream) -> TokenStream {
+pub(crate) fn handle(attribute: TokenStream, item: TokenStream) -> TokenStream {
     let item_string = item.to_string();
     let encoded_original_item =
         create_frb_encoded_comment(&format!("#[frb({})]{}", attribute, &item_string));
