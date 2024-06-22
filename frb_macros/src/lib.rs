@@ -2,7 +2,7 @@
 
 mod components;
 
-use crate::components::attr_external::handle_external_impl;
+use crate::components::attr_external::handle_attr_external;
 use crate::components::converter::convert_frb_attr_to_encoded_form;
 use crate::components::encoder::create_frb_encoded_comment;
 use proc_macro::TokenStream;
@@ -17,7 +17,7 @@ use proc_macro::TokenStream;
 pub fn frb(attribute: TokenStream, item: TokenStream) -> TokenStream {
     let attribute_encoded = create_frb_encoded_comment(&format!("#[frb({attribute})]"));
     let item_converted =
-        convert_frb_attr_to_encoded_form(handle_external_impl(attribute.into(), item.into()));
+        convert_frb_attr_to_encoded_form(handle_attr_external(attribute.into(), item.into()));
     (quote::quote! {
         #attribute_encoded
         #item_converted

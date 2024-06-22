@@ -8,7 +8,7 @@ use syn::{ImplItem, Item, ItemImpl};
 // This is surely executed - otherwise how can one use any `#[frb]` macro
 // but coverage tool does not think so, possibly because it is done in build time
 // frb-coverage:ignore-start
-pub(crate) fn handle_external_impl(attribute: TokenStream, item: TokenStream) -> TokenStream {
+pub(crate) fn handle_attr_external(attribute: TokenStream, item: TokenStream) -> TokenStream {
     if attribute.to_string() != ATTR_KEYWORD {
         return item;
     }
