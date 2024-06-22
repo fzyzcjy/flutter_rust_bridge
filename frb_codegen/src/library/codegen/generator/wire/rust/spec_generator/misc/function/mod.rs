@@ -199,8 +199,10 @@ fn generate_code_closure(
     let codec_mode = func.codec_mode_pack.rust2dart.delegate_or_self();
     let codec = (codec_mode).to_string().to_case(Case::Snake);
 
+    let code_aop_after = func.rust_aop_after.as_ref().unwrap_or_default();
+
     let code_inner = format!(
-        "{code_inner_decode} {code_call_inner_func_result} {code_postprocess_inner_output} Ok(output_ok)"
+        "{code_inner_decode} {code_call_inner_func_result} {code_postprocess_inner_output} {code_aop_after} Ok(output_ok)"
     );
 
     let err_type = (func.output.error.as_ref())
