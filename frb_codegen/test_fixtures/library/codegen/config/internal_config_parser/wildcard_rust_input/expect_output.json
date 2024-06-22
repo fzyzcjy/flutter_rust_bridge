@@ -1,9 +1,7 @@
 {
   "controller": {
     "exclude_paths": [
-      "{the-working-directory}/src/frb_generated.rs",
-      "{the-working-directory}/src/frb_generated.io.rs",
-      "{the-working-directory}/src/frb_generated.web.rs"
+      "{the-working-directory}/src/frb_generated.rs"
     ],
     "max_count": null,
     "watch": false,
@@ -35,11 +33,7 @@
         "c_symbol_prefix": "frbgen_fake_dart_package_",
         "enable": false,
         "rust_crate_dir": "{the-working-directory}",
-        "rust_output_path": {
-          "common": "{the-working-directory}/src/frb_generated.rs",
-          "io": "{the-working-directory}/src/frb_generated.io.rs",
-          "web": "{the-working-directory}/src/frb_generated.web.rs"
-        }
+        "rust_output_path": "{the-working-directory}/src/frb_generated.rs"
       },
       "dart": {
         "c_symbol_prefix": "frbgen_fake_dart_package_",
@@ -87,11 +81,7 @@
         "default_stream_sink_codec": "Sse",
         "has_ffigen": false,
         "rust_crate_dir": "{the-working-directory}",
-        "rust_output_path": {
-          "common": "{the-working-directory}/src/frb_generated.rs",
-          "io": "{the-working-directory}/src/frb_generated.io.rs",
-          "web": "{the-working-directory}/src/frb_generated.web.rs"
-        },
+        "rust_output_path": "{the-working-directory}/src/frb_generated.rs",
         "rust_preamble": "",
         "web_enabled": true
       }
@@ -136,11 +126,7 @@
     "duplicated_c_output_path": [],
     "enable_auto_upgrade": true,
     "rust_crate_dir": "{the-working-directory}",
-    "rust_output_path": {
-      "common": "{the-working-directory}/src/frb_generated.rs",
-      "io": "{the-working-directory}/src/frb_generated.io.rs",
-      "web": "{the-working-directory}/src/frb_generated.web.rs"
-    },
+    "rust_output_path": "{the-working-directory}/src/frb_generated.rs",
     "web_enabled": true
   },
   "preparer": {

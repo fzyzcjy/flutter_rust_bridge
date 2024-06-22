@@ -919,7 +919,7 @@ mod tests {
 
     #[test]
     fn test_ui_mutation() {
-        simple_keyword_tester("ui_state", FrbAttribute::UiMutation);
+        simple_keyword_tester("ui_mutation", FrbAttribute::UiMutation);
     }
 
     // Mirror(FrbAttributeMirror),
