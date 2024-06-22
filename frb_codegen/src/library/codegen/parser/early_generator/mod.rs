@@ -34,7 +34,7 @@ pub(crate) fn execute(
     proxy_enum::generate(&mut pack, &tentative_mir_pack, config_mir)?;
     dumper.dump("3_proxy_enum.json", &pack)?;
 
-    ui_related::generate(&mut pack)?;
+    ui_related::generate(&mut pack, config_mir)?;
     dumper.dump("4_ui_related.json", &pack)?;
 
     sorter::generate(&mut pack);
