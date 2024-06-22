@@ -1,3 +1,5 @@
+// NOTE: Multi-file is supported (e.g. put in submodules of crate::app, or configure frb input mod)
+
 use flutter_rust_bridge::frb;
 
 #[frb(ui_state)]

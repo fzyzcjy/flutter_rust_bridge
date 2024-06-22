@@ -1,4 +1,4 @@
-rust_input: crate::api
+rust_input: crate::app
 rust_root: ../
 dart_output: lib/src/rust
 type_64bit_int: true

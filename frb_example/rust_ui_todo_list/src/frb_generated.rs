@@ -25,7 +25,7 @@
 
 // Section: imports
 
-use crate::api::app::*;
+use crate::app::*;
 use flutter_rust_bridge::for_generated::byteorder::{NativeEndian, ReadBytesExt, WriteBytesExt};
 use flutter_rust_bridge::for_generated::{transform_result_dco, Lifetimeable, Lockable};
 use flutter_rust_bridge::{Handler, IntoIntoDart};
@@ -38,7 +38,7 @@ flutter_rust_bridge::frb_generated_boilerplate!(
     default_rust_auto_opaque = RustAutoOpaqueMoi,
 );
 pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "2.0.0";
-pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = 63958872;
+pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = -1253672655;
 
 // Section: executor
 
@@ -46,38 +46,7 @@ flutter_rust_bridge::frb_generated_default_handler!();
 
 // Section: wire_funcs
 
-fn wire__crate__api__init_app_impl(
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "init_app",
-            port: None,
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
-        },
-        move || {
-            let message = unsafe {
-                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
-                    ptr_,
-                    rust_vec_len_,
-                    data_len_,
-                )
-            };
-            let mut deserializer =
-                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            deserializer.end();
-            transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok({
-                    crate::api::init_app();
-                })?;
-                Ok(output_ok)
-            })())
-        },
-    )
-}
-fn wire__crate__api__app__RustState_add_impl(
+fn wire__crate__app__RustState_add_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -118,7 +87,7 @@ fn wire__crate__api__app__RustState_add_impl(
                 }
                 let mut api_that_guard = api_that_guard.unwrap();
                 let output_ok = Result::<_, ()>::Ok({
-                    crate::api::app::RustState::add(&mut *api_that_guard);
+                    crate::app::RustState::add(&mut *api_that_guard);
                 })?;
                 api_that_guard.base_state.on_mutation();
                 Ok(output_ok)
@@ -126,7 +95,7 @@ fn wire__crate__api__app__RustState_add_impl(
         },
     )
 }
-fn wire__crate__api__app__RustState_auto_accessor_get_filter_impl(
+fn wire__crate__app__RustState_auto_accessor_get_filter_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -172,7 +141,7 @@ fn wire__crate__api__app__RustState_auto_accessor_get_filter_impl(
         },
     )
 }
-fn wire__crate__api__app__RustState_auto_accessor_get_input_text_impl(
+fn wire__crate__app__RustState_auto_accessor_get_input_text_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -218,7 +187,7 @@ fn wire__crate__api__app__RustState_auto_accessor_get_input_text_impl(
         },
     )
 }
-fn wire__crate__api__app__RustState_auto_accessor_set_filter_impl(
+fn wire__crate__app__RustState_auto_accessor_set_filter_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -242,7 +211,7 @@ fn wire__crate__api__app__RustState_auto_accessor_set_filter_impl(
             let api_that = <RustOpaqueMoi<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<RustState>,
             >>::sse_decode(&mut deserializer);
-            let api_filter = <crate::api::app::Filter>::sse_decode(&mut deserializer);
+            let api_filter = <crate::app::Filter>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
                 let mut api_that_guard = None;
@@ -270,7 +239,7 @@ fn wire__crate__api__app__RustState_auto_accessor_set_filter_impl(
         },
     )
 }
-fn wire__crate__api__app__RustState_auto_accessor_set_input_text_impl(
+fn wire__crate__app__RustState_auto_accessor_set_input_text_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -322,7 +291,7 @@ fn wire__crate__api__app__RustState_auto_accessor_set_input_text_impl(
         },
     )
 }
-fn wire__crate__api__app__RustState_filtered_items_impl(
+fn wire__crate__app__RustState_filtered_items_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -362,15 +331,14 @@ fn wire__crate__api__app__RustState_filtered_items_impl(
                     }
                 }
                 let api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok(crate::api::app::RustState::filtered_items(
-                    &*api_that_guard,
-                ))?;
+                let output_ok =
+                    Result::<_, ()>::Ok(crate::app::RustState::filtered_items(&*api_that_guard))?;
                 Ok(output_ok)
             })())
         },
     )
 }
-fn wire__crate__api__app__RustState_new_impl(
+fn wire__crate__app__RustState_new_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -393,13 +361,13 @@ fn wire__crate__api__app__RustState_new_impl(
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(crate::api::app::RustState::new())?;
+                let output_ok = Result::<_, ()>::Ok(crate::app::RustState::new())?;
                 Ok(output_ok)
             })())
         },
     )
 }
-fn wire__crate__api__app__RustState_remove_impl(
+fn wire__crate__app__RustState_remove_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -441,7 +409,7 @@ fn wire__crate__api__app__RustState_remove_impl(
                 }
                 let mut api_that_guard = api_that_guard.unwrap();
                 let output_ok = Result::<_, ()>::Ok({
-                    crate::api::app::RustState::remove(&mut *api_that_guard, api_id);
+                    crate::app::RustState::remove(&mut *api_that_guard, api_id);
                 })?;
                 api_that_guard.base_state.on_mutation();
                 Ok(output_ok)
@@ -449,7 +417,7 @@ fn wire__crate__api__app__RustState_remove_impl(
         },
     )
 }
-fn wire__crate__api__app__RustState_set_base_state_impl(
+fn wire__crate__app__RustState_set_base_state_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -491,17 +459,14 @@ fn wire__crate__api__app__RustState_set_base_state_impl(
                 }
                 let mut api_that_guard = api_that_guard.unwrap();
                 let output_ok = Result::<_, ()>::Ok({
-                    crate::api::app::RustState::set_base_state(
-                        &mut *api_that_guard,
-                        api_base_state,
-                    );
+                    crate::app::RustState::set_base_state(&mut *api_that_guard, api_base_state);
                 })?;
                 Ok(output_ok)
             })())
         },
     )
 }
-fn wire__crate__api__app__RustState_toggle_impl(
+fn wire__crate__app__RustState_toggle_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -543,7 +508,7 @@ fn wire__crate__api__app__RustState_toggle_impl(
                 }
                 let mut api_that_guard = api_that_guard.unwrap();
                 let output_ok = Result::<_, ()>::Ok({
-                    crate::api::app::RustState::toggle(&mut *api_that_guard, api_id);
+                    crate::app::RustState::toggle(&mut *api_that_guard, api_id);
                 })?;
                 api_that_guard.base_state.on_mutation();
                 Ok(output_ok)
@@ -750,14 +715,14 @@ impl SseDecode for bool {
     }
 }
 
-impl SseDecode for crate::api::app::Filter {
+impl SseDecode for crate::app::Filter {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut inner = <i32>::sse_decode(deserializer);
         return match inner {
-            0 => crate::api::app::Filter::All,
-            1 => crate::api::app::Filter::Active,
-            2 => crate::api::app::Filter::Completed,
+            0 => crate::app::Filter::All,
+            1 => crate::app::Filter::Active,
+            2 => crate::app::Filter::Completed,
             _ => unreachable!("Invalid variant for Filter: {}", inner),
         };
     }
@@ -770,13 +735,13 @@ impl SseDecode for i32 {
     }
 }
 
-impl SseDecode for crate::api::app::Item {
+impl SseDecode for crate::app::Item {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut var_id = <i32>::sse_decode(deserializer);
         let mut var_content = <String>::sse_decode(deserializer);
         let mut var_completed = <bool>::sse_decode(deserializer);
-        return crate::api::app::Item {
+        return crate::app::Item {
             id: var_id,
             content: var_content,
             completed: var_completed,
@@ -784,13 +749,13 @@ impl SseDecode for crate::api::app::Item {
     }
 }
 
-impl SseDecode for Vec<crate::api::app::Item> {
+impl SseDecode for Vec<crate::app::Item> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
         let mut ans_ = vec![];
         for idx_ in 0..len_ {
-            ans_.push(<crate::api::app::Item>::sse_decode(deserializer));
+            ans_.push(<crate::app::Item>::sse_decode(deserializer));
         }
         return ans_;
     }
@@ -848,39 +813,30 @@ fn pde_ffi_dispatcher_sync_impl(
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     // Codec=Pde (Serialization + dispatch), see doc to use other codecs
     match func_id {
-        1 => wire__crate__api__init_app_impl(ptr, rust_vec_len, data_len),
-        2 => wire__crate__api__app__RustState_add_impl(ptr, rust_vec_len, data_len),
-        3 => wire__crate__api__app__RustState_auto_accessor_get_filter_impl(
+        1 => wire__crate__app__RustState_add_impl(ptr, rust_vec_len, data_len),
+        2 => wire__crate__app__RustState_auto_accessor_get_filter_impl(ptr, rust_vec_len, data_len),
+        3 => wire__crate__app__RustState_auto_accessor_get_input_text_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        4 => wire__crate__api__app__RustState_auto_accessor_get_input_text_impl(
+        4 => wire__crate__app__RustState_auto_accessor_set_filter_impl(ptr, rust_vec_len, data_len),
+        5 => wire__crate__app__RustState_auto_accessor_set_input_text_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        5 => wire__crate__api__app__RustState_auto_accessor_set_filter_impl(
+        6 => wire__crate__app__RustState_filtered_items_impl(ptr, rust_vec_len, data_len),
+        7 => wire__crate__app__RustState_new_impl(ptr, rust_vec_len, data_len),
+        8 => wire__crate__app__RustState_remove_impl(ptr, rust_vec_len, data_len),
+        9 => wire__crate__app__RustState_set_base_state_impl(ptr, rust_vec_len, data_len),
+        10 => wire__crate__app__RustState_toggle_impl(ptr, rust_vec_len, data_len),
+        11 => wire__crate__frb_generated__BaseRustState_create_notify_ui_stream_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        6 => wire__crate__api__app__RustState_auto_accessor_set_input_text_impl(
-            ptr,
-            rust_vec_len,
-            data_len,
-        ),
-        7 => wire__crate__api__app__RustState_filtered_items_impl(ptr, rust_vec_len, data_len),
-        8 => wire__crate__api__app__RustState_new_impl(ptr, rust_vec_len, data_len),
-        9 => wire__crate__api__app__RustState_remove_impl(ptr, rust_vec_len, data_len),
-        10 => wire__crate__api__app__RustState_set_base_state_impl(ptr, rust_vec_len, data_len),
-        11 => wire__crate__api__app__RustState_toggle_impl(ptr, rust_vec_len, data_len),
-        12 => wire__crate__frb_generated__BaseRustState_create_notify_ui_stream_impl(
-            ptr,
-            rust_vec_len,
-            data_len,
-        ),
-        13 => wire__crate__frb_generated__BaseRustState_empty_impl(ptr, rust_vec_len, data_len),
+        12 => wire__crate__frb_generated__BaseRustState_empty_impl(ptr, rust_vec_len, data_len),
         _ => unreachable!(),
     }
 }
@@ -918,7 +874,7 @@ impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<RustState>> for RustState {
 }
 
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for crate::api::app::Filter {
+impl flutter_rust_bridge::IntoDart for crate::app::Filter {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {
             Self::All => 0.into_dart(),
@@ -928,14 +884,14 @@ impl flutter_rust_bridge::IntoDart for crate::api::app::Filter {
         }
     }
 }
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for crate::api::app::Filter {}
-impl flutter_rust_bridge::IntoIntoDart<crate::api::app::Filter> for crate::api::app::Filter {
-    fn into_into_dart(self) -> crate::api::app::Filter {
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for crate::app::Filter {}
+impl flutter_rust_bridge::IntoIntoDart<crate::app::Filter> for crate::app::Filter {
+    fn into_into_dart(self) -> crate::app::Filter {
         self
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for crate::api::app::Item {
+impl flutter_rust_bridge::IntoDart for crate::app::Item {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         [
             self.id.into_into_dart().into_dart(),
@@ -945,9 +901,9 @@ impl flutter_rust_bridge::IntoDart for crate::api::app::Item {
         .into_dart()
     }
 }
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for crate::api::app::Item {}
-impl flutter_rust_bridge::IntoIntoDart<crate::api::app::Item> for crate::api::app::Item {
-    fn into_into_dart(self) -> crate::api::app::Item {
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for crate::app::Item {}
+impl flutter_rust_bridge::IntoIntoDart<crate::app::Item> for crate::app::Item {
+    fn into_into_dart(self) -> crate::app::Item {
         self
     }
 }
@@ -1016,14 +972,14 @@ impl SseEncode for bool {
     }
 }
 
-impl SseEncode for crate::api::app::Filter {
+impl SseEncode for crate::app::Filter {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <i32>::sse_encode(
             match self {
-                crate::api::app::Filter::All => 0,
-                crate::api::app::Filter::Active => 1,
-                crate::api::app::Filter::Completed => 2,
+                crate::app::Filter::All => 0,
+                crate::app::Filter::Active => 1,
+                crate::app::Filter::Completed => 2,
                 _ => {
                     unimplemented!("");
                 }
@@ -1040,7 +996,7 @@ impl SseEncode for i32 {
     }
 }
 
-impl SseEncode for crate::api::app::Item {
+impl SseEncode for crate::app::Item {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <i32>::sse_encode(self.id, serializer);
@@ -1049,12 +1005,12 @@ impl SseEncode for crate::api::app::Item {
     }
 }
 
-impl SseEncode for Vec<crate::api::app::Item> {
+impl SseEncode for Vec<crate::app::Item> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <i32>::sse_encode(self.len() as _, serializer);
         for item in self {
-            <crate::api::app::Item>::sse_encode(item, serializer);
+            <crate::app::Item>::sse_encode(item, serializer);
         }
     }
 }
