@@ -15,7 +15,6 @@ use crate::codegen::ir::mir::ty::MirType;
 use crate::if_then_some;
 use crate::library::codegen::generator::wire::rust::spec_generator::misc::ty::WireRustGeneratorMiscTrait;
 use crate::utils::namespace::Namespace;
-use convert_case::Casing;
 use itertools::Itertools;
 use serde::Serialize;
 use sha1::{Digest, Sha1};
