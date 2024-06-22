@@ -56,7 +56,7 @@ impl BaseState {
     }
 
     #[flutter_rust_bridge::frb(ignore)]
-    pub(crate) fn notify_ui(&self) {
+    pub(crate) fn on_mutation(&self) {
         self.notify_ui.as_ref().unwrap().add(()).unwrap()
     }
 }
