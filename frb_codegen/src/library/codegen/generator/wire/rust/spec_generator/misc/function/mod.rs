@@ -199,7 +199,8 @@ fn generate_code_closure(
     let codec_mode = func.codec_mode_pack.rust2dart.delegate_or_self();
     let codec = (codec_mode).to_string().to_case(Case::Snake);
 
-    let code_aop_after = func.rust_aop_after.as_deref().unwrap_or("");
+    let code_aop_after = func.rust_aop_after.as_deref().unwrap_or("")
+        .replace("{}", "api_that_guard");
 
     let code_inner = format!(
         "{code_inner_decode} {code_call_inner_func_result} {code_postprocess_inner_output} {code_aop_after} Ok(output_ok)"
