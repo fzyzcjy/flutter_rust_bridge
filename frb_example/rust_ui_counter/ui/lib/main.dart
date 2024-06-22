@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:frb_example_rust_ui_counter/src/rust/api/app.dart';
 import 'package:frb_example_rust_ui_counter/src/rust/frb_generated.dart';
