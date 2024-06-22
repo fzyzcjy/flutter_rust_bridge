@@ -17,6 +17,7 @@ exclude = [
     "frb_example/pure_dart/rust",
     "frb_example/pure_dart_pde/rust",
     "frb_example/integrate_third_party/rust",
+    "frb_example/rust_ui_counter",
 ]
 resolver = "2"
 
