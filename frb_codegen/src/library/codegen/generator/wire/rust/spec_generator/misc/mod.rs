@@ -18,6 +18,7 @@ use itertools::Itertools;
 use serde::Serialize;
 use sha1::{Digest, Sha1};
 use std::collections::HashSet;
+use convert_case::Casing;
 use crate::utils::namespace::Namespace;
 
 pub(crate) mod function;
@@ -107,6 +108,7 @@ fn generate_imports(
         .iter()
         .flat_map(|ty| WireRustGenerator::new(ty.clone(), context).generate_imports())
         .flatten()
+        .filter(|namespace| namespace != namespace_frb_for_generated)
         .collect::<HashSet<Namespace>>()
         .into_iter()
         .join("\n");
