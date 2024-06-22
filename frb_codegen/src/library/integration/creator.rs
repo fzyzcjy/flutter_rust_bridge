@@ -1,7 +1,8 @@
 use crate::integration::integrator;
 use crate::integration::integrator::IntegrateConfig;
 use crate::library::commands::flutter::flutter_create;
-use anyhow::ensure;
+use crate::misc::ProjectType;
+use anyhow::{bail, ensure};
 use log::{debug, info};
 use std::path::Path;
 use std::{env, fs};
@@ -12,6 +13,7 @@ pub struct CreateConfig {
     pub enable_local_dependency: bool,
     pub rust_crate_name: Option<String>,
     pub rust_crate_dir: String,
+    pub template: ProjectType,
 }
 
 /// Create a new Flutter + Rust project.
@@ -31,7 +33,7 @@ pub fn create(config: CreateConfig) -> anyhow::Result<()> {
     );
     // frb-coverage:ignore-end
 
-    flutter_create(&config.name, &config.org)?;
+    flutter_create(&config.name, &config.org, &config.template)?;
 
     env::set_current_dir(&dart_root)?;
 
@@ -43,6 +45,7 @@ pub fn create(config: CreateConfig) -> anyhow::Result<()> {
         enable_local_dependency: config.enable_local_dependency,
         rust_crate_name: config.rust_crate_name,
         rust_crate_dir: config.rust_crate_dir,
+        r#type: config.template,
     })
 }
 
@@ -50,7 +53,23 @@ pub fn create(config: CreateConfig) -> anyhow::Result<()> {
 // frb-coverage:ignore-start
 fn remove_unnecessary_files(dart_root: &Path) -> anyhow::Result<()> {
     // frb-coverage:ignore-end
-    fs::remove_file(dart_root.join("test").join("widget_test.dart"))?;
-    fs::remove_file(dart_root.join("lib").join("main.dart"))?;
+    let lib_dir = dart_root.join("lib");
+    let test_dir = dart_root.join("test");
+
+    fn remove_files_in_dir(dir: &Path) -> anyhow::Result<()> {
+        for entry in fs::read_dir(dir)? {
+            let entry = entry?;
+            let path = entry.path();
+            if path.is_file() {
+                fs::remove_file(&path)?;
+            } else if path.is_dir() {
+                bail!("An unexpected directory was encountered: {:?}", path);
+            }
+        }
+        Ok(())
+    }
+    remove_files_in_dir(&lib_dir)?;
+    remove_files_in_dir(&test_dir)?;
+
     Ok(())
 }

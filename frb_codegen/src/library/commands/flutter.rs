@@ -1,14 +1,19 @@
 use crate::command_run;
 use crate::commands::command_runner::call_shell;
 use crate::library::commands::command_runner::check_exit_code;
+use crate::misc::ProjectType;
 use log::info;
 use std::path::Path;
 
 #[allow(clippy::vec_init_then_push)]
-pub fn flutter_create(name: &str, org: &Option<String>) -> anyhow::Result<()> {
+pub fn flutter_create(name: &str, org: &Option<String>, template: &ProjectType) -> anyhow::Result<()> {
     let mut args = vec![name];
     if let Some(o) = org {
         args.extend(["--org", o]);
+    }
+    match template {
+        ProjectType::App => args.extend(["--template","app"]),
+        ProjectType::Plugin => args.extend(["--template","plugin","--platforms", "android,ios,linux,macos,windows,web"]),
     }
     info!(
         "Execute `flutter create {}` (this may take a while)",
