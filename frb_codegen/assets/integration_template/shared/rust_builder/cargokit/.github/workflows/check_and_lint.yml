@@ -1,0 +1,26 @@
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+name: Check and Lint
+
+jobs:
+  Flutter:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@ee0669bd1cc54295c223e0bb666b733df41de1c5 #v2.7.0
+      - uses: dart-lang/setup-dart@b64355ae6ca0b5d484f0106a033dd1388965d06d #1.6.0
+      - name: Pub Get
+        run: dart pub get --no-precompile
+        working-directory: build_tool
+      - name: Dart Format
+        run: dart format . --output=none --set-exit-if-changed
+        working-directory: build_tool
+      - name: Analyze
+        run: dart analyze
+        working-directory: build_tool
+      - name: Test
+        run: dart test
+        working-directory: build_tool
