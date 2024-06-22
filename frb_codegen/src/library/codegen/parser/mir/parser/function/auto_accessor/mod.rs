@@ -117,6 +117,7 @@ fn parse_auto_accessors_of_struct(
                         &ty_direct_parse,
                         type_parser,
                         &context,
+                        ty_struct,
                     )
                 })
                 .collect_vec()
