@@ -17,6 +17,7 @@ pub(crate) struct HirFlatPack {
     pub types: Vec<HirFlatTypeAlias>,
     pub existing_handler: Option<NamespacedName>,
     pub extra_rust_output_code: String,
+    pub extra_dart_output_code: String,
     pub skips: Vec<IrSkip>,
 }
 
