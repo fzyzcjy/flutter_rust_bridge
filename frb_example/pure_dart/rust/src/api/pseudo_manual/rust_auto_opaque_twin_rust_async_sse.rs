@@ -450,8 +450,10 @@ pub async fn rust_auto_opaque_sleep_twin_rust_async_sse(
 // ================ misc ===================
 
 // #1577 - this should generate valid Dart code without name collisions
+#[allow(dead_code)]
 #[frb(opaque)]
 pub struct OpaqueOneTwinRustAsyncSse(PathBuf);
+#[allow(dead_code)]
 #[frb(opaque)]
 pub struct OpaqueTwoTwinRustAsyncSse(PathBuf);
 

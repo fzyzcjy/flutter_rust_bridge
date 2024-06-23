@@ -24,6 +24,7 @@ pub struct MirStruct {
     pub ignore: bool,
     pub generate_hash: bool,
     pub generate_eq: bool,
+    pub ui_state: bool,
     pub comments: Vec<MirComment>,
 }
 }

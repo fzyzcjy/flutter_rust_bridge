@@ -4,7 +4,6 @@ use crate::codegen::config::internal_config::{
 use crate::codegen::config::internal_config_parser::dart_path_parser::DartOutputPathPack;
 use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig;
 use crate::codegen::generator::codec::structs::CodecMode;
-use crate::codegen::generator::misc::target::TargetOrCommonMap;
 use crate::codegen::generator::wire::c::internal_config::GeneratorWireCInternalConfig;
 use crate::codegen::generator::wire::dart::internal_config::{
     DartOutputClassNamePack, GeneratorWireDartDefaultExternalLibraryLoaderInternalConfig,
@@ -29,7 +28,7 @@ pub(super) struct Args<'a> {
     pub rust_crate_dir: &'a Path,
     pub dart_output_path_pack: &'a DartOutputPathPack,
     pub dart_output_class_name_pack: &'a DartOutputClassNamePack,
-    pub rust_output_path: &'a TargetOrCommonMap<PathBuf>,
+    pub rust_output_path: &'a Path,
     pub default_stream_sink_codec: CodecMode,
     pub default_rust_opaque_codec: RustOpaqueCodecMode,
     pub c_output_path: &'a Option<PathBuf>,
@@ -90,7 +89,7 @@ pub(super) fn parse(args: Args) -> anyhow::Result<GeneratorInternalConfig> {
             rust: GeneratorWireRustInternalConfig {
                 rust_crate_dir: rust_crate_dir.to_owned(),
                 web_enabled,
-                rust_output_path: rust_output_path.clone(),
+                rust_output_path: rust_output_path.to_owned(),
                 c_symbol_prefix: c_symbol_prefix.clone(),
                 has_ffigen: full_dep,
                 default_stream_sink_codec,
@@ -100,7 +99,7 @@ pub(super) fn parse(args: Args) -> anyhow::Result<GeneratorInternalConfig> {
             c: GeneratorWireCInternalConfig {
                 enable: full_dep,
                 rust_crate_dir: rust_crate_dir.to_owned(),
-                rust_output_path: rust_output_path.clone(),
+                rust_output_path: rust_output_path.to_owned(),
                 c_output_path: c_output_path.clone(),
                 c_symbol_prefix,
             },

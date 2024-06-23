@@ -255,7 +255,7 @@ abstract class StructWithGoodAndOpaqueFieldWithoutOptionTwinSse
     implements RustOpaqueInterface {
   String get good;
 
-  void set good(String good);
+  set good(String good);
 }
 
 abstract class MyTraitTwinSse {

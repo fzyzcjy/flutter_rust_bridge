@@ -9,7 +9,7 @@ on:
 
 env:
   CARGO_TERM_COLOR: always
-  FRB_MAIN_RUST_VERSION: 1.74.0
+  FRB_MAIN_RUST_VERSION: 1.79.0
   FRB_MAIN_DART_VERSION: 3.4.0
   FRB_MAIN_FLUTTER_VERSION: 3.22.0
 
@@ -188,6 +188,8 @@ jobs:
           - frb_example--flutter_via_create
           - frb_example--flutter_via_integrate
           - frb_example--flutter_package
+          - frb_example--rust_ui_counter--ui
+          - frb_example--rust_ui_todo_list--ui
         exclude:
           - { image: windows-2019, package: frb_example--deliberate_bad }
           - { image: macos-11, package: frb_example--deliberate_bad }
@@ -757,6 +759,8 @@ jobs:
         package:
           - frb_example--flutter_via_create
           - frb_example--flutter_package--example
+          - frb_example--rust_ui_counter--ui
+          - frb_example--rust_ui_todo_list--ui
           # no `frb_example--flutter_via_integrate` since it is similar to `flutter_via_create`
         device:
           - "pixel"
@@ -823,6 +827,8 @@ jobs:
         package:
           - frb_example--flutter_via_create
           - frb_example--flutter_package--example
+          - frb_example--rust_ui_counter--ui
+          - frb_example--rust_ui_todo_list--ui
           # no `frb_example--flutter_via_integrate` since it is similar to `flutter_via_create`
         device:
           - "iPad (10th generation) Simulator (17.2)"
@@ -880,6 +886,26 @@ jobs:
           - image: ubuntu-latest
             platform: linux
             package: frb_example--flutter_package--example
+
+          - image: windows-2019
+            platform: windows
+            package: frb_example--rust_ui_counter--ui
+          - image: macos-13
+            platform: macos
+            package: frb_example--rust_ui_counter--ui
+          - image: ubuntu-latest
+            platform: linux
+            package: frb_example--rust_ui_counter--ui
+
+          - image: windows-2019
+            platform: windows
+            package: frb_example--rust_ui_todo_list--ui
+          - image: macos-13
+            platform: macos
+            package: frb_example--rust_ui_todo_list--ui
+          - image: ubuntu-latest
+            platform: linux
+            package: frb_example--rust_ui_todo_list--ui
 
           # only slightly test `flutter_via_integrate` since quite similar to `flutter_via_create`
           - image: ubuntu-latest

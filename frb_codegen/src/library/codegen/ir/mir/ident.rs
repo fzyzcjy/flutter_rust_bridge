@@ -52,10 +52,10 @@ fn convert_rust_to_c_style(raw: &str) -> String {
 
     // match behavior of ffigen
     if &ans == "async" {
-        ans = "async1".to_owned();
+        "async1".clone_into(&mut ans);
     }
     if &ans == "interface" {
-        ans = "interface1".to_owned();
+        "interface1".clone_into(&mut ans);
     }
 
     // match behavior of cbindgen

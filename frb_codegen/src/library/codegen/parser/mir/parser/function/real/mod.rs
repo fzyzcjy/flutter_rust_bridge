@@ -18,6 +18,7 @@ use crate::codegen::ir::misc::skip::{IrSkip, IrSkipReason, IrValueOrSkip, MirFun
 use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
 use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
 use crate::codegen::parser::mir::parser::function::real::lifetime::parse_function_lifetime;
+use crate::codegen::parser::mir::parser::function::ui_related::UI_MUTATION_FUNCTION_RUST_AOP_AFTER;
 use crate::codegen::parser::mir::parser::ty::concrete::ERROR_MESSAGE_FORBID_TYPE_SELF;
 use crate::codegen::parser::mir::parser::ty::generics::should_ignore_because_generics;
 use crate::codegen::parser::mir::parser::ty::misc::parse_comments;
@@ -58,6 +59,7 @@ pub(crate) fn parse(
                 config.default_rust_opaque_codec,
                 config.enable_lifetime,
                 config.type_64bit_int,
+                config.default_dart_async,
                 parse_mode,
                 config.stop_on_error,
             )
@@ -84,6 +86,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         default_rust_opaque_codec: RustOpaqueCodecMode,
         enable_lifetime: bool,
         type_64bit_int: bool,
+        default_dart_async: bool,
         parse_mode: ParseMode,
         stop_on_error: bool,
     ) -> anyhow::Result<MirFuncOrSkip> {
@@ -95,6 +98,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             default_rust_opaque_codec,
             enable_lifetime,
             type_64bit_int,
+            default_dart_async,
             parse_mode,
         ) {
             Ok(output) => Ok(output),
@@ -129,6 +133,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         default_rust_opaque_codec: RustOpaqueCodecMode,
         enable_lifetime: bool,
         type_64bit_int: bool,
+        default_dart_async: bool,
         parse_mode: ParseMode,
     ) -> anyhow::Result<MirFuncOrSkip> {
         debug!("parse_function function name: {:?}", func.item_fn.name());
@@ -219,8 +224,9 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         info = self.transform_fn_info(info);
 
         let codec_mode_pack = compute_codec_mode_pack(&attributes, force_codec_mode_pack);
-        let mode = compute_func_mode(&attributes, &info);
-        let stream_dart_await = attributes.stream_dart_await() && !attributes.sync();
+        let dart_async = compute_dart_async(&attributes, default_dart_async);
+        let mode = compute_func_mode(dart_async, &info);
+        let stream_dart_await = attributes.stream_dart_await() && dart_async;
         let namespace_refined = refine_namespace(&owner).unwrap_or(func.namespace.clone());
         let accessor = attributes.accessor();
 
@@ -255,9 +261,19 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             comments: parse_comments(func.item_fn.attrs()),
             codec_mode_pack,
             rust_call_code: None,
+            rust_aop_after: (attributes.ui_mutation())
+                .then(|| UI_MUTATION_FUNCTION_RUST_AOP_AFTER.to_owned()),
             impl_mode,
             src_lineno_pseudo: src_lineno,
         }))
+    }
+}
+
+fn compute_dart_async(attributes: &FrbAttributes, default_dart_async: bool) -> bool {
+    if attributes.sync() {
+        false
+    } else {
+        default_dart_async
     }
 }
 
@@ -278,11 +294,11 @@ fn create_output_skip(func: &HirFlatFunction, reason: IrSkipReason) -> MirFuncOr
     })
 }
 
-fn compute_func_mode(attributes: &FrbAttributes, info: &FunctionPartialInfo) -> MirFuncMode {
-    info.mode.unwrap_or(if attributes.sync() {
-        MirFuncMode::Sync
-    } else {
+fn compute_func_mode(dart_async: bool, info: &FunctionPartialInfo) -> MirFuncMode {
+    info.mode.unwrap_or(if dart_async {
         MirFuncMode::Normal
+    } else {
+        MirFuncMode::Sync
     })
 }
 

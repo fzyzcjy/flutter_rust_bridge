@@ -2,6 +2,14 @@
   "dart_code_of_type": {},
   "enum_pool": {},
   "existing_handler": null,
+  "extra_dart_output_code": {
+    "body": "",
+    "header": {
+      "file_top": "",
+      "import": "",
+      "part": ""
+    }
+  },
   "extra_rust_output_code": "",
   "funcs_all": [
     {
@@ -28,6 +36,7 @@
         }
       },
       "owner": "Function",
+      "rust_aop_after": null,
       "rust_async": false,
       "rust_call_code": null,
       "stream_dart_await": false
@@ -56,6 +65,7 @@
         }
       },
       "owner": "Function",
+      "rust_aop_after": null,
       "rust_async": false,
       "rust_call_code": null,
       "stream_dart_await": false

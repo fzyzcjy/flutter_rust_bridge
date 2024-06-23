@@ -14,6 +14,7 @@ use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::if_then_some;
 use crate::library::codegen::generator::wire::rust::spec_generator::misc::ty::WireRustGeneratorMiscTrait;
+use crate::utils::namespace::Namespace;
 use itertools::Itertools;
 use serde::Serialize;
 use sha1::{Digest, Sha1};
@@ -102,10 +103,17 @@ fn generate_imports(
     types: &[MirType],
     context: WireRustGeneratorContext,
 ) -> Acc<Vec<WireRustOutputCode>> {
+    let output_namespace = Namespace::new_from_rust_crate_path(
+        &context.config.rust_output_path,
+        &context.config.rust_crate_dir,
+    )
+    .unwrap();
     let imports_from_types = types
         .iter()
         .flat_map(|ty| WireRustGenerator::new(ty.clone(), context).generate_imports())
         .flatten()
+        .filter(|namespace| namespace != &output_namespace)
+        .map(|namespace| format!("use {}::*;", namespace.joined_path))
         .collect::<HashSet<String>>()
         .into_iter()
         .join("\n");

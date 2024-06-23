@@ -37,8 +37,6 @@ cargo binstall flutter_rust_bridge_codegen
 
 </TabItem>
 
-<!--
-
 <TabItem value="Scoop">
 
 <small>Remark: Thanks @Desdaemon for scripts to publish to brew/scoop</small>
@@ -59,8 +57,6 @@ brew install desdaemon/repo/flutter_rust_bridge_codegen
 ```
 
 </TabItem>
-
--->
 
 </Tabs>
 

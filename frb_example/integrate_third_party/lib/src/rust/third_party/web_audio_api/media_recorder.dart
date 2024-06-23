@@ -20,11 +20,11 @@ abstract class BlobEvent implements RustOpaqueInterface {
 
   double get timecode;
 
-  void set blob(Uint8List blob);
+  set blob(Uint8List blob);
 
-  void set event(Event event);
+  set event(Event event);
 
-  void set timecode(double timecode);
+  set timecode(double timecode);
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaRecorder>>

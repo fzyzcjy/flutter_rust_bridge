@@ -157,6 +157,10 @@ pub(crate) struct GenerateCommandArgsPrimary {
     #[arg(long)]
     pub type_64bit_int: bool,
 
+    /// Whether default Dart code is asynchronous or synchronous
+    #[arg(long)]
+    pub no_default_dart_async: bool,
+
     /// If having error when, for example, parsing a function, directly stop instead of continue and skip it
     #[arg(long)]
     pub stop_on_error: bool,

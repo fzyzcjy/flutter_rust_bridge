@@ -8,6 +8,7 @@ use crate::codegen::generator::wire::dart::spec_generator::base::{
 };
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFunc;
+use crate::codegen::ir::mir::func::MirFuncMode;
 use crate::codegen::ir::mir::pack::MirPackComputedCache;
 use crate::codegen::misc::GeneratorProgressBarPack;
 use crate::library::codegen::generator::wire::dart::spec_generator::misc::ty::WireDartGeneratorMiscTrait;
@@ -29,6 +30,7 @@ pub(crate) struct WireDartOutputSpecMisc {
     pub(crate) boilerplate: Acc<Vec<WireDartOutputCode>>,
     pub(crate) api_impl_normal_functions: Vec<WireDartOutputCode>,
     pub(crate) extra_functions: Acc<Vec<WireDartOutputCode>>,
+    pub(crate) extra_from_parser: Acc<Vec<WireDartOutputCode>>,
 }
 
 #[allow(clippy::too_many_arguments)]
@@ -63,6 +65,11 @@ pub(crate) fn generate(
         extra_functions: (cache.distinct_types.iter())
             .flat_map(|ty| WireDartGenerator::new(ty.clone(), context).generate_extra_functions())
             .collect(),
+        extra_from_parser: Acc::new_common(vec![WireDartOutputCode {
+            header: context.mir_pack.extra_dart_output_code.header.clone(),
+            body: context.mir_pack.extra_dart_output_code.body.clone(),
+            ..Default::default()
+        }]),
     })
 }
 
@@ -102,7 +109,17 @@ fn generate_boilerplate(
 
     let execute_rust_initializers = (context.mir_pack.funcs_with_impl().iter())
         .filter(|f| f.initializer)
-        .map(|f| format!("await api.{}();\n", f.name_dart_wire()))
+        .map(|f| {
+            format!(
+                "{maybe_await}api.{name}();\n",
+                maybe_await = if f.mode == MirFuncMode::Normal {
+                    "await "
+                } else {
+                    ""
+                },
+                name = f.name_dart_wire()
+            )
+        })
         .join("");
 
     let codegen_version = env!("CARGO_PKG_VERSION");

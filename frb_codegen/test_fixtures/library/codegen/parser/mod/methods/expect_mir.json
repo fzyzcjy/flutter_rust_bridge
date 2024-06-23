@@ -36,6 +36,14 @@
     }
   },
   "existing_handler": null,
+  "extra_dart_output_code": {
+    "body": "",
+    "header": {
+      "file_top": "",
+      "import": "",
+      "part": ""
+    }
+  },
   "extra_rust_output_code": "",
   "funcs_all": [
     {
@@ -114,6 +122,7 @@
           "trait_def": null
         }
       },
+      "rust_aop_after": null,
       "rust_async": false,
       "rust_call_code": null,
       "stream_dart_await": false
@@ -163,6 +172,7 @@
           "trait_def": null
         }
       },
+      "rust_aop_after": null,
       "rust_async": false,
       "rust_call_code": null,
       "stream_dart_await": false
@@ -240,6 +250,7 @@
           "trait_def": null
         }
       },
+      "rust_aop_after": null,
       "rust_async": false,
       "rust_call_code": null,
       "stream_dart_await": false
@@ -284,6 +295,7 @@
           "trait_def": null
         }
       },
+      "rust_aop_after": null,
       "rust_async": false,
       "rust_call_code": null,
       "stream_dart_await": false
@@ -300,6 +312,7 @@
       "ignore": false,
       "is_fields_named": true,
       "name": "crate::api/MyStruct",
+      "ui_state": false,
       "wrapper_name": null
     }
   },

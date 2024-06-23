@@ -11,7 +11,7 @@ on:
 
 env:
   CARGO_TERM_COLOR: always
-  FRB_MAIN_RUST_VERSION: 1.74.0
+  FRB_MAIN_RUST_VERSION: 1.79.0
   FRB_MAIN_DART_VERSION: 3.4.0
   FRB_MAIN_FLUTTER_VERSION: 3.22.0
 
@@ -30,8 +30,8 @@ jobs:
         codegen_install_mode:
           - cargo-install
           - cargo-binstall
-          # - scoop # TODO enable after 2.0.0 stable release
-          # - homebrew # TODO enable after 2.0.0 stable release
+          - scoop
+          - homebrew
         exclude:
           - { image: windows-2019, codegen_install_mode: homebrew }
           - { image: macos-11, codegen_install_mode: scoop }

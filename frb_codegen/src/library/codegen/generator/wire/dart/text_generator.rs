@@ -39,6 +39,7 @@ fn generate_merged_code(spec: &WireDartOutputSpec) -> Acc<WireDartOutputCode> {
     );
     // add("wire_delegate_functions", &spec.misc.wire_delegate_functions);
     add("extra_functions", &spec.misc.extra_functions);
+    add("extra_from_parser", &spec.misc.extra_from_parser);
     add("wire_class", &spec.misc.wire_class);
     add("rust2dart", &spec.rust2dart.inner);
     add("dart2rust", &spec.dart2rust.inner);
