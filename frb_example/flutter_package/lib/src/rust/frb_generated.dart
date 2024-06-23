@@ -12,18 +12,15 @@ import 'frb_generated.io.dart'
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 /// Main entrypoint of the Rust API
-class FrbExampleFlutterPackage extends BaseEntrypoint<
-    FrbExampleFlutterPackageApi,
-    FrbExampleFlutterPackageApiImpl,
-    FrbExampleFlutterPackageWire> {
+class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   @internal
-  static final instance = FrbExampleFlutterPackage._();
+  static final instance = RustLib._();
 
-  FrbExampleFlutterPackage._();
+  RustLib._();
 
   /// Initialize flutter_rust_bridge
   static Future<void> init({
-    FrbExampleFlutterPackageApi? api,
+    RustLibApi? api,
     BaseHandler? handler,
     ExternalLibrary? externalLibrary,
   }) async {
@@ -41,13 +38,12 @@ class FrbExampleFlutterPackage extends BaseEntrypoint<
   static void dispose() => instance.disposeImpl();
 
   @override
-  ApiImplConstructor<FrbExampleFlutterPackageApiImpl,
-          FrbExampleFlutterPackageWire>
-      get apiImplConstructor => FrbExampleFlutterPackageApiImpl.new;
+  ApiImplConstructor<RustLibApiImpl, RustLibWire> get apiImplConstructor =>
+      RustLibApiImpl.new;
 
   @override
-  WireConstructor<FrbExampleFlutterPackageWire> get wireConstructor =>
-      FrbExampleFlutterPackageWire.fromExternalLibrary;
+  WireConstructor<RustLibWire> get wireConstructor =>
+      RustLibWire.fromExternalLibrary;
 
   @override
   Future<void> executeRustInitializers() async {
@@ -66,22 +62,20 @@ class FrbExampleFlutterPackage extends BaseEntrypoint<
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
-    stem: 'frb_example_flutter_package',
+    stem: 'rust_lib_flutter_package',
     ioDirectory: 'rust/target/release/',
     webPrefix: 'pkg/',
   );
 }
 
-abstract class FrbExampleFlutterPackageApi extends BaseApi {
+abstract class RustLibApi extends BaseApi {
   String crateApiSimpleGreet({required String name});
 
   Future<void> crateApiSimpleInitApp();
 }
 
-class FrbExampleFlutterPackageApiImpl
-    extends FrbExampleFlutterPackageApiImplPlatform
-    implements FrbExampleFlutterPackageApi {
-  FrbExampleFlutterPackageApiImpl({
+class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
+  RustLibApiImpl({
     required super.handler,
     required super.wire,
     required super.generalizedFrbRustBinding,

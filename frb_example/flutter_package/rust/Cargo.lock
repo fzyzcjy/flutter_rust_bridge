@@ -209,6 +209,8 @@ dependencies = [
 [[package]]
 name = "flutter_rust_bridge"
 version = "2.0.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "033e831e28f1077ceae3490fb6d093dfdefefd09c5c6e8544c6579effe7e814f"
 dependencies = [
  "allo-isolate",
  "android_logger",
@@ -234,19 +236,14 @@ dependencies = [
 [[package]]
 name = "flutter_rust_bridge_macros"
 version = "2.0.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "0217fc4b7131b52578be60bbe38c76b3edfc2f9fecab46d9f930510f40ef9023"
 dependencies = [
  "hex",
  "md-5",
  "proc-macro2",
  "quote",
  "syn",
-]
-
-[[package]]
-name = "frb_example_flutter_package"
-version = "0.1.0"
-dependencies = [
- "flutter_rust_bridge",
 ]
 
 [[package]]
@@ -512,6 +509,13 @@ name = "regex-syntax"
 version = "0.8.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c08c74e62047bb2de4ff487b251e4a92e24f48745648451635cec7d591162d9f"
+
+[[package]]
+name = "rust_lib_flutter_package"
+version = "0.1.0"
+dependencies = [
+ "flutter_rust_bridge",
+]
 
 [[package]]
 name = "rustc-demangle"

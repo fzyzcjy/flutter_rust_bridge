@@ -3,10 +3,11 @@
 #
 
 list(APPEND FLUTTER_PLUGIN_LIST
+  flutter_package
 )
 
 list(APPEND FLUTTER_FFI_PLUGIN_LIST
-  frb_example_flutter_package
+  rust_lib_flutter_package
 )
 
 set(PLUGIN_BUNDLED_LIBRARIES)

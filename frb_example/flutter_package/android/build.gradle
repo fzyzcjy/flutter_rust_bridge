@@ -1,56 +1,68 @@
-// The Android Gradle Plugin builds the native code with the Android NDK.
-
-group 'com.flutter_rust_bridge.frb_example_flutter_package'
-version '1.0'
+group = "com.example.flutter_package"
+version = "1.0-SNAPSHOT"
 
 buildscript {
+    ext.kotlin_version = "1.7.10"
     repositories {
         google()
         mavenCentral()
     }
 
     dependencies {
-        // The Android Gradle Plugin knows how to build native code with the NDK.
-        classpath 'com.android.tools.build:gradle:7.3.0'
+        classpath("com.android.tools.build:gradle:7.3.0")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version")
     }
 }
 
-rootProject.allprojects {
+allprojects {
     repositories {
         google()
         mavenCentral()
     }
 }
 
-apply plugin: 'com.android.library'
+apply plugin: "com.android.library"
+apply plugin: "kotlin-android"
 
 android {
     if (project.android.hasProperty("namespace")) {
-        namespace 'com.flutter_rust_bridge.frb_example_flutter_package'
+        namespace = "com.example.flutter_package"
     }
 
-    // Bumping the plugin compileSdkVersion requires all clients of this plugin
-    // to bump the version in their app.
-    compileSdkVersion 33
-
-    // Use the NDK version
-    // declared in /android/app/build.gradle file of the Flutter project.
-    // Replace it with a version number if this plugin requires a specfic NDK version.
-    // (e.g. ndkVersion "23.1.7779620")
-    ndkVersion android.ndkVersion
+    compileSdk = 34
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+    sourceSets {
+        main.java.srcDirs += "src/main/kotlin"
+        test.java.srcDirs += "src/test/kotlin"
     }
 
     defaultConfig {
-        minSdkVersion 19
+        minSdk = 21
     }
-}
 
-apply from: "../cargokit/gradle/plugin.gradle"
-cargokit {
-    manifestDir = "../rust"
-    libname = "frb_example_flutter_package"
+    dependencies {
+        testImplementation("org.jetbrains.kotlin:kotlin-test")
+        testImplementation("org.mockito:mockito-core:5.0.0")
+    }
+
+    testOptions {
+        unitTests.all {
+            useJUnitPlatform()
+
+            testLogging {
+               events "passed", "skipped", "failed", "standardOut", "standardError"
+               outputs.upToDateWhen {false}
+               showStandardStreams = true
+            }
+        }
+    }
 }
