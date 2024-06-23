@@ -23,7 +23,7 @@ jobs:
       fail-fast: false
       matrix:
         image:
-          - windows-2019
+          - windows-2022
           # need macos-"13" because https://github.com/fzyzcjy/flutter_rust_bridge/issues/1225
           - macos-13
           - ubuntu-latest
@@ -33,7 +33,7 @@ jobs:
           - scoop
           - homebrew
         exclude:
-          - { image: windows-2019, codegen_install_mode: homebrew }
+          - { image: windows-2022, codegen_install_mode: homebrew }
           - { image: macos-13, codegen_install_mode: scoop }
           - { image: ubuntu-latest, codegen_install_mode: homebrew }
           - { image: ubuntu-latest, codegen_install_mode: scoop }
