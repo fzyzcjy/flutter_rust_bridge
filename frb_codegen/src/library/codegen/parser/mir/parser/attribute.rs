@@ -25,14 +25,14 @@ impl FrbAttributes {
                 .map(transform_doc_comment)
                 .collect::<anyhow::Result<Vec<_>>>()?
                 .into_iter()
-                .filter(|attr| {
-                    attr.path().segments.last().unwrap().ident == METADATA_IDENT
-                        // exclude the `#[frb]` case
-                        && !matches!(attr.meta, Meta::Path(_))
-                })
+                .filter(|attr| attr.path().segments.last().unwrap().ident == METADATA_IDENT)
                 .map(|attr| {
-                    attr.parse_args::<FrbAttributesInner>()
-                        .with_context(|| format!("attr={:?}", quote::quote!(#attr).to_string()))
+                    if matches!(attr.meta, Meta::Path(_)) {
+                        Ok(FrbAttributesInner(vec![FrbAttribute::Noop]))
+                    } else {
+                        attr.parse_args::<FrbAttributesInner>()
+                            .with_context(|| format!("attr={:?}", quote::quote!(#attr).to_string()))
+                    }
                 })
                 .collect::<anyhow::Result<Vec<_>>>()?
                 .into_iter()
@@ -56,6 +56,10 @@ impl FrbAttributes {
             // frb-coverage:ignore-end
         }
         candidates.last().map(|item| item.to_mir_default_value())
+    }
+
+    pub(crate) fn is_empty(&self) -> bool {
+        self.0.is_empty()
     }
 
     pub(crate) fn non_final(&self) -> bool {
@@ -93,6 +97,9 @@ impl FrbAttributes {
             Some(true)
         } else if self.any_eq(&FrbAttribute::NonOpaque) {
             Some(false)
+        } else if self.ui_state() {
+            // When `#[frb(ui_state)]`, auto infer `#[frb(opaque)]`
+            Some(true)
         } else {
             None
         }
@@ -205,6 +212,14 @@ impl FrbAttributes {
             )
             .next()
     }
+
+    pub(crate) fn ui_state(&self) -> bool {
+        self.any_eq(&FrbAttribute::UiState)
+    }
+
+    pub(crate) fn ui_mutation(&self) -> bool {
+        self.any_eq(&FrbAttribute::UiMutation)
+    }
 }
 
 fn transform_doc_comment(attr: &Attribute) -> anyhow::Result<Attribute> {
@@ -268,17 +283,21 @@ mod frb_keyword {
     syn::custom_keyword!(rust2dart);
     syn::custom_keyword!(dart2rust);
     syn::custom_keyword!(dart_type);
+    syn::custom_keyword!(ui_state);
+    syn::custom_keyword!(ui_mutation);
 }
 
 struct FrbAttributesInner(Vec<FrbAttribute>);
 
 impl Parse for FrbAttributesInner {
     fn parse(input: ParseStream) -> Result<Self> {
-        Ok(Self(
-            Punctuated::<FrbAttribute, Token![,]>::parse_terminated(input)?
-                .into_iter()
-                .collect(),
-        ))
+        let mut items = Punctuated::<FrbAttribute, Token![,]>::parse_terminated(input)?
+            .into_iter()
+            .collect_vec();
+        if items.is_empty() {
+            items = vec![FrbAttribute::Noop];
+        }
+        Ok(Self(items))
     }
 }
 
@@ -311,6 +330,9 @@ enum FrbAttribute {
     Name(FrbAttributeName),
     Dart2Rust(FrbAttributeSerDes),
     Rust2Dart(FrbAttributeSerDes),
+    Noop,
+    UiState,
+    UiMutation,
 }
 
 impl Parse for FrbAttribute {
@@ -363,6 +385,10 @@ impl Parse for FrbAttribute {
             .or_else(|| parse_keyword::<serialize, _>(input, &lookahead, serialize, Serialize))
             .or_else(|| {
                 parse_keyword::<semi_serialize, _>(input, &lookahead, semi_serialize, SemiSerialize)
+            })
+            .or_else(|| parse_keyword::<ui_state, _>(input, &lookahead, ui_state, UiState))
+            .or_else(|| {
+                parse_keyword::<ui_mutation, _>(input, &lookahead, ui_mutation, UiMutation)
             });
         if let Some(keyword_output) = keyword_output {
             return keyword_output;
@@ -691,14 +717,14 @@ mod tests {
     #[test]
     fn test_empty() -> anyhow::Result<()> {
         let parsed = parse("#[frb]")?;
-        assert_eq!(parsed.0, vec![]);
+        assert_eq!(parsed.0, vec![FrbAttribute::Noop]);
         Ok(())
     }
 
     #[test]
     fn test_empty_bracket() -> anyhow::Result<()> {
         let parsed = parse("#[frb()]")?;
-        assert_eq!(parsed.0, vec![]);
+        assert_eq!(parsed.0, vec![FrbAttribute::Noop]);
         Ok(())
     }
 
@@ -884,6 +910,16 @@ mod tests {
         let value = if_then_some!(let FrbAttribute::Default(value) = &parsed.0[0], value).unwrap();
         assert!(matches!(value, FrbAttributeDefaultValue::Str(_)));
         Ok(())
+    }
+
+    #[test]
+    fn test_ui_state() {
+        simple_keyword_tester("ui_state", FrbAttribute::UiState);
+    }
+
+    #[test]
+    fn test_ui_mutation() {
+        simple_keyword_tester("ui_mutation", FrbAttribute::UiMutation);
     }
 
     // Mirror(FrbAttributeMirror),

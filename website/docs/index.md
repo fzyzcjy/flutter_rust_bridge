@@ -23,36 +23,42 @@ hide_title: true
 ## What's new in V2
 
 <details>
-<summary>Click to expand</summary>
+<summary>Tap to expand</summary>
 
-* **Rapid setup**: Only a one-liner command to integrate into your project.
-* **Arbitrary types**: Use arbitrary Rust and Dart types without manual intervention, even if they are not serializable or non-clone (previously need some manual intervention).
-* **Async Rust**: Support asynchronous Rust (`async fn`), in addition to sync Rust / async Dart / sync Dart.
-* **Rust call Dart**: Allow Rust to call Dart functions (previously only allow Dart to call Rust).
-* **Support whole folders as inputs**: Previously only support one single file (e.g. `api.rs`).
-* **Use libraries/tools in Flutter/Rust**: All existing libraries, Flutter debuggers, ... Nothing to stop you from using them.
-* **New codec**: A new codec, `SSE`, which is several times faster under typical workload.
+* From 1.x to 2.0.0-dev.0:
+    * **Rapid setup**: Only a one-liner command to integrate into your project.
+    * **Arbitrary types**: Use arbitrary Rust and Dart types without manual intervention, even if they are not serializable or non-clone (previously need some manual intervention).
+    * **Async Rust**: Support asynchronous Rust (`async fn`), in addition to sync Rust / async Dart / sync Dart.
+    * **Rust call Dart**: Allow Rust to call Dart functions (previously only allow Dart to call Rust).
+    * **Support whole folders as inputs**: Previously only support one single file (e.g. `api.rs`).
+    * **Use libraries/tools in Flutter/Rust**: All existing libraries, Flutter debuggers, ... Nothing to stop you from using them.
+* From 2.0.0-dev.0 to 2.0.0:
+    * **Parsing third-party packages**: Scan and use existing Rust packages in Dart (experimental).
+    * **Lifetimes**: Support returning types with lifetime specifiers (experimental).
+    * **Traits**: Support traits as base classes and trait objects.
+    * **New codec**: A new codec, `SSE`, which is several times faster under some workloads.
+    * **Others (>200 PRs)**: Auto and manual accessors, object proxies, user-defined serializers, developer experience, deadlock-free auto locking, Rust initializers, included batteries, renaming and ignoring, improving streams, more types, ...
 
 Please visit [this page](https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new) for more information and update guide.
-
-I want to keep it in beta for a while (though CI has all passed), to allow publishing API breaking changes, and hear your thoughts and suggestions about it!
 
 </details>
 
 ## 🍀 What's this?
 
-* Just write down some ***normal*** Rust code (even with arbitrary types, closure, `&mut`, async, etc)
+* Just write down ***normal*** Rust code (even with arbitrary types, closure, `&mut`, async, traits, etc)
 * And call it from Flutter, as if Rust code is ***normal*** Flutter code
-* The bridge will generate all needed glues in between
+* The bridge will generate all glues in between
 
 ## 📚 Quickstart
 
 Create a working Flutter + Rust app and see it live, by running:
 
 ```shell
-cargo install 'flutter_rust_bridge_codegen@^2.0.0-dev.0' && \
-    flutter_rust_bridge_codegen create my_app && cd my_app && flutter run
+cargo install flutter_rust_bridge_codegen && flutter_rust_bridge_codegen create my_app && cd my_app && flutter run
 ```
+
+<details>
+<summary>Expand optional steps</summary>
 
 **(Optional)** Edit `rust/src/api/simple.rs` (e.g. `Hello` -> `Hi`), then see the change by:
 
@@ -60,35 +66,51 @@ cargo install 'flutter_rust_bridge_codegen@^2.0.0-dev.0' && \
 flutter_rust_bridge_codegen generate && flutter run
 ```
 
+</details>
+
 For more elaborated quickstart, please visit [this page](https://fzyzcjy.github.io/flutter_rust_bridge/quickstart).
 
 ## 🚀 Advantages
 
-<img width="400" align="right" src="https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/website/misc/advantages.png?raw=true" />
+<img width="360" align="right" src="https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/website/misc/advantages.png?raw=true" />
 
 ### 1. Officially `Flutter Favorite`
 
-This package is [officially Flutter Favorite](https://docs.flutter.dev/packages-and-plugins/favorites), and is in the first batch of 7 packages at its [rebooting](https://medium.com/flutter/whats-new-in-flutter-3-16-dba6cb1015d1).
+This package is [officially Flutter Favorite](https://medium.com/flutter/progress-of-the-flutter-package-ecosystem-17cded9a0703), and is in the first batch of 7 packages at its rebooting. ([another link](https://medium.com/flutter/whats-new-in-flutter-3-16-dba6cb1015d1))
 
 ### 2. Simplicity
+
+<details>
+<summary>(Tap to expand) Rapid setup, Write your code naturally, Use libraries/tools in Flutter/Rust, Battery included</summary>
 
 * **Rapid setup**: Only a one-liner command to integrate into your project.
 * **Write your code naturally**: Use your intuition and write the code you want. The bridge understands many advanced grammars (see below), allowing seamless calling Rust from Dart.
 * **Use libraries/tools in Flutter/Rust**: All existing libraries, Flutter debuggers, ... Nothing to stop you from using them.
 * **Battery included**: Even small things like logging and enable backtraces are configured in the starter kit.
 
+</details>
+
 ### 3. Powerfulness
+
+<details>
+<summary>(Tap to expand) Arbitrary types, Async & sync, Two-way road, Auto-translatable types, Parsing third-party packages, Auto safety, Customizable & bare-metal mode, Cross-platform, ...</summary>
 
 * **Arbitrary types**: Use arbitrary Rust and Dart types without manual intervention, even if they are not serializable or non-clone.
 * **Async & sync** x Rust & Dart: Multi modes for various needs - Async Dart to avoid blocking the main thread, sync Dart for places needed (e.g. Widget.build); async Rust for IO bound tasks, thread pools for CPU-heavy computations.
 * **Two-way road**: Not only can Dart call Rust - Rust can also call Dart.
 * **Auto-translatable types**: Lots of types can be further translated to Dart native types, e.g. complex `enum`s and `struct`s, zero-copy big arrays, errors (`Result`), and `Stream`s (iterator).
+* **Parsing third-party packages**: Scan and use existing Rust packages in Dart (experimental).
 * **Auto safety**: Focus on your code, and forget memory safety, malloc/free, or undefined behavior completely.
 * **Customizable & bare-metal mode**: Provide sensible defaults, but everything (loader, handler, ...) can be customized. You can even throw all away and only use the bare minimum calling.
 * **Cross-platform**: Support Android, iOS, Windows, Linux, MacOS, and Web.
 * Other features, e.g. support whole folders as input, pure-Dart compatible, instance and static methods, ...
 
+</details>
+
 ### 4. Reliability
+
+<details>
+<summary>(Tap to expand) Solid CI, Used by many people, Easy to review, Fast, Hackable, Ask questions</summary>
 
 * **Solid CI**: Valgrind & sanitizers (ASAN/MSAN/LSAN) for memory/UB-related bugs, testing per platform per mode, benchmarking, test coverage, post-release, etc, all guaranteed by CI.
 * **Used by many people**: See [here](https://fzyzcjy.github.io/flutter_rust_bridge/guides/users) for an incomplete list.
@@ -97,10 +119,12 @@ This package is [officially Flutter Favorite](https://docs.flutter.dev/packages-
 * **Hackable**: If (for whatever reason) you want to hack the source, there are contributor guides, code is modular, and the execution logic is intuitive.
 * **Ask questions**: Feel free to ask questions in the issue tracker, and I usually reply within hours (if not sleeping).
 
+</details>
+
 ### Why Flutter + Rust?
 
 <details>
-<summary>Click to expand</summary>
+<summary>Tap to expand</summary>
 
 Firstly, super briefly introduce each component (you can find much more in a lot of blogs and posts):
 
@@ -118,56 +142,54 @@ Typical scenarios to combine them include:
 
 </details>
 
-## 🧭 Show me the code
+## ✨ Show me the code
 
-### Example 1: Simple
+### Example 1
 
 Simple Rust...
 
 ```rust
-fn f(a: String, b: Vec<String>) -> MyStruct { ... }
+fn f(a: String, b: Vec<MyEnum>) -> MyStruct { ... }
 ```
 
 ...called from Dart, without manual intervention.
 
 ```dart
-print(f(a: 'Hello', b: ['Tom']));
+print(f(a: 'Hello', b: [MyEnum.c('Tom')]));
 ```
 
-### Example 2: Show off skills ;)
+### Example 2
 
-Let's see how fancy we can support:
+Suppose we implement a word dictionary in Rust:
 
 ```rust
 // ↱ Arbitrarily fancy Rust types
-struct Garden { land: whatever::fancy::Land }
-
-// ↱ Complex but auto-translatable
-enum Tree { A { name: (String, i32), children: Option<Vec<Tree>> }, B }
+pub struct WordDict { .. }
 
 // ↱ Support functions & methods
-impl Garden {
-    // ↱ Allow async & sync Rust
-    async fn plant(
-        // ↱ Support T/&T/&mut T
-        &mut self,
-        tree: Tree,
-        // ↱ Rust can also call Dart
-        chooser: impl Fn(String) -> bool,
-        // ↱ Error translation ; zero copy
-    ) -> Result<Vec<u8>, FancyError> {
-        ...
-    }
+impl WordDict {
+    //          ↱ Can call Dart back                 ↱ Translate errors
+    pub fn open(chooser: impl Fn(String) -> bool) -> Result<WordDict> { .. }
+
+    // ↱ Support async & sync Dart; property getter
+    #[frb(sync, getter)]
+    //          ↱ Support T/&T/&mut T
+    pub fn size(&self) -> u32 { .. }
+
+    //  ↱ Allow async & sync                    ↱ Support stream (iterator)
+    pub async fn search(&self, keyword: String, sink: StreamSink<String>) { .. }
 }
 ```
 
 Still seamlessly call in Dart:
 
 ```dart
-var tree = Tree.a(('x', 42), [Tree.b()]);
-// ↱ Async & sync Dart
-print(await garden.plant(tree, (a) => true));
+final dict = await WordDict.open((situation) => true);
+print(dict.size);
+await for (final value in dict.search('something')) { print(value); }
 ```
+
+There are still many features not covered here, such as parsing third party packages, lifetimes, traits, auto accessors, proxies, etc.
 
 ## 💡 Documentation
 
@@ -245,9 +267,9 @@ Secondly, thanks goes to these wonderful contributors ([emoji key](https://allco
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/jsonmona"><img src="https://avatars.githubusercontent.com/u/105187344?v=4?s=100" width="100px;" alt="jsonmona"/><br /><sub><b>jsonmona</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=jsonmona" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/MateusHBR"><img src="https://avatars.githubusercontent.com/u/13079483?v=4?s=100" width="100px;" alt="mtz"/><br /><sub><b>mtz</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=MateusHBR" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/codercengiz"><img src="https://avatars.githubusercontent.com/u/45819755?v=4?s=100" width="100px;" alt="codercengiz"/><br /><sub><b>codercengiz</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=codercengiz" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/aran"><img src="https://avatars.githubusercontent.com/u/5295?v=4?s=100" width="100px;" alt="Aran Donohue"/><br /><sub><b>Aran Donohue</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=aran" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://adventures.michaelfbryan.com/"><img src="https://avatars.githubusercontent.com/u/17380079?v=4?s=100" width="100px;" alt="Michael Bryan"/><br /><sub><b>Michael Bryan</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=Michael-F-Bryan" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://patrick.mukherjee.de"><img src="https://avatars.githubusercontent.com/u/2045440?v=4?s=100" width="100px;" alt="Patrick Mukherjee"/><br /><sub><b>Patrick Mukherjee</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=patmuk" title="Code">💻</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/aran"><img src="https://avatars.githubusercontent.com/u/5295?v=4?s=100" width="100px;" alt="Aran Donohue"/><br /><sub><b>Aran Donohue</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=aran" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://phlip9.com"><img src="https://avatars.githubusercontent.com/u/918989?v=4?s=100" width="100px;" alt="Philip Kannegaard Hayes"/><br /><sub><b>Philip Kannegaard Hayes</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=phlip9" title="Code">💻</a></td>
     </tr>
     <tr>
@@ -334,7 +356,7 @@ More specifically, thanks for all these contributions:
 * [sagudev](https://github.com/sagudev): Make code generator a `lib`. Add error types. Depend on `cbindgen`. Fix LLVM paths. Update deps. Fix CI errors.
 * [surban](https://github.com/surban): Support unit return type. Skip unresolvable modules. Ignore prefer_const_constructors. Non-final Dart fields.
 * [Roms1383](https://github.com/Roms1383): Fix build_runner calling bug. Remove global `ffigen` dependency. Improve version check. Fix enum name-variant conflicts. Support Chrono date time and UUID types. Migrate to Rust 1.64 workspace. Update and refactor CI. Update header comments. Code cleanup.
-* [dbsxdbsx](https://github.com/dbsxdbsx): Allow generating multiple Rust and Dart files. Fix lint. Update doc. Add logging.
+* [dbsxdbsx](https://github.com/dbsxdbsx): Allow generating multiple Rust and Dart files. Fix lint. Update doc. Add logging. Loosen config. Prefix methods.
 * [GregoryConrad](https://github.com/GregoryConrad): Add doc to setup frb inside a Dart/Flutter library.
 * [huang12zheng](https://github.com/huang12zheng): Support type aliases and nested ones. Tweak code generation. Fix rust_build_and_test on Mac. Improve CI logic and cache. Remove bridge field in model.
 * [trobanga](https://github.com/trobanga): Add support for `[T;N]` structs. Add `usize` support. Add a cmd argument. Separate dart tests. Fix fallible list case. Fix test compile. Fix Result + RustAutoOpaque.
@@ -368,9 +390,9 @@ More specifically, thanks for all these contributions:
 * [jsonmona](https://github.com/jsonmona): Add import.
 * [MateusHBR](https://github.com/MateusHBR): Add pub get.
 * [codercengiz](https://github.com/codercengiz): Fix mirroring bug.
+* [aran](https://github.com/aran): Fix map + mirror. Fix pubspec. Upgrde ffigen. Replace to js_interop. Bump version. Fix typo.
 * [Michael-F-Bryan](https://github.com/Michael-F-Bryan): Detect broken bindings.
 * [patmuk](https://github.com/patmuk): Set MSRV. Fail fast. Improve message. Improve docs.
-* [aran](https://github.com/aran): Fix map + mirror. Fix pubspec. Upgrde ffigen. Bump version. Fix typo.
 * [phlip9](https://github.com/phlip9): Fix no-serde compilation.
 * [SilverMira](https://github.com/SilverMira): Fix StreamSink.
 * [h3x4d3c1m4l](https://github.com/h3x4d3c1m4l): Fix when outside folder.

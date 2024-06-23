@@ -1,26 +1,29 @@
 [workspace]
 members = [
-  "frb_codegen",
-  "frb_macros",
-  "frb_rust",
+    "frb_codegen",
+    "frb_macros",
+    "frb_rust",
 ]
 exclude = [
-  # Exclude example packages to ensure the example mimics how a typical user will use it.
-  # For example, the `target` directory is different with and without workspaces.
-  "frb_example/dart_minimal/rust",
-  "frb_example/deliberate_bad/rust",
-  "frb_example/flutter_via_create/rust",
-  "frb_example/flutter_via_integrate/rust",
-  "frb_example/dart_build_rs/rust",
-  "frb_example/gallery/rust",
-  "frb_example/pure_dart/rust",
-  "frb_example/pure_dart_pde/rust",
-  "frb_example/integrate_third_party/rust",
+    # Exclude example packages to ensure the example mimics how a typical user will use it.
+    # For example, the `target` directory is different with and without workspaces.
+    "frb_example/dart_minimal/rust",
+    "frb_example/deliberate_bad/rust",
+    "frb_example/flutter_via_create/rust",
+    "frb_example/flutter_via_integrate/rust",
+    "frb_example/flutter_package/rust",
+    "frb_example/dart_build_rs/rust",
+    "frb_example/gallery/rust",
+    "frb_example/pure_dart/rust",
+    "frb_example/pure_dart_pde/rust",
+    "frb_example/integrate_third_party/rust",
+    "frb_example/rust_ui_counter",
+    "frb_example/rust_ui_todo_list",
 ]
 resolver = "2"
 
 [workspace.package]
-version = "2.0.0-dev.39"
+version = "2.0.0"
 edition = "2021"
 license = "MIT"
 description = "High-level memory-safe binding generator for Flutter/Dart <-> Rust"
@@ -38,9 +41,9 @@ uuid = "1.1.2"
 thiserror = "1.0"
 backtrace = "0.3.68"
 
-flutter_rust_bridge_macros = { path = "frb_macros", version = "=2.0.0-dev.39" }
-flutter_rust_bridge = { path = "frb_rust", default-features = false, version = "=2.0.0-dev.39" }
-flutter_rust_bridge_codegen = { path = "frb_codegen", version = "=2.0.0-dev.39" }
+flutter_rust_bridge_macros = { path = "frb_macros", version = "=2.0.0" }
+flutter_rust_bridge = { path = "frb_rust", default-features = false, version = "=2.0.0" }
+flutter_rust_bridge_codegen = { path = "frb_codegen", version = "=2.0.0" }
 
 [profile.release.package.flutter_rust_bridge_codegen]
 strip = "debuginfo"

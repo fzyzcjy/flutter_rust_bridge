@@ -10,6 +10,9 @@ pub(crate) struct ParserMirInternalConfig {
     pub default_stream_sink_codec: CodecMode,
     pub default_rust_opaque_codec: RustOpaqueCodecMode,
     pub stop_on_error: bool,
+    pub enable_lifetime: bool,
+    pub type_64bit_int: bool,
+    pub default_dart_async: bool,
 }
 
 // TODO rename - this is no longer an "input-namespace"-only pack

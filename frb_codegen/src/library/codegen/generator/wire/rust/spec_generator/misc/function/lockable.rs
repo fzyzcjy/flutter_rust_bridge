@@ -13,7 +13,7 @@ pub(crate) fn generate_code_inner_decode(func: &MirFunc) -> String {
     let declarations = (interest_fields.iter())
         .map(|info| {
             format!(
-                "let mut api_{name}_decoded = None;\n",
+                "let mut api_{name}_guard = None;\n",
                 name = get_variable_name(info.field)
             )
         })
@@ -45,8 +45,9 @@ pub(crate) fn generate_code_inner_decode(func: &MirFunc) -> String {
             } else {
                 ""
             };
+            // "let {mutability}api_{name} = &{mutability}*api_{name}_guard.unwrap();\n",
             format!(
-                "let {mutability}api_{name} = &{mutability}*api_{name}_decoded.unwrap();\n",
+                "let {mutability}api_{name}_guard = api_{name}_guard.unwrap();\n",
                 name = get_variable_name(info.field),
             )
         })
@@ -71,10 +72,11 @@ fn generate_decode_statement(
 ) -> String {
     let mode = ownership_mode.to_string().to_case(Case::Snake);
     format!(
-        "api_{name}_decoded = Some(api_{name}.lockable_decode_{syncness}_{mode}(){maybe_await})",
+        "api_{name}_guard = Some(api_{name}{maybe_illegal_static_ref}.lockable_decode_{syncness}_{mode}(){maybe_await})",
         name = get_variable_name(field),
         syncness = if func.rust_async { "async" } else { "sync" },
         maybe_await = if func.rust_async { ".await" } else { "" },
+        maybe_illegal_static_ref = if field.needs_extend_lifetime { "_illegal_static_ref" } else { "" },
     )
 }
 
@@ -85,7 +87,7 @@ fn get_variable_name(field: &MirFuncInput) -> String {
 fn filter_interest_fields(func: &MirFunc) -> Vec<FieldInfo> {
     (func.inputs.iter())
         .filter_map(|field| {
-            compute_interest_field(&field.inner.ty).map(|ownership_mode| FieldInfo {
+            compute_interest_field_ownership_mode(&field.inner.ty).map(|ownership_mode| FieldInfo {
                 field,
                 ownership_mode,
             })
@@ -93,14 +95,23 @@ fn filter_interest_fields(func: &MirFunc) -> Vec<FieldInfo> {
         .collect_vec()
 }
 
-fn compute_interest_field(ty: &MirType) -> Option<OwnershipMode> {
+fn compute_interest_field_ownership_mode(ty: &MirType) -> Option<OwnershipMode> {
     match &ty {
         MirType::RustAutoOpaqueImplicit(ty) if ty.ownership_mode != OwnershipMode::Owned => {
             Some(ty.ownership_mode)
         }
-        MirType::Delegate(MirTypeDelegate::ProxyEnum(ty)) => compute_interest_field(&ty.original),
+        MirType::Delegate(MirTypeDelegate::ProxyEnum(ty)) => {
+            compute_interest_field_ownership_mode(&ty.original)
+        }
         // temporarily only support Ref
         MirType::Delegate(MirTypeDelegate::DynTrait(_)) => Some(OwnershipMode::Ref),
+        MirType::Delegate(MirTypeDelegate::Lifetimeable(mir)) => {
+            Some(if mir.api_type.ownership_mode == OwnershipMode::RefMut {
+                OwnershipMode::RefMut
+            } else {
+                OwnershipMode::Ref
+            })
+        }
         _ => None,
     }
 }
@@ -118,5 +129,18 @@ pub(crate) fn generate_inner_func_arg_ownership(field: &MirFuncInput) -> String 
         _ => (field.ownership_mode.map(|x| x.prefix()))
             .unwrap_or_default()
             .to_owned(),
+    }
+}
+
+pub(crate) fn generate_inner_func_arg(raw: &str, field: &MirFuncInput) -> String {
+    if let Some(ownership_mode) = compute_interest_field_ownership_mode(&field.inner.ty) {
+        let mutability = if ownership_mode == OwnershipMode::RefMut {
+            "mut "
+        } else {
+            ""
+        };
+        format!("&{mutability}*{raw}_guard")
+    } else {
+        raw.to_owned()
     }
 }

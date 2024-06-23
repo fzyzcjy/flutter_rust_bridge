@@ -18,6 +18,7 @@ mod trait_def;
 
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
+use crate::utils::namespace::Namespace;
 use enum_dispatch::enum_dispatch;
 
 #[enum_dispatch]
@@ -30,7 +31,7 @@ pub(crate) trait WireRustGeneratorMiscTrait {
         None
     }
 
-    fn generate_imports(&self) -> Option<Vec<String>> {
+    fn generate_imports(&self) -> Option<Vec<Namespace>> {
         None
     }
 

@@ -1,27 +1,33 @@
 use crate::codegen::config::config::Config;
 use crate::utils::path_utils::path_to_string;
-use anyhow::{bail, Context, Error};
+use anyhow::{Context, Error};
 use log::debug;
 use std::fs;
 use std::path::PathBuf;
 
 impl Config {
-    pub fn from_files_auto() -> Result<Self, Error> {
+    pub fn from_files_auto() -> anyhow::Result<Self> {
+        Self::from_files_auto_option()?.context("Fail to find any configuration file")
+    }
+
+    // Only used internally
+    #[doc(hidden)]
+    pub fn from_files_auto_option() -> anyhow::Result<Option<Self>> {
         const PUBSPEC_LOCATION: &str = "pubspec.yaml";
 
         if let Some(config) = Self::from_config_files()? {
-            return Ok(config);
+            return Ok(Some(config));
         }
         if let Some(config) = Self::from_pubspec_yaml(PUBSPEC_LOCATION)? {
-            return Ok(config);
+            return Ok(Some(config));
             // This will stop the whole generator and tell the users, so we do not care about testing it
             // frb-coverage:ignore-start
         }
-        bail!("Fail to find any configuration file")
+        Ok(None)
         // frb-coverage:ignore-end
     }
 
-    fn from_config_files() -> Result<Option<Self>, Error> {
+    fn from_config_files() -> anyhow::Result<Option<Self>> {
         const CONFIG_LOCATIONS: [&str; 6] = [
             ".flutter_rust_bridge.yml",
             ".flutter_rust_bridge.yaml",
@@ -40,7 +46,7 @@ impl Config {
         Ok(None)
     }
 
-    pub fn from_config_file(location: &str) -> Result<Option<Self>, Error> {
+    pub fn from_config_file(location: &str) -> anyhow::Result<Option<Self>> {
         if let Ok(file) = fs::File::open(location) {
             debug!("Found config file {location}");
             let raw: Config = serde_yaml::from_reader(file)
@@ -55,7 +61,7 @@ impl Config {
     /// Loads the [`Config`] from a specified `pubspec.yaml` file.
     ///
     /// Returns [`None`] if it doesn't contain the `flutter_rust_bridge` section somewhere in the file.
-    pub fn from_pubspec_yaml(location: &str) -> Result<Option<Self>, Error> {
+    pub fn from_pubspec_yaml(location: &str) -> anyhow::Result<Option<Self>> {
         #[derive(serde::Deserialize)]
         struct Needle {
             #[serde(rename = "flutter_rust_bridge")]

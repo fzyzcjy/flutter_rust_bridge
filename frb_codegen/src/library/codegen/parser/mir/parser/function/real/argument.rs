@@ -2,11 +2,11 @@ use crate::codegen::ir::mir::field::{MirField, MirFieldSettings};
 use crate::codegen::ir::mir::func::{MirFuncInput, MirFuncOwnerInfo};
 use crate::codegen::ir::mir::func::{MirFuncOwnerInfoMethod, OwnershipMode};
 use crate::codegen::ir::mir::ident::MirIdent;
-use crate::codegen::ir::mir::skip::MirSkipReason;
 use crate::codegen::ir::mir::ty::boxed::MirTypeBoxed;
 use crate::codegen::ir::mir::ty::delegate::{MirTypeDelegate, MirTypeDelegateProxyEnum};
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::ir::mir::ty::MirType::Boxed;
+use crate::codegen::ir::misc::skip::IrSkipReason;
 use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
 use crate::codegen::parser::mir::parser::function::real::{FunctionParser, FunctionPartialInfo};
 use crate::codegen::parser::mir::parser::ty::misc::parse_comments;
@@ -24,20 +24,9 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         owner: &MirFuncOwnerInfo,
         context: &TypeParserParsingContext,
         is_owner_trait_def: bool,
+        needs_extend_lifetime: bool,
     ) -> anyhow::Result<FunctionPartialInfo> {
-        let (ty_syn_raw, name) = match sig_input {
-            FnArg::Typed(ref pat_type) => {
-                (*pat_type.ty.clone(), parse_name_from_pat_type(pat_type)?)
-            }
-            FnArg::Receiver(ref receiver) => {
-                let method = if_then_some!(let MirFuncOwnerInfo::Method(method) = owner, method)
-                    .context("`self` must happen within methods")?;
-                (
-                    syntheize_receiver_type(receiver, method)?,
-                    "that".to_owned(),
-                )
-            }
-        };
+        let (ty_syn_raw, name) = parse_argument_ty_and_name(sig_input, owner)?;
 
         let force_split_ownership = is_owner_trait_def;
         let (ty_syn_without_ownership, ownership_mode_split) =
@@ -57,7 +46,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
         if ty.should_ignore(self.type_parser) {
             return Ok(FunctionPartialInfo {
-                ignore_func: Some(MirSkipReason::IgnoreBecauseType),
+                ignore_func: Some(IrSkipReason::IgnoreBecauseType),
                 ..Default::default()
             });
         }
@@ -79,10 +68,28 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                     settings: MirFieldSettings::default(),
                 },
                 ownership_mode,
+                needs_extend_lifetime,
             }],
             ..Default::default()
         })
     }
+}
+
+pub(crate) fn parse_argument_ty_and_name(
+    sig_input: &FnArg,
+    owner: &MirFuncOwnerInfo,
+) -> anyhow::Result<(Type, String)> {
+    Ok(match sig_input {
+        FnArg::Typed(ref pat_type) => (*pat_type.ty.clone(), parse_name_from_pat_type(pat_type)?),
+        FnArg::Receiver(ref receiver) => {
+            let method = if_then_some!(let MirFuncOwnerInfo::Method(method) = owner, method)
+                .context("`self` must happen within methods")?;
+            (
+                syntheize_receiver_type(receiver, method)?,
+                "that".to_owned(),
+            )
+        }
+    })
 }
 
 pub(crate) fn merge_ownership_into_ty(
@@ -125,28 +132,20 @@ fn syntheize_receiver_type(
     receiver: &Receiver,
     method: &MirFuncOwnerInfoMethod,
 ) -> anyhow::Result<Type> {
-    let ty_str = format!(
-        "{}{}",
-        parse_receiver_ownership_mode(receiver).prefix(),
-        method
-            .owner_ty_name()
-            .context("no owner_ty_name")?
-            .name
-            .to_owned()
-    );
-    Ok(parse_str::<Type>(&ty_str)?)
-}
-
-fn parse_receiver_ownership_mode(receiver: &Receiver) -> OwnershipMode {
-    if receiver.reference.is_some() {
-        if receiver.mutability.is_some() {
-            OwnershipMode::RefMut
-        } else {
-            OwnershipMode::Ref
+    let mut ty_str = "".to_owned();
+    if let Some(reference) = &receiver.reference {
+        ty_str += "&";
+        if let Some(lifetime) = &reference.1 {
+            ty_str += &lifetime.to_string();
         }
-    } else {
-        OwnershipMode::Owned
     }
+    if receiver.mutability.is_some() {
+        ty_str += " mut";
+    }
+    ty_str += " ";
+    ty_str += &method.owner_ty_raw;
+
+    parse_str::<Type>(&ty_str).with_context(|| format!("ty_str={ty_str}"))
 }
 
 fn split_ownership_from_ty_except_ref_mut(

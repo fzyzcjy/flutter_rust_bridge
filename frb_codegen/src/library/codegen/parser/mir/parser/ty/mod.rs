@@ -24,7 +24,6 @@ use crate::utils::basic_code::general_code::GeneralDartCode;
 use crate::utils::namespace::Namespace;
 use std::collections::HashMap;
 use syn::Type;
-use syn::__private::str;
 
 pub(crate) mod array;
 pub(crate) mod concrete;
@@ -33,7 +32,10 @@ mod dart_fn;
 mod enum_or_struct;
 pub(crate) mod enumeration;
 pub(crate) mod external_impl;
+pub(crate) mod generics;
+pub(crate) mod lifetimeable;
 pub(crate) mod misc;
+mod namespace;
 pub(crate) mod optional;
 pub(crate) mod path;
 pub(crate) mod path_data;
@@ -65,6 +67,7 @@ pub(crate) struct TypeParser<'a> {
     rust_opaque_parser_info: RustOpaqueParserInfo,
     rust_auto_opaque_parser_info: RustAutoOpaqueParserInfo,
     array_parser_info: ArrayParserInfo,
+    has_logged_lifetimeable: bool,
 }
 
 impl<'a> TypeParser<'a> {
@@ -101,6 +104,7 @@ impl<'a> TypeParser<'a> {
             rust_opaque_parser_info: RustOpaqueParserInfo::default(),
             rust_auto_opaque_parser_info: RustAutoOpaqueParserInfo::default(),
             array_parser_info: Default::default(),
+            has_logged_lifetimeable: false,
         }
     }
 
@@ -146,9 +150,15 @@ pub(crate) struct TypeParserParsingContext {
     pub(crate) initiated_namespace: Namespace,
     pub(crate) func_attributes: FrbAttributes,
     pub(crate) struct_or_enum_attributes: Option<FrbAttributes>,
+    // TODO if still not used later, rm it
+    #[allow(dead_code)]
+    pub(crate) rust_output_path_namespace: Namespace,
     pub(crate) default_stream_sink_codec: CodecMode,
     pub(crate) default_rust_opaque_codec: RustOpaqueCodecMode,
     pub(crate) owner: Option<MirFuncOwnerInfo>,
+    pub(crate) enable_lifetime: bool,
+    pub(crate) type_64bit_int: bool,
+    pub(crate) forbid_type_self: bool,
     pub(crate) parse_mode: ParseMode,
 }
 

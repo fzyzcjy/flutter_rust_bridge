@@ -1,4 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:frb_example_integrate_third_party/src/rust/api/media_element.dart';
 import 'package:frb_example_integrate_third_party/src/rust/frb_generated.dart';
 import 'package:frb_example_integrate_third_party/src/rust/third_party/web_audio_api/context.dart';
 import 'package:integration_test/integration_test.dart';
@@ -16,9 +17,8 @@ void main() {
 // but only to test code generator functionality.
 //
 // The following is adapted from `web-audio-api`'s readme demo.
-//
 // ignore: unused_element
-Future<void> _demoUsage() async {
+Future<void> _rustWebAudioApiReadmeDemoUsage() async {
   const options = AudioContextOptions(
     latencyHint: AudioContextLatencyCategory.balanced(),
     sinkId: '',
@@ -34,7 +34,7 @@ Future<void> _demoUsage() async {
   await src.setLoop(value: true);
 
   final biquad = await context.createBiquadFilter();
-  biquad.frequency.setValue(value: 125);
+  biquad.frequency.value = 125;
 
   await src.connect(dest: biquad);
   await biquad.connect(dest: await context.destination());
@@ -42,4 +42,37 @@ Future<void> _demoUsage() async {
   await src.start();
 
   await Future.delayed(const Duration(seconds: 4));
+}
+
+// The following is adapted from this demo:
+// https://developer.mozilla.org/zh-CN/docs/Web/API/Web_Audio_API/Using_Web_Audio_API
+// https://github.com/mdn/webaudio-examples/blob/main/audio-basics/index.html
+// ignore: unused_element
+Future<void> _mdnUsingWebAudioApiDemoUsage() async {
+  // TODO default options
+  const options = AudioContextOptions(
+    latencyHint: AudioContextLatencyCategory.balanced(),
+    sinkId: '',
+    renderSizeHint: AudioContextRenderSizeCategory.default_,
+  );
+  final audioContext = AudioContext(options: options);
+
+  final audioElement = MediaElement(file: 'some_file_here');
+  final track =
+      await audioContext.createMediaElementSource(mediaElement: audioElement);
+
+  final gainNode = await audioContext.createGain();
+  gainNode.gain.value = 1.2345;
+
+  final panner = await audioContext.createStereoPanner();
+  panner.pan.value = 1.2345;
+
+  await track.connect(dest: gainNode);
+  await gainNode.connect(dest: panner);
+  await panner.connect(dest: await audioContext.destination());
+
+  await audioContext.resumeSync();
+
+  await audioElement.play();
+  await audioElement.pause();
 }

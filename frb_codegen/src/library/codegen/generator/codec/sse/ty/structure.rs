@@ -64,8 +64,8 @@ impl<'a> GeneralizedStructGenerator<'a> {
         override_struct_name: Option<String>,
         dart_unconditionally_kwargs_ctor: bool,
     ) -> String {
-        let decode_fields = (self.st.fields.iter().enumerate())
-            .map(|(_index, field)| {
+        let decode_fields = (self.st.fields.iter())
+            .map(|field| {
                 format!(
                     "{} var_{} = {};\n",
                     lang.var_decl(),
@@ -78,7 +78,11 @@ impl<'a> GeneralizedStructGenerator<'a> {
         let ctor = match self.mode {
             Struct => lang.call_constructor(
                 &override_struct_name.unwrap_or_else(|| self.st.name.style(lang)),
-                dart_constructor_postfix(&self.st.name, &self.context.mir_pack.funcs_with_impl()),
+                dart_constructor_postfix(
+                    &self.st.name.name,
+                    &self.context.mir_pack.funcs_with_impl(),
+                    self.context.as_api_dart_context(),
+                ),
                 &(self.st.fields.iter())
                     .map(|x| x.name.style(lang))
                     .collect_vec(),

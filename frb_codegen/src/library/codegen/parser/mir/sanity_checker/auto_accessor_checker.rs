@@ -2,7 +2,7 @@ use crate::codegen::ir::mir::field::MirField;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use crate::utils::namespace::NamespacedName;
 use itertools::Itertools;
-use log::warn;
+use log::info;
 
 pub(crate) fn check_field(
     struct_name: &NamespacedName,
@@ -18,7 +18,7 @@ pub(crate) fn report(hints: &[SanityCheckHint]) {
         return;
     }
 
-    warn!(
+    info!(
         "To use the automatically generated getters of the following fields of opaque types, \
         it is suggested to read https://fzyzcjy.github.io/flutter_rust_bridge/guides/types/arbitrary/rust-auto-opaque/properties to know more details. \
         (Related fields: {})",
@@ -33,6 +33,7 @@ pub(crate) struct SanityCheckHint {
 
 #[cfg(test)]
 mod tests {
+    use crate::codegen::ir::mir::llfetime_aware_type::MirLifetimeAwareType;
     use crate::codegen::ir::mir::ty::boxed::MirTypeBoxed;
     use crate::codegen::ir::mir::ty::dart_opaque::MirTypeDartOpaque;
     use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
@@ -56,8 +57,9 @@ mod tests {
 
         assert!(MirType::RustOpaque(MirTypeRustOpaque {
             namespace: Namespace::new_raw("".to_owned()),
-            inner: MirRustOpaqueInner("".to_owned()),
+            inner: MirRustOpaqueInner(MirLifetimeAwareType::new("".to_owned())),
             codec: RustOpaqueCodecMode::Nom,
+            dart_api_type: None,
             brief_name: true,
         })
         .cloned_getter_semantics_reasonable());

@@ -1,13 +1,19 @@
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::mir::parser::ty::misc::convert_ident_str;
 use crate::codegen::parser::mir::parser::ty::{TypeParserParsingContext, TypeParserWithContext};
+use crate::utils::syn_utils::ty_to_string;
 use anyhow::Context;
 use syn::Type;
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type(&mut self, ty: &Type) -> anyhow::Result<MirType> {
         let resolve_ty = self.resolve_alias(ty);
-        self.parse_type_inner(&resolve_ty)
+        let ans = self.parse_type_inner(&resolve_ty)?;
+        log::debug!(
+            "TypeParserWithContext.parse_type ty={} ans={ans:?}",
+            ty_to_string(ty)
+        );
+        Ok(ans)
     }
 
     pub(crate) fn parse_type_with_context(

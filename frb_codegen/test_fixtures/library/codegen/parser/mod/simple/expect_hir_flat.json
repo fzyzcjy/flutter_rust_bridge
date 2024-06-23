@@ -1,6 +1,14 @@
 {
   "enums": [],
   "existing_handler": null,
+  "extra_dart_output_code": {
+    "body": "",
+    "header": {
+      "file_top": "",
+      "import": "",
+      "part": ""
+    }
+  },
   "extra_rust_output_code": "",
   "functions": [
     {
@@ -12,6 +20,7 @@
       ]
     }
   ],
+  "skips": [],
   "structs": [],
   "trait_impls": [],
   "traits": [],

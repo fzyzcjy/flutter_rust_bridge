@@ -1,3 +1,4 @@
+use crate::codegen::ir::hir::misc::serializers::serialize_vec_syn;
 use crate::codegen::ir::hir::misc::visibility::HirVisibility;
 use crate::utils::namespace::Namespace;
 use derivative::Derivative;
@@ -8,7 +9,7 @@ use serde::Serialize;
 pub struct HirTreeModule {
     pub meta: HirTreeModuleMeta,
     pub modules: Vec<HirTreeModule>,
-    #[serde(skip_serializing)]
+    #[serde(serialize_with = "serialize_vec_syn")]
     pub items: Vec<syn::Item>,
 }
 
@@ -38,10 +39,10 @@ impl HirTreeModule {
     }
 
     pub(crate) fn get_module_nested(&self, mod_names: &[&str]) -> Option<&HirTreeModule> {
-        let m = self.get_module_by_name(mod_names[0])?;
-        if mod_names.len() == 1 {
-            Some(m)
+        if mod_names.is_empty() {
+            Some(self)
         } else {
+            let m = self.get_module_by_name(mod_names[0])?;
             m.get_module_nested(&mod_names[1..])
         }
     }

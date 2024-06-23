@@ -542,9 +542,11 @@ Future<void> testFlutterWeb(TestFlutterWebConfig config) async {
   await runPubGetIfNotRunYet(config.package);
   await _installDartCoverage();
 
+  final buildWebPackage =
+      kBuildWebPackageReplacer[config.package] ?? config.package;
   await executeFrbCodegen(
     'build-web --dart-coverage',
-    relativePwd: config.package,
+    relativePwd: buildWebPackage,
     coverage: config.coverage,
     coverageName: 'TestFlutterWeb',
   );

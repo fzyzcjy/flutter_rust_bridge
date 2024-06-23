@@ -101,6 +101,10 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     }
 
     fn parse_type_self(&mut self) -> anyhow::Result<MirType> {
+        if self.context.forbid_type_self {
+            bail!("{}", ERROR_MESSAGE_FORBID_TYPE_SELF);
+        }
+
         let enum_or_struct_name = if_then_some!(
             let MirFuncOwnerInfo::Method(info) = self.context.owner.as_ref().context("owner is null")?,
             info.owner_ty_name().context("owner_ty_name is null")?.name.clone()
@@ -138,3 +142,5 @@ fn parse_stream_sink_codec(codec: &Type) -> anyhow::Result<CodecMode> {
 fn stream_sink_err_type() -> Box<MirType> {
     Box::new(MirType::Delegate(MirTypeDelegate::AnyhowException))
 }
+
+pub(crate) const ERROR_MESSAGE_FORBID_TYPE_SELF: &str = "ERROR_MESSAGE_FORBID_TYPE_SELF";

@@ -28,5 +28,5 @@ This is because, shortly speaking,
 the original version needs to have an owned `B`, and thus the `B` object cannot be used later.
 On the other hand, the updated version, which uses `RustAutoOpaque` thus `Arc`, will only require shared ownership.
 
-(Optional) In the future, we may utilize [this feature](../../../miscellaneous/proxy),
+(Optional) In the future, we may utilize [this feature](../../../misc-features/proxy),
 then the scenario above can be automatically handled without any change to `RustAutoOpaque`.

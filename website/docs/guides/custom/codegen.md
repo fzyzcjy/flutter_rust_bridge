@@ -4,6 +4,9 @@
 
 It is equivalent to provide a parameter using the three approaches below.
 
+In addition, you can provide configs by both configuration file / pubspec.yaml and command line at the same time.
+The latter takes precedence when in conflict.
+
 ### Configuration file
 
 The suggested mode to run `flutter_rust_bridge_codegen`,
@@ -32,8 +35,7 @@ which is often sufficient.
 The parameter names are the same as the one shown in command line help,
 except that there are no `no_` negations here.
 You can also refer to the fields of
-[this struct](https://docs.rs/flutter_rust_bridge_codegen/2.0.0-dev.0/lib_flutter_rust_bridge_codegen/codegen/struct.Config.html)
-(may need to switch to latest version)
+[this struct](https://docs.rs/flutter_rust_bridge_codegen/latest/lib_flutter_rust_bridge_codegen/codegen/struct.Config.html)
 for parameter names.
 Anyway, if a wrong name is provided, it will be immediately recognized and reported.
 
@@ -50,7 +52,8 @@ you can also fill in your config under the `flutter_rust_bridge` entry in `pubsp
 ```yaml
 # put this somewhere in your pubspec.yaml
 flutter_rust_bridge:
-  rust_input: rust/src/api/**/*.rs
+  rust_input: crate::api
+  rust_root: rust/
   dart_output: lib/src/rust
   # ...
 ```

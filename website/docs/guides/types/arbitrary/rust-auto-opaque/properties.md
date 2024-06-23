@@ -1,4 +1,4 @@
-# Properties
+# Properties (Accessors)
 
 The `pub` fields of an opaque struct will be automatically translated,
 such that it can be used as if it is a normal field.
@@ -90,3 +90,9 @@ To create/read/write objects of type `RustAutoOpaque<...>`, please refer to [thi
 
 Another way is to make the struct non-opaque (possibly by adding `#[frb(non_opaque)]`). 
 
+### Solution 3
+
+Yet another way is to utilize the [proxy](../../../misc-features/proxy) feature.
+
+This may be the default generated code instead in the future.
+If this simplifies your scenario a lot, feel free to create an issue to discuss.

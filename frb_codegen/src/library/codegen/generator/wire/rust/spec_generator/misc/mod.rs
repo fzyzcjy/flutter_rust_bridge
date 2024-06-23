@@ -14,6 +14,7 @@ use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::if_then_some;
 use crate::library::codegen::generator::wire::rust::spec_generator::misc::ty::WireRustGeneratorMiscTrait;
+use crate::utils::namespace::Namespace;
 use itertools::Itertools;
 use serde::Serialize;
 use sha1::{Digest, Sha1};
@@ -91,17 +92,28 @@ clippy::let_and_return,
 clippy::too_many_arguments,
 clippy::match_single_binding,
 clippy::clone_on_copy,
-clippy::let_unit_value
+clippy::let_unit_value,
+clippy::deref_addrof,
+clippy::explicit_auto_deref,
+clippy::borrow_deref_ref,
+clippy::needless_borrow
 )]"#;
 
 fn generate_imports(
     types: &[MirType],
     context: WireRustGeneratorContext,
 ) -> Acc<Vec<WireRustOutputCode>> {
+    let output_namespace = Namespace::new_from_rust_crate_path(
+        &context.config.rust_output_path,
+        &context.config.rust_crate_dir,
+    )
+    .unwrap();
     let imports_from_types = types
         .iter()
         .flat_map(|ty| WireRustGenerator::new(ty.clone(), context).generate_imports())
         .flatten()
+        .filter(|namespace| namespace != &output_namespace)
+        .map(|namespace| format!("use {}::*;", namespace.joined_path))
         .collect::<HashSet<String>>()
         .into_iter()
         .join("\n");
@@ -117,7 +129,7 @@ fn generate_imports(
 
     // NOTE Do *not* use imports when possible, instead use fully specified name directly
     let static_imports = "use flutter_rust_bridge::{Handler, IntoIntoDart};
-use flutter_rust_bridge::for_generated::{Lockable, transform_result_dco};
+use flutter_rust_bridge::for_generated::{Lockable, transform_result_dco, Lifetimeable};
 use flutter_rust_bridge::for_generated::byteorder::{NativeEndian, WriteBytesExt, ReadBytesExt};";
 
     Acc::new(|target| {

@@ -5,7 +5,9 @@ use crate::codegen::ir::mir::ty::general_list::{mir_list, MirTypeGeneralList};
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
 use crate::codegen::ir::mir::ty::primitive_list::MirTypePrimitiveList;
 use crate::codegen::ir::mir::ty::record::MirTypeRecord;
-use crate::codegen::ir::mir::ty::rust_auto_opaque_implicit::MirRustAutoOpaqueRaw;
+use crate::codegen::ir::mir::ty::rust_auto_opaque_implicit::{
+    MirRustAutoOpaqueRaw, MirTypeRustAutoOpaqueImplicit,
+};
 use crate::codegen::ir::mir::ty::rust_opaque::MirTypeRustOpaque;
 use crate::codegen::ir::mir::ty::{MirContext, MirType, MirTypeTrait};
 use crate::utils::namespace::{Namespace, NamespacedName};
@@ -34,6 +36,7 @@ pub enum MirTypeDelegate {
     ProxyVariant(MirTypeDelegateProxyVariant),
     ProxyEnum(MirTypeDelegateProxyEnum),
     DynTrait(MirTypeDelegateDynTrait),
+    Lifetimeable(MirTypeDelegateLifetimeable),
     CustomSerDes(MirTypeDelegateCustomSerDes),
 }
 
@@ -112,6 +115,11 @@ pub struct MirTypeDelegateDynTrait {
     pub data: Option<MirTypeDelegateDynTraitData>,
 }
 
+pub struct MirTypeDelegateLifetimeable {
+    pub api_type: MirTypeRustAutoOpaqueImplicit,
+    pub delegate: MirTypeDelegateRustAutoOpaqueExplicit,
+}
+
 pub struct MirTypeDelegateDynTraitData {
     pub delegate_namespace: Namespace,
     pub variants: Vec<MirTypeDelegateDynTraitVariant>,
@@ -186,6 +194,9 @@ impl MirTypeTrait for MirTypeDelegate {
             MirTypeDelegate::ProxyEnum(mir) => {
                 format!("ProxyEnum_{}", mir.get_delegate().safe_ident())
             }
+            MirTypeDelegate::Lifetimeable(mir) => {
+                format!("Lifetimeable_{}", mir.api_type.safe_ident())
+            }
             MirTypeDelegate::CustomSerDes(mir) => {
                 format!("CustomSerializer_{}", mir.info.rust_api_type.safe_ident())
             }
@@ -251,11 +262,16 @@ impl MirTypeTrait for MirTypeDelegate {
             },
             MirTypeDelegate::CastedPrimitive(mir) => mir.inner.rust_api_type(),
             MirTypeDelegate::RustAutoOpaqueExplicit(mir) => {
-                format!("RustAutoOpaque{}<{}>", mir.inner.codec, mir.raw.string)
+                format!(
+                    "RustAutoOpaque{}<{}>",
+                    mir.inner.codec,
+                    mir.raw.string.with_static_lifetime()
+                )
             }
             MirTypeDelegate::DynTrait(mir) => format!("dyn {}", mir.trait_def_name.name),
             MirTypeDelegate::ProxyVariant(mir) => mir.inner.rust_api_type(),
             MirTypeDelegate::ProxyEnum(mir) => mir.original.rust_api_type(),
+            MirTypeDelegate::Lifetimeable(mir) => mir.api_type.rust_api_type(),
             MirTypeDelegate::CustomSerDes(mir) => mir.info.rust_api_type.rust_api_type(),
         }
     }
@@ -272,6 +288,7 @@ impl MirTypeTrait for MirTypeDelegate {
         match self {
             MirTypeDelegate::PrimitiveEnum(inner) => inner.mir.self_namespace(),
             MirTypeDelegate::Array(inner) => Some(inner.namespace.clone()),
+            MirTypeDelegate::ProxyEnum(inner) => inner.original.self_namespace(),
             MirTypeDelegate::ProxyVariant(inner) => inner.inner.self_namespace(),
             _ => None,
         }
@@ -330,6 +347,9 @@ impl MirTypeDelegate {
             MirTypeDelegate::DynTrait(mir) => mir.get_delegate(),
             MirTypeDelegate::ProxyVariant(mir) => *mir.inner.clone(),
             MirTypeDelegate::ProxyEnum(mir) => mir.get_delegate(),
+            MirTypeDelegate::Lifetimeable(mir) => MirType::Delegate(
+                MirTypeDelegate::RustAutoOpaqueExplicit(mir.delegate.clone()),
+            ),
             MirTypeDelegate::CustomSerDes(mir) => *mir.info.inner_type.clone(),
         }
     }

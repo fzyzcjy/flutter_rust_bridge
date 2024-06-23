@@ -16,8 +16,11 @@ impl<'a> ApiDartGeneratorClassTrait for StructRefApiDartGenerator<'a> {
         let comments = generate_dart_comments(&src.comments);
         let metadata = generate_dart_metadata(&src.dart_metadata);
 
-        let constructor_postfix =
-            dart_constructor_postfix(&src.name, &self.context.mir_pack.funcs_with_impl());
+        let constructor_postfix = dart_constructor_postfix(
+            &src.name.name,
+            &self.context.mir_pack.funcs_with_impl(),
+            self.context,
+        );
         let class_name = &self.mir.ident.0.name;
 
         let methods = generate_api_methods(

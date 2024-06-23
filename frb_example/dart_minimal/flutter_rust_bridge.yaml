@@ -6,4 +6,6 @@ dump_all: true
 local: true
 
 # TODO temp
-full_dep: true
+#full_dep: true
+#enable_lifetime: true
+#stop_on_error: true

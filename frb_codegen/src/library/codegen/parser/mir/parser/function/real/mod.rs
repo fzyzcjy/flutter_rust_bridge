@@ -3,24 +3,25 @@ use crate::codegen::ir::hir::flat::function::HirFlatFunction;
 use crate::codegen::ir::hir::flat::function::HirFlatFunctionOwner;
 use crate::codegen::ir::mir::func::{
     MirFunc, MirFuncArgMode, MirFuncImplMode, MirFuncImplModeDartOnly, MirFuncInput, MirFuncMode,
-    MirFuncOutput, MirFuncOwnerInfo, MirFuncOwnerInfoMethod, MirFuncOwnerInfoMethodMode,
+    MirFuncOutput, MirFuncOwnerInfo, MirFuncOwnerInfoMethod,
 };
-use crate::codegen::ir::mir::skip::MirSkipReason::{
-    IgnoreBecauseExplicitAttribute, IgnoreBecauseFunctionGeneric, IgnoreBecauseOwnerTyShouldIgnore,
-    IgnoreSilently,
-};
-use crate::codegen::ir::mir::skip::{MirSkip, MirSkipReason};
 use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
 use crate::codegen::ir::mir::ty::rust_auto_opaque_implicit::MirTypeRustAutoOpaqueImplicitReason;
 use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
-use crate::codegen::ir::mir::ty::trait_def::MirTypeTraitDef;
 use crate::codegen::ir::mir::ty::MirType;
+use crate::codegen::ir::misc::skip::IrSkipReason::{
+    IgnoreBecauseExplicitAttribute, IgnoreBecauseFunctionGeneric, IgnoreBecauseSelfTypeNotAllowed,
+    IgnoreSilently,
+};
+use crate::codegen::ir::misc::skip::{IrSkip, IrSkipReason, IrValueOrSkip, MirFuncOrSkip};
 use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
 use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
-use crate::codegen::parser::mir::parser::function::func_or_skip::MirFuncOrSkip;
+use crate::codegen::parser::mir::parser::function::real::lifetime::parse_function_lifetime;
+use crate::codegen::parser::mir::parser::function::ui_related::UI_MUTATION_FUNCTION_RUST_AOP_AFTER;
+use crate::codegen::parser::mir::parser::ty::concrete::ERROR_MESSAGE_FORBID_TYPE_SELF;
+use crate::codegen::parser::mir::parser::ty::generics::should_ignore_because_generics;
 use crate::codegen::parser::mir::parser::ty::misc::parse_comments;
-use crate::codegen::parser::mir::parser::ty::trait_def::parse_type_trait;
 use crate::codegen::parser::mir::parser::ty::{TypeParser, TypeParserParsingContext};
 use crate::codegen::parser::mir::ParseMode;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
@@ -29,12 +30,13 @@ use anyhow::{bail, Context};
 use itertools::concat;
 use log::{debug, warn};
 use std::fmt::Debug;
-use syn::*;
-use MirSkipReason::IgnoreBecauseFunctionNotPub;
+use IrSkipReason::IgnoreBecauseFunctionNotPub;
 use MirType::Primitive;
 
 pub(crate) mod argument;
+pub(super) mod lifetime;
 pub(crate) mod output;
+mod owner;
 mod transformer;
 
 pub(crate) fn parse(
@@ -49,8 +51,15 @@ pub(crate) fn parse(
             function_parser.parse_function(
                 f,
                 &config.force_codec_mode_pack,
+                config
+                    .rust_input_namespace_pack
+                    .rust_output_path_namespace
+                    .clone(),
                 config.default_stream_sink_codec,
                 config.default_rust_opaque_codec,
+                config.enable_lifetime,
+                config.type_64bit_int,
+                config.default_dart_async,
                 parse_mode,
                 config.stop_on_error,
             )
@@ -72,16 +81,24 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         &mut self,
         func: &HirFlatFunction,
         force_codec_mode_pack: &Option<CodecModePack>,
+        rust_output_path_namespace: Namespace,
         default_stream_sink_codec: CodecMode,
         default_rust_opaque_codec: RustOpaqueCodecMode,
+        enable_lifetime: bool,
+        type_64bit_int: bool,
+        default_dart_async: bool,
         parse_mode: ParseMode,
         stop_on_error: bool,
     ) -> anyhow::Result<MirFuncOrSkip> {
         match self.parse_function_inner(
             func,
             force_codec_mode_pack,
+            rust_output_path_namespace,
             default_stream_sink_codec,
             default_rust_opaque_codec,
+            enable_lifetime,
+            type_64bit_int,
+            default_dart_async,
             parse_mode,
         ) {
             Ok(output) => Ok(output),
@@ -99,7 +116,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                         func.item_fn.name(),
                         err
                     );
-                    Ok(create_output_skip(func, MirSkipReason::Err))
+                    Ok(create_output_skip(func, IrSkipReason::Err))
                 }
                 // frb-coverage:ignore-end
             }
@@ -111,8 +128,12 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         &mut self,
         func: &HirFlatFunction,
         force_codec_mode_pack: &Option<CodecModePack>,
+        rust_output_path_namespace: Namespace,
         default_stream_sink_codec: CodecMode,
         default_rust_opaque_codec: RustOpaqueCodecMode,
+        enable_lifetime: bool,
+        type_64bit_int: bool,
+        default_dart_async: bool,
         parse_mode: ParseMode,
     ) -> anyhow::Result<MirFuncOrSkip> {
         debug!("parse_function function name: {:?}", func.item_fn.name());
@@ -120,7 +141,9 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         if func.is_public() == Some(false) {
             return Ok(create_output_skip(func, IgnoreBecauseFunctionNotPub));
         }
-        if !func.item_fn.sig().generics.params.is_empty() {
+
+        // If enable lifetime, the lifetime "generics" should be acceptable (though other generics still not)
+        if should_ignore_because_generics(&func.item_fn.sig().generics, enable_lifetime) {
             return Ok(create_output_skip(func, IgnoreBecauseFunctionGeneric));
         }
 
@@ -132,22 +155,31 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
         let dart_name = parse_dart_name(&attributes, &func.item_fn.name());
 
-        let create_context = |owner: Option<MirFuncOwnerInfo>| TypeParserParsingContext {
-            initiated_namespace: func.namespace.clone(),
-            func_attributes: attributes.clone(),
-            struct_or_enum_attributes: None,
-            default_stream_sink_codec,
-            default_rust_opaque_codec,
-            owner,
-            parse_mode,
-        };
+        let create_context =
+            |owner: Option<MirFuncOwnerInfo>, forbid_type_self: bool| TypeParserParsingContext {
+                initiated_namespace: func.namespace.clone(),
+                func_attributes: attributes.clone(),
+                struct_or_enum_attributes: None,
+                rust_output_path_namespace: rust_output_path_namespace.clone(),
+                default_stream_sink_codec,
+                default_rust_opaque_codec,
+                owner,
+                enable_lifetime,
+                type_64bit_int,
+                forbid_type_self,
+                parse_mode,
+            };
 
         let is_owner_trait_def = matches!(func.owner, HirFlatFunctionOwner::TraitDef { .. });
-        let owner =
-            match self.parse_owner(func, &create_context(None), dart_name.clone(), &attributes)? {
-                OwnerInfoOrSkip::Info(info) => info,
-                OwnerInfoOrSkip::Skip(reason) => return Ok(create_output_skip(func, reason)),
-            };
+        let owner = match self.parse_owner(
+            func,
+            &create_context(None, false),
+            dart_name.clone(),
+            &attributes,
+        )? {
+            IrValueOrSkip::Value(info) => info,
+            IrValueOrSkip::Skip(reason) => return Ok(create_output_skip(func, reason)),
+        };
 
         let func_name = parse_name(&func.item_fn.name(), &owner);
 
@@ -155,19 +187,46 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             return Ok(create_output_skip(func, IgnoreBecauseExplicitAttribute));
         }
 
-        let context = create_context(Some(owner.clone()));
+        let lifetime_info = parse_function_lifetime(func.item_fn.sig(), &owner)?;
+
+        let context_input = create_context(
+            Some(owner.clone()),
+            should_forbid_type_self_for_inputs(&owner),
+        );
+        let context_output = create_context(Some(owner.clone()), false);
         let mut info = FunctionPartialInfo::default();
-        for sig_input in func.item_fn.sig().inputs.iter() {
-            info =
-                info.merge(self.parse_fn_arg(sig_input, &owner, &context, is_owner_trait_def)?)?;
+        for (i, sig_input) in func.item_fn.sig().inputs.iter().enumerate() {
+            let arg_info = match self.parse_fn_arg(
+                sig_input,
+                &owner,
+                &context_input,
+                is_owner_trait_def,
+                lifetime_info.needs_extend_lifetime_per_arg[i],
+            ) {
+                Ok(x) => x,
+                Err(e) => {
+                    // TODO later use real error enums
+                    return if e.to_string().contains(ERROR_MESSAGE_FORBID_TYPE_SELF) {
+                        Ok(create_output_skip(func, IgnoreBecauseSelfTypeNotAllowed))
+                    } else {
+                        Err(e)
+                    };
+                }
+            };
+            info = info.merge(arg_info)?;
         }
-        info =
-            info.merge(self.parse_fn_output(func.item_fn.sig(), &owner, &context, &attributes)?)?;
+        info = info.merge(self.parse_fn_output(
+            func.item_fn.sig(),
+            &owner,
+            &context_output,
+            &attributes,
+        )?)?;
         info = self.transform_fn_info(info);
 
         let codec_mode_pack = compute_codec_mode_pack(&attributes, force_codec_mode_pack);
-        let mode = compute_func_mode(&attributes, &info);
-        let stream_dart_await = attributes.stream_dart_await() && !attributes.sync();
+        let dart_async = compute_dart_async(&attributes, default_dart_async);
+        let mode = compute_func_mode(dart_async, &info);
+        let stream_dart_await = attributes.stream_dart_await() && dart_async;
         let namespace_refined = refine_namespace(&owner).unwrap_or(func.namespace.clone());
         let accessor = attributes.accessor();
 
@@ -182,7 +241,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             return Ok(create_output_skip(func, ignore_func));
         }
 
-        Ok(MirFuncOrSkip::Func(MirFunc {
+        Ok(IrValueOrSkip::Value(MirFunc {
             name: NamespacedName::new(namespace_refined, func_name),
             dart_name,
             id: None, // to be filled later
@@ -202,133 +261,44 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             comments: parse_comments(func.item_fn.attrs()),
             codec_mode_pack,
             rust_call_code: None,
+            rust_aop_after: (attributes.ui_mutation())
+                .then(|| UI_MUTATION_FUNCTION_RUST_AOP_AFTER.to_owned()),
             impl_mode,
             src_lineno_pseudo: src_lineno,
         }))
     }
+}
 
-    fn parse_owner(
-        &mut self,
-        func: &HirFlatFunction,
-        context: &TypeParserParsingContext,
-        actual_method_dart_name: Option<String>,
-        attributes: &FrbAttributes,
-    ) -> anyhow::Result<OwnerInfoOrSkip> {
-        use MirSkipReason::*;
-        use OwnerInfoOrSkip::*;
-
-        match &func.owner {
-            HirFlatFunctionOwner::Function => Ok(Info(MirFuncOwnerInfo::Function)),
-            HirFlatFunctionOwner::StructOrEnum {
-                impl_ty,
-                trait_def_name,
-            } => {
-                let owner_ty = if let Some(x) = self.parse_method_owner_ty(impl_ty, context)? {
-                    x
-                } else {
-                    return Ok(Skip(IgnoreBecauseParseMethodOwnerTy));
-                };
-
-                let trait_def = if let Some(trait_def_name) = trait_def_name {
-                    if let Some(ans) = parse_type_trait(trait_def_name, self.type_parser) {
-                        Some(ans)
-                    } else {
-                        // If cannot find the trait, we directly skip the function currently
-                        return Ok(Skip(IgnoreBecauseParseOwnerCannotFindTrait));
-                    }
-                } else {
-                    None
-                };
-
-                if !is_allowed_owner(&owner_ty, attributes) {
-                    return Ok(Skip(IgnoreBecauseNotAllowedOwner));
-                }
-
-                self.parse_method_owner_inner(func, actual_method_dart_name, owner_ty, trait_def)
-            }
-            HirFlatFunctionOwner::TraitDef { trait_def_name } => {
-                let trait_def = MirTypeTraitDef {
-                    name: trait_def_name.to_owned(),
-                };
-
-                self.parse_method_owner_inner(
-                    func,
-                    actual_method_dart_name,
-                    MirType::TraitDef(trait_def.clone()),
-                    Some(trait_def),
-                )
-            }
-        }
-    }
-
-    fn parse_method_owner_inner(
-        &mut self,
-        func: &HirFlatFunction,
-        actual_method_dart_name: Option<String>,
-        owner_ty: MirType,
-        trait_def: Option<MirTypeTraitDef>,
-    ) -> anyhow::Result<OwnerInfoOrSkip> {
-        use OwnerInfoOrSkip::*;
-
-        let sig = func.item_fn.sig();
-        let mode = if matches!(sig.inputs.first(), Some(FnArg::Receiver(..))) {
-            MirFuncOwnerInfoMethodMode::Instance
-        } else {
-            MirFuncOwnerInfoMethodMode::Static
-        };
-
-        if owner_ty.should_ignore(self.type_parser) {
-            return Ok(Skip(IgnoreBecauseOwnerTyShouldIgnore));
-        }
-
-        let actual_method_name = sig.ident.to_string();
-
-        Ok(Info(MirFuncOwnerInfo::Method(MirFuncOwnerInfoMethod {
-            owner_ty,
-            actual_method_name,
-            actual_method_dart_name,
-            mode,
-            trait_def,
-        })))
-    }
-
-    fn parse_method_owner_ty(
-        &mut self,
-        impl_ty: &Type,
-        context: &TypeParserParsingContext,
-    ) -> anyhow::Result<Option<MirType>> {
-        let self_ty_path = if let Type::Path(self_ty_path) = impl_ty {
-            self_ty_path
-        } else {
-            return Ok(None);
-        };
-
-        // let owner_ty_name = external_impl::parse_name_or_original(
-        //     &(self_ty_path.path.segments.first().unwrap().ident).to_string(),
-        // )?;
-        let owner_ty_name = (self_ty_path.path.segments.first().unwrap().ident).to_string();
-        let syn_ty: Type = parse_str(&owner_ty_name)?;
-        Ok(Some(self.type_parser.parse_type(&syn_ty, context)?))
+fn compute_dart_async(attributes: &FrbAttributes, default_dart_async: bool) -> bool {
+    if attributes.sync() {
+        false
+    } else {
+        default_dart_async
     }
 }
 
-enum OwnerInfoOrSkip {
-    Info(MirFuncOwnerInfo),
-    Skip(MirSkipReason),
+fn should_forbid_type_self_for_inputs(owner: &MirFuncOwnerInfo) -> bool {
+    if let MirFuncOwnerInfo::Method(method) = owner {
+        if matches!(method.owner_ty, MirType::TraitDef(_)) {
+            // #2089
+            return true;
+        }
+    }
+    false
 }
 
-fn create_output_skip(func: &HirFlatFunction, reason: MirSkipReason) -> MirFuncOrSkip {
-    MirFuncOrSkip::Skip(MirSkip {
+fn create_output_skip(func: &HirFlatFunction, reason: IrSkipReason) -> MirFuncOrSkip {
+    IrValueOrSkip::Skip(IrSkip {
         name: NamespacedName::new(func.namespace.clone(), func.item_fn.name().to_string()),
         reason,
     })
 }
 
-fn compute_func_mode(attributes: &FrbAttributes, info: &FunctionPartialInfo) -> MirFuncMode {
-    info.mode.unwrap_or(if attributes.sync() {
-        MirFuncMode::Sync
-    } else {
+fn compute_func_mode(dart_async: bool, info: &FunctionPartialInfo) -> MirFuncMode {
+    info.mode.unwrap_or(if dart_async {
         MirFuncMode::Normal
+    } else {
+        MirFuncMode::Sync
     })
 }
 
@@ -353,7 +323,7 @@ struct FunctionPartialInfo {
     ok_output: Option<MirType>,
     error_output: Option<MirType>,
     mode: Option<MirFuncMode>,
-    ignore_func: Option<MirSkipReason>,
+    ignore_func: Option<IrSkipReason>,
 }
 
 impl FunctionPartialInfo {
@@ -405,11 +375,6 @@ fn refine_namespace(owner: &MirFuncOwnerInfo) -> Option<Namespace> {
     }
 }
 
-fn is_allowed_owner(owner_ty: &MirType, attributes: &FrbAttributes) -> bool {
-    // if `#[frb(external)]`, then allow arbitrary type
-    attributes.external() || is_struct_or_enum_or_opaque_from_them(owner_ty)
-}
-
 pub(crate) fn is_struct_or_enum_or_opaque_from_them(ty: &MirType) -> bool {
     match ty {
         MirType::StructRef(_)
@@ -417,6 +382,11 @@ pub(crate) fn is_struct_or_enum_or_opaque_from_them(ty: &MirType) -> bool {
         | MirType::Delegate(MirTypeDelegate::PrimitiveEnum(_)) => true,
         MirType::RustAutoOpaqueImplicit(ty) => {
             ty.reason == Some(MirTypeRustAutoOpaqueImplicitReason::StructOrEnumRequireOpaque)
+        }
+        MirType::Delegate(MirTypeDelegate::Lifetimeable(ty)) => {
+            is_struct_or_enum_or_opaque_from_them(&MirType::RustAutoOpaqueImplicit(
+                ty.api_type.clone(),
+            ))
         }
         _ => false,
     }

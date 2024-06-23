@@ -187,6 +187,9 @@ jobs:
           - frb_example--integrate_third_party
           - frb_example--flutter_via_create
           - frb_example--flutter_via_integrate
+          - frb_example--flutter_package
+          - frb_example--rust_ui_counter--ui
+          - frb_example--rust_ui_todo_list--ui
         exclude:
           - { image: windows-2019, package: frb_example--deliberate_bad }
           - { image: macos-11, package: frb_example--deliberate_bad }
@@ -754,6 +757,9 @@ jobs:
       matrix:
         package:
           - frb_example--flutter_via_create
+          - frb_example--flutter_package--example
+          - frb_example--rust_ui_counter--ui
+          - frb_example--rust_ui_todo_list--ui
           # no `frb_example--flutter_via_integrate` since it is similar to `flutter_via_create`
         device:
           - "pixel"
@@ -819,6 +825,9 @@ jobs:
       matrix:
         package:
           - frb_example--flutter_via_create
+          - frb_example--flutter_package--example
+          - frb_example--rust_ui_counter--ui
+          - frb_example--rust_ui_todo_list--ui
           # no `frb_example--flutter_via_integrate` since it is similar to `flutter_via_create`
         device:
           - "iPad (10th generation) Simulator (17.2)"
@@ -866,6 +875,37 @@ jobs:
           - image: ubuntu-latest
             platform: linux
             package: frb_example--flutter_via_create
+
+          - image: windows-2019
+            platform: windows
+            package: frb_example--flutter_package--example
+          - image: macos-13
+            platform: macos
+            package: frb_example--flutter_package--example
+          - image: ubuntu-latest
+            platform: linux
+            package: frb_example--flutter_package--example
+
+          - image: windows-2019
+            platform: windows
+            package: frb_example--rust_ui_counter--ui
+          - image: macos-13
+            platform: macos
+            package: frb_example--rust_ui_counter--ui
+          - image: ubuntu-latest
+            platform: linux
+            package: frb_example--rust_ui_counter--ui
+
+          - image: windows-2019
+            platform: windows
+            package: frb_example--rust_ui_todo_list--ui
+          - image: macos-13
+            platform: macos
+            package: frb_example--rust_ui_todo_list--ui
+          - image: ubuntu-latest
+            platform: linux
+            package: frb_example--rust_ui_todo_list--ui
+
           # only slightly test `flutter_via_integrate` since quite similar to `flutter_via_create`
           - image: ubuntu-latest
             platform: linux
@@ -909,6 +949,7 @@ jobs:
       matrix:
         package:
           - frb_example--flutter_via_create
+          # no `frb_example--flutter_package--example` yet
           # no `frb_example--flutter_via_integrate` since it is similar to `flutter_via_create`
           - frb_example--gallery
 
@@ -988,39 +1029,39 @@ jobs:
           directory: downloaded-artifacts
           verbose: true
 
-  misc_check_precommit:
-    name: 'Misc :: Check precommit'
-    runs-on: ubuntu-latest
-
-    strategy:
-      fail-fast: false
-      matrix:
-        mode:
-          - fast
-          - slow
-
-    steps:
-      # setup
-      - uses: catchpoint/workflow-telemetry-action@v1
-        with:
-          comment_on_pr: false
-      - uses: actions/checkout@v4
-        with:
-          submodules: recursive
-      - uses: dtolnay/rust-toolchain@stable
-        with:
-          toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
-          components: rustfmt, clippy
-      - run: |
-          rustup toolchain install nightly
-          rustup target add wasm32-unknown-unknown
-          rustup component add rustfmt --toolchain nightly-x86_64-unknown-linux-gnu
-          cargo install cargo-expand
-      - uses: subosito/flutter-action@v2
-        with:
-          cache: true
-          flutter-version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
-
-      # execute
-      - run: ./frb_internal precommit --mode ${{ matrix.mode }}
-
+# GitHub actions errors: `no space left on device`, thus temp skip it, since it does not introduce any new checks
+#  misc_check_precommit:
+#    name: 'Misc :: Check precommit'
+#    runs-on: ubuntu-latest
+#
+#    strategy:
+#      fail-fast: false
+#      matrix:
+#        mode:
+#          - fast
+#          - slow
+#
+#    steps:
+#      # setup
+#      - uses: catchpoint/workflow-telemetry-action@v1
+#        with:
+#          comment_on_pr: false
+#      - uses: actions/checkout@v4
+#        with:
+#          submodules: recursive
+#      - uses: dtolnay/rust-toolchain@stable
+#        with:
+#          toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
+#          components: rustfmt, clippy
+#      - run: |
+#          rustup toolchain install nightly
+#          rustup target add wasm32-unknown-unknown
+#          rustup component add rustfmt --toolchain nightly-x86_64-unknown-linux-gnu
+#          cargo install cargo-expand
+#      - uses: subosito/flutter-action@v2
+#        with:
+#          cache: true
+#          flutter-version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
+#
+#      # execute
+#      - run: ./frb_internal precommit --mode ${{ matrix.mode }}

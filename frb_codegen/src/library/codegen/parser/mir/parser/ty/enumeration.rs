@@ -18,7 +18,7 @@ use crate::codegen::parser::mir::parser::ty::enum_or_struct::{
 use crate::codegen::parser::mir::parser::ty::misc::parse_comments;
 use crate::codegen::parser::mir::parser::ty::structure::structure_compute_default_opaque;
 use crate::codegen::parser::mir::parser::ty::unencodable::SplayedSegment;
-use crate::codegen::parser::mir::parser::ty::TypeParserWithContext;
+use crate::codegen::parser::mir::parser::ty::{TypeParserParsingContext, TypeParserWithContext};
 use crate::if_then_some;
 use crate::utils::basic_code::general_code::GeneralDartCode;
 use crate::utils::namespace::{Namespace, NamespacedName};
@@ -28,9 +28,14 @@ use syn::{Attribute, Field, Ident, ItemEnum, Type, Variant, Visibility};
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_path_data_enum(
         &mut self,
+        path: &syn::Path,
         last_segment: &SplayedSegment,
     ) -> anyhow::Result<Option<MirType>> {
-        EnumOrStructParserEnum(self).parse(last_segment, None)
+        EnumOrStructParserEnum(self).parse(path, last_segment, None)
+    }
+
+    pub(crate) fn parse_enum_namespace(&mut self, name: &str) -> Option<Namespace> {
+        EnumOrStructParserEnum(self).parse_namespace(name)
     }
 
     fn parse_enum(
@@ -49,7 +54,11 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
         let mode = compute_enum_mode(&raw_variants);
         let variants = maybe_field_wrap_box(raw_variants, mode);
-        let ignore = parse_struct_or_enum_should_ignore(src_enum, &name.namespace.crate_name());
+        let ignore = parse_struct_or_enum_should_ignore(
+            src_enum,
+            &name.namespace.crate_name(),
+            self.context,
+        );
 
         Ok(MirEnum {
             name,
@@ -105,6 +114,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             ignore: attributes.ignore(),
             generate_hash: true,
             generate_eq: true,
+            ui_state: attributes.ui_state(),
             comments: parse_comments(attrs),
             fields: variant
                 .fields
@@ -202,6 +212,10 @@ impl EnumOrStructParser<MirEnumIdent, MirEnum, ItemEnum>
     ) -> anyhow::Result<MirType> {
         self.0
             .parse_type_rust_auto_opaque_implicit(namespace, ty, reason, override_ignore)
+    }
+
+    fn context(&self) -> &TypeParserParsingContext {
+        self.0.context
     }
 
     fn compute_default_opaque(obj: &MirEnum) -> bool {

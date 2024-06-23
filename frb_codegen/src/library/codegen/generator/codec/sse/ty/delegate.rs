@@ -62,6 +62,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 MirTypeDelegate::DynTrait(mir) => {
                     generate_dyn_trait_dart_encode(mir, self.context.as_api_dart_context())
                 }
+                MirTypeDelegate::Lifetimeable(_) => "self".to_owned(),
                 MirTypeDelegate::CustomSerDes(mir) => {
                     mir.info.dart2rust.dart_code.replace("{}", "self")
                 }
@@ -115,7 +116,8 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 MirTypeDelegate::ProxyVariant(_)
                 | MirTypeDelegate::ProxyEnum(_)
                 | MirTypeDelegate::DynTrait(_)
-                | MirTypeDelegate::CastedPrimitive(_) => return None,
+                | MirTypeDelegate::CastedPrimitive(_)
+                | MirTypeDelegate::Lifetimeable(_) => return None,
                 MirTypeDelegate::CustomSerDes(mir) => {
                     format!("{}(self)", mir.info.rust2dart.rust_function.rust_style())
                 }
@@ -182,6 +184,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     MirTypeDelegate::DynTrait(_) => {
                         return Some(format!("{};", lang.throw_unimplemented("")))
                     }
+                    MirTypeDelegate::Lifetimeable(_) => "inner".to_owned(),
                     MirTypeDelegate::CustomSerDes(mir) => {
                         mir.info.rust2dart.dart_code.replace("{}", "inner")
                     }
@@ -232,7 +235,8 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 MirTypeDelegate::ProxyVariant(_)
                 | MirTypeDelegate::ProxyEnum(_)
                 | MirTypeDelegate::DynTrait(_)
-                | MirTypeDelegate::CastedPrimitive(_) => return None,
+                | MirTypeDelegate::CastedPrimitive(_)
+                | MirTypeDelegate::Lifetimeable(_) => return None,
                 MirTypeDelegate::CustomSerDes(mir) => {
                     format!("{}(inner)", mir.info.dart2rust.rust_function.rust_style())
                 }

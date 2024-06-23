@@ -1,5 +1,42 @@
 # Changelog
 
+## 2.0.0
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+
+## 2.0.0-dev.42
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Support brackets and nesting in pub use (such as pub use `a::{b, x::{y,z}}`) #2120
+* Support providing configuration both by command line and by config file at the same time #2119
+* Tell user reasons when skipping traits #2121
+* Update default template comments #2118
+* Allow using arbitrary frb attribute as an indicator to include an item #2121
+* Improve hints when user specify custom wasm-pack-rustflags but does not contain default one #2122
+
+## 2.0.0-dev.41
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Use dart.library.js_interop rather than dart.library.html #2113 (thanks @aran)
+* Auto skip methods in trait definitions that has Self as inputs because it cannot be translated to Dart #2099
+* Add type_64bit_int to config #2096
+* Improve namespace choices for opaque types #2096
+* Hint users when having references in output type, hint when wrong rust_input, and improve docs #2100
+* Improve warning message #2098
+* Experiment more about translating whole audio crate#2096
+* Improve internal code #2096
+* Make generated output sorted when using proxy_enum and trait_impl #2115
+
+## 2.0.0-dev.40
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Support returning types with non-static lifetime (i.e. borrowed types / reference types) #2088 #2093
+* Loosen config field `rust_input` syntax with delimit `,` #2092 (thanks @dbsxdbsx)
+* Add prefix for automatically generated get/set methods of `#[frb(opaque)]` types to avoid conflicting with existing methods #2090 (thanks @dbsxdbsx)
+* Support adding arbitrary code in generated Rust file via rust_preamble config #2086
+* Support ignoring a whole module by `#[frb(ignore)]` on module #2085
+* Support `/// frb:...` #2085
+
 ## 2.0.0-dev.39
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.

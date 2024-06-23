@@ -4,7 +4,9 @@ use crate::codegen::ir::hir::misc::visibility::HirVisibility;
 use crate::codegen::ir::mir::ty::rust_auto_opaque_implicit::MirTypeRustAutoOpaqueImplicitReason;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
+use crate::codegen::parser::mir::parser::ty::generics::should_ignore_because_generics;
 use crate::codegen::parser::mir::parser::ty::unencodable::SplayedSegment;
+use crate::codegen::parser::mir::parser::ty::TypeParserParsingContext;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use crate::utils::basic_code::general_code::GeneralDartCode;
 use crate::utils::basic_code::parser::parse_dart_code;
@@ -14,7 +16,7 @@ use log::debug;
 use std::collections::{HashMap, HashSet};
 use std::fmt::Debug;
 use std::hash::Hash;
-use syn::Type;
+use syn::{Type, TypePath};
 
 pub(super) trait EnumOrStructParser<Id, Obj, Item: SynItemStructOrEnum>
 where
@@ -22,16 +24,18 @@ where
 {
     fn parse(
         &mut self,
+        path: &syn::Path,
         last_segment: &SplayedSegment,
         override_opaque: Option<bool>,
     ) -> anyhow::Result<Option<MirType>> {
-        let output = self.parse_impl(last_segment, override_opaque)?;
+        let output = self.parse_impl(path, last_segment, override_opaque)?;
         self.handle_dart_code(&output);
         Ok(output.map(|(ty, _)| ty))
     }
 
     fn parse_impl(
         &mut self,
+        path: &syn::Path,
         last_segment: &SplayedSegment,
         override_opaque: Option<bool>,
     ) -> anyhow::Result<Option<(MirType, FrbAttributes)>> {
@@ -41,15 +45,15 @@ where
         if let Some(src_object) = self.src_objects().get(*name) {
             let src_object = (*src_object).clone();
 
-            let namespace = &src_object.name.namespace;
-            let namespaced_name = NamespacedName::new(namespace.clone(), name.to_string());
+            let namespace = self.parse_namespace(name).unwrap();
+            let namespaced_name = NamespacedName::new(namespace, name.to_string());
 
             let attrs = FrbAttributes::parse(src_object.src.attrs())?;
             let attrs_opaque = override_opaque.or(attrs.opaque());
             if attrs_opaque == Some(true) {
                 debug!("Treat {name} as opaque since attribute says so");
                 return Ok(Some((
-                    self.parse_opaque(&namespaced_name, &src_object)?,
+                    self.parse_opaque(&namespaced_name, path, &src_object)?,
                     attrs,
                 )));
             }
@@ -62,7 +66,15 @@ where
                     &src_object.name.name,
                     src_object.mirror,
                 );
-                let parsed_object = self.parse_inner_impl(&src_object, name, wrapper_name)?;
+                let parsed_object = self
+                    .parse_inner_impl(&src_object, name.clone(), wrapper_name)
+                    .map_err(|e| {
+                        // Because this will cause the object not inserted into object_pool, thus may be confusing in later stages
+                        log::info!(
+                            "Skip parsing enum_or_struct `{name:?}` because of error (e={e:?})"
+                        );
+                        e
+                    })?;
                 (self.parser_info().object_pool).insert(ident.clone(), parsed_object);
             }
 
@@ -72,7 +84,7 @@ where
             {
                 debug!("Treat {name} as opaque by compute_default_opaque");
                 return Ok(Some((
-                    self.parse_opaque(&namespaced_name, &src_object)?,
+                    self.parse_opaque(&namespaced_name, path, &src_object)?,
                     attrs,
                 )));
             }
@@ -81,6 +93,12 @@ where
         }
 
         Ok(None)
+    }
+
+    fn parse_namespace(&mut self, name: &str) -> Option<Namespace> {
+        self.src_objects()
+            .get(name)
+            .map(|object| object.name.namespace.clone())
     }
 
     fn handle_dart_code(&mut self, raw_output: &Option<(MirType, FrbAttributes)>) {
@@ -107,15 +125,20 @@ where
     fn parse_opaque(
         &mut self,
         namespaced_name: &NamespacedName,
+        path: &syn::Path,
         src_object: &HirFlatStructOrEnum<Item>,
     ) -> anyhow::Result<MirType> {
         self.parse_type_rust_auto_opaque_implicit(
             Some(namespaced_name.namespace.clone()),
-            &syn::parse_str(&namespaced_name.name)?,
+            &Type::Path(TypePath {
+                path: path.to_owned(),
+                qself: None,
+            }),
             Some(MirTypeRustAutoOpaqueImplicitReason::StructOrEnumRequireOpaque),
             Some(parse_struct_or_enum_should_ignore(
                 src_object,
                 &namespaced_name.namespace.crate_name(),
+                self.context(),
             )),
         )
     }
@@ -142,6 +165,8 @@ where
         reason: Option<MirTypeRustAutoOpaqueImplicitReason>,
         override_ignore: Option<bool>,
     ) -> anyhow::Result<MirType>;
+
+    fn context(&self) -> &TypeParserParsingContext;
 
     fn compute_default_opaque(obj: &Obj) -> bool;
 }
@@ -178,6 +203,7 @@ fn compute_name_and_wrapper_name(
 pub(crate) fn parse_struct_or_enum_should_ignore<Item: SynItemStructOrEnum>(
     src_object: &HirFlatStructOrEnum<Item>,
     crate_name: &CrateName,
+    context: &TypeParserParsingContext,
 ) -> bool {
     let attrs = FrbAttributes::parse(src_object.src.attrs()).unwrap();
 
@@ -185,5 +211,5 @@ pub(crate) fn parse_struct_or_enum_should_ignore<Item: SynItemStructOrEnum>(
         // For third party crates, if a struct is not public, then it is impossible to utilize it,
         // thus we ignore it.
         || ((!crate_name.is_self_crate())  && src_object.visibility != HirVisibility::Public)
-        || !src_object.src.generics().params.is_empty()
+        || should_ignore_because_generics(src_object.src.generics(), context.enable_lifetime)
 }

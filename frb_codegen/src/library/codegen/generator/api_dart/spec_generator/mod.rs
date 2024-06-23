@@ -10,15 +10,15 @@ use crate::codegen::generator::api_dart::spec_generator::misc::generate_imports_
 use crate::codegen::generator::api_dart::spec_generator::sanity_checker::sanity_check_class_name_duplicates;
 use crate::codegen::ir::mir::func::{MirFunc, MirFuncOwnerInfo};
 use crate::codegen::ir::mir::pack::{MirPack, MirPackComputedCache};
-use crate::codegen::ir::mir::skip::{MirSkip, MirSkipReason};
 use crate::codegen::ir::mir::ty::MirType;
+use crate::codegen::ir::misc::skip::IrSkip;
 use crate::codegen::ConfigDumpContent;
 use crate::library::codegen::generator::api_dart::spec_generator::class::ty::ApiDartGeneratorClassTrait;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use crate::utils::basic_code::dart_header_code::DartHeaderCode;
 use crate::utils::namespace::Namespace;
 use anyhow::Result;
-use itertools::{concat, Itertools};
+use itertools::Itertools;
 use serde::Serialize;
 use std::collections::{HashMap, HashSet};
 use ConfigDumpContent::GeneratorInfo;
@@ -43,7 +43,7 @@ pub(crate) struct ApiDartOutputSpecItem {
     pub extra_impl_code: Vec<String>,
     pub imports: DartHeaderCode,
     pub preamble: String,
-    pub skips: Vec<MirSkip>,
+    pub skips: Vec<IrSkip>,
     pub needs_freezed: bool,
 }
 
@@ -150,19 +150,10 @@ fn generate_item(
     })
 }
 
-fn compute_skips(mir_pack: &MirPack, namespace: &Namespace) -> Vec<MirSkip> {
-    let unused_types = (mir_pack.unused_types.iter())
-        .filter(|t| &t.namespace == namespace)
-        .map(|name| MirSkip {
-            name: name.clone(),
-            reason: MirSkipReason::IgnoreBecauseTypeNotUsedByPub,
-        })
-        .collect_vec();
-
-    let skipped_functions = (mir_pack.skipped_functions.iter())
+fn compute_skips(mir_pack: &MirPack, namespace: &Namespace) -> Vec<IrSkip> {
+    (mir_pack.skips.iter())
         .filter(|t| &t.name.namespace == namespace)
+        .sorted_by_cached_key(|x| x.name.clone())
         .cloned()
-        .collect_vec();
-
-    concat([unused_types, skipped_functions])
+        .collect_vec()
 }

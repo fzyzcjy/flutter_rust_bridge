@@ -9,12 +9,13 @@ use crate::codegen::generator::wire::rust::spec_generator::misc::ty::WireRustGen
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
 use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::ir::mir::ty::MirTypeTrait;
+use crate::utils::namespace::Namespace;
 use itertools::Itertools;
 
 impl<'a> WireRustGeneratorMiscTrait for RustOpaqueWireRustGenerator<'a> {
-    fn generate_imports(&self) -> Option<Vec<String>> {
+    fn generate_imports(&self) -> Option<Vec<Namespace>> {
         // To expose the `pub use`s inside that file
-        Some(vec![format!("use {}::*;", self.mir.namespace.joined_path)])
+        Some(vec![self.mir.namespace.clone()])
     }
 
     fn generate_related_funcs(&self) -> Acc<WireRustOutputCode> {
@@ -37,7 +38,7 @@ impl<'a> WireRustGeneratorMiscTrait for RustOpaqueWireRustGenerator<'a> {
                         &format!(
                             "{}::<{}>::{op}_strong_count(ptr as _);",
                             self.mir.codec.arc_ty(),
-                            &self.mir.inner.0,
+                            &self.mir.inner.0.with_static_lifetime(),
                         ),
                         self.mir.codec.needs_unsafe_block(),
                     ),
@@ -51,7 +52,7 @@ impl<'a> WireRustGeneratorMiscTrait for RustOpaqueWireRustGenerator<'a> {
         let common = if self.mir.codec == RustOpaqueCodecMode::Moi {
             format!(
                 "flutter_rust_bridge::frb_generated_moi_arc_impl_value!({});\n",
-                self.mir.inner.0
+                self.mir.inner.0.with_static_lifetime()
             )
         } else {
             "".to_owned()

@@ -11,7 +11,7 @@ use crate::codegen::parser::mir::parser::ty::enum_or_struct::{
 };
 use crate::codegen::parser::mir::parser::ty::misc::parse_comments;
 use crate::codegen::parser::mir::parser::ty::unencodable::SplayedSegment;
-use crate::codegen::parser::mir::parser::ty::TypeParserWithContext;
+use crate::codegen::parser::mir::parser::ty::{TypeParserParsingContext, TypeParserWithContext};
 use crate::utils::basic_code::general_code::GeneralDartCode;
 use crate::utils::crate_name::CrateName;
 use crate::utils::namespace::{Namespace, NamespacedName};
@@ -22,10 +22,15 @@ use syn::{Field, Fields, FieldsNamed, FieldsUnnamed, ItemStruct, Type, Visibilit
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_path_data_struct(
         &mut self,
+        path: &syn::Path,
         last_segment: &SplayedSegment,
         override_opaque: Option<bool>,
     ) -> anyhow::Result<Option<MirType>> {
-        EnumOrStructParserStruct(self).parse(last_segment, override_opaque)
+        EnumOrStructParserStruct(self).parse(path, last_segment, override_opaque)
+    }
+
+    pub(crate) fn parse_struct_namespace(&mut self, name: &str) -> Option<Namespace> {
+        EnumOrStructParserStruct(self).parse_namespace(name)
     }
 
     fn parse_struct(
@@ -39,7 +44,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             Fields::Unnamed(FieldsUnnamed { unnamed, .. }) => (false, unnamed),
             // This will stop the whole generator and tell the users, so we do not care about testing it
             // frb-coverage:ignore-start
-            Fields::Unit => bail!("struct with unit fields are not supported yet, what about using `struct {} {{}}` instead", src_struct.name.name),
+            Fields::Unit => bail!("struct with unit fields are not supported yet, what about using `struct {name} {{}}` or `#[frb(opaque)] struct {name};` instead", name = src_struct.name.name),
             // frb-coverage:ignore-end
         };
 
@@ -54,7 +59,11 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
         let comments = parse_comments(&src_struct.src.attrs);
 
-        let ignore = parse_struct_or_enum_should_ignore(src_struct, &name.namespace.crate_name());
+        let ignore = parse_struct_or_enum_should_ignore(
+            src_struct,
+            &name.namespace.crate_name(),
+            self.context,
+        );
 
         Ok(MirStruct {
             name,
@@ -65,6 +74,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             ignore,
             generate_hash: attributes.generate_hash(),
             generate_eq: attributes.generate_eq(),
+            ui_state: attributes.ui_state(),
             comments,
         })
     }
@@ -137,6 +147,10 @@ impl EnumOrStructParser<MirStructIdent, MirStruct, ItemStruct>
     ) -> anyhow::Result<MirType> {
         self.0
             .parse_type_rust_auto_opaque_implicit(namespace, ty, reason, override_ignore)
+    }
+
+    fn context(&self) -> &TypeParserParsingContext {
+        self.0.context
     }
 
     fn compute_default_opaque(obj: &MirStruct) -> bool {

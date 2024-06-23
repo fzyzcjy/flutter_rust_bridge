@@ -1,3 +1,4 @@
+use crate::codegen::ir::mir::llfetime_aware_type::MirLifetimeAwareType;
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
 use crate::codegen::ir::mir::ty::{MirContext, MirType, MirTypeTrait};
 use crate::utils::namespace::Namespace;
@@ -15,10 +16,11 @@ pub struct MirTypeRustOpaque {
     pub namespace: Namespace,
     pub inner: MirRustOpaqueInner,
     pub codec: RustOpaqueCodecMode,
+    pub dart_api_type: Option<String>,
     pub brief_name: bool,
 }
 
-pub struct MirRustOpaqueInner(pub String);
+pub struct MirRustOpaqueInner(pub MirLifetimeAwareType);
 }
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Deserialize, Hash, Display, EnumIter)]
@@ -48,7 +50,7 @@ impl MirTypeRustOpaque {
     pub(crate) const DELEGATE_TYPE: MirType = MirType::Primitive(MirTypePrimitive::Usize);
 
     pub(crate) fn sanitized_type(&self) -> String {
-        rust_type_to_sanitized_type(&self.inner.0, self.brief_name)
+        rust_type_to_sanitized_type(&self.inner.0.with_static_lifetime(), self.brief_name)
     }
 }
 
@@ -66,7 +68,11 @@ impl MirTypeTrait for MirTypeRustOpaque {
     }
 
     fn rust_api_type(&self) -> String {
-        format!("RustOpaque{}<{}>", self.codec, self.inner.0)
+        format!(
+            "RustOpaque{}<{}>",
+            self.codec,
+            self.inner.0.with_static_lifetime()
+        )
     }
 
     fn self_namespace(&self) -> Option<Namespace> {
@@ -90,7 +96,9 @@ impl MirRustOpaqueInner {
         lazy_static! {
             static ref NEG_FILTER: Regex = Regex::new(r"[^a-zA-Z0-9_]").unwrap();
         }
-        NEG_FILTER.replace_all(&self.0, "").into_owned()
+        NEG_FILTER
+            .replace_all(&self.0.with_static_lifetime(), "")
+            .into_owned()
     }
 }
 
@@ -110,17 +118,23 @@ fn serialize_vec_syn<T: ToTokens, S: Serializer>(values: &[T], s: S) -> Result<S
     str.serialize(s)
 }
 
-fn rust_type_to_sanitized_type(rust: &str, brief_name: bool) -> String {
+fn rust_type_to_sanitized_type(raw: &str, brief_name: bool) -> String {
     lazy_static! {
-        static ref OPAQUE_FILTER: Regex =Regex::new(r"((\bdyn|'static|\bDartSafe|\bRustAutoOpaqueInner|\bAssertUnwindSafe|\+ (Send|Sync|UnwindSafe|RefUnwindSafe))\b)|([a-zA-Z0-9_]+::)").unwrap();
-        static ref OPAQUE_BRIEF_NAME_FILTER: Regex =Regex::new(r"(\bRwLock)\b").unwrap();
+        static ref OPAQUE_FILTER: Regex = Regex::new(r"((\bdyn|'static|\bDartSafe|\bRustAutoOpaqueInner|\bAssertUnwindSafe|\+ (Send|Sync|UnwindSafe|RefUnwindSafe))\b)|([a-zA-Z0-9_ ]+::)").unwrap();
+        static ref OPAQUE_BRIEF_NAME_FILTER: Regex = Regex::new(r"(\bRwLock)\b").unwrap();
     }
 
-    let mut rust = OPAQUE_FILTER.replace_all(rust, "").to_string();
+    let mut ans = raw.to_owned();
+
+    // ans = replace_all_lifetimes_to_static(&ans);
+
+    ans = OPAQUE_FILTER.replace_all(&ans, "").to_string();
+
     if brief_name {
-        rust = OPAQUE_BRIEF_NAME_FILTER.replace_all(&rust, "").to_string();
+        ans = OPAQUE_BRIEF_NAME_FILTER.replace_all(&ans, "").to_string();
     }
-    rust.replace(char_not_alphanumeric, "_")
+
+    ans.replace(char_not_alphanumeric, "_")
         .to_case(Case::Pascal)
 }
 

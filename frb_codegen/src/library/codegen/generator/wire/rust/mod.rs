@@ -1,6 +1,6 @@
 use crate::codegen::dumper::internal_config::ConfigDumpContent;
 use crate::codegen::dumper::Dumper;
-use crate::codegen::generator::misc::path_texts::PathTexts;
+use crate::codegen::generator::misc::path_texts::{PathText, PathTexts};
 use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGeneratorContext;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFunc;
 use crate::codegen::ir::mir::pack::MirPackComputedCache;
@@ -25,17 +25,13 @@ pub(crate) fn generate(
     (dumper.with_content(ConfigDumpContent::GeneratorSpec)).dump("wire_rust.json", &spec)?;
 
     let text = text_generator::generate(&spec, context.config)?;
-    (dumper.with_content(ConfigDumpContent::GeneratorText)).dump_acc(
-        "wire_rust",
-        "rs",
-        &text.text,
-    )?;
+    (dumper.with_content(ConfigDumpContent::GeneratorText)).dump("wire_rust.rs", &text.text)?;
 
     Ok(GeneratorWireRustOutput {
-        output_texts: PathTexts::new_from_targets(
-            &context.config.rust_output_path,
-            &(text.text.clone()).map(|x, _| x.map(GeneralCode::new_rust)),
-        ),
+        output_texts: PathTexts(vec![PathText {
+            path: context.config.rust_output_path.clone(),
+            text: GeneralCode::new_rust(text.text),
+        }]),
         extern_funcs: text.extern_funcs,
         content_hash: spec.misc.content_hash,
         extern_struct_names: spec.extern_struct_names,

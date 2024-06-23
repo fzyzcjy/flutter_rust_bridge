@@ -8,7 +8,7 @@
 - sagudev: Make code generator a `lib`. Add error types. Depend on `cbindgen`. Fix LLVM paths. Update deps. Fix CI errors.
 - surban: Support unit return type. Skip unresolvable modules. Ignore prefer_const_constructors. Non-final Dart fields.
 - Roms1383: Fix build_runner calling bug. Remove global `ffigen` dependency. Improve version check. Fix enum name-variant conflicts. Support Chrono date time and UUID types. Migrate to Rust 1.64 workspace. Update and refactor CI. Update header comments. Code cleanup.
-- dbsxdbsx: Allow generating multiple Rust and Dart files. Fix lint. Update doc. Add logging.
+- dbsxdbsx: Allow generating multiple Rust and Dart files. Fix lint. Update doc. Add logging. Loosen config. Prefix methods.
 - GregoryConrad: Add doc to setup frb inside a Dart/Flutter library.
 - huang12zheng: Support type aliases and nested ones. Tweak code generation. Fix rust_build_and_test on Mac. Improve CI logic and cache. Remove bridge field in model.
 - trobanga: Add support for `[T;N]` structs. Add `usize` support. Add a cmd argument. Separate dart tests. Fix fallible list case. Fix test compile. Fix Result + RustAutoOpaque.
@@ -42,9 +42,9 @@
 - jsonmona: Add import.
 - MateusHBR: Add pub get.
 - codercengiz: Fix mirroring bug.
+- aran: Fix map + mirror. Fix pubspec. Upgrde ffigen. Replace to js_interop. Bump version. Fix typo.
 - Michael-F-Bryan: Detect broken bindings.
 - patmuk: Set MSRV. Fail fast. Improve message. Improve docs.
-- aran: Fix map + mirror. Fix pubspec. Upgrde ffigen. Bump version. Fix typo.
 - phlip9: Fix no-serde compilation.
 - SilverMira: Fix StreamSink.
 - h3x4d3c1m4l: Fix when outside folder.

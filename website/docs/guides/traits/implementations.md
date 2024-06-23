@@ -3,6 +3,12 @@
 The `impl A for B` is supported, and is translated to a `class B implements A`.
 In addition, the methods inside this `impl` block will also be converted automatically.
 
+## Unignore a function
+
+Some trait implementations are ignored by default to avoid generating meaningless things to Dart side such as `clone` and `deref`.
+However, if a function is ignored while you want it, you can put arbitrary attributes on it to tell flutter_rust_bridge you want it.
+For example, `#[frb] fn f() { .. }` suffices. Attributes with real contents like `#[frb(sync)] fn f() { .. }` also works.
+
 ## Example
 
 For example, suppose we write down:

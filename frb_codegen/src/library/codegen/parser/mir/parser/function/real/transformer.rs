@@ -12,11 +12,11 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         FunctionPartialInfo {
             inputs: (info.inputs.into_iter())
                 .map(|x| MirFuncInput {
-                    ownership_mode: x.ownership_mode,
                     inner: MirField {
                         ty: transform_primitive_list_param(x.inner.ty),
                         ..x.inner
                     },
+                    ..x
                 })
                 .collect_vec(),
             ..info

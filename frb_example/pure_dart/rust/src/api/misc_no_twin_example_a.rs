@@ -3,6 +3,7 @@
 use crate::frb_generated::RustAutoOpaque;
 use flutter_rust_bridge::frb;
 pub use std::any::Any;
+use std::sync::{Arc, Mutex};
 
 // Reproduce #1630
 #[frb(opaque)]
@@ -131,4 +132,43 @@ impl DeliberateFailSanityCheckTwinNormal {
 
 pub fn function_with_arg_type_name_override(a: Box<dyn Any + Send + Sync + 'static>) {
     let _ = a;
+}
+
+#[derive(Debug, Clone)]
+#[frb(opaque)]
+pub struct SimpleLogger(Arc<Mutex<Vec<String>>>);
+
+impl SimpleLogger {
+    #[frb(sync)]
+    pub fn new() -> Self {
+        Self(Arc::new(Mutex::new(vec![])))
+    }
+
+    pub(crate) fn log(&self, message: &str) {
+        self.0.lock().unwrap().push(message.to_owned());
+    }
+
+    #[frb(sync)]
+    pub fn get_and_reset(&self) -> Vec<String> {
+        self.0.lock().unwrap().drain(..).collect()
+    }
+}
+
+#[frb(opaque)]
+pub struct MyStructWithTryFromTwinNormal(String);
+
+// #2103
+impl TryFrom<String> for MyStructWithTryFromTwinNormal {
+    type Error = flutter_rust_bridge::for_generated::anyhow::Error;
+
+    #[frb]
+    fn try_from(value: String) -> flutter_rust_bridge::for_generated::anyhow::Result<Self> {
+        Ok(Self(value))
+    }
+}
+
+impl MyStructWithTryFromTwinNormal {
+    pub fn value_twin_normal(&self) -> String {
+        self.0.to_owned()
+    }
 }

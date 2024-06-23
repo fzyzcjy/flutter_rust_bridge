@@ -1,4 +1,3 @@
-use crate::codegen::generator::misc::target::TargetOrCommon;
 use crate::codegen::misc::GeneratorProgressBarPack;
 use crate::codegen::polisher::add_mod_to_lib::try_add_mod_to_lib;
 use crate::codegen::polisher::internal_config::PolisherInternalConfig;
@@ -139,10 +138,7 @@ fn filter_paths_by_extension(paths: &[PathBuf], extension: &str) -> Vec<PathBuf>
 
 fn execute_try_add_mod_to_lib(config: &PolisherInternalConfig) {
     if config.add_mod_to_lib {
-        try_add_mod_to_lib(
-            &config.rust_crate_dir,
-            &config.rust_output_path[TargetOrCommon::Common],
-        );
+        try_add_mod_to_lib(&config.rust_crate_dir, &config.rust_output_path);
     }
 }
 

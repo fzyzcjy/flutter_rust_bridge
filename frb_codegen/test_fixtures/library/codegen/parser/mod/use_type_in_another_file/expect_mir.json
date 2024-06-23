@@ -24,6 +24,14 @@
     }
   },
   "existing_handler": null,
+  "extra_dart_output_code": {
+    "body": "",
+    "header": {
+      "file_top": "",
+      "import": "",
+      "part": ""
+    }
+  },
   "extra_rust_output_code": "",
   "funcs_all": [
     {
@@ -68,6 +76,7 @@
               "type": "Boxed"
             }
           },
+          "needs_extend_lifetime": false,
           "ownership_mode": "Owned"
         },
         {
@@ -97,6 +106,7 @@
               "type": "Delegate"
             }
           },
+          "needs_extend_lifetime": false,
           "ownership_mode": "Owned"
         }
       ],
@@ -111,12 +121,13 @@
         }
       },
       "owner": "Function",
+      "rust_aop_after": null,
       "rust_async": false,
       "rust_call_code": null,
       "stream_dart_await": false
     }
   ],
-  "skipped_functions": [],
+  "skips": [],
   "struct_pool": {
     "crate::another_file/StructInAnotherFile": {
       "comments": [],
@@ -146,9 +157,9 @@
       "ignore": false,
       "is_fields_named": true,
       "name": "crate::another_file/StructInAnotherFile",
+      "ui_state": false,
       "wrapper_name": null
     }
   },
-  "trait_impls": [],
-  "unused_types": []
+  "trait_impls": []
 }

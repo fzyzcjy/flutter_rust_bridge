@@ -148,6 +148,18 @@ pub(crate) struct GenerateCommandArgsPrimary {
     #[arg(long, hide = true)]
     pub local: bool,
 
+    /// Enable parsing types with lifetimes (e.g. references and borrows)
+    #[arg(long)]
+    pub enable_lifetime: bool,
+
+    /// Let 64 bit types be translated to `int`s instead of types like `BigInt`s
+    #[arg(long)]
+    pub type_64bit_int: bool,
+
+    /// Whether default Dart code is asynchronous or synchronous
+    #[arg(long)]
+    pub no_default_dart_async: bool,
+
     /// If having error when, for example, parsing a function, directly stop instead of continue and skip it
     #[arg(long)]
     pub stop_on_error: bool,

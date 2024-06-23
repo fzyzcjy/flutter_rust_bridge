@@ -181,6 +181,9 @@ mod tests {
                 default_stream_sink_codec: CodecMode::Dco,
                 default_rust_opaque_codec: RustOpaqueCodecMode::Nom,
                 stop_on_error: true,
+                enable_lifetime: false,
+                type_64bit_int: false,
+                default_dart_async: true,
             },
         };
 

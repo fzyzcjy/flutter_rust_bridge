@@ -32,7 +32,10 @@
                       "inner": {
                         "brief_name": true,
                         "codec": "Nom",
-                        "inner": "flutter_rust_bridge::for_generated::RustAutoOpaqueInner<A>",
+                        "dart_api_type": null,
+                        "inner": {
+                          "raw": "flutter_rust_bridge::for_generated::RustAutoOpaqueInner<A>"
+                        },
                         "namespace": "crate::api"
                       },
                       "ownership_mode": "Owned",
@@ -43,7 +46,9 @@
                             "ident": "A"
                           }
                         ],
-                        "string": "A"
+                        "string": {
+                          "raw": "A"
+                        }
                       },
                       "reason": null
                     },
@@ -57,6 +62,7 @@
               "ignore": false,
               "is_fields_named": false,
               "name": "crate::api::MyGenericEnum/One",
+              "ui_state": false,
               "wrapper_name": null
             }
           },
@@ -94,7 +100,10 @@
                       "inner": {
                         "brief_name": true,
                         "codec": "Nom",
-                        "inner": "flutter_rust_bridge::for_generated::RustAutoOpaqueInner<B>",
+                        "dart_api_type": null,
+                        "inner": {
+                          "raw": "flutter_rust_bridge::for_generated::RustAutoOpaqueInner<B>"
+                        },
                         "namespace": "crate::api"
                       },
                       "ownership_mode": "Owned",
@@ -105,7 +114,9 @@
                             "ident": "B"
                           }
                         ],
-                        "string": "B"
+                        "string": {
+                          "raw": "B"
+                        }
                       },
                       "reason": null
                     },
@@ -119,6 +130,7 @@
               "ignore": false,
               "is_fields_named": false,
               "name": "crate::api::MyGenericEnum/Two",
+              "ui_state": false,
               "wrapper_name": null
             }
           },
@@ -136,6 +148,14 @@
     }
   },
   "existing_handler": null,
+  "extra_dart_output_code": {
+    "body": "",
+    "header": {
+      "file_top": "",
+      "import": "",
+      "part": ""
+    }
+  },
   "extra_rust_output_code": "",
   "funcs_all": [
     {
@@ -170,25 +190,31 @@
                 "inner": {
                   "brief_name": true,
                   "codec": "Nom",
-                  "inner": "flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyGenericEnum>",
+                  "dart_api_type": null,
+                  "inner": {
+                    "raw": "flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyGenericEnum < bool >>"
+                  },
                   "namespace": "crate::api"
                 },
                 "ownership_mode": "Owned",
                 "raw": {
                   "segments": [
                     {
-                      "args": "",
+                      "args": "bool",
                       "ident": "MyGenericEnum"
                     }
                   ],
-                  "string": "MyGenericEnum"
+                  "string": {
+                    "raw": "MyGenericEnum < bool >"
+                  }
                 },
                 "reason": null
               },
-              "safe_ident": "Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyGenericEnum",
+              "safe_ident": "Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyGenericEnumbool",
               "type": "RustAutoOpaque"
             }
           },
+          "needs_extend_lifetime": false,
           "ownership_mode": null
         }
       ],
@@ -203,6 +229,7 @@
         }
       },
       "owner": "Function",
+      "rust_aop_after": null,
       "rust_async": false,
       "rust_call_code": null,
       "stream_dart_await": false
@@ -239,25 +266,31 @@
                 "inner": {
                   "brief_name": true,
                   "codec": "Nom",
-                  "inner": "flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyGenericEnum>",
+                  "dart_api_type": null,
+                  "inner": {
+                    "raw": "flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyGenericEnum < String >>"
+                  },
                   "namespace": "crate::api"
                 },
                 "ownership_mode": "Owned",
                 "raw": {
                   "segments": [
                     {
-                      "args": "",
+                      "args": "String",
                       "ident": "MyGenericEnum"
                     }
                   ],
-                  "string": "MyGenericEnum"
+                  "string": {
+                    "raw": "MyGenericEnum < String >"
+                  }
                 },
                 "reason": null
               },
-              "safe_ident": "Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyGenericEnum",
+              "safe_ident": "Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyGenericEnumString",
               "type": "RustAutoOpaque"
             }
           },
+          "needs_extend_lifetime": false,
           "ownership_mode": null
         }
       ],
@@ -272,6 +305,7 @@
         }
       },
       "owner": "Function",
+      "rust_aop_after": null,
       "rust_async": false,
       "rust_call_code": null,
       "stream_dart_await": false
@@ -308,25 +342,31 @@
                 "inner": {
                   "brief_name": true,
                   "codec": "Nom",
-                  "inner": "flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyGenericStruct>",
+                  "dart_api_type": null,
+                  "inner": {
+                    "raw": "flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyGenericStruct < bool >>"
+                  },
                   "namespace": "crate::api"
                 },
                 "ownership_mode": "Owned",
                 "raw": {
                   "segments": [
                     {
-                      "args": "",
+                      "args": "bool",
                       "ident": "MyGenericStruct"
                     }
                   ],
-                  "string": "MyGenericStruct"
+                  "string": {
+                    "raw": "MyGenericStruct < bool >"
+                  }
                 },
                 "reason": null
               },
-              "safe_ident": "Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyGenericStruct",
+              "safe_ident": "Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyGenericStructbool",
               "type": "RustAutoOpaque"
             }
           },
+          "needs_extend_lifetime": false,
           "ownership_mode": null
         }
       ],
@@ -341,6 +381,7 @@
         }
       },
       "owner": "Function",
+      "rust_aop_after": null,
       "rust_async": false,
       "rust_call_code": null,
       "stream_dart_await": false
@@ -377,25 +418,31 @@
                 "inner": {
                   "brief_name": true,
                   "codec": "Nom",
-                  "inner": "flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyGenericStruct>",
+                  "dart_api_type": null,
+                  "inner": {
+                    "raw": "flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyGenericStruct < String >>"
+                  },
                   "namespace": "crate::api"
                 },
                 "ownership_mode": "Owned",
                 "raw": {
                   "segments": [
                     {
-                      "args": "",
+                      "args": "String",
                       "ident": "MyGenericStruct"
                     }
                   ],
-                  "string": "MyGenericStruct"
+                  "string": {
+                    "raw": "MyGenericStruct < String >"
+                  }
                 },
                 "reason": null
               },
-              "safe_ident": "Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyGenericStruct",
+              "safe_ident": "Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyGenericStructString",
               "type": "RustAutoOpaque"
             }
           },
+          "needs_extend_lifetime": false,
           "ownership_mode": null
         }
       ],
@@ -410,6 +457,7 @@
         }
       },
       "owner": "Function",
+      "rust_aop_after": null,
       "rust_async": false,
       "rust_call_code": null,
       "stream_dart_await": false
@@ -446,25 +494,31 @@
                 "inner": {
                   "brief_name": true,
                   "codec": "Nom",
-                  "inner": "flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyGenericStruct>",
+                  "dart_api_type": null,
+                  "inner": {
+                    "raw": "flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyGenericStruct < String >>"
+                  },
                   "namespace": "crate::api"
                 },
                 "ownership_mode": "Owned",
                 "raw": {
                   "segments": [
                     {
-                      "args": "",
+                      "args": "String",
                       "ident": "MyGenericStruct"
                     }
                   ],
-                  "string": "MyGenericStruct"
+                  "string": {
+                    "raw": "MyGenericStruct < String >"
+                  }
                 },
                 "reason": null
               },
-              "safe_ident": "Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyGenericStruct",
+              "safe_ident": "Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyGenericStructString",
               "type": "RustAutoOpaque"
             }
           },
+          "needs_extend_lifetime": false,
           "ownership_mode": null
         }
       ],
@@ -479,12 +533,13 @@
         }
       },
       "owner": "Function",
+      "rust_aop_after": null,
       "rust_async": false,
       "rust_call_code": null,
       "stream_dart_await": false
     }
   ],
-  "skipped_functions": [],
+  "skips": [],
   "struct_pool": {
     "crate::api/MyGenericStruct": {
       "comments": [],
@@ -508,7 +563,10 @@
               "inner": {
                 "brief_name": true,
                 "codec": "Nom",
-                "inner": "flutter_rust_bridge::for_generated::RustAutoOpaqueInner<T>",
+                "dart_api_type": null,
+                "inner": {
+                  "raw": "flutter_rust_bridge::for_generated::RustAutoOpaqueInner<T>"
+                },
                 "namespace": "crate::api"
               },
               "ownership_mode": "Owned",
@@ -519,7 +577,9 @@
                     "ident": "T"
                   }
                 ],
-                "string": "T"
+                "string": {
+                  "raw": "T"
+                }
               },
               "reason": null
             },
@@ -545,7 +605,10 @@
               "inner": {
                 "brief_name": true,
                 "codec": "Nom",
-                "inner": "flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box < T >>",
+                "dart_api_type": null,
+                "inner": {
+                  "raw": "flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box < T >>"
+                },
                 "namespace": "crate::api"
               },
               "ownership_mode": "Owned",
@@ -556,7 +619,9 @@
                     "ident": "Box"
                   }
                 ],
-                "string": "Box < T >"
+                "string": {
+                  "raw": "Box < T >"
+                }
               },
               "reason": null
             },
@@ -588,9 +653,9 @@
       "ignore": true,
       "is_fields_named": true,
       "name": "crate::api/MyGenericStruct",
+      "ui_state": false,
       "wrapper_name": null
     }
   },
-  "trait_impls": [],
-  "unused_types": []
+  "trait_impls": []
 }

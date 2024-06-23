@@ -1,17 +1,25 @@
 pub(crate) mod attribute;
 pub(crate) mod custom_ser_des;
 pub(crate) mod function;
+pub(crate) mod lifetime_extractor;
+pub(crate) mod lifetime_replacer;
 pub(crate) mod misc;
 pub(crate) mod trait_impl;
 pub(crate) mod ty;
 
 use crate::codegen::ir::early_generator::pack::IrEarlyGeneratorPack;
+use crate::codegen::ir::hir::flat::struct_or_enum::{HirFlatEnum, HirFlatStruct};
 use crate::codegen::ir::mir::pack::MirPack;
-use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
+use crate::codegen::ir::misc::skip::{IrSkip, IrSkipReason};
+use crate::codegen::parser::mir::internal_config::{
+    ParserMirInternalConfig, RustInputNamespacePack,
+};
 use crate::codegen::parser::mir::parser::ty::TypeParser;
 use crate::codegen::parser::mir::sanity_checker::opaque_inside_translatable_checker::check_opaque_inside_translatable;
 use crate::codegen::parser::mir::sanity_checker::unused_checker::get_unused_types;
 use crate::codegen::parser::mir::ParseMode;
+use itertools::{concat, Itertools};
+use std::collections::HashMap;
 
 pub(crate) fn parse(
     config: &ParserMirInternalConfig,
@@ -27,8 +35,14 @@ pub(crate) fn parse(
     let trait_impls = trait_impl::parse(
         &hir_flat.trait_impls,
         &mut type_parser,
+        config
+            .rust_input_namespace_pack
+            .rust_output_path_namespace
+            .clone(),
         config.default_stream_sink_codec,
         config.default_rust_opaque_codec,
+        config.enable_lifetime,
+        config.type_64bit_int,
         parse_mode,
     )?;
 
@@ -36,8 +50,14 @@ pub(crate) fn parse(
         &hir_flat.functions,
         &mut type_parser,
         &custom_ser_des::PartialContext {
+            rust_output_path_namespace: config
+                .rust_input_namespace_pack
+                .rust_output_path_namespace
+                .clone(),
             default_stream_sink_codec: config.default_stream_sink_codec,
             default_rust_opaque_codec: config.default_rust_opaque_codec,
+            enable_lifetime: config.enable_lifetime,
+            type_64bit_int: config.type_64bit_int,
             parse_mode,
         },
     )?;
@@ -45,7 +65,7 @@ pub(crate) fn parse(
         .custom_ser_des_infos
         .extend(custom_ser_des_infos);
 
-    let (funcs_all, skipped_functions) = function::parse(
+    let (funcs_all, funcs_skip) = function::parse(
         config,
         &hir_flat.functions,
         &mut type_parser,
@@ -61,22 +81,47 @@ pub(crate) fn parse(
         enum_pool,
         dart_code_of_type,
         existing_handler: hir_flat.existing_handler.clone(),
-        unused_types: vec![],
-        skipped_functions,
+        skips: vec![],
         trait_impls,
         extra_rust_output_code: hir_flat.extra_rust_output_code.clone(),
+        extra_dart_output_code: hir_flat.extra_dart_output_code.clone(),
     };
 
-    ans.unused_types = get_unused_types(
+    ans.skips = compute_skips(
         &ans,
-        &structs_map,
-        &enums_map,
+        ir_pack,
+        structs_map,
+        enums_map,
         &config.rust_input_namespace_pack,
+        funcs_skip,
     )?;
 
     check_opaque_inside_translatable(&ans);
 
     Ok(ans)
+}
+
+fn compute_skips(
+    pack: &MirPack,
+    ir_pack: &IrEarlyGeneratorPack,
+    structs_map: HashMap<String, &HirFlatStruct>,
+    enums_map: HashMap<String, &HirFlatEnum>,
+    rust_input_namespace_pack: &RustInputNamespacePack,
+    funcs_skip: Vec<IrSkip>,
+) -> anyhow::Result<Vec<IrSkip>> {
+    let unused_types = get_unused_types(pack, &structs_map, &enums_map, rust_input_namespace_pack)?;
+    let unused_types_skip = (unused_types.into_iter())
+        .map(|name| IrSkip {
+            name: name.clone(),
+            reason: IrSkipReason::IgnoreBecauseTypeNotUsedByPub,
+        })
+        .collect_vec();
+
+    Ok(concat([
+        ir_pack.hir_flat_pack.skips.clone(),
+        unused_types_skip,
+        funcs_skip,
+    ]))
 }
 
 // TODO rm
