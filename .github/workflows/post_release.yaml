@@ -34,9 +34,9 @@ jobs:
           - homebrew
         exclude:
           - { image: windows-2019, codegen_install_mode: homebrew }
-          - { image: macos-11, codegen_install_mode: scoop }
-          - { image: ubuntu-20.04, codegen_install_mode: homebrew }
-          - { image: ubuntu-20.04, codegen_install_mode: scoop }
+          - { image: macos-13, codegen_install_mode: scoop }
+          - { image: ubuntu-latest, codegen_install_mode: homebrew }
+          - { image: ubuntu-latest, codegen_install_mode: scoop }
 
     steps:
       # setup
