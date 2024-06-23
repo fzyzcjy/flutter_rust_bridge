@@ -37,8 +37,11 @@ pub fn create(config: CreateConfig) -> anyhow::Result<()> {
 
     env::set_current_dir(&dart_root)?;
 
-    remove_unnecessary_files(&dart_root)?;
-
+    match &config.template {
+        ProjectType::App => remove_unnecessary_app_files(&dart_root)?,
+        ProjectType::Plugin => remove_unnecessary_plugin_files(&dart_root)?,
+    }
+    
     info!("Step: Inject flutter_rust_bridge related code");
     integrator::integrate(IntegrateConfig {
         enable_integration_test: true,
@@ -51,25 +54,44 @@ pub fn create(config: CreateConfig) -> anyhow::Result<()> {
 
 // the function signature is not covered while the whole body is covered - looks like a bug in coverage tool
 // frb-coverage:ignore-start
-fn remove_unnecessary_files(dart_root: &Path) -> anyhow::Result<()> {
+fn remove_unnecessary_app_files(dart_root: &Path) -> anyhow::Result<()> {
     // frb-coverage:ignore-end
     let lib_dir = dart_root.join("lib");
     let test_dir = dart_root.join("test");
 
-    fn remove_files_in_dir(dir: &Path) -> anyhow::Result<()> {
-        for entry in fs::read_dir(dir)? {
-            let entry = entry?;
-            let path = entry.path();
-            if path.is_file() {
-                fs::remove_file(&path)?;
-            } else if path.is_dir() {
-                bail!("An unexpected directory was encountered: {:?}", path);
-            }
-        }
-        Ok(())
-    }
     remove_files_in_dir(&lib_dir)?;
     remove_files_in_dir(&test_dir)?;
 
+    Ok(())
+}
+
+// the function signature is not covered while the whole body is covered - looks like a bug in coverage tool
+// frb-coverage:ignore-start
+fn remove_unnecessary_plugin_files(dart_root: &Path) -> anyhow::Result<()> {
+    // frb-coverage:ignore-end
+    let lib_dir = dart_root.join("lib");
+    let test_dir = dart_root.join("test");
+    let example_lib_dir = dart_root.join("example").join("lib");
+    let example_integration_test_dir = dart_root.join("example").join("integration_test");
+
+    remove_files_in_dir(&lib_dir)?;
+    remove_files_in_dir(&test_dir)?;
+    remove_files_in_dir(&example_lib_dir)?;
+    remove_files_in_dir(&example_integration_test_dir)?;
+
+    Ok(())
+}
+
+
+fn remove_files_in_dir(dir: &Path) -> anyhow::Result<()> {
+    for entry in fs::read_dir(dir)? {
+        let entry = entry?;
+        let path = entry.path();
+        if path.is_file() {
+            fs::remove_file(&path)?;
+        } else if path.is_dir() {
+            bail!("An unexpected directory was encountered: {:?}", path);
+        }
+    }
     Ok(())
 }
