@@ -469,8 +469,10 @@ pub fn rust_auto_opaque_sleep_twin_sync_moi(
 // ================ misc ===================
 
 // #1577 - this should generate valid Dart code without name collisions
+#[allow(dead_code)]
 #[frb(opaque)]
 pub struct OpaqueOneTwinSyncMoi(PathBuf);
+#[allow(dead_code)]
 #[frb(opaque)]
 pub struct OpaqueTwoTwinSyncMoi(PathBuf);
 

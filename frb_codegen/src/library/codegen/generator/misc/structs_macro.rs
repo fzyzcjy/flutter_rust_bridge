@@ -77,6 +77,7 @@ macro_rules! codegen_generator_structs {
             // frb-coverage:ignore-start
             #[enum_dispatch]
             // frb-coverage:ignore-end
+            #[allow(dead_code)]
             pub(crate) trait [<$generator_name ImplTrait>] {
                 fn mir_type(&self) -> MirType;
                 fn context(&self) -> [<$generator_name Context>];

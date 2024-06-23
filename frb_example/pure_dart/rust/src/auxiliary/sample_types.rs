@@ -47,7 +47,7 @@ impl HideDataRaw {
     }
 
     pub fn change_data(&mut self) {
-        self.content = "MUT SELF".to_owned();
+        "MUT SELF".clone_into(&mut self.content);
     }
 }
 

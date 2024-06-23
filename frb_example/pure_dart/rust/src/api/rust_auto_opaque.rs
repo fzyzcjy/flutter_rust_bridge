@@ -377,8 +377,10 @@ pub fn rust_auto_opaque_sleep_twin_normal(
 // ================ misc ===================
 
 // #1577 - this should generate valid Dart code without name collisions
+#[allow(dead_code)]
 #[frb(opaque)]
 pub struct OpaqueOneTwinNormal(PathBuf);
+#[allow(dead_code)]
 #[frb(opaque)]
 pub struct OpaqueTwoTwinNormal(PathBuf);
 
