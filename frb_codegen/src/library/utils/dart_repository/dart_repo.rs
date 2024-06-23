@@ -61,7 +61,7 @@ impl DartRepository {
     }
 
     /// check whether a package has been correctly specified in pubspec.yaml
-    pub(crate) fn has_specified(
+    fn has_specified(
         &self,
         package: &str,
         manager: DartDependencyMode,
@@ -93,7 +93,7 @@ impl DartRepository {
     }
 
     /// check whether a package has been correctly pinned in pubspec.lock
-    pub(crate) fn has_installed(
+    fn has_installed(
         &self,
         package: &str,
         manager: DartDependencyMode,
