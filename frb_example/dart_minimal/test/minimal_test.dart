@@ -23,7 +23,7 @@ Future<void> main() async {
     _testEvent.listen((device) {
       print(device.values);
     });
-    await pushTest(device: TestDevice(values: Uint64List.fromList([10, 20])));
+    await hello();
     await Future.delayed(const Duration(seconds: 1));
   });
 }

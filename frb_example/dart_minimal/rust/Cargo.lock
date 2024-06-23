@@ -247,6 +247,7 @@ name = "frb_example_dart_minimal"
 version = "0.1.0"
 dependencies = [
  "flutter_rust_bridge",
+ "tokio",
 ]
 
 [[package]]
@@ -550,9 +551,9 @@ dependencies = [
 
 [[package]]
 name = "tokio"
-version = "1.34.0"
+version = "1.38.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d0c014766411e834f7af5b8f4cf46257aab4036ca95e9d2c144a10f59ad6f5b9"
+checksum = "ba4f4a02a7a80d6f274636f0aa95c7e383b912d41fe721a31f29e29698585a4a"
 dependencies = [
  "backtrace",
  "num_cpus",

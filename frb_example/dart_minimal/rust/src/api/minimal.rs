@@ -1,8 +1,8 @@
-use std::sync::Mutex;
-use flutter_rust_bridge::for_generated::{anyhow, lazy_static};
-use flutter_rust_bridge::for_generated::anyhow::anyhow;
-use flutter_rust_bridge::frb;
 use crate::frb_generated::StreamSink;
+use flutter_rust_bridge::for_generated::anyhow::anyhow;
+use flutter_rust_bridge::for_generated::{anyhow, lazy_static};
+use flutter_rust_bridge::frb;
+use std::sync::Mutex;
 
 #[frb(init)]
 pub fn init_app() {
@@ -27,7 +27,14 @@ pub fn test_event_stream(listener: StreamSink<TestDevice>) -> anyhow::Result<()>
     }
 }
 
-pub fn push_test(device: TestDevice) {
+pub async fn hello() {
+    for i in 0..5 {
+        push_test(TestDevice { values: vec![] });
+        tokio::time::sleep(tokio::time::Duration::from_millis(100)).await;
+    }
+}
+
+fn push_test(device: TestDevice) {
     if let Ok(mut guard) = TEST_EVENT_STREAM.lock() {
         if let Some(sink) = guard.as_mut() {
             sink.add(device).unwrap(); // <-- error happens here

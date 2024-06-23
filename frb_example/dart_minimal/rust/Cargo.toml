@@ -8,3 +8,4 @@ crate-type = ["cdylib"]
 
 [dependencies]
 flutter_rust_bridge = { path = "../../../frb_rust" }
+tokio = { version = "1.38.0" , features = ["time"]}
