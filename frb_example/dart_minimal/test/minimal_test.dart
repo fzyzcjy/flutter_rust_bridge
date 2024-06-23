@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:frb_example_dart_minimal/src/rust/api/minimal.dart';
 import 'package:frb_example_dart_minimal/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
@@ -22,5 +23,7 @@ Future<void> main() async {
     _testEvent.listen((device) {
       print(device.values);
     });
+    await pushTest(device: TestDevice(values: Uint64List.fromList([10, 20])));
+    await Future.delayed(const Duration(seconds: 1));
   });
 }

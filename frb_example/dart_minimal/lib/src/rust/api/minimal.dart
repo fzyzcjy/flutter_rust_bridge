@@ -6,7 +6,6 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// These functions are ignored because they are not marked as `pub`: `push_test`
 // These types are ignored because they are not used by any `pub` functions: `TEST_EVENT_STREAM`
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `deref`, `initialize`
 
@@ -15,6 +14,9 @@ Future<int> minimalAdder({required int a, required int b}) =>
 
 Stream<TestDevice> testEventStream() =>
     RustLib.instance.api.crateApiMinimalTestEventStream();
+
+Future<void> pushTest({required TestDevice device}) =>
+    RustLib.instance.api.crateApiMinimalPushTest(device: device);
 
 class TestDevice {
   final Uint64List values;

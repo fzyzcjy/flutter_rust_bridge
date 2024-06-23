@@ -27,7 +27,7 @@ pub fn test_event_stream(listener: StreamSink<TestDevice>) -> anyhow::Result<()>
     }
 }
 
-fn push_test(device: TestDevice) {
+pub fn push_test(device: TestDevice) {
     if let Ok(mut guard) = TEST_EVENT_STREAM.lock() {
         if let Some(sink) = guard.as_mut() {
             sink.add(device).unwrap(); // <-- error happens here
