@@ -240,6 +240,7 @@ jobs:
         package:
           - frb_example--flutter_via_create
           - frb_example--flutter_via_integrate
+          - frb_example--flutter_package
 
     steps:
       # setup

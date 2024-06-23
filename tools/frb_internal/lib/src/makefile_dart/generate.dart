@@ -352,7 +352,23 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
           coverage: config.coverage,
           coverageName: 'GenerateRunFrbCodegenCommandIntegrate',
         );
-
+      case 'frb_example/flutter_package':
+        // create from scratch
+        await executeFrbCodegen(
+            'create --local --temlate plugin',
+            relativePwd: config.package,
+            coverage: config.coverage,
+            coverageName: 'GenerateRunFrbCodegenCommandIntegrate',
+          );
+        // integrate with existing
+        await exec('flutter create flutter_package --template plugin',
+            relativePwd: 'frb_example');
+        await executeFrbCodegen(
+          'integrate --local --temlate plugin',
+          relativePwd: config.package,
+          coverage: config.coverage,
+          coverageName: 'GenerateRunFrbCodegenCommandIntegrate',
+        );
       default:
         throw Exception('Do not know how to handle package ${config.package}');
     }
