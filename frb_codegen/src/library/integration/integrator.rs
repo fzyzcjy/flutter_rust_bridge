@@ -31,7 +31,7 @@ pub struct IntegrateConfig {
     pub enable_local_dependency: bool,
     pub rust_crate_name: Option<String>,
     pub rust_crate_dir: String,
-    pub r#type: ProjectType,
+    pub template: ProjectType,
 }
 
 /// Integrate Rust into existing Flutter project.
@@ -69,7 +69,7 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
         },
         &|path| filter_file(path, config.enable_integration_test),
     )?;
-    match &config.r#type {
+    match &config.template {
         ProjectType::App => extract_dir_and_modify(
             &APP_INTEGRATION_TEMPLATE_DIR,
             &replace_content_config,

@@ -182,7 +182,7 @@ pub(crate) struct CreateCommandArgs {
     #[clap(flatten)]
     pub common: CreateOrIntegrateCommandCommonArgs,
 
-    /// The template to use to generate the flutter files
+    /// The template type to use to generate the flutter files.
     #[clap(short, long, value_enum, default_value = "app")]
     pub template: ProjectTypeArg
 }
@@ -196,9 +196,10 @@ pub(crate) struct IntegrateCommandArgs {
     #[clap(flatten)]
     pub common: CreateOrIntegrateCommandCommonArgs,
 
-    /// The type of flutter project to integrate with
+    /// The template type to use for integration. This should usually match the type of flutter project
+    /// being integrating with.
     #[clap(short, long, value_enum, default_value = "app")]
-    pub r#type: ProjectTypeArg
+    pub template: ProjectTypeArg
 }
 
 #[derive(Debug,Clone,ValueEnum)]

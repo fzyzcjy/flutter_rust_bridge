@@ -45,7 +45,7 @@ pub fn create(config: CreateConfig) -> anyhow::Result<()> {
         enable_local_dependency: config.enable_local_dependency,
         rust_crate_name: config.rust_crate_name,
         rust_crate_dir: config.rust_crate_dir,
-        r#type: config.template,
+        template: config.template,
     })
 }
 

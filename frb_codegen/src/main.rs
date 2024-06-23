@@ -41,7 +41,7 @@ fn main_given_cli(cli: Cli) -> anyhow::Result<()> {
             enable_local_dependency: args.common.local,
             rust_crate_name: args.common.rust_crate_name.clone(),
             rust_crate_dir: compute_rust_crate_dir(&args.common),
-            r#type: args.r#type.into(),
+            template: args.template.into(),
         })?,
         Commands::BuildWeb(args) => {
             build_web::build(args.dart_root, args.dart_coverage, args.args)?
