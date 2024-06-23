@@ -9,6 +9,7 @@ use crate::frb_generated::RustOpaque;
 use anyhow::Result;
 use flutter_rust_bridge::frb;
 
+#[allow(dead_code)]
 pub struct HideDataAnotherTwinNormal(HideDataRaw);
 
 /// Structure for testing the SyncReturn<RustOpaque> code generator.
