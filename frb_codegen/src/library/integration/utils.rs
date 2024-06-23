@@ -63,7 +63,7 @@ pub(crate) struct ReplaceContentConfig<'a> {
 }
 
 pub(crate) fn compute_effective_path(path: &Path, config: &ReplaceContentConfig) -> PathBuf {
-    replace_string_content(&path_to_string(&path).unwrap(), config).into()
+    replace_string_content(&path_to_string(path).unwrap(), config).into()
 }
 
 pub(crate) fn replace_file_content(content: &[u8], config: &ReplaceContentConfig) -> Vec<u8> {
