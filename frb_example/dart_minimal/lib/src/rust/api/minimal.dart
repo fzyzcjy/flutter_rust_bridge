@@ -6,5 +6,30 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
+// These functions are ignored because they are not marked as `pub`: `push_test`
+// These types are ignored because they are not used by any `pub` functions: `TEST_EVENT_STREAM`
+// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `deref`, `initialize`
+
 Future<int> minimalAdder({required int a, required int b}) =>
     RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b);
+
+Stream<TestDevice> testEventStream() =>
+    RustLib.instance.api.crateApiMinimalTestEventStream();
+
+class TestDevice {
+  final Uint64List values;
+
+  const TestDevice({
+    required this.values,
+  });
+
+  @override
+  int get hashCode => values.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is TestDevice &&
+          runtimeType == other.runtimeType &&
+          values == other.values;
+}

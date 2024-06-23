@@ -16,4 +16,11 @@ Future<void> main() async {
     print('Action: Call rust (after)');
   });
   print('Action: Configure tests (end)');
+
+  test('temp', () async {
+    final Stream<TestDevice> _testEvent = testEventStream();
+    _testEvent.listen((device) {
+      print(device.values);
+    });
+  });
 }
