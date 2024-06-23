@@ -8,3 +8,6 @@ pub fn init_app() {
     // Default utilities - feel free to customize
     flutter_rust_bridge::setup_default_user_utils();
 }
+
+pub enum A { B(i32) }
+pub fn f(a: A) {}
