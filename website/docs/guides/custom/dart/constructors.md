@@ -1,6 +1,4 @@
-# Dart runtime
-
-## Constructor parameters
+# Constructor parameters
 
 As we know (and auto injected when using `flutter_rust_bridge_codegen create/integrate` command),
 we need to initialize the system via `await RustLib.init();` (or your own lib name).
@@ -16,6 +14,6 @@ to satisfy your needs.
 
 Some typical scenarios are:
 
-* [Testing and mocking](../how-to/test)
-* [Inspection](../how-to/inspect)
-* [Load Rust library](../how-to/load-library)
+* [Testing and mocking](../../how-to/test)
+* [Inspection](../../how-to/inspect)
+* [Load Rust library](../../how-to/load-library)
