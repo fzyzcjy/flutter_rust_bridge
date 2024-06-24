@@ -7,7 +7,8 @@ import '../../frb_generated.dart';
 import 'media_streams.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// These types are ignored because they are not used by any `pub` functions: `DeviceId`, `MediaDeviceInfoKind`, `MediaDeviceInfo`, `MediaTrackConstraints`
+// These types are ignored because they are not used by any `pub` functions: `DeviceId`, `MediaDeviceInfoKind`, `MediaDeviceInfo`
+// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `assert_receiver_is_total_eq`, `clone`, `clone`, `clone`, `eq`, `fmt`, `fmt`, `fmt`, `fmt`, `from`, `hash`, `hash`
 // These functions are ignored (category: IgnoreBecauseExplicitAttribute): `enumerate_devices_sync`
 // These functions are ignored (category: IgnoreBecauseOwnerTyShouldIgnore): `device_id`, `group_id`, `kind`, `label`
 
@@ -51,3 +52,38 @@ Future<MediaStream> getUserMediaSync(
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaStreamConstraints>>
 abstract class MediaStreamConstraints implements RustOpaqueInterface {}
+
+/// Desired media stream track settings for [`MediaTrackConstraints`]
+class MediaTrackConstraints {
+  final double? sampleRate;
+  final double? latency;
+  final int? channelCount;
+  final String? deviceId;
+
+  const MediaTrackConstraints({
+    this.sampleRate,
+    this.latency,
+    this.channelCount,
+    this.deviceId,
+  });
+
+  static Future<MediaTrackConstraints> default_() => RustLib.instance.api
+      .webAudioApiMediaDevicesMediaTrackConstraintsDefault();
+
+  @override
+  int get hashCode =>
+      sampleRate.hashCode ^
+      latency.hashCode ^
+      channelCount.hashCode ^
+      deviceId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is MediaTrackConstraints &&
+          runtimeType == other.runtimeType &&
+          sampleRate == other.sampleRate &&
+          latency == other.latency &&
+          channelCount == other.channelCount &&
+          deviceId == other.deviceId;
+}

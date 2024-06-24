@@ -9,13 +9,12 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 // These functions are ignored because they have generic arguments: `new`, `process`
 // These types are ignored because they are not used by any `pub` functions: `AudioParamValues`, `AudioWorkletNodeOptions`, `AudioWorkletRenderer`, `Processor`
+// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `fmt`, `fmt`, `fmt`, `has_side_effects`, `onmessage`, `process`
 // These functions are ignored (category: IgnoreBecauseExplicitAttribute): `constructor`, `onmessage`, `port`
+// These functions are ignored (category: IgnoreBecauseOwnerTyShouldIgnore): `default`
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioWorkletNode>>
 abstract class AudioWorkletNode implements RustOpaqueInterface, AudioNode {
-  /// Config for up/down-mixing of input channels for this node.
-  ///
-  /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
   Future<void> channelConfig();
 
   /// Represents an integer used to determine how many channels are used when up-mixing and
@@ -44,10 +43,8 @@ abstract class AudioWorkletNode implements RustOpaqueInterface, AudioNode {
   /// - if the output port is out of bounds for this node
   Future<void> disconnectOutput({required int output});
 
-  /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
   Future<int> numberOfInputs();
 
-  /// The number of outputs coming out of the AudioNode.
   Future<int> numberOfOutputs();
 
   /// Collection of AudioParam objects with associated names of this node
@@ -56,9 +53,6 @@ abstract class AudioWorkletNode implements RustOpaqueInterface, AudioNode {
   /// [`AudioWorkletProcessor`] class constructor at the instantiation.
   Future<void> parameters();
 
-  /// Handle of the associated [`BaseAudioContext`](crate::context::BaseAudioContext).
-  ///
-  /// Only when implementing the AudioNode trait manually, this struct is of any concern.
   Future<void> registration();
 
   /// Update the `channel_count` attribute

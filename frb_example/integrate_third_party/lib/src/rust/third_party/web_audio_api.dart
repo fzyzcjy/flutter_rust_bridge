@@ -10,6 +10,7 @@ import 'web_audio_api/node.dart';
 import 'web_audio_api/worklet.dart';
 
 // These types are ignored because they are not used by any `pub` functions: `AtomicF32`, `AtomicF64`, `ErrorEvent`, `MediaElement`, `MessagePort`
+// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `fmt`, `fmt`
 // These functions are ignored (category: IgnoreBecauseOwnerTyShouldIgnore): `load`, `load`, `new`, `new`, `store`, `store`
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioBuffer>>
@@ -116,9 +117,6 @@ abstract class AudioParam
   /// Will panic if `cancel_time` is negative
   Future<void> cancelScheduledValues({required double cancelTime});
 
-  /// Config for up/down-mixing of input channels for this node.
-  ///
-  /// Only when implementing the [`AudioNode`] trait manually, this struct is of any concern.
   Future<void> channelConfig();
 
   /// Represents an integer used to determine how many channels are used when up-mixing and
@@ -175,15 +173,10 @@ abstract class AudioParam
 
   Future<double> minValue();
 
-  /// The number of inputs feeding into the AudioNode. For source nodes, this will be 0.
   Future<int> numberOfInputs();
 
-  /// The number of outputs coming out of the AudioNode.
   Future<int> numberOfOutputs();
 
-  /// Handle of the associated [`BaseAudioContext`](crate::context::BaseAudioContext).
-  ///
-  /// Only when implementing the AudioNode trait manually, this struct is of any concern.
   Future<void> registration();
 
   /// Update the current value of the automation rate of the AudioParam
@@ -193,13 +186,10 @@ abstract class AudioParam
   /// Some nodes have automation rate constraints and may panic when updating the value.
   Future<void> setAutomationRate({required AutomationRate value});
 
-  /// Update the `channel_count` attribute
   Future<void> setChannelCount({required int v});
 
-  /// Update the `channel_count_mode` attribute
   Future<void> setChannelCountMode({required ChannelCountMode v});
 
-  /// Update the `channel_interpretation` attribute
   Future<void> setChannelInterpretation({required ChannelInterpretation v});
 
   Future<void> setOnProcessorError(
@@ -317,7 +307,10 @@ abstract class OfflineAudioCompletionEvent implements RustOpaqueInterface {
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<PeriodicWave>>
-abstract class PeriodicWave implements RustOpaqueInterface {}
+abstract class PeriodicWave implements RustOpaqueInterface {
+  static Future<PeriodicWave> default_() =>
+      RustLib.instance.api.webAudioApiPeriodicWaveDefault();
+}
 
 /// Options for constructing an [`AudioBuffer`]
 class AudioBufferOptions {
@@ -395,6 +388,9 @@ class AudioRenderCapacityOptions {
     required this.updateInterval,
   });
 
+  static Future<AudioRenderCapacityOptions> default_() =>
+      RustLib.instance.api.webAudioApiAudioRenderCapacityOptionsDefault();
+
   @override
   int get hashCode => updateInterval.hashCode;
 
@@ -450,6 +446,9 @@ class PeriodicWaveOptions {
     this.imag,
     required this.disableNormalization,
   });
+
+  static Future<PeriodicWaveOptions> default_() =>
+      RustLib.instance.api.webAudioApiPeriodicWaveOptionsDefault();
 
   @override
   int get hashCode =>
