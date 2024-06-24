@@ -14,8 +14,8 @@ therefore please visit the API of the `Handler` trait for more details.
 
 Some typical scenarios are:
 
-* [Inspection](../how-to/inspect)
-* [Report errors](../how-to/report-error)
+* [Inspection](../../how-to/inspect)
+* [Report errors](../../how-to/report-error)
 * Customizing executors, thread pools, async runtimes, ...
 
 The API of handler may have breaking change across minor version bumps,

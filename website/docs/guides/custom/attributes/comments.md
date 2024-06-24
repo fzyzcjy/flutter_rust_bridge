@@ -1,4 +1,4 @@
-# Specify attributes as comments
+# Specify attributes using comments
 
 The behavior can often be customized via attributes as well.
 For example, to make a function synchronous on Dart side, we can put `#[frb(sync)]` on that function.
