@@ -5,3 +5,6 @@ pub struct MediaDeviceInfo;
 
 #[frb(ignore)]
 pub fn enumerate_devices_sync() {}
+
+#[frb(ignore)]
+pub struct MediaTrackConstraints;
