@@ -1,10 +1,8 @@
-use crate::codegen::ir::hir::flat::function::HirFlatFunction;
 use crate::codegen::ir::hir::flat::pack::HirFlatPack;
 use crate::codegen::misc::SELF_CRATE_THIRD_PARTY_NAMESPACE;
 use crate::codegen::parser::hir::internal_config::ParserHirInternalConfig;
 use crate::utils::namespace::Namespace;
 use itertools::Itertools;
-use syn::Visibility;
 
 pub(crate) fn transform(
     mut pack: HirFlatPack,
