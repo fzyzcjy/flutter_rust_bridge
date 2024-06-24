@@ -8,7 +8,7 @@ use std::collections::HashSet;
 
 pub(crate) fn transform(mut pack: HirFlatPack) -> anyhow::Result<HirFlatPack> {
     let good_trait_names: HashSet<String> =
-        pack.traits.iter().map(|t| t.name.name.clone()).collect();
+        (pack.traits.iter().map(|t| t.name.name.clone())).collect();
 
     let (funcs, skips) = IrValueOrSkip::split(
         (pack.functions.drain(..))
@@ -36,7 +36,9 @@ fn should_retain(f: &HirFlatFunction, good_trait_names: &HashSet<String>) -> boo
         ..
     } = &f.owner
     {
-        good_trait_names.contains(trait_def_name) || has_frb_attributes(f)
+        good_trait_names.contains(trait_def_name)
+            || WHITELIST_TRAIT_NAMES.contains(&&**trait_def_name)
+            || has_frb_attributes(f)
     } else {
         true
     }
@@ -47,3 +49,5 @@ fn has_frb_attributes(f: &HirFlatFunction) -> bool {
     let attrs = FrbAttributes::parse(f.item_fn.attrs()).unwrap();
     !attrs.is_empty()
 }
+
+pub(crate) const WHITELIST_TRAIT_NAMES: [&str; 1] = ["Default"];

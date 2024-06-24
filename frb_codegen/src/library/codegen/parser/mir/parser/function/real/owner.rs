@@ -6,6 +6,7 @@ use crate::codegen::ir::mir::ty::trait_def::MirTypeTraitDef;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::ir::misc::skip::IrSkipReason::IgnoreBecauseOwnerTyShouldIgnore;
 use crate::codegen::ir::misc::skip::{IrSkipReason, IrValueOrSkip};
+use crate::codegen::parser::hir::flat::transformer::remove_not_defined_trait_transformer::WHITELIST_TRAIT_NAMES;
 use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
 use crate::codegen::parser::mir::parser::function::real::{
     is_struct_or_enum_or_opaque_from_them, FunctionParser,
@@ -44,7 +45,9 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                     } else {
                         // If cannot find the trait and there is no things like `#[frb]` marker,
                         // we directly skip the function currently
-                        if attributes.is_empty() {
+                        if attributes.is_empty()
+                            && !WHITELIST_TRAIT_NAMES.contains(&&**trait_def_name)
+                        {
                             return Ok(IrValueOrSkip::Skip(IgnoreBecauseParseOwnerCannotFindTrait));
                         } else {
                             None

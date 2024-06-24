@@ -11,6 +11,8 @@ The rule is that:
 
 ## Examples
 
+### Example 1: Struct methods
+
 Suppose we are interested in the `some_crate::hello::world::SomeStruct::method` method in third-party crate:
 
 ```rust
@@ -36,6 +38,35 @@ impl SomeStruct {
     pub fn method() {}
 }
 ```
+
+### Example 2: Trait definition methods
+
+Support `SomeTrait` is a third party trait, then again we can do something like above.
+
+```rust
+#[frb(external)]
+impl SomeTrait {
+    #[frb(sync)]
+    pub fn method() {}
+}
+```
+
+### Example 3: Trait implementation methods
+
+Suppose we have third party `SomeTrait` and `SomeStruct` implementing it.
+Then, to override the implementation method, we can do:
+
+```rust
+#[frb(external)]
+impl MyTrait for MyStruct {
+    #[frb(ignore)]
+    fn method(a: i32, b: String) -> Vec<f64> {}
+}
+```
+
+Note that, currently, we have to specify the function parameters (but still no need to have a body).
+This syntax may be simplified (i.e. no need to specify) in the future,
+and may not follow semantics versioning.
 
 ## Remark on `pub use`
 

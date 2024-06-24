@@ -13,6 +13,7 @@ use crate::if_then_some;
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use crate::utils::basic_code::dart_header_code::DartHeaderCode;
+use crate::utils::dart_keywords;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
 
@@ -174,7 +175,6 @@ fn generate_api_method(
         default_constructor_mode,
         &api_dart_func,
         &method_name,
-        config,
         dart_class_name,
     );
 
@@ -226,7 +226,6 @@ fn generate_signature(
     default_constructor_mode: Option<MirFuncDefaultConstructorMode>,
     api_dart_func: &ApiDartGeneratedFunction,
     method_name: &str,
-    _config: &GenerateApiMethodConfig,
     dart_class_name: &str,
 ) -> String {
     let is_static_method = method_info.mode == MirFuncOwnerInfoMethodMode::Static;
@@ -269,11 +268,13 @@ fn generate_method_name(
     if default_constructor_mode.is_some() {
         "newInstance".to_owned()
     } else {
-        (method_info
-            .actual_method_dart_name
-            .as_ref()
-            .unwrap_or(&method_info.actual_method_name))
-        .to_case(Case::Camel)
+        dart_keywords::escape(
+            method_info
+                .actual_method_dart_name
+                .as_ref()
+                .unwrap_or(&method_info.actual_method_name)
+                .to_case(Case::Camel),
+        )
     }
 }
 

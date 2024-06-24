@@ -44,7 +44,7 @@ pub(crate) fn serialize_generalized_item_fn<S: Serializer>(
     s.serialize_str(&format!(
         "GeneralizedItemFn(name={}, vis={:?}, attrs=[{}])",
         x.name(),
-        x.vis(),
+        x.vis_raw(),
         x.attrs().iter().map(ty_to_string).join(", "),
     ))
 }

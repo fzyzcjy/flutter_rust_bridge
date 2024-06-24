@@ -8,7 +8,7 @@ import 'misc_example_twin_sync.dart';
 import 'newtype_pattern_twin_sync.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `default`, `fmt`, `fmt`, `fmt`
+// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `fmt`, `fmt`, `fmt`
 
 double? handleOptionalReturnTwinSync(
         {required double left, required double right}) =>
@@ -87,6 +87,9 @@ class ElementTwinSync {
     this.attributes,
     this.children,
   });
+
+  static Future<ElementTwinSync> default_() => RustLib.instance.api
+      .crateApiPseudoManualOptionalTwinSyncElementTwinSyncDefault();
 
   @override
   int get hashCode =>
