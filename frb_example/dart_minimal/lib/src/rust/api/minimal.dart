@@ -6,8 +6,11 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// These types are ignored because they are not used by any `pub` functions: `MyStruct`
-// These function are ignored because cannot find trait when parsing owner (put an empty `#[frb]` on it to unignore): `default`
-
 Future<int> minimalAdder({required int a, required int b}) =>
     RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b);
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyStruct>>
+abstract class MyStruct implements RustOpaqueInterface {
+  static Future<MyStruct> default_() =>
+      RustLib.instance.api.crateApiMinimalMyStructDefault();
+}
