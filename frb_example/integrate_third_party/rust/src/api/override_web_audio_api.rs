@@ -2,7 +2,7 @@ use crate::api::media_element::MyMediaElement;
 use crate::frb_generated::FLUTTER_RUST_BRIDGE_HANDLER;
 use extend::ext;
 use flutter_rust_bridge::for_generated::anyhow;
-use flutter_rust_bridge::{frb, DartFnFuture, BaseAsyncRuntime};
+use flutter_rust_bridge::{frb, BaseAsyncRuntime, DartFnFuture};
 use std::sync::Arc;
 use web_audio_api::context::{AudioContext, BaseAudioContext, OfflineAudioContext};
 use web_audio_api::media_streams::{MediaStream, MediaStreamTrack};
@@ -39,7 +39,9 @@ pub impl AudioContext {
         let callback = Arc::new(callback);
         self.set_onstatechange(move |event| {
             let callback_cloned = callback.clone();
-             FLUTTER_RUST_BRIDGE_HANDLER.async_runtime().spawn(async move { callback_cloned(event).await });
+            FLUTTER_RUST_BRIDGE_HANDLER
+                .async_runtime()
+                .spawn(async move { callback_cloned(event).await });
         })
     }
 }
@@ -51,7 +53,9 @@ pub impl OfflineAudioContext {
         callback: impl Fn(OfflineAudioCompletionEvent) -> DartFnFuture<()> + Send + Sync + 'static,
     ) {
         self.set_oncomplete(move |event| {
-             FLUTTER_RUST_BRIDGE_HANDLER.async_runtime().spawn(async move { callback(event).await });
+            FLUTTER_RUST_BRIDGE_HANDLER
+                .async_runtime()
+                .spawn(async move { callback(event).await });
         })
     }
 }
@@ -71,7 +75,9 @@ macro_rules! handle_audio_node_trait_impls_override {
                 callback: impl Fn(String) -> DartFnFuture<()> + Send + 'static,
             ) {
                 self.set_onprocessorerror(Box::new(|event| {
-                     FLUTTER_RUST_BRIDGE_HANDLER.async_runtime().spawn(async move { callback(event.message).await });
+                    FLUTTER_RUST_BRIDGE_HANDLER
+                        .async_runtime()
+                        .spawn(async move { callback(event.message).await });
                 }))
             }
         }
