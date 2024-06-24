@@ -31,7 +31,7 @@ jobs:
           - cargo-install
           - cargo-binstall
           - scoop
-          - homebrew
+          # - homebrew # TODO re-enable after configured
         exclude:
           - { image: windows-2022, codegen_install_mode: homebrew }
           - { image: macos-13, codegen_install_mode: scoop }
