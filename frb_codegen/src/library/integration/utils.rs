@@ -24,6 +24,10 @@ pub(super) fn overlay_dir(
             continue;
         }
 
+        let target_sub_path = compute_effective_path(
+            &target_sub_path,
+            replacements,
+        );
         match entry {
             DirEntry::Dir(new_reference_dir) => {
                 if let Some((modified_path, _)) = modifier(&target_sub_path, &[], None) {
@@ -40,10 +44,6 @@ pub(super) fn overlay_dir(
             }
             DirEntry::File(file) => {
                 let reference_content = file.contents();
-                let target_sub_path = compute_effective_path(
-                    &target_sub_path,
-                    replacements,
-                );
                 let existing_content = fs::read(&target_sub_path).ok();
                 if let Some((modified_path, modified_data)) =
                     modifier(&target_sub_path, reference_content, existing_content)
