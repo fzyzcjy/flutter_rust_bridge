@@ -174,7 +174,6 @@ fn generate_api_method(
         default_constructor_mode,
         &api_dart_func,
         &method_name,
-        config,
         dart_class_name,
     );
 
@@ -226,7 +225,6 @@ fn generate_signature(
     default_constructor_mode: Option<MirFuncDefaultConstructorMode>,
     api_dart_func: &ApiDartGeneratedFunction,
     method_name: &str,
-    _config: &GenerateApiMethodConfig,
     dart_class_name: &str,
 ) -> String {
     let is_static_method = method_info.mode == MirFuncOwnerInfoMethodMode::Static;
