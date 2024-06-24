@@ -45,10 +45,16 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
 
     info!("Overlay template onto project");
     let mut replacements = HashMap::new();
-    replacements.insert("REPLACE_ME_DART_PACKAGE_NAME", dart_package_name.to_string());
+    replacements.insert(
+        "REPLACE_ME_DART_PACKAGE_NAME",
+        dart_package_name.to_string(),
+    );
     replacements.insert("REPLACE_ME_RUST_CRATE_NAME", rust_crate_name.to_string());
     replacements.insert("REPLACE_ME_RUST_CRATE_DIR", config.rust_crate_dir);
-    replacements.insert("REPLACE_ME_FRB_VERSION", env!("CARGO_PKG_VERSION").to_string());
+    replacements.insert(
+        "REPLACE_ME_FRB_VERSION",
+        env!("CARGO_PKG_VERSION").to_string(),
+    );
     let rust_frb_dependency = if config.enable_local_dependency {
         r#"{ path = "../../../frb_rust" }"#.to_owned()
     } else {
@@ -71,40 +77,34 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
         },
         &|path| filter_file(path, config.enable_integration_test),
     )?;
-    match &config.template {
-        Template::App => overlay_dir(
-            &APP_INTEGRATION_TEMPLATE_DIR,
-            &replacements,
-            &dart_root,
-            &|target_path, reference_content, existing_content| {
-                modify_file(
-                    target_path.into(),
-                    reference_content,
-                    existing_content,
-                    &replacements,
-                    config.enable_local_dependency,
-                    Some(&["main.dart"]),
-                )
-            },
-            &|path| filter_file(path, config.enable_integration_test),
-        )?,
-        Template::Plugin => overlay_dir(
+    let (dir, comment_out_files) = match &config.template {
+        Template::App => (&APP_INTEGRATION_TEMPLATE_DIR, ["main.dart".to_string()]),
+        Template::Plugin => (
             &PLUGIN_INTEGRATION_TEMPLATE_DIR,
-            &replacements,
-            &dart_root,
-            &|target_path, reference_content, existing_content| {
-                modify_file(
-                    target_path.into(),
-                    reference_content,
-                    existing_content,
-                    &replacements,
-                    config.enable_local_dependency,
-                    Some(&[&format!("{}.dart", &dart_package_name)]),
-                )
-            },
-            &|path| filter_file(path, config.enable_integration_test),
-        )?,
-    }
+            ([format!("{}.dart", &dart_package_name)]),
+        ),
+    };
+    let binding = comment_out_files
+        .iter()
+        .map(|s| s.as_str())
+        .collect::<Vec<&str>>();
+    let comment_out_files = Some(binding.as_slice());
+    overlay_dir(
+        dir,
+        &replacements,
+        &dart_root,
+        &|target_path, reference_content, existing_content| {
+            modify_file(
+                target_path.into(),
+                reference_content,
+                existing_content,
+                &replacements,
+                config.enable_local_dependency,
+                comment_out_files,
+            )
+        },
+        &|path| filter_file(path, config.enable_integration_test),
+    )?;
 
     info!("Modify file permissions");
     modify_permissions(&dart_root)?;
@@ -163,7 +163,7 @@ fn modify_file(
     target_path: PathBuf,
     reference_content: &[u8],
     existing_content: Option<Vec<u8>>,
-    replacements: &HashMap<&str,String>,
+    replacements: &HashMap<&str, String>,
     enable_local_dependency: bool,
     comment_out_files: Option<&[&str]>,
 ) -> Option<(PathBuf, Vec<u8>)> {
