@@ -186,12 +186,6 @@ abstract class AudioParam
   /// Some nodes have automation rate constraints and may panic when updating the value.
   Future<void> setAutomationRate({required AutomationRate value});
 
-  Future<void> setChannelCount({required int v});
-
-  Future<void> setChannelCountMode({required ChannelCountMode v});
-
-  Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
   Future<void> setOnProcessorError(
       {required FutureOr<void> Function(String) callback});
 

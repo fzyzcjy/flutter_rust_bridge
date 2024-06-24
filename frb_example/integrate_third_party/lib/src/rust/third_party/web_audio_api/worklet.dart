@@ -54,15 +54,6 @@ abstract class AudioWorkletNode implements RustOpaqueInterface, AudioNode {
   Future<void> parameters();
 
   Future<void> registration();
-
-  /// Update the `channel_count` attribute
-  Future<void> setChannelCount({required int v});
-
-  /// Update the `channel_count_mode` attribute
-  Future<void> setChannelCountMode({required ChannelCountMode v});
-
-  /// Update the `channel_interpretation` attribute
-  Future<void> setChannelInterpretation({required ChannelInterpretation v});
 }
 
 abstract class AudioWorkletProcessor {}

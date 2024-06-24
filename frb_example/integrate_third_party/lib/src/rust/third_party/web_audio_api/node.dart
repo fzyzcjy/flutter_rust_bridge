@@ -13,7 +13,7 @@ import 'worklet.dart';
 // These functions are ignored because they have generic arguments: `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect_from_output_to_input`, `connect`, `connect`, `connect`, `set_onended`, `set_onended`, `set_onended`, `set_onended`
 // These types are ignored because they are not used by any `pub` functions: `IIRFilterOptions`, `MediaElementAudioSourceOptions`, `MediaStreamAudioSourceOptions`, `MediaStreamRenderer`, `MediaStreamTrackAudioSourceOptions`, `ScriptProcessorOptions`
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `process`
-// These functions are ignored (category: IgnoreBecauseExplicitAttribute): `context`, `context`, `context`, `context`, `context`, `context`, `context`, `context`, `context`, `context`, `context`, `context`, `context`, `context`, `context`, `context`, `context`, `context`, `context`, `context`, `context`, `context`, `context`, `context`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`
+// These functions are ignored (category: IgnoreBecauseExplicitAttribute): `context`, `context`, `context`, `context`, `context`, `context`, `context`, `context`, `context`, `context`, `context`, `context`, `context`, `context`, `context`, `context`, `context`, `context`, `context`, `context`, `context`, `context`, `context`, `context`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest_from_output`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `disconnect_dest`, `set_channel_count_mode`, `set_channel_count_mode`, `set_channel_count_mode`, `set_channel_count_mode`, `set_channel_count_mode`, `set_channel_count_mode`, `set_channel_count_mode`, `set_channel_count_mode`, `set_channel_count_mode`, `set_channel_count_mode`, `set_channel_count_mode`, `set_channel_count_mode`, `set_channel_count_mode`, `set_channel_count_mode`, `set_channel_count_mode`, `set_channel_count_mode`, `set_channel_count`, `set_channel_count`, `set_channel_count`, `set_channel_count`, `set_channel_count`, `set_channel_count`, `set_channel_count`, `set_channel_count`, `set_channel_count`, `set_channel_count`, `set_channel_count`, `set_channel_count`, `set_channel_count`, `set_channel_count`, `set_channel_count`, `set_channel_count`, `set_channel_interpretation`, `set_channel_interpretation`, `set_channel_interpretation`, `set_channel_interpretation`, `set_channel_interpretation`, `set_channel_interpretation`, `set_channel_interpretation`, `set_channel_interpretation`, `set_channel_interpretation`, `set_channel_interpretation`, `set_channel_interpretation`, `set_channel_interpretation`, `set_channel_interpretation`, `set_channel_interpretation`, `set_channel_interpretation`, `set_channel_interpretation`, `set_channel_interpretation`, `set_channel_interpretation`, `set_channel_interpretation`, `set_channel_interpretation`, `set_channel_interpretation`, `set_channel_interpretation`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`, `set_onprocessorerror`
 // These functions are ignored (category: IgnoreBecauseNotAllowedOwner): `channel_count_mode`, `channel_count`, `channel_interpretation`, `clear_onprocessorerror`, `context`, `disconnect_dest_from_output_to_input`, `disconnect_dest_from_output`, `disconnect_dest`, `disconnect_output`, `disconnect`, `set_onprocessorerror`
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AnalyserNode>>
@@ -84,15 +84,6 @@ abstract class AnalyserNode
   Future<int> numberOfOutputs();
 
   Future<void> registration();
-
-  /// Update the `channel_count` attribute
-  Future<void> setChannelCount({required int v});
-
-  /// Update the `channel_count_mode` attribute
-  Future<void> setChannelCountMode({required ChannelCountMode v});
-
-  /// Update the `channel_interpretation` attribute
-  Future<void> setChannelInterpretation({required ChannelInterpretation v});
 
   /// Set FFT size
   ///
@@ -223,15 +214,6 @@ abstract class AudioBufferSourceNode
   /// `set_buffer`)
   Future<void> setBuffer({required AudioBuffer audioBuffer});
 
-  /// Update the `channel_count` attribute
-  Future<void> setChannelCount({required int v});
-
-  /// Update the `channel_count_mode` attribute
-  Future<void> setChannelCountMode({required ChannelCountMode v});
-
-  /// Update the `channel_interpretation` attribute
-  Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
   Future<void> setLoop({required bool value});
 
   Future<void> setLoopEnd({required double value});
@@ -314,13 +296,6 @@ abstract class AudioDestinationNode
 
   Future<void> registration();
 
-  Future<void> setChannelCount({required int v});
-
-  Future<void> setChannelCountMode({required ChannelCountMode v});
-
-  /// Update the `channel_interpretation` attribute
-  Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
   Future<void> setOnProcessorError(
       {required FutureOr<void> Function(String) callback});
 }
@@ -375,15 +350,6 @@ abstract class BiquadFilterNode
   AudioParam get q;
 
   Future<void> registration();
-
-  /// Update the `channel_count` attribute
-  Future<void> setChannelCount({required int v});
-
-  /// Update the `channel_count_mode` attribute
-  Future<void> setChannelCountMode({required ChannelCountMode v});
-
-  /// Update the `channel_interpretation` attribute
-  Future<void> setChannelInterpretation({required ChannelInterpretation v});
 
   Future<void> setOnProcessorError(
       {required FutureOr<void> Function(String) callback});
@@ -444,13 +410,6 @@ abstract class ChannelMergerNode
 
   Future<void> registration();
 
-  Future<void> setChannelCount({required int count});
-
-  Future<void> setChannelCountMode({required ChannelCountMode mode});
-
-  /// Update the `channel_interpretation` attribute
-  Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
   Future<void> setOnProcessorError(
       {required FutureOr<void> Function(String) callback});
 }
@@ -493,13 +452,6 @@ abstract class ChannelSplitterNode
   Future<int> numberOfOutputs();
 
   Future<void> registration();
-
-  Future<void> setChannelCount({required int count});
-
-  Future<void> setChannelCountMode({required ChannelCountMode mode});
-
-  Future<void> setChannelInterpretation(
-      {required ChannelInterpretation interpretation});
 
   Future<void> setOnProcessorError(
       {required FutureOr<void> Function(String) callback});
@@ -553,15 +505,6 @@ abstract class ConstantSourceNode
   AudioParam get offset;
 
   Future<void> registration();
-
-  /// Update the `channel_count` attribute
-  Future<void> setChannelCount({required int v});
-
-  /// Update the `channel_count_mode` attribute
-  Future<void> setChannelCountMode({required ChannelCountMode v});
-
-  /// Update the `channel_interpretation` attribute
-  Future<void> setChannelInterpretation({required ChannelInterpretation v});
 
   Future<void> setOnEnded({required FutureOr<void> Function(Event) callback});
 
@@ -627,15 +570,6 @@ abstract class ConvolverNode
   /// sample rate.
   Future<void> setBuffer({required AudioBuffer buffer});
 
-  /// Update the `channel_count` attribute
-  Future<void> setChannelCount({required int v});
-
-  /// Update the `channel_count_mode` attribute
-  Future<void> setChannelCountMode({required ChannelCountMode v});
-
-  /// Update the `channel_interpretation` attribute
-  Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
   /// Update the `normalize` setting. This will only have an effect when `set_buffer` is called.
   Future<void> setNormalize({required bool value});
 
@@ -684,15 +618,6 @@ abstract class DelayNode
   Future<int> numberOfOutputs();
 
   Future<void> registration();
-
-  /// Update the `channel_count` attribute
-  Future<void> setChannelCount({required int v});
-
-  /// Update the `channel_count_mode` attribute
-  Future<void> setChannelCountMode({required ChannelCountMode v});
-
-  /// Update the `channel_interpretation` attribute
-  Future<void> setChannelInterpretation({required ChannelInterpretation v});
 
   Future<void> setOnProcessorError(
       {required FutureOr<void> Function(String) callback});
@@ -747,13 +672,6 @@ abstract class DynamicsCompressorNode
 
   AudioParam get release;
 
-  Future<void> setChannelCount({required int count});
-
-  Future<void> setChannelCountMode({required ChannelCountMode mode});
-
-  /// Update the `channel_interpretation` attribute
-  Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
   Future<void> setOnProcessorError(
       {required FutureOr<void> Function(String) callback});
 
@@ -800,15 +718,6 @@ abstract class GainNode implements RustOpaqueInterface, AudioNode, GainNodeExt {
 
   Future<void> registration();
 
-  /// Update the `channel_count` attribute
-  Future<void> setChannelCount({required int v});
-
-  /// Update the `channel_count_mode` attribute
-  Future<void> setChannelCountMode({required ChannelCountMode v});
-
-  /// Update the `channel_interpretation` attribute
-  Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
   Future<void> setOnProcessorError(
       {required FutureOr<void> Function(String) callback});
 }
@@ -852,15 +761,6 @@ abstract class IirFilterNode
 
   Future<void> registration();
 
-  /// Update the `channel_count` attribute
-  Future<void> setChannelCount({required int v});
-
-  /// Update the `channel_count_mode` attribute
-  Future<void> setChannelCountMode({required ChannelCountMode v});
-
-  /// Update the `channel_interpretation` attribute
-  Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
   Future<void> setOnProcessorError(
       {required FutureOr<void> Function(String) callback});
 }
@@ -903,15 +803,6 @@ abstract class MediaElementAudioSourceNode
   Future<int> numberOfOutputs();
 
   Future<void> registration();
-
-  /// Update the `channel_count` attribute
-  Future<void> setChannelCount({required int v});
-
-  /// Update the `channel_count_mode` attribute
-  Future<void> setChannelCountMode({required ChannelCountMode v});
-
-  /// Update the `channel_interpretation` attribute
-  Future<void> setChannelInterpretation({required ChannelInterpretation v});
 
   Future<void> setOnProcessorError(
       {required FutureOr<void> Function(String) callback});
@@ -958,15 +849,6 @@ abstract class MediaStreamAudioDestinationNode
   Future<int> numberOfOutputs();
 
   Future<void> registration();
-
-  /// Update the `channel_count` attribute
-  Future<void> setChannelCount({required int v});
-
-  /// Update the `channel_count_mode` attribute
-  Future<void> setChannelCountMode({required ChannelCountMode v});
-
-  /// Update the `channel_interpretation` attribute
-  Future<void> setChannelInterpretation({required ChannelInterpretation v});
 
   Future<void> setOnProcessorError(
       {required FutureOr<void> Function(String) callback});
@@ -1015,15 +897,6 @@ abstract class MediaStreamAudioSourceNode
 
   Future<void> registration();
 
-  /// Update the `channel_count` attribute
-  Future<void> setChannelCount({required int v});
-
-  /// Update the `channel_count_mode` attribute
-  Future<void> setChannelCountMode({required ChannelCountMode v});
-
-  /// Update the `channel_interpretation` attribute
-  Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
   Future<void> setOnProcessorError(
       {required FutureOr<void> Function(String) callback});
 }
@@ -1069,15 +942,6 @@ abstract class MediaStreamTrackAudioSourceNode
   Future<int> numberOfOutputs();
 
   Future<void> registration();
-
-  /// Update the `channel_count` attribute
-  Future<void> setChannelCount({required int v});
-
-  /// Update the `channel_count_mode` attribute
-  Future<void> setChannelCountMode({required ChannelCountMode v});
-
-  /// Update the `channel_interpretation` attribute
-  Future<void> setChannelInterpretation({required ChannelInterpretation v});
 
   Future<void> setOnProcessorError(
       {required FutureOr<void> Function(String) callback});
@@ -1145,15 +1009,6 @@ abstract class OscillatorNode
   Future<int> numberOfOutputs();
 
   Future<void> registration();
-
-  /// Update the `channel_count` attribute
-  Future<void> setChannelCount({required int v});
-
-  /// Update the `channel_count_mode` attribute
-  Future<void> setChannelCountMode({required ChannelCountMode v});
-
-  /// Update the `channel_interpretation` attribute
-  Future<void> setChannelInterpretation({required ChannelInterpretation v});
 
   Future<void> setOnEnded({required FutureOr<void> Function(Event) callback});
 
@@ -1256,13 +1111,6 @@ abstract class PannerNode
 
   Future<double> rolloffFactor();
 
-  Future<void> setChannelCount({required int count});
-
-  Future<void> setChannelCountMode({required ChannelCountMode mode});
-
-  /// Update the `channel_interpretation` attribute
-  Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
   Future<void> setConeInnerAngle({required double value});
 
   Future<void> setConeOuterAngle({required double value});
@@ -1353,13 +1201,6 @@ abstract class ScriptProcessorNode
 
   Future<void> registration();
 
-  Future<void> setChannelCount({required int count});
-
-  Future<void> setChannelCountMode({required ChannelCountMode mode});
-
-  /// Update the `channel_interpretation` attribute
-  Future<void> setChannelInterpretation({required ChannelInterpretation v});
-
   Future<void> setOnProcessorError(
       {required FutureOr<void> Function(String) callback});
 }
@@ -1405,13 +1246,6 @@ abstract class StereoPannerNode
   AudioParam get pan;
 
   Future<void> registration();
-
-  Future<void> setChannelCount({required int count});
-
-  Future<void> setChannelCountMode({required ChannelCountMode mode});
-
-  /// Update the `channel_interpretation` attribute
-  Future<void> setChannelInterpretation({required ChannelInterpretation v});
 
   Future<void> setOnProcessorError(
       {required FutureOr<void> Function(String) callback});
@@ -1464,15 +1298,6 @@ abstract class WaveShaperNode
   Future<OverSampleType> oversample();
 
   Future<void> registration();
-
-  /// Update the `channel_count` attribute
-  Future<void> setChannelCount({required int v});
-
-  /// Update the `channel_count_mode` attribute
-  Future<void> setChannelCountMode({required ChannelCountMode v});
-
-  /// Update the `channel_interpretation` attribute
-  Future<void> setChannelInterpretation({required ChannelInterpretation v});
 
   /// Set the distortion `curve` of this node
   ///
@@ -1539,15 +1364,6 @@ abstract class AudioNode {
   ///
   /// Only when implementing the AudioNode trait manually, this struct is of any concern.
   Future<void> registration();
-
-  /// Update the `channel_count` attribute
-  Future<void> setChannelCount({required int v});
-
-  /// Update the `channel_count_mode` attribute
-  Future<void> setChannelCountMode({required ChannelCountMode v});
-
-  /// Update the `channel_interpretation` attribute
-  Future<void> setChannelInterpretation({required ChannelInterpretation v});
 }
 
 abstract class AudioScheduledSourceNode {
