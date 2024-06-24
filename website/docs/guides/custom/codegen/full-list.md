@@ -9,22 +9,22 @@ import CommandBuildWeb from '../../../generated/_frb-codegen-command-build-web.m
 import CommandCreate from '../../../generated/_frb-codegen-command-create.mdx';
 import CommandIntegrate from '../../../generated/_frb-codegen-command-integrate.mdx';
 
-### `flutter_rust_bridge_codegen`
+## `flutter_rust_bridge_codegen`
 
 <CommandMain/>
 
-### `flutter_rust_bridge_codegen generate`
+## `flutter_rust_bridge_codegen generate`
 
 <CommandGenerate/>
 
-### `flutter_rust_bridge_codegen build-web`
+## `flutter_rust_bridge_codegen build-web`
 
 <CommandBuildWeb/>
 
-### `flutter_rust_bridge_codegen create`
+## `flutter_rust_bridge_codegen create`
 
 <CommandCreate/>
 
-### `flutter_rust_bridge_codegen integrate`
+## `flutter_rust_bridge_codegen integrate`
 
 <CommandIntegrate/>
