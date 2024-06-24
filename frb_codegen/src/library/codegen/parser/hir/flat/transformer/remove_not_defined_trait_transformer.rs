@@ -3,7 +3,7 @@ use crate::codegen::ir::hir::flat::pack::HirFlatPack;
 use crate::codegen::ir::misc::skip::{IrSkip, IrSkipReason, IrValueOrSkip};
 use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
 use crate::utils::namespace::NamespacedName;
-use itertools::{concat, Itertools};
+use itertools::Itertools;
 use std::collections::HashSet;
 
 pub(crate) fn transform(mut pack: HirFlatPack) -> anyhow::Result<HirFlatPack> {
