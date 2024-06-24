@@ -1,4 +1,5 @@
 use crate::api::media_element::MyMediaElement;
+use crate::frb_generated::FLUTTER_RUST_BRIDGE_HANDLER;
 use extend::ext;
 use flutter_rust_bridge::for_generated::anyhow;
 use flutter_rust_bridge::{frb, DartFnFuture};
@@ -7,7 +8,6 @@ use web_audio_api::context::{AudioContext, BaseAudioContext, OfflineAudioContext
 use web_audio_api::media_streams::{MediaStream, MediaStreamTrack};
 use web_audio_api::node::*;
 use web_audio_api::{AudioBuffer, AudioParam, Event, OfflineAudioCompletionEvent};
-use crate::frb_generated::FLUTTER_RUST_BRIDGE_HANDLER;
 
 #[ext]
 pub impl AudioContext {
@@ -39,7 +39,7 @@ pub impl AudioContext {
         let callback = Arc::new(callback);
         self.set_onstatechange(move |event| {
             let callback_cloned = callback.clone();
-            flutter_rust_bridge::spawn(async move { callback_cloned(event).await });
+             FLUTTER_RUST_BRIDGE_HANDLER.async_runtime().spawn(async move { callback_cloned(event).await });
         })
     }
 }
@@ -51,7 +51,7 @@ pub impl OfflineAudioContext {
         callback: impl Fn(OfflineAudioCompletionEvent) -> DartFnFuture<()> + Send + Sync + 'static,
     ) {
         self.set_oncomplete(move |event| {
-            flutter_rust_bridge::spawn(async move { callback(event).await });
+             FLUTTER_RUST_BRIDGE_HANDLER.async_runtime().spawn(async move { callback(event).await });
         })
     }
 }
@@ -71,7 +71,7 @@ macro_rules! handle_audio_node_trait_impls_override {
                 callback: impl Fn(String) -> DartFnFuture<()> + Send + 'static,
             ) {
                 self.set_onprocessorerror(Box::new(|event| {
-                    flutter_rust_bridge::spawn(async move { callback(event.message).await });
+                     FLUTTER_RUST_BRIDGE_HANDLER.async_runtime().spawn(async move { callback(event.message).await });
                 }))
             }
         }
@@ -112,16 +112,12 @@ macro_rules! handle_audio_scheduled_source_node_trait_impls_override {
                     callback: impl Fn(Event) -> DartFnFuture<()> + Send + 'static,
                 ) {
                     self.set_onended(Box::new(|event| {
-                        flutter_rust_bridge::spawn(async move { callback(event).await });
+                        FLUTTER_RUST_BRIDGE_HANDLER.async_runtime().spawn(async move { callback(event).await });
                     }))
                 }
             }
         }
     };
-}
-
-fn f () {
-    FLUTTER_RUST_BRIDGE_HANDLER.thread_pool();
 }
 
 handle_audio_scheduled_source_node_trait_impls_override!(ConstantSourceNode);
