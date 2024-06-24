@@ -1,10 +1,10 @@
 pub(crate) mod consts;
 
-/// The type of the project
-pub enum ProjectType {
+/// The type of the project template
+#[derive(Debug, Copy, Clone)]
+pub enum Template {
     /// A Flutter application
     App,
-    /// A shareable Flutter project containing an API in Dart code with 
-    /// platform-specific implementations
+    /// A shareable Flutter project that can be used across multiple Flutter applictions.
     Plugin,
 }

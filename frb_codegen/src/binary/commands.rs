@@ -1,6 +1,6 @@
 use crate::codegen::ConfigDumpContent;
 use clap::{Args, Parser, Subcommand, ValueEnum};
-use lib_flutter_rust_bridge_codegen::misc::ProjectType;
+use lib_flutter_rust_bridge_codegen::misc::Template;
 use std::path::PathBuf;
 
 // The name `Cli`, `Commands` come from https://docs.rs/clap/latest/clap/_derive/_tutorial/chapter_0/index.html
@@ -188,7 +188,7 @@ pub(crate) struct CreateCommandArgs {
 
     /// The template type to use to generate the flutter files.
     #[clap(short, long, value_enum, default_value = "app")]
-    pub template: ProjectTypeArg
+    pub template: TemplateArg
 }
 
 #[derive(Debug, Args)]
@@ -203,15 +203,14 @@ pub(crate) struct IntegrateCommandArgs {
     /// The template type to use for integration. This should usually match the type of flutter project
     /// being integrating with.
     #[clap(short, long, value_enum, default_value = "app")]
-    pub template: ProjectTypeArg
+    pub template: TemplateArg
 }
 
 #[derive(Debug,Clone,ValueEnum)]
-pub(crate) enum ProjectTypeArg {
+pub(crate) enum TemplateArg {
     /// (default) a Flutter application
     App,
-    /// A shareable Flutter project containing an API in Dart code with a 
-    /// platform-specific implementation
+    /// A shareable Flutter project that can be used across multiple Flutter applictions.
     Plugin,
 }
 
@@ -250,11 +249,11 @@ pub(crate) struct BuildWebCommandArgs {
 pub(crate) struct InternalGenerateCommandArgs {}
 
 
-impl From<ProjectTypeArg> for ProjectType {
-    fn from(value: ProjectTypeArg) -> Self {
+impl From<TemplateArg> for Template {
+    fn from(value: TemplateArg) -> Self {
         match value {
-            ProjectTypeArg::App => ProjectType::App,
-            ProjectTypeArg::Plugin => ProjectType::Plugin,
+            TemplateArg::App => Template::App,
+            TemplateArg::Plugin => Template::Plugin,
         }
     }
 }

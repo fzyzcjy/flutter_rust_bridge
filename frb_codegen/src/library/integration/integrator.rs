@@ -1,9 +1,7 @@
-use crate::integration::utils::{
-    compute_effective_path, extract_dir_and_modify, replace_file_content,
-};
+use crate::integration::utils::{overlay_dir, replace_file_content};
 use crate::library::commands::flutter::{flutter_pub_add, flutter_pub_get};
 use crate::library::commands::format_dart::format_dart;
-use crate::misc::ProjectType;
+use crate::misc::Template;
 use crate::utils::dart_repository::get_dart_package_name;
 use crate::utils::path_utils::find_dart_package_dir;
 
@@ -11,11 +9,10 @@ use anyhow::Result;
 use include_dir::{include_dir, Dir};
 use itertools::Itertools;
 use log::{debug, info, warn};
+use std::collections::HashMap;
 use std::env;
 use std::ffi::OsStr;
 use std::path::{Path, PathBuf};
-
-use super::utils::ReplaceContentConfig;
 
 static SHARED_INTEGRATION_TEMPLATE_DIR: Dir<'_> =
     include_dir!("$CARGO_MANIFEST_DIR/assets/integration_template/shared");
@@ -31,7 +28,7 @@ pub struct IntegrateConfig {
     pub enable_local_dependency: bool,
     pub rust_crate_name: Option<String>,
     pub rust_crate_dir: String,
-    pub template: ProjectType,
+    pub template: Template,
 }
 
 /// Integrate Rust into existing Flutter project.
@@ -46,23 +43,28 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
         .clone()
         .unwrap_or(format!("rust_lib_{}", dart_package_name));
 
-    info!("Extract and modify the Dart project directory");
-    let replace_content_config = ReplaceContentConfig {
-        dart_package_name: &dart_package_name,
-        rust_crate_name: &rust_crate_name,
-        rust_crate_dir: &config.rust_crate_dir,
-        enable_local_dependency: config.enable_local_dependency,
+    info!("Overlay template onto project");
+    let mut replacements = HashMap::new();
+    replacements.insert("REPLACE_ME_DART_PACKAGE_NAME", dart_package_name.to_string());
+    replacements.insert("REPLACE_ME_RUST_CRATE_NAME", rust_crate_name.to_string());
+    replacements.insert("REPLACE_ME_RUST_CRATE_DIR", config.rust_crate_dir);
+    replacements.insert("REPLACE_ME_FRB_VERSION", env!("CARGO_PKG_VERSION").to_string());
+    let rust_frb_dependency = if config.enable_local_dependency {
+        r#"{ path = "../../../frb_rust" }"#.to_owned()
+    } else {
+        format!(r#""={}""#, env!("CARGO_PKG_VERSION"))
     };
-    extract_dir_and_modify(
+    replacements.insert("REPLACE_ME_RUST_FRB_DEPENDENCY", rust_frb_dependency);
+    overlay_dir(
         &SHARED_INTEGRATION_TEMPLATE_DIR,
-        &replace_content_config,
+        &replacements,
         &dart_root,
-        &|reference_path, reference_content, existing_content| {
+        &|target_path, reference_content, existing_content| {
             modify_file(
-                reference_path,
+                target_path.into(),
                 reference_content,
                 existing_content,
-                &replace_content_config,
+                &replacements,
                 config.enable_local_dependency,
                 None,
             )
@@ -70,32 +72,32 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
         &|path| filter_file(path, config.enable_integration_test),
     )?;
     match &config.template {
-        ProjectType::App => extract_dir_and_modify(
+        Template::App => overlay_dir(
             &APP_INTEGRATION_TEMPLATE_DIR,
-            &replace_content_config,
+            &replacements,
             &dart_root,
-            &|reference_path, reference_content, existing_content| {
+            &|target_path, reference_content, existing_content| {
                 modify_file(
-                    reference_path,
+                    target_path.into(),
                     reference_content,
                     existing_content,
-                    &replace_content_config,
+                    &replacements,
                     config.enable_local_dependency,
                     Some(&["main.dart"]),
                 )
             },
             &|path| filter_file(path, config.enable_integration_test),
         )?,
-        ProjectType::Plugin => extract_dir_and_modify(
+        Template::Plugin => overlay_dir(
             &PLUGIN_INTEGRATION_TEMPLATE_DIR,
-            &replace_content_config,
+            &replacements,
             &dart_root,
-            &|reference_path, reference_content, existing_content| {
+            &|target_path, reference_content, existing_content| {
                 modify_file(
-                    reference_path,
+                    target_path.into(),
                     reference_content,
                     existing_content,
-                    &replace_content_config,
+                    &replacements,
                     config.enable_local_dependency,
                     Some(&[&format!("{}.dart", &dart_package_name)]),
                 )
@@ -158,25 +160,22 @@ fn set_permission_executable(path: &Path) -> Result<()> {
 }
 
 fn modify_file(
-    reference_path: &Path,
+    target_path: PathBuf,
     reference_content: &[u8],
     existing_content: Option<Vec<u8>>,
-    replace_content_config: &ReplaceContentConfig,
+    replacements: &HashMap<&str,String>,
     enable_local_dependency: bool,
     comment_out_files: Option<&[&str]>,
 ) -> Option<(PathBuf, Vec<u8>)> {
-    let src = replace_file_content(reference_content, replace_content_config);
-
-    let path = compute_effective_path(reference_path, replace_content_config);
-
+    let src = replace_file_content(reference_content, replacements);
 
     if let Some(existing_content) = existing_content {
-        if let Some(file_name) = path.file_name().and_then(|e| e.to_str()) {
+        if let Some(file_name) = target_path.file_name().and_then(|e| e.to_str()) {
             if let Some(files) = comment_out_files {
                 if files.contains(&file_name) {
                     return comment_out_existing_file_and_write_template(
                         existing_content,
-                        path,
+                        target_path,
                         &src,
                     );
                 }
@@ -185,20 +184,20 @@ fn modify_file(
         // We do not care about this warning
         // frb-coverage:ignore-start
         warn!(
-            "Skip writing to {path:?} because file already exists. \
+            "Skip writing to {target_path:?} because file already exists. \
             It is suggested to remove that file before running this command to apply the full template."
         );
         return None;
         // frb-coverage:ignore-end
     }
 
-    if path.iter().contains(&OsStr::new("cargokit")) {
-        if let Some(comments) = compute_cargokit_comments(&path) {
-            return Some((path, [comments.as_bytes(), &src].concat()));
+    if target_path.iter().contains(&OsStr::new("cargokit")) {
+        if let Some(comments) = compute_cargokit_comments(&target_path) {
+            return Some((target_path, [comments.as_bytes(), &src].concat()));
         }
     }
 
-    if path
+    if target_path
         .iter()
         .contains(&OsStr::new("flutter_rust_bridge.yaml"))
     {
@@ -206,10 +205,10 @@ fn modify_file(
         if enable_local_dependency {
             ans += "\nlocal: true\n";
         }
-        return Some((path, ans.as_bytes().to_owned()));
+        return Some((target_path, ans.as_bytes().to_owned()));
     }
 
-    Some((path, src))
+    Some((target_path, src))
 }
 
 fn comment_out_existing_file_and_write_template(

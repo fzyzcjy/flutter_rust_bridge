@@ -1,7 +1,7 @@
 use crate::integration::integrator;
 use crate::integration::integrator::IntegrateConfig;
 use crate::library::commands::flutter::flutter_create;
-use crate::misc::ProjectType;
+use crate::misc::Template;
 use anyhow::{bail, ensure};
 use log::{debug, info};
 use std::path::Path;
@@ -13,7 +13,7 @@ pub struct CreateConfig {
     pub enable_local_dependency: bool,
     pub rust_crate_name: Option<String>,
     pub rust_crate_dir: String,
-    pub template: ProjectType,
+    pub template: Template,
 }
 
 /// Create a new Flutter + Rust project.
@@ -33,13 +33,13 @@ pub fn create(config: CreateConfig) -> anyhow::Result<()> {
     );
     // frb-coverage:ignore-end
 
-    flutter_create(&config.name, &config.org, &config.template)?;
+    flutter_create(&config.name, &config.org, config.template)?;
 
     env::set_current_dir(&dart_root)?;
 
     match &config.template {
-        ProjectType::App => remove_unnecessary_app_files(&dart_root)?,
-        ProjectType::Plugin => remove_unnecessary_plugin_files(&dart_root)?,
+        Template::App => remove_unnecessary_app_files(&dart_root)?,
+        Template::Plugin => remove_unnecessary_plugin_files(&dart_root)?,
     }
     
     info!("Step: Inject flutter_rust_bridge related code");
