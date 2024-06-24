@@ -8,7 +8,7 @@ import 'misc_example_twin_rust_async_sse.dart';
 import 'newtype_pattern_twin_rust_async_sse.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `default`, `fmt`, `fmt`, `fmt`
+// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `fmt`, `fmt`, `fmt`
 
 Future<double?> handleOptionalReturnTwinRustAsyncSse(
         {required double left, required double right}) =>
@@ -91,6 +91,9 @@ class ElementTwinRustAsyncSse {
     this.attributes,
     this.children,
   });
+
+  static Future<ElementTwinRustAsyncSse> default_() => RustLib.instance.api
+      .crateApiPseudoManualOptionalTwinRustAsyncSseElementTwinRustAsyncSseDefault();
 
   @override
   int get hashCode =>
