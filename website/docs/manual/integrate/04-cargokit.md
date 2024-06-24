@@ -1,7 +1,7 @@
 # Cargokit
 
-flutter_rust_bridge uses Cargokit to with seamless integration of cargo build
-with flutter plugins and packages.
+flutter_rust_bridge uses Cargokit for seamless integration of cargo build
+with flutter applications and packages.
 
 ## Cargokit Details
 
