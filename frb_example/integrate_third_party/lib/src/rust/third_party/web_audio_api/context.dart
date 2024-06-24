@@ -825,10 +825,6 @@ enum AudioContextRenderSizeCategory {
   /// The default value of 128 frames
   default_,
   ;
-
-  static Future<AudioContextRenderSizeCategory> default_() =>
-      RustLib.instance.api
-          .webAudioApiContextAudioContextRenderSizeCategoryDefault();
 }
 
 /// Describes the current state of the `AudioContext`
