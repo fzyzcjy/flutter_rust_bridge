@@ -261,10 +261,58 @@ const sidebars = {
                         id: 'guides/custom/index',
                     },
                     items: [
-                        'guides/custom/codegen',
-                        'guides/custom/rust',
-                        'guides/custom/dart',
-                        'guides/custom/attributes',
+                        {
+                            type: 'category',
+                            label: 'Code generator',
+                            collapsed: true,
+                            link: {
+                                type: 'doc',
+                                id: 'guides/custom/codegen/index',
+                            },
+                            items: [
+                                'guides/custom/codegen/inputs',
+                                'guides/custom/codegen/full-list',
+                            ],
+                        },
+                        {
+                            type: 'category',
+                            label: 'Rust runtime',
+                            collapsed: true,
+                            link: {
+                                type: 'doc',
+                                id: 'guides/custom/rust/index',
+                            },
+                            items: [
+                                'guides/custom/rust/handlers',
+                                'guides/custom/rust/feature-flags',
+                                'guides/custom/rust/wasm-init',
+                            ],
+                        },
+                        {
+                            type: 'category',
+                            label: 'Dart runtime',
+                            collapsed: true,
+                            link: {
+                                type: 'doc',
+                                id: 'guides/custom/dart/index',
+                            },
+                            items: [
+                                'guides/custom/dart/constructors',
+                            ],
+                        },
+                        {
+                            type: 'category',
+                            label: 'Attributes',
+                            collapsed: true,
+                            link: {
+                                type: 'doc',
+                                id: 'guides/custom/attributes/index',
+                            },
+                            items: [
+                                'guides/custom/attributes/comments',
+                                'guides/custom/attributes/full-list',
+                            ],
+                        },
                     ],
                 },
                 {
