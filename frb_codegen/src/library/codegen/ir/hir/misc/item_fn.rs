@@ -47,7 +47,9 @@ impl GeneralizedItemFn {
         }
     }
 
-    pub(crate) fn vis(&self) -> Option<&Visibility> {
+    /// NOTE: When it is `ImplItemFn`, but it is in a `impl SomeTrait for SomeType`,
+    /// it will always be `inherited` even if it should be public
+    pub(crate) fn vis_raw(&self) -> Option<&Visibility> {
         match self {
             Self::ItemFn(inner) => Some(&inner.vis),
             Self::ImplItemFn(inner) => Some(&inner.vis),
