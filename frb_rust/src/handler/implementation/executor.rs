@@ -39,6 +39,10 @@ impl<EL: ErrorListener, TP: BaseThreadPool, AR: BaseAsyncRuntime> SimpleExecutor
     pub fn thread_pool(&self) -> &TP {
         &self.thread_pool
     }
+
+    pub fn async_runtime(&self) -> &AR {
+        &self.async_runtime
+    }
 }
 
 impl<EL: ErrorListener + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executor
