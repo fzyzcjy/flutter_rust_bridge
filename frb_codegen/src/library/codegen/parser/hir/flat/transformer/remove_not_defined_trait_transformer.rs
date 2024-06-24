@@ -52,4 +52,4 @@ fn has_frb_attributes(f: &HirFlatFunction) -> bool {
     !attrs.is_empty()
 }
 
-const WHITELIST_TRAIT_NAMES: [&str; 1] = ["Default"];
+pub(crate) const WHITELIST_TRAIT_NAMES: [&str; 1] = ["Default"];
