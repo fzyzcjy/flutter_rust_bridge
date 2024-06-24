@@ -34,7 +34,7 @@ impl<TP: BaseThreadPool> DefaultHandler<TP> {
     }
 
     pub fn async_runtime(&self) -> &SimpleAsyncRuntime {
-        &self.executor.async_runtime()
+        self.executor.async_runtime()
     }
 }
 
