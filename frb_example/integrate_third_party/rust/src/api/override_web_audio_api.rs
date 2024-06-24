@@ -7,6 +7,7 @@ use web_audio_api::context::{AudioContext, BaseAudioContext, OfflineAudioContext
 use web_audio_api::media_streams::{MediaStream, MediaStreamTrack};
 use web_audio_api::node::*;
 use web_audio_api::{AudioBuffer, AudioParam, Event, OfflineAudioCompletionEvent};
+use crate::frb_generated::FLUTTER_RUST_BRIDGE_HANDLER;
 
 #[ext]
 pub impl AudioContext {
@@ -117,6 +118,10 @@ macro_rules! handle_audio_scheduled_source_node_trait_impls_override {
             }
         }
     };
+}
+
+fn f () {
+    FLUTTER_RUST_BRIDGE_HANDLER.thread_pool();
 }
 
 handle_audio_scheduled_source_node_trait_impls_override!(ConstantSourceNode);

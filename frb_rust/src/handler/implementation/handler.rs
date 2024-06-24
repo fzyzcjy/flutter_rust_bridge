@@ -32,6 +32,10 @@ impl<TP: BaseThreadPool> DefaultHandler<TP> {
     pub fn thread_pool(&self) -> &TP {
         self.executor.thread_pool()
     }
+
+    pub fn async_runtime(&self) -> &SimpleAsyncRuntime {
+        &self.executor.async_runtime()
+    }
 }
 
 /// The simple handler uses a simple thread pool to execute tasks.
