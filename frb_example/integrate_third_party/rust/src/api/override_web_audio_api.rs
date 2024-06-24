@@ -2,7 +2,7 @@ use crate::api::media_element::MyMediaElement;
 use crate::frb_generated::FLUTTER_RUST_BRIDGE_HANDLER;
 use extend::ext;
 use flutter_rust_bridge::for_generated::anyhow;
-use flutter_rust_bridge::{frb, DartFnFuture};
+use flutter_rust_bridge::{frb, DartFnFuture, BaseAsyncRuntime};
 use std::sync::Arc;
 use web_audio_api::context::{AudioContext, BaseAudioContext, OfflineAudioContext};
 use web_audio_api::media_streams::{MediaStream, MediaStreamTrack};
