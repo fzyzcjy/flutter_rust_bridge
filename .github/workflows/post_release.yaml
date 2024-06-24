@@ -30,7 +30,7 @@ jobs:
         codegen_install_mode:
           - cargo-install
           - cargo-binstall
-          - scoop
+          # - scoop # TODO re-enable after configured
           # - homebrew # TODO re-enable after configured
         exclude:
           - { image: windows-2022, codegen_install_mode: homebrew }
