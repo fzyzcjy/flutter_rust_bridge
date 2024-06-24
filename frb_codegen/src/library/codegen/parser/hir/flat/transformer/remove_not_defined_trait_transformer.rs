@@ -3,12 +3,16 @@ use crate::codegen::ir::hir::flat::pack::HirFlatPack;
 use crate::codegen::ir::misc::skip::{IrSkip, IrSkipReason, IrValueOrSkip};
 use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
 use crate::utils::namespace::NamespacedName;
-use itertools::Itertools;
+use itertools::{concat, Itertools};
 use std::collections::HashSet;
 
 pub(crate) fn transform(mut pack: HirFlatPack) -> anyhow::Result<HirFlatPack> {
-    let good_trait_names: HashSet<String> =
-        pack.traits.iter().map(|t| t.name.name.clone()).collect();
+    let good_trait_names: HashSet<String> = concat([
+        (pack.traits.iter().map(|t| t.name.name.clone())).collect_vec(),
+        (WHITELIST_TRAIT_NAMES.iter().map(|x| x.to_string())).collect_vec(),
+    ])
+    .into_iter()
+    .collect();
 
     let (funcs, skips) = IrValueOrSkip::split(
         (pack.functions.drain(..))
@@ -47,3 +51,5 @@ fn has_frb_attributes(f: &HirFlatFunction) -> bool {
     let attrs = FrbAttributes::parse(f.item_fn.attrs()).unwrap();
     !attrs.is_empty()
 }
+
+const WHITELIST_TRAIT_NAMES: [&str; 1] = ["Default"];
