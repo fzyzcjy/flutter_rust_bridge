@@ -69,6 +69,13 @@ pub trait AudioNode {
     fn disconnect_dest_from_output();
     #[frb(ignore)]
     fn disconnect_dest_from_output_to_input();
+
+    #[frb(ignore)]
+    fn set_channel_count();
+    #[frb(ignore)]
+    fn set_channel_count_mode();
+    #[frb(ignore)]
+    fn set_channel_interpretation();
 }
 
 #[macro_export]
