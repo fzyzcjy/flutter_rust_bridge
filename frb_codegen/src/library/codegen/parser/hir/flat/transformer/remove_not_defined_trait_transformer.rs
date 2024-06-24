@@ -7,12 +7,8 @@ use itertools::{concat, Itertools};
 use std::collections::HashSet;
 
 pub(crate) fn transform(mut pack: HirFlatPack) -> anyhow::Result<HirFlatPack> {
-    let good_trait_names: HashSet<String> = concat([
-        (pack.traits.iter().map(|t| t.name.name.clone())).collect_vec(),
-        (WHITELIST_TRAIT_NAMES.iter().map(|x| x.to_string())).collect_vec(),
-    ])
-    .into_iter()
-    .collect();
+    let good_trait_names: HashSet<String> =
+        (pack.traits.iter().map(|t| t.name.name.clone())).collect();
 
     let (funcs, skips) = IrValueOrSkip::split(
         (pack.functions.drain(..))
@@ -40,7 +36,9 @@ fn should_retain(f: &HirFlatFunction, good_trait_names: &HashSet<String>) -> boo
         ..
     } = &f.owner
     {
-        good_trait_names.contains(trait_def_name) || has_frb_attributes(f)
+        good_trait_names.contains(trait_def_name)
+            || WHITELIST_TRAIT_NAMES.contains(&&**trait_def_name)
+            || has_frb_attributes(f)
     } else {
         true
     }
