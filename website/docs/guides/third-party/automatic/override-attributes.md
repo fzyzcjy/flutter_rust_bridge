@@ -64,7 +64,7 @@ impl MyTrait for MyStruct {
 }
 ```
 
-Note that, currently, we have to specify the function parameters.
+Note that, currently, we have to specify the function parameters (but still no need to have a body).
 This syntax may be simplified (i.e. no need to specify) in the future,
 and may not follow semantics versioning.
 
