@@ -70,6 +70,9 @@ pub trait AudioNode {
     #[frb(ignore)]
     fn disconnect_dest_from_output_to_input();
 
+    // The trait definition and implementation has conflicting parameter names ("v" vs "value"),
+    // thus we ignore it temporarily. To fix it, maybe we should PR the web-audio-api
+    // library to ensure parameter names agree.
     #[frb(ignore)]
     fn set_channel_count();
     #[frb(ignore)]
