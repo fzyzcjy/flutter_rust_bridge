@@ -53,10 +53,6 @@ impl SomeTrait {
 
 ### Example 3: Trait implementation methods
 
-:::info
-The syntax here may subject to a change (to simplify it).
-:::
-
 Suppose we have third party `SomeTrait` and `SomeStruct` implementing it.
 Then, to override the implementation method, we can do:
 
