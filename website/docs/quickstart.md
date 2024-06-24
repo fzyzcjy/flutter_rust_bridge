@@ -35,9 +35,9 @@ cargo install flutter_rust_bridge_codegen
 cargo binstall flutter_rust_bridge_codegen
 ```
 
-<!--
-
 </TabItem>
+
+<!--
 
 <TabItem value="Scoop">
 
