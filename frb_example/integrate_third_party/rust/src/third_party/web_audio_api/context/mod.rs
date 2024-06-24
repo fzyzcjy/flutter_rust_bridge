@@ -1,5 +1,5 @@
 use flutter_rust_bridge::frb;
-use web_audio_api::context::AudioContext;
+use web_audio_api::context::{AudioContext, AudioContextRenderSizeCategory};
 
 #[frb(external)]
 impl AudioContext {
@@ -23,6 +23,12 @@ impl AudioContext {
 pub trait BaseAudioContext {
     #[frb(ignore)]
     fn base() {}
+}
+
+#[frb(external)]
+impl AudioContextRenderSizeCategory {
+    #[frb(ignore)]
+    fn default() {}
 }
 
 #[frb(non_opaque)]
