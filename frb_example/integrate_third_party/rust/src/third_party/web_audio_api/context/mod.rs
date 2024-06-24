@@ -26,9 +26,9 @@ pub trait BaseAudioContext {
 }
 
 #[frb(external)]
-impl AudioContextRenderSizeCategory {
+impl Default for AudioContextRenderSizeCategory {
     #[frb(ignore)]
-    fn default() {}
+    fn default() -> Self {}
 }
 
 #[frb(non_opaque)]
