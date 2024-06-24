@@ -175,7 +175,7 @@ impl FrbAttributes {
         self.0
             .iter()
             .filter_map(
-                |item| if_then_some!(let FrbAttribute::Metadata(metadata) = item, metadata.value.0.clone()),
+                |item| if_then_some!(let FrbAttribute::DartMetadata(metadata) = item, metadata.value.0.clone()),
             )
             .flatten()
             .collect()
@@ -301,36 +301,40 @@ impl Parse for FrbAttributesInner {
     }
 }
 
+// Alphabetical order
 #[derive(Eq, PartialEq, Debug, Clone)]
 enum FrbAttribute {
-    Mirror(FrbAttributeMirror),
-    NonFinal,
-    Sync,
-    StreamDartAwait,
+    Dart2Rust(FrbAttributeSerDes),
+    DartCode(FrbAttributeDartCode),
+    Default(FrbAttributeDefaultValue),
+    External,
     Getter,
-    Setter,
-    Init,
     Ignore,
-    Opaque,
-    NonOpaque,
-    NonHash,
+    Init,
+    Mirror(FrbAttributeMirror),
+    Name(FrbAttributeName),
     NonEq,
+    NonFinal,
+    NonHash,
+    NonOpaque,
+    Opaque,
     Positional,
     Proxy,
-    External,
-    Type64bitInt,
-    // GenerateImplEnum,
-    RustOpaqueCodecMoi,
+    Rust2Dart(FrbAttributeSerDes),
+    Setter,
     Serialize,
+    StreamDartAwait,
+    Sync,
+    Type64bitInt,
+
+    // === Mainly undocumented since may subject to change ===
+
+    // Maybe we can unify this with `DartCode`
+    DartMetadata(NamedOption<frb_keyword::dart_metadata, FrbAttributeDartMetadata>),
+    Noop,
+    RustOpaqueCodecMoi,
     // NOTE: Undocumented, since this name may be suboptimal and is subject to change
     SemiSerialize,
-    Metadata(NamedOption<frb_keyword::dart_metadata, FrbAttributeDartMetadata>),
-    Default(FrbAttributeDefaultValue),
-    DartCode(FrbAttributeDartCode),
-    Name(FrbAttributeName),
-    Dart2Rust(FrbAttributeSerDes),
-    Rust2Dart(FrbAttributeSerDes),
-    Noop,
     UiState,
     UiMutation,
 }
@@ -398,7 +402,7 @@ impl Parse for FrbAttribute {
             input.parse::<frb_keyword::mirror>()?;
             input.parse().map(Mirror)?
         } else if lookahead.peek(frb_keyword::dart_metadata) {
-            input.parse().map(Metadata)?
+            input.parse().map(DartMetadata)?
         } else if lookahead.peek(default) {
             input.parse::<default>()?;
             input.parse::<Token![=]>()?;
@@ -898,7 +902,7 @@ mod tests {
         let parsed = parse(
             r#"#[frb(dart_metadata=("freezed", "immutable" import "package:meta/meta.dart" as meta))]"#,
         )?;
-        let value = if_then_some!(let FrbAttribute::Metadata(NamedOption { value, .. }) = &parsed.0[0], value).unwrap();
+        let value = if_then_some!(let FrbAttribute::DartMetadata(NamedOption { value, .. }) = &parsed.0[0], value).unwrap();
         assert_eq!(value.0[0].content, "freezed");
         assert_eq!(value.0[1].content, "immutable");
         Ok(())
