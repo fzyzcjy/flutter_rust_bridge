@@ -115,12 +115,14 @@ fn compute_replacements(
         "REPLACE_ME_FRB_VERSION",
         env!("CARGO_PKG_VERSION").to_string(),
     );
+
     let rust_frb_dependency = if config.enable_local_dependency {
         r#"{ path = "../../../frb_rust" }"#.to_owned()
     } else {
         format!(r#""={}""#, env!("CARGO_PKG_VERSION"))
     };
     replacements.insert("REPLACE_ME_RUST_FRB_DEPENDENCY", rust_frb_dependency);
+
     replacements
 }
 
