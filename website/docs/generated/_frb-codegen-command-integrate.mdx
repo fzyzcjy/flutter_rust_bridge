@@ -4,8 +4,24 @@ Integrate Rust into existing Flutter project
 Usage: flutter_rust_bridge_codegen integrate [OPTIONS]
 
 Options:
-      --no-enable-integration-test         Generate code related to integration test
-      --rust-crate-name <RUST_CRATE_NAME>  The name of the generated Rust crate
-      --rust-crate-dir <RUST_CRATE_DIR>    The directory of the generated Rust crate
-  -h, --help                               Print help
+      --no-enable-integration-test
+          Generate code related to integration test
+
+      --rust-crate-name <RUST_CRATE_NAME>
+          The name of the generated Rust crate
+
+      --rust-crate-dir <RUST_CRATE_DIR>
+          The directory of the generated Rust crate
+
+  -t, --template <TEMPLATE>
+          The template type to use for integration. This should usually match the type of flutter project being integrating with
+          
+          [default: app]
+
+          Possible values:
+          - app:    (default) a Flutter application
+          - plugin: A shareable Flutter project that can be used across multiple Flutter applications
+
+  -h, --help
+          Print help (see a summary with '-h')
 ```
