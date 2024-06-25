@@ -12,9 +12,8 @@ import 'dart:convert';
 import 'frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_web.dart';
 
-abstract class FrbExampleFlutterPackageApiImplPlatform
-    extends BaseApiImpl<FrbExampleFlutterPackageWire> {
-  FrbExampleFlutterPackageApiImplPlatform({
+abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
+  RustLibApiImplPlatform({
     required super.handler,
     required super.wire,
     required super.generalizedFrbRustBinding,
@@ -73,14 +72,13 @@ abstract class FrbExampleFlutterPackageApiImplPlatform
 
 // Section: wire_class
 
-class FrbExampleFlutterPackageWire implements BaseWire {
-  FrbExampleFlutterPackageWire.fromExternalLibrary(ExternalLibrary lib);
+class RustLibWire implements BaseWire {
+  RustLibWire.fromExternalLibrary(ExternalLibrary lib);
 }
 
 @JS('wasm_bindgen')
-external FrbExampleFlutterPackageWasmModule get wasmModule;
+external RustLibWasmModule get wasmModule;
 
 @JS()
 @anonymous
-extension type FrbExampleFlutterPackageWasmModule._(JSObject _)
-    implements JSObject {}
+extension type RustLibWasmModule._(JSObject _) implements JSObject {}

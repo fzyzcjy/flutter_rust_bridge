@@ -352,7 +352,13 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
           coverage: config.coverage,
           coverageName: 'GenerateRunFrbCodegenCommandIntegrate',
         );
-
+      case 'frb_example/flutter_package':
+        await executeFrbCodegen(
+          'create --local --temlate plugin',
+          relativePwd: config.package,
+          coverage: config.coverage,
+          coverageName: 'GenerateRunFrbCodegenCommandIntegrate',
+        );
       default:
         throw Exception('Do not know how to handle package ${config.package}');
     }

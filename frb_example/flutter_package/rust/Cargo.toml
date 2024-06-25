@@ -1,5 +1,5 @@
 [package]
-name = "frb_example_flutter_package"
+name = "rust_lib_flutter_package"
 version = "0.1.0"
 edition = "2021"
 
@@ -7,4 +7,4 @@ edition = "2021"
 crate-type = ["cdylib", "staticlib"]
 
 [dependencies]
-flutter_rust_bridge = { path = "../../../frb_rust" }
+flutter_rust_bridge = "=2.0.0"

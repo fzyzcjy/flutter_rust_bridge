@@ -1,12 +1,9 @@
-# Flutter package via Cargokit
+# Cargokit
 
-## Quickstart
+flutter_rust_bridge uses Cargokit for seamless integration of cargo build
+with flutter applications and packages.
 
-To have a working quickstart,
-please clone https://github.com/fzyzcjy/flutter_rust_bridge/tree/master/frb_example/flutter_package.
-Then, please remove `local: true` from `flutter_rust_bridge.yaml` to use the released version instead of master version of flutter_rust_bridge.
-
-## Details
+## Cargokit Details
 
 Please refer to its documentation for how to use it.
 Its GitHub repository is https://github.com/irondash/cargokit.
