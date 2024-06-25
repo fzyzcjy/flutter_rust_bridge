@@ -55,6 +55,10 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
         Some(&comment_out_files),
     )?;
 
+    if config.enable_local_dependency && config.template == Template::Plugin {
+        add_publish_to_none(&dart_root)?;
+    }
+
     info!("Modify file permissions");
     modify_permissions(&dart_root)?;
 
@@ -332,6 +336,14 @@ pub(crate) fn pub_add_dependency_frb(
         },
         pwd,
     )?;
+    Ok(())
+}
+
+fn add_publish_to_none(dart_root: &Path) -> Result<()> {
+    let path = dart_root.join("pubspec.yaml");
+    let text_raw = std::fs::read_to_string(&path)?;
+    let text_output = format!("publish_to: none\n{text_raw}");
+    std::fs::write(&path, text_output)?;
     Ok(())
 }
 
