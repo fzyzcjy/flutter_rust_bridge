@@ -338,7 +338,7 @@ pub(crate) fn pub_add_dependency_frb(
 struct TemplateDirs;
 
 impl TemplateDirs {
-    const SHARED: Dir<'_> = include_dir!("$CARGO_MANIFEST_DIR/assets/integration_template/shared");
-    const APP: Dir<'_> = include_dir!("$CARGO_MANIFEST_DIR/assets/integration_template/app");
-    const PLUGIN: Dir<'_> = include_dir!("$CARGO_MANIFEST_DIR/assets/integration_template/plugin");
+    const SHARED: Dir<'static> = include_dir!("$CARGO_MANIFEST_DIR/assets/integration_template/shared");
+    const APP: Dir<'static> = include_dir!("$CARGO_MANIFEST_DIR/assets/integration_template/app");
+    const PLUGIN: Dir<'static> = include_dir!("$CARGO_MANIFEST_DIR/assets/integration_template/plugin");
 }
