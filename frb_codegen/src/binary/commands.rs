@@ -210,7 +210,7 @@ pub(crate) struct IntegrateCommandArgs {
 pub(crate) enum TemplateArg {
     /// (default) a Flutter application
     App,
-    /// A shareable Flutter project that can be used across multiple Flutter applictions.
+    /// A shareable Flutter project that can be used across multiple Flutter applications.
     Plugin,
 }
 
