@@ -123,6 +123,9 @@ fn compute_replacements(
     };
     replacements.insert("REPLACE_ME_RUST_FRB_DEPENDENCY", rust_frb_dependency);
 
+    replacements.insert("Cargo.toml.template", "Cargo.toml".to_owned());
+    replacements.insert("Cargo.lock.template", "Cargo.lock".to_owned());
+
     replacements
 }
 
