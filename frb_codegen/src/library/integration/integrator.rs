@@ -157,15 +157,16 @@ fn modify_file(
     let src = replace_file_content(reference_content, replacements);
 
     if let Some(existing_content) = existing_content {
-        if let Some(file_name) = target_path.file_name().and_then(|e| e.to_str()) {
-            if let Some(files) = comment_out_files {
-                if files.contains(&file_name) {
-                    return comment_out_existing_file_and_write_template(
-                        existing_content,
-                        target_path,
-                        &src,
-                    );
-                }
+        if let (Some(file_name), Some(files)) = (
+            target_path.file_name().and_then(|e| e.to_str()),
+            comment_out_files,
+        ) {
+            if files.contains(&file_name) {
+                return comment_out_existing_file_and_write_template(
+                    existing_content,
+                    target_path,
+                    &src,
+                );
             }
         }
         // We do not care about this warning
