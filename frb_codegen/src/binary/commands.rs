@@ -206,7 +206,7 @@ pub(crate) struct IntegrateCommandArgs {
     pub template: TemplateArg,
 }
 
-#[derive(Debug, Clone, ValueEnum)]
+#[derive(Debug, Copy, Clone, ValueEnum)]
 pub(crate) enum TemplateArg {
     /// (default) a Flutter application
     App,
