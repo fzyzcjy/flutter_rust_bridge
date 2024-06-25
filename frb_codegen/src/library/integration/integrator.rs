@@ -83,14 +83,14 @@ fn execute_overlay_dir(
 ) -> Result<()> {
     overlay_dir(
         current_reference_dir,
-        &replacements,
-        &dart_root,
+        replacements,
+        dart_root,
         &|target_path, reference_content, existing_content| {
             modify_file(
                 target_path.into(),
                 reference_content,
                 existing_content,
-                &replacements,
+                replacements,
                 config.enable_local_dependency,
                 comment_out_files,
             )
@@ -338,7 +338,9 @@ pub(crate) fn pub_add_dependency_frb(
 struct TemplateDirs;
 
 impl TemplateDirs {
-    const SHARED: Dir<'static> = include_dir!("$CARGO_MANIFEST_DIR/assets/integration_template/shared");
+    const SHARED: Dir<'static> =
+        include_dir!("$CARGO_MANIFEST_DIR/assets/integration_template/shared");
     const APP: Dir<'static> = include_dir!("$CARGO_MANIFEST_DIR/assets/integration_template/app");
-    const PLUGIN: Dir<'static> = include_dir!("$CARGO_MANIFEST_DIR/assets/integration_template/plugin");
+    const PLUGIN: Dir<'static> =
+        include_dir!("$CARGO_MANIFEST_DIR/assets/integration_template/plugin");
 }
