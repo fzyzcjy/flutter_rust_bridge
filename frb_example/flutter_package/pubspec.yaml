@@ -4,7 +4,7 @@ version: 0.0.1
 homepage:
 
 environment:
-  sdk: '>=3.4.3 <4.0.0'
+  sdk: '>=3.4.0 <4.0.0'
   flutter: '>=3.3.0'
 
 dependencies:
@@ -16,7 +16,8 @@ dependencies:
   plugin_platform_interface: ^2.0.2
   rust_lib_flutter_package:
     path: rust_builder
-  flutter_rust_bridge: 2.0.0
+  flutter_rust_bridge:
+    path: ../../frb_dart
 
 dev_dependencies:
   flutter_test:
