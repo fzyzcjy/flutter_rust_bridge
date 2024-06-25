@@ -12,8 +12,13 @@ pub fn flutter_create(name: &str, org: &Option<String>, template: Template) -> a
         args.extend(["--org", o]);
     }
     match template {
-        Template::App => args.extend(["--template","app"]),
-        Template::Plugin => args.extend(["--template","plugin","--platforms", "android,ios,linux,macos,windows,web"]),
+        Template::App => args.extend(["--template", "app"]),
+        Template::Plugin => args.extend([
+            "--template",
+            "plugin",
+            "--platforms",
+            "android,ios,linux,macos,windows,web",
+        ]),
     }
     info!(
         "Execute `flutter create {}` (this may take a while)",

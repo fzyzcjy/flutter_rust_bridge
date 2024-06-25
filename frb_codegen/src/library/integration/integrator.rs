@@ -4,7 +4,6 @@ use crate::library::commands::format_dart::format_dart;
 use crate::misc::Template;
 use crate::utils::dart_repository::get_dart_package_name;
 use crate::utils::path_utils::find_dart_package_dir;
-
 use anyhow::Result;
 use include_dir::{include_dir, Dir};
 use itertools::Itertools;

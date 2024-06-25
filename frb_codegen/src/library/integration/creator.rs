@@ -41,7 +41,7 @@ pub fn create(config: CreateConfig) -> anyhow::Result<()> {
         Template::App => remove_unnecessary_app_files(&dart_root)?,
         Template::Plugin => remove_unnecessary_plugin_files(&dart_root)?,
     }
-    
+
     info!("Step: Inject flutter_rust_bridge related code");
     integrator::integrate(IntegrateConfig {
         enable_integration_test: true,
@@ -81,7 +81,6 @@ fn remove_unnecessary_plugin_files(dart_root: &Path) -> anyhow::Result<()> {
 
     Ok(())
 }
-
 
 fn remove_files_in_dir(dir: &Path) -> anyhow::Result<()> {
     for entry in fs::read_dir(dir)? {
