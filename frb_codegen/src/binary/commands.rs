@@ -188,7 +188,7 @@ pub(crate) struct CreateCommandArgs {
 
     /// The template type to use to generate the flutter files.
     #[clap(short, long, value_enum, default_value = "app")]
-    pub template: TemplateArg
+    pub template: TemplateArg,
 }
 
 #[derive(Debug, Args)]
@@ -203,10 +203,10 @@ pub(crate) struct IntegrateCommandArgs {
     /// The template type to use for integration. This should usually match the type of flutter project
     /// being integrating with.
     #[clap(short, long, value_enum, default_value = "app")]
-    pub template: TemplateArg
+    pub template: TemplateArg,
 }
 
-#[derive(Debug,Clone,ValueEnum)]
+#[derive(Debug, Clone, ValueEnum)]
 pub(crate) enum TemplateArg {
     /// (default) a Flutter application
     App,
@@ -247,7 +247,6 @@ pub(crate) struct BuildWebCommandArgs {
 
 #[derive(Debug, Args)]
 pub(crate) struct InternalGenerateCommandArgs {}
-
 
 impl From<TemplateArg> for Template {
     fn from(value: TemplateArg) -> Self {
