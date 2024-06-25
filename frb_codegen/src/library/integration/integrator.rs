@@ -41,19 +41,18 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
         None,
     )?;
     let (dir, comment_out_files) = match &config.template {
-        Template::App => (&TemplateDirs::APP, ["main.dart".to_string()]),
-        Template::Plugin => (&TemplateDirs::PLUGIN, [format!("{dart_package_name}.dart")]),
+        Template::App => (&TemplateDirs::APP, vec!["main.dart".to_string()]),
+        Template::Plugin => (
+            &TemplateDirs::PLUGIN,
+            vec![format!("{dart_package_name}.dart")],
+        ),
     };
-    let binding = comment_out_files
-        .iter()
-        .map(|s| s.as_str())
-        .collect::<Vec<&str>>();
     execute_overlay_dir(
         dir,
         &replacements,
         &dart_root,
         &config,
-        Some(binding.as_slice()),
+        Some(&comment_out_files),
     )?;
 
     info!("Modify file permissions");
@@ -80,7 +79,7 @@ fn execute_overlay_dir(
     replacements: &HashMap<&'static str, String>,
     dart_root: &Path,
     config: &IntegrateConfig,
-    comment_out_files: Option<&[&str]>,
+    comment_out_files: Option<&[String]>,
 ) -> Result<()> {
     overlay_dir(
         current_reference_dir,
