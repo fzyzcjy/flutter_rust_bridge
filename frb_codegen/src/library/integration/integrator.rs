@@ -33,21 +33,12 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
 
     info!("Overlay template onto project");
     let replacements = compute_replacements(&config, &dart_package_name, &rust_crate_name);
-    overlay_dir(
+    execute_overlay_dir(
         &TemplateDirs::SHARED,
         &replacements,
         &dart_root,
-        &|target_path, reference_content, existing_content| {
-            modify_file(
-                target_path.into(),
-                reference_content,
-                existing_content,
-                &replacements,
-                config.enable_local_dependency,
-                None,
-            )
-        },
-        &|path| filter_file(path, config.enable_integration_test),
+        &config,
+        None,
     )?;
     let (dir, comment_out_files) = match &config.template {
         Template::App => (&TemplateDirs::APP, ["main.dart".to_string()]),
@@ -94,11 +85,36 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
     Ok(())
 }
 
+fn execute_overlay_dir(
+    current_reference_dir: &Dir,
+    replacements: &HashMap<&'static str, String>,
+    dart_root: &Path,
+    config: &IntegrateConfig,
+    comment_out_files: Option<&[&str]>,
+) -> Result<()> {
+    overlay_dir(
+        current_reference_dir,
+        &replacements,
+        &dart_root,
+        &|target_path, reference_content, existing_content| {
+            modify_file(
+                target_path.into(),
+                reference_content,
+                existing_content,
+                &replacements,
+                config.enable_local_dependency,
+                comment_out_files,
+            )
+        },
+        &|path| filter_file(path, config.enable_integration_test),
+    )
+}
+
 fn compute_replacements(
     config: &IntegrateConfig,
     dart_package_name: &String,
     rust_crate_name: &String,
-) -> HashMap<&str, String> {
+) -> HashMap<&'static str, String> {
     let mut replacements = HashMap::new();
     replacements.insert(
         "REPLACE_ME_DART_PACKAGE_NAME",
