@@ -48,22 +48,12 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
         .iter()
         .map(|s| s.as_str())
         .collect::<Vec<&str>>();
-    let comment_out_files = Some(binding.as_slice());
-    overlay_dir(
+    execute_overlay_dir(
         dir,
         &replacements,
         &dart_root,
-        &|target_path, reference_content, existing_content| {
-            modify_file(
-                target_path.into(),
-                reference_content,
-                existing_content,
-                &replacements,
-                config.enable_local_dependency,
-                comment_out_files,
-            )
-        },
-        &|path| filter_file(path, config.enable_integration_test),
+        &config,
+        Some(binding.as_slice()),
     )?;
 
     info!("Modify file permissions");
