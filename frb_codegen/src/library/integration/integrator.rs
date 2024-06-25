@@ -13,15 +13,6 @@ use std::env;
 use std::ffi::OsStr;
 use std::path::{Path, PathBuf};
 
-static SHARED_INTEGRATION_TEMPLATE_DIR: Dir<'_> =
-    include_dir!("$CARGO_MANIFEST_DIR/assets/integration_template/shared");
-
-static APP_INTEGRATION_TEMPLATE_DIR: Dir<'_> =
-    include_dir!("$CARGO_MANIFEST_DIR/assets/integration_template/app");
-
-static PLUGIN_INTEGRATION_TEMPLATE_DIR: Dir<'_> =
-    include_dir!("$CARGO_MANIFEST_DIR/assets/integration_template/plugin");
-
 pub struct IntegrateConfig {
     pub enable_integration_test: bool,
     pub enable_local_dependency: bool,
@@ -61,7 +52,7 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
     };
     replacements.insert("REPLACE_ME_RUST_FRB_DEPENDENCY", rust_frb_dependency);
     overlay_dir(
-        &SHARED_INTEGRATION_TEMPLATE_DIR,
+        &TemplateDirs::SHARED,
         &replacements,
         &dart_root,
         &|target_path, reference_content, existing_content| {
@@ -77,11 +68,8 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
         &|path| filter_file(path, config.enable_integration_test),
     )?;
     let (dir, comment_out_files) = match &config.template {
-        Template::App => (&APP_INTEGRATION_TEMPLATE_DIR, ["main.dart".to_string()]),
-        Template::Plugin => (
-            &PLUGIN_INTEGRATION_TEMPLATE_DIR,
-            ([format!("{}.dart", &dart_package_name)]),
-        ),
+        Template::App => (&TemplateDirs::APP, ["main.dart".to_string()]),
+        Template::Plugin => (&TemplateDirs::PLUGIN, [format!("{dart_package_name}.dart")]),
     };
     let binding = comment_out_files
         .iter()
@@ -327,4 +315,12 @@ pub(crate) fn pub_add_dependency_frb(
         pwd,
     )?;
     Ok(())
+}
+
+struct TemplateDirs;
+
+impl TemplateDirs {
+    const SHARED: Dir<'_> = include_dir!("$CARGO_MANIFEST_DIR/assets/integration_template/shared");
+    const APP: Dir<'_> = include_dir!("$CARGO_MANIFEST_DIR/assets/integration_template/app");
+    const PLUGIN: Dir<'_> = include_dir!("$CARGO_MANIFEST_DIR/assets/integration_template/plugin");
 }
