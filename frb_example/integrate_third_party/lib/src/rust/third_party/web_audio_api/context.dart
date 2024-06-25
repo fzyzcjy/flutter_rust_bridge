@@ -15,7 +15,8 @@ part 'context.freezed.dart';
 
 // These functions are ignored because they have generic arguments: `decode_audio_data_sync`, `decode_audio_data_sync`, `decode_audio_data_sync`, `set_onstatechange`, `set_onstatechange`, `set_onstatechange`, `set_onstatechange`
 // These types are ignored because they are not used by any `pub` functions: `AudioNodeId`
-// These functions are ignored (category: IgnoreBecauseExplicitAttribute): `base`, `base`, `base`, `base`
+// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `clone`, `clone`, `drop`, `eq`, `eq`, `fmt`, `fmt`, `fmt`, `fmt`, `from`, `from`, `hash`
+// These functions are ignored (category: IgnoreBecauseExplicitAttribute): `base`
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioContext>>
 abstract class AudioContext
@@ -161,6 +162,9 @@ abstract class AudioContext
   /// This is the time in seconds of the sample frame immediately following the last sample-frame
   /// in the block of audio most recently processed by the context’s rendering graph.
   Future<double> currentTime();
+
+  static Future<AudioContext> default_() =>
+      RustLib.instance.api.webAudioApiContextAudioContextDefault();
 
   /// Returns an `AudioDestinationNode` representing the final destination of all audio in the
   /// context. It can be thought of as the audio-rendering device.
@@ -749,6 +753,9 @@ sealed class AudioContextLatencyCategory with _$AudioContextLatencyCategory {
   const factory AudioContextLatencyCategory.custom(
     double field0,
   ) = AudioContextLatencyCategory_Custom;
+
+  static Future<AudioContextLatencyCategory> default_() => RustLib.instance.api
+      .webAudioApiContextAudioContextLatencyCategoryDefault();
 }
 
 /// Specify the playback configuration for the [`AudioContext`] constructor.
@@ -789,6 +796,9 @@ class AudioContextOptions {
     required this.sinkId,
     required this.renderSizeHint,
   });
+
+  static Future<AudioContextOptions> default_() =>
+      RustLib.instance.api.webAudioApiContextAudioContextOptionsDefault();
 
   @override
   int get hashCode =>

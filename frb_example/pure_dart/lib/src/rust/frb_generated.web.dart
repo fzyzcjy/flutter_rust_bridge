@@ -20820,7 +20820,26 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  JSAny cst_encode_attribute_twin_rust_async_sse(
+      AttributeTwinRustAsyncSse raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [cst_encode_String(raw.key), cst_encode_String(raw.value)].jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_attribute_twin_sse(AttributeTwinSse raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [cst_encode_String(raw.key), cst_encode_String(raw.value)].jsify()!;
+  }
+
+  @protected
   JSAny cst_encode_attribute_twin_sync(AttributeTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [cst_encode_String(raw.key), cst_encode_String(raw.value)].jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_attribute_twin_sync_sse(AttributeTwinSyncSse raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_String(raw.key), cst_encode_String(raw.value)].jsify()!;
   }
@@ -23485,6 +23504,28 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  JSAny cst_encode_element_twin_rust_async_sse(ElementTwinRustAsyncSse raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [
+      cst_encode_opt_String(raw.tag),
+      cst_encode_opt_String(raw.text),
+      cst_encode_opt_list_attribute_twin_rust_async_sse(raw.attributes),
+      cst_encode_opt_list_element_twin_rust_async_sse(raw.children)
+    ].jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_element_twin_sse(ElementTwinSse raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [
+      cst_encode_opt_String(raw.tag),
+      cst_encode_opt_String(raw.text),
+      cst_encode_opt_list_attribute_twin_sse(raw.attributes),
+      cst_encode_opt_list_element_twin_sse(raw.children)
+    ].jsify()!;
+  }
+
+  @protected
   JSAny cst_encode_element_twin_sync(ElementTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
@@ -23492,6 +23533,17 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_opt_String(raw.text),
       cst_encode_opt_list_attribute_twin_sync(raw.attributes),
       cst_encode_opt_list_element_twin_sync(raw.children)
+    ].jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_element_twin_sync_sse(ElementTwinSyncSse raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [
+      cst_encode_opt_String(raw.tag),
+      cst_encode_opt_String(raw.text),
+      cst_encode_opt_list_attribute_twin_sync_sse(raw.attributes),
+      cst_encode_opt_list_element_twin_sync_sse(raw.children)
     ].jsify()!;
   }
 
@@ -24540,9 +24592,29 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  JSAny cst_encode_list_attribute_twin_rust_async_sse(
+      List<AttributeTwinRustAsyncSse> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw.map(cst_encode_attribute_twin_rust_async_sse).toList().jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_list_attribute_twin_sse(List<AttributeTwinSse> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw.map(cst_encode_attribute_twin_sse).toList().jsify()!;
+  }
+
+  @protected
   JSAny cst_encode_list_attribute_twin_sync(List<AttributeTwinSync> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_attribute_twin_sync).toList().jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_list_attribute_twin_sync_sse(
+      List<AttributeTwinSyncSse> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw.map(cst_encode_attribute_twin_sync_sse).toList().jsify()!;
   }
 
   @protected
@@ -24636,9 +24708,28 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  JSAny cst_encode_list_element_twin_rust_async_sse(
+      List<ElementTwinRustAsyncSse> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw.map(cst_encode_element_twin_rust_async_sse).toList().jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_list_element_twin_sse(List<ElementTwinSse> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw.map(cst_encode_element_twin_sse).toList().jsify()!;
+  }
+
+  @protected
   JSAny cst_encode_list_element_twin_sync(List<ElementTwinSync> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_element_twin_sync).toList().jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_list_element_twin_sync_sse(List<ElementTwinSyncSse> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw.map(cst_encode_element_twin_sync_sse).toList().jsify()!;
   }
 
   @protected
@@ -26343,9 +26434,31 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  JSAny? cst_encode_opt_list_attribute_twin_rust_async_sse(
+      List<AttributeTwinRustAsyncSse>? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw == null
+        ? null
+        : cst_encode_list_attribute_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  JSAny? cst_encode_opt_list_attribute_twin_sse(List<AttributeTwinSse>? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw == null ? null : cst_encode_list_attribute_twin_sse(raw);
+  }
+
+  @protected
   JSAny? cst_encode_opt_list_attribute_twin_sync(List<AttributeTwinSync>? raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_list_attribute_twin_sync(raw);
+  }
+
+  @protected
+  JSAny? cst_encode_opt_list_attribute_twin_sync_sse(
+      List<AttributeTwinSyncSse>? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw == null ? null : cst_encode_list_attribute_twin_sync_sse(raw);
   }
 
   @protected
@@ -26362,9 +26475,31 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  JSAny? cst_encode_opt_list_element_twin_rust_async_sse(
+      List<ElementTwinRustAsyncSse>? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw == null
+        ? null
+        : cst_encode_list_element_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  JSAny? cst_encode_opt_list_element_twin_sse(List<ElementTwinSse>? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw == null ? null : cst_encode_list_element_twin_sse(raw);
+  }
+
+  @protected
   JSAny? cst_encode_opt_list_element_twin_sync(List<ElementTwinSync>? raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_list_element_twin_sync(raw);
+  }
+
+  @protected
+  JSAny? cst_encode_opt_list_element_twin_sync_sse(
+      List<ElementTwinSyncSse>? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw == null ? null : cst_encode_list_element_twin_sync_sse(raw);
   }
 
   @protected
@@ -40353,6 +40488,10 @@ class RustLibWire implements BaseWire {
       wasmModule.wire__crate__api__newtype_pattern__handle_newtype_twin_normal(
           port_, arg);
 
+  void wire__crate__api__optional__element_twin_normal_default(
+          NativePortType port_) =>
+      wasmModule.wire__crate__api__optional__element_twin_normal_default(port_);
+
   void wire__crate__api__optional__handle_increment_boxed_optional_twin_normal(
           NativePortType port_, double? opt) =>
       wasmModule
@@ -51903,6 +52042,12 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__optional_primitive_misc_twin_sync_sse__primitive_optional_types_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
+  void wire__crate__api__pseudo_manual__optional_twin_rust_async__element_twin_rust_async_default(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__optional_twin_rust_async__element_twin_rust_async_default(
+              port_);
+
   void wire__crate__api__pseudo_manual__optional_twin_rust_async__handle_increment_boxed_optional_twin_rust_async(
           NativePortType port_, double? opt) =>
       wasmModule
@@ -51945,6 +52090,12 @@ class RustLibWire implements BaseWire {
       wasmModule
           .wire__crate__api__pseudo_manual__optional_twin_rust_async__handle_vec_of_opts_twin_rust_async(
               port_, opt);
+
+  void wire__crate__api__pseudo_manual__optional_twin_rust_async_sse__element_twin_rust_async_sse_default(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__optional_twin_rust_async_sse__element_twin_rust_async_sse_default(
+              port_);
 
   void wire__crate__api__pseudo_manual__optional_twin_rust_async_sse__handle_increment_boxed_optional_twin_rust_async_sse(
           NativePortType port_,
@@ -52000,6 +52151,12 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__optional_twin_rust_async_sse__handle_vec_of_opts_twin_rust_async_sse(
               port_, ptr_, rust_vec_len_, data_len_);
 
+  void wire__crate__api__pseudo_manual__optional_twin_sse__element_twin_sse_default(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__optional_twin_sse__element_twin_sse_default(
+              port_);
+
   void wire__crate__api__pseudo_manual__optional_twin_sse__handle_increment_boxed_optional_twin_sse(
           NativePortType port_,
           PlatformGeneralizedUint8ListPtr ptr_,
@@ -52054,6 +52211,12 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__optional_twin_sse__handle_vec_of_opts_twin_sse(
               port_, ptr_, rust_vec_len_, data_len_);
 
+  void wire__crate__api__pseudo_manual__optional_twin_sync__element_twin_sync_default(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__optional_twin_sync__element_twin_sync_default(
+              port_);
+
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__optional_twin_sync__handle_increment_boxed_optional_twin_sync(
               double? opt) =>
@@ -52101,6 +52264,12 @@ class RustLibWire implements BaseWire {
           wasmModule
               .wire__crate__api__pseudo_manual__optional_twin_sync__handle_vec_of_opts_twin_sync(
                   opt);
+
+  void wire__crate__api__pseudo_manual__optional_twin_sync_sse__element_twin_sync_sse_default(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__optional_twin_sync_sse__element_twin_sync_sse_default(
+              port_);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__optional_twin_sync_sse__handle_increment_boxed_optional_twin_sync_sse(
@@ -62969,6 +63138,9 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
   external void wire__crate__api__newtype_pattern__handle_newtype_twin_normal(
       NativePortType port_, JSAny arg);
 
+  external void wire__crate__api__optional__element_twin_normal_default(
+      NativePortType port_);
+
   external void
       wire__crate__api__optional__handle_increment_boxed_optional_twin_normal(
           NativePortType port_, double? opt);
@@ -71058,6 +71230,10 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int data_len_);
 
   external void
+      wire__crate__api__pseudo_manual__optional_twin_rust_async__element_twin_rust_async_default(
+          NativePortType port_);
+
+  external void
       wire__crate__api__pseudo_manual__optional_twin_rust_async__handle_increment_boxed_optional_twin_rust_async(
           NativePortType port_, double? opt);
 
@@ -71087,6 +71263,10 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
   external void
       wire__crate__api__pseudo_manual__optional_twin_rust_async__handle_vec_of_opts_twin_rust_async(
           NativePortType port_, JSAny opt);
+
+  external void
+      wire__crate__api__pseudo_manual__optional_twin_rust_async_sse__element_twin_rust_async_sse_default(
+          NativePortType port_);
 
   external void
       wire__crate__api__pseudo_manual__optional_twin_rust_async_sse__handle_increment_boxed_optional_twin_rust_async_sse(
@@ -71131,6 +71311,10 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int data_len_);
 
   external void
+      wire__crate__api__pseudo_manual__optional_twin_sse__element_twin_sse_default(
+          NativePortType port_);
+
+  external void
       wire__crate__api__pseudo_manual__optional_twin_sse__handle_increment_boxed_optional_twin_sse(
           NativePortType port_,
           PlatformGeneralizedUint8ListPtr ptr_,
@@ -71172,6 +71356,10 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int rust_vec_len_,
           int data_len_);
 
+  external void
+      wire__crate__api__pseudo_manual__optional_twin_sync__element_twin_sync_default(
+          NativePortType port_);
+
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__optional_twin_sync__handle_increment_boxed_optional_twin_sync(
           double? opt);
@@ -71201,6 +71389,10 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__optional_twin_sync__handle_vec_of_opts_twin_sync(
           JSAny opt);
+
+  external void
+      wire__crate__api__pseudo_manual__optional_twin_sync_sse__element_twin_sync_sse_default(
+          NativePortType port_);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__optional_twin_sync_sse__handle_increment_boxed_optional_twin_sync_sse(

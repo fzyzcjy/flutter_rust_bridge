@@ -48,7 +48,7 @@ impl HirFlatFunction {
             | HirFlatFunctionOwner::StructOrEnum {
                 trait_def_name: None,
                 ..
-            } => (self.item_fn.vis()).map(|vis| matches!(vis, Visibility::Public(_))),
+            } => (self.item_fn.vis_raw()).map(|vis| matches!(vis, Visibility::Public(_))),
             HirFlatFunctionOwner::TraitDef { .. }
             | HirFlatFunctionOwner::StructOrEnum {
                 trait_def_name: Some(_),
