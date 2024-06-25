@@ -28,29 +28,11 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
     debug!("integrate dart_root={dart_root:?}");
 
     let dart_package_name = get_dart_package_name(&dart_root)?;
-    let rust_crate_name = config
-        .rust_crate_name
-        .clone()
-        .unwrap_or(format!("rust_lib_{}", dart_package_name));
+    let rust_crate_name =
+        (config.rust_crate_name.clone()).unwrap_or(format!("rust_lib_{}", dart_package_name));
 
     info!("Overlay template onto project");
-    let mut replacements = HashMap::new();
-    replacements.insert(
-        "REPLACE_ME_DART_PACKAGE_NAME",
-        dart_package_name.to_string(),
-    );
-    replacements.insert("REPLACE_ME_RUST_CRATE_NAME", rust_crate_name.to_string());
-    replacements.insert("REPLACE_ME_RUST_CRATE_DIR", config.rust_crate_dir);
-    replacements.insert(
-        "REPLACE_ME_FRB_VERSION",
-        env!("CARGO_PKG_VERSION").to_string(),
-    );
-    let rust_frb_dependency = if config.enable_local_dependency {
-        r#"{ path = "../../../frb_rust" }"#.to_owned()
-    } else {
-        format!(r#""={}""#, env!("CARGO_PKG_VERSION"))
-    };
-    replacements.insert("REPLACE_ME_RUST_FRB_DEPENDENCY", rust_frb_dependency);
+    let replacements = compute_replacements(&config, &dart_package_name, &rust_crate_name);
     overlay_dir(
         &TemplateDirs::SHARED,
         &replacements,
@@ -110,6 +92,31 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
     format_dart(&[dart_root.clone()], &dart_root, 80, &[])?;
 
     Ok(())
+}
+
+fn compute_replacements(
+    config: &IntegrateConfig,
+    dart_package_name: &String,
+    rust_crate_name: &String,
+) -> HashMap<&str, String> {
+    let mut replacements = HashMap::new();
+    replacements.insert(
+        "REPLACE_ME_DART_PACKAGE_NAME",
+        dart_package_name.to_string(),
+    );
+    replacements.insert("REPLACE_ME_RUST_CRATE_NAME", rust_crate_name.to_string());
+    replacements.insert("REPLACE_ME_RUST_CRATE_DIR", config.rust_crate_dir);
+    replacements.insert(
+        "REPLACE_ME_FRB_VERSION",
+        env!("CARGO_PKG_VERSION").to_string(),
+    );
+    let rust_frb_dependency = if config.enable_local_dependency {
+        r#"{ path = "../../../frb_rust" }"#.to_owned()
+    } else {
+        format!(r#""={}""#, env!("CARGO_PKG_VERSION"))
+    };
+    replacements.insert("REPLACE_ME_RUST_FRB_DEPENDENCY", rust_frb_dependency);
+    replacements
 }
 
 fn modify_permissions(dart_root: &Path) -> Result<()> {
