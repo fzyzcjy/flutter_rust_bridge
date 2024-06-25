@@ -900,6 +900,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "mcmah309",
+      "name": "Henry",
+      "avatar_url": "https://avatars.githubusercontent.com/u/56412856?v=4",
+      "profile": "https://github.com/mcmah309",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
