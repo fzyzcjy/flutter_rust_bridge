@@ -354,7 +354,7 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
         );
       case 'frb_example/flutter_package':
         await executeFrbCodegen(
-          'create --local --template plugin',
+          'create --local --template plugin flutter_package',
           relativePwd: config.package,
           coverage: config.coverage,
           coverageName: 'GenerateRunFrbCodegenCommandIntegrate',
