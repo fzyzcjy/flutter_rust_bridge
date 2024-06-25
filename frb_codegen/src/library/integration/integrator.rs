@@ -110,7 +110,7 @@ fn compute_replacements(
         dart_package_name.to_string(),
     );
     replacements.insert("REPLACE_ME_RUST_CRATE_NAME", rust_crate_name.to_string());
-    replacements.insert("REPLACE_ME_RUST_CRATE_DIR", config.rust_crate_dir);
+    replacements.insert("REPLACE_ME_RUST_CRATE_DIR", config.rust_crate_dir.clone());
     replacements.insert(
         "REPLACE_ME_FRB_VERSION",
         env!("CARGO_PKG_VERSION").to_string(),
@@ -164,7 +164,7 @@ fn modify_file(
     existing_content: Option<Vec<u8>>,
     replacements: &HashMap<&str, String>,
     enable_local_dependency: bool,
-    comment_out_files: Option<&[&str]>,
+    comment_out_files: Option<&[String]>,
 ) -> Option<(PathBuf, Vec<u8>)> {
     let src = replace_file_content(reference_content, replacements);
 
@@ -173,7 +173,7 @@ fn modify_file(
             target_path.file_name().and_then(|e| e.to_str()),
             comment_out_files,
         ) {
-            if files.contains(&file_name) {
+            if files.contains(&file_name.to_owned()) {
                 return comment_out_existing_file_and_write_template(
                     existing_content,
                     target_path,
