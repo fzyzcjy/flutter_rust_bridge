@@ -57,9 +57,8 @@ pub fn create(config: CreateConfig) -> anyhow::Result<()> {
 fn remove_unnecessary_app_files(dart_root: &Path) -> anyhow::Result<()> {
     // frb-coverage:ignore-end
     let lib_dir = dart_root.join("lib");
-    let test_dir = dart_root.join("test");
-
     remove_files_in_dir(&lib_dir)?;
+    let test_dir = dart_root.join("test");
     remove_files_in_dir(&test_dir)?;
 
     Ok(())
@@ -70,23 +69,39 @@ fn remove_unnecessary_app_files(dart_root: &Path) -> anyhow::Result<()> {
 fn remove_unnecessary_plugin_files(dart_root: &Path) -> anyhow::Result<()> {
     // frb-coverage:ignore-end
     let lib_dir = dart_root.join("lib");
-    let test_dir = dart_root.join("test");
-    let example_lib_dir = dart_root.join("example").join("lib");
-    let example_integration_test_dir = dart_root.join("example").join("integration_test");
-    let android_dir = dart_root.join("android");
-    let ios_dir = dart_root.join("ios");
-    let linux_dir = dart_root.join("linux");
-    let macos_dir = dart_root.join("macos");
-    let windows_dir = dart_root.join("windows");
-
     remove_files_in_dir(&lib_dir)?;
-    remove_files_in_dir(&test_dir)?;
+    let src_dir = dart_root.join("src");
+    remove_files_in_dir(&src_dir)?;
+    let ffi_gen_file = dart_root.join("ffigen.yaml");
+    fs::remove_file(ffi_gen_file)?;
+    fs::remove_dir(src_dir)?;
+    let example_lib_dir = dart_root.join("example").join("lib");
     remove_files_in_dir(&example_lib_dir)?;
-    remove_files_in_dir(&example_integration_test_dir)?;
+
+    let android_dir = dart_root.join("android");
+    let android_src_dir = &android_dir.join("src");
+    let android_src_main_dir = &android_src_dir.join("main");
+    remove_files_in_dir(&android_src_main_dir)?;
+    fs::remove_dir(&android_src_main_dir)?;
+    fs::remove_dir(&android_src_dir)?;
     remove_files_in_dir(&android_dir)?;
+
+    let ios_dir = dart_root.join("ios");
+    let ios_classes_dir = &ios_dir.join("Classes");
+    remove_files_in_dir(&ios_classes_dir)?;
+    fs::remove_dir(&ios_classes_dir)?;
     remove_files_in_dir(&ios_dir)?;
+
+    let linux_dir = dart_root.join("linux");
     remove_files_in_dir(&linux_dir)?;
+
+    let macos_dir = dart_root.join("macos");
+    let macos_classes_dir = &macos_dir.join("Classes");
+    remove_files_in_dir(&macos_classes_dir)?;
+    fs::remove_dir(&macos_classes_dir)?;
     remove_files_in_dir(&macos_dir)?;
+
+    let windows_dir = dart_root.join("windows");
     remove_files_in_dir(&windows_dir)?;
 
     Ok(())
@@ -99,7 +114,7 @@ fn remove_files_in_dir(dir: &Path) -> anyhow::Result<()> {
         if path.is_file() {
             fs::remove_file(&path)?;
         } else if path.is_dir() {
-            bail!("An unexpected directory was encountered: {:?}", path);
+            bail!("Directory '{:?}' was expected to contain only files but directory '{:?}' was encountered", dir.display(), path.display());
         }
     }
     Ok(())

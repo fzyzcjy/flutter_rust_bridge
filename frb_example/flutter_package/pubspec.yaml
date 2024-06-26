@@ -1,6 +1,6 @@
 publish_to: none
 name: flutter_package
-description: "A new Flutter plugin project."
+description: "A new Flutter FFI plugin project."
 version: 0.0.1
 homepage:
 
@@ -11,16 +11,13 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_web_plugins:
-    sdk: flutter
-  web: ^0.5.1
-  plugin_platform_interface: ^2.0.2
-  rust_lib_flutter_package:
-    path: rust_builder
   flutter_rust_bridge:
     path: ../../frb_dart
+  plugin_platform_interface: ^2.0.2
 
 dev_dependencies:
+  ffi: ^2.1.0
+  ffigen: ^11.0.0
   flutter_test:
     sdk: flutter
   flutter_lints: ^3.0.0
@@ -42,22 +39,20 @@ flutter:
   # This is required for using `dart:ffi`.
   # All these are used by the tooling to maintain consistency when
   # adding or updating assets for this project.
+  #
+  # Please refer to README.md for a detailed explanation.
   plugin:
     platforms:
       android:
-        package: com.example.flutter_package
-        pluginClass: FlutterPackagePlugin
+        ffiPlugin: true
       ios:
-        pluginClass: FlutterPackagePlugin
+        ffiPlugin: true
       linux:
-        pluginClass: FlutterPackagePlugin
+        ffiPlugin: true
       macos:
-        pluginClass: FlutterPackagePlugin
+        ffiPlugin: true
       windows:
-        pluginClass: FlutterPackagePluginCApi
-      web:
-        pluginClass: FlutterPackageWeb
-        fileName: flutter_package_web.dart
+        ffiPlugin: true
 
   # To add assets to your plugin package, add an assets section, like this:
   # assets:

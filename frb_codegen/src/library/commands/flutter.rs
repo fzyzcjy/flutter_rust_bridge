@@ -15,9 +15,9 @@ pub fn flutter_create(name: &str, org: &Option<String>, template: Template) -> a
         Template::App => args.extend(["--template", "app"]),
         Template::Plugin => args.extend([
             "--template",
-            "plugin",
+            "plugin_ffi",
             "--platforms",
-            "android,ios,linux,macos,windows,web",
+            "android,ios,linux,macos,windows",
         ]),
     }
     info!(

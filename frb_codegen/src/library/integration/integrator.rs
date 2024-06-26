@@ -60,17 +60,18 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
     }
 
     info!("Modify file permissions");
-    modify_permissions(&dart_root)?;
+    modify_permissions(&dart_root, &config.template)?;
 
     info!("Add pub dependencies");
     pub_add_dependencies(
         config.enable_integration_test,
         config.enable_local_dependency,
         &rust_crate_name,
+        &config.template,
     )?;
 
     info!("Setup cargokit dependencies");
-    setup_cargokit_dependencies(&dart_root)?;
+    setup_cargokit_dependencies(&dart_root, &config.template)?;
 
     info!("Format Dart code");
     format_dart(&[dart_root.clone()], &dart_root, 80, &[])?;
@@ -133,9 +134,12 @@ fn compute_replacements(
     replacements
 }
 
-fn modify_permissions(dart_root: &Path) -> Result<()> {
+fn modify_permissions(dart_root: &Path, template: &Template) -> Result<()> {
     #[allow(unused_variables)] // unused when in windows
-    let dir_cargokit = dart_root.join("rust_builder").join("cargokit");
+    let dir_cargokit = match template {
+        Template::App => dart_root.join("rust_builder").join("cargokit"),
+        Template::Plugin => dart_root.join("cargokit"),
+    };
 
     #[cfg(unix)]
     {
@@ -147,11 +151,14 @@ fn modify_permissions(dart_root: &Path) -> Result<()> {
     Ok(())
 }
 
-fn setup_cargokit_dependencies(dart_root: &Path) -> Result<()> {
-    let build_tool_dir = dart_root
-        .join("rust_builder")
-        .join("cargokit")
-        .join("build_tool");
+fn setup_cargokit_dependencies(dart_root: &Path, template: &Template) -> Result<()> {
+    let build_tool_dir = match template {
+        Template::App => dart_root
+            .join("rust_builder")
+            .join("cargokit")
+            .join("build_tool"),
+        Template::Plugin => dart_root.join("cargokit").join("build_tool"),
+    };
 
     flutter_pub_get(&build_tool_dir)
 }
@@ -292,12 +299,15 @@ fn pub_add_dependencies(
     enable_integration_test: bool,
     enable_local_dependency: bool,
     rust_crate_name: &str,
+    template: &Template,
 ) -> Result<()> {
     // frb-coverage:ignore-end
-    flutter_pub_add(
-        &[rust_crate_name.into(), "--path=rust_builder".into()],
-        None,
-    )?;
+    if template == &Template::App {
+        flutter_pub_add(
+            &[rust_crate_name.into(), "--path=rust_builder".into()],
+            None,
+        )?;
+    }
 
     pub_add_dependency_frb(enable_local_dependency, None)?;
 
