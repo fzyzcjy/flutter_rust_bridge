@@ -1,3 +1,9 @@
+flutter_rust_bridge.code-workspace
+.devcontainer/
+temp
+fvm_tar_workaround.sh
+act
+
 .DS_Store
 .idea
 *.iml
