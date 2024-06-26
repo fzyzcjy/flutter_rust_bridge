@@ -302,11 +302,19 @@ fn pub_add_dependencies(
     template: &Template,
 ) -> Result<()> {
     // frb-coverage:ignore-end
-    if template == &Template::App {
-        flutter_pub_add(
+    match template {
+        Template::App => flutter_pub_add(
             &[rust_crate_name.into(), "--path=rust_builder".into()],
             None,
-        )?;
+        )?,
+        Template::Plugin => flutter_pub_add(
+            &[
+                "integration_test".into(),
+                "--dev".into(),
+                "--sdk=flutter".into(),
+            ],
+            Some(Path::new("example")),
+        )?,
     }
 
     pub_add_dependency_frb(enable_local_dependency, None)?;
