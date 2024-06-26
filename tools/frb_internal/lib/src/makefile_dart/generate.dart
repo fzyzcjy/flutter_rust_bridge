@@ -316,7 +316,7 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
     GeneratePackageConfig config) async {
   await _wrapMaybeSetExitIfChanged(config,
       extraArgs:
-          "':(exclude)*Podfile' ':(exclude)*.xcconfig' ':(exclude)pubspec.lock'",
+          "':(exclude)*Podfile' ':(exclude)*.xcconfig' ':(exclude)pubspec.lock :(exclude)Cargo.lock'",
       () async {
     final dirPackage = path.join(exec.pwd!, config.package);
 
