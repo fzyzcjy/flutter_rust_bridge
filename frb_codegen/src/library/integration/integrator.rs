@@ -114,7 +114,14 @@ fn compute_replacements(
         "REPLACE_ME_DART_PACKAGE_NAME",
         dart_package_name.to_string(),
     );
-    replacements.insert("REPLACE_ME_RUST_CRATE_NAME", rust_crate_name.to_string());
+    match &config.template {
+        Template::App => {
+            replacements.insert("REPLACE_ME_RUST_CRATE_NAME", rust_crate_name.to_string());
+        }
+        Template::Plugin => {
+            replacements.insert("REPLACE_ME_RUST_CRATE_NAME", dart_package_name.to_string());
+        }
+    }
     replacements.insert("REPLACE_ME_RUST_CRATE_DIR", config.rust_crate_dir.clone());
     replacements.insert(
         "REPLACE_ME_FRB_VERSION",

@@ -4,16 +4,16 @@
 cmake_minimum_required(VERSION 3.10)
 
 # Project-level configuration.
-set(PROJECT_NAME "REPLACE_ME_RUST_CRATE_NAME")
+set(PROJECT_NAME "REPLACE_ME_DART_PACKAGE_NAME")
 project(${PROJECT_NAME} LANGUAGES CXX)
 
 include("../cargokit/cmake/cargokit.cmake")
-apply_cargokit(${PROJECT_NAME} ../REPLACE_ME_RUST_CRATE_DIR REPLACE_ME_RUST_CRATE_NAME "")
+apply_cargokit(${PROJECT_NAME} ../REPLACE_ME_RUST_CRATE_DIR REPLACE_ME_DART_PACKAGE_NAME "")
 
 # List of absolute paths to libraries that should be bundled with the plugin.
 # This list could contain prebuilt libraries, or libraries created by an
 # external build triggered from this build file.
-set(REPLACE_ME_RUST_CRATE_NAME_bundled_libraries
+set(REPLACE_ME_DART_PACKAGE_NAME_bundled_libraries
   "${${PROJECT_NAME}_cargokit_lib}"
   PARENT_SCOPE
 )
