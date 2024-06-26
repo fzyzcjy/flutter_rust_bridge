@@ -1,3 +1,6 @@
-[submodule "frb_codegen/assets/integration_template/shared/rust_builder/cargokit"]
-	path = frb_codegen/assets/integration_template/shared/rust_builder/cargokit
+[submodule "frb_codegen/assets/integration_template/app/rust_builder/cargokit"]
+	path = frb_codegen/assets/integration_template/app/rust_builder/cargokit
+	url = https://github.com/irondash/cargokit
+[submodule "frb_codegen/assets/integration_template/plugin/cargokit"]
+	path = frb_codegen/assets/integration_template/plugin/cargokit
 	url = https://github.com/irondash/cargokit
