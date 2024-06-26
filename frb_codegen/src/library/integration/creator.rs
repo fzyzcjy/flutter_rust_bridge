@@ -73,11 +73,21 @@ fn remove_unnecessary_plugin_files(dart_root: &Path) -> anyhow::Result<()> {
     let test_dir = dart_root.join("test");
     let example_lib_dir = dart_root.join("example").join("lib");
     let example_integration_test_dir = dart_root.join("example").join("integration_test");
+    let android_dir = dart_root.join("android");
+    let ios_dir = dart_root.join("ios");
+    let linux_dir = dart_root.join("linux");
+    let macos_dir = dart_root.join("macos");
+    let windows_dir = dart_root.join("windows");
 
     remove_files_in_dir(&lib_dir)?;
     remove_files_in_dir(&test_dir)?;
     remove_files_in_dir(&example_lib_dir)?;
     remove_files_in_dir(&example_integration_test_dir)?;
+    remove_files_in_dir(&android_dir)?;
+    remove_files_in_dir(&ios_dir)?;
+    remove_files_in_dir(&linux_dir)?;
+    remove_files_in_dir(&macos_dir)?;
+    remove_files_in_dir(&windows_dir)?;
 
     Ok(())
 }
