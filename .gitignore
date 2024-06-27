@@ -8,8 +8,10 @@ launch.json
 Makefile
 *.log
 .vscode
-.fvm/flutter_sdk
 coverage/
 lcov.info
 temp.txt
 frb_example/my_app
+
+# FVM Version Cache
+.fvm/

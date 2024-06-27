@@ -316,7 +316,7 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
     GeneratePackageConfig config) async {
   await _wrapMaybeSetExitIfChanged(config,
       extraArgs:
-          "':(exclude)*Podfile' ':(exclude)*.xcconfig' ':(exclude)pubspec.lock'",
+          "':(exclude)*Podfile' ':(exclude)*.xcconfig' ':(exclude)pubspec.lock' ':(exclude)*Cargo.lock'",
       () async {
     final dirPackage = path.join(exec.pwd!, config.package);
 
@@ -352,7 +352,13 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
           coverage: config.coverage,
           coverageName: 'GenerateRunFrbCodegenCommandIntegrate',
         );
-
+      case 'frb_example/flutter_package':
+        await executeFrbCodegen(
+          'create --local --template plugin flutter_package',
+          relativePwd: 'frb_example',
+          coverage: config.coverage,
+          coverageName: 'GenerateRunFrbCodegenCommandIntegrate',
+        );
       default:
         throw Exception('Do not know how to handle package ${config.package}');
     }

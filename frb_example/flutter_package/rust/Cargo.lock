@@ -207,6 +207,13 @@ dependencies = [
 ]
 
 [[package]]
+name = "flutter_package"
+version = "0.1.0"
+dependencies = [
+ "flutter_rust_bridge",
+]
+
+[[package]]
 name = "flutter_rust_bridge"
 version = "2.0.0"
 dependencies = [
@@ -240,13 +247,6 @@ dependencies = [
  "proc-macro2",
  "quote",
  "syn",
-]
-
-[[package]]
-name = "frb_example_flutter_package"
-version = "0.1.0"
-dependencies = [
- "flutter_rust_bridge",
 ]
 
 [[package]]

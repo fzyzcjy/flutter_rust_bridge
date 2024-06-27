@@ -97,8 +97,11 @@ Please refer to [this page](guides/miscellaneous/pure-dart).
 
 <TabItem value="Flutter Package">
 
-To create a publishable Flutter package instead of a Flutter app,
-please refer to [this page](manual/integrate/cargokit).
+Execute the following command to create a shareable Flutter package that can be used across multiple Flutter applictions:
+
+```shell
+flutter_rust_bridge_codegen create my_package --template plugin
+```
 
 </TabItem>
 

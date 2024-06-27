@@ -31,6 +31,7 @@ const kRustPackages = [
 const kDartExampleIntegratePackages = [
   'frb_example/flutter_via_create',
   'frb_example/flutter_via_integrate',
+  'frb_example/flutter_package'
 ];
 
 const kDartExamplePackages = [
@@ -40,7 +41,6 @@ const kDartExamplePackages = [
   'frb_example/dart_build_rs',
   'frb_example/deliberate_bad',
   'frb_example/integrate_third_party',
-  'frb_example/flutter_package',
   'frb_example/rust_ui_counter/ui',
   'frb_example/rust_ui_todo_list/ui',
   ...kDartExampleIntegratePackages,

@@ -1,5 +1,5 @@
-name: frb_example_flutter_package_example
-description: "Demonstrates how to use the frb_example_flutter_package plugin."
+name: flutter_package_example
+description: "Demonstrates how to use the flutter_package plugin."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -31,9 +31,9 @@ dependencies:
   flutter:
     sdk: flutter
 
-  frb_example_flutter_package:
+  flutter_package:
     # When depending on this package from a real application you should use:
-    #   frb_example_flutter_package: ^x.y.z
+    #   flutter_package: ^x.y.z
     # See https://dart.dev/tools/pub/dependencies#version-constraints
     # The example app is bundled with the plugin so we use a path dependency on
     # the parent directory to use the current plugin's version.
@@ -53,7 +53,6 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^3.0.0
-
   integration_test:
     sdk: flutter
 

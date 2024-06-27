@@ -99,6 +99,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.2"
+  flutter_package:
+    dependency: "direct main"
+    description:
+      path: ".."
+      relative: true
+    source: path
+    version: "0.0.1"
   flutter_rust_bridge:
     dependency: transitive
     description:
@@ -111,13 +118,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  frb_example_flutter_package:
-    dependency: "direct main"
-    description:
-      path: ".."
-      relative: true
-    source: path
-    version: "0.0.1"
   fuchsia_remote_debug_protocol:
     dependency: transitive
     description: flutter

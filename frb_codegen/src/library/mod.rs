@@ -6,5 +6,5 @@ pub(crate) mod commands;
 pub mod integration;
 #[doc(hidden)]
 pub mod internal;
-pub(crate) mod misc;
+pub mod misc;
 pub mod utils;

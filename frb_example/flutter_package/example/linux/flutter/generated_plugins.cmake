@@ -6,7 +6,7 @@ list(APPEND FLUTTER_PLUGIN_LIST
 )
 
 list(APPEND FLUTTER_FFI_PLUGIN_LIST
-  frb_example_flutter_package
+  flutter_package
 )
 
 set(PLUGIN_BUNDLED_LIBRARIES)

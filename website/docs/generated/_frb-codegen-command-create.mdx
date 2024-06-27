@@ -4,15 +4,28 @@ Create a new Flutter + Rust project
 Usage: flutter_rust_bridge_codegen create [OPTIONS] <NAME>
 
 Arguments:
-  <NAME>  Name of the new project
+  <NAME>
+          Name of the new project
 
 Options:
       --org <ORG>
           The organization responsible for your new Flutter project, in reverse domain name notation
+
       --rust-crate-name <RUST_CRATE_NAME>
           The name of the generated Rust crate
+
       --rust-crate-dir <RUST_CRATE_DIR>
           The directory of the generated Rust crate
+
+  -t, --template <TEMPLATE>
+          The template type to use to generate the flutter files
+          
+          [default: app]
+
+          Possible values:
+          - app:    (default) a Flutter application
+          - plugin: A shareable Flutter project that can be used across multiple Flutter applications
+
   -h, --help
-          Print help
+          Print help (see a summary with '-h')
 ```
