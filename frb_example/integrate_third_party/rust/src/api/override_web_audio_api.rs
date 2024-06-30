@@ -108,7 +108,6 @@ macro_rules! handle_audio_node_trait_impls_override {
 }
 
 handle_audio_node_trait_impls_override!(AudioParam);
-//handle_audio_node_trait_impls_override!(AnalyserNode);
 handle_audio_node_trait_impls_override!(AudioBufferSourceNode);
 handle_audio_node_trait_impls_override!(AudioDestinationNode);
 handle_audio_node_trait_impls_override!(BiquadFilterNode);
@@ -126,7 +125,6 @@ handle_audio_node_trait_impls_override!(MediaStreamAudioSourceNode);
 handle_audio_node_trait_impls_override!(MediaStreamTrackAudioSourceNode);
 handle_audio_node_trait_impls_override!(OscillatorNode);
 handle_audio_node_trait_impls_override!(PannerNode);
-//handle_audio_node_trait_impls_override!(ScriptProcessorNode);
 handle_audio_node_trait_impls_override!(StereoPannerNode);
 handle_audio_node_trait_impls_override!(WaveShaperNode);
 
