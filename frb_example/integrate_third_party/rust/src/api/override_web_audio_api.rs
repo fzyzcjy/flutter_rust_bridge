@@ -7,7 +7,7 @@ use std::sync::Arc;
 use web_audio_api::context::{AudioContext, BaseAudioContext, OfflineAudioContext};
 use web_audio_api::media_streams::{MediaStream, MediaStreamTrack};
 use web_audio_api::node::*;
-use web_audio_api::{AudioBuffer, AudioParam, Event, OfflineAudioCompletionEvent};
+use web_audio_api::{AudioBuffer, AudioParam, AudioProcessingEvent, Event, OfflineAudioCompletionEvent};
 
 #[ext]
 pub impl AudioContext {
@@ -44,6 +44,29 @@ pub impl AudioContext {
                 .spawn(async move { callback_cloned(event).await });
         })
     }
+}
+
+#[ext]
+pub impl AnalyserNode
+{
+    fn get_byte_data(&mut self, len: usize) -> Vec<u8>
+    {
+        let mut bins = vec![0; len];
+        self.get_byte_time_domain_data(&mut bins);
+        bins
+    }
+
+    fn get_float_data(&mut self, len: usize) -> Vec<f32>
+    {
+        let mut bins = vec![0.0; len];
+        self.get_float_time_domain_data(&mut bins);
+        bins
+    }
+
+    fn frb_override_connect(&self, dest: &dyn AudioNode) {
+        self.connect(dest);
+    }
+
 }
 
 #[ext]
@@ -85,7 +108,7 @@ macro_rules! handle_audio_node_trait_impls_override {
 }
 
 handle_audio_node_trait_impls_override!(AudioParam);
-handle_audio_node_trait_impls_override!(AnalyserNode);
+//handle_audio_node_trait_impls_override!(AnalyserNode);
 handle_audio_node_trait_impls_override!(AudioBufferSourceNode);
 handle_audio_node_trait_impls_override!(AudioDestinationNode);
 handle_audio_node_trait_impls_override!(BiquadFilterNode);
@@ -103,7 +126,7 @@ handle_audio_node_trait_impls_override!(MediaStreamAudioSourceNode);
 handle_audio_node_trait_impls_override!(MediaStreamTrackAudioSourceNode);
 handle_audio_node_trait_impls_override!(OscillatorNode);
 handle_audio_node_trait_impls_override!(PannerNode);
-handle_audio_node_trait_impls_override!(ScriptProcessorNode);
+//handle_audio_node_trait_impls_override!(ScriptProcessorNode);
 handle_audio_node_trait_impls_override!(StereoPannerNode);
 handle_audio_node_trait_impls_override!(WaveShaperNode);
 
@@ -136,6 +159,32 @@ pub impl Event {
     fn type_(&self) -> String {
         self.type_.to_owned()
     }
+}
+
+#[ext]
+pub impl ScriptProcessorNode
+{
+    // NOTE: The original name was `set_onaudioprocess` and here the new name has `_`
+    fn set_on_audio_process
+    (
+        &self,
+        callback: impl Fn(AudioProcessingEvent) -> DartFnFuture<()> + Send + 'static + std::marker::Sync,
+    )
+    {
+        let callback = Arc::new(callback);
+        self.set_onaudioprocess(move |event|
+        {
+            let callback_cloned = callback.clone();
+            FLUTTER_RUST_BRIDGE_HANDLER
+                .async_runtime()
+                .spawn(async move { callback_cloned(event).await });
+        })
+    }
+
+    fn frb_override_connect(&self, dest: &dyn AudioNode) {
+        self.connect(dest);
+    }
+
 }
 
 #[ext]
