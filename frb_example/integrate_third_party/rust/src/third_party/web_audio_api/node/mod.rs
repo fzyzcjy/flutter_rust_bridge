@@ -20,6 +20,11 @@ impl AnalyserNode {
 impl AudioBufferSourceNode {
     #[frb(ignore)]
     pub fn buffer() {}
+
+    // `setbuffer()` is overrided by `setAudioBuffer()` (the argument is cloned so that dart continues to be able to access it).
+    #[frb(ignore)]
+    pub fn set_buffer() {}
+
 }
 
 #[frb(external)]

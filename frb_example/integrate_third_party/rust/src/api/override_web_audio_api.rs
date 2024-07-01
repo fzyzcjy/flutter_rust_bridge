@@ -108,7 +108,6 @@ macro_rules! handle_audio_node_trait_impls_override {
 }
 
 handle_audio_node_trait_impls_override!(AudioParam);
-handle_audio_node_trait_impls_override!(AudioBufferSourceNode);
 handle_audio_node_trait_impls_override!(AudioDestinationNode);
 handle_audio_node_trait_impls_override!(BiquadFilterNode);
 handle_audio_node_trait_impls_override!(ChannelMergerNode);
@@ -182,7 +181,22 @@ pub impl ScriptProcessorNode
     fn frb_override_connect(&self, dest: &dyn AudioNode) {
         self.connect(dest);
     }
+}
 
+#[ext]
+pub impl AudioBufferSourceNode
+{
+    fn frb_override_connect(&self, dest: &dyn AudioNode)
+    {
+        self.connect(dest);
+    }
+
+    // calls the regular fn `setBuffer()` after cloning the argument.
+    fn set_audio_buffer(&mut self, audio_buffer: &AudioBuffer)
+    {
+        let clone = audio_buffer.clone();
+        self.set_buffer(clone)
+    }
 }
 
 #[ext]
