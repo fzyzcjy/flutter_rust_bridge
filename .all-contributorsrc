@@ -352,6 +352,15 @@
       ]
     },
     {
+      "login": "Larpoux",
+      "name": "Larpoux",
+      "avatar_url": "https://avatars.githubusercontent.com/u/45900255?v=4",
+      "profile": "https://github.com/Larpoux",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
       "login": "w-ensink",
       "name": "Wouter Ensink",
       "avatar_url": "https://avatars.githubusercontent.com/u/46427708?v=4",
@@ -908,15 +917,6 @@
       "profile": "https://thesimplekid.com",
       "contributions": [
         "doc"
-      ]
-    },
-    {
-      "login": "Larpoux",
-      "name": "Larpoux",
-      "avatar_url": "https://avatars.githubusercontent.com/u/45900255?v=4",
-      "profile": "https://github.com/Larpoux",
-      "contributions": [
-        "code"
       ]
     }
   ],
