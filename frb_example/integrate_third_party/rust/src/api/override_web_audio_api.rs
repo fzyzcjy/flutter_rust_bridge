@@ -7,7 +7,9 @@ use std::sync::Arc;
 use web_audio_api::context::{AudioContext, BaseAudioContext, OfflineAudioContext};
 use web_audio_api::media_streams::{MediaStream, MediaStreamTrack};
 use web_audio_api::node::*;
-use web_audio_api::{AudioBuffer, AudioParam, AudioProcessingEvent, Event, OfflineAudioCompletionEvent};
+use web_audio_api::{
+    AudioBuffer, AudioParam, AudioProcessingEvent, Event, OfflineAudioCompletionEvent,
+};
 
 #[ext]
 pub impl AudioContext {
@@ -47,17 +49,14 @@ pub impl AudioContext {
 }
 
 #[ext]
-pub impl AnalyserNode
-{
-    fn get_byte_data(&mut self, len: usize) -> Vec<u8>
-    {
+pub impl AnalyserNode {
+    fn get_byte_data(&mut self, len: usize) -> Vec<u8> {
         let mut bins = vec![0; len];
         self.get_byte_time_domain_data(&mut bins);
         bins
     }
 
-    fn get_float_data(&mut self, len: usize) -> Vec<f32>
-    {
+    fn get_float_data(&mut self, len: usize) -> Vec<f32> {
         let mut bins = vec![0.0; len];
         self.get_float_time_domain_data(&mut bins);
         bins
@@ -67,6 +66,18 @@ pub impl AnalyserNode
         self.connect(dest);
     }
 
+    // NOTE: The `set_onprocessorerror` by web-audio-api is ignored,
+    // while this one has a different name (note the "_")
+    fn set_on_processor_error(
+        &self,
+        callback: impl Fn(String) -> DartFnFuture<()> + Send + 'static,
+    ) {
+        self.set_onprocessorerror(Box::new(|event| {
+            FLUTTER_RUST_BRIDGE_HANDLER
+                .async_runtime()
+                .spawn(async move { callback(event.message).await });
+        }))
+    }
 }
 
 #[ext]
@@ -159,18 +170,14 @@ pub impl Event {
 }
 
 #[ext]
-pub impl ScriptProcessorNode
-{
+pub impl ScriptProcessorNode {
     // NOTE: The original name was `set_onaudioprocess` and here the new name has `_`
-    fn set_on_audio_process
-    (
+    fn set_on_audio_process(
         &self,
         callback: impl Fn(AudioProcessingEvent) -> DartFnFuture<()> + Send + 'static + std::marker::Sync,
-    )
-    {
+    ) {
         let callback = Arc::new(callback);
-        self.set_onaudioprocess(move |event|
-        {
+        self.set_onaudioprocess(move |event| {
             let callback_cloned = callback.clone();
             FLUTTER_RUST_BRIDGE_HANDLER
                 .async_runtime()
@@ -181,21 +188,44 @@ pub impl ScriptProcessorNode
     fn frb_override_connect(&self, dest: &dyn AudioNode) {
         self.connect(dest);
     }
+
+    // NOTE: The `set_onprocessorerror` by web-audio-api is ignored,
+    // while this one has a different name (note the "_")
+    fn set_on_processor_error(
+        &self,
+        callback: impl Fn(String) -> DartFnFuture<()> + Send + 'static,
+    ) {
+        self.set_onprocessorerror(Box::new(|event| {
+            FLUTTER_RUST_BRIDGE_HANDLER
+                .async_runtime()
+                .spawn(async move { callback(event.message).await });
+        }))
+    }
 }
 
 #[ext]
-pub impl AudioBufferSourceNode
-{
-    fn frb_override_connect(&self, dest: &dyn AudioNode)
-    {
+pub impl AudioBufferSourceNode {
+    fn frb_override_connect(&self, dest: &dyn AudioNode) {
         self.connect(dest);
     }
 
     // calls the regular fn `setBuffer()` after cloning the argument.
-    fn set_audio_buffer(&mut self, audio_buffer: &AudioBuffer)
-    {
+    fn set_audio_buffer(&mut self, audio_buffer: &AudioBuffer) {
         let clone = audio_buffer.clone();
         self.set_buffer(clone)
+    }
+
+    // NOTE: The `set_onprocessorerror` by web-audio-api is ignored,
+    // while this one has a different name (note the "_")
+    fn set_on_processor_error(
+        &self,
+        callback: impl Fn(String) -> DartFnFuture<()> + Send + 'static,
+    ) {
+        self.set_onprocessorerror(Box::new(|event| {
+            FLUTTER_RUST_BRIDGE_HANDLER
+                .async_runtime()
+                .spawn(async move { callback(event.message).await });
+        }))
     }
 }
 
