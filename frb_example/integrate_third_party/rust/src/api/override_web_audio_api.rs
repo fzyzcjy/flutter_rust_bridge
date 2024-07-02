@@ -48,35 +48,18 @@ pub impl AudioContext {
     }
 }
 
-#[ext]
+#[ext(name = AnalyserNodeMiscExt)]
 pub impl AnalyserNode {
-    fn get_byte_data(&mut self, len: usize) -> Vec<u8> {
+    fn frb_override_get_byte_time_domain_data(&mut self, len: usize) -> Vec<u8> {
         let mut bins = vec![0; len];
         self.get_byte_time_domain_data(&mut bins);
         bins
     }
 
-    fn get_float_data(&mut self, len: usize) -> Vec<f32> {
+    fn frb_override_get_float_time_domain_data(&mut self, len: usize) -> Vec<f32> {
         let mut bins = vec![0.0; len];
         self.get_float_time_domain_data(&mut bins);
         bins
-    }
-
-    fn frb_override_connect(&self, dest: &dyn AudioNode) {
-        self.connect(dest);
-    }
-
-    // NOTE: The `set_onprocessorerror` by web-audio-api is ignored,
-    // while this one has a different name (note the "_")
-    fn set_on_processor_error(
-        &self,
-        callback: impl Fn(String) -> DartFnFuture<()> + Send + 'static,
-    ) {
-        self.set_onprocessorerror(Box::new(|event| {
-            FLUTTER_RUST_BRIDGE_HANDLER
-                .async_runtime()
-                .spawn(async move { callback(event.message).await });
-        }))
     }
 }
 
@@ -118,6 +101,8 @@ macro_rules! handle_audio_node_trait_impls_override {
     };
 }
 
+handle_audio_node_trait_impls_override!(AnalyserNode);
+handle_audio_node_trait_impls_override!(AudioBufferSourceNode);
 handle_audio_node_trait_impls_override!(AudioParam);
 handle_audio_node_trait_impls_override!(AudioDestinationNode);
 handle_audio_node_trait_impls_override!(BiquadFilterNode);
@@ -136,6 +121,7 @@ handle_audio_node_trait_impls_override!(MediaStreamTrackAudioSourceNode);
 handle_audio_node_trait_impls_override!(OscillatorNode);
 handle_audio_node_trait_impls_override!(PannerNode);
 handle_audio_node_trait_impls_override!(StereoPannerNode);
+handle_audio_node_trait_impls_override!(ScriptProcessorNode);
 handle_audio_node_trait_impls_override!(WaveShaperNode);
 
 macro_rules! handle_audio_scheduled_source_node_trait_impls_override {
@@ -169,10 +155,10 @@ pub impl Event {
     }
 }
 
-#[ext]
+#[ext(name = ScriptProcessorNodeMiscExt)]
 pub impl ScriptProcessorNode {
     // NOTE: The original name was `set_onaudioprocess` and here the new name has `_`
-    fn set_on_audio_process(
+    fn frb_override_set_onaudioprocess(
         &self,
         callback: impl Fn(AudioProcessingEvent) -> DartFnFuture<()> + Send + 'static + std::marker::Sync,
     ) {
@@ -184,48 +170,14 @@ pub impl ScriptProcessorNode {
                 .spawn(async move { callback_cloned(event).await });
         })
     }
-
-    fn frb_override_connect(&self, dest: &dyn AudioNode) {
-        self.connect(dest);
-    }
-
-    // NOTE: The `set_onprocessorerror` by web-audio-api is ignored,
-    // while this one has a different name (note the "_")
-    fn set_on_processor_error(
-        &self,
-        callback: impl Fn(String) -> DartFnFuture<()> + Send + 'static,
-    ) {
-        self.set_onprocessorerror(Box::new(|event| {
-            FLUTTER_RUST_BRIDGE_HANDLER
-                .async_runtime()
-                .spawn(async move { callback(event.message).await });
-        }))
-    }
 }
 
-#[ext]
+#[ext(name = AudioBufferSourceNodeMiscExt)]
 pub impl AudioBufferSourceNode {
-    fn frb_override_connect(&self, dest: &dyn AudioNode) {
-        self.connect(dest);
-    }
-
     // calls the regular fn `setBuffer()` after cloning the argument.
-    fn set_audio_buffer(&mut self, audio_buffer: &AudioBuffer) {
+    fn frb_override_set_buffer(&mut self, audio_buffer: &AudioBuffer) {
         let clone = audio_buffer.clone();
         self.set_buffer(clone)
-    }
-
-    // NOTE: The `set_onprocessorerror` by web-audio-api is ignored,
-    // while this one has a different name (note the "_")
-    fn set_on_processor_error(
-        &self,
-        callback: impl Fn(String) -> DartFnFuture<()> + Send + 'static,
-    ) {
-        self.set_onprocessorerror(Box::new(|event| {
-            FLUTTER_RUST_BRIDGE_HANDLER
-                .async_runtime()
-                .spawn(async move { callback(event.message).await });
-        }))
     }
 }
 

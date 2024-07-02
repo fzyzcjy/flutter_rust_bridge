@@ -2,14 +2,7 @@ use flutter_rust_bridge::frb;
 use web_audio_api::node::*;
 
 #[frb(external)]
-impl AnalyserNode {
-    #[frb(ignore)]
-    pub fn get_float_time_domain_data() {}
-
-    #[frb(ignore)]
-    pub fn get_byte_time_domain_data() {}
-
-    #[frb(ignore)]
+impl AnalyserNode { #[frb(ignore)]
     pub fn get_float_frequency_data() {}
 
     #[frb(ignore)]
@@ -20,11 +13,6 @@ impl AnalyserNode {
 impl AudioBufferSourceNode {
     #[frb(ignore)]
     pub fn buffer() {}
-
-    // `setbuffer()` is overrided by `setAudioBuffer()` (the argument is cloned so that dart continues to be able to access it).
-    #[frb(ignore)]
-    pub fn set_buffer() {}
-
 }
 
 #[frb(external)]
