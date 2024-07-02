@@ -7,9 +7,7 @@ use std::sync::Arc;
 use web_audio_api::context::{AudioContext, BaseAudioContext, OfflineAudioContext};
 use web_audio_api::media_streams::{MediaStream, MediaStreamTrack};
 use web_audio_api::node::*;
-use web_audio_api::{
-    AudioBuffer, AudioParam, AudioProcessingEvent, Event, OfflineAudioCompletionEvent,
-};
+use web_audio_api::{AudioBuffer, AudioParam, AudioProcessingEvent, Event, OfflineAudioCompletionEvent};
 
 #[ext]
 pub impl AudioContext {
@@ -101,9 +99,9 @@ macro_rules! handle_audio_node_trait_impls_override {
     };
 }
 
+handle_audio_node_trait_impls_override!(AudioParam);
 handle_audio_node_trait_impls_override!(AnalyserNode);
 handle_audio_node_trait_impls_override!(AudioBufferSourceNode);
-handle_audio_node_trait_impls_override!(AudioParam);
 handle_audio_node_trait_impls_override!(AudioDestinationNode);
 handle_audio_node_trait_impls_override!(BiquadFilterNode);
 handle_audio_node_trait_impls_override!(ChannelMergerNode);
@@ -120,8 +118,8 @@ handle_audio_node_trait_impls_override!(MediaStreamAudioSourceNode);
 handle_audio_node_trait_impls_override!(MediaStreamTrackAudioSourceNode);
 handle_audio_node_trait_impls_override!(OscillatorNode);
 handle_audio_node_trait_impls_override!(PannerNode);
-handle_audio_node_trait_impls_override!(StereoPannerNode);
 handle_audio_node_trait_impls_override!(ScriptProcessorNode);
+handle_audio_node_trait_impls_override!(StereoPannerNode);
 handle_audio_node_trait_impls_override!(WaveShaperNode);
 
 macro_rules! handle_audio_scheduled_source_node_trait_impls_override {
@@ -157,7 +155,6 @@ pub impl Event {
 
 #[ext(name = ScriptProcessorNodeMiscExt)]
 pub impl ScriptProcessorNode {
-    // NOTE: The original name was `set_onaudioprocess` and here the new name has `_`
     fn frb_override_set_onaudioprocess(
         &self,
         callback: impl Fn(AudioProcessingEvent) -> DartFnFuture<()> + Send + 'static + std::marker::Sync,

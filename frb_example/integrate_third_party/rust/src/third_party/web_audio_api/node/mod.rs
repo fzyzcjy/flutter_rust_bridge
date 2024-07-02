@@ -2,7 +2,8 @@ use flutter_rust_bridge::frb;
 use web_audio_api::node::*;
 
 #[frb(external)]
-impl AnalyserNode { #[frb(ignore)]
+impl AnalyserNode {
+    #[frb(ignore)]
     pub fn get_float_frequency_data() {}
 
     #[frb(ignore)]
