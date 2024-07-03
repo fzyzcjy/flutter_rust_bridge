@@ -3,6 +3,7 @@ use crate::codegen::polisher::add_mod_to_lib::try_add_mod_to_lib;
 use crate::codegen::polisher::internal_config::PolisherInternalConfig;
 use crate::commands::format_rust::format_rust;
 use crate::library::commands::dart_build_runner::dart_build_runner;
+use crate::library::commands::dart_fix::dart_fix;
 use crate::library::commands::format_dart::format_dart;
 use crate::utils::dart_repository::dart_repo::{DartDependencyMode, DartRepository};
 use crate::utils::path_utils::path_to_string;
@@ -103,6 +104,19 @@ fn execute_build_runner(
 
     let _pb = progress_bar_pack.polish_dart_build_runner.start();
     dart_build_runner(&config.dart_root)
+}
+
+fn execute_dart_fix(
+    config: &PolisherInternalConfig,
+    output_paths: &[PathBuf],
+    progress_bar_pack: &GeneratorProgressBarPack,
+) -> anyhow::Result<()> {
+    let _pb = progress_bar_pack.polish_dart_formatter.start();
+    dart_fix(
+        &filter_paths_by_extension(output_paths, "dart"),
+        &config.dart_root,
+        &["g.dart", "freezed.dart"],
+    )
 }
 
 fn execute_dart_format(
