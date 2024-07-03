@@ -37,21 +37,23 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         if let Some(trait_name_path) = extract_trait_name_path(type_trait_object) {
             let trait_name = ty_to_string(&trait_name_path.segments.last().unwrap());
             if let Some(trait_ty) = parse_type_trait(&trait_name, self.inner) {
+                let data = match self.context.parse_mode {
+                    ParseMode::Early => None,
+                    ParseMode::Normal => {
+                        let trait_def_info = (self.inner.trait_def_infos.iter())
+                            .find(|info| info.trait_def_name == trait_ty.name)
+                            .unwrap();
+                        Some(MirTypeDelegateDynTraitData {
+                            delegate_namespace: trait_def_info.delegate_namespace.clone(),
+                            variants: trait_def_info.variants.clone(),
+                        })
+                    }
+                };
+
                 return Ok(Some(MirType::Delegate(MirTypeDelegate::DynTrait(
                     MirTypeDelegateDynTrait {
                         trait_def_name: trait_ty.name.clone(),
-                        data: match self.context.parse_mode {
-                            ParseMode::Early => None,
-                            ParseMode::Normal => {
-                                let trait_def_info = (self.inner.trait_def_infos.iter())
-                                    .find(|info| info.trait_def_name == trait_ty.name)
-                                    .unwrap();
-                                Some(MirTypeDelegateDynTraitData {
-                                    delegate_namespace: trait_def_info.delegate_namespace.clone(),
-                                    variants: trait_def_info.variants.clone(),
-                                })
-                            }
-                        },
+                        data,
                     },
                 ))));
             }
