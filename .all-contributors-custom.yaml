@@ -33,6 +33,7 @@
 - NightFeather0615: Fix Vec bool.
 - OfficialBoyfriend: Fix error display.
 - Krysl: Add preamble.
+- Larpoux: Update web-audio-api binding.
 - w-ensink: Improve doc. Fix CI. Refactor. Add tests.
 - smw-wagnerma: Improve Windows encoding handling.
 - powpingdone: Document JNI init and libc++_static linking.

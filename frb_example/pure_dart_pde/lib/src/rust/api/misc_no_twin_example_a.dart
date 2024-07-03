@@ -8,7 +8,8 @@ import 'misc_no_twin_example_b.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 // These functions are ignored because they are not marked as `pub`: `log`
-// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `fmt`
+// These types are ignored because they are not used by any `pub` functions: `Issue2170Struct`
+// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `fmt`, `fmt`
 
 Future<void> sameFunctionNameInDifferentFiles() => RustLib.instance.api
     .crateApiMiscNoTwinExampleASameFunctionNameInDifferentFiles();
@@ -115,6 +116,10 @@ abstract class StructWithSimpleSetterTwinNormal implements RustOpaqueInterface {
   int get simpleGetter;
 
   set simpleSetter(int value);
+}
+
+abstract class Issue2170Trait {
+  Future<void> method();
 }
 
 class ItemContainerSolutionTwoTwinNormal {

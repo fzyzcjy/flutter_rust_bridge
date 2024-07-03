@@ -1954,6 +1954,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   String dco_decode_String(dynamic raw);
 
   @protected
+  Issue2170Trait dco_decode_TraitDef_Issue2170Trait(dynamic raw);
+
+  @protected
   MyTraitTwinNormal dco_decode_TraitDef_MyTraitTwinNormal(dynamic raw);
 
   @protected
