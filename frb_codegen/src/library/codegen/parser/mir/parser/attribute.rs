@@ -66,12 +66,14 @@ impl FrbAttributes {
         self.any_eq(&FrbAttribute::NonFinal)
     }
 
-    pub(crate) fn dart_sync(&self) -> bool {
-        self.any_eq(&FrbAttribute::Sync)
-    }
-
-    pub(crate) fn dart_async(&self) -> bool {
-        self.any_eq(&FrbAttribute::DartAsync)
+    pub(crate) fn dart_async(&self) -> Option<bool> {
+        if self.any_eq(&FrbAttribute::Sync) {
+            Some(false)
+        } else if self.any_eq(&FrbAttribute::DartAsync) {
+            Some(true)
+        } else {
+            None
+        }
     }
 
     pub(crate) fn stream_dart_await(&self) -> bool {
