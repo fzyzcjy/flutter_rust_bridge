@@ -67,6 +67,7 @@ impl FrbAttributes {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     pub(crate) fn sync(&self) -> bool {
         self.any_eq(&FrbAttribute::Sync)
 =======
@@ -79,6 +80,14 @@ impl FrbAttributes {
             None
         }
 >>>>>>> 0982a2aa90 (gen)
+=======
+    pub(crate) fn dart_sync(&self) -> bool {
+        self.any_eq(&FrbAttribute::Sync)
+    }
+
+    pub(crate) fn dart_async(&self) -> bool {
+        self.any_eq(&FrbAttribute::DartAsync)
+>>>>>>> 04c5da9dc1 (Revert "gen")
     }
 
     pub(crate) fn stream_dart_await(&self) -> bool {
