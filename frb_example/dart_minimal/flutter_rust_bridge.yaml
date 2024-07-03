@@ -9,5 +9,3 @@ local: true
 #full_dep: true
 #enable_lifetime: true
 #stop_on_error: true
-
-default_dart_async: false
