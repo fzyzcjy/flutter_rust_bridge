@@ -8,3 +8,11 @@ pub fn init_app() {
 pub fn minimal_adder(a: i32, b: i32) -> i32 {
     a + b
 }
+
+pub trait MyTraitToBeUsedAsBoxDyn {
+    fn my_method_twin_normal(&self);
+}
+
+fn function_with_box_dyn_trait(arg: Box<dyn MyTraitToBeUsedAsBoxDyn>) {
+    let _ = arg;
+}
