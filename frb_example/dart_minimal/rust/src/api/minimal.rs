@@ -9,19 +9,17 @@ pub fn minimal_adder(a: i32, b: i32) -> i32 {
     a + b
 }
 
-use std::fmt;
-use std::fmt::Debug;
-
-pub trait Progress {
-    fn update(&self);
+// https://github.com/fzyzcjy/flutter_rust_bridge/issues/2170
+pub trait Issue2170Trait {
+    fn method(&self);
 }
 
-pub struct ProgressHolder {
-    pub progress: Box<dyn Progress>,
+pub struct Issue2170Struct {
+    pub field: Box<dyn Issue2170Trait>,
 }
 
-impl Debug for ProgressHolder {
-    fn fmt(&self, _f: &mut fmt::Formatter<'_>) -> fmt::Result {
+impl std::fmt::Debug for Issue2170Struct {
+    fn fmt(&self, _f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         unimplemented!()
     }
 }
