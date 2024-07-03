@@ -224,7 +224,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         info = self.transform_fn_info(info);
 
         let codec_mode_pack = compute_codec_mode_pack(&attributes, force_codec_mode_pack);
-        let dart_async = compute_dart_async(&attributes, default_dart_async);
+        let dart_async = compute_dart_async(&func, &attributes, default_dart_async);
         let mode = compute_func_mode(dart_async, &info);
         let stream_dart_await = attributes.stream_dart_await() && dart_async;
         let namespace_refined = refine_namespace(&owner).unwrap_or(func.namespace.clone());
@@ -269,10 +269,16 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
     }
 }
 
-fn compute_dart_async(attributes: &FrbAttributes, default_dart_async: bool) -> bool {
+fn compute_dart_async(func: &HirFlatFunction, attributes: &FrbAttributes, default_dart_async: bool) -> bool {
+    // If `[frb(sync)]` then the fn is not asynchronous
     if attributes.sync() {
         false
-    } else {
+    // If the Rust fn is asynchronous then the fn is asynchronous. See Issue [#2178]
+    } else if func.is_asynchronous() {
+        true
+    } else
+    // In the other cases we use the `default_dart_async` parameter
+    {
         default_dart_async
     }
 }
