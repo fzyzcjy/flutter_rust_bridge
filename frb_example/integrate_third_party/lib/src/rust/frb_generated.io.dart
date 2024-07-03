@@ -809,6 +809,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   int dco_decode_CastedPrimitive_usize(dynamic raw);
 
   @protected
+  FutureOr<void> Function(AudioProcessingEvent)
+      dco_decode_DartFn_Inputs_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioProcessingEvent_Output_unit_AnyhowException(
+          dynamic raw);
+
+  @protected
   FutureOr<void> Function(Event)
       dco_decode_DartFn_Inputs_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEvent_Output_unit_AnyhowException(
           dynamic raw);
@@ -1230,7 +1235,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   AnalyserNodeExt dco_decode_TraitDef_AnalyserNodeExt(dynamic raw);
 
   @protected
+  AnalyserNodeMiscExt dco_decode_TraitDef_AnalyserNodeMiscExt(dynamic raw);
+
+  @protected
   AudioBufferSourceNodeExt dco_decode_TraitDef_AudioBufferSourceNodeExt(
+      dynamic raw);
+
+  @protected
+  AudioBufferSourceNodeMiscExt dco_decode_TraitDef_AudioBufferSourceNodeMiscExt(
       dynamic raw);
 
   @protected
@@ -1333,6 +1345,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   ScriptProcessorNodeExt dco_decode_TraitDef_ScriptProcessorNodeExt(
+      dynamic raw);
+
+  @protected
+  ScriptProcessorNodeMiscExt dco_decode_TraitDef_ScriptProcessorNodeMiscExt(
       dynamic raw);
 
   @protected
@@ -3447,6 +3463,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_CastedPrimitive_usize(int self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_DartFn_Inputs_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioProcessingEvent_Output_unit_AnyhowException(
+          FutureOr<void> Function(AudioProcessingEvent) self,
+          SseSerializer serializer);
 
   @protected
   void

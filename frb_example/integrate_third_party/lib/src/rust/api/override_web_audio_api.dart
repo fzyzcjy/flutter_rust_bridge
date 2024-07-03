@@ -18,11 +18,21 @@ abstract class AnalyserNodeExt {
       {required FutureOr<void> Function(String) callback});
 }
 
+abstract class AnalyserNodeMiscExt {
+  Future<Uint8List> getByteTimeDomainData({required int len});
+
+  Future<Float32List> getFloatTimeDomainData({required int len});
+}
+
 abstract class AudioBufferSourceNodeExt {
   Future<void> connect({required AudioNode dest});
 
   Future<void> setOnProcessorError(
       {required FutureOr<void> Function(String) callback});
+}
+
+abstract class AudioBufferSourceNodeMiscExt {
+  Future<void> setBuffer({required AudioBuffer audioBuffer});
 }
 
 abstract class AudioBufferSourceNodeScheduledSourceNodeMiscExt {
@@ -186,6 +196,11 @@ abstract class ScriptProcessorNodeExt {
 
   Future<void> setOnProcessorError(
       {required FutureOr<void> Function(String) callback});
+}
+
+abstract class ScriptProcessorNodeMiscExt {
+  Future<void> setOnaudioprocess(
+      {required FutureOr<void> Function(AudioProcessingEvent) callback});
 }
 
 abstract class StereoPannerNodeExt {
