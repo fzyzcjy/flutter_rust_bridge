@@ -7,7 +7,9 @@ use std::sync::Arc;
 use web_audio_api::context::{AudioContext, BaseAudioContext, OfflineAudioContext};
 use web_audio_api::media_streams::{MediaStream, MediaStreamTrack};
 use web_audio_api::node::*;
-use web_audio_api::{AudioBuffer, AudioParam, AudioProcessingEvent, Event, OfflineAudioCompletionEvent};
+use web_audio_api::{
+    AudioBuffer, AudioParam, AudioProcessingEvent, Event, OfflineAudioCompletionEvent,
+};
 
 #[ext]
 pub impl AudioContext {
