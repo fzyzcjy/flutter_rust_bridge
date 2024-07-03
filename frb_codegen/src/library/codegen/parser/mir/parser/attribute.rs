@@ -66,11 +66,7 @@ impl FrbAttributes {
         self.any_eq(&FrbAttribute::NonFinal)
     }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-    pub(crate) fn sync(&self) -> bool {
-        self.any_eq(&FrbAttribute::Sync)
-=======
+    /*
     pub(crate) fn dart_async(&self) -> Option<bool> {
         if self.any_eq(&FrbAttribute::Sync) {
             Some(false)
@@ -79,16 +75,16 @@ impl FrbAttributes {
         } else {
             None
         }
->>>>>>> 0982a2aa90 (gen)
-=======
+    }
+     */
     pub(crate) fn dart_sync(&self) -> bool {
         self.any_eq(&FrbAttribute::Sync)
     }
 
-    pub(crate) fn dart_async(&self) -> bool {
-        self.any_eq(&FrbAttribute::DartAsync)
->>>>>>> 04c5da9dc1 (Revert "gen")
-    }
+    // The following function is not yet used
+    //pub(crate) fn dart_async(&self) -> bool {
+        //self.any_eq(&FrbAttribute::Async)
+    //}
 
     pub(crate) fn stream_dart_await(&self) -> bool {
         self.any_eq(&FrbAttribute::StreamDartAwait)
@@ -345,6 +341,7 @@ enum FrbAttribute {
     Serialize,
     StreamDartAwait,
     Sync,
+    //Async, // Not yet used
     Type64bitInt,
 
     // === Mainly undocumented since may subject to change ===
