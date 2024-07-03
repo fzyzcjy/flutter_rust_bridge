@@ -44,7 +44,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                         let trait_def_info = (self.inner.trait_def_infos.iter())
                             .find(|info| info.trait_def_name == trait_ty.name)
                             .with_context(|| {
-                                format!("Cannot find trait def info for {}", trait_ty.name)
+                                format!("Cannot find trait def info for {:?}", trait_ty.name)
                             })?;
                         Some(MirTypeDelegateDynTraitData {
                             delegate_namespace: trait_def_info.delegate_namespace.clone(),
