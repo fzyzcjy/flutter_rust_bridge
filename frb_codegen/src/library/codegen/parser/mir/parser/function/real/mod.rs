@@ -270,7 +270,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 }
 
 fn compute_dart_async(attributes: &FrbAttributes, default_dart_async: bool) -> bool {
-    if attributes.sync() {
+    if attributes.dart_sync() {
         false
     } else {
         default_dart_async
