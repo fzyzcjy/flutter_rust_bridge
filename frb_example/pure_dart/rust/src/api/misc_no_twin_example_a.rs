@@ -172,3 +172,18 @@ impl MyStructWithTryFromTwinNormal {
         self.0.to_owned()
     }
 }
+
+// https://github.com/fzyzcjy/flutter_rust_bridge/issues/2170
+pub trait Issue2170Trait {
+    fn method(&self);
+}
+
+pub struct Issue2170Struct {
+    pub field: Box<dyn Issue2170Trait>,
+}
+
+impl std::fmt::Debug for Issue2170Struct {
+    fn fmt(&self, _f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        unimplemented!()
+    }
+}
