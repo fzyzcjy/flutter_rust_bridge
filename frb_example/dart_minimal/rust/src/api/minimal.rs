@@ -13,6 +13,6 @@ pub trait MyTraitToBeUsedAsBoxDyn {
     fn my_method_twin_normal(&self);
 }
 
-fn function_with_box_dyn_trait(arg: Box<dyn MyTraitToBeUsedAsBoxDyn>) {
+pub fn function_with_box_dyn_trait(arg: Box<dyn MyTraitToBeUsedAsBoxDyn>) {
     let _ = arg;
 }
