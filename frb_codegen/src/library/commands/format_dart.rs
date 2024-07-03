@@ -2,12 +2,7 @@ use crate::command_run;
 use crate::commands::command_runner::call_shell;
 use crate::library::commands::command_runner::check_exit_code;
 use crate::library::commands::dart_fix::prepare_paths;
-use crate::utils::path_utils::{normalize_windows_unc_path, path_to_string};
-use anyhow::Context;
-use anyhow::Result;
-use itertools::Itertools;
 use log::debug;
-use pathdiff::diff_paths;
 use std::path::{Path, PathBuf};
 
 #[allow(clippy::vec_init_then_push)]

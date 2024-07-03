@@ -115,7 +115,7 @@ fn execute_dart_fix(
     output_paths: &[PathBuf],
     progress_bar_pack: &GeneratorProgressBarPack,
 ) -> anyhow::Result<()> {
-    let _pb = progress_bar_pack.polish_dart_formatter.start();
+    let _pb = progress_bar_pack.polish_dart_fix.start();
     dart_fix(
         &filter_paths_by_extension(output_paths, "dart"),
         &config.dart_root,
