@@ -7,6 +7,7 @@ use crate::codegen::parser::mir::parser::ty::TypeParserWithContext;
 use crate::codegen::parser::mir::ParseMode;
 use crate::if_then_some;
 use crate::utils::syn_utils::ty_to_string;
+use anyhow::Context;
 use syn::TypeTraitObject;
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
@@ -42,7 +43,9 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                     ParseMode::Normal => {
                         let trait_def_info = (self.inner.trait_def_infos.iter())
                             .find(|info| info.trait_def_name == trait_ty.name)
-                            .unwrap();
+                            .with_context(|| {
+                                format!("Cannot find trait def info for {}", trait_ty.name)
+                            })?;
                         Some(MirTypeDelegateDynTraitData {
                             delegate_namespace: trait_def_info.delegate_namespace.clone(),
                             variants: trait_def_info.variants.clone(),
