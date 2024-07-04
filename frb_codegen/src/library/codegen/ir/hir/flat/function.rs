@@ -57,11 +57,8 @@ impl HirFlatFunction {
         }
     }
 
-    pub(crate) fn is_asynchronous(&self) -> bool {
-        match self.item_fn.sig().asyncness {
-            None => false,
-            Some(_) => true,
-        }
+    pub(crate) fn is_async(&self) -> bool {
+        self.item_fn.sig().asyncness.is_some()
     }
 }
 

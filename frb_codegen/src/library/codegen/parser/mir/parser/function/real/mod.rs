@@ -224,7 +224,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         info = self.transform_fn_info(info);
 
         let codec_mode_pack = compute_codec_mode_pack(&attributes, force_codec_mode_pack);
-        let dart_async = compute_dart_async(&func, &attributes, default_dart_async);
+        let dart_async = compute_dart_async(func, &attributes, default_dart_async);
         let mode = compute_func_mode(dart_async, &info);
         let stream_dart_await = attributes.stream_dart_await() && dart_async;
         let namespace_refined = refine_namespace(&owner).unwrap_or(func.namespace.clone());
@@ -269,23 +269,14 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
     }
 }
 
-fn compute_dart_async(func: &HirFlatFunction, attributes: &FrbAttributes, default_dart_async: bool) -> bool { // [LARPOUX]
-    match attributes.dart_async()
-    {
-        // If the FRB user specified `#[frb(sync)]` or `#[frb(async)]` we use his/her specification (He/she is the boss)
-        Some(b) => { b }
-
-        // If the FRB user didn't specify anything ...
-        None => {
-            // ... and the function is declared as `async` then the function is async,
-            if func.is_asynchronous() {
-                true
-            } else {
-                // On every other cases we use the `default_dart_async` parameter.
-                default_dart_async
-            }
-        }
-    }
+fn compute_dart_async(
+    func: &HirFlatFunction,
+    attributes: &FrbAttributes,
+    default_dart_async: bool,
+) -> bool {
+    attributes
+        .dart_async()
+        .unwrap_or(func.is_async() || default_dart_async)
 }
 
 fn should_forbid_type_self_for_inputs(owner: &MirFuncOwnerInfo) -> bool {
