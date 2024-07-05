@@ -56,6 +56,10 @@ impl HirFlatFunction {
             } => None,
         }
     }
+
+    pub(crate) fn is_async(&self) -> bool {
+        self.item_fn.sig().asyncness.is_some()
+    }
 }
 
 #[derive(Debug, Clone, Serialize)]

@@ -224,7 +224,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         info = self.transform_fn_info(info);
 
         let codec_mode_pack = compute_codec_mode_pack(&attributes, force_codec_mode_pack);
-        let dart_async = attributes.dart_async().unwrap_or(default_dart_async);
+        let dart_async = compute_dart_async(func, &attributes, default_dart_async);
         let mode = compute_func_mode(dart_async, &info);
         let stream_dart_await = attributes.stream_dart_await() && dart_async;
         let namespace_refined = refine_namespace(&owner).unwrap_or(func.namespace.clone());
@@ -267,6 +267,16 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             src_lineno_pseudo: src_lineno,
         }))
     }
+}
+
+fn compute_dart_async(
+    func: &HirFlatFunction,
+    attributes: &FrbAttributes,
+    default_dart_async: bool,
+) -> bool {
+    attributes
+        .dart_async()
+        .unwrap_or(func.is_async() || default_dart_async)
 }
 
 fn should_forbid_type_self_for_inputs(owner: &MirFuncOwnerInfo) -> bool {
