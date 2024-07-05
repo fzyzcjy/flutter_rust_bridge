@@ -7,6 +7,7 @@ use syn::Type;
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type(&mut self, ty: &Type) -> anyhow::Result<MirType> {
+        let tystr = ty_to_string(ty);
         let resolve_ty = self.resolve_alias(ty);
         let ans = self.parse_type_inner(&resolve_ty)?;
         log::debug!(

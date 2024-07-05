@@ -62,7 +62,9 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             if let Some(ans) = self.parse_type_path_data_optional(type_path, last_segment)? {
                 return Ok(ans);
             }
-
+            if let Some(ans) = self.parse_type_path_data_future(type_path, last_segment)? {
+                return Ok(ans);
+            }
             // this bracket is weirdly not covered, while everything else is
             // frb-coverage:ignore-start
         }

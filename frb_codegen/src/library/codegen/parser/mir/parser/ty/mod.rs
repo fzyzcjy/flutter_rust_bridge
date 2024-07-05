@@ -37,6 +37,7 @@ pub(crate) mod lifetimeable;
 pub(crate) mod misc;
 mod namespace;
 pub(crate) mod optional;
+pub(crate) mod future;
 pub(crate) mod path;
 pub(crate) mod path_data;
 pub(crate) mod primitive;

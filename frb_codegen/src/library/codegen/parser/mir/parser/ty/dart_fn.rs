@@ -1,7 +1,9 @@
 use crate::codegen::ir::mir::ty::dart_fn::MirDartFnOutput;
 use crate::codegen::ir::mir::ty::dart_fn::MirTypeDartFn;
 use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
+use crate::codegen::ir::mir::ty::future::MirTypeFuture;
 use crate::codegen::ir::mir::ty::MirType;
+use crate::codegen::parser::mir::parser::ty::path_data::parse_angle_bracketed_generic_arguments;
 use crate::codegen::parser::mir::parser::ty::result::{parse_type_maybe_result, ResultTypeInfo};
 use crate::codegen::parser::mir::parser::ty::TypeParserWithContext;
 use crate::if_then_some;
@@ -29,7 +31,11 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         match &segment_ident[..] {
             // TODO Currently, we treat `FnOnce` same as `Fn`,
             //      but in the future we can optimize this because we no longer need Arc or Clone for this case.
-            "FnOnce" | "Fn" => {} // Ok
+            "FnOnce" | "Fn" => {}, // Ok
+
+            // When the return type is an `impl Future`, we have to fetch the `Output` type and mark the function as `async`
+            "Future" => {} // Ok
+
             // This will stop the whole generator and tell the users, so we do not care about testing it
             // frb-coverage:ignore-start
             _ => bail!("Unknown ident: {segment_ident}"),
@@ -54,6 +60,18 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
             // This will stop the whole generator and tell the users, so we do not care about testing it
             // frb-coverage:ignore-start
+        }
+
+        if let PathArguments::AngleBracketed(arguments) = &segment.arguments {
+            // Since Fn/FnOnce are handled by `Parenthesized`, here we can assume the bracketed type is indeed a `Future`, and
+            // we can safely grab the `Output=` associated type. There should be only one.
+
+            let output = match arguments.args.first() {
+                Some( GenericArgument::AssocType(assoc_ty)) => self.parse_type(&assoc_ty.ty).context("cannot parse future output type"),
+                _ => bail!("Unknown type args for: {segment_ident}"),
+            }?;
+
+            return Ok(MirType::Future(MirTypeFuture{ output: Box::new(output) }));
         }
 
         bail!("Fail to parse DartFn")
@@ -91,6 +109,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         bail!("DartFn does not support return types except `DartFnFuture<T>` yet")
         // frb-coverage:ignore-end
     }
+
 }
 
 const FALLBACK_ERROR_TYPE: MirType = MirType::Delegate(MirTypeDelegate::AnyhowException);

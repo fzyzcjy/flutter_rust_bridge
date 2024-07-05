@@ -136,6 +136,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         default_dart_async: bool,
         parse_mode: ParseMode,
     ) -> anyhow::Result<MirFuncOrSkip> {
+        let func_name = func.item_fn.name();
         debug!("parse_function function name: {:?}", func.item_fn.name());
 
         if func.is_public() == Some(false) {
@@ -241,6 +242,8 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             return Ok(create_output_skip(func, ignore_func));
         }
 
+        let rust_async = info.is_async || func.item_fn.sig().asyncness.is_some();
+
         Ok(IrValueOrSkip::Value(MirFunc {
             name: NamespacedName::new(namespace_refined, func_name),
             dart_name,
@@ -250,7 +253,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             owner,
             mode,
             stream_dart_await,
-            rust_async: func.item_fn.sig().asyncness.is_some(),
+            rust_async,
             initializer: attributes.init(),
             accessor,
             arg_mode: if attributes.positional() {
@@ -321,6 +324,7 @@ pub(crate) fn parse_effective_function_name_of_method(method: &MirFuncOwnerInfoM
 
 #[derive(Debug, Default)]
 struct FunctionPartialInfo {
+    is_async: bool,
     inputs: Vec<MirFuncInput>,
     ok_output: Option<MirType>,
     error_output: Option<MirType>,
@@ -331,6 +335,7 @@ struct FunctionPartialInfo {
 impl FunctionPartialInfo {
     fn merge(self, other: Self) -> anyhow::Result<Self> {
         Ok(Self {
+            is_async: self.is_async || other.is_async,
             inputs: concat([self.inputs, other.inputs]),
             ok_output: merge_option(self.ok_output, other.ok_output).context("ok_output type")?,
             error_output: merge_option(self.error_output, other.error_output)

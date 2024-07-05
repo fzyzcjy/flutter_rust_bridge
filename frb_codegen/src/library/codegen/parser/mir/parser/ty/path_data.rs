@@ -37,7 +37,7 @@ fn parse_path_segment(segment: &PathSegment) -> Result<NameComponent> {
     Ok(NameComponent { ident, args })
 }
 
-fn parse_angle_bracketed_generic_arguments(args: &AngleBracketedGenericArguments) -> Vec<Type> {
+pub fn parse_angle_bracketed_generic_arguments(args: &AngleBracketedGenericArguments) -> Vec<Type> {
     args.args
         .iter()
         .filter_map(|arg| if_then_some!(let GenericArgument::Type(ty) = arg, ty.to_owned()))
