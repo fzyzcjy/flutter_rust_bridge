@@ -27,6 +27,20 @@ impl<'a> ApiDartGeneratorInfoTrait for BoxedApiDartGenerator<'a> {
     }
 }
 
+impl<'a> ApiDartGeneratorInfoTrait for FutureApiDartGenerator<'a> {
+    fn dart_api_type(&self) -> String {
+        let inner = ApiDartGenerator::new(self.mir.output.clone(), self.context);
+        inner.dart_api_type()
+    }
+}
+
+impl<'a> ApiDartGeneratorInfoTrait for PinApiDartGenerator<'a> {
+    fn dart_api_type(&self) -> String {
+        let inner = ApiDartGenerator::new(self.mir.inner.clone(), self.context);
+        inner.dart_api_type()
+    }
+}
+
 impl<'a> ApiDartGeneratorInfoTrait for DartFnApiDartGenerator<'a> {
     fn dart_api_type(&self) -> String {
         format!(

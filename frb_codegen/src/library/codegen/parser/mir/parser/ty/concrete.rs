@@ -8,8 +8,9 @@ use crate::codegen::ir::mir::ty::delegate::{
 };
 use crate::codegen::ir::mir::ty::dynamic::MirTypeDynamic;
 use crate::codegen::ir::mir::ty::general_list::mir_list;
+use crate::codegen::ir::mir::ty::pin::MirTypePin;
 use crate::codegen::ir::mir::ty::MirType;
-use crate::codegen::ir::mir::ty::MirType::{Boxed, DartOpaque, Delegate, Dynamic};
+use crate::codegen::ir::mir::ty::MirType::{Boxed, DartOpaque, Delegate, Dynamic, Pin};
 use crate::codegen::parser::mir::parser::ty::path_data::extract_path_data;
 use crate::codegen::parser::mir::parser::ty::unencodable::{splay_segments, SplayedSegment};
 use crate::codegen::parser::mir::parser::ty::TypeParserWithContext;
@@ -54,6 +55,19 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             // ) => Delegate(MirTypeDelegate::ZeroCopyBufferVecPrimitive(
             //     primitive.clone(),
             // )),
+            ("Pin", [inner]) => {
+                let inner = self.parse_type(inner)?;
+                match inner {
+                    MirType::RustAutoOpaqueImplicit(ty_raw) => self.transform_rust_auto_opaque(
+                        &ty_raw,
+                        |raw| format!("Pin<{raw}>"),
+                    )?,
+                    _ => Pin(MirTypePin {
+                        inner: Box::new(inner),
+                    })
+                }
+            },
+
 
             ("Box", [inner]) => {
                 let inner = self.parse_type(inner)?;

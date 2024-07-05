@@ -13,6 +13,8 @@ pub(crate) mod rust_auto_opaque_implicit;
 pub(crate) mod rust_opaque;
 pub(crate) mod structure;
 pub(crate) mod trait_def;
+pub(crate) mod future;
+pub(crate) mod pin;
 
 use crate::codegen::ir::mir::pack::{MirEnumPool, MirPack, MirStructPool};
 use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
@@ -30,6 +32,8 @@ pub enum MirType {
     // alphabetical order
     Boxed(boxed::MirTypeBoxed),
     DartFn(dart_fn::MirTypeDartFn),
+    Future(future::MirTypeFuture),
+    Pin(pin::MirTypePin),
     DartOpaque(dart_opaque::MirTypeDartOpaque),
     Delegate(delegate::MirTypeDelegate),
     Dynamic(dynamic::MirTypeDynamic),
@@ -139,11 +143,13 @@ impl Serialize for MirType {
         match self {
             MirType::Boxed(inner) => ser::<S, _>(&mut state, "Boxed", inner),
             MirType::DartFn(inner) => ser::<S, _>(&mut state, "DartFn", inner),
+            MirType::Future(inner) => ser::<S, _>(&mut state, "Future", inner),
             MirType::DartOpaque(inner) => ser::<S, _>(&mut state, "DartOpaque", inner),
             MirType::Delegate(inner) => ser::<S, _>(&mut state, "Delegate", inner),
             MirType::Dynamic(inner) => ser::<S, _>(&mut state, "Dynamic", inner),
             MirType::EnumRef(inner) => ser::<S, _>(&mut state, "EnumRef", inner),
             MirType::GeneralList(inner) => ser::<S, _>(&mut state, "GeneralList", inner),
+            MirType::Pin(inner) => ser::<S, _>(&mut state, "Pin", inner),
             MirType::Optional(inner) => ser::<S, _>(&mut state, "Optional", inner),
             MirType::Primitive(inner) => ser::<S, _>(&mut state, "Primitive", inner),
             MirType::PrimitiveList(inner) => ser::<S, _>(&mut state, "PrimitiveList", inner),

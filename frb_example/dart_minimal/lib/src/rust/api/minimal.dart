@@ -8,3 +8,30 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<int> minimalAdder({required int a, required int b}) =>
     RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b);
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyStruct>>
+abstract class MyStruct implements RustOpaqueInterface {
+  Future<String> exampleAsyncFuture();
+
+  Future<PinBoxFutureOutputString> exampleAsyncFuture2();
+
+  Future<String> exampleAsyncMethod();
+
+  Future<void> exampleInstanceMethod();
+
+  static Future<void> exampleStaticMethod() =>
+      RustLib.instance.api.crateApiMinimalMyStructExampleStaticMethod();
+}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Pin < Box < dyn Future < Output = String > + Send + 'static > >>>
+abstract class PinBoxFutureOutputString implements RustOpaqueInterface {}
+
+abstract class MyAsyncTrait {
+  Future<Uint8List> exampleAsyncMethod(
+      {required int argOne, required int argTwo, required List<int> argThree});
+}
+
+enum MyErr {
+  oops,
+  ;
+}

@@ -23,6 +23,8 @@ macro_rules! codegen_generator_structs {
             RustOpaque,
             StructRef,
             TraitDef,
+            Future,
+            Pin,
         );
     );
     (@private $(#[$attribute:meta])* $generator_name:ident ; $($name:ident),*,) => (
@@ -36,12 +38,14 @@ macro_rules! codegen_generator_structs {
         use $crate::codegen::ir::mir::ty::general_list::MirTypeGeneralList;
         use $crate::codegen::ir::mir::ty::optional::MirTypeOptional;
         use $crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
+        use $crate::codegen::ir::mir::ty::future::MirTypeFuture;
         use $crate::codegen::ir::mir::ty::primitive_list::MirTypePrimitiveList;
         use $crate::codegen::ir::mir::ty::record::MirTypeRecord;
         use $crate::codegen::ir::mir::ty::rust_auto_opaque_implicit::MirTypeRustAutoOpaqueImplicit;
         use $crate::codegen::ir::mir::ty::rust_opaque::MirTypeRustOpaque;
         use $crate::codegen::ir::mir::ty::structure::MirTypeStructRef;
         use $crate::codegen::ir::mir::ty::trait_def::MirTypeTraitDef;
+        use $crate::codegen::ir::mir::ty::pin::MirTypePin;
         use $crate::codegen::ir::mir::ty::MirType;
         // cargo fix wrongly removes this import
         #[allow(unused_imports)]
