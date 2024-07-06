@@ -40,7 +40,7 @@ pub(crate) struct GeneratorWireInternalConfig {
     pub c: GeneratorWireCInternalConfig,
 }
 
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
+#[derive(Debug, Clone, Copy, Serialize, Deserialize, PartialEq, Eq)]
 pub(crate) enum DartEnumCase {
     Unchanged,
     Camel,

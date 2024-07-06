@@ -197,8 +197,11 @@ impl FrbAttributes {
             .join("\n\n")
     }
 
-    pub(crate) fn enum_case(&self) {
-        TODO
+    pub(crate) fn enum_case(&self) -> Option<DartEnumCase> {
+        self.0
+            .iter()
+            .filter_map(|item| if_then_some!(let FrbAttribute::EnumCase(inner) = item, *inner))
+            .next()
     }
 
     pub(crate) fn name(&self) -> Option<String> {
