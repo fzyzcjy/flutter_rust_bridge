@@ -98,7 +98,11 @@ void _updateVersionInText() {
 
   for (final relativePattern in [
     'frb_codegen/assets/integration_template/**',
-    ...kDartExamplePackages.expand((x) => ['$x/lib/**', '$x/rust/src/**']),
+    ...kDartExamplePackages.expand((x) => [
+          '$x/lib/**',
+          '$x/rust/src/**',
+          '$x/../src/**',
+        ]),
   ]) {
     for (final file in Glob('${exec.pwd}$relativePattern').listSync()) {
       if (file is File) {
