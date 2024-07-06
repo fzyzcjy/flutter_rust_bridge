@@ -18,7 +18,11 @@ import 'worklet.dart';
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AnalyserNode>>
 abstract class AnalyserNode
-    implements RustOpaqueInterface, AnalyserNodeExt, AudioNode {
+    implements
+        RustOpaqueInterface,
+        AnalyserNodeExt,
+        AnalyserNodeMiscExt,
+        AudioNode {
   Future<void> channelConfig();
 
   /// Represents an integer used to determine how many channels are used when up-mixing and
@@ -55,6 +59,10 @@ abstract class AnalyserNode
   Future<int> fftSize();
 
   Future<void> connect({required AudioNode dest});
+
+  Future<Uint8List> getByteTimeDomainData({required int len});
+
+  Future<Float32List> getFloatTimeDomainData({required int len});
 
   /// Number of bins in the FFT results, is half the FFT size
   ///
@@ -133,6 +141,7 @@ abstract class AudioBufferSourceNode
     implements
         RustOpaqueInterface,
         AudioBufferSourceNodeExt,
+        AudioBufferSourceNodeMiscExt,
         AudioBufferSourceNodeScheduledSourceNodeMiscExt,
         AudioNode,
         AudioScheduledSourceNode {
@@ -175,6 +184,8 @@ abstract class AudioBufferSourceNode
 
   Future<void> connect({required AudioNode dest});
 
+  Future<void> setBuffer({required AudioBuffer audioBuffer});
+
   /// Defines if the playback the [`AudioBuffer`] should be looped
   Future<bool> loop();
 
@@ -205,14 +216,6 @@ abstract class AudioBufferSourceNode
   Future<double> position();
 
   Future<void> registration();
-
-  /// Provide an [`AudioBuffer`] as the source of data to be played bask
-  ///
-  /// # Panics
-  ///
-  /// Panics if a buffer has already been given to the source (though `new` or through
-  /// `set_buffer`)
-  Future<void> setBuffer({required AudioBuffer audioBuffer});
 
   Future<void> setLoop({required bool value});
 
@@ -1159,7 +1162,11 @@ abstract class PannerNode
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ScriptProcessorNode>>
 abstract class ScriptProcessorNode
-    implements RustOpaqueInterface, AudioNode, ScriptProcessorNodeExt {
+    implements
+        RustOpaqueInterface,
+        AudioNode,
+        ScriptProcessorNodeExt,
+        ScriptProcessorNodeMiscExt {
   Future<int> bufferSize();
 
   Future<void> channelConfig();
@@ -1194,6 +1201,9 @@ abstract class ScriptProcessorNode
   Future<void> disconnectOutput({required int output});
 
   Future<void> connect({required AudioNode dest});
+
+  Future<void> setOnaudioprocess(
+      {required FutureOr<void> Function(AudioProcessingEvent) callback});
 
   Future<int> numberOfInputs();
 
