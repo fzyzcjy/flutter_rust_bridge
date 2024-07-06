@@ -1,5 +1,24 @@
 # Changelog
 
+## 2.1.0
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Add the ability to generate plugins from the CLI tool #2144 (thanks @mcmah309)
+* Fix codegen halt when having boxed trait objects #2180
+* Add attribute `#[frb(dart_async)]` #2181
+* Fix Dart closures cannot be encoded when using the new Dart JS interop #2191
+* Expose Rust executor's async runtime for customization #2151
+* Generate methods of Default trait #2150
+* Automatically rename function names to avoid keyword conflict #2150
+* Improve parsing trait impl in third party crates #2150
+* Support more attributes #2140
+* Fix generated use statement pointing to self #2140
+* Fix linter warning avoid_return_types_on_setters #2140
+* Reduce number of generated files #2140
+* Add default_dart_async configuration option #2139
+* Handle root module scenario in pub use transformer #2124
+* Improve hints when fails to parse a struct or enum #2124
+
 ## 2.0.0
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.

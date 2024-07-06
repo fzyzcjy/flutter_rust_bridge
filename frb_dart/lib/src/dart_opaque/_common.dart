@@ -10,8 +10,10 @@ Object decodeDartOpaque(
   return generalizedFrbRustBinding.dartOpaqueRust2DartDecode(raw);
 }
 
-/// {@macro flutter_rust_bridge.only_for_generated_code}
-PlatformPointer encodeDartOpaque(Object raw, NativePortType dartHandlerPort,
+/// {@macro flutter_rust_bridge.internal}
+PlatformPointer encodeDartOpaqueCommon(
+    Object raw,
+    NativePortType dartHandlerPort,
     GeneralizedFrbRustBinding generalizedFrbRustBinding) {
   return generalizedFrbRustBinding.dartOpaqueDart2RustEncode(
       raw, dartHandlerPort);

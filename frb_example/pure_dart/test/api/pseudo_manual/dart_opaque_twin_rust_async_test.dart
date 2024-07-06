@@ -25,7 +25,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(back1(), 'Test_String');
     var back2 = await loopBackTwinRustAsync(opaque: back1) as String Function();
     expect(back2(), 'Test_String');
-    expect(identical(back2, f), isTrue);
+    if (!kIsWeb) expect(identical(back2, f), isTrue);
   });
 
   test('drop', () async {
@@ -62,7 +62,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
     final output = await cloneDartOpaqueTwinRustAsync(opaque: opaque);
     expect(output.length, 10);
     for (final x in output) {
-      expect(identical(x, opaque), true);
+      if (!kIsWeb) expect(identical(x, opaque), true);
       expect((x as Function)(42), 42 + 1);
     }
   });

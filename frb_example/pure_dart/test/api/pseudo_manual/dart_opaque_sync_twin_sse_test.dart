@@ -19,7 +19,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('loopback', () {
     var syncBack = syncLoopbackTwinSse(opaque: f);
-    expect(identical(syncOptionLoopbackTwinSse(opaque: syncBack), f), isTrue);
+    expect((syncOptionLoopbackTwinSse(opaque: syncBack) as dynamic)(),
+        'Test_String');
     expect(syncOptionLoopbackTwinSse(opaque: null), isNull);
   });
 
