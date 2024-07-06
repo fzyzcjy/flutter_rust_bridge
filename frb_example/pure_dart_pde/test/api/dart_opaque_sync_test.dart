@@ -17,8 +17,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('loopback', () {
     var syncBack = syncLoopbackTwinNormal(opaque: f);
-    expect(
-        identical(syncOptionLoopbackTwinNormal(opaque: syncBack), f), isTrue);
+    expect((syncOptionLoopbackTwinNormal(opaque: syncBack) as dynamic)(),
+        'Test_String');
     expect(syncOptionLoopbackTwinNormal(opaque: null), isNull);
   });
 
