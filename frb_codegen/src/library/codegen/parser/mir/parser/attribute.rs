@@ -1,3 +1,4 @@
+use crate::codegen::config::internal_config::DartEnumCase;
 use crate::codegen::generator::codec::structs::{CodecMode, CodecModePack};
 use crate::codegen::ir::mir::annotation::MirDartAnnotation;
 use crate::codegen::ir::mir::default::MirDefaultValue;
@@ -196,6 +197,10 @@ impl FrbAttributes {
             .join("\n\n")
     }
 
+    pub(crate) fn enum_case(&self) {
+        TODO
+    }
+
     pub(crate) fn name(&self) -> Option<String> {
         self.0
             .iter()
@@ -286,6 +291,7 @@ mod frb_keyword {
     syn::custom_keyword!(import);
     syn::custom_keyword!(default);
     syn::custom_keyword!(dart_code);
+    syn::custom_keyword!(enum_case);
     syn::custom_keyword!(name);
     syn::custom_keyword!(rust2dart);
     syn::custom_keyword!(dart2rust);
@@ -313,6 +319,7 @@ impl Parse for FrbAttributesInner {
 enum FrbAttribute {
     Dart2Rust(FrbAttributeSerDes),
     DartCode(FrbAttributeDartCode),
+    EnumCase(DartEnumCase),
     Default(FrbAttributeDefaultValue),
     External,
     Getter,
@@ -420,6 +427,10 @@ impl Parse for FrbAttribute {
             input.parse::<dart_code>()?;
             input.parse::<Token![=]>()?;
             input.parse().map(DartCode)?
+        } else if lookahead.peek(enum_case) {
+            input.parse::<enum_case>()?;
+            input.parse::<Token![=]>()?;
+            input.parse().map(EnumCase)?
         } else if lookahead.peek(name) {
             input.parse::<name>()?;
             input.parse::<Token![=]>()?;
@@ -690,6 +701,7 @@ impl Parse for FrbAttributeSerDes {
 
 #[cfg(test)]
 mod tests {
+    use crate::codegen::config::internal_config::DartEnumCase;
     use crate::codegen::ir::mir::default::MirDefaultValue;
     use crate::codegen::parser::mir::parser::attribute::{
         FrbAttribute, FrbAttributeDartCode, FrbAttributeDefaultValue, FrbAttributeMirror,
@@ -867,6 +879,16 @@ mod tests {
             FrbAttributes(vec![FrbAttribute::DartCode(FrbAttributeDartCode(
                 "a\nb\nc".to_owned()
             ))])
+        );
+        Ok(())
+    }
+
+    #[test]
+    fn test_enum_case() -> anyhow::Result<()> {
+        let parsed = parse(r###"#[frb(enum_case = unchanged)]"###)?;
+        assert_eq!(
+            parsed.0,
+            vec![FrbAttribute::EnumCase(DartEnumCase::Unchanged)]
         );
         Ok(())
     }
