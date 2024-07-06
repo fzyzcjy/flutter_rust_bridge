@@ -1,6 +1,9 @@
 import 'package:flutter_rust_bridge/src/generalized_frb_rust_binding/generalized_frb_rust_binding.dart';
 import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
 
+// ignore: always_use_package_imports
+import '_io.dart' if (dart.library.js_interop) '_web.dart';
+
 export '_common.dart';
 export '_io.dart' if (dart.library.js_interop) '_web.dart';
 
@@ -8,5 +11,5 @@ export '_io.dart' if (dart.library.js_interop) '_web.dart';
 PlatformPointer encodeDartOpaque(Object raw, NativePortType dartHandlerPort,
     GeneralizedFrbRustBinding generalizedFrbRustBinding) {
   return generalizedFrbRustBinding.dartOpaqueDart2RustEncode(
-      raw, dartHandlerPort);
+      prepareDartOpaqueForEncoding(raw), dartHandlerPort);
 }
