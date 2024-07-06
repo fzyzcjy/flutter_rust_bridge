@@ -8,7 +8,3 @@ pub fn init_app() {
 pub fn minimal_adder(a: i32, b: i32) -> i32 {
     a + b
 }
-
-pub async fn rust_function(dart_callback: impl Fn(String) -> flutter_rust_bridge::DartFnFuture<String>) {
-    dart_callback("Tom".to_owned()).await; // Will get `Hello, Tom!`
-}
