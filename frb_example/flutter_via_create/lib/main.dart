@@ -4,6 +4,12 @@ import 'package:flutter_via_create/src/rust/frb_generated.dart';
 
 Future<void> main() async {
   await RustLib.init();
+
+      await rustFunction(dartCallback: (name) {
+        print("From rust: $name");
+        return "Hello, $name";
+      });
+
   runApp(const MyApp());
 }
 
