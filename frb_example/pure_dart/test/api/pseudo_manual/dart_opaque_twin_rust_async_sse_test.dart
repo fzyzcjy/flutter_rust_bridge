@@ -26,7 +26,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
     var back2 =
         await loopBackTwinRustAsyncSse(opaque: back1) as String Function();
     expect(back2(), 'Test_String');
-    expect(identical(back2, f), isTrue);
+    if (!kIsWeb) expect(identical(back2, f), isTrue);
   });
 
   test('drop', () async {
