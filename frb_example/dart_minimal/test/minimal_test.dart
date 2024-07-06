@@ -16,4 +16,11 @@ Future<void> main() async {
     print('Action: Call rust (after)');
   });
   print('Action: Configure tests (end)');
+
+  test('temp', () async {
+    await rustFunction(dartCallback: (name) {
+      print("From rust: $name");
+      return "Hello, $name";
+    });
+  });
 }
