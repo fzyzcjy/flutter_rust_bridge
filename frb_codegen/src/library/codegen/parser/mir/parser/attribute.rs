@@ -665,6 +665,12 @@ impl Parse for FrbAttributeDartCode {
     }
 }
 
+impl Parse for DartEnumCase {
+    fn parse(input: ParseStream) -> Result<Self> {
+        TODO
+    }
+}
+
 #[derive(Clone, Serialize, Eq, PartialEq, Debug)]
 struct FrbAttributeName(String);
 
