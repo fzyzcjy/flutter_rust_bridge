@@ -12,6 +12,8 @@ use serde::{Serialize, Serializer};
 use syn::parse::{Lookahead1, Parse, ParseStream, Peek};
 use syn::punctuated::Punctuated;
 use syn::*;
+use crate::codegen::parser::mir::parser::attribute::frb_keyword::{dart_code, default, enum_case, name};
+use crate::codegen::parser::mir::parser::attribute::FrbAttribute::{Dart2Rust, DartCode, DartMetadata, Default, EnumCase, Mirror, Name, Rust2Dart};
 
 const METADATA_IDENT: &str = "frb";
 
@@ -301,6 +303,9 @@ mod frb_keyword {
     syn::custom_keyword!(dart_type);
     syn::custom_keyword!(ui_state);
     syn::custom_keyword!(ui_mutation);
+
+    syn::custom_keyword!(unchanged);
+    syn::custom_keyword!(camel);
 }
 
 struct FrbAttributesInner(Vec<FrbAttribute>);
@@ -667,7 +672,16 @@ impl Parse for FrbAttributeDartCode {
 
 impl Parse for DartEnumCase {
     fn parse(input: ParseStream) -> Result<Self> {
-        TODO
+        let lookahead = input.lookahead1();
+        Ok(if lookahead.peek(frb_keyword::unchanged) {
+            input.parse::<frb_keyword::unchanged>()?;
+            Self::Unchanged
+        } else if lookahead.peek(frb_keyword::camel) {
+            input.parse::<frb_keyword::camel>()?;
+            Self::Camel
+        } else {
+            return Err(lookahead.error());
+        })
     }
 }
 
