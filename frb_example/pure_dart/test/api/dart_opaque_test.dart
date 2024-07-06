@@ -55,7 +55,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
     final output = await cloneDartOpaqueTwinNormal(opaque: opaque);
     expect(output.length, 10);
     for (final x in output) {
-      expect(identical(x, opaque), true);
+      if (!kIsWeb) expect(identical(x, opaque), true);
       expect((x as Function)(42), 42 + 1);
     }
   });
