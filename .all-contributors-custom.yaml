@@ -27,13 +27,13 @@
 - mcmah309: Add cli plugin scaffold generation.
 - AlienKevin: Add flutter example for macOS. Add doc for Android NDK bug. Improve migration doc.
 - alexthe2: Add Option Datetime. Add empty structs. Improve doc. Add `r#`. Fix mirror enum bug.
+- Larpoux: Fix async generation. Update web-audio-api binding.
 - banool: Fix pubspec parsing. Fix symbol-stripping doc.
 - anlumo: Fix freezed + methods. Non-clone RustOpaque.
 - temeddix: Fix broken CI. Custom num workers. Fix MacOS doc steps. Update doc. Make zero-copy defaultable.
 - NightFeather0615: Fix Vec bool.
 - OfficialBoyfriend: Fix error display.
 - Krysl: Add preamble.
-- Larpoux: Update web-audio-api binding.
 - w-ensink: Improve doc. Fix CI. Refactor. Add tests.
 - smw-wagnerma: Improve Windows encoding handling.
 - powpingdone: Document JNI init and libc++_static linking.
