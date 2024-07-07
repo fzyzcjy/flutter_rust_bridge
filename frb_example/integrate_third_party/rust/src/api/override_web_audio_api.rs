@@ -7,7 +7,9 @@ use std::sync::Arc;
 use web_audio_api::context::{AudioContext, BaseAudioContext, OfflineAudioContext};
 use web_audio_api::media_streams::{MediaStream, MediaStreamTrack};
 use web_audio_api::node::*;
-use web_audio_api::{AudioBuffer, AudioParam, Event, OfflineAudioCompletionEvent};
+use web_audio_api::{
+    AudioBuffer, AudioParam, AudioProcessingEvent, Event, OfflineAudioCompletionEvent,
+};
 
 #[ext]
 pub impl AudioContext {
@@ -43,6 +45,21 @@ pub impl AudioContext {
                 .async_runtime()
                 .spawn(async move { callback_cloned(event).await });
         })
+    }
+}
+
+#[ext(name = AnalyserNodeMiscExt)]
+pub impl AnalyserNode {
+    fn frb_override_get_byte_time_domain_data(&mut self, len: usize) -> Vec<u8> {
+        let mut bins = vec![0; len];
+        self.get_byte_time_domain_data(&mut bins);
+        bins
+    }
+
+    fn frb_override_get_float_time_domain_data(&mut self, len: usize) -> Vec<f32> {
+        let mut bins = vec![0.0; len];
+        self.get_float_time_domain_data(&mut bins);
+        bins
     }
 }
 
@@ -135,6 +152,32 @@ pub impl Event {
     #[frb(sync, getter)]
     fn type_(&self) -> String {
         self.type_.to_owned()
+    }
+}
+
+#[ext(name = ScriptProcessorNodeMiscExt)]
+pub impl ScriptProcessorNode {
+    // NOTE: The original name was `set_onaudioprocess` and here the new name has `_`
+    fn frb_override_set_onaudioprocess(
+        &self,
+        callback: impl Fn(AudioProcessingEvent) -> DartFnFuture<()> + Send + 'static + std::marker::Sync,
+    ) {
+        let callback = Arc::new(callback);
+        self.set_onaudioprocess(move |event| {
+            let callback_cloned = callback.clone();
+            FLUTTER_RUST_BRIDGE_HANDLER
+                .async_runtime()
+                .spawn(async move { callback_cloned(event).await });
+        })
+    }
+}
+
+#[ext(name = AudioBufferSourceNodeMiscExt)]
+pub impl AudioBufferSourceNode {
+    // calls the regular fn `setBuffer()` after cloning the argument.
+    fn frb_override_set_buffer(&mut self, audio_buffer: &AudioBuffer) {
+        let clone = audio_buffer.clone();
+        self.set_buffer(clone)
     }
 }
 
