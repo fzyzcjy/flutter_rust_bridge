@@ -352,6 +352,15 @@
       ]
     },
     {
+      "login": "Markus43",
+      "name": "Markus",
+      "avatar_url": "https://avatars.githubusercontent.com/u/23716360?v=4",
+      "profile": "https://github.com/Markus43",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
       "login": "Krysl",
       "name": "Krysl",
       "avatar_url": "https://avatars.githubusercontent.com/u/5905801?v=4",
@@ -917,15 +926,6 @@
       "profile": "https://thesimplekid.com",
       "contributions": [
         "doc"
-      ]
-    },
-    {
-      "login": "Markus43",
-      "name": "Markus",
-      "avatar_url": "https://avatars.githubusercontent.com/u/23716360?v=4",
-      "profile": "https://github.com/Markus43",
-      "contributions": [
-        "code"
       ]
     }
   ],

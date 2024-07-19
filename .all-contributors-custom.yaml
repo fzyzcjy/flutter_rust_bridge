@@ -33,6 +33,7 @@
 - temeddix: Fix broken CI. Custom num workers. Fix MacOS doc steps. Update doc. Make zero-copy defaultable.
 - NightFeather0615: Fix Vec bool.
 - OfficialBoyfriend: Fix error display.
+- Markus43: Fix folder removal.
 - Krysl: Add preamble.
 - w-ensink: Improve doc. Fix CI. Refactor. Add tests.
 - smw-wagnerma: Improve Windows encoding handling.
