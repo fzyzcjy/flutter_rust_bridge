@@ -12,7 +12,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     ) -> anyhow::Result<Option<MirType>> {
         // use HashMap etc later if too slow; here we use filter to remain flexibility of filtering strategy
         Ok((self.inner.custom_ser_des_infos.iter())
-            .find(|info| compute_matcher_types(info).contains(&last_segment.0.to_owned()))
+            .find(|info| compute_matcher_types(info).contains(&last_segment.name.to_owned()))
             .map(|info| {
                 MirType::Delegate(MirTypeDelegate::CustomSerDes(MirTypeDelegateCustomSerDes {
                     info: info.to_owned(),

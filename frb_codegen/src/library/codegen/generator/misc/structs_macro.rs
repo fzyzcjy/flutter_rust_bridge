@@ -24,7 +24,6 @@ macro_rules! codegen_generator_structs {
             StructRef,
             TraitDef,
             Future,
-            Pin,
         );
     );
     (@private $(#[$attribute:meta])* $generator_name:ident ; $($name:ident),*,) => (
@@ -45,7 +44,6 @@ macro_rules! codegen_generator_structs {
         use $crate::codegen::ir::mir::ty::rust_opaque::MirTypeRustOpaque;
         use $crate::codegen::ir::mir::ty::structure::MirTypeStructRef;
         use $crate::codegen::ir::mir::ty::trait_def::MirTypeTraitDef;
-        use $crate::codegen::ir::mir::ty::pin::MirTypePin;
         use $crate::codegen::ir::mir::ty::MirType;
         // cargo fix wrongly removes this import
         #[allow(unused_imports)]

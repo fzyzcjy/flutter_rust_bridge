@@ -8,6 +8,7 @@ use crate::codegen::parser::mir::parser::misc::extract_src_types_in_paths;
 use crate::codegen::parser::mir::parser::ty::path_data::extract_path_data;
 use crate::utils::namespace::NamespacedName;
 use itertools::Itertools;
+use syn::GenericArgument;
 use std::collections::{HashMap, HashSet};
 use syn::Type;
 
@@ -41,7 +42,7 @@ fn get_potential_struct_or_enum_names(ty: &MirType) -> anyhow::Result<Vec<String
     Ok(match ty {
         MirType::StructRef(ty) => vec![ty.ident.0.name.clone()],
         MirType::EnumRef(ty) => vec![ty.ident.0.name.clone()],
-        MirType::RustOpaque(ty) => get_potential_struct_or_enum_names_from_syn_type(
+        MirType::RustOpaque(ty) => get_potential_struct_or_enum_names_from_arg(
             &syn::parse_str(&ty.inner.0.with_static_lifetime())?,
         )?,
         MirType::Delegate(MirTypeDelegate::PrimitiveEnum(ty)) => vec![ty.mir.ident.0.name.clone()],
@@ -49,22 +50,29 @@ fn get_potential_struct_or_enum_names(ty: &MirType) -> anyhow::Result<Vec<String
     })
 }
 
-fn get_potential_struct_or_enum_names_from_syn_type(ty: &Type) -> anyhow::Result<Vec<String>> {
+fn get_potential_struct_or_enum_names_from_arg(arg: &GenericArgument) -> anyhow::Result<Vec<String>> {
+
+    let ty = match arg {
+        GenericArgument::AssocType(aty) => Some(aty.ty.clone()),
+        GenericArgument::Type(ty) => Some(ty.clone()),
+        _ => None
+    };
+
     Ok(match ty {
-        Type::Path(path) => {
+        Some(Type::Path(path)) => {
             let segments = extract_path_data(&path.path)?;
             let segment = segments.last().unwrap();
             [
                 vec![segment.ident.to_owned()],
                 (segment.args.iter())
-                    .map(get_potential_struct_or_enum_names_from_syn_type)
+                    .map(get_potential_struct_or_enum_names_from_arg)
                     .flatten_ok()
                     .collect::<anyhow::Result<Vec<_>>>()?,
             ]
             .concat()
         }
-        Type::Reference(reference) => {
-            get_potential_struct_or_enum_names_from_syn_type(&reference.elem)?
+        Some(Type::Reference(reference)) => {
+            get_potential_struct_or_enum_names_from_arg(&GenericArgument::Type(*reference.elem.clone()))?
         }
         // ... maybe more ...
         _ => vec![],
@@ -76,10 +84,10 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_get_potential_struct_or_enum_names_from_syn_type() {
+    fn test_get_potential_struct_or_enum_names_from_arg() {
         fn body(s: &str, matcher: Vec<&str>) {
             assert_eq!(
-                get_potential_struct_or_enum_names_from_syn_type(&syn::parse_str(s).unwrap())
+                get_potential_struct_or_enum_names_from_arg(&syn::parse_str(s).unwrap())
                     .unwrap(),
                 matcher.into_iter().map(|x| x.to_owned()).collect_vec(),
             );

@@ -3,13 +3,13 @@ use crate::codegen::ir::mir::ty::optional::MirTypeOptional;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::ir::mir::ty::MirType::{
     Boxed, DartFn, DartOpaque, Delegate, Dynamic, EnumRef, GeneralList, Optional, Primitive,
-    PrimitiveList, Record, RustAutoOpaqueImplicit, RustOpaque, StructRef, Future, Pin,
+    PrimitiveList, Record, RustAutoOpaqueImplicit, RustOpaque, StructRef, Future,
 };
 use crate::codegen::parser::mir::parser::ty::unencodable::SplayedSegment;
 use crate::codegen::parser::mir::parser::ty::TypeParserWithContext;
 use anyhow::ensure;
 use quote::ToTokens;
-use syn::TypePath;
+use syn::{GenericArgument, TypePath};
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_path_data_optional(
@@ -17,7 +17,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         type_path: &TypePath,
         last_segment: &SplayedSegment,
     ) -> anyhow::Result<Option<MirType>> {
-        Ok(Some(match last_segment {
+        Ok(Some(match (last_segment.name, last_segment.type_arguments().as_slice()) {
             ("Option", [inner]) => {
                 let inner = self.parse_type(inner)?;
 
@@ -39,7 +39,6 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                     | DartFn(..)
                     | Future(..)
                     | Primitive(..)
-                    | Pin(..)
                     | Record(..)
                     | Delegate(MirTypeDelegate::PrimitiveEnum(..)) => {
                         MirTypeOptional::new_with_boxed_wrapper(inner.clone())

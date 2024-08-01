@@ -14,7 +14,6 @@ pub(crate) mod rust_auto_opaque_implicit;
 pub(crate) mod rust_opaque;
 mod structure;
 mod trait_def;
-mod pin;
 
 use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig;
 use crate::codegen::generator::api_dart::spec_generator::base::ApiDartGeneratorContext;

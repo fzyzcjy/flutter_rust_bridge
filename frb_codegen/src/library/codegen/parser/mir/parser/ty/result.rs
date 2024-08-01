@@ -3,7 +3,9 @@ use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::ir::mir::ty::MirType::{EnumRef, StructRef};
 use crate::codegen::parser::mir::parser::ty::unencodable::splay_segments;
 use crate::codegen::parser::mir::parser::ty::{TypeParser, TypeParserParsingContext};
+use crate::if_then_some;
 use anyhow::Context;
+use syn::GenericArgument;
 
 #[allow(clippy::single_match)] // deliberate do so to ensure style consistency
 pub(crate) fn parse_type_maybe_result(
@@ -12,15 +14,17 @@ pub(crate) fn parse_type_maybe_result(
     context: &TypeParserParsingContext,
 ) -> anyhow::Result<ResultTypeInfo> {
     if let MirType::RustAutoOpaqueImplicit(inner) = mir {
-        match splay_segments(&inner.raw.segments).last() {
-            Some(("Result", args)) => {
-                return parse_type_result(
-                    &(args.iter())
-                        .map(|arg| type_parser.parse_type(arg, context))
-                        .collect::<anyhow::Result<Vec<_>>>()?,
-                );
+        if let Some(last_segment) = splay_segments(&inner.raw.segments).last() {
+            match (last_segment.name, last_segment.type_arguments().as_slice()) {
+                ("Result", args) => {
+                    return parse_type_result(
+                        &(args.iter())
+                            .map(|arg| type_parser.parse_type(&arg, context))
+                            .collect::<anyhow::Result<Vec<_>>>()?,
+                    );
+                }
+                _ => {}
             }
-            _ => {}
         }
     }
 

@@ -9,7 +9,7 @@ use quote::ToTokens;
 use regex::Regex;
 use serde::{Deserialize, Serialize, Serializer};
 use strum_macros::{Display, EnumIter};
-use syn::Type;
+use syn::{AssocType, GenericArgument, Type};
 
 crate::mir! {
 pub struct MirTypeRustOpaque {
@@ -108,7 +108,7 @@ impl MirRustOpaqueInner {
 pub struct NameComponent {
     pub ident: String,
     #[serde(serialize_with = "serialize_vec_syn")]
-    pub args: Vec<Type>,
+    pub args: Vec<GenericArgument>,
 }
 
 fn serialize_vec_syn<T: ToTokens, S: Serializer>(values: &[T], s: S) -> Result<S::Ok, S::Error> {

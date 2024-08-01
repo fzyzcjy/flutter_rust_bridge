@@ -14,7 +14,6 @@ mod rust_opaque;
 mod structure;
 mod trait_def;
 mod future;
-mod pin;
 
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::target::Target;

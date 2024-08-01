@@ -38,6 +38,7 @@ pub enum MirTypeDelegate {
     DynTrait(MirTypeDelegateDynTrait),
     Lifetimeable(MirTypeDelegateLifetimeable),
     CustomSerDes(MirTypeDelegateCustomSerDes),
+    Future(MirTypeDelegateFuture)
 }
 
 pub struct MirTypeDelegateArray {
@@ -72,6 +73,10 @@ pub struct MirTypeDelegateMap {
 }
 
 pub struct MirTypeDelegateSet {
+    pub inner: Box<MirType>,
+}
+
+pub struct MirTypeDelegateFuture {
     pub inner: Box<MirType>,
 }
 
@@ -199,6 +204,9 @@ impl MirTypeTrait for MirTypeDelegate {
             MirTypeDelegate::CustomSerDes(mir) => {
                 format!("CustomSerializer_{}", mir.info.rust_api_type.safe_ident())
             }
+            MirTypeDelegate::Future(mir) => {
+                format!("Future_{}", mir.inner.safe_ident())
+            }
         }
     }
 
@@ -271,6 +279,7 @@ impl MirTypeTrait for MirTypeDelegate {
             MirTypeDelegate::ProxyEnum(mir) => mir.original.rust_api_type(),
             MirTypeDelegate::Lifetimeable(mir) => mir.api_type.rust_api_type(),
             MirTypeDelegate::CustomSerDes(mir) => mir.info.rust_api_type.rust_api_type(),
+            MirTypeDelegate::Future(mir) => mir.inner.rust_api_type(),
         }
     }
 
@@ -349,6 +358,7 @@ impl MirTypeDelegate {
                 MirTypeDelegate::RustAutoOpaqueExplicit(mir.delegate.clone()),
             ),
             MirTypeDelegate::CustomSerDes(mir) => *mir.info.inner_type.clone(),
+            MirTypeDelegate::Future(mir) => *mir.inner.clone(),
         }
     }
 }
