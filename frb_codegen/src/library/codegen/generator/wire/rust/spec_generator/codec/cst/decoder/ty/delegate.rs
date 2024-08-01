@@ -103,6 +103,10 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
                 io: Some("flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_decode(self.cst_decode())".into()),
                 ..Default::default()
             },
+            MirTypeDelegate::Future(_) => {  r###"// TODO: frb_codegen/src/library/codegen/generator/wire/rust/spec_generator/codec/cst/decoder/ty/delegate.rs: generate_impl_decode_body  MirTypeDelegate::Future
+                unimplemented!()
+            "###.into()  }
+
             // Do not care about these unimplemented things
             // frb-coverage:ignore-start
             MirTypeDelegate::ProxyVariant(_)
@@ -142,6 +146,10 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
                     .into()
             }
             MirTypeDelegate::Backtrace | MirTypeDelegate::AnyhowException | MirTypeDelegate::DynTrait(_) => "unimplemented!()".into(),
+            MirTypeDelegate::Future(_) => { r###"// TODO: frb_codegen/src/library/codegen/generator/wire/rust/spec_generator/codec/cst/decoder/ty/delegate.rs: generate_impl_decode_jsvalue_body  MirTypeDelegate::Future
+                unimplemented!()
+            "###.into() }
+
             MirTypeDelegate::Array(array) => generate_decode_array(array)
                 .into(),
             MirTypeDelegate::Map(mir) => generate_decode_map(mir).into(),

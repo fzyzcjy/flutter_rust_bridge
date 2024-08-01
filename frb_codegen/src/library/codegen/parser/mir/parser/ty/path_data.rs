@@ -2,7 +2,8 @@ use crate::codegen::ir::mir::ty::rust_opaque::NameComponent;
 use crate::if_then_some;
 use anyhow::Result;
 use syn::{
-    AngleBracketedGenericArguments, GenericArgument, Path, PathArguments, PathSegment, Type,
+    AngleBracketedGenericArguments, AssocType, GenericArgument, Path, PathArguments, PathSegment,
+    Type,
 };
 
 pub(crate) fn extract_path_data(path: &Path) -> Result<Vec<NameComponent>> {
@@ -14,7 +15,7 @@ fn parse_path_segment(segment: &PathSegment) -> Result<NameComponent> {
     let args = match &segment.arguments {
         PathArguments::None => vec![],
         PathArguments::AngleBracketed(args) => {
-            parse_angle_bracketed_generic_arguments(args)
+            args.args.iter().map(|arg| arg.to_owned()).collect()
             // .with_context(|| {
             //     // This will stop the whole generator and tell the users, so we do not care about testing it
             //     // frb-coverage:ignore-start
@@ -35,13 +36,6 @@ fn parse_path_segment(segment: &PathSegment) -> Result<NameComponent> {
         // )),
     };
     Ok(NameComponent { ident, args })
-}
-
-pub fn parse_angle_bracketed_generic_arguments(args: &AngleBracketedGenericArguments) -> Vec<Type> {
-    args.args
-        .iter()
-        .filter_map(|arg| if_then_some!(let GenericArgument::Type(ty) = arg, ty.to_owned()))
-        .collect()
 }
 
 // not used yet

@@ -3,7 +3,6 @@ use crate::codegen::ir::mir::ty::dart_fn::MirTypeDartFn;
 use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
 use crate::codegen::ir::mir::ty::future::MirTypeFuture;
 use crate::codegen::ir::mir::ty::MirType;
-use crate::codegen::parser::mir::parser::ty::path_data::parse_angle_bracketed_generic_arguments;
 use crate::codegen::parser::mir::parser::ty::result::{parse_type_maybe_result, ResultTypeInfo};
 use crate::codegen::parser::mir::parser::ty::TypeParserWithContext;
 use crate::if_then_some;

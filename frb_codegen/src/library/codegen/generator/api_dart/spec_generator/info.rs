@@ -34,13 +34,6 @@ impl<'a> ApiDartGeneratorInfoTrait for FutureApiDartGenerator<'a> {
     }
 }
 
-impl<'a> ApiDartGeneratorInfoTrait for PinApiDartGenerator<'a> {
-    fn dart_api_type(&self) -> String {
-        let inner = ApiDartGenerator::new(self.mir.inner.clone(), self.context);
-        inner.dart_api_type()
-    }
-}
-
 impl<'a> ApiDartGeneratorInfoTrait for DartFnApiDartGenerator<'a> {
     fn dart_api_type(&self) -> String {
         format!(
@@ -123,6 +116,10 @@ impl<'a> ApiDartGeneratorInfoTrait for DelegateApiDartGenerator<'a> {
                 ApiDartGenerator::new(mir.api_type.clone(), self.context).dart_api_type()
             }
             MirTypeDelegate::CustomSerDes(mir) => mir.info.dart_api_type.clone(),
+            MirTypeDelegate::Future(mir) => format!(
+                "Future<{}>",
+                ApiDartGenerator::new(*mir.inner.clone(), self.context).dart_api_type(),
+            ),
         }
     }
 

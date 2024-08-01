@@ -65,6 +65,8 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 MirTypeDelegate::CustomSerDes(mir) => {
                     mir.info.dart2rust.dart_code.replace("{}", "self")
                 }
+                MirTypeDelegate::Future(_) => { "// TODO: frb_codegen/src/library/codegen/generator/codec/sse/ty/delegate.rs: generate_encode.DartLang  MirTypeDelegate::Future".to_owned() }
+
             },
             Lang::RustLang(_) => match &self.mir {
                 MirTypeDelegate::Array(_) => {
@@ -109,6 +111,8 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     "flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_encode(self)"
                         .to_owned()
                 }
+                MirTypeDelegate::Future(_) => { "// TODO: frb_codegen/src/library/codegen/generator/codec/sse/ty/delegate.rs: generate_encode.RustLang  MirTypeDelegate::Future".to_owned() }
+
                 MirTypeDelegate::ProxyVariant(_)
                 | MirTypeDelegate::ProxyEnum(_)
                 | MirTypeDelegate::DynTrait(_)
@@ -173,6 +177,8 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     | MirTypeDelegate::ProxyEnum(_) => {
                         return Some(format!("{};", lang.throw_unreachable("")));
                     }
+                    MirTypeDelegate::Future(_) => { "// TODO: frb_codegen/src/library/codegen/generator/codec/sse/ty/delegate.rs: generate_decode.DartLang  MirTypeDelegate::Future".to_owned() }
+
                     MirTypeDelegate::BigPrimitive(_) => "BigInt.parse(inner)".to_owned(),
                     MirTypeDelegate::CastedPrimitive(_) => "inner.toInt()".to_owned(),
                     MirTypeDelegate::RustAutoOpaqueExplicit(_ir) => "inner".to_owned(),
@@ -225,6 +231,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     "flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_decode(inner)"
                         .to_owned()
                 }
+                MirTypeDelegate::Future(_) => { "// TODO: frb_codegen/src/library/codegen/generator/codec/sse/ty/delegate.rs: generate_decode.RustLang  MirTypeDelegate::Future".to_owned() }
                 MirTypeDelegate::ProxyVariant(_)
                 | MirTypeDelegate::ProxyEnum(_)
                 | MirTypeDelegate::DynTrait(_)

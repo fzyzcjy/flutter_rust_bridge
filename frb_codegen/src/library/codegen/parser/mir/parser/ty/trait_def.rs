@@ -8,7 +8,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         &mut self,
         last_segment: &SplayedSegment,
     ) -> anyhow::Result<Option<MirType>> {
-        Ok(parse_type_trait(last_segment.0, self.inner).map(MirType::TraitDef))
+        Ok(parse_type_trait(last_segment.name, self.inner).map(MirType::TraitDef))
     }
 }
 

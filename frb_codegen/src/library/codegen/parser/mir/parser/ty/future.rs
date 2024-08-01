@@ -1,12 +1,14 @@
-use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
+use crate::codegen::ir::mir::ty::boxed::MirTypeBoxed;
+use crate::codegen::ir::mir::ty::delegate::{MirTypeDelegate, MirTypeDelegateDynTrait};
 use crate::codegen::ir::mir::ty::future::MirTypeFuture;
-use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::ir::mir::ty::MirType::{
-    Boxed, DartFn, DartOpaque, Delegate, Dynamic, EnumRef, GeneralList, Optional, Primitive,
-    PrimitiveList, Record, RustAutoOpaqueImplicit, RustOpaque, StructRef, Future, Pin,
+    Boxed, DartFn, DartOpaque, Delegate, Dynamic, EnumRef, Future, GeneralList, Optional,
+    Primitive, PrimitiveList, Record, RustAutoOpaqueImplicit, RustOpaque, StructRef,
 };
+use crate::codegen::ir::mir::ty::{MirType, MirTypeTrait};
 use crate::codegen::parser::mir::parser::ty::unencodable::SplayedSegment;
 use crate::codegen::parser::mir::parser::ty::TypeParserWithContext;
+use crate::utils::namespace::{Namespace, NamespacedName};
 use anyhow::ensure;
 use quote::ToTokens;
 use syn::TypePath;
@@ -16,8 +18,9 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         &mut self,
         type_path: &TypePath,
         last_segment: &SplayedSegment,
+        _splayed_segments: &[SplayedSegment],
     ) -> anyhow::Result<Option<MirType>> {
-        Ok(Some(match last_segment {
+        Ok(Some(match (last_segment.name, last_segment.type_arguments().as_slice()) {
             ("DartFnFuture", [inner]) => {
                 let inner = self.parse_type(inner)?;
 
@@ -40,7 +43,6 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                     | Primitive(..)
                     | Record(..)
                     | Optional(..)
-                    | Pin(..)
                     | Delegate(MirTypeDelegate::PrimitiveEnum(..)) => {
                         MirTypeFuture::new_with_boxed_wrapper(inner.clone())
                     }
@@ -51,14 +53,27 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                         MirTypeFuture::new(inner.clone())
                     }
                     // frb-coverage:ignore-start
+                    // TODO (@vhdirk): Is this really unreachable?
                     Future(_) | MirType::TraitDef(_) => unreachable!(),
                     // frb-coverage:ignore-end
                 })
             }
+            ("Pin", [inner]) => {
+                match self.parse_type(&inner)? {
+                    Boxed(MirTypeBoxed { inner, .. }) => match *inner {
+                        MirType::Delegate(MirTypeDelegate::Future(future)) => Future(MirTypeFuture{ output: future.inner.clone()}),
+                        _ => return Ok(None),
+                    },
+                    _ => return Ok(None),
+                };
+
+                return Ok(None);
+            }
 
             // TODO: parse pin<box<dyn future>> here?
-
             _ => return Ok(None),
         }))
     }
+
+
 }

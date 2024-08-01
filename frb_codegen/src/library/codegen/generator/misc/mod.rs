@@ -23,7 +23,6 @@ pub fn is_js_value(ty: &MirType) -> bool {
         | MirType::DartOpaque(_)
         | MirType::DartFn(_)
         | MirType::Future(_)
-        | MirType::Pin(_)
         | MirType::Record(_) => true,
         MirType::Boxed(MirTypeBoxed { inner, .. }) => is_js_value(inner),
         MirType::Delegate(inner) => is_js_value(&inner.get_delegate()),
