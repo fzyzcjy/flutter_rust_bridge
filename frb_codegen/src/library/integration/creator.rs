@@ -79,30 +79,40 @@ fn remove_unnecessary_plugin_files(dart_root: &Path) -> anyhow::Result<()> {
     remove_files_in_dir(&example_lib_dir)?;
 
     let android_dir = dart_root.join("android");
-    let android_src_dir = &android_dir.join("src");
-    let android_src_main_dir = &android_src_dir.join("main");
-    remove_files_in_dir(android_src_main_dir)?;
-    fs::remove_dir(android_src_main_dir)?;
-    fs::remove_dir(android_src_dir)?;
-    remove_files_in_dir(&android_dir)?;
+    if android_dir.exists() {
+        let android_src_dir = &android_dir.join("src");
+        let android_src_main_dir = &android_src_dir.join("main");
+        remove_files_in_dir(android_src_main_dir)?;
+        fs::remove_dir(android_src_main_dir)?;
+        fs::remove_dir(android_src_dir)?;
+        remove_files_in_dir(&android_dir)?;
+    }
 
     let ios_dir = dart_root.join("ios");
-    let ios_classes_dir = &ios_dir.join("Classes");
-    remove_files_in_dir(ios_classes_dir)?;
-    fs::remove_dir(ios_classes_dir)?;
-    remove_files_in_dir(&ios_dir)?;
+    if ios_dir.exists() {
+        let ios_classes_dir = &ios_dir.join("Classes");
+        remove_files_in_dir(ios_classes_dir)?;
+        fs::remove_dir(ios_classes_dir)?;
+        remove_files_in_dir(&ios_dir)?;
+    }
 
     let linux_dir = dart_root.join("linux");
-    remove_files_in_dir(&linux_dir)?;
+    if linux_dir.exists() {
+        remove_files_in_dir(&linux_dir)?;
+    }
 
     let macos_dir = dart_root.join("macos");
-    let macos_classes_dir = &macos_dir.join("Classes");
-    remove_files_in_dir(macos_classes_dir)?;
-    fs::remove_dir(macos_classes_dir)?;
-    remove_files_in_dir(&macos_dir)?;
+    if macos_dir.exists() {
+        let macos_classes_dir = &macos_dir.join("Classes");
+        remove_files_in_dir(macos_classes_dir)?;
+        fs::remove_dir(macos_classes_dir)?;
+        remove_files_in_dir(&macos_dir)?;
+    }
 
     let windows_dir = dart_root.join("windows");
-    remove_files_in_dir(&windows_dir)?;
+    if windows_dir.exists() {
+        remove_files_in_dir(&windows_dir)?;
+    }
 
     Ok(())
 }
