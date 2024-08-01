@@ -6,24 +6,26 @@ use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::mir::parser::ty::unencodable::SplayedSegment;
 use crate::codegen::parser::mir::parser::ty::TypeParserWithContext;
 use crate::utils::namespace::Namespace;
-use syn::{GenericArgument, Type};
+use syn::Type;
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_path_data_rust_auto_opaque_explicit(
         &mut self,
         last_segment: &SplayedSegment,
     ) -> anyhow::Result<Option<MirType>> {
-        Ok(Some(match (last_segment.name, last_segment.type_arguments().as_slice()) {
-            ("RustAutoOpaque", [ty]) => self.parse_rust_auto_opaque_explicit(ty, None, None)?,
-            ("RustAutoOpaqueNom", [ty]) => {
-                self.parse_rust_auto_opaque_explicit(ty, None, Some(RustOpaqueCodecMode::Nom))?
-            }
-            ("RustAutoOpaqueMoi", [ty]) => {
-                self.parse_rust_auto_opaque_explicit(ty, None, Some(RustOpaqueCodecMode::Moi))?
-            }
+        Ok(Some(
+            match (last_segment.name, last_segment.type_arguments().as_slice()) {
+                ("RustAutoOpaque", [ty]) => self.parse_rust_auto_opaque_explicit(ty, None, None)?,
+                ("RustAutoOpaqueNom", [ty]) => {
+                    self.parse_rust_auto_opaque_explicit(ty, None, Some(RustOpaqueCodecMode::Nom))?
+                }
+                ("RustAutoOpaqueMoi", [ty]) => {
+                    self.parse_rust_auto_opaque_explicit(ty, None, Some(RustOpaqueCodecMode::Moi))?
+                }
 
-            _ => return Ok(None),
-        }))
+                _ => return Ok(None),
+            },
+        ))
     }
 
     fn parse_rust_auto_opaque_explicit(

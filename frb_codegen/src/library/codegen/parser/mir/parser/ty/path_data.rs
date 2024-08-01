@@ -1,10 +1,6 @@
 use crate::codegen::ir::mir::ty::rust_opaque::NameComponent;
-use crate::if_then_some;
 use anyhow::Result;
-use syn::{
-    AngleBracketedGenericArguments, AssocType, GenericArgument, Path, PathArguments, PathSegment,
-    Type,
-};
+use syn::{Path, PathArguments, PathSegment};
 
 pub(crate) fn extract_path_data(path: &Path) -> Result<Vec<NameComponent>> {
     path.segments.iter().map(parse_path_segment).collect()
