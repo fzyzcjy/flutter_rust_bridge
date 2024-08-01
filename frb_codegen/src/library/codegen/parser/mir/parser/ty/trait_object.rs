@@ -6,8 +6,6 @@ use crate::codegen::parser::mir::parser::ty::trait_def::parse_type_trait;
 use crate::codegen::parser::mir::parser::ty::TypeParserWithContext;
 use crate::codegen::parser::mir::ParseMode;
 use crate::if_then_some;
-use crate::utils::namespace::{Namespace, NamespacedName};
-use crate::utils::syn_utils::ty_to_string;
 use anyhow::Context;
 use syn::TypeTraitObject;
 
@@ -20,21 +18,20 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         type_trait_object: &TypeTraitObject,
     ) -> anyhow::Result<MirType> {
         // frb-coverage:ignore-end
-        // if let Some(trait_name_path) = extract_trait_name_path(type_trait_object) {
-        //     let trait_name = ty_to_string(&trait_name_path.segments.last().unwrap());
-        //     if let Some(trait_ty) = parse_type_trait(&trait_name, self.inner) {
-
         if let Some(trait_name_path) = extract_trait_name_path(type_trait_object) {
             let segments = extract_path_data(&trait_name_path)?;
             let splayed_segments = splay_segments(&segments);
 
             if let Some(last_segment) = splayed_segments.last() {
-
-                if let Some(out) = self.parse_type_trait_object_concrete(&last_segment, &splayed_segments)? {
+                if let Some(out) =
+                    self.parse_type_trait_object_concrete(&last_segment, &splayed_segments)?
+                {
                     return Ok(out);
                 }
 
-                if let Some(out) = self.parse_type_trait_object_core(&last_segment, &splayed_segments)? {
+                if let Some(out) =
+                    self.parse_type_trait_object_core(&last_segment, &splayed_segments)?
+                {
                     return Ok(out);
                 }
             }
@@ -49,8 +46,6 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         )
     }
 
-
-
     // the function signature is not covered while the whole body is covered - looks like a bug in coverage tool
     // frb-coverage:ignore-start
     fn parse_type_trait_object_core(
@@ -59,7 +54,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         _splayed_segments: &[SplayedSegment],
     ) -> anyhow::Result<Option<MirType>> {
         // frb-coverage:ignore-end
-        let SplayedSegment{name, ..} = last_segment;
+        let SplayedSegment { name, .. } = last_segment;
         if let Some(trait_ty) = parse_type_trait(name, self.inner) {
             let data = match self.context.parse_mode {
                 ParseMode::Early => None,

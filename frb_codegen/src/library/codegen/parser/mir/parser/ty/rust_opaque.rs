@@ -10,24 +10,26 @@ use crate::utils::namespace::Namespace;
 use quote::ToTokens;
 use std::collections::HashMap;
 use std::fmt::Debug;
-use syn::{GenericArgument, Type};
+use syn::Type;
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_path_data_rust_opaque(
         &mut self,
         last_segment: &SplayedSegment,
     ) -> anyhow::Result<Option<MirType>> {
-        Ok(Some(match (last_segment.name, last_segment.type_arguments().as_slice()) {
-            ("RustOpaque", [ty]) => self.parse_rust_opaque(&ty, None)?,
-            ("RustOpaqueNom", [ty]) => {
-                self.parse_rust_opaque(&ty, Some(RustOpaqueCodecMode::Nom))?
-            }
-            ("RustOpaqueMoi", [ty]) => {
-                self.parse_rust_opaque(&ty, Some(RustOpaqueCodecMode::Moi))?
-            }
+        Ok(Some(
+            match (last_segment.name, last_segment.type_arguments().as_slice()) {
+                ("RustOpaque", [ty]) => self.parse_rust_opaque(&ty, None)?,
+                ("RustOpaqueNom", [ty]) => {
+                    self.parse_rust_opaque(&ty, Some(RustOpaqueCodecMode::Nom))?
+                }
+                ("RustOpaqueMoi", [ty]) => {
+                    self.parse_rust_opaque(&ty, Some(RustOpaqueCodecMode::Moi))?
+                }
 
-            _ => return Ok(None),
-        }))
+                _ => return Ok(None),
+            },
+        ))
     }
 
     fn parse_rust_opaque(

@@ -16,7 +16,7 @@ use crate::codegen::parser::mir::parser::ty::TypeParserWithContext;
 use crate::if_then_some;
 use anyhow::{bail, Context};
 use itertools::Itertools;
-use syn::{parse_str, GenericArgument, Type, TypeTraitObject};
+use syn::{parse_str, PathSegment, Type};
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_path_data_concrete(
@@ -152,16 +152,41 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         let _check_prefix =
             |matcher: &str| non_last_segments == matcher || non_last_segments.is_empty();
 
-        Ok(Some(match (last_segment.name, last_segment.associated_type_arguments().as_slice()) {
-            // TODO (@vhdirk): can we check the prefix here?
-            ("Future", [inner]) => {
-                let inner = self.parse_type(&inner.ty)?;
-                Delegate(MirTypeDelegate::Future(MirTypeDelegateFuture {
-                    inner: Box::new(inner),
-                }))
-            }
+        Ok(Some(
+            match (
+                last_segment.name,
+                last_segment.associated_type_arguments().as_slice(),
+            ) {
+                // TODO (@vhdirk): can we check the prefix here?
+                ("Future", [inner]) => {
+                    let inner = self.parse_type(&inner.ty)?;
+                    Delegate(MirTypeDelegate::Future(MirTypeDelegateFuture {
+                        inner: Box::new(inner),
+                    }))
+                }
+                _ => return Ok(None),
+            },
+        ))
+    }
+
+    pub(crate) fn parse_type_impl_trait_concrete(
+        &mut self,
+        name: &str,
+        last_segment: &PathSegment,
+    ) -> anyhow::Result<Option<MirType>> {
+        match &name[..] {
+            // TODO Currently, we treat `FnOnce` same as `Fn`,
+            //      but in the future we can optimize this because we no longer need Arc or Clone for this case.
+            "FnOnce" | "Fn" => self.parse_type_impl_trait_dart_fn(name, last_segment),
+
+            // When the return type is an `impl Future`, we have to fetch the `Output` type and mark the function as `async`
+            "Future" => self.parse_type_impl_trait_future(name, last_segment),
+
+            // This will stop the whole generator and tell the users, so we do not care about testing it
+            // frb-coverage:ignore-start
             _ => return Ok(None),
-        }))
+            // frb-coverage:ignore-end
+        }
     }
 }
 

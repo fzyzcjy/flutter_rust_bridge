@@ -9,7 +9,7 @@ use quote::ToTokens;
 use regex::Regex;
 use serde::{Deserialize, Serialize, Serializer};
 use strum_macros::{Display, EnumIter};
-use syn::{AssocType, GenericArgument, Type};
+use syn::GenericArgument;
 
 crate::mir! {
 pub struct MirTypeRustOpaque {

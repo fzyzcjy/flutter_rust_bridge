@@ -8,9 +8,9 @@ use crate::codegen::ir::mir::ty::MirType::{
 };
 use crate::codegen::parser::mir::parser::ty::unencodable::SplayedSegment;
 use crate::codegen::parser::mir::parser::ty::TypeParserWithContext;
-use anyhow::ensure;
+use anyhow::{bail, ensure, Context};
 use quote::ToTokens;
-use syn::TypePath;
+use syn::{GenericArgument, PathArguments, PathSegment, TypePath};
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_path_data_future(
@@ -73,5 +73,29 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                 _ => return Ok(None),
             },
         ))
+    }
+
+    pub(crate) fn parse_type_impl_trait_future(
+        &mut self,
+        name: &str,
+        segment: &PathSegment,
+    ) -> anyhow::Result<Option<MirType>> {
+        if let PathArguments::AngleBracketed(arguments) = &segment.arguments {
+            // Since Fn/FnOnce are handled by `Parenthesized`, here we can assume the bracketed type is indeed a `Future`, and
+            // we can safely grab the `Output=` associated type. There should be only one.
+
+            let output = match arguments.args.first() {
+                Some(GenericArgument::AssocType(assoc_ty)) => self
+                    .parse_type(&assoc_ty.ty)
+                    .context("cannot parse future output type"),
+                _ => bail!("Unknown type args for: {name}"),
+            }?;
+
+            return Ok(Some(MirType::Future(MirTypeFuture {
+                output: Box::new(output),
+            })));
+        }
+
+        Ok(None)
     }
 }

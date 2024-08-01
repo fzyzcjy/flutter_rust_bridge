@@ -3,9 +3,7 @@ use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::ir::mir::ty::MirType::{EnumRef, StructRef};
 use crate::codegen::parser::mir::parser::ty::unencodable::splay_segments;
 use crate::codegen::parser::mir::parser::ty::{TypeParser, TypeParserParsingContext};
-use crate::if_then_some;
 use anyhow::Context;
-use syn::GenericArgument;
 
 #[allow(clippy::single_match)] // deliberate do so to ensure style consistency
 pub(crate) fn parse_type_maybe_result(
