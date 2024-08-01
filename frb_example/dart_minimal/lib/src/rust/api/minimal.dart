@@ -13,7 +13,7 @@ Future<int> minimalAdder({required int a, required int b}) =>
 abstract class MyStruct implements RustOpaqueInterface {
   Future<String> exampleAsyncFuture();
 
-  Future<PinBoxFutureOutputString> exampleAsyncFuture2();
+  Future<String> exampleAsyncFuture2();
 
   Future<String> exampleAsyncMethod();
 
@@ -22,9 +22,6 @@ abstract class MyStruct implements RustOpaqueInterface {
   static Future<void> exampleStaticMethod() =>
       RustLib.instance.api.crateApiMinimalMyStructExampleStaticMethod();
 }
-
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Pin < Box < dyn Future < Output = String > + Send + 'static > >>>
-abstract class PinBoxFutureOutputString implements RustOpaqueInterface {}
 
 abstract class MyAsyncTrait {
   Future<Uint8List> exampleAsyncMethod(

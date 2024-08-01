@@ -82,7 +82,7 @@ abstract class RustLibApi extends BaseApi {
   Future<String> crateApiMinimalMyStructExampleAsyncFuture(
       {required MyStruct that});
 
-  Future<PinBoxFutureOutputString> crateApiMinimalMyStructExampleAsyncFuture2(
+  Future<String> crateApiMinimalMyStructExampleAsyncFuture2(
       {required MyStruct that});
 
   Future<String> crateApiMinimalMyStructExampleAsyncMethod(
@@ -104,15 +104,6 @@ abstract class RustLibApi extends BaseApi {
       get rust_arc_decrement_strong_count_MyStruct;
 
   CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_MyStructPtr;
-
-  RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_PinBoxFutureOutputString;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_PinBoxFutureOutputString;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_PinBoxFutureOutputStringPtr;
 }
 
 class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
@@ -151,7 +142,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<PinBoxFutureOutputString> crateApiMinimalMyStructExampleAsyncFuture2(
+  Future<String> crateApiMinimalMyStructExampleAsyncFuture2(
       {required MyStruct that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -162,8 +153,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             funcId: 2, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData:
-            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPinBoxdynFutureOutputStringSendstatic,
+        decodeSuccessData: sse_decode_String,
         decodeErrorData: null,
       ),
       constMeta: kCrateApiMinimalMyStructExampleAsyncFuture2ConstMeta,
@@ -313,29 +303,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       get rust_arc_decrement_strong_count_MyStruct => wire
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct;
 
-  RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_PinBoxFutureOutputString => wire
-          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPinBoxdynFutureOutputStringSendstatic;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_PinBoxFutureOutputString => wire
-          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPinBoxdynFutureOutputStringSendstatic;
-
   @protected
   MyStruct
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return MyStructImpl.frbInternalDcoDecode(raw as List<dynamic>);
-  }
-
-  @protected
-  PinBoxFutureOutputString
-      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPinBoxdynFutureOutputStringSendstatic(
-          dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return PinBoxFutureOutputStringImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
   }
 
   @protected
@@ -360,15 +333,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return MyStructImpl.frbInternalDcoDecode(raw as List<dynamic>);
-  }
-
-  @protected
-  PinBoxFutureOutputString
-      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPinBoxdynFutureOutputStringSendstatic(
-          dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return PinBoxFutureOutputStringImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
   }
 
   @protected
@@ -441,15 +405,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  PinBoxFutureOutputString
-      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPinBoxdynFutureOutputStringSendstatic(
-          SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return PinBoxFutureOutputStringImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
-  }
-
-  @protected
   MyStruct
       sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
           SseDeserializer deserializer) {
@@ -473,15 +428,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return MyStructImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
-  }
-
-  @protected
-  PinBoxFutureOutputString
-      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPinBoxdynFutureOutputStringSendstatic(
-          SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return PinBoxFutureOutputStringImpl.frbInternalSseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -559,16 +505,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPinBoxdynFutureOutputStringSendstatic(
-          PinBoxFutureOutputString self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_usize(
-        (self as PinBoxFutureOutputStringImpl).frbInternalSseEncode(move: true),
-        serializer);
-  }
-
-  @protected
-  void
       sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStruct(
           MyStruct self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -592,16 +528,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as MyStructImpl).frbInternalSseEncode(move: null), serializer);
-  }
-
-  @protected
-  void
-      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPinBoxdynFutureOutputStringSendstatic(
-          PinBoxFutureOutputString self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_usize(
-        (self as PinBoxFutureOutputStringImpl).frbInternalSseEncode(move: null),
-        serializer);
   }
 
   @protected
@@ -693,7 +619,7 @@ class MyStructImpl extends RustOpaque implements MyStruct {
         that: this,
       );
 
-  Future<PinBoxFutureOutputString> exampleAsyncFuture2() =>
+  Future<String> exampleAsyncFuture2() =>
       RustLib.instance.api.crateApiMinimalMyStructExampleAsyncFuture2(
         that: this,
       );
@@ -707,26 +633,4 @@ class MyStructImpl extends RustOpaque implements MyStruct {
       RustLib.instance.api.crateApiMinimalMyStructExampleInstanceMethod(
         that: this,
       );
-}
-
-@sealed
-class PinBoxFutureOutputStringImpl extends RustOpaque
-    implements PinBoxFutureOutputString {
-  // Not to be used by end users
-  PinBoxFutureOutputStringImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  PinBoxFutureOutputStringImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_PinBoxFutureOutputString,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_PinBoxFutureOutputString,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_PinBoxFutureOutputStringPtr,
-  );
 }
