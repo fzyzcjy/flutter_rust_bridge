@@ -5,10 +5,11 @@ use flutter_rust_bridge::for_generated::anyhow;
 use flutter_rust_bridge::{frb, BaseAsyncRuntime, DartFnFuture};
 use std::sync::Arc;
 use web_audio_api::context::{AudioContext, BaseAudioContext, OfflineAudioContext};
+use web_audio_api::media_recorder::{BlobEvent, MediaRecorder};
 use web_audio_api::media_streams::{MediaStream, MediaStreamTrack};
 use web_audio_api::node::*;
 use web_audio_api::{
-    AudioBuffer, AudioParam, AudioProcessingEvent, Event, OfflineAudioCompletionEvent,
+    AudioBuffer, AudioParam, AudioProcessingEvent, ErrorEvent, Event, OfflineAudioCompletionEvent,
 };
 
 #[ext]
@@ -63,6 +64,42 @@ pub impl AnalyserNode {
     }
 }
 
+#[ext(name = AudioBufferExt)]
+pub impl AudioBuffer {
+    fn frb_override_get_channel_data(&self, channel_number: usize) -> Vec<f32> {
+        self.get_channel_data(channel_number).to_vec()
+    }
+
+    fn frb_override_copy_from_channel(&self, channel_number: usize) -> Vec<f32> {
+        self.get_channel_data(channel_number).to_vec()
+    }
+
+    fn set_channel_data(&mut self, source: &[f32], channel_number: usize) {
+        self.copy_to_channel(source, channel_number);
+    }
+
+    fn frb_override_copy_to_channel(&mut self, source: &[f32], channel_number: usize) {
+        self.copy_to_channel(source, channel_number);
+    }
+
+    fn frb_override_copy_to_channel_with_offset(
+        &mut self,
+        source: &[f32],
+        channel_number: usize,
+        offset: usize,
+    ) {
+        self.copy_to_channel_with_offset(source, channel_number, offset);
+    }
+
+    fn get_at(&self, channel_number: usize, index: usize) -> f32 {
+        self.get_channel_data(channel_number)[index]
+    }
+
+    fn set_at(&mut self, channel_number: usize, index: usize, value: f32) {
+        self.get_channel_data_mut(channel_number)[index] = value
+    }
+}
+
 #[ext]
 pub impl OfflineAudioContext {
     fn set_on_complete(
@@ -73,6 +110,39 @@ pub impl OfflineAudioContext {
             FLUTTER_RUST_BRIDGE_HANDLER
                 .async_runtime()
                 .spawn(async move { callback(event).await });
+        })
+    }
+}
+
+#[ext(name = MediaRecorderMiscExt)]
+pub impl MediaRecorder {
+    // NOTE: The original name was `set_ondataavailable` and here the new name has `_`
+    fn set_on_data_available(
+        &self,
+        callback: impl Fn(BlobEvent) -> DartFnFuture<()> + Send + 'static + std::marker::Sync,
+    ) {
+        let cb = Arc::new(callback);
+        self.set_ondataavailable(move |event| {
+            let callback_cloned = cb.clone();
+            FLUTTER_RUST_BRIDGE_HANDLER
+                .async_runtime()
+                .spawn(async move { callback_cloned(event).await });
+        })
+    }
+
+    fn set_on_stop(&self, callback: impl Fn(Event) -> DartFnFuture<()> + Send + 'static) {
+        self.set_onstop(Box::new(|event| {
+            FLUTTER_RUST_BRIDGE_HANDLER
+                .async_runtime()
+                .spawn(async move { callback(event).await });
+        }))
+    }
+
+    fn set_on_error(&self, callback: impl FnOnce(ErrorEvent) + std::marker::Send + 'static) {
+        self.set_onerror(move |event| {
+            FLUTTER_RUST_BRIDGE_HANDLER
+                .async_runtime()
+                .spawn(async move { callback(event) });
         })
     }
 }
