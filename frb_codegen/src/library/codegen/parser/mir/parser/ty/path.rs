@@ -37,7 +37,9 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                 return Ok(ans);
             }
 
-            if let Some(ans) = self.parse_type_path_data_future(type_path, last_segment, &splayed_segments)? {
+            if let Some(ans) =
+                self.parse_type_path_data_future(type_path, last_segment, &splayed_segments)?
+            {
                 return Ok(ans);
             }
 

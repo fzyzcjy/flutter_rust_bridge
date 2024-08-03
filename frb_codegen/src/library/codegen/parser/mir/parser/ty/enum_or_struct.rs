@@ -39,7 +39,7 @@ where
         last_segment: &SplayedSegment,
         override_opaque: Option<bool>,
     ) -> anyhow::Result<Option<(MirType, FrbAttributes)>> {
-        let SplayedSegment{name, ..} = last_segment;
+        let SplayedSegment { name, .. } = last_segment;
         // let name = external_impl::parse_name_or_original(name)?;
 
         if let Some(src_object) = self.src_objects().get(*name) {

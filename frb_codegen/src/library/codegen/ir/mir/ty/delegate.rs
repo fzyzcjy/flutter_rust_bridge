@@ -452,7 +452,7 @@ impl MirTypeDelegateDynTrait {
 impl MirTypeDelegateFuture {
     pub fn new(output: MirType) -> Self {
         Self {
-            output: Box::new(output)
+            output: Box::new(output),
         }
     }
 }
