@@ -112,7 +112,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
             MirTypeDelegate::CastedPrimitive(_)
             | MirTypeDelegate::CustomSerDes(_)
             | MirTypeDelegate::Lifetimeable(_) => Acc::distribute(None),
-            MirTypeDelegate::Future(mir) => unimplemented!("Delegate future")
+                MirTypeDelegate::Future(_) => unreachable!()
             // frb-coverage:ignore-end
         }
     }
@@ -159,7 +159,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
             MirTypeDelegate::CastedPrimitive(_)
             | MirTypeDelegate::CustomSerDes(_)
             | MirTypeDelegate::Lifetimeable(_) => return None,
-            MirTypeDelegate::Future(mir) => unimplemented!("Delegate future")
+                MirTypeDelegate::Future(_) => unreachable!()
             // frb-coverage:ignore-end
         })
     }

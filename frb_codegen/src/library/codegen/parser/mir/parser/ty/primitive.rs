@@ -12,17 +12,19 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         &mut self,
         last_segment: &SplayedSegment,
     ) -> anyhow::Result<Option<MirType>> {
-        Ok(Some(match (last_segment.name, last_segment.type_arguments().as_slice()) {
-            // TODO: change to "if let guard" https://github.com/rust-lang/rust/issues/51114
-            (name, []) if matches!(parse_primitive(name, self.context), Some(..)) => {
-                parse_primitive(name, self.context).unwrap()
-            }
-            (name, []) if matches!(parse_big_primitive(name), Some(..)) => {
-                parse_big_primitive(name).unwrap()
-            }
+        Ok(Some(
+            match (last_segment.name, last_segment.type_arguments().as_slice()) {
+                // TODO: change to "if let guard" https://github.com/rust-lang/rust/issues/51114
+                (name, []) if matches!(parse_primitive(name, self.context), Some(..)) => {
+                    parse_primitive(name, self.context).unwrap()
+                }
+                (name, []) if matches!(parse_big_primitive(name), Some(..)) => {
+                    parse_big_primitive(name).unwrap()
+                }
 
-            _ => return Ok(None),
-        }))
+                _ => return Ok(None),
+            },
+        ))
     }
 }
 

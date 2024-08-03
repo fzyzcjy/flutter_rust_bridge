@@ -145,8 +145,8 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGener
             | MirTypeDelegate::CustomSerDes(_)
             | MirTypeDelegate::Lifetimeable(_) =>
                 Acc::distribute(Some("throw UnimplementedError('Not implemented in this codec, please use the other one');".to_string())),
-                            MirTypeDelegate::Future(mir) => unimplemented!("Delegate future")
-
+                MirTypeDelegate::Future(_) => unreachable!()
+,
         }
     }
 
