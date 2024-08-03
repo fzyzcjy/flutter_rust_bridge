@@ -13,7 +13,6 @@ pub(crate) mod rust_auto_opaque_implicit;
 pub(crate) mod rust_opaque;
 pub(crate) mod structure;
 pub(crate) mod trait_def;
-pub(crate) mod future;
 
 use crate::codegen::ir::mir::pack::{MirEnumPool, MirPack, MirStructPool};
 use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
@@ -31,7 +30,6 @@ pub enum MirType {
     // alphabetical order
     Boxed(boxed::MirTypeBoxed),
     DartFn(dart_fn::MirTypeDartFn),
-    Future(future::MirTypeFuture),
     DartOpaque(dart_opaque::MirTypeDartOpaque),
     Delegate(delegate::MirTypeDelegate),
     Dynamic(dynamic::MirTypeDynamic),
@@ -141,7 +139,6 @@ impl Serialize for MirType {
         match self {
             MirType::Boxed(inner) => ser::<S, _>(&mut state, "Boxed", inner),
             MirType::DartFn(inner) => ser::<S, _>(&mut state, "DartFn", inner),
-            MirType::Future(inner) => ser::<S, _>(&mut state, "Future", inner),
             MirType::DartOpaque(inner) => ser::<S, _>(&mut state, "DartOpaque", inner),
             MirType::Delegate(inner) => ser::<S, _>(&mut state, "Delegate", inner),
             MirType::Dynamic(inner) => ser::<S, _>(&mut state, "Dynamic", inner),

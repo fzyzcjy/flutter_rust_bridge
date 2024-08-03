@@ -118,12 +118,6 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGener
             | MirTypeDelegate::DynTrait(_) => {
                 Acc::distribute(Some("throw UnimplementedError();".to_string()))
             }
-            MirTypeDelegate::Future(_) => {
-                Acc::distribute(Some(r###"
-                // TODO: frb_codegen/src/library/codegen/generator/wire/rust/spec_generator/codec/cst/decoder/ty/delegate.rs: generate_impl_decode_jsvalue_body  MirTypeDelegate::Future
-                throw UnimplementedError();
-                "###.to_string()))
-            }
             MirTypeDelegate::Map(_) => Acc::distribute(Some(format!(
                 "return cst_encode_{}(raw.entries.map((e) => (e.key, e.value)).toList());",
                 self.mir.get_delegate().safe_ident()
@@ -150,7 +144,9 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGener
             | MirTypeDelegate::CastedPrimitive(_)
             | MirTypeDelegate::CustomSerDes(_)
             | MirTypeDelegate::Lifetimeable(_) =>
-                Acc::distribute(Some("throw UnimplementedError('Not implemented in this codec, please use the other one');".to_string()))
+                Acc::distribute(Some("throw UnimplementedError('Not implemented in this codec, please use the other one');".to_string())),
+                            MirTypeDelegate::Future(mir) => unimplemented!("Delegate future")
+
         }
     }
 

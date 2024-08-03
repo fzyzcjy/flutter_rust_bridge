@@ -92,12 +92,8 @@ impl<'a> WireDartCodecDcoGeneratorDecoderTrait for DelegateWireDartCodecDcoGener
             | MirTypeDelegate::CustomSerDes(_)
             | MirTypeDelegate::Lifetimeable(_) =>
                 "throw UnimplementedError('Not implemented in this codec, please use the other one');".into(),
-            MirTypeDelegate::Future(_) => {
-                r###"
-                // TODO: frb_codegen/src/library/codegen/generator/wire/dart/spec_generator/codec/dco/decoder/ty/delegate.rs: generate_impl_decode_body  MirTypeDelegate::Future
-                throw UnimplementedError();
-                "###.into()
-            }
+                            MirTypeDelegate::Future(mir) => unimplemented!("Delegate future")
+
         }
     }
 }

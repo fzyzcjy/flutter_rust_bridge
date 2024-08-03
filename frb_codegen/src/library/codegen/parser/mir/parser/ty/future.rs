@@ -1,10 +1,9 @@
 use crate::codegen::ir::mir::ty::boxed::MirTypeBoxed;
-use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
-use crate::codegen::ir::mir::ty::future::MirTypeFuture;
+use crate::codegen::ir::mir::ty::delegate::{MirTypeDelegate, MirTypeDelegateFuture};
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::ir::mir::ty::MirType::{
-    Boxed, DartFn, DartOpaque, Delegate, Dynamic, EnumRef, Future, GeneralList, Optional,
-    Primitive, PrimitiveList, Record, RustAutoOpaqueImplicit, RustOpaque, StructRef,
+    Boxed, DartFn, DartOpaque, Delegate, Dynamic, EnumRef, GeneralList, Optional, Primitive,
+    PrimitiveList, Record, RustAutoOpaqueImplicit, RustOpaque, StructRef,
 };
 use crate::codegen::parser::mir::parser::ty::unencodable::SplayedSegment;
 use crate::codegen::parser::mir::parser::ty::TypeParserWithContext;
@@ -27,13 +26,15 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                     // This will stop the whole generator and tell the users, so we do not care about testing it
                     // frb-coverage:ignore-start
                     ensure!(
-                        !matches!(inner, Future(_)),
+                        !matches!(inner, Delegate(MirTypeDelegate::Future(_))),
                         "Nested futures without indirection are not supported. {}",
                         type_path.to_token_stream()
                     );
                     // frb-coverage:ignore-end
 
-                    Future(match inner {
+                    // TODO (@vhdirk): I have absolutely no clue as to what the match statement below tries to achieve
+
+                    Delegate(match inner {
                         StructRef(..)
                         | EnumRef(..)
                         | RustAutoOpaqueImplicit(..)
@@ -44,26 +45,24 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                         | Record(..)
                         | Optional(..)
                         | Delegate(MirTypeDelegate::PrimitiveEnum(..)) => {
-                            MirTypeFuture::new_with_boxed_wrapper(inner.clone())
+                            MirTypeDelegate::Future(MirTypeDelegateFuture::new(inner.clone()))
                         }
                         Delegate(MirTypeDelegate::Time(..)) => {
-                            MirTypeFuture::new_with_boxed_wrapper(inner.clone())
+                            MirTypeDelegate::Future(MirTypeDelegateFuture::new(inner.clone()))
                         }
                         PrimitiveList(_) | GeneralList(_) | Boxed(_) | Dynamic(_) | Delegate(_) => {
-                            MirTypeFuture::new(inner.clone())
+                            MirTypeDelegate::Future(MirTypeDelegateFuture::new(inner.clone()))
                         }
                         // frb-coverage:ignore-start
                         // TODO (@vhdirk): Is this really unreachable?
-                        Future(_) | MirType::TraitDef(_) => unreachable!(),
+                        MirType::TraitDef(_) => unreachable!(),
                         // frb-coverage:ignore-end
                     })
                 }
                 ("Pin", [inner]) => match self.parse_type(&inner)? {
                     Boxed(MirTypeBoxed { inner, .. }) => match *inner {
-                        MirType::Delegate(MirTypeDelegate::Future(future)) => {
-                            Future(MirTypeFuture {
-                                output: future.inner.clone(),
-                            })
+                        MirType::Delegate(MirTypeDelegate::Future(delegate_future)) => {
+                            MirType::Delegate(MirTypeDelegate::Future(delegate_future.clone()))
                         }
                         _ => return Ok(None),
                     },
@@ -91,9 +90,9 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                 _ => bail!("Unknown type args for: {name}"),
             }?;
 
-            return Ok(Some(MirType::Future(MirTypeFuture {
-                output: Box::new(output),
-            })));
+            return Ok(Some(MirType::Delegate(MirTypeDelegate::Future(
+                MirTypeDelegateFuture::new(output),
+            ))));
         }
 
         Ok(None)
