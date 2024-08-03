@@ -2,7 +2,7 @@ use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
 use crate::codegen::ir::mir::ty::optional::MirTypeOptional;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::ir::mir::ty::MirType::{
-    Boxed, DartFn, DartOpaque, Delegate, Dynamic, EnumRef, Future, GeneralList, Optional,
+    Boxed, DartFn, DartOpaque, Delegate, Dynamic, EnumRef, GeneralList, Optional,
     Primitive, PrimitiveList, Record, RustAutoOpaqueImplicit, RustOpaque, StructRef,
 };
 use crate::codegen::parser::mir::parser::ty::unencodable::SplayedSegment;
@@ -38,7 +38,6 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                         | RustOpaque(..)
                         | DartOpaque(..)
                         | DartFn(..)
-                        | Future(..)
                         | Primitive(..)
                         | Record(..)
                         | Delegate(MirTypeDelegate::PrimitiveEnum(..)) => {

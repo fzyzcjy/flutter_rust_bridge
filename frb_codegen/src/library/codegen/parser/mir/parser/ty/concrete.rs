@@ -55,10 +55,10 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             //     primitive.clone(),
             // )),
             // TODO (@vhdirk): can we check the prefix here?
-            ("Future", _, [inner]) if inner.ident.to_string().as_str() == "Output" => {
-                let inner = self.parse_type(&inner.ty)?;
+            ("Future", _, [output]) if output.ident.to_string().as_str() == "Output" => {
+                let output = self.parse_type(&output.ty)?;
                 Delegate(MirTypeDelegate::Future(MirTypeDelegateFuture{
-                    inner: Box::new(inner),
+                    output: Box::new(output),
                 }))
             },
 
@@ -158,10 +158,10 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                 last_segment.associated_type_arguments().as_slice(),
             ) {
                 // TODO (@vhdirk): can we check the prefix here?
-                ("Future", [inner]) => {
-                    let inner = self.parse_type(&inner.ty)?;
+                ("Future", [output]) => {
+                    let output = self.parse_type(&output.ty)?;
                     Delegate(MirTypeDelegate::Future(MirTypeDelegateFuture {
-                        inner: Box::new(inner),
+                        output: Box::new(output),
                     }))
                 }
                 _ => return Ok(None),

@@ -39,8 +39,8 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
     ) -> anyhow::Result<FunctionPartialInfo> {
         let mir = self.type_parser.parse_type(ty, context)?;
 
-        let (mir, is_async) = if let MirType::Future(mir_future) = &mir {
-            (*mir_future.output.clone(), true)
+        let (mir, is_async) = if let MirType::Delegate(MirTypeDelegate::Future(delegate_future)) = &mir {
+            (*delegate_future.output.clone(), true)
         } else {
             (mir, false)
         };

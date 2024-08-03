@@ -23,7 +23,6 @@ macro_rules! codegen_generator_structs {
             RustOpaque,
             StructRef,
             TraitDef,
-            Future,
         );
     );
     (@private $(#[$attribute:meta])* $generator_name:ident ; $($name:ident),*,) => (
@@ -37,7 +36,6 @@ macro_rules! codegen_generator_structs {
         use $crate::codegen::ir::mir::ty::general_list::MirTypeGeneralList;
         use $crate::codegen::ir::mir::ty::optional::MirTypeOptional;
         use $crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
-        use $crate::codegen::ir::mir::ty::future::MirTypeFuture;
         use $crate::codegen::ir::mir::ty::primitive_list::MirTypePrimitiveList;
         use $crate::codegen::ir::mir::ty::record::MirTypeRecord;
         use $crate::codegen::ir::mir::ty::rust_auto_opaque_implicit::MirTypeRustAutoOpaqueImplicit;
