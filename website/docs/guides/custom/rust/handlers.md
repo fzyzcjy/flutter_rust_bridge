@@ -37,3 +37,7 @@ and it causes confusion and bugs.
 Similar things may happen if you are using multiple isolates in your Dart program,
 or when you hot-restart the Dart side.
 
+## Remarks
+
+The test is
+in https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_example/pure_dart/rust/src/api/custom_handler.rs.
