@@ -1,20 +1,22 @@
 // FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sync", "sync sse"]}
 
-use flutter_rust_bridge::{DartFnFuture, DartOpaque};
+use std::future::Future;
+use std::pin::Pin;
 
+use flutter_rust_bridge::{frb, DartFnFuture};
 
-pub enum CustomErr{
+pub enum CustomErr {
     Failure
 }
 
 pub fn impl_future_adder(a: i32, b: i32) -> impl Future<Output = i32> {
-    async {
+    async move {
         a + b
     }
 }
 
 pub fn impl_future_adder_result(a: i32, b: i32, succeed: bool) -> Pin<Box<dyn Future<Output = Result<i32, CustomErr>> + Send + 'static>> {
-    Box::pin(async {
+    Box::pin(async move {
         match succeed {
             true => Ok(a + b),
             false => Err(CustomErr::Failure)
@@ -23,13 +25,13 @@ pub fn impl_future_adder_result(a: i32, b: i32, succeed: bool) -> Pin<Box<dyn Fu
 }
 
 pub fn dartfn_future_adder(a: i32, b: i32, c: i32) -> DartFnFuture<i32> {
-    Box::pin(async {
+    Box::pin(async move {
         a + b + c
     })
 }
 
-pub fn dartfn_future_adder(a: i32, b: i32, c: i32) -> DartFnFuture<Result<i32, CustomErr>> {
-    Box::pin(async {
+pub fn dartfn_future_adder_result(a: i32, b: i32, c: i32, succeed: bool) -> DartFnFuture<Result<i32, CustomErr>> {
+    Box::pin(async move {
         match succeed {
             true => Ok(a + b + c),
             false => Err(CustomErr::Failure)
@@ -38,13 +40,13 @@ pub fn dartfn_future_adder(a: i32, b: i32, c: i32) -> DartFnFuture<Result<i32, C
 }
 
 pub fn box_future_adder(a: i32, b: i32, c: i32, d: i32) -> Pin<Box<dyn Future<Output = i32> + Send + 'static>> {
-    Box::pin(async {
+    Box::pin(async move {
         a + b + c + d
     })
 }
 
 pub fn box_future_adder_result(a: i32, b: i32, c: i32, d: i32, succeed: bool) -> Pin<Box<dyn Future<Output = Result<i32, CustomErr>> + Send + 'static>> {
-    Box::pin(async {
+    Box::pin(async move {
         match succeed {
             true => Ok(a + b + c + d),
             false => Err(CustomErr::Failure)
@@ -65,51 +67,56 @@ impl StructWithAsyncMethods {
         }
     }
 
-    pub fn impl_future_hello(&self) -> impl Future<Output = Result<String, MyErr>> {
-       async {
-            format("Hello, {}", &self.name)
+    pub fn impl_future_hello(&self) -> impl Future<Output = String> {
+        let name = self.name.clone();
+        async move {
+            format!("Hello, {}", name)
+        }
+    }
+
+    pub fn impl_future_hello_result(&self, succeed: bool) -> impl Future<Output = Result<String, CustomErr>> {
+        let name = self.name.clone();
+        async move {
+            match succeed {
+                true => Ok(format!("Hello, {}", name)),
+                false => Err(CustomErr::Failure)
+            }
         }
     }
 
     pub fn dartfn_future_hello(&self) -> DartFnFuture<String> {
-        Box::pin(async {
-            format("Bonjour, {}", &self.name)
+        let name = self.name.clone();
+        Box::pin(async move {
+            format!("Bonjour, {}", name)
+        })
+    }
+
+    pub fn dartfn_future_hello_result(&self, succeed: bool) -> DartFnFuture<Result<String, CustomErr>> {
+        let name = self.name.clone();
+        Box::pin(async move {
+            match succeed {
+                true => Ok(format!("Bonjour, {}", name)),
+                false => Err(CustomErr::Failure)
+            }
         })
     }
 
     pub fn box_future_hello(&self) -> Pin<Box<dyn Future<Output = String> + Send + 'static>> {
-        Box::pin(async {
-            format("Hola, {}", &self.name)
+        let name = self.name.clone();
+        Box::pin(async move {
+            format!("Hola, {}", name)
         })
     }
 
-    pub fn impl_future_hello_result(&self, succeed: bool) -> impl Future<Output = Result<String, MyErr>> {
-       async {
+    pub fn box_future_hello_result(&self, succeed: bool) -> Pin<Box<dyn Future<Output = Result<String, CustomErr>> + Send + 'static>> {
+        let name = self.name.clone();
+        Box::pin(async move {
             match succeed {
-                true => Ok(format("Hello, {}", &self.name)),
-                false => Err(CustomErr::Failure)
-            }
-        }
-    }
-
-    pub fn dartfn_future_hello_result(&self, succeed: bool) -> DartFnFuture<String> {
-        Box::pin(async {
-            match succeed {
-                true => Ok(format("Bonjour, {}", &self.name)),
+                true => Ok(format!("Hola, {}", name)),
                 false => Err(CustomErr::Failure)
             }
         })
     }
-
-    pub fn box_future_hello_result(&self, succeed: bool) -> Pin<Box<dyn Future<Output = String> + Send + 'static>> {
-        Box::pin(async {
-            match succeed {
-                true => Ok(format("Hola, {}", &self.name)),
-                false => Err(CustomErr::Failure)
-            }
-        })
-    }
-
 }
 
 pub trait TraitWithAsyncMethods {
