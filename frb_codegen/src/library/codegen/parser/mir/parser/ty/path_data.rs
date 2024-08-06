@@ -1,5 +1,5 @@
 use crate::codegen::ir::mir::ty::rust_opaque::NameComponent;
-use anyhow::Result;
+use anyhow::{bail, Result};
 use syn::{Path, PathArguments, PathSegment};
 
 pub(crate) fn extract_path_data(path: &Path) -> Result<Vec<NameComponent>> {
@@ -18,9 +18,9 @@ fn parse_path_segment(segment: &PathSegment) -> Result<NameComponent> {
             //     anyhow!("\"{ident}\" of \"{}\" is not valid", path.to_token_stream())
             //     // frb-coverage:ignore-end
             // })?
-        }
+        },
         // frb-coverage:ignore-start
-        _ => unreachable!(),
+        PathArguments::Parenthesized(_) => bail!("parsing parenthesized path arguments is not implemented yet"),
         // frb-coverage:ignore-end
 
         // not used yet (detected by codecov)

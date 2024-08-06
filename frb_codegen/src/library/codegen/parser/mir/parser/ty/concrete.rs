@@ -16,7 +16,7 @@ use crate::codegen::parser::mir::parser::ty::TypeParserWithContext;
 use crate::if_then_some;
 use anyhow::{bail, Context};
 use itertools::Itertools;
-use syn::{parse_str, PathSegment, Type};
+use syn::{parse_str, PathSegment, Type, TypeTraitObject};
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_path_data_concrete(
@@ -140,11 +140,21 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
     pub(crate) fn parse_type_trait_object_concrete(
         &mut self,
-        last_segment: &SplayedSegment,
-        splayed_segments: &[SplayedSegment],
+        trait_name_path: &syn::Path,
     ) -> anyhow::Result<Option<MirType>> {
         // TODO (@vhdirk): Perhaps we could just use parse_type_path_data_concrete as is?
         // Not sure if there's a benefit to that or it would just break stuff
+
+        let segments = match extract_path_data(&trait_name_path) {
+            Ok(segments) =>  segments,
+            Err(_) => return Ok(None)
+        };
+        let splayed_segments = splay_segments(&segments);
+
+        let last_segment = match splayed_segments.last() {
+            Some(last_segment) => last_segment,
+            None => return Ok(None)
+        };
 
         let non_last_segments = (splayed_segments.split_last().unwrap().1.iter())
             .map(|segment| segment.name)
