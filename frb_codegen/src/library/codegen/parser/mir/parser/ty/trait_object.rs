@@ -17,15 +17,11 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     ) -> anyhow::Result<MirType> {
         // frb-coverage:ignore-end
         if let Some(trait_name_path) = extract_trait_name_path(type_trait_object) {
-            if let Some(out) =
-                self.parse_type_trait_object_concrete( &trait_name_path)?
-            {
+            if let Some(out) = self.parse_type_trait_object_concrete(&trait_name_path)? {
                 return Ok(out);
             }
 
-            if let Some(out) =
-                self.parse_type_trait_object_core(&trait_name_path)?
-            {
+            if let Some(out) = self.parse_type_trait_object_core(&trait_name_path)? {
                 return Ok(out);
             }
         }

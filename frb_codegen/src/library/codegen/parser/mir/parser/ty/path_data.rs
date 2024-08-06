@@ -18,9 +18,11 @@ fn parse_path_segment(segment: &PathSegment) -> Result<NameComponent> {
             //     anyhow!("\"{ident}\" of \"{}\" is not valid", path.to_token_stream())
             //     // frb-coverage:ignore-end
             // })?
-        },
+        }
         // frb-coverage:ignore-start
-        PathArguments::Parenthesized(_) => bail!("parsing parenthesized path arguments is not implemented yet"),
+        PathArguments::Parenthesized(_) => {
+            bail!("parsing parenthesized path arguments is not implemented yet")
+        }
         // frb-coverage:ignore-end
 
         // not used yet (detected by codecov)
