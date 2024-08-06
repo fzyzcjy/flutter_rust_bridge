@@ -17,7 +17,7 @@ pub(crate) fn parse_type_maybe_result(
                 ("Result", args) => {
                     return parse_type_result(
                         &(args.iter())
-                            .map(|arg| type_parser.parse_type(&arg, context))
+                            .map(|arg| type_parser.parse_type(arg, context))
                             .collect::<anyhow::Result<Vec<_>>>()?,
                     );
                 }

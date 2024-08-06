@@ -19,12 +19,12 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     ) -> anyhow::Result<Option<MirType>> {
         Ok(Some(
             match (last_segment.name, last_segment.type_arguments().as_slice()) {
-                ("RustOpaque", [ty]) => self.parse_rust_opaque(&ty, None)?,
+                ("RustOpaque", [ty]) => self.parse_rust_opaque(ty, None)?,
                 ("RustOpaqueNom", [ty]) => {
-                    self.parse_rust_opaque(&ty, Some(RustOpaqueCodecMode::Nom))?
+                    self.parse_rust_opaque(ty, Some(RustOpaqueCodecMode::Nom))?
                 }
                 ("RustOpaqueMoi", [ty]) => {
-                    self.parse_rust_opaque(&ty, Some(RustOpaqueCodecMode::Moi))?
+                    self.parse_rust_opaque(ty, Some(RustOpaqueCodecMode::Moi))?
                 }
 
                 _ => return Ok(None),

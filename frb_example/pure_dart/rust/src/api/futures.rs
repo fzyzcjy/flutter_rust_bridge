@@ -9,10 +9,8 @@ pub enum CustomErr {
     Failure
 }
 
-pub fn impl_future_adder(a: i32, b: i32) -> impl Future<Output = i32> {
-    async move {
-        a + b
-    }
+pub async fn impl_future_adder(a: i32, b: i32) -> i32 {
+    a + b
 }
 
 pub fn impl_future_adder_result(a: i32, b: i32, succeed: bool) -> Pin<Box<dyn Future<Output = Result<i32, CustomErr>> + Send + 'static>> {
