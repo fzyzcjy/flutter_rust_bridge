@@ -36,7 +36,6 @@ Future<void> main({bool skipRustLibInit = false}) async {
       expect(await expectLater(
           () async => dartfnFutureAdderResult(a: 100, b: 200, c: 300, false),
           throwsA(isA<CustomErr>())));
-
     });
 
     test('dart call `BoxFuture` adder returning `Result::Ok`', () async {
@@ -48,12 +47,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
           () async => boxFutureAdder(a: 100, b: 200, c: 300, d: 400, false),
           throwsA(isA<CustomErr>())));
     });
-
   });
 
   group('methods returning futures', () {
-
-
     // test('example_async_future', () async {
     // var swam = StructWithAsyncMethods();
     //   print('Action: Call rust (before)');
@@ -80,9 +76,6 @@ Future<void> main({bool skipRustLibInit = false}) async {
     // });
   });
 }
-
-
-
 
 // #[frb(opaque)]
 // pub struct StructWithAsyncMethods {
