@@ -22,16 +22,15 @@ fn parse_path_segment(segment: &PathSegment) -> Result<NameComponent> {
         // frb-coverage:ignore-start
         PathArguments::Parenthesized(_) => {
             bail!("parsing parenthesized path arguments is not implemented yet")
-        }
-        // frb-coverage:ignore-end
+        } // frb-coverage:ignore-end
 
-        // not used yet (detected by codecov)
-        // syn doc says "The `(A, B) -> C` in `Fn(A, B) -> C`",
-        // thus it seems we will not use it here.
-        //
-        // PathArguments::Parenthesized(args) => Some(Args::Signature(
-        //     self.parse_parenthesized_generic_arguments(args)?,
-        // )),
+          // not used yet (detected by codecov)
+          // syn doc says "The `(A, B) -> C` in `Fn(A, B) -> C`",
+          // thus it seems we will not use it here.
+          //
+          // PathArguments::Parenthesized(args) => Some(Args::Signature(
+          //     self.parse_parenthesized_generic_arguments(args)?,
+          // )),
     };
     Ok(NameComponent { ident, args })
 }
