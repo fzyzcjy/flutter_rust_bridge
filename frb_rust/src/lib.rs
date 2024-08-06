@@ -50,5 +50,6 @@ pub use crate::rust_async::{spawn, spawn_local, BaseAsyncRuntime, JoinHandle};
 pub use crate::rust_auto_opaque::RustAutoOpaqueNom;
 #[allow(deprecated)]
 pub use crate::rust_opaque::{DartSafe, RustOpaqueNom};
+#[cfg(feature = "thread-pool")]
 pub use crate::thread_pool::{BaseThreadPool, SimpleThreadPool};
 pub use flutter_rust_bridge_macros::frb;
