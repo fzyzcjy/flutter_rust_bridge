@@ -140,16 +140,15 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         &mut self,
         trait_name_path: &syn::Path,
     ) -> anyhow::Result<Option<MirType>> {
-
         let segments = match extract_path_data(trait_name_path) {
-            Ok(segments) =>  segments,
-            Err(_) => return Ok(None)
+            Ok(segments) => segments,
+            Err(_) => return Ok(None),
         };
         let splayed_segments = splay_segments(&segments);
 
         let last_segment = match splayed_segments.last() {
             Some(last_segment) => last_segment,
-            None => return Ok(None)
+            None => return Ok(None),
         };
 
         Ok(Some(
