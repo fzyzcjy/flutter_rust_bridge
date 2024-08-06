@@ -40,7 +40,7 @@ pub use crate::handler::handler::Handler;
 pub use crate::handler::implementation::handler::DefaultHandler;
 pub use crate::misc::dart_dynamic::DartDynamic;
 pub use crate::misc::into_into_dart::IntoIntoDart;
-pub use crate::misc::panic_backtrace::PanicBacktrace;
+pub use crate::misc::panic_backtrace::{CatchUnwindWithBacktrace, PanicBacktrace};
 #[cfg(feature = "user-utils")]
 pub use crate::misc::user_utils::setup_default_user_utils;
 pub use crate::platform_types::DartAbi;

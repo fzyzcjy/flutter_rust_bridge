@@ -38,7 +38,8 @@ impl PanicBacktrace {
     }
 }
 
-pub(crate) struct CatchUnwindWithBacktrace {
+/// Similar to the output of catch_unwind, but with extra backtrace
+pub struct CatchUnwindWithBacktrace {
     pub err: Box<dyn Any + Send + 'static>,
     pub backtrace: Option<Backtrace>,
 }
