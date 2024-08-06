@@ -1,7 +1,7 @@
 //! Main documentation is in <https://github.com/fzyzcjy/flutter_rust_bridge>
 
 mod generalized_isolate;
-pub(crate) mod handler;
+pub mod handler;
 mod misc;
 mod platform_types;
 mod rust2dart;
@@ -50,4 +50,6 @@ pub use crate::rust_async::{spawn, spawn_local, BaseAsyncRuntime, JoinHandle};
 pub use crate::rust_auto_opaque::RustAutoOpaqueNom;
 #[allow(deprecated)]
 pub use crate::rust_opaque::{DartSafe, RustOpaqueNom};
+#[cfg(feature = "thread-pool")]
+pub use crate::thread_pool::{BaseThreadPool, SimpleThreadPool};
 pub use flutter_rust_bridge_macros::frb;
