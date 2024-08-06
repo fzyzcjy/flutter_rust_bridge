@@ -136,7 +136,6 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         default_dart_async: bool,
         parse_mode: ParseMode,
     ) -> anyhow::Result<MirFuncOrSkip> {
-        let func_name = func.item_fn.name();
         debug!("parse_function function name: {:?}", func.item_fn.name());
 
         if func.is_public() == Some(false) {
