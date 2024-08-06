@@ -2,7 +2,7 @@ use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::mir::parser::ty::TypeParserWithContext;
 use crate::if_then_some;
 use anyhow::{bail, Context};
-use syn::{PathSegment, TypeImplTrait, TypeParamBound};
+use syn::{TypeImplTrait, TypeParamBound};
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_impl_trait(
@@ -23,21 +23,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             return Ok(out);
         }
 
-        if let Some(out) = self.parse_type_impl_trait_core(&segment_ident, last_segment)? {
-            return Ok(out);
-        }
-
         bail!("Fail to parse impl trait {segment_ident}")
         // frb-coverage:ignore-end
-    }
-
-    // the function signature is not covered while the whole body is covered - looks like a bug in coverage tool
-    // frb-coverage:ignore-start
-    fn parse_type_impl_trait_core(
-        &mut self,
-        name: &str,
-        _segment: &PathSegment,
-    ) -> anyhow::Result<Option<MirType>> {
-        bail!("Fail to parse impl trait {name}")
     }
 }

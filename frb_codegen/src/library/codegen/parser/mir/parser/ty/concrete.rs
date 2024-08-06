@@ -54,14 +54,12 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             // ) => Delegate(MirTypeDelegate::ZeroCopyBufferVecPrimitive(
             //     primitive.clone(),
             // )),
-            // TODO (@vhdirk): can we check the prefix here?
             ("Future", _, [output]) if output.ident.to_string().as_str() == "Output" => {
                 let output = self.parse_type(&output.ty)?;
                 Delegate(MirTypeDelegate::Future(MirTypeDelegateFuture{
                     output: Box::new(output),
                 }))
             },
-
 
             ("Box", [inner], _) => {
                 let inner = self.parse_type(inner)?;
@@ -142,8 +140,6 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         &mut self,
         trait_name_path: &syn::Path,
     ) -> anyhow::Result<Option<MirType>> {
-        // TODO (@vhdirk): Perhaps we could just use parse_type_path_data_concrete as is?
-        // Not sure if there's a benefit to that or it would just break stuff
 
         let segments = match extract_path_data(&trait_name_path) {
             Ok(segments) =>  segments,
@@ -156,18 +152,11 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             None => return Ok(None)
         };
 
-        let non_last_segments = (splayed_segments.split_last().unwrap().1.iter())
-            .map(|segment| segment.name)
-            .join("::");
-        let _check_prefix =
-            |matcher: &str| non_last_segments == matcher || non_last_segments.is_empty();
-
         Ok(Some(
             match (
                 last_segment.name,
                 last_segment.associated_type_arguments().as_slice(),
             ) {
-                // TODO (@vhdirk): can we check the prefix here?
                 ("Future", [output]) => {
                     let output = self.parse_type(&output.ty)?;
                     Delegate(MirTypeDelegate::Future(MirTypeDelegateFuture {

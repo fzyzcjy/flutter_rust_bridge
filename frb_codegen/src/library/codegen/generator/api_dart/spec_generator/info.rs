@@ -109,10 +109,7 @@ impl<'a> ApiDartGeneratorInfoTrait for DelegateApiDartGenerator<'a> {
                 ApiDartGenerator::new(mir.api_type.clone(), self.context).dart_api_type()
             }
             MirTypeDelegate::CustomSerDes(mir) => mir.info.dart_api_type.clone(),
-            MirTypeDelegate::Future(mir) => format!(
-                "Future<{}>",
-                ApiDartGenerator::new(*mir.output.clone(), self.context).dart_api_type(),
-            ),
+            MirTypeDelegate::Future(_) => "NOT_USED".to_string(),
         }
     }
 
