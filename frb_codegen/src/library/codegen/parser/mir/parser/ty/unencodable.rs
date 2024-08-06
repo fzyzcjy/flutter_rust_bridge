@@ -35,24 +35,24 @@ impl<'a> SplayedSegment<'a> {
     }
 }
 
-impl<'a> Into<(&'a str, Vec<Type>)> for SplayedSegment<'a> {
-    fn into(self) -> (&'a str, Vec<Type>) {
-        (self.name, self.type_arguments())
+impl<'a> From<SplayedSegment<'a>> for (&'a str, Vec<Type>) {
+    fn from(val: SplayedSegment<'a>) -> Self {
+        (val.name, val.type_arguments())
     }
 }
 
-impl<'a> Into<(&'a str, Vec<AssocType>)> for SplayedSegment<'a> {
-    fn into(self) -> (&'a str, Vec<AssocType>) {
-        (self.name, self.associated_type_arguments())
+impl<'a> From<SplayedSegment<'a>> for (&'a str, Vec<AssocType>) {
+    fn from(val: SplayedSegment<'a>) -> Self {
+        (val.name, val.associated_type_arguments())
     }
 }
 
-impl<'a> Into<(&'a str, Vec<Type>, Vec<AssocType>)> for SplayedSegment<'a> {
-    fn into(self) -> (&'a str, Vec<Type>, Vec<AssocType>) {
+impl<'a> From<SplayedSegment<'a>> for (&'a str, Vec<Type>, Vec<AssocType>) {
+    fn from(val: SplayedSegment<'a>) -> Self {
         (
-            self.name,
-            self.type_arguments(),
-            self.associated_type_arguments(),
+            val.name,
+            val.type_arguments(),
+            val.associated_type_arguments(),
         )
     }
 }

@@ -16,7 +16,7 @@ use crate::codegen::parser::mir::parser::ty::TypeParserWithContext;
 use crate::if_then_some;
 use anyhow::{bail, Context};
 use itertools::Itertools;
-use syn::{parse_str, PathSegment, Type, TypeTraitObject};
+use syn::{parse_str, PathSegment, Type};
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_path_data_concrete(
@@ -141,7 +141,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         trait_name_path: &syn::Path,
     ) -> anyhow::Result<Option<MirType>> {
 
-        let segments = match extract_path_data(&trait_name_path) {
+        let segments = match extract_path_data(trait_name_path) {
             Ok(segments) =>  segments,
             Err(_) => return Ok(None)
         };
@@ -173,7 +173,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         name: &str,
         last_segment: &PathSegment,
     ) -> anyhow::Result<Option<MirType>> {
-        match &name[..] {
+        match name {
             // TODO Currently, we treat `FnOnce` same as `Fn`,
             //      but in the future we can optimize this because we no longer need Arc or Clone for this case.
             "FnOnce" | "Fn" => self.parse_type_impl_trait_dart_fn(name, last_segment),
@@ -183,7 +183,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
             // This will stop the whole generator and tell the users, so we do not care about testing it
             // frb-coverage:ignore-start
-            _ => return Ok(None),
+            _ => Ok(None),
             // frb-coverage:ignore-end
         }
     }

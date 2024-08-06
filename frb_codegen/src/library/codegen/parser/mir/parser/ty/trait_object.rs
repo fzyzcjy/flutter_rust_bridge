@@ -77,7 +77,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
 fn extract_trait_name_path(type_trait_object: &TypeTraitObject) -> Option<syn::Path> {
     let bounds = &type_trait_object.bounds;
-    if bounds.len() < 1 {
+    if bounds.is_empty() {
         return None;
     }
 

@@ -33,7 +33,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                         inner.clone(),
                     )))
                 }
-                ("Pin", [inner]) => match self.parse_type(&inner)? {
+                ("Pin", [inner]) => match self.parse_type(inner)? {
                     Boxed(MirTypeBoxed { inner, .. }) => match *inner {
                         Delegate(MirTypeDelegate::Future(delegate_future)) => {
                             Delegate(MirTypeDelegate::Future(delegate_future.clone()))
