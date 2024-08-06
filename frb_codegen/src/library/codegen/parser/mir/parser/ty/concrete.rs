@@ -31,23 +31,23 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             |matcher: &str| non_last_segments == matcher || non_last_segments.is_empty();
 
         Ok(Some(match (last_segment.name, last_segment.type_arguments().as_slice(), last_segment.associated_type_arguments().as_slice()) {
-            ("Self", [], []) => self.parse_type_self()?,
+            ("Self", [], _) => self.parse_type_self()?,
 
-            ("Duration", [], []) if check_prefix("chrono") => Delegate(MirTypeDelegate::Time(MirTypeDelegateTime::Duration)),
-            ("NaiveDateTime", [], []) if check_prefix("chrono") => Delegate(MirTypeDelegate::Time(MirTypeDelegateTime::Naive)),
-            ("DateTime", args, []) if check_prefix("chrono") => self.parse_datetime(args)?,
+            ("Duration", [], _) if check_prefix("chrono") => Delegate(MirTypeDelegate::Time(MirTypeDelegateTime::Duration)),
+            ("NaiveDateTime", [], _) if check_prefix("chrono") => Delegate(MirTypeDelegate::Time(MirTypeDelegateTime::Naive)),
+            ("DateTime", args, _) if check_prefix("chrono") => self.parse_datetime(args)?,
 
-            ("Uuid", [], []) if check_prefix("uuid") => Delegate(MirTypeDelegate::Uuid),
-            ("String", [], []) | ("str", [], []) => Delegate(MirTypeDelegate::String),
-            ("char", [], []) => Delegate(MirTypeDelegate::Char),
-            ("Backtrace", [], []) => Delegate(MirTypeDelegate::Backtrace),
+            ("Uuid", [], _) if check_prefix("uuid") => Delegate(MirTypeDelegate::Uuid),
+            ("String", [], _) | ("str", [], _) => Delegate(MirTypeDelegate::String),
+            ("char", [], _) => Delegate(MirTypeDelegate::Char),
+            ("Backtrace", [], _) => Delegate(MirTypeDelegate::Backtrace),
 
-            ("DartAbi", [], []) => Dynamic(MirTypeDynamic),
-            ("DartDynamic", [], []) => Dynamic(MirTypeDynamic),
+            ("DartAbi", [], _) => Dynamic(MirTypeDynamic),
+            ("DartDynamic", [], _) => Dynamic(MirTypeDynamic),
 
-            ("DartOpaque", [], []) => DartOpaque(MirTypeDartOpaque {}),
+            ("DartOpaque", [], _) => DartOpaque(MirTypeDartOpaque {}),
 
-            ("ZeroCopyBuffer",_,_) => bail!("`ZeroCopyBuffer<T>` is no longer needed, since zero-copy is automatically utilized, just directly use `T` instead."),
+            ("ZeroCopyBuffer", _, _) => bail!("`ZeroCopyBuffer<T>` is no longer needed, since zero-copy is automatically utilized, just directly use `T` instead."),
             // (
             //     "ZeroCopyBuffer",
             //     Some(Generic([PrimitiveList(MirTypePrimitiveList { primitive })])),
