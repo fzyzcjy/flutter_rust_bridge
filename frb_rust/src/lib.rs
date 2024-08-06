@@ -1,7 +1,7 @@
 //! Main documentation is in <https://github.com/fzyzcjy/flutter_rust_bridge>
 
 mod generalized_isolate;
-pub(crate) mod handler;
+pub mod handler;
 mod misc;
 mod platform_types;
 mod rust2dart;
