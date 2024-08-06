@@ -152,6 +152,23 @@ class ItemContainerSolutionTwoTwinNormal {
           items == other.items;
 }
 
+class MyStructWithSync {
+  const MyStructWithSync();
+
+  Future<void> sync() =>
+      RustLib.instance.api.crateApiMiscNoTwinExampleAMyStructWithSyncSync(
+        that: this,
+      );
+
+  @override
+  int get hashCode => 0;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is MyStructWithSync && runtimeType == other.runtimeType;
+}
+
 class StructWithCustomNameMethodTwinNormal {
   final int field0;
 
