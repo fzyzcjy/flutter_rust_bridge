@@ -6,11 +6,9 @@ use crate::codegen::parser::mir::parser::ty::trait_def::parse_type_trait;
 use crate::codegen::parser::mir::parser::ty::TypeParserWithContext;
 use crate::codegen::parser::mir::ParseMode;
 use crate::if_then_some;
+use crate::utils::syn_utils::ty_to_string;
 use anyhow::Context;
 use syn::TypeTraitObject;
-
-use super::path_data::extract_path_data;
-use super::unencodable::{splay_segments, SplayedSegment};
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_trait_object(
@@ -19,21 +17,16 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     ) -> anyhow::Result<MirType> {
         // frb-coverage:ignore-end
         if let Some(trait_name_path) = extract_trait_name_path(type_trait_object) {
-            let segments = extract_path_data(&trait_name_path)?;
-            let splayed_segments = splay_segments(&segments);
+            if let Some(out) =
+                self.parse_type_trait_object_concrete( &trait_name_path)?
+            {
+                return Ok(out);
+            }
 
-            if let Some(last_segment) = splayed_segments.last() {
-                if let Some(out) =
-                    self.parse_type_trait_object_concrete(&last_segment, &splayed_segments)?
-                {
-                    return Ok(out);
-                }
-
-                if let Some(out) =
-                    self.parse_type_trait_object_core(&last_segment, &splayed_segments)?
-                {
-                    return Ok(out);
-                }
+            if let Some(out) =
+                self.parse_type_trait_object_core(&trait_name_path)?
+            {
+                return Ok(out);
             }
         }
 
@@ -50,12 +43,12 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     // frb-coverage:ignore-start
     fn parse_type_trait_object_core(
         &mut self,
-        last_segment: &SplayedSegment,
-        _splayed_segments: &[SplayedSegment],
+        trait_name_path: &syn::Path,
     ) -> anyhow::Result<Option<MirType>> {
         // frb-coverage:ignore-end
-        let SplayedSegment { name, .. } = last_segment;
-        if let Some(trait_ty) = parse_type_trait(name, self.inner) {
+        let trait_name = ty_to_string(&trait_name_path.segments.last().unwrap());
+
+        if let Some(trait_ty) = parse_type_trait(&trait_name, self.inner) {
             let data = match self.context.parse_mode {
                 ParseMode::Early => None,
                 ParseMode::Normal => {
