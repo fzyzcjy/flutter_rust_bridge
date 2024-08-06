@@ -8,6 +8,7 @@ If your instance is detected, the generator will not generate one, but will use 
 
 As for how to write a custom handler, often copy-paste-modify the code
 in `flutter_rust_bridge::frb_generated_default_handler!()` is a good idea.
+You may need to import types from `flutter_rust_bridge::` as well as `flutter_rust_bridge::handler::`.
 
 The handler is the central entrypoint to handle calls between Rust and Dart,
 therefore please visit the API of the `Handler` trait for more details.
