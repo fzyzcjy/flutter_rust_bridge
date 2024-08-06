@@ -269,8 +269,8 @@ fn generate_method_name(
         "newInstance".to_owned()
     } else {
         (method_info.actual_method_dart_name.as_ref())
-            .to_case(Case::Camel)
-            .unwrap_or(&dart_keywords::escape(
+            .map(|x| x.to_case(Case::Camel))
+            .unwrap_or(dart_keywords::escape(
                 method_info.actual_method_name.to_case(Case::Camel),
             ))
     }
