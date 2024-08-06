@@ -366,6 +366,7 @@ const sidebars = {
                         'guides/miscellaneous/isolates',
                         'guides/miscellaneous/safety',
                         'guides/miscellaneous/compatibility',
+                        'guides/miscellaneous/unreleased',
                         'guides/miscellaneous/deployment',
                         'guides/miscellaneous/whats-new',
                         {
@@ -409,6 +410,7 @@ const sidebars = {
                         'guides/how-to/gitignore',
                         'guides/how-to/rust-compilation',
                         'guides/how-to/cargo-workspaces',
+                        'guides/how-to/cross-origin',
                     ],
                 },
                 'guides/users',
