@@ -551,6 +551,10 @@ typedef struct wire_cst_item_container_solution_two_twin_normal {
   struct wire_cst_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal *items;
 } wire_cst_item_container_solution_two_twin_normal;
 
+typedef struct wire_cst_my_struct_with_sync {
+
+} wire_cst_my_struct_with_sync;
+
 typedef struct wire_cst_struct_with_custom_name_method_twin_normal {
   int32_t field0;
 } wire_cst_struct_with_custom_name_method_twin_normal;
@@ -4276,6 +4280,9 @@ void frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__item
 
 void frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__item_container_solution_two_twin_normal_get_item_contents_twin_normal(int64_t port_,
                                                                                                                                                   struct wire_cst_item_container_solution_two_twin_normal *that);
+
+void frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__my_struct_with_sync_sync(int64_t port_,
+                                                                                                     struct wire_cst_my_struct_with_sync *that);
 
 void frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__same_function_name_in_different_files(int64_t port_);
 
@@ -14668,6 +14675,8 @@ struct wire_cst_my_struct_containing_stream_sink_twin_normal *frbgen_frb_example
 
 struct wire_cst_my_struct_containing_stream_sink_twin_rust_async *frbgen_frb_example_pure_dart_cst_new_box_autoadd_my_struct_containing_stream_sink_twin_rust_async(void);
 
+struct wire_cst_my_struct_with_sync *frbgen_frb_example_pure_dart_cst_new_box_autoadd_my_struct_with_sync(void);
+
 struct wire_cst_my_tree_node_twin_normal *frbgen_frb_example_pure_dart_cst_new_box_autoadd_my_tree_node_twin_normal(void);
 
 struct wire_cst_my_tree_node_twin_rust_async *frbgen_frb_example_pure_dart_cst_new_box_autoadd_my_tree_node_twin_rust_async(void);
@@ -15358,6 +15367,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_my_struct);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_my_struct_containing_stream_sink_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_my_struct_containing_stream_sink_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_my_struct_with_sync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_my_tree_node_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_my_tree_node_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_my_tree_node_twin_sync);
@@ -16349,6 +16359,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__function_with_custom_name_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__item_container_solution_two_twin_normal_create_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__item_container_solution_two_twin_normal_get_item_contents_twin_normal);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__my_struct_with_sync_sync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__same_function_name_in_different_files);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__struct_with_custom_name_method_twin_normal_method_with_custom_name_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__struct_with_impl_block_in_another_file_f);

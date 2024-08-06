@@ -5653,6 +5653,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  MyStructWithSync dco_decode_box_autoadd_my_struct_with_sync(dynamic raw);
+
+  @protected
   MyTreeNodeTwinNormal dco_decode_box_autoadd_my_tree_node_twin_normal(
       dynamic raw);
 
@@ -8337,6 +8340,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   MyStructContainingStreamSinkTwinSse
       dco_decode_my_struct_containing_stream_sink_twin_sse(dynamic raw);
+
+  @protected
+  MyStructWithSync dco_decode_my_struct_with_sync(dynamic raw);
 
   @protected
   MyTreeNodeTwinNormal dco_decode_my_tree_node_twin_normal(dynamic raw);
@@ -14749,6 +14755,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
+  MyStructWithSync sse_decode_box_autoadd_my_struct_with_sync(
+      SseDeserializer deserializer);
+
+  @protected
   MyTreeNodeTwinNormal sse_decode_box_autoadd_my_tree_node_twin_normal(
       SseDeserializer deserializer);
 
@@ -17812,6 +17822,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   MyStructContainingStreamSinkTwinSse
       sse_decode_my_struct_containing_stream_sink_twin_sse(
           SseDeserializer deserializer);
+
+  @protected
+  MyStructWithSync sse_decode_my_struct_with_sync(SseDeserializer deserializer);
 
   @protected
   MyTreeNodeTwinNormal sse_decode_my_tree_node_twin_normal(
@@ -22078,6 +22091,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  JSAny cst_encode_box_autoadd_my_struct_with_sync(MyStructWithSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_my_struct_with_sync(raw);
+  }
+
+  @protected
   JSAny cst_encode_box_autoadd_my_tree_node_twin_normal(
       MyTreeNodeTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
@@ -25670,6 +25689,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_i_32(raw.a), cst_encode_StreamSink_i_32_Dco(raw.b)]
         .jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_my_struct_with_sync(MyStructWithSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [].jsify()!;
   }
 
   @protected
@@ -33879,6 +33904,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       MyStructContainingStreamSinkTwinSse self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_my_struct_with_sync(
+      MyStructWithSync self, SseSerializer serializer);
+
+  @protected
   void sse_encode_box_autoadd_my_tree_node_twin_normal(
       MyTreeNodeTwinNormal self, SseSerializer serializer);
 
@@ -36798,6 +36827,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_my_struct_containing_stream_sink_twin_sse(
       MyStructContainingStreamSinkTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_my_struct_with_sync(
+      MyStructWithSync self, SseSerializer serializer);
 
   @protected
   void sse_encode_my_tree_node_twin_normal(
@@ -40427,6 +40460,12 @@ class RustLibWire implements BaseWire {
           NativePortType port_, JSAny that) =>
       wasmModule
           .wire__crate__api__misc_no_twin_example_a__item_container_solution_two_twin_normal_get_item_contents_twin_normal(
+              port_, that);
+
+  void wire__crate__api__misc_no_twin_example_a__my_struct_with_sync_sync(
+          NativePortType port_, JSAny that) =>
+      wasmModule
+          .wire__crate__api__misc_no_twin_example_a__my_struct_with_sync_sync(
               port_, that);
 
   void wire__crate__api__misc_no_twin_example_a__same_function_name_in_different_files(
@@ -63100,6 +63139,10 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__misc_no_twin_example_a__item_container_solution_two_twin_normal_get_item_contents_twin_normal(
+          NativePortType port_, JSAny that);
+
+  external void
+      wire__crate__api__misc_no_twin_example_a__my_struct_with_sync_sync(
           NativePortType port_, JSAny that);
 
   external void
