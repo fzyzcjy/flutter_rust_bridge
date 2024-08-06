@@ -366,6 +366,7 @@ const sidebars = {
                         'guides/miscellaneous/isolates',
                         'guides/miscellaneous/safety',
                         'guides/miscellaneous/compatibility',
+                        'guides/miscellaneous/unreleased',
                         'guides/miscellaneous/deployment',
                         'guides/miscellaneous/whats-new',
                         {
