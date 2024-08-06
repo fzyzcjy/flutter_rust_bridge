@@ -1,10 +1,7 @@
 use crate::codegen::ir::mir::ty::boxed::MirTypeBoxed;
 use crate::codegen::ir::mir::ty::delegate::{MirTypeDelegate, MirTypeDelegateFuture};
 use crate::codegen::ir::mir::ty::MirType;
-use crate::codegen::ir::mir::ty::MirType::{
-    Boxed, DartFn, DartOpaque, Delegate, Dynamic, EnumRef, GeneralList, Optional, Primitive,
-    PrimitiveList, Record, RustAutoOpaqueImplicit, RustOpaque, StructRef,
-};
+use crate::codegen::ir::mir::ty::MirType::{Boxed, Delegate};
 use crate::codegen::parser::mir::parser::ty::unencodable::SplayedSegment;
 use crate::codegen::parser::mir::parser::ty::TypeParserWithContext;
 use anyhow::{bail, ensure, Context};
@@ -32,37 +29,14 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                     );
                     // frb-coverage:ignore-end
 
-                    // TODO (@vhdirk): I have absolutely no clue as to what the match statement below tries to achieve
-
-                    Delegate(match inner {
-                        StructRef(..)
-                        | EnumRef(..)
-                        | RustAutoOpaqueImplicit(..)
-                        | RustOpaque(..)
-                        | DartOpaque(..)
-                        | DartFn(..)
-                        | Primitive(..)
-                        | Record(..)
-                        | Optional(..)
-                        | Delegate(MirTypeDelegate::PrimitiveEnum(..)) => {
-                            MirTypeDelegate::Future(MirTypeDelegateFuture::new(inner.clone()))
-                        }
-                        Delegate(MirTypeDelegate::Time(..)) => {
-                            MirTypeDelegate::Future(MirTypeDelegateFuture::new(inner.clone()))
-                        }
-                        PrimitiveList(_) | GeneralList(_) | Boxed(_) | Dynamic(_) | Delegate(_) => {
-                            MirTypeDelegate::Future(MirTypeDelegateFuture::new(inner.clone()))
-                        }
-                        // frb-coverage:ignore-start
-                        // TODO (@vhdirk): Is this really unreachable?
-                        MirType::TraitDef(_) => unreachable!(),
-                        // frb-coverage:ignore-end
-                    })
+                    Delegate(MirTypeDelegate::Future(MirTypeDelegateFuture::new(
+                        inner.clone(),
+                    )))
                 }
                 ("Pin", [inner]) => match self.parse_type(&inner)? {
                     Boxed(MirTypeBoxed { inner, .. }) => match *inner {
-                        MirType::Delegate(MirTypeDelegate::Future(delegate_future)) => {
-                            MirType::Delegate(MirTypeDelegate::Future(delegate_future.clone()))
+                        Delegate(MirTypeDelegate::Future(delegate_future)) => {
+                            Delegate(MirTypeDelegate::Future(delegate_future.clone()))
                         }
                         _ => return Ok(None),
                     },
