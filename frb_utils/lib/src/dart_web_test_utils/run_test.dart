@@ -33,7 +33,8 @@ Future<void> executeTestWeb(TestWebConfig config) async {
     cargoBuildArgs: [],
     wasmBindgenArgs: [],
     dartCompileJsEntrypoint: config.entrypoint,
-    wasmPackRustupToolchain: null,
+    // TODO make this configurable later
+    wasmPackRustupToolchain: 'nightly-2024-06-01',
     wasmPackRustflags: null,
   ));
 
