@@ -5,7 +5,7 @@
 #![allow(unused_variables)]
 #![allow(dead_code)]
 
-use flutter_rust_bridge::for_generated::*;
+use flutter_rust_bridge::handler::*;
 use flutter_rust_bridge::*;
 use std::future::Future;
 

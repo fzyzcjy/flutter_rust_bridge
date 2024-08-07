@@ -7,10 +7,14 @@ thread_local! {
     static BACKTRACE: RefCell<Option<Backtrace>> = const { RefCell::new(None) };
 }
 
-pub(crate) struct PanicBacktrace;
+/// Utility for tracking panic backtrace.
+///
+/// This is originally used internally, and only exposed because it is needed outside flutter_rust_bridge.
+/// Therefore, the API may not follow semantics versioning.
+pub struct PanicBacktrace;
 
 impl PanicBacktrace {
-    pub(crate) fn setup() {
+    pub fn setup() {
         let old_hook = std::panic::take_hook();
         std::panic::set_hook(Box::new(move |arg| {
             let trace = Backtrace::capture();
@@ -20,7 +24,7 @@ impl PanicBacktrace {
         }));
     }
 
-    pub(crate) fn catch_unwind<F: FnOnce() -> R + UnwindSafe, R>(
+    pub fn catch_unwind<F: FnOnce() -> R + UnwindSafe, R>(
         f: F,
     ) -> Result<R, CatchUnwindWithBacktrace> {
         std::panic::catch_unwind(f).map_err(|err| CatchUnwindWithBacktrace {
@@ -29,12 +33,13 @@ impl PanicBacktrace {
         })
     }
 
-    pub(crate) fn take_last() -> Option<Backtrace> {
+    pub fn take_last() -> Option<Backtrace> {
         BACKTRACE.with(|b| b.borrow_mut().take())
     }
 }
 
-pub(crate) struct CatchUnwindWithBacktrace {
+/// Similar to the output of catch_unwind, but with extra backtrace
+pub struct CatchUnwindWithBacktrace {
     pub err: Box<dyn Any + Send + 'static>,
     pub backtrace: Option<Backtrace>,
 }
