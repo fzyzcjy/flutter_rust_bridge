@@ -649,7 +649,7 @@ jobs:
           architecture: x64
       - uses: dtolnay/rust-toolchain@stable
         with:
-          toolchain: nightly
+          toolchain: nightly-2024-06-01
           target: wasm32-unknown-unknown
           components: rust-src,rustfmt
       - name: Cache dependencies
