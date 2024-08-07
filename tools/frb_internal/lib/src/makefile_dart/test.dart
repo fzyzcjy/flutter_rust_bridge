@@ -448,7 +448,9 @@ Future<void> testDartWeb(TestDartConfig config) async {
     );
   } else {
     await exec(
-      'dart run flutter_rust_bridge_utils test-web --entrypoint ../$package/test/dart_web_test_entrypoint.dart',
+      'dart run flutter_rust_bridge_utils test-web '
+      '--entrypoint ../$package/test/dart_web_test_entrypoint.dart '
+      '--wasm-pack-rustup-toolchain nightly-2024-06-01',
       relativePwd: 'frb_utils',
       // extraEnv: kEnvEnableRustBacktrace,
     );
