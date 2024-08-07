@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.2.0
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Fix geneartion of async functions when default_dart_async: false ; Update frb_example/integrate_third_party #2190 (thanks @Larpoux)
+* Don't try to cleanup folders that don't exist #2210 (thanks @Markus43)
+* Allow users to override the automatic function rename #2227
+* Export more objects to allow custom thread pool without using flutter_rust_bridge::for_generated namespace #2228
+
 ## 2.1.0
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
