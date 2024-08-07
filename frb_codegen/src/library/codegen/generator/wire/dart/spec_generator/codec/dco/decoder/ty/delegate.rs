@@ -92,6 +92,8 @@ impl<'a> WireDartCodecDcoGeneratorDecoderTrait for DelegateWireDartCodecDcoGener
             | MirTypeDelegate::CustomSerDes(_)
             | MirTypeDelegate::Lifetimeable(_) =>
                 "throw UnimplementedError('Not implemented in this codec, please use the other one');".into(),
+                MirTypeDelegate::Future(_) => unreachable!()
+
         }
     }
 }

@@ -13,17 +13,19 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         &mut self,
         last_segment: &SplayedSegment,
     ) -> anyhow::Result<Option<MirType>> {
-        Ok(Some(match last_segment {
-            ("RustAutoOpaque", [ty]) => self.parse_rust_auto_opaque_explicit(ty, None, None)?,
-            ("RustAutoOpaqueNom", [ty]) => {
-                self.parse_rust_auto_opaque_explicit(ty, None, Some(RustOpaqueCodecMode::Nom))?
-            }
-            ("RustAutoOpaqueMoi", [ty]) => {
-                self.parse_rust_auto_opaque_explicit(ty, None, Some(RustOpaqueCodecMode::Moi))?
-            }
+        Ok(Some(
+            match (last_segment.name, last_segment.type_arguments().as_slice()) {
+                ("RustAutoOpaque", [ty]) => self.parse_rust_auto_opaque_explicit(ty, None, None)?,
+                ("RustAutoOpaqueNom", [ty]) => {
+                    self.parse_rust_auto_opaque_explicit(ty, None, Some(RustOpaqueCodecMode::Nom))?
+                }
+                ("RustAutoOpaqueMoi", [ty]) => {
+                    self.parse_rust_auto_opaque_explicit(ty, None, Some(RustOpaqueCodecMode::Moi))?
+                }
 
-            _ => return Ok(None),
-        }))
+                _ => return Ok(None),
+            },
+        ))
     }
 
     fn parse_rust_auto_opaque_explicit(

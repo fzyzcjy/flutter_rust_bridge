@@ -12,14 +12,16 @@ part of 'generator_utils.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$DuplicatorMode {
   List<DuplicatorComponentMode> get components =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DuplicatorMode
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $DuplicatorModeCopyWith<DuplicatorMode> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -43,6 +45,8 @@ class _$DuplicatorModeCopyWithImpl<$Res, $Val extends DuplicatorMode>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of DuplicatorMode
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -76,6 +80,8 @@ class __$$DuplicatorModeImplCopyWithImpl<$Res>
       _$DuplicatorModeImpl _value, $Res Function(_$DuplicatorModeImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DuplicatorMode
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -123,7 +129,9 @@ class _$DuplicatorModeImpl extends _DuplicatorMode {
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_components));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DuplicatorMode
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DuplicatorModeImplCopyWith<_$DuplicatorModeImpl> get copyWith =>
@@ -138,8 +146,11 @@ abstract class _DuplicatorMode extends DuplicatorMode {
 
   @override
   List<DuplicatorComponentMode> get components;
+
+  /// Create a copy of DuplicatorMode
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DuplicatorModeImplCopyWith<_$DuplicatorModeImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

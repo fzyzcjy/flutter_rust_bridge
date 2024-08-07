@@ -38,11 +38,20 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         attributes: &FrbAttributes,
     ) -> anyhow::Result<FunctionPartialInfo> {
         let mir = self.type_parser.parse_type(ty, context)?;
+
+        let (mir, is_async) =
+            if let MirType::Delegate(MirTypeDelegate::Future(delegate_future)) = &mir {
+                (*delegate_future.output.clone(), true)
+            } else {
+                (mir, false)
+            };
+
         let mir = parse_maybe_proxy_return_type(mir, owner, attributes)?;
         let info = parse_type_maybe_result(&mir, self.type_parser, context)?;
         Ok(FunctionPartialInfo {
             ok_output: Some(info.ok_output),
             error_output: info.error_output,
+            is_async,
             ..Default::default()
         })
     }
@@ -116,6 +125,7 @@ fn parse_proxy_return_type(mir: MirType, owner: &MirFuncOwnerInfo) -> anyhow::Re
             }
         }
     }
+
     // This will stop the whole generator and tell the users, so we do not care about testing it
     // frb-coverage:ignore-start
     bail!("This return type is not currently compatible with `#[frb(proxy)]` yet")

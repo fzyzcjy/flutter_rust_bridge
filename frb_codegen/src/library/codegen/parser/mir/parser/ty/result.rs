@@ -12,15 +12,17 @@ pub(crate) fn parse_type_maybe_result(
     context: &TypeParserParsingContext,
 ) -> anyhow::Result<ResultTypeInfo> {
     if let MirType::RustAutoOpaqueImplicit(inner) = mir {
-        match splay_segments(&inner.raw.segments).last() {
-            Some(("Result", args)) => {
-                return parse_type_result(
-                    &(args.iter())
-                        .map(|arg| type_parser.parse_type(arg, context))
-                        .collect::<anyhow::Result<Vec<_>>>()?,
-                );
+        if let Some(last_segment) = splay_segments(&inner.raw.segments).last() {
+            match (last_segment.name, last_segment.type_arguments().as_slice()) {
+                ("Result", args) => {
+                    return parse_type_result(
+                        &(args.iter())
+                            .map(|arg| type_parser.parse_type(arg, context))
+                            .collect::<anyhow::Result<Vec<_>>>()?,
+                    );
+                }
+                _ => {}
             }
-            _ => {}
         }
     }
 

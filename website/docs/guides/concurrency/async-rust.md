@@ -21,6 +21,12 @@ Well, just write anything you like, so here is a bare minimal example:
 
 ```rust
 async fn f() { ... }
+
+// or
+fn f() -> impl Future<Output = ()> { ... }
+
+// or
+fn f() -> Pin<Box<dyn Future<Output = ()>>>
 ```
 
 With Dart:

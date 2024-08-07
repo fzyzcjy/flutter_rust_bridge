@@ -103,6 +103,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
                 io: Some("flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_decode(self.cst_decode())".into()),
                 ..Default::default()
             },
+
             // Do not care about these unimplemented things
             // frb-coverage:ignore-start
             MirTypeDelegate::ProxyVariant(_)
@@ -111,6 +112,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
             MirTypeDelegate::CastedPrimitive(_)
             | MirTypeDelegate::CustomSerDes(_)
             | MirTypeDelegate::Lifetimeable(_) => Acc::distribute(None),
+                MirTypeDelegate::Future(_) => unreachable!()
             // frb-coverage:ignore-end
         }
     }
@@ -157,6 +159,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
             MirTypeDelegate::CastedPrimitive(_)
             | MirTypeDelegate::CustomSerDes(_)
             | MirTypeDelegate::Lifetimeable(_) => return None,
+                MirTypeDelegate::Future(_) => unreachable!()
             // frb-coverage:ignore-end
         })
     }

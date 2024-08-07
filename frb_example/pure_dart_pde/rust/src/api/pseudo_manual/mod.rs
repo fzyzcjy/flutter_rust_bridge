@@ -34,6 +34,8 @@ pub mod exception_twin_rust_async;
 pub mod exception_twin_sync;
 pub mod external_type_in_crate_twin_rust_async;
 pub mod external_type_in_crate_twin_sync;
+pub mod futures_twin_rust_async;
+pub mod futures_twin_sync;
 pub mod impl_trait_twin_sync;
 pub mod lifetimeable_twin_sync;
 pub mod map_and_set_twin_rust_async;

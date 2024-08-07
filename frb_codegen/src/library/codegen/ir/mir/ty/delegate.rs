@@ -38,6 +38,7 @@ pub enum MirTypeDelegate {
     DynTrait(MirTypeDelegateDynTrait),
     Lifetimeable(MirTypeDelegateLifetimeable),
     CustomSerDes(MirTypeDelegateCustomSerDes),
+    Future(MirTypeDelegateFuture)
 }
 
 pub struct MirTypeDelegateArray {
@@ -73,6 +74,10 @@ pub struct MirTypeDelegateMap {
 
 pub struct MirTypeDelegateSet {
     pub inner: Box<MirType>,
+}
+
+pub struct MirTypeDelegateFuture {
+    pub output: Box<MirType>,
 }
 
 pub struct MirTypeDelegateStreamSink {
@@ -199,6 +204,9 @@ impl MirTypeTrait for MirTypeDelegate {
             MirTypeDelegate::CustomSerDes(mir) => {
                 format!("CustomSerializer_{}", mir.info.rust_api_type.safe_ident())
             }
+            MirTypeDelegate::Future(mir) => {
+                format!("Future_{}", mir.output.safe_ident())
+            }
         }
     }
 
@@ -271,6 +279,7 @@ impl MirTypeTrait for MirTypeDelegate {
             MirTypeDelegate::ProxyEnum(mir) => mir.original.rust_api_type(),
             MirTypeDelegate::Lifetimeable(mir) => mir.api_type.rust_api_type(),
             MirTypeDelegate::CustomSerDes(mir) => mir.info.rust_api_type.rust_api_type(),
+            MirTypeDelegate::Future(mir) => mir.output.rust_api_type(),
         }
     }
 
@@ -288,6 +297,7 @@ impl MirTypeTrait for MirTypeDelegate {
             MirTypeDelegate::Array(inner) => Some(inner.namespace.clone()),
             MirTypeDelegate::ProxyEnum(inner) => inner.original.self_namespace(),
             MirTypeDelegate::ProxyVariant(inner) => inner.inner.self_namespace(),
+            MirTypeDelegate::Future(inner) => inner.output.self_namespace(),
             _ => None,
         }
     }
@@ -349,6 +359,7 @@ impl MirTypeDelegate {
                 MirTypeDelegate::RustAutoOpaqueExplicit(mir.delegate.clone()),
             ),
             MirTypeDelegate::CustomSerDes(mir) => *mir.info.inner_type.clone(),
+            MirTypeDelegate::Future(mir) => *mir.output.clone(),
         }
     }
 }
@@ -435,5 +446,13 @@ impl MirTypeDelegateDynTrait {
 
     pub(crate) fn data(&self) -> &MirTypeDelegateDynTraitData {
         self.data.as_ref().unwrap()
+    }
+}
+
+impl MirTypeDelegateFuture {
+    pub fn new(output: MirType) -> Self {
+        Self {
+            output: Box::new(output),
+        }
     }
 }
