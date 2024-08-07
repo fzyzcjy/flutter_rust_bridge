@@ -1,6 +1,6 @@
 use crate::command_run;
 use crate::library::commands::command_runner::{call_shell, check_exit_code};
-use crate::library::commands::format_dart::prepare_paths;
+use crate::library::commands::dart_fix::prepare_paths;
 use log::debug;
 use std::path::{Path, PathBuf};
 
