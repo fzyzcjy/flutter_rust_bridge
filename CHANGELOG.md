@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Support default logging in MacOS #2235 (thanks @wxitcode)
+
 ## 2.2.0
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
