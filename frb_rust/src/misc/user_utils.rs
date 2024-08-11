@@ -28,7 +28,7 @@ fn setup_log_to_console() {
         android_logger::Config::default().with_max_level(log::LevelFilter::Trace),
     );
 
-    #[cfg(target_os = "ios")]
+    #[cfg(any(target_os = "ios", target_os = "macos"))]
     let _ = oslog::OsLogger::new("frb_user")
         .level_filter(log::LevelFilter::Trace)
         .init();
