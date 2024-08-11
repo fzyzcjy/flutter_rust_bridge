@@ -33,6 +33,7 @@
 - temeddix: Fix broken CI. Custom num workers. Fix MacOS doc steps. Update doc. Make zero-copy defaultable.
 - NightFeather0615: Fix Vec bool.
 - OfficialBoyfriend: Fix error display.
+- wxitcode: Add org option. Support MacOS log. Fix a typo.
 - Markus43: Fix folder removal.
 - Krysl: Add preamble.
 - w-ensink: Improve doc. Fix CI. Refactor. Add tests.
@@ -67,7 +68,6 @@
 - akashgurava: Partial fix.
 - w1th0utnam3: Improve message.
 - vincent-herlemont: Loosen version.
-- wxitcode: Add org option. Fix a typo.
 - canxin121: Fix permission.
 - pixelshot91: Update cargokit. Fix doc link.
 - TrackerSB: Bump allo-isolate.

@@ -352,6 +352,15 @@
       ]
     },
     {
+      "login": "wxitcode",
+      "name": "wxitcode",
+      "avatar_url": "https://avatars.githubusercontent.com/u/37947163?v=4",
+      "profile": "https://github.com/wxitcode",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
       "login": "Markus43",
       "name": "Markus",
       "avatar_url": "https://avatars.githubusercontent.com/u/23716360?v=4",
@@ -656,15 +665,6 @@
       "profile": "https://matrix.to/#/@vincentherl:matrix.org",
       "contributions": [
         "code"
-      ]
-    },
-    {
-      "login": "wxitcode",
-      "name": "wxitcode",
-      "avatar_url": "https://avatars.githubusercontent.com/u/37947163?v=4",
-      "profile": "https://github.com/wxitcode",
-      "contributions": [
-        "doc"
       ]
     },
     {
