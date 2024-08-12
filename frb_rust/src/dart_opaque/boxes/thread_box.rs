@@ -50,7 +50,7 @@ impl GuardedBoxContext for GuardedBoxContextThread {
     }
 }
 
-#[cfg(not(wasm))]
+#[cfg(not(target_family = "wasm"))]
 #[cfg(test)]
 mod tests {
     use crate::dart_opaque::boxes::thread_box::ThreadBox;

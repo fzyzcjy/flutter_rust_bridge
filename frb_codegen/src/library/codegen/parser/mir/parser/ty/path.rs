@@ -29,10 +29,12 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         type_path: &TypePath,
         path: &Path,
     ) -> anyhow::Result<MirType> {
+        // TODO: previously, extract_path data would only return those segments with `Type` generic args
+        // now we return everything.
         let segments = extract_path_data(path)?;
         let splayed_segments = splay_segments(&segments);
 
-        if let Some(last_segment) = splayed_segments.last() {
+        if let Some(last_segment) = splayed_segments.iter().filter(|s| s.args.len() > 0).last() {
             if let Some(ans) = self.parse_type_path_data_custom_ser_des(last_segment)? {
                 return Ok(ans);
             }

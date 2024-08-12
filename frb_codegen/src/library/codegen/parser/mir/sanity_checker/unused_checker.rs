@@ -95,6 +95,7 @@ mod tests {
 
         body("Something", vec!["Something"]);
         body("One<Two>", vec!["One", "Two"]);
+        body("One<Out = Two>", vec!["One", "Two"]);
         body("a::b::One<c::d::Two>", vec!["One", "Two"]);
         body("&One", vec!["One"]);
         body("&mut One", vec!["One"]);

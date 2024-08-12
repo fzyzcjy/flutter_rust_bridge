@@ -1,15 +1,15 @@
 #[cfg(feature = "rust-async")]
-#[cfg(not(wasm))]
+#[cfg(not(target_family = "wasm"))]
 mod io;
 #[cfg(feature = "rust-async")]
-#[cfg(not(wasm))]
+#[cfg(not(target_family = "wasm"))]
 pub use io::*;
 
 #[cfg(feature = "rust-async")]
-#[cfg(wasm)]
+#[cfg(target_family = "wasm")]
 mod web;
 #[cfg(feature = "rust-async")]
-#[cfg(wasm)]
+#[cfg(target_family = "wasm")]
 pub use web::*;
 
 #[cfg(not(feature = "rust-async"))]
