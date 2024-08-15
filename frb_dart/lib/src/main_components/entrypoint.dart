@@ -175,6 +175,7 @@ class _EntrypointState<A extends BaseApi> {
 }
 
 class _FakeEntrypointState<A extends BaseApi> implements _EntrypointState<A> {
+  @override
   final A api;
 
   _FakeEntrypointState({
