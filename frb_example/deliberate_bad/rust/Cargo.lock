@@ -226,6 +226,7 @@ dependencies = [
  "futures",
  "js-sys",
  "lazy_static",
+ "log",
  "oslog",
  "threadpool",
  "tokio",
