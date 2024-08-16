@@ -927,6 +927,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "Tienisto",
+      "name": "Tien Do Nam",
+      "avatar_url": "https://avatars.githubusercontent.com/u/38380847?v=4",
+      "profile": "https://tienisto.com",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
