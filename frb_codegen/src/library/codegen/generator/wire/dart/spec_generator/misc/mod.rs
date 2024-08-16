@@ -159,6 +159,16 @@ fn generate_boilerplate(
                     );
                   }}
 
+                  /// Initialize flutter_rust_bridge in mock mode.
+                  /// No libraries for FFI are loaded.
+                  static void initMock({{
+                    required {api_class_name} api,
+                  }}) {{
+                    instance.initMockImpl(
+                      api: api,
+                    );
+                  }}
+
                   /// Dispose flutter_rust_bridge
                   ///
                   /// The call to this function is optional, since flutter_rust_bridge (and everything else)
