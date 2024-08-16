@@ -34,6 +34,7 @@
 - NightFeather0615: Fix Vec bool.
 - OfficialBoyfriend: Fix error display.
 - wxitcode: Add org option. Support MacOS log. Fix a typo.
+- Tienisto: Add mock init.
 - Markus43: Fix folder removal.
 - Krysl: Add preamble.
 - w-ensink: Improve doc. Fix CI. Refactor. Add tests.

@@ -361,6 +361,15 @@
       ]
     },
     {
+      "login": "Tienisto",
+      "name": "Tien Do Nam",
+      "avatar_url": "https://avatars.githubusercontent.com/u/38380847?v=4",
+      "profile": "https://tienisto.com",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
       "login": "Markus43",
       "name": "Markus",
       "avatar_url": "https://avatars.githubusercontent.com/u/23716360?v=4",
@@ -926,15 +935,6 @@
       "profile": "https://thesimplekid.com",
       "contributions": [
         "doc"
-      ]
-    },
-    {
-      "login": "Tienisto",
-      "name": "Tien Do Nam",
-      "avatar_url": "https://avatars.githubusercontent.com/u/38380847?v=4",
-      "profile": "https://tienisto.com",
-      "contributions": [
-        "code"
       ]
     }
   ],
