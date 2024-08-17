@@ -14,6 +14,7 @@ void main() {
 }
 
 class _FakeBaseEntrypoint extends BaseEntrypoint {
+  // frb-coverage:ignore-start
   @override
   get apiImplConstructor => throw UnimplementedError();
 
@@ -31,6 +32,7 @@ class _FakeBaseEntrypoint extends BaseEntrypoint {
 
   @override
   get wireConstructor => throw UnimplementedError();
+  // frb-coverage:ignore-end
 }
 
 class _FakeApi implements BaseApi {}
