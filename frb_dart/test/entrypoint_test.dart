@@ -14,6 +14,7 @@ void main() {
 }
 
 class _FakeBaseEntrypoint extends BaseEntrypoint {
+  // We do not care about these functions in this test (and they should not be called as well)
   // frb-coverage:ignore-start
   @override
   get apiImplConstructor => throw UnimplementedError();
