@@ -29,6 +29,6 @@ impl MirTypeTrait for MirTypeDartOpaque {
 
 impl MirTypeDartOpaque {
     pub(crate) fn get_delegate(&self) -> MirType {
-        MirType::Primitive(MirTypePrimitive::Usize)
+        MirType::Primitive(MirTypePrimitive::Isize)
     }
 }
