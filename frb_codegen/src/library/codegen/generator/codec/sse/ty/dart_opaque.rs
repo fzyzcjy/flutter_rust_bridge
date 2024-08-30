@@ -10,7 +10,7 @@ impl<'a> CodecSseTyTrait for DartOpaqueCodecSseTy<'a> {
             &self.mir.get_delegate(),
             match lang {
                 Lang::DartLang(_) => {
-                    "PlatformPointerUtil.ptrToInt(encodeDartOpaque(self, portManager.dartHandlerPort, generalizedFrbRustBinding))"
+                    "PlatformPointerUtil.ptrToPlatformInt64(encodeDartOpaque(self, portManager.dartHandlerPort, generalizedFrbRustBinding))"
                 }
                 Lang::RustLang(_) => "self.encode()",
             },
