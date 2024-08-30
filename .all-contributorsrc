@@ -936,6 +936,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "atezet",
+      "name": "Arjen",
+      "avatar_url": "https://avatars.githubusercontent.com/u/4867268?v=4",
+      "profile": "https://github.com/atezet",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
