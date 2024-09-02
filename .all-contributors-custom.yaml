@@ -45,6 +45,7 @@
 - sccheruku: Prevent double-generating utility.
 - upsuper: Refactor delegate-attr.
 - jsonmona: Add import.
+- atezet: Follow rustfmt.
 - MateusHBR: Add pub get.
 - codercengiz: Fix mirroring bug.
 - aran: Fix map + mirror. Fix pubspec. Upgrde ffigen. Replace to js_interop. Bump version. Fix typo.
