@@ -4,7 +4,7 @@ use crate::codegen::polisher::internal_config::PolisherInternalConfig;
 use crate::commands::format_rust::format_rust;
 use crate::library::commands::dart_build_runner::dart_build_runner;
 use crate::library::commands::dart_fix::dart_fix;
-use crate::library::commands::format_dart::format_dart;
+use crate::library::commands::dart_format::dart_format;
 use crate::utils::dart_repository::dart_repo::{DartDependencyMode, DartRepository};
 use crate::utils::path_utils::path_to_string;
 use anyhow::Context;
@@ -129,7 +129,7 @@ fn execute_dart_format(
     progress_bar_pack: &GeneratorProgressBarPack,
 ) -> anyhow::Result<()> {
     let _pb = progress_bar_pack.polish_dart_formatter.start();
-    format_dart(
+    dart_format(
         &filter_paths_by_extension(output_paths, "dart"),
         &config.dart_root,
         config.dart_format_line_length,

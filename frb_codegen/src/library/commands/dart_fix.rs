@@ -14,7 +14,7 @@ pub fn dart_fix(
     paths: &[PathBuf],
     base_path: &Path,
     extra_extensions: &[&str],
-) -> anyhow::Result<()> {
+) -> Result<()> {
     if paths.is_empty() {
         return Ok(());
     }
@@ -37,14 +37,14 @@ pub(super) fn prepare_paths(
     paths: &[PathBuf],
     base_path: &Path,
     extra_extensions: &[&str],
-) -> anyhow::Result<Vec<PathBuf>> {
+) -> Result<Vec<PathBuf>> {
     let base_path_str = path_to_string(base_path)?;
     let normalized_base_path = normalize_windows_unc_path(&base_path_str);
 
-    Ok((paths.iter())
+    Ok(paths.iter()
         .map(|path| {
             let mut path: PathBuf =
-                (normalize_windows_unc_path(&path_to_string(path)?).to_owned()).into();
+                normalize_windows_unc_path(&path_to_string(path)?).to_owned().into();
             path = diff_paths(path, normalized_base_path).context("diff path")?;
             if path_to_string(&path)?.is_empty() {
                 path = ".".into();
@@ -54,8 +54,8 @@ pub(super) fn prepare_paths(
         .collect::<Result<Vec<_>>>()?
         .into_iter()
         .flat_map(|path| {
-            (vec![path.clone()].into_iter()).chain(
-                (extra_extensions.iter())
+            vec![path.clone()].into_iter().chain(
+                extra_extensions.iter()
                     .map(move |ext| with_extension(path.clone(), ext))
                     .filter(|path| path.exists()),
             )
