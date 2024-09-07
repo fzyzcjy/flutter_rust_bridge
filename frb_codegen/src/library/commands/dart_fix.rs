@@ -40,8 +40,9 @@ pub(super) fn prepare_paths(
     Ok(paths
         .iter()
         .map(|path| {
-            let mut path: PathBuf =
-                normalize_windows_unc_path(&path_to_string(path)?).to_owned().into();
+            let mut path: PathBuf = normalize_windows_unc_path(&path_to_string(path)?)
+                .to_owned()
+                .into();
             path = diff_paths(path, normalized_base_path).context("diff path")?;
             if path_to_string(&path)?.is_empty() {
                 path = ".".into();
