@@ -326,7 +326,7 @@ checksum = "28a80e3145d8ad11ba0995949bbcf48b9df2be62772b3d351ef017dff6ecb853"
 
 [[package]]
 name = "flutter_rust_bridge"
-version = "2.0.0"
+version = "2.3.0"
 dependencies = [
  "allo-isolate",
  "android_logger",
@@ -341,6 +341,7 @@ dependencies = [
  "futures",
  "js-sys",
  "lazy_static",
+ "log",
  "oslog",
  "threadpool",
  "tokio",
@@ -351,7 +352,7 @@ dependencies = [
 
 [[package]]
 name = "flutter_rust_bridge_macros"
-version = "2.0.0"
+version = "2.3.0"
 dependencies = [
  "hex",
  "md-5",

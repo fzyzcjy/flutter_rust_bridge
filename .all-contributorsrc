@@ -297,6 +297,15 @@
       ]
     },
     {
+      "login": "Larpoux",
+      "name": "Larpoux",
+      "avatar_url": "https://avatars.githubusercontent.com/u/45900255?v=4",
+      "profile": "https://github.com/Larpoux",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
       "login": "banool",
       "name": "Daniel Porteous (dport)",
       "avatar_url": "https://avatars.githubusercontent.com/u/7816187?v=4",
@@ -343,19 +352,37 @@
       ]
     },
     {
-      "login": "Krysl",
-      "name": "Krysl",
-      "avatar_url": "https://avatars.githubusercontent.com/u/5905801?v=4",
-      "profile": "https://github.com/Krysl",
+      "login": "wxitcode",
+      "name": "wxitcode",
+      "avatar_url": "https://avatars.githubusercontent.com/u/37947163?v=4",
+      "profile": "https://github.com/wxitcode",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "Tienisto",
+      "name": "Tien Do Nam",
+      "avatar_url": "https://avatars.githubusercontent.com/u/38380847?v=4",
+      "profile": "https://tienisto.com",
       "contributions": [
         "code"
       ]
     },
     {
-      "login": "Larpoux",
-      "name": "Larpoux",
-      "avatar_url": "https://avatars.githubusercontent.com/u/45900255?v=4",
-      "profile": "https://github.com/Larpoux",
+      "login": "Markus43",
+      "name": "Markus",
+      "avatar_url": "https://avatars.githubusercontent.com/u/23716360?v=4",
+      "profile": "https://github.com/Markus43",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "Krysl",
+      "name": "Krysl",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5905801?v=4",
+      "profile": "https://github.com/Krysl",
       "contributions": [
         "code"
       ]
@@ -428,6 +455,15 @@
       "name": "jsonmona",
       "avatar_url": "https://avatars.githubusercontent.com/u/105187344?v=4",
       "profile": "https://github.com/jsonmona",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "atezet",
+      "name": "Arjen",
+      "avatar_url": "https://avatars.githubusercontent.com/u/4867268?v=4",
+      "profile": "https://github.com/atezet",
       "contributions": [
         "code"
       ]
@@ -647,15 +683,6 @@
       "profile": "https://matrix.to/#/@vincentherl:matrix.org",
       "contributions": [
         "code"
-      ]
-    },
-    {
-      "login": "wxitcode",
-      "name": "wxitcode",
-      "avatar_url": "https://avatars.githubusercontent.com/u/37947163?v=4",
-      "profile": "https://github.com/wxitcode",
-      "contributions": [
-        "doc"
       ]
     },
     {

@@ -333,7 +333,7 @@ jobs:
           components: rustfmt
       - uses: dart-lang/setup-dart@v1
         with:
-          sdk: stable
+          sdk: ${{ env.FRB_MAIN_DART_VERSION }}
           architecture: x64
 
       # execute
@@ -367,7 +367,7 @@ jobs:
       - run: tree downloaded-artifacts
       - uses: dart-lang/setup-dart@v1
         with:
-          sdk: stable
+          sdk: ${{ env.FRB_MAIN_DART_VERSION }}
           architecture: x64
 
       - run: ./frb_internal bench-merge
@@ -609,7 +609,7 @@ jobs:
           components: rustfmt
       - uses: dart-lang/setup-dart@v1
         with:
-          sdk: stable
+          sdk: ${{ env.FRB_MAIN_DART_VERSION }}
           architecture: x64
       - uses: taiki-e/install-action@cargo-llvm-cov
 
@@ -649,7 +649,7 @@ jobs:
           architecture: x64
       - uses: dtolnay/rust-toolchain@stable
         with:
-          toolchain: nightly
+          toolchain: nightly-2024-06-01
           target: wasm32-unknown-unknown
           components: rust-src,rustfmt
       - name: Cache dependencies
@@ -699,7 +699,7 @@ jobs:
           components: rustfmt
       - uses: dart-lang/setup-dart@v1
         with:
-          sdk: stable
+          sdk: ${{ env.FRB_MAIN_DART_VERSION }}
           architecture: x64
       - run: sudo apt-get update
 
@@ -743,7 +743,7 @@ jobs:
           rustup component add rust-src --toolchain nightly-x86_64-unknown-linux-gnu
       - uses: dart-lang/setup-dart@v1
         with:
-          sdk: stable
+          sdk: ${{ env.FRB_MAIN_DART_VERSION }}
           architecture: x64
 
       # execute

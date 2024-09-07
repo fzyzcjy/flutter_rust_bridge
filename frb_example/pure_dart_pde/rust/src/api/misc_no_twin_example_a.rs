@@ -189,3 +189,10 @@ impl std::fmt::Debug for Issue2170Struct {
         unimplemented!()
     }
 }
+
+pub struct MyStructWithSync {}
+impl MyStructWithSync {
+    // #2194
+    #[frb(name = "sync")]
+    pub fn sync(&self) {}
+}

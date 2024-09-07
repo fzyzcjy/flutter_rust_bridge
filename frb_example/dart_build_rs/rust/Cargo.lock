@@ -589,7 +589,7 @@ dependencies = [
 
 [[package]]
 name = "flutter_rust_bridge"
-version = "2.0.0"
+version = "2.3.0"
 dependencies = [
  "allo-isolate",
  "android_logger",
@@ -604,6 +604,7 @@ dependencies = [
  "futures",
  "js-sys",
  "lazy_static",
+ "log",
  "oslog",
  "threadpool",
  "tokio",
@@ -614,7 +615,7 @@ dependencies = [
 
 [[package]]
 name = "flutter_rust_bridge_codegen"
-version = "2.0.0"
+version = "2.3.0"
 dependencies = [
  "anyhow",
  "atty",
@@ -658,7 +659,7 @@ dependencies = [
 
 [[package]]
 name = "flutter_rust_bridge_macros"
-version = "2.0.0"
+version = "2.3.0"
 dependencies = [
  "hex",
  "md-5",

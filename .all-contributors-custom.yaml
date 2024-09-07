@@ -27,13 +27,16 @@
 - mcmah309: Add cli plugin scaffold generation.
 - AlienKevin: Add flutter example for macOS. Add doc for Android NDK bug. Improve migration doc.
 - alexthe2: Add Option Datetime. Add empty structs. Improve doc. Add `r#`. Fix mirror enum bug.
+- Larpoux: Fix async generation. Update web-audio-api binding.
 - banool: Fix pubspec parsing. Fix symbol-stripping doc.
 - anlumo: Fix freezed + methods. Non-clone RustOpaque.
 - temeddix: Fix broken CI. Custom num workers. Fix MacOS doc steps. Update doc. Make zero-copy defaultable.
 - NightFeather0615: Fix Vec bool.
 - OfficialBoyfriend: Fix error display.
+- wxitcode: Add org option. Support MacOS log. Fix a typo.
+- Tienisto: Add mock init.
+- Markus43: Fix folder removal.
 - Krysl: Add preamble.
-- Larpoux: Update web-audio-api binding.
 - w-ensink: Improve doc. Fix CI. Refactor. Add tests.
 - smw-wagnerma: Improve Windows encoding handling.
 - powpingdone: Document JNI init and libc++_static linking.
@@ -42,6 +45,7 @@
 - sccheruku: Prevent double-generating utility.
 - upsuper: Refactor delegate-attr.
 - jsonmona: Add import.
+- atezet: Follow rustfmt.
 - MateusHBR: Add pub get.
 - codercengiz: Fix mirroring bug.
 - aran: Fix map + mirror. Fix pubspec. Upgrde ffigen. Replace to js_interop. Bump version. Fix typo.
@@ -66,7 +70,6 @@
 - akashgurava: Partial fix.
 - w1th0utnam3: Improve message.
 - vincent-herlemont: Loosen version.
-- wxitcode: Add org option. Fix a typo.
 - canxin121: Fix permission.
 - pixelshot91: Update cargokit. Fix doc link.
 - TrackerSB: Bump allo-isolate.

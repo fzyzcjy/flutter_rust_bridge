@@ -268,13 +268,11 @@ fn generate_method_name(
     if default_constructor_mode.is_some() {
         "newInstance".to_owned()
     } else {
-        dart_keywords::escape(
-            method_info
-                .actual_method_dart_name
-                .as_ref()
-                .unwrap_or(&method_info.actual_method_name)
-                .to_case(Case::Camel),
-        )
+        (method_info.actual_method_dart_name.as_ref())
+            .map(|x| x.to_case(Case::Camel))
+            .unwrap_or(dart_keywords::escape(
+                method_info.actual_method_name.to_case(Case::Camel),
+            ))
     }
 }
 

@@ -65,6 +65,18 @@ abstract class BaseEntrypoint<A extends BaseApi, AI extends BaseApiImpl,
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   @protected
+  void initMockImpl({
+    required A api,
+  }) {
+    if (__state != null) {
+      throw StateError('Should not initialize flutter_rust_bridge twice');
+    }
+
+    __state = _FakeEntrypointState(api: api);
+  }
+
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
+  @protected
   void disposeImpl() {
     __state!.dispose();
   }
@@ -159,6 +171,23 @@ class _EntrypointState<A extends BaseApi> {
 
   void dispose() {
     portManager.dispose();
+  }
+}
+
+class _FakeEntrypointState<A extends BaseApi> implements _EntrypointState<A> {
+  @override
+  final A api;
+
+  _FakeEntrypointState({
+    required this.api,
+  });
+
+  @override
+  void dispose() {}
+
+  @override
+  dynamic noSuchMethod(Invocation invocation) {
+    throw UnimplementedError('');
   }
 }
 

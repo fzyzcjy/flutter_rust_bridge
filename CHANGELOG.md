@@ -1,5 +1,40 @@
 # Changelog
 
+## 2.3.0
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Support default logging in MacOS #2235 (thanks @wxitcode)
+* Support Dart runtime to run mock mode without Rust binaries #2248 #2250 (thanks @Tienisto)
+* Make log crate feature enabled by default #2245
+
+## 2.2.0
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Fix geneartion of async functions when default_dart_async: false ; Update frb_example/integrate_third_party #2190 (
+  thanks @Larpoux)
+* Don't try to cleanup folders that don't exist #2210 (thanks @Markus43)
+* Allow users to override the automatic function rename #2227
+* Export more objects to allow custom thread pool without using flutter_rust_bridge::for_generated namespace #2228
+
+## 2.1.0
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Add the ability to generate plugins from the CLI tool #2144 (thanks @mcmah309)
+* Fix codegen halt when having boxed trait objects #2180
+* Add attribute `#[frb(dart_async)]` #2181
+* Fix Dart closures cannot be encoded when using the new Dart JS interop #2191
+* Expose Rust executor's async runtime for customization #2151
+* Generate methods of Default trait #2150
+* Automatically rename function names to avoid keyword conflict #2150
+* Improve parsing trait impl in third party crates #2150
+* Support more attributes #2140
+* Fix generated use statement pointing to self #2140
+* Fix linter warning avoid_return_types_on_setters #2140
+* Reduce number of generated files #2140
+* Add default_dart_async configuration option #2139
+* Handle root module scenario in pub use transformer #2124
+* Improve hints when fails to parse a struct or enum #2124
+
 ## 2.0.0
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
@@ -32,7 +67,8 @@
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
 * Support returning types with non-static lifetime (i.e. borrowed types / reference types) #2088 #2093
 * Loosen config field `rust_input` syntax with delimit `,` #2092 (thanks @dbsxdbsx)
-* Add prefix for automatically generated get/set methods of `#[frb(opaque)]` types to avoid conflicting with existing methods #2090 (thanks @dbsxdbsx)
+* Add prefix for automatically generated get/set methods of `#[frb(opaque)]` types to avoid conflicting with existing
+  methods #2090 (thanks @dbsxdbsx)
 * Support adding arbitrary code in generated Rust file via rust_preamble config #2086
 * Support ignoring a whole module by `#[frb(ignore)]` on module #2085
 * Support `/// frb:...` #2085
@@ -47,7 +83,8 @@
 * Add `#[frb(type_64bit_int)]` to pick preferred Dart big integer type #2065
 * Support user-defined custom serializers and deserializers #2067
 * Support attributes on impl block ; Improve ignore category message ; Fix external methods are wrong ignored #2069
-* Support `#[frb(name)]` on fields to rename them ; Automatically rename Dart field names if they conflict with Dart keywords #2070
+* Support `#[frb(name)]` on fields to rename them ; Automatically rename Dart field names if they conflict with Dart
+  keywords #2070
 * Refactor internal code #2064 #2062
 * Migrate to new Dart web package #2063
 
@@ -94,7 +131,8 @@
 * Support `#[frb(generate_impl_enum)]` #2046
 * Fix overriding attributes in third party crates for traits #2046
 * Add RustOpaqueInterface to cleanup generated interface #2047
-* Refactor to extract early_generator between high-level intermediate representation and mid-level intermediate representation #2049
+* Refactor to extract early_generator between high-level intermediate representation and mid-level intermediate
+  representation #2049
 * Support `#[frb(proxy)]` #2050 #2052 #2053
 * Refactor to extract Lockable #2051
 * Support &dyn Trait #2054
@@ -128,7 +166,8 @@
 * Re-enable MemorySanitizer #1959
 * Show hints when functions or methods are ignored #1956
 * Add hints to deliberate Exception in RustLib.init in Chrome #1955
-* Support when struct type definition is in one file, struct impl is in another file, and the impl needs extra import #1953
+* Support when struct type definition is in one file, struct impl is in another file, and the impl needs extra import
+  #1953
 
 ## 2.0.0-dev.34
 
