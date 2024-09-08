@@ -945,6 +945,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "AlexV525",
+      "name": "Alex Li",
+      "avatar_url": "https://avatars.githubusercontent.com/u/15884415?v=4",
+      "profile": "https://github.com/AlexV525",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
