@@ -1,6 +1,7 @@
 use crate::integration::utils::{overlay_dir, replace_file_content};
+use crate::library::commands::dart_fix::dart_fix;
+use crate::library::commands::dart_format::dart_format;
 use crate::library::commands::flutter::{flutter_pub_add, flutter_pub_get};
-use crate::library::commands::format_dart::format_dart;
 use crate::misc::Template;
 use crate::utils::dart_repository::get_dart_package_name;
 use crate::utils::path_utils::find_dart_package_dir;
@@ -28,8 +29,10 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
     debug!("integrate dart_root={dart_root:?}");
 
     let dart_package_name = get_dart_package_name(&dart_root)?;
-    let rust_crate_name =
-        (config.rust_crate_name.clone()).unwrap_or(format!("rust_lib_{}", dart_package_name));
+    let rust_crate_name = config
+        .rust_crate_name
+        .clone()
+        .unwrap_or(format!("rust_lib_{}", dart_package_name));
 
     info!("Overlay template onto project");
     let replacements = compute_replacements(&config, &dart_package_name, &rust_crate_name);
@@ -73,8 +76,11 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
     info!("Setup cargokit dependencies");
     setup_cargokit_dependencies(&dart_root, &config.template)?;
 
+    info!("Apply Dart fixes");
+    dart_fix(&[dart_root.clone()], &dart_root, &[])?;
+
     info!("Format Dart code");
-    format_dart(&[dart_root.clone()], &dart_root, 80, &[])?;
+    dart_format(&[dart_root.clone()], &dart_root, 80, &[])?;
 
     Ok(())
 }
