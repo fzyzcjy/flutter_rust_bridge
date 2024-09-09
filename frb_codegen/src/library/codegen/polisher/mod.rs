@@ -3,7 +3,8 @@ use crate::codegen::polisher::add_mod_to_lib::try_add_mod_to_lib;
 use crate::codegen::polisher::internal_config::PolisherInternalConfig;
 use crate::commands::format_rust::format_rust;
 use crate::library::commands::dart_build_runner::dart_build_runner;
-use crate::library::commands::format_dart::format_dart;
+use crate::library::commands::dart_fix::dart_fix;
+use crate::library::commands::dart_format::dart_format;
 use crate::utils::dart_repository::dart_repo::{DartDependencyMode, DartRepository};
 use crate::utils::path_utils::path_to_string;
 use anyhow::Context;
@@ -32,6 +33,10 @@ pub(super) fn polish(
     warn_if_fail(
         execute_build_runner(needs_freezed, config, progress_bar_pack),
         "execute_build_runner",
+    );
+    warn_if_fail(
+        execute_dart_fix(config, output_paths, progress_bar_pack),
+        "execute_dart_fix",
     );
 
     // Even if formatting generated code fails, it is not a big problem, and our codegen should not fail.
@@ -105,13 +110,26 @@ fn execute_build_runner(
     dart_build_runner(&config.dart_root)
 }
 
+fn execute_dart_fix(
+    config: &PolisherInternalConfig,
+    output_paths: &[PathBuf],
+    progress_bar_pack: &GeneratorProgressBarPack,
+) -> anyhow::Result<()> {
+    let _pb = progress_bar_pack.polish_dart_fix.start();
+    dart_fix(
+        &filter_paths_by_extension(output_paths, "dart"),
+        &config.dart_root,
+        &["g.dart", "freezed.dart"],
+    )
+}
+
 fn execute_dart_format(
     config: &PolisherInternalConfig,
     output_paths: &[PathBuf],
     progress_bar_pack: &GeneratorProgressBarPack,
 ) -> anyhow::Result<()> {
     let _pb = progress_bar_pack.polish_dart_formatter.start();
-    format_dart(
+    dart_format(
         &filter_paths_by_extension(output_paths, "dart"),
         &config.dart_root,
         config.dart_format_line_length,
