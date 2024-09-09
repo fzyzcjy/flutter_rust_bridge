@@ -11,8 +11,8 @@ impl From<DartOpaque> for DartAbi {
 }
 
 impl DartOpaque {
-    pub fn encode(self) -> isize {
-        self.into_raw() as isize
+    pub fn encode(self) -> usize {
+        self.into_raw() as usize
     }
 }
 

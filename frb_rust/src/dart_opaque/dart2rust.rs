@@ -27,7 +27,7 @@ pub unsafe fn cst_decode_dart_opaque(raw: usize) -> DartOpaque {
 /// # Safety
 ///
 /// This should never be called manually.
-pub unsafe fn sse_decode_dart_opaque(raw: isize) -> DartOpaque {
+pub unsafe fn sse_decode_dart_opaque(raw: usize) -> DartOpaque {
     DartOpaque::from_raw(raw as _)
 }
 
