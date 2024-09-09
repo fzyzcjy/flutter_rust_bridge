@@ -1,8 +1,11 @@
 use crate::command_run;
 use crate::commands::command_runner::call_shell;
 use crate::library::commands::command_runner::check_exit_code;
-use crate::library::commands::dart_fix::prepare_paths;
+use crate::utils::path_utils::{normalize_windows_unc_path, path_to_string};
+use anyhow::Context;
+use itertools::Itertools;
 use log::debug;
+use pathdiff::diff_paths;
 use std::path::{Path, PathBuf};
 
 #[allow(clippy::vec_init_then_push)]
@@ -29,4 +32,42 @@ pub fn dart_format(
     )?;
     check_exit_code(&res)?;
     Ok(())
+}
+
+pub(super) fn prepare_paths(
+    paths: &[PathBuf],
+    base_path: &Path,
+    extra_extensions: &[&str],
+) -> anyhow::Result<Vec<PathBuf>> {
+    let base_path_str = path_to_string(base_path)?;
+    let normalized_base_path = normalize_windows_unc_path(&base_path_str);
+
+    Ok(paths
+        .iter()
+        .map(|path| {
+            let mut path: PathBuf = normalize_windows_unc_path(&path_to_string(path)?)
+                .to_owned()
+                .into();
+            path = diff_paths(path, normalized_base_path).context("diff path")?;
+            if path_to_string(&path)?.is_empty() {
+                path = ".".into();
+            }
+            Ok(path)
+        })
+        .collect::<anyhow::Result<Vec<_>>>()?
+        .into_iter()
+        .flat_map(|path| {
+            vec![path.clone()].into_iter().chain(
+                extra_extensions
+                    .iter()
+                    .map(move |ext| with_extension(path.clone(), ext))
+                    .filter(|path| path.exists()),
+            )
+        })
+        .collect_vec())
+}
+
+fn with_extension(mut path: PathBuf, ext: &str) -> PathBuf {
+    path.set_extension(ext);
+    path
 }
