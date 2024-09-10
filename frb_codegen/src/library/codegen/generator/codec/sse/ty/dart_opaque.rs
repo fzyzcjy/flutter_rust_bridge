@@ -9,14 +9,14 @@ impl<'a> CodecSseTyTrait for DartOpaqueCodecSseTy<'a> {
             Lang::DartLang(_) => {
                 simple_delegate_encode(
                     lang,
-                    &MirType::Primitive(MirTypePrimitive::Isize),
+                    &self.mir.get_delegate_dart(),
                     "PlatformPointerUtil.ptrToPlatformInt64(encodeDartOpaque(self, portManager.dartHandlerPort, generalizedFrbRustBinding))",
                 )
             }
             Lang::RustLang(_) => {
                 simple_delegate_encode(
                     lang,
-                    &MirType::Primitive(MirTypePrimitive::Usize),
+                    &self.mir.get_delegate_rust(),
                     "self.encode()",
                 )
             }
@@ -27,12 +27,12 @@ impl<'a> CodecSseTyTrait for DartOpaqueCodecSseTy<'a> {
         Some(match lang {
             Lang::DartLang(_) => simple_delegate_decode(
                 lang,
-                &MirType::Primitive(MirTypePrimitive::Isize),
+                &self.mir.get_delegate_dart(),
                 "decodeDartOpaque(inner, generalizedFrbRustBinding)",
             ),
             Lang::RustLang(_) => simple_delegate_decode(
                 lang,
-                &MirType::Primitive(MirTypePrimitive::Usize),
+                &self.mir.get_delegate_rust(),
                 "unsafe { flutter_rust_bridge::for_generated::sse_decode_dart_opaque(inner) }",
             ),
         })
