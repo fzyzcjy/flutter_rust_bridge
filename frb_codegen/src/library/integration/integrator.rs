@@ -76,9 +76,6 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
     info!("Setup cargokit dependencies");
     setup_cargokit_dependencies(&dart_root, &config.template)?;
 
-    info!("Apply Dart fixes");
-    dart_fix(&[dart_root.clone()], &dart_root, &[])?;
-
     info!("Format Dart code");
     dart_format(&[dart_root.clone()], &dart_root, 80, &[])?;
 
