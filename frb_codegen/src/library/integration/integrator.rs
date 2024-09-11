@@ -1,5 +1,4 @@
 use crate::integration::utils::{overlay_dir, replace_file_content};
-use crate::library::commands::dart_fix::dart_fix;
 use crate::library::commands::dart_format::dart_format;
 use crate::library::commands::flutter::{flutter_pub_add, flutter_pub_get};
 use crate::misc::Template;
