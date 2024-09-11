@@ -13,6 +13,8 @@ PlatformPointer encodeDartOpaque(Object raw, NativePortType dartHandlerPort,
 Object _prepareDartOpaque(Object raw) {
   // #2183
   if (raw is Function) {
+    print(
+        'hi _prepareDartOpaque raw=$raw toJSBox=${raw.toJSBox} toJSBox.runtimeType=${raw.toJSBox.runtimeType}');
     return raw.toJSBox;
   }
   return raw;

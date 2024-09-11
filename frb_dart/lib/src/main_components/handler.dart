@@ -42,9 +42,11 @@ class BaseHandler {
   void dartFnInvoke(List<dynamic> message,
       GeneralizedFrbRustBinding generalizedFrbRustBinding) {
     final [closureDartOpaque, ...args] = message;
-    final closureDartObject =
-        decodeDartOpaque(closureDartOpaque, generalizedFrbRustBinding)
-            as Function;
+    final closureDartObjectRaw =
+        decodeDartOpaque(closureDartOpaque, generalizedFrbRustBinding);
+    print(
+        'hi closureDartObjectRaw=$closureDartObjectRaw type=${closureDartObjectRaw.runtimeType}');
+    final closureDartObject = closureDartObjectRaw as Function;
     Function.apply(closureDartObject, args);
   }
 }
