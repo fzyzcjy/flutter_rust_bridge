@@ -4,8 +4,6 @@ If you want to use Flutter as GUI of Rust,
 please refer to the article in https://cjycode.com/posts/rust-ui-flutter/,
 which contains background, pros, cons, tutorial, examples, etc.
 
-## Under the hood
-
 Firstly, this is just one of the infinitely many approaches to let Flutter be the GUI of Rust,
 and you are free to choose whatever other approaches that suits your need.
 
