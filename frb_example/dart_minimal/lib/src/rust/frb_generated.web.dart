@@ -21,13 +21,26 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   });
 
   @protected
+  MyUsedStruct dco_decode_box_autoadd_my_used_struct(dynamic raw);
+
+  @protected
   int dco_decode_i_32(dynamic raw);
+
+  @protected
+  MyUsedStruct dco_decode_my_used_struct(dynamic raw);
 
   @protected
   void dco_decode_unit(dynamic raw);
 
   @protected
+  MyUsedStruct sse_decode_box_autoadd_my_used_struct(
+      SseDeserializer deserializer);
+
+  @protected
   int sse_decode_i_32(SseDeserializer deserializer);
+
+  @protected
+  MyUsedStruct sse_decode_my_used_struct(SseDeserializer deserializer);
 
   @protected
   void sse_decode_unit(SseDeserializer deserializer);
@@ -36,7 +49,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   bool sse_decode_bool(SseDeserializer deserializer);
 
   @protected
+  void sse_encode_box_autoadd_my_used_struct(
+      MyUsedStruct self, SseSerializer serializer);
+
+  @protected
   void sse_encode_i_32(int self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_my_used_struct(MyUsedStruct self, SseSerializer serializer);
 
   @protected
   void sse_encode_unit(void self, SseSerializer serializer);
