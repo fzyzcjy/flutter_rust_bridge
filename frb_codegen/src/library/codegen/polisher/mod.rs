@@ -33,7 +33,7 @@ pub(super) fn polish(
         "execute_build_runner",
     );
     warn_if_fail(
-        execute_dart_fix(config, output_paths, progress_bar_pack),
+        execute_dart_fix(config, progress_bar_pack),
         "execute_dart_fix",
     );
 
@@ -110,15 +110,10 @@ fn execute_build_runner(
 
 fn execute_dart_fix(
     config: &PolisherInternalConfig,
-    output_paths: &[PathBuf],
     progress_bar_pack: &GeneratorProgressBarPack,
 ) -> anyhow::Result<()> {
     let _pb = progress_bar_pack.polish_dart_fix.start();
-    dart_fix(
-        &filter_paths_by_extension(output_paths, "dart"),
-        &config.dart_root,
-        &["g.dart", "freezed.dart"],
-    )
+    dart_fix(&config.dart_root)
 }
 
 fn execute_dart_format(
