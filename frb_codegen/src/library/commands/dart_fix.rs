@@ -13,17 +13,13 @@ pub fn dart_fix(paths: &[PathBuf], base_path: &Path, extra_extensions: &[&str]) 
         return Ok(());
     }
 
-    let paths = prepare_paths(paths, base_path, extra_extensions)?;
-    debug!("execute dart_fix paths={paths:?}");
-
-    let arg_code = format!("--code={}", paths.iter().map(|x| x.display()).join(","));
+    debug!("execute dart_fix");
 
     let res = command_run!(
         call_shell[Some(base_path), None],
         "dart",
         "fix",
         "--apply",
-        arg_code
     )?;
     check_exit_code(&res)?;
     Ok(())
