@@ -3,10 +3,10 @@ use crate::utils::dart_repository::pubspec::*;
 use anyhow::{anyhow, bail, Context};
 use cargo_metadata::{Version, VersionReq};
 use log::debug;
+use serde::de::DeserializeOwned;
 use std::convert::TryFrom;
 use std::fmt::Display;
 use std::path::{Path, PathBuf};
-use serde::de::DeserializeOwned;
 
 /// represents a dart / flutter repository
 pub(crate) struct DartRepository {
@@ -17,20 +17,19 @@ pub(crate) struct DartRepository {
 impl DartRepository {
     pub(crate) fn from_path(path: &Path) -> anyhow::Result<Self> {
         debug!("Guessing toolchain the runner is run into");
-        let filename = DartToolchain::lock_filename();
-        let lock_file: PubspecLock = read_file_and_parse_yaml(path, filename)?;
-        if lock_file
-            .packages
-            .contains_key(&DartToolchain::Flutter.to_string())
-        {
-            return Ok(DartRepository {
-                at: path.to_owned(),
-                toolchain: DartToolchain::Flutter,
-            });
-        }
+
+        let lock_file: PubspecLock =
+            read_file_and_parse_yaml(path, DartToolchain::lock_filename())?;
+
+        let toolchain = if (lock_file.packages).contains_key(&DartToolchain::Flutter.to_string()) {
+            DartToolchain::Flutter
+        } else {
+            DartToolchain::Dart
+        };
+
         Ok(DartRepository {
             at: path.to_owned(),
-            toolchain: DartToolchain::Dart,
+            toolchain,
         })
     }
 
