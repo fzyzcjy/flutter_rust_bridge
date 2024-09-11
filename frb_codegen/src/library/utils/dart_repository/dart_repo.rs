@@ -19,7 +19,7 @@ impl DartRepository {
     pub(crate) fn from_path(path: &Path) -> anyhow::Result<Self> {
         debug!("Guessing toolchain the runner is run into");
         let filename = DartToolchain::lock_filename();
-        let lock_file = read_file(&path_to_string(path)?, filename)?;
+        let lock_file = read_file(path, filename)?;
         let lock_file: PubspecLock = serde_yaml::from_str(&lock_file)
             .map_err(|e| anyhow!("unable to parse {filename} in {path:?}: {e:#}"))?;
         if lock_file
@@ -63,14 +63,17 @@ impl DartRepository {
         manager: DartDependencyMode,
         requirement: &VersionReq,
     ) -> anyhow::Result<()> {
-        let at = self.at.to_str().unwrap();
-        debug!("Checking presence of {} in {} at {}", package, manager, at);
+        let at = &self.at;
+        debug!(
+            "Checking presence of {} in {} at {:?}",
+            package, manager, at
+        );
         let manifest_file = read_file(at, DartToolchain::manifest_filename())?;
         let manifest_file: PubspecYaml = serde_yaml::from_str(&manifest_file).map_err(|e| {
             // frb-coverage:ignore-start
             // This will stop the whole generator and tell the users, so we do not care about testing it
             anyhow!(
-                "unable to parse {} in {at}: {e:#}",
+                "unable to parse {} in {at:?}: {e:#}",
                 DartToolchain::manifest_filename()
             )
             // frb-coverage:ignore-end
@@ -95,14 +98,17 @@ impl DartRepository {
         manager: DartDependencyMode,
         requirement: &VersionReq,
     ) -> anyhow::Result<()> {
-        let at = self.at.to_str().unwrap();
-        debug!("Checking presence of {} in {} at {}", package, manager, at);
+        let at = &self.at;
+        debug!(
+            "Checking presence of {} in {} at {:?}",
+            package, manager, at
+        );
         let lock_file = read_file(at, DartToolchain::lock_filename())?;
         let lock_file: PubspecLock = serde_yaml::from_str(&lock_file).map_err(|e| {
             // This will stop the whole generator and tell the users, so we do not care about testing it
             // frb-coverage:ignore-start
             anyhow!(
-                "unable to parse {} in {at}: {e:#}",
+                "unable to parse {} in {at:?}: {e:#}",
                 DartToolchain::lock_filename()
             )
             // frb-coverage:ignore-end
@@ -219,16 +225,16 @@ impl Display for DartPackageVersion {
 }
 
 #[inline]
-fn read_file(at: &str, filename: &str) -> anyhow::Result<String> {
-    let file = PathBuf::from(at).join(filename);
+fn read_file(at: &Path, filename: &str) -> anyhow::Result<String> {
+    let file = at.join(filename);
     if !file.exists() {
         // This will stop the whole generator and tell the users, so we do not care about testing it
         // frb-coverage:ignore-start
-        bail!("missing {filename} in {at}");
+        bail!("missing {filename} in {at:?}");
         // frb-coverage:ignore-end
     }
     let content = std::fs::read_to_string(file)
-        .with_context(|| format!("unable to read {filename} in {at}"))?;
+        .with_context(|| format!("unable to read {filename} in {at:?}"))?;
     Ok(content)
 }
 
