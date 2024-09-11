@@ -1,4 +1,4 @@
-import 'dart:js_util';
+import 'dart:js_interop';
 
 import 'package:flutter_rust_bridge/src/dart_opaque/_common.dart';
 import 'package:flutter_rust_bridge/src/generalized_frb_rust_binding/generalized_frb_rust_binding.dart';
@@ -13,7 +13,7 @@ PlatformPointer encodeDartOpaque(Object raw, NativePortType dartHandlerPort,
 Object _prepareDartOpaque(Object raw) {
   // #2183
   if (raw is Function) {
-    return allowInterop(raw);
+    return raw.toJS;
   }
   return raw;
 }
