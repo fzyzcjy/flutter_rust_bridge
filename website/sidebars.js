@@ -341,6 +341,7 @@ const sidebars = {
                     items: [
                         'guides/misc-features/dart-code',
                         'guides/misc-features/preambles',
+                        'guides/misc-features/rust-ui-utilities',
                         'guides/misc-features/proxy',
                         'guides/misc-features/multi-input',
                         'guides/misc-features/modules',
