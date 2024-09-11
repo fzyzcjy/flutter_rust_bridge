@@ -15,8 +15,8 @@ pub(crate) struct HirFlatPack {
     pub enums: Vec<UsageWarner<HirFlatEnum>>,
     pub structs: Vec<UsageWarner<HirFlatStruct>>,
     pub traits: Vec<UsageWarner<HirFlatTrait>>,
-    pub trait_impls: Vec<HirFlatTraitImpl>,
-    pub types: Vec<HirFlatTypeAlias>,
+    pub trait_impls: Vec<UsageWarner<HirFlatTraitImpl>>,
+    pub types: Vec<UsageWarner<HirFlatTypeAlias>>,
     pub existing_handler: Option<NamespacedName>,
     pub extra_rust_output_code: String,
     pub extra_dart_output_code: GeneralDartCode,
@@ -35,5 +35,5 @@ impl HirFlatPack {
 }
 
 pub(crate) trait HirFlatPackComponentVisitor {
-    fn visit<SK: Ord, T: HirFlatComponent<SK>>(&self, items: &mut Vec<T>);
+    fn visit<SK: Ord, T: HirFlatComponent<SK>>(&self, items: &mut Vec<UsageWarner<T>>);
 }

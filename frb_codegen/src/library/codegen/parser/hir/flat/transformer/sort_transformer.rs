@@ -1,5 +1,6 @@
 use crate::codegen::ir::hir::flat::component::HirFlatComponent;
 use crate::codegen::ir::hir::flat::pack::{HirFlatPack, HirFlatPackComponentVisitor};
+use crate::utils::usage_warner::UsageWarner;
 
 pub(crate) fn transform(mut pack: HirFlatPack) -> anyhow::Result<HirFlatPack> {
     sort_hir_flat_pack(&mut pack);
@@ -13,7 +14,7 @@ pub(crate) fn sort_hir_flat_pack(pack: &mut HirFlatPack) {
 struct Visitor;
 
 impl HirFlatPackComponentVisitor for Visitor {
-    fn visit<SK: Ord, T: HirFlatComponent<SK>>(&self, items: &mut Vec<T>) {
+    fn visit<SK: Ord, T: HirFlatComponent<SK>>(&self, items: &mut Vec<UsageWarner<T>>) {
         items.sort_by_cached_key(|item| item.sort_key());
     }
 }
