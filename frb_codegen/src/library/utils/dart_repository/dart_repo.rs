@@ -92,7 +92,15 @@ impl DartRepository {
     ) -> anyhow::Result<()> {
         let at = &self.at;
         let filename = DartToolchain::lock_filename();
-        debug!("Checking presence of {} in {} at {:?}", package, manager, at);
+        debug!("Checking presence of {package} in {manager} at {at:?}");
+
+        // We do not care about this branch
+        // frb-coverage:ignore-start
+        if !at.join(filename).exists() {
+            log::warn!("Skip checking presence of {package} in {manager} at {at:?} since {filename} does not exist. Please check manually.");
+            return Ok(());
+        }
+        // frb-coverage:ignore-end
 
         let lock_file: PubspecLock = read_file_and_parse_yaml(at, filename)?;
         let dependency = lock_file.packages.get(package);
