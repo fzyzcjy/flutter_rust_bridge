@@ -352,6 +352,15 @@
       ]
     },
     {
+      "login": "alexlapa",
+      "name": "alexlapa",
+      "avatar_url": "https://avatars.githubusercontent.com/u/36732824?v=4",
+      "profile": "https://github.com/alexlapa",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
       "login": "OfficialBoyfriend",
       "name": "九月",
       "avatar_url": "https://avatars.githubusercontent.com/u/52571365?v=4",
@@ -953,15 +962,6 @@
       "profile": "https://thesimplekid.com",
       "contributions": [
         "doc"
-      ]
-    },
-    {
-      "login": "alexlapa",
-      "name": "alexlapa",
-      "avatar_url": "https://avatars.githubusercontent.com/u/36732824?v=4",
-      "profile": "https://github.com/alexlapa",
-      "contributions": [
-        "code"
       ]
     }
   ],
