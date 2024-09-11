@@ -9,6 +9,7 @@ use crate::codegen::parser::hir::flat::transformer::merge_duplicate_transformer:
 use crate::codegen::parser::hir::flat::transformer::merge_duplicate_transformer::function_frb_override_merger::FunctionFrbOverrideMerger;
 use crate::codegen::parser::hir::flat::transformer::merge_duplicate_transformer::third_party_override_merger::ThirdPartyOverrideMerger;
 use crate::codegen::parser::hir::flat::transformer::merge_duplicate_transformer::trait_def_default_impl_merger::TraitDefDefaultImplMerger;
+use crate::utils::usage_warner::UsageWarner;
 
 pub(crate) mod base;
 pub(crate) mod function_frb_override_merger;
@@ -52,7 +53,7 @@ fn transform_component_raw<T: Debug + Clone + Serialize, K: Eq + Hash + Debug>(
     items: Vec<T>,
     key: impl Fn(&T) -> K,
     merge: impl Fn(&dyn BaseMerger, &T, &T) -> Option<T>,
-) -> Vec<T> {
+) -> Vec<UsageWarner<T>> {
     let mergers: Vec<Box<dyn BaseMerger>> = vec![
         Box::new(ThirdPartyOverrideMerger),
         Box::new(FunctionFrbOverrideMerger),
@@ -68,18 +69,19 @@ fn transform_component_raw<T: Debug + Clone + Serialize, K: Eq + Hash + Debug>(
             }
             assert!(!items_of_key.is_empty());
 
-            if items_of_key.len() > 1 {
-                log::info!(
+            let warning_message = if items_of_key.len() > 1 {
+                Some(format!(
                     "There are still multiple objects with same key after merging, \
-                    thus randomly pick one. This is an issue only if the object is indeed used. \
-                    (key={key:?}, objects={})",
+                    thus randomly pick one. (key={key:?}, objects={})",
                     (items_of_key.iter())
                         .map(|x| serde_json::to_string(x).unwrap())
                         .join(", "),
-                );
-            }
+                ))
+            } else {
+                None
+            };
 
-            items_of_key[0].to_owned()
+            UsageWarner::new(items_of_key[0].to_owned(), warning_message)
         })
         .collect_vec()
 }
