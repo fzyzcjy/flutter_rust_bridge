@@ -6,6 +6,7 @@ use log::debug;
 use std::convert::TryFrom;
 use std::fmt::Display;
 use std::path::{Path, PathBuf};
+use serde::de::DeserializeOwned;
 
 /// represents a dart / flutter repository
 pub(crate) struct DartRepository {
@@ -17,9 +18,7 @@ impl DartRepository {
     pub(crate) fn from_path(path: &Path) -> anyhow::Result<Self> {
         debug!("Guessing toolchain the runner is run into");
         let filename = DartToolchain::lock_filename();
-        let lock_file = read_file(path, filename)?;
-        let lock_file: PubspecLock = serde_yaml::from_str(&lock_file)
-            .map_err(|e| anyhow!("unable to parse {filename} in {path:?}: {e:#}"))?;
+        let lock_file: PubspecLock = read_file_and_parse_yaml(path, filename)?;
         if lock_file
             .packages
             .contains_key(&DartToolchain::Flutter.to_string())
@@ -66,16 +65,8 @@ impl DartRepository {
             "Checking presence of {} in {} at {:?}",
             package, manager, at
         );
-        let manifest_file = read_file(at, DartToolchain::manifest_filename())?;
-        let manifest_file: PubspecYaml = serde_yaml::from_str(&manifest_file).map_err(|e| {
-            // frb-coverage:ignore-start
-            // This will stop the whole generator and tell the users, so we do not care about testing it
-            anyhow!(
-                "unable to parse {} in {at:?}: {e:#}",
-                DartToolchain::manifest_filename()
-            )
-            // frb-coverage:ignore-end
-        })?;
+        let manifest_file: PubspecYaml =
+            read_file_and_parse_yaml(at, DartToolchain::manifest_filename())?;
         let deps = match manager {
             DartDependencyMode::Main => manifest_file.dependencies.unwrap_or_default(),
             DartDependencyMode::Dev => manifest_file.dev_dependencies.unwrap_or_default(),
@@ -101,16 +92,7 @@ impl DartRepository {
             "Checking presence of {} in {} at {:?}",
             package, manager, at
         );
-        let lock_file = read_file(at, DartToolchain::lock_filename())?;
-        let lock_file: PubspecLock = serde_yaml::from_str(&lock_file).map_err(|e| {
-            // This will stop the whole generator and tell the users, so we do not care about testing it
-            // frb-coverage:ignore-start
-            anyhow!(
-                "unable to parse {} in {at:?}: {e:#}",
-                DartToolchain::lock_filename()
-            )
-            // frb-coverage:ignore-end
-        })?;
+        let lock_file: PubspecLock = read_file_and_parse_yaml(at, DartToolchain::lock_filename())?;
         let dependency = lock_file.packages.get(package);
         let version = match dependency {
             Some(dependency) => {
@@ -222,7 +204,6 @@ impl Display for DartPackageVersion {
     }
 }
 
-#[inline]
 fn read_file(at: &Path, filename: &str) -> anyhow::Result<String> {
     let file = at.join(filename);
     if !file.exists() {
@@ -234,6 +215,17 @@ fn read_file(at: &Path, filename: &str) -> anyhow::Result<String> {
     let content = std::fs::read_to_string(file)
         .with_context(|| format!("unable to read {filename} in {at:?}"))?;
     Ok(content)
+}
+
+fn read_file_and_parse_yaml<T: DeserializeOwned>(at: &Path, filename: &str) -> anyhow::Result<T> {
+    let file = read_file(at, filename)?;
+    let file: T = serde_yaml::from_str(&file).map_err(|e| {
+        // frb-coverage:ignore-start
+        // This will stop the whole generator and tell the users, so we do not care about testing it
+        anyhow!("Unable to parse {filename} in {at:?}: {e:#}")
+        // frb-coverage:ignore-end
+    })?;
+    Ok(file)
 }
 
 impl PubspecLockPackage {
