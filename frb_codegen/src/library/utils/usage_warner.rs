@@ -1,6 +1,6 @@
 use std::cell::RefCell;
 
-#[derive(Clone, Eq, PartialEq)]
+#[derive(Clone, Eq, PartialEq, Debug)]
 pub(crate) struct UsageWarner<T> {
     value: T,
     warning_message: Option<String>,

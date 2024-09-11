@@ -7,13 +7,14 @@ use crate::codegen::ir::hir::flat::type_alias::HirFlatTypeAlias;
 use crate::codegen::ir::misc::skip::IrSkip;
 use crate::utils::basic_code::general_code::GeneralDartCode;
 use crate::utils::namespace::NamespacedName;
+use crate::utils::usage_warner::UsageWarner;
 
 #[derive(Debug, Clone, Default, serde::Serialize)]
 pub(crate) struct HirFlatPack {
-    pub functions: Vec<HirFlatFunction>,
-    pub enums: Vec<HirFlatEnum>,
-    pub structs: Vec<HirFlatStruct>,
-    pub traits: Vec<HirFlatTrait>,
+    pub functions: Vec<UsageWarner<HirFlatFunction>>,
+    pub enums: Vec<UsageWarner<HirFlatEnum>>,
+    pub structs: Vec<UsageWarner<HirFlatStruct>>,
+    pub traits: Vec<UsageWarner<HirFlatTrait>>,
     pub trait_impls: Vec<HirFlatTraitImpl>,
     pub types: Vec<HirFlatTypeAlias>,
     pub existing_handler: Option<NamespacedName>,
