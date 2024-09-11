@@ -54235,7 +54235,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   Object sse_decode_DartOpaque(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    var inner = sse_decode_usize(deserializer);
+    var inner = sse_decode_isize(deserializer);
     return decodeDartOpaque(inner, generalizedFrbRustBinding);
   }
 
@@ -65971,10 +65971,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   void sse_encode_DartOpaque(Object self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_usize(
-        BigInt.from(PlatformPointerUtil.ptrToInt(encodeDartOpaque(
-                self, portManager.dartHandlerPort, generalizedFrbRustBinding)))
-            .toUnsigned(64),
+    sse_encode_isize(
+        PlatformPointerUtil.ptrToPlatformInt64(encodeDartOpaque(
+            self, portManager.dartHandlerPort, generalizedFrbRustBinding)),
         serializer);
   }
 
