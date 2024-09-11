@@ -31,8 +31,8 @@ pub(crate) fn generate(
         .collect_vec();
 
     let generated_items = (pack.hir_flat_pack.traits.iter())
-        .filter(|x| interest_trait_names.contains(&x.name))
-        .sorted_by_key(|x| x.name.clone())
+        .filter(|x| interest_trait_names.contains(&x.borrow_without_use().name))
+        .sorted_by_key(|x| x.borrow_without_use().name.clone())
         .map(|x| generate_trait_impl_enum(x, &tentative_mir_pack.trait_impls, output_namespace))
         .collect::<anyhow::Result<Vec<_>>>()?;
 

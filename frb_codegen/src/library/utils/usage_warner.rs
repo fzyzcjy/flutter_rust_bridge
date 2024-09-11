@@ -19,10 +19,10 @@ impl<T> UsageWarner<T> {
     // Cannot name this method `use` since it is keyword
     pub(crate) fn borrow(&self) -> &T {
         self.maybe_warn();
-        self.get_without_use()
+        self.borrow_without_use()
     }
 
-    pub(crate) fn get_without_use(&self) -> &T {
+    pub(crate) fn borrow_without_use(&self) -> &T {
         &self.value
     }
 

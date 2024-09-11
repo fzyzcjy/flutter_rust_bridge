@@ -61,7 +61,7 @@ fn transform_component_raw<T: Debug + Clone + Serialize, K: Eq + Hash + Debug>(
     ];
 
     (items.into_iter())
-        .into_group_map_by(|x| key(x.get_without_use()))
+        .into_group_map_by(|x| key(x.borrow_without_use()))
         .into_iter()
         .map(|(key, mut items_of_key)| {
             for merger in &mergers {
