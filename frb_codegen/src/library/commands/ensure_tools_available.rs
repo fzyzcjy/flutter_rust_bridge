@@ -1,5 +1,4 @@
 use crate::utils::dart_repository::dart_repo::{DartDependencyMode, DartRepository};
-use crate::utils::path_utils::path_to_string;
 use anyhow::bail;
 use cargo_metadata::VersionReq;
 use lazy_static::lazy_static;
@@ -15,7 +14,7 @@ pub fn ensure_tools_available(
     enable_deps_check: bool,
     needs_ffigen: bool,
 ) -> anyhow::Result<()> {
-    let repo = DartRepository::from_str(&path_to_string(dart_root)?)?;
+    let repo = DartRepository::from_path(&dart_root)?;
     if !repo.toolchain_available() {
         // This will stop the whole generator and tell the users, so we do not care about testing it
         // frb-coverage:ignore-start

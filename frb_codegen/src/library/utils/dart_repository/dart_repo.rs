@@ -1,11 +1,12 @@
 use crate::utils::dart_repository::dart_toolchain::DartToolchain;
 use crate::utils::dart_repository::pubspec::*;
+use crate::utils::path_utils::path_to_string;
 use anyhow::{anyhow, bail, Context};
 use cargo_metadata::{Version, VersionReq};
 use log::debug;
 use std::convert::TryFrom;
 use std::fmt::Display;
-use std::path::PathBuf;
+use std::path::{Path, PathBuf};
 use std::str::FromStr;
 
 /// represents a dart / flutter repository
@@ -14,33 +15,28 @@ pub(crate) struct DartRepository {
     pub(crate) toolchain: DartToolchain,
 }
 
-// TODO it is from path, not from str
-impl FromStr for DartRepository {
-    type Err = anyhow::Error;
-
-    fn from_str(s: &str) -> Result<Self, Self::Err> {
+impl DartRepository {
+    pub(crate) fn from_path(path: &Path) -> anyhow::Result<Self> {
         debug!("Guessing toolchain the runner is run into");
         let filename = DartToolchain::lock_filename();
-        let lock_file = read_file(s, filename)?;
+        let lock_file = read_file(&path_to_string(path)?, filename)?;
         let lock_file: PubspecLock = serde_yaml::from_str(&lock_file)
-            .map_err(|e| anyhow!("unable to parse {filename} in {s}: {e:#}"))?;
+            .map_err(|e| anyhow!("unable to parse {filename} in {path:?}: {e:#}"))?;
         if lock_file
             .packages
             .contains_key(&DartToolchain::Flutter.to_string())
         {
             return Ok(DartRepository {
-                at: PathBuf::from(s),
+                at: path.to_owned(),
                 toolchain: DartToolchain::Flutter,
             });
         }
         Ok(DartRepository {
-            at: PathBuf::from(s),
+            at: path.to_owned(),
             toolchain: DartToolchain::Dart,
         })
     }
-}
 
-impl DartRepository {
     /// check whether the toolchain is available from the CLI
     pub(crate) fn toolchain_available(&self) -> bool {
         self.toolchain.available()
