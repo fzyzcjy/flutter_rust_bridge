@@ -1,9 +1,7 @@
 use crate::command_run;
 use crate::commands::command_runner::call_shell;
 use crate::library::commands::command_runner::check_exit_code;
-use crate::library::commands::dart_format::prepare_paths;
 use anyhow::Result;
-use itertools::Itertools;
 use log::debug;
 use std::path::{Path, PathBuf};
 
