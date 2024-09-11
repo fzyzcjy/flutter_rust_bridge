@@ -85,8 +85,9 @@ class TestRustPackageConfig {
 class TestDartConfig {
   @CliOption(convert: convertConfigPackage)
   final String package;
+  final bool wasm;
 
-  const TestDartConfig({required this.package});
+  const TestDartConfig({required this.package, this.wasm = false});
 }
 
 @CliOptions()

@@ -67,11 +67,15 @@ TestRustPackageConfig parseTestRustPackageConfig(List<String> args) {
 
 TestDartConfig _$parseTestDartConfigResult(ArgResults result) => TestDartConfig(
       package: convertConfigPackage(result['package'] as String),
+      wasm: result['wasm'] as bool,
     );
 
 ArgParser _$populateTestDartConfigParser(ArgParser parser) => parser
   ..addOption(
     'package',
+  )
+  ..addFlag(
+    'wasm',
   );
 
 final _$parserForTestDartConfig = _$populateTestDartConfigParser(ArgParser());
