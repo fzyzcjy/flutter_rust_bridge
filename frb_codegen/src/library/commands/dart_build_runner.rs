@@ -1,12 +1,10 @@
 use crate::command_run;
 use crate::commands::command_runner::call_shell;
 use crate::utils::dart_repository::dart_repo::DartRepository;
-use crate::utils::path_utils::path_to_string;
 use anyhow::bail;
 use log::debug;
 use std::collections::HashMap;
 use std::path::Path;
-use std::str::FromStr;
 
 pub fn dart_build_runner(dart_root: &Path) -> anyhow::Result<()> {
     debug!("Running build_runner at dart_root={dart_root:?}");

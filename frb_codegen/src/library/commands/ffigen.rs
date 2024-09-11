@@ -2,7 +2,6 @@ use super::dart_build_runner::dart_run_extra_env;
 use crate::command_run;
 use crate::commands::command_runner::call_shell;
 use crate::utils::dart_repository::dart_repo::DartRepository;
-use crate::utils::path_utils::path_to_string;
 use anyhow::bail;
 use itertools::Itertools;
 use log::{debug, warn};
@@ -11,7 +10,6 @@ use std::collections::HashMap;
 use std::fs;
 use std::io::Write;
 use std::path::{Path, PathBuf};
-use std::str::FromStr;
 
 pub(crate) struct FfigenArgs<'a> {
     pub c_file_content: &'a str,

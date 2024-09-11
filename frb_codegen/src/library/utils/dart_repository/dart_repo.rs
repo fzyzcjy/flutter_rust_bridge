@@ -1,13 +1,11 @@
 use crate::utils::dart_repository::dart_toolchain::DartToolchain;
 use crate::utils::dart_repository::pubspec::*;
-use crate::utils::path_utils::path_to_string;
 use anyhow::{anyhow, bail, Context};
 use cargo_metadata::{Version, VersionReq};
 use log::debug;
 use std::convert::TryFrom;
 use std::fmt::Display;
 use std::path::{Path, PathBuf};
-use std::str::FromStr;
 
 /// represents a dart / flutter repository
 pub(crate) struct DartRepository {

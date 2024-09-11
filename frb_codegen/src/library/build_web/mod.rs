@@ -9,7 +9,6 @@ use itertools::Itertools;
 use log::debug;
 use std::path::{Path, PathBuf};
 use std::process::{Command, ExitStatus};
-use std::str::FromStr;
 use std::{env, fs};
 
 // We make the core build-web logic in Dart, and Rust is just a wrapper.
@@ -39,7 +38,7 @@ fn execute_dart_command(
     args: &[String],
     dart_coverage: bool,
 ) -> anyhow::Result<()> {
-    let repo = DartRepository::from_path(&dart_root)?;
+    let repo = DartRepository::from_path(dart_root)?;
 
     let dart_run_args = {
         let mut ans = vec![

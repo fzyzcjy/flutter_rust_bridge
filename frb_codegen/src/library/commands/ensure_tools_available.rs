@@ -3,7 +3,6 @@ use anyhow::bail;
 use cargo_metadata::VersionReq;
 use lazy_static::lazy_static;
 use std::path::Path;
-use std::str::FromStr;
 
 lazy_static! {
     pub(crate) static ref FFIGEN_REQUIREMENT: VersionReq = VersionReq::parse(">= 8.0.0").unwrap();
@@ -14,7 +13,7 @@ pub fn ensure_tools_available(
     enable_deps_check: bool,
     needs_ffigen: bool,
 ) -> anyhow::Result<()> {
-    let repo = DartRepository::from_path(&dart_root)?;
+    let repo = DartRepository::from_path(dart_root)?;
     if !repo.toolchain_available() {
         // This will stop the whole generator and tell the users, so we do not care about testing it
         // frb-coverage:ignore-start
