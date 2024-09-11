@@ -3,14 +3,10 @@ use crate::commands::command_runner::call_shell;
 use crate::library::commands::command_runner::check_exit_code;
 use anyhow::Result;
 use log::debug;
-use std::path::{Path, PathBuf};
+use std::path::Path;
 
 #[allow(clippy::vec_init_then_push)]
-pub fn dart_fix(paths: &[PathBuf], base_path: &Path) -> Result<()> {
-    if paths.is_empty() {
-        return Ok(());
-    }
-
+pub fn dart_fix(base_path: &Path) -> Result<()> {
     debug!("execute dart_fix");
 
     let res = command_run!(

@@ -1,4 +1,5 @@
 use crate::integration::utils::{overlay_dir, replace_file_content};
+use crate::library::commands::dart_fix::dart_fix;
 use crate::library::commands::dart_format::dart_format;
 use crate::library::commands::flutter::{flutter_pub_add, flutter_pub_get};
 use crate::misc::Template;
@@ -76,7 +77,7 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
     setup_cargokit_dependencies(&dart_root, &config.template)?;
 
     info!("Apply Dart fixes");
-    dart_fix(&[dart_root.clone()], &dart_root, &[])?;
+    dart_fix(&dart_root)?;
 
     info!("Format Dart code");
     dart_format(&[dart_root.clone()], &dart_root, 80, &[])?;
