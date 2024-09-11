@@ -953,9 +953,6 @@ jobs:
           # no `frb_example--flutter_package--example` yet
           # no `frb_example--flutter_via_integrate` since it is similar to `flutter_via_create`
           - frb_example--gallery
-        extra_flags:
-          - ""
-          - "--wasm"
 
     steps:
       - uses: catchpoint/workflow-telemetry-action@v1
@@ -988,12 +985,12 @@ jobs:
           lsof -i :4444
 
       # execute
-      - run: ./frb_internal test-flutter-web --package ${{ matrix.package }} --coverage ${{ matrix.extra_flags }}
+      - run: ./frb_internal test-flutter-web --package ${{ matrix.package }} --coverage
 
       # report
       - uses: actions/upload-artifact@v4
         with:
-          name: ${{ github.job }}--${{ matrix.package }}--${{ matrix.extra_flags }}--coverage
+          name: ${{ github.job }}--${{ matrix.package }}--coverage
           path: target/coverage
 
   # ----------------------------------- misc -----------------------------------
