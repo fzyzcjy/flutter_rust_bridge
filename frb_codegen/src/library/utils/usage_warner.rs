@@ -16,7 +16,7 @@ impl<T> UsageWarner<T> {
     }
 
     // Cannot name this method `use` since it is keyword
-    pub(crate) fn use_it(&self) -> &T {
+    pub(crate) fn borrow(&self) -> &T {
         self.maybe_warn();
         self.get_without_use()
     }
@@ -27,7 +27,7 @@ impl<T> UsageWarner<T> {
 
     fn maybe_warn(&self) {
         if let Some(warning_message) = self.warning_message.as_ref() {
-            if self.warned.borrow() {
+            if *self.warned.borrow() {
                 return;
             }
 

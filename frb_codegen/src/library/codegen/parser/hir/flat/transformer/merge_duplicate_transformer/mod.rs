@@ -42,7 +42,7 @@ pub(crate) fn transform(mut pack: HirFlatPack) -> anyhow::Result<HirFlatPack> {
 }
 
 fn transform_component<T: Debug + Clone + Serialize, K: Eq + Hash + Debug>(
-    items: &mut Vec<T>,
+    items: &mut Vec<UsageWarner<T>>,
     key: impl Fn(&T) -> K,
     merge: impl Fn(&dyn BaseMerger, &T, &T) -> Option<T>,
 ) {
@@ -50,7 +50,7 @@ fn transform_component<T: Debug + Clone + Serialize, K: Eq + Hash + Debug>(
 }
 
 fn transform_component_raw<T: Debug + Clone + Serialize, K: Eq + Hash + Debug>(
-    items: Vec<T>,
+    items: Vec<UsageWarner<T>>,
     key: impl Fn(&T) -> K,
     merge: impl Fn(&dyn BaseMerger, &T, &T) -> Option<T>,
 ) -> Vec<UsageWarner<T>> {
