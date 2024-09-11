@@ -10,6 +10,7 @@ Future<int> minimalAdder({required int a, required int b}) =>
     RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b);
 
 Future<void> rustFunction(
-        {required FutureOr<String> Function(String) dartCallback}) =>
+        {required FutureOr<String> Function(String, Uint8List, List<String>)
+            dartCallback}) =>
     RustLib.instance.api
         .crateApiMinimalRustFunction(dartCallback: dartCallback);

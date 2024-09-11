@@ -9,6 +9,8 @@ pub fn minimal_adder(a: i32, b: i32) -> i32 {
     a + b
 }
 
-pub async fn rust_function(dart_callback: impl Fn(String) -> DartFnFuture<String>) {
-    dart_callback("Tom".to_owned()).await; // Will get `Hello, Tom!`
+pub async fn rust_function(
+    dart_callback: impl Fn(String, Vec<u8>, Vec<String>) -> DartFnFuture<String>,
+) {
+    dart_callback("Tom".to_owned(), vec![], vec![]).await; // Will get `Hello, Tom!`
 }
