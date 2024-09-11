@@ -91,11 +91,10 @@ impl DartRepository {
         requirement: &VersionReq,
     ) -> anyhow::Result<()> {
         let at = &self.at;
-        debug!(
-            "Checking presence of {} in {} at {:?}",
-            package, manager, at
-        );
-        let lock_file: PubspecLock = read_file_and_parse_yaml(at, DartToolchain::lock_filename())?;
+        let filename = DartToolchain::lock_filename();
+        debug!("Checking presence of {} in {} at {:?}", package, manager, at);
+
+        let lock_file: PubspecLock = read_file_and_parse_yaml(at, filename)?;
         let dependency = lock_file.packages.get(package);
         let version = match dependency {
             Some(dependency) => {
@@ -111,9 +110,7 @@ impl DartRepository {
                     // frb-coverage:ignore-start
                     anyhow::Error::msg(format!(
                         "unable to parse {} version in {}: {:#}",
-                        package,
-                        DartToolchain::lock_filename(),
-                        e
+                        package, filename, e
                     ))
                     // frb-coverage:ignore-end
                 })?
@@ -128,10 +125,9 @@ impl DartRepository {
             DartPackageVersion::Exact(ref v) if requirement.matches(v) => Ok(()),
             // This will stop the whole generator and tell the users, so we do not care about testing it
             // frb-coverage:ignore-start
-            DartPackageVersion::Range(_) => bail!(
-                "unexpected version range for {package} in {}",
-                DartToolchain::lock_filename()
-            ),
+            DartPackageVersion::Range(_) => {
+                bail!("unexpected version range for {package} in {}", filename)
+            }
             _ => Err(error_invalid_dep(package, manager, requirement)),
             // frb-coverage:ignore-end
         }
