@@ -18,14 +18,15 @@ impl DartRepository {
     pub(crate) fn from_path(path: &Path) -> anyhow::Result<Self> {
         debug!("Guessing toolchain the runner is run into");
 
-        let lock_file: PubspecLock =
+        let lock_file: PubspecYaml =
             read_file_and_parse_yaml(path, DartToolchain::lock_filename())?;
 
-        let toolchain = if (lock_file.packages).contains_key(&DartToolchain::Flutter.to_string()) {
-            DartToolchain::Flutter
-        } else {
-            DartToolchain::Dart
-        };
+        let toolchain =
+            if (lock_file.dependencies).contains_key(&DartToolchain::Flutter.to_string()) {
+                DartToolchain::Flutter
+            } else {
+                DartToolchain::Dart
+            };
 
         Ok(DartRepository {
             at: path.to_owned(),
