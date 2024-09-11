@@ -21,12 +21,15 @@ impl DartRepository {
         let lock_file: PubspecYaml =
             read_file_and_parse_yaml(path, DartToolchain::lock_filename())?;
 
-        let toolchain =
-            if (lock_file.dependencies).contains_key(&DartToolchain::Flutter.to_string()) {
+        let toolchain = if let Some(dependencies) = lock_file.dependencies.as_ref() {
+            if dependencies.contains_key(&DartToolchain::Flutter.to_string()) {
                 DartToolchain::Flutter
             } else {
                 DartToolchain::Dart
-            };
+            }
+        } else {
+            DartToolchain::Dart
+        };
 
         Ok(DartRepository {
             at: path.to_owned(),
