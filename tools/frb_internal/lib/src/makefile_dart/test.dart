@@ -133,8 +133,10 @@ class TestFlutterWebConfig {
   @CliOption(convert: convertConfigPackage)
   final String package;
   final bool coverage;
+  final bool wasm;
 
-  const TestFlutterWebConfig({required this.package, required this.coverage});
+  const TestFlutterWebConfig(
+      {required this.package, required this.coverage, this.wasm = false});
 }
 
 Future<void> testMimicQuickstart() async =>
