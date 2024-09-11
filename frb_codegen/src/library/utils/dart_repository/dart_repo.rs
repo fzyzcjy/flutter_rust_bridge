@@ -19,7 +19,7 @@ impl DartRepository {
         debug!("Guessing toolchain the runner is run into");
 
         let lock_file: PubspecYaml =
-            read_file_and_parse_yaml(path, DartToolchain::lock_filename())?;
+            read_file_and_parse_yaml(path, DartToolchain::manifest_filename())?;
 
         let toolchain = if let Some(dependencies) = lock_file.dependencies.as_ref() {
             if dependencies.contains_key(&DartToolchain::Flutter.to_string()) {
