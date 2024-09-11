@@ -119,7 +119,6 @@ fn execute_dart_fix(
     dart_fix(
         &filter_paths_by_extension(output_paths, "dart"),
         &config.dart_root,
-        &["g.dart", "freezed.dart"],
     )
 }
 
