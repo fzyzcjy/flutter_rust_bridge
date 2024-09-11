@@ -67,15 +67,11 @@ TestRustPackageConfig parseTestRustPackageConfig(List<String> args) {
 
 TestDartConfig _$parseTestDartConfigResult(ArgResults result) => TestDartConfig(
       package: convertConfigPackage(result['package'] as String),
-      wasm: result['wasm'] as bool,
     );
 
 ArgParser _$populateTestDartConfigParser(ArgParser parser) => parser
   ..addOption(
     'package',
-  )
-  ..addFlag(
-    'wasm',
   );
 
 final _$parserForTestDartConfig = _$populateTestDartConfigParser(ArgParser());
@@ -105,6 +101,28 @@ final _$parserForTestDartNativeConfig =
 TestDartNativeConfig parseTestDartNativeConfig(List<String> args) {
   final result = _$parserForTestDartNativeConfig.parse(args);
   return _$parseTestDartNativeConfigResult(result);
+}
+
+TestDartWebConfig _$parseTestDartWebConfigResult(ArgResults result) =>
+    TestDartWebConfig(
+      package: convertConfigPackage(result['package'] as String),
+      wasm: result['wasm'] as bool,
+    );
+
+ArgParser _$populateTestDartWebConfigParser(ArgParser parser) => parser
+  ..addOption(
+    'package',
+  )
+  ..addFlag(
+    'wasm',
+  );
+
+final _$parserForTestDartWebConfig =
+    _$populateTestDartWebConfigParser(ArgParser());
+
+TestDartWebConfig parseTestDartWebConfig(List<String> args) {
+  final result = _$parserForTestDartWebConfig.parse(args);
+  return _$parseTestDartWebConfigResult(result);
 }
 
 T _$enumValueHelper<T>(Map<T, String> enumValues, String source) =>

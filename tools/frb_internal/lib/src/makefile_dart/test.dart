@@ -37,7 +37,7 @@ List<Command<void>> createCommands() {
         _$populateTestDartNativeConfigParser,
         _$parseTestDartNativeConfigResult),
     SimpleConfigCommand('test-dart-web', testDartWeb,
-        _$populateTestDartConfigParser, _$parseTestDartConfigResult),
+        _$populateTestDartWebConfigParser, _$parseTestDartWebConfigResult),
     SimpleConfigCommand('test-dart-valgrind', testDartValgrind,
         _$populateTestDartConfigParser, _$parseTestDartConfigResult),
     SimpleConfigCommand(
@@ -85,9 +85,8 @@ class TestRustPackageConfig {
 class TestDartConfig {
   @CliOption(convert: convertConfigPackage)
   final String package;
-  final bool wasm;
 
-  const TestDartConfig({required this.package, this.wasm = false});
+  const TestDartConfig({required this.package});
 }
 
 @CliOptions()
@@ -97,6 +96,15 @@ class TestDartNativeConfig {
   final bool coverage;
 
   const TestDartNativeConfig({required this.package, required this.coverage});
+}
+
+@CliOptions()
+class TestDartWebConfig {
+  @CliOption(convert: convertConfigPackage)
+  final String package;
+  final bool wasm;
+
+  const TestDartWebConfig({required this.package, this.wasm = false});
 }
 
 enum Sanitizer {
@@ -437,7 +445,7 @@ String getCoverageDir(String lang) {
   return ans;
 }
 
-Future<void> testDartWeb(TestDartConfig config) async {
+Future<void> testDartWeb(TestDartWebConfig config) async {
   await runPubGetIfNotRunYet(config.package);
 
   final package = config.package;
