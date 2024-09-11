@@ -634,6 +634,13 @@ jobs:
           - frb_example--pure_dart
           - frb_example--pure_dart_pde
           # no need for `frb_example--deliberate_bad`, `frb_example--dart_build_rs`
+        extra_flags:
+          - ""
+          - "--wasm"
+        exclude:
+          - { package: frb_dart, extra_flags: "--wasm" }
+          - { package: frb_example--pure_dart, extra_flags: "--wasm" }
+          - { package: frb_example--pure_dart_pde, extra_flags: "--wasm" }
 
     steps:
       # setup
@@ -671,7 +678,7 @@ jobs:
           sh -c "$(curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf)" '' -f
 
       # execute
-      - run: ./frb_internal test-dart-web --package ${{ matrix.package }}
+      - run: ./frb_internal test-dart-web --package ${{ matrix.package }} ${{ matrix.extra_flags }}
 
   test_dart_valgrind:
     name: 'Test :: Dart :: Valgrind'
