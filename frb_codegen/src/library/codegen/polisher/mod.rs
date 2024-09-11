@@ -68,7 +68,7 @@ fn ensure_dependency_freezed(
     }
 
     if needs_freezed {
-        let repo = DartRepository::from_str(&path_to_string(&config.dart_root)?)?;
+        let repo = DartRepository::from_path(&config.dart_root)?;
         repo.has_specified_and_installed("freezed", DartDependencyMode::Dev, &ANY_REQUIREMENT)?;
         repo.has_specified_and_installed(
             "freezed_annotation",

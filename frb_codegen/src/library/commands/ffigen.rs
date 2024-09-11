@@ -78,7 +78,7 @@ pub(crate) fn ffigen_raw(config: &FfigenCommandConfig, dart_root: &Path) -> anyh
     config_file.write_all(config.as_bytes())?;
     debug!("ffigen_raw config={config:?} config_file={config_file:?}");
 
-    let repo = DartRepository::from_str(&path_to_string(dart_root)?).unwrap();
+    let repo = DartRepository::from_path(dart_root).unwrap();
     let res = command_run!(
         call_shell[Some(dart_root), Some(dart_run_extra_env())],
         *repo.toolchain.as_run_command(),

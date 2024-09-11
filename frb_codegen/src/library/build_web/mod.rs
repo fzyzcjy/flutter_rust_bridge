@@ -39,7 +39,7 @@ fn execute_dart_command(
     args: &[String],
     dart_coverage: bool,
 ) -> anyhow::Result<()> {
-    let repo = DartRepository::from_str(&path_to_string(dart_root)?)?;
+    let repo = DartRepository::from_path(&dart_root)?;
 
     let dart_run_args = {
         let mut ans = vec![

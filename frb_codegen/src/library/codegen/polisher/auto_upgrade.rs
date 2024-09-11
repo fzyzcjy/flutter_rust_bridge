@@ -35,7 +35,7 @@ struct DartUpgrader;
 
 impl Upgrader for DartUpgrader {
     fn check(base_dir: &Path) -> Result<bool> {
-        let repo = DartRepository::from_str(&path_to_string(base_dir)?)?;
+        let repo = DartRepository::from_path(base_dir)?;
         Ok(repo
             .has_specified_and_installed(
                 "flutter_rust_bridge",
