@@ -14,35 +14,37 @@ impl<'a> WireRustCodecDcoGeneratorEncoderTrait for DelegateWireRustCodecDcoGener
     // frb-coverage:ignore-start
     fn generate_impl_into_dart(&self) -> Option<String> {
         // frb-coverage:ignore-end
-        if let MirTypeDelegate::PrimitiveEnum(MirTypeDelegatePrimitiveEnum { mir, .. }) = &self.mir
-        {
-            let src = mir.get(self.context.mir_pack);
-            let (name, self_path) =
-                parse_wrapper_name_into_dart_name_and_self_path(&src.name, &src.wrapper_name);
+        match &self.mir {
+            MirTypeDelegate::PrimitiveEnum(MirTypeDelegatePrimitiveEnum { mir, .. }) => {
+                let src = mir.get(self.context.mir_pack);
+                let (name, self_path) =
+                    parse_wrapper_name_into_dart_name_and_self_path(&src.name, &src.wrapper_name);
 
-            let self_ref = generate_enum_access_object_core(mir, "self".to_owned(), self.context);
-            let variants = src
-                .variants()
-                .iter()
-                .enumerate()
-                .map(|(idx, variant)| {
-                    format!("{}::{} => {}.into_dart(),", self_path, variant.name, idx)
-                })
-                .collect_vec()
-                .join("\n");
+                let self_ref =
+                    generate_enum_access_object_core(mir, "self".to_owned(), self.context);
+                let variants = src
+                    .variants()
+                    .iter()
+                    .enumerate()
+                    .map(|(idx, variant)| {
+                        format!("{}::{} => {}.into_dart(),", self_path, variant.name, idx)
+                    })
+                    .collect_vec()
+                    .join("\n");
 
-            let body = format!(
-                "match {self_ref} {{
+                let body = format!(
+                    "match {self_ref} {{
                     {variants}
                     _ => unreachable!(),
                 }}"
-            );
+                );
 
-            return Some(
-                generate_impl_into_dart(&name, &body)
-                    + &generate_impl_into_into_dart(&src.name.rust_style(), &src.wrapper_name),
-            );
+                return Some(
+                    generate_impl_into_dart(&name, &body)
+                        + &generate_impl_into_into_dart(&src.name.rust_style(), &src.wrapper_name),
+                );
+            }
+            _ => None,
         }
-        None
     }
 }
