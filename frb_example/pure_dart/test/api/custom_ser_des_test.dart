@@ -16,12 +16,14 @@ Future<void> main({bool skipRustLibInit = false}) async {
         await functionUsingTypeWithCustomSerializer(arg: 123456789), 123456789);
   });
 
+  // Dart Web does not support `InternetAddress.tryParse`
   group('Ipv4Addr', skip: kIsWeb, () {
-    final addr = InternetAddress.tryParse('192.168.0.1')!;
     test('funcUsingIpv4Addr', () async {
+      final addr = InternetAddress.tryParse('192.168.0.1')!;
       expect(await funcUsingIpv4Addr(arg: addr), addr);
     });
     test('funcUsingNonOpaqueStructContainingIpv4Addr', () async {
+      final addr = InternetAddress.tryParse('192.168.0.1')!;
       final arg = NonOpaqueStructContainingIpv4Addr(inner: addr);
       expect(await funcUsingNonOpaqueStructContainingIpv4Addr(arg: arg), arg);
     });
