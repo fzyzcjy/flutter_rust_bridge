@@ -66,7 +66,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.3.0';
 
   @override
-  int get rustContentHash => 855801887;
+  int get rustContentHash => -829745572;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -77,6 +77,9 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 }
 
 abstract class RustLibApi extends BaseApi {
+  Future<InternetAddress> crateApiMinimalFuncUsingIpv4Addr(
+      {required InternetAddress arg});
+
   Future<NonOpaqueStructContainingIpv4Addr>
       crateApiMinimalFuncUsingNonOpaqueStructContainingIpv4Addr(
           {required NonOpaqueStructContainingIpv4Addr arg});
@@ -91,6 +94,34 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   });
 
   @override
+  Future<InternetAddress> crateApiMinimalFuncUsingIpv4Addr(
+      {required InternetAddress arg}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_CustomSerializer_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIpv4Addr(
+            arg, serializer);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 1, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_CustomSerializer_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIpv4Addr,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiMinimalFuncUsingIpv4AddrConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiMinimalFuncUsingIpv4AddrConstMeta =>
+      const TaskConstMeta(
+        debugName: "func_using_ipv4_addr",
+        argNames: ["arg"],
+      );
+
+  @override
   Future<NonOpaqueStructContainingIpv4Addr>
       crateApiMinimalFuncUsingNonOpaqueStructContainingIpv4Addr(
           {required NonOpaqueStructContainingIpv4Addr arg}) {
@@ -100,7 +131,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_box_autoadd_non_opaque_struct_containing_ipv_4_addr(
             arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1, port: port_);
+            funcId: 2, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_non_opaque_struct_containing_ipv_4_addr,
