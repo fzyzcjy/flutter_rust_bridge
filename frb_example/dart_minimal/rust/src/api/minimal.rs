@@ -15,3 +15,7 @@ pub fn minimal_adder(a: i32, b: i32) -> i32 {
 pub struct StructWithRustAutoOpaqueFieldWithManyDerive {
     content: crate::frb_generated::RustAutoOpaque<String>,
 }
+
+impl StructWithRustAutoOpaqueFieldWithManyDerive {
+    pub fn f(&self) {}
+}
