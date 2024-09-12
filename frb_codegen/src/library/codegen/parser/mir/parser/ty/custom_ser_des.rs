@@ -11,15 +11,13 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         last_segment: &SplayedSegment,
     ) -> anyhow::Result<Option<MirType>> {
         // use HashMap etc later if too slow; here we use filter to remain flexibility of filtering strategy
-        let ans = (self.inner.custom_ser_des_infos.iter())
+        Ok((self.inner.custom_ser_des_infos.iter())
             .find(|info| compute_matcher_types(info).contains(&last_segment.0.to_owned()))
             .map(|info| {
                 MirType::Delegate(MirTypeDelegate::CustomSerDes(MirTypeDelegateCustomSerDes {
                     info: info.to_owned(),
                 }))
-            });
-        log::info!("hi parse_type_path_data_custom_ser_des last_segment={last_segment:?} ans={ans:?} self.inner.custom_ser_des_infos={:?}", self.inner.custom_ser_des_infos);
-        Ok(ans)
+            }))
     }
 }
 
