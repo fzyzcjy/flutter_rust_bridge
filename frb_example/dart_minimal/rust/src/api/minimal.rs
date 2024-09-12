@@ -11,7 +11,7 @@ pub fn minimal_adder(a: i32, b: i32) -> i32 {
 
 // TODO move
 // #[derive(Debug, PartialEq, Eq, Default, Clone)]
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 #[frb(opaque)]
 pub struct StructWithRustAutoOpaqueFieldWithManyDerive {
     content: crate::frb_generated::RustAutoOpaque<String>,
