@@ -1,5 +1,4 @@
-use std::net::Ipv4Addr;
-
+pub use std::net::Ipv4Addr;
 use flutter_rust_bridge::frb;
 
 #[flutter_rust_bridge::frb(sync)] // Synchronous mode for simplicity of the demo
@@ -18,6 +17,7 @@ pub fn decode_ipv4_type(raw: String) -> Ipv4Addr {
 }
 
 #[derive(Debug)]
+#[frb(non_opaque)]
 pub struct Device {
     pub ip: Ipv4Addr,
 }
