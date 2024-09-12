@@ -1,5 +1,5 @@
 use flutter_rust_bridge::frb;
-pub use frb_example_pure_dart_example_external_lib::SimpleTranslatableExternalStructWithMethod;
+use std::net::Ipv4Addr;
 
 #[frb(init)]
 pub fn init_app() {
@@ -10,18 +10,21 @@ pub fn minimal_adder(a: i32, b: i32) -> i32 {
     a + b
 }
 
-#[frb(rust2dart(dart_type = "String", dart_code = "{}"))]
-#[frb(serialize)]
-pub fn serializer_my_external_type(raw: SimpleTranslatableExternalStructWithMethod) -> String {
-    unimplemented!()
+#[frb(rust2dart(dart_type = "InternetAddress", dart_code = "InternetAddress({})"))]
+pub fn encode_ipv4_type(raw: Ipv4Addr) -> String {
+    return raw.to_string();
 }
 
-#[frb(dart2rust(dart_type = "String", dart_code = "{}"))]
-#[frb(serialize)]
-pub fn deserializer_my_external_type(raw: String) -> SimpleTranslatableExternalStructWithMethod {
-    unimplemented!()
+#[frb(dart2rust(dart_type = "InternetAddress", dart_code = "{}.address"))]
+pub fn decode_ipv4_type(raw: String) -> Ipv4Addr {
+    raw.parse().unwrap()
 }
 
-pub fn f(a: SimpleTranslatableExternalStructWithMethod) -> SimpleTranslatableExternalStructWithMethod {
-    a
+#[derive(Debug)]
+pub struct StructWithIpv4AddrField {
+    pub ip: Ipv4Addr,
+}
+
+impl StructWithIpv4AddrField {
+    pub fn f(&self) {}
 }
