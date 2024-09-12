@@ -7,6 +7,7 @@ use serde::de::DeserializeOwned;
 use std::collections::HashMap;
 use std::convert::TryFrom;
 use std::fmt::Display;
+use std::hash::Hash;
 use std::path::{Path, PathBuf};
 
 /// represents a dart / flutter repository
@@ -232,7 +233,7 @@ fn read_file_and_parse_yaml<T: DeserializeOwned>(at: &Path, filename: &str) -> a
     Ok(file)
 }
 
-fn option_hash_map_contains<K, V>(map: &Option<HashMap<K, V>>, key: &K) -> bool {
+fn option_hash_map_contains<K: Hash + Eq, V: Eq>(map: &Option<HashMap<K, V>>, key: &K) -> bool {
     if let Some(map) = map.as_ref() {
         map.contains_key(key)
     } else {
