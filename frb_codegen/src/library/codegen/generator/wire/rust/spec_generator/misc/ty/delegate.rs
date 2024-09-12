@@ -27,9 +27,10 @@ impl<'a> WireRustGeneratorMiscTrait for DelegateWireRustGenerator<'a> {
             MirTypeDelegate::PrimitiveEnum(enu) => {
                 WireRustGenerator::new(enu.mir.clone(), self.context).wrapper_struct_name()
             }
-            MirTypeDelegate::CustomSerDes(inner) => {
-                Some(format!("FrbWrapper<{}>", inner.info.cleared_rust_api_type()))
-            }
+            MirTypeDelegate::CustomSerDes(inner) => Some(format!(
+                "FrbWrapper<{}>",
+                inner.info.cleared_rust_api_type()
+            )),
             _ => None,
         }
     }
