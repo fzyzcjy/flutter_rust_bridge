@@ -19,11 +19,11 @@ impl DartRepository {
     pub(crate) fn from_path(path: &Path) -> anyhow::Result<Self> {
         debug!("Guessing toolchain the runner is run into");
 
-        let lock_file: PubspecYaml =
+        let manifest_file: PubspecYaml =
             read_file_and_parse_yaml(path, DartToolchain::manifest_filename())?;
 
         let toolchain = if option_hash_map_contains(
-            &lock_file.dependencies,
+            &manifest_file.dependencies,
             &DartToolchain::Flutter.to_string(),
         ) {
             DartToolchain::Flutter
