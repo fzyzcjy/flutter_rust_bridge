@@ -46,13 +46,10 @@ impl<'a> WireRustCodecDcoGeneratorEncoderTrait for DelegateWireRustCodecDcoGener
             }
             MirTypeDelegate::CustomSerDes(inner) => {
                 let name = TODO;
-                let wrapper_name = TODO;
-
-                let (parsed_name, _) =
-                    parse_wrapper_name_into_dart_name_and_self_path(&name, &wrapper_name);
+                let wrapper_name = format!("FrbWrapper<{name}>");
 
                 Some(
-                    generate_impl_into_dart(&parsed_name, "unimplemented!()")
+                    generate_impl_into_dart(&wrapper_name, "unimplemented!()")
                         + &generate_impl_into_into_dart(&name.rust_style(), &wrapper_name),
                 )
             }
