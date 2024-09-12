@@ -8,3 +8,4 @@ crate-type = ["cdylib"]
 
 [dependencies]
 flutter_rust_bridge = { path = "../../../frb_rust" }
+frb_example_pure_dart_example_external_lib = { path = "./example_external_lib" }
