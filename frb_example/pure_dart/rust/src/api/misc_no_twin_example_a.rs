@@ -202,7 +202,8 @@ pub struct StructWithRustAutoOpaqueFieldWithManyDeriveInner {}
 
 #[derive(Debug, Clone, Default)]
 pub struct StructWithRustAutoOpaqueFieldWithManyDerive {
-    pub content: crate::frb_generated::RustAutoOpaque<StructWithRustAutoOpaqueFieldWithManyDeriveInner>,
+    pub content:
+        crate::frb_generated::RustAutoOpaque<StructWithRustAutoOpaqueFieldWithManyDeriveInner>,
 }
 
 impl StructWithRustAutoOpaqueFieldWithManyDerive {
