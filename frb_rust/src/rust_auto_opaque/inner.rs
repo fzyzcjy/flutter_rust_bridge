@@ -1,4 +1,6 @@
 use crate::lockable::order::LockableOrder;
+use std::fmt;
+use std::fmt::Formatter;
 use tokio::sync::RwLock;
 
 pub struct RustAutoOpaqueInner<T> {
@@ -12,5 +14,11 @@ impl<T> RustAutoOpaqueInner<T> {
             data,
             order: LockableOrder::new(),
         }
+    }
+}
+
+impl<T: fmt::Debug> fmt::Debug for RustAutoOpaqueInner<T> {
+    fn fmt(&self, f: &mut Formatter<'_>) -> fmt::Result {
+        self.data.fmt(f)
     }
 }
