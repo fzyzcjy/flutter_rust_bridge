@@ -197,8 +197,11 @@ impl MyStructWithSync {
 }
 
 #[derive(Debug, Clone, Default)]
+pub struct StructWithRustAutoOpaqueFieldWithManyDeriveInner {}
+
+#[derive(Debug, Clone, Default)]
 pub struct StructWithRustAutoOpaqueFieldWithManyDerive {
-    pub content: crate::frb_generated::RustAutoOpaque<String>,
+    pub content: crate::frb_generated::RustAutoOpaque<StructWithRustAutoOpaqueFieldWithManyDeriveInner>,
 }
 
 impl StructWithRustAutoOpaqueFieldWithManyDerive {
