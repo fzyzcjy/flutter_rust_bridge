@@ -19,3 +19,18 @@ pub struct StructWithRustAutoOpaqueFieldWithManyDerive {
 impl StructWithRustAutoOpaqueFieldWithManyDerive {
     pub fn f(&self) {}
 }
+
+pub struct StructWithRustAutoOpaqueWithNonCloneData {
+    pub content: crate::frb_generated::RustAutoOpaque<NonCloneDataRaw>,
+}
+
+impl StructWithRustAutoOpaqueWithNonCloneData {
+    pub fn f(&self) {}
+}
+
+// TODO use existing
+#[derive(Debug)]
+pub struct NonCloneDataRaw {
+    content: String,
+}
+

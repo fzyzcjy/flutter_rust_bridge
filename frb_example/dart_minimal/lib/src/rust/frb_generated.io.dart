@@ -19,12 +19,26 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     required super.portManager,
   });
 
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_NonCloneDataRawPtr => wire
+          ._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneDataRawPtr;
+
   CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_StringPtr => wire
       ._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStringPtr;
 
   @protected
+  NonCloneDataRaw
+      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneDataRaw(
+          dynamic raw);
+
+  @protected
   String
       dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerString(
+          dynamic raw);
+
+  @protected
+  NonCloneDataRaw
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneDataRaw(
           dynamic raw);
 
   @protected
@@ -38,6 +52,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  StructWithRustAutoOpaqueWithNonCloneData
+      dco_decode_box_autoadd_struct_with_rust_auto_opaque_with_non_clone_data(
+          dynamic raw);
+
+  @protected
   int dco_decode_i_32(dynamic raw);
 
   @protected
@@ -46,14 +65,28 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  StructWithRustAutoOpaqueWithNonCloneData
+      dco_decode_struct_with_rust_auto_opaque_with_non_clone_data(dynamic raw);
+
+  @protected
   void dco_decode_unit(dynamic raw);
 
   @protected
   BigInt dco_decode_usize(dynamic raw);
 
   @protected
+  NonCloneDataRaw
+      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneDataRaw(
+          SseDeserializer deserializer);
+
+  @protected
   String
       sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerString(
+          SseDeserializer deserializer);
+
+  @protected
+  NonCloneDataRaw
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneDataRaw(
           SseDeserializer deserializer);
 
   @protected
@@ -67,11 +100,21 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
+  StructWithRustAutoOpaqueWithNonCloneData
+      sse_decode_box_autoadd_struct_with_rust_auto_opaque_with_non_clone_data(
+          SseDeserializer deserializer);
+
+  @protected
   int sse_decode_i_32(SseDeserializer deserializer);
 
   @protected
   StructWithRustAutoOpaqueFieldWithManyDerive
       sse_decode_struct_with_rust_auto_opaque_field_with_many_derive(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithRustAutoOpaqueWithNonCloneData
+      sse_decode_struct_with_rust_auto_opaque_with_non_clone_data(
           SseDeserializer deserializer);
 
   @protected
@@ -85,8 +128,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void
+      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneDataRaw(
+          NonCloneDataRaw self, SseSerializer serializer);
+
+  @protected
+  void
       sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerString(
           String self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneDataRaw(
+          NonCloneDataRaw self, SseSerializer serializer);
 
   @protected
   void
@@ -100,12 +153,20 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_struct_with_rust_auto_opaque_with_non_clone_data(
+      StructWithRustAutoOpaqueWithNonCloneData self, SseSerializer serializer);
+
+  @protected
   void sse_encode_i_32(int self, SseSerializer serializer);
 
   @protected
   void sse_encode_struct_with_rust_auto_opaque_field_with_many_derive(
       StructWithRustAutoOpaqueFieldWithManyDerive self,
       SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_rust_auto_opaque_with_non_clone_data(
+      StructWithRustAutoOpaqueWithNonCloneData self, SseSerializer serializer);
 
   @protected
   void sse_encode_unit(void self, SseSerializer serializer);
@@ -130,6 +191,38 @@ class RustLibWire implements BaseWire {
   /// The symbols are looked up in [dynamicLibrary].
   RustLibWire(ffi.DynamicLibrary dynamicLibrary)
       : _lookup = dynamicLibrary.lookup;
+
+  void
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneDataRaw(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneDataRaw(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneDataRawPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'frbgen_frb_example_dart_minimal_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneDataRaw');
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneDataRaw =
+      _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneDataRawPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneDataRaw(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneDataRaw(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneDataRawPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'frbgen_frb_example_dart_minimal_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneDataRaw');
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneDataRaw =
+      _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneDataRawPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
   void
       rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerString(

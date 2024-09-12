@@ -69,7 +69,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.3.0';
 
   @override
-  int get rustContentHash => 1527444303;
+  int get rustContentHash => 1843923521;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -84,8 +84,23 @@ abstract class RustLibApi extends BaseApi {
 
   Future<int> crateApiMinimalMinimalAdder({required int a, required int b});
 
+  Future<StructWithRustAutoOpaqueFieldWithManyDerive>
+      crateApiMinimalStructWithRustAutoOpaqueFieldWithManyDeriveDefault();
+
   Future<void> crateApiMinimalStructWithRustAutoOpaqueFieldWithManyDeriveF(
       {required StructWithRustAutoOpaqueFieldWithManyDerive that});
+
+  Future<void> crateApiMinimalStructWithRustAutoOpaqueWithNonCloneDataF(
+      {required StructWithRustAutoOpaqueWithNonCloneData that});
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonCloneDataRaw;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonCloneDataRaw;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_NonCloneDataRawPtr;
 
   RustArcIncrementStrongCountFnType get rust_arc_increment_strong_count_String;
 
@@ -152,6 +167,35 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Future<StructWithRustAutoOpaqueFieldWithManyDerive>
+      crateApiMinimalStructWithRustAutoOpaqueFieldWithManyDeriveDefault() {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 3, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_struct_with_rust_auto_opaque_field_with_many_derive,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiMinimalStructWithRustAutoOpaqueFieldWithManyDeriveDefaultConstMeta,
+      argValues: [],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiMinimalStructWithRustAutoOpaqueFieldWithManyDeriveDefaultConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "struct_with_rust_auto_opaque_field_with_many_derive_default",
+            argNames: [],
+          );
+
+  @override
   Future<void> crateApiMinimalStructWithRustAutoOpaqueFieldWithManyDeriveF(
       {required StructWithRustAutoOpaqueFieldWithManyDerive that}) {
     return handler.executeNormal(NormalTask(
@@ -160,7 +204,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_box_autoadd_struct_with_rust_auto_opaque_field_with_many_derive(
             that, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 3, port: port_);
+            funcId: 4, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -180,6 +224,43 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             argNames: ["that"],
           );
 
+  @override
+  Future<void> crateApiMinimalStructWithRustAutoOpaqueWithNonCloneDataF(
+      {required StructWithRustAutoOpaqueWithNonCloneData that}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_box_autoadd_struct_with_rust_auto_opaque_with_non_clone_data(
+            that, serializer);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 5, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiMinimalStructWithRustAutoOpaqueWithNonCloneDataFConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiMinimalStructWithRustAutoOpaqueWithNonCloneDataFConstMeta =>
+          const TaskConstMeta(
+            debugName: "struct_with_rust_auto_opaque_with_non_clone_data_f",
+            argNames: ["that"],
+          );
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonCloneDataRaw => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneDataRaw;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonCloneDataRaw => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneDataRaw;
+
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_String => wire
           .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerString;
@@ -189,12 +270,29 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerString;
 
   @protected
+  NonCloneDataRaw
+      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneDataRaw(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneDataRaw(
+        raw);
+  }
+
+  @protected
   String
       dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerString(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerString(
         raw);
+  }
+
+  @protected
+  NonCloneDataRaw
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneDataRaw(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return NonCloneDataRawImpl.frbInternalDcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -211,6 +309,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return dco_decode_struct_with_rust_auto_opaque_field_with_many_derive(raw);
+  }
+
+  @protected
+  StructWithRustAutoOpaqueWithNonCloneData
+      dco_decode_box_autoadd_struct_with_rust_auto_opaque_with_non_clone_data(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return dco_decode_struct_with_rust_auto_opaque_with_non_clone_data(raw);
   }
 
   @protected
@@ -235,6 +341,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  StructWithRustAutoOpaqueWithNonCloneData
+      dco_decode_struct_with_rust_auto_opaque_with_non_clone_data(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return StructWithRustAutoOpaqueWithNonCloneData(
+      content:
+          dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneDataRaw(
+              arr[0]),
+    );
+  }
+
+  @protected
   void dco_decode_unit(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return;
@@ -247,6 +367,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  NonCloneDataRaw
+      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneDataRaw(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var inner =
+        sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneDataRaw(
+            deserializer);
+    return inner;
+  }
+
+  @protected
   String
       sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerString(
           SseDeserializer deserializer) {
@@ -255,6 +386,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerString(
             deserializer);
     return inner;
+  }
+
+  @protected
+  NonCloneDataRaw
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneDataRaw(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return NonCloneDataRawImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
@@ -276,6 +416,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  StructWithRustAutoOpaqueWithNonCloneData
+      sse_decode_box_autoadd_struct_with_rust_auto_opaque_with_non_clone_data(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return (sse_decode_struct_with_rust_auto_opaque_with_non_clone_data(
+        deserializer));
+  }
+
+  @protected
   int sse_decode_i_32(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return deserializer.buffer.getInt32();
@@ -290,6 +439,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerString(
             deserializer);
     return StructWithRustAutoOpaqueFieldWithManyDerive(content: var_content);
+  }
+
+  @protected
+  StructWithRustAutoOpaqueWithNonCloneData
+      sse_decode_struct_with_rust_auto_opaque_with_non_clone_data(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var var_content =
+        sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneDataRaw(
+            deserializer);
+    return StructWithRustAutoOpaqueWithNonCloneData(content: var_content);
   }
 
   @protected
@@ -311,11 +471,30 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
+      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneDataRaw(
+          NonCloneDataRaw self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneDataRaw(
+        self, serializer);
+  }
+
+  @protected
+  void
       sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerString(
           String self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerString(
         self, serializer);
+  }
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneDataRaw(
+          NonCloneDataRaw self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as NonCloneDataRawImpl).frbInternalSseEncode(move: null),
+        serializer);
   }
 
   @protected
@@ -338,6 +517,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void sse_encode_box_autoadd_struct_with_rust_auto_opaque_with_non_clone_data(
+      StructWithRustAutoOpaqueWithNonCloneData self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_struct_with_rust_auto_opaque_with_non_clone_data(
+        self, serializer);
+  }
+
+  @protected
   void sse_encode_i_32(int self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     serializer.buffer.putInt32(self);
@@ -349,6 +536,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerString(
+        self.content, serializer);
+  }
+
+  @protected
+  void sse_encode_struct_with_rust_auto_opaque_with_non_clone_data(
+      StructWithRustAutoOpaqueWithNonCloneData self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneDataRaw(
         self.content, serializer);
   }
 
@@ -368,6 +563,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     serializer.buffer.putUint8(self ? 1 : 0);
   }
+}
+
+@sealed
+class NonCloneDataRawImpl extends RustOpaque implements NonCloneDataRaw {
+  // Not to be used by end users
+  NonCloneDataRawImpl.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  NonCloneDataRawImpl.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount:
+        RustLib.instance.api.rust_arc_increment_strong_count_NonCloneDataRaw,
+    rustArcDecrementStrongCount:
+        RustLib.instance.api.rust_arc_decrement_strong_count_NonCloneDataRaw,
+    rustArcDecrementStrongCountPtr:
+        RustLib.instance.api.rust_arc_decrement_strong_count_NonCloneDataRawPtr,
+  );
 }
 
 @sealed

@@ -21,12 +21,26 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     required super.portManager,
   });
 
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_NonCloneDataRawPtr => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneDataRaw;
+
   CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_StringPtr => wire
       .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerString;
 
   @protected
+  NonCloneDataRaw
+      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneDataRaw(
+          dynamic raw);
+
+  @protected
   String
       dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerString(
+          dynamic raw);
+
+  @protected
+  NonCloneDataRaw
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneDataRaw(
           dynamic raw);
 
   @protected
@@ -40,6 +54,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  StructWithRustAutoOpaqueWithNonCloneData
+      dco_decode_box_autoadd_struct_with_rust_auto_opaque_with_non_clone_data(
+          dynamic raw);
+
+  @protected
   int dco_decode_i_32(dynamic raw);
 
   @protected
@@ -48,14 +67,28 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  StructWithRustAutoOpaqueWithNonCloneData
+      dco_decode_struct_with_rust_auto_opaque_with_non_clone_data(dynamic raw);
+
+  @protected
   void dco_decode_unit(dynamic raw);
 
   @protected
   BigInt dco_decode_usize(dynamic raw);
 
   @protected
+  NonCloneDataRaw
+      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneDataRaw(
+          SseDeserializer deserializer);
+
+  @protected
   String
       sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerString(
+          SseDeserializer deserializer);
+
+  @protected
+  NonCloneDataRaw
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneDataRaw(
           SseDeserializer deserializer);
 
   @protected
@@ -69,11 +102,21 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
+  StructWithRustAutoOpaqueWithNonCloneData
+      sse_decode_box_autoadd_struct_with_rust_auto_opaque_with_non_clone_data(
+          SseDeserializer deserializer);
+
+  @protected
   int sse_decode_i_32(SseDeserializer deserializer);
 
   @protected
   StructWithRustAutoOpaqueFieldWithManyDerive
       sse_decode_struct_with_rust_auto_opaque_field_with_many_derive(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithRustAutoOpaqueWithNonCloneData
+      sse_decode_struct_with_rust_auto_opaque_with_non_clone_data(
           SseDeserializer deserializer);
 
   @protected
@@ -87,8 +130,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void
+      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneDataRaw(
+          NonCloneDataRaw self, SseSerializer serializer);
+
+  @protected
+  void
       sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerString(
           String self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneDataRaw(
+          NonCloneDataRaw self, SseSerializer serializer);
 
   @protected
   void
@@ -102,12 +155,20 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_struct_with_rust_auto_opaque_with_non_clone_data(
+      StructWithRustAutoOpaqueWithNonCloneData self, SseSerializer serializer);
+
+  @protected
   void sse_encode_i_32(int self, SseSerializer serializer);
 
   @protected
   void sse_encode_struct_with_rust_auto_opaque_field_with_many_derive(
       StructWithRustAutoOpaqueFieldWithManyDerive self,
       SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_rust_auto_opaque_with_non_clone_data(
+      StructWithRustAutoOpaqueWithNonCloneData self, SseSerializer serializer);
 
   @protected
   void sse_encode_unit(void self, SseSerializer serializer);
@@ -123,6 +184,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
 class RustLibWire implements BaseWire {
   RustLibWire.fromExternalLibrary(ExternalLibrary lib);
+
+  void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneDataRaw(
+          int ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneDataRaw(
+              ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneDataRaw(
+          int ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneDataRaw(
+              ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerString(
           int ptr) =>
@@ -143,6 +216,14 @@ external RustLibWasmModule get wasmModule;
 @JS()
 @anonymous
 extension type RustLibWasmModule._(JSObject _) implements JSObject {
+  external void
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneDataRaw(
+          int ptr);
+
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneDataRaw(
+          int ptr);
+
   external void
       rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerString(
           int ptr);
