@@ -11,13 +11,23 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     ) -> anyhow::Result<Option<MirType>> {
         // use HashMap etc later if too slow; here we use filter to remain flexibility of filtering strategy
         let ans = (self.inner.custom_ser_des_infos.iter())
-            .find(|info| info.rust_api_type.rust_api_type() == last_segment.0)
+            .find(|info| {
+                compute_matcher_types(&*info.rust_api_type).contains(&last_segment.0.to_owned())
+            })
             .map(|info| {
                 MirType::Delegate(MirTypeDelegate::CustomSerDes(MirTypeDelegateCustomSerDes {
                     info: info.to_owned(),
                 }))
             });
-        log::info!("hi parse_type_path_data_custom_ser_des last_segment={last_segment:?} ans={ans:?}");
+        log::info!("hi parse_type_path_data_custom_ser_des last_segment={last_segment:?} ans={ans:?} self.inner.custom_ser_des_infos={:?}", self.inner.custom_ser_des_infos);
         Ok(ans)
     }
+}
+
+fn compute_matcher_types(ty: &MirType) -> Vec<String> {
+    let mut ans = vec![ty.rust_api_type()];
+    if let MirType::RustAutoOpaqueImplicit(ty) = ty {
+        ans.push(ty.raw.string.with_original_lifetime().to_owned());
+    }
+    ans
 }
