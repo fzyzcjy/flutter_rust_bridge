@@ -85,10 +85,6 @@ typedef struct wire_cst_struct_with_comments_twin_normal {
   int32_t field_with_comments;
 } wire_cst_struct_with_comments_twin_normal;
 
-typedef struct wire_cst_non_opaque_struct_containing_ipv_4_addr {
-  struct wire_cst_list_prim_u_8_strict *inner;
-} wire_cst_non_opaque_struct_containing_ipv_4_addr;
-
 typedef struct wire_cst_translatable_struct_with_dart_code_twin_normal {
   int32_t a;
 } wire_cst_translatable_struct_with_dart_code_twin_normal;
@@ -3595,10 +3591,14 @@ void frbgen_frb_example_pure_dart_wire__crate__api__constructor__constructor_tra
 WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__constructor__constructor_translatable_sync_struct_twin_normal_new(void);
 
 void frbgen_frb_example_pure_dart_wire__crate__api__custom_ser_des__func_using_ipv4_addr(int64_t port_,
-                                                                                         struct wire_cst_list_prim_u_8_strict *arg);
+                                                                                         uint8_t *ptr_,
+                                                                                         int32_t rust_vec_len_,
+                                                                                         int32_t data_len_);
 
 void frbgen_frb_example_pure_dart_wire__crate__api__custom_ser_des__func_using_non_opaque_struct_containing_ipv4_addr(int64_t port_,
-                                                                                                                      struct wire_cst_non_opaque_struct_containing_ipv_4_addr *arg);
+                                                                                                                      uint8_t *ptr_,
+                                                                                                                      int32_t rust_vec_len_,
+                                                                                                                      int32_t data_len_);
 
 void frbgen_frb_example_pure_dart_wire__crate__api__custom_ser_des__function_using_type_with_custom_serializer(int64_t port_,
                                                                                                                uint8_t *ptr_,
@@ -14727,8 +14727,6 @@ struct wire_cst_new_type_int_twin_rust_async *frbgen_frb_example_pure_dart_cst_n
 
 struct wire_cst_new_type_int_twin_sync *frbgen_frb_example_pure_dart_cst_new_box_autoadd_new_type_int_twin_sync(void);
 
-struct wire_cst_non_opaque_struct_containing_ipv_4_addr *frbgen_frb_example_pure_dart_cst_new_box_autoadd_non_opaque_struct_containing_ipv_4_addr(void);
-
 struct wire_cst_note_twin_normal *frbgen_frb_example_pure_dart_cst_new_box_autoadd_note_twin_normal(void);
 
 struct wire_cst_note_twin_rust_async *frbgen_frb_example_pure_dart_cst_new_box_autoadd_note_twin_rust_async(void);
@@ -15417,7 +15415,6 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_new_type_int_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_new_type_int_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_new_type_int_twin_sync);
-    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_non_opaque_struct_containing_ipv_4_addr);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_note_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_note_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_note_twin_sync);

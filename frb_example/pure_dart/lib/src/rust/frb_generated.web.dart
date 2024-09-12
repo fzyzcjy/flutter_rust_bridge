@@ -20105,15 +20105,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  String
-      cst_encode_CustomSerializer_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIpv4Addr(
-          InternetAddress raw) {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    throw UnimplementedError(
-        'Not implemented in this codec, please use the other one');
-  }
-
-  @protected
   JSAny cst_encode_DartOpaque_array_1(ObjectArray1 raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_DartOpaque(raw);
@@ -22294,13 +22285,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   JSAny cst_encode_box_autoadd_new_type_int_twin_sync(NewTypeIntTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_new_type_int_twin_sync(raw);
-  }
-
-  @protected
-  JSAny cst_encode_box_autoadd_non_opaque_struct_containing_ipv_4_addr(
-      NonOpaqueStructContainingIpv4Addr raw) {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    return cst_encode_non_opaque_struct_containing_ipv_4_addr(raw);
   }
 
   @protected
@@ -25933,16 +25917,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   JSAny cst_encode_new_type_int_twin_sync(NewTypeIntTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_i_64(raw.field0)].jsify()!;
-  }
-
-  @protected
-  JSAny cst_encode_non_opaque_struct_containing_ipv_4_addr(
-      NonOpaqueStructContainingIpv4Addr raw) {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    return [
-      cst_encode_CustomSerializer_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIpv4Addr(
-          raw.inner)
-    ].jsify()!;
   }
 
   @protected
@@ -39307,15 +39281,21 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__constructor__constructor_translatable_sync_struct_twin_normal_new();
 
   void wire__crate__api__custom_ser_des__func_using_ipv4_addr(
-          NativePortType port_, String arg) =>
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
       wasmModule.wire__crate__api__custom_ser_des__func_using_ipv4_addr(
-          port_, arg);
+          port_, ptr_, rust_vec_len_, data_len_);
 
   void wire__crate__api__custom_ser_des__func_using_non_opaque_struct_containing_ipv4_addr(
-          NativePortType port_, JSAny arg) =>
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
       wasmModule
           .wire__crate__api__custom_ser_des__func_using_non_opaque_struct_containing_ipv4_addr(
-              port_, arg);
+              port_, ptr_, rust_vec_len_, data_len_);
 
   void wire__crate__api__custom_ser_des__function_using_type_with_custom_serializer(
           NativePortType port_,
@@ -62541,11 +62521,17 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
       wire__crate__api__constructor__constructor_translatable_sync_struct_twin_normal_new();
 
   external void wire__crate__api__custom_ser_des__func_using_ipv4_addr(
-      NativePortType port_, String arg);
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
 
   external void
       wire__crate__api__custom_ser_des__func_using_non_opaque_struct_containing_ipv4_addr(
-          NativePortType port_, JSAny arg);
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
 
   external void
       wire__crate__api__custom_ser_des__function_using_type_with_custom_serializer(
