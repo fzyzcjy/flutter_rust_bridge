@@ -49,7 +49,7 @@ impl<'a> WireRustCodecDcoGeneratorEncoderTrait for DelegateWireRustCodecDcoGener
                 let wrapper_name = format!("FrbWrapper<{name}>");
                 Some(
                     generate_impl_into_dart(&wrapper_name, "unimplemented!()")
-                        + &generate_impl_into_into_dart(&name.rust_style(), &wrapper_name),
+                        + &generate_impl_into_into_dart(&name, &Some(wrapper_name.clone())),
                 )
             }
             _ => None,

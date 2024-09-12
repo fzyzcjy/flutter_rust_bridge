@@ -1,4 +1,5 @@
 use crate::codegen::ir::mir::ty::MirType;
+use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use crate::utils::namespace::NamespacedName;
 
 crate::mir! {
@@ -18,7 +19,7 @@ pub struct MirCustomSerDesHalf {
 
 impl MirCustomSerDes {
     pub(crate) fn cleared_rust_api_type(&self) -> String {
-        if let MirType::RustAutoOpaqueImplicit(ty) = &self.rust_api_type {
+        if let MirType::RustAutoOpaqueImplicit(ty) = &*self.rust_api_type {
             ty.raw.string.with_original_lifetime().to_owned()
         } else {
             self.rust_api_type.rust_api_type()
