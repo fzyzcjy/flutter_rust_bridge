@@ -28,17 +28,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
-  InternetAddress
-      dco_decode_CustomSerializer_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIpv4Addr(
-          dynamic raw);
-
-  @protected
   Ipv4Addr
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIpv4Addr(
           dynamic raw);
-
-  @protected
-  String dco_decode_String(dynamic raw);
 
   @protected
   NonOpaqueStructContainingIpv4Addr
@@ -46,14 +38,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
-  Uint8List dco_decode_list_prim_u_8_strict(dynamic raw);
-
-  @protected
   NonOpaqueStructContainingIpv4Addr
       dco_decode_non_opaque_struct_containing_ipv_4_addr(dynamic raw);
-
-  @protected
-  int dco_decode_u_8(dynamic raw);
 
   @protected
   void dco_decode_unit(dynamic raw);
@@ -67,17 +53,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
-  InternetAddress
-      sse_decode_CustomSerializer_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIpv4Addr(
-          SseDeserializer deserializer);
-
-  @protected
   Ipv4Addr
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIpv4Addr(
           SseDeserializer deserializer);
-
-  @protected
-  String sse_decode_String(SseDeserializer deserializer);
 
   @protected
   NonOpaqueStructContainingIpv4Addr
@@ -85,15 +63,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
-  Uint8List sse_decode_list_prim_u_8_strict(SseDeserializer deserializer);
-
-  @protected
   NonOpaqueStructContainingIpv4Addr
       sse_decode_non_opaque_struct_containing_ipv_4_addr(
           SseDeserializer deserializer);
-
-  @protected
-  int sse_decode_u_8(SseDeserializer deserializer);
 
   @protected
   void sse_decode_unit(SseDeserializer deserializer);
@@ -114,31 +86,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void
-      sse_encode_CustomSerializer_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIpv4Addr(
-          InternetAddress self, SseSerializer serializer);
-
-  @protected
-  void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIpv4Addr(
           Ipv4Addr self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_String(String self, SseSerializer serializer);
 
   @protected
   void sse_encode_box_autoadd_non_opaque_struct_containing_ipv_4_addr(
       NonOpaqueStructContainingIpv4Addr self, SseSerializer serializer);
 
   @protected
-  void sse_encode_list_prim_u_8_strict(
-      Uint8List self, SseSerializer serializer);
-
-  @protected
   void sse_encode_non_opaque_struct_containing_ipv_4_addr(
       NonOpaqueStructContainingIpv4Addr self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_u_8(int self, SseSerializer serializer);
 
   @protected
   void sse_encode_unit(void self, SseSerializer serializer);
