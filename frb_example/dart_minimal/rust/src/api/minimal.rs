@@ -1,4 +1,4 @@
-use flutter_rust_bridge::{DartFnFuture, frb};
+use flutter_rust_bridge::frb;
 
 #[frb(init)]
 pub fn init_app() {
@@ -7,8 +7,4 @@ pub fn init_app() {
 
 pub fn minimal_adder(a: i32, b: i32) -> i32 {
     a + b
-}
-
-pub async fn hi_callback(arg: impl Fn(String, i32) -> DartFnFuture<String>) -> String {
-    arg("hi".to_owned(), 42).await
 }
