@@ -14,6 +14,14 @@ pub struct RustAutoOpaqueBase<T: 'static, A: BaseArc<inner::RustAutoOpaqueInner<
     pub(crate) RustOpaqueBase<inner::RustAutoOpaqueInner<T>, A>,
 );
 
+impl<T: 'static + Default, A: BaseArc<inner::RustAutoOpaqueInner<T>>> Default
+    for RustAutoOpaqueBase<T, A>
+{
+    fn default() -> Self {
+        RustAutoOpaqueBase::new(T::default())
+    }
+}
+
 /// Please refer to `RustAutoOpaque` for doc.
 pub type RustAutoOpaqueNom<T> = RustAutoOpaqueBase<T, StdArc<inner::RustAutoOpaqueInner<T>>>;
 
