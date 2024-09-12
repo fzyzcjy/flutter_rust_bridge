@@ -16,4 +16,8 @@ Future<void> main() async {
     print('Action: Call rust (after)');
   });
   print('Action: Configure tests (end)');
+
+  test('hi', () async {
+    expect(await hiCallback(arg: (a, b) => '$a $b'), 'hi 42');
+  });
 }
