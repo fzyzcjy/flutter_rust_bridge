@@ -8,3 +8,21 @@ pub fn init_app() {
 pub fn minimal_adder(a: i32, b: i32) -> i32 {
     a + b
 }
+
+#[frb(rust2dart(dart_type = "String", dart_code = "{}"))]
+#[frb(serialize)]
+pub fn serializer_my_external_type(raw: flutter_rust_bridge::CatchUnwindWithBacktrace) -> String {
+    unimplemented!()
+}
+
+#[frb(dart2rust(dart_type = "String", dart_code = "{}"))]
+#[frb(serialize)]
+pub fn deserializer_my_external_type(raw: String) -> flutter_rust_bridge::CatchUnwindWithBacktrace {
+    unimplemented!()
+}
+
+pub fn f(
+    a: flutter_rust_bridge::CatchUnwindWithBacktrace,
+) -> flutter_rust_bridge::CatchUnwindWithBacktrace {
+    a
+}
