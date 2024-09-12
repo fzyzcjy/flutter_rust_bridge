@@ -1,5 +1,5 @@
 use flutter_rust_bridge::frb;
-use std::net::Ipv4Addr;
+pub use std::net::Ipv4Addr;
 
 #[frb(init)]
 pub fn init_app() {
