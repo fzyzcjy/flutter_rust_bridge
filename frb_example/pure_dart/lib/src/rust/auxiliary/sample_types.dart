@@ -6,9 +6,6 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneDataRaw>>
-abstract class NonCloneDataRaw implements RustOpaqueInterface {}
-
 enum MyEnum {
   false_,
   true_,
