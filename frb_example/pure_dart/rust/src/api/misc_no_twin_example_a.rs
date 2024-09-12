@@ -197,6 +197,7 @@ impl MyStructWithSync {
 }
 
 #[derive(Debug, Clone, Default)]
+#[frb(opaque)]
 pub struct StructWithRustAutoOpaqueFieldWithManyDeriveInner {}
 
 #[derive(Debug, Clone, Default)]
