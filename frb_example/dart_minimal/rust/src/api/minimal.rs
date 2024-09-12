@@ -20,6 +20,7 @@ impl StructWithRustAutoOpaqueFieldWithManyDerive {
     pub fn f(&self) {}
 }
 
+#[derive(Clone)]
 pub struct StructWithRustAutoOpaqueWithNonCloneData {
     pub content: crate::frb_generated::RustAutoOpaque<NonCloneDataRaw>,
 }
