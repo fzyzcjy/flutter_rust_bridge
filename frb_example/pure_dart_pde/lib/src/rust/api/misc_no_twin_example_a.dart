@@ -3,13 +3,14 @@
 
 // ignore_for_file: invalid_use_of_internal_member, unused_import, unnecessary_import
 
+import '../auxiliary/sample_types.dart';
 import '../frb_generated.dart';
 import 'misc_no_twin_example_b.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 // These functions are ignored because they are not marked as `pub`: `log`
 // These types are ignored because they are not used by any `pub` functions: `Issue2170Struct`
-// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `fmt`, `fmt`
+// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `clone`, `clone`, `clone`, `fmt`, `fmt`, `fmt`, `fmt`
 
 Future<void> sameFunctionNameInDifferentFiles() => RustLib.instance.api
     .crateApiMiscNoTwinExampleASameFunctionNameInDifferentFiles();
@@ -102,6 +103,14 @@ abstract class StructWithImplBlockInMultiFile implements RustOpaqueInterface {
   Future<void> methodInA();
 
   Future<void> methodInB();
+}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructWithRustAutoOpaqueFieldWithManyDeriveInner>>
+abstract class StructWithRustAutoOpaqueFieldWithManyDeriveInner
+    implements RustOpaqueInterface {
+  static Future<StructWithRustAutoOpaqueFieldWithManyDeriveInner> default_() =>
+      RustLib.instance.api
+          .crateApiMiscNoTwinExampleAStructWithRustAutoOpaqueFieldWithManyDeriveInnerDefault();
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructWithSimpleSetterTwinNormal>>
@@ -209,4 +218,54 @@ class StructWithImplBlockInAnotherFile {
       identical(this, other) ||
       other is StructWithImplBlockInAnotherFile &&
           runtimeType == other.runtimeType;
+}
+
+class StructWithRustAutoOpaqueFieldWithManyDerive {
+  final StructWithRustAutoOpaqueFieldWithManyDeriveInner content;
+
+  const StructWithRustAutoOpaqueFieldWithManyDerive({
+    required this.content,
+  });
+
+  static Future<StructWithRustAutoOpaqueFieldWithManyDerive> default_() => RustLib
+      .instance.api
+      .crateApiMiscNoTwinExampleAStructWithRustAutoOpaqueFieldWithManyDeriveDefault();
+
+  Future<void> f() => RustLib.instance.api
+          .crateApiMiscNoTwinExampleAStructWithRustAutoOpaqueFieldWithManyDeriveF(
+        that: this,
+      );
+
+  @override
+  int get hashCode => content.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is StructWithRustAutoOpaqueFieldWithManyDerive &&
+          runtimeType == other.runtimeType &&
+          content == other.content;
+}
+
+class StructWithRustAutoOpaqueWithNonCloneData {
+  final NonCloneDataRaw content;
+
+  const StructWithRustAutoOpaqueWithNonCloneData({
+    required this.content,
+  });
+
+  Future<void> f() => RustLib.instance.api
+          .crateApiMiscNoTwinExampleAStructWithRustAutoOpaqueWithNonCloneDataF(
+        that: this,
+      );
+
+  @override
+  int get hashCode => content.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is StructWithRustAutoOpaqueWithNonCloneData &&
+          runtimeType == other.runtimeType &&
+          content == other.content;
 }
