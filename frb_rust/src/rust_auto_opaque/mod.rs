@@ -9,7 +9,7 @@ pub(crate) mod inner;
 pub(crate) mod rust2dart_common;
 pub(crate) mod rust2dart_explicit;
 
-#[derive(Clone, Debug)]
+#[derive(Debug)]
 pub struct RustAutoOpaqueBase<T: 'static, A: BaseArc<inner::RustAutoOpaqueInner<T>>>(
     pub(crate) RustOpaqueBase<inner::RustAutoOpaqueInner<T>, A>,
 );
@@ -18,7 +18,13 @@ impl<T: 'static + Default, A: BaseArc<inner::RustAutoOpaqueInner<T>>> Default
     for RustAutoOpaqueBase<T, A>
 {
     fn default() -> Self {
-        RustAutoOpaqueBase::new(T::default())
+        Self::new(T::default())
+    }
+}
+
+impl<T: 'static, A: BaseArc<inner::RustAutoOpaqueInner<T>>> Clone for RustAutoOpaqueBase<T, A> {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
     }
 }
 
