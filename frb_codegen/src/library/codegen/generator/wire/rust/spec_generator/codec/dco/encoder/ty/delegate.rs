@@ -44,7 +44,9 @@ impl<'a> WireRustCodecDcoGeneratorEncoderTrait for DelegateWireRustCodecDcoGener
                         + &generate_impl_into_into_dart(&src.name.rust_style(), &src.wrapper_name),
                 )
             }
-            MirTypeDelegate::CustomSerDes(inner) => Some(generate_impl_into_into_dart(TODO, TODO)),
+            MirTypeDelegate::CustomSerDes(inner) => {
+                TODO
+            }
             _ => None,
         }
     }

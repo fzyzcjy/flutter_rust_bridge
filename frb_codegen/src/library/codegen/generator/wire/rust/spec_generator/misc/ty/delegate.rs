@@ -23,10 +23,11 @@ impl<'a> WireRustGeneratorMiscTrait for DelegateWireRustGenerator<'a> {
     // frb-coverage:ignore-start
     fn wrapper_struct_name(&self) -> Option<String> {
         // frb-coverage:ignore-end
-        if let MirTypeDelegate::PrimitiveEnum(enu) = &self.mir {
-            WireRustGenerator::new(enu.mir.clone(), self.context).wrapper_struct_name()
-        } else {
-            None
+        match &self.mir {
+            MirTypeDelegate::PrimitiveEnum(enu) => {
+                WireRustGenerator::new(enu.mir.clone(), self.context).wrapper_struct_name()
+            }
+            _ => None,
         }
     }
 
