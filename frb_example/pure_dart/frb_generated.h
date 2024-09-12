@@ -3590,6 +3590,16 @@ void frbgen_frb_example_pure_dart_wire__crate__api__constructor__constructor_tra
 
 WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__constructor__constructor_translatable_sync_struct_twin_normal_new(void);
 
+void frbgen_frb_example_pure_dart_wire__crate__api__custom_ser_des__func_using_ipv4_addr(int64_t port_,
+                                                                                         uint8_t *ptr_,
+                                                                                         int32_t rust_vec_len_,
+                                                                                         int32_t data_len_);
+
+void frbgen_frb_example_pure_dart_wire__crate__api__custom_ser_des__func_using_non_opaque_struct_containing_ipv4_addr(int64_t port_,
+                                                                                                                      uint8_t *ptr_,
+                                                                                                                      int32_t rust_vec_len_,
+                                                                                                                      int32_t data_len_);
+
 void frbgen_frb_example_pure_dart_wire__crate__api__custom_ser_des__function_using_type_with_custom_serializer(int64_t port_,
                                                                                                                uint8_t *ptr_,
                                                                                                                int32_t rust_vec_len_,
@@ -16161,6 +16171,8 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__constructor__ConstructorOpaqueSyncStructTwinNormal_new);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__constructor__constructor_translatable_struct_twin_normal_new);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__constructor__constructor_translatable_sync_struct_twin_normal_new);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__custom_ser_des__func_using_ipv4_addr);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__custom_ser_des__func_using_non_opaque_struct_containing_ipv4_addr);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__custom_ser_des__function_using_type_with_custom_serializer);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__customization__check_init_done);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__customization__init_app);

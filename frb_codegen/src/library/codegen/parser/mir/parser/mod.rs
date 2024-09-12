@@ -32,20 +32,7 @@ pub(crate) fn parse(
 
     let mut type_parser = TypeParser::new_from_pack(ir_pack);
 
-    let trait_impls = trait_impl::parse(
-        &hir_flat.trait_impls,
-        &mut type_parser,
-        config
-            .rust_input_namespace_pack
-            .rust_output_path_namespace
-            .clone(),
-        config.default_stream_sink_codec,
-        config.default_rust_opaque_codec,
-        config.enable_lifetime,
-        config.type_64bit_int,
-        parse_mode,
-    )?;
-
+    // NOTE: Should parse this as early as possible
     let custom_ser_des_infos = custom_ser_des::parse(
         &hir_flat.functions,
         &mut type_parser,
@@ -64,6 +51,20 @@ pub(crate) fn parse(
     type_parser
         .custom_ser_des_infos
         .extend(custom_ser_des_infos);
+
+    let trait_impls = trait_impl::parse(
+        &hir_flat.trait_impls,
+        &mut type_parser,
+        config
+            .rust_input_namespace_pack
+            .rust_output_path_namespace
+            .clone(),
+        config.default_stream_sink_codec,
+        config.default_rust_opaque_codec,
+        config.enable_lifetime,
+        config.type_64bit_int,
+        parse_mode,
+    )?;
 
     let (funcs_all, funcs_skip) = function::parse(
         config,

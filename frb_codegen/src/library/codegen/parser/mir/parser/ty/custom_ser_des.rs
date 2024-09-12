@@ -1,3 +1,4 @@
+use crate::codegen::ir::mir::custom_ser_des::MirCustomSerDes;
 use crate::codegen::ir::mir::ty::delegate::{MirTypeDelegate, MirTypeDelegateCustomSerDes};
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::mir::parser::ty::unencodable::SplayedSegment;
@@ -11,11 +12,18 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     ) -> anyhow::Result<Option<MirType>> {
         // use HashMap etc later if too slow; here we use filter to remain flexibility of filtering strategy
         Ok((self.inner.custom_ser_des_infos.iter())
-            .find(|info| info.rust_api_type.rust_api_type() == last_segment.0)
+            .find(|info| compute_matcher_types(info).contains(&last_segment.0.to_owned()))
             .map(|info| {
                 MirType::Delegate(MirTypeDelegate::CustomSerDes(MirTypeDelegateCustomSerDes {
                     info: info.to_owned(),
                 }))
             }))
     }
+}
+
+fn compute_matcher_types(info: &MirCustomSerDes) -> Vec<String> {
+    vec![
+        info.rust_api_type.rust_api_type(),
+        info.cleared_rust_api_type(),
+    ]
 }

@@ -8,6 +8,7 @@ dart_type_rename:
   Box<dyn Any + Send + Sync + 'static>: BoxAnyMyDartTypeRename
 
 rust_preamble: "// test for rust_preamble"
+dart_preamble: "import 'dart:io';"
 
 # To help developing flutter_rust_bridge; normal users usually do not set this
 stop_on_error: true
