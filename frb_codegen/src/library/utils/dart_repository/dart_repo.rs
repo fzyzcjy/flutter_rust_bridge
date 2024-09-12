@@ -4,6 +4,7 @@ use anyhow::{anyhow, bail, Context};
 use cargo_metadata::{Version, VersionReq};
 use log::debug;
 use serde::de::DeserializeOwned;
+use std::collections::HashMap;
 use std::convert::TryFrom;
 use std::fmt::Display;
 use std::path::{Path, PathBuf};
@@ -21,12 +22,11 @@ impl DartRepository {
         let lock_file: PubspecYaml =
             read_file_and_parse_yaml(path, DartToolchain::manifest_filename())?;
 
-        let toolchain = if let Some(dependencies) = lock_file.dependencies.as_ref() {
-            if dependencies.contains_key(&DartToolchain::Flutter.to_string()) {
-                DartToolchain::Flutter
-            } else {
-                DartToolchain::Dart
-            }
+        let toolchain = if option_hash_map_contains(
+            &lock_file.dependencies,
+            &DartToolchain::Flutter.to_string(),
+        ) {
+            DartToolchain::Flutter
         } else {
             DartToolchain::Dart
         };
@@ -64,10 +64,7 @@ impl DartRepository {
         requirement: &VersionReq,
     ) -> anyhow::Result<()> {
         let at = &self.at;
-        debug!(
-            "Checking presence of {} in {} at {:?}",
-            package, manager, at
-        );
+        debug!("Checking presence of {package} in {manager} at {at:?}");
         let manifest_file: PubspecYaml =
             read_file_and_parse_yaml(at, DartToolchain::manifest_filename())?;
         let deps = match manager {
@@ -233,6 +230,14 @@ fn read_file_and_parse_yaml<T: DeserializeOwned>(at: &Path, filename: &str) -> a
         // frb-coverage:ignore-end
     })?;
     Ok(file)
+}
+
+fn option_hash_map_contains<K, V>(map: &Option<HashMap<K, V>>, key: &K) -> bool {
+    if let Some(map) = map.as_ref() {
+        map.contains_key(key)
+    } else {
+        false
+    }
 }
 
 impl PubspecLockPackage {
