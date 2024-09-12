@@ -82,7 +82,7 @@ abstract class RustLibApi extends BaseApi {
   Future<int> crateApiMinimalFunctionUsingTypeWithCustomSerializer(
       {required int arg});
 
-  String crateApiMinimalGreet({required InternetAddress a, required Device b});
+  String crateApiMinimalGreet({required Device name});
 
   Future<void> crateApiMinimalInitApp();
 
@@ -133,13 +133,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
-  String crateApiMinimalGreet({required InternetAddress a, required Device b}) {
+  String crateApiMinimalGreet({required Device name}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_CustomSerializer_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyIpv4Addr(
-            a, serializer);
-        sse_encode_box_autoadd_device(b, serializer);
+        sse_encode_box_autoadd_device(name, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 2)!;
       },
       codec: SseCodec(
@@ -147,14 +145,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeErrorData: null,
       ),
       constMeta: kCrateApiMinimalGreetConstMeta,
-      argValues: [a, b],
+      argValues: [name],
       apiImpl: this,
     ));
   }
 
   TaskConstMeta get kCrateApiMinimalGreetConstMeta => const TaskConstMeta(
         debugName: "greet",
-        argNames: ["a", "b"],
+        argNames: ["name"],
       );
 
   @override
@@ -199,15 +197,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   int dco_decode_CustomSerializer_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMessageWithCustomSerializerTwinNormal(
       dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    throw UnimplementedError(
-        'Not implemented in this codec, please use the other one');
-  }
-
-  @protected
-  InternetAddress
-      dco_decode_CustomSerializer_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyIpv4Addr(
-          dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     throw UnimplementedError(
         'Not implemented in this codec, please use the other one');
@@ -284,15 +273,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner = sse_decode_String(deserializer);
     return int.parse(inner);
-  }
-
-  @protected
-  InternetAddress
-      sse_decode_CustomSerializer_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyIpv4Addr(
-          SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    var inner = sse_decode_String(deserializer);
-    return InternetAddress(inner);
   }
 
   @protected
@@ -377,14 +357,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           int self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_String(self.toString(), serializer);
-  }
-
-  @protected
-  void
-      sse_encode_CustomSerializer_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyIpv4Addr(
-          InternetAddress self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_String(self.address, serializer);
   }
 
   @protected

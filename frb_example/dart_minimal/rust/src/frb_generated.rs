@@ -102,11 +102,10 @@ fn wire__crate__api__minimal__greet_impl(
             };
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_a = <MyIpv4Addr>::sse_decode(&mut deserializer);
-            let api_b = <crate::api::minimal::Device>::sse_decode(&mut deserializer);
+            let api_name = <crate::api::minimal::Device>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(crate::api::minimal::greet(api_a, api_b))?;
+                let output_ok = Result::<_, ()>::Ok(crate::api::minimal::greet(api_name))?;
                 Ok(output_ok)
             })())
         },
@@ -170,14 +169,6 @@ impl SseDecode for MessageWithCustomSerializerTwinNormal {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut inner = <String>::sse_decode(deserializer);
         return crate::api::minimal::deserializer_my_type(inner);
-    }
-}
-
-impl SseDecode for MyIpv4Addr {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <String>::sse_decode(deserializer);
-        return crate::api::minimal::decode_ipv4_type(inner);
     }
 }
 
@@ -328,13 +319,6 @@ impl SseEncode for MessageWithCustomSerializerTwinNormal {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <String>::sse_encode(crate::api::minimal::serializer_my_type(self), serializer);
-    }
-}
-
-impl SseEncode for MyIpv4Addr {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <String>::sse_encode(crate::api::minimal::encode_ipv4_type(self), serializer);
     }
 }
 

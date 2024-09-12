@@ -31,11 +31,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
-  InternetAddress
-      dco_decode_CustomSerializer_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyIpv4Addr(
-          dynamic raw);
-
-  @protected
   MyIpv4Addr
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyIpv4Addr(
           dynamic raw);
@@ -69,11 +64,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   int sse_decode_CustomSerializer_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMessageWithCustomSerializerTwinNormal(
       SseDeserializer deserializer);
-
-  @protected
-  InternetAddress
-      sse_decode_CustomSerializer_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyIpv4Addr(
-          SseDeserializer deserializer);
 
   @protected
   MyIpv4Addr
@@ -116,11 +106,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_CustomSerializer_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMessageWithCustomSerializerTwinNormal(
           int self, SseSerializer serializer);
-
-  @protected
-  void
-      sse_encode_CustomSerializer_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyIpv4Addr(
-          InternetAddress self, SseSerializer serializer);
 
   @protected
   void

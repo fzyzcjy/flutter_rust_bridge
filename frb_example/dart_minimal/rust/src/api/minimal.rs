@@ -1,14 +1,13 @@
-use flutter_rust_bridge::frb;
 pub use std::net::Ipv4Addr;
+use flutter_rust_bridge::frb;
 
 #[derive(Debug)]
 #[frb(opaque)]
 pub struct MyIpv4Addr(Ipv4Addr);
 
 #[flutter_rust_bridge::frb(sync)] // Synchronous mode for simplicity of the demo
-                                  // pub fn greet(name: Device) -> String {
-pub fn greet(a: MyIpv4Addr, b: Device) -> String {
-    todo!()
+pub fn greet(name: Device) -> String {
+    format!("Hello, {}!", name.ip.to_string())
 }
 
 #[frb(rust2dart(dart_type = "InternetAddress", dart_code = "InternetAddress({})"))]

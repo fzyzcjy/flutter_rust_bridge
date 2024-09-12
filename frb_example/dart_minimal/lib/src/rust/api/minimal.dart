@@ -9,8 +9,8 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 // These types are ignored because they are not used by any `pub` functions: `MessageWithCustomSerializerTwinNormal`
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `fmt`, `fmt`
 
-String greet({required InternetAddress a, required Device b}) =>
-    RustLib.instance.api.crateApiMinimalGreet(a: a, b: b);
+String greet({required Device name}) =>
+    RustLib.instance.api.crateApiMinimalGreet(name: name);
 
 Future<int> functionUsingTypeWithCustomSerializer({required int arg}) =>
     RustLib.instance.api
