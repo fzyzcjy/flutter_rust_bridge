@@ -7,7 +7,7 @@ use std::marker::PhantomData;
 
 /// Please refer to [RustOpaque] for doc.
 #[repr(transparent)]
-#[derive(Debug)]
+#[derive(PartialEq, Eq, Default, Debug)]
 pub struct RustOpaqueBase<T: ?Sized + 'static, A: BaseArc<T>> {
     arc: A,
     _phantom: PhantomData<T>,
