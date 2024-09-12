@@ -1,3 +1,4 @@
+import 'package:frb_example_dart_minimal/src/rust/api/minimal.dart';
 import 'package:frb_example_dart_minimal/src/rust/frb_generated.dart';
 
 // If you are developing a binary program, you may want to put it in `bin/something.dart`
