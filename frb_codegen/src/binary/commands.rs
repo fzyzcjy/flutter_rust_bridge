@@ -172,6 +172,10 @@ pub(crate) struct GenerateCommandArgsPrimary {
     /// Dump all internal data. Same as `--dump` with all possible choices chosen.
     #[arg(long)]
     pub dump_all: bool,
+
+    /// List of cargo feature flags to enable when generating
+    #[arg(long)]
+    pub rust_features: Option<Vec<String>>,
 }
 
 #[derive(Debug, Args)]

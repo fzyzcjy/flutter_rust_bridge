@@ -10,14 +10,16 @@ use log::{debug, info};
 use regex::{Captures, Regex};
 use std::borrow::Cow;
 use std::env;
-use std::path::Path;
+use std::path::{Path, PathBuf};
+use std::str::FromStr;
 
 pub(super) fn run(
     rust_crate_dir: &Path,
     interest_crate_name: Option<&CrateName>,
     dumper: &Dumper,
+    features: Option<&[String]>,
 ) -> Result<syn::File> {
-    let text = run_with_frb_aware(rust_crate_dir, interest_crate_name)?;
+    let text = run_with_frb_aware(rust_crate_dir, interest_crate_name, features)?;
     (dumper.with_content(ConfigDumpContent::Source)).dump_str("cargo_expand.rs", &text)?;
     Ok(syn::parse_file(&text)?)
 }
@@ -25,12 +27,14 @@ pub(super) fn run(
 fn run_with_frb_aware(
     rust_crate_dir: &Path,
     interest_crate_name: Option<&CrateName>,
+    features: Option<&[String]>,
 ) -> Result<String> {
     Ok(decode_macro_frb_encoded_comments(&run_raw(
         rust_crate_dir,
         interest_crate_name,
         "--cfg frb_expand",
         true,
+        features,
     )?)
     .into_owned())
 }
@@ -55,6 +59,7 @@ fn run_raw(
     interest_crate_name: Option<&CrateName>,
     extra_rustflags: &str,
     allow_auto_install: bool,
+    features: Option<&[String]>,
 ) -> Result<String> {
     // let _pb = simple_progress("Run cargo-expand".to_owned(), 1);
     debug!("Running cargo expand in '{rust_crate_dir:?}'");
@@ -65,13 +70,22 @@ fn run_raw(
         vec![]
     };
 
+    let args_features: Vec<PathBuf> = features
+        .unwrap_or_default()
+        .iter()
+        .flat_map(|feature| vec!["--features", feature])
+        .map(PathBuf::from_str)
+        .try_collect()?;
+
     let args = command_args!(
         "expand",
         "--lib",
         "--theme=none",
         "--ugly",
         *args_choosing_crate,
+        *args_features
     );
+
     let extra_env = [(
         "RUSTFLAGS".to_owned(),
         env::var("RUSTFLAGS").map(|x| x + " ").unwrap_or_default() + extra_rustflags,
@@ -88,7 +102,13 @@ fn run_raw(
         if stderr.contains("no such command: `expand`") && allow_auto_install {
             info!("Cargo expand is not installed. Automatically install and re-run.");
             install_cargo_expand()?;
-            return run_raw(rust_crate_dir, interest_crate_name, extra_rustflags, false);
+            return run_raw(
+                rust_crate_dir,
+                interest_crate_name,
+                extra_rustflags,
+                false,
+                features,
+            );
         }
         // This will stop the whole generator and tell the users, so we do not care about testing it
         // frb-coverage:ignore-start

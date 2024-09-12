@@ -111,3 +111,14 @@ String convertConfigPackage(String raw) {
   if (raw != ans) print('convertConfigPackage: $raw -> $ans');
   return ans;
 }
+
+String? getRustFeaturesOfPackage(String package) {
+  if (package == "frb_example/pure_dart_pde/rust" ||
+      package == "frb_example/pure_dart/rust" ||
+      package == "frb_example/pure_dart" ||
+      package == "frb_example/pure_dart_pde") {
+    return "internal_feature_for_testing";
+  } else {
+    return null;
+  }
+}

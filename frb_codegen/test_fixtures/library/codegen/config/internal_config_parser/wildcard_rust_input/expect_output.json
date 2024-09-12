@@ -1,13 +1,9 @@
 {
   "controller": {
-    "exclude_paths": [
-      "{the-working-directory}/src/frb_generated.rs"
-    ],
+    "exclude_paths": ["{the-working-directory}/src/frb_generated.rs"],
     "max_count": null,
     "watch": false,
-    "watching_paths": [
-      "{the-working-directory}/src"
-    ]
+    "watching_paths": ["{the-working-directory}/src"]
   },
   "dumper": {
     "dump_contents": [],
@@ -91,12 +87,11 @@
     "hir": {
       "rust_crate_dir": "{the-working-directory}",
       "rust_input_namespace_pack": {
-        "rust_input_namespace_prefixes": [
-          "crate::api"
-        ],
+        "rust_input_namespace_prefixes": ["crate::api"],
         "rust_output_path_namespace": "crate::frb_generated"
       },
-      "third_party_crate_names": []
+      "third_party_crate_names": [],
+      "rust_features": null
     },
     "mir": {
       "default_dart_async": true,
@@ -108,9 +103,7 @@
         "rust2dart": "Pde"
       },
       "rust_input_namespace_pack": {
-        "rust_input_namespace_prefixes": [
-          "crate::api"
-        ],
+        "rust_input_namespace_prefixes": ["crate::api"],
         "rust_output_path_namespace": "crate::frb_generated"
       },
       "stop_on_error": false,

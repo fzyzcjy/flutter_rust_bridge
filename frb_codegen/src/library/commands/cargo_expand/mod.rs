@@ -13,9 +13,10 @@ pub(crate) fn run_cargo_expand(
     rust_crate_dir: &Path,
     interest_crate_name: Option<&CrateName>,
     dumper: &Dumper,
+    features: Option<&[String]>,
 ) -> Result<syn::File> {
     if can_execute_real(rust_crate_dir)? {
-        real::run(rust_crate_dir, interest_crate_name, dumper)
+        real::run(rust_crate_dir, interest_crate_name, dumper, features)
     } else {
         pseudo::run(rust_crate_dir, interest_crate_name)
     }

@@ -40712,6 +40712,12 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__misc_no_twin_example_a__StructWithSimpleSetterTwinNormal_simple_setter(
                   that, value);
 
+  void wire__crate__api__misc_no_twin_example_a__feature_gated_function(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__misc_no_twin_example_a__feature_gated_function(
+              port_);
+
   void wire__crate__api__misc_no_twin_example_a__function_with_arg_type_name_override(
           NativePortType port_, int a) =>
       wasmModule
@@ -63457,6 +63463,10 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__misc_no_twin_example_a__StructWithSimpleSetterTwinNormal_simple_setter(
           int that, int value);
+
+  external void
+      wire__crate__api__misc_no_twin_example_a__feature_gated_function(
+          NativePortType port_);
 
   external void
       wire__crate__api__misc_no_twin_example_a__function_with_arg_type_name_override(

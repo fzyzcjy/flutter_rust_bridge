@@ -306,8 +306,10 @@ Future<void> testRust(TestRustConfig config) async {
 Future<void> testRustPackage(TestRustPackageConfig config) async {
   await runPubGetIfNotRunYet('frb_example/dart_minimal');
   await runPubGetIfNotRunYet('frb_example/pure_dart');
-
-  await exec('cargo build', relativePwd: config.package);
+  print("testRustPackage ${config.package}");
+  final feature = getRustFeaturesOfPackage(config.package);
+  await exec('cargo build ${feature != null ? "--features $feature" : ""}',
+      relativePwd: config.package);
 
   final effectiveEnableCoverage = config.coverage &&
       const ['frb_codegen', 'frb_rust'].contains(config.package);
@@ -315,7 +317,7 @@ Future<void> testRustPackage(TestRustPackageConfig config) async {
   final outputCodecovPath =
       '${getCoverageDir('test_rust_package_${config.package.replaceAll("/", "_")}')}/codecov.json';
   await exec(
-      'cargo ${effectiveEnableCoverage ? "llvm-cov --codecov --output-path $outputCodecovPath" : "test"}',
+      'cargo ${effectiveEnableCoverage ? "llvm-cov --codecov --output-path $outputCodecovPath" : "test"} ${feature != null ? "--features $feature" : ""}',
       relativePwd: config.package,
       extraEnv: {
         'FRB_SKIP_GENERATE_FRB_EXAMPLE_TEST': '1',
@@ -447,8 +449,9 @@ Future<void> testDartWeb(TestDartConfig config) async {
       // extraEnv: kEnvEnableRustBacktrace,
     );
   } else {
+    final features = getRustFeaturesOfPackage(config.package);
     await exec(
-      'dart run flutter_rust_bridge_utils test-web --entrypoint ../$package/test/dart_web_test_entrypoint.dart',
+      'dart run flutter_rust_bridge_utils test-web --entrypoint ../$package/test/dart_web_test_entrypoint.dart ${features != null ? "--rust-features $features" : ""}',
       relativePwd: 'frb_utils',
       // extraEnv: kEnvEnableRustBacktrace,
     );
