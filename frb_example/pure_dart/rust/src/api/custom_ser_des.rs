@@ -1,8 +1,7 @@
 // FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sync", "rustAsync", "sse", "sync sse", "rustAsync sse"]}
 
-pub use std::net::Ipv4Addr;
-
 use flutter_rust_bridge::frb;
+pub use std::net::Ipv4Addr;
 
 #[frb(opaque)]
 pub struct MessageWithCustomSerializerTwinNormal(i32);
