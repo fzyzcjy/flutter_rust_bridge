@@ -1,28 +1,10 @@
 use flutter_rust_bridge::frb;
-pub use std::net::Ipv4Addr;
 
-#[frb(rust2dart(dart_type = "InternetAddress", dart_code = "InternetAddress({})"))]
-pub fn serializer_ipv4_addr(raw: Ipv4Addr) -> String {
-    return raw.to_string();
+#[frb(init)]
+pub fn init_app() {
+    flutter_rust_bridge::setup_default_user_utils();
 }
 
-#[frb(dart2rust(dart_type = "InternetAddress", dart_code = "{}.address"))]
-pub fn deserializer_ipv4_addr(raw: String) -> Ipv4Addr {
-    raw.parse().unwrap()
-}
-
-#[derive(Debug)]
-#[frb(non_opaque)]
-pub struct NonOpaqueStructContainingIpv4Addr {
-    pub inner: Ipv4Addr,
-}
-
-pub fn func_using_ipv4_addr(arg: Ipv4Addr) -> Ipv4Addr {
-    arg
-}
-
-pub fn func_using_non_opaque_struct_containing_ipv4_addr(
-    arg: NonOpaqueStructContainingIpv4Addr,
-) -> NonOpaqueStructContainingIpv4Addr {
-    arg
+pub fn minimal_adder(a: i32, b: i32) -> i32 {
+    a + b
 }
