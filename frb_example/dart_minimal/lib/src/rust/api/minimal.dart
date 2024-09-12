@@ -12,9 +12,18 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 String greet({required Device name}) =>
     RustLib.instance.api.crateApiMinimalGreet(name: name);
 
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Device>>
-abstract class Device implements RustOpaqueInterface {
-  Ipv4Addr get ip;
+class Device {
+  final Ipv4Addr ip;
 
-  set ip(Ipv4Addr ip);
+  const Device({
+    required this.ip,
+  });
+
+  @override
+  int get hashCode => ip.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is Device && runtimeType == other.runtimeType && ip == other.ip;
 }
