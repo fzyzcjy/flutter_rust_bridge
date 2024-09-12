@@ -6,7 +6,6 @@ use crate::library::commands::dart_build_runner::dart_build_runner;
 use crate::library::commands::dart_fix::dart_fix;
 use crate::library::commands::dart_format::dart_format;
 use crate::utils::dart_repository::dart_repo::{DartDependencyMode, DartRepository};
-use crate::utils::path_utils::path_to_string;
 use anyhow::Context;
 use cargo_metadata::VersionReq;
 use itertools::Itertools;
@@ -14,7 +13,6 @@ use lazy_static::lazy_static;
 use log::warn;
 use std::fs;
 use std::path::{Path, PathBuf};
-use std::str::FromStr;
 
 pub(crate) mod add_mod_to_lib;
 mod auto_upgrade;
@@ -68,7 +66,7 @@ fn ensure_dependency_freezed(
     }
 
     if needs_freezed {
-        let repo = DartRepository::from_str(&path_to_string(&config.dart_root)?)?;
+        let repo = DartRepository::from_path(&config.dart_root)?;
         repo.has_specified_and_installed("freezed", DartDependencyMode::Dev, &ANY_REQUIREMENT)?;
         repo.has_specified_and_installed(
             "freezed_annotation",
