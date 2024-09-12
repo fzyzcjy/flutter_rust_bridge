@@ -141,7 +141,6 @@ import 'dart:async';
 import 'dart:convert';
 import 'deliberate_name_conflict.dart';
 import 'frb_generated.dart';
-import 'lib.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_web.dart';
 import 'package:meta/meta.dart' as meta;
 import 'package:uuid/uuid.dart';
@@ -355,10 +354,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStructWithTryFromTwinNormal;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_NonCloneDataRawPtr => wire
-          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneDataRaw;
-
-  CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_NonCloneSimpleEnumTwinNormalPtr => wire
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinNormal;
 
@@ -433,9 +428,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_StaticGetterOnlyTwinSyncPtr => wire
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStaticGetterOnlyTwinSync;
-
-  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_StringPtr => wire
-      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerString;
 
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_StructInMiscNoTwinExampleAPtr => wire
@@ -531,11 +523,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
-  NonCloneDataRaw
-      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneDataRaw(
-          dynamic raw);
-
-  @protected
   NonCloneSimpleTwinNormal
       dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
           dynamic raw);
@@ -553,11 +540,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   OpaqueItemTwinNormal
       dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
-          dynamic raw);
-
-  @protected
-  String
-      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerString(
           dynamic raw);
 
   @protected
@@ -1687,11 +1669,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
-  NonCloneDataRaw
-      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneDataRaw(
-          dynamic raw);
-
-  @protected
   NonCloneSimpleEnumTwinNormal
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinNormal(
           dynamic raw);
@@ -1784,11 +1761,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   StaticGetterOnlyTwinSync
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStaticGetterOnlyTwinSync(
-          dynamic raw);
-
-  @protected
-  String
-      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerString(
           dynamic raw);
 
   @protected
@@ -2920,16 +2892,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   StructWithOneFieldTwinSync
       dco_decode_box_autoadd_struct_with_one_field_twin_sync(dynamic raw);
-
-  @protected
-  StructWithRustAutoOpaqueFieldWithManyDerive
-      dco_decode_box_autoadd_struct_with_rust_auto_opaque_field_with_many_derive(
-          dynamic raw);
-
-  @protected
-  StructWithRustAutoOpaqueWithNonCloneData
-      dco_decode_box_autoadd_struct_with_rust_auto_opaque_with_non_clone_data(
-          dynamic raw);
 
   @protected
   StructWithTwoFieldTwinNormal
@@ -4825,15 +4787,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
-  StructWithRustAutoOpaqueFieldWithManyDerive
-      dco_decode_struct_with_rust_auto_opaque_field_with_many_derive(
-          dynamic raw);
-
-  @protected
-  StructWithRustAutoOpaqueWithNonCloneData
-      dco_decode_struct_with_rust_auto_opaque_with_non_clone_data(dynamic raw);
-
-  @protected
   StructWithTwoFieldTwinNormal dco_decode_struct_with_two_field_twin_normal(
       dynamic raw);
 
@@ -5053,11 +5006,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
-  NonCloneDataRaw
-      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneDataRaw(
-          SseDeserializer deserializer);
-
-  @protected
   NonCloneSimpleTwinNormal
       sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
           SseDeserializer deserializer);
@@ -5075,11 +5023,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   OpaqueItemTwinNormal
       sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
-          SseDeserializer deserializer);
-
-  @protected
-  String
-      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerString(
           SseDeserializer deserializer);
 
   @protected
@@ -6185,11 +6128,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
-  NonCloneDataRaw
-      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneDataRaw(
-          SseDeserializer deserializer);
-
-  @protected
   NonCloneSimpleEnumTwinNormal
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinNormal(
           SseDeserializer deserializer);
@@ -6282,11 +6220,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   StaticGetterOnlyTwinSync
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStaticGetterOnlyTwinSync(
-          SseDeserializer deserializer);
-
-  @protected
-  String
-      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerString(
           SseDeserializer deserializer);
 
   @protected
@@ -7523,16 +7456,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   StructWithOneFieldTwinSync
       sse_decode_box_autoadd_struct_with_one_field_twin_sync(
-          SseDeserializer deserializer);
-
-  @protected
-  StructWithRustAutoOpaqueFieldWithManyDerive
-      sse_decode_box_autoadd_struct_with_rust_auto_opaque_field_with_many_derive(
-          SseDeserializer deserializer);
-
-  @protected
-  StructWithRustAutoOpaqueWithNonCloneData
-      sse_decode_box_autoadd_struct_with_rust_auto_opaque_with_non_clone_data(
           SseDeserializer deserializer);
 
   @protected
@@ -9701,16 +9624,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
-  StructWithRustAutoOpaqueFieldWithManyDerive
-      sse_decode_struct_with_rust_auto_opaque_field_with_many_derive(
-          SseDeserializer deserializer);
-
-  @protected
-  StructWithRustAutoOpaqueWithNonCloneData
-      sse_decode_struct_with_rust_auto_opaque_with_non_clone_data(
-          SseDeserializer deserializer);
-
-  @protected
   StructWithTwoFieldTwinNormal sse_decode_struct_with_two_field_twin_normal(
       SseDeserializer deserializer);
 
@@ -9960,11 +9873,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void
-      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneDataRaw(
-          NonCloneDataRaw self, SseSerializer serializer);
-
-  @protected
-  void
       sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
           NonCloneSimpleTwinNormal self, SseSerializer serializer);
 
@@ -9982,11 +9890,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
           OpaqueItemTwinNormal self, SseSerializer serializer);
-
-  @protected
-  void
-      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerString(
-          String self, SseSerializer serializer);
 
   @protected
   void
@@ -11157,11 +11060,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void
-      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneDataRaw(
-          NonCloneDataRaw self, SseSerializer serializer);
-
-  @protected
-  void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinNormal(
           NonCloneSimpleEnumTwinNormal self, SseSerializer serializer);
 
@@ -11254,11 +11152,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStaticGetterOnlyTwinSync(
           StaticGetterOnlyTwinSync self, SseSerializer serializer);
-
-  @protected
-  void
-      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerString(
-          String self, SseSerializer serializer);
 
   @protected
   void
@@ -12438,16 +12331,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_box_autoadd_struct_with_one_field_twin_sync(
       StructWithOneFieldTwinSync self, SseSerializer serializer);
-
-  @protected
-  void
-      sse_encode_box_autoadd_struct_with_rust_auto_opaque_field_with_many_derive(
-          StructWithRustAutoOpaqueFieldWithManyDerive self,
-          SseSerializer serializer);
-
-  @protected
-  void sse_encode_box_autoadd_struct_with_rust_auto_opaque_with_non_clone_data(
-      StructWithRustAutoOpaqueWithNonCloneData self, SseSerializer serializer);
 
   @protected
   void sse_encode_box_autoadd_struct_with_two_field_twin_normal(
@@ -14555,15 +14438,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       StructWithOneFieldTwinSync self, SseSerializer serializer);
 
   @protected
-  void sse_encode_struct_with_rust_auto_opaque_field_with_many_derive(
-      StructWithRustAutoOpaqueFieldWithManyDerive self,
-      SseSerializer serializer);
-
-  @protected
-  void sse_encode_struct_with_rust_auto_opaque_with_non_clone_data(
-      StructWithRustAutoOpaqueWithNonCloneData self, SseSerializer serializer);
-
-  @protected
   void sse_encode_struct_with_two_field_twin_normal(
       StructWithTwoFieldTwinNormal self, SseSerializer serializer);
 
@@ -15364,18 +15238,6 @@ class RustLibWire implements BaseWire {
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStructWithTryFromTwinNormal(
               ptr);
 
-  void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneDataRaw(
-          int ptr) =>
-      wasmModule
-          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneDataRaw(
-              ptr);
-
-  void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneDataRaw(
-          int ptr) =>
-      wasmModule
-          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneDataRaw(
-              ptr);
-
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinNormal(
           int ptr) =>
       wasmModule
@@ -15602,18 +15464,6 @@ class RustLibWire implements BaseWire {
           int ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStaticGetterOnlyTwinSync(
-              ptr);
-
-  void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerString(
-          int ptr) =>
-      wasmModule
-          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerString(
-              ptr);
-
-  void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerString(
-          int ptr) =>
-      wasmModule
-          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerString(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructInMiscNoTwinExampleA(
@@ -16176,14 +16026,6 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int ptr);
 
   external void
-      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneDataRaw(
-          int ptr);
-
-  external void
-      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneDataRaw(
-          int ptr);
-
-  external void
       rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinNormal(
           int ptr);
 
@@ -16333,14 +16175,6 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStaticGetterOnlyTwinSync(
-          int ptr);
-
-  external void
-      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerString(
-          int ptr);
-
-  external void
-      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerString(
           int ptr);
 
   external void
