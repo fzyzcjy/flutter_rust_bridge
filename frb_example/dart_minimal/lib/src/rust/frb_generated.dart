@@ -9,6 +9,7 @@ import 'dart:convert';
 import 'frb_generated.dart';
 import 'frb_generated.io.dart'
     if (dart.library.js_interop) 'frb_generated.web.dart';
+import 'lib.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 /// Main entrypoint of the Rust API
@@ -84,12 +85,12 @@ abstract class RustLibApi extends BaseApi {
   Future<void> crateApiMinimalInitApp();
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_MyIpv4Addr;
+      get rust_arc_increment_strong_count_Ipv4Addr;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_MyIpv4Addr;
+      get rust_arc_decrement_strong_count_Ipv4Addr;
 
-  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_MyIpv4AddrPtr;
+  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_Ipv4AddrPtr;
 }
 
 class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
@@ -147,27 +148,27 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_MyIpv4Addr => wire
-          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyIpv4Addr;
+      get rust_arc_increment_strong_count_Ipv4Addr => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIpv4Addr;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_MyIpv4Addr => wire
-          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyIpv4Addr;
+      get rust_arc_decrement_strong_count_Ipv4Addr => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIpv4Addr;
 
   @protected
-  MyIpv4Addr
-      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyIpv4Addr(
+  Ipv4Addr
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIpv4Addr(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return MyIpv4AddrImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return Ipv4AddrImpl.frbInternalDcoDecode(raw as List<dynamic>);
   }
 
   @protected
-  MyIpv4Addr
-      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyIpv4Addr(
+  Ipv4Addr
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIpv4Addr(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return MyIpv4AddrImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return Ipv4AddrImpl.frbInternalDcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -189,7 +190,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return Device(
-      ip: dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyIpv4Addr(
+      ip: dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIpv4Addr(
           arr[0]),
     );
   }
@@ -219,20 +220,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  MyIpv4Addr
-      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyIpv4Addr(
+  Ipv4Addr
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIpv4Addr(
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    return MyIpv4AddrImpl.frbInternalSseDecode(
+    return Ipv4AddrImpl.frbInternalSseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  MyIpv4Addr
-      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyIpv4Addr(
+  Ipv4Addr
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIpv4Addr(
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    return MyIpv4AddrImpl.frbInternalSseDecode(
+    return Ipv4AddrImpl.frbInternalSseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -253,7 +254,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Device sse_decode_device(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var var_ip =
-        sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyIpv4Addr(
+        sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIpv4Addr(
             deserializer);
     return Device(ip: var_ip);
   }
@@ -296,20 +297,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyIpv4Addr(
-          MyIpv4Addr self, SseSerializer serializer) {
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIpv4Addr(
+          Ipv4Addr self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as MyIpv4AddrImpl).frbInternalSseEncode(move: true), serializer);
+        (self as Ipv4AddrImpl).frbInternalSseEncode(move: true), serializer);
   }
 
   @protected
   void
-      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyIpv4Addr(
-          MyIpv4Addr self, SseSerializer serializer) {
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIpv4Addr(
+          Ipv4Addr self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as MyIpv4AddrImpl).frbInternalSseEncode(move: null), serializer);
+        (self as Ipv4AddrImpl).frbInternalSseEncode(move: null), serializer);
   }
 
   @protected
@@ -327,7 +328,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   void sse_encode_device(Device self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyIpv4Addr(
+    sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIpv4Addr(
         self.ip, serializer);
   }
 
@@ -370,21 +371,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 }
 
 @sealed
-class MyIpv4AddrImpl extends RustOpaque implements MyIpv4Addr {
+class Ipv4AddrImpl extends RustOpaque implements Ipv4Addr {
   // Not to be used by end users
-  MyIpv4AddrImpl.frbInternalDcoDecode(List<dynamic> wire)
+  Ipv4AddrImpl.frbInternalDcoDecode(List<dynamic> wire)
       : super.frbInternalDcoDecode(wire, _kStaticData);
 
   // Not to be used by end users
-  MyIpv4AddrImpl.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
+  Ipv4AddrImpl.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
       : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount:
-        RustLib.instance.api.rust_arc_increment_strong_count_MyIpv4Addr,
+        RustLib.instance.api.rust_arc_increment_strong_count_Ipv4Addr,
     rustArcDecrementStrongCount:
-        RustLib.instance.api.rust_arc_decrement_strong_count_MyIpv4Addr,
+        RustLib.instance.api.rust_arc_decrement_strong_count_Ipv4Addr,
     rustArcDecrementStrongCountPtr:
-        RustLib.instance.api.rust_arc_decrement_strong_count_MyIpv4AddrPtr,
+        RustLib.instance.api.rust_arc_decrement_strong_count_Ipv4AddrPtr,
   );
 }
