@@ -8,10 +8,23 @@ PlatformPointer encodeDartOpaque(Object raw, NativePortType dartHandlerPort,
     encodeDartOpaqueCommon(
         _prepareDartOpaque(raw), dartHandlerPort, generalizedFrbRustBinding);
 
+/// {@macro flutter_rust_bridge.only_for_generated_code}
+Object decodeDartOpaque(
+        dynamic raw, GeneralizedFrbRustBinding generalizedFrbRustBinding) =>
+    _unprepareDartOpaque(
+        decodeDartOpaqueCommon(raw, generalizedFrbRustBinding));
+
 Object _prepareDartOpaque(Object raw) {
   // #2183
   if (raw is Function) {
     return AllowInteropFunctionWrapper(raw);
+  }
+  return raw;
+}
+
+Object _unprepareDartOpaque(Object raw) {
+  if (raw is AllowInteropFunctionWrapper) {
+    return raw.inner;
   }
   return raw;
 }

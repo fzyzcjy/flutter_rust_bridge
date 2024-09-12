@@ -6,3 +6,8 @@ import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
 PlatformPointer encodeDartOpaque(Object raw, NativePortType dartHandlerPort,
         GeneralizedFrbRustBinding generalizedFrbRustBinding) =>
     encodeDartOpaqueCommon(raw, dartHandlerPort, generalizedFrbRustBinding);
+
+/// {@macro flutter_rust_bridge.only_for_generated_code}
+Object decodeDartOpaque(
+        dynamic raw, GeneralizedFrbRustBinding generalizedFrbRustBinding) =>
+    decodeDartOpaqueCommon(raw, generalizedFrbRustBinding);
