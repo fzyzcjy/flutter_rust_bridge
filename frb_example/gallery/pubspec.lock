@@ -257,7 +257,7 @@ packages:
       path: "../../frb_dart"
       relative: true
     source: path
-    version: "2.3.0"
+    version: "2.4.0"
   flutter_test:
     dependency: "direct dev"
     description: flutter
