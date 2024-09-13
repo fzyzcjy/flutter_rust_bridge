@@ -1,5 +1,18 @@
 # Changelog
 
+## 2.4.0
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Adds dart fix when generating files #2182 (thanks @AlexV525)
+* Fix segfault when passing DartOpaque through ffi boundaries #2259 (thanks @alexlapa)
+* Use @generated in files to follow rustfmt #2263 (thanks @atezet)
+* Fix dart fix command line arg #2288
+* Allow pubspec.lock be missing #2289
+* Support Clone+Debug+Default for RustAutoOpaque #2293
+* Allow RustAutoOpaque inner value to be non-Clone #2293
+* Fix struct field does not handle custom serializers #2294
+* Remove importing dart:js_util and generalize SSE codec type handling #2295
+
 ## 2.3.0
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
