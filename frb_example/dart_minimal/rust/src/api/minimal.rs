@@ -1,14 +1,31 @@
 use flutter_rust_bridge::frb;
+use log::{Level, Log, Metadata, Record, RecordBuilder};
+
+use crate::api::log_2_dart::LOG2DART;
 
 // use log::{logger, LevelFilter, Record};
 
 #[frb(init)]
 pub fn init_app() {
     // flutter_rust_bridge::setup_default_user_utils();
-    log::info!("From Rust: Initialized app");
 }
 
 pub fn minimal_adder(a: i32, b: i32) -> i32 {
+    //triggers logger instantiation
+    LOG2DART.enabled(
+        &Metadata::builder()
+            .level(Level::Info)
+            .target("enabled")
+            .build(),
+    ); //triggers logger instantiation
+    log::info!("From Rust: Initialized app");
+    LOG2DART.log(
+        &Record::builder()
+            .level(log::Level::Info)
+            .target("what?")
+            .build(),
+    );
+    log::info!("RUST: minimal adder was called");
     log::info!(
         "From Rust: Minimal adder called with params {:?} and {:?}",
         a,
