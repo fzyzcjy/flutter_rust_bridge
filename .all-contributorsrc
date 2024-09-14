@@ -388,6 +388,15 @@
       ]
     },
     {
+      "login": "patmuk",
+      "name": "Patrick Mukherjee",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2045440?v=4",
+      "profile": "https://patrick.mukherjee.de",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
       "login": "Markus43",
       "name": "Markus",
       "avatar_url": "https://avatars.githubusercontent.com/u/23716360?v=4",
@@ -518,15 +527,6 @@
       "name": "Michael Bryan",
       "avatar_url": "https://avatars.githubusercontent.com/u/17380079?v=4",
       "profile": "https://adventures.michaelfbryan.com/",
-      "contributions": [
-        "code"
-      ]
-    },
-    {
-      "login": "patmuk",
-      "name": "Patrick Mukherjee",
-      "avatar_url": "https://avatars.githubusercontent.com/u/2045440?v=4",
-      "profile": "https://patrick.mukherjee.de",
       "contributions": [
         "code"
       ]
