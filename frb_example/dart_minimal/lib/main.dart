@@ -8,6 +8,7 @@ import 'package:logging/logging.dart';
 final LOGGER = Logger('frb_logger');
 Future<void> main() async {
   await RustLib.init();
+
   init_logger();
   // final log = Logger('frb_logger');
   // print(
