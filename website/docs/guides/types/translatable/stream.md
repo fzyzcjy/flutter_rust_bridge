@@ -15,7 +15,7 @@ some partial results on the user interface.
 ## How to use Streams?
 
 Create a Rust function that asks for a `frb_generated::StreamSink` as a parameter, like `fn f(sink: StreamSink<T>, ..) -> Result<()>`. This is translated to a
-Dart function `Stream<T> f(..)`. When `f()` id called on the Dart side it returns a Dart `Stream<T>` that is connected to the `sink` on the Rust side.
+Dart function `Stream<T> f(..)`. When `f()` is called on the Dart side it returns a Dart `Stream<T>` that is connected to the `sink` on the Rust side.
 
 Notice that, you can hold that `StreamSink` forever, and use it freely even *after the Rust function itself returns*.
 The logger example below also demonstrates this (the `create_log_stream` returns almost immediately, while you can use
