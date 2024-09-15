@@ -36,8 +36,6 @@ pub fn init_log2dart(log_stream: StreamSink<String>) {
             .map(|()| log::set_max_level(LevelFilter::Info))
             .expect("error setting the log2dart logger");
         IS_READY.store(true, std::sync::atomic::Ordering::Relaxed);
-
-        log::info!("From Rust: Initialized logger");
     }
 }
 // impl<T: Send + Sync> log::Log for Log2Dart {
@@ -47,16 +45,11 @@ impl log::Log for Log2Dart {
     }
 
     fn log(&self, record: &Record) {
-        let is_ready = IS_READY.load(std::sync::atomic::Ordering::Relaxed);
         if self.enabled(record.metadata()) && IS_READY.load(std::sync::atomic::Ordering::Relaxed) {
             STREAM_SINK
                 .get()
                 .expect("steam has been set")
-                .add(format!(
-                    "in log2dart: {} - {}",
-                    record.level(),
-                    record.args()
-                ))
+                .add(format!("{} - {}", record.level(), record.args()))
                 .expect("could not add to stream while sending to dart ");
         }
     }

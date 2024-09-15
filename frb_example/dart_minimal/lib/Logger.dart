@@ -10,14 +10,20 @@ void init_logger() {
     log(record);
   });
 
-  // logs frim Dart
+  // logs from Dart
+  //TODO use this as the default, but let the user overwrite it with his own logging function
   Logger.root.onRecord.listen((record) {
     log(record.message);
+  });
+
+  Logger.root.onLevelChanged.listen((level) {
+    // TODO propergate the level change to rust
+    print('The new log level is $level');
   });
 }
 
 void log(String msg) {
   print(
-      // 'log in Dart: ${record.level.name}: ${record.time}: ${record.message}');
-      'log in Dart: ${msg}');
+      //TODO log the record, not only msg
+      '${msg}');
 }

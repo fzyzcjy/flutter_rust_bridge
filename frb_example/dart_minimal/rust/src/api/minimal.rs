@@ -11,13 +11,6 @@ pub fn init_app() {
 }
 
 pub fn minimal_adder(a: i32, b: i32) -> i32 {
-    //triggers logger instantiation
-    LOG2DART.enabled(
-        &Metadata::builder()
-            .level(Level::Info)
-            .target("enabled")
-            .build(),
-    );
     log::info!(
         "From Rust: Minimal adder called with params {:?} and {:?}",
         a,
