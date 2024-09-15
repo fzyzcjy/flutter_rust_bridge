@@ -1,8 +1,6 @@
 use flutter_rust_bridge::frb;
 use log::{Level, Log, Metadata, Record, RecordBuilder};
 
-use crate::api::log_2_dart::LOG2DART;
-
 // use log::{logger, LevelFilter, Record};
 
 #[frb(init)]

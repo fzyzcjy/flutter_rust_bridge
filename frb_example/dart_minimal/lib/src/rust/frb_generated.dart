@@ -69,7 +69,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.4.0';
 
   @override
-  int get rustContentHash => 1267687273;
+  int get rustContentHash => 598049108;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -80,7 +80,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 }
 
 abstract class RustLibApi extends BaseApi {
-  Stream<String> crateApiLog2DartInitLog2Dart();
+  Stream<String> crateApiLog2DartInitializeLog2Dart();
 
   Future<void> crateApiMinimalInitApp();
 
@@ -96,7 +96,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   });
 
   @override
-  Stream<String> crateApiLog2DartInitLog2Dart() {
+  Stream<String> crateApiLog2DartInitializeLog2Dart() {
     final logStream = RustStreamSink<String>();
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -109,16 +109,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiLog2DartInitLog2DartConstMeta,
+      constMeta: kCrateApiLog2DartInitializeLog2DartConstMeta,
       argValues: [logStream],
       apiImpl: this,
     )));
     return logStream.stream;
   }
 
-  TaskConstMeta get kCrateApiLog2DartInitLog2DartConstMeta =>
+  TaskConstMeta get kCrateApiLog2DartInitializeLog2DartConstMeta =>
       const TaskConstMeta(
-        debugName: "init_log2dart",
+        debugName: "initialize_log2dart",
         argNames: ["logStream"],
       );
 

@@ -4,7 +4,7 @@ import 'package:logging/logging.dart';
 //TODO add to Runtime
 void init_logger() {
   Logger.root.level = Level.ALL;
-  var stream = initLog2Dart();
+  var stream = initializeLog2Dart();
   // logs from Rust
   stream.listen((record) {
     log(record);
