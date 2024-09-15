@@ -6,7 +6,6 @@ use log::{LevelFilter, Metadata, Record};
 pub struct Log2Dart {
     // TODO change String into Record
     stream_sink: StreamSink<String>,
-    log_level: LevelFilter,
 }
 
 //TODO avoid this and rather Box log_fn into a Send enabled box
@@ -23,18 +22,18 @@ pub struct Log2Dart {
 // }
 
 // TODO take a log level
+// use custom type translation to translate between log::LogLevel and Dart:logging::Level
 pub fn initialize_log2dart(log_stream: StreamSink<String>) {
     log::set_boxed_logger(Box::new(Log2Dart {
         stream_sink: log_stream,
-        log_level: LevelFilter::Info,
     }))
-    .map(|()| log::set_max_level(LevelFilter::Info))
+    .map(|()| log::set_max_level(LevelFilter::Info)) //initial log level. TODO make this configurable from Dart
     .expect("initialize_log2dart is called only once!")
 }
 // impl<T: Send + Sync> log::Log for Log2Dart {
 impl log::Log for Log2Dart {
     fn enabled(&self, metadata: &Metadata) -> bool {
-        metadata.level() <= self.log_level
+        metadata.level() <= log::max_level()
     }
 
     fn log(&self, record: &Record) {
@@ -49,3 +48,11 @@ impl log::Log for Log2Dart {
         //no need to flush the StreamSink
     }
 }
+
+// TODO enable after implementing custom translater
+// pub fn change_log_level(level: LevelFilter) {
+//     log::set_max_level(level);
+// }
+
+// TODO change the log level from dart during running
+// see https://docs.rs/log/latest/log/fn.set_max_level.html
