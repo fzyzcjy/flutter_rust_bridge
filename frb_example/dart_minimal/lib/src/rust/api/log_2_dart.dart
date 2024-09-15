@@ -9,5 +9,6 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 // These types are ignored because they are not used by any `pub` functions: `Log2Dart`
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `enabled`, `flush`, `log`
 
-Stream<String> initializeLog2Dart() =>
-    RustLib.instance.api.crateApiLog2DartInitializeLog2Dart();
+Stream<String> initializeLog2Dart({required Level maxLogLevel}) =>
+    RustLib.instance.api
+        .crateApiLog2DartInitializeLog2Dart(maxLogLevel: maxLogLevel);
