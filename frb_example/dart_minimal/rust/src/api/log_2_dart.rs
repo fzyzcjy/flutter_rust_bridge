@@ -30,6 +30,11 @@ pub fn initialize_log2dart(log_stream: StreamSink<String>, max_log_level: LevelF
     .map(|()| log::set_max_level(max_log_level))
     .expect("initialize_log2dart is called only once!")
 }
+
+pub fn change_log_level(new_log_level: LevelFilter) {
+    log::set_max_level(new_log_level);
+}
+
 // impl<T: Send + Sync> log::Log for Log2Dart {
 impl log::Log for Log2Dart {
     fn enabled(&self, metadata: &Metadata) -> bool {

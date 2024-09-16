@@ -9,22 +9,6 @@ pub fn init_app() {
 }
 
 pub fn minimal_adder(a: i32, b: i32) -> i32 {
-    log::error!("/////// testing log levels ///////");
-    log::error!("inital level : {}", log::max_level());
-    log::trace!("-- trace test --");
-    log::debug!("-- debug test --");
-    log::info!("-- info test --");
-    log::warn!("-- warn test --");
-    log::error!("-- error test --");
-    // log::set_max_level(log::LevelFilter::Trace);
-    log::set_max_level(log::LevelFilter::Warn);
-    log::error!(" ///// changed level to warn : {}", log::max_level());
-    log::trace!("-- trace test --");
-    log::debug!("-- debug test --");
-    log::info!("-- info test --");
-    log::warn!("-- warn test --");
-    log::error!("-- error test --");
-
     log::info!(
         "From Rust: Minimal adder called with params {:?} and {:?}",
         a,

@@ -4,7 +4,7 @@ import 'package:logging/logging.dart';
 //TODO add to Runtime
 void init_logger() {
   Logger.root.level = Level.ALL;
-  var stream = initializeLog2Dart(maxLogLevel: Level.SHOUT);
+  var stream = initializeLog2Dart(maxLogLevel: Level.INFO);
   // logs from Rust
   stream.listen((record) {
     log(record);
@@ -16,9 +16,8 @@ void init_logger() {
     log(record.message);
   });
 
-  Logger.root.onLevelChanged.listen((level) {
-    // TODO propergate the level change to rust
-    print('The new log level is $level');
+  Logger.root.onLevelChanged.listen((newLoglevel) {
+    changeLogLevel(newLogLevel: newLoglevel!);
   });
 }
 

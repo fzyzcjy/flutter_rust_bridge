@@ -7,10 +7,9 @@ import 'package:logging/logging.dart';
 
 final LOGGER = Logger('frb_logger');
 Future<void> main() async {
-  print('\n\n Starting Dart\n');
   await RustLib.init();
   init_logger();
-  LOGGER.info('\n\n Starting Dart - after logger init\n');
+
   LOGGER.info(
       'from Dart: Call Rust and get: 100+200 = ${await minimalAdder(a: 100, b: 200)}');
 }

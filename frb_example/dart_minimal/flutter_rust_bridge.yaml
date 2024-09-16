@@ -5,6 +5,12 @@ c_output: frb_generated.h
 dump_all: true
 local: true
 
+rust_preamble: |
+  use log::LevelFilter;
+dart_preamble: |
+  import 'package:logging/logging.dart';
+  import 'package:frb_example_dart_minimal/Logger.dart';
+
 # TODO temp
 #full_dep: true
 #enable_lifetime: true
