@@ -3,18 +3,22 @@ import 'package:logging/logging.dart';
 
 //TODO add to frb-Runtime
 
+Function(LogRecord) _logFunction = default_log;
+
 void init_logger(
-    {Level maxLoglevel = Level.INFO, Function(LogRecord) log = default_log}) {
+    {Level maxLoglevel = Level.INFO,
+    Function(LogRecord) custom_log_function = default_log}) {
+  _logFunction = custom_log_function;
   Logger.root.level = maxLoglevel;
   var stream = initializeLog2Dart(maxLogLevel: maxLoglevel);
   // logs from Rust
   stream.listen((record) {
-    log(record.toLogRecord());
+    _logFunction(record.toLogRecord());
   });
 
   // logs from Dart
   Logger.root.onRecord.listen((record) {
-    log(record);
+    _logFunction(record);
   });
 
   Logger.root.onLevelChanged.listen((newLoglevel) {
@@ -54,5 +58,11 @@ extension ToLogRecord on Log2DartLogRecord {
       this.message,
       this.loggerName,
     );
+  }
+}
+
+extension SetLogMethod on Logger {
+  void setLogFunction(Function(LogRecord) custom_log_function) {
+    _logFunction = custom_log_function;
   }
 }
