@@ -1,19 +1,18 @@
 import 'package:frb_example_dart_minimal/src/rust/api/log_2_dart.dart';
 import 'package:logging/logging.dart';
 
-//TODO add to Runtime
+//TODO add to frb-Runtime
 void init_logger() {
   Logger.root.level = Level.ALL;
   var stream = initializeLog2Dart(maxLogLevel: Level.INFO);
   // logs from Rust
   stream.listen((record) {
-    log(record);
+    log(record.toLogRecord());
   });
 
   // logs from Dart
-  //TODO use this as the default, but let the user overwrite it with his own logging function
   Logger.root.onRecord.listen((record) {
-    log(record.message);
+    log(record);
   });
 
   Logger.root.onLevelChanged.listen((newLoglevel) {
@@ -21,13 +20,16 @@ void init_logger() {
   });
 }
 
-void log(String msg) {
-  print(
-      //TODO log the record, not only msg
-      '${msg}');
+//TODO use this as the default, but let the user overwrite it with his own logging function
+void log(LogRecord record) {
+  default_log(record);
 }
 
-// convert from log crate LevelFilter to Dart package logging->Level
+void default_log(LogRecord record) {
+  print('${record.level}:${record.loggerName}: ${record.message}');
+}
+
+// convert from log crate's LevelFilter to Dart package logging->Level
 Level fromLevelFilter(int level) {
   switch (level) {
     case <= 500:
@@ -44,5 +46,16 @@ Level fromLevelFilter(int level) {
       return Level.OFF;
     default:
       return Level.ALL;
+  }
+}
+
+// convert from log crate's Record to Dart package logging->LogRecord
+extension ToLogRecord on Log2DartLogRecord {
+  LogRecord toLogRecord() {
+    return LogRecord(
+      this.level,
+      this.message,
+      this.loggerName,
+    );
   }
 }

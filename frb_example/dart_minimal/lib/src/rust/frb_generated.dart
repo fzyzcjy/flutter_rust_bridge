@@ -85,7 +85,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 abstract class RustLibApi extends BaseApi {
   Future<void> crateApiLog2DartChangeLogLevel({required Level newLogLevel});
 
-  Stream<String> crateApiLog2DartInitializeLog2Dart(
+  Stream<Log2DartLogRecord> crateApiLog2DartInitializeLog2Dart(
       {required Level maxLogLevel});
 
   Future<void> crateApiMinimalInitApp();
@@ -128,13 +128,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Stream<String> crateApiLog2DartInitializeLog2Dart(
+  Stream<Log2DartLogRecord> crateApiLog2DartInitializeLog2Dart(
       {required Level maxLogLevel}) {
-    final logStream = RustStreamSink<String>();
+    final logStream = RustStreamSink<Log2DartLogRecord>();
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_StreamSink_String_Sse(logStream, serializer);
+        sse_encode_StreamSink_log_2_dart_log_record_Sse(logStream, serializer);
         sse_encode_CustomSerializer_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLevelFilter(
             maxLogLevel, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
@@ -222,7 +222,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  RustStreamSink<String> dco_decode_StreamSink_String_Sse(dynamic raw) {
+  RustStreamSink<Log2DartLogRecord>
+      dco_decode_StreamSink_log_2_dart_log_record_Sse(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     throw UnimplementedError();
   }
@@ -243,6 +244,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Uint8List dco_decode_list_prim_u_8_strict(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return raw as Uint8List;
+  }
+
+  @protected
+  Log2DartLogRecord dco_decode_log_2_dart_log_record(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    final arr = raw as List<dynamic>;
+    if (arr.length != 3)
+      throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
+    return Log2DartLogRecord(
+      level:
+          dco_decode_CustomSerializer_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLevelFilter(
+              arr[0]),
+      message: dco_decode_String(arr[1]),
+      loggerName: dco_decode_String(arr[2]),
+    );
   }
 
   @protected
@@ -280,8 +296,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  RustStreamSink<String> sse_decode_StreamSink_String_Sse(
-      SseDeserializer deserializer) {
+  RustStreamSink<Log2DartLogRecord>
+      sse_decode_StreamSink_log_2_dart_log_record_Sse(
+          SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     throw UnimplementedError('Unreachable ()');
   }
@@ -304,6 +321,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var len_ = sse_decode_i_32(deserializer);
     return deserializer.buffer.getUint8List(len_);
+  }
+
+  @protected
+  Log2DartLogRecord sse_decode_log_2_dart_log_record(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var var_level =
+        sse_decode_CustomSerializer_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLevelFilter(
+            deserializer);
+    var var_message = sse_decode_String(deserializer);
+    var var_loggerName = sse_decode_String(deserializer);
+    return Log2DartLogRecord(
+        level: var_level, message: var_message, loggerName: var_loggerName);
   }
 
   @protected
@@ -345,13 +375,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_StreamSink_String_Sse(
-      RustStreamSink<String> self, SseSerializer serializer) {
+  void sse_encode_StreamSink_log_2_dart_log_record_Sse(
+      RustStreamSink<Log2DartLogRecord> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_String(
         self.setupAndSerialize(
             codec: SseCodec(
-          decodeSuccessData: sse_decode_String,
+          decodeSuccessData: sse_decode_log_2_dart_log_record,
           decodeErrorData: sse_decode_AnyhowException,
         )),
         serializer);
@@ -375,6 +405,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_i_32(self.length, serializer);
     serializer.buffer.putUint8List(self);
+  }
+
+  @protected
+  void sse_encode_log_2_dart_log_record(
+      Log2DartLogRecord self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_CustomSerializer_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLevelFilter(
+        self.level, serializer);
+    sse_encode_String(self.message, serializer);
+    sse_encode_String(self.loggerName, serializer);
   }
 
   @protected

@@ -10,12 +10,36 @@ import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 // These types are ignored because they are not used by any `pub` functions: `Log2Dart`
-// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `enabled`, `flush`, `log`
+// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `enabled`, `flush`, `from`, `log`
 
-Stream<String> initializeLog2Dart({required Level maxLogLevel}) =>
+Stream<Log2DartLogRecord> initializeLog2Dart({required Level maxLogLevel}) =>
     RustLib.instance.api
         .crateApiLog2DartInitializeLog2Dart(maxLogLevel: maxLogLevel);
 
 Future<void> changeLogLevel({required Level newLogLevel}) =>
     RustLib.instance.api
         .crateApiLog2DartChangeLogLevel(newLogLevel: newLogLevel);
+
+class Log2DartLogRecord {
+  final Level level;
+  final String message;
+  final String loggerName;
+
+  const Log2DartLogRecord({
+    required this.level,
+    required this.message,
+    required this.loggerName,
+  });
+
+  @override
+  int get hashCode => level.hashCode ^ message.hashCode ^ loggerName.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is Log2DartLogRecord &&
+          runtimeType == other.runtimeType &&
+          level == other.level &&
+          message == other.message &&
+          loggerName == other.loggerName;
+}

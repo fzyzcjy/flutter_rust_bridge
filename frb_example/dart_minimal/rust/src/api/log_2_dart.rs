@@ -4,26 +4,11 @@ use log::{LevelFilter, Metadata, Record};
 
 #[frb(non_opaque)]
 pub struct Log2Dart {
-    // TODO change String into Record
-    stream_sink: StreamSink<String>,
+    stream_sink: StreamSink<Log2DartLogRecord>,
 }
 
-//TODO avoid this and rather Box log_fn into a Send enabled box
-// unsafe impl Sync for Log2Dart<'_> {}
-// unsafe impl Send for Log2Dart<'_> {}
-
-// TODO implement Debug for StreamSink in frb_generated
-// impl std::fmt::Debug for StreamSink<std::string::String> {
-//     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-//         f.debug_struct("StreamSink")
-//             // .field("base", &self.base)
-//             .finish()
-//     }
-// }
-
-// TODO take a log level
-// use custom type translation to translate between log::LogLevel and Dart:logging::Level
-pub fn initialize_log2dart(log_stream: StreamSink<String>, max_log_level: LevelFilter) {
+// usees custom type translation to translate between log::LogLevel and Dart:logging::Level
+pub fn initialize_log2dart(log_stream: StreamSink<Log2DartLogRecord>, max_log_level: LevelFilter) {
     log::set_boxed_logger(Box::new(Log2Dart {
         stream_sink: log_stream,
     }))
@@ -35,7 +20,6 @@ pub fn change_log_level(new_log_level: LevelFilter) {
     log::set_max_level(new_log_level);
 }
 
-// impl<T: Send + Sync> log::Log for Log2Dart {
 impl log::Log for Log2Dart {
     fn enabled(&self, metadata: &Metadata) -> bool {
         metadata.level() <= log::max_level()
@@ -44,7 +28,7 @@ impl log::Log for Log2Dart {
     fn log(&self, record: &Record) {
         if self.enabled(record.metadata()) {
             self.stream_sink
-                .add(format!("{} - {}", record.level(), record.args()))
+                .add(record.into())
                 .expect("could not add to stream while sending to dart ");
         }
     }
@@ -54,14 +38,9 @@ impl log::Log for Log2Dart {
     }
 }
 
-// TODO enable after implementing custom translater
-// pub fn change_log_level(level: LevelFilter) {
-//     log::set_max_level(level);
-// }
-
 /// custom coders for log::LogLevel <-> Dart:logging::Level
 #[frb(rust2dart(dart_type = "Level", dart_code = "fromLevelFilter({})"))]
-pub fn encode_fancy_type(level: LevelFilter) -> u16 {
+pub fn encode_log_level_filter(level: LevelFilter) -> u16 {
     match level {
         LevelFilter::Trace => 0,    //Level('ALL', 0),
         LevelFilter::Debug => 700,  // Level('CONFIG', 700);
@@ -73,7 +52,7 @@ pub fn encode_fancy_type(level: LevelFilter) -> u16 {
 }
 
 #[frb(dart2rust(dart_type = "Level", dart_code = "{}.value"))]
-pub fn decode_fancy_type(level: u16) -> LevelFilter {
+pub fn decode_log_level_filter(level: u16) -> LevelFilter {
     match level {
         // Level('ALL', 0);
         // Level('OFF', 2000);
@@ -92,5 +71,41 @@ pub fn decode_fancy_type(level: u16) -> LevelFilter {
         901..2000 => LevelFilter::Error,
         // Level('OFF', 2000);
         2000.. => LevelFilter::Off,
+    }
+}
+
+// mapping log crate's [Record](https://docs.rs/log/latest/log/struct.Record.html) to dart's Logger LogRecord
+// intermediary struct to avoid Record's lifetimes
+pub struct Log2DartLogRecord {
+    pub level: LevelFilter, // log::Recod::Level, Dart::Logger::LogRecord::Level
+    pub message: String, // log::Recod::args + line_number + file_name + module_path , Dart::Logger::LogRecord::message + object + error + stackTrace
+    pub logger_name: String, // log::Recod::target, Dart::Logger::LogRecord::loggerName
+                         // pub time: String, // log::Recod::?, Dart::Logger::LogRecord::time --> omitted, as there is no time record in the log crate's Record.
+}
+
+impl From<&Record<'_>> for Log2DartLogRecord {
+    fn from(record: &Record) -> Self {
+        let mut message = String::new();
+
+        if let Some(module_path) = record.module_path().or_else(|| record.module_path_static()) {
+            message.push_str("in module ");
+            message.push_str(module_path);
+            message.push(' ');
+        }
+        if let Some(file_name) = record.file().or_else(|| record.file_static()) {
+            message.push_str("in file ");
+            message.push_str(file_name);
+            message.push(' ');
+        }
+        if let Some(line_number) = record.line() {
+            message += &format!("in line {} ", line_number);
+        }
+        message += &record.args().to_string();
+
+        Self {
+            level: record.level().to_level_filter(),
+            message,
+            logger_name: record.target().into(),
+        }
     }
 }

@@ -31,7 +31,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
-  RustStreamSink<String> dco_decode_StreamSink_String_Sse(dynamic raw);
+  RustStreamSink<Log2DartLogRecord>
+      dco_decode_StreamSink_log_2_dart_log_record_Sse(dynamic raw);
 
   @protected
   String dco_decode_String(dynamic raw);
@@ -41,6 +42,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   Uint8List dco_decode_list_prim_u_8_strict(dynamic raw);
+
+  @protected
+  Log2DartLogRecord dco_decode_log_2_dart_log_record(dynamic raw);
 
   @protected
   int dco_decode_u_16(dynamic raw);
@@ -60,8 +64,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
-  RustStreamSink<String> sse_decode_StreamSink_String_Sse(
-      SseDeserializer deserializer);
+  RustStreamSink<Log2DartLogRecord>
+      sse_decode_StreamSink_log_2_dart_log_record_Sse(
+          SseDeserializer deserializer);
 
   @protected
   String sse_decode_String(SseDeserializer deserializer);
@@ -71,6 +76,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   Uint8List sse_decode_list_prim_u_8_strict(SseDeserializer deserializer);
+
+  @protected
+  Log2DartLogRecord sse_decode_log_2_dart_log_record(
+      SseDeserializer deserializer);
 
   @protected
   int sse_decode_u_16(SseDeserializer deserializer);
@@ -94,8 +103,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           Level self, SseSerializer serializer);
 
   @protected
-  void sse_encode_StreamSink_String_Sse(
-      RustStreamSink<String> self, SseSerializer serializer);
+  void sse_encode_StreamSink_log_2_dart_log_record_Sse(
+      RustStreamSink<Log2DartLogRecord> self, SseSerializer serializer);
 
   @protected
   void sse_encode_String(String self, SseSerializer serializer);
@@ -106,6 +115,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_list_prim_u_8_strict(
       Uint8List self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_log_2_dart_log_record(
+      Log2DartLogRecord self, SseSerializer serializer);
 
   @protected
   void sse_encode_u_16(int self, SseSerializer serializer);

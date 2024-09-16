@@ -1,5 +1,4 @@
 use flutter_rust_bridge::frb;
-use log::{Level, Log, Metadata, Record, RecordBuilder};
 
 // use log::{logger, LevelFilter, Record};
 

@@ -105,10 +105,10 @@ fn wire__crate__api__log_2_dart__initialize_log2dart_impl(
             };
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_log_stream =
-                <StreamSink<String, flutter_rust_bridge::for_generated::SseCodec>>::sse_decode(
-                    &mut deserializer,
-                );
+            let api_log_stream = <StreamSink<
+                crate::api::log_2_dart::Log2DartLogRecord,
+                flutter_rust_bridge::for_generated::SseCodec,
+            >>::sse_decode(&mut deserializer);
             let api_max_log_level = <LevelFilter>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| {
@@ -209,11 +209,16 @@ impl SseDecode for LevelFilter {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut inner = <u16>::sse_decode(deserializer);
-        return crate::api::log_2_dart::decode_fancy_type(inner);
+        return crate::api::log_2_dart::decode_log_level_filter(inner);
     }
 }
 
-impl SseDecode for StreamSink<String, flutter_rust_bridge::for_generated::SseCodec> {
+impl SseDecode
+    for StreamSink<
+        crate::api::log_2_dart::Log2DartLogRecord,
+        flutter_rust_bridge::for_generated::SseCodec,
+    >
+{
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut inner = <String>::sse_decode(deserializer);
@@ -245,6 +250,20 @@ impl SseDecode for Vec<u8> {
             ans_.push(<u8>::sse_decode(deserializer));
         }
         return ans_;
+    }
+}
+
+impl SseDecode for crate::api::log_2_dart::Log2DartLogRecord {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_level = <LevelFilter>::sse_decode(deserializer);
+        let mut var_message = <String>::sse_decode(deserializer);
+        let mut var_loggerName = <String>::sse_decode(deserializer);
+        return crate::api::log_2_dart::Log2DartLogRecord {
+            level: var_level,
+            message: var_message,
+            logger_name: var_loggerName,
+        };
     }
 }
 
@@ -322,6 +341,28 @@ impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<LevelFilter>> for LevelFilter 
         self.into()
     }
 }
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for crate::api::log_2_dart::Log2DartLogRecord {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [
+            self.level.into_into_dart().into_dart(),
+            self.message.into_into_dart().into_dart(),
+            self.logger_name.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::log_2_dart::Log2DartLogRecord
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<crate::api::log_2_dart::Log2DartLogRecord>
+    for crate::api::log_2_dart::Log2DartLogRecord
+{
+    fn into_into_dart(self) -> crate::api::log_2_dart::Log2DartLogRecord {
+        self
+    }
+}
 
 impl SseEncode for flutter_rust_bridge::for_generated::anyhow::Error {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -333,11 +374,19 @@ impl SseEncode for flutter_rust_bridge::for_generated::anyhow::Error {
 impl SseEncode for LevelFilter {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <u16>::sse_encode(crate::api::log_2_dart::encode_fancy_type(self), serializer);
+        <u16>::sse_encode(
+            crate::api::log_2_dart::encode_log_level_filter(self),
+            serializer,
+        );
     }
 }
 
-impl SseEncode for StreamSink<String, flutter_rust_bridge::for_generated::SseCodec> {
+impl SseEncode
+    for StreamSink<
+        crate::api::log_2_dart::Log2DartLogRecord,
+        flutter_rust_bridge::for_generated::SseCodec,
+    >
+{
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         unimplemented!("")
@@ -365,6 +414,15 @@ impl SseEncode for Vec<u8> {
         for item in self {
             <u8>::sse_encode(item, serializer);
         }
+    }
+}
+
+impl SseEncode for crate::api::log_2_dart::Log2DartLogRecord {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <LevelFilter>::sse_encode(self.level, serializer);
+        <String>::sse_encode(self.message, serializer);
+        <String>::sse_encode(self.logger_name, serializer);
     }
 }
 
