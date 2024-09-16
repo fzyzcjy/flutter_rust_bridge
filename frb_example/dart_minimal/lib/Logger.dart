@@ -2,9 +2,10 @@ import 'package:frb_example_dart_minimal/src/rust/api/log_2_dart.dart';
 import 'package:logging/logging.dart';
 
 //TODO add to frb-Runtime
-void init_logger() {
-  Logger.root.level = Level.ALL;
-  var stream = initializeLog2Dart(maxLogLevel: Level.INFO);
+
+void init_logger([Level maxLoglevel = Level.INFO]) {
+  Logger.root.level = maxLoglevel;
+  var stream = initializeLog2Dart(maxLogLevel: maxLoglevel);
   // logs from Rust
   stream.listen((record) {
     log(record.toLogRecord());
