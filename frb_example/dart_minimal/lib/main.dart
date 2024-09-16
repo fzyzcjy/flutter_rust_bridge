@@ -8,8 +8,17 @@ import 'package:logging/logging.dart';
 final LOGGER = Logger('frb_logger');
 Future<void> main() async {
   await RustLib.init();
-  init_logger();
+
+  var log = (LogRecord record) => {
+        {
+          print(
+              'My own log function, logging ${record.level}: ${record.message}')
+        }
+      };
+
+  init_logger(log: log);
 
   LOGGER.info(
       'from Dart: Call Rust and get: 100+200 = ${await minimalAdder(a: 100, b: 200)}');
+  LOGGER.warning("this is custom logged!");
 }

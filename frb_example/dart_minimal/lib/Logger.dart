@@ -3,7 +3,8 @@ import 'package:logging/logging.dart';
 
 //TODO add to frb-Runtime
 
-void init_logger([Level maxLoglevel = Level.INFO]) {
+void init_logger(
+    {Level maxLoglevel = Level.INFO, Function(LogRecord) log = default_log}) {
   Logger.root.level = maxLoglevel;
   var stream = initializeLog2Dart(maxLogLevel: maxLoglevel);
   // logs from Rust
@@ -19,11 +20,6 @@ void init_logger([Level maxLoglevel = Level.INFO]) {
   Logger.root.onLevelChanged.listen((newLoglevel) {
     changeLogLevel(newLogLevel: newLoglevel!);
   });
-}
-
-//TODO use this as the default, but let the user overwrite it with his own logging function
-void log(LogRecord record) {
-  default_log(record);
 }
 
 void default_log(LogRecord record) {
