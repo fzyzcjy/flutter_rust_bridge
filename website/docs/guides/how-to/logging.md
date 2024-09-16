@@ -1,89 +1,93 @@
 # Logging
 
-Since I have seen some questions asking how logging can be implemented with a Flutter + Rust application, here are some examples.
-
-## Approach 1: Use the default one
+Flutter Rust Bridge comes with logging build in - but you can override it with your own logging framework of choice.
 
 If using the template by `flutter_rust_bridge_codegen create/integrate`, the "print logs to console" is configured by default,
 via the auto-generated call to `flutter_rust_bridge::setup_default_user_utils()`.
 
 Thus, you do not need to do anything :)
 
-## Example 2: Print logs to console
 
-```rust
-fn setup_the_logger() {
-    #[cfg(target_os = "android")]
-    android_logger::init_once(android_logger::Config::default().with_max_level(LevelFilter::Trace));
+This implementation assumes that one is treating the Rust code as a library in Dart. 
+Thus, all log settings (levels, etc) are to be set from the Dart code. 
+If you need it the other way around feel free to create an issue ticket.
 
-    #[cfg(target_os = "ios")]
-    oslog::OsLogger::new("com.example.test").level_filter(LevelFilter::Trace).init().unwrap();
-}
-```
+Under the hood (and in a nutshell) our implementation uses the [log crate](https://crates.io/crates/log) crate and the [logging package](https://pub.dev/packages/logging), which are maintained by the respective language teams.
 
-In other words, use the corresponding platform logger
-(https://crates.io/crates/android_logger and https://crates.io/crates/oslog).
+Log messages are send via a FRB's Stream implementation from Rust to Dart. 
 
-## Example 3: My logger in production
+## How to use it
+If you want to see log outputs from Rust and Dart in stdout you have do do nothing - except writing log statements:
 
-In my own app in production, I use the following strategy for Rust logging: Use normal Rust logging methods, such as `info!` and `debug!` macros. The logs are consumed in two places: They are printed via platform-specific methods (like android Logcat and iOS NSLog), and also use a Stream to send them to the Dart side such that my Dart code and further process are using the same pipeline as normal Dart logs (e.g. save to a file, send to server, etc).
+In Rust the only thing one needs to do is calling `log::info!("Hello world")`, whereever you want to log something. (Use similar variants for other log levels.) All importing, etc. is already done for you.
 
-The *full* code related to logging in my app can be seen here: [#486](https://github.com/fzyzcjy/flutter_rust_bridge/issues/486).
+In Dart, you need to call `LOGGER.info('Hello world');` (or similar variants). 
 
-## Example 4: Send Rust logs to Dart
+In Dart a global variable `final LOGGER = Logger('frb_logger');` is available that can be used to log messages (though you can define your own variable anywhere, if you want to destinguish the logging source better. `frb_logger` is the name of the logger - one can have multiple names defined.).
 
-@MnlPhlp encapsulates the step-by-step example below into a small Rust package,
-such that you can setup Rust-logging-to-Dart in several lines.
-Please refer to https://github.com/mnlphlp/flutter_logger for details.
+### change the log level
+Call `Logger.root.level = newMaxLoglevel;`, where `newMaxLogLevel` is a log level of `Logger.Level`. 
 
-## Example 5: A step-by-step guide to send Rust logs to Dart
+This is how one changes the log level in Dart's `logging` package usually.
+FRB is taking care, that the level for the rust logs is changed as well.
 
-Let us implement a simple logging system (adapted from the logging system I use with `flutter_rust_bridge` in my app in production), where Rust code can send logs to Dart code.
-
-The Rust `api.rs`:
-
-```rust
-pub struct LogEntry {
-    pub time_millis: i64,
-    pub level: i32,
-    pub tag: String,
-    pub msg: String,
-}
-
-// Simplified just for demonstration.
-// To compile, you need a OnceCell, or Mutex, or RwLock
-// Also see https://github.com/fzyzcjy/flutter_rust_bridge/issues/398
-lazy_static! { static ref log_stream_sink: StreamSink<LogEntry>; }
-
-pub fn create_log_stream(s: StreamSink<LogEntry>) {
-    stream_sink = s;
-}
-```
-
-Now Rust will probably complain at you because `IntoDart` is not implemented for `LogEntry`. This is expected, because `flutter_rust_bridge` will generate this trait implementation for you.
-To fix this error you should just rerun `flutter_rust_bridge_codegen`.
+You can change the log level as ofthen as you want.
+Because logs are asynchronious, it is possible that some logs still or are nor yet showing up, when changing the level in the middle of the program execution (instead of the begining).
 
 
-Generated Dart code:
+## customize logging output
+Out-of-the-box log messages are sent to stdout. If you want to customize the output or use a more sophisticated logging framework, all you need to do is register your custom function for log output.
 
+For this call `LOGGER.setLogFunction(log);`, where `log` if the function you wish to do the logging (e.g. from your logging framework of choice).
+
+If you want to use several frameworks to sent your logs to different places combine their log functions into one and set it as described above.
+
+If you only want to customize the log output you can porvide a closure as well, like 
 ```Dart
-Stream<LogEntry> createLogStream();
+LOGGER.setLogFunction((LogRecord record) => {print("This is ${record.level}! ${record.message}")});
+```
+.
+[LogRecord](https://pub.dev/documentation/logging/latest/logging/LogRecord-class.html) is the data format from Darts' logging package.
+
+The rust logs will use this new function as well.
+However, not that only the fields `LogRecord.message`, `LogRecord.level`, and `LogRecord.loggerName` are used.
+
+You can change the log function as often as you want, but due to the asynchronious nature of the logging, it is possible that some log messages are not yet using the new function.
+
+## implementation
+In a nutshell our implementation uses the [log crate](https://crates.io/crates/log) crate and the [logging package](https://pub.dev/packages/logging), which are maintained by the respective language teams.
+
+Log messages are send via a FRB's Stream implementation from Rust to Dart. 
+
+### Log Levels
+The Rust-side [log levels](https://docs.rs/log/0.4.22/log/enum.LevelFilter.html) are mapped to the Dart-side [log levels](https://pub.dev/documentation/logging/latest/logging/Level-class.html) as follows:
+
+```Rust
+    match level {
+        // Level('ALL', 0);
+        // Level('OFF', 2000);
+        // Level('FINEST', 300);
+        // Level('FINER', 400);
+        // Level('FINE', 500);
+        0..=500 => LevelFilter::Trace,
+        // Level('CONFIG', 700);
+        501..=700 => LevelFilter::Debug,
+        // Level('INFO', 800);
+        701..=800 => LevelFilter::Info,
+        // Level('WARNING', 900);
+        801..=900 => LevelFilter::Warn,
+        // Level('SEVERE', 1000);
+        // Level('SHOUT', 1200);
+        901..2000 => LevelFilter::Error,
+        // Level('OFF', 2000);
+        2000.. => LevelFilter::Off,
+    }
 ```
 
-Now let us use it in Dart:
+As you can see you can define additional levels(`Level(String name, int value)`, stay beween - and 2000) in Dart. 
+They will convert to Rust seamless.
 
-```dart
-Future<void> setup() async {
-    createLogStream().listen((event) {
-      print('log from rust: ${event.level} ${event.tag} ${event.msg} ${event.timeMillis}');
-    });
-}
-```
+### Remarks
+#### timestamps from Rust
+Log messages from rust show the time they are processed on the Dart side. As log messages are processed asynchroniously, that might be a bit off, but usually there is little to no delay (basicalle the time it needs for the Stream to transport the message from Rust to Dart).
 
-And now we can happily log anything in Rust:
-
-```rust
-log_stream_sink.add(LogEntry { msg: "hello I am a log from Rust", ... })
-```
-
-Of course, you can implement a logger following the Rust's `log` crate wrapping this raw stream sink, then you can use standard Rust logging mechanisms like `info!`. I did exactly that in my project.
