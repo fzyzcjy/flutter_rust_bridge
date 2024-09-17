@@ -180,6 +180,7 @@ jobs:
           - ubuntu-20.04
         package:
           - frb_example--dart_minimal
+          - frb_example--dart_logging
           - frb_example--pure_dart
           - frb_example--pure_dart_pde
           - frb_example--dart_build_rs
@@ -583,6 +584,7 @@ jobs:
           - frb_utils
           - tools--frb_internal
           - frb_example--dart_minimal
+          - frb_example--dart_logging
           - frb_example--pure_dart
           - frb_example--pure_dart_pde
           - frb_example--dart_build_rs
@@ -631,6 +633,7 @@ jobs:
         package:
           - frb_dart
           - frb_example--dart_minimal
+          - frb_example--dart_logging
           - frb_example--pure_dart
           - frb_example--pure_dart_pde
           # no need for `frb_example--deliberate_bad`, `frb_example--dart_build_rs`

@@ -5,6 +5,7 @@ import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart'
 const kRustPackagesAllowWeb = [
   'frb_rust',
   'frb_example/dart_minimal/rust',
+  'frb_example/dart_logging/rust',
   'frb_example/pure_dart/rust',
   'frb_example/pure_dart_pde/rust',
   'frb_example/dart_build_rs/rust',
@@ -36,6 +37,7 @@ const kDartExampleIntegratePackages = [
 
 const kDartExamplePackages = [
   'frb_example/dart_minimal',
+  'frb_example/dart_logging',
   'frb_example/pure_dart',
   'frb_example/pure_dart_pde',
   'frb_example/dart_build_rs',
@@ -65,6 +67,7 @@ const kDartModeOfPackage = {
   'frb_utils': DartMode.dart,
   'tools/frb_internal': DartMode.dart,
   'frb_example/dart_minimal': DartMode.dart,
+  'frb_example/dart_logging': DartMode.dart,
   'frb_example/pure_dart': DartMode.dart,
   'frb_example/pure_dart_pde': DartMode.dart,
   'frb_example/dart_build_rs': DartMode.dart,

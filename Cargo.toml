@@ -8,6 +8,7 @@ exclude = [
     # Exclude example packages to ensure the example mimics how a typical user will use it.
     # For example, the `target` directory is different with and without workspaces.
     "frb_example/dart_minimal/rust",
+    "frb_example/dart_logging/rust",
     "frb_example/deliberate_bad/rust",
     "frb_example/flutter_via_create/rust",
     "frb_example/flutter_via_integrate/rust",
