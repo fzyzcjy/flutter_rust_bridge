@@ -62,7 +62,6 @@ default = [
     "wasm-start",
     "thread-pool",
     "rust-async",
-    "user-utils",
     "dart-opaque",
     "log",
 ]
