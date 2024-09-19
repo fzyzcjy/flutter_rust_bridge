@@ -18,7 +18,7 @@ delegate-attr = "0.3.0"
 flutter_rust_bridge_macros = { workspace = true }
 futures = { version = "0.3.29", optional = true }
 lazy_static = { workspace = true }
-log = { version = "0.4.22", optional = true }
+log = { version = "0.4.22", optional = true, features = ["std"] }
 uuid = { workspace = true, optional = true }
 
 [target.'cfg(not(target_family = "wasm"))'.dependencies]

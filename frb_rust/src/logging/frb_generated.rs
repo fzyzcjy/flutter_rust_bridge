@@ -25,9 +25,11 @@
 
 // Section: imports
 
+use std::sync::LazyLock;
+
 use crate::for_generated::byteorder::{NativeEndian, ReadBytesExt, WriteBytesExt};
-use crate::for_generated::{transform_result_dco, Lifetimeable, Lockable};
-use crate::logging::*;
+use crate::for_generated::{self, transform_result_dco, Lifetimeable, Lockable};
+use crate::{frb_generated_default_handler, logging::*, DefaultHandler};
 use crate::{Handler, IntoIntoDart};
 
 // Section: boilerplate
@@ -43,8 +45,13 @@ pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "2.4.0";
 pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = 80437977;
 
 // Section: executor
-
-crate::frb_generated_default_handler!();
+// TODO fix this for web
+frb_generated_default_handler!();
+// crate::frb_generated_default_handler!();
+// pub static FLUTTER_RUST_BRIDGE_HANDLER: LazyLock<
+//     // pub static FLUTTER_RUST_BRIDGE_HANDLER_LOGGER: LazyLock<
+//     DefaultHandler<for_generated::SimpleThreadPool>,
+// > = { LazyLock::new(|| DefaultHandler::new_simple(Default::default())) };
 
 // Section: wire_funcs
 
