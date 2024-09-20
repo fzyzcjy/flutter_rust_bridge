@@ -352,6 +352,15 @@
       ]
     },
     {
+      "login": "fmeef",
+      "name": "Alex Ballmer",
+      "avatar_url": "https://avatars.githubusercontent.com/u/4921944?v=4",
+      "profile": "https://alexballmer.dev",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
       "login": "alexlapa",
       "name": "alexlapa",
       "avatar_url": "https://avatars.githubusercontent.com/u/36732824?v=4",
@@ -962,15 +971,6 @@
       "profile": "https://thesimplekid.com",
       "contributions": [
         "doc"
-      ]
-    },
-    {
-      "login": "fmeef",
-      "name": "Alex Ballmer",
-      "avatar_url": "https://avatars.githubusercontent.com/u/4921944?v=4",
-      "profile": "https://alexballmer.dev",
-      "contributions": [
-        "code"
       ]
     }
   ],

@@ -33,6 +33,7 @@
 - temeddix: Fix broken CI. Custom num workers. Fix MacOS doc steps. Update doc. Make zero-copy defaultable.
 - NightFeather0615: Fix Vec bool.
 - AlexV525: Add Dart fix.
+- fmeef: Add cargo feature flag.
 - alexlapa: Fix DartOpaque.
 - OfficialBoyfriend: Fix error display.
 - wxitcode: Add org option. Support MacOS log. Fix a typo.
