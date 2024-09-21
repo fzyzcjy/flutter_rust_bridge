@@ -8,4 +8,5 @@ pub(crate) struct ParserHirInternalConfig {
     pub rust_input_namespace_pack: RustInputNamespacePack,
     pub rust_crate_dir: PathBuf,
     pub third_party_crate_names: Vec<CrateName>,
+    pub rust_features: Option<Vec<String>>,
 }

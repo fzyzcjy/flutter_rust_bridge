@@ -33,6 +33,7 @@ impl BaseAsyncRuntime for SimpleAsyncRuntime {
 }
 
 /// Similar to tokio's `spawn_blocking`, except that you need to provide a second argumnet.
+///
 /// If you are using flutter_rust_bridge, the second argument can be easily provided:
 /// Just use `FLUTTER_RUST_BRIDGE_HANDLER.thread_pool()`.
 ///

@@ -45,4 +45,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
     final object = await MyStructWithTryFromTwinNormal.tryFrom(value: 'hello');
     expect(await object.valueTwinNormal(), 'hello');
   });
+
+  test('feature test enabled', () async {
+    expect(await featureGatedFunction(), "test");
+  });
 }

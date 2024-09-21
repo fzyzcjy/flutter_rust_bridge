@@ -60,6 +60,7 @@ fn compute_codegen_config_from_naive_command_args(args: GenerateCommandArgsPrima
         stop_on_error: positive_bool_arg(args.stop_on_error),
         dump: args.dump,
         dump_all: positive_bool_arg(args.dump_all),
+        rust_features: args.rust_features,
     }
 }
 
