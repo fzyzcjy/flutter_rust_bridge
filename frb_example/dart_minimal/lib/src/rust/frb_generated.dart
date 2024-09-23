@@ -6,7 +6,6 @@ import 'package:frb_example_dart_minimal/Logger.dart';
 
 // ignore_for_file: unused_import, unused_element, unnecessary_import, duplicate_ignore, invalid_use_of_internal_member, annotate_overrides, non_constant_identifier_names, curly_braces_in_flow_control_structures, prefer_const_literals_to_create_immutables, unused_field
 
-import 'api/log_2_dart.dart';
 import 'api/minimal.dart';
 import 'dart:async';
 import 'dart:convert';
@@ -72,7 +71,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.4.0';
 
   @override
-  int get rustContentHash => 1690615037;
+  int get rustContentHash => -1761357562;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -83,30 +82,30 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 }
 
 abstract class RustLibApi extends BaseApi {
-  Level crateApiLog2DartLog2DartLogRecordAutoAccessorGetLevel(
+  Level crateApiMinimalLog2DartLogRecordAutoAccessorGetLevel(
       {required Log2DartLogRecord that});
 
-  String crateApiLog2DartLog2DartLogRecordAutoAccessorGetLoggerName(
+  String crateApiMinimalLog2DartLogRecordAutoAccessorGetLoggerName(
       {required Log2DartLogRecord that});
 
-  String crateApiLog2DartLog2DartLogRecordAutoAccessorGetMessage(
+  String crateApiMinimalLog2DartLogRecordAutoAccessorGetMessage(
       {required Log2DartLogRecord that});
 
-  void crateApiLog2DartLog2DartLogRecordAutoAccessorSetLevel(
+  void crateApiMinimalLog2DartLogRecordAutoAccessorSetLevel(
       {required Log2DartLogRecord that, required Level level});
 
-  void crateApiLog2DartLog2DartLogRecordAutoAccessorSetLoggerName(
+  void crateApiMinimalLog2DartLogRecordAutoAccessorSetLoggerName(
       {required Log2DartLogRecord that, required String loggerName});
 
-  void crateApiLog2DartLog2DartLogRecordAutoAccessorSetMessage(
+  void crateApiMinimalLog2DartLogRecordAutoAccessorSetMessage(
       {required Log2DartLogRecord that, required String message});
 
-  Future<void> crateApiLog2DartChangeLogLevel({required Level newLogLevel});
-
-  Stream<Log2DartLogRecord> crateApiLog2DartInitializeLog2Dart(
-      {required Level maxLogLevel});
+  Future<void> crateApiMinimalChangeLogLevel({required Level newLogLevel});
 
   Future<void> crateApiMinimalInitApp();
+
+  Stream<Log2DartLogRecord> crateApiMinimalInitializeLog2Dart(
+      {required Level maxLogLevel});
 
   Future<int> crateApiMinimalMinimalAdder({required int a, required int b});
 
@@ -129,7 +128,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   });
 
   @override
-  Level crateApiLog2DartLog2DartLogRecordAutoAccessorGetLevel(
+  Level crateApiMinimalLog2DartLogRecordAutoAccessorGetLevel(
       {required Log2DartLogRecord that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
@@ -143,22 +142,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             sse_decode_CustomSerializer_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLevelFilter,
         decodeErrorData: null,
       ),
-      constMeta:
-          kCrateApiLog2DartLog2DartLogRecordAutoAccessorGetLevelConstMeta,
+      constMeta: kCrateApiMinimalLog2DartLogRecordAutoAccessorGetLevelConstMeta,
       argValues: [that],
       apiImpl: this,
     ));
   }
 
   TaskConstMeta
-      get kCrateApiLog2DartLog2DartLogRecordAutoAccessorGetLevelConstMeta =>
+      get kCrateApiMinimalLog2DartLogRecordAutoAccessorGetLevelConstMeta =>
           const TaskConstMeta(
             debugName: "Log2DartLogRecord_auto_accessor_get_level",
             argNames: ["that"],
           );
 
   @override
-  String crateApiLog2DartLog2DartLogRecordAutoAccessorGetLoggerName(
+  String crateApiMinimalLog2DartLogRecordAutoAccessorGetLoggerName(
       {required Log2DartLogRecord that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
@@ -172,21 +170,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeErrorData: null,
       ),
       constMeta:
-          kCrateApiLog2DartLog2DartLogRecordAutoAccessorGetLoggerNameConstMeta,
+          kCrateApiMinimalLog2DartLogRecordAutoAccessorGetLoggerNameConstMeta,
       argValues: [that],
       apiImpl: this,
     ));
   }
 
   TaskConstMeta
-      get kCrateApiLog2DartLog2DartLogRecordAutoAccessorGetLoggerNameConstMeta =>
+      get kCrateApiMinimalLog2DartLogRecordAutoAccessorGetLoggerNameConstMeta =>
           const TaskConstMeta(
             debugName: "Log2DartLogRecord_auto_accessor_get_logger_name",
             argNames: ["that"],
           );
 
   @override
-  String crateApiLog2DartLog2DartLogRecordAutoAccessorGetMessage(
+  String crateApiMinimalLog2DartLogRecordAutoAccessorGetMessage(
       {required Log2DartLogRecord that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
@@ -200,21 +198,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeErrorData: null,
       ),
       constMeta:
-          kCrateApiLog2DartLog2DartLogRecordAutoAccessorGetMessageConstMeta,
+          kCrateApiMinimalLog2DartLogRecordAutoAccessorGetMessageConstMeta,
       argValues: [that],
       apiImpl: this,
     ));
   }
 
   TaskConstMeta
-      get kCrateApiLog2DartLog2DartLogRecordAutoAccessorGetMessageConstMeta =>
+      get kCrateApiMinimalLog2DartLogRecordAutoAccessorGetMessageConstMeta =>
           const TaskConstMeta(
             debugName: "Log2DartLogRecord_auto_accessor_get_message",
             argNames: ["that"],
           );
 
   @override
-  void crateApiLog2DartLog2DartLogRecordAutoAccessorSetLevel(
+  void crateApiMinimalLog2DartLogRecordAutoAccessorSetLevel(
       {required Log2DartLogRecord that, required Level level}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
@@ -229,22 +227,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
-      constMeta:
-          kCrateApiLog2DartLog2DartLogRecordAutoAccessorSetLevelConstMeta,
+      constMeta: kCrateApiMinimalLog2DartLogRecordAutoAccessorSetLevelConstMeta,
       argValues: [that, level],
       apiImpl: this,
     ));
   }
 
   TaskConstMeta
-      get kCrateApiLog2DartLog2DartLogRecordAutoAccessorSetLevelConstMeta =>
+      get kCrateApiMinimalLog2DartLogRecordAutoAccessorSetLevelConstMeta =>
           const TaskConstMeta(
             debugName: "Log2DartLogRecord_auto_accessor_set_level",
             argNames: ["that", "level"],
           );
 
   @override
-  void crateApiLog2DartLog2DartLogRecordAutoAccessorSetLoggerName(
+  void crateApiMinimalLog2DartLogRecordAutoAccessorSetLoggerName(
       {required Log2DartLogRecord that, required String loggerName}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
@@ -259,21 +256,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeErrorData: null,
       ),
       constMeta:
-          kCrateApiLog2DartLog2DartLogRecordAutoAccessorSetLoggerNameConstMeta,
+          kCrateApiMinimalLog2DartLogRecordAutoAccessorSetLoggerNameConstMeta,
       argValues: [that, loggerName],
       apiImpl: this,
     ));
   }
 
   TaskConstMeta
-      get kCrateApiLog2DartLog2DartLogRecordAutoAccessorSetLoggerNameConstMeta =>
+      get kCrateApiMinimalLog2DartLogRecordAutoAccessorSetLoggerNameConstMeta =>
           const TaskConstMeta(
             debugName: "Log2DartLogRecord_auto_accessor_set_logger_name",
             argNames: ["that", "loggerName"],
           );
 
   @override
-  void crateApiLog2DartLog2DartLogRecordAutoAccessorSetMessage(
+  void crateApiMinimalLog2DartLogRecordAutoAccessorSetMessage(
       {required Log2DartLogRecord that, required String message}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
@@ -288,21 +285,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeErrorData: null,
       ),
       constMeta:
-          kCrateApiLog2DartLog2DartLogRecordAutoAccessorSetMessageConstMeta,
+          kCrateApiMinimalLog2DartLogRecordAutoAccessorSetMessageConstMeta,
       argValues: [that, message],
       apiImpl: this,
     ));
   }
 
   TaskConstMeta
-      get kCrateApiLog2DartLog2DartLogRecordAutoAccessorSetMessageConstMeta =>
+      get kCrateApiMinimalLog2DartLogRecordAutoAccessorSetMessageConstMeta =>
           const TaskConstMeta(
             debugName: "Log2DartLogRecord_auto_accessor_set_message",
             argNames: ["that", "message"],
           );
 
   @override
-  Future<void> crateApiLog2DartChangeLogLevel({required Level newLogLevel}) {
+  Future<void> crateApiMinimalChangeLogLevel({required Level newLogLevel}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -315,47 +312,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiLog2DartChangeLogLevelConstMeta,
+      constMeta: kCrateApiMinimalChangeLogLevelConstMeta,
       argValues: [newLogLevel],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiLog2DartChangeLogLevelConstMeta =>
+  TaskConstMeta get kCrateApiMinimalChangeLogLevelConstMeta =>
       const TaskConstMeta(
         debugName: "change_log_level",
         argNames: ["newLogLevel"],
-      );
-
-  @override
-  Stream<Log2DartLogRecord> crateApiLog2DartInitializeLog2Dart(
-      {required Level maxLogLevel}) {
-    final logStream = RustStreamSink<Log2DartLogRecord>();
-    unawaited(handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLog2DartLogRecord_Sse(
-            logStream, serializer);
-        sse_encode_CustomSerializer_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLevelFilter(
-            maxLogLevel, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 8, port: port_);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
-      ),
-      constMeta: kCrateApiLog2DartInitializeLog2DartConstMeta,
-      argValues: [logStream, maxLogLevel],
-      apiImpl: this,
-    )));
-    return logStream.stream;
-  }
-
-  TaskConstMeta get kCrateApiLog2DartInitializeLog2DartConstMeta =>
-      const TaskConstMeta(
-        debugName: "initialize_log2dart",
-        argNames: ["logStream", "maxLogLevel"],
       );
 
   @override
@@ -364,7 +330,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 9, port: port_);
+            funcId: 8, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -379,6 +345,37 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kCrateApiMinimalInitAppConstMeta => const TaskConstMeta(
         debugName: "init_app",
         argNames: [],
+      );
+
+  @override
+  Stream<Log2DartLogRecord> crateApiMinimalInitializeLog2Dart(
+      {required Level maxLogLevel}) {
+    final logStream = RustStreamSink<Log2DartLogRecord>();
+    unawaited(handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLog2DartLogRecord_Sse(
+            logStream, serializer);
+        sse_encode_CustomSerializer_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLevelFilter(
+            maxLogLevel, serializer);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 9, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiMinimalInitializeLog2DartConstMeta,
+      argValues: [logStream, maxLogLevel],
+      apiImpl: this,
+    )));
+    return logStream.stream;
+  }
+
+  TaskConstMeta get kCrateApiMinimalInitializeLog2DartConstMeta =>
+      const TaskConstMeta(
+        debugName: "initialize_log2dart",
+        argNames: ["logStream", "maxLogLevel"],
       );
 
   @override
@@ -761,30 +758,30 @@ class Log2DartLogRecordImpl extends RustOpaque implements Log2DartLogRecord {
         .instance.api.rust_arc_decrement_strong_count_Log2DartLogRecordPtr,
   );
 
-  Level get level => RustLib.instance.api
-          .crateApiLog2DartLog2DartLogRecordAutoAccessorGetLevel(
+  Level get level =>
+      RustLib.instance.api.crateApiMinimalLog2DartLogRecordAutoAccessorGetLevel(
         that: this,
       );
 
   String get loggerName => RustLib.instance.api
-          .crateApiLog2DartLog2DartLogRecordAutoAccessorGetLoggerName(
+          .crateApiMinimalLog2DartLogRecordAutoAccessorGetLoggerName(
         that: this,
       );
 
   String get message => RustLib.instance.api
-          .crateApiLog2DartLog2DartLogRecordAutoAccessorGetMessage(
+          .crateApiMinimalLog2DartLogRecordAutoAccessorGetMessage(
         that: this,
       );
 
-  set level(Level level) => RustLib.instance.api
-      .crateApiLog2DartLog2DartLogRecordAutoAccessorSetLevel(
+  set level(Level level) =>
+      RustLib.instance.api.crateApiMinimalLog2DartLogRecordAutoAccessorSetLevel(
           that: this, level: level);
 
   set loggerName(String loggerName) => RustLib.instance.api
-      .crateApiLog2DartLog2DartLogRecordAutoAccessorSetLoggerName(
+      .crateApiMinimalLog2DartLogRecordAutoAccessorSetLoggerName(
           that: this, loggerName: loggerName);
 
   set message(String message) => RustLib.instance.api
-      .crateApiLog2DartLog2DartLogRecordAutoAccessorSetMessage(
+      .crateApiMinimalLog2DartLogRecordAutoAccessorSetMessage(
           that: this, message: message);
 }

@@ -9,5 +9,31 @@ import 'package:frb_example_dart_minimal/Logger.dart';
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
+// These types are ignored because they are not used by any `pub` functions: `Log2Dart`
+// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `enabled`, `flush`, `from`, `log`
+
 Future<int> minimalAdder({required int a, required int b}) =>
     RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b);
+
+Stream<Log2DartLogRecord> initializeLog2Dart({required Level maxLogLevel}) =>
+    RustLib.instance.api
+        .crateApiMinimalInitializeLog2Dart(maxLogLevel: maxLogLevel);
+
+Future<void> changeLogLevel({required Level newLogLevel}) =>
+    RustLib.instance.api
+        .crateApiMinimalChangeLogLevel(newLogLevel: newLogLevel);
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Log2DartLogRecord>>
+abstract class Log2DartLogRecord implements RustOpaqueInterface {
+  Level get level;
+
+  String get loggerName;
+
+  String get message;
+
+  set level(Level level);
+
+  set loggerName(String loggerName);
+
+  set message(String message);
+}

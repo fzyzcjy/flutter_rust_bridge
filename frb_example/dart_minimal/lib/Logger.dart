@@ -1,7 +1,7 @@
 // import 'package:frb_example_dart_minimal/src/rust/api/log_2_dart.dart';
 import 'package:logging/logging.dart';
 
-import 'src/rust/api/log_2_dart.dart';
+import 'src/rust/api/minimal.dart';
 
 //TODO add to frb-Runtime
 

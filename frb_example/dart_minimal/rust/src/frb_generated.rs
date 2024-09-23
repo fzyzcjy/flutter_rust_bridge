@@ -25,7 +25,7 @@
 
 // Section: imports
 
-use crate::api::log_2_dart::*;
+use crate::api::minimal::*;
 use flutter_rust_bridge::for_generated::byteorder::{NativeEndian, ReadBytesExt, WriteBytesExt};
 use flutter_rust_bridge::for_generated::{transform_result_dco, Lifetimeable, Lockable};
 use flutter_rust_bridge::{Handler, IntoIntoDart};
@@ -38,7 +38,7 @@ flutter_rust_bridge::frb_generated_boilerplate!(
     default_rust_auto_opaque = RustAutoOpaqueMoi,
 );
 pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "2.4.0";
-pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = 1690615037;
+pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = -1761357562;
 
 // Section: executor
 
@@ -46,7 +46,7 @@ flutter_rust_bridge::frb_generated_default_handler!();
 
 // Section: wire_funcs
 
-fn wire__crate__api__log_2_dart__Log2DartLogRecord_auto_accessor_get_level_impl(
+fn wire__crate__api__minimal__Log2DartLogRecord_auto_accessor_get_level_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -92,7 +92,7 @@ fn wire__crate__api__log_2_dart__Log2DartLogRecord_auto_accessor_get_level_impl(
         },
     )
 }
-fn wire__crate__api__log_2_dart__Log2DartLogRecord_auto_accessor_get_logger_name_impl(
+fn wire__crate__api__minimal__Log2DartLogRecord_auto_accessor_get_logger_name_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -138,7 +138,7 @@ fn wire__crate__api__log_2_dart__Log2DartLogRecord_auto_accessor_get_logger_name
         },
     )
 }
-fn wire__crate__api__log_2_dart__Log2DartLogRecord_auto_accessor_get_message_impl(
+fn wire__crate__api__minimal__Log2DartLogRecord_auto_accessor_get_message_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -184,7 +184,7 @@ fn wire__crate__api__log_2_dart__Log2DartLogRecord_auto_accessor_get_message_imp
         },
     )
 }
-fn wire__crate__api__log_2_dart__Log2DartLogRecord_auto_accessor_set_level_impl(
+fn wire__crate__api__minimal__Log2DartLogRecord_auto_accessor_set_level_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -235,7 +235,7 @@ fn wire__crate__api__log_2_dart__Log2DartLogRecord_auto_accessor_set_level_impl(
         },
     )
 }
-fn wire__crate__api__log_2_dart__Log2DartLogRecord_auto_accessor_set_logger_name_impl(
+fn wire__crate__api__minimal__Log2DartLogRecord_auto_accessor_set_logger_name_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -286,7 +286,7 @@ fn wire__crate__api__log_2_dart__Log2DartLogRecord_auto_accessor_set_logger_name
         },
     )
 }
-fn wire__crate__api__log_2_dart__Log2DartLogRecord_auto_accessor_set_message_impl(
+fn wire__crate__api__minimal__Log2DartLogRecord_auto_accessor_set_message_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -337,7 +337,7 @@ fn wire__crate__api__log_2_dart__Log2DartLogRecord_auto_accessor_set_message_imp
         },
     )
 }
-fn wire__crate__api__log_2_dart__change_log_level_impl(
+fn wire__crate__api__minimal__change_log_level_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
@@ -364,49 +364,7 @@ fn wire__crate__api__log_2_dart__change_log_level_impl(
             move |context| {
                 transform_result_sse::<_, ()>((move || {
                     let output_ok = Result::<_, ()>::Ok({
-                        crate::api::log_2_dart::change_log_level(api_new_log_level);
-                    })?;
-                    Ok(output_ok)
-                })())
-            }
-        },
-    )
-}
-fn wire__crate__api__log_2_dart__initialize_log2dart_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "initialize_log2dart",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
-        },
-        move || {
-            let message = unsafe {
-                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
-                    ptr_,
-                    rust_vec_len_,
-                    data_len_,
-                )
-            };
-            let mut deserializer =
-                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_log_stream = <StreamSink<
-                Log2DartLogRecord,
-                flutter_rust_bridge::for_generated::SseCodec,
-            >>::sse_decode(&mut deserializer);
-            let api_max_log_level = <LevelFilter>::sse_decode(&mut deserializer);
-            deserializer.end();
-            move |context| {
-                transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
-                        crate::api::log_2_dart::initialize_log2dart(
-                            api_log_stream,
-                            api_max_log_level,
-                        );
+                        crate::api::minimal::change_log_level(api_new_log_level);
                     })?;
                     Ok(output_ok)
                 })())
@@ -441,6 +399,45 @@ fn wire__crate__api__minimal__init_app_impl(
                 transform_result_sse::<_, ()>((move || {
                     let output_ok = Result::<_, ()>::Ok({
                         crate::api::minimal::init_app();
+                    })?;
+                    Ok(output_ok)
+                })())
+            }
+        },
+    )
+}
+fn wire__crate__api__minimal__initialize_log2dart_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "initialize_log2dart",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_log_stream = <StreamSink<
+                Log2DartLogRecord,
+                flutter_rust_bridge::for_generated::SseCodec,
+            >>::sse_decode(&mut deserializer);
+            let api_max_log_level = <LevelFilter>::sse_decode(&mut deserializer);
+            deserializer.end();
+            move |context| {
+                transform_result_sse::<_, ()>((move || {
+                    let output_ok = Result::<_, ()>::Ok({
+                        crate::api::minimal::initialize_log2dart(api_log_stream, api_max_log_level);
                     })?;
                     Ok(output_ok)
                 })())
@@ -514,7 +511,7 @@ impl SseDecode for LevelFilter {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut inner = <u16>::sse_decode(deserializer);
-        return crate::api::log_2_dart::decode_log_level_filter(inner);
+        return crate::api::minimal::decode_log_level_filter(inner);
     }
 }
 
@@ -605,14 +602,9 @@ fn pde_ffi_dispatcher_primary_impl(
 ) {
     // Codec=Pde (Serialization + dispatch), see doc to use other codecs
     match func_id {
-        7 => wire__crate__api__log_2_dart__change_log_level_impl(port, ptr, rust_vec_len, data_len),
-        8 => wire__crate__api__log_2_dart__initialize_log2dart_impl(
-            port,
-            ptr,
-            rust_vec_len,
-            data_len,
-        ),
-        9 => wire__crate__api__minimal__init_app_impl(port, ptr, rust_vec_len, data_len),
+        7 => wire__crate__api__minimal__change_log_level_impl(port, ptr, rust_vec_len, data_len),
+        8 => wire__crate__api__minimal__init_app_impl(port, ptr, rust_vec_len, data_len),
+        9 => wire__crate__api__minimal__initialize_log2dart_impl(port, ptr, rust_vec_len, data_len),
         10 => wire__crate__api__minimal__minimal_adder_impl(port, ptr, rust_vec_len, data_len),
         _ => unreachable!(),
     }
@@ -626,32 +618,32 @@ fn pde_ffi_dispatcher_sync_impl(
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     // Codec=Pde (Serialization + dispatch), see doc to use other codecs
     match func_id {
-        1 => wire__crate__api__log_2_dart__Log2DartLogRecord_auto_accessor_get_level_impl(
+        1 => wire__crate__api__minimal__Log2DartLogRecord_auto_accessor_get_level_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        2 => wire__crate__api__log_2_dart__Log2DartLogRecord_auto_accessor_get_logger_name_impl(
+        2 => wire__crate__api__minimal__Log2DartLogRecord_auto_accessor_get_logger_name_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        3 => wire__crate__api__log_2_dart__Log2DartLogRecord_auto_accessor_get_message_impl(
+        3 => wire__crate__api__minimal__Log2DartLogRecord_auto_accessor_get_message_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        4 => wire__crate__api__log_2_dart__Log2DartLogRecord_auto_accessor_set_level_impl(
+        4 => wire__crate__api__minimal__Log2DartLogRecord_auto_accessor_set_level_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        5 => wire__crate__api__log_2_dart__Log2DartLogRecord_auto_accessor_set_logger_name_impl(
+        5 => wire__crate__api__minimal__Log2DartLogRecord_auto_accessor_set_logger_name_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        6 => wire__crate__api__log_2_dart__Log2DartLogRecord_auto_accessor_set_message_impl(
+        6 => wire__crate__api__minimal__Log2DartLogRecord_auto_accessor_set_message_impl(
             ptr,
             rust_vec_len,
             data_len,
@@ -708,7 +700,7 @@ impl SseEncode for LevelFilter {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <u16>::sse_encode(
-            crate::api::log_2_dart::encode_log_level_filter(self),
+            crate::api::minimal::encode_log_level_filter(self),
             serializer,
         );
     }
@@ -800,7 +792,7 @@ mod io {
     // Section: imports
 
     use super::*;
-    use crate::api::log_2_dart::*;
+    use crate::api::minimal::*;
     use flutter_rust_bridge::for_generated::byteorder::{
         NativeEndian, ReadBytesExt, WriteBytesExt,
     };
@@ -837,7 +829,7 @@ mod web {
     // Section: imports
 
     use super::*;
-    use crate::api::log_2_dart::*;
+    use crate::api::minimal::*;
     use flutter_rust_bridge::for_generated::byteorder::{
         NativeEndian, ReadBytesExt, WriteBytesExt,
     };

@@ -9,7 +9,6 @@ import 'package:frb_example_dart_minimal/Logger.dart';
 // Static analysis wrongly picks the IO variant, thus ignore this
 // ignore_for_file: argument_type_not_assignable
 
-import 'api/log_2_dart.dart';
 import 'api/minimal.dart';
 import 'dart:async';
 import 'dart:convert';
