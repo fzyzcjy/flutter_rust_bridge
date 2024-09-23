@@ -1,6 +1,6 @@
 use crate::frb_generated::StreamSink;
 use flutter_rust_bridge::frb;
-use log::{LevelFilter, Metadata, Record};
+pub use log::{LevelFilter, Metadata, Record};
 
 #[frb(non_opaque)]
 pub struct Log2Dart {
@@ -76,6 +76,7 @@ pub fn decode_log_level_filter(level: u16) -> LevelFilter {
 
 // mapping log crate's [Record](https://docs.rs/log/latest/log/struct.Record.html) to dart's Logger LogRecord
 // intermediary struct to avoid Record's lifetimes
+#[frb(opaque)]
 pub struct Log2DartLogRecord {
     pub level: LevelFilter, // log::Recod::Level, Dart::Logger::LogRecord::Level
     pub message: String, // log::Recod::args + line_number + file_name + module_path , Dart::Logger::LogRecord::message + object + error + stackTrace
