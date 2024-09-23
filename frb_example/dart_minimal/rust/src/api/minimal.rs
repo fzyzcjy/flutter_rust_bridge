@@ -85,7 +85,7 @@ pub fn decode_log_level_filter(level: u16) -> LevelFilter {
         801..=900 => LevelFilter::Warn,
         // Level('SEVERE', 1000);
         // Level('SHOUT', 1200);
-        901..2000 => LevelFilter::Error,
+        901..=1999 => LevelFilter::Error,
         // Level('OFF', 2000);
         2000.. => LevelFilter::Off,
     }
