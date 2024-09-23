@@ -62,6 +62,7 @@ default = [
     "wasm-start",
     "thread-pool",
     "rust-async",
+    "user-utils",
     "dart-opaque",
     "log",
 ]
@@ -71,4 +72,8 @@ chrono = ["dep:chrono", "allo-isolate/chrono"]
 wasm-start = ["console_error_panic_hook"]
 thread-pool = ["dep:threadpool"]
 rust-async = ["dep:tokio", "dep:futures", "dep:wasm-bindgen-futures"]
+user-utils = []
 dart-opaque = ["dep:dart-sys-fork"]
+
+[lints.rust]
+unexpected_cfgs = { level = "allow", check-cfg = ['cfg(wasm)'] }
