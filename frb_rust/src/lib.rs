@@ -20,7 +20,6 @@ pub(crate) mod generalized_arc;
 pub(crate) mod internal_generated;
 pub(crate) mod lifetimeable;
 pub(crate) mod lockable;
-pub mod logging;
 #[doc(hidden)] // only to be used as `for_generated::rust_async`
 pub mod rust_async;
 #[cfg(feature = "rust-async")]
