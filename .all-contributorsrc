@@ -352,6 +352,15 @@
       ]
     },
     {
+      "login": "fmeef",
+      "name": "Alex Ballmer",
+      "avatar_url": "https://avatars.githubusercontent.com/u/4921944?v=4",
+      "profile": "https://alexballmer.dev",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
       "login": "alexlapa",
       "name": "alexlapa",
       "avatar_url": "https://avatars.githubusercontent.com/u/36732824?v=4",
@@ -383,6 +392,15 @@
       "name": "Tien Do Nam",
       "avatar_url": "https://avatars.githubusercontent.com/u/38380847?v=4",
       "profile": "https://tienisto.com",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "patmuk",
+      "name": "Patrick Mukherjee",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2045440?v=4",
+      "profile": "https://patrick.mukherjee.de",
       "contributions": [
         "code"
       ]
@@ -518,15 +536,6 @@
       "name": "Michael Bryan",
       "avatar_url": "https://avatars.githubusercontent.com/u/17380079?v=4",
       "profile": "https://adventures.michaelfbryan.com/",
-      "contributions": [
-        "code"
-      ]
-    },
-    {
-      "login": "patmuk",
-      "name": "Patrick Mukherjee",
-      "avatar_url": "https://avatars.githubusercontent.com/u/2045440?v=4",
-      "profile": "https://patrick.mukherjee.de",
       "contributions": [
         "code"
       ]

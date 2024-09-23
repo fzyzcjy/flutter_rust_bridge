@@ -25,6 +25,9 @@ Future<void> functionWithArgTypeNameOverride(
     RustLib.instance.api
         .crateApiMiscNoTwinExampleAFunctionWithArgTypeNameOverride(a: a);
 
+Future<String> featureGatedFunction() =>
+    RustLib.instance.api.crateApiMiscNoTwinExampleAFeatureGatedFunction();
+
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box < dyn Any + Send + Sync + 'static >>>
 abstract class BoxAnyMyDartTypeRename implements RustOpaqueInterface {}
 

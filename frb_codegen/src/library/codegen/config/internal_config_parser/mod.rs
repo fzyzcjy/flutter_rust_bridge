@@ -108,6 +108,7 @@ impl InternalConfig {
                     rust_crate_dir: rust_crate_dir.clone(),
                     rust_input_namespace_pack: rust_input_namespace_pack.clone(),
                     third_party_crate_names,
+                    rust_features: config.rust_features.clone(),
                 },
                 mir: ParserMirInternalConfig {
                     rust_input_namespace_pack: rust_input_namespace_pack.clone(),

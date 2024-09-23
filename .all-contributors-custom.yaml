@@ -33,10 +33,12 @@
 - temeddix: Fix broken CI. Custom num workers. Fix MacOS doc steps. Update doc. Make zero-copy defaultable.
 - NightFeather0615: Fix Vec bool.
 - AlexV525: Add Dart fix.
+- fmeef: Add cargo feature flag.
 - alexlapa: Fix DartOpaque.
 - OfficialBoyfriend: Fix error display.
 - wxitcode: Add org option. Support MacOS log. Fix a typo.
 - Tienisto: Add mock init.
+- patmuk: Set MSRV. Fail fast. Improve message. Improve multi docs.
 - Markus43: Fix folder removal.
 - Krysl: Add preamble.
 - w-ensink: Improve doc. Fix CI. Refactor. Add tests.
@@ -52,7 +54,6 @@
 - codercengiz: Fix mirroring bug.
 - aran: Fix map + mirror. Fix pubspec. Upgrde ffigen. Replace to js_interop. Bump version. Fix typo.
 - Michael-F-Bryan: Detect broken bindings.
-- patmuk: Set MSRV. Fail fast. Improve message. Improve docs.
 - phlip9: Fix no-serde compilation.
 - SilverMira: Fix StreamSink.
 - h3x4d3c1m4l: Fix when outside folder.

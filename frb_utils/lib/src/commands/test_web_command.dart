@@ -24,4 +24,7 @@ class TestWebConfig {
 
   @CliOption(help: 'Make the browser headless', defaultsTo: true)
   late bool headless;
+
+  @CliOption(help: 'Rust feature flags to set during build')
+  late List<String> rustFeatures;
 }
