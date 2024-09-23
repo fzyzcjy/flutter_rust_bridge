@@ -19,25 +19,107 @@ use crate::frb_generated::StreamSink;
 // use flutter_rust_bridge::frb;
 pub use log::{LevelFilter, Metadata, Record};
 
-#[frb(non_opaque)]
-pub struct Log2Dart {
-    stream_sink: StreamSink<Log2DartLogRecord>,
+// #[frb(non_opaque)]
+#[frb]
+#[frb(dart_code = "
+import 'package:logging/logging.dart';
+
+static void default_log_function(LogRecord record) {
+  print('${record.level}:${record.loggerName}: ${record.message}');
 }
 
+static Function(LogRecord) _logFunction = default_log_function;
+
+static Logger init_logger(
+    {String name = 'RootLogger', Level maxLoglevel = Level.INFO,
+    Function(LogRecord) custom_log_function = default_log_function}) {
+
+   LogRecord _toLogRecord(Log2DartLogRecord record) {
+    return LogRecord(
+      record.level,
+      record.message,
+      record.loggerName,
+    );
+  }
+  _logFunction = custom_log_function;
+
+  final logger = Logger(name);
+  
+  Logger.root.level = maxLoglevel;
+
+  var stream = initializeLog2Dart(maxLogLevel: maxLoglevel);
+  // logs from Rust
+  stream.listen((record) {
+    _logFunction(_toLogRecord(record));
+  });
+
+  // logs from Dart
+  Logger.root.onRecord.listen((record) {
+    _logFunction(record);
+  });
+
+    return logger;
+  }
+
+
+// convert from log crate's LevelFilter to Dart package logging->Level
+static Level fromLevelFilter(int level) {
+  switch (level) {
+    case <= 500:
+      return Level.ALL;
+    case <= 700:
+      return Level.CONFIG;
+    case <= 800:
+      return Level.INFO;
+    case <= 900:
+      return Level.WARNING;
+    case < 2000:
+      return Level.SEVERE;
+    case >= 2000:
+      return Level.OFF;
+    default:
+      return Level.ALL;
+  }
+}
+
+// convert from log crate's Record to Dart package logging->LogRecord
+// extension syntax is not supported by frb
+// extension ToLogRecord on Log2DartLogRecord {
+//   LogRecord toLogRecord(Log2DartLogRecord record) {
+//     return LogRecord(
+//       record.level,
+//       record.message,
+//       record.loggerName,
+//     );
+//   }
+// }
+
+// extension SetLogMethod on Logger {
+  void setLogFunction(Function(LogRecord) custom_log_function) {
+    _logFunction = custom_log_function;
+  }
+// }
+
+")]
+pub struct FRBLogger {
+    pub stream_sink: StreamSink<Log2DartLogRecord>,
+}
+
+impl FRBLogger {
+    pub fn setup_logging() {
+        println!("something to say");
+    }
+}
 // usees custom type translation to translate between log::LogLevel and Dart:logging::Level
 pub fn initialize_log2dart(log_stream: StreamSink<Log2DartLogRecord>, max_log_level: LevelFilter) {
-    log::set_boxed_logger(Box::new(Log2Dart {
+    log::set_boxed_logger(Box::new(FRBLogger {
         stream_sink: log_stream,
     }))
     .map(|()| log::set_max_level(max_log_level))
     .expect("initialize_log2dart is called only once!")
 }
 
-pub fn change_log_level(new_log_level: LevelFilter) {
-    log::set_max_level(new_log_level);
-}
-
-impl log::Log for Log2Dart {
+impl log::Log for FRBLogger {
     fn enabled(&self, metadata: &Metadata) -> bool {
         metadata.level() <= log::max_level()
     }
@@ -56,7 +138,7 @@ impl log::Log for Log2Dart {
 }
 
 /// custom coders for log::LogLevel <-> Dart:logging::Level
-#[frb(rust2dart(dart_type = "Level", dart_code = "fromLevelFilter({})"))]
+#[frb(rust2dart(dart_type = "Level", dart_code = "FRBLogger.fromLevelFilter({})"))]
 pub fn encode_log_level_filter(level: LevelFilter) -> u16 {
     match level {
         LevelFilter::Trace => 0,    //Level('ALL', 0),
@@ -118,6 +200,7 @@ impl From<&Record<'_>> for Log2DartLogRecord {
         if let Some(line_number) = record.line() {
             message += &format!("in line {} ", line_number);
         }
+        message += ": ";
         message += &record.args().to_string();
 
         Self {

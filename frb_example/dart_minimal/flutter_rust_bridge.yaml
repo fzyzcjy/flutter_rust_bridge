@@ -13,4 +13,4 @@ local: true
 #TODO move to macro
 dart_preamble: |
   import 'package:logging/logging.dart';
-  import 'package:frb_example_dart_minimal/Logger.dart';
+

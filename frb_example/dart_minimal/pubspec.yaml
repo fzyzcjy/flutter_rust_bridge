@@ -11,6 +11,7 @@ dependencies:
   flutter_rust_bridge_utils:
     path: ../../frb_utils
   freezed_annotation: ^2.2.0
+  logging: any
 dev_dependencies:
   test: ^1.21.4
   freezed: ^2.1.0+1
