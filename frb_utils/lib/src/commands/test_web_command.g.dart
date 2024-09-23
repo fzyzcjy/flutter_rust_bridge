@@ -8,7 +8,8 @@ part of 'test_web_command.dart';
 
 TestWebConfig _$parseTestWebConfigResult(ArgResults result) => TestWebConfig()
   ..entrypoint = result['entrypoint'] as String
-  ..headless = result['headless'] as bool;
+  ..headless = result['headless'] as bool
+  ..rustFeatures = result['rust-features'] as List<String>;
 
 ArgParser _$populateTestWebConfigParser(ArgParser parser) => parser
   ..addOption(
@@ -19,6 +20,10 @@ ArgParser _$populateTestWebConfigParser(ArgParser parser) => parser
     'headless',
     help: 'Make the browser headless',
     defaultsTo: true,
+  )
+  ..addMultiOption(
+    'rust-features',
+    help: 'Rust feature flags to set during build',
   );
 
 final _$parserForTestWebConfig = _$populateTestWebConfigParser(ArgParser());

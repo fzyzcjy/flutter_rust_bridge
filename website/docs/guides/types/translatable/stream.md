@@ -12,10 +12,10 @@ finds out a new piece of the full solution. In this case, it can immediately giv
 can render it to UI immediately. Therefore, users do not need to wait for the full algorithm to finish before he can see
 some partial results on the user interface.
 
-## Remarks
+## How to use Streams?
 
-As for the details, a Rust function with signature like `fn f(sink: StreamSink<T>, ..) -> Result<()>` is translated to a
-Dart function `Stream<T> f(..)`.
+Create a Rust function that asks for a `frb_generated::StreamSink` as a parameter, like `fn f(sink: StreamSink<T>, ..) -> Result<()>`. This is translated to a
+Dart function `Stream<T> f(..)`. When `f()` is called on the Dart side it returns a Dart `Stream<T>` that is connected to the `sink` on the Rust side.
 
 Notice that, you can hold that `StreamSink` forever, and use it freely even *after the Rust function itself returns*.
 The logger example below also demonstrates this (the `create_log_stream` returns almost immediately, while you can use
