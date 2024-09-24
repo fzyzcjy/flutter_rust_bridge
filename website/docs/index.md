@@ -250,18 +250,18 @@ Secondly, thanks goes to these wonderful contributors ([emoji key](https://allco
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/alexthe2"><img src="https://avatars.githubusercontent.com/u/33789063?v=4?s=100" width="100px;" alt="Alex Procelewski"/><br /><sub><b>Alex Procelewski</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=alexthe2" title="Documentation">📖</a> <a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=alexthe2" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Larpoux"><img src="https://avatars.githubusercontent.com/u/45900255?v=4?s=100" width="100px;" alt="Larpoux"/><br /><sub><b>Larpoux</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=Larpoux" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://dport.me"><img src="https://avatars.githubusercontent.com/u/7816187?v=4?s=100" width="100px;" alt="Daniel Porteous (dport)"/><br /><sub><b>Daniel Porteous (dport)</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=banool" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://patrick.mukherjee.de"><img src="https://avatars.githubusercontent.com/u/2045440?v=4?s=100" width="100px;" alt="Patrick Mukherjee"/><br /><sub><b>Patrick Mukherjee</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=patmuk" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://monitzer.com"><img src="https://avatars.githubusercontent.com/u/644763?v=4?s=100" width="100px;" alt="Andreas Monitzer"/><br /><sub><b>Andreas Monitzer</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=anlumo" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/temeddix"><img src="https://avatars.githubusercontent.com/u/66480156?v=4?s=100" width="100px;" alt="Kim Dong-Hyun"/><br /><sub><b>Kim Dong-Hyun</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=temeddix" title="Code">💻</a> <a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=temeddix" title="Documentation">📖</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://blog.nightfeather.dev/"><img src="https://avatars.githubusercontent.com/u/77222233?v=4?s=100" width="100px;" alt="NightFeather"/><br /><sub><b>NightFeather</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=NightFeather0615" title="Code">💻</a></td>
     </tr>
     <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://blog.nightfeather.dev/"><img src="https://avatars.githubusercontent.com/u/77222233?v=4?s=100" width="100px;" alt="NightFeather"/><br /><sub><b>NightFeather</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=NightFeather0615" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/AlexV525"><img src="https://avatars.githubusercontent.com/u/15884415?v=4?s=100" width="100px;" alt="Alex Li"/><br /><sub><b>Alex Li</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=AlexV525" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://alexballmer.dev"><img src="https://avatars.githubusercontent.com/u/4921944?v=4?s=100" width="100px;" alt="Alex Ballmer"/><br /><sub><b>Alex Ballmer</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=fmeef" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/alexlapa"><img src="https://avatars.githubusercontent.com/u/36732824?v=4?s=100" width="100px;" alt="alexlapa"/><br /><sub><b>alexlapa</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=alexlapa" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://woini.men"><img src="https://avatars.githubusercontent.com/u/52571365?v=4?s=100" width="100px;" alt="九月"/><br /><sub><b>九月</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=OfficialBoyfriend" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/wxitcode"><img src="https://avatars.githubusercontent.com/u/37947163?v=4?s=100" width="100px;" alt="wxitcode"/><br /><sub><b>wxitcode</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=wxitcode" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://tienisto.com"><img src="https://avatars.githubusercontent.com/u/38380847?v=4?s=100" width="100px;" alt="Tien Do Nam"/><br /><sub><b>Tien Do Nam</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=Tienisto" title="Code">💻</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://patrick.mukherjee.de"><img src="https://avatars.githubusercontent.com/u/2045440?v=4?s=100" width="100px;" alt="Patrick Mukherjee"/><br /><sub><b>Patrick Mukherjee</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=patmuk" title="Code">💻</a></td>
     </tr>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Markus43"><img src="https://avatars.githubusercontent.com/u/23716360?v=4?s=100" width="100px;" alt="Markus"/><br /><sub><b>Markus</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=Markus43" title="Code">💻</a></td>
@@ -387,6 +387,7 @@ More specifically, thanks for all these contributions:
 * [alexthe2](https://github.com/alexthe2): Add Option Datetime. Add empty structs. Improve doc. Add `r#`. Fix mirror enum bug.
 * [Larpoux](https://github.com/Larpoux): Fix async generation. Update web-audio-api binding.
 * [banool](https://github.com/banool): Fix pubspec parsing. Fix symbol-stripping doc.
+* [patmuk](https://github.com/patmuk): Set MSRV. Fail fast. Improve message. Improve multiple docs.
 * [anlumo](https://github.com/anlumo): Fix freezed + methods. Non-clone RustOpaque.
 * [temeddix](https://github.com/temeddix): Fix broken CI. Custom num workers. Fix MacOS doc steps. Update doc. Make zero-copy defaultable.
 * [NightFeather0615](https://github.com/NightFeather0615): Fix Vec bool.
@@ -396,7 +397,6 @@ More specifically, thanks for all these contributions:
 * [OfficialBoyfriend](https://github.com/OfficialBoyfriend): Fix error display.
 * [wxitcode](https://github.com/wxitcode): Add org option. Support MacOS log. Fix a typo.
 * [Tienisto](https://github.com/Tienisto): Add mock init.
-* [patmuk](https://github.com/patmuk): Set MSRV. Fail fast. Improve message. Improve multi docs.
 * [Markus43](https://github.com/Markus43): Fix folder removal.
 * [Krysl](https://github.com/Krysl): Add preamble.
 * [w-ensink](https://github.com/w-ensink): Improve doc. Fix CI. Refactor. Add tests.

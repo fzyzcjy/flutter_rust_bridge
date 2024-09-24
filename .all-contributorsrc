@@ -315,6 +315,15 @@
       ]
     },
     {
+      "login": "patmuk",
+      "name": "Patrick Mukherjee",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2045440?v=4",
+      "profile": "https://patrick.mukherjee.de",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
       "login": "anlumo",
       "name": "Andreas Monitzer",
       "avatar_url": "https://avatars.githubusercontent.com/u/644763?v=4",
@@ -392,15 +401,6 @@
       "name": "Tien Do Nam",
       "avatar_url": "https://avatars.githubusercontent.com/u/38380847?v=4",
       "profile": "https://tienisto.com",
-      "contributions": [
-        "code"
-      ]
-    },
-    {
-      "login": "patmuk",
-      "name": "Patrick Mukherjee",
-      "avatar_url": "https://avatars.githubusercontent.com/u/2045440?v=4",
-      "profile": "https://patrick.mukherjee.de",
       "contributions": [
         "code"
       ]
