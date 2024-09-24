@@ -6,6 +6,7 @@ import 'package:logging/logging.dart';
 // ignore_for_file: invalid_use_of_internal_member, unused_import, unnecessary_import
 
 import '../frb_generated.dart';
+import 'dart:io';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `enabled`, `flush`, `from`, `log`
@@ -51,6 +52,13 @@ class FRBLogger {
       {String name = 'RootLogger',
       Level maxLoglevel = Level.INFO,
       Function(LogRecord) custom_log_function = _default_log_function}) {
+    String? env_log_level = Platform.environment['LOG_LEVEL'];
+    if (env_log_level != null) {
+      print(
+          'Taking log level from env: ${env_log_level} instead of the one given by code: ${maxLoglevel}');
+      maxLoglevel = _log_level_from_str(env_log_level);
+    }
+
     LogRecord _toLogRecord(Log2DartLogRecord record) {
       return LogRecord(
         record.level,
@@ -75,6 +83,35 @@ class FRBLogger {
     });
 
     return logger;
+  }
+
+  static Level _log_level_from_str(String levelStr) {
+    switch (levelStr.toUpperCase()) {
+      case 'ALL':
+        return Level.ALL;
+      case 'FINEST':
+        return Level.FINEST;
+      case 'FINER':
+        return Level.FINER;
+      case 'FINE':
+        return Level.FINE;
+      case 'CONFIG':
+        return Level.CONFIG;
+      case 'INFO':
+        return Level.INFO;
+      case 'WARNING':
+        return Level.WARNING;
+      case 'SEVERE':
+        return Level.SEVERE;
+      case 'SHOUT':
+        return Level.SHOUT;
+      case 'OFF':
+        return Level.OFF;
+      default:
+        print(
+            'unknown LOG_LEVEL: ${levelStr}. For potential values see https://pub.dev/documentation/logging/latest/logging/Level-class.html');
+        exit(1);
+    }
   }
 
 // convert from log crate's LevelFilter to Dart package logging->Level

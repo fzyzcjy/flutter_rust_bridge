@@ -22,6 +22,7 @@ pub use log::{LevelFilter, Metadata, Record};
 // #[frb(non_opaque)]
 #[frb]
 #[frb(dart_code = "
+import 'dart:io';
 import 'package:logging/logging.dart';
 
 static void _default_log_function(LogRecord record) {
@@ -31,6 +32,14 @@ static void _default_log_function(LogRecord record) {
 static Logger init_logger(
     {String name = 'RootLogger', Level maxLoglevel = Level.INFO,
     Function(LogRecord) custom_log_function = _default_log_function}) {
+
+      String? env_log_level = Platform.environment['LOG_LEVEL'];
+    if (env_log_level != null) {
+      print(
+          'Taking log level from env: ${env_log_level} instead of the one given by code: ${maxLoglevel}');
+      maxLoglevel = _log_level_from_str(env_log_level!);
+    }
+
 
    LogRecord _toLogRecord(Log2DartLogRecord record) {
     return LogRecord(
@@ -58,6 +67,34 @@ static Logger init_logger(
     return logger;
   }
 
+static Level _log_level_from_str(String levelStr) {
+    switch (levelStr.toUpperCase()) {
+      case 'ALL':
+        return Level.ALL;
+      case 'FINEST':
+        return Level.FINEST;
+      case 'FINER':
+        return Level.FINER;
+      case 'FINE':
+        return Level.FINE;
+      case 'CONFIG':
+        return Level.CONFIG;
+      case 'INFO':
+        return Level.INFO;
+      case 'WARNING':
+        return Level.WARNING;
+      case 'SEVERE':
+        return Level.SEVERE;
+      case 'SHOUT':
+        return Level.SHOUT;
+      case 'OFF':
+        return Level.OFF;
+      default:
+        print(
+            'unknown LOG_LEVEL: ${levelStr}. For potential values see https://pub.dev/documentation/logging/latest/logging/Level-class.html');
+        exit(1);
+    }
+  }
 
 // convert from log crate's LevelFilter to Dart package logging->Level
 static Level fromLevelFilter(int level) {
