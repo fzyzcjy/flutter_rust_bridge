@@ -39,19 +39,18 @@ class FRBLogger {
     required this.streamSink,
   });
 
-  static Future<void> setupLogging() =>
-      RustLib.instance.api.crateApiMinimalFrbLoggerSetupLogging();
+  // HINT: Make it `#[frb(sync)]` to let it become the default constructor of Dart class.
+  static Future<FRBLogger> newInstance() =>
+      RustLib.instance.api.crateApiMinimalFrbLoggerNew();
 
-  static void default_log_function(LogRecord record) {
+  static void _default_log_function(LogRecord record) {
     print('${record.level}:${record.loggerName}: ${record.message}');
   }
-
-  static Function(LogRecord) _logFunction = default_log_function;
 
   static Logger init_logger(
       {String name = 'RootLogger',
       Level maxLoglevel = Level.INFO,
-      Function(LogRecord) custom_log_function = default_log_function}) {
+      Function(LogRecord) custom_log_function = _default_log_function}) {
     LogRecord _toLogRecord(Log2DartLogRecord record) {
       return LogRecord(
         record.level,
@@ -60,8 +59,6 @@ class FRBLogger {
       );
     }
 
-    _logFunction = custom_log_function;
-
     final logger = Logger(name);
 
     Logger.root.level = maxLoglevel;
@@ -69,12 +66,12 @@ class FRBLogger {
     var stream = initializeLog2Dart(maxLogLevel: maxLoglevel);
     // logs from Rust
     stream.listen((record) {
-      _logFunction(_toLogRecord(record));
+      custom_log_function(_toLogRecord(record));
     });
 
     // logs from Dart
     Logger.root.onRecord.listen((record) {
-      _logFunction(record);
+      custom_log_function(record);
     });
 
     return logger;
@@ -99,24 +96,6 @@ class FRBLogger {
         return Level.ALL;
     }
   }
-
-// convert from log crate's Record to Dart package logging->LogRecord
-// extension syntax is not supported by frb
-// extension ToLogRecord on Log2DartLogRecord {
-//   LogRecord toLogRecord(Log2DartLogRecord record) {
-//     return LogRecord(
-//       record.level,
-//       record.message,
-//       record.loggerName,
-//     );
-//   }
-// }
-
-// extension SetLogMethod on Logger {
-  void setLogFunction(Function(LogRecord) custom_log_function) {
-    _logFunction = custom_log_function;
-  }
-// }
 
   @override
   int get hashCode => streamSink.hashCode;

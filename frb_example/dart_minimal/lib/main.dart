@@ -1,6 +1,8 @@
 import 'package:frb_example_dart_minimal/src/rust/api/minimal.dart';
 import 'package:frb_example_dart_minimal/src/rust/frb_generated.dart';
 
+// TODO hid these calls
+// final hideme2 = FRBLogger.fromLevelFilter();
 
 final LOGGER = FRBLogger.init_logger();
 // final LOGGER = FRBLogger.init_logger(maxLoglevel: Level.SHOUT);

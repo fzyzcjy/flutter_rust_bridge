@@ -24,15 +24,13 @@ pub use log::{LevelFilter, Metadata, Record};
 #[frb(dart_code = "
 import 'package:logging/logging.dart';
 
-static void default_log_function(LogRecord record) {
+static void _default_log_function(LogRecord record) {
   print('${record.level}:${record.loggerName}: ${record.message}');
 }
 
-static Function(LogRecord) _logFunction = default_log_function;
-
 static Logger init_logger(
     {String name = 'RootLogger', Level maxLoglevel = Level.INFO,
-    Function(LogRecord) custom_log_function = default_log_function}) {
+    Function(LogRecord) custom_log_function = _default_log_function}) {
 
    LogRecord _toLogRecord(Log2DartLogRecord record) {
     return LogRecord(
@@ -41,7 +39,6 @@ static Logger init_logger(
       record.loggerName,
     );
   }
-  _logFunction = custom_log_function;
 
   final logger = Logger(name);
   
@@ -50,12 +47,12 @@ static Logger init_logger(
   var stream = initializeLog2Dart(maxLogLevel: maxLoglevel);
   // logs from Rust
   stream.listen((record) {
-    _logFunction(_toLogRecord(record));
+    custom_log_function(_toLogRecord(record));
   });
 
   // logs from Dart
   Logger.root.onRecord.listen((record) {
-    _logFunction(record);
+    custom_log_function(record);
   });
 
     return logger;
@@ -81,33 +78,14 @@ static Level fromLevelFilter(int level) {
       return Level.ALL;
   }
 }
-
-// convert from log crate's Record to Dart package logging->LogRecord
-// extension syntax is not supported by frb
-// extension ToLogRecord on Log2DartLogRecord {
-//   LogRecord toLogRecord(Log2DartLogRecord record) {
-//     return LogRecord(
-//       record.level,
-//       record.message,
-//       record.loggerName,
-//     );
-//   }
-// }
-
-// extension SetLogMethod on Logger {
-  void setLogFunction(Function(LogRecord) custom_log_function) {
-    _logFunction = custom_log_function;
-  }
-// }
-
 ")]
 pub struct FRBLogger {
     pub stream_sink: StreamSink<Log2DartLogRecord>,
 }
 
 impl FRBLogger {
-    pub fn setup_logging() {
-        println!("something to say");
+    pub fn new() -> FRBLogger {
+        panic!("Initialize with `final LOGGER = FRBLogger.init_logger();`");
     }
 }
 // usees custom type translation to translate between log::LogLevel and Dart:logging::Level

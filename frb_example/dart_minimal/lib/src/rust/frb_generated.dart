@@ -70,7 +70,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.4.0';
 
   @override
-  int get rustContentHash => -1253102912;
+  int get rustContentHash => 1648184749;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -99,7 +99,7 @@ abstract class RustLibApi extends BaseApi {
   void crateApiMinimalLog2DartLogRecordAutoAccessorSetMessage(
       {required Log2DartLogRecord that, required String message});
 
-  Future<void> crateApiMinimalFrbLoggerSetupLogging();
+  Future<FRBLogger> crateApiMinimalFrbLoggerNew();
 
   Future<void> crateApiMinimalInitApp();
 
@@ -298,7 +298,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
-  Future<void> crateApiMinimalFrbLoggerSetupLogging() {
+  Future<FRBLogger> crateApiMinimalFrbLoggerNew() {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -306,18 +306,18 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             funcId: 7, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
+        decodeSuccessData: sse_decode_frb_logger,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiMinimalFrbLoggerSetupLoggingConstMeta,
+      constMeta: kCrateApiMinimalFrbLoggerNewConstMeta,
       argValues: [],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiMinimalFrbLoggerSetupLoggingConstMeta =>
+  TaskConstMeta get kCrateApiMinimalFrbLoggerNewConstMeta =>
       const TaskConstMeta(
-        debugName: "frb_logger_setup_logging",
+        debugName: "frb_logger_new",
         argNames: [],
       );
 

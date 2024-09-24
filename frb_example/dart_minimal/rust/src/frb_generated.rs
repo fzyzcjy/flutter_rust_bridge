@@ -38,7 +38,7 @@ flutter_rust_bridge::frb_generated_boilerplate!(
     default_rust_auto_opaque = RustAutoOpaqueMoi,
 );
 pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "2.4.0";
-pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = -1253102912;
+pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = 1648184749;
 
 // Section: executor
 
@@ -337,7 +337,7 @@ fn wire__crate__api__minimal__Log2DartLogRecord_auto_accessor_set_message_impl(
         },
     )
 }
-fn wire__crate__api__minimal__frb_logger_setup_logging_impl(
+fn wire__crate__api__minimal__frb_logger_new_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
@@ -345,7 +345,7 @@ fn wire__crate__api__minimal__frb_logger_setup_logging_impl(
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "frb_logger_setup_logging",
+            debug_name: "frb_logger_new",
             port: Some(port_),
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
         },
@@ -362,9 +362,7 @@ fn wire__crate__api__minimal__frb_logger_setup_logging_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
-                        crate::api::minimal::FRBLogger::setup_logging();
-                    })?;
+                    let output_ok = Result::<_, ()>::Ok(crate::api::minimal::FRBLogger::new())?;
                     Ok(output_ok)
                 })())
             }
@@ -614,12 +612,7 @@ fn pde_ffi_dispatcher_primary_impl(
 ) {
     // Codec=Pde (Serialization + dispatch), see doc to use other codecs
     match func_id {
-        7 => wire__crate__api__minimal__frb_logger_setup_logging_impl(
-            port,
-            ptr,
-            rust_vec_len,
-            data_len,
-        ),
+        7 => wire__crate__api__minimal__frb_logger_new_impl(port, ptr, rust_vec_len, data_len),
         8 => wire__crate__api__minimal__init_app_impl(port, ptr, rust_vec_len, data_len),
         9 => wire__crate__api__minimal__initialize_log2dart_impl(port, ptr, rust_vec_len, data_len),
         10 => wire__crate__api__minimal__minimal_adder_impl(port, ptr, rust_vec_len, data_len),
