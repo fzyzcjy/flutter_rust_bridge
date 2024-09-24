@@ -2,6 +2,8 @@
 
 Flutter Rust Bridge comes with logging build in - but you can override it with your own logging framework of choice.
 
+// TODO update what needs to be done for setup
+
 If using the template by `flutter_rust_bridge_codegen create/integrate`, the "print logs to console" is configured by default,
 via the auto-generated call to `flutter_rust_bridge::setup_default_user_utils()`.
 
@@ -34,6 +36,13 @@ FRB is taking care, that the level for the rust logs is changed as well.
 You can change the log level as ofthen as you want.
 Because logs are asynchronious, it is possible that some logs still or are nor yet showing up, when changing the level in the middle of the program execution (instead of the begining).
 
+### via an environment variable
+You can set the log level via an environment variable as well. 
+Set `Log_Level` to a value from the [Dart logging package](https://pub.dev/documentation/logging/latest/logging/Level-class.html).
+This will overwrite any programatically set level.
+Like anything else, this level will be applied to both, logging statements in rust and dart.
+
+While these dart logging level names are unusual, they are more fine-granular.
 
 ## customize logging output
 Out-of-the-box log messages are sent to stdout. If you want to customize the output or use a more sophisticated logging framework, all you need to do is register your custom function for log output.
