@@ -94,7 +94,14 @@ pub fn initialize_log2dart(log_stream: StreamSink<Log2DartLogRecord>, max_log_le
         stream_sink: log_stream,
     }))
     .map(|()| log::set_max_level(max_log_level))
-    .expect("initialize_log2dart is called only once!")
+    .expect("initialize_log2dart is called only once!");
+
+    // log panics
+    let prev = std::panic::take_hook();
+    std::panic::set_hook(Box::new(move |info| {
+        log::error!("{}", info);
+        prev(info);
+    }));
 }
 
 impl log::Log for FRBLogger {

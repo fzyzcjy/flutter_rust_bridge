@@ -1,5 +1,7 @@
 //! Utilities related to logging
 
+// TODO remove when logging is implemented
+
 use crate::utils::console::MULTI_PROGRESS;
 use fern::colors::{Color, ColoredLevelConfig};
 use log::LevelFilter;
