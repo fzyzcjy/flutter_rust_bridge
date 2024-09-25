@@ -30,14 +30,14 @@ static void _default_log_function(Log2DartLogRecord record) {
 
 /// initialize the logging system, including the rust logger
 static Logger init_logger(
-    {String name = 'RootLogger', Level maxLoglevel = Level.INFO,
+    {String name = 'RootLogger', String maxLoglevel = 'INFO',
     Function(Log2DartLogRecord) custom_log_function = _default_log_function}) {
 
       String? env_log_level = Platform.environment['LOG_LEVEL'];
     if (env_log_level != null) {
       print(
           'Taking log level from env: ${env_log_level} instead of the one given by code: ${maxLoglevel}');
-      maxLoglevel = _log_level_from_str(env_log_level!);
+      maxLoglevel = env_log_level!;
     }
 
     Log2DartLogRecord _toLog2DartLogRecord(LogRecord record) {
@@ -53,9 +53,9 @@ static Logger init_logger(
   
   final logger = Logger(name);
   
-  Logger.root.level = maxLoglevel;
+  Logger.root.level = _log_level_from_str(maxLoglevel);
   
-  var stream = initializeLog2Dart(maxLogLevel: maxLoglevel);
+  var stream = initializeLog2Dart(maxLogLevel: Logger.root.level);
   // logs from Rust
   stream.listen((record) {
     // custom_log_function(_toLogRecord(record));
