@@ -41,7 +41,7 @@ static Logger init_logger(
   
   Logger.root.level = _log_level_from_str(maxLoglevel);
   
-  var stream = initializeLog2Dart(maxLogLevel: Logger.root.level);
+  var stream = initializeLog2Dart(maxLogLevel: Logger.root.level.value);
   // logs from Rust
   stream.listen((record) {
     // custom_log_function(_toLogRecord(record));
@@ -124,11 +124,13 @@ impl FRBLogger {
     }
 }
 // usees custom type translation to translate between log::LogLevel and Dart:logging::Level
-pub fn initialize_log2dart(log_stream: StreamSink<Log2DartLogRecord>, max_log_level: LevelFilter) {
+// loglevel is represented by a number, so that we don't need to put \import `import 'package:logging/logging.dart';`
+// into the dart preamble in flutter_rust_bridge.yaml
+pub fn initialize_log2dart(log_stream: StreamSink<Log2DartLogRecord>, max_log_level: u16) {
     log::set_boxed_logger(Box::new(FRBLogger {
         stream_sink: log_stream,
     }))
-    .map(|()| log::set_max_level(max_log_level))
+    .map(|()| log::set_max_level(from_u16(max_log_level)))
     .expect("initialize_log2dart is called only once!");
 
     // log panics

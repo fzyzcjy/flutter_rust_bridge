@@ -10,7 +10,4 @@ local: true
 #enable_lifetime: true
 #stop_on_error: true
 
-#TODO move to macro
-dart_preamble: |
-  import 'package:logging/logging.dart';
 

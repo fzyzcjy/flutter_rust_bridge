@@ -25,7 +25,6 @@
 
 // Section: imports
 
-use crate::api::minimal::*;
 use flutter_rust_bridge::for_generated::byteorder::{NativeEndian, ReadBytesExt, WriteBytesExt};
 use flutter_rust_bridge::for_generated::{transform_result_dco, Lifetimeable, Lockable};
 use flutter_rust_bridge::{Handler, IntoIntoDart};
@@ -138,7 +137,7 @@ fn wire__crate__api__minimal__initialize_log2dart_impl(
                 crate::api::minimal::Log2DartLogRecord,
                 flutter_rust_bridge::for_generated::SseCodec,
             >>::sse_decode(&mut deserializer);
-            let api_max_log_level = <LevelFilter>::sse_decode(&mut deserializer);
+            let api_max_log_level = <u16>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
@@ -194,14 +193,6 @@ impl SseDecode for flutter_rust_bridge::for_generated::anyhow::Error {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut inner = <String>::sse_decode(deserializer);
         return flutter_rust_bridge::for_generated::anyhow::anyhow!("{}", inner);
-    }
-}
-
-impl SseDecode for LevelFilter {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <u16>::sse_decode(deserializer);
-        return crate::api::minimal::decode_log_level_filter(inner);
     }
 }
 
@@ -367,18 +358,6 @@ fn pde_ffi_dispatcher_sync_impl(
 // Section: rust2dart
 
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for FrbWrapper<LevelFilter> {
-    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-        unimplemented!()
-    }
-}
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for FrbWrapper<LevelFilter> {}
-impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<LevelFilter>> for LevelFilter {
-    fn into_into_dart(self) -> FrbWrapper<LevelFilter> {
-        self.into()
-    }
-}
-// Codec=Dco (DartCObject based), see doc to use other codecs
 impl flutter_rust_bridge::IntoDart for crate::api::minimal::FRBLogger {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         [self.stream_sink.into_into_dart().into_dart()].into_dart()
@@ -426,16 +405,6 @@ impl SseEncode for flutter_rust_bridge::for_generated::anyhow::Error {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <String>::sse_encode(format!("{:?}", self), serializer);
-    }
-}
-
-impl SseEncode for LevelFilter {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <u16>::sse_encode(
-            crate::api::minimal::encode_log_level_filter(self),
-            serializer,
-        );
     }
 }
 
@@ -559,7 +528,6 @@ mod io {
     // Section: imports
 
     use super::*;
-    use crate::api::minimal::*;
     use flutter_rust_bridge::for_generated::byteorder::{
         NativeEndian, ReadBytesExt, WriteBytesExt,
     };
@@ -582,7 +550,6 @@ mod web {
     // Section: imports
 
     use super::*;
-    use crate::api::minimal::*;
     use flutter_rust_bridge::for_generated::byteorder::{
         NativeEndian, ReadBytesExt, WriteBytesExt,
     };
