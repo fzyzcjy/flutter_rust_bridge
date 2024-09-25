@@ -8,3 +8,4 @@ crate-type = ["cdylib", "staticlib"]
 
 [dependencies]
 flutter_rust_bridge = REPLACE_ME_RUST_FRB_DEPENDENCY
+log = "0.4.20"

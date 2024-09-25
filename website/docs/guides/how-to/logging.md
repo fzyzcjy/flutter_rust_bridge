@@ -6,6 +6,9 @@ More concrete, you can overwrite the log outputting function with the one of you
 
 ## Setup
 // TODO update what needs to be done for setup
+First you need to add a dependency on the logging crate in your Cargo.toml file with `cargo add log` or by putting `log = "0.4.20"` in your Cargo.toml file under the `[dependencies]` section.
+If you start with a new project (`flutter_rust_bridge_codegen create` instead of `flutter_rust_bridge_codegen generate`) this is already done for you.
+
 In rust simply use `log::info!()` (or any of the [log crates log levels](https://docs.rs/log/latest/log/enum.Level.html)) to forward your log message to dart.
 Note that the log levels are translated to [darts logging package equivalents](https://pub.dev/documentation/logging/latest/logging/Level-class.html).
 
@@ -114,3 +117,12 @@ They will convert to Rust seamless.
 #### timestamps from Rust
 Log messages from rust show the time they are processed on the Dart side. As log messages are processed asynchroniously, that might be a bit off, but usually there is little to no delay (basicalle the time it needs for the Stream to transport the message from Rust to Dart).
 
+## Troubleshooting
+### Unrecognized literal: `(/*ERROR*/)`
+If you you get the error message
+```
+Running `(...)/target/debug/flutter_rust_bridge_codegen generate`
+thread 'main' panicked at (...)/.cargo/registry/src/index.crates.io-6f17d22bba15001f/syn-2.0.28/src/lit.rs:1095:13:
+Unrecognized literal: `(/*ERROR*/)`
+```
+the code in the `enable_frb_logging!();` macro has not been expanded correctly - most ptovbably you forgot to add the dependency to `log = "0.4.20"` in your Cargo.toml file.
