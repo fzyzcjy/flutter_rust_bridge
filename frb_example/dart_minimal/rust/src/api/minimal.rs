@@ -20,18 +20,17 @@ use crate::frb_generated::StreamSink;
 pub use log::{LevelFilter, Metadata, Record};
 
 // #[frb(non_opaque)]
-#[frb]
 #[frb(dart_code = "
 import 'dart:io';
 import 'package:logging/logging.dart';
 
-static void _default_log_function(LogRecord record) {
-  print('${record.level}:${record.loggerName}: ${record.message}');
+static void _default_log_function(Log2DartLogRecord record) {
+  print('${DateTime.now()} [${log_level_from_number(record.levelNumber)} @${record.rustLog? 'Rust' : 'Dart' }]: ${record.loggerName} \\n   ${record.message}');
 }
 
 static Logger init_logger(
     {String name = 'RootLogger', Level maxLoglevel = Level.INFO,
-    Function(LogRecord) custom_log_function = _default_log_function}) {
+    Function(Log2DartLogRecord) custom_log_function = _default_log_function}) {
 
       String? env_log_level = Platform.environment['LOG_LEVEL'];
     if (env_log_level != null) {
@@ -40,28 +39,31 @@ static Logger init_logger(
       maxLoglevel = _log_level_from_str(env_log_level!);
     }
 
-
-   LogRecord _toLogRecord(Log2DartLogRecord record) {
-    return LogRecord(
-      record.level,
-      record.message,
-      record.loggerName,
-    );
-  }
-
+    Log2DartLogRecord _toLog2DartLogRecord(LogRecord record) {
+      return Log2DartLogRecord(
+          levelNumber: record.level.value,
+          message: record.message,
+          loggerName: record.loggerName,
+          rustLog: false,
+          modulePath: null,
+          fileName: null,
+          lineNumber: null);
+    }
+  
   final logger = Logger(name);
   
   Logger.root.level = maxLoglevel;
-
+  
   var stream = initializeLog2Dart(maxLogLevel: maxLoglevel);
   // logs from Rust
   stream.listen((record) {
-    custom_log_function(_toLogRecord(record));
-  });
+    // custom_log_function(_toLogRecord(record));
+    custom_log_function(record);
+    });
 
   // logs from Dart
   Logger.root.onRecord.listen((record) {
-    custom_log_function(record);
+    custom_log_function(_toLog2DartLogRecord(record));
   });
 
     return logger;
@@ -96,8 +98,8 @@ static Level _log_level_from_str(String levelStr) {
     }
   }
 
-// convert from log crate's LevelFilter to Dart package logging->Level
-static Level fromLevelFilter(int level) {
+// convert from log level number to Dart package logging->Level
+static Level log_level_from_number(int level) {
   switch (level) {
     case <= 500:
       return Level.ALL;
@@ -115,6 +117,7 @@ static Level fromLevelFilter(int level) {
       return Level.ALL;
   }
 }
+
 ")]
 pub struct FRBLogger {
     pub stream_sink: StreamSink<Log2DartLogRecord>,
@@ -159,76 +162,105 @@ impl log::Log for FRBLogger {
     }
 }
 
-/// custom coders for log::LogLevel <-> Dart:logging::Level
-#[frb(rust2dart(dart_type = "Level", dart_code = "FRBLogger.fromLevelFilter({})"))]
-pub fn encode_log_level_filter(level: LevelFilter) -> u16 {
-    match level {
-        LevelFilter::Trace => 0,    //Level('ALL', 0),
-        LevelFilter::Debug => 700,  // Level('CONFIG', 700);
-        LevelFilter::Info => 800,   // Level('INFO', 800);
-        LevelFilter::Warn => 900,   // Level('WARNING', 900);
-        LevelFilter::Error => 1000, // Level('SEVERE', 1000); & Level('SHOUT', 1200);
-        LevelFilter::Off => 2000,   // Level('OFF', 2000);
+// needed so we can convert u16 <-> DartLoggingLevel <-> log::LogLevel
+enum DartLoggingLevel {
+    All = 0,
+    Finest = 300,
+    Finer = 400,
+    Fine = 500,
+    Config = 700,
+    Info = 800,
+    Warning = 900,
+    Severe = 1000,
+    Shout = 1200,
+    Off = 2000,
+}
+
+impl From<u16> for DartLoggingLevel {
+    fn from(value: u16) -> Self {
+        match value {
+            0..=299 => DartLoggingLevel::All,
+            300..=399 => DartLoggingLevel::Finest,
+            400..=499 => DartLoggingLevel::Finer,
+            500..=699 => DartLoggingLevel::Fine,
+            700..=799 => DartLoggingLevel::Config,
+            800..=899 => DartLoggingLevel::Info,
+            900..=999 => DartLoggingLevel::Warning,
+            1000..=1199 => DartLoggingLevel::Severe,
+            1200..=1999 => DartLoggingLevel::Shout,
+            2000.. => DartLoggingLevel::Off,
+        }
     }
 }
 
-#[frb(dart2rust(dart_type = "Level", dart_code = "{}.value"))]
-pub fn decode_log_level_filter(level: u16) -> LevelFilter {
-    match level {
-        // Level('ALL', 0);
-        // Level('OFF', 2000);
-        // Level('FINEST', 300);
-        // Level('FINER', 400);
-        // Level('FINE', 500);
-        0..=500 => LevelFilter::Trace,
-        // Level('CONFIG', 700);
-        501..=700 => LevelFilter::Debug,
-        // Level('INFO', 800);
-        701..=800 => LevelFilter::Info,
-        // Level('WARNING', 900);
-        801..=900 => LevelFilter::Warn,
-        // Level('SEVERE', 1000);
-        // Level('SHOUT', 1200);
-        901..=1999 => LevelFilter::Error,
-        // Level('OFF', 2000);
-        2000.. => LevelFilter::Off,
+impl From<LevelFilter> for DartLoggingLevel {
+    fn from(level: LevelFilter) -> Self {
+        match level {
+            LevelFilter::Trace => DartLoggingLevel::All,
+            // LevelFilter::Trace => DartLoggingLevel::Finest,
+            // LevelFilter::Trace => DartLoggingLevel::Finer,
+            // LevelFilter::Trace => DartLoggingLevel::Fine,
+            LevelFilter::Debug => DartLoggingLevel::Config,
+            LevelFilter::Info => DartLoggingLevel::Info,
+            LevelFilter::Warn => DartLoggingLevel::Warning,
+            LevelFilter::Error => DartLoggingLevel::Severe,
+            // LevelFilter::Error => DartLoggingLevel::Shout,
+            LevelFilter::Off => DartLoggingLevel::Off,
+        }
     }
+}
+impl From<DartLoggingLevel> for LevelFilter {
+    fn from(level: DartLoggingLevel) -> Self {
+        match level {
+            DartLoggingLevel::All => LevelFilter::Trace,
+            DartLoggingLevel::Finest => LevelFilter::Trace,
+            DartLoggingLevel::Finer => LevelFilter::Trace,
+            DartLoggingLevel::Fine => LevelFilter::Trace,
+            DartLoggingLevel::Config => LevelFilter::Debug,
+            DartLoggingLevel::Info => LevelFilter::Info,
+            DartLoggingLevel::Warning => LevelFilter::Warn,
+            DartLoggingLevel::Severe => LevelFilter::Error,
+            DartLoggingLevel::Shout => LevelFilter::Error,
+            DartLoggingLevel::Off => LevelFilter::Off,
+        }
+    }
+}
+
+/// custom coders for log::LogLevel <-> Dart:logging::Level
+#[frb(rust2dart(dart_type = "Level", dart_code = "FRBLogger.log_level_from_number({})"))]
+pub fn encode_log_level_filter(level: LevelFilter) -> u16 {
+    DartLoggingLevel::from(level) as u16
+}
+#[frb(dart2rust(dart_type = "Level", dart_code = "{}.value"))]
+pub fn decode_log_level_filter(level_number: u16) -> LevelFilter {
+    DartLoggingLevel::from(level_number).into()
 }
 
 // mapping log crate's [Record](https://docs.rs/log/latest/log/struct.Record.html) to dart's Logger LogRecord
 // intermediary struct to avoid Record's lifetimes
-#[frb(opaque)]
+// #[frb(opaque)]
 pub struct Log2DartLogRecord {
-    pub level: LevelFilter, // log::Recod::Level, Dart::Logger::LogRecord::Level
+    pub level_number: u16,   // log::Recod::Level, Dart::Logger::LogRecord::Level
     pub message: String, // log::Recod::args + line_number + file_name + module_path , Dart::Logger::LogRecord::message + object + error + stackTrace
     pub logger_name: String, // log::Recod::target, Dart::Logger::LogRecord::loggerName
-                         // pub time: String, // log::Recod::?, Dart::Logger::LogRecord::time --> omitted, as there is no time record in the log crate's Record.
+    // pub time: String, // log::Recod::?, Dart::Logger::LogRecord::time --> omitted, as there is no time record in the log crate's Record.
+    pub rust_log: bool,
+    pub module_path: Option<String>,
+    pub file_name: Option<String>,
+    pub line_number: Option<u32>,
 }
 
 impl From<&Record<'_>> for Log2DartLogRecord {
     fn from(record: &Record) -> Self {
-        let mut message = String::new();
-
-        if let Some(module_path) = record.module_path().or_else(|| record.module_path_static()) {
-            message.push_str("in module ");
-            message.push_str(module_path);
-            message.push(' ');
-        }
-        if let Some(file_name) = record.file().or_else(|| record.file_static()) {
-            message.push_str("in file ");
-            message.push_str(file_name);
-            message.push(' ');
-        }
-        if let Some(line_number) = record.line() {
-            message += &format!("in line {} ", line_number);
-        }
-        message += ": ";
-        message += &record.args().to_string();
-
         Self {
-            level: record.level().to_level_filter(),
-            message,
+            level_number: DartLoggingLevel::from(record.level().to_level_filter()) as u16,
+            message: record.args().to_string(),
             logger_name: record.target().into(),
+            rust_log: true,
+            module_path: (record.module_path().or_else(|| record.module_path_static()))
+                .map(|s| s.into()),
+            file_name: (record.file().or_else(|| record.file_static())).map(|s| s.into()),
+            line_number: record.line(),
         }
     }
 }

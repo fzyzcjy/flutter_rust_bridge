@@ -70,7 +70,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.4.0';
 
   @override
-  int get rustContentHash => 1648184749;
+  int get rustContentHash => -1550709359;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -81,24 +81,6 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 }
 
 abstract class RustLibApi extends BaseApi {
-  Level crateApiMinimalLog2DartLogRecordAutoAccessorGetLevel(
-      {required Log2DartLogRecord that});
-
-  String crateApiMinimalLog2DartLogRecordAutoAccessorGetLoggerName(
-      {required Log2DartLogRecord that});
-
-  String crateApiMinimalLog2DartLogRecordAutoAccessorGetMessage(
-      {required Log2DartLogRecord that});
-
-  void crateApiMinimalLog2DartLogRecordAutoAccessorSetLevel(
-      {required Log2DartLogRecord that, required Level level});
-
-  void crateApiMinimalLog2DartLogRecordAutoAccessorSetLoggerName(
-      {required Log2DartLogRecord that, required String loggerName});
-
-  void crateApiMinimalLog2DartLogRecordAutoAccessorSetMessage(
-      {required Log2DartLogRecord that, required String message});
-
   Future<FRBLogger> crateApiMinimalFrbLoggerNew();
 
   Future<void> crateApiMinimalInitApp();
@@ -107,15 +89,6 @@ abstract class RustLibApi extends BaseApi {
       {required Level maxLogLevel});
 
   Future<int> crateApiMinimalMinimalAdder({required int a, required int b});
-
-  RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_Log2DartLogRecord;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_Log2DartLogRecord;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_Log2DartLogRecordPtr;
 }
 
 class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
@@ -127,183 +100,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   });
 
   @override
-  Level crateApiMinimalLog2DartLogRecordAutoAccessorGetLevel(
-      {required Log2DartLogRecord that}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLog2DartLogRecord(
-            that, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1)!;
-      },
-      codec: SseCodec(
-        decodeSuccessData:
-            sse_decode_CustomSerializer_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLevelFilter,
-        decodeErrorData: null,
-      ),
-      constMeta: kCrateApiMinimalLog2DartLogRecordAutoAccessorGetLevelConstMeta,
-      argValues: [that],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta
-      get kCrateApiMinimalLog2DartLogRecordAutoAccessorGetLevelConstMeta =>
-          const TaskConstMeta(
-            debugName: "Log2DartLogRecord_auto_accessor_get_level",
-            argNames: ["that"],
-          );
-
-  @override
-  String crateApiMinimalLog2DartLogRecordAutoAccessorGetLoggerName(
-      {required Log2DartLogRecord that}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLog2DartLogRecord(
-            that, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 2)!;
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_String,
-        decodeErrorData: null,
-      ),
-      constMeta:
-          kCrateApiMinimalLog2DartLogRecordAutoAccessorGetLoggerNameConstMeta,
-      argValues: [that],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta
-      get kCrateApiMinimalLog2DartLogRecordAutoAccessorGetLoggerNameConstMeta =>
-          const TaskConstMeta(
-            debugName: "Log2DartLogRecord_auto_accessor_get_logger_name",
-            argNames: ["that"],
-          );
-
-  @override
-  String crateApiMinimalLog2DartLogRecordAutoAccessorGetMessage(
-      {required Log2DartLogRecord that}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLog2DartLogRecord(
-            that, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 3)!;
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_String,
-        decodeErrorData: null,
-      ),
-      constMeta:
-          kCrateApiMinimalLog2DartLogRecordAutoAccessorGetMessageConstMeta,
-      argValues: [that],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta
-      get kCrateApiMinimalLog2DartLogRecordAutoAccessorGetMessageConstMeta =>
-          const TaskConstMeta(
-            debugName: "Log2DartLogRecord_auto_accessor_get_message",
-            argNames: ["that"],
-          );
-
-  @override
-  void crateApiMinimalLog2DartLogRecordAutoAccessorSetLevel(
-      {required Log2DartLogRecord that, required Level level}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLog2DartLogRecord(
-            that, serializer);
-        sse_encode_CustomSerializer_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLevelFilter(
-            level, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 4)!;
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
-      ),
-      constMeta: kCrateApiMinimalLog2DartLogRecordAutoAccessorSetLevelConstMeta,
-      argValues: [that, level],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta
-      get kCrateApiMinimalLog2DartLogRecordAutoAccessorSetLevelConstMeta =>
-          const TaskConstMeta(
-            debugName: "Log2DartLogRecord_auto_accessor_set_level",
-            argNames: ["that", "level"],
-          );
-
-  @override
-  void crateApiMinimalLog2DartLogRecordAutoAccessorSetLoggerName(
-      {required Log2DartLogRecord that, required String loggerName}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLog2DartLogRecord(
-            that, serializer);
-        sse_encode_String(loggerName, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 5)!;
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
-      ),
-      constMeta:
-          kCrateApiMinimalLog2DartLogRecordAutoAccessorSetLoggerNameConstMeta,
-      argValues: [that, loggerName],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta
-      get kCrateApiMinimalLog2DartLogRecordAutoAccessorSetLoggerNameConstMeta =>
-          const TaskConstMeta(
-            debugName: "Log2DartLogRecord_auto_accessor_set_logger_name",
-            argNames: ["that", "loggerName"],
-          );
-
-  @override
-  void crateApiMinimalLog2DartLogRecordAutoAccessorSetMessage(
-      {required Log2DartLogRecord that, required String message}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLog2DartLogRecord(
-            that, serializer);
-        sse_encode_String(message, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 6)!;
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
-      ),
-      constMeta:
-          kCrateApiMinimalLog2DartLogRecordAutoAccessorSetMessageConstMeta,
-      argValues: [that, message],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta
-      get kCrateApiMinimalLog2DartLogRecordAutoAccessorSetMessageConstMeta =>
-          const TaskConstMeta(
-            debugName: "Log2DartLogRecord_auto_accessor_set_message",
-            argNames: ["that", "message"],
-          );
-
-  @override
   Future<FRBLogger> crateApiMinimalFrbLoggerNew() {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 7, port: port_);
+            funcId: 1, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_frb_logger,
@@ -327,7 +129,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 8, port: port_);
+            funcId: 2, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -351,12 +153,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLog2DartLogRecord_Sse(
-            logStream, serializer);
+        sse_encode_StreamSink_log_2_dart_log_record_Sse(logStream, serializer);
         sse_encode_CustomSerializer_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLevelFilter(
             maxLogLevel, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 9, port: port_);
+            funcId: 3, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -383,7 +184,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_i_32(a, serializer);
         sse_encode_i_32(b, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 10, port: port_);
+            funcId: 4, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_i_32,
@@ -401,42 +202,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         argNames: ["a", "b"],
       );
 
-  RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_Log2DartLogRecord => wire
-          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLog2DartLogRecord;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_Log2DartLogRecord => wire
-          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLog2DartLogRecord;
-
   @protected
   AnyhowException dco_decode_AnyhowException(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return AnyhowException(raw as String);
-  }
-
-  @protected
-  Log2DartLogRecord
-      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLog2DartLogRecord(
-          dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return Log2DartLogRecordImpl.frbInternalDcoDecode(raw as List<dynamic>);
-  }
-
-  @protected
-  Log2DartLogRecord
-      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLog2DartLogRecord(
-          dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return Log2DartLogRecordImpl.frbInternalDcoDecode(raw as List<dynamic>);
-  }
-
-  @protected
-  Log2DartLogRecord
-      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLog2DartLogRecord(
-          dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return Log2DartLogRecordImpl.frbInternalDcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -449,17 +218,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  Log2DartLogRecord
-      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLog2DartLogRecord(
-          dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return Log2DartLogRecordImpl.frbInternalDcoDecode(raw as List<dynamic>);
-  }
-
-  @protected
   RustStreamSink<Log2DartLogRecord>
-      dco_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLog2DartLogRecord_Sse(
-          dynamic raw) {
+      dco_decode_StreamSink_log_2_dart_log_record_Sse(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     throw UnimplementedError();
   }
@@ -471,15 +231,25 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  bool dco_decode_bool(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return raw as bool;
+  }
+
+  @protected
+  int dco_decode_box_autoadd_u_32(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return raw as int;
+  }
+
+  @protected
   FRBLogger dco_decode_frb_logger(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     final arr = raw as List<dynamic>;
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return FRBLogger(
-      streamSink:
-          dco_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLog2DartLogRecord_Sse(
-              arr[0]),
+      streamSink: dco_decode_StreamSink_log_2_dart_log_record_Sse(arr[0]),
     );
   }
 
@@ -496,7 +266,42 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  Log2DartLogRecord dco_decode_log_2_dart_log_record(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    final arr = raw as List<dynamic>;
+    if (arr.length != 7)
+      throw Exception('unexpected arr length: expect 7 but see ${arr.length}');
+    return Log2DartLogRecord(
+      levelNumber: dco_decode_u_16(arr[0]),
+      message: dco_decode_String(arr[1]),
+      loggerName: dco_decode_String(arr[2]),
+      rustLog: dco_decode_bool(arr[3]),
+      modulePath: dco_decode_opt_String(arr[4]),
+      fileName: dco_decode_opt_String(arr[5]),
+      lineNumber: dco_decode_opt_box_autoadd_u_32(arr[6]),
+    );
+  }
+
+  @protected
+  String? dco_decode_opt_String(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return raw == null ? null : dco_decode_String(raw);
+  }
+
+  @protected
+  int? dco_decode_opt_box_autoadd_u_32(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return raw == null ? null : dco_decode_box_autoadd_u_32(raw);
+  }
+
+  @protected
   int dco_decode_u_16(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return raw as int;
+  }
+
+  @protected
+  int dco_decode_u_32(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return raw as int;
   }
@@ -514,43 +319,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  BigInt dco_decode_usize(dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return dcoDecodeU64(raw);
-  }
-
-  @protected
   AnyhowException sse_decode_AnyhowException(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner = sse_decode_String(deserializer);
     return AnyhowException(inner);
-  }
-
-  @protected
-  Log2DartLogRecord
-      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLog2DartLogRecord(
-          SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return Log2DartLogRecordImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
-  }
-
-  @protected
-  Log2DartLogRecord
-      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLog2DartLogRecord(
-          SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return Log2DartLogRecordImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
-  }
-
-  @protected
-  Log2DartLogRecord
-      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLog2DartLogRecord(
-          SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return Log2DartLogRecordImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
@@ -559,21 +331,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner = sse_decode_u_16(deserializer);
-    return FRBLogger.fromLevelFilter(inner);
-  }
-
-  @protected
-  Log2DartLogRecord
-      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLog2DartLogRecord(
-          SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return Log2DartLogRecordImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+    return FRBLogger.log_level_from_number(inner);
   }
 
   @protected
   RustStreamSink<Log2DartLogRecord>
-      sse_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLog2DartLogRecord_Sse(
+      sse_decode_StreamSink_log_2_dart_log_record_Sse(
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     throw UnimplementedError('Unreachable ()');
@@ -587,11 +350,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  bool sse_decode_bool(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return deserializer.buffer.getUint8() != 0;
+  }
+
+  @protected
+  int sse_decode_box_autoadd_u_32(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return (sse_decode_u_32(deserializer));
+  }
+
+  @protected
   FRBLogger sse_decode_frb_logger(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var var_streamSink =
-        sse_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLog2DartLogRecord_Sse(
-            deserializer);
+        sse_decode_StreamSink_log_2_dart_log_record_Sse(deserializer);
     return FRBLogger(streamSink: var_streamSink);
   }
 
@@ -609,9 +383,58 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  Log2DartLogRecord sse_decode_log_2_dart_log_record(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var var_levelNumber = sse_decode_u_16(deserializer);
+    var var_message = sse_decode_String(deserializer);
+    var var_loggerName = sse_decode_String(deserializer);
+    var var_rustLog = sse_decode_bool(deserializer);
+    var var_modulePath = sse_decode_opt_String(deserializer);
+    var var_fileName = sse_decode_opt_String(deserializer);
+    var var_lineNumber = sse_decode_opt_box_autoadd_u_32(deserializer);
+    return Log2DartLogRecord(
+        levelNumber: var_levelNumber,
+        message: var_message,
+        loggerName: var_loggerName,
+        rustLog: var_rustLog,
+        modulePath: var_modulePath,
+        fileName: var_fileName,
+        lineNumber: var_lineNumber);
+  }
+
+  @protected
+  String? sse_decode_opt_String(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+
+    if (sse_decode_bool(deserializer)) {
+      return (sse_decode_String(deserializer));
+    } else {
+      return null;
+    }
+  }
+
+  @protected
+  int? sse_decode_opt_box_autoadd_u_32(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+
+    if (sse_decode_bool(deserializer)) {
+      return (sse_decode_box_autoadd_u_32(deserializer));
+    } else {
+      return null;
+    }
+  }
+
+  @protected
   int sse_decode_u_16(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return deserializer.buffer.getUint16();
+  }
+
+  @protected
+  int sse_decode_u_32(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return deserializer.buffer.getUint32();
   }
 
   @protected
@@ -626,52 +449,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  BigInt sse_decode_usize(SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return deserializer.buffer.getBigUint64();
-  }
-
-  @protected
-  bool sse_decode_bool(SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return deserializer.buffer.getUint8() != 0;
-  }
-
-  @protected
   void sse_encode_AnyhowException(
       AnyhowException self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_String(self.message, serializer);
-  }
-
-  @protected
-  void
-      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLog2DartLogRecord(
-          Log2DartLogRecord self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_usize(
-        (self as Log2DartLogRecordImpl).frbInternalSseEncode(move: true),
-        serializer);
-  }
-
-  @protected
-  void
-      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLog2DartLogRecord(
-          Log2DartLogRecord self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_usize(
-        (self as Log2DartLogRecordImpl).frbInternalSseEncode(move: false),
-        serializer);
-  }
-
-  @protected
-  void
-      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLog2DartLogRecord(
-          Log2DartLogRecord self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_usize(
-        (self as Log2DartLogRecordImpl).frbInternalSseEncode(move: false),
-        serializer);
   }
 
   @protected
@@ -683,25 +464,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void
-      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLog2DartLogRecord(
-          Log2DartLogRecord self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_usize(
-        (self as Log2DartLogRecordImpl).frbInternalSseEncode(move: null),
-        serializer);
-  }
-
-  @protected
-  void
-      sse_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLog2DartLogRecord_Sse(
-          RustStreamSink<Log2DartLogRecord> self, SseSerializer serializer) {
+  void sse_encode_StreamSink_log_2_dart_log_record_Sse(
+      RustStreamSink<Log2DartLogRecord> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_String(
         self.setupAndSerialize(
             codec: SseCodec(
-          decodeSuccessData:
-              sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLog2DartLogRecord,
+          decodeSuccessData: sse_decode_log_2_dart_log_record,
           decodeErrorData: sse_decode_AnyhowException,
         )),
         serializer);
@@ -714,9 +483,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void sse_encode_bool(bool self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    serializer.buffer.putUint8(self ? 1 : 0);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_u_32(int self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_u_32(self, serializer);
+  }
+
+  @protected
   void sse_encode_frb_logger(FRBLogger self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLog2DartLogRecord_Sse(
+    sse_encode_StreamSink_log_2_dart_log_record_Sse(
         self.streamSink, serializer);
   }
 
@@ -735,9 +516,48 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void sse_encode_log_2_dart_log_record(
+      Log2DartLogRecord self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_u_16(self.levelNumber, serializer);
+    sse_encode_String(self.message, serializer);
+    sse_encode_String(self.loggerName, serializer);
+    sse_encode_bool(self.rustLog, serializer);
+    sse_encode_opt_String(self.modulePath, serializer);
+    sse_encode_opt_String(self.fileName, serializer);
+    sse_encode_opt_box_autoadd_u_32(self.lineNumber, serializer);
+  }
+
+  @protected
+  void sse_encode_opt_String(String? self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+
+    sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      sse_encode_String(self, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_opt_box_autoadd_u_32(int? self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+
+    sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      sse_encode_box_autoadd_u_32(self, serializer);
+    }
+  }
+
+  @protected
   void sse_encode_u_16(int self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     serializer.buffer.putUint16(self);
+  }
+
+  @protected
+  void sse_encode_u_32(int self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    serializer.buffer.putUint32(self);
   }
 
   @protected
@@ -750,64 +570,4 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void sse_encode_unit(void self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
   }
-
-  @protected
-  void sse_encode_usize(BigInt self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    serializer.buffer.putBigUint64(self);
-  }
-
-  @protected
-  void sse_encode_bool(bool self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    serializer.buffer.putUint8(self ? 1 : 0);
-  }
-}
-
-@sealed
-class Log2DartLogRecordImpl extends RustOpaque implements Log2DartLogRecord {
-  // Not to be used by end users
-  Log2DartLogRecordImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  Log2DartLogRecordImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount:
-        RustLib.instance.api.rust_arc_increment_strong_count_Log2DartLogRecord,
-    rustArcDecrementStrongCount:
-        RustLib.instance.api.rust_arc_decrement_strong_count_Log2DartLogRecord,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_Log2DartLogRecordPtr,
-  );
-
-  Level get level =>
-      RustLib.instance.api.crateApiMinimalLog2DartLogRecordAutoAccessorGetLevel(
-        that: this,
-      );
-
-  String get loggerName => RustLib.instance.api
-          .crateApiMinimalLog2DartLogRecordAutoAccessorGetLoggerName(
-        that: this,
-      );
-
-  String get message => RustLib.instance.api
-          .crateApiMinimalLog2DartLogRecordAutoAccessorGetMessage(
-        that: this,
-      );
-
-  set level(Level level) =>
-      RustLib.instance.api.crateApiMinimalLog2DartLogRecordAutoAccessorSetLevel(
-          that: this, level: level);
-
-  set loggerName(String loggerName) => RustLib.instance.api
-      .crateApiMinimalLog2DartLogRecordAutoAccessorSetLoggerName(
-          that: this, loggerName: loggerName);
-
-  set message(String message) => RustLib.instance.api
-      .crateApiMinimalLog2DartLogRecordAutoAccessorSetMessage(
-          that: this, message: message);
 }
