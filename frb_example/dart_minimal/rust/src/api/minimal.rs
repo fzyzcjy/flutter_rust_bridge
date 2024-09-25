@@ -162,78 +162,46 @@ impl log::Log for FRBLogger {
     }
 }
 
-// needed so we can convert u16 <-> DartLoggingLevel <-> log::LogLevel
-enum DartLoggingLevel {
-    All = 0,
-    Finest = 300,
-    Finer = 400,
-    Fine = 500,
-    Config = 700,
-    Info = 800,
-    Warning = 900,
-    Severe = 1000,
-    Shout = 1200,
-    Off = 2000,
-}
-
-impl From<u16> for DartLoggingLevel {
-    fn from(value: u16) -> Self {
-        match value {
-            0..=299 => DartLoggingLevel::All,
-            300..=399 => DartLoggingLevel::Finest,
-            400..=499 => DartLoggingLevel::Finer,
-            500..=699 => DartLoggingLevel::Fine,
-            700..=799 => DartLoggingLevel::Config,
-            800..=899 => DartLoggingLevel::Info,
-            900..=999 => DartLoggingLevel::Warning,
-            1000..=1199 => DartLoggingLevel::Severe,
-            1200..=1999 => DartLoggingLevel::Shout,
-            2000.. => DartLoggingLevel::Off,
-        }
+fn from_u16(value: u16) -> LevelFilter {
+    match value {
+        // 0..=299 => LevelFilter::All,
+        // 300..=399 => LevelFilter::Finest,
+        // 400..=499 => LevelFilter::Finer,
+        // 500..=699 => LevelFilter::Fine,
+        0..=699 => LevelFilter::Trace,
+        300..=799 => LevelFilter::Debug,
+        800..=899 => LevelFilter::Info,
+        900..=999 => LevelFilter::Warn,
+        // 1200..=1999 => LevelFilter::Shout,
+        1000..=1999 => LevelFilter::Error,
+        2000.. => LevelFilter::Off,
     }
 }
 
-impl From<LevelFilter> for DartLoggingLevel {
-    fn from(level: LevelFilter) -> Self {
-        match level {
-            LevelFilter::Trace => DartLoggingLevel::All,
-            // LevelFilter::Trace => DartLoggingLevel::Finest,
-            // LevelFilter::Trace => DartLoggingLevel::Finer,
-            // LevelFilter::Trace => DartLoggingLevel::Fine,
-            LevelFilter::Debug => DartLoggingLevel::Config,
-            LevelFilter::Info => DartLoggingLevel::Info,
-            LevelFilter::Warn => DartLoggingLevel::Warning,
-            LevelFilter::Error => DartLoggingLevel::Severe,
-            // LevelFilter::Error => DartLoggingLevel::Shout,
-            LevelFilter::Off => DartLoggingLevel::Off,
-        }
-    }
-}
-impl From<DartLoggingLevel> for LevelFilter {
-    fn from(level: DartLoggingLevel) -> Self {
-        match level {
-            DartLoggingLevel::All => LevelFilter::Trace,
-            DartLoggingLevel::Finest => LevelFilter::Trace,
-            DartLoggingLevel::Finer => LevelFilter::Trace,
-            DartLoggingLevel::Fine => LevelFilter::Trace,
-            DartLoggingLevel::Config => LevelFilter::Debug,
-            DartLoggingLevel::Info => LevelFilter::Info,
-            DartLoggingLevel::Warning => LevelFilter::Warn,
-            DartLoggingLevel::Severe => LevelFilter::Error,
-            DartLoggingLevel::Shout => LevelFilter::Error,
-            DartLoggingLevel::Off => LevelFilter::Off,
-        }
+fn to_u16(value: LevelFilter) -> u16 {
+    match value {
+        // 0..=299 => LevelFilter::All,
+        // 300..=399 => LevelFilter::Finest,
+        // 400..=499 => LevelFilter::Finer,
+        // 500..=699 => LevelFilter::Fine,
+        LevelFilter::Trace => 0,
+        LevelFilter::Debug => 500,
+        LevelFilter::Info => 800,
+        LevelFilter::Warn => 900,
+        // 1200..=1999 => LevelFilter::Shout,
+        LevelFilter::Error => 1000,
+        LevelFilter::Off => 2000,
     }
 }
 
 /// custom coders for log::LogLevel <-> Dart:logging::Level
 #[frb(rust2dart(dart_type = "Level", dart_code = "FRBLogger.log_level_from_number({})"))]
 pub fn encode_log_level_filter(level: LevelFilter) -> u16 {
-    DartLoggingLevel::from(level) as u16
+    to_u16(level)
 }
 #[frb(dart2rust(dart_type = "Level", dart_code = "{}.value"))]
 pub fn decode_log_level_filter(level_number: u16) -> LevelFilter {
-    DartLoggingLevel::from(level_number).into()
+    from_u16(level_number)
 }
 
 // mapping log crate's [Record](https://docs.rs/log/latest/log/struct.Record.html) to dart's Logger LogRecord
@@ -253,7 +221,7 @@ pub struct Log2DartLogRecord {
 impl From<&Record<'_>> for Log2DartLogRecord {
     fn from(record: &Record) -> Self {
         Self {
-            level_number: DartLoggingLevel::from(record.level().to_level_filter()) as u16,
+            level_number: to_u16(record.level().to_level_filter()),
             message: record.args().to_string(),
             logger_name: record.target().into(),
             rust_log: true,
