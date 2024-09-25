@@ -1,8 +1,21 @@
 # Logging
 
 Flutter Rust Bridge comes with logging build in - but you can override it with your own logging framework of choice.
+More concrete, you can overwrite the log outputting function with the one of your loging framework(s) of choice, which will automatically log statements from rust as well.
 
+
+## Setup
 // TODO update what needs to be done for setup
+In rust simply use `log::info!()` (or any of the [log crates log levels](https://docs.rs/log/latest/log/enum.Level.html)) to forward your log message to dart.
+Note that the log levels are translated to [darts logging package equivalents](https://pub.dev/documentation/logging/latest/logging/Level-class.html).
+
+In dart you are initializing the logging setup by calling `FRBLogger.init_logging();`.
+This not only sets logging up for the rust side, it returns the first logger you can use as well.
+Doing this in `main.dart`, preferably as a global variable `final LOGGER = FRBLogger.init_logger();` is recommended, so no rust log statement is executed before this setup.
+
+
+
+
 
 If using the template by `flutter_rust_bridge_codegen create/integrate`, the "print logs to console" is configured by default,
 via the auto-generated call to `flutter_rust_bridge::setup_default_user_utils()`.
@@ -27,6 +40,7 @@ In Dart, you need to call `LOGGER.info('Hello world');` (or similar variants).
 
 In Dart a global variable `final LOGGER = Logger('frb_logger');` is available that can be used to log messages (though you can define your own variable anywhere, if you want to destinguish the logging source better. `frb_logger` is the name of the logger - one can have multiple names defined.).
 
+## Customization
 ### change the log level
 Call `Logger.root.level = newMaxLoglevel;`, where `newMaxLogLevel` is a log level of `Logger.Level`. 
 
@@ -36,7 +50,7 @@ FRB is taking care, that the level for the rust logs is changed as well.
 You can change the log level as ofthen as you want.
 Because logs are asynchronious, it is possible that some logs still or are nor yet showing up, when changing the level in the middle of the program execution (instead of the begining).
 
-### via an environment variable
+#### via an environment variable
 You can set the log level via an environment variable as well. 
 Set `Log_Level` to a value from the [Dart logging package](https://pub.dev/documentation/logging/latest/logging/Level-class.html).
 This will overwrite any programatically set level.

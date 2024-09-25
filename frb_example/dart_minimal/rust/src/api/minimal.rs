@@ -28,6 +28,7 @@ static void _default_log_function(Log2DartLogRecord record) {
   print('${DateTime.now()} [${log_level_from_number(record.levelNumber)} @${record.rustLog? 'Rust' : 'Dart' }]: ${record.loggerName} \\n   ${record.message}');
 }
 
+/// initialize the logging system, including the rust logger
 static Logger init_logger(
     {String name = 'RootLogger', Level maxLoglevel = Level.INFO,
     Function(Log2DartLogRecord) custom_log_function = _default_log_function}) {
@@ -67,6 +68,14 @@ static Logger init_logger(
   });
 
     return logger;
+  }
+
+  /// get a new named logger after getting the inital logger with init_logger()
+  static Logger getLogger(String name) {
+      if (Logger.attachedLoggers.isEmpty) {
+        throw Exception('FRBLogger.initLogging() must be called first');
+    }
+    return Logger(name);
   }
 
 static Level _log_level_from_str(String levelStr) {
