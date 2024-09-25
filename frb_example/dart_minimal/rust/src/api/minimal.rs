@@ -1,5 +1,3 @@
-// TODO replace with re-export
-// use flutter_rust_bridge::log_2_dart::log;
 use flutter_rust_bridge::enable_frb_logging;
 use flutter_rust_bridge::frb;
 use log;
