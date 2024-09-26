@@ -11,12 +11,15 @@ import 'package:logging/logging.dart';
 // These functions are ignored because they are not marked as `pub`: `from_u16`, `to_u16`
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `enabled`, `flush`, `from`, `log`
 
-Future<int> minimalAdder({required int a, required int b}) =>
-    RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b);
-
+/// usees custom type translation to translate between log::LogLevel and Dart:logging::Level
+/// loglevel is represented by a number, so that we don't need to put \import `import 'package:logging/logging.dart';`
+/// into the dart preamble in flutter_rust_bridge.yaml
 Stream<Log2DartLogRecord> initializeLog2Dart({required int maxLogLevel}) =>
     RustLib.instance.api
         .crateApiMinimalInitializeLog2Dart(maxLogLevel: maxLogLevel);
+
+Future<int> minimalAdder({required int a, required int b}) =>
+    RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b);
 
 class FRBLogger {
   final RustStreamSink<Log2DartLogRecord> streamSink;
@@ -29,7 +32,7 @@ class FRBLogger {
   static Future<FRBLogger> newInstance() =>
       RustLib.instance.api.crateApiMinimalFrbLoggerNew();
 
-  static void _default_log_function(Log2DartLogRecord record) {
+  static void default_log_function(Log2DartLogRecord record) {
     print(
         '${DateTime.now()} [${log_level_from_number(record.levelNumber)} @${record.rustLog ? 'Rust' : 'Dart'}]: ${record.loggerName} \n   ${record.message}');
   }
@@ -38,8 +41,7 @@ class FRBLogger {
   static Logger init_logger(
       {String name = 'RootLogger',
       String maxLoglevel = 'INFO',
-      Function(Log2DartLogRecord) custom_log_function =
-          _default_log_function}) {
+      Function(Log2DartLogRecord) custom_log_function = default_log_function}) {
     String? env_log_level = Platform.environment['LOG_LEVEL'];
     if (env_log_level != null) {
       print(
@@ -145,6 +147,8 @@ class FRBLogger {
           streamSink == other.streamSink;
 }
 
+/// mapping log crate's [Record](https://docs.rs/log/latest/log/struct.Record.html) to dart's Logger [LogRecord](https://pub.dev/documentation/logging/latest/logging/LogRecord-class.html).
+/// intermediary struct to avoid Record's lifetimes
 class Log2DartLogRecord {
   final int levelNumber;
   final String message;

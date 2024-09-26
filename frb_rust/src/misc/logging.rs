@@ -1,23 +1,22 @@
 #[macro_export]
 macro_rules! enable_frb_logging {
     () => {
-    use crate::frb_generated::StreamSink;
-// use flutter_rust_bridge::frb;
+use crate::frb_generated::StreamSink;
+use flutter_rust_bridge::frb as frb_4_log;
 pub use log::{LevelFilter, Metadata, Record};
 
-// #[frb(non_opaque)]
 #[frb(dart_code = "
 import 'dart:io';
 import 'package:logging/logging.dart';
 
-static void _default_log_function(Log2DartLogRecord record) {
+static void default_log_function(Log2DartLogRecord record) {
   print('${DateTime.now()} [${log_level_from_number(record.levelNumber)} @${record.rustLog? 'Rust' : 'Dart' }]: ${record.loggerName} \\n   ${record.message}');
 }
 
 /// initialize the logging system, including the rust logger
 static Logger init_logger(
     {String name = 'RootLogger', String maxLoglevel = 'INFO',
-    Function(Log2DartLogRecord) custom_log_function = _default_log_function}) {
+    Function(Log2DartLogRecord) custom_log_function = default_log_function}) {
 
       String? env_log_level = Platform.environment['LOG_LEVEL'];
     if (env_log_level != null) {
@@ -123,9 +122,9 @@ impl FRBLogger {
         panic!("Initialize with `final LOGGER = FRBLogger.init_logger();`");
     }
 }
-// usees custom type translation to translate between log::LogLevel and Dart:logging::Level
-// loglevel is represented by a number, so that we don't need to put \import `import 'package:logging/logging.dart';`
-// into the dart preamble in flutter_rust_bridge.yaml
+/// usees custom type translation to translate between log::LogLevel and Dart:logging::Level
+/// loglevel is represented by a number, so that we don't need to put \import `import 'package:logging/logging.dart';`
+/// into the dart preamble in flutter_rust_bridge.yaml
 pub fn initialize_log2dart(log_stream: StreamSink<Log2DartLogRecord>, max_log_level: u16) {
     log::set_boxed_logger(Box::new(FRBLogger {
         stream_sink: log_stream,
@@ -201,18 +200,17 @@ pub fn decode_log_level_filter(level_number: u16) -> LevelFilter {
     from_u16(level_number)
 }
 
-// mapping log crate's [Record](https://docs.rs/log/latest/log/struct.Record.html) to dart's Logger LogRecord
-// intermediary struct to avoid Record's lifetimes
-// #[frb(opaque)]
+/// mapping log crate's [Record](https://docs.rs/log/latest/log/struct.Record.html) to dart's Logger [LogRecord](https://pub.dev/documentation/logging/latest/logging/LogRecord-class.html).
+/// intermediary struct to avoid Record's lifetimes
 pub struct Log2DartLogRecord {
-    pub level_number: u16,   // log::Recod::Level, Dart::Logger::LogRecord::Level
-    pub message: String, // log::Recod::args + line_number + file_name + module_path , Dart::Logger::LogRecord::message + object + error + stackTrace
-    pub logger_name: String, // log::Recod::target, Dart::Logger::LogRecord::loggerName
-    // pub time: String, // log::Recod::?, Dart::Logger::LogRecord::time --> omitted, as there is no time record in the log crate's Record.
-    pub rust_log: bool,
-    pub module_path: Option<String>,
-    pub file_name: Option<String>,
-    pub line_number: Option<u32>,
+    pub level_number: u16,   // The log level encoded. Decode with `FRBLogger.log_level_from_number(x)` : Rust::log::Recod::Level, Dart::Logger::LogRecord::Level
+    pub message: String, // The String given to the log statement: Rust::log::Recod::args, Dart::Logger::LogRecord::message
+    pub logger_name: String, // The name of the logger given by `FRBLogger.init_logger(name: "MyClass");`, Rust::log::Recod::target, Dart::Logger::LogRecord::loggerName
+    // pub time: String, // log::Recod::?, Dart::Logger::LogRecord::time --> omitted, as there is no time record in the log crate's Record
+    pub rust_log: bool, // true, if the log statement originates from Rust code
+    pub module_path: Option<String>, // Rust::log::Recod::module_path, None for Dart
+    pub file_name: Option<String>, // Rust::log::Recod::file_name, None for Dart
+    pub line_number: Option<u32>, // Rust::log::Recod::line_number, None for Dart
 }
 
 impl From<&Record<'_>> for Log2DartLogRecord {
