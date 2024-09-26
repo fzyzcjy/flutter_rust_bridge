@@ -29,6 +29,7 @@
 - alexthe2: Add Option Datetime. Add empty structs. Improve doc. Add `r#`. Fix mirror enum bug.
 - Larpoux: Fix async generation. Update web-audio-api binding.
 - banool: Fix pubspec parsing. Fix symbol-stripping doc.
+- patmuk: Set MSRV. Fail fast. Improve message. Improve multiple docs.
 - anlumo: Fix freezed + methods. Non-clone RustOpaque.
 - temeddix: Fix broken CI. Custom num workers. Fix MacOS doc steps. Update doc. Make zero-copy defaultable.
 - NightFeather0615: Fix Vec bool.
@@ -38,7 +39,6 @@
 - OfficialBoyfriend: Fix error display.
 - wxitcode: Add org option. Support MacOS log. Fix a typo.
 - Tienisto: Add mock init.
-- patmuk: Set MSRV. Fail fast. Improve message. Improve multi docs.
 - Markus43: Fix folder removal.
 - Krysl: Add preamble.
 - w-ensink: Improve doc. Fix CI. Refactor. Add tests.
