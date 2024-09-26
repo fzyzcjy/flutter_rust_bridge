@@ -9,6 +9,7 @@ pub(crate) mod dart_keywords;
 pub(crate) mod dart_repository;
 mod enum_map;
 pub(crate) mod file_utils;
+pub mod logs;
 pub(crate) mod namespace;
 pub(crate) mod path_utils;
 pub(crate) mod rust_project_utils;
