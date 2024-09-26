@@ -26,10 +26,10 @@ mod rust_path_parser;
 
 impl InternalConfig {
     pub(crate) fn parse(config: &Config, meta_config: &MetaConfig) -> Result<Self> {
-        let base_dir = (config.base_dir.as_ref())
-            .filter(|s| !s.is_empty())
-            .map(PathBuf::from)
-            .unwrap_or(std::env::current_dir()?);
+        let base_dir = match (config.base_dir.as_ref().map(std::fs::canonicalize)) {
+            Some((Ok(path))) => path,
+            None | Some(Err(_)) => std::env::current_dir().expect("failed to get current dir"),
+        };
         debug!("InternalConfig.parse base_dir={base_dir:?}");
 
         let rust_input = (config.rust_input.clone())
