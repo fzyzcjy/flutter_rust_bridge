@@ -1,6 +1,7 @@
 #[macro_export]
 macro_rules! enable_frb_logging {
     () => {
+#[allow(clippy::crate_in_macro_def)]
 use crate::frb_generated::StreamSink;
 use flutter_rust_bridge::frb as frb_4_log;
 pub use log::{LevelFilter, Metadata, Record};
