@@ -34,7 +34,7 @@ class FRBLogger {
 
   static void default_log_function(Log2DartLogRecord record) {
     print(
-        '${DateTime.now()} [${log_level_from_number(record.levelNumber)} @${record.rustLog ? 'Rust' : 'Dart'}]: ${record.loggerName} \n   ${record.message}');
+        '[${DateTime.now()} ${log_level_from_number(record.levelNumber)} @${record.rustLog ? 'Rust' : 'Dart'} ${record.loggerName}] ${record.message}');
   }
 
   /// initialize the logging system, including the rust logger
