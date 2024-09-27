@@ -1,4 +1,4 @@
-use std::sync::atomic::{AtomicU64, Ordering};
+use crate::misc::atomic::{AtomicU64, Ordering};
 
 #[derive(PartialEq, Eq, PartialOrd, Ord, Clone, Copy)]
 pub struct LockableOrder(u64);
