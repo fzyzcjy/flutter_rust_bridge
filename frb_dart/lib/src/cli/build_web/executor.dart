@@ -36,17 +36,20 @@ class BuildWebArgs {
   final String? dartCompileJsEntrypoint;
 
   /// {@macro flutter_rust_bridge.cli}
-  const BuildWebArgs({
-    required this.output,
-    required this.release,
-    required this.verbose,
-    required this.rustCrateDir,
-    required this.cargoBuildArgs,
-    required this.wasmBindgenArgs,
-    required this.wasmPackRustupToolchain,
-    required this.wasmPackRustflags,
-    required this.dartCompileJsEntrypoint,
-  });
+  final List<String> features;
+
+  /// {@macro flutter_rust_bridge.cli}
+  const BuildWebArgs(
+      {required this.output,
+      required this.release,
+      required this.verbose,
+      required this.rustCrateDir,
+      required this.cargoBuildArgs,
+      required this.wasmBindgenArgs,
+      required this.wasmPackRustupToolchain,
+      required this.wasmPackRustflags,
+      required this.dartCompileJsEntrypoint,
+      this.features = const []});
 }
 
 extension on BuildWebArgs {

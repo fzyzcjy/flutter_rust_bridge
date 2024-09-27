@@ -38,6 +38,7 @@ pub struct Config {
     pub stop_on_error: Option<bool>,
     pub dump: Option<Vec<ConfigDumpContent>>,
     pub dump_all: Option<bool>,
+    pub rust_features: Option<Vec<String>>,
 }
 
 #[derive(Debug, Serialize, Deserialize, Default)]
@@ -93,4 +94,5 @@ generate_merge!(
     stop_on_error,
     dump,
     dump_all,
+    rust_features,
 );

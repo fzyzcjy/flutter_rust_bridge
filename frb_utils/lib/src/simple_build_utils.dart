@@ -9,7 +9,7 @@ import 'package:native_assets_cli/native_assets_cli.dart';
 /// Do not export this function for public use yet, since Dart's `build.dart` support
 /// is still experimental.
 // ref: https://github.com/dart-lang/native/blob/main/pkgs/native_assets_cli/example/native_add_library/build.dart
-void simpleBuild(List<String> args) async {
+void simpleBuild(List<String> args, {List<String> features = const []}) async {
   final buildConfig = await BuildConfig.fromArgs(args);
   final buildOutput = BuildOutput();
 
@@ -27,6 +27,7 @@ void simpleBuild(List<String> args) async {
     print(
         'frb_utils::simpleBuild SKIP BUILD since environment variable requires this');
   } else {
+    final featureArgs = features.expand((x) => ['--features', x]).toList();
     await runCommand(
       'cargo',
       [
@@ -34,6 +35,7 @@ void simpleBuild(List<String> args) async {
         'build',
         '--release',
         ...cargoExtraArgs,
+        ...featureArgs,
       ],
       pwd: rustCrateDir.toFilePath(),
       printCommandInStderr: true,
