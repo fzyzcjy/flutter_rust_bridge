@@ -1,3 +1,4 @@
+pub(crate) mod atomic;
 pub(crate) mod dart_dynamic;
 pub(crate) mod into_into_dart;
 pub(crate) mod logs;
