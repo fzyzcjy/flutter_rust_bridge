@@ -406,6 +406,15 @@
       ]
     },
     {
+      "login": "kyrias",
+      "name": "Johannes Löthberg",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2285387?v=4",
+      "profile": "https://remmy.io",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
       "login": "Markus43",
       "name": "Markus",
       "avatar_url": "https://avatars.githubusercontent.com/u/23716360?v=4",
@@ -971,15 +980,6 @@
       "profile": "https://thesimplekid.com",
       "contributions": [
         "doc"
-      ]
-    },
-    {
-      "login": "kyrias",
-      "name": "Johannes Löthberg",
-      "avatar_url": "https://avatars.githubusercontent.com/u/2285387?v=4",
-      "profile": "https://remmy.io",
-      "contributions": [
-        "code"
       ]
     }
   ],

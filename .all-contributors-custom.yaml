@@ -39,6 +39,7 @@
 - OfficialBoyfriend: Fix error display.
 - wxitcode: Add org option. Support MacOS log. Fix a typo.
 - Tienisto: Add mock init.
+- kyrias: Use portable atomic.
 - Markus43: Fix folder removal.
 - Krysl: Add preamble.
 - w-ensink: Improve doc. Fix CI. Refactor. Add tests.
