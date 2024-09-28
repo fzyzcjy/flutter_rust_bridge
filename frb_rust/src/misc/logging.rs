@@ -17,7 +17,7 @@ static void default_log_function(Log2DartLogRecord record) {
 
 /// initialize the logging system, including the rust logger
 static Logger init_logger(
-    {String name = 'RootLogger', String maxLoglevel = 'INFO',
+    {String name = 'FRBLogger', String maxLoglevel = 'INFO',
     Function(Log2DartLogRecord) custom_log_function = default_log_function}) {
 
       String? env_log_level = Platform.environment['LOG_LEVEL'];

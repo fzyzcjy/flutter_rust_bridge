@@ -36,7 +36,7 @@ To log from **Rust** the only thing one needs to do (after the setup above) is c
 For **Dart**, as described in _setup_, you create a `LOGGER` instance by calling `final LOGGER = FRBLogger.init_logger();`.
 To issue a log statement, you then call `LOGGER.info('Hello world');` (or similar variants) on that instance.
 
-This instance is called `RootLogger` - but by specifying `FRBLogger.init_logger(name: "MyClass");` you can give it another name.
+This instance is called `FRBLogger` - but by specifying `FRBLogger.init_logger(name: "MyClass");` you can give it another name.
 
 While Rust's log crate captures the module, file and line number of the log statement, Dart's logging package does not. Here it is ideomatic to create a new instance of the logger in each file, and give it a name that tells you where your log statement is originating from.
 Usually one calls `final OTHER_LOGGER = Logger("other_logger");` from the library directly.
