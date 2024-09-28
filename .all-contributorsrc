@@ -306,21 +306,21 @@
       ]
     },
     {
-      "login": "banool",
-      "name": "Daniel Porteous (dport)",
-      "avatar_url": "https://avatars.githubusercontent.com/u/7816187?v=4",
-      "profile": "https://dport.me",
-      "contributions": [
-        "doc"
-      ]
-    },
-    {
       "login": "patmuk",
       "name": "Patrick Mukherjee",
       "avatar_url": "https://avatars.githubusercontent.com/u/2045440?v=4",
       "profile": "https://patrick.mukherjee.de",
       "contributions": [
         "code"
+      ]
+    },
+    {
+      "login": "banool",
+      "name": "Daniel Porteous (dport)",
+      "avatar_url": "https://avatars.githubusercontent.com/u/7816187?v=4",
+      "profile": "https://dport.me",
+      "contributions": [
+        "doc"
       ]
     },
     {
