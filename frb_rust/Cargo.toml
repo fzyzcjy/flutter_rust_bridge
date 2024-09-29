@@ -74,6 +74,3 @@ thread-pool = ["dep:threadpool"]
 rust-async = ["dep:tokio", "dep:futures", "dep:wasm-bindgen-futures"]
 user-utils = []
 dart-opaque = ["dep:dart-sys-fork"]
-
-[lints.rust]
-unexpected_cfgs = { level = "allow", check-cfg = ['cfg(wasm)'] }
