@@ -1,7 +1,7 @@
 use super::{DartOpaque, GeneralizedDartHandle};
 use crate::generalized_isolate::IntoDart;
 use crate::platform_types::DartAbi;
-#[cfg(wasm)]
+#[cfg(target_family = "wasm")]
 use wasm_bindgen::prelude::*;
 
 impl From<DartOpaque> for DartAbi {
@@ -16,13 +16,13 @@ impl DartOpaque {
     }
 }
 
-#[cfg(wasm)]
+#[cfg(target_family = "wasm")]
 #[wasm_bindgen]
 pub unsafe fn dart_opaque_rust2dart_decode(ptr: usize) -> GeneralizedDartHandle {
     dart_opaque_rust2dart_decode_inner(ptr)
 }
 
-#[cfg(not(wasm))]
+#[cfg(not(target_family = "wasm"))]
 #[no_mangle]
 pub unsafe extern "C" fn dart_opaque_rust2dart_decode(ptr: usize) -> GeneralizedDartHandle {
     dart_opaque_rust2dart_decode_inner(ptr)

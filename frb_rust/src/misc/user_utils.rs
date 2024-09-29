@@ -10,7 +10,7 @@ pub fn setup_default_user_utils() {
 }
 
 fn setup_backtrace() {
-    #[cfg(not(wasm))]
+    #[cfg(not(target_family = "wasm"))]
     if std::env::var("RUST_BACKTRACE").err() == Some(std::env::VarError::NotPresent) {
         std::env::set_var("RUST_BACKTRACE", "1");
     } else {
@@ -33,7 +33,7 @@ fn setup_log_to_console() {
         .level_filter(log::LevelFilter::Trace)
         .init();
 
-    #[cfg(wasm)]
+    #[cfg(target_family = "wasm")]
     let _ = crate::misc::web_utils::WebConsoleLogger::init();
 
     // TODO add more platforms

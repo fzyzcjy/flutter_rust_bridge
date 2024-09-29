@@ -1,14 +1,14 @@
 use crate::for_generated::{into_leak_vec_ptr, new_leak_vec_ptr, vec_from_leak_ptr};
 
-#[cfg(not(wasm))]
+#[cfg(not(target_family = "wasm"))]
 mod io;
-#[cfg(not(wasm))]
+#[cfg(not(target_family = "wasm"))]
 #[allow(unused)]
 pub use io::*;
 
-#[cfg(wasm)]
+#[cfg(target_family = "wasm")]
 mod web;
-#[cfg(wasm)]
+#[cfg(target_family = "wasm")]
 #[allow(unused)]
 pub use web::*;
 
