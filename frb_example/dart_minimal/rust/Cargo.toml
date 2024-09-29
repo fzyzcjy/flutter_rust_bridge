@@ -8,6 +8,5 @@ crate-type = ["cdylib"]
 
 [dependencies]
 flutter_rust_bridge = { path = "../../../frb_rust" }
-log = "0.4.20"
-# needed only for the log output
-chrono = "0.4.23"
+log = "0.4.20"  # Optional - can be removed if you do not want logging
+chrono = "0.4.23"  # Optional - can be removed if you do not want logging (needed only for the default log output)
