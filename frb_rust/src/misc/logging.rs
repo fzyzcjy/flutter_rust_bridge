@@ -23,9 +23,6 @@ macro_rules! enable_frb_logging {
   };
   (name = $RootLoggerName:expr, maxLoglevel = $maxLogLevel:expr, customLogFunction = $log_fn:expr) => {
     #[allow(clippy::crate_in_macro_def)]
-    use crate::frb_generated::StreamSink;
-    use flutter_rust_bridge::frb as frb_4_log;
-    use log::{LevelFilter, Metadata, Record};
 
     fn _default_log_fn (record: Log2DartLogRecord) {
       let timestamp = chrono::Local::now();
@@ -41,20 +38,20 @@ macro_rules! enable_frb_logging {
     fn _default_max_log_level  () -> String {
       "INFO".to_string()
     }
-    #[frb_4_log(sync)]
+    #[flutter_rust_bridge::frb(sync)]
     pub fn root_logger_name() -> String {
       $RootLoggerName.to_string()
     }
-    #[frb_4_log(sync)]
+    #[flutter_rust_bridge::frb(sync)]
     pub fn max_log_level() -> String {
       $maxLogLevel.to_string()
     }
-    #[frb_4_log(sync)]
+    #[flutter_rust_bridge::frb(sync)]
     pub fn log_fn(record: Log2DartLogRecord) {
       ($log_fn(record));
     }
 
-    #[frb_4_log(dart_code = "
+    #[flutter_rust_bridge::frb(dart_code = "
       import 'dart:io';
 
       import 'package:logging/logging.dart';
@@ -171,7 +168,7 @@ macro_rules! enable_frb_logging {
       }
     ")]
     pub struct FRBLogger {
-      pub stream_sink: StreamSink<Log2DartLogRecord>,
+      pub stream_sink: crate::frb_generated::StreamSink<Log2DartLogRecord>,
     }
 
     impl FRBLogger {
@@ -183,7 +180,7 @@ macro_rules! enable_frb_logging {
     /// usees custom type translation to translate between log::LogLevel and Dart:logging::Level
     /// loglevel is represented by a number, so that we don't need to put \import `import 'package:logging/logging.dart';`
     /// into the dart preamble in flutter_rust_bridge.yaml
-    pub fn initialize_log2dart(log_stream: StreamSink<Log2DartLogRecord>, max_log_level: u16) {
+    pub fn initialize_log2dart(log_stream: crate::frb_generated::StreamSink<Log2DartLogRecord>, max_log_level: u16) {
       log::set_boxed_logger(Box::new(FRBLogger {
         stream_sink: log_stream,
       }))
@@ -199,11 +196,11 @@ macro_rules! enable_frb_logging {
     }
 
     impl log::Log for FRBLogger {
-      fn enabled(&self, metadata: &Metadata) -> bool {
+      fn enabled(&self, metadata: &log::Metadata) -> bool {
         metadata.level() <= log::max_level()
       }
 
-      fn log(&self, record: &Record) {
+      fn log(&self, record: &log::Record) {
         if self.enabled(record.metadata()) {
           self.stream_sink
           .add(record.into())
@@ -216,56 +213,56 @@ macro_rules! enable_frb_logging {
       }
     }
 
-    fn from_u16(level: u16) -> LevelFilter {
+    fn from_u16(level: u16) -> log::LevelFilter {
       match level{
         // Level('ALL', 0);
         // Level('OFF', 2000);
         // Level('FINEST', 300);
         // Level('FINER', 400);
         // Level('FINE', 500);
-        0..=500 => LevelFilter::Trace,
+        0..=500 => log::LevelFilter::Trace,
         // Level('CONFIG', 700);
-        501..=700 => LevelFilter::Debug,
+        501..=700 => log::LevelFilter::Debug,
         // Level('INFO', 800);
-        701..=800 => LevelFilter::Info,
+        701..=800 => log::LevelFilter::Info,
         // Level('WARNING', 900);
-        801..=900 => LevelFilter::Warn,
+        801..=900 => log::LevelFilter::Warn,
         // Level('SEVERE', 1000);
         // Level('SHOUT', 1200);
-        901..2000 => LevelFilter::Error,
+        901..2000 => log::LevelFilter::Error,
         // Level('OFF', 2000);
-        2000.. => LevelFilter::Off,
+        2000.. => log::LevelFilter::Off,
       }
     }
 
-    fn to_u16(value: LevelFilter) -> u16 {
+    fn to_u16(value: log::LevelFilter) -> u16 {
       match value {
         // ALL → value = 0
-        LevelFilter::Trace => 0,
+        log::LevelFilter::Trace => 0,
         // FINEST → value = 300.
         // FINER → value = 400.
         // FINE → value = 500.
         // CONFIG → value = 700.
-        LevelFilter::Debug => 700,
+        log::LevelFilter::Debug => 700,
         // INFO → value = 800.
-        LevelFilter::Info => 800,
+        log::LevelFilter::Info => 800,
         // WARNING → value = 900.
-        LevelFilter::Warn => 900,
+        log::LevelFilter::Warn => 900,
         // SEVERE → value = 1000.
-        LevelFilter::Error => 1000,
+        log::LevelFilter::Error => 1000,
         // SHOUT → value = 1200.
         // OFF → value = 2000.
-        LevelFilter::Off => 2000,
+        log::LevelFilter::Off => 2000,
       }
     }
 
     /// custom coders for log::LogLevel <-> Dart:logging::Level
     #[frb(rust2dart(dart_type = "Level", dart_code = "FRBLogger.logLevelFromNumber({})"))]
-    pub fn encode_log_level_filter(level: LevelFilter) -> u16 {
+    pub fn encode_log_level_filter(level: log::LevelFilter) -> u16 {
       to_u16(level)
     }
     #[frb(dart2rust(dart_type = "Level", dart_code = "{}.value"))]
-    pub fn decode_log_level_filter(level_number: u16) -> LevelFilter {
+    pub fn decode_log_level_filter(level_number: u16) -> log::LevelFilter {
       from_u16(level_number)
     }
 
@@ -282,8 +279,8 @@ macro_rules! enable_frb_logging {
       pub line_number: Option<u32>, // Rust::log::Recod::line_number, None for Dart
     }
 
-    impl From<&Record<'_>> for Log2DartLogRecord {
-      fn from(record: &Record) -> Self {
+    impl From<&log::Record<'_>> for Log2DartLogRecord {
+      fn from(record: &log::Record) -> Self {
         Self {
           level_number: to_u16(record.level().to_level_filter()),
           message: record.args().to_string(),
