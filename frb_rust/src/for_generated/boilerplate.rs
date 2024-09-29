@@ -214,11 +214,9 @@ macro_rules! frb_generated_default_handler {
                 assert_eq!(
                     FLUTTER_RUST_BRIDGE_CODEGEN_VERSION,
                     flutter_rust_bridge::for_generated::FLUTTER_RUST_BRIDGE_RUNTIME_VERSION,
-                    // flutter_rust_bridge::for_generated::FLUTTER_RUST_BRIDGE_RUNTIME_VERSION,
                     "Please ensure flutter_rust_bridge's codegen ({}) and runtime ({}) versions are the same",
                     FLUTTER_RUST_BRIDGE_CODEGEN_VERSION,
                     flutter_rust_bridge::for_generated::FLUTTER_RUST_BRIDGE_RUNTIME_VERSION,
-                    // flutter_rust_bridge::for_generated::FLUTTER_RUST_BRIDGE_RUNTIME_VERSION,
                 );
 
                 $crate::DefaultHandler::new_simple(Default::default())
