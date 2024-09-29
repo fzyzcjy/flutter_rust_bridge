@@ -9,3 +9,5 @@ crate-type = ["cdylib", "staticlib"]
 [dependencies]
 flutter_rust_bridge = REPLACE_ME_RUST_FRB_DEPENDENCY
 log = "0.4.20"
+# needed only for the log output
+chrono = "0.4.23"

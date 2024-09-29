@@ -8,8 +8,15 @@ import 'dart:io';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:logging/logging.dart';
 
-// These functions are ignored because they are not marked as `pub`: `from_u16`, `to_u16`
+// These functions are ignored because they are not marked as `pub`: `_default_log_fn`, `_default_logger_name`, `_default_max_log_level`, `from_u16`, `to_u16`
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `enabled`, `flush`, `from`, `log`
+
+String rootLoggerName() => RustLib.instance.api.crateApiMinimalRootLoggerName();
+
+String maxLogLevel() => RustLib.instance.api.crateApiMinimalMaxLogLevel();
+
+void logFn({required Log2DartLogRecord record}) =>
+    RustLib.instance.api.crateApiMinimalLogFn(record: record);
 
 /// usees custom type translation to translate between log::LogLevel and Dart:logging::Level
 /// loglevel is represented by a number, so that we don't need to put \import `import 'package:logging/logging.dart';`
@@ -32,21 +39,17 @@ class FRBLogger {
   static Future<FRBLogger> newInstance() =>
       RustLib.instance.api.crateApiMinimalFrbLoggerNew();
 
-  static void default_log_function(Log2DartLogRecord record) {
-    print(
-        '[${DateTime.now()} ${log_level_from_number(record.levelNumber)} @${record.rustLog ? 'Rust' : 'Dart'} ${record.loggerName}] ${record.message}');
-  }
-
   /// initialize the logging system, including the rust logger
-  static Logger init_logger(
-      {String name = 'RootLogger',
-      String maxLoglevel = 'INFO',
-      Function(Log2DartLogRecord) custom_log_function = default_log_function}) {
+  static Logger initLogger(
+      {String name = 'FRBLogger',
+      String maxLogLevel = 'INFO',
+      Function({required Log2DartLogRecord record}) customLogFunction =
+          logFn}) {
     String? env_log_level = Platform.environment['LOG_LEVEL'];
     if (env_log_level != null) {
       print(
-          'Taking log level from env: ${env_log_level} instead of the one given by code: ${maxLoglevel}');
-      maxLoglevel = env_log_level;
+          'Taking log level from env: ${env_log_level} instead of the one given by code: ${maxLogLevel}');
+      maxLogLevel = env_log_level;
     }
 
     Log2DartLogRecord _toLog2DartLogRecord(LogRecord record) {
@@ -62,29 +65,32 @@ class FRBLogger {
 
     final logger = Logger(name);
 
-    Logger.root.level = _log_level_from_str(maxLoglevel);
+    Logger.root.level = _log_level_from_str(maxLogLevel);
 
     var stream = initializeLog2Dart(maxLogLevel: Logger.root.level.value);
     // logs from Rust
     stream.listen((record) {
-      // custom_log_function(_toLogRecord(record));
-      custom_log_function(record);
+      customLogFunction(record: record);
     });
 
     // logs from Dart
     Logger.root.onRecord.listen((record) {
-      custom_log_function(_toLog2DartLogRecord(record));
+      customLogFunction(record: _toLog2DartLogRecord(record));
     });
 
     return logger;
   }
 
-  /// get a new named logger after getting the inital logger with init_logger()
-  static Logger getLogger(String name) {
+  /// get a new named logger, can be used for getting the inital logger instead initLogger()
+  static Logger getLogger([String? name]) {
+    var loggerName = name ?? rootLoggerName();
     if (Logger.attachedLoggers.isEmpty) {
-      throw Exception('FRBLogger.initLogging() must be called first');
+      initLogger(
+          name: loggerName,
+          maxLogLevel: maxLogLevel(),
+          customLogFunction: logFn);
     }
-    return Logger(name);
+    return Logger(loggerName);
   }
 
   static Level _log_level_from_str(String levelStr) {
@@ -116,19 +122,27 @@ class FRBLogger {
     }
   }
 
-// convert from log level number to Dart package logging->Level
-  static Level log_level_from_number(int level) {
+  // convert from log level number to Dart package logging->Level
+  static Level logLevelFromNumber(int level) {
     switch (level) {
-      case <= 500:
+      case < 300:
         return Level.ALL;
-      case <= 700:
+      case < 400:
+        return Level.FINEST;
+      case < 500:
+        return Level.FINER;
+      case < 700:
+        return Level.FINE;
+      case < 800:
         return Level.CONFIG;
-      case <= 800:
+      case < 900:
         return Level.INFO;
-      case <= 900:
+      case < 1000:
         return Level.WARNING;
-      case < 2000:
+      case < 1200:
         return Level.SEVERE;
+      case < 2000:
+        return Level.SHOUT;
       case >= 2000:
         return Level.OFF;
       default:
