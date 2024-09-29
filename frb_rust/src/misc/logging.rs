@@ -22,7 +22,6 @@ macro_rules! enable_frb_logging {
       enable_frb_logging!(name = _default_logger_name(), maxLoglevel = $maxLogLevel, customLogFunction = $log_fn);
   };
   (name = $RootLoggerName:expr, maxLoglevel = $maxLogLevel:expr, customLogFunction = $log_fn:expr) => {
-    #[allow(clippy::crate_in_macro_def)]
 
     fn _default_log_fn (record: Log2DartLogRecord) {
       let timestamp = chrono::Local::now();
