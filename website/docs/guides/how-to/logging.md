@@ -1,6 +1,6 @@
 # Logging
 
-Flutter Rust Bridge comes with logging build in - but you can override it with your own logging framework of choice.
+`flutter_rust_bridge` comes with out-of-the-box logging, but you can override it with your own as well.
 More concrete, you can overwrite the log outputting function with the one(s) of your logging framework(s) of choice, which will automatically log statements from Rust as well.
 
 This implementation assumes that one is treating the Rust code as a library in Dart. 
