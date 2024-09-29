@@ -303,6 +303,7 @@ Future<void> generateRunFrbCodegenCommandGenerate(
     GeneratePackageConfig config) async {
   await _wrapMaybeSetExitIfChanged(config, () async {
     await runPubGetIfNotRunYet(config.package);
+    print("generating with ${config.package}");
     await executeFrbCodegen(
       'generate',
       relativePwd: config.package,

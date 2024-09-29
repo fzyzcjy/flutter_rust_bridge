@@ -306,6 +306,15 @@
       ]
     },
     {
+      "login": "patmuk",
+      "name": "Patrick Mukherjee",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2045440?v=4",
+      "profile": "https://patrick.mukherjee.de",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
       "login": "banool",
       "name": "Daniel Porteous (dport)",
       "avatar_url": "https://avatars.githubusercontent.com/u/7816187?v=4",
@@ -397,10 +406,10 @@
       ]
     },
     {
-      "login": "patmuk",
-      "name": "Patrick Mukherjee",
-      "avatar_url": "https://avatars.githubusercontent.com/u/2045440?v=4",
-      "profile": "https://patrick.mukherjee.de",
+      "login": "kyrias",
+      "name": "Johannes Löthberg",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2285387?v=4",
+      "profile": "https://remmy.io",
       "contributions": [
         "code"
       ]

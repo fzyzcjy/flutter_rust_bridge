@@ -19,3 +19,5 @@ enable_lifetime: true
 dump_all: true
 # only for development of flutter_rust_bridge, not for normal users (use local dependency)
 local: true
+rust_features:
+  - internal_feature_for_testing

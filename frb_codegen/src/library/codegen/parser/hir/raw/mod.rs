@@ -22,6 +22,7 @@ pub(crate) fn parse(
                 &config.rust_crate_dir,
                 (!crate_name.is_self_crate()).then_some(crate_name),
                 dumper,
+                config.rust_features.as_deref(),
             )?,
         })
     })

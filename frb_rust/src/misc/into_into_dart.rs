@@ -7,6 +7,7 @@ use crate::rust_opaque::RustOpaqueBase;
 use std::collections::{HashMap, HashSet};
 
 /// Basically the Into trait.
+///
 /// We need this separate trait because we need to implement it for Vec<T> etc.
 /// These blanket implementations allow us to accept external types in various places.
 /// The initial reason for this was to allow mirrored types in StreamSink<>.

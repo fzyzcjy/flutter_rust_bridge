@@ -220,3 +220,8 @@ pub struct StructWithRustAutoOpaqueWithNonCloneData {
 impl StructWithRustAutoOpaqueWithNonCloneData {
     pub fn f(&self) {}
 }
+
+#[cfg(feature = "internal_feature_for_testing")]
+pub fn feature_gated_function() -> String {
+    "test".to_owned()
+}
