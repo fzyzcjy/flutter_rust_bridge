@@ -7,7 +7,7 @@ use crate::generalized_isolate::Channel;
 use crate::generalized_isolate::IntoDart;
 use crate::misc::logs::log_warn_or_println;
 use crate::platform_types::{handle_to_message_port, SendableMessagePortHandle};
-#[cfg(wasm)]
+#[cfg(target_family = "wasm")]
 use wasm_bindgen::prelude::*;
 
 #[derive(Debug)]
@@ -91,13 +91,13 @@ fn drop_thread_box_persistent_handle_via_port(
     };
 }
 
-#[cfg(not(wasm))]
+#[cfg(not(target_family = "wasm"))]
 #[no_mangle]
 pub unsafe extern "C" fn dart_opaque_drop_thread_box_persistent_handle(ptr: usize) {
     dart_opaque_drop_thread_box_persistent_handle_inner(ptr)
 }
 
-#[cfg(wasm)]
+#[cfg(target_family = "wasm")]
 #[wasm_bindgen]
 pub unsafe extern "C" fn dart_opaque_drop_thread_box_persistent_handle(ptr: usize) {
     dart_opaque_drop_thread_box_persistent_handle_inner(ptr)

@@ -63,24 +63,24 @@ impl Rust2DartMessageTrait for Rust2DartMessageSse {
     }
 
     unsafe fn from_raw_wire_sync(raw: Self::WireSyncRust2DartType) -> Self {
-        #[cfg(not(wasm))]
+        #[cfg(not(target_family = "wasm"))]
         {
             let WireSyncRust2DartSse { ptr, len } = raw;
             Self(crate::for_generated::vec_from_leak_ptr(ptr, len))
         }
 
-        #[cfg(wasm)]
+        #[cfg(target_family = "wasm")]
         Self(js_sys::Uint8Array::new(&raw).to_vec())
     }
 
     fn into_raw_wire_sync(self) -> Self::WireSyncRust2DartType {
-        #[cfg(not(wasm))]
+        #[cfg(not(target_family = "wasm"))]
         {
             let (ptr, len) = crate::for_generated::into_leak_vec_ptr(self.0);
             WireSyncRust2DartSse { ptr, len }
         }
 
-        #[cfg(wasm)]
+        #[cfg(target_family = "wasm")]
         return <js_sys::Uint8Array>::from(self.0.as_slice()).into();
     }
 }
@@ -101,9 +101,9 @@ impl Dart2RustMessageSse {
         rust_vec_len: i32,
         data_len: i32,
     ) -> Self {
-        #[cfg(not(wasm))]
+        #[cfg(not(target_family = "wasm"))]
         let vec = crate::for_generated::vec_from_leak_ptr(ptr, rust_vec_len);
-        #[cfg(wasm)]
+        #[cfg(target_family = "wasm")]
         let vec = js_sys::Uint8Array::new(&ptr).to_vec();
 
         Self { vec, data_len }

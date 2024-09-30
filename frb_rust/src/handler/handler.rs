@@ -87,14 +87,14 @@ pub enum FfiCallMode {
     Sync,
 }
 
-#[cfg(not(wasm))]
+#[cfg(not(target_family = "wasm"))]
 pub trait TaskRetFutTrait: Send {}
-#[cfg(not(wasm))]
+#[cfg(not(target_family = "wasm"))]
 impl<T: Send> TaskRetFutTrait for T {}
 
-#[cfg(wasm)]
+#[cfg(target_family = "wasm")]
 pub trait TaskRetFutTrait {}
-#[cfg(wasm)]
+#[cfg(target_family = "wasm")]
 impl<T> TaskRetFutTrait for T {}
 
 // Originally there were things for StreamSink, but it was moved, so now it is empty
