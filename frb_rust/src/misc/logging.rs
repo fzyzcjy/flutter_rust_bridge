@@ -180,12 +180,12 @@ macro_rules! enable_frb_logging {
     /// usees custom type translation to translate between log::LogLevel and Dart:logging::Level
     /// loglevel is represented by a number, so that we don't need to put \import `import 'package:logging/logging.dart';`
     /// into the dart preamble in flutter_rust_bridge.yaml
-    pub fn initialize_log2dart(log_stream: crate::frb_generated::StreamSink<Log2DartLogRecord>, max_log_level: u16) {
+    pub fn initialize_log_2_dart(log_stream: crate::frb_generated::StreamSink<Log2DartLogRecord>, max_log_level: u16) {
       log::set_boxed_logger(Box::new(FRBLogger {
         stream_sink: log_stream,
       }))
       .map(|()| log::set_max_level(from_u16(max_log_level)))
-      .expect("initialize_log2dart is called only once!");
+      .expect("initialize_log_2_dart is called only once!");
 
       // log panics
       let prev = std::panic::take_hook();

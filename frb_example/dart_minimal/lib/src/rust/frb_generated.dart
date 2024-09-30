@@ -68,7 +68,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.4.0';
 
   @override
-  int get rustContentHash => 1085603436;
+  int get rustContentHash => 742269791;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -175,7 +175,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kCrateApiMinimalInitializeLog2DartConstMeta =>
       const TaskConstMeta(
-        debugName: "initialize_log2dart",
+        debugName: "initialize_log_2_dart",
         argNames: ["logStream", "maxLogLevel"],
       );
 
