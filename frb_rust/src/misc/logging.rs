@@ -167,6 +167,7 @@ macro_rules! enable_frb_logging {
       }
     ")]
     pub struct FRBLogger {
+      #[allow(clippy::crate_in_macro_def)]
       pub stream_sink: crate::frb_generated::StreamSink<Log2DartLogRecord>,
     }
 
