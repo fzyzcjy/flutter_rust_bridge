@@ -65,7 +65,7 @@ class FRBLogger {
 
     final logger = Logger(name);
 
-    Logger.root.level = _log_level_from_str(maxLogLevel);
+    Logger.root.level = _logLevelFromStr(maxLogLevel);
 
     var stream = initializeLog2Dart(maxLogLevel: Logger.root.level.value);
     // logs from Rust
@@ -93,7 +93,7 @@ class FRBLogger {
     return Logger(loggerName);
   }
 
-  static Level _log_level_from_str(String levelStr) {
+  static Level _logLevelFromStr(String levelStr) {
     switch (levelStr.toUpperCase()) {
       case 'ALL':
         return Level.ALL;
