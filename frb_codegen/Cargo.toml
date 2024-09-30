@@ -26,7 +26,6 @@ itertools = "0.10.3"
 lazy_static = { workspace = true }
 log = "0.4"
 fern = { version = "0.6.0", features = ["date-based", "colored"] }
-atty = "0.2.14"
 chrono = "0.4"
 pathdiff = "0.2.1"
 quote = "1.0"
