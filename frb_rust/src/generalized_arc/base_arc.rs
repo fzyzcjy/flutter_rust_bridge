@@ -22,8 +22,8 @@ pub trait BaseArc<T: ?Sized>: Clone + AsRef<T> {
 macro_rules! base_arc_generate_tests {
     ($T:tt) => {
         use std::fmt::Debug;
-        use std::sync::atomic::{AtomicBool, Ordering};
         use $crate::generalized_arc::base_arc::BaseArc;
+        use $crate::misc::atomic::{AtomicBool, Ordering};
 
         // Do NOT make it `clone` (to test non-clone behavior)
         struct DummyType {
