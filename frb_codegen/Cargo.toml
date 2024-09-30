@@ -33,7 +33,7 @@ quote = "1.0"
 regex = "1.5.4"
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0.107"
-serde_yaml = "0.8"
+serde_yaml = "0.9"
 strum = "0.24.1"
 strum_macros = "0.24.3"
 syn = { version = "2.0.26", features = ["full", "extra-traits", "visit-mut"] }
