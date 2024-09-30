@@ -382,7 +382,7 @@ More specifically, thanks for all these contributions:
 * [AlienKevin](https://github.com/AlienKevin): Add flutter example for macOS. Add doc for Android NDK bug. Improve migration doc.
 * [alexthe2](https://github.com/alexthe2): Add Option Datetime. Add empty structs. Improve doc. Add `r#`. Fix mirror enum bug.
 * [Larpoux](https://github.com/Larpoux): Fix async generation. Update web-audio-api binding.
-* [patmuk](https://github.com/patmuk): Set MSRV. Fail fast. Improve message. Support relative config. Improve multiple docs.
+* [patmuk](https://github.com/patmuk): Set MSRV. Fail fast. Improve message. Support relative config. Improve multiple docs. Fix warning.
 * [banool](https://github.com/banool): Fix pubspec parsing. Fix symbol-stripping doc.
 * [anlumo](https://github.com/anlumo): Fix freezed + methods. Non-clone RustOpaque.
 * [temeddix](https://github.com/temeddix): Fix broken CI. Custom num workers. Fix MacOS doc steps. Update doc. Make zero-copy defaultable.

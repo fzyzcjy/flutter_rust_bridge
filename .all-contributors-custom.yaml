@@ -28,7 +28,7 @@
 - AlienKevin: Add flutter example for macOS. Add doc for Android NDK bug. Improve migration doc.
 - alexthe2: Add Option Datetime. Add empty structs. Improve doc. Add `r#`. Fix mirror enum bug.
 - Larpoux: Fix async generation. Update web-audio-api binding.
-- patmuk: Set MSRV. Fail fast. Improve message. Support relative config. Improve multiple docs.
+- patmuk: Set MSRV. Fail fast. Improve message. Support relative config. Improve multiple docs. Fix warning.
 - banool: Fix pubspec parsing. Fix symbol-stripping doc.
 - anlumo: Fix freezed + methods. Non-clone RustOpaque.
 - temeddix: Fix broken CI. Custom num workers. Fix MacOS doc steps. Update doc. Make zero-copy defaultable.
