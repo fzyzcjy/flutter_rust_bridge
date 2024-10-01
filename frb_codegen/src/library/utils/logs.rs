@@ -3,6 +3,7 @@
 use crate::utils::console::MULTI_PROGRESS;
 use fern::colors::{Color, ColoredLevelConfig};
 use log::LevelFilter;
+use std::io::IsTerminal;
 
 /// Configure an opinionated way of logging.
 ///
@@ -97,7 +98,7 @@ fn log_format_simple(d: fern::Dispatch) -> fern::Dispatch {
         let time = chrono::Utc::now().format("%Y-%m-%dT%H:%M:%S%.3fZ");
 
         let level = record.level();
-        let level = if atty::is(atty::Stream::Stdout) {
+        let level = if std::io::stdout().is_terminal() {
             colored_output.color(level).to_string()
         } else {
             level.to_string()
