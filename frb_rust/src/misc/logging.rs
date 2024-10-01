@@ -24,7 +24,7 @@ macro_rules! enable_frb_logging {
   (name = $RootLoggerName:expr, maxLoglevel = $maxLogLevel:expr, customLogFunction = $log_fn:expr) => {
 
     fn _default_log_fn (record: Log2DartLogRecord) {
-      let timestamp = chrono::Local::now();
+      let timestamp = flutter_rust_bridge::for_generated::chrono::Local::now();
       let max_log_level = from_u16(record.level_number);
       let lang = if record.rust_log {"Rust"} else {"Dart"};
       let logger_name = record.logger_name;

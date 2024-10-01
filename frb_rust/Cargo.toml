@@ -62,6 +62,8 @@ default = [
     "anyhow",
     "dart-opaque",
     "log",
+    "chrono", 
+    "allo-isolate/chrono",
     "portable-atomic",
     "rust-async",
     "thread-pool",
@@ -69,7 +71,6 @@ default = [
     "wasm-start",
 ]
 backtrace = ["dep:backtrace", "allo-isolate/backtrace"]
-chrono = ["dep:chrono", "allo-isolate/chrono"]
 dart-opaque = ["dep:dart-sys-fork"]
 portable-atomic = ["dep:portable-atomic"]
 rust-async = ["dep:tokio", "dep:futures", "dep:wasm-bindgen-futures"]

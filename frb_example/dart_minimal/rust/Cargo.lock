@@ -26,6 +26,7 @@ dependencies = [
  "anyhow",
  "atomic",
  "backtrace",
+ "chrono",
 ]
 
 [[package]]
@@ -203,6 +204,7 @@ dependencies = [
  "build-target",
  "bytemuck",
  "byteorder",
+ "chrono",
  "console_error_panic_hook",
  "dart-sys-fork",
  "delegate-attr",
@@ -234,7 +236,6 @@ dependencies = [
 name = "frb_example_dart_minimal"
 version = "0.1.0"
 dependencies = [
- "chrono",
  "flutter_rust_bridge",
  "log",
 ]

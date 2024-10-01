@@ -70,6 +70,8 @@ pub use anyhow;
 pub use byteorder;
 #[cfg(wasm)]
 pub use cast::slice_from_byte_buffer;
+#[cfg(feature = "log")]
+pub use chrono;
 #[cfg(feature = "dart-opaque")]
 #[cfg(not(wasm))]
 pub use dart_sys_fork as dart_sys;
