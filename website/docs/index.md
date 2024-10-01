@@ -264,20 +264,20 @@ Secondly, thanks goes to these wonderful contributors ([emoji key](https://allco
       <td align="center" valign="top" width="14.28%"><a href="https://tienisto.com"><img src="https://avatars.githubusercontent.com/u/38380847?v=4?s=100" width="100px;" alt="Tien Do Nam"/><br /><sub><b>Tien Do Nam</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=Tienisto" title="Code">💻</a></td>
     </tr>
     <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/atezet"><img src="https://avatars.githubusercontent.com/u/4867268?v=4?s=100" width="100px;" alt="Arjen"/><br /><sub><b>Arjen</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=atezet" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://remmy.io"><img src="https://avatars.githubusercontent.com/u/2285387?v=4?s=100" width="100px;" alt="Johannes Löthberg"/><br /><sub><b>Johannes Löthberg</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=kyrias" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Markus43"><img src="https://avatars.githubusercontent.com/u/23716360?v=4?s=100" width="100px;" alt="Markus"/><br /><sub><b>Markus</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=Markus43" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Krysl"><img src="https://avatars.githubusercontent.com/u/5905801?v=4?s=100" width="100px;" alt="Krysl"/><br /><sub><b>Krysl</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=Krysl" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/w-ensink"><img src="https://avatars.githubusercontent.com/u/46427708?v=4?s=100" width="100px;" alt="Wouter Ensink"/><br /><sub><b>Wouter Ensink</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=w-ensink" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/smw-wagnerma"><img src="https://avatars.githubusercontent.com/u/66412697?v=4?s=100" width="100px;" alt="Marcel"/><br /><sub><b>Marcel</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=smw-wagnerma" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/powpingdone"><img src="https://avatars.githubusercontent.com/u/20116021?v=4?s=100" width="100px;" alt="Aidan"/><br /><sub><b>Aidan</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=powpingdone" title="Documentation">📖</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/debanjanbasu"><img src="https://avatars.githubusercontent.com/u/10209115?v=4?s=100" width="100px;" alt="Debanjan Basu"/><br /><sub><b>Debanjan Basu</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=debanjanbasu" title="Documentation">📖</a></td>
     </tr>
     <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/debanjanbasu"><img src="https://avatars.githubusercontent.com/u/10209115?v=4?s=100" width="100px;" alt="Debanjan Basu"/><br /><sub><b>Debanjan Basu</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=debanjanbasu" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://valeth.me"><img src="https://avatars.githubusercontent.com/u/3198362?v=4?s=100" width="100px;" alt="Patrick Auernig"/><br /><sub><b>Patrick Auernig</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=valeth" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/sccheruku"><img src="https://avatars.githubusercontent.com/u/5800058?v=4?s=100" width="100px;" alt="Sai Chaitanya"/><br /><sub><b>Sai Chaitanya</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=sccheruku" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://www.upsuper.org/"><img src="https://avatars.githubusercontent.com/u/333750?v=4?s=100" width="100px;" alt="Xidorn Quan"/><br /><sub><b>Xidorn Quan</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=upsuper" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/jsonmona"><img src="https://avatars.githubusercontent.com/u/105187344?v=4?s=100" width="100px;" alt="jsonmona"/><br /><sub><b>jsonmona</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=jsonmona" title="Code">💻</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/atezet"><img src="https://avatars.githubusercontent.com/u/4867268?v=4?s=100" width="100px;" alt="Arjen"/><br /><sub><b>Arjen</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=atezet" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/MateusHBR"><img src="https://avatars.githubusercontent.com/u/13079483?v=4?s=100" width="100px;" alt="mtz"/><br /><sub><b>mtz</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=MateusHBR" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/codercengiz"><img src="https://avatars.githubusercontent.com/u/45819755?v=4?s=100" width="100px;" alt="codercengiz"/><br /><sub><b>codercengiz</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=codercengiz" title="Code">💻</a></td>
     </tr>
@@ -400,6 +400,7 @@ More specifically, thanks for all these contributions:
 * [OfficialBoyfriend](https://github.com/OfficialBoyfriend): Fix error display.
 * [wxitcode](https://github.com/wxitcode): Add org option. Support MacOS log. Fix a typo.
 * [Tienisto](https://github.com/Tienisto): Add mock init.
+* [atezet](https://github.com/atezet): Upgrade dependencies. Follow rustfmt.
 * [kyrias](https://github.com/kyrias): Use portable atomic.
 * [Markus43](https://github.com/Markus43): Fix folder removal.
 * [Krysl](https://github.com/Krysl): Add preamble.
@@ -411,7 +412,6 @@ More specifically, thanks for all these contributions:
 * [sccheruku](https://github.com/sccheruku): Prevent double-generating utility.
 * [upsuper](https://github.com/upsuper): Refactor delegate-attr.
 * [jsonmona](https://github.com/jsonmona): Add import.
-* [atezet](https://github.com/atezet): Follow rustfmt.
 * [MateusHBR](https://github.com/MateusHBR): Add pub get.
 * [codercengiz](https://github.com/codercengiz): Fix mirroring bug.
 * [aran](https://github.com/aran): Fix map + mirror. Fix pubspec. Upgrde ffigen. Replace to js_interop. Bump version. Fix typo.

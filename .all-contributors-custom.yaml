@@ -39,6 +39,7 @@
 - OfficialBoyfriend: Fix error display.
 - wxitcode: Add org option. Support MacOS log. Fix a typo.
 - Tienisto: Add mock init.
+- atezet: Upgrade dependencies. Follow rustfmt.
 - kyrias: Use portable atomic.
 - Markus43: Fix folder removal.
 - Krysl: Add preamble.
@@ -50,7 +51,6 @@
 - sccheruku: Prevent double-generating utility.
 - upsuper: Refactor delegate-attr.
 - jsonmona: Add import.
-- atezet: Follow rustfmt.
 - MateusHBR: Add pub get.
 - codercengiz: Fix mirroring bug.
 - aran: Fix map + mirror. Fix pubspec. Upgrde ffigen. Replace to js_interop. Bump version. Fix typo.
