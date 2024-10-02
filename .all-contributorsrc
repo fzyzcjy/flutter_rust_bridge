@@ -981,6 +981,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "Vollbrecht",
+      "name": "Frederick Vollbrecht",
+      "avatar_url": "https://avatars.githubusercontent.com/u/12041081?v=4",
+      "profile": "https://github.com/Vollbrecht",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,

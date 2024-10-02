@@ -339,6 +339,7 @@ Secondly, thanks goes to these wonderful contributors ([emoji key](https://allco
     </tr>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://thesimplekid.com"><img src="https://avatars.githubusercontent.com/u/8606367?v=4?s=100" width="100px;" alt="thesimplekid"/><br /><sub><b>thesimplekid</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=thesimplekid" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/Vollbrecht"><img src="https://avatars.githubusercontent.com/u/12041081?v=4?s=100" width="100px;" alt="Frederick Vollbrecht"/><br /><sub><b>Frederick Vollbrecht</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=Vollbrecht" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
