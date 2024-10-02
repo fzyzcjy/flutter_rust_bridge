@@ -42,18 +42,18 @@ impl Rust2DartMessageTrait for Rust2DartMessageDco {
     }
 
     unsafe fn from_raw_wire_sync(raw: Self::WireSyncRust2DartType) -> Self {
-        #[cfg(not(wasm))]
+        #[cfg(not(target_family = "wasm"))]
         return Self(*crate::for_generated::box_from_leak_ptr(raw));
 
-        #[cfg(wasm)]
+        #[cfg(target_family = "wasm")]
         return Self(raw);
     }
 
     fn into_raw_wire_sync(self) -> Self::WireSyncRust2DartType {
-        #[cfg(not(wasm))]
+        #[cfg(not(target_family = "wasm"))]
         return crate::for_generated::new_leak_box_ptr(self.0);
 
-        #[cfg(wasm)]
+        #[cfg(target_family = "wasm")]
         return self.0;
     }
 }
@@ -78,7 +78,7 @@ where
 #[cfg(test)]
 mod tests {
 
-    #[cfg(not(wasm))]
+    #[cfg(not(target_family = "wasm"))]
     #[test]
     fn test_simplest() {
         use crate::codec::Rust2DartMessageTrait;

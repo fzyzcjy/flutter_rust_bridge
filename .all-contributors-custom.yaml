@@ -28,7 +28,7 @@
 - AlienKevin: Add flutter example for macOS. Add doc for Android NDK bug. Improve migration doc.
 - alexthe2: Add Option Datetime. Add empty structs. Improve doc. Add `r#`. Fix mirror enum bug.
 - Larpoux: Fix async generation. Update web-audio-api binding.
-- patmuk: Set MSRV. Fail fast. Improve message. Support relative config. Improve multiple docs.
+- patmuk: Set MSRV. Fail fast. Improve message. Support relative config. Improve multiple docs. Fix warning.
 - banool: Fix pubspec parsing. Fix symbol-stripping doc.
 - anlumo: Fix freezed + methods. Non-clone RustOpaque.
 - temeddix: Fix broken CI. Custom num workers. Fix MacOS doc steps. Update doc. Make zero-copy defaultable.
@@ -39,9 +39,11 @@
 - OfficialBoyfriend: Fix error display.
 - wxitcode: Add org option. Support MacOS log. Fix a typo.
 - Tienisto: Add mock init.
+- atezet: Upgrade dependencies. Follow rustfmt.
 - kyrias: Use portable atomic.
 - Markus43: Fix folder removal.
 - Krysl: Add preamble.
+- Vollbrecht: Warn absolute path.
 - w-ensink: Improve doc. Fix CI. Refactor. Add tests.
 - smw-wagnerma: Improve Windows encoding handling.
 - powpingdone: Document JNI init and libc++_static linking.
@@ -50,7 +52,6 @@
 - sccheruku: Prevent double-generating utility.
 - upsuper: Refactor delegate-attr.
 - jsonmona: Add import.
-- atezet: Follow rustfmt.
 - MateusHBR: Add pub get.
 - codercengiz: Fix mirroring bug.
 - aran: Fix map + mirror. Fix pubspec. Upgrde ffigen. Replace to js_interop. Bump version. Fix typo.

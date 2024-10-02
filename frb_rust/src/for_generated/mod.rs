@@ -41,7 +41,7 @@ pub use crate::lockable::{
 #[allow(unused)]
 pub use crate::misc::manual_impl::*;
 pub use crate::misc::version::FLUTTER_RUST_BRIDGE_RUNTIME_VERSION;
-#[cfg(wasm)]
+#[cfg(target_family = "wasm")]
 pub use crate::misc::web_utils;
 pub use crate::platform_types::{
     DartAbi, MessagePort, PlatformGeneralizedUint8ListPtr, WireSyncRust2DartDco,
@@ -63,25 +63,25 @@ pub use crate::rust_auto_opaque::{inner::RustAutoOpaqueInner, RustAutoOpaqueBase
 pub use crate::rust_opaque::{dart2rust::decode_rust_opaque_nom, RustOpaqueBase};
 pub use crate::stream::stream_sink::StreamSinkBase;
 pub use crate::thread_pool::{BaseThreadPool, SimpleThreadPool};
-#[cfg(wasm)]
+#[cfg(target_family = "wasm")]
 pub use crate::web_transfer::transfer_closure::TransferClosure;
 #[cfg(feature = "anyhow")]
 pub use anyhow;
 pub use byteorder;
-#[cfg(wasm)]
+#[cfg(target_family = "wasm")]
 pub use cast::slice_from_byte_buffer;
 #[cfg(feature = "log")]
 pub use chrono;
 #[cfg(feature = "dart-opaque")]
-#[cfg(not(wasm))]
+#[cfg(not(target_family = "wasm"))]
 pub use dart_sys_fork as dart_sys;
 #[cfg(feature = "rust-async")]
 pub use futures;
-#[cfg(wasm)]
+#[cfg(target_family = "wasm")]
 pub use js_sys;
 pub use lazy_static::lazy_static;
 #[cfg(feature = "rust-async")]
 pub use misc_rust_async::*;
 pub use pointer::*;
-#[cfg(wasm)]
+#[cfg(target_family = "wasm")]
 pub use wasm_bindgen;

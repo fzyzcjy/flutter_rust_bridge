@@ -1,12 +1,12 @@
 use super::{DartOpaque, GeneralizedDartHandle};
 use crate::platform_types::{message_port_to_handle, MessagePort};
-#[cfg(wasm)]
+#[cfg(target_family = "wasm")]
 use wasm_bindgen::prelude::*;
 
 /// # Safety
 ///
 /// This should never be called manually.
-#[cfg(wasm)]
+#[cfg(target_family = "wasm")]
 pub unsafe fn cst_decode_dart_opaque(raw: wasm_bindgen::JsValue) -> DartOpaque {
     #[cfg(target_pointer_width = "64")]
     {
@@ -19,7 +19,7 @@ pub unsafe fn cst_decode_dart_opaque(raw: wasm_bindgen::JsValue) -> DartOpaque {
 /// # Safety
 ///
 /// This should never be called manually.
-#[cfg(not(wasm))]
+#[cfg(not(target_family = "wasm"))]
 pub unsafe fn cst_decode_dart_opaque(raw: usize) -> DartOpaque {
     DartOpaque::from_raw(raw as _)
 }
@@ -34,7 +34,7 @@ pub unsafe fn sse_decode_dart_opaque(raw: usize) -> DartOpaque {
 /// # Safety
 ///
 /// This should never be called manually.
-#[cfg(wasm)]
+#[cfg(target_family = "wasm")]
 #[wasm_bindgen]
 pub unsafe fn dart_opaque_dart2rust_encode(
     handle: GeneralizedDartHandle,
@@ -46,7 +46,7 @@ pub unsafe fn dart_opaque_dart2rust_encode(
 /// # Safety
 ///
 /// This should never be called manually.
-#[cfg(not(wasm))]
+#[cfg(not(target_family = "wasm"))]
 #[no_mangle]
 pub unsafe extern "C" fn dart_opaque_dart2rust_encode(
     handle: GeneralizedDartHandle,

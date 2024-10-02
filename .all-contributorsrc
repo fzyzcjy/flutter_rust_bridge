@@ -406,6 +406,15 @@
       ]
     },
     {
+      "login": "atezet",
+      "name": "Arjen",
+      "avatar_url": "https://avatars.githubusercontent.com/u/4867268?v=4",
+      "profile": "https://github.com/atezet",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
       "login": "kyrias",
       "name": "Johannes Löthberg",
       "avatar_url": "https://avatars.githubusercontent.com/u/2285387?v=4",
@@ -428,6 +437,15 @@
       "name": "Krysl",
       "avatar_url": "https://avatars.githubusercontent.com/u/5905801?v=4",
       "profile": "https://github.com/Krysl",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "Vollbrecht",
+      "name": "Frederick Vollbrecht",
+      "avatar_url": "https://avatars.githubusercontent.com/u/12041081?v=4",
+      "profile": "https://github.com/Vollbrecht",
       "contributions": [
         "code"
       ]
@@ -500,15 +518,6 @@
       "name": "jsonmona",
       "avatar_url": "https://avatars.githubusercontent.com/u/105187344?v=4",
       "profile": "https://github.com/jsonmona",
-      "contributions": [
-        "code"
-      ]
-    },
-    {
-      "login": "atezet",
-      "name": "Arjen",
-      "avatar_url": "https://avatars.githubusercontent.com/u/4867268?v=4",
-      "profile": "https://github.com/atezet",
       "contributions": [
         "code"
       ]

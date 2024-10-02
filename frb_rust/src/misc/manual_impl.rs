@@ -1,9 +1,9 @@
 #[cfg(feature = "chrono")]
 #[inline]
 pub fn decode_timestamp(ts: i64) -> Timestamp {
-    #[cfg(wasm)]
+    #[cfg(target_family = "wasm")]
     const PRECISION: i64 = 1_000;
-    #[cfg(not(wasm))]
+    #[cfg(not(target_family = "wasm"))]
     const PRECISION: i64 = 1_000_000;
 
     let s = ts / PRECISION;
@@ -53,7 +53,7 @@ pub fn decode_uuid(id: Vec<u8>) -> uuid::Uuid {
 mod tests {
     #[test]
     fn test_decode_timestamp() {
-        #[cfg(not(wasm))]
+        #[cfg(not(target_family = "wasm"))]
         {
             // input in microseconds
             let input: i64 = 3_496_567_123;
@@ -62,7 +62,7 @@ mod tests {
             assert_eq!(ns, 567_123_000);
         }
 
-        #[cfg(wasm)]
+        #[cfg(target_family = "wasm")]
         {
             // input in milliseconds
             let input: i64 = 3_496_567;

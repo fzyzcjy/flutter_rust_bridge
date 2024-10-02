@@ -1,10 +1,10 @@
 /// cbindgen:ignore
-#[cfg(wasm)]
+#[cfg(target_family = "wasm")]
 mod web;
-#[cfg(wasm)]
+#[cfg(target_family = "wasm")]
 pub use web::*;
 
-#[cfg(not(wasm))]
+#[cfg(not(target_family = "wasm"))]
 mod io;
-#[cfg(not(wasm))]
+#[cfg(not(target_family = "wasm"))]
 pub use io::*;
