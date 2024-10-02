@@ -224,7 +224,7 @@ pub(crate) struct CreateOrIntegrateCommandCommonArgs {
     #[arg(long)]
     pub rust_crate_name: Option<String>,
 
-    /// The directory of the generated Rust crate
+    /// The directory of the generated Rust crate, relative to the project path
     #[arg(long)]
     pub rust_crate_dir: Option<String>,
 

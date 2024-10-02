@@ -11,7 +11,8 @@ use clap::Parser;
 use lib_flutter_rust_bridge_codegen::integration::{CreateConfig, IntegrateConfig};
 use lib_flutter_rust_bridge_codegen::utils::logs::configure_opinionated_logging;
 use lib_flutter_rust_bridge_codegen::*;
-use log::debug;
+use log::{debug, warn};
+use std::path::Path;
 
 fn main() -> anyhow::Result<()> {
     let cli = Cli::parse();
@@ -52,7 +53,12 @@ fn main_given_cli(cli: Cli) -> anyhow::Result<()> {
 }
 
 fn compute_rust_crate_dir(config: &CreateOrIntegrateCommandCommonArgs) -> String {
-    config.rust_crate_dir.clone().unwrap_or("rust".to_owned())
+    let rust_crate_dir = config.rust_crate_dir.clone().unwrap_or("rust".to_owned());
+    let path = Path::new(&rust_crate_dir);
+    if path.is_absolute() {
+        warn!("Argument given to --rust-crate-dir was an absolute Path. It will still be interpreted as relative to the new project root.")
+    }
+    rust_crate_dir
 }
 
 #[cfg(test)]
