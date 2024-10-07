@@ -84,6 +84,7 @@ impl InternalConfig {
 
         let generator = generator_parser::parse(generator_parser::Args {
             config,
+            dart_output: &dart_output_dir,
             dart_root: &dart_root,
             rust_crate_dir: &rust_crate_dir,
             dart_output_path_pack: &dart_output_path_pack,
@@ -128,6 +129,7 @@ impl InternalConfig {
                 add_mod_to_lib: config.add_mod_to_lib.unwrap_or(true),
                 build_runner: config.build_runner.unwrap_or(true),
                 web_enabled,
+                dart_output: dart_output_dir,
                 dart_root,
                 rust_crate_dir,
                 rust_output_path,
