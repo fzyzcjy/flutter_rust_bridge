@@ -8,7 +8,6 @@ pub(crate) struct PolisherInternalConfig {
     pub add_mod_to_lib: bool,
     pub build_runner: bool,
     pub web_enabled: bool,
-    pub dart_output: PathBuf,
     pub dart_root: PathBuf,
     pub rust_crate_dir: PathBuf,
     pub rust_output_path: PathBuf,

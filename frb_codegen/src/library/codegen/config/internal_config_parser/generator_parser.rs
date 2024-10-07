@@ -24,7 +24,6 @@ use std::path::{Path, PathBuf};
 
 pub(super) struct Args<'a> {
     pub config: &'a Config,
-    pub dart_output: &'a Path,
     pub dart_root: &'a Path,
     pub rust_crate_dir: &'a Path,
     pub dart_output_path_pack: &'a DartOutputPathPack,
@@ -40,7 +39,6 @@ pub(super) struct Args<'a> {
 pub(super) fn parse(args: Args) -> anyhow::Result<GeneratorInternalConfig> {
     let Args {
         config,
-        dart_output,
         dart_root,
         rust_crate_dir,
         dart_output_path_pack,
@@ -71,7 +69,6 @@ pub(super) fn parse(args: Args) -> anyhow::Result<GeneratorInternalConfig> {
         },
         wire: GeneratorWireInternalConfig {
             dart: GeneratorWireDartInternalConfig {
-                dart_output: dart_output.to_owned(),
                 dart_root: dart_root.to_owned(),
                 web_enabled,
                 llvm_path: config

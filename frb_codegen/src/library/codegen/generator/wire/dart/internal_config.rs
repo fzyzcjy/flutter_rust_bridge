@@ -8,7 +8,6 @@ pub(crate) struct GeneratorWireDartInternalConfig {
     pub web_enabled: bool,
     pub llvm_path: Vec<PathBuf>,
     pub llvm_compiler_opts: String,
-    pub dart_output: PathBuf,
     pub dart_root: PathBuf,
     pub extra_headers: String,
     pub dart_impl_output_path: TargetOrCommonMap<PathBuf>,
