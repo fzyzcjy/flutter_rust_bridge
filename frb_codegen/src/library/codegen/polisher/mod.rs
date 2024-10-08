@@ -113,7 +113,7 @@ fn execute_dart_fix(
     progress_bar_pack: &GeneratorProgressBarPack,
 ) -> anyhow::Result<()> {
     let _pb = progress_bar_pack.polish_dart_fix.start();
-    dart_fix(&config.dart_root)
+    dart_fix(&config.dart_output)
 }
 
 fn execute_dart_format(
