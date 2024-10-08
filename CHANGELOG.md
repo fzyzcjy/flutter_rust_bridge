@@ -1,5 +1,17 @@
 # Changelog
 
+## 2.5.0
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Add commandline option for passing features to cargo expand during codegen #2284 (thanks @fmeef)
+* Support providing relative paths to configuration file #2320 (thanks @patmuk)
+* Use portable-atomic in frb_rust #2323 (thanks @kyrias)
+* Upgrade serde yaml #2333 (thanks @atezet)
+* Replace atty by std::io::IsTerminal #2332 (thanks @atezet)
+* Fixes cfg wasm warnings #2329 (thanks @patmuk)
+* Add docs and warning if user provides absolute rust_crate_dir #2335 (thanks @Vollbrecht)
+* Use dart_output when possible for the dart fix #2340 (thanks @AlexV525)
+
 ## 2.4.0
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
