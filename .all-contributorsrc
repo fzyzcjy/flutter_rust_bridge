@@ -324,6 +324,15 @@
       ]
     },
     {
+      "login": "AlexV525",
+      "name": "Alex Li",
+      "avatar_url": "https://avatars.githubusercontent.com/u/15884415?v=4",
+      "profile": "https://github.com/AlexV525",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
       "login": "anlumo",
       "name": "Andreas Monitzer",
       "avatar_url": "https://avatars.githubusercontent.com/u/644763?v=4",
@@ -347,15 +356,6 @@
       "name": "NightFeather",
       "avatar_url": "https://avatars.githubusercontent.com/u/77222233?v=4",
       "profile": "https://blog.nightfeather.dev/",
-      "contributions": [
-        "code"
-      ]
-    },
-    {
-      "login": "AlexV525",
-      "name": "Alex Li",
-      "avatar_url": "https://avatars.githubusercontent.com/u/15884415?v=4",
-      "profile": "https://github.com/AlexV525",
       "contributions": [
         "code"
       ]
