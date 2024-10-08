@@ -115,6 +115,7 @@
     "build_runner": true,
     "c_output_path": "{the-working-directory}/frb_generated.h",
     "dart_format_line_length": 80,
+    "dart_output": "{the-working-directory}/my_dart_folder",
     "dart_root": "{the-working-directory}",
     "duplicated_c_output_path": [],
     "enable_auto_upgrade": true,
