@@ -758,6 +758,15 @@
       ]
     },
     {
+      "login": "bubnov",
+      "name": "Slavik Bubnov",
+      "avatar_url": "https://avatars.githubusercontent.com/u/818612?v=4",
+      "profile": "https://github.com/bubnov",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
       "login": "Dampfwalze",
       "name": "Dampfwalze",
       "avatar_url": "https://avatars.githubusercontent.com/u/46897578?v=4",
@@ -987,15 +996,6 @@
       "name": "thesimplekid",
       "avatar_url": "https://avatars.githubusercontent.com/u/8606367?v=4",
       "profile": "https://thesimplekid.com",
-      "contributions": [
-        "doc"
-      ]
-    },
-    {
-      "login": "bubnov",
-      "name": "Slavik Bubnov",
-      "avatar_url": "https://avatars.githubusercontent.com/u/818612?v=4",
-      "profile": "https://github.com/bubnov",
       "contributions": [
         "doc"
       ]
