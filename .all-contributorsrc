@@ -990,6 +990,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "bubnov",
+      "name": "Slavik Bubnov",
+      "avatar_url": "https://avatars.githubusercontent.com/u/818612?v=4",
+      "profile": "https://github.com/bubnov",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
