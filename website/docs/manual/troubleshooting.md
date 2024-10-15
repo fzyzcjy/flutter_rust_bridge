@@ -131,6 +131,16 @@ it, as it's different for each operating system.
 Check out [Limitations on WASM](./miscellaneous/wasm-limitations) for some common problems and solutions
 to adapt existing code to WASM.
 
+## Cargokit fails with the `SEVERE: error[E0463]: can't find crate for "core"` error when building for macos target
+
+Try to uninstall the rust toolchain and install it again from the scratch:
+
+1. `rustup self uninstall`
+2. `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`
+3. `flutter clean && flutter pub get && flutter run -d macos`
+
+Check [the related issue on GitHub](https://github.com/fzyzcjy/flutter_rust_bridge/issues/2348) for the context.
+
 ## Other problems?
 
 Don't hesitate to [open an issue](https://github.com/fzyzcjy/flutter_rust_bridge/issues/new/choose)! I usually reply
