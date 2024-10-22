@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.5.1
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Upgrade allo-isolate to fix upstream bugs #2363
+
 ## 2.5.0
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
