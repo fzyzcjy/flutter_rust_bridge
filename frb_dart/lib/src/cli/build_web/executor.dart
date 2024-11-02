@@ -67,7 +67,11 @@ Future<void> executeBuildWeb(BuildWebArgs args) async {
   final rustCrateName =
       await _getRustCreateName(rustCrateDir: args.rustCrateDir);
 
-  await _executeWasmPack(args, rustCrateName: rustCrateName);
+  final contentHash =
+      await _getRustContentHash(rustCrateDir: args.rustCrateDir);
+
+  await _executeWasmPack(args,
+      rustCrateName: rustCrateName, contentHash: contentHash);
 
   if (args.enableWasmBindgen) {
     await _executeWasmBindgen(args, rustCrateName: rustCrateName);
@@ -149,8 +153,12 @@ Future<String> _getRustCreateName({required String rustCrateDir}) async {
   return rustCrateName;
 }
 
+Future<int> _getRustContentHash({required String rustCrateDir}) async {
+  throw UnimplementedError();
+}
+
 Future<void> _executeWasmPack(BuildWebArgs args,
-    {required String rustCrateName}) async {
+    {required String rustCrateName, required int contentHash}) async {
   await runCommand('wasm-pack', [
     'build',
     '-t',
@@ -159,7 +167,7 @@ Future<void> _executeWasmPack(BuildWebArgs args,
     args.outputWasm,
     '--no-typescript',
     '--out-name',
-    rustCrateName,
+    '${rustCrateName}${contentHash.toRadixString(16)}',
     if (!args.release) '--dev',
     args.rustCrateDir,
     '--',

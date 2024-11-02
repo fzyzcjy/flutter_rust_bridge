@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter_rust_bridge/src/loader/_common.dart';
+import 'package:flutter_rust_bridge/src/main_components/entrypoint.dart';
 import 'package:flutter_rust_bridge/src/platform_types/_io.dart';
 
 /// Load the [ExternalLibrary], with the following cases in mind:
@@ -9,7 +10,7 @@ import 'package:flutter_rust_bridge/src/platform_types/_io.dart';
 /// 2. When running Flutter widget tests.
 /// 3. When `dart test`, `dart run`, `dart compile exe`, etc.
 FutureOr<ExternalLibrary> loadExternalLibrary(
-    ExternalLibraryLoaderConfig config) async {
+    BaseEntrypoint _, ExternalLibraryLoaderConfig config) async {
   final ioDirectory = config.ioDirectory;
   return loadExternalLibraryRaw(
     nativeLibDirWhenNonPackaged:

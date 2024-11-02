@@ -130,7 +130,6 @@ abstract class BaseEntrypoint<A extends BaseApi, AI extends BaseApiImpl,
   String get codegenVersion;
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  @protected
   int get rustContentHash;
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
@@ -138,7 +137,7 @@ abstract class BaseEntrypoint<A extends BaseApi, AI extends BaseApiImpl,
   Future<void> executeRustInitializers();
 
   Future<ExternalLibrary> _loadDefaultExternalLibrary() async =>
-      await loadExternalLibrary(defaultExternalLibraryLoaderConfig);
+      await loadExternalLibrary(this, defaultExternalLibraryLoaderConfig);
 
   A _createDefaultApi(
     BaseHandler handler,
