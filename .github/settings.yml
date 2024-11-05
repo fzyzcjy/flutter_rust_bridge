@@ -84,7 +84,7 @@ labels:
     color: '#c8e6c9'
     description: Pass the triage
   - name: experimental feature
-    color: '#7F4D62'
+    color: '#C5DEF5'
     description: Issues related to experimental instead of stable features
 
 # Milestones: define milestones for Issues and Pull Requests
