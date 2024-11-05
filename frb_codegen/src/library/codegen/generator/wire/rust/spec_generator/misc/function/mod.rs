@@ -111,7 +111,11 @@ fn generate_code_call_inner_func_result(func: &MirFunc, inner_func_args: Vec<Str
     let mut ans = (func.rust_call_code.clone()).unwrap_or_else(|| {
         match &func.owner {
             MirFuncOwnerInfo::Function => {
-                format!("{}({})", func.name.rust_style(), inner_func_args.join(", "))
+                format!(
+                    "{}({})",
+                    func.namespaced_name_rust_style(false),
+                    inner_func_args.join(", ")
+                )
             }
             MirFuncOwnerInfo::Method(method) => {
                 let owner_ty_name = method.owner_ty_name().unwrap().rust_style();

@@ -179,6 +179,14 @@ impl MirFunc {
     //     }
     // }
 
+    pub(crate) fn namespaced_name_rust_style(&self, strip_raw_identifier: bool) -> String {
+        NamespacedName::new(
+            self.namespace.clone(),
+            self.name.rust_style(strip_raw_identifier),
+        )
+        .rust_style()
+    }
+
     pub(crate) fn name_dart_api(&self) -> String {
         self.name.dart_style()
     }
