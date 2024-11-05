@@ -21,38 +21,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   });
 
   @protected
-  String dco_decode_String(dynamic raw);
-
-  @protected
   int dco_decode_i_32(dynamic raw);
-
-  @protected
-  Uint8List dco_decode_list_prim_u_8_strict(dynamic raw);
-
-  @protected
-  StructWithRawNameField dco_decode_struct_with_raw_name_field(dynamic raw);
-
-  @protected
-  int dco_decode_u_8(dynamic raw);
 
   @protected
   void dco_decode_unit(dynamic raw);
 
   @protected
-  String sse_decode_String(SseDeserializer deserializer);
-
-  @protected
   int sse_decode_i_32(SseDeserializer deserializer);
-
-  @protected
-  Uint8List sse_decode_list_prim_u_8_strict(SseDeserializer deserializer);
-
-  @protected
-  StructWithRawNameField sse_decode_struct_with_raw_name_field(
-      SseDeserializer deserializer);
-
-  @protected
-  int sse_decode_u_8(SseDeserializer deserializer);
 
   @protected
   void sse_decode_unit(SseDeserializer deserializer);
@@ -61,21 +36,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   bool sse_decode_bool(SseDeserializer deserializer);
 
   @protected
-  void sse_encode_String(String self, SseSerializer serializer);
-
-  @protected
   void sse_encode_i_32(int self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_list_prim_u_8_strict(
-      Uint8List self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_struct_with_raw_name_field(
-      StructWithRawNameField self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_u_8(int self, SseSerializer serializer);
 
   @protected
   void sse_encode_unit(void self, SseSerializer serializer);

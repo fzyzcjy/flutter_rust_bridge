@@ -8,12 +8,3 @@ pub fn init_app() {
 pub fn minimal_adder(a: i32, b: i32) -> i32 {
     a + b
 }
-
-#[derive(Default)]
-pub struct StructWithRawNameField {
-    pub r#type: String,
-}
-
-pub fn r#for(r#type: String) {
-    let _ = r#type;
-}
