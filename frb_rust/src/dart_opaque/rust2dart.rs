@@ -18,17 +18,17 @@ impl DartOpaque {
 
 #[cfg(target_family = "wasm")]
 #[wasm_bindgen]
-pub unsafe fn dart_opaque_rust2dart_decode(ptr: usize) -> GeneralizedDartHandle {
-    dart_opaque_rust2dart_decode_inner(ptr)
+pub unsafe fn frb_dart_opaque_rust2dart_decode(ptr: usize) -> GeneralizedDartHandle {
+    frb_dart_opaque_rust2dart_decode_inner(ptr)
 }
 
 #[cfg(not(target_family = "wasm"))]
 #[no_mangle]
-pub unsafe extern "C" fn dart_opaque_rust2dart_decode(ptr: usize) -> GeneralizedDartHandle {
-    dart_opaque_rust2dart_decode_inner(ptr)
+pub unsafe extern "C" fn frb_dart_opaque_rust2dart_decode(ptr: usize) -> GeneralizedDartHandle {
+    frb_dart_opaque_rust2dart_decode_inner(ptr)
 }
 
-unsafe fn dart_opaque_rust2dart_decode_inner(ptr: usize) -> GeneralizedDartHandle {
+unsafe fn frb_dart_opaque_rust2dart_decode_inner(ptr: usize) -> GeneralizedDartHandle {
     let opaque = DartOpaque::from_raw(ptr as _);
     opaque.create_dart_handle()
 }
