@@ -11,7 +11,15 @@ pub(crate) fn command_arg_maybe_fvm(pwd: Option<&Path>) -> Option<String> {
 }
 
 fn should_use_fvm(pwd: Option<&Path>) -> bool {
-    pwd.map_or(true, has_fvmrc) && has_fvm_installation()
+    if pwd.is_some() && !has_fvmrc(pwd.unwrap()) {
+        false
+    } else {
+        let has_fvm_installation_output = has_fvm_installation();
+        if !has_fvm_installation_output {
+            log::info!("Has .fvmrc but no fvm binary installation, thus skip using fvm.");
+        }
+        has_fvm_installation_output
+    }
 }
 
 fn has_fvmrc(pwd: &Path) -> bool {
