@@ -91,7 +91,7 @@ pub(crate) fn generate(
     let header = generate_header(func, context)?;
 
     Ok(ApiDartGeneratedFunction {
-        namespace: func.namespace.clone(),
+        namespace: func.name.namespace.clone(),
         header,
         func_comments,
         func_expr,
@@ -194,7 +194,7 @@ fn generate_header(
 ) -> anyhow::Result<DartHeaderCode> {
     Ok(DartHeaderCode {
         import: generate_imports_which_types_and_funcs_use(
-            &func.namespace.clone(),
+            &func.name.namespace.clone(),
             &None,
             &Some(&vec![func]),
             context,

@@ -130,7 +130,7 @@ fn generate_companion_field(func: &MirFunc, const_meta_field_name: &str) -> Stri
             argNames: [{}],
         );
         "#,
-        func.name.dart_style(),
+        func.name.name,
         func.inputs
             .iter()
             .map(|input| format!("\"{}\"", input.inner.name.dart_style()))

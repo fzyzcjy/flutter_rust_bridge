@@ -59,7 +59,7 @@ pub(crate) fn generate(
         .dump("api_dart.json", &generate_dump_info(&cache, context))?;
 
     let funcs_with_impl = mir_pack.funcs_with_impl();
-    let grouped_funcs = (funcs_with_impl.iter()).into_group_map_by(|x| x.namespace.clone());
+    let grouped_funcs = (funcs_with_impl.iter()).into_group_map_by(|x| x.name.namespace.clone());
     let grouped_namespaced_types = (cache.distinct_types.iter())
         .filter(|x| x.self_namespace().is_some())
         .into_group_map_by(|x| x.self_namespace().unwrap());
