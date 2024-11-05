@@ -42,7 +42,6 @@
         "rust2dart": "Dco"
       },
       "comments": [],
-      "dart_name": null,
       "id": 1,
       "impl_mode": "Normal",
       "initializer": false,
@@ -111,7 +110,11 @@
         }
       ],
       "mode": "Normal",
-      "name": "crate::api/func_one",
+      "name": {
+        "dart_style": null,
+        "rust_style": "func_one"
+      },
+      "namespace": "crate::api",
       "output": {
         "error": null,
         "normal": {

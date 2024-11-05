@@ -3,11 +3,7 @@ use crate::library::commands::command_runner::call_shell;
 use std::path::Path;
 
 pub(crate) fn command_arg_maybe_fvm(pwd: Option<&Path>) -> Option<String> {
-    if should_use_fvm(pwd) {
-        Some("fvm".to_owned())
-    } else {
-        None
-    }
+    should_use_fvm(pwd).then(|| "fvm".to_owned())
 }
 
 fn should_use_fvm(pwd: Option<&Path>) -> bool {
@@ -36,6 +32,7 @@ fn has_fvmrc(pwd: &Path) -> bool {
     }
 }
 
+#[allow(clippy::vec_init_then_push)]
 fn has_fvm_installation() -> bool {
     command_run!(call_shell[None, None], "fvm", "--version")
         .map_or(false, |res| res.status.success())

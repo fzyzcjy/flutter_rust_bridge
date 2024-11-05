@@ -20,13 +20,16 @@
         "rust2dart": "Dco"
       },
       "comments": [],
-      "dart_name": null,
       "id": 1,
       "impl_mode": "Normal",
       "initializer": false,
       "inputs": [],
       "mode": "Normal",
-      "name": "crate::api_one/func_one",
+      "name": {
+        "dart_style": null,
+        "rust_style": "func_one"
+      },
+      "namespace": "crate::api_one",
       "output": {
         "error": null,
         "normal": {
@@ -49,13 +52,16 @@
         "rust2dart": "Dco"
       },
       "comments": [],
-      "dart_name": null,
       "id": 2,
       "impl_mode": "Normal",
       "initializer": false,
       "inputs": [],
       "mode": "Normal",
-      "name": "crate::api_two/func_two",
+      "name": {
+        "dart_style": null,
+        "rust_style": "func_two"
+      },
+      "namespace": "crate::api_two",
       "output": {
         "error": null,
         "normal": {

@@ -54,7 +54,6 @@
         "rust2dart": "Dco"
       },
       "comments": [],
-      "dart_name": null,
       "id": 1,
       "impl_mode": "Normal",
       "initializer": false,
@@ -91,7 +90,11 @@
         }
       ],
       "mode": "Normal",
-      "name": "crate::api/my_enum_example_instance_method",
+      "name": {
+        "dart_style": null,
+        "rust_style": "my_enum_example_instance_method"
+      },
+      "namespace": "crate::api",
       "output": {
         "error": null,
         "normal": {
@@ -135,13 +138,16 @@
         "rust2dart": "Dco"
       },
       "comments": [],
-      "dart_name": null,
       "id": 2,
       "impl_mode": "Normal",
       "initializer": false,
       "inputs": [],
       "mode": "Normal",
-      "name": "crate::api/my_enum_example_static_method",
+      "name": {
+        "dart_style": null,
+        "rust_style": "my_enum_example_static_method"
+      },
+      "namespace": "crate::api",
       "output": {
         "error": null,
         "normal": {
@@ -185,7 +191,6 @@
         "rust2dart": "Dco"
       },
       "comments": [],
-      "dart_name": null,
       "id": 3,
       "impl_mode": "Normal",
       "initializer": false,
@@ -224,7 +229,11 @@
         }
       ],
       "mode": "Normal",
-      "name": "crate::api/my_struct_example_instance_method",
+      "name": {
+        "dart_style": null,
+        "rust_style": "my_struct_example_instance_method"
+      },
+      "namespace": "crate::api",
       "output": {
         "error": null,
         "normal": {
@@ -263,13 +272,16 @@
         "rust2dart": "Dco"
       },
       "comments": [],
-      "dart_name": null,
       "id": 4,
       "impl_mode": "Normal",
       "initializer": false,
       "inputs": [],
       "mode": "Normal",
-      "name": "crate::api/my_struct_example_static_method",
+      "name": {
+        "dart_style": null,
+        "rust_style": "my_struct_example_static_method"
+      },
+      "namespace": "crate::api",
       "output": {
         "error": null,
         "normal": {

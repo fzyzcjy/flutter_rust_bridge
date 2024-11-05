@@ -20,7 +20,6 @@
         "rust2dart": "Dco"
       },
       "comments": [],
-      "dart_name": null,
       "id": 1,
       "impl_mode": "Normal",
       "initializer": false,
@@ -73,7 +72,11 @@
         }
       ],
       "mode": "Normal",
-      "name": "crate::api/func_1",
+      "name": {
+        "dart_style": null,
+        "rust_style": "func_1"
+      },
+      "namespace": "crate::api",
       "output": {
         "error": null,
         "normal": {
@@ -96,13 +99,16 @@
         "rust2dart": "Dco"
       },
       "comments": [],
-      "dart_name": null,
       "id": 2,
       "impl_mode": "Normal",
       "initializer": false,
       "inputs": [],
       "mode": "Normal",
-      "name": "crate::api/func_anyhow_result",
+      "name": {
+        "dart_style": null,
+        "rust_style": "func_anyhow_result"
+      },
+      "namespace": "crate::api",
       "output": {
         "error": {
           "data": "String",
@@ -129,13 +135,16 @@
         "rust2dart": "Dco"
       },
       "comments": [],
-      "dart_name": null,
       "id": 3,
       "impl_mode": "Normal",
       "initializer": false,
       "inputs": [],
       "mode": "Normal",
-      "name": "crate::api/func_result",
+      "name": {
+        "dart_style": null,
+        "rust_style": "func_result"
+      },
+      "namespace": "crate::api",
       "output": {
         "error": {
           "data": "String",
@@ -162,13 +171,16 @@
         "rust2dart": "Dco"
       },
       "comments": [],
-      "dart_name": null,
       "id": 4,
       "impl_mode": "Normal",
       "initializer": false,
       "inputs": [],
       "mode": "Normal",
-      "name": "crate::api/func_std_result_result",
+      "name": {
+        "dart_style": null,
+        "rust_style": "func_std_result_result"
+      },
+      "namespace": "crate::api",
       "output": {
         "error": {
           "data": "String",
