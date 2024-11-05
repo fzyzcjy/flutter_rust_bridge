@@ -39,12 +39,12 @@ int32_t frb_get_rust_content_hash(void);
  *
  * This should never be called manually.
  */
-const void *dart_opaque_dart2rust_encode(GeneralizedDartHandle handle,
+const void *frb_dart_opaque_dart2rust_encode(GeneralizedDartHandle handle,
                                          MessagePort dart_handler_port);
 
-void dart_opaque_drop_thread_box_persistent_handle(uintptr_t ptr);
+void frb_dart_opaque_drop_thread_box_persistent_handle(uintptr_t ptr);
 
-GeneralizedDartHandle dart_opaque_rust2dart_decode(uintptr_t ptr);
+GeneralizedDartHandle frb_dart_opaque_rust2dart_decode(uintptr_t ptr);
 
 uint8_t *rust_vec_u8_new(int32_t len);
 

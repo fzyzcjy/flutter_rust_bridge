@@ -75,15 +75,15 @@ class GeneralizedFrbRustBinding {
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   PlatformPointer dartOpaqueDart2RustEncode(
           Object object, NativePortType dartHandlerPort) =>
-      _binding.dart_opaque_dart2rust_encode(object, dartHandlerPort);
+      _binding.frb_dart_opaque_dart2rust_encode(object, dartHandlerPort);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   Object dartOpaqueRust2DartDecode(int ptr) =>
-      _binding.dart_opaque_rust2dart_decode(ptr);
+      _binding.frb_dart_opaque_rust2dart_decode(ptr);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   void dartOpaqueDropThreadBoxPersistentHandle(int ptr) =>
-      _binding.dart_opaque_drop_thread_box_persistent_handle(ptr);
+      _binding.frb_dart_opaque_drop_thread_box_persistent_handle(ptr);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   void freeWireSyncRust2DartDco(WireSyncRust2DartDco val) =>
