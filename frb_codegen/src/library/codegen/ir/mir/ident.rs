@@ -33,10 +33,10 @@ impl MirIdent {
         (self.dart_style.clone()).unwrap_or_else(|| convert_rust_to_dart_style(&self.rust_style))
     }
 
-    pub fn style(&self, lang: &Lang) -> String {
+    pub fn style(&self, lang: &Lang, rust_strip_raw_identifier: bool) -> String {
         match lang {
             Lang::DartLang(_) => self.dart_style(),
-            Lang::RustLang(_) => self.rust_style(true).to_string(),
+            Lang::RustLang(_) => self.rust_style(rust_strip_raw_identifier).to_string(),
         }
     }
 }
