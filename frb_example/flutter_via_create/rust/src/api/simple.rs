@@ -20,6 +20,8 @@ pub struct TrainingPlan {
 impl TrainingPlan {
     #[frb(sync)]
     pub fn test_deserialize(content: String) -> Result<Self, String> {
-        serde_json::from_str(&content).map_err(|e| e.to_string())
+        log::info!("hi test_deserialize content={}", content);
+        Ok(TrainingPlan { weeks: 42 })
+        // serde_json::from_str(&content).map_err(|e| e.to_string())
     }
 }
