@@ -1,6 +1,7 @@
 use crate::command_run;
 use crate::commands::command_runner::call_shell;
 use crate::library::commands::command_runner::check_exit_code;
+use crate::library::commands::fvm::command_arg_maybe_fvm;
 use crate::misc::Template;
 use log::info;
 use std::path::Path;
@@ -24,7 +25,11 @@ pub fn flutter_create(name: &str, org: &Option<String>, template: Template) -> a
         "Execute `flutter create {}` (this may take a while)",
         args.join(" ")
     );
-    check_exit_code(&command_run!(call_shell[None, None], "flutter", "create", *args)?)
+    check_exit_code(&command_run!(
+        call_shell[None, None],
+        ?command_arg_maybe_fvm(None),
+        "flutter", "create", *args
+    )?)
 }
 
 #[allow(clippy::vec_init_then_push)]
@@ -35,6 +40,7 @@ pub fn flutter_pub_add(items: &[String], pwd: Option<&Path>) -> anyhow::Result<(
     );
     check_exit_code(&command_run!(
         call_shell[pwd, None],
+        ?command_arg_maybe_fvm(pwd),
         "flutter",
         "pub",
         "add",
@@ -45,5 +51,9 @@ pub fn flutter_pub_add(items: &[String], pwd: Option<&Path>) -> anyhow::Result<(
 #[allow(clippy::vec_init_then_push)]
 pub fn flutter_pub_get(path: &Path) -> anyhow::Result<()> {
     info!("Execute `flutter pub get` inside {path:?} (this may take a while)");
-    check_exit_code(&command_run!(call_shell[Some(path), None], "flutter", "pub", "get")?)
+    check_exit_code(&command_run!(
+        call_shell[Some(path), None],
+        ?command_arg_maybe_fvm(Some(path)),
+        "flutter", "pub", "get"
+    )?)
 }
