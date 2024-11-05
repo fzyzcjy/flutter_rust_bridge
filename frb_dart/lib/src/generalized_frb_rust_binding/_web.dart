@@ -44,7 +44,7 @@ class GeneralizedFrbRustBinding {
     required int rustVecLen,
     required int dataLen,
   }) {
-    return _dart_fn_deliver_output(callId, ptr, rustVecLen, dataLen);
+    return _frb_dart_fn_deliver_output(callId, ptr, rustVecLen, dataLen);
   }
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
@@ -53,15 +53,15 @@ class GeneralizedFrbRustBinding {
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   PlatformPointer dartOpaqueDart2RustEncode(
           Object object, NativePortType dartHandlerPort) =>
-      _dart_opaque_dart2rust_encode(object.jsify()!, dartHandlerPort);
+      _frb_dart_opaque_dart2rust_encode(object.jsify()!, dartHandlerPort);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   Object dartOpaqueRust2DartDecode(int ptr) =>
-      _dart_opaque_rust2dart_decode(ptr).dartify()!;
+      _frb_dart_opaque_rust2dart_decode(ptr).dartify()!;
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   void dartOpaqueDropThreadBoxPersistentHandle(int ptr) =>
-      _dart_opaque_drop_thread_box_persistent_handle(ptr);
+      _frb_dart_opaque_drop_thread_box_persistent_handle(ptr);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   void freeWireSyncRust2DartDco(WireSyncRust2DartDco raw) {}
@@ -90,8 +90,8 @@ external WireSyncRust2DartSse _frb_pde_ffi_dispatcher_sync(
 );
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
-@JS("wasm_bindgen.dart_fn_deliver_output")
-external void _dart_fn_deliver_output(
+@JS("wasm_bindgen.frb_dart_fn_deliver_output")
+external void _frb_dart_fn_deliver_output(
   int callId,
   PlatformGeneralizedUint8ListPtr ptr,
   int rustVecLen,
@@ -103,14 +103,14 @@ external void _dart_fn_deliver_output(
 external int _frb_get_rust_content_hash();
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
-@JS("wasm_bindgen.dart_opaque_dart2rust_encode")
-external int _dart_opaque_dart2rust_encode(
+@JS("wasm_bindgen.frb_dart_opaque_dart2rust_encode")
+external int _frb_dart_opaque_dart2rust_encode(
     JSAny object, NativePortType dartHandlerPort);
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
-@JS("wasm_bindgen.dart_opaque_rust2dart_decode")
-external JSAny _dart_opaque_rust2dart_decode(int ptr);
+@JS("wasm_bindgen.frb_dart_opaque_rust2dart_decode")
+external JSAny _frb_dart_opaque_rust2dart_decode(int ptr);
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
-@JS("wasm_bindgen.dart_opaque_drop_thread_box_persistent_handle")
-external void _dart_opaque_drop_thread_box_persistent_handle(int ptr);
+@JS("wasm_bindgen.frb_dart_opaque_drop_thread_box_persistent_handle")
+external void _frb_dart_opaque_drop_thread_box_persistent_handle(int ptr);

@@ -7,7 +7,7 @@ use crate::platform_types::{WireSyncRust2DartDco, WireSyncRust2DartSse};
 ///
 /// This function should never be called manually.
 #[no_mangle]
-pub unsafe extern "C" fn init_frb_dart_api_dl(data: *mut std::ffi::c_void) -> isize {
+pub unsafe extern "C" fn frb_init_frb_dart_api_dl(data: *mut std::ffi::c_void) -> isize {
     #[cfg(feature = "dart-opaque")]
     return dart_sys_fork::Dart_InitializeApiDL(data);
     #[cfg(not(feature = "dart-opaque"))]
@@ -18,7 +18,7 @@ pub unsafe extern "C" fn init_frb_dart_api_dl(data: *mut std::ffi::c_void) -> is
 ///
 /// This function should never be called manually.
 #[no_mangle]
-pub unsafe extern "C" fn free_wire_sync_rust2dart_dco(value: WireSyncRust2DartDco) {
+pub unsafe extern "C" fn frb_free_wire_sync_rust2dart_dco(value: WireSyncRust2DartDco) {
     let _ = Rust2DartMessageDco::from_raw_wire_sync(value);
 }
 
@@ -26,6 +26,6 @@ pub unsafe extern "C" fn free_wire_sync_rust2dart_dco(value: WireSyncRust2DartDc
 ///
 /// This function should never be called manually.
 #[no_mangle]
-pub unsafe extern "C" fn free_wire_sync_rust2dart_sse(value: WireSyncRust2DartSse) {
+pub unsafe extern "C" fn frb_free_wire_sync_rust2dart_sse(value: WireSyncRust2DartSse) {
     let _ = Rust2DartMessageSse::from_raw_wire_sync(value);
 }

@@ -5,6 +5,7 @@ use crate::codegen::ir::mir::func::{
     MirFunc, MirFuncArgMode, MirFuncImplMode, MirFuncImplModeDartOnly, MirFuncInput, MirFuncMode,
     MirFuncOutput, MirFuncOwnerInfo, MirFuncOwnerInfoMethod,
 };
+use crate::codegen::ir::mir::ident::MirIdent;
 use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
 use crate::codegen::ir::mir::ty::rust_auto_opaque_implicit::MirTypeRustAutoOpaqueImplicitReason;
@@ -242,8 +243,8 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         }
 
         Ok(IrValueOrSkip::Value(MirFunc {
-            name: NamespacedName::new(namespace_refined, func_name),
-            dart_name,
+            namespace: namespace_refined,
+            name: MirIdent::new(func_name, dart_name),
             id: None, // to be filled later
             inputs: info.inputs,
             output,

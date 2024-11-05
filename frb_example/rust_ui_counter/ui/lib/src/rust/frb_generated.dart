@@ -82,6 +82,11 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 }
 
 abstract class RustLibApi extends BaseApi {
+  Stream<void> crateFrbGeneratedBaseRustStateCreateNotifyUiStream(
+      {required BaseRustState that});
+
+  BaseRustState crateFrbGeneratedBaseRustStateEmpty();
+
   int crateAppRustStateAutoAccessorGetCount({required RustState that});
 
   void crateAppRustStateAutoAccessorSetCount(
@@ -93,11 +98,6 @@ abstract class RustLibApi extends BaseApi {
 
   void crateAppRustStateSetBaseState(
       {required RustState that, required BaseRustState baseState});
-
-  Stream<void> crateFrbGeneratedBaseRustStateCreateNotifyUiStream(
-      {required BaseRustState that});
-
-  BaseRustState crateFrbGeneratedBaseRustStateEmpty();
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_BaseRustState;
@@ -126,13 +126,67 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   });
 
   @override
+  Stream<void> crateFrbGeneratedBaseRustStateCreateNotifyUiStream(
+      {required BaseRustState that}) {
+    final sink = RustStreamSink<void>();
+    handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBaseRustState(
+            that, serializer);
+        sse_encode_StreamSink_unit_Sse(sink, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1)!;
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateFrbGeneratedBaseRustStateCreateNotifyUiStreamConstMeta,
+      argValues: [that, sink],
+      apiImpl: this,
+    ));
+    return sink.stream;
+  }
+
+  TaskConstMeta
+      get kCrateFrbGeneratedBaseRustStateCreateNotifyUiStreamConstMeta =>
+          const TaskConstMeta(
+            debugName: "BaseRustState_create_notify_ui_stream",
+            argNames: ["that", "sink"],
+          );
+
+  @override
+  BaseRustState crateFrbGeneratedBaseRustStateEmpty() {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 2)!;
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBaseRustState,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateFrbGeneratedBaseRustStateEmptyConstMeta,
+      argValues: [],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateFrbGeneratedBaseRustStateEmptyConstMeta =>
+      const TaskConstMeta(
+        debugName: "BaseRustState_empty",
+        argNames: [],
+      );
+
+  @override
   int crateAppRustStateAutoAccessorGetCount({required RustState that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustState(
             that, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 3)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_i_32,
@@ -159,7 +213,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustState(
             that, serializer);
         sse_encode_i_32(count, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 2)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 4)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -184,7 +238,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustState(
             that, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 3)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 5)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -206,7 +260,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 4)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 6)!;
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -234,7 +288,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             that, serializer);
         sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBaseRustState(
             baseState, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 5)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 7)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -250,60 +304,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       const TaskConstMeta(
         debugName: "RustState_set_base_state",
         argNames: ["that", "baseState"],
-      );
-
-  @override
-  Stream<void> crateFrbGeneratedBaseRustStateCreateNotifyUiStream(
-      {required BaseRustState that}) {
-    final sink = RustStreamSink<void>();
-    handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBaseRustState(
-            that, serializer);
-        sse_encode_StreamSink_unit_Sse(sink, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 6)!;
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
-      ),
-      constMeta: kCrateFrbGeneratedBaseRustStateCreateNotifyUiStreamConstMeta,
-      argValues: [that, sink],
-      apiImpl: this,
-    ));
-    return sink.stream;
-  }
-
-  TaskConstMeta
-      get kCrateFrbGeneratedBaseRustStateCreateNotifyUiStreamConstMeta =>
-          const TaskConstMeta(
-            debugName: "BaseRustState_create_notify_ui_stream",
-            argNames: ["that", "sink"],
-          );
-
-  @override
-  BaseRustState crateFrbGeneratedBaseRustStateEmpty() {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 7)!;
-      },
-      codec: SseCodec(
-        decodeSuccessData:
-            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBaseRustState,
-        decodeErrorData: null,
-      ),
-      constMeta: kCrateFrbGeneratedBaseRustStateEmptyConstMeta,
-      argValues: [],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta get kCrateFrbGeneratedBaseRustStateEmptyConstMeta =>
-      const TaskConstMeta(
-        debugName: "BaseRustState_empty",
-        argNames: [],
       );
 
   RustArcIncrementStrongCountFnType
@@ -678,18 +678,18 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
 // Section: extra_from_parser
 
-Future<void> runRustApp({
-  required Widget Function(RustState state) body,
-  required RustState Function() state,
+Future<void> runRustApp<T>({
+  required Widget Function(T state) body,
+  required T Function() state,
 }) async {
   await RustLib.init();
-  runApp(_MyApp(body: body, state: state()));
+  runApp(_MyApp(body: (s) => body(s), state: state()));
 }
 
 // improve typing later
 class _MyApp extends StatefulWidget {
-  final Widget Function(RustState state) body;
-  final RustState state;
+  final Widget Function(dynamic state) body;
+  final dynamic state;
 
   const _MyApp({
     required this.body,

@@ -18,7 +18,7 @@ impl<'a> CodecSseTyTrait for EnumRefCodecSseTy<'a> {
                     .map(|field| {
                         format!(
                             "{};\n",
-                            lang.call_encode(&field.ty, &field.name.style(lang))
+                            lang.call_encode(&field.ty, &field.name.style(lang, false))
                         )
                     })
                     .join("");
@@ -133,7 +133,7 @@ fn pattern_match_enum_variant(lang: &Lang, variant: &MirEnumVariant) -> String {
             }
             Lang::RustLang(_) => {
                 let pattern = (st.fields.iter())
-                    .map(|field| field.name.rust_style().to_owned())
+                    .map(|field| field.name.rust_style(true).to_owned())
                     .join(",");
                 let (left, right) = st.brackets_pair();
                 format!("{left}{pattern}{right}")

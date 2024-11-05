@@ -4844,6 +4844,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  StructWithRawNameField dco_decode_struct_with_raw_name_field(dynamic raw);
+
+  @protected
   StructWithRustAutoOpaqueFieldWithManyDerive
       dco_decode_struct_with_rust_auto_opaque_field_with_many_derive(
           dynamic raw);
@@ -9740,6 +9743,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  StructWithRawNameField sse_decode_struct_with_raw_name_field(
+      SseDeserializer deserializer);
+
+  @protected
   StructWithRustAutoOpaqueFieldWithManyDerive
       sse_decode_struct_with_rust_auto_opaque_field_with_many_derive(
           SseDeserializer deserializer);
@@ -14613,6 +14620,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_struct_with_one_field_twin_sync(
       StructWithOneFieldTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_raw_name_field(
+      StructWithRawNameField self, SseSerializer serializer);
 
   @protected
   void sse_encode_struct_with_rust_auto_opaque_field_with_many_derive(

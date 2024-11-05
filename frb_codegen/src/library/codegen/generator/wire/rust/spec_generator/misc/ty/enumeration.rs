@@ -25,7 +25,7 @@ impl<'a> WireRustGeneratorMiscTrait for EnumRefWireRustGenerator<'a> {
                     let pattern = s
                         .fields
                         .iter()
-                        .map(|field| field.name.rust_style().to_owned())
+                        .map(|field| field.name.rust_style(true).to_owned())
                         .collect_vec();
                     let pattern = if s.is_fields_named {
                         format!(
@@ -50,7 +50,7 @@ impl<'a> WireRustGeneratorMiscTrait for EnumRefWireRustGenerator<'a> {
                             format!(
                                 "let _: {} = {};\n",
                                 field.ty.rust_api_type(),
-                                field.name.rust_style(),
+                                field.name.rust_style(true),
                             )
                         })
                         .collect_vec();
