@@ -20,7 +20,7 @@ impl<'a> WireRustCodecDcoGeneratorEncoderTrait for StructRefWireRustCodecDcoGene
             .enumerate()
             .map(|(i, field)| {
                 let field_ref = if src.is_fields_named {
-                    field.name.rust_style(true).to_string()
+                    field.name.rust_style(false).to_string()
                 } else {
                     i.to_string()
                 };
