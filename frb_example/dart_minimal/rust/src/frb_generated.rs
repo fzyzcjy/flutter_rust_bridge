@@ -69,9 +69,9 @@ let api_b = <i32>::sse_decode(&mut deserializer);deserializer.end(); move |conte
                 FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "r#for", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_r#type = <String>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
+            let api_type = <String>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::minimal::r#for(api_r#type); })?;   Ok(output_ok)
+                         let output_ok = Result::<_,()>::Ok({ crate::api::minimal::r#for(api_type); })?;   Ok(output_ok)
                     })())
                 } })
             }fn wire__crate__api__minimal__struct_with_raw_name_field_default_impl(port_: flutter_rust_bridge::for_generated::MessagePort,ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,rust_vec_len_: i32,data_len_: i32)  {
@@ -110,7 +110,7 @@ let api_b = <i32>::sse_decode(&mut deserializer);deserializer.end(); move |conte
                 impl SseDecode for crate::api::minimal::StructWithRawNameField {
                     // Codec=Sse (Serialization based), see doc to use other codecs
                     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {let mut var_type = <String>::sse_decode(deserializer);
-return crate::api::minimal::StructWithRawNameField{r#type: var_type};}
+return crate::api::minimal::StructWithRawNameField{type: var_type};}
                 }
                 
                 impl SseDecode for u8 {
@@ -164,7 +164,7 @@ return crate::api::minimal::StructWithRawNameField{r#type: var_type};}
             impl flutter_rust_bridge::IntoDart for crate::api::minimal::StructWithRawNameField {
                 fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
                     [
-                    self.r#type.into_into_dart().into_dart()
+                    self.type.into_into_dart().into_dart()
                 ].into_dart()
                 }
             }
@@ -193,7 +193,7 @@ impl flutter_rust_bridge::IntoIntoDart<crate::api::minimal::StructWithRawNameFie
                 
                 impl SseEncode for crate::api::minimal::StructWithRawNameField {
                     // Codec=Sse (Serialization based), see doc to use other codecs
-                    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {<String>::sse_encode(self.r#type, serializer);}
+                    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {<String>::sse_encode(self.type, serializer);}
                 }
                 
                 impl SseEncode for u8 {

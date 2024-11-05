@@ -36,7 +36,7 @@ impl MirIdent {
     pub fn style(&self, lang: &Lang) -> String {
         match lang {
             Lang::DartLang(_) => self.dart_style(),
-            Lang::RustLang(_) => self.rust_style().to_string(),
+            Lang::RustLang(_) => self.rust_style(true).to_string(),
         }
     }
 }

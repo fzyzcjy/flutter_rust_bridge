@@ -53,7 +53,7 @@ impl WireRustCodecEntrypointTrait<'_> for CstWireRustCodecEntrypoint {
             .inputs
             .iter()
             .map(|field| {
-                let name = field.inner.name.rust_style().to_owned();
+                let name = field.inner.name.rust_style(true).to_owned();
                 Acc::new(|target| match target {
                     TargetOrCommon::Common => ExternFuncParam {
                         name: name.clone(),
@@ -94,7 +94,7 @@ impl WireRustCodecEntrypointTrait<'_> for CstWireRustCodecEntrypoint {
             .map(|field| {
                 let gen = WireRustGenerator::new(field.inner.ty.clone(), context);
 
-                let name = field.inner.name.rust_style();
+                let name = field.inner.name.rust_style(true);
                 let mut expr = format!("{name}.cst_decode()");
                 if let Some(wrapper) = gen.generate_wire_func_call_decode_wrapper() {
                     expr = format!("{wrapper}({expr})");
