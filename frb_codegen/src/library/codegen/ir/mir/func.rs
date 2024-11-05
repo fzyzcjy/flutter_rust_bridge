@@ -1,6 +1,7 @@
 use crate::codegen::generator::codec::structs::CodecModePack;
 use crate::codegen::ir::mir::comment::MirComment;
 use crate::codegen::ir::mir::field::MirField;
+use crate::codegen::ir::mir::ident::MirIdent;
 use crate::codegen::ir::mir::ty::delegate::{
     MirTypeDelegate, MirTypeDelegatePrimitiveEnum, MirTypeDelegateProxyVariant,
 };
@@ -8,14 +9,14 @@ use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
 use crate::codegen::ir::mir::ty::trait_def::MirTypeTraitDef;
 use crate::codegen::ir::mir::ty::{MirContext, MirType, MirTypeTrait};
 use crate::if_then_some;
-use crate::utils::namespace::NamespacedName;
+use crate::utils::namespace::{Namespace, NamespacedName};
 use convert_case::{Case, Casing};
 use itertools::Itertools;
 
 crate::mir! {
 pub struct MirFunc {
-    pub name: NamespacedName,
-    pub dart_name: Option<String>,
+    pub namespace: Namespace,
+    pub name: MirIdent,
     pub id: Option<i32>,
     pub inputs: Vec<MirFuncInput>,
     pub output: MirFuncOutput,
